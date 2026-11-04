@@ -1,4 +1,5 @@
 // CThingManager::PreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo& info) -- prepare every thing on the render list (bullet-time things get a rescaled copy of the info) and drop the ones no longer rendered
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051EAB0, length 276 bytes (+ int3 padding), `ret 4`.
 // Callees: CCamera copy constructor @ 0x0049D380 (out of line), CBulletTime::ConvertInterpolateToBulletTimeInterpolate
 // @ 0x004C6010 (landed), CThing::IsRenderedThisFrame @ 0x004C78F0 (landed), CThing::IsAffectedByBulletTime @ 0x004C9920,
@@ -14,7 +15,7 @@
 // The bullet-time object is reached through an inline GetBulletTime() (direct `PWorld->m_pBulletTime` loads the
 // argument first and lets VC cross-jump the two virtual calls into one).
 #pragma pack(push, 4)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCamera {
 public:

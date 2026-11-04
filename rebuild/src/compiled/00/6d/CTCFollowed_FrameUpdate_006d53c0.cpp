@@ -1,4 +1,5 @@
 // CTCFollowed::FrameUpdate() -- every 10th frame (staggered by UID) culls dead followers, drops the ones no longer willing to follow (posting deed 0x31 for each), resets the idle timer when the hero moves more than 3 units, otherwise after 5 s idle posts deed 0x34 for a random follower at most every 10 s
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
@@ -34,7 +35,7 @@ public:
     __forceinline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     T* Get() const { return (T*)GetPItem(); }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CTCPair { long Type; void* TC; };
 struct CTCMap {
     CTCPair* _M_start;

@@ -1,4 +1,5 @@
 // CTargetPoint::CTargetPoint() -- build the target-thing intelligent pointer and mark the point unindexed / never rejected
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Pragma: #pragma optimize("s", on) -- the `or dword ptr [..],-1` stores mark a size-optimised TU.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D7A76, length 26 bytes.
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (PThing at +0; the inlined
@@ -30,10 +31,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 
 struct CTargetPoint {
     CIntelligentPointer<CThing> PThing;           // +0x00

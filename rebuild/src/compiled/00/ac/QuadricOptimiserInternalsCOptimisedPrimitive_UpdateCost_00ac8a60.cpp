@@ -1,5 +1,6 @@
 // 00ac8a60 QuadricOptimiserInternals::COptimisedPrimitive::UpdateCost
 // Leaf: ?UpdateCost@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXABV?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 #include <stddef.h>
 #include <new>
@@ -41,7 +42,7 @@ protected:
 template<class K,class V,class C=less<K>,class A=allocator<pair<const K,V> > >class multimap{typedef pair<const K,V>value_type;typedef _Rb_tree<K,value_type,_Select1st<value_type>,C,A>_Rep_type;_Rep_type _M_t;public:typedef typename _Rep_type::iterator iterator;void erase(iterator p){_M_t.erase(p);}iterator insert(const value_type&v){return _M_t.insert_equal(v);}};
 }
 template<class T>class CArray:public std::vector<T>{};
-class C3DVector{public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 namespace QuadricOptimiserInternals{
 class CSubContraction;class CVertexPairContraction;
 typedef std::multimap<float,CCountedPointer<CVertexPairContraction> > ContractionMap;

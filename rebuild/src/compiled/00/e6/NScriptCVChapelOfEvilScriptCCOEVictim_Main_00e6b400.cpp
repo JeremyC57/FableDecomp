@@ -1,5 +1,6 @@
 // NScript::CV_ChapelOfEvilScript::CCOE_Victim::Main() -- Chapel of Evil sacrifice victim: let Me follow the hero, then make every COE_Victim (other
 // Leaf: ?Main@CCOE_Victim@CV_ChapelOfEvilScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // than Me) and every live COE_AcolyteEvil a mutual ally of Me, the hero likewise, and idle until the thread terminates
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E6B400, 842 bytes (848 with padding); entity-script vtable slot 1 (Main).
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0, CScriptThing::operator== 0x008AAE20, CScriptThing slots 0
@@ -12,7 +13,7 @@
 // Layout: Ego_r.pdb CCOE_Victim (28 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18.
 // Naming wave 35: identity reg 00e69503 "COE_Victim" in 00e693f0; Alloc 00e6a600; vtable 012e8484 slot 1; PDB ?Main@CCOE_Victim@CV_ChapelOfEvilScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CCOE_Victim::Main (wave3/labels_alloc.tsv); PDB ?Main@CCOE_Victim@CV_ChapelOfEvilScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CCOE_Victim@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

@@ -1,6 +1,7 @@
 // NCameraModes::CTrack::CTrack(CGameCameraManager* manager, const CCameraModeDef* def, const CThing* point) -- the camera-mode root (0x0084E420), the inline CCameraPointModeBase (vtable, PCameraPoint built from `point`), this class's vtable, ZTargeting = false
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069DF80, length 78 bytes (80 with padding).
 // Leaf: ??0CTrack
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // The chunk label (CSnapToPoint) is propagated from the byte-similar 0x0056E330: the final vtable stored
 // here, 0x0125C50C, is NCameraModes::CTrack (rtti-vtables.tsv), and the flag cleared is +0xc8 (PDB CTrack:
 // PTrack +0xe4, CurrentFractionAlongTrack +0xe8, ZTargeting +0xec; retail 0x24 bytes lower).
@@ -27,7 +28,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {     // CIntelligentPointe
     CIntelligentPointer(const CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 namespace NCameraModes {
 

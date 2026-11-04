@@ -1,5 +1,6 @@
 // std::list::list(const list& x) -- (list<C3DVector>) STLport list copy constructor: allocate and self-link the sentinel, then range-insert x's elements at begin()
 // Leaf: ??0?$list@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV01@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FC7A0, 63 bytes (+ int3 padding), thiscall `ret 4`; node size 0x14.
 // Identity (proven): list<C3DVector>; evidence: its _M_insert_dispatch 0x008FBF10 is the landed list<C3DVector> range insert (0x14-byte nodes; the NCameraModes::CPhysicsForceModelBase TU); no direct caller (an unreferenced COMDAT).
 // Label: the manifest's "LinkedList_CloneInitialize" is descriptive (family H007: seven rows that differ only in the node size and the call
@@ -13,10 +14,7 @@
 //   0x0062F610 skeleton).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 #pragma pack(push, 1)
-class C3DVector {                                   // retail: byte-packed, 12 bytes
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 namespace std {
 

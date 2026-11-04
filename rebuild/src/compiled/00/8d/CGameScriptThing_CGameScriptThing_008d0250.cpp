@@ -6,6 +6,7 @@
 // Shape: as 0x008CFF60 but the intelligent pointer is default-constructed (no SetPItem call) and the body is a
 // single InitFromThing(thing) (which fills the name and the UID itself).
 // Leaf: ??0CGameScriptThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 class CThing;
 class CWorld;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -36,10 +37,7 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 extern CCharString g_CCharString_013bafcc;         // 0x013BAFCC (the default script-thing name)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CGameScriptThing : public CScriptThing { public:
     CIntelligentPointer<CThing> PThing;            // +0x0c
     long             ScriptCounter;                // +0x14

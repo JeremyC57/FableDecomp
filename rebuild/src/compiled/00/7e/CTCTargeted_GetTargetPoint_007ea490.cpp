@@ -1,5 +1,6 @@
 // CTCTargeted::GetTargetPoint(long index, float radius) const -- the indexed targeting helper point of the owner's graphic appearance when there is one, else the generic fire point at the owner
 // Leaf: GetTargetPoint
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007EA490, length 116 bytes (`ret 0Ch`, C3DVector through the hidden pointer).
 // Callees: CTCGraphicAppearance::GetHelperPoint(const CCharString&, long, unsigned long, C3DVector*, float) @ 0x004C0560 (the global helper
 // name @ 0x013BAC50, flags 0x20, 1.0f), CTCBase::PeekWorld @ 0x00686A80, NTargeting::GetTargetingPositionOnThing(const CWorld&,
@@ -7,11 +8,7 @@
 // Layout: CThing::PTCGraphicAppearance at retail +0x64 (PDB +0x74). CTCTargeted per engine/CTCTargeted.h (members unused here).
 // Shape: the appearance is a named local read before the pushes; the helper point is a local returned through the user copy ctor (`fld X ; fstp [eax]`, Y/Z dword moves); the fallback passes the
 // hidden pointer straight to the helper (args right to left: radius, thing, then the GetWorld call).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CCharString { public: void* m_pData; };
 extern CCharString g_TargetHelperName;          // 0x013BAC50
 struct CTCGraphicAppearance {

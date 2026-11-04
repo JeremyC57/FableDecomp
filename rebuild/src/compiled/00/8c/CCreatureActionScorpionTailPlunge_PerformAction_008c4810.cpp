@@ -1,4 +1,5 @@
 // CCreatureAction_ScorpionTailPlunge::PerformAction() -- spawn the "THING_EXPLOSION_SCORPION_KING_PLUNGE" thing at the scorpion's position and tell its explosion driver to spare the scorpion
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4810, length 130 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CGameDefinitionManager::Get @ 0x0044C6B0 (static __fastcall, returns
 // the manager), CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410, CCharString::~CCharString @ 0x0099EAE0,
@@ -9,7 +10,7 @@
 // so the driver out pointer reuses its frame word: the inlined GetTCDriver (bit 1 of the flag byte at +0x28, cached pointer at +0x5c,
 // the landed 0x00750DD0 template) is not tested and the absent arm reads that word (`mov edi,[esp+8]`); the add call is
 // tail-duplicated into both arms.
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CThing;
 struct CExplosionDriver {                   // the spawned thing's driver component
     void AddExcludedThing(CThing* thing);   // 0x0080CBF0

@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<CGameCameraManager::CQuake >) STLport range erase of trivially-assigned records: copy [last, end()) down onto first, set the new end; returns first
 // Leaf: ?erase@?$vector@VCQuake@CGameCameraManager@@V?$allocator@VCQuake@CGameCameraManager@@@std@@@std@@QAEPAVCQuake@CGameCameraManager@@PAV34@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069D180, 99 bytes (+ int3 padding), thiscall, `ret 8`.
 // Identity (proven): std::vector<CGameCameraManager::CQuake >::erase(CGameCameraManager::CQuake*, CGameCameraManager::CQuake*); evidence: CGameCameraManager::ResetCamera 0x0069A990 calls it with [this+0xEC] begin / end -- engine/CGameCameraManager.h EarthQuakes +0xEC, Ego_r.pdb vector<CGameCameraManager::CQuake> (48-byte records = the 0x30 stride), i.e. EarthQuakes.clear(); FableWin.pdb holds vector<CGameCameraManager::CQuake>::erase.
 // Label: the manifest's "Vector_CompactElements" is behavioural / propagated (family J102: five range erases of 0x24- to 0x34-byte records;
@@ -10,12 +11,7 @@
 #define CGameCameraManager CGameCameraManagerPdb
 #include "engine/CGameCameraManager.h"
 #undef CGameCameraManager
-class C3DVector {                                          // 12 bytes (Ego_r.pdb)
-public:
-    float X;                                               // +0x00
-    float Y;                                               // +0x04
-    float Z;                                               // +0x08
-};
+#include "engine/C3DVector.h"
 class CGameCameraManager : public CGameCameraManagerPdb {  // engine/CGameCameraManager.h is data-only: the nested record is added here
 public:
     class CQuake {                                         // 48 bytes (Ego_r.pdb; class key V from FableWin.pdb)

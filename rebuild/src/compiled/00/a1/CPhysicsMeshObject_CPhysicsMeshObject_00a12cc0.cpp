@@ -1,5 +1,6 @@
 // CPhysicsMeshObject::CPhysicsMeshObject(const CIVCountedPointer<const CPhysicsMesh>& mesh, const C3DVector& position, const CRightHandedSet& orientation, float scale) -- base and empty Mesh, then `Mesh = mesh` (release/add-ref) and SetPositionMatrix
 // Leaf: ??0CPhysicsMeshObject
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A12CC0, length 95 bytes.
 // Identity: Ego_r.pdb CPhysicsMeshObject (Mesh +4, PositionMatrix +8, Scale +0x38, OO_Scale +0x3C);
 // vtable 0x0125D084 (rtti-vtables.tsv).
@@ -9,7 +10,7 @@
 // ASSIGNED in the body: its inline operator= re-reads the member, skips equal pointers, releases
 // the old pointee (kept in ecx) and clears the member, then stores the new pointer and add-refs it
 // (`inc [eax+4]`). `ret 10h` = four arguments.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 
 class CPhysicsMesh { public:

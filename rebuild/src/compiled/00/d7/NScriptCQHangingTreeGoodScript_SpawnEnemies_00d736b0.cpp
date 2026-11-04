@@ -1,4 +1,5 @@
 // CQ_HangingTreeGoodScript::SpawnEnemies(const C3DVector&, CCharString, long) -- unless the party is gone or the leader is dead: during an ambush stage give it up to 10 seconds, then create the given number of bandits near the point (each targeting the leader and allied to the prisoner), collect them, have the first one shout the charge, and move to stage 5
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D736B0, length 692 bytes (`ret 0xc`); called from 0x00D7367A,
@@ -42,7 +43,7 @@ public:
     void clear() { erase(begin(), end()); }
 };
 }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

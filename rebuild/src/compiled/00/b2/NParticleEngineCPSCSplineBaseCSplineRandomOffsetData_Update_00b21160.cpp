@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::Update() -- unless offsets are applied only at start-up: keeps the current spline as the previous one, optionally resets the current spline to the initial one, then re-offsets the spline positions
 // Leaf: Update
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B21160, 79 bytes (+1 int3 padding). Callees: retail
 // CArray<C3DVector>::operator= @ 0x0075B8D0 (manifest "Std_Vector_Assign"; self-test, /12 sizes), and
 // CSplineRandomOffsetData::OffsetSplinePositions @ 0x00B206B0 (tail jump). Caller: 0x00B215EE.
@@ -9,7 +10,7 @@
 // Shape: CCardinalSpline's assignment is the memberwise copy (out-of-line CArray assignment, then Tension and
 // EndPointsConnected through registers) inlined at both sites; the bool flags are `mov al ; test al,al` tests; the
 // final member call is a sibling-call `jmp`.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;

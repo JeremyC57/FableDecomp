@@ -1,5 +1,6 @@
 // std::__partition(C3DVector* first, C3DVector* last, CIsUsableIciclePoint pred, const bidirectional_iterator_tag&) -- move the usable icicle points to the front of [first, last), return the partition point
 // Leaf: ??$__partition@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E3430, length 137 bytes (+ int3 padding), `ret 0Ch`.
 // Identity: callers 0x008DE90B and 0x008E359F (the ice-troll icicle-assault TU). Ego_r.pdb names the instance
 //   `partition` / `_Partition<C3DVector*, ?A0xcee9a82c::CIsUsableIciclePoint>` (Dinkumware); the predicate is
@@ -11,10 +12,7 @@
 //   in ecx -> esi, last in edx -> edi, the 8-byte predicate by value and the tag reference on the stack) with
 //   iter_swap -> swap inlined: the 12-byte temporary goes through the frame because C3DVector has its memberwise user
 //   copy constructor (as the same TU's out-of-line swap 0x008E2DB0).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NCreatureMode {
 class CModeIceTrollGroundSmashIcicleAssault {

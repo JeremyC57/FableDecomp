@@ -1,5 +1,6 @@
 // CInputProcessCutScene::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- on a button press: game action 0x15 marks the input handled and queues game event 0x39; otherwise post message 0x4b (flags 0x32) to the world's message manager -- in cutscene action mode for a joystick (device 3) event of type 4, else for game action 0x16
 // Leaf: ?ProcessInput@CInputProcessCutScene@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Flags: /GS
@@ -36,10 +37,7 @@ public:
     void SetHandled();                             // 0x00A0D390
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CThing;
 class CMessageEvent;
 class CMessageEventManager { public:

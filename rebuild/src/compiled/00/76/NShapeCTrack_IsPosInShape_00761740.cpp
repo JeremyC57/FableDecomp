@@ -1,11 +1,12 @@
 // NShape::CTrack::IsPosInShape(const C3DVector& pos) const -- a position is on the track when its distance to the nearest track segment is below 0.25
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00761740, 54 bytes (row padded to 64), `ret 4`. Virtual slot 4 of
 // NShape::CTrack's vtable 0x0126A288; FableWin.pdb lists ?IsPosInShape@CTrack@NShape@@UBE_NABVC3DVector@@@Z.
 // Callees: CTrack::GetMinDistanceToTrack(const C3DVector&, float&) const @ 0x00760E70 (thiscall, `ret 8`, bool: false when the
 // track has fewer than two points); the 0.25f literal at 0x0126A1FC.
 // Shape: the distance local is homed in the dead `pos` argument slot (`lea eax,[esp+4]`); the miss path is the `else` arm
 // (its own `xor al,al` exit placed last; `if (!Get()) return false;` reuses the call's zero al instead), the compare `return distance < 0.25f;` materialises 1/0 in eax on the two `fcomp ; test ah,5 ; jp` arms.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace NShape {
 class CShape { public:

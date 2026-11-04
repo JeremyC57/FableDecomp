@@ -1,5 +1,6 @@
 // std::vector::size() const -- element count of CTCCameraPointScriptedSpline's 56-byte CKeyCamera vector
 // Leaf: ?size@?$vector@VCKeyCamera@CTCCameraPointScriptedSpline@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075EE70, 29 bytes, thiscall, plain `ret`.
 // Identity: vector<CTCCameraPointScriptedSpline::CKeyCamera>. All three callers sit in
 //   CTCCameraPointScriptedSpline::UpdateCameraParams (0x0075D6F0, 0x0075D723, 0x0075D755: `size() - 1` as the key-camera
@@ -12,10 +13,7 @@ public:
     void* PStringData;
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CTCCameraPointScriptedSpline {
 public:

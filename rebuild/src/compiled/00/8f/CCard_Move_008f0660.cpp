@@ -1,4 +1,5 @@
 // CCard::Move(const C3DVector& position, bool immediately) -- send a tavern-game card to a new local position: jump there at once, or start (or restart from the current point) an interpolated move
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F0660, length 144 bytes (ret 8). No callees.
 // Layout (Ego_r.pdb CCard, 88 bytes, byte-packed vectors): MoveFraction +0x20, Moving +0x26, LocalPos +0x27,
 // NewLocalPos +0x33, CurrentPos +0x3f, Width +0x4c (the landed CCard::Turn @ 0x008F0620 uses the same members).
@@ -9,9 +10,7 @@
 // Moving; then NewLocalPos takes the target and MoveFraction restarts at 0 (an immediate dword store of 0.0f).
 // The vector copies are plain 12-byte POD assignments.
 #pragma pack(push, 1)
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CCard {
 public:
     void*     Thing;                          // +0x00 CThingObject*

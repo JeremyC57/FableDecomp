@@ -1,5 +1,6 @@
 // CCreatureAction_ScorpionCharge::CCreatureAction_ScorpionCharge(const CCreatureAction_ScorpionCharge& other) -- copy constructor: the CCombatActionBase copy, this class's vtable, then ChargeDistance, StartPos memberwise
 // Leaf: ??0CCreatureAction_ScorpionCharge@@QAE@ABV0@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C5DC0, 75 bytes, thiscall, `ret 4`, returns this.
 // Identity (proven): it stores vtable 0x01281024 whose RTTI is .?AVCCreatureAction_ScorpionCharge@@; FableWin.pdb ??0CCreatureAction_ScorpionCharge@@QAE@ABV0@@Z (donor 0x02A23490);
 //   only caller the landed CCreatureAction_ScorpionCharge::Clone 0x008C5D90 (which names this callee); members are Ego_r.pdb's at retail offsets
@@ -19,11 +20,7 @@ public:
     unsigned char _body[0x114 - 4];
 };
 #pragma pack(push, 1)
-class C3DVector {                                        // 1-aligned in retail; FableWin.pdb ??0C3DVector@@QAE@ABV0@@Z
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class CCreatureAction_ScorpionCharge : public CCombatActionBase {
 public:

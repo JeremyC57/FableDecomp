@@ -1,5 +1,6 @@
 // CTCShop::IsShopKeeperNearerThan(float distance) const -- true when both the shop keeper and the player's controlled hero are alive and the keeper lies within `distance` of the hero on the XY plane
 // Leaf: ?IsShopKeeperNearerThan@CTCShop@@QBE_NM@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007723F0, length 153 bytes (+ padding), `ret 4`.
 // PDB: ?IsShopKeeperNearerThan@CTCShop@@QBE_NM@Z (Ego_r.pdb and FableWin.pdb agree: const, returns bool). The
 //   `mov eax,1 / xor eax,eax` tails are VC7.1's code for a bool `return a && b && c;` (an if/return-true form gives
@@ -21,7 +22,7 @@
 //   (plain inline is called out of line) and takes the two things, so the keeper's GetPItem runs before the hero's GetPos.
 //   GFWorld2DDistanceSmallerThan(const C3DVector&, const C3DVector&, float, bool) of the PDB takes positions, which would
 //   evaluate the keeper's position first; the helper here is descriptive (`IsWithin2DDistance`).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }

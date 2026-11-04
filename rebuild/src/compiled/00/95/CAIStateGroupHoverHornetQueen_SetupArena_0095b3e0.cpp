@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverHornetQueen::SetupArena() -- set up the circle points, make the queen not solid to everything around her (60 units), and take the arena centre from the "WaspQueenArenaCentre" track thing near her, else from her initial position
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095B3E0, length 437 bytes (+ int3 padding).
 // Callees: CAIStateGroup_HoverHornetQueen::SetUpCirclePoints @ 0x0095AB50, CThing::GetPos @ 0x004C73D0, __ftol2 @ 0x00BFEA70,
 // CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000, the rough-area collector @ 0x0095C7C0 (box, an empty filter, the output
@@ -12,9 +13,7 @@
 // ctor (else a dead byte store); the centre out-pointer lives in its own block after the solid-to loop so the 0x4d lookup key
 // takes its frame slot (an address-taken local's slot is reserved for its whole scope).
 // Layout: HoverHornetQueen from Ego_r.pdb (ArenaCentrePos +0x28); CThingCreatureBase InitialPos +0xe8 (landed creature models).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

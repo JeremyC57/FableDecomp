@@ -1,5 +1,6 @@
 // std::vector::_M_fill_insert(CArray<C3DVector>* position, unsigned int n, const CArray<C3DVector>& x) -- (vector<CArray<C3DVector> >) STLport insert of n copies of a weapon-trail point list: slide the tail inside the spare capacity and fill the hole from a copy of x, or grow through _M_insert_overflow
 // Leaf: ?_M_fill_insert@?$vector@V?$CArray@VC3DVector@@@@V?$allocator@V?$CArray@VC3DVector@@@@@std@@@std@@QAEXPAV?$CArray@VC3DVector@@@@IABV3@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BCDCA0, 308 bytes, thiscall `ret 0Ch`, no EH frame (STLport built without exceptions).
 // Identity: the landed vector<CArray<C3DVector> >::resize 0x00BCDE70 (Ego_r.pdb ?resize@?$vector@V?$CArray@VC3DVector@@@@...;
 //   CEngineInternalPrimitiveWeaponTrail::Trail) calls this row through the inline `insert(pos, n, x)` and binds this exact
@@ -17,9 +18,7 @@ extern "C" void __cdecl free(void* p);                             // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
 #pragma pack(push, 1)
-class C3DVector { public:                                          // 1-aligned in retail
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace std {

@@ -1,6 +1,7 @@
 // C3DMeshObject::operator=(const C3DMeshObject&) -- memberwise copy: mesh info, the counted mesh-stats pointer (same-block test, release, copy, add-ref), the position matrix, the inverse-matrix flag and matrix, the scale
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C3380, length 120 bytes.
 // Leaf: ??4C3DMeshObject
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: the counted block's destroy thunk (`call [info+4]` with the data in ecx, __fastcall) and 0x00BFE9BC
 // operator delete for the block when the count reaches zero.
 // Layout (PDB C3DMeshObject, 120 bytes; no engine header): vptr +0, MeshInfo +4, Mesh (CCountedPointer: Data +8,
@@ -40,7 +41,7 @@ template<class T> class CCountedPointer { public:
     }
 };
 
-class C3DVector  { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };   // 48-byte POD
 class C3DMeshInfo;
 class C3DMeshStats;

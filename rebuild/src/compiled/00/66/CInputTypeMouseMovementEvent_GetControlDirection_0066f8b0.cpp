@@ -1,5 +1,6 @@
 // CInputTypeMouseMovementEvent::GetControlDirection(const CInputEvent& event) const -- mouse movement as a direction, clamped to unit length
 // Leaf: GetControlDirection
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0066F8B0, 120 bytes, vtable 0x01231814 slot 4, __thiscall `ret 8` (hidden C2DVector result,
 // then the event). The movement comes from CInputEvent's C3DVector accessor (0x00A043D0, copies +0x0C..+0x14;
 // manifest label CTCPhysicsRigidBody::GetFacingVector is propagated), X and Y are scaled by 1/64 (0.015625f) and Y
@@ -10,12 +11,7 @@
 // scale load above the Y self-copy store and square Y first (120v120 x87 order).
 #include <math.h>
 #include "engine/CInputTypeMouseMovementEvent.h"
-class C3DVector {
-public:
-    float X;    // +0x00
-    float Y;    // +0x04
-    float Z;    // +0x08
-};
+#include "engine/C3DVector.h"
 class C2DVector {
 public:
     float X;    // +0x00

@@ -1,5 +1,6 @@
 // CMap::DrawGetSizeZAt(const C3DVector* pos, float radius) const -- the ground height at a world position: clamp the four grid corners around it to the map, and interpolate across the cell's triangle (the cell is split along the diagonal that alternates with the parity of x + y)
 // Leaf: DrawGetSizeZAt
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F7630, length 459 bytes (`ret 8`, Ego_r.pdb `?DrawGetSizeZAt@CMap@@UBEMPBVC3DVector@@M@Z`).
 // Callees: _ftol @ 0x00BFEA70. Float 0x0122DED8 = 1.0f.
 // Layout: as this chunk's CMap rows 0x0081FB00/0x0081FEC0 (height map +0x1a7c: cells +0x10, SizeX +0x204, SizeY +0x208; cell
@@ -8,9 +9,7 @@
 // Shape: the clamps are a macro (the upper bound is re-read inside each else-arm, so Width/Height load once per clamp, never
 //   CSE'd); one `float z` assigned in an if/else tree with a single return (four early returns cross-jump the shared
 //   `(..)*dy + (h10-h00)*dx + h00` tail the other way round).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CHeightMapCell { public:                            // PDB, 12 bytes
     float         Height;                          // +0x00
     unsigned char EngineThemePaletteIndex[3];      // +0x04

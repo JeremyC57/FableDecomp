@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleSystem::ReadBinary(CDataInputStream& in) -- load a particle system template: its name, the Enabled and ScaleParticles flags, the scale vector, then every component record (type name, instance name, enabled flag), each created through AddComponent, read by the component itself and followed by one separator byte
 // Leaf: ?ReadBinary@CParticleSystem@NParticleEngine@@QAEXAAVCDataInputStream@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c: FableWin.pdb + Ego_r.pdb ?ReadBinary@CParticleSystem@NParticleEngine@@QAEXAAVCDataInputStream@@@Z -- the stream by reference (the caller
 //   CParticleEmitter::ReadBinary 0x00AEFAA0 binds this spelling), and so the component slot 15 ReadBinary(CDataInputStream&) of every
 //   FableWin.pdb ?ReadBinary@CPSC*@NParticleEngine@@UAEXAAVCDataInputStream@@@Z; was the pointer spelling (QAEXPAVCDataInputStream@@@Z). Same bytes.
@@ -23,9 +24,7 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);                  // 0x0099EFB0
     ~CCharString();                                                    // 0x0099EAE0
 };
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CDataInputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4(); virtual void v5();
     virtual CCharString ReadNullTerminatedString();                    // slot 6 (+0x18)

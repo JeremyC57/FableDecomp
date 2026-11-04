@@ -1,5 +1,6 @@
 // std::partial_sort(CThing** first, CThing** middle, CThing** last, CThingCompare_BestForTargeting2 comp) -- partial_sort's front end over the targeting candidates
 // Leaf: ??$partial_sort@PAPAVCThing@@VCThingCompare_BestForTargeting2@@@std@@YIXPAPAVCThing@@00VCThingCompare_BestForTargeting2@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Fix (rename1): written as the STLport function template and its explicit instantiation, so the graded symbol
 //   mangles as retail's template instance (it was a plain `__fastcall` function in namespace std); the comparator
 //   and C3DVector are classes as in every PDB symbol. Bytes unchanged.
@@ -13,7 +14,7 @@
 //   value on the stack). Comparator model = the landed siblings 0x007FA290 / 0x007FA980 (C3DVector's user copy ctor
 //   makes the implicit comparator copy memberwise) with the landed operator() 0x007F9F00 body inlined.
 class CThing;
-class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

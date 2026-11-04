@@ -1,5 +1,6 @@
 // CMatrix3x4::SetFromVectorAndAngle(const C3DVector& axis, float angle) -- set the matrix to the rotation by `angle` radians about the unit `axis` (Rodrigues form: diagonal aa + (1 - aa) cos, off-diagonal ab - ab cos -/+ s c) with a zero translation row
 // Leaf: ?SetFromVectorAndAngle@CMatrix3x4@@QAIXABVC3DVector@@M@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1D0B0, length 257 bytes, `this` in ecx, the axis in edx, the angle on the
 //   stack, `ret 4`; no direct callers found (like the landed PostMultiply 0x00C1CF20 just before it).
 // Identity: Ego_r.pdb and FableWin.pdb both name `?SetFromVectorAndAngle@CMatrix3x4@@QAEXABVC3DVector@@M@Z` (the only
@@ -13,7 +14,7 @@
 // Callees: none (cos/sin are the /O2 x87 intrinsics: `fld [esp+4] ; fcos ; fld [esp+4] ; fsin`). Constant 1.0f @ 0x0122DED8.
 #include <math.h>
 
-class C3DVector { public: float X, Y, Z; };            // 12 bytes, 1-aligned in retail
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 {
 public:

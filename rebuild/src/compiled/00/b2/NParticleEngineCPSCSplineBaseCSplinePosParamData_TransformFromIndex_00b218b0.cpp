@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::CSplinePosParamData::TransformFromIndex(const CParticleUpdateParameters<unsigned long, unsigned long>& params, C3DVector& point, long index) -- when keeping the spline shape: use the particle parameter bound to this control point when there is one, else transform the point from the surrounding parameterised control points
 // Leaf: ?TransformFromIndex@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@3@AAVC3DVector@@J@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B218B0, length 130 bytes (`ret 0Ch`).
 // Name (naming wave 20, chunk 686): Ego_r / FableWin.pdb -- CSplinePosParamData is nested in CPSCSplineBase, the parameters are the
 //   CParticleUpdateParameters<unsigned long, unsigned long> const reference and the C3DVector reference (was the un-nested pointer spelling).
@@ -8,7 +9,7 @@
 // Layout: as 0x00B217D0 (MaintainSplineShape +8, SplinePosParam +0xc).
 // Shape: the bound key is a named local (VC homes it in the dead `index` slot for the by-reference pass); the early `return`
 // after a successful lookup, four C3DVector locals declared after it.
-class C3DVector { public: float X, Y, Z; };                    // global (Ego_r.pdb class V; 1-aligned in retail)
+#include "engine/C3DVector.h"
 class CCardinalSpline;                                          // global (Ego_r.pdb class V)
 namespace NParticleEngine {
 class CParticleSystem;

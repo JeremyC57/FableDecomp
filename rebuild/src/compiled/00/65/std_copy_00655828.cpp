@@ -1,5 +1,6 @@
 // std::__copy(std::pair<C3DVector, CCharString>* first, std::pair<C3DVector, CCharString>* last, std::pair<C3DVector, CCharString>* result, const random_access_iterator_tag&, int*) -- STLport counted forward assignment of pair<C3DVector, CCharString> elements; returns the advanced result
 // Leaf: ??$__copy@PAU?$pair@VC3DVector@@VCCharString@@@std@@PAU12@H@std@@YIPAU?$pair@VC3DVector@@VCCharString@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00655828, 45 bytes, __fastcall (first ecx, last edx; result, the tag reference and the distance pointer on the stack), `ret 0Ch`; size-optimised TU (result advanced in place, `add dword ptr [esp+0Ch],0x10`).
 // Identity (proven): std::__copy<std::pair<C3DVector, CCharString>*, std::pair<C3DVector, CCharString>*, int>; evidence: the 16-byte element's assignment 0x00654EB6 (landed pair<C3DVector, CCharString>::operator=: a 12-byte block copy, then CCharString::operator=) belongs to the player-GUI TU, whose only Ego_r.pdb vector of that element is CDrawMiniMap::RegionExits; the live caller 0x00656837 is that vector's erase(first, last): mutable iterators.
 // Label: the manifest's "_Copy_impl<CArray<CRandomAppearanceMorph::CBodyPartMesh>*, ...>" is propagated (family H060: six out-of-line __copy loops, one per element).
@@ -12,10 +13,7 @@ public:
     void* PStringData;
     const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
-class C3DVector {                                          // 12 bytes
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;

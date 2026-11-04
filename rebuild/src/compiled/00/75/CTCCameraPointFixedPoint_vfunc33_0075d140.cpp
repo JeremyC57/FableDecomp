@@ -1,4 +1,5 @@
 // CTCCameraPointFixedPoint::vfunc_33(CPersistContext& context) -- persist TrackThing (default true) and the three LookVector components (default 0)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x0075D140, 128 bytes (`ret 4`). Vtable 0x0123AF8C (CTCCameraPointFixedPoint) slot 33.
 // Callees: CPersistContext::Transfer<bool> @ 0x004045C0, Transfer<float> @ 0x00410620 (each
@@ -13,7 +14,7 @@ class CPersistContext { public:
 };
 
 #pragma pack(push, 1)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCCameraPointFixedPoint { public:
     virtual void v00();

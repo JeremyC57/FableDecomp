@@ -1,5 +1,6 @@
 // CCombatAction_GenericStrikeResponseKnockdown::CCombatAction_GenericStrikeResponseKnockdown(const CCombatAction_GenericStrikeResponseKnockdown&) -- copy constructor: base CCombatActionBase(other), own vtable, the animation name, the hitter pointer, hit point/direction with their flags, FlipFacing
 // Leaf: ??0CCombatAction_GenericStrikeResponseKnockdown
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00868430, 208 bytes incl. padding (`ret 4`). Own vtable 0x01277344.
 // Callees: CCombatActionBase::CCombatActionBase(const CCombatActionBase&) @ 0x0062F3B0, CCharString copy ctor @ 0x0099EC30,
 //          CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90.
@@ -9,11 +10,7 @@
 // Shape: memberwise copy in declaration order; the packed vector words copy unaligned.
 class CThingCreatureBase;
 class CThing;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }                          // leaves the words unset
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise copy (fixed-offset moves)
-};
+#include "engine/C3DVector.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

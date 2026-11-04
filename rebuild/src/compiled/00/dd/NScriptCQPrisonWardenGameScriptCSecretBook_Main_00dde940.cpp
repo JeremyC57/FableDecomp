@@ -1,5 +1,6 @@
 // NScript::CQ_PrisonWardenGameScript::CSecretBook::Main() -- a book already read in an earlier visit is swapped for its open-book object (facing the book's
 // Leaf: ?Main@CSecretBook@CQ_PrisonWardenGameScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   heading plus a quarter turn) and removed; otherwise it sparkles and waits for the hero to use it: without the diary
 //   key the "diary locked" notice is shown, with it the book is marked read and handed to the warden-game script.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DDE940, 748 bytes (+ int3 padding), plain `ret`. Entity-script slot 1 (Main).
@@ -18,11 +19,7 @@
 // Naming wave 35: identity reg 00dddedf "SecretBook" in 00ddde20; Alloc 00dde720; vtable 012dcc6c slot 1; PDB ?Main@CSecretBook@CQ_PrisonWardenGameScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CSecretBook::Main (wave3/labels_alloc.tsv); PDB ?Main@CSecretBook@CQ_PrisonWardenGameScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CSecretBook@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_PrisonWardenGameScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 static inline C3DVector RaisedBy(const C3DVector& pos, float height)
 {
     return C3DVector(pos.X, pos.Y, pos.Z + height);

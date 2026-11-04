@@ -1,6 +1,7 @@
 // CFilter_Bind3<CThingFilter_OverlappingArea,CThingFilter_HasNavigationInformation,CThingFilter_IsInQuestOrNullQuest>::operator()(const CThing& thing) const -- the combined filter: the thing's ceil-rounded bounding circle overlaps the area, it has navigation information (virtual slot 55, reached through either arm of the physics slot-42 test) and it is in the quest or no quest
 // Grade: RELOCATION_MATCH retry1 (retail_asm) -- the Bind3 filter out of line (by-reference filters as GetAllThings 0x00516200 inlines them), landed engine CeilToLong asm helper, area grown in place
 // Leaf: ??$?RVCThing@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail-asm: 0x00511620 `fadd [ebp-10h]` + 0x00511623 `fistp dword ptr [ebp-8]` -- the engine inline-assembly GFFloatToLongCeil(landed 0x00772720 / 0x006A68F0); VC7.1 C++ (long)x calls _ftol.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005115E0, length 299 bytes (+ int3 padding), `ret 4`, ebp frame. No code or data
@@ -16,7 +17,7 @@ public:
 };
 
 // ---- the overlapping-area filter (inline in retail) ----------------------------------------------------------------
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI() {}

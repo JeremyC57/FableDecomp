@@ -1,10 +1,11 @@
 // CRelativeTarget_00a7d9c0::SetTarget(const C3DVector* position) -- hand the target's position relative to this object's origin (+4, +8; the Z passed through unchanged; the X/Y delta computed through an inline 2D subtraction returning a named local by its copy constructor, so both differences sit on the FPU stack before the stores) to the owner at +0 (virtual slot 4 with (&vector, 12, 0))
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A7D9C0, length 57 bytes.
 // Leaf: SetTarget
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // The chunk label (CMurderTwistLeader::Init) is propagated; named by address. Shape: a 12-byte frame for the vector (X and Y through the FPU, Z through an integer register), `ret 4`.
 class C2DVector { public: float X, Y; C2DVector() { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
 static __forceinline C2DVector Sub(const C2DVector& a, const C2DVector& b) { C2DVector r; r.X = a.X - b.X; r.Y = a.Y - b.Y; return r; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct ITargetOwner_00a7d9c0 {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void SetRelativeTarget(const C3DVector* position, long size, long flags);   // slot 4 (+0x10)

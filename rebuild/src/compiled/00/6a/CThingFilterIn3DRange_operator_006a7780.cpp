@@ -1,5 +1,6 @@
 // CThingFilter_In3DRange::operator()(CThing* thing) -- true when the thing has a physics component and its position lies strictly within Range of Pos (full 3D distance)
 // Leaf: ??RCThingFilter_In3DRange
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A7780, length 86 bytes.
 // Callees: none (x87 only).
 // Label correction: the manifest calls this row CThingFilter_In2DRange::operator() (propagated); the body sums all three
@@ -8,9 +9,7 @@
 // the component's position is the C3DVector at +0x0C.
 // Shape: an absent component returns the byte constant (`xor al,al`); the float compare materialises an int
 // (`mov eax,1` / `xor eax,eax`); Range is read into a local first (retail loads it before the deltas).
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase { public:
     void*     __vftable;
@@ -34,9 +33,9 @@ bool CThingFilter_In3DRange::operator()(CThing* thing) const
     CTCPhysicsBase* physics = thing->PhysicsTC;
     if (physics) {
         float range = Range;
-        float dx = Pos.x - physics->m_position.x;
-        float dy = Pos.y - physics->m_position.y;
-        float dz = Pos.z - physics->m_position.z;
+        float dx = Pos.X - physics->m_position.X;
+        float dy = Pos.Y - physics->m_position.Y;
+        float dz = Pos.Z - physics->m_position.Z;
         return dx * dx + dy * dy + dz * dz < range * range;
     }
     return false;

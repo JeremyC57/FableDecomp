@@ -1,4 +1,5 @@
 // CTCDParticleEmitter::SetEmitterOrientation(const CRightHandedSet& rhs) -- orient the live emitter (start and end orientation both rhs), or store the set in the pending creation parameters
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0480, length 120 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2), C3DOrientationInterpolator(const CRightHandedSet&, const CRightHandedSet&)
 // @ 0x005508D0, NParticleEngine::CParticleEmitter::SetOrientation(const C3DOrientationInterpolator&) @ 0x00AEDE60, CBaseClass::~CBaseClass
@@ -9,9 +10,7 @@
 // (CIntelligentPointer<NParticleEngine::CParticleEmitter>), PAttachedToThing +0x1C, PCreationParameters +0x3C (CCountedPointer:
 // object +0x3C, count block +0x40), flag bytes +0x44 (bit 0 WaitingForParticleToLoad, bit 3 ParticleCreationDisabled) and +0x45
 // (bit 0 AttachedToThing, bit 1 AlwaysUpdate, bit 2 Asleep). CParticleCreationParameters: ParticleCreationDisabled +1, RHSet +0x10.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c

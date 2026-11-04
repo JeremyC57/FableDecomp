@@ -1,5 +1,6 @@
 // CTCShop::~CTCShop() -- compiler-generated shop thing-component destructor: release the stock map, the goods places, the shoppers' intelligent pointers and the shopkeeper pointer, then the CTCBase base
 // Leaf: ??1CTCShop@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007783F0, 145 bytes, `jmp` to the base destructor.
 // Identity (proven): the sole caller is the scalar deleting destructor 0x007783D0, slot 0 of vtable 0x0126A94C (RTTI
 //   CTCShop : CTCBase); the tail jump is ~CTCBase 0x00686830 (direct base, RTTI). Ego_r.pdb ??1CTCShop@@UAE@XZ (0x00784050)
@@ -163,7 +164,7 @@ private:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 
-class C3DVector { public: float X; float Y; float Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CThingCreatureBase;
 class CShopItem {                                       // Ego_r.pdb, 0x1C bytes

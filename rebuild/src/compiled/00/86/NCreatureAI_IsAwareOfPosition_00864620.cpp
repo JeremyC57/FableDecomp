@@ -1,5 +1,6 @@
 // NCreatureAI::IsAwareOfPosition(const CThingCreatureBase*, const C3DVector&) -- the position is within the creature's extended sight radius (2D), in its field of view and in navigation line of sight
 // Leaf: ?IsAwareOfPosition@NCreatureAI@@YI_NPBVCThingCreatureBase@@ABVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x00864620, 0xE0 bytes, __fastcall (creature in ecx, position in edx). PDB (Ego_r):
 // ?IsAwareOfPosition@NCreatureAI@@YI_NPBVCThingCreatureBase@@ABVC3DVector@@@Z. Callers 0x006C0BBE, 0x006C0C1C.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (twice), CTCPerceiveThing::GetExtendedSightRadius()
@@ -16,11 +17,7 @@
 // CThing is modelled locally: rebuild/include/engine has no CThing.h and CThingCreatureBase.h pads the CThing bytes.
 class CTCBase;
 
-class C3DVector
-{
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleEmitter::Initialise(CIEngine* engine) -- create the emitter's engine primitive group once: a 2D group (layer, the inverse of the emitter transform, the start position's X/Y, screen displacement, z-buffer read) for 2D emitters, else a 3D particle group (camera distance, bounding sphere, the draw flags and the water stage); then initialise every particle system against that group, the emitter staying initialised only if all of them succeed
 // Leaf: Initialise
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEE240, 791 bytes (+ int3 padding), `ret 4`.
 // Callees: CEnginePrimitiveParticleGroup2D(long, const CMatrix3x4&, const C2DVector&, bool, bool) 0x00AF0880 (label
 //   "C3DMeshFileBoneChunk::SetLocalizationMatrix" is wrong), CEnginePrimitiveParticleGroup(float, const C3DBoundingSphere*,
@@ -12,9 +13,7 @@ class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;

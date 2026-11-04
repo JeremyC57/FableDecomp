@@ -1,4 +1,5 @@
 // CWorldMap::SetPlayerPos(long, const C3DVector&, ELoadType) -- place a player: with region loading on and the destination map not loaded, unload the player's previous region (if different) and load the new region (or just the level when it has none); record the position and cache the maps around it
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x005063E0, 196 bytes, `ret 0Ch`. PDB ?SetPlayerPos@CWorldMap@@QAEXJABVC3DVector@@W4ELoadType@1@@Z
 // Callees: CWorldMap virtual slots 16 GetMapNumberAt(const C3DVector&) const (+0x40, 0x004FC0C0), 10 IsMapLoaded(long)
 // const (+0x28, 0x004FC050); GetRegionNumberMapIsIn(long) const 0x004FC190, UnloadRegion(long, bool) 0x004FEEC0,
@@ -8,7 +9,7 @@
 // C3DVector Pos;}) +0x78 (PDB +0x8C).
 // Shape: STLport operator[] is `*(begin() + n)`; the previous position's Set test and Pos address share one index
 // computation; the two final stores index the vector separately (its start is re-read after the byte store).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DCoordI;
 
 #pragma pack(push, 1)

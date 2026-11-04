@@ -1,5 +1,6 @@
 // CTCTargetingPlayer::GetPTargetedThing() const -- in first-person targeting the projectile-targeted thing (virtual), otherwise the base class's targeted thing
 // Leaf: ?GetPTargetedThing@CTCTargetingPlayer@@UBEPAVCThing@@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00802610, 42 bytes (int3 padding 0x0080263A..F, next function 0x00802640), thiscall,
 //   tails: `jmp [vtbl+8Ch]` (slot 35) or `lea ecx,[esi+25h] ; jmp GetPItem`.
 // Identity (proven, two sources): (1) the only reference is slot 33 of the CTCTargetingPlayer vtable 0x0124280C (RTTI
@@ -47,12 +48,7 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector : protected _V
 
 class CBaseObject;
 class CBaseObjectPointer;
-class C3DVector {
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 class C2DVector {
 public:
     float X;

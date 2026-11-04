@@ -1,5 +1,6 @@
 // std::vector::resize(unsigned int new_size) -- STLport vector<KnickKnack>::resize(n): erase the surplus [begin + n, end) when shrinking, else fill-insert n - size() default (unset) knick-knack records at the end
 // Leaf: ?resize@?$vector@UKnickKnack@@V?$allocator@UKnickKnack@@@std@@@std@@QAEXI@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D9FC0, 74 bytes (+6 int3), thiscall on the vector, `ret 4`.
 // Identity: the KnickKnacks vector (Ego_r.pdb CTCTavernGameSpotTheAddition::KnickKnacks, vector<KnickKnack>): sole
 //   caller CTCTavernGameSpotTheAddition::FrameUpdate 0x007D8E20.
@@ -12,11 +13,7 @@
 //   `resize(n, const _Tp& x) { if (n < size()) erase(begin() + n, end()); else insert(end(), n - size(), x); }` inline:
 //   the temporary is only frame space (no stores), so the count load is hoisted above `sub esp,10h`.
 // Label correction: catalogued as `vector<std::pair<CCharString...>::resize` (propagated); the element is KnickKnack.
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 
 class CThingObject;
 

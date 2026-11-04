@@ -1,5 +1,6 @@
 // CTCCarriedActionUseSpade::IsThingAbleToDig(const CThingCreatureBase& creature) -- a creature can dig only on bare ground: not standing on a thing, and the strongest engine theme under it has a material def flagged IsDiggable
 // Leaf: ?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F0300, 199 bytes (+ int3 padding). Ego_r.pdb / FableWin.pdb
@@ -20,7 +21,7 @@
 //   share one frame slot (the first enregistered in edi after its GetDef), which needs same-TU `auto_inline(off)` GetDef
 //   stand-ins so VC7.1 sees the out pointers do not escape (GOTCHAS I-3 / the landed 0x0083C1E0 idiom); the
 //   second def's dereference lets VC drop both destructors' null tests on the success path.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CDefPointeeBase { public:                                        // counted def object: vptr, reference count at +4
     virtual void v00();

@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::GetFacingAngleXY() const -- return facing as a fraction of one turn wrapped into [0,1).
 // Leaf: ?GetFacingAngleXY@CTCPhysicsStandard@@UBEMXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity: proven; PDB const GetFacingAngleXY returns float; physics virtual entries and CCamera callers; RHSet.Forward component offsets retail 0x5C/60/64.
 // Layout: generated physics headers use a flattened vptr with the wrong struct key and opaque RHSet bytes; local typed real base/member chain uses CRightHandedSet::Up then Forward. RigidBody three retail vectors are 12 bytes each; donor16-byte vectors account for the RHSet displacement. Camera/vector/right-handed-set have no generated header.
 #define CTCPhysicsStandard CTCPhysicsStandard_HeaderLayout
@@ -10,7 +11,7 @@
 #define __forceinline inline
 #endif
 #pragma intrinsic(atan2,sqrt,fmod)
-class C3DVector { public: float X,Y,Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up,Forward; };
 class CThing; class CPhysicsDef; class CThingPhysicsMeshInfo;
 class CTCBase { public: virtual ~CTCBase() {} CThing* ParentThing; bool ToBeRemoved,IsInGlobalUpdateTCs; };

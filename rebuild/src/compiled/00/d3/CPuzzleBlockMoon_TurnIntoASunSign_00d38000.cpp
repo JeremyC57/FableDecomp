@@ -1,4 +1,5 @@
 // CPuzzleBlockMoon::TurnIntoASunSign(bool createEffect) -- flip a Fire Heart puzzle pad from moon to sun: remove the old pad effect (optionally replacing it with the sun pad effect), spawn the sun tile object carrying this pad's data string, count the sun, and when every pad shows a sun (and the round is not just beginning) win the round with the Fire Heart frame effect, the minigame-complete sound and a short pause; finally remove the moon block
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D38000, length 770 bytes, `ret 4`.
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30; CCharString 0x0099EBF0 / 0x0099EAE0 ("" 0x0122D70E,
 // "PuzzleBlockSun" 0x012CCE70, "OBJECT_LPDD_TILE_SUN_01" 0x012CD0EC, "MK_FH_FIREHEART" 0x012CD0DC,
@@ -17,7 +18,7 @@ class CCharString { public:
 };
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

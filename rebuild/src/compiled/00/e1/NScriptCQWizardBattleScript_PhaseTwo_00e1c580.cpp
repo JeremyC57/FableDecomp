@@ -1,5 +1,6 @@
 // CQ_WizardBattleScript::PhaseTwo() -- start the maze-phase monitor, set Maze on the hero, show his health bar and make him killable; then while Maze lives, have him taunt the hero (on a hit, when the hero strays far away, or at random in battle) through a fresh conversation whenever none is running, until the mission fails
 // Leaf: PhaseTwo
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1C580, 1324 bytes (int3 padded to 1344).
 // Callees: operator new 0x00BFEA1A, CSpawnedFuncBase 0x00CDD450 (spawn vtable 0x012E11CC, MonitorMazePhases 0x00E1CAE0),
 //   AddSpawnedFunction 0x00CB7E50, CCharString 0x0099EBF0 / ~ 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940,
@@ -49,7 +50,7 @@ template <class T> class CCountedPointer { public:
     }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CScriptThingImpl;
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();

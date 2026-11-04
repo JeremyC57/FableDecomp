@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::CPSCSplineBase() -- particle spline component base: CPSCBase part, a cardinal spline seeded with two zero control points (tension 0.5, ends not connected), and empty random-offset / position-parameter data pointers
 // Leaf: ??0CPSCSplineBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B21530, length 112 bytes.
 // Callees: NParticleEngine::CPSCBase::CPSCBase @ 0x00AF2620, CCardinalSpline::CCardinalSpline(const C3DVector&, const C3DVector&,
 //          float, bool) @ 0x00A56AA0 (manifest "CPSCSplineBase_Initialize"; it zeroes the control-point vector, stores tension and
@@ -20,10 +21,7 @@ class CPSCBase : public CBase { public:                   // vtable 0x0129F3F4
     CPSCBase();                             // 0x00AF2620
 };
 }
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CCardinalSpline { public:                    // retail 0x14 bytes
     C3DVector* m_first;                     // +0x00 ControlPoints (vector)
     C3DVector* m_last;                      // +0x04

@@ -1,5 +1,6 @@
 // NCreatureMode::CModeSummonerLightningOrb::OnActivate() -- stand-mode activation; suspend a player's animation; spawn the orb-charge effect (attached to the summoner's LIGHTNING_ORB_FOCUS bone through its particle emitter) and the charge effect; give the summoner an electrocute-on-touch component; arm the timer
 // Leaf: ?OnActivate@CModeSummonerLightningOrb@NCreatureMode@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_LightningOrbChargeSeconds (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DAE10, 541 bytes (`ret`).
@@ -15,7 +16,7 @@
 // Shape: as the landed CCreatureAction_JackDeathInto::Initialise 0x008C0EA0: the thing's def is a by-value CDefPointer copy
 //   (addref, GetSubDef, release in the full expression) and GetSubDef has the same-TU stand-in body, so the sub-def stays in ebp
 //   and the effect id reuses its frame word; the emitter is an uninitialised local filled under HasTC(0x4b).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 class CTCParamsBase;
 class CCharString { public:

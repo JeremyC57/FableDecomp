@@ -1,4 +1,5 @@
 // CEnginePrimitiveParticleDecal::CEnginePrimitiveParticleDecal(long, const C3DVector&, const C2DVector&, const CRGBColour&, const CRightHandedSet&) -- primitive type 0x19: world position, size, colour, decal frame and orientation set
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1FE80, length 144 bytes. No callees.
 // Signature from Ego_r.pdb: ??0CEnginePrimitiveParticleDecal@@QAE@JABVC3DVector@@ABVC2DVector@@ABVCRGBColour@@ABVCRightHandedSet@@@Z
 // (5 stack words, `ret 14h`). Layout = PDB CEnginePrimitiveParticleDecal (0x40): the CEnginePrimitive base
@@ -11,10 +12,7 @@
 // (arguments right to left; B spilled into the dead argument slot) and stored R, G, B, A, which with the
 // D3DCOLOR byte order (B, G, R, A) gives the retail +0x22, +0x23, +0x20, +0x21 permutation.
 
-class C3DVector { public:                                       // memberwise user copy constructor: one register per dword
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }

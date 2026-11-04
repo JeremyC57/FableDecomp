@@ -1,5 +1,6 @@
 // CTCHighlightItem::FrameUpdate() -- while waiting, starts running once the def's delay has elapsed; while running, moves; counts frames either way
 // Leaf: FrameUpdate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
 //   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -15,9 +16,7 @@
 // PParticleEmitter +0x20 (CIntelligentPointer<CThing>); CTCBase ParentThing +0x04; retail CThing def object +0x70.
 // The def pointer is read once into edi after GetSubDef and released by hand (`dec [edi+4] ; jne ; call [vtbl+4]`).
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CHighlightItemDef { public:
     virtual void v00();

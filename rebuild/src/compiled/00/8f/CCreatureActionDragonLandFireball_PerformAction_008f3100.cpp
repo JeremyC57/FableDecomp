@@ -1,5 +1,6 @@
 // CCreatureAction_DragonLandFireball::PerformAction() -- fetch the dragon's weapon sub-def and its shot def, create the fireball shot thing at the dragon's DRAGON_MOUTH_DUMMY dummy, keep it in PShot, add its named shot TC and Init it (shooter = dragon, target = PTarget, the dragon's shot accuracy), then release both defs
 // Leaf: ?PerformAction@CCreatureAction_DragonLandFireball@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F3100, length 513 bytes (+ int3 padding), plain `ret`. No call site or vtable
 //   reference survives in retail (xref: none), so the class comes from the Ego_r.pdb symbol order: PerformAction of
 //   CCreatureAction_DragonFlight (retail 0x008F3020), CCreatureAction_DragonLandFireball, CCreatureAction_DragonFireBlastBase
@@ -17,7 +18,7 @@
 //   assignment, the TC name a named local in its own block, the ability CDefPointer in a sibling block.
 // Layout: PDB CCreatureAction_DragonLandFireball (0x134) has PShot at +0x12c; retail CCombatActionBase is 0x114 bytes, so
 //   `this` is modelled locally with PShot at +0x114 (the twin's evidence).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 
 class CCharString { public:

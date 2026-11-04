@@ -1,4 +1,5 @@
 // C3DMeshPartitionElement::`scalar deleting destructor'(unsigned int) -- delete both sub-elements (recursively through this same helper), zero the triangle range, free on bit 0
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC37B0, oracle length 67 bytes.
 // Callees: itself (0x00AC37B0, the `delete` of a non-polymorphic class with a non-trivial destructor routes
 //          through its scalar deleting destructor), operator delete @ 0x00BFE9BC (landed-trusted).
@@ -10,7 +11,7 @@
 // +0x18 StartTriangle, +0x1C TriangleCount, +0x20 SubElements[2], +0x28 BoundingSphere. The inline
 // destructor deletes the two children (each `delete` is a null test + `push 1 ; call` of this very
 // helper) and resets the triangle range; the compiler sinks the two zero stores past the flag test.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector Min, Max; };
 class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 

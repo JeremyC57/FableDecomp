@@ -1,4 +1,5 @@
 // CEnginePrimitiveParticleSprite::CEnginePrimitiveParticleSprite(unsigned __int64, unsigned long, const C3DVector&, const C2DVector&, float, const CRGBColour&, EEngineInterpolationSet) -- primitive type 0x16: frame, world position, size, angle and colour
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AFE2A0, length 116 bytes (+ int3 padding). No callees.
 // Signature from Ego_r.pdb: ??0CEnginePrimitiveParticleSprite@@QAE@_KKABVC3DVector@@ABVC2DVector@@MABVCRGBColour@@W4EEngineInterpolationSet@@@Z
 // (8 stack words, `ret 20h`); the leading 64-bit primitive handle is not stored.
@@ -7,10 +8,7 @@
 // Shape: base inline constructor (interpolation set argument, type immediate, three zero channel bytes), vectors
 // copied memberwise through one register per dword, the colour through the inline Set(r, g, b, a) copy.
 
-class C3DVector { public:                                       // memberwise user copy constructor: one register per dword
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }

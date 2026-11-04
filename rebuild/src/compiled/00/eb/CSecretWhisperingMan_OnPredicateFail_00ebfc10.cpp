@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EBFC10, 210 bytes (+ int3 padding), `ret`; entity-script vtable slot 3
 //   (vtable entry 0x012F1024; the factory 0x00EBFB00 "SecretWhisperingMan" allocates 0x28 = Ego_r.pdb sizeof 40).
 // Leaf: OnPredicateFail
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literals "" @ 0x0122D70E, "OakBay" @ 0x012D31E4,
 //   "TEXT_QUEST_MAYORS_INVITATION_OBJECTIVE_05" @ 0x012F102C, "V_MayorsInvitation" @ 0x012C5008), ~CCharString @ 0x0099EAE0,
 //   CScriptThing slot 18 MsgIsKilledBy(const CCharString&) (+0x48, 0x004AAAF0), CGameScriptInterface slot 296
@@ -42,7 +43,7 @@ struct CV_ParanoidWhispersScript {
     bool          HideDiggingSpot;                     // +0x4c (PDB +0x60)
 };
 struct CQ_SunnyvaleMasterData;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CSecretWhisperingMan {
 public:
     void*                      __vftable;              // +0x00

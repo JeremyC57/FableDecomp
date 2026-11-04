@@ -1,5 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::GetRenderMeshObject(C3DMeshObject& out, float interpolation) const -- for a mesh main graphic (type 4 or 5) build its render mesh object at the thing's interpolated render placement; false for any other graphic
 // Leaf: ?GetRenderMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DMeshObject@@M@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004BC670, 214 bytes, thiscall, `ret 8`.
 // Identity (proven): Ego_r.pdb has exactly two GetRenderMeshObject overloads on CTCGraphicAppearance; the
 //   (C3DMeshObject&, const C3DVector&, const CRightHandedSet&) one is the landed neighbour 0x004BC750 (`ret 0Ch`), this is
@@ -12,12 +13,7 @@
 //   assignment with a ?: orientation argument evaluates the conditional before the scale (DIFFER 204v214).
 // Layout: retail CTCGraphicAppearance: ParentThing +0x04, Scale +0x34, MainGraphic +0x44 (BankIndex +0x44, RenderSizeX
 //   +0x4C, Type +0x51); retail CThing::PhysicsTC +0x60; retail CWorld::PMainMeshBank +0x3C.
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet {
 public:
     C3DVector Up;                                           // +0x00

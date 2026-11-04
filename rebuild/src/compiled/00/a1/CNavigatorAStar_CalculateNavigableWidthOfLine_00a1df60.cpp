@@ -1,6 +1,7 @@
 // CNavigatorAStar::CalculateNavigableWidthOfLine(const C3DVector&, const C3DVector&, float&, float&) -- find the layer of the node under each end (0 when off the map) and measure the line between the two removable way points with the way-point overload
 // Grade: RELOCATION_MATCH -- the PDB constructors CNavWayPoint(const C2DVector&, unsigned char, bool) and C2DVector(const C2DVector&) with each way point built from a C2DVector(x, y) temporary (both floats through the FPU, Y loaded first) as NAMED locals inside their own {} block (the block lets the way points share frame words with the dead lookup temporaries: 0x1c frame)
 // Leaf: ?CalculateNavigableWidthOfLine@CNavigatorAStar@@UAEXABVC3DVector@@0AAM1@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1DF60, 206 bytes (+ int3 padding; `ret 10h`). Public virtual (UAE).
 // Callees: the external interface's (+0x14) slot 16 GetLayerAt (+0x40), CNavigatorManager::GetNodeAt 0x00A14F70 (twice),
 //   CNavigatorAStar::CalculateNavigableWidthOfLine(const CNavWayPoint&, const CNavWayPoint&, float&, float&, bool) 0x00A1D6E0
@@ -10,7 +11,7 @@
 // Shape: each layer is a long local zeroed up front and set from the node's byte when there is a node; the way points are
 //   built in place from the 2-float constructor (Y loaded first) and the `1` in eax serves both Removable bytes and the
 //   final bool argument.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }   // the conversion temporary: two dwords copied into the frame

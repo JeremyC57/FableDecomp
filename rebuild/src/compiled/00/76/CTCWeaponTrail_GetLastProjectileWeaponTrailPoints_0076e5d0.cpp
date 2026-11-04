@@ -1,5 +1,6 @@
 // CTCWeaponTrail::GetLastProjectileWeaponTrailPoints(vector<pair<C3DVector,C3DVector> >& points) const -- collect the newest points of the projectile trail
 // Leaf: ?GetLastProjectileWeaponTrailPoints@CTCWeaponTrail@@QBE_NAAV?$vector@U?$pair@VC3DVector@@V1@@std@@V?$allocator@U?$pair@VC3DVector@@V1@@std@@@2@@std@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0076E5D0, 17 bytes, thiscall, `ret 4`.
 // Identity: FableWin.pdb ?GetLastProjectileWeaponTrailPoints@CTCWeaponTrail@@QBE_NAAV?$vector@...@Z; callers are
 //   CTCShotDefinitionBase::OnCollision (0x007BF5E8), UpdateCollision (0x007BFF01) and OnCollisionProper (0x007C12C4),
@@ -11,7 +12,7 @@
 //   (private overload; manifest "WeaponTrail_CollectPoints").
 // Shape: `return GetLastWeaponTrailPoints(points, ProjectileWeaponTrail);` -- `this` stays in ecx for the private
 //   overload, the list address is pushed first (`lea eax,[ecx+60h]`).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CEnginePrimitiveWeaponTrail {
 public:

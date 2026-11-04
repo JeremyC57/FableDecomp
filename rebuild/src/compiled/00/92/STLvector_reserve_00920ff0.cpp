@@ -1,5 +1,6 @@
 // std::vector::reserve(size_type n) -- STLport vector<C3DVector>::reserve: when the capacity is below n, reallocate n elements (copying and freeing the old block when there is one) and keep the size
 // Leaf: ?reserve@?$vector@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00920FF0, 147 bytes, __fastcall `ret 4`.
 // Identity: STLport 4.6 vector<_Tp>::reserve (Ego_r.pdb ?reserve@?$vector@VC3DVector@@...@std@@QAEXI@Z family). The catalog
 //   label "vector_reserve" is right in spirit.
@@ -20,11 +21,7 @@ extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 inline void* operator new(size_t, void* p) { return p; }
 
 #pragma pack(push, 1)
-class C3DVector {                               // retail: byte-packed, memberwise user copy ctor
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace std {

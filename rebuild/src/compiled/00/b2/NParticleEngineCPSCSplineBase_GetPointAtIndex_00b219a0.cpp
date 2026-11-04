@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::GetPointAtIndex(const CParticleUpdateParameters<unsigned long, unsigned long>& params, C3DVector& out, long index, float time) -- control point `index` of the spline (through the random-offset data when present), then transformed by the position parameters if any are bound
 // Leaf: ?GetPointAtIndex@CPSCSplineBase@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@2@AAVC3DVector@@JM@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B219A0, length 86 bytes.
 // Name (naming wave 20, chunk 686): Ego_r / FableWin.pdb spellings throughout (as GetPointAtPos 0x00B21940; was the un-nested pointer
 //   form binding 0x00B218B0 as the un-nested TransformFromIndex).
@@ -12,7 +13,7 @@
 struct CBase {
     virtual ~CBase();
 };
-class C3DVector { public: float X, Y, Z; };                    // global (Ego_r.pdb class V; 1-aligned in retail)
+#include "engine/C3DVector.h"
 class CCardinalSpline;                                          // global (Ego_r.pdb class V)
 namespace NParticleEngine {
 class CParticleSystem;

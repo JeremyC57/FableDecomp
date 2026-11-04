@@ -1,5 +1,6 @@
 // CCountedPointer<NBBBMaths::CLinearSpline>::DeleteData(void* data) -- the counted pointer's per-type deleter: delete the linear spline (its processed-point and control-point vectors' storage, then the object)
 // Leaf: ?DeleteData@?$CCountedPointer@VCLinearSpline@NBBBMaths@@@@SIXPAX@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F3FB0, 49 bytes, static `__fastcall` (data in ecx). FableWin.pdb
 //   `?DeleteData@?$CCountedPointer@VCLinearSpline@NBBBMaths@@@@SIXPAX@Z`; stored as the destroy function of the count block
 //   built by the landed CCountedPointer Reset 0x007F4780 (CTCLightningOrb::PSpline, +0x2c, created in Initialise
@@ -12,7 +13,7 @@
 extern "C" void __cdecl free(void* block);                       // 0x00BFEA14
 void __cdecl operator delete(void* block);                       // 0x00BFE9BC
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 template <class T> struct CRetailVector {                        // STLport vector over the malloc allocator
     T* _M_start;

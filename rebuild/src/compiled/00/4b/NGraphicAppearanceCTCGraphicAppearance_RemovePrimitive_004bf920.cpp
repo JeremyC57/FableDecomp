@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::RemovePrimitive(CPrimitive* primitive) -- find the list node holding this primitive, unlink it, destroy the primitive and free the node
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BF920, length 62 bytes. Callees: CPrimitive::~CPrimitive @ 0x004C4160 (manifest
 // "CObject::~CObject", propagated), free @ 0x00BFEA14 (the STLport node allocator).
 // Shape: the Primitives list (STLport header-node pointer +0x38) walked comparing each node's value ADDRESS (`lea edx,[esi+8]`)
@@ -13,7 +14,7 @@
 // (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
 // CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
 // No engine header exists for CTCGraphicAppearance: local model.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCAnimationBase;
 

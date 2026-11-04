@@ -1,4 +1,5 @@
 // C3DMeshFileConvexVolumeChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const -- version 1, the name, then each bounding plane as a normal vector and a distance
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AAA9A0, 112 bytes. Callees: CDataOutputStream::WriteULONG 0x00993EA0,
 // WriteNullTerminatedString 0x00995AE0, Write3DVector 0x00993FD0, WriteFloat 0x00993EE0. No sub-chunk write.
 // Shared retail model of the landed C3DMeshFile*Chunk family (C3DMeshFileConvexVolumeChunk::GetChunkInfo
@@ -22,7 +23,7 @@ CCharString __fastcall operator+(const char* left, const CCharString& right);   
 CCharString __fastcall GFIntToCharString(long value);                                  // 0x0099F830
 
 class CMatrix3x4 { public: float m_row[3][4]; };               // 48 bytes, copied with rep movsd
-class C3DVector  { public: float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {} };
+#include "engine/C3DVector.h"
 
 class CChunkedFileSaver;
 class CDataOutputStream { public:

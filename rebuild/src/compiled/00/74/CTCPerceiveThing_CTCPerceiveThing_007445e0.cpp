@@ -1,6 +1,7 @@
 // CTCPerceiveThing::CTCPerceiveThing(CThing* parent) -- CTCBase(parent), the CTCPerceiveThing vtable, an empty perceived-thing intelligent pointer, every perception flag/radius cleared, FramesSinceDirectlyPerceivedThing = -1 and the update offset taken from the parent thing
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- PDef as a CDefPointer record with an inline ctor (the -1 store stays above it) and UpdateOffset assigned in the body (its `and edx,3` sinks below the radius stores)
 // Leaf: ??0CTCPerceiveThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007445E0, 128 bytes. Vtable 0x012688CC (CTCPerceiveThing, RTTI: slot 0 0x007462D0, slot 4
 //   OnCreate 0x00744ED0); the member's vtable 0x01237F1C is CIntelligentPointer<CThing const>.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
@@ -41,7 +42,7 @@ class CTCBase { public:
     bool    IsInGlobalUpdateTCs;                // +0x09
     CTCBase(CThing* parent);                    // 0x00686800
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CPerceivedThingDef;
 template <class T> class CDefPointer { public:          // CDefPointer<T const>: the def object pointer with its inline constructor (released by the out-of-line destructor)
     T* Object;

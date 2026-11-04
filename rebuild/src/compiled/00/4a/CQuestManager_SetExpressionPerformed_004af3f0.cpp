@@ -1,4 +1,5 @@
 // CQuestManager::SetExpressionPerformed(const CCharString&) -- look up the expression's global definition index and post message 0x2a (expression performed, delay 50) carrying it to the world's message event manager
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AF3F0, length 83 bytes.
 // Callees: CGameDefinitionManager::Get @ 0x0044C6B0 (no arguments, returns the manager),
 // CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410,
@@ -15,10 +16,7 @@
 #undef CQuestManager
 class CThing;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* PStringData;

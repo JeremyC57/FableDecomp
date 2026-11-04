@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetNearestEnabledDiggingSpot(const CScriptThing& from) const -- of all MARKER_DIGGING_SPOT things that IsDiggingSpotEnabled accepts, return the one nearest (2D) to `from`; an empty handle when there are none or none is enabled
 // Leaf: GetNearestEnabledDiggingSpot
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089EF90, length 585 bytes (virtual slot 575, `ret 8`: hidden CScriptThing result + from).
 // Callees: own slot 80 GetAllThingsWithDefName and slot 576 IsDiggingSpotEnabled (cgsi_slots_aligned.tsv), CCharString ctor/dtor
 //   0x0099EBF0 / 0x0099EAE0 ("MARKER_DIGGING_SPOT" 0x012783A4), CBaseClass ctor/dtor 0x0099A2D0 / 0x0099A2E0, operator delete
@@ -16,7 +17,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                           // 0x0143E8E0
 
 class CCPPointerInfo { public:

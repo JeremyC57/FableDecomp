@@ -1,4 +1,5 @@
 // CV_ChickenKickingScript::LookAfterOrganiser() -- each time the hero leaves Oak Bay and comes back, re-create the chicken master if he ran off: at his original marker once the hero knows the ghost has gone, else at the scared-master marker
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E631F0, length 701 bytes. Identity: spawned by CV_ChickenKickingScript::Main
 //   0x00E62A00 as "LookAfterOrganiser" 0x012E7378 (CSpawnedFunc vtable 0x012E732C at 0x00E62CFB); the strings name the chicken-kicking quest (manifest
 //   "CQ_GuildTrainingScript::KeepTabsOnWhisper" is propagated).
@@ -18,7 +19,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

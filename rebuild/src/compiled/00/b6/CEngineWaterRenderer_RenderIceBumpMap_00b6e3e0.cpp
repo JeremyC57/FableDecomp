@@ -1,5 +1,6 @@
 // CEngineWaterRenderer::RenderIceBumpMap() -- apply the ice bump-map shaders and draw the 14-vertex bump quad twice, first with the X/Y and then the Y/Z channel-select pixel constants, setting the blend states between the passes and clearing the first one after
 // Leaf: RenderIceBumpMap
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6E3E0, length 1195 bytes (+ int3 padding), plain `ret`.
 // Signature from Ego_r.pdb: ?RenderIceBumpMap@CEngineWaterRenderer@@AAEXXZ.
 // Callees: CShaderRenderManager::ApplyVertexShader @ 0x00988020, ApplyPixelShader @ 0x00988140, the inlined
@@ -12,7 +13,7 @@
 // vectors in retail (16 in the PDB/engine header), so IceBumpmapVertexShader is at +0x188 (PDB +0x194) and
 // IceBumpmapPixelShader at +0x190 (PDB +0x19c); a local view is used, as in the landed CEngineWaterRenderer rows.
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }

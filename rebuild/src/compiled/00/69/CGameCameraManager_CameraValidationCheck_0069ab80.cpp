@@ -1,10 +1,11 @@
 // CGameCameraManager::CameraValidationCheck() -- reset and restore last camera if position or forward axis is NaN
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0069AB80 173bytes. BFEC26 import thunk maps MSVCR71!_isnan at IAT014400E8.
 // Reset0069A990 audited native manager routine. Camera has no generated header; native/PDB camera size38 and WorldPosition0 and RHSet.Forward18.
 #define CGameCameraManager CGameCameraManagerDonor
 #include "engine/CGameCameraManager.h"
 #undef CGameCameraManager
-class C3DVector { public: float X,Y,Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up,Forward; };
 class CCamera { public: C3DVector WorldPosition; CRightHandedSet RHSet; bool HeightLocked,ViewVecZLocked; unsigned int FOVFlags; float HorizontalFOV,VerticalFOV,Zoom; };
 extern "C" int _isnan(double); // 00BFEC26 import thunk

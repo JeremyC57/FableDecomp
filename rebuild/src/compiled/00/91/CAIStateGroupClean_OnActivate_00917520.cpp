@@ -1,12 +1,13 @@
 // CAIStateGroup_Clean::OnActivate() -- once: starting at the building physics' bounding centre, step down by a constant while the point stays inside the building and keep the last inside height
 // Leaf: OnActivate@CAIStateGroup_Clean
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00917520, length 185 bytes (+ int3 padding).
 // Callees: own virtual slot 14 (+0x38, the building; called again for every use), CTCPhysicsBase::GetBoundingInfo
 // (C3DVector*, float*) @ 0x006AF640 on the building's physics (+0x60), CThingBuilding::IsPointInside(const C3DVector&)
 // @ 0x0082D000. Constant: the step 0.5f @ 0x0122F59C.
 // Shape: `if (inside) const { C3DVector last; while (inside) { last = pos; pos.Z -= step; } FloorHeight = last.Z; }` -- the
 // pre-test is repeated before the loop, so `last` is read uninitialised when the loop never runs (retail behaviour).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase
 { public:

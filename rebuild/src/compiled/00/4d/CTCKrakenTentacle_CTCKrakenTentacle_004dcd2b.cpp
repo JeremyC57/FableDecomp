@@ -1,5 +1,6 @@
 // CTCKrakenTentacle::~CTCKrakenTentacle() -- destroy the dummy name, the three thing pointers and the def pointer, then CTCBase
 // Leaf: ??1CTCKrakenTentacle
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DCD2B, length 64 bytes (size-optimised def/factory module: `and dword ptr
 // [esi+0Ch],0` -> #pragma optimize("s", on)). Called by the scalar deleting destructor 0x004DCD0F (CTCKrakenTentacle vtable
 // 0x012407BC slot 0); the manifest label "~CTCDExplosion" is propagated.
@@ -52,7 +53,7 @@ class CCharString { public:
     ~CCharString();                         // 0x0099EAE0
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCKrakenTentacle : public CTCBase { public:
     CDefPointer PTentacleDef;               // +0x0c

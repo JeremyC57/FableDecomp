@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPBestLeafThing(const TFilter& filter, const TCompare& compare, TThing** out) [TFilter = std::binder2nd<std::const_mem_fun1_ref_t<bool, CThing, ETCInterfaceType> >, TCompare = CThingCompare_Nearest, TThing = const CThingVillage] -- the twin of 0x0048CB50 for the const overload of CPlayer::GetPNearestTCVillage (0x004886F0)
 // Leaf: GetPBestLeafThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048CBD0, 118 bytes (`ret 0Ch`).
 // Callees: PeekTypeList 0x0049C780, the bound member through its pointer, CThingCompare_Nearest::operator()<T> 0x0048B220.
 // Identity: 0x0048CB50 and this body are byte-identical but call different comparator instances (0x0048B160 /
@@ -56,7 +57,7 @@ struct CThingList {
 };
 
 class CThingVillage : public CThing { public: enum { ThingListType = 4 }; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 namespace std {
 template <class R, class T, class A> class const_mem_fun1_ref_t {   // (thing.*pmf)(arg)
     R (T::*_M_f)(A) const;

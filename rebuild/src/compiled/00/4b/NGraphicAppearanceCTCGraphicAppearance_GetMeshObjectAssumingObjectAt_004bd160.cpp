@@ -1,5 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::GetMeshObjectAssumingObjectAt(const CMeshInfo&, const C3DVector&, const CRightHandedSet&, C3DMeshObject&) const -- build the mesh object for a mesh entry placed at the given position/orientation, scaled by the entry, the appearance and 1/100, into the caller's object
 // Leaf: GetMeshObjectAssumingObjectAt
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x004BD160, 155 bytes (`ret 10h`). Ego_r.pdb `?GetMeshObjectAssumingObjectAt@CTCGraphicAppearance@
 // NGraphicAppearance@@IBEXABVCMeshInfo@2@ABVC3DVector@@ABVCRightHandedSet@@AAVC3DMeshObject@@@Z`.
@@ -16,7 +17,7 @@
 // the block, both words zeroed, ~CBase); the scale is `SizeX * Scale * 0.01f`.
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 class C3DMeshInfo;
 

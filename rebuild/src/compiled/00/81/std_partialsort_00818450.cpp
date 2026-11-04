@@ -1,5 +1,6 @@
 // std::__partial_sort(THitLocationIntersectionElement* first, THitLocationIntersectionElement* middle, THitLocationIntersectionElement* last, THitLocationIntersectionElement*, THitLocationIntersectionElementPred comp) -- STLport heap-based partial sort of the hit-location ray intersections by key
 // Leaf: ??$__partial_sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00818450, 235 bytes, `ret 0Ch`: __fastcall (the algorithm TUs are /Gr), first in ecx, middle in
 // edx; last, the value-type tag pointer and the empty 4-byte predicate on the stack.
 // Caller: the introsort loop 0x00818B00 (this chunk, the depth-limit fallback `partial_sort(first, last, last)`).
@@ -14,10 +15,7 @@
 // __pop_heap is `__forceinline` as in the landed sort_heap 0x008182E0: plain `inline` leaves it a call (by-value
 // element with a non-trivial copy constructor).
 struct CHitLocation;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 namespace {
 struct THitLocationIntersectionElement {           // 32 bytes (implicit memberwise copy, trivial assignment)
     long          key;                             // +0x00

@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(list<CWeaponTrailEntry>* pos, const list<CWeaponTrailEntry>& x, const __false_type&, size_type fill_len, bool atend) -- STLport growth of CTCWeaponTrail's per-trail point lists: move into a size + max(size, n) block with x inserted fill_len times at pos
 // Leaf: ?_M_insert_overflow@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00770810, length 272 bytes (thiscall, `ret 14h`).
 // Identity: the catalog label "Vector_Insert_LinkedList_MoveAndRealloc" is descriptive. The element is the 4-byte STLport
 //   list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry> (0x24-byte nodes) of CTCWeaponTrail::Trail; its helpers are the
@@ -19,11 +20,7 @@ extern "C" void __cdecl free(void* p);                                          
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CEnginePrimitiveWeaponTrail {
 public:

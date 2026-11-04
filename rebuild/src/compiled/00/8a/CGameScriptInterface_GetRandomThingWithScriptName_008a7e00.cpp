@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetRandomThingWithScriptName(const CCharString&) -- select uniformly from script-name matches
 // Leaf: GetRandomThingWithScriptName
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 29 (family gws): the seed comes from the const ?GetWorldSeed@CWorld@@QBEPAKXZ 0x0049D810 (Ego_r.pdb / FableWin.pdb;
 //   engine/CWorld.h). Was the invented WorldMethods::GetPRandomSeed (QAEPAKXZ).
 // Retail008A7E00,190bytes;005ED860 query uses native006A7E30 HasScriptName;0049D810 seed;00497890 fastcall GFROR13;004C7E50 GetScriptThing;00BFEA14 free.
@@ -12,7 +13,7 @@
 #include "engine/_quarantine/CThing.h"
 #undef CThing
 
-class C3DVector{ public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char State[0x45];unsigned char LifeFlags;ScriptMethods GetScriptThing() const;}; //004C73D0,004C7E50

@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(CKeyCamera* position, const CKeyCamera& x, const __false_type&, unsigned int fill_len, bool atend) -- grow the scripted-camera key vector and insert fill_len copies of x
 // Leaf: ?_M_insert_overflow@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075F860, 281 bytes, `ret 0x14`.
 // Label correction: catalog "Vector_InsertRange_CopyFill" -> STLport 4.x vector<CKeyCamera>::_M_insert_overflow (the
 //   landed vector<CKeyCamera>::insert 0x0075FAE0 and push_back 0x0075FAA0 call it; 56-byte element: 0x92492493 /
@@ -22,10 +23,7 @@ public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CKeyCamera {                              // Ego_r.pdb, 56 bytes
 public:

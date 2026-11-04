@@ -1,5 +1,6 @@
 // CQuestManager::ActivateQuestCard(CThing* card, bool loadResources) -- clear the objectives; if the living card thing's quest card is activatable, has a def, no quest is between its start and finish screens in the card's region and its script quest activates, make the card active (in limbo, persisted), reset the guild-seal recall point, drop the card's type from the available cards and refresh the player GUI
 // Leaf: ActivateQuestCard
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Shape: the quest-card component lookup is a template-constant-key GetTC: LowerBound binds its const long& to the constant, so the
@@ -13,10 +14,7 @@ class CDefString { public:                             // Codex pass 12 respell 
     long m_index;
     CCharString GetString() const;                       // 0x00415DD0 (FableWin donor order: ??B 0x018C20E0 = retail 0x00415D70, GetString 0x018C2120 = 0x00415DD0)
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

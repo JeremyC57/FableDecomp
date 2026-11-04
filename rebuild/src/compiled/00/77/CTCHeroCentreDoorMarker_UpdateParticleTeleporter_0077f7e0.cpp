@@ -1,5 +1,6 @@
 // CTCHeroCentreDoorMarker::UpdateParticleTeleporter() -- keep the "MARKTELEPORTER" particle on the door marker in step with the world flag at +0xd7: kill it when the flag is clear, create and attach it when the flag is set and no live particle exists
 // Leaf: UpdateParticleTeleporter
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 //
 // Retail 0x0077F7E0, 395 bytes (+5 int3 padding). No direct callers (Ego_r.pdb names only UpdateParticleExperience for this class;
@@ -15,7 +16,7 @@
 // HasTC returns the raw masked word (`test ch,8` on +0x28).
 // Layout (packed, landed 0x0077F5C0): PParticle +0x15; retail CWorld flags +0xd6 ExperienceSpendingEnabled (PDB +0xe2) and +0xd7
 // (PDB +0xe3 SavingEnabled by the same -0xC shift of three 16-byte PDB vectors; unproven, kept descriptive); CThing interface bitset +0x20, interface map +0x44, dead bit 0 of +0x91.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

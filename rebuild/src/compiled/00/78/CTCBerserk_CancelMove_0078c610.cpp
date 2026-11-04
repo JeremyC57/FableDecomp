@@ -1,5 +1,6 @@
 // CTCBerserk::CancelMove() -- cancel the berserk move: when the creature's berserk state component is in state 8 and the ability is not initialised, reset it, kill the start-up effect, spawn the def's "BERSERK_EXIT_EFFECT" and remove TC 0x84; otherwise rescale or clamp the timer
 // Leaf: CancelMove
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail 0x0078C610, 368 bytes, `ret`. Same TU as CreateStartingEffect 0x0078C4C0 (shared model).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (interface 0xA7), CBaseIntelligentPointer::GetPItem
@@ -18,7 +19,7 @@
 // max` is reassociated into `fild max ; fdiv ; fmul`).
 class CTCBase;
 class CBaseObject;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

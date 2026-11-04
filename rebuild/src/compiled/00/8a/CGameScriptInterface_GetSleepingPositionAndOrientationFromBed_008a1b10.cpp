@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetSleepingPositionAndOrientationFromBed(const CScriptThing& sleeper, const CScriptThing& bed, C3DVector& position, C3DVector& orientation) -- for a valid sleeper and a valid bed thing that has a user-action-point component (kind 0x2d), take a free action point: its position into `position`, the forward axis of its orientation into `orientation`, and mark the point used; false otherwise
 // Leaf: ?GetSleepingPositionAndOrientationFromBed@CGameScriptInterface@@UAE_NABVCScriptThing@@0AAVC3DVector@@1@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008A1B10, 218 bytes, `ret 10h` (vtable 0x01260F0C slot 756).
 // Callees: CScriptThing slots 75 (+0x12c, IsValid) and 11 (+0x2c, GetThing), this interface's slot 682 (+0xaa8,
 //   IsThingABed 0x008A0E80; ghidra_out/cgsi_vtable_slots.tsv lists it 4 rows late), the component-map LowerBound @
@@ -42,10 +43,7 @@ struct CThing_Retail {
     CTCMap_Retail  m_tcs;                          // +0x44
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c

@@ -1,4 +1,5 @@
 // CContainmentVolume::IsContaining<CIsContainingSphere>(const CIsContainingSphere& test) const --
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // true when the sphere's centre lies less than Radius behind every containment plane (the signed
 // distance exceeds -Radius on each), i.e. the sphere overlaps the volume on every side
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A75790, length 86 bytes (+ int3 padding). No callees.
@@ -15,11 +16,7 @@
 // `while (contained && i < Size)` form: a `for` with `return false` rotates the loop instead.
 #include "engine/CContainmentVolume.h"
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CPlane { public:
     C3DVector Normal;

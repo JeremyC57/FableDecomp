@@ -1,5 +1,6 @@
 // NScript::CQ_TraderConflictGoodScript::CTC_BanditHostageKeeper::Main() -- bandit security guard: take scripting control, wait until the hero is within 15 units, then one time in five shout the next of the parent's two attack lines at the hero (cycling the parent's line counter), and idle until the thread ends
 // Leaf: ?Main@CTC_BanditHostageKeeper@CQ_TraderConflictGoodScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DFBA60, 643 bytes (+ int3 padding), plain `ret`.
 // Callees: the entity-script machinery of the landed CHTE_Audience::Main 0x00D6B240 (CIsThingAlive predicate, SetPredicate
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, scripted-thing handle 0x0099A380 / 0x00CD23B9 / 0x00CD2770 /
@@ -42,7 +43,7 @@ class CIsThingAlive:public CPredicateBase { public:
 }
 class C2DCoordI;
 class C2DVector;
-class C3DVector;
+#include "engine/C3DVector.h"
 class CCharString;
 class CRGBColour;
 class CRGBFloatColour;
@@ -950,7 +951,6 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
 };
 namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748 (established spelling; naming wave 35: was g_bScriptAnimationFlag)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                       // 0x0143E8E0
 struct CScriptThingImp {
  virtual void i0(); virtual void i1(); virtual void i2(); virtual void i3(); virtual void i4(); virtual void i5();

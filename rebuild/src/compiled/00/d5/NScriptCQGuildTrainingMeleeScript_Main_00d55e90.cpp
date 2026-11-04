@@ -1,4 +1,5 @@
 // CQ_GuildTrainingMeleeScript::Main() -- the guild melee lesson's main: bind the TheRealGuildmaster / MeleeOpponent / MeleeThunder entity scripts, teleport the guildmaster to his teaching stand, create the teen Whisper at her marker (hero faction), take Whisper and the hero under scripted control, play CS_GUILD_MELEE_INTRO in a paused movie sequence, set the quest-card objective, add story log entry 40 and show the melee tutorial until it is clicked past
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D55E90, length 1820 bytes.
 // Callees: operator new 0x00BFEA1A, operator delete 0x00BFE9BC, CCharString(const char*, long) 0x0099EBF0 /
 //   CCharString(const CCharString&) 0x0099EC30 / ~CCharString 0x0099EAE0, ~CBaseClass 0x0099A2E0, ~CScriptThing 0x004AA840,
@@ -17,7 +18,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0

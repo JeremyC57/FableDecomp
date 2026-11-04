@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_GlobalThingsScript::CBSGateGuard::Main() -- Bowerstone gate guard: hold an alive filter over Me, take Me under scripted control (priority 1); if the guard has wandered more than 1 unit from his home position, walk him back there (re-issuing MoveToPosition until within 2 units), then face the hero; afterwards idle one script frame at a time until the thread terminates
 // Leaf: ?Main@CBSGateGuard@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CDFB00, 563 bytes (576 with padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (CIsThingAlive filter, vtable 0x012C32F0, inline dtor here),
 //   CEntityScriptBase::SetPredicate 0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380,
@@ -13,7 +14,7 @@
 // Naming wave 35: identity reg 00cde7fb "BSGateGuard" in 00cde420; Alloc 00cdfa10; vtable 012c33fc slot 1; PDB ?Main@CBSGateGuard@CPersonalScript_GlobalThingsScript@NScript@@; refs=1; was under-qualified CBSGateGuard::Main (wave3/labels_alloc.tsv); PDB ?Main@CBSGateGuard@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBSGateGuard@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public: void* PStringData; };
 class CScriptThing { public:                                  // vtable 0x01238C8C, 12 bytes
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();

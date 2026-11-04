@@ -1,5 +1,6 @@
 // NScript::CQ_BreakSiegeScript::CGuardHoldingBandit::Init() -- make guard unpushable and attach to Knothole Glade village.
 // Leaf: ?Init@CGuardHoldingBandit@CQ_BreakSiegeScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native00D1E310 length196. Game slot844 SetIsPushableByHero8A6DD0,slot72 GetThingWithScriptName8A7D60,slot492 EntityAttachToVillage89D3A0.
 // Literal12CAECC=VILLAGE_KNOTHOLEGLADE. Actual headers, real ScriptThing/Game virtual ABI; freefastcall counted callback.
 // Naming wave 35: identity reg 00d1d42a "GuardHoldingBandit" in 00d1d100; Alloc 00d1e230; vtable 012caf54 slot 2; PDB ?Init@CGuardHoldingBandit@CQ_BreakSiegeScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CGuardHoldingBandit::Init (wave3/labels_alloc.tsv); PDB ?Init@CGuardHoldingBandit@CQ_BreakSiegeScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
@@ -13,7 +14,7 @@
 #include "engine/_quarantine/CThing.h"
 #undef CThing
 
-class C3DVector{ public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components; unsigned char ComponentListsAndMetadata[0x45];unsigned char LifeFlags;}; //004C73D0,004C7E50
@@ -118,7 +119,6 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 
 class C2DCoordI;
 class C2DVector;
-class C3DVector;
 class CCharString;
 class CRGBColour;
 class CRGBFloatColour;

@@ -1,5 +1,6 @@
 // std::vector<CDefendingCombatantInfo::CCombatRing>::erase(CCombatRing* position) -- shift the later rings down one slot, destroy the old last ring (its prong vector), return position
 // Leaf: ?erase@?$vector@VCCombatRing@CDefendingCombatantInfo@@V?$allocator@VCCombatRing@CDefendingCombatantInfo@@@std@@@std@@QAEPAVCCombatRing@CDefendingCombatantInfo@@PAV34@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x006F45A0, 94 bytes, thiscall `ret 4`.
 // Identity (probable): the STLport 4.6 `vector::erase(iterator)` (`if (position + 1 != end()) __copy_ptrs(position + 1,
 //   finish, position, __false_type()); --finish; _Destroy(finish); return position;`) over the 28-byte retail
@@ -27,7 +28,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 
 class CThingCreatureBase;
 #pragma pack(push, 1)
-class C3DVector { public: float X, Y, Z; };                // retail C3DVector is 1-aligned
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace std {

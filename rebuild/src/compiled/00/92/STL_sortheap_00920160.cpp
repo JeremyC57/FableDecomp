@@ -1,5 +1,6 @@
 // std::sort_heap(const CThingObject** first, const CThingObject** last, CThingCompare_Nearest comp) -- STLport heap sort for the nearest-first sort: pop the heap's root to the back until one element remains
 // Leaf: ??$sort_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Element (sweep3, FINDINGS "Family pass 2" G015): the sorted range is const CThingObject* -- the caller
 //   CAIStateGroup_TestTestTest::Update 0x0091F140 fills it with GetAllThingsInRoughArea 0x00920200 (type mask 0x807 =
 //   CThingObject) before sort 0x009206A0, and FableWin.pdb has sort<vector<const CThingObject*>, CThingCompare_Nearest> /
@@ -21,11 +22,7 @@
 // Shape: the landed 0x007A3B60 body: `while (last - first > 1) pop_heap(first, last--, comp);` with pop_heap /
 //   __pop_heap_aux / __pop_heap inline; VC strength-reduces `last` into the byte distance.
 #pragma pack(push, 1)
-class C3DVector {                               // retail: byte-packed, memberwise user copy ctor
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CThingObject;

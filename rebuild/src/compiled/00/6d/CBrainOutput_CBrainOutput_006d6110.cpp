@@ -1,4 +1,5 @@
 // CBrainOutput::CBrainOutput(const CBrainOutput& other) -- copy a creature brain's output record: flags, navigation request, the counted action pointer (shared, count bumped), the two target positions and the intelligent look-at pointer
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D6110, length 149 bytes (ret 4).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, CBaseIntelligentPointer::GetPItem
 // @ 0x00A01B50, CBaseIntelligentPointer::SetPItem @ 0x00A01B90; vtable CIntelligentPointer<CThing const> @ 0x01237F1C.
@@ -11,10 +12,7 @@
 // constructor: base constructor, vtable store, SetPItem(other.GetPItem()).
 class CBaseObject;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CNavigationInput { public:                     // 24 bytes
     C3DVector Destination;                    // +0x00
     float     Proximity;                      // +0x0c

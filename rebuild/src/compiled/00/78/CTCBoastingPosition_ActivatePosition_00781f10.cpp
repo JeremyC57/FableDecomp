@@ -1,4 +1,5 @@
 // CTCBoastingPosition::ActivatePosition(long boastIndex, long cost) -- turn the boasting position on: store the boast and its cost, spawn the idle orb effect at the orb position, make the thing drawable and set the graphic-appearance flag
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
 //   invented ?ForwardToGraphicAppearance@CThing@@QAEXJ@Z)
@@ -13,7 +14,7 @@
 // BoastOn +0x2C, HeroInsideRadius +0x2D, PParticleEffect +0x2E (unaligned: the intelligent pointer is declared packed).
 // Shape: the effect name is a named local in its own block (destroyed after the intelligent-pointer temporary); the pointer
 // assignment reads the temporary's item before forming the member address; the parent thing is re-read for each call.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

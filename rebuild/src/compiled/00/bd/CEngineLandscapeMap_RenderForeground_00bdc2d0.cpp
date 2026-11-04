@@ -1,5 +1,6 @@
 // CEngineLandscapeMap::RenderForeground() -- when the map has patches: skip the whole map if its patch tree's bounding box lies entirely outside one of the engine camera's four frustum side planes, otherwise render every patch's foreground row by row
 // Leaf: RenderForeground
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BDC2D0, 237 bytes (+ int3 padding).
 // Callees: CEngineLandscapePatch::RenderForeground 0x00BF4570 (on each 0x48-byte patch). Globals: the engine camera
 //   0x01436EA0 (FrustrumPlanes +0x1c0, four CPlane {Normal, D} of 16 bytes; Ego_r.pdb agrees). Float pool 0x0122DEDC = 0.0f.
@@ -9,7 +10,7 @@
 //   (`test ah,41h ; jne`), the dot product summed z, y, then x and compared with D (`dot > D` exits); the plane is an indexed
 //   reference (`FrustrumPlanes[i]`: VC biases the strength-reduced pointer to +8; a walking plane pointer does not); the grid loops are
 //   unsigned (`jb`) with the width re-read after each call.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CPlane { public:
     C3DVector Normal;                                  // +0x00
     float     D;                                       // +0x0c

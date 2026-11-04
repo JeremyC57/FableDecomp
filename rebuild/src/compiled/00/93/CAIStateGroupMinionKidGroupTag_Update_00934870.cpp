@@ -1,5 +1,6 @@
 // CAIStateGroup_MinionKidGroupTag::Update() -- the kids' game of tag: each pass a 5% chance ends the game; otherwise the tagger chases (TagTarget) and everyone else runs (EvadeTarget), repeating while the do-nothing action reports 4; then Terminate
 // Leaf: ?Update@CAIStateGroup_MinionKidGroupTag@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00934870, 169 bytes, both exits tail-jump to Terminate.
 // Identity: Ego_r.pdb `?Update@CAIStateGroup_MinionKidGroupTag@@UAEXXZ`; donor order InitStateGroup / OnReplace / IsStillValid /
 //   TagTarget / OnActivate / EvadeTarget / Cleanup / IsRunnable / Update against retail 0x00934090 / 0x009340F0 / 0x00934100 /
@@ -58,9 +59,7 @@ protected:
     EAIActionReturn AIAction_DoNothing();                   // 0x0097E200
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CAIStateGroup_MinionKidGroupTag : public CAIStateGroupBase { public:
     bool                    InitiatedTag;                   // +0x14
     CTCCreatureGroupTag*    PTCGroupTag;                    // +0x18

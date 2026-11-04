@@ -1,6 +1,7 @@
 // CQ_WaspBossScript::DoMission() -- register the post-wasp-boss gossip (rumour, picnic-area faction), spawn five hornet drones at the queen's deposit markers, gather the drones, chasers and attackers, run the wasp intro and wait until they are all dead; pause, create the queen hornet at the starting marker, start the guildmaster-help thread and, unless the mission failed, run the wasp-menace phase
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?DoMission@CQ_WaspBossScript@NScript@@QAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E12580, 1446 bytes (int3 padded to 1456).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, CDefString::operator CCharString 0x00415D70, IntToCharString 0x0099F830,
 //   operator+(const char*, const CCharString&) 0x0099F690, IsActiveThreadTerminating 0x00CB7940, CBaseClass 0x0099A2D0 / ~
@@ -30,7 +31,7 @@ extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CScriptThingImpl {
     virtual void i000();
     virtual void i001();

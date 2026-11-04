@@ -1,5 +1,6 @@
 // NScript::CQ_AwakeningTheOracleScript::CATO_MagicBarrier::Main() -- an Arena magic barrier: alive filter on Me, spawn the two red forcefield halves at Me turned 90 degrees; while the parent's stage is below 3 (else while its counter is positive) respawn both idle halves whenever both are gone; then remove them, play the two "_OFF" effects and remove Me
 // Leaf: ?Main@CATO_MagicBarrier@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CFD6C0, 1504 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CCountedPointer operator= 0x00704580, SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099EAE0; CScriptThing slots 6 GetPos, 75 IsAlive;
@@ -12,7 +13,7 @@
 //   virtual; the first test on the locals is devirtualised and the inline IsAlive expands.
 // Naming wave 35: identity reg 00cfb3f3 "ATO_MagicBarrier" in 00cfb080; Alloc 00cfd5d0; vtable 012c7d38 slot 1; PDB ?Main@CATO_MagicBarrier@CQ_AwakeningTheOracleScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CATO_MagicBarrier::Main (wave3/labels_alloc.tsv); PDB ?Main@CATO_MagicBarrier@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CATO_MagicBarrier@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

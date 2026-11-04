@@ -1,5 +1,6 @@
 // CModeBriarRoseConcentrate::OnDeactivate -- resume AI, hit surviving creature imposters, kill effect objects and deactivate.
 // Leaf: OnDeactivate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native008E7E70 length269. Genuine CHitParameters ctor7A3BC0/dtor789358; Creature OnHit slot65 nativeVT125AC0C->667D30.
 #ifndef _MSC_VER
 #define __int64 long long
@@ -22,7 +23,8 @@
 #include "engine/CBriarRoseDef.h"
 #include "fable_string.h"
 // Generated Thing offsets differ after bitset/vector shrink. Native presence bits20..43, map44..4F, CurrentMap8E,life91.
-class C3DVector{ public:float X,Y,Z;};struct NativeDefinition;struct EmitterMethods;
+#include "engine/C3DVector.h"
+struct NativeDefinition;struct EmitterMethods;
 struct ThingNative;
 struct ComponentEntry{int Type;void* Component;};
 struct ComponentMap{ComponentEntry*First,*Last,*Limit;ComponentEntry*LowerBound(const int*);}; //40F020

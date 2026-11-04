@@ -1,4 +1,5 @@
 // CEngineWeatherRenderer::SetCommonParticleShaderConstants(long*) -- upload span and three clipping masks.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 00b52160, 235 bytes. Shared PDB layout agrees: Settings+0xc0=ParticleBoxSpan;
 // WeatherMaskList+0x28=InvTransform. Calls 00989b00 four-float and 00989a60 vector shader setters.
 #ifdef _MSC_VER
@@ -6,7 +7,7 @@
 #else
 class CEngineWeatherRenderer { public: unsigned char Settings[0x558],WeatherMaskList[0x114]; };
 #endif
-class C3DVector { public: float X,Y,Z; };
+#include "engine/C3DVector.h"
 class CWeatherMask { public: C3DVector Center; float Radius; C3DVector MinCoord,MaxCoord; float InvTransform[4][3]; float Scale; };
 class CShaderRenderManager { public:
  void SetVertexShaderConstant(long,float,float,float,float); // 0x00989b00

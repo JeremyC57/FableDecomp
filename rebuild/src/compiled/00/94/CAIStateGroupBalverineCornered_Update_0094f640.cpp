@@ -1,4 +1,5 @@
 // CAIStateGroup_BalverineCornered::Update() -- choose a lunge or sky jump for a live target, then terminate.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0094F640, 236 bytes. State/brain use shared headers; retail CThing map is +44 (donor +48).
 // Combat action base is 0x114 retail versus donor 0x12c; sky-jump EndPos is +114.
 // The shared result is compared after both temporary actions are destroyed, then every path terminates.
@@ -61,7 +62,7 @@ class CTCVolumeContainmentTracker { public:
     CBaseIntelligentPointer PThingInside;
     void Update(); // 00785620
 };
-class C3DVector { public: float X,Y,Z; };
+#include "engine/C3DVector.h"
 class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x110];

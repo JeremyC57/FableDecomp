@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::RefreshPrimitiveAnimationAndPos(CPrimitive* primitive, const C3DAnimationInterpolator& animation, const C3DPositionInterpolator& position, const C3DOrientationInterpolator& orientation) -- hand the primitive manager a temporary CEnginePrimitiveAnimation built from the three interpolators
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BCFE0, length 92 bytes. Callees: CEnginePrimitiveAnimation::CEnginePrimitiveAnimation
 // @ 0x004C3D30, the primitive manager's virtual slot 24 (+0x60), the interpolator base destructor @ 0x0099A2E0 (manifest
 // "CBase::CBase", propagated; run for the orientation and position members), C3DAnimationInterpolator::~C3DAnimationInterpolator
@@ -15,7 +16,7 @@
 // (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
 // CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
 // No engine header exists for CTCGraphicAppearance: local model.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCAnimationBase;
 

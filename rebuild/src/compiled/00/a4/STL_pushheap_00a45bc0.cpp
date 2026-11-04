@@ -1,5 +1,6 @@
 // std::__push_heap(C3DSkeletalBoneMorph* first, int holeIndex, int topIndex, C3DSkeletalBoneMorph val, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI heap sift-up: move parents down while comp(parent, val), then store val in the hole
 // Leaf: ??$__push_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A45BC0, length 179 bytes (+13 int3 pad), `ret 1Ch`.
 // Caller: 0x00A46125 in __adjust_heap<C3DSkeletalBoneMorph*> 0x00A46040 (landed). Callees: CCharString::operator=
 //   0x0099EFB0, ~CCharString 0x0099EAE0 (the by-value val is destroyed by the callee); the comparator through the stack
@@ -18,10 +19,7 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C3DSkeletalBoneMorph {
 public:

@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveAnimatedMesh::Update(const CEnginePrimitive& primitive, unsigned long flags) -- refresh the internal animated mesh from its game-side primitive: mesh info from mesh bank 0, scale = size / 100, start/end world position, orientation, flags, theme channel, tint, cloth flag, a fresh bone-scaling cache, alpha, mesh effect, animation interpolator, then the game-default fade distance with the override bit set
 // Leaf: ?Update@CEngineInternalPrimitiveAnimatedMesh@@UAEXABVCEnginePrimitive@@K@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BD2920, 361 bytes, thiscall virtual, `ret 8`.
 // Identity: Ego_r.pdb ?Update@CEngineInternalPrimitiveAnimatedMesh@@UAEXABVCEnginePrimitive@@K@Z; the body writes the
 //   CEngineInternalPrimitiveAnimatedMesh members (Anim +0x70, WorldPos +0x84, Orientation +0xa0, Cache +0xd4) and its
@@ -16,7 +17,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CRGBColour { public: unsigned char B, G, R, A; };
 class C3DMeshInfo;

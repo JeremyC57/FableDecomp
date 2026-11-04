@@ -1,5 +1,6 @@
 // CPreAllocVectorMap<unsigned long,C3DHelperPoint,CKeyPairCompareLess<unsigned long,C3DHelperPoint> >::LowerBound(const unsigned long&) const -- binary search for the first element whose key is not less than `key`
 // Leaf: LowerBound
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A316B0, 80 bytes (+15 int3 padding), `__fastcall`, `ret 4`; no callees.
 // Layout (Ego_r.pdb, 16 bytes): Compare (+0x0, empty CKeyPairCompareLess), Elements (+0x4, pair<unsigned long,C3DHelperPoint>*,
 //   0x14-byte elements), Size (+0x8, unsigned long), Dirty (+0xC).
@@ -15,7 +16,7 @@ template <class K, class V> struct pair {
 };
 }
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DHelperPoint { public:                 // Ego_r.pdb, 16 bytes
     C3DVector Position;                 // +0x00
     long      BoneIndex;                // +0x0C

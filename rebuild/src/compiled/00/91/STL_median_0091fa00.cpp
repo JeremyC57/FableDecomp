@@ -1,5 +1,6 @@
 // std::__median(const CThingObject* const& a, const CThingObject* const& b, const CThingObject* const& c, CThingCompare_Nearest comp) -- STLport median of three for the nearest-first sort: the middle element by the comparator, returned by reference
 // Leaf: ??$__median@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Element (sweep3, FINDINGS "Family pass 2" G015): the sorted range is const CThingObject* -- the caller
 //   CAIStateGroup_TestTestTest::Update 0x0091F140 fills it with GetAllThingsInRoughArea 0x00920200 (type mask 0x807 =
 //   CThingObject) before sort 0x009206A0, and FableWin.pdb has sort<vector<const CThingObject*>, CThingCompare_Nearest> /
@@ -21,11 +22,7 @@
 // Shape: the STLport nested if/else verbatim; each compare pushes the two element values (`mov eax,[b] ; mov ecx,[a] ;
 //   push eax ; push ecx`) and calls on `lea ecx,[esp+..]` (the by-value comparator's slot); a/b/c live in edi/esi/ebx.
 #pragma pack(push, 1)
-class C3DVector {                               // retail: byte-packed, memberwise user copy ctor
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CThingObject;

@@ -1,5 +1,6 @@
 // NCreatureMode::CModeScorpionKingTailPlunge::CModeScorpionKingTailPlunge(CThing*) -- CModeStandBase(thing), the "TAIL_PLUNGE" group filter, empty target / tail / dust-trail pointers, PCreature = the owner
 // Leaf: ??0CModeScorpionKingTailPlunge
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D81F0, 180 bytes (`ret 4`). Vtable 0x01285860 = NCreatureMode::CModeScorpionKingTailPlunge
 // (rtti-vtables.tsv; the manifest's "CModeJackOfBladesFlash" label is propagated from the 0x8D7E60 twin).
 // Callees: CModeStandBase::CModeStandBase(CThing*) 0x00861E00; CCharString(const char*, long) 0x0099EBF0,
@@ -81,7 +82,7 @@ template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c + the stand-mode members)
     virtual void v00();

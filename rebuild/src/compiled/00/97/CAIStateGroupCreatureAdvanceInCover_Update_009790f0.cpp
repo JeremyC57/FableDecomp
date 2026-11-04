@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureAdvanceInCover::Update() -- advance to the next hidden cover position, crouch there when the enemy is alive, then refresh the cover list
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009790F0, length 361 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPosAndSetUpCoverThing
 //          @ 0x00970CD0 (landed), SetFailedToFindCover @ 0x00970590 (manifest "SetAtFailed"), Terminate @ 0x008FCF40, CThing::GetPos
@@ -35,7 +36,7 @@ class CAIStateGroup_CreatureUseCoverBase : public CAIStateGroup_EnemyCreatureBas
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float x, y;
     float GetLength() const { return (float)sqrt(x * x + y * y); }

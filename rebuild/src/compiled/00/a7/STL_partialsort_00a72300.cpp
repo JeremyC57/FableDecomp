@@ -1,5 +1,6 @@
 // std::__partial_sort(pair<CCharString,C3DHelperPoint>* first, pair<CCharString,C3DHelperPoint>* middle, pair<CCharString,C3DHelperPoint>* last, pair<CCharString,C3DHelperPoint>*, CCompareString<C3DHelperPoint> comp) -- heap-select the smallest (middle - first) helper-point entries (name order) into [first, middle) and sort them
 // Leaf: ??$__partial_sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A72300, 126 bytes (+2 int3), /Gr `__fastcall` (first in ecx, middle
 //   in edx; last, the value-type tag pointer and the comparator on the stack, `ret 0Ch`).
 // Callees: std::__make_heap 0x00A70630, CCharString::operator< 0x009E6530 (the CCompareString comparator),
@@ -19,11 +20,7 @@ public:
     bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 
-class C3DVector {                                       // user memberwise copy ctor
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DHelperPoint {                                  // 16 bytes (Ego_r.pdb)
 public:

@@ -1,5 +1,6 @@
 // CTCTargetingPlayer::CTCTargetingPlayer(CThing* thing) -- the targeting base, then a cleared player-targeting state: no target-next request, an empty targeted point and point lists, no Z target, zeroed targeted positions and four empty thing pointers
 // Leaf: ??0CTCTargetingPlayer
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E2250, 184 bytes (`ret 4`; size TU: `or [m],-1`, `fldz ; fstp` zeros);
 // vtable 0x0124280C CTCTargetingPlayer.
@@ -53,11 +54,7 @@ template <class T> struct CVectorBase {                 // STLport _Vector_base<
 template <class T> struct CRetailVector : CVectorBase<T> {   // STLport vector<T> (12 bytes)
     CRetailVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector() { }

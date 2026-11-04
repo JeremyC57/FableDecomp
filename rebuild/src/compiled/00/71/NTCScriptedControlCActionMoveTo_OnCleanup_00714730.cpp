@@ -1,4 +1,5 @@
 // NTCScriptedControl::CActionMoveTo::OnCleanup() -- free the claimed action point, restore the old physics component, the pushable flag and the creature's navigation state
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Layout: CActionMoveTo offsets are the PDB's (+0x24 PTargetThing, +0x34 PTCOldPhysics, +0x45/+0x46/+0x48/+0x4c); the creature is
 // re-read through the owning control at +4 (its +4), as in the landed CActionLeadCreature::OnActivate 0x007122D0.
@@ -8,7 +9,7 @@ public:
     ~CCharString();                                  // 0x0099EAE0
 };
 class CTCBase;
-class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };
+#include "engine/C3DVector.h"
 struct CBoundingBox { C3DVector Min, Max; };
 
 class CBaseClassNonCopyable {

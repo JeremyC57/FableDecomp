@@ -1,5 +1,6 @@
 // std::vector<C3DVertex2>::_M_fill_insert(iterator pos, size_type n, const value_type& x) -- STLport fill insert of n copies of one 32-byte mesh vertex: in place through a local copy of x when the spare capacity holds n (shift the tail, then fill), else hand over to _M_insert_overflow
 // Leaf: ?_M_fill_insert@?$vector@VC3DVertex2@@V?$allocator@VC3DVertex2@@@std@@@std@@QAEXPAVC3DVertex2@@IABV3@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A97040, 307 bytes, thiscall `ret 0Ch`.
 // Identity (probable): the landed C3DMeshFileVerticesChunk::ReadFromFile 0x00ABD150 sizes its CArray<C3DVertex2> vertex
 //   array through it (bound there as an invented CArray<C3DVertex2>::Insert); the 32-byte element matches Ego_r.pdb
@@ -8,11 +9,7 @@
 //   0x00A94950 (all __fastcall, landed), _M_insert_overflow 0x00A96B30.
 // Shape: STLport 4.6 vector.c `_M_fill_insert` verbatim (no EH); the tag-taking helpers are same-TU noinline stand-ins
 //   that never read their tags, so the tags are homed on argument slots as in retail.
-class C3DVector {                                          // user memberwise copy
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DVertex2 {                                         // 32 bytes (Ego_r.pdb), implicit copy
 public:
     C3DVector Position;                                    // +0x00

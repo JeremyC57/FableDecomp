@@ -1,5 +1,6 @@
 // C3DAnimationStats::GetAllEventNames(std::vector<CCharString>& names) const -- reserve one slot per timing event and append every event's name (the TimingEvents multimap keys) through a back inserter
 // Leaf: ?GetAllEventNames@C3DAnimationStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A4EF90, 42 bytes, `ret 4`. Name: Ego_r.pdb / FableWin.pdb
 //   ?GetAllEventNames@C3DAnimationStats@@QBEXAAV?$vector@VCCharString@@...; the landed caller
 //   NAnimationEvents::CManager::GetEmbeddedEventsBetweenTimes 0x006F9820 (and 0x006F9240) passes a C3DAnimationStats and
@@ -11,7 +12,7 @@ class CCharString {
 public:
     void* PStringData;                                  // +0x00
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 enum EAnimationType { ANIMATION_TYPE_DUMMY };
 
 namespace std {

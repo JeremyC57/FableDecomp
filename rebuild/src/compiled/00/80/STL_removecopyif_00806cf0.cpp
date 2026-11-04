@@ -1,5 +1,6 @@
 // std::remove_copy_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint* result, CThingFilter_IsInFOV pred) -- copy the target points outside the field of view to result; returns the new end
 // Leaf: ??$remove_copy_if@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00806CF0, 132 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx -- spilled to the `push ecx` frame word), result and the 0x24-byte predicate by value on the stack,
 //   `ret 28h`.
@@ -37,10 +38,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }      // user copy ctor, implicit operator=
-};
+#include "engine/C3DVector.h"
 namespace NPlayerTargeting {
 class CTargetPoint { public:                                     // 0x1c bytes
     CIntelligentPointer<CThing> PThing;                   // +0x00

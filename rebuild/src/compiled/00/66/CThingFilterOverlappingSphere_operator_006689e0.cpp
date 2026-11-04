@@ -1,5 +1,6 @@
 // CThingFilter_OverlappingSphere::operator()(CThing* thing) -- true when the thing's physics bounding sphere overlaps the filter sphere (SpherePos, Radius)
 // Leaf: ??RCThingFilter_OverlappingSphere
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006689E0, length 107 bytes (+ int3 padding).
 // Callees: CTCPhysicsBase::GetBoundingInfo(C3DVector*, float*) @ 0x006AF640 (landed).
 // Layout: PDB CThingFilter_OverlappingSphere { C3DVector SpherePos (+0); float Radius (+0xc); }; retail CThing PhysicsTC +0x60
@@ -7,9 +8,7 @@
 // Shape: the bounding centre is a C3DVector local, the bounding radius lands in the dead thing argument slot; the deltas
 // are thing minus SpherePos, the radii summed as `boundRadius + Radius`; `if (d2 < r*r) return true; return false;`
 // gives the byte-constant exits.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640
 };

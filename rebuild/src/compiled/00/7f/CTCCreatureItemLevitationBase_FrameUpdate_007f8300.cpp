@@ -1,4 +1,5 @@
 // CTCCreatureItemLevitationBase::FrameUpdate() -- refresh the levitation target, then pin every levitating item at the creature's position plus the levitation offset (drawable, physics awake and moving)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F8300, length 135 bytes (+ int3 padding). Vtable 0x0124156C slot 9.
 // Callees: own virtual slot 31 (+0x7C; 0x007F84C0 in CTCCreatureItemLevitationNymph, which recomputes its hover direction),
 // CThing::GetPos @ 0x004C73D0, CThing::SetAsDrawable(bool) (slot 28, +0x70), CTCPhysicsBase slot 36 (+0x90, bool; an empty
@@ -9,9 +10,7 @@
 // component pointer at +0x60.
 // Shape: the list end is re-read from the member each pass (the calls may alias it); the position sum is built X first
 // (`fld g ; fadd [pos]`) component by component into the named local.
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 extern C3DVector g_levitationOffset;            // 0x01384494
 
 class CTCPhysicsBase { public:
@@ -67,9 +66,9 @@ void CTCCreatureItemLevitationBase::FrameUpdate()
     for (SThingListNode* node = LevitatingItems.head->next; node != LevitatingItems.head; node = node->next) {
         CThing* item = node->value;
         C3DVector itemPosition;
-        itemPosition.x = g_levitationOffset.x + position.x;
-        itemPosition.y = g_levitationOffset.y + position.y;
-        itemPosition.z = g_levitationOffset.z + position.z;
+        itemPosition.X = g_levitationOffset.X + position.X;
+        itemPosition.Y = g_levitationOffset.Y + position.Y;
+        itemPosition.Z = g_levitationOffset.Z + position.Z;
         item->SetAsDrawable(true);
         item->PhysicsTC->SetSlot36(true);
         item->PhysicsTC->SetAsMoving(true);

@@ -1,5 +1,6 @@
 // CCreatureAction_UseObject::FinishAction() -- when the action carries component params, add the named component to the creature placed at its current position/orientation, then delete the params; then the base FinishAction
 // Leaf: ?FinishAction@CCreatureAction_UseObject@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0069F2B0, 303 bytes (304 with padding), virtual FinishAction.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +0x08), the physics component's virtual slot 72 (+0x120,
 //   the current right-handed set; name unconfirmed), CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0 / ~CBaseClassNonCopyable 0x0099A300 (CTCParamsPhysicsBase,
@@ -12,11 +13,7 @@
 //   landed CTCParamsPhysicsBase ctor 0x006A06E0) and copied again into the inline-constructed params object; the
 //   creature (AddTC's object) is a named local, so it is fetched before the argument pushes (inline it is fetched last); the name is a by-value temporary; `delete` through
 //   the virtual deleting destructor, then the pointer is cleared.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCharString { public:
     void* PStringData;

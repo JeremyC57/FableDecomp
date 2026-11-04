@@ -1,5 +1,6 @@
 // std::partial_sort(pair<C3DVector, long>* first, pair<C3DVector, long>* middle, pair<C3DVector, long>* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport partial_sort front end for the first-person targeting positions: forward to __partial_sort with the value type pointer
 // Leaf: ??$partial_sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080B1A0, 102 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   middle in edx -- passed through untouched), last and the 0x2c-byte comparator by value on the stack, `ret 30h`.
 // Name: STLport `partial_sort<pair<C3DVector,long>*, `anonymous namespace'::
@@ -11,10 +12,7 @@
 // Shape: STLport `__partial_sort(first, middle, last, _STLP_VALUE_TYPE(first, ..), comp)` -- the comparator copied
 //   memberwise into its slot first (ten dwords and the CompareInXYPlane byte through cl), then the null type pointer
 //   and last.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // user copy ctor, implicit operator=
-};
+#include "engine/C3DVector.h"
 
 class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                                   // +0x00

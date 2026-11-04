@@ -1,5 +1,6 @@
 // std::vector<C3DVector>::vector(const vector& x) -- STLport vector copy constructor for 12-byte C3DVector points: allocate exactly x.size() elements (none when empty), then copy-construct x's range into them
 // Leaf: ??0?$vector@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F0810, 137 bytes, thiscall, `ret 4`, returns this.
 // Identity: 76 call sites (0x006EADCA, 0x006F3037, 0x0075DEBB, ...); the landed CTCShapeManager::InitialiseFrom 0x00762AB0
 //   and NParticleEngine::CPSCEmitterGeneric::WriteBinary 0x00B12EF0 declare it as the vector<C3DVector> copy
@@ -15,10 +16,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
 #pragma pack(push, 1)
-class C3DVector { public:                                          // 1-aligned in retail (CProng::Prong sits at +1)
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace std {

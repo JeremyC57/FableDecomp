@@ -1,12 +1,9 @@
 // CMatrix3x4::operator*(const C3DVector& v) const -- transform a vector by the 3x3 part of the matrix (rows at +0, +0xc, +0x18): the three dot products, returned by hidden pointer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A56530, length 83 bytes.
 // Leaf: ??DCMatrix3x4@@QBE?AVC3DVector@@ABV1@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Shape: the hidden-pointer result built in a named local and returned through the memberwise copy constructor (the three sums stay on the x87 stack, `fxch st(2)` then three stores); a value constructor evaluates the rows right to left, a POD copies through the frame, `ret 8`.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }   // the memberwise copy into the hidden result: VC7.1 has no NRVO, but the copy of a fully computed local folds into three x87 stores
-};
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 { public:
     C3DVector m_row0;                              // +0x00

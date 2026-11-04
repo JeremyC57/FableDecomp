@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::UnregisterComponent(const CAGraphicAppearanceComponent* component) -- drop every primitive (ClearAllPrimitives inlined: each component's slot 1, the primitive list cleared, the rendered-frame stamp moved past the current frame), then remove the component from the list
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 31 (family c703): Primitives is the STLport std::list<CPrimitive>: its clear 0x004C5690 binds
 //   ?clear@?$_List_base@VCPrimitive@NGraphicAppearance@@V?$allocator@VCPrimitive@NGraphicAppearance@@@std@@@std@@QAEXXZ (the 0x004BF8F0
 //   spelling; was the invented ?clear@CPrimitiveListObject@@QAEXXZ); the inline ClearAllPrimitives is protected (IAE in both PDBs)
@@ -16,7 +17,7 @@
 // (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
 // CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
 // No engine header exists for CTCGraphicAppearance: local model.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCAnimationBase;
 

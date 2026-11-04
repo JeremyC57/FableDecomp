@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleGoToLookInDirection::`scalar deleting destructor'(unsigned int flags) -- run ~CScriptModuleBase inline (clear the owner and camera-manager pointers, destroy the two intelligent pointers) and free the module when bit 0 of the flags is set
 // Leaf: ??_GCScriptModuleGoToLookInDirection@NCameraModes@@UAEPAXI@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005ed3e0, 55 bytes, thiscall, `ret 4`, returns this.
 // Identity (proven): vtable 0x01255F9C slot 0 (RTTI .?AVCScriptModuleGoToLookInDirection@NCameraModes@@, rebuild/manifest/rtti-vtables.tsv); the body stores
 //   the CScriptModuleBase vtable 0x01255F74 (the derived implicit destructors inline the base one without their own store).
@@ -17,10 +18,7 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 class CThing;
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet {                                    // Ego_r.pdb, 24 bytes
 public:
     C3DVector Up;                                         // +0x00

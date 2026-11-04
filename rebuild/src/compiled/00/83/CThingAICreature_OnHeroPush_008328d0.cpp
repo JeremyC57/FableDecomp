@@ -1,5 +1,6 @@
 // CThingAICreature::OnHeroPush(CThing* pusher, float distance, const C3DVector& direction) -- when the pusher is the living main hero carrying the hero component, the creature's push component (added on demand) accumulates the distance, takes the direction and restarts its frame counter
 // Leaf: OnHeroPush
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008328D0, 218 bytes (+6 int3). `ret 0Ch`.
 // Callees: CThing::GetPlayerManager() 0x004C7A00 (manifest "CViewBase::GetDisplayEngine" propagated: g_pThingManager->PlayerManager),
@@ -13,7 +14,7 @@
 //        escapes) and the name as a named local in the AddTC block (008967f0 idiom; with the temporary argument 35 lines).
 // Layout: CThing UniqueID +0x18, presence bits +0x20, Components +0x44, Dead +0x91 bit 0; CTCOnHeroPush DistPushed +0x0C,
 //         PushDir +0x10, FrameSincePushed +0x1C (Ego_r.pdb).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString {
 public:
     void* PStringData;

@@ -1,4 +1,5 @@
 // CAIStateGroup_OpinionReactionRoot::TryAndLookOnAwarenessUpdate() -- one look-at-position step towards the thing reacted to.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009830C0, length 67 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (ThingReactingTo at +0x6b), CThing::GetPosition
 // @ 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated), CAIStateGroupBase::AIAction_LookAtPos
@@ -9,10 +10,7 @@
 // The pointer member is unaligned at +0x6b (engine header, pack 1), so the class is modelled packed.
 class CThing;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0

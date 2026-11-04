@@ -4,6 +4,7 @@
 //   render manager into a local before the call (retail evaluates it before the CWideString argument copy), and the main draw's
 //   C3DVector sits in its own block so it shares the shadow draw's slot (0x2c frame).
 // Leaf: DrawTextW
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00405020, length 410 bytes (`ret 4`).
 // Callees: CWideString(const unsigned short*) 0x0099B6B0 / CWideString(const CWideString&) 0x0099B720 / ~CWideString 0x0099B510,
 //   CCharString() 0x0099E4B0 / ~CCharString 0x0099EAE0, CIMEFont::GetFontNameAndScale 0x00404970 (landed), GFGetSystemManager
@@ -55,10 +56,7 @@ class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}

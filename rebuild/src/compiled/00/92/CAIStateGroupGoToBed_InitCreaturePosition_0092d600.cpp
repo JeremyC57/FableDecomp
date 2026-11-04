@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToBed::InitCreaturePosition() -- stamp the creature's sleep component, and when it is bed time
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // and a bed (or a bandit bed) is found, run OnReplace and record the sleeper's current position as the wake spot.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092D600, length 233 bytes (+ int3 padding). Vtable slot 3.
@@ -24,7 +25,7 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class C3DVector;
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
@@ -157,7 +158,6 @@ struct CAIStateGroupBaseW : CAIStateGroupBase {
     CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
-class C3DVector { public: float x, y, z; };
 
 struct CThingPositioned : public CThing {
 };

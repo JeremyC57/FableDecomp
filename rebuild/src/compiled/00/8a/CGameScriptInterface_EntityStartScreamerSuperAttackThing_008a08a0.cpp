@@ -1,4 +1,5 @@
 // CGameScriptInterface::EntityStartScreamerSuperAttackThing(const CScriptThing&,const CScriptThing&) -- submit a counted super attack mode
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008A08A0,169 bytes. Mode ctor008AC3F0; counted pointer ctor00718A00; AddMode0073ACC0. PDB CModeScreamerSuperAttack size132; no generated mode header.
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
@@ -7,7 +8,7 @@
 #undef CThing
 // Native bitset has9words/map44/life91 versus donor10words/map48/lifeA1; retain named native view below.
 #include "fable_string.h"
-class C3DVector{ public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

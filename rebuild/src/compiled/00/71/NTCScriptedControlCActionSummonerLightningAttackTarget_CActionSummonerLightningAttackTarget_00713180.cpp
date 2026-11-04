@@ -13,6 +13,7 @@
 // and the turn tolerance 1/72 (0x3C638E39) as an immediate. The position must be three SCALAR members copied
 // in the init list (a C3DVector member copies through `lea ecx,[edi+0Ch]`). Members carry the PDB names.
 // Leaf: ??0CActionSummonerLightningAttackTarget
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 
 class CBaseClassNonCopyable {
 protected:                                   // root of the scripted actions (vtable 0x0129A7C4)
@@ -31,9 +32,7 @@ class CScriptThing : public CBaseObject { public:             // vtable 0x01238C
     CScriptThing(const CScriptThing& other);    // non-POD: returned through a hidden pointer
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     CScriptThing GetScriptThing() const;              // 0x004C7E50

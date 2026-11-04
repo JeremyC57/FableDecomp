@@ -1,5 +1,6 @@
 // NCreatureMode::CModeScorpionKingTailPlunge::~CModeScorpionKingTailPlunge() -- implicit destructor: PDustTrailEmitter, PTailEmitter, PTarget, the Filter (Group string + CAnimFilterBase vtable reset), then ~CModeStandBase
 // Leaf: ??1CModeScorpionKingTailPlunge@NCreatureMode@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E37C0, 59 bytes (+ int3 padding to 0x008E3800), thiscall; tail `jmp ~CModeStandBase`
 //   0x0073D860.
 // Identity (proven, two sources): the only caller 0x008E37A3 is the scalar deleting destructor 0x008E37A0, slot 0 of vtable
@@ -28,10 +29,7 @@ class CBaseObjectPointer;
 class CAnimateThing;
 class CAnimationEntry;
 #pragma pack(push, 1)
-class C3DVector {                                          // pack(1) in retail (12 bytes; TargetPos sits at +0x89)
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 enum EMovementType;                                         // MS forward enum (no enumerator used here)
 

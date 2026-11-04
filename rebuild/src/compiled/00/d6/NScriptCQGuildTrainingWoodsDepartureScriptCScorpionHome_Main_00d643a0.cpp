@@ -1,5 +1,6 @@
 // CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Main() -- wait for departure mission point 1, show the beetle counter; while the point stays 1, count the live guild scorpions each frame, update the counter, and whenever fewer than three are about either finish the point (none alive, none left to spawn: point 2 and the next objective) or spawn another stag beetle at the spawn point furthest from the hero; finally remove the counter
 // Leaf: ?Main@CScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D643A0, 1090 bytes (int3 padded to 1104).
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30 (manifest "CCreatureAction_TrollWhackGroundBase::Initialise" is
 //   propagated), CCharString 0x0099EBF0 / ~ 0x0099EAE0, __ftol2 0x00BFEA70, CCountedPointer<CScriptThingImpl>::operator=
@@ -53,7 +54,7 @@ template <class T> class CCountedPointer { public:
     }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CScriptThingImpl {
     virtual void i000();
     virtual void i001();

@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& area, const filter_type& filter, const comparator_type& compare, thing_type** out) const -- choose the preferred matching thing across mapwho cells once per search stamp.
 // Leaf: ??$GetPBestThingInRoughArea@VCThingFilter_IsOpinionSourceWithFreshDeed@@VCThingCompare_Nearest@@$$CBVCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_IsOpinionSourceWithFreshDeed@@ABVCThingCompare_Nearest@@PAPBVCThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity: proven; hand951G070 exact mapping; own DeedReactionRoot::IsRunnable0x960B41/filter0x960FC0/comparator<constCThing>0x95FDA0 and exact constCThing PDB instance.
 // Layout: the generic search model carries only this class type-mask tag; these three instantiations search CThing/const CThing. No CreatureBase object, field, sizeof, constructor or method is used, so its generated flattened full header layout is not asserted or accessed.
 // Layout: the generic search model carries only this class type-mask tag; these three instantiations search CThing/const CThing. No AICreature object, field, sizeof, constructor or method is used. FreshDeed invokes an external filter and keeps its tracked-creature member opaque; no generated full AICreature layout is asserted or accessed.
@@ -42,7 +43,8 @@ namespace std { struct __true_type { __true_type() {} }; }
 using std::__true_type;
 class CThingCreatureBase:public CThing { public: enum { TypeMask=0xF }; };
 class CThingAICreature:public CThingCreatureBase { public: enum { TypeMask=0x1F }; };
-class C3DVector { public: float X,Y,Z; }; class CThingCompare_Nearest { public: C3DVector Pos; template<class T> T* operator()(T*,T*) const; };
+#include "engine/C3DVector.h"
+class CThingCompare_Nearest { public: C3DVector Pos; template<class T> T* operator()(T*,T*) const; };
 class CThingFilter_IsOpinionSourceWithFreshDeed { public: unsigned char PCreature[8]; long LastVDeedID;
 #ifdef _MSC_VER
 unsigned __int64 LastSourceUID;

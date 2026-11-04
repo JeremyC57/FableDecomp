@@ -1,5 +1,6 @@
 // CRigidBodyConfig::operator=(const CRigidBodyConfig& other) -- the compiler-generated memberwise assignment of a rigid body's physical state
 // Leaf: ??4CRigidBodyConfig@@QAEAAU0@ABU0@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075BA30, length 196 bytes (`ret 4`, returns `this`).
 // Callees: std::vector<C3DVector>::operator=(const vector&) @ 0x0075B8D0 (BoundingVertices; manifest "Std_Vector_Assign").
 // Layout: Ego_r.pdb CRigidBodyConfig (0xb8) with retail's 12-byte STLport vector (0xb4): CMPosition +0x00,
@@ -9,11 +10,7 @@
 // user copy constructor but no operator=, so each vector member is copied through a pair of re-based pointer
 // registers (`lea ecx,[eax+N] ; lea edx,[ebx+N]` then three dword moves); the plain 3x4 matrices are `rep movsd`
 // blocks; the vector member goes through its out-of-line assignment last.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 { public:
     float M[3][4];

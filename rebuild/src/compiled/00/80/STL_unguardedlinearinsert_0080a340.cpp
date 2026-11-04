@@ -1,5 +1,6 @@
 // std::__unguarded_linear_insert(NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint val, CThingCompare_BestForTargeting2 comp) -- STLport insertion step of the target-point sort: shift the better-placed predecessors up and drop val into the gap
 // Leaf: ??$__unguarded_linear_insert@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080A340, 176 bytes, /Gr `__fastcall` (last in ecx), the 0x1c-byte value
 //   and the 0x34-byte comparator by value on the stack, `ret 50h`; the value is destroyed by the callee.
 // Name: STLport `__unguarded_linear_insert<CTargetPoint*, CTargetPoint, CThingCompare_BestForTargeting2>` (the else arm
@@ -28,10 +29,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint { public:

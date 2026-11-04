@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::DatabaseCopy(const CPSCBase* other) -- copy another spline component's settings: the cardinal spline, then the random-offset and position-parameter data (allocated on demand, bound to this spline, settings copied) or released when the source has none
 // Leaf: DatabaseCopy
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B22530, 308 bytes (+ int3 padding), `ret 4` / tail `jmp`.
 // Callees: CArray<C3DVector>::operator= 0x0075B8D0 (spline points, offset limits / speeds), operator new 0x00BFEA1A,
 //   CSplineRandomOffsetData(CCardinalSpline*) 0x00B21DD0, CSplinePosParamData(CCardinalSpline*) 0x00B21A00,
@@ -14,7 +15,7 @@
 //   release-to-null clears Info before Data.
 void* __cdecl operator new(unsigned int size);       // 0x00BFEA1A
 void __cdecl operator delete(void* p);               // 0x00BFE9BC
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 template <class T> class CArray { public:                   // STLport vector<T> (12 bytes in retail)
     T* _M_start;
     T* _M_finish;

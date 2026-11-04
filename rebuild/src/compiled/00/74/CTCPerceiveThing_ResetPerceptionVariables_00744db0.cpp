@@ -1,5 +1,6 @@
 // CTCPerceiveThing::ResetPerceptionVariables() -- clear the awareness timer, flag searching when the def has no initial target, clear the perceiving/smelt/heard/combat state and distance, drop the perceived thing and switch off all three line-of-sight flags (each drops the parent from the GUI perceiver drawing)
 // Leaf: ResetPerceptionVariables
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00744DB0, 128 bytes. Callees: CTCPerceiveThing::SetPerceivedThing @ 0x007446B0 (out of line),
@@ -46,7 +47,7 @@ class CDefPointeeBase { public:
     unsigned char _pad00[0x40];
     long StartWithoutTarget;                    // +0x40 CPerceivedThingDef word: 0 = start searching for a target
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCPerceiveThing { public:
     void*     __vftable;                        // +0x00 (CTCBase)
     CThing*   ParentThing;                      // +0x04

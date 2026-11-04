@@ -1,5 +1,6 @@
 // NScript::CQ_HeroSoulsBriarScript::CHSB_MagicBarrier::Main() -- Briar Rose's magic barrier in Hero Souls: register a thing-alive filter, raise the two forcefield idle effects facing the shrine centre, re-raise them whenever both have gone until Briar is killed, then remove them, play the two "off" effects facing the centre and remove Me
 // Leaf: ?Main@CHSB_MagicBarrier@CQ_HeroSoulsBriarScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D81C50, 1464 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980 (inline copies in the loop), ~CBaseClass 0x0099A2E0,
@@ -35,7 +36,7 @@ struct CScriptThingImpl {                              // the game-side thing be
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
     virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)

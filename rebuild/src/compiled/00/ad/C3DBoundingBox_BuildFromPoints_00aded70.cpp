@@ -1,5 +1,6 @@
 // C3DBoundingBox::BuildFromPoints(const C3DVector* points, float num_points) -- an empty point set (count 0.0) zeroes the box; otherwise MinCoord and MaxCoord start at the first point and every point (the first included) widens them per component; the count is a float, so the loop index is compared as an unsigned-to-float conversion
 // Leaf: ?BuildFromPoints@C3DBoundingBox@@QAEXPBVC3DVector@@M@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADED70, 294 bytes (+ int3 padding), thiscall `ret 8`.
 // Identity (proven): Ego_r.pdb and FableWin.pdb name `?BuildFromPoints@C3DBoundingBox@@QAEXPBVC3DVector@@M@Z`, and the
 //   landed vector overload 0x00ADEEA0 binds exactly this spelling for its call to 0x00ADED70 (forwarding &points[0] and
@@ -8,12 +9,7 @@
 // Shape: `count == 0.0f` is the `fucompp ; test ah,44h ; jp` test against 0.0f (0x0122DEDC); the min / max arms are
 //   `a < b ? a : b` (`test ah,5 ; jp`) and `a > b ? a : b` (`test ah,41h ; jne`); the loop index is an unsigned long
 //   converted with the 2^32 fix-up (0x0122DCB4) in the dead `points` slot.
-class C3DVector {
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class C3DBoundingBox {
 public:

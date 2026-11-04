@@ -1,4 +1,5 @@
 // instance modelled WITH its vptr (pair.second at entry +4, as Ego_r.pdb): VC then biases the strength-reduced pointer to InstanceName (+0x14) like retail
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // NParticleEngine::CParticleSystem::WriteBinary(CDataOutputStream&) -- save the system's name, its Enabled and ScaleParticles flags, its scale, then the component count and, per component, its name, instance name, enabled flag and body followed by a '{' marker byte
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF4240, length 224 bytes (`ret 4`; manifest label correct).
 // Callees: CDataOutputStream::WriteNullTerminatedString @ 0x00995AE0 (x2), WriteBool @ 0x00993E30 (x3), Write3DVector
@@ -10,7 +11,7 @@
 // Shape: the count is the signed 24-byte difference; the walk keeps the entry pointer in a frame slot and VC's
 // strength-reduced pointer to its instance name in ebx (component and flag at -0x0c / -0x04); the name temporary
 // is destroyed right after it is written.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCharString {
 public:

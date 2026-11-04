@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::`scalar deleting destructor'(unsigned int) -- destructor body frees PPhysicsMeshInfo (+0x40); then the CTCPhysicsBase PhysicsDef counted pointer (+0x38) is released and CTCBase's destructor runs; free when bit 0 of the flags is set
 // Leaf: ??_GCTCPhysicsStandard
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00724DE0, length 78 bytes (+ int3 padding). CTCPhysicsStandard vtable
 // 0x01265F84 slot 0.
 // Callees: operator delete @ 0x00BFE9BC (the mesh info, then the object), the def's virtual slot 1 (`call [eax+4]`),
@@ -18,9 +19,7 @@
 class CThing;
 class CThingPhysicsMeshInfo { public: long m_data; };
 
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 
 class CPhysicsDef { public:
     virtual void v00();

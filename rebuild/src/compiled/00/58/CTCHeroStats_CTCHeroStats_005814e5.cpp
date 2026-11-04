@@ -1,5 +1,6 @@
 // CTCHeroStats::~CTCHeroStats() -- destroy the hero stats component's members in reverse order (marriages list, primitive handle, drunkenness def pointer, death-recovery marker name, five long/position vectors, outstanding-crimes map), then the CTCBase base
 // Leaf: ??1CTCHeroStats
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005814E5, 241 bytes; called only by the vector deleting destructor 0x005814C9 =
 //   CTCHeroStats vtable 0x0124F70C slot 0 (rtti-vtables.tsv). Label correction: the catalog says
 //   CTCShotDefinitionProjectile::~CTCShotDefinitionProjectile (propagated).
@@ -84,7 +85,7 @@ template <class T> struct CVectorStorage {          // STLport vector<T> (retail
     __forceinline ~CVectorStorage() { if (_M_start) free(_M_start); }
 };
 class CRegion;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct SHousePosition { const CRegion* Region; C3DVector Position; };   // pair<const CRegion*, C3DVector>
 struct CCriminalStatusMap {                         // map<CCharString, CTCHeroStats::MirroredCriminalStatus>
     unsigned char _body[0xc];

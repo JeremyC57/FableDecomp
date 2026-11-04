@@ -1,5 +1,6 @@
 // CEngineSimulationManager::CEngineSimulationManager() -- CBase and CEngineComponent bases, the three empty simulation-info lists, Perlin noise seeded with 0, and the default wind / gravity / cloth / radius settings
 // Leaf: ??0CEngineSimulationManager
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B81BC0, length 294 bytes (+ int3 padding), plain `ret`.
 // Label correction: catalogued as CGuiControlNumberInit (propagated); the vtables it stores, 0x012A3984 at +0 and
 //   0x012A394C at +4, are CEngineSimulationManager's (RTTI .?AVCEngineSimulationManager@@) -- the landed destructor
@@ -27,11 +28,7 @@ class CEngineComponent { public:                          // 0x0c bytes
     long  m_8;
     CEngineComponent();                            // 0x00B59710
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 struct CPerlinNoise {
     unsigned long IndexTable[256];                 // +0x000
     C3DVector     VectorTable[256];                // +0x400

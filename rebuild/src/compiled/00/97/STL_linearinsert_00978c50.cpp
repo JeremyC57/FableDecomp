@@ -1,5 +1,6 @@
 // std::__linear_insert(CThing** first, CThing** last, CThing* val, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- insertion step of the advance-in-cover candidate sort: an element that sorts before the first is moved to the front with one memmove, any other goes through the unguarded insert
 // Leaf: ??$__linear_insert@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00978C50, 107 bytes, __fastcall (/Gr algorithm TU: first in ecx, last in edx,
 //   val and the comparator on the stack), `ret 14h`.
 // Instantiation: the advance-in-cover candidate sort: std::sort<CThing**,
@@ -21,9 +22,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 extern "C" double __cdecl pow(double x, double y);                                    // _CIpow 0x00BFEB40
 extern "C" double __cdecl sqrt(double x);
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

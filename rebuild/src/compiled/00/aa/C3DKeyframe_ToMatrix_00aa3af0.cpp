@@ -1,5 +1,6 @@
 // C3DKeyframe::ToMatrix(CMatrix4x4& m, bool applyScaling) const -- keyframe (quaternion + position) to a 4x4 matrix: the inline quaternion-to-matrix with the position as the translation column and a 0,0,0,1 last row; this build does not read applyScaling
 // Leaf: ?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AA3AF0, 346 bytes, thiscall `ret 8` (matrix reference + bool, the bool unread).
 // Identity: FableWin.pdb names exactly two 4x4 conversions, ?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z and
 //   the inline ?ToMatrix@CQuaternion@@QBEXAAVCMatrix4x4@@ABVC3DVector@@@Z; this body reads the 48-byte keyframe (Rotation +0,
@@ -13,10 +14,7 @@
 //   named members E11..E44 VC7.1 hoists the six integer stores (E34 = pos.Z, the 0,0,0 last row, E44 = 1.0f) up to
 //   just after the E11 store; through the returned float& it keeps them in source order after E33, as retail does
 //   (the matching lever after 4 named-member grades: chained zeros, reversed zero order, named pos local).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class C4DVector { public: float X, Y, Z, W; };
 class CMatrix4x4 { public:
     union {

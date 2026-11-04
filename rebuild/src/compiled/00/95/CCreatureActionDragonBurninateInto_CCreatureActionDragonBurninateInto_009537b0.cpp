@@ -1,5 +1,6 @@
 // CCreatureAction_DragonBurninateInto::CCreatureAction_DragonBurninateInto(CThingCreatureBase*, const vector<C3DVector>&, const C3DVector&, float, float, const C3DVector&, const C3DVector&) -- base CCombatActionBase(owner, 250, the owner's "SWORD_SWING" sound pair), then the burn path fields from the arguments
 // Leaf: ??0CCreatureAction_DragonBurninateInto@@QAE@PAVCThingCreatureBase@@ABUCVectorC3DVector@@ABVC3DVector@@MM22@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009537B0, length 208 bytes, `ret 1Ch`. Vtable 0x01294374.
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("SWORD_SWING" @ 0x0127AC80), GetSoundPair(CThingCreatureBase*, const CCharString&)
 // 0x008561A0 (`__fastcall`, CSoundPair by hidden pointer), CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&)
@@ -21,10 +22,7 @@ class CSoundPair { public:                             // two sound ids (user ct
 };
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* creature, const CCharString& name);   // 0x008561A0
 
-class C3DVector { public:                              // three floats; the memberwise user copy constructor copies each as a dword
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 struct CVectorC3DVector {                       // std::vector<C3DVector> (retail 12 bytes)
     C3DVector* _First;
     C3DVector* _Last;

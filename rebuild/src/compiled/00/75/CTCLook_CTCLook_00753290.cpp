@@ -1,5 +1,6 @@
 // CTCLook::~CTCLook() -- creature look (head/eye turning) component dtor: unless the parent thing is dead, unregister this appearance component from the parent's graphic appearance TC; then the member dtors in reverse order (the two head-turn anim counted pointers, the turning-anim vector, the appearance and look def pointers), the CAGraphicAppearanceComponent base and ~CTCBase
 // Leaf: ??1CTCLook@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00753290, 228 bytes, tail jump to the base destructor.
 // Identity: the vtable stores 0x01269744 / 0x012697B8 both carry RTTI `.?AVCTCLook@@` (rtti_bases: CTCLook : CTCBase (+0),
 //   NGraphicAppearance::CAGraphicAppearanceComponent (+0xC)); slot 0 of 0x01269744 is the scalar deleting dtor 0x00755460,
@@ -127,11 +128,7 @@ template <class T> class CDefPointer { public:
 };
 
 #pragma pack(push, 1)
-class C3DVector { public:                                  // retail C3DVector is 1-aligned
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CTCBase : public CBaseClassNonCopyable { public:

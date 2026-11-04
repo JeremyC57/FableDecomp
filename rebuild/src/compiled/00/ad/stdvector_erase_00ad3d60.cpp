@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<QuadricOptimiserInternals::COptimisedFace >) STLport range erase of 72-byte trivially copied records: copy the tail [last, finish) down onto first element by element (`rep movsd` of 18 dwords), set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@VCOptimisedFace@QuadricOptimiserInternals@@V?$allocator@VCOptimisedFace@QuadricOptimiserInternals@@@std@@@std@@QAEPAVCOptimisedFace@QuadricOptimiserInternals@@PAV34@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD3D60, 99 bytes (+ int3 padding to 112), thiscall, `ret 8`, returns first.
 // Identity (proven): std::vector<QuadricOptimiserInternals::COptimisedFace >::erase(iterator, iterator); evidence: the landed vector<QuadricOptimiserInternals::COptimisedFace>::resize(size_type, const value_type&) 0x00AD6860 shrinks through it and the COptimisedPrimitive constructor 0x00ACDB80 erases with it; Ego_r.pdb COptimisedFace is 72 bytes (`mov ecx, 12h`); the catalog binds this exact STLport name here.
 // Label: the manifest's "Vector_CopyConstructor_Element48" is propagated (family J015: six erase bodies of trivially destroyed elements of 36..72
@@ -9,7 +10,7 @@
 //   random-access __copy loop (both inlined: `__forceinline`), and __destroy_aux over the trivial destructor is empty.
 // Model: agent951 G040 (0x006CAD70, vector<CCompositeBlendDesc>).
 #include <stddef.h>
-class C3DVector { public: float X, Y, Z; };                       // 12 bytes (Ego_r.pdb)
+#include "engine/C3DVector.h"
 namespace QuadricOptimiserInternals {
 class COptimisedFace {                                            // 72 bytes (Ego_r.pdb)
 public:

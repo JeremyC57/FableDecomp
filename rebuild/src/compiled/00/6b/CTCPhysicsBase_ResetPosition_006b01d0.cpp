@@ -4,11 +4,10 @@
 // Layout: engine/CTCPhysicsBase.h (OldPosition +0x18, the parent thing +0x04, Moving = bit 0 of +0x3c through a bit-field view).
 // Shape: the argument kept in edi across the virtual call; the flag set as mov al / or al,1 / mov around the epilogue pops.
 // Leaf: ResetPosition
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/CTCPhysicsBase.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 struct SPhysicsBaseFlags {                  // CTCPhysicsBase +0x3c bool:1 group
     bool Moving : 1;                        // bit 0

@@ -1,6 +1,7 @@
 // NScreenEffect::CScreenEffectPriorityStack::GetRadialBlurParam(CRadialBlurEntry* entry) -- returns the entry's CRadialBlurParams when the entry is still in RadialBlurKeys (else an uninitialised record)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00880F60, length 73 bytes.
 // Leaf: ?GetRadialBlurParam@CScreenEffectPriorityStack@NScreenEffect
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail bytes: push ecx ; mov eax,[esp+0Ch] ; push esi ; lea esi,[ecx+10h] ; lea ecx,[esp+10h] ; push ecx ; lea edx,[esp+8] ; push edx ; mov ecx,esi ; mov [esp+18h],eax ; call find ;
 //               mov eax,[esp+4] ; cmp eax,[esi] ; je E ; mov eax,[eax+10h] ; push edi ; lea esi,[eax+10h] ; mov eax,[esp+10h] ; mov ecx,0Ch ; mov edi,eax ; rep movsd ; ... ret 8 ; E: mov eax,[esp+0Ch] ; ... ret 8
 // Callees: the RadialBlurKeys/DisplacementKeys set's find @ 0x008839E0 (iterator through the hidden result) and erase(key) @ 0x00884710.
@@ -19,9 +20,7 @@
 // The entry argument is a derived-entry pointer: binding it to the set's `CStackEntry* const&` key makes a
 // conversion temporary, which VC7.1 homes in the argument's own (now dead) slot -- the retail
 // `mov [esp+N],eax` that stores the argument back over itself before `lea` passes its address.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() {}

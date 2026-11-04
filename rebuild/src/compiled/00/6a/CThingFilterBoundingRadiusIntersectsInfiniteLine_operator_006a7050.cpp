@@ -1,5 +1,6 @@
 // CThingFilter_BoundingRadiusIntersectsInfiniteLine::operator()(const CThing& thing) const -- true when the thing's physics bounding sphere reaches the filter's infinite line
 // Leaf: ??RCThingFilter_BoundingRadiusIntersectsInfiniteLine@@QBE_NABVCThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A7050, length 89 bytes (+ int3 padding), thiscall `ret 4`.
 // Callees: CTCPhysicsBase::GetBoundingInfo(C3DVector& centre, float& radius) const @ 0x006AF640, the squared
 //   point-to-infinite-line distance helper @ 0x00A442E0 (__fastcall: ecx = line start, edx = line end, then the
@@ -14,10 +15,7 @@
 //   the centre and the line parameter are frame locals, and the test is `distance_sq < radius * radius`
 //   (`fld r ; fmul r ; fxch ; fcompp`), false on the `jp`. The distance must be a NAMED float local: the call
 //   written inside the compare lets VC flip it to `r*r > d` (`test ah,41h ; jne`, no fxch: DIFFER 87v89).
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase {
 public:

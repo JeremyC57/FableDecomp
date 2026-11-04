@@ -1,4 +1,5 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test exercises a hand-written stand-in, not the candidate)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // CSpecialAbilitiesBulletTimeDef::CSpecialAbilitiesBulletTimeDef() -- construct the parent def base, install the vtable,
 //   default the seven sound CDefStrings to -1 and the seven screen-filter vectors to empty
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00457537, 163 bytes. Base ctor CParentDefClassBase::CParentDefClassBase @ 0x00430370;
@@ -17,7 +18,7 @@ template<class T> struct CRetailVector {                // STLport vector: begin
     T* m_first; T* m_last; T* m_end;
     CRetailVector() : m_first(0), m_last(0), m_end(0) {}
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CSpecialAbilitiesBulletTimeDef : public CParentDefClassBase { public:
     float SlowTimeDuration[4];                          // +0x3c
     long  BulletTimeSlowdownMultiplier[4];              // +0x4c

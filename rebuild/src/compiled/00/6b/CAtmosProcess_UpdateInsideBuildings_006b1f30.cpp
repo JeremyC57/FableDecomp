@@ -1,5 +1,6 @@
 // CAtmosProcess::UpdateInsideBuildings() -- take the reverb environment from the current region's def; every fourth frame test whether the camera is inside a building near it (whose reverb then wins) and record it; when the inside flag changes, cross-fade the four atmos sound groups and touch every SOUND_THEME def; when the reverb changed, store it and apply it
 // Leaf: ?UpdateInsideBuildings@CAtmosProcess@@AAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B1F30, length 811 bytes, plain `ret` (thiscall, no arguments).
@@ -52,11 +53,7 @@ template <class T> class CDefPointer { public:
     CDefPointeeBase* Object;                                // +0x00
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CCamera { public:                                   // 0x38 bytes (Ego_r.pdb)
     C3DVector       WorldPosition;                 // +0x00

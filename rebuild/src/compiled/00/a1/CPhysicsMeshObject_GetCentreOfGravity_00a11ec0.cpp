@@ -1,4 +1,5 @@
 // CPhysicsMeshObject::GetCentreOfGravity() const -- the physics mesh's centre of gravity rotated into the object's frame (the 3x3 part of the position matrix at +8; no translation)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A11EC0, length 91 bytes.
 // Identity: Ego_r.pdb `?GetCentreOfGravity@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ`.
 // Callees: none (C3DVector returned through the hidden pointer, `ret 4`).
@@ -11,11 +12,7 @@
 // reorders the terms of each sum on its own: written directly in GetCentreOfGravity (any term or
 // operand order) every sum starts with the X term; only through the inline helper does it start
 // with Z (`fld [ecx+20h] ; fmul [eax+0B0h]`) as in retail.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:
     C3DVector Row[3];                              // the rotation rows
     C3DVector Position;

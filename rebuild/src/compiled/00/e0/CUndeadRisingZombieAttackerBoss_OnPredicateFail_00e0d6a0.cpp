@@ -1,5 +1,6 @@
 // CUndeadRisingZombieAttackerBoss::OnPredicateFail() -- when the boss's predicate fails (its death), play the ZOMBIE_BOSS1_DEATH effect at its position
 // Leaf: OnPredicateFail
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0D6A0, length 179 bytes (192 with padding); slot 5 of the vtable at
 // 0x012DFFDC (no RTTI locator: the entity-script module).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (x2), ~CCharString @ 0x0099EAE0 (x2), Me's virtual
@@ -10,7 +11,7 @@
 // Shape: the landed CPermanentBarrier::Main (0x00D2D830) CreateEffect call: both literals are implicit conversions built
 // first (the empty bone name before the name), the zero pushes and the bone name's address precede Me.GetPos(); the
 // effect handle is a named local destroyed (inline) after the two string temporaries.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0

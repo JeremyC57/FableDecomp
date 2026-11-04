@@ -1,5 +1,6 @@
 // CGameflowScript::DeclareGossipCategories() -- register the gameflow's seven rumour categories (Sweet Kid, Young Apprentice, Young Annoyance, Wannabe Hero, Complete Melee/Skill/Will) with their rumour text, the Guild village and the factions that gossip about them
 // Leaf: DeclareGossipCategories
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D3B410, 1856 bytes (+ int3 padding), plain `ret`; no EH frame.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; CGameScriptInterface slots 717
 //   AddRumourCategory 0x008A9DB0, 718 AddNewRumourToCategory 0x008A9DD0, 721 AddGossipVillage 0x008A9E30, 722
@@ -18,7 +19,7 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }                                         // out-of-line copy 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90

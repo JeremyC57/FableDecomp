@@ -1,5 +1,6 @@
 // CTCHighlightItem::CTCHighlightItem(CThing*) -- CTCBase(owner), own vtable, an empty particle-emitter pointer, then the running flags and the life timer cleared
 // Leaf: ??0CTCHighlightItem
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077C920, length 52 bytes.
 // Label: the catalog name "CTCVolumeContainmentTracker::CTCVolumeContainmentTracker" is propagated: the vtable stored
 // is 0x0126AF14 = CTCHighlightItem (rtti-vtables.tsv), and its factory 0x004D4548 allocates 0x28 bytes = sizeof
@@ -40,9 +41,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 struct CTCHighlightItem : CTCBase {
     bool                StartRunning;       // +0x0C

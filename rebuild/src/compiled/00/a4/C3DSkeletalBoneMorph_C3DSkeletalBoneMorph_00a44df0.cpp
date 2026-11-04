@@ -1,5 +1,6 @@
 // C3DSkeletalBoneMorph::C3DSkeletalBoneMorph(const CCharString& boneName, const C3DVector& scaling) -- copy the bone name and the scaling, then cache the CRC of the name
 // Leaf: ??0C3DSkeletalBoneMorph@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A44DF0, length 99 bytes (+13 int3 pad), `__fastcall`, `ret 8`, returns this.
 // Name: Ego_r.pdb `??0C3DSkeletalBoneMorph@@QAE@ABVCCharString@@ABVC3DVector@@@Z` (name set); the catalogue's
 //   "CCharString_InitWithCRC" is descriptive.
@@ -29,11 +30,7 @@ public:
     unsigned long GetCRC() const { return CCRC::Calc(0, c_str(), Length()); }
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DSkeletalBoneMorph {
 public:

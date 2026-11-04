@@ -1,5 +1,6 @@
 // std::vector<C3DVector>::insert(iterator position, const C3DVector& x) -- STLport 4.6 single-element insert: construct at the end, or shift the tail up one and assign, or grow through _M_insert_overflow; returns begin() + the old index
 // Leaf: ?insert@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEPAVC3DVector@@PAV3@ABV3@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007653B0, 253 bytes, thiscall `ret 8`.
 // Identity (proven): STLport 4.6 _vector.h `insert(iterator, const _Tp&)` line for line over the 12-byte element; the callees
 //   are already bound for vector<C3DVector>: _M_insert_overflow(pointer, const C3DVector&, const __false_type&, size_type, bool)
@@ -8,11 +9,7 @@
 // Shape: the copies are C3DVector's inline user copy (three dwords); x_copy is a frame local assigned back after the shift.
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 struct __false_type { __false_type() { } };

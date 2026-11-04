@@ -1,5 +1,6 @@
 // 00894500 CGameScriptInterface::CreateCreatureOnEntity
 // Leaf: ?CreateCreatureOnEntity@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -23,7 +24,8 @@
 #include "engine/_quarantine/CThingCreatureDef.h"
 class CCharStringData;
 class CCharString{protected:CCharStringData*PStringData;public:CCharString(const char*,long=-1);CCharString(const CCharString&);~CCharString();const CCharString&operator=(const CCharString&);};
-class C3DVector{public:float X,Y,Z;};class CRightHandedSet;
+#include "engine/C3DVector.h"
+class CRightHandedSet;
 inline CScriptThing::CScriptThing(){}
 inline CScriptThing::CScriptThing(const CScriptThing&o):CBaseClass(o),PImp(o.PImp){}
 inline CScriptThing::~CScriptThing(){}

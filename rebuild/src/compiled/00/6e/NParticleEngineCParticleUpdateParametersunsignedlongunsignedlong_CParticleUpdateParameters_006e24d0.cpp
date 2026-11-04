@@ -1,6 +1,7 @@
 // NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateParameters() -- CBase part, this class's vtable, then both parameter maps empty and clean
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E24D0, length 44 bytes (48 with int3 padding).
 // Leaf: ??0?$CParticleUpdateParameters
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CBaseClass::CBaseClass() @ 0x0099A2D0. Vtable 0x0125FFDC = CParticleUpdateParameters (rtti-vtables.tsv).
 // Layout: Ego_r.pdb CParticleUpdateParameters<unsigned long,unsigned long> (vptr, VectorParams, UpdateParams) with
 // the retail 16-byte CVectorMap (STLport 12-byte vector, the empty comparator byte at +0xc, Dirty at +0xd):
@@ -10,7 +11,7 @@
 // byte is never written), with the vtable store scheduled after the zero.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 template <class T> struct CAllocProxy {               // STLport _STLP_alloc_proxy<T*, T, allocator<T> >
     T* _M_data;

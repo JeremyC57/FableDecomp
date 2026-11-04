@@ -1,5 +1,6 @@
 // CTCHeroReceiveItems::GiveItems(const vector<pair<long, CCharString> >& items, CThing& container, bool sendMessage) -- create each positive-def item at the hero, put it in limbo and queue it for display, then remember the container and start the display at its position
 // Leaf: GiveItems
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CA9E0, 334 bytes (+ int3 padding), `ret 0Ch`, `and esp,-8` frame.
 //   Ego_r.pdb: `?GiveItems@CTCHeroReceiveItems@@QAEXABV?$vector@U?$pair@JVCCharString@@@std@@...@std@@AAVCThing@@_N@Z`.
 // Callees: CThing::GetPos @ 0x004C73D0, CThingObject::Create(long, const C3DVector&, long, const CRightHandedSet*,
@@ -21,7 +22,7 @@ class CThingObject;
 class CBaseObject;
 class CRightHandedSet;
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString {
 public:
     void* m_pData;

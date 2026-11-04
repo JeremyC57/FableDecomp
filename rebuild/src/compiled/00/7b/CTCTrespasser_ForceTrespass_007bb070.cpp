@@ -1,5 +1,6 @@
 // CTCTrespasser::ForceTrespass() -- when the trespassed thing is alive and trespassable, posts the trespass deed to the owner's opinion deed log, keeping the handle when no trespass deed is open yet
 // Leaf: ForceTrespass
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007BB070, 219 bytes (plain `ret`). Ego_r.pdb
 // `?ForceTrespass@CTCTrespasser@@QAEXXZ`.
@@ -18,7 +19,7 @@ class CTCBase;
 class CBaseObject;
 class CFaction;
 class CThingAICreature;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 enum EOpinionDeedType { OPINION_DEED_TYPE_TRESPASS = 2 };
 enum EOpinionPostDeedType { OPINION_POST_DEED_TYPE_0x12 = 0x12 };

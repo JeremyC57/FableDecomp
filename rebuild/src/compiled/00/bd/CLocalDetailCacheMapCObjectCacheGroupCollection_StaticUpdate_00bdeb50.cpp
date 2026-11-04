@@ -1,5 +1,6 @@
 // CLocalDetailCacheMap::CObjectCacheGroupCollection::StaticUpdate(CEngineStaticMapFileBlockManager*, const CObjectTypeCollectionPalette&, double) -- stream this cache group in while the camera is inside its (video-option adjusted) fade range and there is frame time left, otherwise unload it
 // Leaf: ?StaticUpdate@CObjectCacheGroupCollection@CLocalDetailCacheMap@@QAE_NPAVCEngineStaticMapFileBlockManager@@ABVCObjectTypeCollectionPalette@2@N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BDEB50, 143 bytes (+ int3 padding; `ret 10h`).
 // Callees: CEngineLocalDetailGenerator::ModifyFadeDistanceForVideoOptions(unsigned long, float) @ 0x00B597E0 (generator global
 //   0x01436E88), GFGetFastSubFrameTimer @ 0x009E1C70 (`__fastcall`, double), LoadContents @ 0x00BDE860, UnloadContents @ 0x00BDD9A0.
@@ -9,9 +10,7 @@
 //   `GFGetFastSubFrameTimer() < deadline` (`test ah,5 ; jp`) guard the load, whose bool is returned; the unload path returns false.
 #include <math.h>
 #pragma intrinsic(sqrt)
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
     C3DVector Centre;
     float     Radius;

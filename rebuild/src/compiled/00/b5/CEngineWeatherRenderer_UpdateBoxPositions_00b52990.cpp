@@ -1,5 +1,6 @@
 // CEngineWeatherRenderer::UpdateBoxPositions() -- unless the weather boxes are frozen, rebuild them when the camera has moved a whole box size away from the current box centre on any axis
 // Leaf: UpdateBoxPositions
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B52990, length 416 bytes (body 0x196), plain `ret`.
 // Callees: the box rebuild @ 0x00B51AD0 (thiscall, no arguments).
 // Layout: `this` offsets read from the retail body: freeze flag +0x11a (inside Settings +0x114), box size C3DVector +0x1d4,
@@ -7,7 +8,7 @@
 #pragma optimize("y", off)
 // Retail-asm: six expansions, 0x00B529C1..0x00B529DB (`fld [ebp-10h] ; fsub [ebp-14h] ; fistp dword ptr [ebp-8] ; fild [ebp-8] ; fadd [ebp-18h] ; fstp [ebp-0Ch] ; mov eax,[ebp-10h] ; cmp eax,[ebp-0Ch] ; jne ; inc dword ptr [ebp-8]`) through 0x00B52AE8..0x00B52B02 -- the engine's inline-assembly floor helper expanded in place (0.5f / 1.0f stored as frame constants, a bare dword fistp into a named long, the bit compare and `jne ; inc dword ptr` in the same 10-instruction block: rasm1 family (b)). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`, /arch:SSE2 cvttss2si: rasm1 probe family (a)); the result is read back by C++ after the block.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongFloor.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct SCamera_01436ea0 { unsigned char _pad[0x54]; C3DVector Position; };
 extern SCamera_01436ea0* g_pCamera_01436ea0;       // 0x01436EA0
 extern "C" double __cdecl fabs(double);

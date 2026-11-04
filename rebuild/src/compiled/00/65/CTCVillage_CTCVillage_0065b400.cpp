@@ -1,5 +1,6 @@
 // CTCVillage::CTCVillage(CThing* parent) -- village component ctor: CTCBase(parent), cleared frame counters, seventeen empty retail 4-byte lists and the crime set, cleared state flags/frames, the two guard intelligent pointers, then InitialiseSecuritySweeps()
 // Leaf: ??0CTCVillage
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065B400, length 408 bytes (frame-pointer, size-optimised module: the
 // neighbouring InitialiseSecuritySweeps 0x00659085 sits at an odd address).
 // Vtables: CTCVillage 0x0125A9AC (rtti-vtables.tsv), CIntelligentPointer<CThingAICreature> 0x0123E7E0.
@@ -71,7 +72,7 @@ struct CVillageDefPointer {
     const CVillageDef* Object;
     CVillageDefPointer() : Object(0) {}
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCVillage : public CTCBase { public:
     long             TorchTasksUpdateFrame;                  // +0x0c

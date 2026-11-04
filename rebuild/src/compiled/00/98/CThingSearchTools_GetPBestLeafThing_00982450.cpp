@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPBestLeafThing(const TFilter& filter, const TCompare& compare, TThing** out) [TFilter = CFilter_Bind2<std::unary_negate<CThingFilter_HasScriptedControl>, CThingFilter_AICreatureHasProperty>, TCompare = CThingCompare_Nearest, TThing = CThingAICreature] -- the nearest scan-visible AI creature (type list 1) not under scripted control that has the property
 // Leaf: GetPBestLeafThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00982450, 135 bytes (+ int3 padding to 144) (`ret 0Ch`).
 // Callees: PeekTypeList 0x0049C780, CThingFilter_HasScriptedControl 0x006A8560 (negated), CThingFilter_AICreatureHasProperty 0x006A75D0, CThingCompare_Nearest::operator()<CThingAICreature> 0x0065DA97.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (`this` is only passed through to the list getter);
@@ -52,7 +53,7 @@ struct CThingList {
 };
 
 class CThingAICreature : public CThing { public: enum { ThingListType = 1 }; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThingFilter_HasScriptedControl { public:
     bool CheckForActive;
     bool operator()(const CThing& thing) const;       // 0x006A8560

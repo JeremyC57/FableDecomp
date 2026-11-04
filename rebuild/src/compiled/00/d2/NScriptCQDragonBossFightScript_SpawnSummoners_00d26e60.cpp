@@ -1,5 +1,6 @@
 // CQ_DragonBossFightScript::SpawnSummoners() -- top the summoners up to the target: for each missing one pick one of two summoner creature defs at random, play the evil summon effect at the next summoner spawn point (round robin) and create the summoner there with the DBSummoner entity script
 // Leaf: SpawnSummoners
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D26E60, 496 bytes, plain `ret`.
 // Callees: rand 0x00BFEB16, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0 ("CREATURE_SUMMONER_02" 0x012CBA28 /
 //   "CREATURE_SUMMONER_01" 0x012CBA40, "SUMMON_CREATURE_SUMMON_EVIL" 0x012CBA0C, "DBSummoner" 0x012CB748, "" 0x0122D70E), CScriptBase::
@@ -22,7 +23,7 @@ class CCharString { public:
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

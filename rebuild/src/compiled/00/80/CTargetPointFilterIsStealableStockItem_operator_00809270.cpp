@@ -1,5 +1,6 @@
 // CTargetPointFilter_IsStealableStockItem::operator()(const NPlayerTargeting::CTargetPoint& point) -- true when the target point's thing is shop stock (stock-item component) that belongs to a shop and is flagged stealable
 // Leaf: ??RCTargetPointFilter_IsStealableStockItem@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00809270, 89 bytes (+ int3 padding), __fastcall (`this` unused: the
 //   filter is empty), `ret 4`.
 // Name: Ego_r.pdb `anonymous namespace'::CTargetPointFilter_IsStealableStockItem` (NPlayerTargeting TU, _anon_58ED6966);
@@ -67,7 +68,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 namespace NPlayerTargeting {
 class CTargetPoint { public:                                     // 0x1c bytes
     CIntelligentPointer<CThing> PThing;                   // +0x00

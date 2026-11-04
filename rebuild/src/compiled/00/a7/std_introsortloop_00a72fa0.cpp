@@ -1,5 +1,6 @@
 // std::__introsort_loop(pair<CCharString, C3DHelperPoint>* first, pair<CCharString, C3DHelperPoint>* last, pair<CCharString, C3DHelperPoint>*, int depth_limit, CCompareString<C3DHelperPoint> comp) -- STLport introsort recursion over the 20-byte helper-point map entries: partition around the median of three (name order), recurse on the right part, loop on the left; partial-sort fallback when the depth runs out
 // Leaf: ??$__introsort_loop@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A72FA0, 306 bytes, /Gr `__fastcall` (first ecx, last edx; the value-type
 //   pointer, the depth limit and the empty comparator's slot on the stack), `ret 0Ch`.
 // Callers: the sort 0x00A735A0 (landed) and itself. Callees: __unguarded_partition 0x00A6F610 (landed, by-value
@@ -19,11 +20,7 @@ public:
     bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 
-class C3DVector {                                       // user memberwise copy ctor
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DHelperPoint {                                  // 16 bytes (Ego_r.pdb)
 public:

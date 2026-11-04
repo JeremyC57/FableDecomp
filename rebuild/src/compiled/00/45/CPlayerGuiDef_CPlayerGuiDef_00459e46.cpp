@@ -1,6 +1,7 @@
 // CPlayerGuiDef::~CPlayerGuiDef() -- compiler-generated member teardown: the strings, the POD vectors (inline free) and the
 // container members with out-of-line destructors, in reverse declaration order, then the CParentDefClassBase part
 // Leaf: ??1CPlayerGuiDef
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00459E46.
 // Pragma: #pragma optimize("s", on) -- the def module is size-optimised (`pop ecx` after each free).
 // Label correction: the catalog "~CPatchTesselationEdgeStrip" is propagated over byte-similar def destructors.
@@ -18,7 +19,7 @@ extern "C" void __cdecl free(void* memory);        // 0x00BFEA14
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CParentDefClassBase.h"
 class CRGBColour { public: unsigned char B, G, R, A; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
 struct CLongVector {                               // retail std::vector<long> (12 bytes)
     long* m_first;

@@ -1,5 +1,6 @@
 // CTCBerserk::CreateStartingEffect() -- look up the berserk def's "STARTUP_EFFECT" particle, create it at the thing's position, keep it as StartUpEffect and attach its emitter to the thing
 // Leaf: CreateStartingEffect
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail 0x0078C4C0, 336 bytes, `ret`.
 // Callees: CDefClassBase::GetSubDef<T>(CDefPointer<T>*) 0x00669580, the sub-def's named-effect lookup (const CCharString&,
@@ -16,7 +17,7 @@
 // slot; StartUpEffect is assigned from an intelligent-pointer temporary; the emitter is the out-parameter GetInterface.
 class CTCBase;
 class CBaseObject;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

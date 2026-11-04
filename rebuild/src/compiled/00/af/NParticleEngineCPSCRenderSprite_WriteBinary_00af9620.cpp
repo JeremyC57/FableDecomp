@@ -1,4 +1,5 @@
 // NParticleEngine::CPSCRenderSprite::WriteBinary(CDataOutputStream*) -- serialize the sprite renderer: bank indices, the three colours, the packed bit-field integers/flags and the four fade/flicker flags
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF9620, 538 bytes (vtable slot 16 of CPSCRenderSprite, 0x0129F67C).
 // Callees (lane names, as in the landed CPSCAttractor/CPSCLight WriteBinary): WriteLong 0x00993EB0, WriteColour
 //   0x00993F30, WriteULong 0x00993EA0 (propagated label "WriteCBYTE"), WriteEBOOL 0x00993E30.
@@ -6,7 +7,7 @@
 //   +0x20..+0x34, unsigned char flag bits at +0x38.
 // Shape: one stream call per member in declaration order.
 #include "engine/CDataOutputStream.h"
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public: void* PStringData; };
 class CRGBColour { public: union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };
 class CEnginePrimitiveHandle { public: long Index; long Generation; };

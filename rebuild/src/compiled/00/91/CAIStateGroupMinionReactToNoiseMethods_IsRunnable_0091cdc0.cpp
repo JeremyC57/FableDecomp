@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToNoise::IsRunnable() -- within two minutes of the last interaction, when not already investigating: a perceived noise maker inside the creature's home with no earlier noise message from home starts an investigation (records the noise position and posts a 2-second noise message)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 //   Bind2 first-pointer store hoist above the GetPItem call as in retail), a local copy of CMainGameComponent::GetConstantFPS() taken before the
@@ -36,9 +37,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return f;
 }
 #pragma auto_inline(on)
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20

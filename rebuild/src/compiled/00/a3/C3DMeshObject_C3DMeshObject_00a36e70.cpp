@@ -1,4 +1,5 @@
 // C3DMeshObject::C3DMeshObject(C3DMeshInfo*, const C3DVector&, const CRightHandedSet&, float) -- CBase(), empty Mesh pointer, Scale, then SetMesh + SetPositionMatrix
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A36E70, oracle length 72 bytes.
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0 (landed), C3DMeshObject::SetMesh @ 0x00A36010,
 //          C3DMeshObject::SetPositionMatrix @ 0x00A357B0. Vtable 0x01239860 = C3DMeshObject (rtti-vtables.tsv).
@@ -12,7 +13,7 @@
 // +0x40 InversePositionMatrixSetup (false), +0x44 InversePositionMatrix, +0x74 Scale. MeshInfo and the
 // matrices are left to SetMesh / SetPositionMatrix. The scale is forwarded as the raw 4-byte argument.
 class C3DMeshInfo;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CMatrix3x4 { public: float m[12]; };
 

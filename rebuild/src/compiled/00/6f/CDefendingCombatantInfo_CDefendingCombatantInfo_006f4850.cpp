@@ -1,5 +1,6 @@
 // CDefendingCombatantInfo::CDefendingCombatantInfo() -- construct a defender's combat info: empty attacker map, empty combat wheel, a null last-attacker pointer and a null attack-pattern def
 // Leaf: ??0CDefendingCombatantInfo@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F4850, 75 bytes, thiscall, `ret`, returns this.
 // Identity (proven from layout + PDB): the catalog label "C3DAnimFileSequenceChunk" is propagated (that class is 0x58 bytes
 //   of Ego_r padding with no map). The body sits among the CCombatManager / CDefendingCombatantInfo / CCombatantInfo
@@ -105,7 +106,7 @@ public:
     CDefPointeeBase* Object;
     CDefPointer() : Object(0) { }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CDefendingCombatantInfo {
 public:

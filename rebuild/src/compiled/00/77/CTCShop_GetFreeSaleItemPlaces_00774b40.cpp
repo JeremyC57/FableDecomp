@@ -1,5 +1,6 @@
 // CTCShop::GetFreeSaleItemPlaces(bool includeOccupied) const -- rebuild the shop's goods places from the parent thing and return the ones that are free (no other thing within 0.2 of the place), or all of them
 // Leaf: GetFreeSaleItemPlaces
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00774B40, 274 bytes, `ret 8` (hidden result pointer + the bool).
 // Callees: vector<GoodsPlace>::erase(first, last) @ 0x00777A90 (manifest "Vector_Erase_CKeyCamera"), CTCShop::AddSaleItemPlacesFromThing(
 //   CThing*) @ 0x007748E0 (manifest "CTCGraphicAppearance_InitGoodsPlaces"), CTCBase::PeekWorld() const @ 0x00686A80,
@@ -16,7 +17,7 @@
 //   pointer is loaded once after the loop and kept in ebp across the return copy for the free, as retail's LTCG did.
 class CThing;
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct GoodsPlace {                                 // CTCShop::GoodsPlace, 36 bytes
     C3DVector     Position;                         // +0x00
     unsigned char _pad0c[0x24 - 0x0c];

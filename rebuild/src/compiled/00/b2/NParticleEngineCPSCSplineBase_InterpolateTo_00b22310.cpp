@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::InterpolateTo(const CPSCBase& other, float t) -- vtable slot 14: blend this spline component towards another: lerp the tension, interpolate the control points (GFInterpolateArray over copies of both point arrays), and blend the random-offset and position-parameter data (interpolated when both exist; otherwise past the halfway point the own data is released or a copy of the other's is created)
 // Leaf: ?InterpolateTo@CPSCSplineBase@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c (caller respell): calls 0x00B15BD0 as ??$GFInterpolateArray@VC3DVector@@@NParticleEngine@@YI?AV?$CArray@VC3DVector@@@@ABV1@0MABVC3DVector@@@Z (Ego_r.pdb + FableWin.pdb; was the global template).
 // Name: FableWin.pdb / Ego_r.pdb ?InterpolateTo@CPSCSplineBase@NParticleEngine@@UAEXABVCPSCBase@2@M@Z; slot 14 of the CPSCSplineBase
 //   vtable 0x012A0B14 (rtti-vtables.tsv); called non-virtually with `const CPSCBase&` by 0x00B062A0 / 0x00B1AF50.
@@ -16,11 +17,7 @@
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 void __cdecl operator delete(void* p);                 // 0x00BFE9BC
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 template <class T> class CArray;
 namespace NParticleEngine { template <class T> CArray<T> __fastcall GFInterpolateArray(const CArray<T>& a, const CArray<T>& b, float t, const T& defaultValue); }
 template <class T> class CArray { public:                     // STLport vector<T> (12 bytes in retail)

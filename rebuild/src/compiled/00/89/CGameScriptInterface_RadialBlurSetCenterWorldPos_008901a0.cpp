@@ -1,4 +1,5 @@
 // CGameScriptInterface::RadialBlurSetCenterWorldPos(void*, const C3DVector&) @ 0x008901A0.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 //
 // Genuine C++ tail-call thunk: chase this->World->field_0018->field_1964
 // to reach the CEnvironmentSpellEffectInterpolator instance, then forward the
@@ -12,7 +13,7 @@
 // reproducing retail's 12-byte pointer chase followed by `e9 xx xx xx xx`.
 
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 class CEnvironmentSpellEffectInterpolator
 {

@@ -1,4 +1,5 @@
 // CCreatureAction_BlockBase::CCreatureAction_BlockBase(const CCreatureAction_BlockBase&) -- copy constructor: base CCombatActionBase(other), own vtable, BlowStrength and MovementDirection copied
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00855EE0, length 75 bytes.
 // Callees: CCombatActionBase::CCombatActionBase(const CCombatActionBase&) @ 0x0062F3B0 (manifest).
 // The manifest label "CQuickAccessItemButtonGuiDef::CQuickAccessItemButtonGuiDef" is propagated and rejected: the
@@ -9,10 +10,7 @@
 // copy constructor, so the class is modelled locally as in the landed BlockRespond copy).
 // Shape: BlowStrength through eax, then C3DVector's memberwise copy constructor (one register per dword:
 // ecx, edx, eax), `mov eax,esi` returns `this`.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CCombatActionBase { public:
     virtual void v00();

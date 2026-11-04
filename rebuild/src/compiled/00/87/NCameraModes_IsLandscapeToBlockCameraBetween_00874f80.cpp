@@ -1,5 +1,6 @@
 // NCameraModes::IsLandscapeToBlockCameraBetween(const CWorldMap& map, const C3DVector& a, const C3DVector& b, bool includeWater) -- landscape camera-blocking test: either end off the map or in an unloaded map blocks; otherwise blocked when a is above its camera height while b is below its own
 // Leaf: ?IsLandscapeToBlockCameraBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00874F80, length 150 bytes, `__fastcall` (map in ecx, a in edx, b and the
 //   flag on the stack), `ret 8`.
 // Identity: Ego_r.pdb `?IsLandscapeToBlockCameraBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z` (the
@@ -12,10 +13,7 @@
 // Shape: the vtable is fetched once per end into a callee-saved register for both virtual calls; the two early `return
 //   true` exits keep their own epilogues (before / after the ebp push); a's camera height is homed in b's dead argument
 //   slot and b's stays on the x87 stack; `a->Z > heightA && heightB > b->Z` (`fcomp` against memory, `test ah,41h`).
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CWorldMap {
 public:

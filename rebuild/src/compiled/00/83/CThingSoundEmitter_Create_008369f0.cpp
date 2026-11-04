@@ -1,5 +1,6 @@
 // CThingSoundEmitter::Create(const C3DVector&, const CThing*, bool) -- allocate a sound emitter thing, construct it from the position / attached thing / keep-playing flag and activate it; null on any failure
 // Leaf: ?Create@CThingSoundEmitter@@SIPAV1@ABVC3DVector@@PBVCThing@@_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008369F0, 92 bytes, static __fastcall (ecx = position, edx = attached thing), `ret 4`.
 // Identity: ?Create@CThingSoundEmitter@@SIPAV1@ABVC3DVector@@PBVCThing@@_N@Z (Ego_r.pdb / FableWin.pdb). The manifest
 //   label "Sound_CreateAttachedEmitter" is descriptive (its callers are CTCSoundPlayer::CreateP[Un]AttachedEmitter).
@@ -10,7 +11,7 @@
 //   called explicitly, placement construction inside the null test, then one `p && Construct && Activate` chain storing p;
 //   VC splits the exits (a refused allocation leaves before esi is pushed) and returns p directly on success.
 #include <new>
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

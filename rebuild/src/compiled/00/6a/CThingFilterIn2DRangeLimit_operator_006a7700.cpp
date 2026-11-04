@@ -1,5 +1,6 @@
 // CThingFilter_In2DRangeLimit::operator()(CThing* thing) -- true when the thing has a physics component and its XY distance from Pos is at least MinRange and below MaxRange
 // Leaf: ??RCThingFilter_In2DRangeLimit
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A7700, length 115 bytes (+ int3 padding).
 // Callees: none (x87 only).
 // Layout: PDB CThingFilter_In2DRangeLimit { C3DVector Pos; float MinRange (+0x0c); float MaxRange (+0x10); } (20 bytes).
@@ -8,9 +9,7 @@
 // Shape: each range test recomputes both deltas from memory, so the test is a file-static inline helper over two
 // C3DVector references (a member helper or one function body lets VC7.1 CSE the deltas through the frame);
 // `return !A && B;` gives the int `mov eax,1` / `xor eax,eax` tails, the absent component the byte `xor al,al`.
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase { public:
     void*     __vftable;
@@ -32,8 +31,8 @@ class CThingFilter_In2DRangeLimit { public:
 
 static inline bool In2DRange(const C3DVector& a, const C3DVector& b, float range)
 {
-    float dx = a.x - b.x;
-    float dy = a.y - b.y;
+    float dx = a.X - b.X;
+    float dy = a.Y - b.Y;
     return dx * dx + dy * dy < range * range;
 }
 

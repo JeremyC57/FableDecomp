@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::SetInteractionFlags(unsigned long flags) -- copy the physics-interaction flag word into the sixteen bool:1 flags; dropping Immoveable re-enables physics
 // Leaf: SetInteractionFlags
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007234C0, 176 bytes (`ret 4`). CTCPhysicsStandard vtable 0x01265F84 slot 43 (catalog
 //   "vfunc_43"; GOTCHAS chunk 168 names slot 43 SetInteractionFlags).
 // Callees: virtual SetPhysicsEnabled(bool) slot 36 (+0x90, landed 0x00723630).
@@ -11,7 +12,7 @@
 //   The old Immoveable is read from the merged byte before its own `xor/and 8/xor` store, then `old && !new` calls slot 36.
 //   Flag word bits used: 1 landscape, 2 things, 3 things one-way, 4 interacts, 5 immoveable, 6 facing, 8 angled, 10 excluding
 //   creatures, 11 impassable.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CThingPhysicsMeshInfo;
 class CTCPhysicsBase { public:

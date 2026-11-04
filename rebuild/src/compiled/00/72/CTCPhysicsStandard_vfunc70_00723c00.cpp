@@ -1,4 +1,5 @@
 // CTCPhysicsStandard::vfunc_70() -- returns the second vector of the current right-handed set (RHSet+0x0c, this+0x5c) by value
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00723C00, length 24 bytes (vtable 0x01265F84 slot 70, rtti-vtables.tsv).
 // Callees: none.
 // Shape: `mov edx,[ecx+5Ch] ; mov eax,[esp+4] ; mov [eax],edx ...` with eax still holding the hidden pointer at `ret 4`:
@@ -6,11 +7,7 @@
 // memberwise user copy constructor (the implicit POD copy is a block copy through `add ecx,5Ch` + esi). Layout from Ego_r.pdb CTCPhysicsStandard (0x88 bytes): RHSet (CRightHandedSet, two C3DVectors) at +0x50, OldRHSet at
 // +0x68. engine/CTCPhysicsStandard.h is a flattened POD (no virtuals, RHSet as opaque bytes), so the polymorphic class is
 // modelled locally with the same offsets (as the landed constructor 0x00723FD0 does).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 struct CTCPhysicsStandard {

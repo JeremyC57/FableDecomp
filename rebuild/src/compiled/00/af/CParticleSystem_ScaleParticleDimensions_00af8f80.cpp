@@ -1,4 +1,5 @@
 // CParticleSystem::ScaleParticleDimensions(float*) -- when ScaleParticles is set, multiplies the particle size by the largest component of the system's Scale vector
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF8F80, 93 bytes (`ret 4`). The two-component twin is 0x00AF8F00.
 // Callees: none.
 // Shape: ScaleParticles is bit 7 of the flag byte +0x50 (PDB +0x6c; `test al,al ; jns`). The largest component is
@@ -8,11 +9,7 @@
 // Scale is the C3DVector at +0x60 (PDB +0x7c).
 #define PS_MAX(a, b) ((a) > (b) ? (a) : (b))
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 struct CParticleSystem {
     unsigned char m_pad00[0x50];

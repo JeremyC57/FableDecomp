@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out) [TFilter = CFilter_Bind4<CThingFilter_ObjectHasProperty, CThingFilter_HasFreeActionPoint, CThingFilter_HasTC, std::unary_negate<CThingFilter_In3DRange> >, TCompare = CThingCompare_Nearest, TThing = CThingObject] -- the nearest scan-visible object (mask 0x807) with the property, a free action point and the component, outside the 3D range
 // Leaf: GetPBestThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009650C0, 178 bytes (+ int3 padding to 192) (`ret 0Ch`).
 // Callees: PeekAllThings 0x0049C770, CThingFilter_ObjectHasProperty 0x006A7590, CThingFilter_HasFreeActionPoint 0x006A8B40, CThingFilter_HasTC 0x006A80A0, CThingFilter_In3DRange 0x006A7780 (negated), CThingCompare_Nearest::operator()<CThingObject> 0x00916B10.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (`this` is only passed through to the list getter);
@@ -53,7 +54,7 @@ struct CThingList {
 
 class CThingGameObject : public CThing { public: enum { ThingTypeMask = 0x7 }; };
 class CThingObject : public CThingGameObject { public: enum { ThingTypeMask = 0x807 }; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThingFilter_ObjectHasProperty { public:
     long Property;                                    // EObjectProperty
     bool operator()(const CThing& thing) const;       // 0x006A7590

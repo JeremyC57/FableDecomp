@@ -1,4 +1,5 @@
 // CCombatant::ComputeLightingAdjustment() const -- 1 - (facing . light) * intensity * global scale, clamped at zero
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C41A20, length 80 bytes.
 // No callees. Reads two C3DVectors at +0x108 and +0x120, the float at +0x18c, the global float @ 0x0143BBF0 and
 // the pool constants 1.0f @ 0x0122DED8 / 0.0f @ 0x0122DEDC. No PDB layout exists for CCombatant (local model).
@@ -6,11 +7,7 @@
 // written `v0.Z * v1.Z + v0.Y * v1.Y + v0.X * v1.X` (VC evaluates the left operand of each `+` first here and
 // `a * b` as `fld b ; fmul a`); then `fmul [18Ch] ; fmul [global] ; fsubr [1.0]`; the clamp is `fcom [0.0] ;
 // test ah,5 ; jp` returning st(0), else `fstp ; fld [0.0]`.
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 extern float g_combatLightingScale;             // 0x0143BBF0
 

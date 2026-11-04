@@ -1,5 +1,6 @@
 // NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper::Main() -- Whisper during Will training in the guild woods: conscious filter on Me, scripted control (priority 4, retried each frame), make her unkillable, combo-neutral, hero faction and boss-phase locked; then while the bandits are alive, re-join the hero faction and befriend everything when the hero hits her, and play the level-1 force-spell cast whenever the quest raises the whisper-animate flag
 // Leaf: ?Main@CWillWhisper@CQ_GuildTrainingWoodsWillScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D68810, 719 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,
 //   CBaseObject ctor 0x0099A380, the scripted-thing handle's IsValid 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation
@@ -21,7 +22,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing;
 class CScriptGameResourceObjectScriptedThingBase;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };

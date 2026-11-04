@@ -8,6 +8,7 @@
 // Shape: the compiler-generated memberwise copy (C3DVector's memberwise user copy ctor gives the direct dword
 // moves for the bounds; the float/ulong arrays copy as blocks through `lea`), emitted out of line because the TU placement-copies the class.
 // Leaf: ??0C3DMeshInfo
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 inline void* operator new(unsigned int, void* where) { return where; }
 
 struct CIVCountedPointee {
@@ -18,10 +19,7 @@ template<class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject) { if (m_pObject) ++m_pObject->IVRefCount; }
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector MinCoord, MaxCoord; };
 class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 

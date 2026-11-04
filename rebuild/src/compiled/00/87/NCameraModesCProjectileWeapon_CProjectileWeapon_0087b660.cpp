@@ -1,5 +1,6 @@
 // NCameraModes::CProjectileWeapon::~CProjectileWeapon() -- implicit camera-mode destructor: free the Attractors vector storage (+0xf0), then NCameraModes::CBase::~CBase (tail jump)
 // Leaf: ??1CProjectileWeapon@NCameraModes@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087B660, 30 bytes: push esi ; mov esi,ecx ; mov eax,[esi+0F0h] ; test eax,eax ; je ;
 //   push eax ; call free ; add esp,4 ; mov ecx,esi ; pop esi ; jmp 0x0056E0E0.
 // Identity (proven): the only caller is 0x0087B640 (call at 0x0087B643), slot 0 (scalar deleting destructor) of vtable
@@ -25,9 +26,7 @@ class CGameCameraManager;
 class CCameraModeDef;
 
 #pragma pack(push, 1)                                      // genuine: C3DVector members sit at odd offsets (XAxis +0xa9)
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace std {

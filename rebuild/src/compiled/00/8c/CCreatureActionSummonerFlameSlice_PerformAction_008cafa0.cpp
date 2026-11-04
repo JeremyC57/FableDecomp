@@ -1,4 +1,5 @@
 // CCreatureAction_SummonerFlameSlice::PerformAction() -- kill the live obstruction, spawn THING_EXPLOSION_SUMMONER_FLAME_SLICE_SPHERICAL at the summoner and, when the explosion is alive, tell its driver to spare the summoner
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CAFA0, length 188 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80, CCharString::CCharString(const char*,
 // long) @ 0x0099EBF0, CGameDefinitionManager::Get @ 0x0044C6B0 (static __fastcall), CDefinitionManager::GetDefGlobalIndexFromName
@@ -8,7 +9,7 @@
 // (present / not dead, thing byte +0x91 bit 0) and with the explosion's own dead test; the driver lookup is unchecked
 // (bit 1 of +0x28, cached +0x5c) and its absent arm reads the string's frame word.
 // Layout: Ego_r.pdb PObstruction +0x12c, retail +0x114 (CCombatActionBase is 0x114 in retail).
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CThing;
 struct CExplosionDriver {
     void AddExcludedThing(CThing* thing);   // 0x0080CBF0

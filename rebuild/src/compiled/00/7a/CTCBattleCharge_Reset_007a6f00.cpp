@@ -1,5 +1,6 @@
 // CTCBattleCharge::Reset() -- reset the charge: remember the start position, forget the collided thing and the target, clear the flags, take the dash distance and radius of effect for the spell level and convert the def's pose and charge delays to frames
 // Leaf: ?Reset@CTCBattleCharge
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A6F00, 241 bytes (+15 int3 padding), `ret`.
@@ -19,7 +20,7 @@ protected:
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CBaseObject;
 class CThing {
 public:

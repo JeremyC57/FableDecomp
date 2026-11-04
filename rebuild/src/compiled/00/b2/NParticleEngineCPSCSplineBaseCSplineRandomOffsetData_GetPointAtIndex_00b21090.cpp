@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtIndex(C3DVector& out, long index, float time) -- copy control point `index` of the current spline (or of last frame's spline) into `out`
 // Leaf: GetPointAtIndex
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B21090, 197 bytes, `ret 0Ch` (the time argument is unused).
 // Identity: Ego_r.pdb `?GetPointAtIndex@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVC3DVector@@JM@Z`.
 // Callee: CArray<C3DVector>::operator= @ 0x0075B8D0 (the inlined CCardinalSpline assignment).
@@ -8,7 +9,7 @@
 //   with the current one (control-point counts differ, ThisSpline's count computed first), it is re-snapshotted
 //   (array, Tension, EndPointsConnected) and the current point is returned; else last frame's point. The 12-byte
 //   C3DVector copies are POD dword moves; the model is the native 20-byte CCardinalSpline of the landed siblings.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     CArray& operator=(const CArray& other);                 // 0x0075B8D0

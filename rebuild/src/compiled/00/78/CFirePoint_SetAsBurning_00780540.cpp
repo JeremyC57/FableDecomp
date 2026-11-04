@@ -1,4 +1,5 @@
 // CFirePoint::SetAsBurning() -- mark the point burning; when it has a fire effect type, create that effect thing at the parent's position, and if it is alive attach its particle emitter to the parent's helper and keep it in PEffect
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00780540, length 144 bytes.
 // Callees: CThing::GetPos @ 0x004C73D0 (`[ecx+60h] + 0Ch`; manifest label "CVertexBufferWin32::DoSizeof" is propagated),
 // the global __fastcall effect factory Create(long, const C3DVector*, bool) @ 0x006E0880, CTCDParticleEmitter::AttachToThing(CThing*, long,
@@ -11,7 +12,7 @@
 // getter is an inline zero-initialised local assigned under the bit test (`xor ecx,ecx` hoisted; a ternary adds a `jmp`); the effect is stored as `PEffect = CIntelligentPointer(effect)` (temporary
 // built with SetPItem, assigned through GetPItem/SetPItem, destroyed), as the landed CSeatTable::SetOccupant 0x007B85F0.
 class CThing;
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* PStringData;

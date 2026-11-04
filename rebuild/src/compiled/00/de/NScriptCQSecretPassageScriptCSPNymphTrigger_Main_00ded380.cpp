@@ -1,5 +1,6 @@
 // NScript::CQ_SecretPassageScript::CSP_NymphTrigger::Main() -- Secret Passage nymph trigger: wait (frame by frame) until the hero comes within 10 units of the trigger, then spawn the succubus nymph at the trigger with the hero-seeking script
 // Leaf: ?Main@CSP_NymphTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity (naming wave 11): ?Main@CSP_NymphTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012DDD60 slot 1 is stored by the factory 0x00DED290 registered as "SP_NymphTrigger"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DED380, length 208 bytes (`ret`).
 // Callees: IsDistanceBetweenThingsUnder(const CScriptThing&, const CScriptThing&, float) @ 0x00CBE2FF (`__fastcall`),
@@ -20,7 +21,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

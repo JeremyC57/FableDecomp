@@ -1,5 +1,6 @@
 // CBountyHuntActivationChecker::RespawnFishermen() -- recreate the fishing-competition organiser at MK_FC_ORG and, unless the competitors were attacked, the two competitors at MK_FI_COMP1 / MK_FI_COMP2 (data strings "1" / "2", appearance morph seeds 9 / 36)
 // Leaf: RespawnFishermen
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E7F7F0, 908 bytes (912 with padding); called from Main 0x00E7F410.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC
 //   (the CScriptThing destructor is expanded inline at every site), CScriptThing slot 6 GetPos (virtual on the lookup
@@ -11,7 +12,7 @@
 //   "CREATURE_BOWERSTONE_SLUMS_VILLAGER_MALE_UNEMPLOYED" 0x012EA6E8, "1" 0x012EA6E4, "2" 0x012EA6E0.
 // Layout: Ego_r.pdb CBountyHuntActivationChecker: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14
 //   (CV_FishingCompetitionScript, retail = PDB - 0x14: CompetitorsAttacked +0x4f).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

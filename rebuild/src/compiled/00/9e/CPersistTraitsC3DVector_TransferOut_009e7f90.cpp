@@ -1,5 +1,6 @@
 // CPersistTraits<C3DVector>::TransferOut(CPersistContext* context, CCharString* out, C3DVector* value) -- appends the vector as "C3DCoordF(x,y,z)" with six decimals per component
 // Leaf: TransferOut
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E7F90, 182 bytes, `ret 0Ch`.
 // Callees: 0x0099F100 CCharString::operator+=(const char*), 0x009A08B0 CCharString::FormatDouble(long digits, double)
 // (static __fastcall: hidden result in ecx, digits in edx, the double on the stack), 0x0099F0A0
@@ -18,12 +19,7 @@ class CCharString { public:
     static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
 
-class C3DVector {
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 template <class T> struct CPersistTraits {
     T DefaultVal;

@@ -1,6 +1,7 @@
 // CThingPhysical::DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const -- the CThing editor draw info plus the physics component's interpolated position, XY angle and radius
 // Retry 10b (accessor sweep, FIXES B-4/B-5): the physics component is read through an inline accessor; the plain member read gives the parked register difference.
 // Leaf: ?DrawGetEditDrawInfo@CThingPhysical
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A4E90, length 115 bytes (`ret 8`, + int3 padding). CThingPhysical vtable 0x01244E84 slot 25.
 // Callees: CThing vtable slot 29 (+0x74, 0x004C77B0: a bool "has an editor draw" query), CThing::DrawGetEditDrawInfo @ 0x004C74B0 (landed),
 // CTCPhysicsBase position-at-time getter @ 0x0049D150 (C3DVector by hidden pointer; it lerps the current +0x0c and previous +0x18
@@ -10,7 +11,7 @@
 // UsesEffectRadius +0x20, AngleXY +0x24; retail CThing PhysicsTC +0x60; the physics component's radius float at +0x34 (local model).
 // Shape: `if (virtual && base) {...; return true;} return false;` (early returns split the exits); Pos assigned from the by-value result (three dword copies through ecx = info),
 // AngleXY from the float virtual, Radius as a float member copy (integer move).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public: void* m_pData; };
 class CRGBColour { public: unsigned char B, G, R, A; };
 class CEditEngineDrawInfo { public:

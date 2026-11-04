@@ -1,4 +1,5 @@
 // CCreatureAction_PickUpJugToFill::PerformAction() -- when the jug is alive: put it in the creature's carry slot named by the jug's carryable def (+0x30), add creature mode 0x2b and clear the "filled" byte of the jug's interface-0xBB component
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retry 10b (getsw sweep, FIXES B-15): the fill-carry-slot flag is read through an inline getter `GetFillCarrySlot()`; the plain member read gives the parked register/scheduling difference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084A350, length 321 bytes (+ int3 padding).
@@ -13,7 +14,7 @@
 //   the GetSubDef and LowerBound same-TU stand-ins carry retail's LTCG knowledge (def in ebx, key and def share one frame word).
 class CThing;
 class CThingObject;
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 class CCharString { public:
     void* PStringData;

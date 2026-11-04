@@ -1,5 +1,6 @@
 // std::remove_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingFilter_IsInFOV pred) -- STLport remove_if over target points: drop the points inside the field of view, keeping the order of the rest; returns the new end
 // Leaf: ??$remove_if@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008078A0, 165 bytes, /Gr `__fastcall` (first in ecx, last in edx), the
 //   0x24-byte predicate by value, `ret 24h`.
 // Name: Ego_r.pdb `std::remove_if<..CTargetPoint.., CThingFilter_IsInFOV>` (donor 0x00801610, Dinkumware iterators); the
@@ -12,10 +13,7 @@
 //   remove_copy_if(++next, last, first, pred);` -- each by-value predicate copy is memberwise (8 dwords and the
 //   AngleTest3D byte, held in bl for both copies: C3DVector's user copy constructor makes the copy non-trivial).
 class CThing;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }      // user copy ctor, implicit operator=
-};
+#include "engine/C3DVector.h"
 
 class CBaseIntelligentPointer {
 public:

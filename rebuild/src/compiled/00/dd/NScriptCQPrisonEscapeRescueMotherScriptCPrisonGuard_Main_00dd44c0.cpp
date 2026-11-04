@@ -1,5 +1,6 @@
 // NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard::Main() -- the prison guard who starts the prison race: once the prison cutscene has finished take scripted control (or, when the hero stole the prison key, remove the guard), walk to GuardPatrolExit and back home (re-issuing the move whenever the last one finished, until within 2 units), pause, announce the race in three lines, wait for the conversation, pause and flag RaceStarting
 // Leaf: ?Main@CPrisonGuard@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DD44C0, length 1241 bytes (+ int3 padding), plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0; CScriptThing copy 0x004ABE90 / dtor 0x004AA840), RegisterFilter
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle
@@ -28,7 +29,7 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }                                         // out-of-line copy 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const; virtual const C3DVector& GetPos() const; virtual C3DVector GetHomePos() const;   // slots 6 (+0x18), 7 (+0x1c) virtual void s008() const;
     virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const; virtual void s015() const; virtual void s016() const;

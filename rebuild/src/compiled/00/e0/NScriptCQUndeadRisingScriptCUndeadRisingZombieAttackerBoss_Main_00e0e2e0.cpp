@@ -1,5 +1,6 @@
 // CUndeadRisingZombieAttackerBoss::Main() -- Undead Rising boss zombie: conscious filter on Me; once the quest flags the boss cutscene, spawn the quest's LookAfterHealth thread on Me, take scripting control, retreat to the start position whenever health drops below half until it recovers, then attack the hero and idle
 // Leaf: ?Main@CUndeadRisingZombieAttackerBoss@CQ_UndeadRisingScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 27 (family main, DECISIONS_W26 D1): Ego_r.pdb / FableWin.pdb nest the entity in its script class and spell
 //   Main a private virtual (?Main@CUndeadRisingZombieAttackerBoss@CQ_UndeadRisingScript@NScript@@EAEXXZ); the local CEntityScriptBase carries the retail slot list of vtable 0x012C3224
 //   (engine/CEntityScriptBase.h). Was: ?Main@CUndeadRisingZombieAttackerBoss@@QAEXXZ over a global CQ_UndeadRisingScript with a row-local Add (0x00CB7E50 is
@@ -30,7 +31,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

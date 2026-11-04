@@ -1,5 +1,6 @@
 // std::vector::erase(iterator position) -- (vector<pair<const CRegion*, C3DVector> >) STLport single-element erase: when position is not the last element, assign the tail [position + 1, finish) down onto it through the out-of-line __copy; drop finish by one element (trivial destructor); return position
 // Leaf: ?erase@?$vector@U?$pair@PBVCRegion@@VC3DVector@@@std@@V?$allocator@U?$pair@PBVCRegion@@VC3DVector@@@std@@@2@@std@@QAEPAU?$pair@PBVCRegion@@VC3DVector@@@2@PAU32@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057FD32, 42 bytes (+ int3 padding to 44), thiscall, `ret 4`, returns position.
 // Identity (proven): vector<pair<const CRegion*, C3DVector> >::erase(iterator); evidence: its only caller is the landed CTCHeroStats::RemoveHousePosition 0x0057ADF7 (Ego_r.pdb CTCHeroStats::HousePositions is vector<pair<const CRegion*, C3DVector> >); 16-byte stride; its __copy 0x0057F188 is the landed __copy<pair<const CRegion*, C3DVector>*>.
 // Label: the manifest's "GetNewTreeNode" is propagated across byte-identical bodies (family H014: seven rows that differ only in
@@ -18,10 +19,7 @@
 #include <stddef.h>
 class CRegion;
 #pragma pack(push, 1)
-class C3DVector {                                  // 12 bytes, pack(1) in retail
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 namespace std {
 struct __false_type { __false_type() { } };

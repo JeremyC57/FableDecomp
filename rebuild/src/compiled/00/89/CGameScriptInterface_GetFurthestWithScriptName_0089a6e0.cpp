@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetFurthestWithScriptName(const CScriptThing& from, const CCharString& name) const -- script: of the things carrying a script name, the one whose XY position lies furthest from `from` (an empty script thing when none)
 // Leaf: ?GetFurthestWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0089A6E0, 413 bytes, `ret 0Ch` (hidden return pointer); Ego_r.pdb same symbol.
 // Body: vector<CScriptThing> things; GetAllThingsWithScriptName(name, things) (own vslot 75, +0x12c); empty -> return
 // CScriptThing() (CBaseClass() 0x0099A2D0). Else best = begin, bestDistance (long, kept in the dead `name` slot) = 0; per
@@ -15,7 +16,7 @@
 // Opt: /O2 (16-aligned entry, loop alignment padding).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern const C3DVector g_ZeroVector;                    // 0x0143E8E0
 struct CScriptThingImp {
     virtual void _i00();

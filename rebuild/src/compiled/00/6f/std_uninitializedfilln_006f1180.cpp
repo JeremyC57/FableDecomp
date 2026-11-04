@@ -1,5 +1,6 @@
 // std::__uninitialized_fill_n(CProng* first, unsigned int n, const CProng& x, const __false_type&) -- STLport placement-copy of one 28-byte combat-wheel prong into n raw slots; returns the end of the run
 // Leaf: ??$__uninitialized_fill_n@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F1180, 113 bytes, `ret 8` (/Gr: first in ecx -> ebp as `cur`, n in edx spilled
 //   to the pushed-ecx slot and counted down there; &x and the empty __false_type tag reference on the stack).
 // Caller: 0x006F3F96 in the vector<CDefendingCombatantInfo::CProng> insert helper 0x006F3F00 (28-byte stride; catalog
@@ -33,10 +34,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:      // vta
 };
 
 #pragma pack(push, 1)
-class C3DVector { public:                                          // 1-aligned in retail (CProng::Prong sits at +1)
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 struct CProng {                                             // CDefendingCombatantInfo::CProng, 0x1c bytes

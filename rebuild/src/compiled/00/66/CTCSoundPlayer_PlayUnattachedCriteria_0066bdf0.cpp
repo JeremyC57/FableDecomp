@@ -1,6 +1,7 @@
 // CTCSoundPlayer::PlayUnattachedCriteria(const CCharString& criteria, const C3DVector& pos, bool loop, bool attached) -- expand the criteria into its candidate sound-event names and play the first one that starts from a new emitter at the owner's position; the invalid handle when sound is off or nothing plays
 // Grade: RELOCATION_MATCH (agent902, 1 grade this pass) -- a same-TU noinline stand-in for GetPotentialCriteriaStrings 0x0066BC10 (this TU; it fills `names` but never keeps its address -- chunk-422 recipe) on top of the plain-inline vector dtors and the `if (it != names.end())` loop guard: VC7.1 then zeroes edi only for the state test / the zero stores, keeps end in ebp and tests `test edi,edi` like retail (was 227v223: the CSE'd zero kept in ebp).
 // Leaf: ?PlayUnattachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@ABVC3DVector@@_N2@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066BDF0, 223 bytes (+ int3 padding to 224), thiscall `ret 10h`.
 //   Name: Ego_r.pdb `?PlayUnattachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@ABVC3DVector@@_N2@Z`; the position
 //   argument is never read in retail (each candidate plays at the owner's CThing::GetPos()). Callers: 0x004A595F,
@@ -23,7 +24,7 @@ public:
     void* PStringData;
     ~CCharString();                                    // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 namespace std {
 template <class _Tp> class allocator {
 public:

@@ -1,5 +1,6 @@
 // NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main() -- the Guildmaster at the woods departure: fade in, make him an unkillable, unpushable non-informant at M_DepartureTeacherStand, take scripted control; if the woods-departure quest is not yet running take the hero too, play CS_GUILD_DEPARTURE_GM_DONE in a paused movie sequence, set the guild-training objective and activate the departure quest; then while it stays active moan at the hero whenever he talks to him; finally clear his information flag
 // Leaf: Main
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D50C60, 1882 bytes (+ int3 padding); entity-script vtable 0x012CF6C4 slot 1 (Main);
 //   PDB ?Main@CTheRealGuildmaster@CQ_GuildTrainingDepartureScript@NScript@@EAEXXZ (factory 0x00D509D0, 0x20 bytes).
 // Callees: CScriptThing dtor 0x004AA840 (inline copies elsewhere), ~CBaseClass 0x0099A2E0, IsActiveThreadTerminating
@@ -25,7 +26,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBColour { public:                                    // D3DCOLOR byte order
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }

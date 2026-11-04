@@ -1,5 +1,6 @@
 // CTCBoss::~CTCBoss() -- implicit destructor of the boss thing component: destroy the Effects and HelperCreatures intelligent-pointer vectors, release the boss def, then ~CTCBase
 // Leaf: ??1CTCBoss@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AFF70, 129 bytes, tail jump to ~CTCBase 0x00686830.
 // Identity (proven): sole caller 0x007AFF50, slot 0 (scalar deleting dtor) of vtable 0x0126D494, RTTI `.?AVCTCBoss@@`
 //   (CTCBoss : CTCBase : CBaseClassNonCopyable : CBaseClass). Ego_r.pdb / FableWin.pdb ??1CTCBoss@@UAE@XZ. No vtable store in
@@ -81,7 +82,7 @@ public:
 };
 class CBossDef;
 class CThingAICreature;
-class C3DVector { public: float X; float Y; float Z; };
+#include "engine/C3DVector.h"
 class CTCBoss : public CTCBase {                                         // vtable 0x0126D494
 public:
     CTCBoss(CThing& thing);

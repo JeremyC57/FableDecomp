@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleSystem::PeekEmitterVelocity() const -- the parent emitter's velocity, by reference
 // Leaf: ?PeekEmitterVelocity@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF3DB0, 7 bytes: mov eax,[ecx+4] (PParentEmitter); add eax,52h; ret (thiscall, const).
 // Naming wave 35c: FableWin.pdb + Ego_r.pdb ?PeekEmitterVelocity@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ (engine/CParticleSystem.h
 //   declares it under FABLE_RETAIL_CPARTICLESYSTEM); called on the CParticleSystem& in CPSCUpdateNormal::UpdateAddParticle 0x00B0CAD0 /
@@ -7,7 +8,7 @@
 // Layout: CParticleSystem PParentEmitter +0x04 (engine/CParticleSystem.h); CParticleEmitter Velocity at retail +0x52 (Ego_r.pdb +0x5E less
 //   the 0xC the retail STLport members save), byte-packed here as the offset the old body added. The shared headers are not used: their
 //   CParticleEmitter is the native layout (Velocity +0x5E) -- the packed retail emitter model is the open 0x00AF3D80 note.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 namespace NParticleEngine {
 #pragma pack(push, 1)
 class CParticleEmitter { public:

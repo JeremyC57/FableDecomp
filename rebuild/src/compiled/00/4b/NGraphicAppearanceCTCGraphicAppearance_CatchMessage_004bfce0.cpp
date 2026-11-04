@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::CatchMessage(const CMessage* message) -- any caught message marks the appearance changed with reason 8 (drop the primitives once, then flag)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 31 (family c703): ClearAllPrimitives 0x004BF9A0 is protected (?ClearAllPrimitives@CTCGraphicAppearance@NGraphicAppearance@@IAEXXZ,
 //   Ego_r.pdb / FableWin.pdb); was bound as the public QAE spelling
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BFCE0, length 41 bytes (`ret 4`: the message is not read).
@@ -12,7 +13,7 @@
 // (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
 // CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
 // No engine header exists for CTCGraphicAppearance: local model.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCAnimationBase;
 

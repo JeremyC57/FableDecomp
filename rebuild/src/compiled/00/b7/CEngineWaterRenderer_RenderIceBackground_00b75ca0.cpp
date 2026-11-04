@@ -1,5 +1,6 @@
 // CEngineWaterRenderer::RenderIceBackground(float time) -- bind the ice bump map and environment map, set the ice blend states and shaders, upload the bump-scale constant and the four ice bone matrices, flush the shader state and draw the alphaed then the opaque ice background patch lists
 // Leaf: RenderIceBackground
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B75CA0, length 1320 bytes (+ int3 padding), `ret 4`.
 // Signature from Ego_r.pdb: ?RenderIceBackground@CEngineWaterRenderer@@AAEXM@Z.
 // Callees: CRenderStateManager::RestoreCaptureBlock @ 0x00A05840 (inline OpenCaptureBlock on 0x013CB508);
@@ -14,7 +15,7 @@
 // CTexture (engine/CTexture.h) holds the device texture at +0.
 // Shape: the bump constant is `scale * 0.5f` (0x0122F59C is the 0.5f literal; an extern float swaps the fld/fmul).
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }

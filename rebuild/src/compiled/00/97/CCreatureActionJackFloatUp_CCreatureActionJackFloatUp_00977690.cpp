@@ -1,5 +1,6 @@
 // CCreatureAction_JackFloatUp::CCreatureAction_JackFloatUp(const CCreatureAction_JackFloatUp& other) -- copy constructor: the CCombatActionBase copy, this class's vtable, then FloatHeight, FloatSpeed, Moving, StartHeight memberwise
 // Leaf: ??0CCreatureAction_JackFloatUp@@QAE@ABV0@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00977690, 75 bytes, thiscall, `ret 4`, returns this.
 // Identity (proven): it stores vtable 0x01297F54 whose RTTI is .?AVCCreatureAction_JackFloatUp@@; FableWin.pdb ??0CCreatureAction_JackFloatUp@@QAE@ABV0@@Z (donor 0x02BF1EF0);
 //   only caller the landed CCreatureAction_JackFloatUp::Clone 0x00977660 (which names this callee); members are Ego_r.pdb's at retail offsets
@@ -19,11 +20,7 @@ public:
     unsigned char _body[0x114 - 4];
 };
 #pragma pack(push, 1)
-class C3DVector {                                        // 1-aligned in retail; FableWin.pdb ??0C3DVector@@QAE@ABV0@@Z
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class CCreatureAction_JackFloatUp : public CCombatActionBase {
 public:

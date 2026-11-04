@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::UpdateRenderedLastFrameFlag() -- stamp the current world frame, then RenderedLastFrame = whether any drawn primitive was rendered last frame
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BC620, length 69 bytes. Callees: the world-frame getter @ 0x0049D870
 // (`__fastcall`, returns the global at 0x013B89BC; landed under the propagated name GFGetPreMainMemoryUsed), each primitive's
 // persistent data slot 4 (+0x10, `WasRenderedLastFrame`).
@@ -12,7 +13,7 @@
 // (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
 // CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
 // No engine header exists for CTCGraphicAppearance: local model.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCAnimationBase;
 

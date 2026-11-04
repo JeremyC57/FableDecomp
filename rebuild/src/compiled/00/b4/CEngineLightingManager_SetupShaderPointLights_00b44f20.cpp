@@ -1,6 +1,7 @@
 // CEngineLightingManager::SetupShaderPointLights(const CEngineLocalLightArray*) -- when the local light set changes, load each local light into shader point-light slot i+1 (unit intensity, the light's distance-squared and constant attenuation terms), reset the slots the previous set used beyond the new count, and remember the count
 // Grade: RELOCATION_MATCH -- the light loop is an explicit `if (i < count)` guard holding the two attenuation zero stores and a `do { ... } while (++i < count)` body: the zeros then come from the index register after the guard and the reset loop gets the aligned head, like retail (a for loop with the zeros before it stored immediates before the test and aligned the light loop)
 // Leaf: SetupShaderPointLights
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B44F20, 189 bytes (+ int3 padding), `ret 4`.
 // Callees: CShaderPointLight::CShaderPointLight(const C3DVector&, const CRGBFloatColour&, float, const CShaderLightAttenuation&)
 //   0x00B49320 (landed; vtable 0x012A2114), CShaderRenderManager::InitialiseLight(unsigned long, CShaderLight*) 0x00989830 and
@@ -13,7 +14,7 @@
 // Shape: the attenuation record's two constant zero terms sit in the loop preheader in retail (stored from the zero index
 //   register after the count test); the point light is a loop-scoped local (its implicit dtor only calls the base dtor); the reset loop
 //   reuses `j + 1` as the next index.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public: float R, G, B, A; };
 class CShaderLightAttenuation { public:
     float Attenuation0;                                // +0x00

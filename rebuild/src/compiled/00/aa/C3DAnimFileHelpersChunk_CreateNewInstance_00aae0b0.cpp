@@ -1,5 +1,6 @@
 // C3DAnimFileHelpersChunk::CreateNewInstance() const -- a new "HLPR" C3DAnimFileHelpersChunk passed through InitNewInstance (the chunk prototype's factory)
 // Leaf: ?CreateNewInstance@C3DAnimFileHelpersChunk@@UBEPAVCChunkedFileChunk@@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAE0B0, 62 bytes (+ int3 padding), thiscall.
 // Identity: C3DAnimFileHelpersChunk::CreateNewInstance() const -- proven; evidence: it is slot 9 of vtable 0x0129E7C0 (RTTI .?AVC3DAnimFileHelpersChunk@@ :
 //   CChunkedFileSuperChunk : CChunkedFileChunk : CBaseClassNonCopyable : CBaseClass) and builds an object with that same vtable; FableWin.pdb name set holds
@@ -33,7 +34,7 @@ protected:
     SArray RegisteredSubChunkTypes;                          // +0x1c
     unsigned long CurrentChunkIndex;                         // +0x28
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DAnimFileHelpersChunk : public CChunkedFileSuperChunk {
 public:
     C3DAnimFileHelpersChunk() : CChunkedFileSuperChunk("HLPR") { }

@@ -1,5 +1,6 @@
 // CAIStateGroup_HoverAttackArea::IsRunnable() -- runnable when there is an enemy, the base test passes and the enemy is within 20 units (2D) of the start position
 // Leaf: ?IsRunnable@CAIStateGroup_HoverAttackArea@@UAE_NXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095A2C0, length 159 bytes. Vtable slot 11 of
 // CAIStateGroup_HoverAttackArea (0x0128C754).
 // Callees: CAIStateGroup_EnemyCreatureBase::GetEnemy @ 0x0091DB50, CBaseIntelligentPointer ctor/SetPItem/
@@ -23,7 +24,7 @@ extern "C" double sqrt(double);
 
 class CThingCreatureBase;
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class C2DVector { public:
     float X, Y;

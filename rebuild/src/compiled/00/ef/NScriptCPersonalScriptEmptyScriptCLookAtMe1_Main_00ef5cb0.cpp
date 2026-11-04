@@ -1,6 +1,7 @@
 // NScript::CPersonalScript_EmptyScript::CLookAtMe1::Main() -- under "Me and WalkToHere are alive": fetch the
 //   TriggerCrate, then repeatedly wait until the hero uses Me and make the hero wear OBJECT_HERO_NO_HAT
 // Leaf: ?Main@CLookAtMe1@CPersonalScript_EmptyScript@NScript
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00EF5CB0, 817 bytes (+ int3 padding), plain `ret`.
 // Callees: CPredicate_And<CIsThingAlive, CIsThingAlive> ctor 0x00E24760, ~CIsThingAlive 0x00E241B0, CScriptThing copy
 //   0x004ABE90, out-of-line ~CScriptThing 0x004AA840, SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,
@@ -12,7 +13,7 @@
 // Shape: plain-inline ~CScriptThing; `for (;;) { if (Term()) return; ... }` outer loop (a `while` swaps the two inline
 //   copies' registers); the out-of-line exits (0x004AA840) are the two returns after the wait, under
 //   terminate checks as `do { if (...) return; } while (0);`.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

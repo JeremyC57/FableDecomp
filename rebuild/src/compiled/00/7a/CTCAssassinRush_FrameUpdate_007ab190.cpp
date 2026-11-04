@@ -1,5 +1,6 @@
 // CTCAssassinRush::FrameUpdate() -- per frame: on release finish the current action, play the cast sound and start the trail; while the trail delay runs keep the radial blur centred above the rusher, otherwise rush on; end the slow-down, and once the trail delay is over leave the exit modes, kill the trails and fade the blur; remove the rush component when everything has run out, and cancel when scheduled
 // Leaf: FrameUpdate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail 0x007AB190, 620 bytes, `ret`. Callees: CThingCreatureBase::FinishCurrentAction 0x00662650, LowerBound
 // 0x0040F020, CCharString 0x0099EBF0 / dtor 0x0099EAE0, CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00, CreateTrailingEffect
@@ -12,11 +13,7 @@
 // +0x44, RadialBlurFadeKey +0x98, ScheduleForCancel +0x9e, RushDelayFrameCount +0xa0, CompletedExitModes +0xa4;
 // retail def blur height +0x44, blur fade time +0x4c; CThing state byte +0x10 (1 = player), interface 0xA7's mode +0x10.
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

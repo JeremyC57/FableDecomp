@@ -1,5 +1,6 @@
 // std::__lower_bound(const THitLocationIntersectionElement* first, const THitLocationIntersectionElement* last, const long& val, THitLocationIntersectionElementPred comp, int*) -- STLport binary search for the first hit-location intersection whose key is not below val
 // Leaf: ??$__lower_bound@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x008174B0, 64 bytes, `ret 0Ch`: __fastcall (the algorithm TUs are /Gr), first in ecx -> eax,
 // last in edx; &val, the empty predicate by value (4-byte slot) and the null distance-type pointer on the stack.
 // Callers: the landed __equal_range 0x00817E30 (on [first, middle)) and 0x0081780C. Label: catalogued
@@ -10,7 +11,7 @@
 // `comp(*middle, val)` (signed `cmp ebx,ecx ; jge`) -> first = middle + 1, `len = len - half - 1` (the
 // `or edx,-1 ; sub edx,esi` form), else len = half; val is loaded once ahead of the loop.
 struct CHitLocation;
-class C3DVector { public: float X, Y, Z; };                // 12 bytes
+#include "engine/C3DVector.h"
 namespace {
 struct THitLocationIntersectionElement {        // 32 bytes
     long          key;                          // +0x00

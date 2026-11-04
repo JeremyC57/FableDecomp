@@ -1,5 +1,6 @@
 // CTollBanditScript::HandleBanditToll() -- place the toll bandits: teleport Me to the nearer blockade point (M_TollBanditBlockWay when it is closer to the hero than Me, else M_TollBandit), pick the near or far blockade markers, spawn archer/grunt/archer "BlockingBandit" creatures on them and face them along the markers
 // Leaf: HandleBanditToll
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4E0E0, length 1811 bytes. Called from 0x00E4B68D.
 // Label: catalog/autoname-t5 "CCreatureAction_TrollWhackGroundBase::HandleBanditToll" is wrong -- `this` is an entity script (Game +4, Me +8),
 //   called from the entity Main at 0x00E4B5B0 (vtable slot 0x012E4D8C), next to CM_TollBandit / CM_TauntingBandit.
@@ -11,7 +12,7 @@
 //   CGameScriptInterface slots 70 GetHero, 72 GetThingWithScriptName, 91 CreateCreature, 472 EntityTeleportToThing,
 //   474 EntitySetFacingAngle. Default position 0x0143E8E0 for an empty handle.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0

@@ -1,4 +1,5 @@
 // CGameScriptInterface::GiveHeroQuestCardDirectly(const CCharString& cardDefName, const CCharString& questName, bool silent) const -- create the named quest-card object at the hero, name its quest and activate it; tell the hero through the guild master unless silent or a vignette; kill the card when it cannot be activated
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008968C0, length 364 bytes (`ret 0Ch`).
@@ -19,7 +20,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 
 class CTCBase;

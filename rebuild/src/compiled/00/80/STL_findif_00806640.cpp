@@ -1,5 +1,6 @@
 // std::find_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingFilter_IsInFOV pred) -- STLport find_if over target points: forward to the random-access __find_if with a copy of the field-of-view filter
 // Leaf: ??$find_if@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00806640, 86 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the 0x24-byte predicate by value, `ret 24h`.
 // Name: Ego_r.pdb `std::find_if<..CTargetPoint.., CThingFilter_IsInFOV>` (donor 0x00800F80); the catalog's
@@ -13,10 +14,7 @@
 //   `last` stays in edx. As in the landed 0x0080E2A0, the tag only overlays that slot when the callee's body is in
 //   the TU (`__declspec(noinline)`); the leaf is `??$find_if@` because `find_if` also matches `__find_if`.
 class CThing;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }      // user copy ctor (the predicate copy is memberwise)
-};
+#include "engine/C3DVector.h"
 
 class CBaseIntelligentPointer {
 public:

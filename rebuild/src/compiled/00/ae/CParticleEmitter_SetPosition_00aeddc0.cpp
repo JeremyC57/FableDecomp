@@ -1,6 +1,7 @@
 // CParticleEmitter::SetPosition(const C3DPositionInterpolator&) -- unless the emitter is 2D, take the interpolator's start/end positions and write them into the translation rows of Transform and EndTransform
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEDDC0, length 150 bytes (padded to 160).
 // Leaf: SetPosition
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: none.
 // Layout (retail): bit-field word +0x40 (Emitter2D = bit 11), PositionInterpolator +0x94 (C3DPositionInterpolator: vptr,
 // StartPosition +4, EndPosition +0x10), Transform +0xb0, EndTransform +0x110 (CMatrix3x4, translation at +0x24) -- the PDB
@@ -9,9 +10,7 @@
 // the raw bit-field gives `test byte ptr [ecx+41h],8`); the interpolator copied by its IMPLICIT operator= (vptr kept, both
 // C3DVectors through lea'd pointers), then the matrix translations set by an inline three-float setter that re-reads the
 // members straight off ecx (assigning the two vectors one by one keeps the lea'd pointers alive instead).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class C3DPositionInterpolator { public:
     virtual void v00();
     C3DVector StartPosition;                // +0x04

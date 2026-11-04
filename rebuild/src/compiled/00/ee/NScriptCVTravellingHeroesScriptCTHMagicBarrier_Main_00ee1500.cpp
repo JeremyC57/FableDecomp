@@ -1,5 +1,6 @@
 // NScript::CV_TravellingHeroesScript::CTH_MagicBarrier::Main() -- the red magic barrier at the snow troll: alive filter on Me, raise the two red forcefield effects at BarrierFX_Here facing Me's angle; while the snow troll lives keep them up (recreating the idle pair whenever both have gone); once the troll is dead remove the forcefields, play the two switch-off effects and remove Me
 // Leaf: Main
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE1500, 1519 bytes (+ int3 padding); entity-script vtable slot 1 (Main);
 //   PDB ?Main@CTH_MagicBarrier@CV_TravellingHeroesScript@NScript@@EAEXXZ.
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, ~CBaseClass 0x0099A2E0, ~CIsThingAlive 0x00E241B0 (predicate
@@ -22,7 +23,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy

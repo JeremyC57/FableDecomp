@@ -1,4 +1,5 @@
 // CEnginePrimitiveParticleGroup::CEnginePrimitiveParticleGroup(float, const C3DBoundingSphere&, bool, bool, EEngineEffectWaterStage, bool, bool, bool) -- primitive type 0x18: camera distance, render flags, water stage and bounding sphere
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF08D0, length 101 bytes. No callees.
 // Signature from Ego_r.pdb: ??0CEnginePrimitiveParticleGroup@@QAE@MABVC3DBoundingSphere@@_N1W4EEngineEffectWaterStage@@111@Z
 // (8 stack words, `ret 20h`). Layout = PDB CEnginePrimitiveParticleGroup (0x2c): CEnginePrimitive base
@@ -9,10 +10,7 @@
 // bytes from one zero register; the bounding sphere is copied memberwise (C3DVector has a user copy
 // constructor, so the implicit sphere copy goes member by member through one register per dword).
 
-class C3DVector { public:                                       // memberwise user copy constructor: one register per dword
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }

@@ -1,5 +1,6 @@
 // NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttackerBoss::Init() -- cache the boss's scalar reading against the tracked target (slot 0x420 of the owner) and copy the target's current position
 // Leaf: ?Init@CUndeadRisingZombieAttackerBoss@CQ_UndeadRisingScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00E0D640, 51 bytes (+ int3 padding). Reached only through the vtable word @ 0x012DFFE4.
 // Callees (virtual): owner->vtable[0x420/4](&m_target) returning a float (x87), m_target.vtable[0x18/4]() returning
 // a reference to a 12-byte position that is copied word by word into +0x1c.
@@ -10,9 +11,7 @@
 // i.e. a POD struct assignment from the returned reference.
 // Naming wave 35: identity reg 00e0b28e "UndeadRisingZombieAttackerBoss" in 00e0b160; Alloc 00e0d590; vtable 012dffdc slot 2; PDB ?Init@CUndeadRisingZombieAttackerBoss@CQ_UndeadRisingScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CUndeadRisingZombieAttackerBoss::Init (wave3/labels_alloc.tsv); PDB ?Init@CUndeadRisingZombieAttackerBoss@CQ_UndeadRisingScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CUndeadRisingZombieAttackerBoss@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 struct CBossTarget {                 // +0x08, polymorphic
     virtual void v000();

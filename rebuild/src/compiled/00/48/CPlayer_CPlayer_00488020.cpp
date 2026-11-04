@@ -1,5 +1,6 @@
 // CPlayer::~CPlayer() -- player destructor: clears the cached manager pointers, releases the player def, destroys the player-mode list, deletes the 66 input-process scoped pointers (reverse order), releases the hero log book counted pointer and the two creature intelligent pointers, then tail-calls ~CInitBaseClass
 // Leaf: ??1CPlayer
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00488020, length 1200 bytes, tail `jmp` to the base destructor.
 // Label: the catalog row says CTCFireheartMinigame::~CTCFireheartMinigame (propagated). The body stores vtable 0x01231CC4,
 // which rtti-vtables.tsv names CPlayer (slot 0 = 0x0044BE30, the scalar deleting dtor, the only caller of this function).
@@ -16,7 +17,7 @@ class CInitBaseClass { public:
     virtual ~CInitBaseClass();                  // 0x0099A410
     bool m_flag04;                              // +0x04
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CCamera { public:                                // 0x38 bytes
     C3DVector WorldPosition;

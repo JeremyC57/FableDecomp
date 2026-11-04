@@ -1,5 +1,6 @@
 // CDefendingCombatantInfo::CCombatRing::GetAllProngs(vector<CProng*>& prongs) -- append the address of every prong of this combat ring to the caller's vector
 // Leaf: ?GetAllProngs@CCombatRing@CDefendingCombatantInfo@@QAEXAAV?$vector@PAVCProng@CDefendingCombatantInfo@@V?$allocator@PAVCProng@CDefendingCombatantInfo@@@std@@@std@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EAB00, 81 bytes, thiscall, `ret 4`.
 // Identity (proven): Ego_r.pdb CDefendingCombatantInfo::CCombatRing (RotationAngle, DeltaRotation, Index, RingThickness,
 //   Prongs vector<CProng> +0x10) with 0x1C-byte CProng elements (POccupier CIntelligentPointer at +0x14); the PDB's two
@@ -75,7 +76,7 @@ public:
     void* PData;                                            // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CDefendingCombatantInfo {
 public:

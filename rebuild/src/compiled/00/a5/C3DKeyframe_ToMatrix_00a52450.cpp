@@ -1,5 +1,6 @@
 // C3DKeyframe::ToMatrix(CMatrix3x4& m, bool applyScaling) const -- keyframe (quaternion + position + scale) to a 3x4 matrix: the inline quaternion-to-matrix with the position as translation, then each rotation row scaled by the matching scale component
 // Leaf: ?ToMatrix@C3DKeyframe
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A52450, 447 bytes, `ret 8`. FableWin symbol ?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix3x4@@_N@Z
 //   (the catalog label CQuaternion::ToMatrix is the inlined ?ToMatrix@CQuaternion@@QBEXAAVCMatrix3x4@@ABVC3DVector@@@Z).
 // Callees: none (CQuaternion::ToMatrix is inlined).
@@ -10,10 +11,7 @@
 //   components into locals x, y, z, w first (loads in X..W order), and the norm sums w*w + z*z + y*y + x*x. The translation
 //   is a C3DVector temporary built from the position (its Z travels as an integer copy). The scale components are float
 //   locals declared Z, Y, X, and the rows are scaled with `*=` (the rotation values are forwarded from the frame).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class C4DVector { public: float X, Y, Z, W; };
 class CMatrix3x4 { public:
     union {

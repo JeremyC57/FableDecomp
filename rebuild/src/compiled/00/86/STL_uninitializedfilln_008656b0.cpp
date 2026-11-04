@@ -1,5 +1,6 @@
 // std::__uninitialized_fill_n(NCreatureHitNotification::CFlash* first, unsigned int n, const CFlash& x, const __false_type&) -- STLport placement fill of n raw hit-flash slots with copies of x (each: a fresh self-linked list sentinel, the range insert of x's trail entries, then the creation frame), returning the end of the filled range
 // Leaf: ??$__uninitialized_fill_n@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008656B0, length 89 bytes (+ int3 padding), `ret 8`.
 // Callers: vector<NCreatureHitNotification::CFlash>::_M_insert_overflow 0x008657E0 (0x0086585C, the fill_len != 1 arm).
 // Callees: malloc @ 0x00BFEA0E (the 0x24-byte sentinel node), list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry>::
@@ -15,7 +16,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CEnginePrimitiveWeaponTrail {
 public:
     class CWeaponTrailEntry {                               // Ego_r.pdb, 28 bytes

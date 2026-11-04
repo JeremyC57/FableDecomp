@@ -1,5 +1,6 @@
 // std::_Rb_tree::insert_unique(const value_type& v) -- (map<unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation >) STLport 4.6 unique insert: descend comparing the 64-bit keys, step back once through the out-of-line operator-- unless at begin(), insert through _M_insert when the key is new; {iterator, inserted} through the hidden pointer
 // Leaf: ?insert_unique@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Select1st@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@std@@_N@2@ABU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@2@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0082F860, 198 bytes (+ int3 padding), thiscall, `ret 8` (hidden pair result + value
 //   reference).
 // Identity (proven): std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation >, _Select1st<...>, less<unsigned __int64>,
@@ -9,12 +10,7 @@
 // Callees: _Rb_tree_iterator::operator-- 0x0082EE10 (this instantiation's own out-of-line copy, defined here under
 //   auto_inline(off) as in agent951 G006), _M_insert(x, y, v, w) 0x0082F7B0 (thiscall, `ret 14h` with the hidden result).
 // Model: agent951 G006 (0x00514C10, set<unsigned long>) with the 64-bit key: less<unsigned __int64> inline (high halves, then low).
-class C3DVector {                                         // 12 bytes (Ego_r.pdb)
-public:
-    float X;                                               // +0x00
-    float Y;                                               // +0x04
-    float Z;                                               // +0x08
-};
+#include "engine/C3DVector.h"
 class C3DAngles {                                          // 12 bytes (Ego_r.pdb)
 public:
     float AngleXY;                                         // +0x00

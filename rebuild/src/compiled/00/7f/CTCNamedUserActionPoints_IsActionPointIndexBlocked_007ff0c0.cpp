@@ -1,5 +1,6 @@
 // CTCNamedUserActionPoints::IsActionPointIndexBlocked(CThing& thing, C3DVector& position, CRightHandedSet& orientation, long index) const -- place the named action point (its dummy object on the owner's mesh, returned in position/orientation) and report whether a creature other than the owner and the current user stands within 0.5 of it
 // Leaf: IsActionPointIndexBlocked
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FF0C0, 199 bytes (`ret 10h`; PDB ?IsActionPointIndexBlocked@CTCNamedUserActionPoints@@UBE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@J@Z; `thing` is unused).
 // Callees: CTCGraphicAppearance::GetDummyObject(const CCharString&, long, unsigned long, C3DVector*, CRightHandedSet*, float)
 //   @ 0x004C08C0 on ParentThing->PTCGraphicAppearance (+0x64), __ftol2 @ 0x00BFEA70 (x then y), GetPItem @ 0x00A01B50,
@@ -13,7 +14,7 @@
 // Shape: the box is built from two truncated longs (x, y, x, y); the three filters and the Bind3 are named locals (the IsNot
 //   filters and the result land in the dead parameter slots); the search tools are read into a named local before the pushes
 //   (the chained form loads them after); `? true : false` gives the `test al,al ; setne al` tail.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;

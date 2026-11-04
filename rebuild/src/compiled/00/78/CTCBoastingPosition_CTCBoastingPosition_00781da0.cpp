@@ -1,5 +1,6 @@
 // CTCBoastingPosition::CTCBoastingPosition(CThing* owner) -- CTCBase(owner), this class's vtable, the podium pointer at +0xc, three cleared flags, the particle-effect pointer at +0x2e
 // Leaf: ??0CTCBoastingPosition
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x00781DA0, 70 bytes (`ret 4`). Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (the chunk
 // label "CEngineSubPrimitive2DClockSprite" is propagated; the landed 0x00686800 source is CTCBase),
@@ -33,7 +34,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer   // vtable 0x01238C6
     CIntelligentPointer() {}
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 #pragma pack(push, 1)
 class CTCBase

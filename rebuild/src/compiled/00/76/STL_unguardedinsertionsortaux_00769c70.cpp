@@ -1,15 +1,13 @@
 // std::__unguarded_insertion_sort_aux(pair<unsigned long, C3DVector>* first, pair<unsigned long, C3DVector>* last, pair<unsigned long, C3DVector>*, CKeyPairCompareLess<unsigned long, C3DVector> comp) -- unguarded linear insertion of every element of [first, last)
 // Leaf: ??$__unguarded_insertion_sort_aux@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00769C70, 64 bytes, `ret 8`.
 // Callers: the landed SGI sort 0x0076C000 (its inlined __final_insertion_sort) and 0x0076B4AC / 0x0076C059.
 // Callee: __unguarded_linear_insert 0x00769420 (same instantiation, out of line).
 // Shape: STLport `__unguarded_insertion_sort_aux(first, last, _Tp*, comp)`, /Gr (__fastcall: first in ecx, last in
 //   edx, the null value-type pointer and the comparator on the stack). The comparator is loaded once into ebx;
 //   `_Tp(*i)` is built in the argument area by the pair's user copy constructor (`sub esp,10h ; mov eax,esp`).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

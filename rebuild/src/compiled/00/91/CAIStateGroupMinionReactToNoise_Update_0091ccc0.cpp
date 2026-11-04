@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToNoise::Update() -- wait (yielding) until the creature has finished its current action,
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // turn to look at the noise, then walk to within 6 units of it; on arrival clear the investigate/found flags.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091CCC0, length 183 bytes.
 // Callees: CThingCreatureBase::IsPerformingAnyAction @ 0x006622A0, CAIStateGroupBase::IsStopping @ 0x008FD010, the
@@ -10,10 +11,7 @@
 // Engine header names (NoisePosition +0x14, InvestigatingNoise +0x20, FoundNoiseMaker +0x21); the header flattens
 // the base, so the class is modelled locally.
 class CThing;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CThingCreatureBase { public:
 public:

@@ -1,5 +1,6 @@
 // CThingAICreature::UpdateMovement(float dt) -- a scripted-control creature (interface 0x1f) whose script task is idle or forced either yields to a higher-priority AI state group (interrupting the control) or force-resets its brain, runs one AI update, moves, updates the control and tracks the nearest interesting thing; otherwise (unless brain updates are suppressed) runs the brain and AI update and moves
 // Leaf: UpdateMovement
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: LowerBound @ 0x0040F020, CTCScriptedControl::IsScriptTaskRunning @ 0x007122C0, _ftol @ 0x00BFEA70,
 // CAIBrain::IsReadyToRunStateGroupWithHigherScriptPriorityThan(long, long) @ 0x0088BAC0, CTCScriptedControl::InterruptControl
 // @ 0x00713850, CBrainOutput::CBrainOutput @ 0x00835620, CAIBrain::ForceReset(CBrainOutput*) @ 0x0088BA40,
@@ -46,7 +47,7 @@ struct CCountedPointer_CCreatureActionBase {
         m_pCount = 0;
     }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CNavigationInput { public:
     C3DVector Destination;                      // +0x00
     float Proximity;                            // +0x0c

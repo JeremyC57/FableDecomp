@@ -1,5 +1,6 @@
 // NScript::CV_FishingCompetitionScript::CBountyHuntActivationChecker::Main() -- fishing-competition state check: while Q_BountyHunt is active, flag it, remove the fishermen and post the "bandits" sign text; when the hunt has just ended, respawn the fishermen and refresh the competition; otherwise refresh the sign / respawn the organiser / generate an entry depending on the competition state; finally catch the attack counter up with the elapsed days
 // Leaf: ?Main@CBountyHuntActivationChecker@CV_FishingCompetitionScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E7F410, 786 bytes (800 with padding); entity-script vtable slot 1 (Main).
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30, CCharString(const char*, long) 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0, ~CScriptThing 0x004AA840, RemoveFishermen 0x00E7FB80 / RespawnFishermen 0x00E7F7F0 (this),
@@ -14,7 +15,7 @@
 //   (CV_FishingCompetitionScript, retail = PDB - 0x14), PMasterData +0x18.
 // Naming wave 35: identity reg 00e7e447 "BountyHuntActivationChecker" in 00e7e370; Alloc 00e7ec90; vtable 012ea5e8 slot 1; PDB ?Main@CBountyHuntActivationChecker@CV_FishingCompetitionScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBountyHuntActivationChecker::Main (wave3/labels_alloc.tsv); PDB ?Main@CBountyHuntActivationChecker@CV_FishingCompetitionScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBountyHuntActivationChecker@@QAEXXZ`; this source now defines the PDB member (outer stand-in CV_FishingCompetitionScript moved into NScript); same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

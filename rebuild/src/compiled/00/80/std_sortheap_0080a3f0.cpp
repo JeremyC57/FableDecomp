@@ -1,5 +1,6 @@
 // std::sort_heap(SVectorLongPair* first, SVectorLongPair* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- heap sort of (C3DVector, long) first-person target positions under the 44-byte position comparator: pop the root to the back until one element remains
 // Leaf: sort_heap
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080A3F0, length 143 bytes (+ int3 padding), `ret 2Ch`.
 // Identity: the catalog label `_Sort_heap<pair<long,CDefPointer<CContextSensitiveItemDef const>>*,
 // CContextSensitivePriorityCompare>` is propagated over the byte-identical skeleton. The stride is 16 (`and -16 ;
@@ -12,7 +13,7 @@
 // Shape: the 0x007FA980 shape -- `while (last - first > 1) pop_heap(first, last--, comp)` with pop_heap inline;
 // the comparator copy is member by member (ten dwords, the CompareInXYPlane byte from a bl hoisted out of the
 // loop) because C3DVector has a user copy constructor; then `push 0` for the value-type pointer.
-class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+#include "engine/C3DVector.h"
 class CVectorCompare_BestForTargeting { public:        // Ego_r.pdb, 44 bytes
     C3DVector AnchorPos;                        // +0x00
     C3DVector PreferredLine;                    // +0x0c

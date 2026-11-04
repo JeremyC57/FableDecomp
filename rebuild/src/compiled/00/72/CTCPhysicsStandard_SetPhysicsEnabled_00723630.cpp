@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::SetPhysicsEnabled(bool enabled) -- store the PhysicsEnabled flag; enabling clears the velocity, marks the thing moving, clears OnGround/OnMesh and the thing stood on; disabling stops it (Moving off, OldMoving on)
 // Leaf: SetPhysicsEnabled
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00723630, 99 bytes. CTCPhysicsStandard vtable 0x01265F84 slot 36 (catalog "vfunc_36"; the
 //   name follows the PDB bit it stores: +0x85 bit 2 = PhysicsEnabled).
 // Callees: CTCPhysicsBase::SetAsMoving(bool) @ 0x006B0130, CTCPhysicsBase::SetThingStandingOn(CTCPhysicsBase*) @ 0x006AF6D0.
@@ -7,7 +8,7 @@
 //   OnGround/OnMesh +0x84 bits 4/5, PhysicsEnabled +0x85 bit 2.
 // Shape: the velocity is cleared by a chained `Z = Y = X = 0` style store run (highest address first); the two OnGround/OnMesh
 //   clears merge into one `and byte ptr [esi+84h],0CFh`, the two Moving bits into one load/and/or/store.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CThingPhysicsMeshInfo;
 class CTCPhysicsBase { public:

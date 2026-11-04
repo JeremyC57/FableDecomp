@@ -1,5 +1,6 @@
 // std::__uninitialized_copy(CTCUnholyPower::PerEffectInfo* first, CTCUnholyPower::PerEffectInfo* last, CTCUnholyPower::PerEffectInfo* result, const __false_type&) -- STLport placement copy-construct each 20-byte record (the position, then the intelligent pointer's copy constructor) and return the advanced result
 // Leaf: ??$__uninitialized_copy@PAUPerEffectInfo@CTCUnholyPower@@PAU12@@std@@YIPAUPerEffectInfo@CTCUnholyPower@@PAU12@00ABU__false_type@0@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00797950, 90 bytes, __fastcall (first in ecx, last in edx, result + tag on the stack), `ret 8`.
 // Identity (proven): its only caller is vector<CTCUnholyPower::PerEffectInfo>::_M_insert_overflow 0x007981B0 (bound ?_M_insert_overflow@?$vector@UPerEffectInfo@CTCUnholyPower@@@@...; called by the landed push_back 0x00798410); 20-byte element {C3DVector Position; CIntelligentPointer<CThing> Effect}.
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10, GetPItem 0x00A01B50, SetPItem 0x00A01B90.
@@ -21,12 +22,7 @@ public:
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.CBaseIntelligentPointer::GetPItem()); }
 };
 class CThing;
-class C3DVector {                                          // user copy constructor: ??0C3DVector@@QAE@ABV0@@Z (FableWin/Ego_d symbols)
-public:
-    float X, Y, Z;                                        // +0x00
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class CTCUnholyPower {
 public:
     struct PerEffectInfo {                                 // Ego_r.pdb (struct), 20 bytes

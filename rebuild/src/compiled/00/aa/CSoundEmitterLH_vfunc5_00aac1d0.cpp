@@ -1,5 +1,6 @@
 // CSoundEmitterLH::vfunc_5(long soundId) -- play a sound of the emitter's bank at the emitter position: look the sample up, start it (script counter, volume 1, the position), and on success track it as a new active sound; returns the play handle or -1
 // Leaf: vfunc_5
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAC1D0, length 264 bytes (`ret 4`), vtable 0x0129E6EC (CSoundEmitterLH) slot 5.
 // The audio layer is not in Ego_r.pdb: method and member names are descriptive.
 // Callees: the bank lookup @ 0x00A3ED30 (a CVectorMap find returning the sample or 0; manifest "VectorMap_LookupByKey"),
@@ -13,11 +14,7 @@
 // immediates); the counted pointer is an unnamed temporary handed to push_back (it takes the first GetPosition temporary's
 // frame slot) and released inline (block re-read from the frame); the success path is nested so both failures share the final
 // `return -1` tail.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 double __fastcall GFGetTime();                     // 0x009E1BC0
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A

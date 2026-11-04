@@ -1,4 +1,5 @@
 // CTCPhysicsStandard::GetPossibleInteractedWithList(const C2DBoxI& box, vector<CThing*>& things, float extraRadius) const -- when the body interacts or collides with things at all, gather the things in the box that it can collide or interact with, that overlap its sphere (radius + extraRadius) and that have physics (interface 2)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E57D0, 164 bytes (`ret 0Ch`; PDB ?GetPossibleInteractedWithList@CTCPhysicsStandard@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThing@@...@@M@Z).
 // Callees: virtual GetInteractsWithThings slot 60 (+0xf0), GetCollidesWithThings 57 (+0xe4), GetCollidesWithThingsOneWay 58
 //   (+0xe8), IsExcludingCreatures 61 (+0xf4); CTCBase::PeekThingSearchTools() const @ 0x006AFD40 (GetWorld() const ->
@@ -10,10 +11,7 @@
 // Shape: the three filters are named locals (frame: HasTC +4, CanCollide +8, Bind3 +0x10, sphere +0x1c) and the Bind3 a
 //   temporary in the call. C3DVector needs its memberwise user copy constructor: the implicit copy forms `lea eax,[esi+0Ch]`
 //   and reads through it, the user copy reads [esi+0Ch..14h] directly like retail.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 class CThing;
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };

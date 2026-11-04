@@ -1,5 +1,6 @@
 // CTCAssassinRush::~CTCAssassinRush() -- assassin-rush ability component dtor: fade out a still-running radial blur, then the member dtors in reverse order (the final-action counted pointer, the item-alpha pointer vector, the collided-thing and both trail pointers, the def pointer, the target pointer) and ~CTCBase
 // Leaf: ??1CTCAssassinRush@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A9D60, 221 bytes, tail jump to the base destructor.
 // Identity: the first store is vtable 0x0126CF2C, RTTI `.?AVCTCAssassinRush@@` (rtti_bases: CTCAssassinRush : CTCBase); its
 //   slot 0 is the scalar deleting dtor 0x007AB5E0. Ego_r.pdb has `??1CTCAssassinRush@@UAE@XZ`. The PDB member offsets (PTarget
@@ -124,11 +125,7 @@ protected:
 };
 
 #pragma pack(push, 1)
-class C3DVector { public:                                  // retail C3DVector is 1-aligned
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CCPPointerInfo { public:                              // CCountedPointer count block

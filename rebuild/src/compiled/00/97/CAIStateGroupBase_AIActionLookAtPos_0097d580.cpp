@@ -1,4 +1,5 @@
 // CAIStateGroupBase::AIAction_LookAtPos(EAIActionRepeat, C3DVector, long, float) -- turn the creature to look at a position, yielding until it does (or once)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097D580, length 366 bytes (`ret 18h`). Ego_r.pdb
 //          ?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z.
 // Callees: CAIStateGroupBase::IsStopping @ 0x008FD010, the creature's look-at test @ 0x006650E0 (manifest
@@ -15,11 +16,7 @@
 //          LookAtThing +0x40); CNavigationInput's Proximity/Speed are floats, so their zero stores are immediates while
 //          MovementType uses the zero register. The base follows engine/CAIStateGroupBase.h (PBrain +4).
 class CThing;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CBaseObject;
 class CBaseObjectPointer;

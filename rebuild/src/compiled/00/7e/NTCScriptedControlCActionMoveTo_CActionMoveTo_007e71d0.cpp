@@ -1,6 +1,7 @@
 // NTCScriptedControl::CActionMoveTo::CActionMoveTo(const C3DVector& pos, EMovementType movementType, float proximity, bool faceMovement, bool avoidDynamicObstacles) -- constructor: the common action members zeroed, own vtable, the move parameters, two empty CScriptThings (target / route), the flags cleared and no action point (-1).
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- CScriptThing::PImp modelled as the PDB's CCountedPointer<CScriptThing> record (one inline ctor), not two raw words: the second CScriptThing's vtable store stays above its PImp zeros
 // Leaf: ??0CActionMoveTo
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E71D0, length 154 bytes (+ int3 padding), `ret 14h`.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (the action root) and the CScriptThing root constructor @ 0x0099A2D0 (each
 // CScriptThing; also labelled CBaseClassNonCopyable::CBaseClassNonCopyable, a separate byte twin, so it is a separate symbol here). Vtables 0x0127091C = NTCScriptedControl::CActionMoveTo (rtti-vtables.tsv),
@@ -19,10 +20,7 @@ protected:                                   // the action root
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 typedef long EMovementType;
 class CTCBase;
 

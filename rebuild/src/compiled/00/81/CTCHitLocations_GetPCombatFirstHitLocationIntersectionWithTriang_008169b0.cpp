@@ -1,5 +1,6 @@
 // CTCHitLocations::GetPCombatFirstHitLocationIntersectionWithTriangle(const CTriangle&, C3DVector*, C3DVector*, long) -- collects up to eight enabled hit locations whose volume the triangle intersects, sorts them and returns the best one
 // Leaf: GetPCombatFirstHitLocationIntersectionWithTriangle
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008169B0, 234 bytes (+ int3 padding), `ret 10h`.
 // Callees: the hit-location def's volume object (CHitLocationDef +0x3C) virtual slot 8 (+0x20, the triangle test
 //          filling two C3DVector outs), std::sort<THitLocationIntersectionElement*, comparator> @ 0x00818C20 (SGI,
@@ -12,9 +13,7 @@
 // Layout: Ego_r.pdb CTCHitLocations HitLocations vector<pair<NHitLocations::CHitLocation, long> > at +0x0C (begin/
 // end at +0x0C/+0x10 in retail); CHitLocation (0x18): POwnerThing +0, PDef +4, Enabled +0x14.
 class CThing;
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 struct CTriangle {                                   // the caller's triangle (first word: its vertex pointer)
     C3DVector* PVertices;

@@ -1,5 +1,6 @@
 // CDefendingCombatantInfo::~CDefendingCombatantInfo() -- compiler-generated: release the attack-pattern def, the last-attacker pointer, the combat wheel's rings, then the attackers map
 // Leaf: ??1CDefendingCombatantInfo
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F48A0, length 132 bytes, plain `ret`. 11 callers, all in the combat manager:
 // CCombatManager::RegisterAttackedCombatant 0x006ED270 (x3) and RegisterAttackingCombatant 0x006EDA80 (x3) on stack
 // CCombatantInfo temporaries, CCombatantMap::erase 0x006F4E40, and the CCombatantInfo destroyers 0x006F4A60.. (each calls it
@@ -47,7 +48,7 @@ struct CBaseIntelligentPointer {
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 

@@ -1,4 +1,5 @@
 // CTCPhysicsRigidBody::SetRHSet(const CRightHandedSet& set) -- store the rigid body's right-handed set and mark it as moving (SetFacingAnglesFromRHSet slot, no old-set snapshot)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00759A00, length 56 bytes (vtable 0x0126996C slot 75, rtti-vtables.tsv; slot 75
 // of CTCPhysicsStandard is SetRHSet 0x007239C0, which also calls UpdateOldRHSet first).
 // Callees: CTCPhysicsBase::SetAsMoving(bool) @ 0x006B0130, tail-jumped.
@@ -8,7 +9,7 @@
 // Layout: Ego_r.pdb CTCPhysicsRigidBody has RHSet at +0x74 after three 16-byte std::vectors at +0x40; retail vectors are 12
 // bytes (GOTCHAS wave 23), so retail RHSet sits at +0x68. engine/CTCPhysicsRigidBody.h follows the PDB offsets and has no
 // virtuals, so the class is modelled locally.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CRetailVector { void* m_first; void* m_last; void* m_end; };   // retail std::vector, 12 bytes
 

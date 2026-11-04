@@ -1,5 +1,6 @@
 // NScript::CV_FishingCompetitionScript::CFishCompCompetitor::Main() -- a fishing-competition competitor (his ID is his data string): attach to the quest and stay persistent; vanish if the competitors were already attacked; otherwise every frame until they are, flag the attack when the hero hits him (plain hit, or a special ability other than 14), and answer a talk with a paused movie line "TEXT_QST_B15_FISHER<id>" + _SCARED / _INTRO / _FISHCOMMENT_<prize> (once per new prize) / _TIP; finally become scared
 // Leaf: ?Main@CFishCompCompetitor@CV_FishingCompetitionScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E7E640, 1604 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, CBaseClass dtor 0x0099A2E0, scripted-thing handle IsValid
 //   0x00CD23B9 / Release 0x00CD2770 / GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 /
@@ -46,7 +47,7 @@ template <class T> class CCountedPointer { public:
 };
 struct CScriptThingImpl;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const;
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)

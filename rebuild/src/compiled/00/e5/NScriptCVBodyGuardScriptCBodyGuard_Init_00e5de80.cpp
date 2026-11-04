@@ -1,5 +1,6 @@
 // NScript::CV_BodyGuardScript::CBodyGuard::Init() -- set a henchman up: no health bar, brain state 1, health states and freak-out cleared, weapons out, bodyguard faction, follows the hero through teleporters, has information, persistent, may follow the hero, wants no money, ignores follow/wait expressions, wanders 0..10 around its home position, and the anger timer reset
 // Leaf: ?Init@CBodyGuard@CV_BodyGuardScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E5DE80, 364 bytes, thiscall, plain `ret` (private virtual, entity vtable slot 2).
@@ -26,12 +27,7 @@ public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

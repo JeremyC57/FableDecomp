@@ -1,5 +1,6 @@
 // std::__adjust_heap(NPlayerTargeting::CTargetPoint* first, int holeIndex, int len, NPlayerTargeting::CTargetPoint val, CThingCompare_BestForTargeting2 comp) -- STLport heap sift-down of the targeting candidates: walk the hole to a leaf along the child the targeting predicate ranks higher, then __push_heap val back up
 // Leaf: ??$__adjust_heap@PAVCTargetPoint@NPlayerTargeting@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080AD90, 429 bytes (+ int3 padding), `ret 54h` (__fastcall: first in ecx,
 //   holeIndex in edx; len, the 0x1C-byte CTargetPoint and the 0x34-byte comparator by value on the stack).
 // Callees: CThingCompare_BestForTargeting2::operator() @ 0x008098B0 (comp(first[second], first[second - 1])),
@@ -37,10 +38,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint { public:

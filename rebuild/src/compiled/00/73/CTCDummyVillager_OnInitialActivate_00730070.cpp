@@ -1,4 +1,5 @@
 // CTCDummyVillager::OnInitialActivate() -- relinks the home/work buildings and the creature from their saved UIDs, re-attaches the creature to its buildings and village, and recreates a dead villager when its day has come
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00730070, 752 bytes, `ret`.
 // Callees: CTCBase::GetThingManager() const @ 0x00686AE0, CThingManager::FindThingByUID(unsigned __int64) @ 0x0051ED80,
@@ -11,7 +12,7 @@
 // Layout (Ego_r.pdb, matches retail): HomeBuilding +0x10 / UID +0x18, WorkBuilding +0x20 / UID +0x28, Creature +0x30 /
 //         UID +0x38, DayToBeRecreated +0x40, Respawnable +0x48; CThing type byte +0x10 (1 creature, 3 building);
 //         CThingAICreature HomeBuilding +0x168, WorkBuilding +0x170.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

@@ -1,5 +1,6 @@
 // CTCVillage::UpdateSecuritySweepTasks() -- while a security sweep runs: a hero who is no longer a criminal ends it; otherwise the sweep is recalculated every 7.5 seconds or when the hero has moved more than 10 units from where it was last calculated
 // Leaf: UpdateSecuritySweepTasks
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065C08A, 188 bytes (plain `ret`, `leave`): frame-pointer size TU,
@@ -17,7 +18,7 @@
 //        statement-by-statement `d = dx*dx; d += dy*dy;` against 100 (`test ah,41h`).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };

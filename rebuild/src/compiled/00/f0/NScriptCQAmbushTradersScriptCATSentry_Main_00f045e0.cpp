@@ -1,5 +1,6 @@
 // NScript::CQ_AmbushTradersScript::CAT_Sentry::Main() -- Arena sentry: find "AT_ConvoySpy"; each frame until the thread ends: when the phase ends take scripted control, walk to the nearest REGION_EXIT_POINT and fade out; once alerted (flag) or seen by the hero, attack (state group 0, the hero as best target unless the spy is fleeing), make the hero follow it and idle; when the spy comes within the def's range scare it; on the first frame the spy is scared, turn on the spy and the hero and ally the spy with every live guard
 // Leaf: ?Main@CAT_Sentry@CQ_AmbushTradersScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F045E0, 1520 bytes; entity-script vtable slot 1 (Main).
 // Callees: ~CScriptThing 0x004AA840, ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC, IsActiveThreadTerminating
@@ -15,7 +16,7 @@
 // Naming wave 35: identity reg 00f028a7 "AT_Sentry" in 00f024c0; Alloc 00f04510; vtable 012f7e30 slot 1; PDB ?Main@CAT_Sentry@CQ_AmbushTradersScript@NScript@@; refs=1; was under-qualified CAT_Sentry::Main (wave3/labels_alloc.tsv); PDB ?Main@CAT_Sentry@CQ_AmbushTradersScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CAT_Sentry@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0
 class CCharString { public:
     void* PStringData;

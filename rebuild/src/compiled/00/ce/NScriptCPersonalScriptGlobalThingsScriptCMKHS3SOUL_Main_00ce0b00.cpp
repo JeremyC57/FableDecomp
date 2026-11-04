@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_GlobalThingsScript::CMK_HS3_SOUL::Main() -- Hero Souls 2 trapped-soul marker (first soul): wait until the quest has freed a soul, then keep a "DG_SOUL_TRAPPED" effect alive at Me (oriented by Me's XY angle), re-creating it whenever it dies, until the script is done
 // Leaf: ?Main@CMK_HS3_SOUL@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Inline-split: exits wrapped individually; retail's construct is unproven
 // Levers: plain-inline ~CScriptThing; effect bound as `CScriptThing& effect = Game->CreateEffect(...)` (VC binds the temporary: IsAlive stays virtual); recreate as `effect.PImp = Game->CreateEffect(...).PImp` (temp dtor out of line by the per-site rule, counted operator= still direct); the pre-loop and loop-top terminate checks are do-while(0) statements; for(;;){ if (IsActiveThreadTerminating()) return; ...}
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CE0B00, length 470 bytes (+ int3 padding). Three CMK_HS3_SOUL Mains (0x00CE0920 /
@@ -41,7 +42,7 @@ template <class T> class CCountedPointer { public:
         Info = 0;
     }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

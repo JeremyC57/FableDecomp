@@ -1,5 +1,6 @@
 // CTCHitLocations::~CTCHitLocations() -- the compiler-generated (implicit) destructor, kept out of line: release the def pointer PDef (+0x1C), destroy HitLocations (+0xC), then the base destructor CTCBase::~CTCBase
 // Leaf: ??1CTCHitLocations@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E7E7F, 40 bytes (+ int3 padding), thiscall, no return value; size-optimised TU (odd entry,
 //   `and dword ptr [esi+1Ch],0`); reached only from its scalar deleting destructor 0x004E7E63.
 // Identity (proven): CTCHitLocations::~CTCHitLocations(); evidence: its only caller is the scalar deleting destructor 0x004E7E63 in slot 0 of vtable 0x012434E4, whose RTTI is .?AVCTCHitLocations@@ : CTCBase : CBaseClassNonCopyable : CBaseClass; the PDB name sets hold ??1CTCHitLocations@@UAE@XZ; the released and destroyed offsets +0x1C / +0xC are Ego_r.pdb CTCHitLocations::PDef / HitLocations (rebased: one 16-byte PDB container precedes PDef), and the tail jump is the base's destructor.
@@ -81,12 +82,7 @@ public:
     bool    ToBeRemoved;                                 // +0x08
     bool    IsInGlobalUpdateTCs;                         // +0x09
 };
-class C3DVector {                                        // Ego_r.pdb 12 bytes
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 namespace NHitLocations { class CHitLocation; }       // Ego_r.pdb 24 bytes (only named here)
 class CHitLocationsDef;
 class CTCHitLocations : public CTCBase {                 // vtable 0x012434E4, Ego_r.pdb 0x38 bytes, retail 0x34 (12-byte vector)

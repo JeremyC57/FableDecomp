@@ -1,5 +1,6 @@
 // CAIStateGroup_ButterflyWander::Initialise(CAIBrain& brain,CThingAICreature& creature,long priority,EScriptAIPriority scriptPriority,const CCharString& name) -- Record the creature position before base initialisation.
 // Leaf: ?Initialise@CAIStateGroup_ButterflyWander@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity: Own RTTI0128b918 slot1; actual inheritance from RTTI and PDB StartPos+36; original CThingPhysical::PeekPos 006a4d00 and CAIStateGroupBase::Initialise.
 #define CAIStateGroupBase CAIStateGroupBase_HeaderLayout
 #include "engine/CAIStateGroupBase.h"
@@ -11,7 +12,7 @@
 #include "engine/CAIStateGroup_HoverAttack.h"
 #undef CAIStateGroup_HoverAttack
 #pragma pack(push,1)
-class C3DVector{public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class CThingPhysical{public:const C3DVector& PeekPos()const; /* 0x006A4D00 ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ (Ego_r donor order Kill/PeekPos/PeekLastPos/OnCreate) */};class CThingCreatureBase:public CThingPhysical{};class CThingAICreature:public CThingCreatureBase{};class CAIBrain;class CCharStringData;class CCharString{public:CCharStringData* PStringData;};enum EScriptAIPriority{ScriptPriorityDescriptiveZero=0};
 // Layout: shared owner headers flatten inheritance and StartPos. Real base20, FlyingThingBase36 and EnemyCreatureBase28; inherited PeekPos is CThingPhysical::PeekPos 006a4d00 (byte-identical to CThing::GetPos 004c73d0; identity by Ego_r donor order).

@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPBestLeafThing(const TFilter& filter, const TCompare& compare, TThing** out) [TFilter = std::binder2nd<std::const_mem_fun1_ref_t<bool, CThing, ETCInterfaceType> >, TCompare = CThingCompare_Nearest, TThing = CThingVillage] -- the nearest scan-visible village (type list 4) for which the bound CThing member (e.g. HasTC) is true for the bound interface type
 // Leaf: GetPBestLeafThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048CB50, 118 bytes (+ int3 padding to 128) (`ret 0Ch`).
 // Callees: PeekTypeList 0x0049C780, the bound member through its pointer, CThingCompare_Nearest::operator()<CThingVillage> 0x0048B160.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (`this` is only passed through to the list getter);
@@ -52,7 +53,7 @@ struct CThingList {
 };
 
 class CThingVillage : public CThing { public: enum { ThingListType = 4 }; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 namespace std {
 template <class R, class T, class A> class const_mem_fun1_ref_t {   // (thing.*pmf)(arg)
     R (T::*_M_f)(A) const;

@@ -1,5 +1,6 @@
 // _global::Copy_CTargetPoint_00806e10(const CTargetPoint* first, const CTargetPoint* last, CTargetPoint* result, const random_access_iterator_tag&, int*) -- STLport __copy<NPlayerTargeting::CTargetPoint*>: counted forward assignment of 28-byte target points, returns the advanced result
 // Leaf: Copy_CTargetPoint_00806e10
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00806E10, length 135 bytes (+ int3 padding), `ret 0Ch`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CBaseIntelligentPointer::SetPItem @ 0x00A01B90.
 // Types (Ego_r.pdb): NPlayerTargeting::CTargetPoint (28 bytes) = PThing CIntelligentPointer<CThing> +0, Index +8,
@@ -28,10 +29,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint { public:

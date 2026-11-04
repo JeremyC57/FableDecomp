@@ -1,4 +1,5 @@
 // CAIStateGroup_MazeTutorialBattleTeleport::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority,
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // const CCharString&) -- base initialisation, then stamp the teleport frame and remember the creature's position.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00953FE0, length 84 bytes (+ int3 padding), `ret 14h`.
 // Callees: CAIStateGroupBase::Initialise @ 0x008FCEC0 (five arguments forwarded), CAIStateGroupBase::GetPWorld
@@ -15,10 +16,7 @@ class CAIBrain;
 class CThingAICreature;
 class CCharString;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;         // 0x004C73D0

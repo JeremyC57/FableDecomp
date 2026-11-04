@@ -1,4 +1,5 @@
 // CTCCameraPointScripted::vfunc_17(CCharString& error) -- validity check: start position set, a look direction or thing set, and an end position whenever there is a transition time; writes the reason into `error` and returns false on the first failure
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 //
 // Retail 0x0075CDF0, 116 bytes (`ret 4`). Vtable 0x01269C84 (CTCCameraPointScripted) slot 17.
@@ -17,7 +18,7 @@ class CCharString { public:
 extern const float DELTA_NOTIONAL_ZERO;                 // 0x0129BA3C (0.0001f)
 
 #pragma pack(push, 1)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCCameraPointScripted { public:
     virtual void v00();

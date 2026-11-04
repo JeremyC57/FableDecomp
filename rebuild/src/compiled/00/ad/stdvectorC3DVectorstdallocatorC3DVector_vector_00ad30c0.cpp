@@ -1,6 +1,7 @@
 // std::vector<C3DVector>::vector(size_type count, const C3DVector& value, const allocator<C3DVector>&) -- STLport vector of 12-byte vectors: pointers nulled, count elements malloc'd (none for zero), finish/end-of-storage set, every element copy-constructed from value
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD30C0, length 116 bytes.
 // Leaf: ??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@IABVC3DVector@@ABV?$allocator@VC3DVector@@@1@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming (naming wave 21, chunk 689 NAME_FIXES): the STLport class names in namespace std (vector / _Vector_base / _STLP_alloc_proxy / allocator,
 //   size_type unsigned int) replace the hand names CSTLportVector / CVectorBase / CAllocProxy / CAllocator; MeasureSegments 0x00AC9D50 (chunk 689)
 //   binds this spelling. Text and bytes unchanged.
@@ -16,11 +17,7 @@
 
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 
-class C3DVector { public:                              // 12-byte element with an empty default ctor: T() leaves the frame temporary unset
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

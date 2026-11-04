@@ -1,5 +1,6 @@
 // std::unary_negate::operator()(const C3DVector& x) const -- not1(CVectorFilter_FurtherFromPointThan): is the point within the radius of the centre on the XY plane
 // Leaf: ??R?$unary_negate@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AABC0, length 77 bytes (+ int3 padding), `ret 4`.
 // Identity: one caller, 0x008AAD13 in the STLport __find_if 0x008AAC50 that the remove_if 0x008AC060 calls; the
 //   remove_copy_if 0x008AB710 of the same remove_if inlines the same test. FableWin.pdb names the instance
@@ -13,9 +14,7 @@
 //   two-float C2DVector restores retail's X-first order. The inlined
 //   result is materialised (`mov eax,1` / `xor eax,eax`) and then negated with `test al,al ; sete cl` (VC7.1 does not
 //   fold the inlined bool into the negation).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C2DVector { public:
     float X, Y;

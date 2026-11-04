@@ -1,5 +1,6 @@
 // NCreatureMode::CModeScorpionKingTailPlunge::SetTarget(CThingCreatureBase*) -- PTarget pointed at the target creature, TargetPos = its position
 // Leaf: SetTarget
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D7430, 109 bytes (`ret 4`).
 // Label: the catalog's "CModeJackOfBladesScream::SetSwordObject" is a byte-twin propagation; the temporary's vtable
 // 0x0123E7D8 (CIntelligentPointer<CThingCreatureBase>) and the byte-packed offsets +0xa1 / +0x89 are
@@ -7,7 +8,7 @@
 // Callees: CBaseIntelligentPointer: ctor 0x00A01B10, SetPItem 0x00A01B90, GetPItem 0x00A01B50, ~ 0x00A01C10;
 // CThing::GetPos @ 0x004C73D0.
 // Shape: as 0x008D7370 (temporary + inline operator= with the item in a local, position copied word by word), members under `#pragma pack(1)`.
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;          // 0x004C73D0 (CThing::GetPos, GOTCHAS chunk 141)

@@ -1,5 +1,6 @@
 // CScriptThing::GetHomePos() -- the pointee's HomePos, or a copy of the static zero vector when there is no pointee
 // Leaf: GetHomePos
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AA9A0, length 57 bytes (`?GetHomePos@CScriptThing@@UBE?AVC3DVector@@XZ`, a const virtual).
 // Callees: virtual slot 7 of the pointee.
 // CScriptThing is a pimpl handle {vptr, CCountedPointer<CScriptThing> PImp}: every query forwards to the
@@ -12,10 +13,7 @@
 // `call [eax+1Ch]`), returning that pointer.
 #include "engine/CScriptThing.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy: hidden-pointer return
-};
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0 (12 bytes, directly before the empty string)
 
 struct CScriptThingVirtuals {                       // vtable view of the implementation object

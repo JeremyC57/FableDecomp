@@ -1,5 +1,6 @@
 // CTCCameraCollision::GetCameraPhysicsMeshObject() const -- build the camera-collision physics mesh object: the def's physics mesh placed at the thing's physics position and orientation, scaled by the thing's physics radius / 100
 // Leaf: GetCameraPhysicsMeshObject
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E30A0, length 206 bytes, `ret 4` (hidden result)
 // (?GetCameraPhysicsMeshObject@CTCCameraCollision@@QBE?AVCPhysicsMeshObject@@XZ).
 // Callees: the thing physics' GetPhysicsMeshInfo (virtual slot 93, +0x174) and orientation getter (slot 72, +0x120; name
@@ -12,7 +13,7 @@
 // Shape: the def and the mesh bank are named locals (the def held in ebp across GetWorld); the object is a named local copied into the result by the implicit copy constructor (no NRVO): vtable, add-ref'd mesh,
 // the matrix as a block, the two scales; the mesh temporary of the constructor call is released by the counted pointer's dtor through
 // the pointee's DecRef/GetRefCount release (the long `add eax,4 ; dec ; test ; mov` form).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CPhysicsMesh { public:
     virtual void v00();

@@ -1,5 +1,6 @@
 // CTCCreatureGenerator::Validate(CCharString& error) const -- false (with the reason in error) when no creature families are set, or when a family generates hidden without hidden start positions, uses the unsupported generator-animation type, or generates in the open without open positions
 // Leaf: Validate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00749F00, 512 bytes (`ret 4`, 0x18-byte frame, no EH frame).
 //         Ego_r.pdb: `?Validate@CTCCreatureGenerator@@UBE_NAAVCCharString@@@Z` (vtable slot 17).
 // Callees: CCharString::operator=(const char*) @ 0x0099EFE0, operator=(const CCharString&) @ 0x0099EFB0, operator+=(const char*)
@@ -89,7 +90,7 @@ template <class T> struct CVector {                                  // STLport 
     const T* end() const { return _M_finish; }
     bool empty() const { return _M_start == _M_finish; }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CDefIndex { public: long Index; operator long() const { return Index; } };
 
 class CCreatureGenerationFamilyDef { public:

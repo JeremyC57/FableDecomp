@@ -1,5 +1,6 @@
 // std::vector::_M_clear() -- (vector<C3DSkeletalBoneMorph >) STLport 4.6 `_M_clear()`: destroy every element, then free the block (the reallocating branch of vector::operator= / reserve)
 // Leaf: ?_M_clear@?$vector@VC3DSkeletalBoneMorph@@V?$allocator@VC3DSkeletalBoneMorph@@@std@@@std@@IAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088B4A0, 49 bytes (+ int3 padding to 64), thiscall, plain `ret`.
 // Identity (proven): vector<C3DSkeletalBoneMorph >::_M_clear; evidence: its only caller is the vector operator= 0x00A46790 (0x00A46807, the reallocating branch after the 20-byte-stride copy), which the C3DSkeletalMorphParameter constructors 0x00A454F0 / 0x00A455A0 apply to C3DSkeletalMorphTarget+4 -- Ego_r.pdb's C3DSkeletalMorphTarget::BoneMorphs (+4), CArray<C3DSkeletalBoneMorph> (20-byte element {CCharString BoneName, unsigned long BoneNameCRC, C3DVector Scaling}).
 // Label: the manifest's "ResetRings" is propagated (family J007: six destroy-and-free bodies whose element destructor runs on the element itself -- STLport ~vector (with the inline
@@ -68,7 +69,7 @@ protected:
     }
 };
 }
-class C3DVector { public: float X, Y, Z; };                  // 12 bytes
+#include "engine/C3DVector.h"
 class C3DSkeletalBoneMorph {                                   // 20 bytes (Ego_r.pdb)
 public:
     CCharString   BoneName;                                    // +0x00

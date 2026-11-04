@@ -1,6 +1,7 @@
 // Grade: RELOCATION_MATCH (wave 2 sec3 retry: the PDB inline const accessors CThing::GetTCGraphicAppearance() / GetPhysicsTC() give retail's appearance load before the argument pushes and the copy registers)
 // NHitLocations::CPhysicalPrimitiveSphere::GetSphereBase(const CThing& thing) const -- the sphere primitive's base: the named dummy object on the thing's graphic appearance when the base name is set and the dummy is found, else the thing's physics position
 // Leaf: ?GetSphereBase@CPhysicalPrimitiveSphere@NHitLocations@@QBE?AVC3DVector@@ABVCThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00814C70, 157 bytes (+ int3 padding), `ret 8`: __fastcall (this -> esi via &BaseName), the
 //   hidden C3DVector result pointer then the thing reference on the stack; returns the result pointer.
 // Name: Ego_r.pdb / FableWin.pdb `?GetSphereBase@CPhysicalPrimitiveSphere@NHitLocations@@QBE?AVC3DVector@@ABVCThing@@@Z`
@@ -39,12 +40,7 @@ public:
 };
 
 #pragma pack(push, 1)
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CRightHandedSet {

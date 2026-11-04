@@ -5,7 +5,8 @@
 // running float; `if (d <= r*r) return true; return false;` gives the byte constants.
 // Layout: PDB C3DBoundingBox MinCoord +0, MaxCoord +0xc; C3DBoundingSphere Center +0, Radius +0xc.
 // Leaf: IntersectsSolid
-class C3DVector { public: float X, Y, Z; };
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
     C3DVector Center;              // +0
     float Radius;                  // +0xc

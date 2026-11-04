@@ -1,5 +1,6 @@
 // NScript::CQ_BountyHuntScript::CBH_GangGrunt::Main() -- bounty-hunt bandit grunt: removed at once unless the bounty-hunt intro is complete; else register the alive filter, wait for the bandit cutscene, walk to the thing named by Me's data string, wander around it facing the hero until the hero comes within 20 units or hits Me, then face the hero, say the next TEXT_QST_017_BANDIT<n> line, attack the hero and idle until terminated
 // Leaf: ?Main@CBH_GangGrunt@CQ_BountyHuntScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D15A40, length 1408 bytes, plain `ret`.
 // Callees: as CBH_GangGruntSpawn::Main 0x00D15510 plus GFIntToCharString 0x0099F830 and operator+(const char*, const
 //   CCharString&) 0x0099F690 (both `__fastcall` with a hidden result), ClearCommands 0x007E7360 (devirtualised on the
@@ -14,10 +15,7 @@
 // Naming wave 35: identity reg 00d137fd "BH_GangGrunt" in 00d13580; Alloc 00d15940; vtable 012ca524 slot 1; PDB ?Main@CBH_GangGrunt@CQ_BountyHuntScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBH_GangGrunt::Main (wave3/labels_alloc.tsv); PDB ?Main@CBH_GangGrunt@CQ_BountyHuntScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBH_GangGrunt@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_BountyHuntScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
 class CCharString { public:
     void* PStringData;

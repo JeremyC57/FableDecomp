@@ -1,5 +1,6 @@
 // NCameraModes::CProjectileWeapon::OnInit() -- projectile-weapon camera start: make the switch a single cut; if the camera already in use is a projectile-weapon camera, carry its orbit (phi, height, deltas, zoom FOV, axes) over, else set the params up from the def with the zoom FOV at the camera FOV; then run one Update
 // Leaf: ?OnInit@CProjectileWeapon@NCameraModes@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00878F50, 276 bytes, tail `jmp [vtbl+4]` (Update).
 // Identity: vtable 0x01277804 (RTTI `.?AVCProjectileWeapon@NCameraModes@@`) slot 21; slot 22 is the landed OnDie 0x00878B40
 //   (as CSimplePointBase 0x008734F0 / 0x00873570 have them). Ego_r.pdb `?OnInit@CProjectileWeapon@NCameraModes@@UAEXXZ`.
@@ -14,11 +15,7 @@
 //   ZoomInFOV +0x104 (Attractors is a 12-byte vector). CGameCameraManager Camera +0x04, OldCamera +0x3c, CurrentMode +0x98,
 //   SingleCut +0xb0 (Ego_r +0x9c / +0xbc: narrower STLport members). Header debt: engine/CGameCameraManager.h is the PDB layout.
 #pragma pack(push, 1)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CRightHandedSet { public:

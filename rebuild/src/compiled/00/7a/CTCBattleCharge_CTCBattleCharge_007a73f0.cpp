@@ -1,5 +1,6 @@
 // CTCBattleCharge::~CTCBattleCharge() -- battle-charge ability component dtor: fade or kill the shield and both feet effects, then the member dtors in reverse order (the people-hit pointer vector, five thing pointers, the battle-charge def pointer) and ~CTCBase
 // Leaf: ??1CTCBattleCharge@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A73F0, 161 bytes, tail jump to the base destructor.
 // Identity: the first store is vtable 0x0126CBFC, RTTI `.?AVCTCBattleCharge@@` (rtti_bases: CTCBattleCharge : CTCBase); its
 //   slot 0 is the scalar deleting dtor 0x007A9800, the only caller (call at 0x007A9803). Ego_r.pdb has
@@ -106,11 +107,7 @@ template <class T> class CDefPointer { public:
 };
 
 #pragma pack(push, 1)
-class C3DVector { public:                                  // retail C3DVector is 1-aligned
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CTCBase : public CBaseClassNonCopyable { public:

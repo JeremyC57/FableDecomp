@@ -1,5 +1,6 @@
 // CEngineMap::CEngineMap(const CIDrawMap*, long, long, long, long, long, CCharString, bool) -- constructor: empty name, file entry and file-block manager (whose block map allocates its header node), then the game map, world position (as floats and as 16-bit grid coordinates), map size, UID and static-map name; not yet in the visible-map list
 // Leaf: ??0CEngineMap
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B429E0, 172 bytes (+ int3 padding), `ret 20h`. Mangled
 //   ??0CEngineMap@@QAE@PBVCIDrawMap@@JJJJJVCCharString@@_N@Z (the trailing bool is not read here); built by `new` 0x68 bytes at
 //   0x00B42D87.
@@ -23,7 +24,7 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector Min, Max; };
 
 template <class T> class CCountedPointer { public:

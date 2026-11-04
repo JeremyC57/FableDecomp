@@ -1,4 +1,5 @@
 // CGameScriptInterface::CreateExperienceOrb(const C3DVector&,long) -- create and configure an experience orb, returning its script handle
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0089FBB0,206 bytes; definition manager0044C6B0,lookup009AD410,create00779E90,SetExperiencePoints00779E10,handle004C7E50. Successful creation guarantees experience-orb interface105.
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
@@ -7,7 +8,7 @@
 #undef CThing
 // Native bitset has9words/map44/life91 versus donor10words/map48/lifeA1; retain named native view below.
 #include "fable_string.h"
-class C3DVector{ public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

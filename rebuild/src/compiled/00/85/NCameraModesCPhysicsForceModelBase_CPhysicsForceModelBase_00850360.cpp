@@ -1,5 +1,6 @@
 // NCameraModes::CPhysicsForceModelBase::~CPhysicsForceModelBase() -- compiler-generated camera force-model destructor: destroy the ground, themes and things collision-point objects (each three STLport lists)
 // Leaf: ??1CPhysicsForceModelBase@NCameraModes@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00850360, 137 bytes, `jmp` to the last list destructor.
 // Identity (proven): FableWin.pdb ??1CPhysicsForceModelBase@NCameraModes@@QAE@XZ (0x0288D2B0, non-virtual) beside
 //   ??_GCPhysicsForceModelBase@NCameraModes@@QAEPAXI@Z (0x0288D270, non-virtual), boost::checked_delete /
@@ -83,7 +84,7 @@ public:
 };
 } // namespace std
 
-class C3DVector { public: float X; float Y; float Z; };
+#include "engine/C3DVector.h"
 class CGameCameraManager;
 
 namespace NCameraModes {

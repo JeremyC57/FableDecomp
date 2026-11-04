@@ -1,4 +1,5 @@
 // C3DAnimationInfo::C3DAnimationInfo(const C3DAnimationInfo&) -- copy constructor: the CMeshDataBankEntry base (vtable 0x0129CD28, Bank, Index), then the own vtable (0x0129CD64), the counted data pointer (addref), durations, movement vector and rotation
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2A4F0, length 82 bytes. No callees.
 // Layout from engine/C3DAnimationInfo.h (0x28 bytes) over engine/CMeshDataBankEntry.h (Bank +4,
 // Index +8): Data_Object +0xc, Duration +0x10, NonLoopingDuration +0x14, MovementVector +0x18,
@@ -28,10 +29,7 @@ struct CIVCountedPointer {
     }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DAnimationInfo : public CMeshDataBankEntry { public:   // vtable 0x0129CD64
     CIVCountedPointer Data;                // +0xc

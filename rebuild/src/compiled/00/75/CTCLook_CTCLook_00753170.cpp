@@ -1,5 +1,6 @@
 // CTCLook::CTCLook(CThing* thing) -- CTCBase(thing) + the graphic-appearance component base, look state cleared (state 1, flags 0x17, eye angles marked changed), register with the owner's graphic appearance and remember the owner as the parent creature when it is one
 // Leaf: ??0CTCLook
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00753170, length 284 bytes (+ int3 padding), `ret 4`. Vtables: CTCLook primary
 // 0x01269744, the NGraphicAppearance::CAGraphicAppearanceComponent base 0x0125A170 (stored first by its inline ctor) and
 // CTCLook's side 0x012697B8 at +0xC (rtti-vtables.tsv).
@@ -42,11 +43,7 @@ class CThing { public:
 };
 extern bool g_bLookConstructedOnce;                 // 0x013BAD59
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(push, 1)
 struct CPackedVector { float X, Y, Z; CPackedVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
 #pragma pack(pop)

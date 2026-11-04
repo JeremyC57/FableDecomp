@@ -1,5 +1,6 @@
 // NCameraModes::CPhysicsCollisionPointsObject::GetPointsList() -- rebuild Points as the concatenation of every SmartPointList entry's point list
 // Leaf: ?GetPointsList@CPhysicsCollisionPointsObject@NCameraModes@@QAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the STLport 4.6 iterator shape (_List_iterator_base with _M_incr and ==/!= under a _List_iterator with a user copy constructor) lets VC7.1 rotate both loops as retail does (as the landed 0x008FCA40 in this TU)
 // Retail 0x008FA9F0, 0x85 bytes (row 0x90 with int3 padding), thiscall on ecx (CPhysicsCollisionPointsObject*), void. Manifest label
 //   "LinkedList_ClearAndReinit" (_global) is wrong: the PDB name set has
@@ -13,9 +14,7 @@ extern "C" void  __cdecl free(void* block);                                     
 
 inline void* operator new(unsigned int, void* __p) { return __p; }
 
-class C3DVector { public:                              // retail C3DVector, 12 bytes
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

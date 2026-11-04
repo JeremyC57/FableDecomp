@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::GetFacingAngleXZ() const -- Return the orientation angle in the XZ plane.
 // Leaf: ?GetFacingAngleXZ@CTCPhysicsStandard@@UBEMXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity: proven. Own RTTI vtable slot65 and PDB exact GetFacingAngleXZ()const ->float. Own add ecx,80 then00a22ca0 matches CRightHandedSet::GetAngleXZ()const from original nameset and callee XZ angle implementation. Original CTCBase/PhysicsBase ancestry; receiver offsets80 reconcile donor fields with STLport vectors12. Shared header is flattened and aliased; actual model preserves typed bases and original named members through RHSet; unused suffix omitted without a full-size claim. Unused virtual slots are descriptive projections.
 // Layout: PhysicsBase64, CTCBase12, C3DVector12 packed1, CRightHandedSet24; real CDefPointer base-pointer storage and STLport hierarchy. Original constructor declarations retained; test-only fixture default constructors are added only in the standalone test.
 #define CTCPhysicsStandard CTCPhysicsStandard_HeaderLayout
@@ -12,7 +13,8 @@ class CIVCountedPointeeBase{public:CIVCountedPointeeBase():IVRefCount(1){}virtua
 class CResourceList;class CResource:public CIVCountedPointeeBase{public:CResourceList* ResourceList;CResource* PrevResource;CResource* NextResource;unsigned long ResourceSize,LastUsedFrame;CResource():ResourceList(0),PrevResource(0),NextResource(0),ResourceSize(0),LastUsedFrame(0){}virtual ~CResource();};class CDefPointeeBase:public CResource{public:virtual void Delete()const;};enum ENullDef{ENullDef_DescriptiveNull=0};
 template<class T>class CDefPointer{public:CDefPointeeBase* Object;CDefPointer(ENullDef=ENullDef_DescriptiveNull):Object(0){}CDefPointer(const CDefPointer& other):Object(other.Object){if(Object)Object->AddRef();}CDefPointer(T* object):Object((CDefPointeeBase*)object){if(Object)Object->AddRef();}__forceinline ~CDefPointer(){if(Object){Object->Release();Object=0;}}CDefPointer& operator=(const CDefPointer& other){if(Object!=other.Object){if(Object){Object->Release();Object=0;}Object=other.Object;if(Object)Object->AddRef();}return *this;}T* operator->()const{return (T*)Object;}};
 #pragma pack(push,1)
-class C3DVector{public:float X,Y,Z;};class CRightHandedSet{public:C3DVector Up,Forward;float GetAngleXZ()const;};
+#include "engine/C3DVector.h"
+class CRightHandedSet{public:C3DVector Up,Forward;float GetAngleXZ()const;};
 #pragma pack(pop)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable:public CBaseClass{};class CThing;class CTCBase:public CBaseClassNonCopyable{public:CThing* ParentThing;bool ToBeRemoved,IsInGlobalUpdateTCs;CTCBase(CThing&);virtual ~CTCBase();};

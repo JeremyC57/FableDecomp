@@ -1,5 +1,6 @@
 // NCreatureMode::CModeJackOfBladesFlash::CModeJackOfBladesFlash(CThing*) -- CModeStandBase(thing), the "JACK_OF_BLADES_FLASH" group filter, empty target / emitter / spot-light pointers, PCreature = the owner
 // Leaf: ??0CModeJackOfBladesFlash
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D7E60, 174 bytes (`ret 4`). Vtable 0x012857A8 (NCreatureMode::CModeJackOfBladesFlash).
 // Callees: CModeStandBase::CModeStandBase(CThing*) 0x00861E00; CCharString(const char*, long) 0x0099EBF0,
 // CCharString() 0x0099E4B0, operator= 0x0099EFB0, ~CCharString 0x0099EAE0; CRC 0x004014A0;
@@ -80,7 +81,7 @@ template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c + the stand-mode members)
     virtual void v00();

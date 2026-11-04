@@ -1,8 +1,9 @@
 // CNavigatorAStar::GetMyNodeAt(const C3DVector* position) -- the navigation node under the position: the owner (+0x14) picks the layer (its slot 16 with the position), the manager (+0x1c) the node (GetNodeAt @ 0x00A14F70 with the position narrowed to 2D in a frame temporary)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A1A1D0, length 64 bytes.
 // Leaf: GetMyNodeAt
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Shape: an 8-byte frame for the C2DVector conversion temporary, `this` in esi, the layer call first (its result pushed first), `ret 4`.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }   // the conversion temporary: two dwords copied into the frame

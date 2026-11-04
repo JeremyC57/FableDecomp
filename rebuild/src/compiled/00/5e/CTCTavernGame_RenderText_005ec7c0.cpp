@@ -1,5 +1,6 @@
 // CTCTavernGame::RenderText(const CEnginePrimitivePrepareInfo&, float x, float y, CWideString text, const CFontBank& font, CRGBColour colour) -- queues one 2D text primitive at a screen-fraction position: preloads the glyphs, adds a primitive handle and hands the engine the text primitive on layer 0x45
 // Leaf: RenderText
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EC7C0, 220 bytes (`ret 18h`: six argument dwords; the by-value text is
 // destroyed by the callee). Ego_r.pdb `?RenderText@CTCTavernGame@@IAEXABVCEnginePrimitivePrepareInfo@@MMVCWideString@@
@@ -36,10 +37,7 @@ class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI() {}

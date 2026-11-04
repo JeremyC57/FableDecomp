@@ -1,5 +1,6 @@
 // CVillageTaskSecuritySweep::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~CVillageTaskSecuritySweep inlined (the member's destructor, then the base chain down to the first user-written destructor), and operator delete when bit 0 of flags is set; returns this
 // Leaf: ??_GCVillageTaskSecuritySweep@@UAEPAXI@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065DD4A, 44 bytes, thiscall, `ret 4`; reached only through vtable slot 0.
 // Identity (proven): CVillageTaskSecuritySweep::`scalar deleting destructor'; evidence: vtable 0x0125A868 slot 0 (RTTI .?AVCVillageTaskSecuritySweep@@ : CVillageTaskBase : CBaseObject : CBaseClass)
 // Label: the manifest's "`vector_deleting_destructor'" is propagated across byte-identical bodies (family J065: five deleting destructors of five unrelated classes).
@@ -29,12 +30,7 @@ public:
     CVillageTaskBase();
     virtual ~CVillageTaskBase() { }                      // user-written, inline: stores 0x0125A830, then ~CBaseObject
 };
-class C3DVector {                                        // Ego_r.pdb 12 bytes
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 class CVillageTaskSecuritySweep : public CVillageTaskBase {   // vtable 0x0125A868, Ego_r.pdb 52 bytes
 public:
     CIntelligentPointer<const CThing> CreatureAssignedToTask;   // +0x08

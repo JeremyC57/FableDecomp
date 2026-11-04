@@ -1,5 +1,6 @@
 // NCameraModes::CPhysicsLeaf::FrameUpdate() -- camera physics leaf <CPhysicsTargetModelGoTo, CPhysicsForceModelGotoOutsideSimple, CPhysicsCoordCartesian>: run the force model's and the coordinate model's frame updates, then reset the go-to physics state (CullPhysics off, both attractor lists cleared)
 // Leaf: ?FrameUpdate@?$CPhysicsLeaf@VCPhysicsTargetModelGoTo@NCameraModes@@VCPhysicsForceModelGotoOutsideSimple@2@VCPhysicsCoordCartesian@2@@NCameraModes@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00850640, 44 bytes, thiscall, tail jump to the second list clear.
 // Identity (proven): the only reference is RTTI vtable 0x01275974 (.?AV?$CPhysicsLeaf@VCPhysicsTargetModelGoTo@NCameraModes@@VCPhysicsForceModelGotoOutsideSimple@2@VCPhysicsCoordCartesian@2@@NCameraModes@@)
 //   slot 0; slot 1 is Reset (0x00850630: OurForce->Reset()), slot 2 the inherited CPhysicsTargetModelGoTo::GetType 0x0084FD10, slot 3 the
@@ -19,10 +20,7 @@
 extern "C" void __cdecl free(void* p);
 
 #pragma pack(push, 1)
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace std {

@@ -1,5 +1,6 @@
 // CEnginePrimitiveParticleMesh::CEnginePrimitiveParticleMesh(unsigned __int64, const C3DVector&, const CRightHandedSet&, const C3DVector&, const CRGBColour&, EEngineInterpolationSet) -- primitive type 0x17: world position, size, orientation set and colour
 // Leaf: ??0CEnginePrimitiveParticleMesh@@QAE@_KABVC3DVector@@ABVCRightHandedSet@@1ABVCRGBColour@@W4EEngineInterpolationSet@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B058E0, length 147 bytes (+ int3 padding). No callees.
 // Signature from Ego_r.pdb: ??0CEnginePrimitiveParticleMesh@@QAE@_KABVC3DVector@@ABVCRightHandedSet@@1ABVCRGBColour@@W4EEngineInterpolationSet@@@Z
 // (7 stack words, `ret 1Ch`); the leading 64-bit primitive handle is not stored by this constructor.
@@ -12,10 +13,7 @@
 // Naming wave 35: the last parameter is the PDB enum EEngineInterpolationSet (was `long`, mangled J): the source now defines the Ego_r.pdb symbol above; same bytes.
 enum EEngineInterpolationSet { INTERPOLATION_UNNAMED };   // Ego_r.pdb CEnginePrimitive::InterpolationSet type (enumerators not modelled; int-sized)
 
-class C3DVector { public:                                       // memberwise user copy constructor: one register per dword
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }

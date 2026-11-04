@@ -1,5 +1,6 @@
 // C3DMeshFileHelperPointChunk::GetChunkInfo() const -- "Name: <n>, Position: (x, y, z), Sub-mesh: <s>, Bone: <b>"
 // Leaf: ?GetChunkInfo@C3DMeshFileHelperPointChunk
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail @ 0x00AA96B0, 425 bytes (ret 4: hidden CCharString result).
 // Callees: CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0,
 //   operator+(const CCharString&, const CCharString&) 0x0099F570, operator+(const CCharString&, const char*) 0x0099F600,
@@ -37,7 +38,7 @@ class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
     CArrayPair SubChunks; CArrayPair RegisteredSubChunkTypes; unsigned long CurrentChunkIndex;
 };
 struct C3DMeshFileChunk : CChunkedFileSuperChunk {};
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DMeshFileHelperPointChunk : public C3DMeshFileChunk { public:
     C3DVector Position;      // +0x2c
     long SubMeshIndex;       // +0x38

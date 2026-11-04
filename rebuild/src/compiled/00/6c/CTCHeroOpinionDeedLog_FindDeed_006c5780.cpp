@@ -1,5 +1,6 @@
 // CTCHeroOpinionDeedLog::FindDeed(EOpinionDeedType type, const CThing* target) -- the handle of the first logged deed of this type against this target, or -1
 // Leaf: ?FindDeed@CTCHeroOpinionDeedLog@@QAEJW4EOpinionDeedType@@PBVCThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006C5780, 126 bytes (+ int3 padding), thiscall `ret 8`.
 // Callers: none by direct call (xref finds no call site).
 // Callees: CBaseIntelligentPointer::GetPItem() @ 0x00A01B50 (the deed's target pointer at +0x18, landed).
@@ -27,10 +28,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 enum EOpinionDeedType { OPINION_DEED_TYPE_WITNESS_0x35 = 0x35 };
 

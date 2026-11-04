@@ -1,5 +1,6 @@
 // std::__find_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CFilter_Bind2 pred, const random_access_iterator_tag&) -- STLport random-access find_if: the first target point inside the field of view whose thing is stealable shop stock, or last
 // Leaf: ??$__find_if@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00809F80, 382 bytes, /Gr `__fastcall` (first ecx, last edx -- spilled to a frame
 //   word; the 8-byte CFilter_Bind2 by value and the tag reference on the stack, `ret 0Ch`).
 // Identity: Ego_r.pdb `std::_Find_if<CTargetPoint*, CFilter_Bind2<CThingFilter_IsInFOV, `anonymous namespace'::
@@ -57,7 +58,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                             // 0x00A01B50
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 namespace NPlayerTargeting {
 class CTargetPoint { public:                                     // 0x1c bytes
     CIntelligentPointer<CThing> PThing;                   // +0x00

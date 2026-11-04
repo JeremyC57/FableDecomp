@@ -1,5 +1,6 @@
 // C3DMeshObject::GetNoHelperPoints(const CCharString& name) const -- how many helper points the mesh statistics hold under the name's CRC (FindHelperPointsEnd - FindHelperPointsBegin over 20-byte pairs)
 // Leaf: GetNoHelperPoints
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A36140, 88 bytes (+ int3 padding), `ret 4`.
 // Identity: Ego_r.pdb `?GetNoHelperPoints@C3DMeshObject@@QBEJABVCCharString@@@Z`; callers 0x004BDF2A / 0x004C0794. The catalog's
 //   "CTCInventoryAbilities_Helper_CRC" is propagated/descriptive (the callees carry the propagated
@@ -26,7 +27,7 @@ public:
     static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
 };   // 0x004014A0: CRC
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DHelperPoint { public:                            // 16 bytes
     C3DVector Position;                            // +0x00
     long      BoneIndex;                           // +0x0c

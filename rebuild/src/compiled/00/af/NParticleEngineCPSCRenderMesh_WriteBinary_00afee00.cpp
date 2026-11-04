@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCRenderMesh::WriteBinary(CDataOutputStream&) const -- serialize the mesh renderer: bank indices, the six trail/mesh colours, the packed bit-field integers/flags and the render-size param
 // Leaf: ?WriteBinary@CPSCRenderMesh@NParticleEngine@@UBEXAAVCDataOutputStream@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c: FableWin.pdb + Ego_r.pdb ?WriteBinary@CPSCRenderMesh@NParticleEngine@@UBEXAAVCDataOutputStream@@@Z -- vtable slot 16, const, the stream by
 //   reference (every FableWin.pdb ?WriteBinary@CPSC*@NParticleEngine@@UBEXAAVCDataOutputStream@@@Z); the CPSCBase bytes are now the polymorphic
 //   base (vptr, ParticleSystem +0x04, the flag bits +0x08) of the landed CPSCOrbit model. Was a non-virtual pointer stand-in. Same bytes.
@@ -11,7 +12,7 @@
 //   +0x2c..+0x44, RenderSizeParam +0x48.
 // Shape: one stream call per member in declaration order.
 #include "engine/CDataOutputStream.h"
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public: void* PStringData; };
 class CRGBColour { public: union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };
 class CEnginePrimitiveHandle { public: long Index; long Generation; };

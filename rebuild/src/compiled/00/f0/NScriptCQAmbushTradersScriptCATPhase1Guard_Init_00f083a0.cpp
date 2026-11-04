@@ -1,5 +1,6 @@
 // NScript::CQ_AmbushTradersScript::CAT_Phase1Guard::Init() -- the ambush-traders phase-1 guard: make him and the hero enemies of each other, then each living bandit of the parent script's AllBandits (stopping if the thread is done), and spawn the parent's WatchForEnemyDeath thread on him
 // Leaf: ?Init@CAT_Phase1Guard@CQ_AmbushTradersScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Naming wave 29 (family sfbr): the thread class derives from the retail CSpawnedFuncBase (engine/CSpawnedFuncBase.h; Ego_r.pdb / FableWin.pdb
 //   ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 0x00CDD450, implicit ??1CSpawnedFuncBase@@UAE@XZ 0x00CDD4C0). Was the invented
@@ -21,7 +22,7 @@
 
 namespace NScript { class CPredicateBase; }
 class CCPPointerInfo { public: long References; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CScriptThingRuntime;
 struct CCountedScriptThingRuntime {

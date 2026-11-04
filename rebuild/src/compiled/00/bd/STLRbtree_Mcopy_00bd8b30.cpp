@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy for map<unsigned long, CArray<C3DVector> > (CEngineInternalPrimitiveAnimatedMesh::CCache::BoneScalings): clone x under parent p (copy-constructing the bone-scaling array), recurse into every right subtree and walk down the left spine
 // Leaf: ?_M_copy@?$_Rb_tree@KU?$pair@$$CBKV?$CArray@VC3DVector@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BD8B30, 193 bytes, thiscall `ret 8` (x, p; returns the cloned top).
 // Identity: recursive (0x00BD8B82, 0x00BD8BD6) and called by the tree operator= 0x00BD8D00 (landed as
 //   CRetailTree_00bd8b30::operator=). Node 0x20 bytes = 0x10 links + a 4-byte key + a 12-byte array copied by the
@@ -16,10 +17,7 @@ void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 inline void* operator new(unsigned int, void* p) { return p; }
 
 #pragma pack(push, 1)
-class C3DVector {                                       // 1-aligned in retail
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 template <class T> class CArray {                       // retail CArray: an STLport vector (first, last, end)

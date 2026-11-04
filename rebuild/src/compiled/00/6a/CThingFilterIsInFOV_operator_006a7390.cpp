@@ -1,5 +1,6 @@
 // CThingFilter_IsInFOV::operator()(CThing* thing) -- fetch the centre (and radius) of the thing's physics bounding info and test that point against the field of view (the C3DVector overload)
 // Leaf: ??RCThingFilter_IsInFOV@@QBE_NPAVCThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A7390, length 47 bytes (+ int3 padding).
 // Callees: CTCPhysicsBase::GetBoundingInfo @ 0x006AF640 (`__fastcall(C3DVector* centre, float* radius)`),
 // CThingFilter_IsInFOV::operator()(const C3DVector&) @ 0x006A7270.
@@ -7,9 +8,7 @@
 // retail CThing PhysicsTC +0x60 (no null test here).
 // Shape: the centre is a 12-byte frame local; the unused radius out-value is homed in the dead `thing` slot
 // (`lea eax,[esp+14h]`).
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640

@@ -1,5 +1,6 @@
 // CCreatureAction_WaspQueenDiveAttack::FinishAction() -- end of the wasp queen's dive: remove her hit-on-collision component; if the action ran its full time, turn her round half a turn in the XY plane and reset the physics interpolation; then the combat-action FinishAction
 // Leaf: ?FinishAction@CCreatureAction_WaspQueenDiveAttack@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C40F0, 119 bytes, tail jump to the base FinishAction.
 // Identity: Ego_r.pdb `?FinishAction@CCreatureAction_WaspQueenDiveAttack@@UAEXXZ`; the catalog label is right.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, four times), CThing::RemoveTC(ETCInterfaceType)
@@ -23,9 +24,7 @@ class CPersistContext;
 class CTCParamsBase;
 class CEnginePrimitivePrepareInfo;
 namespace NTCMessages { class CMessageBase; }
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up, Forward;
 };

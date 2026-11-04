@@ -1,4 +1,5 @@
 // CLandscapeBackgroundPatch::RenderWithOcclusion(long& queryHandle, bool& occluded) -- render a landscape patch under hardware occlusion queries: with occlusion off just render; with no pending query render inside a new query; otherwise, if last frame's query found no pixels, draw the patch's bounding box as the next query (clearing the parent chain's visibility the first time), else render it again inside a new query
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BE79D0, 526 bytes (+ int3 padding), `ret 8`.
 // Callees: CLandscapeBackgroundPatch::Render(bool) 0x00BE6F70; on the occlusion manager global 0x01436E5C: BeginQuery 0x00B8D090 and
 //   EndQuery(long) 0x00B8D0A0 (empty in retail; byte-identical bodies carry propagated labels), GetQueryResult(long, bool)
@@ -10,7 +11,7 @@
 //   same offsets. The parent tree node's +0xA4 pointer reaches the landscape map whose +0x14 header holds the world-map origin
 //   (+0x60 X, +0x62 Y) -- descriptive, the PDB node view differs from retail here. The occlusion manager keeps a fixed
 //   0x2000-entry query array (+0x4014) and its count (+0x401C); the query allocation is inline.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:
     C3DVector Right, Up, Forward, Position;
 };

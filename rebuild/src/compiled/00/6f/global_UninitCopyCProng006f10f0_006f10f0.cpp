@@ -1,5 +1,6 @@
 // _global::UninitCopy_CProng_006f10f0(const CProng* first, const CProng* last, CProng* result, const __false_type&) -- STLport __uninitialized_copy<CDefendingCombatantInfo::CProng*>: placement copy-construct 28-byte combat-wheel prongs, return the advanced result
 // Leaf: UninitCopy_CProng_006f10f0
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F10F0, length 131 bytes (+ int3 padding), `ret 8`.
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, GetPItem @ 0x00A01B50, SetPItem @ 0x00A01B90.
 // Vtable: CIntelligentPointer<CThingCreatureBase> 0x0123E7D8 (stored after the base constructor).
@@ -33,10 +34,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable
 };
 
 #pragma pack(push, 1)
-class C3DVector { public:                               // byte-packed record (the PDB places CProng::Prong at +1)
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 struct CProng {                                  // 0x1c bytes

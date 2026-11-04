@@ -1,5 +1,6 @@
 // CEngineInternalPrimitive2DParticleGroup::Update(const CEnginePrimitive&, unsigned long) -- copy the 2D particle-group description (flags, layer, inverse transform, 2D position) into the internal primitive, place it at the layer's depth, centre a unit bounding sphere on it and reset the camera distance, water stage and z-write flag
 // Leaf: Update
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BE0DE0, 196 bytes (+ int3 padding), `ret 8`. Mangled
 //   ?Update@CEngineInternalPrimitive2DParticleGroup@@UAEXABVCEnginePrimitive@@K@Z (the key argument is unused here).
 // Callees: the 2D renderer (global 0x01436E7C) layer-depth getter 0x00B4A6B0 (`fld [this + layer*4 + 88h]`, ret 4; the
@@ -16,11 +17,7 @@
 //   in source order otherwise.
 enum EEngine2DLayer { };                         // Ego_r.pdb layer enum (passed as a 32-bit value)
 class C2DVector { public: float X, Y; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public: float E[12]; };
 
 class C3DBoundingSphere { public:

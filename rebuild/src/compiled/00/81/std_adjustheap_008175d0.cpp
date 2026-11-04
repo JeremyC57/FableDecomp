@@ -1,5 +1,6 @@
 // std::__adjust_heap(THitLocationIntersectionElement* first, int holeIndex, int len, THitLocationIntersectionElement val, THitLocationIntersectionElementPred comp) -- STLport heap sift-down of the hit-location ray intersections by key, then __push_heap
 // Leaf: ??$__adjust_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x008175D0, 186 bytes, `ret 28h`: __fastcall (the algorithm TUs are /Gr), first in ecx -> ebx,
 // holeIndex in edx; len, the 32-byte value and the empty 4-byte predicate on the stack (4 + 32 + 4 = 0x28).
 // Callers: the landed make_heap 0x00817950, 0x00818390 (pop_heap) and the partial sort 0x00818450 (this chunk).
@@ -12,10 +13,7 @@
 // the element moves are the trivial 8-dword `rep movsd` assignment, the value is copied into __push_heap's argument
 // area word by word (C3DVector's user copy constructor makes the element's implicit copy constructor memberwise).
 struct CHitLocation;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 namespace {
 struct THitLocationIntersectionElement {           // 32 bytes (implicit memberwise copy, trivial assignment)
     long          key;                             // +0x00

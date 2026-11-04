@@ -1,8 +1,9 @@
 // CParticleSimulation::SetParticles -- allocate and initialize simulation arrays.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail00ae1030 length286, AllocateArrays00adf2a0. Native PDB Size+18,
 // Positions/Last/Saved/Accelerations+1c/20/24/28, Alphas+2c. No generated
 // CParticleSimulation, C3DVector or C4DVector headers exist. Donor layout agrees.
-class C3DVector { public: float X,Y,Z; };
+#include "engine/C3DVector.h"
 class C4DVector { public:
     float X,Y,Z,W;
     C4DVector() { X=0.0f; Y=0.0f; Z=0.0f; W=0.0f; }

@@ -1,5 +1,6 @@
 // std::_Destroy(CTCSmokeGenerator::CGenerationPos* first, CTCSmokeGenerator::CGenerationPos* last) -- STLport range destroy: run each element's destructor
 // Leaf: ??$_Destroy@VCGenerationPos@CTCSmokeGenerator@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00722E80, 34 bytes, `__fastcall` (/Gr: first in ecx, last in edx), `ret`.
 // Identity (proven): its only caller is vector<CGenerationPos>::operator= 0x00722F30, tail-called by CTCSmokeGenerator vtable 0x01265D74 slot 12 (0x00722570) on this+0x10 = Ego_r.pdb CTCSmokeGenerator::GenerationPositions (vector<CTCSmokeGenerator::CGenerationPos>, 20-byte element with PEmitter at +0x0C).
 // Callees: the element destructor's one call -- ~CBaseIntelligentPointer 0x00A01C10 on PEmitter +0x0C.
@@ -12,10 +13,7 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 class CThing;
-class C3DVector {                                       // 12 bytes
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CTCSmokeGenerator {
 public:
     class CGenerationPos {                               // Ego_r.pdb 20 bytes

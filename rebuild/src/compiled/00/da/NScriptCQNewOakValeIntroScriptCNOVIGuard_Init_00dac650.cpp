@@ -1,5 +1,6 @@
 // NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::Init() -- make the Oakvale guard undamageable, unkillable and not counted for combos, centre his wander on his home position (0..6 m), put him in scripting state group 4 and keep his weapons out
 // Leaf: ?Init@CNOVI_Guard@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DAC650, 272 bytes, plain `ret` (virtual, slot 2).
 // Callees (CGameScriptInterface virtuals, retail slot / address; ghidra_out/cgsi_vtable_slots.tsv is 4 rows high here):
 //   EntitySetAsDamageable 516 0x0088EAD0, EntitySetAsKillable 517 0x0088EB30, EntitySetAsToAddToComboMultiplierWhenHit
@@ -10,11 +11,7 @@
 // Layout: entity-script base as the landed CNOVI_Theresa::Init 0x00DAC4F0: vptr +0, CGameScriptInterface* +4, Me +8.
 // Naming wave 35: identity reg 00dabbd3 "NOVI_Guard" in 00dabac0; Alloc 00dac580; vtable 012d83c0 slot 2; PDB ?Init@CNOVI_Guard@CQ_NewOakValeIntroScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CNOVI_Guard::Init (wave3/labels_alloc.tsv); PDB ?Init@CNOVI_Guard@CQ_NewOakValeIntroScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CNOVI_Guard@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CCPPointerInfo { public: long Count; };
 template <class T> class CCountedPointer { public:
     T* Data;                                     // +0

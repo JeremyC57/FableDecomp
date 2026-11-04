@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCAttractor::DatabaseSerialise(CPersistContext& context, const CEmitterDatabaseSerialiseInfo&) -- persist the attractor settings by name: the two flags, the position param and param name (as CRCs when saving, as strings hashed back to CRCs when loading), radius, force, fall-off type, then the user points array size and each point
 // Leaf: ?DatabaseSerialise@CPSCAttractor@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c: FableWin.pdb exact symbol (vtable slot 17, the second parameter is const CEmitterDatabaseSerialiseInfo&, as the landed sibling CPSCSpline 0x00B1B2E0); queue land0411a.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B18110, 640 bytes (`ret 8`).
 // Callees: CPersistContext::Transfer<bool> 0x004045C0, Transfer(name, unsigned long&, const unsigned long&) 0x004106F0,
@@ -15,11 +16,7 @@
 //   default (the landed 0x006E0730 idiom) and an if/else CRC helper (null arm first, one Calc call); the point loop is
 //   `if (i < count) { C3DVector zero(0,0,0); do ... while (++i < count); }` so the zero default is stored once inside
 //   the guard, in the frame word of the resize default; the point names are the literal advanced by the index (as retail).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CCharStringData { public:
     const char* Data;                                   // +0
     long Length;                                        // +4

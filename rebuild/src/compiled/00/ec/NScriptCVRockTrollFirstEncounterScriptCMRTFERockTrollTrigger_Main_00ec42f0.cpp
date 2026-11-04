@@ -1,5 +1,6 @@
 // NScript::CV_RockTrollFirstEncounterScript::CM_RTFERockTrollTrigger::Main() -- rock-troll trigger marker: alive filter on Me; unless the quest already spawned the troll, wait until the hero comes within the script def's trigger distance, then create the standing rock troll ("RTFE_RockTroll") at the "M_RTFERockTrollSpawnPos" marker, flag it spawned and remove this trigger
 // Leaf: ?Main@CM_RTFERockTrollTrigger@CV_RockTrollFirstEncounterScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EC42F0, length 412 bytes (+ int3 padding).
 // Callees: CScriptThing(const CScriptThing&) @ 0x004ABE90 / ~CScriptThing @ 0x004AA840; the CIsThingAlive filter (vtable 0x012C32F0,
 //   destructor 0x00E241B0) registered @ 0x00F35B10; IsDone @ 0x00F35B30; IsDistanceBetweenThingsUnder @ 0x00CBE2FF (`__fastcall`);
@@ -22,7 +23,7 @@ class CCharString { public:
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                     // 0x0143E8E0
 class CCPPointerInfo;
 class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes

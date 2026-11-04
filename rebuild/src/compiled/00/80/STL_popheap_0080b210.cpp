@@ -1,5 +1,6 @@
 // std::__pop_heap(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint* result, NPlayerTargeting::CTargetPoint val, CThingCompare_BestForTargeting2 comp, int*) -- STLport heap pop of the targeting candidates: move the root into *result, then sift val down from the root of [first, last)
 // Leaf: ??$__pop_heap@PAVCTargetPoint@NPlayerTargeting@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080B210, 287 bytes (+ int3 padding), `ret 58h` (__fastcall: first in ecx,
 //   last in edx; result, the 0x1C-byte CTargetPoint, the 0x34-byte comparator and the distance pointer on the stack).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 (the inline `*result = *first`
@@ -27,10 +28,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint { public:

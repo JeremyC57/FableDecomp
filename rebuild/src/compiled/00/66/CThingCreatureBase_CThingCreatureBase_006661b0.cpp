@@ -1,5 +1,6 @@
 // CThingCreatureBase::~CThingCreatureBase() -- clear the mode-manager and debug-text pointers, then the members die in reverse order (the unsheathe-item pointer, the combat debug primitive handles, the body reorienter, the creature-interaction and current-action counted pointers, the queued-action list, the last-attacker pointer, the creature def, the collision debug handles) and ~CThingGameObject runs
 // Leaf: ??1CThingCreatureBase@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006661B0, 348 bytes, thiscall, no frame; ends `jmp ~CThingGameObject` (0x00838A00).
 // Identity (proven): the first store is vtable 0x0125AC0C (RTTI .?AVCThingCreatureBase@@ : CThingGameObject : CThingPhysical :
 //   CThing ...); callers are that vtable's slot-0 ??_G 0x0066A6F0 (call at 0x0066A6F3) and the tail jumps of the two derived
@@ -104,7 +105,7 @@ class CThingBodyReorienter { public:
     ~CThingBodyReorienter();                                // 0x00863790
     unsigned char _body[0x10];
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing;
 class CThingCreatureDef;
 class CCreatureActionBase;

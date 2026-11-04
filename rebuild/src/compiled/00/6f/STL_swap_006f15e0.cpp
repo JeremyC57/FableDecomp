@@ -1,5 +1,6 @@
 // std::swap(CDefendingCombatantInfo::CProng& a, CDefendingCombatantInfo::CProng& b) -- exchange two combat-ring prongs (blocked flag, prong position, blockage timer, occupier pointer) through a by-value temporary
 // Leaf: ??$swap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F15E0, 199 bytes (+ int3 padding), /Gr `__fastcall` (a in ecx -> edi, b in edx
 //   -> esi), plain `ret`; 0x1c-byte frame temporary.
 // Identity: the CDefendingCombatantInfo::CProng vector TU (landed vector<CProng> copy ctor 0x006F20A0 and
@@ -16,10 +17,7 @@ class CBaseObject;
 class CThingCreatureBase;
 
 #pragma pack(push, 1)
-class C3DVector { public:                                      // 1-aligned in retail (CProng::Prong sits at +1)
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CBaseIntelligentPointer {

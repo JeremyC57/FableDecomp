@@ -1,5 +1,6 @@
 // NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::~CModeIceTrollGroundSmashIcicleAssault() -- implicit ice-troll icicle-assault creature-mode destructor: destroy ViablePoints, Icicles, PDef, Filter and PTarget, then ~CModeStandBase
 // Leaf: ??1CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00743FE0, int3 padding before and after, thiscall, tail `jmp ~CModeStandBase` 0x0073D860.
 // Identity (proven, two sources): (1) its sole caller is the scalar deleting destructor 0x00743FC0, slot 0 of vtable 0x01268774
 //   (RTTI .?AVCModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@ : CModeStandBase : CModeBase); (2) Ego_r.pdb 0x00756A20 /
@@ -28,7 +29,7 @@ class CAnimateThing;
 class CAnimationEntry;
 enum EMovementType;
 
-class C3DVector { public: float X; float Y; float Z; };
+#include "engine/C3DVector.h"
 
 namespace std {
 template <class _Tp> class allocator { public:

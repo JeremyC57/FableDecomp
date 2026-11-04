@@ -3,6 +3,7 @@
 // CIntelligentPointer operator= copies through a named item local (`const CBaseObject* item = other.GetPItem(); SetPItem(item);`),
 // which runs GetPItem before the `lea edi,[esi+0Ch]` of PThingOrigin as retail does.
 // Leaf: SetPThingOrigin
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852750, length 160 bytes (152 + int3 padding).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, ::SetPItem @ 0x00A01B90 (twice),
 // ::GetPItem @ 0x00A01B50 (twice), ::~CBaseIntelligentPointer @ 0x00A01C10, and the thing placeholder's
@@ -15,7 +16,7 @@
 // Layout: PDB NCameraModes::CScriptModuleBase (see 0x005ED070).
 class CBaseObject;
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 struct CThingPlaceholder {

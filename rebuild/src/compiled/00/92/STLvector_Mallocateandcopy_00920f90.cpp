@@ -1,5 +1,6 @@
 // std::vector::_M_allocate_and_copy(size_type n, const_pointer first, const_pointer last) -- STLport vector<C3DVector> helper: allocate n elements and copy-construct [first, last) into them; returns the new block
 // Leaf: ?_M_allocate_and_copy@?$vector@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00920F90, 88 bytes (96 with padding), __fastcall `ret 0Ch` (this unused).
 // Identity: STLport 4.6 vector<_Tp>::_M_allocate_and_copy, called only by reserve 0x00920FF0 (same TU). The catalog label
 //   "Vector_Reserve_3ints" is an autoname.
@@ -19,11 +20,7 @@ extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 inline void* operator new(size_t, void* p) { return p; }
 
 #pragma pack(push, 1)
-class C3DVector {                               // retail: byte-packed, memberwise user copy ctor
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace std {

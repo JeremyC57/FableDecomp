@@ -1,5 +1,6 @@
 // CThingFilter_PosInContainmentVolume::operator()(CThing* thing) -- true when the thing has a physics component with a mesh whose containment volume VolumeName contains Pos
 // Leaf: ??RCThingFilter_PosInContainmentVolume
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A7B20, length 96 bytes (+ int3 padding).
 // Callees: CTCPhysicsBase virtual slot 93 (+0x174, the physics mesh parameters), CTCPhysicsBase::GetPhysicsMeshObject @ 0x006B0850
 // (0x40-byte CPhysicsMeshObject by hidden pointer), CPhysicsMeshObject::IsInContainmentVolume(const CCharString&, const C3DVector&, float)
@@ -8,9 +9,7 @@
 // CPhysicsMeshObject model as in the landed CThingPhysical::GetNavCollisionLineList 0x006A4F60.
 // Shape: two null tests share the byte-constant false exit; the mesh object is a named local and each return destroys it
 // (two dtor calls); the tolerance argument is the literal 0.0f (`push 0`).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
 };

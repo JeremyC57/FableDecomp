@@ -1,5 +1,6 @@
 // CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& area, const CFilter_Bind2& filter, std::vector& result) -- collect the CThing things in the rough area that pass CThingFilter_HasDefGlobalIndex and CThingFilter_In2DRange
 // Leaf: ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasDefGlobalIndex@@VCThingFilter_In2DRange@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_HasDefGlobalIndex@@VCThingFilter_In2DRange@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007b6300, 602 bytes, thiscall, `ret 0xc`.
 // Identity (proven): GetAllThingsInRoughArea<CThing, std::vector<CThing*>, CFilter_Bind2<CThingFilter_HasDefGlobalIndex, CThingFilter_In2DRange> >: the template arguments are the filter callees in its own bytes (CThingFilter_HasDefGlobalIndex 0x006A70B0 then CThingFilter_In2DRange 0x006A76B0, each `QBE_NABVCThing@@@Z`, and the vector growth callee 0x00436AC0 for CThing*); its caller is CTCWaterWader::FrameUpdate 0x007B5E50 (call at 0x007B6136); the same instantiation is in the FableWin.pdb symbol set (ghidra_out/_fablewin_api.tsv) carries ??$GetAllThingsInRoughArea@VCThing@@.
 // Callees: CThingSearchTools::GetAllThingMapsInArea 0x0049C6F0 and ClipAndConvertWorldMapAreaToLocalArea 0x0049C700
@@ -88,7 +89,7 @@ template <class T> __forceinline bool IsThingOfType(const CThing* thing)
     unsigned long mask = T::ThingTypeMask;
     return (thing->ThingTypeFlags & mask) == mask;
 }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI() {}

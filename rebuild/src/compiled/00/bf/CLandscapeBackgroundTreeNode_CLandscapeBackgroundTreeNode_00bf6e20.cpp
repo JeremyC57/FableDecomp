@@ -1,5 +1,6 @@
 // CLandscapeBackgroundTreeNode::CLandscapeBackgroundTreeNode(CEngineLandscapeMap* map, CLandscapeBackgroundTreeNode* parent, long creationFlags) -- zero the node's LOD load table, file-block bookkeeping, map rectangle and flags, set the band range to 8/8/8, the occlusion handle to -1 and the camera-update sphere to the origin, and remember the map, parent and creation flags
 // Leaf: ??0CLandscapeBackgroundTreeNode
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF6E20, length 349 bytes, `ret 0Ch`. Vtable 0x012A8240 (rtti-vtables.tsv).
 // Layout: Ego_r.pdb CLandscapeBackgroundTreeNode (240 bytes) minus the 8 bytes of DynamicBuildTemplate/GPUUpdateTask, which
 //   the retail build does not have (the eight 16-byte CLODLoadInfo records start at +0x0C), so every later member sits 8
@@ -13,11 +14,7 @@
 class CEngineLandscapeMap;
 struct CLandscapeBackgroundLoadTask;
 struct CLandscapeBackgroundSubNodeBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public:
     C3DVector Min;
     C3DVector Max;

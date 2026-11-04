@@ -1,4 +1,5 @@
 // CTCPreCalculatedNavigationRoute::GetRouteDestination() -- the position of the thing the route is calculated to, by value
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008004D0, length 39 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem() @ 0x00A01B50 (on the +0x0c pointer, through the typed `operator->`),
 // CThing::GetPos() @ 0x004C73D0 (returns a const reference; the manifest's "CVertexBufferWin32::DoSizeof" label is
@@ -7,11 +8,7 @@
 // and the returned reference is copied into the hidden result through C3DVector's memberwise user copy constructor (result
 // pointer in ecx, handed back with `mov eax,ecx`; `ret 4`).
 // Layout = Ego_r.pdb CTCPreCalculatedNavigationRoute: PThingToCalculateRouteTo (CIntelligentPointer<const CThing>) +0x0c.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;                   // 0x004C73D0

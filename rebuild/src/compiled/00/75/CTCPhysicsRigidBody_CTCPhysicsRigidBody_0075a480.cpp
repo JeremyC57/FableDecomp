@@ -1,5 +1,6 @@
 // CTCPhysicsRigidBody::~CTCPhysicsRigidBody() -- free the physics mesh info, then the member vectors (the rigid body's two configuration vertex lists and its bounding vertices, Collidors, CollidingVertexIndex, CollisionNormal), the CTCPhysicsBase PhysicsDef release, and ~CTCBase
 // Leaf: ??1CTCPhysicsRigidBody
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075A480, 162 bytes. Sole caller: the ??_G 0x0075C020 (slot 0 of
 //   the CTCPhysicsRigidBody vtable 0x0126996C).
 // Identity: the first store is vtable 0x0126996C (RTTI .?AVCTCPhysicsRigidBody@@ : CTCPhysicsBase : CTCBase :
@@ -54,7 +55,7 @@ public:
 class CThing;
 class CPhysicsDef;
 class CThingPhysicsMeshInfo;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
 class CMatrix3x4 { public: float Elements[12]; };                     // 0x30 bytes (Ego_r.pdb; members not touched)
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };

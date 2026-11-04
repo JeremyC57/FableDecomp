@@ -1,5 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::~CTCGraphicAppearance() -- destroy the members in reverse order (the component list out of line, the primitive list cleared and its header freed, the tint-colour and mesh-effect maps emptied and their headers freed), then the CTCBase destructor as a tail jump
 // Leaf: ??1CTCGraphicAppearance
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C5DA0, length 162 bytes. Called only by the deleting destructor 0x004C5D80
 // (slot 0 of NGraphicAppearance::CTCGraphicAppearance's vtable 0x0123986C); the catalog label
 // "CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip" is propagated.
@@ -80,7 +81,7 @@ struct CComponentListObject {                      // STLport list<CAGraphicAppe
     ~CComponentListObject();                       // 0x004C3550
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCAnimationBase;
 
 namespace NGraphicAppearance {

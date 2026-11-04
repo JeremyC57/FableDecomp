@@ -1,5 +1,6 @@
 // std::swap(pair<CCharString,C3DHelperPoint>& a, pair<CCharString,C3DHelperPoint>& b) -- STLport swap of two helper-point map entries through a temporary copy
 // Leaf: ??$swap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6E5E0, 141 bytes (+3 int3), /Gr `__fastcall` (a in ecx -> edi, b in
 //   edx -> ebx), plain `ret`.
 // Callees: CCharString::CCharString(const CCharString&) 0x0099EC30, CCharString::operator=(const CCharString&)
@@ -14,11 +15,7 @@
 //   C3DHelperPoint copy: C3DVector's user memberwise copy, three direct loads, then BoneIndex through the member
 //   pointer kept for the assignment), the two assignments are the pair's implicit operator= (string operator=, then the
 //   trivially assigned C3DHelperPoint as a four-word block through a pointer).
-class C3DVector {                                       // user memberwise copy ctor, implicit (block) assignment
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DHelperPoint {                                  // 16 bytes (Ego_r.pdb)
 public:

@@ -1,5 +1,6 @@
 // CTCPhysicsRigidBody::UpdateInterpolation() -- snapshot the rigid body's right-handed set as the old one, then the base class's interpolation update
 // Leaf: ?UpdateInterpolation@CTCPhysicsRigidBody@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00759970, 50 bytes (int3 padding 0x0075996A..F before, 0x007599A2..AF after), thiscall,
 //   a 24-byte copy +0x68 -> +0x80 through esi, tail `jmp CTCPhysicsBase::UpdateInterpolation` 0x006AF780.
 // Identity (proven, two sources): (1) the only reference is slot 94 of the CTCPhysicsRigidBody vtable 0x0126996C (RTTI
@@ -40,12 +41,7 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector : protected _V
 class CPhysicsDef;
 class CThingPhysicsMeshInfo;
 
-class C3DVector {
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class C2DVector {
 public:

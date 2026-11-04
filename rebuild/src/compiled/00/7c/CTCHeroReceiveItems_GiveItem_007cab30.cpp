@@ -1,5 +1,6 @@
 // CTCHeroReceiveItems::GiveItem(CThingObject& item, bool persist) -- put the item in limbo, queue it (with its flag) on the items-to-show list, then start the display at the item's position
 // Leaf: ?GiveItem@CTCHeroReceiveItems@@QAEXAAVCThingObject@@_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CAB30, 158 bytes (+2 int3), thiscall `ret 8`.
 // Identity: Ego_r.pdb name set ?GiveItem@CTCHeroReceiveItems@@QAEXAAVCThingObject@@_N@Z (public, CThingObject&, bool):
 //   six callers in other classes (0x005EB6A9, 0x006AC380, 0x006ACD6C, 0x006ACFFE, 0x00844BAD, 0x00898C27). It is the
@@ -16,7 +17,7 @@ class CThing;
 class CThingObject;
 class CBaseObject;
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

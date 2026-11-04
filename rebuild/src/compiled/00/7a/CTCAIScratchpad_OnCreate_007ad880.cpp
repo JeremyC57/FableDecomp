@@ -1,5 +1,6 @@
 // CTCAIScratchpad::OnCreate() -- fetch the owner's CAIScratchpadDef sub-def into PDef and copy every scratchpad setting (phrases, wander area, gossip, action, follow/combat/steal/seat options) from it
 // Leaf: OnCreate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AD880, 312 bytes (+8 int3 padding), `ret`.
 // Callees: CDefClassBase::GetSubDef<CAIScratchpadDef>(CDefPointer<const CAIScratchpadDef>&) 0x007AD9C0 (manifest label
 //   GetSubDef<CAICreatureWillPowerIndicatorDef> is propagated; this is the instantiation called on the owner's base def),
@@ -8,7 +9,7 @@
 //   +0x0C..+0x7F mirrors the def's +0x28..+0x9B, PDef +0x80; the owner thing's base def at +0x70 (landed CTCLook::OnCreate).
 // Shape: one assignment per member in declaration order through the def pointer's inline operator-> (re-read after each
 //   out-of-line string assignment); WanderCentrePoint is the implicit C3DVector copy (`lea` of both sides).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     const CCharString& operator=(const CCharString& other);        // 0x0099EFB0

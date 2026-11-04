@@ -1,4 +1,5 @@
 // CSoundEmitterLH::vfunc_17() -- returns the emitter position (+0x08..+0x10) by value
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AABA60, 24 bytes, `ret 4` (the hidden result pointer). Vtable 0x0129E6EC (CSoundEmitterLH) slot 17.
 // Shape: C3DVector returned by value through a user (member-wise) copy constructor: three dword copies through edx/ecx into the
 // hidden result, eax = the result pointer (an implicit copy goes through esi with `add ecx,8`).
@@ -41,7 +42,7 @@ struct SSoundNode {                                    // VC6 list node, 16 byte
     long          extra;                               // +0x0c
 };
 
-class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
+#include "engine/C3DVector.h"
 
 struct CSoundEmitterLH {                               // vtable 0x0129E6EC
     virtual void v00();

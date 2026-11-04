@@ -1,5 +1,6 @@
 // CVectorMap<unsigned long,C3DHelperPoint>::Insert(const pair<unsigned long, C3DHelperPoint>& x) -- append a (key, helper point) entry to the mesh-stats helper-point map and mark it dirty (unsorted)
 // Leaf: ?Insert@?$CVectorMap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A34950, 89 bytes (+ int3 padding), thiscall `ret 4`.
 // Identity: Ego_r.pdb `?Insert@?$CVectorMap@KVC3DHelperPoint@@V?$CKeyPairCompareLess@KVC3DHelperPoint@@@@@@QAEXABU?$pair@
 //   KVC3DHelperPoint@@@std@@@Z`; an unreferenced COMDAT copy (its callers inline it). The catalog's
@@ -12,10 +13,7 @@
 //   the __false_type temporary homed in the dead x slot) -- then `Dirty = true` on both paths.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DHelperPoint { public:                                // 16 bytes (Ego_r.pdb)
     C3DVector Position;                                // +0x00

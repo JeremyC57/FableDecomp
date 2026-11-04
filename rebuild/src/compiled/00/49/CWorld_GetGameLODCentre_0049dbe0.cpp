@@ -1,5 +1,6 @@
 // CWorld::GetGameLODCentre() const -- returns the level-of-detail centre, recomputed at most once per frame: the main player's free-camera position while the free camera is in use, else the current game camera's render position
 // Leaf: ?GetGameLODCentre@CWorld@@UBE?AVC3DVector@@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049DBE0, 163 bytes, `ret 4` (hidden C3DVector result).
 //   PDB name ?GetGameLODCentre@CWorld@@UBE?AVC3DVector@@XZ.
 // Callees: CMainGameComponent frame getter 0x00416225 (Component +8, twice), CPlayerManager::GetMainPlayer 0x00449970
@@ -11,11 +12,7 @@
 // Shape: the recompute guard is `frame == -1 || frame != GetFrame()`; both arms assign
 //   through C3DVector's implicit operator= over a user copy ctor (the `lea ecx,[esi+0ECh]` pointer copy, tails merged);
 //   the result is copied out of the member.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Right, Up; };
 class CCamera { public:                                   // 0x38 bytes (Ego_r.pdb)
     C3DVector       WorldPosition;                 // +0x00

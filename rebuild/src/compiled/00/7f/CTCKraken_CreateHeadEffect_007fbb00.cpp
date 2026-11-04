@@ -1,4 +1,5 @@
 // CTCKraken::CreateHeadEffect(const CCharString& name) -- replace the head effect: look the named effect up in the parent's special-effects sub-def, spawn it at the parent's position, keep it as the head effect and attach its particle emitter to the parent's "EFFECT_WATER" helper
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FBB00, length 297 bytes (+ int3 padding), `ret 4`. FableWin.pdb
 // ?CreateHeadEffect@CTCKraken@@AAEXABVCCharString@@@Z (private).
 // Callees: CTCKraken @ 0x007FB150 (no arguments, called first: drops the previous head effect; name descriptive),
@@ -17,7 +18,7 @@
 // temporary then share the dead argument slot).
 // Layout: Ego_r.pdb CTCKraken: ParentThing +0x04, PHeadEffect +0x28 (CIntelligentPointer<CThing>); CThing PBaseDef +0x70,
 // UsingComponents +0x20 (0x4b = word 2 bit 11), components map +0x44, dead bit +0x91. No engine header.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

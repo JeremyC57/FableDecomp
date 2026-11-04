@@ -1,4 +1,5 @@
 // CTCKraken::DoHeadTracking() -- turn the kraken's body toward the live target, capped per frame by the beam / targeting track speed
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FAF60, length 444 bytes (+ int3 padding), esp frame, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, _CIfmod @ 0x00BFEB28 (the
 // intrinsic fmod of WrapAngle), AngleDifference @ 0x00A441E0 (`__stdcall`), the physics TC's GetFacingAngleXY (slot 63,
@@ -16,7 +17,7 @@
 #include <math.h>
 #pragma intrinsic(atan2, fmod)
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

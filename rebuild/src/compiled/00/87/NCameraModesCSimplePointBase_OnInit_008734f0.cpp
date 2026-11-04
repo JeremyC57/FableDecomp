@@ -1,6 +1,7 @@
 // NCameraModes::CSimplePointBase::OnInit() -- remember where the camera was (StartPos), and make the switch to this mode a single cut from the current camera
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008734F0, 53 bytes, plain `ret`.
 // Leaf: ?OnInit@CSimplePointBase@NCameraModes@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: vtable 0x01277644 slot 21; FableWin.pdb lists OnInit, Update, OnDie and IsUseRightStickLookAround for CSimplePointBase.
 //       Slot 21 saves the position and slot 22 (0x00873570) restores it, so 21 is OnInit and 22 OnDie.
 // Layout: retail CSimplePointBase (landed ctor 0x00873A10): StartPos +0xa4, Position +0xb0, LookAtPos +0xbc; the root CBase has
@@ -8,11 +9,7 @@
 //         The camera manager: Camera +0x04 and OldCamera +0x3c (CCamera, 0x38 bytes, PDB names), the cut flag at +0x14 below the
 //         PDB SingleCut (+0xbc) because the retail STLport members ahead of it are narrower.
 // Shape: StartPos = GetPosition(); then an inline manager helper (`this` read once into ecx, so no reload after the byte store): SingleCut = true; OldCamera = Camera (a 14-dword `rep movsd`).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class CCamera { public:                                     // 0x38 bytes (Ego_r.pdb CGameCameraManager::Camera/OldCamera)
     unsigned long _words[0x38 / 4];
 };

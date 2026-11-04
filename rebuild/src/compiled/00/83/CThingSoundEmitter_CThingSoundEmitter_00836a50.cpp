@@ -1,5 +1,6 @@
 // CThingSoundEmitter::~CThingSoundEmitter() -- release the emitter's sound object through the sound system, clear the attached-thing intelligent pointer, then the member and CThing base destructors
 // Leaf: ??1CThingSoundEmitter
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00836A50, length 128 bytes (plain `ret`). Vtables: CThingSoundEmitter
 // 0x01272C24 (stored at entry), CIntelligentPointer<CThing> 0x01237F1C (the temporary's).
 // Callees: slot 5 (+0x14) of the sound system singleton 0x013B8394 (releases the sound object),
@@ -49,7 +50,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 class CThingSoundEmitter : public CThing { public:
     CSoundObject*            m_pSoundObject;             // +0x98

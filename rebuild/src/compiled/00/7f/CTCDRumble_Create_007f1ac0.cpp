@@ -1,5 +1,6 @@
 // CTCDRumble::Create(const C3DVector& pos, float strength, float length, bool globalRumble) -- create a THING_RUMBLE thing for player 4 on the map under the position, set its rumble driver's strength/length/global flag, construct it there and activate it; a thing without the rumble driver is killed; null on any failure
 // Leaf: ?Create@CTCDRumble@@SIPAVCThing@@ABVC3DVector@@MM_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F1AC0, 165 bytes (`ret 8` + int3 padding), static `__fastcall` (pos in ecx,
@@ -15,7 +16,7 @@
 // Shape: the landed CTCDExperienceOrb::Create 0x00779E90 with the def index looked up by name first through a NAMED
 //   CCharString in its own block (retail pushes `lea eax,[esp+10h]`; a temporary passes the ctor's returned this and
 //   moves CThing::GetPCurrentThingManager() into eax) and the three member stores before Construct.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCharString {
 public:

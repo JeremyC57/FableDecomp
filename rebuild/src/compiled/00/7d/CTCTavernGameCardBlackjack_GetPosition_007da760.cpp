@@ -1,4 +1,5 @@
 // CTCTavernGameCardBlackjack::GetPosition(long hand, long card) -- table position of a card slot: the layout's card offset plus the hand offset of the layout picked by the number of hands, scaled by the card size, at the table height
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retry 10b (B-12 sweep): the offset sum is bound to a const REFERENCE (`const C2DVector& offset = hand + card;`, the operator+ temporary): retail loads the card offset X right after addressing it, before the hand offset; a value local loads it at the fadd.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DA760, length 164 bytes (`ret 0Ch`: hidden C3DVector result + 2).
 // Ego_r.pdb `?GetPosition@CTCTavernGameCardBlackjack@@QAE?AVC3DVector@@JJ@Z`.
@@ -17,10 +18,7 @@ class C2DVector { public:
     C2DVector(float x, float y) : X(x), Y(y) {}
     C2DVector operator+(const C2DVector& v) const { return C2DVector(X + v.X, Y + v.Y); }
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 template<class T> struct CVector {              // STLport vector<T> (12 bytes)
     T* _M_start;
     T* _M_finish;

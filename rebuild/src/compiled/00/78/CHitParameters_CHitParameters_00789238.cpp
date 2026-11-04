@@ -1,5 +1,6 @@
 // CHitParameters::CHitParameters(CHitLocation* hitLocation, CThing* thingHitting, CThing* weapon, const C3DVector& position, const C3DVector& direction, bool knockDown, bool blockable, bool flourish, bool blockCounter) -- a localised, directional hit: position/direction copied, the four caller flags, play-response / move-back / particle defaults, empty damage map and augmentation list, the hit location, no material, the hitting thing and weapon pointers
 // Leaf: ??0CHitParameters
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00789238, 178 bytes, `ret 24h` (nine arguments).
 // Callees: map<EDamageAttribute, float>::map() @ 0x00453554 (out of line; the propagated label "CopyBackBufferToTexture"
 //   is wrong), CIntelligentPointer<CThing>::CIntelligentPointer(CThing*) @ 0x004A96F0 (x2).
@@ -18,10 +19,7 @@ struct CHitLocation;
 class CMaterialDef;
 
 #pragma pack(push, 1)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 struct CDamageMap {                                // map<EDamageAttribute, float> (12 bytes in retail)

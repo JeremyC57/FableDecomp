@@ -1,5 +1,6 @@
 // std::pair<float, std::list<C3DVector> >::pair(const pair&) -- the implicit copy constructor: copy the key and deep-copy the point list
 // Leaf: ??0?$pair@MV?$list@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@std@@QAE@ABU01@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x008FC840, 73 bytes, thiscall `ret 4`, this in eax.
 // Identity (proven): the body copies a 4-byte first member and then runs an STLport list copy constructor whose sentinel is a
 // 0x14-byte node (8 + a 12-byte element) and whose range insert is 0x008FBF10 (12-byte element copied as three dwords into
@@ -20,10 +21,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(CArray<C3DVector>* __position, const CArray<C3DVector>& __x, const __false_type&, unsigned int __fill_len, bool __atend) -- (vector<CArray<C3DVector> >) STLport 4.6 growth insert: allocate old + max(old, n) elements, copy-construct the prefix, one or n copies of x and (unless at the end) the suffix, then free the old block and adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@V?$CArray@VC3DVector@@@@V?$allocator@V?$CArray@VC3DVector@@@@@std@@@std@@IAEXPAV?$CArray@VC3DVector@@@@ABV3@ABU__false_type@2@I_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCDB70, length 263 bytes, thiscall, `ret 14h`.
 // Identity: its only caller (0x00BCDDC7) is 0x00BCDCA0, vector<CArray<C3DVector> >::_M_fill_insert (builds x_copy with the
 //   CArray<C3DVector> copy, calls __uninitialized_copy 0x00BCD8A0 / __copy_backward 0x00BCD850 / __uninitialized_fill_n
@@ -19,7 +20,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace std {
 

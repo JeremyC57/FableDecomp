@@ -1,5 +1,6 @@
 // CThing::GetPos() const -- the thing's position: a reference to its physics component's Position
 // Leaf: ?GetPos@CThing@@QBEABVC3DVector@@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C73D0, 7 bytes: `mov eax,[ecx+60h] ; add eax,0Ch ; ret`.
 // Source correction (FINDINGS chunks 391 / 407: "0x4C73D0/0x6A4D00 GetPosition (labelled DoSizeof)"): the landed body
 //   was the propagated manifest model `int __fastcall DoSizeof(CVertexBufferWin32*)` returning `[+0x60] + 12` as an
@@ -10,10 +11,7 @@
 //   The inline accessor has no out-of-line name in Ego_r/Ego_d; the catalog name (CThing::GetPos) is unchanged.
 //   The byte twin 0x006A4D00 is a different symbol (no identical-code folding in retail), see UNRESOLVED.
 // Model: CThing / CTCPhysicsBase are declared locally with their retail offsets (the PDB +0x70 does not hold here).
-class C3DVector {                               // a class in Ego_r.pdb (mangled V)
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase {
 public:

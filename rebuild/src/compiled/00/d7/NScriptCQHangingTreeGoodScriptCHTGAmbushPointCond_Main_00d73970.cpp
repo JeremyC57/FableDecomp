@@ -1,5 +1,6 @@
 // NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointCond::Main() -- Hanging Tree (good) conditional ambush point: wait until the hero is within 6 units, find the nearest "HTG_AmbushPointCond" marker, wait until it is off screen, pause a second, have the quest spawn four enemies at the marker with its data string and remove both the marker and this point (any wait bails out when the script is done)
 // Leaf: ?Main@CHTG_AmbushPointCond@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D73970, length 354 bytes.
 // Callees: IsDistanceBetweenThingsUnder @ 0x00CBE2FF (`__fastcall`), CEntityScriptBase::IsDone @ 0x00F35B30,
 //   CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("HTG_AmbushPointCond" @ 0x012D26C0),
@@ -21,7 +22,7 @@ class CCharString { public:
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                     // 0x0143E8E0
 class CCPPointerInfo;
 class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes

@@ -10,11 +10,8 @@
 //   in namespace std: retail RTTI type names spell the STL namespace `std` (e.g. .?AVlength_error@std@@,
 //   .?AV?$CPersistContext_TransferableVector@U?$pair@VCCharString@@J@std@@@@; no `std` anywhere in Fable.exe).
 // Leaf: ?_M_create_node@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Select1st@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@ABU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@2@@Z
-class C3DVector {                                       // user memberwise copy constructor
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 class C3DAngles {                                       // trivially copyable
 public:
     float X, Y, Z;

@@ -1,5 +1,6 @@
 // QuadricOptimiserInternals::COptimisedVertex::InterpolateGroups(const COptimisedVertex& other, float t) -- blend the vertex's bone-group weights towards another vertex's: scale every own weight by (1 - t), then add t times each of the other's weights (creating missing groups at 0)
 // Leaf: ?InterpolateGroups@COptimisedVertex@QuadricOptimiserInternals@@QAEXABV12@M@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC8720, 251 bytes, thiscall `ret 8`.
 // Identity: Ego_r.pdb `?InterpolateGroups@COptimisedVertex@QuadricOptimiserInternals@@QAEXABV12@M@Z`; the walked map at
 //   +0x9C is COptimisedVertex::Groups (map<unsigned long, float>, Ego_r +0xA0 less the 4 bytes CIndexList FaceList
@@ -180,7 +181,7 @@ public:
 
 }   // namespace std
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace QuadricOptimiserInternals {
 

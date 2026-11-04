@@ -1,5 +1,6 @@
 // std::pair::pair(const pair& other) -- STLport copy constructor of pair<C3DVector, C3DVector>: copy both vectors member by member
 // Leaf: ??0?$pair@VC3DVector@@V1@@std@@QAE@ABU01@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0076DD10, 43 bytes, `ret 4` (thiscall, returns `this`).
 // Identity: STLport 4.6 `pair(const pair<_T1,_T2>& __o) : first(__o.first), second(__o.second) {}` over a 24-byte pair whose
 //   halves copy through C3DVector's memberwise copy constructor (six dword moves through edx). It sits in the
@@ -10,10 +11,7 @@
 //   No direct callers (an unreferenced inline instantiation kept by the link), so the instantiation is PROBABLE, not
 //   proven. Catalog row was the placeholder `_gapscan::sub_0076dd10`.
 // Shape: `mov eax,ecx` first, then X/Y/Z of first and second as dword moves through edx (the last through ecx).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 template <class _T1, class _T2> struct pair {

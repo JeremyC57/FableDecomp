@@ -1,5 +1,6 @@
 // CTCFollowed::CTCFollowed(CThing* parent) -- CTCBase(parent), own vtable, two empty STLport follower lists, the idle/moved frame counters zeroed
 // Leaf: ??0CTCFollowed
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D4E10, length 74 bytes (+ int3 padding), `ret 4`. Single caller
 // 0x004D5257 (the component factory). The manifest label "CEngineSubPrimitive2DClockSprite_Constructor" is
 // propagated from the base constructor's wrong label: the vtable stored is 0x0125F644 = CTCFollowed (rtti-vtables.tsv,
@@ -33,10 +34,7 @@ struct CRetailList_node0x10 {                               // STLport list<CInt
     }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 
 class CTCFollowed : public CTCBase_Calls { public:
     CRetailList_node0x10 Followers;                         // +0x0C list<CIntelligentPointer<CThing>>

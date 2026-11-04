@@ -1,4 +1,5 @@
 // NParticleEngine::CPSCEmitterGeneric::WriteBinary(CDataOutputStream*) -- serialize the generic emitter: its params, the packed bit-field integers/flags, then the optional cardinal spline (tension, point count, points)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B12EF0, 742 bytes (vtable slot 16 of CPSCEmitterGeneric, 0x012A002C).
 // Callees (lane names, as in the landed CPSCAttractor/CPSCLight WriteBinary): WriteULong 0x00993EA0 (propagated
 //   label "WriteCBYTE"), WriteEBOOL 0x00993E30, WriteFloat 0x00993EE0, Write3DVector 0x00993FD0,
@@ -13,7 +14,7 @@
 //   for the push); the points are written from a local copy of the control-point vector over the count read first.
 #include "engine/CDataOutputStream.h"
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CPointVector {
     C3DVector* _M_start; C3DVector* _M_finish; C3DVector* _M_end_of_storage;
     CPointVector(const CPointVector& other);            // 0x006F0810

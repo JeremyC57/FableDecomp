@@ -1,5 +1,6 @@
 // vector<C3DMeshInfo>::reserve(unsigned int n) -- grow the mesh bank's mesh info array to n entries, copying the existing infos into a fresh block
 // Leaf: ?reserve@?$vector@VC3DMeshInfo@@V?$allocator@VC3DMeshInfo@@@std@@@std@@QAEXI@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2C210, 145 bytes, `ret 4`. Only caller 0x00A26702 (CMeshDataBank sizing its
 //   three info arrays: +0x38C C3DMeshInfo, +0x398 CPhysicsMeshInfo, +0x3A4 C3DAnimationInfo). The catalog label
 //   "vector_reserve_generic" is descriptive; the element is the 0x60-byte C3DMeshInfo (Ego_r.pdb, /96 reciprocal).
@@ -8,10 +9,7 @@
 // Shape: STLport 4.6 `reserve` verbatim; size/capacity through the 0x2AAAAAAB / sar 4 division by 96.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C3DBoundingBox {                                  // 0x18 bytes
 public:

@@ -1,5 +1,6 @@
 // NScript::CBenTestScriptsScript::CBalvMarker::Main() -- spooky balverine marker: hold an alive filter over Me; each round create "CREATURE_BALVERINE_01" (script name "SpookyBalv") at the marker, take it under scripted control (priority 4), wait until the marker is on screen, play its "ATTACK_THEN_JUMP_INTO_SKY" combat animation, wait for it to finish, remove the creature, then wait until the marker is off screen again
 // Leaf: ?Main@CBalvMarker@CBenTestScriptsScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EFEB60, 751 bytes (752 with padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 / ~CScriptThing 0x004AA840 (out-of-line copy) / ~CBaseClass 0x0099A2E0,
 //   ~CIsThingAlive 0x00E241B0 (out of line in this module, filter vtable 0x012C32F0), CEntityScriptBase::SetPredicate
@@ -16,7 +17,7 @@
 // Naming wave 35: identity reg 00efe5c6 "BalvMarker" in 00efe4b0; Alloc 00efea80; vtable 012f6f4c slot 1; PDB ?Main@CBalvMarker@CBenTestScriptsScript@NScript@@; refs=1; was under-qualified CBalvMarker::Main (wave3/labels_alloc.tsv); PDB ?Main@CBalvMarker@CBenTestScriptsScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBalvMarker@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

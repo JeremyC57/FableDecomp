@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- (map<unsigned long, CArray<C3DVector>>) STLport 4.6 node insert: create a node for v, link it left or right of y, fix root / leftmost / rightmost, rebalance, count, return the iterator
 // Leaf: ?_M_insert@?$_Rb_tree@KU?$pair@$$CBKV?$CArray@VC3DVector@@@@@std@@U?$_Select1st@U?$pair@$$CBKV?$CArray@VC3DVector@@@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKV?$CArray@VC3DVector@@@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKV?$CArray@VC3DVector@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKV?$CArray@VC3DVector@@@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKV?$CArray@VC3DVector@@@@@2@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BD8A60, 202 bytes (+ int3 padding to 208), thiscall `ret 14h` (the hidden
 //   iterator result pointer first, then x, y, &v, w).
 // Identity (proven): map<unsigned long, CArray<C3DVector>>; evidence: CEngineInternalPrimitiveAnimatedMesh::InitialiseBoneScalings 0x00BD2A90 (Ego_r.pdb ?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QBEXABVC3DMesh2@@@Z) inserts into this+0xD4 = Ego_r.pdb Cache (CEngineInternalPrimitiveAnimatedMesh::CCache) .BoneScalings, map<unsigned long, CArray<C3DVector> >, through 0x00BD9110 -> 0x00BD8DC0 -> 0x00BD8C00 -> this; 0x20-byte nodes (unsigned key, the 12-byte CArray copied by the landed vector<C3DVector> copy constructor 0x006F0810)
@@ -12,12 +13,7 @@
 //   constructor inlines into _M_create_node as the null-checked placement copy (key word, then the out-of-line value copy).
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
-class C3DVector {                                         // 12 bytes (Ego_r.pdb)
-public:
-    float X;                                               // +0x00
-    float Y;                                               // +0x04
-    float Z;                                               // +0x08
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

@@ -1,5 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::Draw(const CEnginePrimitivePrepareInfo& info, const C3DPositionInterpolator& position, const C3DOrientationInterpolator& orientation) -- mark the primitives drawn, optionally latch the force-resend bit, and re-prepare the primitives when anything is pending
 // Leaf: ?Draw@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCEnginePrimitivePrepareInfo@@ABVC3DPositionInterpolator@@ABVC3DOrientationInterpolator@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity: Ego_r.pdb ?Draw@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCEnginePrimitivePrepareInfo@@ABVC3DPositionInterpolator@@
 // ABVC3DOrientationInterpolator@@@Z (the three-argument overload of the landed Draw(info) 0x004BE4E0); its tail call is
 // the protected SetPrimitive(info, position, orientation) with the same three const references (Ego_r.pdb), and the
@@ -21,7 +22,7 @@
 // (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
 // CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
 // No engine header exists for CTCGraphicAppearance: local model.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCAnimationBase;
 

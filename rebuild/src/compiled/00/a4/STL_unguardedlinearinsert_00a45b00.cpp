@@ -1,5 +1,6 @@
 // std::__unguarded_linear_insert(C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph val, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI insertion step without a lower bound: shift elements up while comp(val, *prev), then store val
 // Leaf: ??$__unguarded_linear_insert@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A45B00, length 145 bytes, `ret 14h`.
 // Callers: 0x00A45FCD (__unguarded_insertion_sort) and 0x00A465C5 (__linear_insert 0x00A46530, this chunk).
 //   Callees: CCharString::operator= 0x0099EFB0, ~CCharString 0x0099EAE0 (the by-value val is destroyed by the callee);
@@ -17,10 +18,7 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C3DSkeletalBoneMorph {
 public:

@@ -1,5 +1,6 @@
 // std::__pop_heap(THitLocationIntersectionElement* first, THitLocationIntersectionElement* last, THitLocationIntersectionElement* result, THitLocationIntersectionElement val, THitLocationIntersectionElementPred comp, int*) -- STLport pop_heap core for the hit-location ray intersections: move the root into the result slot and sift the saved value down from the root
 // Leaf: ??$__pop_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008178E0, 104 bytes, `ret 2Ch` (/Gr __fastcall: first in ecx, last in edx; result,
 //   the 32-byte value, the empty predicate and the null distance pointer on the stack: 4 + 0x20 + 4 + 4 = 0x2C).
 // Identity: callers are the two __pop_heap_aux / pop_heap front ends 0x00817A00 (`ret 8`) and 0x00817F20 (`ret 4`), both
@@ -12,10 +13,7 @@
 //   __adjust_heap's argument area; the distance is `(last - first)` as `sub ; sar 5`, holeIndex 0 in edx.
 // Callees: std::__adjust_heap 0x008175D0.
 struct CHitLocation;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 namespace {
 struct THitLocationIntersectionElement {           // 32 bytes (implicit memberwise copy, trivial assignment)
     long          key;                             // +0x00

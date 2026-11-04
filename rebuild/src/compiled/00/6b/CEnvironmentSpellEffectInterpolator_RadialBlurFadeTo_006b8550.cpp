@@ -1,6 +1,7 @@
 // CEnvironmentSpellEffectInterpolator::RadialBlurFadeTo(float duration, ScreenEffectPriority priority, const C3DVector& thresholdColour, float length, const C3DVector& intensityColour, float fade, float range, float twist) -- build a radial-blur parameter block (opaque colours from the two vectors) and forward to the block overload
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the parameter block stores Fade before Length (statement order), so VC7.1 loads Fade into eax and Length into edx as retail
 // Leaf: ?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@@ABVC3DVector@@M1MMM@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B8550, length 123 bytes (+ int3 padding), `ret 20h`.
 // Callees: CEnvironmentSpellEffectInterpolator::RadialBlurFadeTo(float, ScreenEffectPriority, const CRadialBlurParams&)
 //   @ 0x006B84E0 (landed; `this` in ecx passed straight through). Callers: the six-float overload 0x006B8730 (landed),
@@ -12,9 +13,7 @@
 // Tried: in-place ctor init list (123v123, colours first), assignment from CRGBFloatColour temporaries (185v123), by-value colour ctor (187v123).
 // Shape: the four scalars are stored first, then the two vectors copied dword by dword (intensity, then threshold), the
 //   three argument pushes, and only then the two 1.0f alpha immediates.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CRGBFloatColour { public:
     float R, G, B, A;

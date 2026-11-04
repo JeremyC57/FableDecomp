@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPBestLeafThing(const TFilter& filter, const TCompare& compare, TThing** out) [TFilter = CFilter_Bind2<CThingFilter_In2DRange, anonymous-namespace CThingFilter_IsValidAttackTargetForCreature>, TCompare = CThingCompare_BestCreatureToAttack, TThing = CThingAICreature] -- the best creature to attack among the scan-visible AI creatures (type list 1) in 2D range that are valid attack targets
 // Leaf: GetPBestLeafThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F7040, 135 bytes (+ int3 padding to 144) (`ret 0Ch`).
 // Callees: PeekTypeList 0x0049C780, CThingFilter_In2DRange 0x006A76B0, CThingFilter_IsValidAttackTargetForCreature 0x007F6DF0, CThingCompare_BestCreatureToAttack::operator()<T> 0x007F6FD0.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (`this` is only passed through to the list getter);
@@ -52,7 +53,7 @@ struct CThingList {
 };
 
 class CThingAICreature : public CThing { public: enum { ThingListType = 1 }; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThingFilter_In2DRange { public:                    // Ego_r.pdb: Pos, Range
     C3DVector Pos;
     float     Range;

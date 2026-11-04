@@ -1,13 +1,14 @@
 // NCameraModes::CScriptModuleTransitionBetweenPoints::GetModuleFOV(float& fov) const -- a transition always supplies its FOV
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00854340, 18 bytes, `ret 4`.
 // Leaf: ?GetModuleFOV@CScriptModuleTransitionBetweenPoints@NCameraModes@@UBE_NAAM@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: vtable 0x012759F4 slot 5 (CScriptModuleBase::GetModuleFOV 0x00851DD0 is the base slot); FableWin.pdb
 //       ?GetModuleFOV@CScriptModuleTransitionBetweenPoints@NCameraModes@@UBE_NAAM@Z.
 // Layout: Ego_r.pdb CScriptModuleTransitionBetweenPoints (0x90) as the landed ctor 0x008524C0: FOV +0x88.
 // Shape: the float copied through eax, `mov al,1`.
 class CBaseObject;
 class CGameCameraManager;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CIntelligentPointer_CThingConst {             // CIntelligentPointer<const CThing>: vptr + link
     virtual void v00();

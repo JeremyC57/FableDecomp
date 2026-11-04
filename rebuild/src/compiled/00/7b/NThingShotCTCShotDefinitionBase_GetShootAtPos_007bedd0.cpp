@@ -1,5 +1,6 @@
 // NThingShot::CTCShotDefinitionBase::GetShootAtPos() const -- the shot's aim point: return the stored TargetPos by value
 // Leaf: ?GetShootAtPos@CTCShotDefinitionBase@NThingShot@@IBE?AVC3DVector@@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BEDD0, 24 bytes, thiscall with the hidden C3DVector return pointer (`ret 4`):
 //   three dwords copied from this+0x51 / +0x55 / +0x59.
 // Identity (FINDINGS chunk 471; sweep2): the callers are the shot definitions' InitMovement / OnSubShotTrigger
@@ -12,11 +13,7 @@
 // Layout: C3DVector is 1-aligned in retail (pack(1)), so TargetPos sits unaligned at +0x51; its memberwise copy
 //   constructor gives the interleaved dword loads/stores (an implicit block copy goes through esi).
 #pragma pack(push, 1)
-class C3DVector {                                   // Ego_r.pdb, 12 bytes, 1-aligned in retail
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace NThingShot {

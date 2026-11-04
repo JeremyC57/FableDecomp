@@ -1,4 +1,5 @@
 // CAIStateGroupBase::AIAction_MoveToPreCalcRoute(const CThing& routeThing, bool& speed, EMovementType anim, const CAIFilterBase& condition, bool extra) -- walk to the route thing, then (on arrival) along its precalculated route to the destination, polling the condition each step
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097F690, length 226 bytes (`ret 14h`).
 // Callees: CThing::GetPos @ 0x004C73D0, CAIStateGroupBase::AIAction_MoveToPos @ 0x0097EC00 (mode 2, C3DVector by
 // value, then 1,0,1,0), the condition's virtual slot 0, CAIStateGroupBase::SetUpPreCalcNav @ 0x0097F5B0.
@@ -8,11 +9,7 @@
 // ABVCAIFilterBase@1@_N@Z` and AIAction_MoveToPos(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*,
 // bool, float). These parameter types (a reference, an enum, a bool) give retail's register assignment (speed ebx,
 // anim edi, extra ebp) and the loop result's spill into the dead condition slot. All-`long` parameters permute them.
-class C3DVector
-{ public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }   // user copy ctor: the by-value argument is built in place
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;           // 0x004C73D0

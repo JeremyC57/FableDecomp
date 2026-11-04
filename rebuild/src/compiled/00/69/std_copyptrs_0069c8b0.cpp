@@ -1,5 +1,6 @@
 // std::__copy_ptrs(CQuake* first, CQuake* last, CQuake* result, const __false_type&) -- STLport assignment copy of a camera-quake range (used by vector::erase); returns the end of the destination
 // Leaf: ??$__copy_ptrs@PAVCQuake@CGameCameraManager@@PAV12@@std@@YIPAVCQuake@CGameCameraManager@@PAV12@00ABU__false_type@0@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0069C8B0, 60 bytes, /Gr `__fastcall` (first ecx, last edx; result and the empty __false_type tag on
 // the stack, `ret 8`).
 // Identity (probable): the only caller 0x0069CD18 is vector<CGameCameraManager::CQuake>::erase(iterator) 0x0069CD00
@@ -9,10 +10,7 @@
 // `__copy(.., random_access_iterator_tag(), (ptrdiff_t*)0)`, inlined here as the counted loop.
 // Shape: `*__result = *__first` is CQuake's implicit assignment, a 12-dword `rep movsd` (C3DVector has a user copy ctor
 // but no user operator=).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CGameCameraManager { public:
     class CQuake { public:                          // Ego_r.pdb CGameCameraManager::CQuake, 0x30 bytes
         C3DVector Position;                         // +0x00

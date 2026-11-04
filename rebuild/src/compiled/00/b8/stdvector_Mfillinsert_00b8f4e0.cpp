@@ -1,5 +1,6 @@
 // std::vector::_M_fill_insert(CEngineOcclusionManager::COccluderFlareEntry* position, unsigned int n, const CEngineOcclusionManager::COccluderFlareEntry& x) -- (vector<CEngineOcclusionManager::COccluderFlareEntry>) STLport insert of n copies of a 28-byte flare-test entry: slide the tail inside the spare capacity and fill the hole from a copy of x, or grow through _M_insert_overflow
 // Leaf: ?_M_fill_insert@?$vector@UCOccluderFlareEntry@CEngineOcclusionManager@@V?$allocator@UCOccluderFlareEntry@CEngineOcclusionManager@@@std@@@std@@QAEXPAUCOccluderFlareEntry@CEngineOcclusionManager@@IABU34@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grades: 3 (the third only re-graded the corrected Leaf line; DIFFER 316v339 with the implicit C3DVector copy: rep movsd for x_copy; RELOCATION_MATCH with the memberwise user copy ctor)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B8F4E0, 339 bytes, thiscall `ret 0Ch`, no EH frame.
 // Identity (proven): the landed vector<CEngineOcclusionManager::COccluderFlareEntry>::resize(n, x) 0x00B8F780 calls it
@@ -18,11 +19,7 @@
 //   OccluderHandle (no engine header for it or C3DVector).
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class C3DVector {
-public:
-    float X, Y, Z;                                        // +0x00
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }   // retail's memberwise copy (word by word, no rep movsd)
-};
+#include "engine/C3DVector.h"
 class CEngineOcclusionManager {
 public:
     struct COccluderFlareEntry {                          // Ego_r.pdb (struct), 28 bytes

@@ -1,5 +1,6 @@
 // NScript::CQ_EndGameFocalSitesScript::CEndGameThunder::Main() -- end-game Thunder: make Me undamageable, unkillable, a villager and off the combo count; unless the fight is already over, walk Me up to the hero, open a conversation (married / not married to Lady Grey line, then two more lines); then until the fight is over, ally Me with the hero whenever the hero hits Me, and whenever the hero strays beyond 8 units walk Me back to within 4
 // Leaf: ?Main@CEndGameThunder@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D2C810, 1901 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release
 //   0x00CD2770 / MoveToPosition 0x007E72F0 / IsPerformingScriptTask 0x007E7450 / out-of-line dtor 0x007E74D0, IsActiveThreadTerminating
@@ -14,7 +15,7 @@
 //   `if (IsActiveThreadTerminating()) return;` keeps the call with its test folded away.
 // Naming wave 35: identity reg 00d2aed3 "EndGameThunder" in 00d2aa40; Alloc 00d2c730; vtable 012cc358 slot 1; PDB ?Main@CEndGameThunder@CQ_EndGameFocalSitesScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CEndGameThunder::Main (wave3/labels_alloc.tsv); PDB ?Main@CEndGameThunder@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CEndGameThunder@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

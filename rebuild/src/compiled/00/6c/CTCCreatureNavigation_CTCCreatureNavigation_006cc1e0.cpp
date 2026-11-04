@@ -1,5 +1,6 @@
 // CTCCreatureNavigation::~CTCCreatureNavigation() -- creature navigation TC dtor: if a navigator is active, drop the steering agent list from the global agent lists, forget the navigator and delete (and null) every possible navigator; then the member dtors and ~CTCBase
 // Leaf: ??1CTCCreatureNavigation@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CC1E0, 137 bytes, tail jump to the base destructor.
 // Identity: the vtable store 0x0125EC24 carries RTTI `.?AVCTCCreatureNavigation@@` (CTCCreatureNavigation : CTCBase);
 //   FableWin.pdb has `??1CTCCreatureNavigation@@UAE@XZ`. The catalog label is right.
@@ -92,11 +93,7 @@ private:
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
 };
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 enum EMovementType { };                                     // values not needed here
 class CNavigationInput { public:                            // 0x18 bytes, trivially destructible
     C3DVector     Destination;                              // +0x00

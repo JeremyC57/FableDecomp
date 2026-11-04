@@ -6,13 +6,10 @@
 // Shape: C3DVector carries a user memberwise copy constructor and CRightHandedSet copies implicitly: the first float goes
 //   through the x87 (`fld ; fstp`), the remaining five dwords through ecx/edx -- a POD C3DVector copies all six as dwords.
 // Leaf: GetRHSet
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/CTCPhysicsBase.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet { public:
     C3DVector Up;                           // +0x00

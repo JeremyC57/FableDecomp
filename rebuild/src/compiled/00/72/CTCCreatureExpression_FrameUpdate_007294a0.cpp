@@ -1,5 +1,6 @@
 // CTCCreatureExpression::FrameUpdate() -- every 16th frame (staggered by the thing's id) pick the creature's facial expression: expression 7 while it faces along the camera, else by the hero stats' morality (8 below 45%, 9 above 55%, scaled), else expression 1
 // Leaf: FrameUpdate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail 0x007294A0, 445 bytes (plain `ret`). Ego_r.pdb ?FrameUpdate@CTCCreatureExpression@@UAEXXZ.
 // Callees: GFGetCurrentFrame @ 0x0049D870, CTCBase::GetWorld @ 0x00686A70, the world's +0x18 camera virtual slot 4
@@ -13,7 +14,7 @@
 // band): the lane does not reproduce that choice for a plain inline member, so the last site goes through a __forceinline
 // copy of the landed body (SetExpressionInline). The id is a named local read before the frame call; the camera through an
 // inline accessor; the dot product accumulates Z, Y, X in statements; the morality weights are named float locals.
-class C3DVector { public: float X, Y, Z; C3DVector() { } };
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

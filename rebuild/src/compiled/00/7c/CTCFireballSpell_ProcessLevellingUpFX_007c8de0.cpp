@@ -2,6 +2,7 @@
 // fireball helper, play the level's power-up sound (levels 1..3) and make a simple noise
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007C8DE0, 485 bytes (+ int3 padding), `ret`.
 // Leaf: ProcessLevellingUpFX
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Callees: GetSubDef<CSpecialEffectsDef> 0x00669580, CSpecialEffectsDef::GetEffectFromString 0x00669D30 (catalog "CCRC::CalcAndLookup"),
 // CThing::GetPos 0x004C73D0, CreateParticleEffect 0x0072AB70 (__fastcall), LowerBound 0x0040F020 (0x4b emitter, 0x10 sound
@@ -13,7 +14,7 @@
 // frame word (which retail zeroes at entry with the found flag's ebx); GetSubDef / GetEffectFromString are same-TU stand-ins.
 // Layout: retail CTCFireballSpell = Ego_r.pdb minus 4 after the timer (12-byte vector): Timer +0x0c (WillAccumulatedLevel +0x10),
 // PDef +0x40, FireballAttachmentName +0x6c. No engine header.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

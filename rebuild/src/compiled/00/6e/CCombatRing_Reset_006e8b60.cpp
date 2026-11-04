@@ -1,4 +1,5 @@
 // CCombatRing::Reset() -- zero the ring thickness and clear every prong's occupier pointer
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E8B60, 103 bytes (112 with padding).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10, ::SetPItem 0x00A01B90,
 //          ::GetPItem 0x00A01B50, ::~CBaseIntelligentPointer 0x00A01C10; CIntelligentPointer vtable 0x0123E7D8.
@@ -27,7 +28,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0123E7D8
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CProng {                            // CDefendingCombatantInfo::CProng (28 bytes)
     bool Blocked;                          // +0x00

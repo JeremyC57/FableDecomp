@@ -1,4 +1,5 @@
 // CCreatureAction_JackFloatUp::Initialise() -- names the animation "RISE_TO_FLOAT", runs the base Initialise, clears Moving and FloatSpeed and records the creature's current height as StartHeight
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C0730, length 96 bytes. Vtable slot 12.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0,
 // CCharString::~CCharString @ 0x0099EAE0, CCombatActionBase::Initialise @ 0x00857520, CBaseIntelligentPointer::GetPItem
@@ -7,9 +8,7 @@
 // Shape: the landed Initialise family, then two zero stores through the shared zero register (Moving first, so FloatSpeed
 // is written as an integer zero: a float literal would be an immediate) and StartHeight copied from the vector's Z (+8)
 // with a register move. Member names from the engine header (PDB +0x12c..; retail CCombatActionBase is 0x114 bytes).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;        // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)

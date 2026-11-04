@@ -1,5 +1,6 @@
 // CQ_SecretPassageScript::BossBlockingPrisonPassage() -- each time the hero reaches the passage entrance with the exterior loaded: start the door switcher once, make the entrance unusable, spawn an undead lieutenant at every boss spawn point (each targeting the hero), block the doors until all of them are dead, then unblock and make the entrance usable again
 // Leaf: BossBlockingPrisonPassage
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF0200, 1174 bytes (int3 padded to 1184).
@@ -53,7 +54,7 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
     virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18)

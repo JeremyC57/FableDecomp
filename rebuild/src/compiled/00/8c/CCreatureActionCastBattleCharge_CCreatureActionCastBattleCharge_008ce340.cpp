@@ -1,4 +1,5 @@
 // CCreatureAction_CastBattleCharge::CCreatureAction_CastBattleCharge(CThingCreatureBase*, const C3DVector&, float, long) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), own vtable (0x0128439C), Override set, Dir copied from the vector, Distance and Level from the arguments, IsZTargetting cleared
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CE340, length 123 bytes (+ int3 padding).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030.
 // Shape: the sound pair is zeroed with immediates in the frame and passed by reference (arguments right to left: the pair,
@@ -10,10 +11,7 @@
 // locally under #pragma pack(1) at +0x114 / +0x115 / +0x124 / +0x128 / +0x12c, as the landed sibling constructors @ 0x008CE2F0 / 0x008CE290.
 class CThingCreatureBase;
 
-class C3DVector { public:                          // three floats; the memberwise user copy constructor copies each as a dword
-    float X, Y, Z;                          //   straight into the member (a POD copy would form the member address once)
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (immediate frame stores)
     long FirstSound;

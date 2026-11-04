@@ -1,5 +1,6 @@
 // CTCActionUseWindow::OnActionUse(CThing& user) -- base OnActionUse; give a live creature user the look-through-window action; then, when the current game camera reports a view, touch the owner's position and let the user's physics fill a vector
 // Leaf: ?OnActionUse@CTCActionUseWindow@@UAEXAAVCThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007EBAB0, length 122 bytes (+6 int3 padding). Vtable slot 28 of CTCActionUseWindow
 // (0x0123F5EC). `ret 4`.
 // Callees: CTCActionUseBase::OnActionUse @ 0x007EAB90 (qualified), CCreatureAction_LookThroughWindow::CCreatureAction_
@@ -12,7 +13,7 @@
 // is reached through an inline CWorld accessor (GetCurrentGameCamera, stand-in name): it lands straight in ecx for the virtual
 // call (`mov ecx,[eax+34h] ; mov eax,[ecx]`) and also gives retail's this=esi / user=edi colouring.
 // Layout: PDB CWorld PCurrentGameCamera +0x34; retail CThing +0x60 physics pointer, +0x91 bit 0 Dead.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CThingPhysics {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

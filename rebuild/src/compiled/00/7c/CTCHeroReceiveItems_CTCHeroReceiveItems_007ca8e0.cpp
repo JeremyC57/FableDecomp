@@ -1,5 +1,6 @@
 // CTCHeroReceiveItems::~CTCHeroReceiveItems() -- hero receive-items component dtor: leave the global TC update list, then the member dtors in reverse order (the background and item engine primitive handles, the container and current-item pointers, the picked-up-item vector, the item list) and ~CTCBase
 // Leaf: ??1CTCHeroReceiveItems@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CA8E0, 249 bytes, tail jump to the base destructor.
 // Identity: the first store is vtable 0x0126EBFC, RTTI `.?AVCTCHeroReceiveItems@@` (rtti_bases: CTCHeroReceiveItems : CTCBase);
 //   its slot 0 is the scalar deleting dtor 0x007CBD80. Ego_r.pdb has `??1CTCHeroReceiveItems@@UAE@XZ`. The PDB member
@@ -140,11 +141,7 @@ class CTCBase : public CBaseClassNonCopyable { public:
 };
 
 #pragma pack(push, 1)
-class C3DVector { public:                                  // retail C3DVector is 1-aligned
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class C2DBoxF { public:
     float TLX;

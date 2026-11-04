@@ -1,5 +1,6 @@
 // NScript::CQ_EndGameFocalSitesScript::~CQ_EndGameFocalSitesScript() -- implicit quest-script destructor: deregister the timers, destroy the RegionDialogueNames / TeleportHSPs CCharString[5] members in reverse order, then ~CScriptBase
 // Leaf: ??1CQ_EndGameFocalSitesScript@NScript@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D2F640, tail jump to ~CScriptBase 0x00CBD510; sole caller the scalar deleting dtor
@@ -43,7 +44,7 @@ class CCharString { public:
     ~CCharString();                                                      // 0x0099EAE0
     CCharStringData* PStringData;
 };
-class C3DVector { public: float X; float Y; float Z; };
+#include "engine/C3DVector.h"
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

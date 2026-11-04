@@ -1,5 +1,6 @@
 // std::vector::~vector() -- (vector<CTCSmokeGenerator::CGenerationPos >) out-of-line destructor: destroy every element, then free the vector's own block
 // Leaf: ??1?$vector@VCGenerationPos@CTCSmokeGenerator@@V?$allocator@VCGenerationPos@CTCSmokeGenerator@@@std@@@std@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00722EB0, 50 bytes (+ int3 padding to 64), thiscall, plain `ret`.
 // Identity (proven): vector<CTCSmokeGenerator::CGenerationPos >::~vector; evidence: its only caller is CTCSmokeGenerator's scalar deleting destructor 0x00723240 (slot 0 of the CTCSmokeGenerator vtable), on this+0x10 -- Ego_r.pdb's CTCSmokeGenerator::GenerationPositions (+0x10), vector<CTCSmokeGenerator::CGenerationPos>
 // Label: the manifest's "ResetRings" is propagated (family H071: six destroy-and-free bodies -- STLport ~vector (with the inline
@@ -68,7 +69,7 @@ protected:
     }
 };
 }
-class C3DVector { public: float X, Y, Z; };                  // 12 bytes
+#include "engine/C3DVector.h"
 class CTCSmokeGenerator {
 public:
     class CGenerationPos {                                     // 20 bytes (Ego_r.pdb)

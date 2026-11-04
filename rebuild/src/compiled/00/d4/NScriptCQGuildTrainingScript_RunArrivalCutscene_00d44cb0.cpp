@@ -1,4 +1,5 @@
 // CQ_GuildTrainingScript::RunArrivalCutscene() -- set the evening, create the rival hero at the maze marker, take him and the hero under scripted control, cast them as "MAZE" and "HERO", play CS_GUILD_ARRIVE in a paused movie sequence with the camera fixed, fade out without the region-change fade or region text, then remove the rival
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Layout: only Game (+0x40, right after the 0x40-byte retail CScriptBase) is touched; no rebuild/include/engine header exists for the class.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D44CB0, length 944 bytes; called from 0x00D3BE0B.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, ~CScriptThing 0x004AA840 / ~CBaseClass
@@ -32,7 +33,7 @@ class CRGBColour { public:                                         // D3DCOLOR b
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 struct CScriptThingImpl;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

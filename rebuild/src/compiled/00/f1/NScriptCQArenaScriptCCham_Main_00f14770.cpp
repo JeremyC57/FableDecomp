@@ -1,5 +1,6 @@
 // NScript::CQ_ArenaScript::CCham::Main() -- arena Cham (CQ_ArenaScript): unset Me as an opinion source, put Me in FACTION_HERO, make Me unkillable
 // Leaf: ?Main@CCham@CQ_ArenaScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   and keep him out of the combo multiplier, wait until the arena sets ChamLeaving, take Me under scripted control
 //   (priority 4, retried each frame), walk to GuardingDoorMarkerLeft and remove Me once the walk is done
 // Identity (naming wave 11): ?Main@CCham@CQ_ArenaScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F8FB4 slot 1 is stored by the factory 0x00F14670 registered as "Cham"
@@ -17,7 +18,7 @@
 //   the handle is a destructor-less view destroyed by hand per exit.
 // Naming wave 35: identity reg 00f0fc46 "Cham" in 00f0fb70; Alloc 00f14670; vtable 012f8fb4 slot 1; PDB ?Main@CCham@CQ_ArenaScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CCham::Main (wave3/labels_alloc.tsv); PDB ?Main@CCham@CQ_ArenaScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

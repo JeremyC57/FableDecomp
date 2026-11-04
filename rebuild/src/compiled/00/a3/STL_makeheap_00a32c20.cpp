@@ -1,5 +1,6 @@
 // std::__make_heap(pair<unsigned long, C3DHelperPoint>* first, pair<unsigned long, C3DHelperPoint>* last, CKeyPairCompareLess<unsigned long, C3DHelperPoint> comp, pair<unsigned long, C3DHelperPoint>*, int*) -- SGI make_heap of the keyed helper points: sift every parent down from (len-2)/2 to the root with __adjust_heap, each fed a by-value copy of the parent
 // Leaf: __make_heap
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A32C20, 113 bytes, `ret 0Ch` (__fastcall: first in ecx, last in edx, the
 // empty comparator's slot, the value-type pointer and the Distance* on the stack -- the SGI/STLport algorithm TUs are /Gr).
 // Callee: std::__adjust_heap(first, holeIndex, len, T value, comp) @ 0x00A32440 (manifest `_Adjust_heap<pair<unsigned
@@ -10,10 +11,7 @@
 // parent, len, T(*(first + parent)), comp); if (parent == 0) return; parent--; }` -- the count divides by 20 (reciprocal
 // 0x66666667, `sar edx,3`); the pair's implicit copy is memberwise (C3DVector has a user copy constructor), built straight
 // into the argument area (`sub esp,14h ; mov eax,esp`) from a strength-reduced `first + parent*20 + 0Ch` pointer.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DHelperPoint { public:                            // 16 bytes
     C3DVector Position;                            // +0x00

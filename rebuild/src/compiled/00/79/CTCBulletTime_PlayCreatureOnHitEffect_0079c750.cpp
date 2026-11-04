@@ -1,5 +1,6 @@
 // CTCBulletTime::PlayCreatureOnHitEffect(CThing* creature) -- remember the hit creature, start the bullet-time radial blur (the damage blur when the hero himself was hit, the normal one otherwise) with its fade, and centre the blur on the creature
 // Leaf: PlayCreatureOnHitEffect
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079C750, 298 bytes (+6 int3 padding), `ret 4`.
 // Callees: CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10
 //   (CIntelligentPointer<CThing> vtable 0x01238C6C), CTCBase::GetWorld() 0x00686A70 (twice), the radial-blur manager's
@@ -14,7 +15,7 @@
 // Shape: the hit creature is stored through the intelligent pointer's inline operator= from a CIntelligentPointer
 //   (creature) temporary; the spell-effect interface is a named local homed in the dead `creature` slot, the blur
 //   manager a named local (edi), the parent a third named local (ebp, loaded before the GetPItem compare).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CBaseObject;
 class CThing {
 public:

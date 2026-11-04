@@ -1,4 +1,5 @@
 // CEngineLightingManager::AddLightPrimitive(const CEngineInternalPrimitiveLight&) -- queue a point light for this frame: skipped when its radius is below 0.1 or its colour is black (every channel below 1/255); otherwise a CManagerLocalLight from the object heap (its CEngineLocalLightElement built from the primitive, not yet found) is appended to LocalLightList
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B47FD0, length 260 bytes (`ret 4`; called from RenderPrimitive 0x00B481E0 for type 15).
 // Callees: CDynamicObjectHeap<72,16>::CreateMoreBlocks @ 0x00B48F90 (on the heap @ 0x01436FB0), CEngineLocalLightElement::
 // CEngineLocalLightElement(const C3DVector&, float, float, const CRGBFloatColour&, unsigned long) @ 0x00B44E30,
@@ -11,7 +12,7 @@
 // Shape: as the spot-light twin 0x00B480E0 (parked): `x < k` early returns, the inlined heap Alloc merged with new's null test,
 // an inline CManagerLocalLight constructor (vtable, element, flag) whose by-value floats are homed in the frame / dead
 // argument slot, STLport push_back with the __true_type tag.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public: float R, G, B, A; };
 
 struct CObjectEntry { CObjectEntry* Next; };

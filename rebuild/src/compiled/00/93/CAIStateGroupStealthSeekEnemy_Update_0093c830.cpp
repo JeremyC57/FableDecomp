@@ -3,6 +3,7 @@
 // position, put the enemy's stealth component in danger and play the what's-that reactions; then terminate.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093C830, length 318 bytes.
 // Leaf: ?Update@CAIStateGroup_StealthSeekEnemy@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface 0x34 = CTCPerceiveThing, bit 20 of +0x24,
 // result pre-zeroed) and non-const @ 0x0040F020 (0x36 = CTCStealth on the enemy, bit 22 of +0x24), CBaseIntelligentPointer
 // ::GetPItem @ 0x00A01B50 (PEnemy x3), CThingCreatureBase::IsFreeToFinishAction @ 0x006621C0 / FinishCurrentAction
@@ -250,7 +251,7 @@ class CAIStateGroupBase { public:
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CTCPerceiveThing { public:                       // interface 0x34
     unsigned char _pad[0x18];
     float m_awareness;                          // +0x18

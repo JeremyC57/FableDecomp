@@ -1,5 +1,6 @@
 // CTCSummonSpell::SetSummonCreatureGlobalDefNum(long defNum, const C3DVector& position, const C3DVector& direction) -- record the summoned creature's global def, play the summon-upgrade sound on the caster, kill the current minion and create the new one
 // Leaf: SetSummonCreatureGlobalDefNum
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0079B650, length 149 bytes (`ret 0Ch`).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetTC of interface 0x10 = bit 16 of CThing+0x20, the
@@ -12,7 +13,7 @@
 // Shape: the component is a named local (`mov esi,[eax+4]`); the CCharString is a named local in its own block, sharing the dead defNum
 // argument slot with the lookup key.
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

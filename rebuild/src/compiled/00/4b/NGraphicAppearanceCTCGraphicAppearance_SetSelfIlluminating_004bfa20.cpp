@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::SetSelfIlluminating(bool selfIlluminating) -- store the self-illumination bit, re-queue the owner for rendering and flag the primitives for update (reason 4)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BFA20, length 36 bytes. Callees: CThing::AddToRenderList @ 0x004C7AC0 on ParentThing.
 // Shape: the one-bit bit-field store from the bool argument (`xor al,[esp+8]` merge, the byte re-read), the call, then
 // `UpdatePrimitiveReasons |= 4` as a memory `or` (the landed SetAlpha @ 0x004BFAC0 has the same tail).
@@ -9,7 +10,7 @@
 // (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
 // CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
 // No engine header exists for CTCGraphicAppearance: local model.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCAnimationBase;
 

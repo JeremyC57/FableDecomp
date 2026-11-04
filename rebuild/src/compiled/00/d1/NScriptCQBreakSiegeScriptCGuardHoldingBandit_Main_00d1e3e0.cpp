@@ -1,5 +1,6 @@
 // NScript::CQ_BreakSiegeScript::CGuardHoldingBandit::Main() -- the Break Siege guard holding the bandit leader: take scripted control, heal fully, make Me unkillable and the bandit leader's ally, then until the leader is freed or the end cutscene is done answer a talk ("_STAY_BACK"), a hit (plain, or any special ability but 14: "_ON_HIT" and ally with the hero) and a "follow" expression ("_WONT_FOLLOW") with a TEXT_QST_018_<data> conversation line; then make Me killable, release him and remove him once the end cutscene is done
 // Leaf: ?Main@CGuardHoldingBandit@CQ_BreakSiegeScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D1E3E0, 1584 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,
 //   CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsValid 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0,
@@ -74,7 +75,7 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }                                         // out-of-line copy 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const;
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)

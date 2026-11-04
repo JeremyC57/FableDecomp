@@ -1,6 +1,7 @@
 // 008f4d60 CCreatureAction_DragonFlight::CCreatureAction_DragonFlight
 // Flags: /O2 /Oy /W3
 // Leaf: ??0CCreatureAction_DragonFlight
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // The dragon-flight action towards a point: base CCombatActionBase(owner, 50, zeroed CSoundPair), FaceTarget off,
 // own vtable, the animation name handed to the base setter. The turn it needs is the bearing to the point minus
 // the owner's facing bearing, both in turns (atan2 / 2pi wrapped into [0, 1)), the difference wrapped into
@@ -12,11 +13,7 @@
 // TurnRate +0x118 (PDB +0x12c/+0x130), as in the landed sibling ctor 0x008F4D00; CThing PhysicsTC +0x60.
 #include <math.h>
 #include "fable_string.h"
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CTCPhysicsBase { public:                                 // CThing::PhysicsTC (+0x60)
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)

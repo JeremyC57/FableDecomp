@@ -1,5 +1,6 @@
 // NScript::CV_TalentlessBardScript::CTB_BardSpawnPoint::Main() -- spawn the Bowerstone bard at the spawn point and hand him to the parent quest as stBard
 // Leaf: ?Main@CTB_BardSpawnPoint@CV_TalentlessBardScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity (naming wave 11): ?Main@CTB_BardSpawnPoint@CV_TalentlessBardScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F34BC slot 1 is stored by the factory 0x00ED8050 registered as "TB_BardSpawnPoint"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ED8120, length 240 bytes (entity-script vtable 0x012F34C0 slot 1).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, ~CBaseClass @ 0x0099A2E0,
@@ -21,7 +22,7 @@ class CCharString { public:
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     long RefCount;

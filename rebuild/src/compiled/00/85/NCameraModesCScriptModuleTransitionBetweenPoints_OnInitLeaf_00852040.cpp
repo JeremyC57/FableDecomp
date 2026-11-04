@@ -1,6 +1,7 @@
 // NCameraModes::CScriptModuleTransitionBetweenPoints::OnInitLeaf() -- start the transition: put the owning camera at the start position, aim it at the start look-at point and apply the transition FOV
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00852040, 68 bytes, plain `ret`.
 // Leaf: ?OnInitLeaf@CScriptModuleTransitionBetweenPoints
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: vtable 0x012759F4 slot 8 (CScriptModuleBase::OnInitLeaf 0x005ED110 is empty); FableWin.pdb
 //       ?OnInitLeaf@CScriptModuleTransitionBetweenPoints@NCameraModes@@MAEXXZ.
 // Layout: Ego_r.pdb CScriptModuleTransitionBetweenPoints (landed ctor 0x008524C0): LookAtPos +0x6c, StartPos +0x78, FOV +0x88;
@@ -9,7 +10,7 @@
 //        the C3DVector copies may alias it.
 class CBaseObject;
 class CGameCameraManager;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CIntelligentPointer_CThingConst {             // CIntelligentPointer<const CThing>: vptr + link
     virtual void v00();

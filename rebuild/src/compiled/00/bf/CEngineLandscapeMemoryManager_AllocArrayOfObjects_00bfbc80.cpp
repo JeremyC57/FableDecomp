@@ -1,5 +1,6 @@
 // CEngineLandscapeMemoryManager::AllocArrayOfObjects(long count, void* owner) -- [T = CLocalDetailPrimitiveMeshZSpriteBatch::CObject] allocate a count-element array of z-sprite batch objects from the landscape virtual memory (refusing a byte size outside 0..0x7fffffff) and default-construct every element
 // Leaf: ??$AllocArrayOfObjects@VCObject@CLocalDetailPrimitiveMeshZSpriteBatch@@@CEngineLandscapeMemoryManager@@QAEPAVCObject@CLocalDetailPrimitiveMeshZSpriteBatch@@JPAX@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BFBC80, length 145 bytes (+ int3 padding), `ret 8`; called out of line by the landed
 // CLocalDetailPrimitiveMeshZSpriteBatch::Load 0x00BFB210 (which models it as this member template).
 // Callees: __allmul @ 0x00BFEB50 (the 64-bit `count * 0x4c` size check), CEngineLandscapeMemoryManager::AllocVirtual(long, void*)
@@ -11,10 +12,7 @@
 // element pointer advanced by 0x4c; members are built in declaration order (bounding-sphere zeroes, handle base call, vtable, handle 0).
 #include <new>
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:                                   // 0x10
     C3DVector Centre;
     float     Radius;

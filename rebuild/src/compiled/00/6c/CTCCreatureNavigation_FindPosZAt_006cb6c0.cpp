@@ -1,4 +1,5 @@
 // CTCCreatureNavigation::FindPosZAt(const C3DVector& pos) -- ask the current navigator's external interface for the ground Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CB6C0, length 21 bytes (+11 int3).
 // Callee: CNavigatorExternalInterface::FindPosZAt (virtual slot 4, `call [eax+10h]`, float result left on the x87 stack),
 // called with the position and `true`.
@@ -6,7 +7,7 @@
 // navigator slots from the CNavigatorAStar/CNavigatorFlyer vtables (9 CanNavigateToPos, 10 IsNavLineOfSightClear,
 // 18 Interrupt) and the external interface vtables (slot 4 FindPosZAt, float).
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;   // 0x004C73D0 (PhysicsTC +0x60, position at +0x0c)

@@ -1,5 +1,6 @@
 // CThingCreatureBase::CThingCreatureBase(long type) -- construct the physical thing with the given type, the game-object layer and the creature base's own members (null def / action / interaction pointers, empty containers and queued-action list, handedness 2, default flag bits)
 // Leaf: ??0CThingCreatureBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00666090, 273 bytes, `ret 4`. Label correction: the catalog calls this row
 //   "CTCDParticleEmitter::CTCDParticleEmitter"; the vtable it stores last, 0x0125AC0C, is CThingCreatureBase
 //   (rtti-vtables.tsv); its callers are the derived creature ctors 0x0052AB26 / 0x00831F87.
@@ -63,10 +64,7 @@ struct CCreatureDefPointer {                    // CDefPointer<CThingCreatureDef
     CDefPointeeBase* Object;
     CCreatureDefPointer() : Object(0) { }
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 class CCreatureActionBase;
 struct CActionPointer {                         // CCountedPointer<CCreatureActionBase>

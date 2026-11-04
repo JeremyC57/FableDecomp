@@ -1,5 +1,6 @@
 // CTCCoopSpirit::~CTCCoopSpirit() -- co-op spirit thing component destructor: kill the particle emitter if it is still alive, clear Master, then destroy the members and ~CTCBase
 // Leaf: ??1CTCCoopSpirit@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00670090, int3 padding before and after, thiscall, tail `jmp ~CTCBase`.
 // Identity (proven, two sources): (1) it stores vtable 0x0125B264 (RTTI .?AVCTCCoopSpirit@@ : CTCBase) and its sole caller is the
 //   scalar deleting destructor 0x00670C50, slot 0 of that vtable; (2) Ego_r.pdb 0x006777C0 / FableWin.pdb 0x020D5030
@@ -42,7 +43,7 @@ public:
 };
 #pragma pack(pop)
 
-class C3DVector { public: float X; float Y; float Z; };
+#include "engine/C3DVector.h"
 class CPlayer;
 class CCoopSpiritDef;
 

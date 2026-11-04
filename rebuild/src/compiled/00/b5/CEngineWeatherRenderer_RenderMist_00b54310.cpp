@@ -1,5 +1,6 @@
 // CEngineWeatherRenderer::RenderMist(const CEngineComponentRenderParams&) -- bind the mist volume texture on stages 0-3, the mist shaders, index and vertex buffers, upload the ten mist vertex-shader constants, set one render state, flush shader state and draw the mist quad
 // Leaf: RenderMist
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B54310, length 1234 bytes (+ int3 padding), `ret 4` (params unused).
 // Signature from Ego_r.pdb: ?RenderMist@CEngineWeatherRenderer@@AAEXABVCEngineComponentRenderParams@@@Z.
 // Callees: CRenderStateManager::RestoreCaptureBlock @ 0x00A05840 (inline OpenCaptureBlock on 0x013CB508),
@@ -20,7 +21,7 @@
 // with the global spelled at each use VC loads it first and swaps the fld/fmul of `height * scale`.
 #include "engine/CEngineWeatherRenderer.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C4DVector { public: float X, Y, Z, W; };
 class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
 

@@ -1,4 +1,5 @@
 // CEngineShadowRenderer::UpdateShadowScene(CEngineCamera*, bool, CEngineLightingManagerSpotlightParams*) -- latch the camera position, look vector and view matrix (unless the scene origin is locked), then rebuild the shadow space for the active technique
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B4F390, length 144 bytes.
 // Callees: SetShadowClipVolumesToNeverShadow @ 0x00B4CE20, UpdateSpotLightShadowSpace(spot) @ 0x00B4EF80, UpdateShadowSpace(camera) @ 0x00B4D370.
 // Layout: engine/CEngineShadowRenderer.h -- SceneOriginLocked +0x2ad, CameraLookVector +0x26d, CameraViewMatrix +0x27c,
@@ -10,9 +11,7 @@
 #include "engine/CEngineShadowRenderer.h"
 #include "engine/CEngineCamera.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 { public:
     float m[12];

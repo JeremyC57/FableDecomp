@@ -1,4 +1,5 @@
 // C3DMeshStats::LoadBinary(CMemoryDataInputStream*) -- read name, animated flag, bounds and the five counts, allocate the buffers, bulk-read helper/dummy/name blocks, then load every mesh volume and generator
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2F2D0, 1136 bytes, ret 4.
 // Callees: stream vtable slot 6 (+0x18) ReadNullTerminatedString (hidden CCharString result), slot 4 (+0x10)
 //   Read(void*, ulong); CCharString::operator= 0x0099EFB0, ~CCharString 0x0099EAE0,
@@ -18,7 +19,7 @@ class CCharString { public:
     ~CCharString();                                       // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CDataInputStream { friend class CMemoryDataInputStream;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)

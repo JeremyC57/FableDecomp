@@ -1,5 +1,6 @@
 // QuadricOptimiserInternals::COptimisedVertex::operator=(const COptimisedVertex&) -- the compiler-generated member-wise assignment of an optimiser vertex (positions, quadric, cost, face set, flags, group and pair-contraction maps)
 // Leaf: ??4COptimisedVertex
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD7050, 196 bytes (+ int3 padding; `ret 4`, returns `this`).
 // Label correction: catalogued as the COptimisedVertex constructor; the callees are the trees' assignment operators, so this is
 //   operator= (its sibling 0x00AD77F0, calling the trees' copy constructors, is the copy constructor).
@@ -11,10 +12,7 @@
 //   +0x98, Groups +0x9c, PairContractions +0xa8.
 // Shape: nothing is user-written: the three C3DVector assignments use the shared-destination form, the quadric is a 22-dword
 //   `rep movsd`, the trees call their own operator=. A one-line assignment in the TU makes VC emit it.
-class C3DVector { public:                                 // engine C3DVector: user copy ctor, implicit assignment
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class T> struct less { };
 template <class T> struct allocator { };

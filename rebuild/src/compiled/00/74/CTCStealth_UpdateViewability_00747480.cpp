@@ -1,5 +1,6 @@
 // CTCStealth::UpdateViewability() -- the owner is viewable, except while sneaking in an engine theme whose def's stealth factor (+0x88) exceeds 1e-4
 // Leaf: UpdateViewability
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00747480, length 119 bytes.
 // Callees: CThing::GetPos @ 0x004C73D0 (returns const C3DVector&; manifest label "CVertexBufferWin32::DoSizeof" is propagated),
 // CTCBase::GetWorldMap @ 0x00686D30, CWorldMap::GetStrongestEngineThemeAt(const C3DVector&, long*) @ 0x0063ADF0, CTCBase::GetDefinitionManager
@@ -8,7 +9,7 @@
 // Layout: CTCStealth Viewable +0x0C, Sneaking +0x0F (retail = PDB); engine theme def float at +0x88.
 // Shape: the position is a named reference local (GetPos runs before the pushes); the def pointer's null-safe dtor merges with the
 // `if (def.Object)` test; `value > 1e-4f` gives `fcomp ; test ah,41h ; jne`.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };

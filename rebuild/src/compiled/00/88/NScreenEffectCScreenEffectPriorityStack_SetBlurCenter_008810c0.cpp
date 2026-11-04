@@ -1,6 +1,7 @@
 // NScreenEffect::CScreenEffectPriorityStack::SetBlurCenter(CRadialBlurEntry* entry, const C3DVector& center) -- sets posparam.BlurCenter (+0x4c) of an entry still in RadialBlurKeys
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008810C0, length 71 bytes.
 // Leaf: ?SetBlurCenter@CScreenEffectPriorityStack@NScreenEffect
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail bytes: as 0x00881010 with `add eax,4Ch`
 // Callees: the RadialBlurKeys/DisplacementKeys set's find @ 0x008839E0 (iterator through the hidden result) and erase(key) @ 0x00884710.
 // Caller: CEnvironmentSpellEffectInterpolator (its priority stack at +0x90, 0x006B82E0..0x006B83A0).
@@ -16,9 +17,7 @@
 // The entry argument is a derived-entry pointer: binding it to the set's `CStackEntry* const&` key makes a
 // conversion temporary, which VC7.1 homes in the argument's own (now dead) slot -- the retail
 // `mov [esp+N],eax` that stores the argument back over itself before `lea` passes its address.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() {}

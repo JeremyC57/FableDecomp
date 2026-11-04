@@ -1,13 +1,10 @@
 // CEngineInternalPrimitiveParticleLine::GetWorldPosition(C3DVector& position) -- the line's midpoint: half of (start + end) with the start at +0x48 and the end at +0x54; always true
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC3D50, length 88 bytes (96 with padding).
 // Callees: none. Constant 0.5 (0x0122F59C). Shape: the three sums are built into a 12-byte local (Z parked at +0x14), the scaled vector is a second, named local
 // (+0 .. +0x8) copied word by word into the argument (the implicit bitwise assignment through ecx/edx), `mov al,1` is the bool. The two vectors have no PDB
 // layout for this class and are modelled locally.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 struct CEngineInternalPrimitiveParticleLine {
     unsigned char _pad[0x48];

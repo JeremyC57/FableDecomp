@@ -1,5 +1,6 @@
 // CTCHighlightItem::`scalar deleting destructor'(unsigned int) -- its vtable, DoStopRunning, ~PParticleEmitter, ~CTCBase, free for flag bit 0
 // Leaf: ??_GCTCHighlightItem
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe 0x0077D140, 51 bytes; CTCHighlightItem vtable 0x0126AF14 slot 0 (rtti-vtables.tsv). The
 // manifest label "CThingTrackNode::`vector_deleting_destructor'" is propagated.
 // Callees: CTCHighlightItem::DoStopRunning 0x0077CCA0 (the destructor body), CBaseIntelligentPointer::
@@ -39,7 +40,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CTCHighlightItem : CTCBase {
     bool                StartRunning;                    // +0x0c

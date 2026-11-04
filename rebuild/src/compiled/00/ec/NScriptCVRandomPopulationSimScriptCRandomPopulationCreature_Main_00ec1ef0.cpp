@@ -1,5 +1,6 @@
 // NScript::CV_RandomPopulationSimScript::CRandomPopulationCreature::Main() -- a randomly populated creature: register an alive-filter over Me; the first time through, attach Me to its village ("PopulationVillageEvil" for type 2, "PopulationVillageGood" for types 0/1) when that village is alive; make Me non-persistent, take it under scripted control and walk it to its exit point until within 2 units; then (non-evil types) lower the current region's population scale by 0.05 clamped to [0,1], remove Me and idle
 // Leaf: ?Main@CRandomPopulationCreature@CV_RandomPopulationSimScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EC1EF0, length 836 bytes, plain `ret`.
 // Callees: CIsThingAlive (vtable 0x012C32F0) over the CScriptThing copy ctor 0x004ABE90, ~CIsThingAlive 0x00E241B0,
 // RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30; CScriptThing::IsAlive 0x004AB130 (devirtualised on a
@@ -19,7 +20,7 @@
 // Naming wave 35: identity reg 00ec1959 "RandomPopulationVillager" in 00ec1910; Alloc 00ec1b70; vtable 012f1390 slot 1; PDB ?Main@CRandomPopulationCreature@CV_RandomPopulationSimScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CRandomPopulationCreature::Main (wave3/labels_alloc.tsv); PDB ?Main@CRandomPopulationCreature@CV_RandomPopulationSimScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CRandomPopulationCreature@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CV_RandomPopulationSimScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

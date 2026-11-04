@@ -1,17 +1,13 @@
 // CWorldMap::PointIsWithinCellBL(const C3DVector*, const C3DVector*) -- point lies in the cell's bottom-left triangle
 // Leaf: PointIsWithinCellBL
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x000063b9b0, 0x79 bytes (world-map theme/height TU). Mangled ?PointIsWithinCellBL@CWorldMap@@IBE_NPBVC3DVector@@0@Z.
 // Same shape as PointIsWithinCellTL (0x0063B920): __ftol2 (0x00BFEA70) truncation of the point's X/Y must equal the
 // cell corner (truncated X compared on the left so VC7.1 stores and reloads it from the dead first-parameter
 // slot), then the fractional parts fx, fy are tested: fx < fy (`test ah,41h ; jne` on dy vs dx). `return a && b && c` gives the int-valued exits.
 // Name note: the four cell rows carry propagated TL/BR labels; the name here is inferred from the triangle tested
 // (origin corner = TL, y growing down), so the landing session should confirm it against the PDB symbol order.
-class C3DVector
-{ public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CWorldMap
 {

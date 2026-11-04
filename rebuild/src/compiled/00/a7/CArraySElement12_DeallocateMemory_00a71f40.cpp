@@ -1,5 +1,6 @@
 // CArray<C3DVector>::DeallocateMemory() -- releases the storage of an array of 3D vectors.
 // Leaf: ?DeallocateMemory@?$CArray@VC3DVector@@@@QAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A71F40, length 90 bytes.
 // Callees: STLport __copy<C3DVector*, C3DVector*, int> 0x0074CA20 (__fastcall: first in ecx, last in edx, result + the
 //          iterator category tag + the Distance* on the stack), free 0x00BFEA14.
@@ -18,7 +19,7 @@
 // store is not eliminated as dead (plain stores let the compiler reorder/elide both).
 extern "C" void __cdecl free(void* p);                                           // 0x00BFEA14
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };

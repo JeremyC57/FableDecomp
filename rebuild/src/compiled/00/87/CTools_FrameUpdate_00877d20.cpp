@@ -1,5 +1,6 @@
 // CTools::FrameUpdate() -- rescans the things around the camera: clears ScanThings and refills it with every game object in the 20x20 world-square box centred on the camera's (integer) world position
 // Leaf: FrameUpdate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00877D20, length 106 bytes, `ret`. Called from
 // CGameCameraManager::Update (0x0069B7E9) on CamTools at +0x78, so the catalog class is right.
 // Callees: __ftol2 @ 0x00BFEA70 (x2), the ScanThings vector's erase(first, last) @ 0x00738D70 (inline clear()),
@@ -9,7 +10,7 @@
 // (CCamera, WorldPosition first) +0x04, World +0x74; CWorld::PThingSearchTools +0x20.
 // Shape: the search tools pointer is read first (a named local), the box is a C2DBoxI temporary built from the
 // two truncated coordinates, the filter an empty object in the frame.
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 struct C2DVectorI {
     long x, y;
     C2DVectorI(long ax, long ay) : x(ax), y(ay) { }
@@ -66,8 +67,8 @@ struct CTools {
 void CTools::FrameUpdate()
 {
     CThingSearchTools* search = CameraManager->World->PThingSearchTools.get();
-    long x = (long)CameraManager->Camera.WorldPosition.x;
-    long y = (long)CameraManager->Camera.WorldPosition.y;
+    long x = (long)CameraManager->Camera.WorldPosition.X;
+    long y = (long)CameraManager->Camera.WorldPosition.Y;
     C2DBoxI box(x - 10, y - 10, x + 10, y + 10);
     ScanThings.clear();
     CThingFilter_None filter;

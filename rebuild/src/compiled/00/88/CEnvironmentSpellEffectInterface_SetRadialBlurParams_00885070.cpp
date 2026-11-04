@@ -1,4 +1,5 @@
 // CEnvironmentSpellEffectInterface::SetRadialBlurParams(const C3DVector& threshold, float length, const C3DVector& intensity, float fade, float range, float twist, bool interpolate) -- build a radial-blur parameter block (opaque threshold and intensity colours) and store it as the current parameters, and also as the previous frame's when not interpolating
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00885070, 149 bytes (+ int3 padding).
 // Callees: none. Constant: 0x3F800000 = 1.0f (both colour alphas, stored as immediates).
 // Layout (Ego_r.pdb, matches retail): CEnvironmentSpellEffectInterface { CEnvironment* Environment +0; CRadialBlurParams
@@ -6,7 +7,7 @@
 //   CRadialBlurParams PrevFrameRadialBlurParams +0x84 }. Modelled locally (no generated header for the class).
 // Shape: the block is built in a 0x30-byte frame local and copied twice with `rep movsd` (12 dwords) -- a POD
 //   assignment; the bool is tested once, before the first copy (the flags survive `rep movsd`).
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 class CRGBFloatColour { public: float R, G, B, A; };
 
@@ -34,13 +35,13 @@ void CEnvironmentSpellEffectInterface::SetRadialBlurParams(const C3DVector& thre
                                                            float fade, float range, float twist, bool interpolate)
 {
     CRadialBlurParams params;
-    params.ThresholdColour.R = threshold.x;
-    params.ThresholdColour.G = threshold.y;
-    params.ThresholdColour.B = threshold.z;
+    params.ThresholdColour.R = threshold.X;
+    params.ThresholdColour.G = threshold.Y;
+    params.ThresholdColour.B = threshold.Z;
     params.ThresholdColour.A = 1.0f;
-    params.IntensityColour.R = intensity.x;
-    params.IntensityColour.G = intensity.y;
-    params.IntensityColour.B = intensity.z;
+    params.IntensityColour.R = intensity.X;
+    params.IntensityColour.G = intensity.Y;
+    params.IntensityColour.B = intensity.Z;
     params.IntensityColour.A = 1.0f;
     params.Length = length;
     params.Fade = fade;

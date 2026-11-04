@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::DatabaseSerialise(CPersistContext& context, bool) -- persist the two flags, the offset count (the arrays sized to at least the initial spline's point count), each offset limit/speed by indexed name, then snapshot or clear the previous spline
 // Leaf: DatabaseSerialise@CSplineRandomOffsetData
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B21E90, 624 bytes, `ret 8`.
 // Callees: CPersistContext::Transfer<bool> 0x004045C0, Transfer(name, long&, const long&) 0x00410BE0,
 //   Transfer(name, C3DVector&, const C3DVector&) 0x004859AD, CArray<C3DVector>::resize 0x0075C040,
@@ -14,11 +15,7 @@
 //   idiom: the name chain is built before the value/default pushes), each element goes through `*(begin() + i)` so the
 //   array start is read first, and the loop is `if (i < count) { two zero defaults; do ... while (++i < count); }`
 //   (the six zero stores sit once inside the guard). The size is `count > size ? count : size` (retail `cmp ; jg`).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 
 class CCharStringData;
 class CCharString { public:

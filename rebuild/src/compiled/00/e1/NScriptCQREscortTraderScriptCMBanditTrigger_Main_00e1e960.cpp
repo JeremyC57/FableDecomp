@@ -1,5 +1,6 @@
 // NScript::CQR_EscortTraderScript::CM_BanditTrigger::Main() -- escort-trader bandit trigger: once the trader follows the hero and the trigger has not fired,
 // Leaf: ?Main@CM_BanditTrigger@CQR_EscortTraderScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   find the spawn point named by Me's data string, wait for the hero within 5, wait until the spawn point is off screen
 //   (a 3-tick timer re-checks it), spawn a random escort bandit type there as "AttackingBandit", give it the item named by
 //   the spawn point's data string (unless "" or "NULL"), mark the trigger fired and remove the trigger.
@@ -21,7 +22,7 @@
 // Naming wave 35: identity reg 00e1e159 "M_BanditTrigger" in 00e1e110; Alloc 00e1e880; vtable 012e1538 slot 1; PDB ?Main@CM_BanditTrigger@CQR_EscortTraderScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CM_BanditTrigger::Main (wave3/labels_alloc.tsv); PDB ?Main@CM_BanditTrigger@CQR_EscortTraderScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CM_BanditTrigger@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQR_EscortTraderScript moved into NScript); same bytes.
 extern "C" int __cdecl rand();                          // 0x00BFEB16
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

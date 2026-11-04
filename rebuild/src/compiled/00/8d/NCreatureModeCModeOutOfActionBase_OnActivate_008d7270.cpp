@@ -1,5 +1,6 @@
 // NCreatureMode::CModeOutOfActionBase::OnActivate() -- knocked out of action: set the recovery countdown in frames, suspend the creature's animation in state 1, spawn the mode's particle emitter at the head when the creature allows effects, start the derived mode's anim, then the stand-mode activation
 // Leaf: OnActivate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D7270, 171 bytes (`ret`; vtable 0x0126743C slot 5).
@@ -26,10 +27,7 @@ class CThing : public CThingAICreature { public:
     unsigned char m_flags6c;               // +0x6c bit 3: effects allowed
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 
 C3DVector __fastcall GetHeadPosWithOffset(CThing* thing);   // 0x0085EE50
 class CTCDParticleEmitter { public:

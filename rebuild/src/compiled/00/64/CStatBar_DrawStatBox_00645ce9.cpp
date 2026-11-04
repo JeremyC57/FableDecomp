@@ -1,5 +1,6 @@
 // NPlayerGui::CStatBar::DrawStatBox(const CEnginePrimitivePrepareInfo& info, const CGraphicDataBank& bank, const C2DVector& pos, long graphic, long value, long effect, const CWideString& text, unsigned char alpha, bool withText, bool flag) -- draw the box through the static helper, place the change text (right-aligned under the box when shown) and keep the box's particle effect alive at the text position
 // Leaf: DrawStatBox@CStatBar
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00645CE9, 578 bytes, `ret 28h`, frame-pointer size TU (`leave`).
 // Callees: the static DrawStatBox 0x00645853 (__fastcall: info in ecx, handles in edx), PeekGuiDef 0x00438570 (__fastcall),
@@ -20,10 +21,7 @@ class C2DVector { public:
     C2DVector& operator+=(const C2DVector& o) { X += o.X; Y += o.Y; return *this; }
 };
 inline C2DVector operator+(const C2DVector& a, const C2DVector& b) { return C2DVector(a.X + b.X, a.Y + b.Y); }
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward);   // 0x00487050

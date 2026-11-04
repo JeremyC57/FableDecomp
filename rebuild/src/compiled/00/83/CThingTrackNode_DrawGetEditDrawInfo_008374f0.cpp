@@ -1,5 +1,6 @@
 // CThingTrackNode::DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const -- the physical-thing editor draw info, coloured blue (R 128, G 128, B 255, A 255), named "TrackNode" and without an effect radius
 // Leaf: ?DrawGetEditDrawInfo@CThingTrackNode
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008374F0, length 128 bytes (`ret 8`). Vtable CThingTrackNode 0x01272CE4
 // slot 25 (manifest "vfunc_25").
 // Callees: CThingPhysical::DrawGetEditDrawInfo @ 0x006A4E90, CCharString::CCharString(const char*, long) @ 0x0099EBF0
@@ -30,7 +31,7 @@ class CRGBColour { public:
         A = a;
     }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CEditEngineDrawInfo { public:
     C3DVector   Pos;                            // +0x00
     float       Radius;                         // +0x0c

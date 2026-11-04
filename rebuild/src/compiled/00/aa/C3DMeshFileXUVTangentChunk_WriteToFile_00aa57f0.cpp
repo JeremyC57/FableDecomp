@@ -5,6 +5,7 @@
 // is empty; sizes are signed pointer differences divided by 12 (the 0x2AAAAAAB multiply), byte counts Size()*12.
 // Layout: UTangents +0x10, VTangents +0x1c (retail CArray is 12 bytes; PDB header has +0x10/+0x20).
 // Leaf: ?WriteToFile@C3DMeshFileXUVTangentChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Model: the shared C3DMeshFile*Chunk retail model of the landed 0x00AA58C0 / 0x00AA4C00.
 class CCharString { public:
     CCharString();                                      // 0x0099E4B0 default
@@ -14,7 +15,7 @@ class CCharString { public:
     void* m_pStringData;                                // CCharStringData*
 };
 
-class C3DVector  { public: float X, Y, Z; };                   // trivial default constructor (retail leaves it uninitialised)
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:                                     // 48 bytes: three axis vectors and the position, copied with rep movsd
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }

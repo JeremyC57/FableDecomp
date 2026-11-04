@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& area, const filter_type& filter, const comparator_type& compare, thing_type** out) const -- choose the preferred matching thing across mapwho cells once per search stamp.
 // Leaf: ??$GetPBestThingInRoughArea@VCThingFilter_HasDefName@@VCThingCompare_Nearest@@VCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasDefName@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity: proven; own TavernKeeper::FillJug0x9690CD/filter HasDefName0x6A7BE0/comparator<CThing>0x4A8D80 and matching mutableCThing PDB instance.
 // Layout: the generic search model carries only this class type-mask tag; these three instantiations search CThing/const CThing. No CreatureBase object, field, sizeof, constructor or method is used, so its generated flattened full header layout is not asserted or accessed.
 // Layout: the generic search model carries only this class type-mask tag; these three instantiations search CThing/const CThing. No AICreature object, field, sizeof, constructor or method is used. FreshDeed invokes an external filter and keeps its tracked-creature member opaque; no generated full AICreature layout is asserted or accessed.
@@ -42,7 +43,8 @@ namespace std { struct __true_type { __true_type() {} }; }
 using std::__true_type;
 class CThingCreatureBase:public CThing { public: enum { TypeMask=0xF }; };
 class CThingAICreature:public CThingCreatureBase { public: enum { TypeMask=0x1F }; };
-class C3DVector { public: float X,Y,Z; }; class CThingCompare_Nearest { public: C3DVector Pos; template<class T> T* operator()(T*,T*) const; };
+#include "engine/C3DVector.h"
+class CThingCompare_Nearest { public: C3DVector Pos; template<class T> T* operator()(T*,T*) const; };
 class CCharStringData; class CCharString { public: CCharStringData* PStringData; };
 class CThingFilter_HasDefName { public: CCharString Name; bool operator()(const CThing&) const; };
 class CTCMapwho { public:

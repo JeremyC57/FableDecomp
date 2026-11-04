@@ -7,13 +7,11 @@
 // vtable store, interleaved by the scheduler with the pushes of the scoped name string. TargetPos is written at fixed offsets
 // (`mov [esi+114h]..`): C3DVector has a memberwise user copy constructor (the implicit copy re-bases the destination with `lea`).
 // Leaf: ??0CCreatureAction_TeleportOut@@QAE@PAVCThingCreatureBase@@ABVC3DVector@@_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // The PDB header (CCreatureAction_TeleportOut.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
 #include "fable_string.h"
 class CThingCreatureBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise copy constructor: fixed-offset word moves
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;   // 0x004C73D0
 };

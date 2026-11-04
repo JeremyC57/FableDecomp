@@ -1,5 +1,6 @@
 // NHitLocations::CPhysicalPrimitiveMesh::GetBoundingSphere(const CThing& thing, C3DVector& centre, float& radius) const -- a mesh primitive's bounding sphere is the thing's own physics bounding info
 // Leaf: ?GetBoundingSphere@CPhysicalPrimitiveMesh@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00815200, 25 bytes.
 // Name: FableWin.pdb ?GetBoundingSphere@CPhysicalPrimitiveMesh@NHitLocations@@UBEXABVCThing@@AAVC3DVector@@AAM@Z;
 // slot 11 of the vtable 0x0125B9B0 (rtti-vtables.tsv; the xref is that vtable slot, 0x0125B9DC).
@@ -9,9 +10,7 @@
 // Shape: a straight forward of the two out references to the component; the three argument loads
 // are all hoisted (radius, centre, thing), the pushes follow right to left, then `this` = thing->PhysicsTC.
 // `ret 0Ch`.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640

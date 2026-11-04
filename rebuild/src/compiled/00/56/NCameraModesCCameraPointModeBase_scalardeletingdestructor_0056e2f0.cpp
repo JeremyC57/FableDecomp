@@ -1,5 +1,6 @@
 // NCameraModes::CCameraPointModeBase::`scalar deleting destructor'(unsigned int) -- its vtable, ~PCameraPoint, the camera-mode base destructor, free for flag bit 0
 // Leaf: ??_GCCameraPointModeBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe 0x0056E2F0, 49 bytes; NCameraModes::CCameraPointModeBase vtable 0x0124DDDC slot 0
 // (rtti-vtables.tsv). The manifest label "CThingTrackNode::`vector_deleting_destructor'" is propagated.
 // Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer 0x00A01C10 (+0xa4), the camera-mode base
@@ -22,7 +23,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<C
     virtual void v00();
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace NCameraModes {
 

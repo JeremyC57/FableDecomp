@@ -1,6 +1,7 @@
 // NCameraModes::CPhysicsForceModelRigid::DoAttractToPoint() -- a rigid camera does not accelerate towards its attractors: it returns the first go-to attractor's position itself
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008FCE10, 35 bytes, `ret 4` (C3DVector through the hidden pointer).
 // Leaf: ?DoAttractToPoint@CPhysicsForceModelRigid@NCameraModes@@UAE?AVC3DVector@@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: vtable 0x01276AC8 slot 6, the CPhysicsForceModelBase::DoAttractToPoint slot (0x008FA800; the landed
 //       CPhysicsForceModelGotoOutsideSimple override 0x008FCBD0 sits in the same slot). The rigid model's other C3DVector
 //       slots 2-5 and 7 (0x008FCD70..0x008FCDF0) all return zero vectors.
@@ -9,11 +10,7 @@
 //         IncidentalAttractors follows at +0x28 (the base DoAttractToPoint walks [state+0x28]; NCameraModes::CBase::AddAttractorGoTo
 //         0x0084E1A0 pushes onto [mode+0x78] = GoTo +0x24). The list node is {next, prev, pair} (data at +8).
 // Shape: front() = _M_node->_M_next->_M_data; the result built in the hidden slot by a memberwise user copy ctor (the implicit copy uses an extra esi temp).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 struct SAttractor {                                  // pair<C3DVector, float>
     C3DVector first;
     float     second;

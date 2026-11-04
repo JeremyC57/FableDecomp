@@ -1,5 +1,6 @@
 // NScript::CQ_TraderConflictEvilScript::CTC_GuardSpawnPoint::Main() -- trader-conflict guard spawner: once the quest start screen is done, while guards remain to be spawned, whenever few enough are alive (or too few exist) and the spawn point is off screen, spawn up to two guards (the type thinning out as the count falls, a rare sheriff), set them on the monsters faction with a red mini-map orb and the hero as target, then re-arm the spawn threshold
 // Leaf: ?Main@CTC_GuardSpawnPoint@CQ_TraderConflictEvilScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF7BF0, 917 bytes (+ int3 padding), plain `ret`.
 // Callees: IsActiveThreadTerminating 0x00F35B30; CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 /
 //   operator=(const char*) 0x0099EFE0 / ~ 0x0099EAE0; rand 0x00BFEB16; CScriptThing copy 0x004ABE90 / dtor 0x004AA840 /
@@ -14,7 +15,7 @@
 // Naming wave 35: identity reg 00df6060 "TC_GuardSpawnPoint" in 00df6010; Alloc 00df7b20; vtable 012de894 slot 1; PDB ?Main@CTC_GuardSpawnPoint@CQ_TraderConflictEvilScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CTC_GuardSpawnPoint::Main (wave3/labels_alloc.tsv); PDB ?Main@CTC_GuardSpawnPoint@CQ_TraderConflictEvilScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CTC_GuardSpawnPoint@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_TraderConflictEvilScript moved into NScript); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
 class CCharString;
-class C3DVector;
+#include "engine/C3DVector.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountBlock { long References; };
 template <class T> class CCountedPointer { public:                                // CCountedPointer<CScriptThing>: {Data, Info}
@@ -48,7 +49,6 @@ class CIsThingAlive:public CPredicateBase { public:
 }
 class C2DCoordI;
 class C2DVector;
-class C3DVector;
 class CCharString;
 class CRGBColour;
 class CRGBFloatColour;
@@ -925,7 +925,6 @@ struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : D
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748 (established spelling; naming wave 35: was g_bScriptAnimationFlag)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                       // 0x0143E8E0
 struct CScriptThingImp {
  virtual void i0(); virtual void i1(); virtual void i2(); virtual void i3(); virtual void i4(); virtual void i5();

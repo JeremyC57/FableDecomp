@@ -1,5 +1,6 @@
 // std::vector<CTCSmokeGenerator::CGenerationPos>::operator=(const vector& x) -- STLport assignment: if x is not *this, grow into a fresh block (malloc, copy-construct, then _M_clear the old one) when x is larger than the capacity, else assign over the live elements and destroy the surplus or copy-construct the tail; size becomes x.size()
 // Leaf: ??4?$vector@VCGenerationPos@CTCSmokeGenerator@@V?$allocator@VCGenerationPos@CTCSmokeGenerator@@@std@@@std@@QAEAAV01@ABV01@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00722f30, 311 bytes, thiscall, returns *this, `ret 4`.
 // Identity (proven): Ego_r.pdb ??4?$vector@VCGenerationPos@CTCSmokeGenerator@@...@QAEAAV01@ABV01@@Z; its only reference is the tail jump of 0x00722570, which copies CTCSmokeGenerator::GenerationDistance (+0x0C) and then assigns CTCSmokeGenerator::GenerationPositions (vector<CGenerationPos>, +0x10) -- the CTCSmokeGenerator assignment; the element is 20 bytes (C3DVector + CIntelligentPointer<CThing>).
 // Callees: malloc 0x00BFEA0E, __uninitialized_copy<const T*, T*>(first, last, result, const __false_type&) 0x00722C30,
@@ -105,10 +106,7 @@ vector<_Tp, _Alloc>& vector<_Tp, _Alloc>::operator=(const vector<_Tp, _Alloc>& _
     return *this;
 }
 }
-class C3DVector {
-public:
-    float X, Y, Z;                                        // +0x00
-};
+#include "engine/C3DVector.h"
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                           // 8 bytes (Ego_r.pdb): vptr, PData
 public:

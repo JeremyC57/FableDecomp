@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::~CTCPhysicsStandard() -- delete the owned physics mesh info, then (the implicit CTCPhysicsBase destructor) release PhysicsDef and run the CTCBase base destructor
 // Leaf: ??1CTCPhysicsStandard@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00723F90, 57 bytes, thiscall, tail `jmp ~CTCBase`.
 // Identity (proven): stores vtable 0x01265F84 first -- RTTI .?AVCTCPhysicsStandard@@ : CTCPhysicsBase : CTCBase
 //   (rtti-vtables.tsv / rtti_bases.tsv; its own slot-0 `??_G` 0x00724DE0 expands this body). The two callers are the slot-0
@@ -26,10 +27,7 @@ void __cdecl operator delete(void* block);              // 0x00BFE9BC
 class CThing;
 class CPhysicsDef;
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet {
 public:

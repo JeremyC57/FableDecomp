@@ -1,4 +1,5 @@
 // CScriptedMapBrush::SetThingToMove(unsigned __int64 thingID, const C3DVector& position, const C3DAngles& facingAngles) -- record where a thing should be moved to: ThingsToMove[id] gets the position, then the facing angles
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082EA50, 75 bytes (`?SetThingToMove@CScriptedMapBrush@@QAEX_KABVC3DVector@@ABVC3DAngles@@@Z`, Ego_r.pdb).
 // Callees: std::map<unsigned __int64, CThingPosAndOrientation>::operator[] @ 0x0082FB90 (key by const
 // reference: `lea eax,[esp+8] ; push eax` is the address of the by-value id argument), called twice.
@@ -10,9 +11,7 @@
 // vector Cells before it is 16 bytes, the retail one 12), so the members are modelled locally with the
 // header's names. CThingPosAndOrientation (PDB, 24 bytes): C3DVector Position +0, C3DAngles FacingAngles +0xC.
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C3DAngles { public:
     float X, Y, Z;

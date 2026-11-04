@@ -1,5 +1,6 @@
 // std::list<CWeaponTrailEntry>::insert(iterator pos, const CWeaponTrailEntry& x) -- STLport single-element list insert: malloc a node, copy the 28-byte weapon-trail entry into it, link it in before pos and return an iterator to it
 // Leaf: ?insert@?$list@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076FC60, 91 bytes, thiscall `ret 0Ch` with `this` never read (hidden
 //   iterator result, pos by value, &x).
 // Callee: malloc @ 0x00BFEA0E (STLport's node allocator: allocate(1) = malloc(0x24), no out-of-memory test).
@@ -14,11 +15,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
-class C3DVector {                                       // user memberwise copy: the entry copies as seven dword moves
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CEnginePrimitiveWeaponTrail {
 public:

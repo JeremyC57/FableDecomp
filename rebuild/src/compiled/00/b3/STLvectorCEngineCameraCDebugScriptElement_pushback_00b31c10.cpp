@@ -1,5 +1,6 @@
 // std::vector::push_back(const CDebugScriptElement& x) -- STLport push_back of the camera's debug-script element vector: placement-copy at _M_finish when there is room, else _M_insert_overflow @ 0x00B31B10 (one element, at the end)
 // Leaf: ?push_back@?$vector@UCDebugScriptElement@CEngineCamera@@@std@@QAEXABUCDebugScriptElement@CEngineCamera@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B31C10, length 94 bytes, thiscall `ret 4`.
 // Identity: the only caller is the landed CEngineCamera::ConsoleAddDebugScript 0x00B317A0 (call 0x00B31830), pushing one
 //   CEngineCamera::CDebugScriptElement onto DebugScript (+0x208); the callee is the landed
@@ -16,11 +17,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E (alloc
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14 (allocator, unused here)
 inline void* __cdecl operator new(unsigned int, void* where) throw() { return where; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CEngineCamera {
 public:

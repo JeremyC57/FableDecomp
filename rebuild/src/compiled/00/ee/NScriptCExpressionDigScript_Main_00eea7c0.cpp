@@ -1,5 +1,6 @@
 // NScript::CExpression_DigScript::Main() -- the hero "dig" expression quest: register a conscious-hero predicate, mark the quest persistent, wait until the hero is player-controlled, take the hero under scripted control, then inside a cutscene/movie sequence fade out, sheathe weapons, give the hero the spade, play the digging idle loop, look for the nearest enabled digging spot within 3m (face it if found), dig, play the success or failure animation, fade, restore the weapon the hero was wielding, reset the camera, hand over the spot's contents if found and deactivate this quest later
 // Leaf: ?Main@CExpression_DigScript@NScript@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EEA7C0, length 1506 bytes (+ int3 padding), no EH frame.
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 / IsAlive 0x004AB130, Is2DDistanceBetweenThingsUnder 0x00CBE371 (__fastcall),
 //   CScriptBase::SetPredicate 0x00CB7920 / IsActiveThreadTerminating 0x00CB7940, CBaseObject ctor 0x0099A380, scripted-thing dtor 0x007E74D0,
@@ -24,7 +25,7 @@ class CRGBColour { public:
     __forceinline CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) { }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CScriptThing { public:                                      // 12 bytes: vfptr + PImp
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

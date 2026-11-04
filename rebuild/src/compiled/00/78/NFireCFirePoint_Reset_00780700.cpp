@@ -1,5 +1,6 @@
 // NFire::CFirePoint::Reset() -- kill the live fire and singe effects; when the point was burning, spawn the "Flaming_Hands_Die" effect at the parent's position and attach its particle emitter to the parent's helper point; the point stops burning
 // Leaf: Reset
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00780700, length 249 bytes (+ int3 padding), plain `ret`.
 // Signature from Ego_r.pdb: ?Reset@CFirePoint@NFire@@QAEXXZ.
@@ -15,7 +16,7 @@
 //   own block; the emitter lookup is `T* p = 0; if (HasTC(k)) p = GetTC(k);` (the preloaded `xor ecx,ecx`) and is used
 //   unchecked; GetTC is `__forceinline` with a map pointer local (`add edi,44h`, `this` stays in esi) and the end/hit
 //   choice as one ternary (the component lands straight in ecx); the Burning clear sits after the join.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0

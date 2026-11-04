@@ -1,6 +1,7 @@
 // C3DMeshFileTrianglesChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const -- the triangle count, the three 16-bit indices of every triangle, then the super-chunk's children
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABBF30, length 131 bytes.
 // Leaf: ?WriteToFile@C3DMeshFileTrianglesChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: 0x00993EA0 CDataOutputStream::WriteULong, 0x00993E80 CDataOutputStream::WriteUShort (writes 2 bytes
 // through slot 4), 0x00AA78C0 CChunkedFileSuperChunk::WriteToFile.
 // Shape: Triangles is a retail CArray (three pointers) of 6-byte index triples at +0x2c, so the count is the
@@ -21,7 +22,7 @@ class CCharString { public:
     void* m_pStringData;                                // CCharStringData*
 };
 
-class C3DVector  { public: float X, Y, Z; };                   // trivial default constructor (retail leaves it uninitialised)
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:                                     // 48 bytes: three axis vectors and the position, copied with rep movsd
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }

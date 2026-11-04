@@ -1,4 +1,5 @@
 // CTCShapeManager::InitialiseFrom(const CTCShapeManager* other) -- rebuild this manager's persistent shapes as basic shapes over copies of the other manager's point lists
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00762AB0, 230 bytes (`ret 4`).
 // Callees: vector<C3DVector> copy constructor @ 0x006F0810 (twice: the frame copy, then the shape's own list), operator new
 // @ 0x00BFEA1A (the 0x2c-byte shape, then the 12-byte count block), free @ 0x00BFEA14 (the frame copy's storage),
@@ -13,7 +14,7 @@
 #include <stddef.h>
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 void* operator new(size_t size);                    // 0x00BFEA1A
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CPointVector {                               // STLport vector<C3DVector>
     C3DVector* _M_start; C3DVector* _M_finish; C3DVector* _M_end_of_storage;
     CPointVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }

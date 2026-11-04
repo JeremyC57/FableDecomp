@@ -1,5 +1,6 @@
 // std::vector::vector(const vector& __x) -- (vector<std::pair<C3DVector, C3DVector> >) STLport copy constructor: allocate size() elements, uninitialized-copy the source into them
 // Leaf: ??0?$vector@U?$pair@VC3DVector@@V1@@std@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076FB00, 104 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: std::vector<std::pair<C3DVector, C3DVector> >::vector(const vector&) -- proven; evidence: its callers are the push_back/insert/fill helpers of vector<vector<pair<C3DVector, C3DVector> > > (0x00770BB0, 0x00770CD0, 0x0076FCE0, 0x0076FD10) and 0x0076EA60, which loops over the weapon trails, fills a local vector<pair<C3DVector,C3DVector> > through 0x0076E4D0 and push_backs a copy into its out-parameter: CTCWeaponTrail::GetAllTrailsLastWeaponTrailPoints(vector<vector<pair<C3DVector,C3DVector> > >&) const (Ego_r name set), called from CTCMeleeTrap::PerformPossibleTrapDamage 0x0078891D; its element copy 0x0076F8E0 moves six dwords (two C3DVectors).
 //   Family G068 (STLport vector copy constructors of 12/20/24-byte class elements; catalogue label "std::vector<uint[6]>::vector" is
@@ -9,7 +10,7 @@
 // Shape: STLport 4.6 verbatim: _Vector_base(__x.size(), __x.get_allocator()) zero-initialises the three pointers before the
 //   allocation; the __false_type tag (_IsPODType of a class element) is homed in the dead __x argument slot.
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
-class C3DVector { public: float X, Y, Z; };               // 12 bytes
+#include "engine/C3DVector.h"
 namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> class allocator {

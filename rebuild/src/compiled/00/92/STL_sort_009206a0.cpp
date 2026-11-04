@@ -1,5 +1,6 @@
 // std::sort(const CThingObject** first, const CThingObject** last, CThingCompare_Nearest comp) -- STLport sort of a const CThingObject* range nearest-first: introsort to depth 2*lg(n), then the final insertion sort
 // Leaf: ??$sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Element (sweep3, FINDINGS "Family pass 2" G015): the sorted range is const CThingObject* -- the caller
 //   CAIStateGroup_TestTestTest::Update 0x0091F140 fills it with GetAllThingsInRoughArea 0x00920200 (type mask 0x807 =
 //   CThingObject) before sort 0x009206A0, and FableWin.pdb has sort<vector<const CThingObject*>, CThingCompare_Nearest> /
@@ -22,11 +23,7 @@
 // Shape: the landed 0x007A4260 body: `if (first != last) { __introsort_loop(first, last, (T*)0, __lg(last - first) * 2,
 //   comp); __final_insertion_sort(first, last, comp); }`, __lg as the shift-count loop.
 #pragma pack(push, 1)
-class C3DVector {                               // retail: byte-packed, memberwise user copy ctor
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CThingObject;

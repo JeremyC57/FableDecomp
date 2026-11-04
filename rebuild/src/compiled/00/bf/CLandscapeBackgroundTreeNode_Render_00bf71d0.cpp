@@ -1,5 +1,6 @@
 // CLandscapeBackgroundTreeNode::Render(unsigned long flags) -- cull the node's box against the camera's four frustum planes (the box corner picked by each normal's sign); a culled node marks its tree invisible unless it already is; a visible leaf patch renders, a visible split branch renders both halves and is visible when either half is (or invisible-and-updated when both halves were updated invisible); the node then records the result
 // Leaf: Render@CLandscapeBackgroundTreeNode
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF71D0, length 403 bytes (`ret 4`).
 // Callees: itself (both branch halves, flags 0), CLandscapeBackgroundPatch::Render(bool, long*, bool*) @ 0x00BE7BE0,
 //   MarkTreeAsInvisibleLastFrame @ 0x00BF6A30 (landed); the sub node's IsPatch (slot 4) through the inline GetPatch /
@@ -9,7 +10,7 @@
 //   frustum planes at +0x1c0 (as the landed sources name it); 0x0122DEDC = 0.0f.
 // Shape: the plane normal is read into three named float locals (kept on the x87 stack: `fld st(2)` for each sign test and
 //   `fmul st(n)`); the cull result is a `visible` flag set before `break`, so the invisible branch is the else-arm at the end.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector Min, Max; };
 class CPlane { public: C3DVector Normal; float D; };
 class CEngineCamera { public:

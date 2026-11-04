@@ -1,5 +1,6 @@
 // std::__introsort_loop(RandomAccessIter first, RandomAccessIter last, T*, int depth_limit, CKeyPairCompareLess comp) -- (pair<unsigned long, C3DHelperPoint>) STLport introsort driver of the helper-point table: median-of-three partitions down to 16-entry runs, partial_sort once the depth limit runs out
 // Leaf: ??$__introsort_loop@PAU?$pair@KVC3DHelperPoint@@@std@@U12@HV?$CKeyPairCompareLess@KVC3DHelperPoint@@@@@std@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A34B00, 256 bytes, /Gr __fastcall (first ecx, last edx; (T*)0, depth_limit
 //   and the empty comparator on the stack), `ret 0Ch`.
 // Identity (proven): STLport 4.6 std::__introsort_loop<pair<unsigned long, C3DHelperPoint>*, pair<..>, int,
@@ -15,11 +16,7 @@
 //   0x00A329B0, itself.
 // Shape: STLport 4.6 _algo.c verbatim, as the landed sibling 0x00A35490 (mesh-volume table): __median inline, the pivot
 //   built in the argument area by pair's user copy constructor, partial_sort inline to __partial_sort.
-class C3DVector {                                                       // 12 bytes, pack(1) in retail
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DHelperPoint {                                                  // 16 bytes (Ego_r.pdb)
 public:

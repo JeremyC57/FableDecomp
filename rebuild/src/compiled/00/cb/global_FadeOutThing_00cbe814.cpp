@@ -1,5 +1,6 @@
 // FadeOutThing(CScriptThing& thing, float seconds, float targetAlpha) -- fade the thing's alpha down from 1 until it reaches targetAlpha, in steps of 1/(seconds*15) per script frame
 // Leaf: ?FadeOutThing@@YIXAAVCScriptThing@@MM@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBE814, 107 bytes (`ret 8`).
@@ -16,10 +17,7 @@ class CCharString {
 public:
     void* m_pStringData;
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

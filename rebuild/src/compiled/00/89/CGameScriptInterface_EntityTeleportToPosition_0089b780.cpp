@@ -1,5 +1,6 @@
 // CGameScriptInterface::EntityTeleportToPosition(const CScriptThing& thing, const C3DVector& pos, float angle, bool keepOnGround, bool fade) const -- teleport a scripted thing: the hero across maps through a move-hero-to-region game event, otherwise place it directly (snapping a walker onto walkable ground, resetting perception and the camera) and set its heading
 // Leaf: ?EntityTeleportToPosition@CGameScriptInterface@@UBEXABVCScriptThing@@ABVC3DVector@@M_N2@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0089B780, 943 bytes, /GS (cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9), `ret 0x14`.
 // Callees: CWorldMap::GetRegionNumberMapIsIn 0x004FC190 / StartMovePlayerPos 0x00502500 / 0x005064B0 (manifest label propagated), CMemoryBuffer::Copy
@@ -81,7 +82,7 @@ __declspec(noinline) STCEntry_Retail* CTCMap_Retail::LowerBound(const unsigned l
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 
-class C3DVector { public: float X, Y, Z; C3DVector() { } };
+#include "engine/C3DVector.h"
 #define VPAD1(a) virtual void a();
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
 #define VPAD4(a) VPAD2(a##0) VPAD2(a##1)

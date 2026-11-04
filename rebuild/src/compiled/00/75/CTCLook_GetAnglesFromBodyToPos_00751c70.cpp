@@ -1,4 +1,5 @@
 // CTCLook::GetAnglesFromBodyToPos(const C3DVector& pos, bool unused, float& angleXY, float& angleYZ) const -- the XY / YZ angle differences from the body facing to the direction head->pos, or to the recovery angles when there is no live parent creature or pos is the head position
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751C70, length 297 bytes (+ int3 padding), `ret 10h`; the second argument
 // (a bool, FableWin.pdb ?GetAnglesFromBodyToPos@CTCLook@@ABEXABVC3DVector@@_NAAM2@Z) is never read (its slot homes the
@@ -16,11 +17,7 @@
 #include <math.h>
 #pragma intrinsic(fabs)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \

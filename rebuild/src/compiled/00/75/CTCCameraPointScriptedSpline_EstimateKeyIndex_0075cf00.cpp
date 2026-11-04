@@ -1,4 +1,5 @@
 // CTCCameraPointScriptedSpline::EstimateKeyIndex() -- spread the key cameras evenly: each key's DeltaIndex is the even spacing 1/(n-1), divided by its duration in frames when it has one
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075CF00, length 220 bytes (+ int3 padding)
 // (?EstimateKeyIndex@CTCCameraPointScriptedSpline@@QAEXXZ). No calls.
 // Globals: 1.0f 0x0122DED8, 2^32 0x0122DCB4 (the unsigned-to-float fix-up), 15.0f 0x0124E640, 0.0f 0x0122DEDC.
@@ -6,7 +7,7 @@
 // Duration +0x28).
 // Shape: size() is re-evaluated (divide by 56) for the guard, the spacing and every loop test; `(float)(size() - 1)` converts an
 // unsigned value; the loop runs `i != size()` (jne) with the element reached as `*(begin() + i)`.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CTCCameraPointScriptedSpline_CKeyCamera {   // CTCCameraPointScriptedSpline::CKeyCamera, 0x38 bytes
     float     DeltaIndex;                       // +0x00
     C3DVector Pos;                              // +0x04

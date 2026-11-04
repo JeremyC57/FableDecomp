@@ -1,4 +1,5 @@
 // CEngineLandscapePatch::ClipPatch() -- tests the patch's bounding box against the first four planes of the engine camera's frustum; false as soon as the box lies wholly outside one plane
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF3860, length 140 bytes (144 with padding).
 // Globals: the engine camera singleton @ 0x01436EA0 (its frustum planes, 16 bytes each {nx, ny, nz, d},
 // start at +0x1C0; retail walks them with a pointer to the third word, edx = camera + 0x1C8), the 0.0f pool
@@ -8,9 +9,7 @@
 // (the z term is formed first: `pz*nz + py*ny + px*nx`) and compared with d; `dot > d` returns false.
 // `this` stays in ecx (no calls); the box min sits at +0x20, the max at +0x2C (a C3DBoundingBox-style
 // pair of 3-vectors inside the patch; the patch has no PDB header, so it is modelled locally).
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 
 struct CFrustumPlane {
     float nx, ny, nz, d;
@@ -36,9 +35,9 @@ bool CEngineLandscapePatch::ClipPatch()
         float nx = plane.nx;
         float ny = plane.ny;
         float nz = plane.nz;
-        float px = nx > 0.0f ? m_boxMin.x : m_boxMax.x;
-        float py = ny > 0.0f ? m_boxMin.y : m_boxMax.y;
-        float pz = nz > 0.0f ? m_boxMin.z : m_boxMax.z;
+        float px = nx > 0.0f ? m_boxMin.X : m_boxMax.X;
+        float py = ny > 0.0f ? m_boxMin.Y : m_boxMax.Y;
+        float pz = nz > 0.0f ? m_boxMin.Z : m_boxMax.Z;
         if (pz * nz + py * ny + px * nx > plane.d)
             return false;
     }

@@ -1,5 +1,6 @@
 // std::remove_copy(CTargetPoint* first, CTargetPoint* last, CTargetPoint* result, const CTargetPoint& val) -- STLport remove_copy: copy every target point that is not equal to val down to result, return the new end
 // Leaf: remove_copy
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00806D80, 144 bytes, `ret 8`: __fastcall (first ecx, last edx -- spilled to the `push ecx`
 // frame word -- result and the val reference on the stack). The catalog's `_Find<CTargetPoint*>` is the propagated
 // name: the body copies, it does not search. Call sites 0x008052B1, 0x00805307, 0x0080796E; the last is STLport
@@ -27,10 +28,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline bool operator==(const CIntelligentPointer& other) const { return GetPItem() == other.GetPItem(); }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint { public:

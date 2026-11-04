@@ -1,5 +1,6 @@
 // NScript::CV_ParanoidWhispersScript::CSecretWhisperingFriend::Main() -- the secret whispering man: look up "SecretWhisperingMan", take Me under scripted control, remove Me if the soul-mother quest is active, then while the quest stage (parent +0x48) is 5 give Me the hero as best enemy target, and while it is 1 walk Me back to its stored position and face the "M_SecretWhisperLookAtPos" marker
 // Leaf: ?Main@CSecretWhisperingFriend@CV_ParanoidWhispersScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Inline-split: exits wrapped individually; retail's construct is unproven
 // Identity (naming wave 11): ?Main@CSecretWhisperingFriend@CV_ParanoidWhispersScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F11F8 slot 1 is stored by the factory 0x00EC0A50 registered as "SecretWhisperingFriend"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EC0BA0, 1114 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
@@ -13,7 +14,7 @@
 // Naming wave 35: identity reg 00ebf030 "SecretWhisperingFriend" in 00ebef80; Alloc 00ec0a50; vtable 012f11f8 slot 1; PDB ?Main@CSecretWhisperingFriend@CV_ParanoidWhispersScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CSecretWhisperingFriend::Main (wave3/labels_alloc.tsv); PDB ?Main@CSecretWhisperingFriend@CV_ParanoidWhispersScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

@@ -1,6 +1,7 @@
 // CPersistContext_TransferableComponent<C3DVector>::TransferIn(CPersistContext& context, CStringParser& parser) -- parses the vector from the string parser through a CPersistTraits<C3DVector> whose DefaultVal is the zero vector
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0048531E, length 42 bytes.
 // Leaf: ?TransferIn@?$CPersistContext_TransferableComponent
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callee: 0x009E84D0 CPersistTraits<C3DVector>::TransferIn(CPersistContext&, CStringParser&, C3DVector*) (thiscall,
 // `ret 0Ch`; manifest-named).
 // Label correction: the manifest calls this "CPersistContext_TransferableComponent<float>::TransferIn"; the method is
@@ -17,10 +18,7 @@ class CPersistContext;
 class CStringParser;
 class CCharString;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<C3DVector> {

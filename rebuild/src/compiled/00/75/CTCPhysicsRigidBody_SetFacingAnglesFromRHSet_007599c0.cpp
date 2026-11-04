@@ -1,5 +1,6 @@
 // CTCPhysicsRigidBody::SetFacingAnglesFromRHSet(const CRightHandedSet& rh_set) -- store the rigid body's right-handed set and mark it as moving
 // Leaf: ?SetFacingAnglesFromRHSet@CTCPhysicsRigidBody@@UAEXABVCRightHandedSet@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007599C0, 56 bytes (vtable 0x0126996C slot 74, rtti-vtables.tsv; the only reference is
 //   that slot, 0x01269A94).
 // Identity (proven): slot 74 / 75 hold two byte-identical bodies, 0x007599C0 / 0x00759A00, in both CTCPhysicsRigidBody
@@ -31,7 +32,7 @@ template <class _Tp, class _Alloc> class _Vector_base { public:
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> { };
 } // namespace std
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CThing;
 class CThingPhysicsMeshInfo;

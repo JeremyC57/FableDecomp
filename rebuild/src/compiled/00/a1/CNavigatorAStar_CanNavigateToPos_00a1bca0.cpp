@@ -1,5 +1,6 @@
 // CNavigatorAStar::CanNavigateToPos(const C3DVector& from, const C3DVector& to, float radius, bool useLastNavigable) const -- find the quad-tree nodes under both positions (replacing a blocked start node by the last navigable node or the nearest navigable one within 4 m, and a blocked end node by the nearest navigable one that still reaches within the radius) and report whether both are navigable and their regions are connected
 // Leaf: ?CanNavigateToPos@CNavigatorAStar@@UBE_NABVC3DVector@@0M_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1BCA0, 297 bytes, `ret 10h`.
 // Callees: the external interface's virtual slot 16 (+0x40, the nav layer of a position), CNavigatorManager::GetNodeAt(const
 //   C2DVector&, unsigned char) 0x00A14F70, CNavigatorBase::FindNearestNavigableNode(from node, blocked node, const C3DVector&, float,
@@ -14,7 +15,7 @@ class C2DVector { public:
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CNavRegion { public:
     bool IsConnectedTo(const CNavRegion* other) const;   // 0x00A77780
 };

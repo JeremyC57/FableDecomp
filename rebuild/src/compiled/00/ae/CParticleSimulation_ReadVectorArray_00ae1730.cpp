@@ -1,5 +1,6 @@
 // CParticleSimulation::ReadVectorArray(C4DVector* vectors, unsigned long count, CDataInputStream& in, float w) -- read count packed C3DVectors from the stream into a temporary CArray and widen them into the C4DVector array with w as the fourth component
 // Leaf: ?ReadVectorArray@CParticleSimulation@@KIXPAVC4DVector@@KAAVCDataInputStream@@M@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE1730, 391 bytes, protected static __fastcall (vectors ecx, count edx; in and w on
 //   the stack), `ret 8`.
 // Identity (proven, two sources): (1) Ego_r.pdb `?ReadVectorArray@CParticleSimulation@@KIXPAVC4DVector@@KAAVCDataInputStream@@M@Z`
@@ -42,7 +43,7 @@ public:
     }
 };
 
-class C3DVector { public: float X, Y, Z; };               // 12 bytes
+#include "engine/C3DVector.h"
 class C4DVector {                                         // Ego_r / FableWin: 16 bytes
 public:
     float X, Y, Z, W;

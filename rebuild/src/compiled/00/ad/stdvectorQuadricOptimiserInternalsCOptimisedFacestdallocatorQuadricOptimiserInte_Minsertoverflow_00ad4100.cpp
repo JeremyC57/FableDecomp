@@ -1,11 +1,12 @@
 // 00ad4100 std::vector<QuadricOptimiserInternals::COptimisedFace>::_M_insert_overflow
 // Leaf: ?_M_insert_overflow@?$vector@VCOptimisedFace@QuadricOptimiserInternals@@V?$allocator@VCOptimisedFace@QuadricOptimiserInternals@@@std@@@std@@IAEXPAVCOptimisedFace@QuadricOptimiserInternals@@ABV34@ABU__false_type@2@I_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /Gr
 #include <stdlib.h>
 #include <new>
 #include "rebuild_abi.h"
 #pragma pack(push,1)
-class C3DVector{public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 namespace QuadricOptimiserInternals{class COptimisedFace{public:unsigned long VertexIndices[3],UniqueVertexIndices[3];long Edges[3];C3DVector UTangent,VTangent;bool Exists;unsigned long OutputIndex;long Segment;COptimisedFace();COptimisedFace(const COptimisedFace&);};}
 namespace std{struct __false_type{};template<class T>inline const T&max(const T&a,const T&b){return a<b?b:a;}template<class T>class allocator{public:allocator(){}allocator(const allocator&){}T*allocate(unsigned int count){return count?(T*)malloc(count*sizeof(T)):0;}void deallocate(T*p,unsigned int){if(p)free(p);}};

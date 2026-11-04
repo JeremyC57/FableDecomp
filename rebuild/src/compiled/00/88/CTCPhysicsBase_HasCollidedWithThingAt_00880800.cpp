@@ -4,11 +4,10 @@
 // Layout: only the vtable is touched (engine/CTCPhysicsBase.h for the class; a vtable-shaped view for the slot).
 // Shape: `if (info) return false;` (an `xor al,al` exit with its own epilogue) then the forwarded call; bool result.
 // Leaf: HasCollidedWithThingAt
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/CTCPhysicsBase.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThingPhysicsMeshInfo;
 

@@ -1,5 +1,6 @@
 // CNavigatorAStar::InitialiseFromPreCalculatedRoute(const C3DVector& from, const vector<pair<C2DVector, unsigned char> >& route, const C3DVector& to) -- drop any search in progress (state map, open list, the manager's active-navigator entry), rebuild the way-point list from the given route, hand the first leg to the steering agent and record the goal node/position
 // Leaf: ?InitialiseFromPreCalculatedRoute@CNavigatorAStar@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1E370, 592 bytes (`ret 0Ch`).
 // Callees: list<pair<long, const CNavigatorBase*> >::remove_if<CIsNavigator> 0x00A155C0 (on the manager +0x2c), the state
 //   map's _M_erase 0x00A21640, free 0x00BFEA14, memmove 0x00BFEAE6, malloc 0x00BFEA0E, CalcWayPointWidths 0x00A1DE30,
@@ -22,9 +23,7 @@ class C2DVector { public:
     C2DVector(const class C3DVector& v);
     void operator=(const class C3DVector& v);
 };
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 inline C2DVector::C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) {}
 inline void C2DVector::operator=(const C3DVector& v) { X = v.X; Y = v.Y; }
 #pragma pack(push, 1)

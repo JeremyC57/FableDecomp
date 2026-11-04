@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::ReadBinary(CDataInputStream& in) -- load a spline component: the control-point count and points into the cardinal spline, then the optional random-offset data and the optional position-parameter data (each re-created bound to the spline and read by itself, or left released)
 // Leaf: ?ReadBinary@CPSCSplineBase@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: FableWin.pdb / Ego_r.pdb ?ReadBinary@CPSCSplineBase@NParticleEngine@@UAEXAAVCDataInputStream@@@Z; slot 15 of the CPSCSplineBase
 //   vtable 0x012A0B14 (rtti-vtables.tsv); called non-virtually by 0x00B068F0 / 0x00B1B1B0. The two nested readers are the FableWin
 //   ?ReadBinary@CSplineRandomOffsetData@...@QAEXAAVCDataInputStream@@@Z / ?ReadBinary@CSplinePosParamData@...@QAEXAAVCDataInputStream@@@Z
@@ -21,7 +22,7 @@ extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 void __cdecl operator delete(void* p);                 // 0x00BFE9BC
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 template <class T> class CArray { public:                     // STLport vector<T> (12 bytes in retail)
     T* m_begin; T* m_end; T* m_capacity;
     CArray() : m_begin(0), m_end(0), m_capacity(0) {}

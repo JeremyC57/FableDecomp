@@ -1,5 +1,6 @@
 // CTCDRegionExit::MoveHeroThroughExit() -- when the hero is alive, flag the world and hand it a move-hero-to-region game event (0x2c) carrying the connected entrance's position and heading and three cleared flags, stamped with the hero's player
 // Leaf: MoveHeroThroughExit
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /GS
 //
 // Retail 0x00779080, 359 bytes (plain `ret`, /GS cookie 0x0139C8A8 checked by __security_check_cookie @ 0x00BFE9F9).
@@ -13,7 +14,7 @@
 // component into eax and copies it to ecx (`mov eax,[eax+60h] ; mov edx,[eax] ; mov ecx,eax`), which also reshuffles the tail.
 // Layout = Ego_r.pdb CTCDRegionExit (packed): PEntranceConnectedTo +0x2a; CThing physics component +0x60 (PDB PhysicsTC +0x70:
 // the retail component map and update list are 0x10 smaller), Player byte +0x90, Dead bit 0 of +0x91; CWorld flag byte +0x12f.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

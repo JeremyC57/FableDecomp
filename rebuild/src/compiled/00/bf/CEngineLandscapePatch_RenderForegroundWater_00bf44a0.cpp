@@ -1,5 +1,6 @@
 // CEngineLandscapePatch::RenderForegroundWater() -- queue the patch's water mesh with the water renderer: type 4 and type 5 meshes into their own lists, type 8 together with the patch bounding box, anything else into the general list
 // Leaf: RenderForegroundWater
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BF44A0, 208 bytes.
 // Callees: the water renderer (global 0x01436E54) lists: vector<CWaterPatchMesh*>::push_back(const T&) 0x00BF5EA0 (out of
 //   line) and its _M_insert_overflow 0x00BF5DB0, vector<SBoxedWaterPatch>::push_back(const T&) 0x00BF5FE0 (manifest label
@@ -56,10 +57,7 @@ __declspec(noinline) void CRetailVector<T>::push_back(const T& x)
 }
 #pragma auto_inline(on)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector Min, Max; };
 
 struct SBoxedWaterPatch {                              // 28 bytes

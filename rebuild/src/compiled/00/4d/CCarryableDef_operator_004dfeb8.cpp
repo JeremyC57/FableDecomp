@@ -1,5 +1,6 @@
 // CCarryableDef::operator=(const CCarryableDef&) -- def copy: CDefClassBase part, carry slots, attach offset vector, scalars
 // Leaf: ??4CCarryableDef
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004DFEB8, 76 bytes, size-optimised TU (/Os def region, like the landed
 //         0x004663AE / 0x004E05AD def assignments).
 // Callees: CDefClassBase::operator= @ 0x00431F10 (the manifest label "CThingBuildingDef::operator=" is propagated
@@ -15,11 +16,7 @@
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 // def vtable 0x0123E7EC: slot 0 0x004DA78B (implicit inline dtor); real overrides from the def vtable scan
 class CCarryableDef : public CDefClassBase { public:

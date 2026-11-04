@@ -1,6 +1,7 @@
 // CTCPhysicsStandard::CTCPhysicsStandard(CThing& owner) -- CTCPhysicsBase(owner), no physics mesh info, RHSetLastFrameSet 0, all physics flags clear except FeelsGravity and PhysicsEnabled, then this class's vtable
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00723FD0, length 50 bytes.
 // Leaf: ??0CTCPhysicsStandard
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CTCPhysicsBase::CTCPhysicsBase(CThing&) @ 0x006B0730. Vtable 0x01265F84 = CTCPhysicsStandard (rtti-vtables.tsv); the
 // chunk label "CTCActivationTrigger::CTCActivationTrigger" is propagated and rejected. Ego_r.pdb CTCPhysicsStandard (0x88
 // bytes): PPhysicsMeshInfo +0x40, OffsetVector3D +0x44, RHSet +0x50, OldRHSet +0x68, RHSetLastFrameSet +0x80, then sixteen
@@ -11,7 +12,7 @@
 // so the polymorphic classes are modelled locally with the same offsets.
 class CThing;
 class CThingPhysicsMeshInfo;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 class CTCPhysicsBase { public:                        // vtable 0x0125D2C4, 0x40 bytes

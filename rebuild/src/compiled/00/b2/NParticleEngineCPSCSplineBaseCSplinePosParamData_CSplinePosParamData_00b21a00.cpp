@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::CSplinePosParamData::CSplinePosParamData(CCardinalSpline*) -- stores the spline, constructs the empty parameter array and resizes it to one zeroed entry per spline control point
 // Leaf: ??0CSplinePosParamData
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B21A00, 73 bytes (+7 int3 padding). Callee: retail
 // CArray<unsigned long>::resize(n, const unsigned long&) @ 0x00464931 (landed family shape; manifest label "push_back").
 // Callers: 0x00B224F9 / 0x00B22606 (CPSCSplineBase).
@@ -10,7 +11,7 @@
 // the expression straight to resize schedules the zero temporary before the member load and colours the zero in eax
 // instead of retail's hoisted `xor edx,edx`); CArray's inline constructor zeroes its three words from one zero register; the `unsigned long()` temporary bound to resize's const reference is homed in
 // the constructor's dead argument slot (`mov [esp+8],edx ; lea edx,[esp+0Ch]`).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;

@@ -1,5 +1,6 @@
 // NScript::CQ_SecretPassageScript::CSP_SecretPassageGuard::Main() -- the secret-passage guard (first variant): register an alive-filter over Me, take Me under scripted control, and until the hero is seen or heard now and then mutter a line while the hero is within 30 units; then shout the spotted line and set the hero as its best enemy target
 // Leaf: ?Main@CSP_SecretPassageGuard@CQ_SecretPassageScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DED810, length 639 bytes, plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0) over CScriptThing copy ctor 0x004ABE90 / ~CScriptThing 0x004AA840,
 // RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30; scripted-thing handle (vtable 0x0127094C) inline
@@ -21,7 +22,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void t00(); virtual void t01(); virtual void t02(); virtual void t03(); virtual void t04(); virtual void t05();
     virtual const C3DVector& GetPosition() const;      // slot 6 (+0x18)

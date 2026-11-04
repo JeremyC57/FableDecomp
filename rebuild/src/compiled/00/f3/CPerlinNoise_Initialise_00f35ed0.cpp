@@ -1,5 +1,6 @@
 // CPerlinNoise::Initialise(unsigned long seed) -- build the noise tables from a seed: the identity permutation shuffled with the engine LCG (seed*0x24A1 + 0x24DF, rotated right 13), then 256 random gradient vectors with components GFFloatRandom(2, seed) - 1 in [-1, 1)
 // Leaf: ?Initialise@CPerlinNoise@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F35ED0, 307 bytes, `ret 4`. Ego_r.pdb CPerlinNoise::Initialise(unsigned long).
 // Callees: GFROR13(unsigned long) 0x00497890 (`__fastcall`, Ego_r ?GFROR13@@YIJK@Z, landed), the fmod intrinsic `_CIfmod` 0x00BFEB28.
 // Constants: 0x012387C8 = 2^32 (double, the unsigned fild fix-up), 0x0129CA60 = 131072.0, 0x012387C0 = 1/65536 (double),
@@ -29,7 +30,7 @@ inline float __fastcall GFFloatRandom(float range, unsigned long* seed)   // out
     return 0.0f;
 }
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CPerlinNoise {
 public:

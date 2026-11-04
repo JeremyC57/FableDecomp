@@ -1,5 +1,6 @@
 // CTCPhysicsBase::GetOrientationInterpolator(C3DOrientationInterpolator& out) const -- the orientation interpolator from the last frame's set to the current one; under bullet time for a thing it affects, the pair is instead two sets interpolated between them at the current and next sub-step of the bullet-time cycle
 // Leaf: ?GetOrientationInterpolator@CTCPhysicsBase@@QBEXAAVC3DOrientationInterpolator@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B0460, 310 bytes, `ret 4`.
 // Callees: CTCBase::PeekWorld() const 0x00686A80 (twice), CThing::IsAffectedByBulletTime 0x004C9920, CBulletTime::GetTimeScale
 //   0x004C5FA0, CWorld::GetWorldFrame 0x0049D870 (static), _ftol 0x00BFEA70, CRightHandedSet::Interpolate(const
@@ -15,7 +16,7 @@
 //   result assigned from an interpolator temporary in each branch.
 class CThing;
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet Interpolate(const CRightHandedSet& other, float t) const;   // 0x00A23190

@@ -1,10 +1,11 @@
 // CGameScriptThing::MsgWhoTalkedToMe -- query entity events within current script frame interval
 // Leaf: MsgWhoTalkedToMe
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
 #include "engine/CBaseObject.h"
 struct ScriptMethods;
-class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
+#include "engine/C3DVector.h"
 #include "engine/CGameScriptThing.h"
 #include "engine/CTCEntityEvents.h"
 #include "engine/CQuestManager.h"

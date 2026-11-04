@@ -1,4 +1,5 @@
 // CTCMeshAutomaticEntityCreator::CreateBuilding(const CCharString& dummyName, const CCharString& buildingName, CTCGraphicAppearance* appearance) -- create the named building at every dummy of that name
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072DF50, length 471 bytes (+ int3 padding), esp frame, `ret 0Ch`.
 // Callees: as CreateObject 0x0072DDB0, plus the `__fastcall` building factory Create @ 0x0082D920, the CTCBase accessor
@@ -11,7 +12,7 @@
 // Layout (local model): as CreateObject, plus CThing PTCPhysics +0x60.
 class CTCBase;
 class CTCPhysicsBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

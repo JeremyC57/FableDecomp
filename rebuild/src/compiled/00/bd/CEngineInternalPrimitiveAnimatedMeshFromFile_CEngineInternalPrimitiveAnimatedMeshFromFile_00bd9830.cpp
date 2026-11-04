@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveAnimatedMeshFromFile::CEngineInternalPrimitiveAnimatedMeshFromFile() -- the animated-mesh primitive built as type 0xd with flags 8, then this class's vtable
 // Leaf: ??0CEngineInternalPrimitiveAnimatedMeshFromFile
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BD9830, 234 bytes (plain `ret`); vtable 0x012A7B74 (stored last, after the
 // inlined CEngineInternalPrimitiveAnimatedMesh constructor's 0x012A79B4).
 // Label: the catalog says CTCShotDefinitionBase::CTCShotDefinitionBase (propagated); the final vtable store is
@@ -16,7 +17,7 @@ public:
     T* Object;
     CIVCountedPointer() : Object(0) { }
 };
-class C3DVector { public: float X, Y, Z; C3DVector() { } };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Right, Up; CRightHandedSet() { } };
 class C3DAnimationBlendState : public CBaseClass { public:           // vtable 0x01239838
     class CSharedData;

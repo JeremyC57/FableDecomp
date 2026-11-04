@@ -1,5 +1,6 @@
 // NUISystem::CMesh::Update(float deltaTime) -- the state-component update, then spin the orientation about the rotation axis by speed x time
 // Leaf: Update
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00550070, 49 bytes (`ret 4`).
 // Callees: NUISystem::CChangingStateComponent::Update(float) @ 0x0052C7E0 (landed), CRightHandedSet rotate-about-axis
 // @ 0x00A22F80 (thiscall (const C3DVector& axis, float angle), as the landed CTCRotate::FrameUpdate 0x0072A570; manifest
@@ -8,11 +9,7 @@
 // Layout: Orientation +0x174, RotationAxis +0x18c, RotationSpeed +0x198 (Ego_r.pdb CMesh offsets minus 0x30, as SetOrientation
 // 0x00550BE0).
 // Shape: `fld dt ; fmul speed` is `RotationSpeed * deltaTime`; the float argument is stored into its pushed slot.
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet { public:
     C3DVector Up;

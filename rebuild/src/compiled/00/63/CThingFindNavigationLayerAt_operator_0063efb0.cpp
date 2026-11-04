@@ -1,14 +1,13 @@
 // CThingFindNavigationLayerAt::operator()(CThing* thing) -- for a thing whose physics component has a physics mesh, raise Layer to the mesh's navigation level at Pos; always returns true (keep iterating)
 // Leaf: ??RCThingFindNavigationLayerAt
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0063EFB0, length 81 bytes (+ int3 padding).
 // Callees: CTCPhysicsBase virtual slot 42 (`call [edx+0A8h]`, has-mesh test), CTCPhysicsBase::GetPhysicsMeshObject
 // @ 0x006B0850 (CPhysicsMeshObject through the hidden pointer, a 0x40-byte frame local),
 // CPhysicsMeshObject::GetNavigationLevelAt @ 0x00A11D10 (`const C3DVector&`), ~CPhysicsMeshObject @ 0x00A127D0.
 // Layout: PDB CThingFindNavigationLayerAt { C3DVector Pos; long Layer; }; retail CThing PhysicsTC +0x60.
 // Shape: no EH frame (exceptions off in this TU); `if (level > Layer) Layer = level;` is `cmp eax,[esi+0Ch] ; jle`.
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 
 class CPhysicsMeshObject { public:
     unsigned char _body[0x40 - 4];

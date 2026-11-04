@@ -9,13 +9,14 @@
 // No direct caller or address reference exists in the image (an unreferenced inline-constructor copy).
 // Shape: the member constructor call, then the two bool initialisers through a cleared al.
 // Leaf: ??0CSavedInputEvent
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 class CInputEvent { public:                                    // 0x34 bytes: UInputEventData Data, DeviceType, DeviceNumber, Type, CurrentTime, StartTime
     unsigned char _body[0x34];
     CInputEvent();                                      // 0x00A04410
 };
 
 class C2DVector { public: float X, Y; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCamera { public:
     C3DVector       WorldPosition;                      // +0x00

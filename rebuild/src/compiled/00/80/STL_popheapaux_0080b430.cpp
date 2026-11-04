@@ -1,5 +1,6 @@
 // std::__pop_heap_aux(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint*, CThingCompare_BestForTargeting2 comp) -- STLport pop_heap core front end for target points: move the root to the back and re-heap with the old back element
 // Leaf: ??$__pop_heap_aux@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080B430, 184 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the value-type pointer and the 0x34-byte comparator by value on the stack, `ret 38h`.
 // Name: STLport `__pop_heap_aux<CTargetPoint*, CTargetPoint, CThingCompare_BestForTargeting2>`; the catalog's
@@ -28,10 +29,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint { public:

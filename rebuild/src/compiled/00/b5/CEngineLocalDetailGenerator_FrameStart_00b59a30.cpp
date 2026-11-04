@@ -1,5 +1,6 @@
 // CEngineLocalDetailGenerator::FrameStart(const CEngineComponentParams&) -- when local detail is enabled: on off-world-tick frames update every loaded map's local-detail cache against the time budget (now + LocalDetailMaxUpdateTime), then render every cache from the engine camera, and remember the camera position
 // Leaf: FrameStart
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B59A30, 205 bytes, `ret 4` (frame pointer, 8-byte aligned stack for the double).
 //   Mangled ?FrameStart@CEngineLocalDetailGenerator@@UAEXABVCEngineComponentParams@@@Z (vtable 0x012A2588 slot 1).
 // Callees: GFGetFastSubFrameTimer 0x009E1C70 (`__fastcall`, double), CLocalDetailCacheMap::Update(double) 0x00BDED90,
@@ -12,11 +13,7 @@
 //   memberwise user copy ctor (direct offsets) and assigned to OldCameraPos at the end (implicit assignment: `add ebx,18h`);
 //   the render loop reads the camera global into a local first thing in the body (retail loads it at the rotated latch,
 //   before the cache test).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CEngineCamera { public:
     unsigned char _pad[0x54];

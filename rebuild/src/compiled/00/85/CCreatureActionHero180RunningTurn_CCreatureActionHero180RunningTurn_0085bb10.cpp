@@ -1,4 +1,5 @@
 // CCreatureActionHero180RunningTurn::CCreatureActionHero180RunningTurn(CThingCreatureBase*, const C3DVector&) -- base CCombatActionBase(owner, 1, zeroed CSoundPair), own vtable (0x0127655C), RequiredFacing copied from the argument
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085BB10, length 80 bytes.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030
 // Shape: the vtable store precedes the three dword copies of the vector (edx/ecx/edx): the init-list copy of the member
@@ -14,10 +15,7 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-class C3DVector { public:                         // three floats with a memberwise copy constructor (one register per dword)
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: three containers are 4 bytes wider there)
     virtual void v00();

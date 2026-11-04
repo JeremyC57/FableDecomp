@@ -1,4 +1,5 @@
 // CDataOutputStream::WriteMatrix3x4(const CMatrix3x4&) -- writes the three basis rows and position as twelve float records
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1), @ 0x00994070, 262 bytes, ret 4.
 // Callee: virtual Write(const void*, long), slot 4 at +0x10, twelve calls.
 // Layout: uses the production stream header and the engine's 3x4 matrix field order; each float is copied into a
@@ -10,7 +11,7 @@
 #undef CDataOutputStream
 #include "fable_string.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0

@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleEmitter::IsVisible(float distance, const CEnginePrimitivePrepareInfo* info) -- decide whether the emitter draws this frame: work out the distance fade (2D emitters use distance 0), clear Visible, and unless sleeping either show a 2D emitter outright, or (within the draw range, past the fade-in start, with some alpha left) test the cached bounding sphere against the engine when it is valid, else rebuild it from every active system's world-space sphere (the emitter position with radius 0.1 when a system has none), test each one, and keep the new sphere when every system supplied one; each system gets the fade alpha and its own Visible flag
 // Leaf: IsVisible
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Register plan: the 2D flag lives in bl (ebx pushed in the prologue) across the GetFadeAlpha call. The same-TU stand-in
 //   must keep its MEMORY knowledge (writes no emitter flag, so the flag word stays in edi across the call) without being
 //   register-transparent: a pure x87 body preserves edx and VC7.1 then parks the flag in dl; the integer divide by a
@@ -16,11 +17,7 @@
 //   +0x15c, FadeOutStart +0x160, FadeInStart +0x164, FadeInEnd +0x168. CParticleSystem: flag byte +0x50 (Enabled bit 1,
 //   Dead bit 2, Visible bit 5), GlobalAlpha +0x54, FadeAlpha +0x58 (landed 0x00AF4660). CEnginePrimitivePrepareInfo engine
 //   +0x34 (landed 0x00AEB2D0).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;

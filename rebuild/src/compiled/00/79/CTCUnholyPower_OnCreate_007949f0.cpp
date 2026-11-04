@@ -1,4 +1,5 @@
 // CTCUnholyPower::OnCreate() -- raise a physical barrier on the owner's position, register the owner with the barrier's driver and keep the barrier as PObstruction
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007949F0, length 193 bytes (+ int3 padding). __fastcall, `ret`.
 //         CTCUnholyPower vtable 0x0126BFDC slot 4 (the catalog label "CTCDivineWrath::OnCreate" is propagated).
 // Callees: CThing::GetPos @ 0x004C73D0, the barrier factory (__fastcall start, end, radius) @ 0x007FD4B0,
@@ -47,7 +48,7 @@ template <class T> struct CRetailVector {           // STLport vector (12 bytes)
     void push_back(const T& value);                 // 0x004AD520
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCDriverBase { public:
     unsigned char _pad00[0x2c];

@@ -1,5 +1,6 @@
 // NCreatureMode::CModeCreatureIsProjectile::OnActivate() -- remember where the throw starts, suspend the thrown creature's AI and its physics navigator, then the stand-mode OnActivate
 // Leaf: ?OnActivate@CModeCreatureIsProjectile@NCreatureMode@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D6690, 70 bytes, thiscall, tail `jmp CModeStandBase::OnActivate`.
 // Identity (proven): the only reference is slot 5 of vtable 0x01285728 (RTTI .?AVCModeCreatureIsProjectile@NCreatureMode@@ :
 //   CModeStandBase : CTCCreatureModeManager::CModeBase); slot 6 is OnDeactivate 0x008D90B0, slot 3 FrameUpdate 0x008E1670, slot 1
@@ -27,10 +28,7 @@
 #include "engine/CTCBase.h"                                     // CTCBase : CBaseClassNonCopyable, slots 0-27
 
 #pragma pack(push, 1)
-class C3DVector {                                               // 1-aligned in retail
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class C2DVector;
 class CRightHandedSet;

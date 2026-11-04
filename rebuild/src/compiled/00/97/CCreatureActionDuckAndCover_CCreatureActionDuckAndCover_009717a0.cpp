@@ -1,4 +1,5 @@
 // CCreatureAction_DuckAndCover::CCreatureAction_DuckAndCover(CThingCreatureBase*, const C3DVector&) -- combat action with the SWORD_SWING sound pair (action code 150) that remembers the position to duck from
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009717A0, length 112 bytes, `ret 8`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, GetSoundPair (__fastcall) @ 0x008561A0,
 //          CCombatActionBase::CCombatActionBase(owner, actionCode, const CSoundPair&) @ 0x00858030,
@@ -24,7 +25,7 @@ class CSoundPair { public:                         // user constructor: the 8-by
 
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();

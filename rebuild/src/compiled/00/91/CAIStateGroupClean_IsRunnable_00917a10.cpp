@@ -1,5 +1,6 @@
 // CAIStateGroup_Clean::IsRunnable() -- runnable when there is a building whose sim definition is cleanable (flag 0x20 clear), which has physics, and whose bounding centre lies inside it
 // Leaf: IsRunnable@CAIStateGroup_Clean
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00917A10, length 184 bytes (+ int3 padding).
 // Callees: own virtual slot 14 (+0x38, the building), CThingBuilding::PeekPSimDefinition @ 0x0082D2D0 (landed; CDefPointer
 // <CSimBuildingDef> by value), CTCPhysicsBase::GetBoundingInfo(C3DVector*, float*) @ 0x006AF640, CThingBuilding::IsPointInside
@@ -8,7 +9,7 @@
 // ReleaseTemporary() through the ref-count base at +4 in the `if (--Count == 0) Destroy()` form: `add eax,4 ; dec ;
 // mov [eax],esi ; test ; jne ; call [vtbl+4]` -- the decremented count is stored before the test; a DecRef() +
 // GetRefCount() pair sinks the store below it); the inside test result is held in bl across that release.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase
 { public:

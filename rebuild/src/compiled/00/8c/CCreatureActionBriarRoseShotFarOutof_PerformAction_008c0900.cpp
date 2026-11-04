@@ -1,5 +1,6 @@
 // CCreatureAction_BriarRoseShotFarOutof::PerformAction() -- fetch the creature's weapon sub-def and its shot def, create the shot thing at the creature's WEAPON_FOCUS_01 dummy, keep it in PShot, add its named shot TC and Init it (shooter = creature, target = PTarget, the creature's shot accuracy), then release both defs
 // Leaf: ?PerformAction@CCreatureAction_BriarRoseShotFarOutof@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C0900, length 513 bytes (+ int3 padding), virtual (vtable 0x012807A4 slot 3), plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CDefClassBase::GetSubDef<CWeaponDef> @ 0x0042B1A6 (the body pushes
 //   "CWeaponDef"; same-TU out-only stand-in here), CCreatureActionBase::GetPWorld @ 0x00692940 (manifest "_Dest_val<...>" label is
@@ -21,7 +22,7 @@
 // Layout: engine/CCreatureAction_BriarRoseShotFarOutof.h puts PShot at the PDB's +0x12c; retail CCombatActionBase is 0x114
 //   bytes (landed ctor 0x008C39A0 stores PShot's vtable at +0x114), so `this` is modelled locally with PShot at +0x114.
 //   CWeaponDef +0xa0 = Shot index, CThingShotDef +0x60 = TC name string index and +0x7c = thing def index (retail offsets).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 
 class CCharString { public:

@@ -1,4 +1,5 @@
 // CTCTavernJug::ReplaceJug() -- puts the jug back: when the parent thing has a physics component, resets its position to Pos, its orientation to RHSet, and calls slot 36 with false
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00968090, 54 bytes. Callers: CAIStateGroup_TavernServer::OnReplace (0x009674C2).
 // Callees: the physics component's virtual slots 31 (+0x7C, CTCPhysicsBase::ResetPosition(const
 //          C3DVector&)), 75 (+0x12C, orientation reset; empty in CTCPhysicsBase 0x006B12C0) and 36
@@ -8,7 +9,7 @@
 // parent thing (+4) holds the physics component at +0x60 (as the landed 0x008F2F00).
 // Shape: the component is a named local tested once (esi); `&Pos` is `lea eax,[edi+29h]`, `&RHSet`
 //        advances `this` in place (`add edi,11h`) because `this` is dead afterwards.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };          // 0x18 bytes
 
 class CTCPhysicsBase { public:

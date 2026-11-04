@@ -1,5 +1,6 @@
 // CTCTavernGameCardBase::CardsMoving() -- card-phase step while cards move: wait for the pack to settle, then advance the state (20 -> 21, 27 -> 6, anything else -> 0), or in state 26 gather the dealt cards back onto the pack position (stacked above the remaining pack), drop that many cards from the front of the pack, restack the pack and put the gathered cards on its end, then go to 27
 // Leaf: ?CardsMoving@CTCTavernGameCardBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F2280, length 766 bytes (ret). Name: Ego_r.pdb; vtable slot 52 of
 // CTCTavernGameCardBase (Blackjack's 0x007DA070 jumps here; the landed CTCTavernGameCardBase::FrameUpdate @ 0x008F1D40 calls
 // it for states 20/26/27). The catalog label "CTCTavernGameCardBase_OnFrameUpdate" is a descriptive gap-scan name.
@@ -66,11 +67,7 @@ public:
 
 class C2DVector { public: float X, Y; };
 #pragma pack(push, 1)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CCard {
 public:
     void*     Thing;                          // +0x00 CThingObject*

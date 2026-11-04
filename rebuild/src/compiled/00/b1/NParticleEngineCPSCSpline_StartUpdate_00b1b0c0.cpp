@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSpline::StartUpdate(const CParticleUpdateParameters& params) -- vtable slot 8: per-frame spline set-up: run the base StartUpdate (refresh the spline data), mark the update started and advance the current spline position (bouncing between 0 and 1, or wrapping/clamping past the end)
 // Leaf: ?StartUpdate@CPSCSpline@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c (caller respell): calls 0x00AEAA00 under its PDB name NParticleEngine::GetOneOverTickRate (?GetOneOverTickRate@NParticleEngine@@YIMXZ; no arguments, so the __fastcall call site is unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1B0C0, 232 bytes (+8 int3 padding).
 // Name: FableWin.pdb ?StartUpdate@CPSCSpline@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z; slot 8 of the
@@ -22,7 +23,7 @@
 // SplinePosParamData call goes through the counted pointer's inline `operator->`: a plain pointer member
 // loads the position argument into ecx and pushes it at once (retail: edx, pushed after the ecx load) and
 // shifts the later sete/spill registers (al -> dl, ecx -> eax). `ret 4`.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 namespace NParticleEngine { float __fastcall GetOneOverTickRate(); }   // 0x00AEAA00
 
 namespace NParticleEngine {

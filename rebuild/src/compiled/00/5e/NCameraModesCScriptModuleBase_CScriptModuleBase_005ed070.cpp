@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleBase::CScriptModuleBase() -- constructor: two empty intelligent pointers (PCamPoint, PThingOrigin), zero origin, the default axis set (Up = Z, Forward = X), no owner/manager, flags clear, no cut-out or FOV override (-1)
 // Leaf: ??0CScriptModuleBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005ED070, length 112 bytes (107 + int3 padding).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (twice).
 // Vtables: 0x01255F74 (NCameraModes::CScriptModuleBase), 0x01238C6C (CIntelligentPointer<CThing>),
@@ -29,10 +30,7 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0
     CIntelligentPointer_CThingConst() {}
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;

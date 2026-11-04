@@ -1,5 +1,6 @@
 // CTCRegionFollower::IsCreatureAllowedInRegionAt(const CThing* creature, const C3DVector& position) -- a creature with a def may follow into the region at a position unless its def says it is not allowed in protected towns and the region's def is a protected town
 // Leaf: IsCreatureAllowedInRegionAt
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006AEBF0, 248 bytes, `ret 8`.
 // Callees (CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0, GetSubDefIndex slot 14 and
 //   CDefinitionManagerBase::GetPDefFromGlobalIndex 0x009ADA10 only inside the stand-in): CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>*) @ 0x00485815, CTCBase::PeekWorldMap() const
@@ -15,7 +16,7 @@
 //   LTCG did. The copy constructor bumps the count through a `long&` local (`count = count + 1`): a plain `++Object->m_refCount`
 //   lets VC7.1 hoist the region def's flag load above the count store, retail loads it after.
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CDefPointee {
     virtual void v00();
     virtual void Destroy();                             // slot 1

@@ -1,4 +1,5 @@
 // CEngineScreenEffectRadialBlurRenderer::CaptureEnvironmentParameters() -- copy the current environment's radial-blur settings into CurrentParameters and the blur/area centres (3D track positions when the environment tracks them, else the 2D screen centres)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B5BD70, length 262 bytes.
 // Callees: virtual slot 1 of the environment provider at +0x198 of the engine state @ 0x01436E8C (returns the current
 // environment), virtual slot 1 of that environment (returns its settings record; the radial-blur block sits at +0x60).
@@ -10,9 +11,7 @@
 // with `lea`), the 2D centres take X and Y separately.
 #include "engine/CEngineScreenEffectRadialBlurRenderer.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 struct SEnvironmentRadialBlur {
     C3DVector     BlurCenter;                      // +0x00

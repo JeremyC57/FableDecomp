@@ -1,4 +1,5 @@
 // CAIStateGroup_LookAtInterestingThings::Update() -- pick an interesting thing; while it exists walk to within 6 units of it (avoiding dynamic obstacles as the creature's navigation def says), then keep looking at it until the look ends; an unreachable thing loses its interest component (0xb3); the group terminates when done
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009195D0, length 429 bytes (+ int3 padding), plain `ret` (virtual), `and esp,-8`
 // frame for the 8-byte intelligent pointer.
 // Callees: CAIStateGroup_LookAtInterestingThings::FindInterestingThing @ 0x00919240, CBaseIntelligentPointer ctor @ 0x00A01B10 /
@@ -12,11 +13,7 @@
 // edi and its count release is inline at each exit (null test only where the def was never dereferenced); the def class is
 // held in a local before the call; the look loop uses `== 4 continue; break` so it is not rotated.
 // Layout: CCreatureNavigationDef AvoidDynamicObstacles +0x34 (Ego_r.pdb), count at +4; CThing PhysicsTC +0x70 (retail).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CCreatureNavigationDef { public:
     virtual void v00();
     virtual void DeleteThis();                  // slot 1

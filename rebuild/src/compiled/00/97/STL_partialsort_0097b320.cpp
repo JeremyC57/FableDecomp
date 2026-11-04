@@ -1,5 +1,6 @@
 // std::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing** valueType, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- partial sort of the take-cover candidate sort: heapify [first, middle), push every better element of [middle, last) through the heap, then sort the heap
 // Leaf: ??$__partial_sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097B320, 194 bytes (+ int3 padding to 208), __fastcall (/Gr algorithm TU: first
 //   in ecx, middle in edx, last, the value-type tag and the comparator on the stack), `ret 18h`.
 // Instantiation: the take-cover candidate sort: std::sort<CThing**,
@@ -21,9 +22,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 extern "C" double __cdecl pow(double x, double y);                                    // _CIpow 0x00BFEB40
 extern "C" double __cdecl sqrt(double x);
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

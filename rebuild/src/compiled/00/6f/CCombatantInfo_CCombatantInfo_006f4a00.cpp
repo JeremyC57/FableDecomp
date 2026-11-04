@@ -1,5 +1,6 @@
 // CCombatantInfo::CCombatantInfo() -- construct a combatant's info record: the attacker half's empty combat-sequence vector and the defender half (empty attacker map, empty combat wheel, null last attacker, null attack pattern)
 // Leaf: ??0CCombatantInfo@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F4A00, 89 bytes, thiscall, `ret`, returns this.
 // Identity (proven from layout + callers + PDB): the catalog label "C3DMeshMaterial" is propagated (C3DMeshMaterial is
 //   0x30 bytes; this body writes +0x64). Callers 0x006ED2AE (CCombatManager::RegisterAttackedCombatant) and 0x006EDB0A
@@ -101,7 +102,7 @@ public:
     CDefPointeeBase* Object;
     CDefPointer() : Object(0) { }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CDefendingCombatantInfo {
 public:

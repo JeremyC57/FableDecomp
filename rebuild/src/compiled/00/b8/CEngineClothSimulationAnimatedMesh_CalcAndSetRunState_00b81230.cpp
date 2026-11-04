@@ -1,4 +1,5 @@
 // CEngineClothSimulationAnimatedMesh::CalcAndSetRunState() -- transform the mesh's bounding-sphere centre by CurrentTransform, scale its radius by the owner's scale, store the resulting run state and report whether it is not state 1
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B81230, length 143 bytes (+ int3 padding).
 // Callees: CEngineSimulationBase::CalculateRunState(const C3DVector& centre, float radius) @ 0x00B80940 (__fastcall on `this`, ret 8).
 // Layout (retail): CEngineSimulationBase::RunState +0x04 (PDB), CurrentTransform +0x18 (PDB +0x1c; retail CArray 12 bytes), MeshInfo +0xa8,
@@ -8,12 +9,7 @@
 // row (statement-by-statement `+=` fixes VC7.1's term order). The radius is `MeshInfo->Radius * Owner->Scale` (`fld [owner] ; fmul [mesh]`).
 // `xor ecx,ecx ; cmp eax,1 ; setne cl ; mov al,cl` is `return RunState != 1;` (a bool result through a full register). The mangled name is
 // ?CalcAndSetRunState@CEngineClothSimulationAnimatedMesh@@MAE_NXZ (protected virtual).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class C3DBoundingSphere { public:
     C3DVector Center;                       // +0x00

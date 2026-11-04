@@ -1,5 +1,6 @@
 // CWorld::GetCurrentRenderCamera(const CInterpolationInfo& info) const -- the camera the frame is rendered from: the main player's free camera while it is in use (at the paused interpolation fraction when the world is paused), otherwise the current game camera at the frame's fraction
 // Leaf: ?GetCurrentRenderCamera@CWorld@@UBE?AVCCamera@@ABVCInterpolationInfo@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049DA00, 95 bytes (+1 int3 padding), thiscall, `ret 8` (hidden CCamera result + info).
 //   CWorld vtable 0x012390F0 slot 5 (the landed GetCurrentSoundCamera 0x0049DAA0 calls it).
 // Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetFreeCamera(float) const 0x00487180, the current game
@@ -14,9 +15,7 @@
 #define CPlayer CPlayerDonor
 #include "engine/CPlayer.h"
 #undef CPlayer
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CCamera {
 public:

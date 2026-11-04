@@ -1,4 +1,5 @@
 // CEngineLightingManager::UpdateSIMDVarBlock() -- splats the global lighting state (zero, one, the diffuse light vector and the primitive ambient / diffuse / backlight colours) into all four lanes of the SIMD var block
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B44540, length 731 bytes (736 with padding). No callees.
 // Shape: four lanes written in turn (lane 0 at +0x0 of each float[4], then lane 1 ...); in each lane the order is Zero,
 // One, DiffuseVectorX/Y/Z, AmbientColourRGB (+0xB0), DiffuseColourRGB (+0x50), BackColourRGB (+0x80). The block pointer
@@ -7,7 +8,7 @@
 // ThemeChannels CArray is 12 bytes (not 16), so everything after +0x3C moves down 4 (colours at +0x48 / +0x58 / +0x68)
 // and the block pointer sits at +0x4690 -- modelled locally with the PDB member names. CLightingSIMDVarBlock is the PDB's
 // 0x110-byte record of float[4] lanes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public: float R, G, B, A; };
 
 struct CLightingSIMDVarBlock {                     // 0x110 bytes (PDB)

@@ -1,4 +1,5 @@
 // CPhysicsMeshObject::GetRigidBodyBoundingPoints(std::vector<C3DVector>& points) const -- ask the physics mesh (held through a counted-pointer copy) for its rigid-body bounding points, then scale every point by the object's Scale (+0x38)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A12840, length 74 bytes.
 // Identity: Ego_r.pdb `?GetRigidBodyBoundingPoints@CPhysicsMeshObject@@QBEXAAV?$vector@VC3DVector@@...@Z`.
 // Callees: CPhysicsMesh::GetRigidBodyBoundingPoints(std::vector<C3DVector>&) const @ 0x00A6CB20, the
@@ -10,7 +11,7 @@
 // store, the pointee kept in esi across the call); the scale functor is a 4-byte record whose float
 // is copied as a dword (`mov ecx,[ebx+38h]`), built in the dead `points` argument slot that also
 // receives the discarded functor result (`mov [esp+14h],ecx` ... `lea ecx,[esp+18h]`).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct C3DVectorVector {                           // retail std::vector: first/last/end
     C3DVector* first;
     C3DVector* last;

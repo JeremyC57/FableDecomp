@@ -1,5 +1,6 @@
 // NScript::COracleMinigameTestScript::CGamesmasterOracleMarker::Main() -- create the Oracle gamesmaster at the marker and yield until termination
 // Leaf: ?Main@CGamesmasterOracleMarker@COracleMinigameTestScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail00F00AE0 length194; game slot91 CreateCreature008A9100, slot7 NewScriptFrame006E7410; ScriptThing slot6 GetPos004AA980.
 // Naming wave 35: identity reg 00effebe "GamesmasterOracleMarker" in 00effe10; Alloc 00f00a10; vtable 012f7238 slot 1; PDB ?Main@CGamesmasterOracleMarker@COracleMinigameTestScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CGamesmasterOracleMarker::Main (wave3/labels_alloc.tsv); PDB ?Main@CGamesmasterOracleMarker@COracleMinigameTestScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CGamesmasterOracleMarker@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own)); same bytes.
@@ -12,7 +13,7 @@
 #include "engine/_quarantine/CThing.h"
 #undef CThing
 
-class C3DVector{ public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components; unsigned char ComponentListsAndMetadata[0x45];unsigned char LifeFlags;}; //004C73D0,004C7E50

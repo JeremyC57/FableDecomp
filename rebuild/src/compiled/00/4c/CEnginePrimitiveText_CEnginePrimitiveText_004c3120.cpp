@@ -1,4 +1,5 @@
 // CEnginePrimitiveText::CEnginePrimitiveText(unsigned __int64, const C3DVector&, float, const CWideString&, const CFontBank&, const CRGBColour&, bool, EEngineInterpolationSet) -- primitive type 5: position, scale, colour, copied text, font and 3D-scaling flag
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C3120, length 117 bytes.
 // Callees: 0x0099B720 CWideString::CWideString(const CWideString&) (the text member's copy constructor).
 // Signature from Ego_r.pdb: ??0CEnginePrimitiveText@@QAE@_KABVC3DVector@@MABVCWideString@@ABVCFontBank@@ABVCRGBColour@@_NW4EEngineInterpolationSet@@@Z
@@ -10,10 +11,7 @@
 // around the push of the string argument), the out-of-line CWideString copy constructor, then the font
 // pointer (a reference parameter stored by address) and the flag; `this` is kept in esi across the call.
 
-class C3DVector { public:                                       // memberwise user copy constructor: one register per dword
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }

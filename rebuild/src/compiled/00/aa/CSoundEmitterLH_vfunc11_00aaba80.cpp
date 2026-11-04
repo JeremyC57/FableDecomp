@@ -1,4 +1,5 @@
 // CSoundEmitterLH::vfunc_11() -- when the sound system is up, passes the handle of every active sound of this emitter to the player's slot 23
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AABA80, 60 bytes. Vtable 0x0129E6EC (CSoundEmitterLH) slot 11.
 // Callees: the system's slot 6 (+0x18, GetPlayer), the player's slot 23 (+0x5c, one handle argument).
 // Shape: `this` in edi, node in esi, the sound in ebx (loaded before the GetPlayer call); the virtual calls force the manager,
@@ -42,7 +43,7 @@ struct SSoundNode {                                    // VC6 list node, 16 byte
     long          extra;                               // +0x0c
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CSoundEmitterLH {                               // vtable 0x0129E6EC
     virtual void v00();

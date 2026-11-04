@@ -1,5 +1,6 @@
 // CTCHeroExperience::AddSuccessfulStrikeWithHitParams(const CHitParameters& params) -- credit one successful strike per damage attribute in the hit's damage map, flagged special when the hit was a block counter, a knock-down or a flourish
 // Leaf: ?AddSuccessfulStrikeWithHitParams@CTCHeroExperience@@QAEXABVCHitParameters@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D8D00, length 131 bytes, thiscall `ret 4`. Ego_r.pdb
 // `?AddSuccessfulStrikeWithHitParams@CTCHeroExperience@@QAEXABVCHitParameters@@@Z`. The manifest label
 // "Experience_ProcessHitCombo" is descriptive.
@@ -69,7 +70,7 @@ public:
 
 }
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 #pragma pack(push, 1)                                       // the PDB really has the C3DVectors unaligned at +0x02/+0x0E
 class CHitParameters {                                      // Ego_r.pdb (prefix; retail-equal up to DamageMap)

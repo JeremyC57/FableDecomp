@@ -1,4 +1,5 @@
 // CTCPhysicsStandard::UpdateOldRHSet() -- once per world frame, copy RHSet into OldRHSet and remember the frame
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00723930, length 71 bytes (vtable 0x01265F84 slot 95, rtti-vtables.tsv).
 // Callees: CTCBase::GetWorld() @ 0x00686A70, CWorld::GetFrameNumber() @ 0x0049D870 (static: called with no this). Both names
 // are descriptive: 0x00686A70 returns [0x013B8A1C]+0x24 without reading ecx, 0x0049D870 returns the global 0x013B89BC (the
@@ -11,7 +12,7 @@
 // +0x40, OffsetVector3D +0x44, RHSet +0x50, OldRHSet +0x68, RHSetLastFrameSet +0x80, sixteen `bool : 1` flags in +0x84/+0x85).
 // engine/CTCPhysicsBase.h / CTCPhysicsStandard.h are flattened PODs without virtuals (RHSet as opaque bytes), so the
 // polymorphic hierarchy is modelled locally with the same offsets (as the landed constructor 0x00723FD0 does).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CWorld { public:
     static long __fastcall GetFrame();              // 0x0049D870 (`mov eax,[0x013B89BC] ; ret`, no this)

@@ -6,7 +6,8 @@
 // (`lea edx,[esp+18h]`: its own argument slot) and destroyed by this callee afterwards (`lea ecx,[esp+0Ch] ; call
 // ~CWideString`), which also blocks the sibling-call jump; the bool result is the constant `mov al,1`.
 // Leaf: Draw3DScaledText
-class C3DVector { public: float X, Y, Z; };
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 class CRGBColour { public: unsigned char B, G, R, A; };
 class CFontBank;
 

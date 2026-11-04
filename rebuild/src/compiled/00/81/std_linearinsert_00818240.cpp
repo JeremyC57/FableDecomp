@@ -1,5 +1,6 @@
 // std::__linear_insert(THitLocationIntersectionElement* first, THitLocationIntersectionElement* last, THitLocationIntersectionElement val, THitLocationIntersectionElementPred comp) -- STLport insertion step for the hit-location ray intersections: shift the run up a slot and drop val at the front, or hand it to __unguarded_linear_insert
 // Leaf: ??$__linear_insert@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00818240, 160 bytes, `ret 24h`: __fastcall (the algorithm TUs are /Gr), first in ecx -> ebp,
 // last in edx; the 32-byte value and the empty 4-byte predicate on the stack (32 + 4 = 0x24).
 // Callee: __unguarded_linear_insert 0x00817070 (__fastcall: last in ecx, the value copied into its argument area).
@@ -12,10 +13,7 @@
 // constructor makes the element's implicit copy constructor memberwise). Plain `inline` leaves copy_backward an
 // out-of-line call here (measured, with and without the SGI Distance* tag level); `__forceinline` restores retail's body.
 struct CHitLocation;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 namespace {
 struct THitLocationIntersectionElement {           // 32 bytes (implicit memberwise copy, trivial assignment)
     long          key;                             // +0x00

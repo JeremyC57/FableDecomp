@@ -1,4 +1,5 @@
 // CEngineInternalPrimitiveStaticMesh::Update(const CEnginePrimitive& primitive, unsigned long flags) -- applies a static-mesh descriptor: looks the mesh up in the engine mesh bank (also used as the shadow mesh), scale = size / 100, alpha / tint / cloth flag / mesh effect / theme channel, rebuilds the object matrix and the fade distances, and marks the fade distance as overridden
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B9D8E0, length 160 bytes (`ret 8`). Constant 0.01f @ 0x01230A5C.
 // Callees: the mesh bank lookup @ 0x00A24280 (thiscall on [[0x01436E98]+0x10]; the manifest's "CTCInventoryAbilities::GetAbilityLevel" is
 // a propagated label), the old mesh effect's virtual slot 1 (Destroy at zero count), CalcObjectMatrix @ 0x00BEBAA0 (`__fastcall`: matrix
@@ -11,7 +12,7 @@
 // Shape: the engine record is reached through an inline accessor (`mov ecx,[0x01436E98]` before the argument load); the chained
 // store is written `ShadowMeshInfo = MeshInfo = ...` (MeshInfo stored first); the counted copy keeps the old pointer in a local with
 // the release on the pointee; the scale is re-read from the member as the matrix argument.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 class CRGBColour { public: unsigned char B, G, R, A; };
 class CMatrix3x4 { public: float m[12]; };

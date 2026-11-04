@@ -1,6 +1,7 @@
 // C3DAnimationInfo::operator=(const C3DAnimationInfo& other) -- memberwise assignment of an animation info record: the CMeshDataBankEntry bank/index, the counted data pointer, both durations, the movement vector and the rotation (the vptr is left alone)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2B4E0, 109 bytes, __fastcall, ret 4, returns `this`.
 // Leaf: ??4C3DAnimationInfo
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // The catalog label (CAnimationEntry::operator=) is propagated: the only caller is the SGI copy loop
 // 0x00A2BC70 over 0x28-byte elements (`imul 66666667h ; sar 4` = divide by 40), and the touched layout is
 // C3DAnimationInfo's (engine/C3DAnimationInfo.h, 0x28 bytes; cf. the landed copy constructor 0x00A2A4F0).
@@ -43,9 +44,7 @@ struct CIVCountedPointer {
     }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C3DAnimationInfo : public CMeshDataBankEntry { public:   // vtable 0x0129CD64
     CIVCountedPointer Data;                // +0xc

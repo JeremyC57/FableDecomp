@@ -1,5 +1,6 @@
 // std::sort_heap(CThing** first, CThing** last, CThingCompare_NearestToPos comp) -- STLport heap sort for the lightning target sort: pop the nearest-first heap's root to the back until one element remains
 // Leaf: sort_heap
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A3B60, 89 bytes (+ int3 padding to 96), __fastcall (/Gr algorithm TU:
 //   first in ecx, last in edx; the 12-byte comparator on the stack), `ret 0Ch`.
 // Instantiation: sort<CThing**, CThingCompare_NearestToPos> of CTCWillLightning.cpp (Ego_r.pdb `std::_Sort_heap<CThing**,
@@ -15,10 +16,7 @@
 // Label correction: catalogued as `_Sort_heap<long*>`; the body is STLport sort_heap<CThing**, CThingCompare_NearestToPos>.
 class CThing;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CThingCompare_NearestToPos { public:                      // 12 bytes, passed by value
     C3DVector Pos;                                       // +0x00

@@ -1,4 +1,5 @@
 // CTCPhysicsNavigator::SetPositionToNavigateTo(const C3DVector& pos) -- if the navigator accepts a target (virtual slot 41), stores it and marks the body as moving
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00726920, length 53 bytes.
 // Callees: virtual slot 41 on this (`call [eax+0A4h]`, a bool predicate).
 // Shape: the bool result is tested with `test al,al`; the 12-byte target is copied through a `lea ecx,[esi+89h]` base (the
@@ -6,7 +7,7 @@
 // Layout: Ego_r.pdb CTCPhysicsBase (0x40: Position +0x0c, Moving/OldMoving bits of +0x3c), CTCPhysicsStandard (0x88) and
 // CTCPhysicsNavigator (0xb0, packed: Navigating +0x88, PositionToNavigateTo +0x89 ... ForcedMoveToPos flags +0xad). The engine
 // headers are flattened PODs without virtuals, so the hierarchy is modelled locally with the same offsets.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 class CTCPhysicsBase { public:                        // 0x40 bytes

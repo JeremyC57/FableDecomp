@@ -4,6 +4,7 @@
 // CMessageEventManager::AddMessage @ 0x00687540 (CWorld+0x60; the result is dropped).
 // Shape: the manager is read into a local before the zero position (its three zero stores precede the pushes).
 // Leaf: EntitySetAsStolen
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include <string.h>
 struct CThing_Retail;
 class CScriptThing;
@@ -161,10 +162,7 @@ struct CCombatManager_Retail {
     void CreatureUnsheathWeapon(CThing_Retail* creature, long mode);   // 0x006EBDD0
 };
 struct CMessageEvent_Retail;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 struct CMessageEventManager_Retail {
     CMessageEvent_Retail* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing_Retail* from, CThing_Retail* to, float value1, float value2, long data);   // 0x00687540
 };

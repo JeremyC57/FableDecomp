@@ -1,5 +1,6 @@
 // CTCHeroOpinionDeedLog::~CTCHeroOpinionDeedLog() -- delete every COpinionDeed held in OpinionDeedMap, then the members die in reverse order (DeedReactions' animation strings, VillageForCrimes, the witness-search list, the deed map) and ~CTCBase runs
 // Leaf: ??1CTCHeroOpinionDeedLog@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006C5D70, 284 bytes, thiscall, no frame; ends `jmp ~CTCBase` (0x00686830).
 // Identity (proven): the first store is vtable 0x0125EA44 (RTTI .?AVCTCHeroOpinionDeedLog@@ : CTCBase : CBaseClassNonCopyable :
 //   CBaseClass), the sole caller is that vtable's slot-0 ??_G 0x006C9C30 (call, `test [esp+8],1`, operator delete), and Ego_r.pdb
@@ -200,7 +201,7 @@ public:
     void* PStringData;
     ~CCharString();                                      // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 enum EOpinionDeedType { };
 enum EOpinionPostDeedType { };
 

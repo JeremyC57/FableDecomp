@@ -1,5 +1,6 @@
 // CDefendingCombatantInfo::CCombatWheel::AddRing(const CCombatTypeDef& def) -- append a new combat ring (index = current ring count) built from the combat type, and return a reference to it
 // Leaf: AddRing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006EC7D0, length 118 bytes.
 // Label correction: the manifest's "CDefendingCombatantInfo::RemoveCombatType" is wrong; Ego_r.pdb has
 // `?AddRing@CCombatWheel@CDefendingCombatantInfo@@QAEAAVCCombatRing...` and the body pushes a ring and returns back().
@@ -17,7 +18,7 @@ extern "C" void __cdecl free(void* block);
 
 class CThingCreatureBase;
 class CCombatTypeDef;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CBaseObject;
 class CBaseObjectPointer;

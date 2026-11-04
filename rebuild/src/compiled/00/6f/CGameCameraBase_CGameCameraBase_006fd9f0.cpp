@@ -1,5 +1,6 @@
 // CGameCameraBase::~CGameCameraBase() -- destroy the game camera base: own vtable, the two STLport coordinate lists (LocalThingPosList +0xac, then DrawCoordList +0xa8) out of line, then the CAIGameCameraBase base's vtable
 // Leaf: ??1CGameCameraBase@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FD9F0, 39 bytes (+9 int3), __fastcall, `ret`.
 // Identity: FableWin.pdb ??1CGameCameraBase@@UAE@XZ (and ??1CAIGameCameraBase@@UAE@XZ: both destructors are virtual).
 //   Vtable 0x01264A8C is RTTI CGameCameraBase and 0x0125C1F4 CAIGameCameraBase (rtti-vtables.tsv; the landed ctor
@@ -12,10 +13,7 @@
 //   block before the lists left opaque (only the lists are destroyed here).
 // Shape: a user-declared out-of-line virtual destructor: own vtable store, members in reverse declaration order, then the
 //   base's inline user destructor stores its vtable.
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 template <class _Tp> class allocator {

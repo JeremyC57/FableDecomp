@@ -1,5 +1,6 @@
 // CTCBattleCharge::CTCBattleCharge(CThing* parent) -- set up the battle-charge component: members cleared, its special-ability def fetched, a player's spell-cast state switched to charge mode, the spell level read from the inventory abilities, then Reset and the creature's current action finished
 // Leaf: ??0CTCBattleCharge
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x007A71B0, 448 bytes (`ret 4`). Vtable 0x0126CBFC (CTCBattleCharge, RTTI). Callees: CTCBase(CThing*) @ 0x00686800,
 // CBaseIntelligentPointer() @ 0x00A01B10, SetPItem @ 0x00A01B90 (CIntelligentPointer<CThing> vtable 0x01238C6C),
 // CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CGameDefinitionManager::Get @ 0x0044C6B0,
@@ -130,11 +131,7 @@ public:
     unsigned char _pad08[0x4];                      // ToBeRemoved, IsInGlobalUpdateTCs
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 
 template<class T> struct CVector {                  // retail STLport vector, 12 bytes
     T* _M_start;

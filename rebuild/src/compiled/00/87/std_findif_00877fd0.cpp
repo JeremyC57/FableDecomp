@@ -1,5 +1,6 @@
 // std::__find_if(_List_iterator<const CThingBuilding*> first, last, NCameraModes::CIsPosInBuilding pred, const input_iterator_tag&) -- first building in the list that contains the position
 // Leaf: ??$__find_if@U?$_List_iterator@PBVCThingBuilding@@U?$_Nonconst_traits@PBVCThingBuilding@@@std@@@std@@VCIsPosInBuilding@NCameraModes@@@std@@YI?AU?$_List_iterator@PBVCThingBuilding@@U?$_Nonconst_traits@PBVCThingBuilding@@@std@@@0@U10@0VCIsPosInBuilding@NCameraModes@@ABUinput_iterator_tag@0@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00877FD0, 52 bytes, __fastcall (hidden iterator result in ecx, the empty tag by reference in edx,
 // never read; first / last / the 4-byte predicate on the stack), `ret 0Ch`.
 // Identity (proven): STLport 4.6 `while (first != last && !pred(*first)) ++first; return first;` over a list (node next +0,
@@ -11,10 +12,7 @@
 // Label correction: catalog "_gapscan::sub_00877fd0".
 // Callees: 0x0082D000 ?IsPointInside@CThingBuilding@@QBE_NABVC3DVector@@@Z (Ego_r.pdb: const).
 // Shape: the predicate's position word stays in ebx across the loop; the empty-range test precedes it.
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThingBuilding {
 public:

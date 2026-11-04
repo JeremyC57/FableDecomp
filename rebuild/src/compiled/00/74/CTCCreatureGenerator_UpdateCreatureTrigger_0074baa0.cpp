@@ -1,5 +1,6 @@
 // CTCCreatureGenerator::UpdateCreatureTrigger(long frame) -- self-triggering: (re)arms the activation frame while waiting for the last batch to die, gives up when no triggers are left, then walks the triggerer creatures; a creature that enters the self-trigger radius (2D) fires a generation if the reset interval has passed since the last activation, and an external trigger fires on the interval alone; firing stamps the activation frame, spends one trigger, creates the creatures and latches ExternalTrigger to UndeadTriggered
 // Leaf: UpdateCreatureTrigger
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0074BAA0, 384 bytes (`ret 4`).
 // Callees: CIntelligentPointer<CThingCreatureBase>::GetPItem() @ 0x00A01B50, CThing::GetPos() @ 0x004C73D0,
 // DivideByGameSpeed(float) @ 0x00415FD3 (float / frames-per-second), _ftol @ 0x00BFEA70,
@@ -8,10 +9,7 @@
 // from GenParams: retail CArray 0xc, STLport list one word): CreatedCreatures (list node) +0x18, CreatureTriggerers +0x1c,
 // GenParams +0x28 (SelfTriggerRadius +0x2c, SelfTriggerResetInterval +0x34), Active +0x4c, ExternalTrigger +0x4f,
 // WaitForAllCreaturesDead +0x50, NumTriggersLeft +0x54, ActivationFrame +0x58, LastSpaceTest +0x5c, UndeadTriggered +0x88.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }

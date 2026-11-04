@@ -1,5 +1,6 @@
 // std::vector<pair<unsigned long,C3DHelperPoint> >::_M_insert_overflow(pair<unsigned long, C3DHelperPoint>* position, const pair<unsigned long, C3DHelperPoint>& x, const __false_type&, unsigned int fill_len, bool atend) -- grow the helper-point vector: allocate max(2*size, size+fill_len) slots, copy the head, fill_len copies of x and (unless appending) the tail, free the old block
 // Leaf: _M_insert_overflow
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A33D90, 232 bytes (+ int3 padding), thiscall `ret 14h`.
 // Identity: the regrowth of CVectorMap<unsigned long, C3DHelperPoint> (C3DMeshStats::HelperPoints); called by its Insert
 //   0x00A34950 and two inlined push_backs (0x00A2F95F, 0x00A346A4). The catalog's
@@ -19,10 +20,7 @@
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DHelperPoint { public:                                // 16 bytes (Ego_r.pdb)
     C3DVector Position;                                // +0x00

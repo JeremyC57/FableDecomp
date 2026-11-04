@@ -1,5 +1,6 @@
 // std::__unguarded_partition(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __pivot, _Compare __comp) -- (CThing* elements, CThingCompare_NearestToPos) STLport Hoare partition: advance first past elements that compare before the pivot, retreat last past those the pivot compares before, swap the pair, until the cursors cross; return first
 // Leaf: ??$__unguarded_partition@PAPAVCThing@@PAV1@VCThingCompare_NearestToPos@@@std@@YIPAPAVCThing@@PAPAV1@0PAV1@VCThingCompare_NearestToPos@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A36A0, 126 bytes, `__fastcall` (first in ecx, last in edx; the pivot and the
 //   12-byte comparator by value on the stack), `ret 10h`, returns first in eax; /O2 TU (16-aligned loop heads).
 // Identity (proven): std::__unguarded_partition<CThing**, CThing*, CThingCompare_NearestToPos>; evidence: its comparator callee 0x007A2F90 is CThingCompare_NearestToPos::operator()<CThing> (FableWin.pdb and the bindings), the 12-byte comparator (Pos) is passed by value (`ret 10h`), and its only caller is the introsort loop 0x007A4140, whose binding is ??$__introsort_loop@PAPAVCThing@@PAV1@HVCThingCompare_NearestToPos@@@std@@ (sort 0x007A4260, used by CTCWillLightning::GetTargets and CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom); FableWin.pdb has _Unguarded_partition<CThing**, CThingCompare_NearestToPos>.
@@ -9,12 +10,7 @@
 // Body: STLport 4.6 _algo.c `for (;;) { while (__comp(*__first, __pivot)) ++__first; --__last; while (__comp(__pivot, *__last))
 //   --__last; if (!(__first < __last)) return __first; iter_swap(__first, __last); ++__first; }` (the J052 model) with the inline
 //   STLport iter_swap (__iter_swap through the value type: a pointer swap).
-class C3DVector {                                        // Ego_r.pdb 12 bytes
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 class CThing;
 class CThingCompare_NearestToPos {                       // Ego_r.pdb 12 bytes
 public:

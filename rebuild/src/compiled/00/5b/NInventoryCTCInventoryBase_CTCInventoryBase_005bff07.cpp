@@ -4,6 +4,7 @@
 // 0x009BE830/870/8B0/6C0/610/590, GFGetSystemManager 0x009A4EC0, CGraphicBankManager::CreateAndInitialize 0x009F83D0,
 // ~CCountedPointer<CGraphicDataBank> 0x00419108, CTCBase::AddToGlobalTCs 0x00686ED0. Vtable 0x01253DBC.
 // Leaf: ??0CTCInventoryBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Layout: local model -- retail CTCInventoryBase is the PDB layout minus 0x14 from the tail (no engine header;
 // offsets from this ctor's stores and from UpdateInventoryAnim 0x005BD699: angles +0xfc..+0x110, def index +0x128).
@@ -80,7 +81,7 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
 
 struct CDefPointerBase { void* Object; CDefPointerBase() : Object(0) { } };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 class C2DBoxF { public: float X0, Y0, X1, Y1; };
 struct CPresentationIntervalDesc { long a, b; };

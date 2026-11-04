@@ -1,5 +1,6 @@
 // NScript::CQ_UndeadRisingScript::ActivateNextLamp() -- light the next graveyard lamp
 // Leaf: ?ActivateNextLamp@CQ_UndeadRisingScript@NScript@@QAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E0E040, 668 bytes, thiscall, plain `ret`, no EH frame.
 // Identity (proven): the landed CUndeadRisingZombieAttacker::OnPredicateFail 0x00E0DE90 spawns this member function (member
 //   pointer store) under the name "ActivateNextLamp"; Ego_r.pdb names ?ActivateNextLamp@CQ_UndeadRisingScript@NScript@@QAEXXZ.
@@ -69,10 +70,7 @@ public:
         return *this;
     }
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 #include "engine/CLevelScriptBase.h"

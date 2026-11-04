@@ -12,13 +12,10 @@
 // caller (0x007A0FD6) builds it from CThing::GetPosition().
 // The catalog label "MakeHeap_AndSort" is propagated.
 // Leaf: ??$sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 
 #pragma pack(push, 1)
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CThing;

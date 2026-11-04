@@ -1,5 +1,6 @@
 // CFilter_Bind4::operator()(const CThingGameObject& thing) -- a game object passes the combat strike search when it is not the striker, is a strike-to-strike target, its hit-location bounding sphere overlaps the strike sphere and the striker can collide or interact with it
 // Leaf: ??$?RVCThingGameObject@@@?$CFilter_Bind4@VCThingFilter_IsNot@@VCThingFilter_CombatIsStrikeToStrike@?A0x
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085B160, length 221 bytes (+3 int3), thiscall `ret 4`, bool in eax. No call or
 //   address reference reaches it in retail (an out-of-line COMDAT instance, like the landed 0x0063F2C0 / 0x00669040).
 // Full name (Ego_r.pdb name set): CFilter_Bind4<CThingFilter_IsNot, `anonymous namespace'::CThingFilter_CombatIsStrikeToStrike,
@@ -73,10 +74,7 @@ __declspec(noinline) CTCInterfaceEntry* CTCInterfaceMap::LowerBound(const long& 
 }
 #pragma auto_inline(on)
 class CThingGameObject : public CThing { };
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CTCHitLocations {                                 // interface 0x7F
 public:
     void GetBoundingSphere(C3DVector& centre, float& radius, bool flag) const;   // 0x00815420

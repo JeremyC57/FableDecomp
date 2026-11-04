@@ -1,5 +1,6 @@
 // std::__linear_insert(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph val, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI insertion step: if val sorts before *first shift [first, last) up one and store val at first, else the unguarded insert from last
 // Leaf: ??$__linear_insert@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A46530, length 169 bytes, `ret 18h`.
 // Caller: 0x00A466CF __insertion_sort<C3DSkeletalBoneMorph*> (landed 0x00A46680 calls this address as __linear_insert).
 // Callees: 0x00A45910 __copy_backward(first, last, result, const random_access_iterator_tag&, int*) (landed), 0x00A45B00
@@ -20,11 +21,7 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class C3DVector {                                    // retail C3DVector: memberwise user copy ctor, implicit operator=
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DSkeletalBoneMorph {
 public:

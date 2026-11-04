@@ -1,5 +1,6 @@
 // CContainmentVolume::Initialise(const CPlane* planes, unsigned long count, CMovableResourceMemoryPool* pool) -- size the plane array (movable pool block when a pool is given, else new CPlane[count]) and copy the planes in
 // Leaf: Initialise
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A755C0, 174 bytes, `ret 0xc`.
 // Callees: CMovableResourceMemoryPool::AllocateResource(long*, CMovableResource*, ulong, ulong) 0x00A62E40,
 //   CHandleBasedMemoryPool::GetPointerFromHandle(long) 0x00A026B0, operator new[] 0x00BFEB22,
@@ -16,11 +17,7 @@
 
 void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CPlane { public:
     C3DVector Normal;

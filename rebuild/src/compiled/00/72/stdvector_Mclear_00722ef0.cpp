@@ -1,5 +1,6 @@
 // std::vector::_M_clear() -- (vector<CTCSmokeGenerator::CGenerationPos >) STLport 4.6 `_M_clear()`: destroy every element, then free the block (the reallocating branch of vector::operator=)
 // Leaf: ?_M_clear@?$vector@VCGenerationPos@CTCSmokeGenerator@@V?$allocator@VCGenerationPos@CTCSmokeGenerator@@@std@@@std@@IAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00722EF0, 50 bytes (+ int3 padding to 64), thiscall, plain `ret`.
 // Identity (proven): vector<CTCSmokeGenerator::CGenerationPos >::_M_clear; evidence: its only caller is the vector operator= 0x00722F30 (20-byte elements), which CTCSmokeGenerator's virtual 0x00722570 (vtable slot 12) tail-calls on this+0x10 after copying GenerationDistance (+0x0C) -- Ego_r.pdb's CTCSmokeGenerator::GenerationPositions, vector<CTCSmokeGenerator::CGenerationPos>
 // Label: the manifest's "ResetRings" is propagated (family H071: six destroy-and-free bodies -- STLport ~vector (with the inline
@@ -68,7 +69,7 @@ protected:
     }
 };
 }
-class C3DVector { public: float X, Y, Z; };                  // 12 bytes
+#include "engine/C3DVector.h"
 class CTCSmokeGenerator {
 public:
     class CGenerationPos {                                     // 20 bytes (Ego_r.pdb)

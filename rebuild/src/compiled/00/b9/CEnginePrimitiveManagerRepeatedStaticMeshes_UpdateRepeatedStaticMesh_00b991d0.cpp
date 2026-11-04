@@ -1,4 +1,5 @@
 // CEnginePrimitiveManagerRepeatedStaticMeshes::UpdateRepeatedStaticMesh(const CEnginePrimitiveHandle&, const NEnginePrimitiveManagerRepeatedStaticMeshes::CAddMeshDesc&) -- replace a repeated-static-mesh primitive's descriptor fields, derived fade values, and conditional mesh load
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail body: 0x00B991D0, 0x127 bytes. Native callers: 0x00B9AB96 (new repeated-mesh primitive) and 0x00B31FE6 (renderer forwards to manager at +0x290).
 // PDB signatures in both ghidra_out/egor_pdb_names.tsv (0x00A513C0) and fablewin_pdb_names.tsv (0x02ECF4D0) identify this method and its const handle/descriptor references; donor addresses are not treated as retail addresses.
 // Actual layout headers are included below. The base and repeated-mesh headers are separate ABI views of the same native object: the target writes the named base prefix through +0x28 and named repeated-mesh fields from +0x50; the eight bytes at +0x48 remain opaque. No inheritance claim is needed for these field accesses.
@@ -18,11 +19,7 @@ public:
     void BeginLoading(unsigned long, bool, bool) const;   // 0x00A256F0
 };
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class C3DBoundingBox { public:
     C3DVector MinCoord;

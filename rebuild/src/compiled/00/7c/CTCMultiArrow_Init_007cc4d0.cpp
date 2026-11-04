@@ -1,5 +1,6 @@
 // CTCMultiArrow::Init() -- load SPECIAL_ABILITIES_MULTI_ARROW_DEF, take the spell level from the owner's ability inventory, derive the shot/volley counts and the ammo-effect delay from the def, make the cast noise, put the effect on the weapon, create the first ammo effect, spawn the def's CAST_EFFECT at the owner and play the def's cast sound
 // Leaf: ?Init@CTCMultiArrow@@QAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CC4D0, 563 bytes, plain `ret`.
@@ -24,7 +25,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CDefPointeeBase { public:
     virtual void Destroy();

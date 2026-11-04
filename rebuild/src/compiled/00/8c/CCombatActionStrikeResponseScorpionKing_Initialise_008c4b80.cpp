@@ -1,5 +1,6 @@
 // CCombatAction_StrikeResponseScorpionKing::Initialise() -- the scorpion king's hit response: run the generic strike-response Initialise while keeping the body's facing angle, then spawn the definition's "EYE_GET_HIT" special effect at the creature and attach its particle emitter to the creature's EMITTER_EYE helper
 // Leaf: ?Initialise@CCombatAction_StrikeResponseScorpionKing@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4B80, length 302 bytes (plain `ret`, virtual).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8), the body's (+0x60) virtual slots 63 (+0xfc,
 //          GetFacingAngleXY) / 66 (+0x108, SetFacingAngleXY), CCombatAction_GenericStrikeResponseBase::Initialise 0x00865F40,
@@ -11,7 +12,7 @@
 // Shape: GetSubDef and GetEffectFromString are same-TU noinline stand-in bodies that write only their out slots, so the
 //          def slot and effectType do not escape: the frame packs into two words (the facing spill and effectType share one,
 //          the "EYE_GET_HIT" temporary reuses the def slot word, "EMITTER_EYE" reuses effectType's).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

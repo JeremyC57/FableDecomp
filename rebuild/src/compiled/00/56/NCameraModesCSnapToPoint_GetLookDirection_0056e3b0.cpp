@@ -1,16 +1,13 @@
 // NCameraModes::CSnapToPoint::GetLookDirection() const -- the LookDirection vector by value
 // Leaf: ?GetLookDirection@CSnapToPoint@NCameraModes@@UBE?AVC3DVector@@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0056E3B0, 33 bytes, thiscall, `ret 4` (the hidden result pointer).
 // Identity (proven): slot 29 of vtable 0x0124DE5C (RTTI .?AVCSnapToPoint@NCameraModes@@; the only vtable holding it); Ego_r.pdb
 //   ?GetLookDirection@CSnapToPoint@NCameraModes@@UBE?AVC3DVector@@XZ is the class's only C3DVector-returning virtual and LookDirection (Ego_r.pdb +0xE5) is the member
 //   read at retail +0xC1.
 // Shape (family M138, representative 0x0056E3B0): `return LookDirection;` -- C3DVector's copy (three dword moves) into the result.
 // Header debt: the class is modelled by the member's retail offset (its other members as opaque bytes; the class is byte-packed: the member sits at an odd offset).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(push, 1)
 namespace NCameraModes {
 class CSnapToPoint {

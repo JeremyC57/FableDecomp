@@ -1,4 +1,5 @@
 // NTCScriptedControl::CActionFollowCreature::OnCleanup() -- restore the creature's original physics component (re-added at the current position/orientation, then the saved component deleted), stop sneaking, restore hero-pushability when dynamic obstacles were not avoided, and clear the navigation's ignored thing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007158F0, length 372 bytes (plain `ret`).
 // Callees: the physics component's virtual slot 72 (+0x120, the current right-handed set), CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 /
@@ -20,11 +21,7 @@
 //   them (?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z; was QAE). Same bytes.
 class CTCBase;
 class CThing;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCharString { public:
     void* PStringData;

@@ -1,4 +1,5 @@
 // C3DMeshPartitionElement::ReadFromFile(CDataInputStream&) -- free the old sub-element tree, read the box, sphere and triangle range, then (if flagged) allocate both children and read them recursively
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC21E0, 1472 bytes, ret 4.
 // Callees: ReadWithSrcChunkOverflow 0x00993CA0, the scalar deleting destructor 0x00AC37B0 (grandchildren),
 //   operator delete 0x00BFE9BC, operator new 0x00BFEA1A, itself (the second recursion becomes the loop back to the top).
@@ -41,11 +42,7 @@ private:
 void* __cdecl operator new(unsigned int size);      // 0x00BFEA1A
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public:
     C3DVector Min, Max;
     void Set(const C3DVector& mn, const C3DVector& mx) { Min = mn; Max = mx; }

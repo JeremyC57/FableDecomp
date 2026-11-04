@@ -1,5 +1,6 @@
 // CScriptedMapBrush::RemoveThing(unsigned __int64 uid) -- forget a thing: drop its uid from the move map, the delete set and the add set
 // Leaf: ?RemoveThing@CScriptedMapBrush@@QAEX_K@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082E500, 183 bytes (+2 int3), thiscall `ret 8`.
 // Identity: Ego_r.pdb name set ?RemoveThing@CScriptedMapBrush@@QAEX_K@Z (QAEX_K: one unsigned __int64 by value); the
 //   three containers are the brush's ThingsToMove / ThingsToDelete / ThingsToAdd. The catalog label
@@ -17,10 +18,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void  __cdecl free(void* block);                 // 0x00BFEA14
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class C3DAngles {
 public:
     float X, Y, Z;

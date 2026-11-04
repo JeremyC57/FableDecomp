@@ -1,4 +1,5 @@
 // CV_MayorsInvitationScript::DoMission() -- activate the Expose Mayor quest, wait for BowerstonePosh, make sure Lady Grey exists, lock her front door until the mission succeeds and then unlock it
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EB75F0, 0x2b7 bytes, plain `ret`. PDB ?DoMission@CV_MayorsInvitationScript@NScript@@QAEXXZ.
 // Callees: CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940,
 //   CBaseClass() 0x0099A2D0, ~CScriptThing 0x004AA840, operator delete 0x00BFE9BC; CScriptThing slot 75 IsAlive (+0x12c),
@@ -21,7 +22,7 @@ void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                           // 0x0143E8E0
 struct CScriptThingImp {                                 // the game-side thing behind a CScriptThing
     virtual void i0(); virtual void i1(); virtual void i2(); virtual void i3(); virtual void i4(); virtual void i5();

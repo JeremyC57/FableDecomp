@@ -1,5 +1,6 @@
 // CCreatureAction_GiveMoneyToThing::PerformAction() -- take up to Amount gold from the creature's hero stats, post a received-money event to the receiver and, for a qualifying villager receiver, post the opinion deed (skipped for a married wife whose gift reaction is not running)
 // Leaf: ?PerformAction@CCreatureAction_GiveMoneyToThing@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00845040, 547 bytes, thiscall virtual, plain `ret`.
 // Identity: Ego_r.pdb / FableWin.pdb ?PerformAction@CCreatureAction_GiveMoneyToThing@@UAEXXZ (manifest label agrees); Ego_r
 //   CCreatureAction_GiveMoneyToThing {PReceivingThing CIntelligentPointer<CThing> +0xB4, Amount +0xBC} = retail +0xA8 / +0xB0
@@ -25,14 +26,7 @@ class CBaseObject;
 class CBaseObjectPointer;
 class CTCBase;
 class CTCPhysicsBase;
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-() const { return C3DVector(-X, -Y, -Z); }
-};
+#include "engine/C3DVector.h"
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 
 namespace std {

@@ -1,5 +1,6 @@
 // CAIStateGroup_OpinionReactionRoot::FleeIsRunnable() -- a creature reacting to a creature-type thing does not flee from a village member's home region when the village is not hostile over crime, the creature is not of creature type 1 and the region's def forbids both hero weapons and hero Will; otherwise it flees only when the thing is within 12 units
 // Leaf: ?FleeIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00984D90, 455 bytes; Ego_r.pdb ?FleeIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ (private).
 // Callees: CBaseIntelligentPointer::GetPItem const 0x00A01B50 (ThingReactingTo +0x6b, twice), CVectorMap<ETCInterfaceType,CTCBase*>::
@@ -26,7 +27,7 @@
 #include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
 class CTCBase { public: virtual ~CTCBase(); };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 enum ECreatureType { };
 template<class From, class To> inline To __fastcall GFDebugPDynamicCast(From value, To) { return static_cast<To>(value); }
 class CBaseObject { public: virtual ~CBaseObject(); void* IntelligentPointer; };

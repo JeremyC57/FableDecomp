@@ -1,5 +1,6 @@
 // std::sort_heap(CThing** first, CThing** last, CThingCompare_BestForTargeting2 comp) -- heap sort of targeting candidates under the 52-byte best-for-targeting comparator: pop the root to the back until one element remains
 // Leaf: sort_heap
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FA980, length 157 bytes (+ int3 padding), `ret 34h`.
 // Identity: the catalog label `_Sort_heap<pair<long,CDefPointer<CContextSensitiveItemDef const>>*,
 // CContextSensitivePriorityCompare>` is propagated over the byte-identical skeleton. The stride is 4 (`and -4 ;
@@ -15,7 +16,7 @@
 // user copy constructor (model of the landed sibling 0x007FA290, Ego_r.pdb layout); then `push 0` for the
 // value-type pointer. The byte count `last - first` lives in edi beside `last` in esi.
 class CThing;
-class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+#include "engine/C3DVector.h"
 class CVectorCompare_BestForTargeting { public:        // Ego_r.pdb, 44 bytes
     C3DVector AnchorPos;                        // +0x00
     C3DVector PreferredLine;                    // +0x0c

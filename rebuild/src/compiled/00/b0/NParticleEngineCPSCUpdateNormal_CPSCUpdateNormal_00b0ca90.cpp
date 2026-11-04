@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCUpdateNormal::~CPSCUpdateNormal() -- store the update-normal component vtable, kill every decal emitter, destroy the decal-emitter list and the emitter name, then the inline CPSCBase chain and ~CBaseClassNonCopyable
 // Leaf: ??1CPSCUpdateNormal@NParticleEngine@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0CA90, 60 bytes, thiscall, tail `jmp ~CBaseClassNonCopyable` 0x0099A300; no
 //   callers (the slot-0 `??_G` 0x00B0F990 of vtable 0x0129FC1C holds the same body inline).
 // Identity (proven): the first store is vtable 0x0129FC1C (RTTI .?AVCPSCUpdateNormal@NParticleEngine@@ : CPSCBase :
@@ -92,10 +93,7 @@ public:
 };
 
 #pragma pack(push, 1)
-class C3DVector {                                          // retail C3DVector is 1-aligned
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace NParticleEngine {

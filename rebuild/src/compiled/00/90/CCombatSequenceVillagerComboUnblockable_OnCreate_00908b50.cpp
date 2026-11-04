@@ -1,4 +1,5 @@
 // CCombatSequence_VillagerComboUnblockable::OnCreate -- enqueue two interruptable mid-attacks and one non-blockable villager knockdown action.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail address 0x00908b50, 296 bytes. Native sequence fields are owner +0x1c and target +0x20. The first two actions use the audited 81-slot InterruptableMidAttack hierarchy and inline CCombatActionBase ctor 0x00857f30 (code 150, zero sound pair); the third is the external RTTI-confirmed VillagerAttackKnockdown ctor 0x0097cf90 (PDB9A2B60 two Creature references, native zero-offset Thing base view, Blockable=false).
 // Counted-pointer reset is 0x00905fd0, AddAction 0x008b0b10, and base OnCreate 0x008b0650. The interruptable action has native size 0x118; its +0x114 InterruptTime remains uninitialized by this ctor.
 #define CCombatSequence_VillagerComboUnblockable CCombatSequence_VillagerComboUnblockable_PDB
@@ -26,7 +27,7 @@
 
 class CThingCreatureBase;
 class CThing;
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CTCWeaponTrail;
 class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();

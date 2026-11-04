@@ -1,5 +1,6 @@
 // 004c7da0 CThing::GetChecksum
 // Leaf: ?GetChecksum@CThing@@UBEKXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 #define CClass CClassLayout
 #include "engine/CClass.h"
@@ -61,7 +62,7 @@ enum ETCInterfaceType {};
 class CPersistContext;class CMemoryDataInputStream;class CInterpolationInfo;
 class CThingInfo;class CEditEngineDrawInfo;class CEnginePrimitivePrepareInfo;
 class CThingDrawInformation;class CThingPhysicalDebugInfo;enum ECollideType {};
-class C3DVector{public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CThingManager;
 class CThing:public CClass {
 private:static CThingManager*PCurrentThingManager;

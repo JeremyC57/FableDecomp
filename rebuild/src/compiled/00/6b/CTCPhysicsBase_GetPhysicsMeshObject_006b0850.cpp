@@ -1,5 +1,6 @@
 // CTCPhysicsBase::GetPhysicsMeshObject() -- build a CPhysicsMeshObject for the thing: its physics mesh from the world's mesh bank (by the mesh info's bank index), the current position, the orientation set and the render size scaled by 0.01
 // Leaf: GetPhysicsMeshObject
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006B0850, 128 bytes.
 // Callees: CTCPhysicsBase virtual slots 93 (+0x174, GetPhysicsMeshInfo -> CThingPhysicsMeshInfo*) and 72 (+0x120, the orientation
 //   set; base 0x006B1290), CTCBase::GetWorld @ 0x00686A80, the mesh bank's physics-mesh-info lookup @ 0x00A24250 (catalog
@@ -10,7 +11,7 @@
 // Shape: the mesh info, the bank and the bank's physics mesh info are named locals (edi / eax / ebx) taken before the argument list; the ctor's
 //   arguments evaluate right to left (scale, orientation, position, the GetMesh temporary); the temporary counted pointer is
 //   released with the inline ReleaseTemporary (DecRef / GetRefCount on the ref-count base at +4).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 struct CRefCounted {
     long m_count;

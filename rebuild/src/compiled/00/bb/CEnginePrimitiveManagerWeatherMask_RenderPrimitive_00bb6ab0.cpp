@@ -1,4 +1,5 @@
 // CEnginePrimitiveManagerWeatherMask::RenderPrimitive(CEngineInternalPrimitiveBase&, EEngineRenderLayer, CEngineSubPrimitiveChain&) -- when enabled, queues the weather mask as a pool-allocated sub-primitive at the distance of its bounding-sphere centre from the camera (alpha 0xff, render flags 1); returns 2 (rendered), else 0
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- the squared distance is accumulated in three statements (`float d2 = dy * dy; d2 += dz * dz; d2 += dx * dx;`), which fixes the x87 square order to Y, Z, X as retail; a single-expression sum squares Z first
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BB6AB0, length 150 bytes (+ int3 padding).
 // Callees: 0x00BEB540 CEngineSubPrimitiveBase::operator new (`__fastcall`, size 0x18 in ecx), 0x0099A2F0 CBaseClassNonCopyable::CBaseClassNonCopyable(),
@@ -11,7 +12,7 @@
 // argument slot across the operator new call), the sub-primitive's constructor chain is inlined as in 0x00BBA340.
 #include <math.h>
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CBaseClassNonCopyable {
 protected:

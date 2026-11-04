@@ -1,5 +1,6 @@
 // CWorld::SetSaveGameMarkerPos(const C3DVector& pos) -- remember where the save-game marker is and, when the main player's hero is alive, its facing angle as the marker angle
 // Leaf: ?SetSaveGameMarkerPos@CWorld@@QAEXABVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049E590, 78 bytes (+2 int3 padding), thiscall, `ret 4`.
 //   Ego_r.pdb ?SetSaveGameMarkerPos@CWorld@@QAEXABVC3DVector@@@Z (0x004A77F0).
 // Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0, the hero's physics component
@@ -9,7 +10,7 @@
 //   not used here. The packing (C3DVector at an odd offset, a 15-byte slot before the float) is the PDB's own. CThing: PhysicsTC +0x60 (PDB +0x70),
 //   Dead +0x91 bit 0 (PDB +0xA1) -- the retail offsets landed CThing models use.
 // Shape: the vector assignment through a `lea` of the unaligned member; the alive test is the inlined dead-bit check.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

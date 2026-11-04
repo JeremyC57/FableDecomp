@@ -1,5 +1,6 @@
 // NScript::CV_ParanoidWhispersScript::CSecretWhisperingFriend::Init() -- hand the friend's own thing to the game interface (slot 477 with 1), then remember where it starts (StartPos = Me.GetPos())
 // Leaf: ?Init@CSecretWhisperingFriend@CV_ParanoidWhispersScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity (naming wave 11): ?Init@CSecretWhisperingFriend@CV_ParanoidWhispersScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F11F8 slot 2 is stored by the factory 0x00EC0A50 registered as "SecretWhisperingFriend"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EC0B00, 50 bytes (vtable entry at 0x012F1200 of the script's table).
 // Callees: the game interface's virtual slot 477 (+0x774, `(const CScriptThing&, long)`: the same slot the
@@ -18,9 +19,7 @@
 #define SCRIPT_SLOT(n) virtual void slot##n()
 #define SCRIPT_SLOTS10(d) SCRIPT_SLOT(d##0); SCRIPT_SLOT(d##1); SCRIPT_SLOT(d##2); SCRIPT_SLOT(d##3); SCRIPT_SLOT(d##4); SCRIPT_SLOT(d##5); SCRIPT_SLOT(d##6); SCRIPT_SLOT(d##7); SCRIPT_SLOT(d##8); SCRIPT_SLOT(d##9)
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"

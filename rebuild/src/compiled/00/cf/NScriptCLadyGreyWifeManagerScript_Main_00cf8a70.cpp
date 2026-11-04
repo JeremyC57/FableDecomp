@@ -1,5 +1,6 @@
 // NScript::CLadyGreyWifeManagerScript::Main() -- once Lady Grey exists, every few frames: while her regions are loaded and she is
 // Leaf: ?Main@CLadyGreyWifeManagerScript@NScript@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   alive and married to the hero, bring her out of limbo next to the hero and (by time of day) to her Bowerstone appear
 //   point or the mayor's bedroom, or send her back into limbo; if she is no longer the hero's wife deactivate the quest;
 //   then wait for the hero's region to change
@@ -10,7 +11,7 @@
 //   ebp) and calls 0x004AA840 for the later ones.
 // Naming wave 35: identity CScriptInfoManager::RegisterScripts 00cd52d0 stores Alloc 00cf91c0 at 00cd5770 with name "LadyGreyWifeManager"; Alloc news + stores script vtable 012c6c10; PDB ?Alloc@CLadyGreyWifeManagerScript@NScript@@SIPAVCScriptBase@@; script vtable slot 2 (slot 1 pushes "Main" 0x012C2F94); PDB Main; refs=1; was CLadyGreyWifeManagerScript::Main (namespace spelling) (wave3/labels_alloc.tsv); PDB ?Main@CLadyGreyWifeManagerScript@NScript@@UAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CLadyGreyWifeManagerScript@@UAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

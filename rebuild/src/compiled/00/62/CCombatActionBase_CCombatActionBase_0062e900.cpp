@@ -1,5 +1,6 @@
 // CCombatActionBase::~CCombatActionBase() -- member-by-member destruction of the combat action (last-weapon pointer, animation vector, strike-event list, melee ability def, camera point, target), then ~CCreatureActionBase
 // Leaf: ??1CCombatActionBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0062E900, length 123 bytes (tail `jmp` into the base dtor). Catalog label
 // "CTCLightningOrb::~CTCLightningOrb" is propagated: the body works on the CCombatActionBase members (Ego_r.pdb) and is called by
 // the combat-action deleting dtors (landed 0x008C9690, 0x008CED90, 0x008CEDD0) and by the restart temporaries of the landed
@@ -66,7 +67,7 @@ template<class T> struct CPtrVector {                       // STLport vector<T*
     T** _M_end_of_storage;
     ~CPtrVector() { if (_M_start) free(_M_start); }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMeleeCombatAbilityDef;
 class CCreatureActionBase { public:                                // retail sizeof 0xA8
     virtual ~CCreatureActionBase();                         // 0x00693EF0

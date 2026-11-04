@@ -1,4 +1,5 @@
 // NCreatureMode::CModeJackOfBladesFloat::OnActivate() -- spawn the FLOAT_POWER effect at the creature and attach it to the creature's target cursor point
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D9740, 293 bytes, plain `ret` (virtual).
 // Callees: CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580, CCharString(const char*, long) 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString(const CCharString&, long&) 0x00669D30,
@@ -9,7 +10,7 @@
 //   nor the effect type escapes: the slot word is reused by the "FLOAT_POWER" string, the effect-type word by the
 //   intelligent-pointer temporary and the bone-name string (frame 0xc); the definition is a counted reference in its own
 //   block (add-ref, GetSubDef, release), the effect sub-def is released by hand at the end (known non-null: no test).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

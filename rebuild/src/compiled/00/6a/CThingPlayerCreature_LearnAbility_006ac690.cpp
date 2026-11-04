@@ -1,5 +1,6 @@
 // CThingPlayerCreature::LearnAbility(EHeroAbility ability, bool learn, long quickAccessSlot, bool silent) -- learning: unless already available, spawn the ability's inventory object at the hero, add it to the inventory, mark the ability available and give it a quick-access slot; unlearning: mark it unavailable and take the matching object out of the inventory
 // Leaf: ?LearnAbility@CThingPlayerCreature@@QAE_NW4EHeroAbility@@_NJ1@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AC690, length 628 bytes (`ret 0x10`).
 // Callees: LowerBound @ 0x0040F020, CTCInventoryAbilities::IsAbilityAvailable @ 0x005EDF08 / GetAbilityPDef @ 0x005EDFD9
@@ -12,7 +13,7 @@
 //   bit 0; CHeroAbilityDef inventory object +0x98; interfaces 0x11 inventory, 0x1a inventory item, 0x6f abilities.
 // Shape: the def pointer returned by value is homed in the dead `learn` slot; its release is the null-tested
 //   CDefPointer dtor calling the pointee's inline ReleaseTemporary() (DecRef / GetRefCount).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0

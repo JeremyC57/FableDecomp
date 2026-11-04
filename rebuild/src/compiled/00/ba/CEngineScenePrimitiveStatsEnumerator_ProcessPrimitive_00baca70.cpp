@@ -1,5 +1,6 @@
 // CEngineScenePrimitiveStatsEnumerator::ProcessPrimitive(CEngineInternalPrimitiveBase& primitive) -- count a primitive into the stats when it lies in the enumerator's 2D area: by its world position when it has one (half-open containment), else by its world bounding box (overlap of the XY extents)
 // Leaf: ProcessPrimitive
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BACA70, length 270 bytes (`ret 4`, virtual `?ProcessPrimitive@CEngineScenePrimitiveStatsEnumerator@@UAEXAAVCEngineInternalPrimitiveBase@@@Z`).
 // Callees: the primitive's virtual slots 15 (+0x3c, GetWorldPosition(C3DVector&) -> bool), 17 (+0x44, GetBoundingBoxWorldSpace
 // (C3DBoundingBox&) -> bool) and 2 (+0x08, the stats accumulation, (stats, a, b) from the enumerator's +0x04/+0x18/+0x1c).
@@ -10,7 +11,7 @@
 // `if`, VC7.1 cross-jumps the last position test into the box arm's final compare). `x >= min` is `test ah,1 ; jne`,
 // `x < max` is `test ah,5 ; jp`; the overlap uses named float locals `lo = box.Min > area.Min ? box.Min : area.Min`,
 // `hi = box.Max < area.Max ? box.Max : area.Max` and `lo < hi` (`fcomp st(1)` + `fstp`).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector Min, Max; };
 class C2DBoxF { public:
     float MinX, MinY, MaxX, MaxY;

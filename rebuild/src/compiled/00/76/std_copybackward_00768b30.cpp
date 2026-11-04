@@ -1,5 +1,6 @@
 // std::__copy_backward(first, last, result, const random_access_iterator_tag&, int*) -- (pair<unsigned long, C3DVector> elements) STLport random-access copy_backward: assign [first, last) from the back so that it ends at result, return the new start of the destination
 // Leaf: ??$__copy_backward@PAU?$pair@KVC3DVector@@@std@@PAU12@H@std@@YIPAU?$pair@KVC3DVector@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00768B30, 68 bytes (+ int3 padding), /Gr __fastcall (first ecx, last edx; result,
 //   the tag reference and the distance-type pointer on the stack), `ret 0Ch`; speed TU (`sar eax,4` count).
 // Identity (proven): __copy_backward<pair<unsigned long, C3DVector>*, pair<unsigned long, C3DVector>*, int>; evidence: its one checked caller is the __linear_insert 0x0076AAE0 (unsigned 16-byte keys, `copy_backward(first, last, last + 1)` at 0x0076AAFB), reached through the __insertion_sort 0x0076AEC0 from the sort 0x0076C000 whose introsort loop 0x0076BE30 is the landed pair<unsigned long, C3DVector> instance (CParticleUpdateCCompareVector<unsigned long>; NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long> keeps that map); the TU's other 16-byte map (CParticleUpdateParamDesc) sorts through 0x0076C1A0.
@@ -7,10 +8,7 @@
 //   address; retail has no identical-code folding, so each address is one instantiation).
 // Shape: STLport 4.6 `for (_Distance __n = __last - __first; __n > 0; --__n) *--__result = *--__last; return __result;`
 //   over a trivially assignable 16-byte element (the assignment is four dword moves through ebx).
-class C3DVector {                                       // 12 bytes
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;

@@ -1,4 +1,5 @@
 // CTCTavernGameCardBase::GetPackPosition() -- the card pack's table position: the def's pack offset scaled by the card size, on the table plane (z 0)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F0B80, length 71 bytes (ret 4: hidden C3DVector result). Name: Ego_r.pdb
 // `?GetPackPosition@CTCTavernGameCardBase@@QAE?AVC3DVector@@XZ`; the catalog label "CTCTavernGame::GetBanter" is
 // propagated over this body and rejected.
@@ -11,10 +12,7 @@
 // local pointer and a local count -- the member form re-reads the slot after the store (82v73).
 class C2DVector { public: float X, Y; };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 struct CDefPointee {                         // counted def: count at +4, slot 1 destroys
     virtual void v00();

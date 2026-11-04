@@ -2,6 +2,7 @@
 // Retail 0069F0F0,252 bytes. PDB signature confirms creature&, string&, item&, long,long, action*.
 // Base nativeA8 with genuine70-slot API; animation entry native16 follows PDB fields. No leaf generated header exists.
 // Leaf: ??0CCreatureAction_UnsheatheItemFromInventory@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 #include <new>
 #define CCreatureActionBase CCreatureActionBasePdb
 #include "engine/CCreatureActionBase.h"
@@ -12,7 +13,7 @@
 class CThing;
 class CThingCreatureBase;
 class CTCWeaponTrail;
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CThingCreatureBase;
 class CSoundPair { public: long first; long last; CSoundPair():first(0),last(0) {} };
 class CAnimationEntry;

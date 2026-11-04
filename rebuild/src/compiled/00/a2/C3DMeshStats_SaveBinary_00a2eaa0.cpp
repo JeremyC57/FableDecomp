@@ -1,4 +1,5 @@
 // C3DMeshStats::SaveBinary(CDataOutputStream&) const -- write the name, flags, bounds, table sizes, the raw helper/dummy/name blocks, then each mesh volume and generator
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail @ 0x00A2EAA0, 407 bytes (ret 4).
 // Callees (CDataOutputStream): WriteBool 0x00993E30, WriteUShort 0x00993E80, WriteULong 0x00993EA0, WriteLong 0x00993EB0,
 //   WriteFloat 0x00993EE0, Write3DVector 0x00993FD0, WriteMatrix3x4 0x00994070, WriteNullTerminatedString 0x00995AE0,
@@ -12,7 +13,7 @@
 // C3DGeneratorObject), PackedNames +0x74, PackedNamesSize +0x78, AnimatedFlag +0x7A. Retail CVectorMap is 16 bytes and
 // CArray 12 bytes (the PDB has 20/16), so every member after MeshVolumes sits 4 or 8 bytes below the PDB offset.
 class CCharString { public: void* m_pStringData; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public: float m_row[3][4]; };
 
 class CDataOutputStream { public:

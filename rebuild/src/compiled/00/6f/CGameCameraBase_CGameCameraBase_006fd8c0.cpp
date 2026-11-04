@@ -1,5 +1,6 @@
 // CGameCameraBase::CGameCameraBase(CWorld& world) -- build the internal camera at the origin looking down +Z (up 1,1,1), default the last camera, store the world, set the orbit defaults (theta 0.2, phi 1.25, radius 10 and their fixed copies), empty the two coordinate lists, arm the trigger frame 1.5 s ahead and clear the building UID
 // Leaf: ??0CGameCameraBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006FD8C0, length 294 bytes (+ int3 padding), `ret 4`.
@@ -23,10 +24,7 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CCamera { public:                                        // 0x38 bytes
     float          WorldPosition[3];                    // +0x00
     float          RHSet[6];                            // +0x0c CRightHandedSet

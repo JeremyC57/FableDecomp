@@ -1,5 +1,6 @@
 // CCreatureAction_BanditKingStuck::Initialise() -- animation BK_STUCK; unless a live stuck effect exists, create the creature's STUCKLOOP special effect at its position, keep it in PStuckEffect and attach it to the creature through its particle emitter; then the base Initialise
 // Leaf: ?Initialise@CCreatureAction_BanditKingStuck
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C8380, 455 bytes (464 with padding), virtual Initialise.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation
@@ -16,7 +17,7 @@
 //   the created thing goes through a CIntelligentPointer<CThing> temporary assigned with GetPItem/SetPItem, built
 //   straight from the CreateSpecialEffect call (a named `created` local puts the temporary over the effect word);
 //   CalcAndLookup / GetSubDef have same-TU out-only stand-ins, LowerBound a same-TU body, GetInterface the ternary pick.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 class CThing;
 

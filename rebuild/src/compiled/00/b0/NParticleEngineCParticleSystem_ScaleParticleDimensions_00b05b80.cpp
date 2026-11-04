@@ -1,17 +1,14 @@
 // NParticleEngine::CParticleSystem::ScaleParticleDimensions(unsigned long&) const -- when ScaleParticles is set, scale an integer dimension by the largest component of the system scale (truncated)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B05B80, length 117 bytes (padded to 128).
 // Leaf: ?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAK@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: _ftol @ 0x00BFEA70.
 // Identity: the integer twin of 0x00AF8F00 (same layout and MAX(MAX(x, y), z) shape); its only caller is 0x00B09241. The
 // overload is FableWin.pdb / Ego_r.pdb ?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAK@Z (the AAVC2DVector / AAK /
 // AAM / AAVC3DVector set); the caller passes &TrailUpdatePrimitive.MaxLength, an unsigned long (+0xC0). `imul ecx,[eax] ; mov [eax],ecx`.
 // Shape: `dimension *= (long)MAX(...)` -- the float maximum truncated through _ftol, then multiplied into the reference.
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 namespace NParticleEngine {
 class CParticleSystem { public:
     unsigned char _system[0x50];

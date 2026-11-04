@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCUpdateNormal::DatabaseCopy(const CPSCBase* source) -- refresh this update component from its database template: every parameter field and flag bit, in the editor's field order, then the decal emitter name
 // Leaf: DatabaseCopy
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0B370, length 592 bytes (`ret 4`); slot 18 of vtable 0x0129FC1C.
 // Callees: CCharString::operator= @ 0x0099EFB0 (DecalEmitterName, a sibling call).
 // Layout: Ego_r.pdb CPSCUpdateNormal (0xa8) matches retail here: the ulong bit-field word +0x0c (FadeInEndInteger:10,
@@ -12,9 +13,7 @@ class CCharString { public:
     CCharStringData* m_pData;
     const CCharString& operator=(const CCharString& other);                  // 0x0099EFB0
 };
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 namespace NParticleEngine {
 class CPSCBase { public:
     virtual void v00();

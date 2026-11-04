@@ -1,4 +1,5 @@
 // CGamePlayerInterface::SavePacketEvent(const CInputEvent& event) -- record an input event into the packet file: build a CSavedInputEvent holding the event, the game frame and (when the loader has a mouse device) the mouse position, and write its 0x78 bytes through the packet file
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00445A60, length 124 bytes (+ int3 padding). `ret 4`.
 // Callees: CInputEvent::CInputEvent @ 0x00A04410 and ~CInputEvent @ 0x00A03B30 (as the landed CSavedInputEvent constructor 0x00447BB0 /
 // CInputProcessTargetLockCycleTargets::Update), CMainGameComponent's frame getter @ 0x00416225 (`mov eax,[ecx+48h] ; ret`; label
@@ -16,7 +17,7 @@ class CInputEvent { public:                                    // 0x34 bytes
 };
 
 class C2DVector { public: float X, Y; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCamera { public:
     C3DVector       WorldPosition;                      // +0x00

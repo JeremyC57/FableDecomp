@@ -1,4 +1,5 @@
 // CEnginePrimitiveManagerRepeatedStaticMeshes::UpdateBoneMatrixForWindSheer(CEngineInternalPrimitiveRepeatedStaticMesh*, C4DVector*, unsigned char*, long) -- for each object, write the delayed wind-sheer offset (X, Y of the history slot named by the object's delay byte, scaled by the primitive's WindScaleFactor) into the Z/W of its bone-matrix row
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B990B0, length 288 bytes (`ret 10h`, `this` unused).
 // Callees: none. Globals: the engine system @ 0x01436E48 holds the wind-sheer history (12-byte C3DVector records) at +0x31c.
 // Layout: engine/CEngineInternalPrimitiveRepeatedStaticMesh.h (WindScaleFactor +0xa0); the manager is engine/
@@ -9,9 +10,7 @@
 #include "engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h"
 #include "engine/CEngineInternalPrimitiveRepeatedStaticMesh.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class C4DVector { public:
     float X, Y, Z, W;
 };

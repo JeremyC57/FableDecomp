@@ -1,5 +1,6 @@
 // CTCDParticleEmitter::Create(const CCharString& emitterName, const C3DVector& position, bool forceParticleToLoad) -- by-name particle emitter creation: look the emitter template up in the particle database and forward to the typed Create; null while compiling the front-end definitions or for an unknown name
 // Leaf: ?Create@CTCDParticleEmitter@@SIPAVCThing@@ABVCCharString@@ABVC3DVector@@_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c (caller respell): calls 0x00AEAAE0 as NParticleEngine::GetParticleEmitterDatabase() (?GetParticleEmitterDatabase@NParticleEngine@@YIAAVCParticleEmitterDatabase@1@XZ, FableWin.pdb + Ego_r.pdb); the database class is NParticleEngine::CParticleEmitterDatabase, its GetEmitterTemplateHandleFromName the const FableWin.pdb ?GetEmitterTemplateHandleFromName@CParticleEmitterDatabase@NParticleEngine@@QBEJABVCCharString@@@Z (was a static CParticleEmitterDatabase::Get()).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E0970, 53 bytes, static `__fastcall` (ecx = name, edx = position), `ret 4`.
 // Identity: Ego_r.pdb name set `?Create@CTCDParticleEmitter@@SIPAVCThing@@ABVCCharString@@ABVC3DVector@@_N@Z`; 17 callers.
@@ -9,7 +10,7 @@
 // Globals: g_bCompileFrontendDefinitions @ 0x013B8648 (bool, as named by the landed boot code).
 // Shape: the name is pushed before the database getter (arguments first, then the object expression); the typed
 //   overload is called (not tail-jumped) and its result returned; one shared `xor eax,eax` exit.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public: void* PStringData; };
 class CThing;
 

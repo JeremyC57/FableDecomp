@@ -1,5 +1,6 @@
 // NScript::CQ_OpeningGraveyardSecretPassageScript::CSpeakingMarker::Main() -- a voice-warning marker on the graveyard secret passage: once the hero is within 8 units it
 // Leaf: ?Main@CSpeakingMarker@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   plays the warning its data string selects (a one-line conversation from the marker to the hero); warning 4 also
 //   spawns an undead lieutenant at every "SecondUndeadAmbush" marker and sets it on the hero. Then idles.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DC8890, 998 bytes (+ int3 padding), plain `ret`. Entity-script slot 1 (Main).
@@ -19,7 +20,7 @@
 // Naming wave 35: identity reg 00dc2814 "SpeakingMarker" in 00dc27c0; Alloc 00dc84e0; vtable 012daa00 slot 1; PDB ?Main@CSpeakingMarker@CQ_OpeningGraveyardSecretPassageScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CSpeakingMarker::Main (wave3/labels_alloc.tsv); PDB ?Main@CSpeakingMarker@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CSpeakingMarker@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_OpeningGraveyardSecretPassageScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

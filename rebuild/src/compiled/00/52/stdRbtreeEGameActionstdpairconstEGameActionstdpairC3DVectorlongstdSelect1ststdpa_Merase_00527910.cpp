@@ -10,18 +10,14 @@
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (speed TU); explicit instantiation emits the member as
 //   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was _unattributed::FreeTree_CTreeOwner_00527910).
 // Leaf: ?_M_erase@?$_Rb_tree@W4EGameAction@@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@U?$_Select1st@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@U?$less@W4EGameAction@@@3@V?$allocator@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@2@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Leaf: ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@2@@Z
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
 enum EGameAction { };   // Ego_r.pdb enum (enumerators not needed by this body)
-class C3DVector {
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class _Tp> class allocator {
 public:

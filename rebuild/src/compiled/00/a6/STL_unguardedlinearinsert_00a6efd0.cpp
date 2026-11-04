@@ -1,5 +1,6 @@
 // std::__unguarded_linear_insert(pair<CCharString,C3DHelperPoint>* last, pair<CCharString,C3DHelperPoint> val, CCompareString<C3DHelperPoint> comp) -- insertion-sort inner step over the helper-point map entries: shift entries whose name sorts after val's up one slot, then drop val in
 // Leaf: ??$__unguarded_linear_insert@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6EFD0, 146 bytes (+14 int3), /Gr `__fastcall` (last in ecx; the
 //   20-byte value and the 4-byte comparator by value on the stack, `ret 18h`).
 // Callees: CCharString::operator<(const CCharString&) const 0x009E6530 (the CCompareString "less"),
@@ -20,11 +21,7 @@ public:
     bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 
-class C3DVector {                                       // user memberwise copy ctor, implicit (block) assignment
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DHelperPoint {                                  // 16 bytes (Ego_r.pdb)
 public:

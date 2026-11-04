@@ -1,4 +1,5 @@
 // CTCWife::OnGreet() -- once married, a greeting from the living hero posts opinion deed 0x50 at the wife's position
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CFC00, 140 bytes (+4 int3). __fastcall, `ret`.
 // Callees: CWorld::GetWorldFrame() 0x0049D870 (static); CTCBase::GetPlayerManager() 0x00686D40; CPlayerManager::GetMainPlayer()
@@ -10,7 +11,7 @@
 //        parent has bit 4 of its +0x6C byte set, PostDeed(0x50, &pos, parent, parent, 1, false, false, 0, false, 0).
 // Layout: CTCWife ParentThing +0x04, FrameGotMarriedToThePlayer +0x20; retail CThing bitset +0x20, interface map +0x44,
 //         Dead +0x91.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

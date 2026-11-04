@@ -1,5 +1,6 @@
 // CTCParticleAttacher::AttachParticles() -- fetch the attacher def from the owner's base def, then for every attachment create the particle at the owner and attach its emitter: to each matching dummy object / helper point of the owner's appearance, or to the owner itself when the attachment names no object; each particle is kept in ParticleList
 // Leaf: AttachParticles
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F8890, 630 bytes, plain `ret`. Speed TU; the 8-byte intelligent-pointer
 //   temporaries give the `and esp,-8` frame.
 // Callees: CDefClassBase::GetSubDef<CParticleAttacherDef> @ 0x007F87A0 (pushes "CParticleAttacherDef" 0x01243F00; the
@@ -51,7 +52,7 @@ class CDefStringTable { public:
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)               // 0x013CA828
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing;
 class CBaseObject;
 

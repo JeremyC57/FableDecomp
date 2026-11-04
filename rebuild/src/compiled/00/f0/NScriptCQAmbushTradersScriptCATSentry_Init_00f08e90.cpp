@@ -1,5 +1,6 @@
 // NScript::CQ_AmbushTradersScript::CAT_Sentry::Init() -- the ambush-traders sentry: wander about where it stands (minimum 0, maximum the def's AmbushTradersSentryWanderDistance) in scripting state group 4, make it and the hero enemies of each other, then each living bandit of the parent's AllBandits (stopping if the thread is done), spawn the parent's WatchForHeroAttackOnSentry and WatchForEnemyDeath threads on it, and clear SentrySeenSpy
 // Leaf: ?Init@CAT_Sentry@CQ_AmbushTradersScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F08E90, 961 bytes, plain `ret`; entity-script vtable 0x012F7E30 slot 2 (Init), stored
 //   by the landed CAT_Sentry::Alloc 0x00F04510 (Main 0x00F045E0 is slot 1); PDB
 //   ?Init@CAT_Sentry@CQ_AmbushTradersScript@NScript@@EAEXXZ (Ego_r.pdb 0x00F89B40 + FableWin.pdb 0x0363A6D0, both between
@@ -29,7 +30,7 @@ class CCharString { public:
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 void* __cdecl operator new(unsigned int bytes);        // 0x00BFEA1A (MSVCR71)
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+#include "engine/C3DVector.h"
 class CCPPointerInfo { public: long References; void (__fastcall* DeleteFunc)(void* data); void* Data; };
 template <class T> class CCountedPointer { public:
     T*              Data;

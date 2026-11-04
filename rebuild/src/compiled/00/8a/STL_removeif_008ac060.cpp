@@ -1,5 +1,6 @@
 // std::remove_if(C3DVector* first, C3DVector* last, unary_negate<CVectorFilter_FurtherFromPointThan> pred) -- drop the points within the XY radius of the centre, compacting the rest to the front; return the new end
 // Leaf: ??$remove_if@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AC060, length 100 bytes (+ int3 padding), `ret 10h`.
 // Identity: FableWin.pdb names `remove_if` / `_Find_if` / `_Remove_if` over unary_negate<CVectorFilter_FurtherFromPointThan>
 //   (Ego_r.pdb: { float Radius; C3DVector CentrePos }, 16 bytes); seven callers (0x008A947B, 0x008C1758, 0x0095613B,
@@ -12,10 +13,7 @@
 //   copied dword by dword into a `sub esp,10h` block, then remove_copy_if(++next, last, first, pred).
 //   GOTCHAS 24l: the tag lands in the live slot only with __find_if's real body visible (same-TU auto_inline(off) +
 //   noinline stand-in below).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C2DVector { public:
     float X, Y;

@@ -1,8 +1,9 @@
 // CNOVI_Barrel::OnPredicateFail() -- mark the quest (+0x14) bytes +0x74 / +0x75 and store the barrel thing's position (its slot 6) into the quest's unaligned vector at +0x76
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DB7DB0, length 64 bytes.
 // Leaf: OnPredicateFail
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Shape: `this` in esi, the quest reloaded for each store, the position copied as three dwords, `ret`.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 #pragma pack(push, 1)
 struct SQuest_00db7db0 {
     unsigned char _pad00[0x74];

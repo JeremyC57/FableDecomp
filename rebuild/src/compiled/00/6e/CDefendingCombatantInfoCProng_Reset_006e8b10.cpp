@@ -1,5 +1,6 @@
 // CDefendingCombatantInfo::CProng::Reset() -- clear POccupier: `POccupier = CIntelligentPointer<CThingCreatureBase>(0)` through a converting frame temporary
 // Leaf: ?Reset@CProng@CDefendingCombatantInfo@@QAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E8B10, 66 bytes, thiscall, plain `ret`.
 // Identity (probable): no xrefs; FableWin.pdb ?Reset@CProng@CDefendingCombatantInfo@@QAEXXZ is CProng's only no-argument mutator; the landed CCombatRing::Reset 0x006E8B60 runs exactly this body (`POccupier = CIntelligentPointer<CThingCreatureBase>(0)`, vtable 0x0123E7D8, member +0x14) inlined on every 28-byte prong of Prongs; PDB POccupier is CIntelligentPointer<CThingCreatureBase> at +20; neighbours are CCombatRing members.
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10, SetPItem 0x00A01B90 (twice), GetPItem 0x00A01B50,
@@ -28,7 +29,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(push, 1)
-class C3DVector { public: float X, Y, Z; };              // 1-aligned in retail
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class CDefendingCombatantInfo {
 public:

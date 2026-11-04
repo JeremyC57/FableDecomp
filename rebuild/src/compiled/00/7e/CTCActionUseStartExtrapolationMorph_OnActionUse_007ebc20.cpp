@@ -1,5 +1,6 @@
 // CTCActionUseStartExtrapolationMorph::OnActionUse(CThing& user) -- run the base hook, then turn the user to face away from this thing: the XY bearing from the user to the parent as a turn fraction wrapped into [0, 1), plus half a turn
 // Leaf: ?OnActionUse@CTCActionUseStartExtrapolationMorph@@QAEXAAVCThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007EBC20, 145 bytes (`ret 4`). Slot 28 of vtable 0x0123F6FC =
 //   CTCActionUseStartExtrapolationMorph (rtti-vtables.tsv; modelled non-virtual, hence the QAE leaf); FableWin.pdb `?OnActionUse@CTCActionUseStartExtrapolationMorph
 //   @@UAEXAAVCThing@@@Z`. Catalog label `CTCAppearance_SetFacing` was descriptive.
@@ -13,7 +14,7 @@ extern "C" double __cdecl atan2(double y, double x);
 extern "C" double __cdecl fmod(double x, double y);
 #pragma intrinsic(atan2, fmod)
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)

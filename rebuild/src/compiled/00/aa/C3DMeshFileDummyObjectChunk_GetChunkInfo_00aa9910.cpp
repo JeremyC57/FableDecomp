@@ -1,4 +1,5 @@
 // C3DMeshFileDummyObjectChunk::GetChunkInfo() const -- append six-decimal Direction XYZ to the inherited helper-point description
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail @ 0x00AA9910, 263 bytes. The later donor header puts chunk-derived fields +8; retail uses a 0x2c-byte C3DMeshFileChunk base, Position +0x2c, SubMeshIndex +0x38, BoneIndex +0x3c, Name +0x40 and Direction +0x44. FormatDouble is 0x009A08B0; inherited helper-point GetChunkInfo is 0x00AA96B0.
 #if !defined(_MSC_VER)
 #define __fastcall
@@ -29,7 +30,7 @@ class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
     CArrayPair SubChunks; CArrayPair RegisteredSubChunkTypes; unsigned long CurrentChunkIndex;
 };
 struct C3DMeshFileChunk : CChunkedFileSuperChunk {};
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public: float row[3][4]; };
 class C3DMeshFileHelperPointChunk : public C3DMeshFileChunk { public:
     C3DVector Position; long SubMeshIndex; long BoneIndex; CCharString Name;

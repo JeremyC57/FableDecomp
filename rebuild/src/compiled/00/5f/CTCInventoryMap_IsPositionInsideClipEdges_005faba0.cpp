@@ -7,9 +7,8 @@
 // Shape: four `if (flag && compare) return false;` tests; `>` gives `test ah,41h ; je`, `<=` gives `test ah,41h ; jnp`;
 // the shared `xor al,al` exit sits after the fourth test, `mov al,1` last.
 // Leaf: ?IsPositionInsideClipEdges@CTCInventoryMap@@
-class C3DVector { public:
-    float X, Y, Z;
-};
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 extern const float g_mapEdgeZ;                     // 0x01253D40
 extern const float g_mapEdgeY;                     // 0x01257088
 class CTCInventoryMap { public:

@@ -1,5 +1,6 @@
 // CPhysicsFacesSegmentBranch::CPhysicsFacesSegmentBranch(const CArray<C3DTriangle2>& triangles, const CArray<C3DVector>& vertices, const CPlane& plane, const CArray<unsigned short>& positive, const CArray<unsigned short>& negative, long depth) -- stores the dividing plane, then builds each child: a further branch when the face set splits again, otherwise a leaf holding the faces
 // Leaf: ??0CPhysicsFacesSegmentBranch@@QAE@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@ABVCPlane@@ABV?$CArray@G@@3J@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A86B30, 409 bytes, `ret 18h`; Ego_r.pdb
 //   ??0CPhysicsFacesSegmentBranch@@QAE@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@ABVCPlane@@ABV?$CArray@G@@3J@Z.
 // Callees: CPhysicsFacesSegmentBranch::Calculate 0x00A868C0 (static `__fastcall`: triangles ecx, vertices edx), operator new
@@ -27,7 +28,7 @@ template <class T> class CArray { public:                  // STLport vector<T> 
     }
     void clear() { m_pFinish = m_pStart; }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DTriangle2 { public: unsigned short Index[3]; };
 class CPlane { public: float A, B, C, D; CPlane() { } CPlane(const CPlane& o) : A(o.A), B(o.B), C(o.C), D(o.D) { } };
 

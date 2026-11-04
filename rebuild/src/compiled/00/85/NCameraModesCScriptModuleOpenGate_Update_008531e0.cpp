@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleOpenGate::Update() -- put the owning camera at Pos, aim it at the gate's helper point, then advance Pos by DeltaPos
 // Leaf: Update
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008531E0, length 128 bytes (117 + int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, the graphic appearance's helper-point getter
 // @ 0x004C1060 (manifest "CTCGraphicAppearance::GetHelperPointOr"; C3DVector by hidden pointer, float arg).
@@ -11,9 +12,7 @@
 // cached at CThing +0x64.
 class CBaseObject;
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 struct CTCGraphicAppearance {
     C3DVector GetHelperPointOrCentre(float t) const; // 0x004C1060

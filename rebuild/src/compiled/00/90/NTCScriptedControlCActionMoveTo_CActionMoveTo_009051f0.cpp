@@ -12,6 +12,7 @@
 // then the remaining flags in member order with ActionPointIndex = -1; Pos is left uninitialised. Members
 // carry the PDB names and offsets; the 4-argument twin is 0x00905290.
 // Leaf: ??0CActionMoveTo
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 
 class CThing;
 
@@ -43,9 +44,7 @@ class CThing { public:
     CScriptThing GetScriptThing() const;              // 0x004C7E50
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CTCBase;
 

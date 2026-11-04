@@ -1,4 +1,5 @@
 // CTCCreatureFlyOnSpline::SetSpline(CCountedPointer<CCardinalSpline> spline) -- take the new flight spline and snap the creature's physics to the spline position at the current progress
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c (queue land0411j 0x00A567A0): calls 0x00A567A0 as CCardinalSpline::GetSplinePosition(C3DVector&, float) const (Ego_r.pdb ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z; the out vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DCFD0, length 130 bytes (`ret 8`: the 8-byte counted pointer by value).
 // Callees: the count block's destroy function (+4, object at +8 in ecx), operator delete @ 0x00BFE9BC,
@@ -49,7 +50,7 @@ class CCountedPointer { public:
     }
     T* operator->() const { return Data; }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCardinalSpline { public:
     void GetSplinePosition(C3DVector& position, float progress) const;   // 0x00A567A0
 };

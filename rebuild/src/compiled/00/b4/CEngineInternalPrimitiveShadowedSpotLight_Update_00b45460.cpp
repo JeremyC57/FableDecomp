@@ -1,4 +1,5 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test runs a simplified algorithm (divides by 255, never uses g_ByteToFloat); signature differs from PDB; comment still says DIFFER)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // CEngineInternalPrimitiveShadowedSpotLight::Update(const CEnginePrimitive&, unsigned long) -- copy the public shadowed
 //   spot light's position, direction, radii and byte colour (scaled by 1/255 into float RGBA) into the internal primitive
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B45460, 176 bytes (manifest signature: const CEnginePrimitive&, ulong).
@@ -8,7 +9,7 @@
 //   +0x48, Direction +0x54, CRGBFloatColour Colour +0x60, Radius +0x70, SpotRadius +0x74, ConeRadius +0x78 (retail offsets
 //   equal the PDB). The 1/255 factor is the shared float constant at 0x01231724.
 //   Local model: no engine/ header exists for these primitive classes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBColour { public: unsigned char Blue, Green, Red, Alpha; };
 class CRGBFloatColour { public:
     float R, G, B, A;

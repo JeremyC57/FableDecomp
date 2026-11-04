@@ -1,5 +1,6 @@
 // NScript::CQ_NewOakValeIntroScript::~CQ_NewOakValeIntroScript() -- implicit quest-script destructor: deregister WatchTimer and TalkIntermittentTimer, destroy the eight villager-speech CCharString vectors in reverse order, then ~CScriptBase
 // Leaf: ??1CQ_NewOakValeIntroScript@NScript@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DBEFC0, 450 bytes, thiscall, tail jump to ~CScriptBase 0x00CBD510.
@@ -77,7 +78,7 @@ template <class T> class CLevelScriptBase : public CScriptBase { public:
 };
 
 #pragma pack(push, 1)
-class C3DVector { public: float X, Y, Z; };                 // Ego_r: byte-aligned (BarrelBrokenPos at +0x8A, WarehouseMeetPoint at +0x99)
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace NScript {

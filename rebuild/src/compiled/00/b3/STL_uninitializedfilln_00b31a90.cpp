@@ -1,5 +1,6 @@
 // std::__uninitialized_fill_n(CEngineCamera::CDebugScriptElement* first, unsigned int n, const CEngineCamera::CDebugScriptElement& x, const __false_type&) -- STLport placement-copy of one camera debug-script element into n raw slots; returns the end of the run
 // Leaf: ??$__uninitialized_fill_n@PAUCDebugScriptElement@CEngineCamera@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B31A90, length 80 bytes, `ret 8` (/Gr: first in ecx -> eax as `cur`, n
 //   in edx moved to ecx and counted down; &x and the empty __false_type tag on the stack), the end pointer in eax.
 // Caller: vector<CEngineCamera::CDebugScriptElement>::_M_insert_overflow @ 0x00B31B10 (call 0x00B31BB2, the n > 1 arm),
@@ -13,11 +14,7 @@
 // Label: catalog "fill<C3DAnimationStateAlpha*,C3DAnimationStateAlpha>" is a propagated label.
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CEngineCamera {
 public:

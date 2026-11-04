@@ -1,5 +1,6 @@
 // CTCPhysicsRigidBody::Simulate(float deltaTime) -- Baraff-style adaptive step: compute forces on the last configuration, integrate to the target time, rebuild the vertices and test for collisions; on penetration clear the contacts and halve the step, otherwise resolve contacts (up to 100 passes), advance and copy the configuration
 // Leaf: Simulate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075AD50, 368 bytes (`ret 4`).
 // Callees: CTCPhysicsRigidBody::ComputeForces 0x00759D30, Integrate 0x00759F80, CalculateVertices 0x00759EC0, CheckForCollisions
 //          0x0075AAF0, ResolveCollisions 0x0075A7A0; CRigidBodyConfig::operator= 0x0075BA30; memmove 0x00BFEAE6 (STLport
@@ -14,9 +15,7 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
     return (last == first) ? result
         : (char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first);
 }
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 inline C3DVector* CopyVectors(C3DVector* first, C3DVector* last, C3DVector* result)
 {
     for (long n = last - first; n > 0; --n) {

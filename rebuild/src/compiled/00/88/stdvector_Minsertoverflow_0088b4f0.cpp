@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(C3DSkeletalBoneMorph* position, const C3DSkeletalBoneMorph& x, const __false_type&, unsigned int fill_len, bool atend) -- (vector<C3DSkeletalBoneMorph>) STLport regrowth: allocate size + max(size, fill_len) records, copy the prefix, construct the fill, copy the suffix unless appending, destroy and free the old block
 // Leaf: ?_M_insert_overflow@?$vector@VC3DSkeletalBoneMorph@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088B4F0, 288 bytes, thiscall, `ret 14h`.
 // Identity: the catalog's "Vector_Reallocate" is descriptive. Callers: the landed push_back 0x0088B610 (called from
 //   C3DSkeletalMorphTarget::Initialise 0x00A451B2), 0x0088B39E and 0x00A46C93. The 20-byte element copied as an
@@ -24,11 +25,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DSkeletalBoneMorph {                                // Ego_r.pdb, 20 bytes
 public:

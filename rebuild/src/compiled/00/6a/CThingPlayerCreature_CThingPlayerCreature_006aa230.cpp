@@ -1,5 +1,6 @@
 // CThingPlayerCreature::~CThingPlayerCreature() -- player creature dtor: if it is in melee, deregister it from the combat manager as a destroyed combatant; then the member dtors (movement def and hero combat def pointers, the relative movement acceleration map) and ~CThingCreatureBase
 // Leaf: ??1CThingPlayerCreature@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006AA230, 161 bytes, tail jump to the base destructor.
 // Identity: the vtable store 0x012457FC carries RTTI `.?AVCThingPlayerCreature@@` (rtti_bases: CThingPlayerCreature :
 //   CThingCreatureBase); Ego_r.pdb has `??1CThingPlayerCreature@@UAE@XZ`. The catalog label is right.
@@ -80,11 +81,7 @@ class map { public:
 };
 } // namespace std
 
-class C3DVector { public:
-    float X;                                                // +0x0
-    float Y;                                                // +0x4
-    float Z;                                                // +0x8
-};
+#include "engine/C3DVector.h"
 enum EGameAction { };                                       // values not needed here
 enum EControlledMovementType { };                           // values not needed here
 enum EMovementBandType { };                                 // values not needed here

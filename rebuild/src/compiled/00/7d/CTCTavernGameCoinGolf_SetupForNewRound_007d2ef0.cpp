@@ -1,5 +1,6 @@
 // CTCTavernGameCoinGolf::SetupForNewRound() -- clears the board, finds the obstacles, enables the current course, adds a held coin at the course start, places its mesh, resets the joystick average and mouse effect and turns the camera to face along the board
 // Leaf: SetupForNewRound
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D2EF0, 242 bytes (plain `ret`; Ego_r.pdb
 // `?SetupForNewRound@CTCTavernGameCoinGolf@@AAEXXZ`).
 // Callees: CTCTavernGameCoinBase::ClearBoard() 0x008EF950; CTCTavernGameCoinBase::FindObstacles() 0x008EFB00;
@@ -24,10 +25,7 @@ class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 #include <math.h>
 #pragma intrinsic(atan2)

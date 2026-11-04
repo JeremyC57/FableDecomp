@@ -1,16 +1,13 @@
 // NParticleEngine::CParticleSystem::GetParticleWorldTransform(CMatrix3x4& result) const -- the unscaled world transform, with the three diagonal terms multiplied by Scale when ScaleParticles is set
 // Leaf: ?GetParticleWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: FableWin.pdb ?GetParticleWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z (namespace, const, reference;
 //   one stack word, `ret 4`); its callee is FableWin ?GetUnscaledWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B05980, 51 bytes (`ret 4`).
 // Callees: CParticleSystem::GetUnscaledWorldTransform @ 0x00B05840.
 // Shape: ScaleParticles is bit 7 of the flag byte +0x50 (`test al,al ; jns`), Scale the C3DVector at +0x60.
 // Each diagonal term is `m *= s` (`fld [scale] ; fmul [m] ; fstp [m]`: the right operand is loaded first).
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 { public:
     float m[12];                                     // 3x3 rotation (rows) then the translation

@@ -8,10 +8,9 @@
 // CRGBFloatColour Colour +0x1C, float Intensity +0x2C, CShaderLightAttenuation Attenuation +0x30
 // (Attenuation0/1/2, AttenuationBase)}; CShaderGenericLight (52 bytes) as in the directional twin.
 // Leaf: ?ConvertToGenericLight@CShaderPointLight@@UBEXAAVCShaderGenericLight@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C4DVector { public:
     float X, Y, Z, W;

@@ -1,5 +1,6 @@
 // CContainmentVolume::IsContainingSphere(const C3DVector& point, float radius) const -- wrap the sphere in a CIsContainingSphere functor and run the plane test
 // Leaf: IsContainingSphere
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A75460, length 49 bytes (+ int3 padding).
 // Callee: CContainmentVolume::IsContaining<CIsContainingSphere>(const CIsContainingSphere&) const @ 0x00A75790.
 // Catalog label "CTCHeroStats::AddHousePosition" is propagated: the body sits between
@@ -12,11 +13,7 @@
 // untouched. Same shape as the landed IsContainingPoint (0x00A75430).
 #include "engine/CContainmentVolume.h"
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CIsContainingSphere { public:
     C3DVector Point;

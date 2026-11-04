@@ -1,5 +1,6 @@
 // NCameraModes::CPCMouseLook::CPCMouseLook(CGameCameraManager&, const CDefPointer<const CCameraModeDef>&) -- PC mouse-look camera mode: base mode, empty mouse-input list, current-state recentre timer -1
 // Leaf: ??0CPCMouseLook@NCameraModes@@QAE@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x00874E00, 0x49 bytes (+ int3 padding), thiscall `ret 8`. Manifest label "CActionParam_Constructor" is a propagated
 // auto label; the only caller is NCameraModes::CPCMouseLook::CPCMouseLookInit::Alloc 0x00874770 (landed: `new(0x10C)` then a
 // sibling jmp here) and FableWin.pdb names ??0CPCMouseLook@NCameraModes@@QAE@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z.
@@ -18,7 +19,7 @@ class CCameraModeDef;
 template <class T> class CDefPointer;
 
 class C2DVector { public: float X, Y; };
-class C3DVector { public: float X, Y, Z; C3DVector() { } };
+#include "engine/C3DVector.h"
 
 template <class T> struct SListNode { SListNode* _M_next; SListNode* _M_prev; T _M_data; };
 template <class T> class CRetailList                 // STLport list: the sentinel pointer only

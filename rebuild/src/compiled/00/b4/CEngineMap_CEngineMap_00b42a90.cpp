@@ -1,5 +1,6 @@
 // CEngineMap::~CEngineMap() -- close the static map, take the map out of the landscape renderer and the local-detail generator (each when this map has the matching sub-map), reset the file-block manager; then the members' destructors (file-block manager, async file entry, static map name)
 // Leaf: ??1CEngineMap@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Layout: engine/CEngineLandscapeRenderer.h is a generated flat 0xF5C-byte record with no member functions; only DeleteMap is
 //   needed, so the renderer is a local method-only class.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B42A90, 121 bytes, thiscall, tail `jmp ??1CCharString@@QAE@XZ` (0x0099EAE0).
@@ -25,7 +26,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                             // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector Min, Max; };
 class CEngineMap;
 class CEngineLandscapeMap;

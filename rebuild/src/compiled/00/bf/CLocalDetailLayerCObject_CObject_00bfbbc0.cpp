@@ -1,5 +1,6 @@
 // CLocalDetailLayer::CObject::CObject() -- default constructor of a local-detail object instance: zeroed bounding sphere and an empty engine primitive handle
 // Leaf: ??0CObject
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BFBBC0, length 44 bytes (no direct callers: an array-construction
 // callback / emitted inline).
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0 (the handle's base). Vtable 0x0122F598 = CEnginePrimitiveHandle (RTTI).
@@ -24,9 +25,7 @@ class CEnginePrimitiveHandle : public CBaseClass { public:                // vta
     CEnginePrimitiveHandle() { }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C3DBoundingSphere { public:
     C3DVector Center;                                       // +0x00

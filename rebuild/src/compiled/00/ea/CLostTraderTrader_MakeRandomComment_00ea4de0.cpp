@@ -1,4 +1,5 @@
 // Leaf: ?MakeRandomComment@CLostTraderTrader@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH 528/528 on the corrected span 0x00EA4DE0+528 (code + embedded jump table; bounds audit) -- catalog row 704 B ran into 0x00EA4FF0
 // CLostTraderTrader::MakeRandomComment() (0x00EA4DE0) -- the lost trader's comment to the hero: the first six calls step
 //   through the comments in order, later ones pick one at random (rand() % 5); each starts a conversation between Me and the
@@ -10,7 +11,7 @@
 //   "_BROTHER" 0x012EDE74, "_BANTER" 0x012EDFD4.
 // Layout: entity-script base {vptr, Game +4, Me +8}; the comment counter at +0x28 (descriptive).
 // Shape: switch jump table (5 cases + default).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

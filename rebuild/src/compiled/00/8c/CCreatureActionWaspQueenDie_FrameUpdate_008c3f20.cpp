@@ -1,5 +1,6 @@
 // CCreatureAction_WaspQueenDie::FrameUpdate() -- fade the dying wasp queen: alpha = 255 - 51 x LoopNum, less 51 x the fraction of the action run so far, set on the creature's graphic appearance; then the combat-action frame update
 // Leaf: ?FrameUpdate@CCreatureAction_WaspQueenDie@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C3F20, length 111 bytes, tail jump to CCombatActionBase::FrameUpdate.
 // Identity (proven): the only reference is vtable 0x01280D84 (RTTI .?AVCCreatureAction_WaspQueenDie@@) slot 56, the action family's
 //   FrameUpdate slot (CCombatActionBase::FrameUpdate 0x00859D80 is slot 56 of 0x01259BD4); Ego_r.pdb / FableWin.pdb
@@ -20,10 +21,7 @@
 class CBaseObject;
 class CBaseObjectPointer;
 #pragma pack(push, 1)   // C3DVector has alignment 1 (Ego_r CCreatureAction_BlockRespond::HitPos at +317)
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };

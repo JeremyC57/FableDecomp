@@ -1,4 +1,5 @@
 // CThingBuilding::LockAllDoors(bool lock, bool checkBlocking) -- walks the building's door list and opens or closes
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // (locks) every live door thing whose door component is lockable by its owner; a door the main player is standing near is
 // left alone (unless the player is inside this building), and a closing door that would block the player stays open
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082DB00, `ret 8`.
@@ -70,7 +71,7 @@ struct CTCCurrentBuilding {                          // interface type 0x75 (des
     unsigned char _pad00[0x0c];
     CIntelligentPointer Building;                    // +0x0c
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCSwitchableNavigation { public:                     // interface type 0x79
     bool WouldBlockPos(const C3DVector& pos);        // 0x00787620
 };

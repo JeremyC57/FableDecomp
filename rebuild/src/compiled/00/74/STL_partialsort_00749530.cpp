@@ -1,5 +1,6 @@
 // std::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing**, CCompare_FurthestFromInitPos2D comp) -- heap-select the thing pointers the predicate orders first into [first, middle) and sort them
 // Leaf: __partial_sort
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00749530, 104 bytes, `ret 0Ch` (link-time __fastcall: first in ecx, middle in edx,
 //   then last, the value-type tag pointer and the comparator on the stack).
 // Callees: __make_heap @ 0x00749050 (first, middle, comp, 0, 0), CCompare_FurthestFromInitPos2D::operator() @ 0x007483E0
@@ -15,9 +16,7 @@
 //   only stays in ebp (with `last` re-read from its slot) when the comparator's operator() body is compiled EARLIER in
 //   the TU (retail 0x007483E0 is part of this sort TU; its landed body is reproduced below under `auto_inline(off)`);
 //   with an external declaration VC7.1 keeps `last` in ebp and re-reads the comparator (108v104).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C2DVector { public:
     float X, Y, Z;

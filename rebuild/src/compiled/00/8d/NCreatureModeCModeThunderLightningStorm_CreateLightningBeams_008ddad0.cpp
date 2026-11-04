@@ -2,14 +2,13 @@
 //   caster (main beams, flagged MainBeamsCreated) and NumberOfBeams LIGHTNING_BEAM_END_EFFECT things, keeping intelligent pointers
 //   to the live ones in the two emitter vectors; the special-effects sub-def reference is released at the end
 // Leaf: CreateLightningBeams
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DDAD0, 661 bytes (`ret`).
 // Matching: the first GetEffectFromString (0x00669D30) and the first push_back (0x004AD520) stay out of line; at the second site
 //   VC7.1 inlines both (CRC Calc + map find, and the STLport placement-new push_back with the 0x004AC940 overflow). The inline
 //   CRC needs `len` then `str` as named locals in that order (retail's `[ecx+esi]` index-first SIB); `y = Header; return y;` and
 //   the caller's `!= Effects.end()` member re-read give retail's find tail.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 extern char g_emptyString[];                            // 0x0129AAF4
 extern const unsigned long g_crcTable_0129a168[256];    // 0x0129A168
 struct CStringData { char* Text; unsigned long Length; };

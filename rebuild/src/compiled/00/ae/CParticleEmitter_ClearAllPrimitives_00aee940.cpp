@@ -1,6 +1,7 @@
 // CParticleEmitter::ClearAllPrimitives(CIEngine*) -- when the primitive group exists: every particle system clears its primitives from the group, the engine (if given) removes the group, then the group handle is cleared
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEE940, length 128 bytes.
 // Leaf: ClearAllPrimitives
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CParticleSystem::ClearAllPrimitives(CEnginePrimitiveHandle*) @ 0x00AF4320, the engine's virtual slot 31 (+0x7c,
 // remove primitive), the primitive's slot 3 (last-handle notification) and slot 1 (Destroy).
 // Layout (retail, as the landed CParticleEmitter rows): ParticleSystems +0x08, PrimitiveGroupHandle +0x38 (vptr + counted Data).
@@ -49,9 +50,7 @@ class CEnginePrimitiveHandle : public CBase { public:     // vtable 0x0122F598
         Data = CIVCountedPointer_Primitive();
     }
 };
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 struct CParticleSystem;
 struct CParticleSystemPtr {                 // CCountedPointer<CParticleSystem> (8 bytes)
     CParticleSystem* m_pObject;

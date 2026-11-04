@@ -7,6 +7,7 @@
 // Layout: retail CArray is 12 bytes (PDB 16): GroupBlock.Groups +0x2c, BonesPerVertex +0x44, VertexList +0x48,
 // BoneWeights +0x54, as in the landed dtor 0x00AA7480.
 // Leaf: WriteToFile@C3DMeshFileXAnimatedPrimitiveBlockChunk
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 class CCharString { public:
     CCharString();                                      // 0x0099E4B0 default
     CCharString(const char* text, long length);         // 0x0099EBF0 (-1 = strlen)
@@ -15,7 +16,7 @@ class CCharString { public:
     void* m_pStringData;                                // CCharStringData*
 };
 
-class C3DVector  { public: float X, Y, Z; };                   // trivial default constructor (retail leaves it uninitialised)
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:                                     // 48 bytes: three axis vectors and the position, copied with rep movsd
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }

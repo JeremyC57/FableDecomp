@@ -1,5 +1,6 @@
 // NScript::CQ_TraderEscortScript::CDarkwoodRockTroll::Init() -- reveal troll, update objective and install health bar and map marker.
 // Leaf: ?Init@CDarkwoodRockTroll@CQ_TraderEscortScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail00E03BF0 length278. Corrected full845 Game interface from root142 signature audit.
 // No generated leaf/parent/colour headers. PDB parent ShownEarthTroll+85 is native+55 (script base smaller30).
 // Native colour order B,G,R,A; red opaque. All called Game slot signatures retained.
@@ -14,7 +15,7 @@
 #include "engine/_quarantine/CThing.h"
 #undef CThing
 
-class C3DVector{ public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components; unsigned char ComponentListsAndMetadata[0x45];unsigned char LifeFlags;}; //004C73D0,004C7E50
@@ -119,7 +120,6 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 
 class C2DCoordI;
 class C2DVector;
-class C3DVector;
 class CCharString;
 class CRGBColour;
 class CRGBFloatColour;

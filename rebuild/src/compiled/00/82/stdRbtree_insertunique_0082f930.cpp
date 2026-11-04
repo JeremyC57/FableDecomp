@@ -1,5 +1,6 @@
 // std::_Rb_tree::insert_unique(iterator position, const pair<const unsigned __int64,CScriptedMapBrush::CThingPosAndOrientation>& v) -- STLport 4.6 hinted unique insert for a scripted map brush's ThingsToMove map (thing UID -> target position and facing): begin / end / interior hint cases, falling back on the unhinted insert_unique when the hint does not bracket v
 // Leaf: ?insert_unique@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Select1st@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082F930, 575 bytes, thiscall `ret 0Ch` (hidden iterator result, position, v).
 // Identity: callers are map::operator[] 0x0082FB90 (landed; CScriptedMapBrush::SetThingToMove's ThingsToMove, Ego_r.pdb
 //   map<unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation> at retail +0x20) and the map::insert(hint, v)
@@ -15,11 +16,7 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class C3DVector {                                       // user memberwise copy constructor (as the landed 0x0082FB90)
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DAngles {                                       // trivially copyable
 public:
     float X, Y, Z;

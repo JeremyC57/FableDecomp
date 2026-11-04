@@ -1,4 +1,5 @@
 // CAIStateGroup_Guildmaster::GetBetterTeleportPos(C3DVector&) -- pick the live teleport marker nearest the enemy (closer than the creature is, and further than the minimum), other than the last one used; store its position and remember it
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00977820, length 384 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10
 //          (CIntelligentPointer<CThing> vtable 0x01238C6C), CThing::GetPos @ 0x004C73D0.
@@ -10,7 +11,7 @@
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float x, y;
     C2DVector(float x_, float y_) : x(x_), y(y_) { }

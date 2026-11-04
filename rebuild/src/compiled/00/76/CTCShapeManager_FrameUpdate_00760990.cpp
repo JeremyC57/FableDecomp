@@ -1,4 +1,5 @@
 // CTCShapeManager::FrameUpdate() -- find the persistent closed shape the hero stands in (inside the closed-shape bounds first) and select it
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00760990, 219 bytes (plain `ret`).
 // Callees: CTCBase::GetWorld @ 0x00686A70, CWorld::PeekMyPlayer @ 0x0049D9D0 (PlayerManager +0xc -> GetMainPlayer),
 // CPlayer::PeekPControlledCreature @ 0x00487DD0, CThing::GetPos() const @ 0x004C73D0 (returns const C3DVector&);
@@ -9,7 +10,7 @@
 // (C2DBoxF) +0x20; CThing's dead flag is bit 0 of the byte at +0x91.
 // Shape: the position is copied into a frame C3DVector (dword copies interleaved with the first compare); the shape loop
 // re-reads _M_finish after the virtual calls; the hit and the miss each store the iterator and the Activated byte.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
 class C2DBoxF { public: C2DVector TopLeft; C2DVector BottomRight; };
 class CThing { public:

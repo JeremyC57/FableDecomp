@@ -1,11 +1,10 @@
 // CCombatActionBase::ProcessPossibleProneThingsStrikeEvent(float, const std::pair<C3DVector,C3DVector>&, const std::pair<C3DVector,C3DVector>&, CThingGameObject&) -- a prone thing not yet struck this event is tested against the swept weapon triangle; on a hit it joins the strike event's struck list, may trigger the action-on-strike, starts the hit pause and runs the on-hit frames
 // Leaf: ?ProcessPossibleProneThingsStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 (CRT import thunk)
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class A, class B> struct pair { A first; B second; };
 }

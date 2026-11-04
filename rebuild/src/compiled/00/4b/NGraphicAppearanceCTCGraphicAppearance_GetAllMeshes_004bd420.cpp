@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::GetAllMeshes(CMeshVector& meshes) -- reserve room for four, then let every appearance component append its meshes
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BD420, length 54 bytes. Callees: the vector reserve @ 0x004C46C0 (manifest
 // "VectorReserve"), each component's virtual slot 2 (+0x08) with the same vector.
 // Shape: the output vector held in ebx for every call; the Components list (STLport header-node pointer at +0x3c) walked with
@@ -11,7 +12,7 @@
 // (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
 // CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
 // No engine header exists for CTCGraphicAppearance: local model.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCAnimationBase;
 

@@ -1,4 +1,5 @@
 // CAIStateGroup_MazeShieldedChase::OnActivate() -- save boss home, set combat target and register a creature opponent.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail009547d0 length294. Shared group/base/brain headers; native boss Home22 is unaligned (packed layout), combat target40 and thing flags6c.
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_MazeShieldedChase.h"
@@ -23,7 +24,7 @@ private: public:
 };
 struct MazeCreaturePointerBase{virtual ~MazeCreaturePointerBase();MazeThing* item;MazeCreaturePointerBase();}; //00a01c10,00a01b10,00a01b50,00a01b90
 struct MazeCreaturePointer:MazeCreaturePointerBase{__forceinline MazeCreaturePointer(MazeThing* p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)p);}__forceinline MazeCreaturePointer& operator=(const MazeCreaturePointer& p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)(((MazeThing*)((CBaseIntelligentPointer*)&p)->GetPItem())));return *this;}}; //derived scalar destructor004d6915,vtable0123e7d8
-class C3DVector{ public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 #pragma pack(push,1)
 struct MazeBoss{char beforeHome[0x22];C3DVector Home;long GetPhase();};
 #pragma pack(pop) //007aed10

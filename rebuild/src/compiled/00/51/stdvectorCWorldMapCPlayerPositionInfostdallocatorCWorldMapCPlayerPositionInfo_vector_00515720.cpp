@@ -1,5 +1,6 @@
 // std::vector<CWorldMap::CPlayerPositionInfo,std::allocator<CWorldMap::CPlayerPositionInfo> >::vector(unsigned int n) -- STLport vector(n) of the world map's 13-byte player position records: allocate n records and copy-construct each from a default record (Set = false)
 // Leaf: ??0?$vector@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00515720, 105 bytes, `ret 4` (thiscall: n). No direct caller (an inlined use
 //   elsewhere; the body sits in the CWorldMap module next to its other vector instantiations).
 // Element: Ego_r.pdb CWorldMap::CPlayerPositionInfo (nested class), 13 bytes packed {bool Set +0; C3DVector Pos +1} -- the element of
@@ -15,10 +16,7 @@
 //   (`lea edx,[esp+1Ch]`), the 13-byte default record at the top of the frame. Base null initialisers as immediates.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 
 class CWorldMap {                                   // only the nested element class is needed here
 public:

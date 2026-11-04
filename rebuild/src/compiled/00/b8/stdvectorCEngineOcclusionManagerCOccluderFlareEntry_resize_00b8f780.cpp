@@ -1,5 +1,6 @@
 // std::vector<CEngineOcclusionManager::COccluderFlareEntry>::resize(size_type new_size, const T& x) -- STLport resize: erase [begin() + new_size, end()) when shrinking, else fill-insert new_size - size() copies of x at the end
 // Leaf: ?resize@?$vector@UCOccluderFlareEntry@CEngineOcclusionManager@@V?$allocator@UCOccluderFlareEntry@CEngineOcclusionManager@@@std@@@std@@QAEXIABUCOccluderFlareEntry@CEngineOcclusionManager@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00b8f780, 92 bytes, thiscall, `ret 8`.
 // Identity (proven): the landed CEngineOcclusionManager::FrameStart 0x00B8DBE0 calls it with n = 0 on this+0x24024 = CEngineOcclusionManager::FlareTests (Ego_r.pdb CArray<COccluderFlareEntry>, 28 bytes each) and PeekSceneFilterFlags 0x00B8F810 is its other caller; Ego_r.pdb names ?resize@?$vector@UCOccluderFlareEntry@CEngineOcclusionManager@@...; bound only as the stand-in ?resize@COccluderVector@@QAEXKABUSOccluderBehaviour@@@Z.
 // Callees: __copy<T*, T*, int>(first, last, result, const random_access_iterator_tag&, int*) 0x00B8E8B0 (__fastcall) and
@@ -7,10 +8,7 @@
 // Shape (family L041): size() by the 28-byte magic divide; erase(first, last) inline with __copy_ptrs forwarding to
 //   the out-of-line __copy (its empty tag homed on the n argument slot, which needs __copy's same-TU noinline body),
 //   trivial destructors, _M_finish = the copy's result.
-class C3DVector {
-public:
-    float X, Y, Z;                                        // +0x00
-};
+#include "engine/C3DVector.h"
 class CEngineOcclusionManager {
 public:
     struct COccluderFlareEntry {                           // Ego_r.pdb (struct), 28 bytes

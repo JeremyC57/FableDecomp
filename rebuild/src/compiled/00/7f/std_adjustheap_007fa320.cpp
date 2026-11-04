@@ -1,5 +1,6 @@
 // std::__adjust_heap(CThing** first, int holeIndex, int len, CThing* value, CThingCompare_BestForTargeting2 comp) -- STLport heap sift-down for the targeting candidate heap: move the better child up until the hole reaches a leaf, then push `value` back up from there
 // Leaf: ??$__adjust_heap@PAPAVCThing@@HPAV1@VCThingCompare_BestForTargeting2@@@std@@YIXPAPAVCThing@@HHPAV1@VCThingCompare_BestForTargeting2@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FA320, 297 bytes, __fastcall (first in ecx, holeIndex in edx; len, value and
 //   the 52-byte comparator on the stack), `ret 3Ch`.
 // Identity (proven): its landed callers __pop_heap 0x007FA680 and __make_heap 0x007FA710 call it as this instantiation (the
@@ -13,7 +14,7 @@
 //   __push_heap<CThing**, int, CThing*, CThingCompare_BestForTargeting2> 0x007FA160 (__fastcall, comparator by value).
 // Shape / layout: the landed family model (0x007FA680 / 0x007FA710): Ego_r CThingCompare_BestForTargeting2 (52 bytes) copied
 //   member by member through C3DVector's user copy constructor.
-class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

@@ -3,6 +3,7 @@
 // conversation state reset (times zero, tag indices -1, attitude 1), and the one-time morph table set-up.
 // Grade: RELOCATION_MATCH under /Oa (retry wave 2 sec2: the lander's flag sweep -- /Oa lets VC7.1 keep the UpdateCounter store after the two time copies as retail; was DIFFER(198v198) at plain /O2). Respelled to the PDB: NTCScriptedControl::CActionTalkBase protected ctor taking CThing& (Ego_r ??0CActionTalkBase@NTCScriptedControl@@IAE@AAVCThing@@_N11@Z), CThing::GetScriptThing const, InitialiseDefaultCameraTags (0x007167E0); shared CBaseClassNonCopyable / CScriptThing / CCountedPointer headers.
 // Leaf: ??0CActionTalkBase@NTCScriptedControl@@IAE@AAVCThing@@_N11@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /Oa
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00717950, length 198 bytes, `ret 10h`.
 // Callees: CBase::CBase @ 0x0099A2F0, CThing::GetScriptThing @ 0x004C7E50 (constructed straight into PTargetThing
@@ -27,7 +28,7 @@ public:
     CScriptThing GetScriptThing() const;            // 0x004C7E50 (Ego_r ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ)
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CSubtitledMessage;
 template <class T> class CArray {                   // retail CArray<T>: first, last, end (12 bytes)

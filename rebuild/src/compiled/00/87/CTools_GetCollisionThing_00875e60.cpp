@@ -1,5 +1,6 @@
 // CTools::GetCollisionThing(const vector<CThing*>& things, const C3DVector& from, const C3DVector& to, C3DVector& hit_pos) -- walks the things and, for each one whose physics component has a collision mesh, intersects the segment from->to with its mesh object; the first hit's intersection position is written out and that thing returned (0 when nothing is hit)
 // Leaf: GetCollisionThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00875E60, length 155 bytes (padded to 160), `ret 10h` (`this` unused).
 // Callees: CTCPhysicsBase slot 93 (+0x174, the has-a-mesh test), CTCPhysicsBase::GetPhysicsMeshObject @ 0x006B0850
 // (by value through a hidden pointer), CPhysicsMeshObject::GetPointIntersectionFromTo @ 0x00A12450,
@@ -7,7 +8,7 @@
 // Layout: CThing::PhysicsTC at retail +0x60 (Ego_r.pdb 0x70, CThing sits 0x10 below the PDB there);
 // CPhysicsMeshObject 0x40 bytes (vptr, Mesh, PositionMatrix, Scale, OO_Scale), CMeshIntersectionData 0x1c bytes
 // (IntersectionPosition, Normal, DistanceSquared). The STLport vector walk reloads end() each step.
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CMeshIntersectionData { public:
     C3DVector IntersectionPosition;                // +0x00
     C3DVector Normal;                              // +0x0c

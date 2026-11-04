@@ -1,5 +1,6 @@
 // CGameScriptInterface::EntityStopFollowing(const CScriptThing&) -- remove hero follower, reset its brain, discard follow events
 // Leaf: EntityStopFollowing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008A7980,228bytes;00449970 mainplayer;00487DC0 hero;006D4D70 IsFollower (not propagated IsAIFollower);006D5180 RemoveFollower;006D5AB0 ForceAIReset forwards to0088BB60;008AC890 remove eventtype3.
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
@@ -10,7 +11,7 @@
 #include "engine/_quarantine/CThing.h"
 #undef CThing
 
-class C3DVector{ public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char State[0x45];unsigned char LifeFlags;void ForceAIReset();}; //004C73D0,004C7E50

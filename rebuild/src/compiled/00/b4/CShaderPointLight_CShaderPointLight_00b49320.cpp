@@ -1,5 +1,6 @@
 // CShaderPointLight::CShaderPointLight(const C3DVector& position, const CRGBFloatColour& colour, float intensity, const CShaderLightAttenuation& attenuation) -- constructor: CBase, then position, colour, intensity and attenuation (the direction is left unset)
 // Leaf: ??0CShaderPointLight
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B49320, length 106 bytes.
 // Label correction: the catalog calls this a CShaderDirectionalLight ctor; the vtable it stores (0x012A2114)
 // is CShaderPointLight (rtti-vtables.tsv), and the argument list matches its PDB layout.
@@ -15,11 +16,7 @@ protected:
     CBaseClassNonCopyable();                                     // 0x0099A2F0
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CRGBFloatColour { public:
     float R, G, B, A;

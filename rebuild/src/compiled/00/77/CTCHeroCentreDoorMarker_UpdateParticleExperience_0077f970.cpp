@@ -1,5 +1,6 @@
 // CTCHeroCentreDoorMarker::UpdateParticleExperience() -- keep the "EXPERIENCE_SPEND" particle on the door marker in step with the world's experience-spending switch: kill it when spending is disabled, create and attach it when spending is enabled and no live particle exists
 // Leaf: UpdateParticleExperience
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 //
 // Retail 0x0077F970, 395 bytes (+5 int3 padding). Called from CTCHeroCentreDoorMarker::FrameUpdate @ 0x0077FB00 for door type 1.
@@ -18,7 +19,7 @@
 #define CWorld CWorldDonor
 #include "engine/CWorld.h"
 #undef CWorld
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

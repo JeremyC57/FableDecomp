@@ -1,5 +1,6 @@
 // CNewFrontendGameComponent::InitialiseEngine() -- create the engine and initialise it for the front end
 // Leaf: ?InitialiseEngine@CNewFrontendGameComponent@@AAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe 0x0042E204, 458 bytes, size-optimised TU with the biased large frame (`lea ebp,[esp-78h]`).
 // Names (Ego_r.pdb / FableWin.pdb): ?InitialiseEngine@CNewFrontendGameComponent@@AAEXXZ (private); ?GFAllocEngine@@YIPAVCIEngine@@XZ
 //   0x00B26340 (`new CEngine`, 0x178 bytes); ?Reset@?$CCountedPointer@VCIEngine@@@@QAEXPAVCIEngine@@@Z 0x0042FD04;
@@ -66,12 +67,7 @@ namespace NResourceDirectoryNames
     CWideString __fastcall GetWriteableEngineCacheDir(); // 0x0041A220
 }
 
-class C3DVector
-{
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CRGBFloatColour
 {
 public:

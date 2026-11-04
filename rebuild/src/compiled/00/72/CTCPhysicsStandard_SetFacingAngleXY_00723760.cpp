@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::SetFacingAngleXY(float angle) -- set one facing Euler angle (component 0) keeping the other two from the current set: snapshot the old set, rebuild RHSet from the three angles and mark the thing moving
 // Leaf: SetFacingAngleXY
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00723760, 115 bytes. CTCPhysicsStandard vtable 0x01265F84 slot 66. The catalog labels all three
 //   setters (slots 66/67/68 = 0x00723760/0x007237E0/0x00723860) "SetFacingAngleXY"; slot 66 sets angle X (the XY-plane heading
 //   read back by slot 63 from RHSet.Forward), so the names of slots 67/68 and getters 64/65 (YZ / XZ) are inferred by position.
@@ -9,7 +10,7 @@
 // Layout: CTCPhysicsStandard RHSet +0x50 (PDB, as the landed SetFacingAnglesFromRHSet 0x007238E0).
 // Shape: the angle vector is filled member by member in retail store order (here Y, X, Z: the argument is an integer copy);
 //   `RHSet = CRightHandedSet(angles)` copies the 24-byte temporary from eax through a `lea ecx,[esi+50h]` base.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;

@@ -1,5 +1,6 @@
 // NScript::CQ_HeroSoulsGuildmasterScript::CGuildmaster_HS::Main() -- the Hero Souls guildmaster: after the guildmaster cutscene, target the hero, become unpushable, and while guards remain in the woods speak one of six comments/taunts (one every 18 timer ticks, at most six) whenever the hero comes within 15 units; then heal back to full health and idle
 // Leaf: ?Main@CGuildmaster_HS@CQ_HeroSoulsGuildmasterScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D85B40, 1085 bytes (+ jump table and int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
@@ -52,7 +53,7 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }                                         // out-of-line copy 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90

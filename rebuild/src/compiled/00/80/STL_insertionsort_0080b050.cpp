@@ -1,5 +1,6 @@
 // std::__insertion_sort(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingCompare_BestForTargeting2 comp) -- STLport insertion sort of target points (best target first): every element after the first goes through __linear_insert
 // Leaf: ??$__insertion_sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080B050, 223 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx --
 //   spilled to the `push ecx` frame word, last in edx), the 0x34-byte comparator by value, `ret 34h`.
 // Name: STLport `__insertion_sort<CTargetPoint*, CThingCompare_BestForTargeting2>`; the catalog's
@@ -29,10 +30,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint { public:

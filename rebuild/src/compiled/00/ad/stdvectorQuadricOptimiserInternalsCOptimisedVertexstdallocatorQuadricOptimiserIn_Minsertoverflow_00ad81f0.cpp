@@ -1,11 +1,12 @@
 // 00ad81f0 std::vector<QuadricOptimiserInternals::COptimisedVertex>::_M_insert_overflow
 // Leaf: ?_M_insert_overflow@?$vector@VCOptimisedVertex@QuadricOptimiserInternals@@V?$allocator@VCOptimisedVertex@QuadricOptimiserInternals@@@std@@@std@@IAEXPAVCOptimisedVertex@QuadricOptimiserInternals@@ABV34@ABU__false_type@2@I_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /Gr
 #include <stdlib.h>
 #include <new>
 #include "rebuild_abi.h"
 #pragma pack(push,1)
-class C3DVector{public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 namespace QuadricOptimiserInternals{class CQuadric{private:double AA,AB,AC,AD,BB,BC,BD,CC,CD,DD,Weight;};
 // Layout: native original fields through Cost restored. The unread FaceList/Exists/indices/Groups/PairContractions tail is an opaque implementation projection; copy/destructor remain the exact external original members.

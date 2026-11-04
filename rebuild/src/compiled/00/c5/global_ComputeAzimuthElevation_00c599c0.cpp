@@ -1,5 +1,6 @@
 // ComputeAzimuthElevation(float* azimuth, float* elevation, const C3DVector* direction) -- GameCODA software voice: convert a listener-relative direction into degrees: elevation = the angle of y over the horizontal length (signed by y), azimuth = the angle of x around z (0 ahead, 90 to the side, 180 behind, negated for x < 0, -180 folded to 180); an output in mode 2 forces azimuth 0
 // Leaf: ?ComputeAzimuthElevation@@YAXPAM0PBVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C599C0, 318 bytes, __cdecl (`ret`): (azimuth, elevation, direction) on the stack.
 //   Float pool: 0.0f 0x0122DEDC, 57.29578f (180/pi) 0x012B8F70, 90.0f 0x012B7B74, 180.0f 0x012783A0, -180.0f 0x012B7B64;
 //   the -180 fold stores 180.0f as the immediate 0x43340000.
@@ -11,9 +12,7 @@
 // Shape: atan2 under /O2 is the `fpatan` intrinsic and sqrt the `fsqrt` intrinsic; the |y| / |x| / |z| are the
 //   `v < 0 ? -v : v` form (compare, reload, `fchs`); the elevation arm has no zero test, the azimuth arm has one; the azimuth test is `z > x` (`fcom st(1) ; test ah,41h ; jne`), the elevation test `y < horizontal` (`fld st(1) ; fcomp st(1) ; test ah,5 ; jp`).
 #include <math.h>
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CCodaSystem {
 public:
     long GetOutputMode();               // 0x00C3EA60

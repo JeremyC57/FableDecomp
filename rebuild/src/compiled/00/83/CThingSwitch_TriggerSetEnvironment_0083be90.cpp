@@ -1,5 +1,6 @@
 // CThingSwitch::TriggerSetEnvironment() -- when the living hero stands inside the switch's trigger square, transition the environment to the switch's theme def
 // Leaf: TriggerSetEnvironment
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083BE90, length 252 bytes (+ int3 padding).
 // Callees: CThing::PeekPos() const @ 0x006A4D00 (this TU's out-of-line copy, four times), the player-manager
 // accessor @ 0x004C7A00, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
@@ -12,7 +13,7 @@
 // the hero position is a C2DVector converted from the physics position (only Y lands in the frame, X stays on the
 // x87 stack) and tested by the half-open ContainsPoint inlined here (the sibling TriggerSetPlayerAreaName 0x0083C990
 // calls the out-of-line copy 0x00535CD0); the world is a named local so PeekWorld runs before the argument pushes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }

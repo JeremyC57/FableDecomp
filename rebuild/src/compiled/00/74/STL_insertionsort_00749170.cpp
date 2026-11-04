@@ -1,5 +1,6 @@
 // std::__insertion_sort(CThing** first, CThing** last, CCompare_FurthestFromInitPos2D comp) -- insertion sort of thing pointers: a value ordered before the first shifts the run up with memmove, anything else goes through the unguarded insert
 // Leaf: __insertion_sort
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00749170, 113 bytes, `ret 4` (link-time __fastcall: first in ecx, last in
 //   edx, the comparator on the stack).
 // Callees: CCompare_FurthestFromInitPos2D::operator()(CThing*, CThing*) const @ 0x007483E0 (landed; its body is repeated
@@ -18,9 +19,7 @@
 //   an external declaration VC7.1 copies the empty functor into a second frame slot (125v113).
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C2DVector { public:
     float X, Y, Z;

@@ -1,5 +1,6 @@
 // NCameraModes::CBase::~CBase() -- camera-mode root destructor: own vtable, then the members in reverse: GoTo's two attractor lists, the SubComponents vector of counted pointers, the camera-mode def pointer release, LookAt's two attractor lists
 // Leaf: ??1CBase@NCameraModes@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056E0E0, length 101 bytes (+11 int3 padding).
 // Label correction: catalogued as CTCActionUseBed::~CTCActionUseBed (propagated); the only caller is the deleting destructor
 // 0x0056E1F0, slot 0 of vtable 0x0124DD74 = NCameraModes::CBase (rtti-vtables.tsv), and the vtable stored here is that one.
@@ -14,7 +15,7 @@
 // PCameraModeDef +0x44, SubComponents +0x48, GoTo +0x54 (lists +0x78/+0x7C), CameraFOV +0x84 .. ViewOccluded +0xA0.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
 struct CAttractorList {                            // list<pair<C3DVector,float>> (STLport, 4 bytes)
     void* _M_node;

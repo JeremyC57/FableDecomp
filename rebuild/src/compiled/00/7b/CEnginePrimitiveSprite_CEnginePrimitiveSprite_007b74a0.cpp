@@ -1,5 +1,6 @@
 // CEnginePrimitiveSprite::CEnginePrimitiveSprite(const C3DVector& worldPos, unsigned long bankIndex, unsigned long frame, unsigned short flags, float angle, float sizeX, float sizeY, const C2DVector& offset, EEnginePrimitiveBlendMode blendMode, unsigned char alpha, unsigned char red, unsigned char green, unsigned char blue, float fadeStart, EEngineInterpolationSet interpolationSet, EEnginePrimitiveBlendOp blendOp) -- primitive type 7 with an explicit screen offset
 // Leaf: ??0CEnginePrimitiveSprite@@QAE@ABVC3DVector@@KKGMMMABVC2DVector@@W4EEnginePrimitiveBlendMode@@EEEEMW4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B74A0, 158 bytes, thiscall, 16 stack words (`ret 40h`), no callees.
 // Identity (proven): Ego_r.pdb declares three CEnginePrimitiveSprite constructors; only the C2DVector-offset overload
 //   takes 16 words, and the stores fit its PDB layout (WorldPos +0xc, BankIndex +0x18, Frame +0x1c, SizeX +0x20, SizeY
@@ -8,10 +9,7 @@
 //   code at 0x007B7540 (five call sites).
 // Shape: the landed 0x006558CE initialiser list with the offset copied from the reference; channel bytes go through
 //   CRGBColour(r, g, b, a) (B +0x30, G +0x31, R +0x32, A +0x33). Speed TU, frame pointer omitted.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }

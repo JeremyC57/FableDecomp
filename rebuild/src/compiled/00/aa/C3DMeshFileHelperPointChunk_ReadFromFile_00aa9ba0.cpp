@@ -1,5 +1,6 @@
 // C3DMeshFileHelperPointChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&) -- read Position, SubMeshIndex, BoneIndex and Name, then the sub-chunks
 // Leaf: ReadFromFile@C3DMeshFileHelperPointChunk
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail @ 0x00AA9BA0, 512 bytes (virtual, slot 7, ret 0Ch).
 // Callees: CDataInputStream::GetPosition (vtable slot 2), CDataInputStream::ReadNullTerminatedString (vtable slot 6,
 //   hidden CCharString result), CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, CCharString::operator= 0x0099EFB0,
@@ -56,7 +57,7 @@ class CChunkedFileSuperChunk { public:
     void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);   // 0x00AA8830
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DMeshFileHelperPointChunk : public CChunkedFileSuperChunk { public:
     C3DVector Position;                    // +0x2c (PDB +0x34)
     long SubMeshIndex;                     // +0x38

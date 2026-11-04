@@ -1,5 +1,6 @@
 // CWorld::GetEnvironmentFishWeightMult(const C3DVector&) -- the fishing weight multiplier at a position: the blend-weighted sum of the cell's three day-set themes' FishWeightMult, any unblended remainder counting 1.0; 1.0 off the game map
 // Leaf: GetEnvironmentFishWeightMult
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049F2D0, 283 bytes, __fastcall `ret 4`.
 // Callees: CWorld::PeekWorldMap (slot 13), CWorldMap::GetPGameMapCellAt @ 0x0063D8A0, CEnvironment::
 // GetGlobalEnvironmentThemeIndexFromLocal @ 0x006B2C60, CGameDefinitionManager::Get @ 0x0044C6B0, CDefinitionManager::GetDef<
@@ -7,10 +8,7 @@
 // Shape: GetDef is a same-TU noinline stand-in body that fills the raw, null-initialised def pointer through `T*&`
 // (writes only the out slot), so the def stays in edi and the dead out slot's word is reused for the fild temporaries
 // (0x14 frame); the def is released by hand at the end of each iteration.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                        // slot 1

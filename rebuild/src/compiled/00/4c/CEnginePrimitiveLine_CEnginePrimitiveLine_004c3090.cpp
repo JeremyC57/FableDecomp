@@ -1,5 +1,6 @@
 // CEnginePrimitiveLine::CEnginePrimitiveLine(unsigned __int64 id, const C3DVector& start, const C3DVector& end, const CRGBColour& colour, float width, EEnginePrimitiveBlendMode blendMode, unsigned long flags, bool depthTest, EEngineInterpolationSet interpolation, EEnginePrimitiveBlendOp blendOp) -- fills a line primitive descriptor (type 6)
 // Leaf: ??0CEnginePrimitiveLine
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C3090, length 143 bytes (144 with padding). No calls.
 // Shape: eleven stack slots (`ret 2Ch`, the manifest's parameter types); the leading 64-bit id is never read. The shared
 // primitive header (type word 6, interpolation set at +4, three cleared flag bytes from one `xor cl,cl`), the two end points
@@ -8,10 +9,7 @@
 // dead interpolation argument slot -- the colour's copy constructor forwards its channels to an inline Set(r, g, b, a)),
 // then width, flags, blend mode, blend op and the depth-test byte in declaration order. Names past the manifest types are
 // descriptive.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CRGBColour { public:
     unsigned char B, G, R, A;

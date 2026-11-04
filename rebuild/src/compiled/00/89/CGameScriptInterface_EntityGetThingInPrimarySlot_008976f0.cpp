@@ -1,5 +1,6 @@
 // CGameScriptInterface::EntityGetThingInPrimarySlot(const CScriptThing&) -- return live primary carried thing or empty script handle
 // Leaf: ?EntityGetThingInPrimarySlot@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 31 (family d3): DECISIONS_W30 D3: the carrying component is CTCCarrying and its call the PDB const
 //   ?GetThingInPrimarySlot@CTCCarrying@@QBEPAVCThing@@XZ 0x006A1440 (was the transitional ?GetPrimarySlotThing@CarryingMethods@@QAEPAVCThing@@XZ)
 // Naming wave 30 (family csm): the ScriptMethods projection (??1ScriptMethods@@UAE@XZ bound to 0x004AA840) is engine/CScriptThing.h's retail class
@@ -8,7 +9,7 @@
 //   virtual CGameScriptInterface member (was the invented CGameScriptInterfaceMethods)
 // Retail008976F0,254 bytes;0040F020 lower_bound,0099A2E0 base destructor,00BFE9BC delete; CTCAIScratchpad donor layout.
 #include "fable_string.h"
-class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

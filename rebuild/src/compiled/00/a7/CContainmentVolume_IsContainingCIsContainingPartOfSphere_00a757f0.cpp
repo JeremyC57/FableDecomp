@@ -1,4 +1,5 @@
 // CContainmentVolume::IsContaining<CIsContainingPartOfSphere>(const CIsContainingPartOfSphere& test) const --
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // true when the sphere's centre lies more than Radius inside every containment plane (the signed
 // distance exceeds +Radius on each). Note the manifest pairing: this body (`> Radius`, the whole
 // sphere inside) carries the "PartOfSphere" label while 0x00A75790 (`> -Radius`, overlap) carries
@@ -16,11 +17,7 @@
 // `for` with `return false` rotates the loop instead.
 #include "engine/CContainmentVolume.h"
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CPlane { public:
     C3DVector Normal;

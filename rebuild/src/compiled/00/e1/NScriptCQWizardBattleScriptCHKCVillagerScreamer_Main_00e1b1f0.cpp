@@ -1,5 +1,6 @@
 // NScript::CQ_WizardBattleScript::CHKC_VillagerScreamer::Main() -- a Heroes' Killer Chapel (wizard battle) villager: take scripted control and offer information; until the villagers turn on the hero, each time the hero talks to it play a paused movie with its hint line; then, unless the maze is defeated, spawn a CREATURE_SCREAMER_01 at its position, set it on the hero and remove Me
 // Leaf: ?Main@CHKC_VillagerScreamer@CQ_WizardBattleScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1B1F0, 1131 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: as the matched CGraveyardDemon::Main 0x00DC3FC0 (handle, movie, filter, CCharString), plus GameCalls slots 91
 //   CreateCreature, 108 RemoveThing, 360 SetThingHasInformation, 451 GiveThingBestEnemyTarget; CScriptThing slot 6 GetPos.
@@ -44,7 +45,7 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }                                         // out-of-line copy 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
     virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)

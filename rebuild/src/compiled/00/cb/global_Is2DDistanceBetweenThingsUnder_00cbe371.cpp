@@ -1,5 +1,6 @@
 // Is2DDistanceBetweenThingsUnder(const CScriptThing& thing1, const CScriptThing& thing2, float distance) -- true when both things are alive and their XY positions are closer than distance
 // Leaf: ?Is2DDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBE371, 121 bytes (`ret 4`).
 // TU: the global quest-script helper functions (__fastcall, size-optimised: `#pragma optimize("s", on)`).
 // Model: CScriptThing is polymorphic (vtable 0x01238C8C); the engine header models the vptr as data, so a local
@@ -13,10 +14,7 @@ class CCharString {
 public:
     void* m_pStringData;
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class C2DVector {
 public:
     float X, Y;

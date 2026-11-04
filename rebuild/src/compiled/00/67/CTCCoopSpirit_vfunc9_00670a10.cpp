@@ -1,4 +1,5 @@
 // CTCCoopSpirit::vfunc_9() -- per-frame update: re-create the appearance particle when its emitter is gone, update movement, jostling and gravity, kill the spirit thing when its +0xb4 value has run out, then update the score
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x00670A10, 143 bytes (plain `ret`). Vtable 0x0125B264 (CTCCoopSpirit) slot 9.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice), CDefStringTable::GetString(long)
@@ -62,7 +63,7 @@ class CCoopSpiritDef { public:
     CDefString    AppearanceParticle;               // +0x30
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCCoopSpirit { public:
     virtual void v00();

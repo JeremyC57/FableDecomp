@@ -1,5 +1,6 @@
 // std::vector::vector(const vector& x) -- STLport vector<NPlayerTargeting::CTargetPoint> copy constructor: allocate x.size() target points and copy-construct x's elements into them
 // Leaf: ??0?$vector@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00808470, 104 bytes, __fastcall, `ret 4`, returns this.
 // Name: Ego_r.pdb `std::vector<NPlayerTargeting::CTargetPoint>::vector(const vector&)` (donor 0x008039F0, Dinkumware);
 //   retail is the STLport 4.x copy constructor. The catalog's "NPlayerTargeting_AllocateCopyTargetPoints" is
@@ -15,7 +16,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
 class CThing;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CBaseIntelligentPointer {
 public:

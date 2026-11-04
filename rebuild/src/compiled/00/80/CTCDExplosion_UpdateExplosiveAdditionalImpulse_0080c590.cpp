@@ -1,4 +1,5 @@
 // CTCDExplosion::UpdateExplosiveAdditionalImpulse() -- push the things the explosion has hit: for a ringed (dynamic) explosion the ones between the current ring's inner and outer radius, otherwise along the start/end line
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080C590, 305 bytes (+ int3 padding), plain `ret`.
 // Callees: CThing::GetPos @ 0x004C73D0, the hit-thing transform into a local vector<CThing*> @ 0x0080EBE0, the ring
 //   impulse for_each @ 0x0080E530 and the line impulse for_each @ 0x0080E5D0 (all three with first/last in ecx/edx and the
@@ -7,10 +8,7 @@
 //   PExplosionDef +0x38, CurrentExplosionRing +0x50, HitThings +0x54; CExplosionDef ring vector (16-byte entries, radius first)
 //   +0x58.
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CThing { public: const C3DVector& GetPos() const; };    // 0x004C73D0
 struct CThingVector {
     CThing** _M_start;

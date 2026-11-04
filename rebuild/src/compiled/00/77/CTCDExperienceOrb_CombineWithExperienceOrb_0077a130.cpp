@@ -1,11 +1,12 @@
 // CTCDExperienceOrb::CombineWithExperienceOrb(CThing* otherOrb) -- absorb the other orb's points, play the combining effect, kill it
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077A130, length 72 bytes (+8 int3).
 // Callees: CTCDExperienceOrb::SetExperiencePoints(long) @ 0x00779E10, CThing::GetPos @ 0x004C73D0, the __fastcall
 // thing creator @ 0x006E0880 (def index in ecx, position in edx, one stack argument), CThing::Kill(bool) @ 0x004C9B80.
 // Shape: the other thing's orb driver is the inlined GetTCDriver probe: bitset word +0x2c (CThing UsingComponents +0x20,
 // word 3) bit 9 selects PTCDriver (+0x5c, retail offset) else null, read without a null test (`->ExperiencePoints`, +0x10).
 // The effect is CExperienceDef::OrbCombiningParticleEffect (def +0x28) created at the parent thing's position.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCDExperienceOrb;
 

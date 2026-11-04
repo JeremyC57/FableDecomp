@@ -1,5 +1,6 @@
 // CThingAICreature::Create(long defIndex, const C3DVector& position, long creationType, const CThingAICreatureInit& init) -- static factory: allocate and construct an AI creature, remember its initial position, construct it from the parameters, place its physics with the default facing and run the activation sequence; null on any failure
 // Leaf: ?Create@CThingAICreature@@SIPAV1@JABVC3DVector@@JABVCThingAICreatureInit@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00833800, 197 bytes (+11 int3), static __fastcall `ret 8` (defIndex in ecx, the
 //   position in edx, the creation type and the init block on the stack), 0x40-byte frame.
 // Identity: Ego_r.pdb name set ?Create@CThingAICreature@@SIPAV1@JABVC3DVector@@JABVCThingAICreatureInit@@@Z; the
@@ -17,10 +18,7 @@
 //   CRightHandedSet())); if (c->DoActivationSequence()) result = c; } } return result;` -- `new (false)` through the
 //   protected static operator new (null-tested before the constructor, no placement delete so no EH frame); the zero
 //   result in ebp; the params constructor a same-TU noinline stand-in (the header-inline body VC7.1 did not inline).
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet {
 public:
     C3DVector Up;

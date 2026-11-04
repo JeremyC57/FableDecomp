@@ -1,6 +1,7 @@
 // NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::Update() -- re-sort whichever of the two parameter maps was marked dirty and mark it clean
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076C750, length 61 bytes (64 with int3 padding).
 // Leaf: ?Update@?$CParticleUpdateParameters@KK@NParticleEngine@@QAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: STLport sort over pair<unsigned long, C3DVector> @ 0x0076C000 and over
 // pair<unsigned long, CParticleUpdateParamDesc<unsigned long,unsigned long> > @ 0x0076C1A0 (both __fastcall: first in
 // ecx, last in edx, the empty comparator by value on the stack -- manifest labels "std::vector_Relocate*" are
@@ -12,7 +13,7 @@
 // byte +0x10, Dirty +0x11), UpdateParams +0x14 (data +0x14/+0x18, comparator +0x20, Dirty +0x21).
 // Shape: each map's inline Sort() -- `if (Dirty) { sort(begin, end, Compare); Dirty = false; }`; the comparator
 // byte is zero-extended into the pushed dword.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace std {
 template <class T1, class T2> struct pair { T1 first; T2 second; };

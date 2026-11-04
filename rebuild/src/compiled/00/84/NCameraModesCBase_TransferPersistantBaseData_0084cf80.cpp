@@ -1,4 +1,5 @@
 // NCameraModes::CBase::TransferPersistantBaseData(const CBase&) -- copies the persistent camera state from another mode: GoTo and LookAt position/velocity/cull flag, the two stick vectors, FOV, roll and Z offset
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084CF80, length 207 bytes (+1 int3 padding). No callees.
 // Label: catalogued as CBase::TransferPersistantBaseData (Ego_r.pdb ?TransferPersistantBaseData@CBase@NCameraModes@@QAEXABV12@@Z).
 // Shape: each CPhysicsState part goes through an inline helper; C3DVector has a user copy ctor and NO operator=, so the
@@ -6,11 +7,7 @@
 // plain offsets. GoTo is copied before LookAt and the stick vectors before the three floats.
 // Layout (retail, see the landed dtor 0x0056E0E0): LookAt +0x10, GoTo +0x54 (CPhysicsState 0x30: Position +0, Velocity +0xc,
 // CullPhysics +0x2c), CameraFOV +0x84, RollAngle +0x88, ObservedPositionZOffset +0x8c, RightStickVector +0x90, LeftStickVector +0x98.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
 struct CAttractorList { void* _M_node; };          // list<pair<C3DVector,float>> (STLport, 4 bytes)
 struct CPhysicsState {                             // retail 0x30 bytes

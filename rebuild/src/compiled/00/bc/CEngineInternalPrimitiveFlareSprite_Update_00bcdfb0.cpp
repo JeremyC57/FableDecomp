@@ -8,7 +8,8 @@
 // parameter names are by position (manifest types: ref, ulong, ulong, ushort, float x3, blend mode, uchar x4, float, set, op).
 // Shape: arguments pushed right to left with the float zero as `push 0`, the alpha byte zero-extended (`xor eax,eax ; mov al,..`).
 // Leaf: ?Update@CEngineInternalPrimitiveFlareSprite@@UAEXABVCEnginePrimitive@@K@Z
-class C3DVector { public: float X, Y, Z; };
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 
 class CEnginePrimitive {                           // PDB, 12 bytes
 public:

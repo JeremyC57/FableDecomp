@@ -1,5 +1,6 @@
 // CKeyCamera::CKeyCamera(const CKeyCamera& other) -- copy constructor of a camera key frame: default-construct the event name, then copy every field (the name through CCharString::operator=)
 // Leaf: ??0CKeyCamera
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075F1F0, length 122 bytes.
 // Callees: CCharString::CCharString() @ 0x0099E4B0, CCharString::operator=(const CCharString&) @ 0x0099EFB0.
 // Model: CKeyCamera from Ego_r.pdb (56 bytes): DeltaIndex +0, Pos +4, LookDirection +0x10, FOV +0x1c, Roll +0x20,
@@ -12,9 +13,7 @@ class CCharString { public:
     CCharString();                                 // 0x0099E4B0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 struct CKeyCamera {
     float       DeltaIndex;                        // +0x00
     C3DVector   Pos;                               // +0x04

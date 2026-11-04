@@ -1,5 +1,6 @@
 // std::partial_sort(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* middle, NPlayerTargeting::CTargetPoint* last, CThingCompare_BestForTargeting2 comp) -- STLport partial_sort front end for the player-targeting candidate points: forward to __partial_sort with the value-type tag
 // Leaf: ??$partial_sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0080BCB0, 116 bytes (+ int3 padding), `ret 38h`: __fastcall (the algorithm TUs are /Gr), first
 // in ecx, middle in edx (passed through untouched), last and the 52-byte comparator by value on the stack (4 + 0x34).
 // Caller: 0x0080C003, the depth-limit fallback of the introsort loop 0x0080BD30. Callee: __partial_sort 0x0080BAB0
@@ -12,11 +13,7 @@
 // comparator copy is memberwise into the argument area (C3DVector's user copy constructor makes the implicit copy
 // non-trivial; with a single copy it expands inline, unlike the two copies of sort 0x0080C020).
 class CThing;
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class CBaseIntelligentPointer {
 public:
     virtual void v00();

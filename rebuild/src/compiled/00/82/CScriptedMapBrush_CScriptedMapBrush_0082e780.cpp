@@ -1,5 +1,6 @@
 // CScriptedMapBrush::~CScriptedMapBrush() -- scripted map brush destructor: free the brush name, the things-to-add / move / delete trees and the cell vector, then the CBaseObject base
 // Leaf: ??1CScriptedMapBrush@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082E780, 215 bytes, `jmp` to the base destructor.
 // Identity (proven): the body stores vtable 0x01272518 (RTTI CScriptedMapBrush : CBaseObject) and ends in ~CBaseObject
 //   0x0099A430 (direct base, RTTI); callers: the scalar deleting destructor 0x008270C0 (slot 0 of 0x01272518) and
@@ -152,7 +153,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
     CCharStringData* PStringData;                       // +0x00
 };
-class C3DVector { public: float X; float Y; float Z; };
+#include "engine/C3DVector.h"
 class C3DAngles { public: float AngleXY; float AngleYZ; float AngleXZ; };
 class C2DBoxI { public: long TLX; long TLY; long BRX; long BRY; };
 

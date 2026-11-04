@@ -1,5 +1,6 @@
 // NCreatureMode::CModeJackOfBladesScream::SetSwordObject(CThing*) -- PSword pointed at the sword, InitialSwordPos = the sword's position
 // Leaf: SetSwordObject
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D7370, 109 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer: ctor 0x00A01B10, SetPItem 0x00A01B90, GetPItem 0x00A01B50, ~ 0x00A01C10;
 // CThing::GetPos @ 0x004C73D0.
@@ -8,7 +9,7 @@
 // SwordFallPos +0xa4, InitialSwordPos +0xb0.
 // Shape: `PSword = CIntelligentPointer<CThing>(sword)` (8-byte frame temporary, inline operator= that takes GetPItem() into a local BEFORE SetPItem: retail calls GetPItem before forming the member address; the direct `SetPItem(other.GetPItem())` puts the `lea edi` first),
 // then the position copied word by word through the pointer's inline operator-> (the member address stays in edi).
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;          // 0x004C73D0 (CThing::GetPos, GOTCHAS chunk 141)

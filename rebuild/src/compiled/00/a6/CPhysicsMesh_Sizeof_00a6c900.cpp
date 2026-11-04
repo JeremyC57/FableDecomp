@@ -1,4 +1,5 @@
 // CPhysicsMesh::Sizeof() const -- memory footprint of a physics mesh: a fixed part plus every container's storage and the root BSP segment's own Sizeof
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: MATCH (retry 9) -- the root segment is a CCountedPointer member tested through an inline IsValid() and called
 //   through its inline operator->: the Data load then goes straight into ecx (the dead `this`) right after the 56-byte
 //   multiply and serves as the virtual call's `this`; a raw pointer member (`if (RootSegment) RootSegment->Sizeof()`)
@@ -14,7 +15,7 @@
 //   evaluation (dummy objects before helper points, ContainmentVolumes before the navigation volumes). The root
 //   segment pointer (the CCountedPointer's data) is null-tested before its virtual call.
 class C3DTriangle2 { public: short Index[3]; };                       // 6 bytes
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CArrayOfLines { void* a; void* b; void* c; };           // CArray<C2DLineF>, 12 bytes
 struct CHelperPointPair { unsigned char _d[20]; };             // pair<CCharString, C3DHelperPoint>
 struct CDummyObjectPair { unsigned char _d[56]; };             // pair<CCharString, C3DDummyObject>

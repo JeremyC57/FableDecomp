@@ -1,4 +1,5 @@
 // CCreatureAction_ThrowGameObject::CCreatureAction_ThrowGameObject(CThingCreatureBase*, const C3DVector&) -- base CCreatureActionBase(owner, 0.05, 1.0, the owner's "STANDARD_CAST" animation, zeroed CSoundPair, 0, 0), own vtable, the throw target
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0062D890, length 129 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literal 0x0125915C "STANDARD_CAST"), GetTableAnimation(CThingCreatureBase*,
 // const CCharString&) @ 0x006924B0 (register arguments), CCreatureActionBase::CCreatureActionBase(CThingCreatureBase*, float, float, CAnimationEntry*,
@@ -16,10 +17,7 @@ class CCharString { public:
 };
 class CThingCreatureBase;
 class CAnimationEntry;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise copy constructor: fixed-offset word moves
-};
+#include "engine/C3DVector.h"
 class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;

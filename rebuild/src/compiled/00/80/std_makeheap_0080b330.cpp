@@ -1,5 +1,6 @@
 // std::__make_heap(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingCompare_BestForTargeting2 comp, CTargetPoint*, int*) -- STLport make_heap of the player-targeting points under the best-for-targeting comparator: sift every parent down, last parent first
 // Leaf: ??$__make_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080B330, 255 bytes, /Gr `__fastcall` (first ecx -- kept in the `push ecx` frame
 //   word --, last edx; the 52-byte comparator by value and the two type pointers on the stack, `ret 3Ch`).
 // Identity: sole caller 0x0080B878 (the CTargetPoint partial_sort of this TU); the element is the 28-byte
@@ -30,11 +31,7 @@ public:
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint {                                        // 0x1c bytes (Ego_r.pdb)

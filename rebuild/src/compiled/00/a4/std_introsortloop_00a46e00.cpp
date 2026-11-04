@@ -1,5 +1,6 @@
 // std::__introsort_loop(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph*, int depth_limit, TBoneMorphCompare comp) -- STLport introsort recursion over the 20-byte bone morphs: partition around the median of three, recurse on the right part, loop on the left; partial-sort fallback when the depth runs out
 // Leaf: ??$__introsort_loop@PAVC3DSkeletalBoneMorph@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A46E00, 303 bytes, /Gr `__fastcall` (first in ecx, last in edx; the
 //   value-type pointer, the depth limit and the comparator pointer on the stack, `ret 0Ch`).
 // Identity: std::__introsort_loop<C3DSkeletalBoneMorph*, C3DSkeletalBoneMorph, int, bool (__fastcall*)(const
@@ -18,11 +19,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DSkeletalBoneMorph {                                // Ego_r.pdb, 20 bytes
 public:

@@ -1,6 +1,7 @@
 // CTCAssassinRush::ResetCameraOnStick() -- hand the game camera manager a new camera-on-a-stick script module built from the rushing thing and the two camera vectors (not preloaded)
 // Grade: RELOCATION_MATCH (wave 2 sec3 retry: the PDB inline accessor GetParentThing() gives retail's ParentThing-first argument load; local CCountedPointer moved onto engine/CCountedPointer.h, module classes keyed `class` as the bound ctor 0x005ED270 spells them)
 // Leaf: ?ResetCameraOnStick@CTCAssassinRush@@AAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x007A9B10, 91 bytes, thiscall `ret`.
 // Identity (probable): the only caller is the landed CTCAssassinRush::SetupCameraOnStick 0x007A9C80 (tail call on
 //   `this` after it fills LocalRelativeVectorForCamera / RelativeVectorForCamera); the body calls the protected
@@ -13,9 +14,7 @@
 //   the landed CTCDRumble 0x007F1930 model), operator new 0x00BFEA1A (0x68 bytes), NCameraModes::
 //   CScriptModuleCameraOnAStick ctor 0x007AB450 (the landed `void*` spelling), CCountedPointer<CScriptModuleBase>(T*)
 //   0x005ED270, CGameCameraManager::SetGameScriptedCameraMode(CCountedPointer<CScriptModuleBase>, bool) 0x00697B70.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CThing;
 namespace NCameraModes {
 class CScriptModuleBase { public:

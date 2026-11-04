@@ -1,5 +1,6 @@
 // std::__find(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, const NPlayerTargeting::CTargetPoint& val, const random_access_iterator_tag&) -- STLport random-access find over the player-targeting points: four CTargetPoint::operator== tests per pass (same thing and same index), then the 3/2/1 remainder; returns the match or last
 // Leaf: ??$__find@PAVCTargetPoint@NPlayerTargeting@@V12@@std@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008066A0, 352 bytes, /Gr `__fastcall` (first in ecx, last in edx; &val and the
 //   tag reference on the stack), `ret 8`.
 // Identity (proven): the 28-byte element (`imul 92492493h ; sar 4`) is compared as {CIntelligentPointer<CThing> GetPItem()
@@ -13,7 +14,7 @@
 //   (last - first) >> 2, four inline equality tests per pass, then `switch (last - first)` over 3/2/1, default last.
 class CThing;
 class CBaseObject;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 #pragma pack(push, 1)
 class CBaseIntelligentPointer {                             // 8 bytes, 1-aligned in retail

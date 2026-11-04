@@ -1,5 +1,6 @@
 // std::__uninitialized_fill_n(SProngVector* first, unsigned int n, const SProngVector& x, const __false_type&) -- STLport placement-copy of one (prong direction, blocked) pair into n raw slots; returns the end of the run
 // Leaf: ??$__uninitialized_fill_n@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EFF00, 52 bytes, `ret 8` (/Gr: first in ecx -> eax as `cur`, n in edx moved to
 //   esi and counted down; &x and the empty __false_type tag reference on the stack).
 // Caller: 0x006F32F8 in vector<pair<C3DVector,bool> >::_M_insert_overflow 0x006F3260 (the fill_len > 1 arm), itself
@@ -13,10 +14,7 @@
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
 #pragma pack(push, 1)
-class C3DVector { public:                                          // 1-aligned in retail
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace std {

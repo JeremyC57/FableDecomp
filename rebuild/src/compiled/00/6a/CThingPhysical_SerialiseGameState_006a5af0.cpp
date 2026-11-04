@@ -1,5 +1,6 @@
 // CThingPhysical::SerialiseGameState(CPersistContext& context) -- outside the load modes reset max health, camera flag, creators and hit flags; then persist Health (default MaxHealth, clamped for non-creatures) and Scale (default 1)
 // Leaf: SerialiseGameState
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A5AF0, length 315 bytes (+ int3 padding), `ret 4`.
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10
 // (temporaries CIntelligentPointer<CThingPhysical>, vtable 0x01244DCC), CPersistContext::Transfer<float>(const char*,
@@ -11,7 +12,7 @@
 // Shape: the reset block is ConstructFromParams' tail (creators cleared through CIntelligentPointer(0) temporaries,
 // MaxHealth copied from the def as a dword); the Scale default is a 1.0f local homed in the dead `context` slot; the
 // health clamp is `if (Health > MaxHealth) Health = MaxHealth;` (`fcomp ; test ah,41h`).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CWorldMap {
 public:

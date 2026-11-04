@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleTransitionBetweenPoints::CScriptModuleTransitionBetweenPoints(const C3DVector& pos, const C3DVector& startLookAt, const C3DVector& endLookAt, long frames, float fov) -- constructor for a transition that stays at one position: SetUpTransitionCamera(pos, pos, ...)
 // Leaf: ??0CScriptModuleTransitionBetweenPoints
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008524C0, length 71 bytes.
 // Callees: CScriptModuleBase::CScriptModuleBase() @ 0x005ED070, CBaseIntelligentPointer::CBaseIntelligentPointer()
 // @ 0x00A01B10, CScriptModuleTransitionBetweenPoints::SetUpTransitionCamera @ 0x00851ED0 (six arguments).
@@ -10,7 +11,7 @@
 // Layout (PDB, 0x90 bytes): PThing +0x4c, Increment +0x54, LookAtIncrement +0x60, LookAtPos +0x6c,
 // StartPos +0x78, EndFrame +0x84, FOV +0x88, PreventSelfTermination +0x8c. Parameter names are descriptive.
 class CBaseObject;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

@@ -1,4 +1,5 @@
 // CRecord_006f3000::CRecord_006f3000(const CRecord_006f3000& other) -- memberwise copy: a long, a flag, a long, two flags, a CCharString, two retail vectors
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F3000, length 79 bytes.
 // Callees: CCharString::CCharString(const CCharString&) @ 0x0099EC30, the 12-byte retail vector
 // copy constructor @ 0x006F0810 (x2; the one the NShape::CShape point list uses).
@@ -20,7 +21,7 @@ struct CRetailVector {                          // VC6-era Dinkumware vector: fi
     CRetailVector(const CRetailVector& other);  // 0x006F0810
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CRecord_006f3000 {
     long                     m_id;              // +0x00

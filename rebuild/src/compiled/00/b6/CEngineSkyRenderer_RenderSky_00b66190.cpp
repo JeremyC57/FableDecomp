@@ -1,5 +1,6 @@
 // CEngineSkyRenderer::RenderSky(float, const C3DVector&, bool) -- render the sky: clear the tracked render state at +0x2854, draw the sun and moon, bind the sky vertex/index buffers, draw the outer sky and the base band, the clouds when enabled, then unbind stream 0 and the index buffer
 // Leaf: RenderSky
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B66190, length 352 bytes (with int3 padding; body 0x154), `ret 0Ch`.
 // Callees: RenderSun(float, const C3DVector&) @ 0x00B63C00, RenderMoon @ 0x00B640E0, RenderOuterSky(float) @ 0x00B65A20,
 //   RenderBaseBand() @ 0x00B63010, RenderClouds(float) @ 0x00B64FA0 (manifest names, same TU); IDirect3DDevice9::
@@ -16,7 +17,7 @@
 //   fold to the all-zero arguments. The third parameter is unused.
 #include "engine/CEngineSkyRenderer.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct IDirect3DVertexBuffer9;
 struct IDirect3DIndexBuffer9;
 

@@ -9,7 +9,8 @@
 // reference (a Set(const CMatrix4x4&) member swaps the two induction registers).
 // Layout: C3DAnimationManager frame pool +0x30; C3DMesh2 bone count +0x98.
 // Leaf: ?CalcBlendedMeshTransformations@C3DAnimationManager@@QAEXPBVC3DAnimationBlendState@@0MPAVC3DVector@@PBVC3DMesh2@@PAVCMatrix3x4@@K@Z
-class C3DVector { public: float X, Y, Z; };
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 struct C3DVector4 { float X, Y, Z, W; };
 class CMatrix4x4 { public: C3DVector4 Row[4]; };
 class CMatrix3x4 { public:

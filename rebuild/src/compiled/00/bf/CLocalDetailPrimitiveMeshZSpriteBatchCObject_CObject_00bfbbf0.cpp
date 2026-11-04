@@ -1,5 +1,6 @@
 // CLocalDetailPrimitiveMeshZSpriteBatch::CObject::~CObject() -- destroy one sprite-batch object: its PrimitiveHandle member (notify the primitive when this is its last handle, release the counted pointer) and the handle's CBaseClass base
 // Leaf: ??1CObject@CLocalDetailPrimitiveMeshZSpriteBatch@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BFBBF0, 94 bytes, thiscall, tail `jmp ~CBaseClass` on the member (this + 0x44).
 // Identity (proven): (1) its callers walk CLocalDetailPrimitiveMeshZSpriteBatch::CObject arrays: ~CLocalDetailPrimitiveMeshZSpriteBatch
 //   0x00BFB590 destroys `count` objects at stride 0x4C (0x00BFB5C2), the array deleter 0x00BFBD20 (next to AllocArrayOfObjects
@@ -73,12 +74,7 @@ public:
     }
 };
 
-class C3DVector {
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 class CMatrix3x4 {
 public:
     float M[12];                                            // 0x30 bytes

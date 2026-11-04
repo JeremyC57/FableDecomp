@@ -1,4 +1,5 @@
 // CHeroPostcardGeneratorDef::operator=(const CHeroPostcardGeneratorDef&) -- memberwise copy: CParentDefClassBase part, the mesh-area corners, the doll centre offset (block copy) and the bounding radius; returns *this
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0045D5D3, length 64 bytes.
 // Pragma: #pragma optimize("s", on) -- the def module is size-optimised.
@@ -25,11 +26,7 @@ class C2DVector { public:
     float Y;
 };
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CHeroPostcardGeneratorDef : public CParentDefClassBase { public:    // vtable 0x01233CB4

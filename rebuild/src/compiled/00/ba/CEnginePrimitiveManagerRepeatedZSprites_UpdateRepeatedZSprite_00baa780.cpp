@@ -1,4 +1,5 @@
 // CEnginePrimitiveManagerRepeatedZSprites::UpdateRepeatedZSprite(const CEnginePrimitiveHandle&, const NEnginePrimitiveManagerRepeatedZSprites::CAddPrimitiveDesc&) -- copies the add-description (objects, mesh, fade distances, alpha reference, bounds, max scale) into the handle's internal repeated-Z-sprite primitive and sets its engine flags to 0x300
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BAA780, length 147 bytes (+ int3 padding). No callees.
 // Signature from Ego_r.pdb: ?UpdateRepeatedZSprite@CEnginePrimitiveManagerRepeatedZSprites@@QAEXABVCEnginePrimitiveHandle@@ABUCAddPrimitiveDesc@NEnginePrimitiveManagerRepeatedZSprites@@@Z
 // (`ret 8`, `this` unused).
@@ -13,7 +14,7 @@
 // both ends, esi/edi/edx), as implicit struct assignments do in this module.
 #include "engine/CEnginePrimitiveManagerRepeatedZSprites.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 class C3DBoundingBox { public: C3DVector Min; C3DVector Max; };
 class CEngineFadeDistance { public: float Near; float Far; };

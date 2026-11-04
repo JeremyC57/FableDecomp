@@ -1,5 +1,6 @@
 // CEngineWaterRenderer::FrameStart(const CEngineComponentParams& params) -- empty the ten per-frame water render lists (STLport clear() as erase(begin, end)), then advance the sea loading
 // Leaf: FrameStart
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B71FB0, length 464 bytes (body 0x1c5 + int3 padding), `ret 4` (virtual; params unused).
 // Callees: memmove @ 0x00BFEAE6 (the trivial-copy erase of the pointer lists), the `__fastcall` copy loop for the 28-byte
 //   pair<C3DBoundingBox, CWaterPatchMesh*> elements @ 0x00B7AC20 (catalogued _Copy_impl<CActionInputControl*>, propagated; ecx = first,
@@ -23,7 +24,7 @@ inline T* CopyTrivial(const T* first, const T* last, T* result)
     return (T*)((char*)memmove(result, first, n) + n);
 }
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector MinCoord, MaxCoord; };
 class CWaterPatchMesh;
 class CEngineWaterBackgroundSubPatch;

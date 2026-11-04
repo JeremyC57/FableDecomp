@@ -1,5 +1,6 @@
 // std::list<C3DVector>::push_back(const C3DVector& x) -- STLport list push_back: malloc a node, copy a facing direction in, link it before the sentinel
 // Leaf: ?push_back@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A4AB0, length 59 bytes, `ret 4`.
 // Callees: malloc @ 0x00BFEA0E (the 0x14-byte node: next, prev, the 12-byte value).
 // Identity: CInputProcessJumpingAndRolling::ProcessRolling 0x006A40D0 calls 0x006A4A70 on +0x38 and 0x006A4AB0 on +0x3c:
@@ -54,8 +55,6 @@ public:
     void push_back(const _Tp& __x) { insert(end(), __x); }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 template class list<C3DVector>;

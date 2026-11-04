@@ -1,4 +1,5 @@
 // NCameraModes::CScriptModuleGoToLookAt::CScriptModuleGoToLookAt(const C3DVector&, const C3DVector&) -- CScriptModuleBase(), an empty CIntelligentPointer and two vectors
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007187C0, oracle length 78 bytes.
 // Callees: CScriptModuleBase::CScriptModuleBase @ 0x005ED070, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (landed).
 // Vtables: 0x012657D8 = NCameraModes::CScriptModuleGoToLookAt, 0x01237F1C = CIntelligentPointer (rtti-vtables.tsv);
@@ -13,10 +14,7 @@
 // stores its own vtable -- which is why the derived vtable store is scheduled before that call and the
 // CIntelligentPointer vtable store after it. The two C3DVector members at +0x54 and +0x60 are copied
 // as three dword moves each. No PDB layout for the camera module classes; member names are descriptive.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
-};
+#include "engine/C3DVector.h"
 
 struct CScriptModuleBase {
     virtual void v00();

@@ -1,4 +1,5 @@
 // CThing::UpdateThingScanInclusion() -- keep the thing's mapwho entry in step with whether it should be placed in the map
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C8C00, 143 bytes. __fastcall, `ret`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020; CThing virtual slot 17 (+0x44, 0x004C7B80; the bool
@@ -14,7 +15,7 @@ class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
     C3DVector GetMapwhoPosition() const;         // 0x006AFCB0
 };

@@ -1,5 +1,6 @@
 // C3DSkeletalBoneMorph::CompareCRCs(const C3DSkeletalBoneMorph& a, const C3DSkeletalBoneMorph& b) -- sort predicate: a's bone-name CRC below b's (unsigned)
 // Leaf: ?CompareCRCs@C3DSkeletalBoneMorph@@SI_NABV1@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A44C90, 11 bytes, static __fastcall (a in ecx, b in edx).
 // Name: Ego_r.pdb `?CompareCRCs@C3DSkeletalBoneMorph@@SI_NABV1@0@Z` (public static __fastcall bool, two const refs); the
 //   address is pushed as the comparator by C3DSkeletalMorphTarget::Initialise (0x00A45150) into the sort helpers
@@ -7,7 +8,7 @@
 // Layout: Ego_r.pdb C3DSkeletalBoneMorph (20 bytes): BoneName +0 (CCharString, 4 bytes), BoneNameCRC +4, Scaling +8.
 //   `cmp ; sbb ; neg` is the unsigned `<` widened straight into eax.
 class CCharString { public: char* m_pData; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class C3DSkeletalBoneMorph {
 public:

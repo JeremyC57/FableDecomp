@@ -1,4 +1,5 @@
 // CEnginePrimitiveManagerDecal::RenderPrimitive(CEngineInternalPrimitiveBase&, EEngineRenderLayer, CEngineSubPrimitiveChain&) -- when enabled, wraps the decal in a pool-allocated sub-primitive and queues it in sort list 0 at its distance from the camera; returns 2 (rendered), else 0
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BBA340, length 142 bytes.
 // Callees: 0x00BEB540 CEngineSubPrimitiveBase::operator new (`__fastcall`, size 0x18 in ecx: the sub-primitive pool),
 // 0x0099A2F0 CBaseClassNonCopyable::CBaseClassNonCopyable(), 0x00B84720 CEngineSubPrimitiveRenderer::AddSubPrimitive(long list,
@@ -11,7 +12,7 @@
 // is the camera-to-decal difference computed X, Y, Z into x87 registers and summed top-first (Z*Z + Y*Y + X*X).
 #include <math.h>
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CBaseClassNonCopyable {
 protected:

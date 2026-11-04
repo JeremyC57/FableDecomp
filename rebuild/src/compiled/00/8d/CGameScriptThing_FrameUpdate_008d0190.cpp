@@ -1,13 +1,12 @@
 // CGameScriptThing::FrameUpdate() -- runs the per-frame virtual update (slot 71), then, when the scripted thing is alive and placed, caches its position (+0x28) and XY angle (+0x40)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retry 10b (getsw sweep, FIXES B-15): the placement is read through an inline getter `GetPlacement()`; the plain member read gives the parked register/scheduling difference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D0190, length 112 bytes.
 // Callees: this's virtual slot 71 (+0x11C), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (five calls), the placement
 //          component's virtual GetAngleXY (slot 63, +0xFC, float).
 // Shape: the thing's placement record at +0x60 is re-fetched through GetPItem for every use; its position (+0x0c) is
 // copied dword by dword through a `lea edx,[edi+28h]` destination (plain C3DVector assignment from a reference).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 struct CThingPlacement_Retail {                    // the thing's placement / physics record (+0x60)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();

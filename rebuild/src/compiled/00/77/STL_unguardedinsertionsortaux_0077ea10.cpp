@@ -1,5 +1,6 @@
 // std::__unguarded_insertion_sort_aux(pair<CCharString, C3DVector>* first, pair<CCharString, C3DVector>* last, pair<CCharString, C3DVector>*, CKeyPairCompareLess<CCharString, C3DVector> comp) -- unguarded insertion-sort pass over the 16-byte (name, position) entries: insert a copy of every entry of [first, last)
 // Leaf: ??$__unguarded_insertion_sort_aux@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0077EA10, 67 bytes (+13 int3), `ret 8` (link-time __fastcall /Gr algorithm TU,
 //   written as explicit __fastcall: first in ecx, last in edx, the value-type pointer and the empty comparator's 4-byte
 //   slot on the stack).
@@ -23,11 +24,7 @@ public:
     bool operator<(const CCharString& other) const;
 };
 
-class C3DVector {                                          // 12 bytes
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }   // memberwise: no `lea` of the source
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 template <class _T1, class _T2> struct pair {             // STLport pair: user constructors, implicit operator=

@@ -1,5 +1,6 @@
 // CTCVillage::GetNearestBuildingWithProperty(const C3DVector& pos, ESimBuildingProperty property) -- run the nearest-building functor over the village's buildings and return the building it kept
 // Leaf: GetNearestBuildingWithProperty
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00658E38, 59 bytes, thiscall `leave ; ret 8`. Name from FableWin.pdb / Ego_r.pdb
 // (?GetNearestBuildingWithProperty@CTCVillage@@QAEPAVCThingBuilding@@ABVC3DVector@@W4ESimBuildingProperty@@@Z, used as a
 // name set); callers are AI state groups (0x0090FB34, 0x0094794D, 0x00949D37, 0x0094B90E, 0x0096D2BB).
@@ -16,10 +17,7 @@
 // Opt: size TU (`optimize("s", on)`; the frame comes from the functor result local).
 #pragma optimize("s", on)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CThing;
 class CThingBuilding;
 enum ESimBuildingProperty { SIM_BUILDING_PROPERTY_NONE = 0 };

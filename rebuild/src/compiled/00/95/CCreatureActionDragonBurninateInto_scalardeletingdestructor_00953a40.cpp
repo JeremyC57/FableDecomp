@@ -1,5 +1,6 @@
 // CCreatureAction_DragonBurninateInto::`scalar deleting destructor'(unsigned int) -- implicit destructor inlined: the MovementPoints vector's storage freed, then the action base destructor; frees `this` when bit 0 of the flags is set
 // Leaf: ??_GCCreatureAction_DragonBurninateInto
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00953A40, length 51 bytes.
 // Callees: free @ 0x00BFEA14 (the vector storage), the action base destructor @ 0x0062E900 (manifest
 //          label "~CTCLightningOrb" is propagated), operator delete @ 0x00BFE9BC.
@@ -22,11 +23,7 @@ class CCombatActionBase { public:                                               
     unsigned char _body[0x110];                                           // +0x04 .. +0x114
 };
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 struct C3DVectorVector {                                                  // retail vector<C3DVector> (12 bytes)
     C3DVector* m_first;

@@ -1,5 +1,6 @@
 // CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalPrimitiveBase&, CEngineSubPrimitiveChain&, ESubPrimitiveType) -- queue a 2D animated mesh: the 2D static-mesh culling and load sequence (0x00B9E950), then SetupMesh2D, the LOD transform stored into the render info, generated objects, simulation start, and one pool-allocated CEngineSubPrimitiveAnimatedMesh per sub-mesh whose material is not hidden by the primitive's visibility vector (type 0x26 only)
 // Leaf: Render2DPrimitive
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BD1F70, length 1004 bytes (`ret 0Ch`, virtual).
 // Layout (supersedes any local-model note above): engine/CEngineLightingManager.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
@@ -56,7 +57,7 @@ class CEngineLightingManager : public CEngineLightingManagerDonor {
 extern CEngineLightingManager* g_pLightingManager;   // 0x01436E9C
 
 class CMatrix3x4 { public: float m[12]; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CByteVector {                               // STLport vector<unsigned char>, 12 bytes
     unsigned char* _M_start;
     unsigned char* _M_finish;

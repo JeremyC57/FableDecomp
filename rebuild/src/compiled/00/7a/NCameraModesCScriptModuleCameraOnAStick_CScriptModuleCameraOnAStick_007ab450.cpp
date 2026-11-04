@@ -1,4 +1,5 @@
 // NCameraModes::CScriptModuleCameraOnAStick::CScriptModuleCameraOnAStick(T* target, const C3DVector&, const C3DVector&) -- CScriptModuleBase(), vtable, a pointer and two vectors
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007AB450, oracle length 67 bytes.
 // Callees: CScriptModuleBase::CScriptModuleBase @ 0x005ED070. Vtable 0x0126CF04 = NCameraModes::CScriptModuleCameraOnAStick
 // (rtti-vtables.tsv); the manifest label "C3DPositionInterpolator::C3DPositionInterpolator" is propagated and rejected.
@@ -10,10 +11,7 @@
 // before the vtable store (the compiler hoists the pointer store next to the argument load), then the
 // two C3DVector members at +0x50 and +0x5C are copied as three dword moves each. No PDB layout for the
 // camera module classes; member names are descriptive.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
-};
+#include "engine/C3DVector.h"
 
 struct CScriptModuleBase {
     virtual void v00();

@@ -1,5 +1,6 @@
 // CTCBoastingPosition::~CTCBoastingPosition() -- kill the still-alive particle effect, destroy both intelligent pointers, then ~CTCBase
 // Leaf: ??1CTCBoastingPosition
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x00781DF0, 80 bytes (ends in the tail jump to ~CTCBase). Callees:
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times on +0x2e), CThing::Kill(bool) @ 0x004C9B80,
@@ -42,7 +43,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 #pragma pack(push, 1)
 class CTCBase

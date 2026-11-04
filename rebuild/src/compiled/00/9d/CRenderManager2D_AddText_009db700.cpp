@@ -1,5 +1,6 @@
 // CRenderManager2D::AddText(const C3DVector& position, float scale, const CWideString& text, CFontBank* font, const CRGBColour& colour, unsigned long flags) -- queue a text record on the quick-draw list (viewport window, screen-space position, string, metrics, colour, font) unless the viewport is offscreen
 // Leaf: AddText
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009DB700, length 266 bytes (`ret 18h`). FableWin.pdb
 // ?AddText@CRenderManager2D@@AAEXABVC3DVector@@MABVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z (the font by reference; the
 // landed caller Draw3DScaledText 0x009DBFF0 declares it as a pointer, same code, kept here for one symbol spelling).
@@ -15,7 +16,7 @@
 // X/Y, Z, the text assignment, then font / colour / flags / scale in that statement order (the only one of the 24 orders
 // that copies the colour through eax->ecx and loads the flags last, inside the push_back compare); the inline STLport push_back (null-checked placement copy, else
 // _M_insert_overflow with the `__true_type` tag in the dead `position` slot), then the record's destructors.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBColour { public: unsigned char B, G, R, A; };
 class CFontBank;
 struct __true_type { __true_type() { } };

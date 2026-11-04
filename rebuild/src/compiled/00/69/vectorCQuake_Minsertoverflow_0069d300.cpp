@@ -1,5 +1,6 @@
 // vector<CQuake>::_M_insert_overflow(CQuake* position, const CQuake& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD growth of the camera manager's quake vector: allocate old + max(old, n), copy the head, place the n copies, copy the tail, free the old block
 // Leaf: ?_M_insert_overflow@?$vector@VCQuake@CGameCameraManager@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x0069D300, 208 bytes, thiscall `ret 14h`.
 // Callees: malloc @ 0x00BFEA0E (the inline allocate, `len ? malloc(len * 48) : 0`), __uninitialized_copy @ 0x0069C8F0
@@ -18,11 +19,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* where) throw() { return where; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CGameCameraManager {
 public:

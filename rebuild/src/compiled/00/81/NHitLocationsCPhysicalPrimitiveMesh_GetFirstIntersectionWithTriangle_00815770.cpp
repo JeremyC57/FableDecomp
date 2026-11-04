@@ -1,5 +1,6 @@
 // NHitLocations::CPhysicalPrimitiveMesh::GetFirstIntersectionWithTriangle(CThing* thing, const std::vector<C3DVector>& triangle, C3DVector& position, C3DVector& normal, float radius) -- sweep the triangle's three edges through the line test and report the first hit
 // Leaf: GetFirstIntersectionWithTriangle
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00815770, 174 bytes, `ret 14h`; vtable 0x0125B9B0 slot 8.
 // Callees: the primitive's own virtual GetFirstIntersectionWithLine (slot 7, +0x1C, 0x00815070 for the mesh).
 // Shape: the edges are taken as (v[(i+2)%3], v[(i+3)%3]) for i = 0..2 -- (2,0), (0,1), (1,2) -- VC strength-reduces the
@@ -8,7 +9,7 @@
 //   are frame C3DVectors copied out dword by dword only on a hit. CPhysicalPrimitiveMesh is the 4-byte polymorphic
 //   base only (Ego_r.pdb).
 class CThing;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 template <class T> struct vector {
     T* _M_start;
     T* _M_finish;

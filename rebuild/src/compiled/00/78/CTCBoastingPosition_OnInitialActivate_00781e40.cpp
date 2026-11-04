@@ -1,5 +1,6 @@
 // CTCBoastingPosition::OnInitialActivate() -- make the thing undrawable, clear the graphic-appearance flag, and place the orb at the "PODIUM_ORB_CREATION_DUMMY" helper (or 1.7 above the thing when the helper is missing)
 // Leaf: ?OnInitialActivate@CTCBoastingPosition@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00781E40, length 202 bytes (+ int3 padding). Vtable slot 6 ("vfunc_6" in the
 // catalog = CTCBase::OnInitialActivate).
@@ -11,11 +12,7 @@
 // Shape: the checked out-parameter GetInterface keeps the component in eax for the byte store; the helper result is negated as
 // `found ? false : true` (8-bit neg/sbb/inc in bl, kept across the string destructor); the fallback position is a
 // named temporary filled member by member (x, y copied, z raised by 1.7) and assigned with the implicit operator=.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

@@ -1,6 +1,7 @@
 // CPhysicsFacesSegmentLeaf::GetPossibleCollisionSet(float radius, const C3DVector& from, const C3DVector& to, std::vector<long>& faces) -- add each of the leaf's triangle indices not yet stamped in this query to the result, stamping it so shared triangles are reported once
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A86E20, length 115 bytes (+ int3 padding).
 // Leaf: ?GetPossibleCollisionSet@CPhysicsFacesSegmentLeaf@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Naming wave 27 (family virt, DECISIONS_W26 D5): GetPossibleCollisionSet is a protected virtual const in both PDBs (MBE; slot 4 of
 //   vtable 0x0129DEA4). Was a public non-virtual (QAE).
 // Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
@@ -18,7 +19,7 @@
 // No frame word only with a same-TU noinline stand-in for the insert 0x00440990 (the const-ref taker of the pushed
 // value); the unsigned short index then gives retail's register roles and the late store of the temporary.
 #include <new>
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };

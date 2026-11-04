@@ -1,6 +1,7 @@
 // NCameraModes::CScriptModuleFOVZoom::OnInitLeaf() -- start the zoom: per-frame FOV step = (FOVFraction - 1) * the owner's FOV / frame count, and put the owning camera at the start position
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008520C0, 44 bytes, plain `ret`.
 // Leaf: ?OnInitLeaf@CScriptModuleFOVZoom
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: vtable 0x01275A1C slot 8; FableWin.pdb ?OnInitLeaf@CScriptModuleFOVZoom@NCameraModes@@MAEXXZ.
 // Layout: Ego_r.pdb CScriptModuleFOVZoom as the landed Update 0x00852160: WorldFrames +0x5c, FOVIncrement +0x60, FOVFraction +0x64,
 //         StartPos +0x74; the owner (POwner +0x38) has GoTo.Position +0x54 and the FOV +0x84.
@@ -8,7 +9,7 @@
 //        the owner pointer to owner+0x54 once and reaches the FOV as [eax+30h], and walks `this` up to StartPos (+0x74).
 class CBaseObject;
 class CGameCameraManager;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CIntelligentPointer_CThingConst {             // CIntelligentPointer<const CThing>: vptr + link
     virtual void v00();

@@ -2,6 +2,7 @@
 // ground below it: starts from the ground height, gathers every thing in a 4x4 box round the position and casts the
 // segment pos -> (pos.X, pos.Y, ground) against each thing's physics mesh, keeping the highest intersection Z
 // Leaf: GetHeightZBelowPos
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063E480, 272 bytes, `ret 4`. PDB ?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z.
@@ -12,11 +13,7 @@
 // Layout: CMainGameComponent::Get() 0x013B86A0 -> +0x24 world -> +0x20 thing search tools; CThing::PhysicsTC +0x60 and the
 //   CPhysicsMeshObject / CMeshIntersectionData models of the landed CTools::GetCollisionThing 0x00875E60;
 //   local STLport vector<CThing*> (12 bytes, freed through free()). No CWorldMap data members are read.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     long x0, y0, x1, y1;
     C2DBoxI(long ax0, long ay0, long ax1, long ay1) : x0(ax0), y0(ay0), x1(ax1), y1(ay1) { }

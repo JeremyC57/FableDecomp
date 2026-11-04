@@ -1,4 +1,5 @@
 // CTCKraken::GetCentreMarker() -- (unless the world is loading) find the kraken chamber building and the KRACKEN_CHAMBER_CENTRE marker in the 10x10 box around the kraken and target the hero
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FBC90, length 436 bytes (+ int3 padding), esp frame, plain `ret`.
 // Callees: the CTCBase accessors GetWorld @ 0x00686D60 (its slot 9, +0x24, a bool "loading" query; name descriptive),
 // GetDefinitionManager @ 0x006869D0, GetThingSearchTools @ 0x00686D90 and GetPlayerManager @ 0x00686D40 (manifest labels
@@ -15,7 +16,7 @@
 // out pointer; one box and one `found` serve both searches; the intelligent-pointer temporaries take `CThing* const&` (the
 // out word is read after the base ctor) and operator= names the item in a local.
 // Layout (local model): retail CTCKraken PChamber +0x10, PCentreMarker +0x18, PTarget +0x20 (PDB offsets; before the lists).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }

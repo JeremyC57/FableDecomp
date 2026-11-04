@@ -1,8 +1,9 @@
 // NScript::CV_LostTraderScript::CLostTraderTrader::TraderYellAtHero() -- the lost trader's yells at the hero: the first six step through the lines in order, later ones pick one at random (rand() % 5); each starts a conversation between Me and the hero and adds the line
 // Leaf: ?TraderYellAtHero@CLostTraderTrader@CV_LostTraderScript@NScript@@AAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x00EA4BB0, 556 bytes incl. the 5-entry jump table (cases 0-4); the YellAtHero twin of 0x00EA4980 (strings HEAR .. HELP),
 //   same donor-order evidence. Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30, rand 0x00BFEB16.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

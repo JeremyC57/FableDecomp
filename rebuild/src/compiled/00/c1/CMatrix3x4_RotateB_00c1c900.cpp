@@ -1,5 +1,6 @@
 // CMatrix3x4::RotateB(float angle) -- rotate the matrix in place about its X axis: every row's (Y, Z) pair becomes (c*Y + s*Z, c*Z - s*Y)
 // Leaf: ?RotateB@CMatrix3x4@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C1C900, 143 bytes (`ret 4`). Descriptive name, kept from the landed caller
 //   GetRotationAngles 0x00C1CC10 (call at 0x00C1CC6E; one more call at 0x00C1CD7F in an unlisted neighbour); the
 //   manifest's "CMatrix3x4_RotateYaw" is propagated and wrong for the axis (only Y and Z move, X is untouched -- with Fable's Z-up frame this is a
@@ -10,7 +11,7 @@
 //   (`fstp [esp+4]` ... `fsub [esp+4]`).
 #include <math.h>
 
-class C3DVector { public: float X, Y, Z; };            // 12 bytes, 1-aligned in retail
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 { public:                             // 0x30 bytes: four rows
     C3DVector Right;                            // +0x00

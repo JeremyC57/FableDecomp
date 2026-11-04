@@ -1,5 +1,6 @@
 // CAIStateGroup_HoverHornetQueen::CAIStateGroup_HoverHornetQueen() -- base CAIStateGroup_EnemyCreatureBase() (HoverMovementBase inlined), own vtable, then the empty Things / CircleMarkers vectors
 // Leaf: ??0CAIStateGroup_HoverHornetQueen@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0090310E, 38 bytes, thiscall, `ret`.
 // Identity: stores own vtable 0x0128D484 (RTTI .?AVCAIStateGroup_HoverHornetQueen@@, base chain CAIStateGroup_HoverMovementBase : CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase : CBaseClass); Ego_r.pdb / FableWin.pdb ??0CAIStateGroup_HoverHornetQueen@@QAE@XZ.
 // Callees: CAIStateGroup_EnemyCreatureBase::CAIStateGroup_EnemyCreatureBase 0x008FF720 (??0CAIStateGroup_EnemyCreatureBase@@QAE@XZ).
@@ -61,10 +62,7 @@ class CAIStateGroup_HoverMovementBase : public CAIStateGroup_EnemyCreatureBase {
 public:                                                 // ctor inlined into this row (0x00900BEF is its out-of-line copy)
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CAIStateGroup_HoverHornetQueen : public CAIStateGroup_HoverMovementBase {   // vtable 0x0128D484
 public:

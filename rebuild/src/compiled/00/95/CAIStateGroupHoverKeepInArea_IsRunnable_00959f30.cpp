@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverKeepInArea::IsRunnable() -- the group may run once the hoverer has strayed from its start point.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00959F30, length 66 bytes.
 // Callees: CThing::GetPosition @ 0x004C73D0 on the brain's creature (manifest "CVertexBufferWin32::DoSizeof" is
 // propagated), CAIStateGroup_EnemyCreatureBase::IsRunnable @ 0x0091DD30 (tail-jumped).
@@ -10,7 +11,7 @@
 // `xor al,al`: bool. The engine header flattens PBrain into a pad, so the base layout is modelled locally.
 #include <math.h>
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0

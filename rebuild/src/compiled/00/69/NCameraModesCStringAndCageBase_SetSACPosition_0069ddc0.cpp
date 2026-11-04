@@ -1,14 +1,13 @@
 // NCameraModes::CStringAndCageBase::SetSACPosition(const C3DVector& position) -- move the string-and-cage camera's go-to position straight to `position`
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0069DDC0, 27 bytes, `ret 4`.
 // Leaf: ?SetSACPosition@CStringAndCageBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: vtable 0x0125C37C slot 30; FableWin.pdb lists ?SetSACPosition@ for CStringAndCageBase, CStringAndCage and CSACCombat, the
 //       only one-argument virtual the three share (the CStringAndCage/CSACCombat overrides 0x00871E40/0x00871E60 instead add the
 //       position as a go-to attractor of weight 1).
 // Layout: NCameraModes::CBase::GoTo, a CPhysicsState whose Position is its first member, at +0x54 (landed CBase dtor 0x0056E0E0).
 // Shape: the C3DVector copy loads from the argument before `add ecx,54h` (a C3DVector member of a member).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 namespace NCameraModes {
 class CPhysicsState { public:
     C3DVector Position;                            // +0x00

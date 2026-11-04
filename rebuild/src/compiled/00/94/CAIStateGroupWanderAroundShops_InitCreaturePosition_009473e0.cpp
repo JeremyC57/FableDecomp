@@ -1,5 +1,6 @@
 // CAIStateGroup_WanderAroundShops::InitCreaturePosition() -- during work hours and with the script-def chance (percent), pick a random shop; when one is found, place the creature next to it (beside the building for a building, else near its position, radius 5)
 // Leaf: ?InitCreaturePosition@CAIStateGroup_WanderAroundShops
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009473E0, length 266 bytes (plain `ret`, virtual, bool).
 // Callees: CAIStateGroup_WorkBase::IsInWorkHours @ 0x0091A6F0, GetPWorldSeed @ 0x008FCFD0 + GFROR13 @ 0x00497890 (the
 //          landed CAIStateGroupBase::Random step), the shop picker @ 0x00946F90 (manifest
@@ -13,7 +14,7 @@
 //          flag in ebx (set after the converting ctor; an explicit functional cast sets it before the picker call) and the
 //          condition in a frame byte; each placement arm reads the creature into a named local before its call.
 class CThing;
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CThingBuilding;
 class CThing { public:
     const C3DVector& GetPos() const;             // 0x004C73D0

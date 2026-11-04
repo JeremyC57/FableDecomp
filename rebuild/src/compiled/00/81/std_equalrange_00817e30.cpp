@@ -1,5 +1,6 @@
 // std::__equal_range(const THitLocationIntersectionElement* first, last, const long& val, THitLocationIntersectionElementPred comp, int*) -- the range of hit-location intersections whose key equals val
 // Leaf: __equal_range
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00817E30, 147 bytes, `ret 10h`: __fastcall with the hidden pair<> result pointer in ecx
 // (spilled to the `push ecx` frame word), first in edx -> edi; last, &val, the empty predicate by value and the
 // distance-type null on the stack. Call sites 0x00815F36 (in GetPBestHitLocationFromList 0x00815F00, named by the landed
@@ -13,7 +14,7 @@
 // pair(__lower_bound(...), __upper_bound(...)) so VC's right-to-left argument order calls upper_bound first and never
 // advances `first` in place (the faithful statement-by-statement form calls lower_bound first: DIFFER 156v147).
 struct CHitLocation;
-class C3DVector { public: float X, Y, Z; };                // 12 bytes
+#include "engine/C3DVector.h"
 namespace {
 struct THitLocationIntersectionElement {        // 32 bytes
     long          key;                          // +0x00

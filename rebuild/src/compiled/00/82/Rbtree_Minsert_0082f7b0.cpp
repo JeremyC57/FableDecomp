@@ -1,5 +1,6 @@
 // _Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const pair<const unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation>& v, _Rb_tree_node_base* w) -- STLport node insert for the brush's thing-movement map: create the node under y, keep leftmost/rightmost, rebalance, count it
 // Leaf: ?_M_insert@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082F7B0, 163 bytes (+13 int3), thiscall `ret 14h` (hidden iterator, x, y, v, w).
 // Identity: the 0x30-byte node (pair<const u64, CThingPosAndOrientation> at +0x10) is CScriptedMapBrush::ThingsToMove
 //   (its tree mallocs a 0x30 header, 0x0082E600); the sibling set<u64> instantiation is 0x0082F150. The catalog label
@@ -8,11 +9,7 @@
 //   and the pair's memberwise copy), _Rb_global<bool>::_Rebalance(z, root&) 0x0042971D (__cdecl).
 // Shape: STLport 4.x `_M_insert` verbatim, as 0x0082F150, with the node factory a call: VC7.1 inlines the u64 set's
 //   two-dword copy but not this 32-byte pair copy (a same-TU noinline body here; only _M_insert is graded).
-class C3DVector {                                       // user memberwise copy constructor
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DAngles {                                       // trivially copyable
 public:
     float X, Y, Z;

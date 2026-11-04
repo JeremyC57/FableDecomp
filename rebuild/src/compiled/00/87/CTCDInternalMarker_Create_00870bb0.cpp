@@ -1,5 +1,6 @@
 // CTCDInternalMarker::Create(long, const C3DVector&) -- create an internal-marker thing for player 4 on the map under the position, construct its driver there and activate it; null on failure
 // Leaf: ?Create@CTCDInternalMarker@@SIPAVCThing@@JABVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail 0x00870BB0, 0x4E bytes (+ int3 padding), static __fastcall (def index in ecx, position in edx, plain `ret`).
@@ -12,7 +13,7 @@
 // Shape: the landed CTCDExperienceOrb::Create 0x00779E90 without the Kill branch: `push 1` (the last Create argument) goes
 // before the GetMapNumberAt call that yields the third, the result local lives in ebx (`xor ebx,ebx`), the driver pointer
 // is PTCDriver +0x5C read through the GetTCDriver out-pointer helper.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CWorldMap {
 public:

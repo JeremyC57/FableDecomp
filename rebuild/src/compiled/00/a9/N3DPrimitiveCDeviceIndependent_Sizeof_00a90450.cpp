@@ -1,5 +1,6 @@
 // N3DPrimitive::CDeviceIndependent::Sizeof() const -- memory footprint of a primitive's device-independent data: the vertex array (allocated capacity), the triangle-list pointer array with each list's own size, the bounding sphere and both tangent arrays
 // Leaf: ?Sizeof@CDeviceIndependent@N3DPrimitive@@QBEKXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A90450, length 189 bytes (+ int3 padding), `ret`. No callees.
 // Called by the landed C3DPrimitive2::Sizeof (0x00A90860) through its Data scoped pointer.
 // Layout: retail N3DPrimitive::CDeviceIndependent = Ego_r.pdb with 12-byte CArrays {first, last, end}: vptr +0, Vertices
@@ -12,7 +13,7 @@
 // the vertex part is a named local computed first (kept in edi across the list loop, the list total spilled) and
 // the return sums the rest (VC folds the constants 12 + 12 + 16 into the final `lea ... + 28h`).
 class C3DVertex2 { public: unsigned char _data[0x20]; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public: float X, Y, Z, Radius; };
 struct STriangle { unsigned short m_index[3]; };
 

@@ -1,4 +1,5 @@
 // CCreatureAction_DragonHoverOutOf::FinishAction() -- put the dragon back at its position raised by a fixed height, remove its interface-0x4d component, then the base FinishAction
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F2FB0, length 99 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CThing::GetPos @ 0x004C73D0,
 //          CTCPhysicsBase::ResetPosition(const C3DVector&) (virtual slot 31, `call [eax+7Ch]`, rtti-vtables slot 31 =
@@ -10,7 +11,7 @@
 //   PCreature's address is taken once (esi); the base FinishAction is a direct call.
 // Layout: CCombatActionBase (retail 0x114 bytes) with PCreature at +8; CThing's PhysicsTC at +0x60 (landed
 //   CThingPhysical 0x006A4D90 model).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase { public:                     // the thing's physics TC; only slot 31 is modelled
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

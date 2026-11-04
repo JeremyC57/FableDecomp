@@ -1,4 +1,5 @@
 // CEngineWeatherRenderer::GetBoxBoundingSphereRadiusSquared() const -- squared radius of the sphere bounding a weather box: the larger half-extents of the (X, Y) and (Y, Z) pairs, squared and summed
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B50E50, length 114 bytes. No callees. Float pool 0.5f @ 0x0122F59C.
 // Layout: the weather box size (C3DVector) at +0x1d4, inside the PDB's opaque `Settings` block (CEngineWeatherSettings,
 // +0x114..+0x66c in engine/CEngineWeatherRenderer.h), so `this` is modelled locally.
@@ -6,9 +7,7 @@
 // the first maximum is an inline by-value helper whose if/else result local becomes the highest frame word (the X arm
 // `fstp`s, the Y arm copies through edx; a plain if/else local in the body takes [esp] instead); the second maximum is a
 // ternary kept on the FPU; `a *= 0.5f` goes through the frame before `b *= 0.5f`; `a*a + b*b` squares the FP top (b) first.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CEngineWeatherRenderer { public:
     unsigned char _pad[0x1d4];

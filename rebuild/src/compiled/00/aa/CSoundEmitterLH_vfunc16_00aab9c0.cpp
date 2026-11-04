@@ -1,4 +1,5 @@
 // CSoundEmitterLH::vfunc_16() -- forwards to this emitter's own virtual slot 15
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AAB9C0, 5 bytes (`mov eax,[ecx] ; jmp [eax+3Ch]`). Vtable 0x0129E6EC (CSoundEmitterLH) slot 16;
 // slot 15 is 0x00AABBB0. No arguments: the sibling-call `jmp` leaves the stack untouched.
 struct CSoundPlayer {
@@ -40,7 +41,7 @@ struct SSoundNode {                                    // VC6 list node, 16 byte
     long          extra;                               // +0x0c
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CSoundEmitterLH {                               // vtable 0x0129E6EC
     virtual void v00();

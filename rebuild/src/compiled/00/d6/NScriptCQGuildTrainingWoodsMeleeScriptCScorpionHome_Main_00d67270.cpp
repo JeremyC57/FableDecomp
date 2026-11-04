@@ -1,5 +1,6 @@
 // CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::Main() -- show the beetle counter and start a 5-second nag timer; while the parent's scorpions are alive: if the hero is not carrying the training stick when the timer runs out, have him say the stick reminder and re-arm the timer for 8 seconds; count the live guild scorpions, update the counter, and whenever fewer than three are about either finish (none alive and none left to spawn: scorpions gone, master data flag set) or spawn another stag beetle at the spawn point furthest from the hero; finally remove the counter
 // Leaf: ?Main@CScorpionHome@CQ_GuildTrainingWoodsMeleeScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D67270, 1224 bytes (int3 padded to 1232).
@@ -56,7 +57,7 @@ template <class T> class CCountedPointer { public:
     }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CScriptThingImpl {
     virtual void i000();
     virtual void i001();

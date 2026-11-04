@@ -1,5 +1,6 @@
 // CWaterPatchMesh::Render(long triangleCount) const -- put the camera-centred world transform, bind the patch vertex buffer as stream 0, flush the dirty shader state and draw the shared water index list
 // Leaf: Render
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEACA0, 427 bytes + int3 padding, `ret 4`.
 // Signature from Ego_r.pdb: ?Render@CWaterPatchMesh@@QBEXJ@Z.
 // Callees: CShaderRenderManager::SetWorldTransform(const CMatrix3x4&) @ 0x009881F0, IDirect3DDevice9::SetStreamSource
@@ -14,7 +15,7 @@
 // CShaderRenderManager view is the landed RenderRainBox model (retail layout, UpdateFlags +0x3d8).
 #include "engine/CWaterPatchMesh.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C4DVector { public: float X, Y, Z, W; };
 
 class CMatrix3x4 { public:

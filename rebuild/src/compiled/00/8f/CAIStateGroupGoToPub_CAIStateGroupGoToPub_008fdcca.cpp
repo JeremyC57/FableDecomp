@@ -1,5 +1,6 @@
 // CAIStateGroup_GoToPub::~CAIStateGroup_GoToPub() -- the compiler-generated (implicit) destructor, kept out of line: ~CIntelligentPointer +0x34, ~CIntelligentPointer +0x2C, ~CIntelligentPointer +0x24, ~CIntelligentPointer +0x1C, ~CIntelligentPointer +0x14, then the base destructor out of line
 // Leaf: ??1CAIStateGroup_GoToPub@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FDCCA, 51 bytes (+ int3 padding), thiscall, no return value; reached from the scalar deleting destructors listed below.
 // Identity (proven): CAIStateGroup_GoToPub::~CAIStateGroup_GoToPub(); evidence: its callers are the scalar deleting destructors of CAIStateGroup_GoToPub 0x009001D6 (slot 0 of vtable 0x0128BEC4, RTTI .?AVCAIStateGroup_GoToPub@@ : CAIStateGroupBase : CBaseClass), CAIStateGroup_GameMaster 0x00900341 (vtable 0x0128BFC4, derived from CAIStateGroup_GoToPub); the destroyed offsets +0x14/+0x1C/+0x24/+0x2C/+0x34 are Ego_r.pdb CAIStateGroup_GoToPub's class-typed members, and the tail jump is ~CAIStateGroupBase 0x008FD288.
 // Label: the manifest's "_Dest_val<std::allocator<CEditLevelMerger::CConflict>,CEditLevelMerger::CConflict>" is propagated across byte-identical bodies (family J072: five implicit destructors of
@@ -42,12 +43,7 @@ public:
     unsigned char     Priority;                          // +0x11
     bool              Enabled;                           // +0x12
 };
-class C3DVector {                                        // Ego_r.pdb 12 bytes
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet {                                  // Ego_r.pdb 24 bytes
 public:
     C3DVector Up;

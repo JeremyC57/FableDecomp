@@ -1,5 +1,6 @@
 // CTCCameraPointDefinitionBase::GetActiveCameraPosition(const CThing* thing) -- catalog label; the body is the constructor of a bounding sphere taken from a thing: its position and its physics radius
 // Leaf: ??0CThingBoundingSphere
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x00942230, 47 bytes (`ret 4`, returns `this`). Callee: CThing::GetPos() const
 // @ 0x004C73D0 (returns a const C3DVector&). Called from CAIStateGroup_KidReactToBlockage::IsRunnable
@@ -12,7 +13,7 @@
 // argument is kept in edi across the call. A C3DVector member copied as a struct materialises its
 // address first (`mov ecx,esi ; mov [ecx],edx`, 49v47).
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase
 { public:

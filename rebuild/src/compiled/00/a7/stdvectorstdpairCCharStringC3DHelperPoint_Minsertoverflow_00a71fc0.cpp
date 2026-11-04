@@ -1,5 +1,6 @@
 // std::vector<std::pair<CCharString, C3DHelperPoint> >::_M_insert_overflow(std::pair<CCharString, C3DHelperPoint>* position, const std::pair<CCharString, C3DHelperPoint>& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport vector growth for the helper-point map entries (20 bytes): move into a size + max(size, fill_len) block with x inserted fill_len times at position
 // Leaf: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@VC3DHelperPoint@@@std@@V?$allocator@U?$pair@VCCharString@@VC3DHelperPoint@@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@VC3DHelperPoint@@@2@ABU32@ABU__false_type@2@I_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A71FC0, 283 bytes, thiscall `ret 14h` (a /Gr TU: the helpers are __fastcall).
 // Identity: its callers are the landed push_back 0x00A72690 (reached from CVectorMap<CCharString, C3DHelperPoint>::Add
 //   0x00A72B90, which sets the map's Dirty byte +0x0D) and CPhysicsMesh::GetHelperDataFromFileData (0x00A6D1E3); the
@@ -23,11 +24,7 @@ public:
     ~CCharString();                                                // 0x0099EAE0
 };
 
-class C3DVector {                                                  // 12 bytes (Ego_r.pdb)
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }    // FableWin.pdb ??0C3DVector@@QAE@ABV0@@Z
-};
+#include "engine/C3DVector.h"
 
 class C3DHelperPoint {                                             // 16 bytes (Ego_r.pdb)
 public:

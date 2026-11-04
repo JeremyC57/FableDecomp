@@ -2,6 +2,7 @@
 // goes to well/ill wishes (7/8), otherwise to "annoyed, no boasting" (9) while the quest manager still has boasts, or
 // dies (0); the remaining opinion sources clear after 30..60 seconds
 // Leaf: OnHeroLeaveBoastingArea
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -10,7 +11,7 @@
 //
 // Retail 0x007846B0, 624 bytes (plain `ret`); EnterCrowdState (0x00784260) is defined in this TU and retail inlines the
 // constant-9 call.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0

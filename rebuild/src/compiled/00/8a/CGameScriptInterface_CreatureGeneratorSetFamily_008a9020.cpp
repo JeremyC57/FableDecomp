@@ -1,5 +1,6 @@
 // CGameScriptInterface::CreatureGeneratorSetFamily -- replace generator family list with a valid named definition
 // Leaf: CreatureGeneratorSetFamily
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008A9020 length216; actualScriptThing slots75IsAlive and11GetPThing, nativeTC61.
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
@@ -10,7 +11,7 @@
 #include "engine/_quarantine/CThing.h"
 #undef CThing
 
-class C3DVector{ public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

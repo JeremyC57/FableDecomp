@@ -1,4 +1,5 @@
 // CCreatureAction_TeleportIn::Initialise() -- the combat-action Initialise, then (when the action creates effects) look up the creature definition's special-effects sub-def and, if it maps "TELEPORT_IN" to an effect type, spawn that effect at the creature's position
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B9F20, length 208 bytes (plain `ret`, virtual).
 // Callees: CCombatActionBase::Initialise 0x00857520 (direct base call, first), CBaseIntelligentPointer::GetPItem 0x00A01B50
 // (PCreature +8, twice), CDefClassBase::GetSubDef<CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) 0x00669580 on the
@@ -13,7 +14,7 @@
 // argument push, and the base-relative &PCreature takes over esi). The lookup's string comes from the implicit
 // const char* conversion inside a `found && ...` condition, so VC keeps a "temporary constructed" flag (zeroed at
 // entry, set with the string) and destroys the string under it before branching on the condition saved in bl.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* m_pData;

@@ -1,4 +1,5 @@
 // CAIStateGroup_TrollBase::ThrowRocks() -- post a CCreatureAction_TrollThrowProjectile at the enemy through a brain
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // output (flag 8), yield once, and count a shot when the creature is now performing a different action. Returns 2
 // (thrown) or 4 (still going).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094DC40, length 255 bytes.
@@ -14,7 +15,7 @@
 // projectile pointer, then the combat-action base); the creature is a named local read before PEnemy.
 class CThing;
 class CThingCreatureBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CBaseObject;
 struct CBaseIntelligentPointer {

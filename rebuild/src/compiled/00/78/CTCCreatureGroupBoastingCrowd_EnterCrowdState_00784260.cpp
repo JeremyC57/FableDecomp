@@ -2,6 +2,7 @@
 // source, remove the pending opinion deed from the hero's log) and enter the new one: push its opinion source on the hero
 // and log its opinion deed (state 0 kills the crowd thing); nothing happens when already in the state or in state 10
 // Leaf: EnterCrowdState
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 //
 // Retail 0x00784260, 614 bytes (`ret 4`, jump table at 0x007844C8).
@@ -12,7 +13,7 @@
 // CThing::Kill(bool) @ 0x004C9B80, CThing::GetPos @ 0x004C73D0.
 // Layout: as the landed FrameUpdate (0x00784500): PHero +0x24, CrowdState +0x2c, CurrentOpinionDeedHandle +0x38,
 // HeroOpinionSourcesPushed +0x3c; CWorld opinion reaction manager +0x74.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0

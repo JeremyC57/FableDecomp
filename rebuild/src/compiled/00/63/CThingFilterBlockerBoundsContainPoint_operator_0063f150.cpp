@@ -1,5 +1,6 @@
 // CThingFilter_BlockerBoundsContainPoint::operator()(const CThing& thing) const -- the thing can block navigation, has a physics mesh and that mesh's bounding box contains the point
 // Leaf: ??RCThingFilter_BlockerBoundsContainPoint@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0063F150, 138 bytes (+ int3 padding), `ret 4`. No direct or absolute
 // references (an unreferenced COMDAT copy); the same test is inlined into the CThingMapManager thing walk at 0x0063F4B0
 // (filter by reference, Pos read from +4), and 0x0063F1E0 is the IsNot-bound form.
@@ -18,11 +19,7 @@
 // CTCPhysicsBase (vtable 0x0125D2C4): slot 42 (+0xA8) a flag query (base 0x006B1100 returns false, CTCPhysicsStandard
 // 0x00724BC0 returns bit 4 of +0x85), slot 93 (+0x174) GetPhysicsMeshInfo (the landed 0x006B0850 notes). CPhysicsMeshObject
 // (Ego_r.pdb, 0x40 bytes: vptr, Mesh +4, PositionMatrix +8, Scale +0x38, OO_Scale +0x3C) is modelled opaque.
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CThingPhysicsMeshInfo;
 

@@ -1,5 +1,6 @@
 // CThingFindHeightZBelowAt::operator()(CThing* thing) -- intersects the From..To segment with the thing's physics mesh and raises Height to the hit Z (+0.007) when that lies above Height and below From.Z; always continues the search
 // Leaf: ??RCThingFindHeightZBelowAt
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00668AB0, length 144 bytes.
 // Callees: CTCPhysicsBase virtual slot 93 (+0x174, the physics mesh parameters), CTCPhysicsBase::GetPhysicsMeshObject @ 0x006B0850
 // (0x40-byte CPhysicsMeshObject by hidden pointer), CPhysicsMeshObject::GetPointIntersectionFromTo(const C3DVector&, const C3DVector&,
@@ -10,9 +11,7 @@
 // Shape: the hit Z is a float local kept on the FPU across both compares (`z > Height` = `fcom ; test ah,41h ; jne`,
 // `z < From->Z` = `fcom ; test ah,5 ; jp`); the store arm returns true from inside the mesh scope (its own dtor call);
 // every other path returns true too.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CMeshIntersectionData { public:
     C3DVector IntersectionPosition;             // +0x00
     C3DVector Normal;                           // +0x0c

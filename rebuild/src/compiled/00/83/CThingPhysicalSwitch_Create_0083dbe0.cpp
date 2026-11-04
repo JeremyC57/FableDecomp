@@ -1,5 +1,6 @@
 // CThingPhysicalSwitch::Create(long, const C3DVector&, long, const CCharString&) -- allocate a physical-switch thing through its class allocator, construct it (untriggered, game-object base with the script name), place its physics component at the position with the identity axes, and activate it; null on any failure
 // Leaf: ?Create@CThingPhysicalSwitch@@SIPAV1@JABVC3DVector@@JABVCCharString@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0083DBE0, 158 bytes, static __fastcall (ecx = def index, edx = position), `ret 8`.
 // Identity: ?Create@CThingPhysicalSwitch@@SIPAV1@JABVC3DVector@@JABVCCharString@@@Z (Ego_r.pdb). The object comes from
 //   CThingPhysicalSwitch::Alloc() 0x0052AD50; the protected ConstructFromParams(long, const C3DVector&, long, const
@@ -18,7 +19,7 @@
 //   scheduled among the base call's argument pushes; the two creator zeros come from the zero register ebp).
 #include "engine/CTCPhysicsBase.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet() { Up.X = 0; Up.Y = 0; Up.Z = 1; Forward.X = 0; Forward.Y = 1; Forward.Z = 0; }

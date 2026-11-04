@@ -1,5 +1,6 @@
 // std::__copy(pair<const CRegion*, C3DVector>* first, pair<...>* last, pair<...>* result, const random_access_iterator_tag&, int*) -- STLport random-access copy of 16-byte house-position records
 // Leaf: ??$__copy
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0057F188, 41 bytes, __fastcall (first ecx, last edx) `ret 0Ch`. Called by
 //   vector::erase(iterator) @ 0x0057FD32 (from CTCHeroStats::RemoveHousePosition 0x0057ADF7) and 0x0057F62D. The
 //   element is CTCHeroStats::HousePositions' value, pair<const CRegion*, C3DVector> (Ego_r.pdb; FableWin.pdb
@@ -10,12 +11,7 @@
 #pragma optimize("s", on)
 
 class CRegion;
-class C3DVector {
-public:
-    float X;                                        // +0x0
-    float Y;                                        // +0x4
-    float Z;                                        // +0x8
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

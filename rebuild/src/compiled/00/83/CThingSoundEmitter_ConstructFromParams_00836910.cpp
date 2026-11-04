@@ -1,5 +1,6 @@
 // CThingSoundEmitter::ConstructFromParams(const C3DVector&, const CThing*, bool) -- base thing construction (def 0, player 4, the map under the position), then the attached thing (intelligent pointer + flag), the keep-playing flag and the position
 // Leaf: ?ConstructFromParams@CThingSoundEmitter@@IAE_NABVC3DVector@@PBVCThing@@_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00836910, 219 bytes, `ret 0Ch`, bool in al.
@@ -14,7 +15,7 @@
 // Shape: `if (base) { ...; return true; } return false;` puts the `xor al,al` exit last; the `false` argument is pushed before the map query (arguments right to left); each branch assigns the
 //   intelligent pointer from a temporary built from the raw pointer (the landed 0x00830360 model) -- VC hoists the
 //   shared temporary construction above the null test; the flag store sinks below the temporary's destructor.
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CThing;
 
 class CWorldMap { public:

@@ -2,6 +2,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: ?MoveAllThingsInVectorToPosition@@YIXABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@ABVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBF679, 99 bytes, `__fastcall` global (vector in ecx, position in edx),
@@ -17,9 +18,7 @@
 // Shape: frame-pointer size TU; one resource-object local for the whole loop (built before begin is read, destroyed
 //   after it), begin read once into esi, end re-read every pass, the position kept in ebx; the speed is the float 0
 //   (`fldz ; push ecx ; fstp [esp]`), the move type 0, the flags false / true.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

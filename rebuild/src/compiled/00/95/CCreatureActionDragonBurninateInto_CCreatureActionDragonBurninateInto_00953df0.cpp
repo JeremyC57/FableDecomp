@@ -1,5 +1,6 @@
 // CCreatureAction_DragonBurninateInto::CCreatureAction_DragonBurninateInto(const CCreatureAction_DragonBurninateInto&) -- copy constructor: base CCombatActionBase(other), own vtable, then the burn path fields member by member
 // Leaf: ??0CCreatureAction_DragonBurninateInto@@QAE@ABV0@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00953DF0, length 177 bytes (+ int3 padding), `ret 4`. Vtable 0x01294374. Called by the
 // landed Clone 0x00953DC0.
 // Callees: CCombatActionBase::CCombatActionBase(const CCombatActionBase&) 0x0062F3B0, std::vector<C3DVector> copy constructor 0x006F0810.
@@ -20,10 +21,7 @@ class CSoundPair { public:                             // two sound ids (user ct
 };
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* creature, const CCharString& name);   // 0x008561A0
 
-class C3DVector { public:                              // three floats; the memberwise user copy constructor copies each as a dword
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 struct CVectorC3DVector {                       // std::vector<C3DVector> (retail 12 bytes)
     C3DVector* _First;
     C3DVector* _Last;

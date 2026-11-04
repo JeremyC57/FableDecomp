@@ -1,5 +1,6 @@
 // CThingCompare_BestCreatureToAttack::GetCompareValueForThing<CThingCreatureBase>(CThingCreatureBase* thing) const -- attack-target score: 1 / (sqrt(2D distance) + 1), weighted for the player, non-combatants, the targeter's last attacker and the current best target
 // Leaf: GetCompareValueForThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F6CB0, length 179 bytes, `ret 4`, float in st0. Byte-identical to
 //   the sibling instantiation at 0x007F6BF0. Both catalog rows say <CThingAICreature>; the two callers are the
 //   operator()<T> pair at 0x007F6F20/0x007F6FD0, so one row is the <CThingCreatureBase> instantiation (this file
@@ -34,7 +35,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     T* GetTypedItem() const { return (T*)GetPItem(); }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class C2DVector { public:
     float X, Y;

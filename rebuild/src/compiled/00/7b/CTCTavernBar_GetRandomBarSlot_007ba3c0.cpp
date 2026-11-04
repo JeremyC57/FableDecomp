@@ -1,5 +1,6 @@
 // CTCTavernBar::GetRandomBarSlot(CThing& creature, C3DVector& position, CRightHandedSet& orientation, long& actionPoint, long& slot) -- pick a random jug slot and claim the matching free "ACTION_POINT_BARMAN_0<n>" named action point for the creature (position, orientation, action point index)
 // Leaf: GetRandomBarSlot
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BA3C0, 290 bytes, `ret 14h`. Ego_r.pdb
 //   `?GetRandomBarSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z`.
@@ -15,7 +16,7 @@
 //   jug count taken before the seed; the landed WorldRandomRange step inline (`range ? seed % range : 0`); a default
 //   CCharString declared first and never used; the point name built by += and passed by value (declared copy ctor).
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
 class CCharString { public:
     void* m_data;

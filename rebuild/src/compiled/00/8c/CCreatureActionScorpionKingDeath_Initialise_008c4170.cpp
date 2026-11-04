@@ -1,4 +1,5 @@
 // CCreatureAction_ScorpionKingDeath::Initialise() -- animation FALL_TO_DEATH, base Initialise, then look the "DEATH" effect up in the owner's CSpecialEffectsDef and create that effect thing at the owner's position
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4170, length 218 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0,
 // CCharString::~CCharString @ 0x0099EAE0, CCombatActionBase::Initialise @ 0x00857520,
@@ -11,7 +12,7 @@
 // esi (its null test merges with the `if`, its release is the trailing `dec [esi+4] ; jne`), so the dead out slot is
 // reused by the block-scoped "DEATH" string; the bool result survives the string's destructor in bl. Create's third
 // argument (0) is pushed before the owner's position is fetched.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* m_pData;

@@ -1,6 +1,7 @@
 // CTCNymph::FrameUpdate() -- while flying: once faded in, follow the flight spline for a second of world frames (then pick a new target position), keep ReadyToAttack from the live target's range or else adopt the owner's targeting target; while fading out after flying, fade the alpha down and hide the owner at zero; while fading in, fade the alpha up and kill the old effect at zero; then the base FrameUpdate
 // Naming wave 35c (queue land0411j 0x00A567A0): calls 0x00A567A0 as CCardinalSpline::GetSplinePosition(C3DVector&, float) const (Ego_r.pdb ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z; the out vector by reference).
 // Leaf: FrameUpdate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080FAD0, 593 bytes, plain `ret`.
 // Callees: CTCBase::GetWorld @ 0x00686A70, CWorld::GetWorldFrame @ 0x0049D870, CCardinalSpline::GetSplinePosition @ 0x00A567A0,
@@ -33,9 +34,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 template <class T> class CDefPointer;
 class CDefClassBase { public:

@@ -1,5 +1,6 @@
 // CCreatureAction_CastAssassinRush::CCreatureAction_CastAssassinRush(CThingCreatureBase*, const C3DVector&, float, bool, long, CCountedPointer<CCreatureActionBase>) -- override form: base CCombatActionBase(owner, 150, zeroed sound), Override set, Dir, Distance, UseCollision, Level, FinalAction, IsZTargetting clear; animation "ST_CAST_ASSASSIN_RUSH"
 // Leaf: ??0CCreatureAction_CastAssassinRush@@QAE@PAVCThingCreatureBase@@ABVC3DVector@@M_NJUCCountedPointer_CCreatureActionBase@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CE1B0, length 221 bytes (+ int3 padding), `ret 1Ch`. Vtable 0x01284254.
 // Callees: the CCombatActionBase constructor (0x00858030 owner form / 0x00857F30 owner+target form), CCharString ctor 0x0099EBF0 /
 // dtor 0x0099EAE0 ("ST_CAST_ASSASSIN_RUSH" @ 0x01284238), SetAnimationName 0x008574D0, operator delete 0x00BFE9BC (the by-value
@@ -39,11 +40,7 @@ struct CCountedPointer_CCreatureActionBase {    // CCountedPointer<CCreatureActi
     }
 };
 
-class C3DVector { public:                          // three floats; the memberwise user copy constructor copies each as a dword
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* PStringData;

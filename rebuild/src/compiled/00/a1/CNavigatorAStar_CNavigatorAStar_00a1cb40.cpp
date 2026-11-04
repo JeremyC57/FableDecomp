@@ -1,5 +1,6 @@
 // CNavigatorAStar::~CNavigatorAStar() -- take this navigator out of its manager's route-calculation queue, then destroy the way-point Route, the OpenList heap, the three blocked quad-tree nodes and the A* States map, then ~CNavigatorBase
 // Leaf: ??1CNavigatorAStar
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1CB40, 164 bytes. Sole caller: the ??_G 0x00A224D0 (slot 0 of the CNavigatorAStar
 //   vtable 0x0129CCCC).
 // Identity: first store = vtable 0x0129CCCC (RTTI .?AVCNavigatorAStar@@ : CNavigatorBase : CClass : CBaseObject : CBaseClass),
@@ -185,7 +186,7 @@ public:
     CNavigatorQueueManager& GetNavigatorQueueManager() { return QueueManager; }
 };
 class C2DVector { public: float X, Y; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CANavQuadTreeNode : public CBaseClassNonCopyable {
 public:
     virtual ~CANavQuadTreeNode() { }

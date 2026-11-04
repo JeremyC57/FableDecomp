@@ -1,5 +1,6 @@
 // CTCTavernGame::CreateGamePiece(long defIndex) -- create a game-piece object at the owner's position, give it the owned-entity TCs pointing back at the owner
 // Leaf: CreateGamePiece
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EA9B0, length 520 bytes, `ret 4`; called by the landed
 // CTCTavernGameCoinBase::AddNewCoin (0x008EFA00).
@@ -19,7 +20,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Forward, Up;
     CRightHandedSet(float fx, float fy, float fz, float ux, float uy, float uz)

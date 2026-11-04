@@ -1,4 +1,5 @@
 // CTCLook::ChangeEyeAngles(float xy, float yz) -- set the eye angles, each clamped to half the def's eye turn range (degrees / 360); flag the change and poke the graphic appearance when either angle moved
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
 //   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00752200, length 242 bytes (+ int3 padding), `ret 8`.
@@ -28,7 +29,7 @@ class CThing { public:
     void SetAsRenderedThisFrame(unsigned long reasons);  // 0x004C7590
 };
 class CThingCreatureBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCLook { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)

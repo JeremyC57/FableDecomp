@@ -1,5 +1,6 @@
 // CSteeringAgent::CreateLineList(vector<C3DVector>& lines) -- let every steering behaviour, input and constraint add its debug lines
 // Leaf: ?CreateLineList@CSteeringAgent@@QAEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1B470, 102 bytes, `ret 4`.
 // Identity: Ego_r.pdb `?CreateLineList@CSteeringAgent@@QAEXAAV?$vector@VC3DVector@@...@Z`; its only caller is the
 //   tail jump in CNavigatorAStar::CreateLineList 0x00A1BFC0 (`mov ecx,[ecx+20h]` = CNavigatorBase::SteeringAgent).
@@ -9,7 +10,7 @@
 //   CreateLineList is virtual in the PDB).
 // Shape: three iterator loops; end() is re-read after every virtual call; the loop heads differ only in the
 //   alignment padding VC7.1 inserts.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CNavigatorExternalInterface;
 
 namespace std {

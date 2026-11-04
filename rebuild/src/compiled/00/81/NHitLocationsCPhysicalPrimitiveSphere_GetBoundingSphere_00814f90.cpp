@@ -1,15 +1,14 @@
 // NHitLocations::CPhysicalPrimitiveSphere::GetBoundingSphere(CThing* thing, C3DVector& centre, float& radius) -- the world bounding sphere: the dummy-object origin and the radius (or the thing's physics radius when unset)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00814F90, length 124 bytes (+ int3 padding).
 // Leaf: GetBoundingSphere
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Callees: CPhysicalPrimitiveSphere::GetDummyObjectOrigin(CThing*) @ 0x00814C70, CThingCreatureBase::GetCombatRadius @ 0x00661F90.
 // Constant: 0.0001f @ 0x0129BA3C.
 // Layout: Ego_r.pdb CPhysicalPrimitiveSphere {vptr, CDefString BaseName +4, float Radius +8}; the thing as in 0x00814D10.
 // Shape: the centre is copied word by word from the returned hidden pointer (eax); the radius store sits in each of the
 // three arms (`fstp [edx]` / `[eax]` / `[ecx]`), written as per-arm stores with early returns (the inline GetRadius used
 // by 0x00814D10/0x00814E10 merges two of the exits); `ret 0Ch`.
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 struct CThingDef_Physics {                         // the thing's definition (only the collision radius is read)
     unsigned char _pad[0x34];
     float         CollisionRadius;                 // +0x34

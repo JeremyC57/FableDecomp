@@ -1,5 +1,6 @@
 // NUISystem::CMesh::SetOrientation(CRightHandedSet& orientation) -- store the mesh's orientation frame
 // Leaf: SetOrientation
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00550BE0, 47 bytes (`ret 4`), no callees.
 // Label: CMesh vtable 0x01249F9C slot 148 (rtti-vtables.tsv); Ego_r.pdb names
 // ?SetOrientation@CMesh@NUISystem@@UAEXAAVCRightHandedSet@@@Z (a non-const reference).
@@ -7,11 +8,7 @@
 // members sit 0x30 below their PDB offsets in retail, so Orientation +0x174, RotationAxis +0x18c,
 // RotationSpeed +0x198 (the same offsets slot 1, 0x00550070, reads).
 // Shape: `add ecx,174h` then a six-dword memberwise copy through edx (the address of the member formed once).
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet { public:
     C3DVector Up;

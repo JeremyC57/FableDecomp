@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetFurthestWithDefName(const CScriptThing& from, const CCharString& defName) const -- of all things with the given def name, return the one furthest (2D) from `from`, or an empty handle when there is none
 // Leaf: GetFurthestWithDefName
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0089AA70, 416 bytes, `ret 0xc` (hidden CScriptThing result).
 // Callees: own slot 80 GetAllThingsWithDefName (by reference into a local vector), CBaseClass::CBaseClass 0x0099A2D0 /
 //   ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC (counted-pointer block), free 0x00BFEA14 (vector storage),
@@ -14,7 +15,7 @@
 extern "C" void free(void* p);                           // 0x00BFEA14
 void operator delete(void* p);                           // 0x00BFE9BC
 class CCharString { public: void* PStringData; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                           // 0x0143E8E0
 
 class CCPPointerInfo { public:

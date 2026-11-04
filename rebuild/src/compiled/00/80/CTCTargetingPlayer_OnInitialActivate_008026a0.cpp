@@ -1,5 +1,6 @@
 // CTCTargetingPlayer::OnInitialActivate() -- after the base resolves the targeting sub-def, take the largest range of the def's range map (times 1.2) as the max targeting distance and zero the targeted-position vectors, offsets and the Z-lock timer
 // Leaf: OnInitialActivate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008026A0, 481 bytes (+int3), plain `ret`; CTCTargetingPlayer vtable 0x0124280C
 //   slot 6 (abs ref @ 0x01242824). LABEL: the catalog/manifest name "CTCInventoryItem::OnCreate" is propagated from the
 //   byte-identical-prefix base; CTCTargetingAI::OnInitialActivate @ 0x007F59C0 is slot 6 of 0x012411FC (landed).
@@ -13,10 +14,7 @@
 //   so everything after them is 8 lower: TargetedPos +0x84, OldTargetedPos +0x90, TargetedPosOffset3D +0x9C,
 //   OldTargetedPosOffset3D +0xA8, the four C2DVectors +0xB4..+0xCC; MaxTargetingDistance +0x48 and ZLockTargetSelectionTimer
 //   +0x38 agree. CTCTargetingAI PSubDef +0x30 (as the landed 0x007F59C0).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}

@@ -1,5 +1,6 @@
 // std::swap(NPlayerTargeting::CTargetPoint& a, NPlayerTargeting::CTargetPoint& b) -- exchange two player-targeting candidates (thing pointer, index, targeting position, rejection frame) through a by-value temporary
 // Leaf: ??$swap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008073D0, 195 bytes (+ int3 padding), /Gr `__fastcall` (a in ecx -> edi, b in edx
 //   -> esi), plain `ret`; 0x1c-byte frame temporary.
 // Identity: the player-targeting candidate sort TU; callers are the out-of-line iter_swap 0x00808110 (a bare `jmp`) and
@@ -14,10 +15,7 @@ class CBaseObject;
 class CThing;
 
 #pragma pack(push, 1)
-class C3DVector { public:                                      // 1-aligned in retail
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CBaseIntelligentPointer {

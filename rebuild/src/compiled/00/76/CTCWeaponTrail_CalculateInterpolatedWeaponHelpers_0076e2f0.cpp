@@ -1,6 +1,7 @@
 // CTCWeaponTrail::CalculateInterpolatedWeaponHelpers(long trail, float time, C3DVector& end, C3DVector& start) const -- interpolate the weapon trail's start/end helper positions between the two stored samples at the given time
 // Grade: RELOCATION_MATCH (retry wave 2 sec2): the retail const CVectorMap::LowerBound body (0x004365B0) in the TU as a same-TU noinline callee -- VC7.1 then keeps the parent in eax as retail (was DIFFER(421v421), parent in ebp). Respelled to the PDB: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound, the private const leaf taking C3DVector& (Ego_r ABEXJMAAVC3DVector@@0@Z), NGraphicAppearance::CTCGraphicAppearance, CTCCarryable::GetCarriedPositionInfo / C3DMeshObject::GetHelperPointPositionStatic const reference forms, engine/CBaseClass.h.
 // Leaf: ?CalculateInterpolatedWeaponHelpers@CTCWeaponTrail@@ABEXJMAAVC3DVector@@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 long __fastcall Compare(const char* a, const char* b);      // 0x00411570
 #pragma pack(push, 1)
 struct CBasicStringChar {
@@ -36,7 +37,7 @@ struct CHelperNameVector {
     CHelperNamePair* begin() const { return _M_start; }
     const CHelperNamePair& operator[](long n) const { return *(begin() + n); }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 struct CMeshCountBlock;
 #include "engine/CBaseClass.h"

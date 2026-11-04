@@ -1,5 +1,6 @@
 // CTCCameraPointScriptedSpline::CKeyCamera::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~CKeyCamera runs EventName's destructor (CCharString at +0x30), then operator delete when bit 0 of flags is set; returns this
 // Leaf: ??_GCKeyCamera@CTCCameraPointScriptedSpline@@QAEPAXI@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075F0B0, 33 bytes (+ int3 padding), thiscall, `ret 4`; unreferenced (no call or pointer to it in Fable.exe).
 // Identity: CTCCameraPointScriptedSpline::CKeyCamera::`scalar deleting destructor' -- proven; evidence: FableWin.pdb name set holds ??_GCKeyCamera@CTCCameraPointScriptedSpline@@QAEPAXI@Z; Ego_r.pdb CKeyCamera has its only destructible member, CCharString EventName, at +48 = +0x30; the body sits next to the CKeyCamera constructor 0x0075F1F0.
 //   Family G042 (8 deleting destructors that differ in the one member's offset and destructor; the propagated label
@@ -7,10 +8,7 @@
 // Callees: CCharString::~CCharString() 0x0099EAE0, operator delete 0x00BFE9BC.
 // Shape: `delete p` on the class emits the non-virtual ??_G as its own COMDAT (the helper below is not graded).
 void __cdecl operator delete(void* p);                         // 0x00BFE9BC
-class C3DVector {                                            // 12 bytes
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CCharString {
 public:
     ~CCharString();                                          // 0x0099EAE0

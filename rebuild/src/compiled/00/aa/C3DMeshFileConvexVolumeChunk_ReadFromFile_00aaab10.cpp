@@ -1,5 +1,6 @@
 // C3DMeshFileConvexVolumeChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&) -- skip a version word, read Name, resize Planes to the stored count and read each plane
 // Leaf: ReadFromFile@C3DMeshFileConvexVolumeChunk
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail @ 0x00AAAB10, 448 bytes (virtual, slot 7, ret 0Ch).
 // Callees: CDataInputStream::ReadNullTerminatedString (vtable slot 6, hidden CCharString result),
 //   CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, CDataInputStream::Read3DVector 0x009950F0 (C3DVector by
@@ -19,7 +20,7 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CPlane { public:
     C3DVector Normal;
     float Distance;

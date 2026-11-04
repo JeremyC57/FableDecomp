@@ -1,5 +1,6 @@
 // NScript::CLadyGreyWifeManagerScript::Init() -- fetch the "LadyGrey" thing; when she is alive, put her in limbo (unless already), teleport her to the hero's position and make her persistent
 // Leaf: ?Init@CLadyGreyWifeManagerScript@NScript@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CF8970, 248 bytes (+ int3 padding). Quest-script Init.
 // Callees: CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, CCountedPointer::operator= 0x00704580 (the inline
 //   CScriptThing assignment), ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC; CScriptThing slots 6 GetPos / 75 IsAlive;
@@ -41,7 +42,7 @@ template <class T> class CCountedPointer { public:
         Info = 0;
     }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

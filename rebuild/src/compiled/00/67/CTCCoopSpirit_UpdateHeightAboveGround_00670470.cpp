@@ -1,6 +1,7 @@
 // CTCCoopSpirit::UpdateHeightAboveGround() -- push the spirit's physics up or down towards its hover height above the ground below it, with an acceleration that grows as exp(2.25 d^2) - 1 (capped at 1) in the gap d
 // Grade: RELOCATION_MATCH (agent902, 3rd grade) -- the sign as a named float local (`float direction = (float)sign;`) and the clamped term as a float `e`: VC7.1 keeps both on the x87 stack (fild early, popped at scope end), stores the gap with `fst` and re-reads it for the square, compares e against the dword 1.0f, as retail.
 // Leaf: ?UpdateHeightAboveGround@CTCCoopSpirit@@AAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00670470, 228 bytes (+ int3 padding to 240), thiscall `ret`. Name: Ego_r.pdb
 //   `?UpdateHeightAboveGround@CTCCoopSpirit@@AAEXXZ` (private void; the only caller 0x00670A6E is the spirit's update
@@ -21,10 +22,7 @@
 //   f2xm1 / fscale); the acceleration is a C3DVector(0, 0, z) temporary. No pragma.
 #include <math.h>
 #pragma intrinsic(exp)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

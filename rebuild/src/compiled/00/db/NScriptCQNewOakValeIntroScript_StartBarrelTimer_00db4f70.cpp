@@ -1,5 +1,6 @@
 // NScript::CQ_NewOakValeIntroScript::StartBarrelTimer() -- Oakvale intro barrel-watch thread: wait for the watch timer to start, put up the HUD clock bar, then each frame colour it green while the hero stands within 2 units of the warehouse guard point (red otherwise) and feed it the remaining watch time, until the barrel man has spoken to the returning hero; then remove the bar
 // Leaf: ?StartBarrelTimer@CQ_NewOakValeIntroScript@NScript@@QAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DB4F70, 562 bytes, thiscall, plain `ret`.
@@ -28,10 +29,7 @@ public:
 };
 #include "engine/CCountedPointer.h"
 #pragma pack(push, 1)
-class C3DVector {                                       // byte-aligned: Ego_r.pdb places it at odd offsets (+0x8a, +0x99)
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class CRGBColour {                                      // Ego_r.pdb union: B, G, R, A bytes (D3DCOLOR order)
 public:

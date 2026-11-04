@@ -1,5 +1,6 @@
 // CCombatAction_GenericResponseToExplosion::CCombatAction_GenericResponseToExplosion(CThingCreatureBase*, CThing*, const C3DVector&, const C3DVector&) -- constructor
 // Leaf: ??0CCombatAction_GenericResponseToExplosion
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066A5B0, 160-byte slot (157 bytes of code).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
 //          CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, CBaseIntelligentPointer::SetPItem @ 0x00A01B90.
@@ -13,9 +14,7 @@ class CThingCreatureBase;
 class CThing;
 class CBaseObject;
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CSoundPair { public:
     long FirstSound;

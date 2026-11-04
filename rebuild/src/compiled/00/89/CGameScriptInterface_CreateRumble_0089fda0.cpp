@@ -4,13 +4,14 @@
 //          CThing::GetScriptThing @ 0x004C7E50, CBaseClass::CBaseClass @ 0x0099A2D0, CCharString::~CCharString @ 0x0099EAE0 (the by-value name).
 // Shape: CScriptThing returned by hidden pointer; the null script thing is built inline.
 // Leaf: CreateRumble
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 class CCharString { public:                               // fable_string.h layout: one data-block pointer
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 struct SCountBlock;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;

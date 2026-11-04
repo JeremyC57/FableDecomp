@@ -1,5 +1,6 @@
 // NScript::CV_AmbushScamScript::CAS_Trickster::Init() -- set up the ambush-scam trickster: make the hero and the trickster mutual allies, wander around its current position (min 0, max the script def's AmbushScamTricksterWanderMax), scripting state group 4, both random-speech indices 5, and flag it as having information
 // Leaf: ?Init@CAS_Trickster@CV_AmbushScamScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E2BD80, length 313 bytes.
 // Callees (all virtual, through Game at +0x4 = CGameScriptInterface, slots from ghidra_out/cgsi_slots_aligned.tsv):
 //          GetHero (70, +0x118) x2, EntitySetThingAsAllyOfThing (599, +0x95c) x2, SetWanderCentrePoint (763, +0xbec),
@@ -16,10 +17,7 @@
 //          reorders the Y store); the float distances travel as dwords.
 // Naming wave 35: identity reg 00e2b14c "AS_Trickster" in 00e2b090; Alloc 00e2bc90; vtable 012e2850 slot 2; PDB ?Init@CAS_Trickster@CV_AmbushScamScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CAS_Trickster::Init (wave3/labels_alloc.tsv); PDB ?Init@CAS_Trickster@CV_AmbushScamScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CAS_Trickster@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_4 = 4 };
 struct SCountInfo { long RefCount; };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy

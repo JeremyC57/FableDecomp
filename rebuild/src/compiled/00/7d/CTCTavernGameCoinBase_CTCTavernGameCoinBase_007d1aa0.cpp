@@ -1,5 +1,6 @@
 // CTCTavernGameCoinBase::~CTCTavernGameCoinBase() -- compiler-generated destructor: destroy the Coins vector, then CTCTavernGame
 // Leaf: ??1CTCTavernGameCoinBase@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D1AA0, 65 bytes, tail jump to ~CTCTavernGame.
 // Identity: called by the scalar deleting destructors of CTCTavernGameCoinBase 0x007D2200 (vtable 0x0126F224 slot 0),
 //   CTCTavernGameShoveHaPenny 0x007D2240 and CTCTavernGameCoinGolf 0x007D4D90 (both derive from CoinBase); Ego_r.pdb
@@ -76,7 +77,7 @@ public:
     unsigned char Unnamed04[0xec];              // +0x04 (CTCBase + tavern-game state, not touched here)
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
 
 class CTCTavernGameCoinBase : public CTCTavernGame {

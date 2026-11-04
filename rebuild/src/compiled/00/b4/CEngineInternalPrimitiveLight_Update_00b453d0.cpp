@@ -1,4 +1,5 @@
 // CEngineInternalPrimitiveLight::Update(const CEnginePrimitive& primitive, unsigned long flags) -- copies a light descriptor into the internal light: primitive flags, position, radius, the byte colour converted to a float colour (each channel / 255), spot radius and lighting channel mask
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B453D0, length 142 bytes (`ret 8`). Constant 1/255 (0.0039215689f) @ 0x01231724.
 // Layout: descriptor = PDB CEnginePrimitiveLight (40 bytes: WorldPos +0x0C, CRGBColour +0x18 stored B,G,R,A, Radius +0x1C, SpotRadius
 // +0x20, LightingChannelMask +0x24); target = PDB CEngineInternalPrimitiveLight (WorldPos +0x48, CRGBFloatColour +0x54, Radius +0x64,
@@ -6,7 +7,7 @@
 // Shape: the colour goes through an inline four-argument setter -- the arguments evaluate right to left (A, B, G, R: `movzx` of +0x1B
 // first), each `fild` homed in the dead argument slot, then four `fstp` R..A straight into the member (a constructed temporary
 // assigned to the member adds a frame copy); the radius copy is written before the colour (it is scheduled there).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CRGBColour { public:                                // 4 bytes, stored B, G, R, A
     unsigned char B, G, R, A;

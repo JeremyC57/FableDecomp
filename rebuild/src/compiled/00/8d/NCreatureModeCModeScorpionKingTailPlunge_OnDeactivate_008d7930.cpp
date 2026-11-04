@@ -1,5 +1,6 @@
 // NCreatureMode::CModeScorpionKingTailPlunge::OnDeactivate() -- kill the live tail emitter (+0xa9) and dust-trail emitter (+0xb1), clear Active
 // Leaf: OnDeactivate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D7930, 105 bytes (`ret`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80.
 // Layout: Ego_r.pdb CModeScorpionKingTailPlunge is byte-packed after bRecovering (+0x88): TargetPos +0x89, TailPos +0x95,
@@ -40,7 +41,7 @@ class CModeStandBase : public CTCCreatureModeManager::CModeBase {
 public:
     unsigned char _pad1c[0x4c];                    // +0x1c .. +0x68
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace NCreatureMode {
 #pragma pack(push, 1)

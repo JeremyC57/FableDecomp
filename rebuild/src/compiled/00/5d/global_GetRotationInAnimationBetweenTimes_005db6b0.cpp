@@ -1,5 +1,6 @@
 // GetRotationInAnimationBetweenTimes(long bankIndex, float& rotation, float startTime, float endTime) -- the signed turn (in revolutions) of a bank animation's root movement between two times: the angle between the end movement's forward axis and +X, signed by the half-way movement's forward axis
 // Leaf: ?GetRotationInAnimationBetweenTimes@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -23,12 +24,7 @@ extern "C" double __cdecl acos(double x);                                       
 #pragma intrinsic(acos)
 void __cdecl operator delete(void* p);                                               // 0x00BFE9BC
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 inline float DotProduct(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 
 class CMatrix3x4 {

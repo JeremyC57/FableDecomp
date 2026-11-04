@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<std::pair<C3DVector, CCharString> >) STLport range erase: assign the tail [last, finish) down onto first through the out-of-line __copy, destroy the vacated tail through the out-of-line __destroy_aux, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@U?$pair@VC3DVector@@VCCharString@@@std@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00656837, 55 bytes (size-optimised TU, frame pointer, odd entry), thiscall, `ret 8`, returns first.
 // Identity: std::vector<std::pair<C3DVector, CCharString> >::erase(iterator, iterator) -- proven; evidence: its callers are 0x0064DD9A, called only by the landed CDrawMiniMap::SetRegion 0x0064DFDE and ToggleCentering 0x0064E019 (the PDB names CDrawMiniMap::UpdateRegionExitNames(const CRegion&); catalogue "CTCActionUseScriptedHook::PopulateRegionExits" is propagated), which first erases [begin, end) of the vector at +0x154, and the clear() 0x00656D00; Ego_r.pdb CDrawMiniMap::RegionExits (+0x174) is vector<std::pair<C3DVector, CCharString> >, the only vector of that pair in the PDB layouts; the 0x10-byte element's operator= 0x00654EB6 copies three float dwords then CCharString::operator= 0x0099EFB0 at +0xC; the PDB name sets hold vector<pair<C3DVector, CCharString> >::erase
 //   Family G072 (seven byte-identical bodies, one COMDAT per T: retail has no ICF). Catalogue label "std_vector_assign_range" is propagated/behavioural.
@@ -12,7 +13,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
-class C3DVector { public: float X; float Y; float Z; };       // 12 bytes
+#include "engine/C3DVector.h"
 class CCharString {                                          // 4 bytes (Ego_r.pdb)
 public:
     void* PStringData;                                       // +0x0 CCharStringData*

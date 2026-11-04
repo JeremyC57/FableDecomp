@@ -1,4 +1,5 @@
 // CTCLook::IsInsideAnimationRange() -- whether the creature is close enough to the camera (in the XY plane) for its look animation to matter, and is either on screen or in a movie sequence
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751BC0, length 176 bytes (+ int3 padding); speed TU (no frame pointer, esp-relative frame).
 // Callees: CThing::GetPos @ 0x004C73D0, CTCBase::GetWorld @ 0x00686A70 (twice), CWorld virtual slot 8 (+0x20, GetViewPosition --
 // a C3DVector through the hidden pointer), Distance2D(const C2DVector&, const C2DVector&) @ 0x009E2460 (`__fastcall`, float in st0),
@@ -11,7 +12,7 @@
 // over the scoped_ptr (`mov ecx,[eax+38h]`); the scoped_ptr's operator-> or get() at the call site gives `add eax,38h` / `mov ecx,eax`.
 // Layout: CThing::PTCGraphicAppearance at +0x64 (PDB +0x74; retail loads [eax+64h]); CWorld is modelled locally because the shared
 // header exposes the scoped_ptr as a raw pointer and has no inline script-interface getter (the getter is what fixes the codegen).
-class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }

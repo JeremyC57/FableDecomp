@@ -1,6 +1,7 @@
 // CSpecialAbilitiesBulletTimeDef::~CSpecialAbilitiesBulletTimeDef() -- free the seven screen-filter float vectors (last declared first), then the CParentDefClassBase part
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004575FC, length 130 bytes.
 // Leaf: ??1CSpecialAbilitiesBulletTimeDef
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Pragma: #pragma optimize("s", on) -- the def module is size-optimised (`pop ecx` after each free).
 // Label correction: the catalog "~CPatchTesselationEdgeStrip" is propagated over byte-similar def destructors. The only
 // caller is 0x004575E3 inside the deleting destructor 0x004575E0, which is slot 0 of CSpecialAbilitiesBulletTimeDef's vtable
@@ -30,7 +31,7 @@ struct CFloatVector {                              // retail std::vector<float> 
 class CDefString { public:                         // a def-name table position word (4 bytes)
     long TablePos;
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class __declspec(novtable) CSpecialAbilitiesBulletTimeDef : public CParentDefClassBase { public:   // vtable 0x01234264, retail 0x18c bytes
     virtual void Transfer(CPersistContext& context);              // ?Transfer@CSpecialAbilitiesBulletTimeDef@@UAEXAAVCPersistContext@@@Z
     virtual void Copy(const CDefClassBase* other);                // ?Copy@CSpecialAbilitiesBulletTimeDef@@UAEXPBVCDefClassBase@@@Z

@@ -1,5 +1,6 @@
 // CEngineLightingManager::~CEngineLightingManager() -- engine lighting manager destructor: free the aligned SIMD variable block, then the shadowed-spot-light, local-light and theme-channel arrays, then the CEngineComponent and primitive-manager bases
 // Leaf: ??1CEngineLightingManager@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B47B50, 110 bytes, `jmp` to the base destructor.
 // Identity (proven): the sole caller is the scalar deleting destructor 0x00B4A4A0, slot 0 of vtable 0x012A2274 (RTTI
 //   CEngineLightingManager : CEnginePrimitiveManager @0 (: CEnginePrimitiveRenderUtil : CBaseClassNonCopyable),
@@ -164,7 +165,7 @@ public:
     unsigned char KeepAlive;                            // +0x09
 };
 
-class C3DVector { public: float X; float Y; float Z; };
+#include "engine/C3DVector.h"
 class C4DVector { public: float X; float Y; float Z; float W; };
 class CRGBFloatColour { public: float R; float G; float B; float A; };
 class CShaderLightAttenuation { public: float Attenuation0; float Attenuation1; float Attenuation2; float AttenuationBase; };

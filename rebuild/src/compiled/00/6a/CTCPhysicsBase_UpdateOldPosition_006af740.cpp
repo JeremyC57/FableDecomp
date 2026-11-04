@@ -3,6 +3,7 @@
 // slot 96 of CTCPhysicsStandard 0x01265F84; rtti-vtables.tsv). The chunk label "CTCPhysicsStandard::UpdateOldRHSet" is
 // propagated (that is slot 95, 0x00723930); this is its CTCPhysicsBase sibling for the position.
 // Leaf: UpdateOldPosition
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CTCBase::GetWorld() @ 0x00686A70, CWorld::GetFrameNumber() @ 0x0049D870 (static: called with no this). Both names
 // are descriptive: 0x00686A70 returns [0x013B8A1C]+0x24 without reading ecx, 0x0049D870 returns the global 0x013B89BC (the
 // manifest labels CViewBase::GetDisplayEngine / GFGetPreMainMemoryUsed are propagated).
@@ -14,7 +15,7 @@
 // +0x40, OffsetVector3D +0x44, RHSet +0x50, OldRHSet +0x68, RHSetLastFrameSet +0x80, sixteen `bool : 1` flags in +0x84/+0x85).
 // engine/CTCPhysicsBase.h / CTCPhysicsStandard.h are flattened PODs without virtuals (RHSet as opaque bytes), so the
 // polymorphic hierarchy is modelled locally with the same offsets (as the landed constructor 0x00723FD0 does).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CWorld { public:
     static long __fastcall GetFrame();              // 0x0049D870 (`mov eax,[0x013B89BC] ; ret`, no this)

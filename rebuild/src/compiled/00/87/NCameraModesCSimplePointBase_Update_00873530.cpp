@@ -1,16 +1,13 @@
 // NCameraModes::CSimplePointBase::Update() -- hold the camera on its fixed point: aim it at LookAtPos and keep it at Position
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00873530, 53 bytes, plain `ret`.
 // Leaf: ?Update@CSimplePointBase@NCameraModes@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: vtable 0x01277644 slot 1 (the NCameraModes::CBase Update slot); FableWin.pdb ?Update@CSimplePointBase@NCameraModes@@UAEXXZ.
 // Layout: retail CSimplePointBase (landed ctor 0x00873A10): StartPos +0xa4, Position +0xb0, LookAtPos +0xbc; the root CBase has
 //         LookAt +0x10, the camera manager +0x40 and GoTo (CPhysicsState, Position first) +0x54.
 // Shape: the inline CBase setters SetObservedPos then SetPosition (FableWin.pdb names), each a C3DVector copy through the
 //        memberwise copy-ctor model of the landed ctor.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class CCamera { public:                                     // 0x38 bytes (Ego_r.pdb CGameCameraManager::Camera/OldCamera)
     unsigned long _words[0x38 / 4];
 };

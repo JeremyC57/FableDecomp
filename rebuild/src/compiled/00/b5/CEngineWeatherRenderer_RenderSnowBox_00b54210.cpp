@@ -1,4 +1,5 @@
 // CEngineWeatherRenderer::RenderSnowBox(const C3DVector& boxPos) -- upload the snow box position, flush the dirty shader state and draw the snow particle buffer as a point list scaled by the current snow strength
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B54210, length 242 bytes (+ int3 padding), `ret 4`.
 // Signature from Ego_r.pdb: ?RenderSnowBox@CEngineWeatherRenderer@@AAEXABVC3DVector@@@Z; called only from RenderSnow
 // (0x00B54E30). Twin of RenderRainBox 0x00B54100 (same TU, same inlined PrepareForRender(5)).
@@ -18,7 +19,7 @@
 // `(long)(strength * 1024.0f)` through __ftol2.
 #include "engine/CEngineWeatherRenderer.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C4DVector { public: float X, Y, Z, W; };
 
 template <class T> class CArray { public:

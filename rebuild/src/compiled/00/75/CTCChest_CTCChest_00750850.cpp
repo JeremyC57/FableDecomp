@@ -1,5 +1,6 @@
 // CTCChest::~CTCChest() -- chest component dtor: kill a live opening particle, then the member dtors in reverse order (the particle pointer, the opener helper) and the implicit CTCContainerRewardHero / CTCContainer dtors (the container item vector of (count, def name) pairs) before ~CTCBase
 // Leaf: ??1CTCChest@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00750850, 121 bytes, tail jump to the base destructor.
 // Identity: the first store is vtable 0x0126957C, RTTI `.?AVCTCChest@@` (rtti_bases: CTCChest : CTCContainerRewardHero :
 //   CTCContainer : CTCBase); its slot 0 is the scalar deleting dtor 0x00750980, the only caller (call at 0x00750983). Ego_r.pdb
@@ -107,11 +108,7 @@ template <class T> class CDefPointer { public:
     ~CDefPointer() { Release(); }
 };
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CTCBase : public CBaseClassNonCopyable { public:
     CThing* ParentThing;                                    // +0x04

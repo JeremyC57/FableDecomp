@@ -1,6 +1,7 @@
 // C3DMeshFileVerticesChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const -- the vertex count, then position, normal and UV of every vertex as eight floats; no base call
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABBDF0, length 151 bytes.
 // Leaf: WriteToFile
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: 0x00993EA0 CDataOutputStream::WriteULONG, 0x00993EE0 CDataOutputStream::WriteFloat.
 // Shape: a plain CChunkedFileChunk (0x10 base) with the retail three-pointer CArray<C3DVertex2> at +0x10
 // (PDB header: same offset, 0x10-wide CArray). C3DVertex2 is 32 bytes (PDB: Position, Normal, U, V) so the
@@ -21,7 +22,7 @@ class CCharString { public:
     void* m_pStringData;                                // CCharStringData*
 };
 
-class C3DVector  { public: float X, Y, Z; };                   // trivial default constructor (retail leaves it uninitialised)
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:                                     // 48 bytes: three axis vectors and the position, copied with rep movsd
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }

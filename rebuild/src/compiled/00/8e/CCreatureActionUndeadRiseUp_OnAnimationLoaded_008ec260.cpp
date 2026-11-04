@@ -1,4 +1,5 @@
 // CCreatureAction_UndeadRiseUp::OnAnimationLoaded() -- once the rise animation is loaded, spawn the creature definition's "RISE" special effect at the undead's position (when its special-effects sub-def maps that name), then the combat-action OnAnimationLoaded
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008EC260, length 192 bytes (plain `ret`, virtual).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, twice), CDefClassBase::GetSubDef<
 // CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) 0x00669580 on the thing's definition (+0x70), CCharString(const char*,
@@ -12,7 +13,7 @@
 // condition in a frame byte. GetEffectFromString is a same-TU noinline stand-in (retry B's lever, FIXES.md) whose body
 // only writes the effect type. VC7.1 then knows the effect-type word's address does not escape the call, which gives
 // retail's registers (`this` in edi, &PCreature in esi) and keeps `push 0` ahead of the GetPItem/GetPos calls.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* m_pData;

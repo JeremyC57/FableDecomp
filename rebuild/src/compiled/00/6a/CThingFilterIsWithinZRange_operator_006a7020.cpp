@@ -1,5 +1,6 @@
 // CThingFilter_IsWithinZRange::operator()(CThing* thing) -- true when the thing has a physics component whose position height is strictly within Range of Z
 // Leaf: ??RCThingFilter_IsWithinZRange
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A7020, length 38 bytes (+ int3 padding).
 // Callees: none (x87 `fabs` intrinsic).
 // Layout: PDB CThingFilter_IsWithinZRange { float Z; float Range; }; retail CThing PhysicsTC +0x60, the component's
@@ -7,9 +8,7 @@
 // Shape: `fabs(pos.z - Z) < Range` as `fcomp [Range] ; test ah,5 ; jp` (the "below" test), byte-constant exits.
 #include <math.h>
 
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase { public:
     void*         __vftable;
@@ -31,7 +30,7 @@ class CThingFilter_IsWithinZRange { public:
 bool CThingFilter_IsWithinZRange::operator()(CThing* thing) const
 {
     CTCPhysicsBase* physics = thing->PhysicsTC;
-    if (physics && fabs(physics->m_position.z - Z) < Range)
+    if (physics && fabs(physics->m_position.Z - Z) < Range)
         return true;
     return false;
 }

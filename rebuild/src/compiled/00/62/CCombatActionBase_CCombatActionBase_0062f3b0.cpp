@@ -15,6 +15,7 @@
 //        built by its base ctor, gets its own vtable and copies the pointee via GetPItem/SetPItem; the def pointer copy
 //        add-refs a non-null def inline (`inc [eax+4]`); the list and vector copies are out-of-line calls.
 // Leaf: ??0CCombatActionBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include <new>
 class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
@@ -59,10 +60,7 @@ struct CAnimationEntryVector {                  // vector<const CAnimationEntry*
     CAnimationEntryVector(const CAnimationEntryVector& other);   // 0x0062F590
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }   // declared memberwise copy: plain [esi+N] stores
-};
+#include "engine/C3DVector.h"
 
 class CCreatureActionBase { public:
     virtual CBaseObject v00();

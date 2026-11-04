@@ -1,5 +1,6 @@
 // C3DAnimationStats::~C3DAnimationStats() -- empty user destructor: destroy the TimingEvents multimap (clear + free the header node), then run ~CBaseObject
 // Leaf: ??1C3DAnimationStats@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4EB50, 83 bytes, thiscall, tail `jmp ~CBaseObject`.
 // Identity (proven): stores vtable 0x0129D514 first (RTTI .?AVC3DAnimationStats@@ : CBaseObject, rtti-vtables.tsv /
 //   rtti_bases.tsv); callers are that vtable's slot-0 `??_G` 0x00A555A0 and the tail jump of the derived C3DAnimation2's
@@ -22,10 +23,7 @@ public:
 };
 
 #pragma pack(push, 1)
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace std {

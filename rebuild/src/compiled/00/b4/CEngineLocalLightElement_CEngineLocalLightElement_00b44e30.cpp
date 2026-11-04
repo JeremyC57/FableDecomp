@@ -1,5 +1,6 @@
 // CEngineLocalLightElement::CEngineLocalLightElement(const C3DVector& worldPos, float radius, float spotRadius, const CRGBFloatColour& colour, unsigned long channelMask) -- records a local light and precomputes its squared radius and attenuation terms
 // Leaf: ??0CEngineLocalLightElement
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B44E30, length 128 bytes. No calls.
 // Globals: the 1.0f / -1.0f pool constants @ 0x0122DED8 / 0x0122DEE0.
 // Shape: the members are the PDB's (0x34 bytes): WorldPos, Radius, RadiusSquared, SpotRadius, Colour (a nested POD copied
@@ -9,10 +10,7 @@
 // WorldPos is copied word by word through edx/ecx straight into [eax]: C3DVector has a memberwise user copy constructor
 // (the implicit POD copy goes through `mov edx,eax` and esi). The class has no generated engine header in the tree, so it is
 // modelled locally with the PDB names.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CRGBFloatColour { public:
     float R, G, B, A;

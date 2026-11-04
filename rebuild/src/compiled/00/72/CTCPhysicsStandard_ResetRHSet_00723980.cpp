@@ -1,4 +1,5 @@
 // CTCPhysicsStandard::ResetRHSet(const CRightHandedSet& set) -- set the right-handed set through the virtual setter, then make OldRHSet the same set (no interpolation)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00723980, length 59 bytes (vtable 0x01265F84 slot 32, rtti-vtables.tsv).
 // Callees: virtual slot 75 SetFacingAnglesFromRHSet (`call [eax+12Ch]`, 0x007239C0).
 // Shape: the argument is loaded into esi before the virtual call and reused for the copy; the 24-byte copy into +0x68 goes
@@ -8,7 +9,7 @@
 // +0x40, OffsetVector3D +0x44, RHSet +0x50, OldRHSet +0x68, RHSetLastFrameSet +0x80, sixteen `bool : 1` flags in +0x84/+0x85).
 // engine/CTCPhysicsBase.h / CTCPhysicsStandard.h are flattened PODs without virtuals (RHSet as opaque bytes), so the
 // polymorphic hierarchy is modelled locally with the same offsets (as the landed constructor 0x00723FD0 does).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 class CTCPhysicsBase { public:                        // 0x40 bytes

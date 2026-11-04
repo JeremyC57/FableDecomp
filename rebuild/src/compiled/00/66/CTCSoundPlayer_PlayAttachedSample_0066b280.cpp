@@ -1,5 +1,6 @@
 // CTCSoundPlayer::PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool flag, bool loop, bool attached) -- play a random sample index from the pair's [first, last] range from the owner's sample bank through the attached emitter
 // Leaf: ?PlayAttachedSample@CTCSoundPlayer@@QAEKABVCSoundPair@@ABVCSoundInit@@_N22@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066B280, 116 bytes (+ int3 padding to 128), thiscall `ret 14h`.
 //   Name: Ego_r.pdb `?PlayAttachedSample@CTCSoundPlayer@@QAEKABVCSoundPair@@ABVCSoundInit@@_N22@Z` (the bank-less overload;
 //   the landed 0x0066B300 is the CASoundBank& one). 23+ callers (CTCDoor::PlaySoundW 0x00730A00, CTCShop::SetAlarm, ...).
@@ -19,7 +20,7 @@
 //   list it is called after them).
 // No pragma.
 class CCharString { public: void* PStringData; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CASoundBank {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

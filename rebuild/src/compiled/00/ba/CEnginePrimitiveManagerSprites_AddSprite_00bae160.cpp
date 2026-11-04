@@ -1,5 +1,6 @@
 // CEnginePrimitiveManagerSprites::AddSprite(CTexture* texture, const C3DVector& position, float sizeX, float sizeY, float angle, EEnginePrimitiveBlendMode blendMode, unsigned char alpha, bool lit, bool sprite3D, float offsetX, float offsetY, bool persistent) -- create a sprite primitive (half sizes, offsets as fractions of the half sizes, bank/frame 0, non-persistent unless asked), register it with the manager and return its handle
 // Leaf: ?AddSprite@CEnginePrimitiveManagerSprites@@QAE?AVCEnginePrimitiveHandle@@PAVCTexture@@ABVC3DVector@@MMMW4EEnginePrimitiveBlendMode@@E_N3MM3@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BAE160, length 364 bytes, `ret 34h` (hidden result + 12 dwords).
 // Name: FableWin.pdb `?AddSprite@CEnginePrimitiveManagerSprites@@QAE?AVCEnginePrimitiveHandle@@PAVCTexture@@ABVC3DVector@@MMMW4EEngine
 //   PrimitiveBlendMode@@E_N3MM3@Z` -- the 12 parameters + hidden result fit `ret 34h`, and each lands on the Ego_r.pdb member of the
@@ -23,7 +24,7 @@
 //   carry the vptr as a data member, so the polymorphic classes are modelled locally. Slot 2 of CEnginePersistentPrimitiveBase
 //   has no recovered name (placeholder kept only for the vtable position); the type-7 enumerator likewise (literal).
 class CTexture;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 enum EEnginePrimitiveBlendMode { };
 class CEnginePrimitiveHandle;
 class CIVCountedPointeeBase { public:

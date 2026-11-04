@@ -1,8 +1,9 @@
 // CHandleOwner_00c62500::RemoveHandle(SContext_00c62500* context) -- when the handle at +8 is not negative, remove it from the context's handle table (0x00C62440, a member getter) through virtual slot 22 and mark the handle -1
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C62500, length 48 bytes.
 // Callees: GetHandleTable @ 0x00C62440, the table's slot 22. The chunk label "CItem::GetItemThings" is propagated (the sibling 0x00C62460 PlaceAt is landed); named by its effect.
 // Shape: the handle is taken into a local (edi) before the test and pushed from the register after the call; `ret 4`.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CHandleTable_00c62500 {
     virtual void v000();
     virtual void v001();

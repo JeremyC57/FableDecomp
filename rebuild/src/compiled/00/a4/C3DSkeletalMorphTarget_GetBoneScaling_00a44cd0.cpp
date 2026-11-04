@@ -1,4 +1,5 @@
 // C3DSkeletalMorphTarget::GetBoneScaling(C3DVector& scaling, unsigned long boneNameCRC) const -- binary-search the target's bone morphs (sorted by name CRC) and write that bone's scaling into `scaling`, or (1,1,1) when the bone is not morphed
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A44CD0, length 175 bytes, `ret 8`.
 // Signature: Ego_r.pdb ?GetBoneScaling@C3DSkeletalMorphTarget@@QBEXAAVC3DVector@@K@Z -- an OUT-REFERENCE, not a by-value
 // return (the stack layout is the same, so the earlier by-value model graded close but copied through `mov ecx,eax`).
@@ -8,11 +9,7 @@
 // Shape: `lo` declared before `hi` (first pointer straight into ebp); `hi = size - 1` from the 20-byte element count
 // (`imul 66666667h ; sar 3`), `mid = (lo + hi) / 2` signed, unsigned key compares through a morph pointer; the found arm
 // assigns `scaling = morph->Scaling` and returns, the miss assigns a (1,1,1) temporary (three frame words copied out).
-class C3DVector
-{ public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 class CCharString { public: void* PStringData; };
 

@@ -1,5 +1,6 @@
 // NScript::CQ_OakValeBanditRaidScript::CM_RestartMarker::Main() -- bandit-raid restart marker: forever, wait for the parent's restart flag, take the hero under
 // Leaf: ?Main@CM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   scripted control, start a paused movie sequence, fade out and in, and play CS_BANDITRAID_GATEOPEN (or _NONE when the
 //   parent cannot populate the level); then clear the parent's flags
@@ -16,7 +17,7 @@
 //   dtor 0x008AC970.
 // Naming wave 35: identity reg 00dbf69b "M_RestartMarker" in 00dbf2d0; Alloc 00dc0090; vtable 012d9f80 slot 1; PDB ?Main@CM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CM_RestartMarker::Main (wave3/labels_alloc.tsv); PDB ?Main@CM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CM_RestartMarker@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

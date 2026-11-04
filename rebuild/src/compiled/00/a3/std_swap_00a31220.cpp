@@ -1,5 +1,6 @@
 // std::swap(pair<unsigned long, C3DHelperPoint>& a, pair<unsigned long, C3DHelperPoint>& b) -- STLport swap of two helper-point map entries: copy a to a temporary, assign b to a, the temporary to b
 // Leaf: ??$swap@U?$pair@KVC3DHelperPoint@@@std@@@std@@YIXAAU?$pair@KVC3DHelperPoint@@@0@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A31220, 95 bytes, `__fastcall` (/Gr: a in ecx, b in edx), `ret`.
 // Identity (probable): std::swap<std::pair<unsigned long, C3DHelperPoint> > -- the 20-byte pair of the CPreAllocVectorMap
 //   <ulong, C3DHelperPoint> sort in the C3DMeshFile TU (_Push_heap over that pair at 0x00A31380; landed 56-byte DummyObject
@@ -12,11 +13,7 @@
 //   member from [ecx+4] -- into the 0x14-byte temporary; the implicit assignments copy five dwords. (Opaque 16-byte values
 //   are block-copied through `lea esi,[ecx+4]` instead.)
 #pragma pack(push, 1)
-class C3DVector {                                          // FableWin.pdb ??0C3DVector@@QAE@ABV0@@Z: a user copy ctor
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class C3DHelperPoint {                                     // Ego_r.pdb, 16 bytes
 public:

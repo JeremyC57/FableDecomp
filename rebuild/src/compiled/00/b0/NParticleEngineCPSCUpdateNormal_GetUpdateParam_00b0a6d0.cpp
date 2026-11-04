@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCUpdateNormal::GetUpdateParam(C3DVector& value, unsigned long paramType, float time, bool initial, const CParticleUpdateParameters& params, unsigned long index) -- vtable slot 1: the only parameter this component supplies is type 0, the particle-system offset (zero for the initial query)
 // Leaf: ?GetUpdateParam@CPSCUpdateNormal@NParticleEngine@@UAE_NAAVC3DVector@@KM_NABV?$CParticleUpdateParameters@KK@2@K@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0A6D0, 62 bytes (+2 int3 padding).
 // Name: FableWin.pdb ?GetUpdateParam@CPSCUpdateNormal@NParticleEngine@@UAE_NAAVC3DVector@@KM_NABV?$CParticleUpdateParameters@KK@2@K@Z;
 // slot 1 of the vtable 0x0129FC1C (rtti-vtables.tsv; slot 1 of CPSCSpline is the landed GetUpdateParam 0x00B1B030).
@@ -17,10 +18,7 @@ class CCharString { public:
     void* m_pData;
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 
 namespace NParticleEngine {
 class CParticleSystem;

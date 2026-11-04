@@ -1,5 +1,6 @@
 // std::vector::insert(iterator position, const value_type& x) -- (vector<C3DSkeletalBoneMorph>) STLport single-element insert: with room left, append at the end or shift the tail up one slot (copy-construct the last element, copy_backward the rest, assign a saved copy of x into the hole); otherwise grow through _M_insert_overflow; returns begin() + the position's index
 // Leaf: ?insert@?$vector@VC3DSkeletalBoneMorph@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A46B50, 347 bytes, thiscall, `ret 8`.
 // Identity: the catalog's "Vector_Insert_CParticleMorphEntry" is descriptive. The only caller is
 //   C3DSkeletalMorphTarget::CombineMorph 0x00A450FF, whose BoneMorphs member is CArray<C3DSkeletalBoneMorph> (Ego_r.pdb;
@@ -22,11 +23,7 @@ public:
     const CCharString& operator=(const CCharString& other); // 0x0099EFB0
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DSkeletalBoneMorph {                                // Ego_r.pdb, 20 bytes
 public:

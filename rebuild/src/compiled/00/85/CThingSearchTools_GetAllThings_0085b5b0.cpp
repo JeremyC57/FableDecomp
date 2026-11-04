@@ -1,5 +1,6 @@
 // CThingSearchTools::GetAllThings(const CFilter_Bind4<...>& filter, std::list<CThingGameObject*>& result) const -- appends every scan-visible game object that is not the striker, is strike-to-strike with it, whose hit-location bounding sphere overlaps the strike sphere and that it can collide or interact with
 // Leaf: ??$GetAllThings@VCThingGameObject@@V?$list@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@V?$CFilter_Bind4@VCThingFilter_IsNot@@VCThingFilter_CombatIsStrikeToStrike@?A0x
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0085B5B0, 365 bytes (+3 int3), thiscall `ret 8`; one caller 0x00859392.
 // Name (Ego_r.pdb name set, donor 0x0083B380): ??$GetAllThings@VCThingGameObject@@V?$list@PAVCThingGameObject@@...@std@@
 //   V?$CFilter_Bind4@VCThingFilter_IsNot@@VCThingFilter_CombatIsStrikeToStrike@?A0xad05d24c@@VCThingFilter_CombatOverlappingSphere@@
@@ -80,7 +81,7 @@ public:
 };
 class CThingPhysical : public CThing { public: enum { ThingTypeMask = 3 }; };
 class CThingGameObject : public CThingPhysical { public: enum { ThingTypeMask = 7 }; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCHitLocations {
 public:
     void GetBoundingSphere(C3DVector& centre, float& radius, bool flag) const;   // 0x00815420

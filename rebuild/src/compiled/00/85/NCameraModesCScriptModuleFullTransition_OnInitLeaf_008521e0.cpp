@@ -1,13 +1,14 @@
 // NCameraModes::CScriptModuleFullTransition::OnInitLeaf() -- start the transition: put the owning camera at the start position and aim it at the start look-at point
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008521E0, 53 bytes, plain `ret`.
 // Leaf: ?OnInitLeaf@CScriptModuleFullTransition@NCameraModes@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: vtable 0x01275A44 slot 8; FableWin.pdb ?OnInitLeaf@CScriptModuleFullTransition@NCameraModes@@UAEXXZ.
 // Layout: Ego_r.pdb CScriptModuleFullTransition (landed ctor 0x008525F0): LookAtPos +0x64, StartPos +0x70; the owner (POwner
 //         +0x38) is the NCameraModes::CBase with LookAt +0x10 and GoTo.Position +0x54.
 // Shape: two inline CBase setters (SetPosition, SetObservedPos); POwner re-read after the first copy.
 class CBaseObject;
 class CGameCameraManager;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CIntelligentPointer_CThingConst {             // CIntelligentPointer<const CThing>: vptr + link
     virtual void v00();

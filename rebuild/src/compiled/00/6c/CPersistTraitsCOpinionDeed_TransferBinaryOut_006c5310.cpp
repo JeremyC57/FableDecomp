@@ -1,4 +1,5 @@
 // CPersistTraits<COpinionDeed*>::TransferBinaryOut(CDataOutputStream*, COpinionDeed* const*) -- write a hero opinion deed: type, handle, position, frame, crime flags, extra data and the target thing's UID
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006C5310, 201 bytes, `ret 8` (__fastcall, the empty traits `this` is unused).
 // Callees: CDataOutputStream::WriteLong @ 0x00993EB0, Write3DVector @ 0x00993FD0, WriteEBOOL @ 0x00993E30,
 //   WriteUInt64 @ 0x00993EC0 (manifest "WriteCBYTE"); CWorld::GetFrame @ 0x0049D870 (manifest "GFGetPreMainMemoryUsed",
@@ -14,7 +15,7 @@
 //   or 0 for an empty pointer. Speed-optimised (default) TU.
 #include "engine/CDataOutputStream.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 
 class CWorld { public: static long __fastcall GetFrame(); };                           // 0x0049D870

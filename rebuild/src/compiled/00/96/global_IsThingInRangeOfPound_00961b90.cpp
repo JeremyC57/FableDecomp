@@ -1,5 +1,6 @@
 // IsThingInRangeOfPound(const CThing& creature, const CThing& target) -- the snow troll's ground-pound range test: true when the target's predicted position is within DistancePoundGroundRange (6.0 without a snow-troll def) of the creature in XY
 // Leaf: ?IsThingInRangeOfPound@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00961B90, 177 bytes (+ int3 padding to 192), plain `ret`. Anonymous-namespace
 //   __fastcall (Ego_r.pdb ?IsThingInRangeOfPound@?A0x9e6dcc01@@YI_NABVCThing@@0@Z): creature in ecx, target in edx.
 // Callees: CDefClassBase::GetSubDef<CSnowTrollDef> @ 0x008C7A70, the def class's and the def's virtual slot 1 (count
@@ -14,11 +15,7 @@
 // Label: catalog name confirmed (its callers are CAIStateGroup_IceTrollPoundGroundAttack::IsStillRunnable 0x00961C50
 //   and ::IsRunnable 0x00961E80).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CSnowTrollDef { public:
     virtual void v00();

@@ -1,4 +1,5 @@
 // C3DMeshPartitionElement::WriteToFile(CDataOutputStream&) -- write the box, sphere and triangle range, then the sub-element tree
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC27A0, length 384 bytes.
 // Callees: CDataOutputStream::WriteFloat @ 0x00993EE0, WriteLong @ 0x00993EB0, WriteBool @ 0x00993E30,
 //          itself (recursion on SubElements[0]).
@@ -10,11 +11,7 @@
 // Layout: PDB (struct_layouts_egor.tsv) C3DMeshPartitionElement, 0x38 bytes: BoundingBox +0x00 (6 floats),
 //          StartTriangle +0x18, TriangleCount +0x1C, SubElements[2] +0x20, BoundingSphere +0x28 (Center, Radius).
 //          No engine header exists for the class.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class C3DBoundingBox { public: C3DVector Min; C3DVector Max; };
 

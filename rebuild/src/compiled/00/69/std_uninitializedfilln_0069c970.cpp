@@ -1,5 +1,6 @@
 // std::__uninitialized_fill_n(CQuake* first, unsigned int n, const CQuake& x, const __false_type&) -- STLport placement-copy of one camera quake into n raw slots; returns the end of the run
 // Leaf: ??$__uninitialized_fill_n@PAVCQuake@CGameCameraManager@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x0069C970, 104 bytes (+ int3 padding to 112), `ret 8` (/Gr: first in ecx -> eax as `cur`, n in edx moved to
 //   edi and counted down; &x and the empty __false_type tag on the stack).
@@ -12,11 +13,7 @@
 // Label: catalog "fill<C3DAnimationStateAlpha*,C3DAnimationStateAlpha>" is a propagated label.
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }  // memberwise copy: fixed-offset dword moves
-};
+#include "engine/C3DVector.h"
 
 class CGameCameraManager {
 public:

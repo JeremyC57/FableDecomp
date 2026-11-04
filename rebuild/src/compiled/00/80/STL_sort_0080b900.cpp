@@ -1,5 +1,6 @@
 // std::sort(pair<C3DVector, long>* first, pair<C3DVector, long>* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport introsort of the first-person targeting positions (best score first): introsort loop with depth 2*lg(n), then the final insertion sort
 // Leaf: ??$sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080B900, 227 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the 0x2c-byte comparator by value, `ret 2Ch`.
 // Name: Ego_r.pdb `std::sort<..pair<C3DVector,long>.., `anonymous namespace'::
@@ -12,10 +13,7 @@
 // Shape: STLport `if (first != last) { __introsort_loop(first, last, _STLP_VALUE_TYPE(first, ..), __lg(last - first)
 //   * 2, comp); __final_insertion_sort(first, last, comp); }` -- each comparator copy memberwise (the
 //   CompareInXYPlane byte hoisted into bl), `__lg` inlined as the shift-count loop.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // user copy ctor, implicit operator=
-};
+#include "engine/C3DVector.h"
 
 class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                                   // +0x00

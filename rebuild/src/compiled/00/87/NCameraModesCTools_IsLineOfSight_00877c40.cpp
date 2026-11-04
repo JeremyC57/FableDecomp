@@ -1,5 +1,6 @@
 // NCameraModes::CTools::IsLineOfSight(const C3DVector& from, const C3DVector& to, C3DVector& hitPos, C3DVector& hitNormal, float& distance, const CThing** hitThing, ELOSTest test, bool flag) const -- collect the live things of the camera scan list and run the thing-vector IsLineOfSight overload with them
 // Leaf: ?IsLineOfSight@CTools@NCameraModes@@QBE_NABVC3DVector@@0AAV3@1AAMPAPBVCThing@@W4ELOSTest@12@_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00877C40, length 215 bytes (`ret 20h`; 224 with padding).
 // Naming: Ego_r.pdb has two NCameraModes::CTools::IsLineOfSight overloads, in this TU order: the thing-vector one
 //   ?IsLineOfSight@CTools@NCameraModes@@QBE_NABV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@1AAV5@2AAMPAPBVCThing@@W4ELOSTest@12@_N@Z
@@ -18,7 +19,7 @@
 // is flow-insensitive) -> same-TU stand-ins for both that pass the bounds by value.
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CThing {
 public:
     unsigned char _pad00[0x91];

@@ -1,5 +1,6 @@
 // CGameScriptThing::~CGameScriptThing() -- implicit script-thing handle destructor: destroy DataString, Name and PThing, store the CScriptThing vtable (inline ~CScriptThing: release PImp), then ~CBaseClass
 // Leaf: ??1CGameScriptThing@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D4740, int3 padding before and after, thiscall, tail `jmp ~CBaseClass` 0x0099A2E0.
 // Identity (proven, two sources): (1) its sole caller is the scalar deleting destructor 0x008D4720, slot 0 of vtable 0x012852CC
 //   (RTTI .?AVCGameScriptThing@@ : CScriptThing : CBaseClass), and it stores the CScriptThing vtable 0x01238C8C before the tail;
@@ -23,7 +24,7 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
     CCharStringData* PStringData;
 };
-class C3DVector { public: float X; float Y; float Z; };
+#include "engine/C3DVector.h"
 class CBaseObject;
 class CBaseObjectPointer;
 #pragma pack(push, 1)

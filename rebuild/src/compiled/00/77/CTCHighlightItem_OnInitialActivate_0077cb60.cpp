@@ -1,5 +1,6 @@
 // CTCHighlightItem::OnInitialActivate() -- remembers the start position and, for defs that wait for the camera, holds the start until it is idle
 // Leaf: OnInitialActivate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077CB60, 116 bytes (+12 int3); default /O2 TU, no frame.
 // Catalog label "CTCHighlightItem::vfunc_6" = CTCBase::OnInitialActivate slot.
 // Callees: CThingDef::GetSubDef<CHighlightItemDef> @ 0x0077D080 (manifest name is a byte-twin instantiation),
@@ -10,9 +11,7 @@
 // PParticleEmitter +0x20 (CIntelligentPointer<CThing>); CTCBase ParentThing +0x04; retail CThing def object +0x70.
 // The def pointer is read once into edi after GetSubDef and released by hand (`dec [edi+4] ; jne ; call [vtbl+4]`).
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CHighlightItemDef { public:
     virtual void v00();

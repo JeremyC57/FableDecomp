@@ -1,5 +1,6 @@
 // CTCDExplosion::SetThingAsImmune(CThing&) -- appends the thing to the explosion's immune-things list
 // Leaf: ?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080CBF0, 66 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: CTCDExplosion::SetThingAsImmune(CThing&) -- proven; evidence: it sits in the CTCDExplosion module (after GiveDamageToThing 0x0080CA20, before SetSpecificThingsToHit
 //   0x0080CC40); Ego_r.pdb CTCDExplosion::ImmuneThings is a vector<CIntelligentPointer<CThing> > (retail +0x60 once Emitters /
@@ -55,7 +56,7 @@ public:
     bool    ToBeRemoved;                                     // +0x08
     bool    IsInGlobalUpdateTCs;                             // +0x09
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CExplosionDef;
 namespace std { template <class _T1, class _T2> struct pair { _T1 first; _T2 second; }; }
 class CTCDExplosion : public CTCBase {

@@ -1,5 +1,6 @@
 // std::fill(QuadricOptimiserInternals::COptimisedFace* first, COptimisedFace* last, const COptimisedFace& val) -- assign val to every 72-byte optimiser face of [first, last)
 // Leaf: ??$fill@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD04A0, length 40 bytes (no padding), __fastcall (first in ecx -> eax,
 //   last in edx, the value reference on the stack, `ret 4`).
 // Identity: both callers (0x00AD5597, 0x00AD55F2) are in vector<T>::_M_fill_insert 0x00AD54F0 of the QuadricOptimiser
@@ -8,10 +9,7 @@
 //   "_Fill<CHeroMarriageInfo*,CHeroMarriageInfo>" is propagated and wrong (CHeroMarriageInfo is 24 bytes).
 // Shape: STLport `for (; first != last; ++first) *first = val;` with the implicit assignment of the POD face copied as
 //   an 18-dword `rep movsd`; the pointer is advanced and compared before the copy (scheduled).
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 namespace QuadricOptimiserInternals {
 class COptimisedFace {                             // 72 bytes (Ego_r.pdb)

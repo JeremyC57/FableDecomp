@@ -1,4 +1,5 @@
 // CCreatureAction_JackFloatUp::FrameUpdate() -- base FrameUpdate; while moving, raise the creature by FloatSpeed per frame, clamped to StartHeight + FloatHeight
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_frameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C0790, length 140 bytes (+ int3 padding).
@@ -11,10 +12,7 @@
 // the limit `FloatHeight + StartHeight` (right operand loaded first) is a named float local, `fcomp ; test ah,41h ; jne` is
 // `Z > limit`, and the clamp copies the limit as a dword. Members from the engine header (PDB +0x12c.. sit 0x18 high: retail
 // CCombatActionBase is 0x114 bytes). The physics component is reached through an inline accessor so it loads straight into ecx.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 struct CPhysicsComponent {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

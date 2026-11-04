@@ -1,5 +1,6 @@
 // map::operator[](const unsigned __int64& k) -- STLport map<unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation> subscript: find the key's slot, inserting a default-constructed movement when it is missing
 // Leaf: ??A?$map@_KVCThingPosAndOrientation@CScriptedMapBrush@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- chunk-422 recipe: insert_unique(hint, v) 0x0082F930 receives the pair temporary's address; a same-TU noinline stand-in that READS v but never keeps its address lets VC7.1 schedule the default value's stores as retail (the parked "pair zero-store scheduling" residue). A stand-in that ignores v lets VC drop the pair stores (101 bytes).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082FB90, 192 bytes (+2 int3), thiscall `ret 4`, 0x50-byte frame.
 // Identity: the brush's ThingsToMove map (callers 0x0082EA5B / 0x0082EA7B in SetThingToMove); the catalog label
@@ -94,11 +95,7 @@ public:
 };
 }
 
-class C3DVector {                                       // user memberwise copy constructor
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DAngles {                                       // trivially copyable
 public:
     float X, Y, Z;

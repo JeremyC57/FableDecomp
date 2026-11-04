@@ -1,5 +1,6 @@
 // CEngineSubPrimitiveText::`scalar deleting destructor'(unsigned int) -- the implicit destructor (~CWideString on Text, ~CBaseClassNonCopyable), then the sub-primitive class operator delete on flag bit 0
 // Leaf: ??_GCEngineSubPrimitiveText@@UAEPAXI@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BC7A80, 38 bytes, thiscall, `ret 4`.
 // Identity (proven): slot 0 of vtable 0x012A6858 (RTTI .?AVCEngineSubPrimitiveText@@ : CEngineSubPrimitiveBase :
 //   CBaseClassNonCopyable : CBaseClass); Ego_r.pdb ??_GCEngineSubPrimitiveText@@UAEPAXI@Z. The delete call is
@@ -23,7 +24,7 @@ public:
     ~CWideString();                                  // 0x0099B510
     void* PStringData;
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBColour { public: unsigned char B, G, R, A; };
 class CFontBank;
 class CTexture;

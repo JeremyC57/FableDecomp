@@ -1,4 +1,5 @@
 // C3DMeshMaterial::LoadBinary(CMemoryDataInputStream*, CBankFile*) -- read index, name, decal id, the four bank indices, map flags, self illumination and the four flags; when the file carries texture filenames, read them and (with a bank) resolve each to its bank index
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ABF100, 1456 bytes, ret 8.
 // Callees: stream vtable slot 6 (+0x18) ReadNullTerminatedString (hidden CCharString result), CCharString() 0x0099E4B0,
 //   operator= 0x0099EFB0, ~CCharString 0x0099EAE0, ReadWithSrcChunkOverflow 0x00993CA0,
@@ -16,7 +17,7 @@ class CCharString { public:
     ~CCharString();                                       // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CDataInputStream { friend class CMemoryDataInputStream;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)

@@ -1,5 +1,6 @@
 // CCreatureAction_SendMessage::~CCreatureAction_SendMessage() -- implicit destructor: PTarget, then the PDef counted def handle, then ~CCreatureActionBase by tail jump
 // Leaf: ??1CCreatureAction_SendMessage@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009822E0, 52 bytes, thiscall, tail `jmp ~CCreatureActionBase`; no caller (an
 //   unreferenced COMDAT the linker kept).
 // Identity (proven): it sits right after CCreatureAction_SendMessage's constructor 0x00982210 (stores vtable 0x0129947C, RTTI
@@ -48,12 +49,7 @@ private:
     unsigned char _body[0xa8 - 4];
 };
 
-class C3DVector {                                           // Ego_r.pdb, 12 bytes
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CCreatureAction_SendMessage : public CCreatureActionBase {   // vtable 0x0129947C, retail 0xC4 bytes
 public:

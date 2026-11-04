@@ -1,5 +1,6 @@
 // CThingBuilding::Create(long defIndex, const C3DVector& position, long a3, const CCharString& scriptName) -- static factory: allocate a building, construct it from the parameters, place its physics at the position with the default facing and run the activation sequence; null on any failure
 // Leaf: ?Create@CThingBuilding@@SIPAV1@JABVC3DVector@@JABVCCharString@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082D920, 153 bytes (+7 int3), static __fastcall `ret 8` (defIndex in ecx, the
 //   position in edx, a3 and the script name on the stack), 0x40-byte frame (the CRightHandedSet and the physics params).
 // Identity: Ego_r.pdb name set ?Create@CThingBuilding@@SIPAV1@JABVC3DVector@@JABVCCharString@@@Z; the Alloc it calls
@@ -18,10 +19,7 @@
 // Levers: the params constructor is the header-inline body VC7.1 did not inline, here a same-TU noinline stand-in (an
 //   external declaration schedules the facing stores before the argument pushes); `result = 0` is declared after the
 //   Alloc call (else the `xor ebp,ebp` moves above it).
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet {
 public:
     C3DVector Up;

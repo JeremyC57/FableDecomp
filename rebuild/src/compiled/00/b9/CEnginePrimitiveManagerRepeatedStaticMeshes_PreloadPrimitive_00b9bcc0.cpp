@@ -1,5 +1,6 @@
 // CEnginePrimitiveManagerRepeatedStaticMeshes::PreloadPrimitive(CEngineInternalPrimitiveBase& primitive, const C3DVector& position, unsigned long flags) -- preload a repeated static mesh for a viewer position: pick the LOD from the screen-size ratio at that distance, fetch that LOD's mesh and start loading every sub-mesh material texture not yet resident; true when any load was started
 // Leaf: PreloadPrimitive
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Layout: local models -- the mesh/material shapes of the landed 2DStaticMeshes Render2DPrimitive 0x00B9E950, the graphic-bank
 //   frame loading of the landed GetVolumeTexture 0x009FF710 / BeginLoading 0x009FE620 (inline RequestLoad as in 0x00B63800).
 // Shape: the LOD search stays top-tested (`cmp lod,3 ; jae` with a jmp back) only with a __forceinline early-return condition
@@ -196,7 +197,7 @@ struct CGraphicBank {
 
 
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CRefInfo {
     long  RefCount;                                // +0
     void (__fastcall* Destroy)(void*);             // +4

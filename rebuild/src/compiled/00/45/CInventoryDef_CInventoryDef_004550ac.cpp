@@ -1,5 +1,6 @@
 // CInventoryDef::CInventoryDef() -- construct the inventory screen definition: the def base, then the member constructors (the item lists and colour tables empty, the font string reference unset, every engine graphic cleared)
 // Leaf: ??0CInventoryDef@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004550AC, 1016 bytes (`ret`; unaligned entry, size-optimised def module).
 // Identity: stores vtable 0x01233404 (CInventoryDef); the catalog's CPSCOrbit label is wrong.
 // Callees: the def base ctor 0x00430370 (CParentDefClassBase, 0x3c bytes: the landed CParentDefClassBase::CParentDefClassBase
@@ -21,7 +22,7 @@ class CEngineGraphic { public:
     CEngineGraphic() : Graphic(0), A(0.0f), B(0.0f), C(false), D(false) {}
 };
 #pragma pack(pop)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBColour { public: unsigned char B, G, R, A; };
 enum EInventoryIdentifier { INVENTORY_IDENTIFIER_0 };
 class CDefString { public:

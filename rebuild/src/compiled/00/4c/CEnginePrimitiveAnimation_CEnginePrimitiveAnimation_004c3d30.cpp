@@ -3,6 +3,7 @@
 //   const C3DOrientationInterpolator&) -- copy-construct the three interpolator members (the blend states' counted
 //   shared data gains a reference each)
 // Leaf: ??0CEnginePrimitiveAnimation
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C3D30, 185 bytes; called from CTCGraphicAppearance::RefreshPrimitiveAnimationAndPos
 //   (landed 0x004BCFE0). The four immediates are the implicit copy constructors' vtable stores:
 //   0x01239840 C3DAnimationInterpolator, 0x01239838 C3DAnimationBlendState, 0x0123981C C3DPositionInterpolator,
@@ -10,10 +11,7 @@
 // Layout: PDB (Ego_r) CEnginePrimitiveAnimation (0x64): Anim +0x00, WorldPos +0x14, Orientation +0x30; member types and
 //   names from struct_layouts_egor.tsv. CIVCountedPointer's target keeps its reference count at +0x04.
 //   Local model: no engine/ header exists for these classes.
-class C3DVector { public:                                      // the engine vector has a user-written member-wise copy
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };   // 24 bytes
 struct CCountedSharedData { long _header; long RefCount; };
 template<class T> class CIVCountedPointer { public:

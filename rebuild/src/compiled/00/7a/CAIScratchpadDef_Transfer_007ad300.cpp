@@ -1,4 +1,5 @@
 // CAIScratchpadDef::Transfer(CPersistContext&) -- persist every AI scratchpad def field by name with its default value
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AD300, 976 bytes (ret 4).
 // Callees: CPersistContext::Transfer overloads -- unsigned long 0x004106F0, C3DVector 0x004859AD, float 0x00410620,
 //   long 0x00410BE0, EScriptingStateGroups 0x007AD6D0, CCharString 0x004109A0, bool 0x004045C0 (all catalogued
@@ -15,10 +16,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_NONE = 0 };
 
 class CPersistContext { public:

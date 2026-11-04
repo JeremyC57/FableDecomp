@@ -1,5 +1,6 @@
 // C3DFrustrum::AddPoint(const C3DVector&, float) -- appends a (point, weight) pair to the frustum's point vector (STLport push_back: copy-construct in place, or reallocate through the out-of-line insert-overflow)
 // Leaf: ?AddPoint@C3DFrustrum@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- a same-TU noinline _M_insert_overflow body (0x0084F5E0 stand-in with the STLport reallocation shape, tag unnamed) homes the __true_type in the dead weight slot and copy-propagates the weight
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0084E390, 111 bytes, `ret 8`.
 // Identity: Ego_r.pdb ?AddPoint@C3DFrustrum@?A0x49b2e1a3@@QAEXABVC3DVector@@M@Z (a class in an anonymous namespace):
@@ -18,10 +19,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                // 0x00BFEA14
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise (landed 0x0084F4D0 model)
-};
+#include "engine/C3DVector.h"
 
 struct __true_type { __true_type() { } };
 

@@ -1,5 +1,6 @@
 // CTCActionUseScriptedHook::GetRegionEntranceDisplayName() const -- the display name of the region holding the map that the connected entrance's position lies in
 // Leaf: ?GetRegionEntranceDisplayName@CTCActionUseScriptedHook@@QBEABVCCharString@@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00729CA0, 75 bytes, thiscall, tail `jmp CRegion::GetDisplayName` 0x006BBF20.
 // Identity (proven, two sources): Ego_r.pdb / FableWin.pdb ?GetRegionEntranceDisplayName@CTCActionUseScriptedHook@@QBEABVCCharString@@XZ
 //   (Ego_r 0x007403C0 right after GetRegionEntranceName 0x00740370, which follows SetEntranceAsLocked 0x00740350); retail has the
@@ -24,7 +25,7 @@
 #include "engine/CRegion.h"                                 // retail CRegion layout (0x58)
 #undef CRegion
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DCoordI;
 class C2DBoxI;
 class CAFile;

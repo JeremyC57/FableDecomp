@@ -1,5 +1,6 @@
 // CTCHeroReceiveItems::OnKill() -- kill every still-alive item thing the hero was about to receive, then the base component's OnKill
 // Leaf: ?OnKill@CTCHeroReceiveItems@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CA630, 62 bytes (int3 padding 0x007CA66E..F), thiscall, tail `jmp CTCBase::OnKill` 0x006868F0.
 // Identity (proven, two sources): (1) the only reference is slot 14 (CTCBase OnKill, engine/CTCBase.h) of vtable 0x0126EBFC, RTTI
 //   .?AVCTCHeroReceiveItems@@ : CTCBase; the tail target 0x006868F0 is CTCBase::OnKill (slot 14 of CTCBase 0x0125BE0C);
@@ -135,12 +136,7 @@ public:
     float BRX;
     float BRY;
 };
-class C3DVector {
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet {                                 // Ego_r 0x18
 public:
     C3DVector Up;                                       // +0x00

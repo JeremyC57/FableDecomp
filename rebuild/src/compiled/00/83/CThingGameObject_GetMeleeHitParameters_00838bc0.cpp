@@ -1,11 +1,12 @@
 // CThingGameObject::GetMeleeHitParameters(CHitLocation*, CThing& hitter, CThing* weapon, const C3DVector& position,
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // const C3DVector& direction, CHitParameters& params) const -- fills a melee hit: the hitter/weapon/location, a localised
 // directional hit, the creature action's flourish/knock-down/blockable/decapitate flags and damage multiplier, the hitter's
 // weapon-modifier, experience and definition multipliers, the hitter's charge component, then adds the damage
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00838BC0, `ret 0x18`.
 // Layout (retail; Ego_r.pdb in brackets): CThing interface bitset +0x20, map +0x44, ThingTypeFlags +0x6c [+0x7c],
 //   PBaseDef +0x70 [+0x80], Dead +0x91 bit 0; creature current action +0x100; CHitParameters Position +0x2, Direction +0xe.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };

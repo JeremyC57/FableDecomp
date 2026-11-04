@@ -1,5 +1,6 @@
 // CAIStateGroup_StealthSeekEnemy::IsRunnable() -- runnable when the creature perceives a live enemy it is willing to attack, that it can see (extended line of sight) or is aware of, and that its targeting component accepts; latches it as PEnemy and remembers where it was last perceived
 // Leaf: ?IsRunnable@CAIStateGroup_StealthSeekEnemy@@UAE_NXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0093C2F0, 303 bytes (virtual). Ego_r.pdb ?IsRunnable@CAIStateGroup_StealthSeekEnemy@@UAE_NXZ.
 // Callees (Ego_r.pdb spellings): CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0 (inside the inline
 //   CThing::PeekTC<const CTCPerceiveThing> / PeekTC<const CTCTargetingAI>, both Ego_r names; interface 0x34 = bit 20 of
@@ -90,9 +91,7 @@ CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound(const ETCInterfaceType& key) 
     return it;
 }
 #pragma auto_inline(on)
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x20];
     std::bitset<274> UsingComponents;                       // +0x20

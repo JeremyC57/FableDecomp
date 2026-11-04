@@ -1,5 +1,6 @@
 // CSoundEmitterLH::~CSoundEmitterLH() -- the user destructor: reset the class vtable, stop every active sound (Shutdown), destroy the active-sound list (out-of-line clear, then the sentinel node freed), then ~CBaseClass
 // Leaf: ??1CSoundEmitterLH@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAC4F0, 49 bytes, thiscall, tail `jmp ~CBaseClass`.
 // Identity (proven): vtable 0x0129E6EC stored first (RTTI .?AVCSoundEmitterLH@@ : CASoundEmitter : CBaseClass); its slot-0
 //   `??_G` 0x00AACEA0 (landed) expands the same body; the landed clear() 0x00AACC60 names this row as the destructor that
@@ -54,10 +55,7 @@ public:
 };
 }   // namespace std
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CSoundManagerLH;
 
 class CASoundEmitter : public CBaseClass {                 // vtable 0x0129E684 (abstract interface, no own destructor)

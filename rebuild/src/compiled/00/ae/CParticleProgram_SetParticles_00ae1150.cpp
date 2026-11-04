@@ -1,4 +1,5 @@
 // CParticleProgram::SetParticles(const vector<C3DVector>&, CMovableResourceMemoryPool*) -- size the program's non-simulated particle array to the given points, allocate it from the pool and fill it with the points as (x, y, z, 0) vectors; false when the allocation fails
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE1150, length 192 bytes (`ret 8`). The manifest's class
 // "CParticleSimulation" is propagated: the fields used (+0xbc count, +0xc0 array, and the allocator's +0x138/+0x13c
 // handle and pool) are CParticleProgram's NonSimCount / NonSimPositions / MemoryHandle / MemoryPool at their retail
@@ -7,7 +8,7 @@
 //          model of this allocator; the program derives from it here so the call binds to the same symbol).
 // Shape: the count is the signed 12-byte element difference stored straight into the member; each point is built as a
 // C4DVector temporary (W = 0.0f, hoisted out of the loop as the zero register) and copied as four dwords.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C4DVector { public:
     float X, Y, Z, W;
     C4DVector(const C3DVector& v, float w) : X(v.X), Y(v.Y), Z(v.Z), W(w) {}

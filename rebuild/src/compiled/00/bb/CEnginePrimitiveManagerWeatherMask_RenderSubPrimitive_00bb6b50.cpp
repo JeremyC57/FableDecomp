@@ -1,4 +1,5 @@
 // CEnginePrimitiveManagerWeatherMask::RenderSubPrimitive(CEngineSubPrimitiveBase&, ERenderPassType) -- copies the parent weather-mask primitive's sphere, box, inverse transform and scale into a CWeatherMask and hands it with the primitive's flags to the weather renderer
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BB6B50, length 136 bytes (+ int3 padding).
 // Signature from the catalog (mangled): ?RenderSubPrimitive@CEnginePrimitiveManagerWeatherMask@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
 // (`ret 8`; `this` and the pass type are unused).
@@ -11,10 +12,7 @@
 // (C3DVector has a user copy constructor: one register per dword, ecx/edx alternating), the 0x30-byte matrix is a
 // POD block (`rep movsd`), the scale a dword move; the flags argument is loaded before the matrix copy ends.
 
-class C3DVector { public:                                       // memberwise user copy constructor
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 class C3DBoundingBox { public: C3DVector Min; C3DVector Max; };
 class CMatrix3x4 { public: float m[12]; };                      // XAxis, YAxis, ZAxis, Position: a POD block

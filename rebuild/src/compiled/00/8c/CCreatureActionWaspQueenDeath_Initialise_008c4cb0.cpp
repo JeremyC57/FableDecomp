@@ -1,4 +1,5 @@
 // CCreatureAction_WaspQueenDeath::Initialise() -- names the "FALL_TO_DEATH" animation, runs the base Initialise, then when the creature definition's special-effects sub-def maps "DEATH" to an effect, spawns it at the creature, keeps it as PDeathEffect and attaches its particle emitter to the creature's "TARGET_CURSOR_POINT" helper
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4CB0, length 364 bytes (+ int3 padding).
 // Callees: CCharString ctor/dtor @ 0x0099EBF0 / 0x0099EAE0, CCombatActionBase::SetCombatAnimation @ 0x008574D0 and Initialise @ 0x00857520,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature +8), CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580 on a by-value
@@ -13,7 +14,7 @@
 // GetSubDef and GetEffectFromString get same-TU stand-in bodies (write the out slot / `long&` only), so VC7.1 knows neither the def
 // slot nor the effect-type word escapes: the `PDeathEffect = CIntelligentPointer<CThing>(effect)` temporary (forceinline ctor: base
 // ctor, vtable store, SetPItem) then overlays the dead effect-type word as in retail.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

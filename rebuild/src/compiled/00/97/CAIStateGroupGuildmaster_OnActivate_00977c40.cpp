@@ -1,4 +1,5 @@
 // CAIStateGroup_Guildmaster::OnActivate() -- find the bodyguards, collect every "GuildmasterTeleportMarker" track thing within 55 units of the guildmaster as teleport markers, reset the will/teleport frames and make sure the creature is in mode 0x3b
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00977C40, length 436 bytes (+ int3 padding; `and esp,-8` frame for the 8-byte
 // intelligent-pointer temporary).
 // Callees: CAIStateGroup_Guildmaster::FindAndStoreBodyguards @ 0x00977B10, CCharString(const char*, long) @ 0x0099EBF0 / copy
@@ -14,9 +15,7 @@
 // start in esi across the loop (reloaded at the latch and reused by the final free); size() cached before an unsigned loop.
 // Layout: Guildmaster from Ego_r.pdb (base 0x14): TeleportMarkers +0x28, LastWillFrame +0x34 and LastTeleportFrame +0x38 (PDB
 // +0x38 / +0x3c: the vector is 12 bytes in STLport).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

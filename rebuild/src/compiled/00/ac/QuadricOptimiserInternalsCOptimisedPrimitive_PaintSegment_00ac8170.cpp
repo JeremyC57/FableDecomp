@@ -1,5 +1,6 @@
 // QuadricOptimiserInternals::COptimisedPrimitive::PaintSegment(unsigned long face, long segment, std::list<long>& faces) -- flood-fill one mesh segment: mark the start face with the segment number, then breadth-first through each face's three adjacency slots, marking every existing, still unpainted (-1) neighbour and appending each visited face to the caller's list
 // Leaf: ?PaintSegment@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXKJAAV?$list@JV?$allocator@J@std@@@std@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC8170, 295 bytes, thiscall, `ret 0Ch`. Speed TU (no pragma).
 // Identity (proven): Ego_r.pdb ?PaintSegment@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXKJAAV?$list@JV?$allocator@J@std@@@std@@@Z
 //   (private; unsigned long, long, list<long>&). Its sole caller 0x00AC85A2 is ?PaintSegments@COptimisedPrimitive@QuadricOptimiser
@@ -146,7 +147,7 @@ public:
 
 template <class T> class CArray : public std::vector<T> { };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CChunkedFileChunk;
 #include "engine/CCountedPointer.h"
 namespace QuadricOptimiserInternals {

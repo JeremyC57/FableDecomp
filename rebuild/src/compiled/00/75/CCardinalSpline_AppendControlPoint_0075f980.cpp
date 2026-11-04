@@ -1,5 +1,6 @@
 // CCardinalSpline::AppendControlPoint(const C3DVector& point) -- push a control point onto the spline's point array and return its index
 // Leaf: ?AppendControlPoint@CCardinalSpline@@QAEJABVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075F980, 92 bytes, `ret 4`. No direct caller or reference (an
 //   unreferenced out-of-line copy kept without /OPT:REF).
 // Callee: vector<C3DVector>::_M_insert_overflow(pos, x, tag, 1, true) 0x0066E370 (the shared C3DVector growth
@@ -13,10 +14,7 @@
 //   slot), then `size() - 1` from the signed 0x2AAAAAAB divide by 12.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 struct __true_type { __true_type() { } };
 

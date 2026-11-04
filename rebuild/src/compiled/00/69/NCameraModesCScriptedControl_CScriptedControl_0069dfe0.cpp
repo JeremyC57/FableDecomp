@@ -1,5 +1,6 @@
 // NCameraModes::CScriptedControl::CScriptedControl(CGameCameraManager& manager, const CDefPointer<const CCameraModeDef>& def, CCountedPointer<CScriptModuleBase>& module) -- scripted camera mode: base camera mode, take a reference on the script module, mesh-height-on-init 1.0, an unlocked initial camera
 // Leaf: ??0CScriptedControl
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069DFE0, length 83 bytes, `ret 0Ch`. FableWin.pdb
 // ??0CScriptedControl@NCameraModes@@QAE@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@AAV?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@@Z.
 // Vtable 0x0125C58C = NCameraModes::CScriptedControl (rtti-vtables.tsv); callers 0x00699B4E, 0x00699FA1, 0x0069A2DD, 0x0069E407.
@@ -28,7 +29,7 @@ template<class T> class CCountedPointer { public:
     }
 };
 
-class C3DVector { public: float X, Y, Z; C3DVector() { } };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward, Up; CRightHandedSet() { } };
 class CCamera { public:                                             // 0x38 bytes
     C3DVector       WorldPosition;                           // +0x00

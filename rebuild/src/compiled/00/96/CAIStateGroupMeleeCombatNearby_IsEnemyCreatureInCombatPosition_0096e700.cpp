@@ -1,4 +1,5 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: DELTA_NOTIONAL_ZERO bound to two different float pools (0.3 at 0x1238170, 1e-4 at 0x129ba3c); PreferredMargin/DELTA_NOTIONAL_ZERO swapped)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureInCombatPosition() -- true when the creature already stands within reach
 //   of its preferred combat position, or, if that position is not taken, within reach of the enemy.
@@ -24,7 +25,7 @@ class CAIStateGroupBase : public CAIStateGroupBasePdb {
 protected:
     CWorld& GetWorld() const;                               // 0x008FCFC0 (PDB ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern const float ReachScale;                          // 0x012925CC = 0.8333333
 extern const float PreferredPosMargin;                  // 0x01238170 = 0.3
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C = 1e-4

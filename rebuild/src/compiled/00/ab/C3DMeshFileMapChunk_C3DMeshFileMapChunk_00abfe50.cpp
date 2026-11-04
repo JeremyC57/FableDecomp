@@ -1,4 +1,5 @@
 // C3DMeshFileMapChunk::C3DMeshFileMapChunk() -- base chunk "MMAP", MapIndex -1, two default strings
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABFE50, length 48 bytes.
 // Callees: 0x00AA8360 CChunkedFileSuperChunk ctor, 0x0099E4B0 CCharString::CCharString() x2
 //
@@ -19,7 +20,7 @@ CCharString __fastcall operator+(const char* left, const CCharString& right);   
 CCharString __fastcall GFIntToCharString(long value);                                  // 0x0099F830
 
 class CMatrix3x4 { public: float m_row[3][4]; };               // 48 bytes, copied with rep movsd
-class C3DVector  { public: float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {} };
+#include "engine/C3DVector.h"
 
 class CChunkedFileSaver;
 class CDataOutputStream { public:

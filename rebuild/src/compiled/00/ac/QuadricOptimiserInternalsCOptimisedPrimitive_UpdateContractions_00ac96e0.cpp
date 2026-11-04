@@ -1,5 +1,6 @@
 // QuadricOptimiserInternals::COptimisedPrimitive::UpdateContractions(const CSubContraction& sub) -- after a sub-pair contraction, recompute every pair contraction that references the sub-pair's first vertex and re-key its cost
 // Leaf: ?UpdateContractions@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXABVCSubContraction@2@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC96E0, 236 bytes (+4 int3), thiscall `ret 4`.
 // Identity: Ego_r.pdb `?UpdateContractions@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXABVCSubContraction@2@@Z`
 //   (private); its only caller is the landed COptimisedPrimitive::PerformContraction 0x00ACD840 (third loop, declared
@@ -245,7 +246,7 @@ public:
 
 }   // namespace std
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace QuadricOptimiserInternals {
 

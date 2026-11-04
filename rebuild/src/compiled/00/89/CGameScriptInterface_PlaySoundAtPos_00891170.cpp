@@ -1,6 +1,7 @@
 // CGameScriptInterface::PlaySoundAtPos(const C3DVector& position, const CCharString& sound) const -- play a sound
 // sample once from a new unattached sound emitter at the position; returns the sound handle or the invalid handle
 // Leaf: ?PlaySoundAtPos@CGameScriptInterface@@UBEKABVC3DVector@@ABVCCharString@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00891170, length 176 bytes, `ret 8`.
@@ -17,7 +18,7 @@
 // argument) and is re-read from the global for the PlaySample argument.
 
 class CCharString;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing;
 
 class CASoundBank { public:

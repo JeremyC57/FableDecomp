@@ -1,5 +1,6 @@
 // std::__introsort_loop(pair<C3DVector,long>* first, pair<C3DVector,long>* last, pair<C3DVector,long>*, int depth_limit, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport introsort recursion of the first-person targeting positions: partition around the median of three, recurse on the right part, loop on the left; partial_sort fallback when the depth runs out
 // Leaf: ??$__introsort_loop@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080B620, 492 bytes, /Gr `__fastcall` (first ecx, last edx; the value-type
 //   pointer, the depth limit and the 0x2c-byte comparator by value on the stack, `ret 34h`).
 // Identity: callers 0x0080B982 (the sort front end of this TU) and itself; the callees are the
@@ -12,11 +13,7 @@
 //   first) / 2), *(last - 1), comp)), comp); __introsort_loop(cut, last, (_Tp*)0, depth_limit, comp); last = cut; }`
 //   -- each by-value comparator is copied memberwise (ten dwords and the CompareInXYPlane byte, cached in bl), the pivot
 //   is copy-constructed in its argument slot from the median's reference.
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // user copy ctor, implicit operator=
-};
+#include "engine/C3DVector.h"
 
 class CVectorCompare_BestForTargeting { public:                   // Ego_r.pdb, 0x2c bytes
     C3DVector AnchorPos;                                   // +0x00

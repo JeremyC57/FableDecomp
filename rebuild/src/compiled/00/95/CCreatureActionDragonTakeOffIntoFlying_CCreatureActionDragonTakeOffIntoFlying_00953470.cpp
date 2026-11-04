@@ -1,5 +1,6 @@
 // CCreatureAction_DragonTakeOffIntoFlying::~CCreatureAction_DragonTakeOffIntoFlying() -- implicit destructor: release PEndAction (+0x148), free the MovementPoints block (+0x138), then ~CCombatActionBase (tail jump)
 // Leaf: ??1CCreatureAction_DragonTakeOffIntoFlying@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00953470, 94 bytes (int3 padding 0x009534CE..CF): push esi ; mov esi,ecx ; the inline
 //   ~CCountedPointer on +0x148 (Info +0x14C: dec / cmp / DeleteFunc / delete Info ; Data = 0, Info = 0) ; the inline STLport
 //   ~vector<C3DVector> on +0x138 (`if (_M_start) free(_M_start)`) ; mov ecx,esi ; pop esi ; jmp ~CCombatActionBase 0x0062E900.
@@ -70,10 +71,7 @@ public:
 #include "engine/CCountedPointer.h"
 class CThingCreatureBase;
 
-class C3DVector {                                       // 12 bytes
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CCreatureActionBase {                             // retail sizeof 0xA8
 public:

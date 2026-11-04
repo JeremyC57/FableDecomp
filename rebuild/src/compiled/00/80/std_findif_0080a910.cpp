@@ -1,5 +1,6 @@
 // std::__find_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CFilter_Bind2 pred, const random_access_iterator_tag&) -- STLport random-access find_if: the first target point inside the field of view that is not targetable from behind, or last
 // Leaf: ??$__find_if@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080A910, 335 bytes, /Gr `__fastcall` (first ecx, last edx -- spilled to the
 //   `push ecx` word; the 8-byte CFilter_Bind2 by value and the tag reference on the stack, `ret 0Ch`).
 // Identity: Ego_r.pdb `std::_Find_if<CTargetPoint*, CFilter_Bind2<CThingFilter_IsInFOV, std::unary_negate<
@@ -19,7 +20,7 @@ public:
     CThing* m_pItem;                                      // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 namespace NPlayerTargeting {
 class CTargetPoint {                                      // 0x1c bytes
 public:

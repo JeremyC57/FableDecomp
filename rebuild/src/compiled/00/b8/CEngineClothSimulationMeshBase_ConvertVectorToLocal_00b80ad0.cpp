@@ -1,4 +1,5 @@
 // CEngineClothSimulationMeshBase::ConvertVectorToLocal(const C3DVector& v) -- rotate a world-space direction into the cloth mesh's local space through the 3x3 part of InverseTransform (+0x78)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B80AD0, length 105 bytes (+ int3 padding).
 // Callees: none. Layout: the PDB CEngineClothSimulationMeshBase puts InverseTransform (CMatrix3x4, E11..E43) at +0x7c; retail CArray is 12 bytes
 // (PDB 16), so ParticleSims +0x0c, CurrentTransform +0x18, LastTransform +0x48, InverseTransform +0x78.
@@ -7,11 +8,7 @@
 // member-wise user copy constructor (wave 24o). `fld [m] ; fmul [v]` is `v * m` (the right operand is loaded first). The term order
 // (the Y product first in every row, then X/Z) only reproduces statement by statement (`x = a; x += b; x += c;`): a single
 // three-term expression is re-associated by VC7.1 into one canonical order whatever the source order.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 { public:
     float E11, E12, E13;

@@ -1,5 +1,6 @@
 // std::__make_heap(pair<CCharString,C3DHelperPoint>* first, pair<CCharString,C3DHelperPoint>* last, CCompareString<C3DHelperPoint> comp, pair<CCharString,C3DHelperPoint>*, int*) -- build a heap over the helper-point map entries (name order) by sifting down every parent from the last one to the root
 // Leaf: ??$__make_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A70630, 124 bytes (+4 int3), /Gr `__fastcall` (first in ecx, last in
 //   edx; the comparator, the value-type and distance-type tag pointers on the stack, `ret 0Ch`).
 // Callees: CCharString::CCharString(const CCharString&) 0x0099EC30 (the by-value element copy), std::__adjust_heap
@@ -18,11 +19,7 @@ public:
     bool FastCompare(const CCharString& other) const;   // 0x009E6530
 };
 
-class C3DVector {                                       // user memberwise copy ctor
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DHelperPoint {                                  // 16 bytes (Ego_r.pdb)
 public:

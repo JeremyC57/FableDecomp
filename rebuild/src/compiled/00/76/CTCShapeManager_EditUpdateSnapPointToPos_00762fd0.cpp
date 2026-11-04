@@ -1,5 +1,6 @@
 // CTCShapeManager::EditUpdateSnapPointToPos(const C3DVector& pos) -- editor: with exactly one selected point, move it to `pos`, then rebuild the shape from a copy of its points (same type) and re-add it in place of the old entry
 // Leaf: EditUpdateSnapPointToPos
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe 0x00762FD0, 141 bytes (`ret 4`); same rebuild tail as EditUpdateDelete 0x00762D80.
 // Callees: vector<C3DVector> copy ctor @ 0x006F0810 (manifest
 // "Vector_CopyFrom"), NShape::CShape virtual slot 1 (+0x04, shape type), vector<CCountedPointer<NShape::CShape>>::erase
@@ -12,7 +13,7 @@
 // `size() == 1` compiles to `(finish - start) & ~3 == 4`; the point is the implicit 12-byte assignment.
 // Shape: CreateShape's by-value result is built straight in AddNewShape's argument area (`sub esp,8 ; mov ecx,esp`);
 // the erase result's store into SelectedShape is scheduled after the pushes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 struct CPointVector {                               // STLport vector<C3DVector>
     C3DVector* _M_start; C3DVector* _M_finish; C3DVector* _M_end_of_storage;

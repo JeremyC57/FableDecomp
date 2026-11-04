@@ -1,5 +1,6 @@
 // CGameCameraManager::ResetCamera() -- re-target the camera on the hero, reset the world height band around the hero, clear the camera flags and the hero's projectile aiming mode, drop the current mode and both script modules, clear the earthquakes, snapshot the camera, push the manual mode, and tell the renderer the camera moved (not in fast mode)
 // Leaf: ResetCamera
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0069A990, 488 bytes, `ret`.
@@ -26,7 +27,7 @@ class CCharString { public:
     ~CCharString();                                      // 0x0099EAE0
     const CCharString& operator+=(const char* text);           // 0x0099F100
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

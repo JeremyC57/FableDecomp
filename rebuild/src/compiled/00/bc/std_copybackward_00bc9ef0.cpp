@@ -1,12 +1,13 @@
 // std::__copy_backward(first, last, result, const random_access_iterator_tag&, int*) -- (CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry elements) STLport random-access copy_backward: assign [first, last) from the back so that it ends at result, return the new start of the destination
 // Leaf: ??$__copy_backward@PAVCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@PAV12@H@std@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BC9EF0, 68 bytes, /Gr __fastcall (first ecx, last edx; result, the tag reference and the
 //   distance-type pointer on the stack), `ret 0Ch`.
 // Identity (proven): __copy_backward<CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry*, CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry*, int>; evidence: its caller the fill insert 0x00BCC080 also calls this element's __uninitialized_copy 0x00BCA370 and the landed vector<CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry>::_M_insert_overflow 0x00BCBF80 (which names 0x00BCC080 its caller).
 // Shape (family K049, representative 0x0098C240): STLport 4.6 `for (_Distance __n = __last - __first; __n > 0; --__n)
 //   *--__result = *--__last; return __result;` over a trivially assignable 16-byte element (four dword moves through ebx) --
 //   the landed H024 rows (e.g. 0x00768B30) verbatim.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CEngineInternalPrimitiveSpriteTrail {
 public:
     class CSpriteTrailEntry {                            // Ego_r.pdb, 16 bytes

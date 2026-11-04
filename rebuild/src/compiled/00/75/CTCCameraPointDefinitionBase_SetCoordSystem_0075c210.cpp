@@ -1,4 +1,5 @@
 // CTCCameraPointDefinitionBase::SetCoordSystem(CThing* thing) -- take the thing's position as CoordBase and its orientation as CoordAxis, each only when the camera point uses relative coordinates / orientation
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x0075C210, 101 bytes (`ret 4`). Callees: CThing::GetPos() const @ 0x004C73D0 (returns
 // const C3DVector&), virtual slot 72 (+0x120) of the thing's +0x60 object (returns the orientation
@@ -8,9 +9,7 @@
 // Shape: plain member assignments with the implicit operator= (dword moves through the `lea` /
 // `add esi,22h` destination register).
 #pragma pack(push, 1)
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet { public:
     C3DVector Up;

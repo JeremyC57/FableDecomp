@@ -1,17 +1,13 @@
 // C3DBoundingSphere::AccurateBuildFromPoints(const std::vector<C3DVector>& points, float tolerance) -- vector overload: forwards the element array and count to the pointer overload
 // Leaf: ?AccurateBuildFromPoints@C3DBoundingSphere@@QAEXABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@M@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADDF70, 44 bytes, __fastcall, ret 8.
 // Identity: Ego_r.pdb and FableWin.pdb both name this overload; it tail-forwards (this, begin, size, tolerance) to
 //   0x00ADD920, whose reloc binding is ?AccurateBuildFromPoints@C3DBoundingSphere@@QAEXPBVC3DVector@@JM@Z. Count is
 //   (end-begin)/12 (C3DVector stride). Caller 0x00AC2DD5 passes this = owner+0x20 and tolerance 0.001f.
 // Layout: Ego_r.pdb C3DVector (12: X,Y,Z), C3DBoundingSphere (16: Center, Radius), C3DBoundingBox (24: MinCoord, MaxCoord).
 // No engine header exists for these classes; STLport 4.6 vector reduced to its three pointers (_Vector_base layout).
-class C3DVector {
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class _Tp> class allocator {
 public:

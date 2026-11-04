@@ -1,4 +1,5 @@
 // CTCPhysicsNavigator::vfunc_34(const C3DVector& pos, bool usePhysics) -- forces a move: stores ForcedMoveToPos, sets ForcedMoveToPosUsePhysics and ForcedMoveToPosSet
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00727120, length 57 bytes (vtable slot 34 of CTCPhysicsNavigator, rtti-vtables.tsv).
 // Callees: none.
 // Shape: the 12-byte vector is copied dword by dword through a `lea eax,[ecx+0A1h]` base (the implicit POD assignment of
@@ -8,7 +9,7 @@
 // +0x95, ForcedMoveToPos +0xa1, ForcedMoveToPosSet / ForcedMoveToPosUsePhysics bits 0 / 1 of +0xad. engine/CTCPhysicsNavigator.h
 // matches these offsets but flattens the vectors and has no virtuals, so the class is modelled locally with #pragma pack(1)
 // (the members sit at odd offsets in retail too).
-class C3DVector { public: float X, Y, Z; };          // plain POD: the implicit assignment is the lea-based dword copy
+#include "engine/C3DVector.h"
 
 #pragma pack(push, 1)
 struct CTCPhysicsNavigator {

@@ -1,6 +1,7 @@
 // CSpecialAbilitiesPhysicalShieldDef::~CSpecialAbilitiesPhysicalShieldDef() -- free the eight float vectors (ManaDamage, the six colour vectors, MaxWidth), then the CParentDefClassBase part
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0045784B, length 147 bytes.
 // Leaf: ??1CSpecialAbilitiesPhysicalShieldDef
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Pragma: #pragma optimize("s", on) -- the def module is size-optimised (`pop ecx` after each free).
 // Label correction: the catalog "~CPatchTesselationEdgeStrip" is propagated over byte-similar def destructors. The only
 // caller is 0x00457832 inside the deleting destructor 0x0045782F, which is slot 0 of CSpecialAbilitiesPhysicalShieldDef's
@@ -29,7 +30,7 @@ struct CFloatVector {                              // retail std::vector<float> 
 class CDefString { public:                         // a def-name table position word (4 bytes)
     long TablePos;
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class __declspec(novtable) CSpecialAbilitiesPhysicalShieldDef : public CParentDefClassBase { public:   // vtable 0x0123439C, retail 0x148 bytes (slot 20)
     virtual void Transfer(CPersistContext& context);              // ?Transfer@CSpecialAbilitiesPhysicalShieldDef@@UAEXAAVCPersistContext@@@Z
     virtual void Copy(const CDefClassBase* other);                // ?Copy@CSpecialAbilitiesPhysicalShieldDef@@UAEXPBVCDefClassBase@@@Z

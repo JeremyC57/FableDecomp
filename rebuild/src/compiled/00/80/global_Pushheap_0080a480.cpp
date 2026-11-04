@@ -1,5 +1,6 @@
 // _global::_Push_heap(NPlayerTargeting::CTargetPoint*, long, long, NPlayerTargeting::CTargetPoint, CThingCompare_BestForTargeting2) -- heap sift-up of targeting candidates under the best-for-targeting comparator
 // Leaf: _Push_heap
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080A480, 206 bytes, `ret 0x54`.
 // Link-time __fastcall (/Gr algorithm TU): first in ecx, hole in edx, then top, the 0x1C-byte target
 // point and the 0x34-byte comparator by value on the stack (4 + 0x1C + 0x34 = 0x54).
@@ -30,10 +31,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint { public:

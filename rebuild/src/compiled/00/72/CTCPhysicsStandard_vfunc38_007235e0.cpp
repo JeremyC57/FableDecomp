@@ -1,4 +1,5 @@
 // CTCPhysicsStandard::vfunc_38(bool enable) -- mark as moving; flag bit 2 of +0x84 = enable && the physics def's air resistance > 0.0001
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007235E0, length 80 bytes (vtable 0x01265F84 slot 38, rtti-vtables.tsv).
 // Callees: CTCPhysicsBase::SetAsMoving(bool) @ 0x006B0130, CTCPhysicsBase::GetAirResistance() @ 0x006AFE00 (returns
@@ -11,7 +12,7 @@
 // +0x40, OffsetVector3D +0x44, RHSet +0x50, OldRHSet +0x68, RHSetLastFrameSet +0x80, sixteen `bool : 1` flags in +0x84/+0x85).
 // engine/CTCPhysicsBase.h / CTCPhysicsStandard.h are flattened PODs without virtuals (RHSet as opaque bytes), so the
 // polymorphic hierarchy is modelled locally with the same offsets (as the landed constructor 0x00723FD0 does).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C = 0.0001f
 

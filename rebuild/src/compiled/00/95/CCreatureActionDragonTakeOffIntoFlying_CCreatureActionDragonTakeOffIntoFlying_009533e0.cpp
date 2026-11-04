@@ -1,4 +1,5 @@
 // CCreatureAction_DragonTakeOffIntoFlying::CCreatureAction_DragonTakeOffIntoFlying(CThingCreatureBase*, const vector<C3DVector>&) -- combat action with the SWORD_SWING sound pair (action code 250), copies the movement points, UsePreviousPoint = true, empty end-action pointer
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009533E0, length 119 bytes, `ret 8`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, GetSoundPair (__fastcall) @ 0x008561A0,
 //          CCombatActionBase::CCombatActionBase(owner, actionCode, const CSoundPair&) @ 0x00858030,
@@ -29,7 +30,7 @@ class CSoundPair { public:                         // user constructor: the 8-by
 
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 template <class T>
 struct CRetailVector {                      // VC6-era Dinkumware vector: first / last / end (12 bytes)

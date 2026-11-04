@@ -1,5 +1,6 @@
 // CTCMultiStrike::~CTCMultiStrike() -- multi-strike component dtor: the members in reverse order (the particle-effect pointer vector, the target and weapon pointers, the def pointer) and ~CTCBase
 // Leaf: ??1CTCMultiStrike@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CCA90, 102 bytes, tail jump to the base destructor.
 // Identity (proven): first store = vtable 0x0126EE0C, RTTI `.?AVCTCMultiStrike@@` (CTCMultiStrike : CTCBase); the sole caller
 //   0x007CD813 is the scalar deleting dtor 0x007CD810, slot 0 of that vtable. Ego_r.pdb ??1CTCMultiStrike@@UAE@XZ; the member
@@ -53,7 +54,7 @@ class CThing;
 class CHitLocation;
 class CSpecialAbilitiesMultiStrikeDef;
 class CBaseObjectPointer;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CBaseIntelligentPointer {                                          // vtable 0x0129C95C, 8 bytes
 public:
     CBaseIntelligentPointer();                                           // 0x00A01B10

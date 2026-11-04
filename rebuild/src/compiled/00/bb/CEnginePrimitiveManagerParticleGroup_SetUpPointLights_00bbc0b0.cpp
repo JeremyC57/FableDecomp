@@ -1,5 +1,6 @@
 // CEnginePrimitiveManagerParticleGroup::SetUpPointLights() -- once per frame, fetches up to five lights around the current group's bounding sphere, remembers their count and uploads them as shader point lights; returns the light count
 // Leaf: ?SetUpPointLights@CEnginePrimitiveManagerParticleGroup@@QAEJXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c: the exact PDB symbol (Ego_r.pdb + FableWin.pdb); the catalog carries the name; body unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BBC0B0, length 116 bytes (+ int3 padding).
 // Signature from Ego_r.pdb: ?SetUpPointLights@CEnginePrimitiveManagerParticleGroup@@QAEJXZ.
@@ -15,10 +16,7 @@
 // local assigned from a default-constructed temporary (three zero bytes into the shared slot, then the whole-dword
 // self copy `mov eax,[esp+4] ; mov [esp+4],eax`); the count is returned sign-extended (`movsx`).
 
-class C3DVector { public:                                       // memberwise user copy constructor: direct dword moves
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;

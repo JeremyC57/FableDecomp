@@ -1,5 +1,6 @@
 // CEnginePrimitiveManagerRepeatedZSprites::RenderPrimitive(CEngineInternalPrimitiveBase& primitive, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain) -- when enabled: take the camera distance; during an occlusion pass make sure the primitive has the pass's occlusion info and, unless it is too long occluded, queue an occlusion-test sub-primitive (result 1); otherwise store the sort depth and append the primitive to the batch list (result 2)
 // Leaf: ?RenderPrimitive@CEnginePrimitiveManagerRepeatedZSprites
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BABF70, length 384 bytes (with int3 padding; body 0x17d), `ret 0Ch` (virtual).
 // Callees: operator new @ 0x00BFEA1A, CEnginePrimitiveOcclusionInfo ctor @ 0x00B2FA90, CEnginePrimitiveOcclusionManager::
 //   GetOccludedFrames(CEnginePrimitiveOcclusionInfo*) @ 0x00B2FAC0 (global @ 0x01436E58, threshold at +0xc), the sub-primitive
@@ -16,7 +17,7 @@
 //   argument slot; push_back is the inline STLport form whose value temporary reuses that slot.
 #include <math.h>
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CEnginePrimitiveOcclusionInfo {
 public:

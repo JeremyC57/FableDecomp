@@ -1,4 +1,5 @@
 // CTCHeroMorph::AddParticles(EHeroMorphType type, float value) -- for every particle morph of the type whose [Min, Max] range (with epsilon) covers the value, creates the emitter (interpolated between two particle types when asked), attaches it to the hero by attach mode and records it
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071C7C0, 548 bytes, `ret 8`.
 // Callees: CDefClassBase::GetSubDef<CHeroMorphDef> @ 0x0071F930 (folded label), CParticleMorphs::GetAllMorphsOfType @ 0x0081B160,
@@ -62,7 +63,7 @@ public:
     }
     T* operator->() const { return Object; }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CParticleMorphEntry {
     long Type;
     bool Interpolate;                                   // +0x04

@@ -1,9 +1,10 @@
 // CAIStateGroup_GameMaster::InitCreaturePosition() -- acquire work building and seat, place the creature, then run replacement cleanup.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- explicit temporary lifetime and placement receiver reproduce retail ordering.
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 #include "engine/CThingAICreature.h"
-class C3DVector { public: float X,Y,Z; };
+#include "engine/C3DVector.h"
 class CThing { public: unsigned char _beforeDead[0x91]; unsigned char Dead:1; };
 class CBaseObject;
 struct CBaseIntelligentPointer {

@@ -1,4 +1,5 @@
 // CPlane::Initialise(const C3DVector& normal, float distance) -- store the plane's normal and distance, report success
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A42140, length 36 bytes.
 // Identity: Ego_r.pdb `?Initialise@CPlane@@QAE_NABVC3DVector@@M@Z`; PDB CPlane = Normal (C3DVector)
 // +0, Distance +0xC.
@@ -7,9 +8,7 @@
 // `this` copy in edx and each component through esi as a dword (a user memberwise operator= copies
 // through edx straight off ecx, 32 v 36); the float distance is a plain dword copy through edx, and
 // the constant true result is `mov al,1` (`ret 8`).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CPlane { public:
     C3DVector Normal;                              // +0x00

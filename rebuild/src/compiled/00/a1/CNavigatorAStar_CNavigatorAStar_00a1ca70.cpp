@@ -1,5 +1,6 @@
 // CNavigatorAStar::CNavigatorAStar(CNavigatorManager& manager, const CNavigatorExternalInterface& iface) -- CNavigatorBase(manager, 3, iface), empty state map, unblocked nodes, empty open list and route, unknown last position
 // Leaf: ??0CNavigatorAStar@@AAE@AAVCNavigatorManager@@ABVCNavigatorExternalInterface@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1CA70, 194 bytes, `ret 8`.
 // Identity: Ego_r.pdb `??0CNavigatorAStar@@AAE@AAVCNavigatorManager@@ABVCNavigatorExternalInterface@@@Z` (private);
 //   the vtable stored is CNavigatorAStar's 0x0129CCCC (rtti-vtables.tsv), the only caller is CNavigatorAStar::Create
@@ -24,7 +25,7 @@ class CANavQuadTreeNode;
 class CSteeringAgent;
 
 class C2DVector { public: float X, Y; C2DVector() {} };
-class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+#include "engine/C3DVector.h"
 
 class CNavBlockedQuadTreeNode {                         // 0x10 bytes
 public:

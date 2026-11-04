@@ -1,5 +1,6 @@
 // std::__pop_heap(CThing** first, CThing** last, CThing** result, CThing* value, CThingCompare_BestForTargeting2 comp, int*) -- SGI heap pop step for the targeting candidate heap: move the root into the result slot, then sift `value` down from the root over [first, last)
 // Leaf: ??$__pop_heap@PAPAVCThing@@PAV1@VCThingCompare_BestForTargeting2@@H@std@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FA680, 130 bytes (+ int3 padding), __fastcall (first in ecx, last in edx;
 //   result, value, the 52-byte comparator and the distance-type pointer on the stack), `ret 40h`.
 // Identity: called by the landed __pop_heap_aux 0x007FA7B0 (which declares it as this instantiation); the catalog label
@@ -12,7 +13,7 @@
 // Family: the SGI algorithm instantiations over CThing** with CThingCompare_BestForTargeting2 (/Gr TU); comparator model =
 //   the landed siblings 0x007FA710 / 0x007FA7B0 (Ego_r.pdb CThingCompare_BestForTargeting2, 52 bytes).
 class CThing;
-class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+#include "engine/C3DVector.h"
 
 class CVectorCompare_BestForTargeting { public:                        // Ego_r.pdb, 44 bytes
     C3DVector AnchorPos;                                        // +0x00

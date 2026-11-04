@@ -1,4 +1,5 @@
 // CDisplayEngine::CDisplayEngine(const CDisplayEngineInit& init) -- the display engine: preload flags 1, the component/player/definition managers and banks from the init block, the camera at (0, 0, 4) looking along +X with a 0.25 FOV, game drawing on, the letter-box and screen-fade infos reset (black, fully opaque colour), no view manager, 30 initial-fade readiness frames, fade duration -1, the world pointer, and gamma 1.0 with primitive preparation on
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00434E10, length 332 bytes (+ int3 padding), `ret 4`. Vtable 0x01231574 (CDisplayEngine).
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (the polymorphic root), CCamera::CCamera(const C3DVector& position,
 // const C3DVector& direction, float fov, long flags) @ 0x00A0BF20 on the Camera member (+0x30).
@@ -11,10 +12,7 @@
 // Shape: members in declaration order (one ebx zero register), the two camera vectors built as temporaries in the frame (the direction
 // first: right-to-left), the CFadeInFadeOutBase inline ctor assigning its members in the body (Active, Duration, StartFrame, FadingOut, FadingIn) and
 // then `Colour = CRGBColour(0, 0, 0, 255)` (the temporary built byte-wise in a frame word and copied as a dword); the readiness count, fade duration, world pointer and the gamma trio are assigned in the body (stored out of declaration order).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CRGBColour { public:
     unsigned char R, G, B, A;
     CRGBColour() {}

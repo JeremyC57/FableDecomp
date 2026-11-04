@@ -1,5 +1,6 @@
 // CEngineInternalPrimitive2DStaticMesh::GetBoundingBoxTransform(CMatrix3x4& transform) -- the mesh's object-space bounding box as a matrix, post-multiplied by the object transform; always true
 // Leaf: GetBoundingBoxTransform
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B9E290, 510 bytes (+2 int3), `ret 4`. Ego_r.pdb:
 //   ?GetBoundingBoxTransform@CEngineInternalPrimitive2DStaticMesh@@UAE_NAAVCMatrix3x4@@@Z (virtual).
 // Callees: C3DBoundingBox::CalculateMatrix(CMatrix3x4&) const @ 0x00ADEBC0 (on a 24-byte copy of the box).
@@ -15,11 +16,7 @@
 #include "engine/CEngineInternalPrimitive2DStaticMesh.h"
 #include "engine/C3DMeshInfo.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 {
 public:

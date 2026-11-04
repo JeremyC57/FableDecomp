@@ -1,5 +1,6 @@
 // std::__introsort_loop(CThing** first, CThing** last, CThing**, int depth_limit, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- STLport introsort recursion of the advance-in-cover candidate sort: median-of-three partition until 16 elements remain, partial (heap) sort when the depth budget runs out
 // Leaf: ??$__introsort_loop@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00979760, 272 bytes (+ int3 padding), __fastcall (/Gr algorithm TU: first in ecx,
 //   last in edx; the _Tp* tag, the depth limit and the 16-byte comparator on the stack), `ret 18h`.
 // Instantiation: std::sort<CThing**, CThingCompare_InDirectionOfAndNearestToHeuristicBitch> of
@@ -17,9 +18,7 @@ class CThing;
 extern "C" double __cdecl pow(double x, double y);                                    // _CIpow 0x00BFEB40
 extern "C" double __cdecl sqrt(double x);
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

@@ -1,5 +1,6 @@
 // NBBBMaths::CLinearSpline::AddControlPoint(const C3DVector& point) -- append a control point to ControlPoints
 // Leaf: ?AddControlPoint@CLinearSpline@NBBBMaths@@QAEXABVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A580F0, 64 bytes, thiscall, `ret 4`.
 // Identity (proven): Ego_r.pdb orders NBBBMaths::CLinearSpline::GetLength, GetPointWithParam, AddControlPoint(const C3DVector&), ProcessPoints; retail has GetLength 0x00A57EF0, GetPointWithParam 0x00A57F70, this function, then the spline point generator 0x00A58130; CLinearSpline::ControlPoints is the vector<C3DVector> at +0 that the body pushes onto; its only caller CTCLightningOrb::Initialise 0x007F26B0 builds the orb's CCountedPointer<NBBBMaths::CLinearSpline> PSpline point by point. It is a separate copy of the 0x0066E630 code because it is a separate symbol (no ICF).
 // Callees: vector<C3DVector>::_M_insert_overflow(pointer, const value_type&, const __false_type&, size_type, bool) 0x0066E370.
@@ -7,10 +8,7 @@
 //   __x); ++_M_finish; } else _M_insert_overflow(_M_finish, __x, __false_type(), 1UL, true);` -- the implicit 12-byte copy
 //   (three dword moves through esi) under placement new's null test; the empty tag homed in the dead __x slot. Speed TU.
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
-class C3DVector {                                         // Ego_r.pdb, 12 bytes
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> class allocator { public: allocator() { } };

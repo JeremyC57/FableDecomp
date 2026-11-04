@@ -1,5 +1,6 @@
 // _global::UninitCopy_CTargetPoint_00807980(const CTargetPoint* first, const CTargetPoint* last, CTargetPoint* result, const __false_type&) -- STLport __uninitialized_copy<NPlayerTargeting::CTargetPoint*>: placement copy-construct 28-byte target points, return the advanced result
 // Leaf: UninitCopy_CTargetPoint_00807980
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00807980, length 122 bytes, `ret 8`.
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, GetPItem @ 0x00A01B50, SetPItem @ 0x00A01B90.
 // Vtable: CIntelligentPointer<CThing> 0x01238C6C (stored after the base constructor).
@@ -32,10 +33,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint { public:

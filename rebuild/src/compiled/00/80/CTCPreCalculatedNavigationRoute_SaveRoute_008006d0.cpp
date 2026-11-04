@@ -1,4 +1,5 @@
 // CTCPreCalculatedNavigationRoute::SaveRoute(CPersistContext* context) -- when the target thing exists and is alive, recompute the owner->target route and save its step count, then each step's local position and nav layer; otherwise save a step count of 0
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x008006D0, 480 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0, CalculateRouteFromTo 0x00800540,
 //   CPersistContext::Transfer<long> 0x00410BE0 / <C2DVector> 0x00800B90 / <unsigned char> 0x00405A60, CTCBase::PeekWorldMap
@@ -8,7 +9,7 @@
 //   9-byte pair<C2DVector, unsigned char> steps -- retail divides by 9); CThing region index short +0x8e, Dead bit +0x91.
 #include <stdlib.h>
 class C2DVector { public: float X; float Y; C2DVector(float x, float y) : X(x), Y(y) {} };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_data;
     ~CCharString();                                 // 0x0099EAE0

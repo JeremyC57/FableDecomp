@@ -1,17 +1,13 @@
 // GFDXGetHermiteSplinePosition(C3DVector& out, const C3DVector& p0, const C3DVector& t0, const C3DVector& p1, const C3DVector& t1, float s) -- Hermite spline position through D3DX: copy the points and tangents into D3DXVECTOR3s, call D3DXVec3Hermite and copy the result back
 // Leaf: ?GFDXGetHermiteSplinePosition@@YIXAAVC3DVector@@ABV1@111M@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A565C0, 172 bytes (+4 int3), `ret 10h` (PDB
 //   ?GFDXGetHermiteSplinePosition@@YIXAAVC3DVector@@ABV1@111M@Z: `__fastcall`, out in ecx, p0 in edx, the rest on the stack).
 // Callees: D3DXVec3Hermite (d3dx9_25.dll, called through the jmp thunk @ 0x00BFEFDA; __stdcall).
 // Shape: four D3DXVECTOR3 frame copies built from the C3DVector components (dword moves), a fifth for the result;
 //   the answer comes back as a C3DVector temporary assigned to `out` (retail also stores the dead temporary, in the slot
 //   the last input copy used).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 struct D3DXVECTOR3 {
     float x, y, z;

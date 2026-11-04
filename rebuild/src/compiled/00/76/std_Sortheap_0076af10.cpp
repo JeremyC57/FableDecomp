@@ -1,5 +1,6 @@
 // std::_Sort_heap(SKeyedVector* first, SKeyedVector* last, SKeyLess pred) -- Dinkumware _Sort_heap over 16-byte (unsigned long key, C3DVector) pairs: pop the root to the back until one element remains
 // Leaf: _Sort_heap
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076AF10, length 144 bytes, `ret 4`.
 // Identity: the catalog label `_Sort_heap<pair<unsigned __int64,CANavQuadTreeNode*>*,...>` is propagated over the
 // byte-identical skeleton. The only callee is the landed Dinkumware `_Adjust_heap` @ 0x00769D50 for 16-byte
@@ -10,10 +11,7 @@
 // registers (key in ecx, X/Y on the x87 stack, Z spilled to the frame) because both copy constructors are
 // memberwise user constructors; `*_Dest = *_First` is the implicit assignment (four dword moves) and the value
 // argument is stored field by field from the temporary.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
-};
+#include "engine/C3DVector.h"
 
 struct SKeyedVector {
     unsigned long m_key;

@@ -1,4 +1,5 @@
 // NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::Init() -- set Briar Rose up for the ship-summoning quest: brain state 1, no follow/wait expressions, persistent, may follow the hero, no information, weapons sheathed, an ally of the hero, damageable but not killable, and not counted for the combo multiplier
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DF1760, length 159 bytes (+1 int3 padding) (vtable entry at 0x012DE1B0, the Init slot).
 // PDB: ?Init@CSTS_BriarRose@CQ_SummoningTheShipScript@NScript@@EAEXXZ; layout (32 bytes) = CEntityScriptBase {vptr,
 // Game +0x04, CScriptThing Me +0x08}, ParentClass +0x14, PMasterData +0x18, long BrainState +0x1C.
@@ -8,7 +9,7 @@
 // 516 EntitySetAsDamageable, 526 EntitySetAsToAddToComboMultiplierWhenHit.
 // Shape: `&Me` lives in edi for every call; Game is re-read before each call; the ally call reads Game's vtable
 // before the nested GetHero call (ebx keeps it).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CScriptThing { public:                            // vtable 0x01238C8C
     virtual const C3DVector& GetPos() const;

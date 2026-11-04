@@ -1,5 +1,6 @@
 // NCreatureMode::CModeDragonFlying::CModeDragonFlying(CThing& thing, std::vector<C3DVector>& points, const C3DVector& position, float speed, CCountedPointer<CCreatureActionBase> endAction) -- the dragon's flight mode: an empty cardinal flight spline (tension 0.5), the "FLYING" group filter, speed and the end action; the spline gets the current position followed by every flight point, the destination is the last point
 // Leaf: ??0CModeDragonFlying
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E1150, 548 bytes (`ret 18h`). Vtable 0x0126868C (NCreatureMode::CModeDragonFlying);
 //   the inline CModeDragonFlyingBase vtable store (0x01268658) is dead and dropped.
 // Callees: CModeBase::CModeBase 0x0073EAC0, CCharString(const char*, long) 0x0099EBF0 / CCharString() 0x0099E4B0 /
@@ -81,10 +82,7 @@ template <class T> class CCountedPointer { public:
     }
 };
 class CCreatureActionBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 template <class T> struct CAllocator {     // STLport allocator<T>: empty
     CAllocator() { }
 };

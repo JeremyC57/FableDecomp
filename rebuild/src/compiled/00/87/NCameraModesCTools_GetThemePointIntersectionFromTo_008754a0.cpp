@@ -1,5 +1,6 @@
 // NCameraModes::CTools::GetThemePointIntersectionFromTo(const C3DVector& from, const C3DVector& to, C3DVector& hitPos, C3DVector& hitNormal, bool useCameraBlocking) const -- for a segment with some horizontal extent, intersect it with the world map using the camera- or passability-blocking theme test (chosen by the flag) and copy out the hit position and normal
 // Leaf: ?GetThemePointIntersectionFromTo@CTools@NCameraModes@@QBE_NABVC3DVector@@0AAV3@1_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008754A0, length 165 bytes (`ret 14h`; 176 with padding).
 // Naming: Ego_r.pdb ?GetThemePointIntersectionFromTo@CTools@NCameraModes@@QBE_NABVC3DVector@@0AAV3@1_N@Z (CTools is
@@ -14,10 +15,7 @@
 // Shape: `to - from` per component, `d = dx*dx; d += dy*dy;` keeps retail's dx-first squares; the two flag arms are
 // separate calls that VC7.1 tail-merges after their last two pushes (the false arm's flag folds to 0); two uninitialised
 // POD locals receive the hit.
-class C3DVector {
-public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 class CWorldMap;
 extern const float DELTA_NOTIONAL_ZERO;         // 0x0129BA3C (0.0001f)
 
@@ -38,8 +36,8 @@ private:
 bool CTools::GetThemePointIntersectionFromTo(const C3DVector& from, const C3DVector& to, C3DVector& hitPos, C3DVector& hitNormal,
                                              bool useCameraBlocking) const
 {
-    float dx = to.x - from.x;
-    float dy = to.y - from.y;
+    float dx = to.X - from.X;
+    float dy = to.Y - from.Y;
     float d = dx * dx;
     d += dy * dy;
     if (d > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {

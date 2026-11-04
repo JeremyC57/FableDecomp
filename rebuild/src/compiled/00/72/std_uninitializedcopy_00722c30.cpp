@@ -1,5 +1,6 @@
 // std::__uninitialized_copy(const CTCSmokeGenerator::CGenerationPos* first, const CTCSmokeGenerator::CGenerationPos* last, CTCSmokeGenerator::CGenerationPos* result, const __false_type&) -- STLport placement copy-construct each 20-byte record (the position, then the intelligent pointer's copy constructor) and return the advanced result
 // Leaf: ??$__uninitialized_copy@PBVCGenerationPos@CTCSmokeGenerator@@PAV12@@std@@YIPAVCGenerationPos@CTCSmokeGenerator@@PBV12@0PAV12@ABU__false_type@0@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00722c30, 90 bytes, __fastcall (first in ecx, last in edx, result + tag on the stack), `ret 8`.
 // Identity (proven): its callers are vector<CTCSmokeGenerator::CGenerationPos>::operator= 0x00722F30 (twice, const sources; family L032) and the landed 0x00722D30; the non-const twin is 0x00722B70.
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10, GetPItem 0x00A01B50, SetPItem 0x00A01B90.
@@ -21,12 +22,7 @@ public:
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.CBaseIntelligentPointer::GetPItem()); }
 };
 class CThing;
-class C3DVector {                                          // user copy constructor: ??0C3DVector@@QAE@ABV0@@Z (FableWin/Ego_d symbols)
-public:
-    float X, Y, Z;                                        // +0x00
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class CTCSmokeGenerator {
 public:
     class CGenerationPos {                                 // Ego_r.pdb, 20 bytes

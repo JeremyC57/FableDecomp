@@ -1,5 +1,6 @@
 // COptimisedPrimitive::PaintSegments() -- split the faces into connected segments: every existing face not yet in a segment seeds a new segment number and is flood-filled from a fresh work list
 // Leaf: PaintSegments
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC8540, length 133 bytes (padded to 144).
 // Callees: malloc @ 0x00BFEA0E (the work list's head node), COptimisedPrimitive::PaintSegment(unsigned long face, long segment,
 //          list<unsigned long>& work) @ 0x00AC8170 (manifest "PaintSegments_AddSegmentLink"), list<unsigned long>::~list
@@ -10,7 +11,7 @@
 // list (one frame word: the malloc'd self-linked head) built by an inline constructor and destroyed out of line.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct COptimisedFace {                     // QuadricOptimiserInternals::COptimisedFace (0x48 bytes)
     unsigned long VertexIndices[3];         // +0x00
     unsigned long UniqueVertexIndices[3];   // +0x0c

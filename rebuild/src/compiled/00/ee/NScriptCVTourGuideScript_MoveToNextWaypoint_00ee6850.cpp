@@ -1,5 +1,6 @@
 // CV_TourGuideScript::MoveToNextWaypoint(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&) -- send the guide to the given waypoint, or (if it is gone) step the waypoint counter round the 18-entry tour until a live waypoint marker is found and send him there
 // Leaf: ?MoveToNextWaypoint@CV_TourGuideScript@NScript@@QAEXABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE6850, 485 bytes (496 with padding), `ret 8`.
 // Callees: ~CScriptThing 0x004AA840 (out of line), ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC,
 //   CScriptBase::IsActiveThreadTerminating 0x00CB7940; CScriptThing slots 6 GetPos and 75 IsAlive (inline bodies through
@@ -18,7 +19,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                              // 0x0143E8E0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)

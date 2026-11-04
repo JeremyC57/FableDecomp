@@ -1,5 +1,6 @@
 // NCreatureMode::CModeSummonerSummon::~CModeSummonerSummon() -- the compiler-generated destructor: free the CreatePositions block, PTarget, then the Filter (its Group string and the CAnimFilterBase vtable reset), then ~CModeStandBase
 // Leaf: ??1CModeSummonerSummon@NCreatureMode@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CC330, 50 bytes, thiscall, tail `jmp ~CModeStandBase`.
 // Identity (proven): the sole caller is the slot-0 `??_G` 0x008CC310 of vtable 0x01282BA0 (RTTI
 //   .?AVCModeSummonerSummon@NCreatureMode@@ : CModeStandBase : CTCCreatureModeManager::CModeBase); Ego_r.pdb spells
@@ -75,10 +76,7 @@ public:
     void* PData;
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CAnimFilterBase {                           // vtable 0x0122FFCC

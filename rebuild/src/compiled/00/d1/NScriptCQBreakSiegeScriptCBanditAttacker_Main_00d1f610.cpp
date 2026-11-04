@@ -1,5 +1,6 @@
 // NScript::CQ_BreakSiegeScript::CBanditAttacker::Main() -- Break-Siege bandit attacker: look up "MB_HeroTalksToChief", hold an alive filter over Me, wait for HeroLetInTown and StartSecondWave, take Me under scripted control (priority 3), set Me's combat break-off range from the script def, then (until BanditLeaderFree) keep running Me to "ImprisonedBanditLeader" while it is more than 5 units away; finally flag BanditLeaderFree, release scripting, make Me follow the leader and idle
 // Leaf: ?Main@CBanditAttacker@CQ_BreakSiegeScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D1F610, 757 bytes (768 with padding); entity-script vtable slot 1 (Main).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CScriptThing copy ctor 0x004ABE90 /
@@ -19,7 +20,7 @@
 // Naming wave 35: identity reg 00d1d2fe "BanditAttacker" in 00d1d100; Alloc 00d1f510; vtable 012cb024 slot 1; PDB ?Main@CBanditAttacker@CQ_BreakSiegeScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBanditAttacker::Main (wave3/labels_alloc.tsv); PDB ?Main@CBanditAttacker@CQ_BreakSiegeScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBanditAttacker@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_BreakSiegeScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

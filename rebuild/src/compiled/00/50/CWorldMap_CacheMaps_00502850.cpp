@@ -2,6 +2,7 @@
 // proximity, unload it (posting message 0x25) once the player is 64+ cells away, or start loading it when the player
 // comes within 48 cells (draining the level loader immediately for load type 0); disabled while region loading runs
 // Leaf: CacheMaps
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00502850, 330 bytes, `ret 4`. PDB ?CacheMaps@CWorldMap@@IAEXW4ELoadType@@@Z.
 // Callees: CWorldMap::GetMinPlayerDistanceFromMap(long) 0x004FCB30, CWorldMap::IsMapLoaded(long) const virtual slot 10
 //   (+0x28, vtable 0x01244AEC -> 0x004FC050), CMessageEventManager::AddMessage 0x00687540 on the world's +0x60,
@@ -11,10 +12,7 @@
 //   Used +0x24, Loading +0x27, LoadedOnPlayerProximity +0x28), PLevelLoader data +0xbc; region-loading flag byte
 //   0x013756F6 (landed name g_bRegionLoadingEnabled).
 // Note: the "unload" branch tests Maps[loadType].Loading -- retail indexes the map array with the load type there.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CThing;
 class CMessageEventManager { public:
     void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1,

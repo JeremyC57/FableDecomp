@@ -1,5 +1,6 @@
 // CGameScriptThing::GetFocalPos() const -- the focal position of the live thing's graphic appearance, or the stored position when the thing is gone or dead
 // Leaf: ?GetFocalPos@CGameScriptThing@@UBE?AVC3DVector@@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D03E0, 92 bytes, thiscall, `ret 4` (C3DVector returned through the hidden pointer).
 // Identity (proven): slot 5 of the CGameScriptThing vtable 0x012852CC (RTTI .?AVCGameScriptThing@@); Ego_r.pdb
 //   ?GetFocalPos@CGameScriptThing@@UBE?AVC3DVector@@XZ (the catalog row's own mangled name).
@@ -11,11 +12,7 @@
 // Shape: nested ifs (the `&&` form tests `!Dead` as a value: `mov al ; not al ; test al,1`), the thing read into a named local
 //   before the call (so the third GetPItem runs before the pushes), and C3DVector's inline user copy constructor (FableWin.pdb)
 //   for the member-wise copy of Pos on the fallback arm.
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // FableWin.pdb user copy constructor (inline)
-};
+#include "engine/C3DVector.h"
 namespace NGraphicAppearance {
 class CTCGraphicAppearance {
 public:

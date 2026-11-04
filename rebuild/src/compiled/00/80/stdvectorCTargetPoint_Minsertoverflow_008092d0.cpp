@@ -1,5 +1,6 @@
 // std::vector<CTargetPoint>::_M_insert_overflow(CTargetPoint* position, const CTargetPoint& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport vector growth for the player-targeting target points: allocate old_size + max(old_size, fill_len), copy the head, construct the fill_len copies of x, copy the tail unless inserting at the end, destroy (release each thing pointer) and free the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008092D0, 256 bytes, thiscall `ret 14h`.
 // Identity: the overflow path of the landed push_back 0x00809970 (`push 1 ; push 1 ; push &tag ; push x ; push
 //   finish`) and three more NPlayerTargeting sites (0x008044C6, 0x00804615, 0x00804C94). The element is the 28-byte
@@ -31,10 +32,7 @@ public:
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint {                                        // 28 bytes

@@ -1,4 +1,5 @@
 // CSoundEmitterLH::vfunc_6(long a, long b) -- when the sound system is up, forwards both arguments to the sound player's slot 26
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AABA20, 25 bytes, `ret 8`. Vtable 0x0129E6EC (CSoundEmitterLH, rtti-vtables.tsv) slot 6.
 // The audio layer is not in Ego_r.pdb: method and member names are descriptive.
 // Callees: the system's slot 6 (+0x18, GetPlayer), the player's slot 26 (+0x68) as a sibling-call `jmp` (arguments forwarded in place).
@@ -43,7 +44,7 @@ struct SSoundNode {                                    // VC6 list node, 16 byte
     long          extra;                               // +0x0c
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CSoundEmitterLH {                               // vtable 0x0129E6EC
     virtual void v00();

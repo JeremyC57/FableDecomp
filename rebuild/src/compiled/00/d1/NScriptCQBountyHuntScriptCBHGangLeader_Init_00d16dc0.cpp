@@ -1,5 +1,6 @@
 // NScript::CQ_BountyHuntScript::CBH_GangLeader::Init() -- reset the gang leader's hit count, stage flags and health marks, then register the parent bounty-hunt script's WatchForLeaderKilled and WatchForDecapitation callbacks
 // Leaf: ?Init@CBH_GangLeader@CQ_BountyHuntScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Naming wave 29 (family sfbr): the thread class derives from the retail CSpawnedFuncBase (engine/CSpawnedFuncBase.h; Ego_r.pdb / FableWin.pdb
 //   ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 0x00CDD450, implicit ??1CSpawnedFuncBase@@UAE@XZ 0x00CDD4C0). Was the invented
@@ -22,7 +23,7 @@
 #include "engine/CScriptThing.h"
 
 class CCPPointerInfo { public: long References; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CScriptThingRuntime {
     virtual ~CScriptThingRuntime(); // CScriptThing RTTI slot 0, 0x004AB170

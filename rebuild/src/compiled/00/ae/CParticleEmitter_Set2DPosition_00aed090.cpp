@@ -1,4 +1,5 @@
 // Grade: MATCH (Fable landing 2026-10-19 after the Codex review hold: test uses an EmitterModel without the real bitfields)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // CParticleEmitter::Set2DPosition(const C3DVector&, long layer) -- for a 2D emitter, set both interpolator positions (z = 0),
 //   optionally the 7-bit 2D layer, and copy the positions into the start/end transforms' translations
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AED090, 167 bytes.
@@ -6,7 +7,7 @@
 //   (Priority:3 .. ContinuousEmitter bits 0..7, Initialised/WaitingToSleep/Sleeping/Emitter2D bits 8..11), the ushort
 //   Emitter2DLayer:7 at +0x42, PositionInterpolator +0x94, Transform +0xb0, EndTransform +0x110 (CMatrix3x4 position
 //   at +0x24). engine/CParticleEmitter.h carries the Ego_r offsets (all 0x0c late here), so this is a local model.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DPositionInterpolator { public: virtual ~C3DPositionInterpolator(); C3DVector StartPosition; C3DVector EndPosition; };
 class CMatrix3x4 { public:
     C3DVector Right, Up, Forward;                       // +0x00..+0x23

@@ -1,5 +1,6 @@
 // CEngineWeatherRenderer::RenderRainBox(const C3DVector& boxPos) -- upload the rain box position, flush the dirty shader state and draw the rain particle buffers as indexed triangles scaled by the current rain strength
 // Leaf: RenderRainBox
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B54100, length 262 bytes (+ int3 padding), `ret 4`.
 // Signature from Ego_r.pdb: ?RenderRainBox@CEngineWeatherRenderer@@AAEXABVC3DVector@@@Z. The catalog row is labelled
 // RenderSnowBox (propagated); this body reads CurrentRainStrength and is called only from RenderRain (0x00B54890),
@@ -22,7 +23,7 @@
 // __ftol2 right to left (triangles = strength * 256 first, vertices = strength * 512 second).
 #include "engine/CEngineWeatherRenderer.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C4DVector { public: float X, Y, Z, W; };
 
 template <class T> class CArray { public:

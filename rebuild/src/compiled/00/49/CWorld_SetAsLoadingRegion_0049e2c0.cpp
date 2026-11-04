@@ -1,4 +1,5 @@
 // CWorld::SetAsLoadingRegion(const C3DVector&, float, bool, bool, bool) -- queue a region load at a start position unless a movie sequence blocks it or a load is already in progress
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0049E2C0, 116 bytes. PDB ?SetAsLoadingRegion@CWorld@@IAEXABVC3DVector@@M_N11@Z (protected)
 // Callee: CGameScriptInterface slot 395 IsInMovieSequence() 0x0088E9E0 through PGameScriptInterface (+0x38).
 // Retail CWorld offsets (engine/CWorld.h is the PDB layout; the RegionLoad block sits 0xC below it because the PDB
@@ -15,7 +16,7 @@
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CWorld { public:
     void*                 __vftable;                       // +0x00

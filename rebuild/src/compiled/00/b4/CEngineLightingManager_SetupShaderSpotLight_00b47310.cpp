@@ -1,4 +1,5 @@
 // CEngineLightingManager::SetupShaderSpotLight() -- loads the shadowed spot light's falloff (matrix from a copy of the shadow renderer's scene data, the radius-ratio scale and the light colour) into the shader render manager
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B47310, length 116 bytes (128 with padding).
 // Callees: CShadowRendererSceneData::CShadowRendererSceneData(const CShadowRendererSceneData&) @ 0x00B38600 (out-of-line copy
 // constructor, `rep movsd` blocks), CShaderRenderManager::SetShadowSpotLightFalloffParameters(const CMatrix3x4*, float, float,
@@ -12,7 +13,7 @@
 // object (the landed UpdateShadowScene @ 0x00B444F0 passes it), so Radius / SpotRadius / Colour are +0x46B4 / +0x46B8 / +0x46C0.
 class CMatrix3x4 { public: float m[12]; };
 class CMatrix4x4 { public: float m[16]; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public: float R, G, B, A; };
 
 class CShadowRendererSceneData { public:                  // 0x240 bytes

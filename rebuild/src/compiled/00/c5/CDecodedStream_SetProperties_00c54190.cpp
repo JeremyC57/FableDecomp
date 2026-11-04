@@ -1,5 +1,6 @@
 // CDecodedStream::SetProperties(const SSourceUpdate* update) -- slot 6: copy a new set of 3D/reverb source properties into the stream, pushing each one that changed into the +0x290 pending-parameter block (through its clamped setter, millibel levels converted to amplitudes), then reconfigure the voice effect from that block
 // Leaf: ?SetProperties@CDecodedStream@@UAEXPBUSSourceUpdate@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C54190, 889 bytes, thiscall `ret 4`.
 // Identity (descriptive, libpk: no PDB/RTTI): slot 6 of the CDecodedStream vtable 0x012B89C4 (slot 0 the scalar deleting
@@ -17,9 +18,7 @@
 // Shape: one inline compare-and-set helper per property taking the value BY VALUE (the float copies go through edx and
 //   the dead argument slot for the `fld ; fld ; fucompp`, the stores and the push reuse the register); `member != value`;
 //   the unsigned references convert with the 2^32 fix-up; the HF reference is pushed unconditionally.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 struct C3DSoundSource {
     void SetPosition(const C3DVector& position);           // 0x00C53D50
     void SetVelocity(const C3DVector& velocity);           // 0x00C53E40

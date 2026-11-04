@@ -1,5 +1,6 @@
 // CTollBandit::Should_I_Flee(CScriptGameResourceObjectScriptedThingBase&) -- once the bandits flee, take scripting control of the bandit, run him to the escape marker until he is close to it, then fade him out and kill him
 // Leaf: ?Should_I_Flee@CTollBandit@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E4DF20, 433 bytes (448 with padding), `ret 4`.
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30, the handle's IsValid 0x00CD23B9 / Release
 //   0x00CD2770 and virtuals MoveToPosition (slot 4), GetScriptThing (slot 12), IsPerformingScriptTask (slot 26),
@@ -9,7 +10,7 @@
 // Layout: CTollBandit as Ego_r.pdb (Game +4, Me +8, ParentClass +0x14, BanditEscapeMarker +0x28); CV_BanditTollScript
 //   BanditsFlee +0x4f (PDB - 0x14); CScriptDef TollBanditCloseToExit +0x43c, TollBanditTimeToFade +0x440 (retail; PDB +0x470/+0x474).
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing { public:                                       // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing();                                // 0x004AA840
     virtual void t01() const; virtual void t02() const; virtual void t03() const; virtual void t04() const; virtual void t05() const;

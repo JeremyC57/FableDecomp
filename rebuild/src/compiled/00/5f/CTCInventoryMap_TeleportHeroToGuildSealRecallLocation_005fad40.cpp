@@ -1,5 +1,6 @@
 // CTCInventoryMap::TeleportHeroToGuildSealRecallLocation() const -- while the hero creature is alive, show the mini map on the region load and queue a move-hero-to-region game event (0x2C) carrying the world's guild-seal recall position and angle, via a teleporter and neither forced nor by door, from the main player
 // Leaf: TeleportHeroToGuildSealRecallLocation
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
@@ -13,7 +14,7 @@
 // Layout: retail CWorld (Ego_r.pdb order, 16 bytes less ahead of these members): DisplayMiniMapOnRegionLoad +0x12F,
 //   GuildSealRecallPos +0x154, GuildSealRecallAngleXY +0x160; CGameEvent as the landed CInputProcessFishing
 //   0x00690B20; retail CThing dead bit +0x91.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };

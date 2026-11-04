@@ -1,5 +1,6 @@
 // NScript::CQ_MinionClifftopChaseScript::CMagicBarrierGraveyard::Main() -- the second graveyard magic barrier: under an alive filter on Me, create the
 // Leaf: ?Main@CMagicBarrierGraveyard@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   two red force-field effects at Me (oriented by Me's XY angle); then every frame, once neither effect is alive, replace them
 //   with the two force-field idle effects
@@ -26,7 +27,7 @@ class CCharString { public:
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

@@ -1,4 +1,5 @@
 // CEnginePrimitiveRenderer::ResetWorldTransform() -- hands an identity matrix to the shader render manager's and the render core's world transform
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B32100, length 133 bytes.
 // Signature from Ego_r.pdb: ?ResetWorldTransform@CEnginePrimitiveRenderer@@AAEXXZ (private, `this` unused, plain `ret`).
 // Callees: 0x009881F0 CShaderRenderManager::SetWorldTransform(const CMatrix3x4&) on the global manager @ 0x01436E14,
@@ -12,7 +13,7 @@
 // VC schedules the first global load early because the matrix stores are independent of it.
 #include "engine/CEnginePrimitiveRenderer.h"
 
-class C3DVector  { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }

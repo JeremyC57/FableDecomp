@@ -1,5 +1,6 @@
 // FoundMessageIsThingKnockedOutBy(const CScriptThing& thing, const CScriptThing& attacker) -- true when both things are alive and the thing has a pending "knocked out by" message from the attacker
 // Leaf: ?FoundMessageIsThingKnockedOutBy@@YI_NABVCScriptThing@@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBE10F, 65 bytes (`ret`).
 // TU: the global quest-script helper functions (__fastcall, size-optimised: `#pragma optimize("s", on)`).
 // Model: CScriptThing is polymorphic (vtable 0x01238C8C); the engine header models the vptr as data, so a local
@@ -14,10 +15,7 @@ class CCharString {
 public:
     void* m_pStringData;
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

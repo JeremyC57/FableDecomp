@@ -1,4 +1,5 @@
 // CQ_NewOakValeIntroScript::Main() -- the new Oakvale intro quest's main: bind the sixteen NOVI_* / OVI_DeadFather entity scripts, finish adding scripted entities, close the post-attack quest if the attack is already over, set the active quest's first objective, spawn StartBarrelTimer and run DoMission
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DABAC0, length 2018 bytes. Catalog label "CPersonalScript_GlobalThingsScript::Main"
 //   is propagated: the vtable 0x012D7A30 slot holding this body and the NOVI_ strings / DoMission 0x00DBDE40 call are
 //   CQ_NewOakValeIntroScript's.
@@ -13,7 +14,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0

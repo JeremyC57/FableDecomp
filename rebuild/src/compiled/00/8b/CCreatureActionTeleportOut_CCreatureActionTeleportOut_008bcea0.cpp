@@ -1,4 +1,5 @@
 // CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase*) -- base CCombatActionBase(owner, 250, zeroed CSoundPair), own vtable, the name "ST_TELEPORT", then the creature's current position as the target
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BCEA0, length 127 bytes (+ int3 padding).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCharString::CCharString(const char*, long)
 // @ 0x0099EBF0 (literal 0x0127E488 "ST_TELEPORT"), CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0,
@@ -8,7 +9,7 @@
 // The PDB header (CCreatureAction_TeleportOut.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
 #include "fable_string.h"
 class CThingCreatureBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;   // 0x004C73D0
 };

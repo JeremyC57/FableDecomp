@@ -1,4 +1,5 @@
 // CCombatSequence_BanditUnblockableAttack::OnCreate -- enqueue UnblockableMidAttack, LeapBack and CombatIdle actions.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Native ctor 0x008bfbe0 is CCreatureAction_UnblockableMidAttack (RTTI vtable 0x0127f8a4), followed by LeapBack and CombatIdle.
 #define CCombatSequence_BanditUnblockableAttack CCombatSequence_BanditUnblockableAttack_PDB
 #include "engine/CCombatSequence_BanditUnblockableAttack.h"
@@ -21,7 +22,7 @@
 #include "fable_string.h"
 class CThingCreatureBase;
 class CThing;
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CTCWeaponTrail;
 class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();

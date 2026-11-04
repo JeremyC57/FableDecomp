@@ -1,4 +1,5 @@
 // CTCDPhysicalObstruction::UpdateAdditionalImpulse() -- collect the creatures in the obstruction line's search area that are not on the ignore list, within the line's radius and affected by obstructions, and push each one off the smeared-out line
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FD580, 194 bytes (plain `ret`, 0x44-byte frame).
 // Callees: GetLineThingSearchArea(const C3DVector&, const C3DVector&, float) @ 0x008F58C0 (`__fastcall`, C2DBoxI by hidden pointer),
 // CTCBase::GetThingSearchTools() @ 0x00686D80, CThingSearchTools::GetAllThingsInRoughArea<CThingCreatureBase,
@@ -18,7 +19,7 @@
 // to the original compile. A for_each body and a STAND-IN search body (it only touches the vector inline; not the real
 // 0x007FDB10 code) are compiled above under `auto_inline(off)` for that knowledge -- review at landing.
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI() { }

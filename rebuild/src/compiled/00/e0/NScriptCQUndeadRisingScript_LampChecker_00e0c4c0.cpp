@@ -1,6 +1,7 @@
 // CQ_UndeadRisingScript::LampChecker() -- each time the graveyard is (re)loaded, recreate the light effect at every activated lamp and note the lamps whose light did not survive; while any lamp is out and the graveyard stays loaded, retry the missing lights once a second until all are back
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: LampChecker
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E0C4C0, 1197 bytes (int3 padded to 1200); /GS cookie (bool LampOut[8] array).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940, ~CScriptThing 0x004AA840,
@@ -22,7 +23,7 @@ class CWideString { public:
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CScriptThingImp {
     virtual void i00(); virtual void i01(); virtual void i02(); virtual void i03(); virtual void i04(); virtual void i05(); virtual void i06(); virtual void i07(); virtual void i08(); virtual void i09();
     virtual void i10(); virtual void i11(); virtual void i12(); virtual void i13(); virtual void i14(); virtual void i15(); virtual void i16(); virtual void i17(); virtual void i18(); virtual void i19();

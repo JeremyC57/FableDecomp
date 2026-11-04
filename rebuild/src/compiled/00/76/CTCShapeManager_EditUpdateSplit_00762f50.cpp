@@ -1,5 +1,6 @@
 // CTCShapeManager::EditUpdateSplit() -- editor: split the selected shape at its selected point; on success rebuild it from a copy of its points (same type) and re-add it in place of the old entry
 // Leaf: EditUpdateSplit
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe 0x00762F50, 108 bytes (plain `ret`); the twin of EditUpdateDelete 0x00762D80 without the else arm.
 // Callees: NShape::CShape::UpdateSplit() @ 0x007622C0 (bool), vector<C3DVector> copy ctor @ 0x006F0810 (manifest
 // "Vector_CopyFrom"), NShape::CShape virtual slot 1 (+0x04, shape type), vector<CCountedPointer<NShape::CShape>>::erase
@@ -11,7 +12,7 @@
 // Points (vector<C3DVector>) +0x08.
 // Shape: CreateShape's by-value result is built straight in AddNewShape's argument area (`sub esp,8 ; mov ecx,esp`);
 // the erase result's store into SelectedShape is scheduled after the pushes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 struct CPointVector {                               // STLport vector<C3DVector>
     C3DVector* _M_start; C3DVector* _M_finish; C3DVector* _M_end_of_storage;

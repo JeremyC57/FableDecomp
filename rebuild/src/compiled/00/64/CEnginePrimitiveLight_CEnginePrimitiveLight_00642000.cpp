@@ -9,13 +9,11 @@
 // copied memberwise, the colour through the inline Set(r, g, b, a) copy (bytes loaded A, B, G, R with B spilled
 // into the dead interpolation-set slot, stored R, G, B, A).
 // Leaf: ??0CEnginePrimitiveLight
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name (landing 2026-11-03h): the interpolation-set parameter is the enum (W4EEngineInterpolationSet@@), as the FableWin.pdb name set
 //   spells the constructor (the earlier note said Ego_r.pdb; the Ego_r name set has no entry); `ret 20h` = 8 stack words.
 
-class C3DVector { public:                                       // memberwise user copy constructor: one register per dword
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }

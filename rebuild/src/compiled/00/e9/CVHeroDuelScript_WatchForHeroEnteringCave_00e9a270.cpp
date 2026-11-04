@@ -1,4 +1,5 @@
 // CV_HeroDuelScript::WatchForHeroEnteringCave() -- once the duel has started wait for the hero to reach the cave, take control of Thunder and the hero and play the cave-start cutscene (which one depends on who got there first)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E9A270, 0x347 bytes, plain `ret`. PDB ?WatchForHeroEnteringCave@CV_HeroDuelScript@NScript@@QAEXXZ.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940,
 //   ~CScriptThing 0x004AA840, scripted-thing handle ctor 0x007E72A0 / dtor 0x007E74D0 / operator= 0x008ABD10 /
@@ -52,7 +53,7 @@ template <class T> class CCountedPointer { public:
     }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                           // 0x0143E8E0
 struct CScriptThingImp {                                 // the game-side thing behind a CScriptThing
     virtual void i0(); virtual void i1(); virtual void i2(); virtual void i3(); virtual void i4(); virtual void i5();

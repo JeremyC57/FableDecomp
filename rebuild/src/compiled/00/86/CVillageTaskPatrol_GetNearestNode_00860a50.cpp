@@ -1,14 +1,13 @@
 // CVillageTaskPatrol::GetNearestNode(const C3DVector& position) -- walk the patrol track from PatrolStart (following NextNode until the end node) and return the node nearest to `position` (0 without a track)
 // Leaf: ?GetNearestNode@CVillageTaskPatrol@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00860A50, length 125 bytes (padded to 128), `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (on PatrolStart +0x08), CThing::GetPos @ 0x004C73D0.
 // Layout: engine/CVillageTaskPatrol.h (PatrolStart CIntelligentPointer<const CThingTrackNode> +0x08); CThingTrackNode retail
 // NextNode +0xd0 and IsEnd +0xed (Ego_r.pdb +0xe8 / +0x105: the thing base is 0x18 bytes smaller in retail).
 // Shape: the best distance starts at FLT_MAX (0x7F7FFFFF) in the frame; `dist < best` is `fcom ; test ah,5 ; jp`; the
 // squared length is a `dist = dz*dz; dist += dx*dx; dist += dy*dy;` chain (a single sum expression is reordered by VC7.1).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;          // 0x004C73D0
 };

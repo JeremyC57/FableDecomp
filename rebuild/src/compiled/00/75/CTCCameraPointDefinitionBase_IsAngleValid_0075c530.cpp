@@ -1,6 +1,7 @@
 // CTCCameraPointDefinitionBase::IsAngleValid() const -- for a point that tests its angle before activation: true only when the point's active camera position lies on the same side of the hero as the current game camera (positive 2D dot product)
 // Grade: RELOCATION_MATCH -- the 2D dot product is accumulated `d = toActive.X * toCamera.X; d += toActive.Y * toCamera.Y;` (retail multiplies the X term first); the single expression multiplies Y first
 // Leaf: IsAngleValid
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075C530, length 192 bytes
 // (?IsAngleValid@CTCCameraPointDefinitionBase@@ABE_NXZ).
 // Callees: CTCBase::PeekWorld() const @ 0x00686A80, CWorld::PeekMyPlayer @ 0x0049D9D0, CPlayer::PeekPControlledCreature
@@ -10,9 +11,7 @@
 // Shape: the camera direction from the hero is a 3D local with only x and y filled (its unused z keeps a frame word) built
 // before the virtual call; the dot product of the two
 // hero-relative directions is compared `> 0.0f`; the early exits return byte constants, the comparison an int-sized 1/0.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector() {}

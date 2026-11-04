@@ -1,5 +1,6 @@
 // CCreatureAction_Drink::PerformAction() -- if the drink is still alive and its definition has a CBonusItemDef sub-def, apply the bonus to the drinker's CTCHeroStats
 // Leaf: ?PerformAction@CCreatureAction_Drink@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00847BE0, 164 bytes, thiscall virtual, plain `ret`.
 // Identity (proven): RTTI vtable 0x0127473C (.?AVCCreatureAction_Drink@@) slot 3 = PerformAction; Ego_r.pdb / FableWin.pdb
 //   ?PerformAction@CCreatureAction_Drink@@UAEXXZ.
@@ -16,14 +17,7 @@ class CBaseObjectPointer;
 class CTCBase;
 class CTCPhysicsBase;
 #pragma pack(push, 1)   // C3DVector has alignment 1: Ego_r puts CCreatureAction_ProjectileCrouch::FacePos at +301, size 316
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-() const { return C3DVector(-X, -Y, -Z); }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 

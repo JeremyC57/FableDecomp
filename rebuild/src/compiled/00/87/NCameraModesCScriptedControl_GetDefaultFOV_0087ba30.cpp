@@ -1,6 +1,7 @@
 // NCameraModes::CScriptedControl::GetDefaultFOV() const -- the script module's FOV when it supplies one, else the FOV of the camera captured when the mode started
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087BA30, 45 bytes, plain `ret` (float in st0).
 // Leaf: ?GetDefaultFOV@CScriptedControl@NCameraModes@@UBEMXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: vtable 0x0125C58C slot 18; FableWin.pdb ?GetDefaultFOV@CScriptedControl@NCameraModes@@UBEMXZ (its float neighbour slot 19
 //       0x0087BA60 is GetDefaultRollAngle, the pair GetModuleFOV/GetModuleRollAngle of the module, slots 5/6).
 // Callees: the module's virtual GetModuleFOV(float&) (slot 5, +0x14), CCamera::GetHorizontalFOV() const @ 0x00A0BEB0.
@@ -14,7 +15,7 @@ template<class T> class CCountedPointer { public:
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward, Up; };
 class CCamera { public:                                             // 0x38 bytes
     C3DVector       WorldPosition;                           // +0x00

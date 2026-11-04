@@ -1,5 +1,6 @@
 // CTCKrakenTentacle::CTCKrakenTentacle(CThing* thing) -- CTCBase(thing), own vtable, null def pointer and thing pointers, strike state cleared, empty DummyName, DoneDeathStuff false
 // Leaf: ??0CTCKrakenTentacle
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DB2E7, length 102 bytes (`ret 4`). Vtable 0x012407BC = .?AVCTCKrakenTentacle@@
 // (RTTI: CTCBase, CBaseClassNonCopyable, CBaseClass); only caller 0x004DCD04 (the component factory).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (catalog "CEngineSubPrimitive2DClockSprite" is propagated),
@@ -35,7 +36,7 @@ template <class T> class CDefPointer { public:
     const T* Object;
     CDefPointer() : Object(0) { }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04

@@ -1,4 +1,5 @@
 // NUISystem::CParticleEffect::ChangeState(long) -- the CChangingStateComponent state change, then, unless the new state has info that wants no effect, start the particle effect for it
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retry 10: RELOCATION_MATCH -- GetInstance() called inline as the object expression of GetLayer (a named `frontEnd` local hoists the vtable load above the CRightHandedSet temporary stores).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00543DF0, length 224 bytes. Virtual: slot 48 of NUISystem::CParticleEffect's
 // vtable 0x0124735C.
@@ -13,10 +14,7 @@
 // info exists, wants an effect and none is running. The manager getter is called after the arguments are pushed (VC
 // evaluates the object expression of a member call last), the axes are built between the pushes.
 class C2DVector { public: float X, Y; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:                           // PDB: Up then Forward; the default set is Z up, Y forward
     C3DVector Up;
     C3DVector Forward;

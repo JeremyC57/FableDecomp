@@ -1,4 +1,5 @@
 // CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe() -- gather the things in the 10x10 square around the shot (excluding the living shooter); the first living creature that can hear it and has the AI TC plays a random ARROW_FLY_BY sound from the shot's sound def, and the shot remembers it made its sound
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x007C04A0, 496 bytes (plain `ret`).
 // Callees: CThing::GetPos 0x004C73D0, __ftol2 0x00BFEA70, CBaseIntelligentPointer::GetPItem 0x00A01B50,
 //   CTCBase::GetThingSearchTools 0x00686D90, CThingSearchTools::GetAllThingsInRoughArea<IsNot> 0x00725F10 / <all> 0x007197C0,
@@ -11,7 +12,7 @@
 //   zero store sits between the bit test and the jump); GetSubDef has a same-TU stand-in so the def stays in edi; the
 //   sound name is a named CCharString in its own block (lea, not the ctor's eax); the def class comes from an inline
 //   owner accessor (edx/ecx/eax order at the GetSubDef call).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) {}

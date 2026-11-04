@@ -1,4 +1,5 @@
 // CTCHeroMorph::UpdateIdleParticles() -- prunes dead idle emitters; when the hero has stood still long enough spawns the idle particle morphs, otherwise kills them
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071C9F0, 832 bytes, `ret`.
 // Callees: CPlayerManager/GetMainPlayer folded getters @ 0x00686D50/0x00449960, CPlayer::PeekPControlledCreature @ 0x00487DD0,
@@ -75,7 +76,7 @@ public:
     }
     T* operator->() const { return Object; }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CParticleMorphEntry {
     long Type;
     bool Interpolate;                                   // +0x04

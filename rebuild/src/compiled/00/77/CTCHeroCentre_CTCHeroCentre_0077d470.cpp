@@ -1,5 +1,6 @@
 // CTCHeroCentre::CTCHeroCentre(CThing*) -- CTCBase(thing), the hero-centre vtable, a null def pointer, GUI mode / quest-card frame zeroed, two empty vectors (QuestCards, QuestCardPositions) and the tutorial-wait flag cleared
 // Leaf: ??0CTCHeroCentre@@QAE@PAVCThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077D470, length 57 bytes (+ int3 padding). Vtable 0x0126AF94 = CTCHeroCentre.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800.
 // Shape: one `xor eax,eax` after the base call, the vtable store, then ten dword stores +0xc..+0x2c and the byte +0x30 in
@@ -25,7 +26,7 @@ struct CDefPointer {                                        // CDefPointer<CHero
     CDefPointer() : Object(0) { }
 };
 struct CThingRef;                                           // CIntelligentPointer<CThing> element (only pointers are stored here)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 template<class T> struct CRetailVector {                    // std::vector<T>, VC7.1 release: first / last / end
     T* m_pFirst; T* m_pLast; T* m_pEnd;

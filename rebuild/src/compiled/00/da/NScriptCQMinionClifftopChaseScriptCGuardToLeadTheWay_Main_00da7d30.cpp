@@ -1,5 +1,6 @@
 // NScript::CQ_MinionClifftopChaseScript::CGuardToLeadTheWay::Main() -- the minion clifftop-chase guard who leads the hero: register a thing-alive filter, attach Me to the active quest, wait for the nearest minion attacker to appear and fight it (healing 100 each time Me is hit) until it dies, take scripted control, say the "lead the way" hint once, release control, follow the hero, show Me's health bar, spawn the quest's GuardChatter thread on Me, wait for the mission to end and remove Me
 // Leaf: ?Main@CGuardToLeadTheWay@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA7D30, 1472 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / default ctor 0x006E7B40 / dtor 0x004AA840 (inline copies in the first loop) /
@@ -39,7 +40,7 @@ struct CScriptThingImpl {                              // the game-side thing be
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const;
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)

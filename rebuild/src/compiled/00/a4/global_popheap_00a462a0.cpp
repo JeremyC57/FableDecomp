@@ -1,5 +1,6 @@
 // _global::__pop_heap(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph* result, C3DSkeletalBoneMorph value, compare fn, long*) -- SGI pop_heap core for a heap of bone morphs ordered by a __fastcall compare function: *result = *first, then sift `value` down from the root
 // Leaf: __pop_heap
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A462A0, length 141 bytes (`ret 20h`: result, the 0x14-byte value, the comparator
 // function pointer and the distance pointer on the stack; first/last in ecx/edx -- the SGI algorithm TUs are /Gr).
 // Label correction: the manifest's "CFlammableDef::operator=" is propagated and wrong; the callee 0x00A46040 carries the manifest name
@@ -20,10 +21,7 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
-};
+#include "engine/C3DVector.h"
 
 class C3DSkeletalBoneMorph { public:                 // 0x14 bytes
     CCharString   BoneName;                   // +0x00

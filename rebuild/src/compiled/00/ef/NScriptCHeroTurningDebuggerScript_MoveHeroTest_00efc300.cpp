@@ -1,5 +1,6 @@
 // NScript::CHeroTurningDebuggerScript::MoveHeroTest() -- debug thread: until the script thread terminates, take the hero under scripted control, move him to the MarkerToFace marker, wait 30 seconds, release him and wait a frame
 // Leaf: ?MoveHeroTest@CHeroTurningDebuggerScript@NScript@@QAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EFC300, length 315 bytes, thiscall, plain `ret`.
 // Name: the row is referenced once, at 0x00EFC2BA inside the landed NScript::CHeroTurningDebuggerScript::Main 0x00EFC260,
 //   which spawns it as the "MoveHeroTest" thread (CSpawnedFunc member pointer at +0x34); Ego_r.pdb has
@@ -20,7 +21,7 @@
 //   handle classes); CBaseObject is modelled locally with the header's members (IntelligentPointer +0x04, 8 bytes).
 // Model: local CScriptBase / CLevelScriptBase / CGameScriptInterfaceBase models (the engine headers are flattened, no
 //   vtables), CScriptThing / handle classes after the landed CQ_GuildTrainingMeleeScript::Main 0x00D55E90 model.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);            // 0x0099EBF0

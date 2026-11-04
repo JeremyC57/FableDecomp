@@ -1,5 +1,6 @@
 // CCombatActionBase::UpdateActionMoveToPos() -- targets the creature's current position, or the action's next position when the animation moves the creature, uses action movement, or a final position was forced
 // Leaf: UpdateActionMoveToPos
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00856D30, 155 bytes of code (protected virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, twice through one `lea edi,[esi+8]`),
 //          CThingPhysical::GetPos @ 0x004C73D0 (const C3DVector&), virtual GetAnimationIndex (slot 7, +0x1c),
@@ -12,11 +13,7 @@
 //          fetched BEFORE the slot-7 call (`mov edi,eax`); `> 0.0001f` is `test ah,41h ; je` into the shared
 //          GetNextPos assignment; the 24-byte frame holds the local and GetNextPos' result temporary.
 // Members (retail layout, Ego_r.pdb names): PreferredFinalPosSet +0xdd (PDB +0xf1), so `this` is modelled locally.
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0

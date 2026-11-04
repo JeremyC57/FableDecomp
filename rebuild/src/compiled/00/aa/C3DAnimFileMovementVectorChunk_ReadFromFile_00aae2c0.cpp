@@ -9,6 +9,7 @@
 // Layout: retail keeps the vector at +0x2C (X), +0x30 (Y), +0x34 (Z); the engine header has the PDB offsets
 // (+0x34..), 8 bytes higher (the PDB's 16-byte containers in the super chunk base), so a local model is used.
 // Leaf: ReadFromFile@C3DAnimFileMovementVectorChunk
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -43,11 +44,7 @@ private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CChunkedFileSuperChunk { public:
     virtual void v0();

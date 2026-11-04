@@ -1,8 +1,9 @@
 // CInputEvent::SetAsMouseMovement(const C2DVector& position, const C3DVector& movement, double time) -- a mouse (device 3) movement event (kind 13): the movement at +0xc, the position at +0x18, both times from one double
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A03FB0, length 80 bytes.
 // Shape: the doubles narrowed with `fst`/`fstp`, no frame.
 class C2DVector { public: float X, Y; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CInputEvent { public:                               // 0x34 bytes: a payload union, the device (+0x20), the kind (+0x28), two times
     long      m_key;                               // +0x00 (also a C2DVector at +0)
     long      m_4;                                 // +0x04

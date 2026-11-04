@@ -1,5 +1,6 @@
 // NScript::CQ_EndGameScript::CMK_GHC_HERO3::Main() -- Gateway to Hook Coast, hero marker 3: fade in; once, pass the guildmaster's
 // Leaf: ?Main@CMK_GHC_HERO3@CQ_EndGameScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   "find the abbey" message; unless the abbey cut-scene already played, set the Hook Coast objective, wait until the hero
 //   is within 15 of Me, take the hero under scripted control and play CS_GATEWAY_ABBEY in a paused movie sequence; then add
 //   log-book story entry 250, mark the cut-scene played, remove Me's mini-map marker and set the next objective
@@ -20,7 +21,7 @@
 //   stores that vptr in a user-written destructor and calls the implicit one out of line here.
 // Naming wave 35: identity reg 00d276aa "MK_GHC_HERO3" in 00d27460; Alloc 00d29460; vtable 012cbc90 slot 1; PDB ?Main@CMK_GHC_HERO3@CQ_EndGameScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CMK_GHC_HERO3::Main (wave3/labels_alloc.tsv); PDB ?Main@CMK_GHC_HERO3@CQ_EndGameScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CMK_GHC_HERO3@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

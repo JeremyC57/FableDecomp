@@ -1,4 +1,5 @@
 // CAIStateGroup_FireflyWander::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00911F20, length 95 bytes.
 // Callees: CThing::GetPosition @ 0x006A4D00 (manifest "CVertexBufferWin32::DoSizeof" is a propagated label; the
 // callee returns a C3DVector* the caller copies three floats from), CAIStateGroupBase::Initialise @ 0x008FCEC0.
@@ -13,9 +14,7 @@ class CAIBrain;
 class CCharString;
 typedef long EScriptAIPriority;
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThingPhysical { public:
     const C3DVector& PeekPos() const;                    // 0x006A4D00 ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ (Ego_r donor order Kill/PeekPos/PeekLastPos/OnCreate)

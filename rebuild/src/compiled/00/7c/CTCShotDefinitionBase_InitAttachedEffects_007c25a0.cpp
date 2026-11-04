@@ -1,4 +1,5 @@
 // CTCShotDefinitionBase::InitAttachedEffects() -- create the shot def's attached continuous effect at the shot, keep it as the shot's effect thing, attach its particle emitter to the shot (at the SHOT_CREATION_DUMMY dummy, else the weapon_pos_a helper, else the default attach type; end-timeline flag 0x10) and hand it the shot's direction as MOVE_DIRECTION
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x007C25A0, 452 bytes (plain `ret`).
 // Callees: CThing::GetPos 0x004C73D0, CreateEffectThing 0x006E0880 (__fastcall), CBaseIntelligentPointer ctor 0x00A01B10 /
 //   SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C),
@@ -10,11 +11,7 @@
 //   UseEndTimeLineOnContinousEffect +0x50, PDB minus 4); CThing appearance +0x64; g_CCharString_013bacb4 = "SHOT_CREATION_DUMMY".
 class CTCBase;
 class CThing;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0: CRC
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0

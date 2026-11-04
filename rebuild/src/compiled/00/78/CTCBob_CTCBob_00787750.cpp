@@ -1,5 +1,6 @@
 // CTCBob::CTCBob(CThing* owner) -- CTCBase(owner), this class's vtable, then tell the owner thing how to behave in cutscenes (behaviour 2)
 // Leaf: ??0CTCBob
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x00787750, 35 bytes (`ret 4`). Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (the chunk
 // label "CEngineSubPrimitive2DClockSprite" is propagated), CThing::SetCutscenePauseBehaviour(
@@ -15,7 +16,7 @@ class CThing
 
 enum { CUTSCENE_BEHAVIOUR_2 = 2 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward, Up; };
 
 #pragma pack(push, 1)

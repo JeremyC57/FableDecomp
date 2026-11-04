@@ -1,4 +1,5 @@
 // CCamera::CCamera(const C3DVector& position, const C3DVector& forward, const C3DVector& up, float horizontalFOV, float verticalFOV) -- build a camera from a position, an orientation pair and the two fields of view
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0C130, length 120 bytes (ret 14h, five arguments). No callees;
 // the only relocation is the 0.0f float constant @ 0x0122DEDC.
 // Layout (Ego_r.pdb CCamera, 0x38 bytes): WorldPosition +0x00, RHSet {Up +0x0c, Forward +0x18},
@@ -10,10 +11,7 @@
 // order. Both lock bytes share one `xor al,al`. FOVFlags(1) sits in the init list (a body store schedules
 // the +0x2c store before the `test ah`) and is overwritten with 3 when the
 // vertical field of view is positive (`fcomp [0.0f] ; test ah,41h ; jne` = skip when vfov <= 0).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                             // +0x00
     C3DVector Forward;                        // +0x0c

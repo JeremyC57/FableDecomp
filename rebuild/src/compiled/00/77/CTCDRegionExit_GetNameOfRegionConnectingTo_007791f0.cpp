@@ -1,4 +1,5 @@
 // CTCDRegionExit::GetNameOfRegionConnectingTo() const -- the name of the region holding the map the connected entrance stands in, or the shared empty name when no entrance is connected
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x007791F0, 97 bytes (plain `ret`). Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50
 // (called twice: the null test, then the position), CTCBase's world-map accessor @ 0x00686D20
@@ -11,7 +12,7 @@
 // world-map fetch is a named local (its vtable is loaded before the argument), the two outer calls fetch
 // the map again each time; the pointer member's address stays in ebx for both GetPItem calls.
 class CBaseObject;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public: void* m_pData; };
 
 extern CCharString g_EmptyName;                // 0x013BD804

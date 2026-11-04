@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionCuriosity::MoveToCuriosityProximity(float) -- walk towards CuriosityPos until within the
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // given radius, repeating while the move action reports "in progress" (4); true when it reports "arrived" (2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00933A40, length 86 bytes (+ int3 padding), `ret 4`.
 // Callee: CAIStateGroupBase::AIAction_MoveToPosProximity @ 0x0097E890 (12 arguments: repeat mode 2, the
@@ -11,10 +12,7 @@
 // a user copy constructor. Base layout local; no engine header for this class.
 class CThing;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();

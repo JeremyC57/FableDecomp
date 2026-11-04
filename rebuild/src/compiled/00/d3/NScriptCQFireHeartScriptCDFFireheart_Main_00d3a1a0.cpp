@@ -3,6 +3,7 @@
 //   make the door and the speaker immune and persistent, drop the placeholder and set the flag; then mark the door on
 //   the minimap, wait until the hero uses the door speaker, play CS_FIREHEART_DEMONDOOR and remove the speaker
 // Leaf: ?Main@CDF_Fireheart@CQ_FireHeartScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 27 (family main, DECISIONS_W26 D1): Ego_r.pdb / FableWin.pdb nest the entity in its script class and spell
 //   Main a private virtual (?Main@CDF_Fireheart@CQ_FireHeartScript@NScript@@EAEXXZ); the local CEntityScriptBase carries the retail slot list of vtable 0x012C3224
 //   (engine/CEntityScriptBase.h). Was: ?Main@CDF_Fireheart@@QAEXXZ over a global CQ_FireHeartScript (PlayCutscene outside NScript).
@@ -23,7 +24,7 @@ class CCharString { public:
     CCharString(const CCharString& other);
     ~CCharString();                                    // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern const C3DVector g_ZeroVector;                   // 0x0143E8E0
 struct CThingBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

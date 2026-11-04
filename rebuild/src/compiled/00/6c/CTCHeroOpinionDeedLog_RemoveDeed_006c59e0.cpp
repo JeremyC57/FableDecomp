@@ -1,5 +1,6 @@
 // CTCHeroOpinionDeedLog::RemoveDeed(long handle) -- find the deed by handle; when present delete the COpinionDeed and erase its map node
 // Leaf: ?RemoveDeed@CTCHeroOpinionDeedLog@@QAEXJ@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C59E0, length 102 bytes (+ int3 padding), thiscall `ret 4`.
 // Ego_r.pdb: `?RemoveDeed@CTCHeroOpinionDeedLog@@QAEXJ@Z`. Callers: CTCHeroOpinionDeedLog::PlayerTakenOutWeapon /
 // FrameUpdate, CTCVillage::RemoveCrime, CTCTrespasser::LeavingRegion (x2), CAIStateGroup_MinionReactToCrime::IsRunnable
@@ -36,7 +37,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };   // CIntelligentPointer<const CThing>
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class COpinionDeed { public:                                  // Ego_r.pdb, 0x28 bytes
     long                DeedType;                      // +0x00 EOpinionDeedType

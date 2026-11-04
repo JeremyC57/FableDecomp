@@ -1,5 +1,6 @@
 // NScript::CQ_WizardBattleScript::CHKC_ScreamerPoint::Main() -- a screamer spawn point: hold an alive filter over Me, wait until the quest arms the point, then until the point is switched off spawn a "CREATURE_SCREAMER_01" at Me whenever the hero comes within 20, set it on the hero and wait for it to die
 // Leaf: ?Main@CHKC_ScreamerPoint@CQ_WizardBattleScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1B750, 512 bytes; entity-script vtable slot 1 (Main), plain `ret`.
 // Callees: CScriptThing copy ctor @ 0x004ABE90 / ~CScriptThing @ 0x004AA840, CEntityScriptBase::SetPredicate @ 0x00F35B10,
 //          CEntityScriptBase::IsActiveThreadTerminating @ 0x00F35B30, CBaseObject::CBaseObject @ 0x0099A380, the scripted-thing
@@ -21,7 +22,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void v00();   // slot 0 (+0x0)

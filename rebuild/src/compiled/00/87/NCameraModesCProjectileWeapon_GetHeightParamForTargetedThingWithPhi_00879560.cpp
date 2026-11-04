@@ -1,4 +1,5 @@
 // NCameraModes::CProjectileWeapon::GetHeightParamForTargetedThingWithPhi(const CThing&, float) const -- the camera height parameter for the thing's targeting position (full height) at the given phi
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00879560, length 56 bytes.
 // Callees: NCameraModes::CBase::GetWorld() const @ 0x0084D050 (the camera manager's World; manifest label
 // CPixelShader::CountReferences is propagated), NTargeting::GetTargetingPositionOnThing(const CWorld&, const
@@ -11,10 +12,7 @@ class CWorld;
 class CThing;
 class CGameCameraManager;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 
 namespace NTargeting {
 C3DVector __fastcall GetTargetingPositionOnThing(const CWorld& world, const CThing& thing, float height);   // 0x007EA2F0

@@ -1,5 +1,6 @@
 // CTCDExperienceOrb::OnCollected(CThing& collector) -- an experience orb is picked up: scale its points by the collector's pickup multiplier, spawn the def's pickup particle effect for that many points at the orb, play the orb's PICKUP_SOUND through the collector's sound player, then kill the orb
 // Leaf: ?OnCollected@CTCDExperienceOrb@@QAEXAAVCThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0077A180, 455 bytes, thiscall `ret 4`. Callers 0x006AD6F0 / 0x007C1991 pass the collecting
 //   thing. Ego_r.pdb ?OnCollected@CTCDExperienceOrb@@QAEXAAVCThing@@@Z (the catalog label is right).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0 (PeekTC of interface 0x68, CTCHeroExperience),
@@ -42,7 +43,7 @@ template <class T> bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) cons
     }
     return false;
 }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace std {
 // STLport 4.6 stl/_pair.h, stl/_function_base.h, stl/_tree.h (the members this row needs)

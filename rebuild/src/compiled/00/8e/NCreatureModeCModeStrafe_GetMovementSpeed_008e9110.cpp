@@ -1,5 +1,6 @@
 // NCreatureMode::CModeStrafe::GetMovementSpeed(const C3DVector&, const C3DVector&, EMovementType) const -- the per-frame speed of the strafe animation chosen for this direction: its movement distance over its duration, divided by the frame rate
 // Leaf: ?GetMovementSpeed@CModeStrafe
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -19,7 +20,7 @@ class CCharString { public:
     ~CCharString();                        // 0x0099EAE0
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 enum EMovementType { MOVEMENT_TYPE_0 };
 
 CCharString __fastcall GetStrafeAnimationName(const C3DVector& a, const C3DVector& b, EMovementType type);   // 0x008E8E50

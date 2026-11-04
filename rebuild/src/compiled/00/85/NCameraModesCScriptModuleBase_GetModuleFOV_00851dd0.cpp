@@ -1,6 +1,7 @@
 // NCameraModes::CScriptModuleBase::GetModuleFOV(float& fov) const -- a script module's FOV override, when one was set (positive)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00851DD0, 35 bytes, `ret 4`.
 // Leaf: ?GetModuleFOV@CScriptModuleBase@NCameraModes@@UBE_NAAM@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: vtable 0x01255F74 slot 5; FableWin.pdb ?GetModuleFOV@CScriptModuleBase@NCameraModes@@UBE_NAAM@Z (SetFOVOverride stores
 //       FOVOverride). Slot map from the base vtable and its overrides: 2 IsFinished (0x005ED0E0 false), 3 IsShortenOnOcclusion
 //       (0x005ED0F0 = ShortenOnCollision; CScriptModuleOpenChest overrides it), 4 IsStretchAroundHero, 5 GetModuleFOV, 6
@@ -9,7 +10,7 @@
 // Shape: `FOVOverride > 0.0f` against the literal pool zero (`fcomp ; test ah,41h ; jne`), then the float copied as a dword.
 class CBaseObject;
 class CGameCameraManager;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CIntelligentPointer_CThingConst {             // CIntelligentPointer<const CThing>: vptr + link
     virtual void v00();

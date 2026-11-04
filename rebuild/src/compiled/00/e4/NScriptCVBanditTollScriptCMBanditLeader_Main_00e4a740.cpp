@@ -1,5 +1,6 @@
 // NScript::CV_BanditTollScript::CM_BanditLeader::Main() -- bandit-leader spawner: when the "BanditLeader" thing is dead (or gone), spawn a new one here (creature def from this marker's data string, scripted "BanditLeader") and attach it to the "BanditTollVillage"
 // Leaf: ?Main@CM_BanditLeader@CV_BanditTollScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Identity (naming wave 11): ?Main@CM_BanditLeader@CV_BanditTollScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012E4F94 slot 1 is stored by the factory 0x00E4A660 registered as "M_BanditLeader"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4A740, length 335 bytes.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("BanditLeader" @ 0x012E4C14,
@@ -21,7 +22,7 @@ class CCharString { public:
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 struct SCountBlock {
     long  m_references;                            // +0
     void (__fastcall* m_pfnDestroy)(void*);        // +4

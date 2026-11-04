@@ -1,4 +1,5 @@
 // CAIStateGroup_OpinionReactionRoot::CommentAboutHeroIsRunnable() -- require a live, visible reacting-to thing, a nearby matching creature, and an ordered distance strictly greater than 3.0f; retail 0x009863e0, 304 bytes. Uses the generated flattened state-group header and actual CAIStateGroupBase/CAIBrain/CThingAICreature/CThing/CThingSearchTools headers. Donor caveat: OpinionReactionRoot is a flattened generated layout; its +0x04 brain link is viewed through CAIStateGroupBase. ThingReactingTo at +0x6b is a 9-byte CIntelligentPointer unavailable as a typed shared member, so the adapter is field-free. Native query helper: CThingSearchTools::GetPFirstThingInRoughArea @0x987430, filter init @0x986ed0, pointer conversion @0xa01b50. Radius constant 3.0f @0x0122ded4. FCOMP/TEST AH,0x41/JNE returns false for less, equal, or unordered; success is ordered greater-than only.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include <math.h>
 #include "engine/CAIStateGroup_OpinionReactionRoot.h"
 #include "engine/CAIStateGroupBase.h"
@@ -7,7 +8,7 @@
 #include "engine/CThingSearchTools.h"
 #include "engine/_quarantine/CThing.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CThingView : CThing { C3DVector* GetPosition(); };
 struct CThingAICreatureView : CThingAICreature { C3DVector* GetPosition(); };
 struct CThingIntelligentPointerView {

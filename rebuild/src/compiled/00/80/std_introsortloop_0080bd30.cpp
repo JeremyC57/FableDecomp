@@ -1,5 +1,6 @@
 // std::__introsort_loop(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CTargetPoint*, int depth_limit, CThingCompare_BestForTargeting2 comp) -- STLport introsort recursion of the player-targeting points: partition around the median of three, recurse on the right part, loop on the left; partial_sort fallback when the depth runs out
 // Leaf: ??$__introsort_loop@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080BD30, 736 bytes, /Gr `__fastcall` (first ecx, last edx; the value-type
 //   pointer, the depth limit and the 52-byte comparator by value on the stack, `ret 3Ch`).
 // Identity: the CTargetPoint / CThingCompare_BestForTargeting2 instantiation (callers: the sort front end 0x0080C020
@@ -29,11 +30,7 @@ public:
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint {                                        // 0x1c bytes (Ego_r.pdb)

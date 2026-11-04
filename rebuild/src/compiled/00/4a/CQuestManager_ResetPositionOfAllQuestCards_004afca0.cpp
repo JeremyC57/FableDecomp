@@ -1,4 +1,5 @@
 // CQuestManager::ResetPositionOfAllQuestCards() -- while the hero lives, move every living in-limbo quest-card thing (active and completed lists) onto the hero's position through its physics component
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AFCA0, length 221 bytes, plain `ret`.
@@ -11,7 +12,7 @@
 // ActiveQuestCards +0x5c and CompletedQuestCards +0x60 (4-byte STLport lists of CIntelligentPointer<CThing>, node data +8).
 // Shape: the two walks are written out one after the other (each re-reads its list head for the end test); VC7.1
 // fetches the physics vtable before the GetPos call and parks it, and the hero, in the two frame words.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

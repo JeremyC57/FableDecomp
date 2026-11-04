@@ -1,6 +1,7 @@
 // CTCInventoryBase::UpdateInventoryAnim() -- advances the inventory preview thing's rotation: latches last angles and set, steps each axis angle by its gain over the def's per-axis seconds, rotates the right-handed set and wraps the angles past one turn
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD699, length 405 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Leaf: UpdateInventoryAnim
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Shape: the three per-axis steps read the def through a by-value GetPDef() temporary (inc / dec of the def count around each
@@ -13,7 +14,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern const C3DVector g_XAxis;                 // 0x0137CDFC
 extern const C3DVector g_YAxis;                 // 0x0137CDF0
 extern const C3DVector g_ZAxis;                 // 0x0137CE08

@@ -1,7 +1,8 @@
 // std::__copy(Input first, Input last, Output result, const random_access_iterator_tag& tag, int* distance) -- assign the input range forwards.
 // Leaf: ??$__copy@PAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@H@std@@YIPAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity: proven; PDB COptimisedVertex operator=0xAD7050; vector erase0xAD8170 explicitly binds mutable __copy; retail stride184.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CQuadric { public: double AA, AB, AC, AD, BB, BC, BD, CC, CD, DD; double _pad; };   // Ego_r 88 bytes
 namespace QuadricOptimiserInternals {
 class COptimisedVertex {                                // retail 0xB8 (Ego_r 192 with 16-byte set/maps; STLport's are 12)

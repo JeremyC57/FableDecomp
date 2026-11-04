@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleFOVZoom::CScriptModuleFOVZoom(const C3DVector& lookAt, const C3DVector& from, const C3DVector& to, float fovFraction, long frames, bool shortenOnOcclusion) -- constructor: store the look-at, start and options, default 0 frames to 15, compute the per-frame increment and the end frame
 // Leaf: ??0CScriptModuleFOVZoom
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852560, length 144 bytes (130 + int3 padding).
 // Callees: NCameraModes::CScriptModuleBase::CScriptModuleBase() @ 0x005ED070,
 // CScriptModuleFOVZoom::CalculateIncrementVector @ 0x008520F0, GFGetCurrentFrame @ 0x0049D870.
@@ -14,11 +15,7 @@ public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                 // 0x0049D870
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
 struct CScriptModuleBase {
     virtual void v00();

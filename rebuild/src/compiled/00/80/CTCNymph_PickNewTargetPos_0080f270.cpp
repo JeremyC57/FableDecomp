@@ -1,5 +1,6 @@
 // CTCNymph::PickNewTargetPos() -- rebuild the five-point flight spline: from the last spline point (or the effect's position) through the effect's position to a point above the target (or the fly-around point), then two random valid positions around it raised to at least the target's height, each lifted to the ground height below plus a random flight height; restamp the target tick
 // Leaf: PickNewTargetPos
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080F270, 878 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, CTCBase::GetWorld @ 0x00686A70,
 //   CTCBase::GetWorldMap @ 0x00686D30, NCreatureHiding::GetValidPositions @ 0x0074A5D0 (__fastcall),
@@ -30,11 +31,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 template <class T> class CDefPointer;
 class CDefClassBase { public:

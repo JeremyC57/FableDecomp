@@ -1,5 +1,6 @@
 // CWorld::GetCurrentSoundCamera(const CInterpolationInfo&) const -- the camera the sound listener follows: the render camera without a sound system or in the editor, the free camera while the player uses it, otherwise the current game camera, moved onto the hero's interpolated position unless a scripted camera mode is running
 // Leaf: GetCurrentSoundCamera
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049DAA0, 291 bytes (304 with padding), `ret 8` (hidden CCamera result + info).
@@ -22,9 +23,7 @@
 #define CPlayer CPlayerDonor
 #include "engine/CPlayer.h"
 #undef CPlayer
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CCamera {
 public:

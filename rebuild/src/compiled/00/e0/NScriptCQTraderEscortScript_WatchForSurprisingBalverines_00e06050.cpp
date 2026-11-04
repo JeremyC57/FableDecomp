@@ -3,12 +3,13 @@
 //   the value alone is 991v1007; the plain-inline destructor's expanded / called exits follow VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // CQ_TraderEscortScript::WatchForSurprisingBalverines() -- thread: while balverine ambushes are still needed, every two seconds finds an M_BalverineSurprise marker the camera cannot see, spawns a CREATURE_BALVERINE_EASY there facing the hero, has a trader comment, sets it on the nearest Darkwood trader (one time in five) or the hero, and waits for it to die
 // Leaf: WatchForSurprisingBalverines
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0

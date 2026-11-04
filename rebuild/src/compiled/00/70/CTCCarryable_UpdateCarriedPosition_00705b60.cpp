@@ -1,4 +1,5 @@
 // CTCCarryable::UpdateCarriedPosition(bool forceUpdate) -- move a carried (live) thing to where its carrier holds it: face it along the carried orientation and, when the carried position is on the map and differs from the current one by more than the epsilon on any axis, set the physics position
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00705B60, 197 bytes (`ret 4`, 0x24-byte frame: the position and the 24-byte CRightHandedSet).
 // Callees: CTCCarryable::GetCarriedPositionInfo(C3DVector*, CRightHandedSet*, bool, float) @ 0x007055D0 (time 1.0f),
@@ -12,7 +13,7 @@
 #pragma intrinsic(fabs)
 extern "C" double __cdecl fabs(double);
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CTCPhysicsBase { public:
 #define V(n) virtual void v##n();

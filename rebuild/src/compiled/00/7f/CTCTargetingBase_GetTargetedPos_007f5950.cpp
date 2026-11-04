@@ -1,5 +1,6 @@
 // CTCTargetingBase::GetTargetedPos(C3DVector& pos, float radius) const -- when the targeted thing is alive, its fire point (for the given radius) into pos and true; else false
 // Leaf: GetTargetedPos
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F5950, length 108 bytes (`ret 8`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times on PTargetedThing), CTCBase::GetWorld @ 0x00686A80,
 // NTargeting::GetTargetingPositionOnThing(const CWorld&, const CThing&, float) @ 0x007EA2F0 (`__fastcall`, hidden C3DVector result in ecx
@@ -8,10 +9,7 @@
 // Shape: PTargetedThing is a reference local (`lea esi,[edi+25h]`) with an inline IsThingAlive; the helper result is a frame temporary
 // copied into pos with dword moves (implicit C3DVector operator=; the user default ctor makes the
 // type non-POD, which moves the hidden result pointer into ecx).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead

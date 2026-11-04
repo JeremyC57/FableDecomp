@@ -1,4 +1,5 @@
 // CQ_HangingTreeEvilScript::SpawnParty(long, const CScriptThing&) -- once the bandits have left the region, create the given number of friendly bandit grunts at the spawn point (allied both ways with the hero, in the friendly bandit faction, with a health bar and a green minimap orb), then start the exit, region and follow watcher threads
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D6C4A0, length 909 bytes (`ret 8`); called from 0x00D6C1F1.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 //   0x0099EAE0, operator delete 0x00BFE9BC / ~CBaseClass 0x0099A2E0 (inline ~CScriptThing), operator new 0x00BFEA1A,
@@ -16,7 +17,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0

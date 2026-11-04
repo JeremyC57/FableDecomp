@@ -1,4 +1,5 @@
 // CAIBrain_0088bb60::ForceResetWithOutput() -- build a CBrainOutput on the stack (0x00835620), force-reset the brain with it (0x0088BA40, result dropped) and destroy the output: its look-at intelligent pointer (+0x40, 0x00A01C10) then its counted action (+0x20/+0x24: the count block's references decremented, the action destroyed through the block's function and the block freed at zero)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088BB60, length 79 bytes.
 // Callees: CBrainOutput::CBrainOutput @ 0x00835620, CAIBrain::ForceReset(CBrainOutput*) @ 0x0088BA40, CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10, operator delete @ 0x00BFE9BC. The chunk label "CManager::GetEmbeddedEventNames" is propagated; the 0x48-byte frame is the CBrainOutput of the landed 0x00835620 constructor. Shape: the output at [esp+4], `pop esi` before the inlined release, `ret`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
@@ -31,7 +32,7 @@ struct CBaseIntelligentPointer {                   // 8 bytes: vptr + the pointe
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // no destructor of its own (no vtable store before the base call)
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CNavigationInput { public: long m_00, m_04, m_08, m_0c, m_10, m_14; };
 class CBrainOutput { public:                              // 0x48 bytes (Ego_r.pdb)
     unsigned long                       Types;             // +0x00

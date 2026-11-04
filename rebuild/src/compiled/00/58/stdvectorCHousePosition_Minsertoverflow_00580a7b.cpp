@@ -1,5 +1,6 @@
 // std::vector<CHousePosition>::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, unsigned int fill_len, bool atend) -- grow the house-position vector and insert fill_len copies of x
 // Leaf: _M_insert_overflow
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00580A7B, 180 bytes, `ret 14h`.
 // Element: std::pair<const CRegion*, C3DVector> (16 bytes; CTCHeroStats::HousePositions, retail +0x160): the only
 // caller is its push_back @ 0x00581132 (called by the landed CTCHeroStats::AddHousePosition 0x0057CB4B).
@@ -24,9 +25,7 @@ extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 
 class CRegion;
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

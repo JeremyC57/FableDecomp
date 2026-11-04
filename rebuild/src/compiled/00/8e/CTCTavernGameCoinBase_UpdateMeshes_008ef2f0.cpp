@@ -1,5 +1,6 @@
 // CTCTavernGameCoinBase::UpdateMeshes() -- place every live, owned coin's mesh on the board at its 2D position, its angle turned into revolutions
 // Leaf: UpdateMeshes
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x008EF2F0, 158 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem() 0x00A01B50 (x3: alive test, dead test, mesh); CTCTavernGame::PositionMesh(CThing*,
 //          const C3DVector& pos, const CRightHandedSet& rh, const C3DVector& offset, long, float) 0x005EABC0 (__fastcall
@@ -16,10 +17,7 @@
 //   are classes (V in every PDB signature).
 class CThingObject;
 class C2DVector { public: float X, Y; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
 
 class CThing { public:

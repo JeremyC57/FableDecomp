@@ -1,5 +1,6 @@
 // CTCTeleporter::TeleportHero() -- flags the region load as a teleport, then hands the world a move-hero game event (0x2c) carrying the teleporter's position, facing and three flags (true, false, false) for the main player
 // Leaf: TeleportHero
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DFCF0, 295 bytes (plain `ret`, /GS cookie 0x0139C8A8).
 // Callees: CTCBase::GetWorld() 0x00686A70 (x2); CThing::GetPos() const 0x004C73D0 (x3, one per component);
@@ -15,7 +16,7 @@
 //        the float ones sharing one, the bool ones another); the false bool shares the bl zero with the event's
 //        EndPos/Replacement init; the position is re-fetched for each component.
 class CThing;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

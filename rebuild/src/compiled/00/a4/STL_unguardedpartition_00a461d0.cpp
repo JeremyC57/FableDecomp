@@ -1,5 +1,6 @@
 // std::__unguarded_partition(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph pivot, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI Hoare partition around a by-value pivot; returns the split point
 // Leaf: ??$__unguarded_partition@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A461D0, length 114 bytes, `ret 18h`.
 // Caller: 0x00A46ED6 (the introsort loop). Callees: 0x00A45A70 swap<C3DSkeletalBoneMorph> (this chunk, reached through
 //   the inlined iter_swap), ~CCharString 0x0099EAE0 (the by-value pivot is destroyed by the callee); the comparator
@@ -17,11 +18,7 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class C3DVector {                                    // retail C3DVector: memberwise user copy ctor, implicit operator=
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DSkeletalBoneMorph {
 public:

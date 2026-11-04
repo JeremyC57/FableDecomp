@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetStealStealableItems(CScriptThing thing) -- script query: false when the script thing resolves no thing, else the thing's CTCAIScratchpad::StealStealableItems flag (read through CThing::GetTC<CTCAIScratchpad>); the by-value CScriptThing is destroyed inline
 // Leaf: ?GetStealStealableItems@CGameScriptInterface@@UAE_NVCScriptThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A5890, 240 bytes, thiscall, `ret 0Ch` (the 12-byte CScriptThing by value).
 // Identity (proven): CGameScriptInterface::GetStealStealableItems(CScriptThing); evidence: CGameScriptInterface vtable slot 821 (ghidra_out/cgsi_slots_aligned.tsv) holds this body as ?GetStealStealableItems@CGameScriptInterface@@UAE_NVCScriptThing@@@Z, which FableWin.pdb and Ego_r.pdb hold; it reads the bool at +0x68 of interface 0xAA, Ego_r.pdb CTCAIScratchpad::StealStealableItems (the PDB getter ?GetStealStealableItems@CTCAIScratchpad@@QBE_NXZ; the landed GetActionFrequency 0x008A3D20 reads ActionFrequency +0x40 of the same 0xAA)
 // Label: the manifest's mangled "?GetStealStealableItems@CGameScriptInterface@@UAE_NVCScriptThing@@@Z" is this row's own CGSI slot name (family J018: six
@@ -100,7 +101,7 @@ public:
     }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharStringData;
 class CCharString { public: CCharStringData* PStringData; };
 enum EScriptingStateGroups { EScriptingStateGroups_Force32 = 0x7fffffff };

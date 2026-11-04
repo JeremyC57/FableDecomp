@@ -1,4 +1,5 @@
 // CAIStateGroup_StealStealableItem::FindPStealableItem() -- nearest object with the stealable property and a free action point
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00964360, length 107 bytes (+ int3 padding).
 // Callees: CThing::GetPosition @ 0x004C73D0, CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000,
 // CThingSearchTools::GetPBestThing<CFilter_Bind2<CThingFilter_ObjectHasProperty,
@@ -14,9 +15,7 @@
 #include "engine/CAIStateGroup_StealStealableItem.h"
 
 
-class C3DVector { public:                              // POD: a whole-record copy loads all three dwords first
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0

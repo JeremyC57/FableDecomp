@@ -1,5 +1,6 @@
 // std::__push_heap(CThing** first, int holeIndex, int topIndex, CThing* val, (anonymous namespace)::CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- STLport heap sift-up: while the hole is below the top and comp(parent, val) holds, move the parent down; then store val in the hole
 // Leaf: ??$__push_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00978A00, 97 bytes, /Gr __fastcall (first ecx, holeIndex edx; topIndex, val and the
 //   comparator on the stack), `ret 18h`.
 // Identity (proven): only caller std::__adjust_heap 0x00978B90 of the advance-in-cover sort std::sort<CThing**, CThingCompare_InDirectionOfAndNearestToHeuristicBitch> (landed siblings 0x00978A80 __unguarded_partition / 0x00978C50 __linear_insert / 0x00978D00 __make_heap); comparator 0x00978790, the 16-byte anonymous-namespace functor of CAIStateGroup_CreatureAdvanceInCover.cpp (Ego_r.pdb) -> `ret 18h`.
@@ -9,9 +10,7 @@
 class CThing;
 extern "C" double __cdecl pow(double x, double y);                                    // _CIpow 0x00BFEB40
 extern "C" double __cdecl sqrt(double x);
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CThing {
 public:
     const C3DVector& GetPos() const;                 // 0x004C73D0

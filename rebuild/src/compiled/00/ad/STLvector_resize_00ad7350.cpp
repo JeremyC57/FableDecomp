@@ -1,5 +1,6 @@
 // std::vector::resize(unsigned int new_size) -- STLport vector<QuadricOptimiserInternals::COptimisedFace>::resize(n): resize the optimiser's face list to n entries, filling with a fresh face (existing, no edges, no segment)
 // Leaf: ?resize@?$vector@VCOptimisedFace@QuadricOptimiserInternals@@V?$allocator@VCOptimisedFace@QuadricOptimiserInternals@@@std@@@std@@QAEXI@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD7350, 47 bytes, thiscall on the vector, `ret 4`.
 // Identity: Ego_r.pdb / FableWin.pdb ?resize@?$vector@VCOptimisedFace@QuadricOptimiserInternals@@...@@QAEXI@Z; no direct
 //   call site in the image (xref: 0 calls / 0 references). Its callee 0x00AD6860 is the 72-byte two-argument resize
@@ -14,11 +15,7 @@
 //   Exists byte is an immediate after the pushes; everything else stays unset.
 // Label correction: catalogued as `vector<EWeaponClass>::_Umove<EWeaponClass*>` (propagated); the body is
 //   vector<COptimisedFace>::resize(n).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 
 namespace QuadricOptimiserInternals {
 class COptimisedFace {                             // 72 bytes (Ego_r.pdb)

@@ -1,6 +1,7 @@
 // CCompare_FurthestFromInitPos2D::operator()(CThing* a, CThing* b) const -- sort predicate: live creatures first, then the one further (2D, squared) from its initial position
 // Grade: RELOCATION_MATCH -- the 2D offset is a 12-byte vector (X, Y, Z with Z never written: retail used a C3DVector-sized temporary) and its length is accumulated `r = Y*Y; r += X*X` (retail squares Y first)
 // Leaf: CCompare_FurthestFromInitPos2D
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007483E0, 233 bytes (240 with padding), `ret 8`.
 // Callees: CThing::GetPos 0x004C73D0 (const C3DVector&; manifest "CVertexBufferWin32::DoSizeof" is propagated).
 // Layout: the thing's flag byte +0x6c (bit 3: is a creature), dead bit +0x91 bit 0; the creature's initial position
@@ -8,9 +9,7 @@
 // Shape: an inline creature cast `c = 0; if (t && (t->flags & 8)) c = t;` per argument; the alive tests are
 //   `!alive(a) && !alive(b) -> false`, `!alive(a) -> false`, `!alive(b) -> true`; the 2D offsets are C2DVector
 //   temporaries (the first spilled across the second GetPos call), squared as X*X + Y*Y and compared `>`.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C2DVector { public:
     float X, Y, Z;

@@ -1,5 +1,6 @@
 // CTCShop::AddSaleItemPlacesFromThing(const CThing* thing) -- add the goods places of a shop thing: recurse into every object the thing owns (CTCThingOwner), then read its "GoodsPlace1".."GoodsPlace10" (or "GOODS_PLACE_01".."GOODS_PLACE_10") dummy objects from its graphic appearance into GoodsPlaces
 // Leaf: ?AddSaleItemPlacesFromThing@CTCShop@@QAEXPBVCThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007748E0, 596 bytes, thiscall `ret 4`.
 // Identity (proven): Ego_r.pdb ?AddSaleItemPlacesFromThing@CTCShop@@QAEXPBVCThing@@@Z (CTCShop TU); the landed
 //   CTCShop::GetFreeSaleItemPlaces 0x00774B40 calls it on the parent thing right after erasing GoodsPlaces (it named the
@@ -211,7 +212,7 @@ public:
     const CCharString& operator=(const char* text);             // 0x0099EFE0
     void* PStringData;
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 namespace NGraphicAppearance {
 class CTCGraphicAppearance {

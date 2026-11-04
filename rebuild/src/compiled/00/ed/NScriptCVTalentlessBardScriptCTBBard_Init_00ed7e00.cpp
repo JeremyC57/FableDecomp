@@ -1,5 +1,6 @@
 // NScript::CV_TalentlessBardScript::CTB_Bard::Init() -- the talentless bard's entity setup: give him information, set his wander centre (his own position) and the script-def wander distances, script his state group, mute his AI voice, enable only the wander / sit-outside / seek-enemy / seek-target / melee state groups (sit-outside off) and clear the three last-random-speech strings
 // Leaf: ?Init@CTB_Bard@CV_TalentlessBardScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ED7E00, 584 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 2 (Init) of the RTTI-less entity-script vtable 0x012F3494 that the landed
 //   CV_TalentlessBardScript::CTB_Bard::CTB_Bard 0x00ED7D50 stores [dtor 0x00ED7DB0, Main 0x00ED8680, Init 0x00ED7E00,
@@ -28,11 +29,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const char* text);     // 0x0099EFE0
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class CCPPointerInfo {
 public:
     long References;

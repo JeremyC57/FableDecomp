@@ -1,5 +1,6 @@
 // CTCWillLightning::CLightningBeam::Deactivate(CIntelligentPointer<CThingCreatureBase>) -- stop an active beam (states 1/2/3): freeze its destination at the current end point and deactivate every child beam; a beam with children (unless already in state 2) waits for them (state 6 from 1, else 4); otherwise it starts deactivating (state 5) and plays the def's hit sound criteria on a live target, or at the end point through the live caster when the beam is not temporary
 // Leaf: Deactivate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079FE90, 580 bytes (+ int3 padding), `ret 8` (by-value intelligent pointer, callee destroys).
 // Callees: CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10 (pointer
@@ -11,7 +12,7 @@
 //   (descriptive field name). Model shared with the landed CTCWillLightning::Deactivate 0x007A0310 and
 //   CLightningBeam::IsTargetValid 0x0079FD90.
 // Shape: the list size() is the counting loop (`size() != 0`); the interface lookup uses the one-ternary entry pick.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                   // 0x0099EAE0

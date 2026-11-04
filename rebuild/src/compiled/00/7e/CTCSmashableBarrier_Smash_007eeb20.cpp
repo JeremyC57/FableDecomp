@@ -1,5 +1,6 @@
 // CTCSmashableBarrier::Smash() -- smash as the base does, then, when the smashable def names a smash particle emitter, create that effect at the thing's position
 // Leaf: ?Smash@CTCSmashableBarrier@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007EEB20, 86 bytes. Vtable 0x0124017C (CTCSmashableBarrier, rtti-vtables.tsv) slot 28.
 // CTCSmashableBarrier::Smash 0x007EEB20 and CTCSmashableWindow::Smash 0x007F4E10 are byte-identical bodies (two classes).
 // Callees: CTCSmashableBase::Smash @ 0x007EED20 (landed), CThing::GetPos() const @ 0x004C73D0,
@@ -9,7 +10,7 @@
 //   (engine/CSmashableDef.h): SmashParticleEmitter +0x2c. Local model: the def pointer needs its add-ref/release shape.
 // Shape: the condition reads `GetDef()->SmashParticleEmitter` straight (edi pushed/popped around it); the parent thing comes from
 //   an inline accessor so it loads BEFORE the second def copy, freeing `this`'s esi for that copy (a direct member read loads late).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

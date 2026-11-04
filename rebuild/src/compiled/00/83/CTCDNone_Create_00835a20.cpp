@@ -1,5 +1,6 @@
 // CTCDNone::Create(long, const C3DVector&, bool) -- create a bare thing (player 4, level persistent) on the map under the position (map 0 when the flag is set), check it carries the no-op driver, and activate it; null on any failure
 // Leaf: ?Create@CTCDNone@@SIPAVCThing@@JABVC3DVector@@_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00835A20, 77 bytes, static __fastcall (ecx = def index, edx = position), `ret 4`.
@@ -16,7 +17,7 @@
 // Shape: the map is a zero-initialised local overwritten when the flag is clear (`xor eax,eax` before the flag test; a
 //   `?:` argument puts the zero in the taken arm); a zero result declared after the create
 //   call (edi), then `if (thing && GetTCDriver(&driver) && Activate) result = thing; return result;`.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCDNone;
 class CTCDriverBase;
 

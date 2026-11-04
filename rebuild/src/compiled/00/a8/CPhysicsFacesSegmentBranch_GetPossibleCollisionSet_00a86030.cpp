@@ -1,5 +1,6 @@
 // CPhysicsFacesSegmentBranch::GetPossibleCollisionSet(float radius, const C3DVector& start, const C3DVector& end, std::vector<long>& faces) const -- BSP walk: recurse into each child whose half-space the swept segment (inflated by radius) can reach
 // Leaf: GetPossibleCollisionSet
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A86030, 181 bytes (+ int3 padding), `ret 10h`; protected virtual (slot 4, +0x10).
 // Callees: the children's own virtual GetPossibleCollisionSet (slot 4, +0x10).
 // Shape: both end points' signed distances to ChildDividingPlane (CPlane: Normal +4, Distance +0x10 of the branch) are
@@ -9,7 +10,7 @@
 //   (ChildDividingPlane +4, PositiveChild +0x14, NegativeChild +0x18).
 #include "engine/CPhysicsFacesSegmentBranch.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CPlaneModel {                                   // CPlane (Ego_r.pdb): Normal +0, Distance +0xC
     C3DVector Normal;
     float     Distance;

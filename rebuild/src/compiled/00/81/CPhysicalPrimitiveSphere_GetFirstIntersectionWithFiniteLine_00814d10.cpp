@@ -1,6 +1,7 @@
 // CPhysicalPrimitiveSphere::GetFirstIntersectionWithFiniteLine(CThing* thing, const C3DVector& start, const C3DVector& end, C3DVector* point, C3DVector* normal, long unused) -- build the world sphere (dummy-object origin, radius or the thing's physics radius when unset) and intersect the segment with it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00814D10, length 127 bytes.
 // Leaf: GetFirstIntersectionWithFiniteLine
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Callees: CPhysicalPrimitiveSphere::GetDummyObjectOrigin(CThing*) @ 0x00814C70 (C3DVector by hidden pointer),
 // CThingCreatureBase::GetCombatRadius @ 0x00661F90, CSphere::GetFirstIntersectionWithFiniteLine @ 0x00A58790.
 // Constant: 0.0001f @ 0x0129BA3C (the "radius unset" threshold).
@@ -10,9 +11,7 @@
 // Shape: the radius stays on the x87 stack (`fcom` without pop; the then-arm drops it with `fstp st(0)`); the thing's
 // radius reads the def radius first and replaces it by the creature's combat radius under the flag (an inline
 // GetPhysicsRadius); the CSphere temporary takes the radius then the centre; the sixth argument is unused; `ret 18h`.
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 struct CThingDef_Physics {                         // the thing's definition (only the collision radius is read)
     unsigned char _pad[0x34];
     float         CollisionRadius;                 // +0x34

@@ -1,5 +1,6 @@
 // std::__unguarded_partition(CThing** first, CThing** last, CThing* pivot, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- quicksort partition step of the advance-in-cover candidate sort: walk both ends towards the pivot and swap each out-of-place pair, returning the cut
 // Leaf: ??$__unguarded_partition@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00978A80, 126 bytes (+ int3 padding to 128), __fastcall (/Gr algorithm TU: first
 //   in ecx, last in edx, pivot and the comparator on the stack), `ret 14h`.
 // Instantiation: the advance-in-cover candidate sort: std::sort<CThing**,
@@ -19,9 +20,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 extern "C" double __cdecl pow(double x, double y);                                    // _CIpow 0x00BFEB40
 extern "C" double __cdecl sqrt(double x);
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

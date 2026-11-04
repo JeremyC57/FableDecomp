@@ -1,5 +1,6 @@
 // std::vector::_M_clear() -- (vector<NPlayerTargeting::CTargetPoint >) STLport 4.6 `_M_clear()`: destroy every element, then free the block (the reallocating branch of vector::operator= / reserve)
 // Leaf: ?_M_clear@?$vector@VCTargetPoint@NPlayerTargeting@@V?$allocator@VCTargetPoint@NPlayerTargeting@@@std@@@std@@IAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00808580, 50 bytes (+ int3 padding to 64), thiscall, plain `ret`.
 // Identity (proven): vector<NPlayerTargeting::CTargetPoint >::_M_clear; evidence: its only caller is the vector operator= 0x008085C0, which the player-targeting update 0x00804020 (CTCTargetingPlayer::FrameUpdate's helper) applies to this+0x68 and to locals -- Ego_r.pdb's CTCTargetingPlayer::Targets (+0x68), vector<NPlayerTargeting::CTargetPoint>, whose 0x1C-byte element starts with CIntelligentPointer<CThing> PThing
 // Label: the manifest's "ResetRings" is propagated (family H072: six destroy-and-free bodies whose element destructor runs on the element itself -- STLport ~vector (with the inline
@@ -68,7 +69,7 @@ protected:
     }
 };
 }
-class C3DVector { public: float X, Y, Z; };                  // 12 bytes
+#include "engine/C3DVector.h"
 namespace NPlayerTargeting {
 class CTargetPoint {                                           // 0x1C bytes (Ego_r.pdb)
 public:

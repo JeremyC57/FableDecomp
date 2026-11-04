@@ -1,5 +1,6 @@
 // GetRenderPositionInterpolateForThing(const CThing&) -- the thing's physics position interpolator, with both end heights raised by the physics height offset for type-2 things
 // Leaf: GetRenderPositionInterpolateForThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x004BC0E0, 157 bytes (`__fastcall`: hidden result pointer in ecx, the thing in edx; plain
 // `ret`). Ego_r.pdb `?GetRenderPositionInterpolateForThing@?A0xc76c19b4@@YI?AVC3DPositionInterpolator@@
@@ -15,11 +16,7 @@
 // its two Z members raised (`fadd ; fstp` into the frame), then copied into the result with the
 // implicit copy constructor over C3DVector's memberwise user copy constructor (vtable store + six
 // dword moves) and destroyed through ~CBase.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
-};
+#include "engine/C3DVector.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 

@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::ReturnToDefaultInteractionFlags() -- reset the interaction flags to the physics def's default
 // Leaf: ?ReturnToDefaultInteractionFlags@CTCPhysicsStandard@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00723A50, 16 bytes: `mov edx,[ecx+38h] ; mov edx,[edx+3Ch] ; mov eax,[ecx] ; push edx ;
 // call [eax+0ACh] ; ret` (CTCPhysicsStandard vtable 0x01265F84 slot 44, also shared by two derived vtables).
 // Identity (proven): Ego_r.pdb names ?ReturnToDefaultInteractionFlags@CTCPhysicsStandard@@UAEXXZ next to
@@ -24,7 +25,7 @@ template<class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing;
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

@@ -1,5 +1,6 @@
 // NCreatureMode::CModeIntangible::CModeIntangible(CThing*, CCreatureActionBase*) -- CModeDragonBase(thing, "") then an untimed intangible phase (Timer -1, was damageable) holding the action to run on deactivation
 // Leaf: ??0CModeIntangible
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00741DB0, 224 bytes (`ret 8`). Vtables 0x012684E0 (NCreatureMode::CModeDragonBase,
 // stored by its inline ctor) and 0x01268514 (NCreatureMode::CModeIntangible).
 // Callees: CModeBase::CModeBase(CThing*) 0x0073EAC0; CCharString(const char*, long) 0x0099EBF0 (literal ""),
@@ -82,7 +83,7 @@ template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c + the stand-mode members)
     virtual void v00();

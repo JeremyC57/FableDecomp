@@ -1,5 +1,6 @@
 // CCreatureAction_PutDownThingAtTable::PerformAction() -- take the thing out of the creature's primary carry slot, switch its physics off while it is alive, then drop the creature mode the action was created with (if any)
 // Leaf: ?PerformAction@CCreatureAction_PutDownThingAtTable@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0084A0A0, 223 bytes, thiscall virtual, plain `ret`.
 // Identity (proven): RTTI vtable 0x01273C4C (.?AVCCreatureAction_PutDownThingAtTable@@) slot 3 = PerformAction; Ego_r.pdb /
 //   FableWin.pdb ?PerformAction@CCreatureAction_PutDownThingAtTable@@UAEXXZ.
@@ -15,14 +16,7 @@ class CBaseObjectPointer;
 class CTCBase;
 class CTCPhysicsBase;
 #pragma pack(push, 1)   // C3DVector has alignment 1: Ego_r puts CCreatureAction_ProjectileCrouch::FacePos at +301, size 316
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-() const { return C3DVector(-X, -Y, -Z); }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 

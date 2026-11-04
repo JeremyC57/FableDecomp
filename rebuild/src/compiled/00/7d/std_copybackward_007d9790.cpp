@@ -1,5 +1,6 @@
 // std::__copy_backward(first, last, result, const random_access_iterator_tag&, int*) -- (KnickKnack elements) STLport random-access copy_backward: assign [first, last) from the back so that it ends at result, return the new start of the destination
 // Leaf: ??$__copy_backward@PAUKnickKnack@@PAU1@H@std@@YIPAUKnickKnack@@PAU1@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D9790, 68 bytes (+ int3 padding), /Gr __fastcall (first ecx, last edx; result,
 //   the tag reference and the distance-type pointer on the stack), `ret 0Ch`; speed TU (`sar eax,4` count).
 // Identity (proven): __copy_backward<KnickKnack*, KnickKnack*, int>; evidence: its caller 0x007D9D70 (`copy_backward` at 0x007D9DF9) is vector<KnickKnack>::_M_fill_insert, the callee of the landed vector<KnickKnack>::resize(n) 0x007D9FC0 (Ego_r.pdb CTCTavernGameSpotTheAddition::KnickKnacks; struct KnickKnack = C3DVector Pos + CThingObject* Thing, 16 bytes).
@@ -7,11 +8,7 @@
 //   address; retail has no identical-code folding, so each address is one instantiation).
 // Shape: STLport 4.6 `for (_Distance __n = __last - __first; __n > 0; --__n) *--__result = *--__last; return __result;`
 //   over a trivially assignable 16-byte element (the assignment is four dword moves through ebx).
-class C3DVector {                                       // 12 bytes
-public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 class CThingObject;
 struct KnickKnack {                                     // Ego_r.pdb, 16 bytes
     C3DVector     Pos;                                  // +0x0

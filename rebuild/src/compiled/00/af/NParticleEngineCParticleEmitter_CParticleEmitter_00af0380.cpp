@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleEmitter::CParticleEmitter() -- default emitter: empty particle-system list and update parameters, null primitive handle, identity transforms, default orientation and zero position interpolation, the default spawn/draw distances and fades, and its flags (ReadZBuffer, DieIfOffscreen, EnableDithering, ClearedParticles, ClearedDecals set; the rest clear, layer 74)
 // Leaf: CParticleEmitter
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF0380, 656 bytes, plain `ret` (returns this).
 // Callees: CBaseObject() 0x0099A380, CBaseClass() 0x0099A2D0, CCharString() 0x0099E4B0, CRightHandedSet::SetDefault 0x00AF07A0,
 //   the default-distance getters 0x00AEAA60 / 0x00AEAA50 / 0x00AEAA20 / 0x00AEAA30 / 0x00AEAA40 (static, float in st0).
@@ -8,11 +9,7 @@
 //   flag words +0x40 / +0x42 and bytes +0x44 / +0x45, OldPos +0x46, Velocity +0x52, OrientationInterpolator +0x60 (vtable
 //   0x01239824), PositionInterpolator +0x94 (vtable 0x0123981C), Transform +0xb0, InverseTransform +0xe0, EndTransform
 //   +0x110, Name +0x140, BSphere +0x144, distances +0x154..+0x168. The emitter's own vtable is 0x0129F348.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:
     C3DVector Right, Up, Forward, Translation;
     __forceinline void SetIdentity()

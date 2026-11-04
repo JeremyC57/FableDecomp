@@ -1,4 +1,5 @@
 // CAIStateGroup_JackDragon::IsTargetOnATower() -- is the enemy standing higher than the dragon's landing marker?
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094FBB0, length 65 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PLandedMarker at +0x1c, then PEnemy at +0x14),
 // CThing::GetPosition @ 0x004C73D0 twice (manifest "CVertexBufferWin32::DoSizeof" is propagated; it returns the
@@ -12,7 +13,7 @@
 // global would be loaded first.
 // `mov al,1` / `xor al,al`: bool. The engine header keeps the pointers as opaque byte arrays, so the
 // layout is modelled locally with their names.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0

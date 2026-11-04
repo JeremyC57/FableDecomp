@@ -1,5 +1,6 @@
 // std::__unguarded_insertion_sort_aux(pair<C3DVector, long>* first, pair<C3DVector, long>* last, pair<C3DVector, long>*, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport unguarded insertion sort of the first-person targeting positions (best score first)
 // Leaf: ??$__unguarded_insertion_sort_aux@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00808120, 140 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the unused value-type pointer and the 0x2c-byte comparator by value on the stack, `ret 30h`.
 // Name: STLport `__unguarded_insertion_sort_aux`; the catalog's "_Copy_impl<CNavigationPosition*, CNavigationPosition*>"
@@ -11,10 +12,7 @@
 //   copied memberwise into its argument slot first (ten dwords and the CompareInXYPlane byte, hoisted into bl: the
 //   engine C3DVector's user copy constructor makes the implicit copies non-trivial), then the value through STLport's
 //   explicit pair copy constructor (four dwords).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // user copy ctor, implicit operator=
-};
+#include "engine/C3DVector.h"
 
 class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                                   // +0x00

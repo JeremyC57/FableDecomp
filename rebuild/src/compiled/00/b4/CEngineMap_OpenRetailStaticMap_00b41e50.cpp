@@ -1,5 +1,6 @@
 // CEngineMap::OpenRetailStaticMap(CStaticMapBankFile& bankFile, CDataInputStream& stream, std::map<CCharString, long>& mapOffsets) -- open this map's static data from the retail level file: seek to the map's header offset (looked up by the static map name), read the info block, take the camera bounds, bind the bank entry to the file-block manager, open the landscape map and (when present) the local-detail cache map at their offsets, seek past the header and mark the map open
 // Leaf: ?OpenRetailStaticMap@CEngineMap@@QAEXAAVCStaticMapBankFile@@AAVCDataInputStream@@AAV?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B41E50, length 325 bytes, `ret 0Ch`.
 // Name: FableWin.pdb (above; catalog label OpenRetailStaticMap agrees). Parameter names are descriptive.
 // Callees: STLport 4.6 _Rb_tree<CCharString, pair<const CCharString, long>, ...>::_M_find(const CCharString&) const 0x0042B467
@@ -110,7 +111,7 @@ template <class T> class CCountedPointer { public:
         Info = 0;
     }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector MinCoord, MaxCoord; };
 class CDataInputStream { public:
     virtual ~CDataInputStream();

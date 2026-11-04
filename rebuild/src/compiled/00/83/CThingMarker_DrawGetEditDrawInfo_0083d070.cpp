@@ -1,5 +1,6 @@
 // CThingMarker::DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const -- the physical-thing editor draw info, relabelled "Marker - <script name>" and coloured magenta-ish (R 255, G 128, B 255, A 255)
 // Leaf: ?DrawGetEditDrawInfo@CThingMarker
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083D070, length 136 bytes (`ret 8`, + int3 padding).
 // Callees: CThingPhysical::DrawGetEditDrawInfo @ 0x006A4E90, CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("" @ 0x0122D70E),
 // operator+(const CCharString&, const char*) @ 0x0099F600 ("Marker - " @ 0x012730C4; __fastcall, hidden result in ecx),
@@ -30,7 +31,7 @@ class CRGBColour { public:
         A = a;
     }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CEditEngineDrawInfo { public:
     C3DVector   Pos;                            // +0x00
     float       Radius;                         // +0x0c

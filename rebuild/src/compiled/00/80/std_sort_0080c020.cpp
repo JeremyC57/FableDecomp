@@ -1,5 +1,6 @@
 // std::sort(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingCompare_BestForTargeting2 comp) -- STLport introsort of the player-targeting candidate points, best target first
 // Leaf: ??$sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0080C020, 116 bytes, `ret 34h`: __fastcall (the algorithm TUs are /Gr), first in ecx, last in
 // edx, the 52-byte comparator by value on the stack.
 // Callers: 0x00804ACD, 0x00804ED6, 0x00804F6A (player targeting). Callees: __introsort_loop 0x0080BD30 (first, last,
@@ -13,11 +14,7 @@
 // __lg(last - first) * 2, comp); __final_insertion_sort(first, last, comp); }` with `__lg` inlined
 // (`for (k = 0; n != 1; n >>= 1) ++k;`).
 class CThing;
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class CBaseIntelligentPointer {
 public:
     virtual void v00();

@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(pair<CCharString,C3DVector>* pos, const pair<CCharString,C3DVector>& x, const __false_type&, size_type fill_len, bool atend) -- STLport growth of a (name, position) list: move into a size + max(size, n) block with x inserted fill_len times at pos
 // Leaf: ?_M_insert_overflow@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077EF30, length 256 bytes (thiscall, `ret 14h`).
 // Identity: the catalog label "Vector_Assign_TargetPoint" is propagated (CTargetPoint is 28 bytes in Ego_r.pdb; this
 //   stride is 16, `sar eax,4`). Callers: the push_back 0x0077F130 and the campfire region builder 0x0077DC40 (inlined
@@ -24,11 +25,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

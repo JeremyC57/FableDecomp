@@ -1,5 +1,6 @@
 // std::pair<C3DVector,CCharString>::pair(const C3DVector& a, const CCharString& b) -- build a (position, name) pair: copy the three coordinates, copy-construct the string
 // Leaf: ??0?$pair
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065470C, length 41 bytes (`ret 8`, unaligned: a /Os module).
 // Callers: 0x0064DE90 / 0x0064DFA1.
 // Layout: C3DVector {X, Y, Z} at +0 (0xc bytes), CCharString at +0xc; the pair is 0x10 bytes.
@@ -16,10 +17,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 template <class T1, class T2> struct pair {

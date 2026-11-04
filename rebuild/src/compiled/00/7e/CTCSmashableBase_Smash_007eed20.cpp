@@ -1,5 +1,6 @@
 // CTCSmashableBase::Smash() -- smash the parent thing: when its smashable def names a replacement object, create that object at the thing's position and orientation (same map level), hand a live replacement's smashable component the last hit frame, then kill the thing
 // Leaf: Smash
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007EED20, 275 bytes (plain `ret`).
 // Callees: the physics body's GetRHSet (slot 72, +0x120, const CRightHandedSet&), CCharString(const char*, long) @ 0x0099EBF0
@@ -13,7 +14,7 @@
 //   Release) read twice; the orientation is a local copy, the empty name a named local; the created object's component is
 //   the HasTC + end/hit ternary lookup.
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;

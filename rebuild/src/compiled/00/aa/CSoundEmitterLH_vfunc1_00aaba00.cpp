@@ -1,4 +1,5 @@
 // CSoundEmitterLH::vfunc_1() -- sets the finished flag (+0x1a) when it is still clear
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AABA00, 12 bytes. Vtable 0x0129E6EC (CSoundEmitterLH) slot 1.
 // Layout: the three flag bytes +0x18..+0x1a initialised by the landed constructor 0x00AAC580.
 // Shape: the test-then-store (`mov al ; test ; jne ; mov byte 1`) is a guarded assignment, not an unconditional store.
@@ -41,7 +42,7 @@ struct SSoundNode {                                    // VC6 list node, 16 byte
     long          extra;                               // +0x0c
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CSoundEmitterLH {                               // vtable 0x0129E6EC
     virtual void v00();

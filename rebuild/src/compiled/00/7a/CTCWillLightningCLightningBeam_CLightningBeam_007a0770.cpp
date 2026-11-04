@@ -1,5 +1,6 @@
 // CTCWillLightning::CLightningBeam::~CLightningBeam() -- lightning-spell beam dtor: kill a live beam particle, then the member dtors in reverse order (the lightning def pointer, the child-beam list, the target, home and particle thing pointers)
 // Leaf: ??1CLightningBeam@CTCWillLightning@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A0770, 126 bytes, tail jump to the last member destructor.
 // Identity: called by 0x007A40B0 (the `??_G` helper) and 0x007A4120, the delete function of CCountedPointer<CLightningBeam>
 //   (`delete (CLightningBeam*)data`; it is stored as data at 0x007A18FC / 0x007A4236). Ego_r.pdb has the non-virtual
@@ -122,11 +123,7 @@ template <class T> class CDefPointer { public:
 };
 
 #pragma pack(push, 1)
-class C3DVector { public:                                  // retail C3DVector is 1-aligned
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 

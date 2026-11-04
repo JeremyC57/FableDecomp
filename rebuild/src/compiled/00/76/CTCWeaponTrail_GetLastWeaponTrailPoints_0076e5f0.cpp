@@ -1,5 +1,6 @@
 // CTCWeaponTrail::GetLastWeaponTrailPoints(vector<pair<C3DVector,C3DVector> >&, long) const -- collect the newest points of one weapon trail (a negative index means the first trail); an out-of-range index gives nothing
 // Leaf: ?GetLastWeaponTrailPoints@CTCWeaponTrail@@QBE_NAAV?$vector@U?$pair@VC3DVector@@V1@@std@@V?$allocator@U?$pair@VC3DVector@@V1@@std@@@2@@std@@J@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076E5F0, length 45 bytes (+ int3 padding).
 // Source correction (FINDINGS chunk 394: "landed 0x76E5F0 could take the `?:` form used here"): the overload call is one
 //   call with a `?:` list argument, the form chunk 394 needed where this function is inlined into
@@ -13,7 +14,7 @@
 //   written over the index slot.
 // Layout: NoTrails +0x0c; Trail +0x48 (vector<list<CWeaponTrailEntry> >, first word; struct_layouts +0x58 less the
 //   retail STLport shrink of the containers ahead of it). The retail list is the 4-byte STLport list (one node pointer).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CEnginePrimitiveWeaponTrail {
 public:

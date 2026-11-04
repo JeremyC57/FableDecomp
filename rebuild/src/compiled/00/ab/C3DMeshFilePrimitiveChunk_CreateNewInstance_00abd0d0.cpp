@@ -1,4 +1,5 @@
 // C3DMeshFilePrimitiveChunk::CreateNewInstance() const -- `new C3DMeshFilePrimitiveChunk` (inline constructor, 0x38 bytes: one material index, -1) handed to the virtual InitNewInstance
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ABD0D0, 128 bytes. Callees: operator new 0x00BFEA1A, CChunkedFileSuperChunk(const char*)
 // 0x00AA8360 ("PRIM" @ 0x0129DEE4), vector<long>::resize(n, const long& value) 0x004428F0, this->InitNewInstance
 // (slot 10, +0x28). Vtable: C3DMeshFilePrimitiveChunk 0x0129ED74.
@@ -23,7 +24,7 @@ CCharString __fastcall operator+(const char* left, const CCharString& right);   
 CCharString __fastcall GFIntToCharString(long value);                                  // 0x0099F830
 
 class CMatrix3x4 { public: float m_row[3][4]; };               // 48 bytes, copied with rep movsd
-class C3DVector  { public: float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {} };
+#include "engine/C3DVector.h"
 
 class CChunkedFileSaver;
 class CDataOutputStream { public:

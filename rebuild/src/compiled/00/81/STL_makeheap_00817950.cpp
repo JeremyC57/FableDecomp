@@ -1,5 +1,6 @@
 // std::__make_heap(THitLocationIntersectionElement* first, THitLocationIntersectionElement* last, THitLocationIntersectionElementPred comp, THitLocationIntersectionElement*, int*) -- SGI make_heap of the hit-location ray intersections by key: sift every parent down from (len-2)/2 to the root with __adjust_heap, each fed a by-value copy of the parent
 // Leaf: __make_heap
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00817950, 120 bytes, `ret 0Ch` (__fastcall: first in ecx, last in edx, the
 // empty comparator's slot, the value-type pointer and the Distance* on the stack -- the SGI/STLport algorithm TUs are /Gr).
 // Callee: std::__adjust_heap(first, holeIndex, len, T value, comp) @ 0x008175D0 (same instantiation; /Gr: first in ecx,
@@ -13,10 +14,7 @@
 // Label: catalogued as Dinkumware `_Make_heap<THitLocationIntersectionElement*, int, ..., THitLocationIntersectionElementPred>`.
 struct CHitLocation;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 struct THitLocationIntersectionElement {           // 32 bytes (implicit memberwise copy, trivial assignment)
     long          key;                             // +0x00

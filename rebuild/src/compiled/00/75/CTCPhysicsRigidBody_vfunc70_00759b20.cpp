@@ -1,4 +1,5 @@
 // CTCPhysicsRigidBody::vfunc_70() -- returns the Forward vector of the rigid body's current right-handed set (RHSet+0x0c, this+0x74) by value
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00759B20, length 24 bytes (vtable 0x0126996C slot 70, rtti-vtables.tsv).
 // Callees: none. Same slot and shape as CTCPhysicsStandard::vfunc_70 (0x00723C00, RHSet.Forward at +0x5c).
 // Shape: a 12-byte C3DVector returned BY VALUE through the hidden pointer (eax = the pointer at `ret 4`); the interleaved
@@ -6,11 +7,7 @@
 // Layout: Ego_r.pdb CTCPhysicsRigidBody puts RHSet at +0x74 after three 16-byte std::vectors at +0x40; the retail vectors are
 // 12 bytes (GOTCHAS wave 23), so retail RHSet sits at +0x68 and its Forward at +0x74 -- matching the bytes. engine/
 // CTCPhysicsRigidBody.h follows the PDB offsets (4 bytes high per vector) and has no virtuals, so the class is modelled locally.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CRetailVector { void* m_first; void* m_last; void* m_end; };   // retail std::vector, 12 bytes
 

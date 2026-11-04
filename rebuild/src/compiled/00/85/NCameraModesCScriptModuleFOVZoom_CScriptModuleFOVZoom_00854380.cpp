@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleFOVZoom::~CScriptModuleFOVZoom() -- compiler-generated destructor: runs the inline base ~CScriptModuleBase (no vtable store of its own)
 // Leaf: ??1CScriptModuleFOVZoom@NCameraModes@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00854380, 34 bytes, thiscall, tail `jmp` to the second member dtor; byte-identical (bar the call
 //   displacements) to ~CScriptModuleBase 0x005ED120 and ~CScriptModuleGoToLookInDirection 0x005ED210.
 // Identity (proven): its only caller is the scalar deleting dtor 0x008544C0 of CScriptModuleFOVZoomStayRelative (vtable 0x01275A94 slot 0),
@@ -22,7 +23,7 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 class CThing;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CGameCameraManager;
 namespace NCameraModes {

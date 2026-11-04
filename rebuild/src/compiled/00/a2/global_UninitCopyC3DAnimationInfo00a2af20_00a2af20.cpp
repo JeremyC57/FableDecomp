@@ -1,5 +1,6 @@
 // _global::UninitCopy_C3DAnimationInfo_00a2af20(const C3DAnimationInfo* first, const C3DAnimationInfo* last, C3DAnimationInfo* result, const __false_type&) -- placement copy-construct [first, last) of C3DAnimationInfo bank entries (base then derived vtable, counted data pointer), return the advanced result
 // Leaf: UninitCopy_C3DAnimationInfo_00a2af20
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2AF20, length 114 bytes (`ret 8`).
 // Identity: the two vtable stores are 0x0129CD28 = CMeshDataBankEntry and 0x0129CD64 = C3DAnimationInfo (rtti-vtables.tsv), and
 //   the 0x28 stride is sizeof(C3DAnimationInfo) in Ego_r.pdb, so this is `__uninitialized_copy<C3DAnimationInfo*>`; the
@@ -28,10 +29,7 @@ class CIVCountedPointer { public:                      // 4 bytes; the copy adds
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) ++Object->IVRefCount; }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CMeshDataBankEntry { public:                     // Ego_r.pdb, 0x0c bytes; vtable 0x0129CD28
     virtual ~CMeshDataBankEntry();

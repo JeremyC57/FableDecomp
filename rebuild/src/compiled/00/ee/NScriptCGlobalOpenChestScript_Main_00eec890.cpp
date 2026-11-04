@@ -1,5 +1,6 @@
 // NScript::CGlobal_OpenChestScript::Main() -- the global "open chest" quest script: if the hero is under player control and the last used target is an alive chest, either play the CHEST_OPEN_FAIL sound and show the locked message (not enough keys), or take scripted control of the hero, open the chest in a paused cutscene until it is open or cancelled (cancel/hit), wait for the reward when the chest had items, and re-draw the weapon the hero was wielding; then deactivate the quest
 // Leaf: ?Main@CGlobal_OpenChestScript@NScript@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EEC890, 1544 bytes, plain `ret`; quest-script Main.
 // Callees: SetPredicate 0x00CB7920, IsActiveThreadTerminating 0x00CB7940, CScriptThing copy 0x004ABE90 / dtor 0x004AA840,
 //   CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / dtor 0x0099EAE0, scripted-thing handle ctor 0x007E72A0 /
@@ -35,7 +36,7 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }                                         // out-of-line copy 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const; virtual void s006() const; virtual void s007() const; virtual void s008() const;
     virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const; virtual void s015() const; virtual void s016() const;

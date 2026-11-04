@@ -1,5 +1,6 @@
 // CThingHolySite::Create(long, const C3DVector&, long, bool) -- allocate a holy-site thing through its class allocator, construct it from the def index / position / player / player-start flag, place its physics component at the position with the identity axes, and activate it; null on any failure
 // Leaf: ?Create@CThingHolySite@@SIPAV1@JABVC3DVector@@J_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0083BBF0, 147 bytes, static __fastcall (ecx = def index, edx = position), `ret 8`.
 // Identity: ?Create@CThingHolySite@@SIPAV1@JABVC3DVector@@J_N@Z (Ego_r.pdb). The object comes from CThingHolySite::Alloc()
 //   0x0052AC90 (`new (false) CThingHolySite`, 0xD8 bytes, vtable 0x012452DC; ?Alloc@CThingHolySite@@SIPAVCClass@@XZ),
@@ -16,7 +17,7 @@
 //   select): `p = Alloc(); result = 0; if (p && Construct) { physics...; if (Activate) result = p; } return result;`.
 #include "engine/CTCPhysicsBase.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet() { Up.X = 0; Up.Y = 0; Up.Z = 1; Forward.X = 0; Forward.Y = 1; Forward.Z = 0; }

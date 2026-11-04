@@ -1,4 +1,5 @@
 // CQ_GuildTrainingScript::RunCeremonyCutscene() -- once the fresco dome is loaded, create Whisper and the guildmaster at their ceremony markers, take Whisper, the guildmaster and the hero under scripted control (Whisper in the hero faction), cast them as WHIS / GM / HERO and play CS_GUILD_CEREMONY in a paused movie sequence with the camera fixed, then remove Whisper and the guildmaster
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D49D50, length 1304 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, ~CScriptThing 0x004AA840, CBaseObject ctor
 //   0x0099A380, scripted-thing handle (vtable 0x0127094C) ctor 0x007E72A0 / dtor 0x007E74D0 / IsValid 0x00CD23B9 /
@@ -8,7 +9,7 @@
 //   379, 601.
 // Shape: cast/movie model of the landed CQ_HeroSoulsBriarScript::PlayCutscene 0x00D823A0 (one named copy of Game for the
 //   pause pair); scripted-thing handle as the landed CHobbeLeader::Main 0x00D8FA30 (`if (IsValid()) Release();`).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0

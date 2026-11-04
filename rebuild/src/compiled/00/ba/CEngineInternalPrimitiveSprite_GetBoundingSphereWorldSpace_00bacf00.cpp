@@ -1,4 +1,5 @@
 // CEngineInternalPrimitiveSprite::GetBoundingSphereWorldSpace(C3DBoundingSphere& sphere) -- a sphere centred on the sprite position whose radius is the length of the anchored half-extents (|anchor*size| + size per axis); always true
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BACF00, length 103 bytes (`ret 4`); vtable 0x012A5444 slot 18.
 // Callees: none (fabs and fsqrt inline: `#pragma intrinsic(fabs)`, sqrtf from <math.h>).
 // Layout: no PDB layout for the sprite here; position C3DVector +0x48, width/height +0x60/+0x64, anchor factors +0x68/+0x6C,
@@ -9,11 +10,7 @@
 #include <math.h>
 #pragma intrinsic(fabs)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DBoundingSphere { public:
     C3DVector Center;

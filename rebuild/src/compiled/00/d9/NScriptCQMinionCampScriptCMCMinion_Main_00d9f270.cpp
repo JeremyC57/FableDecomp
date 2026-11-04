@@ -3,6 +3,7 @@
 //   every frame, retarget the hero whenever the hero hits Me (directly, or with any special ability other than 14) and is
 //   not already the target
 // Leaf: ?Main@CMC_Minion@CQ_MinionCampScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 27 (family main, DECISIONS_W26 D1): Ego_r.pdb / FableWin.pdb nest the entity in its script class and spell
 //   Main a private virtual (?Main@CMC_Minion@CQ_MinionCampScript@NScript@@EAEXXZ); the local CEntityScriptBase carries the retail slot list of vtable 0x012C3224
 //   (engine/CEntityScriptBase.h). Was: public non-virtual ?Main@CMC_Minion@CQ_MinionCampScript@NScript@@QAEXXZ.
@@ -26,7 +27,7 @@
 //   in the inline operator=; operator!= loads the other Data first. Expands the inline operator= at one site and
 //   calls the out-of-line copies elsewhere,
 //   as retail does.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

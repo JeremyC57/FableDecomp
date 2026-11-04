@@ -1,5 +1,6 @@
 // CKeyCamera::operator=(const CKeyCamera& other) -- assignment of a 0x38-byte scripted-camera key (floats and two vectors copied, the event name through CCharString::operator=)
 // Leaf: ??4CKeyCamera
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075EF00, length 111 bytes.
 // Callees: CCharString::operator=(const CCharString&) @ 0x0099EFB0 (EventName at +0x30).
 // Label: the manifest's "CEnginePrimitive2DText::operator=" is propagated; the callers are the CKeyCamera vector helpers
@@ -13,9 +14,7 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 struct CKeyCamera {
     float       DeltaIndex;                        // +0x00

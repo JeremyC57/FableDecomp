@@ -1,5 +1,6 @@
 // CThingAICreature::GetMaxSprintingSpeed(const C3DVector&) const -- AI creatures have no sprint speed: use the running speed
 // Leaf: ?GetMaxSprintingSpeed@CThingAICreature@@UBEMABVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0082FF60, 16 bytes, thiscall `ret 4`, float in st0.
 // Identity (proven): vtable slot 82 (+0x148) of CThingAICreature 0x0127293C; CThingPlayerCreature overrides the same slot
 // (0x006A9880). The creature speed getters sit in slots 78..86 of both vtables, and their bodies line up with the Ego_r.pdb
@@ -14,10 +15,7 @@
 // Shape: the result goes through a named float local, which keeps retail's `call ; ret 4` (a bare `return f(d);` tail-jumps).
 // Layout: engine/CThingAICreature.h models the vptr as a data member, so a virtual call cannot go through it: local
 // polymorphic model with 81 placeholder slots ahead of the two speed getters (header debt, NOTES.md).
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 #define V10(n) virtual void _slot##n##0(); virtual void _slot##n##1(); virtual void _slot##n##2(); virtual void _slot##n##3(); \
     virtual void _slot##n##4(); virtual void _slot##n##5(); virtual void _slot##n##6(); virtual void _slot##n##7(); \

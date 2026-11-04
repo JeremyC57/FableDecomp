@@ -1,5 +1,6 @@
 // CTCDExplosion::OnInitialActivate() -- fetch the explosion sub-def and copy its radius, damage and life time
 // Leaf: OnInitialActivate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080C3C0, length 79 bytes (+1 int3). CTCDExplosion vtable 0x01242A54 slot 6.
@@ -12,7 +13,7 @@
 // Layout: CTCDExplosion (Ego_r.pdb) to +0x3c; Emitters is a 12-byte STLport vector in retail (PDB 16), so
 // ExplosionEvolutionTimer/CurrentExplosionRing sit at +0x4c/+0x50. CExplosionDef offsets are the PDB's. Local model (no
 // engine header for CTCDExplosion).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 template <class T> class CDefPointer { public:
     T* Object;

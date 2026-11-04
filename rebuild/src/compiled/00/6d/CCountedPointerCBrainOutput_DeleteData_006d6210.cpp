@@ -1,5 +1,6 @@
 // CCountedPointer<CBrainOutput>::DeleteData(void* data) -- the counted pointer's per-type deleter: run the CBrainOutput destructor and free it
 // Leaf: DeleteData
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D6210, length 75 bytes (+ int3 padding), plain `ret`, `__fastcall`
 // (object in ecx). No direct callers: its address is stored as the count block's destroy function
 // (absolute reference at 0x006D62B0, inside CCountedPointer<CBrainOutput>::Reset 0x006D6260, landed).
@@ -47,7 +48,7 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
     }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CNavigationInput { public:                       // 24 bytes, trivially destructible
     unsigned char _body[0x18];

@@ -1,5 +1,6 @@
 // SQueuedSoundEvent::operator=(const SQueuedSoundEvent& other) -- assignment of a 0x40-byte record held in a libpk CStaticQueue (two words, a position, an intelligent creature pointer, two words, a 16-byte block, three words)
 // Leaf: ??4SQueuedSoundEvent
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C49100, length 117 bytes (128 with padding).
 // Callees: CIntelligentPointer<CThingCreatureBase>::operator= @ 0x00C16950 (the member at +0x14).
 // Label: the manifest's "CEnginePrimitive2DText::operator=" is propagated. The only caller is the queue push @ 0x00C49010,
@@ -16,9 +17,7 @@ struct CIntelligentPointer {                       // CIntelligentPointer<CThing
     CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x00C16950
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 struct SFourWords {
     unsigned long m_words[4];

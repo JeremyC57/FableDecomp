@@ -1,6 +1,7 @@
 // CPersistContext::Transfer(const char* name, C3DVector& value, const C3DVector& defaultValue) -- CRC-check the key, then by mode: text load (optionally seeding the default first), text save, binary load through CPersistTraits<C3DVector>, binary save; any other mode just takes the default
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004859AD, length 153 bytes.
 // Leaf: Transfer
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Label correction: catalogued as Transfer<CFloatRange>, but the value is 12 bytes (`movsd` x3), the save arm calls
 // CDataOutputStream::Write3DVector and the binary-in arm CPersistTraits<C3DVector>::TransferBinaryIn (0x0047CF3F, which
 // reads through CDataInputStream::Read3DVector 0x009950F0): this is the C3DVector instantiation (wrapper vtable 0x01236750).
@@ -13,7 +14,7 @@
 // the traits object (case 2) and the 8-byte TransferableComponent wrapper {vtable, value*} (cases 0/1); `ret 0Ch`.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CDataInputStream;
 class CDataOutputStream {
 public:

@@ -1,0 +1,1348 @@
+address	stage	reason
+00415cd0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0043ce90	compile_fail	COMPILE_FAIL error C2084: function 'void C3DVector::Initialise(float,float,float)' already has a body
+004458f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0047cf3f	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00485b44	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00486f60	compile_fail	COMPILE_FAIL error C2039: 'AdjustTrajectoryVector' : is not a member of 'C3DVector'
+00487050	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00487180	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+00488b20	compile_fail	COMPILE_FAIL error C2039: 'MagSquared' : is not a member of 'C3DVector'
+0048b160	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0048b220	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0049be10	bytes_differ	length 119 != 123
+0049ce00	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0049d150	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0049e080	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+004a8d80	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+004bbf00	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+004bc340	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+004bd2e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+004c11f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+004c22c0	compile_fail	COMPILE_FAIL error C2039: 'Interpolate' : is not a member of 'C3DVector'
+004c2ef0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+004c7950	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+004cb6e0	compile_fail	COMPILE_FAIL error C2039: 'OffsetBy2D' : is not a member of 'C3DVector'
+004d3d0e	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+004d8b3c	bytes_differ	length 50 != 42
+004df3f7	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+004df434	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+004df44e	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+004e30e7	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+004e3325	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+004e75d9	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+004fb160	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fc0c0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fc2a0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fc2d0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fc330	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fc360	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fc3c0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fc3f0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fc470	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fc4a0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fc560	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fc600	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fc6c0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fcac0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fcb30	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fcbd0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fcc40	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fcce0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004fcd60	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+004feec0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+004ff310	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+00502460	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+005066e0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0051cdf0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0051ce60	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+0051dee0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0051df20	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0052ab20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00543810	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00543910	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+005500b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00550940	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00550a70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0057b783	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0057c2e6	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0057cb4b	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+005b36e9	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+005b37f7	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+005bc1b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+005be119	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+005d8ef0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+005d9730	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+005da540	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+005da5a0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+005ed190	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+005eea9b	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+005f05e5	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+005fa990	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+005fb630	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+005fd1d0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0062ea80	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0063a300	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063a390	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063a420	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063a540	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063a5f0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063a660	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063a6e0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063a760	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063a7e0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063a850	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063ab10	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063adf0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063aee0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063b0f0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063b750	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063b7f0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063bb40	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063bbc0	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0063bf20	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063c230	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063d8a0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063d960	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063db30	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063dd70	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063dfd0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063e2e0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063e3c0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063e950	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0063eb20	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0063ef50	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00643d8c	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0065846c	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0065a28f	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0065a8ee	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+0065b349	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0065c45a	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0065c781	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0065da97	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0065dce8	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0065f056	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00661b40	compile_fail	COMPILE_FAIL error C2593: 'operator +' is ambiguous
+00661cd0	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00661d70	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+006627a0	compile_fail	COMPILE_FAIL error C2039: 'Length' : is not a member of 'C3DVector'
+00663510	compile_fail	COMPILE_FAIL error C2039: 'Length' : is not a member of 'C3DVector'
+006637d0	compile_fail	COMPILE_FAIL error C2039: 'DotProduct' : is not a member of 'C3DVector'
+00663ba0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00663c40	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00663f50	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00664680	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00664e50	compile_fail	COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+006650e0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00665190	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00665260	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00665df0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00665e90	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00667310	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0066dbb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0066e370	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0066fb80	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+0066fc90	compile_fail	COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+006700f0	bytes_differ	length 180 != 162
+006701a0	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+006702e0	compile_fail	COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+00691c50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00692b30	compile_fail	COMPILE_FAIL error C2593: 'operator +' is ambiguous
+00692c80	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00692f30	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00693b30	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00693c70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00693dc0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0069b790	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0069c1b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0069c860	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0069e870	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0069e8f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0069e980	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0069fce0	compile_fail	COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+006a4df0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+006a5460	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+006a7150	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+006a7270	compile_fail	COMPILE_FAIL error C2593: 'operator *=' is ambiguous
+006a7990	compile_fail	COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+006a8240	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+006a8710	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+006a9ef0	compile_fail	COMPILE_FAIL error C2039: 'Clear' : is not a member of 'C3DVector'
+006aa100	compile_fail	COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+006ab5d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006ab770	compile_fail	COMPILE_FAIL error C2039: 'Length' : is not a member of 'C3DVector'
+006ac910	stray_change	own ?Create@CThingPlayerCreature@NFactory006ac910@@SIPAU12@HABUC3DVector@2@HH@Z -> ?Create@CThingPlayerCreature@NFactory006ac910@@SIPAU12@HABVC3DVector@2@HH@Z ; 006a9dd0: ?ConstructFromParams@CThingPlayerCreature@NFactory006ac910@@QAE_NHABUC3DVector@2@HH@Z -> ?ConstructFromParams@CThingPlayerCreature@NFactory006ac910@@QAE_NHABVC3DVector@2@HH@Z ; 006a06e0: ??0CTCParamsPhysicsBase@NFactory006ac910@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z -> ??0CTCParamsPhysicsBase@NFactory006ac910@@QAE@ABVC3DVector@1@ABUCRightHandedSet@1@@Z
+006ad220	compile_fail	COMPILE_FAIL error C2039: 'GetAccurateMagnitude' : is not a member of 'C3DVector'
+006ad260	compile_fail	COMPILE_FAIL error C2039: 'GetAccurateMagnitude' : is not a member of 'C3DVector'
+006ad9d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006ae3e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006afa40	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+006afcb0	compile_fail	COMPILE_FAIL error C2039: 'OffsetBy2D' : is not a member of 'C3DVector'
+006b0020	compile_fail	COMPILE_FAIL error C2039: 'GetAngleYZ' : is not a member of 'C3DVector'
+006b0210	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006b0250	compile_fail	COMPILE_FAIL error C2039: 'Interpolate' : is not a member of 'C3DVector'
+006b0610	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+006b0780	compile_fail	COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+006b0c10	compile_fail	COMPILE_FAIL error C2039: 'OffsetBy2D' : is not a member of 'C3DVector'
+006b1410	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006b1430	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006b3030	compile_fail	COMPILE_FAIL error C2664: 'C3DVector::Rotate' : cannot convert parameter 1 from 'float' to 'const C3DVector &'
+006b3460	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006b4900	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006b84e0	bytes_differ	length 53 != 101
+006b8640	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006c54c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006c7960	bytes_differ	length 380 != 404
+006c8780	stray_change	00835a20: ?Create@CTCDNone@X_006c8780@@SIPAUCThing@2@IABUC3DVector@2@_N@Z -> ?Create@CTCDNone@X_006c8780@@SIPAUCThing@2@IABVC3DVector@2@_N@Z
+006c88d0	bytes_differ	length 673 != 697
+006cb620	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006cb6e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006cb780	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+006cb840	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006cc170	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006cce00	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+006ccf70	compile_fail	COMPILE_FAIL error C2039: 'IsEqual' : is not a member of 'C3DVector'
+006cda50	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+006cdab0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006cdae0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006cdb20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006cdbd0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006cdc20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006cdd00	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006d5b50	bytes_differ	masked sha1 differs
+006dffb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006e0500	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006e0620	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006e11f0	stray_change	own ?Create@X_006e11f0@@YIPAUCThing@1@HHMABUC3DVector@1@_N@Z -> ?Create@X_006e11f0@@YIPAUCThing@1@HHMABVC3DVector@1@_N@Z ; 006a06e0: ??0CTCParamsPhysicsBase@X_006e11f0@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z -> ??0CTCParamsPhysicsBase@X_006e11f0@@QAE@ABVC3DVector@1@ABUCRightHandedSet@1@@Z ; 00aeb8c0: ?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@X_006e11f0@@QAEPAUCParticleEmitter@@HHMABUC3DVector@3@ABUCRightHandedSet@3@_N@Z -> ?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@X_006e11f0@@QAEPAUCParticleEmitter@@HHMABVC3DVector@3@ABUCRightHandedSet@3@_N@Z
+006e1620	bytes_differ	masked sha1 differs
+006e1b10	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006e1b40	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006e1d80	stray_change	own ?__uninitialized_copy@std@@YIPAU?$pair@KUC3DVector@FableCopy_006e1d80@@@FableCopy_006e1d80@@PBU23@0PAU23@ABU__false_type@@@Z -> ?__uninitialized_copy@std@@YIPAU?$pair@KVC3DVector@FableCopy_006e1d80@@@FableCopy_006e1d80@@PBU23@0PAU23@ABU__false_type@@@Z
+006e2000	stray_change	own ??4?$vector@U?$pair@IUC3DVector@FableAssign_006e2000@@@FableAssign_006e2000@@@FableAssign_006e2000@@QAEAAU01@ABU01@@Z -> ??4?$vector@U?$pair@IVC3DVector@FableAssign_006e2000@@@FableAssign_006e2000@@@FableAssign_006e2000@@QAEAAU01@ABU01@@Z ; 006e1d80: ?__uninitialized_copy@FableAssign_006e2000@@YIPAU?$pair@IUC3DVector@FableAssign_006e2000@@@1@PBU21@0PAU21@ABU__false_type@1@@Z -> ?__uninitialized_copy@FableAssign_006e2000@@YIPAU?$pair@IVC3DVector@FableAssign_006e2000@@@1@PBU21@0PAU21@ABU__false_type@1@@Z ; 006e1c10: ?__copy@FableAssign_006e2000@@YIPAU?$pair@IUC3DVector@FableAssign_006e2000@@@1@PBU21@0PAU21@ABU__false_type@1@@Z -> ?__copy@FableAssign_006e2000@@YIPAU?$pair@IVC3DVector@FableAssign_006e2000@@@1@PBU21@0PAU21@ABU__false_type@1@@Z
+006e25c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006e2640	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006e7fd0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006e80f0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+006e8810	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006e8e10	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006ea5f0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+006ea770	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+006eac50	stray_change	006f0810: ??0?$vector@UC3DVector@CombatDebug@@@std@CombatDebug@@QAE@ABU012@@Z -> ??0?$vector@VC3DVector@CombatDebug@@@std@CombatDebug@@QAE@ABU012@@Z
+006eb8a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006eba60	stray_change	own ?CCombatManager_RebuildCombatLists@CombatLists@@YIXPAU_Rb_tree@1@ABUC3DVector@1@PAUlist@1@2@Z -> ?CCombatManager_RebuildCombatLists@CombatLists@@YIXPAU_Rb_tree@1@ABVC3DVector@1@PAUlist@1@2@Z
+006ec380	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006ef290	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+006efec0	stray_change	own ?__uninitialized_copy@std@@YIPAU?$pair@UC3DVector@FableCopy_006efec0@@_N@FableCopy_006efec0@@PBU23@0PAU23@ABU__false_type@@@Z -> ?__uninitialized_copy@std@@YIPAU?$pair@VC3DVector@FableCopy_006efec0@@_N@FableCopy_006efec0@@PBU23@0PAU23@ABU__false_type@@@Z
+006f46d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006f50b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006f56e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+006fd4f0	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+006fd6c0	compile_fail	COMPILE_FAIL error C2039: 'Length' : is not a member of 'C3DVector'
+006fe5b0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00703590	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00705190	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00705240	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00705c30	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00705d40	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+007088f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00712340	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+00713010	compile_fail	COMPILE_FAIL error C2552: 'cameraPosition' : non-aggregates cannot be initialized with initializer list
+00713ee0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00714900	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00715710	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+007185d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0071a430	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+0071ab20	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00722590	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+007229d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00723270	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00723360	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00723c20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00723c80	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+00724010	compile_fail	COMPILE_FAIL error C2039: 'Clear' : is not a member of 'C3DVector'
+00724f80	compile_fail	COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00724fc0	compile_fail	COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00725000	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00725060	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00725250	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00725290	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00725a30	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+00725c40	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00726340	compile_fail	COMPILE_FAIL error C2039: 'GetXYLengthSquared' : is not a member of 'C3DVector'
+00726610	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00726780	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007267c0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+007268d0	compile_fail	COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00726be0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+00727500	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0072a090	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00731ca0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00742fd0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00743000	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+007437c0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+007438a0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+007462f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00747da0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00748810	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00749d20	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0074a260	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0074aa00	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+007512e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00751610	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00751b30	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00751e80	compile_fail	COMPILE_FAIL error C2676: binary '!=' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00752000	compile_fail	COMPILE_FAIL error C2039: 'MagnitudeSquared' : is not a member of 'C3DVector'
+00752300	compile_fail	COMPILE_FAIL error C2039: 'GetSquaredLength' : is not a member of 'C3DVector'
+00752930	compile_fail	COMPILE_FAIL error C2039: '!=' : is not a member of 'C3DVector'
+00753930	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00759870	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+00759b40	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+00759d30	compile_fail	COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+00759ec0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0075a530	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0075aec0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0075b470	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0075b8d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0075c040	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0075c1e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0075c280	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0075c420	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0075c670	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0075cad0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared2D' : is not a member of 'C3DVector'
+0075cd30	compile_fail	COMPILE_FAIL error C2593: 'operator +' is ambiguous
+0075cd90	compile_fail	COMPILE_FAIL error C2593: 'operator +' is ambiguous
+0075d9a0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0075db90	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0075dc60	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0075e3f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0075f830	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+0075fe30	bytes_differ	length 193 != 189
+0075ff00	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00760760	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00760910	bytes_differ	length 104 != 123
+00760c40	compile_fail	COMPILE_FAIL error C2039: 'Length' : is not a member of 'C3DVector'
+00761200	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007617a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00761c00	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+00761f40	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+007622c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00762440	stray_change	own ??0CBasicShape@NShape@@QAE@JABU?$CRetailVector@UC3DVector@NShape@@@@@Z -> ??0CBasicShape@NShape@@QAE@JABU?$CRetailVector@VC3DVector@NShape@@@@@Z ; 006f0810: ??0?$CRetailVector@UC3DVector@NShape@@@@QAE@ABU0@@Z -> ??0?$CRetailVector@VC3DVector@NShape@@@@QAE@ABU0@@Z
+00762e10	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00765370	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00767da0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00768fc0	stray_change	own ?__uninitialized_copy@std@@YIPAU?$pair@KUC3DVector@FableCopy_00768fc0@@@FableCopy_00768fc0@@PBU23@0PAU23@ABU__false_type@@@Z -> ?__uninitialized_copy@std@@YIPAU?$pair@KVC3DVector@FableCopy_00768fc0@@@FableCopy_00768fc0@@PBU23@0PAU23@ABU__false_type@@@Z
+00769470	stray_change	own ??$_Push_heap@PAU?$pair@KUC3DVector@N00769470@@@N00769470@@HU12@U?$CKeyPairCompareLess@KUC3DVector@N00769470@@@2@@N00769470@@YIXPAU?$pair@KUC3DVector@N00769470@@@0@HHU10@U?$CKeyPairCompareLess@KUC3DVector@N00769470@@@0@@Z -> ??$_Push_heap@PAU?$pair@KVC3DVector@N00769470@@@N00769470@@HU12@U?$CKeyPairCompareLess@KVC3DVector@N00769470@@@2@@N00769470@@YIXPAU?$pair@KVC3DVector@N00769470@@@0@HHU10@U?$CKeyPairCompareLess@KVC3DVector@N00769470@@@0@@Z
+00769d50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0076ada0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0076b120	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0076de20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0076deb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0076f780	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0076f8e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00771bd0	compile_fail	COMPILE_FAIL error C2039: 'GetPerpendicularXY' : is not a member of 'C3DVector'
+00771c70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00771d50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00771db0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00771f30	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00778d60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00778e70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00779000	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00779d20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0077bd70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0077e250	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0077e6a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0077e8f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0077e960	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0077ecb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0077ed20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0077eda0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0077f190	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0077f2c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0077f370	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00782390	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00782560	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007828e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00785b40	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeSquared' : is not a member of 'C3DVector'
+00785d80	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007881ad	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+00788617	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+007887be	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0078b6b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0078e3a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0078e600	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007939d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00793b60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007986a0	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00798770	compile_fail	COMPILE_FAIL error C2675: unary '-' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00799140	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00799900	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00799e30	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0079b9d0	compile_fail	COMPILE_FAIL error C2593: 'operator +' is ambiguous
+0079c290	compile_fail	COMPILE_FAIL error C2675: unary '-' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+007a1870	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007a2f90	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007a3040	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007a30b0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007a3410	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007a34a0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007a37b0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007a3ac0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007a3f30	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007a3fa0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007a4140	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007a6e20	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+007a7000	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+007a9870	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+007a9960	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+007a9c80	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007a9fe0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+007aa9e0	compile_fail	COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+007af050	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+007af0f0	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+007b2ab0	compile_fail	COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+007b5ca0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007bdb66	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+007be0f9	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+007bebe0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007bedf0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007bf3d0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+007c5db0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007c89f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007cdd10	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007d3560	compile_fail	COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+007d83c0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+007d9c20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007d9c90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007d9f10	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007dccb0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007dd270	compile_fail	COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+007ddda0	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+007ddf90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007de030	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007e2600	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007e2f00	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007e7030	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007e8870	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007eaa40	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007f11d0	compile_fail	COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+007f1840	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007f18b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007f2120	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+007f24e0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007f5730	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007f69b0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+007f8220	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007f83f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007f84c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007f9480	bytes_differ	length 119 != 109
+007f9660	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007fa450	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007faa20	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007fac80	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+007fb6a0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+007fb870	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+007fbe50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007fd430	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+007fd8d0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+007feaf0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+00800540	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00802420	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00802d10	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+008039a0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00805920	compile_fail	COMPILE_FAIL error C2039: 'MagnitudeSquared' : is not a member of 'C3DVector'
+008059f0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00805a90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00807b70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008090e0	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+008091a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00809d60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0080ab40	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0080ac10	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0080b9f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0080c140	bytes_differ	length 62 != 58
+0080c250	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0080ca20	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0080d0b0	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0080da50	compile_fail	COMPILE_FAIL error C2039: 'GetXYLength' : is not a member of 'C3DVector'
+0080f190	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0080fd90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0080ffb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00812170	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008128f0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00812a10	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00812ca0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00815070	compile_fail	COMPILE_FAIL error C2039: 'SquaredLength' : is not a member of 'C3DVector'
+008158d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00815aa0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00815ce0	compile_fail	COMPILE_FAIL error C2039: 'Length' : is not a member of 'C3DVector'
+00815f00	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00817070	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008170d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008182e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0081f6c0	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+0081fec0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+008201e0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+00820840	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+00825a80	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008260c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00829ce0	compile_fail	COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+0082d0d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0082d9c0	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0082fd90	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+0082fed0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0082ff70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00830000	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00830150	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00832840	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00833230	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+008332e0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+008334f0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00834760	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00835c80	stray_change	own ?Create@ExternalRetry_00835c80@@YIPAUCThingDeadCreature@1@HABUC3DVector@1@HABUCCharString@1@ABUCAnimFilterBase@1@@Z -> ?Create@ExternalRetry_00835c80@@YIPAUCThingDeadCreature@1@HABVC3DVector@1@HABUCCharString@1@ABUCAnimFilterBase@1@@Z ; 008388d0: ?ConstructFromParams@CThingDeadCreature@ExternalRetry_00835c80@@QAE_NHABUC3DVector@2@HIABUCCharString@2@PAU12@2_N@Z -> ?ConstructFromParams@CThingDeadCreature@ExternalRetry_00835c80@@QAE_NHABVC3DVector@2@HIABUCCharString@2@PAU12@2_N@Z ; 006a06e0: ??0CTCParamsPhysicsBase@ExternalRetry_00835c80@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z -> ??0CTCParamsPhysicsBase@ExternalRetry_00835c80@@QAE@ABVC3DVector@1@ABUCRightHandedSet@1@@Z
+00835fd0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00836260	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008385b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00838ec0	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00839080	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0083c690	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0083c800	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0083c990	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0083ca90	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0083cc10	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00842b60	bytes_differ	length 61 != 85
+00842bc0	bytes_differ	length 39 != 62
+008444a0	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+00845350	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008455c0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00845b10	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00845ce0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00846090	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00846100	compile_fail	COMPILE_FAIL error C2593: 'operator +' is ambiguous
+00846410	compile_fail	COMPILE_FAIL error C2593: 'operator +' is ambiguous
+00847ac0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00849be0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0084a5f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0084a720	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0084ccc0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0084cdf0	compile_fail	COMPILE_FAIL error C2039: 'GetPerpendicularXY' : is not a member of 'C3DVector'
+0084cf40	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+0084cf60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0084d0e0	compile_fail	COMPILE_FAIL error C2676: binary '^' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+0084d790	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+0084dfe0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0084e1a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0084e200	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0084e260	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0084e2c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0084eaf0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0084f4d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0084f5e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00850700	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00851e70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00851ed0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008520f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00852160	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00852220	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008522b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00852350	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00852400	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008525f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008529d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00852b70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00852c40	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00852fd0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00853290	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00853320	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00853580	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00853830	compile_fail	COMPILE_FAIL error C2039: 'z' : is not a member of 'NCameraModes::C3DVector'
+00853ba0	compile_fail	COMPILE_FAIL error C2039: 'z' : is not a member of 'NCameraModes::C3DVector'
+00853fb0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008540f0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00854610	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00854810	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00854b90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008552f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00855500	compile_fail	COMPILE_FAIL error C2676: binary '-=' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00855af0	bytes_differ	length 68 != 88
+00855b90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00856040	compile_fail	COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'C3DVector' (or there is no acceptable conversion)
+008569c0	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00856b20	compile_fail	COMPILE_FAIL error C2084: function 'float fabs(float)' already has a body
+00857b70	compile_fail	COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+00858130	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00858590	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008587b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0085b8f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0085bd70	compile_fail	COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+0085c190	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0085f8d0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00860430	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00860650	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00860840	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00860d00	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00860ed0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+008610d0	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeSquared' : is not a member of 'C3DVector'
+008611f0	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeSquared' : is not a member of 'C3DVector'
+00861310	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeSquared' : is not a member of 'C3DVector'
+00861530	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00861670	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00861950	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00862780	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00862aa0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00862ec0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00864170	compile_fail	COMPILE_FAIL error C2039: 'Get2D' : is not a member of 'C3DVector'
+00864250	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00864700	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00865c20	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00865d40	compile_fail	COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00866d80	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00866e80	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008676a0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00868220	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00870b30	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008718b0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00871d50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00871ec0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00872480	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00872490	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00872630	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008728c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00872a20	compile_fail	COMPILE_FAIL error C2039: 'GetPerpendicularXY' : is not a member of 'C3DVector'
+00872ec0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquaredXY' : is not a member of 'C3DVector'
+00873030	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008735d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00873a10	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00875040	compile_fail	COMPILE_FAIL error C2039: 'Normalised' : is not a member of 'C3DVector'
+00875120	compile_fail	COMPILE_FAIL error C2039: 'y' : is not a member of 'C3DVector'
+008751d0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00875990	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00876e10	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00877eb0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00877f40	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00878a10	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00878a80	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00878b60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00878ce0	compile_fail	COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00878db0	compile_fail	COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+0087b690	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0087b6f0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0087b910	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0087ba90	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0087bbf0	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+0087bf40	compile_fail	COMPILE_FAIL error C2679: binary '-' : no operator found which takes a right-hand operand of type 'C2DVector' (or there is no acceptable conversion)
+0087c070	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0087c150	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0087ca30	compile_fail	COMPILE_FAIL error C2675: unary '-' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+0087cdf0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+0087cec0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+0087e690	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0087e860	compile_fail	COMPILE_FAIL error C2675: unary '-' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+0087ed70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0087fd20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008802b0	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+008803e0	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+00880510	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+00880730	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00880ae0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00880ec0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00882c90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00884e90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00884f60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00884fe0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008851a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00885210	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008852e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00885680	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0088ab90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0088ae40	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0088bbe0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+0088ece0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0088ed20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0088f960	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0088f9b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00892b50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00892c20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008981c0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0089a390	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0089bdf0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0089f4a0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008a24c0	bytes_differ	length 258 != 201
+008a86c0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+008aac50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008ab710	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+008b6c30	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+008b6ee0	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+008b74d0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008b76b0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008b7a20	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008b8260	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+008b8310	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+008b8bc0	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeSquared2D' : is not a member of 'C3DVector'
+008b8d30	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008b9010	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008bc1a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008beee0	compile_fail	COMPILE_FAIL error C2511: 'C3DVector::C3DVector(const C2DVector &)' : overloaded member function not found in 'C3DVector'
+008bf0f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008bf1c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008c0ea0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008c1600	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008c1f70	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008c2240	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008c2550	compile_fail	COMPILE_FAIL error C2593: 'operator *' is ambiguous
+008c2810	compile_fail	COMPILE_FAIL error C2039: 'Get2DLength' : is not a member of 'C3DVector'
+008c2ed0	compile_fail	COMPILE_FAIL error C2084: function 'float sqrtf(float)' already has a body
+008c2f70	compile_fail	COMPILE_FAIL error C2084: function 'float sqrtf(float)' already has a body
+008c34a0	compile_fail	COMPILE_FAIL error C2084: function 'float sqrtf(float)' already has a body
+008c44b0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008c4680	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008c5490	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008c55b0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008c64f0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008c6a50	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008c6db0	bytes_differ	length 1094 != 1090
+008c74f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008c7e50	compile_fail	COMPILE_FAIL error C2084: function 'float fabsf(float)' already has a body
+008c8180	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008c87a0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008c8c30	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008c9e60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008c9fe0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008ca170	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008ca220	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008ca310	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008ca4a0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008ca860	bytes_differ	length 100 != 96
+008cad50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008cb250	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+008cb500	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008cb940	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008cbb90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008ccd70	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008cd470	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008cd5a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008cfe30	bytes_differ	length 25 != 31
+008d5790	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008d5970	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008d6860	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008d77a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008d8ea0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008d9650	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008d99b0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008da610	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008db240	compile_fail	COMPILE_FAIL error C2039: 'GetLength2D' : is not a member of 'C3DVector'
+008db460	compile_fail	COMPILE_FAIL error C2039: 'GetLength2D' : is not a member of 'C3DVector'
+008dbb30	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008dc900	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008ddd70	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+008ddfb0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+008df510	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008df9c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008e0060	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+008e07f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008e08c0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008e0d20	compile_fail	COMPILE_FAIL error C2039: 'GetLength2D' : is not a member of 'C3DVector'
+008e1580	bytes_differ	length 233 != 234
+008e2a90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008e2e40	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008e2f10	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+008e2fc0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008e5270	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeSquared' : is not a member of 'C3DVector'
+008e52f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008e5370	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+008e5480	compile_fail	COMPILE_FAIL error C2084: function 'float fabsf(float)' already has a body
+008e5670	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+008e5f00	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+008e5fb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008e60d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008e6940	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008e9460	compile_fail	COMPILE_FAIL error C2039: 'GetLength2' : is not a member of 'C3DVector'
+008ea8a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008ea930	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008ea9f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008ec1a0	bytes_differ	length 103 != 100
+008ed6e0	compile_fail	COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+008ed7a0	compile_fail	COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+008f06f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008f1250	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008f2580	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008f2e00	compile_fail	COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+008f3630	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+008f3ad0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008f3e70	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008f3fd0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008f4320	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008f47e0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008f4b00	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+008f5060	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008f5220	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008f5490	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008f57f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008f58c0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+008f5b50	bytes_differ	length 64 != 74
+008f5ba0	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+008f69b0	bytes_differ	length 115 != 116
+008f7950	bytes_differ	masked sha1 differs
+008f7bd0	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'NFoot008f7bd0::C3DVector'
+008f7e70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008f7f50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008fa3b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008fa7e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008faa80	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008fadb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008faf70	compile_fail	COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'float [3]' to 'C3DVector'
+008fbb90	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+008fcbd0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008fcc10	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+008fd0a0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00903bc0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+009098e0	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+0090bd40	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0090bed0	compile_fail	COMPILE_FAIL error C2664: 'C3DVector::Rotate' : cannot convert parameter 1 from 'float' to 'const C3DVector &'
+0090c1a0	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+0090f320	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+0090fcd0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0090fdb0	compile_fail	COMPILE_FAIL error C2084: function 'float C3DVector::GetMagnitude(void) const' already has a body
+00911710	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+009118a0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00911a00	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00911c20	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00911d90	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00911f80	compile_fail	COMPILE_FAIL error C2039: 'Get2DLengthSquared' : is not a member of 'C3DVector'
+00912700	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00913590	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+009137f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00913930	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00913a20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00913d60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00913e70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00914130	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+009141f0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00914460	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00915080	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+009167f0	compile_fail	COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+00916910	compile_fail	COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+00916b10	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00917050	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+009170b0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00917380	compile_fail	COMPILE_FAIL error C2664: 'C3DVector::Rotate' : cannot convert parameter 1 from 'float' to 'const C3DVector &'
+009175e0	compile_fail	COMPILE_FAIL error C2664: 'C3DVector::Rotate' : cannot convert parameter 1 from 'float' to 'const C3DVector &'
+00919440	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00919510	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0091b010	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0091b190	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0091b340	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0091bd10	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0091c3d0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared2D' : is not a member of 'C3DVector'
+0091c640	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0091d320	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0091d510	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0091e050	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0091e4b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0091e750	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0091f740	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0091f810	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0091f870	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0091faa0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0091fb30	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0091fdb0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+009200c0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00920480	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+009204f0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+009205d0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+009207a0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00922fc0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00923510	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00925f90	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+009261f0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00926c50	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00929650	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00929b10	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00929f10	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0092a220	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0092ae70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0092afe0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0092b800	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+0092bcb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0092bd80	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0092be70	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0092d7c0	compile_fail	COMPILE_FAIL error C2039: 'Magnitude' : is not a member of 'C3DVector'
+0092e950	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0092ecd0	compile_fail	COMPILE_FAIL error C2039: 'MagnitudeSquared' : is not a member of 'C3DVector'
+0092ed40	compile_fail	COMPILE_FAIL error C2039: 'MagnitudeSquared' : is not a member of 'C3DVector'
+00930dc0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00934920	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00935160	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'NCondition00935160::C3DVector'
+009357f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00935ad0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00936020	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00936210	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00936590	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+009365e0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00936a60	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+009378f0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00937b10	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00937c20	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00937da0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+009385f0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00938960	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00939180	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+009395f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00939e70	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00939ed0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0093a080	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0093b1d0	compile_fail	COMPILE_FAIL error C2511: 'C3DVector C3DVector::operator +(const C2DVector &) const' : overloaded member function not found in 'C3DVector'
+0093c6d0	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeSquared' : is not a member of 'C3DVector'
+0093c9a0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0093cb20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0093cc60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0093d180	compile_fail	COMPILE_FAIL error C2039: 'X' : is not a member of 'CXYDelta'
+0093d3a0	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0093d800	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeSquared' : is not a member of 'C3DVector'
+0093dc10	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared2D' : is not a member of 'C3DVector'
+0093dcd0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared2D' : is not a member of 'C3DVector'
+0093e2d0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0093e8c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00941210	bytes_differ	length 425 != 417
+00942270	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+009425f0	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00942a00	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00942d40	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00942ee0	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+009432c0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00944730	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00944e80	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+009460c0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00946850	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+009474f0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00947a30	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00948060	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+009492a0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0094a6d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0094a840	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0094b8b0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0094cb40	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0094d680	bytes_differ	length 249 != 251
+0094d9c0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0094dac0	compile_fail	COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+0094e6b0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0094f090	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0094fa00	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+0094feb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0094fff0	compile_fail	COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+00950950	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00950c30	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00951b20	compile_fail	COMPILE_FAIL error C2039: 'RotateAboutZ' : is not a member of 'C3DVector'
+00954470	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00956fe0	compile_fail	COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+00957f20	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00958f00	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00959a60	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0095a490	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0095a6c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0095a890	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0095ad20	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0095b020	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+0095b6f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0095c1f0	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0095cdf0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0095cf50	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0095cfe0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0095d070	compile_fail	COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'const C3DVector' to 'const C2DVector &'
+0095d200	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0095d590	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0095d880	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0095da90	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0095db30	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0095ddf0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0095de60	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0095df40	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0095e010	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0095e350	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0095e470	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeSquared' : is not a member of 'C3DVector'
+0095e900	compile_fail	COMPILE_FAIL error C2039: 'Get2DLength' : is not a member of 'C3DVector'
+0095f7d0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0095fda0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00961550	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00961ab0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00961e80	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00961fb0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+009624d0	compile_fail	COMPILE_FAIL error C2039: 'MagnitudeSquared' : is not a member of 'C3DVector'
+009633e0	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+00964160	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+009647c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00964ca0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00965210	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+009652c0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00965320	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00966930	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00967180	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+009672c0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00968230	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+009685c0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00968860	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+009689c0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00968bc0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00969470	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0096aad0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0096b600	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0096c880	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+0096d260	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0096f180	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0096f770	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+0096fa90	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0096ff10	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00970930	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00970cd0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00970f30	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared2D' : is not a member of 'C3DVector'
+009718f0	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+00977b10	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+00979260	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0097aae0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0097b3f0	bytes_differ	length 132 != 117
+0097cb10	compile_fail	COMPILE_FAIL error C2039: 'Normalise' : is not a member of 'C3DVector'
+0097ccd0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0097dcb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0097df60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0097e890	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0097ec00	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+0097f5b0	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+0097fbe0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+009804a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00980770	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00984b40	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+009852c0	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeSquared' : is not a member of 'C3DVector'
+00986c30	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00989700	compile_fail	COMPILE_FAIL error C2039: 'X' : is not a member of 'C4DVector'
+00989a60	compile_fail	COMPILE_FAIL error C2039: 'X' : is not a member of 'C4DVector'
+00991640	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+009950f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00995340	bytes_differ	length 1038 != 1064
+00a04160	compile_fail	COMPILE_FAIL error C2621: member 'UInputEventData::__unnamed::HeldMouseMovement' of union 'UInputEventData::__unnamed' has copy constructor
+00a0be10	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a0c250	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a0c2b0	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00a0c450	compile_fail	COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+00a0c830	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a11610	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00a11760	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a11ba0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a11c90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a13440	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a13720	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a13c60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a13da0	compile_fail	COMPILE_FAIL error C2039: 'ToString' : is not a member of 'C3DVector'
+00a14040	compile_fail	COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+00a14260	compile_fail	COMPILE_FAIL error C2511: 'void C3DVector::Rotate(float,float)' : overloaded member function not found in 'C3DVector'
+00a14440	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a14480	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+00a145c0	compile_fail	COMPILE_FAIL error C2039: 'GetRandomUnitVector' : is not a member of 'C3DVector'
+00a146c0	compile_fail	COMPILE_FAIL error C2039: 'GetRandomPointWithinUnitSphere' : is not a member of 'C3DVector'
+00a14fd0	compile_fail	COMPILE_FAIL error C2011: 'C2DCoordI' : 'class' type redefinition
+00a18760	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00a187c0	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00a18f70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a1ab40	compile_fail	COMPILE_FAIL error C2039: 'SetXY' : is not a member of 'C3DVector'
+00a2afa0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a2c360	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a2ea20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a31380	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a31530	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00a32340	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a32440	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a329b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a342f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a361a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a36350	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a3ef00	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a422c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a42470	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a442e0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00a45f90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a471d0	compile_fail	COMPILE_FAIL error C2511: 'C3DVector C3DVector::operator +(const C2DVector &) const' : overloaded member function not found in 'C3DVector'
+00a4b7b0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00a4e150	bytes_differ	masked sha1 differs
+00a4eb00	compile_fail	COMPILE_FAIL error C2039: 'Clear' : is not a member of 'C3DVector'
+00a4ebb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a560a0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00a56180	compile_fail	COMPILE_FAIL error C2676: binary '-=' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00a56aa0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00a57ef0	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00a57f70	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00a58720	compile_fail	COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00a5ac60	other_wave	passes hdrmig3 but is in wave w1 (one file, one wave): redo from the landed source after w1
+00a66c20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a6c5a0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00a6c5f0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00a6c850	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00a6c890	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00a6c9c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a6cb20	compile_fail	COMPILE_FAIL error C2676: binary '-=' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00a6ed30	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a6f8b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a70cb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00a75340	compile_fail	COMPILE_FAIL error C2039: 'GetX' : is not a member of 'C3DVector'
+00a86cd0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00a8efa0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00a8f770	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00a8fd40	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00a8ff50	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00a999b0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00a9dfa0	compile_fail	COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00aa4b00	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa4b50	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa4b90	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa4c00	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa4c30	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa4ca0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa4cd0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa4fb0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa5250	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa59c0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa5b30	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa5c20	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa64e0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa6a60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00aa7320	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa9ad0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aa9b20	bytes_differ	length 40 != 51
+00aa9da0	bytes_differ	length 79 != 100
+00aa9e10	bytes_differ	length 53 != 74
+00aaaa10	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aaaa60	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00aab500	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00aab570	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00aacfb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00aad020	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00aae130	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00ab9a70	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00ab9af0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00ab9b50	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00ab9bb0	bytes_differ	length 100 != 43
+00ab9be0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00ab9c50	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00ab9cb0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00ab9ce0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00abc650	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00abc6e0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00abc7b0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00abd150	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00ac2160	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00ac66a0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00ac66e0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00ac7050	compile_fail	COMPILE_FAIL error C2039: 'DotProduct' : is not a member of 'C3DVector'
+00ac85d0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00ac9d50	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00acd840	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00acd900	stray_change	00acd0e0: ?DetectFoldOver@COptimisedPrimitive@@QAE_NPAVCSubContraction@QuadricOptimiserInternals@@PAUC3DVector@3@@Z -> ?DetectFoldOver@COptimisedPrimitive@@QAE_NPAVCSubContraction@QuadricOptimiserInternals@@PAVC3DVector@3@@Z
+00ad0100	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00ad5ce0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00add920	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00addd80	compile_fail	COMPILE_FAIL error C2039: 'Length' : is not a member of 'C3DVector'
+00adebc0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00adf610	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00adf760	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00ae18c0	bytes_differ	length 449 != 436
+00aeabe0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00aeac90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00aeb600	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00aeb6d0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00aecf90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00aee8c0	compile_fail	COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00aee9f0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00af0880	bytes_differ	length 136 != 79
+00af2250	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00af22c0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00af2780	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00af3cf0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00af4100	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00af4e10	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00af4ee0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00af59a0	stray_change	006e2000: ??4?$vector@U?$pair@KUC3DVector@NParticleEngine@@@NParticleEngine@@@NParticleEngine@@QAEAAU01@ABU01@@Z -> ??4?$vector@U?$pair@KVC3DVector@NParticleEngine@@@NParticleEngine@@@NParticleEngine@@QAEAAU01@ABU01@@Z ; 0076c000: ??$sort@U?$pair@KUC3DVector@NParticleEngine@@@NParticleEngine@@U?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@2@@NParticleEngine@@YIXPAU?$pair@KUC3DVector@NParticleEngine@@@0@0U?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@0@@Z -> ??$sort@U?$pair@KVC3DVector@NParticleEngine@@@NParticleEngine@@U?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@2@@NParticleEngine@@YIXPAU?$pair@KVC3DVector@NParticleEngine@@@0@0U?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@0@@Z
+00afe320	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00afe380	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00afead0	bytes_differ	length 121 != 64
+00b00db0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b059f0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b05b10	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b09360	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b094b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b0a060	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b0f210	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b10360	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b109b0	compile_fail	COMPILE_FAIL error C2039: 'SquaredLength' : is not a member of 'C3DVector'
+00b158a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b15b50	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b161a0	compile_fail	COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+00b177c0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b179a0	bytes_differ	masked sha1 differs
+00b18020	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b18060	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b18390	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b18780	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b1a640	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b1a700	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b1aeb0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b1b380	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b20630	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b20fd0	bytes_differ	masked sha1 differs
+00b21450	stray_change	own ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JPAUC3DVector@2@111@Z -> ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JPAVC3DVector@2@111@Z ; 00b20d30: ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JJPAUC3DVector@2@111@Z -> ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JJPAVC3DVector@2@111@Z
+00b214c0	stray_change	own ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@MPAUC3DVector@2@111@Z -> ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@MPAVC3DVector@2@111@Z ; 00b20d30: ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JJPAUC3DVector@2@111@Z -> ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JJPAVC3DVector@2@111@Z
+00b215a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b216f0	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00b21dd0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b22100	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b22ee0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b23110	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b231e0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b24150	compile_fail	COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00b25d20	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b261d0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b30480	compile_fail	COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00b308e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b314e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b317a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b36c50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b38600	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b38ed0	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00b395e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b46a30	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b47280	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b49810	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00b4a5f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b4af50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b4ce20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b4ced0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b52090	compile_fail	COMPILE_FAIL error C2039: 'Length' : is not a member of 'C3DVector'
+00b52b30	bytes_differ	length 647 != 665
+00b63260	bytes_differ	length 747 != 711
+00b662f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b670e0	compile_fail	COMPILE_FAIL error C2039: 'Length' : is not a member of 'C3DVector'
+00b6e010	bytes_differ	masked sha1 differs
+00b7c510	bytes_differ	length 860 != 858
+00b806e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b80790	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b80840	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b80940	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeSquared' : is not a member of 'C3DVector'
+00b80b70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b80f90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b80fe0	compile_fail	COMPILE_FAIL error C2039: 'ScaleInto' : is not a member of 'C3DVector'
+00b812f0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b814b0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b81640	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00b8cee0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b91f50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b92660	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b92d30	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b92e50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b92f80	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b94d30	compile_fail	COMPILE_FAIL error C2039: 'Length2D' : is not a member of 'C3DVector'
+00b96350	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00b99bb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b9c2e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b9c500	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00b9d1e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00b9dc60	compile_fail	COMPILE_FAIL error C2039: 'LengthSquared' : is not a member of 'C3DVector'
+00b9dfc0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00baa4e0	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00babe60	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00bb6450	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00bb8090	compile_fail	COMPILE_FAIL error C2552: 'corners' : non-aggregates cannot be initialized with initializer list
+00bb8690	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bbbb40	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bbbf70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bc1420	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bc25b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bc4cd0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bc7d40	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bc9eb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bca370	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bcbc00	compile_fail	COMPILE_FAIL error C2039: 'LengthSquared' : is not a member of 'C3DVector'
+00bcbf80	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bcc080	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bcc1c0	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00bcc340	other_wave	passes hdrmig3 but is in wave w3 (CArray) this phase: redo after w3 lands
+00bcc3b0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bcc700	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bcd660	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bceb40	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bcebe0	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00bcef80	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bcf670	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bcf760	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bcf930	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bd2bc0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bdda80	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00bde080	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bdebf0	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00bdfb50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bdfcf0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bdfe70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bdff50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00be0140	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00be1e70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bf6640	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bf6930	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bf6d50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bf6f80	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bf7100	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bf7df0	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00bfaa80	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00bfac70	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00c0f2f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00c1bfb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00c1bff0	compile_fail	COMPILE_FAIL error C2039: 'Copy' : is not a member of 'C3DVector'
+00c1c070	compile_fail	COMPILE_FAIL error C2039: 'SwapYZ' : is not a member of 'C3DVector'
+00c1c280	compile_fail	COMPILE_FAIL error C2039: 'SwapYZ' : is not a member of 'C3DVector'
+00c1c3f0	bytes_differ	length 96 != 110
+00c1cc10	bytes_differ	length 198 != 133
+00c20340	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00c256a0	compile_fail	COMPILE_FAIL error C2039: 'DotProduct' : is not a member of 'C3DVector'
+00c256f0	compile_fail	COMPILE_FAIL error C2556: 'int C3DVector::operator ==(const C3DVector &) const' : overloaded function differs only by return type from 'bool C3DVector::operator ==
+00c25730	compile_fail	COMPILE_FAIL error C2039: '!=' : is not a member of 'C3DVector'
+00c257b0	compile_fail	COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00c25860	compile_fail	COMPILE_FAIL error C2084: function 'const C3DVector C3DVector::Cross(const C3DVector &) const' already has a body
+00c258d0	compile_fail	COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+00c25970	compile_fail	COMPILE_FAIL error C2084: function 'float C3DVector::GetMagnitude(void) const' already has a body
+00c27550	compile_fail	COMPILE_FAIL error C2039: 'SwapYZ' : is not a member of 'C3DVector'
+00c2ad60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00c2dd30	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00c2f4e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00c33920	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00c37f90	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00c3b2a0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00c40370	compile_fail	COMPILE_FAIL error C2039: 'SetCrossProduct' : is not a member of 'C3DVector'
+00c40410	compile_fail	COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00c40450	bytes_differ	length 79 != 75
+00c404a0	bytes_differ	length 79 != 75
+00c404f0	compile_fail	COMPILE_FAIL error C2676: binary '!=' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00c40650	bytes_differ	length 255 != 249
+00c41a70	compile_fail	COMPILE_FAIL error C2039: 'Length' : is not a member of 'C3DVector'
+00c45160	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00c45810	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00c458d0	compile_fail	COMPILE_FAIL error C2593: 'operator +' is ambiguous
+00c53d50	compile_fail	COMPILE_FAIL error C2676: binary '!=' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00c53e40	compile_fail	COMPILE_FAIL error C2676: binary '!=' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00c62530	compile_fail	COMPILE_FAIL error C2593: 'operator +' is ambiguous
+00cbe2ff	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00cbe3ea	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00cbe45c	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00cbe4b7	compile_fail	COMPILE_FAIL error C2039: 'GetLengthSquared' : is not a member of 'C3DVector'
+00cbe512	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00cbe551	compile_fail	COMPILE_FAIL error C2039: 'GetLength' : is not a member of 'C3DVector'
+00cbe693	compile_fail	COMPILE_FAIL error C2039: 'InitialiseFromAngles' : is not a member of 'C3DVector'
+00d701c0	bytes_differ	length 834 != 850
+00da6240	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00da6740	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00df48f0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00e0de90	compile_fail	COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00e2bfa0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00e33b00	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00e48eb0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00e53f60	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00e7b970	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+00ef25e0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0121ac30	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0121acd0	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0121ad20	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0121ad50	budget	passes hdrmig3 + gate-ready; left out for the ~4,000-row phase budget (READY_PHASE4.txt)
+0121aec0	compile_fail	COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator

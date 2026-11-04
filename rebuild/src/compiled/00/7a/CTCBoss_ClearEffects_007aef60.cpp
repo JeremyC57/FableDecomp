@@ -1,5 +1,6 @@
 // CTCBoss::ClearEffects() -- kill every live effect thing in the Effects vector
 // Leaf: ClearEffects
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007AEF60, length 110 bytes (+2 int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CThing::Kill(bool) @ 0x004C9B80.
@@ -11,9 +12,7 @@
 // C3DVector is declared packed), HelperCreatures +0x30, Effects +0x3C; retail CThing: bitset +0x20, map +0x44, base def +0x70,
 // Dead +0x91.
 #pragma pack(push, 1)
-class C3DVector { public:                              // packed: CTCBoss keeps one at the unaligned +0x22
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

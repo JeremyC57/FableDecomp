@@ -1,5 +1,6 @@
 // C3DMeshStats::UnpackNames(std::vector<CCharString>&, bool, const CCharString&, bool) const -- append every packed helper-point (or dummy-object) name that starts with the prefix, once per object stored under it
 // Leaf: UnpackNames
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail @ 0x00A2ED10, 468 bytes (ret 10h).
 // Callees: strncmp 0x00BFEAF8, CCharString(const char*, long) 0x0099EBF0 / copy ctor 0x0099EC30 / ~CCharString 0x0099EAE0,
 //   CRC Calc 0x004014A0 (__fastcall seed, data, length), CPreAllocVectorMap<ulong,C3DDummyObject>::UpperBound 0x00A317E0 /
@@ -78,7 +79,7 @@ void CCharStringVector::_M_insert_overflow(CCharString* position, const CCharStr
 }
 #pragma auto_inline(on)
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public: float m_row[3][4]; };
 struct SHelperPointEntry { unsigned long first; C3DVector Position; long BoneIndex; };        // 20 bytes
 struct SDummyObjectEntry { unsigned long first; CMatrix3x4 Transform; long BoneIndex; };      // 56 bytes

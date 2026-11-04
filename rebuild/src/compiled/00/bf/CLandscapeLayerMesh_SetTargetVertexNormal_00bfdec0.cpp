@@ -1,5 +1,6 @@
 // CLandscapeLayerMesh::SetTargetVertexNormal(CTVertexLandscapeForeground& vertex, unsigned long packedNormal) -- unpack an 11:11:10 signed packed normal into the foreground vertex's float normal (x, y scaled by 1/1023, z by 1/511)
 // Leaf: ?SetTargetVertexNormal@CLandscapeLayerMesh@@AAEXAAVCTVertexLandscapeForeground@@K@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BFDEC0, 145 bytes (+ int3 padding). Ego_r.pdb:
 // ?SetTargetVertexNormal@CLandscapeLayerMesh@@AAEXAAVCTVertexLandscapeForeground@@K@Z (private __fastcall member that never reads
 // `this`: both arguments on the stack, `ret 8`). The foreground twin of CLandscapeBackgroundPatch::SetTargetVertexNormal
@@ -9,11 +10,7 @@
 // the member never touches `this`, so the class is declared here only to scope it.
 // Shape: the sign extensions are `v | ((v & signBit) ? highMask : 0)` (`neg ; sbb ; and ; or`), the `fild` conversions go through
 // the dead packed-normal argument slot, and the three products are stored from the FPU stack (`fxch st(2)` then three `fstp`).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CTVertexLandscapeForeground {
 public:
     unsigned short X;                              // +0x00

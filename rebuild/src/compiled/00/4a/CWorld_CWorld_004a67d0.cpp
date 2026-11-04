@@ -1,4 +1,5 @@
 // CWorld::CWorld(const CWorldInit& init) -- construct the game world: take the component, player manager and definition manager from the init block, null every manager pointer, set the debug/feature flags to their defaults, build the empty strings, vectors and atmos-copy list and stamp the start time
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004A67D0, length 736 bytes (`ret 4`, returns this).
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0, CCharString::CCharString 0x0099E4B0,
 //   CWideString::CWideString 0x0099AED0, CRT malloc thunk 0x00BFEA0E (STLport list sentinel), GFGetTime 0x009E1BC0.
@@ -66,11 +67,7 @@ class CIDrawWorld { public:
 class CCharString { public: void* PStringData; CCharString(); /* 0x0099E4B0 */ };
 class CWideString { public: void* PStringData; CWideString(); /* 0x0099AED0 */ };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 #pragma pack(push, 1)
 struct CPackedVector {
     float X, Y, Z;

@@ -2,6 +2,7 @@
 // surfaced undead returns to the earth and a buried one (when free to act) is moved to a fresh generation point near the
 // triggerer and rises with a strike; inside the radius a buried undead rises with a strike
 // Leaf: UpdateUndead
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x0074ACE0, 624 bytes, plain `ret` (0x498-byte frame: four 0x114-byte action temporaries).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, NCreatureMode::IsUnderground
@@ -14,7 +15,7 @@
 // trigger radius +0x2c, UndeadTriggered +0x88.
 class CThing;
 class CThingCreatureBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
 class CCharString { public:
     void* m_pData;

@@ -1,5 +1,6 @@
 // std::_For_each<CThingCreatureBase**,CKeepOutOffSmearedOutLine>(CThingCreatureBase** first, CThingCreatureBase** last, CKeepOutOffSmearedOutLine func) -- apply the obstruction's keep-out functor (push each creature off the smeared-out line) to every creature in the range and return the functor
 // Leaf: ??$_For_each@PAPAVCThingCreatureBase@@VCKeepOutOffSmearedOutLine@@@std@@YI?AVCKeepOutOffSmearedOutLine@@PAPAVCThingCreatureBase@@0V1@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FDA80, 65 bytes (`ret 10h` + int3 padding); /Gr TU: hidden result in ecx, first in
 //   edx, last and the 12-byte functor on the stack. Ego_r.pdb / FableWin.pdb
 //   `??$_For_each@PAPAVCThingCreatureBase@@VCKeepOutOffSmearedOutLine@@@std@@YI?AVCKeepOutOffSmearedOutLine@@PAPAVCThingCreatureBase@@0V1@@Z`;
@@ -12,7 +13,7 @@
 //   explicit instantiation (the landed 0x007F7B70 pattern); the functor's implicit copy writes the three words out. The
 //   functor needs its user constructor (FableWin.pdb has it): a POD result type moves the hidden result pointer from ecx
 //   to the stack (first/last then arrive in ecx/edx).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing { };
 class CThingCreatureBase : public CThing { };

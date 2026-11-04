@@ -1,11 +1,10 @@
 // CMatrix3x4::InitialiseSkewedSymmetric(const C3DVector& v) -- make the matrix the skew-symmetric (cross-product) matrix of v: row0 (0,-z,y), row1 (z,0,-x), row2 (-y,x,0), zero translation
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A55D80, length 97 bytes. No callees.
 // Shape: an inlined identity setter runs first; its chained zero assignment stores right to left (+0x1c down to +0x04),
 //        the chained 1.0f assignment stores +0x20, +0x10 (the +0x00 store merges with the later 0), then the three
 //        separate translation zeroes. The skew entries then overwrite the identity in row order (fchs for the negated ones).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:
     C3DVector m_row0;                              // +0x00
     C3DVector m_row1;                              // +0x0c

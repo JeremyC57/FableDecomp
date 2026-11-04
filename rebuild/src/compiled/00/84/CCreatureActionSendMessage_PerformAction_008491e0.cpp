@@ -1,4 +1,5 @@
 // CCreatureAction_SendMessage::PerformAction() -- if the receiver is alive, post the action's message (def, position, sender = this creature, receiver, extra) to the world's message-event manager
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008491E0, length 110 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PReceiver at +0xb8 twice for the alive test and once for the argument,
 // PCreature at +8 twice), CCreatureActionBase::GetWorld @ 0x00692940 (the manifest "_Dest_val<...>" label is propagated; the result's +0x60 is the
@@ -11,7 +12,7 @@
 // Members: MessageDef at +0xa8 is a counted def pointer (the copy constructor 0x00982750 bumps the count at +4), Position at +0xac,
 // PReceiver at +0xb8 (an intelligent pointer), Extra at +0xc0. No engine header for this class; modelled locally (retail CCreatureActionBase is 0xa8 bytes).
 class CMessageEventDef;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead

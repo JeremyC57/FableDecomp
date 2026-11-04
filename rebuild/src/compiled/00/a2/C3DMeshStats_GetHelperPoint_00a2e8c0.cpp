@@ -1,4 +1,5 @@
 // C3DMeshStats::GetHelperPoint(unsigned long key, unsigned long index) -- the index-th helper point stored under `key`, or null
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2E8C0, oracle length 57 bytes.
 // Callees: CPreAllocVectorMap<unsigned long,C3DHelperPoint>::LowerBound(const ulong&) @ 0x00A316B0 (manifest).
 // The manifest label "GetDummyObject" is propagated from the byte-equivalent body @ 0x00A2E920 (same code on the
@@ -11,7 +12,7 @@
 // Retail layout: CPreAllocVectorMap {Compare +0, Elements +4, Size +8, Dirty +0xC} (PDB struct_layouts_egor.tsv).
 // The lower bound is checked against end() = Elements + Size and against the exact key (several helper
 // points can share a key, hence the index into the run), then the value of entry [bound + index] is returned.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DHelperPoint { public: C3DVector Position; long BoneIndex; };
 
 namespace std { template <class K, class V> struct pair { K first; V second; }; }

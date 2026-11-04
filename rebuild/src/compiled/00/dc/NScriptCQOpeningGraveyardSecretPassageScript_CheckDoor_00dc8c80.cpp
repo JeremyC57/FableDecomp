@@ -1,6 +1,7 @@
 // CQ_OpeningGraveyardSecretPassageScript::CheckDoor() -- trigger the path generator, make it persistent, lock the secret-passage gate; until the lieutenant shows up (and then while he lives) re-trigger the generator whenever the hero comes back to the graveyard path; then play the path-door cut-scene, set the objective, fade the gate out and swap in the new door
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: CheckDoor
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DC8C80, 1904 bytes.
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, ~CScriptThing 0x004AA840 (and its inline body), ~vector<CScriptThing>
 //   0x008AC970 (and its inline body), handle 0x007E72A0 / 0x007E74D0 / operator= 0x008ABD10, cast map 0x00CDBF70 /
@@ -30,7 +31,7 @@ extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CScriptThingImpl;
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();

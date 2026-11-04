@@ -1,5 +1,6 @@
 // CCreatureAction_GetPlateFromCupboard::PerformAction() -- create the plate thing at the cupboard, put it in the creature's carry slot and add creature mode 5
 // Leaf: PerformAction
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00848500, 275 bytes, virtual PerformAction.
 // Callees: CCharString(const char*, long) 0x0099EBF0 ("" 0x0122D70E), CBaseIntelligentPointer::GetPItem 0x00A01B50
@@ -18,7 +19,7 @@
 //   (DecRefToZero, null test folded after the dereference).
 class CThing;
 class CThingObject;
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 class CCharString { public:
     void* PStringData;

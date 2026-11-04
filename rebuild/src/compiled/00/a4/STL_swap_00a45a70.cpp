@@ -1,5 +1,6 @@
 // std::swap(C3DSkeletalBoneMorph& a, C3DSkeletalBoneMorph& b) -- exchange two bone morphs through a temporary copy
 // Leaf: ??$swap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A45A70, length 141 bytes (+3 int3 pad), `ret`.
 // Callers: 0x00A461D0 __unguarded_partition (this chunk, through the inlined iter_swap) and the `jmp` at 0x00A45F80
 //   (the out-of-line iter_swap). Callees: CCharString copy ctor 0x0099EC30 / operator= 0x0099EFB0 / dtor 0x0099EAE0.
@@ -16,11 +17,7 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class C3DVector {                                    // retail C3DVector: memberwise user copy ctor, implicit operator=
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DSkeletalBoneMorph {
 public:

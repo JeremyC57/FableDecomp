@@ -2,6 +2,7 @@
 //   forcefields and a physical barrier, call the bodyguards, play CS_HAUNTED_DOORCLOSES; when the parent's clear flag is set
 //   drop everything, play the two "_OFF" effects and enable teleporting
 // Leaf: ?Main@CM_HeroInsideHouse@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Shape: the barrier-here position is a __forceinline null-test accessor (the per-function inline budget otherwise puts the
 //   "_OFF" lines out of line); the physical-barrier position is a virtual GetPos on the GetThingWithScriptName temporary,
 //   which VC7.1 hoists ahead of the by-value "" argument. Handle ctor inline, dtor 0x007E74D0 / operator= 0x008ABD10 out of line.
@@ -15,7 +16,7 @@
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0

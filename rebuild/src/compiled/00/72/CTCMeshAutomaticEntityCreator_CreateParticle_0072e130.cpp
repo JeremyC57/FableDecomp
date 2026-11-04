@@ -1,5 +1,6 @@
 // CTCMeshAutomaticEntityCreator::CreateParticle(const CCharString& dummyName, const CCharString& particleName, CTCGraphicAppearance* appearance) -- for every dummy object of that name on the appearance, create the particle effect at the owner, attach its emitter to the owner's dummy, mark it created-by-owner, give it a CTCCreatedEntity whose creator is the owner, and an owned-entity component
 // Leaf: CreateParticle
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072E130, 352 bytes (+ int3 padding), `ret 0Ch`. Speed TU (esp frame,
 //   `lea ecx,[ecx]` loop alignment); the 8-byte intelligent-pointer temporary built inside the loop gives the
 //   `and esp,-8` aligned frame (GOTCHAS chunk 232).
@@ -24,7 +25,7 @@ public:
     ~CCharString();                                    // 0x0099EAE0
     void* m_pStringData;
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCDParticleEmitter {
 public:

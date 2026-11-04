@@ -1,5 +1,6 @@
 // NCreatureMode::CModeScorpionKingTailPlunge::Spike() -- the tail plunge lands: create the spike thing at the target position for the scorpion's player, trigger its type-0x7D component, and spawn the def's spike special effect there
 // Leaf: Spike
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Shape: same-TU out-only stand-ins for GetDef<CThingObjectDef> (0x0042B040), GetSubDef<CSpecialEffectsDef> and
 //   GetEffectFromString: no out slot escapes, so VC7.1 packs the name/temporaries at +10h/+14h and the GetDef out at +18h
@@ -15,10 +16,7 @@
 //   dropped at the top {0, 0, CCharString x2, false, true, true, false, 0, 0} is a local model (no PDB match pinned).
 // Shape: as the landed StrikeResponseScorpionKing::Initialise 0x008C4B80 (stand-in GetSubDef / GetEffectFromString bodies
 //   that only write their out slots) and ScorpionTailPlunge::PerformAction 0x008C4810 (def index from a scoped name).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 class CCharString { public:
     void* PStringData;

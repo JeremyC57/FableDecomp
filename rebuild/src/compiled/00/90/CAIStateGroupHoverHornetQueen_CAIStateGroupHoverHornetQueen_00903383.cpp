@@ -1,5 +1,6 @@
 // CAIStateGroup_HoverHornetQueen::~CAIStateGroup_HoverHornetQueen() -- the compiler-generated destructor of CAIStateGroup_HoverHornetQueen: CircleMarkers (+0x50) then Things (+0x40) (reverse declaration order), then the inline CAIStateGroup_HoverMovementBase::~CAIStateGroup_HoverMovementBase() (its vptr store) and a tail jump to CAIStateGroup_EnemyCreatureBase::~CAIStateGroup_EnemyCreatureBase()
 // Leaf: ??1CAIStateGroup_HoverHornetQueen@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00903383, 33 bytes, thiscall, tail `jmp`.
 // Identity: CAIStateGroup_HoverHornetQueen -- proven; evidence: its only caller is the scalar deleting destructor 0x00903367 in slot 0 of vtable 0x0128D484
 //   (RTTI .?AVCAIStateGroup_HoverHornetQueen@@ : CAIStateGroup_HoverMovementBase, CAIStateGroup_EnemyCreatureBase, CAIStateGroupBase, CBaseClass); FableWin.pdb names ??1CAIStateGroup_HoverHornetQueen@@UAE@XZ; members per Ego_r.pdb CAIStateGroup_HoverHornetQueen (Ego_r.pdb Things +0x40, CircleMarkers +0x54; retail +0x50 with 12-byte STLport vectors).
@@ -65,7 +66,7 @@ class CAIStateGroup_HoverMovementBase : public CAIStateGroup_EnemyCreatureBase {
 protected:
     virtual ~CAIStateGroup_HoverMovementBase() { }      // FableWin.pdb ??1CAIStateGroup_HoverMovementBase@@MAE@XZ (protected)
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 enum eWaspDirection { WASP_DIRECTION_NONE = 0 };
 class CThing;
 class CAIStateGroup_HoverHornetQueen : public CAIStateGroup_HoverMovementBase {

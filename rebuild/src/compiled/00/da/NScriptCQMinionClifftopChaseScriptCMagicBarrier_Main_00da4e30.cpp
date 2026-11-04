@@ -1,5 +1,6 @@
 // NScript::CQ_MinionClifftopChaseScript::CMagicBarrier::Main() -- a guild magic barrier: alive filter on Me, spawn the two red forcefield halves at Me turned 90 degrees; until the parent quest opens the barrier, respawn both idle halves whenever both are gone; then remove them, play the two "_OFF" effects, tell the hero the guildmaster unlocked the barrier and remove Me
 // Leaf: ?Main@CMagicBarrier@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA4E30, 1389 bytes; entity-script Main.
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CBaseClass dtor 0x0099A2E0, SetPredicate 0x00F35B10,
@@ -27,7 +28,7 @@
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0

@@ -1,4 +1,5 @@
 // CCreatureAction_BlockRespond::CCreatureAction_BlockRespond(const CCreatureAction_BlockRespond&) -- copy constructor: base CCreatureAction_BlockBase(other), own vtable (0x01276084), UseHitPos, HitPos and FaceTargetAtStart copied
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00855E80, length 96 bytes.
 // Callees: CCreatureAction_BlockBase::CCreatureAction_BlockBase(const CCreatureAction_BlockBase&) @ 0x00855EE0 (stores vtable
 // 0x01275F3C = CCreatureAction_BlockBase; the manifest label "CQuickAccessItemButtonGuiDef" is propagated)
@@ -9,10 +10,7 @@
 // the vtable stored is CCreatureAction_BlockRespond's (rtti-vtables.tsv).
 // The retail layout is byte-packed (bool members followed by unaligned dwords/vectors: +0x115, +0x125...), as the
 // PDB-derived engine headers also declare (#pragma pack(push, 1)); the pragma here reproduces that real layout.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 // engine/CCreatureAction_BlockBase.h exists but is not used: its PDB layout is 0x13c bytes (retail 0x124: the base's
 // containers are 4 bytes wider there) and carries no copy constructor; the base is modelled locally.

@@ -1,5 +1,6 @@
 // NShape::CTrack::GetBestCameraPosition(const C3DVector& pos, float) const -- the camera position a track proposes for a position: the position itself
 // Leaf: ?GetBestCameraPosition@CTrack@NShape@@QBE?AVC3DVector@@ABV3@M@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00760000, 27 bytes, `ret 0Ch` (thiscall: hidden result pointer, the position
 //   reference and the float on the stack; `this` unused).
 // Identity: Ego_r.pdb `?GetBestCameraPosition@CTrack@NShape@@QBE?AVC3DVector@@ABV3@M@Z`. The Ego_r.pdb donor keeps the
@@ -10,10 +11,7 @@
 //   placeholder `_gapscan::sub_00760000`.
 // Shape: C3DVector's memberwise user copy constructor (as the landed 0x0075FF00 model) copies X, Y, Z through edx/ecx into
 //   the hidden result, which is returned in eax.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NShape {
 class CTrack {

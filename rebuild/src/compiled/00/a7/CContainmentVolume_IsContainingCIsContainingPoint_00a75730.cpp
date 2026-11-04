@@ -1,4 +1,5 @@
 // CContainmentVolume::IsContaining<CIsContainingPoint>(const CIsContainingPoint& test) const --
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // true when the point lies on the positive side of every containment plane
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A75730, length 86 bytes (+ int3 padding). No callees.
 // Float pool: 0.0f @ 0x0122DEDC. PDB: CPlane = { C3DVector Normal; float Distance } (16 bytes),
@@ -11,11 +12,7 @@
 // exit is `xor al,al`, the true result is the constant hoisted into bl before the loop.
 #include "engine/CContainmentVolume.h"
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CPlane { public:
     C3DVector Normal;

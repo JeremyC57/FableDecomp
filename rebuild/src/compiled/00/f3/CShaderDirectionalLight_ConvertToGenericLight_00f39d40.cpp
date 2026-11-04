@@ -10,10 +10,9 @@
 // +0, EParameterType Types[2] +0x20, float Attenuation2 +0x28, AttenuationBase +0x2C, unsigned long Size
 // +0x30}. The enum values 1 (direction) / 2 (position) / 0 (none) are named from their use.
 // Leaf: ?ConvertToGenericLight@CShaderDirectionalLight@@UBEXAAVCShaderGenericLight@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C4DVector { public:
     float X, Y, Z, W;

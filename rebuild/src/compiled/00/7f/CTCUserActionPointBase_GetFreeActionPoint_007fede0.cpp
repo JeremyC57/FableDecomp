@@ -1,5 +1,6 @@
 // CTCUserActionPointBase::GetFreeActionPoint(CThing& thing, C3DVector& position, CRightHandedSet& rh, long& index) -- hand the thing a free action point: refresh the blocked list, remember the thing, then keep drawing random free points (taking each off the free list); one not known to be blocked and not blocked now is returned, a newly blocked one goes on the blocked list; false when the free list runs dry
 // Leaf: GetFreeActionPoint
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 27 (family acc, DECISIONS_W26 D5): the callee UpdateBlockedActionPoints 0x007FECB0 is protected in both PDBs (IAE).
 // Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
 //   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
@@ -22,7 +23,7 @@
 //   the overflow insert is a same-TU stand-in as in the landed sibling.
 class CThing;
 class CBaseObject;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 
 #include <stdlib.h>

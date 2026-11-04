@@ -1,5 +1,6 @@
 // NScript::CV_BordelloScript::CBordelloEntrance::Main() -- Bowerstone bordello door: lock the door (Me); until Q_TraderEscort is completed, tell the hero it is closed whenever he uses it (game info, wait for click-past); then set the "BordelloSign" readable text (refuge once it became a nunnery, otherwise open), unlock the door and idle
 // Leaf: ?Main@CBordelloEntrance@CV_BordelloScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E3B4A0, 671 bytes (672 with padding); entity-script vtable slot 1 (Main).
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30, CCharString(const char*, long) 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0, ~CScriptThing 0x004AA840; CScriptThing slot 20 MsgIsUsedBy; CGameScriptInterface slots
@@ -12,7 +13,7 @@
 // Shape: no alive filter; the sign's text tag is set from the nested by-value lookup (Game's vtable cached in ebx).
 // Naming wave 35: identity reg 00e39de9 "BordelloEntrance" in 00e39b40; Alloc 00e3b3d0; vtable 012e3b80 slot 1; PDB ?Main@CBordelloEntrance@CV_BordelloScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBordelloEntrance::Main (wave3/labels_alloc.tsv); PDB ?Main@CBordelloEntrance@CV_BordelloScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBordelloEntrance@@QAEXXZ`; this source now defines the PDB member (outer stand-in CV_BordelloScript moved into NScript); same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

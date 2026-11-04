@@ -1,4 +1,5 @@
 // NParticleEngine::CPSCSplineBase::WriteBinary(CDataOutputStream&) -- write the spline's control-point count and points (from a copy of the array), then a presence flag and the body of the random-offset and pos-param data when they exist
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B21630, length 192 bytes. Virtual: slot 16 of
 // NParticleEngine::CPSCSplineBase's vtable 0x012A0B14.
 // Callees: CDataOutputStream::WriteULONG @ 0x00993EA0, Write3DVector @ 0x00993FD0, WriteBool @ 0x00993E30 (x2);
@@ -12,7 +13,7 @@
 // homed in the dead stream-argument slot and pushed as a dword.
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 template<class T> class CArray { public:                          // retail CArray<T>: three pointers
     T* m_pData;

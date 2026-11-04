@@ -1,5 +1,6 @@
 // CFilter_Bind3::operator()(const CThingPhysical& thing) -- a physical thing passes when it is not the source thing, both physics components collide with things, and its map-who footprint circle overlaps the filter circle
 // Leaf: ??$?RVCThingPhysical@@@?$CFilter_Bind3@VCThingFilter_SolidToThing@@VCThingFilter_PhysicsFlagsSolidToThing@@VCThingFilter_OverlappingCircle@@@@QBE_NABVCThingPhysical@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00669040, 183 bytes (+ int3 padding), thiscall `ret 4`, bool in eax.
 // Full name (Ego_r.pdb name set): CFilter_Bind3<CThingFilter_SolidToThing, CThingFilter_PhysicsFlagsSolidToThing,
 //   CThingFilter_OverlappingCircle>::operator()<CThingPhysical>(const CThingPhysical&) const. No call or address
@@ -16,10 +17,7 @@
 //   exits); the three filter operators are __forceinline (plain inline leaves calls). The SolidToThing test reads only SourceThing in retail (PTCSolidToThing is never loaded). The flags
 //   test reads the thing's component into a local before the null tests, then `a || b` on the source component. The
 //   circle test is the landed 0x0063EF50 body (dx squared first needs the two-statement `d2`). No pragma.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 class CThing;
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \

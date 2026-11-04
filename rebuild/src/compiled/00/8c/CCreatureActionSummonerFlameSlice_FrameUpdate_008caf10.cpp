@@ -1,4 +1,5 @@
 // CCreatureAction_SummonerFlameSlice::FrameUpdate() -- base FrameUpdate, then while the flame-slice thing is alive and carries its obstruction (interface type 0xed), stretch the obstruction over the summoner (start, end, twice the summoner's radius)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CAF10, length 130 bytes (+ int3 padding).
 // Callees: CCombatActionBase::FrameUpdate @ 0x00859D80 (direct base call), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the slice thing at +0x114
 // three times, PCreature at +8 three times), CThing::GetPos @ 0x004C73D0 (const C3DVector&, twice), the obstruction shape setter @ 0x007FD3F0
@@ -8,7 +9,7 @@
 // arguments are evaluated first, right to left (the summoner's placement +0x60 into ebx, the summoner twice into ebp/esi); inside it the width
 // `radius * 2.0f` (`fadd st(0),st(0)`) is pushed, then the two positions.
 // No engine header for this class matches retail (CCombatActionBase is 0x114 bytes); modelled locally.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CTCPlacement {
     unsigned char _pad0[0x34];
     float m_radius;                         // +0x34

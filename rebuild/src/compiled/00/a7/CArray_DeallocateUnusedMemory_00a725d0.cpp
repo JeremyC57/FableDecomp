@@ -1,5 +1,6 @@
 // CArray<C3DVector>::DeallocateUnusedMemory() -- shrink the array to fit: when it has spare capacity, copy the elements into an exactly reserved temporary, release the old storage and adopt the temporary's
 // Leaf: ?DeallocateUnusedMemory@?$CArray@VC3DVector@@@@QAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH (agent902) -- the agent422 recipe (0x00A74EA0): STLport vector base + `CArray<T> temp;
 //   temp.reserve(size()); temp.insert(temp.begin(), begin(), end()); DeallocateMemory(); swap(temp);` with same-TU noinline
 //   bodies for reserve, the forward _M_range_insert (tag never touched) and the out-of-line DeallocateMemory: VC7.1 then
@@ -11,7 +12,7 @@
 //   CPhysicsMesh::TotalPoints (`add ecx,3Ch`; retail layout: 16-byte header, two 0x10 CVectorMaps, TotalFaceIndices 0xC).
 // Callees: vector<C3DVector>::reserve 0x00920FF0 (on the temporary), vector<C3DVector>::_M_range_insert<C3DVector*>(pos, first, last, forward_iterator_tag)
 // 0x00A70CB0, CArray::DeallocateMemory 0x00A71F40, free 0x00BFEA14.
-class C3DVector { public: float X, Y, Z; };          // CPhysicsMesh::TotalPoints element (12 bytes)
+#include "engine/C3DVector.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }

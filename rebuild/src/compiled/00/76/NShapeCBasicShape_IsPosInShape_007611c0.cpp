@@ -1,4 +1,5 @@
 // NShape::CBasicShape::IsPosInShape(const C3DVector& pos) -- true when any subdivision triangle contains the position
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007611C0, length 55 bytes (+ int3 padding).
 // Callees: NShape::CSubdivisionTriangle::IsPosInShape (virtual slot 4, +0x10) on each element.
 // Vtable 0x0126A31C (rtti-vtables.tsv: NShape::CBasicShape, slot 4 = this function).
@@ -6,7 +7,7 @@
 // CCountedPointer<CSubdivisionTriangle> {object, count block}; the loop walks first..last and
 // re-reads `last` after each virtual call (the callee may touch the container). The result is
 // `unsigned char` (retail `xor al,al` / `mov al,1`, no `xor eax,eax`).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace NShape {
 

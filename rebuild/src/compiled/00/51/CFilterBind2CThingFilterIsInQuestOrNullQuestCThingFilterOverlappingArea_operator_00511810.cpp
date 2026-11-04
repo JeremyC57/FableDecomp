@@ -1,5 +1,6 @@
 // CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>::operator()(const CThingObject& thing) -- both filters: in the active quest (or none) and overlapping the area
 // Leaf: ??$?RVCThingObject@@@?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@QBE_NABVCThingObject@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00511810, 252 bytes, thiscall, `ret 4`, ebp frame.
 // Identity (probable): FableWin.pdb ??$?RVCThingObject@@@?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@QBE_NABVCThingObject@@@Z;
 //   the four CFilter_Bind2<IsInQuestOrNullQuest, OverlappingArea> instantiations (Ego_r.pdb / FableWin.pdb: CThingBuilding,
@@ -13,7 +14,7 @@
 // Retail-asm: 0x0051185D..0x00511877 `fld [ebp-10h] ; fadd [ebp-0Ch] ; fistp dword ptr [ebp-4] ; fild [ebp-4] ; fsub [ebp-8] ; fstp [ebp-14h] ; mov eax,[ebp-10h] ; cmp eax,[ebp-14h] ; jne ; dec dword ptr [ebp-4]` -- the engine's inline-assembly ceiling helper expanded in place (a bare dword fistp, the bit compare and the memory decrement in one 10-instruction block; VC7.1 emits no bare dword fistp from C++), as in the landed 0x0050EF30.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 #pragma optimize("y", off)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DBoxI {
 public:
     long X0, Y0, X1, Y1;

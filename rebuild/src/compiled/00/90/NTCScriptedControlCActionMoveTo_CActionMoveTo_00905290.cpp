@@ -9,6 +9,7 @@
 // Proximity 0 (stored from the ebx zero register), every other flag false and ActionPointIndex = -1; the
 // argument flags are FaceMovement and AvoidDynamicObstacles. Pos is left uninitialised.
 // Leaf: ??0CActionMoveTo
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 
 class CThing;
 
@@ -40,9 +41,7 @@ class CThing { public:
     CScriptThing GetScriptThing() const;              // 0x004C7E50
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CTCBase;
 

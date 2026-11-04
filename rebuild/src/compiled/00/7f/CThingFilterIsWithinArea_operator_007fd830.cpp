@@ -1,5 +1,6 @@
 // CThingFilter_IsWithinArea::operator()(CThing* thing) -- true when the thing lies within Radius (plus its own physics radius when IncludeThingRad) of the segment StartPos..EndPos in the XY plane
 // Leaf: ??RCThingFilter_IsWithinArea
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FD830, length 116 bytes.
 // Callees: CThing::GetPos @ 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is a propagated label),
 // GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector&, const C3DVector&, const C3DVector&) @ 0x008F5B50
@@ -8,11 +9,7 @@
 // retail CThing PhysicsTC +0x60, the physics component's radius float at +0x34 (local model).
 // Shape: the thing radius is a float local zeroed first and overwritten when IncludeThingRad; the line-out vector
 // is a named local; `out.X*out.X + out.Y*out.Y < r*r` (VC7.1 emits the Y term first) with the compare materialised as an int.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
     unsigned char _pad00[0x34];
     float         m_radius;                     // +0x34

@@ -1,5 +1,6 @@
 // std::__unguarded_insertion_sort_aux(THitLocationIntersectionElement* first, THitLocationIntersectionElement* last, THitLocationIntersectionElement*, THitLocationIntersectionElementPred comp) -- SGI unguarded insertion sort of the hit-location ray intersections by key: every element sinks below its larger predecessors (no lower-bound test), the linear insert inlined
 // Leaf: __unguarded_insertion_sort_aux
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00817540, 133 bytes, `ret 8` (__fastcall: first in ecx, last in edx, the
 // unused value-type pointer and the empty comparator on the stack -- the SGI/STLport algorithm TUs are /Gr). No callees.
 // Types (Ego_r.pdb, anonymous namespace 0x5EBD2A70): THitLocationIntersectionElement (32 bytes) = long key +0,
@@ -13,10 +14,7 @@
 // 8-dword `rep movsd` (each shift and the final `*last = val`); the loop pointer is strength-reduced to `i + 10h`.
 struct CHitLocation;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 struct THitLocationIntersectionElement {           // 32 bytes (implicit memberwise copy, trivial assignment)
     long          key;                             // +0x00

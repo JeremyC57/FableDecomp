@@ -1,5 +1,6 @@
 // std::__make_heap(pair<unsigned long, C3DVector>* first, pair<unsigned long, C3DVector>* last, CKeyPairCompareLess<unsigned long, C3DVector> comp, pair<unsigned long, C3DVector>*, int*) -- heapify [first, last) by sifting every parent down, last parent first
 // Leaf: ??$__make_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076A480, 96 bytes, `ret 0Ch`.
 // Callers: 0x0076AB59 and 0x0076B544 (__partial_sort 0x0076B530's inlined make_heap).
 // Callee: the landed __adjust_heap 0x00769D50 (same instantiation, first in ecx, hole in edx).
@@ -7,10 +8,7 @@
 //   comp and the two null type pointers on the stack): len = last - first (`sar ..,4`), nothing for len < 2,
 //   parent = (len - 2) / 2 (signed `cdq ; sub ; sar`), then `__adjust_heap(first, parent, len, _Tp(first[parent]),
 //   comp)` down to parent 0. The comparator is re-read from its slot every pass (all registers busy).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

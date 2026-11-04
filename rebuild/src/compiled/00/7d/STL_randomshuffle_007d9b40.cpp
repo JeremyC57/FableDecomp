@@ -1,5 +1,6 @@
 // std::random_shuffle(KnickKnack* first, KnickKnack* last) -- STLport random shuffle of the spot-the-addition knick-knack records: swap each element with a rand()-chosen element at or before it
 // Leaf: ??$random_shuffle@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D9B40, 159 bytes (+1 int3), /Gr __fastcall (first in ecx, last in edx),
 //   plain `ret`.
 // Identity: the only caller is CTCTavernGameSpotTheAddition::FrameUpdate (0x007D8E20, call at 0x007D92EC) over its
@@ -15,11 +16,7 @@ extern "C" int __cdecl rand();                          // 0x00BFEB16
 
 class CThingObject;
 #pragma pack(push, 1)
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 struct KnickKnack {                                     // 16 bytes
     C3DVector     Pos;                                  // +0x00

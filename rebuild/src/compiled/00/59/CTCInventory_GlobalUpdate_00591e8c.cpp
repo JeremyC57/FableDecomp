@@ -1,6 +1,7 @@
 // CTCInventory::GlobalUpdate(bool) -- base update, then spins the inventory's 3D item one rotation step and blinks the quick-access highlight
 // Retry 10: RELOCATION_MATCH -- the def release written as `DecRefToZero(Object->RefCount)` (a forceinline `long&` helper: `--count == 0` through a reference) gives retail's `dec [ecx+4] ; jne` scheduled after the fmul; the plain `--Object->RefCount == 0` form materialises the count in a register.
 // Leaf: GlobalUpdate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00591E8C, 214 bytes; frame-pointer size TU
@@ -22,9 +23,7 @@
 #pragma optimize("s", on)
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CMainGameComponent {
 protected:

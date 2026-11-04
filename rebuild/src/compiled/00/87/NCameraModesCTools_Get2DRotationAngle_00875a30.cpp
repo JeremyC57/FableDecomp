@@ -1,6 +1,7 @@
 // NCameraModes::CTools::Get2DRotationAngle(const C3DVector& from, const C3DVector& to) const -- the signed angle (in turns) that rotates from's XY direction onto to's: acos of the clamped normalised dot product, negative when the 2D cross product is negative
 // Grade: RELOCATION_MATCH (agent902, 2nd grade) -- `angle *= sign; return angle;`: VC7.1 then keeps the sign as an x87 local joined at one `fmulp` (retail); `return angle * sign;` / `sign * angle` tail-duplicate the product into the negative arm. The mirrored dot/length operands (agent901) fix the load order.
 // Leaf: ?Get2DRotationAngle@CTools@NCameraModes@@QBEMABVC3DVector@@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00875A30, length 224 bytes (`__fastcall`, `this` unused, `ret 8`).
 // Identity: Ego_r.pdb `?Get2DRotationAngle@CTools@NCameraModes@@QBEMABVC3DVector@@0@Z` (const, float, two const
 //   C3DVector&) in the NCameraModes::CTools TU (next to GetLandscapePointIntersectionFromTo 0x00875550); no direct callers
@@ -14,11 +15,7 @@
 #include <math.h>
 #pragma intrinsic(sqrt, acos)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 static const float INV_TWO_PI = 0.15915494f;           // 0x01237F08
 

@@ -1,4 +1,5 @@
 // CTCCarryable::GetCarriedPositionInfo(C3DPositionInterpolator* position, C3DOrientationInterpolator* orientation, float time) -- fills both interpolators' start values from the carry pose, copies them to the end values and returns the pose query's result
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00705B00, length 96 bytes.
 // Callees: CTCCarryable::GetCarriedPositionInfo(C3DVector*, CRightHandedSet*, bool, float) @ 0x007055D0 (manifest,
 // `ret 10h`). Called from 0x007036C4.
@@ -7,11 +8,7 @@
 // Shape: the overload is called with false and the time argument; its bool stays in eax across the two
 // implicit POD assignments (12 and 24 bytes), which copy as dword pairs through ecx/edx with the
 // destination advanced in place (`add ebp,10h`, `add ebx,1Ch`).
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet { public:
     C3DVector Up;

@@ -1,5 +1,6 @@
 // std::vector<CProng>::vector(const vector& x) -- STLport vector copy constructor (element CDefendingCombatantInfo::CProng) for a combat ring's 28-byte prongs: allocate exactly x.size() elements (none when empty), then __uninitialized_copy x's range into them
 // Leaf: ??0?$vector@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F20A0, 104 bytes (112 with int3 padding), thiscall, `ret 4`, returns this.
 // Identity: the copy routine is the landed __uninitialized_copy<CDefendingCombatantInfo::CProng*> 0x006F14A0, so the
 //   element is CProng (Ego_r.pdb, 28 bytes) and this is the vector<CProng> copy constructor (CCombatRing's Prongs
@@ -22,9 +23,7 @@ struct CBaseIntelligentPointer {
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
 #pragma pack(push, 1)
-class C3DVector { public:                                          // 1-aligned in retail (CProng::Prong sits at +1)
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 struct CProng {                                             // CDefendingCombatantInfo::CProng, 0x1c bytes

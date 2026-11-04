@@ -1,6 +1,7 @@
 // CTCNymph::~CTCNymph() -- destroy the nymph component: the PTarget, POldEffect and PEffect intelligent pointers, the FlightSpline's point storage (freed), the PDef def pointer (released and cleared), then ~CTCBase
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E33BB, length 70 bytes (the plain `??1`).
 // Leaf: ??1CTCNymph
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10 (x3), free @ 0x00BFEA14, the def's virtual slot 1
 // (Destroy, when its count drops to zero), CTCBase::~CTCBase @ 0x00686830 (tail jump).
 // The chunk label "CTCLightningOrb::~CTCLightningOrb" is propagated: the only caller is the scalar deleting destructor
@@ -66,7 +67,7 @@ struct CNymphDefPointer {                          // CDefPointer<CNymphDef cons
     }
 };
 
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 struct CSplinePointVector {                        // STLport vector<C3DVector> (malloc allocator)
     C3DVector* _M_start;

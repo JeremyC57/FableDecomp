@@ -1,5 +1,6 @@
 // NScript::CQ_AmbushTradersScript::CAT_Phase3Guard::Main() -- Arena phase-3 guard: alive filter on Me, wander round its own position (min 0, max from the script def), state group 4; find "AT_ConvoySpy" and ally it with every live guard of the parent, make it and the hero enemies of Me, mark Me on the minimap, wait for the phase to end, then take scripted control, walk to the nearest REGION_EXIT_POINT and fade out
 // Leaf: ?Main@CAT_Phase3Guard@CQ_AmbushTradersScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F051D0, 1232 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CIsThingAlive dtor 0x00E241B0, SetPredicate 0x00F35B10,
@@ -13,7 +14,7 @@
 // Shape: C3DVector carries a user memberwise copy ctor (retail copies the by-value wander centre word by word, load/store interleaved).
 // Naming wave 35: identity reg 00f02709 "AT_Phase3Guard" in 00f024c0; Alloc 00f050e0; vtable 012f7e68 slot 1; PDB ?Main@CAT_Phase3Guard@CQ_AmbushTradersScript@NScript@@; refs=1; was under-qualified CAT_Phase3Guard::Main (wave3/labels_alloc.tsv); PDB ?Main@CAT_Phase3Guard@CQ_AmbushTradersScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CAT_Phase3Guard@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
-class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0
 class CCharString { public:
     void* PStringData;

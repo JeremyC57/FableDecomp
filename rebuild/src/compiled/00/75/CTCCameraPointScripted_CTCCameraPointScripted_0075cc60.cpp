@@ -1,5 +1,6 @@
 // CTCCameraPointScripted::CTCCameraPointScripted(CThing*) -- CTCCameraPointDefinitionBase(thing), the scripted camera-point vtable, StartPos zeroed, ThingUID / PAT / TransitionTime zeroed and the three "set" flags cleared
 // Leaf: ??0CTCCameraPointScripted@@QAE@PAVCThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075CC60, length 66 bytes (+ int3 padding). Manifest label "CTCHeroCentre::
 // CTCHeroCentre" is propagated; vtable 0x01269C84 = CTCCameraPointScripted (rtti-vtables.tsv).
 // Callees: CTCCameraPointDefinitionBase::CTCCameraPointDefinitionBase(CThing*) @ 0x0075C180 (stores vtable 0x01269B04; manifest
@@ -17,11 +18,7 @@ class CTCCameraPointDefinitionBase { public:                       // vtable 0x0
     CTCCameraPointDefinitionBase(CThing* thing);            // 0x0075C180
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 enum EEditorPointAcquisionType { EDITOR_POINT_ACQUISITION_0 };
 

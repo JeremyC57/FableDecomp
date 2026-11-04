@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleConversationBase::IsThingsOk() -- true when both the speaker and the spoken-to thing exist and are different things
 // Leaf: IsThingsOk
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008527F0, length 47 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 on PSpeaker (+0x4c) then PSpokenTo (+0x54).
 // Shape: both pointers fetched into locals first (speaker kept in edi across the second call); the
@@ -10,7 +11,7 @@
 class CBaseObject;
 struct CBase;
 class CGameCameraManager;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 class CThing_Retail { public:

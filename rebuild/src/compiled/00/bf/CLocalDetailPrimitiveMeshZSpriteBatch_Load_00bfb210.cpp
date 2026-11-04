@@ -1,5 +1,6 @@
 // CLocalDetailPrimitiveMeshZSpriteBatch::Load(CDataInputStream* stream) -- read the bounding box and sphere, the object count, allocate the 0x4c-byte objects from the landscape memory manager and read each one's matrix, scale and 16-byte block, then allocate and bulk-read the 16-byte z-sprite entries; false when either allocation fails
 // Leaf: ?Load@CLocalDetailPrimitiveMeshZSpriteBatch
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BFB210, length 896 bytes (+ int3 padding), `ret 4` (primitive vtable slot 8,
 //   the catalog's "vfunc_8"; CObjectTypeCollection::Load 0x00BDE680 calls slot 8 as Load(stream)).
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, CEngineLandscapeMemoryManager::
@@ -46,7 +47,7 @@ private:
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector MinCoord, MaxCoord; };             // 0x18
 class C3DBoundingSphere { public: C3DVector Centre; float Radius; };        // 0x10
 class CMatrix3x4 { public: float E[12]; };                                  // 0x30

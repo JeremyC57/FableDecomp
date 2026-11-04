@@ -1,5 +1,6 @@
 // CTCDParticleEmitter::CParticleCreationParameters::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~CParticleCreationParameters runs UpdateParameters's destructor (CParticleUpdateParameters<unsigned long, unsigned long> at +0x28), then operator delete when bit 0 of flags is set; returns this
 // Leaf: ??_GCParticleCreationParameters@CTCDParticleEmitter@@QAEPAXI@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E26C0, 33 bytes (+ int3 padding), thiscall, `ret 4`; unreferenced (no call or pointer to it in Fable.exe).
 // Identity: CTCDParticleEmitter::CParticleCreationParameters::`scalar deleting destructor' -- proven; evidence: FableWin.pdb name set holds ??_GCParticleCreationParameters@CTCDParticleEmitter@@QAEPAXI@Z (and its CCountedPointer<CParticleCreationParameters> whose DeleteData keeps it); Ego_r.pdb CParticleCreationParameters holds CParticleUpdateParameters<unsigned long, unsigned long> UpdateParameters at +40 = +0x28 after four bools, three words and the 24-byte CRightHandedSet (no other destructible member); the body sits right after the two CParticleCreationParameters constructors 0x006E25C0 / 0x006E2640.
 //   Family G042 (8 deleting destructors that differ in the one member's offset and destructor; the propagated label
@@ -7,10 +8,7 @@
 // Callees: NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::~CParticleUpdateParameters() 0x006E2500, operator delete 0x00BFE9BC.
 // Shape: `delete p` on the class emits the non-virtual ??_G as its own COMDAT (the helper below is not graded).
 void __cdecl operator delete(void* p);                         // 0x00BFE9BC
-class C3DVector {                                            // 12 bytes
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet {                                     // 24 bytes
 public:
     C3DVector Right, Up;

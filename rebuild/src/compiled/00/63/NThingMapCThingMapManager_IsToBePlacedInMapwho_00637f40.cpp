@@ -1,5 +1,6 @@
 // NThingMap::CThingMapManager::IsToBePlacedInMapwho(const CTCMapwho& mapwho, const C3DVector& pos) const -- whether a thing of the mapwho component's physics radius at pos would touch any active thing map: compute its layer and four corner cells and test each corner's map info
 // Leaf: ?IsToBePlacedInMapwho@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00637F40, 122 bytes (+ int3 padding), `ret 8`, bool in al.
 // Identity: Ego_r.pdb `?IsToBePlacedInMapwho@CThingMapManager@NThingMap@@QBE_NABVCTCMapwho@@ABVC3DVector@@@Z`; the body
 // calls the two PDB-named protected helpers GetThingMapwhoLevel(float) (`E` = unsigned char) and
@@ -23,7 +24,7 @@ class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing { public:
     unsigned char   _pad00[0x60];

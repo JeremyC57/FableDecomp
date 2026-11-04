@@ -9,6 +9,7 @@
 // sentinel, links it to itself through a local and stores it last. The TU is built without /EHsc (no unwind frame although members have destructors).
 // Layout: Ego_r.pdb CPlayer up to +0x208; retail STLport list is 4 bytes (PDB 12), so PlayerDef sits at +0x21c (PDB +0x224).
 // Leaf: ??0CPlayer
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include <stdlib.h>
 
 class CInitBaseClass { public:
@@ -16,7 +17,7 @@ class CInitBaseClass { public:
     bool m_flag04;                              // +0x04 (cleared by the base constructor)
     CInitBaseClass();                           // 0x0099A310
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CCamera { public:                                // 0x38 bytes
     C3DVector WorldPosition;                    // +0x00

@@ -1,5 +1,6 @@
 // NCameraModes::CPCMouseLook::OnCameraInsideObservedThing() -- restore the last camera state, drop the queued mouse inputs and run a frame update at once
 // Leaf: ?OnCameraInsideObservedThing@CPCMouseLook@NCameraModes@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00873DB0, 86 bytes (int3 padding 0x00873E06..0F), thiscall, tail `jmp CBase::FrameUpdate`.
 // Identity (proven, two sources): (1) the only reference is slot 3 of vtable 0x01277784 (RTTI .?AVCPCMouseLook@NCameraModes@@ :
 //   NCameraModes::CBase); CBase's own slot 3 (vtable 0x0124DD74) is 0x0056E150, an empty `ret` -- the base
@@ -63,7 +64,7 @@ public:
 }   // namespace std
 
 class C2DVector { public: float X, Y; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace NCameraModes {
 enum EMode { };

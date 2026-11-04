@@ -1,6 +1,7 @@
 // NCameraModes::CScriptedControl::GetDefaultRollAngle() const -- the script module's roll angle when it supplies one, else no roll
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087BA60, 33 bytes, plain `ret` (float in st0).
 // Leaf: ?GetDefaultRollAngle@CScriptedControl@NCameraModes@@UBEMXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: vtable 0x0125C58C slot 19; FableWin.pdb ?GetDefaultRollAngle@CScriptedControl@NCameraModes@@UBEMXZ.
 // Callees: the module's virtual GetModuleRollAngle(float&) (slot 6, +0x18).
 // Layout: retail CScriptedControl as the landed ctor 0x0069DFE0: PScriptModule (CCountedPointer, Data first) +0xa4,
@@ -12,7 +13,7 @@ template<class T> class CCountedPointer { public:
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward, Up; };
 class CCamera { public:                                             // 0x38 bytes
     C3DVector       WorldPosition;                           // +0x00

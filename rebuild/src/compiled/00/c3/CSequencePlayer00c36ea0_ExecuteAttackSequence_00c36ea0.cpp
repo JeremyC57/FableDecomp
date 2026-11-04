@@ -1,5 +1,6 @@
 // CSequencePlayer_00c36ea0::ExecuteAttackSequence(long restart) -- (re)start the step list on the clock, then for every step build its (time, item) key; when the owner has a track for it, play the track at the key's position with Z = track time + track start for (end - start), and on a restart finish the track at its final step; then end the sequence
 // Leaf: ?ExecuteAttackSequence@CSequencePlayer_00c36ea0
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C36EA0, length 265 bytes (`ret 4`; 8-aligned ebp frame for the
 //          __int64 time stamps). Only caller 0x00C372A5.
 // Callees (all labels in the manifest are propagated and unrelated): Restart 0x00C36DB0, Begin(&clock) 0x00C36E00,
@@ -16,7 +17,7 @@
 struct CSequenceTime {                          // 8-byte time stamp (8-aligned)
     __int64 Ticks;
 };
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 struct CSequenceItem;
 struct CSequenceKey {                           // the (time, item) key built per step
     __int64 Packed;
@@ -68,7 +69,7 @@ void CSequencePlayer_00c36ea0::ExecuteAttackSequence(long restart)
         CSequenceTrack* track = Owner->FindTrack(key);
         if (track) {
             C3DVector position = key.GetPosition();
-            position.z = Owner->GetTrackTime(key) + track->Start;
+            position.Z = Owner->GetTrackTime(key) + track->Start;
             track->Play(position, track->End - track->Start);
             if (restart && Steps->IsFinalItem(i))
                 track->Finish(i);

@@ -1,4 +1,5 @@
 // CEngineInternalPrimitiveAnimatedMesh::SetAnimation(const SAnimationState&) -- copy the animation interpolator (+0x70), the two vectors (+0x88 / +0x94) and the orientation interpolator (+0xa0) from the state record
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCFC50, length 85 bytes.
 // Callees: C3DAnimationInterpolator::operator= @ 0x00BD85F0 (member +0x70 from record +0), C3DOrientationInterpolator::operator= @ 0x006B0E00 (member +0xa0
 // from record +0x30). Shape: the two C3DVector assignments are the engine's memberwise operator= (three dword moves through a re-based `lea` on both
@@ -13,10 +14,7 @@ class C3DOrientationInterpolator { public:
     C3DOrientationInterpolator& operator=(const C3DOrientationInterpolator& other);   // 0x006B0E00
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }   // the engine's memberwise copy; the assignment is the implicit one
-};
+#include "engine/C3DVector.h"
 
 struct SAnimationState {
     C3DAnimationInterpolator   m_animation;        // +0x00

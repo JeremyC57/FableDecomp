@@ -1,4 +1,5 @@
 // CCreatureAction_TrollThrowProjectile::CCreatureAction_TrollThrowProjectile(const CCreatureAction_TrollThrowProjectile&) -- copy constructor: base CCombatActionBase(other), own vtable, the projectile pointer, the target position, the flag byte and the throw frame
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C7D80, length 127 bytes (+ int3 padding).
 // Callees: CCombatActionBase::CCombatActionBase(const CCombatActionBase&) @ 0x0062F3B0, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CBaseIntelligentPointer::SetPItem @ 0x00A01B90 (the inline CIntelligentPointer copy constructor,
@@ -7,11 +8,7 @@
 // (three fixed-offset word moves through eax/ecx/edx), the flag byte through al, the last word.
 // The PDB header (CCreatureAction_TrollThrowProjectile.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
 class CThingCreatureBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }                          // leaves the words unset
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise copy constructor (fixed-offset moves);
-};                                                                                 // assignment stays implicit (re-based through `lea`)
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;   // 0x004C73D0
 };

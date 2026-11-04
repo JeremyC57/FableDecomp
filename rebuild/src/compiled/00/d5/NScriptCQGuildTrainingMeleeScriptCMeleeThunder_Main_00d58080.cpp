@@ -1,5 +1,6 @@
 // NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::Main() -- the Thunder fight: wait for the parent's stage 4, take scripted control
 // Leaf: ?Main@CMeleeThunder@CQ_GuildTrainingMeleeScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   (priority 4) and hold it while the stage stays 4; then wait for stage 6, take control again and hold it while the stage
 //   stays 6; release the scripted-thing handle and idle until the script is done
 // Identity (naming wave 11): ?Main@CMeleeThunder@CQ_GuildTrainingMeleeScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012D0564 slot 1 is stored by the factory 0x00D57FA0 registered as "MeleeThunder"
@@ -16,7 +17,7 @@
 //   function end) calls 0x007E74D0 by VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Naming wave 35: identity reg 00d55fa7 "MeleeThunder" in 00d55e90; Alloc 00d57fa0; vtable 012d0564 slot 1; PDB ?Main@CMeleeThunder@CQ_GuildTrainingMeleeScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CMeleeThunder::Main (wave3/labels_alloc.tsv); PDB ?Main@CMeleeThunder@CQ_GuildTrainingMeleeScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

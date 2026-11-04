@@ -1,10 +1,11 @@
 // CAIStateGroup_WhisperPotionCombat::DisappearJump() -- jump into the sky, hide at the jump-to position for half a second, then land
 // Leaf: DisappearJump
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0096AF60; SW2 sweep (advisor/0096af60/probe/n3.cpp).
 class CThingCreatureBase;
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 struct CThingGraphic {
     virtual void g00();
     virtual void g01();

@@ -1,5 +1,6 @@
 // CTCWeaponTrail::GetAllTrailsLastWeaponTrailPoints(vector<vector<pair<C3DVector,C3DVector> > >& points) const -- for every weapon trail collect its newest points into a fresh vector and append that vector to the output when the trail produced any
 // Leaf: ?GetAllTrailsLastWeaponTrailPoints@CTCWeaponTrail
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076EA60, 160 bytes, `ret 4`.
 // Name: FableWin.pdb `?GetAllTrailsLastWeaponTrailPoints@CTCWeaponTrail@@QBEXAAV?$vector@V?$vector@U?$pair@VC3DVector@@V1@@std@@...`
 //   (void (vector<vector<pair<C3DVector,C3DVector> > >&) const); one caller (0x0078896F). Label correction: catalog
@@ -19,11 +20,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 struct __false_type { __false_type() { } };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 template <class _T1, class _T2> struct pair {
     _T1 first;

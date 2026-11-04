@@ -1,6 +1,7 @@
 // CTCHeroOpinionDeedLog::DecriminaliseDeed(long handle) -- looks the deed up in OpinionDeedMap and, when it exists, clears IsCrime and resets ExtraData to -1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C59A0, length 60 bytes.
 // Leaf: ?DecriminaliseDeed@CTCHeroOpinionDeedLog
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail bytes: push ecx ; push esi ; lea esi,[ecx+0Ch] ; lea eax,[esp+0Ch] ; push eax ; lea ecx,[esp+8] ; push ecx ; mov ecx,esi ; call find ;
 //               mov ecx,[esi] ; mov eax,[esp+4] ; cmp eax,ecx ; pop esi ; je E ; mov ecx,[eax+14h] ; test ecx,ecx ; je E ; mov edx,ecx ;
 //               mov byte ptr [edx+23h],0 ; mov eax,[eax+14h] ; mov dword ptr [eax+24h],-1 ; E: pop ecx ; ret 4
@@ -12,9 +13,7 @@
 // name is descriptive. STLport map node = {color, parent, left, right, key +0x10, value +0x14}.
 // Shape: the node's value is read once for the null test, then re-read for the second store (the byte store through it
 // may alias the node); the key is a `long` bound directly to the map's `const long&` (no conversion temporary).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class COpinionDeed { public:                          // 40 bytes (PDB layout)
     long      DeedType;                        // +0x00 EOpinionDeedType
     long      DeedHandle;                      // +0x04

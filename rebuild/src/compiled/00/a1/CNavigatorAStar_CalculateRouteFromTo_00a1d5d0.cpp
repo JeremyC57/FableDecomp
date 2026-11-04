@@ -1,5 +1,6 @@
 // CNavigatorAStar::CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, vector<pair<C2DVector, unsigned char> >& route) -- interrupt the navigator and run the A* search until it has a complete culled route (or reports 1 = failure), then copy the route's way points (2D position and type) into the caller's vector
 // Leaf: ?CalculateRouteFromTo@CNavigatorAStar@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1D5D0, 259 bytes (+ int3 padding), `ret 0Ch`.
 // Callees: own virtuals slot 18 Interrupt (+0x48) 0x00A1A150 and slot 3 MoveToPos(const C3DVector&, const C3DVector&,
 //   float, C3DVector&, bool x6, float) (+0x0c) 0x00A1FB00; the route vector's `__fastcall` _Move(first, last, dest, tag,
@@ -15,7 +16,7 @@ class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 #pragma pack(push, 1)
 struct SRoutePoint {                               // std::pair<C2DVector, unsigned char> (9 bytes)
     C2DVector     first;

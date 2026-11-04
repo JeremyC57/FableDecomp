@@ -1,6 +1,7 @@
 // NCameraModes::CScriptModuleSpline::IsFinished() -- true when the camera point is gone or dead, else whether the spline really finished
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- two separate early `return true` statements (null cam point, dead cam point) instead of one `||`: VC7.1 places the shared `mov al,1` exit right after the dead-bit test as retail
 // Leaf: IsFinished
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00853260, length 38 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 once (PCamPoint, +0x04).
 // Shape: one fetch into eax, null test, dead bit (+0x91 bit 0), then `mov al,[esi+58h] ; test al,al ;
@@ -12,7 +13,7 @@
 class CBaseObject;
 struct CBase;
 class CGameCameraManager;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 class CThing_Retail { public:

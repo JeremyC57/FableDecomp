@@ -1,12 +1,13 @@
 // CGameScriptInterface::ResetAction(CScriptThing) -- restore scratchpad string from its definition
 // Leaf: ?ResetAction@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 30 (family csm): the ScriptMethods projection (??1ScriptMethods@@UAE@XZ bound to 0x004AA840) is engine/CScriptThing.h's retail class
 //   (virtual ~CScriptThing, Ego_r.pdb / FableWin.pdb ??1CScriptThing@@UAE@XZ; copy / dtor / GetPThing slot 11 expanded inline as before),
 //   CThingNative is the CThing layout, and the own row is the retail virtual CGameScriptInterface member (was the invented
 //   CGameScriptInterfaceMethods; the landed sibling 0x008A1E50 is the model)
 // Retail 008a4390, 232 bytes. CTCAIScratchpad type170. Callees0040F020 lower_bound,0099EFB0 stringassignment,0099A2E0 base destructor,00BFE9BC scalar delete.
 #include "fable_string.h"
-class C3DVector{ public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

@@ -1,10 +1,11 @@
 // CEngineSceneGrid::GetCellBoundingBoxAndDrawDistance(CAABox& box, float& drawDistance, long x, long y) -- return a cell's cached bounds and draw distance, building the cache on first use from the four child-level cells (recursively) and the cell's own primitives (union of boxes, maximum draw distance)
 // Leaf: GetCellBoundingBoxAndDrawDistance
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B919C0, length 736 bytes (body 0x2dc + int3 padding), `ret 0x10`, recursive.
 // Callees: itself on the child grid, primitive virtuals GetBoundingBox (slot 0x44) and GetDrawRange (slot 0x34, by-value result).
 // Layout: local model (grid: Child +0x0c, Side +0x10, cell table +0x14; cell: primitive list +0x04, Box +0x08, DrawDistance +0x20,
 //   flags +0x44 bit 0 = cached).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CAABox { C3DVector Min, Max; };
 struct SDrawRange { float Near, Far; };
 class CEngineInternalPrimitiveBase { public:

@@ -1,4 +1,5 @@
 // CEngineInternalPrimitiveAnimatedMesh::GetBoneScalings(C3DMesh2* mesh) -- the cached per-bone scaling array for `mesh` (initialised on the first request), or null while the primitive has no animated skeleton
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH (retry helper C) -- STLport layering: the inline map::find forwards to the out-of-line _Rb_tree::find 0x00B83520, given its same-TU noinline body (landed 0x006699C0 shape). Both results then land in the iterator's one frame word and are re-read from it, as retail (was DIFFER(167v155)). The Tried/Next notes below are from the earlier extern-callee attempts.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B83750, length 155 bytes (`ret 4`).
 // Callees: the cache map's find(const unsigned long&) @ 0x00B83520 (thiscall on +0xD4, iterator by hidden pointer; manifest
@@ -10,7 +11,7 @@
 // (c) user copy/assignment on the iterator (same as a); (d) a long key converted at the call (same temporaries).
 // Next: lane gap candidate (RTM coalescing of the call-result temporary with the dead iterator); try a `CBoneScalingArray*` result
 // helper or a `goto`-shaped single lookup if Fable 5.1 has another idea.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class C3DMesh2 { public:
     unsigned char _pad[0xe8];

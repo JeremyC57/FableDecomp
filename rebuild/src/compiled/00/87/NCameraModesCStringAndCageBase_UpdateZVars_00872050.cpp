@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00872050, 183 bytes (+ int3 padding), `ret`. Ego_r.pdb
 //   `?UpdateZVars@CStringAndCageBase@NCameraModes@@AAEXXZ` (private).
 // Leaf: UpdateZVars
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: NCameraModes::CBase::GetObservedThing() const @ 0x0084F1B0, CThing::GetPos() const @ 0x004C73D0 (const C3DVector&),
 //   NCameraModes::CBase::GetCamTools() const @ 0x0084D080 (result unused); float pool 10.0f @ 0x01237F0C, 3.0f @ 0x0122DED4,
 //   1.0f @ 0x0122DED8.
@@ -18,7 +19,7 @@
 #define CGameCameraManager CGameCameraManagerDonor
 #include "engine/CGameCameraManager.h"
 #undef CGameCameraManager
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing {
 public:
     const C3DVector& GetPos() const;                  // 0x004C73D0

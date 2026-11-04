@@ -1,5 +1,6 @@
 // NScript::CQ_HangingTreeGoodScript::CHTG_Boss::Main() -- Hanging Tree (good) bandit boss: takes scripting control, waits until the hero is within 25 units, the quest's tracked thing is within 30 units or the quest reaches state 7, then looks up the boss exit point; if it exists walks there (re-issuing the move whenever the last one finished) until within 2 units and removes itself, otherwise just releases control
 // Leaf: ?Main@CHTG_Boss@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D72590, length 784 bytes.
 // Callees: the entity-script machinery of the landed CDyingVillager::Main 0x00D7F460 (CIsThingAlive predicate, SetPredicate
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, scripted-thing handle 0x0099A380 / 0x00CD23B9 / 0x00CD2770 / 0x007E74D0,
@@ -14,7 +15,7 @@
 // Naming wave 35: identity reg 00d6f8bf "HTG_Boss" in 00d6f4b0; Alloc 00d724d0; vtable 012d296c slot 1; PDB ?Main@CHTG_Boss@CQ_HangingTreeGoodScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CHTG_Boss::Main (wave3/labels_alloc.tsv); PDB ?Main@CHTG_Boss@CQ_HangingTreeGoodScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHTG_Boss@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_HangingTreeGoodScript moved into NScript); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
 class CCharString;
-class C3DVector;
+#include "engine/C3DVector.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountBlock { long References; };
 struct CCountedPointer {                                // CCountedPointer<CScriptThing>: {Data, Info}
@@ -51,7 +52,6 @@ class CIsThingAlive:public CPredicateBase { public:
 }
 class C2DCoordI;
 class C2DVector;
-class C3DVector;
 class CCharString;
 class CRGBColour;
 class CRGBFloatColour;
@@ -964,7 +964,6 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
 namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748 (established spelling; naming wave 35: was g_bScriptAnimationFlag)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
-class C3DVector { public: float X, Y, Z; };
 namespace NScript {
 class CQ_HangingTreeGoodScript {
 public:

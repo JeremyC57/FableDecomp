@@ -1,4 +1,5 @@
 // NScreenEffect::CScreenEffectPriorityStack::Reset() -- put the current radial blur, displacement colour and screen filter parameters back to their neutral values
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00880A40, length 145 bytes (+15 int3 padding).
 // Called at the end of the stack's constructor (0x008814A9) and by its rebuild (tail jump at 0x00881365).
 // Layout (PDB member order, retail offsets: the three-element list arrays are 12 bytes and the key sets 12 bytes in
@@ -9,7 +10,7 @@
 // Shape: one zero register and one 1.0f register; float constants store as integer moves; the high-to-low
 // Brightness/Contrast/Alpha stores are one chained assignment (evaluated right to left); the two track-position
 // enums go through an inline two-argument setter (written as two statements VC sinks them below the zero stores).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public: float R, G, B, A; };
 
 enum ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION { ERBTP_NONE = 0, ERBTP_CAMERA = 1 };

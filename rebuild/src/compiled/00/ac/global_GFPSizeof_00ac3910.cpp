@@ -1,5 +1,6 @@
 // GFPSizeof(C3DMeshPartitionElement* const& element) -- memory footprint of a partition-tree pointer: the pointer itself plus, when set, the element's Sizeof (both sub-element pointers, recursively)
 // Leaf: ??$GFPSizeof@QAVC3DMeshPartitionElement@@@@YIKABQAVC3DMeshPartitionElement@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC3910, 40 bytes, __fastcall (the reference in ecx), plain `ret`.
 // Identity: FableWin.pdb `??$GFPSizeof@QAVC3DMeshPartitionElement@@@@YIKABQAVC3DMeshPartitionElement@@@Z` (unsigned long
 //   __fastcall GFPSizeof<C3DMeshPartitionElement* const>(C3DMeshPartitionElement* const&)), with GFPIsNull<X>(X*),
@@ -22,7 +23,7 @@ template <class T> unsigned long __fastcall GFPSizeof(T& pointer)
     return sizeof(T);
 }
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector Min, Max; };
 class C3DBoundingSphere { public: C3DVector Centre; float Radius; };
 

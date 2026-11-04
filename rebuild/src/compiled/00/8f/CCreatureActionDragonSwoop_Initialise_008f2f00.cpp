@@ -1,4 +1,5 @@
 // CCreatureAction_DragonSwoop::Initialise() -- base Initialise, then asks the creature's +0x60 component (virtual slot 31) to fill the three SwoopPoints
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F2F00, length 48 bytes. Vtable slot 12.
 // Callees: CCombatActionBase::Initialise @ 0x00857520 (direct base call), CBaseIntelligentPointer::GetPItem @ 0x00A01B50
 // (PCreature at +8), then `[creature+0x60]->vtable[31]` with the array as the one argument.
@@ -6,7 +7,7 @@
 // C3DVector[3]; retail CCombatActionBase is 0x114 bytes). The component at +0x60 is the same object whose +0xc is the
 // position vector (CThing::GetPosition @ 0x004C73D0), i.e. the physics/transform component; its slot 31 is modelled by
 // name only.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CTCPhysicsComponent {                // the object at creature+0x60; only slot 31 is modelled
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

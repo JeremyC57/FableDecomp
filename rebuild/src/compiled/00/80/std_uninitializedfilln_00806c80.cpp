@@ -1,5 +1,6 @@
 // std::__uninitialized_fill_n(NPlayerTargeting::CTargetPoint* first, unsigned int n, const NPlayerTargeting::CTargetPoint& x, const __false_type&) -- STLport placement copy-construct n 28-byte records from x, return the end of the run
 // Leaf: ??$__uninitialized_fill_n@PAVCTargetPoint@NPlayerTargeting@@IV12@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@IABV12@ABU__false_type@0@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00806C80, 98 bytes, __fastcall (first in ecx, n in edx, &x and the empty
 //   __false_type tag reference on the stack), `ret 8`.
 // Identity: its only caller is 0x00809366 in the landed vector<NPlayerTargeting::CTargetPoint>::_M_insert_overflow 0x008092D0; reloc_bindings.tsv binds 0x00806C80 to exactly this symbol.
@@ -28,12 +29,7 @@ public:
     __forceinline CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { CBaseObject* item = other.GetPItem(); SetPItem(item); }
     virtual ~CIntelligentPointer() { }                      // the class's own vtable 0x01238C6C (as the landed 0x007B8230 model)
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 namespace NPlayerTargeting {
 class CTargetPoint {                                       // Ego_r.pdb, 28 bytes
 public:

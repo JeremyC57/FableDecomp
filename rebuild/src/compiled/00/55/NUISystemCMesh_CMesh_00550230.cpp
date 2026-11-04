@@ -1,5 +1,6 @@
 // NUISystem::CMesh::~CMesh() -- 3D mesh component dtor: clear the engine primitive handle, then the handle's own destructor and ~CChangingStateComponent
 // Leaf: ??1CMesh@NUISystem@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00550230, 163 bytes, tail jump to the base destructor.
 // Identity: the vtable stores 0x01249F9C / 0x01249F74 / 0x01249F6C carry RTTI `.?AVCMesh@NUISystem@@` (CUIInterface @0, CObserver @4,
 //   CActionParam @0x18); rtti_bases: CMesh : CChangingStateComponent : CComponent; Ego_r.pdb has `??1CMesh@NUISystem@@UAE@XZ`.
@@ -83,11 +84,7 @@ class CEnginePrimitiveHandle : public CBaseClass { public:  // vtable 0x0122F598
 };
 
 
-class C3DVector { public:
-    float X;                                                // +0x0
-    float Y;                                                // +0x4
-    float Z;                                                // +0x8
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                           // +0x00
     C3DVector Forward;                                      // +0x0C

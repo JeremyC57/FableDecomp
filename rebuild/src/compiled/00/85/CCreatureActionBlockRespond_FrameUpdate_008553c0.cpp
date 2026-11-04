@@ -1,5 +1,6 @@
 // CCreatureAction_BlockRespond::FrameUpdate() -- on the action's first running frame, kick up a dust effect along the block's movement direction when combat particles apply between the creature and its target; then the combat-action frame update
 // Leaf: ?FrameUpdate@CCreatureAction_BlockRespond@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008553C0, length 99 bytes, tail jump to CCombatActionBase::FrameUpdate.
 // Identity (proven): the only reference is vtable 0x01276084 (RTTI .?AVCCreatureAction_BlockRespond@@) slot 56, the FrameUpdate
 //   slot of the action family (CCombatActionBase::FrameUpdate 0x00859D80 sits in slot 56 of 0x01259BD4); Ego_r.pdb / FableWin.pdb
@@ -20,10 +21,7 @@
 class CBaseObject;
 class CBaseObjectPointer;
 #pragma pack(push, 1)   // C3DVector has alignment 1 (Ego_r CCreatureAction_BlockRespond::HitPos at +317)
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };

@@ -1,4 +1,5 @@
 // NCreatureMode::CModeScreamerSuperAttack::OnActivate() -- the stand-mode activation, suspend the creature's animation when it is in state 1, then (while the target is alive) look up the "SUPER_ATTACK_BEAM" effect in the thing definition's special-effects sub-def, spawn it at the creature and keep it in PLightningBeamParticleEmitter
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D8330, 285 bytes, plain `ret` (virtual).
 // Callees: CModeStandBase::OnActivate 0x008621A0 (qualified base call, first), CThingAICreature::SuspendAI(bool,
 //   long) 0x00833A10, CBaseIntelligentPointer::GetPItem 0x00A01B50 (PTarget +0x74, twice), CDefClassBase::GetSubDef<
@@ -11,7 +12,7 @@
 // Shape: the def copy is add-ref'd around GetSubDef and released; the effect sub-def is released by hand at the end. The
 // effect-type long is declared before the sub-def slot, and GetEffectFromString gets a same-TU stand-in body (writes only the
 // `long&`), so VC7.1 knows the word does not escape and stores its zero first, after the def's null test, as retail.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* m_pData;

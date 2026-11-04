@@ -1,5 +1,6 @@
 // CTCHeroReceiveItems::PrepareToShowItems(const C3DVector& position) -- with items queued and none on display, start the item-taking area at the item's screen position (or the centre of the visible TV area), reset the item orientation and clear the current item
 // Leaf: PrepareToShowItems
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -23,11 +24,7 @@ class CThingObject;
 class CBaseObject;
 
 class C2DVector { public: float X, Y; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() { }

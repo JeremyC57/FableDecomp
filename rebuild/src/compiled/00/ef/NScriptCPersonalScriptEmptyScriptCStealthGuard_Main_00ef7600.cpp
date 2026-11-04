@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_EmptyScript::CStealthGuard::Main() -- the stealth-course guard: find the GameRestart and ReachedGoalRestart markers, guard the thread with "the guard and both markers are alive", run one script frame and, unless the thread is terminating, read the guard's position (the value is unused)
 // Leaf: ?Main@CStealthGuard@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EF7600, 500 bytes, thiscall, plain `ret` (private virtual, entity vtable slot 1).
 // Identity (proven): the row is referenced once, from slot 1 (Main) of the RTTI-less entity vtable 0x012F6238 (0x012F623C),
 //   which the landed NScript::CPersonalScript_EmptyScript::CStealthGuard::Alloc 0x00EF2820 stores (site 0x00EF2856); Ego_r.pdb
@@ -18,7 +19,7 @@
 // Shape: the landed CCrate1::Main 0x00EF54A0 model. `(Alive(Me) && Alive(a)) && Alive(b)` builds both CPredicate_And levels
 //   through the out-of-line ctors (operands right to left) and runs both inline dtors; `Me.GetPos();` is a discarded virtual
 //   call (`mov edx,[edi] ; call [edx+18h]`); the two markers' inline CScriptThing dtors run at the one shared exit. First grade.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0

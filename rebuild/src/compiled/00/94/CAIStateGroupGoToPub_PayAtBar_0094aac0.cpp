@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToPub::PayAtBar() -- walk to the pay point and pay; terminate the group on any failure.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094AAC0, length 60 bytes.
 // Callees: CAIStateGroup_GoToPub::GetPayPoint @ 0x009492A0, WalkToPoint(C3DVector*, CRightHandedSet*) @
 // 0x0094A6D0, PayMoney @ 0x0094A840, CAIStateGroupBase::Terminate @ 0x008FCF40 (`Terminated = true`,
@@ -9,7 +10,7 @@
 // the WalkToPoint miss jumps past it) is the fingerprint of that form -- an `&&` chain or nested ifs with
 // one Terminate make all three misses jump to the same label. The pay point is a C3DVector at +0x78 and its
 // orientation set follows at +0x84. No engine header exists for CAIStateGroup_GoToPub; the layout is local.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector X, Y, Z; };
 
 class CAIStateGroupBase { public:

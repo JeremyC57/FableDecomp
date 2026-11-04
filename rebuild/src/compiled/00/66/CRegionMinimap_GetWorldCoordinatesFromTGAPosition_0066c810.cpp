@@ -10,6 +10,7 @@
 // position is built in the hidden result by an inline C3DVector(x, y, z) constructor (arguments evaluate z, y, x).
 // The method is attached through a derived shell because the generated header is a plain layout struct.
 // Leaf: GetWorldCoordinatesFromTGAPosition
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/CRegionMinimap.h"
 
 struct C2DVectorI {
@@ -17,10 +18,7 @@ struct C2DVectorI {
     C2DVectorI(long x, long y) : X(x), Y(y) {}
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 
 struct CRegionMinimap_GetWorldCoordinatesFromTGAPosition : CRegionMinimap {
     C3DVector GetWorldCoordinatesFromTGAPosition(const C2DVectorI& tgaPosition) const;

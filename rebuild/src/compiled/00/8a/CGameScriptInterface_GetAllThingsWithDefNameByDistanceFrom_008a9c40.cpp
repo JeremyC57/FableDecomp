@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom(const CScriptThing& from, const CCharString& defName, std::vector<CScriptThing>& things) const -- script: collect every thing whose definition is defName, sort them nearest-first from `from`'s position and append their script things; returns the output vector's size (0 without touching it when none match)
 // Leaf: ?GetAllThingsWithDefNameByDistanceFrom@CGameScriptInterface@@UBEJABVCScriptThing@@ABVCCharString@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Respell (chunk 638 follow-up, 2026-10-31): PDB spellings shared with the landed 0x008A8890 -- std::vector<CScriptThing> /
 //   std::vector<T*> STLport specialisations (reserve 0x008ACD30, protected _M_insert_overflow 0x008AD5F0), the const
 //   CThingSearchTools template members, CThing::GetScriptThing() const 0x004C7E50, engine/CCountedPointer.h, engine/CWorld.h,
@@ -70,7 +71,7 @@ public:
 class CCharString { public:
     void* PStringData;
 };
-class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
+#include "engine/C3DVector.h"
 class CThingFilter_HasDefGlobalIndex { public:
     unsigned long DefGlobalIndex;
     CThingFilter_HasDefGlobalIndex(unsigned long index) : DefGlobalIndex(index) {}

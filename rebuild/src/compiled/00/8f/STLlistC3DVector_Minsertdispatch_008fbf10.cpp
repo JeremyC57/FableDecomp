@@ -1,5 +1,6 @@
 // std::list<C3DVector>::_M_insert_dispatch(iterator, const_iterator, const_iterator, const __false_type&) -- copy-insert a C3DVector range before pos, one node per element
 // Leaf: ??$_M_insert_dispatch@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x008FBF10, 0x4E bytes, thiscall `ret 10h` (`this` = the destination list, unused: the position iterator
 //   carries the node), void. Manifest label "LinkedList_CloneNodes" (_global) is descriptive; the PDB name set has
 //   `??$_M_insert_dispatch@V?$_List_iterator@VC3DVector@@U?$_Const_traits@VC3DVector@@@std@@@std@@@?$list@VC3DVector@@...`.
@@ -15,9 +16,7 @@ extern "C" void  __cdecl free(void* block);                                     
 
 inline void* operator new(unsigned int, void* __p) { return __p; }
 
-class C3DVector { public:                              // retail C3DVector, 12 bytes
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

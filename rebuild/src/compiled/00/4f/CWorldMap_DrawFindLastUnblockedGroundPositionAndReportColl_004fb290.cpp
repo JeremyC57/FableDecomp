@@ -1,4 +1,5 @@
 // CWorldMap::DrawFindLastUnblockedGroundPositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& lastUnblocked) const -- CIDrawWorldMap override forwarding to CWorldMap::FindLastUnblockedGroundPositionAndReportCollision (tail jump with `this` moved back from the +4 interface)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x004FB290, 8 bytes: `add ecx,-4 ; jmp 0x0063D960`.
 // RTTI (COL at vtable-4): CWorldMap : CBaseClassNonCopyable (: CBaseClass) at +0, CIDrawWorldMap at +4;
 // this body is slot 8 of CIDrawWorldMap's vtable in CWorldMap (0x01244AB4). VC7.1 compiles an override of an
@@ -6,7 +7,7 @@
 // the non-virtual CWorldMap member (manifest 0x0063D960: FindLastUnblockedGroundPositionAndReportCollision, thiscall,
 // three C3DVector arguments) moves `this` by -4 and becomes a tail jump.
 // Layout: local model (engine/CWorldMap.h is a flattened view without the two bases; its +0x04 "f4" is this vptr).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable();

@@ -2,6 +2,7 @@
 // move it through the exit; inside the message radius start the letterbox and show the destination region's name, and on
 // leaving it end the letterbox and finish the region name; re-arm the waiting flags once the hero is outside the radii
 // Leaf: FrameUpdate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
@@ -17,7 +18,7 @@
 // CTCDRegionExit::GetDisplayName @ 0x00779260, CTCRegionDisplay::SetCurrentAreaName @ 0x00639BA0 / FinishShowingRegionName
 // @ 0x00639930, CTCDRegionExit::MoveHeroThroughExit @ 0x00779080; (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790 (byte +0xf6), epsilon 0x0129BA3C.
 // Layout = Ego_r.pdb CTCDRegionExit (packed, as the landed MoveHeroThroughExit 0x00779080); CThing dead bit +0x91, +0xb4 float.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

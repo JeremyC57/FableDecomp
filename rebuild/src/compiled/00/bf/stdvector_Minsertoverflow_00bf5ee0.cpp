@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(std::pair<C3DBoundingBox, CWaterPatchMesh*>* __position, const std::pair<C3DBoundingBox, CWaterPatchMesh*>& __x, const __false_type&, unsigned int __fill_len, bool __atend) -- (vector<std::pair<C3DBoundingBox, CWaterPatchMesh*>>) growth insert
 // Leaf: ?_M_insert_overflow@?$vector@U?$pair@VC3DBoundingBox@@PAVCWaterPatchMesh@@@std@@V?$allocator@U?$pair@VC3DBoundingBox@@PAVCWaterPatchMesh@@@std@@@2@@std@@IAEXPAU?$pair@VC3DBoundingBox@@PAVCWaterPatchMesh@@@2@ABU32@ABU__false_type@2@I_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BF5EE0, 243 bytes, thiscall, `ret 14h`.
 // Identity (probable): its only caller is the push_back 0x00BF5FE0 that CEngineLandscapePatch::RenderForegroundWater 0x00BF44A0 uses on the water renderer's ice list (landed: {C3DBoundingBox, CWaterPatchMesh*}, 28 bytes); Ego_r.pdb CEngineWaterRenderer::IceForegroundRenderList is CArray<pair<C3DBoundingBox, CWaterPatchMesh*> >, the renderer's only 28-byte element list.
 // Callees: malloc 0x00BFEA0E, std::__uninitialized_copy 0x00BF5B50 and std::__uninitialized_fill_n 0x00BF5BB0 (`__fastcall`), free 0x00BFEA14.
@@ -9,11 +10,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector Min, Max; };
 class CWaterPatchMesh;
 namespace std {

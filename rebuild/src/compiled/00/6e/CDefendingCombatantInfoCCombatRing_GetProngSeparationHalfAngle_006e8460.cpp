@@ -1,5 +1,6 @@
 // CDefendingCombatantInfo::CCombatRing::GetProngSeparationHalfAngle() const -- half the angular spacing (in turns) between the ring's prongs
 // Leaf: ?GetProngSeparationHalfAngle@CCombatRing@CDefendingCombatantInfo@@QBEMXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x006E8460, 51 bytes. PDB ?GetProngSeparationHalfAngle@CCombatRing@CDefendingCombatantInfo@@QBEMXZ
 // (descriptive check: the only float-returning const CCombatRing member in the PDB name set; the caller 0x006E964C sits
 // in the combat-ring code at 0x006E94D0).
@@ -11,7 +12,7 @@
 // Shape: the prong count is the signed /28 pointer difference stored as a long in the `push ecx` frame word for the
 // `fild` (an unsigned size_t would add the 2^32 fix-up), then `(1.0f / count) * 0.5f` (fdivr then fmul).
 #pragma pack(push, 1)
-class C3DVector { public: float X, Y, Z; };   // retail C3DVector is 1-aligned
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CDefendingCombatantInfo {

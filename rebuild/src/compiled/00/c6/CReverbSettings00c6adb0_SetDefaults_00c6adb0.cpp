@@ -9,7 +9,8 @@
 // the global zero vector 0x012B95E4, and a parameter mask 0x1FFFFF at +0 (21 flag bits).
 // Shape: plain body assignments in retail's store order; the 1.0f and 0 constants VC shares in eax/edx.
 // Leaf: SetDefaults
-class C3DVector { public: float X, Y, Z; };
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 extern const C3DVector C3DVector_Zero;                 // 0x012B95E4
 
 struct CReverbSettings00c6adb0 {

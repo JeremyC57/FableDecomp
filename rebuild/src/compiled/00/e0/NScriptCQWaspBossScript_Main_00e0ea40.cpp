@@ -1,4 +1,5 @@
 // CQ_WaspBossScript::Main() -- the wasp menace quest's main: start the reached-wasp-helper timer (120), wait for LookoutPoint, show the tutorial, bind the nine wasp-quest entity scripts, set the objective, send the guild seal map message, wait for PicnicArea, override the music and spawn the WatchForTermination, DoMission (region PicnicArea) and WatchForCutscene threads
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0EA40, length 1919 bytes. Catalog label "CQ_GuildTrainingScript::Main" is
@@ -17,7 +18,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0

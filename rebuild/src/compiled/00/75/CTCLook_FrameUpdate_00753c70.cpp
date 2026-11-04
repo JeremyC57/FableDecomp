@@ -1,5 +1,6 @@
 // CTCLook::FrameUpdate() -- per-frame look update: refresh the head position, run the stop-looking countdown, react to the creature's interface-8 / interface-0xAA look overrides, drive the body turning, then the head state machine (centre, interested, look at a position), and finally apply the head settings
 // Leaf: FrameUpdate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00753C70, 544 bytes, plain `ret`. Vtable 0x01269744 (CTCLook) slot 9 (catalog "vfunc_9").
 // Callees: CTCLook::UpdateHeadPos @ 0x00752000, LowerBound @ 0x0040F020 (interfaces 8 and 0xAA, inlined GetTC), CTCBase::PeekComponent
@@ -13,7 +14,7 @@
 //   +0x4C, CanTurnBody +0x50, PosToLookAt +0x68, TimeToStopLooking +0xB4, OneFrameDelay +0xB8. No engine header for CTCLook.
 // Shape: the stop-looking reset and the interface-8 head state are written out inline (retail inlines those two state
 //   setters and the first look-timer update; the later ones are calls).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CTCBaseComponent;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

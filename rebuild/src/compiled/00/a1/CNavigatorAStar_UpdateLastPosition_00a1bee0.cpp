@@ -1,5 +1,6 @@
 // CNavigatorAStar::UpdateLastPosition(const C3DVector&) -- keep LastNavigableNodeVisited (and its layer) current: nothing to do while the last node still covers the position; otherwise take the open node under it, or -- when there is no last node yet -- the nearest navigable node within four cells of the blocked one
 // Leaf: UpdateLastPosition
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1BEE0, 220 bytes (+ int3 padding; `ret 4`).
 // Callees: CANavQuadTreeNode::GetAreaCovering() 0x00A763B0 (C2DBoxF by hidden pointer) and C2DBoxF::ContainsPoint(const C2DVector&)
 //   0x00535CD0 (a bool in al), the external interface's (+0x14) slot 16 GetLayerAt (+0x40), CNavigatorManager::GetNodeAt
@@ -10,7 +11,7 @@
 // Shape: the outer call's argument (the C2DVector conversion temporary, the manager) is pushed before the inner call that
 //   feeds it (GetAreaCovering, GetSize), as VC does for a call used as `this` / an argument; the open-node update returns
 //   through its own epilogue.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }   // the conversion temporary: two dwords copied into the frame

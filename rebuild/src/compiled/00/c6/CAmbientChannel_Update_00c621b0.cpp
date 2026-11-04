@@ -1,5 +1,6 @@
 // CAmbientChannel::Update(CAmbientSource* source) -- keep one ambient channel's looping voice in step with its source: when the source is silent release the voice; when no voice plays start one (the 0x50-byte play-parameter block with the source's volume and owner id, priority 1, registered on the source's layer, placed at the owner's position) and keep its handle; otherwise move the playing voice to the owner's position and set its volume
 // Leaf: ?Update@CAmbientChannel@@QAEXPAVCAmbientSource@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): the play-parameter record is CPKVoiceParams (ctor 0x00C10A30; setters SetMinDistance 0x00C20480 / SetMaxDistance 0x00C204A0 / SetScale 0x00C20420, descriptive) and the table Play 0x00C13140 is called on is the landed CSoundEventManager (CSoundSystem+0x38, vtable 0x012B2748).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C621B0, 363 bytes, thiscall `ret 4`, frameless (0x5c-byte frame).
 // Identity (descriptive; libpk ambient sound, no PDB / RTTI): `this` is the 8-byte CAmbientChannel of the landed ctor
@@ -20,11 +21,7 @@
 //   over the release; the moved-voice position is a zeroed C3DVector local filled member by member from the owner
 //   (owner pointer in eax, `[eax+14h]`..; a whole-struct assignment gives `add ecx,14h` + block copy, as the play arm's
 //   params.m_links.m_position copy does). Grades: 3 (2nd: GetHandleTable as a thiscall member; 3rd: memberwise copy).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 struct CMessageEventList { void* head; };
 struct CMessageListOwner_00c203a0 {

@@ -1,4 +1,5 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test uses a copy_model stand-in)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // CCreatureAction_DragonTakeOffIntoFlying::CCreatureAction_DragonTakeOffIntoFlying(const CCreatureAction_DragonTakeOffIntoFlying&)
 //   -- member-wise copy: combat-action base, the three points, the movement-point vector, the flag and the counted end action
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00953BC0, 0xC1 bytes. Callees: CCombatActionBase::CCombatActionBase(const CCombatActionBase&)
@@ -14,10 +15,7 @@ class CCombatActionBase { public:
     unsigned char _body[0x110];
     CCombatActionBase(const CCombatActionBase& other);  // 0x0062F3B0
 };
-class C3DVector { public:                                      // the engine vector has a user-written member-wise copy
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 template<class T> struct CRetailVector {                // STLport vector: begin/end/capacity
     T* m_first; T* m_last; T* m_end;
     CRetailVector(const CRetailVector& other);          // C3DVector: 0x006F0810

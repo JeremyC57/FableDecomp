@@ -1,5 +1,6 @@
 // NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn::Main() -- bounty-hunt gang grunt spawn point: register the alive filter; if Me's data string holds a number, start the wait timer with it; wait until the hero hits Me (plainly or with a special ability other than 14), sees Me, or the timer runs out; set Me on the hero, wait for the quest to end, then walk Me to the nearest REGION_EXIT_POINT and fade it out once there (or once the region is loaded)
 // Leaf: ?Main@CBH_GangGruntSpawn@CQ_BountyHuntScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D15510, length 1072 bytes, plain `ret`.
@@ -19,7 +20,7 @@
 // Naming wave 35: identity reg 00d13861 "BH_GangGruntSpawn" in 00d13580; Alloc 00d153f0; vtable 012ca4f4 slot 1; PDB ?Main@CBH_GangGruntSpawn@CQ_BountyHuntScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBH_GangGruntSpawn::Main (wave3/labels_alloc.tsv); PDB ?Main@CBH_GangGruntSpawn@CQ_BountyHuntScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBH_GangGruntSpawn@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_BountyHuntScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
 class CCharString { public:
     void* PStringData;

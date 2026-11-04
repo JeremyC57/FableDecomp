@@ -1,5 +1,6 @@
 // CTCTavernGameSpotTheAddition::EnterGame() -- tavern-game EnterGame, camera onto the def's camera point, timer reset, then the pointer piece is created from the game def and placed at the game position raised by the pointer height
 // Leaf: ?EnterGame@CTCTavernGameSpotTheAddition
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D7FD0, 234 bytes (plain `ret`); CTCTavernGameSpotTheAddition vtable
 // 0x0126F814 slot 29. Ego_r.pdb `?EnterGame@CTCTavernGameSpotTheAddition@@UAEXXZ`.
 // Callees: CTCTavernGame::EnterGame() 0x005EC0F0 (non-virtual base call); CTCTavernGame::GetTavernGameDef(CDefPointer*)
@@ -23,11 +24,7 @@
 //   (CThing*, const C3DVector&, const CRightHandedSet&, const C3DVector&, float, float); C3DVector, CRightHandedSet and CThing
 //   are classes (V in every PDB signature).
 #pragma pack(push, 1)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: float Up[3], Forward[3]; };
 #pragma pack(pop)
 

@@ -1,5 +1,6 @@
 // std::vector<CTCUnholyPower::PerEffectInfo>::push_back(const CTCUnholyPower::PerEffectInfo& x) -- append a per-effect record (position + intelligent effect pointer), growing through the out-of-line overflow path when full
 // Leaf: push_back
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00798410, 105 bytes, __fastcall `ret 4`. Byte twin of 0x007935D0 (the other
 //   spell's TU).
 // Identity: Ego_r.pdb names vector<CTCUnholyPower::PerEffectInfo> (HitEffects; reserve/_Tidy instantiations) and the 20-byte record
@@ -31,10 +32,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CTCUnholyPower {
 public:

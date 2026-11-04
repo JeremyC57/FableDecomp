@@ -1,5 +1,6 @@
 // CLandscapeBackgroundPatch::SetTargetVertexNormal(CTVertexLandscapeBackground& vertex, unsigned long packedNormal) -- unpack an 11:11:10 signed packed normal into the vertex's float normal (x, y scaled by 1/1023, z by 1/511)
 // Leaf: ?SetTargetVertexNormal@CLandscapeBackgroundPatch@@SIXAAVCTVertexLandscapeBackground@@K@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE66F0, 150 bytes (+ int3 padding). Ego_r.pdb:
 // ?SetTargetVertexNormal@CLandscapeBackgroundPatch@@SIXAAVCTVertexLandscapeBackground@@K@Z (static __fastcall: the vertex in
 // ecx, the packed word in edx, `ret`). Nine callers in the patch tesselator / BuildDefaultSection / Load. The inverse of the
@@ -13,11 +14,7 @@
 // then copied member by member into the vertex: Z goes through the local's frame word as an integer copy (`fstp [esp+0Ch] ;
 // mov edx`) and is stored first, X and Y are stored straight from the FPU stack. Direct member assignments keep a 4-byte frame
 // with three fstp; a field-by-field named local stores X before Z. Grades: 4.
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CTVertexLandscapeBackground {
 public:
     unsigned short X;                              // +0x00

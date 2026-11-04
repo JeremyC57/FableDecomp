@@ -1,5 +1,6 @@
 // NScript::CV_ParanoidWhispersScript::CSecretWhisperingMan::Init() -- the whispering man is persistent, gets a green minimap marker and remembers his start position
 // Leaf: ?Init@CSecretWhisperingMan@CV_ParanoidWhispersScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EBFBB0, 94 bytes, thiscall, plain `ret` (private virtual, entity vtable slot 2).
 // Identity (proven): slot 2 (Init) of the RTTI-less entity vtable 0x012F1010, which the landed
 //   NScript::CV_ParanoidWhispersScript::CSecretWhisperingMan::Alloc 0x00EBFB00 stores (site 0x00EBFB36); Ego_r.pdb has ?Init@CSecretWhisperingMan@CV_ParanoidWhispersScript@NScript@@EAEXXZ.
@@ -15,10 +16,7 @@ public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class C3DVector {                                       // 12 bytes (x, y, z)
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

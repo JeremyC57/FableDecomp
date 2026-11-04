@@ -1,5 +1,6 @@
 // CAIStateGroup_BirdFlyToFood::Update() -- stamp the frame the food was found, fly a random pretty path to the food position, then Terminate()
 // Leaf: ?Update@CAIStateGroup_BirdFlyToFood@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00913F00, length 35 bytes, tail jump (virtual, no arguments).
 // Identity: slot 12 of vtable 0x0128961C (RTTI CAIStateGroup_BirdFlyToFood : CAIStateGroup_FlyingThingBase : CAIStateGroupBase :
 //   CBaseClass), the only reference; Ego_r + FableWin ?Update@CAIStateGroup_BirdFlyToFood@@UAEXXZ (public virtual), listed beside
@@ -14,9 +15,7 @@
 //   its result is dropped); the action's EAIActionReturn is ignored.
 #include "engine/CBaseClass.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CWorld { public:
     static long __fastcall GetFrame();                       // 0x0049D870

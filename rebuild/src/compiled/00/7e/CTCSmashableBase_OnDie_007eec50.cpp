@@ -1,11 +1,12 @@
 // CTCSmashableBase::OnDie() -- when the smashable def says the thing is smashable and it has not been smashed yet, smash it (virtual Smash)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007EEC50, 53 bytes. Vtable slot 13 of CTCSmashableBarrier 0x0124017C (shared by
 // CTCSmashableWindow 0x01240BA4 and the base vtable 0x01271860: the inherited base method).
 // Callees: the def's virtual Destroy (slot 1) on the last release; this->Smash() (slot 28, +0x70) as a sibling-call `jmp`.
 // Layout: Ego_r.pdb CTCSmashableBase (0x18 bytes, as the landed OnInitialActivate 0x007EECF0): Smashed +0x10, Definition +0x14;
 // CSmashableDef (engine/CSmashableDef.h): Smashable +0x25. Local model: the def pointer needs its add-ref/release shape.
 // Shape: the landed OnInitialActivate shape -- the flag read into a named bool (bl) before the by-value def temporary is released.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

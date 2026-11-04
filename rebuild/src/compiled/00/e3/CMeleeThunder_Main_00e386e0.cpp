@@ -3,6 +3,7 @@
 //   the jump-from-chest combat animation to its end; then take scripted control (priority 3), make Me the hero's enemy,
 //   follow the hero and idle until the script is done
 // Leaf: ?Main@CChestHidingAssassin@CV_AssassinAttacksScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity (naming wave 11): ?Main@CChestHidingAssassin@CV_AssassinAttacksScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012E3704 slot 1 is stored by the factory 0x00E385D0 registered as "ChestHidingAssassin"
 // Retail: Fable.exe @ 0x00E386E0, 523 bytes (+ int3 padding), plain `ret`.
 // Callees: CIsThingConscious filter (vtable 0x012C2FE8, CScriptThing copy 0x004ABE90, out-of-line ~CScriptThing
@@ -14,7 +15,7 @@
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8} + ParentClass +0x14, PMasterData +0x18, a "jumped" flag +0x1c; the
 //   scripted-thing handle is the landed CAttackingAssassin::Main 0x00E383A0 model.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

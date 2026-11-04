@@ -1,5 +1,6 @@
 // std::vector<C3DVertex2>::erase(C3DVertex2* first, C3DVertex2* last) -- remove a range of 32-byte mesh vertices: slide the tail down over it and pull the finish pointer back
 // Leaf: ?erase@?$vector@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A96A90, 80 bytes, thiscall `ret 8`, returns `first`.
 // Identity: 7 call sites; C3DMeshFileVerticesChunk::ReadFromFile 0x00ABD150 calls it as the shrink arm of
 //   `VertexList.resize(n)` (`erase(begin() + n, end())` on the CArray<C3DVertex2> at +0x10); the others are
@@ -10,10 +11,7 @@
 //   C3DVertex2 has no __type_traits specialisation, so copy() takes the __copy_ptrs(__false_type) arm: the random-access
 //   `__copy` loop `for (n = last - first; n > 0; --n) *result++ = *first++;` (signed `jle`), each implicit 32-byte
 //   assignment an 8-dword `rep movsd`; the trivial _Destroy is empty; `this` spilled to the `push ecx` frame word.
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C3DVertex2 {
 public:

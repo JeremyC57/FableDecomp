@@ -1,5 +1,6 @@
 // CTCMultiStrike::StartMultiHit(const CHitParameters& hit, CThing* target) -- remember the target, the hit location, weapon, point and direction of the hit, start the strike (first hit, delay from the def's per-level DelayTimeSecs), spawn the def's HIT_EFFECT at the target, clear the weapon's strike effects, rumble the main player's joystick and feed the experience multi-hit combo
 // Leaf: StartMultiHit
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CCB00, 619 bytes, `ret 8`.
@@ -23,7 +24,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CDefPointeeBase { public:
     virtual void Destroy();

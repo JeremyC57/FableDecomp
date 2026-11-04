@@ -3,6 +3,7 @@
 // Retail-asm: 0x00516294 `fadd [ebp-14h]` + 0x00516297 `fistp dword ptr [ebp-0Ch]` -- the engine inline-assembly GFFloatToLongCeil(landed 0x00772720 / 0x006A68F0); VC7.1 C++ (long)x calls _ftol.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Leaf: GetAllThings
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00516200, 423 bytes (+ padding to 432), `ret 8`, ebp frame; one caller 0x00509A98.
 // Callees: PeekAllThings 0x0049C770, CTCPhysicsBase::GetBoundingInfo(C3DVector&, float&) const 0x006AF640, _ftol 0x00BFEA70 (six
 //   conversions), CTCPhysicsBase virtual +0xa8, CThing virtual +0xdc (both arms of the navigation test), CThingFilter_
@@ -102,7 +103,7 @@ template <class T> struct CResultList {
 class CThingPhysical : public CThing { public: enum { ThingTypeMask = 3 }; };
 
 // ---- the overlapping-area filter (inline in retail) ----------------------------------------------------------------
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI() {}

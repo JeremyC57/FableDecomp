@@ -1,4 +1,5 @@
 // CTCBob::OnInitialActivate() -- snapshot the parent's physics orientation set and position into Rhset / Pos and clear ForceVisible
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x00787780, 86 bytes. Callee: the physics component's virtual slot 72 (`call [edx+120h]`,
 // returns a const CRightHandedSet&). The parent thing's physics component is CThing +0x60
@@ -8,7 +9,7 @@
 // `add edi,0Ch` for the position); both copies are whole-struct assignments (`lea ecx,[esi+N]` then
 // dword moves); the ForceVisible clear is the last statement.
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward, Up; };
 
 class CTCPhysicsBase

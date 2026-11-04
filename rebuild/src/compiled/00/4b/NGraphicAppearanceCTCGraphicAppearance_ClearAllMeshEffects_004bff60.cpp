@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::ClearAllMeshEffects() -- walk the mesh-effect map and clear every effect that was inherited from a carrier
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BFF60, length 96 bytes. Callees: CTCGraphicAppearance::ClearMeshEffect(void* key)
 // @ 0x004BFE20 (it erases the entry, so the iterator is advanced first).
 // Layout: MeshEffects (+0x0c) is an STLport map<void*, CMeshEffectPriorityEntry> whose first word is the allocated header node;
@@ -15,7 +16,7 @@
 // (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
 // CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
 // No engine header exists for CTCGraphicAppearance: local model.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCAnimationBase;
 

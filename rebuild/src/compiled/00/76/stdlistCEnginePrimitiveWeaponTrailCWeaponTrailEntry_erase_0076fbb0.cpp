@@ -1,14 +1,12 @@
 // std::list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry>::erase(iterator first, iterator last) -- STLport range erase: unlink and free every node from first up to last, return last
 // Leaf: ?erase@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE?AU?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Nonconst_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@U32@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0076fbb0, 54 bytes, thiscall, iterator result through the hidden pointer, `ret 0Ch`.
 // Identity (proven): bound (reloc_bindings) ?erase@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@...@std@@@std@@QAE?AU?$_List_iterator@...@2@U32@0@Z; its caller is the landed list operator= 0x0076FF90.
 // Callee: free 0x00BFEA14.
 // Shape (family L034): `while (first != last) erase(first++); return last;` with the single-node erase inline; the
 //   element's destructor is trivial.
-class C3DVector {
-public:
-    float X, Y, Z;                                        // +0x00
-};
+#include "engine/C3DVector.h"
 class CEnginePrimitiveWeaponTrail {
 public:
     class CWeaponTrailEntry {                              // Ego_r.pdb, 28 bytes

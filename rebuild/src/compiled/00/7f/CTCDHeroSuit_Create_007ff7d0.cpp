@@ -1,5 +1,6 @@
 // CTCDHeroSuit::Create(long defIndex, const C3DVector& position) -- create a level-persistent hero-suit thing for player 4 on map 0 and activate it; a thing without the hero-suit driver is killed; null on any failure
 // Leaf: ?Create@CTCDHeroSuit@@SIPAVCThing@@JABVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FF7D0, 61 bytes, static `__fastcall` (defIndex in ecx, position in
 //   edx -- unused, overwritten by the player constant), plain `ret`. Caller: CTCInventoryClothing 0x005B3781 (ecx = a
 //   def index from its list, edx = the owner's GetPosition()).
@@ -14,7 +15,7 @@
 // Shape: the landed CTCDExperienceOrb::Create 0x00779E90 form without the map lookup and the Construct call: a `result`
 //   local preloaded with 0 (`xor edi,edi`) is what the kill and failure paths return; the success path returns the
 //   thing register directly.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCDHeroSuit;
 

@@ -2,6 +2,7 @@
 // gather the Q_REVISITED_FIREPOINT things, size Fires to match and create an OAKVALE_BURNING_PATCH effect at every fire
 // point; then wait until the flag is cleared again and remove every fire effect
 // Leaf: OakValeFire
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE8870, 862 bytes (866 with padding).
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0, map<CCharString,bool>::operator[] 0x008ADF10, CScriptThing
 //   default ctor 0x006E7B40 / dtor 0x004AA840 / slot 6 GetPos, vector<CScriptThing>::resize(n, const T&) 0x00D34AC0
@@ -14,7 +15,7 @@
 //   reversed). Element access is *(begin() + i): the start pointer is read before the CreateEffect call, the index added after.
 // Layout: Ego_r.pdb CCS_OakValeRevisitedScript - 0x14 (retail CScriptBase is 0x40): FirePoint +0x48, Fires +0x54,
 //   OakValeFlag +0x60 (map<CCharString,bool>), v1..v7 handles +0x78.. (GSI +0x40, Owner +0x44).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

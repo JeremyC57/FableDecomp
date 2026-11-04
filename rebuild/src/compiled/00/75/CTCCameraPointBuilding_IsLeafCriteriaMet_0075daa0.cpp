@@ -1,5 +1,6 @@
 // CTCCameraPointBuilding::IsLeafCriteriaMet() -- a building camera point applies when the observed thing stands in this point's building and the camera tools see the hero from the thing's focal point (entry/exit points never apply)
 // Leaf: IsLeafCriteriaMet
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075DAA0, length 229 bytes (+ int3 padding).
 // Callees: CTCBase::PeekWorld() const @ 0x00686A80, CGameCameraManager::GetCameraManager(CCameraManager**) (virtual slot 10, +0x28;
 // world +0x34), CTCCameraPointBuilding::GetOwnerBuilding @ 0x0075D940, NCameraModes::CBase::GetObservedThing() const @ 0x0084F1B0 (the
@@ -12,7 +13,7 @@
 // word. That sharing needs the same-TU GetOwnerBuilding body (0x0075D940 stand-in: writes the out pointer only on success,
 // the lookup itself behind an extern), which tells VC7.1 the owner's address does not escape; with only a declaration the
 // hit-thing gets its own word, and one shared variable swaps the camera/owner words.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing;
 class CThingBuilding;
 struct CTCGraphicAppearance {

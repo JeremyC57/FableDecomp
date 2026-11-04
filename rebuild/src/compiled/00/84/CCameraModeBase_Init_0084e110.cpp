@@ -1,4 +1,5 @@
 // CCameraModeBase::Init() -- (re)start a camera mode: reset it, capture its three float parameters when the shared camera tracking is valid, and for a type-8 mode or valid tracking run one frame update and roll the tracked camera into the "last" slot
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0084E110, 136 bytes (+8 int3), __fastcall, no arguments.
 // The catalog label (CBase::Init) is propagated; both callers are CGameCameraManager (SetCameraMode 0x00697E50,
 // PreloadScriptedCamera 0x00699B79), which call it right after configuring a camera mode object.
@@ -10,7 +11,7 @@
 // Shape: the float results are stored straight from x87 (`fstp`); the type test and the validity re-test share
 // the FrameUpdate call; the camera roll is an inline helper on the tracking block (valid flag re-read after the
 // call, a POD CCamera assignment -> `rep movsd` of 14 dwords with edi saved inside the branch, the flag set).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward, Up; };
 
 class CCamera { public:                                    // 0x38 bytes, POD

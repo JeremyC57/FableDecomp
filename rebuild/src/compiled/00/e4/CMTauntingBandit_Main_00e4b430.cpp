@@ -1,5 +1,6 @@
 // NScript::CV_BanditTollScript::CM_TauntingBandit::Main() -- taunting-bandit spawner: count the "TauntingBandit" things; while fewer than the script def's maximum exist, spawn one more here (creature def from this marker's data string, scripted "TauntingBandit") and attach it to the "BanditTollVillage"
 // Leaf: ?Main@CM_TauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Identity (naming wave 11): ?Main@CM_TauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012E4DB8 slot 1 is stored by the factory 0x00E48D00 registered as "M_TauntingBandit"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4B430, length 375 bytes.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("TauntingBandit" @ 0x012E4C60,
@@ -20,7 +21,7 @@ class CCharString { public:
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

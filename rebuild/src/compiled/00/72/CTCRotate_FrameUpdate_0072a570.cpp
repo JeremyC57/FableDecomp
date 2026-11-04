@@ -1,5 +1,6 @@
 // CTCRotate::FrameUpdate() -- while rotating: flag the thing's draw state, rotate its orientation about RotationAxis by Timer*RotationSpeed, write it back, and remove this component (type 0x2A) once the timer passes its limit
 // Leaf: FrameUpdate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe 0x0072A570, 155 bytes (plain `ret`).
 // Callees: the thing's +0x60 physics/placement object virtual slot 72 (+0x120, GetOrientation, returns const
 // CRightHandedSet&) and slot 75 (+0x12C, SetOrientation(const CRightHandedSet&)), CRightHandedSet rotate-about-axis
@@ -9,7 +10,7 @@
 // TimerLimit +0x24, Rotating +0x28; CThing: placement object +0x60, draw-state object +0x64 (flag byte +0x59 bit 1).
 // Shape: the orientation is copied into a 24-byte local by the implicit memberwise copy (dword moves interleaved
 // with the fild/fmul of the angle).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;

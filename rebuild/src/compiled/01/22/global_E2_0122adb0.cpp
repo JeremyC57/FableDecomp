@@ -1,5 +1,6 @@
 // _$E2() -- `dynamic atexit destructor for 'CLocalDetailCacheMap::CQuadTreeElement::CalcBoundingSphereAndFadeDistanceFromChildren::sphere_list'': the function-local static's inlined STLport ~vector (trivially destroyed elements: just free the storage)
 // Leaf: _$E2
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0122ADB0, 17 bytes, in `.text$yd`: `mov eax,[0x0143B978] ; test ; je ; push eax ; call free ; pop ecx ; ret`.
 // Identity (proven): the static vector at 0x0143B978 is initialised and registers this thunk (0x00BDF120) inside CLocalDetailCacheMap::CQuadTreeElement::CalcBoundingSphereAndFadeDistanceFromChildren 0x00BDF100 (resize 0x00BE0140 and _M_insert_overflow 0x00BDFE70 are the landed vector<C3DBoundingSphere> members); Ego_r.pdb/FableWin.pdb: `...::CalcBoundingSphereAndFadeDistanceFromChildren'::`2'::`dynamic atexit destructor for 'sphere_list'' (top-level scope, ?1).
 // Static: `static std::vector<C3DBoundingSphere> sphere_list;` in CLocalDetailCacheMap::CQuadTreeElement::CalcBoundingSphereAndFadeDistanceFromChildren (0x00BDF100).
@@ -39,7 +40,7 @@ public:
     unsigned int size() const { return this->_M_finish - this->_M_start; }
 };
 }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingSphere {                                // Ego_r.pdb, 16 bytes
 public:
     C3DBoundingSphere() { }

@@ -1,5 +1,6 @@
 // CPhysicsMesh::~CPhysicsMesh() -- destroys the mesh's members in reverse order (root segment counted pointer, the two containment-volume maps, the navigation lines, the point / face arrays, the dummy-object and helper-point maps), then the CIVCountedPointeeBase part
 // Leaf: ??1CPhysicsMesh@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6D550, 273 bytes, thiscall, `ret`.
 // Identity (proven): RTTI vtable 0x0129DC68 (.?AVCPhysicsMesh@@) slot 0 is the deleting destructor 0x00A73CC0, whose first
 //   call is this row; Ego_r.pdb ??1CPhysicsMesh@@UAE@XZ (virtual, public). The first store is CPhysicsMesh's vftable, the
@@ -25,7 +26,7 @@ public:
     void* PStringData;                                     // +0x00
     ~CCharString();                                        // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public: float M[12]; };
 class C3DHelperPoint { public: C3DVector Position; long BoneIndex; };          // 0x10
 class C3DDummyObject { public: CMatrix3x4 Transform; long BoneIndex; };        // 0x34

@@ -5,7 +5,8 @@
 // direct member copies become integer moves. `<` gives `test ah,5 ; jp`, `>` gives `test ah,41h ; jne`; the end
 // pointer is re-read every pass (the box stores may alias it). The first point is used unconditionally.
 // Leaf: GetBounds
-class C3DVector { public: float X, Y, Z; };
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 class C2DBoxF { public: float MinX, MinY, MaxX, MaxY; };
 template <class T> struct CRetailVector {
     T* m_pFirst; T* m_pLast; T* m_pEnd;

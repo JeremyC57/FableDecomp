@@ -17,6 +17,7 @@
 //   and drops retail's `mov ebp,esi`).
 // Layout: CVectorMap derives from the STLport vector {_M_start, _M_finish, _M_end_of_storage}; Compare +0xC, Dirty +0xD.
 // Leaf: ?LowerBound@?$CVectorMap@VCCharString@@VC3DHelperPoint@@V?$CCompareString@VC3DHelperPoint@@@@@@QBEPBU?$pair@VCCharString@@VC3DHelperPoint@@@std@@ABVCCharString@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 template <class C> class CBasicString {
 public:
     bool operator<(const CBasicString& other) const;     // 0x00429950
@@ -26,10 +27,7 @@ public:
     CBasicString<char>* PData;
     bool operator<(const CCharString& other) const;   // 0x009E6530
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class C3DHelperPoint {                                   // 16 bytes (Ego_r.pdb)
 public:
     C3DVector Position;                                  // +0x00

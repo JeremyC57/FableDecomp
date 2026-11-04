@@ -1,4 +1,5 @@
 // CEnginePrimitiveManagerAnimatedMeshesBase::CreateInternalPrimitive(long type) -- allocate and construct the internal primitive for an animated-mesh type: 9 = animated mesh, 0xb = morphed animated mesh, 0xd = animated mesh from file; null for any other type or when the allocation fails
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BD6DF0, length 795 bytes (`ret 4`, `this` unused).
 // Callees: operator new @ 0x00BFEA1A, CEngineInternalPrimitiveBase::CEngineInternalPrimitiveBase(long type, unsigned long flags)
 // @ 0x00B8FF00 ((9, 0xa), (0xb, 0xa), (0xd, 8)), CBaseClass::CBaseClass @ 0x0099A2D0 (the interpolators' root), malloc @ 0x00BFEA0E (the
@@ -58,7 +59,7 @@ class C3DAnimationInterpolator : public CBaseClass { public:          // vtable 
     virtual ~C3DAnimationInterpolator();
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DPositionInterpolator : public CBaseClass { public:           // vtable 0x0123981C, 0x1c bytes
     C3DVector StartPosition;                       // +0x04
     C3DVector EndPosition;                         // +0x10

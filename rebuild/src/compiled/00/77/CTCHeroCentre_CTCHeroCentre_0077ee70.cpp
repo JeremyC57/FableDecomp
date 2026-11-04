@@ -13,6 +13,7 @@
 // line); the element loop is STLport's `_Destroy(first, last)` taking both ends by value (finish cached in ebx), the storage
 // release `if (start) free(start)`, and the def release `if (p) { p->Release(); p = 0; }` (all `__forceinline`).
 // Leaf: ??1CTCHeroCentre
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 class CThing;
@@ -23,9 +24,7 @@ public:
     void* m_pItem;
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 template <class T>
 inline void DestroyRange(T* first, T* last)        // STLport _Destroy(first, last)

@@ -1,5 +1,6 @@
 // C3DMeshInfo::operator=(const C3DMeshInfo&) -- memberwise assignment of a mesh info record: the two base words, the intrusive MeshData pointer (release old / add-ref new), bounding box and sphere, radius, physics index and the LOD tables
 // Leaf: ??4C3DMeshInfo
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2B3C0, length 197 bytes. No direct callees (MeshData release is the
 // pointee's virtual slot 1).
 // Label correction: catalogued as CAnimationEntry::operator= (propagated; CAnimationEntry is 16 bytes). The 0x60-byte
@@ -35,7 +36,7 @@ template <class T> class CIVCountedPointer { public:
         return *this;
     }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public:
     C3DVector MinCoord;                            // +0x00
     C3DVector MaxCoord;                            // +0x0c

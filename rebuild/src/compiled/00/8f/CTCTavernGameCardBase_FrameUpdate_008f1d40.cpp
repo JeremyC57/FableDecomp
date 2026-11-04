@@ -1,5 +1,6 @@
 // CTCTavernGameCardBase::FrameUpdate() -- per-frame card-game update: base update and pointer scale, the state's card phase (deal, move, finished moving, turn, turn back, main game), then while the game is being played every card in the pack follows the game position and the highlight is refreshed
 // Leaf: ?FrameUpdate@CTCTavernGameCardBase@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F1D40, 198 bytes of code plus its 10-entry jump table (row 240); vtable slot
 // 9 (CTCTavernGameCardSorting 0x0126F5B4 inherits it). Ego_r.pdb `?FrameUpdate@CTCTavernGameCardBase@@UAEXXZ`.
 // Callees: CTCTavernGame::FrameUpdate() 0x005EB9E0 (non-virtual base call); CTCTavernGameCardBase::UpdatePointerScale()
@@ -14,7 +15,7 @@
 //         GamePositionRHSet +0xf0, GamePositionPos +0x108, Pack +0x134/+0x138.
 // Shape: a dense switch over states 18..27 (`add eax,-12h ; cmp eax,9 ; ja` + jump table) with the case blocks in source
 //        order; the pack walk re-reads Pack.end() and keeps both argument addresses in ebx/ebp.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: float Up[3], Forward[3]; };
 
 class CCard { public:

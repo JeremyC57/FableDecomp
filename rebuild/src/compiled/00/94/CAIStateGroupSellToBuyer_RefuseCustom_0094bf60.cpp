@@ -1,5 +1,6 @@
 // CAIStateGroup_SellToBuyer::RefuseCustom() -- the seller refuses the buyer's custom: post message 0x10 from the selling creature to the buyer (delay 1000, a zero position, zero values) through the world's message-event manager
 // Leaf: ?RefuseCustom@CAIStateGroup_SellToBuyer@@AAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0094BF60, 88 bytes (+ int3 padding to 96), plain `ret`.
 // Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (PBrain +0x1c -> +0x24), CBaseIntelligentPointer::GetPItem
 //   @ 0x00A01B50 (PBuyer at +0x14), CMessageEventManager::AddMessage @ 0x00687540 (the world's manager at +0x60).
@@ -14,10 +15,7 @@
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
 class CThing;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 class CMessageEvent;
 class CMessageEventManager { public:

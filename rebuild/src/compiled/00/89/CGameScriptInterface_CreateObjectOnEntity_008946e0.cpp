@@ -1,5 +1,6 @@
 // CGameScriptInterface::CreateObjectOnEntity(const CCharString& defName, const CScriptThing& entity, const CCharString& scriptName) const -- when the entity is alive, create a thing object from the named def at the entity's position, attach it to the entity's attachment when both have one, and return its script thing (the null script thing otherwise)
 // Leaf: ?CreateObjectOnEntity@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008946E0, length 315 bytes (+ int3 padding), `ret 10h`.
 // Signature from Ego_r.pdb: ?CreateObjectOnEntity@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z.
 // Callees: the CreateObject 0x00894820 set (GetDefGlobalIndexFromName 0x009AD410, GetDef<CThingObjectDef> 0x0042B040,
@@ -14,7 +15,7 @@ void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 class CCharString { public:
     void* PStringData;
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0

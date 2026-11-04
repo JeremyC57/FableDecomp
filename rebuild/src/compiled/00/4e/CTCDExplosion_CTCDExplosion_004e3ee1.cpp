@@ -1,5 +1,6 @@
 // CTCDExplosion::~CTCDExplosion() -- destroy the three thing-pointer vectors, the emitter vector and the explosion def, then CTCBase
 // Leaf: ??1CTCDExplosion
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3EE1, length 64 bytes (size-optimised def/factory module -> #pragma
 // optimize("s", on)). Called by the scalar deleting destructor 0x004E3EC5 (CTCDExplosion vtable 0x01242A54 slot 0).
 // Callees: vector<CIntelligentPointer<CThing> >::~vector @ 0x004406D0 (x3), vector<pair<CIntelligentPointer<CThing>,long> >
@@ -44,7 +45,7 @@ struct CIntelligentPointer {                // CIntelligentPointer<CThing>
     ~CIntelligentPointer();                 // 0x00A01C10 (CBaseIntelligentPointer::~CBaseIntelligentPointer)
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CThingPointerVector {                // vector<CIntelligentPointer<CThing> > (12 bytes)
     void* First;

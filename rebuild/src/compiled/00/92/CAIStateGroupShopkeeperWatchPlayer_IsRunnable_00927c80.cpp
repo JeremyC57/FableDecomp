@@ -1,4 +1,5 @@
 // CAIStateGroup_ShopkeeperWatchPlayer::IsRunnable() -- allow an open shop when its live hero is close or other customers are present; retail 0x00927c80, 287 bytes. Null/dead heroes and strict-distance misses take the other-customer path. The generated state-group header is absent, so the nonvirtual adapter uses shared CAIStateGroupBase/CAIBrain/CThingAICreature/CPlayer/CTCBase headers and documented native views. The creature interface map is at +0x44 (key 0x90); bit 0 at hero +0x91 is the dead flag. Callees: LowerBound 0x40f020, GetShopTC 0x798f50, IsOpeningHours 0x773950, GetAreOtherPeopleInShop 0x799a60, GetPPlayerManager 0x8fcf90, GetMainPlayer 0x449970, GetHeroThing 0x487dc0, GetPosition 0x4c73d0, FindFreeGazePos 0x918880.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include <math.h>
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
@@ -23,7 +24,7 @@ struct CCreatureInterfaceMap {
     CVectorMapEntry* EndOfStorage;
     CVectorMapEntry* LowerBound(long* key); // 0x0040f020
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CThingView : CThing { C3DVector* GetPosition(); // 0x004c73d0
 };
 struct CThingLifeStateRetailView {

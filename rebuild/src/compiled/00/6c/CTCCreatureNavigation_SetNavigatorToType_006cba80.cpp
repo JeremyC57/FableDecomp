@@ -1,4 +1,5 @@
 // CTCCreatureNavigation::SetNavigatorToType(long type) -- switch to the possible navigator of the given type (interrupting the old one)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CBA80, length 63 bytes (+1 int3).
 // Callee: CNavigatorBase::Interrupt (virtual slot 18, `call [edx+48h]`).
 // Shape: the navigator type is the byte at CNavigatorBase +0x10 (`movzx`), compared with the enum argument held in edi.
@@ -8,7 +9,7 @@
 // navigator slots from the CNavigatorAStar/CNavigatorFlyer vtables (9 CanNavigateToPos, 10 IsNavLineOfSightClear,
 // 18 Interrupt) and the external interface vtables (slot 4 FindPosZAt, float).
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;   // 0x004C73D0 (PhysicsTC +0x60, position at +0x0c)

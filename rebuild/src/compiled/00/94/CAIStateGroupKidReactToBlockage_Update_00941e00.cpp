@@ -1,4 +1,5 @@
 // CAIStateGroup_KidReactToBlockage::Update() -- look at the blocking creature, then (while it is still alive) throw a three-part tantrum (into, loop, out of), stopping at the first animation that does not complete; always terminate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00941E00, length 448 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PThingCreature +0x2c), CThing::GetPosition @ 0x004C73D0,
 // CAIStateGroupBase::AIAction_LookAtPos(EAIActionRepeat, C3DVector, long, float) @ 0x0097D580 (repeat 1, flags 1, turn
@@ -15,10 +16,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead

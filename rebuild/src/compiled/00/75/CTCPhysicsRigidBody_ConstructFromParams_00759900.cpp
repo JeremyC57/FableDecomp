@@ -1,5 +1,6 @@
 // CTCPhysicsRigidBody::ConstructFromParams(CTCParamsBase* params) -- base CTCPhysicsBase construction from the params (position), then the params' orientation set copied into RHSet and OldRHSet
 // Leaf: ConstructFromParams
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00759900, 99 bytes. CTCPhysicsRigidBody vtable 0x0126996C slot 3 (catalog "vfunc_3"; the
 //   CTCPhysicsBase slot-3 body 0x006AF700 is labelled CTCPhysicsBase::ConstructFromParams).
 // Callees: CTCPhysicsBase::ConstructFromParams(CTCParamsBase*) @ 0x006AF700 (called non-virtually).
@@ -7,7 +8,7 @@
 //   CollidingVertexIndex +0x4c, Collidors +0x58, PPhysicsMeshInfo +0x64, RHSet +0x68 (PDB +0x74), OldRHSet +0x80 (PDB +0x8c).
 //   The physics params: Position +0x04 (read by the base), RHSet +0x10 (CRightHandedSet: Up, Forward).
 // Shape: two implicit 24-byte POD assignments from the same source (the source address kept in eax for the second copy).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CTCParamsBase { public:
     void*     __vftable;                        // +0x00

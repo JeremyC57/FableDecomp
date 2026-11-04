@@ -1,5 +1,6 @@
 // CTCInventoryQuests::ProcessButtonAReleased() -- in test-quest mode activate the selected test quest and close the inventory; otherwise, outside the inventory screen in item-selection state, close it when the quest-activate action succeeds; then the base handler
 // Leaf: ?ProcessButtonAReleased@CTCInventoryQuests@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0061B590, 93 bytes, thiscall, two tails `jmp` to the base handler.
 // Identity (proven): the only reference is slot 58 of vtable 0x012585B4 (RTTI .?AVCTCInventoryQuests@@: CTCInventoryQuests ->
 //   NInventory::CTCInventoryBase -> CTCBase -> CBaseClassNonCopyable -> CBaseClass, NHeroInformationScreens::CBase at +0x130, secondary
@@ -51,7 +52,7 @@ protected:
 };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : protected _Vector_base<_Tp, _Alloc> { };
 }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class C2DBoxF { public: float Left, Top, Right, Bottom; };
 class CPresentationIntervalDesc { public: bool PresentImmediate; bool PresentImmediateIfSyncMissed; long VSyncCount; };

@@ -1,5 +1,6 @@
 // CTCContainerRewardHero::ReleaseItems(float speed) -- pop every reward item out of the container: each item is created as a thing object a little above the container (0.1 up) and launched along a popout vector laid out in rings of up to eight, then every created object is told to ignore its siblings and the item list is cleared
 // Leaf: ReleaseItems
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0074E6E0, 384 bytes (`ret 4`).
 // Callees: CThing::GetPos() const @ 0x004C73D0, GeneratePopoutVectorFromVars(long, long, long, float) const @ 0x0074E140
 // (C3DVector by hidden pointer), CreateNewObject(long, const C3DVector&, const C3DVector&, const CCharString&) @ 0x0074E560,
@@ -13,11 +14,7 @@
 // store, overflow call with the tag temporary in the dead popout-return slot); the functor's return slot is the dead `speed`
 // argument slot.
 class CCharString { public: void* m_pData; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;               // 0x004C73D0
 };

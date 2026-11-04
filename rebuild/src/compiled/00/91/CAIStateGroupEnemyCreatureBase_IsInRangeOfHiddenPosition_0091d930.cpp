@@ -1,4 +1,5 @@
 // CAIStateGroup_EnemyCreatureBase::IsInRangeOfHiddenPosition(C3DVector*, bool) -- pick the valid hiding position furthest from the creature (optionally only ones on the same side of the target as the creature)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0091D930, 544 bytes (ret 8).
 // Callees: CAIStateGroupBase::PeekWorldMap 0x008FCFF0 / PeekThingSearchTools 0x008FD000, the state group's virtual slot 18
 //   (+0x48, hiding range), GetValidPositions 0x0074A5D0 (__fastcall), CThing::GetPos 0x004C73D0,
@@ -7,11 +8,7 @@
 // Shape: C3DVector has a user copy ctor so the candidate and the target position are frame copies; the furthest
 // position is kept in registers (its uninitialised home loaded first); the empty test shares the final exit.
 #include <stdlib.h>
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 struct CPositionVector {                        // STLport vector<C3DVector> (12 bytes)
     C3DVector* _M_start;
     C3DVector* _M_finish;

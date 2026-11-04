@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleSystem::AllocateDecal() -- take a decal from the particle memory (reclaiming the decals of the lowest-priority invisible emitters once if it is exhausted), construct it, append it to the system's decal list and count it; null when no memory can be found
 // Leaf: ?AllocateDecal@CParticleSystem@NParticleEngine@@QAEPAVCDecal@2@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c: the exact PDB symbol (Ego_r.pdb + FableWin.pdb); the catalog carries the name; body unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF5380, length 176 bytes (manifest label correct).
 // Callees: the particle memory allocator @ 0x00AF8B00 (__fastcall size; label "operator_new" -- CDecal's class operator
@@ -16,7 +17,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 
 class CIEngine;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 template<class T> class CArray { public:                  // retail CArray<T>: three pointers

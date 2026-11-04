@@ -1,5 +1,6 @@
 // NCameraModes::CProjectileWeapon::CProjectileWeapon(CGameCameraManager&, const CDefPointer<const CCameraModeDef>&, float, float) -- construct the projectile-weapon camera mode: no shot fired yet, not finished, no attractors, the zoom-in FOV limits
 // Leaf: ??0CProjectileWeapon
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00879620, length 88 bytes.
 // Callees: NCameraModes::CBase::CBase(CGameCameraManager&, const CDefPointer<const CCameraModeDef>&) @ 0x0084E420
 // (Ego_r.pdb ??0CBase@NCameraModes@@...; the manifest calls it CActionParam_Constructor). Vtable 0x01277804.
@@ -14,9 +15,7 @@ template <class T> class CDefPointer { public:
     T* m_pDef;
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 struct C3DVectorVector {                                    // retail std::vector<C3DVector> (12 bytes)
     C3DVector* m_pFirst;

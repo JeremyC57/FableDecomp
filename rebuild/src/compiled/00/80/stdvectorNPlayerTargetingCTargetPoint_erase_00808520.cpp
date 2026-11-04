@@ -1,5 +1,6 @@
 // std::vector<NPlayerTargeting::CTargetPoint>::erase(iterator first, iterator last) -- STLport range erase: assign the tail [last, finish) down onto first through the out-of-line __copy, destroy each vacated element, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@VCTargetPoint@NPlayerTargeting@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00808520, 76 bytes, thiscall, `ret 8`, returns first.
 // Identity (proven): its __copy callee is the landed CTargetPoint __copy 0x00806E10 (28-byte stride, CIntelligentPointer<CThing> PThing at +0); callers the four erase sites of a local vector<CTargetPoint> in CViewBase::UpdatePlayerTargeting 0x00804020; Ego_r.pdb CTCTargetingPlayer::Targets / RejectedTargetPoints are vector<NPlayerTargeting::CTargetPoint>.
 // Callees: std::__copy<NPlayerTargeting::CTargetPoint*> 0x00806E10 (landed), CBaseIntelligentPointer::~CBaseIntelligentPointer 0x00A01C10 (CTargetPoint's implicit destructor).
@@ -26,9 +27,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CThing;
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 namespace NPlayerTargeting {
 class CTargetPoint {                                     // Ego_r.pdb, 28 bytes
 public:

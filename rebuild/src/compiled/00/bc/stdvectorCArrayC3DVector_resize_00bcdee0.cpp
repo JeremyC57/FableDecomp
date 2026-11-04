@@ -1,5 +1,6 @@
 // std::vector<CArray<C3DVector>>::resize(size_type new_size) -- STLport one-argument resize: resize(new_size, CArray<C3DVector>()) through the out-of-line two-argument resize; the zero default value needs no destruction
 // Leaf: ?resize@?$vector@V?$CArray@VC3DVector@@@@V?$allocator@V?$CArray@VC3DVector@@@@@std@@@std@@QAEXI@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BCDEE0, 36 bytes, thiscall, `ret 4`.
 // Identity (proven): FableWin.pdb ?resize@?$vector@V?$CArray@VC3DVector@@@@...@QAEXI@Z; the landed vector<CArray<C3DVector> >::resize(n, x) 0x00BCDE70 lists this one-argument resize 0x00BCDEE0 among its callers.
 // Callees: vector<CArray<C3DVector>>::resize(size_type, const value_type&) 0x00BCDE70 (thiscall, `ret 8`).
@@ -7,7 +8,7 @@
 //   _Tp()); }` -- the default value is three zero words in the frame (a value-initialised pair / an empty CArray), whose
 //   inline destructor folds to nothing because its storage pointers are known null -- VC7.1 knows that only because the two-argument resize has a same-TU body that never writes through the value reference (the retail TU holds the real one; declaration-only, the temporary's destroy loop and free stay).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace std {
 template <class _T1, class _T2> struct pair {

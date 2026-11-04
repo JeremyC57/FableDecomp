@@ -1,5 +1,6 @@
 // CTCTavernGameCardBlackjack::ReorderCards() -- for every card of every player hand play the deal sound and move the card to its laid-out position for that hand and slot
 // Leaf: ReorderCards
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DA810, length 160 bytes.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("TAVERN_GAME_CARD_DEAL" @ 0x0126F568), CTCTavernGame::PlaySound(const
 // CCharString&) @ 0x005EA950, ~CCharString @ 0x0099EAE0, CTCTavernGameCardBlackjack::GetPosition(long hand, long card) @ 0x007DA760 (C3DVector
@@ -14,10 +15,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 class CCard { public:
     void Move(const C3DVector& position, bool immediately);   // 0x008F0660
 };

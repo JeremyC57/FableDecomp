@@ -1,5 +1,6 @@
 // CTCAIScratchpad::~CTCAIScratchpad() -- implicit destructor of the AI scratchpad component: the scratchpad def pointer released, then SeatName, TableName, TargetName and Action destroyed, then ~CTCBase
 // Leaf: ??1CTCAIScratchpad@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007ADAA0, 73 bytes, thiscall, tail `jmp ~CTCBase` 0x00686830.
 // Identity (proven, two sources): its only caller is the scalar deleting dtor 0x007ADA80, slot 0 of vtable 0x0126D07C (rtti-vtables.tsv:
 //   RTTI .?AVCTCAIScratchpad@@ : CTCBase : CBaseClassNonCopyable : CBaseClass), the vtable the ctor 0x007ABB80 stores (reached from the
@@ -20,7 +21,7 @@
 #include "fable_string.h"                                   // CCharString (0x0099E4B0 / 0x0099EAE0)
 
 #pragma pack(push, 1)
-class C3DVector { public: float X, Y, Z; };                 // retail C3DVector is 1-aligned
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 enum EScriptingStateGroups;                                 // MS forward enum (Ego_r CTCAIScratchpad::ScriptingStateGroup)

@@ -1,5 +1,6 @@
 // CTCTavernGameShoveHaPenny::CalcScores() -- recomputes the score: each coin that lies wholly inside a board region band (between the region's start line and the next one) scores the lowest such region's score
 // Leaf: CalcScores
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CF860, 313 bytes (plain `ret`).
 // Callees: CDefClassBase::GetSubDef<CTavernGameShoveHaPennyDef>(CDefPointer<const CTavernGameShoveHaPennyDef>*) 0x007D1260
 //          (on the owner's def class, owner +0x70; this TU, see the stand-in below); __ftol2 0x00BFEA70 (the `(long)` cast);
@@ -14,7 +15,7 @@
 //        loads Pos.Y before Radius in the hoisted sum (operand order flips).
 class CThing;
 class C2DVector { public: float X, Y; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class Coin { public:                                   // 0x3c bytes (packed in retail; only floats are read here)
     long      _pad_0x00;

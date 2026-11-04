@@ -1,5 +1,6 @@
 // std::__adjust_heap(CThing** first, int holeIndex, int len, CThing* val, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- sift a hole down to a leaf, then push_heap the value back up
 // Leaf: ??$__adjust_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097AF70, 142 bytes, __fastcall (/Gr algorithm TU: first in ecx, holeIndex in edx,
 //   len, val and the 16-byte comparator on the stack), `ret 18h`.
 // Instantiation: the take-cover candidate sort std::sort<CThing**, CThingCompare_InDirectionOfAndNearestToHeuristicBitch>
@@ -19,9 +20,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 extern "C" double __cdecl pow(double x, double y);                                    // _CIpow 0x00BFEB40
 extern "C" double __cdecl sqrt(double x);
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

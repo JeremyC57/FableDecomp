@@ -1,5 +1,6 @@
 // std::__find_if(C3DVector* first, C3DVector* last, NShape::CIsPointFinalLinkInTriangleWithMatchingCirculation pred, const random_access_iterator_tag&) -- first point in [first, last) the circulation predicate accepts, else last
 // Leaf: ??$__find_if@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00763F50, 212 bytes, `ret 18h`.
 // Identity: Ego_r.pdb names the Dinkumware twin ??$_Find_if@PAVC3DVector@@VCIsPointFinalLinkInTriangleWithMatchingCirculation@NShape@@@std@@;
 //   retail is STLport's random-access __find_if. Callers: 0x00763100 (NShape triangulation, the predicate built
@@ -11,9 +12,7 @@
 //   20-byte predicate by value and the tag reference on the stack, `ret 18h`): trip count (last - first) >> 2 with
 //   the /12 division as `imul 2AAAAAABh ; sar edx,1`, four tests per pass, then `switch (last - first)` on 3/2/1
 //   falling through (`dec eax` chain) and `return last` for 0/default.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 namespace NShape {
 class CIsPointFinalLinkInTriangleWithMatchingCirculation { public:

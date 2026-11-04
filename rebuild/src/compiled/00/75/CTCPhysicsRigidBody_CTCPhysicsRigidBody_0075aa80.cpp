@@ -1,5 +1,6 @@
 // CTCPhysicsRigidBody::CTCPhysicsRigidBody(CThing* parent) -- CTCPhysicsBase(parent), own vtable, the three collision vectors and the rigid body's three vertex vectors empty, no physics mesh info yet
 // Leaf: ??0CTCPhysicsRigidBody
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075AA80, 111 bytes. Vtable 0x0126996C (CTCPhysicsRigidBody: slot 3 ConstructFromParams
 //   0x00759900, slot 4 OnCreate 0x0075B2D0, slot 97 GetPossibleCollidedWithArea 0x00759870).
 // Callees: CTCPhysicsBase::CTCPhysicsBase(CThing*) @ 0x006B0730.
@@ -16,7 +17,7 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* _M_end_of_storage;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class C2DVector { public: float X, Y; };
 struct CRigidBodyConfig {                       // retail 0xb4

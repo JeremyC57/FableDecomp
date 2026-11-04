@@ -1,5 +1,6 @@
 // CWorld::EAMoveSpirit(const CGameEvent*) -- game-event action: if the event player's hero carries a co-op spirit component, read a 2D movement vector from the event and apply it to the spirit
 // Leaf: EAMoveSpirit
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Flags: /GS
 // Retail: Fable.exe @ 0x0062C0E0, 215 bytes (/GS cookie 0x0139C8A8). PDB ?EAMoveSpirit@CWorld@@QAEXPBVCGameEvent@@@Z
@@ -59,10 +60,7 @@ class CThing { public:
 };
 class CThingPlayerCreature : public CThing { };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CTCCoopSpirit { public:
     void ApplyMovementVector(const C3DVector& movement);   // 0x0066FAE0
 };

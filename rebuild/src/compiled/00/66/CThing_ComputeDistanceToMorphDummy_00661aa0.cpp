@@ -1,5 +1,6 @@
 // CThing::ComputeDistanceToMorphDummy() -- distance from the thing's position to its appearance's "EYE_SET_L" dummy (1.0 when the dummy is missing)
 // Leaf: ComputeDistanceToMorphDummy
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00661AA0, length 145 bytes (padded to 160).
 // Label correction: the catalog's "CVertexBufferWin32::" class is wrong: `this` is a CThing (CThing::GetPos @ 0x004C73D0 on
 // this, and retail +0x64 is CThing::PTCGraphicAppearance, PDB +0x74 less the 16 bytes of retail's smaller containers).
@@ -16,9 +17,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:                           // 24 bytes
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c

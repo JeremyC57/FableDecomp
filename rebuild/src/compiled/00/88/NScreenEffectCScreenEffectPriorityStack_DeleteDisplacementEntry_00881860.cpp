@@ -1,6 +1,7 @@
 // NScreenEffect::CScreenEffectPriorityStack::DeleteDisplacementEntry(CDisplacementMonochromeEffectColourEntry* entry, float fadeTime) -- erases the entry from DisplacementKeys and, if it was there, starts its fade-out over fadeTime seconds
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00881860, length 59 bytes.
 // Leaf: ?DeleteDisplacementEntry@CScreenEffectPriorityStack@NScreenEffect
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail bytes: as 0x00881820 with `add ecx,78h` (DisplacementKeys)
@@ -19,9 +20,7 @@
 // The entry argument is a derived-entry pointer: binding it to the set's `CStackEntry* const&` key makes a
 // conversion temporary, which VC7.1 homes in the argument's own (now dead) slot -- the retail
 // `mov [esp+N],eax` that stores the argument back over itself before `lea` passes its address.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() {}

@@ -1,6 +1,7 @@
 // std::_List_base<CEnginePrimitiveSpriteTrail::CSpriteTrailEntry, std::allocator<..> >::~_List_base() -- STLport 4.6: free every node (clear() expanded), re-link the sentinel to itself,
 //   free the sentinel
 // Leaf: ??1?$_List_base@VCSpriteTrailEntry@CEnginePrimitiveSpriteTrail@@V?$allocator@VCSpriteTrailEntry@CEnginePrimitiveSpriteTrail@@@std@@@std@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 30 (family stl): was the free __fastcall stand-in ?SortTreeRecursively_00436900@@YIXPAUTreeList@@@Z (catalog
 //   "CGuiControlTreePane::SortTreeRecursively", propagated across the byte-identical list destructors 0x0052D5C0 / 0x00B09E40 / 0x00B43BB0).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B09E40, thiscall, plain `ret`; the out-of-line COMDAT called by ~CPSCSingleSprite 0x00B0A160 on TrailUpdatePrimitive.Trail (+0xB8, Ego_r.pdb list<CSpriteTrailEntry>; that landed TU emits the same COMDAT).
@@ -61,7 +62,7 @@ void _List_base<_Tp, _Alloc>::clear()
 
 }   // namespace std
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CEnginePrimitiveSpriteTrail {                         // only the nested entry (Ego_r.pdb: Position, Width)
 public:
     class CSpriteTrailEntry {

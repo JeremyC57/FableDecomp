@@ -1,5 +1,6 @@
 // std::vector<pair<C3DVector,bool>>::_M_insert_overflow(pair* position, const pair& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport grow-and-insert of fill_len copies of x
 // Leaf: ?_M_insert_overflow@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F3260, 223 bytes, `ret 0x14`.
 // Label correction: catalog "Vector_InsertRepeatElements" -> STLport vector<pair<C3DVector,bool> >::_M_insert_overflow.
 // Callees: malloc 0x00BFEA0E, free 0x00BFEA14, __uninitialized_copy 0x006EFEC0 (landed separately) and
@@ -14,11 +15,7 @@ extern "C" void __cdecl free(void* block);                // MSVCR71 import thun
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
 #pragma pack(push, 1)
-class C3DVector {                                         // byte-packed record in retail (13-byte pair stride)
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace std {

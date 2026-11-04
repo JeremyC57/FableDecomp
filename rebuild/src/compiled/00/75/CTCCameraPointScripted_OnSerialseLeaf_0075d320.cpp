@@ -1,5 +1,6 @@
 // CTCCameraPointScripted::OnSerialseLeaf(CPersistContext& context) -- persist the scripted camera point's look/start/end positions, transition time and the remapped UID of the thing it follows
 // Leaf: OnSerialseLeaf
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x0075D320, 594 bytes (`ret 4`; PDB name OnSerialseLeaf, sic).
 // Callees: CPersistContext::Transfer<float> @ 0x00410620 (one per vector component; LookPosEnd defaults to LookPos),
@@ -35,7 +36,7 @@ class CPersistContext { public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
     //   instances here: float 0x00410620; unsigned __int64 0x0044BB00
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCCameraPointScripted : public CTCBase {
 public:
     unsigned char _base0c[0x40 - 0x0c];         // CTCCameraPointDefinitionBase members

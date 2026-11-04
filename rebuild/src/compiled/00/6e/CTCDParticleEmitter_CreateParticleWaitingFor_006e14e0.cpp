@@ -1,4 +1,5 @@
 // CTCDParticleEmitter::CreateParticleWaitingFor() -- create the particle emitter the component has been waiting for from its pending creation parameters (interpolated or plain), copy the pending update parameters / creation-disabled / always-update state onto it, adopt it and drop the parameters
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E14E0, 309 bytes (+ int3 padding), plain `ret`.
 // Callees: CThing::GetPos @ 0x004C73D0, CParticleEmitterManager::Get @ 0x00AEAAF0 (static), CreateInterpolatedEmitter(long,
 //   long, float, const C3DVector&, const CRightHandedSet&, bool) @ 0x00AEB8C0, CreateEmitter(long, const C3DVector&, bool,
@@ -15,7 +16,7 @@
 //   parameters through the counted pointer; the emitter's inline setters give the 16-bit insert and the `or 200h` on the
 //   combined word; the always-update test is the inline alive test plus a third GetPItem; the parameters are dropped with
 //   the counted pointer's inline clear (count block re-read after the decrement, block then object zeroed).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CThing { public:
     unsigned char _pad00[0x91];

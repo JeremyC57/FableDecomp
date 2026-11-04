@@ -1,5 +1,6 @@
 // CTCAssassinRush::CTCAssassinRush(CThing* parent) -- set up the assassin-rush component: members cleared (the behind-target position to FLT_MAX, UseCollision on), its special-ability def fetched, a player's spell-cast state switched to rush mode, the spell level read from the inventory abilities, then Reset
 // Leaf: ??0CTCAssassinRush
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x007A9E40, 416 bytes (`ret 4`). Catalog label "CTCBattleCharge::CTCBattleCharge" is propagated: the vtable stored is
 // 0x0126CF2C (CTCAssassinRush, RTTI) and the def name is "SPECIAL_ABILITIES_ASSASSIN_RUSH_DEF".
 // Callees: CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer() @ 0x00A01B10 (CIntelligentPointer<CThing> vtable 0x01238C6C),
@@ -131,11 +132,7 @@ public:
     unsigned char _pad08[0x4];                      // ToBeRemoved, IsInGlobalUpdateTCs
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 
 template<class T> struct CVector {                  // retail STLport vector, 12 bytes
     T* _M_start;

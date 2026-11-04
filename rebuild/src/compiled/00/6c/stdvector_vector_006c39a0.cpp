@@ -1,5 +1,6 @@
 // std::vector::~vector() -- (vector<C3DSkeletalBoneMorph >) out-of-line destructor: destroy every element, then free the vector's own block
 // Leaf: ??1?$vector@VC3DSkeletalBoneMorph@@V?$allocator@VC3DSkeletalBoneMorph@@@std@@@std@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C39A0, 49 bytes (+ int3 padding to 64), thiscall, plain `ret`.
 // Identity (probable): vector<C3DSkeletalBoneMorph >::~vector; evidence: its only caller is GFLoadSkeletalMorphTargetFromFile 0x0088B0C0 (Ego_r.pdb ?GFLoadSkeletalMorphTargetFromFile@@YIXAAVCAFile@@AAVC3DSkeletalMorphTarget@@@Z; 0x0088B468), destroying its local bone-morph array at [esp+0x34] at the end: the local is filled with C3DSkeletalBoneMorph(name, scaling) values (landed ctor 0x00A44DF0, inline push_back over the landed _M_insert_overflow 0x0088B4F0, stride 0x14) and handed to C3DSkeletalMorphTarget::Initialise(const CCharString&, const CArray<C3DSkeletalBoneMorph>&) 0x00A45150. The local is a CArray<C3DSkeletalBoneMorph>; the out-of-line layer is named as the vector base's ~vector (an out-of-line implicit ~CArray would have the same body) -- probable for that layer, the element is proven.
 // Label: the manifest's "ResetRings" is propagated (family J007: six destroy-and-free bodies whose element destructor runs on the element itself -- STLport ~vector (with the inline
@@ -68,7 +69,7 @@ protected:
     }
 };
 }
-class C3DVector { public: float X, Y, Z; };                  // 12 bytes
+#include "engine/C3DVector.h"
 class C3DSkeletalBoneMorph {                                   // 20 bytes (Ego_r.pdb)
 public:
     CCharString   BoneName;                                    // +0x00

@@ -1,5 +1,6 @@
 // CEnginePrimitiveChangerManager::PreloadPrimitive(CEngineInternalPrimitiveBase&, const C3DVector&, unsigned long) -- preload a primitive changer's children through their own type managers: every child when PreloadAll is set (true if any preload reports true), otherwise just the active child (its result)
 // Leaf: PreloadPrimitive
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BC5820, 182 bytes (+ int3 padding), `ret 0Ch`. Mangled
 //   ?PreloadPrimitive@CEnginePrimitiveChangerManager@@UAE_NAAVCEngineInternalPrimitiveBase@@ABVC3DVector@@K@Z.
 // Callees: the child type's manager slot 9 (+0x24) PreloadPrimitive(CEngineInternalPrimitiveBase&, const C3DVector&,
@@ -16,7 +17,7 @@
 #include "engine/CEngineInternalPrimitiveBase.h"
 #include "engine/CEnginePrimitiveTypeInfo.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CEnginePrimitiveManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

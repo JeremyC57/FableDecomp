@@ -1,4 +1,5 @@
 // CAIStateGroup_MeleeCombatNearby2::AttackEnemy() -- mark the creature ready to attack, then while not stopping (and still runnable, a combatant and within ring range of the target) post a pump-combat-actions brain output looking at the enemy and yield; terminate if the group starts stopping
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093DDE0, length 479 bytes (+ int3 padding).
 // Callees: CThingCreatureBase::IsRegisteredCombatant @ 0x00662410 (three times), the brain world accessor @ 0x008FCFC0
 // (combat manager +0x4c), CCombatManager::SetAttackerAsReadyToAttack @ 0x006EA450, Combat_CheckRingRangeToTarget @
@@ -63,7 +64,7 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
         m_pObject = object;
     }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CNavigationInput { public:                       // 24 bytes (Ego_r.pdb): Destination is left to the caller
     C3DVector Destination;                      // +0x00
     float Proximity;                            // +0x0c (float zero stores are immediates, the long uses the zero register)

@@ -1,9 +1,10 @@
 // CGameScriptInterface::EntityUnsheatheRangedWeapon -- unsheathe locally or enqueue player input
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail00890D80,242 bytes. Player creature RTTI table012457FC slot77=0052ABE0 returns true; base0125AC0C slot77 purecall.
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
-class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
+#include "engine/C3DVector.h"
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;const ComponentEntry* LowerBound(const long&)const;}; //004365B0 (const lower_bound specialization)
 struct ScriptMethods;
 #define CThingCreatureBase CThingCreatureBaseLayout

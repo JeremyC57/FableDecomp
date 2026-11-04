@@ -1,5 +1,6 @@
 // std::swap<THitLocationIntersectionElement>(THitLocationIntersectionElement& a, THitLocationIntersectionElement& b) -- STLport swap of two 32-byte hit-location ray intersections
 // Leaf: ??$swap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00817010, 96 bytes, plain `ret`: __fastcall (the algorithm TUs are /Gr), a in ecx -> edi,
 // b in edx. Its only caller is the `jmp` at 0x00817530 (iter_swap(a, b) { swap(*a, *b); } tail-called).
 // Label: catalogued swap<CDebugSphere>, a propagated name -- CDebugSphere is 76 bytes (Ego_r.pdb) while this body
@@ -10,10 +11,7 @@
 // is eight scheduled dword moves into the 32-byte frame -- while the implicit assignment is a trivial `rep movsd` x8
 // (`a = b`, then `b = tmp`).
 struct CHitLocation;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 namespace {
 struct THitLocationIntersectionElement {           // 32 bytes (implicit memberwise copy, trivial assignment)
     long          key;                             // +0x00

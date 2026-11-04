@@ -1,5 +1,6 @@
 // std::__unguarded_partition(THitLocationIntersectionElement* first, THitLocationIntersectionElement* last, THitLocationIntersectionElement pivot, THitLocationIntersectionElementPred comp) -- STLport quicksort partition of the hit-location ray intersections around a pivot key
 // Leaf: ??$__unguarded_partition@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00817840, 144 bytes, `ret 24h`: __fastcall (the algorithm TUs are /Gr), first in ecx, last in
 // edx; the 32-byte pivot and the empty 4-byte predicate on the stack (32 + 4 = 0x24). Returns the cut in eax.
 // Caller: the introsort loop 0x00818B00 (this chunk).
@@ -10,10 +11,7 @@
 // user copy constructor makes the element's implicit copy constructor memberwise) into the dead pivot slot (only
 // pivot.key, held in ebx, is read), the two assignments are the trivial 8-dword `rep movsd`.
 struct CHitLocation;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 namespace {
 struct THitLocationIntersectionElement {           // 32 bytes (implicit memberwise copy, trivial assignment)
     long          key;                             // +0x00

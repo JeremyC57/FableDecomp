@@ -1,5 +1,6 @@
 // CTCTavernBar::OnInitialActivate() -- fill every free "jug empty" action point of the bar with a new tavern jug object owned by the bar
 // Leaf: OnInitialActivate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BA550, 865 bytes, 8-aligned ebp frame, `ret`.
 // Callees: LowerBound @ 0x0040F020 (the bar's interface 0x2e), CTCNamedUserActionPoints::GetFreeNamedActionPoint @ 0x007FF190,
 //   CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CTCBase::GetWorld @ 0x00686A70, CTCBase::PeekPlayerManager @ 0x00686D50,
@@ -16,7 +17,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Forward, Up;
     CRightHandedSet() {}

@@ -1,4 +1,5 @@
 // CEngineShadowRenderer::SetupShadowFuncRenderStates(long, CColorBufferDepthPackParameters*) -- forward to the matrix overload with an identity texture transform
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B50510, length 125 bytes.
 // Callees: CEngineShadowRenderer::SetupShadowFuncRenderStates(long, CMatrix3x4*, CColorBufferDepthPackParameters*) @ 0x00B4FC40.
 // Shape: a 0x30-byte CMatrix3x4 local (right/up/look axes + position, C3DVector rows) set to identity by an inline
@@ -7,7 +8,7 @@
 // All of it is scheduled after the three argument pushes; `this` stays in ecx for the forwarded call (`ret 8`).
 // (An aggregate initialiser stores ascending, a memset becomes `rep stosd`, C3DVector row constructors copy through
 // temporaries.) The engine header (engine/CEngineShadowRenderer.h) has no member this body touches, so `this` is a bare declaration.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 { public:
     C3DVector Right, Up, Look, Pos;

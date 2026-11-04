@@ -1,4 +1,5 @@
 // CEnvironment::OverrideWindDirection(const C3DVector& direction, float speed) -- on the first override save the current wind direction and speed, then force the wind direction and, for a non-negative speed, the wind speed
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006B2B10, 115 bytes.
 // Callees: none. Float pool: 0x0122DEDC = 0.0f.
 // Layout: the members are CEnvironmentGameTickState fields (Ego_r.pdb names) of the current tick state; in retail they sit
@@ -9,9 +10,7 @@
 // Shape: the C3DVector copies go through a scratch register in dword pairs; `test ah,1 ; jne` is the `>= 0` test; the float
 //   speed is stored with an integer move.
 #pragma pack(push, 1)
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 
 class CEnvironment { public:
     unsigned char _pad0[0xc10];

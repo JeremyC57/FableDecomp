@@ -1,5 +1,6 @@
 // std::__median(const std::pair<CCharString, C3DVector >& a, const std::pair<CCharString, C3DVector >& b, const std::pair<CCharString, C3DVector >& c, CKeyPairCompareLess<CCharString, C3DVector > comp) -- STLport median-of-three (introsort pivot choice) over the 16-byte (CCharString, C3DVector) named positions
 // Leaf: ??$__median@U?$pair@VCCharString@@VC3DVector@@@std@@V?$CKeyPairCompareLess@VCCharString@@VC3DVector@@@@@std@@YIABU?$pair@VCCharString@@VC3DVector@@@0@ABU10@00V?$CKeyPairCompareLess@VCCharString@@VC3DVector@@@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077E820, 194 bytes (+int3 pad to 208), `__fastcall` `ret 8` (a in ecx, b in edx;
 //   c and the empty comparator slot on the stack); returns the chosen reference in eax.
 // Callee: CBasicString<char>::operator< 0x00429950 (the string-data compare behind the inline CCharString::operator<).
@@ -47,12 +48,7 @@ public:
     }
 };
 
-class C3DVector {
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;

@@ -1,4 +1,5 @@
 // CCombatManager::CreatureUnsheathWeapon(CThingCreatureBase*,long) -- choose immediate or animated unsheathing after action eligibility checks.
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail0x006EBDD0,268bytes. Native temporary is UnsheatheWeapons0x118; base dtor0062E900;
 // ctor008B85D0, PerformAction008B7BA0, ShouldPlay008B7CF0, incapacitated0085F0C0, knockdown0085F010,
 // IsFree00662210, SetCurrentAction006644F0, component lower_bound0040F020. Donor layouts aliased;
@@ -33,7 +34,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingCreatureBase;
 class CThing;
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CTCWeaponTrail;
 class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();

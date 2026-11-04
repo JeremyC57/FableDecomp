@@ -7,8 +7,9 @@
 // it and placed first; `return x != -1 ? true : false;` gives the bare `setne al` (a plain `return x != -1;` goes
 // through `xor ecx,ecx ; setne cl ; mov al,cl`); the shared `xor al,al` tail is the fall-out `return false`.
 // Leaf: ??RCOpinionDeedFilter_IsCrimeToRunAndFindAGuard
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 enum EOpinionDeedType { OPINION_DEED_TYPE_NONE = 0 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CIntelligentPointerThing { void* m_pData; void* m_pBlock; };
 class COpinionDeed { public:
     EOpinionDeedType         DeedType;                    // +0x00

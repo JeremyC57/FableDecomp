@@ -1,5 +1,6 @@
 // NScript::CV_BodyGuardScript::CM_BodyGuardRespawn::Main() -- bodyguard respawn marker: find which of the four bodyguards this marker stands for (from its data string); if that bodyguard is dead (status 1) and its respawn timer has run out, respawn the matching CREATURE_BODY_GUARD* creature here as "BodyGuard", tag it with its _EVIL1/_EVIL2/_GOOD1/_GOOD2 suffix and mark it alive
 // Leaf: ?Main@CM_BodyGuardRespawn@CV_BodyGuardScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E5E0C0, length 360 bytes + a 4-entry jump table (0x00E5E228).
@@ -28,7 +29,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual void v000(); virtual void v001(); virtual void v002();

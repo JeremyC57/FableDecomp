@@ -1,5 +1,6 @@
 // std::pair::pair(const pair& other) -- copy constructor of pair<C3DVector, CCharString>: the vector memberwise, then the string's copy constructor
 // Leaf: ??0?$pair@VC3DVector@@VCCharString@@@std@@QAE@ABU01@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00654DD4, 41 bytes, __fastcall `ret 4`, returns `this` (size-optimised TU: odd address).
 // Identity: called by the STLport `_Construct(pair*, const pair&)` helpers of the same TU (0x006555C3: `if (p) new (p) T(v)`,
 //   the uninitialized_copy loop 0x006555CE stepping 0x10 bytes, 0x0065560D, 0x00656DBC, 0x00656F07): a 16-byte element
@@ -11,11 +12,7 @@
 // Callee: CCharString::CCharString(const CCharString&) @ 0x0099EC30.
 #pragma optimize("s", on)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CCharString {
 public:

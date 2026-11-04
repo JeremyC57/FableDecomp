@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleTransitionBetweenPoints::CScriptModuleTransitionBetweenPoints(const CThing* thing, const C3DVector& startLookAt, const C3DVector& endLookAt, long frames, float fov) -- constructor: track the thing and set up a transition that stays at the thing's camera focal point
 // Leaf: ??0CScriptModuleTransitionBetweenPoints
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852D90, length 128 bytes (116 + int3 padding).
 // Callees: NCameraModes::CScriptModuleBase::CScriptModuleBase() @ 0x005ED070,
 // CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, ::SetPItem @ 0x00A01B90, ::GetPItem @ 0x00A01B50,
@@ -12,7 +13,7 @@
 // Layout: PDB (0x90 bytes, see the landed overloads 0x008524C0 / 0x00852510). Parameter names are descriptive.
 class CBaseObject;
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CTCGraphicAppearance {
     C3DVector GetCameraFocalPos(float t) const;      // 0x004C12D0

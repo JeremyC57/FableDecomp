@@ -1,5 +1,6 @@
 // CCreatureActionBase::CCreatureActionBase(const CCreatureActionBase&) -- the member-wise copy constructor: CBaseObject copy (detached), own vtable, the two intelligent pointers re-attached to the source's items, the plain fields copied, the two counted animation-entry pointers add-ref'd, and the three containers copy-constructed
 // Leaf: ??0CCreatureActionBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0062EBC0, 345 bytes (352 with padding). `ret 4`; vtable 0x01259D24.
 // Callees: CBaseObject::CBaseObject(const CBaseObject&) 0x0099A390; CBaseIntelligentPointer ctor 0x00A01B10,
 //          GetPItem 0x00A01B50, SetPItem 0x00A01B90 (CIntelligentPointer<CThingCreatureBase> vtable 0x0123E7D8,
@@ -51,10 +52,7 @@ class CSoundPair { public:
     long FirstSound;
     long LastSound;
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 struct CActionEventVector {                 // vector<CCountedPointer<NCreatureAction::CActionEventBase>> (12 bytes)
     void* _M_start;
     void* _M_finish;

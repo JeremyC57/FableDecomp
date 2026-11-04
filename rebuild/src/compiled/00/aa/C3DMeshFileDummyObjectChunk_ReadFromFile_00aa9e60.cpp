@@ -11,11 +11,12 @@
 // 0x2c vs PDB 0x34), so Direction +0x44, Transform +0x50, UseLocalOrigin +0x80 (the PDB header's +0x4c/+0x58/+0x88
 // are 8 bytes high); the engine header is not used.
 // Leaf: ReadFromFile@C3DMeshFileDummyObjectChunk
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
 class CChunkedFileLoader;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     void SetIdentity()

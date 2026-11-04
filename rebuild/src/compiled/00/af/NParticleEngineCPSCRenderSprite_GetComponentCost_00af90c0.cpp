@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCRenderSprite::GetComponentCost(CParticleSystemCost& cost, const CParticleSystem& system, float particleCount, float) -- vtable slot 20: a sprite renderer adds its crossed-sprite polygons and the (system-scaled) sprite area per particle; a trail adds two polygons per particle and its scaled width x length
 // Leaf: ?GetComponentCost@CPSCRenderSprite@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /O2 /Oy /W3
 // Retail-asm: 0x00AF9125 `fld dword ptr [esp+1Ch]` + 0x00AF9129 `fistp dword ptr [esp+18h]` -- the engine's inline-assembly float-to-long helper (the landed FloatToLong of CPSCEmitterGeneric::GetRandomRadius 0x00B102C0): the scaled size stored to the helper's by-value copy and reloaded for a bare dword fistp; VC7.1 `(long)x` calls __ftol2.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
@@ -26,9 +27,7 @@ class CParticleSystemCost { public:
     float LightCost;                        // +0x14
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CParticleSystem { public:
     unsigned char m_pad00[0x50];
     bool          Initialised : 1;                   // +0x50 bit 0

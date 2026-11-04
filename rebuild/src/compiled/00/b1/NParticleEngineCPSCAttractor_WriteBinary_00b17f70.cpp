@@ -1,4 +1,5 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test hand-transcribed with renamed types; WriteCBYTE bound to both 0x993ea0 and 0x993eb0)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // NParticleEngine::CPSCAttractor::WriteBinary(CDataOutputStream*) -- serialize the attractor settings and its user points
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B17F70. Callees (lane names): WriteEBOOL 0x00993E30, WriteLong(long) 0x00993EB0,
 //   WriteULong(unsigned long) 0x00993EA0 (propagated label "WriteCBYTE"), WriteFloat 0x00993EE0,
@@ -8,7 +9,7 @@
 //   AttractorUserPointsArray (CArray<C3DVector>: begin/end/capacity) +0x24. Local model: engine/CDataOutputStream.h is
 //   data-only; CDataOutputStream is the lane's method carrier.
 #include "engine/CDataOutputStream.h"
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 template<class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }

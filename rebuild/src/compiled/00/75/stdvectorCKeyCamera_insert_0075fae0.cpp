@@ -1,5 +1,6 @@
 // std::vector<CKeyCamera>::insert(CKeyCamera* position, const CKeyCamera& x) -- STLport single-element insert of a scripted-camera key: construct at the end, or shift the tail up one slot and assign x into position, or grow; return the iterator at the insert index
 // Leaf: ?insert@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075FAE0, 230 bytes (+int3 pad to 240), thiscall `ret 8`, the iterator (a plain pointer)
 //   returned in eax.
 // Caller: CLipSyncDataBank::Close-labelled 0x0075E460 (call site 0x0075E49C; the landed CLipSyncDataBank::InsertSample
@@ -23,10 +24,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CKeyCamera {                                          // Ego_r.pdb, 56 bytes
 public:

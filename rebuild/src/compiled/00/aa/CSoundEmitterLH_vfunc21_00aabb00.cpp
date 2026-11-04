@@ -1,4 +1,5 @@
 // CSoundEmitterLH::vfunc_21(long handle) -- when the sound system is up and the handle belongs to one of this emitter's sounds, true when the player reports state 2 or 1 for it
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AABB00, 93 bytes, `ret 4`. Vtable 0x0129E6EC (CSoundEmitterLH) slot 21.
 // Callees: the system's slot 6 (+0x18, GetPlayer), the player's slot 29 (+0x74, GetState(handle)).
 struct CSoundPlayer {
@@ -40,7 +41,7 @@ struct SSoundNode {                                    // VC6 list node, 16 byte
     long          extra;                               // +0x0c
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CSoundEmitterLH {                               // vtable 0x0129E6EC
     virtual void v00();

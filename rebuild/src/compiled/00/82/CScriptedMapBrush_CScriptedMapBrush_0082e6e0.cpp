@@ -1,5 +1,6 @@
 // CScriptedMapBrush::CScriptedMapBrush() -- default constructor: empty cell vector, empty thing sets/map, empty name
 // Leaf: ??0CScriptedMapBrush@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082E6E0, 150 bytes (+10 int3), thiscall `ret`.
 // Identity: Ego_r.pdb name set ??0CScriptedMapBrush@@QAE@XZ (vtable 0x01272518 as the landed copy constructor
 //   0x00827040). The catalog label "CBaseIntelligentPointer_ctor_WithVectors" is descriptive.
@@ -15,10 +16,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void  __cdecl free(void* block);                 // 0x00BFEA14
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class C3DAngles {
 public:
     float X, Y, Z;

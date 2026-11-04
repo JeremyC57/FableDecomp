@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSingleSprite::AddTrailPosition(const C3DVector& pos, float width) -- appends one (position, width) entry to the sprite's trail primitive and drops the oldest entries while the trail is longer than MaxTrailLength
 // Leaf: ?AddTrailPosition@CPSCSingleSprite@NParticleEngine@@IAEXABVC3DVector@@M@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B081A0, length 164 bytes, thiscall `ret 8`.
 // Signature from Ego_r.pdb: ?AddTrailPosition@CPSCSingleSprite@NParticleEngine@@IAEXABVC3DVector@@M@Z (protected).
 //   Callers: CPSCSingleSprite::Update @ 0x00B08530 (calls 0x00B0866A / 0x00B08763, width = TrailWidth).
@@ -18,11 +19,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

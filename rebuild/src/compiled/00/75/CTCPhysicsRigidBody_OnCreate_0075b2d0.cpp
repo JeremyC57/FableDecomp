@@ -1,5 +1,6 @@
 // CTCPhysicsRigidBody::OnCreate() -- start with OldRHSet = RHSet and a zero offset, build the physics mesh info from the parent's graphic data when it has a graphic appearance, take the offset from the mesh info's centre (XY), run the base OnCreate and set up the rigid body
 // Leaf: OnCreate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075B2D0, 127 bytes. CTCPhysicsRigidBody vtable 0x0126996C slot 4 (OnCreate).
 // Callees: CTCPhysicsBase::CreatePPhysicsMeshInfo(const CGraphicDataRef&) @ 0x006B05A0, virtual slot 93 (+0x174,
 //   GetPhysicsMeshInfo; the CTCPhysicsRigidBody override is 0x0075BFD0), CTCPhysicsBase::OnCreate @ 0x006B0780 (called
@@ -10,7 +11,7 @@
 //   (two stores from one zero register; stores through the member's `this` keep the ParentThing load AFTER them, as
 //   retail -- direct member stores let VC hoist `mov edx,[esi+4]` above the last RHSet pair; a `C2DVector(0, 0)`
 //   temporary goes through the frame); the offset copy takes &info->ToCentre and copies X, Y as dwords.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class C2DVector { public:
     float X, Y;

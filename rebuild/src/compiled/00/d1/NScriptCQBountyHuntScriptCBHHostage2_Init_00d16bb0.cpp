@@ -1,5 +1,6 @@
 // NScript::CQ_BountyHuntScript::CBH_Hostage2::Init() -- bounty-hunt hostage 2 setup: disable opinion reaction 34, mark the thing scared and a villager-hostage opinion source, then spawn the parent's WatchForHostage2Killed watcher on it
 // Leaf: ?Init@CBH_Hostage2@CQ_BountyHuntScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Naming wave 29 (family sfbr): the thread class derives from the retail CSpawnedFuncBase (engine/CSpawnedFuncBase.h; Ego_r.pdb / FableWin.pdb
 //   ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 0x00CDD450, implicit ??1CSpawnedFuncBase@@UAE@XZ 0x00CDD4C0). Was the invented
@@ -25,7 +26,7 @@ class CCharString { public:                                 // 4 bytes: the shar
 };
 
 class CCPPointerInfo { public: long References; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CCPPointerImp {                               // CCPPointer<CScriptThingImp>: Data, Info (memberwise copy adds a reference)
     void* Data;

@@ -1,5 +1,6 @@
 // CEngineWaterRenderer::RenderSeaNonReflectiveForeground(float time) -- bind the sea bump and environment maps, the sea blend states, shaders and foreground index buffer, upload the swell, bone, fresnel, bump and sea-colour constants, flush the shader state and render every non-reflective sea foreground patch mesh
 // Leaf: RenderSeaNonReflectiveForeground
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B77E20, length 1488 bytes (+ int3 padding), `ret 4` (time unused).
 // Callees: CRenderStateManager::RestoreCaptureBlock @ 0x00A05840 (inline OpenCaptureBlock on 0x013CB508);
 // CShaderRenderManager::ApplyVertexShader @ 0x00988020, ApplyPixelShader @ 0x00988140, SetUserVertexShaderConstant
@@ -13,7 +14,7 @@
 // Shape: the swell constant is two whole calls (if/else, cross-jumped); the fresnel factor is a ternary over an inline
 // Clamp (`v < lo` / `v > hi` returns); the sea-colour constant is a C4DVector local filled member by member.
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }

@@ -1,5 +1,6 @@
 // CTCTavernGameCoinBase::AddNewCoin(const C2DVector& position) -- adds an owned coin (radius and density from the coin def, a fresh coin game piece), makes it the held coin at the given board position and places its mesh on the board
 // Leaf: AddNewCoin
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008EFA00, 250 bytes (`ret 4`; Ego_r.pdb `?AddNewCoin@CTCTavernGameCoinBase@@QAEXABVC3DVector@@@Z`, only X/Y are read; modelled as the C2DVector prefix: a three-float member-wise copy compiles 6 bytes longer).
 // Callees: the owner's def holder (CThing+0x70) lookup 0x008F00F0 (CDefPointer<const CTavernGameCoinBaseDef> by out
 //          pointer, this TU; manifest label "GetSubDef<CAICreatureWillPowerIndicatorDef>" is propagated);
@@ -26,10 +27,7 @@ class CThing;
 class CThing { };
 class CThingObject : public CThing { };              // CThingObject derives from CThing (PositionMesh takes the base)
 class C2DVector { public: float X, Y; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
 
 #pragma pack(push, 1)

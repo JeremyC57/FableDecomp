@@ -1,5 +1,6 @@
 // CTCHighlightItem::DoStartRunning() -- spawns the item's highlight particle emitter just above the thing, keeps it, and switches the highlight to running
 // Leaf: DoStartRunning
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077CBE0, 186 bytes.
 // Callees: CDefClassBase::GetSubDef<CHighlightItemDef>(CDefPointer&) @ 0x0077D080 (same TU; see the stand-in
 //          below), CThing::GetPos() const @ 0x004C73D0, CreateEffectThing(long, const C3DVector*, bool)
@@ -89,9 +90,7 @@ bool CDefClassBase::GetSubDef(CHighlightItemDefPointer& out)
 }
 #pragma auto_inline(on)
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     unsigned char  _pad_0x00[0x70];

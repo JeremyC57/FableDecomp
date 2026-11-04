@@ -1,5 +1,6 @@
 // CDecodedStream::Initialise() -- set up the stream's voice: initialise the +0x2F8 voice effect for a 4-unit, 44100 Hz format (false when that fails), reset the current source properties (+0x224) to the static defaults, reset every pending reverb property of the +0x290 block through its clamped setters, then configure the voice effect from that block
 // Leaf: ?Initialise@CDecodedStream@@QAE_NXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C54510, 456 bytes, thiscall, plain `ret`, EH frame (the format local's inline
 //   virtual destructor is the unwind action).
@@ -20,11 +21,7 @@
 //   words inline `value ; DirtyFlags |=` setters, each reached through the inline accessor GetPendingParameters() (retail
 //   reloads the dirty word after every store: `or [esi],800h` / `or [esi],4000h` after the pan copies, then load / or / store
 //   per level word); the sixteen out-of-line setters use the `p` reference.
-class C3DVector {
-public:
-    float X, Y, Z;
-
-};
+#include "engine/C3DVector.h"
 
 struct CVtable_012b89c4 {                                  // vtable 0x012B89C4, 0x1C bytes: a sound format description
     CVtable_012b89c4()

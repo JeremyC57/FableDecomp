@@ -1,5 +1,6 @@
 // CFilter_Bind2::operator()(const CThingBuilding& thing) -- a building passes when its physics bounding sphere overlaps the sphere filter and the position filter says it contains the point
 // Leaf: ??$?RVCThingBuilding@@@?$CFilter_Bind2@VCThingFilter_OverlappingSphere@@VCThingFilter_PosInContainmentVolume@@@@QBE_NABVCThingBuilding@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00669110, 134 bytes (+ int3 padding), thiscall `ret 4`, bool in eax.
 // Full name (Ego_r.pdb name set): CFilter_Bind2<CThingFilter_OverlappingSphere, CThingFilter_PosInContainmentVolume>
 //   ::operator()<CThingBuilding>(const CThingBuilding&) const -- `??$?RVCThingBuilding@@@?$CFilter_Bind2@...`.
@@ -12,9 +13,7 @@
 // Shape: `return (*F1)(thing) && (*F2)(thing);` (the `&&` value gives the `mov eax,1` / `xor eax,eax` exits) over the landed
 //   0x006689E0 sphere body made __forceinline (plain inline stays a call): centre in a frame local, the bound radius homed in the dead argument slot, the
 //   squares summed as one expression (VC squares Z, Y, X). No pragma.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640
 };

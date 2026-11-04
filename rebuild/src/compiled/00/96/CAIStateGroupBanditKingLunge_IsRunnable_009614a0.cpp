@@ -1,11 +1,12 @@
 // CAIStateGroup_BanditKingLunge::IsRunnable() -- runnable when CanLungeAtPlayer(hero) holds and the hero is inside the lunge radius (squared XY distance < 16.0f @ 0x01238164): target the hero
 // Leaf: IsRunnable@CAIStateGroup_BanditKingLunge
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009614A0, length 169 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970,
 // CPlayer::GetHeroThing @ 0x00487DC0, CAIStateGroup_BanditKingLunge::CanLungeAtPlayer(CThing*) @ 0x009613A0,
 // CThing::GetPos @ 0x004C73D0, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10.
 // Shape: `dist2 < R` gives `fcomp ; test ah,5 ; jp`; PTargetThing = CIntelligentPointer<..>(hero) (vtable 0x01231C4C).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing { public:
     unsigned char _pad[0x91];

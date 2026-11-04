@@ -1,5 +1,6 @@
 // CSoundManagerLH::~CSoundManagerLH() -- Lionhead-audio sound manager destructor: restore the CSoundManagerLH vtable, clear the base bank map, shut the sound system down (its slot 13, pointer cleared), then the members (name map, name-pair map, sound list) and the CASoundManager base
 // Leaf: ??1CSoundManagerLH@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A3EDE0, 104 bytes, thiscall, tail `jmp ??1CASoundManager@@UAE@XZ` (0x00991880).
 // Identity (proven): stores vtable 0x0129D2C4 first (RTTI .?AVCSoundManagerLH@@ : CASoundManager : CBaseClassNonCopyable : CBaseClass);
 //   sole caller is that vtable's slot-0 scalar deleting destructor 0x00A41A50 (call at 0x00A41A53); the tail is the base destructor
@@ -138,9 +139,7 @@ class CASoundManager : public CBaseClassNonCopyable { public:
     virtual ~CASoundManager();                  // 0x00991880
     void ClearBanks_009918f0();                 // 0x009918F0
 };
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 class CSoundSystem {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

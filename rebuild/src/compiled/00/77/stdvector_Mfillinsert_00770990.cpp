@@ -1,5 +1,6 @@
 // std::vector::_M_fill_insert(list<CWeaponTrailEntry>* pos, size_type n, const list<CWeaponTrailEntry>& x) -- STLport fill-insert of n copies of a weapon-trail point list at pos: shift in place when the capacity suffices, else grow through _M_insert_overflow
 // Leaf: ?_M_fill_insert@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00770990, length 272 bytes (thiscall, `ret 0Ch`).
 // Identity: the catalog label "Vector_Insert_LinkedList_Conditional" is descriptive. The only caller is the landed
 //   vector<list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry> >::resize 0x00770D60 (`insert(end(), n - size(), x)`);
@@ -20,11 +21,7 @@ extern "C" void __cdecl free(void* p);                                          
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CEnginePrimitiveWeaponTrail {
 public:

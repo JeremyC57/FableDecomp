@@ -1,16 +1,13 @@
 // CTCPhysicsBase::GetBoundingInfo(C3DVector& centre, float& radius) -- the bounding sphere in world space: the physics mesh's sphere offset by the position when there is one, otherwise the position raised by the thing's radius
 // Leaf: GetBoundingInfo
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006AF640, 139 bytes.
 // Callees: virtual slot 93 (+0x174) of CTCPhysicsBase (0x006B13B0 in the CTCPhysicsBase vtable), returning the local bounding
 //   physics mesh info (PDB CThingPhysicsMeshInfo: ToCentre +0x08, BoundingRadius +0x14) or null.
 // Layout: engine/CTCPhysicsBase.h: Position +0x0c, Radius +0x34 (modelled locally to declare the virtual slot).
 // Shape: the mesh arm `centre = C3DVector(...)` built in the frame and copied through integer registers (3-float ctor only); the
 //   radius is stored first in the fallback arm, the position copy then `centre.Z += radius` read back through the reference.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CThingPhysicsMeshInfo { public:
     unsigned char _pad00[0x08];
     C3DVector ToCentre;                         // +0x08

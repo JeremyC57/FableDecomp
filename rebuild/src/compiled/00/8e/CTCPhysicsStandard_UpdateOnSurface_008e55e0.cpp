@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::UpdateOnSurface(const vector<CThing*>& nearbyThings, const C3DVector& position) -- recompute the on-mesh / on-ground state and the thing stood on at the position, store the two flags, and record the thing stood on (none while on the ground)
 // Leaf: UpdateOnSurface
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E55E0, 143 bytes.
 // Callees: CTCPhysicsStandard::GetOnSurfaceParameters(const vector<CThing*>&, bool&, bool&, const C3DVector&, CTCPhysicsBase*&)
 //   @ 0x008E5480, CTCPhysicsBase::SetThingStandingOn(CTCPhysicsBase*) @ 0x006AF6D0.
@@ -7,7 +8,7 @@
 // Shape: the two flags are copied into bool locals (frame bytes 2/3) and the stood-on pointer zeroed (frame word 4) before the
 //   call; the write-back of both bit fields merges into one load/and/or/store; the argument is `OnGround ? 0 : standingOn`
 //   computed from the stored byte (`and al,10h ; neg ; sbb ; not ; and`).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CThingPhysicsMeshInfo;
 class CThing;

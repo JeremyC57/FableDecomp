@@ -1,5 +1,6 @@
 // CTCTrapBase::Trigger() -- fire the trap: when its def names an explosion, create it at the trap with every live hit and immune thing excluded, and when the def also names a physical obstruction, create one of the explosion's physics radius (remembered by the trap, alive 100 seconds, ignoring the immune things); then run the trap-specific trigger and mark the trap triggered
 // Leaf: Trigger
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00788229, length 351 bytes (`leave`, plain `ret`): frame-pointer size TU,
 //   `#pragma optimize("y", off)` + `#pragma optimize("s", on)` as the landed siblings UpdateTriggerOnProximity 0x007887BE
 //   and SetThingAsImmune 0x007898A3. Ego_r.pdb `?Trigger@CTCTrapBase@@IAEXXZ`.
@@ -27,7 +28,7 @@
 //   pointer is assigned straight from the thing (the implicit CIntelligentPointer<CThing> temporary's address is re-taken).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing;
 class CBaseObject;
 struct CBaseIntelligentPointer {

@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCRenderMesh::Initialise(CIEngine* engine, CParticleSystem* system, CParticleUpdateParameters* params, CEnginePrimitiveHandle* parent) -- create the mesh child primitive (type 0x1c, identity transform) and the trail child primitive (type 0x1a) under the parent handle when their banks are set and they do not exist yet, then mark the component initialised; returns the initialised flag
 // Leaf: Initialise
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AFF0A0, 266 bytes (+ int3 padding), `ret 10h`; CPSCRenderMesh vtable 0x0129F96C slot 28.
 // Label: the catalog's "CPSCRenderSprite::Initialise" is a propagated name; the vtable slot and the offsets are
 //   CPSCRenderMesh's (the sprite one is 0x00AF9310).
@@ -11,7 +12,7 @@
 //   ChildPrimIndex +0x54, ChildTrailPrimIndex +0x60.
 // Shape: the mesh record is a temporary built by its out-of-line ctor inside the create call (engine vtable fetched first),
 //   from an identity matrix in its own block (top-down zero fill, then the diagonal); the trail record is a block local.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:
     C3DVector Right, Up, Look, Pos;
     void SetIdentity()

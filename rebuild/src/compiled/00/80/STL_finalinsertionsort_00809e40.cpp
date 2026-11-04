@@ -1,5 +1,6 @@
 // std::__final_insertion_sort(pair<C3DVector, long>* first, pair<C3DVector, long>* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport introsort finish for the first-person targeting positions: a guarded insertion sort of the first 16 then an unguarded one of the rest (or one guarded pass when 16 or fewer)
 // Leaf: ??$__final_insertion_sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00809E40, 223 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the 0x2c-byte comparator by value, `ret 2Ch`.
 // Name: STLport `__final_insertion_sort`; the catalog's "make_heap<CThing**, CThingCompare_BestForTargeting2>" is
@@ -12,10 +13,7 @@
 //   __unguarded_insertion_sort(first + 16, last, comp); } else __insertion_sort(first, last, comp);` -- both arms open
 //   with the same comparator copy, so VC7.1 hoists its ten dwords above the branch and stores the CompareInXYPlane byte
 //   per arm (bl / dl).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // user copy ctor, implicit operator=
-};
+#include "engine/C3DVector.h"
 
 class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                                   // +0x00

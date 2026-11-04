@@ -1,6 +1,7 @@
 // NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::GetUpdateParam(C3DVector& result, const unsigned long& type, float timeScale, bool flag, unsigned long depth) const -- look the parameter type up in the update-parameter map and let its registered callback produce the vector (at most 10 levels of nesting)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF3080, length 97 bytes (112 with int3 padding).
 // Leaf: ?GetUpdateParam@?$CParticleUpdateParameters@KK@NParticleEngine@@QBE_NAAVC3DVector@@ABKM_NK@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CVectorMap<unsigned long, CParticleUpdateParamDesc<unsigned long,unsigned long>, ...>::LowerBound(const unsigned
 // long&) @ 0x00AF2C50 (thiscall, returns the element pointer), the callback's virtual slot 1 (+4)
 // CParticleUpdateParamCallback::GetUpdateParam(C3DVector&, unsigned long, float, bool, const CParticleUpdateParameters&,
@@ -15,7 +16,7 @@
 // declaration-only, the key is re-read through the reference after the call: 98v97); the inline find is
 // `i = LowerBound(k); (i == end || k < i->first) ? end : i` with end re-read for the final compare; the depth
 // limit is tested only after a hit; the desc forwards to the callback with `depth + 1` and `*this`.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace std {
 template <class T1, class T2> struct pair { T1 first; T2 second; };

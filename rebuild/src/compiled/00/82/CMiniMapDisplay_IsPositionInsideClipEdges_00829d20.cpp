@@ -6,9 +6,8 @@
 // Globals: the Z edge @ 0x01272580, the Y edge @ 0x01272584 (floats).
 // Shape: four `if (flag && compare) return false;` tests; `>` gives `test ah,41h ; je`, `<=` gives `test ah,41h ; jnp`.
 // Leaf: ?IsPositionInsideClipEdges@CMiniMapDisplay@@
-class C3DVector { public:
-    float X, Y, Z;
-};
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 extern const float g_miniMapEdgeZ;                 // 0x01272580
 extern const float g_miniMapEdgeY;                 // 0x01272584
 class CMiniMapDisplay { public:

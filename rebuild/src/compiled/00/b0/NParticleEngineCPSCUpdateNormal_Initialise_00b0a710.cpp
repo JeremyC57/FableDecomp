@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCUpdateNormal::Initialise(CIEngine* engine, CParticleSystem& system, const CParticleUpdateParameters& params, CEnginePrimitiveHandle& handle) -- vtable slot 28: hand the attractor and stay-with-emitter settings to the owning particle system and mark the component initialised
 // Leaf: ?Initialise@CPSCUpdateNormal@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0A710, 60 bytes (+4 int3 padding).
 // Name: FableWin.pdb ?Initialise@CPSCUpdateNormal@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z;
 // slot 28 of the vtable 0x0129FC1C (rtti-vtables.tsv; slot 28 of CPSCSpline is the landed CPSCSplineBase::Initialise
@@ -34,10 +35,7 @@ class CCharString { public:
     void* m_pData;
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 
 namespace NParticleEngine {
 class CParticleSystem;

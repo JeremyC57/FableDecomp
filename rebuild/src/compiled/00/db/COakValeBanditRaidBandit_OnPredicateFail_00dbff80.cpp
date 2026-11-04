@@ -1,5 +1,6 @@
 // COakValeBanditRaidBandit::OnPredicateFail() -- when the bandit is killed: flag the raid's bandit-killed byte, and unless the raid is over, re-target the raid's bandit thing to the one nearest the hero and flag it when that bandit is within 8 m of this one
 // Leaf: OnPredicateFail
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DBFF80, 259 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CScriptThing slot 18 MsgIsKilledBy(const CCharString&) (+0x48) and slot 6 GetPos() (+0x18, const C3DVector&)
 //   on the entity's own thing (+8); CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; CGameScriptInterface
@@ -12,7 +13,7 @@
 // Shape: the CScriptThing assignment is the inline CCountedPointer operator= (source words read first); the name string
 //   is the implicit conversion temporary built before the nested GetHero call.
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

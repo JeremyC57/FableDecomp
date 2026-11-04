@@ -1,5 +1,6 @@
 // _global::CopyBackward_CTargetPoint_008076d0(CTargetPoint*, CTargetPoint*, CTargetPoint*, SRandomAccessIteratorTag, long*) -- SGI __copy_backward over 28-byte NPlayerTargeting::CTargetPoint, returns the moved-back result
 // Leaf: CopyBackward_CTargetPoint_008076d0
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008076D0, length 136 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CBaseIntelligentPointer::SetPItem @ 0x00A01B90.
 // SGI-STL `__copy_backward(first, last, result, random_access_iterator_tag, Distance*)`, /Gr TU (__fastcall: first in ecx,
@@ -28,10 +29,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint { public:                            // Ego_r.pdb: 28 bytes

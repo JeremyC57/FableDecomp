@@ -1,5 +1,6 @@
 // NScript::CQ_SecretPassageScript::CSP_ScreamerTrigger::Main() -- the secret-passage screamer trigger: wait until the hero is within 10 units of Me, then spawn as many undead sword soldiers as Me's data string says (each near a random "SP_ScreamerSpawnPoint", named "EnemySeekingHero" and set on the hero), and wait until every "EnemySeekingHero" is dead
 // Leaf: ?Main@CSP_ScreamerTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DEF3B0, length 616 bytes, plain `ret`.
 // Callees: IsDistanceBetweenThingsUnder 0x00CBE2FF and AreAllThingsInVectorDead 0x00CBED00 (both __fastcall),
 // GFCharStringToInt 0x0099E7F0 (__fastcall), IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099EAE0,
@@ -15,7 +16,7 @@
 // Naming wave 35: identity reg 00decd7c "SP_ScreamerTrigger" in 00decad0; Alloc 00ded1a0; vtable 012ddd44 slot 1; PDB ?Main@CSP_ScreamerTrigger@CQ_SecretPassageScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CSP_ScreamerTrigger::Main (wave3/labels_alloc.tsv); PDB ?Main@CSP_ScreamerTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CSP_ScreamerTrigger@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0
 class CCharString { public:
     void* PStringData;

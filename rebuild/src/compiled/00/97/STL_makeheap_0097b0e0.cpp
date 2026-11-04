@@ -1,5 +1,6 @@
 // std::__make_heap(CThing** first, CThing** last, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp, CThing** valueType, int* distanceType) -- heapify step of the take-cover candidate sort: sift each parent down from (len-2)/2 to 0
 // Leaf: ??$__make_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097B0E0, 91 bytes, __fastcall (/Gr algorithm TU: first in ecx, last in edx, the
 //   comparator and the two type tags on the stack), `ret 18h`.
 // Instantiation: the take-cover candidate sort: std::sort<CThing**,
@@ -19,9 +20,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 extern "C" double __cdecl pow(double x, double y);                                    // _CIpow 0x00BFEB40
 extern "C" double __cdecl sqrt(double x);
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

@@ -1,5 +1,6 @@
 // CTCHeroCentreDoorMarker::FrameUpdate() -- while the hero centre is alive, raise game event 0x34 (door type + hero-centre UID) the first time the hero walks inside the marker radius, then (for door type 1) update the particle experience
 // Leaf: FrameUpdate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
@@ -13,7 +14,7 @@
 // range test keeps both deltas and the radius on the x87 stack and compares Radius*Radius against dX*dX + dY*dY (`test ah,41h`).
 // Layout (packed, landed 0x0077F5C0): Radius +0x0c, DoorType +0x10, HeroInsideRadius +0x14, PParticle +0x15, PHeroCentre +0x1d;
 // CThing UID +0x18 (unsigned __int64), Player byte +0x90, dead bit 0 of +0x91.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing {
 public:
     unsigned char _pad00[0x18];

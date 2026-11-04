@@ -1,5 +1,6 @@
 // std::__partial_sort(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* middle, C3DSkeletalBoneMorph* last, C3DSkeletalBoneMorph*, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)) -- SGI partial sort: heapify [first, middle), pop every smaller element of [middle, last) into the heap, then sort_heap
 // Leaf: ??$__partial_sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A46940, length 124 bytes, `ret 0Ch`.
 // Callers: 0x00A46A8C (partial_sort) and 0x00A46F23 (the introsort loop's depth-limit fallback).
 // Callees: 0x00A46350 __make_heap (this chunk), 0x00A462A0 __pop_heap (landed), 0x00A466F0 sort_heap (landed),
@@ -18,11 +19,7 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class C3DVector {                                    // retail C3DVector: memberwise user copy ctor, implicit operator=
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DSkeletalBoneMorph {
 public:

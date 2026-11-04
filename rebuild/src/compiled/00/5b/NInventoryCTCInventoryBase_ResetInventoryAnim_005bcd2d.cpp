@@ -1,5 +1,6 @@
 // NInventory::CTCInventoryBase::ResetInventoryAnim(long defIndex) -- restarts the inventory item animation for a new item def: both right-handed sets restart from the item's starting orientation and are turned back by their current/last X, Y and Z angles
 // Leaf: ?ResetInventoryAnim@CTCInventoryBase@NInventory@@QAEXJ@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x005BCD2D, 258 bytes, `ret 4`; size TU with an esp frame (`#pragma optimize("s", on)`: `push 6 ; pop ecx ;
 // rep movsd` copies).
 // Callees: GetStartingRightHandedSet(long) 0x005D9730 (__fastcall: hidden CRightHandedSet result in ecx, the def index
@@ -16,7 +17,7 @@
 // InventoryAnimThingDefIndex +0x124, RHSetInvItemDefIndex +0x128.
 #pragma optimize("s", on)
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:                           // 24 bytes: Up, Forward
     C3DVector Up;
     C3DVector Forward;

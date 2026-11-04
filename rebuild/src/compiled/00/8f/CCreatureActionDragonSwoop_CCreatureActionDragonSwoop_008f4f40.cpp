@@ -1,4 +1,5 @@
 // CCreatureAction_DragonSwoop::CCreatureAction_DragonSwoop(CThingCreatureBase*, const CCharString&, const C3DVector&, const C3DVector&, const C3DVector&) -- combat action (action code 150, silent sound pair) with the given animation and three swoop points
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F4F40, length 143 bytes, `ret 14h` (five arguments). Vtable 0x012887D4.
 // Callees: CCombatActionBase::CCombatActionBase(owner, actionCode, const CSoundPair&) @ 0x00858030,
 //          CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0 (manifest label
@@ -17,7 +18,7 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();

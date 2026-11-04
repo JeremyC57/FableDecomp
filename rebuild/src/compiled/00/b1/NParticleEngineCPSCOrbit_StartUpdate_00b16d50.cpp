@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCOrbit::StartUpdate(const CParticleUpdateParameters<unsigned long, unsigned long>& params) -- per-frame orbit update: on the first frame seed the three orbit states and run four warm-up steps, then advance each orbit around the component's current centre
 // Leaf: StartUpdate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c (caller respell): calls 0x00AEAA00 under its PDB name NParticleEngine::GetOneOverTickRate (?GetOneOverTickRate@NParticleEngine@@YIMXZ; no arguments, so the __fastcall call site is unchanged). Calls 0x00AEAAD0 as NParticleEngine::GetRandomSeed (?GetRandomSeed@NParticleEngine@@YIAAKXZ, FableWin.pdb + Ego_r.pdb; was ?GetParticleRandomSeed@@YAPAKXZ; no arguments, the call site is unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B16D50, length 337 bytes (padded to 352), `ret 4`.
 // Callees: particle frame-time getter @ 0x00AEAA00 (fld of the float @ 0x01399508; manifest "GetMaxDrawDistance"),
@@ -14,9 +15,7 @@
 // Shape: the warm-up count is 1 or 4 (an unsigned loop VC turns into a down-counter in the dead `params` slot); the transform
 //   handed to every Update is rebuilt each pass as an identity rotation (chained zero/one assignments, stored from E32/E33
 //   downwards) with the centre as translation.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 {
 public:

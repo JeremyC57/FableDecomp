@@ -1,5 +1,6 @@
 // CTCChest::Open() -- open a shut chest: mark it open, force frame updates, persist it when the def asks, spawn and attach the def's open particle effect, then stop the hero pushing it
 // Leaf: Open
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x00750540, 384 bytes, `ret`.
 // Callees: CWideString() 0x0099AED0 / ~CWideString 0x0099B510 (an unused local), CDefClassBase::GetSubDef<CChestDef>
 // 0x0074F7D0 (same TU: a stand-in body is given), CThing::SetForceFrameUpdate(bool) 0x004C7C60,
@@ -17,7 +18,7 @@
 // model); the opener flags are set through an inline COpenCloseHelper member (written directly they sink below the
 // SetForceFrameUpdate argument push); IS_THING_ALIVE is `__forceinline`.
 class CBaseObject;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 class CWideString { public:
     void* PStringData;

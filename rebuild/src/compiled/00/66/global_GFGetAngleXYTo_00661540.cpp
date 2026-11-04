@@ -1,5 +1,6 @@
 // GFGetAngleXYTo(const C3DVector& from, const C3DVector& to) -- heading from one position to another in the XY plane, as a fraction of a full turn wrapped into [0, 1)
 // Leaf: ?GFGetAngleXYTo@@YIMABVC3DVector@@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00661540, 91 bytes, `__fastcall` (from in ecx, to in edx, `ret`), float in st(0).
 // Name: Ego_r.pdb `?GFGetAngleXYTo@@YIMABVC3DVector@@0@Z` (name set): it reads X/Y only, and the landed caller
 // CTCLook::GetTurningAngles 0x00751E80 calls it as `(from, to)` (9 call sites in all).
@@ -13,9 +14,7 @@
 #include <math.h>
 #pragma intrinsic(atan2, fmod)
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 __forceinline float WrapAngle(float angle)
 {

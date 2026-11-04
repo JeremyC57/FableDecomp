@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverHornetQueen::SetUpCirclePoints() -- rebuild the circle markers from the live "WaspQueenCirclePos<n>" track things (n = 1, 2, ... until one is missing) within 60 units of the queen, and set the circle radius to the farthest marker's distance from the arena centre plus 12
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   template instance, manifest <CThingFilter_HasDefGlobalIndex, CThing>, in fact <CThingFilter_HasScriptName, CThing>) as a same-TU `template <class TFilter, class T>
 //   __declspec(noinline)` body: VC7.1 then knows only that call writes `marker`, keeps the one marker load in esi across the
 //   GetPos call and drops the null half of the loop test. The body is a STAND-IN (the real search walks the thing-map
@@ -19,9 +20,7 @@
 // Layout: HoverHornetQueen from Ego_r.pdb (base 0x14): ArenaCentrePos +0x28, CircleMarkers +0x50 (PDB +0x54: the Things vector
 // at +0x40 is 12 bytes in STLport).
 #include <math.h>
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead

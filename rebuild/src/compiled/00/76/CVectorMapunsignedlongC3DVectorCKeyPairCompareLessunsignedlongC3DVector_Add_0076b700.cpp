@@ -1,5 +1,6 @@
 // CVectorMap<unsigned long, C3DVector, CKeyPairCompareLess<unsigned long, C3DVector> >::Add(const pair<unsigned long, C3DVector>& entry) -- append a {key, vector} pair to the map's vector and mark the map dirty
 // Leaf: ?Add@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076B700, 83 bytes (+int3 pad to 96), `ret 4`. No direct caller or reference (an
 //   unreferenced out-of-line copy of an inline CVectorMap member).
 // Callee: vector<pair<unsigned long, C3DVector> >::_M_insert_overflow(pos, x, tag, 1, true) 0x0076ADA0 (24 call
@@ -14,10 +15,7 @@
 //   then Dirty = true in both tails.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
-};
+#include "engine/C3DVector.h"
 
 struct __false_type { __false_type() { } };
 

@@ -4,6 +4,7 @@
 //   otherwise grow the dynamic counted-pointer buffer to index+1 and Reset its slot to a new info object; store the entry
 //   pointer, call InitialiseEntry (slot 21) and the CBankFile base NotifyEntryAdded
 // Leaf: NotifyEntryAdded
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A26D40, 744 bytes (`ret 0Ch`).
 // Callees: vector<CMeshDataBankEntry*>::_M_insert_overflow 0x00A2BE00 (manifest "std_vector_insert_4bytes_variant2"),
 //   C3DMeshInfo copy 0x00A2A400 / ~ 0x00A24930 / out-of-line ctor 0x00A248F0 (manifest "CSoundInit::CSoundInit"; the
@@ -43,10 +44,7 @@ class CMeshDataBankEntry { public:
     CMeshDataBankEntry(CMeshDataBank* bank, unsigned long index) : Bank(bank), Index(index) { }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DBoundingSphere { public:
     C3DVector Center;

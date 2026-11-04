@@ -1,5 +1,6 @@
 // std::__final_insertion_sort(CThing** first, CThing** last, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- final pass of the take-cover candidate sort: a guarded insertion sort of the first 16 elements, then the unguarded one for the rest
 // Leaf: ??$__final_insertion_sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097B240, 118 bytes (+ int3 padding to 128), __fastcall (/Gr algorithm TU: first
 //   in ecx, last in edx, the comparator on the stack), `ret 10h`.
 // Instantiation: the take-cover candidate sort: std::sort<CThing**,
@@ -20,9 +21,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 extern "C" double __cdecl pow(double x, double y);                                    // _CIpow 0x00BFEB40
 extern "C" double __cdecl sqrt(double x);
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

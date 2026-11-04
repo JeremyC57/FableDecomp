@@ -1,5 +1,6 @@
 // CTCSleep::GetFastTrack() -- the fast-track flag stays set only while the thing has not moved (each axis within 0.0001 of PosAtFastTrackSetting); returns the flag
 // Leaf: GetFastTrack
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe 0x0092C3B0, 99 bytes (plain `ret`).
 // Callees: CThing::GetPos() const @ 0x004C73D0 (const C3DVector&). Global 0.0001f @ 0x0129BA3C.
@@ -8,7 +9,7 @@
 // Shape: FastTrack = a three-way `(float)fabs(a - b) <= eps` && chain as `? true : false` (the bool in al, stored on both arms; VC
 // tail-duplicates the true arm's return), then `return FastTrack` reloads.
 #include <math.h>
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (0.0001f)
 class CThing { public:
     const C3DVector& GetPos() const;           // 0x004C73D0

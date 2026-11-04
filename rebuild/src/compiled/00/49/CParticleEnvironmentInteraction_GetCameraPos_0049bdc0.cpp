@@ -1,15 +1,12 @@
 // CParticleEnvironmentInteraction::GetCameraPos(C3DVector&) const -- the world's game LOD centre when a world is attached, else the stored CameraPos
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049BDC0, 76 bytes (`ret 4`). CParticleEnvironmentInteraction vtable 0x0122ED8C slot 6.
 // Callees: CWorld::GetGameLODCentre() const @ CWorld vtable slot 8 (`call [eax+20h]`, returns a C3DVector through
 // the hidden pointer into the 12-byte frame).
 // Shape: PDB layout (PWorld +4, WindVelocity +8, WindActive +0x14, CameraPos +0x15): the class is byte-packed, so
 // the stored position is read unaligned through `add ecx,15h`. The result is an out reference (eax is not the
 // result pointer at the exit), copied dword by dword from the call's temporary or from CameraPos.
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

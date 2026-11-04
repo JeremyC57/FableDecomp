@@ -1,5 +1,6 @@
 // CFilter_Bind3::operator()(const CThing& thing) -- a thing passes when it can collide or interact with the searcher, its physics bounding sphere overlaps the filter sphere, and it has the wanted TC
 // Leaf: ??$?RVCThing@@@?$CFilter_Bind3@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x008E6030, 0x92 bytes (+int3 padding), thiscall `ret 4`, int-widened bool (`mov eax,1` / `xor eax,eax`).
 //   No call or address reference reaches it in retail (an out-of-line COMDAT instance, like the landed 0x0085B160 Bind4).
 //   Full name (FableWin PDB name set): `??$?RVCThing@@@?$CFilter_Bind3@VCThingFilter_CanCollideOrInteractWithThing@@
@@ -13,10 +14,7 @@
 // Shape: `return (*F1)(thing) && (*F2)(thing) && (*F3)(thing);` with the overlapping-sphere operator __forceinline (plain
 //   in-class `inline` stays an out-of-line call); its body is the landed 0x006689E0 one, so the bounding radius lands in
 //   the dead thing-argument slot and the sum of squares comes out z, y, x.
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CTCPhysicsBase {
 public:
     void GetBoundingInfo(C3DVector& centre, float& radius) const;   // 0x006AF640

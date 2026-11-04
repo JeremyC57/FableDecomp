@@ -1,5 +1,6 @@
 // CTCCreatureNavigation::SetNavigationTarget(const CNavigationInput& target) -- NavigationTarget = target
 // Leaf: SetNavigationTarget
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CB960, length 44 bytes. No callees.
 // Callers: CThingAICreature::UpdateAI (0x006D5F34), CActionFollowCreature::Update (0x0071423E/0x00714B28),
 // CCreatureAction_StealThingFromShop::PerformAction (0x00849BB5: a destination vector, proximity 0,
@@ -10,9 +11,7 @@
 // PossibleNavigators vector before it being 12 bytes in retail (16 in the PDB). No engine header exists.
 // The manifest label "CScriptModuleBase::SetCoordAxis" is propagated (byte-identical to 0x00851D30 apart
 // from the member offset).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 enum EMovementType { MOVEMENT_TYPE_DEFAULT };
 

@@ -1,5 +1,6 @@
 // std::vector<pair<C3DVector,C3DVector> >::_M_insert_overflow(pair* pos, const pair& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport reallocating insert of 24-byte (point, point) pairs: allocate old_size + max(old_size, n), copy the head, construct the n new pairs, copy the tail unless appending, free the old block
 // Leaf: _M_insert_overflow
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007700D0, 238 bytes (+ int3 padding), thiscall `ret 14h`.
 // Callees: malloc @ 0x00BFEA0E / free @ 0x00BFEA14 (STLport's malloc allocator: `n != 0 ? malloc(n * 24) : 0`,
 //   `if (p) free(p)`), __uninitialized_copy<pair*> @ 0x0076F780 and __uninitialized_fill_n<pair*> @ 0x0076F7D0 (both
@@ -18,11 +19,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 struct __false_type { __false_type() { } };              // user constructor: no zero-initialised tag temporary
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 template <class _T1, class _T2> struct pair {
     _T1 first;

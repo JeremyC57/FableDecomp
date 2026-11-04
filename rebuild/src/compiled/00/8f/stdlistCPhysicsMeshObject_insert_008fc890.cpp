@@ -1,5 +1,6 @@
 // std::list<CPhysicsMeshObject>::insert(iterator, const CPhysicsMeshObject&) -- copy a physics mesh object into a new node linked before the position
 // Leaf: ?insert@?$list@VCPhysicsMeshObject@@V?$allocator@VCPhysicsMeshObject@@@std@@@std@@QAE?AU?$_List_iterator@VCPhysicsMeshObject@@U?$_Nonconst_traits@VCPhysicsMeshObject@@@std@@@2@U32@ABVCPhysicsMeshObject@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x008FC890, 99 bytes, thiscall (`this` unused: the allocator is empty), hidden iterator result at
 // [esp+4], the position iterator by value, the element by reference; `ret 0Ch`.
 // Identity (proven): 0x48-byte nodes {next, prev, element} whose element copy stores vtable 0x0125D084 (rtti-vtables:
@@ -28,10 +29,7 @@ public:
     CIVCountedPointeeBase* Object;                          // +0x00
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 {                                          // Ego_r.pdb: a 48-byte union
 public:

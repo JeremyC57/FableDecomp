@@ -7,6 +7,7 @@
 // Shape: the thing is read into a local BEFORE the world call (esi), the nested call's arguments (0, pos, &result) are pushed
 //   before the world-map virtual is called (VC evaluates the object expression after the arguments).
 // Leaf: UpdateCollisionGroundIneractions
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #define CTCPhysicsBase CTCPhysicsBaseLayout
 #include "engine/CTCPhysicsBase.h"
 #undef CTCPhysicsBase
@@ -21,10 +22,7 @@ class CTCPhysicsBase : public CTCBase, public CTCPhysicsBaseLayout
 {
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 
 class CWorldMap { public:
     C3DVector GetGroundFaceNormalAt(const C3DVector& pos, long flags);   // 0x0063AB10

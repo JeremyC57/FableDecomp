@@ -1,5 +1,6 @@
 // CMatrix3x4::RotateC(float angle) -- rotate the matrix in place about its Z axis: every row's (X, Y) pair becomes (c*X + s*Y, c*Y - s*X)
 // Leaf: ?RotateC@CMatrix3x4@@QAEXM@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: MATCH (wave-2 sec6): the first row's s*Y product held in a named local (float t = s * Right.Y; Right.X = t + c
 //   * Right.X) gives retail's s*X, s*Y, c*X order at the zero-displacement row; rows 2-4 unchanged
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C1CA20, 138 bytes, thiscall `ret 4`.
@@ -14,7 +15,7 @@
 //   (`fstp [esp+4]` ... `fsub [esp+4]`), as in RotateB.
 #include <math.h>
 
-class C3DVector { public: float X, Y, Z; };            // 12 bytes, 1-aligned in retail
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 { public:                             // 0x30 bytes: four rows
     C3DVector Right;                            // +0x00

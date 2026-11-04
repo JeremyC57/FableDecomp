@@ -1,5 +1,6 @@
 // NCameraModes::CBase::UpdateRaiseUp(C3DVector& pos) const -- raises the camera height near the observed thing: blends the camera's height above the thing by tanh of the squared ground distance and adds the thing's focal height (+0.28) faded by exp of minus a quarter of that distance
 // Leaf: ?UpdateRaiseUp@CBase@NCameraModes@@IBEXAAVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0084D7E0, 193 bytes, __fastcall, `ret 4`.
 // Identity: Ego_r.pdb ?UpdateRaiseUp@CBase@NCameraModes@@IBEXAAVC3DVector@@@Z (Ego_r 0x00845340). Donor run Ego_r 0x008452E0..0x00845420
 //   (GetDefaultFOV, GetDefaultRollAngle, GetDefaultObservedPositionZOffset, IsRaiseUpOnHeroNearby, IsStretchAroundHero, UpdateRaiseUp,
@@ -22,10 +23,7 @@
 #include <math.h>
 #pragma intrinsic(tanh, exp)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 namespace NGraphicAppearance {
 class CTCGraphicAppearance {

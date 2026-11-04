@@ -1,5 +1,6 @@
 // CIsNearCampfireWithSpace::operator()(CThing* thing) const -- true for an action-point thing (flag bit 14) within DistanceSq of FromPos whose user-action-point component (kind 0x2d) is free
 // Leaf: ??RCIsNearCampfireWithSpace
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00939A50, length 145 bytes.
 // Callees: the thing's virtual type-flags getter (slot 48, +0xc0), CThing::GetPos @ 0x004C73D0, CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound (const) @ 0x004365B0, CTCUserActionPointBase::IsActionPointFree @ 0x007FEBF0.
@@ -8,9 +9,7 @@
 // Shape: `(unsigned char)(flags >> 14) & 1` gives `shr eax,0Eh ; test al,1`; the squared distance sums `x*x + y*y + z*z`
 // over three float locals; `!(d <= max)` style exit through `test ah,41h ; jp`; the lookup result feeds
 // `GetTC(...)->IsActionPointFree()` directly (`mov ecx,[eax+4]`) and its bool is returned by a tail `call ; ret`.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

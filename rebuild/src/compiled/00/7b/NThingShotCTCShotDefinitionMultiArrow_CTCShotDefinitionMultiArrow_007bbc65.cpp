@@ -1,5 +1,6 @@
 // NThingShot::CTCShotDefinitionMultiArrow::CTCShotDefinitionMultiArrow(CThing*) -- CTCShotDefinitionBase(parent), zero acceleration, not a straight arrow, and the base's multi-arrow shot-type flag set
 // Leaf: ??0CTCShotDefinitionMultiArrow
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007BBC65, length 58 bytes.
 // Callee: NThingShot::CTCShotDefinitionBase::CTCShotDefinitionBase(CThing*) @ 0x007BF460. Vtable 0x0126DF34 =
 // NThingShot::CTCShotDefinitionMultiArrow (rtti-vtables.tsv).
@@ -12,10 +13,7 @@
 #pragma optimize("s", on)
 class CThing;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NThingShot {
 

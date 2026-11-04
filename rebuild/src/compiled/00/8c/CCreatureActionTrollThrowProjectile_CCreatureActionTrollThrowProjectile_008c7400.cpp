@@ -5,13 +5,10 @@
 // Shape: `ret 8`; the thing argument is kept in ebp for GetPos; the sound pair is zeroed with immediates; TargetPos (a whole-vector BODY
 // assignment through `lea edx,[esi+11Ch]`) and the cleared flag byte follow, as in the three-argument overload 0x008C7390.
 // Leaf: ??0CCreatureAction_TrollThrowProjectile@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // The PDB header (CCreatureAction_TrollThrowProjectile.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
 class CThingCreatureBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }                          // leaves the words unset
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise copy constructor (fixed-offset moves);
-};                                                                                 // assignment stays implicit (re-based through `lea`)
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;   // 0x004C73D0
 };

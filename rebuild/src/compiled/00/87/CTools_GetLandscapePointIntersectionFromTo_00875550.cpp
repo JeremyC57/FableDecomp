@@ -1,5 +1,6 @@
 // CTools::GetLandscapePointIntersectionFromTo(const C3DVector& from, const C3DVector& to, C3DVector& hitPos, C3DVector& hitNormal, bool includeWater) -- when the start point is below the ground (or water) height, snap it up and return the ground normal; otherwise intersect the segment with the world map using the landscape camera-blocking test
 // Leaf: GetLandscapePointIntersectionFromTo
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00875550, length 197 bytes (`ret 14h`).
 // Callees: CWorld::PeekWorldMap (CWorld slot 13, +0x34), CWorldMap::GetGroundSizeZAt @ 0x0063A300,
 // CWorldMap::GetWaterSizeZAt @ 0x0063A420, CWorldMap::GetGroundFaceNormalAt @ 0x0063AB10 (C3DVector by hidden pointer),
@@ -9,9 +10,7 @@
 // Shape: the ground height is a named float homed in the dead `from` slot; the water height enters through a ternary
 // over an inline by-value `HigherOf(water, ground)` (an if/assign stores and reloads the height; the ternary keeps it on
 // the FPU for the compare and the `fstp` into hitPos.z); the fallback returns the call's bool via `setne`.
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 class CWorldMap { public:
     float GetGroundSizeZAt(const C3DVector& pos) const;    // 0x0063A300
     float GetWaterSizeZAt(const C3DVector& pos) const;     // 0x0063A420
@@ -42,9 +41,9 @@ bool CTools::GetLandscapePointIntersectionFromTo(const C3DVector& from, const C3
     CWorldMap* map = CameraManager->World->PeekWorldMap();
     float ground = map->GetGroundSizeZAt(from);
     float height = includeWater ? HigherOf(map->GetWaterSizeZAt(from), ground) : ground;
-    if (height > from.z) {
+    if (height > from.Z) {
         hitPos = from;
-        hitPos.z = height;
+        hitPos.Z = height;
         hitNormal = map->GetGroundFaceNormalAt(hitPos);
         return true;
     }

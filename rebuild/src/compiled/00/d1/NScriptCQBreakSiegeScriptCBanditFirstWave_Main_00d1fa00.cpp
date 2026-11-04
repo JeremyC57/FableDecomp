@@ -1,5 +1,6 @@
 // NScript::CQ_BreakSiegeScript::CBanditFirstWave::Main() -- Break-Siege first-wave bandit: hold an alive filter over Me, take Me under scripted control (priority 3), set Me's combat break-off range from the script def, then (until BanditLeaderFree) keep running Me to "ImprisonedBanditLeader" while it is more than 5 units away; finally flag BanditLeaderFree, release scripting, make Me follow the leader and idle
 // Leaf: ?Main@CBanditFirstWave@CQ_BreakSiegeScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D1FA00, 557 bytes (560 with padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 (filter member) / ~CScriptThing 0x004AA840, CEntityScriptBase::SetPredicate
 //   0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380, handle (vtable 0x0127094C) IsValid
@@ -16,7 +17,7 @@
 // Naming wave 35: identity reg 00d1d491 "BanditFirstWave" in 00d1d100; Alloc 00d1f910; vtable 012cb054 slot 1; PDB ?Main@CBanditFirstWave@CQ_BreakSiegeScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBanditFirstWave::Main (wave3/labels_alloc.tsv); PDB ?Main@CBanditFirstWave@CQ_BreakSiegeScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBanditFirstWave@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_BreakSiegeScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

@@ -1,5 +1,6 @@
 // NScript::CV_BanditTollScript::CBlockingBandit::Main() -- bandit-toll blocking bandit: register the alive filter, take Me under scripted control, look up M_BanditEscapePoint, then every frame: once the bandits flee, walk Me back to the escape point and fade it out; when the bandits are angered and Me is alive and aware of the hero, join FACTION_BANDITS and follow the hero; once the toll is paid, walk Me (once) back to M_BanditCampCentrePos and release it
 // Leaf: ?Main@CBlockingBandit@CV_BanditTollScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E49980, length 1424 bytes, plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0, out-of-line dtor 0x00E241B0), the scripted-thing handle (vtable
 //   0x0127094C) IsValid 0x00CD23B9 / Release 0x00CD2770 / MoveToPosition 0x007E72F0 / FollowThing 0x007E7320 /
@@ -15,10 +16,7 @@
 // Naming wave 35: identity reg 00e47c21 "BlockingBandit" in 00e479b0; Alloc 00e49850; vtable 012e4edc slot 1; PDB ?Main@CBlockingBandit@CV_BanditTollScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBlockingBandit::Main (wave3/labels_alloc.tsv); PDB ?Main@CBlockingBandit@CV_BanditTollScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBlockingBandit@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CV_BanditTollScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
 class CCharString { public:
     void* PStringData;

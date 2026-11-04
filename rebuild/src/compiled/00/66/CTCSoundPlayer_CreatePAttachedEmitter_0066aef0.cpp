@@ -1,4 +1,5 @@
 // CTCSoundPlayer::CreatePAttachedEmitter(bool unattached) -- the attached sound emitter: the live one, else a new emitter at the owner's position when that position is inside the world map
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066AEF0, 165 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer::GetPItem const @ 0x00A01B50, CTCBase::GetWorld @ 0x00686A70, CWorld virtual slot 12
 // GetWorldMap (+0x30), CWorldMap::IsPosInMap(const C3DVector&) const @ 0x004FC600, CThingSoundEmitter::Create(const C3DVector&,
@@ -11,7 +12,7 @@
 // non-null and returned either way; both other exits return PAttachedEmitter.GetPItem().
 class CThing;
 class CBaseObject;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector Position;                                 // +0x0c

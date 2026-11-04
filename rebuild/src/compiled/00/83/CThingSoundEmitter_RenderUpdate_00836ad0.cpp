@@ -1,5 +1,6 @@
 // CThingSoundEmitter::RenderUpdate(const CInterpolationInfo* info) -- per render frame: nothing when dead; the CThing base update first; when the attached thing has died either stop the loops (keep-playing emitters) or kill the emitter; kill it when its sound has finished; otherwise follow the attached thing's interpolated position and update the sound
 // Leaf: ?RenderUpdate@CThingSoundEmitter@@UAE_NPBVCInterpolationInfo@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00836AD0, 245 bytes, thiscall `ret 4`; CThingSoundEmitter vtable 0x01272C24 slot 21.
 // Identity: Ego_r.pdb ?RenderUpdate@CThingSoundEmitter@@UAE_NPBVCInterpolationInfo@@@Z; CTCPhysicsBase::GetPosition(float) const and
 //   CThing::GetPhysicsTC() const are Ego_r.pdb/FableWin.pdb names; the catalog's
@@ -18,11 +19,7 @@
 //   physics component through the inline CThing::GetPhysicsTC() const accessor (`mov eax,[eax+60h]` ... `mov ecx,eax`);
 //   the position ASSIGNED to a local (`pos = ...GetPosition(t)`), so the 12 bytes are copied from the call's
 //   temporary into the local passed to the sound object (initialising `pos` lets VC7.1 construct it in place).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase {
 public:

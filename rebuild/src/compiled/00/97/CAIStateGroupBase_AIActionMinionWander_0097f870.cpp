@@ -1,5 +1,6 @@
 // CAIStateGroupBase::AIAction_MinionWander(EMovementType, CThingBuilding*) -- look around, pick a wander position (inside the building's bounds, up to ten tries, or within 3 of the creature) and walk there; otherwise yield the brain
 // Leaf: ?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097F870, length 400 bytes (`ret 8`).
 // Callees: CAIStateGroupBase::IsStopping @ 0x008FD010 (x2), CVectorMap::LowerBound @ 0x0040F020 (interfaces 0x43 CTCLook,
@@ -16,11 +17,7 @@
 #include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
 class CTCBase { public: virtual ~CTCBase(); };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x20];
     std::bitset<274> UsingComponents;           // +0x20

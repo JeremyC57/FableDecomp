@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureAdvanceInCover::GetCoverThingList(CThingVector&) -- collect unoccupied cover closer to the enemy than the present cover (or creature).
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x00978FD0, 287 bytes excluding padding. Shared AdvanceInCover/UseCoverBase/Base/Brain headers audited.
 // UseCoverBase exposes PCoverThing at the retail unaligned +0x1f; inherited intelligent enemy handle at +0x14 is opaque in its generated header.
 // Search 0x009793D0 audited: calls the four bound predicates, then appends matching things to the supplied vector. No predicate or callback is omitted.
@@ -7,7 +8,7 @@
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
-class C3DVector { public: float X,Y,Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public: float X,Y; C2DVector(const C3DVector& p):X(p.X),Y(p.Y){} };
 class CThing { public: const C3DVector& GetPos() const; };
 struct CThingRetail : public CThing { public:  }; // 0x004C73D0

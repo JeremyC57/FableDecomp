@@ -1,4 +1,5 @@
 // CEnvironmentSpellEffectInterface::SetRadialBlurCenterWorldPos(const C3DVector& position, bool interpolate) -- make both the blur centre and the area centre track a world position (current frame, and previous frame too when not interpolating)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00885110, 138 bytes (+ int3 padding).
 // Callees: none.
 // Layout (Ego_r.pdb, matches retail): CRadialBlurPositionParams { C3DVector AreaCenter +0; C3DVector BlurCenter +0xc;
@@ -7,7 +8,7 @@
 //   (the screen-position setters 0x008851A0 / 0x00885210 store 2).
 // Shape: the blur centre is set first, then the area centre; each C3DVector copy re-reads the argument through a scratch
 //   register; the constant 1 lives in esi for all four track stores.
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 enum ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION {
     ENVIRONMENT_RADIAL_BLUR_TRACK_NONE = 0,

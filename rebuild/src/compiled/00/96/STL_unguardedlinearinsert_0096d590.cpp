@@ -1,5 +1,6 @@
 // std::__unguarded_linear_insert(CThing** last, CThing* val, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> comp) -- unguarded insertion of the screamer pursue-target sort: shift larger elements right until val fits (no lower bound test)
 // Leaf: ??$__unguarded_linear_insert@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0096D590, 66 bytes (+ int3 padding to 80), __fastcall (/Gr algorithm TU: last in
 //   ecx, val in edx, the comparator on the stack), `ret 4`.
 // Instantiation: the screamer target sort: std::partial_sort / sort<CThing**,
@@ -16,10 +17,7 @@ class CThing;
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6 (import thunk)
 
 // C3DVector with the engine's memberwise user copy constructor (Ego_r.pdb: X, Y, Z).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 // Ego_r.pdb CThingCompare_Nearest: 12 bytes, Pos (C3DVector) +0x00; operator() returns the nearer thing.
 class CThingCompare_Nearest {

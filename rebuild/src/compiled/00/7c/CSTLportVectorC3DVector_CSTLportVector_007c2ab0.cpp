@@ -1,6 +1,7 @@
 // CSTLportVector<C3DVector>::CSTLportVector(unsigned long count) -- STLport vector of 12-byte vectors: pointers nulled, count elements malloc'd (none for zero), finish/end-of-storage set, every element copy-constructed from an uninitialised T()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007C2AB0, length 115 bytes.
 // Leaf: ??0?$CSTLportVector@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: malloc @ 0x00BFEA0E (`__cdecl`).
 // Label: the manifest's "CSimpleMemoryPool::New<C3DAnimationSequence>" is propagated (as on the landed twin 0x009D2AF0):
 // `this` is the vector itself, the body STLport's _Vector_base(n, alloc) + uninitialized_fill_n inlined.
@@ -13,11 +14,7 @@
 
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 
-class C3DVector { public:                              // 12-byte element with an empty default ctor: T() leaves the frame temporary unset
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 template <class T> __forceinline T* UninitializedFillN(T* first, unsigned long count, const T& value)
 {

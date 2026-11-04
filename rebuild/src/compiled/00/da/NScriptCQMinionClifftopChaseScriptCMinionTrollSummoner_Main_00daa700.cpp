@@ -1,5 +1,6 @@
 // NScript::CQ_MinionClifftopChaseScript::CMinionTrollSummoner::Main() -- the minion troll summoner: alive filter on Me, take scripted control (priority 4); the first
 // Leaf: ?Main@CMinionTrollSummoner@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   time (parent flag clear) play the "CS_MINIONCHASE_TROLL" cut-scene with Me cast as MINION; set the flag, then run to
 //   "M_SummonerRunOffPoint" until within 2 units, face the hero, wait until Me is hit or the hero comes within 10 units,
@@ -32,7 +33,7 @@
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

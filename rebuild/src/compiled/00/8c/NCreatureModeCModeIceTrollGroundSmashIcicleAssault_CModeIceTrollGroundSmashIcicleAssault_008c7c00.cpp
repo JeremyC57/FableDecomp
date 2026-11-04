@@ -1,5 +1,6 @@
 // NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::CModeIceTrollGroundSmashIcicleAssault(CThing* thing, CThing* target) -- as 0x00743BE0 with PTarget = target
 // Leaf: ??0CModeIceTrollGroundSmashIcicleAssault
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C7C00, 184 bytes (`ret 8`). Vtable 0x01268774 (NCreatureMode::CModeIceTrollGroundSmashIcicleAssault).
 // Callees: CModeStandBase::CModeStandBase(CThing*) 0x00861E00; CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10, SetPItem 0x00A01B90;
 // CCharString(const char*, long) 0x0099EBF0, CCharString() 0x0099E4B0, operator= 0x0099EFB0, ~CCharString 0x0099EAE0; CRC 0x004014A0.
@@ -11,7 +12,7 @@
 class CThing;
 class CThingCreatureBase;
 class CSnowTrollDef;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CBaseObject;
 
 class CCharStringData { public:

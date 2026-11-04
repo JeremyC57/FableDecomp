@@ -1,5 +1,6 @@
 // CCarryableDef::Transfer(CPersistContext& context) -- persist the carryable def: carry slots, scan flag, kill FX, attach offset, stacking offset and passive slot scale
 // Leaf: ?Transfer@CCarryableDef@@UAEXAAVCPersistContext@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004DD924, 101 bytes (virtual, `ret 4`; unaligned entry, def module).
 // Callees (typed CPersistContext transfers, catalog labels propagated): long 0x00431102, bool 0x0043314A,
 //   C3DVector 0x00456903 (copies the 12-byte value with three movsd), float 0x00431061.
@@ -11,7 +12,7 @@
 //   straight after the three carry slots; the last member's address is the natural `add esi,48h ; push esi`).
 #pragma optimize("s", on)
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CPersistContext {
 public:

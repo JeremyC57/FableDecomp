@@ -1,6 +1,7 @@
 // CTCTavernGameShoveHaPenny::NewRound() -- coin-base NewRound, clear the board, find the obstacles, add the first coin at the board's centre line on the def's minimum coin position, then go to state 15
 // Grade: RELOCATION_MATCH (header ctor landed 2026-10-31; was PENDING HEADER) (wave 2 sec3): retail def model (CSubDefClassBase chain, PDB CThing::PeekBaseDef, CDefPointer<const CTavernGameShoveHaPennyDef>) plus the landed GetSubDef<CTavernGameShoveHaPennyDef> 0x007D1260 body as a same-TU noinline specialization: VC7.1 then keeps the handle's pointee in edi and drops the null test of the closing release (was 127v127 with an invented no-null-test holder). Graded RELOCATION_MATCH with engine/CDefPointer.h's text inlined plus CDefPointer(ENullDef) (007cf7e0.verify.cpp); this file compiles once the header declares that ctor.
 // Leaf: ?NewRound@CTCTavernGameShoveHaPenny@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x007CF7E0, 127 bytes.
 // Callees: CTCTavernGameCoinBase::NewRound() 0x008EF180 (non-virtual base call; manifest "CXMVPlaybackInfo" ctor label is a
 //          propagation); CDefClassBase::GetSubDef<CTavernGameShoveHaPennyDef>(CDefPointer*) 0x007D1260 on the owner's
@@ -17,11 +18,7 @@
 #include "engine/CSubDefClassBase.h"
 #include "engine/CDefPointer.h"                             // CDefPointer(ENullDef) landed in the header 2026-10-31
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CTavernGameDef : public CSubDefClassBase { };          // RTTI .?AVCTavernGameDef@@ : CSubDefClassBase
 class CTavernGameShoveHaPennyDef : public CTavernGameDef {    // RTTI .?AVCTavernGameShoveHaPennyDef@@ : CTavernGameDef
 public:

@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleTransitionBetweenPoints::IsFinished() -- true when self-termination is allowed (not PreventSelfTermination, SelfTerminate set) and the current frame is past EndFrame
 // Leaf: IsFinished
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852090, length 41 bytes.
 // Callees: GFGetCurrentFrame @ 0x0049D870 (`__fastcall`, no arguments).
 // Shape: one `if (a && b && c) return true; return false;` -- the two bool members tested with
@@ -14,7 +15,7 @@ public:
 class CBaseObject;
 struct CBase;
 class CGameCameraManager;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 struct CThing_Retail {

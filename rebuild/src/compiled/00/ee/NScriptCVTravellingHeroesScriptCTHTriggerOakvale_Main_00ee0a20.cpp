@@ -1,5 +1,6 @@
 // NScript::CV_TravellingHeroesScript::CTH_Trigger_Oakvale::Main() -- Travelling Heroes Oakvale trigger: register an alive-filter over Me, start a script frame, make Me persistent; between frames 900 and 2300 of the master data's clock, unless the whisper is already handled, spawn the rival hero's whisper creature at Me (script "TH_Whisper"); then remove Me
 // Leaf: ?Main@CTH_Trigger_Oakvale@CV_TravellingHeroesScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity (naming wave 11): ?Main@CTH_Trigger_Oakvale@CV_TravellingHeroesScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F4364 slot 1 is stored by the factory 0x00EE0930 registered as "TH_Trigger_Oakvale"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE0A20, 307 bytes (+13 int3), `ret`.
 // Identity: the factory record at 0x00EDF0C0 ("TH_Trigger_Oakvale" @ 0x012F40F4, creator 0x00EE0930) builds the object
@@ -18,7 +19,7 @@
 // Naming wave 35: identity reg 00edf0eb "TH_Trigger_Oakvale" in 00eded10; Alloc 00ee0930; vtable 012f4364 slot 1; PDB ?Main@CTH_Trigger_Oakvale@CV_TravellingHeroesScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CTH_Trigger_Oakvale::Main (wave3/labels_alloc.tsv); PDB ?Main@CTH_Trigger_Oakvale@CV_TravellingHeroesScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

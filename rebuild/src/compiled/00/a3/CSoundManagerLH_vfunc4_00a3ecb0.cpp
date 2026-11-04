@@ -1,5 +1,6 @@
 // CSoundManagerLH::vfunc_4(const C3DVector& position) -- when the manager has room (slot 6), create a CSoundEmitterLH for this manager at the position, append it to the emitter list (+0x4C), call its slot 1 and return it; null when full
 // Leaf: vfunc_4
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00A3ECB0, 119 bytes (+ int3 padding), thiscall `ret 4`. Slot 4 of the CSoundManagerLH vtable
 //   0x0129D2C4 (the vtable's only reference to the function; landed siblings vfunc_1/5/6 0x00A3E430/0x00A3EB60/
 //   0x00A3EC70 use the same layout).
@@ -15,7 +16,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // MSVCR71 import th
 void* __cdecl operator new(unsigned int size);               // MSVCR71 import thunk 0x00BFEA1A
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CSoundManagerLH;
 

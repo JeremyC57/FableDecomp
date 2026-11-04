@@ -1,5 +1,6 @@
 // CModeBriarRoseTeleportIntangible::OnDeactivate -- resume AI, re-enable mapwho/targeting/drawability, restore environment themes.
 // Leaf: OnDeactivate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native008E7CF0 length273. SetAsDrawable slot28 nativeCThingVT1239ABC->4C8E50; GetBriar8E7790 uses CBriarRoseDef.
 #ifndef _MSC_VER
 #define __int64 long long
@@ -25,7 +26,8 @@
 #include "engine/CTCTargeted.h"
 #include "fable_string.h"
 // Generated Thing offsets differ after bitset/vector shrink. Native presence bits20..43, map44..4F, CurrentMap8E,life91.
-class C3DVector{ public:float X,Y,Z;};struct NativeDefinition;struct EmitterMethods;
+#include "engine/C3DVector.h"
+struct NativeDefinition;struct EmitterMethods;
 struct ThingNative;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

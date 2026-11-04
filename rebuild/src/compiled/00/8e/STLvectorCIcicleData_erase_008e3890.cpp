@@ -1,5 +1,6 @@
 // std::vector<CIcicleData>::erase(CIcicleData* position) -- remove one ice-troll icicle record: shift the tail down one slot (when the erased record is not the last), destroy the vacated last record, return the position
 // Leaf: ?erase@?$vector@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E3890, 64 bytes, `__fastcall` (this -> esi, position on the stack -> edi),
 //   `ret 4`, returns the position.
 // Identity: the ice-troll icicle TU (landed vector<CIcicleData>::_M_insert_overflow 0x008E3AA0, the C3DVector swaps
@@ -16,9 +17,7 @@
 class CBaseObject;
 class CThing;
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CBaseIntelligentPointer {
 public:

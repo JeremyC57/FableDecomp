@@ -1,5 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::GetMeshObject(const CMeshInfo& info, float interpolation, C3DMeshObject& out) const -- build the mesh object for a mesh entry at the owner's interpolated render position and orientation (the current orientation when interpolation == 1), scaled by the entry, the appearance and 1/100, into the caller's object
 // Leaf: ?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004BC4F0, 303 bytes, thiscall `ret 0Ch`. Ego_r.pdb
 //   `?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@IBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z`; the catalog label
 //   "CTCGraphicAppearance_CreateAbilityMeshObject" is descriptive.
@@ -17,12 +18,7 @@
 //   by-reference GetRHSet() is declared first to land in slot 72.
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet {
 public:
     C3DVector Up;                                           // +0x00

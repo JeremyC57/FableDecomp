@@ -1,5 +1,6 @@
 // std::__introsort_loop(THitLocationIntersectionElement* first, THitLocationIntersectionElement* last, THitLocationIntersectionElement*, int depth_limit, THitLocationIntersectionElementPred comp) -- STLport introsort recursion over the hit-location ray intersections: median-of-3 partition until 16 remain, heap partial_sort at the depth limit
 // Leaf: ??$__introsort_loop@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00818B00, 234 bytes, `ret 0Ch`: __fastcall (the algorithm TUs are /Gr), first in ecx, last in
 // edx; the value-type tag pointer, the depth limit and the empty 4-byte predicate on the stack. Recurses on itself.
 // Callees: __unguarded_partition 0x00817840 and __partial_sort 0x00818450 (this chunk, same element).
@@ -11,10 +12,7 @@
 // last - 1 copied memberwise into __unguarded_partition's argument area (C3DVector's user copy constructor),
 // recursion on [cut, last), then last = cut.
 struct CHitLocation;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 namespace {
 struct THitLocationIntersectionElement {           // 32 bytes (implicit memberwise copy, trivial assignment)
     long          key;                             // +0x00

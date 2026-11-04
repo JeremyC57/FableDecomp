@@ -1,5 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::Draw(const CEnginePrimitivePrepareInfo& info) -- draw at the owner's render interpolators: build the position (render-height adjusted) and orientation interpolators of the parent thing and run the three-argument Draw
 // Leaf: ?Draw@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BE4E0, length 163 bytes, `ret 4` (thiscall: info).
 // Ego_r.pdb: `?Draw@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCEnginePrimitivePrepareInfo@@@Z`.
 // Callees: the file-static __fastcall GetRenderPositionInterpolateForThing(const CThing&) @ 0x004BC0E0 (landed),
@@ -15,10 +16,7 @@
 // Shape: the physics component is read into a named local before the position call (edi); the position interpolator is
 // returned by hidden pointer straight into its frame slot; the orientation interpolator is default-constructed (CBase ctor,
 // vtable store sunk below the argument push); both destroyed through the implicit destructors (~CBase only).
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;

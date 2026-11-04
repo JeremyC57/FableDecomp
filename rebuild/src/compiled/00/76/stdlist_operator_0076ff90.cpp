@@ -1,5 +1,6 @@
 // std::list::operator=(const list& x) -- (list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry>) STLport list assignment of weapon-trail geometry: overwrite the common prefix element-wise (28-byte entries), then erase this list's surplus or insert x's remaining tail
 // Leaf: ??4?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076FF90, 125 bytes (+3 int3 padding), thiscall, `ret 4`, returns this.
 // Identity: the manifest's "std::vector<CLipSyncPhoneme>::operator=" is propagated: the body walks sentinel-linked nodes
 //   (`mov eax,[eax]`) and assigns 7-dword payloads at node +8, i.e. a list of the 28-byte
@@ -14,10 +15,7 @@
 //   dead `x` argument slot (where last2 is homed); the payload assignment is the implicit CWeaponTrailEntry operator=
 //   (`mov ecx,7 ; rep movsd`). Iterators: the mutable one has the user copy constructor (built in its slot), the
 //   const_iterators are pushed directly.
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CEnginePrimitiveWeaponTrail {
 public:
     class CWeaponTrailEntry {                               // 28 bytes

@@ -1,5 +1,6 @@
 // CPlayer::InitModeBetting(EPlayerMode,CProcessedInput*) -- Attach the input process and cancel the live player active ability.
 // Leaf: ?InitModeBetting@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity: proven. Original private CPlayer callback signature and typed member offsets328/480, PlayerInterface12, trackedPlayerCharacter52. Own code calls original CBaseIntelligentPointer::GetPItem()const00a01b50 three times, tests original Dead bit at145, component167 atUsingComponents52, nonconst LowerBound0040f020, CTCSpecialAbilities::CancelCurrentMutexAbility0072b420. True CClass17/CBaseObject8/CBaseClass4, CThing fields throughDead145, original creature ancestry with unused suffix explicitly omitted.
 // Layout: original typed player and thing prefixes, true STLport bitset/map/vector/list bases. Available owner/base headers retained as layout evidence; unknown enum fixture names are descriptive.
 #define CPlayer CPlayer_HeaderEvidence
@@ -13,7 +14,8 @@ class CBaseClassNonCopyable:public CBaseClass{};class CInitBaseClass:public CBas
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){}~CCountedPointer();};
 namespace boost{template<class T>class scoped_ptr{T* px;public:explicit scoped_ptr(T* p=0):px(p){}~scoped_ptr();T* operator->()const{return px;}T* get()const{return px;}void reset(T* p=0);private:scoped_ptr(const scoped_ptr&);scoped_ptr& operator=(const scoped_ptr&);};}
 #pragma pack(push,1)
-class C3DVector{public:float X,Y,Z;};class CRightHandedSet{public:C3DVector Up,Forward;};
+#include "engine/C3DVector.h"
+class CRightHandedSet{public:C3DVector Up,Forward;};
 #pragma pack(pop)
 class CCamera{public:C3DVector WorldPosition;CRightHandedSet RHSet;bool HeightLocked,ViewVecZLocked;
 #ifdef _MSC_VER

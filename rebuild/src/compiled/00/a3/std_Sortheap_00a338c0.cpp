@@ -1,5 +1,6 @@
 // std::_Sort_heap(SKeyedHelper* first, SKeyedHelper* last, CKeyPairCompareLess pred) -- Dinkumware _Sort_heap over 20-byte (CRC key, C3DHelperPoint) pairs: pop the root to the back until one element remains
 // Leaf: _Sort_heap
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A338C0, length 217 bytes (+ int3 padding), `ret 4`.
 // Identity: catalog `_Sort_heap<pair<unsigned long,C3DHelperPoint>*,CKeyPairCompareLess<...>>`, consistent with the
 // bytes: stride 0x14 (0x66666667 / sar 3), and the only callee is the landed `_Adjust_heap` @ 0x00A32440 of
@@ -13,10 +14,7 @@
 // stored field by field from the temporary (`fstp` for X/Y). _Pop_heap and _Pop_heap_0 are __forceinline: with
 // plain `inline` VC7.1 keeps _Pop_heap out of line here (a local cdecl call, 133 v 217 bytes) -- its inliner
 // declines it (the 0x0076AF10 sibling, whose pair has no implicit-copy member, inlines with plain `inline`).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DHelperPoint { public:
     C3DVector Position;

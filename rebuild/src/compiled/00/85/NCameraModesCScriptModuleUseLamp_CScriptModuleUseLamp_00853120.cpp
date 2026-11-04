@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleUseLamp::CScriptModuleUseLamp(const CThing* creature, const CThing* lamp, long duration) -- constructor: the self-terminating base for `duration` frames, then PCreature and PLamp pointed at the two things
 // Leaf: ??0CScriptModuleUseLamp
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00853120, length 112 bytes (100 + int3 padding).
 // Callees: NCameraModes::CScriptModuleBase::CScriptModuleBase() @ 0x005ED070, CWorld::GetFrame @ 0x0049D870,
 // CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, ::SetPItem @ 0x00A01B90 (twice).
@@ -30,7 +31,7 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0
     CIntelligentPointer_CThingConst(const CThing* thing) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)((const CBaseObject*)thing)); }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CScriptModuleBase {
     virtual void v00();

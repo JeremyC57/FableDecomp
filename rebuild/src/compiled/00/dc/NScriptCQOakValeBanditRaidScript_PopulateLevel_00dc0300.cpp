@@ -1,5 +1,6 @@
 // CQ_OakValeBanditRaidScript::PopulateLevel() -- on a restart top the bandits up at the free restart points, otherwise clear the old bandits and spawn one at every bandit spawn point; attach each new bandit to the village, then refresh the hero's follower list
 // Leaf: PopulateLevel
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DC0300, 1328 bytes.
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0 / default ctor 0x0099E4B0 / Format 0x0099F1F0, free 0x00BFEA14
 //   (inline vector destructors), operator delete 0x00BFE9BC / ~CBaseClass 0x0099A2E0 (inline ~CScriptThing),
@@ -28,7 +29,7 @@ extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CScriptThingImpl;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

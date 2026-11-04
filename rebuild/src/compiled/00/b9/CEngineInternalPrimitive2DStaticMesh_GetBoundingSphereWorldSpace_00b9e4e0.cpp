@@ -1,11 +1,12 @@
 // CEngineInternalPrimitive2DStaticMesh::GetBoundingSphereWorldSpace(C3DBoundingSphere&) -- the mesh's local bounding sphere (record at +0x50, sphere at +0x28) moved into world space: centre through the object transform at +0x70, radius times the scale at +0x58; always true
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B9E4E0, length 130 bytes; byte-identical to 0x00B9DBD0 (CEngineInternalPrimitiveStaticMesh). No callees.
 // Shape: the centre is read through a reference (`add eax,28h`) into three float locals kept on the x87 stack; each row is
 // `x*m[i] + y*m[i+3] + z*m[i+6] + m[i+9]`. Retail evaluates the X row z,y,x but the Y and Z rows z,x,y: the parenthesised
 // `y*m + (x*m + z*m) + t` form reproduces that (plain sums in any term order are canonicalised to z,y,x). The radius tail
 // goes through a double local in the inline GetRadius (`double radius = R; *r = (float)(radius * scale);`, the landed
 // twin 0x00B9DBD0 form), which loads the radius first; `R * scale` in any spelling loads the scale first.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 class CMatrix3x4 { public: float m[12]; };
 struct C3DMeshRecord {

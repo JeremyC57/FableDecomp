@@ -1,5 +1,6 @@
 // std::vector<C3DVector>::_M_allocate_and_copy<const C3DVector*>(unsigned int n, const C3DVector* first, const C3DVector* last) -- STLport growth helper: allocate n vectors and copy-construct [first, last) into the block, return it
 // Leaf: ??$_M_allocate_and_copy@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075B800, 88 bytes, thiscall `ret 0Ch` (`this` is never read: the
 //   allocator is empty).
 // Caller: vector<C3DVector>::operator= 0x0075B8D0 (call site 0x0075B922; the landed CRigidBodyConfig::operator=
@@ -11,11 +12,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

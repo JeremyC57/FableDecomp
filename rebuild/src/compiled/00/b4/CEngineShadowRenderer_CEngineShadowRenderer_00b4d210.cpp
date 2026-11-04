@@ -1,5 +1,6 @@
 // CEngineShadowRenderer::~CEngineShadowRenderer() -- shadow renderer destructor: release the default-pool resources, then the members in reverse order (lookup / colour textures, the two shadow-buffer surfaces, the shadow-buffer and render-surface textures, the render target, the shadow-buffer capture block) and ~CEngineComponent
 // Leaf: ??1CEngineShadowRenderer@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B4D210, 171 bytes, thiscall, tail jump to CEngineComponent::~CEngineComponent 0x00B59730.
 // Identity (proven): the first store is vtable 0x012A2374 (rtti-vtables.tsv: CEngineShadowRenderer, RTTI
 //   .?AVCEngineShadowRenderer@@ : CEngineComponent); the sole caller 0x00B50B83 is the scalar deleting destructor 0x00B50B80,
@@ -68,7 +69,7 @@ public:
     unsigned char KeepAlive;                                // +0x09
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public: float M[12]; };
 class CShadowRendererSceneData { public: unsigned char _body[0x240]; };
 enum EShadowRenderingTechnique { };

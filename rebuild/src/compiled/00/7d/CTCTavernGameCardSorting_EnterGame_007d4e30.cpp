@@ -10,16 +10,14 @@
 // Shape: NumCards = 1 precedes the def temporary (its store sits before the zeroing of the out pointer); the offset vector
 //        is a 3-float temporary; the CDefPointer dtor is null-tested and calls the def's inline ReleaseTemporary().
 // Leaf: EnterGame
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // PositionMesh (sweep3, FINDINGS chunk 481 "PositionMesh's 5th parameter is float"): Ego_r/FableWin
 //   ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z -- a static __fastcall member taking
 //   (CThing*, const C3DVector&, const CRightHandedSet&, const C3DVector&, float, float); C3DVector, CRightHandedSet and CThing
 //   are classes (V in every PDB signature).
 class CThing { };
 class CThingObject : public CThing { };              // CThingObject derives from CThing (PositionMesh takes the base)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
 
 struct CRefCounted {

@@ -1,5 +1,6 @@
 // NScript::CQ_FireHeartScript::CProphetCage::Main() -- a Fire Heart prophet cage: under an alive filter on Me, wait for this cage's prophet to be released or killed; then wait for the OPENCAGE cutscene flag, burst the cage with the crystal implode (released) or crystal open (killed) effect, fade the cage out, clear the flag and mark the cage activated; then idle
 // Leaf: ?Main@CProphetCage@CQ_FireHeartScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D38F70, length 955 bytes, plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0, CScriptThing copy 0x004ABE90, out-of-line ~CScriptThing 0x004AA840),
@@ -23,7 +24,7 @@ class CCharString { public:
 };
 void operator delete(void* p);                           // 0x00BFE9BC
 #include "engine/CCountedPointer.h"
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

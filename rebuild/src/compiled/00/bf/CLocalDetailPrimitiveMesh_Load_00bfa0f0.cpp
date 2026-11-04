@@ -1,4 +1,5 @@
 // CLocalDetailPrimitiveMesh::Load(CDataInputStream* in) -- read the primitive's bounding box (+0x08), bounding sphere (+0x20), placement matrix (+0x38) and scale (+0x68) from the binary stream; always succeeds
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BFA0F0, length 432 bytes (`ret 4`).
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow(unsigned char*, long) @ 0x00993CA0 (the slow path of the inline read).
 // Layout: Ego_r.pdb CLocalDetailPrimitiveMesh: Matrix (CMatrix3x4) +0x38, Scale +0x68; the 0x18/0x10-byte blocks at +0x08/+0x20 are the
@@ -27,7 +28,7 @@ class CDataInputStream { public:
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector MinCoord, MaxCoord; };             // 0x18
 class C3DBoundingSphere { public: C3DVector Centre; float Radius; };        // 0x10
 class CMatrix3x4 { public: float E[12]; };                                  // 0x30

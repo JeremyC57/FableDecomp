@@ -1,5 +1,6 @@
 // CTCHeroPodium::FrameUpdate() -- when the hero steps onto the podium post the podium message event (and reset the crowd), when he leaves remove it
 // Leaf: FrameUpdate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00771DE0, 225 bytes (+ int3 padding).
 // Callees: CThing::GetPos() const @ 0x004C73D0 (x2), CTCBase::GetWorld() @ 0x00686A70 (x2), CWorld::
 //          GetCurrentPlayer() @ 0x0049D9D0, CPlayer::PeekPControlledCreature() @ 0x00487DD0, CMessageEventManager::
@@ -13,9 +14,7 @@
 // manager (world +0x60) is a named local in edi; the type-0x23 filter and the resize value share the frame word.
 // Layout: retail CTCHeroPodium NumberOfCrowdOccupants +0x0C, CrowdOccupation +0x10 (as the landed
 // OnInitialActivate 0x00771BD0); CWorld PMessageEventManager +0x60.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 extern const float g_podiumRadiusSquared_0126a88c;   // 0x0126A88C (1.0f)
 

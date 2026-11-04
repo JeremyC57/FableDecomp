@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::StartUpdate(const CParticleUpdateParameters<unsigned long,unsigned long>& params) -- vtable slot 8: marks the component's update started, advances the random spline offsets and re-fits the position parameters to the spline (and to the offset copy when there is one)
 // Leaf: ?StartUpdate@CPSCSplineBase@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B215E0, length 66 bytes, `ret 4`.
 // Signature from Ego_r.pdb: ?StartUpdate@CPSCSplineBase@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z;
 //   slot 8 of the vtables @ 0x0129FB84 and 0x012A0B14 (absolute refs 0x0129FBA4 / 0x012A0B34) and called directly by the
@@ -13,7 +14,7 @@
 // Shape: `or byte ptr [esi+8],1` is the one-bit UpdateStarted store; the counted pointers are tested through their object
 //   word and dereferenced with an inline operator->; params is loaded once into edi for both Update calls, the second
 //   passing `&SplineRandomOffsetData->ThisSpline` (`add eax,4`).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCardinalSpline {
 public:

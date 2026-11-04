@@ -1,5 +1,6 @@
 // QuadricOptimiserInternals::COptimisedVertex::COptimisedVertex(const COptimisedVertex&) -- the compiler-generated member-wise copy constructor of an optimiser vertex
 // Leaf: ??0COptimisedVertex
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD77F0, 187 bytes (`ret 4`, returns `this`).
 // Callees: set<unsigned long>::set(const set&) 0x00AD3A10 (CIndexList::Indices), map<unsigned long, float>::map(const map&)
 //   0x00AD4210 (Groups), map<unsigned long, CContractionReference>::map(const map&) 0x00AD5920 (PairContractions).
@@ -7,10 +8,7 @@
 // Shape: nothing is user-written: the C3DVector members copy dword by dword, the quadric is a 22-dword `rep movsd`, the trees
 //   are copy-constructed in place. A placement copy in the TU makes VC emit it.
 #include <new>
-class C3DVector { public:                                 // engine C3DVector: user copy ctor, implicit assignment
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class T> struct less { };
 template <class T> struct allocator { };

@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0A210, length 230 bytes, `ret 4` (returns `this`)
 // (PDB ??0CRandomAcceleration@NParticleEngine@@QAE@AAK@Z).
 // Leaf: ??0CRandomAcceleration
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0, GFROR13 0x00497890 (`__fastcall` rotate of the
 // seed). Vtable 0x0129FC08 (RTTI NParticleEngine::CRandomAcceleration: slot 0 the destructor, slot 1 Delete).
 // Layout (PDB, 24 bytes): TimeOffsetX/Y/Z +4..+6, IndexX/Y/Z +7..+9, C3DVector OldOffset +0x0a -- the vector really is
@@ -9,11 +10,7 @@
 // Shape: each draw is the engine's linear-congruential step written back to the seed before and after the rotate
 // (seed = seed * 0x24A1 + 0x24DF; seed = GFROR13(seed)), the low byte stored; the indices are drawn before the time
 // offsets; OldOffset is assigned a zero C3DVector temporary (three frame words copied through registers).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 long __fastcall GFROR13(unsigned long);  // 0x00497890
 
 struct CBaseClassNonCopyable {

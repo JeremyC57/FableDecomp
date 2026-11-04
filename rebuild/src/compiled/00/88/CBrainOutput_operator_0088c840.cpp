@@ -1,5 +1,6 @@
 // CBrainOutput::operator=(const CBrainOutput&) -- memberwise assignment: flags, navigation input, counted action pointer, the two positions and the look-at intelligent pointer
 // Leaf: ??4CBrainOutput
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0088C840, 187 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 (LookAtThing +0x40), the
 //          action's destroy function through its count block (`call [eax+4]`), operator delete @ 0x00BFE9BC.
@@ -54,10 +55,7 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
     }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CNavigationInput { public:                       // 24 bytes
     C3DVector Destination;                      // +0x00

@@ -1,5 +1,6 @@
 // NPlayerGui::CDrawAbilityButtons::DrawEffects(long index, const C2DVector& position, const CHeroAbilityDef& ability) -- when the ability has an icon effect and the button's emitter slot is empty, create the 2D particle emitter at the button position plus the icon effect offset (layer 0x43, upright axes) and keep it in the slot
 // Leaf: ?DrawEffects@CDrawAbilityButtons@NPlayerGui@@IAEXJABVC2DVector@@ABVCHeroAbilityDef@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006451DD, 173 bytes, thiscall `ret 0Ch`; ebp frame closed with `leave`.
 // Pragmas: `#pragma optimize("y", off)` + `#pragma optimize("s", on)`: the HUD TU's established mode (the landed NPlayerGui rows).
@@ -23,10 +24,7 @@ class C2DVector { public:
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
 inline C2DVector operator+(const C2DVector& a, const C2DVector& b) { return C2DVector(a.X + b.X, a.Y + b.Y); }
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:                 // PDB 0x18
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c

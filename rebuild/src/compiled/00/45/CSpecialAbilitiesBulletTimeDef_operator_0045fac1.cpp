@@ -1,5 +1,6 @@
 // CSpecialAbilitiesBulletTimeDef::operator=(const CSpecialAbilitiesBulletTimeDef&) -- implicit memberwise copy of the bullet-time def
 // Leaf: ??4CSpecialAbilitiesBulletTimeDef
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x0045FAC1, 628 bytes, size-optimised def TU (#pragma optimize("s")): unaligned, ebp frame.
 // Callees: CParentDefClassBase::operator= 0x00431ED0 (base part), vector<float>::operator= 0x0045EF2D.
 // Shape: this is the COMPILER-GENERATED operator=. Its tells: the fixed float arrays are copied by
@@ -18,7 +19,7 @@
 #include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 class CDefString { public: long m_index; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CFloatVector {
     float* m_first; float* m_last; float* m_end;
     CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D

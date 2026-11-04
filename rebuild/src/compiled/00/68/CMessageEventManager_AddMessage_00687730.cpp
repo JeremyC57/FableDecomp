@@ -1,5 +1,6 @@
 // CMessageEventManager::AddMessage(const CMessageEventDef& def, const C3DVector& pos, CThing* originator, CThing* target, long extraData) -- build a time-stamped message event from the definition's type, radii, lifespan and reaction speech with the next message id, the originator/target pointers and UIDs and the target's faction, push a copy on the front of the list and return it
 // Leaf: ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABVCMessageEventDef@@ABVC3DVector@@PAVCThing@@2J@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00687730, 477 bytes; Ego_r.pdb ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABVCMessageEventDef@@ABVC3DVector@@PAVCThing@@2J@Z
 //   (def and pos are const references; the old draft had pointers).
@@ -16,9 +17,7 @@
 #include "engine/CVectorMap.h"
 class CBaseObjectPointer;
 class CFaction;
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 enum EMessageEventType { EMessageEventType_Force32 = 0x7fffffff };
 enum EReactionSpeechType { REACTION_SPEECH_NONE = 0, EReactionSpeechType_Force32 = 0x7fffffff };
 class CBaseObject { public:

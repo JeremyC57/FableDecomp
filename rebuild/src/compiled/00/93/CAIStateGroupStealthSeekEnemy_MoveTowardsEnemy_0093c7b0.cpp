@@ -1,5 +1,6 @@
 // CAIStateGroup_StealthSeekEnemy::MoveTowardsEnemy(const CTCPerceiveThing* perceive) -- while the seek is still runnable, walk to within 1.5 of the last perceived position, re-issuing the move while it reports "in progress" (4); terminate the state group when the seek stops being runnable or the move fails (1)
 // Leaf: ?MoveTowardsEnemy@CAIStateGroup_StealthSeekEnemy@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0093C7B0, 118 bytes (128 with padding), __fastcall `ret 4`.
 // Identity: Ego_r.pdb ?MoveTowardsEnemy@CAIStateGroup_StealthSeekEnemy@@AAEXPBVCTCPerceiveThing@@@Z (private); the only caller is
 //   this class's Update 0x0093C948 (landed, where it is declared descriptively as "MoveOrQuit"). The catalog's
@@ -15,11 +16,7 @@
 //   stay on the FPU stack, Z goes through the local's frame slot, then the by-value argument is built in its slot.
 class CThing;
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CTCPerceiveThing {                        // Ego_r.pdb names
 public:

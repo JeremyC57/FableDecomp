@@ -1,5 +1,6 @@
 // std::vector<std::pair<C3DVector, CCharString>>::_M_insert_overflow(std::pair<C3DVector, CCharString>* position, const std::pair<C3DVector, CCharString>& x, const __false_type&, unsigned int fillLength, bool atEnd) -- STLport growth path: allocate old+max(old,n), copy the head, n copies of x and the tail unless inserting at the end, clear the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@U?$pair@VC3DVector@@VCCharString@@@std@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00656D5E, 174 bytes, thiscall `ret 14h`; size TU with a frame pointer.
 // Identity (probable): its copy ctor 0x00654DD4 copies three dwords then a CCharString (0x0099EC30); the push_back 0x00656EF2 is called only by 0x0064DD9A, the NPlayerGui::CDrawMiniMap region-exit builder (SetRegion / ToggleCentering) -- Ego_r.pdb CDrawMiniMap::RegionExits is vector<pair<C3DVector, CCharString> >; caller push_back 0x00656EF2.
 // Callees: malloc 0x00BFEA0E, __uninitialized_copy 0x006555CE (__fastcall, head and tail), the copy constructor 0x00654DD4
@@ -12,7 +13,7 @@
 extern "C" void* __cdecl malloc(unsigned int bytes);                                   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 class CCharString { public: void* PStringData; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;

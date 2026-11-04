@@ -1,5 +1,6 @@
 // CTCResurrectionItem::OnItemUsed(CThingCreatureBase& creature) -- the resurrection item revives the creature: full health, the current action finished and replaced by the knockdown recover-from-death action, the def's particle effect attached at its position, then the item thing is destroyed
 // Leaf: OnItemUsed
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F04C0, 203 bytes (`ret 4`; PDB ?OnItemUsed@CTCResurrectionItem@@QAEXAAVCThingCreatureBase@@@Z).
 // Callees: CThingCreatureBase::FinishCurrentAction() @ 0x00662650, CCombatAction_GenericStrikeResponseKnockdownRecoverBase(
 //   CThingCreatureBase*, bool) @ 0x00867AF0 (then the RecoverFromDeath vtable 0x01271A64, rtti-vtables.tsv), SetCurrentAction(const
@@ -11,7 +12,7 @@
 // Shape: the action is a temporary of a derived class with an inline ctor over the out-of-line base ctor and an implicit
 //   destructor (only the base destructor call remains); the def is read into a named local (kept in edi for both tests); the
 //   emitter is `T* p = 0; if (HasTC(k)) p = member;`; the "" helper name is an implicit conversion built before the pushes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

@@ -1,0 +1,6 @@
+  WARN leaf '?ProcessPossibleProneThingsStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in x.obj; graded the largest function
+gate: 2087 rows {'PASS': 1817, 'FAIL': 270} in 88.7s (0.04s/row wall, NJ=6)
+gate: 1817 PASS of 2087
+vland:
+    264 MATCH PASS
+   1823 RELOCATION_MATCH PASS

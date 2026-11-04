@@ -1,5 +1,6 @@
 // CGameCameraManager::GetViewWidthAtPosition(const C3DVector&) -- width of the camera's horizontal view at the distance of a world position: 2 * distance * tan(HorizontalFOV / 2), the FOV held in turns
 // Leaf: ?GetViewWidthAtPosition@CGameCameraManager_Methods@@QAEMABVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006977F0, length 106 bytes. Catalog label "CDisplayEngine::GetSeaLevel" is propagated
 // from the callee: 0x00A0BEB0 is the `fld [ecx+2Ch] ; ret` getter CCamera::GetFOV (sweep3 RENAMES: Ego_r/FableWin CCamera
 // order GetFOVFlags, GetHorizontalFOV, GetVerticalFOV, GetFOV, GetZoom = retail 0x00A0BE80 .. 0x00A0BEC0; no ICF in retail, the
@@ -15,12 +16,7 @@
 #include <math.h>
 #pragma intrinsic(sqrt, tan)
 
-class C3DVector {                                  // a class in Ego_r/FableWin (V key)
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CCamera { public:                                   // PDB 56 bytes
     C3DVector WorldPosition;                       // +0x00

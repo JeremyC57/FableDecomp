@@ -1,5 +1,6 @@
 // NScript::CQ_MinionClifftopChaseScript::CMinionFieldGenerator::Main() -- the minion field generator: alive filter on Me, take scripted control (priority 4); the
 // Leaf: ?Main@CMinionFieldGenerator@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   first time (own flag clear) play the "CS_MINIONCHASE_FARM" cut-scene with Me cast as MINION and have the guildmaster
 //   explain the barrier; then run to "M_SummonerToWindmill" until within 2 units, retake scripted control at priority 3,
@@ -25,7 +26,7 @@
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

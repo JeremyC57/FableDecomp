@@ -1,5 +1,6 @@
 // std::sort_heap(CThing** first, CThing** last, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- heap-sort tail of the advance-in-cover candidate sort: pop the heap root to the back until one element remains
 // Leaf: ??$sort_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00979370, 96 bytes, __fastcall (/Gr algorithm TU: first in ecx, last in edx, the
 //   comparator on the stack), `ret 10h`.
 // Instantiation: the advance-in-cover candidate sort: std::sort<CThing**,
@@ -19,9 +20,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 extern "C" double __cdecl pow(double x, double y);                                    // _CIpow 0x00BFEB40
 extern "C" double __cdecl sqrt(double x);
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

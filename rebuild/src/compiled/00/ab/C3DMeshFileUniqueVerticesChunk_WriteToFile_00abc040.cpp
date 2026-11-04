@@ -1,4 +1,5 @@
 // C3DMeshFileUniqueVerticesChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const -- the unique-vertex count then every index; no base call
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABC040, length 64 bytes.
 // Callees: 0x00993EA0 CDataOutputStream::WriteULONG
 //
@@ -17,7 +18,7 @@ class CCharString { public:
     void* m_pStringData;                                // CCharStringData*
 };
 
-class C3DVector  { public: float X, Y, Z; };                   // trivial default constructor (retail leaves it uninitialised)
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:                                     // 48 bytes: three axis vectors and the position, copied with rep movsd
     C3DVector XAxis, YAxis, ZAxis, Position;
 };

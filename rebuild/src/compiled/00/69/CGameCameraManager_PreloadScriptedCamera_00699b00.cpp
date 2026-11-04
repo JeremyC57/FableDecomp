@@ -1,5 +1,6 @@
 // 00699b00 CGameCameraManager::PreloadScriptedCamera
 // Leaf: ?PreloadScriptedCamera@CGameCameraManager@@AAEXV?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefPointer.h"
@@ -20,7 +21,7 @@ class C2DVector;
 class C3DAnimationInfo;
 class C3DBoundingBox;
 class C3DBoundingSphere;
-class C3DVector;
+#include "engine/C3DVector.h"
 class CCamera;
 class CCharString;
 class CEngineInit;
@@ -103,7 +104,6 @@ class CDisplayEngine:public CDisplayEngineFields{public:CIEngine&Get3DEngine(){r
 namespace boost{template<class T>class scoped_ptr{T*ptr;public:T&operator*()const{return *ptr;}};}
 // Layout: original MainGameComponent PDisplayEngine at28; raw original type is scoped_ptr.
 class CMainGameComponent{protected:static CMainGameComponent*PMainGameComponent;unsigned char _pad_0[0x28];boost::scoped_ptr<CDisplayEngine>PDisplayEngine;public:static CMainGameComponent*__fastcall Get(){return PMainGameComponent;}CDisplayEngine&GetDisplayEngine(){return *PDisplayEngine;}};
-class C3DVector{public:float X,Y,Z;};
 class CRightHandedSet{protected:C3DVector Up,Forward;};
 // Layout: original camera56-byte object; flags at24/25, FOVFlags28, floats2c..34.
 class CCamera{C3DVector WorldPosition;CRightHandedSet RHSet;bool HeightLocked,ViewVecZLocked;unsigned long FOVFlags;float HorizontalFOV,VerticalFOV,Zoom;public:CCamera():HeightLocked(false),ViewVecZLocked(false){}CCamera(const CCamera&);};

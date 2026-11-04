@@ -1,5 +1,6 @@
 // std::vector<KnickKnack>::_M_fill_insert(KnickKnack* position, unsigned int n, const KnickKnack& x) -- STLport vector insert(pos, n, x) for the spot-the-addition knick-knacks: shift the tail inside the spare capacity and fill the gap from a local copy, else regrow through _M_insert_overflow
 // Leaf: ?_M_fill_insert@?$vector@UKnickKnack@@V?$allocator@UKnickKnack@@@std@@@std@@QAEXPAUKnickKnack@@IABU3@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D9D70, 316 bytes, thiscall `ret 0Ch`.
 // Identity: reached from vector<KnickKnack>::resize 0x007D9FC0 (landed, it names this address as its _M_fill_insert)
 //   and the insert(pos, n, x) front ends 0x007D9F60 / 0x007DA000. The catalog's "vector_Insert_16byte_Fill" is
@@ -20,12 +21,7 @@
 //   __copy_backward call.
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CThingObject;
 

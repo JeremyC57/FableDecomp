@@ -1,5 +1,6 @@
 // CWorld::EAMoveCreature(const CGameEvent*) -- game-event action: unpack a creature UID, a 2D movement vector and the game action from the event and apply the relative movement acceleration to that creature if it still exists and is alive
 // Leaf: EAMoveCreature
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /GS
 // Retail: Fable.exe @ 0x006295C0, 225 bytes (/GS cookie 0x0139C8A8). PDB ?EAMoveCreature@CWorld@@QAEXPBVCGameEvent@@@Z
 // Callees: CWorld::GetPlayer(long) 0x0049D850 (manifest "_Cons_val<...>"; result unused), CGameEvent::GetData
@@ -30,10 +31,7 @@ class CGameEvent { public:
     long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 enum EGameAction { GAME_ACTION_NONE = 0 };
 
 class CThingPlayerCreature { public:

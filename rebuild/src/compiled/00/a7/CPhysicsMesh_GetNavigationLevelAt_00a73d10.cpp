@@ -1,4 +1,5 @@
 // CPhysicsMesh::GetNavigationLevelAt(const C3DVector& position) -- the level number of the first navigation-level record (16 bytes: level, containment volume) whose volume contains the position, else 0
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A73D10, length 88 bytes.
 // Callees: the record volume's containment test @ 0x00A2E710 (`__fastcall`, one `const C3DVector&`,
 // bool result; the manifest label `_Cons_val<...>` is a propagated template name).
@@ -7,7 +8,7 @@
 // is re-read from `this` every iteration (the call may change it; `this` spilled to the `push ecx`
 // slot under register pressure), while the found record is a reference local so its level is read
 // back through the same pointer after the call (`mov eax,[esi]`).
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 struct CContainmentVolume_a2e710 {
     unsigned char _body[0xc];
     bool IsContaining(const C3DVector& position) const;   // 0x00A2E710

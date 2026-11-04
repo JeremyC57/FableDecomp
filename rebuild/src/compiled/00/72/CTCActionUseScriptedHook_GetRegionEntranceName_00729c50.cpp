@@ -1,6 +1,7 @@
 // CTCActionUseScriptedHook::GetRegionEntranceName() const -- the name of the region holding the map that the connected entrance's position lies in
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00729C50, length 72 bytes.
 // Leaf: GetRegionEntranceName
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CTCBase's world-map accessor @ 0x00686D20 (`[g_pMainGameComponent]+0x28`, called three times; the manifest's
 // "CViewBase::GetDisplayEngine" is propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @
 // 0x004C73D0 (`[this+60h]+0Ch`, the physics component's position, as the landed 0x00943AE0 names it), the world map's
@@ -11,7 +12,7 @@
 // Shape: the first world-map fetch (and its vtable, kept in ebx) happens BEFORE the argument is computed, so the map
 // is a named local; the outer two calls evaluate their argument first and fetch the map again each time.
 class CBaseObject;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public: void* m_pData; };
 
 class CThing { public:

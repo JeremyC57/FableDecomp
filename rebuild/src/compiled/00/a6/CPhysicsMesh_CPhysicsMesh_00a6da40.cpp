@@ -1,5 +1,6 @@
 // CPhysicsMesh::CPhysicsMesh(const C3DMeshFile& file, CMovableResourceMemoryPool* pool) -- build a physics mesh from a mesh file: empty helper/dummy maps, face/point/navigation arrays and containment maps, cleared bounding sphere and segment tree, one reference; then read the mesh, helper and containment data and derive the navigation, bounding, segmentation and centre-of-gravity information
 // Leaf: ??0CPhysicsMesh
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A6DA40, 255 bytes, `ret 8`. PDB: ??0CPhysicsMesh@@QAE@ABVC3DMeshFile@@PAVCMovableResourceMemoryPool@@@Z.
 //   Called from 0x00A25D90. Vtable 0x0129DC68 (CPhysicsMesh).
 // Callees (PDB names, catalogue labels agree): GetMeshDataFromFileData 0x00A6CC10, GetHelperDataFromFileData 0x00A6D0E0,
@@ -16,7 +17,7 @@
 class C3DMeshFile;
 class CMovableResourceMemoryPool;
 class C3DTriangle2 { public: unsigned short Index[3]; };   // 6 bytes (the size() divide is by 6)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DLineF;
 class C3DHelperPoint; class C3DDummyObject; class C3DMeshVolume;
 

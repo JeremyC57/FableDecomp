@@ -1,6 +1,7 @@
 // 00a50bf0 C3DAnimationStats::GetAllEvents
 // Flags: /Gr
 // Leaf: ?GetAllEvents@C3DAnimationStats@@QBEXAAV?$vector@U?$pair@VCCharString@@M@std@@V?$allocator@U?$pair@VCCharString@@M@std@@@2@@std@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __fastcall
@@ -12,7 +13,7 @@ class CCharString{public:CCharStringData*PStringData;CCharString(const CCharStri
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #pragma pack(push,1)
-class C3DVector{public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 enum EAnimationType{};
 namespace std{

@@ -1,5 +1,6 @@
 // NThingShot::CTCShotDefinitionBase::~CTCShotDefinitionBase() -- shot-definition component base dtor (empty user body): the member dtors in reverse order (best-collision thing pointer, ability and shot def pointers, weapon / shooter / target thing pointers, the hit-things pointer vector, the effect pointer) and ~CTCBase
 // Leaf: ??1CTCShotDefinitionBase@NThingShot@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BF2B0, 153 bytes, tail jump to the base destructor.
 // Identity: the first store is vtable 0x0126E1A4, RTTI `.?AVCTCShotDefinitionBase@NThingShot@@` (rtti_bases:
 //   NThingShot::CTCShotDefinitionBase : CTCBase; base of the CTCShotDefinitionProjectile / MultiArrow / Throw ... family);
@@ -114,11 +115,7 @@ class CTCBase : public CBaseClassNonCopyable { public:
 };
 
 #pragma pack(push, 1)
-class C3DVector { public:                                  // retail C3DVector is 1-aligned
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CThingShotDef;

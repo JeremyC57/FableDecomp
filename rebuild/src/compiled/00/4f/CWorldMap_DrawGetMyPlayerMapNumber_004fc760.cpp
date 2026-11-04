@@ -1,5 +1,6 @@
 // 004fc760 CWorldMap::DrawGetMyPlayerMapNumber
 // Leaf: ?DrawGetMyPlayerMapNumber@CWorldMap@@UBEJXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 #define CWorld CWorldFields
 #include "engine/CWorld.h"
@@ -13,7 +14,7 @@
 #include "engine/CBaseClassNonCopyable.h"
 class CPlayer{public:long GetNumber()const{return reinterpret_cast<const CPlayerFields*>(this)->Number;}};
 class CWorld{public:const CPlayer*PeekMyPlayer()const;};
-class C3DVector{public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class C2DCoordI;class C2DBoxI;class CDrawMapInfo;class CAFile;class CASuspendableProcess;class CMap;
 template<class T>class CCountedPointer;
 class CIDrawWorldMap{public:

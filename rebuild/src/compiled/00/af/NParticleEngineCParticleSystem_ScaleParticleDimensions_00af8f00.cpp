@@ -1,6 +1,7 @@
 // NParticleEngine::CParticleSystem::ScaleParticleDimensions(C2DVector&) const -- when ScaleParticles is set, scale the 2D size by the largest component of the system scale
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF8F00, length 117 bytes (padded to 128).
 // Leaf: ScaleParticleDimensions
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: none.
 // Layout: Ego_r.pdb CParticleSystem minus 0x1c (retail 12-byte CVectorMap / 4-byte STLport lists / 0x24-byte update
 // parameters): the bool bit-field byte +0x50 (ScaleParticles = bit 7, tested with `test al,al ; jns`), Scale (C3DVector) +0x60.
@@ -8,11 +9,7 @@
 // re-evaluates the inner MAX on the taken arm -- hence the second x/y compare; the size is scaled by an inline
 // C2DVector::operator*=(float) (`fld st(0) ; fmul [eax] ; fstp [eax] ; fmul [eax+4] ; fstp [eax+4]`), tail-duplicated per arm.
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X;
     float Y;

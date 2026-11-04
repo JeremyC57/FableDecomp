@@ -1,4 +1,5 @@
 // C3DMeshStats::C3DMeshStats(bool animated) -- vtable, empty name, zero bounding sphere, empty containers, AnimatedFlag from the argument
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2F270, oracle length 81 bytes.
 // Callees: CCharString::CCharString @ 0x0099E4B0 (landed). Vtable 0x0129CF04 = C3DMeshStats (rtti-vtables.tsv).
 //
@@ -10,7 +11,7 @@
 // overload leaves MemoryPool, StatsMemoryHandle, PackedNames and PackedNamesSize uninitialised and only
 // sets AnimatedFlag (+0x7A) from its bool argument. Every container has an inline constructor that
 // nulls its pointers and clears its flag.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;

@@ -1,6 +1,7 @@
 // CTCAssassinRush::SetThingCollisionPtr(CThing* thing) -- unless the trail delay has started, CollidedThing is pointed at the thing (through a converting CIntelligentPointer temporary)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004CBFB0, length 78 bytes.
 // Leaf: SetThingCollisionPtr
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, SetPItem @ 0x00A01B90 (twice), GetPItem @ 0x00A01B50,
 // ~CBaseIntelligentPointer @ 0x00A01C10. Vtable 0x01238C6C = CIntelligentPointer (rtti-vtables.tsv). Ego_r.pdb:
 // `?SetThingCollisionPtr@CTCAssassinRush@@QAEXPAVCThing@@@Z`; StartTrailDelay +0x2c, PositionStartedFrom +0x2d (unaligned
@@ -27,7 +28,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCAssassinRush { public:                       // CTCBase is flattened here (engine/CTCBase.h layout)
     void*               __vftable;             // +0x00

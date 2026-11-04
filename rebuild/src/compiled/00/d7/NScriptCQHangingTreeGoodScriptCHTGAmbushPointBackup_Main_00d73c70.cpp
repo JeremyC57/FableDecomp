@@ -1,5 +1,6 @@
 // NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointBackup::Main() -- Hanging Tree (good) backup ambush point: wait until the quest's tracked thing comes within 5 units, find the nearest "HTG_AmbushPointCond" point and the one nearest to it, then once a second swap the two while the first is on screen; when it is off screen have the quest spawn four enemies there (with the point's data string) and remove both points
 // Leaf: ?Main@CHTG_AmbushPointBackup@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D73C70, length 707 bytes (+ int3 padding).
 // Callees: IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30,
 //   CCharString(const char*, long) 0x0099EBF0 / CCharString(const CCharString&) 0x0099EC30 / ~CCharString 0x0099EAE0,
@@ -15,7 +16,7 @@
 // Naming wave 35: identity reg 00d6f78b "HTG_AmbushPointBackup" in 00d6f4b0; Alloc 00d70010; vtable 012d2770 slot 1; PDB ?Main@CHTG_AmbushPointBackup@CQ_HangingTreeGoodScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CHTG_AmbushPointBackup::Main (wave3/labels_alloc.tsv); PDB ?Main@CHTG_AmbushPointBackup@CQ_HangingTreeGoodScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHTG_AmbushPointBackup@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_HangingTreeGoodScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0
 class CCharString { public:
  void* PStringData;

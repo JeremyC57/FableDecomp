@@ -1,5 +1,6 @@
 // std::__copy(pair<C3DVector,bool>* first, last, result, const random_access_iterator_tag&, int*) -- STLport random-access assignment copy of a prong-vector range; returns the end of the destination
 // Leaf: ??$__copy@PAU?$pair@VC3DVector@@_N@std@@PAU12@H@std@@YIPAU?$pair@VC3DVector@@_N@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x006EF000, 80 bytes, /Gr `__fastcall` (first ecx, last edx; result, the tag reference and the
 // null distance pointer on the stack, `ret 0Ch`).
 // Identity (probable): STLport 4.6 `__copy(first, last, result, random_access_iterator_tag, _Distance*)`
@@ -11,10 +12,7 @@
 // Shape: the element assignment is pair's implicit operator= (C3DVector's implicit one, three dwords through ebx, then
 // the bool byte); the empty range returns the result argument straight from its slot.
 #pragma pack(push, 1)
-class C3DVector { public:                           // retail C3DVector is 1-aligned (GOTCHAS)
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 namespace std {
 #pragma pack(push, 1)

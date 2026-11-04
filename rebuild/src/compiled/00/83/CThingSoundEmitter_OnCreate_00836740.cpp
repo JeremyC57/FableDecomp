@@ -1,5 +1,6 @@
 // CThingSoundEmitter::OnCreate() -- runs the CThing creation step, then asks the game state for a sound object at the emitter's position; true only when both succeed
 // Leaf: OnCreate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00836740, 52 bytes, plain `ret`.
 // Identity: ?OnCreate@CThingSoundEmitter@@MAE_NXZ (FableWin.pdb, the TU's ConstructFromParams/Create/OnCreate block); the
 //   result lands in the retail-only sound-object member +0x98 that the constructor 0x008367B0 zeroes and every other
@@ -11,7 +12,7 @@
 //   AttachedToThing +0x9c, PAttachedThing +0x9d, ContinuePlayingAfterAttachedThingDeath +0xa5, Pos +0xa6.
 // Shape: `if (base && global) { store; if (stored) return true; } return false;` -- one `xor al,al` exit at the end; the new sound object is
 //   stored before its null test (`test eax,eax ; mov [esi+98h],eax ; je`).
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 struct CSoundPlayer;
 
 struct CGameState {                                      // 0x013B8394

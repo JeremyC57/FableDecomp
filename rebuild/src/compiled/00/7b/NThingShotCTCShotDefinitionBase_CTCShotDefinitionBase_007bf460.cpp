@@ -1,5 +1,6 @@
 // NThingShot::CTCShotDefinitionBase::CTCShotDefinitionBase(CThing* thing) -- CTCBase(thing), then the shot's intelligent pointers, empty hit list and def pointers, the flags and an unset (-1) initial velocity
 // Leaf: ??0CTCShotDefinitionBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007BF460, 172 bytes (`ret 4`); vtable 0x0126E1A4 NThingShot::CTCShotDefinitionBase.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer ctor @ 0x00A01B10 (five times) and SetPItem
 // @ 0x00A01B90 (PBestCollisionThing is built from a null pointer); intelligent-pointer vtables 0x01238C6C
@@ -55,7 +56,7 @@ template <class T> class CDefPointer { public:
 class CThingShotDef;
 class CMeleeCombatAbilityDef;
 struct CHitLocation;
-class C3DVector { public: float X, Y, Z; C3DVector() { } };
+#include "engine/C3DVector.h"
 namespace NThingShot {
 class CTCShotDefinitionBase : public CTCBase { public:
     CIntelligentPointer<CThing> PEffect;                            // +0x0c

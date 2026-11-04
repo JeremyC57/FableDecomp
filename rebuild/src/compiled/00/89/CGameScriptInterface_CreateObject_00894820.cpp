@@ -1,5 +1,6 @@
 // CGameScriptInterface::CreateObject(const CCharString& defName, const C3DVector& position, const CCharString& scriptName) const -- create a thing object from the named def at the position (player 4, default orientation) and return its script thing, the null script thing when creation failed
 // Leaf: ?CreateObject@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00894820, length 290 bytes (+ int3 padding), `ret 10h` (hidden result + 3).
 // Signature from Ego_r.pdb: ?CreateObject@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0@Z
 //   (the overload without the float).
@@ -17,7 +18,7 @@ void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 class CCharString { public:
     void* PStringData;
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0

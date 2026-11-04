@@ -12,11 +12,10 @@
 // (VC cross-jumps it into the common Terminate call with `mov ecx,esi` hoisted above the `je`).
 // Layout: Ego_r.pdb CAIStateGroup_ButterflyWander StartPos +0x24.
 // Leaf: Update@CAIStateGroup_ButterflyWander
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 class CThingCreatureBase;
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* m_pData;

@@ -1,8 +1,9 @@
 // CNavigatorAStar::IsNavigableAt(const C3DVector* position, bool layer) -- 1 when the manager (+0x1c) finds a node under the position (GetNodeAt @ 0x00A14F70 with the 2D temporary) that is not switched off (+0xf); 0 otherwise
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A1A210, length 80 bytes.
 // Leaf: IsNavigableAt
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Shape: an 8-byte frame for the conversion temporary, a long result (`mov eax,1`), two epilogues, `ret 8`.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }   // the conversion temporary: two dwords copied into the frame

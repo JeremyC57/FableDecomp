@@ -1,6 +1,7 @@
 // NHitLocations::CPhysicalPrimitiveCylinder::GetFirstIntersectionWithTriangle(CThing* thing, const void* triangle, C3DVector* point, C3DVector* normal, long unused) -- build the world cylinder (the transformed dummy-object axis, radius or the thing's physics radius when unset) and intersect the triangle with it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00815C40, length 153 bytes (+ int3 padding).
 // Leaf: GetFirstIntersectionWithTriangle
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Callees: CPhysicalPrimitiveCylinder::GetDummyObjectOriginTransformed(CThing*, C3DVector&, C3DVector&) @ 0x008158D0,
 // CThingCreatureBase::GetCombatRadius @ 0x00661F90, CCylinder::GetFirstIntersectionWithTriangle @ 0x00A593F0.
 // Constant: 0.0001f @ 0x0129BA3C (the "radius unset" threshold).
@@ -9,9 +10,7 @@
 // Shape: as the sphere rows -- the radius kept on the x87 stack (`fcom`, then-arm `fstp st(0)`), the inline physics radius
 // reading the def radius before the creature-flag test; the CCylinder temporary takes the radius, then both axis points;
 // the last argument is unused; `ret 14h`.
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 struct CThingDef_Physics {                         // the thing's definition (only the collision radius is read)
     unsigned char _pad[0x34];
     float         CollisionRadius;                 // +0x34

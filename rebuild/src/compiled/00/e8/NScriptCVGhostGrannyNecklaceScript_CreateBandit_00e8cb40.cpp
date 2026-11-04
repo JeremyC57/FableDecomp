@@ -1,4 +1,5 @@
 // CV_GhostGrannyNecklaceScript::CreateBandit() -- wait until the hero knows about the necklace, switch off the GreatwoodLake creature generators, then each frame until the hero holds the necklace: when Greatwood_3 is loaded, the bandit is not killed and no live GhostGrannyBandit exists, create a bandit lieutenant at GhostGrannyBanditSpawn, attach it to the quest, spawn CheckBanditDead on it and wait for Greatwood_3 to unload; finally switch the generators back on
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E8CB40, 0x3fc bytes, plain `ret`.
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940, operator new 0x00BFEA1A,
 //   CSpawnedFuncBase 0x00CDD450 (CSpawnedFunc1<CV_GhostGrannyNecklaceScript, CScriptThing> vtable 0x012EBC50, 0x48 bytes,
@@ -17,7 +18,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CScriptThingImpl;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

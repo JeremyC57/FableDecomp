@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out) [TFilter = CFilter_Bind2<std::const_mem_fun_ref_t<bool, CThingGameObject>, CFilter_Not<CThingFilter_In2DRange> >, TCompare = CThingCompare_Nearest, TThing = CThingGameObject] -- the nearest scan-visible game object (mask 7) for which the bound member is true and that is NOT in 2D range
 // Leaf: GetPBestThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CD3B0, 147 bytes (`ret 0Ch`).
 // Callees: PeekAllThings 0x0049C770, the bound member through its pointer, CThingFilter_In2DRange 0x006A76B0 (negated), CThingCompare_Nearest::operator()<CThingGameObject> 0x006CCE00.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (`this` is only passed through to the list getter);
@@ -52,7 +53,7 @@ struct CThingList {
 };
 
 class CThingGameObject : public CThing { public: enum { ThingTypeMask = 0x7 }; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 namespace std {
 template <class R, class T> class const_mem_fun_ref_t {   // (thing.*pmf)()
     R (T::*_M_f)() const;

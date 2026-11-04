@@ -1,4 +1,5 @@
 // CContainmentVolume::IsContainingPoint(const C3DVector& point) const -- wrap the point in a
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // CIsContainingPoint functor and run the plane test
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A75430, length 41 bytes (+ int3 padding).
 // Callee: CContainmentVolume::IsContaining<CIsContainingPoint>(const CIsContainingPoint&) @ 0x00A75730.
@@ -8,11 +9,7 @@
 // beyond `this`).
 #include "engine/CContainmentVolume.h"
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CIsContainingPoint { public:
     C3DVector Point;

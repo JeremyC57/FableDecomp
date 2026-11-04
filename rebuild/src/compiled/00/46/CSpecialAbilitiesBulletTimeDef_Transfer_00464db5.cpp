@@ -1,5 +1,6 @@
 // CSpecialAbilitiesBulletTimeDef::Transfer(CPersistContext&) -- persist the bullet-time ability def's fields
 // Leaf: ?Transfer@CSpecialAbilitiesBulletTimeDef@@UAEXAAVCPersistContext@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x00464DB5, 942 bytes, size-optimised def TU (#pragma optimize("s")): unaligned address, no padding.
 // One CPersistContext::Transfer<T> instantiation per member type:
 //   0x00431061 Transfer(float&), 0x00431102 Transfer(long&), 0x0045228F Transfer(CDefString&),
@@ -12,7 +13,7 @@
 #pragma optimize("s", on)
 
 class CDefString { public: long m_index; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
 class CPersistContext { public:

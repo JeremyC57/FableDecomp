@@ -1,5 +1,6 @@
 // CAIStateGroup_BirdStartled::Update() -- pick a random flight position 15 units around the bird, fly there, and finish
 // Leaf: ?Update@CAIStateGroup_BirdStartled@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00914600, 65 bytes (+ int3 padding), thiscall virtual (slot 12), `ret`.
 // Identity (proven): Ego_r.pdb ?Update@CAIStateGroup_BirdStartled@@UAEXXZ (0x00938260), vtable slot 12; the label agrees.
 // Callees: CThingPhysical::PeekPos 0x006A4D00 (?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ by Ego_r donor order Kill/PeekPos/PeekLastPos/OnCreate; byte twin of CThing::GetPos 0x004C73D0),
@@ -38,10 +39,7 @@ public:
     T* Data;                                            // +0x00
     T* operator->() const { return Data; }
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CClass : public CBaseObject { };
 class CThing : public CClass {
 public:

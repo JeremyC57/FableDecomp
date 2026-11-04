@@ -1,4 +1,5 @@
 // CWorldMap::StartMovePlayerPos(long, const C3DVector&, ELoadType) -- a player is about to move to a new position: with region loading on, swap the loaded region when the move crosses regions; otherwise unload everything except the player's maps and force-load the destination map; then record the new position
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00502500, 172 bytes, `ret 0Ch`. PDB ?StartMovePlayerPos@CWorldMap@@QAEXJABVC3DVector@@W4ELoadType@1@@Z
 // Callees: CWorldMap virtual slots 16 GetMapNumberAt(const C3DVector&) const (+0x40, 0x004FC0C0), 10 IsMapLoaded(long)
 // const (+0x28, 0x004FC050), 8 ForceLoad(long) (+0x20, 0x005063D0); GetRegionNumberMapIsIn(long) const 0x004FC190,
@@ -9,7 +10,7 @@
 // Shape: STLport operator[] is `*(begin() + n)` (the plain `_M_start[n]` swaps eax/ecx in the first index); the old
 // player map's region is computed before the new one; the two final stores index the vector separately
 // (its start is re-read after the byte store).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DCoordI;
 
 #pragma pack(push, 1)

@@ -1,6 +1,7 @@
 // C3DMeshPartitionElement::~C3DMeshPartitionElement() -- destroy and free both sub-elements (recursively), then zero the triangle range
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC2100, length 63 bytes.
 // Leaf: ??1C3DMeshPartitionElement
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail bytes:  push ebx ; push esi ; mov esi,ecx ; push edi ; mov edi,[esi+20h] ; xor ebx,ebx ; cmp edi,ebx ; je A ; mov ecx,edi ;
 //                call ~C3DMeshPartitionElement (self) ; push edi ; call operator delete ; add esp,4 ; A: mov edi,[esi+24h] ;
 //                cmp edi,ebx ; je B ; mov ecx,edi ; call (self) ; push edi ; call operator delete ; add esp,4 ; B: pop edi ;
@@ -12,7 +13,7 @@
 // child (self call) followed by operator delete @ 0x00BFE9BC, under the null test.
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector Min, Max; };
 class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 

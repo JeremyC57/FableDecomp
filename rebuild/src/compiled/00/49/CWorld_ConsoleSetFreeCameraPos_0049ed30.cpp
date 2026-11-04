@@ -1,5 +1,6 @@
 // CWorld::ConsoleSetFreeCameraPos(CWorld&, const vector<CGenericVar>&) -- console command: move the main player's free camera to (args[0], args[1], args[2]) read as floats (static)
 // Leaf: ConsoleSetFreeCameraPos
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049ED30, 65 bytes, plain `ret` (static __fastcall: the world in ecx, the
 //   argument vector in edx -> esi). PDB name
 //   ?ConsoleSetFreeCameraPos@CWorld@@KIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z.
@@ -14,11 +15,7 @@
 #include "engine/CWorld.h"
 #include "engine/CPlayer.h"
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 class CCamera {
 public:

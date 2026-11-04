@@ -1,4 +1,5 @@
 // CMiniMapDisplay::DrawMap(CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front) -- draw the minimap sprite (switching the prison-courtyard map on the hero's height and the Headsman's Hill half on its y), then its markers
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x0082BE60, 511 bytes, `ret 0x10`.
@@ -26,7 +27,7 @@ class C2DVector { public:
     float x, y;
     C2DVector(float ax, float ay) : x(ax), y(ay) { }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DBoxF { public:
     C2DVector TopLeft, BottomRight;
     C2DBoxF(const C2DBoxF& other) : TopLeft(other.TopLeft), BottomRight(other.BottomRight) { }

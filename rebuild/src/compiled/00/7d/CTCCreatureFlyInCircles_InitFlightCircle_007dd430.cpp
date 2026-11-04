@@ -1,4 +1,5 @@
 // CTCCreatureFlyInCircles::InitFlightCircle(const C3DVector& centre, float radius, float height) -- store the circle centre and radius, start in fly mode 1 at speed 3, then place the creature on the circle (flagging its interface-0x3a component with whether that point is on the map) facing up the world Y axis
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DD430, 261 bytes (+ int3 padding), `ret 0Ch`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for type 0x3a = word 1
@@ -15,11 +16,7 @@
 //   stores; member copies of the vectors store temporaries first), passed through a named physics-TC local (the TC
 //   load and the `lea` of the set land above the stores, the vtable load below them; a temporary argument sinks the
 //   TC load under the stores, a temporary with the named TC hoists the vtable load and the push above them).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;

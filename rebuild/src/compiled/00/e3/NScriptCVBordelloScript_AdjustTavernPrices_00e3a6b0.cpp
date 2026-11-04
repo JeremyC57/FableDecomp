@@ -1,5 +1,6 @@
 // NScript::CV_BordelloScript::AdjustTavernPrices() -- each time the Bordello region loads: cache the bordello village thing, stop the barmaid and barman screaming at the hero, apply the hero tavern price multiplier once the hero owns the bordello, wait for the region to unload, then reset prices to 1.0 and the beer count
 // Leaf: ?AdjustTavernPrices@CV_BordelloScript@NScript@@QAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E3A6B0, 1013 bytes, plain `ret`; same TU as the landed CreateCustomers (0x00E3A350), whose model this reuses.
 // Identity: the CV_BordelloScript spawner stores 0x00E3A6B0 as a CSpawnedFunc member-function pointer (+0x34, vtable 0x012E38C4, at
 //   0x00E39FDD) named "AdjustTavernPrices" (0x012E38E0); Ego_r.pdb and FableWin.pdb both list ?AdjustTavernPrices@CV_BordelloScript@NScript@@QAEXXZ.
@@ -19,7 +20,7 @@ class CCharString { public:
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CScriptThingImpl;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

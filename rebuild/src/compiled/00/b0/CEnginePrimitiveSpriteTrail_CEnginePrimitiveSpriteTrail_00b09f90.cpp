@@ -1,6 +1,7 @@
 // CEnginePrimitiveSpriteTrail::CEnginePrimitiveSpriteTrail() -- primitive type 0x14 with the default interpolation set and theme channel, an empty trail list, zero fade start and offset, identity world transform
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B09F90, length 103 bytes.
 // Leaf: ??0CEnginePrimitiveSpriteTrail
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Label: the manifest's "C3DPrimitive2::C3DPrimitive2" is propagated; the only caller is the CPSCSingleSprite
 // constructor (0x00B093C3), which builds its PDB member `CEnginePrimitiveSpriteTrail TrailUpdatePrimitive` at
 // +0xac with this body (the next member, PrimIDList, follows at +0x12c: the retail object is 0x80 bytes).
@@ -27,7 +28,7 @@ class CEnginePrimitive { public:                                // 12 bytes (PDB
     CEnginePrimitive(EEnginePrimitiveType type) : Type(type), InterpolationSet(0) { }
 };
 
-class C3DVector  { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }

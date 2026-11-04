@@ -1,6 +1,7 @@
 // CQ_HobbeToothContestScript::CQ_HobbeToothWhisper::Init() -- the Hobbe tooth contest's Whisper entity: spawn the parent quest's CheckToSeeIfWhisperHit thread on this Whisper, put her in the hero's faction, make her unkillable, set boss phase 2 and give her no information marker
 // Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Init@CQ_HobbeToothWhisper@CQ_HobbeToothContestScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 29 (family sfbr): the thread class derives from the retail CSpawnedFuncBase (engine/CSpawnedFuncBase.h; Ego_r.pdb / FableWin.pdb
 //   ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 0x00CDD450, implicit ??1CSpawnedFuncBase@@UAE@XZ 0x00CDD4C0). Was the invented
 //   CScriptProcessBaseRuntime / CSpawnedFuncBaseRuntime pair (virtual ~CSpawnedFuncBaseRuntime, RuntimeHookCDD410 / CDD420).
@@ -27,7 +28,7 @@
 #include "fable_string.h"
 
 class CCPPointerInfo { public: long References; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CScriptThingRuntime;
 struct CCountedScriptThingRuntime {

@@ -1,5 +1,6 @@
 // CAIStateGroup_GoToPub::CAIStateGroup_GoToPub() -- base CAIStateGroupBase(), this vtable, then the five intelligent-pointer members
 // Leaf: ??0CAIStateGroup_GoToPub
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Pragma: optimize("s", on) -- the size TU caches the vtable shared by PBar/PTable in ebx (speed stores it twice).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00900173, length 99 bytes.
 // Callees: CAIStateGroupBase::CAIStateGroupBase @ 0x008FD255, CBaseIntelligentPointer::CBaseIntelligentPointer
@@ -30,7 +31,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 class CAIStateGroupBase { public:

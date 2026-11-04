@@ -1,4 +1,5 @@
 // CSoundEmitterLH::CSoundEmitterLH(CSoundManagerLH* manager, const C3DVector& position) -- CBase, the owning manager at +4, this class's vtable, the position at +8..+0x10, an empty retail list at +0x14 (its sentinel node malloc'd inline), three flag bytes, the manager's next emitter number at +0x1c
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAC580, length 94 bytes.
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0, malloc @ 0x00BFEA0E (the 16-byte sentinel), the manager's counter @ 0x00A3E420 (`return Counter++;`
 // on the manager's +0x50, descriptive name; its result at +0x1c).
@@ -10,7 +11,7 @@
 // mov [eax+4],eax ; mov [esi+14h],eax`), the three bytes stored around the `add esp,4`, the manager re-read from +4 for the last call.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CSoundManagerLH {
     long GetNextEmitterID();                       // 0x00A3E420 (chunk 687: CSoundManagerLH::GetNextEmitterID; return EmitterCounter++ (+0x50); naming wave 20)

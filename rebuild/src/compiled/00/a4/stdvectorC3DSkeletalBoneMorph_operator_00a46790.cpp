@@ -1,5 +1,6 @@
 // std::vector<C3DSkeletalBoneMorph>::operator=(const vector& x) -- STLport assignment: if x is not *this, grow into a fresh block (malloc, copy-construct, then _M_clear the old one) when x is larger than the capacity, else assign over the live elements and destroy the surplus or copy-construct the tail; size becomes x.size()
 // Leaf: ??4?$vector@VC3DSkeletalBoneMorph@@V?$allocator@VC3DSkeletalBoneMorph@@@std@@@std@@QAEAAV01@ABV01@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00a46790, 311 bytes, thiscall, returns *this, `ret 4`.
 // Identity (proven): Ego_r.pdb ??4?$vector@VC3DSkeletalBoneMorph@@...@QAEAAV01@ABV01@@Z; the element is 20 bytes and its assignment (__copy 0x00A45990) is CCharString::operator= on BoneName then the CRC and Scaling dwords; callers are the landed C3DSkeletalMorphParameter constructors 0x00A454F0 / 0x00A455A0 (copying C3DSkeletalMorphParameter::BoneMorphs) and the landed sort helper 0x00A46940; bound only as the stand-ins ??4?$CArray@VC3DSkeletalBoneMorph@@@@... / ??4CBoneMorphArray@@....
 // Callees: malloc 0x00BFEA0E, __uninitialized_copy<const T*, T*>(first, last, result, const __false_type&) 0x00A458B0,
@@ -113,10 +114,7 @@ public:
 private:
     void* PData;                                          // +0x00
 };
-class C3DVector {
-public:
-    float X, Y, Z;                                        // +0x00
-};
+#include "engine/C3DVector.h"
 class C3DSkeletalBoneMorph {                               // Ego_r.pdb, 20 bytes
 public:
     CCharString BoneName;                                 // +0x00

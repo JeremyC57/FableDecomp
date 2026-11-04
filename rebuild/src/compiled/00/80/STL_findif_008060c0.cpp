@@ -1,5 +1,6 @@
 // std::__find_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingFilter_IsInFOV pred, const random_access_iterator_tag&) -- STLport random-access find_if: the first target point inside the field of view, or last
 // Leaf: ??$__find_if@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008060C0, 227 bytes (a `lea esp,[esp]` loop-alignment filler inside), /Gr
 //   `__fastcall` (first in ecx, last in edx), the 0x24-byte predicate by value and the tag reference on the stack,
 //   `ret 28h`. Caller: find_if<CTargetPoint*, CThingFilter_IsInFOV> 0x00806640 (this chunk).
@@ -13,7 +14,7 @@
 // Shape: STLport 4.x `__find_if` for random-access iterators: `trip_count = (last - first) >> 2` (signed division by
 //   28), four predicate tests per pass, then `switch (last - first)` over 3/2/1 (dec/je chain), default returns last.
 class CThing;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CBaseIntelligentPointer {
 public:

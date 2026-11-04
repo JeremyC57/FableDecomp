@@ -1,6 +1,7 @@
 // C3DMeshInfo::C3DMeshInfo(void* unused, long a, long b) -- the base's two words (+4 = b, +8 = a), this class's vtable, MeshData null, the bounding sphere zeroed then given radius -1.0, PhysicsMeshIndex -1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A248F0, length 56 bytes (64 with padding).
 // Leaf: ??0C3DMeshInfo
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // The chunk label (CSoundInit::CSoundInit) is propagated: the vtable stored here, 0x0129CD3C, is C3DMeshInfo
 // (rtti-vtables.tsv). Layout from the PDB (Ego_r C3DMeshInfo, 96 bytes): a 12-byte base (vptr + two words),
 // MeshData (CIVCountedPointer) +0x0c, BoundingBox +0x10, BoundingSphere +0x28 (centre + radius), SafeBoundingRadius
@@ -23,7 +24,7 @@ class CIVCountedPointer { public:                      // intrusive counted poin
     CIVCountedPointer() : m_pObject(0) { }
 };
 
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 class C3DBoundingBox { public:
     C3DVector MinCoord;                         // +0x00

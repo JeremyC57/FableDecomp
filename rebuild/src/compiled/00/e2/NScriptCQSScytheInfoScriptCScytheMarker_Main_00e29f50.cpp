@@ -1,5 +1,6 @@
 // NScript::CQS_ScytheInfoScript::CScytheMarker::Main() -- the scythe marker entity script: spawn the rival hero Scythe (CREATURE_RIVAL_HERO_SCYTHE) at the marker with the ScytheNearOracle script, then remove the marker
 // Leaf: ?Main@CScytheMarker@CQS_ScytheInfoScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E29F50, length 195 bytes (`ret`).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 and ~CCharString @ 0x0099EAE0 (the two names),
 // CScriptThing slot 6 GetPos (+0x18), CGameScriptInterface slots 91 CreateCreature(const CCharString&, const C3DVector&,
@@ -21,7 +22,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CCountedItem { };

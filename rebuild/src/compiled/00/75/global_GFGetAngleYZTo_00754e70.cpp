@@ -1,5 +1,6 @@
 // GFGetAngleYZTo(const C3DVector& from, const C3DVector& to) -- elevation from one position to another (atan2 of the rise over the XY distance) as a fraction of a full turn wrapped into [0, 1)
 // Leaf: ?GFGetAngleYZTo@@YIMABVC3DVector@@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00754E70, 117 bytes (+11 int3), `__fastcall` (from in ecx, to in edx, `ret`),
 //   float in st(0).
 // Name: Ego_r.pdb / FableWin.pdb `?GFGetAngleYZTo@@YIMABVC3DVector@@0@Z` (name set); the XY twin GFGetAngleXYTo is landed
@@ -15,9 +16,7 @@
 #include <math.h>
 #pragma intrinsic(atan2, sqrt, fmod)
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 __forceinline float WrapAngle(float angle)
 {

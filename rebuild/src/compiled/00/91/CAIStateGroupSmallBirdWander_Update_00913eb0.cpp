@@ -1,4 +1,5 @@
 // CAIStateGroup_SmallBirdWander::Update() -- pick a random flight position near the bird, fly there, and finish
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00913EB0, length 65 bytes (+ int3 padding).
 // Callees: CThingPhysical::GetPos @ 0x004C73D0 (on PBrain->Creature),
 // CAIStateGroup_FlyingThingBase::GetRandomFlightPos(const C3DVector&, float, C3DVector*, bool)
@@ -10,9 +11,7 @@
 // retail hoists ABOVE the `je` (and repeats after ExecuteFlyingPath) is the early-return form
 // `if (!ok) { Terminate(); return; }` with the duplicated Terminate tail merged -- the plain
 // `if (ok) Execute(); Terminate();` schedules the ecx load after the argument push.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;             // 0x004C73D0

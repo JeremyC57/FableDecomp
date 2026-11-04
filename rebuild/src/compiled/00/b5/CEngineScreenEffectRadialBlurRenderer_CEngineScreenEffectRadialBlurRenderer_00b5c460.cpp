@@ -1,5 +1,6 @@
 // CEngineScreenEffectRadialBlurRenderer::CEngineScreenEffectRadialBlurRenderer(const CEngineInit& init) -- constructs the radial blur screen effect: supported only when the init flags carry 0x80 (otherwise the component is disabled); when supported, looks up the copy / blur / texture shaders, creates the textures and fills the four screen quads; then enables the environment parameters and resets them
 // Leaf: ??0CEngineScreenEffectRadialBlurRenderer
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B5C460, length 1552 bytes (`ret 4`, no EH frame).
 // Label correction: catalogued "CEnginePrimitiveManagerText::CEnginePrimitiveManagerText" (propagated); the body calls the
 //   CEngineComponent ctor @ 0x00B59710 and stores vtable 0x012A2658 = CEngineScreenEffectRadialBlurRenderer (rtti-vtables.tsv).
@@ -103,7 +104,7 @@ class CTVertexColTex1 { public:                           // 0x18 bytes
 
 class CTexture;
 class C2DVector { public: float X, Y; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CRadialBlurParameters {                     // CEngineScreenEffectRadialBlurRenderer::CParameters, 0x28 bytes
     float ThresholdR, ThresholdG, ThresholdB;
     float IntensityR, IntensityG, IntensityB;

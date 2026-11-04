@@ -1,6 +1,7 @@
 // CTCBattleCharge::FrameUpdate() -- per frame: on release finish the current action, play the level's cast sound and create the start-up effect; while the pose delay runs count it down, otherwise rush on; once the pose delay is over leave the exit modes once (release the ability mutex, resume an AI creature, drop creature mode 0x23, unfreeze a hero's controls) and remove the component when an AI creature charges or the charge delay has run out
 // Grade: RELOCATION_MATCH over the true extent (576 bytes; BOUNDS_FIX: the catalog row 617 runs into 0x007A8E20) -- the parked source unchanged, graded over code + `mov edi,edi` + the 4-entry jump table
 // Leaf: ?FrameUpdate@CTCBattleCharge@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A8BE0, 558 bytes of code + `mov edi,edi` + a 4-entry jump table = 576 bytes, `ret`;
 //   the catalog row (617) runs on into 0x007A8E20 (`mov eax,ecx ; mov ecx,[esp+4] ; mov [eax],ecx ; ret 4`), 0x007A8E30
 //   (`mov eax,[ecx] ; ret`) and 0x007A8E40 (`mov eax,[ecx+4] ; sub eax,[ecx] ; sar eax,2 ; ret`).
@@ -153,11 +154,7 @@ template <class T> class CDefPointer { public:
     CDefPointeeBase* Object;                                // +0x00
 };
 #pragma pack(push, 1)
-class C3DVector { public:                                  // retail C3DVector is 1-aligned
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CSpecialAbilitiesBattleChargeDef;

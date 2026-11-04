@@ -1,4 +1,5 @@
 // CWorldMap::UnloadAllMapsExceptPlayerPos() -- unload distant loaded maps with a warning event
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // The available PDB CWorldMap header has 16-byte containers and puts Maps at +0x24; retail STLport containers are 12 bytes.
 // Nearby landed CWorldMap sources establish retail Maps at +0x20, CMapInfo size 0x48, World at +0x08, and
 // the message-event pointer at CWorld +0x60. This local retail model avoids using the conflicting PDB offsets.
@@ -8,7 +9,7 @@ class CMessageEventManager { public:
                      float f1, float f2, long map); // 0x00687540
 };
 #include "engine/CWorld.h"
-class C3DVector { public: float X,Y,Z; };
+#include "engine/C3DVector.h"
 class CMapInfo { public: unsigned char bytes[0x48]; };
 struct CMapInfoArray {
     CMapInfo* Start; CMapInfo* Finish; CMapInfo* End;

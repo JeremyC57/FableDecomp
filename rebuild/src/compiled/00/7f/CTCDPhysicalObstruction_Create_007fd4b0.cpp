@@ -1,5 +1,6 @@
 // CTCDPhysicalObstruction::Create(const C3DVector& startPos, const C3DVector& endPos, float radius) -- create a THING_PHYSICAL_OBSTRUCTION thing for player 4 on the map under the start, give its obstruction driver the line and radius, construct it there and activate it; a thing without the driver is killed; null on any failure
 // Leaf: ?Create@CTCDPhysicalObstruction@@SIPAVCThing@@ABVC3DVector@@0M@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FD4B0, 205 bytes (`ret 4` + int3 padding), static `__fastcall` (startPos in ecx,
@@ -15,10 +16,7 @@
 //   presence word 7 bit 13 of the thing (`test ah,20h` on +0x3c), the driver itself at +0x5c.
 // Shape: the CTCDRumble::Create 0x007F1AC0 / CTCDExperienceOrb::Create 0x00779E90 pattern (named CCharString in its own
 //   block, `result` local), with the inline SetParams (Ego_r 0x007F86A0) storing the two vectors and the radius.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CCharString {
 public:

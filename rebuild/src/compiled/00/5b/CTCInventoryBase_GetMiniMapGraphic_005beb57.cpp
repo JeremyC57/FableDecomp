@@ -1,4 +1,5 @@
 // CTCInventoryBase::GetMiniMapGraphic(const CRegion* region) -- the mini-map graphic index for `region` from the GUI def's graphic table (0 when the region's graphic is not in the table); when it is the prison courtyard and the living hero stands above the courtyard's upper floor height, the second courtyard graphic is returned instead
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BEB57, length 233 bytes (`ret 4`). Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: PeekGuiDef @ 0x00438570 (`__fastcall`; MiniMapGraphics -- map<CCharString,long> -- at retail +0x94C), map::find
 // @ 0x0042B467 (STLport node: key +0x10, value +0x14; end() is the header at +0), CCharString(const char*, long) @ 0x0099EBF0 and
@@ -54,7 +55,7 @@ class CRegion { public:
     unsigned char _pad00[0x28];
     CCharString   MiniMapGraphic;               // +0x28
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };

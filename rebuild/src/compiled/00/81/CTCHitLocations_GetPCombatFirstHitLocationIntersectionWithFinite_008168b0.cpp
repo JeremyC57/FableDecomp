@@ -1,5 +1,6 @@
 // CTCHitLocations::GetPCombatFirstHitLocationIntersectionWithFiniteLine(const C3DVector& start, const C3DVector& end, C3DVector* outA, C3DVector* outB, long flags) -- collect up to eight enabled hit locations whose volume the line segment crosses, sort them and return the best one seen from the start
 // Leaf: GetPCombatFirstHitLocationIntersectionWithFiniteLine
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x008168B0, 256 bytes incl. padding (`ret 14h`). The twin of the landed
 // GetPCombatFirstHitLocationIntersectionWithTriangle 0x008169B0 (same model and shape).
@@ -10,9 +11,7 @@
 // Shape: as 0x008169B0: the 0x100-byte array of 32-byte records filled through a strength-reduced pointer while the count is
 // below 8, the vector end re-read each pass, the comparator value-initialised in the frame.
 class CThing;
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 struct CHitVolume {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

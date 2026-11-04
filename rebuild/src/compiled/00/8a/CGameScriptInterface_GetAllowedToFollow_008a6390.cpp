@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetAllowedToFollow(CScriptThing thing) -- script query: true when the script thing resolves no thing, else the thing's CTCAIScratchpad::AllowedToFollow flag (read through CThing::GetTC<CTCAIScratchpad>); the by-value CScriptThing is destroyed inline
 // Leaf: ?GetAllowedToFollow@CGameScriptInterface@@UAE_NVCScriptThing@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008A6390, 240 bytes, thiscall, `ret 0Ch` (the 12-byte CScriptThing by value).
 // Identity (proven): CGameScriptInterface vtable 0x01260F0C slot 833; Ego_r.pdb ?GetAllowedToFollow@CGameScriptInterface@@UAE_NVCScriptThing@@@Z
 //   (donor 0x008E4920) and the manifest label agree; it reads the bool at +0x6C of interface 0xAA = Ego_r.pdb
@@ -93,7 +94,7 @@ public:
     }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharStringData;
 class CCharString { public: CCharStringData* PStringData; };
 enum EScriptingStateGroups { EScriptingStateGroups_Force32 = 0x7fffffff };

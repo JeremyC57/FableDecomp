@@ -1,5 +1,6 @@
 // NCameraModes::IsThemeToBlockCameraBetween(const CWorldMap&, const C3DVector&, const C3DVector&, bool) -- camera ray-cast callback: blocked when the end position is not camera-passable
 // Leaf: ?IsThemeToBlockCameraBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x00874EE0, 0x29 bytes (+ int3 padding), __fastcall (map in ecx, from in edx, to and the flag on the stack, `ret 8`).
 // Manifest label "CWorldMap_AreBothPosCameraBlocked" is a descriptive auto label. Ego_r names the callback pair
 // ?IsThemeToBlockCameraBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z and ?IsThemeToBlockPassabilityBetween@...
@@ -10,7 +11,7 @@
 // (`if (!passableTo) return true;` in each): VC keeps the dead `test bl,bl` of the removed branch before `test al,al ;
 // jne`, and the shared `return false` keeps the two-exit `mov al,1 / xor al,al` tails (a single `return !to`-style
 // arm folds to `sete al`). The flag argument is unused in this build.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CWorldMap
 {

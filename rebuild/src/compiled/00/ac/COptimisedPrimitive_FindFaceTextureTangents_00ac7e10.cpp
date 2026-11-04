@@ -1,5 +1,6 @@
 // COptimisedPrimitive::FindFaceTextureTangents(COptimisedFace& face) -- compute the face's U and V texture tangents from its three vertices' positions and their U (then V) texture coordinates
 // Leaf: FindFaceTextureTangents
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC7E10, length 155 bytes (padded to 160).
 // Callees: COptimisedPrimitive::FindTextureTangent(const C3DVector&, const C3DVector&, const C3DVector&, float, float, float)
 //          @ 0x00AC7300 (C3DVector by hidden pointer), twice.
@@ -9,9 +10,7 @@
 // UTangent +0x24, VTangent +0x30.
 // Shape: `this` is spilled to the frame (every callee-saved register holds a vertex/face pointer) and reloaded for
 // the second call; both results go through one C3DVector temporary and are copied word by word.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 struct COptimisedVertex {                   // QuadricOptimiserInternals::COptimisedVertex (retail 0xb8 bytes)
     C3DVector     Position;                 // +0x00
     C3DVector     Normal;                   // +0x0c

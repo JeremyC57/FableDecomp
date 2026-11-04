@@ -1,5 +1,6 @@
 // std::vector<CTargetPoint>::operator=(const vector& x) -- STLport copy assignment of a player-targeting candidate vector (28-byte {PThing, Index, TargetingPosition, FrameRejected} entries): reallocate and copy-construct when x outgrows the capacity, else assign over the live prefix (destroying the surplus) or assign the prefix and copy-construct the tail
 // Leaf: ??4?$vector@VCTargetPoint@NPlayerTargeting@@V?$allocator@VCTargetPoint@NPlayerTargeting@@@std@@@std@@QAEAAV01@ABV01@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008085C0, 325 bytes, thiscall, `ret 4`.
 // Identity (sweep2, 2026-10-25): 28-byte stride (`imul 0x92492493`, /0x1C); the element helpers copy a
 //   CIntelligentPointer<CThing> at +0 (vptr 0x01238C6C + pointer, 0x00A01B10/0x00A01B50/0x00A01B90) and five dwords
@@ -17,10 +18,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);                                  // 0x00BFEA0E
 
 class CThing;
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 template <class T> class CIntelligentPointer {
 public:
     void* m_Vtable;                                         // +0x0 (vptr 0x01238C6C in retail)

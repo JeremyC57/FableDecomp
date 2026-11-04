@@ -1,5 +1,6 @@
 // std::make_heap(pair<C3DVector, long>* first, pair<C3DVector, long>* last, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport make_heap front end for the first-person targeting positions: forward to __make_heap with the value and distance type pointers
 // Leaf: ??$make_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008097D0, 99 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx -- passed through untouched), the 0x2c-byte comparator by value, `ret 2Ch`.
 // Name: Ego_r.pdb `std::make_heap<pair<C3DVector,long>*, `anonymous namespace'::
@@ -11,10 +12,7 @@
 // Shape: STLport `__make_heap(first, last, comp, _STLP_VALUE_TYPE(first, ..), _STLP_DISTANCE_TYPE(first, ..))` --
 //   the two null type pointers pushed first, then the comparator copied memberwise into its slot (ten dwords and the
 //   CompareInXYPlane byte through cl).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // user copy ctor, implicit operator=
-};
+#include "engine/C3DVector.h"
 
 class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                                   // +0x00

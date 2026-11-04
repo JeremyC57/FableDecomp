@@ -1,5 +1,6 @@
 // NScript::CQ_MinionClifftopChaseScript::CMinionSpawner::Main() -- minion-spawner marker: read the trigger distance from Me's data string (10 when empty or zero), wait until the hero is that close, then play the evil summon effect at Me, pause 0.2s, create a war-dog minion ("MinionEscort") at Me facing the hero and remove the spawner
 // Leaf: ?Main@CMinionSpawner@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Identity (naming wave 11): ?Main@CMinionSpawner@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012D7548 slot 1 is stored by the factory 0x00DA58B0 registered as "MinionSpawner"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA5980, length 446 bytes (+ int3 padding).
 // Callees: GFCharStringToInt @ 0x0099E7F0 (`__fastcall`), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0
@@ -19,7 +20,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

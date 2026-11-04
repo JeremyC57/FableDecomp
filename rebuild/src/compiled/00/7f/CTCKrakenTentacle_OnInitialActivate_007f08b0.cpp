@@ -1,5 +1,6 @@
 // CTCKrakenTentacle::OnInitialActivate() -- fetch the tentacle def, end the ripple effect, spawn the "DRIP" special effect attached at the tentacle's "TARGET_CURSOR_POINT", spawn the "MEETS_WATER" effect as the new ripple effect attached at "EFFECT_WATER", then run the base OnInitialActivate
 // Leaf: OnInitialActivate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F08B0, 593 bytes, plain `ret`. Vtable 0x012407BC (CTCKrakenTentacle) slot 6.
 // Callees: CDefClassBase::GetSubDef<CKrakenTentacleDef> @ 0x007F16B0, CTCKrakenTentacle::KillRippleFX @ 0x007F07A0,
@@ -17,7 +18,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 template <class T> class CDefPointer;
 class CDefClassBase { public:

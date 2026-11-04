@@ -1,5 +1,6 @@
 // CEnginePrimitiveManagerRepeatedStaticMeshes::ClipSubSections(const CSubsectionElement* element, unsigned long clipFlags, float range, bool inside, CClipListElement*& out) -- walk the four sub-sections of a repeated-mesh quadtree node: reject those outside the camera range sphere, clip the rest against the frustum planes still open, and emit a clip-list entry for each visible leaf or recurse into its children
 // Leaf: ?ClipSubSections@CEnginePrimitiveManagerRepeatedStaticMeshes
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B99710, length 336 bytes (body 0x14f), `ret 14h`.
 // PDB: ?ClipSubSections@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXPBUCSubsectionElement@NEnginePrimitiveManagerRepeatedStaticMeshes@@KM_NAAPAUCClipListElement@1@@Z.
 // Callees: CEngineCamera::ClipSphere(const C3DVector&, float, unsigned long&) @ 0x00B30480 (camera global @ 0x01436EA0,
@@ -9,7 +10,7 @@
 //   CClipListElement {Data, Count}. Local model (names descriptive).
 // Shape: the centre is copied into a local C3DVector; the camera distance is the Z,Y,X sum of squares on the x87 stack and
 //   compared with (radius + range)^2 / (range - radius)^2; the plane flags live in the dead `out` slot.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CEngineCamera {
 public:

@@ -1,5 +1,6 @@
 // CTCShotDefinitionBase::UpdateEffects() -- while the shot's effect thing is alive and the shot's frame movement is not longer than 1e-4 (the retail test is `!(|d|^2 > eps^2)`), hand the effect's particle-emitter driver that movement as the MOVE_DIRECTION vector parameter
 // Leaf: UpdateEffects
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C2480, 284 bytes (plain `ret`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times), CRC Calc @ 0x004014A0 (`__fastcall(seed, data,
@@ -17,11 +18,7 @@
 //   {crc, movement} pair is a named local built before the parameter block (a push_back temporary is built after it); the parameter block is a local with an inline constructor (CBaseClass base, two empty maps), filled by
 //   push_back of the pair and released by its out-of-line destructor.
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CCRC {
 public:
     static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0

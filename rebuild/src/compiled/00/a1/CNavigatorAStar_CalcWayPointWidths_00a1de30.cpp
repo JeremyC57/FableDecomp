@@ -1,5 +1,6 @@
 // CNavigatorAStar::CalcWayPointWidths(const C3DVector& position) -- measure the navigable widths of the first two route legs (position -> first way point, first -> second) into the steering agent's four best-distance slots, then set its ProximityForArrival to the narrowest less the navigator radius, raised to CurrentMaxSpeed (CurrentMaxSpeed alone when the route has one point)
 // Leaf: ?CalcWayPointWidths@CNavigatorAStar@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1DE30, 298 bytes, `ret 4`.
 // Identity: bound ?CalcWayPointWidths@CNavigatorAStar@@QAEXABVC3DVector@@@Z by the landed caller InitialiseFromPreCalculatedRoute
 //   0x00A1E370 (passes its `const C3DVector& from`); six call sites (xref). Not in the PDB name sets (inlined in Ego_r).
@@ -22,7 +23,7 @@
 #define CNavigatorBase CNavigatorBaseLayout
 #include "engine/CNavigatorBase.h"
 #undef CNavigatorBase
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }

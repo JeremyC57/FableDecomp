@@ -1,4 +1,5 @@
 // NParticleEngine::CPSCUpdateNormal::WriteBinary(CDataOutputStream*) -- serialize the normal-update component: fade integers, the flag bits, the decal emitter name, fifteen floats, five vectors and two params
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B0B5C0, 670 bytes. Label correction: the catalog row says
 //   CPSCDecalRenderer::WriteBinary, but the only reference is vtable slot 16 of NParticleEngine::CPSCUpdateNormal
 //   (0x0129FC1C, rtti-vtables.tsv).
@@ -12,7 +13,7 @@
 //   ParticleCollideWithGround and ParticleDieOnCollision); a 1-bit flag passed as bool extracts as
 //   `shr ; and r,0xffffff01`, bit 24 is read as the byte +0x0f.
 #include "engine/CDataOutputStream.h"
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public: void* PStringData; };
 namespace NParticleEngine {
 class CPSCUpdateNormal { public:

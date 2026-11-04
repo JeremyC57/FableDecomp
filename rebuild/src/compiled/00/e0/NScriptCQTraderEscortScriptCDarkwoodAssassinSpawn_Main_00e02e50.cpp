@@ -1,5 +1,6 @@
 // NScript::CQ_TraderEscortScript::CDarkwoodAssassinSpawn::Main() -- Darkwood assassin ambush trigger: once the hero has stayed within the spawn distance with Me off screen for two timer ticks, spawn a DarkwoodAssassin at Me, make it persistent and attach it to the active quest, target the hero (1 in 5) or the nearest DarkwoodTrader, play a random shout at 18/12/8 units, then remove the trigger
 // Leaf: ?Main@CDarkwoodAssassinSpawn@CQ_TraderEscortScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Inline-split: exits wrapped individually; retail's construct is unproven
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
@@ -20,7 +21,7 @@
 // Naming wave 35: identity reg 00e00f91 "DarkwoodAssassinSpawn" in 00e00db0; Alloc 00e02d70; vtable 012df594 slot 1; PDB ?Main@CDarkwoodAssassinSpawn@CQ_TraderEscortScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CDarkwoodAssassinSpawn::Main (wave3/labels_alloc.tsv); PDB ?Main@CDarkwoodAssassinSpawn@CQ_TraderEscortScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CDarkwoodAssassinSpawn@@UAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
 extern "C" int __cdecl rand();                           // 0x00BFEB16
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0

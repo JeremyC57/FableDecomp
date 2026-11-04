@@ -1,5 +1,6 @@
 // CCreatureAction_UseObject::CCreatureAction_UseObject(const CCreatureAction_UseObject&) -- copies the action base, counted used-item pointer and trailing state
 // Leaf: CCreatureAction_UseObject
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1), @ 0x006A0D50, 247 bytes, ret 4.
 // Callees: CCreatureActionBase copy ctor @ 0x0062EBC0; CBaseIntelligentPointer ctor/GetPItem/SetPItem @ 0x00A01B10/0x00A01B50/0x00A01B90.
 // The production PDB headers are included under aliases for names and donor layout. Retail native CCreatureActionBase is 0xA8
@@ -17,7 +18,7 @@
 class CThing;
 class CThingCreatureBase;
 class CTCWeaponTrail;
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CThingCreatureBase;
 class CSoundPair { public: long first; long last; };
 class CCreatureActionBase { public:

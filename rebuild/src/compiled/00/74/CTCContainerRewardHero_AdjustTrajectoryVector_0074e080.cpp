@@ -1,4 +1,5 @@
 // CTCContainerRewardHero::AdjustTrajectoryVector(int, C3DVector*) -- normalize the supplied vector and apply its indexed vertical bias
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // No C3DVector or hero class header is available; this source models only the observed 12-byte vector and method entry.
 // Grade: RELOCATION_MATCH -- VC7.1 byte match after correcting parameter order and x87 expression grouping.
 extern unsigned int g_InvSqrtMantissaTable[128]; // 0x013CE558
@@ -7,7 +8,7 @@ extern float g_half; // 0x0122F59C
 extern float g_vector_scale; // 0x01238170
 extern float g_bias_base; // 0x0122DED8
 extern float g_bias_scale; // 0x012305A0
-class C3DVector { public: float X,Y,Z; };
+#include "engine/C3DVector.h"
 class CTCContainerRewardHero { public: void AdjustTrajectoryVector(int, C3DVector*); };
 void CTCContainerRewardHero::AdjustTrajectoryVector(int bias, C3DVector* v) {
     float x=v->X, y=v->Y, z=v->Z;

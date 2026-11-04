@@ -12,12 +12,10 @@
 // arguments are pushed before the by-value mesh-object temporary is made; the bool is kept across its dtor.
 // Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (PCoverThing +0x1f); PTarget +0x14 (8-byte pointer before it).
 // Leaf: CanSeeTarget@CAIStateGroup_CreatureUseCoverBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 class CThing;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 
 #pragma pack(push, 1)
 class CBaseObject;

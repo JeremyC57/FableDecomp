@@ -1,5 +1,6 @@
 // NCreatureMode::CModeCrouch::AnimUpdate(CAnimateThing&) -- pick the sneak animation (moving: ST_SNEAK / ST_SNEAK_UPRIGHT, standing: the _POSE variants; upright while the stealth component says the creature is viewable) and start it as the main animation unless it is already playing, then remember its name
 // Leaf: ?AnimUpdate@CModeCrouch
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D8B00, 480 bytes, `ret 4`; vtable 0x01267B34 slot 2.
 // Name: FableWin.pdb CModeCrouch (slot 2 = AnimUpdate, as the landed CModeBlock::AnimUpdate 0x008D8DD0).
 // Callees: CVectorMap::LowerBound (const) @ 0x004365B0 (inlined const GetInterface, CTCStealth = type 0x36, bit 22 of the +0x24
@@ -40,7 +41,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing { public:
     unsigned char _pad0[0x20];

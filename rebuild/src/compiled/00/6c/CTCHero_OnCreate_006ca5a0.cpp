@@ -1,5 +1,6 @@
 // CTCHero::OnCreate() -- set the hero's weapon and will usability from the def of the region the parent thing stands in (usable unless the region prevents it); usable when the region has no def
 // Leaf: OnCreate
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CA5A0, 171 bytes (plain `ret`). Vtable 0x0125EB54 (CTCHero, rtti-vtables.tsv) slot 4.
 // Callees: CTCBase::GetWorldMap @ 0x00686D30 (three times), CThing::GetPos() const @ 0x004C73D0, CWorldMap::GetMapNumberAt
 // (virtual slot 16, +0x40, as the landed 0x006AEBF0), CWorldMap::GetRegionNumberMapIsIn(long) @ 0x004FC190, CWorldMap::GetRegion(long)
@@ -12,7 +13,7 @@
 // VC7.1 drops the destructor's null test after the `->` dereference, and folds the first temporary's tests into the `if`). The
 // condition reads `.Object` straight (an IsNull()/bool helper materialises a `setne bl`); with the release written inline in the
 // destructor the folded count copy lands in edi instead of edx.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

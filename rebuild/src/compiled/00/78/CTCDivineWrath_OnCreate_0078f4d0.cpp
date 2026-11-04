@@ -1,4 +1,5 @@
 // CTCDivineWrath::OnCreate() -- raise a physical barrier around the caster (its physics radius, at its position); a live barrier ignores the caster and is kept as the spell's obstruction
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078F4D0, 193 bytes (plain `ret`).
 // Callees: CThing::GetPos @ 0x004C73D0, CreatePhysicalBarrierThing(const C3DVector&, const C3DVector&, float) @ 0x007FD4B0
 // (`__fastcall`; landed name), CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor
@@ -12,7 +13,7 @@
 // returning an unset local when the thing has no 0xed driver; the
 // caster is wrapped in a CIntelligentPointer temporary (the thing read before the base ctor) for the out-of-line push_back;
 // the obstruction pointer is set through a second temporary and the inline operator= (`SetPItem(other.GetPItem())`).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
     unsigned char _pad00[0x34];
     float Radius;                                       // +0x34

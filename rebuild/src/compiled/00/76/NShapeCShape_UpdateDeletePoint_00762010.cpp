@@ -7,6 +7,7 @@
 // at the end is the outer `if (n != 0) {...; return true;} return false;`; clear() is the landed STLport
 // `_M_finish = CopyTrivial(_M_finish, _M_finish, _M_start)` (retail `cmp eax,eax`).
 // Leaf: UpdateDeletePoint
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 extern "C" void* __cdecl memmove(void* dest, const void* source, unsigned int count);   // 0x00BFEAE6
 
 inline void* CopyTrivial(const void* first, const void* last, void* result)
@@ -15,7 +16,7 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
         : (char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first);
 }
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CPointVector {
     C3DVector* _M_start;

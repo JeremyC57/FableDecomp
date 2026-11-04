@@ -6,13 +6,11 @@
 // Shape: `ret 10h`; as the three-argument overload 0x008BCF20 with the thing argument forwarded to the four-argument base constructor; TargetPos
 // goes through C3DVector's memberwise copy constructor (fixed-offset stores; an implicit copy re-bases with `lea`).
 // Leaf: ??0CCreatureAction_TeleportOut@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVC3DVector@@_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // The PDB header (CCreatureAction_TeleportOut.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
 #include "fable_string.h"
 class CThingCreatureBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise copy constructor: fixed-offset word moves
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;   // 0x004C73D0
 };

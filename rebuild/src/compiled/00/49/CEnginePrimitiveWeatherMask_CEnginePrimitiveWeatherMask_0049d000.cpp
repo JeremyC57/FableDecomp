@@ -1,4 +1,5 @@
 // CEnginePrimitiveWeatherMask::CEnginePrimitiveWeatherMask(const C3DBoundingSphere&, const C3DBoundingBox&, const CMatrix3x4&, float, unsigned long, EEngineInterpolationSet) -- primitive type 0x1f: bounding sphere and box, inverse transform, scale and flags
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049D000, length 127 bytes. No callees.
 // Signature from Ego_r.pdb: ??0CEnginePrimitiveWeatherMask@@QAE@ABVC3DBoundingSphere@@ABVC3DBoundingBox@@ABVCMatrix3x4@@MKW4EEngineInterpolationSet@@@Z
 // (6 stack words, `ret 18h`). Layout = PDB CEnginePrimitiveWeatherMask (0x6c): CEnginePrimitive base
@@ -8,10 +9,7 @@
 // the box are copied memberwise (C3DVector members with a user copy constructor: one register per dword),
 // while the 0x30-byte matrix is a plain POD of floats whose implicit copy is a `rep movsd` block of 12 dwords.
 
-class C3DVector { public:                                       // memberwise user copy constructor: one register per dword
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }

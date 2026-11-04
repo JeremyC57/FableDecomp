@@ -1,15 +1,14 @@
 // CPhysicalPrimitiveSphere::IsPosInside(CThing* thing, const C3DVector& pos) -- true when `pos` lies strictly inside the world sphere (dummy-object origin, radius or the thing's physics radius when unset)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00814E10, length 140 bytes (+ int3 padding).
 // Leaf: IsPosInside
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Callees: CPhysicalPrimitiveSphere::GetDummyObjectOrigin(CThing*) @ 0x00814C70, CThingCreatureBase::GetCombatRadius @ 0x00661F90.
 // Constant: 0.0001f @ 0x0129BA3C.
 // Layout: Ego_r.pdb CPhysicalPrimitiveSphere {vptr, CDefString BaseName +4, float Radius +8}; the thing as in 0x00814D10.
 // Shape: the radius stays on the x87 stack while the offset components are formed (x, y, z order) and squared z first;
 // the compare `r*r` against the squared length ends in `test ah,41h ; jne` (false) with separate `mov al,1` / `xor al,al`
 // exits; `ret 8`.
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 struct CThingDef_Physics {                         // the thing's definition (only the collision radius is read)
     unsigned char _pad[0x34];
     float         CollisionRadius;                 // +0x34
@@ -60,9 +59,9 @@ bool CPhysicalPrimitiveSphere::IsPosInside(CThing* thing, const C3DVector& pos) 
 {
     C3DVector centre = GetDummyObjectOrigin(thing);
     float radius = GetRadius(thing);
-    float dx = pos.x - centre.x;
-    float dy = pos.y - centre.y;
-    float dz = pos.z - centre.z;
+    float dx = pos.X - centre.X;
+    float dy = pos.Y - centre.Y;
+    float dz = pos.Z - centre.Z;
     if (dx * dx + dy * dy + dz * dz < radius * radius)
         return true;
     return false;

@@ -1,5 +1,6 @@
 // NScript::CQ_UndeadRisingScript::CUndeadRisingBoss::Main() -- Undead Rising boss: once the quest reaches state 2, spawn the undead lieutenant at Me (minimap marker, invisible), drain it while it stands at Me until it dies, count the kill, then keep the graveyard light effect alive (re-creating it every 3 seconds whenever it is gone)
 // Leaf: ?Main@CUndeadRisingBoss@CQ_UndeadRisingScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0D210, length 886 bytes, plain `ret`.
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30; CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 //   0x0099EAE0; ~CScriptThing 0x004AA840 (out of line), operator delete 0x00BFE9BC (the inline counted-pointer operator=);
@@ -22,7 +23,7 @@ class CCharString { public:
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

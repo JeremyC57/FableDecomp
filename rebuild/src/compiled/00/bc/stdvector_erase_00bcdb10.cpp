@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<CArray<C3DVector> >) STLport range erase: assign the tail [last, finish) down onto first through the out-of-line __copy, free each vacated element's block, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@V?$CArray@VC3DVector@@@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCDB10, 84 bytes (+ int3 padding), thiscall, `ret 8`, returns first.
 // Identity: vector<CArray<C3DVector> >::erase(iterator, iterator) -- proven; evidence: its one caller is the vector<CArray<C3DVector> >::resize 0x00BCDE70 that the CEngineInternalPrimitiveWeaponTrail constructor 0x00BCD660 runs on Ego_r.pdb CEngineInternalPrimitiveWeaponTrail::Trail (CArray<CArray<C3DVector> >); FableWin.pdb holds that erase and resize.
 // Label: the manifest's "_global::std_vector_copy_string_pairs" is propagated across byte-identical bodies; family G041 (8 erase bodies whose
@@ -72,5 +73,5 @@ public:
 };
 }
 template <class T> class CArray : public std::vector<T> { };    // retail CArray: an STLport vector (12 bytes)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 template std::vector<CArray<C3DVector> >::iterator std::vector<CArray<C3DVector> >::erase(std::vector<CArray<C3DVector> >::iterator, std::vector<CArray<C3DVector> >::iterator);

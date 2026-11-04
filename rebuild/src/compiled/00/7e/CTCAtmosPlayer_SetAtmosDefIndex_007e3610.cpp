@@ -1,5 +1,6 @@
 // CTCAtmosPlayer::SetAtmosDefIndex(long index) -- store the atmos def index; for a non-zero index create the sound emitter at the parent thing's position (when the sound system exists) and start it playing the def's name
 // Leaf: ?SetAtmosDefIndex@CTCAtmosPlayer@@QAEXJ@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E3610, 122 bytes (`ret 4` + int3 padding). FableWin.pdb
 //   `?SetAtmosDefIndex@CTCAtmosPlayer@@QAEXJ@Z` (public thiscall); caller CTCAtmosPlayer vfunc_4 @ 0x007E3690
 //   (`SetAtmosDefIndex(AtmosDefIndex)` when non-zero) and 0x006B23AD. Catalog label `Def_GetDetailsForDisplay` was
@@ -16,7 +17,7 @@ public:
     ~CCharString();                                             // 0x0099EAE0
 };
 
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 class CDefString { public:
     long m_index;

@@ -1,4 +1,5 @@
 // CAIScratchpadDef::operator=(const CAIScratchpadDef&) -- memberwise def copy: CDefClassBase part out of line, phrases, wander centre (C3DVector), AI tuning values, four CCharString members and the flag bytes; returns *this
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007ADF00, length 337 bytes (speed-optimised TU: copies rotate eax/ecx/edx).
 // Callees: CDefClassBase::operator= @ 0x00431F10 (catalogued "CThingBuildingDef::operator=", propagated),
 //          CCharString::operator= @ 0x0099EFB0.
@@ -14,9 +15,7 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);    // 0x0099EFB0
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 #pragma pack(push, 1)
 class CDefClassBase { public:

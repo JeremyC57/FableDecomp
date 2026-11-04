@@ -1,5 +1,6 @@
 // NScript::CQ_BanditCampBossBattleScript::CCampHostage2::Main() -- bandit-camp boss battle, the second hostage: hold an alive filter over Me, take Me under scripted
 // Leaf: ?Main@CCampHostage2@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   control (priority 4, retried each frame); until the hostages are rescued or one is killed, whenever the cry timer has run
 //   out and the hero is within 8 units, turn to the hero, play CS_DISAPPOINTED and cry out (alternating the FIRST/SECOND
 //   lines in a new conversation with the hero), then rearm the timer for 8 seconds; finally release Me if not terminating
@@ -20,7 +21,7 @@
 // Naming wave 35: identity reg 00d03c58 "CampHostage2" in 00d038e0; Alloc 00d08670; vtable 012c9080 slot 1; PDB ?Main@CCampHostage2@CQ_BanditCampBossBattleScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CCampHostage2::Main (wave3/labels_alloc.tsv); PDB ?Main@CCampHostage2@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CCampHostage2@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_BanditCampBossBattleScript moved into NScript); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

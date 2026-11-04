@@ -1,4 +1,5 @@
 // CTCExplodingObject::Explode() -- spawn the def's explosion thing at the parent's position, hand its driver component the radius / damage values, then kill the parent thing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00750DD0, length 79 bytes.
 // Callees: CThing::GetPos() @ 0x004C73D0 (`&[this+60h]->+0Ch`), CreateThing(long defIndex, const C3DVector&)
 // @ 0x0080C460 (`__fastcall`: index in ecx, position in edx), CThing::Kill(bool) @ 0x004C9B80.
@@ -11,7 +12,7 @@
 // (Radius re-read after the first store through the component).
 #include "engine/CTCBase.h"
 
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 struct CExplosionDriver {                          // the spawned thing's driver component
     unsigned char _pad[0xc];

@@ -1,5 +1,6 @@
 // CTCDExplosion::OnKill() -- kill every emitter thing the explosion created that is still alive
 // Leaf: OnKill
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080C410, length 72 bytes (+8 int3). CTCDExplosion vtable 0x01242A54 slot 14
 // (the CTCBase OnKill slot).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times per element), CThing::Kill(bool) @ 0x004C9B80.
@@ -9,7 +10,7 @@
 // re-fetched for the null test, the Dead bit (+0x91 bit 0) and the Kill target, `push 1` ahead of the third GetPItem.
 // Layout: CTCDExplosion (Ego_r.pdb) with Emitters at +0x40 as a 12-byte STLport vector (first +0x40, last +0x44). No
 // engine header for the class, so a local model.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing { public:                             // only the dead bit and the call are modelled
     unsigned char _pad[0x91];

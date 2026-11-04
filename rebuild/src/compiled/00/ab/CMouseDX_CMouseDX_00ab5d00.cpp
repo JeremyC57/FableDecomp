@@ -1,5 +1,6 @@
 // CMouseDX::CMouseDX(CInputManagerDX&, bool) -- DirectInput mouse: CMouse base, no device yet, unit mouse step, input enabled and cursor drawn, event buffers cleared, Windows cursor shown unless exclusive, engine cursor enabled, then SetExclusiveMode
 // Leaf: ??0CMouseDX
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AB5D00, 188 bytes (`ret 8`). Vtable 0x0129EA14 (CMouseDX).
 // Callees: CMouse::CMouse(CInputManagerDX*, bool) 0x00A66F20; CMouse::ClearStoredEvents 0x00A66B10 (zeroes NoStoredEvents;
 // manifest label "CGameEventPackage::Clear" is a propagated byte-twin); USER32 ShowCursor (import 0x01440350);
@@ -20,7 +21,7 @@ class CSurface;
 extern "C" __declspec(dllimport) int __stdcall ShowCursor(int show);   // USER32, IAT 0x01440350
 
 class C2DVector { public: float X, Y; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct DIDEVICEOBJECTDATA {                // dinput.h, DIRECTINPUT_VERSION 0x0800: 20 bytes
     unsigned long dwOfs;

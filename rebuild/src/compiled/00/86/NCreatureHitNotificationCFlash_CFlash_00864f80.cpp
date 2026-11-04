@@ -1,5 +1,6 @@
 // NCreatureHitNotification::CFlash::CFlash(const CFlash& other) -- copy constructor of the 8-byte hit-flash vector element: copies the STLport list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry> FlashGeometry (fresh sentinel, range insert) and CreationFrame
 // Leaf: ??0CFlash@NCreatureHitNotification@@QAE@ABV01@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00864F80, 71 bytes, `ret 4`, returns `this`.
 // Naming: Ego_r.pdb NCreatureHitNotification::CFlash { list<CEnginePrimitiveWeaponTrail::CWeaponTrailEntry> FlashGeometry;
 //   long CreationFrame; } (16 bytes with the 12-byte debug list; retail 8 bytes = the 4-byte STLport list + the word) and
@@ -19,7 +20,7 @@
 // parameter slot), then the word copy.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CEnginePrimitiveWeaponTrail {
 public:
     class CWeaponTrailEntry {                            // 28 bytes (the range insert copies 7 dwords)

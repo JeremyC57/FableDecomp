@@ -1,5 +1,6 @@
 // C3DAnimationInfo::~C3DAnimationInfo() -- walk the shared animation data's animation map (debug checks compiled out), release the counted data pointer, then the CMeshDataBankEntry base
 // Leaf: ??1C3DAnimationInfo@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A25970, 120 bytes, plain `ret`.
 // Identity: the vtable stored first is C3DAnimationInfo's 0x0129CD64 and the last one CMeshDataBankEntry's 0x0129CD28
 //   (rtti-vtables.tsv), so this is `??1C3DAnimationInfo@@UAE@XZ` (Ego_r.pdb); the catalog label
@@ -14,7 +15,7 @@
 class CMeshDataBank;
 class C3DAnimation2;
 class CCPPointerInfo;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace std {
 template <class _T1, class _T2> struct pair {

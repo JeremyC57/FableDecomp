@@ -1,5 +1,6 @@
 // std::vector::push_back(const std::pair<CCharString, C3DVector>& __x) -- (vector<std::pair<CCharString, C3DVector> >) append a copy, growing through _M_insert_overflow when full
 // Leaf: ?push_back@?$vector@U?$pair@VCCharString@@VC3DVector@@@std@@V?$allocator@U?$pair@VCCharString@@VC3DVector@@@std@@@2@@std@@QAEXABU?$pair@VCCharString@@VC3DVector@@@2@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0077F130, 84 bytes, thiscall, `ret 4`.
 // Identity (proven): its overflow call is the landed vector<pair<CCharString, C3DVector> >::_M_insert_overflow 0x0077EF30 (16-byte elements; the element named by that TU's landed sort helpers 0x0077EA10 / 0x0077E6A0); its caller is 0x0077F270 in the same TU.
 // Callees: CCharString::CCharString(const CCharString&) 0x0099EC30 (the element's implicit copy constructor inline),
@@ -12,11 +13,7 @@ public:
     CCharString(const CCharString& other);                // 0x0099EC30
     void* PStringData;
 };
-class C3DVector {                                         // 12 bytes
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 namespace std { template <class _T1, class _T2> struct pair { _T1 first; _T2 second; }; }
 namespace std {
 struct __false_type { __false_type() { } };

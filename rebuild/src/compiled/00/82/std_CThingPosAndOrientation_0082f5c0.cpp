@@ -1,5 +1,6 @@
 // 0082f5c0 std::__default_constructed(CScriptedMapBrush::CThingPosAndOrientation*) -- construct the brush's mapped movement value
 // Leaf: ??$__default_constructed@VCThingPosAndOrientation@CScriptedMapBrush@@@std@@YI?AVCThingPosAndOrientation@CScriptedMapBrush@@PAV12@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /Gr
 // Layout: imported raw layouts are implementation projections; true bases are restored below. The outer object is never instantiated here.
 #define CScriptedMapBrush CScriptedMapBrush_Layout
@@ -9,12 +10,7 @@
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #pragma pack(push, 1)
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DAngles {
 public:
     float AngleXY, AngleYZ, AngleXZ;

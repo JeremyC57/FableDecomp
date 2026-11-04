@@ -1,4 +1,5 @@
 // CInputProcessJumpingAndRolling::Init() -- reset the pulse timers (+0x30/+0x34), the pulse vector (+0x28, the zero C2DVector), StickPulled (+0x4c) and WFLastRoll (+0x50, -1)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A4010, length 40 bytes (+ int3 padding). Vtable 0x01238050 slot 2. No callees.
 // Layout from Ego_r.pdb CInputProcessJumpingAndRolling (0x64 there, 0x54 in retail: the two std::lists are 4-byte STLport lists, not 12):
 // PulseVector +0x28, PulseStartTimer +0x30, PulseEndTimer +0x34, Pulses +0x38, InitialFacingDirections +0x3c, FacingDirection +0x40,
@@ -9,7 +10,7 @@ class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CInputProcessJumpingAndRolling { public:             // vtable 0x01238050
     virtual void v00(); virtual void v01();
     virtual void Init();                            // slot 2

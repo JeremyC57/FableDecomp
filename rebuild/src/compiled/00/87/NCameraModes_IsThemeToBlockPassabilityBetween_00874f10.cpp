@@ -1,5 +1,6 @@
 // NCameraModes::IsThemeToBlockPassabilityBetween(const CWorldMap& map, const C3DVector& a, const C3DVector& b, bool flag) -- theme passability block test: blocked unless b's position is passable (a's passability is computed and tested, but both arms agree)
 // Leaf: ?IsThemeToBlockPassabilityBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00874F10, length 42 bytes (+ int3 padding), `__fastcall` (map in ecx, a in
 //   edx, b and the unused flag on the stack), `ret 8`.
 // Identity: Ego_r.pdb names two theme block tests of this shape, `?IsThemeToBlockCameraBetween@NCameraModes@@` and
@@ -12,10 +13,7 @@
 //   identical, so VC7.1 cross-jumps them and drops the branch on bl, leaving the dead `test bl,bl`; with the shared
 //   `return false` after the if/else the exits stay `jne ; mov al,1 ; ret 8 ; xor al,al ; ret 8` (per-arm `return
 //   false; return true;` pairs fold into `sete`, and `if (passableB) return false;` arms swap the exits).
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CWorldMap {
 public:

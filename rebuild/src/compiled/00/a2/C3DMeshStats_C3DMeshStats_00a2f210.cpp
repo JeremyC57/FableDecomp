@@ -1,4 +1,5 @@
 // C3DMeshStats::C3DMeshStats() -- vtable, no memory pool, handle -1, empty name, zero bounding sphere, empty containers and packed-name fields
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2F210, oracle length 96 bytes.
 // Callees: CCharString::CCharString @ 0x0099E4B0 (landed). Vtable 0x0129CF04 = C3DMeshStats (rtti-vtables.tsv).
 //
@@ -19,7 +20,7 @@
 //   +0x74 PackedNames (char*)  +0x78 PackedNamesSize (ushort)  +0x7A AnimatedFlag (bool); sizeof = 0x7C.
 // Every container has an inline constructor that nulls its pointers and clears its flag, which is why
 // the stores trail the vtable store and the CCharString call in declaration order.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;

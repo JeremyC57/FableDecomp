@@ -1,5 +1,6 @@
 // std::__partial_sort(pair<unsigned long, C3DVector>* first, pair<unsigned long, C3DVector>* middle, pair<unsigned long, C3DVector>* last, pair<unsigned long, C3DVector>*, CKeyPairCompareLess<unsigned long, C3DVector> comp) -- heap-select the smallest keys into [first, middle) and sort them
 // Leaf: ??$__partial_sort@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076B530, 153 bytes (+int3 pad to 160), `ret 0Ch`.
 // Callers: 0x0076BB5C and 0x0076BEF6 (the introsort loop 0x0076BE30's depth-limit fallback).
 // Callees: __make_heap 0x0076A480, __adjust_heap 0x00769D50 (the inlined __pop_heap), sort_heap 0x0076AF10 (all the
@@ -9,10 +10,7 @@
 //   comp(*i, *first) the inlined `__pop_heap(first, middle, i, _Tp(*i), comp, _Distance*)` stores *first into *i
 //   and sifts the saved value down from the root (`xor edx,edx`); VC holds the saved vector's X/Y on the x87 stack
 //   across the `*i = *first` copy. The trailing sort_heap is an out-of-line call.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

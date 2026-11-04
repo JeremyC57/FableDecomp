@@ -1,6 +1,7 @@
 #pragma optimize("s", on)
 // CTCVillage::BuildingContainsCorrectVillagers(CThingBuilding* building) -- false when the building is dead, or when a live villager whose home is this building stands outside it, or one living elsewhere stands inside it
 // Leaf: BuildingContainsCorrectVillagers
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00658EC3, 126 bytes (`ret 4`); size TU (unaligned entry; the frame pointer comes from the address of
 //         the `building` argument passed by reference): `optimize("s",on)`.
 // Callees: IS_THING_ALIVE<CThingBuilding*>(CThingBuilding* const&) 0x0065D624 (__fastcall); IS_THING_ALIVE(const
@@ -11,7 +12,7 @@
 //         CIntelligentPointer<CThingBuilding> at +0x168.
 // Shape: `this` is spilled to the frame (`mov [ebp-4],esi`) and the list end re-read through it; the two mismatch tests
 //        share one `xor al,al` exit.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThingBuilding;
 
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + item

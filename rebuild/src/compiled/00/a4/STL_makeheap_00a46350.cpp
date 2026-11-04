@@ -1,5 +1,6 @@
 // std::__make_heap(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last, bool (__fastcall* comp)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&), C3DSkeletalBoneMorph*, int*) -- SGI heapify: sift every parent from (len - 2) / 2 down to 0 with __adjust_heap
 // Leaf: ??$__make_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A46350, length 124 bytes, `ret 0Ch`.
 // Callers: 0x00A465E9 (make_heap) and 0x00A46951 (__partial_sort 0x00A46940, this chunk).
 // Callees: 0x00A46040 __adjust_heap<C3DSkeletalBoneMorph*> (landed), CCharString copy ctor 0x0099EC30 (the by-value
@@ -19,11 +20,7 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class C3DVector {                                    // retail C3DVector: memberwise user copy ctor, implicit operator=
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DSkeletalBoneMorph {
 public:

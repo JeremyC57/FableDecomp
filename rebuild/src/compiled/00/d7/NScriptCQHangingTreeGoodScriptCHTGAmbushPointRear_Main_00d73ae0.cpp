@@ -1,5 +1,6 @@
 // NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointRear::Main() -- Hanging Tree (good) rear ambush point: wait until the quest's tracked thing comes within 15 units and then moves beyond 20, wait while this point is on screen and keep waiting (one-second pauses) until it is off screen; then have the quest spawn four enemies at the point with the point's data string (any wait bails out when the script is done)
 // Leaf: ?Main@CHTG_AmbushPointRear@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Identity (naming wave 11): ?Main@CHTG_AmbushPointRear@CQ_HangingTreeGoodScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012D2754 slot 1 is stored by the factory 0x00D6FF30 registered as "HTG_AmbushPointRear"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D73AE0, length 386 bytes (the final IsDone is a tail `jmp`).
 // Callees: IsDistanceBetweenThingsUnder @ 0x00CBE2FF / IsDistanceBetweenThingsOver @ 0x00CBE3EA (`__fastcall`,
@@ -19,7 +20,7 @@ class CCharString { public:
     CCharString(const CCharString& other);
     ~CCharString();
 };
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

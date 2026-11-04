@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::UpdateCollisionGameInteractions(CThing* other, CPhysicsCollideResponse* response) -- tell both things about a thing-thing collision: the parent thing when this component interacts with things, and the other thing when its physics component interacts with things and it is not dead
 // Leaf: UpdateCollisionGameInteractions
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00723AC0, 98 bytes.
 // Callees: CTCPhysicsBase virtual slot 60 (+0xf0, GetInteractsWithThings: the CTCPhysicsStandard override 0x00724CC0 reads
 //   InteractsWithThings, +0x84 bit 6), CThing virtual slot 41 (+0xa4, CThing::OnCollision(ECollideType, C3DVector*, C3DVector*,
@@ -7,7 +8,7 @@
 // Layout: CThing +0x60 = its physics component (CTCPhysicsBase*), +0x91 bit 0 = dead; CPhysicsCollideResponse CollidePos +0x00,
 //   CollideNormal +0x0c.
 // Shape: the alive test is `(unsigned char)~flags & 1` (8-bit `not al ; test al,1`; without the cast it widens to eax); the parameters are loaded into ebx/edi after the first call.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CPhysicsCollideResponse { public:
     C3DVector CollidePos;                       // +0x00
     C3DVector CollideNormal;                    // +0x0c

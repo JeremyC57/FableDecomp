@@ -1,14 +1,11 @@
 // 006e7f00 GetAttackerProngSelectionCompareValue
 // Leaf: ?GetAttackerProngSelectionCompareValue@?A0x
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 #pragma pack(push,1)
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 namespace {
 float __fastcall GetAttackerProngSelectionCompareValue(const C3DVector& attackerPos, const C3DVector& defenderPos,

@@ -1,4 +1,5 @@
 // CAIStateGroup_ServeFood::Update() -- serve at a tavern table: mark the table's 0xB8 component occupied; state 1 walks to the table, makes a food object, puts it in the creature's carry slot (the food's CCarryableDef slot) and puts the tankard down, telling the table the food was served; state 2 walks to the table and, if the table's food for our task lives, takes it off the table, drops and destroys it and tells the table; then replace and terminate the state group
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009236C0, length 756 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0xB8 on the table, bit 24 of +0x34; 0x46 =
@@ -18,10 +19,7 @@
 // `mov cl,byte [eax+37h]`; the landed 0x0094BB20 TestTC form), bound to a `const bool&` (frame byte at +0x17); the action temporaries' generated destructors run inline (member intelligent pointer, then ~CCreatureActionBase);
 // a `break` out of the state-2 block skips the notification but still destroys the food pointer.
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

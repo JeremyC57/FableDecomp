@@ -1,5 +1,6 @@
 // CEngineLightingManager::ClipLightCountAndBuildLightArray(CManagerLocalLight* lights, long lightCount, const C2DVector& position, long maxLights, const CEnginePrimitiveThemeChannelDesc& theme) -- weight each candidate light by the primitive's theme channels; when there are more lights than fit, score them by weight / max(1, XY distance squared), re-link them sorted by score and keep maxLights; copy the kept light elements (colour scaled by the weight when blending) into a frame-pool CEngineLocalLightArray, or return the shared empty array
 // Leaf: ClipLightCountAndBuildLightArray
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B44FE0, 485 bytes (+int3 padding), `ret 14h`. Called from 0x00B4626C and 0x00B46648.
 // Callees: CSimpleMemoryPool::Allocate 0x00A5C910 on the engine's frame pool (CEngine 0x01436EA4, pool at retail +0x130;
 //   engine/CEngine.h puts FrameMemoryPool at +0x138, so the engine is a local model). Constants 1/255 0x01231724, 1.0f 0x0122DED8.
@@ -21,7 +22,7 @@ class C2DVector { public:
     float GetLengthSquared() const { return X * X + Y * Y; }
 };
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public:
     float R, G, B, A;
     void operator*=(float f) { R *= f; G *= f; B *= f; A *= f; }

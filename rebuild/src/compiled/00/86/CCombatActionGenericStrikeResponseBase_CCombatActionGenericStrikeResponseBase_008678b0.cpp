@@ -1,5 +1,6 @@
 // CCombatAction_GenericStrikeResponseBase::CCombatAction_GenericStrikeResponseBase(CThingCreatureBase*, const CThing*, const C3DVector&, const C3DVector&) -- constructor
 // Leaf: ??0CCombatAction_GenericStrikeResponseBase
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008678B0, 160 bytes. The manifest labels this body
 // CCombatAction_GenericResponseToExplosion, but the vtable it stores (0x01264734) is
 // CCombatAction_GenericStrikeResponseBase's (rtti-vtables.tsv), and the members match that class's PDB layout.
@@ -14,9 +15,7 @@ class CThingCreatureBase;
 class CThing;
 class CBaseObject;
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CSoundPair { public:
     long FirstSound;

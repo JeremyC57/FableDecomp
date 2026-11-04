@@ -1,4 +1,5 @@
 // CScriptRenderBinding_00c338c0::SetTargetPosition(CTrackedTransform_00c40450* target, const C3DVector& position)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // -- forward a world position to a tracked-transform object's position setter through a by-value
 // conversion temporary
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C338C0, length 45 bytes (+ int3 padding).
@@ -11,11 +12,7 @@
 // second setter @ 0x00C404A0 (+0x18, dirty bit 0x10000).
 // The manifest label "CContainmentVolume::IsContainingPoint" is propagated and rejected (that
 // shape is 0x00A75430); class and method names are descriptive (script module, no RTTI).
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 struct CTrackedVector {                        // the setter's argument: a position wrapper built from a C3DVector
     C3DVector Value;

@@ -1,4 +1,5 @@
 // CTCShapeManager::DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo*) -- when the world has a current game camera, fetches the camera position and draws the shapes for it
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00761B10, length 52 bytes (+12 int3 padding); vtable CTCShapeManager 0x0126A2A4 slot 11.
 // Callees: CTCBase::PeekWorld() const @ 0x00686A80 (the manifest label "CViewBase::GetDisplayEngine" is propagated), the
 // camera's virtual slot 11 (+0x2c, a C3DVector returned through the hidden pointer), CTCShapeManager::DrawShapes
@@ -8,10 +9,7 @@
 // constructor); DrawShapes takes its address; the prepare-info argument is re-read from its slot after the virtual call.
 // The world (not the camera) is the named local and the camera member is read twice (test, then as `this`): VC CSEs it
 // straight into ecx; a camera pointer local is loaded into eax and copied (`mov ecx,eax`).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 
 class CAIGameCameraBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

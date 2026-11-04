@@ -1,5 +1,6 @@
 // CMovementAccelerationMap::_M_insert(SRbNodeBase* x, SRbNodeBase* y, const SAccelerationValue& v, SRbNodeBase* w) -- STLport _Rb_tree<EGameAction, pair<const EGameAction, pair<C3DVector,long>>>::_M_insert: allocate a node, copy the 20-byte value in, link it left/right of y, rebalance and count
 // Leaf: _M_insert
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006AE900, 227 bytes (+ int3 padding), `ret 14h` (hidden iterator result + 4 arguments).
 // Callees: malloc 0x00BFEA0E (the 0x24-byte node: 0x10 links + the 20-byte pair), _Rb_global<bool>::_Rebalance(node,
 //   root&) 0x0042971D (__cdecl).
@@ -17,9 +18,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 enum EGameAction { GAME_ACTION_NONE };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 template <class T1, class T2>
 struct pair {                                               // implicit (memberwise, POD) copy

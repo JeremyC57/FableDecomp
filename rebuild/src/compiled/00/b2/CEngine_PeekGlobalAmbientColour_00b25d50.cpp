@@ -1,5 +1,6 @@
 // CEngine::PeekGlobalAmbientColour() const -- the lighting manager's global (theme channel 0) Ambient colour, returned by value
 // Leaf: ?PeekGlobalAmbientColour@CEngine@@UBE?BVCRGBFloatColour@@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00b25d50, 46 bytes, thiscall (`this` unused), `ret 4` (hidden result).
 // Identity (proven): Ego_r.pdb ?PeekGlobalAmbientColour@CEngine@@UBE?BVCRGBFloatColour@@XZ (the CIEngine virtual) and its inline callee
 //   ?PeekGlobalAmbientColour@CEngineLightingManager@@QBEABVCRGBFloatColour@@XZ; the global at 0x01436E9C is the lighting manager
@@ -32,7 +33,7 @@ public:
 }
 template <class T> class CArray : public std::vector<T> { };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C4DVector { public: float X, Y, Z, W; };
 
 class CEngineLightingManager {

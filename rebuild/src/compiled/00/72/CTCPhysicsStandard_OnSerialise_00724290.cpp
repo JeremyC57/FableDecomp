@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::OnSerialise(CPersistContext& context, bool loading) -- serialise the physics base, then the right-handed set as six floats (Forward XYZ, Up XYZ, default 0)
 // Leaf: OnSerialise
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00724290, length 300 bytes (+ int3 padding), `ret 8`. Vtable 0x01265F84
 // (CTCPhysicsStandard) slot 1, the CTCBase::OnSerialise(CPersistContext&, bool) override; the catalog labels the row
 // "CTCPhysicsRigidBody::OnSerialise" (propagated: CTCPhysicsRigidBody's own slot-1 copy is 0x0075A350, the same body with
@@ -13,10 +14,7 @@
 // (implicit operator=) after the six transfers.
 // Layout: Ego_r.pdb CTCPhysicsStandard (RHSet +0x50 = Up, Forward +0x5c); modelled locally like the landed UpdateOldRHSet
 // 0x00723930 / ResetRHSet 0x00723980 (engine/CTCPhysicsBase.h is a flattened POD with no virtuals).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 class CPersistContext { public:

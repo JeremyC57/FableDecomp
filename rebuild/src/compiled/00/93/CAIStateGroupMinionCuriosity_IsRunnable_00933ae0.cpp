@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionCuriosity::IsRunnable() -- runnable when the creature has a perceive component (interface
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // 0x34) and FindNewCuriosityPos() (inlined) finds a live curiosity thing.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00933AE0, length 70 bytes (+ int3 padding).
 // Callees: the creature's curiosity-target query @ 0x0082FEC0 (CThing*), CThing::GetPosition @ 0x006A4D00.
@@ -7,10 +8,7 @@
 // translation unit: `if (t && !(t->flags91 & 1)) { CuriosityPos = t->GetPosition(); return true; } return
 // false;` with the implicit C3DVector operator= (`add esi,14h` + three dword moves) and one shared `xor al,al`.
 // Base layout local (PDB names); no engine header for this class.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
     const C3DVector& PeekPos() const;         // 0x006A4D00

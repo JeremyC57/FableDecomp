@@ -1,4 +1,5 @@
 // CTCMeshAutomaticEntityCreator::CreateObject(const CCharString& dummyName, const CCharString& objectName, CTCGraphicAppearance* appearance) -- create the named object at every dummy of that name
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072DDB0, length 403 bytes (+ int3 padding), esp frame, `ret 0Ch`.
 // Callees: CTCGraphicAppearance::GetNoDummyObjects @ 0x004BE000 (re-evaluated per pass) / GetDummyObject @ 0x004C08C0 /
@@ -17,7 +18,7 @@
 // Layout (local model): CThing bitset +0x20, interface map +0x44, PGraphicAppearance +0x64, flags +0x91 (bit 1 = created
 // by owner); CTCGraphicAppearance scale +0x34; the component's owning thing +0x04.
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

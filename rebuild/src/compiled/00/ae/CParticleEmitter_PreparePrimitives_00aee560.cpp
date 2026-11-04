@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleEmitter::PreparePrimitives(float distance, const CEnginePrimitivePrepareInfo* info) -- unless sleeping, (re)submit the emitter's primitive group to the engine (a 2D group with the inverse emitter transform and the start position for 2D emitters, else the 3D particle group with the camera distance, bounding sphere, draw flags and water stage), let every visible particle system prepare its primitives into it, and clear the cleared-particles/decals flags
 // Leaf: PreparePrimitives
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEE560, 854 bytes (+ int3 padding), `ret 8`.
 // Callees: CEnginePrimitiveParticleGroup(...) 0x00AF08D0, the engine's virtual slot 23 (+0x5c) through info->Engine,
 //   CParticleSystem::PreparePrimitives 0x00AF40B0. The 2D group constructor (out of line at 0x00AF0880) and
@@ -12,9 +13,7 @@ class C2DVector { public:
     C2DVector(float x, float y) : X(x), Y(y) {}
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {}
 };
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;

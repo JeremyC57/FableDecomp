@@ -1,5 +1,6 @@
 // CTCAIScratchpad::CTCAIScratchpad(CThing*) -- CTCBase(owner), own vtable, four empty strings, null def pointer
 // Leaf: ??0CTCAIScratchpad
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007ABB80, length 67 bytes (+ int3 padding).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is a
 // propagated name), CCharString::CCharString() @ 0x0099E4B0 (x4). Own vtable 0x0126D07C (rtti-vtables.tsv).
@@ -32,7 +33,7 @@ class CDefPointer { public:
     CDefPointer() : m_pDef(0) { }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCAIScratchpad : public CTCBase_Calls { public:                    // vtable 0x0126D07C
     unsigned long  ThankingPhrase;                          // +0x0c

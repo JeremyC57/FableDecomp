@@ -1,5 +1,6 @@
 // C3DMeshStats::FindDummyObjectsBegin(unsigned long id) const -- the first entry whose key is not less than `id` in the DummyObjects map at +0x48 (DummyObjects.LowerBound)
 // Leaf: ?FindDummyObjectsBegin@C3DMeshStats@@QBEPBU?$pair@KVC3DDummyObject@@@std@@K@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2E960, 16 bytes, `ret 4`. First landed as a padded-struct forwarder
 //   (catalog _global::Forward_LowerBound_member0x48_00a2e960; manifest CTCInventoryAbilities::AddLearnedExpression, a propagated label).
 // Name: Ego_r.pdb runs FindHelperPointsBegin 0x00B8E0C0 / FindHelperPointsEnd 0x00B8E0D0 / GetDummyObject 0x00B8E0E0 /
@@ -14,7 +15,7 @@ template <class _T1, class _T2> struct pair {
 };
 }
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public: float m[12]; };
 class C3DHelperPoint {                                     // Ego_r.pdb, 16 bytes
 public:

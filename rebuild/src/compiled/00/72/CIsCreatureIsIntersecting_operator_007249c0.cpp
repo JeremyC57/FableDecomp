@@ -1,5 +1,6 @@
 // CIsCreatureIsIntersecting::operator()(CThing* thing) -- predicate: does `thing` (a collidable thing) overlap the owner creature's bounding sphere -- false again when it is an AI creature that is blocking while the owner is busy with an action
 // Leaf: ??RCIsCreatureIsIntersecting
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007249C0, 138 bytes (144 with padding), `ret 4`.
 // Label correction: the catalog "_Find_if<CThing**,CIsCreatureIsIntersecting>" names the find_if that calls it; the body
 //   is the predicate's operator() (Ego_r.pdb: CIsCreatureIsIntersecting { CThing* Owner; }, used by
@@ -12,9 +13,7 @@
 //   the flag test; the squared distance of the position difference is compared with the squared radius sum
 //   (`fcompp ; test ah,41h ; jne`), Owner re-read from `this` for its own radius; the creature check returns false
 //   through its own tail.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CTCPhysicsBase { public:                        // retail layout, only the used fields
     unsigned char _pad00[0xc];
     C3DVector Position;          // +0x0c

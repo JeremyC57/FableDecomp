@@ -12,6 +12,7 @@
 // The engine header CAIStateGroup_HoverHornetQueen.h flattens the vptr and the vectors to byte arrays: local model with the retail offsets
 // (retail 12-byte STLport vectors put CircleMarkers at +0x50; the PDB's 16-byte vectors would put it at +0x54).
 // Leaf: WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 class CTCBase;
 enum ETCInterfaceType { };
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
@@ -93,7 +94,7 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
 };
 enum EAIActionReturn { };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04

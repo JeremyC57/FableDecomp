@@ -1,5 +1,6 @@
 // CTCBoastingCrowdControl::SpawnCrowdMember(CThing* lookAt, CThing* spawnPoint, CThing* village) -- create one crowd villager (male or female def from the crowd def, chosen at random when both exist) near the spawn point, face it towards the look-at thing, add it to the village and set it up as a non-persistent crowd member; false when the village or defs are missing or creation fails
 // Leaf: SpawnCrowdMember
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // SW2 sweep (advisor/00783380/probe/u2.cpp).
 // Retail 0x00783380, 768 bytes, `ret 0xc`. Callees: LowerBound 0x0040F020 (interfaces 0x22 village, 2 placement),
 // GetSubDef<crowd def> 0x00512FE0, CTCBase::GetRandomSeed 0x00686DA0, GFROR13 0x00497890, GFFloatRandom 0x004978A0,
@@ -20,7 +21,7 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 namespace { extern CCharString BOASTING_CROWD_MEMBER_SCRIPT_NAME; }             // 0x013BADE8
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 long __fastcall GFROR13(unsigned long value);  // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 __forceinline unsigned long GFRandom(unsigned long* seed)

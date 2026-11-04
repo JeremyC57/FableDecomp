@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out) [TFilter = std::binary_compose<std::logical_or<bool>, CThingFilter_HasTC, CThingFilter_HasTC>, TCompare = CThingCompare_Nearest, TThing = CThing] -- the nearest scan-visible thing that has either of two thing components
 // Leaf: GetPBestThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065F6DA, 106 bytes (`ret 0Ch`).
 // Callees: PeekAllThings 0x0049C770, CThing::IsIncludedInThingScans 0x0048BC40, binary_compose::operator() 0x004AA6C0, CThingCompare_Nearest::operator()<CThing> 0x004A8D80.
 // Size-optimised TU with a frame pointer (odd address): `#pragma optimize("y", off)` + `#pragma optimize("s", on)`;
@@ -47,7 +48,7 @@ struct CThingList {
     __forceinline iterator end() { return iterator(m_pHead); }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThingFilter_HasTC { public:
     long Type;                                        // ETCInterfaceType
     bool operator()(const CThing& thing) const;       // 0x006A80A0

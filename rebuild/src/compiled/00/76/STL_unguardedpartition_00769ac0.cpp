@@ -1,15 +1,13 @@
 // std::__unguarded_partition(pair<unsigned long, C3DVector>* first, pair<unsigned long, C3DVector>* last, pair<unsigned long, C3DVector> pivot, CKeyPairCompareLess<unsigned long, C3DVector> comp) -- Hoare partition around pivot's key, return the split point
 // Leaf: ??$__unguarded_partition@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00769AC0, 140 bytes, `ret 14h`.
 // Caller: 0x0076BEB8 (__introsort_loop 0x0076BE30 of the same instantiation). No callees.
 // Shape: STLport `__unguarded_partition(first, last, pivot, comp)`, /Gr (__fastcall: first in ecx, last in edx, the
 //   16-byte pivot and the comparator on the stack): both scans are rotated loops on the UNSIGNED key, and
 //   `iter_swap(first, last)` is inlined (`_Tp tmp = *a; *a = *b; *b = tmp;`). Only pivot.first is ever read, so VC
 //   parks tmp's three vector words in the pivot's dead argument slots (`[esp+18h..20h]`).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

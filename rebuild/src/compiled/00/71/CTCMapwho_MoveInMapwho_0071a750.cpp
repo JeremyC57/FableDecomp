@@ -1,4 +1,5 @@
 // CTCMapwho::MoveInMapwho(const C3DVector& pos) -- re-place the thing in the mapwho: drop its nodes when it is in (DestroyMapwhoNode), then, if that left it out, place it at the new position (PlaceThing)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071A750, length 54 bytes.
 // Callees: the CTCBase world-map accessor @ 0x00686D30 (`[g_pMainGameComponent]+0x28`, `this` unused),
 // CThingMapManager::DestroyMapwhoNode(CTCMapwho*) @ 0x00637A10, CThingMapManager::PlaceThing(CTCMapwho*, const C3DVector&)
@@ -21,7 +22,7 @@ class CTCMapwho : public CTCBase, public CTCMapwhoLayout
 {
 };
 
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 struct CThingMapManager {
     void DestroyMapwhoNode(CTCMapwho* mapwho);                          // 0x00637A10

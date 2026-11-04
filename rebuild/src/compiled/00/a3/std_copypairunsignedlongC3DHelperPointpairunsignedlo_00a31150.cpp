@@ -8,12 +8,8 @@
 // (Ego_r.pdb C3DHelperPoint: Position C3DVector +0, BoneIndex +0xC; the PDB name sets hold pair<unsigned long,
 // C3DHelperPoint> heap/copy instantiations with CKeyPairCompareLess).
 // Leaf: ??$__copy@PAU?$pair@KVC3DHelperPoint@@@std@@PAU12@H@std@@
-class C3DVector {
-public:
-    float X;                                            // +0x00
-    float Y;                                            // +0x04
-    float Z;                                            // +0x08
-};
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 
 class C3DHelperPoint {
 public:

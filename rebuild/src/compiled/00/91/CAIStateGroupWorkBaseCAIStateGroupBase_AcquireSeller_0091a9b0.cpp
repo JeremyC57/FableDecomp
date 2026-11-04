@@ -1,5 +1,6 @@
 // CAIStateGroup_WorkBase<CAIStateGroupBase>::AcquireSeller() -- collect the creatures with a shop-keeper component (TC 0x90) within 20 units of our creature, then keep drawing a random one off the list: a candidate already in a creature interaction is skipped, otherwise our creature leaves its current interaction, starts a new type-8 interaction and the seller joins it
 // Leaf: ?AcquireSeller@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091A9B0, 471 bytes (+ int3 padding), plain `ret`.
 // Ego_r.pdb: ?AcquireSeller@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IAEXXZ.
 // Callees: CThing::GetPos @ 0x004C73D0, malloc @ 0x00BFEA0E / free @ 0x00BFEA14 (STLport list nodes), __ftol2 @ 0x00BFEA70,
@@ -21,7 +22,7 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 long __fastcall GFROR13(unsigned long); // 0x00497890
 
-class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) { }

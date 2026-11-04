@@ -1,5 +1,6 @@
 // CEngineLightingManager::CManagerShadowedSpotLight::CManagerShadowedSpotLight(const C3DVector& position, const C3DVector& direction, float radius, float spotRadius, float coneRadius, const CRGBFloatColour& colour) -- value constructor of the light manager's shadowed spot-light record
 // Leaf: ??0CManagerShadowedSpotLight@CEngineLightingManager@@QAE@ABVC3DVector@@0MMMABVCRGBFloatColour@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B493C0, length 105 bytes. No callees; vtable 0x012A2120.
 // Identity: the stored vtable 0x012A2120 has type descriptor .?AUCManagerShadowedSpotLight@CEngineLightingManager@@ (a
 //   struct nested in CEngineLightingManager); Ego_r/FableWin.pdb ??0CManagerShadowedSpotLight@CEngineLightingManager@@QAE@ABVC3DVector@@...
@@ -8,11 +9,7 @@
 //   ConeRadius +0x24, Colour (CRGBFloatColour) +0x28.
 // Shape: `mov eax,ecx` first (this kept in eax), the C3DVectors copy through their inline memberwise copy constructor
 //   (direct [eax+N] stores), the colour is a plain POD struct copy (`lea ecx,[eax+28h]` then [ecx+N]).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public: float R, G, B, A; };
 
 class CEngineLightingManager {

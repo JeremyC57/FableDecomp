@@ -1,4 +1,5 @@
 // CAIStateGroupBehaviourBase::IsTargetSeenWithinCloseRange() -- true when the perceived target is being watched directly, in line of sight, and is within 5 units on the ground plane
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009576D0, length 123 bytes. No callers and no vtable slot (it follows
 // OnActivate @ 0x009576C0 in the same catalogue row, split via the skipped-row ledger, chunk 906); the manifest label
 // "Piece_009576d0" is the ledger placeholder and the name here is descriptive.
@@ -13,7 +14,7 @@
 // then compared with 25.0f (`test ah,5 ; jp`).
 // Model: local. CAIStateGroupBase: PBrain +0x04 (CAIBrain: Creature +0x18). CTCPerceiveThing: AwarenessTimer +0x18,
 // LineOfSight +0x2d, DirectAwareness +0x30.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0

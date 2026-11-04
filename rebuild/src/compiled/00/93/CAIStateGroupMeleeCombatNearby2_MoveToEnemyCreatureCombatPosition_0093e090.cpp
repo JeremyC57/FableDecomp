@@ -1,4 +1,5 @@
 // CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition() -- keep moving (to within 0.5) towards the combat manager's preferred position for the creature, refreshing it every fifth frame (UID-staggered) or after 6 frames; tells the manager when the position proves unreachable; false when the creature stops being a combatant or a move fails, true once in position or no longer runnable
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093E090, length 428 bytes (+ int3 padding).
 // Callees: the brain world accessor @ 0x008FCFC0 (combat manager +0x4c, three times), CCombatManager::GetPreferredPos @ 0x006EA770
 // (C3DVector by hidden pointer), CWorld::GetWorldFrame (static) @ 0x0049D870, own virtual slot 14 IsStillRunnable(bool),
@@ -10,11 +11,7 @@
 // Layout: engine/CAIStateGroup_MeleeCombatNearby2.h flattens the base; local model with its PEnemy (+0x14); CThing UID +0x18.
 class CTCBase;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };

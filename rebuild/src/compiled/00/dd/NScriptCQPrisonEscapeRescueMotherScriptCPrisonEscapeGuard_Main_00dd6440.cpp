@@ -1,5 +1,6 @@
 // NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonEscapeGuard::Main() -- a prison guard during the escape: whenever its alert timer has run out and it sees the hero or is hit by him (any hit except special ability 14), it raises the alarm once (take scripted control, face the hero, play ALARM, blow the race whistle, wait, then sound the bandit alarm on the quest) and shouts one of two "seen criminal" lines (picked at random once), restarting the 30-second timer
 // Leaf: ?Main@CPrisonEscapeGuard@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Inline-split: exits wrapped individually; retail's construct is unproven
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
@@ -53,7 +54,7 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }                                         // out-of-line copy 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const; virtual void s006() const; virtual void s007() const; virtual void s008() const;
     virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const; virtual void s015() const; virtual void s016() const;

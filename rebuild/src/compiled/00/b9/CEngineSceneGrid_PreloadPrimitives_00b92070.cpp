@@ -1,5 +1,6 @@
 // CEngineSceneGrid::PreloadPrimitives(unsigned long x, unsigned long y, const CShadowClipVolume& volume, const C3DVector& position, unsigned long flags) -- preload one grid cell when its bounding box is inside the clip volume: each of its primitives whose bounding sphere is inside the volume goes to its type's primitive manager (PreloadStat 2 when loaded, else 1), then the four child cells one level down; returns whether anything was preloaded
 // Leaf: PreloadPrimitives
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B92070, length 477 bytes (+ int3 padding), `ret 0x14`.
 // Callees: CEngineSceneGrid::GetCellBoundingBoxAndDrawDistance 0x00B919C0, CShadowClipVolume::ClipBoundingBox 0x00B4CED0,
 //   itself (recursion on LevelDown); the primitive's virtual slot 18 (+0x48, GetBoundingSphereWorldSpace) and the type
@@ -11,9 +12,7 @@
 //   0x00B930A0.
 // Shape: `inside` is declared at function scope with the box and distance (block-scoped, it takes the dead volume argument
 //   slot that retail gives the outer child-loop counter); the sphere is one local cleared member by member per primitive.
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C3DBoundingSphere { public:
     C3DVector Center;

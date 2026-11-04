@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleBase::~CScriptModuleBase() -- clear the owner and camera-manager pointers, destroy PThingOrigin and PCamPoint
 // Leaf: ??1CScriptModuleBase@NCameraModes@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005ED120, 34 bytes, thiscall, tail `jmp` to the second member dtor.
 // Identity (proven): the body stores the CScriptModuleBase vtable 0x01255F74 (RTTI .?AVCScriptModuleBase@NCameraModes@@, one base);
 //   its callers are the ??_G of classes deriving DIRECTLY from CScriptModuleBase (CScriptModuleTransitionBetweenPoints 0x00854450,
@@ -20,7 +21,7 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 class CThing;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CGameCameraManager;
 namespace NCameraModes {

@@ -1,5 +1,6 @@
 // _global::UnguardedLinearInsert_PairVectorLong_008074a0(pair<C3DVector,long>*, pair<C3DVector,long>, CCompareTargetedPositionsForFirstPersonTargeting) -- SGI __unguarded_linear_insert for the first-person targeting position sort
 // Leaf: UnguardedLinearInsert_PairVectorLong_008074a0
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008074A0, length 119 bytes (+ int3 padding).
 // Identity: the manifest's `_Copy_backward<CWaterSeaGenerator::CVertexDef*>` label is propagated and wrong -- the body
 // is the SGI `__unguarded_linear_insert(last, T val, Compare comp)` (`ret 3Ch` = the 16-byte value + the 0x2C-byte
@@ -12,9 +13,7 @@
 // (`fstp [esp+8]`), then `fcomp ; fnstsw ; test ah,5 ; jp` is `a > b`. The pair's implicit operator= copies four
 // dwords through a pointer register (`mov ecx,esi`); the final `*last = val` reloads the value from its argument slot.
 // Callees: CVectorCompare_BestForTargeting::GetCompareValueForPoint(const C3DVector&) @ 0x007F9660 (x2 per step).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 struct PairVectorLong {                // std::pair<C3DVector, long>, 16 bytes
     C3DVector first;                   // +0x00

@@ -1,4 +1,5 @@
 // CCreatureActionBase::SetMoveToPos(const C3DVector& pos) -- record the next movement position and
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // the world frame it belongs to
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006929E0, length 54 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (on PCreature at +0x08),
@@ -9,11 +10,7 @@
 // NextMovementPos at +0x68 as three dwords, the member address formed in place (`add esi,68h`).
 // engine/CCreatureActionBase.h (PDB) agrees: PCreature +0x08, NextMovementPosWorldFrame +0x64,
 // NextMovementPos +0x68; a local model is used because the method takes a stack argument.
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CThingCreatureBase_Calls { public:
     void* Call_004c7ab0();                     // 0x004C7AB0 (result unused)

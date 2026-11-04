@@ -1,5 +1,6 @@
 // CTCTavernGameSpotTheAddition::UpdateHighlightedObject() -- finds the knick-knack nearest the pointer (within twice the def's knick-knack radius), records the relative distance, deselects when it is beyond the radius, and plays the selection-change sound when the selection changes
 // Leaf: UpdateHighlightedObject
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D8290, 291 bytes (plain `ret`).
 // Callees: CDefClassBase::GetSubDef<CTavernGameSpotTheAdditionDef>(CDefPointer<const CTavernGameSpotTheAdditionDef>*)
 //          0x007D9A80 (on the owner's def class, owner +0x70; this TU, see the stand-in below); CThing::GetPos()
@@ -14,7 +15,7 @@
 //        named string; the def was dereferenced, so its release has no null test.
 #include <math.h>
 #pragma intrinsic(sqrt)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* m_data;

@@ -1,5 +1,6 @@
 // CTCMultiStrike::FrameUpdate() -- once the strike has started, count the delay down; when it runs out hit the target creature with the owner's melee hit (and tell its entity events about the special-ability hit), count the hit, remove the multi-strike from the owner after the def's last hit, and restart the delay from the def
 // Leaf: ?FrameUpdate@CTCMultiStrike@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -22,10 +23,7 @@ class CTCBase;
 class CThing;
 namespace NHitLocations { class CHitLocation; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CHitParameters {                              // 0x60 bytes in retail
 public:

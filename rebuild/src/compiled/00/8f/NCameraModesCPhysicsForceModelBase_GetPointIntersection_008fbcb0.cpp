@@ -1,5 +1,6 @@
 // NCameraModes::CPhysicsForceModelBase::GetPointIntersection(list<CPhysicsMeshObject>&, long, const C3DVector&, const C3DVector&, C3DVector&) -- first mesh object the segment from->to hits; its intersection position goes to out
 // Leaf: ?GetPointIntersection@CPhysicsForceModelBase@NCameraModes@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x008FBCB0, 0x6C bytes, thiscall `ret 14h` (`this` and the long are unused), bool. Manifest label
 // "MeshContainer_RayIntersectionQuery" (_global) is descriptive. PDB name set:
 // `?GetPointIntersection@CPhysicsForceModelBase@NCameraModes@@IAE_NAAV?$list@VCPhysicsMeshObject@@...@JABVC3DVector@@1AAV5@@Z`
@@ -12,9 +13,7 @@
 // DistanceSquared +0x18) is the whole `sub esp,1Ch` frame.
 // Shape: the iterator is advanced BEFORE the call (`mov eax,esi ; mov esi,[esi]`): `(it++)->...` on a node-pointer
 // iterator; end() is re-read from the list after every call (`cmp esi,[ebp]`).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CMeshIntersectionData { public:
     C3DVector IntersectionPosition;             // +0x00

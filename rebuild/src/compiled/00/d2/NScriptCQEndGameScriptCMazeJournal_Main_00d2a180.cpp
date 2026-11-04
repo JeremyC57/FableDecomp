@@ -1,11 +1,12 @@
 // NScript::CQ_EndGameScript::CMazeJournal::Main() -- Gateway to Hook Coast maze journal: remove Me unless the maze is active; once, pause, pass the
 // Leaf: ?Main@CMazeJournal@CQ_EndGameScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   guildmaster's "mother in struggle" message, wait for the hero at MK_HCM_HERO1 and play CS_GATEWAY_MOTHER, then set
 //   objective 04; then each time the hero uses Me: hide Me, give the maze journal, show its game info, complete the quest
 //   and make the guild map usable
 // Naming wave 35: identity reg 00d2770e "MazeJournal" in 00d27460; Alloc 00d29570; vtable 012cbcac slot 1; PDB ?Main@CMazeJournal@CQ_EndGameScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CMazeJournal::Main (wave3/labels_alloc.tsv); PDB ?Main@CMazeJournal@CQ_EndGameScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CMazeJournal@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

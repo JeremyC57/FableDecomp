@@ -1,5 +1,6 @@
 // _global::__pop_heap_aux(PairVectorLong* first, PairVectorLong* last, PairVectorLong*, CCompareTargetedPositionsForFirstPersonTargeting comp) -- SGI pop_heap front end for the first-person targeting position heap: move the back element out and sift
 // Leaf: __pop_heap_aux
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00808DB0, length 129 bytes (+ int3 padding), `ret 30h` (the unused T* and the
 //   0x2c-byte comparator on the stack; first/last in ecx/edx -- the SGI algorithm TUs are /Gr).
 // Label correction: the manifest's `_Pop_heap_0<pair<unsigned long,CSoundPair>*,...>` is propagated; the callee is the
@@ -10,10 +11,7 @@
 // Shape: arguments right to left: the null distance pointer (`push 0`), the comparator copied member by member into the
 //   argument area (trailing bool through cl), the element copy built in place from *(last - 1) by STLport's explicit pair copy
 //   constructor, then result = last - 1 pushed and also passed in edx, first in ecx.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
-};
+#include "engine/C3DVector.h"
 
 struct PairVectorLong {                                // std::pair<C3DVector, long>, 16 bytes
     C3DVector first;                                   // +0x00

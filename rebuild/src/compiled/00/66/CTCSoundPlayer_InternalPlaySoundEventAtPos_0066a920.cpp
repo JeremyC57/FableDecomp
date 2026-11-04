@@ -1,5 +1,6 @@
 // CTCSoundPlayer::InternalPlaySoundEventAtPos(CASoundBank& bank, const C3DVector& pos, const CCharString& name, bool loop, bool attached) -- play a named sound event from a new unattached emitter at a position (the invalid handle when sound is off, no emitter, or the bank lacks the event)
 // Leaf: ?InternalPlaySoundEventAtPos@CTCSoundPlayer
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066A920, 169 bytes (+ int3 padding to 176), thiscall `ret 14h` (`this` unused).
 //   Name: Ego_r.pdb `?InternalPlaySoundEventAtPos@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVC3DVector@@ABVCCharString@@_N3@Z`.
 //   Callers: 0x0066AA62 / 0x0066AB4B / 0x0066ABCD / 0x0066AC28 (CTCSoundPlayer neighbours) and 0x0066BE67.
@@ -16,7 +17,7 @@
 //   init.GainFaderBits = 0x8010; return emitter->PlaySoundEvent(...); } } return invalid;` (the PlaySoundAtPos init idiom).
 // No pragma.
 class CCharString { public: void* PStringData; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CASoundBank {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

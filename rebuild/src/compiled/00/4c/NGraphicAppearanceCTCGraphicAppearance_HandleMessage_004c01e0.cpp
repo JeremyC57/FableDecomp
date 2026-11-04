@@ -1,5 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::HandleMessage(const NTCMessages::CMessageBase& message) -- vtable slot 27: dispatch the two caught messages: clear-primitives (type 1) marks the appearance changed with reason 8, set-thing-owner (type 4) goes to its CatchMessage
 // Leaf: ?HandleMessage@CTCGraphicAppearance@NGraphicAppearance@@UAEXABVCMessageBase@NTCMessages@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 31 (family c703): ClearAllPrimitives 0x004BF9A0 is protected (?ClearAllPrimitives@CTCGraphicAppearance@NGraphicAppearance@@IAEXXZ,
 //   Ego_r.pdb / FableWin.pdb); was bound as the public QAE spelling
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C01E0, 86 bytes (+10 int3 padding).
@@ -12,7 +13,7 @@
 // Shape: two `if` tests each with its own virtual GetType call; the type-1 arm is CatchMessage(CMessageClearPrimitives)
 // = SetAsChanged(8) inlined with the constant folded (`test byte ptr [esi+58h],8`, `or al,8`; the landed out-of-line
 // CatchMessage 0x004BFCE0 keeps the 8 in bl). `ret 4`.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCAnimationBase;
 
 class CThing {

@@ -1,5 +1,6 @@
 // CEngineInternalPrimitive2DMorphedAnimatedMesh::CEngineInternalPrimitive2DMorphedAnimatedMesh() -- the morphed 2D animated-mesh primitive: the 2D animated mesh built as type 0x26 with flags 0x80000000, then this class's vtable and the morph info member
 // Leaf: ??0CEngineInternalPrimitive2DMorphedAnimatedMesh
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BD9710, 264 bytes (plain `ret`); vtable 0x012A7ADC (rtti-vtables.tsv: slot 32
 //   0x00BD9820); the inlined 2D base's own vtable store is dead and dropped.
 // Label: the catalog says CTCShotDefinitionBase::CTCShotDefinitionBase (propagated); the vtable is
@@ -16,7 +17,7 @@ public:
     T* Object;
     CIVCountedPointer() : Object(0) { }
 };
-class C3DVector { public: float X, Y, Z; C3DVector() { } };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Right, Up; CRightHandedSet() { } };
 class C3DAnimationBlendState : public CBaseClass { public:           // vtable 0x01239838
     class CSharedData;

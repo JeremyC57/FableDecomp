@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureTakeCover::Update() -- take cover from a live target: make the creature directly aware of it, find a hidden cover position (none: mark the failure and terminate); a distant cover is reached by crouching (with a live cover thing) and moving in (failure drops the cover thing); behind low cover duck and attack 1..3 times until the position drifts, behind high cover 1..3 times step out to a firing position (unless the target is visible), attack, move back in and reload; finally drop the cover thing from the list and refresh an empty list
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Grade: RELOCATION_MATCH -- three separate IsStillRunnable/AttackTargetThing exits, the firing-position pointer built by implicit conversion (lea-readdressed temporary), the reload name passed as const char*, the cover list size as an unsigned 8-byte-entry count, and the crouch action at its retail 0x124 size
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097A630, 1195 bytes, plain ret, 8-aligned ebp frame.
@@ -18,7 +19,7 @@
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;

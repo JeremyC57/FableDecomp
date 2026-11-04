@@ -1,5 +1,6 @@
 // QuadricOptimiserInternals::COptimisedPrimitive::GetRemainingVertices(const CIndexList& indices) const -- the subset of `indices` whose vertex still exists, returned by value
 // Leaf: ?GetRemainingVertices@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVCIndexList@2@ABV32@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC8840, 277 bytes, thiscall `ret 8` (hidden CIndexList result + const CIndexList&).
 // Identity: Ego_r.pdb ?GetRemainingVertices@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVCIndexList@2@ABV32@@Z
 //   (private const; the only PDB member of the class that takes and returns a CIndexList). `this` walks Vertices +0x10
@@ -201,10 +202,7 @@ public:
 
 }   // namespace std
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 template <class T> class CArray {                      // Lionhead CArray<T> (retail STLport vector, 12 bytes)
 public:

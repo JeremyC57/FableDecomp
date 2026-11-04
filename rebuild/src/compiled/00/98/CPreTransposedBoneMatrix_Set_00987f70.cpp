@@ -1,13 +1,12 @@
 // CPreTransposedBoneMatrix::Set(const CMatrix3x4&) -- store a 3x4 bone matrix transposed (one row per axis component) for the vertex-shader constants
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00987F70, length 77 bytes.
 // Callees: none. Callers: CEnginePrimitiveManagerRepeatedZSprites::RenderFromSortList 0x00BAB2FB, 0x00BAC518.
 // Layout: Ego_r.pdb CPreTransposedBoneMatrix = float Data[3][4]; CMatrix3x4 is the four axes X, Y, Z, Pos
 // (12 floats).
 // Shape: twelve float assignments, which VC7.1 copies through edx; the stores follow the destination order,
 // the loads the transposed source order (0, 3, 6, 9, 1, 4, ...).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 { public:                                         // 48 bytes: three axes and the position
     C3DVector XAxis;                                        // +0x00

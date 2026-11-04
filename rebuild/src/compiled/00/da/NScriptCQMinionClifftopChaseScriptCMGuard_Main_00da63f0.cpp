@@ -1,5 +1,6 @@
 // NScript::CQ_MinionClifftopChaseScript::CM_Guard::Main() -- Minion clifftop-chase guard: wait until the hero is within 20 units, spawn a CREATURE_BS_GUARD scripted "GuardToLeadTheWay" at this marker, tag it MCC4 the first time (remembering that on the quest) or MCC5 afterwards, then remove the marker
 // Leaf: ?Main@CM_Guard@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA63F0, length 353 bytes.
 // Callees: IsDistanceBetweenThingsUnder @ 0x00CBE2FF (`__fastcall`), IsDone @ 0x00F35B30, CCharString(const char*, long)
 //   @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("GuardToLeadTheWay" @ 0x012D71F4, "CREATURE_BS_GUARD" @ 0x012D2548,
@@ -20,7 +21,7 @@ class CCharString { public:
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();

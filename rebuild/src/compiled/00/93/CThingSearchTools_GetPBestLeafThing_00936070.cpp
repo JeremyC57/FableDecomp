@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPBestLeafThing(const TFilter& filter, const TCompare& compare, TThing** out) [TFilter = CFilter_Bind2<CThingFilter_OnFire, CThingFilter_In2DRange>, TCompare = CThingCompare_Nearest, TThing = CThingBuilding] -- the nearest scan-visible building (type list 3) that is on fire and in 2D range
 // Leaf: GetPBestLeafThing
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00936070, 135 bytes (+ int3 padding to 144) (`ret 0Ch`).
 // Callees: PeekTypeList 0x0049C780, the building-on-fire test 0x006A8A80, CThingFilter_In2DRange 0x006A76B0, CThingCompare_Nearest::operator()<CThingBuilding> 0x0092BE70.
 // Label: the catalog calls this the <In2DRange, IsValidAttackTargetForCreature>, BestCreatureToAttack, CThingAICreature
@@ -54,7 +55,7 @@ struct CThingList {
 };
 
 class CThingBuilding : public CThing { public: enum { ThingListType = 3 }; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CThingFilter_OnFire {                      // empty building-on-fire test (descriptive name, as landed 0x00936210)
     bool operator()(const CThing& thing) const;       // 0x006A8A80
 };

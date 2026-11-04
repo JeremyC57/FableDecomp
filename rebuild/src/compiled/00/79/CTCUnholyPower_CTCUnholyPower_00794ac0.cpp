@@ -1,5 +1,6 @@
 // CTCUnholyPower::~CTCUnholyPower() -- unholy-power spell component dtor: return the environment to its default theme unless the spell finished, kill a live obstruction effect, then the member dtors in reverse order (five thing pointers, the hit-effect vector, the creatures-hit map, the target pointer, the will-button timer, the dropped-item pointer, the def pointer) and ~CTCBase
 // Leaf: ??1CTCUnholyPower@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00794AC0, 332 bytes, tail jump to the base destructor.
 // Identity: the first store is vtable 0x0126BFDC, RTTI `.?AVCTCUnholyPower@@` (rtti_bases: CTCUnholyPower : CTCBase); its
 //   slot 0 is the scalar deleting dtor 0x00798310, the only caller (call at 0x00798313). Ego_r.pdb has
@@ -150,11 +151,7 @@ template <class T> class CDefPointer { public:
 };
 
 #pragma pack(push, 1)
-class C3DVector { public:                                  // retail C3DVector is 1-aligned
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CEnvironment { public:

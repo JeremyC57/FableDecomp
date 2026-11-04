@@ -1,5 +1,6 @@
 // CGamePlayerInterface::SaveInitialInfo() -- write one saved input event (frame, input event, current mouse position, camera) to the packet file
 // Leaf: ?SaveInitialInfo@CGamePlayerInterface_Methods@@QAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00445AE0, 85 bytes, plain `ret`; no direct callers in the xref index; Ego_r.pdb
 // ?SaveInitialInfo@CGamePlayerInterface@@AAEXXZ.
 // Body: a CSavedInputEvent local (0x78 bytes) with its implicit constructor inlined -- CInputEvent::CInputEvent on +4
@@ -25,7 +26,7 @@ public:
     virtual void Write(const void* src, long size, CASuspendableProcess* process) = 0;   // slot 4 (+0x10)
 };
 class C2DVector { public: float X, Y; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCamera {
 public:
     C3DVector     WorldPosition;                         // +0x00

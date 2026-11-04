@@ -1,4 +1,5 @@
 // CPlayerGuiDef::CPlayerGuiDef() -- construct the player-GUI definition: the CParentDefClassBase base, this vtable, then every non-POD member (35 STLport vectors zeroed inline, 7 CCharStrings and 3 maps constructed out of line)
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00459BB6, length 622 bytes (no EH frame: the def TU has no unwinding).
 // Callees: CParentDefClassBase::CParentDefClassBase 0x00430370; CCharString::CCharString() 0x0099E4B0 (x7);
 // map<CCharString, long> ctor 0x00430345 (ScriptSprites, MiniMapGraphics); map<CCharString, EGameAction> ctor 0x00454AEF
@@ -12,7 +13,7 @@
 #pragma optimize("s", on)
 
 class C2DVector { public: float X, Y; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBColour { public: unsigned char B, G, R, A; };
 class CCharString {
 public:

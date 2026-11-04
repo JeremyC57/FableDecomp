@@ -1,5 +1,6 @@
 // CTCPerceiveThing::SetThingExtendedLineOfSight(bool lineOfSight) -- on an extended-line-of-sight change: drop the parent from the GUI perceiver drawing if it had it, store the flag, then re-add or remove it by whether a target exists
 // Leaf: SetThingExtendedLineOfSight
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00744A70, 98 bytes. Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (inline UpdateDrawPerceivers); both GUI calls of the tail are tail jumps.
@@ -38,7 +39,7 @@ class CPlayerGui { public:                             // the global (&CTBaseSin
     void RemovePerceivingThing(CThing* thing);  // 0x00437900 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
 };
 class CDefPointeeBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCPerceiveThing { public:
     void*     __vftable;                        // +0x00 (CTCBase)
     CThing*   ParentThing;                      // +0x04

@@ -1,5 +1,6 @@
 // CEngineWaterRenderer::RenderBackground(float time) -- bind the water bump map on stages 0/1 and the environment map on stage 2 with their blend states, pick the high-end or low-end background shaders, upload the four water bone matrices and either the bump constant (high end) or the low-end colour pixel constants, then draw the alphaed and the opaque background patch lists
 // Leaf: RenderBackground
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B76BC0, length 1965 bytes (+ int3 padding), `ret 4`.
 // Signature from Ego_r.pdb: ?RenderBackground@CEngineWaterRenderer@@AAEXM@Z.
 // Callees: CRenderStateManager::RestoreCaptureBlock @ 0x00A05840 (inline OpenCaptureBlock on 0x013CB508);
@@ -16,7 +17,7 @@
 // operator* keeps a 0x44 frame and stores the product late). The +0x28b8 SetState after the first list reads the state's
 // capture mask into a local first (retail loads it before the core mask; the plain inline swaps the two loads).
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBFloatColour;
 class C4DVector { public:
     float X, Y, Z, W;

@@ -1,0 +1,22 @@
+Plan phase 3, wave "w2" (2026-11-04): C3DVector local copies moved onto engine/C3DVector.h.
+
+HEADER: engine/C3DVector.h is used as it is (no change, no sub-macro), so no includer regrade is needed.
+  The header is PDB TPI 0x2783: public X / Y / Z at 0 / 4 / 8, size 12, forceinline arithmetic.
+ROWS: 2,087 PASS under vland --recheck-landed (RELOCATION_MATCH 1,823, MATCH 264). Parity equals the landed source's on every
+  row (--before baseline). No symbol change, 0 introduced warnings.
+  - 5 RELOC_NAME warnings differed from the landed text only in the anonymous-namespace hash (?A0x...), which follows the file
+    content; they are counted as inherited.
+  - The sources: all 3,434 local C3DVector rows at HEAD went through scripts/hdrmig3.py:
+    - cfg.json: the plain migration;
+    - cfg_lc.json: variant 1, where `.x / ->y / .z` member accesses become the PDB X / Y / Z (174 of 188 pass).
+  - 2,892 rows pass hdrmig3. 189 of them are w1 rows and 86 are w3 rows (one file, one wave). Of the remaining 2,617, the 2,087
+    in variants 0-22 were taken (variant 0 `class C3DVector { public: float X, Y, Z; }`: 1,189 rows).
+  - The other 530 are gate-ready (READY_PHASE4.txt), left out only for the ~4,000-row budget.
+  - gate.py: 2,087 of 2,087 PASS.
+QUEUE LINES / BINDINGS / CALLERS: none (no spelling changes).
+DEFERRED.tsv (1,347):
+  - budget 530;
+  - compile_fail 478: method names the header lacks (GetLengthSquared 112, GetLength 32, Normalise 24, Length 10,
+    GetMagnitudeSquared 10); a local C2DCoordI that collides with the header's include (77); a free operator- that is ambiguous
+    with the member one (25); x / y / z in other variants;
+  - other_wave 275; bytes_differ 48; stray_change 16.

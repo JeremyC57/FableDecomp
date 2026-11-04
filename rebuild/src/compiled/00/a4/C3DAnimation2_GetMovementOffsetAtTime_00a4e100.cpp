@@ -1,4 +1,5 @@
 // C3DAnimation2::GetMovementOffsetAtTime(float) -- the movement track's interpolated keyframe position at the given time as a C3DVector (hidden result pointer), or zero when there is no movement track
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4E100, length 77 bytes.
 // Callees: C3DAnimationSequenceData::GetKeyframeInterpolate(C3DKeyframe*, float) @ 0x00A4DEA0.
 // Retail C3DAnimation2 holds the movement track CCountedPointer<C3DAnimationSequence> at +0x40
@@ -19,10 +20,7 @@ class C3DAnimationSequence { public:
     C3DAnimationSequenceData* Data;        // +0
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DAnimation2 { public:
     unsigned char _pad[0x40];

@@ -1,5 +1,6 @@
 // CThingPhysical::ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4, CThingPhysical* originalCreator, CThingPhysical* lastCreator, bool a7) -- construct the CThing on the map under the position, then reset scale, health (from the def), creators and the hit flags
 // Leaf: ConstructFromParams
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A5950, length 289 bytes, `ret 1Ch`.
@@ -17,7 +18,7 @@
 // a CIntelligentPointer<CThingPhysical>(T*) temporary (inline ctor: base ctor, vtable, SetPItem) and the inline
 // `operator=` (SetPItem(other.GetPItem())), destroyed by the base dtor; `if (base) {...; return true;} return false;`
 // keeps the false exit last.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CWorldMap {
 public:

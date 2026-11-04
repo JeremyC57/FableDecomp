@@ -1,6 +1,7 @@
 // Grade: RELOCATION_MATCH -- the PostDeed target through the PDB inline accessor CTCBase::GetParentThing() (retail loads ParentThing into eax after the deed-log pointer); was register allocation only
 // CTCActionUseChest::OnActionUse(CThingCreatureBase* user) -- a creature uses a chest: start the open-chest action when the chest is shut and not busy, and when it is theft post a theft deed and apply the theft morality to the user
 // Leaf: OnActionUse
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x007EE8F0, 352 bytes, `ret 4` (vtable slot 10, +0x28; catalogued as vfunc_28). The landed callee
 // CTCChest::GetOpenAnimationForCreature 0x00750240 names this caller as CTCActionUseChest::OnActionUse.
 // Callees: the base use hook 0x007EAB90, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x004365B0 (const, the chest
@@ -19,7 +20,7 @@ class CTCBase;
 class CFaction;
 class CThingAICreature;
 class CThingCreatureBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                        // 0x0099EAE0

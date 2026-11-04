@@ -1,5 +1,6 @@
 // NScript::CQ_AmbushTradersScript::CAT_Phase3Archer::Main() -- Arena phase-3 archer: alive filter on Me, find "AT_ConvoySpy" and ally it with every live guard of the parent; make it (or the hero) the archer's best enemy target, mark the archer on the minimap, wait for the phase to end, then take scripted control, walk to the nearest REGION_EXIT_POINT and fade out
 // Leaf: ?Main@CAT_Phase3Archer@CQ_AmbushTradersScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F04CC0, 1056 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CIsThingAlive dtor 0x00E241B0, SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380, scripted-thing handle IsValid 0x00CD23B9 /
@@ -11,7 +12,7 @@
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (phase flags +0x48 / +0x49, guard vector +0xa8).
 // Naming wave 35: identity reg 00f0276d "AT_Phase3Archer" in 00f024c0; Alloc 00f04bd0; vtable 012f7e4c slot 1; PDB ?Main@CAT_Phase3Archer@CQ_AmbushTradersScript@NScript@@; refs=1; was under-qualified CAT_Phase3Archer::Main (wave3/labels_alloc.tsv); PDB ?Main@CAT_Phase3Archer@CQ_AmbushTradersScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CAT_Phase3Archer@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0
 class CCharString { public:
     void* PStringData;

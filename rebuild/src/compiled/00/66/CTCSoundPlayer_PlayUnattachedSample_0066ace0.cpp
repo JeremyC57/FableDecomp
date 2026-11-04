@@ -1,5 +1,6 @@
 // CTCSoundPlayer::PlayUnattachedSample(long sample, const CSoundInit& init, bool loop, bool attached) -- play a sample index from a new emitter at the owner's position (default fader bits 0x8010 when the init has none)
 // Leaf: ?PlayUnattachedSample@CTCSoundPlayer@@QAEKJABVCSoundInit@@_N1@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066ACE0, 174 bytes (+ int3 padding to 176), thiscall `ret 10h`.
 //   Name: Ego_r.pdb `?PlayUnattachedSample@CTCSoundPlayer@@QAEKJABVCSoundInit@@_N1@Z` (the only 4-argument
 //   (long, const CSoundInit&, bool, bool) player). Callers: 0x007C0645 (CTCShotDefinitionBase), 0x008C2209 (landed callers
@@ -18,7 +19,7 @@
 //   `add ecx,0Ch`), the owner re-read for GetSampleBank; an init without fader bits is copied (`rep movsd`) and given 0x8010.
 // No pragma.
 class CCharString { public: void* PStringData; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CASoundBank {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

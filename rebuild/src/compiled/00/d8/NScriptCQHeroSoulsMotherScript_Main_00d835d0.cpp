@@ -1,4 +1,5 @@
 // CQ_HeroSoulsMotherScript::Main() -- the Hero Souls (mother) quest's main: bind the SummonerToKill / HS_Screamer entity scripts, wait for OakBay or the Oakvale memorial garden; in Oak Bay have Jack talk to the hero until he reaches the MotherJackChatMarker, then wait for the garden, play the mother start cutscene once, hand over the quest card, kick off the start screen, set the objective, spawn CreateScreamers, fade in, wait for the soul, and unless Briar is dead play the success cutscene, log the story entry, set the next objective, complete the quest and fade in
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D835D0, length 1808 bytes.
@@ -18,7 +19,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0

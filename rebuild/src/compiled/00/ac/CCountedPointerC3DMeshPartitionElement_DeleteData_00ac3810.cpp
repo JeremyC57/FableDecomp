@@ -1,5 +1,6 @@
 // CCountedPointer<C3DMeshPartitionElement>::DeleteData(void* data) -- the counted pointer's per-type deleter: delete the partition element (its destructor deletes both sub-elements and clears the triangle range)
 // Leaf: ?DeleteData@?$CCountedPointer@VC3DMeshPartitionElement@@@@SIXPAX@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC3810, length 60 bytes (+4 int3), static __fastcall (data in ecx),
 //   plain `ret`.
 // Callees: C3DMeshPartitionElement::`scalar deleting destructor' @ 0x00AC37B0 (landed; the two child deletes),
@@ -13,7 +14,7 @@
 //   then the two zero stores) and operator delete; the deleting destructor itself is inlined here.
 void operator delete(void* p);                     // 0x00BFE9BC
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector Min, Max; };
 class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 

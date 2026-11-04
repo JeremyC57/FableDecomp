@@ -1,5 +1,6 @@
 // CTCDExplosion::Create(long defIndex, const C3DVector& position) -- create an explosion thing for player 4 at a position inside the world map: set both ends of the blast to the position, construct and activate it; a thing without the explosion driver is killed; null on any failure
 // Leaf: ?Create@CTCDExplosion@@SIPAVCThing@@JABVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x0080C460, 154 bytes (+ int3 padding), static `__fastcall` (defIndex in ecx, position in edx),
@@ -17,11 +18,7 @@
 //   to the thing on success) keeps the null in ebx (`xor ebx,ebx`) and VC duplicates the success tail (`mov eax,edi`);
 //   an early `return thing` drops the zero register. The C3DVector member assignments are the implicit operator= next to
 //   C3DVector's user copy ctor (`lea eax,[ecx+20h] ; mov edx,esi`).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class CWorldMap {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

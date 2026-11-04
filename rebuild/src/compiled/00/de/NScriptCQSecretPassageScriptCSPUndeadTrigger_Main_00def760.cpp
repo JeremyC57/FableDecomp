@@ -1,5 +1,6 @@
 // NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::Main() -- the secret-passage undead trigger: spawn the parent quest's SwitchDoorsOnAndOff once, wait until the hero is within 2.5 units of Me, then turn every "SP_UndeadSpawnPoint<data>" marker into an undead soldier that hunts the hero (a "BlockADoor" marker also blocks the doors), wait until all of them are dead, unblock the doors and remove Me
 // Leaf: ?Main@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DEF760, length 944 bytes, plain `ret`.
 // Callees: IsActiveThreadTerminating 0x00F35B30; operator new 0x00BFEA1A; CCharString(const char*, long) 0x0099EBF0 /
@@ -52,7 +53,7 @@ class CCharString { public:
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 void operator delete(void* p);                         // 0x00BFE9BC
 struct CCountBlock {
     long References;

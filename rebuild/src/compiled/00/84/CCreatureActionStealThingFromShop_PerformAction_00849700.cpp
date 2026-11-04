@@ -1,5 +1,6 @@
 // CCreatureAction_StealThingFromShop::PerformAction() -- steal the live shop item: when the creature's inventory cannot take it, show "You already have this item!" (single-holding items) or the no-room message as a 3-second subtitle; otherwise create a copy of the item at the creature, add it to that inventory, post message 0x1c (delay 0x32) from the thief to the item's owner (the interface-0x33 CTCOwnedEntity::POwner) and make a SIMPLE_NOISE
 // Leaf: ?PerformAction@CCreatureAction_StealThingFromShop@@UAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z; 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00849700, 719 bytes, virtual PerformAction, plain `ret`. Ego_r.pdb
 //   `?PerformAction@CCreatureAction_StealThingFromShop@@UAEXXZ`; the item is the PDB's PThingToSteal (retail +0xa8, PDB +0xb4).
@@ -26,7 +27,7 @@
 //   in the landed sibling); GetCheckedTC / GetTC / GetInterface / CreateThingAt are the fleet's descriptive inline helpers.
 extern "C" int __cdecl puts(const char* text);          // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 class CCharString { public:
     void* m_pData;

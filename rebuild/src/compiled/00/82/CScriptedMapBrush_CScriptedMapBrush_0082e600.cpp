@@ -1,5 +1,6 @@
 // CScriptedMapBrush::CScriptedMapBrush(const CScriptedMapBrushInit& init) -- construct a brush from its init block: one cell per game-area square, empty thing sets/map, the area, name, creation time and pattern copied
 // Leaf: ??0CScriptedMapBrush@@QAE@ABVCScriptedMapBrushInit@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082E600, 213 bytes (+11 int3), thiscall `ret 4`.
 // Identity: Ego_r.pdb name set ??0CScriptedMapBrush@@QAE@ABVCScriptedMapBrushInit@@@Z; CScriptedMapBrushInit (Ego_r.pdb,
 //   28 bytes): GameArea (C2DBoxI) +0, Name +0x10, CreationTimeSeconds +0x14, CreationPattern +0x18. The catalog label
@@ -17,10 +18,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void  __cdecl free(void* block);                 // 0x00BFEA14
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class C3DAngles {
 public:
     float X, Y, Z;

@@ -1,5 +1,6 @@
 // std::__introsort_loop(pair<unsigned long,C3DVector>* first, pair<unsigned long,C3DVector>* last, pair<unsigned long,C3DVector>*, int depth_limit, CParticleUpdateCCompareVector<unsigned long> comp) -- STLport introsort loop for the particle vector-parameter map: median-of-three partition and recurse on the right part while more than 16 pairs remain, falling back to partial_sort when the depth limit runs out
 // Leaf: ??$__introsort_loop@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076BE30, 210 bytes, /Gr `__fastcall` `ret 0Ch` (first in ecx -> edi, last in
 //   edx -> ebx; the value-type tag pointer, the depth limit and the empty comparator on the stack).
 // Callees: __unguarded_partition @ 0x00769AC0 (first/last in ecx/edx, the 16-byte pivot by value, the comparator),
@@ -14,11 +15,7 @@
 //   *(last - 1), comp)), comp); __introsort_loop(cut, last, (_Tp*)0, depth_limit, comp); last = cut; }` -- `__median` is
 //   inline here (the key compares are visible), the pivot is built in the argument area by STLport's explicit pair copy
 //   constructor, and the decremented depth is stored back to its argument slot.
-class C3DVector {                                       // user memberwise copy: four in-order dword moves for the pivot
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

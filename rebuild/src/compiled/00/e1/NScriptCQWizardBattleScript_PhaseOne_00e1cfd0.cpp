@@ -1,5 +1,6 @@
 // CQ_WizardBattleScript::PhaseOne() -- mark the end-game barrier on the minimap and wait for the hero to reach it; have the hero chant and wait for the line to end; remove the barrier and its quest, then wait for the hero at the intro kick-off point, play the battle-intro cut-scene, bind Maze, switch the music and objectives over to the Hook Coast phase
 // Leaf: PhaseOne
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1CFD0, 1638 bytes (int3 padded to 1648).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940, IsDistanceBetweenThingsUnder
 //   0x00CBE2FF, ~CScriptThing 0x004AA840 (and its inline body), CScriptThing::operator= 0x008AB980, handle 0x007E72A0 /
@@ -28,7 +29,7 @@ extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CScriptThingImpl;
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();

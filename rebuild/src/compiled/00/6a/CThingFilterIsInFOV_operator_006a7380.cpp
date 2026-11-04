@@ -11,10 +11,8 @@
 // Layout: Ego_r.pdb CThingFilter_IsInFOV (36 bytes): FromPos +0x00, Direction +0x0C, CosFOV +0x18, FOV +0x1C,
 //   AngleTest3D +0x20 (not read here).
 // Leaf: ??RCThingFilter_IsInFOV@@QBE_NABVCTargetPoint@NPlayerTargeting@@@Z
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint {

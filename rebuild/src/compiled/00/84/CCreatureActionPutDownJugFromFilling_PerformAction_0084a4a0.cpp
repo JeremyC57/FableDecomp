@@ -1,4 +1,5 @@
 // CCreatureAction_PutDownJugFromFilling::PerformAction() -- take the jug out of the creature's carry slot named by its carryable def (+0x30), reset the jug's physics (virtual slot 36 with 0) when it is alive, remove creature mode 0x2b and set the "filled" byte of the jug's interface-0xBB component
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084A4A0, length 325 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PJug +0xa8, PCreature +0x08), CVectorMap::LowerBound 0x0040F020 (inlined
@@ -20,7 +21,7 @@ struct CPhysicsComponent {
     virtual void SetMovementType(long type);          // slot 36 (+0x90)
 };
 #undef V10
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 class CCharString { public:
     void* PStringData;

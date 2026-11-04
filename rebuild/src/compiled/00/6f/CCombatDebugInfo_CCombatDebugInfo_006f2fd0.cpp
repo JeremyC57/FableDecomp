@@ -1,5 +1,6 @@
 // CCombatDebugInfo::~CCombatDebugInfo() -- the compiler-generated destructor: free the AttackerPos and PlacementVectors blocks, then destroy CurrentSequenceName
 // Leaf: ??1CCombatDebugInfo@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F2FD0, 44 bytes, thiscall, tail `jmp ~CCharString` on this+0x10.
 // Identity (proven): FableWin.pdb spells ??1CCombatDebugInfo@@QAE@XZ (0x01D8EAF0) and, in CCombatManager's TU after
 //   GetCombatDebugInfo, ??0CCombatDebugInfo@@QAE@ABV0@@Z (0x0241C5C0); retail's copy constructor is the next function,
@@ -22,10 +23,7 @@ public:
 };
 
 #pragma pack(push, 1)
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace std {

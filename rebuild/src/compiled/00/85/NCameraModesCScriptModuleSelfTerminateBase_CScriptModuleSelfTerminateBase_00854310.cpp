@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleSelfTerminateBase::~CScriptModuleSelfTerminateBase() -- compiler-generated destructor: runs the inline base ~CScriptModuleBase (no vtable store of its own)
 // Leaf: ??1CScriptModuleSelfTerminateBase@NCameraModes@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00854310, 34 bytes, thiscall; byte-identical (bar the call displacements) to ~CScriptModuleBase 0x005ED120.
 // Identity (proven): its only callers are the scalar deleting dtors of CScriptModuleOpenChest 0x00854500, CScriptModuleUseLamp
 //   0x00854540 and CScriptModuleOpenGate 0x00854580 (vtables 0x01275ABC / 0x01275AE4 / 0x01275B0C slot 0), whose RTTI base-class
@@ -19,7 +20,7 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 class CThing;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CGameCameraManager;
 namespace NCameraModes {

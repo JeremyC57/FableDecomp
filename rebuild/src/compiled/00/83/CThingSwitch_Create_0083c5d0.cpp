@@ -1,5 +1,6 @@
 // CThingSwitch::Create(long, const C3DVector&, float, CCharString) -- allocate a switch thing, construct it from the def index / position / radius / script name (passed on by value), place its physics component at the position with the identity axes, and activate it; null on any failure
 // Leaf: ?Create@CThingSwitch@@SIPAV1@JABVC3DVector@@MVCCharString@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0083C5D0, 184 bytes, static __fastcall (ecx = def index, edx = position), `ret 8`.
 // Identity: ?Create@CThingSwitch@@SIPAV1@JABVC3DVector@@MVCCharString@@@Z (Ego_r.pdb). Allocates 0xE8 bytes and runs
 //   the out-of-line constructor 0x00529B00 (manifest label "CMapFilenames" is propagated), then CThingSwitch::
@@ -18,7 +19,7 @@
 //   (so the success path stores `result = p` in ebp instead of returning esi).
 #include "engine/CTCPhysicsBase.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet() { Up.X = 0; Up.Y = 0; Up.Z = 1; Forward.X = 0; Forward.Y = 1; Forward.Z = 0; }

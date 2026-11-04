@@ -1,4 +1,5 @@
 // NUISystem::CParticleEffect::Draw(long, long, long, long, long) -- keep the running emitter on the component: pick the front-end layer for its depth (offset by the draw depth unless the component is independent or suppressed) and move the emitter to its position, rescaled from the display to the virtual screen size when that override is on
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00543EE0, length 192 bytes (`ret 14h`). Virtual: slot 2 of
 // NUISystem::CParticleEffect's vtable 0x0124735C.
 // Callees: virtual slots 101 / 104 (bool queries), CManager::GetInstance @ 0x0041E5F2 (x2) and its slot 36
@@ -20,10 +21,7 @@ class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:                           // PDB: Up then Forward; the default set is Z up, Y forward
     C3DVector Up;
     C3DVector Forward;

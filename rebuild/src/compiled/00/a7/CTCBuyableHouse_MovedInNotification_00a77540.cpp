@@ -1,5 +1,6 @@
 // CTCBuyableHouse::MovedInNotification(const C3DVector& position) -- catalog label; the body reports whether a position is in the object's 12-byte position list (+0x50/+0x54)
 // Leaf: ContainsPosition
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x00A77540, 37 bytes (`ret 4`). Callee: the SGI-style find over 12-byte C3DVector entries
 // @ 0x00A7EB00 (`__fastcall`: first in ecx, last in edx, then the value reference and the
@@ -12,7 +13,7 @@
 // argument's dead slot (`lea eax,[esp+8]`); `return find(...) != last;` keeps the full-register bool
 // (`xor ecx,ecx ; cmp ; setne cl ; mov al,cl`).
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct SRandomAccessTag { SRandomAccessTag() {} };  // random_access_iterator_tag
 

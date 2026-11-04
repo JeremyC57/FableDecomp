@@ -1,4 +1,5 @@
 // CAIStateGroup_JackOfBladesBase::SetupArena() -- find the "FrescoCentre" thing within 50m (rough area) of the creature, latch it as the arena centre, and switch the camera manager to the CAMERA_MANAGER_SET_DEFAULT camera set
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00972830, length 352 bytes (+ int3 padding).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / CCharString(const CCharString&) @ 0x0099EC30 / ~CCharString
 //          @ 0x0099EAE0, CThing::GetPos @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CAIStateGroupBase::PeekThingSearchTools
@@ -22,9 +23,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(const C3DVector& centre, long half)   // the square of half-width `half` around the truncated XY

@@ -1,5 +1,6 @@
 // std::fill(QuadricOptimiserInternals::COptimisedVertex* first, QuadricOptimiserInternals::COptimisedVertex* last, const QuadricOptimiserInternals::COptimisedVertex& value) -- (QuadricOptimiserInternals::COptimisedVertex) STLport fill: assign value to every element of [first, last) through the element's assignment (COptimisedVertex::operator= 0x00AD7050)
 // Leaf: ??$fill@PAVCOptimisedVertex@QuadricOptimiserInternals@@V12@@std@@YIXPAVCOptimisedVertex@QuadricOptimiserInternals@@0ABV12@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD78D0, 40 bytes (+ int3 padding), `__fastcall` (first in ecx, last in edx, the value
 //   reference on the stack), `ret 4`.
 // Identity (proven): std::fill<QuadricOptimiserInternals::COptimisedVertex*, QuadricOptimiserInternals::COptimisedVertex >; evidence: the only caller is the landed vector<COptimisedVertex>::_M_fill_insert 0x00AD85D0 (its resize 0x00AD87A0); stride 0xB8 = Ego_r QuadricOptimiserInternals::COptimisedVertex (192) with its three 16-byte trees at 12 bytes (FaceList, Groups, PairContractions: 180, 8-aligned by CQuadric's doubles -> 184); the assignment 0x00AD7050 copies three trees (landed note); Ego_r has vector<QuadricOptimiserInternals::COptimisedVertex> (stride 0xB8 asserted)
@@ -7,7 +8,7 @@
 //   so each address is its own element type).
 // Callee: QuadricOptimiserInternals::COptimisedVertex::operator= (??4COptimisedVertex@QuadricOptimiserInternals@@QAEAAV01@ABV01@@Z, the PDB spelling) 0x00AD7050.
 // Body: STLport 4.6 `for ( ; __first != __last; ++__first) *__first = __val;` (explicit instantiation of the inline template).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CQuadric { public: double AA, AB, AC, AD, BB, BC, BD, CC, CD, DD; double _pad; };   // Ego_r 88 bytes
 namespace QuadricOptimiserInternals {
 class COptimisedVertex {                                // retail 0xB8 (Ego_r 192 with 16-byte set/maps; STLport's are 12)

@@ -1,5 +1,6 @@
 // NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan::Init() -- restart the barrel man: reset his phase and flags, clear the quest's barrel timer, make him an unkillable informant, remember his home as the broken-barrel spot and give him a 10m sight radius
 // Leaf: ?Init@CNOVI_BarrelMan@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DB5260, 167 bytes (+ int3 padding). __fastcall, `ret`.
@@ -15,7 +16,7 @@
 //   C3DVector assignment (one `add edx,0x85` destination, three dword moves).
 // Naming wave 35: identity reg 00dabf71 "NOVI_BarrelMan" in 00dabac0; Alloc 00db51b0; vtable 012d9014 slot 2; PDB ?Init@CNOVI_BarrelMan@CQ_NewOakValeIntroScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CNOVI_BarrelMan::Init (wave3/labels_alloc.tsv); PDB ?Init@CNOVI_BarrelMan@CQ_NewOakValeIntroScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CNOVI_BarrelMan@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_NewOakValeIntroScript moved into NScript); same bytes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCPPointerInfo { public: long Count; };
 template <class T> class CCountedPointer { public:
     T* Data;                                     // +0

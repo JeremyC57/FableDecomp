@@ -2,6 +2,7 @@
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- PeekTC ends in the F88 form (`if (found != last && !(type < found->type)) it = found; else it = last;` then one `*ppOut = it->component`), which VC7.1 tail-duplicates so the component loads straight into ecx for the slot-30 call as retail does
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00854030, 178 bytes, plain `ret`.
 // Leaf: ?IsStretchAroundHero@CScriptModuleBase@NCameraModes@@UBE_NXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Name: vtable 0x01255F74 slot 4; FableWin.pdb ?IsStretchAroundHero@CScriptModuleBase@NCameraModes@@UBE_NXZ (the remaining base virtual
 //       once slots 2/3/5/6/7/8 are placed by their overriders, see GetModuleFOV 0x00851DD0).
@@ -60,7 +61,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
     CThing* Get() const { return (CThing*)GetPItem(); }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CTCCameraPointDefinitionBase { public:                // retail = Ego_r.pdb offsets for these bytes
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();

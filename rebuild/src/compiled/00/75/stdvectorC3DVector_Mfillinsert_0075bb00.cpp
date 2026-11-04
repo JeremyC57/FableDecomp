@@ -1,5 +1,6 @@
 // std::vector<C3DVector>::_M_fill_insert(pointer position, size_type n, const value_type& x) -- STLport fill insert: with room, shift the tail by n (copy the last n into raw storage, copy_backward the rest, assign x) or fill the raw part first; without room, grow through _M_insert_overflow
 // Leaf: ?_M_fill_insert@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXPAVC3DVector@@IABV3@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075bb00, 311 bytes, thiscall, `ret 0Ch`.
 // Identity (proven): its __uninitialized_copy 0x0066DDF0 is bound ??$__uninitialized_copy@PAVC3DVector@@PAV1@@std@@... and its grow callee 0x0066E370 is bound to the vector<C3DVector> / CArray<C3DVector> _M_insert_overflow; callers the C3DVector-vector insert (tail jump from 0x0075BFF0) and resize 0x0075C040.
 // Callees: __uninitialized_copy 0x0066DDF0, __copy_backward 0x0075B5B0, fill 0x0075B430, uninitialized_fill_n 0x0075B470 (all __fastcall),
@@ -108,11 +109,6 @@ void vector<_Tp, _Alloc>::_M_fill_insert(pointer __position, size_type __n, cons
     }
 }
 }
-class C3DVector {                                          // user copy constructor (FableWin/Ego_d ??0C3DVector@@QAE@ABV0@@Z)
-public:
-    float X, Y, Z;                                        // +0x00
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 template void std::vector<C3DVector >::_M_fill_insert(C3DVector*, unsigned int, const C3DVector&);

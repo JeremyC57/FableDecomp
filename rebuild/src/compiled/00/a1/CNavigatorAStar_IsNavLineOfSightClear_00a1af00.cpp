@@ -1,5 +1,6 @@
 // CNavigatorAStar::IsNavLineOfSightClear(const C3DVector& from, const C3DVector& to) -- true when both end points sit on unblocked navigation quad-tree nodes (looked up on their navigation level) and the straight way-point route between them is clear
 // Leaf: ?IsNavLineOfSightClear@CNavigatorAStar@@UBE_NABVC3DVector@@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1AF00, 227 bytes (+ int3 padding; `ret 8`). Public virtual const (UBE), navigator slot 10.
 // Names (Ego_r PDB name set): ?IsNavLineOfSightClear@CNavigatorAStar@@UBE_NABVC3DVector@@0@Z; the private inline helper
 //   ?GetNodeAt@CNavigatorAStar@@ABEPBVCANavQuadTreeNode@@ABVC3DVector@@@Z (inlined twice here);
@@ -25,7 +26,7 @@
 #define CNavigatorBase CNavigatorBaseLayout
 #include "engine/CNavigatorBase.h"
 #undef CNavigatorBase
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector {
 public:
     float X, Y;

@@ -1,5 +1,6 @@
 // std::_Construct<std::pair<CWideString,C3DVector>,std::pair<CWideString,C3DVector> >(std::pair<CWideString,C3DVector>* p, const std::pair<CWideString,C3DVector>& value) -- placement-copy-constructs a {CWideString, C3DVector} pair (null-checked placement new)
 // Leaf: _Construct
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0043F400, 37 bytes, LTCG register convention modelled as `__fastcall` (p in ecx, value in edx).
 // Callee: CWideString::CWideString(const CWideString&) 0x0099B720 (the first member); the C3DVector is copied
 // member by member through its user copy constructor inside the pair's implicit copy constructor. Catalog label "_Cons_val<pair<CCharString,C3DVector>>":
@@ -10,10 +11,7 @@ class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);               // 0x0099B720
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}   // memberwise user copy ctor (engine C3DVector)
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 template <class T1, class T2> struct pair {

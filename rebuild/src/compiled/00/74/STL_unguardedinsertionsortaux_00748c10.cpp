@@ -1,5 +1,6 @@
 // std::__unguarded_insertion_sort_aux(CThing** first, CThing** last, CThing**, CCompare_FurthestFromInitPos2D comp) -- insertion-sort pass with no lower-bound test over thing pointers ordered by the "furthest from initial position (2D)" predicate
 // Leaf: __unguarded_insertion_sort_aux
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00748C10, 96 bytes, `ret 8` (link-time __fastcall: first in ecx, last in edx, the
 //   value-type tag pointer and the comparator on the stack).
 // Callees: CCompare_FurthestFromInitPos2D::operator()(CThing*, CThing*) const @ 0x007483E0 (landed, __fastcall `ret 8`,
@@ -15,9 +16,7 @@
 //   (retail 0x007483E0 is part of this sort TU): its landed body is reproduced below, ahead of this function, under
 //   `auto_inline(off)`. With an external declaration VC7.1 byte-copies the empty functor into a separate slot (100v96),
 //   and a by-reference comparator calls through the argument slot (96v96).
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C2DVector { public:
     float X, Y, Z;

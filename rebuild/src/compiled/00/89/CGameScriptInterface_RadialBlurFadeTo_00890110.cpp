@@ -1,5 +1,6 @@
 // CGameScriptInterface::RadialBlurFadeTo(float time, float a, float b, float c, float d, float e, float f) const -- script call: starts a radial-blur fade on the environment's spell-effect interpolator at priority 1
 // Leaf: ?RadialBlurFadeTo@CGameScriptInterface@@UBEPAXMMMMMMM@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00890110, 57 bytes, thiscall `ret 1Ch`.
 // Identity (proven): retail CGameScriptInterface vtable 0x01260F0C slot 667 holds this body; slot 667 is
 //   ?RadialBlurFadeTo@CGameScriptInterface@@UBEPAXMMMMMMM@Z (ghidra_out/cgsi_slots_aligned.tsv).
@@ -11,7 +12,7 @@
 //   ?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@NScreenEffect@@ABVC3DVector@@M1MMM@Z
 //   (told apart by their callers: 0x006B8730 is called by the all-float overload, 0x006B8550 by the C3DVector one; the
 //   manifest labels 0x006B8550 as an STLport _Ucopy, which is wrong). Parameter names are descriptive.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 namespace NScreenEffect { enum ScreenEffectPriority { }; }
 class CEnvironmentSpellEffectInterpolator {
 public:

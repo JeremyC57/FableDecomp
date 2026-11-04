@@ -1,5 +1,6 @@
 // CGameScriptInterface::CameraUseCameraPoint(const CScriptThing& cameraPoint, const CScriptThing& subject, float time, long a, long b) const -- script call: forwards to the position/RH-set overload with the live subject's physics position and orientation
 // Leaf: ?CameraUseCameraPoint@CGameScriptInterface@@UBEXABVCScriptThing@@0MJJ@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00891070, 83 bytes, thiscall `ret 14h`.
 // Identity (proven): retail CGameScriptInterface vtable 0x01260F0C slot 413 holds this body; slot 413 is
 //   ?CameraUseCameraPoint@CGameScriptInterface@@UBEXABVCScriptThing@@0MJJ@Z (ghidra_out/cgsi_slots_aligned.tsv); it calls
@@ -13,7 +14,7 @@
 //   component straight into esi, while the position-first locals give retail's `mov ecx,[eax+60h] ; test ; push esi ;
 //   mov esi,ecx`. The two long parameter
 //   names are not in the name sets (descriptive).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 class CTCPhysicsBase {
 public:

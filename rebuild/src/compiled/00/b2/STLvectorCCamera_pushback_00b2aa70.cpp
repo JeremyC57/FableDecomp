@@ -1,5 +1,6 @@
 // std::vector::push_back(const CCamera& x) -- STLport push_back of the engine's camera vectors: copy-construct at _M_finish (out-of-line CCamera copy constructor) when there is room, else _M_insert_overflow @ 0x00B29840 (one element, at the end)
 // Leaf: ?push_back@?$vector@VCCamera@@@std@@QAEXABVCCamera@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B2AA70, length 59 bytes, thiscall `ret 4`.
 // Identity: callees are the landed CCamera::CCamera(const CCamera&) 0x0049D380 (Ego_r.pdb CCamera, 0x38 bytes = the 0x38
 //   stride) and the landed std::vector<CCamera>::_M_insert_overflow 0x00B29840 (whose model and namespace this row
@@ -15,10 +16,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E (alloc
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14 (allocator, unused here)
 inline void* __cdecl operator new(unsigned int, void* where) throw() { return where; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet {
 public:

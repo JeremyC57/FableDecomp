@@ -8,6 +8,7 @@
 // No vtable store: `__declspec(novtable)` over CTCBase. `#pragma pack(1)` reproduces the PDB's
 // unaligned intelligent pointer at +0x3B.
 // Leaf: ??1CTCCreatureFlyInCircles
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
@@ -35,9 +36,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // no destructor of its
 };
 #pragma pack(pop)
 
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 
 class CCardinalSpline { public:
     C3DVector* m_pControlPoints;                   // +0x00 CArray<C3DVector> ControlPoints

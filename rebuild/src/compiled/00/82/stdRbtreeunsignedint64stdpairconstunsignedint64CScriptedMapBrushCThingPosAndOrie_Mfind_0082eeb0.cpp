@@ -1,14 +1,12 @@
 // std::_Rb_tree<unsigned __int64, std::pair<const unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation>, ...>::_M_find(const unsigned __int64& k) const -- STLport tree lookup: walk to the first node whose key is not less than k, return it if k is not less than its key, else the header (end)
 // Leaf: ??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Select1st@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@1@AB_K@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082eeb0, 84 bytes, thiscall, `ret 4`.
 // Identity (proven): bound (reloc_bindings) ?_M_find@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@...@QBEPAU?$_Rb_tree_node@...@Z; callers CScriptedMapBrush::RemoveThing 0x0082E500 and the landed _M_lower_bound / remove helpers 0x0082F0D0 / 0x0082F350.
 // Callees: none.
 // Shape (family L044 = family L008's bytes): STLport 4.6 _tree.h _M_find verbatim with less<unsigned __int64> (the
 //   64-bit compare `cmp hi ; jb/ja ; cmp lo`), the key reloaded from its reference for the final test.
-class C3DVector {
-public:
-    float X, Y, Z;                                        // +0x00
-};
+#include "engine/C3DVector.h"
 class C3DAngles {
 public:
     float X, Y, Z;                                        // +0x00

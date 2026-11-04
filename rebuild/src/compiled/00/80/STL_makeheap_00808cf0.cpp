@@ -1,5 +1,6 @@
 // std::__make_heap(pair<C3DVector, long>* first, pair<C3DVector, long>* last, CCompareTargetedPositionsForFirstPersonTargeting comp, pair<C3DVector, long>*, int*) -- STLport make_heap of the first-person targeting positions (best score at the root): sift every parent down, last parent first
 // Leaf: ??$__make_heap@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00808CF0, 183 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the 0x2c-byte comparator by value and the two type pointers on the stack, `ret 34h`.
 // Name: STLport `__make_heap`; Ego_r.pdb's Dinkumware counterpart is `_Make_heap<pair<C3DVector,long>*, int,
@@ -12,10 +13,7 @@
 //   __adjust_heap(first, parent, len, _Tp(*(first + parent)), comp); if (parent == 0) return; parent--; }` -- the
 //   comparator copied memberwise into its argument slot (ten dwords and the CompareInXYPlane byte), then the value via
 //   STLport's explicit pair copy constructor through the strength-reduced `first + parent` pointer (+8).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // user copy ctor, implicit operator=
-};
+#include "engine/C3DVector.h"
 
 class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                                   // +0x00

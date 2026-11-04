@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSingleSprite::~CPSCSingleSprite() -- the compiler-generated destructor: free the PrimIDList block, destroy the TrailUpdatePrimitive's Trail list, then ~CPSCSplineBase
 // Leaf: ??1CPSCSingleSprite@NParticleEngine@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0A160, 41 bytes, thiscall, tail `jmp ~CPSCSplineBase`.
 // Identity (proven): the sole caller is the slot-0 `??_G` 0x00B0A140 of vtable 0x0129FB84 (RTTI
 //   .?AVCPSCSingleSprite@NParticleEngine@@ : CPSCSplineBase : CPSCBase : CParticleUpdateParamCallback<KK> :
@@ -99,10 +100,7 @@ public:
 #include "engine/CCountedPointer.h"
 
 #pragma pack(push, 1)
-class C3DVector {                                       // retail C3DVector is 1-aligned
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 template <class T> class CArray : public std::vector<T> { };   // Lionhead CArray over STLport vector (0xc)

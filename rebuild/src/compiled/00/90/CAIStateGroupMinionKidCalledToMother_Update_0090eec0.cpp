@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionKidCalledToMother::Update() -- while the mother's "call home" message is still held and the hero lives: when the kid is within 1.2 units (2D) of its living mother it looks at the hero, otherwise it walks to the mother (retrying while the move is in progress); a vanished message or mother terminates the group
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090EEC0, length 515 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: FindCallHomeEvent @ 0x0090EE20, CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 /
 // SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10 (the held message: CIntelligentPointer<CMessageEvent> vtable 0x0128B0C0;
@@ -15,7 +16,7 @@ class CTCBase;
 class CBaseObject { public:
     virtual ~CBaseObject();
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing : public CBaseObject { public:
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();

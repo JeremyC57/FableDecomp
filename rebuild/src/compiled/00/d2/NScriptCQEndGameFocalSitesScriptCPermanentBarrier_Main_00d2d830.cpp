@@ -1,5 +1,6 @@
 // NScript::CQ_EndGameFocalSitesScript::CPermanentBarrier::Main() -- the permanent magic barrier entity script: register an alive-filter over the barrier (Me), let the game update, and unless the script is already done put the HK_MAGIC_BARRIER effect on the barrier's position and keep updating until it is done
 // Leaf: ?Main@CPermanentBarrier@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity (naming wave 11): ?Main@CPermanentBarrier@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012CC48C slot 1 is stored by the ctor 0x00D2D7B0 of the factory 0x00D2D730, registered as "PermanentBarrier" (site 0x00D2AF3B)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D2D830, 202 bytes (+ int3 padding), `ret` (vtable slot 1 = Main per the entity-script
 //   contract [dtor, Main, Init, ...]).
@@ -20,7 +21,7 @@
 // Naming wave 35: identity reg 00d2af3b "PermanentBarrier" in 00d2aa40; Alloc 00d2d730; vtable 012cc48c slot 1; PDB ?Main@CPermanentBarrier@CQ_EndGameFocalSitesScript@NScript@@; refs=1; was under-qualified CPermanentBarrier::Main (wave3/labels_alloc.tsv); PDB ?Main@CPermanentBarrier@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharStringData;
 class CCharString { public:
     CCharStringData* PStringData;

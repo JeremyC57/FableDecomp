@@ -1,5 +1,6 @@
 // C3DAnimation2::~C3DAnimation2() -- free the animation's movable-resource block back to its memory pool, then destroy InstanceList, MovementTrackData, MovementTrack and Allocator, the inline ~CMovableResource and ~C3DAnimationStats
 // Leaf: ??1C3DAnimation2@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A4EEC0, 203 bytes, tail jump to ~C3DAnimationStats 0x00A4EB50; sole caller the scalar
 //   deleting dtor 0x00A555C0 (slot 0 of C3DAnimation2's primary vtable 0x0129D548; the CMovableResource-in-C3DAnimation2
 //   vtable 0x0129D534 slot 0 is the -0x2C thunk 0x00A55400 that jumps to it).
@@ -108,7 +109,7 @@ class CCharString { public:
     bool operator<(const CCharString&) const;
     CCharStringData* PStringData;
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CMatrix3x4;
 class CQuaternion;
 class CBaseObjectPointer;

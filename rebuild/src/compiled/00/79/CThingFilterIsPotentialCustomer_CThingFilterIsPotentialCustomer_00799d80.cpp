@@ -1,5 +1,6 @@
 // CThingFilter_IsPotentialCustomer::CThingFilter_IsPotentialCustomer(CTCShopKeeper* shopKeeper, bool allowExistingShopper) -- remember the shop keeper, the shop's position and, for a building shop whose physics mesh has a BUILDING_BOUNDRY containment volume, the shop thing as the shopper container
 // Leaf: ??0CThingFilter_IsPotentialCustomer
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00799D80, length 173 bytes, `ret 8`, returns `this`.
 // Callees: CTCShopKeeper::GetShopTC @ 0x00798F50, CThing::GetPos @ 0x004C73D0, CTCPhysicsBase::GetPhysicsMesh (slot 93,
 //   +0x174), CTCPhysicsBase::GetPhysicsMeshObject @ 0x006B0850 (CPhysicsMeshObject by hidden pointer),
@@ -13,7 +14,7 @@
 //   assignments after the shop and its physics component are read into locals (Pos copied through the implicit
 //   C3DVector assignment, `lea edx,[esi+4]`); the mesh object is a block-scoped local with the string an implicit
 //   conversion temporary (re-addressed with lea), and the found flag survives its destructor in bl.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

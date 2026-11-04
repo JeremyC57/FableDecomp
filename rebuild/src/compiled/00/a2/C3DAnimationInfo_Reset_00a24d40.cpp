@@ -1,4 +1,5 @@
 // C3DAnimationInfo::Reset() -- private virtual (slot 3): drops the animation data (CIVCountedPointer at +0xc) and zeroes the cached durations and movement vector
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A24D40, length 48 bytes.
 // Callees: CIVCountedPointeeBase slot 1 (Delete, `call [eax+4]`) when the count reaches zero.
 // Layout from engine/C3DAnimationInfo.h: Data_Object +0xc, Duration +0x10, NonLoopingDuration
@@ -30,9 +31,7 @@ struct CIVCountedPointer {
     }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class C3DAnimationInfo { public:                  // engine/C3DAnimationInfo.h offsets
     virtual void v00();

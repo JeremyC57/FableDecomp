@@ -1,5 +1,6 @@
 // CThingSearchTools::GetAllLeafThings(const CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>& filter, std::list<const CThingPhysical*>& things) const -- (<CThingBuilding>) every scan-visible CThingBuilding in the active quest (or none) overlapping the area, appended to the list
 // Leaf: ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@AAV?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005163B0, 370 bytes, thiscall, `ret 8`, ebp frame.
 // Identity (proven): PeekTypeList(3) is CThingBuilding's type list (ThingListType 3, as in the landed CThingSearchTools rows);
 //   Ego_r.pdb/FableWin.pdb ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingPhysical@@...@CThingSearchTools@@QBEX...@Z
@@ -19,7 +20,7 @@
 #pragma optimize("y", off)
 #include <stdlib.h>
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DBoxI {
 public:
     long X0, Y0, X1, Y1;

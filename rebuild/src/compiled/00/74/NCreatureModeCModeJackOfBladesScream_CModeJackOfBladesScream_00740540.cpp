@@ -1,5 +1,6 @@
 // NCreatureMode::CModeJackOfBladesScream::~CModeJackOfBladesScream() -- the compiler-generated destructor: PEmitter, PSword, then the Filter (its Group string and the CAnimFilterBase vtable reset), then ~CModeStandBase
 // Leaf: ??1CModeJackOfBladesScream@NCreatureMode@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00740540, 45 bytes, thiscall, tail `jmp ~CModeStandBase`.
 // Identity (proven): the sole caller is the slot-0 `??_G` 0x00740520 of vtable 0x01267D5C (RTTI
 //   .?AVCModeJackOfBladesScream@NCreatureMode@@ : CModeStandBase); the destroyed members are Ego_r.pdb's PEmitter
@@ -33,10 +34,7 @@ public:
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 #pragma pack(pop)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet {
 public:

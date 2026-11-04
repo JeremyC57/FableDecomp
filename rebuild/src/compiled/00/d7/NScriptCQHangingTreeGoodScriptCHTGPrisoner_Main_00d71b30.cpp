@@ -1,5 +1,6 @@
 // NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner::Main() -- the bound prisoner on the Hanging Tree (good) quest: take scripted control, bind his hands and make him unpushable, wait for the party to be set up, then until the quest state reaches 7: in state 2 follow the bandit leader; in state 5 find the nearest REGION_EXIT_POINT and, when it is a real route, try to escape towards it (the leader shouts for the guards when he gets 12 units away, he dies and fails the mission on reaching the exit, and goes back to following the leader when the hero catches him); in any other state stand still; finally release him
 // Leaf: ?Main@CHTG_Prisoner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D71B30, 1453 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980, CBaseClass ctor 0x0099A2D0, RegisterFilter 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsValid 0x00CD23B9 /
@@ -23,7 +24,7 @@ class CCharString { public:
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 extern const CCharString g_EmptyString;                // 0x0143E8EC
 extern const C3DVector g_ZeroVector;                    // 0x0143E8E0
 struct CScriptThingImpl {                              // the game-side thing behind CScriptThing::PImp

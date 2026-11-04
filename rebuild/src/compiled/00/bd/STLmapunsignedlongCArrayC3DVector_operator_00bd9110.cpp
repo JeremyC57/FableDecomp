@@ -1,5 +1,6 @@
 // std::map<unsigned long, CArray<C3DVector> >::operator[](const unsigned long& k) -- find a mesh's cached bone-scaling array by key, inserting an empty one when absent
 // Leaf: ??A?$map@KV?$CArray@VC3DVector@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BD9110, 161 bytes, thiscall, `ret 4`.
 // Identity: called by CEngineInternalPrimitiveAnimatedMesh::InitialiseBoneScalings 0x00BD2A90 (call 0x00BD2AE2): Ego_r.pdb
 //   CEngineInternalPrimitiveAnimatedMesh::CCache::BoneScalings is map<unsigned long, CArray<C3DVector> >; the tree's
@@ -14,10 +15,7 @@ extern "C" void* __cdecl malloc(unsigned int size);          // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
 #pragma pack(push, 1)
-class C3DVector {                                       // 1-aligned in retail
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 template <class T> class CArray {                       // retail CArray: an STLport vector (first, last, end)

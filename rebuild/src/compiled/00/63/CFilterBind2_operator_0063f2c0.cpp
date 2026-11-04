@@ -1,5 +1,6 @@
 // CFilter_Bind2::operator()(const CThing& thing) const -- the thing overlaps the circle (2D distance below the summed radii) and passes the world-map filter
 // Leaf: ??$?RVCThing@@@?$CFilter_Bind2@VCThingFilter_OverlappingCircle@@VCThingFilterBase@CWorldMap@@@@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0063F2C0, 116 bytes (+ int3 padding), `ret 4`. No direct or absolute
 // references (an unreferenced COMDAT copy).
 // Identity: Ego_r.pdb `??$?RVCThing@@@?$CFilter_Bind2@VCThingFilter_OverlappingCircle@@VCThingFilterBase@CWorldMap@@@@QBE_NABVCThing@@@Z`
@@ -15,11 +16,7 @@
 // temporary bound to a helper's reference parameter, read through the returned pointer; dx / dy / the summed radius as
 // named floats; the squared distance accumulated in two statements); the Bind2 returns its `&&` whole (`mov eax,1` /
 // `xor eax,eax`).
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase
 {

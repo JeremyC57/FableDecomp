@@ -1,5 +1,6 @@
 // NScript::CQ_BreakSiegeScript::CKG_ChiefBreakSiege::Main() -- Break the Siege, the bandit chief: wait for the siege to start or end; take the chief under
 // Leaf: ?Main@CKG_ChiefBreakSiege@CQ_BreakSiegeScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   scripted control and walk him to his hut, telling the hero to stop bothering him whenever spoken to; when the siege is
 //   over play CS_BREAKSIEGE_DEFEAT (hero alive, bandits beaten) or CS_BREAKSIEGE_VICTORY, then make the chief killable
 // Shape: CMKGHCHERO3 0x00D29DB0 model; the chief handle ctor is plain inline (the per-function inline budget expands it here
@@ -8,7 +9,7 @@
 // Naming wave 35: identity reg 00d1d236 "KG_ChiefBreakSiege" in 00d1d100; Alloc 00d1dde0; vtable 012caf00 slot 1; PDB ?Main@CKG_ChiefBreakSiege@CQ_BreakSiegeScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CKG_ChiefBreakSiege::Main (wave3/labels_alloc.tsv); PDB ?Main@CKG_ChiefBreakSiege@CQ_BreakSiegeScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CKG_ChiefBreakSiege@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
 namespace NScript { class CPredicateBase; }
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

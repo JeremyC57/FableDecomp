@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveSprite::Update(const CEnginePrimitive& primitive, unsigned long flags) -- copy a sprite descriptor (position, bank index, frame, half sizes, angle, blend mode/op, colour with its alpha) and its flag word into the render bitfields, start loading the sprite's graphic frame, pick the offset factors from the alignment flags (or from the descriptor offset over the frame's pixel size), and apply the game-primitive fade defaults with the descriptor's fade start
 // Leaf: Update
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BAD670, `ret 8`, virtual `?Update@CEngineInternalPrimitiveSprite@@UAEXABVCEnginePrimitive@@K@Z`.
 // Callees: CGraphicInfoFrame::BeginLoading(unsigned long, unsigned long) @ 0x009FE620,
 // CEngineInternalPrimitiveBase::SetFadeDistanceWithGamePrimitiveDefaults(float) @ 0x00B8FD40.
@@ -11,7 +12,7 @@
 //   one byte RMW as retail); the frame getter is the landed bank model with a frame index; every offset branch shares the tail call.
 #include "engine/CEngineInternalPrimitiveBase.h"
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
 class CRGBColour { public: unsigned char B, G, R, A; };
 

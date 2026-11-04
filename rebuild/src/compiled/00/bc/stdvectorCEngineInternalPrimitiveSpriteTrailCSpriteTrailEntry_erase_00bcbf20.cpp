@@ -1,5 +1,6 @@
 // std::vector<CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry>::erase(iterator first, iterator last) -- STLport range erase: assign the tail [last, finish) down onto first, destroy the vacated (trivial) elements, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@VCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@V?$allocator@VCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@@std@@@std@@QAEPAVCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@PAV34@0@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00bcbf20, 81 bytes, thiscall, `ret 8`, returns first.
 // Identity (proven): bound ?erase@?$vector@VCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@...@Z in reloc_bindings; landed callers CEngineInternalPrimitiveSpriteTrail::Update 0x00BCBC00 and vector<CSpriteTrailEntry>::resize 0x00BCC3B0 (the Trail array at this+0x68); 16-byte stride.
 // Callees: none (everything inline).
@@ -9,12 +10,7 @@
 //   with the element's implicit memberwise operator= (four dword moves); the trivial destructors leave no loop. VC7.1
 //   only expands __copy_ptrs/__copy here when they are __forceinline (plain `inline` leaves two out-of-line calls).
 #include <stddef.h>
-class C3DVector {                                           // 12 bytes
-public:
-    float X;                                              // +0x00
-    float Y;                                              // +0x04
-    float Z;                                              // +0x08
-};
+#include "engine/C3DVector.h"
 class CEngineInternalPrimitiveSpriteTrail {
 public:
     class CSpriteTrailEntry {                             // Ego_r.pdb, 16 bytes

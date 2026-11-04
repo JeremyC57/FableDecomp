@@ -7,11 +7,10 @@
 // Shape: two whole-vector assignments from the argument kept in edi (the first copied through `mov ecx,edi`), the bit cleared as
 //   `mov al ; and al,0FEh ; mov`.
 // Leaf: ResetPosition
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/CTCPhysicsNavigator.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 struct SNavigatorFlags {                    // CTCPhysicsNavigator +0xad bool:1 group
     bool ForcedMoveToPosSet : 1;            // bit 0

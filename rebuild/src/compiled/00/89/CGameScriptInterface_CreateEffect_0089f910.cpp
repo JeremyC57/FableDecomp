@@ -1,9 +1,10 @@
 // CGameScriptInterface::CreateEffect(const CCharString&,const CScriptThing&,const CCharString&,const CCharString&,bool,bool) -- attach a created emitter and return its script handle
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0089F910,198 bytes. Real engine CScriptThing flattened base; PMF dispatch to GetPThing slot11 and IsAlive slot75. Native CThing map44 and emitter bit75.
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
-class C3DVector{ public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

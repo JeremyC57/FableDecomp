@@ -1,5 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::GetRenderMeshObject(C3DMeshObject& out, const C3DVector& position, const CRightHandedSet& orientation) const -- for a mesh main graphic (type 4 or 5) build its render mesh object at the given placement; false for any other graphic
 // Leaf: GetRenderMeshObject
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BC750, length 173 bytes (+ int3 padding). __fastcall, `ret 0Ch`.
 //         Ego_r.pdb: `?GetRenderMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DMeshObject@@ABVC3DVector@@AB
 //         VCRightHandedSet@@@Z`.
@@ -15,7 +16,7 @@
 //         retail CWorld::PMainMeshBank +0x3C; C3DMeshObject 0x78 bytes (landed model).
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 class C3DMeshInfo;
 

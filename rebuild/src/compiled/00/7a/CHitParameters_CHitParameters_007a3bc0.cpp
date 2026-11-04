@@ -1,5 +1,6 @@
 // CHitParameters::CHitParameters() -- default hit parameters: undirected, blockable, plays the hit response, moves the target back and spawns both hit effects; empty damage map and augmentation list, no hit location, material, attacker or weapon
 // Leaf: ??0CHitParameters@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A3BC0, 154 bytes (+ int3 padding to 160), __fastcall, plain `ret`.
 // Identity: Ego_r.pdb `??0CHitParameters@@QAE@XZ` sits straight after CTCWillLightning's ??_G, as this code follows the
 //   retail lightning block; the member stores are the PDB CHitParameters layout (the landed 3-argument ctor 0x0087FF60
@@ -22,9 +23,7 @@ class CHitLocation;
 class CMaterialDef;
 
 #pragma pack(push, 1)
-class C3DVector { public:                                       // pack(1) in the engine (engine/C3DVector); no default initialisation
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 struct _Rb_tree_node_base {

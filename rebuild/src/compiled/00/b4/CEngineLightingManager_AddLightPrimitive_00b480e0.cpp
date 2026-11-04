@@ -1,4 +1,5 @@
 // CEngineLightingManager::AddLightPrimitive(const CEngineInternalPrimitiveShadowedSpotLight&) -- queue a shadowed spot light for this frame: skipped when its radius or cone radius is below 0.1 or its colour is black (every channel below 1/255); otherwise a CManagerShadowedSpotLight from the object heap is appended to ShadowedSpotLightList
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B480E0, length 253 bytes (`ret 4`; called from RenderPrimitive 0x00B481E0 for type 16).
 // Callees: CDynamicObjectHeap<56,16>::CreateMoreBlocks @ 0x00B49010 (on the heap @ 0x01437450), CManagerShadowedSpotLight::
 // CManagerShadowedSpotLight(const C3DVector&, const C3DVector&, float, float, float, const CRGBFloatColour&) @ 0x00B493C0,
@@ -10,7 +11,7 @@
 // Shape: `x < k` early returns (`test ah,5 ; jnp`); the class operator new is the inlined heap Alloc (null when the heap may not
 // grow) merged with new's null test; STLport push_back with the __true_type tag homed in the dead argument slot (the pushed
 // pointer lives there too).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public: float R, G, B, A; };
 
 struct CObjectEntry { CObjectEntry* Next; };

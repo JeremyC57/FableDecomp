@@ -1,4 +1,5 @@
 // CTCCoopSpirit::CTCCoopSpirit(CThing*) -- CTCBase(thing), own vtable, the def pointer cleared, the particle-emitter intelligent pointer constructed
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00670050, length 48 bytes (+ int3 padding).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (the manifest label "CEngineSubPrimitive2DClockSprite" is
 // propagated), CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (then the CIntelligentPointer
@@ -43,7 +44,7 @@ struct CDefPointer_CoopSpiritDef {                          // CDefPointer<CCoop
     CDefPointer_CoopSpiritDef() : Object(0) { }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CTCCoopSpirit : public CTCBase_Calls { public:                      // vtable 0x0125B264
     long                      NoMovementTimer;              // +0x0c

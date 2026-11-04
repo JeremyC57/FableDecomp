@@ -1,5 +1,6 @@
 // _global::Copy_IcicleData_008e34c0(const CIcicleData* first, const CIcicleData* last, CIcicleData* result, const random_access_iterator_tag&, int*) -- assign [first, last) of ice-troll icicle records onto result (two intelligent pointers, two timers, a position), return the advanced result
 // Leaf: Copy_IcicleData_008e34c0
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E34C0, length 125 bytes (`ret 0Ch`).
 // Identity: STLport `__copy<CIcicleData*>` as the landed caller NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::OnDeactivate
 //   0x008D9650 declares it (its inlined vector::erase); Ego_r.pdb CIcicleData is 0x24 bytes with these members. The
@@ -27,7 +28,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:
 
 class CThing;
 
-class C3DVector { public: float X, Y, Z; };           // POD (implicit assignment: the pointer-register block copy)
+#include "engine/C3DVector.h"
 
 struct CIcicleData {                            // NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::CIcicleData, Ego_r.pdb 0x24 bytes
     CIntelligentPointer<CThing> PEffect;        // +0x00

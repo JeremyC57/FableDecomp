@@ -1,5 +1,6 @@
 // NCameraModes::CPhysicsState::CPhysicsState() -- builds the two empty attractor lists (STLport sentinel nodes) and clears the cull flag; the position / velocity / acceleration vectors are left uninitialised
 // Leaf: ??0CPhysicsState@NCameraModes@@QAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0084F490, 58 bytes, plain `ret` (returns this).
 // Identity: Ego_r.pdb NCameraModes::CPhysicsState (0x40 bytes there): Position +0, Velocity +0xc, Acceleration +0x18,
 //   Attractors +0x24 and IncidentalAttractors list<pair<C3DVector, float> > (16-byte element -> 0x18-byte node),
@@ -10,7 +11,7 @@
 //   only then stores it (the landed list constructor 0x0084F1F0 model); the bool is an init-list member after the lists.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 namespace std {
 template <class T1, class T2> struct pair {

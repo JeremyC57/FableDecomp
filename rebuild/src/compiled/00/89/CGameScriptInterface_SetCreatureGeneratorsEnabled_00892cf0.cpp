@@ -3,6 +3,7 @@
 // Callees: the inline CCharString::operator==(const char*) (strcmp intrinsic `repe cmpsb` for a null block, CBasicString<char>::operator== @ 0x004115A0 otherwise; "" @ 0x0122D70E),
 // CWorld virtual slot 13 (PeekWorldMap, +0x34), CWorldMap::GetRegionNumberFromName @ 0x004FC210, CWorld virtual slot 12 (GetWorldMap, +0x30), the region record getter @ 0x004FB490.
 // Leaf: SetCreatureGeneratorsEnabled
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include <string.h>
 // Retry 10: the `== ""` test is split by hand (strcmp on a null block, the block compare otherwise) with the arms joined by
 // goto, as the landed 0x0048F7C0; the default name is an implicit CCharString conversion (homed in a dead argument slot).
@@ -167,10 +168,7 @@ struct CCombatManager_Retail {
     void CreatureUnsheathWeapon(CThing_Retail* creature, long mode);   // 0x006EBDD0
 };
 struct CMessageEvent_Retail;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 struct CMessageEventManager_Retail {
     CMessageEvent_Retail* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing_Retail* from, CThing_Retail* to, float value1, float value2, long data);   // 0x00687540
 };

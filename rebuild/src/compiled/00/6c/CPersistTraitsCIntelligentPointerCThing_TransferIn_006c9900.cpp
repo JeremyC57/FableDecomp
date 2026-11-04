@@ -1,5 +1,6 @@
 // CPersistTraits<CIntelligentPointer<CThing> >::TransferIn(CPersistContext& context, CStringParser& parser, CIntelligentPointer<CThing>& value) -- read a thing UID from a text save; for a non-zero UID create a THING_DUMMY_FOR_SERIALISATION placeholder carrying the UID and point the value at it
 // Leaf: ?TransferIn@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAV?$CIntelligentPointer@VCThing@@@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006C9900, 241 bytes, thiscall `ret 0Ch` (the traits `this` is unused).
 // Identity (proven): Ego_r.pdb donor 0x006FF800 holds this symbol right after TransferBinaryIn (0x006FF6C0), whose retail twin is
 //   the landed 0x006C8780 (same dummy-thing body over a binary stream); the two retail callers 0x006C9773 / 0x006C9B59 are the
@@ -32,10 +33,7 @@ class CStringParser { public:
     unsigned __int64 ReadAsUHUGE();                     // 0x009BA5B0
 };
 class CPersistContext;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 class CBaseIntelligentPointer {
 public:

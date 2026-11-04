@@ -1,5 +1,6 @@
 // NScript::CQR_EscortTraderScript::DoMission() -- the escort-trader mission thread: unless the trader already exists, wait for the LookoutPoint region, take one script frame, then create CREATURE_TRADER_01 as "TraderToEscort" at the M_ET_TraderSpawnPoint marker and remember it; spawn the WatchForFailure thread, run EscortTrader and take a final script frame
 // Leaf: ?DoMission@CQR_EscortTraderScript@NScript@@QAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1F0C0, 525 bytes, thiscall, plain `ret`.
 // Identity (proven): the landed NScript::CQR_EscortTraderScript::Main 0x00E1E110 spawns this body as the "DoMission" thread
 //   (CSpawnedFunc<CQR_EscortTraderScript>::Func store at 0x00E1E399); Ego_r.pdb / FableWin.pdb name set
@@ -26,10 +27,7 @@ public:
 };
 void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A (MSVCR71)
 #include "engine/CCountedPointer.h"
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 #include "engine/CLevelScriptBase.h"

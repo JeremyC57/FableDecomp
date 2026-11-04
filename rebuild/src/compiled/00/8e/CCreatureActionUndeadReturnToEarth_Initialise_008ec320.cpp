@@ -1,4 +1,5 @@
 // CCreatureAction_UndeadReturnToEarth::Initialise() -- the undead sinks back into the ground: spawn the creature definition's "SINK" special effect at its position (when its special-effects sub-def maps that name), suspend its animation, then the combat-action Initialise
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008EC320, length 208 bytes (plain `ret`, virtual).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, three times), CDefClassBase::GetSubDef<
 // CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) 0x00669580 on the thing's definition (+0x70), CCharString(const char*,
@@ -11,7 +12,7 @@
 // condition with the implicitly converted string temporary keeps its construction flag in ebx (zeroed at entry) and the
 // condition in a frame byte. The suspend call goes through a second named creature local so GetPItem runs before the
 // two constant arguments are pushed.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* m_pData;

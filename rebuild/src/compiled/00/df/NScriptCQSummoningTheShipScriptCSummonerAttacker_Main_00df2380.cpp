@@ -1,5 +1,6 @@
 // NScript::CQ_SummoningTheShipScript::CSummonerAttacker::Main() -- a summoner guarding the Fire Heart: hide Me, wait until the quest activates this summoner's wave, fade Me in (with a blue health bar for summoner 1), then forever: script Me; while the hero is more than 15 units away keep the lightning-orb attack on the Fire Heart going and, when the hero hits Me, respawn either dead wardog minion near the hero; once the hero closes in, release Me, drop its minimap marker and wait until the hero backs off
 // Leaf: ?Main@CSummonerAttacker@CQ_SummoningTheShipScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity (naming wave 11): ?Main@CSummonerAttacker@CQ_SummoningTheShipScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012DE274 slot 1 is stored by the factory 0x00DF21F0 registered as "SummonerAttacker"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF2380, 1494 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Literals "HUD_ORB_QUEST_CORE" 0x01258AB0, "HUD_QUEST_ICON_SUMMONER_BLUE" 0x012DE298, "FireHeart" 0x012DE154,
@@ -24,7 +25,7 @@ class CCharString { public:
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImpl;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

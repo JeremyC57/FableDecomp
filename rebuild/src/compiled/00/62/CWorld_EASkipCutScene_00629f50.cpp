@@ -1,5 +1,6 @@
 // CWorld::EASkipCutScene(const CGameEvent*) -- game-event action: if a skippable cutscene is showing, play the text-box button sound, post the skip-cutscene message and clear the subtitles, marking the cutscene skipped
 // Leaf: ?EASkipCutScene@CWorld@@QAEXPBVCGameEvent@@@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
@@ -24,10 +25,7 @@
 #include "engine/CSubtitleRenderer.h"
 #undef CSubtitleRenderer
 class CCharString { public: void* PStringData; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CThing;
 class CGameEvent;
 class CASoundBank;

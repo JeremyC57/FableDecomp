@@ -1,4 +1,5 @@
 // NCreatureMode::CModeJackOfBladesScream::OnActivate() -- the Jack of Blades scream: clear two creature flags (for a thing of type flag 2), look up the "FLOAT_SCREAM" effect in the thing definition's special-effects sub-def, spawn it at the creature, keep it in PEmitter and attach its particle emitter to the creature's "TARGET_CURSOR_POINT" bone
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D9870, 312 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CDefClassBase::GetSubDef<CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) 0x00669580, CCharString(const
 //   char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString(const CCharString&, long&)
@@ -13,7 +14,7 @@
 //   intelligent-pointer temporary and the bone-name string (frame 0xc); the creature-flag clear reads ParentThing into a
 //   block-scoped local (keeps the scratch-register rotation); the thing's definition is copied (add-ref, GetSubDef,
 //   release) in an inline helper; the effect sub-def is released by hand at the end (known non-null: no test).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* m_pData;

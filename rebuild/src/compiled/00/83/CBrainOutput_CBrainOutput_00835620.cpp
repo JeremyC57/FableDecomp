@@ -1,5 +1,6 @@
 // CBrainOutput::CBrainOutput() -- navigation input and action pointer zeroed, look-at pointer built, then types/flags cleared and the action reset
 // Leaf: ??0CBrainOutput@
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00835620, length 89 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (LookAtThing +0x40, then
 // the CIntelligentPointer vtable 0x01237F1C is stored by the inlined derived constructor), the
@@ -58,7 +59,7 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
     }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CNavigationInput { public:                       // 24 bytes: the first three dwords are left to the caller
     long m_00;

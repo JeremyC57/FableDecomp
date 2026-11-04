@@ -1,5 +1,6 @@
 // CMouseDX::~CMouseDX() -- DirectInput mouse destructor: restore the CMouseDX vtable, unacquire and release the DirectInput mouse device, release the cursor graphic counted pointer, then the CMouse base
 // Leaf: ??1CMouseDX@@UAE@XZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AB5320, 109 bytes, thiscall, tail `jmp ??1CMouse@@UAE@XZ` (0x00A66F80).
 // Identity (proven): stores vtable 0x0129EA14 first (RTTI .?AVCMouseDX@@ : CMouse : CBaseClassNonCopyable : CBaseClass); sole caller
 //   is that vtable's slot-0 scalar deleting destructor 0x00AB5FA0 (call at 0x00AB5FA3); Ego_r.pdb ??1CMouseDX@@UAE@XZ. The tail
@@ -30,7 +31,7 @@ struct DIDEVICEOBJECTDATA {                                  // DirectInput 8: 2
     unsigned long dwOfs, dwData, dwTimeStamp, dwSequence, uAppData;
 };
 class C2DVector { public: float X, Y; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CInputEvent { public: unsigned char Data[0x34]; };     // 0x34 bytes (CMouse::EventStore[256] = 0x3400)
 class CInputManager;
 class CInputManagerDX;

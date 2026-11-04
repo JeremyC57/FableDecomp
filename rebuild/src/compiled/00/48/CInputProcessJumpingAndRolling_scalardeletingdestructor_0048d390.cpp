@@ -1,5 +1,6 @@
 // CInputProcessJumpingAndRolling::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~CInputProcessJumpingAndRolling inlined (destroying InitialFacingDirections, Pulses, then ~CAInputProcess), and operator delete when bit 0 of flags is set; returns this
 // Leaf: ??_GCInputProcessJumpingAndRolling@@UAEPAXI@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0048D390, 48 bytes, thiscall, `ret 4`; reached only through vtable slot 0.
 // Identity: CInputProcessJumpingAndRolling -- proven; evidence: vtable 0x01238050 slot 0 (RTTI .?AVCInputProcessJumpingAndRolling@@ : CInputProcessGameBase : CAInputProcess); the destroyed members are Ego_r.pdb InitialFacingDirections (list<C3DVector>, +0x3C) and Pulses (list<pair<C2DVector, long> >, +0x38), and 0x00A0D3D0 stores the CAInputProcess vtable 0x0129CA10.
 // Label: the manifest's "`vector_deleting_destructor'" is propagated across byte-identical bodies.
@@ -10,7 +11,7 @@
 //   construction, nothing more.
 // Model: local -- engine/CInputProcessJumpingAndRolling.h exists but is data-only (vptr flattened into a word), which cannot carry the virtual destructor chain.
 class C2DVector { public: float X, Y; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };

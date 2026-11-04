@@ -1,5 +1,6 @@
 // _global::_Push_heap(pair<CCharString,C3DVector>*, long, long, pair<CCharString,C3DVector>, CKeyPairCompareLess<CCharString,C3DVector>) -- heap sift-up of name-keyed positions
 // Leaf: _Push_heap
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077E730, 178 bytes, `ret 0x18`.
 // Callees: 0x00429950 CBasicString<char>::operator<, 0x0099EFB0 CCharString::operator=, 0x0099EAE0
 // ~CCharString.  Link-time __fastcall (/Gr algorithm TU): first in ecx, hole in edx, then top, the
@@ -30,9 +31,7 @@ class CCharString { public:
     }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 template<class T1, class T2> struct pair {
     T1 first;

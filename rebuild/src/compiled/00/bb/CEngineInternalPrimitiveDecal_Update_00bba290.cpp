@@ -1,11 +1,12 @@
 // CEngineInternalPrimitiveDecal::Update(const CEnginePrimitive& primitive, unsigned long flags) -- copies a decal descriptor into the internal decal: primitive flags, landscape-only flag, decal index/frame, position, size, colour, orientation set, blend mode/op, stencil height and the Lit flag bit
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BBA290, length 157 bytes (`ret 8`). No callees.
 // Layout: descriptor = PDB CEnginePrimitiveDecal (88 bytes over the 12-byte CEnginePrimitive), target = PDB
 // CEngineInternalPrimitiveDecal (148 bytes; EnginePrimitiveFlags +0x0C of the base); all offsets agree with the PDB.
 // Shape: the struct members (WorldPos C3DVector, RHSet CRightHandedSet) copy through `lea` + edi, the C2DVector and colour word by
 // word; the Lit flag is bit 7 of the descriptor's Flags word read as an UNSIGNED SHORT bit field (`mov al,[eax+54h] ; shr al,7 ;
 // and al,1`): an unsigned char unit drops the `and`, an unsigned long unit loads the whole dword.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
 class CRGBColour { public: unsigned char B, G, R, A; };
 class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };   // 24 bytes

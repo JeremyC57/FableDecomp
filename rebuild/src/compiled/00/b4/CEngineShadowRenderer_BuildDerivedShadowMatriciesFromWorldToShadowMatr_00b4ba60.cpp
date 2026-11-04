@@ -1,5 +1,6 @@
 // CEngineShadowRenderer::BuildDerivedShadowMatriciesFromWorldToShadowMatrix() -- derive the homogeneous-screen-space shadow matrix (world-to-shadow scaled by (2,-2,1) and translated by (-1,1,0)) and the texture-space one (world-to-shadow scaled by the shadow-buffer UV scaler, plus the colour-buffer z bias for technique 2)
 // Leaf: BuildDerivedShadowMatriciesFromWorldToShadowMatrix
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B4BA60, length 608 bytes, plain `ret`, no callees.
 // The two inline CMatrix4x4 helpers scale the first three columns of every row and add the w column times a translation;
 //   `x * 2` is `fadd st,st`, `x * 1` folds to a copy and `x + w * -1` becomes `x - w * 1`.
@@ -7,10 +8,7 @@
 //   WorldToShadowBufferMatrixHomogenousScreenSpace +0x4c and WorldToShadowBufferMatrixTextureSpace +0x8c.
 #include "engine/CEngineShadowRenderer.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 class CMatrix4x4 { public:
     float M[4][4];
     __forceinline void Scale(const C3DVector& s)

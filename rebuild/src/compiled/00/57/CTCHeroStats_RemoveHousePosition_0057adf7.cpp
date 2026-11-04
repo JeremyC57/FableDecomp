@@ -1,4 +1,5 @@
 // CTCHeroStats::RemoveHousePosition(const CRegion*, const C3DVector&) -- forgets the remembered house of this region that lies within one unit (2D) of the position
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057ADF7, 92 bytes. Single caller 0x006C18F6.
 // Callee: vector<pair<const CRegion*, C3DVector>>::erase(iterator) @ 0x0057FD32 (`this` = the vector, kept in ecx
 //         through the loop; the returned iterator is dropped).
@@ -17,9 +18,7 @@
 
 class CRegion;
 
-class C3DVector { public:
-    float x, y, z;
-};
+#include "engine/C3DVector.h"
 
 struct CHousePosition {                        // std::pair<const CRegion*, C3DVector>
     const CRegion* first;
@@ -46,8 +45,8 @@ void CTCHeroStats_Retail::RemoveHousePosition(const CRegion* region, const C3DVe
 {
     for (CHousePosition* it = HousePositions.begin(); it != HousePositions.end(); ++it) {
         if (it->first == region) {
-            float dx = it->second.x - position.x;
-            float dy = it->second.y - position.y;
+            float dx = it->second.X - position.X;
+            float dy = it->second.Y - position.Y;
             float distanceSquared = dx * dx;
             distanceSquared += dy * dy;
             if (distanceSquared < 1.0f) {

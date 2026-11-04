@@ -1,5 +1,6 @@
 // CTCPhysicsRigidBody::OnSerialise(CPersistContext& context, bool loading) -- serialise the physics base, then the right-handed set as six floats (Forward XYZ, Up XYZ, default 0)
 // Leaf: OnSerialise
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075A350, length 300 bytes (+ int3 padding), `ret 8`. Vtable 0x0126996C
 // (CTCPhysicsRigidBody) slot 1 (catalog "CTCPhysicsRigidBody::vfunc_1"), the CTCBase::OnSerialise(CPersistContext&, bool)
 // override; the same body as CTCPhysicsStandard::OnSerialise 0x00724290 with RHSet at +0x68.
@@ -13,10 +14,7 @@
 // Layout: Ego_r.pdb CTCPhysicsRigidBody has RHSet at +0x74 after three 16-byte std::vectors at +0x40; retail STLport
 // vectors are 12 bytes, so retail RHSet sits at +0x68 (as in the landed vfunc_75 0x00759A00). engine/CTCPhysicsRigidBody.h
 // follows the PDB offsets and has no virtuals, so the class is modelled locally.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CRetailVector { void* m_first; void* m_last; void* m_end; };   // retail STLport vector, 12 bytes
 

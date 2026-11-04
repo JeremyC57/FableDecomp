@@ -1,5 +1,6 @@
 // CMainGameComponent::GetInputs() -- fold the camera's interpolated positions (t = 0 and t = 1) into an input checksum, record it with the world checksum and frame in the input manager and update the input manager; while the application is active (and more than one ... is reported), poll the player interface's queued game events, queueing them as game events -- or, while loading, only processing system events
 // Leaf: GetInputs
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00416E78, length 393 bytes; size-optimised frame-pointer TU
 //   (`#pragma optimize("s", on)` + `optimize("y", off)`), /GS cookie 0x0139C8A8 / __security_check_cookie @ 0x00BFE9F9.
@@ -17,7 +18,7 @@
 //   read through an inline GetPlayerInterface() accessor, which keeps retail's top-tested event loop.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 struct CMemoryBuffer { };
 class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00

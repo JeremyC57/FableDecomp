@@ -1,5 +1,6 @@
 // CAIStateGroup_ServeFood::IsRunnable() -- a barmaid whose building owns tavern tables: when it is serving time find a table to serve (mode 1), give up when she already eats at one, else a table to clear; off time, a table to serve in mode 2; on success remember the table
 // Leaf: ?IsRunnable@CAIStateGroup_ServeFood@@MAE_NXZ
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00923070, 1184 bytes, thiscall, frame 0xc.
 // Identity: Ego_r.pdb / FableWin.pdb ?IsRunnable@CAIStateGroup_ServeFood@@MAE_NXZ; the two virtuals it calls are the
 //   class's protected IsTime (slot 14, +0x38) and GetBuilding (slot 15, +0x3c), both PDB-named on the AtTavern/AtHome
@@ -25,7 +26,7 @@ class CTCBase;
 class CBaseObject;
 class CBaseObjectPointer;
 class CThingObject;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 namespace std {
 template <class _T1, class _T2> struct pair {

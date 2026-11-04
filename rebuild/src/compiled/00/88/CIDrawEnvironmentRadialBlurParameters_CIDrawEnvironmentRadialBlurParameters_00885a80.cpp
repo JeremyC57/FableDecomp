@@ -1,5 +1,6 @@
 // CIDrawEnvironmentRadialBlurParameters::CIDrawEnvironmentRadialBlurParameters(const CIDrawEnvironmentRadialBlurParameters& other) -- memberwise copy of the radial-blur draw parameters (two centres, two colours, four scalars, two track modes)
 // Leaf: ??0CIDrawEnvironmentRadialBlurParameters
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00885A80, length 139 bytes, `ret 4`, returns `this`.
 // Label: the catalog's CPreTransposedBoneMatrix::Set is propagated. The only caller (0x008858E5) builds its by-value
 // result in the hidden return slot with this function, right after interpolating the CRadialBlurPositionParams of
@@ -9,10 +10,7 @@
 // Shape: an out-of-line memberwise copy constructor. C3DVector has a memberwise USER copy constructor (its three
 // words copy straight from the source); CRGBFloatColour copies IMPLICITLY, which VC forms through re-based address
 // registers (`lea edx,[ecx+18h] ; lea esi,[eax+18h]`). The scalars are plain dword moves.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CRGBFloatColour { public:                        // implicit copy constructor
     float R, G, B, A;

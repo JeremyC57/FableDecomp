@@ -1,4 +1,5 @@
 // CEngineLightingManager::CalcSWLighting(const C3DVector& position, const C3DVector& normal) -- software lighting of one vertex by the global lights only: the diffuse factor is the clamped square of the normal's facing towards the main light, the backlight factor its facing away; the colour is diffuse * factor + ambient + backlight * back factor, each channel clamped to [0, 1]
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B45510, length 525 bytes (`ret 0Ch`: hidden result, position, normal). No callees.
 // Floats: 0.0f @ 0x0122DEDC, 1.0f @ 0x0122DED8.
 // Layout: CEngineLightingManager retail offsets (ThemeChannels is a 12-byte vector, so every colour after it sits 4 below the PDB):
@@ -10,9 +11,7 @@
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 inline float Sqr(float x) { return x * x; }
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() { }

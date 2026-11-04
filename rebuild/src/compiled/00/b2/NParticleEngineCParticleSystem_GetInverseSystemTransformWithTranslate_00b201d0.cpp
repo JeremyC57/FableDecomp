@@ -1,4 +1,5 @@
 // NParticleEngine::CParticleSystem::GetInverseSystemTransformWithTranslate(CMatrix3x4*) -- the inverse of the system transform including its translation (minus the inverse rotation applied to the forward translation), with every rotation row scaled by the system's Scale
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- re-graded unchanged against the registered retry oracle (the earlier x87-order DIFFER no longer reproduces)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B201D0, length 240 bytes (`ret 4`; manifest label correct).
 // Callees: CParticleSystem::GetSystemTransform @ 0x00AF3D80 (&PParentEmitter->Transform) and GetInverseSystemTransform
@@ -9,7 +10,7 @@
 // Shape: the forward transform is copied to a local (rep movsd), the inverse straight into the result; each
 // translation component is the negated dot product of the forward translation with a column of the inverse
 // rotation; the scale multiplies in place, element by element.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 { public:
     float m[12];                                   // 3x3 rotation (rows) then the translation
