@@ -36216,3 +36216,6 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z	00437ae0	004385f0
 ?g_MaxMapwhoCellSize@@3JA	013ba84c	006378e0
 ?GetOneOverTickRate@NParticleEngine@@YIMXZ	00aeaa00	00b18820
+??1CQ_HangingTreeEvilScript@NScript@@UAE@XZ	00d6ed60	00d6ed40
+??1CQ_SecretPassageScript@NScript@@UAE@XZ	00df10d0	00df10b0
+??4CScriptDef@@QAEAAV0@ABV0@@Z	00f2a250	00f2a240

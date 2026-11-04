@@ -1,0 +1,4 @@
+action	symbol	target	by_row	note
+ADD	??1CQ_HangingTreeEvilScript@NScript@@UAE@XZ	00d6ed60	00d6ed40	naming wave 35: emitted by the respelled row
+ADD	??1CQ_SecretPassageScript@NScript@@UAE@XZ	00df10d0	00df10b0	naming wave 35: emitted by the respelled row
+ADD	??4CScriptDef@@QAEAAV0@ABV0@@Z	00f2a250	00f2a240	naming wave 35: emitted by the respelled row

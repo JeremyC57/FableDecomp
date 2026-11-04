@@ -1,0 +1,79 @@
+Naming wave 35a (2026-11-04): small virtual-slot functions of entity scripts, level scripts and def classes respelled as the real members
+=================================================================================================================================
+Read-only on the repo. Overlay in overlay/ (rebuild/src/compiled + rebuild/tests, 923 + 923 new files). Nothing in the repo, headers,
+catalog, manifest, ps1 or reloc_bindings.tsv was touched. No FABLE_HDR_OVERLAY needed (no header changes).
+
+COUNTS (ROWS.tsv 1,161)
+  respelled + passing  923  (final recheck from the overlay files: 837 MATCH + 86 RELOCATION_MATCH, all PASS, no RELOC_NAME / leaf / conflict warning;
+                             logs/recheck_final.log, final/pass.tsv; objdump -t: every object defines exactly its PDB Leaf symbol, logs/objdump_symbols.tsv)
+     GetParentScript 589 (203 shared header, 386 Alloc-row TU) | CEntityScriptBinding<T>::GetEntityScriptName 118 | OnPredicateFail 99
+     (95 empty, 4 CQ_SunnyvaleMasterData flag) | OnPersist 90 (29 empty incl. 4 level scripts; 61 Transfer<bool|long> bodies) |
+     ??_G 19 (15 level scripts, CEntityScriptBase, 3 CSpawnedFunc1<T,P1>) | def GetSizeofClass 5 + Copy 3
+  deferred             238  (DEFERRED.tsv, one reason per row)
+     118 CActiveEntityScript<T> ??_G: HOLD per DECISIONS_W29_RESOLVED D1 (retail expands the implicit ~CActiveEntityScriptBase; VC7.1 calls it)
+      39 nontrivial OnPredicateFail bodies (7..428 bytes) not attempted: they write parent / master-data members the available class models do not name
+      30 the storer row the TU must come from is itself still misspelled (ctor rows with placeholder / no Leaf, Alloc 0x00CDEB40 / 0x00DCDE20): NAME_FIXES.tsv
+      29 entity rows with no landed Alloc row (no TU that emits the vtable; header lacks the nested class / member)
+      11 level/entity ??_G whose storer model lacks the member destructors retail runs (DIFFER 30v40 etc., as wave 33)
+       6 def-class rows (4 ??_G with no landed ctor model, CRegionScriptDef ??_G DIFFER, CHeroSoulsCreatureDef::Copy see D6)
+       4 OnPersist with no class model / member, 1 single-line Alloc model (CChickenSign)
+  callers respelled 0 (CALLERS.tsv: no rel32 call/jmp in Fable.exe targets any respelled address; each has exactly one absolute ref, its vtable slot)
+  bindings: ADD 3 / RETIRE 0 / CONFLICT 0 (BINDINGS.tsv): ??1CQ_HangingTreeEvilScript 0x00D6ED60, ??1CQ_SecretPassageScript 0x00DF10D0 (both catalogued
+     so), ??4CScriptDef@@QAEAAV0@ABV0@@Z 0x00F2A250 (no catalog row; manifest operator=/CScriptDef; Ego_r + FableWin name it). No binding was first-bound
+     by a respelled row (the old free stand-ins were never in reloc_bindings.tsv).
+
+METHOD (scripts/; regenerate from the repo root with S exported and $S/wine/env.sh sourced)
+  classify.py + survey*.py -> classify.json (per row: outer/inner/method, the one PDB symbol, landed Alloc, shared header).
+  Identity: the catalog name (target) + the anniversary evidence row (wave3/labels_alloc.tsv: registration -> Alloc -> vtable -> slot, or labels_high /
+    labels_waves23) + the exact PDB symbol (Ego_r / FableWin name sets); every row's line 4/5 cites both.
+  Generators (each writes <fam>/gen.tsv + src/, quick-graded with lib35.qcheck; runfam.sh grades read-only with vland --recheck-landed, batches of 150, 3 at once):
+    gen_ent.py   GetParentScript / empty OnPredicateFail / empty OnPersist. Path H: the shared header engine/<Script>.h declares the nested class and the
+                 member (ParentClass is a reference there: `return &ParentClass;`); the prelude is the shortest landed includer's #define/#include lines
+                 when the bare include does not compile. Path A (wave 33 esb precedent): the landed PDB-named Alloc row's TU, its class model unchanged,
+                 the PDB member declaration added with the PDB access (E private / U public) when missing, the local CCountedPointer stand-in replaced
+                 by engine/CCountedPointer.h (wave 33 D4).
+    gen_gesn.py  CEntityScriptBinding<T>::GetEntityScriptName: engine/CEntityScriptBinding.h defines it inline; the TU instantiates only that member
+                 (`template const CCharString& CEntityScriptBinding<NScript::T>::GetEntityScriptName() const;`, T forward-declared).
+    gen_op.py    OnPersist = context.Transfer("Key", Key, false|0L) per retail call (Transfer<bool> 0x004045C0 / Transfer<long> 0x00410BE0, both already
+                 bound under the PDB template spelling); the persisted key is the PDB member name; members missing from a level-script ctor model are
+                 added at the offsets of the landed byte-matching source (split pad / open class / append after the last member; 10 rows, noted per row).
+    gen_lop.py   level-script empty OnPersist (ctor-row TU or header).
+    gen_opfmd.py OnPredicateFail setting one CQ_SunnyvaleMasterData flag through PMasterData (+0x18), the flag named by engine/CQ_SunnyvaleMasterData.h.
+    gen_sdd.py   ??_G from the landed PDB-named ctor (level script, wave 33 ctor + FABLE_RETAIL_CLEVELSCRIPTBASE) or Alloc row (entity / CEntityScriptBase,
+                 the CClickableDoor Alloc 0x00CDEE10 as wave 33); variants: as is, user-declared dtor dropped; truncated ctor Leafs completed from the PDB.
+    gen_sf1.py   CSpawnedFunc1<T,P1> ??_G via the wave 29 sfg MakeOne emitter (DECISIONS_W29_RESOLVED D7).
+    gen_def.py   def classes: GetSizeofClass `return sizeof(C);`, Copy `*this = *static_cast<const C*>(other);` in the shared header or the landed
+                 operator= row's TU; Copy is defined before operator= (retail order: slot 19 Copy sits just before operator=).
+  collect.py -> all_ok.tsv; mkoverlay.py -> overlay/ + RENAMES.tsv; final_recheck.sh / mkfinal.py -> final grade from the overlay files;
+  mkbind35.py -> BINDINGS.tsv; callers35.py -> callers_scan.tsv; mkdeferred35.py -> DEFERRED.tsv.
+
+FILES
+  New names: <fname(qual)>_<Method>_<addr>.cpp (scalar deleting destructor -> _scalardeletingdestructor_), same directory as the old file; tests move to
+  the same name + _test.cpp. RENAMES.tsv has address, old/new source, old/new test, new module (= the class qualifier, as wave 33), plus old module,
+  catalog name, symbol, family. ps1 blocks need Source / TestSource / Module updated; PassPattern unchanged (tests keep their printed PASS string).
+  Tests: behaviour unchanged; 18 tests (sdd / sf1) had the stand-in class name (CLandscapeBackgroundPatch / CEngineSubPrimitiveText / CThingSwitch)
+  in their local model renamed to the class's short name, except inside the PassPattern literal.
+
+DECISIONS FOR THE COORDINATOR
+  D1 Path A (Alloc-row TU, wave 33 esb precedent) is used where the shared header lacks the nested class or member (386 GPS, 87 OPF, 66 OnPersist):
+     those TUs define the outer script locally, so outers with a header (e.g. CQ_BountyHuntScript) keep the verifier's SHARED_HEADER_AVAILABLE class
+     of warning only where the Alloc row already had it (warnings in the final log: 18, all inherited: CScriptDataBase, CDefString, CDefClassBase,
+     CScriptGameResourceObjectScriptedThingBase, CCountedPointer, CResource, CVectorMap). A header-completion wave (add the nested classes and their
+     PDB OnPredicateFail/OnPersist/GetParentScript declarations to engine/<Script>.h) would let these move to path H.
+  D2 GetEntityScriptName: explicit instantiation of the one inline member in a minimal TU (instead of the slot-1 CreateActiveEntityScript row's TU,
+     35 of which are still stand-ins). Accept or require the slot-1 TU.
+  D3 OnPersist members added to level-script ctor models (10 rows; offset = the landed byte-matching source's, name = the persisted key = PDB member)
+     -- accept as "offsets from the current byte-matching source", or hold.
+  D4 CActiveEntityScript<T> ??_G (118) left on HOLD exactly as DECISIONS_W29_RESOLVED D1.
+  D5 30 deferred rows wait on storer respells (NAME_FIXES.tsv: 26 level-script ctors still CVtable_/CScript_ stand-ins or without Leaf, Alloc 0x00CDEB40
+     ?CreateArcheryCompetitionSignpost, Alloc 0x00DCDE20 and OnPredicateFail 0x00DCDED0 spelled CGuardTeamMember instead of CCrateTeamMember). If
+     wave 35b/35c respells those ctor / Alloc rows, rerun gen_sdd.py / gen_ent.py / gen_op.py on the deferred addresses: they pick up the new TUs.
+  D6 CHeroSoulsCreatureDef::Copy 0x00F27180: VC7.1 /O2 inlines the in-TU operator= into Copy (49 bytes) where retail tail-jumps to 0x00F27190; it
+     matches only with /Ob1 (not an established flag). Deferred.
+
+GOTCHAS (one line each)
+  - Shared NScript headers model ParentClass as a reference (PDB); Alloc-row models as a pointer: GetParentScript is `return &ParentClass;` vs `return ParentClass;`.
+  - Several engine/<Script>.h need the includer contract (fable_string.h, CCountedPointer.h, CScriptThing.h first): copy the shortest landed includer's prelude.
+  - Transfer<long> with a literal default needs `0L` (T deduction conflict with `0`).
+  - Retail places def-class Copy before operator=: define Copy first or VC7.1 inlines operator= into it (CArenaWaveDef); still inlines for the small CHeroSoulsCreatureDef one.
+  - `jmp`/`call` scan by raw E8 bytes gives false targets; use capstone (lib35.call_targets).

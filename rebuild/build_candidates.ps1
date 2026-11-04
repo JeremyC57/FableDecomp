@@ -22827,9 +22827,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d50650'
-        Module = 'CVtable_012cd458'
-        Source = '00/d5/CEngineSubPrimitiveText_scalardeletingdestructor_00d50650.cpp'
-        TestSource = '00/d5/CEngineSubPrimitiveText_scalardeletingdestructor_00d50650_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript'
+        Source = '00/d5/NScriptCQGuildTrainingScript_scalardeletingdestructor_00d50650.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingScript_scalardeletingdestructor_00d50650_test.cpp'
         PassPattern = 'AUTO_TINY_00d50650_TEST PASS'
     }
     [pscustomobject]@{
@@ -22911,9 +22911,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d89d40'
-        Module = 'CVtable_012d4d2c'
-        Source = '00/d8/CEngineSubPrimitiveText_scalardeletingdestructor_00d89d40.cpp'
-        TestSource = '00/d8/CEngineSubPrimitiveText_scalardeletingdestructor_00d89d40_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsNostroScript'
+        Source = '00/d8/NScriptCQHeroSoulsNostroScript_scalardeletingdestructor_00d89d40.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsNostroScript_scalardeletingdestructor_00d89d40_test.cpp'
         PassPattern = 'AUTO_TINY_00d89d40_TEST PASS'
     }
     [pscustomobject]@{
@@ -22932,9 +22932,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d99e10'
-        Module = 'CVtable_012d5540'
-        Source = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d99e10.cpp'
-        TestSource = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d99e10_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript'
+        Source = '00/d9/NScriptCQHobbeCaveScript_scalardeletingdestructor_00d99e10.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScript_scalardeletingdestructor_00d99e10_test.cpp'
         PassPattern = 'AUTO_TINY_00d99e10_TEST PASS'
     }
     [pscustomobject]@{
@@ -22946,9 +22946,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d9e1e0'
-        Module = 'CVtable_012d65cc'
-        Source = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d9e1e0.cpp'
-        TestSource = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d9e1e0_test.cpp'
+        Module = 'NScript::CQ_HobbeToothContestScript'
+        Source = '00/d9/NScriptCQHobbeToothContestScript_scalardeletingdestructor_00d9e1e0.cpp'
+        TestSource = '00/d9/NScriptCQHobbeToothContestScript_scalardeletingdestructor_00d9e1e0_test.cpp'
         PassPattern = 'AUTO_TINY_00d9e1e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -23002,16 +23002,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ddad00'
-        Module = 'CVtable_012db86c'
-        Source = '00/dd/CEngineSubPrimitiveText_scalardeletingdestructor_00ddad00.cpp'
-        TestSource = '00/dd/CEngineSubPrimitiveText_scalardeletingdestructor_00ddad00_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_scalardeletingdestructor_00ddad00.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_scalardeletingdestructor_00ddad00_test.cpp'
         PassPattern = 'AUTO_TINY_00ddad00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00de02f0'
-        Module = 'CVtable_012dcb40'
-        Source = '00/de/CEngineSubPrimitiveText_scalardeletingdestructor_00de02f0.cpp'
-        TestSource = '00/de/CEngineSubPrimitiveText_scalardeletingdestructor_00de02f0_test.cpp'
+        Module = 'NScript::CQ_PrisonWardenGameScript'
+        Source = '00/de/NScriptCQPrisonWardenGameScript_scalardeletingdestructor_00de02f0.cpp'
+        TestSource = '00/de/NScriptCQPrisonWardenGameScript_scalardeletingdestructor_00de02f0_test.cpp'
         PassPattern = 'AUTO_TINY_00de02f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -23023,16 +23023,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00df40c0'
-        Module = 'CVtable_012de10c'
-        Source = '00/df/CEngineSubPrimitiveText_scalardeletingdestructor_00df40c0.cpp'
-        TestSource = '00/df/CEngineSubPrimitiveText_scalardeletingdestructor_00df40c0_test.cpp'
+        Module = 'NScript::CQ_SummoningTheShipScript'
+        Source = '00/df/NScriptCQSummoningTheShipScript_scalardeletingdestructor_00df40c0.cpp'
+        TestSource = '00/df/NScriptCQSummoningTheShipScript_scalardeletingdestructor_00df40c0_test.cpp'
         PassPattern = 'AUTO_TINY_00df40c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00df5c60'
-        Module = 'CVtable_012de510'
-        Source = '00/df/CEngineSubPrimitiveText_scalardeletingdestructor_00df5c60.cpp'
-        TestSource = '00/df/CEngineSubPrimitiveText_scalardeletingdestructor_00df5c60_test.cpp'
+        Module = 'NScript::CQ_TentacleKrakenBossFightScript'
+        Source = '00/df/NScriptCQTentacleKrakenBossFightScript_scalardeletingdestructor_00df5c60.cpp'
+        TestSource = '00/df/NScriptCQTentacleKrakenBossFightScript_scalardeletingdestructor_00df5c60_test.cpp'
         PassPattern = 'AUTO_TINY_00df5c60_TEST PASS'
     }
     [pscustomobject]@{
@@ -23058,23 +23058,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e13bf0'
-        Module = 'CVtable_012e00e4'
-        Source = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e13bf0.cpp'
-        TestSource = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e13bf0_test.cpp'
+        Module = 'NScript::CQ_WaspBossScript'
+        Source = '00/e1/NScriptCQWaspBossScript_scalardeletingdestructor_00e13bf0.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScript_scalardeletingdestructor_00e13bf0_test.cpp'
         PassPattern = 'AUTO_TINY_00e13bf0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e18410'
-        Module = 'CVtable_012e0768'
-        Source = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e18410.cpp'
-        TestSource = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e18410_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScript_scalardeletingdestructor_00e18410.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScript_scalardeletingdestructor_00e18410_test.cpp'
         PassPattern = 'AUTO_TINY_00e18410_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e1a7d0'
-        Module = 'CVtable_012e0ce4'
-        Source = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e1a7d0.cpp'
-        TestSource = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e1a7d0_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineWWScript'
+        Source = '00/e1/NScriptCQWhiteBalverineWWScript_scalardeletingdestructor_00e1a7d0.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineWWScript_scalardeletingdestructor_00e1a7d0_test.cpp'
         PassPattern = 'AUTO_TINY_00e1a7d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -23261,9 +23261,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ea2cc0'
-        Module = 'CVtable_012ed9d4'
-        Source = '00/ea/CEngineSubPrimitiveText_scalardeletingdestructor_00ea2cc0.cpp'
-        TestSource = '00/ea/CEngineSubPrimitiveText_scalardeletingdestructor_00ea2cc0_test.cpp'
+        Module = 'NScript::CV_KnotholeGladeGatesScript'
+        Source = '00/ea/NScriptCVKnotholeGladeGatesScript_scalardeletingdestructor_00ea2cc0.cpp'
+        TestSource = '00/ea/NScriptCVKnotholeGladeGatesScript_scalardeletingdestructor_00ea2cc0_test.cpp'
         PassPattern = 'AUTO_TINY_00ea2cc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -23296,9 +23296,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ebcc70'
-        Module = 'CVtable_012f0528'
-        Source = '00/eb/CEngineSubPrimitiveText_scalardeletingdestructor_00ebcc70.cpp'
-        TestSource = '00/eb/CEngineSubPrimitiveText_scalardeletingdestructor_00ebcc70_test.cpp'
+        Module = 'NScript::CV_MayorsInvitationScript'
+        Source = '00/eb/NScriptCVMayorsInvitationScript_scalardeletingdestructor_00ebcc70.cpp'
+        TestSource = '00/eb/NScriptCVMayorsInvitationScript_scalardeletingdestructor_00ebcc70_test.cpp'
         PassPattern = 'AUTO_TINY_00ebcc70_TEST PASS'
     }
     [pscustomobject]@{
@@ -57208,9 +57208,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d6ed40'
-        Module = 'CVtable_012d1f98'
-        Source = '00/d6/CLandscapeBackgroundPatch_vectordeletingdestructor_00d6ed40.cpp'
-        TestSource = '00/d6/CLandscapeBackgroundPatch_vectordeletingdestructor_00d6ed40_test.cpp'
+        Module = 'NScript::CQ_HangingTreeEvilScript'
+        Source = '00/d6/NScriptCQHangingTreeEvilScript_scalardeletingdestructor_00d6ed40.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScript_scalardeletingdestructor_00d6ed40_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00d6ed40_TEST PASS'
     }
     [pscustomobject]@{
@@ -58349,9 +58349,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00df10b0'
-        Module = 'CVtable_012ddc30'
-        Source = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00df10b0.cpp'
-        TestSource = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00df10b0_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript'
+        Source = '00/df/NScriptCQSecretPassageScript_scalardeletingdestructor_00df10b0.cpp'
+        TestSource = '00/df/NScriptCQSecretPassageScript_scalardeletingdestructor_00df10b0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00df10b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -58790,9 +58790,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e1cd20'
-        Module = 'CVtable_012e11cc'
-        Source = '00/e1/CLandscapeBackgroundPatch_vectordeletingdestructor_00e1cd20.cpp'
-        TestSource = '00/e1/CLandscapeBackgroundPatch_vectordeletingdestructor_00e1cd20_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_WizardBattleScript,CScriptThing&>'
+        Source = '00/e1/CSpawnedFunc1NScriptCQWizardBattleScriptCScriptThing_scalardeletingdestructor_00e1cd20.cpp'
+        TestSource = '00/e1/CSpawnedFunc1NScriptCQWizardBattleScriptCScriptThing_scalardeletingdestructor_00e1cd20_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00e1cd20_TEST PASS'
     }
     [pscustomobject]@{
@@ -59204,9 +59204,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e57000'
-        Module = 'CVtable_012e6228'
-        Source = '00/e5/CLandscapeBackgroundPatch_vectordeletingdestructor_00e57000.cpp'
-        TestSource = '00/e5/CLandscapeBackgroundPatch_vectordeletingdestructor_00e57000_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_BookCollectingScript,long>'
+        Source = '00/e5/CSpawnedFunc1NScriptCVBookCollectingScriptlong_scalardeletingdestructor_00e57000.cpp'
+        TestSource = '00/e5/CSpawnedFunc1NScriptCVBookCollectingScriptlong_scalardeletingdestructor_00e57000_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00e57000_TEST PASS'
     }
     [pscustomobject]@{
@@ -59400,9 +59400,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e77640'
-        Module = 'CVtable_012e9924'
-        Source = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e77640.cpp'
-        TestSource = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e77640_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_ExposeMayorScript,long>'
+        Source = '00/e7/CSpawnedFunc1NScriptCVExposeMayorScriptlong_scalardeletingdestructor_00e77640.cpp'
+        TestSource = '00/e7/CSpawnedFunc1NScriptCVExposeMayorScriptlong_scalardeletingdestructor_00e77640_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00e77640_TEST PASS'
     }
     [pscustomobject]@{
@@ -82540,9 +82540,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cdebf0'
-        Module = 'CVtable_012c3224'
-        Source = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cdebf0.cpp'
-        TestSource = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cdebf0_test.cpp'
+        Module = 'CEntityScriptBase'
+        Source = '00/cd/CEntityScriptBase_scalardeletingdestructor_00cdebf0.cpp'
+        TestSource = '00/cd/CEntityScriptBase_scalardeletingdestructor_00cdebf0_test.cpp'
         PassPattern = 'PASS_00cdebf0'
     }
     [pscustomobject]@{
@@ -107637,9 +107637,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cdeb30'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdeb30_00cdeb30.cpp'
-        TestSource = '00/cd/gapscan_sub00cdeb30_00cdeb30_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CPersonalScript_GlobalThingsScript>'
+        Source = '00/cd/CEntityScriptBindingNScriptCPersonalScriptGlobalThingsScript_GetEntityScriptName_00cdeb30.cpp'
+        TestSource = '00/cd/CEntityScriptBindingNScriptCPersonalScriptGlobalThingsScript_GetEntityScriptName_00cdeb30_test.cpp'
         PassPattern = 'PASS_00cdeb30'
     }
     [pscustomobject]@{
@@ -107672,9 +107672,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cdec10'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdec10_00cdec10.cpp'
-        TestSource = '00/cd/gapscan_sub00cdec10_00cdec10_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCArcheryCompetitionSignpost_GetParentScript_00cdec10.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCArcheryCompetitionSignpost_GetParentScript_00cdec10_test.cpp'
         PassPattern = 'PASS_00cdec10'
     }
     [pscustomobject]@{
@@ -107693,37 +107693,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cdeeb0'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdeeb0_00cdeeb0.cpp'
-        TestSource = '00/cd/gapscan_sub00cdeeb0_00cdeeb0_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CClickableDoor'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCClickableDoor_GetParentScript_00cdeeb0.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCClickableDoor_GetParentScript_00cdeeb0_test.cpp'
         PassPattern = 'PASS_00cdeeb0'
     }
     [pscustomobject]@{
         Address = '00cdf050'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdf050_00cdf050.cpp'
-        TestSource = '00/cd/gapscan_sub00cdf050_00cdf050_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::COF_MainGates'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCOFMainGates_GetParentScript_00cdf050.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCOFMainGates_GetParentScript_00cdf050_test.cpp'
         PassPattern = 'PASS_00cdf050'
     }
     [pscustomobject]@{
         Address = '00cdf230'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdf230_00cdf230.cpp'
-        TestSource = '00/cd/gapscan_sub00cdf230_00cdf230_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CKG_Gate'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCKGGate_GetParentScript_00cdf230.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCKGGate_GetParentScript_00cdf230_test.cpp'
         PassPattern = 'PASS_00cdf230'
     }
     [pscustomobject]@{
         Address = '00cdf400'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdf400_00cdf400.cpp'
-        TestSource = '00/cd/gapscan_sub00cdf400_00cdf400_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CDragonGate'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCDragonGate_GetParentScript_00cdf400.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCDragonGate_GetParentScript_00cdf400_test.cpp'
         PassPattern = 'PASS_00cdf400'
     }
     [pscustomobject]@{
         Address = '00cdf530'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdf530_00cdf530.cpp'
-        TestSource = '00/cd/gapscan_sub00cdf530_00cdf530_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CTeleportPoint'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCTeleportPoint_GetParentScript_00cdf530.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCTeleportPoint_GetParentScript_00cdf530_test.cpp'
         PassPattern = 'PASS_00cdf530'
     }
     [pscustomobject]@{
@@ -107735,30 +107735,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cdf610'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdf610_00cdf610.cpp'
-        TestSource = '00/cd/gapscan_sub00cdf610_00cdf610_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCHEROGUILDTELEPORTMARKER_GetParentScript_00cdf610.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCHEROGUILDTELEPORTMARKER_GetParentScript_00cdf610_test.cpp'
         PassPattern = 'PASS_00cdf610'
     }
     [pscustomobject]@{
         Address = '00cdf7f0'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdf7f0_00cdf7f0.cpp'
-        TestSource = '00/cd/gapscan_sub00cdf7f0_00cdf7f0_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CBowerstoneTeleportPointMarker'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCBowerstoneTeleportPointMarker_GetParentScript_00cdf7f0.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCBowerstoneTeleportPointMarker_GetParentScript_00cdf7f0_test.cpp'
         PassPattern = 'PASS_00cdf7f0'
     }
     [pscustomobject]@{
         Address = '00cdf9d0'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdf9d0_00cdf9d0.cpp'
-        TestSource = '00/cd/gapscan_sub00cdf9d0_00cdf9d0_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CTestGateSwitch'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCTestGateSwitch_GetParentScript_00cdf9d0.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCTestGateSwitch_GetParentScript_00cdf9d0_test.cpp'
         PassPattern = 'PASS_00cdf9d0'
     }
     [pscustomobject]@{
         Address = '00cdfab0'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdfab0_00cdfab0.cpp'
-        TestSource = '00/cd/gapscan_sub00cdfab0_00cdfab0_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CBSGateGuard'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCBSGateGuard_GetParentScript_00cdfab0.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCBSGateGuard_GetParentScript_00cdfab0_test.cpp'
         PassPattern = 'PASS_00cdfab0'
     }
     [pscustomobject]@{
@@ -107770,30 +107770,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cdfad0'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdfad0_00cdfad0.cpp'
-        TestSource = '00/cd/gapscan_sub00cdfad0_00cdfad0_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CBSGateGuard'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCBSGateGuard_OnPredicateFail_00cdfad0.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCBSGateGuard_OnPredicateFail_00cdfad0_test.cpp'
         PassPattern = 'PASS_00cdfad0'
     }
     [pscustomobject]@{
         Address = '00cdfde0'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdfde0_00cdfde0.cpp'
-        TestSource = '00/cd/gapscan_sub00cdfde0_00cdfde0_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CTargetForKey'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCTargetForKey_GetParentScript_00cdfde0.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCTargetForKey_GetParentScript_00cdfde0_test.cpp'
         PassPattern = 'PASS_00cdfde0'
     }
     [pscustomobject]@{
         Address = '00cdff20'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdff20_00cdff20.cpp'
-        TestSource = '00/cd/gapscan_sub00cdff20_00cdff20_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CEndGameBarrier'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCEndGameBarrier_GetParentScript_00cdff20.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCEndGameBarrier_GetParentScript_00cdff20_test.cpp'
         PassPattern = 'PASS_00cdff20'
     }
     [pscustomobject]@{
         Address = '00ce0130'
-        Module = '_gapscan'
-        Source = '00/ce/gapscan_sub00ce0130_00ce0130.cpp'
-        TestSource = '00/ce/gapscan_sub00ce0130_00ce0130_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CLadyGreysBed'
+        Source = '00/ce/NScriptCPersonalScriptGlobalThingsScriptCLadyGreysBed_GetParentScript_00ce0130.cpp'
+        TestSource = '00/ce/NScriptCPersonalScriptGlobalThingsScriptCLadyGreysBed_GetParentScript_00ce0130_test.cpp'
         PassPattern = 'PASS_00ce0130'
     }
     [pscustomobject]@{
@@ -107805,37 +107805,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ce0320'
-        Module = '_gapscan'
-        Source = '00/ce/gapscan_sub00ce0320_00ce0320.cpp'
-        TestSource = '00/ce/gapscan_sub00ce0320_00ce0320_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CInvisibleBarrier'
+        Source = '00/ce/NScriptCPersonalScriptGlobalThingsScriptCInvisibleBarrier_GetParentScript_00ce0320.cpp'
+        TestSource = '00/ce/NScriptCPersonalScriptGlobalThingsScriptCInvisibleBarrier_GetParentScript_00ce0320_test.cpp'
         PassPattern = 'PASS_00ce0320'
     }
     [pscustomobject]@{
         Address = '00ce0430'
-        Module = '_gapscan'
-        Source = '00/ce/gapscan_sub00ce0430_00ce0430.cpp'
-        TestSource = '00/ce/gapscan_sub00ce0430_00ce0430_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CMK_HS2_SOUL'
+        Source = '00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHS2SOUL_GetParentScript_00ce0430.cpp'
+        TestSource = '00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHS2SOUL_GetParentScript_00ce0430_test.cpp'
         PassPattern = 'PASS_00ce0430'
     }
     [pscustomobject]@{
         Address = '00ce0500'
-        Module = '_gapscan'
-        Source = '00/ce/gapscan_sub00ce0500_00ce0500.cpp'
-        TestSource = '00/ce/gapscan_sub00ce0500_00ce0500_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CMK_HS3_SOUL'
+        Source = '00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHS3SOUL_GetParentScript_00ce0500.cpp'
+        TestSource = '00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHS3SOUL_GetParentScript_00ce0500_test.cpp'
         PassPattern = 'PASS_00ce0500'
     }
     [pscustomobject]@{
         Address = '00ce05d0'
-        Module = '_gapscan'
-        Source = '00/ce/gapscan_sub00ce05d0_00ce05d0.cpp'
-        TestSource = '00/ce/gapscan_sub00ce05d0_00ce05d0_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CMK_HSE_SOUL'
+        Source = '00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHSESOUL_GetParentScript_00ce05d0.cpp'
+        TestSource = '00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHSESOUL_GetParentScript_00ce05d0_test.cpp'
         PassPattern = 'PASS_00ce05d0'
     }
     [pscustomobject]@{
         Address = '00cf0b50'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cf0b50_00cf0b50.cpp'
-        TestSource = '00/cf/gapscan_sub00cf0b50_00cf0b50_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_ArenaHoldingScriptScript>'
+        Source = '00/cf/CEntityScriptBindingNScriptCQArenaHoldingScriptScript_GetEntityScriptName_00cf0b50.cpp'
+        TestSource = '00/cf/CEntityScriptBindingNScriptCQArenaHoldingScriptScript_GetEntityScriptName_00cf0b50_test.cpp'
         PassPattern = 'PASS_00cf0b50'
     }
     [pscustomobject]@{
@@ -107847,9 +107847,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cf0ce0'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cf0ce0_00cf0ce0.cpp'
-        TestSource = '00/cf/gapscan_sub00cf0ce0_00cf0ce0_test.cpp'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard2'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard2_GetParentScript_00cf0ce0.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard2_GetParentScript_00cf0ce0_test.cpp'
         PassPattern = 'PASS_00cf0ce0'
     }
     [pscustomobject]@{
@@ -107861,9 +107861,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cf1890'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cf1890_00cf1890.cpp'
-        TestSource = '00/cf/gapscan_sub00cf1890_00cf1890_test.cpp'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript::COakvaleFan'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScriptCOakvaleFan_GetParentScript_00cf1890.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScriptCOakvaleFan_GetParentScript_00cf1890_test.cpp'
         PassPattern = 'PASS_00cf1890'
     }
     [pscustomobject]@{
@@ -107875,9 +107875,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cf2b30'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cf2b30_00cf2b30.cpp'
-        TestSource = '00/cf/gapscan_sub00cf2b30_00cf2b30_test.cpp'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript::CBowerstoneFan'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScriptCBowerstoneFan_GetParentScript_00cf2b30.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScriptCBowerstoneFan_GetParentScript_00cf2b30_test.cpp'
         PassPattern = 'PASS_00cf2b30'
     }
     [pscustomobject]@{
@@ -107889,9 +107889,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cf3ce0'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cf3ce0_00cf3ce0.cpp'
-        TestSource = '00/cf/gapscan_sub00cf3ce0_00cf3ce0_test.cpp'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript::CHookCoastFan'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScriptCHookCoastFan_GetParentScript_00cf3ce0.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScriptCHookCoastFan_GetParentScript_00cf3ce0_test.cpp'
         PassPattern = 'PASS_00cf3ce0'
     }
     [pscustomobject]@{
@@ -107903,30 +107903,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cf4e90'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cf4e90_00cf4e90.cpp'
-        TestSource = '00/cf/gapscan_sub00cf4e90_00cf4e90_test.cpp'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript::CFanMarker'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScriptCFanMarker_GetParentScript_00cf4e90.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScriptCFanMarker_GetParentScript_00cf4e90_test.cpp'
         PassPattern = 'PASS_00cf4e90'
     }
     [pscustomobject]@{
         Address = '00cfbb10'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cfbb10_00cfbb10.cpp'
-        TestSource = '00/cf/gapscan_sub00cfbb10_00cfbb10_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_AwakeningTheOracleScript>'
+        Source = '00/cf/CEntityScriptBindingNScriptCQAwakeningTheOracleScript_GetEntityScriptName_00cfbb10.cpp'
+        TestSource = '00/cf/CEntityScriptBindingNScriptCQAwakeningTheOracleScript_GetEntityScriptName_00cfbb10_test.cpp'
         PassPattern = 'PASS_00cfbb10'
     }
     [pscustomobject]@{
         Address = '00cfbbc0'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cfbbc0_00cfbbc0.cpp'
-        TestSource = '00/cf/gapscan_sub00cfbbc0_00cfbbc0_test.cpp'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::COracleTablet'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCOracleTablet_GetParentScript_00cfbbc0.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCOracleTablet_GetParentScript_00cfbbc0_test.cpp'
         PassPattern = 'PASS_00cfbbc0'
     }
     [pscustomobject]@{
         Address = '00cfbca0'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cfbca0_00cfbca0.cpp'
-        TestSource = '00/cf/gapscan_sub00cfbca0_00cfbca0_test.cpp'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CFinalTabletSarcophagus'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCFinalTabletSarcophagus_GetParentScript_00cfbca0.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCFinalTabletSarcophagus_GetParentScript_00cfbca0_test.cpp'
         PassPattern = 'PASS_00cfbca0'
     }
     [pscustomobject]@{
@@ -107938,219 +107938,219 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cfbd80'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cfbd80_00cfbd80.cpp'
-        TestSource = '00/cf/gapscan_sub00cfbd80_00cfbd80_test.cpp'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CNecropolisGhost'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGhost_GetParentScript_00cfbd80.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGhost_GetParentScript_00cfbd80_test.cpp'
         PassPattern = 'PASS_00cfbd80'
     }
     [pscustomobject]@{
         Address = '00cfc7a0'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cfc7a0_00cfc7a0.cpp'
-        TestSource = '00/cf/gapscan_sub00cfc7a0_00cfc7a0_test.cpp'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CNecropolisGate'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGate_GetParentScript_00cfc7a0.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGate_GetParentScript_00cfc7a0_test.cpp'
         PassPattern = 'PASS_00cfc7a0'
     }
     [pscustomobject]@{
         Address = '00cfc870'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cfc870_00cfc870.cpp'
-        TestSource = '00/cf/gapscan_sub00cfc870_00cfc870_test.cpp'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CLostBayCutsceneTrigger'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCLostBayCutsceneTrigger_GetParentScript_00cfc870.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCLostBayCutsceneTrigger_GetParentScript_00cfc870_test.cpp'
         PassPattern = 'PASS_00cfc870'
     }
     [pscustomobject]@{
         Address = '00cfc940'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cfc940_00cfc940.cpp'
-        TestSource = '00/cf/gapscan_sub00cfc940_00cfc940_test.cpp'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCChunkCollectionIndicator_GetParentScript_00cfc940.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCChunkCollectionIndicator_GetParentScript_00cfc940_test.cpp'
         PassPattern = 'PASS_00cfc940'
     }
     [pscustomobject]@{
         Address = '00cfcb00'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cfcb00_00cfcb00.cpp'
-        TestSource = '00/cf/gapscan_sub00cfcb00_00cfcb00_test.cpp'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CNecropolisEnemy'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisEnemy_GetParentScript_00cfcb00.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisEnemy_GetParentScript_00cfcb00_test.cpp'
         PassPattern = 'PASS_00cfcb00'
     }
     [pscustomobject]@{
         Address = '00cfcc70'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cfcc70_00cfcc70.cpp'
-        TestSource = '00/cf/gapscan_sub00cfcc70_00cfcc70_test.cpp'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CPretendGuard'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCPretendGuard_GetParentScript_00cfcc70.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCPretendGuard_GetParentScript_00cfcc70_test.cpp'
         PassPattern = 'PASS_00cfcc70'
     }
     [pscustomobject]@{
         Address = '00cfce60'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cfce60_00cfce60.cpp'
-        TestSource = '00/cf/gapscan_sub00cfce60_00cfce60_test.cpp'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CScytheBeforeGettingTablets'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCScytheBeforeGettingTablets_GetParentScript_00cfce60.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCScytheBeforeGettingTablets_GetParentScript_00cfce60_test.cpp'
         PassPattern = 'PASS_00cfce60'
     }
     [pscustomobject]@{
         Address = '00cfd670'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cfd670_00cfd670.cpp'
-        TestSource = '00/cf/gapscan_sub00cfd670_00cfd670_test.cpp'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CATO_MagicBarrier'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCATOMagicBarrier_GetParentScript_00cfd670.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCATOMagicBarrier_GetParentScript_00cfd670_test.cpp'
         PassPattern = 'PASS_00cfd670'
     }
     [pscustomobject]@{
         Address = '00cfdd40'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cfdd40_00cfdd40.cpp'
-        TestSource = '00/cf/gapscan_sub00cfdd40_00cfdd40_test.cpp'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CFinalSummoner'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCFinalSummoner_GetParentScript_00cfdd40.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCFinalSummoner_GetParentScript_00cfdd40_test.cpp'
         PassPattern = 'PASS_00cfdd40'
     }
     [pscustomobject]@{
         Address = '00d014b0'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d014b0_00d014b0.cpp'
-        TestSource = '00/d0/gapscan_sub00d014b0_00d014b0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_BanditCampScript>'
+        Source = '00/d0/CEntityScriptBindingNScriptCQBanditCampScript_GetEntityScriptName_00d014b0.cpp'
+        TestSource = '00/d0/CEntityScriptBindingNScriptCQBanditCampScript_GetEntityScriptName_00d014b0_test.cpp'
         PassPattern = 'PASS_00d014b0'
     }
     [pscustomobject]@{
         Address = '00d01560'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d01560_00d01560.cpp'
-        TestSource = '00/d0/gapscan_sub00d01560_00d01560_test.cpp'
+        Module = 'NScript::CQ_BanditCampScript::CGate1GuardOuter'
+        Source = '00/d0/NScriptCQBanditCampScriptCGate1GuardOuter_GetParentScript_00d01560.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampScriptCGate1GuardOuter_GetParentScript_00d01560_test.cpp'
         PassPattern = 'PASS_00d01560'
     }
     [pscustomobject]@{
         Address = '00d02b10'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d02b10_00d02b10.cpp'
-        TestSource = '00/d0/gapscan_sub00d02b10_00d02b10_test.cpp'
+        Module = 'NScript::CQ_BanditCampScript::CGate1GuardInner'
+        Source = '00/d0/NScriptCQBanditCampScriptCGate1GuardInner_GetParentScript_00d02b10.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampScriptCGate1GuardInner_GetParentScript_00d02b10_test.cpp'
         PassPattern = 'PASS_00d02b10'
     }
     [pscustomobject]@{
         Address = '00d04960'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d04960_00d04960.cpp'
-        TestSource = '00/d0/gapscan_sub00d04960_00d04960_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CAssassinMarker'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCAssassinMarker_GetParentScript_00d04960.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCAssassinMarker_GetParentScript_00d04960_test.cpp'
         PassPattern = 'PASS_00d04960'
     }
     [pscustomobject]@{
         Address = '00d04a30'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d04a30_00d04a30.cpp'
-        TestSource = '00/d0/gapscan_sub00d04a30_00d04a30_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CAssassin1'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCAssassin1_GetParentScript_00d04a30.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCAssassin1_GetParentScript_00d04a30_test.cpp'
         PassPattern = 'PASS_00d04a30'
     }
     [pscustomobject]@{
         Address = '00d059b0'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d059b0_00d059b0.cpp'
-        TestSource = '00/d0/gapscan_sub00d059b0_00d059b0_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CAssassin2'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCAssassin2_GetParentScript_00d059b0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCAssassin2_GetParentScript_00d059b0_test.cpp'
         PassPattern = 'PASS_00d059b0'
     }
     [pscustomobject]@{
         Address = '00d06080'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d06080_00d06080.cpp'
-        TestSource = '00/d0/gapscan_sub00d06080_00d06080_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CAssassin3'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCAssassin3_GetParentScript_00d06080.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCAssassin3_GetParentScript_00d06080_test.cpp'
         PassPattern = 'PASS_00d06080'
     }
     [pscustomobject]@{
         Address = '00d06750'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d06750_00d06750.cpp'
-        TestSource = '00/d0/gapscan_sub00d06750_00d06750_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CBCGameMaster'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCBCGameMaster_GetParentScript_00d06750.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCBCGameMaster_GetParentScript_00d06750_test.cpp'
         PassPattern = 'PASS_00d06750'
     }
     [pscustomobject]@{
         Address = '00d06770'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d06770_00d06770.cpp'
-        TestSource = '00/d0/gapscan_sub00d06770_00d06770_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CBCGameMaster'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCBCGameMaster_OnPredicateFail_00d06770.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCBCGameMaster_OnPredicateFail_00d06770_test.cpp'
         PassPattern = 'PASS_00d06770'
     }
     [pscustomobject]@{
         Address = '00d07290'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d07290_00d07290.cpp'
-        TestSource = '00/d0/gapscan_sub00d07290_00d07290_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CGate2Guard1'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCGate2Guard1_GetParentScript_00d07290.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCGate2Guard1_GetParentScript_00d07290_test.cpp'
         PassPattern = 'PASS_00d07290'
     }
     [pscustomobject]@{
         Address = '00d073e0'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d073e0_00d073e0.cpp'
-        TestSource = '00/d0/gapscan_sub00d073e0_00d073e0_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CGate3Guard'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCGate3Guard_GetParentScript_00d073e0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCGate3Guard_GetParentScript_00d073e0_test.cpp'
         PassPattern = 'PASS_00d073e0'
     }
     [pscustomobject]@{
         Address = '00d07dc0'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d07dc0_00d07dc0.cpp'
-        TestSource = '00/d0/gapscan_sub00d07dc0_00d07dc0_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CCampHostage'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage_GetParentScript_00d07dc0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage_GetParentScript_00d07dc0_test.cpp'
         PassPattern = 'PASS_00d07dc0'
     }
     [pscustomobject]@{
         Address = '00d08710'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d08710_00d08710.cpp'
-        TestSource = '00/d0/gapscan_sub00d08710_00d08710_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CCampHostage2'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage2_GetParentScript_00d08710.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage2_GetParentScript_00d08710_test.cpp'
         PassPattern = 'PASS_00d08710'
     }
     [pscustomobject]@{
         Address = '00d08b10'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d08b10_00d08b10.cpp'
-        TestSource = '00/d0/gapscan_sub00d08b10_00d08b10_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CCampHostageDoor'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageDoor_GetParentScript_00d08b10.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageDoor_GetParentScript_00d08b10_test.cpp'
         PassPattern = 'PASS_00d08b10'
     }
     [pscustomobject]@{
         Address = '00d08ef0'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d08ef0_00d08ef0.cpp'
-        TestSource = '00/d0/gapscan_sub00d08ef0_00d08ef0_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageGuard_GetParentScript_00d08ef0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageGuard_GetParentScript_00d08ef0_test.cpp'
         PassPattern = 'PASS_00d08ef0'
     }
     [pscustomobject]@{
         Address = '00d0a7a0'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d0a7a0_00d0a7a0.cpp'
-        TestSource = '00/d0/gapscan_sub00d0a7a0_00d0a7a0_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CBanditKing'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCBanditKing_GetParentScript_00d0a7a0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCBanditKing_GetParentScript_00d0a7a0_test.cpp'
         PassPattern = 'PASS_00d0a7a0'
     }
     [pscustomobject]@{
         Address = '00d0c360'
-        Module = '_gapscan'
-        Source = '00/d0/gapscan_sub00d0c360_00d0c360.cpp'
-        TestSource = '00/d0/gapscan_sub00d0c360_00d0c360_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CBanditForger'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCBanditForger_GetParentScript_00d0c360.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCBanditForger_GetParentScript_00d0c360_test.cpp'
         PassPattern = 'PASS_00d0c360'
     }
     [pscustomobject]@{
         Address = '00d151c0'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d151c0_00d151c0.cpp'
-        TestSource = '00/d1/gapscan_sub00d151c0_00d151c0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_BountyHuntScript>'
+        Source = '00/d1/CEntityScriptBindingNScriptCQBountyHuntScript_GetEntityScriptName_00d151c0.cpp'
+        TestSource = '00/d1/CEntityScriptBindingNScriptCQBountyHuntScript_GetEntityScriptName_00d151c0_test.cpp'
         PassPattern = 'PASS_00d151c0'
     }
     [pscustomobject]@{
         Address = '00d15490'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d15490_00d15490.cpp'
-        TestSource = '00/d1/gapscan_sub00d15490_00d15490_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_GetParentScript_00d15490.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_GetParentScript_00d15490_test.cpp'
         PassPattern = 'PASS_00d15490'
     }
     [pscustomobject]@{
         Address = '00d154c0'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d154c0_00d154c0.cpp'
-        TestSource = '00/d1/gapscan_sub00d154c0_00d154c0_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_OnPersist_00d154c0.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_OnPersist_00d154c0_test.cpp'
         PassPattern = 'PASS_00d154c0'
     }
     [pscustomobject]@{
         Address = '00d154d0'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d154d0_00d154d0.cpp'
-        TestSource = '00/d1/gapscan_sub00d154d0_00d154d0_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_OnPredicateFail_00d154d0.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_OnPredicateFail_00d154d0_test.cpp'
         PassPattern = 'PASS_00d154d0'
     }
     [pscustomobject]@{
         Address = '00d159e0'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d159e0_00d159e0.cpp'
-        TestSource = '00/d1/gapscan_sub00d159e0_00d159e0_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangGrunt'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangGrunt_GetParentScript_00d159e0.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangGrunt_GetParentScript_00d159e0_test.cpp'
         PassPattern = 'PASS_00d159e0'
     }
     [pscustomobject]@{
@@ -108162,135 +108162,135 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d15a00'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d15a00_00d15a00.cpp'
-        TestSource = '00/d1/gapscan_sub00d15a00_00d15a00_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangGrunt'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangGrunt_OnPersist_00d15a00.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangGrunt_OnPersist_00d15a00_test.cpp'
         PassPattern = 'PASS_00d15a00'
     }
     [pscustomobject]@{
         Address = '00d15a10'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d15a10_00d15a10.cpp'
-        TestSource = '00/d1/gapscan_sub00d15a10_00d15a10_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangGrunt'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangGrunt_OnPredicateFail_00d15a10.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangGrunt_OnPredicateFail_00d15a10_test.cpp'
         PassPattern = 'PASS_00d15a10'
     }
     [pscustomobject]@{
         Address = '00d16060'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16060_00d16060.cpp'
-        TestSource = '00/d1/gapscan_sub00d16060_00d16060_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangDeputy1'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy1_GetParentScript_00d16060.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy1_GetParentScript_00d16060_test.cpp'
         PassPattern = 'PASS_00d16060'
     }
     [pscustomobject]@{
         Address = '00d16070'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16070_00d16070.cpp'
-        TestSource = '00/d1/gapscan_sub00d16070_00d16070_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangDeputy1'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy1_OnPersist_00d16070.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy1_OnPersist_00d16070_test.cpp'
         PassPattern = 'PASS_00d16070'
     }
     [pscustomobject]@{
         Address = '00d16080'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16080_00d16080.cpp'
-        TestSource = '00/d1/gapscan_sub00d16080_00d16080_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangDeputy1'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy1_OnPredicateFail_00d16080.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy1_OnPredicateFail_00d16080_test.cpp'
         PassPattern = 'PASS_00d16080'
     }
     [pscustomobject]@{
         Address = '00d16150'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16150_00d16150.cpp'
-        TestSource = '00/d1/gapscan_sub00d16150_00d16150_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_Hostage1'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHHostage1_GetParentScript_00d16150.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHHostage1_GetParentScript_00d16150_test.cpp'
         PassPattern = 'PASS_00d16150'
     }
     [pscustomobject]@{
         Address = '00d16160'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16160_00d16160.cpp'
-        TestSource = '00/d1/gapscan_sub00d16160_00d16160_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_Hostage1'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHHostage1_OnPersist_00d16160.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHHostage1_OnPersist_00d16160_test.cpp'
         PassPattern = 'PASS_00d16160'
     }
     [pscustomobject]@{
         Address = '00d16170'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16170_00d16170.cpp'
-        TestSource = '00/d1/gapscan_sub00d16170_00d16170_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_Hostage1'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHHostage1_OnPredicateFail_00d16170.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHHostage1_OnPredicateFail_00d16170_test.cpp'
         PassPattern = 'PASS_00d16170'
     }
     [pscustomobject]@{
         Address = '00d16240'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16240_00d16240.cpp'
-        TestSource = '00/d1/gapscan_sub00d16240_00d16240_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangDeputy2'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_GetParentScript_00d16240.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_GetParentScript_00d16240_test.cpp'
         PassPattern = 'PASS_00d16240'
     }
     [pscustomobject]@{
         Address = '00d16250'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16250_00d16250.cpp'
-        TestSource = '00/d1/gapscan_sub00d16250_00d16250_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangDeputy2'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_OnPersist_00d16250.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_OnPersist_00d16250_test.cpp'
         PassPattern = 'PASS_00d16250'
     }
     [pscustomobject]@{
         Address = '00d16260'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16260_00d16260.cpp'
-        TestSource = '00/d1/gapscan_sub00d16260_00d16260_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangDeputy2'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_OnPredicateFail_00d16260.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_OnPredicateFail_00d16260_test.cpp'
         PassPattern = 'PASS_00d16260'
     }
     [pscustomobject]@{
         Address = '00d16330'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16330_00d16330.cpp'
-        TestSource = '00/d1/gapscan_sub00d16330_00d16330_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_Hostage2'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHHostage2_GetParentScript_00d16330.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHHostage2_GetParentScript_00d16330_test.cpp'
         PassPattern = 'PASS_00d16330'
     }
     [pscustomobject]@{
         Address = '00d16340'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16340_00d16340.cpp'
-        TestSource = '00/d1/gapscan_sub00d16340_00d16340_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_Hostage2'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHHostage2_OnPersist_00d16340.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHHostage2_OnPersist_00d16340_test.cpp'
         PassPattern = 'PASS_00d16340'
     }
     [pscustomobject]@{
         Address = '00d16350'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16350_00d16350.cpp'
-        TestSource = '00/d1/gapscan_sub00d16350_00d16350_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_Hostage2'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHHostage2_OnPredicateFail_00d16350.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHHostage2_OnPredicateFail_00d16350_test.cpp'
         PassPattern = 'PASS_00d16350'
     }
     [pscustomobject]@{
         Address = '00d16420'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16420_00d16420.cpp'
-        TestSource = '00/d1/gapscan_sub00d16420_00d16420_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangLeader'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangLeader_GetParentScript_00d16420.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangLeader_GetParentScript_00d16420_test.cpp'
         PassPattern = 'PASS_00d16420'
     }
     [pscustomobject]@{
         Address = '00d16430'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d16430_00d16430.cpp'
-        TestSource = '00/d1/gapscan_sub00d16430_00d16430_test.cpp'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangLeader'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangLeader_OnPredicateFail_00d16430.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangLeader_OnPredicateFail_00d16430_test.cpp'
         PassPattern = 'PASS_00d16430'
     }
     [pscustomobject]@{
         Address = '00d1d7c0'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d1d7c0_00d1d7c0.cpp'
-        TestSource = '00/d1/gapscan_sub00d1d7c0_00d1d7c0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_BreakSiegeScript>'
+        Source = '00/d1/CEntityScriptBindingNScriptCQBreakSiegeScript_GetEntityScriptName_00d1d7c0.cpp'
+        TestSource = '00/d1/CEntityScriptBindingNScriptCQBreakSiegeScript_GetEntityScriptName_00d1d7c0_test.cpp'
         PassPattern = 'PASS_00d1d7c0'
     }
     [pscustomobject]@{
         Address = '00d1dd60'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d1dd60_00d1dd60.cpp'
-        TestSource = '00/d1/gapscan_sub00d1dd60_00d1dd60_test.cpp'
+        Module = 'NScript::CQ_BreakSiegeScript::CBanditSiegeLeader'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCBanditSiegeLeader_GetParentScript_00d1dd60.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCBanditSiegeLeader_GetParentScript_00d1dd60_test.cpp'
         PassPattern = 'PASS_00d1dd60'
     }
     [pscustomobject]@{
         Address = '00d1de80'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d1de80_00d1de80.cpp'
-        TestSource = '00/d1/gapscan_sub00d1de80_00d1de80_test.cpp'
+        Module = 'NScript::CQ_BreakSiegeScript::CKG_ChiefBreakSiege'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCKGChiefBreakSiege_GetParentScript_00d1de80.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCKGChiefBreakSiege_GetParentScript_00d1de80_test.cpp'
         PassPattern = 'PASS_00d1de80'
     }
     [pscustomobject]@{
@@ -108302,149 +108302,149 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d1dfc0'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d1dfc0_00d1dfc0.cpp'
-        TestSource = '00/d1/gapscan_sub00d1dfc0_00d1dfc0_test.cpp'
+        Module = 'NScript::CQ_BreakSiegeScript::CKG_Sheriff'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCKGSheriff_GetParentScript_00d1dfc0.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCKGSheriff_GetParentScript_00d1dfc0_test.cpp'
         PassPattern = 'PASS_00d1dfc0'
     }
     [pscustomobject]@{
         Address = '00d1e130'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d1e130_00d1e130.cpp'
-        TestSource = '00/d1/gapscan_sub00d1e130_00d1e130_test.cpp'
+        Module = 'NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_GetParentScript_00d1e130.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_GetParentScript_00d1e130_test.cpp'
         PassPattern = 'PASS_00d1e130'
     }
     [pscustomobject]@{
         Address = '00d1e2d0'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d1e2d0_00d1e2d0.cpp'
-        TestSource = '00/d1/gapscan_sub00d1e2d0_00d1e2d0_test.cpp'
+        Module = 'NScript::CQ_BreakSiegeScript::CGuardHoldingBandit'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCGuardHoldingBandit_GetParentScript_00d1e2d0.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCGuardHoldingBandit_GetParentScript_00d1e2d0_test.cpp'
         PassPattern = 'PASS_00d1e2d0'
     }
     [pscustomobject]@{
         Address = '00d1e2e0'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d1e2e0_00d1e2e0.cpp'
-        TestSource = '00/d1/gapscan_sub00d1e2e0_00d1e2e0_test.cpp'
+        Module = 'NScript::CQ_BreakSiegeScript::CGuardHoldingBandit'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCGuardHoldingBandit_OnPredicateFail_00d1e2e0.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCGuardHoldingBandit_OnPredicateFail_00d1e2e0_test.cpp'
         PassPattern = 'PASS_00d1e2e0'
     }
     [pscustomobject]@{
         Address = '00d1eab0'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d1eab0_00d1eab0.cpp'
-        TestSource = '00/d1/gapscan_sub00d1eab0_00d1eab0_test.cpp'
+        Module = 'NScript::CQ_BreakSiegeScript::CGuardToHelpDefend'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCGuardToHelpDefend_GetParentScript_00d1eab0.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCGuardToHelpDefend_GetParentScript_00d1eab0_test.cpp'
         PassPattern = 'PASS_00d1eab0'
     }
     [pscustomobject]@{
         Address = '00d1f5b0'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d1f5b0_00d1f5b0.cpp'
-        TestSource = '00/d1/gapscan_sub00d1f5b0_00d1f5b0_test.cpp'
+        Module = 'NScript::CQ_BreakSiegeScript::CBanditAttacker'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCBanditAttacker_GetParentScript_00d1f5b0.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCBanditAttacker_GetParentScript_00d1f5b0_test.cpp'
         PassPattern = 'PASS_00d1f5b0'
     }
     [pscustomobject]@{
         Address = '00d1f5e0'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d1f5e0_00d1f5e0.cpp'
-        TestSource = '00/d1/gapscan_sub00d1f5e0_00d1f5e0_test.cpp'
+        Module = 'NScript::CQ_BreakSiegeScript::CBanditAttacker'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCBanditAttacker_OnPredicateFail_00d1f5e0.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCBanditAttacker_OnPredicateFail_00d1f5e0_test.cpp'
         PassPattern = 'PASS_00d1f5e0'
     }
     [pscustomobject]@{
         Address = '00d1f9b0'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d1f9b0_00d1f9b0.cpp'
-        TestSource = '00/d1/gapscan_sub00d1f9b0_00d1f9b0_test.cpp'
+        Module = 'NScript::CQ_BreakSiegeScript::CBanditFirstWave'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCBanditFirstWave_GetParentScript_00d1f9b0.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCBanditFirstWave_GetParentScript_00d1f9b0_test.cpp'
         PassPattern = 'PASS_00d1f9b0'
     }
     [pscustomobject]@{
         Address = '00d1fcd0'
-        Module = '_gapscan'
-        Source = '00/d1/gapscan_sub00d1fcd0_00d1fcd0.cpp'
-        TestSource = '00/d1/gapscan_sub00d1fcd0_00d1fcd0_test.cpp'
+        Module = 'NScript::CQ_BreakSiegeScript::CDisplacedTrader'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_GetParentScript_00d1fcd0.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_GetParentScript_00d1fcd0_test.cpp'
         PassPattern = 'PASS_00d1fcd0'
     }
     [pscustomobject]@{
         Address = '00d24200'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d24200_00d24200.cpp'
-        TestSource = '00/d2/gapscan_sub00d24200_00d24200_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_BowerstoneTownLifeIntroScript>'
+        Source = '00/d2/CEntityScriptBindingNScriptCQBowerstoneTownLifeIntroScript_GetEntityScriptName_00d24200.cpp'
+        TestSource = '00/d2/CEntityScriptBindingNScriptCQBowerstoneTownLifeIntroScript_GetEntityScriptName_00d24200_test.cpp'
         PassPattern = 'PASS_00d24200'
     }
     [pscustomobject]@{
         Address = '00d242b0'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d242b0_00d242b0.cpp'
-        TestSource = '00/d2/gapscan_sub00d242b0_00d242b0_test.cpp'
+        Module = 'NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuard'
+        Source = '00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_GetParentScript_00d242b0.cpp'
+        TestSource = '00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_GetParentScript_00d242b0_test.cpp'
         PassPattern = 'PASS_00d242b0'
     }
     [pscustomobject]@{
         Address = '00d242f0'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d242f0_00d242f0.cpp'
-        TestSource = '00/d2/gapscan_sub00d242f0_00d242f0_test.cpp'
+        Module = 'NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuard'
+        Source = '00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_OnPersist_00d242f0.cpp'
+        TestSource = '00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_OnPersist_00d242f0_test.cpp'
         PassPattern = 'PASS_00d242f0'
     }
     [pscustomobject]@{
         Address = '00d24300'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d24300_00d24300.cpp'
-        TestSource = '00/d2/gapscan_sub00d24300_00d24300_test.cpp'
+        Module = 'NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuard'
+        Source = '00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_OnPredicateFail_00d24300.cpp'
+        TestSource = '00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_OnPredicateFail_00d24300_test.cpp'
         PassPattern = 'PASS_00d24300'
     }
     [pscustomobject]@{
         Address = '00d243d0'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d243d0_00d243d0.cpp'
-        TestSource = '00/d2/gapscan_sub00d243d0_00d243d0_test.cpp'
+        Module = 'NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuardToPosh'
+        Source = '00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuardToPosh_GetParentScript_00d243d0.cpp'
+        TestSource = '00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuardToPosh_GetParentScript_00d243d0_test.cpp'
         PassPattern = 'PASS_00d243d0'
     }
     [pscustomobject]@{
         Address = '00d257c0'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d257c0_00d257c0.cpp'
-        TestSource = '00/d2/gapscan_sub00d257c0_00d257c0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_DragonBossFightScript>'
+        Source = '00/d2/CEntityScriptBindingNScriptCQDragonBossFightScript_GetEntityScriptName_00d257c0.cpp'
+        TestSource = '00/d2/CEntityScriptBindingNScriptCQDragonBossFightScript_GetEntityScriptName_00d257c0_test.cpp'
         PassPattern = 'PASS_00d257c0'
     }
     [pscustomobject]@{
         Address = '00d25870'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d25870_00d25870.cpp'
-        TestSource = '00/d2/gapscan_sub00d25870_00d25870_test.cpp'
+        Module = 'NScript::CQ_DragonBossFightScript::CDragon'
+        Source = '00/d2/NScriptCQDragonBossFightScriptCDragon_GetParentScript_00d25870.cpp'
+        TestSource = '00/d2/NScriptCQDragonBossFightScriptCDragon_GetParentScript_00d25870_test.cpp'
         PassPattern = 'PASS_00d25870'
     }
     [pscustomobject]@{
         Address = '00d25d00'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d25d00_00d25d00.cpp'
-        TestSource = '00/d2/gapscan_sub00d25d00_00d25d00_test.cpp'
+        Module = 'NScript::CQ_DragonBossFightScript::CDBMinion'
+        Source = '00/d2/NScriptCQDragonBossFightScriptCDBMinion_GetParentScript_00d25d00.cpp'
+        TestSource = '00/d2/NScriptCQDragonBossFightScriptCDBMinion_GetParentScript_00d25d00_test.cpp'
         PassPattern = 'PASS_00d25d00'
     }
     [pscustomobject]@{
         Address = '00d25ed0'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d25ed0_00d25ed0.cpp'
-        TestSource = '00/d2/gapscan_sub00d25ed0_00d25ed0_test.cpp'
+        Module = 'NScript::CQ_DragonBossFightScript::CDBSummoner'
+        Source = '00/d2/NScriptCQDragonBossFightScriptCDBSummoner_GetParentScript_00d25ed0.cpp'
+        TestSource = '00/d2/NScriptCQDragonBossFightScriptCDBSummoner_GetParentScript_00d25ed0_test.cpp'
         PassPattern = 'PASS_00d25ed0'
     }
     [pscustomobject]@{
         Address = '00d27940'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d27940_00d27940.cpp'
-        TestSource = '00/d2/gapscan_sub00d27940_00d27940_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_EndGameScript>'
+        Source = '00/d2/CEntityScriptBindingNScriptCQEndGameScript_GetEntityScriptName_00d27940.cpp'
+        TestSource = '00/d2/CEntityScriptBindingNScriptCQEndGameScript_GetEntityScriptName_00d27940_test.cpp'
         PassPattern = 'PASS_00d27940'
     }
     [pscustomobject]@{
         Address = '00d29010'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d29010_00d29010.cpp'
-        TestSource = '00/d2/gapscan_sub00d29010_00d29010_test.cpp'
+        Module = 'NScript::CQ_EndGameScript::CHookCoastTeleporter'
+        Source = '00/d2/NScriptCQEndGameScriptCHookCoastTeleporter_GetParentScript_00d29010.cpp'
+        TestSource = '00/d2/NScriptCQEndGameScriptCHookCoastTeleporter_GetParentScript_00d29010_test.cpp'
         PassPattern = 'PASS_00d29010'
     }
     [pscustomobject]@{
         Address = '00d29140'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d29140_00d29140.cpp'
-        TestSource = '00/d2/gapscan_sub00d29140_00d29140_test.cpp'
+        Module = 'NScript::CQ_EndGameScript::CM_UndeadSpawn'
+        Source = '00/d2/NScriptCQEndGameScriptCMUndeadSpawn_GetParentScript_00d29140.cpp'
+        TestSource = '00/d2/NScriptCQEndGameScriptCMUndeadSpawn_GetParentScript_00d29140_test.cpp'
         PassPattern = 'PASS_00d29140'
     }
     [pscustomobject]@{
@@ -108456,30 +108456,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d292d0'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d292d0_00d292d0.cpp'
-        TestSource = '00/d2/gapscan_sub00d292d0_00d292d0_test.cpp'
+        Module = 'NScript::CQ_EndGameScript::CGatewayUndead'
+        Source = '00/d2/NScriptCQEndGameScriptCGatewayUndead_GetParentScript_00d292d0.cpp'
+        TestSource = '00/d2/NScriptCQEndGameScriptCGatewayUndead_GetParentScript_00d292d0_test.cpp'
         PassPattern = 'PASS_00d292d0'
     }
     [pscustomobject]@{
         Address = '00d29500'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d29500_00d29500.cpp'
-        TestSource = '00/d2/gapscan_sub00d29500_00d29500_test.cpp'
+        Module = 'NScript::CQ_EndGameScript::CMK_GHC_HERO3'
+        Source = '00/d2/NScriptCQEndGameScriptCMKGHCHERO3_GetParentScript_00d29500.cpp'
+        TestSource = '00/d2/NScriptCQEndGameScriptCMKGHCHERO3_GetParentScript_00d29500_test.cpp'
         PassPattern = 'PASS_00d29500'
     }
     [pscustomobject]@{
         Address = '00d29610'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d29610_00d29610.cpp'
-        TestSource = '00/d2/gapscan_sub00d29610_00d29610_test.cpp'
+        Module = 'NScript::CQ_EndGameScript::CMazeJournal'
+        Source = '00/d2/NScriptCQEndGameScriptCMazeJournal_GetParentScript_00d29610.cpp'
+        TestSource = '00/d2/NScriptCQEndGameScriptCMazeJournal_GetParentScript_00d29610_test.cpp'
         PassPattern = 'PASS_00d29610'
     }
     [pscustomobject]@{
         Address = '00d2c1e0'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2c1e0_00d2c1e0.cpp'
-        TestSource = '00/d2/gapscan_sub00d2c1e0_00d2c1e0_test.cpp'
+        Module = 'NScript::CQ_EndGameFocalSitesScript::CEndGameFocalSite'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameFocalSite_GetParentScript_00d2c1e0.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameFocalSite_GetParentScript_00d2c1e0_test.cpp'
         PassPattern = 'PASS_00d2c1e0'
     }
     [pscustomobject]@{
@@ -108491,9 +108491,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d2c300'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2c300_00d2c300.cpp'
-        TestSource = '00/d2/gapscan_sub00d2c300_00d2c300_test.cpp'
+        Module = 'NScript::CQ_EndGameFocalSitesScript::CEndGameJackOfBlades'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_GetParentScript_00d2c300.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_GetParentScript_00d2c300_test.cpp'
         PassPattern = 'PASS_00d2c300'
     }
     [pscustomobject]@{
@@ -108505,9 +108505,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d2c3e0'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2c3e0_00d2c3e0.cpp'
-        TestSource = '00/d2/gapscan_sub00d2c3e0_00d2c3e0_test.cpp'
+        Module = 'NScript::CQ_EndGameFocalSitesScript::CBattleMinion'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScriptCBattleMinion_GetParentScript_00d2c3e0.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScriptCBattleMinion_GetParentScript_00d2c3e0_test.cpp'
         PassPattern = 'PASS_00d2c3e0'
     }
     [pscustomobject]@{
@@ -108519,30 +108519,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d2c400'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2c400_00d2c400.cpp'
-        TestSource = '00/d2/gapscan_sub00d2c400_00d2c400_test.cpp'
+        Module = 'NScript::CQ_EndGameFocalSitesScript::CBattleMinion'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScriptCBattleMinion_OnPredicateFail_00d2c400.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScriptCBattleMinion_OnPredicateFail_00d2c400_test.cpp'
         PassPattern = 'PASS_00d2c400'
     }
     [pscustomobject]@{
         Address = '00d2c4d0'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2c4d0_00d2c4d0.cpp'
-        TestSource = '00/d2/gapscan_sub00d2c4d0_00d2c4d0_test.cpp'
+        Module = 'NScript::CQ_EndGameFocalSitesScript::CBattleGuard'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScriptCBattleGuard_GetParentScript_00d2c4d0.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScriptCBattleGuard_GetParentScript_00d2c4d0_test.cpp'
         PassPattern = 'PASS_00d2c4d0'
     }
     [pscustomobject]@{
         Address = '00d2c500'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2c500_00d2c500.cpp'
-        TestSource = '00/d2/gapscan_sub00d2c500_00d2c500_test.cpp'
+        Module = 'NScript::CQ_EndGameFocalSitesScript::CBattleGuard'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScriptCBattleGuard_OnPredicateFail_00d2c500.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScriptCBattleGuard_OnPredicateFail_00d2c500_test.cpp'
         PassPattern = 'PASS_00d2c500'
     }
     [pscustomobject]@{
         Address = '00d2c6f0'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2c6f0_00d2c6f0.cpp'
-        TestSource = '00/d2/gapscan_sub00d2c6f0_00d2c6f0_test.cpp'
+        Module = 'NScript::CQ_EndGameFocalSitesScript::CEndGameScythe'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScythe_GetParentScript_00d2c6f0.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScythe_GetParentScript_00d2c6f0_test.cpp'
         PassPattern = 'PASS_00d2c6f0'
     }
     [pscustomobject]@{
@@ -108554,9 +108554,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d2c7d0'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2c7d0_00d2c7d0.cpp'
-        TestSource = '00/d2/gapscan_sub00d2c7d0_00d2c7d0_test.cpp'
+        Module = 'NScript::CQ_EndGameFocalSitesScript::CEndGameThunder'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameThunder_GetParentScript_00d2c7d0.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameThunder_GetParentScript_00d2c7d0_test.cpp'
         PassPattern = 'PASS_00d2c7d0'
     }
     [pscustomobject]@{
@@ -108568,9 +108568,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d2d020'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2d020_00d2d020.cpp'
-        TestSource = '00/d2/gapscan_sub00d2d020_00d2d020_test.cpp'
+        Module = 'NScript::CQ_EndGameFocalSitesScript::CEndGameScarletRobe'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScarletRobe_GetParentScript_00d2d020.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScarletRobe_GetParentScript_00d2d020_test.cpp'
         PassPattern = 'PASS_00d2d020'
     }
     [pscustomobject]@{
@@ -108589,16 +108589,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d2fa30'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2fa30_00d2fa30.cpp'
-        TestSource = '00/d2/gapscan_sub00d2fa30_00d2fa30_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_EndGameBossBattleScript>'
+        Source = '00/d2/CEntityScriptBindingNScriptCQEndGameBossBattleScript_GetEntityScriptName_00d2fa30.cpp'
+        TestSource = '00/d2/CEntityScriptBindingNScriptCQEndGameBossBattleScript_GetEntityScriptName_00d2fa30_test.cpp'
         PassPattern = 'PASS_00d2fa30'
     }
     [pscustomobject]@{
         Address = '00d2fae0'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2fae0_00d2fae0.cpp'
-        TestSource = '00/d2/gapscan_sub00d2fae0_00d2fae0_test.cpp'
+        Module = 'NScript::CQ_EndGameBossBattleScript::CEndGameJackOfBladesBoss'
+        Source = '00/d2/NScriptCQEndGameBossBattleScriptCEndGameJackOfBladesBoss_GetParentScript_00d2fae0.cpp'
+        TestSource = '00/d2/NScriptCQEndGameBossBattleScriptCEndGameJackOfBladesBoss_GetParentScript_00d2fae0_test.cpp'
         PassPattern = 'PASS_00d2fae0'
     }
     [pscustomobject]@{
@@ -108610,9 +108610,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d2fca0'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2fca0_00d2fca0.cpp'
-        TestSource = '00/d2/gapscan_sub00d2fca0_00d2fca0_test.cpp'
+        Module = 'NScript::CQ_EndGameBossBattleScript::CEndGameSister'
+        Source = '00/d2/NScriptCQEndGameBossBattleScriptCEndGameSister_GetParentScript_00d2fca0.cpp'
+        TestSource = '00/d2/NScriptCQEndGameBossBattleScriptCEndGameSister_GetParentScript_00d2fca0_test.cpp'
         PassPattern = 'PASS_00d2fca0'
     }
     [pscustomobject]@{
@@ -108624,9 +108624,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d2fd80'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2fd80_00d2fd80.cpp'
-        TestSource = '00/d2/gapscan_sub00d2fd80_00d2fd80_test.cpp'
+        Module = 'NScript::CQ_EndGameBossBattleScript::CSwordVoid'
+        Source = '00/d2/NScriptCQEndGameBossBattleScriptCSwordVoid_GetParentScript_00d2fd80.cpp'
+        TestSource = '00/d2/NScriptCQEndGameBossBattleScriptCSwordVoid_GetParentScript_00d2fd80_test.cpp'
         PassPattern = 'PASS_00d2fd80'
     }
     [pscustomobject]@{
@@ -108638,9 +108638,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d2fe60'
-        Module = '_gapscan'
-        Source = '00/d2/gapscan_sub00d2fe60_00d2fe60.cpp'
-        TestSource = '00/d2/gapscan_sub00d2fe60_00d2fe60_test.cpp'
+        Module = 'NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster'
+        Source = '00/d2/NScriptCQEndGameBossBattleScriptCTheRealGuildmaster_GetParentScript_00d2fe60.cpp'
+        TestSource = '00/d2/NScriptCQEndGameBossBattleScriptCTheRealGuildmaster_GetParentScript_00d2fe60_test.cpp'
         PassPattern = 'PASS_00d2fe60'
     }
     [pscustomobject]@{
@@ -108659,16 +108659,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d36130'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d36130_00d36130.cpp'
-        TestSource = '00/d3/gapscan_sub00d36130_00d36130_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_FireHeartScript>'
+        Source = '00/d3/CEntityScriptBindingNScriptCQFireHeartScript_GetEntityScriptName_00d36130.cpp'
+        TestSource = '00/d3/CEntityScriptBindingNScriptCQFireHeartScript_GetEntityScriptName_00d36130_test.cpp'
         PassPattern = 'PASS_00d36130'
     }
     [pscustomobject]@{
         Address = '00d36350'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d36350_00d36350.cpp'
-        TestSource = '00/d3/gapscan_sub00d36350_00d36350_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CDF_Fireheart'
+        Source = '00/d3/NScriptCQFireHeartScriptCDFFireheart_GetParentScript_00d36350.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCDFFireheart_GetParentScript_00d36350_test.cpp'
         PassPattern = 'PASS_00d36350'
     }
     [pscustomobject]@{
@@ -108680,114 +108680,114 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d36370'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d36370_00d36370.cpp'
-        TestSource = '00/d3/gapscan_sub00d36370_00d36370_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CDF_Fireheart'
+        Source = '00/d3/NScriptCQFireHeartScriptCDFFireheart_OnPredicateFail_00d36370.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCDFFireheart_OnPredicateFail_00d36370_test.cpp'
         PassPattern = 'PASS_00d36370'
     }
     [pscustomobject]@{
         Address = '00d36440'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d36440_00d36440.cpp'
-        TestSource = '00/d3/gapscan_sub00d36440_00d36440_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CPuzzleBlockMoon'
+        Source = '00/d3/NScriptCQFireHeartScriptCPuzzleBlockMoon_GetParentScript_00d36440.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCPuzzleBlockMoon_GetParentScript_00d36440_test.cpp'
         PassPattern = 'PASS_00d36440'
     }
     [pscustomobject]@{
         Address = '00d36510'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d36510_00d36510.cpp'
-        TestSource = '00/d3/gapscan_sub00d36510_00d36510_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CPuzzleBlockSun'
+        Source = '00/d3/NScriptCQFireHeartScriptCPuzzleBlockSun_GetParentScript_00d36510.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCPuzzleBlockSun_GetParentScript_00d36510_test.cpp'
         PassPattern = 'PASS_00d36510'
     }
     [pscustomobject]@{
         Address = '00d365e0'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d365e0_00d365e0.cpp'
-        TestSource = '00/d3/gapscan_sub00d365e0_00d365e0_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CFH_Prisoner'
+        Source = '00/d3/NScriptCQFireHeartScriptCFHPrisoner_GetParentScript_00d365e0.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCFHPrisoner_GetParentScript_00d365e0_test.cpp'
         PassPattern = 'PASS_00d365e0'
     }
     [pscustomobject]@{
         Address = '00d365f0'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d365f0_00d365f0.cpp'
-        TestSource = '00/d3/gapscan_sub00d365f0_00d365f0_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CFH_Prisoner'
+        Source = '00/d3/NScriptCQFireHeartScriptCFHPrisoner_OnPredicateFail_00d365f0.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCFHPrisoner_OnPredicateFail_00d365f0_test.cpp'
         PassPattern = 'PASS_00d365f0'
     }
     [pscustomobject]@{
         Address = '00d36720'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d36720_00d36720.cpp'
-        TestSource = '00/d3/gapscan_sub00d36720_00d36720_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CProphetCage'
+        Source = '00/d3/NScriptCQFireHeartScriptCProphetCage_GetParentScript_00d36720.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCProphetCage_GetParentScript_00d36720_test.cpp'
         PassPattern = 'PASS_00d36720'
     }
     [pscustomobject]@{
         Address = '00d36760'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d36760_00d36760.cpp'
-        TestSource = '00/d3/gapscan_sub00d36760_00d36760_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CProphetCage'
+        Source = '00/d3/NScriptCQFireHeartScriptCProphetCage_OnPredicateFail_00d36760.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCProphetCage_OnPredicateFail_00d36760_test.cpp'
         PassPattern = 'PASS_00d36760'
     }
     [pscustomobject]@{
         Address = '00d36830'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d36830_00d36830.cpp'
-        TestSource = '00/d3/gapscan_sub00d36830_00d36830_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CFH_GuildMaster'
+        Source = '00/d3/NScriptCQFireHeartScriptCFHGuildMaster_GetParentScript_00d36830.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCFHGuildMaster_GetParentScript_00d36830_test.cpp'
         PassPattern = 'PASS_00d36830'
     }
     [pscustomobject]@{
         Address = '00d371e0'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d371e0_00d371e0.cpp'
-        TestSource = '00/d3/gapscan_sub00d371e0_00d371e0_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CFH_Scythe'
+        Source = '00/d3/NScriptCQFireHeartScriptCFHScythe_GetParentScript_00d371e0.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCFHScythe_GetParentScript_00d371e0_test.cpp'
         PassPattern = 'PASS_00d371e0'
     }
     [pscustomobject]@{
         Address = '00d372e0'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d372e0_00d372e0.cpp'
-        TestSource = '00/d3/gapscan_sub00d372e0_00d372e0_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CFH_BriarRose'
+        Source = '00/d3/NScriptCQFireHeartScriptCFHBriarRose_GetParentScript_00d372e0.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCFHBriarRose_GetParentScript_00d372e0_test.cpp'
         PassPattern = 'PASS_00d372e0'
     }
     [pscustomobject]@{
         Address = '00d37470'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d37470_00d37470.cpp'
-        TestSource = '00/d3/gapscan_sub00d37470_00d37470_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CFH_Villager'
+        Source = '00/d3/NScriptCQFireHeartScriptCFHVillager_GetParentScript_00d37470.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCFHVillager_GetParentScript_00d37470_test.cpp'
         PassPattern = 'PASS_00d37470'
     }
     [pscustomobject]@{
         Address = '00d37cd0'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d37cd0_00d37cd0.cpp'
-        TestSource = '00/d3/gapscan_sub00d37cd0_00d37cd0_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CFH_MemorialCutsceneMarker'
+        Source = '00/d3/NScriptCQFireHeartScriptCFHMemorialCutsceneMarker_GetParentScript_00d37cd0.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCFHMemorialCutsceneMarker_GetParentScript_00d37cd0_test.cpp'
         PassPattern = 'PASS_00d37cd0'
     }
     [pscustomobject]@{
         Address = '00d3c8e0'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d3c8e0_00d3c8e0.cpp'
-        TestSource = '00/d3/gapscan_sub00d3c8e0_00d3c8e0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingScript>'
+        Source = '00/d3/CEntityScriptBindingNScriptCQGuildTrainingScript_GetEntityScriptName_00d3c8e0.cpp'
+        TestSource = '00/d3/CEntityScriptBindingNScriptCQGuildTrainingScript_GetEntityScriptName_00d3c8e0_test.cpp'
         PassPattern = 'PASS_00d3c8e0'
     }
     [pscustomobject]@{
         Address = '00d3d100'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d3d100_00d3d100.cpp'
-        TestSource = '00/d3/gapscan_sub00d3d100_00d3d100_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CAppleGirl'
+        Source = '00/d3/NScriptCQGuildTrainingScriptCAppleGirl_GetParentScript_00d3d100.cpp'
+        TestSource = '00/d3/NScriptCQGuildTrainingScriptCAppleGirl_GetParentScript_00d3d100_test.cpp'
         PassPattern = 'PASS_00d3d100'
     }
     [pscustomobject]@{
         Address = '00d3d120'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d3d120_00d3d120.cpp'
-        TestSource = '00/d3/gapscan_sub00d3d120_00d3d120_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CAppleGirl'
+        Source = '00/d3/NScriptCQGuildTrainingScriptCAppleGirl_OnPredicateFail_00d3d120.cpp'
+        TestSource = '00/d3/NScriptCQGuildTrainingScriptCAppleGirl_OnPredicateFail_00d3d120_test.cpp'
         PassPattern = 'PASS_00d3d120'
     }
     [pscustomobject]@{
         Address = '00d3e290'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d3e290_00d3e290.cpp'
-        TestSource = '00/d3/gapscan_sub00d3e290_00d3e290_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest'
+        Source = '00/d3/NScriptCQGuildTrainingScriptCApprenticeSpeedTest_GetParentScript_00d3e290.cpp'
+        TestSource = '00/d3/NScriptCQGuildTrainingScriptCApprenticeSpeedTest_GetParentScript_00d3e290_test.cpp'
         PassPattern = 'PASS_00d3e290'
     }
     [pscustomobject]@{
@@ -108799,16 +108799,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d3e2b0'
-        Module = '_gapscan'
-        Source = '00/d3/gapscan_sub00d3e2b0_00d3e2b0.cpp'
-        TestSource = '00/d3/gapscan_sub00d3e2b0_00d3e2b0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest'
+        Source = '00/d3/NScriptCQGuildTrainingScriptCApprenticeSpeedTest_OnPredicateFail_00d3e2b0.cpp'
+        TestSource = '00/d3/NScriptCQGuildTrainingScriptCApprenticeSpeedTest_OnPredicateFail_00d3e2b0_test.cpp'
         PassPattern = 'PASS_00d3e2b0'
     }
     [pscustomobject]@{
         Address = '00d40a80'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d40a80_00d40a80.cpp'
-        TestSource = '00/d4/gapscan_sub00d40a80_00d40a80_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CRaceMarker'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCRaceMarker_GetParentScript_00d40a80.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCRaceMarker_GetParentScript_00d40a80_test.cpp'
         PassPattern = 'PASS_00d40a80'
     }
     [pscustomobject]@{
@@ -108820,9 +108820,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d40bd0'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d40bd0_00d40bd0.cpp'
-        TestSource = '00/d4/gapscan_sub00d40bd0_00d40bd0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CHeroBed'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCHeroBed_GetParentScript_00d40bd0.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCHeroBed_GetParentScript_00d40bd0_test.cpp'
         PassPattern = 'PASS_00d40bd0'
     }
     [pscustomobject]@{
@@ -108834,23 +108834,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d40cb0'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d40cb0_00d40cb0.cpp'
-        TestSource = '00/d4/gapscan_sub00d40cb0_00d40cb0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CMeleeApprentice'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_GetParentScript_00d40cb0.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_GetParentScript_00d40cb0_test.cpp'
         PassPattern = 'PASS_00d40cb0'
     }
     [pscustomobject]@{
         Address = '00d41ad0'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d41ad0_00d41ad0.cpp'
-        TestSource = '00/d4/gapscan_sub00d41ad0_00d41ad0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CCombatApprentice'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCCombatApprentice_GetParentScript_00d41ad0.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCCombatApprentice_GetParentScript_00d41ad0_test.cpp'
         PassPattern = 'PASS_00d41ad0'
     }
     [pscustomobject]@{
         Address = '00d41bb0'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d41bb0_00d41bb0.cpp'
-        TestSource = '00/d4/gapscan_sub00d41bb0_00d41bb0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CSkillApprentice'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCSkillApprentice_GetParentScript_00d41bb0.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCSkillApprentice_GetParentScript_00d41bb0_test.cpp'
         PassPattern = 'PASS_00d41bb0'
     }
     [pscustomobject]@{
@@ -108862,44 +108862,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d41c90'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d41c90_00d41c90.cpp'
-        TestSource = '00/d4/gapscan_sub00d41c90_00d41c90_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CSkillTarget'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCSkillTarget_GetParentScript_00d41c90.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCSkillTarget_GetParentScript_00d41c90_test.cpp'
         PassPattern = 'PASS_00d41c90'
     }
     [pscustomobject]@{
         Address = '00d41cd0'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d41cd0_00d41cd0.cpp'
-        TestSource = '00/d4/gapscan_sub00d41cd0_00d41cd0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CSkillTarget'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCSkillTarget_OnPredicateFail_00d41cd0.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCSkillTarget_OnPredicateFail_00d41cd0_test.cpp'
         PassPattern = 'PASS_00d41cd0'
     }
     [pscustomobject]@{
         Address = '00d42fe0'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d42fe0_00d42fe0.cpp'
-        TestSource = '00/d4/gapscan_sub00d42fe0_00d42fe0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CBirdKiller'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCBirdKiller_GetParentScript_00d42fe0.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCBirdKiller_GetParentScript_00d42fe0_test.cpp'
         PassPattern = 'PASS_00d42fe0'
     }
     [pscustomobject]@{
         Address = '00d43010'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d43010_00d43010.cpp'
-        TestSource = '00/d4/gapscan_sub00d43010_00d43010_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CBirdKiller'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCBirdKiller_OnPredicateFail_00d43010.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCBirdKiller_OnPredicateFail_00d43010_test.cpp'
         PassPattern = 'PASS_00d43010'
     }
     [pscustomobject]@{
         Address = '00d430e0'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d430e0_00d430e0.cpp'
-        TestSource = '00/d4/gapscan_sub00d430e0_00d430e0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CKillBird'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCKillBird_GetParentScript_00d430e0.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCKillBird_GetParentScript_00d430e0_test.cpp'
         PassPattern = 'PASS_00d430e0'
     }
     [pscustomobject]@{
         Address = '00d43320'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d43320_00d43320.cpp'
-        TestSource = '00/d4/gapscan_sub00d43320_00d43320_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CWillApprentice'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCWillApprentice_GetParentScript_00d43320.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCWillApprentice_GetParentScript_00d43320_test.cpp'
         PassPattern = 'PASS_00d43320'
     }
     [pscustomobject]@{
@@ -108911,9 +108911,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d43400'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d43400_00d43400.cpp'
-        TestSource = '00/d4/gapscan_sub00d43400_00d43400_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CWillDummy'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCWillDummy_GetParentScript_00d43400.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCWillDummy_GetParentScript_00d43400_test.cpp'
         PassPattern = 'PASS_00d43400'
     }
     [pscustomobject]@{
@@ -108925,16 +108925,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d43420'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d43420_00d43420.cpp'
-        TestSource = '00/d4/gapscan_sub00d43420_00d43420_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CWillDummy'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCWillDummy_OnPredicateFail_00d43420.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCWillDummy_OnPredicateFail_00d43420_test.cpp'
         PassPattern = 'PASS_00d43420'
     }
     [pscustomobject]@{
         Address = '00d43d70'
-        Module = '_gapscan'
-        Source = '00/d4/gapscan_sub00d43d70_00d43d70.cpp'
-        TestSource = '00/d4/gapscan_sub00d43d70_00d43d70_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CPreMeleeMaze'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCPreMeleeMaze_GetParentScript_00d43d70.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCPreMeleeMaze_GetParentScript_00d43d70_test.cpp'
         PassPattern = 'PASS_00d43d70'
     }
     [pscustomobject]@{
@@ -108946,37 +108946,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d509c0'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d509c0_00d509c0.cpp'
-        TestSource = '00/d5/gapscan_sub00d509c0_00d509c0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingDepartureScript>'
+        Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingDepartureScript_GetEntityScriptName_00d509c0.cpp'
+        TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingDepartureScript_GetEntityScriptName_00d509c0_test.cpp'
         PassPattern = 'PASS_00d509c0'
     }
     [pscustomobject]@{
         Address = '00d50a70'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d50a70_00d50a70.cpp'
-        TestSource = '00/d5/gapscan_sub00d50a70_00d50a70_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster'
+        Source = '00/d5/NScriptCQGuildTrainingDepartureScriptCTheRealGuildmaster_GetParentScript_00d50a70.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingDepartureScriptCTheRealGuildmaster_GetParentScript_00d50a70_test.cpp'
         PassPattern = 'PASS_00d50a70'
     }
     [pscustomobject]@{
         Address = '00d51e10'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d51e10_00d51e10.cpp'
-        TestSource = '00/d5/gapscan_sub00d51e10_00d51e10_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingPreMeleeScript>'
+        Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingPreMeleeScript_GetEntityScriptName_00d51e10.cpp'
+        TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingPreMeleeScript_GetEntityScriptName_00d51e10_test.cpp'
         PassPattern = 'PASS_00d51e10'
     }
     [pscustomobject]@{
         Address = '00d51ec0'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d51ec0_00d51ec0.cpp'
-        TestSource = '00/d5/gapscan_sub00d51ec0_00d51ec0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster'
+        Source = '00/d5/NScriptCQGuildTrainingPreMeleeScriptCTheRealGuildmaster_GetParentScript_00d51ec0.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingPreMeleeScriptCTheRealGuildmaster_GetParentScript_00d51ec0_test.cpp'
         PassPattern = 'PASS_00d51ec0'
     }
     [pscustomobject]@{
         Address = '00d51fa0'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d51fa0_00d51fa0.cpp'
-        TestSource = '00/d5/gapscan_sub00d51fa0_00d51fa0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy'
+        Source = '00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeDummy_GetParentScript_00d51fa0.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeDummy_GetParentScript_00d51fa0_test.cpp'
         PassPattern = 'PASS_00d51fa0'
     }
     [pscustomobject]@{
@@ -108988,9 +108988,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d522d0'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d522d0_00d522d0.cpp'
-        TestSource = '00/d5/gapscan_sub00d522d0_00d522d0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper'
+        Source = '00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeWhisper_GetParentScript_00d522d0.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeWhisper_GetParentScript_00d522d0_test.cpp'
         PassPattern = 'PASS_00d522d0'
     }
     [pscustomobject]@{
@@ -109002,30 +109002,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d565b0'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d565b0_00d565b0.cpp'
-        TestSource = '00/d5/gapscan_sub00d565b0_00d565b0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingMeleeScript>'
+        Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingMeleeScript_GetEntityScriptName_00d565b0.cpp'
+        TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingMeleeScript_GetEntityScriptName_00d565b0_test.cpp'
         PassPattern = 'PASS_00d565b0'
     }
     [pscustomobject]@{
         Address = '00d56660'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d56660_00d56660.cpp'
-        TestSource = '00/d5/gapscan_sub00d56660_00d56660_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster'
+        Source = '00/d5/NScriptCQGuildTrainingMeleeScriptCTheRealGuildmaster_GetParentScript_00d56660.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingMeleeScriptCTheRealGuildmaster_GetParentScript_00d56660_test.cpp'
         PassPattern = 'PASS_00d56660'
     }
     [pscustomobject]@{
         Address = '00d56740'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d56740_00d56740.cpp'
-        TestSource = '00/d5/gapscan_sub00d56740_00d56740_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent'
+        Source = '00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeOpponent_GetParentScript_00d56740.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeOpponent_GetParentScript_00d56740_test.cpp'
         PassPattern = 'PASS_00d56740'
     }
     [pscustomobject]@{
         Address = '00d58040'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d58040_00d58040.cpp'
-        TestSource = '00/d5/gapscan_sub00d58040_00d58040_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder'
+        Source = '00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeThunder_GetParentScript_00d58040.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeThunder_GetParentScript_00d58040_test.cpp'
         PassPattern = 'PASS_00d58040'
     }
     [pscustomobject]@{
@@ -109037,30 +109037,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d5abd0'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d5abd0_00d5abd0.cpp'
-        TestSource = '00/d5/gapscan_sub00d5abd0_00d5abd0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingSkillScript>'
+        Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingSkillScript_GetEntityScriptName_00d5abd0.cpp'
+        TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingSkillScript_GetEntityScriptName_00d5abd0_test.cpp'
         PassPattern = 'PASS_00d5abd0'
     }
     [pscustomobject]@{
         Address = '00d5ac80'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d5ac80_00d5ac80.cpp'
-        TestSource = '00/d5/gapscan_sub00d5ac80_00d5ac80_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster'
+        Source = '00/d5/NScriptCQGuildTrainingSkillScriptCTheRealGuildmaster_GetParentScript_00d5ac80.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingSkillScriptCTheRealGuildmaster_GetParentScript_00d5ac80_test.cpp'
         PassPattern = 'PASS_00d5ac80'
     }
     [pscustomobject]@{
         Address = '00d5ddd0'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d5ddd0_00d5ddd0.cpp'
-        TestSource = '00/d5/gapscan_sub00d5ddd0_00d5ddd0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingWillScript>'
+        Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingWillScript_GetEntityScriptName_00d5ddd0.cpp'
+        TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingWillScript_GetEntityScriptName_00d5ddd0_test.cpp'
         PassPattern = 'PASS_00d5ddd0'
     }
     [pscustomobject]@{
         Address = '00d5de80'
-        Module = '_gapscan'
-        Source = '00/d5/gapscan_sub00d5de80_00d5de80.cpp'
-        TestSource = '00/d5/gapscan_sub00d5de80_00d5de80_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster'
+        Source = '00/d5/NScriptCQGuildTrainingWillScriptCTheRealGuildmaster_GetParentScript_00d5de80.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingWillScriptCTheRealGuildmaster_GetParentScript_00d5de80_test.cpp'
         PassPattern = 'PASS_00d5de80'
     }
     [pscustomobject]@{
@@ -109072,16 +109072,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d62260'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d62260_00d62260.cpp'
-        TestSource = '00/d6/gapscan_sub00d62260_00d62260_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsDepartureScript>'
+        Source = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsDepartureScript_GetEntityScriptName_00d62260.cpp'
+        TestSource = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsDepartureScript_GetEntityScriptName_00d62260_test.cpp'
         PassPattern = 'PASS_00d62260'
     }
     [pscustomobject]@{
         Address = '00d62310'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d62310_00d62310.cpp'
-        TestSource = '00/d6/gapscan_sub00d62310_00d62310_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCFinalMaze_GetParentScript_00d62310.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCFinalMaze_GetParentScript_00d62310_test.cpp'
         PassPattern = 'PASS_00d62310'
     }
     [pscustomobject]@{
@@ -109093,72 +109093,72 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d62330'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d62330_00d62330.cpp'
-        TestSource = '00/d6/gapscan_sub00d62330_00d62330_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCFinalMaze_OnPredicateFail_00d62330.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCFinalMaze_OnPredicateFail_00d62330_test.cpp'
         PassPattern = 'PASS_00d62330'
     }
     [pscustomobject]@{
         Address = '00d62400'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d62400_00d62400.cpp'
-        TestSource = '00/d6/gapscan_sub00d62400_00d62400_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCArtifactThief_GetParentScript_00d62400.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCArtifactThief_GetParentScript_00d62400_test.cpp'
         PassPattern = 'PASS_00d62400'
     }
     [pscustomobject]@{
         Address = '00d62450'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d62450_00d62450.cpp'
-        TestSource = '00/d6/gapscan_sub00d62450_00d62450_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCArtifactThief_OnPredicateFail_00d62450.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCArtifactThief_OnPredicateFail_00d62450_test.cpp'
         PassPattern = 'PASS_00d62450'
     }
     [pscustomobject]@{
         Address = '00d63d60'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d63d60_00d63d60.cpp'
-        TestSource = '00/d6/gapscan_sub00d63d60_00d63d60_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCScorpionHome_GetParentScript_00d63d60.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCScorpionHome_GetParentScript_00d63d60_test.cpp'
         PassPattern = 'PASS_00d63d60'
     }
     [pscustomobject]@{
         Address = '00d63d70'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d63d70_00d63d70.cpp'
-        TestSource = '00/d6/gapscan_sub00d63d70_00d63d70_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCScorpionHome_OnPredicateFail_00d63d70.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCScorpionHome_OnPredicateFail_00d63d70_test.cpp'
         PassPattern = 'PASS_00d63d70'
     }
     [pscustomobject]@{
         Address = '00d66870'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d66870_00d66870.cpp'
-        TestSource = '00/d6/gapscan_sub00d66870_00d66870_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsMeleeScript>'
+        Source = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsMeleeScript_GetEntityScriptName_00d66870.cpp'
+        TestSource = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsMeleeScript_GetEntityScriptName_00d66870_test.cpp'
         PassPattern = 'PASS_00d66870'
     }
     [pscustomobject]@{
         Address = '00d66c40'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d66c40_00d66c40.cpp'
-        TestSource = '00/d6/gapscan_sub00d66c40_00d66c40_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsMeleeScriptCScorpionHome_GetParentScript_00d66c40.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsMeleeScriptCScorpionHome_GetParentScript_00d66c40_test.cpp'
         PassPattern = 'PASS_00d66c40'
     }
     [pscustomobject]@{
         Address = '00d66c50'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d66c50_00d66c50.cpp'
-        TestSource = '00/d6/gapscan_sub00d66c50_00d66c50_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsMeleeScriptCScorpionHome_OnPredicateFail_00d66c50.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsMeleeScriptCScorpionHome_OnPredicateFail_00d66c50_test.cpp'
         PassPattern = 'PASS_00d66c50'
     }
     [pscustomobject]@{
         Address = '00d68710'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d68710_00d68710.cpp'
-        TestSource = '00/d6/gapscan_sub00d68710_00d68710_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsWillScript>'
+        Source = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsWillScript_GetEntityScriptName_00d68710.cpp'
+        TestSource = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsWillScript_GetEntityScriptName_00d68710_test.cpp'
         PassPattern = 'PASS_00d68710'
     }
     [pscustomobject]@{
         Address = '00d687c0'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d687c0_00d687c0.cpp'
-        TestSource = '00/d6/gapscan_sub00d687c0_00d687c0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsWillScriptCWillWhisper_GetParentScript_00d687c0.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsWillScriptCWillWhisper_GetParentScript_00d687c0_test.cpp'
         PassPattern = 'PASS_00d687c0'
     }
     [pscustomobject]@{
@@ -109170,23 +109170,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d687e0'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d687e0_00d687e0.cpp'
-        TestSource = '00/d6/gapscan_sub00d687e0_00d687e0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsWillScriptCWillWhisper_OnPredicateFail_00d687e0.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsWillScriptCWillWhisper_OnPredicateFail_00d687e0_test.cpp'
         PassPattern = 'PASS_00d687e0'
     }
     [pscustomobject]@{
         Address = '00d69d40'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d69d40_00d69d40.cpp'
-        TestSource = '00/d6/gapscan_sub00d69d40_00d69d40_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_HangingTreeEvilScript>'
+        Source = '00/d6/CEntityScriptBindingNScriptCQHangingTreeEvilScript_GetEntityScriptName_00d69d40.cpp'
+        TestSource = '00/d6/CEntityScriptBindingNScriptCQHangingTreeEvilScript_GetEntityScriptName_00d69d40_test.cpp'
         PassPattern = 'PASS_00d69d40'
     }
     [pscustomobject]@{
         Address = '00d69df0'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d69df0_00d69df0.cpp'
-        TestSource = '00/d6/gapscan_sub00d69df0_00d69df0_test.cpp'
+        Module = 'NScript::CQ_HangingTreeEvilScript::CHTE_AmbushPoint'
+        Source = '00/d6/NScriptCQHangingTreeEvilScriptCHTEAmbushPoint_GetParentScript_00d69df0.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScriptCHTEAmbushPoint_GetParentScript_00d69df0_test.cpp'
         PassPattern = 'PASS_00d69df0'
     }
     [pscustomobject]@{
@@ -109198,44 +109198,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d69ed0'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d69ed0_00d69ed0.cpp'
-        TestSource = '00/d6/gapscan_sub00d69ed0_00d69ed0_test.cpp'
+        Module = 'NScript::CQ_HangingTreeEvilScript::CHTE_Prisoner'
+        Source = '00/d6/NScriptCQHangingTreeEvilScriptCHTEPrisoner_GetParentScript_00d69ed0.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScriptCHTEPrisoner_GetParentScript_00d69ed0_test.cpp'
         PassPattern = 'PASS_00d69ed0'
     }
     [pscustomobject]@{
         Address = '00d6a070'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d6a070_00d6a070.cpp'
-        TestSource = '00/d6/gapscan_sub00d6a070_00d6a070_test.cpp'
+        Module = 'NScript::CQ_HangingTreeEvilScript::CHTE_Executioner'
+        Source = '00/d6/NScriptCQHangingTreeEvilScriptCHTEExecutioner_GetParentScript_00d6a070.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScriptCHTEExecutioner_GetParentScript_00d6a070_test.cpp'
         PassPattern = 'PASS_00d6a070'
     }
     [pscustomobject]@{
         Address = '00d6a1f0'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d6a1f0_00d6a1f0.cpp'
-        TestSource = '00/d6/gapscan_sub00d6a1f0_00d6a1f0_test.cpp'
+        Module = 'NScript::CQ_HangingTreeEvilScript::CGUARD1'
+        Source = '00/d6/NScriptCQHangingTreeEvilScriptCGUARD1_GetParentScript_00d6a1f0.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScriptCGUARD1_GetParentScript_00d6a1f0_test.cpp'
         PassPattern = 'PASS_00d6a1f0'
     }
     [pscustomobject]@{
         Address = '00d6a330'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d6a330_00d6a330.cpp'
-        TestSource = '00/d6/gapscan_sub00d6a330_00d6a330_test.cpp'
+        Module = 'NScript::CQ_HangingTreeEvilScript::CGUARD2'
+        Source = '00/d6/NScriptCQHangingTreeEvilScriptCGUARD2_GetParentScript_00d6a330.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScriptCGUARD2_GetParentScript_00d6a330_test.cpp'
         PassPattern = 'PASS_00d6a330'
     }
     [pscustomobject]@{
         Address = '00d6a470'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d6a470_00d6a470.cpp'
-        TestSource = '00/d6/gapscan_sub00d6a470_00d6a470_test.cpp'
+        Module = 'NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter'
+        Source = '00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_GetParentScript_00d6a470.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_GetParentScript_00d6a470_test.cpp'
         PassPattern = 'PASS_00d6a470'
     }
     [pscustomobject]@{
         Address = '00d6ae10'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d6ae10_00d6ae10.cpp'
-        TestSource = '00/d6/gapscan_sub00d6ae10_00d6ae10_test.cpp'
+        Module = 'NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard'
+        Source = '00/d6/NScriptCQHangingTreeEvilScriptCHTEAssaultGuard_GetParentScript_00d6ae10.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScriptCHTEAssaultGuard_GetParentScript_00d6ae10_test.cpp'
         PassPattern = 'PASS_00d6ae10'
     }
     [pscustomobject]@{
@@ -109254,9 +109254,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d6b220'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d6b220_00d6b220.cpp'
-        TestSource = '00/d6/gapscan_sub00d6b220_00d6b220_test.cpp'
+        Module = 'NScript::CQ_HangingTreeEvilScript::CHTE_Audience'
+        Source = '00/d6/NScriptCQHangingTreeEvilScriptCHTEAudience_GetParentScript_00d6b220.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScriptCHTEAudience_GetParentScript_00d6b220_test.cpp'
         PassPattern = 'PASS_00d6b220'
     }
     [pscustomobject]@{
@@ -109268,16 +109268,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d6fcf0'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d6fcf0_00d6fcf0.cpp'
-        TestSource = '00/d6/gapscan_sub00d6fcf0_00d6fcf0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_HangingTreeGoodScript>'
+        Source = '00/d6/CEntityScriptBindingNScriptCQHangingTreeGoodScript_GetEntityScriptName_00d6fcf0.cpp'
+        TestSource = '00/d6/CEntityScriptBindingNScriptCQHangingTreeGoodScript_GetEntityScriptName_00d6fcf0_test.cpp'
         PassPattern = 'PASS_00d6fcf0'
     }
     [pscustomobject]@{
         Address = '00d6fe10'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d6fe10_00d6fe10.cpp'
-        TestSource = '00/d6/gapscan_sub00d6fe10_00d6fe10_test.cpp'
+        Module = 'NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPoint'
+        Source = '00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPoint_GetParentScript_00d6fe10.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPoint_GetParentScript_00d6fe10_test.cpp'
         PassPattern = 'PASS_00d6fe10'
     }
     [pscustomobject]@{
@@ -109289,9 +109289,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d6fef0'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d6fef0_00d6fef0.cpp'
-        TestSource = '00/d6/gapscan_sub00d6fef0_00d6fef0_test.cpp'
+        Module = 'NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointCond'
+        Source = '00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPointCond_GetParentScript_00d6fef0.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPointCond_GetParentScript_00d6fef0_test.cpp'
         PassPattern = 'PASS_00d6fef0'
     }
     [pscustomobject]@{
@@ -109303,9 +109303,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d6ffd0'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d6ffd0_00d6ffd0.cpp'
-        TestSource = '00/d6/gapscan_sub00d6ffd0_00d6ffd0_test.cpp'
+        Module = 'NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointRear'
+        Source = '00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPointRear_GetParentScript_00d6ffd0.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPointRear_GetParentScript_00d6ffd0_test.cpp'
         PassPattern = 'PASS_00d6ffd0'
     }
     [pscustomobject]@{
@@ -109317,30 +109317,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d700b0'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d700b0_00d700b0.cpp'
-        TestSource = '00/d7/gapscan_sub00d700b0_00d700b0_test.cpp'
+        Module = 'NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointBackup'
+        Source = '00/d7/NScriptCQHangingTreeGoodScriptCHTGAmbushPointBackup_GetParentScript_00d700b0.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScriptCHTGAmbushPointBackup_GetParentScript_00d700b0_test.cpp'
         PassPattern = 'PASS_00d700b0'
     }
     [pscustomobject]@{
         Address = '00d70180'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d70180_00d70180.cpp'
-        TestSource = '00/d7/gapscan_sub00d70180_00d70180_test.cpp'
+        Module = 'NScript::CQ_HangingTreeGoodScript::CHTG_FreedomFighter'
+        Source = '00/d7/NScriptCQHangingTreeGoodScriptCHTGFreedomFighter_GetParentScript_00d70180.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScriptCHTGFreedomFighter_GetParentScript_00d70180_test.cpp'
         PassPattern = 'PASS_00d70180'
     }
     [pscustomobject]@{
         Address = '00d705c0'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d705c0_00d705c0.cpp'
-        TestSource = '00/d7/gapscan_sub00d705c0_00d705c0_test.cpp'
+        Module = 'NScript::CQ_HangingTreeGoodScript::CHTG_Guard'
+        Source = '00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_GetParentScript_00d705c0.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_GetParentScript_00d705c0_test.cpp'
         PassPattern = 'PASS_00d705c0'
     }
     [pscustomobject]@{
         Address = '00d71a20'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d71a20_00d71a20.cpp'
-        TestSource = '00/d7/gapscan_sub00d71a20_00d71a20_test.cpp'
+        Module = 'NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner'
+        Source = '00/d7/NScriptCQHangingTreeGoodScriptCHTGPrisoner_GetParentScript_00d71a20.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScriptCHTGPrisoner_GetParentScript_00d71a20_test.cpp'
         PassPattern = 'PASS_00d71a20'
     }
     [pscustomobject]@{
@@ -109359,9 +109359,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d72570'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d72570_00d72570.cpp'
-        TestSource = '00/d7/gapscan_sub00d72570_00d72570_test.cpp'
+        Module = 'NScript::CQ_HangingTreeGoodScript::CHTG_Boss'
+        Source = '00/d7/NScriptCQHangingTreeGoodScriptCHTGBoss_GetParentScript_00d72570.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScriptCHTGBoss_GetParentScript_00d72570_test.cpp'
         PassPattern = 'PASS_00d72570'
     }
     [pscustomobject]@{
@@ -109380,324 +109380,324 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d79b80'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d79b80_00d79b80.cpp'
-        TestSource = '00/d7/gapscan_sub00d79b80_00d79b80_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsScript>'
+        Source = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsScript_GetEntityScriptName_00d79b80.cpp'
+        TestSource = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsScript_GetEntityScriptName_00d79b80_test.cpp'
         PassPattern = 'PASS_00d79b80'
     }
     [pscustomobject]@{
         Address = '00d79c30'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d79c30_00d79c30.cpp'
-        TestSource = '00/d7/gapscan_sub00d79c30_00d79c30_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsScript::CNotForODG'
+        Source = '00/d7/NScriptCQHeroSoulsScriptCNotForODG_GetParentScript_00d79c30.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsScriptCNotForODG_GetParentScript_00d79c30_test.cpp'
         PassPattern = 'PASS_00d79c30'
     }
     [pscustomobject]@{
         Address = '00d79d20'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d79d20_00d79d20.cpp'
-        TestSource = '00/d7/gapscan_sub00d79d20_00d79d20_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsScript::CEndScythe'
+        Source = '00/d7/NScriptCQHeroSoulsScriptCEndScythe_GetParentScript_00d79d20.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsScriptCEndScythe_GetParentScript_00d79d20_test.cpp'
         PassPattern = 'PASS_00d79d20'
     }
     [pscustomobject]@{
         Address = '00d7a330'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7a330_00d7a330.cpp'
-        TestSource = '00/d7/gapscan_sub00d7a330_00d7a330_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsScript::CEndBriarRose'
+        Source = '00/d7/NScriptCQHeroSoulsScriptCEndBriarRose_GetParentScript_00d7a330.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsScriptCEndBriarRose_GetParentScript_00d7a330_test.cpp'
         PassPattern = 'PASS_00d7a330'
     }
     [pscustomobject]@{
         Address = '00d7b3f0'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7b3f0_00d7b3f0.cpp'
-        TestSource = '00/d7/gapscan_sub00d7b3f0_00d7b3f0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsThunderScript>'
+        Source = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsThunderScript_GetEntityScriptName_00d7b3f0.cpp'
+        TestSource = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsThunderScript_GetEntityScriptName_00d7b3f0_test.cpp'
         PassPattern = 'PASS_00d7b3f0'
     }
     [pscustomobject]@{
         Address = '00d7b4a0'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7b4a0_00d7b4a0.cpp'
-        TestSource = '00/d7/gapscan_sub00d7b4a0_00d7b4a0_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsThunderScript::CHeroThunder'
+        Source = '00/d7/NScriptCQHeroSoulsThunderScriptCHeroThunder_GetParentScript_00d7b4a0.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsThunderScriptCHeroThunder_GetParentScript_00d7b4a0_test.cpp'
         PassPattern = 'PASS_00d7b4a0'
     }
     [pscustomobject]@{
         Address = '00d7d8c0'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7d8c0_00d7d8c0.cpp'
-        TestSource = '00/d7/gapscan_sub00d7d8c0_00d7d8c0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsArenaScript>'
+        Source = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsArenaScript_GetEntityScriptName_00d7d8c0.cpp'
+        TestSource = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsArenaScript_GetEntityScriptName_00d7d8c0_test.cpp'
         PassPattern = 'PASS_00d7d8c0'
     }
     [pscustomobject]@{
         Address = '00d7dc40'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7dc40_00d7dc40.cpp'
-        TestSource = '00/d7/gapscan_sub00d7dc40_00d7dc40_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsArenaScript::CNotForODG'
+        Source = '00/d7/NScriptCQHeroSoulsArenaScriptCNotForODG_GetParentScript_00d7dc40.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsArenaScriptCNotForODG_GetParentScript_00d7dc40_test.cpp'
         PassPattern = 'PASS_00d7dc40'
     }
     [pscustomobject]@{
         Address = '00d7dd30'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7dd30_00d7dd30.cpp'
-        TestSource = '00/d7/gapscan_sub00d7dd30_00d7dd30_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsArenaScript::CSummonerToKill'
+        Source = '00/d7/NScriptCQHeroSoulsArenaScriptCSummonerToKill_GetParentScript_00d7dd30.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsArenaScriptCSummonerToKill_GetParentScript_00d7dd30_test.cpp'
         PassPattern = 'PASS_00d7dd30'
     }
     [pscustomobject]@{
         Address = '00d7df20'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7df20_00d7df20.cpp'
-        TestSource = '00/d7/gapscan_sub00d7df20_00d7df20_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsArenaScript::CArenaHeroGate'
+        Source = '00/d7/NScriptCQHeroSoulsArenaScriptCArenaHeroGate_GetParentScript_00d7df20.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsArenaScriptCArenaHeroGate_GetParentScript_00d7df20_test.cpp'
         PassPattern = 'PASS_00d7df20'
     }
     [pscustomobject]@{
         Address = '00d7e090'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7e090_00d7e090.cpp'
-        TestSource = '00/d7/gapscan_sub00d7e090_00d7e090_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsArenaScript::CHOHGuard'
+        Source = '00/d7/NScriptCQHeroSoulsArenaScriptCHOHGuard_GetParentScript_00d7e090.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsArenaScriptCHOHGuard_GetParentScript_00d7e090_test.cpp'
         PassPattern = 'PASS_00d7e090'
     }
     [pscustomobject]@{
         Address = '00d7ec80'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7ec80_00d7ec80.cpp'
-        TestSource = '00/d7/gapscan_sub00d7ec80_00d7ec80_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsArenaScript::CSummoner1'
+        Source = '00/d7/NScriptCQHeroSoulsArenaScriptCSummoner1_GetParentScript_00d7ec80.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsArenaScriptCSummoner1_GetParentScript_00d7ec80_test.cpp'
         PassPattern = 'PASS_00d7ec80'
     }
     [pscustomobject]@{
         Address = '00d7eea0'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7eea0_00d7eea0.cpp'
-        TestSource = '00/d7/gapscan_sub00d7eea0_00d7eea0_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsArenaScript::CSummoner2'
+        Source = '00/d7/NScriptCQHeroSoulsArenaScriptCSummoner2_GetParentScript_00d7eea0.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsArenaScriptCSummoner2_GetParentScript_00d7eea0_test.cpp'
         PassPattern = 'PASS_00d7eea0'
     }
     [pscustomobject]@{
         Address = '00d7f0c0'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7f0c0_00d7f0c0.cpp'
-        TestSource = '00/d7/gapscan_sub00d7f0c0_00d7f0c0_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsArenaScript::CHeroSoulsEnemy'
+        Source = '00/d7/NScriptCQHeroSoulsArenaScriptCHeroSoulsEnemy_GetParentScript_00d7f0c0.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsArenaScriptCHeroSoulsEnemy_GetParentScript_00d7f0c0_test.cpp'
         PassPattern = 'PASS_00d7f0c0'
     }
     [pscustomobject]@{
         Address = '00d7f240'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7f240_00d7f240.cpp'
-        TestSource = '00/d7/gapscan_sub00d7f240_00d7f240_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsArenaScript::CBlockedEntrance'
+        Source = '00/d7/NScriptCQHeroSoulsArenaScriptCBlockedEntrance_GetParentScript_00d7f240.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsArenaScriptCBlockedEntrance_GetParentScript_00d7f240_test.cpp'
         PassPattern = 'PASS_00d7f240'
     }
     [pscustomobject]@{
         Address = '00d7f420'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7f420_00d7f420.cpp'
-        TestSource = '00/d7/gapscan_sub00d7f420_00d7f420_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsArenaScript::CDyingVillager'
+        Source = '00/d7/NScriptCQHeroSoulsArenaScriptCDyingVillager_GetParentScript_00d7f420.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsArenaScriptCDyingVillager_GetParentScript_00d7f420_test.cpp'
         PassPattern = 'PASS_00d7f420'
     }
     [pscustomobject]@{
         Address = '00d7f850'
-        Module = '_gapscan'
-        Source = '00/d7/gapscan_sub00d7f850_00d7f850.cpp'
-        TestSource = '00/d7/gapscan_sub00d7f850_00d7f850_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsArenaScript::CHSA_ScreamingVillager'
+        Source = '00/d7/NScriptCQHeroSoulsArenaScriptCHSAScreamingVillager_GetParentScript_00d7f850.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsArenaScriptCHSAScreamingVillager_GetParentScript_00d7f850_test.cpp'
         PassPattern = 'PASS_00d7f850'
     }
     [pscustomobject]@{
         Address = '00d81620'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d81620_00d81620.cpp'
-        TestSource = '00/d8/gapscan_sub00d81620_00d81620_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsBriarScript>'
+        Source = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsBriarScript_GetEntityScriptName_00d81620.cpp'
+        TestSource = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsBriarScript_GetEntityScriptName_00d81620_test.cpp'
         PassPattern = 'PASS_00d81620'
     }
     [pscustomobject]@{
         Address = '00d816d0'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d816d0_00d816d0.cpp'
-        TestSource = '00/d8/gapscan_sub00d816d0_00d816d0_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsBriarScript::CBriarRose'
+        Source = '00/d8/NScriptCQHeroSoulsBriarScriptCBriarRose_GetParentScript_00d816d0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsBriarScriptCBriarRose_GetParentScript_00d816d0_test.cpp'
         PassPattern = 'PASS_00d816d0'
     }
     [pscustomobject]@{
         Address = '00d817f0'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d817f0_00d817f0.cpp'
-        TestSource = '00/d8/gapscan_sub00d817f0_00d817f0_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsBriarScript::CBRIAR_ROSE_IMPOSTER'
+        Source = '00/d8/NScriptCQHeroSoulsBriarScriptCBRIARROSEIMPOSTER_GetParentScript_00d817f0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsBriarScriptCBRIARROSEIMPOSTER_GetParentScript_00d817f0_test.cpp'
         PassPattern = 'PASS_00d817f0'
     }
     [pscustomobject]@{
         Address = '00d81c00'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d81c00_00d81c00.cpp'
-        TestSource = '00/d8/gapscan_sub00d81c00_00d81c00_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsBriarScript::CHSB_MagicBarrier'
+        Source = '00/d8/NScriptCQHeroSoulsBriarScriptCHSBMagicBarrier_GetParentScript_00d81c00.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsBriarScriptCHSBMagicBarrier_GetParentScript_00d81c00_test.cpp'
         PassPattern = 'PASS_00d81c00'
     }
     [pscustomobject]@{
         Address = '00d83ce0'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d83ce0_00d83ce0.cpp'
-        TestSource = '00/d8/gapscan_sub00d83ce0_00d83ce0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsMotherScript>'
+        Source = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsMotherScript_GetEntityScriptName_00d83ce0.cpp'
+        TestSource = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsMotherScript_GetEntityScriptName_00d83ce0_test.cpp'
         PassPattern = 'PASS_00d83ce0'
     }
     [pscustomobject]@{
         Address = '00d83d90'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d83d90_00d83d90.cpp'
-        TestSource = '00/d8/gapscan_sub00d83d90_00d83d90_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsMotherScript::CSummonerToKill'
+        Source = '00/d8/NScriptCQHeroSoulsMotherScriptCSummonerToKill_GetParentScript_00d83d90.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsMotherScriptCSummonerToKill_GetParentScript_00d83d90_test.cpp'
         PassPattern = 'PASS_00d83d90'
     }
     [pscustomobject]@{
         Address = '00d83f00'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d83f00_00d83f00.cpp'
-        TestSource = '00/d8/gapscan_sub00d83f00_00d83f00_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsMotherScript::CHS_Screamer'
+        Source = '00/d8/NScriptCQHeroSoulsMotherScriptCHSScreamer_GetParentScript_00d83f00.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsMotherScriptCHSScreamer_GetParentScript_00d83f00_test.cpp'
         PassPattern = 'PASS_00d83f00'
     }
     [pscustomobject]@{
         Address = '00d85a20'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d85a20_00d85a20.cpp'
-        TestSource = '00/d8/gapscan_sub00d85a20_00d85a20_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsGuildmasterScript>'
+        Source = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsGuildmasterScript_GetEntityScriptName_00d85a20.cpp'
+        TestSource = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsGuildmasterScript_GetEntityScriptName_00d85a20_test.cpp'
         PassPattern = 'PASS_00d85a20'
     }
     [pscustomobject]@{
         Address = '00d85ad0'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d85ad0_00d85ad0.cpp'
-        TestSource = '00/d8/gapscan_sub00d85ad0_00d85ad0_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsGuildmasterScript::CGuildmaster_HS'
+        Source = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuildmasterHS_GetParentScript_00d85ad0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuildmasterHS_GetParentScript_00d85ad0_test.cpp'
         PassPattern = 'PASS_00d85ad0'
     }
     [pscustomobject]@{
         Address = '00d86040'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d86040_00d86040.cpp'
-        TestSource = '00/d8/gapscan_sub00d86040_00d86040_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsGuildmasterScript::CGuardOutsideWoods'
+        Source = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuardOutsideWoods_GetParentScript_00d86040.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuardOutsideWoods_GetParentScript_00d86040_test.cpp'
         PassPattern = 'PASS_00d86040'
     }
     [pscustomobject]@{
         Address = '00d86120'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d86120_00d86120.cpp'
-        TestSource = '00/d8/gapscan_sub00d86120_00d86120_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsGuildmasterScript::CMuteGuardOutsideWoods'
+        Source = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCMuteGuardOutsideWoods_GetParentScript_00d86120.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCMuteGuardOutsideWoods_GetParentScript_00d86120_test.cpp'
         PassPattern = 'PASS_00d86120'
     }
     [pscustomobject]@{
         Address = '00d86430'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d86430_00d86430.cpp'
-        TestSource = '00/d8/gapscan_sub00d86430_00d86430_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsGuildmasterScript::CGuardInWoods'
+        Source = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuardInWoods_GetParentScript_00d86430.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuardInWoods_GetParentScript_00d86430_test.cpp'
         PassPattern = 'PASS_00d86430'
     }
     [pscustomobject]@{
         Address = '00d86600'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d86600_00d86600.cpp'
-        TestSource = '00/d8/gapscan_sub00d86600_00d86600_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsGuildmasterScript::CWaitingGuardInWoods'
+        Source = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCWaitingGuardInWoods_GetParentScript_00d86600.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCWaitingGuardInWoods_GetParentScript_00d86600_test.cpp'
         PassPattern = 'PASS_00d86600'
     }
     [pscustomobject]@{
         Address = '00d86a20'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d86a20_00d86a20.cpp'
-        TestSource = '00/d8/gapscan_sub00d86a20_00d86a20_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsGuildmasterScript::CHSG_DistanceChecker'
+        Source = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCHSGDistanceChecker_GetParentScript_00d86a20.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCHSGDistanceChecker_GetParentScript_00d86a20_test.cpp'
         PassPattern = 'PASS_00d86a20'
     }
     [pscustomobject]@{
         Address = '00d86c00'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d86c00_00d86c00.cpp'
-        TestSource = '00/d8/gapscan_sub00d86c00_00d86c00_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsGuildmasterScript::CSoulInfoAcolyte'
+        Source = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCSoulInfoAcolyte_GetParentScript_00d86c00.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCSoulInfoAcolyte_GetParentScript_00d86c00_test.cpp'
         PassPattern = 'PASS_00d86c00'
     }
     [pscustomobject]@{
         Address = '00d88250'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d88250_00d88250.cpp'
-        TestSource = '00/d8/gapscan_sub00d88250_00d88250_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_HeroSoulsNostroScript>'
+        Source = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsNostroScript_GetEntityScriptName_00d88250.cpp'
+        TestSource = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsNostroScript_GetEntityScriptName_00d88250_test.cpp'
         PassPattern = 'PASS_00d88250'
     }
     [pscustomobject]@{
         Address = '00d884c0'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d884c0_00d884c0.cpp'
-        TestSource = '00/d8/gapscan_sub00d884c0_00d884c0_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsNostroScript::CSummonerToKill'
+        Source = '00/d8/NScriptCQHeroSoulsNostroScriptCSummonerToKill_GetParentScript_00d884c0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsNostroScriptCSummonerToKill_GetParentScript_00d884c0_test.cpp'
         PassPattern = 'PASS_00d884c0'
     }
     [pscustomobject]@{
         Address = '00d88680'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d88680_00d88680.cpp'
-        TestSource = '00/d8/gapscan_sub00d88680_00d88680_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsNostroScript::CGuardNearGraveyardPath'
+        Source = '00/d8/NScriptCQHeroSoulsNostroScriptCGuardNearGraveyardPath_GetParentScript_00d88680.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsNostroScriptCGuardNearGraveyardPath_GetParentScript_00d88680_test.cpp'
         PassPattern = 'PASS_00d88680'
     }
     [pscustomobject]@{
         Address = '00d88f60'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d88f60_00d88f60.cpp'
-        TestSource = '00/d8/gapscan_sub00d88f60_00d88f60_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsNostroScript::CUndeadSoldier'
+        Source = '00/d8/NScriptCQHeroSoulsNostroScriptCUndeadSoldier_GetParentScript_00d88f60.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsNostroScriptCUndeadSoldier_GetParentScript_00d88f60_test.cpp'
         PassPattern = 'PASS_00d88f60'
     }
     [pscustomobject]@{
         Address = '00d89140'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d89140_00d89140.cpp'
-        TestSource = '00/d8/gapscan_sub00d89140_00d89140_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE'
+        Source = '00/d8/NScriptCQHeroSoulsNostroScriptCSUMMONEDCREATURE_GetParentScript_00d89140.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsNostroScriptCSUMMONEDCREATURE_GetParentScript_00d89140_test.cpp'
         PassPattern = 'PASS_00d89140'
     }
     [pscustomobject]@{
         Address = '00d89340'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d89340_00d89340.cpp'
-        TestSource = '00/d8/gapscan_sub00d89340_00d89340_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsNostroScript::CNostro'
+        Source = '00/d8/NScriptCQHeroSoulsNostroScriptCNostro_GetParentScript_00d89340.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsNostroScriptCNostro_GetParentScript_00d89340_test.cpp'
         PassPattern = 'PASS_00d89340'
     }
     [pscustomobject]@{
         Address = '00d8a230'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d8a230_00d8a230.cpp'
-        TestSource = '00/d8/gapscan_sub00d8a230_00d8a230_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_HerosOldHouseScript>'
+        Source = '00/d8/CEntityScriptBindingNScriptCQHerosOldHouseScript_GetEntityScriptName_00d8a230.cpp'
+        TestSource = '00/d8/CEntityScriptBindingNScriptCQHerosOldHouseScript_GetEntityScriptName_00d8a230_test.cpp'
         PassPattern = 'PASS_00d8a230'
     }
     [pscustomobject]@{
         Address = '00d8a550'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d8a550_00d8a550.cpp'
-        TestSource = '00/d8/gapscan_sub00d8a550_00d8a550_test.cpp'
+        Module = 'NScript::CQ_HerosOldHouseScript::CGhostFisherman'
+        Source = '00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_GetParentScript_00d8a550.cpp'
+        TestSource = '00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_GetParentScript_00d8a550_test.cpp'
         PassPattern = 'PASS_00d8a550'
     }
     [pscustomobject]@{
         Address = '00d8a6f0'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d8a6f0_00d8a6f0.cpp'
-        TestSource = '00/d8/gapscan_sub00d8a6f0_00d8a6f0_test.cpp'
+        Module = 'NScript::CQ_HerosOldHouseScript::CFishermansWife'
+        Source = '00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_GetParentScript_00d8a6f0.cpp'
+        TestSource = '00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_GetParentScript_00d8a6f0_test.cpp'
         PassPattern = 'PASS_00d8a6f0'
     }
     [pscustomobject]@{
         Address = '00d8a890'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d8a890_00d8a890.cpp'
-        TestSource = '00/d8/gapscan_sub00d8a890_00d8a890_test.cpp'
+        Module = 'NScript::CQ_HerosOldHouseScript::CExtraBooty'
+        Source = '00/d8/NScriptCQHerosOldHouseScriptCExtraBooty_GetParentScript_00d8a890.cpp'
+        TestSource = '00/d8/NScriptCQHerosOldHouseScriptCExtraBooty_GetParentScript_00d8a890_test.cpp'
         PassPattern = 'PASS_00d8a890'
     }
     [pscustomobject]@{
         Address = '00d8ee40'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d8ee40_00d8ee40.cpp'
-        TestSource = '00/d8/gapscan_sub00d8ee40_00d8ee40_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_HobbeCaveScript>'
+        Source = '00/d8/CEntityScriptBindingNScriptCQHobbeCaveScript_GetEntityScriptName_00d8ee40.cpp'
+        TestSource = '00/d8/CEntityScriptBindingNScriptCQHobbeCaveScript_GetEntityScriptName_00d8ee40_test.cpp'
         PassPattern = 'PASS_00d8ee40'
     }
     [pscustomobject]@{
         Address = '00d8f3b0'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d8f3b0_00d8f3b0.cpp'
-        TestSource = '00/d8/gapscan_sub00d8f3b0_00d8f3b0_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CHobbeSpawn'
+        Source = '00/d8/NScriptCQHobbeCaveScriptCHobbeSpawn_GetParentScript_00d8f3b0.cpp'
+        TestSource = '00/d8/NScriptCQHobbeCaveScriptCHobbeSpawn_GetParentScript_00d8f3b0_test.cpp'
         PassPattern = 'PASS_00d8f3b0'
     }
     [pscustomobject]@{
         Address = '00d8f490'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d8f490_00d8f490.cpp'
-        TestSource = '00/d8/gapscan_sub00d8f490_00d8f490_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CHobbeTorrent'
+        Source = '00/d8/NScriptCQHobbeCaveScriptCHobbeTorrent_GetParentScript_00d8f490.cpp'
+        TestSource = '00/d8/NScriptCQHobbeCaveScriptCHobbeTorrent_GetParentScript_00d8f490_test.cpp'
         PassPattern = 'PASS_00d8f490'
     }
     [pscustomobject]@{
         Address = '00d8f590'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d8f590_00d8f590.cpp'
-        TestSource = '00/d8/gapscan_sub00d8f590_00d8f590_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CHobbeRoaming'
+        Source = '00/d8/NScriptCQHobbeCaveScriptCHobbeRoaming_GetParentScript_00d8f590.cpp'
+        TestSource = '00/d8/NScriptCQHobbeCaveScriptCHobbeRoaming_GetParentScript_00d8f590_test.cpp'
         PassPattern = 'PASS_00d8f590'
     }
     [pscustomobject]@{
@@ -109709,9 +109709,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d8f680'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d8f680_00d8f680.cpp'
-        TestSource = '00/d8/gapscan_sub00d8f680_00d8f680_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CHobbeLarder'
+        Source = '00/d8/NScriptCQHobbeCaveScriptCHobbeLarder_GetParentScript_00d8f680.cpp'
+        TestSource = '00/d8/NScriptCQHobbeCaveScriptCHobbeLarder_GetParentScript_00d8f680_test.cpp'
         PassPattern = 'PASS_00d8f680'
     }
     [pscustomobject]@{
@@ -109723,9 +109723,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d8f9f0'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d8f9f0_00d8f9f0.cpp'
-        TestSource = '00/d8/gapscan_sub00d8f9f0_00d8f9f0_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CHobbeLeader'
+        Source = '00/d8/NScriptCQHobbeCaveScriptCHobbeLeader_GetParentScript_00d8f9f0.cpp'
+        TestSource = '00/d8/NScriptCQHobbeCaveScriptCHobbeLeader_GetParentScript_00d8f9f0_test.cpp'
         PassPattern = 'PASS_00d8f9f0'
     }
     [pscustomobject]@{
@@ -109737,30 +109737,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d8fd10'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d8fd10_00d8fd10.cpp'
-        TestSource = '00/d8/gapscan_sub00d8fd10_00d8fd10_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CGranny'
+        Source = '00/d8/NScriptCQHobbeCaveScriptCGranny_GetParentScript_00d8fd10.cpp'
+        TestSource = '00/d8/NScriptCQHobbeCaveScriptCGranny_GetParentScript_00d8fd10_test.cpp'
         PassPattern = 'PASS_00d8fd10'
     }
     [pscustomobject]@{
         Address = '00d8fed0'
-        Module = '_gapscan'
-        Source = '00/d8/gapscan_sub00d8fed0_00d8fed0.cpp'
-        TestSource = '00/d8/gapscan_sub00d8fed0_00d8fed0_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CNymph'
+        Source = '00/d8/NScriptCQHobbeCaveScriptCNymph_GetParentScript_00d8fed0.cpp'
+        TestSource = '00/d8/NScriptCQHobbeCaveScriptCNymph_GetParentScript_00d8fed0_test.cpp'
         PassPattern = 'PASS_00d8fed0'
     }
     [pscustomobject]@{
         Address = '00d90040'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d90040_00d90040.cpp'
-        TestSource = '00/d9/gapscan_sub00d90040_00d90040_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CJames'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCJames_GetParentScript_00d90040.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCJames_GetParentScript_00d90040_test.cpp'
         PassPattern = 'PASS_00d90040'
     }
     [pscustomobject]@{
         Address = '00d90250'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d90250_00d90250.cpp'
-        TestSource = '00/d9/gapscan_sub00d90250_00d90250_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CBanditCommentMarker'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCBanditCommentMarker_GetParentScript_00d90250.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCBanditCommentMarker_GetParentScript_00d90250_test.cpp'
         PassPattern = 'PASS_00d90250'
     }
     [pscustomobject]@{
@@ -109772,9 +109772,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d90770'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d90770_00d90770.cpp'
-        TestSource = '00/d9/gapscan_sub00d90770_00d90770_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CJamesCommentMarker'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarker_GetParentScript_00d90770.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarker_GetParentScript_00d90770_test.cpp'
         PassPattern = 'PASS_00d90770'
     }
     [pscustomobject]@{
@@ -109786,9 +109786,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d90af0'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d90af0_00d90af0.cpp'
-        TestSource = '00/d9/gapscan_sub00d90af0_00d90af0_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CJamesCommentMarkerAdv'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarkerAdv_GetParentScript_00d90af0.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarkerAdv_GetParentScript_00d90af0_test.cpp'
         PassPattern = 'PASS_00d90af0'
     }
     [pscustomobject]@{
@@ -109800,16 +109800,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d90f30'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d90f30_00d90f30.cpp'
-        TestSource = '00/d9/gapscan_sub00d90f30_00d90f30_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CBanditSacrifice'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_GetParentScript_00d90f30.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_GetParentScript_00d90f30_test.cpp'
         PassPattern = 'PASS_00d90f30'
     }
     [pscustomobject]@{
         Address = '00d91090'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d91090_00d91090.cpp'
-        TestSource = '00/d9/gapscan_sub00d91090_00d91090_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CBanditInRoomSample'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCBanditInRoomSample_GetParentScript_00d91090.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCBanditInRoomSample_GetParentScript_00d91090_test.cpp'
         PassPattern = 'PASS_00d91090'
     }
     [pscustomobject]@{
@@ -109821,30 +109821,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d912f0'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d912f0_00d912f0.cpp'
-        TestSource = '00/d9/gapscan_sub00d912f0_00d912f0_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CCheckTheSilverKeyChest'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCCheckTheSilverKeyChest_GetParentScript_00d912f0.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCCheckTheSilverKeyChest_GetParentScript_00d912f0_test.cpp'
         PassPattern = 'PASS_00d912f0'
     }
     [pscustomobject]@{
         Address = '00d91510'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d91510_00d91510.cpp'
-        TestSource = '00/d9/gapscan_sub00d91510_00d91510_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CInvisibleCage'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCInvisibleCage_GetParentScript_00d91510.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCInvisibleCage_GetParentScript_00d91510_test.cpp'
         PassPattern = 'PASS_00d91510'
     }
     [pscustomobject]@{
         Address = '00d9b410'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d9b410_00d9b410.cpp'
-        TestSource = '00/d9/gapscan_sub00d9b410_00d9b410_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_HobbeToothContestScript>'
+        Source = '00/d9/CEntityScriptBindingNScriptCQHobbeToothContestScript_GetEntityScriptName_00d9b410.cpp'
+        TestSource = '00/d9/CEntityScriptBindingNScriptCQHobbeToothContestScript_GetEntityScriptName_00d9b410_test.cpp'
         PassPattern = 'PASS_00d9b410'
     }
     [pscustomobject]@{
         Address = '00d9b860'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d9b860_00d9b860.cpp'
-        TestSource = '00/d9/gapscan_sub00d9b860_00d9b860_test.cpp'
+        Module = 'NScript::CQ_HobbeToothContestScript::CQ_HobbeToothHobbe'
+        Source = '00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_GetParentScript_00d9b860.cpp'
+        TestSource = '00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_GetParentScript_00d9b860_test.cpp'
         PassPattern = 'PASS_00d9b860'
     }
     [pscustomobject]@{
@@ -109856,9 +109856,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d9bed0'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d9bed0_00d9bed0.cpp'
-        TestSource = '00/d9/gapscan_sub00d9bed0_00d9bed0_test.cpp'
+        Module = 'NScript::CQ_HobbeToothContestScript::CDrinkingHobbe'
+        Source = '00/d9/NScriptCQHobbeToothContestScriptCDrinkingHobbe_GetParentScript_00d9bed0.cpp'
+        TestSource = '00/d9/NScriptCQHobbeToothContestScriptCDrinkingHobbe_GetParentScript_00d9bed0_test.cpp'
         PassPattern = 'PASS_00d9bed0'
     }
     [pscustomobject]@{
@@ -109870,9 +109870,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d9c270'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d9c270_00d9c270.cpp'
-        TestSource = '00/d9/gapscan_sub00d9c270_00d9c270_test.cpp'
+        Module = 'NScript::CQ_HobbeToothContestScript::CDrinkersReactMarker'
+        Source = '00/d9/NScriptCQHobbeToothContestScriptCDrinkersReactMarker_GetParentScript_00d9c270.cpp'
+        TestSource = '00/d9/NScriptCQHobbeToothContestScriptCDrinkersReactMarker_GetParentScript_00d9c270_test.cpp'
         PassPattern = 'PASS_00d9c270'
     }
     [pscustomobject]@{
@@ -109884,9 +109884,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d9c460'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d9c460_00d9c460.cpp'
-        TestSource = '00/d9/gapscan_sub00d9c460_00d9c460_test.cpp'
+        Module = 'NScript::CQ_HobbeToothContestScript::CHobbeBarrel'
+        Source = '00/d9/NScriptCQHobbeToothContestScriptCHobbeBarrel_GetParentScript_00d9c460.cpp'
+        TestSource = '00/d9/NScriptCQHobbeToothContestScriptCHobbeBarrel_GetParentScript_00d9c460_test.cpp'
         PassPattern = 'PASS_00d9c460'
     }
     [pscustomobject]@{
@@ -109898,16 +109898,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d9c600'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d9c600_00d9c600.cpp'
-        TestSource = '00/d9/gapscan_sub00d9c600_00d9c600_test.cpp'
+        Module = 'NScript::CQ_HobbeToothContestScript::COrchardFarmFarmer'
+        Source = '00/d9/NScriptCQHobbeToothContestScriptCOrchardFarmFarmer_GetParentScript_00d9c600.cpp'
+        TestSource = '00/d9/NScriptCQHobbeToothContestScriptCOrchardFarmFarmer_GetParentScript_00d9c600_test.cpp'
         PassPattern = 'PASS_00d9c600'
     }
     [pscustomobject]@{
         Address = '00d9cf20'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d9cf20_00d9cf20.cpp'
-        TestSource = '00/d9/gapscan_sub00d9cf20_00d9cf20_test.cpp'
+        Module = 'NScript::CQ_HobbeToothContestScript::CSpawnNewHobbe'
+        Source = '00/d9/NScriptCQHobbeToothContestScriptCSpawnNewHobbe_GetParentScript_00d9cf20.cpp'
+        TestSource = '00/d9/NScriptCQHobbeToothContestScriptCSpawnNewHobbe_GetParentScript_00d9cf20_test.cpp'
         PassPattern = 'PASS_00d9cf20'
     }
     [pscustomobject]@{
@@ -109919,16 +109919,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d9d000'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d9d000_00d9d000.cpp'
-        TestSource = '00/d9/gapscan_sub00d9d000_00d9d000_test.cpp'
+        Module = 'NScript::CQ_HobbeToothContestScript::CQ_HobbeToothWhisper'
+        Source = '00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothWhisper_GetParentScript_00d9d000.cpp'
+        TestSource = '00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothWhisper_GetParentScript_00d9d000_test.cpp'
         PassPattern = 'PASS_00d9d000'
     }
     [pscustomobject]@{
         Address = '00d9e8a0'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d9e8a0_00d9e8a0.cpp'
-        TestSource = '00/d9/gapscan_sub00d9e8a0_00d9e8a0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_MinionCampScript>'
+        Source = '00/d9/CEntityScriptBindingNScriptCQMinionCampScript_GetEntityScriptName_00d9e8a0.cpp'
+        TestSource = '00/d9/CEntityScriptBindingNScriptCQMinionCampScript_GetEntityScriptName_00d9e8a0_test.cpp'
         PassPattern = 'PASS_00d9e8a0'
     }
     [pscustomobject]@{
@@ -109940,23 +109940,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d9eb20'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d9eb20_00d9eb20.cpp'
-        TestSource = '00/d9/gapscan_sub00d9eb20_00d9eb20_test.cpp'
+        Module = 'NScript::CQ_MinionCampScript::CMC_MinionGuard'
+        Source = '00/d9/NScriptCQMinionCampScriptCMCMinionGuard_GetParentScript_00d9eb20.cpp'
+        TestSource = '00/d9/NScriptCQMinionCampScriptCMCMinionGuard_GetParentScript_00d9eb20_test.cpp'
         PassPattern = 'PASS_00d9eb20'
     }
     [pscustomobject]@{
         Address = '00d9edf0'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d9edf0_00d9edf0.cpp'
-        TestSource = '00/d9/gapscan_sub00d9edf0_00d9edf0_test.cpp'
+        Module = 'NScript::CQ_MinionCampScript::CMC_SpawnPoint'
+        Source = '00/d9/NScriptCQMinionCampScriptCMCSpawnPoint_GetParentScript_00d9edf0.cpp'
+        TestSource = '00/d9/NScriptCQMinionCampScriptCMCSpawnPoint_GetParentScript_00d9edf0_test.cpp'
         PassPattern = 'PASS_00d9edf0'
     }
     [pscustomobject]@{
         Address = '00d9f150'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d9f150_00d9f150.cpp'
-        TestSource = '00/d9/gapscan_sub00d9f150_00d9f150_test.cpp'
+        Module = 'NScript::CQ_MinionCampScript::CMC_Minion'
+        Source = '00/d9/NScriptCQMinionCampScriptCMCMinion_GetParentScript_00d9f150.cpp'
+        TestSource = '00/d9/NScriptCQMinionCampScriptCMCMinion_GetParentScript_00d9f150_test.cpp'
         PassPattern = 'PASS_00d9f150'
     }
     [pscustomobject]@{
@@ -109968,51 +109968,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d9f650'
-        Module = '_gapscan'
-        Source = '00/d9/gapscan_sub00d9f650_00d9f650.cpp'
-        TestSource = '00/d9/gapscan_sub00d9f650_00d9f650_test.cpp'
+        Module = 'NScript::CQ_MinionCampScript::CFadeinSummoner'
+        Source = '00/d9/NScriptCQMinionCampScriptCFadeinSummoner_GetParentScript_00d9f650.cpp'
+        TestSource = '00/d9/NScriptCQMinionCampScriptCFadeinSummoner_GetParentScript_00d9f650_test.cpp'
         PassPattern = 'PASS_00d9f650'
     }
     [pscustomobject]@{
         Address = '00da3f30'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da3f30_00da3f30.cpp'
-        TestSource = '00/da/gapscan_sub00da3f30_00da3f30_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_MinionClifftopChaseScript>'
+        Source = '00/da/CEntityScriptBindingNScriptCQMinionClifftopChaseScript_GetEntityScriptName_00da3f30.cpp'
+        TestSource = '00/da/CEntityScriptBindingNScriptCQMinionClifftopChaseScript_GetEntityScriptName_00da3f30_test.cpp'
         PassPattern = 'PASS_00da3f30'
     }
     [pscustomobject]@{
         Address = '00da42f0'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da42f0_00da42f0.cpp'
-        TestSource = '00/da/gapscan_sub00da42f0_00da42f0_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMapKeeper'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_GetParentScript_00da42f0.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_GetParentScript_00da42f0_test.cpp'
         PassPattern = 'PASS_00da42f0'
     }
     [pscustomobject]@{
         Address = '00da4530'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da4530_00da4530.cpp'
-        TestSource = '00/da/gapscan_sub00da4530_00da4530_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMinionEscort'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMinionEscort_GetParentScript_00da4530.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMinionEscort_GetParentScript_00da4530_test.cpp'
         PassPattern = 'PASS_00da4530'
     }
     [pscustomobject]@{
         Address = '00da4730'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da4730_00da4730.cpp'
-        TestSource = '00/da/gapscan_sub00da4730_00da4730_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMinionEscortEnd'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMinionEscortEnd_GetParentScript_00da4730.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMinionEscortEnd_GetParentScript_00da4730_test.cpp'
         PassPattern = 'PASS_00da4730'
     }
     [pscustomobject]@{
         Address = '00da49c0'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da49c0_00da49c0.cpp'
-        TestSource = '00/da/gapscan_sub00da49c0_00da49c0_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMinionWarningGuard'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMinionWarningGuard_GetParentScript_00da49c0.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMinionWarningGuard_GetParentScript_00da49c0_test.cpp'
         PassPattern = 'PASS_00da49c0'
     }
     [pscustomobject]@{
         Address = '00da4ad0'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da4ad0_00da4ad0.cpp'
-        TestSource = '00/da/gapscan_sub00da4ad0_00da4ad0_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMinionAttackingGuard'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMinionAttackingGuard_GetParentScript_00da4ad0.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMinionAttackingGuard_GetParentScript_00da4ad0_test.cpp'
         PassPattern = 'PASS_00da4ad0'
     }
     [pscustomobject]@{
@@ -110024,254 +110024,254 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00da4c20'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da4c20_00da4c20.cpp'
-        TestSource = '00/da/gapscan_sub00da4c20_00da4c20_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CBalverineFightingGuard'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCBalverineFightingGuard_GetParentScript_00da4c20.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCBalverineFightingGuard_GetParentScript_00da4c20_test.cpp'
         PassPattern = 'PASS_00da4c20'
     }
     [pscustomobject]@{
         Address = '00da4de0'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da4de0_00da4de0.cpp'
-        TestSource = '00/da/gapscan_sub00da4de0_00da4de0_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMagicBarrier'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMagicBarrier_GetParentScript_00da4de0.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMagicBarrier_GetParentScript_00da4de0_test.cpp'
         PassPattern = 'PASS_00da4de0'
     }
     [pscustomobject]@{
         Address = '00da5440'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da5440_00da5440.cpp'
-        TestSource = '00/da/gapscan_sub00da5440_00da5440_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMagicBarrierGraveyard'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMagicBarrierGraveyard_GetParentScript_00da5440.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMagicBarrierGraveyard_GetParentScript_00da5440_test.cpp'
         PassPattern = 'PASS_00da5440'
     }
     [pscustomobject]@{
         Address = '00da5840'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da5840_00da5840.cpp'
-        TestSource = '00/da/gapscan_sub00da5840_00da5840_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CInvisibleCage'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCInvisibleCage_GetParentScript_00da5840.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCInvisibleCage_GetParentScript_00da5840_test.cpp'
         PassPattern = 'PASS_00da5840'
     }
     [pscustomobject]@{
         Address = '00da5950'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da5950_00da5950.cpp'
-        TestSource = '00/da/gapscan_sub00da5950_00da5950_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMinionSpawner'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMinionSpawner_GetParentScript_00da5950.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMinionSpawner_GetParentScript_00da5950_test.cpp'
         PassPattern = 'PASS_00da5950'
     }
     [pscustomobject]@{
         Address = '00da5be0'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da5be0_00da5be0.cpp'
-        TestSource = '00/da/gapscan_sub00da5be0_00da5be0_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMinionFieldGenerator'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMinionFieldGenerator_GetParentScript_00da5be0.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMinionFieldGenerator_GetParentScript_00da5be0_test.cpp'
         PassPattern = 'PASS_00da5be0'
     }
     [pscustomobject]@{
         Address = '00da5d30'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da5d30_00da5d30.cpp'
-        TestSource = '00/da/gapscan_sub00da5d30_00da5d30_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CCorneredGuard'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCCorneredGuard_GetParentScript_00da5d30.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCCorneredGuard_GetParentScript_00da5d30_test.cpp'
         PassPattern = 'PASS_00da5d30'
     }
     [pscustomobject]@{
         Address = '00da5e40'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da5e40_00da5e40.cpp'
-        TestSource = '00/da/gapscan_sub00da5e40_00da5e40_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMinionTrollSummoner'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMinionTrollSummoner_GetParentScript_00da5e40.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMinionTrollSummoner_GetParentScript_00da5e40_test.cpp'
         PassPattern = 'PASS_00da5e40'
     }
     [pscustomobject]@{
         Address = '00da5f10'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da5f10_00da5f10.cpp'
-        TestSource = '00/da/gapscan_sub00da5f10_00da5f10_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CRockTroll'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCRockTroll_GetParentScript_00da5f10.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCRockTroll_GetParentScript_00da5f10_test.cpp'
         PassPattern = 'PASS_00da5f10'
     }
     [pscustomobject]@{
         Address = '00da6140'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da6140_00da6140.cpp'
-        TestSource = '00/da/gapscan_sub00da6140_00da6140_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMinionSpawnAdv'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMinionSpawnAdv_GetParentScript_00da6140.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMinionSpawnAdv_GetParentScript_00da6140_test.cpp'
         PassPattern = 'PASS_00da6140'
     }
     [pscustomobject]@{
         Address = '00da6210'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da6210_00da6210.cpp'
-        TestSource = '00/da/gapscan_sub00da6210_00da6210_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CM_Minion'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMMinion_GetParentScript_00da6210.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMMinion_GetParentScript_00da6210_test.cpp'
         PassPattern = 'PASS_00da6210'
     }
     [pscustomobject]@{
         Address = '00da63c0'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da63c0_00da63c0.cpp'
-        TestSource = '00/da/gapscan_sub00da63c0_00da63c0_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CM_Guard'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMGuard_GetParentScript_00da63c0.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMGuard_GetParentScript_00da63c0_test.cpp'
         PassPattern = 'PASS_00da63c0'
     }
     [pscustomobject]@{
         Address = '00da6600'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da6600_00da6600.cpp'
-        TestSource = '00/da/gapscan_sub00da6600_00da6600_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CGuardToLeadTheWay'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCGuardToLeadTheWay_GetParentScript_00da6600.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCGuardToLeadTheWay_GetParentScript_00da6600_test.cpp'
         PassPattern = 'PASS_00da6600'
     }
     [pscustomobject]@{
         Address = '00da6710'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da6710_00da6710.cpp'
-        TestSource = '00/da/gapscan_sub00da6710_00da6710_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CM_NotThisWay'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMNotThisWay_GetParentScript_00da6710.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMNotThisWay_GetParentScript_00da6710_test.cpp'
         PassPattern = 'PASS_00da6710'
     }
     [pscustomobject]@{
         Address = '00da68b0'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00da68b0_00da68b0.cpp'
-        TestSource = '00/da/gapscan_sub00da68b0_00da68b0_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CGuardNotThisWay'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCGuardNotThisWay_GetParentScript_00da68b0.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCGuardNotThisWay_GetParentScript_00da68b0_test.cpp'
         PassPattern = 'PASS_00da68b0'
     }
     [pscustomobject]@{
         Address = '00dac2b0'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00dac2b0_00dac2b0.cpp'
-        TestSource = '00/da/gapscan_sub00dac2b0_00dac2b0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_NewOakValeIntroScript>'
+        Source = '00/da/CEntityScriptBindingNScriptCQNewOakValeIntroScript_GetEntityScriptName_00dac2b0.cpp'
+        TestSource = '00/da/CEntityScriptBindingNScriptCQNewOakValeIntroScript_GetEntityScriptName_00dac2b0_test.cpp'
         PassPattern = 'PASS_00dac2b0'
     }
     [pscustomobject]@{
         Address = '00dac360'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00dac360_00dac360.cpp'
-        TestSource = '00/da/gapscan_sub00dac360_00dac360_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather'
+        Source = '00/da/NScriptCQNewOakValeIntroScriptCNOVILiveFather_GetParentScript_00dac360.cpp'
+        TestSource = '00/da/NScriptCQNewOakValeIntroScriptCNOVILiveFather_GetParentScript_00dac360_test.cpp'
         PassPattern = 'PASS_00dac360'
     }
     [pscustomobject]@{
         Address = '00dac4c0'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00dac4c0_00dac4c0.cpp'
-        TestSource = '00/da/gapscan_sub00dac4c0_00dac4c0_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa'
+        Source = '00/da/NScriptCQNewOakValeIntroScriptCNOVITheresa_GetParentScript_00dac4c0.cpp'
+        TestSource = '00/da/NScriptCQNewOakValeIntroScriptCNOVITheresa_GetParentScript_00dac4c0_test.cpp'
         PassPattern = 'PASS_00dac4c0'
     }
     [pscustomobject]@{
         Address = '00dac620'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00dac620_00dac620.cpp'
-        TestSource = '00/da/gapscan_sub00dac620_00dac620_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_Guard'
+        Source = '00/da/NScriptCQNewOakValeIntroScriptCNOVIGuard_GetParentScript_00dac620.cpp'
+        TestSource = '00/da/NScriptCQNewOakValeIntroScriptCNOVIGuard_GetParentScript_00dac620_test.cpp'
         PassPattern = 'PASS_00dac620'
     }
     [pscustomobject]@{
         Address = '00dadef0'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00dadef0_00dadef0.cpp'
-        TestSource = '00/da/gapscan_sub00dadef0_00dadef0_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_Villager'
+        Source = '00/da/NScriptCQNewOakValeIntroScriptCNOVIVillager_GetParentScript_00dadef0.cpp'
+        TestSource = '00/da/NScriptCQNewOakValeIntroScriptCNOVIVillager_GetParentScript_00dadef0_test.cpp'
         PassPattern = 'PASS_00dadef0'
     }
     [pscustomobject]@{
         Address = '00daed00'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00daed00_00daed00.cpp'
-        TestSource = '00/da/gapscan_sub00daed00_00daed00_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_Bully'
+        Source = '00/da/NScriptCQNewOakValeIntroScriptCNOVIBully_GetParentScript_00daed00.cpp'
+        TestSource = '00/da/NScriptCQNewOakValeIntroScriptCNOVIBully_GetParentScript_00daed00_test.cpp'
         PassPattern = 'PASS_00daed00'
     }
     [pscustomobject]@{
         Address = '00daee80'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00daee80_00daee80.cpp'
-        TestSource = '00/da/gapscan_sub00daee80_00daee80_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_Victim'
+        Source = '00/da/NScriptCQNewOakValeIntroScriptCNOVIVictim_GetParentScript_00daee80.cpp'
+        TestSource = '00/da/NScriptCQNewOakValeIntroScriptCNOVIVictim_GetParentScript_00daee80_test.cpp'
         PassPattern = 'PASS_00daee80'
     }
     [pscustomobject]@{
         Address = '00daeff0'
-        Module = '_gapscan'
-        Source = '00/da/gapscan_sub00daeff0_00daeff0.cpp'
-        TestSource = '00/da/gapscan_sub00daeff0_00daeff0_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl'
+        Source = '00/da/NScriptCQNewOakValeIntroScriptCNOVITeddyGirl_GetParentScript_00daeff0.cpp'
+        TestSource = '00/da/NScriptCQNewOakValeIntroScriptCNOVITeddyGirl_GetParentScript_00daeff0_test.cpp'
         PassPattern = 'PASS_00daeff0'
     }
     [pscustomobject]@{
         Address = '00db0920'
-        Module = '_gapscan'
-        Source = '00/db/gapscan_sub00db0920_00db0920.cpp'
-        TestSource = '00/db/gapscan_sub00db0920_00db0920_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairMan_GetParentScript_00db0920.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairMan_GetParentScript_00db0920_test.cpp'
         PassPattern = 'PASS_00db0920'
     }
     [pscustomobject]@{
         Address = '00db1e50'
-        Module = '_gapscan'
-        Source = '00/db/gapscan_sub00db1e50_00db1e50.cpp'
-        TestSource = '00/db/gapscan_sub00db1e50_00db1e50_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWoman_GetParentScript_00db1e50.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWoman_GetParentScript_00db1e50_test.cpp'
         PassPattern = 'PASS_00db1e50'
     }
     [pscustomobject]@{
         Address = '00db2a40'
-        Module = '_gapscan'
-        Source = '00/db/gapscan_sub00db2a40_00db2a40.cpp'
-        TestSource = '00/db/gapscan_sub00db2a40_00db2a40_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWife_GetParentScript_00db2a40.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWife_GetParentScript_00db2a40_test.cpp'
         PassPattern = 'PASS_00db2a40'
     }
     [pscustomobject]@{
         Address = '00db3ed0'
-        Module = '_gapscan'
-        Source = '00/db/gapscan_sub00db3ed0_00db3ed0.cpp'
-        TestSource = '00/db/gapscan_sub00db3ed0_00db3ed0_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBookTrader_GetParentScript_00db3ed0.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBookTrader_GetParentScript_00db3ed0_test.cpp'
         PassPattern = 'PASS_00db3ed0'
     }
     [pscustomobject]@{
         Address = '00db5250'
-        Module = '_gapscan'
-        Source = '00/db/gapscan_sub00db5250_00db5250.cpp'
-        TestSource = '00/db/gapscan_sub00db5250_00db5250_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelMan_GetParentScript_00db5250.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelMan_GetParentScript_00db5250_test.cpp'
         PassPattern = 'PASS_00db5250'
     }
     [pscustomobject]@{
         Address = '00db6be0'
-        Module = '_gapscan'
-        Source = '00/db/gapscan_sub00db6be0_00db6be0.cpp'
-        TestSource = '00/db/gapscan_sub00db6be0_00db6be0_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelThug_GetParentScript_00db6be0.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelThug_GetParentScript_00db6be0_test.cpp'
         PassPattern = 'PASS_00db6be0'
     }
     [pscustomobject]@{
         Address = '00db7da0'
-        Module = '_gapscan'
-        Source = '00/db/gapscan_sub00db7da0_00db7da0.cpp'
-        TestSource = '00/db/gapscan_sub00db7da0_00db7da0_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrel_GetParentScript_00db7da0.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrel_GetParentScript_00db7da0_test.cpp'
         PassPattern = 'PASS_00db7da0'
     }
     [pscustomobject]@{
         Address = '00db8090'
-        Module = '_gapscan'
-        Source = '00/db/gapscan_sub00db8090_00db8090.cpp'
-        TestSource = '00/db/gapscan_sub00db8090_00db8090_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVICreatedBeetle_GetParentScript_00db8090.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVICreatedBeetle_GetParentScript_00db8090_test.cpp'
         PassPattern = 'PASS_00db8090'
     }
     [pscustomobject]@{
         Address = '00db8250'
-        Module = '_gapscan'
-        Source = '00/db/gapscan_sub00db8250_00db8250.cpp'
-        TestSource = '00/db/gapscan_sub00db8250_00db8250_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::COVI_DeadFather'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCOVIDeadFather_GetParentScript_00db8250.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCOVIDeadFather_GetParentScript_00db8250_test.cpp'
         PassPattern = 'PASS_00db8250'
     }
     [pscustomobject]@{
         Address = '00db8260'
-        Module = '_gapscan'
-        Source = '00/db/gapscan_sub00db8260_00db8260.cpp'
-        TestSource = '00/db/gapscan_sub00db8260_00db8260_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript::COVI_DeadFather'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCOVIDeadFather_OnPredicateFail_00db8260.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCOVIDeadFather_OnPredicateFail_00db8260_test.cpp'
         PassPattern = 'PASS_00db8260'
     }
     [pscustomobject]@{
         Address = '00dbf9d0'
-        Module = '_gapscan'
-        Source = '00/db/gapscan_sub00dbf9d0_00dbf9d0.cpp'
-        TestSource = '00/db/gapscan_sub00dbf9d0_00dbf9d0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_OakValeBanditRaidScript>'
+        Source = '00/db/CEntityScriptBindingNScriptCQOakValeBanditRaidScript_GetEntityScriptName_00dbf9d0.cpp'
+        TestSource = '00/db/CEntityScriptBindingNScriptCQOakValeBanditRaidScript_GetEntityScriptName_00dbf9d0_test.cpp'
         PassPattern = 'PASS_00dbf9d0'
     }
     [pscustomobject]@{
         Address = '00dbfe70'
-        Module = '_gapscan'
-        Source = '00/db/gapscan_sub00dbfe70_00dbfe70.cpp'
-        TestSource = '00/db/gapscan_sub00dbfe70_00dbfe70_test.cpp'
+        Module = 'NScript::CQ_OakValeBanditRaidScript::COakValeBanditRaidBandit'
+        Source = '00/db/NScriptCQOakValeBanditRaidScriptCOakValeBanditRaidBandit_GetParentScript_00dbfe70.cpp'
+        TestSource = '00/db/NScriptCQOakValeBanditRaidScriptCOakValeBanditRaidBandit_GetParentScript_00dbfe70_test.cpp'
         PassPattern = 'PASS_00dbfe70'
     }
     [pscustomobject]@{
         Address = '00dc0130'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc0130_00dc0130.cpp'
-        TestSource = '00/dc/gapscan_sub00dc0130_00dc0130_test.cpp'
+        Module = 'NScript::CQ_OakValeBanditRaidScript::CM_RestartMarker'
+        Source = '00/dc/NScriptCQOakValeBanditRaidScriptCMRestartMarker_GetParentScript_00dc0130.cpp'
+        TestSource = '00/dc/NScriptCQOakValeBanditRaidScriptCMRestartMarker_GetParentScript_00dc0130_test.cpp'
         PassPattern = 'PASS_00dc0130'
     }
     [pscustomobject]@{
@@ -110283,30 +110283,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dc3ce0'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc3ce0_00dc3ce0.cpp'
-        TestSource = '00/dc/gapscan_sub00dc3ce0_00dc3ce0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_OpeningGraveyardSecretPassageScript>'
+        Source = '00/dc/CEntityScriptBindingNScriptCQOpeningGraveyardSecretPassageScript_GetEntityScriptName_00dc3ce0.cpp'
+        TestSource = '00/dc/CEntityScriptBindingNScriptCQOpeningGraveyardSecretPassageScript_GetEntityScriptName_00dc3ce0_test.cpp'
         PassPattern = 'PASS_00dc3ce0'
     }
     [pscustomobject]@{
         Address = '00dc3e40'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc3e40_00dc3e40.cpp'
-        TestSource = '00/dc/gapscan_sub00dc3e40_00dc3e40_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSkeleton'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageSkeleton_GetParentScript_00dc3e40.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageSkeleton_GetParentScript_00dc3e40_test.cpp'
         PassPattern = 'PASS_00dc3e40'
     }
     [pscustomobject]@{
         Address = '00dc3f80'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc3f80_00dc3f80.cpp'
-        TestSource = '00/dc/gapscan_sub00dc3f80_00dc3f80_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CGraveyardDemon'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCGraveyardDemon_GetParentScript_00dc3f80.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCGraveyardDemon_GetParentScript_00dc3f80_test.cpp'
         PassPattern = 'PASS_00dc3f80'
     }
     [pscustomobject]@{
         Address = '00dc44c0'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc44c0_00dc44c0.cpp'
-        TestSource = '00/dc/gapscan_sub00dc44c0_00dc44c0_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSarcophagos'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageSarcophagos_GetParentScript_00dc44c0.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageSarcophagos_GetParentScript_00dc44c0_test.cpp'
         PassPattern = 'PASS_00dc44c0'
     }
     [pscustomobject]@{
@@ -110318,9 +110318,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dc45c0'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc45c0_00dc45c0.cpp'
-        TestSource = '00/dc/gapscan_sub00dc45c0_00dc45c0_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CCeremonialEffect'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCCeremonialEffect_GetParentScript_00dc45c0.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCCeremonialEffect_GetParentScript_00dc45c0_test.cpp'
         PassPattern = 'PASS_00dc45c0'
     }
     [pscustomobject]@{
@@ -110332,30 +110332,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dc4b40'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc4b40_00dc4b40.cpp'
-        TestSource = '00/dc/gapscan_sub00dc4b40_00dc4b40_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageGraveyardKeeper'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_GetParentScript_00dc4b40.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_GetParentScript_00dc4b40_test.cpp'
         PassPattern = 'PASS_00dc4b40'
     }
     [pscustomobject]@{
         Address = '00dc4ce0'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc4ce0_00dc4ce0.cpp'
-        TestSource = '00/dc/gapscan_sub00dc4ce0_00dc4ce0_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageMan_GetParentScript_00dc4ce0.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageMan_GetParentScript_00dc4ce0_test.cpp'
         PassPattern = 'PASS_00dc4ce0'
     }
     [pscustomobject]@{
         Address = '00dc5ef0'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc5ef0_00dc5ef0.cpp'
-        TestSource = '00/dc/gapscan_sub00dc5ef0_00dc5ef0_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageWoman_GetParentScript_00dc5ef0.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageWoman_GetParentScript_00dc5ef0_test.cpp'
         PassPattern = 'PASS_00dc5ef0'
     }
     [pscustomobject]@{
         Address = '00dc70c0'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc70c0_00dc70c0.cpp'
-        TestSource = '00/dc/gapscan_sub00dc70c0_00dc70c0_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CStartGravekeeperCutsceneMarker'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCStartGravekeeperCutsceneMarker_GetParentScript_00dc70c0.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCStartGravekeeperCutsceneMarker_GetParentScript_00dc70c0_test.cpp'
         PassPattern = 'PASS_00dc70c0'
     }
     [pscustomobject]@{
@@ -110367,9 +110367,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dc7260'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc7260_00dc7260.cpp'
-        TestSource = '00/dc/gapscan_sub00dc7260_00dc7260_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CUndeadSpawnCutscene'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCUndeadSpawnCutscene_GetParentScript_00dc7260.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCUndeadSpawnCutscene_GetParentScript_00dc7260_test.cpp'
         PassPattern = 'PASS_00dc7260'
     }
     [pscustomobject]@{
@@ -110381,9 +110381,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dc7400'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc7400_00dc7400.cpp'
-        TestSource = '00/dc/gapscan_sub00dc7400_00dc7400_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageKeeperFriend'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageKeeperFriend_GetParentScript_00dc7400.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageKeeperFriend_GetParentScript_00dc7400_test.cpp'
         PassPattern = 'PASS_00dc7400'
     }
     [pscustomobject]@{
@@ -110395,9 +110395,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dc7ff0'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc7ff0_00dc7ff0.cpp'
-        TestSource = '00/dc/gapscan_sub00dc7ff0_00dc7ff0_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageFirstGate'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageFirstGate_GetParentScript_00dc7ff0.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageFirstGate_GetParentScript_00dc7ff0_test.cpp'
         PassPattern = 'PASS_00dc7ff0'
     }
     [pscustomobject]@{
@@ -110409,9 +110409,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dc8480'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc8480_00dc8480.cpp'
-        TestSource = '00/dc/gapscan_sub00dc8480_00dc8480_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageGate'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGate_GetParentScript_00dc8480.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGate_GetParentScript_00dc8480_test.cpp'
         PassPattern = 'PASS_00dc8480'
     }
     [pscustomobject]@{
@@ -110423,30 +110423,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dc8580'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc8580_00dc8580.cpp'
-        TestSource = '00/dc/gapscan_sub00dc8580_00dc8580_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSpeakingMarker'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSpeakingMarker_GetParentScript_00dc8580.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSpeakingMarker_GetParentScript_00dc8580_test.cpp'
         PassPattern = 'PASS_00dc8580'
     }
     [pscustomobject]@{
         Address = '00dc8660'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc8660_00dc8660.cpp'
-        TestSource = '00/dc/gapscan_sub00dc8660_00dc8660_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CUndeadLieutenant'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCUndeadLieutenant_GetParentScript_00dc8660.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCUndeadLieutenant_GetParentScript_00dc8660_test.cpp'
         PassPattern = 'PASS_00dc8660'
     }
     [pscustomobject]@{
         Address = '00dc86b0'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dc86b0_00dc86b0.cpp'
-        TestSource = '00/dc/gapscan_sub00dc86b0_00dc86b0_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CUndeadLieutenant'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCUndeadLieutenant_OnPredicateFail_00dc86b0.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCUndeadLieutenant_OnPredicateFail_00dc86b0_test.cpp'
         PassPattern = 'PASS_00dc86b0'
     }
     [pscustomobject]@{
         Address = '00dcd0d0'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dcd0d0_00dcd0d0.cpp'
-        TestSource = '00/dc/gapscan_sub00dcd0d0_00dcd0d0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_OrchardFarmRaidScript>'
+        Source = '00/dc/CEntityScriptBindingNScriptCQOrchardFarmRaidScript_GetEntityScriptName_00dcd0d0.cpp'
+        TestSource = '00/dc/CEntityScriptBindingNScriptCQOrchardFarmRaidScript_GetEntityScriptName_00dcd0d0_test.cpp'
         PassPattern = 'PASS_00dcd0d0'
     }
     [pscustomobject]@{
@@ -110458,9 +110458,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dcdc20'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dcdc20_00dcdc20.cpp'
-        TestSource = '00/dc/gapscan_sub00dcdc20_00dcdc20_test.cpp'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CArtefact'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCArtefact_GetParentScript_00dcdc20.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCArtefact_GetParentScript_00dcdc20_test.cpp'
         PassPattern = 'PASS_00dcdc20'
     }
     [pscustomobject]@{
@@ -110472,30 +110472,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dceff0'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dceff0_00dceff0.cpp'
-        TestSource = '00/dc/gapscan_sub00dceff0_00dceff0_test.cpp'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCOrchardFarmWhisper_GetParentScript_00dceff0.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCOrchardFarmWhisper_GetParentScript_00dceff0_test.cpp'
         PassPattern = 'PASS_00dceff0'
     }
     [pscustomobject]@{
         Address = '00dcf470'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dcf470_00dcf470.cpp'
-        TestSource = '00/dc/gapscan_sub00dcf470_00dcf470_test.cpp'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CFarmRearEntrance'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCFarmRearEntrance_GetParentScript_00dcf470.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCFarmRearEntrance_GetParentScript_00dcf470_test.cpp'
         PassPattern = 'PASS_00dcf470'
     }
     [pscustomobject]@{
         Address = '00dcf5e0'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dcf5e0_00dcf5e0.cpp'
-        TestSource = '00/dc/gapscan_sub00dcf5e0_00dcf5e0_test.cpp'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CM_WhisperFarmRaidIntro'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCMWhisperFarmRaidIntro_GetParentScript_00dcf5e0.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCMWhisperFarmRaidIntro_GetParentScript_00dcf5e0_test.cpp'
         PassPattern = 'PASS_00dcf5e0'
     }
     [pscustomobject]@{
         Address = '00dcf6b0'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dcf6b0_00dcf6b0.cpp'
-        TestSource = '00/dc/gapscan_sub00dcf6b0_00dcf6b0_test.cpp'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CMK_OFI_GWLL_WHIS2'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCMKOFIGWLLWHIS2_GetParentScript_00dcf6b0.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCMKOFIGWLLWHIS2_GetParentScript_00dcf6b0_test.cpp'
         PassPattern = 'PASS_00dcf6b0'
     }
     [pscustomobject]@{
@@ -110514,23 +110514,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dd35c0'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd35c0_00dd35c0.cpp'
-        TestSource = '00/dd/gapscan_sub00dd35c0_00dd35c0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_PrisonEscapeRescueMotherScript>'
+        Source = '00/dd/CEntityScriptBindingNScriptCQPrisonEscapeRescueMotherScript_GetEntityScriptName_00dd35c0.cpp'
+        TestSource = '00/dd/CEntityScriptBindingNScriptCQPrisonEscapeRescueMotherScript_GetEntityScriptName_00dd35c0_test.cpp'
         PassPattern = 'PASS_00dd35c0'
     }
     [pscustomobject]@{
         Address = '00dd4470'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd4470_00dd4470.cpp'
-        TestSource = '00/dd/gapscan_sub00dd4470_00dd4470_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonGuard_GetParentScript_00dd4470.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonGuard_GetParentScript_00dd4470_test.cpp'
         PassPattern = 'PASS_00dd4470'
     }
     [pscustomobject]@{
         Address = '00dd44a0'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd44a0_00dd44a0.cpp'
-        TestSource = '00/dd/gapscan_sub00dd44a0_00dd44a0_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonGuard_OnPredicateFail_00dd44a0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonGuard_OnPredicateFail_00dd44a0_test.cpp'
         PassPattern = 'PASS_00dd44a0'
     }
     [pscustomobject]@{
@@ -110542,37 +110542,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dd4a40'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd4a40_00dd4a40.cpp'
-        TestSource = '00/dd/gapscan_sub00dd4a40_00dd4a40_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonerAccomplice_GetParentScript_00dd4a40.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonerAccomplice_GetParentScript_00dd4a40_test.cpp'
         PassPattern = 'PASS_00dd4a40'
     }
     [pscustomobject]@{
         Address = '00dd59e0'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd59e0_00dd59e0.cpp'
-        TestSource = '00/dd/gapscan_sub00dd59e0_00dd59e0_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisoner_GetParentScript_00dd59e0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisoner_GetParentScript_00dd59e0_test.cpp'
         PassPattern = 'PASS_00dd59e0'
     }
     [pscustomobject]@{
         Address = '00dd63d0'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd63d0_00dd63d0.cpp'
-        TestSource = '00/dd/gapscan_sub00dd63d0_00dd63d0_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonEscapeGuard'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonEscapeGuard_GetParentScript_00dd63d0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonEscapeGuard_GetParentScript_00dd63d0_test.cpp'
         PassPattern = 'PASS_00dd63d0'
     }
     [pscustomobject]@{
         Address = '00dd6940'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd6940_00dd6940.cpp'
-        TestSource = '00/dd/gapscan_sub00dd6940_00dd6940_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_GetParentScript_00dd6940.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_GetParentScript_00dd6940_test.cpp'
         PassPattern = 'PASS_00dd6940'
     }
     [pscustomobject]@{
         Address = '00dd8460'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd8460_00dd8460.cpp'
-        TestSource = '00/dd/gapscan_sub00dd8460_00dd8460_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CGuardMotherEscape'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCGuardMotherEscape_GetParentScript_00dd8460.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCGuardMotherEscape_GetParentScript_00dd8460_test.cpp'
         PassPattern = 'PASS_00dd8460'
     }
     [pscustomobject]@{
@@ -110584,16 +110584,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dd8480'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd8480_00dd8480.cpp'
-        TestSource = '00/dd/gapscan_sub00dd8480_00dd8480_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CGuardMotherEscape'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCGuardMotherEscape_OnPredicateFail_00dd8480.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCGuardMotherEscape_OnPredicateFail_00dd8480_test.cpp'
         PassPattern = 'PASS_00dd8480'
     }
     [pscustomobject]@{
         Address = '00dd8830'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd8830_00dd8830.cpp'
-        TestSource = '00/dd/gapscan_sub00dd8830_00dd8830_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CInventoryChest'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCInventoryChest_GetParentScript_00dd8830.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCInventoryChest_GetParentScript_00dd8830_test.cpp'
         PassPattern = 'PASS_00dd8830'
     }
     [pscustomobject]@{
@@ -110605,9 +110605,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dd8970'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd8970_00dd8970.cpp'
-        TestSource = '00/dd/gapscan_sub00dd8970_00dd8970_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CTortureDoorPassage'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCTortureDoorPassage_GetParentScript_00dd8970.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCTortureDoorPassage_GetParentScript_00dd8970_test.cpp'
         PassPattern = 'PASS_00dd8970'
     }
     [pscustomobject]@{
@@ -110619,9 +110619,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dd8b80'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd8b80_00dd8b80.cpp'
-        TestSource = '00/dd/gapscan_sub00dd8b80_00dd8b80_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CTortureDoorCourtyard'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCTortureDoorCourtyard_GetParentScript_00dd8b80.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCTortureDoorCourtyard_GetParentScript_00dd8b80_test.cpp'
         PassPattern = 'PASS_00dd8b80'
     }
     [pscustomobject]@{
@@ -110633,9 +110633,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dd8dc0'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd8dc0_00dd8dc0.cpp'
-        TestSource = '00/dd/gapscan_sub00dd8dc0_00dd8dc0_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CCellDoorHero'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoorHero_GetParentScript_00dd8dc0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoorHero_GetParentScript_00dd8dc0_test.cpp'
         PassPattern = 'PASS_00dd8dc0'
     }
     [pscustomobject]@{
@@ -110647,9 +110647,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dd8fb0'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd8fb0_00dd8fb0.cpp'
-        TestSource = '00/dd/gapscan_sub00dd8fb0_00dd8fb0_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CCellDoor'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoor_GetParentScript_00dd8fb0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoor_GetParentScript_00dd8fb0_test.cpp'
         PassPattern = 'PASS_00dd8fb0'
     }
     [pscustomobject]@{
@@ -110661,9 +110661,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dd9160'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd9160_00dd9160.cpp'
-        TestSource = '00/dd/gapscan_sub00dd9160_00dd9160_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonKeyDoor'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonKeyDoor_GetParentScript_00dd9160.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonKeyDoor_GetParentScript_00dd9160_test.cpp'
         PassPattern = 'PASS_00dd9160'
     }
     [pscustomobject]@{
@@ -110675,30 +110675,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ddad90'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00ddad90_00ddad90.cpp'
-        TestSource = '00/dd/gapscan_sub00ddad90_00ddad90_test.cpp'
+        Module = 'NScript::CQ_PrisonRaceScript'
+        Source = '00/dd/NScriptCQPrisonRaceScript_OnPersist_00ddad90.cpp'
+        TestSource = '00/dd/NScriptCQPrisonRaceScript_OnPersist_00ddad90_test.cpp'
         PassPattern = 'PASS_00ddad90'
     }
     [pscustomobject]@{
         Address = '00ddb2e0'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00ddb2e0_00ddb2e0.cpp'
-        TestSource = '00/dd/gapscan_sub00ddb2e0_00ddb2e0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_PrisonRaceScript>'
+        Source = '00/dd/CEntityScriptBindingNScriptCQPrisonRaceScript_GetEntityScriptName_00ddb2e0.cpp'
+        TestSource = '00/dd/CEntityScriptBindingNScriptCQPrisonRaceScript_GetEntityScriptName_00ddb2e0_test.cpp'
         PassPattern = 'PASS_00ddb2e0'
     }
     [pscustomobject]@{
         Address = '00ddb540'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00ddb540_00ddb540.cpp'
-        TestSource = '00/dd/gapscan_sub00ddb540_00ddb540_test.cpp'
+        Module = 'NScript::CQ_PrisonRaceScript::CPrisonRaceGuard'
+        Source = '00/dd/NScriptCQPrisonRaceScriptCPrisonRaceGuard_GetParentScript_00ddb540.cpp'
+        TestSource = '00/dd/NScriptCQPrisonRaceScriptCPrisonRaceGuard_GetParentScript_00ddb540_test.cpp'
         PassPattern = 'PASS_00ddb540'
     }
     [pscustomobject]@{
         Address = '00ddc030'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00ddc030_00ddc030.cpp'
-        TestSource = '00/dd/gapscan_sub00ddc030_00ddc030_test.cpp'
+        Module = 'NScript::CQ_PrisonRaceScript::CPrisonRaceWinningPostGuard'
+        Source = '00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWinningPostGuard_GetParentScript_00ddc030.cpp'
+        TestSource = '00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWinningPostGuard_GetParentScript_00ddc030_test.cpp'
         PassPattern = 'PASS_00ddc030'
     }
     [pscustomobject]@{
@@ -110710,23 +110710,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ddc370'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00ddc370_00ddc370.cpp'
-        TestSource = '00/dd/gapscan_sub00ddc370_00ddc370_test.cpp'
+        Module = 'NScript::CQ_PrisonRaceScript::CPrisonRaceWarden'
+        Source = '00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWarden_GetParentScript_00ddc370.cpp'
+        TestSource = '00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWarden_GetParentScript_00ddc370_test.cpp'
         PassPattern = 'PASS_00ddc370'
     }
     [pscustomobject]@{
         Address = '00ddc480'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00ddc480_00ddc480.cpp'
-        TestSource = '00/dd/gapscan_sub00ddc480_00ddc480_test.cpp'
+        Module = 'NScript::CQ_PrisonRaceScript::CPrisonRacer'
+        Source = '00/dd/NScriptCQPrisonRaceScriptCPrisonRacer_GetParentScript_00ddc480.cpp'
+        TestSource = '00/dd/NScriptCQPrisonRaceScriptCPrisonRacer_GetParentScript_00ddc480_test.cpp'
         PassPattern = 'PASS_00ddc480'
     }
     [pscustomobject]@{
         Address = '00ddc5a0'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00ddc5a0_00ddc5a0.cpp'
-        TestSource = '00/dd/gapscan_sub00ddc5a0_00ddc5a0_test.cpp'
+        Module = 'NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard'
+        Source = '00/dd/NScriptCQPrisonRaceScriptCPrisonRaceStartingGuard_GetParentScript_00ddc5a0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonRaceScriptCPrisonRaceStartingGuard_GetParentScript_00ddc5a0_test.cpp'
         PassPattern = 'PASS_00ddc5a0'
     }
     [pscustomobject]@{
@@ -110738,9 +110738,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ddc680'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00ddc680_00ddc680.cpp'
-        TestSource = '00/dd/gapscan_sub00ddc680_00ddc680_test.cpp'
+        Module = 'NScript::CQ_PrisonRaceScript::CWaypointSpeedCheck'
+        Source = '00/dd/NScriptCQPrisonRaceScriptCWaypointSpeedCheck_GetParentScript_00ddc680.cpp'
+        TestSource = '00/dd/NScriptCQPrisonRaceScriptCWaypointSpeedCheck_GetParentScript_00ddc680_test.cpp'
         PassPattern = 'PASS_00ddc680'
     }
     [pscustomobject]@{
@@ -110752,23 +110752,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dddcd0'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dddcd0_00dddcd0.cpp'
-        TestSource = '00/dd/gapscan_sub00dddcd0_00dddcd0_test.cpp'
+        Module = 'NScript::CQ_PrisonWardenGameScript'
+        Source = '00/dd/NScriptCQPrisonWardenGameScript_OnPersist_00dddcd0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonWardenGameScript_OnPersist_00dddcd0_test.cpp'
         PassPattern = 'PASS_00dddcd0'
     }
     [pscustomobject]@{
         Address = '00dde220'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dde220_00dde220.cpp'
-        TestSource = '00/dd/gapscan_sub00dde220_00dde220_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_PrisonWardenGameScript>'
+        Source = '00/dd/CEntityScriptBindingNScriptCQPrisonWardenGameScript_GetEntityScriptName_00dde220.cpp'
+        TestSource = '00/dd/CEntityScriptBindingNScriptCQPrisonWardenGameScript_GetEntityScriptName_00dde220_test.cpp'
         PassPattern = 'PASS_00dde220'
     }
     [pscustomobject]@{
         Address = '00dde6d0'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dde6d0_00dde6d0.cpp'
-        TestSource = '00/dd/gapscan_sub00dde6d0_00dde6d0_test.cpp'
+        Module = 'NScript::CQ_PrisonWardenGameScript::CPrisonWarden'
+        Source = '00/dd/NScriptCQPrisonWardenGameScriptCPrisonWarden_GetParentScript_00dde6d0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonWardenGameScriptCPrisonWarden_GetParentScript_00dde6d0_test.cpp'
         PassPattern = 'PASS_00dde6d0'
     }
     [pscustomobject]@{
@@ -110780,128 +110780,128 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dde7c0'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dde7c0_00dde7c0.cpp'
-        TestSource = '00/dd/gapscan_sub00dde7c0_00dde7c0_test.cpp'
+        Module = 'NScript::CQ_PrisonWardenGameScript::CSecretBook'
+        Source = '00/dd/NScriptCQPrisonWardenGameScriptCSecretBook_GetParentScript_00dde7c0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonWardenGameScriptCSecretBook_GetParentScript_00dde7c0_test.cpp'
         PassPattern = 'PASS_00dde7c0'
     }
     [pscustomobject]@{
         Address = '00ddecd0'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00ddecd0_00ddecd0.cpp'
-        TestSource = '00/dd/gapscan_sub00ddecd0_00ddecd0_test.cpp'
+        Module = 'NScript::CQ_PrisonWardenGameScript::CExitWardensOffice'
+        Source = '00/dd/NScriptCQPrisonWardenGameScriptCExitWardensOffice_GetParentScript_00ddecd0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonWardenGameScriptCExitWardensOffice_GetParentScript_00ddecd0_test.cpp'
         PassPattern = 'PASS_00ddecd0'
     }
     [pscustomobject]@{
         Address = '00ddee90'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00ddee90_00ddee90.cpp'
-        TestSource = '00/dd/gapscan_sub00ddee90_00ddee90_test.cpp'
+        Module = 'NScript::CQ_PrisonWardenGameScript::CDoNotTarget'
+        Source = '00/dd/NScriptCQPrisonWardenGameScriptCDoNotTarget_GetParentScript_00ddee90.cpp'
+        TestSource = '00/dd/NScriptCQPrisonWardenGameScriptCDoNotTarget_GetParentScript_00ddee90_test.cpp'
         PassPattern = 'PASS_00ddee90'
     }
     [pscustomobject]@{
         Address = '00de1490'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00de1490_00de1490.cpp'
-        TestSource = '00/de/gapscan_sub00de1490_00de1490_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_RansomVictimScript>'
+        Source = '00/de/CEntityScriptBindingNScriptCQRansomVictimScript_GetEntityScriptName_00de1490.cpp'
+        TestSource = '00/de/CEntityScriptBindingNScriptCQRansomVictimScript_GetEntityScriptName_00de1490_test.cpp'
         PassPattern = 'PASS_00de1490'
     }
     [pscustomobject]@{
         Address = '00de1980'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00de1980_00de1980.cpp'
-        TestSource = '00/de/gapscan_sub00de1980_00de1980_test.cpp'
+        Module = 'NScript::CQ_RansomVictimScript::CVictimsFather'
+        Source = '00/de/NScriptCQRansomVictimScriptCVictimsFather_GetParentScript_00de1980.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCVictimsFather_GetParentScript_00de1980_test.cpp'
         PassPattern = 'PASS_00de1980'
     }
     [pscustomobject]@{
         Address = '00de1af0'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00de1af0_00de1af0.cpp'
-        TestSource = '00/de/gapscan_sub00de1af0_00de1af0_test.cpp'
+        Module = 'NScript::CQ_RansomVictimScript::CVictim'
+        Source = '00/de/NScriptCQRansomVictimScriptCVictim_GetParentScript_00de1af0.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCVictim_GetParentScript_00de1af0_test.cpp'
         PassPattern = 'PASS_00de1af0'
     }
     [pscustomobject]@{
         Address = '00de1c40'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00de1c40_00de1c40.cpp'
-        TestSource = '00/de/gapscan_sub00de1c40_00de1c40_test.cpp'
+        Module = 'NScript::CQ_RansomVictimScript::CRansommer'
+        Source = '00/de/NScriptCQRansomVictimScriptCRansommer_GetParentScript_00de1c40.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCRansommer_GetParentScript_00de1c40_test.cpp'
         PassPattern = 'PASS_00de1c40'
     }
     [pscustomobject]@{
         Address = '00de1da0'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00de1da0_00de1da0.cpp'
-        TestSource = '00/de/gapscan_sub00de1da0_00de1da0_test.cpp'
+        Module = 'NScript::CQ_RansomVictimScript::CRansomHelper'
+        Source = '00/de/NScriptCQRansomVictimScriptCRansomHelper_GetParentScript_00de1da0.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCRansomHelper_GetParentScript_00de1da0_test.cpp'
         PassPattern = 'PASS_00de1da0'
     }
     [pscustomobject]@{
         Address = '00de1f00'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00de1f00_00de1f00.cpp'
-        TestSource = '00/de/gapscan_sub00de1f00_00de1f00_test.cpp'
+        Module = 'NScript::CQ_RansomVictimScript::CVictimsBrother'
+        Source = '00/de/NScriptCQRansomVictimScriptCVictimsBrother_GetParentScript_00de1f00.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCVictimsBrother_GetParentScript_00de1f00_test.cpp'
         PassPattern = 'PASS_00de1f00'
     }
     [pscustomobject]@{
         Address = '00de2050'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00de2050_00de2050.cpp'
-        TestSource = '00/de/gapscan_sub00de2050_00de2050_test.cpp'
+        Module = 'NScript::CQ_RansomVictimScript::CVictimsBrotherHelper'
+        Source = '00/de/NScriptCQRansomVictimScriptCVictimsBrotherHelper_GetParentScript_00de2050.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCVictimsBrotherHelper_GetParentScript_00de2050_test.cpp'
         PassPattern = 'PASS_00de2050'
     }
     [pscustomobject]@{
         Address = '00de21a0'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00de21a0_00de21a0.cpp'
-        TestSource = '00/de/gapscan_sub00de21a0_00de21a0_test.cpp'
+        Module = 'NScript::CQ_RansomVictimScript::CRandomAttacker'
+        Source = '00/de/NScriptCQRansomVictimScriptCRandomAttacker_GetParentScript_00de21a0.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCRandomAttacker_GetParentScript_00de21a0_test.cpp'
         PassPattern = 'PASS_00de21a0'
     }
     [pscustomobject]@{
         Address = '00de25a0'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00de25a0_00de25a0.cpp'
-        TestSource = '00/de/gapscan_sub00de25a0_00de25a0_test.cpp'
+        Module = 'NScript::CQ_RansomVictimScript::CVictimsFatherGuard'
+        Source = '00/de/NScriptCQRansomVictimScriptCVictimsFatherGuard_GetParentScript_00de25a0.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCVictimsFatherGuard_GetParentScript_00de25a0_test.cpp'
         PassPattern = 'PASS_00de25a0'
     }
     [pscustomobject]@{
         Address = '00de3800'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00de3800_00de3800.cpp'
-        TestSource = '00/de/gapscan_sub00de3800_00de3800_test.cpp'
+        Module = 'NScript::CQ_RansomVictimScript::CRansomRevenge'
+        Source = '00/de/NScriptCQRansomVictimScriptCRansomRevenge_GetParentScript_00de3800.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCRansomRevenge_GetParentScript_00de3800_test.cpp'
         PassPattern = 'PASS_00de3800'
     }
     [pscustomobject]@{
         Address = '00de3ca0'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00de3ca0_00de3ca0.cpp'
-        TestSource = '00/de/gapscan_sub00de3ca0_00de3ca0_test.cpp'
+        Module = 'NScript::CQ_RansomVictimScript::CNPCComment'
+        Source = '00/de/NScriptCQRansomVictimScriptCNPCComment_GetParentScript_00de3ca0.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCNPCComment_GetParentScript_00de3ca0_test.cpp'
         PassPattern = 'PASS_00de3ca0'
     }
     [pscustomobject]@{
         Address = '00dec4b0'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00dec4b0_00dec4b0.cpp'
-        TestSource = '00/de/gapscan_sub00dec4b0_00dec4b0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_RansomVictimChiefsHouseScript>'
+        Source = '00/de/CEntityScriptBindingNScriptCQRansomVictimChiefsHouseScript_GetEntityScriptName_00dec4b0.cpp'
+        TestSource = '00/de/CEntityScriptBindingNScriptCQRansomVictimChiefsHouseScript_GetEntityScriptName_00dec4b0_test.cpp'
         PassPattern = 'PASS_00dec4b0'
     }
     [pscustomobject]@{
         Address = '00dec560'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00dec560_00dec560.cpp'
-        TestSource = '00/de/gapscan_sub00dec560_00dec560_test.cpp'
+        Module = 'NScript::CQ_RansomVictimChiefsHouseScript::CTest'
+        Source = '00/de/NScriptCQRansomVictimChiefsHouseScriptCTest_GetParentScript_00dec560.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimChiefsHouseScriptCTest_GetParentScript_00dec560_test.cpp'
         PassPattern = 'PASS_00dec560'
     }
     [pscustomobject]@{
         Address = '00ded190'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00ded190_00ded190.cpp'
-        TestSource = '00/de/gapscan_sub00ded190_00ded190_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_SecretPassageScript>'
+        Source = '00/de/CEntityScriptBindingNScriptCQSecretPassageScript_GetEntityScriptName_00ded190.cpp'
+        TestSource = '00/de/CEntityScriptBindingNScriptCQSecretPassageScript_GetEntityScriptName_00ded190_test.cpp'
         PassPattern = 'PASS_00ded190'
     }
     [pscustomobject]@{
         Address = '00ded240'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00ded240_00ded240.cpp'
-        TestSource = '00/de/gapscan_sub00ded240_00ded240_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CSP_ScreamerTrigger'
+        Source = '00/de/NScriptCQSecretPassageScriptCSPScreamerTrigger_GetParentScript_00ded240.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCSPScreamerTrigger_GetParentScript_00ded240_test.cpp'
         PassPattern = 'PASS_00ded240'
     }
     [pscustomobject]@{
@@ -110913,16 +110913,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ded260'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00ded260_00ded260.cpp'
-        TestSource = '00/de/gapscan_sub00ded260_00ded260_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CSP_ScreamerTrigger'
+        Source = '00/de/NScriptCQSecretPassageScriptCSPScreamerTrigger_OnPredicateFail_00ded260.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCSPScreamerTrigger_OnPredicateFail_00ded260_test.cpp'
         PassPattern = 'PASS_00ded260'
     }
     [pscustomobject]@{
         Address = '00ded330'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00ded330_00ded330.cpp'
-        TestSource = '00/de/gapscan_sub00ded330_00ded330_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CSP_NymphTrigger'
+        Source = '00/de/NScriptCQSecretPassageScriptCSPNymphTrigger_GetParentScript_00ded330.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCSPNymphTrigger_GetParentScript_00ded330_test.cpp'
         PassPattern = 'PASS_00ded330'
     }
     [pscustomobject]@{
@@ -110934,16 +110934,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ded350'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00ded350_00ded350.cpp'
-        TestSource = '00/de/gapscan_sub00ded350_00ded350_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CSP_NymphTrigger'
+        Source = '00/de/NScriptCQSecretPassageScriptCSPNymphTrigger_OnPredicateFail_00ded350.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCSPNymphTrigger_OnPredicateFail_00ded350_test.cpp'
         PassPattern = 'PASS_00ded350'
     }
     [pscustomobject]@{
         Address = '00ded4f0'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00ded4f0_00ded4f0.cpp'
-        TestSource = '00/de/gapscan_sub00ded4f0_00ded4f0_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CSP_AmbushGuard'
+        Source = '00/de/NScriptCQSecretPassageScriptCSPAmbushGuard_GetParentScript_00ded4f0.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCSPAmbushGuard_GetParentScript_00ded4f0_test.cpp'
         PassPattern = 'PASS_00ded4f0'
     }
     [pscustomobject]@{
@@ -110955,16 +110955,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ded510'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00ded510_00ded510.cpp'
-        TestSource = '00/de/gapscan_sub00ded510_00ded510_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CSP_AmbushGuard'
+        Source = '00/de/NScriptCQSecretPassageScriptCSPAmbushGuard_OnPredicateFail_00ded510.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCSPAmbushGuard_OnPredicateFail_00ded510_test.cpp'
         PassPattern = 'PASS_00ded510'
     }
     [pscustomobject]@{
         Address = '00ded7c0'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00ded7c0_00ded7c0.cpp'
-        TestSource = '00/de/gapscan_sub00ded7c0_00ded7c0_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CSP_SecretPassageGuard'
+        Source = '00/de/NScriptCQSecretPassageScriptCSPSecretPassageGuard_GetParentScript_00ded7c0.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCSPSecretPassageGuard_GetParentScript_00ded7c0_test.cpp'
         PassPattern = 'PASS_00ded7c0'
     }
     [pscustomobject]@{
@@ -110976,16 +110976,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ded7e0'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00ded7e0_00ded7e0.cpp'
-        TestSource = '00/de/gapscan_sub00ded7e0_00ded7e0_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CSP_SecretPassageGuard'
+        Source = '00/de/NScriptCQSecretPassageScriptCSPSecretPassageGuard_OnPredicateFail_00ded7e0.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCSPSecretPassageGuard_OnPredicateFail_00ded7e0_test.cpp'
         PassPattern = 'PASS_00ded7e0'
     }
     [pscustomobject]@{
         Address = '00dedb30'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00dedb30_00dedb30.cpp'
-        TestSource = '00/de/gapscan_sub00dedb30_00dedb30_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CSP_InvestigatingGuard'
+        Source = '00/de/NScriptCQSecretPassageScriptCSPInvestigatingGuard_GetParentScript_00dedb30.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCSPInvestigatingGuard_GetParentScript_00dedb30_test.cpp'
         PassPattern = 'PASS_00dedb30'
     }
     [pscustomobject]@{
@@ -110997,16 +110997,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dedb50'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00dedb50_00dedb50.cpp'
-        TestSource = '00/de/gapscan_sub00dedb50_00dedb50_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CSP_InvestigatingGuard'
+        Source = '00/de/NScriptCQSecretPassageScriptCSPInvestigatingGuard_OnPredicateFail_00dedb50.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCSPInvestigatingGuard_OnPredicateFail_00dedb50_test.cpp'
         PassPattern = 'PASS_00dedb50'
     }
     [pscustomobject]@{
         Address = '00dedee0'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00dedee0_00dedee0.cpp'
-        TestSource = '00/de/gapscan_sub00dedee0_00dedee0_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CSP_DeskGuard'
+        Source = '00/de/NScriptCQSecretPassageScriptCSPDeskGuard_GetParentScript_00dedee0.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCSPDeskGuard_GetParentScript_00dedee0_test.cpp'
         PassPattern = 'PASS_00dedee0'
     }
     [pscustomobject]@{
@@ -111018,30 +111018,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dedf00'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00dedf00_00dedf00.cpp'
-        TestSource = '00/de/gapscan_sub00dedf00_00dedf00_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CSP_DeskGuard'
+        Source = '00/de/NScriptCQSecretPassageScriptCSPDeskGuard_OnPredicateFail_00dedf00.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCSPDeskGuard_OnPredicateFail_00dedf00_test.cpp'
         PassPattern = 'PASS_00dedf00'
     }
     [pscustomobject]@{
         Address = '00dee240'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00dee240_00dee240.cpp'
-        TestSource = '00/de/gapscan_sub00dee240_00dee240_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CMotherTorture'
+        Source = '00/de/NScriptCQSecretPassageScriptCMotherTorture_GetParentScript_00dee240.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCMotherTorture_GetParentScript_00dee240_test.cpp'
         PassPattern = 'PASS_00dee240'
     }
     [pscustomobject]@{
         Address = '00dee2b0'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00dee2b0_00dee2b0.cpp'
-        TestSource = '00/de/gapscan_sub00dee2b0_00dee2b0_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CMotherTorture'
+        Source = '00/de/NScriptCQSecretPassageScriptCMotherTorture_OnPredicateFail_00dee2b0.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCMotherTorture_OnPredicateFail_00dee2b0_test.cpp'
         PassPattern = 'PASS_00dee2b0'
     }
     [pscustomobject]@{
         Address = '00deefa0'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00deefa0_00deefa0.cpp'
-        TestSource = '00/de/gapscan_sub00deefa0_00deefa0_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CTortureDoorCourtyard'
+        Source = '00/de/NScriptCQSecretPassageScriptCTortureDoorCourtyard_GetParentScript_00deefa0.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCTortureDoorCourtyard_GetParentScript_00deefa0_test.cpp'
         PassPattern = 'PASS_00deefa0'
     }
     [pscustomobject]@{
@@ -111053,9 +111053,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00def190'
-        Module = '_gapscan'
-        Source = '00/de/gapscan_sub00def190_00def190.cpp'
-        TestSource = '00/de/gapscan_sub00def190_00def190_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript::CDoorToMothersTortureChamber'
+        Source = '00/de/NScriptCQSecretPassageScriptCDoorToMothersTortureChamber_GetParentScript_00def190.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCDoorToMothersTortureChamber_GetParentScript_00def190_test.cpp'
         PassPattern = 'PASS_00def190'
     }
     [pscustomobject]@{
@@ -111088,65 +111088,65 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00df16a0'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df16a0_00df16a0.cpp'
-        TestSource = '00/df/gapscan_sub00df16a0_00df16a0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_SummoningTheShipScript>'
+        Source = '00/df/CEntityScriptBindingNScriptCQSummoningTheShipScript_GetEntityScriptName_00df16a0.cpp'
+        TestSource = '00/df/CEntityScriptBindingNScriptCQSummoningTheShipScript_GetEntityScriptName_00df16a0_test.cpp'
         PassPattern = 'PASS_00df16a0'
     }
     [pscustomobject]@{
         Address = '00df1750'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df1750_00df1750.cpp'
-        TestSource = '00/df/gapscan_sub00df1750_00df1750_test.cpp'
+        Module = 'NScript::CQ_SummoningTheShipScript::CSTS_BriarRose'
+        Source = '00/df/NScriptCQSummoningTheShipScriptCSTSBriarRose_GetParentScript_00df1750.cpp'
+        TestSource = '00/df/NScriptCQSummoningTheShipScriptCSTSBriarRose_GetParentScript_00df1750_test.cpp'
         PassPattern = 'PASS_00df1750'
     }
     [pscustomobject]@{
         Address = '00df1800'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df1800_00df1800.cpp'
-        TestSource = '00/df/gapscan_sub00df1800_00df1800_test.cpp'
+        Module = 'NScript::CQ_SummoningTheShipScript::CSTS_BriarRose'
+        Source = '00/df/NScriptCQSummoningTheShipScriptCSTSBriarRose_OnPredicateFail_00df1800.cpp'
+        TestSource = '00/df/NScriptCQSummoningTheShipScriptCSTSBriarRose_OnPredicateFail_00df1800_test.cpp'
         PassPattern = 'PASS_00df1800'
     }
     [pscustomobject]@{
         Address = '00df2290'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df2290_00df2290.cpp'
-        TestSource = '00/df/gapscan_sub00df2290_00df2290_test.cpp'
+        Module = 'NScript::CQ_SummoningTheShipScript::CSummonerAttacker'
+        Source = '00/df/NScriptCQSummoningTheShipScriptCSummonerAttacker_GetParentScript_00df2290.cpp'
+        TestSource = '00/df/NScriptCQSummoningTheShipScriptCSummonerAttacker_GetParentScript_00df2290_test.cpp'
         PassPattern = 'PASS_00df2290'
     }
     [pscustomobject]@{
         Address = '00df2a00'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df2a00_00df2a00.cpp'
-        TestSource = '00/df/gapscan_sub00df2a00_00df2a00_test.cpp'
+        Module = 'NScript::CQ_SummoningTheShipScript::CSummonerMinion'
+        Source = '00/df/NScriptCQSummoningTheShipScriptCSummonerMinion_GetParentScript_00df2a00.cpp'
+        TestSource = '00/df/NScriptCQSummoningTheShipScriptCSummonerMinion_GetParentScript_00df2a00_test.cpp'
         PassPattern = 'PASS_00df2a00'
     }
     [pscustomobject]@{
         Address = '00df2a10'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df2a10_00df2a10.cpp'
-        TestSource = '00/df/gapscan_sub00df2a10_00df2a10_test.cpp'
+        Module = 'NScript::CQ_SummoningTheShipScript::CSummonerMinion'
+        Source = '00/df/NScriptCQSummoningTheShipScriptCSummonerMinion_OnPredicateFail_00df2a10.cpp'
+        TestSource = '00/df/NScriptCQSummoningTheShipScriptCSummonerMinion_OnPredicateFail_00df2a10_test.cpp'
         PassPattern = 'PASS_00df2a10'
     }
     [pscustomobject]@{
         Address = '00df2cc0'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df2cc0_00df2cc0.cpp'
-        TestSource = '00/df/gapscan_sub00df2cc0_00df2cc0_test.cpp'
+        Module = 'NScript::CQ_SummoningTheShipScript::CFireHeartHolder'
+        Source = '00/df/NScriptCQSummoningTheShipScriptCFireHeartHolder_GetParentScript_00df2cc0.cpp'
+        TestSource = '00/df/NScriptCQSummoningTheShipScriptCFireHeartHolder_GetParentScript_00df2cc0_test.cpp'
         PassPattern = 'PASS_00df2cc0'
     }
     [pscustomobject]@{
         Address = '00df2f30'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df2f30_00df2f30.cpp'
-        TestSource = '00/df/gapscan_sub00df2f30_00df2f30_test.cpp'
+        Module = 'NScript::CQ_SummoningTheShipScript::CFireHeart'
+        Source = '00/df/NScriptCQSummoningTheShipScriptCFireHeart_GetParentScript_00df2f30.cpp'
+        TestSource = '00/df/NScriptCQSummoningTheShipScriptCFireHeart_GetParentScript_00df2f30_test.cpp'
         PassPattern = 'PASS_00df2f30'
     }
     [pscustomobject]@{
         Address = '00df3500'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df3500_00df3500.cpp'
-        TestSource = '00/df/gapscan_sub00df3500_00df3500_test.cpp'
+        Module = 'NScript::CQ_SummoningTheShipScript::CM_ActivateLighthouse'
+        Source = '00/df/NScriptCQSummoningTheShipScriptCMActivateLighthouse_GetParentScript_00df3500.cpp'
+        TestSource = '00/df/NScriptCQSummoningTheShipScriptCMActivateLighthouse_GetParentScript_00df3500_test.cpp'
         PassPattern = 'PASS_00df3500'
     }
     [pscustomobject]@{
@@ -111165,16 +111165,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00df4510'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df4510_00df4510.cpp'
-        TestSource = '00/df/gapscan_sub00df4510_00df4510_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_TentacleKrakenBossFightScript>'
+        Source = '00/df/CEntityScriptBindingNScriptCQTentacleKrakenBossFightScript_GetEntityScriptName_00df4510.cpp'
+        TestSource = '00/df/CEntityScriptBindingNScriptCQTentacleKrakenBossFightScript_GetEntityScriptName_00df4510_test.cpp'
         PassPattern = 'PASS_00df4510'
     }
     [pscustomobject]@{
         Address = '00df45c0'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df45c0_00df45c0.cpp'
-        TestSource = '00/df/gapscan_sub00df45c0_00df45c0_test.cpp'
+        Module = 'NScript::CQ_TentacleKrakenBossFightScript::CKrakenMinion'
+        Source = '00/df/NScriptCQTentacleKrakenBossFightScriptCKrakenMinion_GetParentScript_00df45c0.cpp'
+        TestSource = '00/df/NScriptCQTentacleKrakenBossFightScriptCKrakenMinion_GetParentScript_00df45c0_test.cpp'
         PassPattern = 'PASS_00df45c0'
     }
     [pscustomobject]@{
@@ -111186,16 +111186,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00df45e0'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df45e0_00df45e0.cpp'
-        TestSource = '00/df/gapscan_sub00df45e0_00df45e0_test.cpp'
+        Module = 'NScript::CQ_TentacleKrakenBossFightScript::CKrakenMinion'
+        Source = '00/df/NScriptCQTentacleKrakenBossFightScriptCKrakenMinion_OnPredicateFail_00df45e0.cpp'
+        TestSource = '00/df/NScriptCQTentacleKrakenBossFightScriptCKrakenMinion_OnPredicateFail_00df45e0_test.cpp'
         PassPattern = 'PASS_00df45e0'
     }
     [pscustomobject]@{
         Address = '00df47d0'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df47d0_00df47d0.cpp'
-        TestSource = '00/df/gapscan_sub00df47d0_00df47d0_test.cpp'
+        Module = 'NScript::CQ_TentacleKrakenBossFightScript::CTheKraken'
+        Source = '00/df/NScriptCQTentacleKrakenBossFightScriptCTheKraken_GetParentScript_00df47d0.cpp'
+        TestSource = '00/df/NScriptCQTentacleKrakenBossFightScriptCTheKraken_GetParentScript_00df47d0_test.cpp'
         PassPattern = 'PASS_00df47d0'
     }
     [pscustomobject]@{
@@ -111207,135 +111207,135 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00df47f0'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df47f0_00df47f0.cpp'
-        TestSource = '00/df/gapscan_sub00df47f0_00df47f0_test.cpp'
+        Module = 'NScript::CQ_TentacleKrakenBossFightScript::CTheKraken'
+        Source = '00/df/NScriptCQTentacleKrakenBossFightScriptCTheKraken_OnPredicateFail_00df47f0.cpp'
+        TestSource = '00/df/NScriptCQTentacleKrakenBossFightScriptCTheKraken_OnPredicateFail_00df47f0_test.cpp'
         PassPattern = 'PASS_00df47f0'
     }
     [pscustomobject]@{
         Address = '00df48c0'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df48c0_00df48c0.cpp'
-        TestSource = '00/df/gapscan_sub00df48c0_00df48c0_test.cpp'
+        Module = 'NScript::CQ_TentacleKrakenBossFightScript::CM_Experience'
+        Source = '00/df/NScriptCQTentacleKrakenBossFightScriptCMExperience_GetParentScript_00df48c0.cpp'
+        TestSource = '00/df/NScriptCQTentacleKrakenBossFightScriptCMExperience_GetParentScript_00df48c0_test.cpp'
         PassPattern = 'PASS_00df48c0'
     }
     [pscustomobject]@{
         Address = '00df7970'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df7970_00df7970.cpp'
-        TestSource = '00/df/gapscan_sub00df7970_00df7970_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_TraderConflictEvilScript>'
+        Source = '00/df/CEntityScriptBindingNScriptCQTraderConflictEvilScript_GetEntityScriptName_00df7970.cpp'
+        TestSource = '00/df/CEntityScriptBindingNScriptCQTraderConflictEvilScript_GetEntityScriptName_00df7970_test.cpp'
         PassPattern = 'PASS_00df7970'
     }
     [pscustomobject]@{
         Address = '00df7bc0'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df7bc0_00df7bc0.cpp'
-        TestSource = '00/df/gapscan_sub00df7bc0_00df7bc0_test.cpp'
+        Module = 'NScript::CQ_TraderConflictEvilScript::CTC_GuardSpawnPoint'
+        Source = '00/df/NScriptCQTraderConflictEvilScriptCTCGuardSpawnPoint_GetParentScript_00df7bc0.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictEvilScriptCTCGuardSpawnPoint_GetParentScript_00df7bc0_test.cpp'
         PassPattern = 'PASS_00df7bc0'
     }
     [pscustomobject]@{
         Address = '00df8030'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df8030_00df8030.cpp'
-        TestSource = '00/df/gapscan_sub00df8030_00df8030_test.cpp'
+        Module = 'NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower'
+        Source = '00/df/NScriptCQTraderConflictEvilScriptCTCBanditFollower_GetParentScript_00df8030.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictEvilScriptCTCBanditFollower_GetParentScript_00df8030_test.cpp'
         PassPattern = 'PASS_00df8030'
     }
     [pscustomobject]@{
         Address = '00df8930'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df8930_00df8930.cpp'
-        TestSource = '00/df/gapscan_sub00df8930_00df8930_test.cpp'
+        Module = 'NScript::CQ_TraderConflictEvilScript::CTC_BanditFighter'
+        Source = '00/df/NScriptCQTraderConflictEvilScriptCTCBanditFighter_GetParentScript_00df8930.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictEvilScriptCTCBanditFighter_GetParentScript_00df8930_test.cpp'
         PassPattern = 'PASS_00df8930'
     }
     [pscustomobject]@{
         Address = '00df9150'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df9150_00df9150.cpp'
-        TestSource = '00/df/gapscan_sub00df9150_00df9150_test.cpp'
+        Module = 'NScript::CQ_TraderConflictEvilScript::CTC_Villager'
+        Source = '00/df/NScriptCQTraderConflictEvilScriptCTCVillager_GetParentScript_00df9150.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictEvilScriptCTCVillager_GetParentScript_00df9150_test.cpp'
         PassPattern = 'PASS_00df9150'
     }
     [pscustomobject]@{
         Address = '00df96e0'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00df96e0_00df96e0.cpp'
-        TestSource = '00/df/gapscan_sub00df96e0_00df96e0_test.cpp'
+        Module = 'NScript::CQ_TraderConflictEvilScript::CIsAGuard'
+        Source = '00/df/NScriptCQTraderConflictEvilScriptCIsAGuard_GetParentScript_00df96e0.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictEvilScriptCIsAGuard_GetParentScript_00df96e0_test.cpp'
         PassPattern = 'PASS_00df96e0'
     }
     [pscustomobject]@{
         Address = '00dfaea0'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00dfaea0_00dfaea0.cpp'
-        TestSource = '00/df/gapscan_sub00dfaea0_00dfaea0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_TraderConflictGoodScript>'
+        Source = '00/df/CEntityScriptBindingNScriptCQTraderConflictGoodScript_GetEntityScriptName_00dfaea0.cpp'
+        TestSource = '00/df/CEntityScriptBindingNScriptCQTraderConflictGoodScript_GetEntityScriptName_00dfaea0_test.cpp'
         PassPattern = 'PASS_00dfaea0'
     }
     [pscustomobject]@{
         Address = '00dfb0f0'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00dfb0f0_00dfb0f0.cpp'
-        TestSource = '00/df/gapscan_sub00dfb0f0_00dfb0f0_test.cpp'
+        Module = 'NScript::CQ_TraderConflictGoodScript::CTraderToRescue'
+        Source = '00/df/NScriptCQTraderConflictGoodScriptCTraderToRescue_GetParentScript_00dfb0f0.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictGoodScriptCTraderToRescue_GetParentScript_00dfb0f0_test.cpp'
         PassPattern = 'PASS_00dfb0f0'
     }
     [pscustomobject]@{
         Address = '00dfb2f0'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00dfb2f0_00dfb2f0.cpp'
-        TestSource = '00/df/gapscan_sub00dfb2f0_00dfb2f0_test.cpp'
+        Module = 'NScript::CQ_TraderConflictGoodScript::CTC_BanditGuard'
+        Source = '00/df/NScriptCQTraderConflictGoodScriptCTCBanditGuard_GetParentScript_00dfb2f0.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictGoodScriptCTCBanditGuard_GetParentScript_00dfb2f0_test.cpp'
         PassPattern = 'PASS_00dfb2f0'
     }
     [pscustomobject]@{
         Address = '00dfba30'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00dfba30_00dfba30.cpp'
-        TestSource = '00/df/gapscan_sub00dfba30_00dfba30_test.cpp'
+        Module = 'NScript::CQ_TraderConflictGoodScript::CTC_BanditHostageKeeper'
+        Source = '00/df/NScriptCQTraderConflictGoodScriptCTCBanditHostageKeeper_GetParentScript_00dfba30.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictGoodScriptCTCBanditHostageKeeper_GetParentScript_00dfba30_test.cpp'
         PassPattern = 'PASS_00dfba30'
     }
     [pscustomobject]@{
         Address = '00dfbd90'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00dfbd90_00dfbd90.cpp'
-        TestSource = '00/df/gapscan_sub00dfbd90_00dfbd90_test.cpp'
+        Module = 'NScript::CQ_TraderConflictGoodScript::CBCMTrader'
+        Source = '00/df/NScriptCQTraderConflictGoodScriptCBCMTrader_GetParentScript_00dfbd90.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictGoodScriptCBCMTrader_GetParentScript_00dfbd90_test.cpp'
         PassPattern = 'PASS_00dfbd90'
     }
     [pscustomobject]@{
         Address = '00dfbe80'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00dfbe80_00dfbe80.cpp'
-        TestSource = '00/df/gapscan_sub00dfbe80_00dfbe80_test.cpp'
+        Module = 'NScript::CQ_TraderConflictGoodScript::CBCGameMaster'
+        Source = '00/df/NScriptCQTraderConflictGoodScriptCBCGameMaster_GetParentScript_00dfbe80.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictGoodScriptCBCGameMaster_GetParentScript_00dfbe80_test.cpp'
         PassPattern = 'PASS_00dfbe80'
     }
     [pscustomobject]@{
         Address = '00dfbf70'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00dfbf70_00dfbf70.cpp'
-        TestSource = '00/df/gapscan_sub00dfbf70_00dfbf70_test.cpp'
+        Module = 'NScript::CQ_TraderConflictGoodScript::CBanditExtra'
+        Source = '00/df/NScriptCQTraderConflictGoodScriptCBanditExtra_GetParentScript_00dfbf70.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictGoodScriptCBanditExtra_GetParentScript_00dfbf70_test.cpp'
         PassPattern = 'PASS_00dfbf70'
     }
     [pscustomobject]@{
         Address = '00dfc040'
-        Module = '_gapscan'
-        Source = '00/df/gapscan_sub00dfc040_00dfc040.cpp'
-        TestSource = '00/df/gapscan_sub00dfc040_00dfc040_test.cpp'
+        Module = 'NScript::CQ_TraderConflictGoodScript::CCampHostageDoor'
+        Source = '00/df/NScriptCQTraderConflictGoodScriptCCampHostageDoor_GetParentScript_00dfc040.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictGoodScriptCCampHostageDoor_GetParentScript_00dfc040_test.cpp'
         PassPattern = 'PASS_00dfc040'
     }
     [pscustomobject]@{
         Address = '00e015e0'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e015e0_00e015e0.cpp'
-        TestSource = '00/e0/gapscan_sub00e015e0_00e015e0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_TraderEscortScript>'
+        Source = '00/e0/CEntityScriptBindingNScriptCQTraderEscortScript_GetEntityScriptName_00e015e0.cpp'
+        TestSource = '00/e0/CEntityScriptBindingNScriptCQTraderEscortScript_GetEntityScriptName_00e015e0_test.cpp'
         PassPattern = 'PASS_00e015e0'
     }
     [pscustomobject]@{
         Address = '00e016e0'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e016e0_00e016e0.cpp'
-        TestSource = '00/e0/gapscan_sub00e016e0_00e016e0_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CDarkwoodTrader'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_GetParentScript_00e016e0.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_GetParentScript_00e016e0_test.cpp'
         PassPattern = 'PASS_00e016e0'
     }
     [pscustomobject]@{
         Address = '00e02430'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e02430_00e02430.cpp'
-        TestSource = '00/e0/gapscan_sub00e02430_00e02430_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CFleshEatingBalverine'
+        Source = '00/e0/NScriptCQTraderEscortScriptCFleshEatingBalverine_GetParentScript_00e02430.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCFleshEatingBalverine_GetParentScript_00e02430_test.cpp'
         PassPattern = 'PASS_00e02430'
     }
     [pscustomobject]@{
@@ -111347,9 +111347,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e02910'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e02910_00e02910.cpp'
-        TestSource = '00/e0/gapscan_sub00e02910_00e02910_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CInfectedBalverine'
+        Source = '00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_GetParentScript_00e02910.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_GetParentScript_00e02910_test.cpp'
         PassPattern = 'PASS_00e02910'
     }
     [pscustomobject]@{
@@ -111361,9 +111361,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e02d30'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e02d30_00e02d30.cpp'
-        TestSource = '00/e0/gapscan_sub00e02d30_00e02d30_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CTraderComment'
+        Source = '00/e0/NScriptCQTraderEscortScriptCTraderComment_GetParentScript_00e02d30.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCTraderComment_GetParentScript_00e02d30_test.cpp'
         PassPattern = 'PASS_00e02d30'
     }
     [pscustomobject]@{
@@ -111375,9 +111375,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e02e10'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e02e10_00e02e10.cpp'
-        TestSource = '00/e0/gapscan_sub00e02e10_00e02e10_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CDarkwoodAssassinSpawn'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDarkwoodAssassinSpawn_GetParentScript_00e02e10.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDarkwoodAssassinSpawn_GetParentScript_00e02e10_test.cpp'
         PassPattern = 'PASS_00e02e10'
     }
     [pscustomobject]@{
@@ -111389,9 +111389,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e03440'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e03440_00e03440.cpp'
-        TestSource = '00/e0/gapscan_sub00e03440_00e03440_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CDarkwoodBalverineTrader'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDarkwoodBalverineTrader_GetParentScript_00e03440.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDarkwoodBalverineTrader_GetParentScript_00e03440_test.cpp'
         PassPattern = 'PASS_00e03440'
     }
     [pscustomobject]@{
@@ -111403,9 +111403,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e035a0'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e035a0_00e035a0.cpp'
-        TestSource = '00/e0/gapscan_sub00e035a0_00e035a0_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CTE_BanditLeader'
+        Source = '00/e0/NScriptCQTraderEscortScriptCTEBanditLeader_GetParentScript_00e035a0.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCTEBanditLeader_GetParentScript_00e035a0_test.cpp'
         PassPattern = 'PASS_00e035a0'
     }
     [pscustomobject]@{
@@ -111417,9 +111417,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e037d0'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e037d0_00e037d0.cpp'
-        TestSource = '00/e0/gapscan_sub00e037d0_00e037d0_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CBanditCronies'
+        Source = '00/e0/NScriptCQTraderEscortScriptCBanditCronies_GetParentScript_00e037d0.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCBanditCronies_GetParentScript_00e037d0_test.cpp'
         PassPattern = 'PASS_00e037d0'
     }
     [pscustomobject]@{
@@ -111431,30 +111431,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e03a10'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e03a10_00e03a10.cpp'
-        TestSource = '00/e0/gapscan_sub00e03a10_00e03a10_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CRockTrollTrigger'
+        Source = '00/e0/NScriptCQTraderEscortScriptCRockTrollTrigger_GetParentScript_00e03a10.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCRockTrollTrigger_GetParentScript_00e03a10_test.cpp'
         PassPattern = 'PASS_00e03a10'
     }
     [pscustomobject]@{
         Address = '00e03af0'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e03af0_00e03af0.cpp'
-        TestSource = '00/e0/gapscan_sub00e03af0_00e03af0_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CDarkwoodRockTroll'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDarkwoodRockTroll_GetParentScript_00e03af0.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDarkwoodRockTroll_GetParentScript_00e03af0_test.cpp'
         PassPattern = 'PASS_00e03af0'
     }
     [pscustomobject]@{
         Address = '00e03f20'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e03f20_00e03f20.cpp'
-        TestSource = '00/e0/gapscan_sub00e03f20_00e03f20_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CMagicBarrier'
+        Source = '00/e0/NScriptCQTraderEscortScriptCMagicBarrier_GetParentScript_00e03f20.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCMagicBarrier_GetParentScript_00e03f20_test.cpp'
         PassPattern = 'PASS_00e03f20'
     }
     [pscustomobject]@{
         Address = '00e04790'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e04790_00e04790.cpp'
-        TestSource = '00/e0/gapscan_sub00e04790_00e04790_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CDW5_Bandit'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDW5Bandit_GetParentScript_00e04790.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDW5Bandit_GetParentScript_00e04790_test.cpp'
         PassPattern = 'PASS_00e04790'
     }
     [pscustomobject]@{
@@ -111466,9 +111466,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e04930'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e04930_00e04930.cpp'
-        TestSource = '00/e0/gapscan_sub00e04930_00e04930_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CDW5_Balv'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDW5Balv_GetParentScript_00e04930.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDW5Balv_GetParentScript_00e04930_test.cpp'
         PassPattern = 'PASS_00e04930'
     }
     [pscustomobject]@{
@@ -111480,23 +111480,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e04ad0'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e04ad0_00e04ad0.cpp'
-        TestSource = '00/e0/gapscan_sub00e04ad0_00e04ad0_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CEndTrader'
+        Source = '00/e0/NScriptCQTraderEscortScriptCEndTrader_GetParentScript_00e04ad0.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCEndTrader_GetParentScript_00e04ad0_test.cpp'
         PassPattern = 'PASS_00e04ad0'
     }
     [pscustomobject]@{
         Address = '00e0c4b0'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e0c4b0_00e0c4b0.cpp'
-        TestSource = '00/e0/gapscan_sub00e0c4b0_00e0c4b0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_UndeadRisingScript>'
+        Source = '00/e0/CEntityScriptBindingNScriptCQUndeadRisingScript_GetEntityScriptName_00e0c4b0.cpp'
+        TestSource = '00/e0/CEntityScriptBindingNScriptCQUndeadRisingScript_GetEntityScriptName_00e0c4b0_test.cpp'
         PassPattern = 'PASS_00e0c4b0'
     }
     [pscustomobject]@{
         Address = '00e0ca10'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e0ca10_00e0ca10.cpp'
-        TestSource = '00/e0/gapscan_sub00e0ca10_00e0ca10_test.cpp'
+        Module = 'NScript::CQ_UndeadRisingScript::CUndeadRisingFirefly'
+        Source = '00/e0/NScriptCQUndeadRisingScriptCUndeadRisingFirefly_GetParentScript_00e0ca10.cpp'
+        TestSource = '00/e0/NScriptCQUndeadRisingScriptCUndeadRisingFirefly_GetParentScript_00e0ca10_test.cpp'
         PassPattern = 'PASS_00e0ca10'
     }
     [pscustomobject]@{
@@ -111508,16 +111508,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e0cfc0'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e0cfc0_00e0cfc0.cpp'
-        TestSource = '00/e0/gapscan_sub00e0cfc0_00e0cfc0_test.cpp'
+        Module = 'NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttacker'
+        Source = '00/e0/NScriptCQUndeadRisingScriptCUndeadRisingZombieAttacker_GetParentScript_00e0cfc0.cpp'
+        TestSource = '00/e0/NScriptCQUndeadRisingScriptCUndeadRisingZombieAttacker_GetParentScript_00e0cfc0_test.cpp'
         PassPattern = 'PASS_00e0cfc0'
     }
     [pscustomobject]@{
         Address = '00e0d1d0'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e0d1d0_00e0d1d0.cpp'
-        TestSource = '00/e0/gapscan_sub00e0d1d0_00e0d1d0_test.cpp'
+        Module = 'NScript::CQ_UndeadRisingScript::CUndeadRisingBoss'
+        Source = '00/e0/NScriptCQUndeadRisingScriptCUndeadRisingBoss_GetParentScript_00e0d1d0.cpp'
+        TestSource = '00/e0/NScriptCQUndeadRisingScriptCUndeadRisingBoss_GetParentScript_00e0d1d0_test.cpp'
         PassPattern = 'PASS_00e0d1d0'
     }
     [pscustomobject]@{
@@ -111529,44 +111529,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e0d630'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e0d630_00e0d630.cpp'
-        TestSource = '00/e0/gapscan_sub00e0d630_00e0d630_test.cpp'
+        Module = 'NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttackerBoss'
+        Source = '00/e0/NScriptCQUndeadRisingScriptCUndeadRisingZombieAttackerBoss_GetParentScript_00e0d630.cpp'
+        TestSource = '00/e0/NScriptCQUndeadRisingScriptCUndeadRisingZombieAttackerBoss_GetParentScript_00e0d630_test.cpp'
         PassPattern = 'PASS_00e0d630'
     }
     [pscustomobject]@{
         Address = '00e0d800'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e0d800_00e0d800.cpp'
-        TestSource = '00/e0/gapscan_sub00e0d800_00e0d800_test.cpp'
+        Module = 'NScript::CQ_UndeadRisingScript::CUndeadRisingCentre'
+        Source = '00/e0/NScriptCQUndeadRisingScriptCUndeadRisingCentre_GetParentScript_00e0d800.cpp'
+        TestSource = '00/e0/NScriptCQUndeadRisingScriptCUndeadRisingCentre_GetParentScript_00e0d800_test.cpp'
         PassPattern = 'PASS_00e0d800'
     }
     [pscustomobject]@{
         Address = '00e0f1c0'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e0f1c0_00e0f1c0.cpp'
-        TestSource = '00/e0/gapscan_sub00e0f1c0_00e0f1c0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_WaspBossScript>'
+        Source = '00/e0/CEntityScriptBindingNScriptCQWaspBossScript_GetEntityScriptName_00e0f1c0.cpp'
+        TestSource = '00/e0/CEntityScriptBindingNScriptCQWaspBossScript_GetEntityScriptName_00e0f1c0_test.cpp'
         PassPattern = 'PASS_00e0f1c0'
     }
     [pscustomobject]@{
         Address = '00e0f4a0'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e0f4a0_00e0f4a0.cpp'
-        TestSource = '00/e0/gapscan_sub00e0f4a0_00e0f4a0_test.cpp'
+        Module = 'NScript::CQ_WaspBossScript::CFleeingWoman'
+        Source = '00/e0/NScriptCQWaspBossScriptCFleeingWoman_GetParentScript_00e0f4a0.cpp'
+        TestSource = '00/e0/NScriptCQWaspBossScriptCFleeingWoman_GetParentScript_00e0f4a0_test.cpp'
         PassPattern = 'PASS_00e0f4a0'
     }
     [pscustomobject]@{
         Address = '00e0f860'
-        Module = '_gapscan'
-        Source = '00/e0/gapscan_sub00e0f860_00e0f860.cpp'
-        TestSource = '00/e0/gapscan_sub00e0f860_00e0f860_test.cpp'
+        Module = 'NScript::CQ_WaspBossScript::CWaspHelper'
+        Source = '00/e0/NScriptCQWaspBossScriptCWaspHelper_GetParentScript_00e0f860.cpp'
+        TestSource = '00/e0/NScriptCQWaspBossScriptCWaspHelper_GetParentScript_00e0f860_test.cpp'
         PassPattern = 'PASS_00e0f860'
     }
     [pscustomobject]@{
         Address = '00e10a70'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e10a70_00e10a70.cpp'
-        TestSource = '00/e1/gapscan_sub00e10a70_00e10a70_test.cpp'
+        Module = 'NScript::CQ_WaspBossScript::CGratefulVillagerSpawn'
+        Source = '00/e1/NScriptCQWaspBossScriptCGratefulVillagerSpawn_GetParentScript_00e10a70.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScriptCGratefulVillagerSpawn_GetParentScript_00e10a70_test.cpp'
         PassPattern = 'PASS_00e10a70'
     }
     [pscustomobject]@{
@@ -111578,72 +111578,72 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e10bc0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e10bc0_00e10bc0.cpp'
-        TestSource = '00/e1/gapscan_sub00e10bc0_00e10bc0_test.cpp'
+        Module = 'NScript::CQ_WaspBossScript::CWaspChaser'
+        Source = '00/e1/NScriptCQWaspBossScriptCWaspChaser_GetParentScript_00e10bc0.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScriptCWaspChaser_GetParentScript_00e10bc0_test.cpp'
         PassPattern = 'PASS_00e10bc0'
     }
     [pscustomobject]@{
         Address = '00e10e10'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e10e10_00e10e10.cpp'
-        TestSource = '00/e1/gapscan_sub00e10e10_00e10e10_test.cpp'
+        Module = 'NScript::CQ_WaspBossScript::CWaspChaseWoman'
+        Source = '00/e1/NScriptCQWaspBossScriptCWaspChaseWoman_GetParentScript_00e10e10.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScriptCWaspChaseWoman_GetParentScript_00e10e10_test.cpp'
         PassPattern = 'PASS_00e10e10'
     }
     [pscustomobject]@{
         Address = '00e11420'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e11420_00e11420.cpp'
-        TestSource = '00/e1/gapscan_sub00e11420_00e11420_test.cpp'
+        Module = 'NScript::CQ_WaspBossScript::CWaspAttacker'
+        Source = '00/e1/NScriptCQWaspBossScriptCWaspAttacker_GetParentScript_00e11420.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScriptCWaspAttacker_GetParentScript_00e11420_test.cpp'
         PassPattern = 'PASS_00e11420'
     }
     [pscustomobject]@{
         Address = '00e11620'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e11620_00e11620.cpp'
-        TestSource = '00/e1/gapscan_sub00e11620_00e11620_test.cpp'
+        Module = 'NScript::CQ_WaspBossScript::CWaspVictim'
+        Source = '00/e1/NScriptCQWaspBossScriptCWaspVictim_GetParentScript_00e11620.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScriptCWaspVictim_GetParentScript_00e11620_test.cpp'
         PassPattern = 'PASS_00e11620'
     }
     [pscustomobject]@{
         Address = '00e11b70'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e11b70_00e11b70.cpp'
-        TestSource = '00/e1/gapscan_sub00e11b70_00e11b70_test.cpp'
+        Module = 'NScript::CQ_WaspBossScript::CQueenHornet'
+        Source = '00/e1/NScriptCQWaspBossScriptCQueenHornet_GetParentScript_00e11b70.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScriptCQueenHornet_GetParentScript_00e11b70_test.cpp'
         PassPattern = 'PASS_00e11b70'
     }
     [pscustomobject]@{
         Address = '00e11d70'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e11d70_00e11d70.cpp'
-        TestSource = '00/e1/gapscan_sub00e11d70_00e11d70_test.cpp'
+        Module = 'NScript::CQ_WaspBossScript::CHornetDrone'
+        Source = '00/e1/NScriptCQWaspBossScriptCHornetDrone_GetParentScript_00e11d70.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScriptCHornetDrone_GetParentScript_00e11d70_test.cpp'
         PassPattern = 'PASS_00e11d70'
     }
     [pscustomobject]@{
         Address = '00e154f0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e154f0_00e154f0.cpp'
-        TestSource = '00/e1/gapscan_sub00e154f0_00e154f0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_WhiteBalverineKnotholeGladeScript>'
+        Source = '00/e1/CEntityScriptBindingNScriptCQWhiteBalverineKnotholeGladeScript_GetEntityScriptName_00e154f0.cpp'
+        TestSource = '00/e1/CEntityScriptBindingNScriptCQWhiteBalverineKnotholeGladeScript_GetEntityScriptName_00e154f0_test.cpp'
         PassPattern = 'PASS_00e154f0'
     }
     [pscustomobject]@{
         Address = '00e157f0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e157f0_00e157f0.cpp'
-        TestSource = '00/e1/gapscan_sub00e157f0_00e157f0_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBWhiteBalverine_GetParentScript_00e157f0.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBWhiteBalverine_GetParentScript_00e157f0_test.cpp'
         PassPattern = 'PASS_00e157f0'
     }
     [pscustomobject]@{
         Address = '00e15800'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e15800_00e15800.cpp'
-        TestSource = '00/e1/gapscan_sub00e15800_00e15800_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBWhiteBalverine_OnPredicateFail_00e15800.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBWhiteBalverine_OnPredicateFail_00e15800_test.cpp'
         PassPattern = 'PASS_00e15800'
     }
     [pscustomobject]@{
         Address = '00e16a30'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e16a30_00e16a30.cpp'
-        TestSource = '00/e1/gapscan_sub00e16a30_00e16a30_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_ScaredVillager'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBScaredVillager_GetParentScript_00e16a30.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBScaredVillager_GetParentScript_00e16a30_test.cpp'
         PassPattern = 'PASS_00e16a30'
     }
     [pscustomobject]@{
@@ -111655,30 +111655,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e16a50'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e16a50_00e16a50.cpp'
-        TestSource = '00/e1/gapscan_sub00e16a50_00e16a50_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_ScaredVillager'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBScaredVillager_OnPredicateFail_00e16a50.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBScaredVillager_OnPredicateFail_00e16a50_test.cpp'
         PassPattern = 'PASS_00e16a50'
     }
     [pscustomobject]@{
         Address = '00e16bf0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e16bf0_00e16bf0.cpp'
-        TestSource = '00/e1/gapscan_sub00e16bf0_00e16bf0_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Villager'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBVillager_GetParentScript_00e16bf0.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBVillager_GetParentScript_00e16bf0_test.cpp'
         PassPattern = 'PASS_00e16bf0'
     }
     [pscustomobject]@{
         Address = '00e16c10'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e16c10_00e16c10.cpp'
-        TestSource = '00/e1/gapscan_sub00e16c10_00e16c10_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Villager'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBVillager_OnPredicateFail_00e16c10.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBVillager_OnPredicateFail_00e16c10_test.cpp'
         PassPattern = 'PASS_00e16c10'
     }
     [pscustomobject]@{
         Address = '00e16db0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e16db0_00e16db0.cpp'
-        TestSource = '00/e1/gapscan_sub00e16db0_00e16db0_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard1_GetParentScript_00e16db0.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard1_GetParentScript_00e16db0_test.cpp'
         PassPattern = 'PASS_00e16db0'
     }
     [pscustomobject]@{
@@ -111690,16 +111690,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e16dd0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e16dd0_00e16dd0.cpp'
-        TestSource = '00/e1/gapscan_sub00e16dd0_00e16dd0_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard1_OnPredicateFail_00e16dd0.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard1_OnPredicateFail_00e16dd0_test.cpp'
         PassPattern = 'PASS_00e16dd0'
     }
     [pscustomobject]@{
         Address = '00e172d0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e172d0_00e172d0.cpp'
-        TestSource = '00/e1/gapscan_sub00e172d0_00e172d0_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard2_GetParentScript_00e172d0.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard2_GetParentScript_00e172d0_test.cpp'
         PassPattern = 'PASS_00e172d0'
     }
     [pscustomobject]@{
@@ -111711,16 +111711,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e172f0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e172f0_00e172f0.cpp'
-        TestSource = '00/e1/gapscan_sub00e172f0_00e172f0_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard2_OnPredicateFail_00e172f0.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard2_OnPredicateFail_00e172f0_test.cpp'
         PassPattern = 'PASS_00e172f0'
     }
     [pscustomobject]@{
         Address = '00e177f0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e177f0_00e177f0.cpp'
-        TestSource = '00/e1/gapscan_sub00e177f0_00e177f0_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCKGChief_GetParentScript_00e177f0.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCKGChief_GetParentScript_00e177f0_test.cpp'
         PassPattern = 'PASS_00e177f0'
     }
     [pscustomobject]@{
@@ -111732,65 +111732,65 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e17810'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e17810_00e17810.cpp'
-        TestSource = '00/e1/gapscan_sub00e17810_00e17810_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCKGChief_OnPredicateFail_00e17810.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCKGChief_OnPredicateFail_00e17810_test.cpp'
         PassPattern = 'PASS_00e17810'
     }
     [pscustomobject]@{
         Address = '00e18ea0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e18ea0_00e18ea0.cpp'
-        TestSource = '00/e1/gapscan_sub00e18ea0_00e18ea0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_WhiteBalverineWWScript>'
+        Source = '00/e1/CEntityScriptBindingNScriptCQWhiteBalverineWWScript_GetEntityScriptName_00e18ea0.cpp'
+        TestSource = '00/e1/CEntityScriptBindingNScriptCQWhiteBalverineWWScript_GetEntityScriptName_00e18ea0_test.cpp'
         PassPattern = 'PASS_00e18ea0'
     }
     [pscustomobject]@{
         Address = '00e19140'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e19140_00e19140.cpp'
-        TestSource = '00/e1/gapscan_sub00e19140_00e19140_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineWWScript::CWBWW_WhiteBalverine'
+        Source = '00/e1/NScriptCQWhiteBalverineWWScriptCWBWWWhiteBalverine_GetParentScript_00e19140.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineWWScriptCWBWWWhiteBalverine_GetParentScript_00e19140_test.cpp'
         PassPattern = 'PASS_00e19140'
     }
     [pscustomobject]@{
         Address = '00e19190'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e19190_00e19190.cpp'
-        TestSource = '00/e1/gapscan_sub00e19190_00e19190_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineWWScript::CWBWW_WhiteBalverine'
+        Source = '00/e1/NScriptCQWhiteBalverineWWScriptCWBWWWhiteBalverine_OnPredicateFail_00e19190.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineWWScriptCWBWWWhiteBalverine_OnPredicateFail_00e19190_test.cpp'
         PassPattern = 'PASS_00e19190'
     }
     [pscustomobject]@{
         Address = '00e19280'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e19280_00e19280.cpp'
-        TestSource = '00/e1/gapscan_sub00e19280_00e19280_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineWWScript::CWBWW_SoldierBalverine'
+        Source = '00/e1/NScriptCQWhiteBalverineWWScriptCWBWWSoldierBalverine_GetParentScript_00e19280.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineWWScriptCWBWWSoldierBalverine_GetParentScript_00e19280_test.cpp'
         PassPattern = 'PASS_00e19280'
     }
     [pscustomobject]@{
         Address = '00e19290'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e19290_00e19290.cpp'
-        TestSource = '00/e1/gapscan_sub00e19290_00e19290_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineWWScript::CWBWW_SoldierBalverine'
+        Source = '00/e1/NScriptCQWhiteBalverineWWScriptCWBWWSoldierBalverine_OnPredicateFail_00e19290.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineWWScriptCWBWWSoldierBalverine_OnPredicateFail_00e19290_test.cpp'
         PassPattern = 'PASS_00e19290'
     }
     [pscustomobject]@{
         Address = '00e19380'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e19380_00e19380.cpp'
-        TestSource = '00/e1/gapscan_sub00e19380_00e19380_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineWWScript::CKG_Chief'
+        Source = '00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_GetParentScript_00e19380.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_GetParentScript_00e19380_test.cpp'
         PassPattern = 'PASS_00e19380'
     }
     [pscustomobject]@{
         Address = '00e1ae40'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1ae40_00e1ae40.cpp'
-        TestSource = '00/e1/gapscan_sub00e1ae40_00e1ae40_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_WizardBattleScript>'
+        Source = '00/e1/CEntityScriptBindingNScriptCQWizardBattleScript_GetEntityScriptName_00e1ae40.cpp'
+        TestSource = '00/e1/CEntityScriptBindingNScriptCQWizardBattleScript_GetEntityScriptName_00e1ae40_test.cpp'
         PassPattern = 'PASS_00e1ae40'
     }
     [pscustomobject]@{
         Address = '00e1aef0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1aef0_00e1aef0.cpp'
-        TestSource = '00/e1/gapscan_sub00e1aef0_00e1aef0_test.cpp'
+        Module = 'NScript::CQ_WizardBattleScript::CChasingScreamer'
+        Source = '00/e1/NScriptCQWizardBattleScriptCChasingScreamer_GetParentScript_00e1aef0.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScriptCChasingScreamer_GetParentScript_00e1aef0_test.cpp'
         PassPattern = 'PASS_00e1aef0'
     }
     [pscustomobject]@{
@@ -111802,37 +111802,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e1b1a0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1b1a0_00e1b1a0.cpp'
-        TestSource = '00/e1/gapscan_sub00e1b1a0_00e1b1a0_test.cpp'
+        Module = 'NScript::CQ_WizardBattleScript::CHKC_VillagerScreamer'
+        Source = '00/e1/NScriptCQWizardBattleScriptCHKCVillagerScreamer_GetParentScript_00e1b1a0.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScriptCHKCVillagerScreamer_GetParentScript_00e1b1a0_test.cpp'
         PassPattern = 'PASS_00e1b1a0'
     }
     [pscustomobject]@{
         Address = '00e1b1c0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1b1c0_00e1b1c0.cpp'
-        TestSource = '00/e1/gapscan_sub00e1b1c0_00e1b1c0_test.cpp'
+        Module = 'NScript::CQ_WizardBattleScript::CHKC_VillagerScreamer'
+        Source = '00/e1/NScriptCQWizardBattleScriptCHKCVillagerScreamer_OnPredicateFail_00e1b1c0.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScriptCHKCVillagerScreamer_OnPredicateFail_00e1b1c0_test.cpp'
         PassPattern = 'PASS_00e1b1c0'
     }
     [pscustomobject]@{
         Address = '00e1b700'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1b700_00e1b700.cpp'
-        TestSource = '00/e1/gapscan_sub00e1b700_00e1b700_test.cpp'
+        Module = 'NScript::CQ_WizardBattleScript::CHKC_ScreamerPoint'
+        Source = '00/e1/NScriptCQWizardBattleScriptCHKCScreamerPoint_GetParentScript_00e1b700.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScriptCHKCScreamerPoint_GetParentScript_00e1b700_test.cpp'
         PassPattern = 'PASS_00e1b700'
     }
     [pscustomobject]@{
         Address = '00e1b720'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1b720_00e1b720.cpp'
-        TestSource = '00/e1/gapscan_sub00e1b720_00e1b720_test.cpp'
+        Module = 'NScript::CQ_WizardBattleScript::CHKC_ScreamerPoint'
+        Source = '00/e1/NScriptCQWizardBattleScriptCHKCScreamerPoint_OnPredicateFail_00e1b720.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScriptCHKCScreamerPoint_OnPredicateFail_00e1b720_test.cpp'
         PassPattern = 'PASS_00e1b720'
     }
     [pscustomobject]@{
         Address = '00e1b9f0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1b9f0_00e1b9f0.cpp'
-        TestSource = '00/e1/gapscan_sub00e1b9f0_00e1b9f0_test.cpp'
+        Module = 'NScript::CQ_WizardBattleScript::CHKC_Maze'
+        Source = '00/e1/NScriptCQWizardBattleScriptCHKCMaze_GetParentScript_00e1b9f0.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScriptCHKCMaze_GetParentScript_00e1b9f0_test.cpp'
         PassPattern = 'PASS_00e1b9f0'
     }
     [pscustomobject]@{
@@ -111844,16 +111844,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e1ba10'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1ba10_00e1ba10.cpp'
-        TestSource = '00/e1/gapscan_sub00e1ba10_00e1ba10_test.cpp'
+        Module = 'NScript::CQ_WizardBattleScript::CHKC_Maze'
+        Source = '00/e1/NScriptCQWizardBattleScriptCHKCMaze_OnPredicateFail_00e1ba10.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScriptCHKCMaze_OnPredicateFail_00e1ba10_test.cpp'
         PassPattern = 'PASS_00e1ba10'
     }
     [pscustomobject]@{
         Address = '00e1bb00'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1bb00_00e1bb00.cpp'
-        TestSource = '00/e1/gapscan_sub00e1bb00_00e1bb00_test.cpp'
+        Module = 'NScript::CQ_WizardBattleScript::CEndGameBarrier'
+        Source = '00/e1/NScriptCQWizardBattleScriptCEndGameBarrier_GetParentScript_00e1bb00.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScriptCEndGameBarrier_GetParentScript_00e1bb00_test.cpp'
         PassPattern = 'PASS_00e1bb00'
     }
     [pscustomobject]@{
@@ -111865,30 +111865,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e1bc20'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1bc20_00e1bc20.cpp'
-        TestSource = '00/e1/gapscan_sub00e1bc20_00e1bc20_test.cpp'
+        Module = 'NScript::CQ_WizardBattleScript::CInitialScreamerPoint'
+        Source = '00/e1/NScriptCQWizardBattleScriptCInitialScreamerPoint_GetParentScript_00e1bc20.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScriptCInitialScreamerPoint_GetParentScript_00e1bc20_test.cpp'
         PassPattern = 'PASS_00e1bc20'
     }
     [pscustomobject]@{
         Address = '00e1bc40'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1bc40_00e1bc40.cpp'
-        TestSource = '00/e1/gapscan_sub00e1bc40_00e1bc40_test.cpp'
+        Module = 'NScript::CQ_WizardBattleScript::CInitialScreamerPoint'
+        Source = '00/e1/NScriptCQWizardBattleScriptCInitialScreamerPoint_OnPredicateFail_00e1bc40.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScriptCInitialScreamerPoint_OnPredicateFail_00e1bc40_test.cpp'
         PassPattern = 'PASS_00e1bc40'
     }
     [pscustomobject]@{
         Address = '00e1e520'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1e520_00e1e520.cpp'
-        TestSource = '00/e1/gapscan_sub00e1e520_00e1e520_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQR_EscortTraderScript>'
+        Source = '00/e1/CEntityScriptBindingNScriptCQREscortTraderScript_GetEntityScriptName_00e1e520.cpp'
+        TestSource = '00/e1/CEntityScriptBindingNScriptCQREscortTraderScript_GetEntityScriptName_00e1e520_test.cpp'
         PassPattern = 'PASS_00e1e520'
     }
     [pscustomobject]@{
         Address = '00e1e840'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1e840_00e1e840.cpp'
-        TestSource = '00/e1/gapscan_sub00e1e840_00e1e840_test.cpp'
+        Module = 'NScript::CQR_EscortTraderScript::CTraderToEscort'
+        Source = '00/e1/NScriptCQREscortTraderScriptCTraderToEscort_GetParentScript_00e1e840.cpp'
+        TestSource = '00/e1/NScriptCQREscortTraderScriptCTraderToEscort_GetParentScript_00e1e840_test.cpp'
         PassPattern = 'PASS_00e1e840'
     }
     [pscustomobject]@{
@@ -111907,72 +111907,72 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e1edf0'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1edf0_00e1edf0.cpp'
-        TestSource = '00/e1/gapscan_sub00e1edf0_00e1edf0_test.cpp'
+        Module = 'NScript::CQR_EscortTraderScript::CAttackingBandit'
+        Source = '00/e1/NScriptCQREscortTraderScriptCAttackingBandit_GetParentScript_00e1edf0.cpp'
+        TestSource = '00/e1/NScriptCQREscortTraderScriptCAttackingBandit_GetParentScript_00e1edf0_test.cpp'
         PassPattern = 'PASS_00e1edf0'
     }
     [pscustomobject]@{
         Address = '00e1ee00'
-        Module = '_gapscan'
-        Source = '00/e1/gapscan_sub00e1ee00_00e1ee00.cpp'
-        TestSource = '00/e1/gapscan_sub00e1ee00_00e1ee00_test.cpp'
+        Module = 'NScript::CQR_EscortTraderScript::CAttackingBandit'
+        Source = '00/e1/NScriptCQREscortTraderScriptCAttackingBandit_OnPredicateFail_00e1ee00.cpp'
+        TestSource = '00/e1/NScriptCQREscortTraderScriptCAttackingBandit_OnPredicateFail_00e1ee00_test.cpp'
         PassPattern = 'PASS_00e1ee00'
     }
     [pscustomobject]@{
         Address = '00e25c60'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e25c60_00e25c60.cpp'
-        TestSource = '00/e2/gapscan_sub00e25c60_00e25c60_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQS_GuardianSisterInfoScript>'
+        Source = '00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfoScript_GetEntityScriptName_00e25c60.cpp'
+        TestSource = '00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfoScript_GetEntityScriptName_00e25c60_test.cpp'
         PassPattern = 'PASS_00e25c60'
     }
     [pscustomobject]@{
         Address = '00e25d10'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e25d10_00e25d10.cpp'
-        TestSource = '00/e2/gapscan_sub00e25d10_00e25d10_test.cpp'
+        Module = 'NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern'
+        Source = '00/e2/NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_GetParentScript_00e25d10.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_GetParentScript_00e25d10_test.cpp'
         PassPattern = 'PASS_00e25d10'
     }
     [pscustomobject]@{
         Address = '00e26ae0'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e26ae0_00e26ae0.cpp'
-        TestSource = '00/e2/gapscan_sub00e26ae0_00e26ae0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>'
+        Source = '00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfo2SisterInBanditCampScript_GetEntityScriptName_00e26ae0.cpp'
+        TestSource = '00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfo2SisterInBanditCampScript_GetEntityScriptName_00e26ae0_test.cpp'
         PassPattern = 'PASS_00e26ae0'
     }
     [pscustomobject]@{
         Address = '00e26b90'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e26b90_00e26b90.cpp'
-        TestSource = '00/e2/gapscan_sub00e26b90_00e26b90_test.cpp'
+        Module = 'NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::CMazeAtTavern'
+        Source = '00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_GetParentScript_00e26b90.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_GetParentScript_00e26b90_test.cpp'
         PassPattern = 'PASS_00e26b90'
     }
     [pscustomobject]@{
         Address = '00e26ba0'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e26ba0_00e26ba0.cpp'
-        TestSource = '00/e2/gapscan_sub00e26ba0_00e26ba0_test.cpp'
+        Module = 'NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::CMazeAtTavern'
+        Source = '00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_OnPredicateFail_00e26ba0.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_OnPredicateFail_00e26ba0_test.cpp'
         PassPattern = 'PASS_00e26ba0'
     }
     [pscustomobject]@{
         Address = '00e27ab0'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e27ab0_00e27ab0.cpp'
-        TestSource = '00/e2/gapscan_sub00e27ab0_00e27ab0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQS_GuardianTrophyDealerInfoScript>'
+        Source = '00/e2/CEntityScriptBindingNScriptCQSGuardianTrophyDealerInfoScript_GetEntityScriptName_00e27ab0.cpp'
+        TestSource = '00/e2/CEntityScriptBindingNScriptCQSGuardianTrophyDealerInfoScript_GetEntityScriptName_00e27ab0_test.cpp'
         PassPattern = 'PASS_00e27ab0'
     }
     [pscustomobject]@{
         Address = '00e27c50'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e27c50_00e27c50.cpp'
-        TestSource = '00/e2/gapscan_sub00e27c50_00e27c50_test.cpp'
+        Module = 'NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze'
+        Source = '00/e2/NScriptCQSGuardianTrophyDealerInfoScriptCGTDIMaze_GetParentScript_00e27c50.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianTrophyDealerInfoScriptCGTDIMaze_GetParentScript_00e27c50_test.cpp'
         PassPattern = 'PASS_00e27c50'
     }
     [pscustomobject]@{
         Address = '00e27c80'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e27c80_00e27c80.cpp'
-        TestSource = '00/e2/gapscan_sub00e27c80_00e27c80_test.cpp'
+        Module = 'NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze'
+        Source = '00/e2/NScriptCQSGuardianTrophyDealerInfoScriptCGTDIMaze_OnPredicateFail_00e27c80.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianTrophyDealerInfoScriptCGTDIMaze_OnPredicateFail_00e27c80_test.cpp'
         PassPattern = 'PASS_00e27c80'
     }
     [pscustomobject]@{
@@ -111984,114 +111984,114 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e28f60'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e28f60_00e28f60.cpp'
-        TestSource = '00/e2/gapscan_sub00e28f60_00e28f60_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQS_MeetSisterScript>'
+        Source = '00/e2/CEntityScriptBindingNScriptCQSMeetSisterScript_GetEntityScriptName_00e28f60.cpp'
+        TestSource = '00/e2/CEntityScriptBindingNScriptCQSMeetSisterScript_GetEntityScriptName_00e28f60_test.cpp'
         PassPattern = 'PASS_00e28f60'
     }
     [pscustomobject]@{
         Address = '00e29010'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e29010_00e29010.cpp'
-        TestSource = '00/e2/gapscan_sub00e29010_00e29010_test.cpp'
+        Module = 'NScript::CQS_MeetSisterScript::CMeetSisterMessenger'
+        Source = '00/e2/NScriptCQSMeetSisterScriptCMeetSisterMessenger_GetParentScript_00e29010.cpp'
+        TestSource = '00/e2/NScriptCQSMeetSisterScriptCMeetSisterMessenger_GetParentScript_00e29010_test.cpp'
         PassPattern = 'PASS_00e29010'
     }
     [pscustomobject]@{
         Address = '00e290e0'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e290e0_00e290e0.cpp'
-        TestSource = '00/e2/gapscan_sub00e290e0_00e290e0_test.cpp'
+        Module = 'NScript::CQS_MeetSisterScript::CMeetSisterSister'
+        Source = '00/e2/NScriptCQSMeetSisterScriptCMeetSisterSister_GetParentScript_00e290e0.cpp'
+        TestSource = '00/e2/NScriptCQSMeetSisterScriptCMeetSisterSister_GetParentScript_00e290e0_test.cpp'
         PassPattern = 'PASS_00e290e0'
     }
     [pscustomobject]@{
         Address = '00e29e70'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e29e70_00e29e70.cpp'
-        TestSource = '00/e2/gapscan_sub00e29e70_00e29e70_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQS_ScytheInfoScript>'
+        Source = '00/e2/CEntityScriptBindingNScriptCQSScytheInfoScript_GetEntityScriptName_00e29e70.cpp'
+        TestSource = '00/e2/CEntityScriptBindingNScriptCQSScytheInfoScript_GetEntityScriptName_00e29e70_test.cpp'
         PassPattern = 'PASS_00e29e70'
     }
     [pscustomobject]@{
         Address = '00e29f20'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e29f20_00e29f20.cpp'
-        TestSource = '00/e2/gapscan_sub00e29f20_00e29f20_test.cpp'
+        Module = 'NScript::CQS_ScytheInfoScript::CScytheMarker'
+        Source = '00/e2/NScriptCQSScytheInfoScriptCScytheMarker_GetParentScript_00e29f20.cpp'
+        TestSource = '00/e2/NScriptCQSScytheInfoScriptCScytheMarker_GetParentScript_00e29f20_test.cpp'
         PassPattern = 'PASS_00e29f20'
     }
     [pscustomobject]@{
         Address = '00e2a0c0'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e2a0c0_00e2a0c0.cpp'
-        TestSource = '00/e2/gapscan_sub00e2a0c0_00e2a0c0_test.cpp'
+        Module = 'NScript::CQS_ScytheInfoScript::CScytheNearOracle'
+        Source = '00/e2/NScriptCQSScytheInfoScriptCScytheNearOracle_GetParentScript_00e2a0c0.cpp'
+        TestSource = '00/e2/NScriptCQSScytheInfoScriptCScytheNearOracle_GetParentScript_00e2a0c0_test.cpp'
         PassPattern = 'PASS_00e2a0c0'
     }
     [pscustomobject]@{
         Address = '00e2bab0'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e2bab0_00e2bab0.cpp'
-        TestSource = '00/e2/gapscan_sub00e2bab0_00e2bab0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_AmbushScamScript>'
+        Source = '00/e2/CEntityScriptBindingNScriptCVAmbushScamScript_GetEntityScriptName_00e2bab0.cpp'
+        TestSource = '00/e2/CEntityScriptBindingNScriptCVAmbushScamScript_GetEntityScriptName_00e2bab0_test.cpp'
         PassPattern = 'PASS_00e2bab0'
     }
     [pscustomobject]@{
         Address = '00e2bc00'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e2bc00_00e2bc00.cpp'
-        TestSource = '00/e2/gapscan_sub00e2bc00_00e2bc00_test.cpp'
+        Module = 'NScript::CV_AmbushScamScript::CAS_Ambusher'
+        Source = '00/e2/NScriptCVAmbushScamScriptCASAmbusher_GetParentScript_00e2bc00.cpp'
+        TestSource = '00/e2/NScriptCVAmbushScamScriptCASAmbusher_GetParentScript_00e2bc00_test.cpp'
         PassPattern = 'PASS_00e2bc00'
     }
     [pscustomobject]@{
         Address = '00e2bc50'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e2bc50_00e2bc50.cpp'
-        TestSource = '00/e2/gapscan_sub00e2bc50_00e2bc50_test.cpp'
+        Module = 'NScript::CV_AmbushScamScript::CAS_Ambusher'
+        Source = '00/e2/NScriptCVAmbushScamScriptCASAmbusher_OnPersist_00e2bc50.cpp'
+        TestSource = '00/e2/NScriptCVAmbushScamScriptCASAmbusher_OnPersist_00e2bc50_test.cpp'
         PassPattern = 'PASS_00e2bc50'
     }
     [pscustomobject]@{
         Address = '00e2bc60'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e2bc60_00e2bc60.cpp'
-        TestSource = '00/e2/gapscan_sub00e2bc60_00e2bc60_test.cpp'
+        Module = 'NScript::CV_AmbushScamScript::CAS_Ambusher'
+        Source = '00/e2/NScriptCVAmbushScamScriptCASAmbusher_OnPredicateFail_00e2bc60.cpp'
+        TestSource = '00/e2/NScriptCVAmbushScamScriptCASAmbusher_OnPredicateFail_00e2bc60_test.cpp'
         PassPattern = 'PASS_00e2bc60'
     }
     [pscustomobject]@{
         Address = '00e2bd30'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e2bd30_00e2bd30.cpp'
-        TestSource = '00/e2/gapscan_sub00e2bd30_00e2bd30_test.cpp'
+        Module = 'NScript::CV_AmbushScamScript::CAS_Trickster'
+        Source = '00/e2/NScriptCVAmbushScamScriptCASTrickster_GetParentScript_00e2bd30.cpp'
+        TestSource = '00/e2/NScriptCVAmbushScamScriptCASTrickster_GetParentScript_00e2bd30_test.cpp'
         PassPattern = 'PASS_00e2bd30'
     }
     [pscustomobject]@{
         Address = '00e2bd40'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e2bd40_00e2bd40.cpp'
-        TestSource = '00/e2/gapscan_sub00e2bd40_00e2bd40_test.cpp'
+        Module = 'NScript::CV_AmbushScamScript::CAS_Trickster'
+        Source = '00/e2/NScriptCVAmbushScamScriptCASTrickster_OnPersist_00e2bd40.cpp'
+        TestSource = '00/e2/NScriptCVAmbushScamScriptCASTrickster_OnPersist_00e2bd40_test.cpp'
         PassPattern = 'PASS_00e2bd40'
     }
     [pscustomobject]@{
         Address = '00e2bf60'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e2bf60_00e2bf60.cpp'
-        TestSource = '00/e2/gapscan_sub00e2bf60_00e2bf60_test.cpp'
+        Module = 'NScript::CV_AmbushScamScript::CAS_Buddy'
+        Source = '00/e2/NScriptCVAmbushScamScriptCASBuddy_GetParentScript_00e2bf60.cpp'
+        TestSource = '00/e2/NScriptCVAmbushScamScriptCASBuddy_GetParentScript_00e2bf60_test.cpp'
         PassPattern = 'PASS_00e2bf60'
     }
     [pscustomobject]@{
         Address = '00e2bf70'
-        Module = '_gapscan'
-        Source = '00/e2/gapscan_sub00e2bf70_00e2bf70.cpp'
-        TestSource = '00/e2/gapscan_sub00e2bf70_00e2bf70_test.cpp'
+        Module = 'NScript::CV_AmbushScamScript::CAS_Buddy'
+        Source = '00/e2/NScriptCVAmbushScamScriptCASBuddy_OnPredicateFail_00e2bf70.cpp'
+        TestSource = '00/e2/NScriptCVAmbushScamScriptCASBuddy_OnPredicateFail_00e2bf70_test.cpp'
         PassPattern = 'PASS_00e2bf70'
     }
     [pscustomobject]@{
         Address = '00e33030'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e33030_00e33030.cpp'
-        TestSource = '00/e3/gapscan_sub00e33030_00e33030_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_ArcheryCompetitionScript>'
+        Source = '00/e3/CEntityScriptBindingNScriptCVArcheryCompetitionScript_GetEntityScriptName_00e33030.cpp'
+        TestSource = '00/e3/CEntityScriptBindingNScriptCVArcheryCompetitionScript_GetEntityScriptName_00e33030_test.cpp'
         PassPattern = 'PASS_00e33030'
     }
     [pscustomobject]@{
         Address = '00e33560'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e33560_00e33560.cpp'
-        TestSource = '00/e3/gapscan_sub00e33560_00e33560_test.cpp'
+        Module = 'NScript::CV_ArcheryCompetitionScript::CAC_HighScorePost'
+        Source = '00/e3/NScriptCVArcheryCompetitionScriptCACHighScorePost_GetParentScript_00e33560.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScriptCACHighScorePost_GetParentScript_00e33560_test.cpp'
         PassPattern = 'PASS_00e33560'
     }
     [pscustomobject]@{
@@ -112103,16 +112103,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e33580'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e33580_00e33580.cpp'
-        TestSource = '00/e3/gapscan_sub00e33580_00e33580_test.cpp'
+        Module = 'NScript::CV_ArcheryCompetitionScript::CAC_HighScorePost'
+        Source = '00/e3/NScriptCVArcheryCompetitionScriptCACHighScorePost_OnPersist_00e33580.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScriptCACHighScorePost_OnPersist_00e33580_test.cpp'
         PassPattern = 'PASS_00e33580'
     }
     [pscustomobject]@{
         Address = '00e33590'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e33590_00e33590.cpp'
-        TestSource = '00/e3/gapscan_sub00e33590_00e33590_test.cpp'
+        Module = 'NScript::CV_ArcheryCompetitionScript::CAC_HighScorePost'
+        Source = '00/e3/NScriptCVArcheryCompetitionScriptCACHighScorePost_OnPredicateFail_00e33590.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScriptCACHighScorePost_OnPredicateFail_00e33590_test.cpp'
         PassPattern = 'PASS_00e33590'
     }
     [pscustomobject]@{
@@ -112124,16 +112124,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e33650'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e33650_00e33650.cpp'
-        TestSource = '00/e3/gapscan_sub00e33650_00e33650_test.cpp'
+        Module = 'NScript::CV_ArcheryCompetitionScript::CAC_Owner'
+        Source = '00/e3/NScriptCVArcheryCompetitionScriptCACOwner_GetParentScript_00e33650.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScriptCACOwner_GetParentScript_00e33650_test.cpp'
         PassPattern = 'PASS_00e33650'
     }
     [pscustomobject]@{
         Address = '00e338a0'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e338a0_00e338a0.cpp'
-        TestSource = '00/e3/gapscan_sub00e338a0_00e338a0_test.cpp'
+        Module = 'NScript::CV_ArcheryCompetitionScript::CM_AC_DummyStatic'
+        Source = '00/e3/NScriptCVArcheryCompetitionScriptCMACDummyStatic_GetParentScript_00e338a0.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScriptCMACDummyStatic_GetParentScript_00e338a0_test.cpp'
         PassPattern = 'PASS_00e338a0'
     }
     [pscustomobject]@{
@@ -112145,9 +112145,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e33ac0'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e33ac0_00e33ac0.cpp'
-        TestSource = '00/e3/gapscan_sub00e33ac0_00e33ac0_test.cpp'
+        Module = 'NScript::CV_ArcheryCompetitionScript::CM_AC_DummyMoving'
+        Source = '00/e3/NScriptCVArcheryCompetitionScriptCMACDummyMoving_GetParentScript_00e33ac0.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScriptCMACDummyMoving_GetParentScript_00e33ac0_test.cpp'
         PassPattern = 'PASS_00e33ac0'
     }
     [pscustomobject]@{
@@ -112159,30 +112159,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e33c60'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e33c60_00e33c60.cpp'
-        TestSource = '00/e3/gapscan_sub00e33c60_00e33c60_test.cpp'
+        Module = 'NScript::CV_ArcheryCompetitionScript::CAC_DummyStatic'
+        Source = '00/e3/NScriptCVArcheryCompetitionScriptCACDummyStatic_GetParentScript_00e33c60.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScriptCACDummyStatic_GetParentScript_00e33c60_test.cpp'
         PassPattern = 'PASS_00e33c60'
     }
     [pscustomobject]@{
         Address = '00e33dd0'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e33dd0_00e33dd0.cpp'
-        TestSource = '00/e3/gapscan_sub00e33dd0_00e33dd0_test.cpp'
+        Module = 'NScript::CV_ArcheryCompetitionScript::CAC_DummyMoving'
+        Source = '00/e3/NScriptCVArcheryCompetitionScriptCACDummyMoving_GetParentScript_00e33dd0.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScriptCACDummyMoving_GetParentScript_00e33dd0_test.cpp'
         PassPattern = 'PASS_00e33dd0'
     }
     [pscustomobject]@{
         Address = '00e37ce0'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e37ce0_00e37ce0.cpp'
-        TestSource = '00/e3/gapscan_sub00e37ce0_00e37ce0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_AssassinAttacksScript>'
+        Source = '00/e3/CEntityScriptBindingNScriptCVAssassinAttacksScript_GetEntityScriptName_00e37ce0.cpp'
+        TestSource = '00/e3/CEntityScriptBindingNScriptCVAssassinAttacksScript_GetEntityScriptName_00e37ce0_test.cpp'
         PassPattern = 'PASS_00e37ce0'
     }
     [pscustomobject]@{
         Address = '00e37df0'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e37df0_00e37df0.cpp'
-        TestSource = '00/e3/gapscan_sub00e37df0_00e37df0_test.cpp'
+        Module = 'NScript::CV_AssassinAttacksScript::CM_AssassinTrigger'
+        Source = '00/e3/NScriptCVAssassinAttacksScriptCMAssassinTrigger_GetParentScript_00e37df0.cpp'
+        TestSource = '00/e3/NScriptCVAssassinAttacksScriptCMAssassinTrigger_GetParentScript_00e37df0_test.cpp'
         PassPattern = 'PASS_00e37df0'
     }
     [pscustomobject]@{
@@ -112194,30 +112194,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e38360'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e38360_00e38360.cpp'
-        TestSource = '00/e3/gapscan_sub00e38360_00e38360_test.cpp'
+        Module = 'NScript::CV_AssassinAttacksScript::CAttackingAssassin'
+        Source = '00/e3/NScriptCVAssassinAttacksScriptCAttackingAssassin_GetParentScript_00e38360.cpp'
+        TestSource = '00/e3/NScriptCVAssassinAttacksScriptCAttackingAssassin_GetParentScript_00e38360_test.cpp'
         PassPattern = 'PASS_00e38360'
     }
     [pscustomobject]@{
         Address = '00e38370'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e38370_00e38370.cpp'
-        TestSource = '00/e3/gapscan_sub00e38370_00e38370_test.cpp'
+        Module = 'NScript::CV_AssassinAttacksScript::CAttackingAssassin'
+        Source = '00/e3/NScriptCVAssassinAttacksScriptCAttackingAssassin_OnPredicateFail_00e38370.cpp'
+        TestSource = '00/e3/NScriptCVAssassinAttacksScriptCAttackingAssassin_OnPredicateFail_00e38370_test.cpp'
         PassPattern = 'PASS_00e38370'
     }
     [pscustomobject]@{
         Address = '00e38670'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e38670_00e38670.cpp'
-        TestSource = '00/e3/gapscan_sub00e38670_00e38670_test.cpp'
+        Module = 'NScript::CV_AssassinAttacksScript::CChestHidingAssassin'
+        Source = '00/e3/NScriptCVAssassinAttacksScriptCChestHidingAssassin_GetParentScript_00e38670.cpp'
+        TestSource = '00/e3/NScriptCVAssassinAttacksScriptCChestHidingAssassin_GetParentScript_00e38670_test.cpp'
         PassPattern = 'PASS_00e38670'
     }
     [pscustomobject]@{
         Address = '00e38990'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e38990_00e38990.cpp'
-        TestSource = '00/e3/gapscan_sub00e38990_00e38990_test.cpp'
+        Module = 'NScript::CV_AssassinAttacksScript::CAssassinChest'
+        Source = '00/e3/NScriptCVAssassinAttacksScriptCAssassinChest_GetParentScript_00e38990.cpp'
+        TestSource = '00/e3/NScriptCVAssassinAttacksScriptCAssassinChest_GetParentScript_00e38990_test.cpp'
         PassPattern = 'PASS_00e38990'
     }
     [pscustomobject]@{
@@ -112229,86 +112229,86 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e389b0'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e389b0_00e389b0.cpp'
-        TestSource = '00/e3/gapscan_sub00e389b0_00e389b0_test.cpp'
+        Module = 'NScript::CV_AssassinAttacksScript::CAssassinChest'
+        Source = '00/e3/NScriptCVAssassinAttacksScriptCAssassinChest_OnPredicateFail_00e389b0.cpp'
+        TestSource = '00/e3/NScriptCVAssassinAttacksScriptCAssassinChest_OnPredicateFail_00e389b0_test.cpp'
         PassPattern = 'PASS_00e389b0'
     }
     [pscustomobject]@{
         Address = '00e3a140'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e3a140_00e3a140.cpp'
-        TestSource = '00/e3/gapscan_sub00e3a140_00e3a140_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_BordelloScript>'
+        Source = '00/e3/CEntityScriptBindingNScriptCVBordelloScript_GetEntityScriptName_00e3a140.cpp'
+        TestSource = '00/e3/CEntityScriptBindingNScriptCVBordelloScript_GetEntityScriptName_00e3a140_test.cpp'
         PassPattern = 'PASS_00e3a140'
     }
     [pscustomobject]@{
         Address = '00e3ab50'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e3ab50_00e3ab50.cpp'
-        TestSource = '00/e3/gapscan_sub00e3ab50_00e3ab50_test.cpp'
+        Module = 'NScript::CV_BordelloScript::CMadame'
+        Source = '00/e3/NScriptCVBordelloScriptCMadame_GetParentScript_00e3ab50.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScriptCMadame_GetParentScript_00e3ab50_test.cpp'
         PassPattern = 'PASS_00e3ab50'
     }
     [pscustomobject]@{
         Address = '00e3ac30'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e3ac30_00e3ac30.cpp'
-        TestSource = '00/e3/gapscan_sub00e3ac30_00e3ac30_test.cpp'
+        Module = 'NScript::CV_BordelloScript::CBordelloLady'
+        Source = '00/e3/NScriptCVBordelloScriptCBordelloLady_GetParentScript_00e3ac30.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScriptCBordelloLady_GetParentScript_00e3ac30_test.cpp'
         PassPattern = 'PASS_00e3ac30'
     }
     [pscustomobject]@{
         Address = '00e3af00'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e3af00_00e3af00.cpp'
-        TestSource = '00/e3/gapscan_sub00e3af00_00e3af00_test.cpp'
+        Module = 'NScript::CV_BordelloScript::CBordelloGuard'
+        Source = '00/e3/NScriptCVBordelloScriptCBordelloGuard_GetParentScript_00e3af00.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScriptCBordelloGuard_GetParentScript_00e3af00_test.cpp'
         PassPattern = 'PASS_00e3af00'
     }
     [pscustomobject]@{
         Address = '00e3b030'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e3b030_00e3b030.cpp'
-        TestSource = '00/e3/gapscan_sub00e3b030_00e3b030_test.cpp'
+        Module = 'NScript::CV_BordelloScript::CMagicman'
+        Source = '00/e3/NScriptCVBordelloScriptCMagicman_GetParentScript_00e3b030.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScriptCMagicman_GetParentScript_00e3b030_test.cpp'
         PassPattern = 'PASS_00e3b030'
     }
     [pscustomobject]@{
         Address = '00e3b190'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e3b190_00e3b190.cpp'
-        TestSource = '00/e3/gapscan_sub00e3b190_00e3b190_test.cpp'
+        Module = 'NScript::CV_BordelloScript::CBordelloClient'
+        Source = '00/e3/NScriptCVBordelloScriptCBordelloClient_GetParentScript_00e3b190.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScriptCBordelloClient_GetParentScript_00e3b190_test.cpp'
         PassPattern = 'PASS_00e3b190'
     }
     [pscustomobject]@{
         Address = '00e3b310'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e3b310_00e3b310.cpp'
-        TestSource = '00/e3/gapscan_sub00e3b310_00e3b310_test.cpp'
+        Module = 'NScript::CV_BordelloScript::CM_HeroDownstairs'
+        Source = '00/e3/NScriptCVBordelloScriptCMHeroDownstairs_GetParentScript_00e3b310.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScriptCMHeroDownstairs_GetParentScript_00e3b310_test.cpp'
         PassPattern = 'PASS_00e3b310'
     }
     [pscustomobject]@{
         Address = '00e3b470'
-        Module = '_gapscan'
-        Source = '00/e3/gapscan_sub00e3b470_00e3b470.cpp'
-        TestSource = '00/e3/gapscan_sub00e3b470_00e3b470_test.cpp'
+        Module = 'NScript::CV_BordelloScript::CBordelloEntrance'
+        Source = '00/e3/NScriptCVBordelloScriptCBordelloEntrance_GetParentScript_00e3b470.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScriptCBordelloEntrance_GetParentScript_00e3b470_test.cpp'
         PassPattern = 'PASS_00e3b470'
     }
     [pscustomobject]@{
         Address = '00e474f0'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e474f0_00e474f0.cpp'
-        TestSource = '00/e4/gapscan_sub00e474f0_00e474f0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_BanditCampPathScript>'
+        Source = '00/e4/CEntityScriptBindingNScriptCVBanditCampPathScript_GetEntityScriptName_00e474f0.cpp'
+        TestSource = '00/e4/CEntityScriptBindingNScriptCVBanditCampPathScript_GetEntityScriptName_00e474f0_test.cpp'
         PassPattern = 'PASS_00e474f0'
     }
     [pscustomobject]@{
         Address = '00e475a0'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e475a0_00e475a0.cpp'
-        TestSource = '00/e4/gapscan_sub00e475a0_00e475a0_test.cpp'
+        Module = 'NScript::CV_BanditCampPathScript::CBCP_Bandit'
+        Source = '00/e4/NScriptCVBanditCampPathScriptCBCPBandit_GetParentScript_00e475a0.cpp'
+        TestSource = '00/e4/NScriptCVBanditCampPathScriptCBCPBandit_GetParentScript_00e475a0_test.cpp'
         PassPattern = 'PASS_00e475a0'
     }
     [pscustomobject]@{
         Address = '00e475d0'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e475d0_00e475d0.cpp'
-        TestSource = '00/e4/gapscan_sub00e475d0_00e475d0_test.cpp'
+        Module = 'NScript::CV_BanditCampPathScript::CBCP_Bandit'
+        Source = '00/e4/NScriptCVBanditCampPathScriptCBCPBandit_OnPersist_00e475d0.cpp'
+        TestSource = '00/e4/NScriptCVBanditCampPathScriptCBCPBandit_OnPersist_00e475d0_test.cpp'
         PassPattern = 'PASS_00e475d0'
     }
     [pscustomobject]@{
@@ -112320,16 +112320,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e482e0'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e482e0_00e482e0.cpp'
-        TestSource = '00/e4/gapscan_sub00e482e0_00e482e0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_BanditTollScript>'
+        Source = '00/e4/CEntityScriptBindingNScriptCVBanditTollScript_GetEntityScriptName_00e482e0.cpp'
+        TestSource = '00/e4/CEntityScriptBindingNScriptCVBanditTollScript_GetEntityScriptName_00e482e0_test.cpp'
         PassPattern = 'PASS_00e482e0'
     }
     [pscustomobject]@{
         Address = '00e489f0'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e489f0_00e489f0.cpp'
-        TestSource = '00/e4/gapscan_sub00e489f0_00e489f0_test.cpp'
+        Module = 'NScript::CV_BanditTollScript::CM_TollBandit'
+        Source = '00/e4/NScriptCVBanditTollScriptCMTollBandit_GetParentScript_00e489f0.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCMTollBandit_GetParentScript_00e489f0_test.cpp'
         PassPattern = 'PASS_00e489f0'
     }
     [pscustomobject]@{
@@ -112341,16 +112341,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e48be0'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e48be0_00e48be0.cpp'
-        TestSource = '00/e4/gapscan_sub00e48be0_00e48be0_test.cpp'
+        Module = 'NScript::CV_BanditTollScript::CTollBandit'
+        Source = '00/e4/NScriptCVBanditTollScriptCTollBandit_GetParentScript_00e48be0.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCTollBandit_GetParentScript_00e48be0_test.cpp'
         PassPattern = 'PASS_00e48be0'
     }
     [pscustomobject]@{
         Address = '00e48da0'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e48da0_00e48da0.cpp'
-        TestSource = '00/e4/gapscan_sub00e48da0_00e48da0_test.cpp'
+        Module = 'NScript::CV_BanditTollScript::CM_TauntingBandit'
+        Source = '00/e4/NScriptCVBanditTollScriptCMTauntingBandit_GetParentScript_00e48da0.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCMTauntingBandit_GetParentScript_00e48da0_test.cpp'
         PassPattern = 'PASS_00e48da0'
     }
     [pscustomobject]@{
@@ -112362,37 +112362,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e48e80'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e48e80_00e48e80.cpp'
-        TestSource = '00/e4/gapscan_sub00e48e80_00e48e80_test.cpp'
+        Module = 'NScript::CV_BanditTollScript::CTauntingBandit'
+        Source = '00/e4/NScriptCVBanditTollScriptCTauntingBandit_GetParentScript_00e48e80.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCTauntingBandit_GetParentScript_00e48e80_test.cpp'
         PassPattern = 'PASS_00e48e80'
     }
     [pscustomobject]@{
         Address = '00e498f0'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e498f0_00e498f0.cpp'
-        TestSource = '00/e4/gapscan_sub00e498f0_00e498f0_test.cpp'
+        Module = 'NScript::CV_BanditTollScript::CBlockingBandit'
+        Source = '00/e4/NScriptCVBanditTollScriptCBlockingBandit_GetParentScript_00e498f0.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCBlockingBandit_GetParentScript_00e498f0_test.cpp'
         PassPattern = 'PASS_00e498f0'
     }
     [pscustomobject]@{
         Address = '00e49fb0'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e49fb0_00e49fb0.cpp'
-        TestSource = '00/e4/gapscan_sub00e49fb0_00e49fb0_test.cpp'
+        Module = 'NScript::CV_BanditTollScript::CReluctantTrader'
+        Source = '00/e4/NScriptCVBanditTollScriptCReluctantTrader_GetParentScript_00e49fb0.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCReluctantTrader_GetParentScript_00e49fb0_test.cpp'
         PassPattern = 'PASS_00e49fb0'
     }
     [pscustomobject]@{
         Address = '00e4a230'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e4a230_00e4a230.cpp'
-        TestSource = '00/e4/gapscan_sub00e4a230_00e4a230_test.cpp'
+        Module = 'NScript::CV_BanditTollScript::CSafeTrader'
+        Source = '00/e4/NScriptCVBanditTollScriptCSafeTrader_GetParentScript_00e4a230.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCSafeTrader_GetParentScript_00e4a230_test.cpp'
         PassPattern = 'PASS_00e4a230'
     }
     [pscustomobject]@{
         Address = '00e4a700'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e4a700_00e4a700.cpp'
-        TestSource = '00/e4/gapscan_sub00e4a700_00e4a700_test.cpp'
+        Module = 'NScript::CV_BanditTollScript::CM_BanditLeader'
+        Source = '00/e4/NScriptCVBanditTollScriptCMBanditLeader_GetParentScript_00e4a700.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCMBanditLeader_GetParentScript_00e4a700_test.cpp'
         PassPattern = 'PASS_00e4a700'
     }
     [pscustomobject]@{
@@ -112404,16 +112404,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e4a930'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e4a930_00e4a930.cpp'
-        TestSource = '00/e4/gapscan_sub00e4a930_00e4a930_test.cpp'
+        Module = 'NScript::CV_BanditTollScript::CBanditLeader'
+        Source = '00/e4/NScriptCVBanditTollScriptCBanditLeader_GetParentScript_00e4a930.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCBanditLeader_GetParentScript_00e4a930_test.cpp'
         PassPattern = 'PASS_00e4a930'
     }
     [pscustomobject]@{
         Address = '00e4aff0'
-        Module = '_gapscan'
-        Source = '00/e4/gapscan_sub00e4aff0_00e4aff0.cpp'
-        TestSource = '00/e4/gapscan_sub00e4aff0_00e4aff0_test.cpp'
+        Module = 'NScript::CV_BanditTollScript::CGuildSealWarning'
+        Source = '00/e4/NScriptCVBanditTollScriptCGuildSealWarning_GetParentScript_00e4aff0.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCGuildSealWarning_GetParentScript_00e4aff0_test.cpp'
         PassPattern = 'PASS_00e4aff0'
     }
     [pscustomobject]@{
@@ -112425,44 +112425,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e503c0'
-        Module = '_gapscan'
-        Source = '00/e5/gapscan_sub00e503c0_00e503c0.cpp'
-        TestSource = '00/e5/gapscan_sub00e503c0_00e503c0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_BeardyBaldyScript>'
+        Source = '00/e5/CEntityScriptBindingNScriptCVBeardyBaldyScript_GetEntityScriptName_00e503c0.cpp'
+        TestSource = '00/e5/CEntityScriptBindingNScriptCVBeardyBaldyScript_GetEntityScriptName_00e503c0_test.cpp'
         PassPattern = 'PASS_00e503c0'
     }
     [pscustomobject]@{
         Address = '00e50880'
-        Module = '_gapscan'
-        Source = '00/e5/gapscan_sub00e50880_00e50880.cpp'
-        TestSource = '00/e5/gapscan_sub00e50880_00e50880_test.cpp'
+        Module = 'NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan'
+        Source = '00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_GetParentScript_00e50880.cpp'
+        TestSource = '00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_GetParentScript_00e50880_test.cpp'
         PassPattern = 'PASS_00e50880'
     }
     [pscustomobject]@{
         Address = '00e508d0'
-        Module = '_gapscan'
-        Source = '00/e5/gapscan_sub00e508d0_00e508d0.cpp'
-        TestSource = '00/e5/gapscan_sub00e508d0_00e508d0_test.cpp'
+        Module = 'NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan'
+        Source = '00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_OnPersist_00e508d0.cpp'
+        TestSource = '00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_OnPersist_00e508d0_test.cpp'
         PassPattern = 'PASS_00e508d0'
     }
     [pscustomobject]@{
         Address = '00e508e0'
-        Module = '_gapscan'
-        Source = '00/e5/gapscan_sub00e508e0_00e508e0.cpp'
-        TestSource = '00/e5/gapscan_sub00e508e0_00e508e0_test.cpp'
+        Module = 'NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan'
+        Source = '00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_OnPredicateFail_00e508e0.cpp'
+        TestSource = '00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_OnPredicateFail_00e508e0_test.cpp'
         PassPattern = 'PASS_00e508e0'
     }
     [pscustomobject]@{
         Address = '00e54570'
-        Module = '_gapscan'
-        Source = '00/e5/gapscan_sub00e54570_00e54570.cpp'
-        TestSource = '00/e5/gapscan_sub00e54570_00e54570_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_BookCollectingScript>'
+        Source = '00/e5/CEntityScriptBindingNScriptCVBookCollectingScript_GetEntityScriptName_00e54570.cpp'
+        TestSource = '00/e5/CEntityScriptBindingNScriptCVBookCollectingScript_GetEntityScriptName_00e54570_test.cpp'
         PassPattern = 'PASS_00e54570'
     }
     [pscustomobject]@{
         Address = '00e54620'
-        Module = '_gapscan'
-        Source = '00/e5/gapscan_sub00e54620_00e54620.cpp'
-        TestSource = '00/e5/gapscan_sub00e54620_00e54620_test.cpp'
+        Module = 'NScript::CV_BookCollectingScript::CBS_Teacher'
+        Source = '00/e5/NScriptCVBookCollectingScriptCBSTeacher_GetParentScript_00e54620.cpp'
+        TestSource = '00/e5/NScriptCVBookCollectingScriptCBSTeacher_GetParentScript_00e54620_test.cpp'
         PassPattern = 'PASS_00e54620'
     }
     [pscustomobject]@{
@@ -112474,16 +112474,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e58c50'
-        Module = '_gapscan'
-        Source = '00/e5/gapscan_sub00e58c50_00e58c50.cpp'
-        TestSource = '00/e5/gapscan_sub00e58c50_00e58c50_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_BeggarAndChildScript>'
+        Source = '00/e5/CEntityScriptBindingNScriptCVBeggarAndChildScript_GetEntityScriptName_00e58c50.cpp'
+        TestSource = '00/e5/CEntityScriptBindingNScriptCVBeggarAndChildScript_GetEntityScriptName_00e58c50_test.cpp'
         PassPattern = 'PASS_00e58c50'
     }
     [pscustomobject]@{
         Address = '00e58d00'
-        Module = '_gapscan'
-        Source = '00/e5/gapscan_sub00e58d00_00e58d00.cpp'
-        TestSource = '00/e5/gapscan_sub00e58d00_00e58d00_test.cpp'
+        Module = 'NScript::CV_BeggarAndChildScript::CLookoutPointBeggar'
+        Source = '00/e5/NScriptCVBeggarAndChildScriptCLookoutPointBeggar_GetParentScript_00e58d00.cpp'
+        TestSource = '00/e5/NScriptCVBeggarAndChildScriptCLookoutPointBeggar_GetParentScript_00e58d00_test.cpp'
         PassPattern = 'PASS_00e58d00'
     }
     [pscustomobject]@{
@@ -112495,9 +112495,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e5d8f0'
-        Module = '_gapscan'
-        Source = '00/e5/gapscan_sub00e5d8f0_00e5d8f0.cpp'
-        TestSource = '00/e5/gapscan_sub00e5d8f0_00e5d8f0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_BodyGuardScript>'
+        Source = '00/e5/CEntityScriptBindingNScriptCVBodyGuardScript_GetEntityScriptName_00e5d8f0.cpp'
+        TestSource = '00/e5/CEntityScriptBindingNScriptCVBodyGuardScript_GetEntityScriptName_00e5d8f0_test.cpp'
         PassPattern = 'PASS_00e5d8f0'
     }
     [pscustomobject]@{
@@ -112509,9 +112509,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e5e090'
-        Module = '_gapscan'
-        Source = '00/e5/gapscan_sub00e5e090_00e5e090.cpp'
-        TestSource = '00/e5/gapscan_sub00e5e090_00e5e090_test.cpp'
+        Module = 'NScript::CV_BodyGuardScript::CM_BodyGuardRespawn'
+        Source = '00/e5/NScriptCVBodyGuardScriptCMBodyGuardRespawn_GetParentScript_00e5e090.cpp'
+        TestSource = '00/e5/NScriptCVBodyGuardScriptCMBodyGuardRespawn_GetParentScript_00e5e090_test.cpp'
         PassPattern = 'PASS_00e5e090'
     }
     [pscustomobject]@{
@@ -112558,30 +112558,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e62d50'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e62d50_00e62d50.cpp'
-        TestSource = '00/e6/gapscan_sub00e62d50_00e62d50_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_ChickenKickingScript>'
+        Source = '00/e6/CEntityScriptBindingNScriptCVChickenKickingScript_GetEntityScriptName_00e62d50.cpp'
+        TestSource = '00/e6/CEntityScriptBindingNScriptCVChickenKickingScript_GetEntityScriptName_00e62d50_test.cpp'
         PassPattern = 'PASS_00e62d50'
     }
     [pscustomobject]@{
         Address = '00e63550'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e63550_00e63550.cpp'
-        TestSource = '00/e6/gapscan_sub00e63550_00e63550_test.cpp'
+        Module = 'NScript::CV_ChickenKickingScript::CChickenMaster'
+        Source = '00/e6/NScriptCVChickenKickingScriptCChickenMaster_GetParentScript_00e63550.cpp'
+        TestSource = '00/e6/NScriptCVChickenKickingScriptCChickenMaster_GetParentScript_00e63550_test.cpp'
         PassPattern = 'PASS_00e63550'
     }
     [pscustomobject]@{
         Address = '00e63630'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e63630_00e63630.cpp'
-        TestSource = '00/e6/gapscan_sub00e63630_00e63630_test.cpp'
+        Module = 'NScript::CV_ChickenKickingScript::CKickedChicken'
+        Source = '00/e6/NScriptCVChickenKickingScriptCKickedChicken_GetParentScript_00e63630.cpp'
+        TestSource = '00/e6/NScriptCVChickenKickingScriptCKickedChicken_GetParentScript_00e63630_test.cpp'
         PassPattern = 'PASS_00e63630'
     }
     [pscustomobject]@{
         Address = '00e63700'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e63700_00e63700.cpp'
-        TestSource = '00/e6/gapscan_sub00e63700_00e63700_test.cpp'
+        Module = 'NScript::CV_ChickenKickingScript::CSpectator'
+        Source = '00/e6/NScriptCVChickenKickingScriptCSpectator_GetParentScript_00e63700.cpp'
+        TestSource = '00/e6/NScriptCVChickenKickingScriptCSpectator_GetParentScript_00e63700_test.cpp'
         PassPattern = 'PASS_00e63700'
     }
     [pscustomobject]@{
@@ -112593,37 +112593,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e69ff0'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e69ff0_00e69ff0.cpp'
-        TestSource = '00/e6/gapscan_sub00e69ff0_00e69ff0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_ChapelOfEvilScript>'
+        Source = '00/e6/CEntityScriptBindingNScriptCVChapelOfEvilScript_GetEntityScriptName_00e69ff0.cpp'
+        TestSource = '00/e6/CEntityScriptBindingNScriptCVChapelOfEvilScript_GetEntityScriptName_00e69ff0_test.cpp'
         PassPattern = 'PASS_00e69ff0'
     }
     [pscustomobject]@{
         Address = '00e6a5a0'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e6a5a0_00e6a5a0.cpp'
-        TestSource = '00/e6/gapscan_sub00e6a5a0_00e6a5a0_test.cpp'
+        Module = 'NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil'
+        Source = '00/e6/NScriptCVChapelOfEvilScriptCCOEAcolyteEvil_GetParentScript_00e6a5a0.cpp'
+        TestSource = '00/e6/NScriptCVChapelOfEvilScriptCCOEAcolyteEvil_GetParentScript_00e6a5a0_test.cpp'
         PassPattern = 'PASS_00e6a5a0'
     }
     [pscustomobject]@{
         Address = '00e6a5b0'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e6a5b0_00e6a5b0.cpp'
-        TestSource = '00/e6/gapscan_sub00e6a5b0_00e6a5b0_test.cpp'
+        Module = 'NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil'
+        Source = '00/e6/NScriptCVChapelOfEvilScriptCCOEAcolyteEvil_OnPersist_00e6a5b0.cpp'
+        TestSource = '00/e6/NScriptCVChapelOfEvilScriptCCOEAcolyteEvil_OnPersist_00e6a5b0_test.cpp'
         PassPattern = 'PASS_00e6a5b0'
     }
     [pscustomobject]@{
         Address = '00e6a5c0'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e6a5c0_00e6a5c0.cpp'
-        TestSource = '00/e6/gapscan_sub00e6a5c0_00e6a5c0_test.cpp'
+        Module = 'NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil'
+        Source = '00/e6/NScriptCVChapelOfEvilScriptCCOEAcolyteEvil_OnPredicateFail_00e6a5c0.cpp'
+        TestSource = '00/e6/NScriptCVChapelOfEvilScriptCCOEAcolyteEvil_OnPredicateFail_00e6a5c0_test.cpp'
         PassPattern = 'PASS_00e6a5c0'
     }
     [pscustomobject]@{
         Address = '00e6a6a0'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e6a6a0_00e6a6a0.cpp'
-        TestSource = '00/e6/gapscan_sub00e6a6a0_00e6a6a0_test.cpp'
+        Module = 'NScript::CV_ChapelOfEvilScript::CCOE_Victim'
+        Source = '00/e6/NScriptCVChapelOfEvilScriptCCOEVictim_GetParentScript_00e6a6a0.cpp'
+        TestSource = '00/e6/NScriptCVChapelOfEvilScriptCCOEVictim_GetParentScript_00e6a6a0_test.cpp'
         PassPattern = 'PASS_00e6a6a0'
     }
     [pscustomobject]@{
@@ -112635,9 +112635,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e6a780'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e6a780_00e6a780.cpp'
-        TestSource = '00/e6/gapscan_sub00e6a780_00e6a780_test.cpp'
+        Module = 'NScript::CV_ChapelOfEvilScript::CCOE_AltarEvil'
+        Source = '00/e6/NScriptCVChapelOfEvilScriptCCOEAltarEvil_GetParentScript_00e6a780.cpp'
+        TestSource = '00/e6/NScriptCVChapelOfEvilScriptCCOEAltarEvil_GetParentScript_00e6a780_test.cpp'
         PassPattern = 'PASS_00e6a780'
     }
     [pscustomobject]@{
@@ -112649,163 +112649,163 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e6e950'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e6e950_00e6e950.cpp'
-        TestSource = '00/e6/gapscan_sub00e6e950_00e6e950_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_DemonDoorsScript>'
+        Source = '00/e6/CEntityScriptBindingNScriptCVDemonDoorsScript_GetEntityScriptName_00e6e950.cpp'
+        TestSource = '00/e6/CEntityScriptBindingNScriptCVDemonDoorsScript_GetEntityScriptName_00e6e950_test.cpp'
         PassPattern = 'PASS_00e6e950'
     }
     [pscustomobject]@{
         Address = '00e6ea00'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e6ea00_00e6ea00.cpp'
-        TestSource = '00/e6/gapscan_sub00e6ea00_00e6ea00_test.cpp'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_ShineLight'
+        Source = '00/e6/NScriptCVDemonDoorsScriptCDFShineLight_GetParentScript_00e6ea00.cpp'
+        TestSource = '00/e6/NScriptCVDemonDoorsScriptCDFShineLight_GetParentScript_00e6ea00_test.cpp'
         PassPattern = 'PASS_00e6ea00'
     }
     [pscustomobject]@{
         Address = '00e6f190'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e6f190_00e6f190.cpp'
-        TestSource = '00/e6/gapscan_sub00e6f190_00e6f190_test.cpp'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_ThunderHelmet'
+        Source = '00/e6/NScriptCVDemonDoorsScriptCDFThunderHelmet_GetParentScript_00e6f190.cpp'
+        TestSource = '00/e6/NScriptCVDemonDoorsScriptCDFThunderHelmet_GetParentScript_00e6f190_test.cpp'
         PassPattern = 'PASS_00e6f190'
     }
     [pscustomobject]@{
         Address = '00e6f6e0'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e6f6e0_00e6f6e0.cpp'
-        TestSource = '00/e6/gapscan_sub00e6f6e0_00e6f6e0_test.cpp'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_CombatMult'
+        Source = '00/e6/NScriptCVDemonDoorsScriptCDFCombatMult_GetParentScript_00e6f6e0.cpp'
+        TestSource = '00/e6/NScriptCVDemonDoorsScriptCDFCombatMult_GetParentScript_00e6f6e0_test.cpp'
         PassPattern = 'PASS_00e6f6e0'
     }
     [pscustomobject]@{
         Address = '00e6fc10'
-        Module = '_gapscan'
-        Source = '00/e6/gapscan_sub00e6fc10_00e6fc10.cpp'
-        TestSource = '00/e6/gapscan_sub00e6fc10_00e6fc10_test.cpp'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_Dragon'
+        Source = '00/e6/NScriptCVDemonDoorsScriptCDFDragon_GetParentScript_00e6fc10.cpp'
+        TestSource = '00/e6/NScriptCVDemonDoorsScriptCDFDragon_GetParentScript_00e6fc10_test.cpp'
         PassPattern = 'PASS_00e6fc10'
     }
     [pscustomobject]@{
         Address = '00e70430'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e70430_00e70430.cpp'
-        TestSource = '00/e7/gapscan_sub00e70430_00e70430_test.cpp'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_BeEvil'
+        Source = '00/e7/NScriptCVDemonDoorsScriptCDFBeEvil_GetParentScript_00e70430.cpp'
+        TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFBeEvil_GetParentScript_00e70430_test.cpp'
         PassPattern = 'PASS_00e70430'
     }
     [pscustomobject]@{
         Address = '00e70b90'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e70b90_00e70b90.cpp'
-        TestSource = '00/e7/gapscan_sub00e70b90_00e70b90_test.cpp'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_DoDamage'
+        Source = '00/e7/NScriptCVDemonDoorsScriptCDFDoDamage_GetParentScript_00e70b90.cpp'
+        TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFDoDamage_GetParentScript_00e70b90_test.cpp'
         PassPattern = 'PASS_00e70b90'
     }
     [pscustomobject]@{
         Address = '00e71420'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e71420_00e71420.cpp'
-        TestSource = '00/e7/gapscan_sub00e71420_00e71420_test.cpp'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_EatPies'
+        Source = '00/e7/NScriptCVDemonDoorsScriptCDFEatPies_GetParentScript_00e71420.cpp'
+        TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFEatPies_GetParentScript_00e71420_test.cpp'
         PassPattern = 'PASS_00e71420'
     }
     [pscustomobject]@{
         Address = '00e71950'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e71950_00e71950.cpp'
-        TestSource = '00/e7/gapscan_sub00e71950_00e71950_test.cpp'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_GiveGift'
+        Source = '00/e7/NScriptCVDemonDoorsScriptCDFGiveGift_GetParentScript_00e71950.cpp'
+        TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFGiveGift_GetParentScript_00e71950_test.cpp'
         PassPattern = 'PASS_00e71950'
     }
     [pscustomobject]@{
         Address = '00e71ee0'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e71ee0_00e71ee0.cpp'
-        TestSource = '00/e7/gapscan_sub00e71ee0_00e71ee0_test.cpp'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_DressAsBandit'
+        Source = '00/e7/NScriptCVDemonDoorsScriptCDFDressAsBandit_GetParentScript_00e71ee0.cpp'
+        TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFDressAsBandit_GetParentScript_00e71ee0_test.cpp'
         PassPattern = 'PASS_00e71ee0'
     }
     [pscustomobject]@{
         Address = '00e72600'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e72600_00e72600.cpp'
-        TestSource = '00/e7/gapscan_sub00e72600_00e72600_test.cpp'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_ThreeSuits'
+        Source = '00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_GetParentScript_00e72600.cpp'
+        TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_GetParentScript_00e72600_test.cpp'
         PassPattern = 'PASS_00e72600'
     }
     [pscustomobject]@{
         Address = '00e733e0'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e733e0_00e733e0.cpp'
-        TestSource = '00/e7/gapscan_sub00e733e0_00e733e0_test.cpp'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_MarryLadyGrey'
+        Source = '00/e7/NScriptCVDemonDoorsScriptCDFMarryLadyGrey_GetParentScript_00e733e0.cpp'
+        TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFMarryLadyGrey_GetParentScript_00e733e0_test.cpp'
         PassPattern = 'PASS_00e733e0'
     }
     [pscustomobject]@{
         Address = '00e73900'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e73900_00e73900.cpp'
-        TestSource = '00/e7/gapscan_sub00e73900_00e73900_test.cpp'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_SexMad'
+        Source = '00/e7/NScriptCVDemonDoorsScriptCDFSexMad_GetParentScript_00e73900.cpp'
+        TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFSexMad_GetParentScript_00e73900_test.cpp'
         PassPattern = 'PASS_00e73900'
     }
     [pscustomobject]@{
         Address = '00e74090'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e74090_00e74090.cpp'
-        TestSource = '00/e7/gapscan_sub00e74090_00e74090_test.cpp'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_KeyHoarder'
+        Source = '00/e7/NScriptCVDemonDoorsScriptCDFKeyHoarder_GetParentScript_00e74090.cpp'
+        TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFKeyHoarder_GetParentScript_00e74090_test.cpp'
         PassPattern = 'PASS_00e74090'
     }
     [pscustomobject]@{
         Address = '00e76350'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e76350_00e76350.cpp'
-        TestSource = '00/e7/gapscan_sub00e76350_00e76350_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_ExposeMayorScript>'
+        Source = '00/e7/CEntityScriptBindingNScriptCVExposeMayorScript_GetEntityScriptName_00e76350.cpp'
+        TestSource = '00/e7/CEntityScriptBindingNScriptCVExposeMayorScript_GetEntityScriptName_00e76350_test.cpp'
         PassPattern = 'PASS_00e76350'
     }
     [pscustomobject]@{
         Address = '00e76400'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e76400_00e76400.cpp'
-        TestSource = '00/e7/gapscan_sub00e76400_00e76400_test.cpp'
+        Module = 'NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager'
+        Source = '00/e7/NScriptCVExposeMayorScriptCEMSuspiciousVillager_GetParentScript_00e76400.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScriptCEMSuspiciousVillager_GetParentScript_00e76400_test.cpp'
         PassPattern = 'PASS_00e76400'
     }
     [pscustomobject]@{
         Address = '00e76510'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e76510_00e76510.cpp'
-        TestSource = '00/e7/gapscan_sub00e76510_00e76510_test.cpp'
+        Module = 'NScript::CV_ExposeMayorScript::CEM_Sheriff'
+        Source = '00/e7/NScriptCVExposeMayorScriptCEMSheriff_GetParentScript_00e76510.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScriptCEMSheriff_GetParentScript_00e76510_test.cpp'
         PassPattern = 'PASS_00e76510'
     }
     [pscustomobject]@{
         Address = '00e76670'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e76670_00e76670.cpp'
-        TestSource = '00/e7/gapscan_sub00e76670_00e76670_test.cpp'
+        Module = 'NScript::CV_ExposeMayorScript::CEM_Rhodri'
+        Source = '00/e7/NScriptCVExposeMayorScriptCEMRhodri_GetParentScript_00e76670.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScriptCEMRhodri_GetParentScript_00e76670_test.cpp'
         PassPattern = 'PASS_00e76670'
     }
     [pscustomobject]@{
         Address = '00e767d0'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e767d0_00e767d0.cpp'
-        TestSource = '00/e7/gapscan_sub00e767d0_00e767d0_test.cpp'
+        Module = 'NScript::CV_ExposeMayorScript::CEM_FlashLightPoint'
+        Source = '00/e7/NScriptCVExposeMayorScriptCEMFlashLightPoint_GetParentScript_00e767d0.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScriptCEMFlashLightPoint_GetParentScript_00e767d0_test.cpp'
         PassPattern = 'PASS_00e767d0'
     }
     [pscustomobject]@{
         Address = '00e768a0'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e768a0_00e768a0.cpp'
-        TestSource = '00/e7/gapscan_sub00e768a0_00e768a0_test.cpp'
+        Module = 'NScript::CV_ExposeMayorScript::CHH_CellarDoor'
+        Source = '00/e7/NScriptCVExposeMayorScriptCHHCellarDoor_GetParentScript_00e768a0.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScriptCHHCellarDoor_GetParentScript_00e768a0_test.cpp'
         PassPattern = 'PASS_00e768a0'
     }
     [pscustomobject]@{
         Address = '00e7b7a0'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e7b7a0_00e7b7a0.cpp'
-        TestSource = '00/e7/gapscan_sub00e7b7a0_00e7b7a0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_FishermanScript>'
+        Source = '00/e7/CEntityScriptBindingNScriptCVFishermanScript_GetEntityScriptName_00e7b7a0.cpp'
+        TestSource = '00/e7/CEntityScriptBindingNScriptCVFishermanScript_GetEntityScriptName_00e7b7a0_test.cpp'
         PassPattern = 'PASS_00e7b7a0'
     }
     [pscustomobject]@{
         Address = '00e7b850'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e7b850_00e7b850.cpp'
-        TestSource = '00/e7/gapscan_sub00e7b850_00e7b850_test.cpp'
+        Module = 'NScript::CV_FishermanScript::CFisherman'
+        Source = '00/e7/NScriptCVFishermanScriptCFisherman_GetParentScript_00e7b850.cpp'
+        TestSource = '00/e7/NScriptCVFishermanScriptCFisherman_GetParentScript_00e7b850_test.cpp'
         PassPattern = 'PASS_00e7b850'
     }
     [pscustomobject]@{
         Address = '00e7b930'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e7b930_00e7b930.cpp'
-        TestSource = '00/e7/gapscan_sub00e7b930_00e7b930_test.cpp'
+        Module = 'NScript::CV_FishermanScript::CM_FishermanWaspSpawn'
+        Source = '00/e7/NScriptCVFishermanScriptCMFishermanWaspSpawn_GetParentScript_00e7b930.cpp'
+        TestSource = '00/e7/NScriptCVFishermanScriptCMFishermanWaspSpawn_GetParentScript_00e7b930_test.cpp'
         PassPattern = 'PASS_00e7b930'
     }
     [pscustomobject]@{
@@ -112817,16 +112817,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e7bae0'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e7bae0_00e7bae0.cpp'
-        TestSource = '00/e7/gapscan_sub00e7bae0_00e7bae0_test.cpp'
+        Module = 'NScript::CV_FishermanScript::CFishermanWasp'
+        Source = '00/e7/NScriptCVFishermanScriptCFishermanWasp_GetParentScript_00e7bae0.cpp'
+        TestSource = '00/e7/NScriptCVFishermanScriptCFishermanWasp_GetParentScript_00e7bae0_test.cpp'
         PassPattern = 'PASS_00e7bae0'
     }
     [pscustomobject]@{
         Address = '00e7bc80'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e7bc80_00e7bc80.cpp'
-        TestSource = '00/e7/gapscan_sub00e7bc80_00e7bc80_test.cpp'
+        Module = 'NScript::CV_FishermanScript::CFishermanBulletinBoard'
+        Source = '00/e7/NScriptCVFishermanScriptCFishermanBulletinBoard_GetParentScript_00e7bc80.cpp'
+        TestSource = '00/e7/NScriptCVFishermanScriptCFishermanBulletinBoard_GetParentScript_00e7bc80_test.cpp'
         PassPattern = 'PASS_00e7bc80'
     }
     [pscustomobject]@{
@@ -112838,23 +112838,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e7e560'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e7e560_00e7e560.cpp'
-        TestSource = '00/e7/gapscan_sub00e7e560_00e7e560_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_FishingCompetitionScript>'
+        Source = '00/e7/CEntityScriptBindingNScriptCVFishingCompetitionScript_GetEntityScriptName_00e7e560.cpp'
+        TestSource = '00/e7/CEntityScriptBindingNScriptCVFishingCompetitionScript_GetEntityScriptName_00e7e560_test.cpp'
         PassPattern = 'PASS_00e7e560'
     }
     [pscustomobject]@{
         Address = '00e7e610'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e7e610_00e7e610.cpp'
-        TestSource = '00/e7/gapscan_sub00e7e610_00e7e610_test.cpp'
+        Module = 'NScript::CV_FishingCompetitionScript::CFishCompCompetitor'
+        Source = '00/e7/NScriptCVFishingCompetitionScriptCFishCompCompetitor_GetParentScript_00e7e610.cpp'
+        TestSource = '00/e7/NScriptCVFishingCompetitionScriptCFishCompCompetitor_GetParentScript_00e7e610_test.cpp'
         PassPattern = 'PASS_00e7e610'
     }
     [pscustomobject]@{
         Address = '00e7ed30'
-        Module = '_gapscan'
-        Source = '00/e7/gapscan_sub00e7ed30_00e7ed30.cpp'
-        TestSource = '00/e7/gapscan_sub00e7ed30_00e7ed30_test.cpp'
+        Module = 'NScript::CV_FishingCompetitionScript::CBountyHuntActivationChecker'
+        Source = '00/e7/NScriptCVFishingCompetitionScriptCBountyHuntActivationChecker_GetParentScript_00e7ed30.cpp'
+        TestSource = '00/e7/NScriptCVFishingCompetitionScriptCBountyHuntActivationChecker_GetParentScript_00e7ed30_test.cpp'
         PassPattern = 'PASS_00e7ed30'
     }
     [pscustomobject]@{
@@ -112866,16 +112866,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e824d0'
-        Module = '_gapscan'
-        Source = '00/e8/gapscan_sub00e824d0_00e824d0.cpp'
-        TestSource = '00/e8/gapscan_sub00e824d0_00e824d0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_FisticuffsClubScript>'
+        Source = '00/e8/CEntityScriptBindingNScriptCVFisticuffsClubScript_GetEntityScriptName_00e824d0.cpp'
+        TestSource = '00/e8/CEntityScriptBindingNScriptCVFisticuffsClubScript_GetEntityScriptName_00e824d0_test.cpp'
         PassPattern = 'PASS_00e824d0'
     }
     [pscustomobject]@{
         Address = '00e82910'
-        Module = '_gapscan'
-        Source = '00/e8/gapscan_sub00e82910_00e82910.cpp'
-        TestSource = '00/e8/gapscan_sub00e82910_00e82910_test.cpp'
+        Module = 'NScript::CV_FisticuffsClubScript::CFisticuffsClubRing'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCFisticuffsClubRing_GetParentScript_00e82910.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCFisticuffsClubRing_GetParentScript_00e82910_test.cpp'
         PassPattern = 'PASS_00e82910'
     }
     [pscustomobject]@{
@@ -112887,16 +112887,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e83610'
-        Module = '_gapscan'
-        Source = '00/e8/gapscan_sub00e83610_00e83610.cpp'
-        TestSource = '00/e8/gapscan_sub00e83610_00e83610_test.cpp'
+        Module = 'NScript::CV_FisticuffsClubScript::CTyler'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCTyler_GetParentScript_00e83610.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCTyler_GetParentScript_00e83610_test.cpp'
         PassPattern = 'PASS_00e83610'
     }
     [pscustomobject]@{
         Address = '00e83820'
-        Module = '_gapscan'
-        Source = '00/e8/gapscan_sub00e83820_00e83820.cpp'
-        TestSource = '00/e8/gapscan_sub00e83820_00e83820_test.cpp'
+        Module = 'NScript::CV_FisticuffsClubScript::CRingFighter'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCRingFighter_GetParentScript_00e83820.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCRingFighter_GetParentScript_00e83820_test.cpp'
         PassPattern = 'PASS_00e83820'
     }
     [pscustomobject]@{
@@ -112908,65 +112908,65 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e8bd20'
-        Module = '_gapscan'
-        Source = '00/e8/gapscan_sub00e8bd20_00e8bd20.cpp'
-        TestSource = '00/e8/gapscan_sub00e8bd20_00e8bd20_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_GhostGrannyNecklaceScript>'
+        Source = '00/e8/CEntityScriptBindingNScriptCVGhostGrannyNecklaceScript_GetEntityScriptName_00e8bd20.cpp'
+        TestSource = '00/e8/CEntityScriptBindingNScriptCVGhostGrannyNecklaceScript_GetEntityScriptName_00e8bd20_test.cpp'
         PassPattern = 'PASS_00e8bd20'
     }
     [pscustomobject]@{
         Address = '00e8bdd0'
-        Module = '_gapscan'
-        Source = '00/e8/gapscan_sub00e8bdd0_00e8bdd0.cpp'
-        TestSource = '00/e8/gapscan_sub00e8bdd0_00e8bdd0_test.cpp'
+        Module = 'NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace'
+        Source = '00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_GetParentScript_00e8bdd0.cpp'
+        TestSource = '00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_GetParentScript_00e8bdd0_test.cpp'
         PassPattern = 'PASS_00e8bdd0'
     }
     [pscustomobject]@{
         Address = '00e8beb0'
-        Module = '_gapscan'
-        Source = '00/e8/gapscan_sub00e8beb0_00e8beb0.cpp'
-        TestSource = '00/e8/gapscan_sub00e8beb0_00e8beb0_test.cpp'
+        Module = 'NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyDaughterInLaw'
+        Source = '00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyDaughterInLaw_GetParentScript_00e8beb0.cpp'
+        TestSource = '00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyDaughterInLaw_GetParentScript_00e8beb0_test.cpp'
         PassPattern = 'PASS_00e8beb0'
     }
     [pscustomobject]@{
         Address = '00e8cb00'
-        Module = '_gapscan'
-        Source = '00/e8/gapscan_sub00e8cb00_00e8cb00.cpp'
-        TestSource = '00/e8/gapscan_sub00e8cb00_00e8cb00_test.cpp'
+        Module = 'NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon'
+        Source = '00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_GetParentScript_00e8cb00.cpp'
+        TestSource = '00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_GetParentScript_00e8cb00_test.cpp'
         PassPattern = 'PASS_00e8cb00'
     }
     [pscustomobject]@{
         Address = '00e908c0'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e908c0_00e908c0.cpp'
-        TestSource = '00/e9/gapscan_sub00e908c0_00e908c0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_GuildMasterScript>'
+        Source = '00/e9/CEntityScriptBindingNScriptCVGuildMasterScript_GetEntityScriptName_00e908c0.cpp'
+        TestSource = '00/e9/CEntityScriptBindingNScriptCVGuildMasterScript_GetEntityScriptName_00e908c0_test.cpp'
         PassPattern = 'PASS_00e908c0'
     }
     [pscustomobject]@{
         Address = '00e90970'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e90970_00e90970.cpp'
-        TestSource = '00/e9/gapscan_sub00e90970_00e90970_test.cpp'
+        Module = 'NScript::CV_GuildMasterScript::CGuildMasterGameFlow'
+        Source = '00/e9/NScriptCVGuildMasterScriptCGuildMasterGameFlow_GetParentScript_00e90970.cpp'
+        TestSource = '00/e9/NScriptCVGuildMasterScriptCGuildMasterGameFlow_GetParentScript_00e90970_test.cpp'
         PassPattern = 'PASS_00e90970'
     }
     [pscustomobject]@{
         Address = '00e92f60'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e92f60_00e92f60.cpp'
-        TestSource = '00/e9/gapscan_sub00e92f60_00e92f60_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_HiddenBootyScript>'
+        Source = '00/e9/CEntityScriptBindingNScriptCVHiddenBootyScript_GetEntityScriptName_00e92f60.cpp'
+        TestSource = '00/e9/CEntityScriptBindingNScriptCVHiddenBootyScript_GetEntityScriptName_00e92f60_test.cpp'
         PassPattern = 'PASS_00e92f60'
     }
     [pscustomobject]@{
         Address = '00e93010'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e93010_00e93010.cpp'
-        TestSource = '00/e9/gapscan_sub00e93010_00e93010_test.cpp'
+        Module = 'NScript::CV_HiddenBootyScript::CM_HiddenBooty'
+        Source = '00/e9/NScriptCVHiddenBootyScriptCMHiddenBooty_GetParentScript_00e93010.cpp'
+        TestSource = '00/e9/NScriptCVHiddenBootyScriptCMHiddenBooty_GetParentScript_00e93010_test.cpp'
         PassPattern = 'PASS_00e93010'
     }
     [pscustomobject]@{
         Address = '00e953d0'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e953d0_00e953d0.cpp'
-        TestSource = '00/e9/gapscan_sub00e953d0_00e953d0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_HauntedHouseScript>'
+        Source = '00/e9/CEntityScriptBindingNScriptCVHauntedHouseScript_GetEntityScriptName_00e953d0.cpp'
+        TestSource = '00/e9/CEntityScriptBindingNScriptCVHauntedHouseScript_GetEntityScriptName_00e953d0_test.cpp'
         PassPattern = 'PASS_00e953d0'
     }
     [pscustomobject]@{
@@ -113013,16 +113013,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e96fa0'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e96fa0_00e96fa0.cpp'
-        TestSource = '00/e9/gapscan_sub00e96fa0_00e96fa0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_HeroDollsScript>'
+        Source = '00/e9/CEntityScriptBindingNScriptCVHeroDollsScript_GetEntityScriptName_00e96fa0.cpp'
+        TestSource = '00/e9/CEntityScriptBindingNScriptCVHeroDollsScript_GetEntityScriptName_00e96fa0_test.cpp'
         PassPattern = 'PASS_00e96fa0'
     }
     [pscustomobject]@{
         Address = '00e97050'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e97050_00e97050.cpp'
-        TestSource = '00/e9/gapscan_sub00e97050_00e97050_test.cpp'
+        Module = 'NScript::CV_HeroDollsScript::CBS_Teacher'
+        Source = '00/e9/NScriptCVHeroDollsScriptCBSTeacher_GetParentScript_00e97050.cpp'
+        TestSource = '00/e9/NScriptCVHeroDollsScriptCBSTeacher_GetParentScript_00e97050_test.cpp'
         PassPattern = 'PASS_00e97050'
     }
     [pscustomobject]@{
@@ -113034,121 +113034,121 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e98fa0'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e98fa0_00e98fa0.cpp'
-        TestSource = '00/e9/gapscan_sub00e98fa0_00e98fa0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_HeroDuelScript>'
+        Source = '00/e9/CEntityScriptBindingNScriptCVHeroDuelScript_GetEntityScriptName_00e98fa0.cpp'
+        TestSource = '00/e9/CEntityScriptBindingNScriptCVHeroDuelScript_GetEntityScriptName_00e98fa0_test.cpp'
         PassPattern = 'PASS_00e98fa0'
     }
     [pscustomobject]@{
         Address = '00e99750'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e99750_00e99750.cpp'
-        TestSource = '00/e9/gapscan_sub00e99750_00e99750_test.cpp'
+        Module = 'NScript::CV_HeroDuelScript::CThunder'
+        Source = '00/e9/NScriptCVHeroDuelScriptCThunder_GetParentScript_00e99750.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScriptCThunder_GetParentScript_00e99750_test.cpp'
         PassPattern = 'PASS_00e99750'
     }
     [pscustomobject]@{
         Address = '00e997b0'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e997b0_00e997b0.cpp'
-        TestSource = '00/e9/gapscan_sub00e997b0_00e997b0_test.cpp'
+        Module = 'NScript::CV_HeroDuelScript::CThunder'
+        Source = '00/e9/NScriptCVHeroDuelScriptCThunder_OnPredicateFail_00e997b0.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScriptCThunder_OnPredicateFail_00e997b0_test.cpp'
         PassPattern = 'PASS_00e997b0'
     }
     [pscustomobject]@{
         Address = '00e99880'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e99880_00e99880.cpp'
-        TestSource = '00/e9/gapscan_sub00e99880_00e99880_test.cpp'
+        Module = 'NScript::CV_HeroDuelScript::CSpectator'
+        Source = '00/e9/NScriptCVHeroDuelScriptCSpectator_GetParentScript_00e99880.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScriptCSpectator_GetParentScript_00e99880_test.cpp'
         PassPattern = 'PASS_00e99880'
     }
     [pscustomobject]@{
         Address = '00e998c0'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e998c0_00e998c0.cpp'
-        TestSource = '00/e9/gapscan_sub00e998c0_00e998c0_test.cpp'
+        Module = 'NScript::CV_HeroDuelScript::CSpectator'
+        Source = '00/e9/NScriptCVHeroDuelScriptCSpectator_OnPredicateFail_00e998c0.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScriptCSpectator_OnPredicateFail_00e998c0_test.cpp'
         PassPattern = 'PASS_00e998c0'
     }
     [pscustomobject]@{
         Address = '00e9c8c0'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e9c8c0_00e9c8c0.cpp'
-        TestSource = '00/e9/gapscan_sub00e9c8c0_00e9c8c0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_IntroductionToTrophiesScript>'
+        Source = '00/e9/CEntityScriptBindingNScriptCVIntroductionToTrophiesScript_GetEntityScriptName_00e9c8c0.cpp'
+        TestSource = '00/e9/CEntityScriptBindingNScriptCVIntroductionToTrophiesScript_GetEntityScriptName_00e9c8c0_test.cpp'
         PassPattern = 'PASS_00e9c8c0'
     }
     [pscustomobject]@{
         Address = '00e9cf80'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e9cf80_00e9cf80.cpp'
-        TestSource = '00/e9/gapscan_sub00e9cf80_00e9cf80_test.cpp'
+        Module = 'NScript::CV_IntroductionToTrophiesScript::CTrophiesIntroWatcher'
+        Source = '00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesIntroWatcher_GetParentScript_00e9cf80.cpp'
+        TestSource = '00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesIntroWatcher_GetParentScript_00e9cf80_test.cpp'
         PassPattern = 'PASS_00e9cf80'
     }
     [pscustomobject]@{
         Address = '00e9d7a0'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e9d7a0_00e9d7a0.cpp'
-        TestSource = '00/e9/gapscan_sub00e9d7a0_00e9d7a0_test.cpp'
+        Module = 'NScript::CV_IntroductionToTrophiesScript::CTrophiesBriarTrophy'
+        Source = '00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesBriarTrophy_GetParentScript_00e9d7a0.cpp'
+        TestSource = '00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesBriarTrophy_GetParentScript_00e9d7a0_test.cpp'
         PassPattern = 'PASS_00e9d7a0'
     }
     [pscustomobject]@{
         Address = '00e9d7d0'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e9d7d0_00e9d7d0.cpp'
-        TestSource = '00/e9/gapscan_sub00e9d7d0_00e9d7d0_test.cpp'
+        Module = 'NScript::CV_IntroductionToTrophiesScript::CTrophiesBriarTrophy'
+        Source = '00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesBriarTrophy_OnPredicateFail_00e9d7d0.cpp'
+        TestSource = '00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesBriarTrophy_OnPredicateFail_00e9d7d0_test.cpp'
         PassPattern = 'PASS_00e9d7d0'
     }
     [pscustomobject]@{
         Address = '00e9d980'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e9d980_00e9d980.cpp'
-        TestSource = '00/e9/gapscan_sub00e9d980_00e9d980_test.cpp'
+        Module = 'NScript::CV_IntroductionToTrophiesScript::CTrophiesIntroTable'
+        Source = '00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesIntroTable_GetParentScript_00e9d980.cpp'
+        TestSource = '00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesIntroTable_GetParentScript_00e9d980_test.cpp'
         PassPattern = 'PASS_00e9d980'
     }
     [pscustomobject]@{
         Address = '00e9da70'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e9da70_00e9da70.cpp'
-        TestSource = '00/e9/gapscan_sub00e9da70_00e9da70_test.cpp'
+        Module = 'NScript::CV_IntroductionToTrophiesScript::CBriarRose'
+        Source = '00/e9/NScriptCVIntroductionToTrophiesScriptCBriarRose_GetParentScript_00e9da70.cpp'
+        TestSource = '00/e9/NScriptCVIntroductionToTrophiesScriptCBriarRose_GetParentScript_00e9da70_test.cpp'
         PassPattern = 'PASS_00e9da70'
     }
     [pscustomobject]@{
         Address = '00e9da80'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e9da80_00e9da80.cpp'
-        TestSource = '00/e9/gapscan_sub00e9da80_00e9da80_test.cpp'
+        Module = 'NScript::CV_IntroductionToTrophiesScript::CBriarRose'
+        Source = '00/e9/NScriptCVIntroductionToTrophiesScriptCBriarRose_OnPredicateFail_00e9da80.cpp'
+        TestSource = '00/e9/NScriptCVIntroductionToTrophiesScriptCBriarRose_OnPredicateFail_00e9da80_test.cpp'
         PassPattern = 'PASS_00e9da80'
     }
     [pscustomobject]@{
         Address = '00e9ff60'
-        Module = '_gapscan'
-        Source = '00/e9/gapscan_sub00e9ff60_00e9ff60.cpp'
-        TestSource = '00/e9/gapscan_sub00e9ff60_00e9ff60_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_KnotholeGladeGatesScript>'
+        Source = '00/e9/CEntityScriptBindingNScriptCVKnotholeGladeGatesScript_GetEntityScriptName_00e9ff60.cpp'
+        TestSource = '00/e9/CEntityScriptBindingNScriptCVKnotholeGladeGatesScript_GetEntityScriptName_00e9ff60_test.cpp'
         PassPattern = 'PASS_00e9ff60'
     }
     [pscustomobject]@{
         Address = '00ea0010'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00ea0010_00ea0010.cpp'
-        TestSource = '00/ea/gapscan_sub00ea0010_00ea0010_test.cpp'
+        Module = 'NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside'
+        Source = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_GetParentScript_00ea0010.cpp'
+        TestSource = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_GetParentScript_00ea0010_test.cpp'
         PassPattern = 'PASS_00ea0010'
     }
     [pscustomobject]@{
         Address = '00ea0020'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00ea0020_00ea0020.cpp'
-        TestSource = '00/ea/gapscan_sub00ea0020_00ea0020_test.cpp'
+        Module = 'NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside'
+        Source = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_OnPersist_00ea0020.cpp'
+        TestSource = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_OnPersist_00ea0020_test.cpp'
         PassPattern = 'PASS_00ea0020'
     }
     [pscustomobject]@{
         Address = '00ea0060'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00ea0060_00ea0060.cpp'
-        TestSource = '00/ea/gapscan_sub00ea0060_00ea0060_test.cpp'
+        Module = 'NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside'
+        Source = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_OnPredicateFail_00ea0060.cpp'
+        TestSource = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_OnPredicateFail_00ea0060_test.cpp'
         PassPattern = 'PASS_00ea0060'
     }
     [pscustomobject]@{
         Address = '00ea0a90'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00ea0a90_00ea0a90.cpp'
-        TestSource = '00/ea/gapscan_sub00ea0a90_00ea0a90_test.cpp'
+        Module = 'NScript::CV_KnotholeGladeGatesScript::CKGG_SurpriseBalverine'
+        Source = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGSurpriseBalverine_GetParentScript_00ea0a90.cpp'
+        TestSource = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGSurpriseBalverine_GetParentScript_00ea0a90_test.cpp'
         PassPattern = 'PASS_00ea0a90'
     }
     [pscustomobject]@{
@@ -113160,23 +113160,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ea34e0'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00ea34e0_00ea34e0.cpp'
-        TestSource = '00/ea/gapscan_sub00ea34e0_00ea34e0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_LostTraderScript>'
+        Source = '00/ea/CEntityScriptBindingNScriptCVLostTraderScript_GetEntityScriptName_00ea34e0.cpp'
+        TestSource = '00/ea/CEntityScriptBindingNScriptCVLostTraderScript_GetEntityScriptName_00ea34e0_test.cpp'
         PassPattern = 'PASS_00ea34e0'
     }
     [pscustomobject]@{
         Address = '00ea3590'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00ea3590_00ea3590.cpp'
-        TestSource = '00/ea/gapscan_sub00ea3590_00ea3590_test.cpp'
+        Module = 'NScript::CV_LostTraderScript::CLostTraderTrader'
+        Source = '00/ea/NScriptCVLostTraderScriptCLostTraderTrader_GetParentScript_00ea3590.cpp'
+        TestSource = '00/ea/NScriptCVLostTraderScriptCLostTraderTrader_GetParentScript_00ea3590_test.cpp'
         PassPattern = 'PASS_00ea3590'
     }
     [pscustomobject]@{
         Address = '00ea51f0'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00ea51f0_00ea51f0.cpp'
-        TestSource = '00/ea/gapscan_sub00ea51f0_00ea51f0_test.cpp'
+        Module = 'NScript::CV_LostTraderScript::CLostTraderBanditSpawn'
+        Source = '00/ea/NScriptCVLostTraderScriptCLostTraderBanditSpawn_GetParentScript_00ea51f0.cpp'
+        TestSource = '00/ea/NScriptCVLostTraderScriptCLostTraderBanditSpawn_GetParentScript_00ea51f0_test.cpp'
         PassPattern = 'PASS_00ea51f0'
     }
     [pscustomobject]@{
@@ -113188,23 +113188,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ea7980'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00ea7980_00ea7980.cpp'
-        TestSource = '00/ea/gapscan_sub00ea7980_00ea7980_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_MazeResearchScript>'
+        Source = '00/ea/CEntityScriptBindingNScriptCVMazeResearchScript_GetEntityScriptName_00ea7980.cpp'
+        TestSource = '00/ea/CEntityScriptBindingNScriptCVMazeResearchScript_GetEntityScriptName_00ea7980_test.cpp'
         PassPattern = 'PASS_00ea7980'
     }
     [pscustomobject]@{
         Address = '00ea7a30'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00ea7a30_00ea7a30.cpp'
-        TestSource = '00/ea/gapscan_sub00ea7a30_00ea7a30_test.cpp'
+        Module = 'NScript::CV_MazeResearchScript::CEmptyGrave'
+        Source = '00/ea/NScriptCVMazeResearchScriptCEmptyGrave_GetParentScript_00ea7a30.cpp'
+        TestSource = '00/ea/NScriptCVMazeResearchScriptCEmptyGrave_GetParentScript_00ea7a30_test.cpp'
         PassPattern = 'PASS_00ea7a30'
     }
     [pscustomobject]@{
         Address = '00ea7b00'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00ea7b00_00ea7b00.cpp'
-        TestSource = '00/ea/gapscan_sub00ea7b00_00ea7b00_test.cpp'
+        Module = 'NScript::CV_MazeResearchScript::CHistoryBookcase'
+        Source = '00/ea/NScriptCVMazeResearchScriptCHistoryBookcase_GetParentScript_00ea7b00.cpp'
+        TestSource = '00/ea/NScriptCVMazeResearchScriptCHistoryBookcase_GetParentScript_00ea7b00_test.cpp'
         PassPattern = 'PASS_00ea7b00'
     }
     [pscustomobject]@{
@@ -113216,219 +113216,219 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ea8c10'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00ea8c10_00ea8c10.cpp'
-        TestSource = '00/ea/gapscan_sub00ea8c10_00ea8c10_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_MurderTwistScript>'
+        Source = '00/ea/CEntityScriptBindingNScriptCVMurderTwistScript_GetEntityScriptName_00ea8c10.cpp'
+        TestSource = '00/ea/CEntityScriptBindingNScriptCVMurderTwistScript_GetEntityScriptName_00ea8c10_test.cpp'
         PassPattern = 'PASS_00ea8c10'
     }
     [pscustomobject]@{
         Address = '00ea8ef0'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00ea8ef0_00ea8ef0.cpp'
-        TestSource = '00/ea/gapscan_sub00ea8ef0_00ea8ef0_test.cpp'
+        Module = 'NScript::CV_MurderTwistScript::CMurderTwistLeader'
+        Source = '00/ea/NScriptCVMurderTwistScriptCMurderTwistLeader_GetParentScript_00ea8ef0.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistLeader_GetParentScript_00ea8ef0_test.cpp'
         PassPattern = 'PASS_00ea8ef0'
     }
     [pscustomobject]@{
         Address = '00eaaee0'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00eaaee0_00eaaee0.cpp'
-        TestSource = '00/ea/gapscan_sub00eaaee0_00eaaee0_test.cpp'
+        Module = 'NScript::CV_MurderTwistScript::CMurderTwistBrotherYounger'
+        Source = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_GetParentScript_00eaaee0.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_GetParentScript_00eaaee0_test.cpp'
         PassPattern = 'PASS_00eaaee0'
     }
     [pscustomobject]@{
         Address = '00eaafb0'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00eaafb0_00eaafb0.cpp'
-        TestSource = '00/ea/gapscan_sub00eaafb0_00eaafb0_test.cpp'
+        Module = 'NScript::CV_MurderTwistScript::CMurderTwistBrother'
+        Source = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrother_GetParentScript_00eaafb0.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrother_GetParentScript_00eaafb0_test.cpp'
         PassPattern = 'PASS_00eaafb0'
     }
     [pscustomobject]@{
         Address = '00eabab0'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00eabab0_00eabab0.cpp'
-        TestSource = '00/ea/gapscan_sub00eabab0_00eabab0_test.cpp'
+        Module = 'NScript::CV_MurderTwistScript::CMurderTwistBrotherOlder'
+        Source = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlder_GetParentScript_00eabab0.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlder_GetParentScript_00eabab0_test.cpp'
         PassPattern = 'PASS_00eabab0'
     }
     [pscustomobject]@{
         Address = '00eabb00'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00eabb00_00eabb00.cpp'
-        TestSource = '00/ea/gapscan_sub00eabb00_00eabb00_test.cpp'
+        Module = 'NScript::CV_MurderTwistScript::CMurderTwistBrotherOlder'
+        Source = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlder_OnPredicateFail_00eabb00.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlder_OnPredicateFail_00eabb00_test.cpp'
         PassPattern = 'PASS_00eabb00'
     }
     [pscustomobject]@{
         Address = '00eac580'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00eac580_00eac580.cpp'
-        TestSource = '00/ea/gapscan_sub00eac580_00eac580_test.cpp'
+        Module = 'NScript::CV_MurderTwistScript::CMurderTwistBrotherFriend'
+        Source = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_GetParentScript_00eac580.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_GetParentScript_00eac580_test.cpp'
         PassPattern = 'PASS_00eac580'
     }
     [pscustomobject]@{
         Address = '00eace80'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00eace80_00eace80.cpp'
-        TestSource = '00/ea/gapscan_sub00eace80_00eace80_test.cpp'
+        Module = 'NScript::CV_MurderTwistScript::CMurderTwistBrotherOlderFriend'
+        Source = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlderFriend_GetParentScript_00eace80.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlderFriend_GetParentScript_00eace80_test.cpp'
         PassPattern = 'PASS_00eace80'
     }
     [pscustomobject]@{
         Address = '00eaced0'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00eaced0_00eaced0.cpp'
-        TestSource = '00/ea/gapscan_sub00eaced0_00eaced0_test.cpp'
+        Module = 'NScript::CV_MurderTwistScript::CMurderTwistBrotherOlderFriend'
+        Source = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlderFriend_OnPredicateFail_00eaced0.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlderFriend_OnPredicateFail_00eaced0_test.cpp'
         PassPattern = 'PASS_00eaced0'
     }
     [pscustomobject]@{
         Address = '00ead7d0'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00ead7d0_00ead7d0.cpp'
-        TestSource = '00/ea/gapscan_sub00ead7d0_00ead7d0_test.cpp'
+        Module = 'NScript::CV_MurderTwistScript::CMurderTwistBuriedGem'
+        Source = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBuriedGem_GetParentScript_00ead7d0.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBuriedGem_GetParentScript_00ead7d0_test.cpp'
         PassPattern = 'PASS_00ead7d0'
     }
     [pscustomobject]@{
         Address = '00eaed00'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00eaed00_00eaed00.cpp'
-        TestSource = '00/ea/gapscan_sub00eaed00_00eaed00_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_MurderTwistFinalScript>'
+        Source = '00/ea/CEntityScriptBindingNScriptCVMurderTwistFinalScript_GetEntityScriptName_00eaed00.cpp'
+        TestSource = '00/ea/CEntityScriptBindingNScriptCVMurderTwistFinalScript_GetEntityScriptName_00eaed00_test.cpp'
         PassPattern = 'PASS_00eaed00'
     }
     [pscustomobject]@{
         Address = '00eaee00'
-        Module = '_gapscan'
-        Source = '00/ea/gapscan_sub00eaee00_00eaee00.cpp'
-        TestSource = '00/ea/gapscan_sub00eaee00_00eaee00_test.cpp'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff'
+        Source = '00/ea/NScriptCVMurderTwistFinalScriptCMurderTwistSheriff_GetParentScript_00eaee00.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistFinalScriptCMurderTwistSheriff_GetParentScript_00eaee00_test.cpp'
         PassPattern = 'PASS_00eaee00'
     }
     [pscustomobject]@{
         Address = '00eb2060'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00eb2060_00eb2060.cpp'
-        TestSource = '00/eb/gapscan_sub00eb2060_00eb2060_test.cpp'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_GetParentScript_00eb2060.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_GetParentScript_00eb2060_test.cpp'
         PassPattern = 'PASS_00eb2060'
     }
     [pscustomobject]@{
         Address = '00eb3d00'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00eb3d00_00eb3d00.cpp'
-        TestSource = '00/eb/gapscan_sub00eb3d00_00eb3d00_test.cpp'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_GetParentScript_00eb3d00.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_GetParentScript_00eb3d00_test.cpp'
         PassPattern = 'PASS_00eb3d00'
     }
     [pscustomobject]@{
         Address = '00eb54f0'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00eb54f0_00eb54f0.cpp'
-        TestSource = '00/eb/gapscan_sub00eb54f0_00eb54f0_test.cpp'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassinGuard_GetParentScript_00eb54f0.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassinGuard_GetParentScript_00eb54f0_test.cpp'
         PassPattern = 'PASS_00eb54f0'
     }
     [pscustomobject]@{
         Address = '00eb70e0'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00eb70e0_00eb70e0.cpp'
-        TestSource = '00/eb/gapscan_sub00eb70e0_00eb70e0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_MayorsInvitationScript>'
+        Source = '00/eb/CEntityScriptBindingNScriptCVMayorsInvitationScript_GetEntityScriptName_00eb70e0.cpp'
+        TestSource = '00/eb/CEntityScriptBindingNScriptCVMayorsInvitationScript_GetEntityScriptName_00eb70e0_test.cpp'
         PassPattern = 'PASS_00eb70e0'
     }
     [pscustomobject]@{
         Address = '00eb7950'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00eb7950_00eb7950.cpp'
-        TestSource = '00/eb/gapscan_sub00eb7950_00eb7950_test.cpp'
+        Module = 'NScript::CV_MayorsInvitationScript::CLadyGrey'
+        Source = '00/eb/NScriptCVMayorsInvitationScriptCLadyGrey_GetParentScript_00eb7950.cpp'
+        TestSource = '00/eb/NScriptCVMayorsInvitationScriptCLadyGrey_GetParentScript_00eb7950_test.cpp'
         PassPattern = 'PASS_00eb7950'
     }
     [pscustomobject]@{
         Address = '00eb7a90'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00eb7a90_00eb7a90.cpp'
-        TestSource = '00/eb/gapscan_sub00eb7a90_00eb7a90_test.cpp'
+        Module = 'NScript::CV_MayorsInvitationScript::CWiseVillager'
+        Source = '00/eb/NScriptCVMayorsInvitationScriptCWiseVillager_GetParentScript_00eb7a90.cpp'
+        TestSource = '00/eb/NScriptCVMayorsInvitationScriptCWiseVillager_GetParentScript_00eb7a90_test.cpp'
         PassPattern = 'PASS_00eb7a90'
     }
     [pscustomobject]@{
         Address = '00eb88b0'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00eb88b0_00eb88b0.cpp'
-        TestSource = '00/eb/gapscan_sub00eb88b0_00eb88b0_test.cpp'
+        Module = 'NScript::CV_MayorsInvitationScript::CMI_InfoKeeper'
+        Source = '00/eb/NScriptCVMayorsInvitationScriptCMIInfoKeeper_GetParentScript_00eb88b0.cpp'
+        TestSource = '00/eb/NScriptCVMayorsInvitationScriptCMIInfoKeeper_GetParentScript_00eb88b0_test.cpp'
         PassPattern = 'PASS_00eb88b0'
     }
     [pscustomobject]@{
         Address = '00eb88d0'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00eb88d0_00eb88d0.cpp'
-        TestSource = '00/eb/gapscan_sub00eb88d0_00eb88d0_test.cpp'
+        Module = 'NScript::CV_MayorsInvitationScript::CMI_InfoKeeper'
+        Source = '00/eb/NScriptCVMayorsInvitationScriptCMIInfoKeeper_OnPredicateFail_00eb88d0.cpp'
+        TestSource = '00/eb/NScriptCVMayorsInvitationScriptCMIInfoKeeper_OnPredicateFail_00eb88d0_test.cpp'
         PassPattern = 'PASS_00eb88d0'
     }
     [pscustomobject]@{
         Address = '00ebce70'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00ebce70_00ebce70.cpp'
-        TestSource = '00/eb/gapscan_sub00ebce70_00ebce70_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_OracleScript>'
+        Source = '00/eb/CEntityScriptBindingNScriptCVOracleScript_GetEntityScriptName_00ebce70.cpp'
+        TestSource = '00/eb/CEntityScriptBindingNScriptCVOracleScript_GetEntityScriptName_00ebce70_test.cpp'
         PassPattern = 'PASS_00ebce70'
     }
     [pscustomobject]@{
         Address = '00ebcf20'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00ebcf20_00ebcf20.cpp'
-        TestSource = '00/eb/gapscan_sub00ebcf20_00ebcf20_test.cpp'
+        Module = 'NScript::CV_OracleScript::CVO_OracleMarker'
+        Source = '00/eb/NScriptCVOracleScriptCVOOracleMarker_GetParentScript_00ebcf20.cpp'
+        TestSource = '00/eb/NScriptCVOracleScriptCVOOracleMarker_GetParentScript_00ebcf20_test.cpp'
         PassPattern = 'PASS_00ebcf20'
     }
     [pscustomobject]@{
         Address = '00ebe5e0'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00ebe5e0_00ebe5e0.cpp'
-        TestSource = '00/eb/gapscan_sub00ebe5e0_00ebe5e0_test.cpp'
+        Module = 'NScript::CV_OracleScript::CVO_Woman'
+        Source = '00/eb/NScriptCVOracleScriptCVOWoman_GetParentScript_00ebe5e0.cpp'
+        TestSource = '00/eb/NScriptCVOracleScriptCVOWoman_GetParentScript_00ebe5e0_test.cpp'
         PassPattern = 'PASS_00ebe5e0'
     }
     [pscustomobject]@{
         Address = '00ebeed0'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00ebeed0_00ebeed0.cpp'
-        TestSource = '00/eb/gapscan_sub00ebeed0_00ebeed0_test.cpp'
+        Module = 'NScript::CV_ParanoidWhispersScript'
+        Source = '00/eb/NScriptCVParanoidWhispersScript_OnPersist_00ebeed0.cpp'
+        TestSource = '00/eb/NScriptCVParanoidWhispersScript_OnPersist_00ebeed0_test.cpp'
         PassPattern = 'PASS_00ebeed0'
     }
     [pscustomobject]@{
         Address = '00ebf1d0'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00ebf1d0_00ebf1d0.cpp'
-        TestSource = '00/eb/gapscan_sub00ebf1d0_00ebf1d0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_ParanoidWhispersScript>'
+        Source = '00/eb/CEntityScriptBindingNScriptCVParanoidWhispersScript_GetEntityScriptName_00ebf1d0.cpp'
+        TestSource = '00/eb/CEntityScriptBindingNScriptCVParanoidWhispersScript_GetEntityScriptName_00ebf1d0_test.cpp'
         PassPattern = 'PASS_00ebf1d0'
     }
     [pscustomobject]@{
         Address = '00ebfba0'
-        Module = '_gapscan'
-        Source = '00/eb/gapscan_sub00ebfba0_00ebfba0.cpp'
-        TestSource = '00/eb/gapscan_sub00ebfba0_00ebfba0_test.cpp'
+        Module = 'NScript::CV_ParanoidWhispersScript::CSecretWhisperingMan'
+        Source = '00/eb/NScriptCVParanoidWhispersScriptCSecretWhisperingMan_GetParentScript_00ebfba0.cpp'
+        TestSource = '00/eb/NScriptCVParanoidWhispersScriptCSecretWhisperingMan_GetParentScript_00ebfba0_test.cpp'
         PassPattern = 'PASS_00ebfba0'
     }
     [pscustomobject]@{
         Address = '00ec09a0'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec09a0_00ec09a0.cpp'
-        TestSource = '00/ec/gapscan_sub00ec09a0_00ec09a0_test.cpp'
+        Module = 'NScript::CV_ParanoidWhispersScript::CPW_NecklaceDiggingSpot'
+        Source = '00/ec/NScriptCVParanoidWhispersScriptCPWNecklaceDiggingSpot_GetParentScript_00ec09a0.cpp'
+        TestSource = '00/ec/NScriptCVParanoidWhispersScriptCPWNecklaceDiggingSpot_GetParentScript_00ec09a0_test.cpp'
         PassPattern = 'PASS_00ec09a0'
     }
     [pscustomobject]@{
         Address = '00ec09d0'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec09d0_00ec09d0.cpp'
-        TestSource = '00/ec/gapscan_sub00ec09d0_00ec09d0_test.cpp'
+        Module = 'NScript::CV_ParanoidWhispersScript::CPW_NecklaceDiggingSpot'
+        Source = '00/ec/NScriptCVParanoidWhispersScriptCPWNecklaceDiggingSpot_OnPredicateFail_00ec09d0.cpp'
+        TestSource = '00/ec/NScriptCVParanoidWhispersScriptCPWNecklaceDiggingSpot_OnPredicateFail_00ec09d0_test.cpp'
         PassPattern = 'PASS_00ec09d0'
     }
     [pscustomobject]@{
         Address = '00ec0af0'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec0af0_00ec0af0.cpp'
-        TestSource = '00/ec/gapscan_sub00ec0af0_00ec0af0_test.cpp'
+        Module = 'NScript::CV_ParanoidWhispersScript::CSecretWhisperingFriend'
+        Source = '00/ec/NScriptCVParanoidWhispersScriptCSecretWhisperingFriend_GetParentScript_00ec0af0.cpp'
+        TestSource = '00/ec/NScriptCVParanoidWhispersScriptCSecretWhisperingFriend_GetParentScript_00ec0af0_test.cpp'
         PassPattern = 'PASS_00ec0af0'
     }
     [pscustomobject]@{
         Address = '00ec13e0'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec13e0_00ec13e0.cpp'
-        TestSource = '00/ec/gapscan_sub00ec13e0_00ec13e0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_PicnicAreaAfterWaspBossScript>'
+        Source = '00/ec/CEntityScriptBindingNScriptCVPicnicAreaAfterWaspBossScript_GetEntityScriptName_00ec13e0.cpp'
+        TestSource = '00/ec/CEntityScriptBindingNScriptCVPicnicAreaAfterWaspBossScript_GetEntityScriptName_00ec13e0_test.cpp'
         PassPattern = 'PASS_00ec13e0'
     }
     [pscustomobject]@{
         Address = '00ec1490'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec1490_00ec1490.cpp'
-        TestSource = '00/ec/gapscan_sub00ec1490_00ec1490_test.cpp'
+        Module = 'NScript::CV_PicnicAreaAfterWaspBossScript::CPAAWB_Villager'
+        Source = '00/ec/NScriptCVPicnicAreaAfterWaspBossScriptCPAAWBVillager_GetParentScript_00ec1490.cpp'
+        TestSource = '00/ec/NScriptCVPicnicAreaAfterWaspBossScriptCPAAWBVillager_GetParentScript_00ec1490_test.cpp'
         PassPattern = 'PASS_00ec1490'
     }
     [pscustomobject]@{
@@ -113447,9 +113447,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ec1580'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec1580_00ec1580.cpp'
-        TestSource = '00/ec/gapscan_sub00ec1580_00ec1580_test.cpp'
+        Module = 'NScript::CV_PicnicAreaAfterWaspBossScript::CPAAWB_Guard'
+        Source = '00/ec/NScriptCVPicnicAreaAfterWaspBossScriptCPAAWBGuard_GetParentScript_00ec1580.cpp'
+        TestSource = '00/ec/NScriptCVPicnicAreaAfterWaspBossScriptCPAAWBGuard_GetParentScript_00ec1580_test.cpp'
         PassPattern = 'PASS_00ec1580'
     }
     [pscustomobject]@{
@@ -113468,37 +113468,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ec1840'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec1840_00ec1840.cpp'
-        TestSource = '00/ec/gapscan_sub00ec1840_00ec1840_test.cpp'
+        Module = 'NScript::CV_RandomPopulationSimScript'
+        Source = '00/ec/NScriptCVRandomPopulationSimScript_OnPersist_00ec1840.cpp'
+        TestSource = '00/ec/NScriptCVRandomPopulationSimScript_OnPersist_00ec1840_test.cpp'
         PassPattern = 'PASS_00ec1840'
     }
     [pscustomobject]@{
         Address = '00ec1b60'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec1b60_00ec1b60.cpp'
-        TestSource = '00/ec/gapscan_sub00ec1b60_00ec1b60_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_RandomPopulationSimScript>'
+        Source = '00/ec/CEntityScriptBindingNScriptCVRandomPopulationSimScript_GetEntityScriptName_00ec1b60.cpp'
+        TestSource = '00/ec/CEntityScriptBindingNScriptCVRandomPopulationSimScript_GetEntityScriptName_00ec1b60_test.cpp'
         PassPattern = 'PASS_00ec1b60'
     }
     [pscustomobject]@{
         Address = '00ec1c10'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec1c10_00ec1c10.cpp'
-        TestSource = '00/ec/gapscan_sub00ec1c10_00ec1c10_test.cpp'
+        Module = 'NScript::CV_RandomPopulationSimScript::CRandomPopulationCreature'
+        Source = '00/ec/NScriptCVRandomPopulationSimScriptCRandomPopulationCreature_GetParentScript_00ec1c10.cpp'
+        TestSource = '00/ec/NScriptCVRandomPopulationSimScriptCRandomPopulationCreature_GetParentScript_00ec1c10_test.cpp'
         PassPattern = 'PASS_00ec1c10'
     }
     [pscustomobject]@{
         Address = '00ec41e0'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec41e0_00ec41e0.cpp'
-        TestSource = '00/ec/gapscan_sub00ec41e0_00ec41e0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_RockTrollFirstEncounterScript>'
+        Source = '00/ec/CEntityScriptBindingNScriptCVRockTrollFirstEncounterScript_GetEntityScriptName_00ec41e0.cpp'
+        TestSource = '00/ec/CEntityScriptBindingNScriptCVRockTrollFirstEncounterScript_GetEntityScriptName_00ec41e0_test.cpp'
         PassPattern = 'PASS_00ec41e0'
     }
     [pscustomobject]@{
         Address = '00ec4290'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec4290_00ec4290.cpp'
-        TestSource = '00/ec/gapscan_sub00ec4290_00ec4290_test.cpp'
+        Module = 'NScript::CV_RockTrollFirstEncounterScript::CM_RTFERockTrollTrigger'
+        Source = '00/ec/NScriptCVRockTrollFirstEncounterScriptCMRTFERockTrollTrigger_GetParentScript_00ec4290.cpp'
+        TestSource = '00/ec/NScriptCVRockTrollFirstEncounterScriptCMRTFERockTrollTrigger_GetParentScript_00ec4290_test.cpp'
         PassPattern = 'PASS_00ec4290'
     }
     [pscustomobject]@{
@@ -113510,37 +113510,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ec42b0'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec42b0_00ec42b0.cpp'
-        TestSource = '00/ec/gapscan_sub00ec42b0_00ec42b0_test.cpp'
+        Module = 'NScript::CV_RockTrollFirstEncounterScript::CM_RTFERockTrollTrigger'
+        Source = '00/ec/NScriptCVRockTrollFirstEncounterScriptCMRTFERockTrollTrigger_OnPersist_00ec42b0.cpp'
+        TestSource = '00/ec/NScriptCVRockTrollFirstEncounterScriptCMRTFERockTrollTrigger_OnPersist_00ec42b0_test.cpp'
         PassPattern = 'PASS_00ec42b0'
     }
     [pscustomobject]@{
         Address = '00ec42c0'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec42c0_00ec42c0.cpp'
-        TestSource = '00/ec/gapscan_sub00ec42c0_00ec42c0_test.cpp'
+        Module = 'NScript::CV_RockTrollFirstEncounterScript::CM_RTFERockTrollTrigger'
+        Source = '00/ec/NScriptCVRockTrollFirstEncounterScriptCMRTFERockTrollTrigger_OnPredicateFail_00ec42c0.cpp'
+        TestSource = '00/ec/NScriptCVRockTrollFirstEncounterScriptCMRTFERockTrollTrigger_OnPredicateFail_00ec42c0_test.cpp'
         PassPattern = 'PASS_00ec42c0'
     }
     [pscustomobject]@{
         Address = '00ec4530'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec4530_00ec4530.cpp'
-        TestSource = '00/ec/gapscan_sub00ec4530_00ec4530_test.cpp'
+        Module = 'NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll'
+        Source = '00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_GetParentScript_00ec4530.cpp'
+        TestSource = '00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_GetParentScript_00ec4530_test.cpp'
         PassPattern = 'PASS_00ec4530'
     }
     [pscustomobject]@{
         Address = '00ec4590'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec4590_00ec4590.cpp'
-        TestSource = '00/ec/gapscan_sub00ec4590_00ec4590_test.cpp'
+        Module = 'NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll'
+        Source = '00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_OnPredicateFail_00ec4590.cpp'
+        TestSource = '00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_OnPredicateFail_00ec4590_test.cpp'
         PassPattern = 'PASS_00ec4590'
     }
     [pscustomobject]@{
         Address = '00ec4660'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec4660_00ec4660.cpp'
-        TestSource = '00/ec/gapscan_sub00ec4660_00ec4660_test.cpp'
+        Module = 'NScript::CV_RockTrollFirstEncounterScript::CRTFE_Sparrow'
+        Source = '00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFESparrow_GetParentScript_00ec4660.cpp'
+        TestSource = '00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFESparrow_GetParentScript_00ec4660_test.cpp'
         PassPattern = 'PASS_00ec4660'
     }
     [pscustomobject]@{
@@ -113552,86 +113552,86 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ec4680'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec4680_00ec4680.cpp'
-        TestSource = '00/ec/gapscan_sub00ec4680_00ec4680_test.cpp'
+        Module = 'NScript::CV_RockTrollFirstEncounterScript::CRTFE_Sparrow'
+        Source = '00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFESparrow_OnPredicateFail_00ec4680.cpp'
+        TestSource = '00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFESparrow_OnPredicateFail_00ec4680_test.cpp'
         PassPattern = 'PASS_00ec4680'
     }
     [pscustomobject]@{
         Address = '00ec5bb0'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec5bb0_00ec5bb0.cpp'
-        TestSource = '00/ec/gapscan_sub00ec5bb0_00ec5bb0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_SickChildScript>'
+        Source = '00/ec/CEntityScriptBindingNScriptCVSickChildScript_GetEntityScriptName_00ec5bb0.cpp'
+        TestSource = '00/ec/CEntityScriptBindingNScriptCVSickChildScript_GetEntityScriptName_00ec5bb0_test.cpp'
         PassPattern = 'PASS_00ec5bb0'
     }
     [pscustomobject]@{
         Address = '00ec5c60'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec5c60_00ec5c60.cpp'
-        TestSource = '00/ec/gapscan_sub00ec5c60_00ec5c60_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CSickChildsMother'
+        Source = '00/ec/NScriptCVSickChildScriptCSickChildsMother_GetParentScript_00ec5c60.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCSickChildsMother_GetParentScript_00ec5c60_test.cpp'
         PassPattern = 'PASS_00ec5c60'
     }
     [pscustomobject]@{
         Address = '00ec5d70'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec5d70_00ec5d70.cpp'
-        TestSource = '00/ec/gapscan_sub00ec5d70_00ec5d70_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CSickChild'
+        Source = '00/ec/NScriptCVSickChildScriptCSickChild_GetParentScript_00ec5d70.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCSickChild_GetParentScript_00ec5d70_test.cpp'
         PassPattern = 'PASS_00ec5d70'
     }
     [pscustomobject]@{
         Address = '00ec6850'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec6850_00ec6850.cpp'
-        TestSource = '00/ec/gapscan_sub00ec6850_00ec6850_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CSickChildsSister'
+        Source = '00/ec/NScriptCVSickChildScriptCSickChildsSister_GetParentScript_00ec6850.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCSickChildsSister_GetParentScript_00ec6850_test.cpp'
         PassPattern = 'PASS_00ec6850'
     }
     [pscustomobject]@{
         Address = '00ec8090'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec8090_00ec8090.cpp'
-        TestSource = '00/ec/gapscan_sub00ec8090_00ec8090_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CWitch'
+        Source = '00/ec/NScriptCVSickChildScriptCWitch_GetParentScript_00ec8090.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCWitch_GetParentScript_00ec8090_test.cpp'
         PassPattern = 'PASS_00ec8090'
     }
     [pscustomobject]@{
         Address = '00ec8200'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec8200_00ec8200.cpp'
-        TestSource = '00/ec/gapscan_sub00ec8200_00ec8200_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CManInLove'
+        Source = '00/ec/NScriptCVSickChildScriptCManInLove_GetParentScript_00ec8200.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCManInLove_GetParentScript_00ec8200_test.cpp'
         PassPattern = 'PASS_00ec8200'
     }
     [pscustomobject]@{
         Address = '00ec9ca0'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ec9ca0_00ec9ca0.cpp'
-        TestSource = '00/ec/gapscan_sub00ec9ca0_00ec9ca0_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CMansLover'
+        Source = '00/ec/NScriptCVSickChildScriptCMansLover_GetParentScript_00ec9ca0.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCMansLover_GetParentScript_00ec9ca0_test.cpp'
         PassPattern = 'PASS_00ec9ca0'
     }
     [pscustomobject]@{
         Address = '00ecb040'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ecb040_00ecb040.cpp'
-        TestSource = '00/ec/gapscan_sub00ecb040_00ecb040_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CIngredientOwner'
+        Source = '00/ec/NScriptCVSickChildScriptCIngredientOwner_GetParentScript_00ecb040.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCIngredientOwner_GetParentScript_00ecb040_test.cpp'
         PassPattern = 'PASS_00ecb040'
     }
     [pscustomobject]@{
         Address = '00ecbd20'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ecbd20_00ecbd20.cpp'
-        TestSource = '00/ec/gapscan_sub00ecbd20_00ecbd20_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CTalkingTrader1'
+        Source = '00/ec/NScriptCVSickChildScriptCTalkingTrader1_GetParentScript_00ecbd20.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCTalkingTrader1_GetParentScript_00ecbd20_test.cpp'
         PassPattern = 'PASS_00ecbd20'
     }
     [pscustomobject]@{
         Address = '00ecd370'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ecd370_00ecd370.cpp'
-        TestSource = '00/ec/gapscan_sub00ecd370_00ecd370_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CWomanToAttract'
+        Source = '00/ec/NScriptCVSickChildScriptCWomanToAttract_GetParentScript_00ecd370.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCWomanToAttract_GetParentScript_00ecd370_test.cpp'
         PassPattern = 'PASS_00ecd370'
     }
     [pscustomobject]@{
         Address = '00ecd4f0'
-        Module = '_gapscan'
-        Source = '00/ec/gapscan_sub00ecd4f0_00ecd4f0.cpp'
-        TestSource = '00/ec/gapscan_sub00ecd4f0_00ecd4f0_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CSickChildFishingSpot'
+        Source = '00/ec/NScriptCVSickChildScriptCSickChildFishingSpot_GetParentScript_00ecd4f0.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCSickChildFishingSpot_GetParentScript_00ecd4f0_test.cpp'
         PassPattern = 'PASS_00ecd4f0'
     }
     [pscustomobject]@{
@@ -113643,23 +113643,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ed13a0'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00ed13a0_00ed13a0.cpp'
-        TestSource = '00/ed/gapscan_sub00ed13a0_00ed13a0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_SingingStonesScript>'
+        Source = '00/ed/CEntityScriptBindingNScriptCVSingingStonesScript_GetEntityScriptName_00ed13a0.cpp'
+        TestSource = '00/ed/CEntityScriptBindingNScriptCVSingingStonesScript_GetEntityScriptName_00ed13a0_test.cpp'
         PassPattern = 'PASS_00ed13a0'
     }
     [pscustomobject]@{
         Address = '00ed14c0'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00ed14c0_00ed14c0.cpp'
-        TestSource = '00/ed/gapscan_sub00ed14c0_00ed14c0_test.cpp'
+        Module = 'NScript::CV_SingingStonesScript::CSingingStone'
+        Source = '00/ed/NScriptCVSingingStonesScriptCSingingStone_GetParentScript_00ed14c0.cpp'
+        TestSource = '00/ed/NScriptCVSingingStonesScriptCSingingStone_GetParentScript_00ed14c0_test.cpp'
         PassPattern = 'PASS_00ed14c0'
     }
     [pscustomobject]@{
         Address = '00ed14d0'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00ed14d0_00ed14d0.cpp'
-        TestSource = '00/ed/gapscan_sub00ed14d0_00ed14d0_test.cpp'
+        Module = 'NScript::CV_SingingStonesScript::CSingingStone'
+        Source = '00/ed/NScriptCVSingingStonesScriptCSingingStone_OnPersist_00ed14d0.cpp'
+        TestSource = '00/ed/NScriptCVSingingStonesScriptCSingingStone_OnPersist_00ed14d0_test.cpp'
         PassPattern = 'PASS_00ed14d0'
     }
     [pscustomobject]@{
@@ -113671,23 +113671,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ed40b0'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00ed40b0_00ed40b0.cpp'
-        TestSource = '00/ed/gapscan_sub00ed40b0_00ed40b0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_StatueMasterScript>'
+        Source = '00/ed/CEntityScriptBindingNScriptCVStatueMasterScript_GetEntityScriptName_00ed40b0.cpp'
+        TestSource = '00/ed/CEntityScriptBindingNScriptCVStatueMasterScript_GetEntityScriptName_00ed40b0_test.cpp'
         PassPattern = 'PASS_00ed40b0'
     }
     [pscustomobject]@{
         Address = '00ed4160'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00ed4160_00ed4160.cpp'
-        TestSource = '00/ed/gapscan_sub00ed4160_00ed4160_test.cpp'
+        Module = 'NScript::CV_StatueMasterScript::CStatueMasterStatue'
+        Source = '00/ed/NScriptCVStatueMasterScriptCStatueMasterStatue_GetParentScript_00ed4160.cpp'
+        TestSource = '00/ed/NScriptCVStatueMasterScriptCStatueMasterStatue_GetParentScript_00ed4160_test.cpp'
         PassPattern = 'PASS_00ed4160'
     }
     [pscustomobject]@{
         Address = '00ed4560'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00ed4560_00ed4560.cpp'
-        TestSource = '00/ed/gapscan_sub00ed4560_00ed4560_test.cpp'
+        Module = 'NScript::CV_StatueMasterScript::CStatueMasterCellarDoors'
+        Source = '00/ed/NScriptCVStatueMasterScriptCStatueMasterCellarDoors_GetParentScript_00ed4560.cpp'
+        TestSource = '00/ed/NScriptCVStatueMasterScriptCStatueMasterCellarDoors_GetParentScript_00ed4560_test.cpp'
         PassPattern = 'PASS_00ed4560'
     }
     [pscustomobject]@{
@@ -113699,9 +113699,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ed4810'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00ed4810_00ed4810.cpp'
-        TestSource = '00/ed/gapscan_sub00ed4810_00ed4810_test.cpp'
+        Module = 'NScript::CV_StatueMasterScript::CStatueMasterChest'
+        Source = '00/ed/NScriptCVStatueMasterScriptCStatueMasterChest_GetParentScript_00ed4810.cpp'
+        TestSource = '00/ed/NScriptCVStatueMasterScriptCStatueMasterChest_GetParentScript_00ed4810_test.cpp'
         PassPattern = 'PASS_00ed4810'
     }
     [pscustomobject]@{
@@ -113713,30 +113713,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ed5120'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00ed5120_00ed5120.cpp'
-        TestSource = '00/ed/gapscan_sub00ed5120_00ed5120_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_SwordInTheStoneScript>'
+        Source = '00/ed/CEntityScriptBindingNScriptCVSwordInTheStoneScript_GetEntityScriptName_00ed5120.cpp'
+        TestSource = '00/ed/CEntityScriptBindingNScriptCVSwordInTheStoneScript_GetEntityScriptName_00ed5120_test.cpp'
         PassPattern = 'PASS_00ed5120'
     }
     [pscustomobject]@{
         Address = '00ed51d0'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00ed51d0_00ed51d0.cpp'
-        TestSource = '00/ed/gapscan_sub00ed51d0_00ed51d0_test.cpp'
+        Module = 'NScript::CV_SwordInTheStoneScript::CSwordOfStrength'
+        Source = '00/ed/NScriptCVSwordInTheStoneScriptCSwordOfStrength_GetParentScript_00ed51d0.cpp'
+        TestSource = '00/ed/NScriptCVSwordInTheStoneScriptCSwordOfStrength_GetParentScript_00ed51d0_test.cpp'
         PassPattern = 'PASS_00ed51d0'
     }
     [pscustomobject]@{
         Address = '00ed5230'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00ed5230_00ed5230.cpp'
-        TestSource = '00/ed/gapscan_sub00ed5230_00ed5230_test.cpp'
+        Module = 'NScript::CV_SwordInTheStoneScript::CSwordOfStrength'
+        Source = '00/ed/NScriptCVSwordInTheStoneScriptCSwordOfStrength_OnPredicateFail_00ed5230.cpp'
+        TestSource = '00/ed/NScriptCVSwordInTheStoneScriptCSwordOfStrength_OnPredicateFail_00ed5230_test.cpp'
         PassPattern = 'PASS_00ed5230'
     }
     [pscustomobject]@{
         Address = '00ed5300'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00ed5300_00ed5300.cpp'
-        TestSource = '00/ed/gapscan_sub00ed5300_00ed5300_test.cpp'
+        Module = 'NScript::CV_SwordInTheStoneScript::CSwordCrowd'
+        Source = '00/ed/NScriptCVSwordInTheStoneScriptCSwordCrowd_GetParentScript_00ed5300.cpp'
+        TestSource = '00/ed/NScriptCVSwordInTheStoneScriptCSwordCrowd_GetParentScript_00ed5300_test.cpp'
         PassPattern = 'PASS_00ed5300'
     }
     [pscustomobject]@{
@@ -113748,9 +113748,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ed7a30'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00ed7a30_00ed7a30.cpp'
-        TestSource = '00/ed/gapscan_sub00ed7a30_00ed7a30_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_TalentlessBardScript>'
+        Source = '00/ed/CEntityScriptBindingNScriptCVTalentlessBardScript_GetEntityScriptName_00ed7a30.cpp'
+        TestSource = '00/ed/CEntityScriptBindingNScriptCVTalentlessBardScript_GetEntityScriptName_00ed7a30_test.cpp'
         PassPattern = 'PASS_00ed7a30'
     }
     [pscustomobject]@{
@@ -113762,44 +113762,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ed80f0'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00ed80f0_00ed80f0.cpp'
-        TestSource = '00/ed/gapscan_sub00ed80f0_00ed80f0_test.cpp'
+        Module = 'NScript::CV_TalentlessBardScript::CTB_BardSpawnPoint'
+        Source = '00/ed/NScriptCVTalentlessBardScriptCTBBardSpawnPoint_GetParentScript_00ed80f0.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScriptCTBBardSpawnPoint_GetParentScript_00ed80f0_test.cpp'
         PassPattern = 'PASS_00ed80f0'
     }
     [pscustomobject]@{
         Address = '00edbd70'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00edbd70_00edbd70.cpp'
-        TestSource = '00/ed/gapscan_sub00edbd70_00edbd70_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_TempleOfLightScript>'
+        Source = '00/ed/CEntityScriptBindingNScriptCVTempleOfLightScript_GetEntityScriptName_00edbd70.cpp'
+        TestSource = '00/ed/CEntityScriptBindingNScriptCVTempleOfLightScript_GetEntityScriptName_00edbd70_test.cpp'
         PassPattern = 'PASS_00edbd70'
     }
     [pscustomobject]@{
         Address = '00edc270'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00edc270_00edc270.cpp'
-        TestSource = '00/ed/gapscan_sub00edc270_00edc270_test.cpp'
+        Module = 'NScript::CV_TempleOfLightScript::CTOL_AcolyteGood'
+        Source = '00/ed/NScriptCVTempleOfLightScriptCTOLAcolyteGood_GetParentScript_00edc270.cpp'
+        TestSource = '00/ed/NScriptCVTempleOfLightScriptCTOLAcolyteGood_GetParentScript_00edc270_test.cpp'
         PassPattern = 'PASS_00edc270'
     }
     [pscustomobject]@{
         Address = '00edc280'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00edc280_00edc280.cpp'
-        TestSource = '00/ed/gapscan_sub00edc280_00edc280_test.cpp'
+        Module = 'NScript::CV_TempleOfLightScript::CTOL_AcolyteGood'
+        Source = '00/ed/NScriptCVTempleOfLightScriptCTOLAcolyteGood_OnPersist_00edc280.cpp'
+        TestSource = '00/ed/NScriptCVTempleOfLightScriptCTOLAcolyteGood_OnPersist_00edc280_test.cpp'
         PassPattern = 'PASS_00edc280'
     }
     [pscustomobject]@{
         Address = '00edc290'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00edc290_00edc290.cpp'
-        TestSource = '00/ed/gapscan_sub00edc290_00edc290_test.cpp'
+        Module = 'NScript::CV_TempleOfLightScript::CTOL_AcolyteGood'
+        Source = '00/ed/NScriptCVTempleOfLightScriptCTOLAcolyteGood_OnPredicateFail_00edc290.cpp'
+        TestSource = '00/ed/NScriptCVTempleOfLightScriptCTOLAcolyteGood_OnPredicateFail_00edc290_test.cpp'
         PassPattern = 'PASS_00edc290'
     }
     [pscustomobject]@{
         Address = '00edc370'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00edc370_00edc370.cpp'
-        TestSource = '00/ed/gapscan_sub00edc370_00edc370_test.cpp'
+        Module = 'NScript::CV_TempleOfLightScript::CTOL_AltarGood'
+        Source = '00/ed/NScriptCVTempleOfLightScriptCTOLAltarGood_GetParentScript_00edc370.cpp'
+        TestSource = '00/ed/NScriptCVTempleOfLightScriptCTOLAltarGood_GetParentScript_00edc370_test.cpp'
         PassPattern = 'PASS_00edc370'
     }
     [pscustomobject]@{
@@ -113811,16 +113811,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00edf2a0'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00edf2a0_00edf2a0.cpp'
-        TestSource = '00/ed/gapscan_sub00edf2a0_00edf2a0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_TravellingHeroesScript>'
+        Source = '00/ed/CEntityScriptBindingNScriptCVTravellingHeroesScript_GetEntityScriptName_00edf2a0.cpp'
+        TestSource = '00/ed/CEntityScriptBindingNScriptCVTravellingHeroesScript_GetEntityScriptName_00edf2a0_test.cpp'
         PassPattern = 'PASS_00edf2a0'
     }
     [pscustomobject]@{
         Address = '00edf350'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00edf350_00edf350.cpp'
-        TestSource = '00/ed/gapscan_sub00edf350_00edf350_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_ThunderBoy'
+        Source = '00/ed/NScriptCVTravellingHeroesScriptCTHThunderBoy_GetParentScript_00edf350.cpp'
+        TestSource = '00/ed/NScriptCVTravellingHeroesScriptCTHThunderBoy_GetParentScript_00edf350_test.cpp'
         PassPattern = 'PASS_00edf350'
     }
     [pscustomobject]@{
@@ -113832,16 +113832,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00edf370'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00edf370_00edf370.cpp'
-        TestSource = '00/ed/gapscan_sub00edf370_00edf370_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_ThunderBoy'
+        Source = '00/ed/NScriptCVTravellingHeroesScriptCTHThunderBoy_OnPredicateFail_00edf370.cpp'
+        TestSource = '00/ed/NScriptCVTravellingHeroesScriptCTHThunderBoy_OnPredicateFail_00edf370_test.cpp'
         PassPattern = 'PASS_00edf370'
     }
     [pscustomobject]@{
         Address = '00edf9b0'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00edf9b0_00edf9b0.cpp'
-        TestSource = '00/ed/gapscan_sub00edf9b0_00edf9b0_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_ThunderGirl'
+        Source = '00/ed/NScriptCVTravellingHeroesScriptCTHThunderGirl_GetParentScript_00edf9b0.cpp'
+        TestSource = '00/ed/NScriptCVTravellingHeroesScriptCTHThunderGirl_GetParentScript_00edf9b0_test.cpp'
         PassPattern = 'PASS_00edf9b0'
     }
     [pscustomobject]@{
@@ -113853,16 +113853,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00edf9d0'
-        Module = '_gapscan'
-        Source = '00/ed/gapscan_sub00edf9d0_00edf9d0.cpp'
-        TestSource = '00/ed/gapscan_sub00edf9d0_00edf9d0_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_ThunderGirl'
+        Source = '00/ed/NScriptCVTravellingHeroesScriptCTHThunderGirl_OnPredicateFail_00edf9d0.cpp'
+        TestSource = '00/ed/NScriptCVTravellingHeroesScriptCTHThunderGirl_OnPredicateFail_00edf9d0_test.cpp'
         PassPattern = 'PASS_00edf9d0'
     }
     [pscustomobject]@{
         Address = '00ee0010'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee0010_00ee0010.cpp'
-        TestSource = '00/ee/gapscan_sub00ee0010_00ee0010_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Thunder'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHThunder_GetParentScript_00ee0010.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHThunder_GetParentScript_00ee0010_test.cpp'
         PassPattern = 'PASS_00ee0010'
     }
     [pscustomobject]@{
@@ -113881,9 +113881,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee0100'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee0100_00ee0100.cpp'
-        TestSource = '00/ee/gapscan_sub00ee0100_00ee0100_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Maze'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHMaze_GetParentScript_00ee0100.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHMaze_GetParentScript_00ee0100_test.cpp'
         PassPattern = 'PASS_00ee0100'
     }
     [pscustomobject]@{
@@ -113895,16 +113895,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee0120'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee0120_00ee0120.cpp'
-        TestSource = '00/ee/gapscan_sub00ee0120_00ee0120_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Maze'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHMaze_OnPredicateFail_00ee0120.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHMaze_OnPredicateFail_00ee0120_test.cpp'
         PassPattern = 'PASS_00ee0120'
     }
     [pscustomobject]@{
         Address = '00ee01f0'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee01f0_00ee01f0.cpp'
-        TestSource = '00/ee/gapscan_sub00ee01f0_00ee01f0_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Whisper'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHWhisper_GetParentScript_00ee01f0.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHWhisper_GetParentScript_00ee01f0_test.cpp'
         PassPattern = 'PASS_00ee01f0'
     }
     [pscustomobject]@{
@@ -113916,16 +113916,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee0210'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee0210_00ee0210.cpp'
-        TestSource = '00/ee/gapscan_sub00ee0210_00ee0210_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Whisper'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHWhisper_OnPredicateFail_00ee0210.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHWhisper_OnPredicateFail_00ee0210_test.cpp'
         PassPattern = 'PASS_00ee0210'
     }
     [pscustomobject]@{
         Address = '00ee0330'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee0330_00ee0330.cpp'
-        TestSource = '00/ee/gapscan_sub00ee0330_00ee0330_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_SnowTroll'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHSnowTroll_GetParentScript_00ee0330.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHSnowTroll_GetParentScript_00ee0330_test.cpp'
         PassPattern = 'PASS_00ee0330'
     }
     [pscustomobject]@{
@@ -113937,23 +113937,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee0480'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee0480_00ee0480.cpp'
-        TestSource = '00/ee/gapscan_sub00ee0480_00ee0480_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Maze'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_GetParentScript_00ee0480.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_GetParentScript_00ee0480_test.cpp'
         PassPattern = 'PASS_00ee0480'
     }
     [pscustomobject]@{
         Address = '00ee04a0'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee04a0_00ee04a0.cpp'
-        TestSource = '00/ee/gapscan_sub00ee04a0_00ee04a0_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Maze'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_OnPredicateFail_00ee04a0.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_OnPredicateFail_00ee04a0_test.cpp'
         PassPattern = 'PASS_00ee04a0'
     }
     [pscustomobject]@{
         Address = '00ee0570'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee0570_00ee0570.cpp'
-        TestSource = '00/ee/gapscan_sub00ee0570_00ee0570_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Rose'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildRose_GetParentScript_00ee0570.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildRose_GetParentScript_00ee0570_test.cpp'
         PassPattern = 'PASS_00ee0570'
     }
     [pscustomobject]@{
@@ -113965,16 +113965,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee0590'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee0590_00ee0590.cpp'
-        TestSource = '00/ee/gapscan_sub00ee0590_00ee0590_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Rose'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildRose_OnPredicateFail_00ee0590.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildRose_OnPredicateFail_00ee0590_test.cpp'
         PassPattern = 'PASS_00ee0590'
     }
     [pscustomobject]@{
         Address = '00ee0660'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee0660_00ee0660.cpp'
-        TestSource = '00/ee/gapscan_sub00ee0660_00ee0660_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Oakvale_Gossip'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvaleGossip_GetParentScript_00ee0660.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvaleGossip_GetParentScript_00ee0660_test.cpp'
         PassPattern = 'PASS_00ee0660'
     }
     [pscustomobject]@{
@@ -113986,16 +113986,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee0680'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee0680_00ee0680.cpp'
-        TestSource = '00/ee/gapscan_sub00ee0680_00ee0680_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Oakvale_Gossip'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvaleGossip_OnPredicateFail_00ee0680.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvaleGossip_OnPredicateFail_00ee0680_test.cpp'
         PassPattern = 'PASS_00ee0680'
     }
     [pscustomobject]@{
         Address = '00ee09d0'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee09d0_00ee09d0.cpp'
-        TestSource = '00/ee/gapscan_sub00ee09d0_00ee09d0_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Oakvale'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvale_GetParentScript_00ee09d0.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvale_GetParentScript_00ee09d0_test.cpp'
         PassPattern = 'PASS_00ee09d0'
     }
     [pscustomobject]@{
@@ -114007,9 +114007,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee09f0'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee09f0_00ee09f0.cpp'
-        TestSource = '00/ee/gapscan_sub00ee09f0_00ee09f0_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Oakvale'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvale_OnPredicateFail_00ee09f0.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvale_OnPredicateFail_00ee09f0_test.cpp'
         PassPattern = 'PASS_00ee09f0'
     }
     [pscustomobject]@{
@@ -114021,23 +114021,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee0c20'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee0c20_00ee0c20.cpp'
-        TestSource = '00/ee/gapscan_sub00ee0c20_00ee0c20_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Bowerstone'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerBowerstone_OnPredicateFail_00ee0c20.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerBowerstone_OnPredicateFail_00ee0c20_test.cpp'
         PassPattern = 'PASS_00ee0c20'
     }
     [pscustomobject]@{
         Address = '00ee14a0'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee14a0_00ee14a0.cpp'
-        TestSource = '00/ee/gapscan_sub00ee14a0_00ee14a0_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_MagicBarrier'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHMagicBarrier_GetParentScript_00ee14a0.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHMagicBarrier_GetParentScript_00ee14a0_test.cpp'
         PassPattern = 'PASS_00ee14a0'
     }
     [pscustomobject]@{
         Address = '00ee1b90'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee1b90_00ee1b90.cpp'
-        TestSource = '00/ee/gapscan_sub00ee1b90_00ee1b90_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Trigger_NorthernWastes'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerNorthernWastes_GetParentScript_00ee1b90.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerNorthernWastes_GetParentScript_00ee1b90_test.cpp'
         PassPattern = 'PASS_00ee1b90'
     }
     [pscustomobject]@{
@@ -114049,58 +114049,58 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee1bb0'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee1bb0_00ee1bb0.cpp'
-        TestSource = '00/ee/gapscan_sub00ee1bb0_00ee1bb0_test.cpp'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Trigger_NorthernWastes'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerNorthernWastes_OnPredicateFail_00ee1bb0.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerNorthernWastes_OnPredicateFail_00ee1bb0_test.cpp'
         PassPattern = 'PASS_00ee1bb0'
     }
     [pscustomobject]@{
         Address = '00ee49f0'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee49f0_00ee49f0.cpp'
-        TestSource = '00/ee/gapscan_sub00ee49f0_00ee49f0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_TourGuideScript>'
+        Source = '00/ee/CEntityScriptBindingNScriptCVTourGuideScript_GetEntityScriptName_00ee49f0.cpp'
+        TestSource = '00/ee/CEntityScriptBindingNScriptCVTourGuideScript_GetEntityScriptName_00ee49f0_test.cpp'
         PassPattern = 'PASS_00ee49f0'
     }
     [pscustomobject]@{
         Address = '00ee4c50'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee4c50_00ee4c50.cpp'
-        TestSource = '00/ee/gapscan_sub00ee4c50_00ee4c50_test.cpp'
+        Module = 'NScript::CV_TourGuideScript::CTourGuideGuide'
+        Source = '00/ee/NScriptCVTourGuideScriptCTourGuideGuide_GetParentScript_00ee4c50.cpp'
+        TestSource = '00/ee/NScriptCVTourGuideScriptCTourGuideGuide_GetParentScript_00ee4c50_test.cpp'
         PassPattern = 'PASS_00ee4c50'
     }
     [pscustomobject]@{
         Address = '00ee4cc0'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee4cc0_00ee4cc0.cpp'
-        TestSource = '00/ee/gapscan_sub00ee4cc0_00ee4cc0_test.cpp'
+        Module = 'NScript::CV_TourGuideScript::CTourGuideGuide'
+        Source = '00/ee/NScriptCVTourGuideScriptCTourGuideGuide_OnPredicateFail_00ee4cc0.cpp'
+        TestSource = '00/ee/NScriptCVTourGuideScriptCTourGuideGuide_OnPredicateFail_00ee4cc0_test.cpp'
         PassPattern = 'PASS_00ee4cc0'
     }
     [pscustomobject]@{
         Address = '00ee4d90'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee4d90_00ee4d90.cpp'
-        TestSource = '00/ee/gapscan_sub00ee4d90_00ee4d90_test.cpp'
+        Module = 'NScript::CV_TourGuideScript::CTourGuideFollower'
+        Source = '00/ee/NScriptCVTourGuideScriptCTourGuideFollower_GetParentScript_00ee4d90.cpp'
+        TestSource = '00/ee/NScriptCVTourGuideScriptCTourGuideFollower_GetParentScript_00ee4d90_test.cpp'
         PassPattern = 'PASS_00ee4d90'
     }
     [pscustomobject]@{
         Address = '00ee7190'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee7190_00ee7190.cpp'
-        TestSource = '00/ee/gapscan_sub00ee7190_00ee7190_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CV_TrophyDealerScript>'
+        Source = '00/ee/CEntityScriptBindingNScriptCVTrophyDealerScript_GetEntityScriptName_00ee7190.cpp'
+        TestSource = '00/ee/CEntityScriptBindingNScriptCVTrophyDealerScript_GetEntityScriptName_00ee7190_test.cpp'
         PassPattern = 'PASS_00ee7190'
     }
     [pscustomobject]@{
         Address = '00ee73e0'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee73e0_00ee73e0.cpp'
-        TestSource = '00/ee/gapscan_sub00ee73e0_00ee73e0_test.cpp'
+        Module = 'NScript::CV_TrophyDealerScript::CTrophyDealerInCave'
+        Source = '00/ee/NScriptCVTrophyDealerScriptCTrophyDealerInCave_GetParentScript_00ee73e0.cpp'
+        TestSource = '00/ee/NScriptCVTrophyDealerScriptCTrophyDealerInCave_GetParentScript_00ee73e0_test.cpp'
         PassPattern = 'PASS_00ee73e0'
     }
     [pscustomobject]@{
         Address = '00ee74d0'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00ee74d0_00ee74d0.cpp'
-        TestSource = '00/ee/gapscan_sub00ee74d0_00ee74d0_test.cpp'
+        Module = 'NScript::CV_TrophyDealerScript::CDemonDoorFace'
+        Source = '00/ee/NScriptCVTrophyDealerScriptCDemonDoorFace_GetParentScript_00ee74d0.cpp'
+        TestSource = '00/ee/NScriptCVTrophyDealerScriptCDemonDoorFace_GetParentScript_00ee74d0_test.cpp'
         PassPattern = 'PASS_00ee74d0'
     }
     [pscustomobject]@{
@@ -114182,30 +114182,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00eed4c0'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00eed4c0_00eed4c0.cpp'
-        TestSource = '00/ee/gapscan_sub00eed4c0_00eed4c0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CPersonalScript_alextestScript>'
+        Source = '00/ee/CEntityScriptBindingNScriptCPersonalScriptalextestScript_GetEntityScriptName_00eed4c0.cpp'
+        TestSource = '00/ee/CEntityScriptBindingNScriptCPersonalScriptalextestScript_GetEntityScriptName_00eed4c0_test.cpp'
         PassPattern = 'PASS_00eed4c0'
     }
     [pscustomobject]@{
         Address = '00eed570'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00eed570_00eed570.cpp'
-        TestSource = '00/ee/gapscan_sub00eed570_00eed570_test.cpp'
+        Module = 'NScript::CPersonalScript_alextestScript::CBurningPerson'
+        Source = '00/ee/NScriptCPersonalScriptalextestScriptCBurningPerson_GetParentScript_00eed570.cpp'
+        TestSource = '00/ee/NScriptCPersonalScriptalextestScriptCBurningPerson_GetParentScript_00eed570_test.cpp'
         PassPattern = 'PASS_00eed570'
     }
     [pscustomobject]@{
         Address = '00eed5a0'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00eed5a0_00eed5a0.cpp'
-        TestSource = '00/ee/gapscan_sub00eed5a0_00eed5a0_test.cpp'
+        Module = 'NScript::CPersonalScript_alextestScript::CBurningPerson'
+        Source = '00/ee/NScriptCPersonalScriptalextestScriptCBurningPerson_OnPredicateFail_00eed5a0.cpp'
+        TestSource = '00/ee/NScriptCPersonalScriptalextestScriptCBurningPerson_OnPredicateFail_00eed5a0_test.cpp'
         PassPattern = 'PASS_00eed5a0'
     }
     [pscustomobject]@{
         Address = '00eed670'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00eed670_00eed670.cpp'
-        TestSource = '00/ee/gapscan_sub00eed670_00eed670_test.cpp'
+        Module = 'NScript::CPersonalScript_alextestScript::CSignpost'
+        Source = '00/ee/NScriptCPersonalScriptalextestScriptCSignpost_GetParentScript_00eed670.cpp'
+        TestSource = '00/ee/NScriptCPersonalScriptalextestScriptCSignpost_GetParentScript_00eed670_test.cpp'
         PassPattern = 'PASS_00eed670'
     }
     [pscustomobject]@{
@@ -114217,9 +114217,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00eed870'
-        Module = '_gapscan'
-        Source = '00/ee/gapscan_sub00eed870_00eed870.cpp'
-        TestSource = '00/ee/gapscan_sub00eed870_00eed870_test.cpp'
+        Module = 'NScript::CPersonalScript_alextestScript::CStopDrawing'
+        Source = '00/ee/NScriptCPersonalScriptalextestScriptCStopDrawing_GetParentScript_00eed870.cpp'
+        TestSource = '00/ee/NScriptCPersonalScriptalextestScriptCStopDrawing_GetParentScript_00eed870_test.cpp'
         PassPattern = 'PASS_00eed870'
     }
     [pscustomobject]@{
@@ -114266,16 +114266,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef1040'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef1040_00ef1040.cpp'
-        TestSource = '00/ef/gapscan_sub00ef1040_00ef1040_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CPersonalScript_EmptyScript>'
+        Source = '00/ef/CEntityScriptBindingNScriptCPersonalScriptEmptyScript_GetEntityScriptName_00ef1040.cpp'
+        TestSource = '00/ef/CEntityScriptBindingNScriptCPersonalScriptEmptyScript_GetEntityScriptName_00ef1040_test.cpp'
         PassPattern = 'PASS_00ef1040'
     }
     [pscustomobject]@{
         Address = '00ef10f0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef10f0_00ef10f0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef10f0_00ef10f0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CCrate1'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCCrate1_GetParentScript_00ef10f0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCCrate1_GetParentScript_00ef10f0_test.cpp'
         PassPattern = 'PASS_00ef10f0'
     }
     [pscustomobject]@{
@@ -114287,9 +114287,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef11d0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef11d0_00ef11d0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef11d0_00ef11d0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CCrate2'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCCrate2_GetParentScript_00ef11d0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCCrate2_GetParentScript_00ef11d0_test.cpp'
         PassPattern = 'PASS_00ef11d0'
     }
     [pscustomobject]@{
@@ -114301,9 +114301,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef12b0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef12b0_00ef12b0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef12b0_00ef12b0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CCrateDeathMarker'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCCrateDeathMarker_GetParentScript_00ef12b0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCCrateDeathMarker_GetParentScript_00ef12b0_test.cpp'
         PassPattern = 'PASS_00ef12b0'
     }
     [pscustomobject]@{
@@ -114315,9 +114315,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef1650'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef1650_00ef1650.cpp'
-        TestSource = '00/ef/gapscan_sub00ef1650_00ef1650_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CWhispie'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCWhispie_GetParentScript_00ef1650.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCWhispie_GetParentScript_00ef1650_test.cpp'
         PassPattern = 'PASS_00ef1650'
     }
     [pscustomobject]@{
@@ -114329,9 +114329,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef1c10'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef1c10_00ef1c10.cpp'
-        TestSource = '00/ef/gapscan_sub00ef1c10_00ef1c10_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CBanditWalker'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCBanditWalker_GetParentScript_00ef1c10.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCBanditWalker_GetParentScript_00ef1c10_test.cpp'
         PassPattern = 'PASS_00ef1c10'
     }
     [pscustomobject]@{
@@ -114343,9 +114343,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef1cf0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef1cf0_00ef1cf0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef1cf0_00ef1cf0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CLookAtMe1'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCLookAtMe1_GetParentScript_00ef1cf0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCLookAtMe1_GetParentScript_00ef1cf0_test.cpp'
         PassPattern = 'PASS_00ef1cf0'
     }
     [pscustomobject]@{
@@ -114357,9 +114357,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef1dd0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef1dd0_00ef1dd0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef1dd0_00ef1dd0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CTrappedMan'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCTrappedMan_GetParentScript_00ef1dd0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCTrappedMan_GetParentScript_00ef1dd0_test.cpp'
         PassPattern = 'PASS_00ef1dd0'
     }
     [pscustomobject]@{
@@ -114371,9 +114371,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef2030'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef2030_00ef2030.cpp'
-        TestSource = '00/ef/gapscan_sub00ef2030_00ef2030_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CCinemaMan'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCCinemaMan_GetParentScript_00ef2030.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCCinemaMan_GetParentScript_00ef2030_test.cpp'
         PassPattern = 'PASS_00ef2030'
     }
     [pscustomobject]@{
@@ -114385,9 +114385,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef2110'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef2110_00ef2110.cpp'
-        TestSource = '00/ef/gapscan_sub00ef2110_00ef2110_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CKillMan'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCKillMan_GetParentScript_00ef2110.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCKillMan_GetParentScript_00ef2110_test.cpp'
         PassPattern = 'PASS_00ef2110'
     }
     [pscustomobject]@{
@@ -114399,9 +114399,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef2250'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef2250_00ef2250.cpp'
-        TestSource = '00/ef/gapscan_sub00ef2250_00ef2250_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CSwordChest'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCSwordChest_GetParentScript_00ef2250.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCSwordChest_GetParentScript_00ef2250_test.cpp'
         PassPattern = 'PASS_00ef2250'
     }
     [pscustomobject]@{
@@ -114413,9 +114413,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef24c0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef24c0_00ef24c0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef24c0_00ef24c0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CArcherMan'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCArcherMan_GetParentScript_00ef24c0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCArcherMan_GetParentScript_00ef24c0_test.cpp'
         PassPattern = 'PASS_00ef24c0'
     }
     [pscustomobject]@{
@@ -114427,9 +114427,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef25a0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef25a0_00ef25a0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef25a0_00ef25a0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CTriggerCrate'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCTriggerCrate_GetParentScript_00ef25a0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCTriggerCrate_GetParentScript_00ef25a0_test.cpp'
         PassPattern = 'PASS_00ef25a0'
     }
     [pscustomobject]@{
@@ -114441,9 +114441,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef28c0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef28c0_00ef28c0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef28c0_00ef28c0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CStealthGuard'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCStealthGuard_GetParentScript_00ef28c0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCStealthGuard_GetParentScript_00ef28c0_test.cpp'
         PassPattern = 'PASS_00ef28c0'
     }
     [pscustomobject]@{
@@ -114455,16 +114455,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef29a0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef29a0_00ef29a0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef29a0_00ef29a0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CGoalChest'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCGoalChest_GetParentScript_00ef29a0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCGoalChest_GetParentScript_00ef29a0_test.cpp'
         PassPattern = 'PASS_00ef29a0'
     }
     [pscustomobject]@{
         Address = '00ef2b60'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef2b60_00ef2b60.cpp'
-        TestSource = '00/ef/gapscan_sub00ef2b60_00ef2b60_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CScrumpyCrate'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCScrumpyCrate_GetParentScript_00ef2b60.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCScrumpyCrate_GetParentScript_00ef2b60_test.cpp'
         PassPattern = 'PASS_00ef2b60'
     }
     [pscustomobject]@{
@@ -114476,9 +114476,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef2fc0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef2fc0_00ef2fc0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef2fc0_00ef2fc0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CDoor'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCDoor_GetParentScript_00ef2fc0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCDoor_GetParentScript_00ef2fc0_test.cpp'
         PassPattern = 'PASS_00ef2fc0'
     }
     [pscustomobject]@{
@@ -114490,9 +114490,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef31c0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef31c0_00ef31c0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef31c0_00ef31c0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CBeggar'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCBeggar_GetParentScript_00ef31c0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCBeggar_GetParentScript_00ef31c0_test.cpp'
         PassPattern = 'PASS_00ef31c0'
     }
     [pscustomobject]@{
@@ -114504,9 +114504,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef3460'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef3460_00ef3460.cpp'
-        TestSource = '00/ef/gapscan_sub00ef3460_00ef3460_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CUndeadDude'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCUndeadDude_GetParentScript_00ef3460.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCUndeadDude_GetParentScript_00ef3460_test.cpp'
         PassPattern = 'PASS_00ef3460'
     }
     [pscustomobject]@{
@@ -114518,9 +114518,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef3700'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef3700_00ef3700.cpp'
-        TestSource = '00/ef/gapscan_sub00ef3700_00ef3700_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::COpinionMan'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCOpinionMan_GetParentScript_00ef3700.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCOpinionMan_GetParentScript_00ef3700_test.cpp'
         PassPattern = 'PASS_00ef3700'
     }
     [pscustomobject]@{
@@ -114532,16 +114532,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef37e0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef37e0_00ef37e0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef37e0_00ef37e0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CTestPos'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCTestPos_GetParentScript_00ef37e0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCTestPos_GetParentScript_00ef37e0_test.cpp'
         PassPattern = 'PASS_00ef37e0'
     }
     [pscustomobject]@{
         Address = '00ef3a60'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef3a60_00ef3a60.cpp'
-        TestSource = '00/ef/gapscan_sub00ef3a60_00ef3a60_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CWalker'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCWalker_GetParentScript_00ef3a60.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCWalker_GetParentScript_00ef3a60_test.cpp'
         PassPattern = 'PASS_00ef3a60'
     }
     [pscustomobject]@{
@@ -114553,9 +114553,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef3d00'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef3d00_00ef3d00.cpp'
-        TestSource = '00/ef/gapscan_sub00ef3d00_00ef3d00_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CChatter1'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCChatter1_GetParentScript_00ef3d00.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCChatter1_GetParentScript_00ef3d00_test.cpp'
         PassPattern = 'PASS_00ef3d00'
     }
     [pscustomobject]@{
@@ -114567,9 +114567,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef3de0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef3de0_00ef3de0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef3de0_00ef3de0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CChatter2'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCChatter2_GetParentScript_00ef3de0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCChatter2_GetParentScript_00ef3de0_test.cpp'
         PassPattern = 'PASS_00ef3de0'
     }
     [pscustomobject]@{
@@ -114581,9 +114581,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef3ec0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef3ec0_00ef3ec0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef3ec0_00ef3ec0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CLeader'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCLeader_GetParentScript_00ef3ec0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCLeader_GetParentScript_00ef3ec0_test.cpp'
         PassPattern = 'PASS_00ef3ec0'
     }
     [pscustomobject]@{
@@ -114595,9 +114595,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef41d0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef41d0_00ef41d0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef41d0_00ef41d0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CFollower'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCFollower_GetParentScript_00ef41d0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCFollower_GetParentScript_00ef41d0_test.cpp'
         PassPattern = 'PASS_00ef41d0'
     }
     [pscustomobject]@{
@@ -114609,9 +114609,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef42b0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef42b0_00ef42b0.cpp'
-        TestSource = '00/ef/gapscan_sub00ef42b0_00ef42b0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CMeanBandit'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCMeanBandit_GetParentScript_00ef42b0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCMeanBandit_GetParentScript_00ef42b0_test.cpp'
         PassPattern = 'PASS_00ef42b0'
     }
     [pscustomobject]@{
@@ -114623,9 +114623,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef4570'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef4570_00ef4570.cpp'
-        TestSource = '00/ef/gapscan_sub00ef4570_00ef4570_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CGhostDude'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCGhostDude_GetParentScript_00ef4570.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCGhostDude_GetParentScript_00ef4570_test.cpp'
         PassPattern = 'PASS_00ef4570'
     }
     [pscustomobject]@{
@@ -114637,9 +114637,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef4860'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef4860_00ef4860.cpp'
-        TestSource = '00/ef/gapscan_sub00ef4860_00ef4860_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CUndeadFellow'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCUndeadFellow_GetParentScript_00ef4860.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCUndeadFellow_GetParentScript_00ef4860_test.cpp'
         PassPattern = 'PASS_00ef4860'
     }
     [pscustomobject]@{
@@ -114651,16 +114651,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef4940'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef4940_00ef4940.cpp'
-        TestSource = '00/ef/gapscan_sub00ef4940_00ef4940_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CVillager'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCVillager_GetParentScript_00ef4940.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCVillager_GetParentScript_00ef4940_test.cpp'
         PassPattern = 'PASS_00ef4940'
     }
     [pscustomobject]@{
         Address = '00ef4b00'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00ef4b00_00ef4b00.cpp'
-        TestSource = '00/ef/gapscan_sub00ef4b00_00ef4b00_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CTestPerson'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCTestPerson_GetParentScript_00ef4b00.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCTestPerson_GetParentScript_00ef4b00_test.cpp'
         PassPattern = 'PASS_00ef4b00'
     }
     [pscustomobject]@{
@@ -114672,16 +114672,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00efa0a0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efa0a0_00efa0a0.cpp'
-        TestSource = '00/ef/gapscan_sub00efa0a0_00efa0a0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::Cguy_scriptScript>'
+        Source = '00/ef/CEntityScriptBindingNScriptCguyscriptScript_GetEntityScriptName_00efa0a0.cpp'
+        TestSource = '00/ef/CEntityScriptBindingNScriptCguyscriptScript_GetEntityScriptName_00efa0a0_test.cpp'
         PassPattern = 'PASS_00efa0a0'
     }
     [pscustomobject]@{
         Address = '00efa150'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efa150_00efa150.cpp'
-        TestSource = '00/ef/gapscan_sub00efa150_00efa150_test.cpp'
+        Module = 'NScript::Cguy_scriptScript::Chenchmen'
+        Source = '00/ef/NScriptCguyscriptScriptChenchmen_GetParentScript_00efa150.cpp'
+        TestSource = '00/ef/NScriptCguyscriptScriptChenchmen_GetParentScript_00efa150_test.cpp'
         PassPattern = 'PASS_00efa150'
     }
     [pscustomobject]@{
@@ -114693,16 +114693,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00efaa50'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efaa50_00efaa50.cpp'
-        TestSource = '00/ef/gapscan_sub00efaa50_00efaa50_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::Cbandit_level_cutsceneScript>'
+        Source = '00/ef/CEntityScriptBindingNScriptCbanditlevelcutsceneScript_GetEntityScriptName_00efaa50.cpp'
+        TestSource = '00/ef/CEntityScriptBindingNScriptCbanditlevelcutsceneScript_GetEntityScriptName_00efaa50_test.cpp'
         PassPattern = 'PASS_00efaa50'
     }
     [pscustomobject]@{
         Address = '00efab00'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efab00_00efab00.cpp'
-        TestSource = '00/ef/gapscan_sub00efab00_00efab00_test.cpp'
+        Module = 'NScript::Cbandit_level_cutsceneScript::Cwelcome_guy'
+        Source = '00/ef/NScriptCbanditlevelcutsceneScriptCwelcomeguy_GetParentScript_00efab00.cpp'
+        TestSource = '00/ef/NScriptCbanditlevelcutsceneScriptCwelcomeguy_GetParentScript_00efab00_test.cpp'
         PassPattern = 'PASS_00efab00'
     }
     [pscustomobject]@{
@@ -114714,16 +114714,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00efb270'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efb270_00efb270.cpp'
-        TestSource = '00/ef/gapscan_sub00efb270_00efb270_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CProximityPodiumTestScript>'
+        Source = '00/ef/CEntityScriptBindingNScriptCProximityPodiumTestScript_GetEntityScriptName_00efb270.cpp'
+        TestSource = '00/ef/CEntityScriptBindingNScriptCProximityPodiumTestScript_GetEntityScriptName_00efb270_test.cpp'
         PassPattern = 'PASS_00efb270'
     }
     [pscustomobject]@{
         Address = '00efb320'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efb320_00efb320.cpp'
-        TestSource = '00/ef/gapscan_sub00efb320_00efb320_test.cpp'
+        Module = 'NScript::CProximityPodiumTestScript::CProximityPodium'
+        Source = '00/ef/NScriptCProximityPodiumTestScriptCProximityPodium_GetParentScript_00efb320.cpp'
+        TestSource = '00/ef/NScriptCProximityPodiumTestScriptCProximityPodium_GetParentScript_00efb320_test.cpp'
         PassPattern = 'PASS_00efb320'
     }
     [pscustomobject]@{
@@ -114735,16 +114735,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00efb7d0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efb7d0_00efb7d0.cpp'
-        TestSource = '00/ef/gapscan_sub00efb7d0_00efb7d0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CHitSwitchTestScript>'
+        Source = '00/ef/CEntityScriptBindingNScriptCHitSwitchTestScript_GetEntityScriptName_00efb7d0.cpp'
+        TestSource = '00/ef/CEntityScriptBindingNScriptCHitSwitchTestScript_GetEntityScriptName_00efb7d0_test.cpp'
         PassPattern = 'PASS_00efb7d0'
     }
     [pscustomobject]@{
         Address = '00efb880'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efb880_00efb880.cpp'
-        TestSource = '00/ef/gapscan_sub00efb880_00efb880_test.cpp'
+        Module = 'NScript::CHitSwitchTestScript::CHitSwitch'
+        Source = '00/ef/NScriptCHitSwitchTestScriptCHitSwitch_GetParentScript_00efb880.cpp'
+        TestSource = '00/ef/NScriptCHitSwitchTestScriptCHitSwitch_GetParentScript_00efb880_test.cpp'
         PassPattern = 'PASS_00efb880'
     }
     [pscustomobject]@{
@@ -114756,16 +114756,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00efbd30'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efbd30_00efbd30.cpp'
-        TestSource = '00/ef/gapscan_sub00efbd30_00efbd30_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CGuildSealTriggerTestScript>'
+        Source = '00/ef/CEntityScriptBindingNScriptCGuildSealTriggerTestScript_GetEntityScriptName_00efbd30.cpp'
+        TestSource = '00/ef/CEntityScriptBindingNScriptCGuildSealTriggerTestScript_GetEntityScriptName_00efbd30_test.cpp'
         PassPattern = 'PASS_00efbd30'
     }
     [pscustomobject]@{
         Address = '00efbde0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efbde0_00efbde0.cpp'
-        TestSource = '00/ef/gapscan_sub00efbde0_00efbde0_test.cpp'
+        Module = 'NScript::CGuildSealTriggerTestScript::CGuildSealTrigger'
+        Source = '00/ef/NScriptCGuildSealTriggerTestScriptCGuildSealTrigger_GetParentScript_00efbde0.cpp'
+        TestSource = '00/ef/NScriptCGuildSealTriggerTestScriptCGuildSealTrigger_GetParentScript_00efbde0_test.cpp'
         PassPattern = 'PASS_00efbde0'
     }
     [pscustomobject]@{
@@ -114777,16 +114777,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00efcb60'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efcb60_00efcb60.cpp'
-        TestSource = '00/ef/gapscan_sub00efcb60_00efcb60_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CMarkTestScriptsScript>'
+        Source = '00/ef/CEntityScriptBindingNScriptCMarkTestScriptsScript_GetEntityScriptName_00efcb60.cpp'
+        TestSource = '00/ef/CEntityScriptBindingNScriptCMarkTestScriptsScript_GetEntityScriptName_00efcb60_test.cpp'
         PassPattern = 'PASS_00efcb60'
     }
     [pscustomobject]@{
         Address = '00efcc10'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efcc10_00efcc10.cpp'
-        TestSource = '00/ef/gapscan_sub00efcc10_00efcc10_test.cpp'
+        Module = 'NScript::CMarkTestScriptsScript::CTestMan'
+        Source = '00/ef/NScriptCMarkTestScriptsScriptCTestMan_GetParentScript_00efcc10.cpp'
+        TestSource = '00/ef/NScriptCMarkTestScriptsScriptCTestMan_GetParentScript_00efcc10_test.cpp'
         PassPattern = 'PASS_00efcc10'
     }
     [pscustomobject]@{
@@ -114798,9 +114798,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00efd720'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efd720_00efd720.cpp'
-        TestSource = '00/ef/gapscan_sub00efd720_00efd720_test.cpp'
+        Module = 'NScript::CMarkTestScriptsScript::CGift'
+        Source = '00/ef/NScriptCMarkTestScriptsScriptCGift_GetParentScript_00efd720.cpp'
+        TestSource = '00/ef/NScriptCMarkTestScriptsScriptCGift_GetParentScript_00efd720_test.cpp'
         PassPattern = 'PASS_00efd720'
     }
     [pscustomobject]@{
@@ -114812,23 +114812,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00efda60'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efda60_00efda60.cpp'
-        TestSource = '00/ef/gapscan_sub00efda60_00efda60_test.cpp'
+        Module = 'NScript::CMarkTestScriptsScript::CShopKeeper'
+        Source = '00/ef/NScriptCMarkTestScriptsScriptCShopKeeper_GetParentScript_00efda60.cpp'
+        TestSource = '00/ef/NScriptCMarkTestScriptsScriptCShopKeeper_GetParentScript_00efda60_test.cpp'
         PassPattern = 'PASS_00efda60'
     }
     [pscustomobject]@{
         Address = '00efe610'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efe610_00efe610.cpp'
-        TestSource = '00/ef/gapscan_sub00efe610_00efe610_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CBenTestScriptsScript>'
+        Source = '00/ef/CEntityScriptBindingNScriptCBenTestScriptsScript_GetEntityScriptName_00efe610.cpp'
+        TestSource = '00/ef/CEntityScriptBindingNScriptCBenTestScriptsScript_GetEntityScriptName_00efe610_test.cpp'
         PassPattern = 'PASS_00efe610'
     }
     [pscustomobject]@{
         Address = '00efe6c0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efe6c0_00efe6c0.cpp'
-        TestSource = '00/ef/gapscan_sub00efe6c0_00efe6c0_test.cpp'
+        Module = 'NScript::CBenTestScriptsScript::CDummy'
+        Source = '00/ef/NScriptCBenTestScriptsScriptCDummy_GetParentScript_00efe6c0.cpp'
+        TestSource = '00/ef/NScriptCBenTestScriptsScriptCDummy_GetParentScript_00efe6c0_test.cpp'
         PassPattern = 'PASS_00efe6c0'
     }
     [pscustomobject]@{
@@ -114840,9 +114840,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00efe890'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efe890_00efe890.cpp'
-        TestSource = '00/ef/gapscan_sub00efe890_00efe890_test.cpp'
+        Module = 'NScript::CBenTestScriptsScript::CFader'
+        Source = '00/ef/NScriptCBenTestScriptsScriptCFader_GetParentScript_00efe890.cpp'
+        TestSource = '00/ef/NScriptCBenTestScriptsScriptCFader_GetParentScript_00efe890_test.cpp'
         PassPattern = 'PASS_00efe890'
     }
     [pscustomobject]@{
@@ -114854,9 +114854,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00efeb20'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00efeb20_00efeb20.cpp'
-        TestSource = '00/ef/gapscan_sub00efeb20_00efeb20_test.cpp'
+        Module = 'NScript::CBenTestScriptsScript::CBalvMarker'
+        Source = '00/ef/NScriptCBenTestScriptsScriptCBalvMarker_GetParentScript_00efeb20.cpp'
+        TestSource = '00/ef/NScriptCBenTestScriptsScriptCBalvMarker_GetParentScript_00efeb20_test.cpp'
         PassPattern = 'PASS_00efeb20'
     }
     [pscustomobject]@{
@@ -114868,16 +114868,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00eff3e0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00eff3e0_00eff3e0.cpp'
-        TestSource = '00/ef/gapscan_sub00eff3e0_00eff3e0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CTonyTestScriptsScript>'
+        Source = '00/ef/CEntityScriptBindingNScriptCTonyTestScriptsScript_GetEntityScriptName_00eff3e0.cpp'
+        TestSource = '00/ef/CEntityScriptBindingNScriptCTonyTestScriptsScript_GetEntityScriptName_00eff3e0_test.cpp'
         PassPattern = 'PASS_00eff3e0'
     }
     [pscustomobject]@{
         Address = '00eff490'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00eff490_00eff490.cpp'
-        TestSource = '00/ef/gapscan_sub00eff490_00eff490_test.cpp'
+        Module = 'NScript::CTonyTestScriptsScript::CDummy'
+        Source = '00/ef/NScriptCTonyTestScriptsScriptCDummy_GetParentScript_00eff490.cpp'
+        TestSource = '00/ef/NScriptCTonyTestScriptsScriptCDummy_GetParentScript_00eff490_test.cpp'
         PassPattern = 'PASS_00eff490'
     }
     [pscustomobject]@{
@@ -114889,44 +114889,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00effff0'
-        Module = '_gapscan'
-        Source = '00/ef/gapscan_sub00effff0_00effff0.cpp'
-        TestSource = '00/ef/gapscan_sub00effff0_00effff0_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::COracleMinigameTestScript>'
+        Source = '00/ef/CEntityScriptBindingNScriptCOracleMinigameTestScript_GetEntityScriptName_00effff0.cpp'
+        TestSource = '00/ef/CEntityScriptBindingNScriptCOracleMinigameTestScript_GetEntityScriptName_00effff0_test.cpp'
         PassPattern = 'PASS_00effff0'
     }
     [pscustomobject]@{
         Address = '00f000a0'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f000a0_00f000a0.cpp'
-        TestSource = '00/f0/gapscan_sub00f000a0_00f000a0_test.cpp'
+        Module = 'NScript::COracleMinigameTestScript::COracleGamesmaster'
+        Source = '00/f0/NScriptCOracleMinigameTestScriptCOracleGamesmaster_GetParentScript_00f000a0.cpp'
+        TestSource = '00/f0/NScriptCOracleMinigameTestScriptCOracleGamesmaster_GetParentScript_00f000a0_test.cpp'
         PassPattern = 'PASS_00f000a0'
     }
     [pscustomobject]@{
         Address = '00f00ab0'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f00ab0_00f00ab0.cpp'
-        TestSource = '00/f0/gapscan_sub00f00ab0_00f00ab0_test.cpp'
+        Module = 'NScript::COracleMinigameTestScript::CGamesmasterOracleMarker'
+        Source = '00/f0/NScriptCOracleMinigameTestScriptCGamesmasterOracleMarker_GetParentScript_00f00ab0.cpp'
+        TestSource = '00/f0/NScriptCOracleMinigameTestScriptCGamesmasterOracleMarker_GetParentScript_00f00ab0_test.cpp'
         PassPattern = 'PASS_00f00ab0'
     }
     [pscustomobject]@{
         Address = '00f00c50'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f00c50_00f00c50.cpp'
-        TestSource = '00/f0/gapscan_sub00f00c50_00f00c50_test.cpp'
+        Module = 'NScript::COracleMinigameTestScript::COracleSpectator'
+        Source = '00/f0/NScriptCOracleMinigameTestScriptCOracleSpectator_GetParentScript_00f00c50.cpp'
+        TestSource = '00/f0/NScriptCOracleMinigameTestScriptCOracleSpectator_GetParentScript_00f00c50_test.cpp'
         PassPattern = 'PASS_00f00c50'
     }
     [pscustomobject]@{
         Address = '00f01b50'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f01b50_00f01b50.cpp'
-        TestSource = '00/f0/gapscan_sub00f01b50_00f01b50_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_CinemaTestScript>'
+        Source = '00/f0/CEntityScriptBindingNScriptCQCinemaTestScript_GetEntityScriptName_00f01b50.cpp'
+        TestSource = '00/f0/CEntityScriptBindingNScriptCQCinemaTestScript_GetEntityScriptName_00f01b50_test.cpp'
         PassPattern = 'PASS_00f01b50'
     }
     [pscustomobject]@{
         Address = '00f01c00'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f01c00_00f01c00.cpp'
-        TestSource = '00/f0/gapscan_sub00f01c00_00f01c00_test.cpp'
+        Module = 'NScript::CQ_CinemaTestScript::CDummy'
+        Source = '00/f0/NScriptCQCinemaTestScriptCDummy_GetParentScript_00f01c00.cpp'
+        TestSource = '00/f0/NScriptCQCinemaTestScriptCDummy_GetParentScript_00f01c00_test.cpp'
         PassPattern = 'PASS_00f01c00'
     }
     [pscustomobject]@{
@@ -114938,135 +114938,135 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f01c20'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f01c20_00f01c20.cpp'
-        TestSource = '00/f0/gapscan_sub00f01c20_00f01c20_test.cpp'
+        Module = 'NScript::CQ_CinemaTestScript::CDummy'
+        Source = '00/f0/NScriptCQCinemaTestScriptCDummy_OnPredicateFail_00f01c20.cpp'
+        TestSource = '00/f0/NScriptCQCinemaTestScriptCDummy_OnPredicateFail_00f01c20_test.cpp'
         PassPattern = 'PASS_00f01c20'
     }
     [pscustomobject]@{
         Address = '00f03550'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f03550_00f03550.cpp'
-        TestSource = '00/f0/gapscan_sub00f03550_00f03550_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_AmbushTradersScript>'
+        Source = '00/f0/CEntityScriptBindingNScriptCQAmbushTradersScript_GetEntityScriptName_00f03550.cpp'
+        TestSource = '00/f0/CEntityScriptBindingNScriptCQAmbushTradersScript_GetEntityScriptName_00f03550_test.cpp'
         PassPattern = 'PASS_00f03550'
     }
     [pscustomobject]@{
         Address = '00f03840'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f03840_00f03840.cpp'
-        TestSource = '00/f0/gapscan_sub00f03840_00f03840_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_BanditAlly'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_GetParentScript_00f03840.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_GetParentScript_00f03840_test.cpp'
         PassPattern = 'PASS_00f03840'
     }
     [pscustomobject]@{
         Address = '00f03940'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f03940_00f03940.cpp'
-        TestSource = '00/f0/gapscan_sub00f03940_00f03940_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_Phase1Guard'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATPhase1Guard_GetParentScript_00f03940.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATPhase1Guard_GetParentScript_00f03940_test.cpp'
         PassPattern = 'PASS_00f03940'
     }
     [pscustomobject]@{
         Address = '00f03950'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f03950_00f03950.cpp'
-        TestSource = '00/f0/gapscan_sub00f03950_00f03950_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_Phase1Guard'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATPhase1Guard_OnPersist_00f03950.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATPhase1Guard_OnPersist_00f03950_test.cpp'
         PassPattern = 'PASS_00f03950'
     }
     [pscustomobject]@{
         Address = '00f03fc0'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f03fc0_00f03fc0.cpp'
-        TestSource = '00/f0/gapscan_sub00f03fc0_00f03fc0_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_Phase1Archer'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATPhase1Archer_GetParentScript_00f03fc0.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATPhase1Archer_GetParentScript_00f03fc0_test.cpp'
         PassPattern = 'PASS_00f03fc0'
     }
     [pscustomobject]@{
         Address = '00f03fd0'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f03fd0_00f03fd0.cpp'
-        TestSource = '00/f0/gapscan_sub00f03fd0_00f03fd0_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_Phase1Archer'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATPhase1Archer_OnPersist_00f03fd0.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATPhase1Archer_OnPersist_00f03fd0_test.cpp'
         PassPattern = 'PASS_00f03fd0'
     }
     [pscustomobject]@{
         Address = '00f04320'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f04320_00f04320.cpp'
-        TestSource = '00/f0/gapscan_sub00f04320_00f04320_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_ConvoyMember'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATConvoyMember_GetParentScript_00f04320.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATConvoyMember_GetParentScript_00f04320_test.cpp'
         PassPattern = 'PASS_00f04320'
     }
     [pscustomobject]@{
         Address = '00f04330'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f04330_00f04330.cpp'
-        TestSource = '00/f0/gapscan_sub00f04330_00f04330_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_ConvoyMember'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATConvoyMember_OnPersist_00f04330.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATConvoyMember_OnPersist_00f04330_test.cpp'
         PassPattern = 'PASS_00f04330'
     }
     [pscustomobject]@{
         Address = '00f04400'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f04400_00f04400.cpp'
-        TestSource = '00/f0/gapscan_sub00f04400_00f04400_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_ConvoySpy'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_GetParentScript_00f04400.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_GetParentScript_00f04400_test.cpp'
         PassPattern = 'PASS_00f04400'
     }
     [pscustomobject]@{
         Address = '00f04470'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f04470_00f04470.cpp'
-        TestSource = '00/f0/gapscan_sub00f04470_00f04470_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_ConvoySpy'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_OnPersist_00f04470.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_OnPersist_00f04470_test.cpp'
         PassPattern = 'PASS_00f04470'
     }
     [pscustomobject]@{
         Address = '00f045b0'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f045b0_00f045b0.cpp'
-        TestSource = '00/f0/gapscan_sub00f045b0_00f045b0_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_Sentry'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATSentry_GetParentScript_00f045b0.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATSentry_GetParentScript_00f045b0_test.cpp'
         PassPattern = 'PASS_00f045b0'
     }
     [pscustomobject]@{
         Address = '00f04c70'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f04c70_00f04c70.cpp'
-        TestSource = '00/f0/gapscan_sub00f04c70_00f04c70_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_Phase3Archer'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATPhase3Archer_GetParentScript_00f04c70.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATPhase3Archer_GetParentScript_00f04c70_test.cpp'
         PassPattern = 'PASS_00f04c70'
     }
     [pscustomobject]@{
         Address = '00f04c80'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f04c80_00f04c80.cpp'
-        TestSource = '00/f0/gapscan_sub00f04c80_00f04c80_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_Phase3Archer'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATPhase3Archer_OnPersist_00f04c80.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATPhase3Archer_OnPersist_00f04c80_test.cpp'
         PassPattern = 'PASS_00f04c80'
     }
     [pscustomobject]@{
         Address = '00f04c90'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f04c90_00f04c90.cpp'
-        TestSource = '00/f0/gapscan_sub00f04c90_00f04c90_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_Phase3Archer'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATPhase3Archer_OnPredicateFail_00f04c90.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATPhase3Archer_OnPredicateFail_00f04c90_test.cpp'
         PassPattern = 'PASS_00f04c90'
     }
     [pscustomobject]@{
         Address = '00f05180'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f05180_00f05180.cpp'
-        TestSource = '00/f0/gapscan_sub00f05180_00f05180_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_Phase3Guard'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATPhase3Guard_GetParentScript_00f05180.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATPhase3Guard_GetParentScript_00f05180_test.cpp'
         PassPattern = 'PASS_00f05180'
     }
     [pscustomobject]@{
         Address = '00f05190'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f05190_00f05190.cpp'
-        TestSource = '00/f0/gapscan_sub00f05190_00f05190_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_Phase3Guard'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATPhase3Guard_OnPersist_00f05190.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATPhase3Guard_OnPersist_00f05190_test.cpp'
         PassPattern = 'PASS_00f05190'
     }
     [pscustomobject]@{
         Address = '00f051a0'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f051a0_00f051a0.cpp'
-        TestSource = '00/f0/gapscan_sub00f051a0_00f051a0_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_Phase3Guard'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATPhase3Guard_OnPredicateFail_00f051a0.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATPhase3Guard_OnPredicateFail_00f051a0_test.cpp'
         PassPattern = 'PASS_00f051a0'
     }
     [pscustomobject]@{
         Address = '00f05740'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f05740_00f05740.cpp'
-        TestSource = '00/f0/gapscan_sub00f05740_00f05740_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_BanditContactEnd'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATBanditContactEnd_GetParentScript_00f05740.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATBanditContactEnd_GetParentScript_00f05740_test.cpp'
         PassPattern = 'PASS_00f05740'
     }
     [pscustomobject]@{
@@ -115078,86 +115078,86 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f05760'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f05760_00f05760.cpp'
-        TestSource = '00/f0/gapscan_sub00f05760_00f05760_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_BanditContactEnd'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATBanditContactEnd_OnPersist_00f05760.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATBanditContactEnd_OnPersist_00f05760_test.cpp'
         PassPattern = 'PASS_00f05760'
     }
     [pscustomobject]@{
         Address = '00f05770'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f05770_00f05770.cpp'
-        TestSource = '00/f0/gapscan_sub00f05770_00f05770_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_BanditContactEnd'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATBanditContactEnd_OnPredicateFail_00f05770.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATBanditContactEnd_OnPredicateFail_00f05770_test.cpp'
         PassPattern = 'PASS_00f05770'
     }
     [pscustomobject]@{
         Address = '00f05880'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f05880_00f05880.cpp'
-        TestSource = '00/f0/gapscan_sub00f05880_00f05880_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_BanditContact'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATBanditContact_GetParentScript_00f05880.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATBanditContact_GetParentScript_00f05880_test.cpp'
         PassPattern = 'PASS_00f05880'
     }
     [pscustomobject]@{
         Address = '00f05890'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f05890_00f05890.cpp'
-        TestSource = '00/f0/gapscan_sub00f05890_00f05890_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_BanditContact'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATBanditContact_OnPersist_00f05890.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATBanditContact_OnPersist_00f05890_test.cpp'
         PassPattern = 'PASS_00f05890'
     }
     [pscustomobject]@{
         Address = '00f058a0'
-        Module = '_gapscan'
-        Source = '00/f0/gapscan_sub00f058a0_00f058a0.cpp'
-        TestSource = '00/f0/gapscan_sub00f058a0_00f058a0_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_BanditContact'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATBanditContact_OnPredicateFail_00f058a0.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATBanditContact_OnPredicateFail_00f058a0_test.cpp'
         PassPattern = 'PASS_00f058a0'
     }
     [pscustomobject]@{
         Address = '00f14260'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f14260_00f14260.cpp'
-        TestSource = '00/f1/gapscan_sub00f14260_00f14260_test.cpp'
+        Module = 'CEntityScriptBinding<NScript::CQ_ArenaScript>'
+        Source = '00/f1/CEntityScriptBindingNScriptCQArenaScript_GetEntityScriptName_00f14260.cpp'
+        TestSource = '00/f1/CEntityScriptBindingNScriptCQArenaScript_GetEntityScriptName_00f14260_test.cpp'
         PassPattern = 'PASS_00f14260'
     }
     [pscustomobject]@{
         Address = '00f14600'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f14600_00f14600.cpp'
-        TestSource = '00/f1/gapscan_sub00f14600_00f14600_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CRoth'
+        Source = '00/f1/NScriptCQArenaScriptCRoth_GetParentScript_00f14600.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCRoth_GetParentScript_00f14600_test.cpp'
         PassPattern = 'PASS_00f14600'
     }
     [pscustomobject]@{
         Address = '00f14710'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f14710_00f14710.cpp'
-        TestSource = '00/f1/gapscan_sub00f14710_00f14710_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CCham'
+        Source = '00/f1/NScriptCQArenaScriptCCham_GetParentScript_00f14710.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCCham_GetParentScript_00f14710_test.cpp'
         PassPattern = 'PASS_00f14710'
     }
     [pscustomobject]@{
         Address = '00f14a20'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f14a20_00f14a20.cpp'
-        TestSource = '00/f1/gapscan_sub00f14a20_00f14a20_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CFlick'
+        Source = '00/f1/NScriptCQArenaScriptCFlick_GetParentScript_00f14a20.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCFlick_GetParentScript_00f14a20_test.cpp'
         PassPattern = 'PASS_00f14a20'
     }
     [pscustomobject]@{
         Address = '00f155f0'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f155f0_00f155f0.cpp'
-        TestSource = '00/f1/gapscan_sub00f155f0_00f155f0_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CNeedle'
+        Source = '00/f1/NScriptCQArenaScriptCNeedle_GetParentScript_00f155f0.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCNeedle_GetParentScript_00f155f0_test.cpp'
         PassPattern = 'PASS_00f155f0'
     }
     [pscustomobject]@{
         Address = '00f16240'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f16240_00f16240.cpp'
-        TestSource = '00/f1/gapscan_sub00f16240_00f16240_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CShadow'
+        Source = '00/f1/NScriptCQArenaScriptCShadow_GetParentScript_00f16240.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCShadow_GetParentScript_00f16240_test.cpp'
         PassPattern = 'PASS_00f16240'
     }
     [pscustomobject]@{
         Address = '00f17080'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f17080_00f17080.cpp'
-        TestSource = '00/f1/gapscan_sub00f17080_00f17080_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CCellWhisper'
+        Source = '00/f1/NScriptCQArenaScriptCCellWhisper_GetParentScript_00f17080.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCCellWhisper_GetParentScript_00f17080_test.cpp'
         PassPattern = 'PASS_00f17080'
     }
     [pscustomobject]@{
@@ -115169,23 +115169,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f17c10'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f17c10_00f17c10.cpp'
-        TestSource = '00/f1/gapscan_sub00f17c10_00f17c10_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CArenaCellDoorGuard'
+        Source = '00/f1/NScriptCQArenaScriptCArenaCellDoorGuard_GetParentScript_00f17c10.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCArenaCellDoorGuard_GetParentScript_00f17c10_test.cpp'
         PassPattern = 'PASS_00f17c10'
     }
     [pscustomobject]@{
         Address = '00f19b50'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f19b50_00f19b50.cpp'
-        TestSource = '00/f1/gapscan_sub00f19b50_00f19b50_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CArenaCellDoorGuard2'
+        Source = '00/f1/NScriptCQArenaScriptCArenaCellDoorGuard2_GetParentScript_00f19b50.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCArenaCellDoorGuard2_GetParentScript_00f19b50_test.cpp'
         PassPattern = 'PASS_00f19b50'
     }
     [pscustomobject]@{
         Address = '00f1a8b0'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f1a8b0_00f1a8b0.cpp'
-        TestSource = '00/f1/gapscan_sub00f1a8b0_00f1a8b0_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CArenaEnemy'
+        Source = '00/f1/NScriptCQArenaScriptCArenaEnemy_GetParentScript_00f1a8b0.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCArenaEnemy_GetParentScript_00f1a8b0_test.cpp'
         PassPattern = 'PASS_00f1a8b0'
     }
     [pscustomobject]@{
@@ -115197,9 +115197,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f1b190'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f1b190_00f1b190.cpp'
-        TestSource = '00/f1/gapscan_sub00f1b190_00f1b190_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CSUMMONED_CREATURE'
+        Source = '00/f1/NScriptCQArenaScriptCSUMMONEDCREATURE_GetParentScript_00f1b190.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCSUMMONEDCREATURE_GetParentScript_00f1b190_test.cpp'
         PassPattern = 'PASS_00f1b190'
     }
     [pscustomobject]@{
@@ -115211,9 +115211,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f1b650'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f1b650_00f1b650.cpp'
-        TestSource = '00/f1/gapscan_sub00f1b650_00f1b650_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CArenaSpawn'
+        Source = '00/f1/NScriptCQArenaScriptCArenaSpawn_GetParentScript_00f1b650.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCArenaSpawn_GetParentScript_00f1b650_test.cpp'
         PassPattern = 'PASS_00f1b650'
     }
     [pscustomobject]@{
@@ -115225,9 +115225,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f1b8a0'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f1b8a0_00f1b8a0.cpp'
-        TestSource = '00/f1/gapscan_sub00f1b8a0_00f1b8a0_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CWhisperAlly'
+        Source = '00/f1/NScriptCQArenaScriptCWhisperAlly_GetParentScript_00f1b8a0.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCWhisperAlly_GetParentScript_00f1b8a0_test.cpp'
         PassPattern = 'PASS_00f1b8a0'
     }
     [pscustomobject]@{
@@ -115239,9 +115239,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f1b980'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f1b980_00f1b980.cpp'
-        TestSource = '00/f1/gapscan_sub00f1b980_00f1b980_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CArenaCellExitGuard'
+        Source = '00/f1/NScriptCQArenaScriptCArenaCellExitGuard_GetParentScript_00f1b980.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCArenaCellExitGuard_GetParentScript_00f1b980_test.cpp'
         PassPattern = 'PASS_00f1b980'
     }
     [pscustomobject]@{
@@ -115253,9 +115253,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f1cad0'
-        Module = '_gapscan'
-        Source = '00/f1/gapscan_sub00f1cad0_00f1cad0.cpp'
-        TestSource = '00/f1/gapscan_sub00f1cad0_00f1cad0_test.cpp'
+        Module = 'NScript::CQ_ArenaScript::CCagedBalverine'
+        Source = '00/f1/NScriptCQArenaScriptCCagedBalverine_GetParentScript_00f1cad0.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCCagedBalverine_GetParentScript_00f1cad0_test.cpp'
         PassPattern = 'PASS_00f1cad0'
     }
     [pscustomobject]@{
@@ -115274,9 +115274,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f25ca0'
-        Module = '_gapscan'
-        Source = '00/f2/gapscan_sub00f25ca0_00f25ca0.cpp'
-        TestSource = '00/f2/gapscan_sub00f25ca0_00f25ca0_test.cpp'
+        Module = 'CArenaWaveDef'
+        Source = '00/f2/CArenaWaveDef_GetSizeofClass_00f25ca0.cpp'
+        TestSource = '00/f2/CArenaWaveDef_GetSizeofClass_00f25ca0_test.cpp'
         PassPattern = 'PASS_00f25ca0'
     }
     [pscustomobject]@{
@@ -115295,9 +115295,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f25f50'
-        Module = '_gapscan'
-        Source = '00/f2/gapscan_sub00f25f50_00f25f50.cpp'
-        TestSource = '00/f2/gapscan_sub00f25f50_00f25f50_test.cpp'
+        Module = 'CArenaWaveDef'
+        Source = '00/f2/CArenaWaveDef_Copy_00f25f50.cpp'
+        TestSource = '00/f2/CArenaWaveDef_Copy_00f25f50_test.cpp'
         PassPattern = 'PASS_00f25f50'
     }
     [pscustomobject]@{
@@ -115316,9 +115316,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f270a0'
-        Module = '_gapscan'
-        Source = '00/f2/gapscan_sub00f270a0_00f270a0.cpp'
-        TestSource = '00/f2/gapscan_sub00f270a0_00f270a0_test.cpp'
+        Module = 'CHeroSoulsCreatureDef'
+        Source = '00/f2/CHeroSoulsCreatureDef_GetSizeofClass_00f270a0.cpp'
+        TestSource = '00/f2/CHeroSoulsCreatureDef_GetSizeofClass_00f270a0_test.cpp'
         PassPattern = 'PASS_00f270a0'
     }
     [pscustomobject]@{
@@ -115330,16 +115330,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f29500'
-        Module = '_gapscan'
-        Source = '00/f2/gapscan_sub00f29500_00f29500.cpp'
-        TestSource = '00/f2/gapscan_sub00f29500_00f29500_test.cpp'
+        Module = 'CScriptDef'
+        Source = '00/f2/CScriptDef_GetSizeofClass_00f29500.cpp'
+        TestSource = '00/f2/CScriptDef_GetSizeofClass_00f29500_test.cpp'
         PassPattern = 'PASS_00f29500'
     }
     [pscustomobject]@{
         Address = '00f29c50'
-        Module = '_gapscan'
-        Source = '00/f2/gapscan_sub00f29c50_00f29c50.cpp'
-        TestSource = '00/f2/gapscan_sub00f29c50_00f29c50_test.cpp'
+        Module = 'CRegionScriptDef'
+        Source = '00/f2/CRegionScriptDef_GetSizeofClass_00f29c50.cpp'
+        TestSource = '00/f2/CRegionScriptDef_GetSizeofClass_00f29c50_test.cpp'
         PassPattern = 'PASS_00f29c50'
     }
     [pscustomobject]@{
@@ -115351,23 +115351,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f2a240'
-        Module = '_gapscan'
-        Source = '00/f2/gapscan_sub00f2a240_00f2a240.cpp'
-        TestSource = '00/f2/gapscan_sub00f2a240_00f2a240_test.cpp'
+        Module = 'CScriptDef'
+        Source = '00/f2/CScriptDef_Copy_00f2a240.cpp'
+        TestSource = '00/f2/CScriptDef_Copy_00f2a240_test.cpp'
         PassPattern = 'PASS_00f2a240'
     }
     [pscustomobject]@{
         Address = '00f2d2f0'
-        Module = '_gapscan'
-        Source = '00/f2/gapscan_sub00f2d2f0_00f2d2f0.cpp'
-        TestSource = '00/f2/gapscan_sub00f2d2f0_00f2d2f0_test.cpp'
+        Module = 'CFeatDef'
+        Source = '00/f2/CFeatDef_GetSizeofClass_00f2d2f0.cpp'
+        TestSource = '00/f2/CFeatDef_GetSizeofClass_00f2d2f0_test.cpp'
         PassPattern = 'PASS_00f2d2f0'
     }
     [pscustomobject]@{
         Address = '00f2d680'
-        Module = '_gapscan'
-        Source = '00/f2/gapscan_sub00f2d680_00f2d680.cpp'
-        TestSource = '00/f2/gapscan_sub00f2d680_00f2d680_test.cpp'
+        Module = 'CFeatDef'
+        Source = '00/f2/CFeatDef_Copy_00f2d680.cpp'
+        TestSource = '00/f2/CFeatDef_Copy_00f2d680_test.cpp'
         PassPattern = 'PASS_00f2d680'
     }
     [pscustomobject]@{
@@ -142479,107 +142479,107 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ce15b0'
-        Module = '_unattributed'
-        Source = '00/ce/unattributed_PersistTransferTargetForKeyDone00ce15b0_00ce15b0.cpp'
-        TestSource = '00/ce/unattributed_PersistTransferTargetForKeyDone00ce15b0_00ce15b0_test.cpp'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CTargetForKey'
+        Source = '00/ce/NScriptCPersonalScriptGlobalThingsScriptCTargetForKey_OnPersist_00ce15b0.cpp'
+        TestSource = '00/ce/NScriptCPersonalScriptGlobalThingsScriptCTargetForKey_OnPersist_00ce15b0_test.cpp'
         PassPattern = '00ce15b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cf6890'
-        Module = '_unattributed'
-        Source = '00/cf/unattributed_PersistTransferIntroDone00cf6890_00cf6890.cpp'
-        TestSource = '00/cf/unattributed_PersistTransferIntroDone00cf6890_00cf6890_test.cpp'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard_OnPersist_00cf6890.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard_OnPersist_00cf6890_test.cpp'
         PassPattern = '00cf6890_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cfdfd0'
-        Module = '_unattributed'
-        Source = '00/cf/unattributed_PersistTransferAlreadyDugHere00cfdfd0_00cfdfd0.cpp'
-        TestSource = '00/cf/unattributed_PersistTransferAlreadyDugHere00cfdfd0_00cfdfd0_test.cpp'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::COracleTablet'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCOracleTablet_OnPersist_00cfdfd0.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCOracleTablet_OnPersist_00cfdfd0_test.cpp'
         PassPattern = '00cfdfd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d0ee10'
-        Module = '_unattributed'
-        Source = '00/d0/unattributed_PersistTransferGivenPass00d0ee10_00d0ee10.cpp'
-        TestSource = '00/d0/unattributed_PersistTransferGivenPass00d0ee10_00d0ee10_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CBCGameMaster'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCBCGameMaster_OnPersist_00d0ee10.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCBCGameMaster_OnPersist_00d0ee10_test.cpp'
         PassPattern = '00d0ee10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d0ee40'
-        Module = '_unattributed'
-        Source = '00/d0/unattributed_PersistTransferGivenPass00d0ee40_00d0ee40.cpp'
-        TestSource = '00/d0/unattributed_PersistTransferGivenPass00d0ee40_00d0ee40_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CBanditForger'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCBanditForger_OnPersist_00d0ee40.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCBanditForger_OnPersist_00d0ee40_test.cpp'
         PassPattern = '00d0ee40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d12c20'
-        Module = '_unattributed'
-        Source = '00/d1/unattributed_PersistTransferPathReached00d12c20_00d12c20.cpp'
-        TestSource = '00/d1/unattributed_PersistTransferPathReached00d12c20_00d12c20_test.cpp'
+        Module = 'NScript::CQ_BanditCampHoldingScriptScript'
+        Source = '00/d1/NScriptCQBanditCampHoldingScriptScript_OnPersist_00d12c20.cpp'
+        TestSource = '00/d1/NScriptCQBanditCampHoldingScriptScript_OnPersist_00d12c20_test.cpp'
         PassPattern = '00d12c20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d21010'
-        Module = '_unattributed'
-        Source = '00/d2/unattributed_PersistTransferToldHeroToGatherGuards00d21010_00d21010.cpp'
-        TestSource = '00/d2/unattributed_PersistTransferToldHeroToGatherGuards00d21010_00d21010_test.cpp'
+        Module = 'NScript::CQ_BreakSiegeScript::CKG_Sheriff'
+        Source = '00/d2/NScriptCQBreakSiegeScriptCKGSheriff_OnPersist_00d21010.cpp'
+        TestSource = '00/d2/NScriptCQBreakSiegeScriptCKGSheriff_OnPersist_00d21010_test.cpp'
         PassPattern = '00d21010_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d69450'
-        Module = '_unattributed'
-        Source = '00/d6/unattributed_PersistTransferQuestStartScreenShown00d69450_00d69450.cpp'
-        TestSource = '00/d6/unattributed_PersistTransferQuestStartScreenShown00d69450_00d69450_test.cpp'
+        Module = 'NScript::CQ_HangingTreeEvilScript'
+        Source = '00/d6/NScriptCQHangingTreeEvilScript_OnPersist_00d69450.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScript_OnPersist_00d69450_test.cpp'
         PassPattern = '00d69450_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d6f480'
-        Module = '_unattributed'
-        Source = '00/d6/unattributed_PersistTransferQuestStartScreenShown00d6f480_00d6f480.cpp'
-        TestSource = '00/d6/unattributed_PersistTransferQuestStartScreenShown00d6f480_00d6f480_test.cpp'
+        Module = 'NScript::CQ_HangingTreeGoodScript'
+        Source = '00/d6/NScriptCQHangingTreeGoodScript_OnPersist_00d6f480.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeGoodScript_OnPersist_00d6f480_test.cpp'
         PassPattern = '00d6f480_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d7fc40'
-        Module = '_unattributed'
-        Source = '00/d7/unattributed_PersistTransferPlayedOnce00d7fc40_00d7fc40.cpp'
-        TestSource = '00/d7/unattributed_PersistTransferPlayedOnce00d7fc40_00d7fc40_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsArenaScript::CDyingVillager'
+        Source = '00/d7/NScriptCQHeroSoulsArenaScriptCDyingVillager_OnPersist_00d7fc40.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsArenaScriptCDyingVillager_OnPersist_00d7fc40_test.cpp'
         PassPattern = '00d7fc40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d80e10'
-        Module = '_unattributed'
-        Source = '00/d8/unattributed_PersistTransferPlayedBriarCS00d80e10_00d80e10.cpp'
-        TestSource = '00/d8/unattributed_PersistTransferPlayedBriarCS00d80e10_00d80e10_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsBriarScript'
+        Source = '00/d8/NScriptCQHeroSoulsBriarScript_OnPersist_00d80e10.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsBriarScript_OnPersist_00d80e10_test.cpp'
         PassPattern = '00d80e10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d835a0'
-        Module = '_unattributed'
-        Source = '00/d8/unattributed_PersistTransferPlayedMotherCS00d835a0_00d835a0.cpp'
-        TestSource = '00/d8/unattributed_PersistTransferPlayedMotherCS00d835a0_00d835a0_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsMotherScript'
+        Source = '00/d8/NScriptCQHeroSoulsMotherScript_OnPersist_00d835a0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsMotherScript_OnPersist_00d835a0_test.cpp'
         PassPattern = '00d835a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d8ab70'
-        Module = '_unattributed'
-        Source = '00/d8/unattributed_PersistTransferHaveTalked00d8ab70_00d8ab70.cpp'
-        TestSource = '00/d8/unattributed_PersistTransferHaveTalked00d8ab70_00d8ab70_test.cpp'
+        Module = 'NScript::CQ_HerosOldHouseScript::CGhostFisherman'
+        Source = '00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_OnPersist_00d8ab70.cpp'
+        TestSource = '00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_OnPersist_00d8ab70_test.cpp'
         PassPattern = '00d8ab70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d9a160'
-        Module = '_unattributed'
-        Source = '00/d9/unattributed_PersistTransferQuestStartScreenShown00d9a160_00d9a160.cpp'
-        TestSource = '00/d9/unattributed_PersistTransferQuestStartScreenShown00d9a160_00d9a160_test.cpp'
+        Module = 'NScript::CQ_HobbeToothContestScript'
+        Source = '00/d9/NScriptCQHobbeToothContestScript_OnPersist_00d9a160.cpp'
+        TestSource = '00/d9/NScriptCQHobbeToothContestScript_OnPersist_00d9a160_test.cpp'
         PassPattern = '00d9a160_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00da84e0'
-        Module = '_unattributed'
-        Source = '00/da/unattributed_PersistTransferSpecialMinion00da84e0_00da84e0.cpp'
-        TestSource = '00/da/unattributed_PersistTransferSpecialMinion00da84e0_00da84e0_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMinionEscort'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMinionEscort_OnPersist_00da84e0.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMinionEscort_OnPersist_00da84e0_test.cpp'
         PassPattern = '00da84e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -142591,86 +142591,86 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dd9490'
-        Module = '_unattributed'
-        Source = '00/dd/unattributed_PersistTransferReleasedAndFollowing00dd9490_00dd9490.cpp'
-        TestSource = '00/dd/unattributed_PersistTransferReleasedAndFollowing00dd9490_00dd9490_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonerAccomplice_OnPersist_00dd9490.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonerAccomplice_OnPersist_00dd9490_test.cpp'
         PassPattern = '00dd9490_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dd94c0'
-        Module = '_unattributed'
-        Source = '00/dd/unattributed_PersistTransferReleasedAndFollowing00dd94c0_00dd94c0.cpp'
-        TestSource = '00/dd/unattributed_PersistTransferReleasedAndFollowing00dd94c0_00dd94c0_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisoner_OnPersist_00dd94c0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisoner_OnPersist_00dd94c0_test.cpp'
         PassPattern = '00dd94c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dec760'
-        Module = '_unattributed'
-        Source = '00/de/unattributed_PersistTransferSetChiefsHut00dec760_00dec760.cpp'
-        TestSource = '00/de/unattributed_PersistTransferSetChiefsHut00dec760_00dec760_test.cpp'
+        Module = 'NScript::CQ_RansomVictimChiefsHouseScript'
+        Source = '00/de/NScriptCQRansomVictimChiefsHouseScript_OnPersist_00dec760.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimChiefsHouseScript_OnPersist_00dec760_test.cpp'
         PassPattern = '00dec760_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00df4210'
-        Module = '_unattributed'
-        Source = '00/df/unattributed_PersistTransferKrakenAutoSaveCheckPoint00df4210_00df4210.cpp'
-        TestSource = '00/df/unattributed_PersistTransferKrakenAutoSaveCheckPoint00df4210_00df4210_test.cpp'
+        Module = 'NScript::CQ_TentacleKrakenBossFightScript'
+        Source = '00/df/NScriptCQTentacleKrakenBossFightScript_OnPersist_00df4210.cpp'
+        TestSource = '00/df/NScriptCQTentacleKrakenBossFightScript_OnPersist_00df4210_test.cpp'
         PassPattern = '00df4210_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e12300'
-        Module = '_unattributed'
-        Source = '00/e1/unattributed_PersistTransferPleadedToHero00e12300_00e12300.cpp'
-        TestSource = '00/e1/unattributed_PersistTransferPleadedToHero00e12300_00e12300_test.cpp'
+        Module = 'NScript::CQ_WaspBossScript::CWaspHelper'
+        Source = '00/e1/NScriptCQWaspBossScriptCWaspHelper_OnPersist_00e12300.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScriptCWaspHelper_OnPersist_00e12300_test.cpp'
         PassPattern = '00e12300_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e13ee0'
-        Module = '_unattributed'
-        Source = '00/e1/unattributed_PersistTransferQuestStartScreenShown00e13ee0_00e13ee0.cpp'
-        TestSource = '00/e1/unattributed_PersistTransferQuestStartScreenShown00e13ee0_00e13ee0_test.cpp'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScript_OnPersist_00e13ee0.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScript_OnPersist_00e13ee0_test.cpp'
         PassPattern = '00e13ee0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e205d0'
-        Module = '_unattributed'
-        Source = '00/e2/unattributed_PersistTransferBanditTriggered00e205d0_00e205d0.cpp'
-        TestSource = '00/e2/unattributed_PersistTransferBanditTriggered00e205d0_00e205d0_test.cpp'
+        Module = 'NScript::CQR_EscortTraderScript::CM_BanditTrigger'
+        Source = '00/e2/NScriptCQREscortTraderScriptCMBanditTrigger_OnPersist_00e205d0.cpp'
+        TestSource = '00/e2/NScriptCQREscortTraderScriptCMBanditTrigger_OnPersist_00e205d0_test.cpp'
         PassPattern = '00e205d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e25f40'
-        Module = '_unattributed'
-        Source = '00/e2/unattributed_PersistTransferGuardianSpokeToHero00e25f40_00e25f40.cpp'
-        TestSource = '00/e2/unattributed_PersistTransferGuardianSpokeToHero00e25f40_00e25f40_test.cpp'
+        Module = 'NScript::CQS_GuardianSisterInfoScript'
+        Source = '00/e2/NScriptCQSGuardianSisterInfoScript_OnPersist_00e25f40.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianSisterInfoScript_OnPersist_00e25f40_test.cpp'
         PassPattern = '00e25f40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e26e00'
-        Module = '_unattributed'
-        Source = '00/e2/unattributed_PersistTransferGuardianSpokeToHero00e26e00_00e26e00.cpp'
-        TestSource = '00/e2/unattributed_PersistTransferGuardianSpokeToHero00e26e00_00e26e00_test.cpp'
+        Module = 'NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript'
+        Source = '00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScript_OnPersist_00e26e00.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScript_OnPersist_00e26e00_test.cpp'
         PassPattern = '00e26e00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e27e60'
-        Module = '_unattributed'
-        Source = '00/e2/unattributed_PersistTransferPieceOver00e27e60_00e27e60.cpp'
-        TestSource = '00/e2/unattributed_PersistTransferPieceOver00e27e60_00e27e60_test.cpp'
+        Module = 'NScript::CQS_GuardianTrophyDealerInfoScript'
+        Source = '00/e2/NScriptCQSGuardianTrophyDealerInfoScript_OnPersist_00e27e60.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianTrophyDealerInfoScript_OnPersist_00e27e60_test.cpp'
         PassPattern = '00e27e60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e3ba50'
-        Module = '_unattributed'
-        Source = '00/e3/unattributed_PersistTransferDoneIntro00e3ba50_00e3ba50.cpp'
-        TestSource = '00/e3/unattributed_PersistTransferDoneIntro00e3ba50_00e3ba50_test.cpp'
+        Module = 'NScript::CV_BordelloScript::CMadame'
+        Source = '00/e3/NScriptCVBordelloScriptCMadame_OnPersist_00e3ba50.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScriptCMadame_OnPersist_00e3ba50_test.cpp'
         PassPattern = '00e3ba50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e3bad0'
-        Module = '_unattributed'
-        Source = '00/e3/unattributed_PersistTransferDoneToutIntro00e3bad0_00e3bad0.cpp'
-        TestSource = '00/e3/unattributed_PersistTransferDoneToutIntro00e3bad0_00e3bad0_test.cpp'
+        Module = 'NScript::CV_BordelloScript::CMagicman'
+        Source = '00/e3/NScriptCVBordelloScriptCMagicman_OnPersist_00e3bad0.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScriptCMagicman_OnPersist_00e3bad0_test.cpp'
         PassPattern = '00e3bad0_TEST PASS'
     }
     [pscustomobject]@{
@@ -142682,72 +142682,72 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e77690'
-        Module = '_unattributed'
-        Source = '00/e7/unattributed_PersistTransferDoneIntro00e77690_00e77690.cpp'
-        TestSource = '00/e7/unattributed_PersistTransferDoneIntro00e77690_00e77690_test.cpp'
+        Module = 'NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager'
+        Source = '00/e7/NScriptCVExposeMayorScriptCEMSuspiciousVillager_OnPersist_00e77690.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScriptCEMSuspiciousVillager_OnPersist_00e77690_test.cpp'
         PassPattern = '00e77690_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e776c0'
-        Module = '_unattributed'
-        Source = '00/e7/unattributed_PersistTransferIntroDone00e776c0_00e776c0.cpp'
-        TestSource = '00/e7/unattributed_PersistTransferIntroDone00e776c0_00e776c0_test.cpp'
+        Module = 'NScript::CV_ExposeMayorScript::CEM_Sheriff'
+        Source = '00/e7/NScriptCVExposeMayorScriptCEMSheriff_OnPersist_00e776c0.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScriptCEMSheriff_OnPersist_00e776c0_test.cpp'
         PassPattern = '00e776c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e84b50'
-        Module = '_unattributed'
-        Source = '00/e8/unattributed_PersistTransferIntroducedPunchClub00e84b50_00e84b50.cpp'
-        TestSource = '00/e8/unattributed_PersistTransferIntroducedPunchClub00e84b50_00e84b50_test.cpp'
+        Module = 'NScript::CV_FisticuffsClubScript::CTyler'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCTyler_OnPersist_00e84b50.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCTyler_OnPersist_00e84b50_test.cpp'
         PassPattern = '00e84b50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e98610'
-        Module = '_unattributed'
-        Source = '00/e9/unattributed_PersistTransferKidIntroDone00e98610_00e98610.cpp'
-        TestSource = '00/e9/unattributed_PersistTransferKidIntroDone00e98610_00e98610_test.cpp'
+        Module = 'NScript::CV_HeroDollsScript'
+        Source = '00/e9/NScriptCVHeroDollsScript_OnPersist_00e98610.cpp'
+        TestSource = '00/e9/NScriptCVHeroDollsScript_OnPersist_00e98610_test.cpp'
         PassPattern = '00e98610_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ea5930'
-        Module = '_unattributed'
-        Source = '00/ea/unattributed_PersistTransfergbTraderHit00ea5930_00ea5930.cpp'
-        TestSource = '00/ea/unattributed_PersistTransfergbTraderHit00ea5930_00ea5930_test.cpp'
+        Module = 'NScript::CV_LostTraderScript'
+        Source = '00/ea/NScriptCVLostTraderScript_OnPersist_00ea5930.cpp'
+        TestSource = '00/ea/NScriptCVLostTraderScript_OnPersist_00ea5930_test.cpp'
         PassPattern = '00ea5930_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eb69d0'
-        Module = '_unattributed'
-        Source = '00/eb/unattributed_PersistTransferHasBeenSpokenTo00eb69d0_00eb69d0.cpp'
-        TestSource = '00/eb/unattributed_PersistTransferHasBeenSpokenTo00eb69d0_00eb69d0_test.cpp'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassinGuard_OnPersist_00eb69d0.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassinGuard_OnPersist_00eb69d0_test.cpp'
         PassPattern = '00eb69d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eb9950'
-        Module = '_unattributed'
-        Source = '00/eb/unattributed_PersistTransferHaveSpoken00eb9950_00eb9950.cpp'
-        TestSource = '00/eb/unattributed_PersistTransferHaveSpoken00eb9950_00eb9950_test.cpp'
+        Module = 'NScript::CV_MayorsInvitationScript::CMI_InfoKeeper'
+        Source = '00/eb/NScriptCVMayorsInvitationScriptCMIInfoKeeper_OnPersist_00eb9950.cpp'
+        TestSource = '00/eb/NScriptCVMayorsInvitationScriptCMIInfoKeeper_OnPersist_00eb9950_test.cpp'
         PassPattern = '00eb9950_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ecd860'
-        Module = '_unattributed'
-        Source = '00/ec/unattributed_PersistTransferLeadHeroToSickChild00ecd860_00ecd860.cpp'
-        TestSource = '00/ec/unattributed_PersistTransferLeadHeroToSickChild00ecd860_00ecd860_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CSickChildsSister'
+        Source = '00/ec/NScriptCVSickChildScriptCSickChildsSister_OnPersist_00ecd860.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCSickChildsSister_OnPersist_00ecd860_test.cpp'
         PassPattern = '00ecd860_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ecd930'
-        Module = '_unattributed'
-        Source = '00/ec/unattributed_PersistTransferLeavingRegion00ecd930_00ecd930.cpp'
-        TestSource = '00/ec/unattributed_PersistTransferLeavingRegion00ecd930_00ecd930_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CMansLover'
+        Source = '00/ec/NScriptCVSickChildScriptCMansLover_OnPersist_00ecd930.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCMansLover_OnPersist_00ecd930_test.cpp'
         PassPattern = '00ecd930_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ecd9b0'
-        Module = '_unattributed'
-        Source = '00/ec/unattributed_PersistTransferGivenObject00ecd9b0_00ecd9b0.cpp'
-        TestSource = '00/ec/unattributed_PersistTransferGivenObject00ecd9b0_00ecd9b0_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CWomanToAttract'
+        Source = '00/ec/NScriptCVSickChildScriptCWomanToAttract_OnPersist_00ecd9b0.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCWomanToAttract_OnPersist_00ecd9b0_test.cpp'
         PassPattern = '00ecd9b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -142759,16 +142759,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f01300'
-        Module = '_unattributed'
-        Source = '00/f0/unattributed_PersistTransferSaidIntro00f01300_00f01300.cpp'
-        TestSource = '00/f0/unattributed_PersistTransferSaidIntro00f01300_00f01300_test.cpp'
+        Module = 'NScript::COracleMinigameTestScript::COracleGamesmaster'
+        Source = '00/f0/NScriptCOracleMinigameTestScriptCOracleGamesmaster_OnPersist_00f01300.cpp'
+        TestSource = '00/f0/NScriptCOracleMinigameTestScriptCOracleGamesmaster_OnPersist_00f01300_test.cpp'
         PassPattern = '00f01300_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00f0a930'
-        Module = '_unattributed'
-        Source = '00/f0/unattributed_PersistTransferSentrySeenSpy00f0a930_00f0a930.cpp'
-        TestSource = '00/f0/unattributed_PersistTransferSentrySeenSpy00f0a930_00f0a930_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_Sentry'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATSentry_OnPersist_00f0a930.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATSentry_OnPersist_00f0a930_test.cpp'
         PassPattern = '00f0a930_TEST PASS'
     }
     [pscustomobject]@{
@@ -148443,9 +148443,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d89350'
-        Module = '_unattributed'
-        Source = '00/d8/unattributed_SetFlag00d89350_00d89350.cpp'
-        TestSource = '00/d8/unattributed_SetFlag00d89350_00d89350_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsNostroScript::CNostro'
+        Source = '00/d8/NScriptCQHeroSoulsNostroScriptCNostro_OnPredicateFail_00d89350.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsNostroScriptCNostro_OnPredicateFail_00d89350_test.cpp'
         PassPattern = '00d89350_TEST PASS'
     }
     [pscustomobject]@{
@@ -156255,79 +156255,79 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d5e070'
-        Module = '_unattributed'
-        Source = '00/d5/unattributed_PersistTransfer200d5e070_00d5e070.cpp'
-        TestSource = '00/d5/unattributed_PersistTransfer200d5e070_00d5e070_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingWillScript'
+        Source = '00/d5/NScriptCQGuildTrainingWillScript_OnPersist_00d5e070.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingWillScript_OnPersist_00d5e070_test.cpp'
         PassPattern = '00d5e070_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d8aba0'
-        Module = '_unattributed'
-        Source = '00/d8/unattributed_PersistTransfer200d8aba0_00d8aba0.cpp'
-        TestSource = '00/d8/unattributed_PersistTransfer200d8aba0_00d8aba0_test.cpp'
+        Module = 'NScript::CQ_HerosOldHouseScript::CFishermansWife'
+        Source = '00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_OnPersist_00d8aba0.cpp'
+        TestSource = '00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_OnPersist_00d8aba0_test.cpp'
         PassPattern = '00d8aba0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dc2770'
-        Module = '_unattributed'
-        Source = '00/dc/unattributed_PersistTransfer200dc2770_00dc2770.cpp'
-        TestSource = '00/dc/unattributed_PersistTransfer200dc2770_00dc2770_test.cpp'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScript_OnPersist_00dc2770.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScript_OnPersist_00dc2770_test.cpp'
         PassPattern = '00dc2770_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00de4610'
-        Module = '_unattributed'
-        Source = '00/de/unattributed_PersistTransfer200de4610_00de4610.cpp'
-        TestSource = '00/de/unattributed_PersistTransfer200de4610_00de4610_test.cpp'
+        Module = 'NScript::CQ_RansomVictimScript::CVictimsFather'
+        Source = '00/de/NScriptCQRansomVictimScriptCVictimsFather_OnPersist_00de4610.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCVictimsFather_OnPersist_00de4610_test.cpp'
         PassPattern = '00de4610_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00de46c0'
-        Module = '_unattributed'
-        Source = '00/de/unattributed_PersistTransfer200de46c0_00de46c0.cpp'
-        TestSource = '00/de/unattributed_PersistTransfer200de46c0_00de46c0_test.cpp'
+        Module = 'NScript::CQ_RansomVictimScript::CNPCComment'
+        Source = '00/de/NScriptCQRansomVictimScriptCNPCComment_OnPersist_00de46c0.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCNPCComment_OnPersist_00de46c0_test.cpp'
         PassPattern = '00de46c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e3ba80'
-        Module = '_unattributed'
-        Source = '00/e3/unattributed_PersistTransfer200e3ba80_00e3ba80.cpp'
-        TestSource = '00/e3/unattributed_PersistTransfer200e3ba80_00e3ba80_test.cpp'
+        Module = 'NScript::CV_BordelloScript::CBordelloLady'
+        Source = '00/e3/NScriptCVBordelloScriptCBordelloLady_OnPersist_00e3ba80.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScriptCBordelloLady_OnPersist_00e3ba80_test.cpp'
         PassPattern = '00e3ba80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e93e60'
-        Module = '_unattributed'
-        Source = '00/e9/unattributed_PersistTransfer200e93e60_00e93e60.cpp'
-        TestSource = '00/e9/unattributed_PersistTransfer200e93e60_00e93e60_test.cpp'
+        Module = 'NScript::CV_HauntedHouseScript'
+        Source = '00/e9/NScriptCVHauntedHouseScript_OnPersist_00e93e60.cpp'
+        TestSource = '00/e9/NScriptCVHauntedHouseScript_OnPersist_00e93e60_test.cpp'
         PassPattern = '00e93e60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ea80a0'
-        Module = '_unattributed'
-        Source = '00/ea/unattributed_PersistTransfer200ea80a0_00ea80a0.cpp'
-        TestSource = '00/ea/unattributed_PersistTransfer200ea80a0_00ea80a0_test.cpp'
+        Module = 'NScript::CV_MazeResearchScript'
+        Source = '00/ea/NScriptCVMazeResearchScript_OnPersist_00ea80a0.cpp'
+        TestSource = '00/ea/NScriptCVMazeResearchScript_OnPersist_00ea80a0_test.cpp'
         PassPattern = '00ea80a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ecd8e0'
-        Module = '_unattributed'
-        Source = '00/ec/unattributed_PersistTransfer200ecd8e0_00ecd8e0.cpp'
-        TestSource = '00/ec/unattributed_PersistTransfer200ecd8e0_00ecd8e0_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CManInLove'
+        Source = '00/ec/NScriptCVSickChildScriptCManInLove_OnPersist_00ecd8e0.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCManInLove_OnPersist_00ecd8e0_test.cpp'
         PassPattern = '00ecd8e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ecd960'
-        Module = '_unattributed'
-        Source = '00/ec/unattributed_PersistTransfer200ecd960_00ecd960.cpp'
-        TestSource = '00/ec/unattributed_PersistTransfer200ecd960_00ecd960_test.cpp'
+        Module = 'NScript::CV_SickChildScript::CIngredientOwner'
+        Source = '00/ec/NScriptCVSickChildScriptCIngredientOwner_OnPersist_00ecd960.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCIngredientOwner_OnPersist_00ecd960_test.cpp'
         PassPattern = '00ecd960_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00f0a8e0'
-        Module = '_unattributed'
-        Source = '00/f0/unattributed_PersistTransfer200f0a8e0_00f0a8e0.cpp'
-        TestSource = '00/f0/unattributed_PersistTransfer200f0a8e0_00f0a8e0_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_BanditAlly'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_OnPersist_00f0a8e0.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_OnPersist_00f0a8e0_test.cpp'
         PassPattern = '00f0a8e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -167123,65 +167123,65 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cfe000'
-        Module = '_unattributed'
-        Source = '00/cf/unattributed_PersistTransferMyGraveNumber00cfe000_00cfe000.cpp'
-        TestSource = '00/cf/unattributed_PersistTransferMyGraveNumber00cfe000_00cfe000_test.cpp'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CNecropolisGhost'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGhost_OnPersist_00cfe000.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGhost_OnPersist_00cfe000_test.cpp'
         PassPattern = '00cfe000_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d21b10'
-        Module = '_unattributed'
-        Source = '00/d2/unattributed_PersistTransferTimesSpokenTo00d21b10_00d21b10.cpp'
-        TestSource = '00/d2/unattributed_PersistTransferTimesSpokenTo00d21b10_00d21b10_test.cpp'
+        Module = 'NScript::CQ_BreakSiegeScript::CDisplacedTrader'
+        Source = '00/d2/NScriptCQBreakSiegeScriptCDisplacedTrader_OnPersist_00d21b10.cpp'
+        TestSource = '00/d2/NScriptCQBreakSiegeScriptCDisplacedTrader_OnPersist_00d21b10_test.cpp'
         PassPattern = '00d21b10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d446a0'
-        Module = '_unattributed'
-        Source = '00/d4/unattributed_PersistTransferRaceMode00d446a0_00d446a0.cpp'
-        TestSource = '00/d4/unattributed_PersistTransferRaceMode00d446a0_00d446a0_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCApprenticeSpeedTest_OnPersist_00d446a0.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCApprenticeSpeedTest_OnPersist_00d446a0_test.cpp'
         PassPattern = '00d446a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d91930'
-        Module = '_unattributed'
-        Source = '00/d9/unattributed_PersistTransferNumberToGenerate00d91930_00d91930.cpp'
-        TestSource = '00/d9/unattributed_PersistTransferNumberToGenerate00d91930_00d91930_test.cpp'
+        Module = 'NScript::CQ_HobbeCaveScript::CHobbeTorrent'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCHobbeTorrent_OnPersist_00d91930.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCHobbeTorrent_OnPersist_00d91930_test.cpp'
         PassPattern = '00d91930_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dd94f0'
-        Module = '_unattributed'
-        Source = '00/dd/unattributed_PersistTransferBrainState00dd94f0_00dd94f0.cpp'
-        TestSource = '00/dd/unattributed_PersistTransferBrainState00dd94f0_00dd94f0_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_OnPersist_00dd94f0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_OnPersist_00dd94f0_test.cpp'
         PassPattern = '00dd94f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e05330'
-        Module = '_unattributed'
-        Source = '00/e0/unattributed_PersistTransferBrainState00e05330_00e05330.cpp'
-        TestSource = '00/e0/unattributed_PersistTransferBrainState00e05330_00e05330_test.cpp'
+        Module = 'NScript::CQ_TraderEscortScript::CDarkwoodTrader'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_OnPersist_00e05330.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_OnPersist_00e05330_test.cpp'
         PassPattern = '00e05330_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e4b400'
-        Module = '_unattributed'
-        Source = '00/e4/unattributed_PersistTransferTollState00e4b400_00e4b400.cpp'
-        TestSource = '00/e4/unattributed_PersistTransferTollState00e4b400_00e4b400_test.cpp'
+        Module = 'NScript::CV_BanditTollScript::CTollBandit'
+        Source = '00/e4/NScriptCVBanditTollScriptCTollBandit_OnPersist_00e4b400.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScriptCTollBandit_OnPersist_00e4b400_test.cpp'
         PassPattern = '00e4b400_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ea5960'
-        Module = '_unattributed'
-        Source = '00/ea/unattributed_PersistTransferstateBrain00ea5960_00ea5960.cpp'
-        TestSource = '00/ea/unattributed_PersistTransferstateBrain00ea5960_00ea5960_test.cpp'
+        Module = 'NScript::CV_LostTraderScript::CLostTraderTrader'
+        Source = '00/ea/NScriptCVLostTraderScriptCLostTraderTrader_OnPersist_00ea5960.cpp'
+        TestSource = '00/ea/NScriptCVLostTraderScriptCLostTraderTrader_OnPersist_00ea5960_test.cpp'
         PassPattern = '00ea5960_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ea8800'
-        Module = '_unattributed'
-        Source = '00/ea/unattributed_PersistTransferMurderTwistState00ea8800_00ea8800.cpp'
-        TestSource = '00/ea/unattributed_PersistTransferMurderTwistState00ea8800_00ea8800_test.cpp'
+        Module = 'NScript::CV_MurderTwistScript'
+        Source = '00/ea/NScriptCVMurderTwistScript_OnPersist_00ea8800.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScript_OnPersist_00ea8800_test.cpp'
         PassPattern = '00ea8800_TEST PASS'
     }
     [pscustomobject]@{
@@ -167193,16 +167193,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00eedbf0'
-        Module = '_unattributed'
-        Source = '00/ee/unattributed_PersistTransferSpeakCounter00eedbf0_00eedbf0.cpp'
-        TestSource = '00/ee/unattributed_PersistTransferSpeakCounter00eedbf0_00eedbf0_test.cpp'
+        Module = 'NScript::CPersonalScript_alextestScript::CBurningPerson'
+        Source = '00/ee/NScriptCPersonalScriptalextestScriptCBurningPerson_OnPersist_00eedbf0.cpp'
+        TestSource = '00/ee/NScriptCPersonalScriptalextestScriptCBurningPerson_OnPersist_00eedbf0_test.cpp'
         PassPattern = '00eedbf0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efc8a0'
-        Module = '_unattributed'
-        Source = '00/ef/unattributed_PersistTransferScriptVar00efc8a0_00efc8a0.cpp'
-        TestSource = '00/ef/unattributed_PersistTransferScriptVar00efc8a0_00efc8a0_test.cpp'
+        Module = 'NScript::CPersonalScript_AardvarkScript'
+        Source = '00/ef/NScriptCPersonalScriptAardvarkScript_OnPersist_00efc8a0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptAardvarkScript_OnPersist_00efc8a0_test.cpp'
         PassPattern = '00efc8a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -174423,23 +174423,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d7b4b0'
-        Module = '_unattributed'
-        Source = '00/d7/unattributed_Query00d7b4b0_00d7b4b0.cpp'
-        TestSource = '00/d7/unattributed_Query00d7b4b0_00d7b4b0_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsThunderScript::CHeroThunder'
+        Source = '00/d7/NScriptCQHeroSoulsThunderScriptCHeroThunder_OnPredicateFail_00d7b4b0.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsThunderScriptCHeroThunder_OnPredicateFail_00d7b4b0_test.cpp'
         PassPattern = '00d7b4b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d816f0'
-        Module = '_unattributed'
-        Source = '00/d8/unattributed_Query00d816f0_00d816f0.cpp'
-        TestSource = '00/d8/unattributed_Query00d816f0_00d816f0_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsBriarScript::CBriarRose'
+        Source = '00/d8/NScriptCQHeroSoulsBriarScriptCBriarRose_OnPredicateFail_00d816f0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsBriarScriptCBriarRose_OnPredicateFail_00d816f0_test.cpp'
         PassPattern = '00d816f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d85ae0'
-        Module = '_unattributed'
-        Source = '00/d8/unattributed_Query00d85ae0_00d85ae0.cpp'
-        TestSource = '00/d8/unattributed_Query00d85ae0_00d85ae0_test.cpp'
+        Module = 'NScript::CQ_HeroSoulsGuildmasterScript::CGuildmaster_HS'
+        Source = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuildmasterHS_OnPredicateFail_00d85ae0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuildmasterHS_OnPredicateFail_00d85ae0_test.cpp'
         PassPattern = '00d85ae0_TEST PASS'
     }
     [pscustomobject]@{

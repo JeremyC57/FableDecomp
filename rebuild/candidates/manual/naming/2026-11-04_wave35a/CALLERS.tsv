@@ -1,0 +1,2 @@
+address	caller_fn	caller_name	site	op	caller_landed	note
+# none: no call/jmp rel32 site in Fable.exe targets any of the 923 respelled addresses (scripts/callers35.py, logs: callers_scan.tsv); each address has exactly one absolute reference in the image (its vtable slot), so no landed caller names an old spelling.
