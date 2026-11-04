@@ -382281,6 +382281,111 @@ $catalog = @(
         TestSource = '00/98/CAIStateGroupOpinionReactionRoot_FleeIsRunnable_00984d90_test.cpp'
         PassPattern = '00984d90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005dcb00'
+        Module = 'CAnimationSet'
+        Source = '00/5d/CAnimationSet_GetAnimsWithNameStartingWith_005dcb00.cpp'
+        TestSource = '00/5d/CAnimationSet_GetAnimsWithNameStartingWith_005dcb00_test.cpp'
+        PassPattern = '005dcb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00725b70'
+        Module = 'CTCPhysicsControlled'
+        Source = '00/72/CTCPhysicsControlled_UpdateAdditionalImpulse_00725b70.cpp'
+        TestSource = '00/72/CTCPhysicsControlled_UpdateAdditionalImpulse_00725b70_test.cpp'
+        PassPattern = '00725b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072c9c0'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_SetupBattleCharge_0072c9c0.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_SetupBattleCharge_0072c9c0_test.cpp'
+        PassPattern = '0072c9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bdd77'
+        Module = 'NThingShot::CTCShotDefinitionMultiArrow'
+        Source = '00/7b/NThingShotCTCShotDefinitionMultiArrow_InitAttachedEffects_007bdd77.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionMultiArrow_InitAttachedEffects_007bdd77_test.cpp'
+        PassPattern = '007bdd77_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007be3e0'
+        Module = 'NThingShot::CTCShotDefinitionForcePushBall'
+        Source = '00/7b/NThingShotCTCShotDefinitionForcePushBall_InitAttachedEffects_007be3e0.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionForcePushBall_InitAttachedEffects_007be3e0_test.cpp'
+        PassPattern = '007be3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007be4e0'
+        Module = 'NThingShot::CTCShotDefinitionDrainLife'
+        Source = '00/7b/NThingShotCTCShotDefinitionDrainLife_InitAttachedEffects_007be4e0.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionDrainLife_InitAttachedEffects_007be4e0_test.cpp'
+        PassPattern = '007be4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fefe0'
+        Module = 'CTCNamedUserActionPoints'
+        Source = '00/7f/CTCNamedUserActionPoints_GetFullNamedActionPoint_007fefe0.cpp'
+        TestSource = '00/7f/CTCNamedUserActionPoints_GetFullNamedActionPoint_007fefe0_test.cpp'
+        PassPattern = '007fefe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096ae50'
+        Module = 'CAIStateGroup_WhisperRetreat'
+        Source = '00/96/CAIStateGroupWhisperRetreat_UseWill_0096ae50.cpp'
+        TestSource = '00/96/CAIStateGroupWhisperRetreat_UseWill_0096ae50_test.cpp'
+        PassPattern = '0096ae50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a780b0'
+        Module = 'CNavConnectorNode'
+        Source = '00/a7/CNavConnectorNode_CNavConnectorNode_00a780b0.cpp'
+        TestSource = '00/a7/CNavConnectorNode_CNavConnectorNode_00a780b0_test.cpp'
+        PassPattern = '00a780b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a887b0'
+        Module = 'CSBCCorridor'
+        Source = '00/a8/CSBCCorridor_CreateLineList_00a887b0.cpp'
+        TestSource = '00/a8/CSBCCorridor_CreateLineList_00a887b0_test.cpp'
+        PassPattern = '00a887b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a8ff50'
+        Module = 'N3DPrimitive::CAnimatedBlock'
+        Source = '00/a8/N3DPrimitiveCAnimatedBlock_ConvertToVBFormatNonBump_00a8ff50.cpp'
+        TestSource = '00/a8/N3DPrimitiveCAnimatedBlock_ConvertToVBFormatNonBump_00a8ff50_test.cpp'
+        PassPattern = '00a8ff50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad8dd0'
+        Module = 'CVertexGroupBlockOptimiser'
+        Source = '00/ad/CVertexGroupBlockOptimiser_CanInsertMoreBlocks_00ad8dd0.cpp'
+        TestSource = '00/ad/CVertexGroupBlockOptimiser_CanInsertMoreBlocks_00ad8dd0_test.cpp'
+        PassPattern = '00ad8dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b24400'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_ConvertScreenPosToWorldPosAtViewDistance_00b24400.cpp'
+        TestSource = '00/b2/CEngine_ConvertScreenPosToWorldPosAtViewDistance_00b24400_test.cpp'
+        PassPattern = '00b24400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bcc700'
+        Module = 'CEnginePrimitiveManagerWeaponTrails'
+        Source = '00/bc/CEnginePrimitiveManagerWeaponTrails_RenderPrimitive_00bcc700.cpp'
+        TestSource = '00/bc/CEnginePrimitiveManagerWeaponTrails_RenderPrimitive_00bcc700_test.cpp'
+        PassPattern = '00bcc700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d361f0'
+        Module = 'NScript::CQ_FireHeartScript'
+        Source = '00/d3/NScriptCQFireHeartScript_RestoreFollowers_00d361f0.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScript_RestoreFollowers_00d361f0_test.cpp'
+        PassPattern = '00d361f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

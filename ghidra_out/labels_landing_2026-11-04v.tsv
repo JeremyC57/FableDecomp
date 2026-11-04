@@ -1,0 +1,20 @@
+address	name	evidence
+005dcb00	CAnimationSet::GetAnimsWithNameStartingWith	landing 2026-11-04v (chunk 758): RELOCATION_MATCH (chunk 758); Ego_r.pdb signature
+00725b70	CTCPhysicsControlled::UpdateAdditionalImpulse	landing 2026-11-04v (chunk 758): RELOCATION_MATCH (chunk 758); Ego_r.pdb
+0072c9c0	CTCSpecialAbilities::SetupBattleCharge	landing 2026-11-04v (chunk 758): RELOCATION_MATCH (chunk 758); Ego_r.pdb
+007bdd77	NThingShot::CTCShotDefinitionMultiArrow::InitAttachedEffects	landing 2026-11-04v (chunk 758): RELOCATION_MATCH (chunk 758); Ego_r.pdb (protected virtual)
+007be3e0	NThingShot::CTCShotDefinitionForcePushBall::InitAttachedEffects	landing 2026-11-04v (chunk 758): RELOCATION_MATCH (chunk 758); Ego_r.pdb
+007be4e0	NThingShot::CTCShotDefinitionDrainLife::InitAttachedEffects	landing 2026-11-04v (chunk 758): RELOCATION_MATCH (chunk 758); Ego_r.pdb
+007fefe0	CTCNamedUserActionPoints::GetFullNamedActionPoint	landing 2026-11-04v (chunk 758): RELOCATION_MATCH (chunk 758); Ego_r.pdb
+0096ae50	CAIStateGroup_WhisperRetreat::UseWill	landing 2026-11-04v (chunk 758): RELOCATION_MATCH (chunk 758); Ego_r.pdb (protected)
+00a780b0	CNavConnectorNode::~CNavConnectorNode	landing 2026-11-04v (chunk 758): RELOCATION_MATCH (chunk 758); Ego_r.pdb
+00a887b0	CSBCCorridor::CreateLineList	landing 2026-11-04v (chunk 758): RELOCATION_MATCH (chunk 758); Ego_r.pdb
+00a8ff50	N3DPrimitive::CAnimatedBlock::ConvertToVBFormatNonBump	landing 2026-11-04v (chunk 758): MATCH (chunk 758); Ego_r.pdb (private)
+00ad8dd0	CVertexGroupBlockOptimiser::CanInsertMoreBlocks	landing 2026-11-04v (chunk 758): MATCH (chunk 758); Ego_r.pdb (private const)
+00b24400	CEngine::ConvertScreenPosToWorldPosAtViewDistance	landing 2026-11-04v (chunk 758): RELOCATION_MATCH (chunk 758); Ego_r.pdb (virtual const, CIEngine slot 12)
+00bcc700	CEnginePrimitiveManagerWeaponTrails::RenderPrimitive	landing 2026-11-04v (chunk 758): RELOCATION_MATCH (chunk 758); Ego_r.pdb
+00d361f0	NScript::CQ_FireHeartScript::RestoreFollowers	landing 2026-11-04v (chunk 758): RELOCATION_MATCH (chunk 758); Ego_r.pdb
+0072d990	CCreatureAction_CastAssassinRush::~CCreatureAction_CastAssassinRush	landing 2026-11-04v (chunk 758): called by the 0x0096AE50 match for the CastAssassinRush temporary; Ego_r.pdb virtual dtor
+0090a700	CCreatureAction_MidAttack360::CCreatureAction_MidAttack360	landing 2026-11-04v (chunk 758): called by the 0x0096AE50 match; Ego_r.pdb + FableWin.pdb ctor (CThingCreatureBase&, CThingCreatureBase&), vtable 0x0128EFD4
+0097db70	CAIStateGroupBase::AIAction_PerformActionAndWait	landing 2026-11-04v (chunk 758): called by the 0x0096AE50 match; Ego_r.pdb + FableWin.pdb (protected)
+0085cde0	NThingMap::CThingMap::Validate	landing 2026-11-04v (chunk 758): PROBABLE (parked row): Ego_r.pdb order Validate before Clear; retail Clear is 0x0085CEC0

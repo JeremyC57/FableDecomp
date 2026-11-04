@@ -53,7 +53,13 @@ public:
     virtual void WorldFrameUpdate(bool);                                  //  9 0x00B23310
     virtual void PausedWorldFrameUpdate();                                // 10 0x00B23320
     virtual void Virtual11_00b23cf0() = 0;                                // 11 (CEngine 0x00B23CF0, ret 8)
+#ifdef FABLE_RETAIL_CIENGINE_CONVERTSCREENPOS
+    // Nested opt-in (chunk 758, row 0x00B24400): slot 12 is FableWin.pdb ?ConvertScreenPosToWorldPosAtViewDistance@CEngine@@UBE_NMABVC2DVector@@AAVC3DVector@@@Z
+    // (labels_rtti_port.tsv; CEngine vtable 0x012A0F3C slot 12, `ret 0Ch`); pure here like the other unnamed slots.
+    virtual bool ConvertScreenPosToWorldPosAtViewDistance(float, const C2DVector&, C3DVector&) const = 0;   // 12 (CEngine 0x00B24400)
+#else
     virtual void Virtual12_00b24400() = 0;                                // 12 (CEngine 0x00B24400, ret 0xC)
+#endif
     virtual void Virtual13_00b242d0() = 0;                                // 13 (CEngine 0x00B242D0, ret 8)
     virtual bool SetVideoOptions(const CEngineVideoOptions&);             // 14 0x00B23330
     virtual bool PreChangeResolution() = 0;                               // 15 (CEngine 0x00B2AA20)

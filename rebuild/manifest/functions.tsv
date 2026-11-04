@@ -19065,7 +19065,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0072d510	~list	std::list<T_0072d510>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CActiveFile_OnReadFinished_0072d510.cpp
 0072d8f0	list	std::list<T_0x14_0072d8f0>	unknown	undefined	0		0	yes	review-medium									
 0072d910	~list	std::list<T_0072d910>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CActiveFile_OnReadFinished_0072d910.cpp
-0072d990	~CBase_0062e900_Derived_0072d990	_unattributed	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
+0072d990	~CCreatureAction_CastAssassinRush	CCreatureAction_CastAssassinRush	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
 0072d9f0	GetInterfaceType	CTCSpecialAbilities	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0072da00	GetClassTypeName	CTCSpecialAbilities	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 0072da20	vfunc_8	CTCSpecialAbilities	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -22315,12 +22315,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007bdac7	UpdateCollision	NThingShot::CTCShotDefinitionDrainLife	__thiscall	void	2	CTCShotDefinitionDrainLife *,bool *	1	yes	accepted									
 007bdb66	OnCollision	CTCShotDefinitionNymphFun	__thiscall	void	5	CTCShotDefinitionNymphFun *,ECollideType,C3DVector *,C3DVector *,CThing *	1	yes	accepted									
 007bdcfc	GetShotDamage	CTCShotDefinitionMultiArrow	__thiscall	float	1	CTCShotDefinitionMultiArrow *	1	yes	accepted									
-007bdd77	InitAttachedEffects	CTCShotDefinitionMultiArrow	__thiscall	void	1	CTCShotDefinitionMultiArrow *	1	yes	accepted									
+007bdd77	InitAttachedEffects	NThingShot::CTCShotDefinitionMultiArrow	__thiscall	void	1	CTCShotDefinitionMultiArrow *	1	yes	accepted									
 007bde31	OnCollision	CTCShotDefinitionFireballSpell	__thiscall	void	5	CTCShotDefinitionFireballSpell *,ECollideType,C3DVector *,C3DVector *,CThing *	1	yes	accepted									
 007be05c	SetSoulEffect	NThingShot::CTCShotDefinitionDrainLife	__thiscall	void	2	CTCShotDefinitionDrainLife *,long	1	yes	accepted									
 007be0f9	OnCollision	NThingShot::CTCShotDefinitionForcePushBall	__thiscall	void	5	CTCShotDefinitionForcePushBall *,ECollideType,C3DVector *,C3DVector *,CThing *	1	yes	accepted									
-007be3e0	InitAttachedEffects	CTCShotDefinitionForcePushBall	__thiscall	void	1	CTCShotDefinitionDrainLife *	1	yes	accepted									
-007be4e0	InitAttachedEffects	CTCShotDefinitionDrainLife	__thiscall	void	1	CTCShotDefinitionDrainLife *	1	yes	accepted									
+007be3e0	InitAttachedEffects	NThingShot::CTCShotDefinitionForcePushBall	__thiscall	void	1	CTCShotDefinitionDrainLife *	1	yes	accepted									
+007be4e0	InitAttachedEffects	NThingShot::CTCShotDefinitionDrainLife	__thiscall	void	1	CTCShotDefinitionDrainLife *	1	yes	accepted									
 007be5e0	GetTypeAsString	CTCShotDefinitionMultiArrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007be63a	CIVCountedPointer_Release_007be63a	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7b\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007be63a.cpp
 007be652	CIVCountedPointer_Release_007be652	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7b\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007be652.cpp
@@ -25552,7 +25552,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0085ca80	LEASetExclusiveMode	CWorld	__thiscall	void	2	CWorld *,CGameEvent *	1	yes	accepted									
 0085caf0	LEASetDisplayMode	CWorld	__thiscall	void	2	CWorld *,CGameEvent *	1	yes	accepted									
 0085cbd0	DebugDraw	CThingMap	__thiscall	void	3	CThingMap *,C2DVector *,long	1	yes	accepted									
-0085cde0	Clear	CThingMap	__thiscall	void	1	CThingMap *	1	yes	accepted									
+0085cde0	Validate	NThingMap::CThingMap	__thiscall	void	1	CThingMap *	1	yes	accepted									
 0085cec0	Clear	NThingMap::CThingMap	__thiscall	void	1	CThingMap *	1	yes	accepted									
 0085cfe0	GetMemoryFootprint	NThingMap::CThingMap	__thiscall	long	1	CThingMap *	1	yes	accepted									
 0085d010	GetAllThings	NThingMap::CThingMap	__thiscall	void	2	CThingMap *,set<CTCMapwho*,std::less<CTCMapwho*>,std::allocator<CTCMapwho*>_> *	1	yes	accepted									
@@ -38329,7 +38329,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a87960	CSBIAgents::Process	CSBIAgents	__thiscall	bool	2	CSBIAgents *,CSteeringAgent const *	1	yes	accepted									
 00a88080	Reset	CSBCCorridor	__thiscall	void	2	CParticleSystem *,CEnginePrimitiveHandle *	1	yes	accepted									
 00a880c0	?Process@CSBCCorridor@@UAE_NPBVCSteeringAgent@@@Z	CSBCCorridor	__thiscall	bool	2	CSBCCorridor *,CSteeringAgent *	1	yes	accepted									
-00a887b0	?CreateLineList@CSBCCorridor@@UAEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z	CSBCCorridor	__thiscall	void	2	CSBCCorridor *,vector<C3DVector,std::allocator<C3DVector>_> *	1	yes	accepted									
+00a887b0	CreateLineList	CSBCCorridor	__thiscall	void	2	CSBCCorridor *,vector<C3DVector,std::allocator<C3DVector>_> *	1	yes	accepted									
 00a88910	GetType	CSBAgents	__thiscall	CSB::ESB_TYPE	1	CSBAgents *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a8\CSBAgents_GetType_00a88910.cpp
 00a88920	`scalar deleting destructor'	CSBAgents	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a88b10	push_back	std::list<CWall>	unknown	undefined	0		0	yes	accepted									
@@ -38430,7 +38430,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a8f9e0	UploadToIndexBuffer	C3DPrimitive2	__thiscall	bool	2	C3DPrimitive2 *,ulong	1	yes	accepted									
 00a8fcf0	GetUsedBones	C3DPrimitive2	__thiscall	void	2	C3DPrimitive2 *,CArray<bool> *	1	yes	accepted									
 00a8fd40	SaveBinary	C3DPrimitive2	__thiscall	void	2	C3DPrimitive2 *,CDataOutputStream *	1	yes	accepted									
-00a8ff50	ConvertToVBFormatNonBump	CAnimatedBlock	__thiscall	void	3	CAnimatedBlock *,CTVertexNormBlend4Tex1 *,CDeviceIndependent *	1	yes	accepted									
+00a8ff50	ConvertToVBFormatNonBump	N3DPrimitive::CAnimatedBlock	__thiscall	void	3	CAnimatedBlock *,CTVertexNormBlend4Tex1 *,CDeviceIndependent *	1	yes	accepted									
 00a90040	ConvertToVBFormatBump	CAnimatedBlock	__thiscall	void	3	CAnimatedBlock *,CTVertexNormBlend4Tex1Bump *,CDeviceIndependent *	1	yes	accepted									
 00a901e0	FreeData	C3DPrimitive2	__thiscall	void	1	CInputManagerDX *	1	yes	accepted									
 00a90260	CreateDegenerateTriangleIndexBuffer	C3DPrimitive2	__thiscall	bool	1	C3DPrimitive2 *	1	yes	accepted									
@@ -40880,7 +40880,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b24150	ClipSphere	CEngine	__thiscall	bool	2	CEngine *,C3DBoundingSphere *	1	yes	accepted									
 00b242a0	ClipBox	CEngine	__thiscall	bool	2	CEngine *,C3DBoundingBox const &	1	yes	accepted									
 00b242d0	CEngine::ConvertWorldPosToScreenPos	CEngine	__thiscall	bool	3	CEngine *,C3DVector const &,C2DVector &	1	yes	accepted									
-00b24400	CEngine::ConvertScreenPosToWorldPosAtViewDistance	CEngine	__thiscall	bool	4	CEngine *,float,C2DVector const &,C3DVector &	1	yes	accepted									
+00b24400	ConvertScreenPosToWorldPosAtViewDistance	CEngine	__thiscall	bool	4	CEngine *,float,C2DVector const &,C3DVector &	1	yes	accepted									
 00b244f0	GetPoolTextureSize	CTextureManager	__thiscall	ulong	2	CTextureManager *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b2\CTextureManager_GetPoolTextureSize_00b244f0.cpp
 00b24500	SmartRestoreComponentVideoMemory	CEngine	__thiscall	ESmartRestoreComponentVideoMemoryResult	1	CEngine *	1	yes	accepted									
 00b24690	SetVideoOptions	CEngine	__thiscall	bool	2	CEngine *,CEngineVideoOptions const &	1	yes	accepted									
@@ -42717,7 +42717,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bcc400	CEngineSubPrimitiveWeaponTrail	CEngineSubPrimitiveWeaponTrail	__thiscall	undefined	2	CEngineSubPrimitive2DClockSprite *,CEngineInternalPrimitive2DClockSprite *	0	yes	accepted									
 00bcc4f0	`scalar_deleting_destructor'	CEngineSubPrimitiveWeaponTrail	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bc\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00bcc4f0.cpp
 00bcc5f0	CEnginePrimitiveManagerWeaponTrails	CEnginePrimitiveManagerWeaponTrails	__thiscall	undefined	2	CEnginePrimitiveManagerSpriteTrails *,CArray<CEngineScene*> *	0	yes	accepted									
-00bcc700	CEnginePrimitiveManagerWeaponTrails::RenderPrimitive	CEnginePrimitiveManagerWeaponTrails	__thiscall	ERendered	4	CEnginePrimitiveManagerWeaponTrails *,CEngineInternalPrimitiveBase &,EEngineRenderLayer,CEngineSubPrimitiveChain &	1	yes	accepted									
+00bcc700	RenderPrimitive	CEnginePrimitiveManagerWeaponTrails	__thiscall	ERendered	4	CEnginePrimitiveManagerWeaponTrails *,CEngineInternalPrimitiveBase &,EEngineRenderLayer,CEngineSubPrimitiveChain &	1	yes	accepted									
 00bcc7c0	GetSupportedTypes	CEnginePrimitiveManagerWeaponTrails	__thiscall	void	2	CEnginePrimitiveManagerWeaponTrails *,CEnginePrimitiveTypeList &	1	yes	accepted									
 00bcc800	RenderWeaponTrail	CEnginePrimitiveManagerWeaponTrails	__thiscall	void	2	CEnginePrimitiveManagerWeaponTrails *,CEngineInternalPrimitiveWeaponTrail *	1	yes	accepted									
 00bcd490	RenderSubPrimitive	CEnginePrimitiveManagerWeaponTrails	__thiscall	void	3	CEnginePrimitiveManagerWeaponTrails *,CEngineSubPrimitiveBase &,ERenderPassType	1	yes	accepted									
@@ -49884,7 +49884,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d360e0	CheckGameEnding	CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
 00d36130	GetEntityScriptName	CEntityScriptBinding<NScript::CQ_FireHeartScript>	unknown	undefined	0		0			discovered	gapscan							
 00d36140	SetupPuzzleBlocks	NScript::CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
-00d361f0	RestoreFollowers	CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
+00d361f0	RestoreFollowers	NScript::CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
 00d362b0	Alloc	NScript::CQ_FireHeartScript::CDF_Fireheart	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00d36350	GetParentScript	NScript::CQ_FireHeartScript::CDF_Fireheart	unknown	undefined	0		0			discovered	gapscan							
 00d36360	Init	NScript::CQ_FireHeartScript::CDF_Fireheart	unknown	undefined	0		0			discovered	gapscan							

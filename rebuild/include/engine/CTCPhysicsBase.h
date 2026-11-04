@@ -198,6 +198,13 @@ public:
     const C3DVector& GetPosition() const { return Position; }
     float GetRadius() const { return Radius; }
     CPhysicsMeshObject GetPhysicsMeshObject() const;
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_SEARCHTOOLS
+    // Nested opt-in (chunk 758, row 0x00725B70 CTCPhysicsControlled::UpdateAdditionalImpulse): Ego_r.pdb
+    // ?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ, out of line in retail at 0x006AFD40 (`call PeekWorld
+    // 0x00686A80 ; mov eax,[eax+20h]`). Declaration only: no layout change.
+protected:
+    const class CThingSearchTools& GetThingSearchTools() const;        // 0x006AFD40
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCPhysicsBase)==0x40);
 #else

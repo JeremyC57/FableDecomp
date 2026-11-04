@@ -1,0 +1,20 @@
+address	name	evidence
+005dcb00	CAnimationSet::GetAnimsWithNameStartingWith	RELOCATION_MATCH (chunk 758); Ego_r.pdb signature
+00725b70	CTCPhysicsControlled::UpdateAdditionalImpulse	RELOCATION_MATCH (chunk 758); Ego_r.pdb
+0072c9c0	CTCSpecialAbilities::SetupBattleCharge	RELOCATION_MATCH (chunk 758); Ego_r.pdb
+007bdd77	NThingShot::CTCShotDefinitionMultiArrow::InitAttachedEffects	RELOCATION_MATCH (chunk 758); Ego_r.pdb (protected virtual)
+007be3e0	NThingShot::CTCShotDefinitionForcePushBall::InitAttachedEffects	RELOCATION_MATCH (chunk 758); Ego_r.pdb
+007be4e0	NThingShot::CTCShotDefinitionDrainLife::InitAttachedEffects	RELOCATION_MATCH (chunk 758); Ego_r.pdb
+007fefe0	CTCNamedUserActionPoints::GetFullNamedActionPoint	RELOCATION_MATCH (chunk 758); Ego_r.pdb
+0096ae50	CAIStateGroup_WhisperRetreat::UseWill	RELOCATION_MATCH (chunk 758); Ego_r.pdb (protected)
+00a780b0	CNavConnectorNode::~CNavConnectorNode	RELOCATION_MATCH (chunk 758); Ego_r.pdb
+00a887b0	CSBCCorridor::CreateLineList	RELOCATION_MATCH (chunk 758); Ego_r.pdb
+00a8ff50	N3DPrimitive::CAnimatedBlock::ConvertToVBFormatNonBump	MATCH (chunk 758); Ego_r.pdb (private)
+00ad8dd0	CVertexGroupBlockOptimiser::CanInsertMoreBlocks	MATCH (chunk 758); Ego_r.pdb (private const)
+00b24400	CEngine::ConvertScreenPosToWorldPosAtViewDistance	RELOCATION_MATCH (chunk 758); Ego_r.pdb (virtual const, CIEngine slot 12)
+00bcc700	CEnginePrimitiveManagerWeaponTrails::RenderPrimitive	RELOCATION_MATCH (chunk 758); Ego_r.pdb
+00d361f0	NScript::CQ_FireHeartScript::RestoreFollowers	RELOCATION_MATCH (chunk 758); Ego_r.pdb
+0072d990	CCreatureAction_CastAssassinRush::~CCreatureAction_CastAssassinRush	called by the 0x0096AE50 match for the CastAssassinRush temporary; Ego_r.pdb virtual dtor
+0090a700	CCreatureAction_MidAttack360::CCreatureAction_MidAttack360	called by the 0x0096AE50 match; Ego_r.pdb + FableWin.pdb ctor (CThingCreatureBase&, CThingCreatureBase&), vtable 0x0128EFD4
+0097db70	CAIStateGroupBase::AIAction_PerformActionAndWait	called by the 0x0096AE50 match; Ego_r.pdb + FableWin.pdb (protected)
+0085cde0	NThingMap::CThingMap::Validate	PROBABLE (parked row): Ego_r.pdb order Validate before Clear; retail Clear is 0x0085CEC0

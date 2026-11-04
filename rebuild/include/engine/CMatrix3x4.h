@@ -72,6 +72,20 @@ public:
     // __forceinline (owner 2026-11-01 helper rule): retail expands it in place in both PreparePrimitives rows and Fable.exe has no
     // out-of-line ?TransformPoint@CMatrix3x4@@QBEXAAVC3DVector@@@Z (the catalog has none; only the debug PDBs carry a copy); with
     // plain inline VC7.1 calls it out of line twice in 0x00B19C60 (landing 2026-11-03h probe).
+#ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_SUMS
+    // Nested opt-in (chunk 758, row 0x00B24400 CEngine::ConvertScreenPosToWorldPosAtViewDistance): retail 0x00B2444C..0x00B244C4 sums the
+    // X row as E21*y+E31*z, then E11*x, then E41, but the Y and Z rows left to right (`fld x ; fmul E12 ; .. fmul E22 ; faddp ; ..
+    // fmul E32 ; faddp ; fadd E42`, and E13, E23, E33, E43) -- the parenthesised Y / Z rows above give E22*y+E32*z first there (dl 18).
+    // A third retail context for the same inline body (see the Open note above).
+    __forceinline void TransformPoint(C3DVector& point) const {
+        const float xx=point.X;
+        const float yy=point.Y;
+        const float zz=point.Z;
+        point.X=E11*xx+(E21*yy+E31*zz)+E41;
+        point.Y=E12*xx+E22*yy+E32*zz+E42;
+        point.Z=E13*xx+E23*yy+E33*zz+E43;
+    }
+#else
     __forceinline void TransformPoint(C3DVector& point) const {
         const float xx=point.X;
         const float yy=point.Y;
@@ -80,6 +94,7 @@ public:
         point.Y=E12*xx+(E22*yy+E32*zz)+E42;
         point.Z=E13*xx+(E23*yy+E33*zz)+E43;
     }
+#endif
 #else
     void TransformPoint(C3DVector& point) const {
         const float xx=point.X;

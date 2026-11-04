@@ -1,0 +1,25 @@
+catalog  0072d990 _unattributed::~CBase_0062e900_Derived_0072d990 -> CCreatureAction_CastAssassinRush::~CCreatureAction_CastAssassinRush
+catalog  005dcb00 GetAnimsWithNameStartingWith -> CAnimationSet::GetAnimsWithNameStartingWith
+catalog  00725b70 UpdateAdditionalImpulse -> CTCPhysicsControlled::UpdateAdditionalImpulse
+catalog  0072c9c0 SetupBattleCharge -> CTCSpecialAbilities::SetupBattleCharge
+catalog  007bdd77 InitAttachedEffects -> NThingShot::CTCShotDefinitionMultiArrow::InitAttachedEffects
+catalog  007be3e0 InitAttachedEffects -> NThingShot::CTCShotDefinitionForcePushBall::InitAttachedEffects
+catalog  007be4e0 InitAttachedEffects -> NThingShot::CTCShotDefinitionDrainLife::InitAttachedEffects
+catalog  007fefe0 GetFullNamedActionPoint -> CTCNamedUserActionPoints::GetFullNamedActionPoint
+catalog  0096ae50 UseWill -> CAIStateGroup_WhisperRetreat::UseWill
+catalog  00a780b0 ~CNavConnectorNode -> CNavConnectorNode::~CNavConnectorNode
+catalog  00a887b0 ?CreateLineList@CSBCCorridor@@UAEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z -> CSBCCorridor::CreateLineList
+catalog  00a8ff50 ConvertToVBFormatNonBump -> N3DPrimitive::CAnimatedBlock::ConvertToVBFormatNonBump
+catalog  00ad8dd0 CanInsertMoreBlocks -> CVertexGroupBlockOptimiser::CanInsertMoreBlocks
+catalog  00d361f0 RestoreFollowers -> NScript::CQ_FireHeartScript::RestoreFollowers
+manifest 0072d990 _unattributed::~CBase_0062e900_Derived_0072d990 -> CCreatureAction_CastAssassinRush::~CCreatureAction_CastAssassinRush
+manifest 007bdd77 CTCShotDefinitionMultiArrow::InitAttachedEffects -> NThingShot::CTCShotDefinitionMultiArrow::InitAttachedEffects
+manifest 007be3e0 CTCShotDefinitionForcePushBall::InitAttachedEffects -> NThingShot::CTCShotDefinitionForcePushBall::InitAttachedEffects
+manifest 007be4e0 CTCShotDefinitionDrainLife::InitAttachedEffects -> NThingShot::CTCShotDefinitionDrainLife::InitAttachedEffects
+manifest 0085cde0 CThingMap::Clear -> NThingMap::CThingMap::Validate
+manifest 00a887b0 CSBCCorridor::?CreateLineList@CSBCCorridor@@UAEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z -> CSBCCorridor::CreateLineList
+manifest 00a8ff50 CAnimatedBlock::ConvertToVBFormatNonBump -> N3DPrimitive::CAnimatedBlock::ConvertToVBFormatNonBump
+manifest 00b24400 CEngine::CEngine::ConvertScreenPosToWorldPosAtViewDistance -> CEngine::ConvertScreenPosToWorldPosAtViewDistance
+manifest 00bcc700 CEnginePrimitiveManagerWeaponTrails::CEnginePrimitiveManagerWeaponTrails::RenderPrimitive -> CEnginePrimitiveManagerWeaponTrails::RenderPrimitive
+manifest 00d361f0 CQ_FireHeartScript::RestoreFollowers -> NScript::CQ_FireHeartScript::RestoreFollowers
+labels 19  catalog renamed 14  manifest renamed 10

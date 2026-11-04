@@ -1,0 +1,75 @@
+addr       parity           behav  name
+005dcb00   WARN SHARED_HEADER_AVAILABLE CDefString
+005dcb00   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+005dcb00   RELOCATION_MATCH PASS   GetAnimsWithNameStartingWith
+00725b70   WARN RELOC_NAME: ?GetThingSearchTools@CTCPhysicsBase@@IBEABVCThingSearchTools@@XZ -> 006afd40 labelled 'CTCBase::PeekThingSearchTools'
+00725b70   WARN RELOC_CONFLICT: ??$_For_each@PAPAVCThingCreatureBase@@VCApplyAdditionalImpulseIfInCombatAndTooClose@@@std@@YI?AVCApplyAdditionalImpulseIfInCombatAndTooClose@@PAPAVCThingCreatureBase@@0V1@@Z -> 00726610 here, 00727500 in landed 00726be0
+00725b70   RELOCATION_MATCH PASS   UpdateAdditionalImpulse
+0072c9c0   WARN RELOC_CONFLICT: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 004365b0 here, 0040f020 in landed 00635080
+0072c9c0   WARN RELOC_NAME: ??1CCreatureAction_CastBattleCharge@@QAE@XZ -> 0062e900 labelled 'CCreatureAction_CastWillFireballSpell::~CCreatureAction_CastWillFireballSpell'
+0072c9c0   RELOCATION_MATCH PASS   SetupBattleCharge
+007bdd77   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007bdd77   RELOCATION_MATCH PASS   InitAttachedEffects
+007be3e0   RELOCATION_MATCH PASS   InitAttachedEffects
+007be4e0   RELOCATION_MATCH PASS   InitAttachedEffects
+007fefe0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007fefe0   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+007fefe0   RELOCATION_MATCH PASS   GetFullNamedActionPoint
+0096ae50   WARN RELOC_NAME: ??1CCreatureAction_CastAssassinRush@@UAE@XZ -> 0072d990 labelled '_unattributed::~CBase_0062e900_Derived_0072d990'
+0096ae50   WARN RELOC_NAME: ??1?$CCountedPointer@VCCreatureActionBase@@@@QAE@XZ -> 0048c5c0 labelled '_global::CCountedPointer_Release_0048c5c0'
+0096ae50   RELOCATION_MATCH PASS   UseWill
+00a780b0   WARN SHARED_HEADER_AVAILABLE CNavRegion
+00a780b0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a780b0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a780b0   RELOCATION_MATCH PASS   ~CNavConnectorNode
+00a887b0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a887b0   WARN SHARED_HEADER_AVAILABLE CSBCCorridor
+00a887b0   RELOCATION_MATCH PASS   CreateLineList
+00a8ff50   WARN SHARED_HEADER_AVAILABLE C3DVector
+00a8ff50   WARN SHARED_HEADER_AVAILABLE C3DVertex2
+00a8ff50   WARN SHARED_HEADER_AVAILABLE C3DIndexedBoneWeight
+00a8ff50   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00a8ff50   MATCH            PASS   ConvertToVBFormatNonBump
+00ad8dd0   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock
+00ad8dd0   MATCH            PASS   CanInsertMoreBlocks
+00b24400   RELOCATION_MATCH PASS   ConvertScreenPosToWorldPosAtViewDistance
+00bcc700   WARN SHARED_HEADER_AVAILABLE C3DVector
+00bcc700   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00bcc700   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00bcc700   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00bcc700   RELOCATION_MATCH PASS   RenderPrimitive
+00d361f0   RELOCATION_MATCH PASS   RestoreFollowers
+
+WINS: 15
+  005dcb00 RELOCATION_MATCH CAnimationSet::?GetAnimsWithNameStartingWith@CAnimationSet@@QBEXABVCCharString@@AAV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@ABVCAnimFilterBase@@@Z
+  00725b70 RELOCATION_MATCH CTCPhysicsControlled::?UpdateAdditionalImpulse@CTCPhysicsControlled@@AAEXXZ
+  0072c9c0 RELOCATION_MATCH CTCSpecialAbilities::?SetupBattleCharge@CTCSpecialAbilities@@AAE_NXZ
+  007bdd77 RELOCATION_MATCH NThingShot::CTCShotDefinitionMultiArrow::?InitAttachedEffects@CTCShotDefinitionMultiArrow@NThingShot@@MAEXXZ
+  007be3e0 RELOCATION_MATCH NThingShot::CTCShotDefinitionForcePushBall::?InitAttachedEffects@CTCShotDefinitionForcePushBall@NThingShot@@MAEXXZ
+  007be4e0 RELOCATION_MATCH NThingShot::CTCShotDefinitionDrainLife::?InitAttachedEffects@CTCShotDefinitionDrainLife@NThingShot@@MAEXXZ
+  007fefe0 RELOCATION_MATCH CTCNamedUserActionPoints::?GetFullNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@VCCharString@@AAJJ@Z
+  0096ae50 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?UseWill@CAIStateGroup_WhisperRetreat@@IAEXXZ
+  00a780b0 RELOCATION_MATCH CNavConnectorNode::??1CNavConnectorNode@@QAE@XZ
+  00a887b0 RELOCATION_MATCH CSBCCorridor::?CreateLineList@CSBCCorridor@@UAEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z
+  00a8ff50 MATCH N3DPrimitive::CAnimatedBlock::?ConvertToVBFormatNonBump@CAnimatedBlock@N3DPrimitive@@AAEXPAVCTVertexNormBlend4Tex1@@AAVCDeviceIndependent@2@@Z
+  00ad8dd0 MATCH CVertexGroupBlockOptimiser::?CanInsertMoreBlocks@CVertexGroupBlockOptimiser@@ABE_NXZ
+  00b24400 RELOCATION_MATCH CEngine::?ConvertScreenPosToWorldPosAtViewDistance@CEngine@@UBE_NMABVC2DVector@@AAVC3DVector@@@Z
+  00bcc700 RELOCATION_MATCH CEnginePrimitiveManagerWeaponTrails::?RenderPrimitive@CEnginePrimitiveManagerWeaponTrails@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z
+  00d361f0 RELOCATION_MATCH NScript::CQ_FireHeartScript::?RestoreFollowers@CQ_FireHeartScript@NScript@@QAEXXZ
+
+LANDED 15 wins into src/compiled + tests + catalog + oracle
+  CAnimationSet_GetAnimsWithNameStartingWith_005dcb00
+  CTCPhysicsControlled_UpdateAdditionalImpulse_00725b70
+  CTCSpecialAbilities_SetupBattleCharge_0072c9c0
+  NThingShotCTCShotDefinitionMultiArrow_InitAttachedEffects_007bdd77
+  NThingShotCTCShotDefinitionForcePushBall_InitAttachedEffects_007be3e0
+  NThingShotCTCShotDefinitionDrainLife_InitAttachedEffects_007be4e0
+  CTCNamedUserActionPoints_GetFullNamedActionPoint_007fefe0
+  CAIStateGroupWhisperRetreat_UseWill_0096ae50
+  CNavConnectorNode_CNavConnectorNode_00a780b0
+  CSBCCorridor_CreateLineList_00a887b0
+  N3DPrimitiveCAnimatedBlock_ConvertToVBFormatNonBump_00a8ff50
+  CVertexGroupBlockOptimiser_CanInsertMoreBlocks_00ad8dd0
+  CEngine_ConvertScreenPosToWorldPosAtViewDistance_00b24400
+  CEnginePrimitiveManagerWeaponTrails_RenderPrimitive_00bcc700
+  NScriptCQFireHeartScript_RestoreFollowers_00d361f0

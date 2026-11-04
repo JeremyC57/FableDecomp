@@ -40,6 +40,11 @@ public:
     void WorldUpdateThings();                                           // 0x0051FCC0
     void UpdateDeaths();                                                // 0x0051F070
     bool IsNonScriptedEntitesPauseMode() const { return NonScriptedEntitesPauseMode; }
+#ifdef FABLE_RETAIL_CTHINGMANAGER_ALLPAUSE
+    // Nested opt-in (chunk 758, row 0x00725B70 CTCPhysicsControlled::UpdateAdditionalImpulse): FableWin.pdb
+    // ?IsAllEntitesPauseMode@CThingManager@@QBE_NXZ, inline in retail (the row reads +0x55 in place). No layout change.
+    bool IsAllEntitesPauseMode() const { return AllEntitesPauseMode; }
+#endif
     // Chunk 734 (row 0x004A1CB0): Ego_r.pdb / FableWin.pdb ?PreparePrimitivesForEngine@CThingManager@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
     // (retail 0x0051EAB0, landed).
     void PreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo& info);   // 0x0051EAB0

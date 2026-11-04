@@ -1996,3 +1996,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - An old local component-map model leaves key-address register rotations: use `std::bitset<274>` plus the real `engine/CVectorMap.h` in the PeekTC shape (chunk 759: 5 of 7 matches).
 - `ip == thing` through the FableWin `__fastcall` operator== template reloads the member after GetPItem; `ip.Get() == thing` keeps it in a register (chunk 759).
 - STLport `operator[]` written as `*(begin()+n)` stops VC7.1 keeping `i*8` in a register across calls (chunk 759).
+- Use the full Ego_r leaf with the right access char (IAE / ABE / MAE / UBE) and class key; a near-miss leaf grades the largest function (chunk 758).
+- An inline decrement member gives retail's in-place `dec`; a named `const T&` element moves its address computation earlier (chunk 758).
+- 8-byte filter temporaries inside a loop force an `and esp,-8` frame in a speed TU; function-scope filters avoid it (chunk 758).
+- CIEngine slot 12 = ConvertScreenPosToWorldPosAtViewDistance; CEngine slot 51 = IsActive; 0x0090A700 = MidAttack360 (chunk 758).

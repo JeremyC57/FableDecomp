@@ -31,6 +31,10 @@ public:
     virtual void OnPreDeviceReset();                                     // 0x00B26010 ?OnPreDeviceReset@CEngine@@UAEXXZ
     virtual bool OnPostDeviceReset();                                    // 0x00B25D00 ?OnPostDeviceReset@CEngine@@UAE_NXZ
     virtual void Uninitialise();                                         // slot 85 0x00B25D80 ?Uninitialise@CEngine@@UAEXXZ (CEngine's first own virtual)
+#ifdef FABLE_RETAIL_CIENGINE_CONVERTSCREENPOS
+    // Nested opt-in (chunk 758): the slot-12 override, FableWin.pdb ?ConvertScreenPosToWorldPosAtViewDistance@CEngine@@UBE_NMABVC2DVector@@AAVC3DVector@@@Z 0x00B24400.
+    virtual bool ConvertScreenPosToWorldPosAtViewDistance(float distance, const C2DVector& screenPos, C3DVector& worldPos) const;
+#endif
 private:
     void SetDefaultRenderStates();                                       // 0x00B24850 ?SetDefaultRenderStates@CEngine@@AAEXXZ
     // ??$AddEngineComponent@V<T>@@@CEngine@@AAEXPAV<T>@@AAPAV1@E@Z (Ego_r.pdb; out of line in retail, one COMDAT per component:

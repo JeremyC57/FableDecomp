@@ -1,0 +1,2 @@
+header	macro	landed_rows_affected
+none	-	all overlays are opt-in nested FABLE_RETAIL_* macros with default=same (hdrcheck2); hdr/engine/CThing.h is byte-identical to repo HEAD (kept only so the frozen-base mirror has the chunk-756 PEEKPLAYER / GETTCDRIVER blocks)

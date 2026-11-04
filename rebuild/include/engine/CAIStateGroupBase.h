@@ -64,6 +64,11 @@ protected:
     // Chunk 754 (row 0x00945BD0 CAIStateGroup_SitForMeal::Update): Ego_r.pdb ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
     // (protected; retail 0x0097E200).
     EAIActionReturn AIAction_DoNothing();                                // 0x0097E200
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+    // Nested opt-in (chunk 758, row 0x0096AE50 CAIStateGroup_WhisperRetreat::UseWill): Ego_r.pdb / FableWin.pdb
+    // ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z (protected; retail 0x0097DB70).
+    EAIActionReturn AIAction_PerformActionAndWait(const class CCreatureActionBase& action, bool wait);   // 0x0097DB70
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
     // Nested opt-in (chunk 755, row 0x0090C540): FableWin.pdb ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ, inline
     // in retail; its body (PBrain->GetCreature()) is in engine/CAIBrain.h under FABLE_RETAIL_CAIBRAIN_GETCREATURE.
