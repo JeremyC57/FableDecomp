@@ -2043,3 +2043,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Batch and pending `oracle.tsv` files are landing-time inputs only and are gitignored (owner 2026-11-04). Regenerate one from `rebuild/oracles/auto-re-candidates.tsv` for landed rows (recheck.py does), or from Fable.exe through `bounds/extent.py` for unlanded rows (newchunk.sh does).
 - gate.py hashes the symbol a row's `// Leaf:` names: after a Leaf respell it says BYTES_DIFFER until `symindex2.py --all` refreshes INDEX.tsv; vland is the grade of record.
 - Source `$S/wine/env.sh` before `symindex2.py` as well as vland: without it every recompiled row is stored as ERR (no cl.exe), and gate.py then reports "no usable index entry".
+- A hook wrapped in `except Exception: pass` hides its own bugs: the first STANDIN_LEAF patch lacked `import re` and would have printed nothing. Print a WARN on the exception instead (2026-11-04).
