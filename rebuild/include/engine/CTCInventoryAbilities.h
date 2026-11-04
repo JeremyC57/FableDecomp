@@ -13,6 +13,9 @@
 #include "engine/NInventory_CTCInventoryBase.h"
 #include "engine/NHeroInformationScreens_CBase.h"
 #include "engine/EHeroAbility.h"
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_LEVELUP
+#include "engine/EHeroExperienceStatCategory.h"
+#endif
 #include "engine/CVectorMap.h"
 #include "engine/CDefPointer.h"
 #include "stlport/fable_containers.h"
@@ -28,6 +31,14 @@ public:
     long GetAbilityGraphicIndex(EHeroAbility) const;
     float GetAbilityMoralityCostFactor(EHeroAbility);
     long GetExperienceCostToUpgradeAbility(EHeroAbility,long,bool) const;
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_LEVELUP
+    // Chunk 764 (row 0x006D7B80 CTCHeroExperience::GetAbilityPossibleLevelUpAmount): Ego_r.pdb spellings, out of line in retail:
+    // IsAbilityPotentiallyAvailable 0x005EE02E (QBE), GetAbilityStatType 0x005EDEEB (QBE), GetAbilityMaximumLevelWithRenown
+    // 0x005EE6BF (QAE). The row calls GetAbilityLevel at 0x005EDE93 and GetAbilityMaximumLevel at 0x005EDEA3 (reloc_bindings).
+    bool IsAbilityPotentiallyAvailable(EHeroAbility) const;
+    EHeroExperienceStatCategory GetAbilityStatType(EHeroAbility) const;
+    long GetAbilityMaximumLevelWithRenown(EHeroAbility);
+#endif
 private:
     EHeroAbility SpellToAssign;
     long SpellSlotToSwap;

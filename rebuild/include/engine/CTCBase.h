@@ -125,6 +125,11 @@ protected:
     // PeekPlayerManager 0x00686D50 as in Ego_r 0x006B2130 / 0x006B2140; landed CTCLook rows 0x00751AD0 / 0x00753C70 spell it so).
     const CMainGameComponent& PeekComponent() const;                     // 0x00686D60
 #endif
+#ifdef FABLE_RETAIL_CTCBASE_PEEKPLAYERMANAGER
+    // Nested opt-in (chunk 764, row 0x005BE284): Ego_r.pdb ?PeekPlayerManager@CTCBase@@IBEABVCPlayerManager@@XZ, out of line in
+    // retail at 0x00686D50 (after GetPlayerManager 0x00686D40; landed CTCFishing rows 0x007B0880 / 0x007B0950 call it). Declaration only.
+    const CPlayerManager& PeekPlayerManager() const;                     // 0x00686D50
+#endif
 #ifdef FABLE_RETAIL_CTCBASE_WORLDSEED
     // Nested opt-in (chunk 760, row 0x006E2C00 CTCTalk::OnCreate): ?GetPWorldSeed@CTCBase@@IBEPAKXZ, out of line in retail at
     // 0x00686DA0 (the GFRandom seed argument, `call 0x00686DA0; mov edx,eax` before `call 0x004CDAE0`). Declaration only.

@@ -20,5 +20,10 @@ public:
     // Chunk 756 (row 0x006CA380 CTCHero::SetWeaponsAsUsable): Ego_r.pdb ?IsThingCarryingWeapon@CTCCarrying@@SI_NABVCThing@@@Z (0x006A1540).
     static bool __fastcall IsThingCarryingWeapon(const CThing& thing);
 #endif
+#ifdef FABLE_RETAIL_CTCCARRYING_PUTTHING
+    // Chunk 764 (row 0x00849F70 CCreatureAction_PickUpThingAtTable::PerformAction): Ego_r.pdb
+    // ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z (0x006A1F80).
+    void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);
+#endif
 };
 #endif

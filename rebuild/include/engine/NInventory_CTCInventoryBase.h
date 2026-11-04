@@ -13,9 +13,22 @@ namespace NUISystem { class CComponent; }
 // original names and complete native storage. Native map secondary base is130.
 class CGraphicDataBank;
 namespace NInventory {
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDOWNED
+class CCategory;
+#endif
 class CTCInventoryBase : public CTCBase {
 public:
  long GetBoughtPrice(long) const; // original const member, native005bead5
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDOWNED
+ // chunk 764 (row 0x005BE284): Ego_r.pdb ?GetSelectedCategory@CTCInventoryBase@NInventory@@QAEPAVCCategory@2@XZ (0x005BCACE),
+ // ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z (const, 0x005BDF08) and the protected
+ // ?SetNumberOfSelectedItemOwned@CTCInventoryBase@NInventory@@IAEXJ@Z (0x005BE284).
+ CCategory* GetSelectedCategory();
+ long GetNumberOfItemsOfTypeInInventory(long itemDefIndex) const;
+protected:
+ void SetNumberOfSelectedItemOwned(long itemDefIndex);
+public:
+#endif
  enum EInventorySelectionState { INVENTORY_SELECTION_STATE_CATEGORIES=0,INVENTORY_SELECTION_STATE_ITEMS=1,INVENTORY_SELECTION_STATE_MAX_STATES=2 };
  enum ESelectionState { SELECTION_STATE_NONE=0,SELECTION_STATE_OFF=1,SELECTION_STATE_ON=2,SELECTION_STATE_SEL=3,SELECTION_STATE_MAX=4 };
 protected:

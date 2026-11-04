@@ -10,6 +10,9 @@
 class CThing;class CThingCreatureBase;class CTCWeaponTrail;
 #include "stlport/fable_map.h"
 namespace NCreatureAction { class CActionEventBase; }
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
+class CGameDefinitionManager;class CWorld;
+#endif
 // Original Ego_r TPI0x221c9; native factories and calls prove vtable slots40-42.
 // Complete native sizea8 after the three retail container reductions.
 class CCreatureActionBase : public CBaseObject {
@@ -162,6 +165,14 @@ protected:
     virtual void OnAnimationLoaded();
 protected:
     virtual bool WaitForMeshToLoad() const;
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
+    // Chunk 764 (row 0x00859660 CCombatActionBase::ResetMeleeCombatAbilityEffects): Ego_r.pdb protected accessors, out of line in
+    // retail: ?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ 0x00692910 and
+    // ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ 0x00692940.
+protected:
+    const CGameDefinitionManager& PeekDefinitionManager() const;       // 0x00692910
+    CWorld& GetWorld();                                                  // 0x00692940
+#endif
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_PCREATURE
     // chunk 751 (row 0x00854720 CCreatureAction_SpiritReturnToHero::PerformAction): Ego_r.pdb PCreature
     // (CIntelligentPointer<CThingCreatureBase>) at +0x08; the rest stays opaque. Needs engine/CIntelligentPointer.h first.

@@ -2017,3 +2017,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Before landing a "new" symbol, check whether a landed leaf already holds it: a mislabelled landed row blocks the true owner (chunk 765, 0x006AFD40).
 - `hdrcheck2.py` takes the overlay directory; given a single file it prints nothing (chunk 765).
 - VC7.1 never devirtualizes a call through a member subobject: `member.VirtualFn()` stays `jmp [vtbl+k]` (chunk 765).
+- A save/load row that lays the load branch first wants the inline `IsSaving()`, not `Mode==1||Mode==3` (chunk 764).
+- An STLport range copy into a vector is the inline `std::copy` calling fastcall `__copy(first, last, back_insert_iterator, const input_iterator_tag&, int*)` (chunk 764).
+- `!IsDead()` gives `test byte`; `IsAlive()` gives not/test (chunk 764).

@@ -36560,3 +36560,17 @@ __imp__GetSystemDirectoryA@8	0143febc	00c565f0
 ?ScreenFilterSetFlags@CScreenEffectPriorityStack@NScreenEffect@@QAEXABV?$vector@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@V?$allocator@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@@std@@@std@@PAX@Z	00881a40	006b83e0
 ?ProcessPendingTutorials@CUserProfileManager@@QAEXXZ	0040bb30	006c9fd0
 ?RemoveAnimationBlockingModes@NCreatureMode@@YIXAAVCThing@@@Z	0085f6a0	007128f0
+?GetHighlightedItemMaxInCategory@CCategory@NInventory@@QBEJXZ	005bd993	005be284
+?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z	005bdf08	005be284
+?GetSelectedCategory@CTCInventoryBase@NInventory@@QAEPAVCCategory@2@XZ	005bcace	005be284
+?GetQuickAccessItemDef@CTCInventory@@QBE?AV?$CDefPointer@$$CBVCInventoryItemDef@@@@J@Z	00581ddb	0064d92a
+?GetAbilityMaximumLevelWithRenown@CTCInventoryAbilities@@QAEJW4EHeroAbility@@@Z	005ee6bf	006d7b80
+??$GetDef@VCMeleeCombatKnockdownEffects@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMeleeCombatKnockdownEffects@@@@@Z	0085abb0	00859660
+?IS_THING_ALIVE@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z	004cc340	00859660
+?RemoveBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXPAX@Z	004c6140	00859660
+?UnsetActionSpeedMultiplier@CTCHaste@@QAEXPAX@Z	0058148d	00859660
+?InsertUnique@CDeedTree@@QAE?AUSPairIB@@ABUCOpinionDeedRecord@@@Z	006c8400	006c7370
+?Transfer@CPersistContext@@QAEXPBDAAUCRecordVector@@@Z	006c9ee0	006c7370
+?Transfer@CPersistContext@@QAEXPBDAAV?$CIntelligentPointer@VCThing@@@@@Z	006c9c60	006c7370
+?__copy@std@@YI?AUback_insert_iterator@1@U_Rb_tree_iterator@1@0U21@ABUinput_iterator_tag@1@PAH@Z	006c9b70	006c7370
+?reserve@CRecordVector@@QAEXK@Z	006c8560	006c7370

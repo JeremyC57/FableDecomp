@@ -23,6 +23,11 @@ public:
     bool IsBulletTimeActive() const;                             // 0x00419680
     bool IsTimeForFullUpdate() const;                            // 0x004C6060
     void FrameUpdate();                                          // 0x004C5E90
+#ifdef FABLE_RETAIL_CBULLETTIMEMANAGER_REMOVESLOWDOWN
+    // Chunk 764 (row 0x00859660 CCombatActionBase::ResetMeleeCombatAbilityEffects): Ego_r.pdb
+    // ?RemoveBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXPAX@Z, out of line in retail at 0x004C6140.
+    void RemoveBulletTimeSlowdownMultiplier(void* key);          // 0x004C6140
+#endif
 #endif
     unsigned char   BulletTimeInfoMap[0xc];                  // +0x00 map<void_*,CBulletTimeManager::CBulletTimeInfo,std::less<void_*>,std::allocator<std::pair<void_*_const,CBulletTimeManager::CBulletTimeInfo>_>_>
     bool            Override;                                // +0x0c

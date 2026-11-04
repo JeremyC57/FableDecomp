@@ -1,0 +1,3 @@
+address	label	evidence
+0x01436EA0	g_pEngineCamera	0x00B451D0 reads NoScaleViewTransform (+0x114) through it (CEngineCamera*); matched RELOCATION_MATCH
+0x0125EA48	CTCHeroOpinionDeedLog::vftable	RTTI .?AVCTCHeroOpinionDeedLog@@ complete-object locator before it; slot 1 = 0x006C7370 OnSerialise

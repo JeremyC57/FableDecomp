@@ -1,0 +1,11 @@
+address	name	evidence
+01436ea0	g_pEngineCamera	landing 2026-11-04zb (chunk 764): 0x00B451D0 reads NoScaleViewTransform (+0x114) through it (CEngineCamera*); matched RELOCATION_MATCH
+0125ea48	CTCHeroOpinionDeedLog::vftable	landing 2026-11-04zb (chunk 764): RTTI .?AVCTCHeroOpinionDeedLog@@ complete-object locator before it; slot 1 = 0x006C7370 OnSerialise
+006c7370	CTCHeroOpinionDeedLog::OnSerialise	landing 2026-11-04zb (chunk 764): retail vtable 0x0125EA48 slot 1 under RTTI .?AVCTCHeroOpinionDeedLog@@ + Ego_r ?OnSerialise@CTCHeroOpinionDeedLog@@UAEXAAVCPersistContext@@_N@Z members (the five transfer strings); manifest CDeedManager::TransferState wa
+005be284	CTCInventoryBase::SetNumberOfSelectedItemOwned	landing 2026-11-04zb (chunk 764): catalog module (bare vland name)
+0064d92a	CDrawQuickAccessIcons::ToggleCharge	landing 2026-11-04zb (chunk 764): catalog module (bare vland name)
+006d7b80	CTCHeroExperience::GetAbilityPossibleLevelUpAmount	landing 2026-11-04zb (chunk 764): catalog module (bare vland name)
+00750110	CTCChest::DisplayLockedMessage	landing 2026-11-04zb (chunk 764): catalog module (bare vland name)
+00849f70	CCreatureAction_PickUpThingAtTable::PerformAction	landing 2026-11-04zb (chunk 764): catalog module (bare vland name)
+00859660	CCombatActionBase::ResetMeleeCombatAbilityEffects	landing 2026-11-04zb (chunk 764): catalog module (bare vland name)
+00b451d0	CEngineLightingManager::CalculateFogTransformMatrix	landing 2026-11-04zb (chunk 764): catalog module (bare vland name)

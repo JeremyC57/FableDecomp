@@ -16868,7 +16868,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006c6990	PostDeed	CTCHeroOpinionDeedLog	__thiscall	long	11	CTCHeroOpinionDeedLog *,EOpinionDeedType,C3DVector *,CThing *,CThingAICreature *,EOpinionPostDeedType,bool,bool,CFaction *,bool,long	1	yes	accepted									
 006c6e20	PlayerTakenOutWeapon	CTCHeroOpinionDeedLog	__thiscall	void	1	CTCHeroOpinionDeedLog *	1	yes	accepted									
 006c6e80	FrameUpdate	CTCHeroOpinionDeedLog	__thiscall	void	1	CTCHeroOpinionDeedLog *	1	yes	accepted									
-006c7370	CDeedManager::TransferState	CDeedManager	unknown	undefined	0		0	yes	accepted									
+006c7370	OnSerialise	CTCHeroOpinionDeedLog	unknown	undefined	0		0	yes	accepted									
 006c7530	Remove_006c7530	_unattributed	unknown	undefined	0		0	yes	accepted									
 006c7570	list	std::list<T_0x1c_006c7570>	unknown	undefined	0		0	yes	accepted									
 006c75a0	clear	std::_Rb_tree<long, std::pair<long const, COpinionDeed *>, std::_Select1st<std::pair<long const, COpinionDeed *>>, std::less<long>, std::allocator<std::pair<long const, COpinionDeed *>>>	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6c\CTCCarryable_OnKill_006c75a0.cpp

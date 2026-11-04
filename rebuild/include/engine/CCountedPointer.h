@@ -59,6 +59,12 @@ public:
     CCPPointerInfo* Info;                                                // +0x4
 
     CCountedPointer() : Data(0), Info(0) { }
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+    // Chunk 764 (row 0x0096DBC0 CCreatureAction_ScreamerIntoAggressive::Initialise): there retail calls the (T*) constructor's COMDAT
+    // (0x00718A00, ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z) where VC7.1
+    // expands the in-class body; the landed same-module rows (0x008C1A10, 0x008C1900) declare it without a body. Declaration only.
+    CCountedPointer(T* data);
+#else
     CCountedPointer(T* data) : Data(data)
     {
 #ifdef FABLE_RETAIL_CCOUNTEDPOINTER
@@ -72,6 +78,7 @@ public:
         else
             Info = 0;
     }
+#endif
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
     {
         if (Info)

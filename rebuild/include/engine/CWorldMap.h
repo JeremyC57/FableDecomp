@@ -100,6 +100,11 @@ protected:
 public:
     void GetMapNavigationAreaUpdateInfo(long,const C2DBoxI&,const CCharString&,CNavigationAreaUpdate&) const;
     long GetNavigationLayerAt(const C3DVector&,const CThing*) const;
+#ifdef FABLE_RETAIL_CWORLDMAP_HEIGHTZ
+    // Chunk 764 (row 0x007BC004 CTCShotDefinitionNymphFun::InitMovement): Ego_r.pdb ?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z
+    // (retail 0x0063E480). Declaration only.
+    float GetHeightZBelowPos(const C3DVector& pos) const;
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_THINGMAPMANAGER
     // Chunk 761 (row 0x0071A790 ~CTCMapwho, via the inline CTCMapwho::RemoveFromMapwho): FableWin.pdb
     // ?GetThingMapManager@CWorldMap@@QAEAAVCThingMapManager@NThingMap@@XZ (and the const QBE twin), inline in retail: the

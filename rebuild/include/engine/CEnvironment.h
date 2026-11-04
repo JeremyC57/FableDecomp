@@ -25,6 +25,11 @@ public:
     // Chunk 734 (row 0x004A1CB0 CWorld::PreparePrimitivesForEngine): Ego_r.pdb / FableWin.pdb
     // ?IsEnvironmentRequiringWeatherMasks@CEnvironment@@QBE_NXZ, retail 0x006B2C00 (landed).
     bool IsEnvironmentRequiringWeatherMasks() const;             // 0x006B2C00
+#ifdef FABLE_RETAIL_CENVIRONMENT_DEFAULTTHEME
+    // Chunk 764 (row 0x00859660 CCombatActionBase::ResetMeleeCombatAbilityEffects): Ego_r.pdb
+    // ?TransitionToDefaultThemeAllChannels@CEnvironment@@QAEXJM@Z, out of line in retail at 0x006B3950 (`ret 8`).
+    void TransitionToDefaultThemeAllChannels(long priority, float time);   // 0x006B3950
+#endif
 #endif
     void*                                __vftable;          // +0x00 vptr, or first dword of a flattened base subobject
     CGameDefinitionManager*              DefinitionManager;  // +0x04

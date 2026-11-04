@@ -23,6 +23,11 @@ public:
     bool AddMode(unsigned long mode);                                    // 0x0073AE10
     void RemoveMode(unsigned long mode);                                 // 0x0073ABA0
 #endif
+#ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
+    // Chunk 764 (row 0x0096DBC0): Ego_r.pdb ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z
+    // (the counted mode by value), out of line in retail at 0x0073ACC0.
+    bool AddMode(CCountedPointer<CModeBase> mode);                       // 0x0073ACC0
+#endif
 private:
     std::list<CCountedPointer<CModeBase> > PModes;
     long TimeLeftForCurrentMode,TimeForNextIdleMode;

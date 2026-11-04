@@ -43,6 +43,12 @@ public:
     void DisablePointLights();                                           // 0x00B44D50
     void UpdateGlobalLightingStates();                                   // 0x00B46C80
     void SetupDefaultFogStates();                                        // 0x00B47630 ?SetupDefaultFogStates@CEngineLightingManager@@QAEXXZ (CEngine::SetDefaultRenderStates 0x00B25877)
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_FOGTRANSFORM
+    // Chunk 764 (row 0x00B451D0): Ego_r.pdb ?CalculateFogTransformMatrix@CEngineLightingManager@@AAE?AVC4DVector@@MM@Z (private). Declaration only.
+private:
+    C4DVector CalculateFogTransformMatrix(float fogStart, float fogEnd);
+public:
+#endif
     struct CThemeChannel {                                               // 0x70 bytes (Ego_r.pdb; U-keyed in the allocator names)
         CRGBFloatColour DiffuseColour;                                   // +0x00
         CRGBFloatColour AmbientColour;                                   // +0x10

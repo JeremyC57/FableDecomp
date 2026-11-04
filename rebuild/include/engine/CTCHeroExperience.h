@@ -8,6 +8,9 @@
 #include "engine/EHeroExperienceStatCategory.h"
 enum EHeroTrainableStatType;                                             // MS forward enum (chunk 735)
 #include "engine/EHeroAbility.h"
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_STATEXPERIENCE
+#include "stlport/fable_containers.h"
+#endif
 class CHeroCombatDef;class CThingCreatureBase;class CHeroExperienceDef;class CHeroStatsDef;
 class CTCHeroExperience:public CTCBase{
 public:
@@ -40,7 +43,13 @@ public: virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePre
 public: virtual void Copy(const CTCBase &);
 protected: virtual void OnSerialise(CPersistContext &,bool);
 public: virtual ~CTCHeroExperience();
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_STATEXPERIENCE
+// Chunk 764 (row 0x006D7B80 GetAbilityPossibleLevelUpAmount): Ego_r.pdb StatExperiencePoints is std::vector<long> (+0x18, retail
+// STLport 12 bytes; the row indexes `[ecx+eax*4]` off _M_start). Needs stlport/fable_containers.h (included above).
+private:long FishingLevel,TotalExperiencePoints,ExperiencePointsAvailableToSpend;std::vector<long> StatExperiencePoints;unsigned char TrainableStatLevels[12];float ExperienceMultiplierParam,LastExperienceMultiplierParam;long ExperienceAttenuationTimer;bool AbleToGainExperience;unsigned long Pickups;unsigned char ExperienceSpentOnStats[12];unsigned long AttackHistory;CDefPointer<const CHeroExperienceDef> PDef;CDefPointer<const CHeroCombatDef> PHeroCombatDef;CDefPointer<const CHeroStatsDef> PHeroStatsDef;
+#else
 private:long FishingLevel,TotalExperiencePoints,ExperiencePointsAvailableToSpend;unsigned char StatExperiencePoints[12],TrainableStatLevels[12];float ExperienceMultiplierParam,LastExperienceMultiplierParam;long ExperienceAttenuationTimer;bool AbleToGainExperience;unsigned long Pickups;unsigned char ExperienceSpentOnStats[12];unsigned long AttackHistory;CDefPointer<const CHeroExperienceDef> PDef;CDefPointer<const CHeroCombatDef> PHeroCombatDef;CDefPointer<const CHeroStatsDef> PHeroStatsDef;
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCHeroExperience)==96);
 #else

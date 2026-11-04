@@ -17,6 +17,12 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
     void SetForward(const C3DVector& forward) { Forward = forward; }
     void SetUp(const C3DVector& up) { Up = up; }
     void MakePerpendicular();                                            // 0x00A22E10
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_CTOR
+    // Chunk 764 (row 0x007BC004): Ego_r.pdb ??0CRightHandedSet@@QAE@XZ and ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z (retail 0x00487050,
+    // out of line). Declarations only: no layout change.
+    CRightHandedSet() {}
+    CRightHandedSet(const C3DVector& a, const C3DVector& b);
+#endif
 };
 #endif
 #endif

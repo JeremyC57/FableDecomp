@@ -14,6 +14,13 @@ private:
     float Multiplier;bool ToTerminate;long PauseFrames;
     std::map<void*,float> Multipliers;                                   // +0x18
     void UpdateActionSpeedMultiplier();                                  // 0x00800020
+#ifdef FABLE_RETAIL_CTCHASTE_UNSET
+public:
+    // Chunk 764 (row 0x00859660 CCombatActionBase::ResetMeleeCombatAbilityEffects): Ego_r.pdb ?UnsetActionSpeedMultiplier@CTCHaste@@QAEXPAX@Z,
+    // out of line in retail at 0x0058148D (the bound RemoveMultiplier(CTCHeroStats*) spelling is wrong: NAME_FIXES).
+    void UnsetActionSpeedMultiplier(void* key);                          // 0x0058148D
+private:
+#endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HASTE; }
     void SetOnHitPause(long frames) { PauseFrames=frames; }

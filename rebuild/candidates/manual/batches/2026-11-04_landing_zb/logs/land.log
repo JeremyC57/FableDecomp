@@ -1,0 +1,39 @@
+addr       parity           behav  name
+005be284   WARN SHARED_HEADER_AVAILABLE CCategory
+005be284   RELOCATION_MATCH PASS   SetNumberOfSelectedItemOwned
+0064d92a   RELOCATION_MATCH PASS   ToggleCharge
+006d7b80   RELOCATION_MATCH PASS   GetAbilityPossibleLevelUpAmount
+00750110   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00750110   WARN SHARED_HEADER_AVAILABLE CThing
+00750110   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00750110   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+00750110   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00750110   WARN SHARED_HEADER_AVAILABLE CTCBase
+00750110   WARN RELOC_NAME: ?g_pPlayerGui@@3PAVCPlayerGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+00750110   RELOCATION_MATCH PASS   DisplayLockedMessage
+00849f70   RELOCATION_MATCH PASS   PerformAction
+00859660   WARN RELOC_NAME: ?RemoveBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXPAX@Z -> 004c6140 labelled 'CTimeMultiplierController_004c6140::RemoveRequest'
+00859660   RELOCATION_MATCH PASS   ResetMeleeCombatAbilityEffects
+00b451d0   RELOCATION_MATCH PASS   CalculateFogTransformMatrix
+006c7370   WARN RELOC_NAME: ?__copy@std@@YI?AUback_insert_iterator@1@U_Rb_tree_iterator@1@0U21@ABUinput_iterator_tag@1@PAH@Z -> 006c9b70 labelled 'std::__copy<std::_Rb_tree_iterator<std::pair<long const, COpinionDeed *>>, std::back_insert_iterator<std::vector<std::pair<long, COpinionDeed *>>>, int>'
+006c7370   RELOCATION_MATCH PASS   OnSerialise
+
+WINS: 8
+  005be284 RELOCATION_MATCH NInventory::CTCInventoryBase::?SetNumberOfSelectedItemOwned@CTCInventoryBase@NInventory@@IAEXJ@Z
+  0064d92a RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::?ToggleCharge@CDrawQuickAccessIcons@NPlayerGui@@QAEXJ_N@Z
+  006d7b80 RELOCATION_MATCH CTCHeroExperience::?GetAbilityPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroAbility@@AAM@Z
+  00750110 RELOCATION_MATCH CTCChest::?DisplayLockedMessage@CTCChest@@QBEXXZ
+  00849f70 RELOCATION_MATCH CCreatureAction_PickUpThingAtTable::?PerformAction@CCreatureAction_PickUpThingAtTable@@UAEXXZ
+  00859660 RELOCATION_MATCH CCombatActionBase::?ResetMeleeCombatAbilityEffects@CCombatActionBase@@IAEXXZ
+  00b451d0 RELOCATION_MATCH CEngineLightingManager::?CalculateFogTransformMatrix@CEngineLightingManager@@AAE?AVC4DVector@@MM@Z
+  006c7370 RELOCATION_MATCH CTCHeroOpinionDeedLog::?OnSerialise@CTCHeroOpinionDeedLog@@UAEXAAVCPersistContext@@_N@Z
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  NInventoryCTCInventoryBase_SetNumberOfSelectedItemOwned_005be284
+  NPlayerGuiCDrawQuickAccessIcons_ToggleCharge_0064d92a
+  CTCHeroExperience_GetAbilityPossibleLevelUpAmount_006d7b80
+  CTCChest_DisplayLockedMessage_00750110
+  CCreatureActionPickUpThingAtTable_PerformAction_00849f70
+  CCombatActionBase_ResetMeleeCombatAbilityEffects_00859660
+  CEngineLightingManager_CalculateFogTransformMatrix_00b451d0
+  CTCHeroOpinionDeedLog_OnSerialise_006c7370

@@ -10,13 +10,27 @@
 #endif
 #include "rebuild_abi.h"
 #include "engine/CEngineComponent.h"
+#ifdef FABLE_RETAIL_CENGINECAMERA_NOSCALEVIEWTRANSFORM
+#include "engine/CMatrix3x4.h"
+#endif
 class CEngineInit;
 class CEngineCamera : public CEngineComponent {
 public:
     CEngineCamera(bool);                       // 0x00B31700 ??0CEngineCamera@@QAE@_N@Z
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINECAMERA_NOSCALEVIEWTRANSFORM
+    // Chunk 764 (row 0x00B451D0 CEngineLightingManager::CalculateFogTransformMatrix): Ego_r.pdb NoScaleViewTransform (CMatrix3x4) at +0x114,
+    // read in place by retail (fmul [eax+114h] .. [eax+140h] off the camera pointer 0x01436EA0). No size change.
+private:
+    unsigned char _pad_0xc[0x108];              // +0xc GameCamera .. InverseViewTransform (not modelled)
+public:
+    CMatrix3x4 NoScaleViewTransform;            // +0x114
+private:
+    unsigned char _pad_0x144[0xe4];             // +0x144 InverseNoScaleViewTransform .. (not modelled)
+#else
 private:
     unsigned char _pad_0xc[0x21c];              // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineCamera) == 0x228);
 #else // generated flattened Ego_r layout (the landed default, unchanged)

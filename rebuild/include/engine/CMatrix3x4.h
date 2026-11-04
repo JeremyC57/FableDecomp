@@ -10,6 +10,29 @@ class CMatrix3x4 {
 public:
     float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;
     CMatrix3x4() { }
+#ifdef FABLE_RETAIL_CMATRIX3X4_PREMULTIPLY
+    // Chunk 764 (row 0x00B451D0 CEngineLightingManager::CalculateFogTransformMatrix): Ego_r.pdb ??0CMatrix3x4@@QAE@MMMMMMMMMMMM@Z and
+    // FableWin.pdb ?PreMultiply@CMatrix3x4@@QAEXABV1@@Z, both inline in retail (no out-of-line copy in Ego_r.pdb or Fable.exe; the
+    // copy of *this is the rep movsd). The bodies are the landed same-module sibling SetupDefaultFogStates 0x00B47630 model.
+    CMatrix3x4(float e11,float e12,float e13,float e21,float e22,float e23,float e31,float e32,float e33,float e41,float e42,float e43) {
+        E11=e11; E12=e12; E13=e13; E21=e21; E22=e22; E23=e23; E31=e31; E32=e32; E33=e33; E41=e41; E42=e42; E43=e43;
+    }
+    __forceinline void PreMultiply(const CMatrix3x4& l) {
+        CMatrix3x4 a(*this);
+        E11=a.E21*l.E12+a.E31*l.E13+a.E11*l.E11;
+        E12=a.E22*l.E12+a.E32*l.E13+a.E12*l.E11;
+        E13=a.E23*l.E12+a.E33*l.E13+a.E13*l.E11;
+        E21=a.E21*l.E22+a.E31*l.E23+a.E11*l.E21;
+        E22=a.E22*l.E22+a.E32*l.E23+a.E12*l.E21;
+        E23=a.E23*l.E22+a.E33*l.E23+a.E13*l.E21;
+        E31=a.E21*l.E32+a.E31*l.E33+a.E11*l.E31;
+        E32=a.E22*l.E32+a.E32*l.E33+a.E12*l.E31;
+        E33=a.E23*l.E32+a.E33*l.E33+a.E13*l.E31;
+        E41=a.E21*l.E42+a.E31*l.E43+a.E11*l.E41+a.E41;
+        E42=a.E22*l.E42+a.E32*l.E43+a.E12*l.E41+a.E42;
+        E43=a.E23*l.E42+a.E33*l.E43+a.E13*l.E41+a.E43;
+    }
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4
     // Retail opt-in (chunk 734, row 0x004A1CB0 CWorld::PreparePrimitivesForEngine): FableWin.pdb inline members (no Ego_r.pdb or retail
     // out-of-line copy) ?Set@CMatrix3x4@@QAEXABVC3DVector@@000@Z (the three axes as rows, then the translation; unused by the row's best source, which assigns E11..E43 directly),

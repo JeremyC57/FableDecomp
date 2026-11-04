@@ -1,0 +1,2 @@
+header	macro	landed_rows_affected	note
+all hdr/engine overlays	(new FABLE_RETAIL_<X> sub-macros only)	none	hdrcheck2 default=same for every overlay; no landed source defines any of the new macros (grep rebuild/src)

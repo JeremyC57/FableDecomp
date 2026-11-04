@@ -205,6 +205,12 @@ public:
 protected:
     const class CThingSearchTools& GetThingSearchTools() const;        // 0x006AFD40
 #endif
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_APPLYACCELERATION
+    // Chunk 764 (row 0x007BC004 CTCShotDefinitionNymphFun::InitMovement): Ego_r.pdb ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z
+    // (retail 0x006B0210, non-virtual). Declaration only: no layout change.
+public:
+    void ApplyAcceleration(const C3DVector& acceleration);
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCPhysicsBase)==0x40);
 #else

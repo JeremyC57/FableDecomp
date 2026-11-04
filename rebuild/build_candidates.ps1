@@ -383432,6 +383432,62 @@ $catalog = @(
         TestSource = '00/7f/CTCTargetingAI_ClearAllThingsToNotAttack_007f6160_test.cpp'
         PassPattern = '007f6160_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005be284'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_SetNumberOfSelectedItemOwned_005be284.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_SetNumberOfSelectedItemOwned_005be284_test.cpp'
+        PassPattern = '005BE284_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064d92a'
+        Module = 'NPlayerGui::CDrawQuickAccessIcons'
+        Source = '00/64/NPlayerGuiCDrawQuickAccessIcons_ToggleCharge_0064d92a.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuickAccessIcons_ToggleCharge_0064d92a_test.cpp'
+        PassPattern = '0064D92A_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d7b80'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_GetAbilityPossibleLevelUpAmount_006d7b80.cpp'
+        TestSource = '00/6d/CTCHeroExperience_GetAbilityPossibleLevelUpAmount_006d7b80_test.cpp'
+        PassPattern = '006D7B80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00750110'
+        Module = 'CTCChest'
+        Source = '00/75/CTCChest_DisplayLockedMessage_00750110.cpp'
+        TestSource = '00/75/CTCChest_DisplayLockedMessage_00750110_test.cpp'
+        PassPattern = '00750110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00849f70'
+        Module = 'CCreatureAction_PickUpThingAtTable'
+        Source = '00/84/CCreatureActionPickUpThingAtTable_PerformAction_00849f70.cpp'
+        TestSource = '00/84/CCreatureActionPickUpThingAtTable_PerformAction_00849f70_test.cpp'
+        PassPattern = '00849F70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00859660'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_ResetMeleeCombatAbilityEffects_00859660.cpp'
+        TestSource = '00/85/CCombatActionBase_ResetMeleeCombatAbilityEffects_00859660_test.cpp'
+        PassPattern = '00859660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b451d0'
+        Module = 'CEngineLightingManager'
+        Source = '00/b4/CEngineLightingManager_CalculateFogTransformMatrix_00b451d0.cpp'
+        TestSource = '00/b4/CEngineLightingManager_CalculateFogTransformMatrix_00b451d0_test.cpp'
+        PassPattern = '00B451D0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c7370'
+        Module = 'CTCHeroOpinionDeedLog'
+        Source = '00/6c/CTCHeroOpinionDeedLog_OnSerialise_006c7370.cpp'
+        TestSource = '00/6c/CTCHeroOpinionDeedLog_OnSerialise_006c7370_test.cpp'
+        PassPattern = '006C7370_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

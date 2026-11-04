@@ -1,0 +1,10 @@
+catalog  005be284 SetNumberOfSelectedItemOwned -> CTCInventoryBase::SetNumberOfSelectedItemOwned
+catalog  0064d92a ToggleCharge -> CDrawQuickAccessIcons::ToggleCharge
+catalog  006d7b80 GetAbilityPossibleLevelUpAmount -> CTCHeroExperience::GetAbilityPossibleLevelUpAmount
+catalog  00750110 DisplayLockedMessage -> CTCChest::DisplayLockedMessage
+catalog  00849f70 PerformAction -> CCreatureAction_PickUpThingAtTable::PerformAction
+catalog  00859660 ResetMeleeCombatAbilityEffects -> CCombatActionBase::ResetMeleeCombatAbilityEffects
+catalog  00b451d0 CalculateFogTransformMatrix -> CEngineLightingManager::CalculateFogTransformMatrix
+catalog  006c7370 CDeedManager::TransferState -> CTCHeroOpinionDeedLog::OnSerialise
+manifest 006c7370 CDeedManager::CDeedManager::TransferState -> CTCHeroOpinionDeedLog::OnSerialise
+labels 10  catalog renamed 8  manifest renamed 1
