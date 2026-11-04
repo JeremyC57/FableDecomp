@@ -36209,3 +36209,10 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ?ShowEnemyHealth@CV_HeroDuelScript@NScript@@QAEXXZ	00e99470	00e987c0
 ?WatchForHeroEnteringCave@CV_HeroDuelScript@NScript@@QAEXXZ	00e9a270	00e987c0
 ?WatchForLeaving@CV_HeroDuelScript@NScript@@QAEXXZ	00e99260	00e987c0
+?GetNormalisedTimeLeftOnFines@CTCVillage@@QAEMXZ	0065a28f	004385f0
+?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ	00487b70	004385f0
+?SetFine@CCrimeStatBar@NPlayerGui@@QAEXJ@Z	00643ff6	004385f0
+?UpdateChangeTexts@CStatBar@NPlayerGui@@QAEXXZ	00646b12	004385f0
+?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z	00437ae0	004385f0
+?g_MaxMapwhoCellSize@@3JA	013ba84c	006378e0
+?GetOneOverTickRate@NParticleEngine@@YIMXZ	00aeaa00	00b18820

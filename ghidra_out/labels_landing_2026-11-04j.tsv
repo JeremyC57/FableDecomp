@@ -1,0 +1,21 @@
+address	name	evidence
+004385f0	CPlayerGui::UpdateCrime	landing 2026-11-04j (chunk 747): Ego_r.pdb ?UpdateCrime@CPlayerGui@@AAEXXZ (row matched)
+009fca40	CGraphicFrameData::InitialiseAsSurfaceSection	landing 2026-11-04j (chunk 747): Ego_r.pdb (row matched)
+00b16220	NParticleEngine::CPSCOrbit::InterpolateTo	landing 2026-11-04j (chunk 747): Ego_r.pdb ?InterpolateTo@CPSCOrbit@NParticleEngine@@UAEXABVCPSCBase@2@M@Z (row matched)
+00aa3c50	C3DKeyframe::BlendWith	landing 2026-11-04j (chunk 747): FableWin.pdb ?BlendWith@C3DKeyframe@@QAEXABV1@M@Z (row matched)
+00643ff6	NPlayerGui::CCrimeStatBar::SetFine	landing 2026-11-04j (chunk 747): Ego_r.pdb
+0065a28f	CTCVillage::GetNormalisedTimeLeftOnFines	landing 2026-11-04j (chunk 747): Ego_r.pdb
+00b05c60	NParticleEngine::CPSCSingleSprite::GetComponentCost	landing 2026-11-04j (chunk 747): Ego_r.pdb (parked dl=2)
+00b41a80	CEngineMap::PeekWaterHeight	landing 2026-11-04j (chunk 747): Ego_r.pdb ?PeekWaterHeight@CEngineMap@@QBEMJJ@Z (parked dl=4)
+00b93b30	CEngineSceneMap::AddPrimitive	landing 2026-11-04j (chunk 747): Ego_r.pdb ?AddPrimitive@CEngineSceneMap@@AAEXAAVCEngineInternalPrimitiveBase@@ABVC2DVector@@M@Z
+00a770b0	CNavQuadTree::GetNodeAt	landing 2026-11-04j (chunk 747): Ego_r.pdb
+00aad340	CWaveFile::ConvertSamplingRate	landing 2026-11-04j (chunk 747): Ego_r.pdb ?ConvertSamplingRate@CWaveFile@@QAEXK@Z
+00a567a0	CCardinalSpline::GetSplinePosition	landing 2026-11-04j (chunk 747): Ego_r.pdb ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z
+006ce800	CThingSearchTools::ForEachInRoughArea<CThing,CThingFilter_IsNot,FrameUpdateThing>	landing 2026-11-04j (chunk 747): Ego_r.pdb (landed caller note 0x006CE730)
+006378e0	NThingMap::CThingMapManager::GetThingMapwhoLevel	landing 2026-11-04j (chunk 747): row leaf ?GetThingMapwhoLevel@CThingMapManager@NThingMap@@IBEEM@Z
+00a76e00	CNavQuadTree::GetPreferabilityCostForNode	landing 2026-11-04j (chunk 747): row leaf ?GetPreferabilityCostForNode@CNavQuadTree@@QBEEPBVCANavQuadTreeNode@@@Z
+00a88d10	CQuaternion::SetFromAxisAngle	landing 2026-11-04j (chunk 747): row leaf ?SetFromAxisAngle@CQuaternion@@QAEXABVC3DVector@@M@Z
+00b05e10	NParticleEngine::CPSCSingleSprite::SmoothFadeValue	landing 2026-11-04j (chunk 747): row leaf ?SmoothFadeValue@CPSCSingleSprite@NParticleEngine@@IBEMM@Z
+00b18820	NParticleEngine::CPSCLight::Update	landing 2026-11-04j (chunk 747): row leaf ?Update@CPSCLight@NParticleEngine@@UAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AA_N@Z
+00b1ad90	NParticleEngine::CPSCLight::SmoothFadeValue	landing 2026-11-04j (chunk 747): row leaf ?SmoothFadeValue@CPSCLight@NParticleEngine@@QBEMM@Z
+00b84580	CEngineSubPrimitiveRenderer::AddSubPrimitive	landing 2026-11-04j (chunk 747): row leaf ?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXPAVCEngineSubPrimitiveBase@@MEKPAVCEnginePrimitiveManager@@AAVCEngineSubPrimitiveChain@@@Z

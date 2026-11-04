@@ -69,6 +69,7 @@ public:
     static CNavBlockedQuadTreeNode BlockedNode;                          // 0x013D2D2C
     virtual ~CNavQuadTree();                                             // slot 0
     const CANavQuadTreeNode* GetNodeAt(const C2DVector& pos, long layer) const;          // 0x00A770B0
+    unsigned char GetPreferabilityCostForNode(const CANavQuadTreeNode* node) const;   // 0x00A76E00 (chunk 747; Ego_r QBEEPBV..)
     bool IsAreaClear(const CANavQuadTreeNode* node, bool& switchable, std::vector<unsigned __int64>& ids) const;  // 0x00A78E20
     bool LoadFromFile(CAFile& file, long mapIndex, const C2DBoxI& area, CASuspendableProcess& process);           // 0x00A7AF60
 private:

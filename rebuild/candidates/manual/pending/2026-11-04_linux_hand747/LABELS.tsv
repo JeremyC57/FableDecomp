@@ -1,0 +1,14 @@
+address	label	source
+0x004385F0	CPlayerGui::UpdateCrime	Ego_r.pdb ?UpdateCrime@CPlayerGui@@AAEXXZ (row matched)
+0x009FCA40	CGraphicFrameData::InitialiseAsSurfaceSection	Ego_r.pdb (row matched)
+0x00B16220	NParticleEngine::CPSCOrbit::InterpolateTo	Ego_r.pdb ?InterpolateTo@CPSCOrbit@NParticleEngine@@UAEXABVCPSCBase@2@M@Z (row matched)
+0x00AA3C50	C3DKeyframe::BlendWith	FableWin.pdb ?BlendWith@C3DKeyframe@@QAEXABV1@M@Z (row matched)
+0x00643FF6	NPlayerGui::CCrimeStatBar::SetFine	Ego_r.pdb
+0x0065A28F	CTCVillage::GetNormalisedTimeLeftOnFines	Ego_r.pdb
+0x00B05C60	NParticleEngine::CPSCSingleSprite::GetComponentCost	Ego_r.pdb (parked dl=2)
+0x00B41A80	CEngineMap::PeekWaterHeight	Ego_r.pdb ?PeekWaterHeight@CEngineMap@@QBEMJJ@Z (parked dl=4)
+0x00B93B30	CEngineSceneMap::AddPrimitive	Ego_r.pdb ?AddPrimitive@CEngineSceneMap@@AAEXAAVCEngineInternalPrimitiveBase@@ABVC2DVector@@M@Z
+0x00A770B0	CNavQuadTree::GetNodeAt	Ego_r.pdb
+0x00AAD340	CWaveFile::ConvertSamplingRate	Ego_r.pdb ?ConvertSamplingRate@CWaveFile@@QAEXK@Z
+0x00A567A0	CCardinalSpline::GetSplinePosition	Ego_r.pdb ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z
+0x006CE800	CThingSearchTools::ForEachInRoughArea<CThing,CThingFilter_IsNot,FrameUpdateThing>	Ego_r.pdb (landed caller note 0x006CE730)

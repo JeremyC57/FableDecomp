@@ -381393,6 +381393,83 @@ $catalog = @(
         TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_DoCongratulatingHero_00eb3280_test.cpp'
         PassPattern = '00eb3280_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004385f0'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_UpdateCrime_004385f0.cpp'
+        TestSource = '00/43/CPlayerGui_UpdateCrime_004385f0_test.cpp'
+        PassPattern = '004385f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006378e0'
+        Module = 'NThingMap::CThingMapManager'
+        Source = '00/63/NThingMapCThingMapManager_GetThingMapwhoLevel_006378e0.cpp'
+        TestSource = '00/63/NThingMapCThingMapManager_GetThingMapwhoLevel_006378e0_test.cpp'
+        PassPattern = '006378e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fca40'
+        Module = 'CGraphicFrameData'
+        Source = '00/9f/CGraphicFrameData_InitialiseAsSurfaceSection_009fca40.cpp'
+        TestSource = '00/9f/CGraphicFrameData_InitialiseAsSurfaceSection_009fca40_test.cpp'
+        PassPattern = '009fca40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a76e00'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_GetPreferabilityCostForNode_00a76e00.cpp'
+        TestSource = '00/a7/CNavQuadTree_GetPreferabilityCostForNode_00a76e00_test.cpp'
+        PassPattern = '00a76e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a88d10'
+        Module = 'CQuaternion'
+        Source = '00/a8/CQuaternion_SetFromAxisAngle_00a88d10.cpp'
+        TestSource = '00/a8/CQuaternion_SetFromAxisAngle_00a88d10_test.cpp'
+        PassPattern = '00a88d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa3c50'
+        Module = 'C3DKeyframe'
+        Source = '00/aa/C3DKeyframe_BlendWith_00aa3c50.cpp'
+        TestSource = '00/aa/C3DKeyframe_BlendWith_00aa3c50_test.cpp'
+        PassPattern = '00aa3c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b05e10'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_SmoothFadeValue_00b05e10.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_SmoothFadeValue_00b05e10_test.cpp'
+        PassPattern = '00b05e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b16220'
+        Module = 'NParticleEngine::CPSCOrbit'
+        Source = '00/b1/NParticleEngineCPSCOrbit_InterpolateTo_00b16220.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCOrbit_InterpolateTo_00b16220_test.cpp'
+        PassPattern = '00b16220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b18820'
+        Module = 'NParticleEngine::CPSCLight'
+        Source = '00/b1/NParticleEngineCPSCLight_Update_00b18820.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCLight_Update_00b18820_test.cpp'
+        PassPattern = '00b18820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1ad90'
+        Module = 'NParticleEngine::CPSCLight'
+        Source = '00/b1/NParticleEngineCPSCLight_SmoothFadeValue_00b1ad90.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCLight_SmoothFadeValue_00b1ad90_test.cpp'
+        PassPattern = '00b1ad90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b84580'
+        Module = 'CEngineSubPrimitiveRenderer'
+        Source = '00/b8/CEngineSubPrimitiveRenderer_AddSubPrimitive_00b84580.cpp'
+        TestSource = '00/b8/CEngineSubPrimitiveRenderer_AddSubPrimitive_00b84580_test.cpp'
+        PassPattern = '00b84580_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

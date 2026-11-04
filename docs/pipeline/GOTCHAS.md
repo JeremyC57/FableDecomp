@@ -1959,3 +1959,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - 2026-11-04 (chunk 746) NScript dialogue rows: shared MovieBase with implicit dtor + an out-of-line `CCountedPointer<MovieBase>` dtor declaration + the RAII pause object reproduce retail's per-exit movie ctor/dtor split with plain returns.
 - 2026-11-04 (chunk 746) `return _Fail_Val.Return();` (TRetVoid) can decide which of two identical early-return blocks survives tail merging: use it uniformly in a TU.
 - 2026-11-04 (chunk 746) Same-size NScript bodies sharing one propagated label: name them from donor member order, the caller's call order and the text literals.
+- 2026-11-04 (landing j) vland can write a landed row to the catalog with its bare name when the chunk's labels omit it; `sync_manifest_from_catalog.py` then moves the manifest module to `_global`. After landing, check catalog names are qualified (label them from the row leaf) before syncing.
+- 2026-11-04 (chunk 747) A dead rounding survives in retail only because it is asm: every C++ spelling deletes it (0x00AA3C50), which is itself proof the helper is needed.
+- 2026-11-04 (chunk 747) Macro-form vs `__forceinline` function-form isolation: the function form (operand through a frame slot) matched all 12 fistp helper groups, the macro form 9; test both before adding a helper.
+- 2026-11-04 (chunk 747) `GetCrime().SetX(call())` loads the bar into a callee-saved register before the call; the `PCrime->` form does not.

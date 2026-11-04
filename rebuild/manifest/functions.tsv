@@ -13515,7 +13515,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00637810	vfunc_7	NCameraModes::CMoveOnCylinder	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00637820	vfunc_8	NCameraModes::CMoveOnCylinder	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00637830	`scalar_deleting_destructor'	NCameraModes::CMoveOnCylinder	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\63\CLandscapeBackgroundPatch_vectordeletingdestructor_00637830.cpp
-006378e0	GetThingMapwhoLevel	CThingMapManager	__thiscall	uchar	2	CThingMapManager *,float	1	yes	accepted									
+006378e0	GetThingMapwhoLevel	NThingMap::CThingMapManager	__thiscall	uchar	2	CThingMapManager *,float	1	yes	accepted									
 00637980	RemoveMapwhoNodeFromCell	NThingMap::CThingMapManager	__thiscall	void	3	CThingMapManager *,CThingMapCell *,CMapwhoNode *	1	yes	accepted									
 006379d0	InitLayerInfo	NThingMap::CThingMapManager	__fastcall	void	0		1	yes	accepted									
 00637a10	DestroyMapwhoNode	NThingMap::CThingMapManager	unknown	undefined	0		0	yes	accepted									
@@ -13732,7 +13732,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00643f9e	GetAlpha	NPlayerGui::CDrawGuildSeal	__thiscall	float	1	CDrawGuildSeal *	1	yes	accepted									
 00643fc8	GetAssignableSpecialMoveIndexForButtonDef	NPlayerGui::CDrawAbilityButtons	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00643fe4	ToggleFlash	NPlayerGui::CDrawQuickAccessIcons	__thiscall	void	3	CDrawQuickAccessIcons *,EXboxControllerButton,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\64\CDrawQuickAccessIcons_ToggleFlash_00643fe4.cpp
-00643ff6	SetMember_dword0x68_00643ff6	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\64\CObservable_AddExclusiveObserver_00643ff6.cpp
+00643ff6	SetFine	NPlayerGui::CCrimeStatBar	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\64\CObservable_AddExclusiveObserver_00643ff6.cpp
 0064401c	Update	NPlayerGui::CDrawMiniMap	__thiscall	void	2	CDrawMiniMap *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 00644179	IsFinishedOpening	NPlayerGui::CDrawMiniMap	__thiscall	bool	1	CDrawMiniMap *	1	yes	accepted									
 006441be	IsFinishedClosing	NPlayerGui::CDrawMiniMap	__thiscall	bool	1	CDrawMiniMap *	1	yes	accepted									
@@ -17048,7 +17048,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006ce670	CGroundNavigatorExternalInterface	CGroundNavigatorExternalInterface	__thiscall	undefined	2	CGroundNavigatorExternalInterface *,CGroundNavigatorExternalInterface *	0	yes	accepted									
 006ce710	`scalar_deleting_destructor'	CGroundNavigatorExternalInterface	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6c\CLandscapeBackgroundPatch_vectordeletingdestructor_006ce710.cpp
 006ce730	operator()	FrameUpdateThing	unknown	undefined	0		0	yes	accepted									
-006ce800	ForEachInRoughArea<CThing,CThingFilter_IsNot,_anon_D4BA0483::FrameUpdateThing>	ForEachInRoughArea<CThing,CThingFilter_IsNot,_anon_D4BA0483	__thiscall	bool	4	CThingSearchTools *,C2DBoxI *,CThingFilter_IsNot *,FrameUpdateThing *	1	yes	accepted									
+006ce800	ForEachInRoughArea<CThing,CThingFilter_IsNot,FrameUpdateThing>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,C2DBoxI *,CThingFilter_IsNot *,FrameUpdateThing *	1	yes	accepted									
 006ceae0	AddSuccessfulBlockParry	CTCHeroExperience	__thiscall	void	1	CTCHeroExperience *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6c\CTCHeroExperience_AddSuccessfulBlockParry_006ceae0.cpp
 006cebf0	SendPauseEvent	CTCWife	__thiscall	void	2	CTCTrophy *,bool	1	yes	accepted									
 006cec70	vfunc_8	CTCWife	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -38728,7 +38728,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aa3560	SetSlerpFromIdentity	CQuaternion	unknown	undefined	0		0	yes	accepted									
 00aa39a0	ToMatrix	CQuaternion	__thiscall	void	3	CQuaternion *,CMatrix3x4 *,C3DVector *	1	yes	accepted									
 00aa3af0	ToMatrix	C3DKeyframe	unknown	undefined	0		0	yes	accepted									
-00aa3c50	Interpolate	CRightHandedSet	__thiscall	CRightHandedSet	3	CRightHandedSet *,CRightHandedSet *,float	1	yes	accepted									
+00aa3c50	BlendWith	C3DKeyframe	__thiscall	CRightHandedSet	3	CRightHandedSet *,CRightHandedSet *,float	1	yes	accepted									
 00aa4150	`scalar deleting destructor'	C3DAnimationManager	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CLandscapeBackgroundPatch_vectordeletingdestructor_00aa4150.cpp
 00aa4170	~C3DAnimationManager	C3DAnimationManager	__thiscall	void	1	C3DAnimationManager *	1	yes	accepted									
 00aa41c0	C3DQuadricBasedMeshOptimiser	C3DQuadricBasedMeshOptimiser	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
@@ -40634,7 +40634,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b18760	`scalar_deleting_destructor'	NParticleEngine::CPSCAttractor	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b1\CLandscapeBackgroundPatch_vectordeletingdestructor_00b18760.cpp
 00b18780	~CPSCAttractor	NParticleEngine::CPSCAttractor	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted									
 00b187d0	GetComponentCost	NParticleEngine::CPSCLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00b18820	Update	CPSCLight	__thiscall	void	4	CPSCLight *,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *,bool *	1	yes	accepted									
+00b18820	Update	NParticleEngine::CPSCLight	__thiscall	void	4	CPSCLight *,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *,bool *	1	yes	accepted									
 00b18950	WriteBinary	NParticleEngine::CPSCLight	__thiscall	void	2	CPSCLight *,CDataOutputStream *	1	yes	accepted									
 00b18af0	AddToBoundingSphere	NParticleEngine::CPSCLight	__thiscall	bool	5	CPSCLight *,C3DBoundingSphere *,float,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *	1	yes	accepted									
 00b18c60	InterpolateTo	NParticleEngine::CPSCLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -40644,7 +40644,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b1a640	CPSCLight	NParticleEngine::CPSCLight	__thiscall	undefined	1	CPSCLight *	0	yes	accepted									
 00b1a700	DatabaseCopy	NParticleEngine::CPSCLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b1a870	DatabaseSerialise	CPSCLight	__thiscall	void	3	CPSCLight *,CPersistContext *,CEmitterDatabaseSerialiseInfo *	1	yes	accepted									
-00b1ad90	SmoothFadeValue	CPSCLight	__thiscall	float	2	CPSCLight *,float	1	yes	accepted									
+00b1ad90	SmoothFadeValue	NParticleEngine::CPSCLight	__thiscall	float	2	CPSCLight *,float	1	yes	accepted									
 00b1ae00	GetClassTypeName	NParticleEngine::CPSCLight	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b1\CActionDoCreatureAction_GetActionName_00b1ae00.cpp
 00b1ae20	vfunc_4	NParticleEngine::CPSCLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b1ae30	vfunc_5	NParticleEngine::CPSCLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

@@ -1,0 +1,11 @@
+catalog  006378e0 GetThingMapwhoLevel -> NThingMap::CThingMapManager::GetThingMapwhoLevel
+catalog  00a76e00 GetPreferabilityCostForNode -> CNavQuadTree::GetPreferabilityCostForNode
+catalog  00a88d10 SetFromAxisAngle -> CQuaternion::SetFromAxisAngle
+catalog  00b05e10 SmoothFadeValue -> NParticleEngine::CPSCSingleSprite::SmoothFadeValue
+catalog  00b18820 Update -> NParticleEngine::CPSCLight::Update
+catalog  00b1ad90 SmoothFadeValue -> NParticleEngine::CPSCLight::SmoothFadeValue
+catalog  00b84580 AddSubPrimitive -> CEngineSubPrimitiveRenderer::AddSubPrimitive
+manifest 006378e0 CThingMapManager::GetThingMapwhoLevel -> NThingMap::CThingMapManager::GetThingMapwhoLevel
+manifest 00b18820 CPSCLight::Update -> NParticleEngine::CPSCLight::Update
+manifest 00b1ad90 CPSCLight::SmoothFadeValue -> NParticleEngine::CPSCLight::SmoothFadeValue
+labels 20  catalog renamed 7  manifest renamed 3

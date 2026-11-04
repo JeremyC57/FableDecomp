@@ -1,0 +1,278 @@
+00b05e10	GFFloatToLongNear	long_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b05e10	GFFloatToLongNear	int_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b05e10	GFFloatToLongNear	short_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b05e10	GFFloatToLongNear	temp_local	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b05e10	GFFloatToLongNear	add_half	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b05e10	GFFloatToLongNear	double_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b05e10	GFFloatToLongNear	floor_intrinsic	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b05e10	GFFloatToLongNear	noinline_static	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b05e10	GFFloatToLongNear	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b05e10	GFFloatToLongNear	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b05e10	GFFloatToLongNear	sse_cvtss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b05e10	GFFloatToLongNear	sse_cvttss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=1 cvtss2si=0 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b05e10	GFFloatToLongNear	MACRO	-	ftol2=0 fistp_dword=1 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=0 | graded RELOCATION_MATCH dl=	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b1ad90	GFFloatToLongNear	long_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b1ad90	GFFloatToLongNear	int_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b1ad90	GFFloatToLongNear	short_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b1ad90	GFFloatToLongNear	temp_local	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b1ad90	GFFloatToLongNear	add_half	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b1ad90	GFFloatToLongNear	double_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b1ad90	GFFloatToLongNear	floor_intrinsic	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b1ad90	GFFloatToLongNear	noinline_static	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b1ad90	GFFloatToLongNear	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b1ad90	GFFloatToLongNear	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b1ad90	GFFloatToLongNear	sse_cvtss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b1ad90	GFFloatToLongNear	sse_cvttss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=1 cvtss2si=0 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b1ad90	GFFloatToLongNear	MACRO	-	ftol2=0 fistp_dword=1 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=0 | graded RELOCATION_MATCH dl=	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	floor_intrinsic	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	floorf	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	long_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	cpp_block	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	cpp_block_QIfist	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	double_floor	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	noinline_static	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	QIfist_floor	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	sse_cvtss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	MACRO	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\006378e0_	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00a88d10	GFFloatToLongNear	long_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00a88d10	GFFloatToLongNear	int_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00a88d10	GFFloatToLongNear	short_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00a88d10	GFFloatToLongNear	temp_local	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00a88d10	GFFloatToLongNear	add_half	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00a88d10	GFFloatToLongNear	double_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00a88d10	GFFloatToLongNear	floor_intrinsic	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00a88d10	GFFloatToLongNear	noinline_static	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00a88d10	GFFloatToLongNear	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00a88d10	GFFloatToLongNear	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00a88d10	GFFloatToLongNear	sse_cvtss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=2 calls=0	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00a88d10	GFFloatToLongNear	sse_cvttss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=2 cvtss2si=0 calls=0	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00a88d10	GFFloatToLongNear	MACRO	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=0 | graded RELOCATION_MATCH dl=	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	floor_intrinsic	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	floorf	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	long_cast	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	cpp_block	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	cpp_block_QIfist	/QIfist	ftol2=0 fistp_dword=2 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	double_floor	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	noinline_static	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	QIfist_floor	/QIfist	ftol2=0 fistp_dword=2 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	sse_cvtss_si32	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=2 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	MACRO	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00a76e00_	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	long_cast	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	int_cast	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	short_cast	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	temp_local	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	add_half	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	double_cast	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	floor_intrinsic	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	noinline_static	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=2 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=2 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	sse_cvtss_si32	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	sse_cvttss_si32	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=1 cvtss2si=0 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	MACRO	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00a76e00_	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+0057b26f	GFFloatToLongNear	long_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=7	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+0057b26f	GFFloatToLongNear	int_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=7	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+0057b26f	GFFloatToLongNear	short_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=7	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+0057b26f	GFFloatToLongNear	temp_local	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=7	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+0057b26f	GFFloatToLongNear	add_half	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=7	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+0057b26f	GFFloatToLongNear	double_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=7	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+0057b26f	GFFloatToLongNear	floor_intrinsic	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=8	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+0057b26f	GFFloatToLongNear	noinline_static	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=7	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+0057b26f	GFFloatToLongNear	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+0057b26f	GFFloatToLongNear	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+0057b26f	GFFloatToLongNear	sse_cvtss_si32	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=6	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+0057b26f	GFFloatToLongNear	sse_cvttss_si32	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=1 cvtss2si=0 calls=6	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+0057b26f	GFFloatToLongNear	MACRO	-	ftol2=1 fistp_dword=1 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=6 | graded DIFFER(156v156) dl=2	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+007e2df0	GFFloatToLongCeil	ceil_intrinsic	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	ceilf	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	long_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	cpp_block	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	cpp_block_QIfist	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	double_ceil	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	noinline_static	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	QIfist_ceil	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	sse_cvtss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	MACRO	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\007e2df0_	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	long_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	int_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	short_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	temp_local	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	add_half	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	double_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	floor_intrinsic	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	noinline_static	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	sse_cvtss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	sse_cvttss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=1 cvtss2si=0 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	MACRO	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\005ee77c_	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	floor_intrinsic	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	floorf	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	long_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	cpp_block	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	cpp_block_QIfist	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	double_floor	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	noinline_static	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	QIfist_floor	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	sse_cvtss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+006378e0	GFFloatToLongFloor	MACRO	-	ftol2=0 fistp_dword=1 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=0 | graded RELOCATION_MATCH dl=	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	floor_intrinsic	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	floorf	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	long_cast	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	cpp_block	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	cpp_block_QIfist	/QIfist	ftol2=0 fistp_dword=2 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	double_floor	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	noinline_static	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	QIfist_floor	/QIfist	ftol2=0 fistp_dword=2 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	sse_cvtss_si32	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=2 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	MACRO	-	ftol2=0 fistp_dword=4 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=0 | graded RELOCATION_MATCH dl=	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	long_cast	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	int_cast	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	short_cast	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	temp_local	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	add_half	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	double_cast	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	floor_intrinsic	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	noinline_static	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=2 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=2 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	sse_cvtss_si32	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	sse_cvttss_si32	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=1 cvtss2si=0 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	MACRO	-	ftol2=0 fistp_dword=4 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=0 | graded DIFFER(294v298) dl=10	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	ceil_intrinsic	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	ceilf	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	long_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	cpp_block	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	cpp_block_QIfist	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	double_ceil	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	noinline_static	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	QIfist_ceil	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	sse_cvtss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+007e2df0	GFFloatToLongCeil	MACRO	-	ftol2=0 fistp_dword=1 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=3 | graded DIFFER(252v257) dl=27	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	long_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	int_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	short_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	temp_local	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	add_half	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	double_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	floor_intrinsic	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	noinline_static	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	sse_cvtss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	sse_cvttss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=1 cvtss2si=0 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+005ee77c	GFFloatToLongNear	MACRO	-	ftol2=0 fistp_dword=1 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=3 | graded DIFFER(259v267) dl=14	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b18820	GFFloatToLongNear	long_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b18820	GFFloatToLongNear	int_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b18820	GFFloatToLongNear	short_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b18820	GFFloatToLongNear	temp_local	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b18820	GFFloatToLongNear	add_half	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b18820	GFFloatToLongNear	double_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b18820	GFFloatToLongNear	floor_intrinsic	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=6	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b18820	GFFloatToLongNear	noinline_static	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=5	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b18820	GFFloatToLongNear	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b18820	GFFloatToLongNear	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=3	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b18820	GFFloatToLongNear	sse_cvtss_si32	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b18820	GFFloatToLongNear	sse_cvttss_si32	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=1 cvtss2si=0 calls=4	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b18820	GFFloatToLongNear	MACRO	-	ftol2=1 fistp_dword=1 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4 | macro operand=named-temp | graded RELOCATION_MATCH dl=	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b84580	GFFloatToLongNear	long_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00b84580	GFFloatToLongNear	int_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00b84580	GFFloatToLongNear	short_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00b84580	GFFloatToLongNear	temp_local	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00b84580	GFFloatToLongNear	add_half	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00b84580	GFFloatToLongNear	double_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00b84580	GFFloatToLongNear	floor_intrinsic	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=6	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00b84580	GFFloatToLongNear	noinline_static	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00b84580	GFFloatToLongNear	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00b84580	GFFloatToLongNear	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00b84580	GFFloatToLongNear	sse_cvtss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=2 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00b84580	GFFloatToLongNear	sse_cvttss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=2 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+00b84580	GFFloatToLongNear	MACRO	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2 | macro operand=direct | graded RELOCATION_MATCH dl=	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	long_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	int_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	short_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	temp_local	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	add_half	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	double_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	floor_intrinsic	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=6	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	noinline_static	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	sse_cvtss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=2 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	sse_cvttss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=2 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	MACRO	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2 | macro operand=named-temp | graded DIFFER(200v218) dl=27	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	long_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	int_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	short_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	temp_local	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	add_half	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	double_cast	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	floor_intrinsic	-	ftol2=2 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=6	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	noinline_static	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	sse_cvtss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=2 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	sse_cvttss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=2 cvtss2si=0 calls=2	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+009fca40	GFFastFloatToLong	MACRO	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2 | macro operand=named-temp | graded DIFFER(200v218) dl=27	retail: fistp_dword=2 fistp_qword=0 ftol2_calls=0
+004385f0	GFFloatToLongNear	long_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=14	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+004385f0	GFFloatToLongNear	int_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=14	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+004385f0	GFFloatToLongNear	short_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=14	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+004385f0	GFFloatToLongNear	temp_local	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=14	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+004385f0	GFFloatToLongNear	add_half	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=14	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+004385f0	GFFloatToLongNear	double_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=14	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+004385f0	GFFloatToLongNear	floor_intrinsic	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=15	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+004385f0	GFFloatToLongNear	noinline_static	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=14	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+004385f0	GFFloatToLongNear	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=13	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+004385f0	GFFloatToLongNear	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=13	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+004385f0	GFFloatToLongNear	sse_cvtss_si32	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=14	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+004385f0	GFFloatToLongNear	sse_cvttss_si32	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=14	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+004385f0	GFFloatToLongNear	MACRO	-	ftol2=1 fistp_dword=1 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=14 | macro operand=named-temp | graded RELOCATION_MATCH dl=	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=1
+00b16220	GFFloatToLongNear	long_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b16220	GFFloatToLongNear	int_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b16220	GFFloatToLongNear	short_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b16220	GFFloatToLongNear	temp_local	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b16220	GFFloatToLongNear	add_half	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b16220	GFFloatToLongNear	double_cast	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b16220	GFFloatToLongNear	floor_intrinsic	-	ftol2=1 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b16220	GFFloatToLongNear	noinline_static	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b16220	GFFloatToLongNear	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b16220	GFFloatToLongNear	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=0 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b16220	GFFloatToLongNear	sse_cvtss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b16220	GFFloatToLongNear	sse_cvttss_si32	-	ftol2=0 fistp_dword=0 fistp_qword=0 cvttss2si=1 cvtss2si=0 calls=0	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00b16220	GFFloatToLongNear	MACRO	-	N/A site in a condition / non-statement line: needs a named temporary (= the function form)	retail: fistp_dword=1 fistp_qword=0 ftol2_calls=0
+00aa3c50	GFFloatToLongNear	long_cast	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00aa3c50_	retail: fistp_dword=3 fistp_qword=0 ftol2_calls=0
+00aa3c50	GFFloatToLongNear	int_cast	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00aa3c50_	retail: fistp_dword=3 fistp_qword=0 ftol2_calls=0
+00aa3c50	GFFloatToLongNear	short_cast	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00aa3c50_	retail: fistp_dword=3 fistp_qword=0 ftol2_calls=0
+00aa3c50	GFFloatToLongNear	temp_local	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00aa3c50_	retail: fistp_dword=3 fistp_qword=0 ftol2_calls=0
+00aa3c50	GFFloatToLongNear	add_half	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00aa3c50_	retail: fistp_dword=3 fistp_qword=0 ftol2_calls=0
+00aa3c50	GFFloatToLongNear	double_cast	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00aa3c50_	retail: fistp_dword=3 fistp_qword=0 ftol2_calls=0
+00aa3c50	GFFloatToLongNear	floor_intrinsic	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00aa3c50_	retail: fistp_dword=3 fistp_qword=0 ftol2_calls=0
+00aa3c50	GFFloatToLongNear	noinline_static	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00aa3c50_	retail: fistp_dword=3 fistp_qword=0 ftol2_calls=0
+00aa3c50	GFFloatToLongNear	QIfist_long_cast	/QIfist	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00aa3c50_	retail: fistp_dword=3 fistp_qword=0 ftol2_calls=0
+00aa3c50	GFFloatToLongNear	QIfist_temp_local	/QIfist	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00aa3c50_	retail: fistp_dword=3 fistp_qword=0 ftol2_calls=0
+00aa3c50	GFFloatToLongNear	sse_cvtss_si32	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00aa3c50_	retail: fistp_dword=3 fistp_qword=0 ftol2_calls=0
+00aa3c50	GFFloatToLongNear	sse_cvttss_si32	-	COMPILE_FAIL rc=2 Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk747\probe\00aa3c50_	retail: fistp_dword=3 fistp_qword=0 ftol2_calls=0
+00aa3c50	GFFloatToLongNear	MACRO	-	ftol2=0 fistp_dword=3 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=0 | macro operand=named-temp | graded RELOCATION_MATCH dl=	retail: fistp_dword=3 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	floor_intrinsic	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	floorf	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	long_cast	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	cpp_block	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	cpp_block_QIfist	/QIfist	ftol2=0 fistp_dword=2 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	double_floor	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	noinline_static	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	QIfist_floor	/QIfist	ftol2=0 fistp_dword=2 fistp_qword=2 cvttss2si=0 cvtss2si=0 calls=2	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	sse_cvtss_si32	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=2 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongFloor	MACRO	-	ftol2=0 fistp_dword=4 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=0 | macro operand=named-temp | graded RELOCATION_MATCH dl=	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	long_cast	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	int_cast	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	short_cast	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	temp_local	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	add_half	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	double_cast	-	ftol2=1 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	floor_intrinsic	-	ftol2=2 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=4	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	noinline_static	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=1	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	QIfist_long_cast	/QIfist	ftol2=0 fistp_dword=2 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	QIfist_temp_local	/QIfist	ftol2=0 fistp_dword=2 fistp_qword=1 cvttss2si=0 cvtss2si=0 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	sse_cvtss_si32	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=0 cvtss2si=1 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	sse_cvttss_si32	-	ftol2=0 fistp_dword=2 fistp_qword=0 cvttss2si=1 cvtss2si=0 calls=0	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0
+00a76e00	GFFloatToLongNear	MACRO	-	ftol2=0 fistp_dword=4 fistp_qword=0 cvttss2si=0 cvtss2si=0 calls=0 | macro operand=named-temp | graded DIFFER(294v298) dl=10	retail: fistp_dword=4 fistp_qword=0 ftol2_calls=0

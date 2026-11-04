@@ -40,6 +40,9 @@ public:
     virtual bool IsSwitchable() const;                                                   // slot 9
     virtual bool IsSwitchableOn(unsigned __int64) const;                                 // slot 10
 protected:
+    // chunk 747 (row 0x00A770B0 CNavQuadTree::GetNodeAt): retail calls the protected slot 11 from CNavQuadTree (`call [edx+2Ch]`
+    // on the cell node), so the original grants CNavQuadTree access.
+    friend class CNavQuadTree;
     virtual const CANavQuadTreeNode* GetLeafNodeAt(const C2DVector&) const;              // slot 11
 public:
     virtual bool MakeRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);          // slot 12 (+0x30)

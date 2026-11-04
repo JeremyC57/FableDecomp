@@ -1,0 +1,32 @@
+addr       parity           behav  name
+004385f0   WARN SHARED_HEADER_AVAILABLE CThing
+004385f0   WARN SHARED_HEADER_AVAILABLE CTCVillage
+004385f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+004385f0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+004385f0   WARN RELOC_NAME: ?SetFine@CCrimeStatBar@NPlayerGui@@QAEXJ@Z -> 00643ff6 labelled '_global::SetMember_dword0x68_00643ff6'
+004385f0   RELOCATION_MATCH PASS   UpdateCrime
+006378e0   WARN SHARED_HEADER_AVAILABLE CThingMapManager
+006378e0   RELOCATION_MATCH PASS   GetThingMapwhoLevel
+009fca40   RELOCATION_MATCH PASS   InitialiseAsSurfaceSection
+00a76e00   RELOCATION_MATCH PASS   GetPreferabilityCostForNode
+00a88d10   RELOCATION_MATCH PASS   SetFromAxisAngle
+00aa3c50   RELOCATION_MATCH PASS   BlendWith
+00b05e10   RELOCATION_MATCH PASS   SmoothFadeValue
+00b16220   RELOCATION_MATCH PASS   InterpolateTo
+00b18820   RELOCATION_MATCH PASS   Update
+00b1ad90   RELOCATION_MATCH PASS   SmoothFadeValue
+00b84580   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00b84580   RELOCATION_MATCH PASS   AddSubPrimitive
+
+WINS: 11
+  004385f0 RELOCATION_MATCH CPlayerGui::?UpdateCrime@CPlayerGui@@AAEXXZ
+  006378e0 RELOCATION_MATCH NThingMap::CThingMapManager::?GetThingMapwhoLevel@CThingMapManager@NThingMap@@IBEEM@Z
+  009fca40 RELOCATION_MATCH CGraphicFrameData::?InitialiseAsSurfaceSection@CGraphicFrameData@@QAE_NABV?$CCountedPointer@VCTexture@@@@MMJJ_N1@Z
+  00a76e00 RELOCATION_MATCH CNavQuadTree::?GetPreferabilityCostForNode@CNavQuadTree@@QBEEPBVCANavQuadTreeNode@@@Z
+  00a88d10 RELOCATION_MATCH CQuaternion::?SetFromAxisAngle@CQuaternion@@QAEXABVC3DVector@@M@Z
+  00aa3c50 RELOCATION_MATCH C3DKeyframe::?BlendWith@C3DKeyframe@@QAEXABV1@M@Z
+  00b05e10 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?SmoothFadeValue@CPSCSingleSprite@NParticleEngine@@IBEMM@Z
+  00b16220 RELOCATION_MATCH NParticleEngine::CPSCOrbit::?InterpolateTo@CPSCOrbit@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+  00b18820 RELOCATION_MATCH NParticleEngine::CPSCLight::?Update@CPSCLight@NParticleEngine@@UAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AA_N@Z
+  00b1ad90 RELOCATION_MATCH NParticleEngine::CPSCLight::?SmoothFadeValue@CPSCLight@NParticleEngine@@QBEMM@Z
+  00b84580 RELOCATION_MATCH CEngineSubPrimitiveRenderer::?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXPAVCEngineSubPrimitiveBase@@MEKPAVCEnginePrimitiveManager@@AAVCEngineSubPrimitiveChain@@@Z

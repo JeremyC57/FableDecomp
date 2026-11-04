@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-04 (chunk authoring; rounds 2026-11-04a..i landed; chunk 747 running)
+# Resume here (one page) — updated 2026-11-04 (chunk authoring; rounds 2026-11-04a..j landed; chunk 748 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -15,16 +15,17 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   `$S/w22/BRIEF_738.md`, work in `$S/w22/chunk73{8,9}`, `chunk740`. 739 landed 2 of 5 (`batches/2026-11-04_landing_a/`), 740 3 of 5 (`_landing_b/`), 738 3 of 5 (`_landing_c/`), 741 2 of 5 (`_landing_d/`), 743 11 of 11 + 4 Vorbis re-models (`_landing_e/`), 742 2 of 6 (`_landing_f/`); rest staged in
   `pending/2026-11-04_linux_hand73{8,9}/`, `_hand74{0,1,2,3}/`. 744 (CQ_HangingTreeGoodScript) landed 1 of 5 + the GetGuardsHealth
   respelling (`_landing_g/`), 745 (CV_HeroDuelScript) 4 of 4 (`_landing_h/`), 746 (MurderTwist sheriff/guard) 4 of 5 (`_landing_i/`); staged in `pending/2026-11-04_linux_hand74{4,5,6}/`.
-- **Running when this page was written:** chunk 748 = retry of the 8 hand-SSE parks (`$S/w22/chunk748`, brief `$S/w22/BRIEF_748.md`: C++, then intrinsics, then macro/function isolation) and chunk 747 = retry of the 65
-  parked bare-`fistp` rows with the isolated helpers (`$S/w22/chunk747`, brief `$S/w22/BRIEF_747.md`, rows from `$S/asmcand.json`
-  "fistp", oracle `$S/batch/chunk747_oracle.tsv`; its mirror is HEAD ab98c12c3). Check each dir's STATUS.tsv / NOTES.md / payload.json,
-  then land. Next asm-rule work after 747: the 9 hand SSE/MMX parks (need new isolated helpers with C++ fallbacks, e.g. 0x00988E80,
-  0x00989230), the 10 LTCG reg-arg parks (try pure C++ via same-TU static callees), and de-baking the 13 landed asm_bake rows
-  (e.g. 0x0042DF9E, 0x005BD993, 0x00899EF0) to C++ + helper. The 45 "asm-impossible" parks that are really scheduling/frame residue
-  belong in the normal retry pool.
+- 747 (retry of the 65 parked bare-fistp rows) landed 11 as retail_asm (`_landing_j/`), 17 parked + 37 deferred in
+  `pending/2026-11-04_linux_hand747/` (per-site C++/intrinsic/macro attempts table there).
+- **Running when this page was written:** chunk 748 = retry of the 8 hand-SSE parks (`$S/w22/chunk748`, brief `$S/w22/BRIEF_748.md`:
+  C++, then intrinsics, then macro/function isolation; mirror HEAD 4e108b875). Next asm-rule work: de-bake the 13 landed asm_bake rows
+  (e.g. 0x0042DF9E, 0x005BD993, 0x00899EF0); the 10 LTCG reg-arg parks (pure C++ via same-TU static callees); the 45 mislabelled
+  "asm-impossible" parks belong in the normal retry pool.
+- Fable Anniversary exe (owner-supplied): names for TLC's RTTI-less vtables, `docs/re_reference/FABLE_ANNIVERSARY.md`; naming wave of 17
+  high-confidence classes + 667 confirmations not yet applied.
 - Coverage (refresh with `tools/write_decomp_dashboard.py` then `tools/update_readme_progress.py`; never hand-edit):
-  46,582 genuine of the 49,564-function catalog (93.98%), 56.65% of retail function bytes, 54,134 landed rows,
-  after landing 2026-11-04i. Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`, `2026-11-04_landing_a/` .. `_landing_h/`.
+  46,593 genuine of the 49,564-function catalog (94.01%), 56.68% of retail function bytes, 54,145 landed rows (206 retail_asm),
+  after landing 2026-11-04j. Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`, `2026-11-04_landing_a/` .. `_landing_h/`.
 - `// Revisit: inline-depth` rows: 65 (129 at the start of the day). Mechanism, levers and why the 65 are left:
   `docs/pipeline/INLINE_DEPTH_REVISIT.md`; research `batches/2026-11-03_inline_split_research/`, `_inline_revisit2/`, `_inline_revisit3/`.
 - Codex: pass 13 landed 47 of 51 (`batches/2026-11-03_codex_pass13_landing/`; data names for `cvdump` in its NAME_DECISIONS.tsv);

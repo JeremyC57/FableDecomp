@@ -24,6 +24,13 @@ public:
     inline C4DVector(const CRGBFloatColour& colour);
     void Initialise(float x, float y, float z, float w) { X = x; Y = y; Z = z; W = w; }
     const C4DVector operator*(float sc) const { return C4DVector(X*sc,Y*sc,Z*sc,W*sc); }
+    // chunk 747 (row 0x00AA3C50 C3DKeyframe::BlendWith): FableWin.pdb ??GC4DVector@@QBE?BV0@ABV0@@Z / ??HC4DVector@@QBE?BV0@ABV0@@Z
+    // and ?Interpolate@C4DVector@@QBE?BV1@ABV1@M@Z, inline in retail: BlendWith builds (v - *this) in a frame temporary, scales it
+    // into a second one and adds *this (three temporaries, `fsub` / `fmul [t]` / `fadd`). Interpolate is __forceinline: written
+    // plain inline, VC7.1 emits it out of line in that caller.
+    const C4DVector operator-(const C4DVector& v) const { return C4DVector(X-v.X,Y-v.Y,Z-v.Z,W-v.W); }
+    const C4DVector operator+(const C4DVector& v) const { return C4DVector(X+v.X,Y+v.Y,Z+v.Z,W+v.W); }
+    __forceinline const C4DVector Interpolate(const C4DVector& v, float t) const { return (v - *this) * t + *this; }
 #endif
 };
 #endif
