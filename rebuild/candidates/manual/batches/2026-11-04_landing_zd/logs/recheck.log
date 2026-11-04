@@ -1,0 +1,28 @@
+addr       parity           behav  name
+0090c540   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardFollowPlayer::Update
+0091ea70   RELOCATION_MATCH PASS   CAIStateGroup_CreatureRangedCombat2::IsAbleToFire
+009104d0   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingObject@@V?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@VCIsSeatWithSpaceOwnedBy@@@CThingSearchTools@@QBEXABVCIsSeatWithSpaceOwnedBy@@AAV?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@@Z -> 00910a90 labelled 'CThingSearchTools::GetAllLeafThings<CThingObject,std::vector<CThingObject*>,CIsSeatWithSpaceOwnedBy>'
+009104d0   WARN RELOC_NAME: ?SetSeat@CAIStateGroup_UsesSeat@@IAEXPAVCThingObject@@@Z -> 009106e0 labelled '_unattributed::AssignTarget_009106e0'
+009104d0   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitOnSeatBase::GetSeat
+0092b3a0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0092b3a0   RELOCATION_MATCH PASS   CAIStateGroup_SkillPractice::Update
+00938280   RELOCATION_MATCH PASS   CAIStateGroup_UsesSeat::AllocChairSittingMode
+00946400   RELOCATION_MATCH PASS   CAIStateGroup_PrepareMeal::IsRunnable
+00945bd0   WARN RELOC_NAME: ?SetSeat@CAIStateGroup_UsesSeat@@IAEXPAVCThingObject@@@Z -> 009106e0 labelled '_unattributed::AssignTarget_009106e0'
+00945bd0   RELOCATION_MATCH PASS   CAIStateGroup_SitForMeal::Update
+00943c20   RELOCATION_MATCH PASS   CAIStateGroup_WorkInWarehouse::IsRunnable
+00954740   RELOCATION_MATCH PASS   CAIStateGroup_MazeShieldedChase::IsStillRunnable
+0096ae50   WARN RELOC_NAME: ??1?$CCountedPointer@VCCreatureActionBase@@@@QAE@XZ -> 0048c5c0 labelled '_global::CCountedPointer_Release_0048c5c0'
+0096ae50   RELOCATION_MATCH PASS   CAIStateGroup_WhisperRetreat::UseWill
+
+WINS: 10
+  0090c540 RELOCATION_MATCH CAIStateGroup_MinionGuardFollowPlayer::?Update@CAIStateGroup_MinionGuardFollowPlayer@@UAEXXZ
+  0091ea70 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombat2::?IsAbleToFire@CAIStateGroup_CreatureRangedCombat2@@ABE_NXZ
+  009104d0 RELOCATION_MATCH CAIStateGroup_MinionSitOnSeatBase::?GetSeat@CAIStateGroup_MinionSitOnSeatBase@@MAEXPAVCThing@@@Z
+  0092b3a0 RELOCATION_MATCH CAIStateGroup_SkillPractice::?Update@CAIStateGroup_SkillPractice@@MAEXXZ
+  00938280 RELOCATION_MATCH CAIStateGroup_UsesSeat::?AllocChairSittingMode@CAIStateGroup_UsesSeat@@MBEPAVCModeSitBase@NCreatureMode@@XZ
+  00946400 RELOCATION_MATCH CAIStateGroup_PrepareMeal::?IsRunnable@CAIStateGroup_PrepareMeal@@MAE_NXZ
+  00945bd0 RELOCATION_MATCH CAIStateGroup_SitForMeal::?Update@CAIStateGroup_SitForMeal@@MAEXXZ
+  00943c20 RELOCATION_MATCH CAIStateGroup_WorkInWarehouse::?IsRunnable@CAIStateGroup_WorkInWarehouse@@UAE_NXZ
+  00954740 RELOCATION_MATCH CAIStateGroup_MazeShieldedChase::?IsStillRunnable@CAIStateGroup_MazeShieldedChase@@IAE_NXZ
+  0096ae50 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?UseWill@CAIStateGroup_WhisperRetreat@@IAEXXZ

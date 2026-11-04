@@ -1,0 +1,55 @@
+address	name	evidence
+007fd3c0	CTCDPhysicalObstruction::OnInitialActivate	MATCH; ?OnInitialActivate@CTCDPhysicalObstruction@@UAEXXZ
+00810fc0	NEntityEvents::CEventHitBase::GetPHitBy	RELOCATION_MATCH; ?GetPHitBy@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ
+00810fd0	NEntityEvents::CEventHitBase::GetPWeaponUsed	RELOCATION_MATCH; ?GetPWeaponUsed@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ
+00827880	CMap::`vector deleting destructor'	RELOCATION_MATCH; ??_ECMap@@W3AEPAXI@Z
+0082a300	CMiniMapDisplay::RemoveAllMarkers	RELOCATION_MATCH; ?RemoveAllMarkers@CMiniMapDisplay@@QAEXXZ
+0082a380	CMiniMapDisplay::RemoveMarker	RELOCATION_MATCH; ?RemoveMarker@CMiniMapDisplay@@QAEXABVCThing@@@Z
+0084d2b0	NCameraModes::CBase::GetPWorldSeed	RELOCATION_MATCH; ?GetPWorldSeed@CBase@NCameraModes@@QBEPAKXZ
+00850630	NCameraModes::CPhysicsLeaf::Reset	MATCH; ?Reset@?$CPhysicsLeaf@VCPhysicsTargetModelGoTo@NCameraModes@@VCPhysicsForceModelGotoOutsideSimple@2@VCPhysicsCoordCartesian@2@@NCameraModes@@UAEXXZ
+0085ca00	NCameraModes::CPhysicsLeaf::Reset	MATCH; ?Reset@?$CPhysicsLeaf@VCPhysicsTargetModelGoTo@NCameraModes@@VCPhysicsForceModelRigid@2@VCPhysicsCoordRigid@2@@NCameraModes@@UAEXXZ
+0087c3e0	CTCSinglePersonOccupiable::GetOccupier	RELOCATION_MATCH; ?GetOccupier@CTCSinglePersonOccupiable@@QBEPAVCThingCreatureBase@@XZ
+008ab960	CScriptGameResourceObjectScriptedThingBase::SetImplementation	RELOCATION_MATCH; ?SetImplementation@CScriptGameResourceObjectScriptedThingBase@@QAEXPAV1@@Z
+008ab970	CScriptGameResourceObjectMovieBase::SetImplementation	RELOCATION_MATCH; ?SetImplementation@CScriptGameResourceObjectMovieBase@@QAEXPAV1@@Z
+008ba7e0	CCreatureAction_RemovePhysicalShieldSpell::PerformAction	RELOCATION_MATCH; ?PerformAction@CCreatureAction_RemovePhysicalShieldSpell@@UAEXXZ
+008cff20	CGameScriptThing::GetPThingUniqueID	MATCH; ?GetPThingUniqueID@CGameScriptThing@@UBE_KXZ
+008fcfb0	CAIStateGroupBase::PeekDefinitionManager	RELOCATION_MATCH; ?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ
+0090f1b0	CAIStateGroup_MinionReactToAlert::IsRunnable	RELOCATION_MATCH; ?IsRunnable@CAIStateGroup_MinionReactToAlert@@UAE_NXZ
+009112f0	CAIStateGroup_MinionGuardReactToBodyFoundMessage::IsRunnable	RELOCATION_MATCH; ?IsRunnable@CAIStateGroup_MinionGuardReactToBodyFoundMessage@@UAE_NXZ
+00919a00	CAIStateGroup_BuyFromSeller::Cleanup	RELOCATION_MATCH; ?Cleanup@CAIStateGroup_BuyFromSeller@@UAEXXZ
+0094bf50	CAIStateGroup_SellToBuyer::Cleanup	RELOCATION_MATCH; ?Cleanup@CAIStateGroup_SellToBuyer@@UAEXXZ
+00994450	CFileDataOutputStream::SetPosition	MATCH; ?SetPosition@CFileDataOutputStream@@UAEXK@Z
+00994460	CFileDataOutputStream::GetPosition	MATCH; ?GetPosition@CFileDataOutputStream@@UBEKXZ
+009cb730	NGameText::CDataBank::`vector deleting destructor'	RELOCATION_MATCH; ??_ECDataBank@NGameText@@WBGE@AEPAXI@Z
+009d4a40	CDefStringTable::SetTableFilename	RELOCATION_MATCH; ?SetTableFilename@CDefStringTable@@QAEXABVCWideString@@@Z
+009e5350	CSymbolMap::DeallocateUnusedMemory	RELOCATION_MATCH; ?DeallocateUnusedMemory@CSymbolMap@@QAEXXZ
+009fc3c0	CResourceBank::RemoveResource	RELOCATION_MATCH; ?RemoveResource@CResourceBank@@QAEXAAVCResource@@@Z
+009fd4d0	CGraphicInfoFrame::CFrameData::ResetDebugMemoryInUse	MATCH; ?ResetDebugMemoryInUse@CFrameData@CGraphicInfoFrame@@UAEXXZ
+00a013d0	CGraphicDataBank::`vector deleting destructor'	RELOCATION_MATCH; ??_ECGraphicDataBank@@WBGE@AEPAXI@Z
+00abceb0	C3DMeshFileVerticesChunk::AddVertex	RELOCATION_MATCH; ?AddVertex@C3DMeshFileVerticesChunk@@QAEXABVC3DVertex2@@@Z
+00af2160	NParticleEngine::CParticleDataBank::`vector deleting destructor'	RELOCATION_MATCH; ??_ECParticleDataBank@NParticleEngine@@WBGE@AEPAXI@Z
+00b2ad80	CEngineSurfaceCompositionManager::ChangeSceneForTextureBank	RELOCATION_MATCH; ?ChangeSceneForTextureBank@CEngineSurfaceCompositionManager@@QAEXXZ
+00b2f5d0	CEngineSurfaceCompositionManager::`vector deleting destructor'	RELOCATION_MATCH; ??_ECEngineSurfaceCompositionManager@@WHM@AEPAXI@Z
+00b3aad0	CEnginePrimitiveAttachmentManager::`vector deleting destructor'	RELOCATION_MATCH; ??_ECEnginePrimitiveAttachmentManager@@W3AEPAXI@Z
+00b3afe0	CEngineResourceManager::OnReleaseDefaultPoolResources	RELOCATION_MATCH; ?OnReleaseDefaultPoolResources@CEngineResourceManager@@EAEXXZ
+00b83d20	CEngineSimulationManager::`vector deleting destructor'	RELOCATION_MATCH; ??_ECEngineSimulationManager@@W3AEPAXI@Z
+00b8c790	CEngineBillboardGenerator::`vector deleting destructor'	RELOCATION_MATCH; ??_ECEngineBillboardGenerator@@W3AEPAXI@Z
+00b8fb50	CEnginePrimitiveTypeInfo::`vector deleting destructor'	RELOCATION_MATCH; ??_ECEnginePrimitiveTypeInfo@@WM@AEPAXI@Z
+00c0bf90	CString::AllocCopy	RELOCATION_MATCH; ?AllocCopy@CString@@QBEXAAV1@HHH@Z
+00c36220	CSequenceTrack::Play	RELOCATION_MATCH; ?Play@CSequenceTrack@@QAEXABVC3DVector@@M@Z; libpk / GameCODA (no PDB, no RTTI): the landed placeholder spelling callers already bind, kept (one retail address, one name)
+00c3b840	CUnprovenTransferRecord_00C3B850::~CUnprovenTransferRecord_00C3B850	RELOCATION_MATCH; ??1CUnprovenTransferRecord_00C3B850@@QAE@XZ; libpk / GameCODA (no PDB, no RTTI): the landed placeholder spelling callers already bind, kept (one retail address, one name)
+00c3b960	CUnprovenTransferRecord_00C3B970::~CUnprovenTransferRecord_00C3B970	RELOCATION_MATCH; ??1CUnprovenTransferRecord_00C3B970@@QAE@XZ; libpk / GameCODA (no PDB, no RTTI): the landed placeholder spelling callers already bind, kept (one retail address, one name)
+00c44b40	CObject_00c44b40::Method_00c44b40	RELOCATION_MATCH; ?Method_00c44b40@CObject_00c44b40@@QAEXXZ; libpk / GameCODA (no PDB, no RTTI): the landed placeholder spelling callers already bind, kept (one retail address, one name)
+00c701d0	CVtable_012bedcc::~CVtable_012bedcc	RELOCATION_MATCH; ??1CVtable_012bedcc@@UAE@XZ; libpk / GameCODA (no PDB, no RTTI): the landed placeholder spelling callers already bind, kept (one retail address, one name)
+00c70bb0	CVtable_012bede0::~CVtable_012bede0	RELOCATION_MATCH; ??1CVtable_012bede0@@UAE@XZ; libpk / GameCODA (no PDB, no RTTI): the landed placeholder spelling callers already bind, kept (one retail address, one name)
+00ca96f0	CDynamicOutputPin::QueryInterface	MATCH; ?QueryInterface@CDynamicOutputPin@@UAGJABU_GUID@@PAPAX@Z
+00cbf9cf	GetScriptActiveStatus	RELOCATION_MATCH; ?GetScriptActiveStatus@@YI?AW4EScriptActiveStatus@@ABVCCharString@@@Z
+01229150	CTCTavernGame::SetStateAfterInstructions'::`5'::`dynamic atexit destructor for 'no_text_entry''	RELOCATION_MATCH; _$E2
+01229160	CTCTavernGame::GetText'::`2'::`dynamic atexit destructor for 'no_text_entry''	RELOCATION_MATCH; _$E2
+01229390	CEnvironment::RenderUpdate'::`5'::`dynamic atexit destructor for 'interpolated_theme''	RELOCATION_MATCH; _$E2
+01229dd0	CTCBetting::GetText'::`2'::`dynamic atexit destructor for 'no_text_entry''	RELOCATION_MATCH; _$E2
+01229de0	CTCOracleMinigame::GetTextWithNarrator'::`2'::`dynamic atexit destructor for 'no_text_entry''	RELOCATION_MATCH; _$E2
+01229e10	CTCFireheartMinigame::GetText'::`2'::`dynamic atexit destructor for 'no_text_entry''	RELOCATION_MATCH; _$E2
+0x00CD2B1C	std::_Rb_tree<CCharString,pair<const CCharString,EScriptActiveStatus>,...>::_M_find<CCharString>	STLport _M_find shape (lower bound over less<CCharString> 0x0042AAB3 then the key<found test returning the header); called by GetScriptActiveStatus 0x00CBF9CF on ScriptActiveStatuses 0x0143E910 (was autoname CDefStringTable_RBTree_Find)
+0x0082C770	std::list<CMiniMapDisplay::CMarkerInfo>::remove_if<CMiniMapDisplay::CIsMarkerBoundToThing>	Ego_r ??$remove_if@VCIsMarkerBoundToThing@CMiniMapDisplay@@@?$list@VCMarkerInfo@CMiniMapDisplay@@...; tail target of RemoveMarker 0x0082A380
+0x00ABED70	std::vector<C3DVertex2>::push_back	tail target of C3DMeshFileVerticesChunk::AddVertex 0x00ABCEB0 (32-byte elements; was CRetailVector_SRecord32::PushBack)

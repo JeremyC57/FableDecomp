@@ -489,6 +489,11 @@ public:
     void pop_back() { iterator tmp=end(); erase(--tmp); }
 #endif
 #endif
+#ifdef FABLE_RETAIL_STLP_LIST_REMOVE_IF_OUTOFLINE
+    // chunk 767 (row 0x0082A380 CMiniMapDisplay::RemoveMarker): STLport 4.6 _list.h member template remove_if(_Predicate), declared
+    // only: retail tail-jumps to the out-of-line instantiation (0x0082C770, ??$remove_if@VCIsMarkerBoundToThing@CMiniMapDisplay@@@..).
+    template<class _Predicate> void remove_if(_Predicate pred);
+#endif
 };
 // _bitset.h / _range_errors.h (no-exceptions branch)
 template<size_t _Nw> struct _Base_bitset {

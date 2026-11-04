@@ -25,6 +25,11 @@ private:
     CGameScriptThing(CWorld& world);                                     // ??0CGameScriptThing@@AAE@AAVCWorld@@@Z
     CGameScriptThing(CWorld& world, const CThing& thing);                // ??0CGameScriptThing@@AAE@AAVCWorld@@ABVCThing@@@Z
 public:
+#ifdef FABLE_RETAIL_CGAMESCRIPTTHING_UNIQUEID
+    // Chunk 767 (row 0x008CFF20): the slot-12 override, Ego_r.pdb / FableWin.pdb ?GetPThingUniqueID@CGameScriptThing@@UBE_KXZ
+    // (vtable 0x012852CC slot 12; returns ThingUID +0x18 in edx:eax).
+    virtual FableNScriptUInt64 GetPThingUniqueID() const;                // 12 0x008CFF20
+#endif
     CIntelligentPointer<CThing> PThing;                                  // +0x0c
     long                        ScriptCounter;                           // +0x14
     unsigned __int64            ThingUID;                                // +0x18

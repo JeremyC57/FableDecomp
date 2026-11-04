@@ -1,0 +1,62 @@
+address	name	status	attempts	note
+007fd3c0	CTCDPhysicalObstruction::OnInitialActivate	MATCH	1	catalog: CTCDPhysicalObstruction::CTCDPhysicalObstruction vfunc_6
+00810fc0	NEntityEvents::CEventHitBase::GetPHitBy	RELOCATION_MATCH	1	catalog: NEntityEvents::CEventHitBase GetPHitBy
+00810fd0	NEntityEvents::CEventHitBase::GetPWeaponUsed	RELOCATION_MATCH	1	catalog: NEntityEvents::CEventHitBase GetPWeaponUsed
+00827880	CMap::`vector deleting destructor'	RELOCATION_MATCH	1	catalog: CMap::CMap vfunc_0
+0082a300	CMiniMapDisplay::RemoveAllMarkers	RELOCATION_MATCH	1	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+0082a380	CMiniMapDisplay::RemoveMarker	RELOCATION_MATCH	1	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+0084d2b0	NCameraModes::CBase::GetPWorldSeed	RELOCATION_MATCH	1	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+00850630	NCameraModes::CPhysicsLeaf::Reset	MATCH	1	catalog: CPhysicsLeaf::CPhysicsLeaf vfunc_1
+0085ca00	NCameraModes::CPhysicsLeaf::Reset	MATCH	1	catalog: CPhysicsLeaf::CPhysicsLeaf vfunc_1
+0087c3e0	CTCSinglePersonOccupiable::GetOccupier	RELOCATION_MATCH	1	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+008ab960	CScriptGameResourceObjectScriptedThingBase::SetImplementation	RELOCATION_MATCH	2	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+008ab970	CScriptGameResourceObjectMovieBase::SetImplementation	RELOCATION_MATCH	1	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+008ba7e0	CCreatureAction_RemovePhysicalShieldSpell::PerformAction	RELOCATION_MATCH	1	catalog: CCreatureAction_RemovePhysicalShieldSpell::CCreatureAction_RemovePhysicalShieldSpell PerformAction
+008cff20	CGameScriptThing::GetPThingUniqueID	MATCH	1	catalog: CGameScriptThing::CGameScriptThing GetPThingUniqueID
+008fcfb0	CAIStateGroupBase::PeekDefinitionManager	RELOCATION_MATCH	1	catalog: CAIStateGroupBase GetPDefinitionManager
+0090f1b0	CAIStateGroup_MinionReactToAlert::IsRunnable	RELOCATION_MATCH	2	catalog: CAIStateGroup_MinionReactToAlert::CAIStateGroup_MinionReactToAlert IsRunnable
+009112f0	CAIStateGroup_MinionGuardReactToBodyFoundMessage::IsRunnable	RELOCATION_MATCH	2	catalog: CAIStateGroup_MinionGuardReactToBodyFoundMessage::CAIStateGroup_MinionGuardReactToBodyFoundMessage IsRunnable
+00919a00	CAIStateGroup_BuyFromSeller::Cleanup	RELOCATION_MATCH	1	catalog: CAIStateGroup_BuyFromSeller::CAIStateGroup_BuyFromSeller Cleanup
+0094bf50	CAIStateGroup_SellToBuyer::Cleanup	RELOCATION_MATCH	1	catalog: CAIStateGroup_SellToBuyer::CAIStateGroup_SellToBuyer Cleanup
+00994450	CFileDataOutputStream::SetPosition	MATCH	1	catalog: CFileDataOutputStream SetPosition
+00994460	CFileDataOutputStream::GetPosition	MATCH	1	catalog: CFileDataOutputStream GetPosition
+009cb730	NGameText::CDataBank::`vector deleting destructor'	RELOCATION_MATCH	1	catalog: NGameText::CDataBank::NGameText::CDataBank vfunc_0
+009d4a40	CDefStringTable::SetTableFilename	RELOCATION_MATCH	1	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+009e5350	CSymbolMap::DeallocateUnusedMemory	RELOCATION_MATCH	1	catalog: CSymbolMap DeallocateUnusedMemory
+009fc3c0	CResourceBank::RemoveResource	RELOCATION_MATCH	1	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+009fd4d0	CGraphicInfoFrame::CFrameData::ResetDebugMemoryInUse	MATCH	1	catalog: CGraphicInfoFrame::CFrameData::CGraphicInfoFrame::CFrameData vfunc_9
+00a013d0	CGraphicDataBank::`vector deleting destructor'	RELOCATION_MATCH	1	catalog: CGraphicDataBank::CGraphicDataBank vfunc_0
+00abceb0	C3DMeshFileVerticesChunk::AddVertex	RELOCATION_MATCH	1	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+00add5c0	CLHFile_00add5c0::IsNull() const	PARKED DIFFER(name)	1	name unproven: CLHFile / LHA have no PDB symbols, and nothing references 0x00ADD5C0 (no call, no vtable cell) [placeholder grade p1: MATCH]
+00af2160	NParticleEngine::CParticleDataBank::`vector deleting destructor'	RELOCATION_MATCH	1	catalog: NParticleEngine::CParticleDataBank::NParticleEngine::CParticleDataBank vfunc_0
+00b2ad80	CEngineSurfaceCompositionManager::ChangeSceneForTextureBank	RELOCATION_MATCH	1	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+00b2f5d0	CEngineSurfaceCompositionManager::`vector deleting destructor'	RELOCATION_MATCH	1	catalog: CEngineSurfaceCompositionManager::CEngineSurfaceCompositionManager vfunc_0
+00b3aad0	CEnginePrimitiveAttachmentManager::`vector deleting destructor'	RELOCATION_MATCH	1	catalog: CEnginePrimitiveAttachmentManager::CEnginePrimitiveAttachmentManager vfunc_0
+00b3afe0	CEngineResourceManager::OnReleaseDefaultPoolResources	RELOCATION_MATCH	1	catalog: CEngineResourceManager::CEngineResourceManager OnReleaseDefaultPoolResources
+00b83d20	CEngineSimulationManager::`vector deleting destructor'	RELOCATION_MATCH	1	catalog: CEngineSimulationManager::CEngineSimulationManager vfunc_0
+00b8c790	CEngineBillboardGenerator::`vector deleting destructor'	RELOCATION_MATCH	1	catalog: CEngineBillboardGenerator::CEngineBillboardGenerator vfunc_0
+00b8fb50	CEnginePrimitiveTypeInfo::`vector deleting destructor'	RELOCATION_MATCH	1	catalog: CEnginePrimitiveTypeInfo::CEnginePrimitiveTypeInfo vfunc_0
+00c0bf90	CString::AllocCopy	RELOCATION_MATCH	1	catalog: CString AllocCopy
+00c11700	CUnproven_00c11700::GetFaderOutput() const	PARKED DIFFER(name)	1	name unproven: libpk has no PDB / RTTI; the only landed spelling bound to this address is the placeholder ?cons_ctor@@YINPAUPair@@@Z (a free __fastcall function, wrong shape) [placeholder grade p1: RELOCATION_MATCH]
+00c14700	CUnproven_00c14700::~CUnproven_00c14700()	PARKED DIFFER(name)	1	name unproven: libpk has no PDB / RTTI and no landed spelling is bound to 0x00C14700; the owner class is unknown [placeholder grade p1: RELOCATION_MATCH]
+00c14710	CUnproven_00c14710::~CUnproven_00c14710()	PARKED DIFFER(name)	1	name unproven: libpk has no PDB / RTTI and no landed spelling is bound to 0x00C14710; the owner class is unknown [placeholder grade p1: RELOCATION_MATCH]
+00c2d9b0	CUnproven_00c2d9b0::~CUnproven_00c2d9b0()	PARKED DIFFER(name)	1	name unproven: libpk has no PDB / RTTI and no landed spelling is bound to 0x00C2D9B0 (catalog module CAudioFormat is a guess) [placeholder grade p1: RELOCATION_MATCH]
+00c36220	CSequenceTrack::Play	RELOCATION_MATCH	1	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+00c3b840	CUnprovenTransferRecord_00C3B850::~CUnprovenTransferRecord_00C3B850	RELOCATION_MATCH	1	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+00c3b960	CUnprovenTransferRecord_00C3B970::~CUnprovenTransferRecord_00C3B970	RELOCATION_MATCH	1	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+00c44b40	CObject_00c44b40::Method_00c44b40	RELOCATION_MATCH	1	catalog: _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,cla
+00c47ea0	CUnproven_00c47ea0::~CUnproven_00c47ea0()	PARKED DIFFER(name)	1	name unproven: libpk has no PDB / RTTI; row binding: none; the callee 0x00C167C0 is bound under eight different landed placeholder spellings (one retail address, one name not yet resolved) [placeholder grade p1: RELOCATION_MATCH]
+00c48740	CUnproven_00c48740::~CUnproven_00c48740()	PARKED DIFFER(name)	1	name unproven: libpk has no PDB / RTTI; row binding: ??1SDecoderMessage@@QAE@XZ; the callee 0x00C167C0 is bound under eight different landed placeholder spellings (one retail address, one name not yet resolved) [placeholder grade p1: RELOCATION_MATCH]
+00c701d0	CVtable_012bedcc::~CVtable_012bedcc	RELOCATION_MATCH	1	catalog: CVtable_012bedcc ~CVtable_012bedcc
+00c70bb0	CVtable_012bede0::~CVtable_012bede0	RELOCATION_MATCH	1	catalog: CVtable_012bede0 ~CVtable_012bede0
+00ca96f0	CDynamicOutputPin::QueryInterface	MATCH	1	catalog: _global Thunk_VirtualMethod_0
+00cbf9cf	GetScriptActiveStatus	RELOCATION_MATCH	1	catalog: _global GetScriptActiveStatus
+00d29880	NScript::CQ_EndGameScript::CHookCoastTeleporter::Main()	PARKED DIFFER(not attempted)	0	out of scope for this tiny-row chunk: a 1319-byte quest-script Main (398 instructions, 29 game-script-interface virtual calls, 9 CCharString literals, float timers against the script globals 0x0143E90C +0xBE4/+0xBE8/+0xBEC); 0 grades spent
+01229150	CTCTavernGame::SetStateAfterInstructions'::`5'::`dynamic atexit destructor for 'no_text_entry''	RELOCATION_MATCH	1	catalog: _global CCharString_Destructor_Stub1
+01229160	CTCTavernGame::GetText'::`2'::`dynamic atexit destructor for 'no_text_entry''	RELOCATION_MATCH	1	catalog: _global CCharString_Destructor_Stub2
+01229390	CEnvironment::RenderUpdate'::`5'::`dynamic atexit destructor for 'interpolated_theme''	RELOCATION_MATCH	1	catalog: _global OnPostRelocation_Callback
+01229dd0	CTCBetting::GetText'::`2'::`dynamic atexit destructor for 'no_text_entry''	RELOCATION_MATCH	1	catalog: _global CCharString_Destructor_Stub4
+01229de0	CTCOracleMinigame::GetTextWithNarrator'::`2'::`dynamic atexit destructor for 'no_text_entry''	RELOCATION_MATCH	1	catalog: _global CCharString_Destructor_Stub5
+01229e10	CTCFireheartMinigame::GetText'::`2'::`dynamic atexit destructor for 'no_text_entry''	RELOCATION_MATCH	1	catalog: _global Cleanup_CCharString_Global
+0122a2f0	`dynamic atexit destructor for 'interaction''	PARKED DIFFER(not attempted)	0	needs the owner: the static's mangled name carries the owner's block number (Ego_r scope 43, mangled ?interaction@?CL@??PracticeAgainstApprentice... (43 = 0x2B)) and the owner is a 0x4B0-byte body; an abridged owner cannot reach that scope honestly
+0132d470	InvalidDecode_HaltStub	PARKED DIFFER(not code)	0	0x0132D470 lies in .rdata (0x0122D000..0x01373A4C, characteristics 0x40000040, not executable) and the row length is 0; there is nothing to reconstruct

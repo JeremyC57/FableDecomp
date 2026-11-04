@@ -30,6 +30,7 @@ class CAIBrain;
 class CThingAICreature;
 class CWorld;
 class CThingSearchTools;
+class CGameDefinitionManager;
 enum EAIStateGroupType;                                                  // MS forward enum
 enum EAIActionReturn;                                                    // MS forward enum (chunk 754: AIAction_DoNothing's return type)
 #endif
@@ -87,6 +88,11 @@ protected:
     // ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ (0x008FD000), protected, out of line in retail.
     const CWorld& PeekWorld() const;                                     // 0x008FCFA0
     const CThingSearchTools& PeekThingSearchTools() const;               // 0x008FD000
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEKDEFINITIONMANAGER
+    // Chunk 767 (row 0x008FCFB0): Ego_r.pdb ?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ (donor 0x00847E00,
+    // just before GetPWorldSeed 0x00847E20 as retail 0x008FCFB0 / 0x008FCFD0), protected, out of line in retail.
+    const CGameDefinitionManager& PeekDefinitionManager() const;         // 0x008FCFB0
 #endif
 public:
     void Terminate();                                                    // 0x008FCF40 ?Terminate@CAIStateGroupBase@@QAEXXZ

@@ -7,6 +7,13 @@
 #ifdef FABLE_RETAIL_CSYMBOLMAP
 #include "fable_string.h"
 #endif
+#if defined(FABLE_RETAIL_CSYMBOLMAP) && defined(FABLE_RETAIL_CSYMBOLMAP_SLONGMAP)
+#ifndef FABLE_RETAIL_CARRAY_DEALLOCATEUNUSEDMEMORY
+#define FABLE_RETAIL_CARRAY_DEALLOCATEUNUSEDMEMORY
+#endif
+#include "engine/CVectorMap.h"
+template<class V> class CCompareString { };
+#endif
 class CSymbolMap : public CBaseClassNonCopyable {
 public:
     CSymbolMap();
@@ -27,8 +34,17 @@ public:
     bool SymbolExists(const CCharString& name) const;
     long GetSymbolSLONG(const CCharString& name) const;
 #endif
+#if defined(FABLE_RETAIL_CSYMBOLMAP) && defined(FABLE_RETAIL_CSYMBOLMAP_SLONGMAP)
+    // Chunk 767 (row 0x009E5350): Ego_r.pdb ?DeallocateUnusedMemory@CSymbolMap@@QAEXXZ (donor 0x00B376D0, after Clear 0x00B376B0) and the
+    // typed SLONGMap (Ego_r CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CSymbolMap::CSymbolInfo> >, the 11 PDB
+    // manglings) whose CArray base DeallocateUnusedMemory retail calls (0x009E7C70). CCompareString is empty (an Ego_r functor).
+    void DeallocateUnusedMemory();                               // 0x009E5350
+protected:
+    CVectorMap<CCharString,CSymbolInfo,CCompareString<CSymbolInfo> > SLONGMap;   // +0x04
+#else
 protected:
     unsigned char SLONGMap[16];      // CVectorMap<CCharString,CSymbolInfo,CCompareString<CSymbolInfo> >
+#endif
     unsigned char NamesUsed[12];     // std::set<CCharString,std::less<CCharString>,std::allocator<CCharString> >
     bool CheckForDuplicateSymbols;
 };

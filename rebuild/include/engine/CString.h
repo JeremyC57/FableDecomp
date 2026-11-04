@@ -42,5 +42,17 @@ public:
     CString& __fastcall operator<<(long value);              // 0x00C0DF00 ??6CString@@QAIAAV0@J@Z
     CString& __fastcall operator<<(double value);            // 0x00C0DED0 ??6CString@@QAIAAV0@N@Z
 #endif
+#ifdef FABLE_RETAIL_CSTRING_ALLOCCOPY
+    // Chunk 767 (row 0x00C0BF90): MFC strcore.cpp AllocCopy / AllocBuffer / Init, the spellings Mid 0x00C0DF50, Right 0x00C0E0F0 and
+    // Left 0x00C0E1F0 bind (?AllocCopy@CString@@QBEXAAV1@HHH@Z, ?AllocBuffer@CString@@QAEXH@Z 0x00C0BDA0). Init() is inline in retail:
+    // `m_pchData = _afxPchNil` (the nil characters 0x0139C900; the spelling 40 landed rows bind, naming decision D4 still HOLD).
+    void AllocCopy(CString& dest, int nCopyLen, int nCopyIndex, int nExtraLen) const;   // 0x00C0BF90
+    void AllocBuffer(int nLen);                              // 0x00C0BDA0
+    void Init();
+#endif
 };
+#ifdef FABLE_RETAIL_CSTRING_ALLOCCOPY
+extern char* _afxPchNil;                                     // 0x0139C900
+inline void CString::Init() { m_pchData = _afxPchNil; }
+#endif
 #endif

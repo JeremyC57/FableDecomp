@@ -10,6 +10,11 @@ class CResourceList : public CFailedAllocationHandler {
 public:
     virtual ~CResourceList();
     virtual bool HandleFailedAllocation(unsigned long);
+#ifdef FABLE_RETAIL_CRESOURCELIST_REMOVERESOURCE
+    // Chunk 767 (row 0x009FC3C0 CResourceBank::RemoveResource): Ego_r.pdb / FableWin.pdb ?RemoveResource@CResourceList@@QAEXAAVCResource@@@Z,
+    // retail 0x009FC020 (bound), out of line. A declaration only.
+    void RemoveResource(CResource& resource);                    // 0x009FC020
+#endif
 private:
     CResource Head;
     unsigned long ResourceCount;

@@ -1,0 +1,14 @@
+header	macro	landed_includers_affected	note
+engine/C3DMeshFileVerticesChunk.h	FABLE_RETAIL_C3DMESHFILEVERTICESCHUNK	none (3 includers, none defines the macro)	new retail branch; hdrcheck2 default=same
+engine/CAIStateGroupBase.h	FABLE_RETAIL_CAISTATEGROUPBASE_PEEKDEFINITIONMANAGER	none (176 includers)	declaration nested in FABLE_RETAIL_CAISTATEGROUPBASE; default and every existing macro same
+engine/CArray.h	FABLE_RETAIL_CARRAY_DEALLOCATEUNUSEDMEMORY	none (46 includers)	declaration only; default and existing macros same
+engine/CEngineResourceManager.h	FABLE_RETAIL_CENGINERESOURCEMANAGER_ONRELEASE	none (16 includers)	private virtual override declared inside the retail branch; default and FABLE_RETAIL_CENGINERESOURCEMANAGER same
+engine/CEngineSurfaceCompositionManager.h	FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_BANKS	none (7 includers)	the opaque block split into three CGraphicDataBank members, sizeof 0x10DC unchanged; default and retail branch same without the sub-macro
+engine/CEnvironment.h	FABLE_RETAIL_CENVIRONMENT_RENDERUPDATE	none (9 includers)	declaration only
+engine/CGameScriptThing.h	FABLE_RETAIL_CGAMESCRIPTTHING_UNIQUEID	none (45 includers)	virtual declared under the sub-macro only
+engine/CMiniMapDisplay.h	FABLE_RETAIL_CMINIMAPDISPLAY	none landed (1 includer); PENDING collision: rebuild/candidates/manual/pending/2026-11-03_linux_hand729 overlays the same macro (CMarkerInfo + GetNonAutoMarkers + virtual dtor, sizeof 0xC0)	same shape as the pending overlay; merge the declaration lists when both land
+engine/CResourceList.h	FABLE_RETAIL_CRESOURCELIST_REMOVERESOURCE	none (32 includers)	declaration only
+engine/CString.h	FABLE_RETAIL_CSTRING_ALLOCCOPY	none (2 includers)	AllocCopy / AllocBuffer declarations, inline Init(), extern _afxPchNil (naming decision D4 still HOLD on 0x0139C900)
+engine/CSymbolMap.h	FABLE_RETAIL_CSYMBOLMAP_SLONGMAP	none (3 includers)	typed SLONGMap under the sub-macro; opaque default under #else
+engine/NCameraModes_CBase.h	FABLE_RETAIL_NCAMERAMODES_CBASE_MEMBERS	none (1 includer)	members + GetPWorldSeed under the sub-macro
+stlport/fable_containers.h	FABLE_RETAIL_STLP_LIST_REMOVE_IF_OUTOFLINE	none (120 includers)	declaration-only member template remove_if in list; default and every existing macro same

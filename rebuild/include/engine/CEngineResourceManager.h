@@ -47,6 +47,11 @@ public:
         return *(CGPUScratchBufferTextureManager*)GPUScratchBufferTextureManager;
     }
 private:
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_ONRELEASE
+    // Chunk 767 (row 0x00B3AFE0, vtable 0x012A1B3C slot 11): Ego_r.pdb ?OnReleaseDefaultPoolResources@CEngineResourceManager@@EAEXXZ
+    // (a private override of the CEngineComponent virtual), `add ecx,3190h ; jmp 0x00F37170` = the scratch manager's BeginShutdown.
+    virtual void OnReleaseDefaultPoolResources();                        // 0x00B3AFE0
+#endif
     void BuildAlphaStippleTexture(long,CArray<unsigned char>&);
     CMeshDataBank* MeshBanks[3];                             // +0x10
     CMeshDataBank* MainMeshBank;                             // +0x1C

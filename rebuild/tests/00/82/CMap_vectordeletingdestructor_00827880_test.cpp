@@ -1,0 +1,26 @@
+// Behaviour test for the CMap vector-deleting-destructor adjustor thunk 0x00827880: deleting the object through its
+// secondary CBaseClassNonCopyable subobject (+0x4 in retail) must run the full object's destructor once and free the full object's address
+// (the thunk subtracts the subobject offset before jumping to the deleting destructor).
+#include <cstdio>
+#include <cstdlib>
+#include <new>
+static int g_dtors = 0;
+static void* g_freed = 0;
+struct PrimaryBase { virtual ~PrimaryBase() {} char state[4]; };
+struct SecondaryBase { virtual ~SecondaryBase() {} int word; };
+struct CMap : PrimaryBase, SecondaryBase {
+    char own[0x10];
+    ~CMap() { ++g_dtors; }
+    static void* operator new(std::size_t n) { return std::malloc(n); }
+    static void operator delete(void* p) { g_freed = p; std::free(p); }
+};
+int main()
+{
+    CMap* object = new CMap;
+    SecondaryBase* sub = object;
+    if ((void*)sub == (void*)object) { std::printf("00827880_TEST FAIL\n"); return 1; }
+    delete sub;
+    if (g_dtors != 1 || g_freed != (void*)object) { std::printf("00827880_TEST FAIL\n"); return 1; }
+    std::printf("00827880_TEST PASS\n");
+    return 0;
+}

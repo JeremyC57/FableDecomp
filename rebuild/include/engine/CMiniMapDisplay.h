@@ -8,6 +8,46 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY
+// Retail opt-in (chunk 767, rows 0x0082A300 RemoveAllMarkers / 0x0082A380 RemoveMarker): the marker list typed. Ego_r.pdb
+// (struct_layouts_egor.tsv) nested CMarkerInfo {CIntelligentPointer<CThing const> PThing +0, long GraphicIndex +8, bool AutoMarker +0xc}
+// and CIsMarkerBoundToThing {CThing* PThing +0} (??0CIsMarkerBoundToThing@CMiniMapDisplay@@QAE@ABVCThing@@@Z,
+// ??RCIsMarkerBoundToThing@CMiniMapDisplay@@QBE_NABVCMarkerInfo@1@@Z). Markers (STLport list, 4 bytes) at retail +0x20: both rows are
+// `add ecx,20h ; jmp` and the landed GetNonAutoMarkers 0x0082A390 reads [this+0x20]. Retail sizeof 0xC0 (generated retail layout);
+// the members after Markers stay opaque. Same shape as the pending chunk-729 overlay of this macro (CMarkerInfo, virtual destructor,
+// GetNonAutoMarkers 0x0082A390): merge the two declaration lists when both land. Needs FABLE_RETAIL_CINTELLIGENTPOINTER and
+// stlport/fable_containers.h (RemoveMarker: FABLE_RETAIL_STLP_LIST_REMOVE_IF_OUTOFLINE).
+#include "stlport/fable_containers.h"
+#include "engine/CIntelligentPointer.h"
+class CThing;
+class CMiniMapDisplay {
+public:
+    class CMarkerInfo {
+    public:
+        CIntelligentPointer<const CThing> PThing;            // +0x00
+        long GraphicIndex;                                   // +0x08
+        bool AutoMarker;                                     // +0x0c
+    };
+    class CIsMarkerBoundToThing {
+    public:
+        CIsMarkerBoundToThing(const CThing& thing) : PThing((CThing*)&thing) { }
+        bool operator()(const CMarkerInfo& marker) const;
+    private:
+        CThing* PThing;                                      // +0x00
+    };
+    virtual ~CMiniMapDisplay();
+    void RemoveAllMarkers();                                 // 0x0082A300
+    void RemoveMarker(const CThing& thing);                  // 0x0082A380
+private:
+    unsigned char MapPrimitiveHandles[0xc];                  // +0x04 vector<CEnginePrimitiveHandle>
+    unsigned char MarkerPrimitiveHandles[0xc];               // +0x10 vector<CEnginePrimitiveHandle>
+    long          MiniMapGraphic;                            // +0x1c
+    std::list<CMarkerInfo> Markers;                          // +0x20
+    unsigned char _pad_0x24[0x9c];                           // +0x24 MarkerFlashFade .. UpdateRequired (opaque)
+};
+FABLE_STATIC_ASSERT(sizeof(CMiniMapDisplay::CMarkerInfo)==0x10);
+FABLE_STATIC_ASSERT(sizeof(CMiniMapDisplay)==0xc0);
+#else
 
 class CRegion;
 class CTexture;
@@ -51,4 +91,5 @@ FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, RegionMinimap) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, PRegion) == 0xb8);
 FABLE_STATIC_ASSERT(offsetof(CMiniMapDisplay, UpdateRequired) == 0xbc);
 
+#endif // FABLE_RETAIL_CMINIMAPDISPLAY
 #endif // FABLE_ENGINE_CMINIMAPDISPLAY_H

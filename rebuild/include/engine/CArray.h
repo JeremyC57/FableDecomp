@@ -34,6 +34,12 @@ public:
     T* GetAsCArray() { return this->size()>0 ? &this->front() : GetZeroSizeArray(); }
 #endif
     const T* GetAsCArray() const { return this->size()>0 ? this->_M_start : (const T*)this; }
+#ifdef FABLE_RETAIL_CARRAY_DEALLOCATEUNUSEDMEMORY
+    // Chunk 767 (row 0x009E5350 CSymbolMap::DeallocateUnusedMemory): Ego_r.pdb ?DeallocateUnusedMemory@?$CArray@..@@QAEXXZ (CMapInfo,
+    // pair<K,CAnimationEntry>, unsigned short, unsigned char ... instances), out of line in retail (the pair<CCharString,
+    // CSymbolMap::CSymbolInfo> instance 0x009E7C70). A declaration only.
+    void DeallocateUnusedMemory();
+#endif
 private:
     T* GetZeroSizeArray() { return (T*)this; }
 };

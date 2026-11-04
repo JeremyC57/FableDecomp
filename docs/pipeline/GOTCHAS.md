@@ -2023,3 +2023,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A uniform eax/ecx/edx rotation over the rest of a function means one IR temporary more or fewer earlier; scheduling, counter types and named locals do not move it (chunk 766).
 - In size-optimised TUs, inline CCharString StartsWith/EndsWith must be `__forceinline` or VC7.1 calls them out of line (chunk 766).
 - A template stand-in body under `auto_inline(off)` is still inlined; mark it `__declspec(noinline)` (chunk 766).
+- VC7.1 local-static scope digits: function scope is `?1?`; inside one if-block (or after `if (a) { ...; return; }`) `?4?`; after an unbraced if `?3?`. The digit is the undname scope minus 1; above 10 it is hex A-P plus `@` (scope 43 = `?CL@`) (chunk 767).
+- Behaviour tests also build under VC7.1 `/Od`: its Dinkumware `list::remove_if` takes no generic predicate and `std::_Exit` is missing, so tests must compile under both (chunk 767).
+- `return f() != 0;` compiles to neg/sbb/neg; `if (f()) return true; return false;` gives retail's test/setne (chunk 767).

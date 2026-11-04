@@ -11,13 +11,29 @@
 #include "rebuild_abi.h"
 #include "engine/CResourceBank.h"
 #include "engine/CEngineComponent.h"
+#ifdef FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_BANKS
+#include "engine/CGraphicDataBank.h"
+#endif
 class CEngineInit;
 class CEngineSurfaceCompositionManager : public CResourceBank, public CEngineComponent {
 public:
     CEngineSurfaceCompositionManager();        // 0x00B2CB40 ??0CEngineSurfaceCompositionManager@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_BANKS
+    // Chunk 767 (row 0x00B2AD80): Ego_r.pdb ?ChangeSceneForTextureBank@CEngineSurfaceCompositionManager@@QAEXXZ (`add ecx,398h ; jmp
+    // 0x009FD0C0` = CompletedBankFile.ChangeScene()); the three CGraphicDataBank members (Ego_r names and order: CachedSurfaces list,
+    // IntermediateBankFile, CompletedBankFile, CustomTextureBankFile), retail 0x30C bytes each from +0x8C.
+    void ChangeSceneForTextureBank();                                    // 0x00B2AD80
+private:
+    unsigned char _pad_0x88[0x4];               // +0x88 CachedSurfaces (list<CCountedPointer<CCompositeSurfaceCache> >, not modelled)
+    CGraphicDataBank IntermediateBankFile;      // +0x8c
+    CGraphicDataBank CompletedBankFile;         // +0x398
+    CGraphicDataBank CustomTextureBankFile;     // +0x6a4
+    unsigned char _pad_0x9b0[0x72c];            // +0x9b0 members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+#else
 private:
     unsigned char _pad_0x88[0x1054];            // +0x88 members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineSurfaceCompositionManager) == 0x10dc);
 #else // generated flattened Ego_r layout (the landed default, unchanged)

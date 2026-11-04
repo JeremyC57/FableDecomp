@@ -31,6 +31,11 @@ public:
     void TransitionToDefaultThemeAllChannels(long priority, float time);   // 0x006B3950
 #endif
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_RENDERUPDATE
+    // Per-TU opt-in (chunk 767, row 0x01229390): Ego_r.pdb / FableWin.pdb ?RenderUpdate@CEnvironment@@QAEXM@Z, retail 0x006B42F0
+    // (ret 4; the only registrant of the atexit stub 0x01229390 for its function-local static interpolated_theme).
+    void RenderUpdate(float frame_fraction);                     // 0x006B42F0
+#endif
     void*                                __vftable;          // +0x00 vptr, or first dword of a flattened base subobject
     CGameDefinitionManager*              DefinitionManager;  // +0x04
     float                                SunlightAttenuatorAngleFadeStart; // +0x08
