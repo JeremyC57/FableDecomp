@@ -27247,3 +27247,17 @@ chunk	address	module	name	length
 770	00e62d60	CV_ChickenKickingScript	CreateSpectators	1161
 770	00ee8390	_global	DoMission_OakValeRevisited	1240
 770	00ef1690	CWhispie	Main	1237
+771	005c19a3	CPersistTraits<NInventory::CItem>	TransferBinaryIn	1165
+771	006159a0	_global	TransferOut_HeroTraits	1127
+771	00645853	NPlayerGui::CStatBar	DrawStatBox	1174
+771	006a5d90	CThingPhysical	ConstructFromLevelScript	1268
+771	006c9490	_global	COpinionDeed_TransferIn	1128
+771	00762620	_global	StatOnSerialise	1160
+771	00763060	_global	Polygon_GeneratePath_WithCirculation	1146
+771	00774d20	_global	CTCShop_SellHighlightedItem	1149
+771	008eec70	_global	Collide	1129
+771	009bca20	_global	DisplayCenteredText	1104
+771	009e8c10	CPersistTraits<CRGBColour>	TransferIn	1134
+771	00ac44d0	CVertexStreamConverter	ConvertFrom	1076
+771	00ac4910	CVertexStreamConverter	ConvertTo	1120
+771	00e10e60	CWaspChaseWoman	Main	1306
