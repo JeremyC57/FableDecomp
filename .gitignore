@@ -91,3 +91,9 @@ imgui.ini
 
 # hdrcheck2.py writes throwaway stub headers here; they shadow real headers (GOTCHAS 2026-11-03). Tracked stubs stay tracked.
 /tools/decomp_pipeline/linux_lane/lane_tools/coordinator/stubinc/
+
+# Owner 2026-11-04: per-batch retail-byte oracles are landing-time inputs only (the landed bytes live in rebuild/oracles/auto-re-candidates.tsv;
+# recheck tools rebuild an oracle from it, chunk tools re-read Fable.exe). Do not commit new ones; already-tracked files are left as they are.
+rebuild/candidates/manual/batches/*/oracle.tsv
+rebuild/candidates/manual/batches/*/*_oracle.tsv
+rebuild/candidates/manual/pending/*/oracle.tsv
