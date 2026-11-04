@@ -1,0 +1,99 @@
+catalog  00dcf760 CVtable_012db364::`scalar deleting destructor' -> NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::`scalar deleting destructor'
+catalog  00de02f0 CVtable_012dcb40::`scalar deleting destructor' -> NScript::CQ_PrisonWardenGameScript::`scalar deleting destructor'
+catalog  00def730 CVtable_012ddf3c::`scalar deleting destructor' -> NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::`scalar deleting destructor'
+catalog  00e2ab30 CVtable_012e22c8::`scalar deleting destructor' -> NScript::CQS_ScytheInfoScript::`scalar deleting destructor'
+catalog  00ee1be0 CVtable_012f42b0::`scalar deleting destructor' -> NScript::CV_TravellingHeroesScript::CTH_SnowTroll::`scalar deleting destructor'
+catalog  00cded90 CVtable_012c3208::`scalar deleting destructor' -> NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::`scalar deleting destructor'
+catalog  00d40890 CVtable_012cdf28::`scalar deleting destructor' -> NScript::CQ_GuildTrainingScript::CSpeedFriend::`scalar deleting destructor'
+catalog  00e70370 CVtable_012e8e80::`scalar deleting destructor' -> NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::`scalar deleting destructor'
+catalog  00eea770 CVtable_012f55f8::`scalar deleting destructor' -> NScript::CExpression_WaitScript::`scalar deleting destructor'
+catalog  00f270b0 CVtable_012fb500::`scalar deleting destructor' -> CHeroSoulsCreatureDef::`scalar deleting destructor'
+catalog  00f29510 CVtable_012fb5c8::`scalar deleting destructor' -> CScriptDef::`scalar deleting destructor'
+catalog  00f29ce0 CVtable_012fb630::`scalar deleting destructor' -> CRegionScriptDef::`scalar deleting destructor'
+catalog  00d0b3c0 CVtable_012c95f0::`scalar deleting destructor' -> NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::`scalar deleting destructor'
+catalog  00e5b390 CVtable_012e6c1c::`scalar deleting destructor' -> NScript::CV_BeggarAndChildScript::CBeggarBully::`scalar deleting destructor'
+catalog  00ed17b0 CVtable_012f2c98::`scalar deleting destructor' -> NScript::CV_SingingStonesScript::CManWithDoorName::`scalar deleting destructor'
+catalog  00f2d300 CVtable_012fb778::`scalar deleting destructor' -> CFeatDef::`scalar deleting destructor'
+catalog  00cdec10 sub_00cdec10 -> NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::GetParentScript
+catalog  00cdec20 sub_00cdec20 -> NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::Init
+catalog  00cdec30 sub_00cdec30 -> NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::OnPersist
+catalog  00dcdec0 sub_00dcdec0 -> NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::GetParentScript
+catalog  00def700 sub_00def700 -> NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::GetParentScript
+catalog  00def710 sub_00def710 -> NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::Init
+catalog  00def720 sub_00def720 -> NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::OnPredicateFail
+catalog  00ee0330 sub_00ee0330 -> NScript::CV_TravellingHeroesScript::CTH_SnowTroll::GetParentScript
+catalog  00ee0340 sub_00ee0340 -> NScript::CV_TravellingHeroesScript::CTH_SnowTroll::Init
+catalog  00eea450 sub_00eea450 -> NScript::CExpression_WaitScript::Init
+catalog  00f25ca0 sub_00f25ca0 -> CArenaWaveDef::GetSizeofClass
+catalog  00f25f50 sub_00f25f50 -> CArenaWaveDef::Copy
+catalog  00f270a0 sub_00f270a0 -> CHeroSoulsCreatureDef::GetSizeofClass
+catalog  00f27180 sub_00f27180 -> CHeroSoulsCreatureDef::Copy
+catalog  00f29500 sub_00f29500 -> CScriptDef::GetSizeofClass
+catalog  00f29c50 sub_00f29c50 -> CRegionScriptDef::GetSizeofClass
+catalog  00f2a240 sub_00f2a240 -> CScriptDef::Copy
+catalog  00f2d2f0 sub_00f2d2f0 -> CFeatDef::GetSizeofClass
+catalog  00f2d680 sub_00f2d680 -> CFeatDef::Copy
+catalog  00e29a70 sub_00e29a70 -> NScript::CQS_ScytheInfoScript::Init
+catalog  00dddce0 CVtable_012dcb40::vfunc_3 -> NScript::CQ_PrisonWardenGameScript::Init
+catalog  00d408b0 CVtable_012cdf28::vfunc_1 -> NScript::CQ_GuildTrainingScript::CSpeedFriend::Main
+catalog  00cdec40 CArcheryCompetitionSignpost::Main -> NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::Main
+catalog  00eea460 CExpression_WaitScript::Main -> NScript::CExpression_WaitScript::Main
+catalog  00dcdf60 CCrateTeamMember::Init -> NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::Init
+catalog  00def760 CSP_UndeadTrigger::Main -> NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::Main
+catalog  00ee36a0 CStopDrawing::Main -> NScript::CV_TravellingHeroesScript::CTH_SnowTroll::Main
+catalog  00f25cb0 CUnprovenDef_00f25cb0::`scalar deleting destructor' -> CArenaWaveDef::`scalar deleting destructor'
+catalog  00dcded0 NScript::CQ_OrchardFarmRaidScript::CGuardTeamMember::OnPredicateFail -> NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::OnPredicateFail
+manifest 00cdec10 _global::sub_00cdec10 -> NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::GetParentScript
+manifest 00cdec20 _global::sub_00cdec20 -> NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::Init
+manifest 00cdec30 _global::sub_00cdec30 -> NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::OnPersist
+manifest 00cdec40 CArcheryCompetitionSignpost::Main -> NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::Main
+manifest 00cded90 CVtable_012c3208::`scalar deleting destructor' -> NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::`scalar deleting destructor'
+manifest 00d0b3c0 CVtable_012c95f0::`scalar deleting destructor' -> NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::`scalar deleting destructor'
+manifest 00d0b3e0 _gapscan::sub_00d0b3e0 -> NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::Main
+manifest 00d40890 CVtable_012cdf28::`scalar deleting destructor' -> NScript::CQ_GuildTrainingScript::CSpeedFriend::`scalar deleting destructor'
+manifest 00d408b0 CVtable_012cdf28::vfunc_1 -> NScript::CQ_GuildTrainingScript::CSpeedFriend::Main
+manifest 00dcdec0 _global::sub_00dcdec0 -> NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::GetParentScript
+manifest 00dcded0 NScript::CQ_OrchardFarmRaidScript::CGuardTeamMember::OnPredicateFail -> NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::OnPredicateFail
+manifest 00dcdf60 CCrateTeamMember::Init -> NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::Init
+manifest 00dce230 CCrateTeamMember::Main -> NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::Main
+manifest 00dcf760 CVtable_012db364::`scalar deleting destructor' -> NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::`scalar deleting destructor'
+manifest 00dddce0 CVtable_012dcb40::vfunc_3 -> NScript::CQ_PrisonWardenGameScript::Init
+manifest 00de02f0 CVtable_012dcb40::`scalar deleting destructor' -> NScript::CQ_PrisonWardenGameScript::`scalar deleting destructor'
+manifest 00def700 _global::sub_00def700 -> NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::GetParentScript
+manifest 00def710 _global::sub_00def710 -> NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::Init
+manifest 00def720 _global::sub_00def720 -> NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::OnPredicateFail
+manifest 00def730 CVtable_012ddf3c::`scalar deleting destructor' -> NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::`scalar deleting destructor'
+manifest 00def760 CSP_UndeadTrigger::Main -> NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::Main
+manifest 00e29a70 _global::sub_00e29a70 -> NScript::CQS_ScytheInfoScript::Init
+manifest 00e29b20 _gapscan::sub_00e29b20 -> NScript::CQS_ScytheInfoScript::Main
+manifest 00e2ab30 CVtable_012e22c8::`scalar deleting destructor' -> NScript::CQS_ScytheInfoScript::`scalar deleting destructor'
+manifest 00e5b390 CVtable_012e6c1c::`scalar deleting destructor' -> NScript::CV_BeggarAndChildScript::CBeggarBully::`scalar deleting destructor'
+manifest 00e5b3b0 _gapscan::sub_00e5b3b0 -> NScript::CV_BeggarAndChildScript::CBeggarBully::Main
+manifest 00e70370 CVtable_012e8e80::`scalar deleting destructor' -> NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::`scalar deleting destructor'
+manifest 00e74d70 CDF_SummonsCreatures::Main -> NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::Main
+manifest 00ed17b0 CVtable_012f2c98::`scalar deleting destructor' -> NScript::CV_SingingStonesScript::CManWithDoorName::`scalar deleting destructor'
+manifest 00ed17d0 _gapscan::sub_00ed17d0 -> NScript::CV_SingingStonesScript::CManWithDoorName::Main
+manifest 00ee0330 _global::sub_00ee0330 -> NScript::CV_TravellingHeroesScript::CTH_SnowTroll::GetParentScript
+manifest 00ee0340 _global::sub_00ee0340 -> NScript::CV_TravellingHeroesScript::CTH_SnowTroll::Init
+manifest 00ee1be0 CVtable_012f42b0::`scalar deleting destructor' -> NScript::CV_TravellingHeroesScript::CTH_SnowTroll::`scalar deleting destructor'
+manifest 00ee36a0 CStopDrawing::Main -> NScript::CV_TravellingHeroesScript::CTH_SnowTroll::Main
+manifest 00eea450 _global::sub_00eea450 -> NScript::CExpression_WaitScript::Init
+manifest 00eea460 CExpression_WaitScript::Main -> NScript::CExpression_WaitScript::Main
+manifest 00eea770 CVtable_012f55f8::`scalar deleting destructor' -> NScript::CExpression_WaitScript::`scalar deleting destructor'
+manifest 00f25ca0 _global::sub_00f25ca0 -> CArenaWaveDef::GetSizeofClass
+manifest 00f25cb0 CUnprovenDef_00f25cb0::`scalar deleting destructor' -> CArenaWaveDef::`scalar deleting destructor'
+manifest 00f25f50 _global::sub_00f25f50 -> CArenaWaveDef::Copy
+manifest 00f270a0 _global::sub_00f270a0 -> CHeroSoulsCreatureDef::GetSizeofClass
+manifest 00f270b0 CVtable_012fb500::`scalar deleting destructor' -> CHeroSoulsCreatureDef::`scalar deleting destructor'
+manifest 00f27180 _global::sub_00f27180 -> CHeroSoulsCreatureDef::Copy
+manifest 00f29500 _global::sub_00f29500 -> CScriptDef::GetSizeofClass
+manifest 00f29510 CVtable_012fb5c8::`scalar deleting destructor' -> CScriptDef::`scalar deleting destructor'
+manifest 00f29c50 _global::sub_00f29c50 -> CRegionScriptDef::GetSizeofClass
+manifest 00f29ce0 CVtable_012fb630::`scalar deleting destructor' -> CRegionScriptDef::`scalar deleting destructor'
+manifest 00f29f60 _gapscan::sub_00f29f60 -> CRegionScriptDef::Copy
+manifest 00f2a240 _global::sub_00f2a240 -> CScriptDef::Copy
+manifest 00f2d2f0 _global::sub_00f2d2f0 -> CFeatDef::GetSizeofClass
+manifest 00f2d300 CVtable_012fb778::`scalar deleting destructor' -> CFeatDef::`scalar deleting destructor'
+manifest 00f2d680 _global::sub_00f2d680 -> CFeatDef::Copy
+manifest 00f2d6e0 _gapscan::sub_00f2d6e0 -> CScriptDef::Transfer
+labels 63  catalog renamed 45  manifest renamed 53

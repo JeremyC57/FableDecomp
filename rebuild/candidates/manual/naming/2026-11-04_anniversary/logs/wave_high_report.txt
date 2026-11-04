@@ -1,0 +1,104 @@
+== CArenaWaveDef vt=012fb2f0 kind=def pdb_class=True pdb_sdd=True
+   0 00f25cb0 sdd              refs=1 pdb=True landed=True cur=CUnprovenDef_00f25cb0::`scalar deleting destructor' -> RENAME 
+  18 00f261f0 Transfer         refs=1 pdb=True landed=True cur=CArenaWaveDef::Transfer -> SAME 
+  19 00f25f50 Copy             refs=1 pdb=True landed=True cur=sub_00f25f50 -> RENAME 
+  20 00f25ca0 GetSizeofClass   refs=1 pdb=True landed=True cur=sub_00f25ca0 -> RENAME body=mov eax,imm;ret
+== CFeatDef vt=012fb778 kind=def pdb_class=True pdb_sdd=True
+   0 00f2d300 sdd              refs=1 pdb=True landed=True cur=CVtable_012fb778::`scalar deleting destructor' -> RENAME 
+  18 00f2d330 Transfer         refs=1 pdb=True landed=True cur=CFeatDef::Transfer -> SAME 
+  19 00f2d680 Copy             refs=1 pdb=True landed=True cur=sub_00f2d680 -> RENAME 
+  20 00f2d2f0 GetSizeofClass   refs=1 pdb=True landed=True cur=sub_00f2d2f0 -> RENAME body=mov eax,imm;ret
+== CHeroSoulsCreatureDef vt=012fb500 kind=def pdb_class=True pdb_sdd=True
+   0 00f270b0 sdd              refs=1 pdb=True landed=True cur=CVtable_012fb500::`scalar deleting destructor' -> RENAME 
+  18 00f27100 Transfer         refs=1 pdb=True landed=True cur=CHeroSoulsCreatureDef::Transfer -> SAME 
+  19 00f27180 Copy             refs=1 pdb=True landed=True cur=sub_00f27180 -> RENAME 
+  20 00f270a0 GetSizeofClass   refs=1 pdb=True landed=True cur=sub_00f270a0 -> RENAME body=mov eax,imm;ret
+== CRegionScriptDef vt=012fb630 kind=def pdb_class=True pdb_sdd=True
+   0 00f29ce0 sdd              refs=1 pdb=True landed=True cur=CVtable_012fb630::`scalar deleting destructor' -> RENAME 
+  18 00f29c60 Transfer         refs=1 pdb=True landed=True cur=CRegionScriptDef::Transfer -> SAME 
+  19 00f29f60 Copy             refs=1 pdb=True landed=False cur=_gapscan::sub_00f29f60 -> RENAME 
+  20 00f29c50 GetSizeofClass   refs=1 pdb=True landed=True cur=sub_00f29c50 -> RENAME body=mov eax,imm;ret
+== CScriptDef vt=012fb5c8 kind=def pdb_class=True pdb_sdd=True
+   0 00f29510 sdd              refs=1 pdb=True landed=True cur=CVtable_012fb5c8::`scalar deleting destructor' -> RENAME 
+  18 00f2d6e0 Transfer         refs=1 pdb=True landed=False cur=_gapscan::sub_00f2d6e0 -> RENAME 
+  19 00f2a240 Copy             refs=1 pdb=True landed=True cur=sub_00f2a240 -> RENAME 
+  20 00f29500 GetSizeofClass   refs=1 pdb=True landed=True cur=sub_00f29500 -> RENAME body=mov eax,imm;ret
+== NScript::CExpression_WaitScript vt=012f55f8 kind=level pdb_class=True pdb_sdd=True
+   0 00eea770 sdd              refs=1 pdb=True landed=True cur=CVtable_012f55f8::`scalar deleting destructor' -> RENAME 
+   1 00eea680 RegisterMain     refs=1 pdb=True landed=True cur=NScript::CExpression_WaitScript::RegisterMain -> SAME 
+   2 00eea460 Main             refs=1 pdb=True landed=True cur=CExpression_WaitScript::Main -> RENAME 
+   3 00eea450 Init             refs=1 pdb=True landed=True cur=sub_00eea450 -> RENAME 
+== NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost vt=012c3208 kind=entity pdb_class=True pdb_sdd=True
+   0 00cded90 sdd              refs=1 pdb=True landed=True cur=CVtable_012c3208::`scalar deleting destructor' -> RENAME 
+   1 00cdec40 Main             refs=1 pdb=True landed=True cur=CArcheryCompetitionSignpost::Main -> RENAME 
+   2 00cdec20 Init             refs=1 pdb=True landed=True cur=sub_00cdec20 -> RENAME 
+   3 00cdec10 GetParentScript  refs=1 pdb=True landed=True cur=sub_00cdec10 -> RENAME 
+   4 00cdec30 OnPersist        refs=1 pdb=True landed=True cur=sub_00cdec30 -> RENAME 
+   5 00cdebd0 OnPredicateFail  refs=410 pdb=False landed=True cur=sub_00cdebd0 -> SKIP 
+== NScript::CQS_ScytheInfoScript vt=012e22c8 kind=level pdb_class=True pdb_sdd=True
+   0 00e2ab30 sdd              refs=1 pdb=True landed=True cur=CVtable_012e22c8::`scalar deleting destructor' -> RENAME 
+   1 00e29a80 RegisterMain     refs=1 pdb=True landed=True cur=NScript::CQS_ScytheInfoScript::RegisterMain -> SAME 
+   2 00e29b20 Main             refs=1 pdb=True landed=False cur=_gapscan::sub_00e29b20 -> RENAME 
+   3 00e29a70 Init             refs=1 pdb=True landed=True cur=sub_00e29a70 -> RENAME 
+== NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS vt=012c95f0 kind=entity pdb_class=True pdb_sdd=True
+   0 00d0b3c0 sdd              refs=1 pdb=True landed=True cur=CVtable_012c95f0::`scalar deleting destructor' -> RENAME 
+   1 00d0b3e0 Main             refs=1 pdb=True landed=False cur=_gapscan::sub_00d0b3e0 -> RENAME 
+   2 00cdebb0 Init             refs=113 pdb=False landed=True cur=sub_00cdebb0 -> SKIP 
+   3 00d0b370 GetParentScript  refs=1 pdb=True landed=False cur=None -> RENAME 
+   4 00cdebc0 OnPersist        refs=528 pdb=False landed=True cur=sub_00cdebc0 -> SKIP 
+   5 00d0b380 OnPredicateFail  refs=1 pdb=True landed=False cur=None -> RENAME 
+== NScript::CQ_GuildTrainingScript::CSpeedFriend vt=012cdf28 kind=entity pdb_class=True pdb_sdd=True
+   0 00d40890 sdd              refs=1 pdb=True landed=True cur=CVtable_012cdf28::`scalar deleting destructor' -> RENAME 
+   1 00d408b0 Main             refs=1 pdb=True landed=True cur=CVtable_012cdf28::vfunc_1 -> RENAME 
+   2 00d40870 Init             refs=1 pdb=True landed=False cur=None -> RENAME 
+   3 00d40860 GetParentScript  refs=1 pdb=True landed=False cur=None -> RENAME 
+   4 00cdebc0 OnPersist        refs=528 pdb=False landed=True cur=sub_00cdebc0 -> SKIP 
+   5 00d40880 OnPredicateFail  refs=1 pdb=True landed=False cur=None -> RENAME 
+== NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember vt=012db364 kind=entity pdb_class=True pdb_sdd=True
+   0 00dcf760 sdd              refs=1 pdb=True landed=True cur=CVtable_012db364::`scalar deleting destructor' -> RENAME 
+   1 00dce230 Main             refs=1 pdb=True landed=False cur=CCrateTeamMember::Main -> RENAME 
+   2 00dcdf60 Init             refs=1 pdb=True landed=True cur=CCrateTeamMember::Init -> RENAME 
+   3 00dcdec0 GetParentScript  refs=1 pdb=True landed=True cur=sub_00dcdec0 -> RENAME 
+   4 00cdebc0 OnPersist        refs=528 pdb=False landed=True cur=sub_00cdebc0 -> SKIP 
+   5 00dcded0 OnPredicateFail  refs=1 pdb=True landed=True cur=NScript::CQ_OrchardFarmRaidScript::CGuardTeamMember::OnPredicateFail -> RENAME 
+== NScript::CQ_PrisonWardenGameScript vt=012dcb40 kind=level pdb_class=True pdb_sdd=True
+   0 00de02f0 sdd              refs=1 pdb=True landed=True cur=CVtable_012dcb40::`scalar deleting destructor' -> RENAME 
+   1 00dddd80 RegisterMain     refs=1 pdb=True landed=True cur=NScript::CQ_PrisonWardenGameScript::RegisterMain -> SAME 
+   2 00ddde20 Main             refs=1 pdb=True landed=True cur=NScript::CQ_PrisonWardenGameScript::Main -> SAME 
+   3 00dddce0 Init             refs=1 pdb=True landed=True cur=CVtable_012dcb40::vfunc_3 -> RENAME 
+== NScript::CQ_SecretPassageScript::CSP_UndeadTrigger vt=012ddf3c kind=entity pdb_class=True pdb_sdd=True
+   0 00def730 sdd              refs=1 pdb=True landed=True cur=CVtable_012ddf3c::`scalar deleting destructor' -> RENAME 
+   1 00def760 Main             refs=1 pdb=True landed=True cur=CSP_UndeadTrigger::Main -> RENAME 
+   2 00def710 Init             refs=1 pdb=True landed=True cur=sub_00def710 -> RENAME 
+   3 00def700 GetParentScript  refs=1 pdb=True landed=True cur=sub_00def700 -> RENAME 
+   4 00cdebc0 OnPersist        refs=528 pdb=False landed=True cur=sub_00cdebc0 -> SKIP 
+   5 00def720 OnPredicateFail  refs=1 pdb=True landed=True cur=sub_00def720 -> RENAME 
+== NScript::CV_BeggarAndChildScript::CBeggarBully vt=012e6c1c kind=entity pdb_class=True pdb_sdd=True
+   0 00e5b390 sdd              refs=1 pdb=True landed=True cur=CVtable_012e6c1c::`scalar deleting destructor' -> RENAME 
+   1 00e5b3b0 Main             refs=1 pdb=True landed=False cur=_gapscan::sub_00e5b3b0 -> RENAME 
+   2 00e5b380 Init             refs=1 pdb=True landed=False cur=None -> RENAME 
+   3 00e5b370 GetParentScript  refs=1 pdb=True landed=False cur=None -> RENAME 
+   4 00cdebc0 OnPersist        refs=528 pdb=False landed=True cur=sub_00cdebc0 -> SKIP 
+   5 00cdebd0 OnPredicateFail  refs=410 pdb=False landed=True cur=sub_00cdebd0 -> SKIP 
+== NScript::CV_DemonDoorsScript::CDF_SummonsCreatures vt=012e8e80 kind=entity pdb_class=True pdb_sdd=True
+   0 00e70370 sdd              refs=1 pdb=True landed=True cur=CVtable_012e8e80::`scalar deleting destructor' -> RENAME 
+   1 00e74d70 Main             refs=1 pdb=True landed=False cur=CDF_SummonsCreatures::Main -> RENAME 
+   2 00cdebb0 Init             refs=113 pdb=False landed=True cur=sub_00cdebb0 -> SKIP 
+   3 00e70360 GetParentScript  refs=1 pdb=True landed=False cur=None -> RENAME 
+   4 00cdebc0 OnPersist        refs=528 pdb=False landed=True cur=sub_00cdebc0 -> SKIP 
+   5 00cdebd0 OnPredicateFail  refs=410 pdb=False landed=True cur=sub_00cdebd0 -> SKIP 
+== NScript::CV_SingingStonesScript::CManWithDoorName vt=012f2c98 kind=entity pdb_class=True pdb_sdd=True
+   0 00ed17b0 sdd              refs=1 pdb=True landed=True cur=CVtable_012f2c98::`scalar deleting destructor' -> RENAME 
+   1 00ed17d0 Main             refs=1 pdb=True landed=False cur=_gapscan::sub_00ed17d0 -> RENAME 
+   2 00ed1790 Init             refs=1 pdb=True landed=False cur=None -> RENAME 
+   3 00ed1780 GetParentScript  refs=1 pdb=True landed=False cur=None -> RENAME 
+   4 00cdebc0 OnPersist        refs=528 pdb=False landed=True cur=sub_00cdebc0 -> SKIP 
+   5 00cdebd0 OnPredicateFail  refs=410 pdb=False landed=True cur=sub_00cdebd0 -> SKIP 
+== NScript::CV_TravellingHeroesScript::CTH_SnowTroll vt=012f42b0 kind=entity pdb_class=True pdb_sdd=True
+   0 00ee1be0 sdd              refs=1 pdb=True landed=True cur=CVtable_012f42b0::`scalar deleting destructor' -> RENAME 
+   1 00ee36a0 Main             refs=1 pdb=True landed=True cur=CStopDrawing::Main -> RENAME 
+   2 00ee0340 Init             refs=1 pdb=True landed=True cur=sub_00ee0340 -> RENAME 
+   3 00ee0330 GetParentScript  refs=1 pdb=True landed=True cur=sub_00ee0330 -> RENAME 
+   4 00cdebc0 OnPersist        refs=528 pdb=False landed=True cur=sub_00cdebc0 -> SKIP 
+   5 00ee0350 OnPredicateFail  refs=1 pdb=True landed=True cur=NScript::CV_TravellingHeroesScript::CTH_SnowTroll::OnPredicateFail -> SAME 
+renames 63 landed 45 ['00f25cb0', '00f25f50', '00f25ca0', '00f2d300', '00f2d680', '00f2d2f0', '00f270b0', '00f27180', '00f270a0', '00f29ce0', '00f29c50', '00f29510', '00f2a240', '00f29500', '00eea770', '00eea460', '00eea450', '00cded90', '00cdec40', '00cdec20', '00cdec10', '00cdec30', '00e2ab30', '00e29a70', '00d0b3c0', '00d40890', '00d408b0', '00dcf760', '00dcdf60', '00dcdec0', '00dcded0', '00de02f0', '00dddce0', '00def730', '00def760', '00def710', '00def700', '00def720', '00e5b390', '00e70370', '00ed17b0', '00ee1be0', '00ee36a0', '00ee0340', '00ee0330']

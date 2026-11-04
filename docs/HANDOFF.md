@@ -21,8 +21,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   C++, then intrinsics, then macro/function isolation; mirror HEAD 4e108b875). Next asm-rule work: de-bake the 13 landed asm_bake rows
   (e.g. 0x0042DF9E, 0x005BD993, 0x00899EF0); the 10 LTCG reg-arg parks (pure C++ via same-TU static callees); the 45 mislabelled
   "asm-impossible" parks belong in the normal retry pool.
-- Fable Anniversary exe (owner-supplied): names for TLC's RTTI-less vtables, `docs/re_reference/FABLE_ANNIVERSARY.md`; naming wave of 17
-  high-confidence classes + 667 confirmations not yet applied.
+- Fable Anniversary exe (owner-supplied): names for TLC's RTTI-less vtables, `docs/re_reference/FABLE_ANNIVERSARY.md`; 17 high-confidence classes applied
+  (63 names, `naming/2026-11-04_anniversary/`; 45 landed respellings queued land0411k). Running: medium/low verification (`$S/anniv/wave2/`)
+  and TLC-internal Alloc-registration naming of the remaining placeholders (`$S/anniv/wave3/`).
 - Coverage (refresh with `tools/write_decomp_dashboard.py` then `tools/update_readme_progress.py`; never hand-edit):
   46,593 genuine of the 49,564-function catalog (94.01%), 56.68% of retail function bytes, 54,145 landed rows (206 retail_asm),
   after landing 2026-11-04j. Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`, `2026-11-04_landing_a/` .. `_landing_h/`.

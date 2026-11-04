@@ -1963,3 +1963,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - 2026-11-04 (chunk 747) A dead rounding survives in retail only because it is asm: every C++ spelling deletes it (0x00AA3C50), which is itself proof the helper is needed.
 - 2026-11-04 (chunk 747) Macro-form vs `__forceinline` function-form isolation: the function form (operand through a frame slot) matched all 12 fistp helper groups, the macro form 9; test both before adding a helper.
 - 2026-11-04 (chunk 747) `GetCrime().SetX(call())` loads the bar into a callee-saved register before the call; the `PCrime->` form does not.
+- 2026-11-04 (Anniversary wave) The survey's 'N slots' counts run past a vtable's end into the next vtable (CSpawnedFunc, sibling class). Take the slot layout from already-named TLC siblings and only rename functions referenced by exactly one dword in the exe.
