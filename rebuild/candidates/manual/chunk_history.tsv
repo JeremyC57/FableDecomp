@@ -26440,3 +26440,8 @@ chunk	address	module	name	length
 743	00c9dd60	_global	Mesh_ComputeNormalMap	1308
 743	00c9e280	_global	Mesh_ResizeDetail	541
 743	00c9ef90	CPlayer::CPlayer	ProcessAudioFrame	2346
+744	00d69480	CQ_HangingTreeGoodScript	Main	2118
+744	00d6f4b0	CQ_HangingTreeGoodScript	Main	2106
+744	00d74430	CQ_HangingTreeGoodScript	DoMission	2216
+744	00d75060	CQ_HangingTreeGoodScript	FinalRound	4044
+744	00d77690	CQ_HangingTreeGoodScript	DoCutscene	3064
