@@ -78,12 +78,20 @@ placeholder classes (1,259 rows). Anniversary has RTTI with base-class lists for
   - The Fable objects carry 45,188 procedures, their parameters and locals, scopes and line tables (5.2 MB).
   - It has 1.02 M type records, with class layouts, member names, method lists and enums.
   - The objects cover 95 unity modules in FableLib, FableEngine3D, FableScripting, BBBLibrary and similar directories.
-- What it can add (third source only, the usage rule above applies unchanged):
-  - parameter and local names for Fable functions, which no TLC-era file in the container gives;
-  - per-function source files from the line tables (a TU hint);
-  - layouts of classes Ego_r lacks.
-
-  Of the non-UE3 classes it defines, 3,537 also exist in Ego_r.
-- Limits: it is the Anniversary code (refactored and ported to PowerPC, e.g. `CThing` is 172 bytes there). Layouts and code can
-  differ from TLC, and its codegen says nothing about VC7.1 x86 bytes. Ego_r.pdb / FableWin.pdb stay authoritative. A TLC-era debug PDB
-  (`Ego_d.pdb`, owner disk) would beat it for locals if it carries them.
+- **Measured against TLC (2026-11-04, Fable code only, UE3 excluded):**
+  - *Types are TLC's:* 3,032 Fable classes are in both Ego_r and this PDB. 2,936 (97%) have the identical member-name list, and
+    2,512 (83%) have the identical size. The data structures were carried over almost unchanged. Ego_r already has these, so there is
+    little new layout information.
+  - *Functions:* 19,174 distinct 360 Fable procedure names equal a TLC catalog name, mostly for landed rows.
+    - Of the 2,923 unlanded TLC functions with a real name, 301 match a 360 procedure by exact name. Another 817 match only by a
+      unique bare method name. Those 817 are leads, not proof: spot checks found wrong classes, for example several catalog
+      `~CTCGraphicAppearanceAnimatedMesh` rows.
+    - 252 of the exact matches already have parked drafts.
+  - *Source files:* the line tables give each function's original Lionhead file and line (e.g.
+    `fable\fablelib\cpp\player_modes.cpp:1764 CPlayer::InitModeBetting(old_mode, processed_input)`).
+    - Function order inside a file agrees with TLC retail address order for 67.8% of 8,399 adjacent pairs (chance is 50%).
+    - The files descend from TLC but were edited, so this is a TU hint, not an order oracle.
+  - *Not useful for:* bytes, calling conventions, or VC7.1 codegen (PowerPC, cl 16).
+- **Open question, being tested:** do the original locals (names, types, scopes) help parked rows match? A pilot on 12-15 of the 252
+  drafts measures it before any wider use (`$S/anniv_pilot/`).
+- Usage rule unchanged. Parameter and local names are drafting hints. A function or class name still needs TLC confirmation.
