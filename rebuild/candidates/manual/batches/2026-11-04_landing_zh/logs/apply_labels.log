@@ -1,0 +1,16 @@
+catalog  005c04bf _global::CCountedPointer_Release_005c04bf -> NInventory::VCPerItemData::?$CCountedPointer::~?$CCountedPointer
+catalog  00838930 CThingPhysical::ConstructFromLevelScript -> CThingGameObject::ConstructFromLevelScript
+catalog  009e8c10 CPersistTraits<CRGBColour>::TransferIn -> VCRGBColour::?$CPersistTraits::TransferIn
+catalog  006c9490 _global::COpinionDeed_TransferIn -> PAVCOpinionDeed::?$CPersistTraits::TransferIn
+catalog  006159a0 _global::TransferOut_HeroTraits -> CTCInventoryMap::VCUIMiniMapMarker::?$CPersistTraits::TransferIn
+catalog  005c19a3 CPersistTraits<NInventory::CItem>::TransferBinaryIn -> NInventory::VCItem::?$CPersistTraits::TransferBinaryIn
+manifest 005c04bf _global::CCountedPointer_Release_005c04bf -> NInventory::VCPerItemData::?$CCountedPointer::~?$CCountedPointer
+manifest 005c19a3 CPersistTraits<NInventory::CItem>::TransferBinaryIn -> NInventory::VCItem::?$CPersistTraits::TransferBinaryIn
+manifest 006159a0 _global::TransferOut_HeroTraits -> CTCInventoryMap::VCUIMiniMapMarker::?$CPersistTraits::TransferIn
+manifest 006c9490 _global::COpinionDeed_TransferIn -> PAVCOpinionDeed::?$CPersistTraits::TransferIn
+manifest 00762620 _global::StatOnSerialise -> NShape::CShape::StatOnSerialise
+manifest 00838930 CThingPhysical::ConstructFromLevelScript -> CThingGameObject::ConstructFromLevelScript
+manifest 008eec70 _global::Collide -> Mass::Collide
+manifest 009bca20 _global::DisplayCenteredText -> ::DisplayCenteredText
+manifest 009e8c10 CPersistTraits<CRGBColour>::TransferIn -> VCRGBColour::?$CPersistTraits::TransferIn
+labels 16  catalog renamed 6  manifest renamed 9

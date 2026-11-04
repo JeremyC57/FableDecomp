@@ -36743,3 +36743,8 @@ __imp__GetSystemDirectoryA@8	0143febc	00c565f0
 ?ResetEndOfStream@CBaseRenderer@@UAEJXZ	00ca7030	00ca7030
 ?GetPinVersion@CBaseFilter@@UAEJXZ	00ca79f0	00ca79f0
 ??1CBaseAllocator@@UAE@XZ	00ca9d00	00caa410
+?TransferIn@?$CPersistTraits@E@@QAEXAAVCPersistContext@@AAVCStringParser@@AAE@Z	009e9080	009e8c10
+?TransferIn@?$CPersistTraits@J@@QAEXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	005d8167	009e8c10
+?TransferIn@?$CPersistTraits@VC3DVector@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVC3DVector@@@Z	009e84d0	006c9490
+??0CItem@NInventory@@QAE@JJPBVCPerItemData@1@J@Z	005bec40	005c19a3
+?resize@?$vector@J@std@@QAEXKABJ@Z	004428f0	005c19a3

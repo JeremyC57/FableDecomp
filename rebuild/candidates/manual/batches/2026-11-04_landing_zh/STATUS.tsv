@@ -1,0 +1,15 @@
+address	name	status	attempts	note
+00ac44d0	CVertexStreamConverter::ConvertFrom	RELOCATION_MATCH	1	first grade; jump table checked
+00ac4910	CVertexStreamConverter::ConvertTo	RELOCATION_MATCH	1	retail_asm via engine/GFFloatToLongNear.h; jump table checked
+009e8c10	CPersistTraits<CRGBColour>::TransferIn	RELOCATION_MATCH	14	TU-local CBasicString bodies + forceinline text ==; early-return '.' test
+006c9490	CPersistTraits<COpinionDeed*>::TransferIn	RELOCATION_MATCH	15	TU-local bool reader body; ExtraData via reference + SLONG reader
+006159a0	CPersistTraits<CTCInventoryMap::CUIMiniMapMarker>::TransferIn	RELOCATION_MATCH	12	TU-local noinline Compare body; early-return prefix; SLONG reader for GraphicIndex
+005c19a3	CPersistTraits<NInventory::CItem>::TransferBinaryIn	RELOCATION_MATCH	5	shared fable_string.h + CGameDefinitionManager.h; local stream/CItem models as the same-TU landed siblings; pData declared first; augmentation index via named local
+006a5d90	CThingPhysical::ConstructFromLevelScript	DIFFER(1268v1268) dl=2	26	parked: one scheduling pair at 0x006A5FD4/D8 (angle temp Y store vs fstp position.Y); overlay sub-macros CTHING_LEVELSCRIPT/CTHINGPHYSICAL_LEVELSCRIPT/CTHINGBASEDEF/CRIGHTHANDEDSET_ANGLES
+00645853	NPlayerGui::CStatBar::DrawStatBox	NOT_ATTEMPTED	0	budget: 10-argument __fastcall /O1 EH-frame draw routine; identity from engine_api only
+00762620	NShape::CShape::StatOnSerialise	NOT_ATTEMPTED	0	budget: string-heavy persist routine (operator+ chains, CTCShapeManager polygon walk), ret 0xC
+00763060	Polygon_GeneratePath_WithCirculation (catalog)	NOT_ATTEMPTED	0	budget: NShape polygon path builder, no PDB identity proven
+00774d20	CTCShop_SellHighlightedItem (catalog)	NOT_ATTEMPTED	0	budget: CTCShop sell path (bitset<274> test, map lookups, x87 price), no PDB identity proven
+008eec70	Mass::Collide	NOT_ATTEMPTED	0	budget: static __fastcall x87 collision response, ret 0x28
+009bca20	DisplayCenteredText	NOT_ATTEMPTED	0	budget: global __fastcall wide-text centering with 3 shadow draws, aligned frame, x87
+00e10e60	NScript::CQ_WaspBossScript::CWaspChaseWoman::Main	NOT_ATTEMPTED	0	budget: 1306-byte quest Main, ~15 CGameScriptInterface slots plus nav/handle helpers

@@ -11816,7 +11816,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005c024a	AddCategory	CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CTCInventoryBase *,long,CThing *	1	yes	accepted									
 005c03f7	CIVCountedPointer_Release_005c03f7	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005c03f7.cpp
 005c0436	allocate	CRetailAllocator_20	unknown	undefined	0		0	yes	accepted									
-005c04bf	CCountedPointer_Release_005c04bf	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005c04bf.cpp
+005c04bf	~CCountedPointer	CCountedPointer<NInventory::CPerItemData>	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005c04bf.cpp
 005c04eb	ShareData	CCountedPointer<NUISystem::CAction>	__thiscall	void	3	CCountedPointer<NUISystem::CAction> *,CAction *,CCPPointerInfo *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\CCountedPointerNUISystemCAction_ShareData_005c04eb.cpp
 005c0511	CCountedPointer_Release_005c0511	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005c0511.cpp
 005c053d	ShareData	CCountedPointer<NUISystem::CAction>	__thiscall	void	3	CCountedPointer<NUISystem::CAction> *,CAction *,CCPPointerInfo *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5c\CCountedPointerNUISystemCAction_ShareData_005c053d.cpp
@@ -12989,7 +12989,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00615870	find	CRetailTree_longkey	unknown	undefined	0		0	yes	accepted									
 006158d0	find	std::_Rb_tree<CUnprovenKey_006158d0,CUnprovenValue_006158d0,CUnprovenKeyOfValue_006158d0,std::less<CUnprovenKey_006158d0>,std::allocator<CUnprovenValue_006158d0> >	unknown	undefined	0		0			discovered	gapscan							
 00615920	TransferIn	CPersistContext_TransferableVector<CTCInventoryMap::CUIMiniMapMarker>	__thiscall	void	4	CPersistContext_TransferableVector<std::pair<CCharString,long>_> *,CPersistContext *,CCharString *,long	1	yes	accepted									
-006159a0	TransferOut_HeroTraits	_global	unknown	undefined	0		0	yes	accepted									
+006159a0	TransferIn	CPersistTraits<CTCInventoryMap::CUIMiniMapMarker>	unknown	undefined	0		0	yes	accepted									
 00615e10	TransferIn	CPersistContext_TransferableVector<CTCInventoryMap::CUIRegionInfo>	__thiscall	void	4	CPersistContext_TransferableVector<long> *,CPersistContext *,CCharString *,long	1	yes	accepted									
 00615e70	TransferIn	CPersistTraits<CTCInventoryMap::CUIRegionInfo>	__thiscall	void	4	CPersistTraits<CTCInventoryMap::CUIRegionInfo> *,CPersistContext *,CStringParser *,CUIRegionInfo *	1	yes	accepted									
 00616580	find	CRetailTree_longkey	unknown	undefined	0		0	yes	accepted									
@@ -16919,7 +16919,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006c9280	GetAllThings<CThingAICreature, std::list<CThingAICreature *, std::allocator<CThingAICreature *>>, CThingFilter_IsEligibleWitness>	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_None,CThingFilter_HasTC> *,vector<CThingAICreature*,std::allocator<CThingAICreature*>_> *	1	yes	accepted									
 006c9310	TransferIn	CPersistContext_TransferableVector<std::pair<long, COpinionDeed*>>	__thiscall	void	4	CPersistContext_TransferableVector<long> *,CPersistContext *,CCharString *,long	1	yes	accepted									
 006c9350	TransferIn	CPersistTraits<CAtmosBankEntry>	__thiscall	void	4	CPersistTraits<CAtmosBankEntry> *,CPersistContext *,CStringParser *,CAtmosBankEntry *	1	yes	accepted									
-006c9490	COpinionDeed_TransferIn	_global	unknown	undefined	0		0	yes	accepted									
+006c9490	TransferIn	CPersistTraits<COpinionDeed*>	unknown	undefined	0		0	yes	accepted									
 006c9900	TransferIn	CPersistTraits<CIntelligentPointer<CThing> >	__thiscall	void	4	CPersistTraits<CIntelligentPointer<CThing>_> *,CPersistContext *,CStringParser *,CIntelligentPointer<CThing> *	1	yes	accepted									
 006c9a10	Transfer<CIntelligentPointer<CThing>>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,CIntelligentPointer<CThing> *,CIntelligentPointer<class_CThing> *	1	yes	accepted									
 006c9b30	TransferIn	CPersistContext_TransferableComponent<CIntelligentPointer<CThing> >	__thiscall	void	3	CPersistContext_TransferableComponent<CIntelligentPointer<CThing>_> *,CPersistContext *,CStringParser *	1	yes	accepted									
@@ -20490,7 +20490,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00762480	~CBasicShape	NShape::CBasicShape	__thiscall	void	1	CEngineScreenEffectOutlineGlow *	1	yes	accepted									
 007624e0	CreateShape	NShape::CShapeManager	__thiscall	CEngineInternalPrimitiveBase *	2	CEngineLightingManager *,EEnginePrimitiveType	1	yes	accepted									
 00762580	AddNewShape	CTCShapeManager	__thiscall	void	2	CTCShapeManager *,CCountedPointer<NShape::CShape>	1	yes	accepted									
-00762620	StatOnSerialise	_global	__fastcall	void	5	CTCShapeManager *,CPersistContext *,long,C2DCoordI *,C2DBoxF *	1	yes	accepted									
+00762620	StatOnSerialise	NShape::CShape	__fastcall	void	5	CTCShapeManager *,CPersistContext *,long,C2DCoordI *,C2DBoxF *	1	yes	accepted									
 00762ab0	InitialiseFrom	CTCShapeManager	__thiscall	void	2	CTCShapeManager *,CTCShapeManager *	1	yes	accepted									
 00762ba0	OnSerialise	CTCShapeManager	__thiscall	void	3	CTCShapeManager *,CPersistContext *,bool	1	yes	accepted									
 00762d80	EditUpdateDelete	CTCShapeManager	__thiscall	void	1	CTCShapeManager *	1	yes	accepted									
@@ -24773,7 +24773,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008386e0	PassToNoiseComponent	CThingNoise	__thiscall	void	2	CTCActionUseAcceptBoast *,CThing *	1	yes	accepted									
 00838740	`scalar_deleting_destructor'	CThingNoise	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00838740.cpp
 008388d0	ConstructFromParams	CThingGameObject	__thiscall	bool	9	CThingGameObject *,long,C3DVector *,long,ulong,CCharString *,CThingPhysical *,CThingPhysical *,bool	1	yes	accepted									
-00838930	ConstructFromLevelScript	CThingPhysical	__thiscall	bool	2	CThingPhysical *,char *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\CThingPhysical_ConstructFromLevelScript_00838930.cpp
+00838930	ConstructFromLevelScript	CThingGameObject	__thiscall	bool	2	CThingPhysical *,char *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\CThingPhysical_ConstructFromLevelScript_00838930.cpp
 00838940	vfunc_7	CThingGameObject	unknown	undefined	0		0	unmeasured	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\global_StubReturnVoid004c72a0_00838940.cpp
 00838950	IsLineOfSightTo_00838950	CThing	unknown	undefined	0		0			discovered	gapscan							
 00838990	vfunc_60	CThingGameObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -29605,7 +29605,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008eea80	ApplyImpulse	Mass	__thiscall	void	3	Mass *,C2DVector,C2DVector	1	yes	accepted									
 008eeb40	ForceToVel	Mass	__thiscall	C2DVector	3	Mass *,C2DVector,C2DVector	1	yes	accepted									
 008eebe0	BackplaneFriction	Mass	__thiscall	void	3	Mass *,float,float	1	yes	accepted									
-008eec70	Collide	_global	__fastcall	bool	9	Mass *,Mass *,C2DVector,C2DVector,C2DVector,float,float,float,float	1	yes	accepted									
+008eec70	Collide	Mass	__fastcall	bool	9	Mass *,Mass *,C2DVector,C2DVector,C2DVector,float,float,float,float	1	yes	accepted									
 008ef110	LeaveGame	CTCTavernGameCoinBase	__thiscall	void	1	CTCTavernGameCoinBase *	1	yes	accepted									
 008ef170	vfunc_31	CTCTavernGameCoinBase	__thiscall	void	1	CTCTavernGame *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8e\CTCTavernGame_NewGame_008ef170.cpp
 008ef180	vfunc_32	CTCTavernGameCoinBase	__thiscall	undefined	1	CXMVPlaybackInfo *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8e\CXMVPlaybackInfo_CXMVPlaybackInfo_008ef180.cpp

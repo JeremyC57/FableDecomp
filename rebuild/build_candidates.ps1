@@ -384017,6 +384017,48 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c47f10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ac44d0'
+        Module = 'CVertexStreamConverter'
+        Source = '00/ac/CVertexStreamConverter_ConvertFrom_00ac44d0.cpp'
+        TestSource = '00/ac/CVertexStreamConverter_ConvertFrom_00ac44d0_test.cpp'
+        PassPattern = '00ac44d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac4910'
+        Module = 'CVertexStreamConverter'
+        Source = '00/ac/CVertexStreamConverter_ConvertTo_00ac4910.cpp'
+        TestSource = '00/ac/CVertexStreamConverter_ConvertTo_00ac4910_test.cpp'
+        PassPattern = '00ac4910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e8c10'
+        Module = 'CPersistTraits<CRGBColour>'
+        Source = '00/9e/CPersistTraitsCRGBColour_TransferIn_009e8c10.cpp'
+        TestSource = '00/9e/CPersistTraitsCRGBColour_TransferIn_009e8c10_test.cpp'
+        PassPattern = '009e8c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c9490'
+        Module = 'CPersistTraits<COpinionDeed *>'
+        Source = '00/6c/CPersistTraitsCOpinionDeed_TransferIn_006c9490.cpp'
+        TestSource = '00/6c/CPersistTraitsCOpinionDeed_TransferIn_006c9490_test.cpp'
+        PassPattern = '006c9490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006159a0'
+        Module = 'CPersistTraits<CTCInventoryMap::CUIMiniMapMarker>'
+        Source = '00/61/CPersistTraitsCTCInventoryMapCUIMiniMapMarker_TransferIn_006159a0.cpp'
+        TestSource = '00/61/CPersistTraitsCTCInventoryMapCUIMiniMapMarker_TransferIn_006159a0_test.cpp'
+        PassPattern = '006159a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c19a3'
+        Module = 'CPersistTraits<NInventory::CItem>'
+        Source = '00/5c/CPersistTraitsNInventoryCItem_TransferBinaryIn_005c19a3.cpp'
+        TestSource = '00/5c/CPersistTraitsNInventoryCItem_TransferBinaryIn_005c19a3_test.cpp'
+        PassPattern = '005c19a3_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

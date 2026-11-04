@@ -23,6 +23,11 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
     CRightHandedSet() {}
     CRightHandedSet(const C3DVector& a, const C3DVector& b);
 #endif
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_ANGLES
+    // Chunk 771 (row 0x006A5D90): Ego_r.pdb ??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z (out of line at 0x00A229E0; the level script's
+    // AngleXY / AngleYZ / AngleXZ triple). A declaration only.
+    CRightHandedSet(const class C3DAngles& angles);                      // 0x00A229E0
+#endif
 };
 #endif
 #endif

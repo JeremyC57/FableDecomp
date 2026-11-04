@@ -2035,3 +2035,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `!(x <= 0.0f)` gives `test ah,41h ; jnp` where `x > 0.0f` gives `jne`; `((n >> 7) + 1) << 7` simplifies to `and ; add 80h` while `(n / 128 + 1) * 128` keeps `shr ; inc ; shl`; retail `rand` is the msvcrt import (`__declspec(dllimport)`) (chunk 769).
 - vland builds behaviour tests with VC7.1 too: no `decltype`, no `T{...}` temporaries, no C++11 (chunk 769).
 - Fable's strmbase is the DX9-era DirectShow BaseClasses, built UNICODE; Fable renamed CBaseObject to CMyBaseObject (RTTI), so its ~CBaseObject is not the engine's `??1CBaseObject@@QAE@XZ` 0x0099A430 (vendor naming V1).
+- In retail, CThingBaseDef members sit 4 bytes below their Ego_r offsets. CRightHandedSet built from three floats takes a C3DAngles, not a C3DVector. A `jmp` at the top of a body is a forwarding override's tail call (0x00838930 -> 0x006A5D90) (chunk 771).
+- With the CBasicString Compare / `operator==(const char*)` bodies in the TU, VC7.1 null-tests the string pointer once over a whole keyword if/else chain (CPersistTraits TransferIn rows, chunk 771).

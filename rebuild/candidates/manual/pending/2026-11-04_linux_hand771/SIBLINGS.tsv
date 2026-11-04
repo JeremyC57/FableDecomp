@@ -1,0 +1,6 @@
+header	sub_macro	landed_includers_rechecked	note
+engine/CThing.h	FABLE_RETAIL_CTHING_LEVELSCRIPT	none	hdrcheck2: default and every existing FABLE_RETAIL_* macro = same; new macro only used by the parked 0x006A5D90
+engine/CThingPhysical.h	FABLE_RETAIL_CTHINGPHYSICAL_LEVELSCRIPT	none	same
+engine/CThingBaseDef.h	FABLE_RETAIL_CTHINGBASEDEF	none	same (FABLE_RETAIL_CTHING = same)
+engine/CRightHandedSet.h	FABLE_RETAIL_CRIGHTHANDEDSET_ANGLES	none	same
+engine/C3DAngles.h	FABLE_RETAIL_C3DANGLES_CTOR	none	same

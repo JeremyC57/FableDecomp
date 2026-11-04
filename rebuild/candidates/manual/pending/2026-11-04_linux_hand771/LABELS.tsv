@@ -1,0 +1,18 @@
+address	name	evidence
+00ac44d0	?ConvertFrom@CVertexStreamConverter@@AAEXPBDW4EVertexStreamDataType@@AAVC4DVector@@ABVCVertexCompressionParams@@@Z	Ego_r.pdb private member; RELOCATION_MATCH
+00ac4910	?ConvertTo@CVertexStreamConverter@@AAEXPADW4EVertexStreamDataType@@ABVC4DVector@@ABVCVertexCompressionParams@@@Z	Ego_r.pdb private member; RELOCATION_MATCH (retail_asm rounding helper)
+009e8c10	?TransferIn@?$CPersistTraits@VCRGBColour@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCRGBColour@@@Z	Ego_r.pdb; RELOCATION_MATCH
+006c9490	?TransferIn@?$CPersistTraits@PAVCOpinionDeed@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAPAVCOpinionDeed@@@Z	Ego_r.pdb; ctor 0x006C54C0 + COpinionDeed field order; RELOCATION_MATCH
+006159a0	?TransferIn@?$CPersistTraits@VCUIMiniMapMarker@CTCInventoryMap@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCUIMiniMapMarker@CTCInventoryMap@@@Z	Ego_r.pdb layout + caller 0x00615920 + binary twin 0x00614AF0; RELOCATION_MATCH
+005c19a3	?TransferBinaryIn@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCMemoryDataInputStream@@AAVCItem@NInventory@@@Z	Ego_r.pdb + FableWin.pdb; called by landed 0x005C2AD8; RELOCATION_MATCH
+006a5d90	?ConstructFromLevelScript@CThingPhysical@@UAE_NPBD@Z	Ego_r.pdb virtual override; engine_api.tsv (CThingPhysical*, char*); vtable entry; keyword strings; parked DIFFER dl=2
+00838930	?ConstructFromLevelScript@CThingGameObject@@UAE_NPBD@Z	tail-call jmp to 0x006A5D90 from the CThingGameObject subclasses (see NAME_FIXES)
+004c79d0	?GetWorldMap@CThing@@IAEAAVCWorldMap@@XZ	Ego_r.pdb / FableWin.pdb; catalog CThing::GetWorldMap
+004caa00	?ConstructFromLevelScript@CThing@@UAE_NPBD@Z	Ego_r.pdb; engine_api.tsv (CThing*, char*); called by name from 0x006A5D90
+00a229e0	??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z	Ego_r.pdb ctor set (the C3DAngles form; the AngleXY/YZ/XZ triple of 0x006A5D90); landed binding spells ??0CRightHandedSet@@QAE@ABVC3DVector@@@Z
+006a06e0	??0CTCParamsPhysicsBase@@QAE@ABVC3DVector@@ABVCRightHandedSet@@@Z	argument shape (position, RH set) at 0x006A5FF5, destroyed through ~CBaseClassNonCopyable 0x0099A300; Ego_r.pdb class (PROPOSAL spelling)
+005c04bf	??1?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ	dtor body shape (see NAME_FIXES)
+00762620	?StatOnSerialise@CShape@NShape@@SIXAAVCTCShapeManager@@AAVCPersistContext@@JABVC2DCoordI@@AAVC2DBoxF@@@Z	bsim_port_audit + engine_api.tsv signature (not attempted)
+008eec70	?Collide@Mass@@SI_NPAV1@0VC2DVector@@11MMMM@Z	bsim_port_audit + engine_api.tsv signature, `ret 28h` (not attempted)
+009bca20	?DisplayCenteredText@@YIXABVCFontBank@@ABVCWideString@@ABVC2DBoxF@@@Z	bsim_port_audit + engine_api.tsv signature, `ret 4` (not attempted)
+00e10e60	?Main@CWaspChaseWoman@CQ_WaspBossScript@NScript@@EAEXXZ	bsim_port_audit + landed siblings CWaspChaseWoman::Alloc/Init 0x00E10D70/0x00E10E20 (not attempted)

@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00ac44d0   RELOCATION_MATCH PASS   ConvertFrom
+00ac4910   RELOCATION_MATCH PASS   ConvertTo
+009e8c10   RELOCATION_MATCH PASS   TransferIn
+006c9490   RELOCATION_MATCH PASS   TransferIn
+006159a0   RELOCATION_MATCH PASS   TransferIn
+005c19a3   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+005c19a3   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+005c19a3   WARN RELOC_NAME: ??1?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ -> 005c04bf labelled '_global::CCountedPointer_Release_005c04bf'
+005c19a3   RELOCATION_MATCH PASS   TransferBinaryIn
+
+WINS: 6
+  00ac44d0 RELOCATION_MATCH CVertexStreamConverter::?ConvertFrom@CVertexStreamConverter@@AAEXPBDW4EVertexStreamDataType@@AAVC4DVector@@ABVCVertexCompressionParams@@@Z
+  00ac4910 RELOCATION_MATCH CVertexStreamConverter::?ConvertTo@CVertexStreamConverter@@AAEXPADW4EVertexStreamDataType@@ABVC4DVector@@ABVCVertexCompressionParams@@@Z
+  009e8c10 RELOCATION_MATCH CPersistTraits<CRGBColour>::?TransferIn@?$CPersistTraits@VCRGBColour@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCRGBColour@@@Z
+  006c9490 RELOCATION_MATCH CPersistTraits<COpinionDeed *>::?TransferIn@?$CPersistTraits@PAVCOpinionDeed@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAPAVCOpinionDeed@@@Z
+  006159a0 RELOCATION_MATCH CPersistTraits<CTCInventoryMap::CUIMiniMapMarker>::?TransferIn@?$CPersistTraits@VCUIMiniMapMarker@CTCInventoryMap@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCUIMiniMapMarker@CTCInventoryMap@@@Z
+  005c19a3 RELOCATION_MATCH CPersistTraits<NInventory::CItem>::?TransferBinaryIn@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCMemoryDataInputStream@@AAVCItem@NInventory@@@Z

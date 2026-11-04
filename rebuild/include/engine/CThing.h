@@ -15,6 +15,9 @@
 #include "engine/ETCInterfaceType.h"
 class C3DVector; class CTCPhysicsBase; class CTCBase; class CTCDriverBase;
 class CThingBaseDef; class CWorld; class CPlayerManager;class CTCParamsBase;
+#ifdef FABLE_RETAIL_CTHING_LEVELSCRIPT
+class CWorldMap;                                                 // chunk 771: GetWorldMap return type
+#endif
 #ifdef FABLE_RETAIL_CTHING_MANAGERACCESS
 class CThingManager; class CThingSearchTools;                   // chunk 765: the manager accessors' types
 #endif
@@ -245,6 +248,17 @@ public:
         }
         return false;
     }
+#endif
+#ifdef FABLE_RETAIL_CTHING_LEVELSCRIPT
+    // Nested opt-in (chunk 771, row 0x006A5D90 CThingPhysical::ConstructFromLevelScript): Ego_r.pdb
+    // ?ConstructFromLevelScript@CThing@@UAE_NPBD@Z (public virtual; 0x004CAA00, called by name from the CThingPhysical override,
+    // engine_api.tsv `CThing *,char *`) and ?GetWorldMap@CThing@@IAEAAVCWorldMap@@XZ (protected; out of line at 0x004C79D0, the
+    // catalog's CThing::GetWorldMap). Declarations only: CThing already has its vptr (CClass), so no layout change.
+public:
+    virtual bool ConstructFromLevelScript(const char* script);   // 0x004CAA00
+protected:
+    CWorldMap& GetWorldMap();                                    // 0x004C79D0
+public:
 #endif
 #endif
 protected:
