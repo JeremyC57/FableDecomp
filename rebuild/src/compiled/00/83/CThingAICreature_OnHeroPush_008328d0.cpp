@@ -1,5 +1,6 @@
 // CThingAICreature::OnHeroPush(CThing* pusher, float distance, const C3DVector& direction) -- when the pusher is the living main hero carrying the hero component, the creature's push component (added on demand) accumulates the distance, takes the direction and restarts its frame counter
 // Leaf: OnHeroPush
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008328D0, 218 bytes (+6 int3). `ret 0Ch`.
 // Callees: CThing::GetPlayerManager() 0x004C7A00 (manifest "CViewBase::GetDisplayEngine" propagated: g_pThingManager->PlayerManager),
 //          CPlayerManager::GetMainPlayer() 0x00449970, CPlayer::GetPControlledCreature() 0x00487DC0, CVectorMap::LowerBound(const long*)
@@ -26,33 +27,16 @@ class CTCOnHeroPush { public:                               // interface type 0x
     C3DVector     PushDir;                           // +0x10
     long          FrameSincePushed;                  // +0x1c
 };
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);            // 0x0040F020
-};
-// Same-TU stand-in for CVectorMap::LowerBound 0x0040F020 (not the retail body).
-#pragma auto_inline(off)
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    long count = last - it;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) { it += half + 1; count -= half + 1; }
-        else count = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayerManager;
 class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UniqueID;                       // +0x18
     unsigned long    m_presentBits[9];               // +0x20 UsingComponents
     CInterfaceMap    m_interfaces;                   // +0x44
-    unsigned char    _pad4c[0x91 - 0x4c];
+    unsigned char    _pad54[0x3d];
     unsigned char    Dead : 1;                       // +0x91 bit 0
     __forceinline bool HasTC(long type) const
     {
@@ -65,10 +49,10 @@ class CThing { public:
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             long type = wanted;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || wanted < it->type)
-                it = map->last;
-            *out = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || wanted < it->first)
+                it = map->end();
+            *out = (T*)it->second;
             return true;
         }
         return false;

@@ -2,6 +2,7 @@
 // Retry 10b (accessor sweep, FIXES B-4/B-5): the parent thing is read through an inline accessor; the plain member read gives the parked register difference.
 //   tried: direct test, early return, a `const unsigned short&` accessor for the push, an /Os probe (frame-pointer + `and` stores; wrong) | next: an inline CThing accessor returning the index by value for the push, or the test through a bool accessor
 // Leaf: OnCreate
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006BF9E0, 301 bytes (+3 int3 padding), `ret`. CTCBase vtable slot 4 (the catalog's
 //   "vfunc_4"; slot 4 is OnCreate, as the landed CTCHeroSpecialMovement::OnCreate 0x007E0910).
 // Callees: CTCBase::GetDefinitions() 0x006869D0, CDefinitionManager::GetDef(long, CDefPointer*) 0x0042AF3C and
@@ -26,12 +27,7 @@ template <class T> class CDefPointer { public:
     CDefPointer() : Object(0) {}
     T* operator->() const { return (T*)Object; }
 };
-template <class T> class CArray { public:              // retail std::vector (12 bytes)
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    unsigned long size() const { return m_pLast - m_pFirst; }
-};
+#include "engine/CVectorMap.h"
 class CBuyableHouseDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x25 - 0x08];
     bool          IsBuyable;                    // +0x25
@@ -75,22 +71,13 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<con
 #pragma auto_inline(on)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];            // +0x20
     CInterfaceMap  m_interfaces;                // +0x44
-    unsigned char  _pad4c[0x8c - 0x4c];
+    unsigned char  _pad54[0x38];
     unsigned short DefIndex;                    // +0x8c
     unsigned char  _pad8e[0x91 - 0x8e];
     unsigned char  m_stateFlags;                // +0x91 (bit 0: dead)
@@ -105,8 +92,8 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
 };
 class CBaseObject;

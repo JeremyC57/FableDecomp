@@ -1,4 +1,5 @@
 // CTCSpecialAbilities::CancelCurrentMutexAbility() -- while the ability mutex is held, cancel the move component of the mutex ability currently in use
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072B420, 1100 bytes + a 19-entry jump table (0x0072B820) inside the row.
 //   Ego_r.pdb / FableWin.pdb: ?CancelCurrentMutexAbility@CTCSpecialAbilities@@QAEXXZ.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined GetTC) and one cancel member per ability:
@@ -19,15 +20,7 @@
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                   // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
@@ -45,8 +38,8 @@ class CThing { public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
-        *out = (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        *out = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
     template <class T>
     __forceinline T* GetTC(long type, T*)

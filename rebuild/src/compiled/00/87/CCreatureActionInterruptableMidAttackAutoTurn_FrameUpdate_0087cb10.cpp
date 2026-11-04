@@ -1,5 +1,6 @@
 // CCreatureAction_InterruptableMidAttackAutoTurn::FrameUpdate() -- once the strike has ended (first frame only): post the missed event when nothing was hit, and mark the melee flourish valid when the strike missed, the creature's 0x68 component's def allows it or the creature's stealth cannot flourish danger things; clear the combat component's +0x94 flag while a melee ability def is set; then the base combat frame update
 // Leaf: ?FrameUpdate@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087CB10, length 561 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: this's virtual slots 17 (+0x44) and 19 (+0x4c), CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 //          CVectorMap::LowerBound @ 0x0040F020, operator new @ 0x00BFEA1A (the 8-byte event, vtable 0x01277874),
@@ -53,12 +54,9 @@ struct CTC68 {
 };
 
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                    // 0x0040F020
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                          // +0x20
@@ -71,10 +69,10 @@ class CThing { public:
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
-            it = map->last;
-        return it->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
+        return it->second;
     }
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -128,18 +126,6 @@ class CCreatureAction_InterruptableMidAttackAutoTurn : public CCombatActionBase 
     virtual void FrameUpdate();
 };
 
-#pragma auto_inline(off)
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* f = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count >> 1;
-        if (f[half].type < *type) { f += half + 1; count -= half + 1; } else count = half;
-    }
-    return f;
-}
-#pragma auto_inline(on)
 void CCreatureAction_InterruptableMidAttackAutoTurn::FrameUpdate()
 {
     if (v19() && v17() && !PerformedStrikeEnd) {

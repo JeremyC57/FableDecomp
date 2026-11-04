@@ -1,5 +1,6 @@
 // CTCKrakenTentacle::PerformStrikeDamage() -- if the kraken is alive and has a live target: turn the tentacle's facing by the def's explosion bodge angle, spawn the KRAKEN_TENTACLE_WHACK explosion that far along it (at the target's height) and hand it to the kraken, then replace the tentacle's physical obstruction with one spanning the def's min..max obstruction radii; count the strike; always clear CanStrike and the strike timer
 // Leaf: PerformStrikeDamage
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F11D0, 575 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer @ 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10 (CIntelligentPointer<CThing> vtable
 //   0x01238C6C), LowerBound @ 0x0040F020 (interface 0xE2 = CTCKraken), the physics TC's GetFacingVector (slot 70, +0x118,
@@ -62,30 +63,9 @@ struct CPhysicsBody {
 };
 
 class CTCBaseComponent;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBaseComponent* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
-};
-#pragma auto_inline(off)
-// Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (as the landed 0x007F0B10): with it
-// VC7.1 sees the key's address does not escape, so the key shares the facing angle's frame word as in retail.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CInterfaceBits {
     unsigned long _M_w[9];
     bool test(unsigned long pos) const { return (_M_w[pos / 32] & (1ul << (pos % 32))) != 0; }
@@ -94,7 +74,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     CInterfaceBits present;                                 // +0x20
     CInterfaceMap m_interfaces;                             // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CPhysicsBody* m_pPhysics;                               // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char Flags91;                                  // +0x91 (bit 0: dead)
@@ -103,10 +83,10 @@ class CThing { public:
         if (present.test(interfaceType)) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

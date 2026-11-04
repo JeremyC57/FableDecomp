@@ -1,5 +1,6 @@
 // CTCCarriedActionUseFish::OnActionUse(CThing& user) -- base OnActionUse; aimed at a wall mount, a live creature user gets the action of mounting the fish; otherwise the fish's bonus-item def is applied to the user's hero stats and the fish is killed
 // Leaf: ?OnActionUse@CTCCarriedActionUseFish@@UAEXAAVCThing@@@Z
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007EDBE0, length 235 bytes (+ int3 padding). Vtable slot 28 ("vfunc_28"), `ret 4`.
 // Callees: CTCActionUseBase::OnActionUse @ 0x007EAB90 (qualified; manifest "$E2"), CTCCarriedActionUseFish::IsWallMountTargeted
 // (const CThing&) const @ 0x007EDB80, CCreatureAction_UseWallMount::CCreatureAction_UseWallMount @ 0x00843610 (vtable 0x0127498C
@@ -12,31 +13,10 @@
 // pointer) is passed by reference straight from the ctor and destroyed inline (novtable leaf); the bonus def is read from its out
 // pointer right after GetSubDef (ebx) and released by hand at the end.
 struct CTCBaseInterface;
-struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
-    struct SEntry { long type; CTCBaseInterface* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for CVectorMap::LowerBound (STLport lower_bound over the 8-byte {type, component} entries): compiled above
-// the caller so VC7.1 knows the key's address does not escape and packs the lookup keys as retail (the landed 0x00848730 idiom).
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+class CTCBase;
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1 (+0x04)
@@ -69,7 +49,7 @@ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components
-    unsigned char _pad4c[0x70 - 0x4c];
+    unsigned char _pad54[0x1c];
     const CDefClassBase* PDef;                  // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
@@ -80,10 +60,10 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

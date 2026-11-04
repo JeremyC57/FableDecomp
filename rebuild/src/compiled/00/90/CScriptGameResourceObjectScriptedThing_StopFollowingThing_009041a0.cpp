@@ -1,5 +1,6 @@
 // CScriptGameResourceObjectScriptedThing::StopFollowingThing(const CScriptThing&) -- end a running follow action by name, or else make the scripted thing perform EXPRESSION_WAIT at the target
 // Leaf: StopFollowingThing
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail 0x009041A0, 363 bytes, ret 4. Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PThing +0x14), the
 // target's CScriptThing::IsAlive (slot 75) / GetPThing (slot 11), CVectorMap::LowerBound 0x0040F020 (GetInterface 0x1F
 // CTCScriptedControl, 0x42 CTCEntityEvents), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0
@@ -19,36 +20,15 @@ void* __cdecl operator new(size_t size);           // 0x00BFEA1A
 
 class CTCBase;
 
-struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);          // 0x0040F020
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for CVectorMap::LowerBound 0x0040F020 (STLport lower_bound over the 8-byte {type, component} entries).
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing_Retail { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];               // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;                   // +0x44
-    unsigned char  _pad4c[0x20];
+    unsigned char  _pad54[0x18];
     unsigned long  ThingTypeFlags;                 // +0x6c
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
@@ -58,10 +38,10 @@ class CThing_Retail { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

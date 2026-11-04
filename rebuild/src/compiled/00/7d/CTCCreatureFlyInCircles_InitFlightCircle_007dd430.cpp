@@ -1,4 +1,5 @@
 // CTCCreatureFlyInCircles::InitFlightCircle(const C3DVector& centre, float radius, float height) -- store the circle centre and radius, start in fly mode 1 at speed 3, then place the creature on the circle (flagging its interface-0x3a component with whether that point is on the map) facing up the world Y axis
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DD430, 261 bytes (+ int3 padding), `ret 0Ch`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for type 0x3a = word 1
 //   bit 26 of the presence bitset), CTCBase::GetWorldMap @ 0x00686D30 (manifest "CViewBase::GetDisplayEngine" is
@@ -27,15 +28,7 @@ class CRightHandedSet { public:
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase { public:                         // the thing's physics TC; only slots 31 and 75 are modelled
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -63,15 +56,15 @@ class CThingCreatureBase { public:
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];           // +0x20 std::bitset of interface types
     CInterfaceMap   m_interfaces;               // +0x44
-    unsigned char   _pad4c[0x60 - 0x4c];
+    unsigned char   _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     template<class T> __forceinline T* GetTC(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
 };
 class CWorldMap { public:

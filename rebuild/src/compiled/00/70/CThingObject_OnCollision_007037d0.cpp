@@ -1,5 +1,6 @@
 // CThingObject::OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* other) -- after the game-object handler, a breakable object hit hard enough (or by a flagged thing) is killed and spawns its def's debris thing
 // Leaf: OnCollision
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@ABJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007037D0, length 247 bytes (+ int3 padding), `ret 10h`.
 // Callees: CThingGameObject::OnCollision @ 0x00839080 (landed), CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const
 // @ 0x004365B0 (the inlined GetTC of kind 0x47 = bit 7 of CThing+0x28), CThing virtual slot 54 (+0xd8, bool),
@@ -16,31 +17,9 @@ class CThing;
 class C3DVector { public: float X, Y, Z; };
 enum ECollideType { ECT_NONE = 0, ECT_PHYSICS = 1, ECT_WEAPON = 3 };
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const long& type) const;          // 0x004365B0
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for CVectorMap::LowerBound const 0x004365B0 (its retail body: STLport lower_bound over the 8-byte
-// {type, component} entries): VC7.1 then knows the key's address does not escape (retail's LTCG knowledge).
-const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long& type) const
-{
-    const SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        const SEntry* middle = it + half;
-        if (middle->type < type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CBreakableComponent {                                   // the kind-0x47 component
     unsigned char _pad00[0x0c];
@@ -138,7 +117,7 @@ public:
     unsigned char    _pad04[0x20 - 0x04];
     unsigned long    m_presentBits[9];                         // +0x20
     CInterfaceMap    m_interfaces;                             // +0x44
-    unsigned char    _pad4c[0x60 - 0x4c];
+    unsigned char    _pad54[0xc];
     COtherComponent* PComponent60;                             // +0x60
     unsigned char    _pad64[0x70 - 0x64];
     CDefClassBase*   PBaseDef;                                 // +0x70
@@ -154,8 +133,8 @@ public:
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return ((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+        const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)(type));
+        return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
     {

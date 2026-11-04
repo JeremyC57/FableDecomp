@@ -1,5 +1,6 @@
 // CCreatureAction_StealThingFromShop::PerformAction() -- steal the live shop item: when the creature's inventory cannot take it, show "You already have this item!" (single-holding items) or the no-room message as a 3-second subtitle; otherwise create a copy of the item at the creature, add it to that inventory, post message 0x1c (delay 0x32) from the thief to the item's owner (the interface-0x33 CTCOwnedEntity::POwner) and make a SIMPLE_NOISE
 // Leaf: ?PerformAction@CCreatureAction_StealThingFromShop@@UAEXXZ
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z; 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00849700, 719 bytes, virtual PerformAction, plain `ret`. Ego_r.pdb
 //   `?PerformAction@CCreatureAction_StealThingFromShop@@UAEXXZ`; the item is the PDB's PThingToSteal (retail +0xa8, PDB +0xb4).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 / const
@@ -37,13 +38,8 @@ class CCharString { public:
 class CTCBase;
 class CThing;
 enum ETCInterfaceType { };
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
-    const SEntry* LowerBound(const long* type) const;       // 0x004365B0
-};
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CFontBank;
 #include "engine/CCountedPointer.h"
 class CMainGameComponent { public:
@@ -54,7 +50,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];                   // +0x20 bitset<274>
     CInterfaceMap Components;                           // +0x44
-    unsigned char _pad4c[0x8c - 0x4c];
+    unsigned char _pad54[0x38];
     unsigned short DefGlobalIndex;                      // +0x8c
     unsigned char _pad8e[2];
     signed char   PlayerNumber;                         // +0x90
@@ -74,10 +70,10 @@ class CThing { public:
     {
         long type = interfaceType;
         CInterfaceMap* map = &Components;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
-            it = map->last;
-        return it->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
+        return it->second;
     }
     __forceinline CTCBase* GetCheckedTC(long interfaceType)
     {
@@ -91,8 +87,8 @@ class CThing { public:
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;
@@ -102,10 +98,10 @@ class CThing { public:
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             const CInterfaceMap* map = &Components;
-            const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

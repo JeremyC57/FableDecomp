@@ -1,6 +1,7 @@
 // Grade: RELOCATION_MATCH (header ctor landed 2026-10-31; was PENDING HEADER) (retry wave 2 sec2): the retail GetSubDef<CEntitySoundDef> body (landed 0x0065F604) defined in the TU as a noinline explicit specialization lets VC7.1 keep the escaped handle's pointee in ecx for the closing `dec [ecx+4]; jne` release (was 239v230). Graded RELOCATION_MATCH with engine/CDefPointer.h's text inlined plus `CDefPointer(ENullDef) : Object(0) { }` (FableWin ??0?$CDefPointer@$$CBVCEntitySoundDef@@@@QAE@W4ENullDef@@@Z; probe 00698a30.verify.cpp); this file compiles once the header declares that ctor.
 // PlayCameraSoundThroughObservedThing(const CThing* thing, const CCameraManagerDef& def, const CCharString& sound) -- play a camera sound on the observed thing's sound player: the camera def's entity-sound sub-def maps the name to a sample pair (played as a sample) or else to a criteria string (played as criteria)
 // Leaf: ?PlayCameraSoundThroughObservedThing@?A0x
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // (Leaf is a prefix: the anonymous-namespace hash varies with the file path; it excludes the Call... wrapper.)
 //
 // Retail 0x00698A30, 230 bytes (+ int3 padding to 240), __fastcall `ret 4` (thing in ecx, def in edx, the sound name
@@ -92,12 +93,10 @@ public:
     unsigned long PlayAttachedCriteria(const CCharString& criteria, bool a, bool b, bool c, long d);   // 0x0066BD00
 };
 
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; void* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020 (the non-const copy)
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+class CTCBase;
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {
 public:
@@ -114,9 +113,9 @@ public:
     {
         long key = type;
         CInterfaceMap* map = const_cast<CInterfaceMap*>(&m_interfaces);
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        CInterfaceMap::SEntry* end = map->last;
-        return (it == end || type < it->type ? end : it)->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
+        CInterfaceMap::value_type* end = map->end();
+        return (it == end || type < it->first ? end : it)->second;
     }
 };
 

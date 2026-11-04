@@ -1,5 +1,6 @@
 // CTCEnemy::AddEnemyThing(const CThing* enemy) -- add a thing to the explicit enemy list unless it is already there; when it is the hero (deed log, interface 0x51) and the owner has a hero opinion (interface 0x4f), mark the owner's opinion of the hero as enemy
 // Leaf: ?AddEnemyThing@CTCEnemy@@QAEXPBVCThing@@@Z
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Grade: RELOCATION_MATCH -- the opinion lookup is the landed out-parameter `__forceinline bool GetInterface(type, CTCBase** out)` (0x007504E0 shape) inside `if (enemy->HasTC(0x51))`: the presence bit test moves into it (`mov eax,[ebx+28h] ; test ah,ah`) and the component lands in eax then ecx, as retail. (A plain inline GetInterface is called out of line; HasTC && GetTC loads it straight into ecx.)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076D1B0, 179 bytes (+13 int3), `ret 4`.
 // Name: FableWin.pdb `?AddEnemyThing@CTCEnemy@@QAEXPBVCThing@@@Z`; the landed CTCVillage::SetEnemyToHeroStatus 0x0065A852
@@ -36,11 +37,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-namespace std {
-struct input_iterator_tag {
-    input_iterator_tag() { }
-};
-}
+#include "engine/CVectorMap.h"
 
 struct SThingListNode {
     SThingListNode* _M_next;
@@ -82,15 +79,6 @@ template<class T> struct CRetailList {              // STLport list: the sentine
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);           // 0x0040F020
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCCreatureOpinionOfHero {                    // interface 0x4F
@@ -109,9 +97,9 @@ public:
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->end() || type < it->first)
+                it = map->end();
             *out = it->second;
             return true;
         }

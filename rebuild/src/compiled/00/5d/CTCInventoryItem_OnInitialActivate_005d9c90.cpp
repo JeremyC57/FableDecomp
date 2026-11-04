@@ -1,4 +1,5 @@
 // CTCInventoryItem::OnInitialActivate() -- an item created outside an inventory but tagged with an inventory owner's UID attaches itself: finds the live owner thing, looks up its inventory component of the def's InventoryType and adds the item to it; then the CTCBase hook
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005D9C90, length 215 bytes; speed TU (no frame pointer). CTCInventoryItem vtable 0x01240004 slot 6 (OnInitialActivate).
 // Callees: CTCBase::GetThingManager() @ 0x00686AE0, CThingManager::GetPThingWithUID(unsigned __int64) @ 0x0051ED80 (manifest "CStopWatch::GetTicks"
 // is propagated), the inlined std::bitset<274>::test with its range check (`puts("bitset")` @ 0x00BFEAF2 then `abort` @ 0x00BFEAEC, the
@@ -43,21 +44,13 @@ struct CPresenceBits {                             // std::bitset<274>
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                 // +0x00
-    SEntry* last;                                  // +0x04
-    SEntry* LowerBound(const ETCInterfaceType& type);          // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                       // +0x20
     CInterfaceMap m_interfaces;                    // +0x44
-    unsigned char _pad_0x4c[0x91 - 0x4c];
+    unsigned char _pad_0x54[0x3d];
     unsigned char Dead : 1;                        // +0x91 bit 0
     unsigned char _91_1 : 7;
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
@@ -65,8 +58,8 @@ class CThing { public:
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            CInterfaceMap::SEntry* found = (it == map->last || wanted < it->first) ? map->last : it;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            CInterfaceMap::value_type* found = (it == map->end() || wanted < it->first) ? map->end() : it;
             *out = (T*)((void*)found->second);
             return true;
         }

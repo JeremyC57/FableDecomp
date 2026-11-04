@@ -1,5 +1,6 @@
 // CTCHealLife::FinalCleanup() -- end the timeline of every live healing effect's particle emitter, then stop the parent's looping heal sound
 // Leaf: ?FinalCleanup@CTCHealLife@@AAEXXZ
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C4320, 226 bytes, thiscall, plain `ret`.
 // Identity (proven): Ego_r.pdb ?FinalCleanup@CTCHealLife@@AAEXXZ (private void()); its only references are the CTCHealLife
 //   vtable thunks (vtable 0x0126E36C) 0x007C4410 (slot 14, OnKill) and 0x007C4420 (slot 2, OnRemove) that tail-jump here
@@ -17,15 +18,7 @@ class CThing;
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);           // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {
@@ -33,7 +26,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
     void Kill(bool immediately);                    // 0x004C9B80
     void RemoveTC(long interfaceType);              // 0x004C9840
@@ -42,9 +35,9 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }
@@ -88,19 +81,6 @@ public:
     void StopAttachedSound(unsigned long sound);    // 0x0066ADD0
 };
 
-namespace std {
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy { _Value _M_data; };
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // retail STLport vector (12 bytes)
-public:
-    _Tp* _M_start;                                  // +0x00
-    _Tp* _M_finish;                                 // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    _Tp* begin() { return _M_start; }
-    _Tp& operator[](unsigned int __n) { return *(begin() + __n); }
-};
-}
 
 class CTCHealLife {
 public:

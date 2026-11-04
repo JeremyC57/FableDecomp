@@ -1,4 +1,5 @@
 // CAIStateGroup_NymphFloatAround::Update() -- reset the nymph's attack flags and target, start flying around (or, back from limbo, play the teleport action first), poll CheckIfCanAttack every frame until ready, then stop flying and, if a target lies more than 1 unit away in the plane, face it; always Terminate()
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091C3D0, length 624 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (GetInterface 0xF5 = CTCNymph, bit 21 of +0x3c, unchecked), CBaseIntelligentPointer
@@ -49,17 +50,14 @@ struct CPhysicsBody {
     virtual void SetOrientation(const CRightHandedSet& orientation);   // slot 74 (+0x128)
 };
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CPhysicsBody* PPhysics;                     // +0x60
     const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -67,8 +65,8 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;
@@ -142,18 +140,6 @@ struct CAIStateGroup_NymphFloatAround : CAIStateGroupBase {
 };
 
 extern "C" int StandInSink(int, int);
-#pragma auto_inline(off)
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* f = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count >> 1;
-        if (f[half].type < *type) { f += half + 1; count -= half + 1; } else count = half;
-    }
-    return f;
-}
-#pragma auto_inline(on)
 void CAIStateGroup_NymphFloatAround::Update()
 {
     CTCNymph* nymph;

@@ -1,5 +1,6 @@
 // CThingObject::WorldUpdateWeaponTrails() -- update the object's weapon trails and refresh its graphic appearance, unless it is a melee weapon that nobody is carrying
 // Leaf: ?WorldUpdateWeaponTrails@CThingObject@@IAEXXZ
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@ABJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z; 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@ABJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
 //   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007034D0, 189 bytes, plain `ret`.
@@ -35,39 +36,9 @@ public:
 
 enum ETCInterfaceType { TC_CARRYABLE = 0x47, TC_WEAPON = 0x48, TC_WEAPON_TRAIL = 0x4c };
 
-class CInterfaceMap {                                     // CVectorMap<ETCInterfaceType, CTCBase*>: sorted {type, component} vector
-public:
-    struct SEntry {
-        long type;
-        CTCBase* component;
-    };
-    SEntry* first;
-    SEntry* last;
-    SEntry* end_of_storage;
-    SEntry* LowerBound(const long& type);                 // 0x0040F020
-    const SEntry* LowerBound(const long& type) const;     // 0x004365B0
-};
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-// Stand-in body for the non-const lower bound 0x0040F020 (a plain binary search, as landed in 0x00838BC0), compiled
-// out of line in this TU so VC sees that the lookup leaves the thing's interface bitset alone (retail keeps the bitset
-// word in edi across the call).
-#pragma auto_inline(off)
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long& type)
-{
-    SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < type) {
-            it += half + 1;
-            count -= half + 1;
-        }
-        else
-            count = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
 
 class CThing {
 public:
@@ -84,19 +55,19 @@ public:
     {
         long key = type;
         CInterfaceMap* map = &Interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
-        if (it == map->last || type < it->type)
-            it = map->last;
-        return it->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)(key));
+        if (it == map->end() || type < it->first)
+            it = map->end();
+        return it->second;
     }
     __forceinline const CTCBase* PeekTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &Interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        if (it == map->last || type < it->type)
-            it = map->last;
-        return it->component;
+        const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)(key));
+        if (it == map->end() || type < it->first)
+            it = map->end();
+        return it->second;
     }
     void SetAsRenderedThisFrame(unsigned long reasons);         // 0x004C7590
 };

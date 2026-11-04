@@ -1,5 +1,6 @@
 // CPlayer::UninitModeUseProjectileWeapon(EPlayerMode newMode, CProcessedInput* input) -- leaving the projectile-weapon mode: detach its eleven input processes, take a living hero's creature mode manager out of mode 25 and clear ProjectileTargetLocked, push the camera's current manual mode, and drop player mode 25 when the next mode is 25 or 2
 // Leaf: ?UninitModeUseProjectileWeapon@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00635D70, 283 bytes, thiscall, `ret 8`.
 // Identity (proven): its only reference is the CPlayer mode-table initialiser (`mov eax,635D70h ; mov [13B8FB8h],eax`
 //   at 0x0121B477), which stores it as the Uninit member-function pointer of the entry whose Init (0x013B8FA8) is the
@@ -32,30 +33,22 @@ class CAInputProcess { public:
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*> storage
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                   // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingPlayerCreature { public:                        // partial view (retail CThing offsets)
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];                       // +0x20 bitset<274>
     CInterfaceMap Components;                               // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char StateFlags;                               // +0x91 (bit 0: Dead)
     template <class T> __forceinline bool GetTC(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->last || interfaceType < it->first ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
             return true;
         }
         return false;

@@ -3,6 +3,7 @@
 //   forward/velocity and, when the state's animation differs from the current looping one or the current animation is empty or
 //   finished, queue it (unless it resolves to the DEFAULT entry) and make it current
 // Leaf: UpdateHoverAnim
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008EA9F0, 570 bytes (`ret`).
 // Callees: CVectorMap::LowerBound 0x0040F020 (inline GetTC 0x5a, unchecked miss path), CTCAnimationComplex::GetAnimation
 //   0x0070B460, virtual slot 13 (+0x34), CAnimInit::Set 0x0070C050, CAnimateThing::SetMainAnim 0x0070D580, list erase
@@ -63,29 +64,10 @@ class CTCAnimationComplex { public:
 class CAnimationEntry { public:
     long BankIndex;                                     // +0x00
 };
-struct CInterfaceMap {                                  // CVectorMap<long, CTCBase*>
-    struct SEntry { long type; void* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* end_of_storage;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
-};
-#pragma auto_inline(off)
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+class CTCBase;
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCDriverBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
@@ -100,7 +82,7 @@ class CThingCreatureBase { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
-    unsigned char  _pad50[0x60 - 0x50];
+    unsigned char  _pad54[0xc];
     CTCDriverBase*    PTCDriver;                          // +0x60
     unsigned char  _pad64[0x10c - 0x64];
     C3DVector      Forward;                             // +0x10c
@@ -114,8 +96,8 @@ class CThingCreatureBase { public:
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
     CAnimationEntry* GetRandomAnimFromName(const CCharString& name, long seed);   // 0x00662D80
 };

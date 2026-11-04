@@ -1,5 +1,6 @@
 // CTCSoundAtmosphereVillage::OnInitialActivate() -- the sound-atmosphere activation, then count the village's living spaces by summing the def value of every village building
 // Leaf: vfunc_6
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F50B0, length 156 bytes (padded row 160); CTCSoundAtmosphereVillage vtable 0x0124111C
 // slot 6 ("vfunc_6" on CTC classes is CTCBase::OnInitialActivate; the source names it vfunc_6 to keep the catalog leaf).
 // Callees: CTCSoundAtmosphere::OnInitialActivate @ 0x007F53A0 (base vtable 0x01271DFC slot 6; GetSubDef into PDef +0x10; manifest label
@@ -13,31 +14,9 @@
 // pointer is a by-value result whose dtor (`if (Object) { Object->ReleaseTemporary(); Object = 0; }`, DecRef/GetRefCount on the ref-count
 // base at +4) merges with the `if (def.Object)` test; the GetPItem call sits between the hidden-pointer push and the call.
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for CVectorMap::LowerBound (STLport lower_bound over the 8-byte {type, component} entries): compiled above
-// the caller so VC7.1 knows the key's address does not escape and packs the lookup keys as retail (the landed 0x00848730 idiom).
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CRefCounted {
     long m_count;
     void DecRef() { --m_count; }
@@ -109,10 +88,10 @@ public:
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
-            it = map->last;
-        return it->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
+        return it->second;
     }
 };
 struct CTCSoundAtmosphere {

@@ -1,5 +1,6 @@
 // CTCBoastingPosition::OnInitialActivate() -- make the thing undrawable, clear the graphic-appearance flag, and place the orb at the "PODIUM_ORB_CREATION_DUMMY" helper (or 1.7 above the thing when the helper is missing)
 // Leaf: ?OnInitialActivate@CTCBoastingPosition@@UAEXXZ
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00781E40, length 202 bytes (+ int3 padding). Vtable slot 6 ("vfunc_6" in the
 // catalog = CTCBase::OnInitialActivate).
 // Callees: CThing::SetAsDrawable(bool) (virtual slot 28, +0x70), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020
@@ -23,15 +24,7 @@ class CCharString { public:
 struct CTCBaseInterface;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // a thing's sorted {type, component} vector map at +0x44
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CTCGraphicAppearance {                   // interface type 9 (also the thing's appearance pointer at +0x64)
     unsigned char _pad00[0x10];
@@ -47,7 +40,7 @@ public:
     unsigned char _pad04[0x20 - 4];
     unsigned long m_presentBits[9];             // +0x20 UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components
-    unsigned char _pad4c[0x64 - 0x4c];
+    unsigned char _pad54[0x10];
     CTCGraphicAppearance* PGraphicAppearance;   // +0x64
     const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -55,9 +48,9 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)((CTCBaseInterface*)it->second);
             return true;
         }

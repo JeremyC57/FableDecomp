@@ -1,5 +1,6 @@
 // CTCAssassinRush::CleanUpEffects() -- end the rush effects: drop the parent's rush creature mode (0x25), restore full alpha on the parent and on every living faded item, clear the faded-item list, and end the player's special-move mode when the parent is a living player-controlled thing
 // Leaf: ?CleanUpEffects@CTCAssassinRush
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AA370, 268 bytes (+4 int3 padding), `ret`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (inlined lookup of CTCCreatureModeManager, type
 //   0x31), CTCCreatureModeManager::RemoveMode(unsigned long) 0x0073ABA0, CTCGraphicAppearance::SetAlpha(unsigned char)
@@ -19,15 +20,7 @@
 //   erase(begin(), end()) the load is the count temp and the variable its copy (`mov eax,.. ; mov esi,eax ; sub eax,eax`).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:
@@ -45,7 +38,7 @@ public:
     unsigned char _pad11[0x20 - 0x11];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x64 - 0x4c];
+    unsigned char _pad54[0x10];
     CTCGraphicAppearance* m_pGraphicAppearance; // +0x64
     unsigned char _pad68[0x91 - 0x68];
     unsigned char m_stateFlags;                 // +0x91 (bit 0: dead)
@@ -60,9 +53,9 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

@@ -1,6 +1,7 @@
 // CTCNymph::FrameUpdate() -- while flying: once faded in, follow the flight spline for a second of world frames (then pick a new target position), keep ReadyToAttack from the live target's range or else adopt the owner's targeting target; while fading out after flying, fade the alpha down and hide the owner at zero; while fading in, fade the alpha up and kill the old effect at zero; then the base FrameUpdate
 // Naming wave 35c (queue land0411j 0x00A567A0): calls 0x00A567A0 as CCardinalSpline::GetSplinePosition(C3DVector&, float) const (Ego_r.pdb ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z; the out vector by reference).
 // Leaf: FrameUpdate
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080FAD0, 593 bytes, plain `ret`.
 // Callees: CTCBase::GetWorld @ 0x00686A70, CWorld::GetWorldFrame @ 0x0049D870, CCardinalSpline::GetSplinePosition @ 0x00A567A0,
 //   the physics body's slot 30 (+0x78), CTCNymph::PickNewTargetPos @ 0x0080F270, IsDecentAttackRange @ 0x0080F190,
@@ -58,12 +59,9 @@ class CSpecialEffectsDef : public CDefClassBase { public:
 };
 
 class CTCBaseComponent;
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    struct SEntry { long type; CTCBaseComponent* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);   // stand-in callee
 // Stand-in body (out of line in retail @ 0x00669D30): it writes the out value only, so VC7.1 knows the local's address
 // does not escape the call (the 0x008D9740 idiom).
@@ -75,24 +73,6 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
         return false;
     *value = found;
     return true;
-}
-#pragma auto_inline(on)
-#pragma auto_inline(off)
-// Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (a template member, compiled in the
-// caller's TU): binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
 }
 #pragma auto_inline(on)
 
@@ -110,7 +90,7 @@ class CThing { public:
     unsigned char _pad04[0x20 - 0x04];
     CInterfaceBits present;                                 // +0x20
     CInterfaceMap m_interfaces;                             // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     struct CPhysicsBody* PhysicsBody;                       // +0x60
     CTCGraphicAppearance* GraphicAppearance;         // +0x64
     unsigned char _pad68[0x70 - 0x68];
@@ -126,10 +106,10 @@ class CThing { public:
         if (present.test(interfaceType)) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

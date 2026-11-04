@@ -1,4 +1,5 @@
 // CTCSummonSpell::FrameUpdate() -- on the frame after the cast, create the summoned minion at the owner's position plus its summon offset; afterwards, while the minion lives, keep it on the hero's faction and fade it (and everything it carries) in over the fade frames; once the minion is gone remove this component (TC 0x91) from the owner
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe @ 0x0079B9D0, 494 bytes (plain `ret`, no EH frame).
 // Shape: the carried-things loop reads First then Last into named locals before the loop (retail's ecx/eax order, end kept in ebp); the minion test is the nested `if (GetPItem()) { if (!Dead) {...; return;} }` form with the RemoveTC tail last; the faction name is passed as `const char*` (built before the push).
 // Callees: owner frame vslot 70 (+0x118), CThing::GetPos 0x004C73D0, CTCSummonSpell::CreateMinion 0x0079ACC0, GetPItem 0x00A01B50,
@@ -18,15 +19,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CFrameSource {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -53,7 +46,7 @@ public:
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CFrameSource* Frame;                                // +0x60
     CTCGraphicAppearance* Appearance;                   // +0x64
     unsigned char _pad68[0x91 - 0x68];
@@ -65,8 +58,8 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            *out = (T*)(it == map->last || interfaceType < it->first ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            *out = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
         }
     }
 };

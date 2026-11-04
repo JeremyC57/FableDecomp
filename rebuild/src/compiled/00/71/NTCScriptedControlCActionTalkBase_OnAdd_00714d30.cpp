@@ -1,5 +1,6 @@
 // NTCScriptedControl::CActionTalkBase::OnAdd() -- when the talk should make its target listen and the target is another thing under scripted control, open a new conversation and queue a matching talked-to action on the target
 // Leaf: ?OnAdd@CActionTalkBase@NTCScriptedControl@@UAEXXZ
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00714D30, 205 bytes (+3 int3 padding); vtable 0x012659A8 slot 3.
 // FableWin.pdb: ?OnAdd@CActionTalkBase@NTCScriptedControl@@UAEXXZ (slot 3 = OnAdd, as the landed
 //          CActionFireProjectileWeapon::OnAdd @ 0x00715110).
@@ -24,15 +25,7 @@ protected:
     virtual ~CBaseObject();                              // 0x0099A430
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);          // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     void*         __vftable;
@@ -44,9 +37,9 @@ class CThing { public:
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

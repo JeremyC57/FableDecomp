@@ -1,5 +1,6 @@
 // CAIStateGroup_MinionWorkInInn::CleanBench() -- take a free action point on a free bench, walk to it, face along the point's forward axis and play ST_WIPE_TABLE; free the action point afterwards (or when a step fails)
 // Leaf: ?CleanBench@CAIStateGroup_MinionWorkInInn@@AAEXXZ
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090BD40, 399 bytes (+ int3 padding), plain `ret`.
 // Name: Ego_r.pdb ?CleanBench@CAIStateGroup_MinionWorkInInn@@AAEXXZ (private; the parked file had it public).
 // Callees (Ego_r.pdb spellings): CAIStateGroup_MinionWorkInInn::GetFreeBench() 0x0090BC60 (AAEPAVCThing@@XZ: the class's only
@@ -33,12 +34,9 @@ public:
     C3DVector Forward;                          // +0x0c
 };
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char _pad0[0x20];
@@ -55,10 +53,10 @@ public:
         if (has) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
         }
         return has;
     }

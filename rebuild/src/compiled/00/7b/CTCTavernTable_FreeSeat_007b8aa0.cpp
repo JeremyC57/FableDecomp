@@ -1,6 +1,7 @@
 // CTCTavernTable::FreeSeat(long seat, long point) -- hand the seat's point index back to the parent thing's interface-0x2E free-point component, then mark the seat free (counting NumPeopleSeated down when it was used)
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the inlined SetSeatState indexes the seat element twice instead of through a bool& local (the 0x007B8530 recipe), which keeps the vector start in esi across the size check as retail does
 // Leaf: ?FreeSeat@CTCTavernTable@@QAEXJJ@Z
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B8AA0, 111 bytes (+1 int3), thiscall `ret 8`.
 // Identity: Ego_r.pdb ?FreeSeat@CTCTavernTable@@QAEXJJ@Z (long seat, long point). The body is the landed
 //   CTCTavernTable::FreePoint (0x007B9090) followed by the inline seat-free of SetSeatState (0x007B8530) with
@@ -13,27 +14,9 @@
 //   path retail reads the never-written local, which VC7.1 homed in the `point` argument slot (`mov eax,[esp+14h]`).
 class CTCBase;
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    __declspec(noinline) SEntry* LowerBound(const long* type)   // same-TU read-only stand-in (the template body every retail TU instantiates)
-    {
-        SEntry* lo = first;
-        int len = last - first;
-        while (len > 0) {
-            int half = len >> 1;
-            SEntry* middle = lo + half;
-            if (middle->type < *type) {
-                lo = middle + 1;
-                len = len - half - 1;
-            }
-            else
-                len = half;
-        }
-        return lo;
-    }
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -44,10 +27,10 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

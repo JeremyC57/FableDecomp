@@ -1,5 +1,6 @@
 // CTCMeleeTrap::InitialiseAnimation(const CCharString& name, bool loop) -- reset the thing's animator and start the appearance's first animation of the given name (type 6, update mode 1, looping as asked, priority 100), then pick up its strike events
 // Leaf: ?InitialiseAnimation@CTCMeleeTrap@@AAEXABVCCharString@@_N@Z
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Naming wave 18: the interface-presence stand-in CComponentBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078809B, 253 bytes, `ret 8`. Size TU with a frame pointer:
 //   `#pragma optimize("y", off)` + `("s", on)` (`push 5Ah ; pop edi`, `leave`), as the landed trap siblings (0x00788555).
@@ -115,28 +116,14 @@ class CTCAnimationComplex { public:                                   // interfa
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                         // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                      // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    unsigned long _M_w[(_Nb + 31) / 32];
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
 class CThing {
 public:
     unsigned char    _pad00[0x20];
     std::bitset<274> UsingComponents;                          // +0x20
     CInterfaceMap    m_interfaces;                             // +0x44
-    unsigned char    _pad4c[0x70 - 0x4c];
+    unsigned char    _pad54[0x1c];
     CThingBaseDef*   PBaseDef;                                 // +0x70
     CDefPointer<CThingBaseDef> GetPBaseDef() const { return CDefPointer<CThingBaseDef>(PBaseDef); }
     template <class T> __forceinline T* PeekTC(long type)
@@ -145,8 +132,8 @@ public:
         if (UsingComponents.test(type)) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            tc = (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            tc = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
         }
         return tc;
     }

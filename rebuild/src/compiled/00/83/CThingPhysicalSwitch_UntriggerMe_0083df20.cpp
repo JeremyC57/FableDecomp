@@ -1,5 +1,6 @@
 // CThingPhysicalSwitch::UntriggerMe() -- clear the triggered flag and, when the def names an untrigger sound and the switch has a sound player, play it attached
 // Leaf: UntriggerMe
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083DF20, length 247 bytes (+ int3 padding).
 // Callees: CThing::GetDefinitionManager @ 0x004C7990, CDefinitionManager::GetDef<CThingPhysicalSwitchDef> @ 0x0083E0D0
 // (out CDefPointer; the def's slot 1 destroys on the last release), CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound
@@ -51,31 +52,9 @@ __declspec(noinline) bool CDefinitionManager::GetDef_0083e0d0(long globalIndex, 
 }
 #pragma auto_inline(on)
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                      // 0x0040F020
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for CVectorMap::LowerBound 0x0040F020 (its retail body: STLport lower_bound over the 8-byte
-// {type, component} entries): VC7.1 then knows the key's address does not escape.
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CSoundPair { public:                                            // Ego_r.pdb: 8 bytes
     long FirstSound;
@@ -115,7 +94,7 @@ public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                           // +0x20
     CInterfaceMap  m_interfaces;                               // +0x44
-    unsigned char  _pad4c[0x8c - 0x4c];
+    unsigned char  _pad54[0x38];
     unsigned short DefGlobalIndex;                             // +0x8c
     unsigned char  _pad8e[0xd0 - 0x8e];
     bool           Triggered;                                  // +0xd0
@@ -137,8 +116,8 @@ public:
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return ((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
     void UntriggerMe();
 };

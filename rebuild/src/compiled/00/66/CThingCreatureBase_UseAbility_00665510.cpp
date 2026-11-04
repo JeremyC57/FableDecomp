@@ -1,4 +1,5 @@
 // CThingCreatureBase::UseAbility(long abilityDefIndex, float buttonPressure) -- pass the button pressure to the ranged-attacks component (if any), fetch the ability's def and hand it to the creature's virtual ability handler
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00665510, 135 bytes (`ret 8`).
 // Callees: CInterfaceMap::LowerBound @ 0x0040F020, CTCHeroRangedAttacks::SetButtonPressure(float) @ 0x007899E0,
 //   CThing::GetDefinitionManager @ 0x004C7990 (label "CViewBase::GetDisplayEngine" propagated),
@@ -11,22 +12,10 @@
 //   (`dec [esi+4] ; jne ; call [vtbl+4]`).
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 class CTCBase;
-struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 long TmplSink_s7_0(const void* self, long seen);   // stand-in: the work LowerBound does (outside the bytes graded here)
-#pragma auto_inline(off)
-// Same-TU stand-in for the LowerBound instantiation (template bodies are compiled in the caller's TU): reads the const-reference
-// arguments (not the empty tags), stores the out pointers, lets no argument escape.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    long r = TmplSink_s7_0(this, 0 + (type ? *(const long*)type : 0));
-    return (SEntry*)r;
-}
-#pragma auto_inline(on)
 class CTCHeroRangedAttacks { public:
     void SetButtonPressure(float pressure);     // 0x007899E0
 };
@@ -91,20 +80,20 @@ class CThing { public:
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
-            it = map->last;
-        return (T*)it->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
+        return (T*)it->second;
     }
     template<class T> __forceinline bool GetInterface(T** out, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *out = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *out = (T*)it->second;
             return true;
         }
         return false;

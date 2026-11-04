@@ -1,5 +1,6 @@
 // CTCLook::FrameUpdate() -- per-frame look update: refresh the head position, run the stop-looking countdown, react to the creature's interface-8 / interface-0xAA look overrides, drive the body turning, then the head state machine (centre, interested, look at a position), and finally apply the head settings
 // Leaf: FrameUpdate
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00753C70, 544 bytes, plain `ret`. Vtable 0x01269744 (CTCLook) slot 9 (catalog "vfunc_9").
 // Callees: CTCLook::UpdateHeadPos @ 0x00752000, LowerBound @ 0x0040F020 (interfaces 8 and 0xAA, inlined GetTC), CTCBase::PeekComponent
 //   @ 0x00686D60 and CMainGameComponent::GetCurrentWorldFrame @ 0x004167C8 (the inlined UpdateLookTimer),
@@ -16,15 +17,7 @@ class C3DVector { public: float X, Y, Z; };
 struct CTCBaseComponent;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                  // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
@@ -35,9 +28,9 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || wanted < it->first)
-            it = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || wanted < it->first)
+            it = map->end();
         return (T*)((CTCBaseComponent*)it->second);
     }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -45,9 +38,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)((CTCBaseComponent*)it->second);
             return true;
         }

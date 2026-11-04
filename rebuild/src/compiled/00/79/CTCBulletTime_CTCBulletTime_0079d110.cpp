@@ -1,5 +1,6 @@
 // CTCBulletTime::~CTCBulletTime() -- end the slowdown and the looping sound, remove the screen filter (and, unless a cutscene cancelled it, play the def's end sound), kill the looping particle effect, then the members and the CTCBase base
 // Leaf: ??1CTCBulletTime
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail 0x0079D110, 444 bytes (plain `ret`), vtable 0x0126C49C.
 // Callees: CTCBase::GetWorld @ 0x00686A70, bullet-time manager RemoveBulletTimeSlowdown @ 0x004C6140 (world +0x68),
 // LowerBound @ 0x0040F020 (inlined GetInterface, sound emitter 0x10), StopSample @ 0x0066ADD0, filter removal @ 0x006B83F0,
@@ -21,15 +22,7 @@ extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDef
 struct CTCBaseInterface;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -40,9 +33,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)((CTCBaseInterface*)it->second);
             return true;
         }

@@ -1,5 +1,6 @@
 // CTCCreatureFlyInCircles::FrameUpdate() -- while active: keep the creature at full health (100), run a queued mode change, keep the loop anim playing, check for hits, advance the swoop (mode 2) or the circling flight from the creature's position and facing, record in the flagged component whether the position is on the map, then write the new position back and orient the creature along its facing (up = (facing.Y, -facing.X, 0) x facing)
 // Leaf: FrameUpdate
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Grade: RELOCATION_MATCH -- the CrossProduct is the landed 0x007A1870 shape ((float)(double) per component through component pointers), which puts retail's Up.X fstp before the Forward.Y copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DE030, 384 bytes (`ret`).
 // Callees: the creature physics component's virtual slots 70 GetFacing (+0x118, C3DVector by hidden pointer), 30 SetPosition
@@ -43,12 +44,9 @@ class CTCPhysicsBase { public:
 #undef VF
 };
 class CTCBase;
-struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CTCFlagged {                                     // the type-0x3a component
     unsigned char _pad00[0x50];
     unsigned char InMap : 1;                            // +0x50 bit 0
@@ -60,7 +58,7 @@ class CThingCreatureBase { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     unsigned char _pad64[0xb4 - 0x64];
     float Health;                                       // +0xb4 (CThingPhysical)
@@ -69,10 +67,10 @@ class CThingCreatureBase { public:
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
-            it = map->last;
-        return it->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
+        return it->second;
     }
 };
 class CWorldMap { public:

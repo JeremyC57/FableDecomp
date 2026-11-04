@@ -1,5 +1,6 @@
 // CTCJackShield::EnableShield(bool enable) -- show / hide the owner's graphic shield state, switch the owner's switchable-navigation component, and on enable create the "JACK_OF_BLADES_SHIELD_01" particle emitter at the owner (unless a live one exists), on disable kill the live emitter
 // Leaf: EnableShield
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00731680, 336 bytes, `ret 4`. Speed TU (esp frame, no pragma).
 //   Ego_r.pdb: `?EnableShield@CTCJackShield@@QAEX_N@Z`.
 // Callees: the owner's +0x60 object's virtual slots 36 (+0x90, (enable)), 44 (+0xB0) and 43 (+0xAC, (0)); the owner's
@@ -30,15 +31,7 @@ class C3DVector { public: float X, Y, Z; };
 class CTCBaseComponent;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                   // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CInterfaceBits {                                     // bitset<> at CThing+0x20
     unsigned long _M_w[9];
@@ -59,7 +52,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     CInterfaceBits present;                                 // +0x20
     CInterfaceMap m_interfaces;                             // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CThingGraphic* PGraphic;                                // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char Flags91;                                  // +0x91 (bit 0: dead)
@@ -68,8 +61,8 @@ class CThing { public:
         if (present.test(interfaceType)) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)((CTCBaseComponent*)((it == map->last || interfaceType < it->first) ? map->last : it)->second);
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)((CTCBaseComponent*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second);
             return true;
         }
         return false;

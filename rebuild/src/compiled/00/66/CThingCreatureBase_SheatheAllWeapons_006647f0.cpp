@@ -1,4 +1,5 @@
 // CThingCreatureBase::SheatheAllWeapons() -- for an AI creature carrying a weapon: collect the carrying component's weapon things and kill each live one that is no longer held
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006647F0, length 215 bytes, `ret`.
 // Callees: CThingCreatureBase::IsPlayer (vtable slot 77, +0x134), IsThingCarryingWeapon(const CThing*) @ 0x006A1540
 //   (`__fastcall`), CInterfaceMap::LowerBound @ 0x0040F020 (TC 0x46 = CTCCarrying), the carrying component's weapon
@@ -11,15 +12,7 @@
 //   IS_THING_ALIVE is inline.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
@@ -55,7 +48,7 @@ public:
     unsigned char _pad04[0x20 - 0x04];
     unsigned long UsingComponents[9];           // +0x20 bitset<274>
     CInterfaceMap Components;                   // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                     // +0x91 bit 0
     void Kill(bool immediately);                // 0x004C9B80
     bool HasTC(long type) const
@@ -68,9 +61,9 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return (T*)it->second;
     }
 };

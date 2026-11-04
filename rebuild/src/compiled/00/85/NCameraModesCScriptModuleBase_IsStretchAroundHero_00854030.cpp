@@ -2,6 +2,7 @@
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- PeekTC ends in the F88 form (`if (found != last && !(type < found->type)) it = found; else it = last;` then one `*ppOut = it->component`), which VC7.1 tail-duplicates so the component loads straight into ecx for the slot-30 call as retail does
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00854030, 178 bytes, plain `ret`.
 // Leaf: ?IsStretchAroundHero@CScriptModuleBase@NCameraModes@@UBE_NXZ
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Name: vtable 0x01255F74 slot 4; FableWin.pdb ?IsStretchAroundHero@CScriptModuleBase@NCameraModes@@UBE_NXZ (the remaining base virtual
 //       once slots 2/3/5/6/7/8 are placed by their overriders, see GetModuleFOV 0x00851DD0).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the inline GetPCameraPoint() re-fetches the camera point for every
@@ -18,50 +19,16 @@ class CTCBase;
 class CPlayer { public:
     bool IsMainPlayer() const;                       // 0x00487520
 };
-struct CInterfaceMap {                               // a thing's sorted {type, component} vector map at +0x44
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    __declspec(noinline) SEntry* LowerBound(const long* type)   // same-TU read-only stand-in (the template body every retail TU instantiates)
-    {
-        SEntry* lo = first;
-        int len = last - first;
-        while (len > 0) {
-            int half = len >> 1;
-            SEntry* middle = lo + half;
-            if (middle->type < *type) {
-                lo = middle + 1;
-                len = len - half - 1;
-            }
-            else
-                len = half;
-        }
-        return lo;
-    }
-    __declspec(noinline) const SEntry* LowerBound(const long* type) const   // same-TU read-only stand-in (the template body every retail TU instantiates)
-    {
-        const SEntry* lo = first;
-        int len = last - first;
-        while (len > 0) {
-            int half = len >> 1;
-            const SEntry* middle = lo + half;
-            if (middle->type < *type) {
-                lo = middle + 1;
-                len = len - half - 1;
-            }
-            else
-                len = half;
-        }
-        return lo;
-    }
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;                            // +0x10 thing type (2 here: a creature that can be the player)
     unsigned char _pad11[0x20 - 0x11];
     unsigned long m_presentBits[9];                  // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                      // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char m_dead : 1;                        // +0x91 bit 0
     unsigned char m_91_1 : 7;
     bool IsDead() const { return m_dead; }
@@ -70,13 +37,13 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* found = map->LowerBound(&type);
-            const CInterfaceMap::SEntry* it;
-            if (found != map->last && !(interfaceType < found->type))
+            const CInterfaceMap::value_type* found = map->LowerBound((const ETCInterfaceType&)type);
+            const CInterfaceMap::value_type* it;
+            if (found != map->end() && !(interfaceType < found->first))
                 it = found;
             else
-                it = map->last;
-            *ppOut = (const T*)it->component;
+                it = map->end();
+            *ppOut = (const T*)it->second;
             return true;
         }
         return false;

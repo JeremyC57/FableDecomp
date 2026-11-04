@@ -1,0 +1,53 @@
+Plan phase 2, wave "cvectormap" (2026-11-04): CThing component-map local copies moved onto engine/CVectorMap.h.
+
+HEADER
+- rebuild/include/engine/CVectorMap.h is used as it is (no change, no sub-macro): CVectorMap<K,V,CompareType> derives
+  CArray<std::pair<K,V> > (STLport vector: _M_start +0, _M_finish +4, _M_end_of_storage +8), Compare +0x0C, Dirty +0x0D,
+  sizeof 0x10; LowerBound (const and non-const) are same-TU noinline bodies.  No include dir in this overlay, so hdrcheck2
+  has nothing to compare (default=same by construction) and no includer of a changed header needs a regrade.
+
+ROWS (473 PASS, all RELOCATION_MATCH PASS under vland --recheck-landed; 472 carry only warnings the landed source had too)
+- 317 "variant 0" rows (scripts/hdrmig2.py, cfg_v0.json): the specialisation
+  `template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > { SEntry* first; SEntry* last;
+  SEntry* LowerBound(const ETCInterfaceType&); }` with its `namespace std { struct pair }` stub and forward declarations is
+  removed; the header is included where the first block stood; SEntry -> value_type; map.last -> map.end().  About half
+  embed the map by value with a pad after it: the pad shrinks by 8 (the header map is 0x10, the local model 8) and a
+  `_pad<off>` name follows the new offset.  No symbol changes (the local spelling of LowerBound already was the header's).
+- 156 "stand-in map" rows (scripts/aliasmap.py, cfg_alias.json): the map was a non-template stand-in class
+  (CInterfaceMap 155 rows, CInterfaceMap_Retail 1) with its own entry struct and a same-TU
+  LowerBound body.  The class becomes `typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > CInterfaceMap;`,
+  the body goes (the header carries the same-TU noinline LowerBound), entry fields -> first / second, a pointer key
+  `LowerBound(&k)` -> `LowerBound((const ETCInterfaceType&)k)`.  These are the name fixes: every one of them now binds
+  0x0040F020 / 0x004365B0 under the Ego_r spelling
+    ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@...@@@@@@QAEPAU?$pair@...@std@@ABW4ETCInterfaceType@@@Z
+    ?LowerBound@?$CVectorMap@...@@QBEPBU?$pair@...@std@@ABW4ETCInterfaceType@@@Z (const)
+  instead of ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z / QBEPBUSEntry / QBEPAUSEntry / ABJ forms (CALLERS.tsv, 156 rows,
+  174 relocation respells).  Acceptance allowed a symbol change only to the decided spelling of that exact retail target
+  (target_symbol_map), plus struct U -> class V of a header class.
+- Gate: gate.py PASS 476/476 (masked sha1, length and every relocation target identical to the index).  vland: 476 graded
+  (2 + 1 batches, then the landed sources for the parity / warning baseline); 473 PASS.
+
+QUEUE LINES (QUEUE_LINES.tsv): 12 NAME_FIXES_QUEUE lines on 0x0040F020 / 0x004365B0 (65, 66, 120, 124, 524, 752, 879, 928,
+  929, 2098, 2481, 2484) are narrowed (142-144 / 25-30 old binders respelled each); none closes, 60-104 / 33-77 binders of
+  other stand-in spellings remain (DEFERRED alias_* rows + rows with nested / namespaced map models).
+BINDINGS: none.  The decided spellings are already in reloc_bindings.tsv; every stand-in spelling still has other binders.
+NAME_FIXES.tsv: 0x004365B0: 3 landed rows (0072c9c0, 0074b770, 00753380) bind the non-const spelling to the const target.
+
+DEFERRED (DEFERRED.tsv, 482 tried rows):
+- bitset_stub 160: the row models std::bitset<274> itself (test() out of line at 0x00410DE0, an empty stub + pad); the real
+  STLport bitset is 36 bytes with an inline test().  Needs a new FABLE_RETAIL_STLP_BITSET_TEST_DECL sub-macro in
+  stlport/fable_containers.h (test declared only) plus a stub re-pad: the next wave's biggest cheap block.
+- const_lowerbound 120 (variant 1): the row calls the const LowerBound through a non-const map pointer; on the header the
+  non-const overload wins (wrong name for 0x004365B0).  Make the map pointer / iterator const, then rerun.
+- alias_* 148: stand-in maps the script does not model yet (entry shapes, extra methods, compile errors, bytes).
+- compile_fail 23, stray_change 11, derived_pad 10 (a class deriving from the map owner pads from the local 8-byte map end),
+  local_std 7, test_link 3 (the behaviour test defines LowerBound itself: LNK2005 against the header's COMDAT; move the test).
+- READY_PHASE3.tsv: 672 more rows that pass hdrmig2 at HEAD (variant 0 / 1), left out only for the ~4,000-row budget.
+  Regate them after this wave lands (the index changes), then grade.
+- Not tried: the other 320 local-copy variants (about 1,300 rows; variants.tsv).
+
+GOTCHAS (one line each)
+- A local 8-byte CVectorMap model (first/last) shifts every later member by 8 on the real header: shrink the pad after a
+  by-value map, and a derived class's first pad when the map is the owner's last member.
+- With the header the non-const LowerBound wins overload resolution through a non-const map pointer: rows that call the const
+  0x004365B0 must use a const pointer, or they rebind to the 0x0040F020 spelling.

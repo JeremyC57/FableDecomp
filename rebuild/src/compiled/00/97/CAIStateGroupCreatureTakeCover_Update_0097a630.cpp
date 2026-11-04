@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureTakeCover::Update() -- take cover from a live target: make the creature directly aware of it, find a hidden cover position (none: mark the failure and terminate); a distant cover is reached by crouching (with a live cover thing) and moving in (failure drops the cover thing); behind low cover duck and attack 1..3 times until the position drifts, behind high cover 1..3 times step out to a firing position (unless the target is visible), attack, move back in and reload; finally drop the cover thing from the list and refresh an empty list
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Grade: RELOCATION_MATCH -- three separate IsStillRunnable/AttackTargetThing exits, the firing-position pointer built by implicit conversion (lea-readdressed temporary), the reload name passed as const char*, the cover list size as an unsigned 8-byte-entry count, and the crouch action at its retail 0x124 size
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097A630, 1195 bytes, plain ret, 8-aligned ebp frame.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, interface LowerBound 0x0040F020 (type 0x34 perception),
@@ -18,29 +19,9 @@ extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class CTCBase;
 class C3DVector { public: float X, Y, Z; };
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
-#pragma auto_inline(off)
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -50,7 +31,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
     __forceinline bool HasTC(long type) const
@@ -63,8 +44,8 @@ class CThing { public:
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        return (it == map->last || type < it->type ? map->last : it)->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
+        return (it == map->end() || type < it->first ? map->end() : it)->second;
     }
 };
 class CBaseObject;

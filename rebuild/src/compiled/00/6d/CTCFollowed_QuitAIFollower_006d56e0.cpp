@@ -1,5 +1,6 @@
 // CTCFollowed::QuitAIFollower(CThingAICreature* creature) -- release an AI follower: drop it from both follower lists, tell the follow-action component, post a "stopped following" opinion deed at the hero, clear its emote icon, and if it has neither a live home nor a live work building stop persisting it
 // Leaf: QuitAIFollower
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 //
 // Retail 0x006D56E0, 358 bytes (`ret 4`).
 // Callees: CTCFollowed::IsAIFollower @ 0x006D4DB0, list<CIntelligentPointer<CThingAICreature>>::remove @ 0x0065DE48 and
@@ -14,38 +15,16 @@
 // out-parameter GetInterface with the result unchecked; the deed lookup's thing is a named local reused for the position.
 class CTCBase;
 class C3DVector;
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-#pragma auto_inline(off)
-// Same-TU stand-in for CVectorMap::LowerBound 0x0040F020 (STLport lower_bound over the 8-byte
-// {type, component} entries): VC7.1 then knows the key's address does not escape.
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
 class CThing {
 public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                                 // +0x91 bit 0
     unsigned char _flags91 : 7;
     unsigned char DeletedOnOwnerLevelOutOfScope : 1;        // +0x92
@@ -58,8 +37,8 @@ public:
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&key);
-            *ppOut = (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
+            *ppOut = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

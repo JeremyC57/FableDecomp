@@ -1,5 +1,6 @@
 // NCreatureMode::CModeCarryingWeaponStand::OnActivate() -- reset the holding filter's group to "", take the animation group of the weapon in the creature's primary carry slot, then the stand-mode activation
 // Leaf: ?OnActivate@CModeCarryingWeaponStand
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D87C0, 211 bytes (+ int3 padding), `ret`; vtable 0x012856E4 slot 5.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 ("" @ 0x0122D70E), CCharString::operator= @ 0x0099EFB0, CCRC::Calc
 //   @ 0x004014A0 (`__fastcall`; "" @ 0x0129AAF4 for a null string), ~CCharString @ 0x0099EAE0, CVectorMap::LowerBound (const)
@@ -46,32 +47,10 @@ class CAnimFilterOfGroup { public:                    // vtable 0x01267568
     }
 };
 
-struct CInterfaceMap {                         // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const long* type) const;  // 0x004365B0 (the const instantiation)
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-// Same-TU stand-in body for the out-of-line lower_bound (the retail one is a separate COMDAT): with it VC7.1 knows the key's
-// address does not escape, so both lookup keys share the string temporary's frame word (GOTCHAS I-3).
-#pragma auto_inline(off)
-const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    const SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        const SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
 
 class CThing { public:
     unsigned char  _pad0[0x20];
@@ -85,9 +64,9 @@ class CThing { public:
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        const CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->type) ? map->last : it;
-        return (T*)sel->component;
+        const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        const CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
+        return (T*)sel->second;
     }
 };
 

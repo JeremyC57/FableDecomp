@@ -1,5 +1,6 @@
 // CTCHeroOnlineScoreboard::DisplayErrorMessage(const CWideString& message) -- hides the second connecting message, puts the message in the connecting panel's UI_CONNECTING_TEXT, gives its OK button action 0x112 and moves input focus from the mouse pointer to that button
 // Leaf: OnOkClicked
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0055EF00, 385 bytes (`ret 4`). Manifest label OnOkClicked is wrong: the
 // real OnOkClicked is 0x0055EE20 (landed); this one takes one by-reference wide-string message.
 // Callees: CVectorMap::LowerBound @ 0x0040F020, CCharString(const char*, long) @ 0x0099EBF0, operator new @ 0x00BFEA1A,
@@ -107,15 +108,7 @@ class CManager { public:
 }
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);            // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
@@ -132,9 +125,9 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || wanted < it->first)
-            it = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || wanted < it->first)
+            it = map->end();
         return (T*)it->second;
     }
 };

@@ -1,5 +1,6 @@
 // CTCSpecialAbilities::ResumeAbilitiesForCutscene() -- after a cutscene, resume each active spell component the hero has (interfaces 0x93, 0x91, 0x9A, 0x88)
 // Leaf: ResumeAbilitiesForCutscene
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072BEC0, 245 bytes (plain `ret`).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (four inlined lookups), the components' ResumeForCutscene (manifest labels): CTCPhysicalShieldSpell 0x0079E520
 //   (interface 0x93), CTCSummonSpell::ResumeForCutscene 0x0079A6A0 (interface 0x91, landed), CTCGhostSword 0x007C54F0 (0x9A),
@@ -9,15 +10,7 @@
 // Shape: four `if (HasTC) GetTC()->ResumeForCutscene();` statements, each re-reading ParentThing; the shared key word.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -29,8 +22,8 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
-        return (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
 };
 class CTCPhysicalShieldSpell { public: void ResumeForCutscene(); };        // 0x0079E520 (interface 0x93)

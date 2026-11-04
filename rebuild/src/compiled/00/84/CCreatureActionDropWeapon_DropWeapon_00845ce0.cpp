@@ -1,5 +1,6 @@
 // CCreatureAction_DropWeapon::DropWeapon(CThing& weapon, CTCCarrying& carrying, CThing& creature) -- take the weapon out of the creature's carrying component: an inventory item goes back to its passive (sheathed) carry slot (evicting a living occupant to limbo or killing it) unless the weapon def names a sheathe object or the weapon is dead, recording it as the previously wielded melee/ranged weapon; anything else is dropped upright facing its current XY angle and made not-solid to the creature; finally the creature's mode 4 is removed
 // Leaf: ?DropWeapon@CCreatureAction_DropWeapon@@SIXAAVCThing@@AAVCTCCarrying@@0@Z
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z; 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00845CE0, 763 bytes (+ int3 padding), static __fastcall, `ret 4`.
 // Callees: CTCCarrying::RemoveThing 0x006A19B0, GetThingInCarrySlot 0x006A11F0 (manifest "CThing_Array_FindByID"),
 //   PutThingInCarrySlot 0x006A1F80; CDefClassBase::GetSubDef<CCarryableDef> 0x005CC10E / GetSubDef<CWeaponDef> 0x0042B1A6
@@ -115,47 +116,9 @@ bool CDefClassBase::GetSubDef(CDefPointer<CWeaponDef>* out)
     return false;
 }
 #pragma auto_inline(on)
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);             // 0x0040F020
-    const SEntry* LowerBound(const long* type) const; // 0x004365B0
-};
-#pragma auto_inline(off)
-// Same-TU stand-ins for CVectorMap::LowerBound 0x0040F020 / 0x004365B0 (STLport lower_bound over the 8-byte
-// {type, component} entries): the lookup key's address does not escape, so the keys share one frame word.
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    const SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        const SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -178,7 +141,7 @@ public:
     unsigned char   _pad0[0x20];
     unsigned long   m_presentBits[9];                 // +0x20
     CInterfaceMap   m_interfaces;                     // +0x44
-    unsigned char   _pad4c[0x60 - 0x4c];
+    unsigned char   _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                        // +0x60
     unsigned char   _pad64[0x70 - 0x64];
     CDefClassBase*  m_pDef;                           // +0x70
@@ -197,17 +160,17 @@ public:
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        CInterfaceMap::SEntry* end = map->last;
-        return (it == end || type < it->type ? end : it)->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
+        CInterfaceMap::value_type* end = map->end();
+        return (it == end || type < it->first ? end : it)->second;
     }
     __forceinline const CTCBase* GetConstTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        const CInterfaceMap::SEntry* end = map->last;
-        return (it == end || type < it->type ? end : it)->component;
+        const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
+        const CInterfaceMap::value_type* end = map->end();
+        return (it == end || type < it->first ? end : it)->second;
     }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {

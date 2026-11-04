@@ -1,5 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::SetPMeshEffect(CIVCountedPointer<CEngineMeshEffect>, bool, bool, bool, EAppearanceMeshEffectPriority, void*) -- register (or, for a null effect, clear) the owner's mesh effect on this appearance unless it is a weapon the effect must not touch, spread it to the graphic appearance of every carried thing when asked (weapons only when asked), then re-render
 // Leaf: SetPMeshEffect
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C0240, length 485 bytes, `ret 18h` (the by-value counted pointer is
 //         destroyed by the callee). Ego_r.pdb `?SetPMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXV?$CIVCountedPointer@VCEngineMeshEffect@@@@_N11W4EAppearanceMeshEffectPriority@2@PAX@Z`.
 // Callees: CTCGraphicAppearance::ClearMeshEffect(void*) @ 0x004BFE20 (landed), the MeshEffects map's operator[](const key&)
@@ -21,15 +22,7 @@ extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                   // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {
@@ -53,8 +46,8 @@ public:
         if (has) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
         }
         return has;
     }

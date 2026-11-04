@@ -1,5 +1,6 @@
 // CTCBoss::CTCBoss(CThing* owner) -- CTCBase(owner), own vtable, empty def pointer and vectors, counters cleared and both flags set, the boss sub-def fetched from the owner's base def, the phase start at the owner's position, then any effects cleared
 // Leaf: ??0CTCBoss
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007AEFD0, length 114 bytes (+14 int3 padding). `ret 4`. Vtable 0x0126D494.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CDefClassBase::GetSubDef(CDefPointer<const CBossDef>*) @ 0x007AFA90 (catalog:
 // the <CAICreatureWillPowerIndicatorDef> byte-twin), CThing::GetPos @ 0x004C73D0, CTCBoss::ClearEffects @ 0x007AEF60.
@@ -18,15 +19,7 @@ class C3DVector { public:                              // packed: CTCBoss keeps 
 #pragma pack(pop)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020 (the FrameUpdate copy is 0x004365B0)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CDefClassBase;
 class CThing {
@@ -34,7 +27,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x70 - 0x4c];
+    unsigned char _pad54[0x1c];
     CDefClassBase* PBaseDef;                    // +0x70 CDefPointer<CThingBaseDef const> object word
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
@@ -46,9 +39,9 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

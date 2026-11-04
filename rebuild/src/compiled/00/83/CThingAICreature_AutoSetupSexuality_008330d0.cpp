@@ -1,5 +1,6 @@
 // CThingAICreature::AutoSetupSexuality(float maleChance) -- decide whether the creature can be courted and married: a female with interfaces 0x4F and 0xD7 can; a male can when he has a talk component voiced "AM3" and a random roll comes in under the chance; a courtable creature without a wife component gets a CTCWife
 // Leaf: AutoSetupSexuality
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008330D0, length 340 bytes (`ret 4`, no frame pointer; Ego_r.pdb
 //   `?AutoSetupSexuality@CThingAICreature@@QAEXM@Z`).
 // Callees: CThingCreatureBase::GetSex() const 0x00661FF0 (as landed; manifest "CPixelShader::CountReferences" propagated);
@@ -44,31 +45,9 @@ extern CCharString g_CCharString_013bab2c;              // 0x013BAB2C ("AM3")
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for CVectorMap::LowerBound const 0x004365B0 (STLport lower_bound over the 8-byte entries; the landed
-// 0x00848730 idiom): VC7.1 then knows the key's address does not escape and shares its word with the temporary's flag.
-const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    const SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        const SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCTalk { public:                                        // interface 0xF
     unsigned char _pad00[0x38];
     CCharString   DialogueVoice;                        // +0x38
@@ -102,7 +81,7 @@ public:
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad4c[0x1c8 - 0x4c];
+    unsigned char _pad54[0x174];
     bool PerformingVillageTaskFlag : 1;                 // +0x1c8
     bool AISuspended : 1;
     bool HasInformation : 1;
@@ -122,10 +101,10 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (const T*)it->component;
+            const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (const T*)it->second;
             return true;
         }
         return false;

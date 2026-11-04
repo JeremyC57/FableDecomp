@@ -1,0 +1,22 @@
+Strict-mode proposal (plan phase 2, 2026-11-04): stop new local copies of fully migrated classes.
+
+What exists: verify_and_land.py (around line 512) warns SHARED_HEADER_AVAILABLE <C> when a candidate has
+`\b(?:struct|class)\s+C\s*\{` for a C with rebuild/include/engine/C.h and does not mention `engine/C.h`;
+LANDVERIFY_STRICT_HEADERS=1 turns every such warning into a HEADER_POLICY rejection.  Two gaps:
+  1. it is all-or-nothing: strict for every header would reject most new chunk rows today (CVectorMap 2,665 / C3DVector
+     3,450 / CCountedPointer 3,140 ... landed local copies are the house style the chunk agents copy);
+  2. the regex misses the forms the local copies actually use: a base clause (`class CVectorMap : public std::vector<..> {`),
+     a template specialisation (`template <> class CVectorMap<ETCInterfaceType, ...> {`), and a template head on the line
+     (it does match `class C {` after `template <class K>`).
+
+Proposal (coordinator applies; vland is not edited here):
+  - add LANDVERIFY_STRICT_CLASSES=<file> (default: tools/decomp_pipeline/strict_classes.txt, seeded from
+    $P/strict_classes.txt, `#` lines are comments): for each class C listed, a candidate that defines C outside comments /
+    strings (`\b(?:class|struct)\s+C\b(?:\s*<[^;{}()]*>)?\s*(?::[^;{}()]*)?\{`, the localcopies.py pattern) without
+    `#include "engine/C.h"` is rejected HEADER_POLICY ("C is fully migrated: include engine/C.h"), whatever
+    LANDVERIFY_STRICT_HEADERS says.  Forward declarations (`class C;`) stay legal.
+  - widen the existing warning regex the same way, so the warning counts the copies the strict list will later cover.
+  - after each header wave, rerun $P/tools/localcopies.py; a class whose local_rows reaches 0 is appended to the list
+    (that is the "fully migrated" gate).  Today: 147 classes have zero landed local copies (109 of them have includers);
+    none of the five value classes is there yet (CVectorMap 2,665 -> about 2,190 after this phase's 476 rows).
+  - recheck mode (--recheck-landed) should apply the list too, so a landed row that regresses is caught on regrade.

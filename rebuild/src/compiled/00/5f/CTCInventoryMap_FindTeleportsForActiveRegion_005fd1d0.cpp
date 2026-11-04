@@ -1,4 +1,5 @@
 // CTCInventoryMap::FindTeleportsForActiveRegion() -- rebuilds the teleport marker list for the active region: for every map linked to the region, every enabled teleporter (TC 0xDD) in that map contributes its position converted to the map's local coordinates
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005FD1D0, 564 bytes, plain `ret`. Speed TU (no pragmas; RTM `and esp,-8` frame for the
 //   8-byte filter/coordinate structs whose addresses are taken in the loop).
 // Callees: CTCBase::PeekWorld() const 0x00686A80, CWorld slot 13 (+0x34) PeekWorldMap, CWorldMap::GetRegion 0x004FC180,
@@ -104,30 +105,9 @@ struct list {
 };
 
 class CTCBase;
-struct CInterfaceMap {                                // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const long* type) const; // 0x004365B0
-};
-// same-TU stand-in for the interface-map LowerBound (VC7.1 then knows the entry is not derived from the key)
-#pragma auto_inline(off)
-__declspec(noinline) const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    const SEntry* lo = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count >> 1;
-        const SEntry* mid = lo + half;
-        if (mid->type < *type) {
-            lo = mid + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return lo;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class C3DVector { public: float X, Y, Z; };
 class CThing {
 public:
@@ -140,9 +120,9 @@ public:
     {
         long key = kind;
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        const CInterfaceMap::SEntry* end = map->last;
-        return (it == end || kind < it->type ? end : it)->component;
+        const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
+        const CInterfaceMap::value_type* end = map->end();
+        return (it == end || kind < it->first ? end : it)->second;
     }
     template<class T> __forceinline T* PeekTC(long kind) const
     {
@@ -156,8 +136,8 @@ public:
         if (HasTC(kind)) {
             long key = kind;
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(&key);
-            *out = (T*)((it == map->last || kind < it->type) ? map->last : it)->component;
+            const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
+            *out = (T*)((it == map->end() || kind < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

@@ -1,4 +1,5 @@
 // CTCMeshAutomaticEntityCreator::CreateBuilding(const CCharString& dummyName, const CCharString& buildingName, CTCGraphicAppearance* appearance) -- create the named building at every dummy of that name
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072DF50, length 471 bytes (+ int3 padding), esp frame, `ret 0Ch`.
 // Callees: as CreateObject 0x0072DDB0, plus the `__fastcall` building factory Create @ 0x0082D920, the CTCBase accessor
 // GetThingManager @ 0x00686AE0 (`mov eax,[0x013B8A1C] ; ret`; label "GFGetPreMainMemoryUsed" is propagated) and the
@@ -13,15 +14,7 @@ class CTCPhysicsBase;
 class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CCharString { public:
     void* PStringData;
@@ -43,7 +36,7 @@ public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                  // +0x20 interface-present bitset
     CInterfaceMap  m_interfaces;                      // +0x44
-    unsigned char  _pad4c[0x60 - 0x4c];
+    unsigned char  _pad54[0xc];
     CTCPhysicsBase* PTCPhysics;                       // +0x60
 
     CTCGraphicAppearance* PGraphicAppearance;         // +0x64
@@ -55,9 +48,9 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

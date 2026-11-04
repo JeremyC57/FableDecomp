@@ -1,5 +1,6 @@
 // CTCShopKeeper::FrameUpdate() -- every 15th frame (staggered by the thing's unique id): take a new customer when one is needed, then repress or release the keeper's opinions as the village's hero-criminal state changes
 // Leaf: FrameUpdate
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00799AA0, 206 bytes (plain `ret`); CTCShopKeeper vtable 0x0126C154 slot 9.
 // Callees: CWorld::GetWorldFrame (static) @ 0x0049D870, _aullrem @ 0x00BFEBB0 (compiler helper), CTCShopKeeper::GetShopTC
 // @ 0x00798F50, RequiresNewCustomer @ 0x007990C0, AcquireNewCustomer @ 0x00799900, RepressOpinions(bool) @ 0x007996B0, the
@@ -10,15 +11,7 @@
 // GetTC on the re-read ParentThing; the flag byte is loaded once for both arms of the criminal test.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x18];
@@ -30,8 +23,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (it == map->last || interfaceType < it->first ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
 };
 class CWorld { public:

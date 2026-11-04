@@ -4,6 +4,7 @@
 // DRAGON_BURNINATE_EXPLOSION object there, register it as a dependent of the dragon (type-0x41 component) and restamp
 // the explosion frame
 // Leaf: UpdateBeam
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DC900, 0x1F6 bytes (padded to 512), `ret 4`.
 // Callees: the dragon def getter 0x008E3300 (GetSubDef-shaped, out CDefPointer), the world-frame getter 0x0049D870
 //   (__fastcall), CCharString 0x0099EBF0 / ~ 0x0099EAE0, CTCGraphicAppearance::GetDummyObject 0x004C08C0,
@@ -78,30 +79,9 @@ class CDisplayEngine { public:
     virtual CWorldHolder* GetWorldA();          // slot 4
 };
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
-#pragma auto_inline(off)
-// Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (a template member, compiled in the
-// caller's TU): binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing;
 struct CTCDependents {
@@ -111,7 +91,7 @@ class CThing { public:
     unsigned char         _pad0[0x20];
     unsigned long         m_presentBits[9];     // +0x20
     CInterfaceMap         m_interfaces;         // +0x44
-    unsigned char         _pad4c[0x64 - 0x4c];
+    unsigned char         _pad54[0x10];
     CTCGraphicAppearance* PGraphic;             // +0x64
     unsigned char         _pad68[0x70 - 0x68];
     CDefClassBase*        PDef;                 // +0x70
@@ -120,8 +100,8 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

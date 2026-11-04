@@ -1,5 +1,6 @@
 // CTCHeroOnlineScoreboard::OnPlayerSelectedClan(CWideString clanName, NUISystem::CComponent* clanMenuEntry) -- when no clan entry is pending: remember the chosen clan, show the connecting message, start downloading its scoreboard (state 6, the old download cleared), stop the screen's two buttons and the mouse pointer from taking event 0x19 and fade the pointer out
 // Leaf: OnPlayerSelectedClan
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 //
 // Retail 0x005625F0, 288 bytes incl. padding (`ret 8`; the by-value clan name destroyed at the end). Ego_r.pdb
 // `?OnPlayerSelectedClan@CTCHeroOnlineScoreboard@@QAEXVCWideString@@PAVCComponent@NUISystem@@@Z`.
@@ -57,32 +58,9 @@ class CComponent : public CComponentBase, public CObserver { public:
 };
 }
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;                                      // +0x00
-    SEntry* last;                                       // +0x04
-    SEntry* LowerBound(const long* type);               // 0x0040F020
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for CVectorMap::LowerBound 0x0040F020 (its retail body: STLport lower_bound over the 8-byte
-// {type, component} entries, as the landed CCreatureActionPickUpGoods::PerformAction 0x00848730 stand-in): compiled above
-// the caller so VC7.1 knows the key's address does not escape -- the key then shares the dead argument slot like retail's.
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad_0x00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
@@ -97,10 +75,10 @@ class CThing { public:
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || wanted < it->type)
-            it = map->last;
-        return (T*)it->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        if (it == map->end() || wanted < it->first)
+            it = map->end();
+        return (T*)it->second;
     }
 };
 class CTCInventory { public:                                   // interface type 0x11

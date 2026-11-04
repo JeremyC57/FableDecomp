@@ -1,5 +1,6 @@
 // CTCBuyableHouse::NeedsMainSignPost() const -- a house wants its main sign post when the building is available for residency, its def does not allow selling without a sign post, it belongs to a residential village, the village is not (flag +0xB3), the house is buyable and not scripted, and it is either owned with no wife living there or not owned and not in use
 // Leaf: ?NeedsMainSignPost@CTCBuyableHouse
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006BFB90, 311 bytes (+9 int3 padding), `ret`.
 // Callees: CThingBuilding::GetIsAvailableForResidency() 0x0082E0E0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound
 //   0x0040F020 (non-const), CTCVillageMember::GetPVillage() const 0x007EE540 (manifest IS_THING_ALIVE<..> propagated),
@@ -54,15 +55,7 @@ class CTCVillageMember { public:                       // interface 0x23
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -81,8 +74,8 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
 };
 class CThingBuilding : public CThing {

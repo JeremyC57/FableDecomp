@@ -1,5 +1,6 @@
 // CTCMeleeTrap::UpdateAnimation() -- step the trap's animation by the thing's update time; while a triggered, non-continuous trap's opener is open start the continuous loop (type 2) or reset the trap, and once it has closed again finish the trigger (a type-4 trap kills itself)
 // Leaf: UpdateAnimation
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the interface-presence stand-in CComponentBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00788555, 194 bytes (plain `ret`; PDB ?UpdateAnimation@CTCMeleeTrap@@AAEXXZ). The trap TU is
 //   size-optimised with a frame pointer: `optimize("y", off)` + `("s", on)` (`push 5Ah ; pop ebx`, `leave`).
@@ -33,22 +34,8 @@ public:
     CAnimateThing& GetAnimation();   // 0x0070B460
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    unsigned long _M_w[(_Nb + 31) / 32];
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
 class CThing {
 public:
     unsigned char    _pad00[0x20];
@@ -60,8 +47,8 @@ public:
         if (UsingComponents.test(type)) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            tc = (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            tc = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
         }
         return tc;
     }

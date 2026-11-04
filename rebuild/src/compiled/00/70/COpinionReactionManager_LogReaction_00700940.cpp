@@ -1,5 +1,6 @@
 // COpinionReactionManager::LogReaction(EOpinionReactionType reaction, const CThing* creature, bool fromScript) -- tell the reaction's normal and high frequency traits (when the def has them) that the creature reacted; a non-script reaction also stamps the creature's opinion-of-hero component with the current world frame
 // Leaf: LogReaction
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00700940, length 141 bytes (padded to 144).
 // Callees: CReactionFrequencyTraits virtual slot 1 (+4) LogReaction(const CThing*, bool) through
 //          PDef->FrequencyTraits[reaction] / FrequencyTraitsHigh[reaction]; CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound
@@ -24,15 +25,7 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
     long LastOpinionReactionFrame;          // +0x0c
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                 // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     virtual void v00();
@@ -44,9 +37,9 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return it->second;
     }
     __forceinline CTCCreatureOpinionOfHero* GetOpinionOfHeroTC()

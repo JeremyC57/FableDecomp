@@ -1,5 +1,6 @@
 // CThingCreatureBase::PlayCreatureContinuousSounds() -- when the creature def has the sound sub-def and the thing a sound component, play "SE_CREATURE_CONTINUOUS" on the next of eight round-robin "VOICE<n>" channels
 // Leaf: ?PlayCreatureContinuousSounds@CThingCreatureBase
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00665F90, 246 bytes (+10 int3), `ret`.
 // Callees: CDefClassBase::GetSubDef<T>(CDefPointer<const T>*) @ 0x0065F604 (manifest names a propagated CAbilityDef
 //   instantiation; the sub-def type is not recovered), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (the
@@ -61,15 +62,7 @@ __declspec(noinline) bool CThingCreatureDef::GetSubDef(CDefPointer<CCreatureSoun
 #pragma auto_inline(on)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                      // a thing's sorted {type, component} vector map at +0x44
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCSoundPlayer { public:
     unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
@@ -81,7 +74,7 @@ class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad4c[0xe0 - 0x4c];
+    unsigned char _pad54[0x8c];
     CThingCreatureDef* PDef;                // +0xe0 CDefPointer<CThingCreatureDef const>::Object
     __forceinline unsigned long HasTC(long interfaceType) const
     {
@@ -91,8 +84,8 @@ class CThingCreatureBase { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (it == map->last || interfaceType < it->first ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
     void PlayCreatureContinuousSounds();
 };

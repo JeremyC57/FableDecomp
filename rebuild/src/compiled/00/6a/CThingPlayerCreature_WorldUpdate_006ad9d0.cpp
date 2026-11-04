@@ -1,5 +1,6 @@
 // CThingPlayerCreature::WorldUpdate() -- creature update plus the player extras: per-frame movement vector from the last position, look tracking, player control, animation, collision record reset and weapon trails
 // Leaf: WorldUpdate
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AD9D0, length 284 bytes.
 // Callees: CThingCreatureBase::UpdateAction @ 0x006643C0, CThingCreatureBase::WorldUpdate @ 0x006666A0 (called
 // non-virtually, result dropped), the last-position getter @ 0x006A4D10 and CThing::PeekPos() const @ 0x006A4D00
@@ -23,15 +24,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                      // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCLook {
 public:
@@ -52,7 +45,7 @@ public:
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                            // +0x20
     CInterfaceMap m_interfaces;                                // +0x44
-    unsigned char _pad4c[0x10c - 0x4c];
+    unsigned char _pad54[0xb8];
     C3DVector     MovementVector;                              // +0x10c
     unsigned char _pad118[0x15d - 0x118];
     unsigned char m_updateFlags;                               // +0x15d bit 1: last position valid
@@ -67,8 +60,8 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return ((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {

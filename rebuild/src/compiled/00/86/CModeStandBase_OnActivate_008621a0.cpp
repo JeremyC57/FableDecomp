@@ -1,5 +1,6 @@
 // CModeStandBase::OnActivate() -- base activate, look up the stand/slow-walk/walk/jog/run/sprint animations (stand falls back to DEFAULT, missing gaits to stand/run), refresh the player's movement speeds or measure the walk/jog/run speeds, then restart the animation when the creature is idle
 // Leaf: OnActivate
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Grade: RELOCATION_MATCH -- engine/CCountedPointer.h model plus the ternary GetInterface store (landed 0x007A0490 form), which fixes the zero-register choice around the ST_RUN/ST_SPRINT temporaries
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008621A0, 1504 bytes (virtual, `ret`).
 // Callees: CTCCreatureModeManager::CModeBase::OnActivate 0x0073AAC0, CModeBase::GetWorld 0x0073A680, the world's animation
@@ -34,12 +35,9 @@ using NAnimationEntryBodge::CAnimEntryLite;
 class CAnimateThing { public: void SetAsFinished(); };      // 0x0070BE80
 struct CTCAnimate { CAnimateThing* GetAnimateThing(); };   // 0x0070B460
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);              // 0x0040F020
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingCreatureBase { public:
     unsigned char _pad00[0x10];
     unsigned char ThingType;                           // +0x10 (2 player, 1 creature; descriptive)
@@ -51,8 +49,8 @@ class CThingCreatureBase { public:
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

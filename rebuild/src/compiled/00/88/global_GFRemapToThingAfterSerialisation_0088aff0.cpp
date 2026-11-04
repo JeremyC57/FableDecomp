@@ -1,5 +1,6 @@
 // GFRemapToThingAfterSerialisation(CIntelligentPointer<CThing>& pointer) -- after loading: when the pointed thing is a live placeholder carrying the interface-0xEB component, kill it and repoint at the thing with the UID that component recorded
 // Leaf: ?GFRemapToThingAfterSerialisation@@YIXAAV?$CIntelligentPointer@VCThing@@@@@Z
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088AFF0, length 193 bytes (+ int3 padding), `__fastcall` (pointer in
 //   ecx), plain `ret`.
 // Identity: Ego_r.pdb `?GFRemapToThingAfterSerialisation@@YIXAAV?$CIntelligentPointer@VCThing@@@@@Z`; callers 0x006C1712,
@@ -18,30 +19,9 @@
 //   stand-in).
 class CTCBase;
 
-struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 used bytes)
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
-};
-#pragma auto_inline(off)
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* lo = first;
-    long n = last - first;
-    while (n > 0) {
-        long half = n >> 1;
-        SEntry* mid = lo + half;
-        if (mid->type < *type) {
-            lo = mid + 1;
-            n -= half + 1;
-        } else {
-            n = half;
-        }
-    }
-    return lo;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct SThingUIDRemapComponent {                        // the interface-0xEB component (descriptive name)
     unsigned char    _pad00[0x10];
@@ -53,7 +33,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad4c[0x91 - 0x4C];
+    unsigned char _pad54[0x3d];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
     void Kill(bool immediately);                        // 0x004C9B80
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -61,10 +41,10 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

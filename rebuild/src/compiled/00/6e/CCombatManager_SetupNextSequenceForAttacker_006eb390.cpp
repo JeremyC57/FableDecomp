@@ -1,5 +1,6 @@
 // CCombatManager::SetupNextSequenceForAttacker(CCombatantInfo& info) -- reset the attacker's sequences, refuse an attacker whose primary-slot weapon does not fit (a ranged-weapon creature on the rotating ring needs a projectile weapon, a creature whose def demands it needs a melee weapon), pick the best sequence against the defender (CurrentSequence), and for a melee or break-into-melee sequence mark the attacker as the defender's last attacker and apply its combat block response (stopping if that ends its attack); any non-melee sequence then says its battle speech
 // Leaf: SetupNextSequenceForAttacker
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z; 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EB390, 622 bytes (624 with padding), `ret 4`.
 // Callees: CCombatManager::PerformSequenceReset 0x006EA2C0, the combatant map's find 0x006F0250, CCombatManager::
 //   IsCreatureOnRotatingCombatRing 0x006E9700 (catalogued "CCombatWheel_ValidateSequencePosition"; name as the landed
@@ -35,31 +36,9 @@ class CTCBase;
 class CBaseObject { public:};
 class CThing;
 
-struct CInterfaceMap {                                    // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                 // 0x0040F020
-    const SEntry* LowerBound(const long* type) const;     // 0x004365B0
-};
-#pragma auto_inline(off)
-// Same-TU body of the const LowerBound instantiation (0x004365B0): binary search for the first entry whose type is
-// not below the key. Only its visibility matters (frame packing of the inlined lookups).
-__declspec(noinline) const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    const SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CThingDef {
     virtual void v00();
@@ -95,7 +74,7 @@ class CThing : public CBaseObject { public:
     unsigned __int64 UniqueID;                            // +0x18
     unsigned long UsingComponents[9];                     // +0x20
     CInterfaceMap Components;                             // +0x44
-    unsigned char _pad4c[0x70 - 0x4c];
+    unsigned char _pad54[0x1c];
     CDefPointer<CCreatureDef> Def;                        // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                                // +0x91 bit 0: dead
@@ -106,16 +85,16 @@ class CThing : public CBaseObject { public:
     {
         long type = interfaceType;
         const CInterfaceMap* map = &Components;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+        const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

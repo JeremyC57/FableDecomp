@@ -1,6 +1,7 @@
 #pragma optimize("s", on)
 // CTCVillage::IsTimeToGoToSchool(CThingAICreature* child, const CWorld& world, bool run) -- true when the child's live school building is far enough away (capped) that, at its walk/run animation speed, it must set off now to arrive before its village's school start time
 // Leaf: ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065A8EE, 385 bytes (`leave ; ret 0Ch`); size TU (unaligned entry, ebp frame, argument
 //   slots reused for locals): `optimize("s", on)` as the landed CTCVillage siblings (0x0065AC0E, 0x00658ACB).
 // Identity: Ego_r.pdb + FableWin.pdb ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z.
@@ -51,29 +52,14 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 enum ETCInterfaceType { TCI_VILLAGE_MEMBER = 0x23 };   // descriptive enumerator name (value from GetInterfaceType)
-namespace std {
-template <class T1, class T2> struct pair { T1 first; T2 second; };
-template <unsigned int _Nb> class bitset {                   // STLport 4.6 <bitset>
-public:
-    bool test(unsigned int __pos) const;                     // 0x00410DE0 (bitset<274>, out of line in this size TU)
-    unsigned long _M_w[(_Nb + 31) / 32];
-};
-}
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char      _pad00[0x20];
     std::bitset<274>   UsingComponents;         // +0x20
     CInterfaceMap      Components;              // +0x44 (first/last; the rest of the 0x10-byte map unused here)
-    unsigned char      _pad4c[0x91 - 0x4c];
+    unsigned char      _pad54[0x3d];
     unsigned char      Dead : 1;                // +0x91 bit 0 (Ego_r.pdb CThing::Dead +0xA1)
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
     template <class T> __forceinline bool GetTC(T** out)
@@ -82,9 +68,9 @@ public:
         if (HasTC((ETCInterfaceType)type)) {
             ETCInterfaceType key = (ETCInterfaceType)type;
             CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->end() || type < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

@@ -1,5 +1,6 @@
 // CTCContainerRewardHero::CreateNewObject(long def, const C3DVector& position, const C3DVector& acceleration, const CCharString& scriptName) -- spawn a reward object popping out of the container: push it, give it a random spin, make it not solid to the container, copy the container's lighting, and optionally give it a 90-second life timer
 // Leaf: CreateNewObject
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail 0x0074E560, 336 bytes, `ret 10h`.
 // Callees: CThingObject::Create(long, const C3DVector&, long, const CRightHandedSet*, ulong, const CCharString&) 0x00703210
 // (static `__fastcall`, Ego_r.pdb), CTCPhysicsBase::ApplyAcceleration(const C3DVector&) 0x006B0210, CTCBase::PeekWorld() const 0x00686A80 and the world's
@@ -23,30 +24,9 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
-};
-#pragma auto_inline(off)
-// Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (a template member, compiled in the
-// caller's TU): binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CEnginePrimitiveThemeChannelDesc;
 struct CTCGraphicAppearance {
@@ -74,7 +54,7 @@ class CThing { public:
     unsigned char         _pad00[0x20];
     unsigned long         m_presentBits[9];             // +0x20
     CInterfaceMap         m_interfaces;                 // +0x44
-    unsigned char         _pad4c[0x60 - 0x4c];
+    unsigned char         _pad54[0xc];
     CTCPhysicsBase*       Physics;                      // +0x60
     CTCGraphicAppearance* Graphic;                      // +0x64
     unsigned char         _pad68[0x91 - 0x68];
@@ -85,8 +65,8 @@ class CThing { public:
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
+        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
 };
 class CThingObject : public CThing { public:

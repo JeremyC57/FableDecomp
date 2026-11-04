@@ -1,5 +1,6 @@
 // CThingPlayerCreature::vfunc_68(long animIndex, bool flag) -- vtable slot 68: start animIndex as the main animation (type 1, mode 1, percent 100) unless it is already the unfinished main animation; the animator's guard bit is held around SetMainAnim
 // Leaf: vfunc_68
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00663E90, length 175 bytes, `ret 8`; slot 68 of vtable 0x012457FC =
 //   CThingPlayerCreature (rtti-vtables.tsv; the slot's PDB name is not recovered).
 // Callees: CInterfaceMap::LowerBound @ 0x0040F020 (TC 0x5a = CTCAnimation), CTCAnimation::GetAnimation @ 0x0070B460,
@@ -13,15 +14,7 @@
 //   blend pair stored after the Set arguments).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CBlendPair {
@@ -86,8 +79,8 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
 };
 

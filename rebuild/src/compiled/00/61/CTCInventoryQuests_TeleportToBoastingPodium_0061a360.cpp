@@ -1,5 +1,6 @@
 // CTCInventoryQuests::TeleportToBoastingPodium() -- teleport the hero to the boasting podium through its inventory map
 // Leaf: ?TeleportToBoastingPodium@CTCInventoryQuests@@QAEXXZ
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0061A360, 76 bytes, thiscall, plain `ret`.
 // Identity (proven): Ego_r.pdb ?TeleportToBoastingPodium@CTCInventoryQuests@@QAEXXZ: the body sits in the CTCInventoryQuests TU (between GetContinuedCategoryRepeatDelay 0x0061A100 and DrawPreparePrimitivesForRendering 0x0061B3C0), fetches the hero's inventory map (interface 0x1B, as the landed CInputProcessInventoryMapScreen::Init) and calls the Ego_r.pdb const CTCInventoryMap::TeleportHeroToBoastingArea 0x005FB4B0; its caller (the front-end action handler 0x0041E6D3) reaches it through the hero's interface 0x19 component.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (the inline CThing::GetInterface, interface 0x1B),
@@ -14,15 +15,7 @@ public:
     void TeleportHeroToBoastingArea() const;                                   // 0x005FB4B0
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                 // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -34,9 +27,9 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

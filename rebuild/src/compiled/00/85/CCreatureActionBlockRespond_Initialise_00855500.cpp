@@ -1,5 +1,6 @@
 // CCreatureAction_BlockRespond::Initialise() -- pick the block-response animation from where the blow came from (hit position or the living target) relative to the creature's facing (front/back within 50 degrees, else left/right by the cross product), push the creature away from it, fall back to BLOCK_FRONT_RESPONSE facing the target, then run the block base Initialise and mark the final position preferred
 // Leaf: ?Initialise@CCreatureAction_BlockRespond@@UAEXXZ
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Shape: the first normalise is `direction *= FastInvSqrt(direction.GetLengthSquared())` with a plain-inline length method
 //   (right-nested X*X + (Y*Y + Z*Z)): operator*=(const float&) then spills the reciprocal and consumes the cached x/y
@@ -42,30 +43,9 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
     const CCharString& operator=(const char* text);          // 0x0099EFE0
 };
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
-};
-#pragma auto_inline(off)
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* lo = first;
-    long n = last - first;
-    while (n > 0) {
-        long half = n >> 1;
-        SEntry* mid = lo + half;
-        if (mid->type < *type) {
-            lo = mid + 1;
-            n -= half + 1;
-        } else {
-            n = half;
-        }
-    }
-    return lo;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
 class CTCPhysicsBase { public:                                 // interface 2
@@ -86,7 +66,7 @@ class CThing { public:
     unsigned char   _pad0[0x20];
     unsigned long   m_presentBits[9];                   // +0x20
     CInterfaceMap   m_interfaces;                       // +0x44
-    unsigned char   _pad4c[0x91 - 0x4c];
+    unsigned char   _pad54[0x3d];
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;               // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -94,10 +74,10 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

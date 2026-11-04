@@ -1,4 +1,5 @@
 // CTCDummyVillager::OnInitialActivate() -- relinks the home/work buildings and the creature from their saved UIDs, re-attaches the creature to its buildings and village, and recreates a dead villager when its day has come
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00730070, 752 bytes, `ret`.
 // Callees: CTCBase::GetThingManager() const @ 0x00686AE0, CThingManager::FindThingByUID(unsigned __int64) @ 0x0051ED80,
 //          CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10,
@@ -13,15 +14,7 @@
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);           // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing;
@@ -57,7 +50,7 @@ public:
     unsigned char _pad11[0x20 - 0x11];
     unsigned long PresentBits[9];                   // +0x20
     CInterfaceMap Interfaces;                       // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     void* PPositionData;                            // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char Flags91;                          // +0x91 (bit 0: being destroyed)
@@ -71,8 +64,8 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &Interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
-        CInterfaceMap::SEntry* end = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
     const C3DVector& GetPos() const;           // 0x004C73D0

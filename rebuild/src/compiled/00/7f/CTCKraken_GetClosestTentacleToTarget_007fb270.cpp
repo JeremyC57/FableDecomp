@@ -1,4 +1,5 @@
 // CTCKraken::GetClosestTentacleToTarget(list<CIntelligentPointer<CThing> >::iterator& closest) -- picks the live tentacle whose facing (kraken heading plus the tentacle's angle offset) is nearest the bearing from the kraken to its target, within one tentacle's share of a turn; true when one was found and its scripted-hook component is not in mode 0x54, otherwise the iterator is set to the end
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FB270, 554 bytes, `ret 4`. Speed TU (no pragmas, no frame pointer).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0, the physics TC slot 63 (+0xFC)
 //   GetFacingAngleXY, _CIfmod 0x00BFEB28, AngleDifference 0x00A441E0 (`__stdcall`), LowerBound 0x0040F020,
@@ -19,30 +20,9 @@ class C2DVector { public:
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) {}
 };
 class CTCBase;
-struct CInterfaceMap {                                // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);             // 0x0040F020
-};
-// same-TU stand-in for the interface-map LowerBound (VC7.1 then knows the entry is not derived from the key)
-#pragma auto_inline(off)
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* lo = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count >> 1;
-        SEntry* mid = lo + half;
-        if (mid->type < *type) {
-            lo = mid + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return lo;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CPhysicsTC {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -62,7 +42,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long PresentBits[9];                     // +0x20 bitset of interface types
     CInterfaceMap m_interfaces;                       // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CPhysicsTC*   PhysicsTC;                          // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char Flags91;                            // +0x91
@@ -73,8 +53,8 @@ public:
         if (HasTC(kind)) {
             long key = kind;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&key);
-            *out = (T*)((it == map->last || kind < it->type) ? map->last : it)->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
+            *out = (T*)((it == map->end() || kind < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;
@@ -83,10 +63,10 @@ public:
     {
         long key = kind;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        if (it == map->last || kind < it->type)
-            it = map->last;
-        return (T*)it->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
+        if (it == map->end() || kind < it->first)
+            it = map->end();
+        return (T*)it->second;
     }
 };
 class CBaseObject;

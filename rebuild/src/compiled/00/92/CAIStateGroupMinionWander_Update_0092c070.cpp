@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionWander::Update() -- wander loop: wander and idle; when the creature has strayed out of its wander circle (the scratchpad centre and max distance for state 4, else its start position and 10) walk back, then idle; repeat while DoNothing keeps running
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092C070, length 491 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0xAA = CTCAIScratchpad, bit 10 of +0x34),
 // CDefClassBase::GetSubDef<CCreatureNavigationDef> @ 0x006CD2F0 (on the creature's +0x70), CThing::GetPos @ 0x004C73D0
@@ -19,12 +20,9 @@ class C3DVector { public:
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CCreatureNavigationDef { public:
     virtual void v00();
@@ -54,7 +52,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x24];
+    unsigned char _pad54[0x1c];
     CDefClassBase* PhysicsTC;                   // +0x70
     const C3DVector& GetPos() const;       // 0x004C73D0
     unsigned char HasTC(long interfaceType) const { return (unsigned char)((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1); }
@@ -64,10 +62,10 @@ class CThing { public:
         if (present) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
         }
         return present != 0;
     }
@@ -109,12 +107,6 @@ class CAIStateGroupBase { public:
 
 #pragma auto_inline(off)
 long TmplSink(const void* self, long key);      // stand-in: the callee's own work (outside the graded bytes)
-// Same-TU stand-ins (template members compiled in the caller's TU): LowerBound reads the key through its pointer; GetSubDef
-// reads the old out pointer and writes the new one, like CDefPointer::operator=. Neither lets an argument escape.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    return (SEntry*)TmplSink(this, *type);
-}
 __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointerNav* out)
 {
     CCreatureNavigationDef* old = out->m_p;

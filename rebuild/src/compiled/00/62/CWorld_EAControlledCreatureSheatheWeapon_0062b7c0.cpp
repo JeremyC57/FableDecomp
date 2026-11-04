@@ -1,5 +1,6 @@
 // CWorld::EAControlledCreatureSheatheWeapon(const CGameEvent* event) -- unless the player is in mode 0x2F, have the event player's controlled creature sheathe the weapon in its primary carry slot, stop ranged aiming and leave ranged mode (0x22)
 // Leaf: ?EAControlledCreatureSheatheWeapon@CWorld@@QAEXPBVCGameEvent@@@Z
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0062B7C0, 280 bytes, `ret 4`.
 // Identity: Ego_r.pdb `?EAControlledCreatureSheatheWeapon@CWorld@@QAEXPBVCGameEvent@@@Z`; `this` is the CWorld (protected
 //   CWorld::GetPlayer(unsigned long) 0x0049D850 is called on it with the event's player byte, as in the landed siblings
@@ -33,41 +34,17 @@
 #include "engine/CGameEvent.h"
 extern "C" int __cdecl puts(const char* text);              // 0x00BFEAF2 (MSVCR71 import thunk)
 extern "C" __declspec(noreturn) void __cdecl abort(void);   // 0x00BFEAEC
-namespace std {
-template <unsigned int _Nb>
-class bitset {                                              // STLport 4.6 bitset<274>: 9 words, test() range-checked (no exceptions)
-public:
-    enum { _Words = (_Nb + 31) / 32 };
-    unsigned long _M_w[_Words];
-    static unsigned int _S_whichword(unsigned int __pos) { return __pos / 32; }
-    static unsigned int _S_whichbit(unsigned int __pos) { return __pos % 32; }
-    static unsigned long _S_maskbit(unsigned int __pos) { return 1UL << _S_whichbit(__pos); }
-    unsigned long _M_getword(unsigned int __pos) const { return _M_w[_S_whichword(__pos)]; }
-    bool _Unchecked_test(unsigned int __pos) const { return (_M_getword(__pos) & _S_maskbit(__pos)) != 0; }
-    bool test(unsigned int __pos) const
-    {
-        if (__pos >= _Nb) {
-            puts("bitset");
-            abort();
-        }
-        return _Unchecked_test(__pos);
-    }
-};
-}
+#include "engine/CVectorMap.h"
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayer;
 class CThing {
 public:
     unsigned char _pad00[0x20];
     std::bitset<274> UsingComponents;                       // +0x20 bitset<274>
     CInterfaceMap Components;                               // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                                 // +0x91 bit 0
     CPlayer& GetPlayer();                                   // 0x004C7A30
     __forceinline bool HasTC(long type) const
@@ -80,10 +57,10 @@ public:
     {
         long type = interfaceType;
         CInterfaceMap* map = &Components;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
-            it = map->last;
-        return (T*)it->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
+        return (T*)it->second;
     }
 };
 class CCreatureActionBase {

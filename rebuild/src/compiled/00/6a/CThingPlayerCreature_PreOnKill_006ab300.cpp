@@ -1,5 +1,6 @@
 // CThingPlayerCreature::PreOnKill() -- for the main player: use a resurrection item from the inventory when one is there, else open the quest-completion UI in "death" mode; either way the kill is vetoed
 // Leaf: PreOnKill
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AB300, length 302 bytes (+ int3 padding).
 // Callees: CThing::GetPlayer() const @ 0x004C7A30, CPlayer::IsMainPlayer @ 0x00487520, CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound @ 0x0040F020 (interfaces 0x11 = CTCInventoryBase, bit 17 of +0x20; 0xe1 = CTCResurrectionItem and
@@ -25,31 +26,9 @@ class CWideString { public:
     CWideString(const wchar_t* text);                          // 0x0099B6B0
     ~CWideString();                                            // 0x0099B510
 };
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                      // 0x0040F020
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for CVectorMap::LowerBound 0x0040F020 (its retail body: STLport lower_bound over the 8-byte
-// {type, component} entries): VC7.1 then knows the key's address does not escape.
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CPlayer {
 public:
@@ -61,7 +40,7 @@ public:
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                            // +0x20
     CInterfaceMap m_interfaces;                                // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                                    // +0x91 bit 0
     __forceinline bool HasTC(long interfaceType) const
     {
@@ -73,8 +52,8 @@ public:
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return ((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
 public:
     CPlayer& GetPlayer();   // 0x004C7A30

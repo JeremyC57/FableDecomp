@@ -1,5 +1,6 @@
 // CTCInventory::OnItemSelectedInHand(CThing& item, bool& handled) -- an item with a carried-action-use component (interface 0x0E) is used in hand by the owner unless the owner is busy with an action the component cannot be used during; an item without one makes a creature owner sheathe its held item back into the inventory
 // Leaf: ?OnItemSelectedInHand@CTCInventory@@UAEXAAVCThing@@AA_N@Z
+// Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0058400A, 156 bytes; frame-pointer size TU (`#pragma optimize("y", off)` +
 //   `optimize("s", on)`), `ret 8` (`handled` unused), no EH frame. Identity: both PDB name sets hold
 //   ?OnItemSelectedInHand@CTCInventory@@UAEXAAVCThing@@AA_N@Z (virtual; references, not pointers).
@@ -26,20 +27,10 @@
 #define CTCInventory CTCInventoryLayout
 #include "engine/CTCInventory.h"
 #undef CTCInventory
-namespace std {
-template <unsigned int _Nb> class bitset {
-public:
-    unsigned long _M_w[(_Nb + 31) / 32];
-    bool test(unsigned int __pos) const;                    // 0x00410DE0 (bitset<274>)
-};
-}
+#include "engine/CVectorMap.h"
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char ThingType;                                // +0x10 (2 = creature)
@@ -51,10 +42,10 @@ class CThing { public:
         if (UsingComponents.test(interfaceType)) {
             long type = interfaceType;
             CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *out = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *out = (T*)it->second;
             return true;
         }
         return false;

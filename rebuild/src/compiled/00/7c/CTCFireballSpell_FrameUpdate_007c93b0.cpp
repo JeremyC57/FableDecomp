@@ -2,6 +2,7 @@
 // once (attached to the fireball helper), run the level-up effects, drive the held state and remove the spell when finished
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007C93B0, 444 bytes (+ int3 padding), `ret` (vtable 0x0126E964 slot 9).
 // Leaf: ?FrameUpdate@CTCFireballSpell
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Callees: CWillButtonHelperTimer::FrameUpdate 0x008EDDD0, GetSubDef<CSpecialEffectsDef> 0x00669580, GetEffectFromString 0x00669D30,
 // GetPos 0x004C73D0, CreateParticleEffect 0x0072AB70, CBaseIntelligentPointer 0x00A01B10/B90/B50/C10, LowerBound 0x0040F020,
 // AttachToThing 0x006E0BE0, ProcessLevellingUpFX 0x007C8DE0, the held-state helper 0x007C9180, CThing::RemoveTC 0x004C9840.
@@ -62,30 +63,22 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];            // +0x20 UsingComponents
     CInterfaceMap  m_interfaces;                // +0x44
-    unsigned char  _pad4c[0x91 - 0x4c];
+    unsigned char  _pad54[0x3d];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)((CTCBase_Retail*)it->second);
             return true;
         }
@@ -98,8 +91,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(kind);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return ((CTCBase_Retail*)((it == map->last || kind < it->first) ? map->last : it)->second);
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        return ((CTCBase_Retail*)((it == map->end() || kind < it->first) ? map->end() : it)->second);
     }
 };
 class CThingCreatureBase : public CThing { public:
