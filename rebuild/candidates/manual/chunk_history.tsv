@@ -27212,3 +27212,15 @@ chunk	address	module	name	length
 768	0096dbc0	parked-retry	Initialise	331
 768	00bcfb00	parked-retry	RenderPrimitiveBlocksIndexBuffer	336
 768	00c3a7d0	parked-retry	AudioLib_ApplyGainEnvelope_00c3a7d0	273
+769	00862aa0	CModeStandBase	UpdateWalkingAnim	1056
+769	00c12940	_global	CTCHero_HandleCombatActions	912
+769	00c12e50	_global	Combat_ExecuteSequenceAction	741
+769	00c271f0	_global	CTCInventory_OnItemEquippedHelper	846
+769	00c38d60	_global	CTCActivationReceptorBase_HandleStateTransition	972
+769	00c3bf30	_global	CBankFile_ReadRemote	1063
+769	00c3f9d0	CTCHeroStats::CTCHeroStats	InitializeCombatEnvironment	848
+769	00c47f10	_global	CTCHeroStats_ProcessStateTransition	784
+769	00c4de00	_global	CAudioSoundBuffer_TransferPCMData	929
+769	00c54190	_global	Attribute_SetClamped	889
+769	00c6f3e0	_global	CAudioMixer_ProcessChannels_64bit	834
+769	00c89350	_global	Partition_ProcessAnimationData	850
