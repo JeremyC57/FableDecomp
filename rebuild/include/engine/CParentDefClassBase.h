@@ -40,7 +40,14 @@ class CDataOutputStream;
 #pragma pack(push, 1)
 class CParentDefClassBase : public CDefClassBase {
 public:
+#ifdef FABLE_RETAIL_DEF_CLASS_BASE_CTORS
+    // Opt-in (chunk 766, row 0x004304E0): the ctor is inline in retail. 0x00430370 is its out-of-line COMDAT (CResource ctor, the
+    // inline CDefClassBase defaults, InstantiationName -1 at +0x25, the CVectorMap zeroed at +0x29..+0x36); the implicit
+    // NUISystem::CUIMiscThingsDef ctor 0x004304E0 expands the same body with no CParentDefClassBase vtable store.
+    CParentDefClassBase() { }                                            // 0x00430370 (??0CParentDefClassBase@@QAE@XZ)
+#else
     CParentDefClassBase();                                               // 0x00430370 (??0CParentDefClassBase@@QAE@XZ)
+#endif
     CParentDefClassBase(const CParentDefClassBase&);                     // 0x0046EE98 (??0CParentDefClassBase@@QAE@ABV0@@Z)
     CParentDefClassBase& operator=(const CParentDefClassBase&);          // 0x00431ED0 (??4CParentDefClassBase@@QAEAAV0@ABV0@@Z)
 #ifndef FABLE_RETAIL_CPARENTDEFCLASSBASE

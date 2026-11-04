@@ -50,6 +50,16 @@ public:
     template <class T> bool GetSubDef(CDefPointer<const T>*) const;      // Ego_r ??$GetSubDef@V..@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBV..@@@@@Z
     bool AreDefaultValsApplied() const { return DefaultValsApplied; }    // FableWin.pdb ?AreDefaultValsApplied@CDefClassBase@@QBE_NXZ
     void SetDefaultValsApplied(bool value) { DefaultValsApplied = value; }   // FableWin.pdb ?SetDefaultValsApplied@CDefClassBase@@QAEX_N@Z
+#ifdef FABLE_RETAIL_DEF_CLASS_BASE_CTORS
+    // Opt-in (chunk 766, row 0x004304E0): FableWin.pdb ??0CDefClassBase@@AAE@XZ (private; Ego_r.pdb has no copy, so it is
+    // inline). Retail's inline body: the implicit ~NUISystem::CUIMiscThingsDef's partner ctor 0x004304E0 and the out-of-line
+    // CParentDefClassBase ctor 0x00430370 both store PDefManager 0 (+0x1c) and clear the three flag bits (`and cl,0F8h` at
+    // +0x24) right after CResource::CResource, with no CDefPointeeBase / CDefClassBase vtable store left.
+private:
+    friend class CParentDefClassBase;
+    CDefClassBase() : PDefManager(0), Setup(0), Template(0), DefaultValsApplied(0) { }
+public:
+#endif
     virtual ~CDefClassBase() { }                                         // slot 0  0x0042DAB0 (scalar deleting; the dtor is inline)
     virtual bool UnloadResource();                                       // slot 2  0x009ACE90
     virtual CDefString GetInstantiationName() const;                     // slot 10 0x0042DA10

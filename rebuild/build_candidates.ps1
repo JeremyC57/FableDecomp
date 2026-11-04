@@ -383488,6 +383488,58 @@ $catalog = @(
         TestSource = '00/6c/CTCHeroOpinionDeedLog_OnSerialise_006c7370_test.cpp'
         PassPattern = '006C7370_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004304e0'
+        Module = 'NUISystem::CUIMiscThingsDef'
+        Source = '00/43/NUISystemCUIMiscThingsDef_CUIMiscThingsDef_004304e0.cpp'
+        TestSource = '00/43/NUISystemCUIMiscThingsDef_CUIMiscThingsDef_004304e0_test.cpp'
+        PassPattern = '004304e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049124e'
+        Module = 'CSubtitleRenderer'
+        Source = '00/49/CSubtitleRenderer_GetActionNameFromEmbeddedTag_0049124e.cpp'
+        TestSource = '00/49/CSubtitleRenderer_GetActionNameFromEmbeddedTag_0049124e_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        PassPattern = '0049124e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1a9c0'
+        Module = 'PKCDefaultFileManager'
+        Source = '00/c1/PKCDefaultFileManager_AsyncReadThread_00c1a9c0.cpp'
+        TestSource = '00/c1/PKCDefaultFileManager_AsyncReadThread_00c1a9c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1a9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c30f60'
+        Module = '_global'
+        Source = '00/c3/global_ReadBankData_00c30f60.cpp'
+        TestSource = '00/c3/global_ReadBankData_00c30f60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c30f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c42b80'
+        Module = 'CUnprovenPtrList_00c42b50'
+        Source = '00/c4/CUnprovenPtrList00c42b50_RemoveAt_00c42b80.cpp'
+        TestSource = '00/c4/CUnprovenPtrList00c42b50_RemoveAt_00c42b80_test.cpp'
+        PassPattern = '00c42b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c47f00'
+        Module = 'CAIStateGroup_BirdFlyToFood_00c48300'
+        Source = '00/c4/CAIStateGroupBirdFlyToFood00c48300_Issue_00c47f00.cpp'
+        TestSource = '00/c4/CAIStateGroupBirdFlyToFood00c48300_Issue_00c47f00_test.cpp'
+        PassPattern = '00c47f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5a700'
+        Module = 'CCodaVoice'
+        Source = '00/c5/CCodaVoice_UpdatePitchEnvelopeStages_00c5a700.cpp'
+        TestSource = '00/c5/CCodaVoice_UpdatePitchEnvelopeStages_00c5a700_test.cpp'
+        PassPattern = '00c5a700_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

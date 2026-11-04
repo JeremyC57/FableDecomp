@@ -1,0 +1,27 @@
+address	name	status	attempts	note
+004304e0	NUISystem::CUIMiscThingsDef::CUIMiscThingsDef	RELOCATION_MATCH	3	src/004304e0.cpp; overlays CDefClassBase/CParentDefClassBase/CVectorMap
+00c42b80	CUnprovenPtrList_00c42b50::RemoveAt	RELOCATION_MATCH	1	src/00c42b80.cpp; descriptive
+00c47f00	CAIStateGroup_BirdFlyToFood_00c48300::Issue	RELOCATION_MATCH	1	src/00c47f00.cpp; descriptive (landed spelling)
+00c1a9c0	PKCDefaultFileManager::AsyncReadThread	RELOCATION_MATCH	8	src/00c1a9c0.cpp; do/while quit flag
+004199c0	(mid-function of 0x00419880)	PARKED	0	catalog bounds error: MIDSTART inside 0x00419880 (BOUNDS_FIX.tsv)
+00c30f60	ReadBankData	RELOCATION_MATCH	5	src/00c30f60.cpp
+00c74850	CEffectFilter::SetShelves (descriptive)	PARKED	10	DIFFER(588v593) best: (float)sampleRate CSE spills to a frame slot across the if/else join, retail keeps it on the x87 stack; a double conversion keeps it but uses the qword 2^32 fix
+00c5a700	CCodaVoice::UpdatePitchEnvelopeStages (descriptive)	RELOCATION_MATCH	1	src/00c5a700.cpp
+00c77800	CEffectPart260::Stage_00c77800	PARKED	12	DIFFER(725v725) best v8: uniform eax/ecx/edx rotation in the SetShelves argument setup (55 lines); AirDecay overlaps AllPass[1]+0x30 (union)
+00c5ca60	CSoftwareVoice::ApplyParameters (descriptive)	PARKED	10	DIFFER(831v858) best ca_v6: changed enregistered in ebx (retail: argument slot, buffer in ebx), no shrink-wrapped edi/ebp regions; same-TU MillibelsToAmplitude stand-in needs an observable store to keep the speaker-first call order
+0049124e	CSubtitleRenderer::GetActionNameFromEmbeddedTag	RELOCATION_MATCH	5	src/0049124e.cpp; inline StartsWith/EndsWith, one trailing return false
+00627be0	CTCQuickAccessMenu::GetExpressionsListUI	PARKED	10	DIFFER(1048v1056) best v10: this/zero register swap (ebp/ebx), result kept in memory by retail with the alignment/stealth starts in esi/edi; same-TU GetDef/GetSubDef stand-ins and a noinline push_back reached the loop shape
+00c1a510	PKCDefaultFileManager::OpenFile (descriptive)	PARKED	10	DIFFER(850v850) best v5: esi/edi swap of this vs file name/record, record store order (count before handle); a named Insert result gives the cmp-with-zero-register
+00c16f00	ReadDeferredBank (descriptive)	PARKED	10	DIFFER(848v857) best v1: scratch-register rotation from the first Read, table in ebx instead of a late-pushed ebp, so one error tail is merged (9 bytes)
+00862aa0	CModeStandBase::UpdateWalkingAnim	NOT_ATTEMPTED	0	out of session time; triaged only (see NOTES.md)
+00c12940	(catalog CTCHero_HandleCombatActions, libpk sound-event code)	NOT_ATTEMPTED	0	out of session time; triaged only (see NOTES.md)
+00c12e50	(catalog Combat_ExecuteSequenceAction, libpk CSoundEventManager)	NOT_ATTEMPTED	0	out of session time; triaged only (see NOTES.md)
+00c271f0	(catalog CTCInventory_OnItemEquippedHelper, libpk)	NOT_ATTEMPTED	0	out of session time; triaged only (see NOTES.md)
+00c38d60	(catalog CTCActivationReceptorBase_HandleStateTransition, libpk CInstance.cpp)	NOT_ATTEMPTED	0	out of session time; triaged only (see NOTES.md)
+00c3bf30	(catalog CBankFile_ReadRemote, libpk PKCFile.cpp)	NOT_ATTEMPTED	0	out of session time; triaged only (see NOTES.md)
+00c3f9d0	(catalog InitializeCombatEnvironment, libpk mixer setup)	NOT_ATTEMPTED	0	out of session time; triaged only (see NOTES.md)
+00c47f10	(catalog CTCHeroStats_ProcessStateTransition, libpk)	NOT_ATTEMPTED	0	out of session time; triaged only (see NOTES.md)
+00c4de00	(catalog CAudioSoundBuffer_TransferPCMData, libpk OpenAL buffer upload)	NOT_ATTEMPTED	0	out of session time; triaged only (see NOTES.md)
+00c54190	(catalog Attribute_SetClamped, libpk 3D source property set)	NOT_ATTEMPTED	0	out of session time; triaged only (see NOTES.md)
+00c6f3e0	(catalog CAudioMixer_ProcessChannels_64bit, libpk mixer)	NOT_ATTEMPTED	0	out of session time; triaged only (see NOTES.md)
+00c89350	(catalog Partition_ProcessAnimationData, libpk reverb crossfade)	NOT_ATTEMPTED	0	out of session time; triaged only (see NOTES.md)

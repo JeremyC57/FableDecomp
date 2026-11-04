@@ -14,6 +14,11 @@ public:
     typedef std::pair<K,V> value_type;
     typedef value_type* iterator;
     typedef const value_type* const_iterator;
+#ifdef FABLE_RETAIL_CVECTORMAP_CTOR
+    // Opt-in (chunk 766, row 0x004304E0): FableWin.pdb ??0?$CVectorMap@...@@QAE@XZ (82 instances; Ego_r inlines it). Retail's
+    // body clears the Dirty byte after the vector's three zero words (CParentDefClassBase ctor 0x00430370 `mov [esi+36h],al`).
+    CVectorMap() : Dirty(false) { }
+#endif
     iterator LowerBound(const K&);
     const_iterator LowerBound(const K&) const;
 #ifdef FABLE_RETAIL_CVECTORMAP_UPPERBOUND

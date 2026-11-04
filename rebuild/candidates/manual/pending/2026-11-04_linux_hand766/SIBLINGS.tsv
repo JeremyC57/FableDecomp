@@ -1,0 +1,4 @@
+header	landed_includers	recheck
+engine/CDefClassBase.h	280	not needed: new opt-in macro FABLE_RETAIL_DEF_CLASS_BASE_CTORS (no landed file defines it); hdrcheck2 default=same and every existing macro =same
+engine/CParentDefClassBase.h	307	not needed: same macro, behind #ifdef; hdrcheck2 default=same, all existing macros =same
+engine/CVectorMap.h	16	not needed: new opt-in macro FABLE_RETAIL_CVECTORMAP_CTOR (no landed file defines it); hdrcheck2 default=same, all existing macros =same

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0047756c   RELOCATION_MATCH PASS   CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef
+  WARN leaf 'operator=' matches no symbol in 00477964.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 00477964.obj; graded the largest function
+00477964   RELOCATION_MATCH PASS   operator=
+
+WINS: 2
+  0047756c RELOCATION_MATCH CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef
+  00477964 RELOCATION_MATCH CEngineLocalDetailObjectDef::operator=

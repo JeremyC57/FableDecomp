@@ -1,0 +1,6 @@
+catalog  004304e0 CUIMiscThingsDef::CUIMiscThingsDef -> ??0CUIMiscThingsDef@NUISystem@@QAE@XZ
+catalog  0049124e _global::GetActionNameFromEmbeddedTag -> ?GetActionNameFromEmbeddedTag@CSubtitleRenderer@@CI_NABVCWideString@@AAV2@@Z
+manifest 004304e0 CUIMiscThingsDef::CUIMiscThingsDef -> _global::??0CUIMiscThingsDef@NUISystem@@QAE@XZ
+manifest 0049124e _global::GetActionNameFromEmbeddedTag -> _global::?GetActionNameFromEmbeddedTag@CSubtitleRenderer@@CI_NABVCWideString@@AAV2@@Z
+manifest 00627be0 CTCQuickAccessMenu::GetExpressionsListUI -> _global::?GetExpressionsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z
+labels 3  catalog renamed 2  manifest renamed 3

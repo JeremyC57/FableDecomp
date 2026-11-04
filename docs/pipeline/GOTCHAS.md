@@ -2020,3 +2020,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A save/load row that lays the load branch first wants the inline `IsSaving()`, not `Mode==1||Mode==3` (chunk 764).
 - An STLport range copy into a vector is the inline `std::copy` calling fastcall `__copy(first, last, back_insert_iterator, const input_iterator_tag&, int*)` (chunk 764).
 - `!IsDead()` gives `test byte`; `IsAlive()` gives not/test (chunk 764).
+- A uniform eax/ecx/edx rotation over the rest of a function means one IR temporary more or fewer earlier; scheduling, counter types and named locals do not move it (chunk 766).
+- In size-optimised TUs, inline CCharString StartsWith/EndsWith must be `__forceinline` or VC7.1 calls them out of line (chunk 766).
+- A template stand-in body under `auto_inline(off)` is still inlined; mark it `__declspec(noinline)` (chunk 766).

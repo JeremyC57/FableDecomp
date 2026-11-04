@@ -1155,7 +1155,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00430470	GetSizeofClass	CControlsDef	__thiscall	ulong	1	CControlsDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CControlsDef_GetSizeofClass_00430470.cpp
 00430480	`scalar_deleting_destructor'	CControlsDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CLandscapeBackgroundPatch_vectordeletingdestructor_00430480.cpp
 004304a0	~CControlsDef	CControlsDef	__thiscall	void	1	CCompressedMemoryDataInputStream *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_004304a0.cpp
-004304e0	CUIMiscThingsDef	CUIMiscThingsDef	__thiscall	undefined	1	CUIMiscThingsDef *	0	yes	accepted									
+004304e0	??0CUIMiscThingsDef@NUISystem@@QAE@XZ	_global	__thiscall	undefined	1	CUIMiscThingsDef *	0	yes	accepted									
 004308f0	GetSizeofClass	NUISystem::CUIMiscThingsDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00430900	Transfer	NUISystem::CUIMiscThingsDef	__fastcall	void	0		1	yes	accepted									
 00431020	Transfer<unsigned long>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CEngineLightingManager_UpdateShadowScene_00431020.cpp
@@ -4109,7 +4109,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00490927	IsAllowedToSetText	CSubtitleRenderer	__thiscall	bool	2	CSubtitleRenderer *,bool	1	yes	accepted									
 00490a22	IsInInteractiveState	CSubtitleRenderer	__thiscall	bool	1	CSubtitleRenderer *	1	yes	accepted									
 00490be0	ProcessEmbeddedGraphicTags_ResolveButtonName	_global	unknown	undefined	0		0	yes	accepted									
-0049124e	GetActionNameFromEmbeddedTag	_global	__fastcall	bool	2	CWideString *,CWideString *	1	yes	accepted									
+0049124e	?GetActionNameFromEmbeddedTag@CSubtitleRenderer@@CI_NABVCWideString@@AAV2@@Z	_global	__fastcall	bool	2	CWideString *,CWideString *	1	yes	accepted									
 0049166e	CSubtitleRenderer	CSubtitleRenderer	__thiscall	undefined	2	CSubtitleRenderer *,CGraphicDataBank *	0	yes	accepted									
 004917b5	FormatTextWithGameActionNames	CSubtitleRenderer	__fastcall	CWideString	2	CWideString *,vector<CWideString,std::allocator<CWideString>_> *	1	yes	accepted									
 00491ad2	ProcessEmbeddedHighlightTags	CSubtitleRenderer	__thiscall	void	1	CSubtitleRenderer *	1	yes	accepted									
@@ -13213,7 +13213,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00626e40	ConstructItemCategoryList	CTCQuickAccessMenu	unknown	undefined	0		0	yes	accepted									
 00627400	ConstructExpressionCategoryList	CTCQuickAccessMenu	__thiscall	void	5	CTCQuickAccessMenu *,CWideString *,CList *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *,CComponent *	1	yes	accepted									
 006276f0	GetItemsListUI	CTCQuickAccessMenu	__thiscall	CComponent *	3	CTCQuickAccessMenu *,long *,CComponent *	1	yes	accepted									
-00627be0	GetExpressionsListUI	CTCQuickAccessMenu	__thiscall	CComponent *	3	CTCQuickAccessMenu *,long *,CComponent *	1	yes	accepted									
+00627be0	?GetExpressionsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z	_global	__thiscall	CComponent *	3	CTCQuickAccessMenu *,long *,CComponent *	1	yes	accepted									
 00628000	Activate	CTCQuickAccessMenu	__thiscall	void	1	CTCQuickAccessMenu *	1	yes	accepted									
 006285e0	GetInterfaceType	CTCQuickAccessMenu	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006285f0	GetClassTypeName	CTCQuickAccessMenu	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CActionDoCreatureAction_GetActionName_006285f0.cpp
@@ -46271,7 +46271,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c42ac0	GetMember_dword0x8_00c42ac0	_global	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\global_DrawGetEnvironment_00c42ac0.cpp
 00c42ad0	~CPtrArray	CPtrArray<CTableEntry *>	unknown	undefined	0		0	yes	accepted									
 00c42b50	Add	CUnprovenPtrList_00c42b50	__thiscall	vector<CActionInputControl,std::allocator<CActionInputControl>_> *	1	CUserProfileManager *	1	yes	accepted									
-00c42b80	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
+00c42b80	RemoveAt	CUnprovenPtrList_00c42b50	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 00c42c30	Pow10_00c42c30	_global	unknown	undefined	0		0	yes	accepted									
 00c42c90	MillibelsToAmplitude_00c42c90	_global	unknown	undefined	0		0			discovered	gapscan							
 00c42d60	CAIStateGroup_CreatureUseCoverBase_00c42d60	_unattributed	__thiscall	undefined	1	CIcicleData *	0	yes	accepted									
@@ -46536,7 +46536,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c47ed0	GetAnimFilter	NCreatureMode::CModeBlock	__thiscall	CAnimFilterBase *	1	CModeBlock *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\GetAnimFilter_GetAnimFilter_00c47ed0.cpp
 00c47ee0	GetAnimFilter	NCreatureMode::CModeBlock	__thiscall	CAnimFilterBase *	1	CModeBlock *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\GetAnimFilter_GetAnimFilter_00c47ee0.cpp
 00c47ef0	GetAnimFilter	NCreatureMode::CModeBlock	__thiscall	CAnimFilterBase *	1	CModeBlock *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\GetAnimFilter_GetAnimFilter_00c47ef0.cpp
-00c47f00	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
+00c47f00	Issue	CAIStateGroup_BirdFlyToFood_00c48300	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 00c47f10	CTCHeroStats_ProcessStateTransition	_global	unknown	undefined	0		0	yes	accepted									
 00c48220	~CVtable_012b8034	CVtable_012b8034	__thiscall	void	1	CAIStateGroup_CreatureUseCoverBase *	1	yes	accepted									
 00c48290	~CAInputProcess_00c48290	_unattributed	__thiscall	void	1	CAInputProcess *	1	yes	accepted									

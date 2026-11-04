@@ -1,0 +1,45 @@
+addr       parity           behav  name
+004304e0   RELOCATION_MATCH PASS   CUIMiscThingsDef
+0049124e   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+0049124e   WARN SHARED_HEADER_AVAILABLE CRGBColour
+0049124e   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+0049124e   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0049124e   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+0049124e   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0049124e   RELOCATION_MATCH PASS   GetActionNameFromEmbeddedTag
+00c1a9c0   WARN SHARED_HEADER_AVAILABLE CString
+00c1a9c0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c1a9c0   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c1a9c0   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c1a9c0   WARN RELOC_NAME: ??6CString@@QAIAAV0@I@Z -> 00c0def0 labelled 'CString::operator<<(unsigned int)'
+00c1a9c0   RELOCATION_MATCH PASS   AsyncReadThread
+00c30f60   WARN SHARED_HEADER_AVAILABLE CString
+00c30f60   WARN RELOC_NAME: ??0CSegmentFile@@QAE@PAXK@Z -> 00c2da20 labelled 'CLiOnHeAdSegmentReader::CLiOnHeAdSegmentReader'
+00c30f60   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c30f60   WARN RELOC_NAME: ??1CSegmentFile@@QAE@XZ -> 00c2dbe0 labelled '_global::TeleportData_Destructor_WithUnwind'
+00c30f60   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c30f60   WARN RELOC_NAME: ?GetPosition@CSegmentFile@@QAEKXZ -> 00c2da10 labelled 'CGameScriptThing::GetPThingUniqueID'
+00c30f60   WARN RELOC_NAME: ??0AudioBankTableReader_00c3bb50@@QAE@PAUCSegmentFile@@@Z -> 00c3bb40 labelled '__EH_epilog3'
+00c30f60   RELOCATION_MATCH PASS   ReadBankData
+00c42b80   RELOCATION_MATCH PASS   RemoveAt
+00c47f00   RELOCATION_MATCH PASS   Issue
+00c5a700   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00c5a700   RELOCATION_MATCH PASS   UpdatePitchEnvelopeStages
+
+WINS: 7
+  004304e0 RELOCATION_MATCH NUISystem::CUIMiscThingsDef::??0CUIMiscThingsDef@NUISystem@@QAE@XZ
+  0049124e RELOCATION_MATCH CSubtitleRenderer::?GetActionNameFromEmbeddedTag@CSubtitleRenderer@@CI_NABVCWideString@@AAV2@@Z
+  00c1a9c0 RELOCATION_MATCH PKCDefaultFileManager::?AsyncReadThread@PKCDefaultFileManager@@QAEXXZ
+  00c30f60 RELOCATION_MATCH _global::?ReadBankData@@YIXPAXPAVCBankData@@KPAVCLoadLog@@@Z
+  00c42b80 RELOCATION_MATCH CUnprovenPtrList_00c42b50::?RemoveAt@CUnprovenPtrList_00c42b50@@QAEXK@Z
+  00c47f00 RELOCATION_MATCH CAIStateGroup_BirdFlyToFood_00c48300::?Issue@CAIStateGroup_BirdFlyToFood_00c48300@@QAEXPAUSActionRequest_00c48300@@@Z
+  00c5a700 RELOCATION_MATCH CCodaVoice::?UpdatePitchEnvelopeStages@CCodaVoice@@QAE_NPBUSPitchEnvelopeParams@@_N@Z
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  NUISystemCUIMiscThingsDef_CUIMiscThingsDef_004304e0
+  CSubtitleRenderer_GetActionNameFromEmbeddedTag_0049124e
+  PKCDefaultFileManager_AsyncReadThread_00c1a9c0
+  global_ReadBankData_00c30f60
+  CUnprovenPtrList00c42b50_RemoveAt_00c42b80
+  CAIStateGroupBirdFlyToFood00c48300_Issue_00c47f00
+  CCodaVoice_UpdatePitchEnvelopeStages_00c5a700
