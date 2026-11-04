@@ -8,12 +8,45 @@
 // ?IsPlaying@CMovie@NUISystem@@UAE_NXZ slot 143 (retail vtable 0x0124881C: slot 142 = 0x00548510, 143 = 0x00548520, the
 // table ends there; same order as Ego_r 0x005C20E0 / 0x005C20F0).
 #include "engine/NUISystem_CChangingStateComponent.h"
+#ifdef FABLE_RETAIL_CMOVIE_MEMBERS
+#include "engine/CEnginePrimitiveHandle.h"
+class CIEngine;
+class CXMVPlaybackInfo {                                             // Ego_r.pdb CXMVPlaybackInfo (24 bytes); only its out-of-line ctor
+public:
+    CXMVPlaybackInfo();                                              // 0x009BC7D0 ??0CXMVPlaybackInfo@@QAE@XZ
+    unsigned char _body[0x18];
+};
+#endif
 namespace NUISystem {
 class CMovie : public CChangingStateComponent {
 public:
     virtual void SetMovie(CWideString&);                             // slot 142
     virtual bool IsPlaying();                                        // slot 143
+#ifdef FABLE_RETAIL_CMOVIE_MEMBERS
+    // Nested opt-in (chunk 765, rows 0x00548510 SetMovie and the adjustor thunks 0x00548530 / 0x00548540): the Ego_r.pdb members
+    // (struct_layouts_egor.tsv, 456 bytes) 0x30 lower in retail, as the constructor 0x005482D0 builds them: Playing +0x15C (cleared),
+    // Handle +0x160 (CBaseClass ctor + vptr 0x0122F598, PEngineObject cleared), Width +0x168, Height +0x16C, PositionIsCenter +0x170,
+    // Movie +0x174 (??0CWideString@@QAE@XZ 0x0099AED0; SetMovie assigns it), Playback +0x178 (??0CXMVPlaybackInfo@@QAE@XZ 0x009BC7D0,
+    // 24 bytes), Angle +0x190, AttempToPlay +0x194 (cleared); then the static engine ?PEngine@CMovie@NUISystem@@2PAVCIEngine@@A
+    // 0x013B8AB8 and GetDataFromDef 0x00547C10. Name set: ??0CMovie@NUISystem@@QAE@AAVCIEngine@@J@Z, ??0..QAE@ABV01@@Z, ??1..UAE@XZ.
+    CMovie(CIEngine& engine, long def);                              // 0x005482D0
+    CMovie(const CMovie&);                                           // 0x00548350
+    virtual ~CMovie();                                               // 0x005483C0
+    void GetDataFromDef();                                           // 0x00547C10
+    static CIEngine* PEngine;                                        // 0x013B8AB8
+protected:
+    bool Playing;                                                    // +0x15c
+    CEnginePrimitiveHandle Handle;                                   // +0x160
+    unsigned long Width;                                             // +0x168
+    unsigned long Height;                                            // +0x16c
+    bool PositionIsCenter;                                           // +0x170
+    CWideString Movie;                                               // +0x174
+    CXMVPlaybackInfo Playback;                                       // +0x178
+    float Angle;                                                     // +0x190
+    bool AttempToPlay;                                               // +0x194
+#else
     unsigned char _pad_0x15c[0x198 - 0x15c];                         // +0x15c CMovie members (generated layout below)
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NUISystem::CMovie) == 0x198);

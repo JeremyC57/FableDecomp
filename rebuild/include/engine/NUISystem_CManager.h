@@ -76,6 +76,11 @@ public: virtual unsigned long PlaySample(CCharString &,long);
 public: virtual CDefPointer<NUISystem::CUIMiscThingsDef> GetMiscThingsDef();
 public: virtual CDefPointer<NUISystem::CUIIconsDef> GetIconsDef();
 public: virtual void AddActionsListenIgnoreOnList(NUISystem::CComponent *,NUISystem::CComponent *,NUISystem::CComponent *,NUISystem::EEvent);
+#ifdef FABLE_RETAIL_CMANAGER_MOUSECURSOR
+// Opt-in (chunk 765, rows 0x0055C8B0 / 0x0055C8C0 CMouseCursor adjustor thunks): Ego_r.pdb ?SetMouseCursor@CManager@NUISystem@@QAEXPAVCComponent@2@@Z,
+// inline in retail (~CMouseCursor 0x0055C510 and CMouseCursor(long) 0x0055C650 store PMouseCursor +0xB8 in place). No layout change.
+public: void SetMouseCursor(NUISystem::CComponent* cursor) { PMouseCursor = cursor; }
+#endif
 protected: CCountedPointer<CGraphicDataBank> PGraphicsBank;
 protected: CCountedPointer<CMeshDataBank> PMeshBank;
 protected: CInputManager * PInputManager;

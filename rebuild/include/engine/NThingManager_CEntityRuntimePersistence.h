@@ -25,6 +25,11 @@ public:
         unsigned long SectionNameCRC;
     };
     void SaveToGameStateBinary(CPersistContext&);
+#ifdef FABLE_RETAIL_CENTITYRUNTIMEPERSISTENCE_CLEAR
+    // Opt-in (chunk 765, row 0x00520C70 CThingManager::ClearPersistenceDataForSection): Ego_r.pdb / FableWin.pdb
+    // ?ClearPersistenceDataForSection@CEntityRuntimePersistence@NThingManager@@QAEXABVCCharString@@@Z, out of line at 0x00520390.
+    void ClearPersistenceDataForSection(const CCharString& section);   // 0x00520390
+#endif
     void LoadFromGameStateBinary(CPersistContext&);
     bool GetGamePersistentSaveData(long,CArray<unsigned char>&) const; // 0x00522530 (Ego_r 0x005297A0, FableWin 0x01D437D0)
     void SetGamePersistentSaveData(long,const void*,unsigned long);   // PDB: QAEXJPBXK

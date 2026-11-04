@@ -382865,6 +382865,573 @@ $catalog = @(
         TestSource = '00/cb/stdvectorstdpairunsignedint64NScriptCRuntimeScriptedEntityPersistCPersistInfo_Minsertoverflow_00cbc130_test.cpp'
         PassPattern = '00cbc130_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0043e420'
+        Module = 'NPlayerGui::CDrawBase'
+        Source = '00/43/NPlayerGuiCDrawBase_vcall0_0043e420.cpp'
+        TestSource = '00/43/NPlayerGuiCDrawBase_vcall0_0043e420_test.cpp'
+        PassPattern = '0043e420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ae8a0'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_vectordeletingdestructor_004ae8a0.cpp'
+        TestSource = '00/4a/CWorld_vectordeletingdestructor_004ae8a0_test.cpp'
+        PassPattern = '004ae8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7a50'
+        Module = 'CThing'
+        Source = '00/4c/CThing_GetThingSearchTools_004c7a50.cpp'
+        TestSource = '00/4c/CThing_GetThingSearchTools_004c7a50_test.cpp'
+        PassPattern = '004c7a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7a60'
+        Module = 'CThing'
+        Source = '00/4c/CThing_PeekThingSearchTools_004c7a60.cpp'
+        TestSource = '00/4c/CThing_PeekThingSearchTools_004c7a60_test.cpp'
+        PassPattern = '004c7a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7bc0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_CheckUID_004c7bc0.cpp'
+        TestSource = '00/4c/CThing_CheckUID_004c7bc0_test.cpp'
+        PassPattern = '004c7bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00520c70'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_ClearPersistenceDataForSection_00520c70.cpp'
+        TestSource = '00/52/CThingManager_ClearPersistenceDataForSection_00520c70_test.cpp'
+        PassPattern = '00520c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00529930'
+        Module = 'CThingGameObject'
+        Source = '00/52/CThingGameObject_GetThingStandingOn_00529930.cpp'
+        TestSource = '00/52/CThingGameObject_GetThingStandingOn_00529930_test.cpp'
+        PassPattern = '00529930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052d700'
+        Module = 'NUISystem::CChangingStateComponent'
+        Source = '00/52/NUISystemCChangingStateComponent_vectordeletingdestructor_0052d700.cpp'
+        TestSource = '00/52/NUISystemCChangingStateComponent_vectordeletingdestructor_0052d700_test.cpp'
+        PassPattern = '0052d700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052f1a0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_IsPositionIndependent_0052f1a0.cpp'
+        TestSource = '00/52/NUISystemCComponent_IsPositionIndependent_0052f1a0_test.cpp'
+        PassPattern = '0052f1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00535ab0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_vectordeletingdestructor_00535ab0.cpp'
+        TestSource = '00/53/NUISystemCComponent_vectordeletingdestructor_00535ab0_test.cpp'
+        PassPattern = '00535ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00535ac0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_vectordeletingdestructor_00535ac0.cpp'
+        TestSource = '00/53/NUISystemCComponent_vectordeletingdestructor_00535ac0_test.cpp'
+        PassPattern = '00535ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053e8c0'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_vectordeletingdestructor_0053e8c0.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_vectordeletingdestructor_0053e8c0_test.cpp'
+        PassPattern = '0053e8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053e8d0'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_vectordeletingdestructor_0053e8d0.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_vectordeletingdestructor_0053e8d0_test.cpp'
+        PassPattern = '0053e8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00541850'
+        Module = 'NUISystem::CDynamicList'
+        Source = '00/54/NUISystemCDynamicList_vectordeletingdestructor_00541850.cpp'
+        TestSource = '00/54/NUISystemCDynamicList_vectordeletingdestructor_00541850_test.cpp'
+        PassPattern = '00541850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00541860'
+        Module = 'NUISystem::CDynamicList'
+        Source = '00/54/NUISystemCDynamicList_vectordeletingdestructor_00541860.cpp'
+        TestSource = '00/54/NUISystemCDynamicList_vectordeletingdestructor_00541860_test.cpp'
+        PassPattern = '00541860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00544090'
+        Module = 'NUISystem::CParticleEffect'
+        Source = '00/54/NUISystemCParticleEffect_vectordeletingdestructor_00544090.cpp'
+        TestSource = '00/54/NUISystemCParticleEffect_vectordeletingdestructor_00544090_test.cpp'
+        PassPattern = '00544090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005440a0'
+        Module = 'NUISystem::CParticleEffect'
+        Source = '00/54/NUISystemCParticleEffect_vectordeletingdestructor_005440a0.cpp'
+        TestSource = '00/54/NUISystemCParticleEffect_vectordeletingdestructor_005440a0_test.cpp'
+        PassPattern = '005440a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00546080'
+        Module = 'NUISystem::CSpellContainer'
+        Source = '00/54/NUISystemCSpellContainer_vectordeletingdestructor_00546080.cpp'
+        TestSource = '00/54/NUISystemCSpellContainer_vectordeletingdestructor_00546080_test.cpp'
+        PassPattern = '00546080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00546090'
+        Module = 'NUISystem::CSpellContainer'
+        Source = '00/54/NUISystemCSpellContainer_vectordeletingdestructor_00546090.cpp'
+        TestSource = '00/54/NUISystemCSpellContainer_vectordeletingdestructor_00546090_test.cpp'
+        PassPattern = '00546090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005465b0'
+        Module = 'NUISystem::CComponentContainer'
+        Source = '00/54/NUISystemCComponentContainer_vectordeletingdestructor_005465b0.cpp'
+        TestSource = '00/54/NUISystemCComponentContainer_vectordeletingdestructor_005465b0_test.cpp'
+        PassPattern = '005465b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005465c0'
+        Module = 'NUISystem::CComponentContainer'
+        Source = '00/54/NUISystemCComponentContainer_vectordeletingdestructor_005465c0.cpp'
+        TestSource = '00/54/NUISystemCComponentContainer_vectordeletingdestructor_005465c0_test.cpp'
+        PassPattern = '005465c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00546c00'
+        Module = 'NUISystem::CZoomingComponent'
+        Source = '00/54/NUISystemCZoomingComponent_vectordeletingdestructor_00546c00.cpp'
+        TestSource = '00/54/NUISystemCZoomingComponent_vectordeletingdestructor_00546c00_test.cpp'
+        PassPattern = '00546c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00546c10'
+        Module = 'NUISystem::CZoomingComponent'
+        Source = '00/54/NUISystemCZoomingComponent_vectordeletingdestructor_00546c10.cpp'
+        TestSource = '00/54/NUISystemCZoomingComponent_vectordeletingdestructor_00546c10_test.cpp'
+        PassPattern = '00546c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00546ee0'
+        Module = 'NUISystem::CTextContainer'
+        Source = '00/54/NUISystemCTextContainer_vectordeletingdestructor_00546ee0.cpp'
+        TestSource = '00/54/NUISystemCTextContainer_vectordeletingdestructor_00546ee0_test.cpp'
+        PassPattern = '00546ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00546ef0'
+        Module = 'NUISystem::CTextContainer'
+        Source = '00/54/NUISystemCTextContainer_vectordeletingdestructor_00546ef0.cpp'
+        TestSource = '00/54/NUISystemCTextContainer_vectordeletingdestructor_00546ef0_test.cpp'
+        PassPattern = '00546ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00547240'
+        Module = 'NUISystem::CScrollingComponent'
+        Source = '00/54/NUISystemCScrollingComponent_vectordeletingdestructor_00547240.cpp'
+        TestSource = '00/54/NUISystemCScrollingComponent_vectordeletingdestructor_00547240_test.cpp'
+        PassPattern = '00547240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00547250'
+        Module = 'NUISystem::CScrollingComponent'
+        Source = '00/54/NUISystemCScrollingComponent_vectordeletingdestructor_00547250.cpp'
+        TestSource = '00/54/NUISystemCScrollingComponent_vectordeletingdestructor_00547250_test.cpp'
+        PassPattern = '00547250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00547980'
+        Module = 'NUISystem::CSwappingStateComponent'
+        Source = '00/54/NUISystemCSwappingStateComponent_vectordeletingdestructor_00547980.cpp'
+        TestSource = '00/54/NUISystemCSwappingStateComponent_vectordeletingdestructor_00547980_test.cpp'
+        PassPattern = '00547980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00547990'
+        Module = 'NUISystem::CSwappingStateComponent'
+        Source = '00/54/NUISystemCSwappingStateComponent_vectordeletingdestructor_00547990.cpp'
+        TestSource = '00/54/NUISystemCSwappingStateComponent_vectordeletingdestructor_00547990_test.cpp'
+        PassPattern = '00547990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548510'
+        Module = 'NUISystem::CMovie'
+        Source = '00/54/NUISystemCMovie_SetMovie_00548510.cpp'
+        TestSource = '00/54/NUISystemCMovie_SetMovie_00548510_test.cpp'
+        PassPattern = '00548510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548530'
+        Module = 'NUISystem::CMovie'
+        Source = '00/54/NUISystemCMovie_vectordeletingdestructor_00548530.cpp'
+        TestSource = '00/54/NUISystemCMovie_vectordeletingdestructor_00548530_test.cpp'
+        PassPattern = '00548530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548540'
+        Module = 'NUISystem::CMovie'
+        Source = '00/54/NUISystemCMovie_vectordeletingdestructor_00548540.cpp'
+        TestSource = '00/54/NUISystemCMovie_vectordeletingdestructor_00548540_test.cpp'
+        PassPattern = '00548540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054c340'
+        Module = 'NUISystem::CListArrow'
+        Source = '00/54/NUISystemCListArrow_vectordeletingdestructor_0054c340.cpp'
+        TestSource = '00/54/NUISystemCListArrow_vectordeletingdestructor_0054c340_test.cpp'
+        PassPattern = '0054c340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054c350'
+        Module = 'NUISystem::CListArrow'
+        Source = '00/54/NUISystemCListArrow_vectordeletingdestructor_0054c350.cpp'
+        TestSource = '00/54/NUISystemCListArrow_vectordeletingdestructor_0054c350_test.cpp'
+        PassPattern = '0054c350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054e1a0'
+        Module = 'NUISystem::CFrontEndButton'
+        Source = '00/54/NUISystemCFrontEndButton_vectordeletingdestructor_0054e1a0.cpp'
+        TestSource = '00/54/NUISystemCFrontEndButton_vectordeletingdestructor_0054e1a0_test.cpp'
+        PassPattern = '0054e1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054e1b0'
+        Module = 'NUISystem::CFrontEndButton'
+        Source = '00/54/NUISystemCFrontEndButton_vectordeletingdestructor_0054e1b0.cpp'
+        TestSource = '00/54/NUISystemCFrontEndButton_vectordeletingdestructor_0054e1b0_test.cpp'
+        PassPattern = '0054e1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054e560'
+        Module = 'NUISystem::CFrontEndScreen'
+        Source = '00/54/NUISystemCFrontEndScreen_vectordeletingdestructor_0054e560.cpp'
+        TestSource = '00/54/NUISystemCFrontEndScreen_vectordeletingdestructor_0054e560_test.cpp'
+        PassPattern = '0054e560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054e570'
+        Module = 'NUISystem::CFrontEndScreen'
+        Source = '00/54/NUISystemCFrontEndScreen_vectordeletingdestructor_0054e570.cpp'
+        TestSource = '00/54/NUISystemCFrontEndScreen_vectordeletingdestructor_0054e570_test.cpp'
+        PassPattern = '0054e570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054ec50'
+        Module = 'NUISystem::CViewport'
+        Source = '00/54/NUISystemCViewport_vectordeletingdestructor_0054ec50.cpp'
+        TestSource = '00/54/NUISystemCViewport_vectordeletingdestructor_0054ec50_test.cpp'
+        PassPattern = '0054ec50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054ec60'
+        Module = 'NUISystem::CViewport'
+        Source = '00/54/NUISystemCViewport_vectordeletingdestructor_0054ec60.cpp'
+        TestSource = '00/54/NUISystemCViewport_vectordeletingdestructor_0054ec60_test.cpp'
+        PassPattern = '0054ec60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005562d0'
+        Module = 'NUISystem::CScrollableList'
+        Source = '00/55/NUISystemCScrollableList_vectordeletingdestructor_005562d0.cpp'
+        TestSource = '00/55/NUISystemCScrollableList_vectordeletingdestructor_005562d0_test.cpp'
+        PassPattern = '005562d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005562e0'
+        Module = 'NUISystem::CScrollableList'
+        Source = '00/55/NUISystemCScrollableList_vectordeletingdestructor_005562e0.cpp'
+        TestSource = '00/55/NUISystemCScrollableList_vectordeletingdestructor_005562e0_test.cpp'
+        PassPattern = '005562e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557340'
+        Module = 'NUISystem::CRedefinerList'
+        Source = '00/55/NUISystemCRedefinerList_vectordeletingdestructor_00557340.cpp'
+        TestSource = '00/55/NUISystemCRedefinerList_vectordeletingdestructor_00557340_test.cpp'
+        PassPattern = '00557340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557350'
+        Module = 'NUISystem::CRedefinerList'
+        Source = '00/55/NUISystemCRedefinerList_vectordeletingdestructor_00557350.cpp'
+        TestSource = '00/55/NUISystemCRedefinerList_vectordeletingdestructor_00557350_test.cpp'
+        PassPattern = '00557350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00558b10'
+        Module = 'NUISystem::CKeyRedefiner'
+        Source = '00/55/NUISystemCKeyRedefiner_vectordeletingdestructor_00558b10.cpp'
+        TestSource = '00/55/NUISystemCKeyRedefiner_vectordeletingdestructor_00558b10_test.cpp'
+        PassPattern = '00558b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00558b20'
+        Module = 'NUISystem::CKeyRedefiner'
+        Source = '00/55/NUISystemCKeyRedefiner_vectordeletingdestructor_00558b20.cpp'
+        TestSource = '00/55/NUISystemCKeyRedefiner_vectordeletingdestructor_00558b20_test.cpp'
+        PassPattern = '00558b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005595a0'
+        Module = 'NUISystem::CScrollBarOutside'
+        Source = '00/55/NUISystemCScrollBarOutside_vectordeletingdestructor_005595a0.cpp'
+        TestSource = '00/55/NUISystemCScrollBarOutside_vectordeletingdestructor_005595a0_test.cpp'
+        PassPattern = '005595a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005595b0'
+        Module = 'NUISystem::CScrollBarOutside'
+        Source = '00/55/NUISystemCScrollBarOutside_vectordeletingdestructor_005595b0.cpp'
+        TestSource = '00/55/NUISystemCScrollBarOutside_vectordeletingdestructor_005595b0_test.cpp'
+        PassPattern = '005595b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055ac50'
+        Module = 'NUISystem::CDraggable'
+        Source = '00/55/NUISystemCDraggable_vectordeletingdestructor_0055ac50.cpp'
+        TestSource = '00/55/NUISystemCDraggable_vectordeletingdestructor_0055ac50_test.cpp'
+        PassPattern = '0055ac50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055ac60'
+        Module = 'NUISystem::CDraggable'
+        Source = '00/55/NUISystemCDraggable_vectordeletingdestructor_0055ac60.cpp'
+        TestSource = '00/55/NUISystemCDraggable_vectordeletingdestructor_0055ac60_test.cpp'
+        PassPattern = '0055ac60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055b830'
+        Module = 'NUISystem::CClickable'
+        Source = '00/55/NUISystemCClickable_vectordeletingdestructor_0055b830.cpp'
+        TestSource = '00/55/NUISystemCClickable_vectordeletingdestructor_0055b830_test.cpp'
+        PassPattern = '0055b830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055b840'
+        Module = 'NUISystem::CClickable'
+        Source = '00/55/NUISystemCClickable_vectordeletingdestructor_0055b840.cpp'
+        TestSource = '00/55/NUISystemCClickable_vectordeletingdestructor_0055b840_test.cpp'
+        PassPattern = '0055b840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055c1f0'
+        Module = 'NUISystem::CHoverable'
+        Source = '00/55/NUISystemCHoverable_vectordeletingdestructor_0055c1f0.cpp'
+        TestSource = '00/55/NUISystemCHoverable_vectordeletingdestructor_0055c1f0_test.cpp'
+        PassPattern = '0055c1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055c8b0'
+        Module = 'NUISystem::CMouseCursor'
+        Source = '00/55/NUISystemCMouseCursor_vectordeletingdestructor_0055c8b0.cpp'
+        TestSource = '00/55/NUISystemCMouseCursor_vectordeletingdestructor_0055c8b0_test.cpp'
+        PassPattern = '0055c8b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055c8c0'
+        Module = 'NUISystem::CMouseCursor'
+        Source = '00/55/NUISystemCMouseCursor_vectordeletingdestructor_0055c8c0.cpp'
+        TestSource = '00/55/NUISystemCMouseCursor_vectordeletingdestructor_0055c8c0_test.cpp'
+        PassPattern = '0055c8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dbed0'
+        Module = 'CAnimComponentFollowingOnAnimFilter'
+        Source = '00/5d/CAnimComponentFollowingOnAnimFilter_TransferBinaryIn_005dbed0.cpp'
+        TestSource = '00/5d/CAnimComponentFollowingOnAnimFilter_TransferBinaryIn_005dbed0_test.cpp'
+        PassPattern = '005dbed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ea000'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_GetDef_005ea000.cpp'
+        TestSource = '00/5e/CTCTavernGame_GetDef_005ea000_test.cpp'
+        PassPattern = '005ea000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00657230'
+        Module = 'NPlayerGui::CDrawNPCName'
+        Source = '00/65/NPlayerGuiCDrawNPCName_SetName_00657230.cpp'
+        TestSource = '00/65/NPlayerGuiCDrawNPCName_SetName_00657230_test.cpp'
+        PassPattern = '00657230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00663600'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_ClearQueuedActions_00663600.cpp'
+        TestSource = '00/66/CThingCreatureBase_ClearQueuedActions_00663600_test.cpp'
+        PassPattern = '00663600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066a9d0'
+        Module = 'CTCSoundPlayer'
+        Source = '00/66/CTCSoundPlayer_SetVoiceName_0066a9d0.cpp'
+        TestSource = '00/66/CTCSoundPlayer_SetVoiceName_0066a9d0_test.cpp'
+        PassPattern = '0066a9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00686a90'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_GetSerialiseVersion_00686a90.cpp'
+        TestSource = '00/68/CTCBase_GetSerialiseVersion_00686a90_test.cpp'
+        PassPattern = '00686a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00686d80'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_GetThingSearchTools_00686d80.cpp'
+        TestSource = '00/68/CTCBase_GetThingSearchTools_00686d80_test.cpp'
+        PassPattern = '00686d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069e1b0'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_GetAngleXY_0069e1b0.cpp'
+        TestSource = '00/69/CGameCameraManager_GetAngleXY_0069e1b0_test.cpp'
+        PassPattern = '0069e1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069e1c0'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_GetAngleYZ_0069e1c0.cpp'
+        TestSource = '00/69/CGameCameraManager_GetAngleYZ_0069e1c0_test.cpp'
+        PassPattern = '0069e1c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006af270'
+        Module = 'CMessageEventFilter_CanBeHeard'
+        Source = '00/6a/CMessageEventFilterCanBeHeard_operator_006af270.cpp'
+        TestSource = '00/6a/CMessageEventFilterCanBeHeard_operator_006af270_test.cpp'
+        PassPattern = '006af270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006af780'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6a/CTCPhysicsBase_UpdateInterpolation_006af780.cpp'
+        TestSource = '00/6a/CTCPhysicsBase_UpdateInterpolation_006af780_test.cpp'
+        PassPattern = '006af780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b83e0'
+        Module = 'CEnvironmentSpellEffectInterpolator'
+        Source = '00/6b/CEnvironmentSpellEffectInterpolator_ScreenFilterSetFlags_006b83e0.cpp'
+        TestSource = '00/6b/CEnvironmentSpellEffectInterpolator_ScreenFilterSetFlags_006b83e0_test.cpp'
+        PassPattern = '006b83e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c9fd0'
+        Module = 'CTCHero'
+        Source = '00/6c/CTCHero_FrameUpdate_006c9fd0.cpp'
+        TestSource = '00/6c/CTCHero_FrameUpdate_006c9fd0_test.cpp'
+        PassPattern = '006c9fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00700770'
+        Module = 'COpinionReactionManager'
+        Source = '00/70/COpinionReactionManager_SetThingOpinionSource_00700770.cpp'
+        TestSource = '00/70/COpinionReactionManager_SetThingOpinionSource_00700770_test.cpp'
+        PassPattern = '00700770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007021e0'
+        Module = 'CTCQuestCard'
+        Source = '00/70/CTCQuestCard_SetTeleporterRegionName_007021e0.cpp'
+        TestSource = '00/70/CTCQuestCard_SetTeleporterRegionName_007021e0_test.cpp'
+        PassPattern = '007021e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00710530'
+        Module = 'C3DAnimationTransitionState'
+        Source = '00/71/C3DAnimationTransitionState_FindFirstAnimation_00710530.cpp'
+        TestSource = '00/71/C3DAnimationTransitionState_FindFirstAnimation_00710530_test.cpp'
+        PassPattern = '00710530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007122b0'
+        Module = 'NTCScriptedControl::CActionSummonerLightningAttackTarget'
+        Source = '00/71/NTCScriptedControlCActionSummonerLightningAttackTarget_OnActivate_007122b0.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionSummonerLightningAttackTarget_OnActivate_007122b0_test.cpp'
+        PassPattern = '007122b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007128f0'
+        Module = 'NTCScriptedControl::CActionPlayAnimation'
+        Source = '00/71/NTCScriptedControlCActionPlayAnimation_OnActivate_007128f0.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionPlayAnimation_OnActivate_007128f0_test.cpp'
+        PassPattern = '007128f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00712a70'
+        Module = 'NTCScriptedControl::CActionPlayCombatAnimation'
+        Source = '00/71/NTCScriptedControlCActionPlayCombatAnimation_OnActivate_00712a70.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionPlayCombatAnimation_OnActivate_00712a70_test.cpp'
+        PassPattern = '00712a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007446a0'
+        Module = 'CTCPerceiveThing'
+        Source = '00/74/CTCPerceiveThing_GetPerceivedThing_007446a0.cpp'
+        TestSource = '00/74/CTCPerceiveThing_GetPerceivedThing_007446a0_test.cpp'
+        PassPattern = '007446a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007498d0'
+        Module = 'CTCNoise'
+        Source = '00/74/CTCNoise_GetCreator_007498d0.cpp'
+        TestSource = '00/74/CTCNoise_GetCreator_007498d0_test.cpp'
+        PassPattern = '007498d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00787740'
+        Module = 'CTCBob'
+        Source = '00/78/CTCBob_SetForceVisible_00787740.cpp'
+        TestSource = '00/78/CTCBob_SetForceVisible_00787740_test.cpp'
+        PassPattern = '00787740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00798d80'
+        Module = 'CTCShopKeeper'
+        Source = '00/79/CTCShopKeeper_GetCustomer_00798d80.cpp'
+        TestSource = '00/79/CTCShopKeeper_GetCustomer_00798d80_test.cpp'
+        PassPattern = '00798d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007de4e0'
+        Module = 'CTCWallMount'
+        Source = '00/7d/CTCWallMount_GetObjectAttached_007de4e0.cpp'
+        TestSource = '00/7d/CTCWallMount_GetObjectAttached_007de4e0_test.cpp'
+        PassPattern = '007de4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007de4f0'
+        Module = 'CTCWallMount'
+        Source = '00/7d/CTCWallMount_PeekObjectAttached_007de4f0.cpp'
+        TestSource = '00/7d/CTCWallMount_PeekObjectAttached_007de4f0_test.cpp'
+        PassPattern = '007de4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f6160'
+        Module = 'CTCTargetingAI'
+        Source = '00/7f/CTCTargetingAI_ClearAllThingsToNotAttack_007f6160.cpp'
+        TestSource = '00/7f/CTCTargetingAI_ClearAllThingsToNotAttack_007f6160_test.cpp'
+        PassPattern = '007f6160_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

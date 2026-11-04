@@ -2013,3 +2013,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A RELOC_CONFLICT on CVectorMap LowerBound means the wrong const-ness: PeekTC calls the const one 0x004365B0; the non-const one is 0x0040F020 (chunk 763).
 - Agents' LABELS.tsv may carry one-source proposals: never apply them. finish_landing.sh skips evidence marked proposal / one source / unproven (chunk 763).
 - libpk (Lionhead audio, 0x00C0xxxx-0x00C9xxxx) is in scope; only libvorbis / Ogg / Miles / Bink are third-party skips (chunk 763).
+- An adjustor-thunk row needs only a TU that defines the class's ctor or dtor; for big classes reuse the landed ctor/dtor body and grade only the thunk (chunk 765).
+- Before landing a "new" symbol, check whether a landed leaf already holds it: a mislabelled landed row blocks the true owner (chunk 765, 0x006AFD40).
+- `hdrcheck2.py` takes the overlay directory; given a single file it prints nothing (chunk 765).
+- VC7.1 never devirtualizes a call through a member subobject: `member.VirtualFn()` stays `jmp [vtbl+k]` (chunk 765).

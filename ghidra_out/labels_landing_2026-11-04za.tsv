@@ -1,0 +1,82 @@
+address	name	evidence
+0043e420	NPlayerGui::CDrawBase::vcall{0}	landing 2026-11-04za (chunk 765): MATCH; ??_9@$BA@AE
+004ae8a0	CWorld::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECWorld@@W3AEPAXI@Z
+004c7a50	CThing::GetThingSearchTools	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?GetThingSearchTools@CThing@@IAEAAVCThingSearchTools@@XZ
+004c7a60	CThing::PeekThingSearchTools	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?PeekThingSearchTools@CThing@@IBEABVCThingSearchTools@@XZ
+004c7bc0	CThing::CheckUID	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?CheckUID@CThing@@IBEXXZ
+00520c70	CThingManager::ClearPersistenceDataForSection	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?ClearPersistenceDataForSection@CThingManager@@QAEXABVCCharString@@@Z
+00529930	CThingGameObject::GetThingStandingOn	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?GetThingStandingOn@CThingGameObject@@UBEPBVCThing@@XZ
+0052d700	NUISystem::CChangingStateComponent::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECChangingStateComponent@NUISystem@@W3AEPAXI@Z
+0052f1a0	NUISystem::CComponent::IsPositionIndependent	landing 2026-11-04za (chunk 765): MATCH; ?IsPositionIndependent@CComponent@NUISystem@@UBE_NXZ
+00535ab0	NUISystem::CComponent::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECComponent@NUISystem@@W3AEPAXI@Z
+00535ac0	NUISystem::CComponent::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECComponent@NUISystem@@WBI@AEPAXI@Z
+0053e8c0	NUISystem::CMenuEntry::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECMenuEntry@NUISystem@@W3AEPAXI@Z
+0053e8d0	NUISystem::CMenuEntry::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECMenuEntry@NUISystem@@WBI@AEPAXI@Z
+00541850	NUISystem::CDynamicList::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECDynamicList@NUISystem@@W3AEPAXI@Z
+00541860	NUISystem::CDynamicList::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECDynamicList@NUISystem@@WBI@AEPAXI@Z
+00544090	NUISystem::CParticleEffect::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECParticleEffect@NUISystem@@W3AEPAXI@Z
+005440a0	NUISystem::CParticleEffect::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECParticleEffect@NUISystem@@WBI@AEPAXI@Z
+00546080	NUISystem::CSpellContainer::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECSpellContainer@NUISystem@@W3AEPAXI@Z
+00546090	NUISystem::CSpellContainer::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECSpellContainer@NUISystem@@WBI@AEPAXI@Z
+005465b0	NUISystem::CComponentContainer::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECComponentContainer@NUISystem@@W3AEPAXI@Z
+005465c0	NUISystem::CComponentContainer::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECComponentContainer@NUISystem@@WBI@AEPAXI@Z
+00546c00	NUISystem::CZoomingComponent::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECZoomingComponent@NUISystem@@W3AEPAXI@Z
+00546c10	NUISystem::CZoomingComponent::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECZoomingComponent@NUISystem@@WBI@AEPAXI@Z
+00546ee0	NUISystem::CTextContainer::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECTextContainer@NUISystem@@W3AEPAXI@Z
+00546ef0	NUISystem::CTextContainer::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECTextContainer@NUISystem@@WBI@AEPAXI@Z
+00547240	NUISystem::CScrollingComponent::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECScrollingComponent@NUISystem@@W3AEPAXI@Z
+00547250	NUISystem::CScrollingComponent::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECScrollingComponent@NUISystem@@WBI@AEPAXI@Z
+00547980	NUISystem::CSwappingStateComponent::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECSwappingStateComponent@NUISystem@@W3AEPAXI@Z
+00547990	NUISystem::CSwappingStateComponent::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECSwappingStateComponent@NUISystem@@WBI@AEPAXI@Z
+00548510	NUISystem::CMovie::SetMovie	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?SetMovie@CMovie@NUISystem@@UAEXAAVCWideString@@@Z
+00548530	NUISystem::CMovie::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECMovie@NUISystem@@W3AEPAXI@Z
+00548540	NUISystem::CMovie::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECMovie@NUISystem@@WBI@AEPAXI@Z
+0054c340	NUISystem::CListArrow::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECListArrow@NUISystem@@W3AEPAXI@Z
+0054c350	NUISystem::CListArrow::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECListArrow@NUISystem@@WBI@AEPAXI@Z
+0054e1a0	NUISystem::CFrontEndButton::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECFrontEndButton@NUISystem@@W3AEPAXI@Z
+0054e1b0	NUISystem::CFrontEndButton::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECFrontEndButton@NUISystem@@WBI@AEPAXI@Z
+0054e560	NUISystem::CFrontEndScreen::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECFrontEndScreen@NUISystem@@W3AEPAXI@Z
+0054e570	NUISystem::CFrontEndScreen::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECFrontEndScreen@NUISystem@@WBI@AEPAXI@Z
+0054ec50	NUISystem::CViewport::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECViewport@NUISystem@@W3AEPAXI@Z
+0054ec60	NUISystem::CViewport::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECViewport@NUISystem@@WBI@AEPAXI@Z
+005562d0	NUISystem::CScrollableList::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECScrollableList@NUISystem@@W3AEPAXI@Z
+005562e0	NUISystem::CScrollableList::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECScrollableList@NUISystem@@WBI@AEPAXI@Z
+00557340	NUISystem::CRedefinerList::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECRedefinerList@NUISystem@@W3AEPAXI@Z
+00557350	NUISystem::CRedefinerList::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECRedefinerList@NUISystem@@WBI@AEPAXI@Z
+00558b10	NUISystem::CKeyRedefiner::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECKeyRedefiner@NUISystem@@W3AEPAXI@Z
+00558b20	NUISystem::CKeyRedefiner::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECKeyRedefiner@NUISystem@@WBI@AEPAXI@Z
+005595a0	NUISystem::CScrollBarOutside::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECScrollBarOutside@NUISystem@@W3AEPAXI@Z
+005595b0	NUISystem::CScrollBarOutside::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECScrollBarOutside@NUISystem@@WBI@AEPAXI@Z
+0055ac50	NUISystem::CDraggable::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECDraggable@NUISystem@@W3AEPAXI@Z
+0055ac60	NUISystem::CDraggable::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECDraggable@NUISystem@@WBI@AEPAXI@Z
+0055b830	NUISystem::CClickable::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECClickable@NUISystem@@W3AEPAXI@Z
+0055b840	NUISystem::CClickable::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECClickable@NUISystem@@WBI@AEPAXI@Z
+0055c1f0	NUISystem::CHoverable::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECHoverable@NUISystem@@W3AEPAXI@Z
+0055c8b0	NUISystem::CMouseCursor::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECMouseCursor@NUISystem@@W3AEPAXI@Z
+0055c8c0	NUISystem::CMouseCursor::`vector deleting destructor'	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??_ECMouseCursor@NUISystem@@WBI@AEPAXI@Z
+005dbed0	CAnimComponentFollowingOnAnimFilter::TransferBinaryIn	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?TransferBinaryIn@CAnimComponentFollowingOnAnimFilter@@UAEXAAVCMemoryDataInputStream@@@Z
+005ea000	CTCTavernGame::GetDef	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z
+00657230	NPlayerGui::CDrawNPCName::SetName	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?SetName@CDrawNPCName@NPlayerGui@@QAEXABVCWideString@@@Z
+00663600	CThingCreatureBase::ClearQueuedActions	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?ClearQueuedActions@CThingCreatureBase@@QAEXXZ
+0066a9d0	CTCSoundPlayer::SetVoiceName	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?SetVoiceName@CTCSoundPlayer@@QAEXABVCCharString@@@Z
+00686a90	CTCBase::GetSerialiseVersion	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?GetSerialiseVersion@CTCBase@@IBEJXZ
+00686d80	CTCBase::GetThingSearchTools	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?GetThingSearchTools@CTCBase@@IAEAAVCThingSearchTools@@XZ
+0069e1b0	CGameCameraManager::GetAngleXY	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?GetAngleXY@CGameCameraManager@@UBEMXZ
+0069e1c0	CGameCameraManager::GetAngleYZ	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?GetAngleYZ@CGameCameraManager@@UBEMXZ
+006af270	CMessageEventFilter_CanBeHeard::operator()	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ??RCMessageEventFilter_CanBeHeard@@QBE_NABVCMessageEvent@@@Z
+006af780	CTCPhysicsBase::UpdateInterpolation	landing 2026-11-04za (chunk 765): MATCH; ?UpdateInterpolation@CTCPhysicsBase@@MAEXXZ
+006b83e0	CEnvironmentSpellEffectInterpolator::ScreenFilterSetFlags	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?ScreenFilterSetFlags@CEnvironmentSpellEffectInterpolator@@QAEXABV?$vector@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@V?$allocator@UCThingGraphicArgPasser@CScreenEffectPrioritySta
+006c9fd0	CTCHero::FrameUpdate	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?FrameUpdate@CTCHero@@UAEXXZ
+00700770	COpinionReactionManager::SetThingOpinionSource	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?SetThingOpinionSource@COpinionReactionManager@@QAEXPAVCThing@@@Z
+007021e0	CTCQuestCard::SetTeleporterRegionName	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?SetTeleporterRegionName@CTCQuestCard@@QAEXABVCCharString@@@Z
+00710530	C3DAnimationTransitionState::FindFirstAnimation	landing 2026-11-04za (chunk 765): MATCH; ?FindFirstAnimation@C3DAnimationTransitionState@@UBEABVC3DAnimationState@@XZ
+007122b0	NTCScriptedControl::CActionSummonerLightningAttackTarget::OnActivate	landing 2026-11-04za (chunk 765): MATCH; ?OnActivate@CActionSummonerLightningAttackTarget@NTCScriptedControl@@UAEXXZ
+007128f0	NTCScriptedControl::CActionPlayAnimation::OnActivate	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?OnActivate@CActionPlayAnimation@NTCScriptedControl@@UAEXXZ
+00712a70	NTCScriptedControl::CActionPlayCombatAnimation::OnActivate	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?OnActivate@CActionPlayCombatAnimation@NTCScriptedControl@@UAEXXZ
+007446a0	CTCPerceiveThing::GetPerceivedThing	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ
+007498d0	CTCNoise::GetCreator	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?GetCreator@CTCNoise@@QBEPBVCThing@@XZ
+00787740	CTCBob::SetForceVisible	landing 2026-11-04za (chunk 765): MATCH; ?SetForceVisible@CTCBob@@QAEXXZ
+00798d80	CTCShopKeeper::GetCustomer	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?GetCustomer@CTCShopKeeper@@QBEPAVCThingCreatureBase@@XZ
+007de4e0	CTCWallMount::GetObjectAttached	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?GetObjectAttached@CTCWallMount@@QAEPAVCThing@@XZ
+007de4f0	CTCWallMount::PeekObjectAttached	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?PeekObjectAttached@CTCWallMount@@QBEPBVCThing@@XZ
+007f6160	CTCTargetingAI::ClearAllThingsToNotAttack	landing 2026-11-04za (chunk 765): RELOCATION_MATCH; ?ClearAllThingsToNotAttack@CTCTargetingAI@@QAEXXZ

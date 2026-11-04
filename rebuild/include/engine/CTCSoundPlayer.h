@@ -16,6 +16,10 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SOUND_PLAYER; }
 #endif
     unsigned long PlayAttachedCriteria(const CCharString&,bool,bool,bool,long);
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_VOICENAME
+    // Opt-in (chunk 765, row 0x0066A9D0): Ego_r.pdb / FableWin.pdb ?SetVoiceName@CTCSoundPlayer@@QAEXABVCCharString@@@Z (VoiceName +0x14).
+    void SetVoiceName(const CCharString&);                               // 0x0066A9D0
+#endif
 protected:
     CIntelligentPointer<CThingSoundEmitter> PAttachedEmitter;
     CCharString VoiceName,ExtraTag;

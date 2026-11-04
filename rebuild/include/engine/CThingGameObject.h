@@ -15,6 +15,15 @@ private:
         GiveHeroStatChangesOnBeingHit:1,GiveHeroStatChangesOnBeingHitOverrideSet:1;
 public:
     virtual void OnHit(CHitParameters&);
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_STANDINGON
+    // Nested opt-in (chunk 765, row 0x00529930): FableWin.pdb ?GetThingStandingOn@CThingGameObject@@UBEPBVCThing@@XZ (0x01D3E690) and
+    // ?GetThingStandingOn@CThingGameObject@@UAEPAVCThing@@XZ (0x01D3E6B0, also Ego_r 0x00532720), overrides of CThing's pair (FableWin
+    // 0x01CEE4F0 const / 0x01CEE500). Retail vtable 0x01244F7C: slot 39 = 0x00529930 (const, emitted first as in FableWin), slot 38 =
+    // 0x00529940 (VC7.1 lays overloads out in reverse declaration order); both forward PThingStandingOn +0xC0 to GetPItem. The engine
+    // CThing model declares no virtuals, so these are declarations only (no vtable is emitted from them here).
+    virtual const CThing* GetThingStandingOn() const;                    // slot 39 0x00529930
+    virtual CThing* GetThingStandingOn();                                // slot 38 0x00529940
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingGameObject)==0xd0);
 #else

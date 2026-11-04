@@ -114,6 +114,11 @@ protected:
     CWorld& GetWorld() const;                                            // 0x00686A70
     CThingSearchTools& GetThingSearchTools();                            // 0x00686D80
     const CThingSearchTools& PeekThingSearchTools() const;               // 0x00686D90
+#ifdef FABLE_RETAIL_CTCBASE_SERIALISEVERSION
+    // Nested opt-in (chunk 765, row 0x00686A90): Ego_r.pdb / FableWin.pdb ?GetSerialiseVersion@CTCBase@@IBEJXZ, out of line in retail
+    // right after PeekWorld 0x00686A80 (Ego_r donor order PeekWorld 0x006B1E70, GetSerialiseVersion 0x006B1E80). Declaration only.
+    long GetSerialiseVersion() const;                                    // 0x00686A90
+#endif
 #ifdef FABLE_RETAIL_CTCBASE_COMPONENT
     // Nested opt-in (chunk 755, row 0x00775B40 CTCShop::FrameUpdate): Ego_r.pdb 0x006B2150 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ,
     // out of line in retail at 0x00686D60 (`mov eax,[0x013B8A1C] ; mov eax,[eax+1Ch] ; ret`, after GetPlayerManager 0x00686D40 /

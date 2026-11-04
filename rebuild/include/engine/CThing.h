@@ -15,6 +15,9 @@
 #include "engine/ETCInterfaceType.h"
 class C3DVector; class CTCPhysicsBase; class CTCBase; class CTCDriverBase;
 class CThingBaseDef; class CWorld; class CPlayerManager;class CTCParamsBase;
+#ifdef FABLE_RETAIL_CTHING_MANAGERACCESS
+class CThingManager; class CThingSearchTools;                   // chunk 765: the manager accessors' types
+#endif
 #ifdef FABLE_RETAIL_CTHING
 class CMainGameComponent; class CPlayer;                        // chunk 732: PeekComponent / GetPlayer return types
 #endif
@@ -193,6 +196,26 @@ public:
         }
         return false;
     }
+#ifdef FABLE_RETAIL_CTHING_MANAGERACCESS
+    // Nested opt-in (chunk 765, rows 0x004C7A50 / 0x004C7A60 / 0x004C7BC0): the current thing manager, a private static at 0x013B8A1C
+    // (the established spelling ?PCurrentThingManager@CThing@@0PAVCThingManager@@A of 65 landed rows), and its Ego_r.pdb / FableWin.pdb
+    // public static __fastcall accessors ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ /
+    // ?PeekPCurrentThingManager@CThing@@SIPBVCThingManager@@XZ (inline in retail: every caller loads [0x013B8A1C] in place); the
+    // protected out-of-line forwarders ?GetThingSearchTools@CThing@@IAEAAVCThingSearchTools@@XZ (0x004C7A50),
+    // ?PeekThingSearchTools@CThing@@IBEABVCThingSearchTools@@XZ (0x004C7A60) and ?CheckUID@CThing@@IBEXXZ (0x004C7BC0): retail keeps
+    // Ego_r's donor order PeekPlayer / GetPlayer / GetThingSearchTools / PeekThingSearchTools / PeekComponent (0x004C7A10..0x004C7A70)
+    // and IsToBePlacedInMap / CheckUID / IsForceNoSerialise (0x004C7B80..0x004C7BD0). No layout change.
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }
+    static const CThingManager* __fastcall PeekPCurrentThingManager() { return PCurrentThingManager; }
+protected:
+    CThingSearchTools& GetThingSearchTools();                    // 0x004C7A50
+    const CThingSearchTools& PeekThingSearchTools() const;       // 0x004C7A60
+    void CheckUID() const;                                       // 0x004C7BC0
+private:
+    static CThingManager* PCurrentThingManager;                  // 0x013B8A1C
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHING_ADDANDCOPYTC
     // Chunk 756 (row 0x004C9F60): Ego_r.pdb ?AddAndCopyTC@CThing@@QAEXABVCTCBase@@_N@Z (out of line) and the FableWin.pdb member template
     // ??$GetTC@VCTCBase@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCBase@@@Z (the non-const twin of PeekTC(id, ptc); __forceinline like it).

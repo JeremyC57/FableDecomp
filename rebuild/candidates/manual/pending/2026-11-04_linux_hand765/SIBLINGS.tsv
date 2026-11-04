@@ -1,0 +1,22 @@
+header	macro	landed_includers_affected	note
+engine/CThing.h	FABLE_RETAIL_CTHING_MANAGERACCESS	none (64 includers, none defines the macro)	nested in FABLE_RETAIL_CTHING; hdrcheck2 default=same, every existing macro same; recheck 0x00836790 MATCH
+engine/CThingManager.h	FABLE_RETAIL_CTHINGMANAGER_ACCESSORS	none (10 includers)	declarations only; hdrcheck2 default and existing macros same
+engine/CTCBase.h	FABLE_RETAIL_CTCBASE_SERIALISEVERSION	none (394 includers)	one declaration; hdrcheck2 default and existing macros same
+engine/CThingCreatureBase.h	FABLE_RETAIL_CTHINGCREATUREBASE_CLEARQUEUED	none (86 includers)	one declaration; hdrcheck2 same; recheck 0x00667D30 RELOCATION_MATCH
+engine/CThingAICreature.h	FABLE_RETAIL_CTHINGAICREATURE_MESSAGERANGE	none (47 includers)	two declarations; hdrcheck2 same
+engine/CThingGameObject.h	FABLE_RETAIL_CTHINGGAMEOBJECT_STANDINGON	none (36 includers)	two virtuals appended at slots 38/39 under the new macro only; hdrcheck2 same
+engine/CGameCameraManager.h	FABLE_RETAIL_CGAMECAMERAMANAGER_ANGLES	none (24 includers)	virtuals replace the void* __vftable member under the new macro only; hdrcheck2 same; recheck 0x0084DFE0 RELOCATION_MATCH
+engine/CCamera.h	FABLE_RETAIL_CCAMERA_ANGLES	none (6 includers)	two declarations; hdrcheck2 same
+engine/CMovie.h	FABLE_RETAIL_CMOVIE_MEMBERS	none (2 includers)	members replace the pad under the nested macro; hdrcheck2 same
+engine/CDefString.h	FABLE_RETAIL_CDEFSTRING_TRANSFER	none (19 includers)	one declaration; hdrcheck2 same (pre-existing cpp-err on both sides)
+engine/CAnimComponentFollowingOnAnimFilter.h	FABLE_RETAIL_CANIMCOMPONENTFOLLOWINGONANIMFILTER	none (1 includer)	new retail branch; generated layout stays in #else; hdrcheck2 default same
+engine/CTCSoundPlayer.h	FABLE_RETAIL_CTCSOUNDPLAYER_VOICENAME	none (2 includers)	one declaration; hdrcheck2 same
+engine/CTCQuestCard.h	FABLE_RETAIL_CTCQUESTCARD_TELEPORTER	none (9 includers)	one declaration; hdrcheck2 same
+engine/CTCPerceiveThing.h	FABLE_RETAIL_CTCPERCEIVETHING	none (26 includers)	new retail branch; generated layout in #else; hdrcheck2 default same; recheck 0x00643B3B RELOCATION_MATCH
+engine/CTCTavernGame.h	FABLE_RETAIL_CTCTAVERNGAME_GETDEF_OUTOFLINE	none (9 includers)	inline GetDef stays the default; hdrcheck2 same
+engine/CTCScriptedControl.h	FABLE_RETAIL_CTCSCRIPTEDCONTROL_ACTIONBASE	none (1 includer)	nested class CActionBase added; hdrcheck2 default same; recheck 0x00667D30 RELOCATION_MATCH
+engine/C3DAnimationState.h	FABLE_RETAIL_C3DANIMATIONSTATEBASE_VIRTUALS	none (1 includer)	virtuals on C3DAnimationStateBase / C3DAnimationState under the nested macro; hdrcheck2 same
+engine/C3DAnimationTransitionState.h	FABLE_RETAIL_C3DANIMATIONTRANSITIONSTATE	none (3 includers)	new retail branch; generated layout in #else; hdrcheck2 default same; recheck 0x00710560 MATCH
+engine/NThingManager_CEntityRuntimePersistence.h	FABLE_RETAIL_CENTITYRUNTIMEPERSISTENCE_CLEAR	none (6 includers)	one declaration; hdrcheck2 default same
+engine/NUISystem_CComponentContainer.h	FABLE_RETAIL_CCOMPONENTCONTAINER_CTORS	none (0 includers)	two ctor declarations; hdrcheck2 default same
+engine/NUISystem_CManager.h	FABLE_RETAIL_CMANAGER_MOUSECURSOR	none (19 includers)	inline SetMouseCursor; hdrcheck2 default same; recheck 0x00549440 RELOCATION_MATCH

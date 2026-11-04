@@ -15,6 +15,13 @@
 namespace NUISystem {
 class CComponentContainer : public CChangingStateComponent {
 public:
+#ifdef FABLE_RETAIL_CCOMPONENTCONTAINER_CTORS
+    // Retail opt-in (chunk 765): the PDB constructors ??0CComponentContainer@NUISystem@@QAE@J@Z (retail 0x005460C0: the base
+    // call and the three vptrs) and ??0..QAE@ABV01@@Z, so the constructor's TU can be written (it emits the vtables, the ??_G
+    // 0x005465D0 and its two adjustor thunks 0x005465B0 / 0x005465C0). The destructor stays implicit (the ??_G inlines it).
+    CComponentContainer(long);
+    CComponentContainer(const CComponentContainer&);
+#endif
     virtual void AddTextLine(const CWideString&, CRGBColour, unsigned long, long);    // slot 143
     virtual void AddTextLine(const CWideString&, CRGBColour, CCharString, long);      // slot 142
 };

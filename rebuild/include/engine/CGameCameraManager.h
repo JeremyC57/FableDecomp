@@ -55,7 +55,16 @@ public:
     CCamera& GetCamera() { return Camera; }
     const CCamera& GetCamera() const { return Camera; }
 #endif
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_ANGLES
+    // Nested opt-in (chunk 765, rows 0x0069E1B0 / 0x0069E1C0): Ego_r.pdb / FableWin.pdb ?GetAngleXY@CGameCameraManager@@UBEMXZ /
+    // ?GetAngleYZ@CGameCameraManager@@UBEMXZ (Ego_r 0x006C36E0 / 0x006C36F0), slots 25 / 26 of the retail vtable 0x0125C754, both
+    // forwarding to the Camera member +0x04. Declared virtual, the compiler's own vptr replaces the flattened __vftable word at +0x00
+    // (same layout); no vtable is emitted from these declarations (the class's ctor / dtor are not defined with this opt-in).
+    virtual float GetAngleXY() const;                        // slot 25 0x0069E1B0
+    virtual float GetAngleYZ() const;                        // slot 26 0x0069E1C0
+#else
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
+#endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
     CCamera            Camera;                               // +0x04
 #else
@@ -134,7 +143,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CGameCameraManager) == 0x160);
+#ifndef FABLE_RETAIL_CGAMECAMERAMANAGER_ANGLES
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, Camera) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, OldCamera) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, World) == 0x74);

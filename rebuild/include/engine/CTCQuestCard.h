@@ -33,6 +33,11 @@ public:
     virtual ETCInterfaceType GetInterfaceType() const;                   // 21 0x007029F0
     virtual CCharString GetClassTypeName() const;                        // 22 0x00702A00
     virtual bool IsComponentSerialisable() const;                        // 23 0x00702A20
+#ifdef FABLE_RETAIL_CTCQUESTCARD_TELEPORTER
+    // Nested opt-in (chunk 765, row 0x007021E0): Ego_r.pdb / FableWin.pdb ?SetTeleporterRegionName@CTCQuestCard@@QAEXABVCCharString@@@Z
+    // (Ego_r 0x00723D20, first in the class's donor run; TeleporterRegionName +0x24).
+    void SetTeleporterRegionName(const CCharString& name);               // 0x007021E0
+#endif
     CDefPointer<const CQuestCardDef> PDef;                               // +0x0c
     bool                             Finished;                           // +0x10
     bool                             Replayable;                         // +0x11

@@ -11,6 +11,12 @@
 class CCamera {
 public:
     float GetHorizontalFOV() const;                                      // 0x00A0BE90
+#ifdef FABLE_RETAIL_CCAMERA_ANGLES
+    // Opt-in (chunk 765, rows 0x0069E1B0 / 0x0069E1C0): Ego_r.pdb / FableWin.pdb ?GetAngleXY@CCamera@@QBEMXZ / ?GetAngleYZ@CCamera@@QBEMXZ,
+    // out of line in retail at 0x00A0C380 / 0x00A0C3E0 (Ego_r 0x00B4CF00 / 0x00B4CF70). Declarations only.
+    float GetAngleXY() const;                                            // 0x00A0C380
+    float GetAngleYZ() const;                                            // 0x00A0C3E0
+#endif
     const C3DVector& PeekWorldPos() const { return WorldPosition; }
     const C3DVector& PeekViewDirection() const { return RHSet.GetForward(); }
 private:

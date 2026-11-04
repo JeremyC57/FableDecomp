@@ -13,6 +13,9 @@
 class CThingBuilding;
 #endif
 class C3DVector; class CThingAICreatureInit;
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_MESSAGERANGE
+class CMessageEvent;                                                     // chunk 765
+#endif
 class CThingAICreature : public CThingCreatureBase {
 public:
     // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingAICreature@@SIPAVCClass@@XZ.
@@ -24,6 +27,14 @@ public:
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& pos, long, const CThingAICreatureInit& init);   // 0x00833800
     void AutoSetupSexuality(float probabilityOfHomosexuality);           // 0x008330D0
     void SetAsAllowedToFollowHero(bool allowed) { AllowedToFollowHero = allowed; }
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_MESSAGERANGE
+    // Nested opt-in (chunk 765, row 0x006AF270 CMessageEventFilter_CanBeHeard::operator()): Ego_r.pdb / FableWin.pdb
+    // ?IsMessageEventWithinSightRange@CThingAICreature@@QBE_NABVCMessageEvent@@@Z (0x00833230) and
+    // ?IsMessageEventWithinHearingRange@CThingAICreature@@QBE_NABVCMessageEvent@@@Z (0x008332E0), out of line in retail (the message
+    // filters CanBeSeenOrHeard 0x006AF220 / CanBeSeen 0x006AF260 / CanBeHeard 0x006AF270 call them). Declarations only.
+    bool IsMessageEventWithinSightRange(const CMessageEvent& event) const;     // 0x00833230
+    bool IsMessageEventWithinHearingRange(const CMessageEvent& event) const;   // 0x008332E0
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_HOMEBUILDING
     // Nested opt-in (chunk 760, row 0x00946400 CAIStateGroup_PrepareMeal::IsRunnable): Ego_r.pdb HomeBuilding
     // (CIntelligentPointer<CThingBuilding>, retail +0x168: `lea ecx,[eax+168h] ; call 0x00A01B50`) and FableWin.pdb

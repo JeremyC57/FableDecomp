@@ -54341,3 +54341,84 @@ address	name	length	bytes
 00be24d0	C2DAlphaMaskInfo::Reset	54	83ec1033c0568bf08d5108893289720489720889720c890189410489442404894424088944240c894424108841288841295e83c410c3
 00be2540	C2DAlphaMaskInfo::C2DAlphaMaskInfo	56	83ec108bc133c9568bf18d5008893289720489720889720c8908894804894c2404894c2408894c240c894c24108848288848295e83c410c3
 00cbc130	std::vector<std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo> >::_M_insert_overflow	284	51538b5c241855568bf18b068b4e042bc8b8abaaaa2af7e9c1fa028bc2c1e81f03c23bc357894424108d4c242472048d4c24108b0903c8894c241074158d0449c1e00350e89528f4ff83c40489442424eb08c7442424000000008b5424248b6c24188d4c2428518b0e528bd5e85fd9ffff83fb018bf8752f85ff74268b44241c8b08890f8b50048957048b4808894f088b500c83c010508d4f1089570ce85e2aceff83c718eb158b4c241c8d44242850518bd38bcfe866d9ffff8bf88a44242884c075128d542428528b5604578bcde8fcd8ffff8bf88b6e048b1e3bdd7410908d4b10e8c828ceff83c3183bdd75f18b0685c0740950e8e927f4ff83c4048b4c24108b4424248d0c49897e045f8d14c889068956085e5d5b59c21400
+0043e420	NPlayerGui::CDrawBase::vcall{0}	4	8b01ff20
+004ae8a0	CWorld::`vector deleting destructor'	8	83e904e928000000
+004c7a50	CThing::GetThingSearchTools	11	8b0d1c8a3b01e9356a0500
+004c7a60	CThing::PeekThingSearchTools	11	8b0d1c8a3b01e9156a0500
+004c7bc0	CThing::CheckUID	11	8b0d1c8a3b01e915670500
+00520c70	CThingManager::ClearPersistenceDataForSection	11	81c1a0000000e915f7ffff
+00529930	CThingGameObject::GetThingStandingOn	11	81c1c0000000e915824d00
+0052d700	NUISystem::CChangingStateComponent::`vector deleting destructor'	8	83e904e968000000
+0052f1a0	NUISystem::CComponent::IsPositionIndependent	8	8b01ffa094010000
+00535ab0	NUISystem::CComponent::`vector deleting destructor'	8	83e904e958010000
+00535ac0	NUISystem::CComponent::`vector deleting destructor'	8	83e918e948010000
+0053e8c0	NUISystem::CMenuEntry::`vector deleting destructor'	8	83e904e918000000
+0053e8d0	NUISystem::CMenuEntry::`vector deleting destructor'	8	83e918e908000000
+00541850	NUISystem::CDynamicList::`vector deleting destructor'	8	83e904e918000000
+00541860	NUISystem::CDynamicList::`vector deleting destructor'	8	83e918e908000000
+00544090	NUISystem::CParticleEffect::`vector deleting destructor'	8	83e904e918000000
+005440a0	NUISystem::CParticleEffect::`vector deleting destructor'	8	83e918e908000000
+00546080	NUISystem::CSpellContainer::`vector deleting destructor'	8	83e904e918000000
+00546090	NUISystem::CSpellContainer::`vector deleting destructor'	8	83e918e908000000
+005465b0	NUISystem::CComponentContainer::`vector deleting destructor'	8	83e904e918000000
+005465c0	NUISystem::CComponentContainer::`vector deleting destructor'	8	83e918e908000000
+00546c00	NUISystem::CZoomingComponent::`vector deleting destructor'	8	83e904e918000000
+00546c10	NUISystem::CZoomingComponent::`vector deleting destructor'	8	83e918e908000000
+00546ee0	NUISystem::CTextContainer::`vector deleting destructor'	8	83e904e918000000
+00546ef0	NUISystem::CTextContainer::`vector deleting destructor'	8	83e918e908000000
+00547240	NUISystem::CScrollingComponent::`vector deleting destructor'	8	83e904e918000000
+00547250	NUISystem::CScrollingComponent::`vector deleting destructor'	8	83e918e908000000
+00547980	NUISystem::CSwappingStateComponent::`vector deleting destructor'	8	83e904e928010000
+00547990	NUISystem::CSwappingStateComponent::`vector deleting destructor'	8	83e918e918010000
+00548510	NUISystem::CMovie::SetMovie	11	81c174010000e9b5324500
+00548530	NUISystem::CMovie::`vector deleting destructor'	8	83e904e918000000
+00548540	NUISystem::CMovie::`vector deleting destructor'	8	83e918e908000000
+0054c340	NUISystem::CListArrow::`vector deleting destructor'	8	83e904e918000000
+0054c350	NUISystem::CListArrow::`vector deleting destructor'	8	83e918e908000000
+0054e1a0	NUISystem::CFrontEndButton::`vector deleting destructor'	8	83e904e918000000
+0054e1b0	NUISystem::CFrontEndButton::`vector deleting destructor'	8	83e918e908000000
+0054e560	NUISystem::CFrontEndScreen::`vector deleting destructor'	8	83e904e918000000
+0054e570	NUISystem::CFrontEndScreen::`vector deleting destructor'	8	83e918e908000000
+0054ec50	NUISystem::CViewport::`vector deleting destructor'	8	83e904e918000000
+0054ec60	NUISystem::CViewport::`vector deleting destructor'	8	83e918e908000000
+005562d0	NUISystem::CScrollableList::`vector deleting destructor'	8	83e904e918000000
+005562e0	NUISystem::CScrollableList::`vector deleting destructor'	8	83e918e908000000
+00557340	NUISystem::CRedefinerList::`vector deleting destructor'	8	83e904e918000000
+00557350	NUISystem::CRedefinerList::`vector deleting destructor'	8	83e918e908000000
+00558b10	NUISystem::CKeyRedefiner::`vector deleting destructor'	8	83e904e918000000
+00558b20	NUISystem::CKeyRedefiner::`vector deleting destructor'	8	83e918e908000000
+005595a0	NUISystem::CScrollBarOutside::`vector deleting destructor'	8	83e904e918000000
+005595b0	NUISystem::CScrollBarOutside::`vector deleting destructor'	8	83e918e908000000
+0055ac50	NUISystem::CDraggable::`vector deleting destructor'	8	83e904e918000000
+0055ac60	NUISystem::CDraggable::`vector deleting destructor'	8	83e918e908000000
+0055b830	NUISystem::CClickable::`vector deleting destructor'	8	83e904e918000000
+0055b840	NUISystem::CClickable::`vector deleting destructor'	8	83e918e908000000
+0055c1f0	NUISystem::CHoverable::`vector deleting destructor'	8	83e904e9a8020000
+0055c8b0	NUISystem::CMouseCursor::`vector deleting destructor'	8	83e904e918000000
+0055c8c0	NUISystem::CMouseCursor::`vector deleting destructor'	8	83e918e908000000
+005dbed0	CAnimComponentFollowingOnAnimFilter::TransferBinaryIn	8	83c108e9283de7ff
+005ea000	CTCTavernGame::GetDef	11	8b49048b4970e995340000
+00657230	NPlayerGui::CDrawNPCName::SetName	8	83c128e998453400
+00663600	CThingCreatureBase::ClearQueuedActions	11	81c108010000e945650000
+0066a9d0	CTCSoundPlayer::SetVoiceName	8	83c114e9d8453300
+00686a90	CTCBase::GetSerialiseVersion	11	8b0d1c8a3b01e93578e9ff
+00686d80	CTCBase::GetThingSearchTools	11	8b0d1c8a3b01e90577e9ff
+0069e1b0	CGameCameraManager::GetAngleXY	8	83c104e9c8e13600
+0069e1c0	CGameCameraManager::GetAngleYZ	8	83c104e918e23600
+006af270	CMessageEventFilter_CanBeHeard::operator()	7	8b09e969401800
+006af780	CTCPhysicsBase::UpdateInterpolation	8	8b01ffa080010000
+006b83e0	CEnvironmentSpellEffectInterpolator::ScreenFilterSetFlags	11	81c190000000e955961c00
+006c9fd0	CTCHero::FrameUpdate	12	e8cb32d4ff8bc8e9541bd4ff
+00700770	COpinionReactionManager::SetThingOpinionSource	11	81c114070000e915143000
+007021e0	CTCQuestCard::SetTeleporterRegionName	8	83c124e9c8cd2900
+00710530	C3DAnimationTransitionState::FindFirstAnimation	8	8b49088b01ff600c
+007122b0	NTCScriptedControl::CActionSummonerLightningAttackTarget::OnActivate	15	8b41048b511c89412083c11cff6208
+007128f0	NTCScriptedControl::CActionPlayAnimation::OnActivate	15	8b4104c64108018b4804e9a1cd1400
+00712a70	NTCScriptedControl::CActionPlayCombatAnimation::OnActivate	15	8b4104c64108018b4804e921cc1400
+007446a0	CTCPerceiveThing::GetPerceivedThing	8	83c10ce9a8d42b00
+007498d0	CTCNoise::GetCreator	8	83c148e978822b00
+00787740	CTCBob::SetForceVisible	9	8b01c6413001ff6024
+00798d80	CTCShopKeeper::GetCustomer	8	83c10ce9c88d2600
+007de4e0	CTCWallMount::GetObjectAttached	8	83c110e968362200
+007de4f0	CTCWallMount::PeekObjectAttached	8	83c110e958362200
+007f6160	CTCTargetingAI::ClearAllThingsToNotAttack	8	83c148e9e81eccff

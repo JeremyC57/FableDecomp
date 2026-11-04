@@ -84,6 +84,11 @@ public:
     long GetNavigationLevelAt(const C3DVector& pos) const;               // 0x00661D20
     // Ego_r.pdb ?GetCombatManager@CThingCreatureBase@@QAEAAVCCombatManager@@XZ (out of line, 0x00661ED0).
     CCombatManager& GetCombatManager();                                  // 0x00661ED0
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CLEARQUEUED
+    // Nested opt-in (chunk 765, row 0x00663600): Ego_r.pdb / FableWin.pdb ?ClearQueuedActions@CThingCreatureBase@@QAEXXZ, out of line in
+    // retail (`add ecx,108h ; jmp` the PQueuedActions list's out-of-line clear 0x00669B50). Declaration only: no layout change.
+    void ClearQueuedActions();                                           // 0x00663600
+#endif
 protected:
     virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x00663C40
 public:

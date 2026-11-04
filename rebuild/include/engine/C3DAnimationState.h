@@ -9,13 +9,34 @@
 // +4 store is CIVCountedPointeeBase::IVRefCount = 1 (C3DAnimationStateBase is 8 bytes with no own member, Ego_r.pdb).
 #include "rebuild_abi.h"
 #include "engine/CIVCountedPointeeBase.h"
+#ifdef FABLE_RETAIL_C3DANIMATIONSTATEBASE_VIRTUALS
+class C3DAnimationState;
+#endif
 class C3DAnimationStateBase : public CIVCountedPointeeBase {
 public:
     C3DAnimationStateBase() { IVRefCount = 1; }
+#ifdef FABLE_RETAIL_C3DANIMATIONSTATEBASE_VIRTUALS
+    // Nested opt-in (chunk 765, row 0x00710530 C3DAnimationTransitionState::FindFirstAnimation): the virtual interface after
+    // CIVCountedPointeeBase's slots 0-1, from the overriders' Ego_r.pdb / FableWin.pdb spellings and the retail vtables
+    // (C3DAnimationTransitionState 0x01265144: 2 GetType 0x00710520, 3 FindFirstAnimation 0x00710530, 4 FindDominantAnimation 0x00710540,
+    // 5 Validate 0x00A3BE30): ?GetType@..@@UBE?AW4EType@C3DAnimationStateBase@@XZ, ?FindFirstAnimation / ?FindDominantAnimation@..
+    // @@UBEABVC3DAnimationState@@XZ, ?Validate@..@@UAEXXZ. EType's enumerators are not modelled (MS forward enum).
+    enum EType;
+    virtual EType GetType() const = 0;                                   //  2
+    virtual const C3DAnimationState& FindFirstAnimation() const = 0;     //  3
+    virtual const C3DAnimationState& FindDominantAnimation() const = 0;  //  4
+    virtual void Validate() = 0;                                         //  5
+#endif
 };
 class C3DAnimationState : public C3DAnimationStateBase {
 public:
     C3DAnimationState(unsigned long index, float time) : AnimationIndex(index), AnimationTime(time) { }
+#ifdef FABLE_RETAIL_C3DANIMATIONSTATEBASE_VIRTUALS
+    virtual EType GetType() const;                                       //  2 0x00550880
+    virtual const C3DAnimationState& FindFirstAnimation() const;         //  3 0x00550890
+    virtual const C3DAnimationState& FindDominantAnimation() const;      //  4
+    virtual void Validate();                                             //  5
+#endif
     long AnimationIndex;                                                 // +0x08
     float AnimationTime;                                                 // +0x0c
 };

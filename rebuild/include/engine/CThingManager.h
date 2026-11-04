@@ -13,6 +13,9 @@
 class CMainGameComponent; class CPersistContext; class CThing; class CGameDefinitionManager;
 class CWorld; class CWorldMap; class CPlayerManager; class CNavigatorManager; class CEnvironment;
 class CMemoryDataInputStream; class CASuspendableProcess;
+#ifdef FABLE_RETAIL_CTHINGMANAGER_ACCESSORS
+class CThingSearchTools;                                        // chunk 765
+#endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER
 class CEnginePrimitivePrepareInfo;                              // chunk 734: PreparePrimitivesForEngine's parameter
 #endif
@@ -48,6 +51,19 @@ public:
     // Chunk 734 (row 0x004A1CB0): Ego_r.pdb / FableWin.pdb ?PreparePrimitivesForEngine@CThingManager@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
     // (retail 0x0051EAB0, landed).
     void PreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo& info);   // 0x0051EAB0
+#endif
+#ifdef FABLE_RETAIL_CTHINGMANAGER_ACCESSORS
+    // Opt-in (chunk 765, rows 0x004C7A50 / 0x004C7A60 / 0x004C7BC0 / 0x00686A90 / 0x00520C70): Ego_r.pdb / FableWin.pdb public
+    // members, out of line in retail in Ego_r's donor order: ?GetSerialiseVersion@CThingManager@@QBEJXZ 0x0051E2D0 (+0xD8),
+    // ?IsSerialisingGameState@CThingManager@@QBE_NXZ 0x0051E2E0 (+0x9A; after GetLevelBeingLoaded 0x0051E2C0 +0xDC, as Ego_r
+    // 0x005281F0 / 0x00528200 / 0x00528210), ?PeekThingSearchTools@CThingManager@@QBEABVCThingSearchTools@@XZ 0x0051E480,
+    // ?GetThingSearchTools@CThingManager@@QAEAAVCThingSearchTools@@XZ 0x0051E490 and
+    // ?ClearPersistenceDataForSection@CThingManager@@QAEXABVCCharString@@@Z 0x00520C70. Declarations only: no layout change.
+    long GetSerialiseVersion() const;                                   // 0x0051E2D0
+    bool IsSerialisingGameState() const;                                // 0x0051E2E0
+    const CThingSearchTools& PeekThingSearchTools() const;              // 0x0051E480
+    CThingSearchTools& GetThingSearchTools();                           // 0x0051E490
+    void ClearPersistenceDataForSection(const CCharString& section);   // 0x00520C70
 #endif
 protected:
     virtual void OnCreateClass(CClass&);
