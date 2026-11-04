@@ -24,6 +24,9 @@ public:
     virtual unsigned long PeekSceneFilterFlags() const = 0;
     virtual void OnReleaseDefaultPoolResources();
     virtual bool OnRestoreDefaultPoolResources();
+    // Chunk 742 (RenderSingleSpriteTrail 0x00BBE090): FableWin.pdb ?PeekRenderEnabled@CEngineComponent@@QBE_NXZ (no Ego_r.pdb copy,
+    // inline in retail: `mov al,[edx+8] ; test al,al` on the displacement renderer 0x01436E38).
+    bool PeekRenderEnabled() const { return RenderEnabled; }
 private:
     void** GlobalPointerAddress;                             // +0x04
     bool RenderEnabled;                                      // +0x08

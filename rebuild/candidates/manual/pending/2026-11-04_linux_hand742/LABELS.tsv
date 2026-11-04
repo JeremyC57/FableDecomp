@@ -1,0 +1,14 @@
+address	name
+0x00AEFAA0	NParticleEngine::CParticleEmitter::ReadBinary
+0x00BBC460	CEnginePrimitiveManagerParticleGroup::RenderSubPrimitive
+0x00BBE090	CEnginePrimitiveManagerParticleSpriteTrailGroup::RenderSingleSpriteTrail
+0x00BC25F0	CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive
+0x00BC3F30	CEnginePrimitiveManagerParticleLineGroup::RenderSubPrimitive
+0x00BE0EB0	CEnginePrimitiveManager2DParticleGroup::RenderSubPrimitive
+0x00AF0EF0	std::vector<CCountedPointer<NParticleEngine::CParticleSystem> >::reserve
+0x00AF4660	NParticleEngine::CParticleSystem::ReadBinary
+0x00BBC0B0	CEnginePrimitiveManagerParticleGroup::SetUpPointLights
+0x00BBCC70	CEnginePrimitiveManagerParticleGroup::SetupPixelShader
+0x00BCA950	CEnginePrimitiveManagerSpriteTrails::RenderSpriteTrail
+0x009881F0	CShaderRenderManager::SetWorldTransform
+0x0139B864	g_particleLineRenderEnabled_0139b864

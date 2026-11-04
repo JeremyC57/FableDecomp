@@ -40192,7 +40192,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aeef40	AddParticleSystem	CParticleEmitterManager	__thiscall	void	2	CGuiVarTransferStruct *,CGuiVarTransferBase *	1	yes	accepted									
 00aeefe0	DatabaseCopy	CParticleEmitter	__thiscall	void	2	CParticleEmitter *,CParticleEmitter *	1	yes	accepted									
 00aef1f0	DatabaseSerialise	NParticleEngine::CParticleEmitter	unknown	undefined	0		0	yes	accepted									
-00aefaa0	ReadBinary	CParticleEmitter	__thiscall	void	2	CParticleEmitter *,CDataInputStream *	1	yes	accepted									
+00aefaa0	ReadBinary	NParticleEngine::CParticleEmitter	__thiscall	void	2	CParticleEmitter *,CDataInputStream *	1	yes	accepted									
 00af0380	CParticleEmitter	NParticleEngine::CParticleEmitter	__thiscall	undefined	1	CParticleEmitter *	0	yes	accepted									
 00af0610	SetUpdateParameters	CParticleEmitter	__thiscall	void	2	CParticleEmitter *,CParticleUpdateParameters<unsigned_long,unsigned_long> *	1	yes	accepted									
 00af0650	DatabaseClone	CParticleEmitter	__thiscall	CParticleEmitter *	1	CParticleEmitter *	1	yes	accepted									
@@ -40210,7 +40210,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00af0d00	Move_CountedPointer_00af0d00	_global	__fastcall	CCountedPointer<CGuiVarTransferBase> *	4	CCountedPointer<class_CGuiVarTransferBase> *,CCountedPointer<class_CGuiVarTransferBase> *,CCountedPointer<class_CGuiVarTransferBase> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00af0d80	DestroyRange_CountedPointer_00af0d80	_global	__fastcall	void	4	pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_> *,pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_> *,allocator<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00af0e10	erase	std::vector<CCountedPointer<NParticleEngine::CParticleSystem>, std::allocator<CCountedPointer<NParticleEngine::CParticleSystem>>>	unknown	undefined	0		0			discovered	gapscan							
-00af0ef0	reserve	std::vector<CCountedPointer<CGuiVarTransferBase>, std::allocator<CCountedPointer<CGuiVarTransferBase>>>	unknown	undefined	0		0	yes	accepted									
+00af0ef0	reserve	std::vector<CCountedPointer<NParticleEngine::CParticleSystem> >	unknown	undefined	0		0	yes	accepted									
 00af0fa0	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 00af10c0	`scalar_deleting_destructor'	NParticleEngine::CParticleEmitter	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\af\CLandscapeBackgroundPatch_vectordeletingdestructor_00af10c0.cpp
 00af10e0	~CParticleEmitter	NParticleEngine::CParticleEmitter	__thiscall	void	1	CCreatureAction_DragonFireBlastBase *	1	yes	accepted									
@@ -42529,7 +42529,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bbc310	SetChildPrimitive	CEngineInternalPrimitiveParticleGroup	__thiscall	void	5	CEngineInternalPrimitiveParticleGroup *,ulong,CEnginePrimitiveHandle &,CEnginePrimitive const &,ulong	1	yes	accepted									
 00bbc3a0	GetChildPrimitiveHandle	CEngineInternalPrimitiveParticleGroup	__thiscall	void	3	CEngineInternalPrimitiveParticleGroup *,ulong,CEnginePrimitiveHandle &	1	yes	accepted									
 00bbc430	GetChildPrimitive	CEngineInternalPrimitiveParticleGroup	__thiscall	CEnginePersistentPrimitiveBase *	2	CEngineInternalPrimitiveParticleGroup *,ulong	1	yes	accepted									
-00bbc460	?RenderSubPrimitive@CEnginePrimitiveManagerParticleGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	CEnginePrimitiveManagerParticleGroup	__thiscall	void	3	CEnginePrimitiveManagerParticleGroup *,CEngineSubPrimitiveBase *,ERenderPassType	1	yes	accepted									
+00bbc460	RenderSubPrimitive	CEnginePrimitiveManagerParticleGroup	__thiscall	void	3	CEnginePrimitiveManagerParticleGroup *,CEngineSubPrimitiveBase *,ERenderPassType	1	yes	accepted									
 00bbcc70	SetupPixelShader	CEnginePrimitiveManagerParticleGroup	__thiscall	void	4	CEnginePrimitiveManagerParticleGroup *,ulong,CPixelShader *,CPixelShader *	1	yes	accepted									
 00bbce10	ClearChildPrimitive	CEngineInternalPrimitiveParticleGroup	__thiscall	void	2	CEngineInternalPrimitiveParticleGroup *,ulong	1	yes	accepted									
 00bbceb0	CreateInternalPrimitive	CEnginePrimitiveManagerParticleGroup	__thiscall	CEngineInternalPrimitiveBase *	2	CEnginePrimitiveManagerParticleGroup *,EEnginePrimitiveType	1	yes	accepted									
@@ -42586,7 +42586,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bc2470	RenderPrimitive	CEnginePrimitiveManagerParticleMeshGroup	__thiscall	ERendered	4	CEnginePrimitiveManagerParticleMeshGroup *,CEngineInternalPrimitiveBase &,EEngineRenderLayer,CEngineSubPrimitiveChain &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bc\CEnginePrimitiveManagerParticleMeshGroup_RenderPrimitive_00bc2470.cpp
 00bc2480	?Update@CEngineInternalPrimitiveParticleMesh@@UAEXABVCEnginePrimitive@@K@Z	CEngineInternalPrimitiveParticleMesh	__thiscall	void	3	CEngineInternalPrimitiveParticleMesh *,CEnginePrimitive *,ulong	1	yes	accepted									
 00bc25b0	GetWorldPosition	CEngineInternalPrimitiveParticleMesh	__thiscall	C3DVector	1	CTCPhysicsRigidBody *	1	yes	accepted									
-00bc25f0	?RenderSubPrimitive@CEnginePrimitiveManagerParticleMeshGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	CEnginePrimitiveManagerParticleMeshGroup	__thiscall	void	3	CEnginePrimitiveManagerParticleMeshGroup *,CEngineSubPrimitiveBase *,ERenderPassType	1	yes	accepted									
+00bc25f0	RenderSubPrimitive	CEnginePrimitiveManagerParticleMeshGroup	__thiscall	void	3	CEnginePrimitiveManagerParticleMeshGroup *,CEngineSubPrimitiveBase *,ERenderPassType	1	yes	accepted									
 00bc3390	GetSupportedTypes	CEnginePrimitiveManagerParticleMeshGroup	__thiscall	void	2	CEnginePrimitiveManagerParticleMeshGroup *,CEnginePrimitiveTypeList &	1	yes	accepted									
 00bc3410	CreateInternalPrimitive	CEnginePrimitiveManagerParticleMeshGroup	__thiscall	CEngineInternalPrimitiveBase *	2	CEnginePrimitiveManagerParticleMeshGroup *,EEnginePrimitiveType	1	yes	accepted									
 00bc34d0	CEnginePrimitiveManagerParticleMeshGroup	CEnginePrimitiveManagerParticleMeshGroup	__thiscall	undefined	2	CEnginePrimitiveManagerParticleMeshGroup *,CArray<CEngineScene*> *	0	yes	accepted									
@@ -42601,7 +42601,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bc3df0	PrimTypeMatchesGroup	CEngineInternalPrimitiveParticleLineGroup	__thiscall	bool	2	CEngineInternalPrimitiveParticleLineGroup *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bc\CEngineInternalPrimitiveParticleLineGroup_PrimTypeMatchesGroup_00bc3df0.cpp
 00bc3e00	RenderPrimitive	CEnginePrimitiveManagerParticleLineGroup	__thiscall	ERendered	4	CEnginePrimitiveManagerParticleLineGroup *,CEngineInternalPrimitiveBase &,EEngineRenderLayer,CEngineSubPrimitiveChain &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bc\CEnginePrimitiveManagerParticleLineGroup_RenderPrimitive_00bc3e00.cpp
 00bc3e10	BuildBuffers	_global	__thiscall	void	1	CEnginePrimitiveManagerParticleSpriteGroup *	1	yes	accepted									
-00bc3f30	CEnginePrimitiveManagerParticleLineGroup::RenderSubPrimitive	CEnginePrimitiveManagerParticleLineGroup	__thiscall	void	3	CEnginePrimitiveManagerParticleLineGroup *,CEngineSubPrimitiveBase &,ERenderPassType	1	yes	accepted									
+00bc3f30	RenderSubPrimitive	CEnginePrimitiveManagerParticleLineGroup	__thiscall	void	3	CEnginePrimitiveManagerParticleLineGroup *,CEngineSubPrimitiveBase &,ERenderPassType	1	yes	accepted									
 00bc3f3d	RenderSubPrimitive	CEnginePrimitiveManagerParticleLineGroup	__thiscall	void	3	CEnginePrimitiveManagerParticleLineGroup *,CEngineSubPrimitiveBase *,ERenderPassType	1	yes	accepted									
 00bc4c50	GetSupportedTypes	CEnginePrimitiveManagerParticleLineGroup	__thiscall	void	2	CEnginePrimitiveManagerParticleLineGroup *,CEnginePrimitiveTypeList &	1	yes	accepted									
 00bc4cd0	CreateInternalPrimitive	CEnginePrimitiveManagerParticleLineGroup	__thiscall	CEngineInternalPrimitiveBase *	2	CEnginePrimitiveManagerParticleLineGroup *,EEnginePrimitiveType	1	yes	accepted									
@@ -43012,7 +43012,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00be0bf0	InsertUnique_CRetailTree_00be0bf0	_unattributed	unknown	undefined	0		0	yes	accepted									
 00be0cd0	Render2DPrimitive	CEnginePrimitiveManager2DParticleGroup	__thiscall	void	4	CEnginePrimitiveManager2DParticleGroup *,CEngineInternalPrimitiveBase *,CEngineSubPrimitiveChain *,ESubPrimitiveType	1	yes	accepted									
 00be0de0	Update	CEngineInternalPrimitive2DParticleGroup	__thiscall	void	3	CEngineInternalPrimitive2DParticleGroup *,CEnginePrimitive *,ulong	1	yes	accepted									
-00be0eb0	?RenderSubPrimitive@CEnginePrimitiveManager2DParticleGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	CEnginePrimitiveManager2DParticleGroup	__thiscall	void	3	CEnginePrimitiveManager2DParticleGroup *,CEngineSubPrimitiveBase *,ERenderPassType	1	yes	accepted									
+00be0eb0	RenderSubPrimitive	CEnginePrimitiveManager2DParticleGroup	__thiscall	void	3	CEnginePrimitiveManager2DParticleGroup *,CEngineSubPrimitiveBase *,ERenderPassType	1	yes	accepted									
 00be1a00	CreateInternalPrimitive	CEnginePrimitiveManager2DParticleGroup	__thiscall	CEngineInternalPrimitiveBase *	2	CEnginePrimitiveManager2DParticleGroup *,EEnginePrimitiveType	1	yes	accepted									
 00be1a80	GetSupportedTypes	CEnginePrimitiveManager2DParticleGroup	__thiscall	void	2	CEnginePrimitiveManager2DParticleGroup *,CEnginePrimitiveTypeList &	1	yes	accepted									
 00be1b30	`scalar_deleting_destructor'	CEngineInternalPrimitive2DParticleGroup	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\be\CLandscapeBackgroundPatch_vectordeletingdestructor_00be1b30.cpp

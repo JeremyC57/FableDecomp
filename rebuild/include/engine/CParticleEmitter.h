@@ -5,7 +5,7 @@
 #include "engine/CCountedPointer.h"
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
-class CPersistContext;class CSymbolMap;
+class CPersistContext;class CSymbolMap;class CDataInputStream;
 namespace NParticleEngine {
 class CParticleSystem;
 class CEmitterDatabaseSerialiseInfo {public:const CSymbolMap& GraphicSymbols;const CSymbolMap& MeshSymbols;};
@@ -15,6 +15,8 @@ float __fastcall GetFadeOutStartDistance();float __fastcall GetFadeInStartDistan
 class CParticleEmitter:public CBaseObject {
 public:CParticleEmitter();virtual ~CParticleEmitter();
  void DatabaseSerialise(CPersistContext&,const CEmitterDatabaseSerialiseInfo&);
+ // Chunk 742 (0x00AEFAA0): FableWin.pdb / Ego_r.pdb ?ReadBinary@CParticleEmitter@NParticleEngine@@QAEXAAVCDataInputStream@@@Z.
+ void ReadBinary(CDataInputStream&);
 protected:
  std::vector<CCountedPointer<CParticleSystem> > ParticleSystems;
  unsigned char UpdateParameters[36]; // Original NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>, unaccessed composite.

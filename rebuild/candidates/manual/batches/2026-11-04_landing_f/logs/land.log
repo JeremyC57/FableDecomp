@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00aefaa0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@SIXPAX@Z -> 00af0710 labelled '_global::DeleteViaVtable0_00af0710'
+00aefaa0   RELOCATION_MATCH PASS   ReadBinary
+00bbc460   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00bbc460   RELOCATION_MATCH PASS   RenderSubPrimitive
+
+WINS: 2
+  00aefaa0 RELOCATION_MATCH NParticleEngine::CParticleEmitter::?ReadBinary@CParticleEmitter@NParticleEngine@@QAEXAAVCDataInputStream@@@Z
+  00bbc460 RELOCATION_MATCH CEnginePrimitiveManagerParticleGroup::?RenderSubPrimitive@CEnginePrimitiveManagerParticleGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NParticleEngineCParticleEmitter_ReadBinary_00aefaa0
+  CEnginePrimitiveManagerParticleGroup_RenderSubPrimitive_00bbc460

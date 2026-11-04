@@ -36188,3 +36188,7 @@ _mdct_butterflies@12	00c9c400	00c9c620
 @vorbis_bitrate_managed@4	00c9cfd0	00c9ef90
 @oggpack_get_buffer@4	00c91800	00c90cb0
 @oggpack_reset@4	00c912f0	00c90cb0
+?ReadBinary@CParticleSystem@NParticleEngine@@QAEXAAVCDataInputStream@@@Z	00af4660	00aefaa0
+?reserve@?$vector@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@V?$allocator@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@@std@@@std@@QAEXI@Z	00af0ef0	00aefaa0
+?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA	01396dd8	00bbc460
+?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z	00bbc130	00bbc460

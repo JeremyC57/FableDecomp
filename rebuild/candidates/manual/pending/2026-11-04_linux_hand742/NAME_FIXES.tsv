@@ -1,0 +1,8 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00AF4660	?ReadBinary@CParticleSystem@NParticleEngine@@QAEXAAVCDataInputStream@@@Z	FableWin.pdb + Ego_r.pdb name sets; the 0x00AEFAA0 caller passes the stream by reference	landed ...QAEXPAVCDataInputStream@@@Z (pointer spelling)
+0x00BBC130	?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z	FableWin.pdb + Ego_r.pdb (IAE = protected)	landed declared public (QAE...)
+0x00BBE090	?RenderSingleSpriteTrail@CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	FableWin.pdb + Ego_r.pdb	landed callers ...QAEXPAVCEngineSubPrimitiveBase@@... (pointer)
+0x00BC04F0	?RenderSingleSprite@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	FableWin.pdb + Ego_r.pdb	reloc binding ...QAEXPAVCEngineSubPrimitiveBase@@... (pointer)
+0x00AF0EF0	?reserve@?$vector@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@V?$allocator@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@@std@@@std@@QAEXI@Z	0x00AEFAA0 reserves CParticleEmitter::ParticleSystems (vector<CCountedPointer<CParticleSystem> >, element 8 bytes) through it	catalog 'vector<CCountedPointer<CGuiVarTransferBase>>::reserve' (byte-identical body propagated)
+0x01396DC8	?D3DTextureUVModeTable@CRenderStateManager@@0PAKA	CRenderStateManager.h (PDB DATA record cited by Codex pass 13)	label 'g_textureUVModeToD3D' (vland RELOC_NAME warning)
+0x00AF0710	?DeleteData@?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@SIXPAX@Z	CCountedPointer<T>::DeleteData stored by the counted-pointer ctor (shared header spelling)	label '_global::DeleteViaVtable0_00af0710' (vland RELOC_NAME warning)

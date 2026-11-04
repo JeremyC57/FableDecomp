@@ -1,0 +1,36 @@
+addr       parity           behav  name
+0098acf0   WARN RELOC_NAME: ?Initialise@CShaderResource@@QAEXAAVCShaderRenderManager@@@Z -> 00a5d4d0 labelled '_global::SetMember_dword0x14_00a5d4d0'
+0098acf0   RELOCATION_MATCH PASS   Initialise
+00989cb0   RELOCATION_MATCH PASS   UpdateObjectSpaceLighting
+009da9f0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+009da9f0   WARN RELOC_NAME: ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z -> 00a0aa80 labelled '_global::Forward_SetViewport_via0x3a3c_00a0aa80'
+009da9f0   WARN RELOC_NAME: ?erase@?$vector@VCQuickDrawTriInfo@@V?$allocator@VCQuickDrawTriInfo@@@std@@@std@@QAEPAVCQuickDrawTriInfo@@PAV3@0@Z -> 009e15e0 labelled 'TextureCache_MoveAndCleanup'
+009da9f0   RELOCATION_MATCH PASS   Render2DDrawList
+00ae8d50   WARN RELOC_NAME: ??$__copy@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@PAU12@H@std@@YIPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00ae9cb0 labelled 'std::__copy<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, int>'
+00ae8d50   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@0ABU__false_type@0@@Z -> 00ae9d50 labelled 'std::__destroy_aux<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *>'
+00ae8d50   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00ae8d50   RELOCATION_MATCH PASS   Load
+00aef1f0   WARN RELOC_NAME: ?WriteString@CPersistContext@@QAEXABVCCharString@@@Z -> 009bab50 labelled '_global::Forward_operator___via0x20_009bab50'
+00aef1f0   WARN RELOC_NAME: ?DatabaseSerialise@CParticleSystem@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z -> 00af4900 labelled 'CParticleSystem::SerializeComponents'
+00aef1f0   WARN RELOC_NAME: ?GetMaxSpawnDistance@NParticleEngine@@YIMXZ -> 00aeaa60 labelled '_global::GetConstFloat_48_00aeaa60'
+00aef1f0   WARN RELOC_NAME: ?GetMaxDrawDistance@NParticleEngine@@YIMXZ -> 00aeaa50 labelled '_global::GetConstFloat_60_00aeaa50'
+00aef1f0   WARN RELOC_NAME: ?GetFadeOutStartDistance@NParticleEngine@@YIMXZ -> 00aeaa20 labelled '_global::GetConstFloat_48_00aeaa20'
+00aef1f0   WARN RELOC_NAME: ?GetFadeInEndDistance@NParticleEngine@@YIMXZ -> 00aeaa30 labelled '_global::GetConstFloat_0_00aeaa30'
+00aef1f0   WARN RELOC_NAME: ?GetFadeInStartDistance@NParticleEngine@@YIMXZ -> 00aeaa40 labelled '_global::GetConstFloat_0_00aeaa40'
+00aef1f0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@SIXPAX@Z -> 00af0710 labelled '_global::DeleteViaVtable0_00af0710'
+00aef1f0   RELOCATION_MATCH PASS   DatabaseSerialise
+00afbce0   RELOCATION_MATCH PASS   DatabaseSerialise
+00b26360   WARN RELOC_NAME: ?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z -> 009ade10 labelled 'CDefinitionManager::GetPDefFromGlobalIndex'
+00b26360   WARN RELOC_CONFLICT: ??0CEnginePrimitiveTypeInfo@@QAE@XZ -> 00b8faa0 here, 00a02d20 in landed 00a148d0
+00b26360   RELOCATION_MATCH PASS   Initialise
+00b3be10   RELOCATION_MATCH PASS   BuildAlphaStippleTexture
+
+WINS: 8
+  0098acf0 RELOCATION_MATCH CShaderRenderManager::?Initialise@CShaderRenderManager@@QAEXPAVCRenderManager@@PAUIDirect3DDevice9@@@Z
+  00989cb0 RELOCATION_MATCH CShaderRenderManager::?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z
+  009da9f0 RELOCATION_MATCH CRenderManager2D::?Render2DDrawList@CRenderManager2D@@QAEX_N@Z
+  00ae8d50 RELOCATION_MATCH NParticleEngine::CParticleEmitterDatabase::?Load@CParticleEmitterDatabase@NParticleEngine@@IAEXAAVCAFile@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00aef1f0 RELOCATION_MATCH NParticleEngine::CParticleEmitter::?DatabaseSerialise@CParticleEmitter@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00afbce0 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::?DatabaseSerialise@CPSCRenderSprite@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00b26360 RELOCATION_MATCH CEngine::?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
+  00b3be10 RELOCATION_MATCH CEngineResourceManager::?BuildAlphaStippleTexture@CEngineResourceManager@@AAEXJAAV?$CArray@E@@@Z

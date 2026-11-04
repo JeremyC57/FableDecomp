@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00b581e0   RELOCATION_MATCH PASS   Apply
+00b57d20   RELOCATION_MATCH PASS   Apply
+00b57860   RELOCATION_MATCH PASS   Apply
+00b573a0   RELOCATION_MATCH PASS   Apply
+00b67920   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00b67920   RELOCATION_MATCH PASS   ~CEngineLandscapeRenderer
+00b6d6d0   WARN RELOC_NAME: ?WorldFrameUpdate@CEngineWaterSettings@@QAEX_N@Z -> 00be95f0 labelled 'CEngineWaterSettings::UpdateWorldFrameState'
+00b6d6d0   RELOCATION_MATCH PASS   WorldFrameUpdate
+00b71880   RELOCATION_MATCH PASS   ~CEngineWaterRenderer
+00bc14e0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleSpriteGroup
+
+WINS: 8
+  00b581e0 RELOCATION_MATCH CEngineStateBlockAddSmoothAlpha::?Apply@CEngineStateBlockAddSmoothAlpha@@UAEXXZ
+  00b57d20 RELOCATION_MATCH CEngineStateBlockAdditiveAlpha::?Apply@CEngineStateBlockAdditiveAlpha@@UAEXXZ
+  00b57860 RELOCATION_MATCH CEngineStateBlockAlpha2X::?Apply@CEngineStateBlockAlpha2X@@UAEXXZ
+  00b573a0 RELOCATION_MATCH CEngineStateBlockAlpha::?Apply@CEngineStateBlockAlpha@@UAEXXZ
+  00b67920 RELOCATION_MATCH CEngineLandscapeRenderer::??1CEngineLandscapeRenderer@@UAE@XZ
+  00b6d6d0 RELOCATION_MATCH CEngineWaterRenderer::?WorldFrameUpdate@CEngineWaterRenderer@@UAEX_N@Z
+  00b71880 RELOCATION_MATCH CEngineWaterRenderer::??1CEngineWaterRenderer@@UAE@XZ
+  00bc14e0 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteGroup::??0CEnginePrimitiveManagerParticleSpriteGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z

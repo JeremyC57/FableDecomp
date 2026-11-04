@@ -1,0 +1,8 @@
+address	name	status	attempts	note
+00aefaa0	NParticleEngine::CParticleEmitter::ReadBinary	RELOCATION_MATCH	2	src/; vland RELOCATION_MATCH + PASS
+00bbc460	CEnginePrimitiveManagerParticleGroup::RenderSubPrimitive	RELOCATION_MATCH	3	src/; vland RELOCATION_MATCH + PASS
+00bbe090	CEnginePrimitiveManagerParticleSpriteTrailGroup::RenderSingleSpriteTrail	DIFFER(2432v2464)	15	differ/; 46 masked lines, all in the bookmark test/or lane-gap blocks of the blend-op / blend-mode switches (cross-jump knock-on)
+00bc3f30	CEnginePrimitiveManagerParticleLineGroup::RenderSubPrimitive	DIFFER(3272v3357)	14	differ/ (11 valid grades + 3 discarded parallel runs); lane gap changes the blend-mode cross-jump (-85 bytes) plus register knock-on
+00bc3f3d	(bogus catalog row)	NOT_A_FUNCTION	0	inside the prologue of 0x00BC3F30 (the push esi); see NOTES.md
+00bc25f0	CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive	NOT_ATTEMPTED	0	3480 bytes; decoded outline in NOTES.md; out of session budget after the container restart
+00be0eb0	CEnginePrimitiveManager2DParticleGroup::RenderSubPrimitive	DIFFER(2889v2889)	13	differ/; same size, 14 masked lines: lane gap in 2 blocks + one mov ebx,1 scheduling slot

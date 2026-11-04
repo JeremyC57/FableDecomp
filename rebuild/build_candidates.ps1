@@ -381312,6 +381312,20 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /TC /Gr'
         PassPattern = '00c91800_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00aefaa0'
+        Module = 'NParticleEngine::CParticleEmitter'
+        Source = '00/ae/NParticleEngineCParticleEmitter_ReadBinary_00aefaa0.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitter_ReadBinary_00aefaa0_test.cpp'
+        PassPattern = '00aefaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbc460'
+        Module = 'CEnginePrimitiveManagerParticleGroup'
+        Source = '00/bb/CEnginePrimitiveManagerParticleGroup_RenderSubPrimitive_00bbc460.cpp'
+        TestSource = '00/bb/CEnginePrimitiveManagerParticleGroup_RenderSubPrimitive_00bbc460_test.cpp'
+        PassPattern = '00bbc460_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

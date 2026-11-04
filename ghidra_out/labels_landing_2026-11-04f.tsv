@@ -1,0 +1,13 @@
+address	name	evidence
+00aefaa0	NParticleEngine::CParticleEmitter::ReadBinary	landing 2026-11-04f (chunk 742): chunk 742 NOTES.md "Identities and slot names"
+00bbc460	CEnginePrimitiveManagerParticleGroup::RenderSubPrimitive	landing 2026-11-04f (chunk 742): chunk 742 NOTES.md "Identities and slot names"
+00bbe090	CEnginePrimitiveManagerParticleSpriteTrailGroup::RenderSingleSpriteTrail	landing 2026-11-04f (chunk 742): ?RenderSingleSpriteTrail@CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z; FableWin.pdb + Ego_r.pdb
+00bc25f0	CEnginePrimitiveManagerParticleMeshGroup::RenderSubPrimitive	landing 2026-11-04f (chunk 742): chunk 742 NOTES.md "Identities and slot names"
+00bc3f30	CEnginePrimitiveManagerParticleLineGroup::RenderSubPrimitive	landing 2026-11-04f (chunk 742): chunk 742 NOTES.md "Identities and slot names"
+00be0eb0	CEnginePrimitiveManager2DParticleGroup::RenderSubPrimitive	landing 2026-11-04f (chunk 742): chunk 742 NOTES.md "Identities and slot names"
+00af0ef0	std::vector<CCountedPointer<NParticleEngine::CParticleSystem> >::reserve	landing 2026-11-04f (chunk 742): ?reserve@?$vector@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@V?$allocator@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@@std@@@std@@QAEXI@Z; 0x00AEFAA0 reserves CParticleEmitter::ParticleSystems (vector<CCountedPointer<CParticleSystem> >, element 8 bytes) through it
+00af4660	NParticleEngine::CParticleSystem::ReadBinary	landing 2026-11-04f (chunk 742): ?ReadBinary@CParticleSystem@NParticleEngine@@QAEXAAVCDataInputStream@@@Z; FableWin.pdb + Ego_r.pdb name sets; the 0x00AEFAA0 caller passes the stream by reference
+00bbc0b0	CEnginePrimitiveManagerParticleGroup::SetUpPointLights	landing 2026-11-04f (chunk 742): chunk 742 NOTES.md "Identities and slot names"
+00bbcc70	CEnginePrimitiveManagerParticleGroup::SetupPixelShader	landing 2026-11-04f (chunk 742): chunk 742 NOTES.md "Identities and slot names"
+00bca950	CEnginePrimitiveManagerSpriteTrails::RenderSpriteTrail	landing 2026-11-04f (chunk 742): chunk 742 NOTES.md "Identities and slot names"
+009881f0	CShaderRenderManager::SetWorldTransform	landing 2026-11-04f (chunk 742): chunk 742 NOTES.md "Identities and slot names"

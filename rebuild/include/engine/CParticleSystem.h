@@ -41,6 +41,11 @@ public:CParticleSystem();virtual ~CParticleSystem();
  // add eax,52h ; ret`, the parent emitter's Velocity -- Ego_r.pdb +0x5E less the 0xC the STLport members save).
  CParticle* AllocateParticle();
  const C3DVector& PeekEmitterVelocity() const;
+ // Chunk 742 (CParticleEmitter::ReadBinary 0x00AEFAA0): FableWin.pdb ?ReadBinary@CParticleSystem@NParticleEngine@@QAEXAAVCDataInputStream@@@Z
+ // (out of line, 0x00AF4660) and ?IsEnabled@CParticleSystem@NParticleEngine@@QBE_NXZ (inline: `test byte [ebp+50h],2`; FableWin
+ // places its debug COMDAT 0x02F0DB90 right after CParticleEmitter::ReadBinary 0x02F0D3A0).
+ void ReadBinary(CDataInputStream&);
+ bool IsEnabled() const { return Enabled; }
 #endif
 protected:
  const CParticleEmitter* PParentEmitter;CIEngine* PEngine;

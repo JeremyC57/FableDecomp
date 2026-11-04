@@ -31,6 +31,18 @@ public:
         E21*=scale; E22*=scale; E23*=scale;
         E31*=scale; E32*=scale; E33*=scale;
     }
+    // Chunk 742 (0x00BE0EB0 CEnginePrimitiveManager2DParticleGroup::RenderSubPrimitive): FableWin.pdb ?PostScale@CMatrix3x4@@QAEXM@Z
+    // (all twelve elements, translation included, column by column as retail scales them 0x00BE0FB6..0x00BE102B) and
+    // ?PostTranslate@CMatrix3x4@@QAEXABVC3DVector@@@Z (E4k += v; the by-reference operand gives retail's `fld E4k ; fadd v` order).
+    // No Ego_r.pdb or retail out-of-line copy; __forceinline per the owner's 2026-11-01 helper rule.
+    __forceinline void PostScale(float scale) {
+        E11*=scale; E21*=scale; E31*=scale; E41*=scale;
+        E12*=scale; E22*=scale; E32*=scale; E42*=scale;
+        E13*=scale; E23*=scale; E33*=scale; E43*=scale;
+    }
+    __forceinline void PostTranslate(const C3DVector& v) {
+        E41+=v.X; E42+=v.Y; E43+=v.Z;
+    }
     __forceinline void SetInverse(const CMatrix3x4& m) {
         float det = m.E11 * (m.E22 * m.E33 - m.E23 * m.E32) + m.E21 * (m.E32 * m.E13 - m.E33 * m.E12) + m.E31 * (m.E23 * m.E12 - m.E22 * m.E13);
         float inv = 1.0f / det;
