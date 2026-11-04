@@ -197,6 +197,19 @@ public:
     // inline): retail calls its vector<NUISystem::CComponent*> instance at 0x005798C8 for `ExpSliders = ...`.
     vector& operator=(const vector& x);
 #endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_C
+    // Retail branch (chunk 741, row 0x00B149D0 CPSCEmitterGeneric::ReadBinary): STLport 4.6 _vector.h includes _vector.c, so the
+    // TU sees operator='s body (below) and _M_allocate_and_copy; VC7.1 still calls operator= out of line (vector<C3DVector>
+    // 0x0075B8D0) but, seeing that it never captures its argument, keeps the caller's local start pointer in a register across
+    // the call (retail 0x00B15840 `mov ebx,[esp+14h]` ... 0x00B1587C `test ebx,ebx; push ebx; call free`; declaration-only: reloaded, 3784v3779).
+    vector& operator=(const vector& x);
+    size_type capacity() const { return size_type(this->_M_end_of_storage._M_data-this->_M_start); }
+    template <class _ForwardIter> _Tp* _M_allocate_and_copy(size_type n,_ForwardIter first,_ForwardIter last) {
+        _Tp* result=this->_M_end_of_storage.allocate(n);
+        __uninitialized_copy(first,last,result,_IsPODType());
+        return result;
+    }
+#endif
     _Alloc get_allocator() const { return _Alloc(this->_M_end_of_storage); }
     iterator begin() { return this->_M_start; }
     const_iterator begin() const { return this->_M_start; }
@@ -262,6 +275,29 @@ protected:
     }
 };
 // _vector.c: the growth paths are out-of-class, non-inline template members.
+#ifdef FABLE_RETAIL_STLP_VECTOR_C
+// STLport 4.6 stl/_vector.c operator= (see the in-class note): grow (allocate-and-copy, clear, new storage), shrink (copy, destroy
+// the tail) or extend (copy over size(), uninitialized-copy the rest), then _M_finish = _M_start + xlen.
+template<class _Tp,class _Alloc> vector<_Tp,_Alloc>& vector<_Tp,_Alloc>::operator=(const vector<_Tp,_Alloc>& x) {
+    if(&x!=this) {
+        const size_type xlen=x.size();
+        if(xlen>capacity()) {
+            _Tp* tmp=_M_allocate_and_copy(xlen,(const _Tp*)x._M_start+0,(const _Tp*)x._M_finish+0);
+            _M_clear();
+            this->_M_start=tmp;
+            this->_M_end_of_storage._M_data=this->_M_start+xlen;
+        } else if(size()>=xlen) {
+            _Tp* i=__copy_ptrs((const _Tp*)x._M_start+0,(const _Tp*)x._M_finish+0,(_Tp*)this->_M_start,_IsPODType());
+            _Destroy(i,this->_M_finish);
+        } else {
+            __copy_ptrs((const _Tp*)x._M_start,(const _Tp*)x._M_start+size(),(_Tp*)this->_M_start,_IsPODType());
+            __uninitialized_copy((const _Tp*)x._M_start+size(),(const _Tp*)x._M_finish+0,this->_M_finish,_IsPODType());
+        }
+        this->_M_finish=this->_M_start+xlen;
+    }
+    return *this;
+}
+#endif
 template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_insert_overflow(iterator position,const _Tp& x,const __false_type&,size_type fillLength,bool atEnd) {
     const size_type oldSize=size();const size_type len=oldSize+(max)(oldSize,fillLength);
     _Tp* newStart=this->_M_end_of_storage.allocate(len);_Tp* newFinish=newStart;

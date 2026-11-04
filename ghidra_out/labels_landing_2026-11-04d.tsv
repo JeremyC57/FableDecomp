@@ -1,0 +1,18 @@
+address	name	evidence
+00b10b10	NParticleEngine::CPSCEmitterGeneric::GenerateParticle	landing 2026-11-04d (chunk 741): 
+00b13530	NParticleEngine::CPSCEmitterGeneric::DatabaseSerialise	landing 2026-11-04d (chunk 741): 
+00b149d0	NParticleEngine::CPSCEmitterGeneric::ReadBinary	landing 2026-11-04d (chunk 741): 
+00b15bd0	NParticleEngine::GFInterpolateArray<C3DVector>	landing 2026-11-04d (chunk 741): 
+00b0dc20	NParticleEngine::CPSCUpdateNormal::Update	landing 2026-11-04d (chunk 741): 
+00aeaa00	NParticleEngine::GetOneOverTickRate	landing 2026-11-04d (chunk 741): 
+00aeab10	NParticleEngine::GetEnvironmentInteraction	landing 2026-11-04d (chunk 741): 
+00aeaad0	NParticleEngine::GetRandomSeed	landing 2026-11-04d (chunk 741): 
+00af5330	NParticleEngine::CParticleSystem::DeleteParticle	landing 2026-11-04d (chunk 741): 
+00af5380	NParticleEngine::CParticleSystem::AllocateDecal	landing 2026-11-04d (chunk 741): 
+00aeabe0	NParticleEngine::CParticleEmitterManager::CreateDecalEmitter	landing 2026-11-04d (chunk 741): 
+00655318	CIntelligentPointer<NParticleEngine::CParticleEmitter>::CIntelligentPointer(CParticleEmitter*)	landing 2026-11-04d (chunk 741): 
+00b0f920	std::list<CIntelligentPointer<NParticleEngine::CParticleEmitter> >::push_back	landing 2026-11-04d (chunk 741): 
+00a88c10	CQuaternion::operator*=	landing 2026-11-04d (chunk 741): 
+00a88d10	CQuaternion::SetFromAxisAngle	landing 2026-11-04d (chunk 741): 
+00a146c0	C3DVector::GetRandomPointWithinUnitSphere	landing 2026-11-04d (chunk 741): 
+00af4360	NParticleEngine::CParticleSystem::GetComponentOfType	landing 2026-11-04d (chunk 741): 

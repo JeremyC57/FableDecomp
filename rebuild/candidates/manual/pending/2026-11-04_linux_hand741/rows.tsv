@@ -1,0 +1,6 @@
+address	module	name	length	group	anchor	gap_to_next_start
+00b10b10	CPSCEmitterGeneric	GenerateParticle	4276	G00b10b10	CPSCEmitterGeneric	9184
+00b13530	CPSCEmitterGeneric	DatabaseSerialise	5268	G00b10b10	CPSCEmitterGeneric	5280
+00b149d0	CPSCEmitterGeneric	ReadBinary	3779	G00b10b10	CPSCEmitterGeneric	3792
+00b15bd0	_global	InterpolateAnimationSequence	1361	G00b10b10	CPSCEmitterGeneric	1488
+00b0dc20	NParticleEngine::CPSCUpdateNormal	Update	5602	G00b0a920	retry of chunk 739 (not drafted)	5616

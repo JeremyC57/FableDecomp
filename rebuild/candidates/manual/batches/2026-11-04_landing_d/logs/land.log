@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00b149d0   RELOCATION_MATCH PASS   ReadBinary
+00b15bd0   RELOCATION_MATCH PASS   GFInterpolateArray
+
+WINS: 2
+  00b149d0 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::?ReadBinary@CPSCEmitterGeneric@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b15bd0 RELOCATION_MATCH NParticleEngine::??$GFInterpolateArray@VC3DVector@@@NParticleEngine@@YI?AV?$CArray@VC3DVector@@@@ABV1@0MABVC3DVector@@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NParticleEngineCPSCEmitterGeneric_ReadBinary_00b149d0
+  NParticleEngine_GFInterpolateArray_00b15bd0

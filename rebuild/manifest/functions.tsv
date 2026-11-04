@@ -13958,7 +13958,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006551ff	operator=	CDefPointer<CUnprovenDef_006551ff const>	__thiscall	bool	2	CEngineInternalPrimitiveMeshBase *,CIVCountedPointer<CEngineMeshEffect> *	1	yes	accepted									
 00655230	CIVCountedPointer_Attach_00655230	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted									
 00655300	CIVCountedPointer_Release_00655300	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00655300.cpp
-00655318	CIntelligentPointer	CIntelligentPointer<NParticleEngine::CParticleEmitter>	__thiscall	undefined	2	CIntelligentPointer<CThing_const_> *,CThing *	0	yes	accepted									
+00655318	CIntelligentPointer(CParticleEmitter*)	CIntelligentPointer<NParticleEngine::CParticleEmitter>	__thiscall	undefined	2	CIntelligentPointer<CThing_const_> *,CThing *	0	yes	accepted									
 0065533c	CIntelligentPointer_Assign_0065533c	_global	__thiscall	CIntelligentPointer<class_CThingCreatureBase> *	2	CIntelligentPointer<CThingCreatureBase> *,CIntelligentPointer<class_CThingCreatureBase> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CIntelligentPointerCThingCreatureBase_operator_0065533c.cpp
 006553d0	std_list_node_unlink_and_free	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\global_stdlistnodeunlinkandfree_006553d0.cpp
 006553fd	std_list_node_unlink_and_free	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\global_stdlistnodeunlinkandfree_006553fd.cpp
@@ -40103,9 +40103,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aeaae0	GetGlobal_013d2e14_00aeaae0	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaae0.cpp
 00aeaaf0	GetParticleEmitterManager	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaaf0.cpp
 00aeab00	GetGlobal_013d2e24_00aeab00	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeab00.cpp
-00aeab10	GetGlobal_013d2e2c_00aeab10	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeab10.cpp
+00aeab10	GetEnvironmentInteraction	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeab10.cpp
 00aeab20	SetEnvironmentInteraction	NParticleEngine	__fastcall	void	1	CCountedPointer<NParticleEngine::CAEnvironmentInteraction>	1	yes	accepted									
-00aeabe0	CreateDecalEmitter	CParticleEmitterManager	__thiscall	CParticleEmitter *	5	CParticleEmitterManager *,long,C3DVector *,bool,CRightHandedSet *	1	yes	accepted									
+00aeabe0	CreateDecalEmitter	NParticleEngine::CParticleEmitterManager	__thiscall	CParticleEmitter *	5	CParticleEmitterManager *,long,C3DVector *,bool,CRightHandedSet *	1	yes	accepted									
 00aeac90	DumpInfo	NParticleEngine::CParticleEmitterManager	__thiscall	void	2	CParticleEmitterManager *,CWideString *	1	yes	accepted									
 00aeaf20	ClearLowestPriorityNonVisibleEmitterParticles	CParticleEmitterList	__thiscall	void	2	CParticleEmitterList *,CIEngine *	1	yes	accepted									
 00aeaf80	ClearLowestPriorityNonVisibleEmitterDecals	CParticleEmitterList	__thiscall	void	2	CParticleEmitterList *,CIEngine *	1	yes	accepted									
@@ -40332,7 +40332,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00af4ee0	DatabaseCopy	NParticleEngine::CParticleSystem	__thiscall	void	2	CParticleSystem *,CParticleSystem *	1	yes	accepted									
 00af5010	AllocateParticle	NParticleEngine::CParticleSystem	__thiscall	CParticle *	1	CParticleSystem *	1	yes	accepted									
 00af5090	ClearParticle	CParticleSystem	__thiscall	void	2	CParticleSystem *,_List_iterator<std::_List_val<NParticleEngine::CParticle*,std::allocator<NParticleEngine::CParticle*>_>_> *	1	yes	accepted									
-00af5330	DeleteParticle	CParticleSystem	__thiscall	_List_iterator<std::_List_val<NParticleEngine::CParticle*,std::allocator<NParticleEngine::CParticle*>_>_>	2	CParticleSystem *,_List_iterator<class_std::_List_val<class_NParticleEngine::CParticle*,class_std::allocator<class_NParticleEngine::CParticle*>_>_> *	1	yes	accepted									
+00af5330	DeleteParticle	NParticleEngine::CParticleSystem	__thiscall	_List_iterator<std::_List_val<NParticleEngine::CParticle*,std::allocator<NParticleEngine::CParticle*>_>_>	2	CParticleSystem *,_List_iterator<class_std::_List_val<class_NParticleEngine::CParticle*,class_std::allocator<class_NParticleEngine::CParticle*>_>_> *	1	yes	accepted									
 00af5380	AllocateDecal	NParticleEngine::CParticleSystem	__thiscall	CDecal *	1	CParticleSystem *	1	yes	accepted									
 00af5430	ClearDecal	CParticleSystem	__thiscall	void	2	CParticleSystem *,_List_iterator<std::_List_val<NParticleEngine::CDecal*,std::allocator<NParticleEngine::CDecal*>_>_> *	1	yes	accepted									
 00af5690	DeleteDecal	CParticleSystem	__thiscall	_List_iterator<std::_List_val<NParticleEngine::CDecal*,std::allocator<NParticleEngine::CDecal*>_>_>	2	CParticleSystem *,_List_iterator<class_std::_List_val<class_NParticleEngine::CDecal*,class_std::allocator<class_NParticleEngine::CDecal*>_>_> *	1	yes	accepted									
@@ -40570,7 +40570,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b0f8b0	vfunc_5	NParticleEngine::CPSCUpdateNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b0f8c0	GetName_GenericParticleSystem	_global	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 00b0f8e0	GetParticleLifeSecs	NParticleEngine::CPSCUpdateNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00b0f920	push_back	std::list<CIntelligentPointer<NParticleEngine::CParticleEmitter>, std::allocator<CIntelligentPointer<NParticleEngine::CParticleEmitter>>>	unknown	undefined	0		0	yes	accepted									
+00b0f920	push_back	std::list<CIntelligentPointer<NParticleEngine::CParticleEmitter> >	unknown	undefined	0		0	yes	accepted									
 00b0f970	DatabaseClone	NParticleEngine::CPSCUpdateNormal	__thiscall	bool	1	CThingTrackNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b0\CThingTrackNode_DrawIsDrawable_00b0f970.cpp
 00b0f990	`scalar_deleting_destructor'	NParticleEngine::CPSCUpdateNormal	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
 00b0f9f0	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
@@ -40583,11 +40583,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b10360	ChangeOrientation	NParticleEngine::CPSCEmitterGeneric	unknown	undefined	0		0	yes	accepted									
 00b103f0	CPSCEmitterGeneric	NParticleEngine::CPSCEmitterGeneric	__thiscall	undefined	1	CPSCEmitterGeneric *	0	yes	accepted									
 00b109b0	vfunc_31	NParticleEngine::CPSCEmitterGeneric	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00b10b10	GenerateParticle	CPSCEmitterGeneric	__thiscall	void	4	CPSCEmitterGeneric *,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *,float	1	yes	accepted									
+00b10b10	GenerateParticle	NParticleEngine::CPSCEmitterGeneric	__thiscall	void	4	CPSCEmitterGeneric *,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *,float	1	yes	accepted									
 00b12ef0	WriteBinary	NParticleEngine::CPSCEmitterGeneric	__thiscall	void	2	CPSCEmitterGeneric *,CDataOutputStream *	1	yes	accepted									
 00b131e0	NParticleEngine::CPSCEmitterGeneric::vfunc_18	NParticleEngine::CPSCEmitterGeneric	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00b13530	DatabaseSerialise	CPSCEmitterGeneric	__thiscall	void	3	CPSCEmitterGeneric *,CPersistContext *,CEmitterDatabaseSerialiseInfo *	1	yes	accepted									
-00b149d0	ReadBinary	CPSCEmitterGeneric	__thiscall	void	2	CPSCEmitterGeneric *,CDataInputStream *	1	yes	accepted									
+00b13530	DatabaseSerialise	NParticleEngine::CPSCEmitterGeneric	__thiscall	void	3	CPSCEmitterGeneric *,CPersistContext *,CEmitterDatabaseSerialiseInfo *	1	yes	accepted									
+00b149d0	ReadBinary	NParticleEngine::CPSCEmitterGeneric	__thiscall	void	2	CPSCEmitterGeneric *,CDataInputStream *	1	yes	accepted									
 00b158a0	CollectUpdateParameters	NParticleEngine::CPSCEmitterGeneric	unknown	undefined	0		0	yes	accepted									
 00b15950	CParticleUpdateParamDesc	NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long>	__thiscall	undefined	1	C3DAnimationBlendState *	0	yes	accepted									
 00b15a90	GetClassTypeName	NParticleEngine::CPSCEmitterGeneric	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
@@ -40598,7 +40598,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b15b00	DatabaseClone	NParticleEngine::CPSCEmitterGeneric	__thiscall	bool	1	CThingTrackNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b1\CThingTrackNode_DrawIsDrawable_00b15b00.cpp
 00b15b20	`scalar_deleting_destructor'	NParticleEngine::CPSCEmitterGeneric	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b1\CThingSwitch_vectordeletingdestructor_00b15b20.cpp
 00b15b50	GetUpdateParamDesc	NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>	unknown	undefined	0		0	yes	accepted									
-00b15bd0	InterpolateAnimationSequence	_global	unknown	undefined	0		0	yes	accepted									
+00b15bd0	GFInterpolateArray<C3DVector>	NParticleEngine	unknown	undefined	0		0	yes	accepted									
 00b161a0	Initialise	COrbitState	__thiscall	void	3	COrbitState *,COrbitSettings *,ulong *	1	yes	accepted									
 00b16210	GetComponentCost	NParticleEngine::CPSCOrbit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b16220	InterpolateTo	NParticleEngine::CPSCOrbit	__thiscall	void	3	CPSCOrbit *,CPSCBase *,float	1	yes	accepted									

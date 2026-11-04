@@ -381209,6 +381209,20 @@ $catalog = @(
         TestSource = '00/af/NParticleEngineCPSCRenderSprite_DatabaseSerialise_00afbce0_test.cpp'
         PassPattern = '00afbce0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b149d0'
+        Module = 'NParticleEngine::CPSCEmitterGeneric'
+        Source = '00/b1/NParticleEngineCPSCEmitterGeneric_ReadBinary_00b149d0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCEmitterGeneric_ReadBinary_00b149d0_test.cpp'
+        PassPattern = '00b149d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b15bd0'
+        Module = 'NParticleEngine'
+        Source = '00/b1/NParticleEngine_GFInterpolateArray_00b15bd0.cpp'
+        TestSource = '00/b1/NParticleEngine_GFInterpolateArray_00b15bd0_test.cpp'
+        PassPattern = '00b15bd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

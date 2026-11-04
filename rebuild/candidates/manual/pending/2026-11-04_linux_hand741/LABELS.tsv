@@ -1,0 +1,19 @@
+address	name
+0x00B10B10	NParticleEngine::CPSCEmitterGeneric::GenerateParticle
+0x00B13530	NParticleEngine::CPSCEmitterGeneric::DatabaseSerialise
+0x00B149D0	NParticleEngine::CPSCEmitterGeneric::ReadBinary
+0x00B15BD0	NParticleEngine::GFInterpolateArray<C3DVector>
+0x00B0DC20	NParticleEngine::CPSCUpdateNormal::Update
+0x00AEAA00	NParticleEngine::GetOneOverTickRate
+0x00AEAB10	NParticleEngine::GetEnvironmentInteraction
+0x00AEAAE0	NParticleEngine::GetParticleEmitterDatabase
+0x00AEAAD0	NParticleEngine::GetRandomSeed
+0x00AF5330	NParticleEngine::CParticleSystem::DeleteParticle
+0x00AF5380	NParticleEngine::CParticleSystem::AllocateDecal
+0x00AEABE0	NParticleEngine::CParticleEmitterManager::CreateDecalEmitter
+0x00655318	CIntelligentPointer<NParticleEngine::CParticleEmitter>::CIntelligentPointer(CParticleEmitter*)
+0x00B0F920	std::list<CIntelligentPointer<NParticleEngine::CParticleEmitter> >::push_back
+0x00A88C10	CQuaternion::operator*=
+0x00A88D10	CQuaternion::SetFromAxisAngle
+0x00A146C0	C3DVector::GetRandomPointWithinUnitSphere
+0x00AF4360	NParticleEngine::CParticleSystem::GetComponentOfType

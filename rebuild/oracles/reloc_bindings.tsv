@@ -36156,3 +36156,6 @@ _GVertexShaderConstantLayoutEmpty	013ca8a8	009da9f0
 ?GetUnscaledWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z	00b05840	00b05980
 ?GFUIntToCharString@@YI?AVCCharString@@K@Z	0099f8b0	00ef5200
 ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@ABVCCharString@@J@Z	009e50c0	00b027d0
+??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@I@Z	007c2ab0	00b149d0
+??4?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEAAV01@ABV01@@Z	0075b8d0	00b149d0
+?Reset@?$CCountedPointer@VCCardinalSpline@@@@QAEXPAVCCardinalSpline@@@Z	0075fa30	00b149d0

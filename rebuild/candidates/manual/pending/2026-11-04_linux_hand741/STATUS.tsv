@@ -1,0 +1,6 @@
+address	name	status	attempts	note
+00b149d0	NParticleEngine::CPSCEmitterGeneric::ReadBinary	MATCH	19	RELOCATION_MATCH; needs stlport FABLE_RETAIL_STLP_VECTOR_C (visible _vector.c operator=)
+00b15bd0	NParticleEngine::GFInterpolateArray<C3DVector>	MATCH	5	RELOCATION_MATCH; catalog InterpolateAnimationSequence (_global) wrong: PDB GFInterpolateArray template; GFFloatToLongNear helper
+00b13530	NParticleEngine::CPSCEmitterGeneric::DatabaseSerialise	DIFFER	11	DIFFER(5268v5268) 16 masked lines: 2 bool-default store slots scheduled early, NonUniformScalingY or-operand order (+1 nop), OppositeDirection and placement
+00b10b10	NParticleEngine::CPSCEmitterGeneric::GenerateParticle	DIFFER	15	DIFFER(4380v4276) 794 masked lines: unsigned-long bit-field fixups, no push ebx, frame/slot layout, IsNonZero sum order (differ/)
+00b0dc20	NParticleEngine::CPSCUpdateNormal::Update	DIFFER	10	DIFFER(5601v5602) 418 masked lines: frame 0x2d0 v 0x2dc, perpendicular cross-product operand order, fraction spill, TransformPosIfLocal Z row (differ/)

@@ -12,15 +12,15 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   `cpuid`, MASM SIMD) go through isolated shared helpers with a `FABLE_PORTABLE` C++ path, and those rows land as `retail_asm`
   (EXTRA_RULES.md, last three bullets).
 - Chunks 738 (CPSCRenderSprite), 739 (CPSCUpdateNormal), 740 (CPSCRenderMesh) cut from the particle groups; brief
-  `$S/w22/BRIEF_738.md`, work in `$S/w22/chunk73{8,9}`, `chunk740`. 739 landed 2 of 5 (`batches/2026-11-04_landing_a/`), 740 3 of 5 (`_landing_b/`), 738 3 of 5 (`_landing_c/`); rest staged in
-  `pending/2026-11-04_linux_hand73{8,9}/`, `_hand740/`. Chunks 741 (CPSCEmitterGeneric + the Update retry) and 742 (particle
-  primitive-manager RenderSubPrimitive x4, RenderSingleSpriteTrail, CParticleEmitter::ReadBinary) launched. If 741 / 742 are not yet landed, their agents were running when this page was written:
+  `$S/w22/BRIEF_738.md`, work in `$S/w22/chunk73{8,9}`, `chunk740`. 739 landed 2 of 5 (`batches/2026-11-04_landing_a/`), 740 3 of 5 (`_landing_b/`), 738 3 of 5 (`_landing_c/`), 741 2 of 5 (`_landing_d/`); rest staged in
+  `pending/2026-11-04_linux_hand73{8,9}/`, `_hand74{0,1}/`. Chunks 742 (particle primitive-manager RenderSubPrimitive x4,
+  RenderSingleSpriteTrail, CParticleEmitter::ReadBinary) and 743 (11 libvorbis rows) running. If 742 / 743 are not yet landed, their agents were running when this page was written:
   check each dir's STATUS.tsv / NOTES.md / payload.json, then land (their overlays are based on 40c4d6d63; merge onto 739's
   C3DVector / CDataInputStream / CParticleSystem / CRightHandedSet branches with `git merge-file`; 741's mirror is HEAD b31fa166c). After 741:
   the next particle groups (GROUPS.md category A/C NParticleEngine rows), then the parked CPSC slot-13/19 rows with a shared model.
 - Coverage (refresh with `tools/write_decomp_dashboard.py` then `tools/update_readme_progress.py`; never hand-edit):
-  46,558 of the 49,564-function catalog (93.935%), 56.296% of retail function bytes, 54,110 landed rows (194 retail_asm),
-  after landing 2026-11-04c. Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`, `2026-11-04_landing_a/` .. `_landing_c/`.
+  46,560 of the 49,564-function catalog (93.939%), 56.347% of retail function bytes, 54,112 landed rows (195 retail_asm),
+  after landing 2026-11-04d. Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`, `2026-11-04_landing_a/` .. `_landing_d/`.
 - `// Revisit: inline-depth` rows: 65 (129 at the start of the day). Mechanism, levers and why the 65 are left:
   `docs/pipeline/INLINE_DEPTH_REVISIT.md`; research `batches/2026-11-03_inline_split_research/`, `_inline_revisit2/`, `_inline_revisit3/`.
 - Codex: pass 13 landed 47 of 51 (`batches/2026-11-03_codex_pass13_landing/`; data names for `cvdump` in its NAME_DECISIONS.tsv);
