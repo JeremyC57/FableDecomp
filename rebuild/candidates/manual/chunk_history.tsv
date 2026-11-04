@@ -27269,3 +27269,15 @@ chunk	address	module	name	length
 772	00e62d60	never-graded	CV_ChickenKickingScript	CreateSpectators
 772	00ee8390	never-graded	_global	DoMission_OakValeRevisited
 772	00d29880	never-graded	CHookCoastTeleporter	Main
+773	00524290	_global	CThingManager_SaveGameState	1553
+773	005c2118	CPersistTraits<NInventory::CItem>	TransferIn	1569
+773	00671600	CThingCreatureDef::CThingCreatureDef	Transfer	1450
+773	0069a2a0	_global	CGameCameraManager_UpdateMode	1452
+773	006b97e0	_global	CWorld_InitFactions	1438
+773	008185b0	_global	Geometry_PolygonClipping	1360
+773	00a58130	_global	CPSCSplineBase_GenerateCurvePoints	1272
+773	00a8f1b0	_global	TransformVertexBufferWithNormals_LoopUnrolled	1469
+773	00eaf1e0	CV_MurderTwistFinalScript	PlayBeingRumbledCutscene	1573
+773	00ebe620	CVO_Woman	Main	1482
+773	00f38a10	CSurfaceCompositor	SetBlendMode	1504
+773	00f3c990	_global	CTriangleStripifier2_GenerateStrips_Part1	1463
