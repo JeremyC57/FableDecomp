@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0092b3a0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0092b3a0   RELOCATION_MATCH PASS   CAIStateGroup_SkillPractice::Update
+00954740   RELOCATION_MATCH PASS   CAIStateGroup_MazeShieldedChase::IsStillRunnable
+
+WINS: 2
+  0092b3a0 RELOCATION_MATCH CAIStateGroup_SkillPractice::?Update@CAIStateGroup_SkillPractice@@MAEXXZ
+  00954740 RELOCATION_MATCH CAIStateGroup_MazeShieldedChase::?IsStillRunnable@CAIStateGroup_MazeShieldedChase@@IAE_NXZ

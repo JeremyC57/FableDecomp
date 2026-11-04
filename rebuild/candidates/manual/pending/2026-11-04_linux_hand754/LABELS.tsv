@@ -1,0 +1,15 @@
+address	name	evidence
+0053e0c0	NUISystem::CMenuEntry::MakeUnavailable	Ego_r.pdb leaf; RELOCATION_MATCH
+0061a9d0	CTCInventoryQuests::MoveToNextTestQuest	Ego_r.pdb leaf; RELOCATION_MATCH
+006d00a0	CTCWife::Murdered	Ego_r.pdb leaf; RELOCATION_MATCH
+006dfe70	CTCDParticleEmitter::Construct	Ego_r.pdb leaf (private); RELOCATION_MATCH
+00699130	CGameCameraManager::ResetFlags	Ego_r.pdb leaf (private); RELOCATION_MATCH
+0072b260	CTCSpecialAbilities::SetupDrainLifeSpell	Ego_r.pdb leaf (private); RELOCATION_MATCH
+0087b840	NCameraModes::CTrack::OnInitLeaf	Ego_r.pdb leaf; RELOCATION_MATCH
+00943c20	CAIStateGroup_WorkInWarehouse::IsRunnable	Ego_r.pdb leaf; RELOCATION_MATCH
+00945bd0	CAIStateGroup_SitForMeal::Update	Ego_r.pdb leaf; RELOCATION_MATCH
+009ad5f0	CDefinitionManager::DecompressDefinitionData	Ego_r.pdb / FableWin.pdb leaf (protected const); RELOCATION_MATCH
+00a5d000	CMatrix4x4::SetInverseOfUniformScaleRotationTranslation	Ego_r.pdb leaf; RELOCATION_MATCH
+00aeb600	NParticleEngine::CParticleEmitterManager::CreateInterpolatedEmitter	Ego_r.pdb leaf; RELOCATION_MATCH
+00c351b0	CWeaponDrawState::Initialize	catalog name kept (audio library, no PDB coverage; unproven); RELOCATION_MATCH
+00968460	CAIStateGroup_TavernKeeper::GetPaymentFinishedMessage	Ego_r.pdb order v twin 0x00968510 (parked row; NAME_FIXES)

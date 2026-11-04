@@ -7,10 +7,22 @@
 // out of line at 0x0057A690).
 #include "engine/CTCBase.h"
 #include "engine/ETCInterfaceType.h"
+#ifdef FABLE_RETAIL_CTCHEROSTATS_MARRIAGE
+class CThingAICreature;
+enum EMarriageState;                                         // MS forward enum (the row defines the enumerators it uses)
+#endif
 class CTCHeroStats : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_STATS; }
     float GetMoralityPercentage() const;
+#ifdef FABLE_RETAIL_CTCHEROSTATS_MARRIAGE
+    // Retail opt-in (chunk 754, row 0x006D00A0 CTCWife::Murdered): Ego_r.pdb ?SetMarriageState@CTCHeroStats@@AAEXPBVCThingAICreature@@W4EMarriageState@@@Z
+    // (private; retail 0x0057BC6E, called by CTCWife). Declaration only: no layout change.
+private:
+    friend class CTCWife;
+    void SetMarriageState(const CThingAICreature* wife, EMarriageState state);   // 0x0057BC6E
+public:
+#endif
     unsigned char _pad_after_base[0x1dc - sizeof(CTCBase)];
 };
 FABLE_STATIC_ASSERT(sizeof(CTCHeroStats) == 0x1dc);

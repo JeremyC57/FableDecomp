@@ -30,6 +30,7 @@ class CAIBrain;
 class CThingAICreature;
 class CWorld;
 enum EAIStateGroupType;                                                  // MS forward enum
+enum EAIActionReturn;                                                    // MS forward enum (chunk 754: AIAction_DoNothing's return type)
 #endif
 enum EScriptAIPriority;                                                  // MS forward enum (the row defines the enumerators it uses)
 
@@ -54,6 +55,9 @@ protected:
     virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);   // slot 13 0x008FD285
     bool IsStopping() const;                                             // 0x008FD010 ?IsStopping@CAIStateGroupBase@@IBE_NXZ
     unsigned long* GetPWorldSeed() const;                                // 0x008FCFD0 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (chunk 751)
+    // Chunk 754 (row 0x00945BD0 CAIStateGroup_SitForMeal::Update): Ego_r.pdb ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
+    // (protected; retail 0x0097E200).
+    EAIActionReturn AIAction_DoNothing();                                // 0x0097E200
 public:
     void Terminate();                                                    // 0x008FCF40 ?Terminate@CAIStateGroupBase@@QAEXXZ
 #endif // FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS

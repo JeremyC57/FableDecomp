@@ -26,6 +26,11 @@ class CTCVillage : public CTCBase {
 public:
     void AddThingToVillage(CThing& thing);                   // 0x0065B854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
     __forceinline CDefPointer<const CVillageDef> GetPDef() const { return PDef; }   // FableWin ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (inline)
+#ifdef FABLE_RETAIL_CTCVILLAGE_CRATETASK
+    // Chunk 754 (row 0x00943C20 CAIStateGroup_WorkInWarehouse::IsRunnable): Ego_r.pdb / FableWin.pdb
+    // ?GetBestCrateTaskForThing@CTCVillage@@QAEPAVCVillageTaskCarryCrate@@ABVCThing@@@Z (retail 0x00658EA0, out of line).
+    CVillageTaskCarryCrate* GetBestCrateTaskForThing(const CThing& thing);   // 0x00658EA0
+#endif
 private:
     void CalculateSecuritySweepTasks();                      // 0x00659800 ?CalculateSecuritySweepTasks@CTCVillage@@AAEXXZ
 public:

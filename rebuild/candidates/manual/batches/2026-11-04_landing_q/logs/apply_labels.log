@@ -1,0 +1,21 @@
+catalog  0053e0c0 MakeUnavailable -> NUISystem::CMenuEntry::MakeUnavailable
+catalog  0061a9d0 MoveToNextTestQuest -> CTCInventoryQuests::MoveToNextTestQuest
+catalog  006d00a0 Murdered -> CTCWife::Murdered
+catalog  006dfe70 Construct -> CTCDParticleEmitter::Construct
+catalog  00699130 ResetFlags -> CGameCameraManager::ResetFlags
+catalog  0072b260 SetupDrainLifeSpell -> CTCSpecialAbilities::SetupDrainLifeSpell
+catalog  0087b840 Method_0087b840 -> NCameraModes::CTrack::OnInitLeaf
+catalog  00943c20 ?IsRunnable@CAIStateGroup_WorkInWarehouse@@UAE_NXZ -> CAIStateGroup_WorkInWarehouse::IsRunnable
+catalog  00945bd0 ?Update@CAIStateGroup_SitForMeal@@MAEXXZ -> CAIStateGroup_SitForMeal::Update
+catalog  009ad5f0 DecompressDefinitionData -> CDefinitionManager::DecompressDefinitionData
+catalog  00a5d000 SetInverseOfUniformScaleRotationTranslation -> CMatrix4x4::SetInverseOfUniformScaleRotationTranslation
+catalog  00aeb600 CreateInterpolatedEmitter -> NParticleEngine::CParticleEmitterManager::CreateInterpolatedEmitter
+catalog  00c351b0 Initialize -> CWeaponDrawState::Initialize
+manifest 0053e0c0 CMenuEntry::MakeUnavailable -> NUISystem::CMenuEntry::MakeUnavailable
+manifest 0087b840 NCameraModes::CTrack::Method_0087b840 -> NCameraModes::CTrack::OnInitLeaf
+manifest 00943c20 CAIStateGroup_WorkInWarehouse::?IsRunnable@CAIStateGroup_WorkInWarehouse@@UAE_NXZ -> CAIStateGroup_WorkInWarehouse::IsRunnable
+manifest 00945bd0 CAIStateGroup_SitForMeal::?Update@CAIStateGroup_SitForMeal@@MAEXXZ -> CAIStateGroup_SitForMeal::Update
+manifest 00968460 CAIStateGroup_TavernKeeper::GetPaymentCancelledMessage -> CAIStateGroup_TavernKeeper::GetPaymentFinishedMessage
+manifest 00aeb600 CParticleEmitterManager::CreateInterpolatedEmitter -> NParticleEngine::CParticleEmitterManager::CreateInterpolatedEmitter
+manifest 00c351b0 CAudioSamplePlayback::Initialize -> CWeaponDrawState::Initialize
+labels 14  catalog renamed 13  manifest renamed 7

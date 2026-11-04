@@ -381920,6 +381920,97 @@ $catalog = @(
         TestSource = '00/55/NUISystemCScrollBar_vectordeletingdestructor_0055a390_test.cpp'
         PassPattern = '0055a390_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0053e0c0'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_MakeUnavailable_0053e0c0.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_MakeUnavailable_0053e0c0_test.cpp'
+        PassPattern = '0053e0c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0061a9d0'
+        Module = 'CTCInventoryQuests'
+        Source = '00/61/CTCInventoryQuests_MoveToNextTestQuest_0061a9d0.cpp'
+        TestSource = '00/61/CTCInventoryQuests_MoveToNextTestQuest_0061a9d0_test.cpp'
+        PassPattern = '0061a9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d00a0'
+        Module = 'CTCWife'
+        Source = '00/6d/CTCWife_Murdered_006d00a0.cpp'
+        TestSource = '00/6d/CTCWife_Murdered_006d00a0_test.cpp'
+        PassPattern = '006d00a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006dfe70'
+        Module = 'CTCDParticleEmitter'
+        Source = '00/6d/CTCDParticleEmitter_Construct_006dfe70.cpp'
+        TestSource = '00/6d/CTCDParticleEmitter_Construct_006dfe70_test.cpp'
+        PassPattern = '006dfe70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00699130'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_ResetFlags_00699130.cpp'
+        TestSource = '00/69/CGameCameraManager_ResetFlags_00699130_test.cpp'
+        PassPattern = '00699130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072b260'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_SetupDrainLifeSpell_0072b260.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_SetupDrainLifeSpell_0072b260_test.cpp'
+        PassPattern = '0072b260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087b840'
+        Module = 'NCameraModes::CTrack'
+        Source = '00/87/NCameraModesCTrack_OnInitLeaf_0087b840.cpp'
+        TestSource = '00/87/NCameraModesCTrack_OnInitLeaf_0087b840_test.cpp'
+        PassPattern = '0087b840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00943c20'
+        Module = 'CAIStateGroup_WorkInWarehouse'
+        Source = '00/94/CAIStateGroupWorkInWarehouse_IsRunnable_00943c20.cpp'
+        TestSource = '00/94/CAIStateGroupWorkInWarehouse_IsRunnable_00943c20_test.cpp'
+        PassPattern = '00943c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00945bd0'
+        Module = 'CAIStateGroup_SitForMeal'
+        Source = '00/94/CAIStateGroupSitForMeal_Update_00945bd0.cpp'
+        TestSource = '00/94/CAIStateGroupSitForMeal_Update_00945bd0_test.cpp'
+        PassPattern = '00945bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ad5f0'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_DecompressDefinitionData_009ad5f0.cpp'
+        TestSource = '00/9a/CDefinitionManager_DecompressDefinitionData_009ad5f0_test.cpp'
+        PassPattern = '009ad5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5d000'
+        Module = 'CMatrix4x4'
+        Source = '00/a5/CMatrix4x4_SetInverseOfUniformScaleRotationTranslation_00a5d000.cpp'
+        TestSource = '00/a5/CMatrix4x4_SetInverseOfUniformScaleRotationTranslation_00a5d000_test.cpp'
+        PassPattern = '00a5d000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeb600'
+        Module = 'NParticleEngine::CParticleEmitterManager'
+        Source = '00/ae/NParticleEngineCParticleEmitterManager_CreateInterpolatedEmitter_00aeb600.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterManager_CreateInterpolatedEmitter_00aeb600_test.cpp'
+        PassPattern = '00aeb600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c351b0'
+        Module = 'CWeaponDrawState'
+        Source = '00/c3/CWeaponDrawState_Initialize_00c351b0.cpp'
+        TestSource = '00/c3/CWeaponDrawState_Initialize_00c351b0_test.cpp'
+        PassPattern = '00c351b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

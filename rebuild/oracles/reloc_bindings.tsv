@@ -36377,3 +36377,17 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ??_ECSlider@NUISystem@@UAEPAXI@Z	0054c1b0	0054c140
 ??_ECMorphingSprite@NUISystem@@UAEPAXI@Z	00555140	00555120
 ??_ECScrollBar@NUISystem@@UAEPAXI@Z	0055a3a0	0055a380
+?MakeUnavailable@CComponent@NUISystem@@UAEXXZ	00530a40	0053e0c0
+?SetMarriageState@CTCHeroStats@@AAEXPBVCThingAICreature@@W4EMarriageState@@@Z	0057bc6e	006d00a0
+?IsThingLifeDrainable@CTCWillResponse@@SI_NPBVCThing@@@Z	007e44e0	0072b260
+?GetBestCrateTaskForThing@CTCVillage@@QAEPAVCVillageTaskCarryCrate@@ABVCThing@@@Z	00658ea0	00943c20
+?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	0091a6f0	00943c20
+?GetFoodFromCookingPot@CAIStateGroup_SitForMeal@@AAE_NXZ	009456a0	00945bd0
+?GetPFreeChair@CAIStateGroup_SitForMeal@@ABEPAVCThingObject@@XZ	00945b10	00945bd0
+?StandAroundAndEat@CAIStateGroup_SitForMeal@@AAE_NXZ	009454c0	00945bd0
+?UpperBound@?$CVectorMap@KKV?$CKeyPairCompareLess@KK@@@@QBEPBU?$pair@KK@std@@ABK@Z	009b1ff0	009ad5f0
+?g_defBlockCache@@3USDefBlockCache@@A	0138e190	009ad5f0
+?InterpolateTo@CParticleEmitter@NParticleEngine@@QAEXABV12@M@Z	00aed600	00aeb600
+?GetDuration@CSampleInfo@@QBEMXZ	00c2d840	00c351b0
+?GetLoopEnd@CSampleInfo@@QBEKXZ	00c2d910	00c351b0
+?GetLoopStart@CSampleInfo@@QBEKXZ	00c2d900	00c351b0

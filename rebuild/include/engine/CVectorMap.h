@@ -16,6 +16,12 @@ public:
     typedef const value_type* const_iterator;
     iterator LowerBound(const K&);
     const_iterator LowerBound(const K&) const;
+#ifdef FABLE_RETAIL_CVECTORMAP_UPPERBOUND
+    // Chunk 754 (row 0x009AD5F0 CDefinitionManager::DecompressDefinitionData): the const UpperBound, out of line in retail
+    // (Ego_r.pdb ?UpperBound@?$CVectorMap@K...@@QBE?AV?$_Vector_const_iterator@...@std@@ABK@Z family; CompressedOffsets
+    // instance 0x009B1FF0). A declaration only.
+    const_iterator UpperBound(const K&) const;
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
     // Retail opt-in (2026-11-03, chunk 720, the size-optimised CTCInventoryWeapons TU): retail expands Find inside the
     // forced-inline CThing::GetTC there (`call LowerBound; mov esi,[esi+4]; cmp eax,esi; je; cmp [eax],ebx; jle`); under

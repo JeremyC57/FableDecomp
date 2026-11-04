@@ -19,6 +19,14 @@ class CCPPointerInfo;
 class CDefPointeeBase;
 struct CScriptModuleBase;
 class CWorld;
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_CAMPOINTS
+// Retail opt-in (chunk 754, row 0x00699130 ResetFlags): AvailableCamPoints typed as Ego_r.pdb types it, the STLport 4.6
+// list<CIntelligentPointer<CThing> > (4 bytes: the header-node pointer), and the private ResetFlags (Ego_r.pdb
+// ?ResetFlags@CGameCameraManager@@AAEXXZ 0x006BFD70). Same offset and size: no layout change.
+#include "stlport/fable_containers.h"
+#include "engine/CIntelligentPointer.h"
+class CThing;
+#endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
 // Retail opt-in (chunk 718, row 0x0089E190 CameraUseCameraPoint): the public non-virtual SetScriptedCameraMode 0x00699E60
 // (Ego_r.pdb 0x006C1080 / reloc_bindings ?SetScriptedCameraMode@CGameCameraManager@@QAEXV?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@@Z;
@@ -30,6 +38,11 @@ template <class T> class CCountedPointer;
 #pragma pack(push, 1)
 class CGameCameraManager {
 public:
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_CAMPOINTS
+private:
+    void ResetFlags();                                       // 0x00699130 ?ResetFlags@CGameCameraManager@@AAEXXZ
+public:
+#endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
     void SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode);   // 0x00699E60
     // Retail opt-in (chunk 725): FableWin.pdb members at their retail addresses. CurrentMode is the real
@@ -63,7 +76,11 @@ public:
     bool               ObservedThingInMelee;                 // +0xa9
     bool               ObservedThingInBuilding;              // +0xaa
     unsigned char      _pad_0xab[0x1];                       // +0xab
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_CAMPOINTS
+    std::list<CIntelligentPointer<CThing> > AvailableCamPoints;   // +0xac
+#else
     unsigned char      AvailableCamPoints[0x4];              // +0xac list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+#endif
     bool               SingleCut;                            // +0xb0
     bool               ChangeInControlDirection;             // +0xb1
     unsigned char      _pad_0xb2[0x2];                       // +0xb2

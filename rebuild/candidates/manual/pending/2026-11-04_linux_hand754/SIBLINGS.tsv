@@ -1,0 +1,4 @@
+header	change	landed_includer	result
+engine/CAIStateGroupBase.h	FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS gains `enum EAIActionReturn;` + `EAIActionReturn AIAction_DoNothing();` (declarations only)	rebuild/src/compiled/00/95/CAIStateGroupMazeShieldedChase_IsStillRunnable_00954740.cpp	recompiled on the mirror v base_include: identical code ($L label numbers only)
+engine/CAIStateGroupBase.h	same	rebuild/src/compiled/00/92/CAIStateGroupSkillPractice_Update_0092b3a0.cpp	recompiled: identical disassembly
+(all other overlay edits)	new opt-in sub-macros only (CGAMECAMERAMANAGER_CAMPOINTS, CINTELLIGENTPOINTER_ASSIGN/_COPY, CTCHEROSTATS_MARRIAGE, CTCSHAPEMANAGER_TRACK, CTCVILLAGE_CRATETASK, CTCWIFE_MARRIAGEEND, CVECTORMAP_UPPERBOUND)	none (no landed row defines them)	n/a

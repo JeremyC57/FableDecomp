@@ -35,6 +35,18 @@ public:
     void Set(T* pointer) { SetPointer(pointer); }
     T* Get() const { return static_cast<T*>(GetPItem()); }             // FableWin ?Get@?$CIntelligentPointer@..@@QBEPAV..@XZ
     T* operator->() const { return Get(); }                             // FableWin ??C?$CIntelligentPointer@..@@QBEPAV..@XZ
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+    // Chunk 754 (row 0x00945BD0 `PCookingPot = pot;`): FableWin.pdb ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z, inline in
+    // retail: the item read into a local, then SetPItem (0x00A01B50 then 0x00A01B90; the destination is formed after the read,
+    // rows 0x00943C20 / 0x00945BD0), not the implicit member-wise copy of PData.
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
+#endif
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+    // Chunk 754 (row 0x0082A890 CMiniMapDisplay::AddMarker): FableWin.pdb ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z, inline in
+    // retail: the base ctor 0x00A01B10, the vptr, then GetPItem on the source 0x00A01B50 and SetPItem 0x00A01B90 (the list node's copy
+    // in the inline push_back), not the implicit member-wise copy of PData.
+    CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+#endif
 private:
     void SetPointer(const T* pointer) { SetPItem(const_cast<CBaseObject*>(static_cast<const CBaseObject*>(pointer))); }
 };

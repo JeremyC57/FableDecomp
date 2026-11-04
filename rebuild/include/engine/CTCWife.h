@@ -67,6 +67,13 @@ public:
     void OnHeroViolence();                                   // 0x006CFDA0 ?OnHeroViolence@CTCWife@@QAEXXZ
     void Divorce();                                          // 0x006D0180 ?Divorce@CTCWife@@QAEXXZ
     void InitWifeNonpersistentState();                       // 0x006D03E0 ?InitWifeNonpersistentState@CTCWife@@QAEXXZ
+#ifdef FABLE_RETAIL_CTCWIFE_MARRIAGEEND
+    // Retail opt-in (chunk 754, row 0x006D00A0 Murdered): the end-of-marriage members, Ego_r.pdb spellings (Ego_r 0x00704A90 /
+    // 0x00704C00 / 0x00704C90, the manifest's CTCWife run in the same order). Declarations only: no layout or vtable change.
+    void Unmarry(bool notify);                               // 0x006CFF10 ?Unmarry@CTCWife@@QAEX_N@Z
+    void Died();                                             // 0x006D0020 ?Died@CTCWife@@QAEXXZ
+    void Murdered();                                         // 0x006D00A0 ?Murdered@CTCWife@@QAEXXZ
+#endif
     CDefPointer<const CHeroMarriageDef> PHeroMarriageDef;    // +0x0c
     EOpinionAttitudeType OpinionAttitude;                    // +0x10
     unsigned char    AttitudeUpdateCounter;                  // +0x14

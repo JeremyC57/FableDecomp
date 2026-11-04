@@ -1980,3 +1980,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A slot label on a base-class function can come from whichever vtable lists it first: scan every vtable for the address and name it from the base class's own vtable (chunk 753, CComponent::SetName in 43 vtables).
 - VC7.1 calls a plain-inline helper (e.g. handle Clear / ctor) out of line at rarely-run exits but expands it at frequent sites (c2 static-frequency rule); `do{}while(0)` flips it but is not a proven retail construct (chunks 749, 752).
 - A plain-inline `C2DVector::operator==` goes out of line inside switch cases; retail expands it, so the retail branch uses `__forceinline` (chunk 752).
+- For a register rotation where a same-TU sibling landed with noinline/stand-in callee bodies, copy that sibling's source verbatim first (chunk 754: 0x0061A9D0 from 0x0061AA80, 0x00AEB600 from 0x00AEB6D0).
+- Write members first, then copy them to locals: a chained `local = Member = value` swaps registers (chunk 754, 0x00C351B0).

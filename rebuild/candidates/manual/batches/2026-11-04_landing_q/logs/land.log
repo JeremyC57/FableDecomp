@@ -1,0 +1,57 @@
+addr       parity           behav  name
+0053e0c0   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+0053e0c0   RELOCATION_MATCH PASS   MakeUnavailable
+0061a9d0   WARN SHARED_HEADER_AVAILABLE CTestQuest
+0061a9d0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+0061a9d0   RELOCATION_MATCH PASS   MoveToNextTestQuest
+006d00a0   RELOCATION_MATCH PASS   Murdered
+006dfe70   RELOCATION_MATCH PASS   Construct
+00699130   RELOCATION_MATCH PASS   ResetFlags
+0072b260   RELOCATION_MATCH PASS   SetupDrainLifeSpell
+0087b840   RELOCATION_MATCH PASS   OnInitLeaf
+00943c20   RELOCATION_MATCH PASS   IsRunnable
+00945bd0   WARN RELOC_NAME: ?SetSeat@CAIStateGroup_UsesSeat@@IAEXPAVCThingObject@@@Z -> 009106e0 labelled '_unattributed::AssignTarget_009106e0'
+00945bd0   RELOCATION_MATCH PASS   Update
+009ad5f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+009ad5f0   RELOCATION_MATCH PASS   DecompressDefinitionData
+00a5d000   RELOCATION_MATCH PASS   SetInverseOfUniformScaleRotationTranslation
+00aeb600   WARN SHARED_HEADER_AVAILABLE C2DVector
+00aeb600   WARN SHARED_HEADER_AVAILABLE C3DVector
+00aeb600   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00aeb600   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00aeb600   WARN RELOC_NAME: ??0CEmitterPointer@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z -> 00ae9450 labelled 'CCountedPointer_00ae91d0::CCountedPointer_00ae91d0'
+00aeb600   WARN RELOC_NAME: ??1CEmitterPointer@@QAE@XZ -> 00ae94a0 labelled '_global::CCountedPointer_Release_00ae94a0'
+00aeb600   RELOCATION_MATCH PASS   CreateInterpolatedEmitter
+00c351b0   WARN RELOC_NAME: ?GetDuration@CSampleInfo@@QBEMXZ -> 00c2d840 labelled 'CAudioFormat::GetBytesPerSecond'
+00c351b0   WARN RELOC_NAME: ?GetLoopStart@CSampleInfo@@QBEKXZ -> 00c2d900 labelled '_global::GetMember_dword0x4_00c2d900'
+00c351b0   RELOCATION_MATCH PASS   Initialize
+
+WINS: 13
+  0053e0c0 RELOCATION_MATCH NUISystem::CMenuEntry::?MakeUnavailable@CMenuEntry@NUISystem@@UAEXXZ
+  0061a9d0 RELOCATION_MATCH CTCInventoryQuests::?MoveToNextTestQuest@CTCInventoryQuests@@QAEXXZ
+  006d00a0 RELOCATION_MATCH CTCWife::?Murdered@CTCWife@@QAEXXZ
+  006dfe70 RELOCATION_MATCH CTCDParticleEmitter::?Construct@CTCDParticleEmitter@@AAEXJABVC3DVector@@_N1@Z
+  00699130 RELOCATION_MATCH CGameCameraManager::?ResetFlags@CGameCameraManager@@AAEXXZ
+  0072b260 RELOCATION_MATCH CTCSpecialAbilities::?SetupDrainLifeSpell@CTCSpecialAbilities@@AAE_NXZ
+  0087b840 RELOCATION_MATCH NCameraModes::CTrack::?OnInitLeaf@CTrack@NCameraModes@@UAEXXZ
+  00943c20 RELOCATION_MATCH CAIStateGroup_WorkInWarehouse::?IsRunnable@CAIStateGroup_WorkInWarehouse@@UAE_NXZ
+  00945bd0 RELOCATION_MATCH CAIStateGroup_SitForMeal::?Update@CAIStateGroup_SitForMeal@@MAEXXZ
+  009ad5f0 RELOCATION_MATCH CDefinitionManager::?DecompressDefinitionData@CDefinitionManager@@IBEXAAVCMemoryDataInputStream@@K@Z
+  00a5d000 RELOCATION_MATCH CMatrix4x4::?SetInverseOfUniformScaleRotationTranslation@CMatrix4x4@@QAEMABV1@@Z
+  00aeb600 RELOCATION_MATCH NParticleEngine::CParticleEmitterManager::?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@PBV32@0MABVC3DVector@@ABVCRightHandedSet@@@Z
+  00c351b0 RELOCATION_MATCH CWeaponDrawState::?Initialize@CWeaponDrawState@@QAEXPBUCSampleSource@@PBUSPlayRequest@@M@Z
+
+LANDED 13 wins into src/compiled + tests + catalog + oracle
+  NUISystemCMenuEntry_MakeUnavailable_0053e0c0
+  CTCInventoryQuests_MoveToNextTestQuest_0061a9d0
+  CTCWife_Murdered_006d00a0
+  CTCDParticleEmitter_Construct_006dfe70
+  CGameCameraManager_ResetFlags_00699130
+  CTCSpecialAbilities_SetupDrainLifeSpell_0072b260
+  NCameraModesCTrack_OnInitLeaf_0087b840
+  CAIStateGroupWorkInWarehouse_IsRunnable_00943c20
+  CAIStateGroupSitForMeal_Update_00945bd0
+  CDefinitionManager_DecompressDefinitionData_009ad5f0
+  CMatrix4x4_SetInverseOfUniformScaleRotationTranslation_00a5d000
+  NParticleEngineCParticleEmitterManager_CreateInterpolatedEmitter_00aeb600
+  CWeaponDrawState_Initialize_00c351b0

@@ -9446,7 +9446,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053dd50	AddUIActionParam	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053ddd0	vfunc_156	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053dfe0	CMenuEntry	NUISystem::CMenuEntry	__thiscall	undefined	2	CMenuEntry *,long	0	yes	accepted									
-0053e0c0	MakeUnavailable	CMenuEntry	__thiscall	void	1	CMenuEntry *	1	yes	accepted									
+0053e0c0	MakeUnavailable	NUISystem::CMenuEntry	__thiscall	void	1	CMenuEntry *	1	yes	accepted									
 0053e180	AddAction	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053e210	AddActionOnSelected	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053e2a0	AddActionOnUnselected	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -26151,7 +26151,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0087b7e0	GetPointType<CTCCameraPointFixedPoint>	CTCCameraPointDefinitionBase	__thiscall	bool	2	CTCCameraPointDefinitionBase *,CTCCameraPointFixedPoint * *	1	yes	accepted									
 0087b820	vfunc_30	NCameraModes::CTrack	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0087b830	vfunc_25	NCameraModes::CTrack	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0087b840	Method_0087b840	NCameraModes::CTrack	__thiscall	void	1	CTrack *	1	yes	accepted									
+0087b840	OnInitLeaf	NCameraModes::CTrack	__thiscall	void	1	CTrack *	1	yes	accepted									
 0087b910	UpdateDesiredPos	NCameraModes::CTrack	__thiscall	void	2	CTrack *,C3DVector *	1	yes	accepted									
 0087b9f0	GetPointType<CTCCameraPointFixedPoint>	CTCCameraPointDefinitionBase	__thiscall	bool	2	CTCCameraPointDefinitionBase *,CTCCameraPointFixedPoint * *	1	yes	accepted									
 0087ba30	GetDefaultFOV	NCameraModes::CScriptedControl	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -31919,7 +31919,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00943aa0	CIntelligentPointer	CIntelligentPointer<CVillageTaskBase>	__thiscall	undefined	2	CIntelligentPointer<CThing_const_> *,CIntelligentPointer<class_CThing_const_> *	0	yes	accepted									
 00943ae0	InitCreaturePosition	CAIStateGroup_WorkInWarehouse	__thiscall	bool	1	CAIStateGroup_WorkInWarehouse *	1	yes	accepted									
 00943b40	Cleanup	CAIStateGroup_WorkInWarehouse	__thiscall	void	1	CAIStateGroup_WorkInWarehouse *	1	yes	accepted									
-00943c20	?IsRunnable@CAIStateGroup_WorkInWarehouse@@UAE_NXZ	CAIStateGroup_WorkInWarehouse	__thiscall	bool	1	CAIStateGroup_WorkInWarehouse *	1	yes	accepted									
+00943c20	IsRunnable	CAIStateGroup_WorkInWarehouse	__thiscall	bool	1	CAIStateGroup_WorkInWarehouse *	1	yes	accepted									
 00943cf0	MoveCrates	CAIStateGroup_WorkInWarehouse	__thiscall	bool	1	CAIStateGroup_WorkInWarehouse *	1	yes	accepted									
 00944300	?Update@CAIStateGroup_WorkInWarehouse@@UAEXXZ	CAIStateGroup_WorkInWarehouse	__thiscall	void	1	CAIStateGroup_WorkInWarehouse *	1	yes	accepted									
 00944470	CAIFilter_ShouldStillBeWorkingInWarehouse	CAIFilter_ShouldStillBeWorkingInWarehouse	__thiscall	undefined	4	CAIFilter_ShouldStillBeWorkingInWarehouse *,CIntelligentPointer<CVillageTaskCarryCrate>,CIntelligentPointer<CThingAICreature>,CTCVillage *	0	yes	accepted									
@@ -31947,7 +31947,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00945a90	GetPCookingPot	CAIStateGroup_SitForMeal	__thiscall	CThing *	1	CAIStateGroup_SitForMeal *	1	yes	accepted									
 00945b10	GetPFreeChair	CAIStateGroup_SitForMeal	__thiscall	CThingObject *	1	CAIStateGroup_SitForMeal *	1	yes	accepted									
 00945b90	IsRunnable	CAIStateGroup_SitForMeal	__thiscall	bool	1	CAIStateGroup_SitForMeal *	1	yes	accepted									
-00945bd0	?Update@CAIStateGroup_SitForMeal@@MAEXXZ	CAIStateGroup_SitForMeal	__thiscall	void	1	CAIStateGroup_SitForMeal *	1	yes	accepted									
+00945bd0	Update	CAIStateGroup_SitForMeal	__thiscall	void	1	CAIStateGroup_SitForMeal *	1	yes	accepted									
 00945cb0	InitCreaturePosition	CAIStateGroup_SitForMeal	__thiscall	bool	1	CAIStateGroup_SitForMeal *	1	yes	accepted									
 00945d20	`scalar_deleting_destructor'	CCreatureAction_GetItemOutOfPocket	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\94\CLandscapeBackgroundPatch_vectordeletingdestructor_00945d20.cpp
 00945d40	CIntelligentPointer	CIntelligentPointer<const CThingBuilding>	__thiscall	undefined	2	CIntelligentPointer<CThing_const_> *,CThing *	0	yes	accepted									
@@ -32520,7 +32520,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009681e0	IsStillValid	CAIStateGroup_TavernKeeper	__thiscall	bool	1	CAIStateGroup_TavernKeeper *	1	yes	accepted									
 00968230	WalkToPoint	CAIStateGroup_TavernKeeper	__thiscall	bool	3	CAIStateGroup_TavernKeeper *,C3DVector *,CRightHandedSet *	1	yes	accepted									
 009683a0	GetPaymentRequest	CAIStateGroup_TavernKeeper	__thiscall	bool	1	CAIStateGroup_TavernKeeper *	1	yes	accepted									
-00968460	GetPaymentCancelledMessage	CAIStateGroup_TavernKeeper	__thiscall	bool	1	CAIStateGroup_TavernKeeper *	1	yes	accepted									
+00968460	GetPaymentFinishedMessage	CAIStateGroup_TavernKeeper	__thiscall	bool	1	CAIStateGroup_TavernKeeper *	1	yes	accepted									
 00968510	GetPaymentCancelledMessage	CAIStateGroup_TavernKeeper	__thiscall	bool	1	CAIStateGroup_TavernKeeper *	1	yes	accepted									
 009685c0	InitStateGroup	CAIStateGroup_TavernKeeper	__thiscall	void	3	CAIStateGroup_TavernKeeper *,CWorld *,CThingAICreature *	1	yes	accepted									
 00968650	GetBar	CAIStateGroup_TavernKeeper	__thiscall	bool	1	CAIStateGroup_TavernKeeper *	1	yes	accepted									
@@ -40115,7 +40115,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aeb2d0	FindVisible	NParticleEngine::CParticleEmitterList	__thiscall	void	4	CParticleEmitterList *,list<CCountedPointer<NParticleEngine::CParticleEmitter>,std::allocator<CCountedPointer<NParticleEngine::CParticleEmitter>_>_> *,long,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 00aeb4a0	Update	CParticleEmitterManager	__thiscall	void	2	CParticleEmitterManager *,bool	1	yes	accepted									
 00aeb550	StartFrame	CParticleEmitterManager	__thiscall	void	2	CParticleEmitterManager *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
-00aeb600	CreateInterpolatedEmitter	CParticleEmitterManager	__thiscall	CParticleEmitter *	6	CParticleEmitterManager *,CParticleEmitter *,CParticleEmitter *,float,C3DVector *,CRightHandedSet *	1	yes	accepted									
+00aeb600	CreateInterpolatedEmitter	NParticleEngine::CParticleEmitterManager	__thiscall	CParticleEmitter *	6	CParticleEmitterManager *,CParticleEmitter *,CParticleEmitter *,float,C3DVector *,CRightHandedSet *	1	yes	accepted									
 00aeb6d0	CreateEmitter	CParticleEmitterManager	__thiscall	CParticleEmitter *	5	CParticleEmitterManager *,long,C3DVector *,bool,CRightHandedSet *	1	yes	accepted									
 00aeb790	Create2DEmitter	CParticleEmitterManager	__thiscall	CParticleEmitter *	6	CParticleEmitterManager *,long,C2DVector *,EEngine2DLayer,bool,CRightHandedSet *	1	yes	accepted									
 00aeb850	CreateInterpolatedEmitter	CParticleEmitterManager	__thiscall	CParticleEmitter *	7	CParticleEmitterManager *,CParticleEmitter *,long,float,C3DVector *,CRightHandedSet *,bool	1	yes	accepted									
@@ -45655,7 +45655,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c35170	CBaseIntelligentPointer	CBaseIntelligentPointer	__thiscall	undefined	1	CBaseIntelligentPointer *	0	yes	accepted									
 00c35180	sub_00c35180	_global	unknown	undefined	0		0			discovered	gapscan							
 00c35190	`scalar deleting destructor'	CVtable_012b504c	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CLandscapeBackgroundPatch_vectordeletingdestructor_00c35190.cpp
-00c351b0	Initialize	CAudioSamplePlayback	unknown	undefined	0		0	yes	accepted									
+00c351b0	Initialize	CWeaponDrawState	unknown	undefined	0		0	yes	accepted									
 00c35290	sub_00c35290	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c35370	GetPosition	CEnvelope_012b37dc	unknown	undefined	0		0			discovered	gapscan							
 00c35440	sub_00c35440	_global	unknown	undefined	0		0			discovered	gapscan							

@@ -4,6 +4,9 @@
 #include "engine/C2DBoxF.h"
 #ifdef FABLE_RETAIL_CTCSHAPEMANAGER
 #include "engine/ETCInterfaceType.h"
+#ifdef FABLE_RETAIL_CTCSHAPEMANAGER_TRACK
+namespace NShape { class CTrack; }
+#endif
 #endif
 // Ego_r TPI0x2cd5b; original CTCBase and vector reduction put complete native extent at30.
 class CTCShapeManager : public CTCBase {
@@ -16,6 +19,11 @@ public:
     // CTC defines (StatGetInterfaceType, no out-of-line copy for this class in either PDB); retail GetInterfaceType returns 0x44 and
     // GetTC<CTCShapeManager> tests UsingComponents bit 0x44 (`test byte ptr [eax+28h],10h`) and compares the found key with 44h.
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SHAPE_MANAGER; }
+#ifdef FABLE_RETAIL_CTCSHAPEMANAGER_TRACK
+    // Retail opt-in (chunk 754, row 0x0087B840 NCameraModes::CTrack::OnInitLeaf): Ego_r.pdb
+    // ?GetBestTrack@CTCShapeManager@@QBE_NPAPBVCTrack@NShape@@@Z, out of line at 0x00761B50. Declaration only: no layout change.
+    bool GetBestTrack(const NShape::CTrack** track) const;   // 0x00761B50
+#endif
 #endif
 private:
     unsigned char PersistantShapes[12]; // vector<CCountedPointer<NShape::CShape> >
