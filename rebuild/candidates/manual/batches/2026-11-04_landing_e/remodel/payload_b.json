@@ -1,0 +1,32 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00c9cfd0",
+    "module": "libvorbis",
+    "name": "vorbis_bitrate_managed",
+    "source_cpp": "// libvorbis::vorbis_bitrate_managed(vorbis_block* vb) -- bitrate.c: 1 when the encoder's bitrate manager is queueing binned packets (managed mode), else 0\n// Leaf: @vorbis_bitrate_managed@4\n// Flags: /TC /Gr\n// Retail: Fable.exe (TLC, VC7.1) @ 0x00C9CFD0, LTCG __fastcall (vb in ecx).\n// Library: libvorbis 1.0.1 (\"Xiph.Org libVorbis I 20030909\") lib/bitrate.c compiled as C (/TC /Gr), statically linked into libpk.\n//   No PDB/RTTI: the name is the libvorbis API name. The body is the 1.0.1 bitrate.c text verbatim (gitlab.xiph.org xiph/vorbis tag\n//   v1.0.1, bitrate.c lines 171-178).\n// Identity (two sources): (1) the body reads vb->vd (+0x40) -> backend_state (+0x68) -> bms.queue_binned (+0x50) and returns it as\n//   a bool; (2) its callers are vorbis_analysis 0x00C90CB0 (OV_EINVAL when managed) and mapping0_forward 0x00C9EF90 (the\n//   PACKETBLOBS loop bounds), both landed 2026-11-04e from the Xiph text and bound `@vorbis_bitrate_managed@4`.\n//   Landing 2026-11-04e re-modelled this row: it had landed as an invented `S::M()` (catalog CPlayer::GetCurrentMode) and was bound\n//   from the old 0x00C90CB0 model as `?IsBusy@SVideoPlayer@@QAEJXZ`.\n// Structures: the shared engine/Vorbis.h (vorbis_block, vorbis_dsp_state, private_state, bitrate_manager_state).\n// Original libvorbis bitrate.c; BSD-style terms in reference COPYING.\n#include \"engine/Vorbis.h\"\n\nint vorbis_bitrate_managed(vorbis_block *vb){\n  vorbis_dsp_state      *vd=vb->vd;\n  private_state         *b=vd->backend_state; \n  bitrate_manager_state *bm=&b->bms;\n\n  if(bm->queue_binned)return(1);\n  return(0);\n}\n",
+    "test_cpp": "// Behaviour test for libvorbis vorbis_bitrate_managed (0x00C9CFD0): 1 exactly when the bitrate manager's queue_binned is set.\n#include <cstdio>\ntypedef unsigned int ogg_uint32_t;\ntypedef struct { ogg_uint32_t *queue_binned; } bitrate_manager_state;\ntypedef struct { bitrate_manager_state bms; } private_state;\ntypedef struct { void *backend_state; } vorbis_dsp_state;\ntypedef struct { vorbis_dsp_state *vd; } vorbis_block;\nint vorbis_bitrate_managed(vorbis_block *vb){\n  vorbis_dsp_state      *vd=vb->vd;\n  private_state         *b=(private_state*)vd->backend_state;\n  bitrate_manager_state *bm=&b->bms;\n  if(bm->queue_binned)return(1);\n  return(0);\n}\nint main(){\n  ogg_uint32_t q[2]; private_state ps; vorbis_dsp_state vd; vorbis_block vb; int ok=1;\n  vd.backend_state=&ps; vb.vd=&vd;\n  ps.bms.queue_binned=0; if(vorbis_bitrate_managed(&vb)!=0) ok=0;\n  ps.bms.queue_binned=q; if(vorbis_bitrate_managed(&vb)!=1) ok=0;\n  printf(\"00c9cfd0_TEST %s\\n\", ok ? \"PASS\" : \"FAIL\");\n  return ok ? 0 : 1;\n}\n",
+    "pass_pattern": "00c9cfd0_TEST PASS",
+    "leaf": "@vorbis_bitrate_managed@4",
+    "flags": [
+     "/TC",
+     "/Gr"
+    ]
+   },
+   {
+    "address": "00c91800",
+    "module": "libogg",
+    "name": "oggpack_get_buffer",
+    "source_cpp": "// libogg::oggpack_get_buffer(oggpack_buffer* b) -- bitwise.c: the packer's output buffer\n// Leaf: @oggpack_get_buffer@4\n// Flags: /TC /Gr\n// Retail: Fable.exe (TLC, VC7.1) @ 0x00C91800, LTCG __fastcall (b in ecx): `mov eax,[ecx+8] ; ret`.\n// Library: libogg 1.1.1 src/bitwise.c compiled as C (/TC /Gr), statically linked into libpk. No PDB/RTTI: the name is the libogg\n//   API name. The body is the bitwise.c text verbatim (gitlab.xiph.org xiph/ogg tag v1.1.1, bitwise.c lines 442-444).\n// Identity (two sources): (1) the body returns oggpack_buffer.buffer (+8: endbyte +0, endbit +4, buffer +8); (2) its caller\n//   vorbis_analysis 0x00C90CB0 (landed 2026-11-04e from the Xiph text) stores the result in op->packet next to oggpack_bytes\n//   0x00C917B0, and it sits in bitwise.c order after oggpack_bytes.\n//   Landing 2026-11-04e re-modelled this row: it had landed as an invented `DrawGetEnvironment(CWorld*)` (catalog\n//   GetMember_dword0x8) and was bound from the old 0x00C90CB0 model as `?GetWidth@SSurface@@QAEKXZ`.\n// Structures: the shared engine/Vorbis.h (oggpack_buffer).\n// Original libogg bitwise.c; BSD-style terms in reference COPYING.\n#include \"engine/Vorbis.h\"\n\nunsigned char *oggpack_get_buffer(oggpack_buffer *b){\n  return(b->buffer);\n}\n",
+    "test_cpp": "// Behaviour test for libogg oggpack_get_buffer (0x00C91800): returns the packer's buffer pointer unchanged.\n#include <cstdio>\ntypedef struct { long endbyte; int endbit; unsigned char *buffer; unsigned char *ptr; long storage; } oggpack_buffer;\nunsigned char *oggpack_get_buffer(oggpack_buffer *b){\n  return(b->buffer);\n}\nint main(){\n  unsigned char data[8]; oggpack_buffer b; int ok=1;\n  b.endbyte=3; b.endbit=5; b.buffer=data; b.ptr=data+3; b.storage=8;\n  if(oggpack_get_buffer(&b)!=data) ok=0;\n  b.buffer=0; if(oggpack_get_buffer(&b)!=0) ok=0;\n  printf(\"00c91800_TEST %s\\n\", ok ? \"PASS\" : \"FAIL\");\n  return ok ? 0 : 1;\n}\n",
+    "pass_pattern": "00c91800_TEST PASS",
+    "leaf": "@oggpack_get_buffer@4",
+    "flags": [
+     "/TC",
+     "/Gr"
+    ]
+   }
+  ]
+ }
+}

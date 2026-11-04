@@ -1,0 +1,12 @@
+address	module	name	length	group	anchor	gap_to_next_start
+00c8ab70	_global	CreatureHitNotification_Process	800	G00c8ab70	libvorbis	800
+00c8ae90	_global	CreatureHitNotification_StateProcess	1530	G00c8ab70	libvorbis	1536
+00c8b490	_global	Subsystem_LoadWorldMapAndNotifications	736	G00c8ab70	libvorbis	736
+00c8d690	_global	WeatherRenderer_ProcessStream	702	G00c8ab70	libvorbis	704
+00c8ff30	_global	AudioDSP_Process	2470	G00c8ab70	libvorbis	2480
+00c94ae0	_global	Audio_ProcessWeightedCoefficients	1024	G00c94ae0	CPlayer::CPlayer	1024
+00c9c620	_global	Mesh_ComputeDetailLOD	588	G00c94ae0	CPlayer::CPlayer	592
+00c9c870	_global	Mesh_Process	712	G00c94ae0	CPlayer::CPlayer	720
+00c9dd60	_global	Mesh_ComputeNormalMap	1308	G00c94ae0	CPlayer::CPlayer	1312
+00c9e280	_global	Mesh_ResizeDetail	541	G00c94ae0	CPlayer::CPlayer	544
+00c9ef90	CPlayer::CPlayer	ProcessAudioFrame	2346	G00c94ae0	CPlayer::CPlayer	2352

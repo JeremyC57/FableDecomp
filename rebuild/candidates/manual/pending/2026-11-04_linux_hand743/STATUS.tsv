@@ -1,0 +1,12 @@
+address	name	status	attempts	note
+00c8ab70	libvorbis::ov_raw_seek	RELOCATION_MATCH	1	vorbisfile.c TU (landed _fetch_and_process_packet slice + seek fns); /GS (work_os header[282] cookie)
+00c8ae90	libvorbis::ov_pcm_seek_page	RELOCATION_MATCH	1	same TU; matched with and without /GS (kept /GS: one TU, one flag set)
+00c8b490	libvorbis::ov_pcm_seek	RELOCATION_MATCH	1	same TU, /GS
+00c8d690	libogg::ogg_stream_pagein	RELOCATION_MATCH	3	framing.c TU; 1 SRC_FAIL (string.h memmove linkage), 1 DIFFER (page accessors inlined) -> accessors under auto_inline(off)
+00c8ff30	libvorbis::vorbis_synthesis_blockin	RELOCATION_MATCH	2	block.c verbatim as C (/TC /Gr) on engine/Vorbis.h; 1 SRC_FAIL as C++
+00c94ae0	libvorbis::_vp_couple	RELOCATION_MATCH	2	psy.c as C; a1 DIFFER(1042v1024) unitnorm inlined -> noinline same-TU body
+00c9c620	libvorbis::mdct_backward	RELOCATION_MATCH	1	mdct.c TU (landed statics) ; one earlier TIMEOUT from a broken file assembly (not a grade)
+00c9c870	libvorbis::mdct_forward	RELOCATION_MATCH	1	same TU as mdct_backward
+00c9dd60	libvorbis::_ve_amp	RELOCATION_MATCH	1	envelope.c as C; 1 SRC_FAIL (header typedef clash) before; leaf @_ve_amp@24
+00c9e280	libvorbis::_ve_envelope_search	RELOCATION_MATCH	1	same TU as _ve_amp
+00c9ef90	libvorbis::mapping0_forward	RELOCATION_MATCH	1	mapping0.c as C; 1 SRC_FAIL (vorbis_info_psy undefined) before

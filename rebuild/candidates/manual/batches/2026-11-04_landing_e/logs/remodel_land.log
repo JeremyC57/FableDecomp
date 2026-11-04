@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00c90c80   RELOCATION_MATCH PASS   vorbis_window
+00c90cb0   RELOCATION_MATCH PASS   vorbis_analysis
+
+WINS: 2
+  00c90c80 RELOCATION_MATCH libvorbis::@vorbis_window@8
+  00c90cb0 RELOCATION_MATCH libvorbis::@vorbis_analysis@8
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  libvorbis_vorbiswindow_00c90c80
+  libvorbis_vorbisanalysis_00c90cb0

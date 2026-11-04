@@ -1,0 +1,18 @@
+address	name	evidence
+00c8ab70	libvorbis::ov_raw_seek	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c8ae90	libvorbis::ov_pcm_seek_page	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c8b490	libvorbis::ov_pcm_seek	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c8d690	libogg::ogg_stream_pagein	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c8ff30	libvorbis::vorbis_synthesis_blockin	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c94ae0	libvorbis::_vp_couple	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c9c620	libvorbis::mdct_backward	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c9c870	libvorbis::mdct_forward	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c9dd60	libvorbis::_ve_amp	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c9e280	libvorbis::_ve_envelope_search	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c9ef90	libvorbis::mapping0_forward	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c9cfd0	libvorbis::vorbis_bitrate_managed	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c90cb0	libvorbis::vorbis_analysis	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c91800	libogg::oggpack_get_buffer	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c912f0	libogg::oggpack_reset	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c9ea70	libvorbis::_vorbis_window_get	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 
+00c90c80	libvorbis::vorbis_window	landing 2026-11-04e (chunk 743): Xiph libvorbis 1.0.1 / libogg 1.1.1 source name; 

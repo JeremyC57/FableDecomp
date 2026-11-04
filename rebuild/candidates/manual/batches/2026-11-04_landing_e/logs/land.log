@@ -1,0 +1,43 @@
+addr       parity           behav  name
+00c8ab70   RELOCATION_MATCH PASS   ov_raw_seek
+00c8ae90   RELOCATION_MATCH PASS   ov_pcm_seek_page
+00c8b490   RELOCATION_MATCH PASS   ov_pcm_seek
+00c8d690   RELOCATION_MATCH PASS   ogg_stream_pagein
+00c8ff30   RELOCATION_MATCH PASS   vorbis_synthesis_blockin
+00c94ae0   RELOCATION_MATCH PASS   _vp_couple
+00c9c620   RELOCATION_MATCH PASS   mdct_backward
+00c9c870   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c9c870   RELOCATION_MATCH PASS   mdct_forward
+00c9dd60   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c9dd60   WARN RELOC_CONFLICT: @todB@4 -> 00c9dd40 here, 00c90d40 in landed 00c90d60
+00c9dd60   RELOCATION_MATCH PASS   _ve_amp
+00c9e280   RELOCATION_MATCH PASS   _ve_envelope_search
+00c9ef90   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c9ef90   WARN RELOC_CONFLICT: @todB@4 -> 00c9ef70 here, 00c90d40 in landed 00c90d60
+00c9ef90   RELOCATION_MATCH PASS   mapping0_forward
+
+WINS: 11
+  00c8ab70 RELOCATION_MATCH libvorbis::@ov_raw_seek@12
+  00c8ae90 RELOCATION_MATCH libvorbis::@ov_pcm_seek_page@12
+  00c8b490 RELOCATION_MATCH libvorbis::@ov_pcm_seek@12
+  00c8d690 RELOCATION_MATCH libogg::@ogg_stream_pagein@8
+  00c8ff30 RELOCATION_MATCH libvorbis::@vorbis_synthesis_blockin@8
+  00c94ae0 RELOCATION_MATCH libvorbis::@_vp_couple@40
+  00c9c620 RELOCATION_MATCH libvorbis::@mdct_backward@12
+  00c9c870 RELOCATION_MATCH libvorbis::@mdct_forward@12
+  00c9dd60 RELOCATION_MATCH libvorbis::@_ve_amp@24
+  00c9e280 RELOCATION_MATCH libvorbis::@_ve_envelope_search@4
+  00c9ef90 RELOCATION_MATCH libvorbis::@mapping0_forward@4
+
+LANDED 11 wins into src/compiled + tests + catalog + oracle
+  libvorbis_ovrawseek_00c8ab70
+  libvorbis_ovpcmseekpage_00c8ae90
+  libvorbis_ovpcmseek_00c8b490
+  libogg_oggstreampagein_00c8d690
+  libvorbis_vorbissynthesisblockin_00c8ff30
+  libvorbis_vpcouple_00c94ae0
+  libvorbis_mdctbackward_00c9c620
+  libvorbis_mdctforward_00c9c870
+  libvorbis_veamp_00c9dd60
+  libvorbis_veenvelopesearch_00c9e280
+  libvorbis_mapping0forward_00c9ef90

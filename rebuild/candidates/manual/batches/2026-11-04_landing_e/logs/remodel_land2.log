@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00c9cfd0   MATCH            PASS   vorbis_bitrate_managed
+00c91800   MATCH            PASS   oggpack_get_buffer
+
+WINS: 2
+  00c9cfd0 MATCH libvorbis::@vorbis_bitrate_managed@4
+  00c91800 MATCH libogg::@oggpack_get_buffer@4
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  libvorbis_vorbisbitratemanaged_00c9cfd0
+  libogg_oggpackgetbuffer_00c91800

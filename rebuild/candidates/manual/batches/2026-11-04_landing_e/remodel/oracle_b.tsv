@@ -1,0 +1,3 @@
+address	name	length	bytes
+00c9cfd0	CPlayer::GetCurrentMode	17	8b41408b48688b515033c085d20f95c0c3
+00c91800	_global::GetMember_dword0x8_00c91800	4	8b4108c3
