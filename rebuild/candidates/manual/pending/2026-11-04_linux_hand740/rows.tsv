@@ -1,0 +1,6 @@
+address	module	name	length	group	anchor	gap_to_next_start
+00aff1b0	NParticleEngine::CPSCRenderMesh	InterpolateTo	3630	G00aff1b0	NParticleEngine::CPSCRenderMesh::NParticleEngine::CPSCRenderMesh	3632
+00afffe0	NParticleEngine::CPSCRenderMesh::NParticleEngine::CPSCRenderMesh	vfunc_15	3536	G00aff1b0	NParticleEngine::CPSCRenderMesh::NParticleEngine::CPSCRenderMesh	3536
+00b01900	NParticleEngine::CPSCRenderMesh::NParticleEngine::CPSCRenderMesh	vfunc_19	3777	G00aff1b0	NParticleEngine::CPSCRenderMesh::NParticleEngine::CPSCRenderMesh	3792
+00b027d0	CPSCRenderMesh	DatabaseSerialise	5313	G00aff1b0	NParticleEngine::CPSCRenderMesh::NParticleEngine::CPSCRenderMesh	5328
+00b03ca0	NParticleEngine::CPSCRenderMesh::NParticleEngine::CPSCRenderMesh	vfunc_13	6468	G00aff1b0	NParticleEngine::CPSCRenderMesh::NParticleEngine::CPSCRenderMesh	6528

@@ -1,0 +1,2 @@
+address	name	parity	behaviour	headers_reached	source
+none	no landed source defines FABLE_RETAIL_CSYMBOLMAP or FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN (grep rebuild/src + rebuild/include: 0 hits); the overlays only add code behind those new macros and hdrcheck2 prints default=same for all three, so no landed includer changes	-	-	engine/CSymbolMap.h, engine/CIVCountedPointer.h, engine/CEnginePrimitiveHandle.h	-

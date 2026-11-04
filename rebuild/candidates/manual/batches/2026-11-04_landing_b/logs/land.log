@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00aff1b0   RELOCATION_MATCH PASS   InterpolateTo
+00afffe0   RELOCATION_MATCH PASS   ReadBinary
+00b027d0   RELOCATION_MATCH PASS   DatabaseSerialise
+
+WINS: 3
+  00aff1b0 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?InterpolateTo@CPSCRenderMesh@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+  00afffe0 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?ReadBinary@CPSCRenderMesh@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b027d0 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?DatabaseSerialise@CPSCRenderMesh@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NParticleEngineCPSCRenderMesh_InterpolateTo_00aff1b0
+  NParticleEngineCPSCRenderMesh_ReadBinary_00afffe0
+  NParticleEngineCPSCRenderMesh_DatabaseSerialise_00b027d0

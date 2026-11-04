@@ -40089,7 +40089,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aea8e0	Sort	CVectorMap<T_12_00aea8e0>	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CGuiVarTransferBool_TransferToGui_00aea8e0.cpp
 00aea900	CVectorMap_SortIfDirty_00aea900	_global	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CTCVillage_OnInitialActivate_00aea900.cpp
 00aea9f0	GetTickRate	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aea9f0.cpp
-00aeaa00	GetConstFloat_0_0666667_00aeaa00	_global	__fastcall	float	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GetMaxDrawDistance_00aeaa00.cpp
+00aeaa00	GetOneOverTickRate	NParticleEngine	__fastcall	float	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GetMaxDrawDistance_00aeaa00.cpp
 00aeaa20	GetConstFloat_48_00aeaa20	_global	__thiscall	float	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa20.cpp
 00aeaa30	GetConstFloat_0_00aeaa30	_global	__thiscall	float	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa30.cpp
 00aeaa40	GetConstFloat_0_00aeaa40	_global	__thiscall	float	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa40.cpp
@@ -40471,18 +40471,18 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00afe980	resize	std::vector<CArray<long>, std::allocator<CArray<long>>>	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted									
 00afe9b0	ClearChildPrimitive	_global	__thiscall	void	2	CEngineInternalPrimitive2DViewport *,ulong	1	yes	accepted									
 00afead0	CEnginePrimitiveParticleMeshGroup	CEnginePrimitiveParticleMeshGroup	__thiscall	void	2	C3DMeshFileBoneChunk *,CMatrix3x4 *	1	yes	accepted									
-00afeb90	vfunc_18	NParticleEngine::CPSCRenderMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00afeb90	DatabaseCopy	NParticleEngine::CPSCRenderMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00afee00	WriteBinary	NParticleEngine::CPSCRenderMesh	__thiscall	void	2	CPSCRenderSprite *,CDataOutputStream *	1	yes	accepted									
 00aff0a0	Initialise	NParticleEngine::CPSCRenderMesh	__thiscall	bool	5	CPSCRenderSprite *,CIEngine *,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *,CEnginePrimitiveHandle *	1	yes	accepted									
 00aff1b0	InterpolateTo	NParticleEngine::CPSCRenderMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00afffe0	NParticleEngine::CPSCRenderMesh::vfunc_15	NParticleEngine::CPSCRenderMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00afffe0	ReadBinary	NParticleEngine::CPSCRenderMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b00db0	GetComponentCost	NParticleEngine::CPSCRenderMesh	__thiscall	void	5	CPSCRenderMesh *,CParticleSystemCost *,CParticleSystem *,float,float	1	yes	accepted									
 00b01250	ClearAllPrimitives	NParticleEngine::CPSCRenderMesh	__thiscall	void	3	CPSCDecalRenderer *,CIEngine *,CEnginePrimitiveHandle *	1	yes	accepted									
 00b012e0	CPSCRenderMesh	NParticleEngine::CPSCRenderMesh	__thiscall	undefined	1	CPSCRenderMesh *	0	yes	accepted									
 00b017f0	~CPSCRenderMesh	NParticleEngine::CPSCRenderMesh	__thiscall	void	1	CPSCRenderMesh *	1	yes	accepted									
-00b01900	NParticleEngine::CPSCRenderMesh::vfunc_19	NParticleEngine::CPSCRenderMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00b027d0	DatabaseSerialise	CPSCRenderMesh	__thiscall	void	3	CPSCRenderMesh *,CPersistContext *,CEmitterDatabaseSerialiseInfo *	1	yes	accepted									
-00b03ca0	NParticleEngine::CPSCRenderMesh::vfunc_13	NParticleEngine::CPSCRenderMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00b01900	AddToBoundingSphere	NParticleEngine::CPSCRenderMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00b027d0	DatabaseSerialise	NParticleEngine::CPSCRenderMesh	__thiscall	void	3	CPSCRenderMesh *,CPersistContext *,CEmitterDatabaseSerialiseInfo *	1	yes	accepted									
+00b03ca0	PreparePrimitives	NParticleEngine::CPSCRenderMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b05620	GetInterpolatedOrientation	NParticleEngine::CParticle	unknown	undefined	0		0	yes	accepted									
 00b05840	GetUnscaledWorldTransform	NParticleEngine::CParticleSystem	__thiscall	void	2	CParticleSystem *,CMatrix3x4 *	1	yes	accepted									
 00b05890	CVectorMap<unsigned_long::LowerBound	_global	__thiscall	_Vector_const_iterator<std::_Vector_val<std::pair<unsigned_long,C3DMeshVolume>,std::allocator<std::pair<unsigned_long,C3DMeshVolume>_>_>_>	2	CVectorMap<unsigned_long,C3DMeshVolume,CKeyPairCompareLess<unsigned_long,C3DMeshVolume>_> *,ulong *	1	yes	accepted									
@@ -55211,7 +55211,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f35ed0	Initialise	CPerlinNoise	__thiscall	void	2	CPerlinNoise *,ulong	1	yes	accepted									
 00f36010	GetGaussian2DNoise	CPerlinNoise	__thiscall	float	2	CPerlinNoise *,C2DVector *	1	yes	accepted									
 00f361d0	Get3DNoise	NFractal::CPerlinNoise	__thiscall	float	2	CPerlinNoise *,C3DVector *	1	yes	accepted									
-00f36540	GetGaussian2DNoise	CPerlinNoise	__thiscall	float	2	CPerlinNoise *,C2DVector *	1	yes	accepted									
+00f36540	GetGaussian2DNoise	NFractal::CPerlinNoise	__thiscall	float	2	CPerlinNoise *,C2DVector *	1	yes	accepted									
 00f36710	GetFractalHeight	NFractal::CRidgedMultifractal	unknown	undefined	0		0	yes	accepted									
 00f36860	GetFractalHeight	CHybridMultifractal	__thiscall	double	2	CHybridMultifractal *,C2DVector *	1	yes	accepted									
 00f36a30	GetFractalHeight	CHeteroTerrainFractal	__thiscall	double	2	CHeteroTerrainFractal *,C2DVector *	1	yes	accepted									

@@ -36155,3 +36155,4 @@ _GVertexShaderConstantLayoutEmpty	013ca8a8	009da9f0
 ?ReadBinary@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVCDataInputStream@@@Z	00b22100	00b22b40
 ?GetUnscaledWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z	00b05840	00b05980
 ?GFUIntToCharString@@YI?AVCCharString@@K@Z	0099f8b0	00ef5200
+?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@ABVCCharString@@J@Z	009e50c0	00b027d0

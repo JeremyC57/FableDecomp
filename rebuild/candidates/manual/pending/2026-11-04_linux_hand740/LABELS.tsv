@@ -1,0 +1,15 @@
+address	name	evidence
+0x00AFF1B0	?InterpolateTo@CPSCRenderMesh@NParticleEngine@@UAEXABVCPSCBase@2@M@Z	matched (RELOCATION_MATCH); slot 14 of 0x0129F96C + FableWin.pdb
+0x00AFFFE0	?ReadBinary@CPSCRenderMesh@NParticleEngine@@UAEXAAVCDataInputStream@@@Z	matched (RELOCATION_MATCH); slot 15 of 0x0129F96C + FableWin.pdb; catalog "vfunc_15"
+0x00B01900	?AddToBoundingSphere@CPSCRenderMesh@NParticleEngine@@UAE_NAAVC3DBoundingSphere@@MAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@@Z	parked; slot 19 of 0x0129F96C (CPSCBase slot 19 = AddToBoundingSphere 0x00AF2A30, landed CPSCLight twin 0x00B18AF0) + FableWin.pdb; `ret 10h`; catalog "vfunc_19"
+0x00B027D0	?DatabaseSerialise@CPSCRenderMesh@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z	matched (RELOCATION_MATCH); slot 17 of 0x0129F96C + FableWin.pdb
+0x00B03CA0	?PreparePrimitives@CPSCRenderMesh@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	parked; slot 13 of 0x0129F96C + FableWin.pdb + chunk 737's slot-13 proof; `ret 14h`; catalog "vfunc_13"
+0x00AFEE00	?WriteBinary@CPSCRenderMesh@NParticleEngine@@UBEXAAVCDataOutputStream@@@Z	slot 16 of 0x0129F96C + FableWin.pdb (UBE: const); landed row, no binding
+0x00AFEB90	?DatabaseCopy@CPSCRenderMesh@NParticleEngine@@UAEXABVCPSCBase@2@@Z	slot 18 of 0x0129F96C + FableWin.pdb; landed as "vfunc18"
+0x00B00DB0	?GetComponentCost@CPSCRenderMesh@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z	slot 20 of 0x0129F96C + FableWin.pdb
+0x00B01250	?ClearAllPrimitives@CPSCRenderMesh@NParticleEngine@@UAEXPAVCIEngine@@AAVCEnginePrimitiveHandle@@@Z	slot 29 of 0x0129F96C (`call [edx+74h]` from 0x00B03CA0 with (info.Engine, handle)) + FableWin.pdb
+0x00AEAA00	?GetOneOverTickRate@NParticleEngine@@YIMXZ	Ego_r.pdb NParticleEngine YIMXZ accessor set; body `fld [0x01399508]` (1/15) next to GetTickRate 0x00AEA9F0 (15); used as the seconds-per-tick factor in 0x00B03CA0 and GetInterpolatedLifetimerInSeconds 0x00AF85E0
+0x00AF85E0	?GetInterpolatedLifetimerInSeconds@CParticle@NParticleEngine@@QBEMM@Z	FableWin.pdb + body (GetOneOverTickRate * (Lifetimer - CreationTime/255 + t)); catalog name agrees
+0x00B05980	?GetParticleWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z	FableWin.pdb / Ego_r.pdb; catalog name agrees; feeds the mesh-group matrix in 0x00B03CA0
+0x00B058E0	??0CEnginePrimitiveParticleMesh@@QAE@_KABVC3DVector@@ABVCRightHandedSet@@1ABVCRGBColour@@W4EEngineInterpolationSet@@@Z	FableWin.pdb / Ego_r.pdb; 7 stack words (u64, pos, rhs, scale, colour, set) at both 0x00B03CA0 sites; catalog name agrees
+0x00F36540	?GetGaussian2DNoise@CPerlinNoise@NFractal@@QBEMABVC2DVector@@@Z	FableWin.pdb has two C2DVector noise members (Get2DNoise / GetGaussian2DNoise); 0x00F36540 reads one scalar per lattice corner (LookupScalar shape, no gradient dot) and is 0x142 bytes (FableWin debug copies: Get2DNoise 0x330, GetGaussian2DNoise 0x200 bytes); called on CParticleEmitterManager+8 (PerlinNoise, PeekPerlinNoise) for the flicker

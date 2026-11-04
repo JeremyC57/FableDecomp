@@ -13,6 +13,10 @@ public:
         if (!Data.IsNull() && Data->GetRefCount() == 1) Data->NotifyReleased(*this);
     }
     void SetData(CEnginePersistentPrimitiveBase* data);
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN
+    // Chunk 740 (0x00B03CA0): FableWin.pdb ??4CEnginePrimitiveHandle@@QAEABV0@ABV0@@Z (inline in retail): the counted Data assignment.
+    const CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& other) { Data = other.Data; return *this; }
+#endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEHANDLE
     // Retail opt-in (chunk 737, CPSCLight::PreparePrimitives 0x00B19C60; the landed CPSCLight::Kill 0x00B19C20 model): FableWin.pdb
     // ?Clear@CEnginePrimitiveHandle@@QAEXXZ, inline in retail: the last handle notifies the primitive (slot 3), then `Data = 0`

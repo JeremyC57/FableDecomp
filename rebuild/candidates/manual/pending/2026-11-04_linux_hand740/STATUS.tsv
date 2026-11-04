@@ -1,0 +1,6 @@
+address	name	status	attempts	note
+0x00AFF1B0	NParticleEngine::CPSCRenderMesh::InterpolateTo	RELOCATION_MATCH	1	src + test; payload; vland RELOCATION_MATCH PASS; grade retail_asm (GFFloatToLongNear via the shared header, Retail-asm line 0x00AFF22D)
+0x00AFFFE0	NParticleEngine::CPSCRenderMesh::ReadBinary	RELOCATION_MATCH	1	src + test; payload; vland RELOCATION_MATCH PASS. Catalog "vfunc_15" = slot 15 = ReadBinary
+0x00B01900	NParticleEngine::CPSCRenderMesh::AddToBoundingSphere	DIFFER(3755v3777)	19	differ/00b01900.cpp + test. Catalog "vfunc_19" = slot 19 = AddToBoundingSphere. Residue: frame 0x298 v 0x2B0 (slot numbering), loop-head pad, trail-end TransformPoint Z-row order, trail magnitude load order, !CentredOnPos matrix block
+0x00B027D0	NParticleEngine::CPSCRenderMesh::DatabaseSerialise	RELOCATION_MATCH	13	src + test; payload; vland RELOCATION_MATCH PASS; grade retail_asm (Retail-asm line 0x00B032BD); overlay engine/CSymbolMap.h (FABLE_RETAIL_CSYMBOLMAP)
+0x00B03CA0	NParticleEngine::CPSCRenderMesh::PreparePrimitives	DIFFER(6601v6468)	10	differ/00b03ca0.cpp + test. Catalog "vfunc_13" = slot 13 = PreparePrimitives. Residue: frame 0x44C v 0x3C0, the CArray<long>() resize temporary's destructor (retail none), Release count shape, colour-array slots; overlay FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN

@@ -22,6 +22,19 @@ public:
 #else
     void Reset(T* object);
 #endif
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN
+    // Chunk 740 (CPSCRenderMesh::PreparePrimitives 0x00B03CA0, CParticle::SetPrimitiveInfo expanded at 0x00B04F2C / 0x00B0555A):
+    // FableWin.pdb ??4?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QAEAAV0@ABV0@@Z, inline in retail: `cmp ecx,[src]; je`,
+    // the release (with its `mov [dst],0`), then the new pointer stored and `inc [eax+4]` when non-null. Needs FABLE_RETAIL_CIVCOUNTEDPOINTER.
+    CIVCountedPointer& operator=(const CIVCountedPointer& other) {
+        if (Object != other.Object) {
+            Release();
+            Object = other.Object;
+            if (Object) Object->AddRef();
+        }
+        return *this;
+    }
+#endif
     T* operator->() const { return static_cast<T*>(Object); }
     bool IsNull() const { return Object == 0; }
     unsigned long GetRefCount() const { return Object ? Object->GetRefCount() : 0; }
