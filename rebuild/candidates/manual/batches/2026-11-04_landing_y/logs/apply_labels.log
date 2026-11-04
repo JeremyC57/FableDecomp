@@ -1,0 +1,72 @@
+catalog  00c6b720 SBodyRecord_00c55030::Reset -> CStateVariableFilter::Reset
+catalog  00514eb0 std::std::vector_construct_from_C2DLineF_vector -> std::vector<C2DLineF>::vector
+catalog  006e2500 NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::~CParticleUpdateParameters -> NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>::~CParticleUpdateParameters
+catalog  0077cd30 CAIStateGroup_CreatureUseCoverBase::~CAIStateGroup_CreatureUseCoverBase -> CTCHighlightItem::~CTCHighlightItem
+catalog  0079a620 CTCActionUseBuyOrSteal::~CTCActionUseBuyOrSteal -> CTCSummonSpell::~CTCSummonSpell
+catalog  0079c200 CTCCreatureTintEffect::~CTCCreatureTintEffect -> CTCSummonableCreature::~CTCSummonableCreature
+catalog  007a4310 CTCActionUseBuyOrSteal::~CTCActionUseBuyOrSteal -> CTCWillEnflame::~CTCWillEnflame
+catalog  007a5460 CTCCreatureTintEffect::~CTCCreatureTintEffect -> CTCForcePushPower::~CTCForcePushPower
+catalog  007f8860 CTCInterface82::ClearEntry_7f8860 -> CTCParticleAttacher::DetachParticles
+catalog  00850330 CTCAssassinRush::FinishMove -> NCameraModes::CPhysicsCollisionPointsObject::~CPhysicsCollisionPointsObject
+catalog  008bd610 CTCInventoryBase::GetItemDescription -> CTCWillLightning::SetPItemRemoved
+catalog  0098f380 _global::CThreadedFileManager_InitiatePriority -> CThreadedFileManager::BeginThread
+catalog  009918f0 CASoundManager::ClearBanks_009918f0 -> CASoundManager::ClearBanks
+catalog  009a8fe0 CAIStateGroup_CarryCrateAndFollow::~CAIStateGroup_CarryCrateAndFollow -> std::pair<const CCharString,CBankFileManager::CBankInfo>::~pair
+catalog  009c5870 CFileInstaller::CFileInstaller::ThreadMain -> CFileInstaller::BeginThread
+catalog  009cc6c0 Stack<unsigned_long,64>::Stack<unsigned_long,64>::~Stack<unsigned_long,64> -> CBankFileEntryUpdateData::~CBankFileEntryUpdateData
+catalog  00a26aa0 C3DAnimationInfo::BuildSharedAnimation -> C3DAnimationInfo::Preload
+catalog  00a63680 CTCAssassinRush::FinishMove -> CFontDataBank::~CFontDataBank
+catalog  00c1d500 _global::Jenkins_HashBuffer -> _global::JenkinsHashBuffer
+catalog  00c206e0 _global::Creature_GetWeaponSlotFromState -> CSoundEvent::GetPlaybackKind
+catalog  00c222d0 _global::NScript_CEvent_Ctor -> CSoundEventSet::CSoundEventSet
+catalog  00c295b0 std::vector<CHandleBasedMemoryPool::CHeader*>::_Insert_n -> std::vector<CHandleBasedMemoryPool_012b4098::CHeader*>::_Insert_n
+catalog  00c42a20 _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_> -> _global::RandomBelow_00c42a70
+catalog  00c491e0 _global::CFrame_ctor -> CCodaFrame::CCodaFrame
+catalog  00c49820 _global::CCodaFrameStreamer_Initialize -> CCodaFrameStreamer_00c49650::CCodaFrameStreamer_00c49650
+catalog  00c4c440 _global::PKRACMasterObject_VerifyAndNotify -> CMasterObject_00c4cd80::Complete
+catalog  00c4cab0 _global::PKRACDependency_OnFinalized -> CMasterObject_00c4c8b0::LoadSlave
+catalog  00c4d240 _global::CCombatActionSelector_GetOrCreate -> CRenderLayerWin32::CreatePooledEvent
+catalog  00c565f0 _global::CEngineWaterRenderer_InitializeOpenAL -> CAudioContext::Initialise
+catalog  00c78150 _global::CAudioChannel_ApplyEqualizerEffect -> CReverbProcessor::UpdateTapDelays
+catalog  00ca7780 CRenderManager2D::AddLineToDrawBuffer -> CUnknown::~CUnknown
+catalog  00cb9200 CLandscapeBackgroundPatch::`vector_deleting_destructor' -> std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>::`scalar deleting destructor'
+catalog  00d6bb80 CQ_HangingTreeEvilScript::SpawnEnemies -> NScript::CQ_HangingTreeEvilScript::SpawnEnemies
+manifest 00514eb0 std::std::vector_construct_from_C2DLineF_vector -> std::vector<C2DLineF>::vector
+manifest 006e2500 NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::~CParticleUpdateParameters -> NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>::~CParticleUpdateParameters
+manifest 0077cd30 CAIStateGroup_CreatureUseCoverBase::~CAIStateGroup_CreatureUseCoverBase -> CTCHighlightItem::~CTCHighlightItem
+manifest 0079a620 CTCActionUseBuyOrSteal::~CTCActionUseBuyOrSteal -> CTCSummonSpell::~CTCSummonSpell
+manifest 0079c200 CTCCreatureTintEffect::~CTCCreatureTintEffect -> CTCSummonableCreature::~CTCSummonableCreature
+manifest 007a4310 CTCActionUseBuyOrSteal::~CTCActionUseBuyOrSteal -> CTCWillEnflame::~CTCWillEnflame
+manifest 007a5460 CTCCreatureTintEffect::~CTCCreatureTintEffect -> CTCForcePushPower::~CTCForcePushPower
+manifest 007f8860 CTCInterface82::ClearEntry_7f8860 -> CTCParticleAttacher::DetachParticles
+manifest 00850330 CTCAssassinRush::FinishMove -> NCameraModes::CPhysicsCollisionPointsObject::~CPhysicsCollisionPointsObject
+manifest 008bd610 CTCInventoryBase::GetItemDescription -> CTCWillLightning::SetPItemRemoved
+manifest 0098f380 _global::CThreadedFileManager_InitiatePriority -> CThreadedFileManager::BeginThread
+manifest 009918f0 CASoundManager::ClearBanks_009918f0 -> CASoundManager::ClearBanks
+manifest 009a8fe0 CAIStateGroup_CarryCrateAndFollow::~CAIStateGroup_CarryCrateAndFollow -> std::pair<const CCharString,CBankFileManager::CBankInfo>::~pair
+manifest 009aa440 CAIStateGroup_CarryCrateAndFollow::~CAIStateGroup_CarryCrateAndFollow -> std::pair<const CCharString,CBankFileManager::CBankInfo>::~pair
+manifest 009c5870 CFileInstaller::CFileInstaller::ThreadMain -> CFileInstaller::BeginThread
+manifest 009cc6c0 Stack<unsigned_long,64>::Stack<unsigned_long,64>::~Stack<unsigned_long,64> -> CBankFileEntryUpdateData::~CBankFileEntryUpdateData
+manifest 00a26aa0 C3DAnimationInfo::BuildSharedAnimation -> C3DAnimationInfo::Preload
+manifest 00a63680 CTCAssassinRush::FinishMove -> CFontDataBank::~CFontDataBank
+manifest 00c1d500 _global::Jenkins_HashBuffer -> _global::JenkinsHashBuffer
+manifest 00c206e0 _global::Creature_GetWeaponSlotFromState -> CSoundEvent::GetPlaybackKind
+manifest 00c222d0 _global::NScript_CEvent_Ctor -> CSoundEventSet::CSoundEventSet
+manifest 00c295b0 std::vector<CHandleBasedMemoryPool::CHeader*>::_Insert_n -> std::vector<CHandleBasedMemoryPool_012b4098::CHeader*>::_Insert_n
+manifest 00c42a20 _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_> -> _global::RandomBelow_00c42a70
+manifest 00c491e0 _global::CFrame_ctor -> CCodaFrame::CCodaFrame
+manifest 00c49820 _global::CCodaFrameStreamer_Initialize -> CCodaFrameStreamer_00c49650::CCodaFrameStreamer_00c49650
+manifest 00c4c440 _global::PKRACMasterObject_VerifyAndNotify -> CMasterObject_00c4cd80::Complete
+manifest 00c4cab0 _global::PKRACDependency_OnFinalized -> CMasterObject_00c4c8b0::LoadSlave
+manifest 00c4d240 _global::CCombatActionSelector_GetOrCreate -> CRenderLayerWin32::CreatePooledEvent
+manifest 00c54c10 _global::C3DMeshFileXBoundingBoxChunk_UpdateAudioProperties -> CAudioSource::ApplyParameters
+manifest 00c565f0 _global::CEngineWaterRenderer_InitializeOpenAL -> CAudioContext::Initialise
+manifest 00c6b720 SBodyRecord_00c55030::Reset -> CStateVariableFilter::Reset
+manifest 00c78150 _global::CAudioChannel_ApplyEqualizerEffect -> CReverbProcessor::UpdateTapDelays
+manifest 00c89850 _global::Animation_InterpolateProcess -> CReverbFilterTap::ProcessCrossfade
+manifest 00c8e2e0 _global::C3DGenerator_ReadComplexMesh -> libvorbis::_vorbis_unpack_books
+manifest 00c95a10 _global::Waveform_FindClosestFrequencyBin -> libvorbis::_best
+manifest 00ca7780 CRenderManager2D::AddLineToDrawBuffer -> CUnknown::~CUnknown
+manifest 00cb9200 CLandscapeBackgroundPatch::`vector_deleting_destructor' -> std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>::`scalar deleting destructor'
+manifest 00d6bb80 CQ_HangingTreeEvilScript::SpawnEnemies -> NScript::CQ_HangingTreeEvilScript::SpawnEnemies
+labels 55  catalog renamed 33  manifest renamed 38

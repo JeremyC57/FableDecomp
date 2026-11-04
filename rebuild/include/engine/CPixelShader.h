@@ -9,7 +9,14 @@
 #include "engine/CShaderBase.h"
 struct IDirect3DPixelShader9;
 class CPixelShader;
+#ifdef FABLE_RETAIL_CPIXELSHADERDATA
+// Retail opt-in (chunk 761, row 0x00A5EC10 ~CPixelShaderData): RTTI .?AVCPixelShaderData@@ : CBaseClassNonCopyable : CBaseClass
+// (ghidra_out/rtti_bases.tsv); the destructor tail-jumps ~CBaseClassNonCopyable 0x0099A300. Same layout (the base has no members).
+#include "engine/CBaseClassNonCopyable.h"
+class CPixelShaderData : public CBaseClassNonCopyable {
+#else
 class CPixelShaderData {
+#endif
     friend class CPixelShader;
     virtual ~CPixelShaderData();                                         // slot 0 (deleting dtor called with 1); ??1 EAE (private)
 public:

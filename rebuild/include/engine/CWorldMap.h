@@ -100,6 +100,13 @@ protected:
 public:
     void GetMapNavigationAreaUpdateInfo(long,const C2DBoxI&,const CCharString&,CNavigationAreaUpdate&) const;
     long GetNavigationLayerAt(const C3DVector&,const CThing*) const;
+#ifdef FABLE_RETAIL_CWORLDMAP_THINGMAPMANAGER
+    // Chunk 761 (row 0x0071A790 ~CTCMapwho, via the inline CTCMapwho::RemoveFromMapwho): FableWin.pdb
+    // ?GetThingMapManager@CWorldMap@@QAEAAVCThingMapManager@NThingMap@@XZ (and the const QBE twin), inline in retail: the
+    // scoped_ptr word +0x10 is read in place (`call 0x00686D30 ; mov ecx,[eax+10h]`). Needs FABLE_RETAIL_SCOPED_PTR (operator*).
+    NThingMap::CThingMapManager& GetThingMapManager() { return *PThingMapManager; }
+    const NThingMap::CThingMapManager& GetThingMapManager() const { return *PThingMapManager; }
+#endif
 protected:
     void GetLevelFilesFromWorldFile(const CWideString&,std::vector<CWideString>&);
     CWorld&                 World;                           // +0x08

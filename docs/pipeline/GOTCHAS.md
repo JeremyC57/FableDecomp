@@ -2006,3 +2006,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A `bool found` flag in place of gotos can flip a callee-saved register pair to retail's (chunk 762, 0x0097F870).
 - Binding the innermost container (`CArray<long>& maps = Regions[i].Maps`) in place of the outer struct can flip an ebx/ebp pair (chunk 762, 0x004FEEC0).
 - One `C3DVector v(a.Dot(d), b.Dot(d), c.Dot(d))` keeps retail's frame where three float locals spill into a dead argument slot (chunk 762).
+- Test identifiers must not contain `_emit` (e.g. `M_emitter`): the purity grep flags it. Rename it (chunk 761).
+- VC7.1 (no `/Op`) reorders the leaves of an unparenthesised float multiply chain; parentheses pin the order but change the scheduling (chunk 761, 0x00C54C10).
+- A named float divisor in a loop lets VC7.1 hoist a reciprocal; write `/ (float)count` at each use when retail divides each time (chunk 761).
+- Two classes are named CBaseObject: strmbase's (`??1CBaseObject@@QAE@XZ` 0x00CACAF0) and the engine's (`MAE`, 0x0099A430) (chunk 761).

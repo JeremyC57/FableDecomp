@@ -32,6 +32,9 @@
 #include "engine/CTexture.h"
 #include "engine/CIndexBuffer.h"
 #include "engine/CVertexBufferWin32.h"
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_SYSTEMFONT
+#include "engine/CSystemFont.h"
+#endif
 class C2DBoxF;
 class C2DBoxI;
 class CDisplayManager;
@@ -117,7 +120,13 @@ public:
     float                  LastRenderEndTime;                            // +0x3a40
     long                   NoTrisPerSecond;                              // +0x3a44
     long                   ScreenPixelFormat_FormatIndex;                // +0x3a48 CPixelFormat::FormatIndex
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_SYSTEMFONT
+    // Chunk 761 (row 0x00A0B060 ~CRenderManagerCore): the typed member (engine/CSystemFont.h, same 8 bytes); its implicit destructor
+    // is the out-of-line ~CInitBaseClass 0x0099A410 call. Needs FABLE_RETAIL_CINITBASECLASS.
+    CSystemFont            SystemFont;                                   // +0x3a4c
+#else
     unsigned char          SystemFont[0x8];                              // +0x3a4c CSystemFont
+#endif
     bool                   Rendering;                                    // +0x3a54
     bool                   ResolutionReinit;                             // +0x3a55
     bool                   ResolutionSet;                                // +0x3a56

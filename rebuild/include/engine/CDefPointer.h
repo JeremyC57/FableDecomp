@@ -72,7 +72,20 @@ public:
     T& operator*() const { return *Get(); }
     bool IsNull() const { return Object == 0; }
     unsigned long GetRefCount() const { return Object->GetRefCount(); }
+#ifdef FABLE_RETAIL_CDEFPOINTER_RESET
+    // Chunk 761 (row 0x00779CD0 ~CTCDExperienceOrb): FableWin.pdb ?Reset@?$CDefPointer@$$CBVCExperienceDef@@@@QAEXPBVCExperienceDef@@@Z
+    // (one of the 18 Reset instantiations), inline in retail. The CIVCountedPointer::Reset body (chunk 737): Release() (its null test
+    // holds the `mov [ptr],0`), then the new pointer stored unconditionally and AddRef'd when non-null; `Reset(0)` gives retail's
+    // release block followed by a second `mov dword ptr [esi+0Ch],0` (0x00779CEA / 0x00779CF1). Needs T complete (a def class).
+    FABLE_DEFPTR_INLINE void Reset(T* object)
+    {
+        Release();
+        Object = const_cast<CDefPointeeBase*>(static_cast<const CDefPointeeBase*>(object));
+        if (Object) Object->AddRef();
+    }
+#else
     void Reset(T*);                                                      // unproven body (FableWin ?Reset@..QAEXPBV..@Z)
+#endif
     FABLE_DEFPTR_INLINE void Release()
     {
         if (Object) {

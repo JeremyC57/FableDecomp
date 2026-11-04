@@ -1,0 +1,54 @@
+address	name	status	attempts	note
+00514eb0	std::vector<C2DLineF>::vector	RELOCATION_MATCH	1	src/00514eb0.cpp
+005b432c	CTCInventoryClothing::ClearClothingMenuEntries	RELOCATION_MATCH	2	src/005b432c.cpp
+00639900	CTCRegionDisplay::~CTCRegionDisplay	RELOCATION_MATCH	1	src/00639900.cpp
+006e2500	NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>::~CParticleUpdateParameters	RELOCATION_MATCH	1	src/006e2500.cpp
+0071a790	CTCMapwho::~CTCMapwho	RELOCATION_MATCH	1	src/0071a790.cpp
+0072e6c0	CTCActionUseBuyHouse::~CTCActionUseBuyHouse	RELOCATION_MATCH	1	src/0072e6c0.cpp
+00779cd0	CTCDExperienceOrb::~CTCDExperienceOrb	RELOCATION_MATCH	5	src/00779cd0.cpp
+0077cd30	CTCHighlightItem::~CTCHighlightItem	RELOCATION_MATCH	1	src/0077cd30.cpp
+0079a620	CTCSummonSpell::~CTCSummonSpell	RELOCATION_MATCH	1	src/0079a620.cpp
+0079c200	CTCSummonableCreature::~CTCSummonableCreature	RELOCATION_MATCH	1	src/0079c200.cpp
+007a4310	CTCWillEnflame::~CTCWillEnflame	RELOCATION_MATCH	1	src/007a4310.cpp
+007a5460	CTCForcePushPower::~CTCForcePushPower	RELOCATION_MATCH	1	src/007a5460.cpp
+007d5e80	CTCTavernGameCardBase::~CTCTavernGameCardBase	RELOCATION_MATCH	1	src/007d5e80.cpp
+007f8860	CTCParticleAttacher::DetachParticles	RELOCATION_MATCH	2	src/007f8860.cpp
+00850330	NCameraModes::CPhysicsCollisionPointsObject::~CPhysicsCollisionPointsObject	RELOCATION_MATCH	1	src/00850330.cpp
+008bd610	CTCWillLightning::SetPItemRemoved	RELOCATION_MATCH	1	src/008bd610.cpp
+0098f090	CThreadedFile::~CThreadedFile	RELOCATION_MATCH	1	src/0098f090.cpp
+0098f380	CThreadedFileManager::BeginThread	RELOCATION_MATCH	1	src/0098f380.cpp
+009918f0	CASoundManager::ClearBanks	RELOCATION_MATCH	1	src/009918f0.cpp
+009a8fe0	std::pair<const CCharString,CBankFileManager::CBankInfo>::~pair	RELOCATION_MATCH	1	src/009a8fe0.cpp
+009aa440	std::pair<const CCharString,CBankFileManager::CBankInfo>::~pair (twin)	PARKED	1	duplicate COMDAT: byte-identical twin of 0x009A8FE0 in a second TU (graded RELOCATION_MATCH with the 0x009A8FE0 source); same symbol cannot land twice -- coordinator decision
+009c5870	CFileInstaller::BeginThread	RELOCATION_MATCH	1	src/009c5870.cpp
+009cc6c0	CBankFileEntryUpdateData::~CBankFileEntryUpdateData	RELOCATION_MATCH	4	src/009cc6c0.cpp
+00a0b060	CRenderManagerCore::~CRenderManagerCore	RELOCATION_MATCH	1	src/00a0b060.cpp
+00a26830	C3DAnimationInfo::BuildSharedAnimation	RELOCATION_MATCH	1	src/00a26830.cpp
+00a26aa0	C3DAnimationInfo::Preload	RELOCATION_MATCH	1	src/00a26aa0.cpp
+00a5ec10	CPixelShaderData::~CPixelShaderData	RELOCATION_MATCH	1	src/00a5ec10.cpp
+00a63680	CFontDataBank::~CFontDataBank	RELOCATION_MATCH	1	src/00a63680.cpp
+00aa7710	CChunkedFileRawDataChunk::~CChunkedFileRawDataChunk	RELOCATION_MATCH	1	src/00aa7710.cpp
+00ab5fc0	CKeyboardDX::~CKeyboardDX	RELOCATION_MATCH	1	src/00ab5fc0.cpp
+00abf800	C3DMeshMaterial::~C3DMeshMaterial	RELOCATION_MATCH	1	src/00abf800.cpp
+00af7c10	NParticleEngine::CDecal::~CDecal	RELOCATION_MATCH	2	src/00af7c10.cpp
+00b2b000	CEngineSurfaceCompositionManager::BeginBankUpdate	RELOCATION_MATCH	6	src/00b2b000.cpp
+00c1d500	_global::JenkinsHashBuffer	RELOCATION_MATCH	1	src/00c1d500.cpp
+00c206e0	CSoundEvent::GetPlaybackKind	RELOCATION_MATCH	1	src/00c206e0.cpp
+00c222d0	CSoundEventSet::CSoundEventSet	RELOCATION_MATCH	1	src/00c222d0.cpp
+00c295b0	std::vector<CHandleBasedMemoryPool_012b4098::CHeader*>::_Insert_n	RELOCATION_MATCH	2	src/00c295b0.cpp
+00c42a20	_global::RandomBelow_00c42a70	RELOCATION_MATCH	2	src/00c42a20.cpp
+00c491e0	CCodaFrame::CCodaFrame	RELOCATION_MATCH	1	src/00c491e0.cpp
+00c49820	CCodaFrameStreamer_00c49650::CCodaFrameStreamer_00c49650	RELOCATION_MATCH	2	src/00c49820.cpp
+00c4c440	CMasterObject_00c4cd80::Complete	RELOCATION_MATCH	1	src/00c4c440.cpp
+00c4cab0	CMasterObject_00c4c8b0::LoadSlave	RELOCATION_MATCH	2	src/00c4cab0.cpp
+00c4d240	CRenderLayerWin32::CreatePooledEvent	RELOCATION_MATCH	2	src/00c4d240.cpp
+00c54c10	CAudioSource::ApplyParameters	DIFFER(651v651)	47	VC7.1 canonicalises the float multiply leaf order of the stream gain ([edi+134h],[edi+130h],[esi+94h]); retail [esi+94h] first; dl 3
+00c565f0	CAudioContext::Initialise	RELOCATION_MATCH	1	src/00c565f0.cpp
+00c78150	CReverbProcessor::UpdateTapDelays	RELOCATION_MATCH	13	src/00c78150.cpp; retail_asm via libpk/FtoL.h (3 fistp sites, C++ attempts table in NOTES.md)
+00c89850	CReverbFilterTap::ProcessCrossfade	DIFFER(607v588)	27	loop induction base (target gain +8 vs retail target delay +0) and the kept index slot; dl 45
+00c8e2e0	libvorbis::_vorbis_unpack_books	PARKED	0	third-party: libvorbis
+00c95a10	libvorbis::_best	PARKED	0	third-party: libvorbis
+00ca7780	CUnknown::~CUnknown	RELOCATION_MATCH	1	src/00ca7780.cpp
+00cb9200	std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>::`scalar deleting destructor'	RELOCATION_MATCH	1	src/00cb9200.cpp
+00d6bb80	NScript::CQ_HangingTreeEvilScript::SpawnEnemies	RELOCATION_MATCH	2	src/00d6bb80.cpp
+00d6bb91	(none: inside NScript::CQ_HangingTreeEvilScript::SpawnEnemies 0x00D6BB80)	PARKED	0	bounds: catalog row starts mid-function at +0x11 of 0x00D6BB80 (landed here); retire the row

@@ -29,6 +29,12 @@ public:
     CResource*     NextResource;                                         // +0x10
     unsigned long  ResourceSize;                                         // +0x14
     unsigned long  LastUsedFrame;                                        // +0x18
+#ifdef FABLE_RETAIL_CRESOURCE_RESOURCELIST
+    // Chunk 761 (rows 0x00A26830 / 0x00A26AA0): Ego_r.pdb ?RemoveFromResourceList@CResource@@QAEXXZ, retail 0x009FC440 (the donor run
+    // RemoveFromResourceList 0x00B6C3C0 / SetAsLRU 0x00B6C410 / SetAsMRU 0x00B6C460 = retail 0x009FC440 / 0x009FC450 / 0x009FC4A0; the
+    // body calls CResourceList::RemoveResource(CResource&) 0x009FC020 when ResourceList is set). A declaration only.
+    void RemoveFromResourceList();                                       // 0x009FC440
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CResource) == 0x1c);
 #else // flattened Ego_r layout (the landed default)

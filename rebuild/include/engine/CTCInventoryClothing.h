@@ -11,6 +11,15 @@
 
 struct CComponent;
 class CThing;
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_MENUENTRIES
+// Chunk 761 (row 0x005B432C ClearClothingMenuEntries): ClothingMenuEntries typed as the STLport vector it is (same 12 bytes at
+// +0x134; Ego_r.pdb vector<std::pair<EClothingSuitPart,NUISystem::CComponent*> >) and Ego_r.pdb
+// ?ClearClothingMenuEntries@CTCInventoryClothing@@QAEXXZ (retail 0x005B432C: erase(begin, end) on +0x134; called by the landed
+// CloseInventory 0x005B6A2D and ~CTCInventoryClothing 0x005B7049).
+#include "stlport/fable_containers.h"
+enum EClothingSuitPart;                                                  // MS forward enum
+namespace NUISystem { class CComponent; }
+#endif
 
 #pragma pack(push, 1)
 class CTCInventoryClothing {
@@ -86,7 +95,12 @@ public:
     unsigned char _pad_0x128[0x4];                           // +0x128
     unsigned char _pad_0x12c[0x4];                           // +0x12c
     unsigned char _pad_0x130[0x4];                           // +0x130
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_MENUENTRIES
+    std::vector<std::pair<EClothingSuitPart, NUISystem::CComponent*> > ClothingMenuEntries;   // +0x134
+    void ClearClothingMenuEntries();                                     // 0x005B432C
+#else
     unsigned char ClothingMenuEntries[0xc];                  // +0x134 vector<std::pair<EClothingSuitPart,NUISystem::CComponent_*>,std::allocator<std::pair<EClothingSuitPart,NUISystem::CComponent_*>_>_>
+#endif
     unsigned char CurrentClothingSelected[0xc];              // +0x140 map<EClothingSuitPart,long,std::less<EClothingSuitPart>,std::allocator<std::pair<EClothingSuitPart_const_,long>_>_>
     unsigned char MorphPrimitiveHandles[0xc];                // +0x14c map<long,CEnginePrimitiveHandle,std::less<long>,std::allocator<std::pair<long_const_,CEnginePrimitiveHandle>_>_>
     CThing*       PMannequin;                                // +0x158
