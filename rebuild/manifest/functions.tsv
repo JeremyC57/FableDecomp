@@ -40090,19 +40090,19 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aea900	CVectorMap_SortIfDirty_00aea900	_global	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CTCVillage_OnInitialActivate_00aea900.cpp
 00aea9f0	GetTickRate	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aea9f0.cpp
 00aeaa00	GetOneOverTickRate	NParticleEngine	__fastcall	float	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GetMaxDrawDistance_00aeaa00.cpp
-00aeaa20	GetConstFloat_48_00aeaa20	_global	__thiscall	float	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa20.cpp
-00aeaa30	GetConstFloat_0_00aeaa30	_global	__thiscall	float	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa30.cpp
-00aeaa40	GetConstFloat_0_00aeaa40	_global	__thiscall	float	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa40.cpp
-00aeaa50	GetConstFloat_60_00aeaa50	_global	__fastcall	float	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GetMaxDrawDistance_00aeaa50.cpp
-00aeaa60	GetConstFloat_48_00aeaa60	_global	__fastcall	float	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GetMaxDrawDistance_00aeaa60.cpp
-00aeaa80	SetCurrentThingManager	_global	__fastcall	void	1	CThingManager *	1	yes	accepted									
-00aeaa90	SetCurrentThingManager	_global	__fastcall	void	1	CThingManager *	1	yes	accepted									
+00aeaa20	GetFadeOutStartDistance	NParticleEngine	__thiscall	float	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa20.cpp
+00aeaa30	GetFadeInEndDistance	NParticleEngine	__thiscall	float	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa30.cpp
+00aeaa40	GetFadeInStartDistance	NParticleEngine	__thiscall	float	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa40.cpp
+00aeaa50	GetMaxDrawDistance	NParticleEngine	__fastcall	float	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GetMaxDrawDistance_00aeaa50.cpp
+00aeaa60	GetMaxSpawnDistance	NParticleEngine	__fastcall	float	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GetMaxDrawDistance_00aeaa60.cpp
+00aeaa80	SetGraphicBank	NParticleEngine	__fastcall	void	1	CThingManager *	1	yes	accepted									
+00aeaa90	SetMeshBank	NParticleEngine	__fastcall	void	1	CThingManager *	1	yes	accepted									
 00aeaaa0	GetGraphicBank	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaaa0.cpp
-00aeaab0	GetGlobal_013d2e0c_00aeaab0	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaab0.cpp
+00aeaab0	GetMeshBank	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaab0.cpp
 00aeaad0	GetRandomSeed	NParticleEngine	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_AddChildPrimitive_00aeaad0.cpp
-00aeaae0	GetGlobal_013d2e14_00aeaae0	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaae0.cpp
+00aeaae0	GetParticleEmitterDatabase	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaae0.cpp
 00aeaaf0	GetParticleEmitterManager	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaaf0.cpp
-00aeab00	GetGlobal_013d2e24_00aeab00	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeab00.cpp
+00aeab00	GetPSCManager	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeab00.cpp
 00aeab10	GetEnvironmentInteraction	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeab10.cpp
 00aeab20	SetEnvironmentInteraction	NParticleEngine	__fastcall	void	1	CCountedPointer<NParticleEngine::CAEnvironmentInteraction>	1	yes	accepted									
 00aeabe0	CreateDecalEmitter	NParticleEngine::CParticleEmitterManager	__thiscall	CParticleEmitter *	5	CParticleEmitterManager *,long,C3DVector *,bool,CRightHandedSet *	1	yes	accepted									

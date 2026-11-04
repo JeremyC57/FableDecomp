@@ -45,3 +45,21 @@ placeholder classes (1,259 rows). Anniversary has RTTI with base-class lists for
 3. Settle the CSpawnedFunc arity of the 220 medium rows from the TLC bodies, then land them; review the 44 low rows (start with
    FireHeart's CFH_Prisoner..CFH_MemorialCutsceneMarker run).
 4. Optional: Ghidra BSim / Version Tracking seeded with the 1,671 vtable pairs for the ~690 remaining placeholders (class names only).
+
+## The Xbox 360 Anniversary PDB (owner-supplied, 2026-11-04)
+- `WellingtonGame-Xbox360-Shipping` (Virtuos UE3 tree), PDB signature 0x52CE7628 (2014-01-09), age 1, GUID
+  {3EE45A73-50C6-41DC-9679-2E3A8CFCD2EA}, machine PowerPC (0x1F2), cl 16.00.11886. MSF with 1 KB blocks whose block map spans two
+  blocks (llvm-pdbutil refuses it; a private reader parses it). Kept private in the lane scratch (`$S/anniv_pdb/`), never committed.
+- **The Fable game objects were compiled without debug info**: for Fable code it has public symbols (full signatures) and the
+  address -> object-file map (Lionhead `.cpp` names) only; no procedures, parameters, locals, scopes, line tables or types. So it cannot
+  help any parked byte residue.
+- Of 44,478 Fable code publics, 86% match FableWin.pdb by exact signature; the 5,440 in neither TLC set are all Anniversary additions.
+  On the naming queue it agreed with the TLC spelling every time it had the name (31 of 34; the 3 differences are Anniversary changes).
+- Small wins: a third-source spelling check; named TU boundaries (retail kept Lionhead's TU order, e.g. the particle `psc_*.cpp` files;
+  quest scripts are one `register_scripts.cpp`); per-method sizes from another build (closed the 44 low rows in the catalog's favour).
+- **Usage rule:** (1) private lookup only, never a source of bytes, layouts, headers or calling conventions (members mangle `__cdecl` on
+  360); (2) don't consult it for byte residues; (3) a name or signature counts only as a confirming third source when it equals
+  FableWin.pdb or Ego_r.pdb, and TLC wins where they differ; (4) object-file attribution is a TU hint for non-folded, non-inline
+  functions only (39% of publics share a folded address); (5) record a use as "Anniv360 (third source)"; no new pipeline step.
+- Applied from it (as the third source): 13 NParticleEngine globals 0x00AEAA10..0x00AEAB00 named from Ego_r donor order, anchored by
+  four already-named retail rows at a constant offset (`ghidra_out/labels_naming_2026-11-04_particle_engine_globals.tsv`).

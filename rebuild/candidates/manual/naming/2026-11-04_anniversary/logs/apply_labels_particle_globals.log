@@ -1,0 +1,21 @@
+catalog  00aeaab0 _global::GetGlobal_013d2e0c_00aeaab0 -> NParticleEngine::GetMeshBank
+catalog  00aeaa60 _global::GetConstFloat_48_00aeaa60 -> NParticleEngine::GetMaxSpawnDistance
+catalog  00aeaae0 _global::GetGlobal_013d2e14_00aeaae0 -> NParticleEngine::GetParticleEmitterDatabase
+catalog  00aeab00 _global::GetGlobal_013d2e24_00aeab00 -> NParticleEngine::GetPSCManager
+catalog  00aeaa20 _global::GetConstFloat_48_00aeaa20 -> NParticleEngine::GetFadeOutStartDistance
+catalog  00aeaa30 _global::GetConstFloat_0_00aeaa30 -> NParticleEngine::GetFadeInEndDistance
+catalog  00aeaa40 _global::GetConstFloat_0_00aeaa40 -> NParticleEngine::GetFadeInStartDistance
+catalog  00aeaa50 _global::GetConstFloat_60_00aeaa50 -> NParticleEngine::GetMaxDrawDistance
+catalog  00aeaa80 _global::SetCurrentThingManager -> NParticleEngine::SetGraphicBank
+catalog  00aeaa90 _global::SetCurrentThingManager -> NParticleEngine::SetMeshBank
+manifest 00aeaa20 _global::GetConstFloat_48_00aeaa20 -> NParticleEngine::GetFadeOutStartDistance
+manifest 00aeaa30 _global::GetConstFloat_0_00aeaa30 -> NParticleEngine::GetFadeInEndDistance
+manifest 00aeaa40 _global::GetConstFloat_0_00aeaa40 -> NParticleEngine::GetFadeInStartDistance
+manifest 00aeaa50 _global::GetConstFloat_60_00aeaa50 -> NParticleEngine::GetMaxDrawDistance
+manifest 00aeaa60 _global::GetConstFloat_48_00aeaa60 -> NParticleEngine::GetMaxSpawnDistance
+manifest 00aeaa80 _global::SetCurrentThingManager -> NParticleEngine::SetGraphicBank
+manifest 00aeaa90 _global::SetCurrentThingManager -> NParticleEngine::SetMeshBank
+manifest 00aeaab0 _global::GetGlobal_013d2e0c_00aeaab0 -> NParticleEngine::GetMeshBank
+manifest 00aeaae0 _global::GetGlobal_013d2e14_00aeaae0 -> NParticleEngine::GetParticleEmitterDatabase
+manifest 00aeab00 _global::GetGlobal_013d2e24_00aeab00 -> NParticleEngine::GetPSCManager
+labels 13  catalog renamed 10  manifest renamed 10
