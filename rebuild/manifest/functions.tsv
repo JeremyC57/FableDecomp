@@ -40439,16 +40439,16 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00af9000	GFSmoothFadeValue	NParticleEngine	__thiscall	float	2	CPSCLight *,float	1	yes	accepted									
 00af90c0	GetComponentCost	NParticleEngine::CPSCRenderSprite	__thiscall	void	5	CPSCRenderSprite *,CParticleSystemCost *,CParticleSystem *,float,float	1	yes	accepted									
 00af9310	Initialise	NParticleEngine::CPSCRenderSprite	__thiscall	bool	5	CPSCRenderSprite *,CIEngine *,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *,CEnginePrimitiveHandle *	1	yes	accepted									
-00af9410	vfunc_18	NParticleEngine::CPSCRenderSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00af9410	DatabaseCopy	NParticleEngine::CPSCRenderSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00af9620	WriteBinary	NParticleEngine::CPSCRenderSprite	__thiscall	void	2	CPSCRenderSprite *,CDataOutputStream *	1	yes	accepted									
 00af9840	InterpolateTo	NParticleEngine::CPSCRenderSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00afa2b0	ReadBinary	CPSCRenderSprite	__thiscall	void	2	CPSCRenderSprite *,CDataInputStream *	1	yes	accepted									
+00afa2b0	ReadBinary	NParticleEngine::CPSCRenderSprite	__thiscall	void	2	CPSCRenderSprite *,CDataInputStream *	1	yes	accepted									
 00afadc0	ClearAllPrimitives	NParticleEngine::CPSCRenderSprite	__thiscall	void	3	CPSCDecalRenderer *,CIEngine *,CEnginePrimitiveHandle *	1	yes	accepted									
-00afae50	NParticleEngine::CPSCRenderSprite::vfunc_19	NParticleEngine::CPSCRenderSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00afae50	AddToBoundingSphere	NParticleEngine::CPSCRenderSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00afb7c0	CPSCRenderSprite	NParticleEngine::CPSCRenderSprite	__thiscall	undefined	1	CPSCRenderSprite *	0	yes	accepted									
 00afbbd0	~CPSCRenderSprite	NParticleEngine::CPSCRenderSprite	__thiscall	void	1	CPSCRenderMesh *	1	yes	accepted									
-00afbce0	NParticleEngine::CPSCRenderSprite::vfunc_17	NParticleEngine::CPSCRenderSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00afcc30	NParticleEngine::CPSCRenderSprite::vfunc_13	NParticleEngine::CPSCRenderSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00afbce0	DatabaseSerialise	NParticleEngine::CPSCRenderSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00afcc30	PreparePrimitives	NParticleEngine::CPSCRenderSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00afe220	CEnginePrimitiveParticleLine	CEnginePrimitiveParticleLine	__thiscall	undefined	10	CEnginePrimitiveShadowedSpotLight *,__uint64,C3DVector *,C3DVector *,CRGBColour *,float,float,float,EEngineInterpolationSet,ulong	0	yes	accepted									
 00afe2a0	CEnginePrimitiveParticleSprite	CEnginePrimitiveParticleSprite	__thiscall	undefined	8	CEnginePrimitiveParticleSprite *,__uint64,ulong,C3DVector *,C2DVector *,float,CRGBColour *,EEngineInterpolationSet	0	yes	accepted									
 00afe320	GetInterpolated	CPackedVectorInterpolator_00afe320	__thiscall	C3DVector	2	CTCPhysicsStandard *,float	1	yes	accepted									

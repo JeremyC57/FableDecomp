@@ -381188,6 +381188,27 @@ $catalog = @(
         TestSource = '00/b0/NParticleEngineCPSCRenderMesh_DatabaseSerialise_00b027d0_test.cpp'
         PassPattern = '00b027d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00af9840'
+        Module = 'NParticleEngine::CPSCRenderSprite'
+        Source = '00/af/NParticleEngineCPSCRenderSprite_InterpolateTo_00af9840.cpp'
+        TestSource = '00/af/NParticleEngineCPSCRenderSprite_InterpolateTo_00af9840_test.cpp'
+        PassPattern = '00af9840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00afa2b0'
+        Module = 'NParticleEngine::CPSCRenderSprite'
+        Source = '00/af/NParticleEngineCPSCRenderSprite_ReadBinary_00afa2b0.cpp'
+        TestSource = '00/af/NParticleEngineCPSCRenderSprite_ReadBinary_00afa2b0_test.cpp'
+        PassPattern = '00afa2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00afbce0'
+        Module = 'NParticleEngine::CPSCRenderSprite'
+        Source = '00/af/NParticleEngineCPSCRenderSprite_DatabaseSerialise_00afbce0.cpp'
+        TestSource = '00/af/NParticleEngineCPSCRenderSprite_DatabaseSerialise_00afbce0_test.cpp'
+        PassPattern = '00afbce0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

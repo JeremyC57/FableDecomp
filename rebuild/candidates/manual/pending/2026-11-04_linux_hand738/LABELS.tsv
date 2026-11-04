@@ -1,0 +1,10 @@
+address	name	evidence
+0x00AF9840	?InterpolateTo@CPSCRenderSprite@NParticleEngine@@UAEXABVCPSCBase@2@M@Z	matched (RELOCATION_MATCH); slot 14 + FableWin.pdb; `ret 8`
+0x00AFA2B0	?ReadBinary@CPSCRenderSprite@NParticleEngine@@UAEXAAVCDataInputStream@@@Z	matched (RELOCATION_MATCH); slot 15 + FableWin.pdb; `ret 4`
+0x00AFAE50	?AddToBoundingSphere@CPSCRenderSprite@NParticleEngine@@UAE_NAAVC3DBoundingSphere@@MAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@@Z	parked; slot 19 + FableWin.pdb; `ret 10h` as CPSCBase 0x00AF2A30 / CPSCLight 0x00B18AF0 slot 19; catalog "vfunc_19"
+0x00AFBCE0	?DatabaseSerialise@CPSCRenderSprite@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z	matched (RELOCATION_MATCH); slot 17 + FableWin.pdb; slot 17 of CPSCAttractor 0x00B18110 / CPSCSpline 0x00B1B2E0 (landed); `ret 8`; catalog "vfunc_17"
+0x00AFCC30	?PreparePrimitives@CPSCRenderSprite@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	parked; slot 13 + FableWin.pdb; `ret 14h`; catalog "vfunc_13" (chunk 737 slot-13 proof)
+0x00AF8DC0	?GFUnpackFloat@@YIMKKMMK@Z	FableWin.pdb name set; the body is instruction-identical to engine/GFPackFloat.h GFUnpackFloat compiled out of line (objdump compare, no oracle row); twin of the landed GFPackFloat 0x00AF8D50 (RELOCATION_MATCH re-checked with the same header)
+0x00AEAA00	?GetOneOverTickRate@NParticleEngine@@YIMXZ	FableWin.pdb order (SetTickRate, GetTickRate, GetOneOverTickRate, GetLODDistance...) = retail order 0x00AEA9D0.. (SetTickRate stores 1/rate to 0x01399508, 0x00AEAA00 returns it); catalog already NParticleEngine::GetOneOverTickRate
+0x00F36540	?Get2DNoise@CPerlinNoise@NFractal@@QBEMABVC2DVector@@@Z	FableWin.pdb name set; called with ecx = GetParticleEmitterManager() + 8 (Ego_r CParticleEmitterManager::PerlinNoise, ?PeekPerlinNoise@CParticleEmitterManager@NParticleEngine@@QBEABVCPerlinNoise@NFractal@@XZ), one C2DVector& argument, float return
+0x00ADDD80	?AddToBounds@C3DBoundingSphere@@QAEXABVC3DVector@@M@Z	FableWin/Ego_r name set + existing binding; called by 0x00AFAE50 with (point, radius)

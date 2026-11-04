@@ -1,0 +1,6 @@
+header	macro	landed_includers_rechecked	note
+engine/CSymbolMap.h	FABLE_RETAIL_CSYMBOLMAP	none	no landed source defines the macro (grep rebuild/src/compiled); default=same
+engine/CIVCountedPointer.h	FABLE_RETAIL_CIVCOUNTEDPOINTER	none	no landed source defines the macro; default=same; operator= only reached by the parked 0x00AFCC30 draft
+engine/CEnginePrimitiveHandle.h	FABLE_RETAIL_CENGINEPRIMITIVEHANDLE	none	no landed source defines the macro; default=same; operator= only reached by the parked 0x00AFCC30 draft
+engine/C3DBoundingSphere.h	FABLE_RETAIL_C3DBOUNDINGSPHERE	none	no landed source defines the macro; a declaration only (AddToBounds), used by the parked 0x00AFAE50 draft
+engine/GFPackFloat.h	(new header)	none	new; used by matched 0x00AFBCE0 and both parked drafts

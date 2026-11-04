@@ -1,0 +1,6 @@
+address	module	name	length	group	anchor	gap_to_next_start
+00af9840	NParticleEngine::CPSCRenderSprite	InterpolateTo	2669	G00af9840	NParticleEngine::CPSCRenderSprite::NParticleEngine::CPSCRenderSprite	2672
+00afa2b0	CPSCRenderSprite	ReadBinary	2830	G00af9840	NParticleEngine::CPSCRenderSprite::NParticleEngine::CPSCRenderSprite	2832
+00afae50	NParticleEngine::CPSCRenderSprite::NParticleEngine::CPSCRenderSprite	vfunc_19	2405	G00af9840	NParticleEngine::CPSCRenderSprite::NParticleEngine::CPSCRenderSprite	2416
+00afbce0	NParticleEngine::CPSCRenderSprite::NParticleEngine::CPSCRenderSprite	vfunc_17	3920	G00af9840	NParticleEngine::CPSCRenderSprite::NParticleEngine::CPSCRenderSprite	3920
+00afcc30	NParticleEngine::CPSCRenderSprite::NParticleEngine::CPSCRenderSprite	vfunc_13	5274	G00af9840	NParticleEngine::CPSCRenderSprite::NParticleEngine::CPSCRenderSprite	5616
