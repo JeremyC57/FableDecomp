@@ -40099,7 +40099,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aeaa90	SetCurrentThingManager	_global	__fastcall	void	1	CThingManager *	1	yes	accepted									
 00aeaaa0	GetGraphicBank	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaaa0.cpp
 00aeaab0	GetGlobal_013d2e0c_00aeaab0	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaab0.cpp
-00aeaad0	GetStaticAddr_013d2e10_00aeaad0	_global	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_AddChildPrimitive_00aeaad0.cpp
+00aeaad0	GetRandomSeed	NParticleEngine	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_AddChildPrimitive_00aeaad0.cpp
 00aeaae0	GetGlobal_013d2e14_00aeaae0	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaae0.cpp
 00aeaaf0	GetParticleEmitterManager	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaaf0.cpp
 00aeab00	GetGlobal_013d2e24_00aeab00	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeab00.cpp
@@ -40311,7 +40311,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00af3d80	DoSizeof	CVertexBufferWin32	__thiscall	ulong	1	CVertexBufferWin32 *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\af\DoSizeof_DoSizeof_00af3d80.cpp
 00af3d90	DoSizeof	CVertexBufferWin32	__thiscall	ulong	1	CVertexBufferWin32 *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\af\DoSizeof_DoSizeof_00af3d90.cpp
 00af3da0	DoSizeof	CVertexBufferWin32	__thiscall	ulong	1	CVertexBufferWin32 *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\af\DoSizeof_DoSizeof_00af3da0.cpp
-00af3db0	DoSizeof	CVertexBufferWin32	__thiscall	ulong	1	CVertexBufferWin32 *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\af\DoSizeof_DoSizeof_00af3db0.cpp
+00af3db0	PeekEmitterVelocity	NParticleEngine::CParticleSystem	__thiscall	ulong	1	CVertexBufferWin32 *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\af\DoSizeof_DoSizeof_00af3db0.cpp
 00af3dc0	GetSystemCost	NParticleEngine::CParticleSystem	__thiscall	void	2	CParticleSystem *,CParticleSystemCost *	1	yes	accepted									
 00af3ee0	GetApproximateTotalSplineLength	CParticleSystem	__thiscall	float	1	CParticleSystem *	1	yes	accepted									
 00af3f30	GetNoActiveDecals	NParticleEngine::CParticleSystem	__thiscall	long	1	CParticleSystem *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\af\CParticleSystem_GetNoActiveDecals_00af3f30.cpp
@@ -40543,7 +40543,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b0a920	InterpolateTo	NParticleEngine::CPSCUpdateNormal	__thiscall	void	3	CPSCUpdateNormal *,CPSCBase *,float	1	yes	accepted									
 00b0b370	DatabaseCopy	NParticleEngine::CPSCUpdateNormal	__thiscall	void	2	CPSCUpdateNormal *,CPSCBase *	1	yes	accepted									
 00b0b5c0	WriteBinary	NParticleEngine::CPSCUpdateNormal	__thiscall	void	2	CPSCDecalRenderer *,CDataOutputStream *	1	yes	accepted									
-00b0b860	ReadBinary	CPSCUpdateNormal	__thiscall	void	2	CPSCUpdateNormal *,CDataInputStream *	1	yes	accepted									
+00b0b860	ReadBinary	NParticleEngine::CPSCUpdateNormal	__thiscall	void	2	CPSCUpdateNormal *,CDataInputStream *	1	yes	accepted									
 00b0c730	KillAllDecalEmitters	NParticleEngine::CPSCUpdateNormal	__thiscall	void	1	CPSCUpdateNormal *	1	yes	accepted									
 00b0c7b0	GetComponentCost	NParticleEngine::CPSCUpdateNormal	__thiscall	void	5	CPSCUpdateNormal *,CParticleSystemCost *,CParticleSystem *,float,float	1	yes	accepted									
 00b0c830	GetParticleCount	NParticleEngine::CPSCUpdateNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -40551,9 +40551,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b0c910	PreparePrimitives	NParticleEngine::CPSCUpdateNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b0c9c0	CPSCUpdateNormal	NParticleEngine::CPSCUpdateNormal	__thiscall	undefined	1	CHeroStatsDef *	0	yes	accepted									
 00b0ca90	~CPSCUpdateNormal	NParticleEngine::CPSCUpdateNormal	__thiscall	void	1	CExclusiveAssert *	1	yes	accepted									
-00b0cad0	NParticleEngine::CPSCUpdateNormal::vfunc_12	NParticleEngine::CPSCUpdateNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00b0d360	NParticleEngine::CPSCUpdateNormal::vfunc_17	NParticleEngine::CPSCUpdateNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00b0dc20	NParticleEngine::CPSCUpdateNormal::vfunc_9	NParticleEngine::CPSCUpdateNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00b0cad0	UpdateAddParticle	NParticleEngine::CPSCUpdateNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00b0d360	DatabaseSerialise	NParticleEngine::CPSCUpdateNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00b0dc20	Update	NParticleEngine::CPSCUpdateNormal	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b0f210	CollectUpdateParameters	NParticleEngine::CPSCUpdateNormal	unknown	undefined	0		0	yes	accepted									
 00b0f310	CParticleUpdateParamDesc	CParticleUpdateParamDesc	__thiscall	undefined	6	CVertexShaderData *,IDirect3DVertexDeclaration9 *,IDirect3DVertexShader9 *,_D3DVERTEXELEMENT9 *,CCharString *,CCharString *	0	yes	accepted									
 00b0f3a0	`scalar_deleting_destructor'	NParticleEngine::CRandomAcceleration	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b0\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00b0f3a0.cpp

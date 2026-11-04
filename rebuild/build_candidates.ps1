@@ -381153,6 +381153,20 @@ $catalog = @(
         TestSource = '00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200_test.cpp'
         PassPattern = '00ef5200_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b0a920'
+        Module = 'NParticleEngine::CPSCUpdateNormal'
+        Source = '00/b0/NParticleEngineCPSCUpdateNormal_InterpolateTo_00b0a920.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCUpdateNormal_InterpolateTo_00b0a920_test.cpp'
+        PassPattern = '00b0a920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0b860'
+        Module = 'NParticleEngine::CPSCUpdateNormal'
+        Source = '00/b0/NParticleEngineCPSCUpdateNormal_ReadBinary_00b0b860.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCUpdateNormal_ReadBinary_00b0b860_test.cpp'
+        PassPattern = '00b0b860_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

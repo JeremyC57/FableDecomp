@@ -1,0 +1,9 @@
+address	name	evidence
+00b0a920	NParticleEngine::CPSCUpdateNormal::InterpolateTo	landing 2026-11-04a (chunk 739): RELOCATION_MATCH (grade retail_asm via engine/GFFloatToLongNear.h); FableWin ?InterpolateTo@CPSCUpdateNormal@NParticleEngine@@UAEXABVCPSCBase@2@M@Z; slot 14 of the CPSCUpdateNormal vtable 0x0129FC1C
+00b0b860	NParticleEngine::CPSCUpdateNormal::ReadBinary	landing 2026-11-04a (chunk 739): RELOCATION_MATCH; FableWin ?ReadBinary@CPSCUpdateNormal@NParticleEngine@@UAEXAAVCDataInputStream@@@Z; slot 15 of 0x0129FC1C
+00b0cad0	NParticleEngine::CPSCUpdateNormal::UpdateAddParticle	chunk 739 (parked): FableWin name set; slot 12 of 0x0129FC1C; ret 24h = CParticleSystem&, params&, C3DVector, C3DVector, float
+00b0d360	NParticleEngine::CPSCUpdateNormal::DatabaseSerialise	chunk 739 (parked): FableWin name set; slot 17 of 0x0129FC1C (DatabaseSerialise on CPSCSpline 0x00B1B2E0 / CPSCAttractor 0x00B18110); ret 8; 45 member-name literals
+00b0dc20	NParticleEngine::CPSCUpdateNormal::Update	chunk 739 (not drafted): FableWin name set; slot 9 of 0x0129FC1C (Update on CPSCBase 0x00AF29D0, CPSCAttractor 0x00B179A0); ret 0Ch
+00a88d10	CQuaternion::SetFromAxisAngle	chunk 739: FableWin ?SetFromAxisAngle@CQuaternion@@QAEXABVC3DVector@@M@Z; thiscall ret 8 (axis, angle) at every call in 0x00B0CAD0
+00af3db0	NParticleEngine::CParticleSystem::PeekEmitterVelocity	chunk 739: FableWin ?PeekEmitterVelocity@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ; body mov eax,[ecx+4]; add eax,52h; ret (= &PParentEmitter->Velocity); catalog CVertexBufferWin32::DoSizeof was propagated
+00aeaad0	NParticleEngine::GetRandomSeed	chunk 739: FableWin ?GetRandomSeed@NParticleEngine@@YIAAKXZ (with SetRandomSeed); body returns &0x013D2E10; callers pass it as the seed of GFFloatRandom 0x004978A0 / C3DVector::GetRandomUnitVector 0x00A145C0

@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00b0a920   RELOCATION_MATCH PASS   InterpolateTo
+00b0b860   RELOCATION_MATCH PASS   ReadBinary
+
+WINS: 2
+  00b0a920 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::?InterpolateTo@CPSCUpdateNormal@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+  00b0b860 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::?ReadBinary@CPSCUpdateNormal@NParticleEngine@@UAEXAAVCDataInputStream@@@Z

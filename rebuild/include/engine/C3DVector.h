@@ -13,6 +13,11 @@
 #include "engine/C2DCoordI.h"
 #ifdef FABLE_RETAIL_C3DVECTOR
 extern const float DELTA_NOTIONAL_ZERO;                                 // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (1e-4f), IsNonZero's bound
+// Chunk 739 (CPSCUpdateNormal::UpdateAddParticle 0x00B0CAD0): FableWin.pdb ?GFFastOneOverSqrt@@YIMM@Z, expanded in retail (0x00B0D21E:
+// exponent (0x17C - e) / 2, the 128-entry mantissa table 0x013CE558, one Newton step with 3.0f / 0.5f), the body the landed
+// 0x007AF0F0 / 0x006B3030 rows model locally.
+extern unsigned long GFastOneOverSqrtTable[128];                        // 0x013CE558
+__forceinline float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return (3.0f-r*r*value)*r*0.5f;}
 #endif
 class C3DVector {
 public:
@@ -65,6 +70,10 @@ public:
     // Chunk 732 (row 0x006AABE0 CThingPlayerCreature::SetActionForMelee): Ego_r.pdb ?RotateXY@C3DVector@@QAEXM@Z (0x00B81930),
     // out of line in retail at 0x00A14040 (395 bytes, the sin/cos rotation about Z). A declaration only.
     void RotateXY(float angle);                                          // 0x00A14040
+    // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z (static __fastcall, out of line at 0x00A145C0,
+    // landed) and ?Normalise@C3DVector@@QAEAAV1@XZ (the fast normalise: GFFastOneOverSqrt of GetSquaredMagnitude, expanded in retail).
+    static C3DVector __fastcall GetRandomUnitVector(unsigned long* seed);  // 0x00A145C0
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float factor=GFFastOneOverSqrt(GetSquaredMagnitude());X*=factor;Y*=factor;Z*=factor;return *this;}
     // Chunk 732 (row 0x006AABE0): FableWin.pdb ?IsNonZero@C3DVector@@QBE_NXZ (debug copy 0x01B4F100; no Ego_r.pdb copy, expanded in
     // retail). Body from the row's bytes (0x006AAE00: X, Z, Y loaded in source order, then `> DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO`);
     // GetSquaredMagnitude's one-line sum cannot be reused (it loads Z, Y, X there, and 0x00AE0710 needs that one-line form).

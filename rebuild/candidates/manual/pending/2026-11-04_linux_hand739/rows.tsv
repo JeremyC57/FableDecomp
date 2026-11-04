@@ -1,0 +1,6 @@
+address	module	name	length	group	anchor	gap_to_next_start
+00b0a920	NParticleEngine::CPSCUpdateNormal	InterpolateTo	2635	G00b0a920	NParticleEngine::CPSCUpdateNormal::NParticleEngine::CPSCUpdateNormal	2640
+00b0b860	CPSCUpdateNormal	ReadBinary	3787	G00b0a920	NParticleEngine::CPSCUpdateNormal::NParticleEngine::CPSCUpdateNormal	3792
+00b0cad0	NParticleEngine::CPSCUpdateNormal::NParticleEngine::CPSCUpdateNormal	vfunc_12	2191	G00b0a920	NParticleEngine::CPSCUpdateNormal::NParticleEngine::CPSCUpdateNormal	2192
+00b0d360	NParticleEngine::CPSCUpdateNormal::NParticleEngine::CPSCUpdateNormal	vfunc_17	2240	G00b0a920	NParticleEngine::CPSCUpdateNormal::NParticleEngine::CPSCUpdateNormal	2240
+00b0dc20	NParticleEngine::CPSCUpdateNormal::NParticleEngine::CPSCUpdateNormal	vfunc_9	5602	G00b0a920	NParticleEngine::CPSCUpdateNormal::NParticleEngine::CPSCUpdateNormal	5616

@@ -8,6 +8,9 @@
 #endif
 class CIEngine;
 namespace NParticleEngine {
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM
+class CParticle;
+#endif
 // Layout: native ctor00af4e10 and original TPI complete fields; size0x70.
 class CParticleSystem:public CBaseClass {
 public:CParticleSystem();virtual ~CParticleSystem();
@@ -32,6 +35,12 @@ public:CParticleSystem();virtual ~CParticleSystem();
  float GetGlobalAlpha() const { return GlobalAlpha; }
  float GetFadeAlpha() const { return FadeAlpha; }
  __forceinline void TransformPosIfWorld(C3DVector& pos) const { if (!StayWithEmitter) { CMatrix3x4 transform; GetSystemTransform(transform); transform.TransformPoint(pos); } }
+ // Chunk 739 (CPSCUpdateNormal::UpdateAddParticle 0x00B0CAD0 / Update 0x00B0DC20): FableWin.pdb
+ // ?AllocateParticle@CParticleSystem@NParticleEngine@@QAEPAVCParticle@2@XZ (out of line, landed 0x00AF5010) and
+ // ?PeekEmitterVelocity@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ (out of line at 0x00AF3DB0: `mov eax,[ecx+4] ;
+ // add eax,52h ; ret`, the parent emitter's Velocity -- Ego_r.pdb +0x5E less the 0xC the STLport members save).
+ CParticle* AllocateParticle();
+ const C3DVector& PeekEmitterVelocity() const;
 #endif
 protected:
  const CParticleEmitter* PParentEmitter;CIEngine* PEngine;

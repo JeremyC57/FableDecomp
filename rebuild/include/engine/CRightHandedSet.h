@@ -12,6 +12,11 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
 class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector& GetForward() const { return Forward; }
     const C3DVector& GetUp() const { return Up; }
     C3DVector GetRight() const { return Forward ^ Up; }
+    // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?SetForward@CRightHandedSet@@QAEXABVC3DVector@@@Z / ?SetUp@...@QAEXABVC3DVector@@@Z
+    // (inline) and ?MakePerpendicular@CRightHandedSet@@QAEXXZ (out of line at 0x00A22E10, landed users 0x00B9DFC0 / 0x00BD2BC0).
+    void SetForward(const C3DVector& forward) { Forward = forward; }
+    void SetUp(const C3DVector& up) { Up = up; }
+    void MakePerpendicular();                                            // 0x00A22E10
 };
 #endif
 #endif

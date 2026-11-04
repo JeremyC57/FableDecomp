@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-03 end of session (landing rounds e-h landed; agents stopped by the owner)
+# Resume here (one page) — updated 2026-11-04 (owner resumed chunk authoring; chunks 738-740 cut, 739 landed in round 2026-11-04a)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -7,12 +7,19 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## State
-- Branch `FullDecomp` (`JeremyC57/FableDecomp`): everything committed and pushed; no agent is running.
-- **Owner 2026-11-03 (end of session): launch NO agents until the owner says so.** When they resume: at most 3 concurrent agents,
-  10+ attempts per row, verify and land before launching more.
+- Branch `FullDecomp` (`JeremyC57/FableDecomp`). Owner 2026-11-04 resumed authoring: at most 3 concurrent agents, 10+ attempts per
+  row, verify and land before launching more. **No asm first**; only proven-impossible instructions (bare `fistp dword`, `rdtsc`,
+  `cpuid`, MASM SIMD) go through isolated shared helpers with a `FABLE_PORTABLE` C++ path, and those rows land as `retail_asm`
+  (EXTRA_RULES.md, last three bullets).
+- Chunks 738 (CPSCRenderSprite), 739 (CPSCUpdateNormal), 740 (CPSCRenderMesh) cut from the particle groups; brief
+  `$S/w22/BRIEF_738.md`, work in `$S/w22/chunk73{8,9}`, `chunk740`. 739 landed 2 of 5 (`batches/2026-11-04_landing_a/`), rest staged in
+  `pending/2026-11-04_linux_hand739/`. If 738 / 740 are not yet landed, their agents were running when this page was written:
+  check each dir's STATUS.tsv / NOTES.md / payload.json, then land (their overlays are based on 40c4d6d63; merge onto 739's
+  C3DVector / CDataInputStream / CParticleSystem / CRightHandedSet branches with `git merge-file`). Next cut: CPSCEmitterGeneric
+  (group G00b10b10, 4 rows) and a retry of 739's Update 0x00B0DC20.
 - Coverage (refresh with `tools/write_decomp_dashboard.py` then `tools/update_readme_progress.py`; never hand-edit):
-  46,554 of the 49,564-function catalog (93.927%), 56.019% of retail function bytes, 54,102 landed rows (190 retail_asm),
-  after landing round h. Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`.
+  46,556 of the 49,564-function catalog (93.931%), 56.08% of retail function bytes, 54,104 landed rows (191 retail_asm),
+  after landing 2026-11-04a. Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`, `2026-11-04_landing_a/`.
 - `// Revisit: inline-depth` rows: 65 (129 at the start of the day). Mechanism, levers and why the 65 are left:
   `docs/pipeline/INLINE_DEPTH_REVISIT.md`; research `batches/2026-11-03_inline_split_research/`, `_inline_revisit2/`, `_inline_revisit3/`.
 - Codex: pass 13 landed 47 of 51 (`batches/2026-11-03_codex_pass13_landing/`; data names for `cvdump` in its NAME_DECISIONS.tsv);

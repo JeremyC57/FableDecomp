@@ -1,0 +1,9 @@
+address	name	evidence
+0x00B0A920	?InterpolateTo@CPSCUpdateNormal@NParticleEngine@@UAEXABVCPSCBase@2@M@Z	matched; slot 14 of 0x0129FC1C + FableWin.pdb name set
+0x00B0B860	?ReadBinary@CPSCUpdateNormal@NParticleEngine@@UAEXAAVCDataInputStream@@@Z	matched; slot 15 of 0x0129FC1C + FableWin.pdb
+0x00B0CAD0	?UpdateAddParticle@CPSCUpdateNormal@NParticleEngine@@UAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@VC3DVector@@2M@Z	slot 12 of 0x0129FC1C; FableWin.pdb name set (the only unplaced CPSCUpdateNormal virtual with five args); ret 24h = 4+4+12+12+4; body builds a particle from position/direction
+0x00B0D360	?DatabaseSerialise@CPSCUpdateNormal@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z	slot 17 of 0x0129FC1C (= DatabaseSerialise on CPSCSpline 0x00B1B2E0 / CPSCAttractor 0x00B18110); ret 8; 45 member-name literals transferred through CPersistContext::Transfer<T>
+0x00B0DC20	?Update@CPSCUpdateNormal@NParticleEngine@@UAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AA_N@Z	slot 9 of 0x0129FC1C (= Update on CPSCBase 0x00AF29D0, CPSCAttractor 0x00B179A0, CPSCDecalRenderer 0x00B1DB00); ret 0Ch; writes the bool& (alive=false) when the system life is over
+0x00A88D10	?SetFromAxisAngle@CQuaternion@@QAEXABVC3DVector@@M@Z	FableWin.pdb name set; thiscall ret 8 (axis ptr, angle) at every call in 0x00B0CAD0; result read back as the quaternion
+0x00AF3DB0	?PeekEmitterVelocity@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ	FableWin.pdb name set; body `mov eax,[ecx+4] ; add eax,52h ; ret` = &PParentEmitter->Velocity (Ego_r +0x5E less 0xC); the 0x00B0CAD0 caller adds it to the particle direction (StayWithEmitter)
+0x00AEAAD0	?GetRandomSeed@NParticleEngine@@YIAAKXZ	FableWin.pdb name set (with SetRandomSeed); body returns the address 0x013D2E10; callers pass it as the seed pointer of GFFloatRandom / GetRandomUnitVector

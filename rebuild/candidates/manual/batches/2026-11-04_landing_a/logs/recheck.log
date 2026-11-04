@@ -1,0 +1,53 @@
+addr       parity           behav  name
+0047f58b   RELOCATION_MATCH PASS   AddRegionAndTimeInfo
+004b05c0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004b05c0   RELOCATION_MATCH PASS   TransferBoasts
+00520670   RELOCATION_MATCH PASS   LoadHeroStateBinary
+00522720   RELOCATION_MATCH PASS   RuntimeLoadEntities
+00521620   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@00ABU__false_type@0@@Z -> 005269b0 labelled 'std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>'
+00521620   RELOCATION_MATCH PASS   SaveToGameStateBinary
+00597228   RELOCATION_MATCH PASS   AddRegionAndTimeInfo
+006aabe0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006aabe0   WARN RELOC_NAME: ?GetTargetingPositionOnThing@NTargeting@@YI?AVC3DVector@@ABVCWorld@@ABVCThing@@M@Z -> 007ea2f0 labelled 'Creature::GetTargetFirePoint'
+006aabe0   RELOCATION_MATCH PASS   SetActionForMelee
+006d2bd0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+006d2bd0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+006d2bd0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@J@2@ABU32@ABU__false_type@2@I_N@Z -> 006d4750 labelled 'STL::Vector8_string8::InsertGrow_006d4750'
+006d2bd0   RELOCATION_MATCH PASS   OnSerialise
+009945e0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+009945e0   RELOCATION_MATCH PASS   ReadColour
+00a4fe60   WARN RELOC_NAME: ??1?$CCountedPointer@VC3DAnimFileXAllocationSizeChunk@@@@QAE@XZ -> 00a52f40 labelled '_global::CCountedPointer_Release_00a52f40'
+00a4fe60   WARN RELOC_NAME: ?HasMovementTrack@C3DAnimFileMovementVectorChunk@@QBE_NXZ -> 00aae920 labelled 'C3DAnimFileRootChunk::HasSequences'
+00a4fe60   WARN RELOC_NAME: ?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z -> 00a4efc0 labelled 'C3DKeyframe_InitialiseAsConstant'
+00a4fe60   RELOCATION_MATCH PASS   InitialiseSharedAnimation
+00ac2be0   WARN RELOC_NAME: ??_GC3DMeshPartitionBuilderElement@@QAEPAXI@Z -> 00ac39c0 labelled 'C3DMeshPartitionBuilderElement::`scalar deleting destructor''
+00ac2be0   RELOCATION_MATCH PASS   PartitionSpace
+00ae0070   RELOCATION_MATCH PASS   ApplyTransform
+00ae0710   RELOCATION_MATCH PASS   CalculateAveragePatchSize
+00b068f0   RELOCATION_MATCH PASS   ReadBinary
+00b193d0   RELOCATION_MATCH PASS   ReadBinary
+00b1b1b0   RELOCATION_MATCH PASS   ReadBinary
+00b3efa0   RELOCATION_MATCH PASS   ReadMapInfoBlock
+00ec5de0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00ec5de0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00ec5de0   RELOCATION_MATCH PASS   Main
+
+WINS: 18
+  0047f58b RELOCATION_MATCH CTCInGameMenu::?AddRegionAndTimeInfo@CTCInGameMenu@@AAEXABVCWideString@@@Z
+  004b05c0 RELOCATION_MATCH CQuestManager::?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z
+  00520670 RELOCATION_MATCH CThingManager::?LoadHeroStateBinary@CThingManager@@QAEXAAVCPersistContext@@@Z
+  00522720 RELOCATION_MATCH CThingManager::?RuntimeLoadEntities@CThingManager@@QAEXJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@3@@Z
+  00521620 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?SaveToGameStateBinary@CEntityRuntimePersistence@NThingManager@@QAEXAAVCPersistContext@@@Z
+  00597228 RELOCATION_MATCH NUISystem::CFrontEndManager::?AddRegionAndTimeInfo@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z
+  006aabe0 RELOCATION_MATCH CThingPlayerCreature::?SetActionForMelee@CThingPlayerCreature@@UAE_NABVCCreatureAbilityDef@@@Z
+  006d2bd0 RELOCATION_MATCH CTCWife::?OnSerialise@CTCWife@@UAEXAAVCPersistContext@@_N@Z
+  009945e0 RELOCATION_MATCH CDataInputStream::?ReadColour@CDataInputStream@@QAE?AVCRGBColour@@XZ
+  00a4fe60 RELOCATION_MATCH C3DAnimation2::?InitialiseSharedAnimation@C3DAnimation2@@QAE_NABVC3DAnimFile@@W4EAnimationType@@@Z
+  00ac2be0 RELOCATION_MATCH C3DMeshPartitionBuilderElement::?PartitionSpace@C3DMeshPartitionBuilderElement@@AAEJPBVC3DVertex2@@JM@Z
+  00ae0070 RELOCATION_MATCH CParticleProgram::?ApplyTransform@CParticleProgram@@QAEXABVCMatrix3x4@@@Z
+  00ae0710 RELOCATION_MATCH CParticleProgram::?CalculateAveragePatchSize@CParticleProgram@@AAEXABVCParticleSimulation@@@Z
+  00b068f0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?ReadBinary@CPSCSingleSprite@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b193d0 RELOCATION_MATCH NParticleEngine::CPSCLight::?ReadBinary@CPSCLight@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b1b1b0 RELOCATION_MATCH NParticleEngine::CPSCSpline::?ReadBinary@CPSCSpline@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b3efa0 RELOCATION_MATCH CEngineMap::?ReadMapInfoBlock@CEngineMap@@CIXAAUCStaticMapInfoBlock@1@AAVCDataInputStream@@@Z
+  00ec5de0 RELOCATION_MATCH NScript::CV_SickChildScript::CSickChild::?Main@CSickChild@CV_SickChildScript@NScript@@EAEXXZ

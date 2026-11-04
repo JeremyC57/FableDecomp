@@ -7,6 +7,7 @@
 class CCharString;
 class CWideString;
 class CRGBColour;
+class C3DVector;
 // Retail opt-in (Codex pass 11 consolidation): polymorphic CDataStream base (vptr +0), original CDataInputStream fields
 // +4,+8,+c,+10,+14, size 0x18; Read is the inline bounds-checked chunk copy (0x00B3EFA0, 0x00A4FE60).
 class CDataInputStream : public CDataStream {
@@ -41,6 +42,9 @@ public:
     __forceinline float ReadFloat() { return ReadType<float>(); }
     __forceinline bool ReadEBOOL() { return ReadType<unsigned char>() != 0; }
     CRGBColour ReadColour();
+    // Chunk 739 (CPSCUpdateNormal::ReadBinary 0x00B0B860): FableWin.pdb ?Read3DVector@CDataInputStream@@QAE?AVC3DVector@@XZ, out of
+    // line in retail (0x009950F0, hidden result pointer; the landed CDataInputStream_Read3DVector_009950f0 row).
+    C3DVector Read3DVector();
     virtual void ReadCompressed(void*,long);
     virtual void ReadZlibCompressed(void*,long);
     virtual CCharString ReadNullTerminatedString();

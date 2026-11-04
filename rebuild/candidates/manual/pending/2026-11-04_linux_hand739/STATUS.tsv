@@ -1,0 +1,6 @@
+address	name	status	attempts	note
+00b0a920	NParticleEngine::CPSCUpdateNormal::InterpolateTo	MATCH(RELOCATION_MATCH)	3	b; GFFloatToLongNear helper (retail fistp); vland PASS
+00b0b860	NParticleEngine::CPSCUpdateNormal::ReadBinary	MATCH(RELOCATION_MATCH)	2	CDataInputStream.h retail branch + Read3DVector decl; vland PASS
+00b0cad0	NParticleEngine::CPSCUpdateNormal::UpdateAddParticle	PARKED DIFFER(2191v2191)	24	slot 12; 349 diff lines: seed register (ebp v spill), temp frame slots, x87 cross-product order; differ/00b0cad0.cpp
+00b0d360	NParticleEngine::CPSCUpdateNormal::DatabaseSerialise	PARKED DIFFER(2242v2240)	19	slot 17; 2-byte residue: bit-0 merge of RandomisePosDistVaryEnable (bool as memory operand in retail); differ/00b0d360.cpp
+00b0dc20	NParticleEngine::CPSCUpdateNormal::Update	PARKED (not drafted)	0	slot 9; 5602 bytes / ~1300 instructions; session budget spent on 0x00B0CAD0 / 0x00B0D360; decoded head in NOTES.md
