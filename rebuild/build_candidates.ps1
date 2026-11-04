@@ -382232,6 +382232,55 @@ $catalog = @(
         TestSource = '00/a1/CNavigatorAStar_IsNewDestinationGoingToCauseRestart_00a1abf0_test.cpp'
         PassPattern = '00a1abf0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00687730'
+        Module = 'CMessageEventManager'
+        Source = '00/68/CMessageEventManager_AddMessage_00687730.cpp'
+        TestSource = '00/68/CMessageEventManager_AddMessage_00687730_test.cpp'
+        PassPattern = '00687730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006aeea0'
+        Module = 'CTCRegionFollower'
+        Source = '00/6a/CTCRegionFollower_IsCreatureFollowingHeroAcrossRegions_006aeea0.cpp'
+        TestSource = '00/6a/CTCRegionFollower_IsCreatureFollowingHeroAcrossRegions_006aeea0_test.cpp'
+        PassPattern = '006aeea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007751a0'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_SetShopKeeper_007751a0.cpp'
+        TestSource = '00/77/CTCShop_SetShopKeeper_007751a0_test.cpp'
+        PassPattern = '007751a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00838ec0'
+        Module = 'CThingGameObject'
+        Source = '00/83/CThingGameObject_GetShotHitParameters_00838ec0.cpp'
+        TestSource = '00/83/CThingGameObject_GetShotHitParameters_00838ec0_test.cpp'
+        PassPattern = '00838ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00870e00'
+        Module = 'NCreatureAction::CActionEventTriggerParticle'
+        Source = '00/87/NCreatureActionCActionEventTriggerParticle_SetDataFromString_00870e00.cpp'
+        TestSource = '00/87/NCreatureActionCActionEventTriggerParticle_SetDataFromString_00870e00_test.cpp'
+        PassPattern = '00870e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00871290'
+        Module = 'NCreatureAction::CActionEventExplosion'
+        Source = '00/87/NCreatureActionCActionEventExplosion_SetDataFromString_00871290.cpp'
+        TestSource = '00/87/NCreatureActionCActionEventExplosion_SetDataFromString_00871290_test.cpp'
+        PassPattern = '00871290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00984d90'
+        Module = 'CAIStateGroup_OpinionReactionRoot'
+        Source = '00/98/CAIStateGroupOpinionReactionRoot_FleeIsRunnable_00984d90.cpp'
+        TestSource = '00/98/CAIStateGroupOpinionReactionRoot_FleeIsRunnable_00984d90_test.cpp'
+        PassPattern = '00984d90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

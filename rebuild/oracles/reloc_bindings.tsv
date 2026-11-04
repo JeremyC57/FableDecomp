@@ -36431,3 +36431,14 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ?ClearTargets@CTCTargetingBase@@QAEXXZ	007f6160	00911a90
 ?FindNearestNavigableNode@CNavigatorBase@@IBEPBVCANavQuadTreeNode@@PBV2@0ABVC3DVector@@MPBVCNavigatorManager@@@Z	00a475c0	00a1abf0
 ?IsEqual@CNavigatorAStar@@ABE_NPBVCANavQuadTreeNode@@0@Z	00a1a170	00a1abf0
+??0CMessageEvent@@QAE@ABV0@@Z	00687310	00687730
+??1CBaseObject@@UAE@XZ	0099a430	00687730
+?g_NextMessageID@@3KA	0137edb8	00687730
+?IsBlockable@CTCShotDefinitionBase@NThingShot@@QBE_NXZ	007bee20	00838ec0
+?IsDecapitate@CTCShotDefinitionBase@NThingShot@@QBE_NXZ	007bed80	00838ec0
+?IsKnockDown@CTCShotDefinitionBase@NThingShot@@QBE_NXZ	007bed70	00838ec0
+?IsToCauseDecapitionOnHit@CHitLocation@NHitLocations@@QBE_NXZ	00815280	00838ec0
+?SetWeapon@CHitParameters@@QAEXAAVCThing@@@Z	00868ce0	00838ec0
+?g_NormaliseEpsilon@@3MB	0129ba3c	00838ec0
+?GetDataFromEventString@?A0x43621fd9@@YI_NABVCCharString@@JAAV2@@Z	00870c90	00870e00
+?GetDataFromEventString@?A0xc6ce8c6b@@YI_NABVCCharString@@JAAV2@@Z	00870c90	00871290

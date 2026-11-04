@@ -22348,13 +22348,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007bed40	SetMember_byte0x67_007bed40	_global	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7b\EnableNavigator_EnableNavigator_007bed40.cpp
 007bed50	SetMember_byte0x68_007bed50	_global	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7b\EnableNavigator_EnableNavigator_007bed50.cpp
 007bed60	GetMember_byte0x68_007bed60	_global	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7b\GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007bed60.cpp
-007bed70	GetMember_byte0x66_007bed70	_global	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7b\GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007bed70.cpp
-007bed80	GetMember_byte0x67_007bed80	_global	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7b\GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007bed80.cpp
+007bed70	IsKnockDown	NThingShot::CTCShotDefinitionBase	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7b\GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007bed70.cpp
+007bed80	IsDecapitate	NThingShot::CTCShotDefinitionBase	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7b\GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007bed80.cpp
 007bed90	SetTimeToDie	CTCShotDefinitionBase	__thiscall	void	1	CTCHeroExperience *	1	yes	accepted									
 007bedd0	GetShootAtPos	NThingShot::CTCShotDefinitionBase	__thiscall	C3DVector	1	CTCPhysicsRigidBody *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7b\CTCPhysicsRigidBody_GetFacingVector_007bedd0.cpp
 007bedf0	GetCreatureFireAtPos	NThingShot	__fastcall	C3DVector	1	CThing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7b\global_GetCreatureFireAtPos_007bedf0.cpp
 007bee10	GetShotDamage	NThingShot::CTCShotDefinitionThrow	__thiscall	float	1	CTCPhysicsBase *	1	yes	accepted									
-007bee20	CanBeHitByMeleeStrike	CTCShotDefinitionBase	__thiscall	bool	1	CTCShotDefinitionBase *	1	yes	accepted									
+007bee20	IsBlockable	NThingShot::CTCShotDefinitionBase	__thiscall	bool	1	CTCShotDefinitionBase *	1	yes	accepted									
 007bee40	NThingShot::CTCShotDefinitionThrow::vfunc_36	NThingShot::CTCShotDefinitionThrow	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007befa0	CanBeHitByMeleeStrike	CTCShotDefinitionBase	__thiscall	bool	1	CTCShotDefinitionBase *	1	yes	accepted									
 007befb0	GetInitialVelocity	NThingShot::CTCShotDefinitionBase	__thiscall	float	1	CTCShotDefinitionBase *	1	yes	accepted									
@@ -24054,7 +24054,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00815230	CanBeHitByMeleeStrike	CTCShotDefinitionBase	__thiscall	bool	1	CTCShotDefinitionBase *	1	yes	accepted									
 00815240	CanBeHitByMeleeStrike	CTCShotDefinitionBase	__thiscall	bool	1	CTCShotDefinitionBase *	1	yes	accepted									
 00815270	CanBeHitByMeleeStrike	CTCShotDefinitionBase	__thiscall	bool	1	CTCShotDefinitionBase *	1	yes	accepted									
-00815280	CanBeHitByMeleeStrike	CTCShotDefinitionBase	__thiscall	bool	1	CTCShotDefinitionBase *	1	yes	accepted									
+00815280	IsToCauseDecapitionOnHit	NHitLocations::CHitLocation	__thiscall	bool	1	CTCShotDefinitionBase *	1	yes	accepted									
 00815290	GetMember_dword0x4_deref0x48_00815290	_global	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\CountReferences_CountReferences_00815290.cpp
 008152a0	GetMember_dword0x4_deref0x50_008152a0	_global	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\CountReferences_CountReferences_008152a0.cpp
 008152b0	GetMember_dword0x4_deref0x54_008152b0	_global	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\CountReferences_CountReferences_008152b0.cpp
@@ -25804,9 +25804,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00868400	Clone	CCombatAction_GenericStrikeResponseKnockdown	__thiscall	CCreatureActionBase *	1	CCombatAction_GenericStrikeResponseKnockdown *	1	yes	accepted									
 00868430	CCombatAction_GenericStrikeResponseKnockdown	CCombatAction_GenericStrikeResponseKnockdown	__thiscall	undefined	2	CCombatAction_GenericStrikeResponseKnockdown *,CCombatAction_GenericStrikeResponseKnockdown *	0	yes	accepted									
 00868500	Clone	CCombatAction_GenericStrikeResponse	__thiscall	CCreatureActionBase *	1	CCombatAction_GenericStrikeResponse *	1	yes	accepted									
-00868590	SetMember_dword0x48_00868590	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\86\AddExclusiveObserver_AddExclusiveObserver_00868590.cpp
+00868590	SetHitLocation	CHitParameters	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\86\AddExclusiveObserver_AddExclusiveObserver_00868590.cpp
 008685a0	IsPlayGetHitResponse	CHitParameters	__thiscall	bool	2	CHitParameters *,CThing *	1	yes	accepted									
-008685f0	AssignTarget_008685f0	_unattributed	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
+008685f0	SetThingHitting	CHitParameters	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
 00868640	SetPHitMaterialDef	CHitParameters	__thiscall	void	2	CHitParameters *,CDefPointer<CMaterialDef_const_>	1	yes	accepted									
 00868690	GetDamageToThing	CHitParameters	unknown	undefined	0		0	yes	accepted									
 008686e0	GetArmourThresholdValueFromArmourWeights	_global	unknown	undefined	0		0	yes	accepted									
@@ -26008,10 +26008,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00870c90	GetDataFromEventString	`anonymous namespace'	__fastcall	bool	3	CCharString *,long,CCharString *	1	yes	accepted									
 00870d70	SetDataFromString	NCreatureAction::CActionEventAddObject	__thiscall	bool	2	CActionEventAddObject *,CCharString *	1	yes	accepted									
 00870de0	SetDataFromString	NCreatureAction::CActionEventRemoveObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00870e00	SetDataFromString	CActionEventTriggerParticle	__thiscall	bool	2	CActionEventTriggerParticle *,CCharString *	1	yes	accepted									
+00870e00	SetDataFromString	NCreatureAction::CActionEventTriggerParticle	__thiscall	bool	2	CActionEventTriggerParticle *,CCharString *	1	yes	accepted									
 00870fc0	vfunc_4	NCreatureAction::CActionEventCameraShake	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00871250	Dispatch	NCreatureAction::CActionEventCameraShake	__thiscall	void	2	CActionEventCameraShake *,CCreatureActionBase *	1	yes	accepted									
-00871290	SetDataFromString	CActionEventExplosion	__thiscall	bool	2	CActionEventExplosion *,CCharString *	1	yes	accepted									
+00871290	SetDataFromString	NCreatureAction::CActionEventExplosion	__thiscall	bool	2	CActionEventExplosion *,CCharString *	1	yes	accepted									
 00871430	Dispatch	CActionEventShot	__thiscall	void	2	CActionEventShot *,CCreatureActionBase *	1	yes	accepted									
 008717a0	Dispatch	NCreatureAction::CActionEventExplosion	__thiscall	void	2	CActionEventExplosion *,CCreatureActionBase *	1	yes	accepted									
 008718b0	Dispatch	NCreatureAction::CActionEventAddObject	__thiscall	void	2	CActionEventAddObject *,CCreatureActionBase *	1	yes	accepted									
@@ -41545,7 +41545,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b4f420	BuildDepthPackingLookupTexture	CEngineShadowRenderer	__thiscall	void	1	CEngineShadowRenderer *	1	yes	accepted									
 00b4f510	PreLayerRender	CEngineShadowRenderer	__thiscall	void	2	CEngineShadowRenderer *,CEngineComponentRenderParams *	1	yes	accepted									
 00b4f8e0	InitialiseTextures	CEngineShadowRenderer	__thiscall	bool	1	CEngineShadowRenderer *	1	yes	accepted									
-00b4fc10	SetShadowMapSize	CEngineShadowRenderer	__thiscall	bool	2	CInputProcessGameBase *,CInputProcessManager *	1	yes	accepted									
+00b4fc10	ChangeVideoOptionShadowQuality	CEngineShadowRenderer	__thiscall	bool	2	CInputProcessGameBase *,CInputProcessManager *	1	yes	accepted									
 00b4fc40	SetupShadowFuncRenderStates	CEngineShadowRenderer	__thiscall	void	4	CEngineShadowRenderer *,long,CMatrix3x4 *,CColorBufferDepthPackParameters *	1	yes	accepted									
 00b50370	CEngineShadowRenderer	CEngineShadowRenderer	__thiscall	undefined	1	CPSCOrbit *	0	yes	accepted									
 00b50510	SetupShadowFuncRenderStates	CEngineShadowRenderer	__thiscall	void	3	CEngineShadowRenderer *,long,CColorBufferDepthPackParameters *	1	yes	accepted									

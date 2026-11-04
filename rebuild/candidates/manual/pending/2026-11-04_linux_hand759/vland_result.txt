@@ -1,0 +1,49 @@
+addr       parity           behav  name
+00687730   WARN SHARED_HEADER_AVAILABLE C3DVector
+00687730   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00687730   WARN SHARED_HEADER_AVAILABLE CTCBase
+00687730   WARN SHARED_HEADER_AVAILABLE CWorld
+00687730   RELOCATION_MATCH PASS   AddMessage
+006aeea0   WARN SHARED_HEADER_AVAILABLE CDefString
+006aeea0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006aeea0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006aeea0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+006aeea0   WARN SHARED_HEADER_AVAILABLE CTCBase
+006aeea0   WARN SHARED_HEADER_AVAILABLE CThing
+006aeea0   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+006aeea0   RELOCATION_MATCH PASS   IsCreatureFollowingHeroAcrossRegions
+007751a0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007751a0   WARN SHARED_HEADER_AVAILABLE CTCShop
+007751a0   RELOCATION_MATCH PASS   SetShopKeeper
+00838ec0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00838ec0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00838ec0   WARN SHARED_HEADER_AVAILABLE CThingGameObject
+00838ec0   WARN RELOC_NAME: ?IsKnockDown@CTCShotDefinitionBase@NThingShot@@QBE_NXZ -> 007bed70 labelled '_global::GetMember_byte0x66_007bed70'
+00838ec0   WARN RELOC_NAME: ?IsBlockable@CTCShotDefinitionBase@NThingShot@@QBE_NXZ -> 007bee20 labelled 'CTCShotDefinitionBase::CanBeHitByMeleeStrike'
+00838ec0   WARN RELOC_NAME: ?SetThingHitting@CHitParameters@@QAEXAAVCThing@@@Z -> 008685f0 labelled '_unattributed::AssignTarget_008685f0'
+00838ec0   WARN RELOC_NAME: ?IsToCauseDecapitionOnHit@CHitLocation@NHitLocations@@QBE_NXZ -> 00815280 labelled 'CTCShotDefinitionBase::CanBeHitByMeleeStrike'
+00838ec0   WARN RELOC_NAME: ?IsDecapitate@CTCShotDefinitionBase@NThingShot@@QBE_NXZ -> 007bed80 labelled '_global::GetMember_byte0x67_007bed80'
+00838ec0   WARN RELOC_NAME: ?SetHitLocation@CHitParameters@@QAEXPAVCHitLocation@NHitLocations@@@Z -> 00868590 labelled '_global::SetMember_dword0x48_00868590'
+00838ec0   RELOCATION_MATCH PASS   GetShotHitParameters
+00870e00   RELOCATION_MATCH PASS   SetDataFromString
+00871290   RELOCATION_MATCH PASS   SetDataFromString
+00984d90   WARN SHARED_HEADER_AVAILABLE CTCBase
+00984d90   WARN SHARED_HEADER_AVAILABLE C3DVector
+00984d90   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00984d90   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00984d90   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00984d90   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00984d90   WARN SHARED_HEADER_AVAILABLE CWorld
+00984d90   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00984d90   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00984d90   WARN RELOC_NAME: ?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ -> 00662000 labelled 'CThingCreatureBase::GetMovementMode'
+00984d90   RELOCATION_MATCH PASS   FleeIsRunnable
+
+WINS: 7
+  00687730 RELOCATION_MATCH CMessageEventManager::?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABVCMessageEventDef@@ABVC3DVector@@PAVCThing@@2J@Z
+  006aeea0 RELOCATION_MATCH CTCRegionFollower::?IsCreatureFollowingHeroAcrossRegions@CTCRegionFollower@@QBE_NABVCThingAICreature@@@Z
+  007751a0 RELOCATION_MATCH CTCShop::?SetShopKeeper@CTCShop@@QAEXPAVCThingCreatureBase@@@Z
+  00838ec0 RELOCATION_MATCH CThingGameObject::?GetShotHitParameters@CThingGameObject@@QBEXPAVCHitLocation@NHitLocations@@AAVCThing@@ABVC3DVector@@AAVCHitParameters@@@Z
+  00870e00 RELOCATION_MATCH NCreatureAction::CActionEventTriggerParticle::?SetDataFromString@CActionEventTriggerParticle@NCreatureAction@@MAE_NABVCCharString@@@Z
+  00871290 RELOCATION_MATCH NCreatureAction::CActionEventExplosion::?SetDataFromString@CActionEventExplosion@NCreatureAction@@MAE_NABVCCharString@@@Z
+  00984d90 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?FleeIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ

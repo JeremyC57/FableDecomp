@@ -1993,3 +1993,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - An inner `{}` scope around interface lookups and a query (bool result) can fix an esi/edi swap in an AI Update (chunk 757, 0x00911A90).
 - A named float for a virtual call's result, then `+=` / `*=`, gives retail's x87 order where one expression does not (chunk 757, 0x00A1ABF0).
 - VC7.1 orders commutative fmul operands itself; no source order moves it (chunk 757: 0x00C1D1C0, 0x00986ED0, 0x0085C7D0 parked).
+- An old local component-map model leaves key-address register rotations: use `std::bitset<274>` plus the real `engine/CVectorMap.h` in the PeekTC shape (chunk 759: 5 of 7 matches).
+- `ip == thing` through the FableWin `__fastcall` operator== template reloads the member after GetPItem; `ip.Get() == thing` keeps it in a register (chunk 759).
+- STLport `operator[]` written as `*(begin()+n)` stops VC7.1 keeping `i*8` in a register across calls (chunk 759).

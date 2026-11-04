@@ -1,0 +1,16 @@
+address	name	evidence
+00687730	CMessageEventManager::AddMessage	Ego_r ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABVCMessageEventDef@@ABVC3DVector@@PAVCThing@@2J@Z; leaf of the RELOCATION_MATCH source
+00687540	CMessageEventManager::AddMessage	Ego_r ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (parked row, same body family)
+006aeea0	CTCRegionFollower::IsCreatureFollowingHeroAcrossRegions	Ego_r ?IsCreatureFollowingHeroAcrossRegions@CTCRegionFollower@@QBE_NABVCThingAICreature@@@Z; leaf of the RELOCATION_MATCH source
+007751a0	CTCShop::SetShopKeeper	Ego_r ?SetShopKeeper@CTCShop@@QAEXPAVCThingCreatureBase@@@Z; leaf of the RELOCATION_MATCH source
+00984d90	CAIStateGroup_OpinionReactionRoot::FleeIsRunnable	Ego_r ?FleeIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ; leaf of the RELOCATION_MATCH source
+00870e00	NCreatureAction::CActionEventTriggerParticle::SetDataFromString	leaf of the RELOCATION_MATCH source
+00871290	NCreatureAction::CActionEventExplosion::SetDataFromString	leaf of the RELOCATION_MATCH source
+00b4fc10	CEngineShadowRenderer::ChangeVideoOptionShadowQuality	see NAME_FIXES.tsv
+00838ec0	CThingGameObject::GetShotHitParameters	Ego_r ?GetShotHitParameters@CThingGameObject@@QBEXPAVCHitLocation@NHitLocations@@AAVCThing@@ABVC3DVector@@AAVCHitParameters@@@Z; leaf of the RELOCATION_MATCH source
+007bed70	NThingShot::CTCShotDefinitionBase::IsKnockDown	Ego_r ?IsKnockDown@CTCShotDefinitionBase@NThingShot@@QBE_NXZ; called on the TCI_SHOT_DEFINITION component by 0x00838EC0 and stored to CHitParameters::KnockDown (was _global::GetMember_byte0x66_007bed70)
+007bed80	NThingShot::CTCShotDefinitionBase::IsDecapitate	Ego_r ?IsDecapitate@CTCShotDefinitionBase@NThingShot@@QBE_NXZ; gates CHitParameters::Decapitate in 0x00838EC0 (was _global::GetMember_byte0x67_007bed80)
+007bee20	NThingShot::CTCShotDefinitionBase::IsBlockable	Ego_r ?IsBlockable@CTCShotDefinitionBase@NThingShot@@QBE_NXZ; stored to CHitParameters::Blockable in 0x00838EC0 (was CTCShotDefinitionBase::CanBeHitByMeleeStrike, shared with 0x00815280: one address, one name)
+008685f0	CHitParameters::SetThingHitting	Ego_r ?SetThingHitting@CHitParameters@@QAEXAAVCThing@@@Z; landed binding of the same spelling (rb.sh) (was _unattributed::AssignTarget_008685f0)
+00868590	CHitParameters::SetHitLocation	Ego_r ?SetHitLocation@CHitParameters@@QAEXPAVCHitLocation@NHitLocations@@@Z; landed binding of the same spelling (rb.sh); 0x00838EC0 passes its CHitLocation* argument (was _global::SetMember_dword0x48_00868590)
+00815280	NHitLocations::CHitLocation::IsToCauseDecapitionOnHit	unproven-strength: Ego_r CHitLocation bool query of that meaning, called on the hit-location argument of 0x00838EC0 and ANDed with the shot IsDecapitate (was CTCShotDefinitionBase::CanBeHitByMeleeStrike)

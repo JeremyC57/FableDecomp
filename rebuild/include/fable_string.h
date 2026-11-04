@@ -202,6 +202,12 @@ public:
     bool operator==(const char* text) const { if(!PStringData) { if(strcmp(text,"")==0) return true; return false; } return PStringData->Data==text; }
     void Truncate(unsigned long);                              // 0x0099F2A0 ?Truncate@CCharString@@QAEXK@Z (Ego_r 0x00AFAB00 / FableWin 0x02F61D70)
     void LoadFromFile(class CAFile&,class CASuspendableProcess*,long);   // ?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z (Ego_r)
+#ifdef FABLE_RETAIL_CCHARSTRING_SUBSTRING
+    // Chunk 759 (rows 0x00870E00 / 0x00871290 NCreatureAction::CActionEvent*::SetDataFromString): Ego_r.pdb + FableWin.pdb
+    // ?FindCharPos@CCharString@@QBEJD@Z and ?GetSubString@CCharString@@QBE?AV1@KK@Z, both out of line in retail.
+    long FindCharPos(char c) const;                            // 0x0099E5A0
+    CCharString GetSubString(unsigned long start, unsigned long length) const;   // 0x0099EC70
+#endif
 #else
     CCharString(const char* text, long length);
 #endif

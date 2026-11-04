@@ -1,0 +1,24 @@
+catalog  007bed70 _global::GetMember_byte0x66_007bed70 -> NThingShot::CTCShotDefinitionBase::IsKnockDown
+catalog  007bed80 _global::GetMember_byte0x67_007bed80 -> NThingShot::CTCShotDefinitionBase::IsDecapitate
+catalog  00868590 _global::SetMember_dword0x48_00868590 -> CHitParameters::SetHitLocation
+catalog  008685f0 _unattributed::AssignTarget_008685f0 -> CHitParameters::SetThingHitting
+catalog  00815280 CTCShotDefinitionBase::CanBeHitByMeleeStrike -> NHitLocations::CHitLocation::IsToCauseDecapitionOnHit
+catalog  007bee20 CTCShotDefinitionBase::CanBeHitByMeleeStrike -> NThingShot::CTCShotDefinitionBase::IsBlockable
+catalog  00b4fc10 CEngineShadowRenderer::SetShadowMapSize -> CEngineShadowRenderer::ChangeVideoOptionShadowQuality
+catalog  00687730 AddMessage -> CMessageEventManager::AddMessage
+catalog  006aeea0 IsCreatureFollowingHeroAcrossRegions -> CTCRegionFollower::IsCreatureFollowingHeroAcrossRegions
+catalog  007751a0 SetShopKeeper -> CTCShop::SetShopKeeper
+catalog  00838ec0 GetShotHitParameters -> CThingGameObject::GetShotHitParameters
+catalog  00870e00 SetDataFromString -> NCreatureAction::CActionEventTriggerParticle::SetDataFromString
+catalog  00871290 SetDataFromString -> NCreatureAction::CActionEventExplosion::SetDataFromString
+catalog  00984d90 FleeIsRunnable -> CAIStateGroup_OpinionReactionRoot::FleeIsRunnable
+manifest 007bed70 _global::GetMember_byte0x66_007bed70 -> NThingShot::CTCShotDefinitionBase::IsKnockDown
+manifest 007bed80 _global::GetMember_byte0x67_007bed80 -> NThingShot::CTCShotDefinitionBase::IsDecapitate
+manifest 007bee20 CTCShotDefinitionBase::CanBeHitByMeleeStrike -> NThingShot::CTCShotDefinitionBase::IsBlockable
+manifest 00815280 CTCShotDefinitionBase::CanBeHitByMeleeStrike -> NHitLocations::CHitLocation::IsToCauseDecapitionOnHit
+manifest 00868590 _global::SetMember_dword0x48_00868590 -> CHitParameters::SetHitLocation
+manifest 008685f0 _unattributed::AssignTarget_008685f0 -> CHitParameters::SetThingHitting
+manifest 00870e00 CActionEventTriggerParticle::SetDataFromString -> NCreatureAction::CActionEventTriggerParticle::SetDataFromString
+manifest 00871290 CActionEventExplosion::SetDataFromString -> NCreatureAction::CActionEventExplosion::SetDataFromString
+manifest 00b4fc10 CEngineShadowRenderer::SetShadowMapSize -> CEngineShadowRenderer::ChangeVideoOptionShadowQuality
+labels 15  catalog renamed 14  manifest renamed 9

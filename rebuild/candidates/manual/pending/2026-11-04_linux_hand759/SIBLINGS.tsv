@@ -1,0 +1,2 @@
+header	macro	landed_includers_affected	note
+fable_string.h	FABLE_RETAIL_CCHARSTRING_SUBSTRING	none	additive declarations behind a new sub-macro inside FABLE_RETAIL_CCHARSTRING; no landed row defines it, hdrcheck2 default=same and every existing macro same
