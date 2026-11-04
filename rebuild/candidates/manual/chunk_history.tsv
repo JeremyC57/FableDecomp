@@ -26590,3 +26590,12 @@ chunk	address	module	name	length
 751	006af3f0	parked-retry	operator()	160
 751	00878390	parked-retry	GetThingsOfType<CThingBuilding>	160
 751	00809030	parked-retry	CThingFilter_IsInTargetingRangeAndFOV	166
+752	0054ac90	NUISystem::CSlider::NUISystem::CSlider	vfunc_1	1454
+752	0054c140	NUISystem::CSlider::NUISystem::CSlider	vfunc_0	8
+752	0054c150	NUISystem::CSlider::NUISystem::CSlider	vfunc_0	8
+752	00554740	NUISystem::CMorphingSprite::NUISystem::CMorphingSprite	vfunc_2	1572
+752	00555120	NUISystem::CMorphingSprite::NUISystem::CMorphingSprite	vfunc_0	8
+752	00555130	NUISystem::CMorphingSprite::NUISystem::CMorphingSprite	vfunc_0	8
+752	00559a90	NUISystem::CScrollBar::NUISystem::CScrollBar	vfunc_1	2163
+752	0055a380	NUISystem::CScrollBar::NUISystem::CScrollBar	vfunc_0	8
+752	0055a390	NUISystem::CScrollBar::NUISystem::CScrollBar	vfunc_0	8
