@@ -16,6 +16,10 @@ bool IsFloat() const { return Type==PARSED_ITEM_FLOAT; }
 bool IsInteger() const { return Type==PARSED_ITEM_INTEGER; }
 float GetFloat() const { return Float; }
 long GetInteger() const { return Integer; }
+// Chunk 756 (row 0x009B9700): Ego_r.pdb ?InitAsInteger@CParsedItem@@QAEXPBDK@Z (out of line, 0x009B9700).
+void InitAsInteger(const char* text,unsigned long length);
+// Chunk 756 (row 0x009B9770): Ego_r.pdb ?InitAsFloat@CParsedItem@@QAEXPBDK@Z (out of line, 0x009B9770).
+void InitAsFloat(const char* text,unsigned long length);
 #else
 public:CParsedItem(){} const CCharString& GetString() const;
 #endif

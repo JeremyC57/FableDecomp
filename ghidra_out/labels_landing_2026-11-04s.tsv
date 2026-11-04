@@ -1,0 +1,35 @@
+address	name	evidence
+00768a70	std::iter_swap<std::pair<unsigned long,C3DVector>*,std::pair<unsigned long,C3DVector>*>	landing 2026-11-04s (chunk 756): Ego_r.pdb ??$iter_swap@PAU?$pair@KVC3DVector@@@std@@...; element type from the TU sort helpers 0x00768B30/0x00769420; twin order by analogy with 0x00806220/0x008068B0; label CNearestBuildingWithProperty propagated
+00769340	std::swap<std::pair<unsigned long,C3DVector> >	landing 2026-11-04s (chunk 756): byte twin of 0x00768A70 (the swap that iter_swap calls); label propagated
+008068b0	std::swap<std::pair<C3DVector,long> >	landing 2026-11-04s (chunk 756): byte twin of landed iter_swap<pair<C3DVector,long>*> 0x00806220 (same TU); label propagated
+0066c7b0	CRegionMinimap::InitialiseRegionBox	landing 2026-11-04s (chunk 756): Ego_r.pdb/FableWin.pdb ?InitialiseRegionBox@CRegionMinimap@@QAEXXZ
+004c5890	std::map<void*,CRGBColour>::operator[]	landing 2026-11-04s (chunk 756): CTCGraphicAppearance::TintColours (Ego_r.pdb); label CombatAnimationList::FindOrInsert propagated
+006451dd	NPlayerGui::CDrawAbilityButtons::DrawEffects	landing 2026-11-04s (chunk 756): Ego_r.pdb ?DrawEffects@CDrawAbilityButtons@NPlayerGui@@IAEXJABVC2DVector@@ABVCHeroAbilityDef@@@Z
+00bc7db0	CEngineInternalPrimitiveLine::GetBoundingSphereWorldSpace	landing 2026-11-04s (chunk 756): Ego_r.pdb virtual
+007be05c	NThingShot::CTCShotDefinitionDrainLife::SetSoulEffect	landing 2026-11-04s (chunk 756): Ego_r.pdb ?SetSoulEffect@CTCShotDefinitionDrainLife@NThingShot@@QAEXJ@Z
+004acb50	CThing::GetTCDriver<CTCDParticleEmitter>	landing 2026-11-04s (chunk 756): FableWin/Ego_r template; body tests TCI_PARTICLE_EMITTER (75)
+008f6050	CHeightMap::Clear	landing 2026-11-04s (chunk 756): Ego_r.pdb ?Clear@CHeightMap@@AAEXXZ (private)
+0049c700	CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea	landing 2026-11-04s (chunk 756): Ego_r.pdb ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z
+00918a40	CAIStateGroup_GazeAtWork::IsRunnable	landing 2026-11-04s (chunk 756): Ego_r.pdb ?IsRunnable@CAIStateGroup_GazeAtWork@@MAE_NXZ
+006ca380	CTCHero::SetWeaponsAsUsable	landing 2026-11-04s (chunk 756): Ego_r.pdb ?SetWeaponsAsUsable@CTCHero@@QAEX_N@Z
+008031e0	CTCTargetingPlayer::GetPBestThingForMeleeAttack	landing 2026-11-04s (chunk 756): Ego_r.pdb, vtable slot 28
+009b9d70	CStringParser::SkipPastNewline	landing 2026-11-04s (chunk 756): Ego_r.pdb
+009b9700	CParsedItem::InitAsInteger	landing 2026-11-04s (chunk 756): Ego_r.pdb
+004c9f60	CThing::AddAndCopyTC	landing 2026-11-04s (chunk 756): Ego_r.pdb ?AddAndCopyTC@CThing@@QAEXABVCTCBase@@_N@Z
+008af6e0	CombatDialogueManager::CanSaySpeech	landing 2026-11-04s (chunk 756): Ego_r.pdb ?CanSaySpeech@CombatDialogueManager@@QBE_NAAVCThingCreatureBase@@K@Z
+009104d0	CAIStateGroup_MinionSitOnSeatBase::GetSeat	landing 2026-11-04s (chunk 756): Ego_r.pdb ?GetSeat@CAIStateGroup_MinionSitOnSeatBase@@MAEXPAVCThing@@@Z
+00910a90	CThingSearchTools::GetAllLeafThings<CThingObject,std::vector<CThingObject*>,CIsSeatWithSpaceOwnedBy>	landing 2026-11-04s (chunk 756): Ego_r.pdb ??$GetAllLeafThings@VCThingObject@@V?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@VCIsSeatWithSpaceOwnedBy@@@CThingSearchTools@@QBEXABVCIsSeatWithSpaceOwnedBy@@AAV?$vector@PAVCThingObject@
+009109b0	CIsSeatWithSpaceOwnedBy::operator()	landing 2026-11-04s (chunk 756): Ego_r.pdb ??RCIsSeatWithSpaceOwnedBy@@QBE_NABVCThingObject@@@Z (the filter 0x00910A90 calls)
+00875f00	NCameraModes::CTools::GetMeshExtent	landing 2026-11-04s (chunk 756): Ego_r.pdb ?GetMeshExtent@CTools@NCameraModes@@QBEMABVCThing@@@Z
+00a11c20	CPhysicsMeshObject::GetBoundingBoxXEdge	landing 2026-11-04s (chunk 756): Ego_r.pdb ?GetBoundingBoxXEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ
+00a11c90	CPhysicsMeshObject::GetBoundingBoxYEdge	landing 2026-11-04s (chunk 756): Ego_r.pdb ?GetBoundingBoxYEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ
+00bb17d0	C4DVector::C4DVector	landing 2026-11-04s (chunk 756): FableWin.pdb ??0C4DVector@@QAE@ABVCRGBColour@@@Z
+004b2ad0	CQuestManager::FailAllActiveQuests	landing 2026-11-04s (chunk 756): Ego_r.pdb ?FailAllActiveQuests@CQuestManager@@QAEXXZ; CGameScriptInterface::FailAllActiveQuests 0x00891520 tail-jumps here
+009b9770	CParsedItem::InitAsFloat	landing 2026-11-04s (chunk 756): Ego_r.pdb ?InitAsFloat@CParsedItem@@QAEXPBDK@Z
+00994a80	CCompressedMemoryDataInputStream::SetPosition	landing 2026-11-04s (chunk 756): Ego_r.pdb ?SetPosition@CCompressedMemoryDataInputStream@@UAEXK@Z (vtable slot 1)
+00a0cdd0	CWStringParser::ReadNextNumber	landing 2026-11-04s (chunk 756): Ego_r.pdb ?ReadNextNumber@CWStringParser@@AAE_NPAVCWParsedItem@@@Z
+00997880	NFile::GetItemFromPath	landing 2026-11-04s (chunk 756): Ego_r.pdb ?GetItemFromPath@NFile@@YI_NPB_WKPA_W@Z (__fastcall)
+009e4cb0	CDriveManager::GetItemFromPath	landing 2026-11-04s (chunk 756): Ego_r.pdb ?GetItemFromPath@CDriveManager@@AAE_NPB_WKPA_W@Z
+00aac5e0	CSoundEmitterLH::GetActiveSoundInfo	landing 2026-11-04s (chunk 756): descriptive (vtable 0x0129E6EC slot 24; no PDB name); catalog CModeHoverBase::PushAnimEntry is propagated
+00a69b70	CTextureManager::AllocateTexture	landing 2026-11-04s (chunk 756): draft line 1 (catalog AllocateTexture); not re-verified this pass
+006e2c00	CTCTalk::OnCreate	landing 2026-11-04s (chunk 756): draft line 1 (catalog OnCreate); not re-verified this pass

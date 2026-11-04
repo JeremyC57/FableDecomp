@@ -29,6 +29,7 @@ class CAIBrain;
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
 class CThingAICreature;
 class CWorld;
+class CThingSearchTools;
 enum EAIStateGroupType;                                                  // MS forward enum
 enum EAIActionReturn;                                                    // MS forward enum (chunk 754: AIAction_DoNothing's return type)
 #endif
@@ -75,6 +76,12 @@ protected:
     EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, float proximity,
         bool& reached, EMovementType movement, bool, bool, bool, bool, float);   // 0x0097E380
     EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
+    // Chunk 756 (row 0x009104D0): Ego_r.pdb ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ (0x008FCFA0) and
+    // ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ (0x008FD000), protected, out of line in retail.
+    const CWorld& PeekWorld() const;                                     // 0x008FCFA0
+    const CThingSearchTools& PeekThingSearchTools() const;               // 0x008FD000
 #endif
 public:
     void Terminate();                                                    // 0x008FCF40 ?Terminate@CAIStateGroupBase@@QAEXXZ

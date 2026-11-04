@@ -1,0 +1,39 @@
+catalog  004acb50 CThing::GetTCDriver<CTCDExperienceOrb> -> CThing::GetTCDriver<CTCDParticleEmitter>
+catalog  00910a90 GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::allocator<CThingAICreature*>_>,CFilter_Bind2<CThingFilter_EnemyCreature,CThingFilter_InMap>_> -> CThingSearchTools::GetAllLeafThings<CThingObject,std::vector<CThingObject*>,CIsSeatWithSpaceOwnedBy>
+catalog  004b2ad0 CQuestManager::DeactivateEventQuests -> CQuestManager::FailAllActiveQuests
+catalog  004c5890 operator[] -> std::map<void*,CRGBColour>::operator[]
+catalog  004c9f60 AddAndCopyTC -> CThing::AddAndCopyTC
+catalog  006451dd DrawEffects -> NPlayerGui::CDrawAbilityButtons::DrawEffects
+catalog  0066c7b0 InitialiseRegionBox -> CRegionMinimap::InitialiseRegionBox
+catalog  006ca380 SetWeaponsAsUsable -> CTCHero::SetWeaponsAsUsable
+catalog  00768a70 CNearestBuildingWithProperty -> std::iter_swap<std::pair<unsigned long,C3DVector>*,std::pair<unsigned long,C3DVector>*>
+catalog  00769340 CNearestBuildingWithProperty -> std::swap<std::pair<unsigned long,C3DVector> >
+catalog  007be05c SetSoulEffect -> NThingShot::CTCShotDefinitionDrainLife::SetSoulEffect
+catalog  008068b0 CNearestBuildingWithProperty -> std::swap<std::pair<C3DVector,long> >
+catalog  00875f00 GetMeshExtent -> NCameraModes::CTools::GetMeshExtent
+catalog  008af6e0 CanSaySpeech -> CombatDialogueManager::CanSaySpeech
+catalog  008f6050 Clear -> CHeightMap::Clear
+catalog  009104d0 ?GetSeat@CAIStateGroup_MinionSitOnSeatBase@@MAEXPAVCThing@@@Z -> CAIStateGroup_MinionSitOnSeatBase::GetSeat
+catalog  009b9700 InitAsInteger -> CParsedItem::InitAsInteger
+catalog  00a11c20 Getter_00A11C20 -> CPhysicsMeshObject::GetBoundingBoxXEdge
+catalog  00bb17d0 SetVSVectorAsColour -> C4DVector::C4DVector
+catalog  00bc7db0 ?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveLine@@UAE_NAAVC3DBoundingSphere@@@Z -> CEngineInternalPrimitiveLine::GetBoundingSphereWorldSpace
+manifest 0049c700 CThingSearchTools::GetCellExtents -> CThingSearchTools::ClipAndConvertWorldMapAreaToLocalArea
+manifest 004acb50 CThing::GetTCDriver<CTCDExperienceOrb> -> CThing::GetTCDriver<CTCDParticleEmitter>
+manifest 004b2ad0 CQuestManager::CQuestManager::DeactivateEventQuests -> CQuestManager::FailAllActiveQuests
+manifest 006451dd CDrawAbilityButtons::DrawEffects -> NPlayerGui::CDrawAbilityButtons::DrawEffects
+manifest 00768a70 CNearestBuildingWithProperty::CNearestBuildingWithProperty -> std::iter_swap<std::pair<unsigned long,C3DVector>*,std::pair<unsigned long,C3DVector>*>
+manifest 00769340 CNearestBuildingWithProperty::CNearestBuildingWithProperty -> std::swap<std::pair<unsigned long,C3DVector> >
+manifest 007be05c CTCShotDefinitionDrainLife::SetSoulEffect -> NThingShot::CTCShotDefinitionDrainLife::SetSoulEffect
+manifest 008031e0 CTCTargetingPlayer::CTCTargetingPlayer::vfunc_28 -> CTCTargetingPlayer::GetPBestThingForMeleeAttack
+manifest 008068b0 CNearestBuildingWithProperty::CNearestBuildingWithProperty -> std::swap<std::pair<C3DVector,long> >
+manifest 00875f00 CTools::GetMeshExtent -> NCameraModes::CTools::GetMeshExtent
+manifest 009104d0 CAIStateGroup_MinionSitOnSeatBase::?GetSeat@CAIStateGroup_MinionSitOnSeatBase@@MAEXPAVCThing@@@Z -> CAIStateGroup_MinionSitOnSeatBase::GetSeat
+manifest 00910a90 _global::GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::allocator<CThingAICreature*>_>,CFilter_Bind2<CThingFilter_EnemyCreature,CThingFilter_InMap>_> -> CThingSearchTools::GetAllLeafThings<CThingObject,std::vector<CThingObject*>,CIsSeatWithSpaceOwnedBy>
+manifest 00918a40 CAIStateGroup_GazeAtWork::CAIStateGroup_GazeAtWork::IsRunnable -> CAIStateGroup_GazeAtWork::IsRunnable
+manifest 00994a80 CCompressedMemoryDataInputStream::?SetPosition@CCompressedMemoryDataInputStream@@UAEXK@Z -> CCompressedMemoryDataInputStream::SetPosition
+manifest 00a11c20 CPhysicsMeshObject::Getter_00A11C20 -> CPhysicsMeshObject::GetBoundingBoxXEdge
+manifest 00aac5e0 CModeHoverBase::CModeHoverBase::PushAnimEntry -> CSoundEmitterLH::GetActiveSoundInfo
+manifest 00bb17d0 CShaderRenderManager::SetVSVectorAsColour -> C4DVector::C4DVector
+manifest 00bc7db0 CEngineInternalPrimitiveLine::?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveLine@@UAE_NAAVC3DBoundingSphere@@@Z -> CEngineInternalPrimitiveLine::GetBoundingSphereWorldSpace
+labels 34  catalog renamed 20  manifest renamed 18

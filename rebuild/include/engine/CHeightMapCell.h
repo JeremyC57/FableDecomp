@@ -14,7 +14,32 @@ public:
     float         Height;                                    // +0x00
     unsigned char EngineThemePaletteIndex[3];                // +0x04
     unsigned char EngineBlend[2];                            // +0x07
+#ifdef FABLE_RETAIL_CHEIGHTMAPCELL
+    // Chunk 756 (row 0x008F6050 CHeightMap::Clear): the Ego_r.pdb one-bit flags in the byte at +0x09 (struct_layouts_egor.tsv order),
+    // then the two pad bytes to sizeof 0xc.
+    unsigned char Changed : 1;
+    unsigned char Passable : 1;
+    unsigned char ShorePoint : 1;
+    unsigned char CameraPassable : 1;
+    unsigned char NavPreferred : 1;
+    unsigned char _pad_0x0a[0x2];
+    // FableWin.pdb ?Clear@CHeightMapCell@@QAEXXZ (inline): the reset CHeightMap::Clear (0x008F6050) applies to every cell.
+    void Clear()
+    {
+        Changed = false;
+        Height = 0.0f;
+        EngineBlend[0] = 0xff;
+        EngineBlend[1] = 0;
+        for (long i = 0; i < 3; ++i)
+            EngineThemePaletteIndex[i] = 1;
+        Passable = false;
+        ShorePoint = false;
+        CameraPassable = true;
+        NavPreferred = false;
+    }
+#else
     unsigned char NavPreferred[0x3];                         // +0x09 bitfield group: uchar:1
+#endif
 };
 #pragma pack(pop)
 
@@ -22,6 +47,8 @@ FABLE_STATIC_ASSERT(sizeof(CHeightMapCell) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CHeightMapCell, Height) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CHeightMapCell, EngineThemePaletteIndex) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CHeightMapCell, EngineBlend) == 0x7);
+#ifndef FABLE_RETAIL_CHEIGHTMAPCELL
 FABLE_STATIC_ASSERT(offsetof(CHeightMapCell, NavPreferred) == 0x9);
+#endif
 
 #endif // FABLE_ENGINE_CHEIGHTMAPCELL_H

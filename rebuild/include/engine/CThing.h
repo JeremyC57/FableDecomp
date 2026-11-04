@@ -177,6 +177,10 @@ public:
     const CMainGameComponent& PeekComponent() const;             // 0x004C7A70
     // Chunk 732 (row 0x006AABE0): Ego_r.pdb ?GetPlayer@CThing@@QAEAAVCPlayer@@XZ, out of line in retail (0x004C7A30).
     CPlayer& GetPlayer();                                        // 0x004C7A30
+#ifdef FABLE_RETAIL_CTHING_PEEKPLAYER
+    // Chunk 756 (row 0x008031E0): Ego_r.pdb / FableWin.pdb ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ, out of line in retail (0x004C7A10).
+    const CPlayer& PeekPlayer() const;                           // 0x004C7A10
+#endif
     void SetPersistOnUnloadWhenInLimbo(bool persist) { PersistOnUnloadWhenInLimbo = persist; }
     // Chunk 751 (row 0x0082A3E0 CMiniMapDisplay::CMarkerInfo::IsReversedOnMap): FableWin.pdb
     // ??$PeekTCDriver@$$CBVCTCDRegionExit@@@CThing@@QBE_NPAPBVCTCDRegionExit@@@Z (inline in retail: the interface bit test, then
@@ -189,6 +193,31 @@ public:
         }
         return false;
     }
+#ifdef FABLE_RETAIL_CTHING_ADDANDCOPYTC
+    // Chunk 756 (row 0x004C9F60): Ego_r.pdb ?AddAndCopyTC@CThing@@QAEXABVCTCBase@@_N@Z (out of line) and the FableWin.pdb member template
+    // ??$GetTC@VCTCBase@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCBase@@@Z (the non-const twin of PeekTC(id, ptc); __forceinline like it).
+    void AddAndCopyTC(const CTCBase& other,bool flag);
+    template<class T> __forceinline bool GetTC(ETCInterfaceType id,T** ptc) {
+        if(HasTC(id)) {
+            CTCBase& base=GetTC(id);
+            *ptc=GFDebugPDynamicCast(&base,(T*)0);
+            return true;
+        }
+        return false;
+    }
+#endif
+#ifdef FABLE_RETAIL_CTHING_GETTCDRIVER
+    // Chunk 756 (row 0x007BE05C): FableWin.pdb / Ego_r.pdb ??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z,
+    // out of line in retail (0x004ACB50: mov eax,[ecx+28h] ; test ah,8 = HasTC(TCI_PARTICLE_EMITTER 75), then PTCDriver +0x5C
+    // stored through the out pointer). Plain inline: the size-optimised caller calls it. The driver class must be complete.
+    template<class T> bool GetTCDriver(T** result) {
+        if(HasTC(T::StatGetInterfaceType())) {
+            *result=static_cast<T*>(PTCDriver);
+            return true;
+        }
+        return false;
+    }
+#endif
 #endif
 protected:
     CWorld& GetWorld();

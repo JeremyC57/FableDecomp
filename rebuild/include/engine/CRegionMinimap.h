@@ -11,6 +11,24 @@
 
 struct IDirect3DTexture9;
 
+#ifdef FABLE_RETAIL_CREGIONMINIMAP
+// Retail branch (chunk 756, row 0x0066C7B0 InitialiseRegionBox): the two boxes as the Ego_r.pdb C2DBoxI members, and the
+// methods that read them: GetRegionMapExtents (C2DCoordI&, C2DExtentsI&) const 0x0066C6A0 / (C2DCoordI&, C2DCoordI&) const
+// 0x0066C6D0 (both inline here: same TU as their callers) and InitialiseRegionBox 0x0066C7B0.
+#include "engine/C2DBoxI.h"
+#pragma pack(push, 1)
+class CRegionMinimap {
+public:
+    void GetRegionMapExtents(C2DCoordI& topLeft, C2DExtentsI& extents) const
+    {
+        topLeft = RegionMapBox.GetTLPos();
+        extents = RegionMapBox.GetExtents();
+    }
+    void InitialiseRegionBox();
+    long          RegionMinimapSize;                         // +0x00
+    C2DBoxI       RegionMapBox;                              // +0x04
+    C2DBoxI       RegionMapSquare;                           // +0x14
+#else
 #pragma pack(push, 1)
 struct CRegionMinimap {
     long          RegionMinimapSize;                         // +0x00
@@ -22,6 +40,7 @@ struct CRegionMinimap {
     long          RegionMapSquare_TLY;                       // +0x18 C2DBoxI::TLY
     long          RegionMapSquare_BRX;                       // +0x1c C2DBoxI::BRX
     long          RegionMapSquare_BRY;                       // +0x20 C2DBoxI::BRY
+#endif
     unsigned char RegionMinimapSurface[0x10];                // +0x24 CSurface
     unsigned char RegionMinimapTexture[0x8];                 // +0x34 CTexture
     float         IlluminationDirection_X;                   // +0x3c C3DVector::X
@@ -35,6 +54,7 @@ struct CRegionMinimap {
 
 FABLE_STATIC_ASSERT(sizeof(CRegionMinimap) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapSize) == 0x0);
+#ifndef FABLE_RETAIL_CREGIONMINIMAP
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapBox_TLX) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapBox_TLY) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapBox_BRX) == 0xc);
@@ -43,6 +63,7 @@ FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare_TLX) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare_TLY) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare_BRX) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare_BRY) == 0x20);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapSurface) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapTexture) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, IlluminationDirection_X) == 0x3c);

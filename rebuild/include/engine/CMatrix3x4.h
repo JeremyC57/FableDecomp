@@ -96,6 +96,19 @@ public:
         point.Z+=E43;
     }
 #endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR
+    // Chunk 756 (row 0x00A11C20 CPhysicsMeshObject::GetBoundingBoxXEdge): FableWin.pdb ?TransformVector@CMatrix3x4@@QBEXAAVC3DVector@@@Z
+    // (0x01D9FFF0; no Ego_r.pdb or retail out-of-line copy): the rotation part in place through xx/yy/zz copies, each row
+    // x*E1k + y*E2k + z*E3k (the X edge's `fst [esp]` keeps the half extent live for the X row, 0x00A11C3B).
+    void TransformVector(C3DVector& v) const {
+        const float xx=v.X;
+        const float yy=v.Y;
+        const float zz=v.Z;
+        v.X=xx*E11+yy*E21+zz*E31;
+        v.Y=xx*E12+yy*E22+zz*E32;
+        v.Z=xx*E13+yy*E23+zz*E33;
+    }
+#endif
     void TransformPoint(const C3DVector& pSource,C3DVector& destination) const {
         destination.X=E11*pSource.X+(E21*pSource.Y+E31*pSource.Z)+E41;
         destination.Y=E12*pSource.X;

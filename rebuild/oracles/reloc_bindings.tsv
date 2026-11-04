@@ -36417,3 +36417,14 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ??0CModeSitChair@NCreatureMode@@QAE@AAVCThing@@@Z	0073fea0	00938280
 ??0CModeSitChairBored@NCreatureMode@@QAE@AAVCThing@@@Z	009380e0	00938280
 ??0CModeSitChairSleeping@NCreatureMode@@QAE@AAVCThing@@@Z	009381b0	00938280
+?SetQuestAsFailed@CQuestManager@@QAE_NABVCCharString@@_NABVCWideString@@1@Z	004b2280	004b2ad0
+?clear@?$_List_base@V?$CCountedPointer@VCActiveQuest@CQuestManager@@@@V?$allocator@V?$CCountedPointer@VCActiveQuest@CQuestManager@@@@@std@@@std@@QAEXXZ	004b9da0	004b2ad0
+?insert_unique@?$_Rb_tree@PAXU?$pair@QAXVCRGBColour@@@std@@U?$_Select1st@U?$pair@QAXVCRGBColour@@@std@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXVCRGBColour@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAXVCRGBColour@@@std@@U?$_Nonconst_traits@U?$pair@QAXVCRGBColour@@@std@@@2@@2@U32@ABU?$pair@QAXVCRGBColour@@@2@@Z	004c4d50	004c5890
+?Create2DEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC2DVector@@W4EEngine2DLayer@@_NABVCRightHandedSet@@@Z	00aeb790	006451dd
+??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z	004acb50	007be05c
+?GetBoundingBoxXEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ	00a11c20	00875f00
+?GetBoundingBoxYEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ	00a11c90	00875f00
+?DoesSpeechExist@CTCTalk@@QAE_NK@Z	006e2910	008af6e0
+?IsSpeechAllowed@CombatDialogueManager@@QBE_NABVCThingCreatureBase@@@Z	008af5f0	008af6e0
+?find@?$_Rb_tree@KU?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@U?$_Select1st@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@U?$_Const_traits@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@@2@ABK@Z	008aef20	008af6e0
+??$GetAllLeafThings@VCThingObject@@V?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@VCIsSeatWithSpaceOwnedBy@@@CThingSearchTools@@QBEXABVCIsSeatWithSpaceOwnedBy@@AAV?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@@Z	00910a90	009104d0

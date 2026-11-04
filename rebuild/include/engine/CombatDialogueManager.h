@@ -7,6 +7,14 @@
 class CCombatDialogueDef;class CThingCreatureBase;
 class CombatDialogueManager {
 public:class TSpeechGroupInfo {public:long NextAllowedFrame;};
+#ifdef FABLE_RETAIL_COMBATDIALOGUEMANAGER
+ // Chunk 756 (row 0x008AF6E0): Ego_r.pdb ?CanSaySpeech@CombatDialogueManager@@QBE_NAAVCThingCreatureBase@@K@Z,
+ // ?IsSpeechAllowed@CombatDialogueManager@@QBE_NABVCThingCreatureBase@@@Z (0x008AF5F0) and ?IsSpeechGroupAllowed@CombatDialogueManager@@QBE_NK@Z
+ // (same TU; expanded in CanSaySpeech: the frame before the map find, then NextAllowedFrame <= frame).
+ bool CanSaySpeech(CThingCreatureBase& creature,unsigned long textGroup) const;
+ bool IsSpeechAllowed(const CThingCreatureBase& creature) const;
+ bool IsSpeechGroupAllowed(unsigned long textGroup) const;
+#endif
 private:
  std::map<unsigned long,TSpeechGroupInfo> SpeechGroupInfoMap;CDefPointer<const CCombatDialogueDef> PDialogueDef;
  CIntelligentPointer<CThingCreatureBase> PCurrentTalker;unsigned long CurrentTalkerTextGroupIndex;long LastSpeechFrame;long LastBattleCryFrame;

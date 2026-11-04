@@ -4,6 +4,9 @@
 class CCharString;class C3DVector;class CMeshIntersectionData;
 // Ego_r TPI size40, CBaseClass base, Mesh+4, PositionMatrix+8, Scale+38.
 // Native GetPhysicsMeshObject 006b0850 and destructor00a127d0 agree.
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_MATRIX
+#include "engine/CMatrix3x4.h"
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT
 #include "engine/CIVCountedPointer.h"
 class CPhysicsMesh;
@@ -22,13 +25,24 @@ private:
 #else
     unsigned char Mesh[4]; // CIVCountedPointer<const CPhysicsMesh>
 #endif
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_MATRIX
+    // Chunk 756 (row 0x00A11C20): the member's Ego_r.pdb type (CMatrix3x4, same offset and size).
+    CMatrix3x4 PositionMatrix;
+#else
     unsigned char PositionMatrix[48]; // CMatrix3x4
+#endif
     float Scale;
     float OO_Scale;
 public:
     virtual ~CPhysicsMeshObject();
     bool HasContainmentVolume(const CCharString&) const;
     bool GetPointIntersectionFromTo(const C3DVector&,const C3DVector&,CMeshIntersectionData&) const;
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_EDGES
+    // Chunk 756 (rows 0x00875F00 / 0x00A11C20): Ego_r.pdb ?GetBoundingBoxXEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ (0x00A11C20)
+    // and ?GetBoundingBoxYEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ (0x00A11C90), out of line, by value.
+    C3DVector GetBoundingBoxXEdge() const;
+    C3DVector GetBoundingBoxYEdge() const;
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CPhysicsMeshObject)==0x40);
 #endif

@@ -10,6 +10,11 @@ protected:
     bool DiesOff; // +d8, ctor7031f8
     unsigned char _pad_0xd9[7];
 public: static CClass* __fastcall Alloc();
+#ifdef FABLE_RETAIL_CTHINGOBJECT_STATGETTYPE
+    // Chunk 756 (row 0x009104D0): Ego_r.pdb / FableWin.pdb ?StatGetType@CThingObject@@SIJXZ; the thing-type list 5 that
+    // GetAllLeafThings<CThingObject> 0x00910A90 scans (`push 5 ; call PeekTypeList`).
+    static long __fastcall StatGetType() { return 5; }
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingObject)==0xe0);
 #endif

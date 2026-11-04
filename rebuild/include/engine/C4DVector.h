@@ -8,6 +8,9 @@
 #ifdef FABLE_RETAIL_C4DVECTOR
 class CRGBFloatColour;
 #endif
+#ifdef FABLE_RETAIL_C4DVECTOR_RGBCOLOUR
+class CRGBColour;
+#endif
 class C4DVector {
 public:
     float X,Y,Z,W;
@@ -31,6 +34,11 @@ public:
     const C4DVector operator-(const C4DVector& v) const { return C4DVector(X-v.X,Y-v.Y,Z-v.Z,W-v.W); }
     const C4DVector operator+(const C4DVector& v) const { return C4DVector(X+v.X,Y+v.Y,Z+v.Z,W+v.W); }
     __forceinline const C4DVector Interpolate(const C4DVector& v, float t) const { return (v - *this) * t + *this; }
+#endif
+#ifdef FABLE_RETAIL_C4DVECTOR_RGBCOLOUR
+    // Chunk 756 (row 0x00BB17D0): FableWin.pdb ??0C4DVector@@QAE@ABVCRGBColour@@@Z (FableWin 0x017D4970 / 0x02D149F0), out of line
+    // in retail at 0x00BB17D0 (`ret 4`, returns this): each byte channel times 1/255, X=R, Y=G, Z=B, W=A.
+    C4DVector(const CRGBColour& colour);
 #endif
 };
 #endif

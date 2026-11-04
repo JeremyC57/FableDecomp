@@ -10,6 +10,11 @@ namespace NThingMap { class CThingMap;class CThingMapManager; }
 class CThingSearchTools {
 protected:
     const std::list<CClass*>& PeekTypeList(long)const;
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_CLIPAREA
+    // Chunk 756 (row 0x0049C700): Ego_r.pdb ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z
+    // (protected const, out of line in retail at 0x0049C700).
+    C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(const NThingMap::CThingMap& map,const C2DBoxI& area)const;
+#endif
     CWorldMap& WorldMap;
     NThingMap::CThingMapManager* PThingMapManager;
     CThingManager& ThingManager;
@@ -29,8 +34,22 @@ public:
         }
         return false;
     }
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_LEAFBODY
+    // Chunk 756 (row 0x009104D0 GetSeat): the GetAllLeafThings<T,Container,Filter> body (landed 0x00910A90 shape: the scan test, the
+    // filter on the thing, push_back), a same-TU noinline body like GetPFirstLeafThing above: the caller then knows the result
+    // vector is not captured and keeps its start in a register across later calls.
+    template<class T,class Container,class Filter> __declspec(noinline) void GetAllLeafThings(const Filter& filter,Container& result) const {
+        const std::list<CClass*>& things=PeekTypeList(T::StatGetType());
+        for(std::list<CClass*>::const_iterator it=things.begin();it!=things.end();++it) {
+            T* thing=static_cast<T*>(*it);
+            if(thing->IsIncludedInThingScans() && filter(*thing))
+                result.push_back(thing);
+        }
+    }
+#else
     template<class T,class Container,class Filter>
     void GetAllLeafThings(const Filter&,Container&)const;
+#endif
     // Chunk 728 (row 0x0074B770): GetAllThings<T,Container,Filter>, out of line in retail (Ego_r.pdb
     // ??$GetAllThings@VCThingMarker@@V?$vector@PAVCThingMarker@@...@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXAB...@AAV...@Z;
     // retail instance 0x0074D940). A declaration only: no layout change.

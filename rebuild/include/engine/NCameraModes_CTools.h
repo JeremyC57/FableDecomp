@@ -26,6 +26,8 @@ public:
     // chunk 751 (row 0x00878390): Ego_r.pdb / FableWin.pdb member template
     // ??$GetThingsOfType@VCThingBuilding@@@CTools@NCameraModes@@QBEXAAV?$list@PBVCThingBuilding@@...@std@@JABVC3DVector@@M@Z.
     template<class T> void GetThingsOfType(std::list<const T*>& things,long type,const C3DVector& pos,float radius) const;
+    // Chunk 756 (row 0x00875F00): Ego_r.pdb ?GetMeshExtent@CTools@NCameraModes@@QBEMABVCThing@@@Z.
+    float GetMeshExtent(const CThing& thing) const;
 #endif
 private:
     CGameCameraManager* CameraManager;                                // +0x00

@@ -24,6 +24,10 @@ public:
     ESpeechPlaybackResult PlayAISpeech(unsigned long textGroup, bool, NSpeechGainManager::EDialogueLayer layer, bool, bool);   // 0x006E3B60
 #endif
     void StopCurrentSpeech();
+#ifdef FABLE_RETAIL_CTCTALK
+    // Chunk 756 (row 0x008AF6E0): Ego_r.pdb ?DoesSpeechExist@CTCTalk@@QAE_NK@Z (0x006E2910).
+    bool DoesSpeechExist(unsigned long textGroup);
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCTalk)==0x3c);
 

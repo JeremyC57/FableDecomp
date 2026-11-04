@@ -1,0 +1,68 @@
+addr       parity           behav  name
+004b2ad0   RELOCATION_MATCH PASS   FailAllActiveQuests
+004c5890   RELOCATION_MATCH PASS   operator[]
+004c9f60   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+004c9f60   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+004c9f60   RELOCATION_MATCH PASS   AddAndCopyTC
+006451dd   WARN SHARED_HEADER_AVAILABLE C2DVector
+006451dd   WARN SHARED_HEADER_AVAILABLE C3DVector
+006451dd   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+006451dd   WARN RELOC_NAME: ??4?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAEAAV0@ABV0@@Z -> 0065533c labelled '_global::CIntelligentPointer_Assign_0065533c'
+006451dd   RELOCATION_MATCH PASS   DrawEffects
+0066c7b0   MATCH            PASS   InitialiseRegionBox
+006ca380   RELOCATION_MATCH PASS   SetWeaponsAsUsable
+00768a70   MATCH            PASS   iter_swap<pair<unsigned long,C3DVector>*>
+00769340   MATCH            PASS   swap<pair<unsigned long,C3DVector> >
+007be05c   RELOCATION_MATCH PASS   SetSoulEffect
+008068b0   MATCH            PASS   swap<pair<C3DVector,long> >
+00875f00   WARN RELOC_NAME: ?GetBoundingBoxXEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ -> 00a11c20 labelled 'CMeshDataBank::GetHalfAxisX'
+00875f00   RELOCATION_MATCH PASS   GetMeshExtent
+008af6e0   RELOCATION_MATCH PASS   CanSaySpeech
+008f6050   MATCH            PASS   Clear
+009104d0   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingObject@@V?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@VCIsSeatWithSpaceOwnedBy@@@CThingSearchTools@@QBEXABVCIsSeatWithSpaceOwnedBy@@AAV?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@@Z -> 00910a90 labelled 'GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::allocator<CThingAICreature*>_>,CFilter_Bind2<CThingFilter_EnemyCreature,CThingFilter_InMap>_>'
+009104d0   WARN RELOC_NAME: ?SetSeat@CAIStateGroup_UsesSeat@@IAEXPAVCThingObject@@@Z -> 009106e0 labelled '_unattributed::AssignTarget_009106e0'
+009104d0   RELOCATION_MATCH PASS   GetSeat
+009b9700   MATCH            PASS   InitAsInteger
+00a11c20   RELOCATION_MATCH PASS   GetBoundingBoxXEdge
+00bb17d0   RELOCATION_MATCH PASS   C4DVector
+00bc7db0   RELOCATION_MATCH PASS   GetBoundingSphereWorldSpace
+
+WINS: 18
+  004b2ad0 RELOCATION_MATCH CQuestManager::?FailAllActiveQuests@CQuestManager@@QAEXXZ
+  004c5890 RELOCATION_MATCH std::map<void*,CRGBColour>::??A?$map@PAXVCRGBColour@@U?$less@PAX@std@@V?$allocator@U?$pair@QAXVCRGBColour@@@std@@@3@@std@@QAEAAVCRGBColour@@ABQAX@Z
+  004c9f60 RELOCATION_MATCH CThing::?AddAndCopyTC@CThing@@QAEXABVCTCBase@@_N@Z
+  006451dd RELOCATION_MATCH NPlayerGui::CDrawAbilityButtons::?DrawEffects@CDrawAbilityButtons@NPlayerGui@@IAEXJABVC2DVector@@ABVCHeroAbilityDef@@@Z
+  0066c7b0 MATCH CRegionMinimap::?InitialiseRegionBox@CRegionMinimap@@QAEXXZ
+  006ca380 RELOCATION_MATCH CTCHero::?SetWeaponsAsUsable@CTCHero@@QAEX_N@Z
+  00768a70 MATCH std::??$iter_swap@PAU?$pair@KVC3DVector@@@std@@PAU12@@std@@YIXPAU?$pair@KVC3DVector@@@0@0@Z
+  00769340 MATCH std::??$swap@U?$pair@KVC3DVector@@@std@@@std@@YIXAAU?$pair@KVC3DVector@@@0@0@Z
+  007be05c RELOCATION_MATCH NThingShot::CTCShotDefinitionDrainLife::?SetSoulEffect@CTCShotDefinitionDrainLife@NThingShot@@QAEXJ@Z
+  008068b0 MATCH std::??$swap@U?$pair@VC3DVector@@J@std@@@std@@YIXAAU?$pair@VC3DVector@@J@0@0@Z
+  00875f00 RELOCATION_MATCH NCameraModes::CTools::?GetMeshExtent@CTools@NCameraModes@@QBEMABVCThing@@@Z
+  008af6e0 RELOCATION_MATCH CombatDialogueManager::?CanSaySpeech@CombatDialogueManager@@QBE_NAAVCThingCreatureBase@@K@Z
+  008f6050 MATCH CHeightMap::?Clear@CHeightMap@@AAEXXZ
+  009104d0 RELOCATION_MATCH CAIStateGroup_MinionSitOnSeatBase::?GetSeat@CAIStateGroup_MinionSitOnSeatBase@@MAEXPAVCThing@@@Z
+  009b9700 MATCH CParsedItem::?InitAsInteger@CParsedItem@@QAEXPBDK@Z
+  00a11c20 RELOCATION_MATCH CPhysicsMeshObject::?GetBoundingBoxXEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ
+  00bb17d0 RELOCATION_MATCH C4DVector::??0C4DVector@@QAE@ABVCRGBColour@@@Z
+  00bc7db0 RELOCATION_MATCH CEngineInternalPrimitiveLine::?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveLine@@UAE_NAAVC3DBoundingSphere@@@Z
+
+LANDED 18 wins into src/compiled + tests + catalog + oracle
+  CQuestManager_FailAllActiveQuests_004b2ad0
+  stdmapvoidCRGBColour_operator_004c5890
+  CThing_AddAndCopyTC_004c9f60
+  NPlayerGuiCDrawAbilityButtons_DrawEffects_006451dd
+  CRegionMinimap_InitialiseRegionBox_0066c7b0
+  CTCHero_SetWeaponsAsUsable_006ca380
+  std_iterswappairunsignedlongC3DVector_00768a70
+  std_swappairunsignedlongC3DVector_00769340
+  NThingShotCTCShotDefinitionDrainLife_SetSoulEffect_007be05c
+  std_swappairC3DVectorlong_008068b0
+  NCameraModesCTools_GetMeshExtent_00875f00
+  CombatDialogueManager_CanSaySpeech_008af6e0
+  CHeightMap_Clear_008f6050
+  CAIStateGroupMinionSitOnSeatBase_GetSeat_009104d0
+  CParsedItem_InitAsInteger_009b9700
+  CPhysicsMeshObject_GetBoundingBoxXEdge_00a11c20
+  C4DVector_C4DVector_00bb17d0
+  CEngineInternalPrimitiveLine_GetBoundingSphereWorldSpace_00bc7db0

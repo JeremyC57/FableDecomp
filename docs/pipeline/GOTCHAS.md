@@ -1986,3 +1986,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Remaining AI-row swap: an early `if (!alive) { Terminate(); return; }` or an `else` arm with one return (chunk 755: 0x0090C540, 0x00938280).
 - `find(k)->second.X = f(...)` evaluates f first; bind the iterator to a named local to get retail's order (chunk 755, 0x008AF500).
 - Two chunks adding the same inline member under one FABLE_RETAIL_ macro conflict in the 3-way merge: keep the landed spelling and regrade the newer row on it.
+- A same-TU `__declspec(noinline)` body for an out-of-line callee lets VC7.1 keep a local in a register across the call (chunk 756: 0x004B2AD0, 0x009104D0).
+- Check the narrow/wide twin (CParsedItem/CWParsedItem, CStringParser/CWStringParser) and the PDB calling convention / `PB_W` wchar_t mangling before register work (chunk 756).
+- vland payload `flags` must be a list (`["/Gr"]`); a string silently grades without the flag (chunk 756: DIFFER(89v81) on the swap rows).
+- Parallel chunks declare the same member under different sub-macros: at landing, keep the landed declaration and make the newer row define its sub-macro (chunk 756, GetCurrentWorldFrame).
