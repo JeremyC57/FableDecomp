@@ -1982,3 +1982,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A plain-inline `C2DVector::operator==` goes out of line inside switch cases; retail expands it, so the retail branch uses `__forceinline` (chunk 752).
 - For a register rotation where a same-TU sibling landed with noinline/stand-in callee bodies, copy that sibling's source verbatim first (chunk 754: 0x0061A9D0 from 0x0061AA80, 0x00AEB600 from 0x00AEB6D0).
 - Write members first, then copy them to locals: a chained `local = Member = value` swaps registers (chunk 754, 0x00C351B0).
+- A this/temporary esi-edi swap in a CTCBase or AI row is usually an old local model; rewrite on retail headers before anything else (chunk 755: 0x00775B40, 0x008AF500).
+- Remaining AI-row swap: an early `if (!alive) { Terminate(); return; }` or an `else` arm with one return (chunk 755: 0x0090C540, 0x00938280).
+- `find(k)->second.X = f(...)` evaluates f first; bind the iterator to a named local to get retail's order (chunk 755, 0x008AF500).
+- Two chunks adding the same inline member under one FABLE_RETAIL_ macro conflict in the 3-way merge: keep the landed spelling and regrade the newer row on it.

@@ -382011,6 +382011,84 @@ $catalog = @(
         TestSource = '00/c3/CWeaponDrawState_Initialize_00c351b0_test.cpp'
         PassPattern = '00c351b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00547050'
+        Module = 'NUISystem::CScrollingComponent'
+        Source = '00/54/NUISystemCScrollingComponent_UpdatePosition_00547050.cpp'
+        TestSource = '00/54/NUISystemCScrollingComponent_UpdatePosition_00547050_test.cpp'
+        PassPattern = '00547050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a17690'
+        Module = 'CPhysicsMesh'
+        Source = '00/a1/CPhysicsMesh_HasBoundingBoxIntersectedFromTo_00a17690.cpp'
+        TestSource = '00/a1/CPhysicsMesh_HasBoundingBoxIntersectedFromTo_00a17690_test.cpp'
+        PassPattern = '00a17690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3f250'
+        Module = 'CSoundManagerLH'
+        Source = '00/a3/CSoundManagerLH_AddSound_00a3f250.cpp'
+        TestSource = '00/a3/CSoundManagerLH_AddSound_00a3f250_test.cpp'
+        PassPattern = '00a3f250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c14f90'
+        Module = 'PKCDeferredBank'
+        Source = '00/c1/PKCDeferredBank_PKCDeferredBank_00c14f90.cpp'
+        TestSource = '00/c1/PKCDeferredBank_PKCDeferredBank_00c14f90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 / E H s c /EHsc'
+        PassPattern = '00c14f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091ea70'
+        Module = 'CAIStateGroup_CreatureRangedCombat2'
+        Source = '00/91/CAIStateGroupCreatureRangedCombat2_IsAbleToFire_0091ea70.cpp'
+        TestSource = '00/91/CAIStateGroupCreatureRangedCombat2_IsAbleToFire_0091ea70_test.cpp'
+        PassPattern = '0091ea70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00729f60'
+        Module = 'CTCActionUseScriptedHook'
+        Source = '00/72/CTCActionUseScriptedHook_OnInitialActivate_00729f60.cpp'
+        TestSource = '00/72/CTCActionUseScriptedHook_OnInitialActivate_00729f60_test.cpp'
+        PassPattern = '00729f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087ba90'
+        Module = 'NCameraModes::CScriptedControl'
+        Source = '00/87/NCameraModesCScriptedControl_OnInit_0087ba90.cpp'
+        TestSource = '00/87/NCameraModesCScriptedControl_OnInit_0087ba90_test.cpp'
+        PassPattern = '0087ba90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00775b40'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_FrameUpdate_00775b40.cpp'
+        TestSource = '00/77/CTCShop_FrameUpdate_00775b40_test.cpp'
+        PassPattern = '00775b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008af500'
+        Module = 'CombatDialogueManager'
+        Source = '00/8a/CombatDialogueManager_AttemptToSpeak_008af500.cpp'
+        TestSource = '00/8a/CombatDialogueManager_AttemptToSpeak_008af500_test.cpp'
+        PassPattern = '008af500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090c540'
+        Module = 'CAIStateGroup_MinionGuardFollowPlayer'
+        Source = '00/90/CAIStateGroupMinionGuardFollowPlayer_Update_0090c540.cpp'
+        TestSource = '00/90/CAIStateGroupMinionGuardFollowPlayer_Update_0090c540_test.cpp'
+        PassPattern = '0090c540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00938280'
+        Module = 'CAIStateGroup_UsesSeat'
+        Source = '00/93/CAIStateGroupUsesSeat_AllocChairSittingMode_00938280.cpp'
+        TestSource = '00/93/CAIStateGroupUsesSeat_AllocChairSittingMode_00938280_test.cpp'
+        PassPattern = '00938280_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

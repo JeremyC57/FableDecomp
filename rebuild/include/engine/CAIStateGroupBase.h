@@ -33,6 +33,11 @@ enum EAIStateGroupType;                                                  // MS f
 enum EAIActionReturn;                                                    // MS forward enum (chunk 754: AIAction_DoNothing's return type)
 #endif
 enum EScriptAIPriority;                                                  // MS forward enum (the row defines the enumerators it uses)
+#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS)
+class CThing;
+template<class T> class CIntelligentPointer;
+enum EAIActionReturn; enum EAIActionRepeat; enum EMovementType;      // MS forward enums
+#endif
 
 class CAIStateGroupBase : public CBaseClass {
 public:
@@ -58,6 +63,19 @@ protected:
     // Chunk 754 (row 0x00945BD0 CAIStateGroup_SitForMeal::Update): Ego_r.pdb ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
     // (protected; retail 0x0097E200).
     EAIActionReturn AIAction_DoNothing();                                // 0x0097E200
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+    // Nested opt-in (chunk 755, row 0x0090C540): FableWin.pdb ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ, inline
+    // in retail; its body (PBrain->GetCreature()) is in engine/CAIBrain.h under FABLE_RETAIL_CAIBRAIN_GETCREATURE.
+    CThingAICreature& GetCreature() const;
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+    // Nested opt-in (chunk 755, row 0x0090C540): Ego_r.pdb protected AI action members (retail 0x0097E380 / 0x0097D6F0; Ego_r
+    // 0x008491B0 / 0x008484A0 manglings), declarations only. The three enums are MS forward enums (the row defines the
+    // enumerators it uses).
+    EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, float proximity,
+        bool& reached, EMovementType movement, bool, bool, bool, bool, float);   // 0x0097E380
+    EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
+#endif
 public:
     void Terminate();                                                    // 0x008FCF40 ?Terminate@CAIStateGroupBase@@QAEXXZ
 #endif // FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS

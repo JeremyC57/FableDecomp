@@ -1,0 +1,21 @@
+address	name	evidence
+00547050	NUISystem::CScrollingComponent::UpdatePosition	landing 2026-11-04r (chunk 755): 
+00a17690	CPhysicsMesh::HasBoundingBoxIntersectedFromTo	landing 2026-11-04r (chunk 755): 
+00a3f250	CSoundManagerLH::AddSound	landing 2026-11-04r (chunk 755): 
+00c14f90	PKCDeferredBank::~PKCDeferredBank	landing 2026-11-04r (chunk 755): 
+0091ea70	CAIStateGroup_CreatureRangedCombat2::IsAbleToFire	landing 2026-11-04r (chunk 755): 
+00729f60	CTCActionUseScriptedHook::OnInitialActivate	landing 2026-11-04r (chunk 755): 
+0087ba90	NCameraModes::CScriptedControl::OnInit	landing 2026-11-04r (chunk 755): 
+00775b40	CTCShop::FrameUpdate	landing 2026-11-04r (chunk 755): 
+008af500	CombatDialogueManager::AttemptToSpeak	landing 2026-11-04r (chunk 755): 
+0090c540	CAIStateGroup_MinionGuardFollowPlayer::Update	landing 2026-11-04r (chunk 755): 
+00938280	CAIStateGroup_UsesSeat::AllocChairSittingMode	landing 2026-11-04r (chunk 755): 
+00729bc0	CTCActionUseScriptedHook::SetUpPEntranceConnectedToFromUID	landing 2026-11-04r (chunk 755): 
+00775350	CTCShop::UpdateStock	landing 2026-11-04r (chunk 755): 
+00686d60	CTCBase::PeekComponent	landing 2026-11-04r (chunk 755): 
+0097e380	CAIStateGroupBase::AIAction_MoveToThingProximity	landing 2026-11-04r (chunk 755): 
+0097d6f0	CAIStateGroupBase::AIAction_LookAtThing	landing 2026-11-04r (chunk 755): 
+009a08b0	GFFloatToCharString	landing 2026-11-04r (chunk 755): 
+0041e5f2	NUISystem::CManager::GetInstance	landing 2026-11-04r (chunk 755): 
+007da640	CTCTavernGameCardBlackjack::GetBet	landing 2026-11-04r (chunk 755): 
+00957db0	CAIStateGroup_MinionBehaviourCrowdBase::Update	landing 2026-11-04r (chunk 755): 

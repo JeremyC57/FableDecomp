@@ -1,0 +1,76 @@
+addr       parity           behav  name
+004ff750   RELOCATION_MATCH PASS   CreateRelevantPersonAndUpdateStats
+0053a0a1   RELOCATION_MATCH PASS   NUISystem::CList::ChangeState
+005392fc   RELOCATION_MATCH PASS   NUISystem::CList::ScrollDown
+005385ae   RELOCATION_MATCH PASS   NUISystem::CList::ScrollUp
+0054cbf0   RELOCATION_MATCH PASS   NUISystem::CFrontEndList::ChangeState
+0054da50   WARN RELOC_NAME: ??_ECFrontEndList@NUISystem@@UAEPAXI@Z -> 0054da70 labelled 'NUISystem::CFrontEndList::`scalar deleting destructor''
+0054da50   RELOCATION_MATCH PASS   NUISystem::CFrontEndList::`vector deleting destructor'`adjustor{4}'
+0054da60   WARN RELOC_NAME: ??_ECFrontEndList@NUISystem@@UAEPAXI@Z -> 0054da70 labelled 'NUISystem::CFrontEndList::`scalar deleting destructor''
+0054da60   RELOCATION_MATCH PASS   NUISystem::CFrontEndList::`vector deleting destructor'`adjustor{24}'
+0054c140   WARN RELOC_NAME: ??_ECSlider@NUISystem@@UAEPAXI@Z -> 0054c1b0 labelled 'NUISystem::CSlider::`vector deleting destructor''
+0054c140   RELOCATION_MATCH PASS   NUISystem::CSlider::`vector deleting destructor'`adjustor{4}'
+0054c150   WARN RELOC_NAME: ??_ECSlider@NUISystem@@UAEPAXI@Z -> 0054c1b0 labelled 'NUISystem::CSlider::`vector deleting destructor''
+0054c150   RELOCATION_MATCH PASS   NUISystem::CSlider::`vector deleting destructor'`adjustor{24}'
+00549440   WARN RELOC_NAME: ?size@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QBEIXZ -> 0042b707 labelled 'CBasicString<char>::CalcStringLength'
+00549440   RELOCATION_MATCH PASS   NUISystem::CTextSlider::ProcessEvent
+00550010   WARN RELOC_NAME: ??_ECText@NUISystem@@UAEPAXI@Z -> 00550030 labelled 'NUISystem::CText::`scalar_deleting_destructor''
+00550010   RELOCATION_MATCH PASS   NUISystem::CText::`vector deleting destructor'`adjustor{4}'
+00550020   WARN RELOC_NAME: ??_ECText@NUISystem@@UAEPAXI@Z -> 00550030 labelled 'NUISystem::CText::`scalar_deleting_destructor''
+00550020   RELOCATION_MATCH PASS   NUISystem::CText::`vector deleting destructor'`adjustor{24}'
+006286f0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006286f0   WARN RELOC_NAME: ?SetEnabled25_009915e0@CASoundManager@@QAEX_N@Z -> 009915e0 labelled 'CWorld::SetMiniMapEnabled'
+006286f0   WARN RELOC_NAME: ?SetEnabled26_00991620@CASoundManager@@QAEX_N@Z -> 00991620 labelled 'CTCDParticleEmitter::func_00991620'
+006286f0   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+006286f0   RELOCATION_MATCH PASS   GFPlayFullScreenXBoxMovie
+00631c60   WARN RELOC_NAME: ??$TransferVector@J@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+00631c60   WARN RELOC_NAME: ??$TransferVector@K@CPersistContext@@QAEXAAV?$vector@KV?$allocator@K@std@@@std@@@Z -> 00464841 labelled 'CPersistContext::TransferBinary_00464841'
+00631c60   WARN RELOC_NAME: ??$TransferMap@KK@CPersistContext@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z -> 00431242 labelled '_global::PersistTransfer_00431242'
+00631c60   WARN RELOC_NAME: ??$TransferVector@M@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z -> 00464cbf labelled 'CPersistContext::TransferBinary_00464cbf'
+00631c60   RELOCATION_MATCH PASS   NUISystem::CUIDef::Transfer
+0065b854   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0065b854   RELOCATION_MATCH PASS   CTCVillage::AddThingToVillage
+00667d30   WARN RELOC_NAME: ?SetLifeTime@CTCFlashOnHit@@QAEXJ@Z -> 007e33a0 labelled 'OnPostParentRelocation'
+00667d30   WARN RELOC_NAME: ?IsMeleeStrike@CHitParameters@@QBE_NXZ -> 00868860 labelled 'CStateMapOwner_00868860::HasStateZeroOrOne'
+00667d30   WARN RELOC_NAME: ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z -> 00437990 labelled '_global::Forward_InitParticleEmitter_via0x150_00437990'
+00667d30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00667d30   RELOCATION_MATCH PASS   CThingCreatureBase::OnHit
+006aabe0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006aabe0   WARN RELOC_NAME: ?GetTargetingPositionOnThing@NTargeting@@YI?AVC3DVector@@ABVCWorld@@ABVCThing@@M@Z -> 007ea2f0 labelled 'Creature::GetTargetFirePoint'
+006aabe0   RELOCATION_MATCH PASS   CThingPlayerCreature::SetActionForMelee
+00943c20   RELOCATION_MATCH PASS   CAIStateGroup_WorkInWarehouse::IsRunnable
+00a1e030   RELOCATION_MATCH PASS   CNavigatorAStar::UpdateGoal
+00a76e00   RELOCATION_MATCH PASS   CNavQuadTree::GetPreferabilityCostForNode
+00a76f30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a76f30   RELOCATION_MATCH PASS   CNavQuadTree::IsAreaBlockedByLines
+00a78e20   RELOCATION_MATCH PASS   CNavQuadTree::IsAreaClear
+00b26360   WARN RELOC_NAME: ?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z -> 009ade10 labelled 'CDefinitionManager::GetPDefFromGlobalIndex'
+00b26360   WARN RELOC_CONFLICT: ??0CEnginePrimitiveTypeInfo@@QAE@XZ -> 00b8faa0 here, 00a02d20 in landed 00a148d0
+00b26360   RELOCATION_MATCH PASS   CEngine::Initialise
+00b3be10   RELOCATION_MATCH PASS   CEngineResourceManager::BuildAlphaStippleTexture
+
+WINS: 24
+  004ff750 RELOCATION_MATCH _global::?CreateRelevantPersonAndUpdateStats@@YIPAVCThingAICreature@@MMJJAAJ0ABVC3DVector@@ABVCThingAICreatureInit@@PAVCTCVillage@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@4_N@Z
+  0053a0a1 RELOCATION_MATCH NUISystem::CList::?ChangeState@CList@NUISystem@@UAEXK@Z
+  005392fc RELOCATION_MATCH NUISystem::CList::?ScrollDown@CList@NUISystem@@MAEXKK_N00@Z
+  005385ae RELOCATION_MATCH NUISystem::CList::?ScrollUp@CList@NUISystem@@MAEXKK_N00@Z
+  0054cbf0 RELOCATION_MATCH NUISystem::CFrontEndList::?ChangeState@CFrontEndList@NUISystem@@UAEXK@Z
+  0054da50 RELOCATION_MATCH NUISystem::CFrontEndList::??_ECFrontEndList@NUISystem@@W3AEPAXI@Z
+  0054da60 RELOCATION_MATCH NUISystem::CFrontEndList::??_ECFrontEndList@NUISystem@@WBI@AEPAXI@Z
+  0054c140 RELOCATION_MATCH NUISystem::CSlider::??_ECSlider@NUISystem@@W3AEPAXI@Z
+  0054c150 RELOCATION_MATCH NUISystem::CSlider::??_ECSlider@NUISystem@@WBI@AEPAXI@Z
+  00549440 RELOCATION_MATCH NUISystem::CTextSlider::?ProcessEvent@CTextSlider@NUISystem@@UAEXW4EEvent@2@@Z
+  00550010 RELOCATION_MATCH NUISystem::CText::??_ECText@NUISystem@@W3AEPAXI@Z
+  00550020 RELOCATION_MATCH NUISystem::CText::??_ECText@NUISystem@@WBI@AEPAXI@Z
+  006286f0 RELOCATION_MATCH _global::?GFPlayFullScreenXBoxMovie@@YI_NABVCCharString@@KKKKPBVCDataBank@NGameText@@PAVCIEngine@@_NMP6I_NXZPAVCXMVPlayerBuffers@@PAVCWideString@@@Z
+  00631c60 RELOCATION_MATCH NUISystem::CUIDef::?Transfer@CUIDef@NUISystem@@UAEXAAVCPersistContext@@@Z
+  0065b854 RELOCATION_MATCH CTCVillage::?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
+  00667d30 RELOCATION_MATCH CThingCreatureBase::?OnHit@CThingCreatureBase@@UAEXAAVCHitParameters@@@Z
+  006aabe0 RELOCATION_MATCH CThingPlayerCreature::?SetActionForMelee@CThingPlayerCreature@@UAE_NABVCCreatureAbilityDef@@@Z
+  00943c20 RELOCATION_MATCH CAIStateGroup_WorkInWarehouse::?IsRunnable@CAIStateGroup_WorkInWarehouse@@UAE_NXZ
+  00a1e030 RELOCATION_MATCH CNavigatorAStar::?UpdateGoal@CNavigatorAStar@@QAEXABVC3DVector@@VC2DVector@@1@Z
+  00a76e00 RELOCATION_MATCH CNavQuadTree::?GetPreferabilityCostForNode@CNavQuadTree@@QBEEPBVCANavQuadTreeNode@@@Z
+  00a76f30 RELOCATION_MATCH CNavQuadTree::?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@@Z
+  00a78e20 RELOCATION_MATCH CNavQuadTree::?IsAreaClear@CNavQuadTree@@QBE_NPBVCANavQuadTreeNode@@AA_NAAV?$vector@_KV?$allocator@_K@std@@@std@@@Z
+  00b26360 RELOCATION_MATCH CEngine::?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
+  00b3be10 RELOCATION_MATCH CEngineResourceManager::?BuildAlphaStippleTexture@CEngineResourceManager@@AAEXJAAV?$CArray@E@@@Z

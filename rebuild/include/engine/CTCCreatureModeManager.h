@@ -18,6 +18,11 @@ public:
     };
     CModeBase& GetCurrentMode() const;
     bool IsModeActive(unsigned long) const;
+#ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER
+    // Chunk 755 (row 0x00946190): FableWin.pdb ?AddMode@CTCCreatureModeManager@@QAE_NK@Z / ?RemoveMode@CTCCreatureModeManager@@QAEXK@Z.
+    bool AddMode(unsigned long mode);                                    // 0x0073AE10
+    void RemoveMode(unsigned long mode);                                 // 0x0073ABA0
+#endif
 private:
     std::list<CCountedPointer<CModeBase> > PModes;
     long TimeLeftForCurrentMode,TimeForNextIdleMode;

@@ -13,11 +13,16 @@
 #include "engine/ETCInterfaceType.h"
 #include "engine/CDefPointer.h"
 class CTargetingDef;
+enum ETargetingType;                                                     // MS forward enum (the row defines the enumerators it uses)
 class CTCTargeted : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_TARGETED; }
     unsigned long GetTargetingFlags() const { return TargetingFlags; }
     bool IsZTargetable() const { if (TargetingFlags & 4) return true; return false; }   // two-return form: only it folds to `test byte ptr [eax+0Ch],4` under VC7.1 (the `!= 0` / `?:` forms emit shr/test)
+    // Chunk 755 (row 0x00729F60 CTCActionUseScriptedHook::OnInitialActivate): FableWin.pdb ?SetTargetable@CTCTargeted@@QAEX_N@Z (inline in
+    // retail: `mov byte ptr [ecx+10h],1` at 0x00729FDD) and ?AddTargetingFlag@CTCTargeted@@QAEXW4ETargetingType@@@Z (out of line, 0x007EA240).
+    void SetTargetable(bool targetable) { Targetable = targetable; }
+    void AddTargetingFlag(ETargetingType flag);                          // 0x007EA240
 private:
     unsigned long TargetingFlags;                            // +0x0c
     bool Targetable;                                         // +0x10

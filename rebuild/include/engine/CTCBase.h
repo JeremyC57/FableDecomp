@@ -40,6 +40,9 @@
 #include "engine/CBaseClassNonCopyable.h"
 class CCharString;
 class CEnginePrimitivePrepareInfo;
+#ifdef FABLE_RETAIL_CTCBASE_COMPONENT
+class CMainGameComponent;
+#endif
 class CGameDefinitionManager;
 class CPersistContext;
 class CPlayerManager;
@@ -111,6 +114,12 @@ protected:
     CWorld& GetWorld() const;                                            // 0x00686A70
     CThingSearchTools& GetThingSearchTools();                            // 0x00686D80
     const CThingSearchTools& PeekThingSearchTools() const;               // 0x00686D90
+#ifdef FABLE_RETAIL_CTCBASE_COMPONENT
+    // Nested opt-in (chunk 755, row 0x00775B40 CTCShop::FrameUpdate): Ego_r.pdb 0x006B2150 ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ,
+    // out of line in retail at 0x00686D60 (`mov eax,[0x013B8A1C] ; mov eax,[eax+1Ch] ; ret`, after GetPlayerManager 0x00686D40 /
+    // PeekPlayerManager 0x00686D50 as in Ego_r 0x006B2130 / 0x006B2140; landed CTCLook rows 0x00751AD0 / 0x00753C70 spell it so).
+    const CMainGameComponent& PeekComponent() const;                     // 0x00686D60
+#endif
 public:
     CThing* ParentThing;                                                 // +0x04
     bool    ToBeRemoved;                                                 // +0x08

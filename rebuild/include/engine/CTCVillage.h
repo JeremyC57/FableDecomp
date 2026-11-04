@@ -25,6 +25,14 @@ class CVillageTaskSecuritySweep; class CVillageTaskCarryCrate;
 class CTCVillage : public CTCBase {
 public:
     void AddThingToVillage(CThing& thing);                   // 0x0065B854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
+    bool IsHeroCriminal();                                   // 0x0065BFCE ?IsHeroCriminal@CTCVillage@@QAE_NXZ (Ego_r; chunk 755 row 0x0091EA70)
+#ifdef FABLE_RETAIL_CTCVILLAGE_GUARDFOLLOW
+    // Nested opt-in (chunk 755, row 0x0090C540): Ego_r.pdb ?SetGuardFollowingPlayer@CTCVillage@@QAEXPAVCThingAICreature@@@Z (retail
+    // 0x0090C780, out of line) and FableWin.pdb ?GetGuardFollowingPlayer@CTCVillage@@QAEPAVCThingAICreature@@XZ (inline in
+    // retail: one GetPItem on the packed pointer at +0xBD, 0x0090C5CD). GuardFollowingPlayer stays opaque bytes here.
+    void SetGuardFollowingPlayer(CThingAICreature* guard);   // 0x0090C780
+    CThingAICreature* GetGuardFollowingPlayer() { return reinterpret_cast<CIntelligentPointer<CThingAICreature>*>(GuardFollowingPlayer)->Get(); }
+#endif
     __forceinline CDefPointer<const CVillageDef> GetPDef() const { return PDef; }   // FableWin ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (inline)
 #ifdef FABLE_RETAIL_CTCVILLAGE_CRATETASK
     // Chunk 754 (row 0x00943C20 CAIStateGroup_WorkInWarehouse::IsRunnable): Ego_r.pdb / FableWin.pdb

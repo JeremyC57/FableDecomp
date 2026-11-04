@@ -1,0 +1,22 @@
+catalog  00729bc0 CTCActionUseScriptedHook::ResolveEntranceConnectedTo -> CTCActionUseScriptedHook::SetUpPEntranceConnectedToFromUID
+catalog  00547050 UpdatePosition -> NUISystem::CScrollingComponent::UpdatePosition
+catalog  00a17690 HasBoundingBoxIntersectedFromTo -> CPhysicsMesh::HasBoundingBoxIntersectedFromTo
+catalog  00a3f250 CSoundManagerLH::vfunc_39 -> CSoundManagerLH::AddSound
+catalog  00c14f90 ~Unidentified -> PKCDeferredBank::~PKCDeferredBank
+catalog  0091ea70 IsAbleToFire -> CAIStateGroup_CreatureRangedCombat2::IsAbleToFire
+catalog  00729f60 OnInitialActivate -> CTCActionUseScriptedHook::OnInitialActivate
+catalog  0087ba90 OnInit -> NCameraModes::CScriptedControl::OnInit
+catalog  00775b40 FrameUpdate -> CTCShop::FrameUpdate
+catalog  008af500 AttemptToSpeak -> CombatDialogueManager::AttemptToSpeak
+catalog  0090c540 ?Update@CAIStateGroup_MinionGuardFollowPlayer@@UAEXXZ -> CAIStateGroup_MinionGuardFollowPlayer::Update
+catalog  00938280 ?AllocChairSittingMode@CAIStateGroup_UsesSeat@@MBEPAVCModeSitBase@NCreatureMode@@XZ -> CAIStateGroup_UsesSeat::AllocChairSittingMode
+manifest 00547050 CScrollingComponent::UpdatePosition -> NUISystem::CScrollingComponent::UpdatePosition
+manifest 00729bc0 CTCActionUseScriptedHook::ResolveEntranceConnectedTo -> CTCActionUseScriptedHook::SetUpPEntranceConnectedToFromUID
+manifest 00775350 _global::CTCShop_OnInitialActivate -> CTCShop::UpdateStock
+manifest 0087ba90 CScriptedControl::OnInit -> NCameraModes::CScriptedControl::OnInit
+manifest 0090c540 CAIStateGroup_MinionGuardFollowPlayer::?Update@CAIStateGroup_MinionGuardFollowPlayer@@UAEXXZ -> CAIStateGroup_MinionGuardFollowPlayer::Update
+manifest 00938280 CAIStateGroup_UsesSeat::?AllocChairSittingMode@CAIStateGroup_UsesSeat@@MBEPAVCModeSitBase@NCreatureMode@@XZ -> CAIStateGroup_UsesSeat::AllocChairSittingMode
+manifest 00957db0 CAIStateGroup_MinionBehaviourCrowdBase::CAIStateGroup_MinionBehaviourCrowdBase::Update -> CAIStateGroup_MinionBehaviourCrowdBase::Update
+manifest 00a3f250 CSoundManagerLH::CSoundManagerLH::vfunc_39 -> CSoundManagerLH::AddSound
+manifest 00c14f90 Unidentified_00c14f90::~Unidentified -> PKCDeferredBank::~PKCDeferredBank
+labels 20  catalog renamed 12  manifest renamed 9

@@ -28,6 +28,10 @@ public:
     unsigned char       _pad_0x10[0x4];                      // +0x10
     CMainGameComponent* Component;                           // +0x14
     CThingAICreature*   Creature;                            // +0x18
+#ifdef FABLE_RETAIL_CAIBRAIN_GETCREATURE
+    // Nested opt-in (chunk 755, row 0x0090C540): FableWin.pdb ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ (inline in retail).
+    CThingAICreature& GetCreature() const { return *Creature; }
+#endif
     CThingManager*      ThingManager;                        // +0x1c
     CPlayerManager*     PlayerManager;                       // +0x20
     CWorld*             World;                               // +0x24
@@ -52,6 +56,10 @@ FABLE_STATIC_ASSERT(sizeof(CAIBrain) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, Component) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, Creature) == 0x18);
+#if defined(FABLE_RETAIL_CAIBRAIN_GETCREATURE) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE) && defined(FABLE_ENGINE_CAISTATEGROUPBASE_H)
+// FableWin.pdb ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ (inline in retail), defined once both classes are complete.
+inline CThingAICreature& CAIStateGroupBase::GetCreature() const { return PBrain->GetCreature(); }
+#endif
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, ThingManager) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, PlayerManager) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, World) == 0x24);

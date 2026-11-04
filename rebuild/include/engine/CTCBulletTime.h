@@ -10,6 +10,8 @@ private: unsigned char _pad_0x0c[0x4c];
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_BULLET_TIME; } void PlayCreatureOnHitEffect(CThingCreatureBase*);
     void ImmediateCancel();                                              // 0x0079D020 ?ImmediateCancel@CTCBulletTime@@QAEXXZ (Ego_r + FableWin)
+    // chunk 755 (row 0x006A02B0): Ego_r.pdb / FableWin.pdb ?GetTimeMultiplier@CTCBulletTime@@QBEMXZ, out of line at 0x0079C740.
+    float GetTimeMultiplier() const;                                     // 0x0079C740
 };
 FABLE_STATIC_ASSERT(sizeof(CTCBulletTime)==0x58);
 

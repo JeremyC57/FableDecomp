@@ -40,6 +40,8 @@ public:
     // retail: the item read into a local, then SetPItem (0x00A01B50 then 0x00A01B90; the destination is formed after the read,
     // rows 0x00943C20 / 0x00945BD0), not the implicit member-wise copy of PData.
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
+    // Chunk 755 row 0x00729F60 (OnInitialActivate, 0x0072A061..0x0072A06E) also uses this form; some TUs keep an out-of-line
+    // copy (0x004A9760).
 #endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
     // Chunk 754 (row 0x0082A890 CMiniMapDisplay::AddMarker): FableWin.pdb ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z, inline in

@@ -9626,7 +9626,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00546f40	CScrollingComponent	NUISystem::CScrollingComponent	__thiscall	undefined	2	CComponentContainer *,long	0	yes	accepted									
 00546fc0	Update	NUISystem::CScrollingComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00547010	ChangeState	NUISystem::CScrollingComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00547050	UpdatePosition	CScrollingComponent	__thiscall	void	2	CScrollingComponent *,float	1	yes	accepted									
+00547050	UpdatePosition	NUISystem::CScrollingComponent	__thiscall	void	2	CScrollingComponent *,float	1	yes	accepted									
 00547160	Initialise	NUISystem::CScrollingComponent	__thiscall	void	1	CScrollingComponent *	1	yes	accepted									
 00547240	NUISystem::CScrollingComponent::vfunc_0	NUISystem::CScrollingComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00547250	NUISystem::CScrollingComponent::vfunc_0	NUISystem::CScrollingComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -18990,7 +18990,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00729a50	~CTCActionUseScriptedHook	CTCActionUseScriptedHook	__thiscall	void	1	CTCActionUseScriptedHook *	1	yes	accepted									
 00729a90	CTCActionUseScriptedHook	CTCActionUseScriptedHook	__thiscall	undefined	2	CTCActionUseScriptedHook *,CThing *	0	yes	accepted									
 00729b20	OnActionUse	CTCActionUseScriptedHook	__thiscall	void	2	CTCActionUseScriptedHook *,CThing *	1	yes	accepted									
-00729bc0	ResolveEntranceConnectedTo	CTCActionUseScriptedHook	__thiscall	void	1	CTCPreCalculatedNavigationRoute *	1	yes	accepted									
+00729bc0	SetUpPEntranceConnectedToFromUID	CTCActionUseScriptedHook	__thiscall	void	1	CTCPreCalculatedNavigationRoute *	1	yes	accepted									
 00729c30	SetEntranceAsLocked	CTCActionUseScriptedHook	__thiscall	void	2	CTCActionUseScriptedHook *,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CTCActionUseScriptedHook_SetEntranceAsLocked_00729c30.cpp
 00729c50	GetRegionEntranceName	CTCActionUseScriptedHook	__thiscall	CCharString *	1	CTCActionUseScriptedHook *	1	yes	accepted									
 00729ca0	GetRegionEntranceDisplayName	CTCActionUseScriptedHook	__thiscall	CCharString *	1	CTCActionUseScriptedHook *	1	yes	accepted									
@@ -20891,7 +20891,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00774c60	StockDisplay	CTCShop	__thiscall	void	1	CTCShop *	1	yes	accepted									
 00774d20	CTCShop_SellHighlightedItem	_global	unknown	undefined	0		0	yes	accepted									
 007751a0	SetShopKeeper	CTCShop	__thiscall	void	2	CTCShop *,CThingCreatureBase *	1	yes	accepted									
-00775350	CTCShop_OnInitialActivate	_global	unknown	undefined	0		0	yes	accepted									
+00775350	UpdateStock	CTCShop	unknown	undefined	0		0	yes	accepted									
 00775b20	OnInitialActivate	CTCShop	__thiscall	void	1	CTCShop *	1	yes	accepted									
 00775b40	FrameUpdate	CTCShop	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00775c60	OnSerialise	CTCShop	unknown	undefined	0		0	yes	accepted									
@@ -26156,7 +26156,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0087b9f0	GetPointType<CTCCameraPointFixedPoint>	CTCCameraPointDefinitionBase	__thiscall	bool	2	CTCCameraPointDefinitionBase *,CTCCameraPointFixedPoint * *	1	yes	accepted									
 0087ba30	GetDefaultFOV	NCameraModes::CScriptedControl	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0087ba60	GetDefaultRollAngle	NCameraModes::CScriptedControl	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0087ba90	OnInit	CScriptedControl	__thiscall	void	1	CScriptedControl *	1	yes	accepted									
+0087ba90	OnInit	NCameraModes::CScriptedControl	__thiscall	void	1	CScriptedControl *	1	yes	accepted									
 0087bbc0	Update	NCameraModes::CScriptedControl	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0087bbf0	OnDie	NCameraModes::CScriptedControl	__thiscall	void	1	CScriptedControl *	1	yes	accepted									
 0087bd20	UpdateDesiredPos	NCameraModes::CDead	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -30987,7 +30987,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0090c190	IsStillValid	CAIStateGroup_MinionGuardFollowPlayer	__thiscall	bool	1	CAIStateGroup_MinionGuardFollowPlayer *	1	yes	accepted									
 0090c1a0	IsRunnable	CAIStateGroup_MinionGuardFollowPlayer	__thiscall	bool	1	CAIStateGroup_MinionGuardFollowPlayer *	1	yes	accepted									
 0090c2d0	IsStillValidInternal	CAIStateGroup_MinionGuardFollowPlayer	__thiscall	bool	2	CAIStateGroup_MinionGuardFollowPlayer *,bool	1	yes	accepted									
-0090c540	?Update@CAIStateGroup_MinionGuardFollowPlayer@@UAEXXZ	CAIStateGroup_MinionGuardFollowPlayer	__thiscall	void	1	CAIStateGroup_MinionGuardFollowPlayer *	1	yes	accepted									
+0090c540	Update	CAIStateGroup_MinionGuardFollowPlayer	__thiscall	void	1	CAIStateGroup_MinionGuardFollowPlayer *	1	yes	accepted									
 0090c670	OnReplace	CAIStateGroup_MinionGuardFollowPlayer	__thiscall	void	1	CAIStateGroup_MinionGuardFollowPlayer *	1	yes	accepted									
 0090c780	SetGuardFollowingPlayer	CTCVillage	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
 0090c7e0	GetTimeToInitiate	CAIStateGroup_MinionGossip	__thiscall	long	1	CAIStateGroup_MinionGossip *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupMinionGossip_GetTimeToInitiate_0090c7e0.cpp
@@ -31720,7 +31720,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00938230	vfunc_1	NCreatureMode::CModeSitChairSleeping	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00938240	vfunc_4	NCreatureMode::CModeSitChairSleeping	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00938250	`scalar_deleting_destructor'	NCreatureMode::CModeSitChairSleeping	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\93\CEngineSubPrimitiveText_scalardeletingdestructor_00938250.cpp
-00938280	?AllocChairSittingMode@CAIStateGroup_UsesSeat@@MBEPAVCModeSitBase@NCreatureMode@@XZ	CAIStateGroup_UsesSeat	__thiscall	CModeSitBase *	1	CAIStateGroup_UsesSeat *	1	yes	accepted									
+00938280	AllocChairSittingMode	CAIStateGroup_UsesSeat	__thiscall	CModeSitBase *	1	CAIStateGroup_UsesSeat *	1	yes	accepted									
 00938380	SitInSeat	CAIStateGroup_UsesSeat	__thiscall	bool	1	CAIStateGroup_UsesSeat *	1	yes	accepted									
 00938580	IsSeatValid	CAIStateGroup_UsesSeat	__thiscall	bool	1	CAIStateGroup_UsesSeat *	1	yes	accepted									
 009385f0	MoveToSeat	CAIStateGroup_UsesSeat	__thiscall	bool	2	CAIStateGroup_UsesSeat *,EMovementType	1	yes	accepted									
@@ -32276,7 +32276,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00957bb0	Initialise	CAIStateGroup_MinionBehaviourCrowdBase	__thiscall	void	6	CAIStateGroup_MinionBehaviourCrowdBase *,CAIBrain *,CThingAICreature *,long,EScriptAIPriority,CCharString *	1	yes	accepted									
 00957be0	Cleanup	CAIStateGroup_MinionBehaviourCrowdBase	__thiscall	void	1	CAIStateGroup_MinionBehaviourCrowdBase *	1	yes	accepted									
 00957c30	?IsRunnable@CAIStateGroup_MinionBehaviourCrowdBase@@UAE_NXZ	CAIStateGroup_MinionBehaviourCrowdBase	__thiscall	bool	1	CAIStateGroup_MinionBehaviourCrowdBase *	1	yes	accepted									
-00957db0	CAIStateGroup_MinionBehaviourCrowdBase::Update	CAIStateGroup_MinionBehaviourCrowdBase	__thiscall	void	1	CAIStateGroup_MinionBehaviourCrowdBase *	1	yes	accepted									
+00957db0	Update	CAIStateGroup_MinionBehaviourCrowdBase	__thiscall	void	1	CAIStateGroup_MinionBehaviourCrowdBase *	1	yes	accepted									
 00957f20	IsRunnable	CAIStateGroup_MinionReactToBurglary	__thiscall	bool	1	CAIStateGroup_MinionReactToBurglary *	1	yes	accepted									
 00958000	Update	CAIStateGroup_MinionReactToBurglary	__thiscall	void	1	CAIStateGroup_MinionReactToBurglary *	1	yes	accepted									
 009580d0	Initialise	CAIStateGroup_MinionReactToTrespassing	__thiscall	void	6	CAIStateGroup_MinionReactToTrespassing *,CAIBrain &,CThingAICreature &,long,EScriptAIPriority,CCharString const &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\95\CAIStateGroupMinionReactToTrespassing_Initialise_009580d0.cpp
@@ -36820,7 +36820,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a3eed0	vfunc_40	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a3ef00	CSoundManagerLH	CSoundManagerLH	unknown	undefined	0		0	yes	accepted									
 00a3f140	AddBank	CSoundManagerLH	unknown	undefined	0		0	yes	accepted									
-00a3f250	CSoundManagerLH::vfunc_39	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00a3f250	AddSound	CSoundManagerLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a3f340	CParticleMorphs_CommitChanges	_global	unknown	undefined	0		0	yes	accepted									
 00a3f470	Dtor_CCharStringBase_00a3f470	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a3f470.cpp
 00a3f700	ScalarDeletingDtor_00a3f700	_global	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CEngineSubPrimitiveText_scalardeletingdestructor_00a3f700.cpp
@@ -44084,7 +44084,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c14d80	OnActivate_00c14d80	_unattributed	__thiscall	void	1	CActionSummonerLightningAttackTarget *	1	yes	accepted									
 00c14dd0	CActionSummonerLightningAttackTarget_OnMapLoadComplete	_global	unknown	undefined	0		0	yes	accepted									
 00c14e40	PKCDeferredBank	PKCDeferredBank	unknown	undefined	0		0	yes	accepted									
-00c14f90	~Unidentified	Unidentified_00c14f90	unknown	undefined	0		0	yes	accepted									
+00c14f90	~PKCDeferredBank	PKCDeferredBank	unknown	undefined	0		0	yes	accepted									
 00c15090	ScalarDeletingDtor_00c15090	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CLandscapeBackgroundPatch_vectordeletingdestructor_00c15090.cpp
 00c150b0	ScalarDeletingDtor_00c150b0	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CLandscapeBackgroundPatch_vectordeletingdestructor_00c150b0.cpp
 00c15100	SetMemberConst_00c15100	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CBase_CBase_00c15100.cpp

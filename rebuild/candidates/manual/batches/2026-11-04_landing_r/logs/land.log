@@ -1,0 +1,49 @@
+addr       parity           behav  name
+00547050   RELOCATION_MATCH PASS   UpdatePosition
+00a17690   RELOCATION_MATCH PASS   HasBoundingBoxIntersectedFromTo
+00a3f250   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00a3f250   RELOCATION_MATCH PASS   AddSound
+00c14f90   WARN RELOC_NAME: ??1CDiceController@@QAE@XZ -> 00c2be10 labelled 'CLineCountedMemoryDataOutputStream::Clear'
+00c14f90   WARN RELOC_NAME: ??1CDiceGameState@@QAE@XZ -> 00c2a9b0 labelled 'CVtable_012b1ab0::CVtable_012b1ab0'
+00c14f90   RELOCATION_MATCH[/EHsc] PASS   ~PKCDeferredBank
+0091ea70   RELOCATION_MATCH PASS   IsAbleToFire
+00729f60   WARN RELOC_NAME: ?SetUpPEntranceConnectedToFromUID@CTCActionUseScriptedHook@@AAEXXZ -> 00729bc0 labelled 'CTCActionUseScriptedHook::ResolveEntranceConnectedTo'
+00729f60   RELOCATION_MATCH PASS   OnInitialActivate
+0087ba90   WARN SHARED_HEADER_AVAILABLE C3DVector
+0087ba90   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0087ba90   WARN SHARED_HEADER_AVAILABLE CCamera
+0087ba90   WARN SHARED_HEADER_AVAILABLE CThing
+0087ba90   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0087ba90   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0087ba90   RELOCATION_MATCH PASS   OnInit
+00775b40   WARN RELOC_NAME: ?UpdateStock@CTCShop@@QAEXXZ -> 00775350 labelled 'CTCShop_OnInitialActivate'
+00775b40   RELOCATION_MATCH PASS   FrameUpdate
+008af500   RELOCATION_MATCH PASS   AttemptToSpeak
+0090c540   RELOCATION_MATCH PASS   Update
+00938280   RELOCATION_MATCH PASS   AllocChairSittingMode
+
+WINS: 11
+  00547050 RELOCATION_MATCH NUISystem::CScrollingComponent::?UpdatePosition@CScrollingComponent@NUISystem@@UAEXM@Z
+  00a17690 RELOCATION_MATCH CPhysicsMesh::?HasBoundingBoxIntersectedFromTo@CPhysicsMesh@@QBE_NMABVC3DVector@@0@Z
+  00a3f250 RELOCATION_MATCH CSoundManagerLH::?AddSound@CSoundManagerLH@@
+  00c14f90 RELOCATION_MATCH[/EHsc] PKCDeferredBank::??1PKCDeferredBank@@UAE@XZ
+  0091ea70 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombat2::?IsAbleToFire@CAIStateGroup_CreatureRangedCombat2@@ABE_NXZ
+  00729f60 RELOCATION_MATCH CTCActionUseScriptedHook::?OnInitialActivate@CTCActionUseScriptedHook@@UAEXXZ
+  0087ba90 RELOCATION_MATCH NCameraModes::CScriptedControl::?OnInit@CScriptedControl@NCameraModes@@UAEXXZ
+  00775b40 RELOCATION_MATCH CTCShop::?FrameUpdate@CTCShop@@UAEXXZ
+  008af500 RELOCATION_MATCH CombatDialogueManager::?AttemptToSpeak@CombatDialogueManager@@AAEXXZ
+  0090c540 RELOCATION_MATCH CAIStateGroup_MinionGuardFollowPlayer::?Update@CAIStateGroup_MinionGuardFollowPlayer@@UAEXXZ
+  00938280 RELOCATION_MATCH CAIStateGroup_UsesSeat::?AllocChairSittingMode@CAIStateGroup_UsesSeat@@MBEPAVCModeSitBase@NCreatureMode@@XZ
+
+LANDED 11 wins into src/compiled + tests + catalog + oracle
+  NUISystemCScrollingComponent_UpdatePosition_00547050
+  CPhysicsMesh_HasBoundingBoxIntersectedFromTo_00a17690
+  CSoundManagerLH_AddSound_00a3f250
+  PKCDeferredBank_PKCDeferredBank_00c14f90
+  CAIStateGroupCreatureRangedCombat2_IsAbleToFire_0091ea70
+  CTCActionUseScriptedHook_OnInitialActivate_00729f60
+  NCameraModesCScriptedControl_OnInit_0087ba90
+  CTCShop_FrameUpdate_00775b40
+  CombatDialogueManager_AttemptToSpeak_008af500
+  CAIStateGroupMinionGuardFollowPlayer_Update_0090c540
+  CAIStateGroupUsesSeat_AllocChairSittingMode_00938280

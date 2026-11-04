@@ -1,0 +1,17 @@
+header	macro	landed_includers	hdrcheck2	impact
+engine/C2DVector.h	FABLE_RETAIL_C2DVECTOR (adds operator/ and operator*=)	5 include the header; 16 define the macro	default=same	unused inline members only: no landed bytes change
+engine/CTCVillage.h	FABLE_RETAIL_CTCVILLAGE (IsHeroCriminal decl) + nested FABLE_RETAIL_CTCVILLAGE_GUARDFOLLOW	28 include; 2 define FABLE_RETAIL_CTCVILLAGE	default=same, _GUARDFOLLOW=same, FABLE_RETAIL_CTCVILLAGE=DIFF(cpp-err) from the declaration only	a declaration-only addition in the retail branch: no landed bytes change
+engine/CTCBase.h	nested FABLE_RETAIL_CTCBASE_COMPONENT	314	default=same, FABLE_RETAIL_CTCBASE=same	none (opt-in)
+engine/CThing.h	nested FABLE_RETAIL_CTHING_SCRIPTSUPERVISION	26	all macros same	none (opt-in)
+engine/CAIStateGroupBase.h	nested FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS / _GETCREATURE	167	all macros same	none (opt-in)
+engine/CAIBrain.h	new FABLE_RETAIL_CAIBRAIN_GETCREATURE	89	default=same	none (opt-in)
+engine/CMainGameComponent.h	nested _PLAYERMANAGER / _WORLD / _WORLDFRAME	2	all macros same	none (opt-in)
+engine/CPlayerGui.h	nested FABLE_RETAIL_CPLAYERGUI_CRIME	23	all macros same	none (opt-in)
+engine/CIntelligentPointer.h	nested FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN	14	all macros same	none (opt-in)
+engine/CTCTargeted.h	FABLE_RETAIL_CTCTARGETED additions	30	default=same, FABLE_RETAIL_CTCBASE=same	none
+engine/CTCShop.h	new FABLE_RETAIL_CTCSHOP	1	default=same	none (opt-in)
+engine/CTCTalk.h	new FABLE_RETAIL_CTCTALK	1	default=same	none (opt-in)
+engine/CombatDialogueManager.h	new FABLE_RETAIL_COMBATDIALOGUEMANAGER	0	default=same	none (opt-in)
+engine/CTCHaste.h	new FABLE_RETAIL_CTCHASTE	1	default=same	none (opt-in; parked row only)
+engine/CTCBulletTime.h	FABLE_RETAIL_CTCBULLETTIME GetTimeMultiplier decl	9	default=same	declaration only
+engine/CTCCreatureModeManager.h	new FABLE_RETAIL_CTCCREATUREMODEMANAGER	2	default=same	none (opt-in; parked row only)

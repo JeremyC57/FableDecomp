@@ -29,6 +29,17 @@ public:
     long GetCurrentBuyPrice(long,long) const;
     std::vector<GoodsPlace> GetFreeSaleItemPlaces(bool);
     void AddSaleItem(long,const GoodsPlace&);
+#ifdef FABLE_RETAIL_CTCSHOP
+    // Retail opt-in (chunk 755, row 0x00775B40 FrameUpdate): Ego_r.pdb public members called by FrameUpdate, all out of line in
+    // retail (declarations only, no layout change): ?SetAlarm@CTCShop@@QAEX_N@Z 0x00773C90, ?RemoveStockItemsFromShop@CTCShop@@QAEXXZ
+    // 0x00773E10, ?UpdateStock@CTCShop@@QAEXXZ 0x00775350 (the stock rebuild OnInitialActivate 0x00775B20 tail-jumps to),
+    // ?IsPermanentlyStocked@CTCShop@@QBE_NXZ 0x007721A0, ?StockDisplay@CTCShop@@QAEXXZ 0x00774C60 (all landed but UpdateStock).
+    void SetAlarm(bool);                                                 // 0x00773C90
+    void RemoveStockItemsFromShop();                                     // 0x00773E10
+    void UpdateStock();                                                  // 0x00775350
+    bool IsPermanentlyStocked() const;                                   // 0x007721A0
+    void StockDisplay();                                                 // 0x00774C60
+#endif
 private:
     CIntelligentPointer<CThingCreatureBase> PShopKeeper;
     std::vector<CIntelligentPointer<CThingCreatureBase> > Shoppers;

@@ -167,6 +167,11 @@ public:
     // ?SetPersistOnUnloadWhenInLimbo@CThing@@QAEX_N@Z (0x0215EDB0, emitted in the CTCVillage TU right after AddThingToVillage;
     // retail `or byte ptr [esi+92h],40h` = bit 14 of the +0x91 bitfield run). Declarations with bodies only: no layout change.
     bool HasScriptThing() const;                                 // 0x004C7E70
+#ifdef FABLE_RETAIL_CTHING_SCRIPTSUPERVISION
+    // Nested opt-in (chunk 755, row 0x00938280 CAIStateGroup_UsesSeat::AllocChairSittingMode): Ego_r.pdb 0x004C9A40
+    // ?IsUnderScriptSupervision@CThing@@QBE_NXZ, out of line in retail at 0x004C7E90 (after HasScriptThing 0x004C7E70).
+    bool IsUnderScriptSupervision() const;                       // 0x004C7E90
+#endif
     // Chunk 732 (row 0x006AA2E0): Ego_r.pdb / FableWin.pdb ?PeekComponent@CThing@@QBEABVCMainGameComponent@@XZ, out of line in
     // retail at 0x004C7A70 (the only PDB spelling; the landed CMainGameComponentFontView / AUCMainGameComponent forms are invented).
     const CMainGameComponent& PeekComponent() const;             // 0x004C7A70

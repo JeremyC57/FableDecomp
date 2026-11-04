@@ -12,6 +12,12 @@ class CGame;
 class CGameDefinitionManager;
 #endif
 class CASoundBank;
+#if defined(FABLE_RETAIL_CMAINGAMECOMPONENT) && defined(FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER)
+class CPlayerManager;
+#endif
+#if defined(FABLE_RETAIL_CMAINGAMECOMPONENT) && defined(FABLE_RETAIL_CMAINGAMECOMPONENT_WORLD)
+class CWorld;
+#endif
 class CMainGameComponentInit;
 class CMainGameComponent : public CGameComponent {
 protected:
@@ -70,6 +76,23 @@ public:
     // ?PeekDefinitionManager@CMainGameComponent@@QBEABVCGameDefinitionManager@@XZ, out of line in retail (the jmp thunk 0x00415FBC
     // every caller calls, the only spelling bound there). A declaration only: no layout or vtable change.
     const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
+    // Nested opt-in (chunk 755, row 0x00775B40 CTCShop::FrameUpdate): FableWin.pdb ?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ
+    // (0x018846C0; inline in Ego_r and retail: the caller reads the scoped_ptr word +0x1C in place, 0x00775B4B). PPlayerManager
+    // stays opaque here (boost::scoped_ptr<CPlayerManager>, one pointer word), read as that word.
+    const CPlayerManager& PeekPlayerManager() const { return **reinterpret_cast<CPlayerManager* const*>(PPlayerManager); }
+#endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_WORLD
+    // Nested opt-in (chunk 755, row 0x0090C540 CAIStateGroup_MinionGuardFollowPlayer::Update): FableWin.pdb
+    // ?PeekWorld@CMainGameComponent@@QBEABVCWorld@@XZ (0x0187EFF0; inline in Ego_r and retail: the caller reads the scoped_ptr word
+    // +0x24 in place, 0x0090C55D). PWorld stays opaque here (boost::scoped_ptr<CWorld>, one pointer word), read as that word.
+    const CWorld& PeekWorld() const { return **reinterpret_cast<CWorld* const*>(PWorld); }
+#endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_WORLDFRAME
+    // Nested opt-in (chunk 755, row 0x008AF500 CombatDialogueManager::AttemptToSpeak): Ego_r.pdb
+    // ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ, out of line in retail at 0x004167C8 (landed rows 0x008AF5F0 / 0x00751AD0).
+    long GetCurrentWorldFrame() const;                             // 0x004167C8
+#endif
 #endif
     CMainGameComponent(CGame&,const CMainGameComponentInit&);
     virtual ~CMainGameComponent();
