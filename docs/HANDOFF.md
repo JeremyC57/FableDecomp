@@ -15,7 +15,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   `$S/w22/BRIEF_738.md`, work in `$S/w22/chunk73{8,9}`, `chunk740`. 739 landed 2 of 5 (`batches/2026-11-04_landing_a/`), 740 3 of 5 (`_landing_b/`), 738 3 of 5 (`_landing_c/`), 741 2 of 5 (`_landing_d/`), 743 11 of 11 + 4 Vorbis re-models (`_landing_e/`), 742 2 of 6 (`_landing_f/`); rest staged in
   `pending/2026-11-04_linux_hand73{8,9}/`, `_hand74{0,1,2,3}/`. 744 (CQ_HangingTreeGoodScript) landed 1 of 5 + the GetGuardsHealth
   respelling (`_landing_g/`), 745 (CV_HeroDuelScript) 4 of 4 (`_landing_h/`), 746 (MurderTwist sheriff/guard) 4 of 5 (`_landing_i/`); staged in `pending/2026-11-04_linux_hand74{4,5,6}/`.
-- **Running when this page was written:** chunk 747 = retry of the 65
+- **Running when this page was written:** chunk 748 = retry of the 8 hand-SSE parks (`$S/w22/chunk748`, brief `$S/w22/BRIEF_748.md`: C++, then intrinsics, then macro/function isolation) and chunk 747 = retry of the 65
   parked bare-`fistp` rows with the isolated helpers (`$S/w22/chunk747`, brief `$S/w22/BRIEF_747.md`, rows from `$S/asmcand.json`
   "fistp", oracle `$S/batch/chunk747_oracle.tsv`; its mirror is HEAD ab98c12c3). Check each dir's STATUS.tsv / NOTES.md / payload.json,
   then land. Next asm-rule work after 747: the 9 hand SSE/MMX parks (need new isolated helpers with C++ fallbacks, e.g. 0x00988E80,

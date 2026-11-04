@@ -26519,3 +26519,11 @@ chunk	address	module	name	length
 747	00f36010	retry_fistp	GetGaussian2DNoise	442
 747	00f361d0	retry_fistp	Get3DNoise	873
 747	00f36540	retry_fistp	GetGaussian2DNoise	321
+748	00988e80	retry_simd	UpdateLocalisedSphereMapping	917
+748	00989230	retry_simd	UpdateObjectSpaceTextureTransform	636
+748	00a9d480	retry_simd	PostScale	243
+748	00a9d580	retry_simd	PostScale	221
+748	00a9d750	retry_simd	ApplyBoneMorphScaling	551
+748	00adf960	retry_simd	SatisfyDistanceConstraints	766
+748	00ae1320	retry_simd	ClingToMesh	681
+748	00ae29d0	retry_simd	SetupSimulation	726
