@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-04 (chunk authoring; rounds 2026-11-04a..j landed; chunk 748 running)
+# Resume here (one page) — updated 2026-11-04 (chunk authoring; rounds 2026-11-04a..k landed; Anniversary naming agents running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -17,16 +17,15 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   respelling (`_landing_g/`), 745 (CV_HeroDuelScript) 4 of 4 (`_landing_h/`), 746 (MurderTwist sheriff/guard) 4 of 5 (`_landing_i/`); staged in `pending/2026-11-04_linux_hand74{4,5,6}/`.
 - 747 (retry of the 65 parked bare-fistp rows) landed 11 as retail_asm (`_landing_j/`), 17 parked + 37 deferred in
   `pending/2026-11-04_linux_hand747/` (per-site C++/intrinsic/macro attempts table there).
-- **Running when this page was written:** chunk 748 = retry of the 8 hand-SSE parks (`$S/w22/chunk748`, brief `$S/w22/BRIEF_748.md`:
-  C++, then intrinsics, then macro/function isolation; mirror HEAD 4e108b875). Next asm-rule work: de-bake the 13 landed asm_bake rows
-  (e.g. 0x0042DF9E, 0x005BD993, 0x00899EF0); the 10 LTCG reg-arg parks (pure C++ via same-TU static callees); the 45 mislabelled
-  "asm-impossible" parks belong in the normal retry pool.
+- 748 (8 hand-SSE parks) landed 1 via the new macro isolation headers (`_landing_k/`); the other 7 have exact SSE blocks and x87/frame
+  residue (`pending/2026-11-04_linux_hand748/`). Next asm-rule work: de-bake the 13 landed asm_bake rows (e.g. 0x0042DF9E, 0x005BD993,
+  0x00899EF0) with the same order (C++, intrinsics, macro vs function isolation); the 10 LTCG reg-arg parks (pure C++).
 - Fable Anniversary exe (owner-supplied): names for TLC's RTTI-less vtables, `docs/re_reference/FABLE_ANNIVERSARY.md`; 17 high-confidence classes applied
   (63 names, `naming/2026-11-04_anniversary/`; 45 landed respellings queued land0411k). Running: medium/low verification (`$S/anniv/wave2/`)
   and TLC-internal Alloc-registration naming of the remaining placeholders (`$S/anniv/wave3/`).
 - Coverage (refresh with `tools/write_decomp_dashboard.py` then `tools/update_readme_progress.py`; never hand-edit):
-  46,593 genuine of the 49,564-function catalog (94.01%), 56.68% of retail function bytes, 54,145 landed rows (206 retail_asm),
-  after landing 2026-11-04j. Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`, `2026-11-04_landing_a/` .. `_landing_h/`.
+  46,594 genuine of the 49,564-function catalog (94.01%), 56.69% of retail function bytes, 54,146 landed rows (207 retail_asm),
+  after landing 2026-11-04k. Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`, `2026-11-04_landing_a/` .. `_landing_h/`.
 - `// Revisit: inline-depth` rows: 65 (129 at the start of the day). Mechanism, levers and why the 65 are left:
   `docs/pipeline/INLINE_DEPTH_REVISIT.md`; research `batches/2026-11-03_inline_split_research/`, `_inline_revisit2/`, `_inline_revisit3/`.
 - Codex: pass 13 landed 47 of 51 (`batches/2026-11-03_codex_pass13_landing/`; data names for `cvdump` in its NAME_DECISIONS.tsv);

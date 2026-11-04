@@ -1,0 +1,12 @@
+address	name	evidence
+00a9d480	CMatrix4x4::AlignedPreScale	landing 2026-11-04k (chunk 748): FableWin.pdb + Ego_r.pdb; row-broadcast SSE kernel, ret 4
+00a9d580	CMatrix4x4::AlignedPreScaleTransposed	landing 2026-11-04k (chunk 748): FableWin.pdb + Ego_r.pdb; column SSE kernel, ret 4; RELOCATION_MATCH chunk 748
+00a9d750	C3DAnimationManager::ApplyBoneMorphScaling	landing 2026-11-04k (chunk 748): FableWin.pdb + Ego_r.pdb; ret 10h, both Aligned* members inlined
+00988e80	CShaderRenderManager::UpdateLocalisedSphereMapping	landing 2026-11-04k (chunk 748): FableWin.pdb + Ego_r.pdb (private)
+00989230	CShaderRenderManager::UpdateObjectSpaceTextureTransform	landing 2026-11-04k (chunk 748): FableWin.pdb + Ego_r.pdb (private)
+00adf610	CParticleSimulation::CopyFrom	landing 2026-11-04k (chunk 748): FableWin.pdb + Ego_r/Ego_d; replaces InitializeFromTemplate / Init
+00adf960	CParticleSimulation::SatisfyDistanceConstraints	landing 2026-11-04k (chunk 748): FableWin.pdb + Ego_r.pdb (private), ret 8
+00ae1320	CParticleProgram::ClingToMesh	landing 2026-11-04k (chunk 748): FableWin.pdb + Ego_r.pdb (5-arg private const), ret 14h
+00ae29d0	CParticleProgram::SetupSimulation	landing 2026-11-04k (chunk 748): FableWin.pdb + Ego_r.pdb (7-arg public const), ret 1Ch
+00ae2510	CParticleProgram::ApplyConstraints	landing 2026-11-04k (chunk 748): FableWin.pdb + Ego_r.pdb; replaces ParticleProgram_ExecuteLooped
+00ae0540	CParticleProgram::GetVectorBuffer	landing 2026-11-04k (chunk 748): FableWin.pdb + Ego_r.pdb (already labelled; drop GetGroupVectorBuffer duplicate at this address)

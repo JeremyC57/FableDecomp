@@ -29,6 +29,12 @@
 #include "engine/C3DTriangle2.h"
 #include "engine/C3DQuad2.h"
 class CMatrix3x4;
+class CMatrix4x4;
+class C3DGroup2;
+class C3DAnimationBlendState;
+class C3DAnimationManager;
+class C3DMesh2;
+class CParticleContext;
 class CParticleDistanceConstraint;
 class CParticleProgram : public CMovableResource {
 public:
@@ -39,7 +45,17 @@ public:
     CParticleSimulation& GetInitialSimulation() { return InitialSimulation; }
     void ApplyTransform(const CMatrix3x4&);
     void OptimiseSpringOrder(CArray<CParticleDistanceConstraint>&) const;
+    // Chunk 748 (FableWin.pdb spellings; the skinned set-up / cling rows 0x00AE29D0 / 0x00AE1320 and their callees):
+    bool SetupSimulation(CParticleSimulation& simulation, const C3DAnimationBlendState& blend_state, C3DAnimationManager& animation_manager,
+                         const C3DVector* position, const C3DMesh2& mesh, CMovableResourceMemoryPool& pool, const CParticleContext& context) const;
 private:
+    static CMatrix4x4* __fastcall GetMatrixBuffer(unsigned long count);   // 0x00AE04E0 ?GetMatrixBuffer@CParticleProgram@@CIPAVCMatrix4x4@@K@Z
+    static C4DVector* __fastcall GetVectorBuffer(unsigned long count);    // 0x00AE0540 ?GetVectorBuffer@CParticleProgram@@CIPAVC4DVector@@K@Z
+    void TransformVertices(C4DVector* out, const C4DVector* in, unsigned long count, const CMatrix4x4* matrices,
+                           const CArray<C3DGroup2>& groups) const;        // 0x00AE0E60
+    void ApplyConstraints(CParticleSimulation& simulation, long iterations, float time_delta) const;   // 0x00AE2510
+    void ClingToMesh(CParticleSimulation& simulation, const C3DAnimationBlendState& blend_state, C3DAnimationManager& animation_manager,
+                     const C3DVector* position, const C3DMesh2& mesh) const;   // 0x00AE1320
     void CalculateAveragePatchSize(const CParticleSimulation&);
     CParticleSimulation InitialSimulation;                   // +0x08
     unsigned char ExportParticles[16];                       // +0x88 CVectorMap<CCharString,unsigned long,CKeyPairCompareLess<CCharString,unsigned long> >
@@ -55,6 +71,7 @@ private:
     bool BezierEnable;                                       // +0xF4
     float AveragePatchSize;                                  // +0xF8
     unsigned char SimGroups[12];                             // +0xFC CArray<C3DGroup2>
+    const CArray<C3DGroup2>& PeekSimGroups() const { return *reinterpret_cast<const CArray<C3DGroup2>*>(SimGroups); }   // chunk 748
     unsigned char NonSimGroups[12];                          // +0x108 CArray<C3DGroup2>
     CMemoryDataOutputStream Constraints;                     // +0x114
     unsigned char LoopStack[12];                             // +0x12C CArray<CParticleProgram::CLoopBegin>

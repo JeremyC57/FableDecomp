@@ -19,6 +19,9 @@
 #include "engine/C4DVector.h"
 #include "engine/C3DBoundingBox.h"
 class CParticleSimulationRenderData;
+#ifdef FABLE_RETAIL_CPARTICLESIMULATION
+class CParticleDistanceConstraint;
+#endif
 class CMovableResourceMemoryPool;
 class CParticleSimulation : public CMovableResource {
     friend class CParticleProgram;
@@ -31,6 +34,15 @@ public:
     C3DVector GetParticlePosition(unsigned long index) const { return Positions[index].ToC3DVector(); }
     const C4DVector* PeekParticlePositions() const { return Positions; }
     void SetParticlePosition(unsigned long index,const C3DVector& vect) { Positions[index].Initialise(vect,1.0f); }
+#ifdef FABLE_RETAIL_CPARTICLESIMULATION
+    // Chunk 748: FableWin.pdb ?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z, retail 0x00ADF610
+    // (called by CParticleProgram::SetupSimulation 0x00AE29D0 with the program's InitialSimulation).
+    bool CopyFrom(const CParticleSimulation& other, CMovableResourceMemoryPool& pool);
+private:
+    // FableWin.pdb ?SatisfyDistanceConstraints@CParticleSimulation@@AAEXPBVCParticleDistanceConstraint@@K@Z, retail 0x00ADF960.
+    void SatisfyDistanceConstraints(const CParticleDistanceConstraint* constraints, unsigned long count);
+public:
+#endif
     CCountedPointer<CParticleSimulationRenderData> RenderData;
 protected:
     float Timestep;

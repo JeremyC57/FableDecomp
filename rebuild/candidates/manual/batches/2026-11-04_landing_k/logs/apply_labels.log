@@ -1,0 +1,6 @@
+catalog  00adf610 CParticleSimulation::InitializeFromTemplate -> CParticleSimulation::CopyFrom
+catalog  00a9d580 PostScale -> CMatrix4x4::AlignedPreScaleTransposed
+manifest 00a9d480 CMatrix3x4::PostScale -> CMatrix4x4::AlignedPreScale
+manifest 00a9d580 CMatrix3x4::PostScale -> CMatrix4x4::AlignedPreScaleTransposed
+manifest 00adf610 CParticleSimulation::InitializeFromTemplate -> CParticleSimulation::CopyFrom
+labels 11  catalog renamed 2  manifest renamed 3

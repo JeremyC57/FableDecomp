@@ -38702,8 +38702,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a9d3a0	~C3DMeshFilePrimitiveChunk	C3DMeshFilePrimitiveChunk	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a9\CTCInventoryItem_OnDie_00a9d3a0.cpp
 00a9d3c0	~C3DMeshFileClothChunk	C3DMeshFileClothChunk	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted									
 00a9d3f0	~C3DMeshFileConvexVolumeChunk	C3DMeshFileConvexVolumeChunk	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted									
-00a9d480	PostScale	CMatrix3x4	__thiscall	void	2	CMatrix3x4 *,C3DVector *	1	yes	accepted									
-00a9d580	PostScale	CMatrix3x4	__thiscall	void	2	CMatrix3x4 *,C3DVector *	1	yes	accepted									
+00a9d480	AlignedPreScale	CMatrix4x4	__thiscall	void	2	CMatrix3x4 *,C3DVector *	1	yes	accepted									
+00a9d580	AlignedPreScaleTransposed	CMatrix4x4	__thiscall	void	2	CMatrix3x4 *,C3DVector *	1	yes	accepted									
 00a9d730	SetMember_dword0x4_00a9d730	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a9\AddExclusiveObserver_AddExclusiveObserver_00a9d730.cpp
 00a9d740	SetMemberConst_00a9d740	_global	__thiscall	void	1	CGameEventPackage *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a9\Clear_Clear_00a9d740.cpp
 00a9d750	ApplyBoneMorphScaling	C3DAnimationManager	__thiscall	void	5	C3DAnimationManager *,C3DVector *,CMatrix4x4 *,ulong,bool	1	yes	accepted									
@@ -39914,7 +39914,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00adf300	ApplyDragging	CParticleSimulation	__thiscall	void	2	CParticleSimulation *,CParticleContext *	1	yes	accepted									
 00adf460	AllocateParticles	CMovableResource	unknown	undefined	0		0	yes	accepted									
 00adf5b0	SavePositions	CParticleSimulationUser_00adf5b0	__thiscall	COpinionPersonalityDef *	2	COpinionPersonalityDef *,COpinionPersonalityDef *	1	yes	accepted									
-00adf610	InitializeFromTemplate	CParticleSimulation	unknown	undefined	0		0	yes	accepted									
+00adf610	CopyFrom	CParticleSimulation	unknown	undefined	0		0	yes	accepted									
 00adf760	ApplyForces	CParticleSimulation	__thiscall	void	2	CParticleSimulation *,CParticleContext *	1	yes	accepted									
 00adf960	SatisfyDistanceConstraints	CParticleSimulation	__thiscall	void	3	CParticleSimulation *,CParticleDistanceConstraint *,ulong	1	yes	accepted									
 00adfc60	RelocateData	CParticleSimulation	__thiscall	void	5	CParticleSimulation *,long,void *,void *,long	1	yes	accepted									

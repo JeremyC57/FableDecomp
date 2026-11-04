@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a9d580   RELOCATION_MATCH PASS   AlignedPreScaleTransposed
+
+WINS: 1
+  00a9d580 RELOCATION_MATCH CMatrix4x4::?AlignedPreScaleTransposed@CMatrix4x4@@QAEXABVC3DVector@@@Z

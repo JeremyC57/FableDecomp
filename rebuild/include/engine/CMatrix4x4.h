@@ -22,10 +22,27 @@ public:
         dest.W=w;
     }
     void TransformTransposedAssumeW(C4DVector& vect,float w) const;
+#ifdef FABLE_RETAIL_CMATRIX4X4
+    // Retail opt-in (chunk 748): the Aligned* members of the 16-byte-row matrix (FableWin.pdb names, adjacent in FableWin and
+    // in Fable.exe to C3DAnimationManager::ApplyBoneMorphScaling 0x00A9D750, which expands both PreScale forms in place):
+    // ?AlignedPreScale@CMatrix4x4@@QAEXABVC3DVector@@@Z 0x00A9D480 (row r times scale[r]) and
+    // ?AlignedPreScaleTransposed@CMatrix4x4@@QAEXABVC3DVector@@@Z 0x00A9D580 (column c times scale[c]); both keep E14/E24/E34
+    // and leave row 4 alone. Their SSE arms are the isolated kernels of engine/CMatrix4x4AlignedSSE.h.
+    void AlignedPreScale(const C3DVector& scale);
+    void AlignedPreScaleTransposed(const C3DVector& scale);
+    // ?AlignedSetMultiply@CMatrix4x4@@QAEXABV1@0@Z (FableWin; no retail out-of-line copy): this = a * b (row vectors), the SSE
+    // arm the GF_SSE_MATRIX_MULTIPLY kernel (operands re-read from the parameter slots), the x87 arm the row loop. Expanded in
+    // place by CParticleProgram::ClingToMesh 0x00AE1320 / SetupSimulation 0x00AE29D0 and CShaderRenderManager::
+    // UpdateObjectSpaceTextureTransform 0x00989230 / UpdateLocalisedSphereMapping 0x00988E80.
+    __forceinline void AlignedSetMultiply(const CMatrix4x4& a, const CMatrix4x4& b);
+#endif
     void SetIdentity() {
         E11=1.0f; E22=1.0f; E33=1.0f; E44=1.0f;
         E12=0.0f; E13=0.0f; E14=0.0f; E21=0.0f; E23=0.0f; E24=0.0f; E31=0.0f; E32=0.0f; E34=0.0f; E41=0.0f; E42=0.0f; E43=0.0f;
     }
 };
 FABLE_STATIC_ASSERT(sizeof(CMatrix4x4)==64);
+#ifdef FABLE_RETAIL_CMATRIX4X4
+#include "engine/CMatrix4x4AlignedSSE.h"   // the SSE kernels and the inline AlignedSetMultiply body
+#endif
 #endif

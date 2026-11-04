@@ -1,0 +1,3 @@
+address	file	header_overlay	grade_with_overlay
+00ae0070	rebuild/src/compiled/00/ae/CParticleProgram_ApplyTransform_00ae0070.cpp	FABLE_RETAIL_CPARTICLEPROGRAM (engine/CParticleProgram.h)	RELOCATION_MATCH
+00ae0710	rebuild/src/compiled/00/ae/CParticleProgram_CalculateAveragePatchSize_00ae0710.cpp	FABLE_RETAIL_CPARTICLEPROGRAM (engine/CParticleProgram.h)	RELOCATION_MATCH

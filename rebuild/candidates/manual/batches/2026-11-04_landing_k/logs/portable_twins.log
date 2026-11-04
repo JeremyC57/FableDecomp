@@ -1,0 +1,73 @@
+engine/CMatrix4x4AlignedSSE.h      vc71-hdr-asm     OK
+engine/CMatrix4x4AlignedSSE.h      vc71-hdr-portable OK
+engine/CParticleSimulationSSE.h    vc71-hdr-asm     OK
+engine/CParticleSimulationSSE.h    vc71-hdr-portable OK
+engine/GFFastFloatToLong.h         vc71-hdr-asm     OK
+engine/GFFastFloatToLong.h         vc71-hdr-portable OK
+engine/GFFloatToLongCeil.h         vc71-hdr-asm     OK
+engine/GFFloatToLongCeil.h         vc71-hdr-portable OK
+engine/GFFloatToLongFloor.h        vc71-hdr-asm     OK
+engine/GFFloatToLongFloor.h        vc71-hdr-portable OK
+engine/GFFloatToLongNear.h         vc71-hdr-asm     OK
+engine/GFFloatToLongNear.h         vc71-hdr-portable OK
+engine/GFGetCycleCount.h           vc71-hdr-asm     OK
+engine/GFGetCycleCount.h           vc71-hdr-portable OK
+libpk/FtoL.h                       vc71-hdr-asm     OK
+libpk/FtoL.h                       vc71-hdr-portable OK
+strmbase/EnlargedUnsignedDivide.h  vc71-hdr-asm     OK
+strmbase/EnlargedUnsignedDivide.h  vc71-hdr-portable OK
+test_CMatrix4x4AlignedSSE.cpp      vc71-asm         PASS   test_CMatrix4x4AlignedSSE asm: PASS
+test_CMatrix4x4AlignedSSE.cpp      vc71-dual        PASS   test_CMatrix4x4AlignedSSE asm+portable: PASS
+test_CMatrix4x4AlignedSSE.cpp      vc71-portable    PASS   test_CMatrix4x4AlignedSSE portable: PASS
+test_CParticleSimulationSSE.cpp    vc71-asm         PASS   test_CParticleSimulationSSE asm: PASS
+test_CParticleSimulationSSE.cpp    vc71-dual        PASS   test_CParticleSimulationSSE asm+portable: PASS
+test_CParticleSimulationSSE.cpp    vc71-portable    PASS   test_CParticleSimulationSSE portable: PASS
+test_EnlargedUnsignedDivide.cpp    vc71-asm         PASS   test_EnlargedUnsignedDivide asm: PASS (14 cases)
+test_EnlargedUnsignedDivide.cpp    vc71-dual        PASS   test_EnlargedUnsignedDivide asm+portable: PASS (14 cases)
+test_EnlargedUnsignedDivide.cpp    vc71-portable    PASS   test_EnlargedUnsignedDivide portable: PASS (14 cases)
+test_FtoL.cpp                      vc71-asm         PASS   test_FtoL asm: PASS (63 inputs)
+test_FtoL.cpp                      vc71-dual        PASS   test_FtoL asm+portable: PASS (63 inputs)
+test_FtoL.cpp                      vc71-portable    PASS   test_FtoL portable: PASS (63 inputs)
+test_GFFastFloatToLong.cpp         vc71-asm         PASS   test_GFFastFloatToLong asm: PASS (63 inputs)
+test_GFFastFloatToLong.cpp         vc71-dual        PASS   test_GFFastFloatToLong asm+portable: PASS (63 inputs)
+test_GFFastFloatToLong.cpp         vc71-portable    PASS   test_GFFastFloatToLong portable: PASS (63 inputs)
+test_GFFloatToLongCeil.cpp         vc71-asm         PASS   test_GFFloatToLongCeil asm: PASS (63 inputs)
+test_GFFloatToLongCeil.cpp         vc71-dual        PASS   test_GFFloatToLongCeil asm+portable: PASS (63 inputs)
+test_GFFloatToLongCeil.cpp         vc71-portable    PASS   test_GFFloatToLongCeil portable: PASS (63 inputs)
+test_GFFloatToLongFloor.cpp        vc71-asm         PASS   test_GFFloatToLongFloor asm: PASS (63 inputs)
+test_GFFloatToLongFloor.cpp        vc71-dual        PASS   test_GFFloatToLongFloor asm+portable: PASS (63 inputs)
+test_GFFloatToLongFloor.cpp        vc71-portable    PASS   test_GFFloatToLongFloor portable: PASS (63 inputs)
+test_GFFloatToLongNear.cpp         vc71-asm         PASS   test_GFFloatToLongNear asm: PASS (63 inputs)
+test_GFFloatToLongNear.cpp         vc71-dual        PASS   test_GFFloatToLongNear asm+portable: PASS (63 inputs)
+test_GFFloatToLongNear.cpp         vc71-portable    PASS   test_GFFloatToLongNear portable: PASS (63 inputs)
+test_GFGetCycleCount.cpp           vc71-asm         PASS   test_GFGetCycleCount asm: PASS (1000 interleaved reads, 0 out of order)
+test_GFGetCycleCount.cpp           vc71-dual        PASS   test_GFGetCycleCount asm+portable: PASS (1000 interleaved reads, 0 out of order)
+test_GFGetCycleCount.cpp           vc71-portable    PASS   test_GFGetCycleCount portable: PASS (1000 interleaved reads, 0 out of order)
+engine/CMatrix4x4AlignedSSE.h      gxx-hdr          OK
+engine/CParticleSimulationSSE.h    gxx-hdr          OK
+engine/GFFastFloatToLong.h         gxx-hdr          OK
+engine/GFFloatToLongCeil.h         gxx-hdr          OK
+engine/GFFloatToLongFloor.h        gxx-hdr          OK
+engine/GFFloatToLongNear.h         gxx-hdr          OK
+engine/GFGetCycleCount.h           gxx-hdr          OK
+libpk/FtoL.h                       gxx-hdr          OK
+strmbase/EnlargedUnsignedDivide.h  gxx-hdr          OK
+test_CMatrix4x4AlignedSSE.cpp      gxx-portable     PASS   test_CMatrix4x4AlignedSSE portable: PASS
+test_CMatrix4x4AlignedSSE.cpp      gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_CParticleSimulationSSE.cpp    gxx-portable     PASS   test_CParticleSimulationSSE portable: PASS
+test_CParticleSimulationSSE.cpp    gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_EnlargedUnsignedDivide.cpp    gxx-portable     PASS   test_EnlargedUnsignedDivide portable: PASS (14 cases)
+test_EnlargedUnsignedDivide.cpp    gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_FtoL.cpp                      gxx-portable     PASS   test_FtoL portable: PASS (63 inputs)
+test_FtoL.cpp                      gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFastFloatToLong.cpp         gxx-portable     PASS   test_GFFastFloatToLong portable: PASS (63 inputs)
+test_GFFastFloatToLong.cpp         gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFloatToLongCeil.cpp         gxx-portable     PASS   test_GFFloatToLongCeil portable: PASS (63 inputs)
+test_GFFloatToLongCeil.cpp         gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFloatToLongFloor.cpp        gxx-portable     PASS   test_GFFloatToLongFloor portable: PASS (63 inputs)
+test_GFFloatToLongFloor.cpp        gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFloatToLongNear.cpp         gxx-portable     PASS   test_GFFloatToLongNear portable: PASS (63 inputs)
+test_GFFloatToLongNear.cpp         gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFGetCycleCount.cpp           gxx-portable     PASS   test_GFGetCycleCount portable: PASS (1000 interleaved reads, 0 out of order)
+test_GFGetCycleCount.cpp           gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+72 steps, 0 failed

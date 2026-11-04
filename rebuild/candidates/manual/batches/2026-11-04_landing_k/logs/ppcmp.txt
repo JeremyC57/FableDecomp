@@ -1,0 +1,14 @@
+DIFF rebuild/src/compiled/00/98/CShaderRenderManager_Initialise_0098acf0.cpp
+DIFF rebuild/src/compiled/00/98/CShaderRenderManager_UpdateObjectSpaceLighting_00989cb0.cpp
+DIFF rebuild/src/compiled/00/9d/CRenderManager2D_Render2DDrawList_009da9f0.cpp
+DIFF rebuild/src/compiled/00/ae/CParticleProgram_ApplyTransform_00ae0070.cpp
+DIFF rebuild/src/compiled/00/ae/CParticleProgram_CalculateAveragePatchSize_00ae0710.cpp
+SAME rebuild/src/compiled/00/ae/CParticleProgram_GetGroupVectorBuffer_00ae05a0.cpp
+SAME rebuild/src/compiled/00/ae/CParticleProgram_GetMatrixBuffer_00ae04e0.cpp
+SAME rebuild/src/compiled/00/ae/CParticleProgram_GetVectorBuffer_00ae0540.cpp
+SAME rebuild/src/compiled/00/ae/CParticleProgram_TransformVertices_00ae0e60.cpp
+DIFF rebuild/src/compiled/00/b2/CEngine_Initialise_00b26360.cpp
+SAME rebuild/src/compiled/00/b8/CEngineClothSimulation2DAnimatedMesh_Render_00b81640.cpp
+SAME rebuild/src/compiled/00/b8/CEngineClothSimulationAnimatedMesh_Render_00b814b0.cpp
+SAME rebuild/src/compiled/00/b8/CEngineClothSimulationStaticMesh_Render_00b812f0.cpp
+DIFF rebuild/src/compiled/00/bb/CEnginePrimitiveManagerParticleGroup_RenderSubPrimitive_00bbc460.cpp

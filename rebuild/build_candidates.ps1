@@ -381470,6 +381470,13 @@ $catalog = @(
         TestSource = '00/b8/CEngineSubPrimitiveRenderer_AddSubPrimitive_00b84580_test.cpp'
         PassPattern = '00b84580_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a9d580'
+        Module = 'CMatrix4x4'
+        Source = '00/a9/CMatrix4x4_AlignedPreScaleTransposed_00a9d580.cpp'
+        TestSource = '00/a9/CMatrix4x4_AlignedPreScaleTransposed_00a9d580_test.cpp'
+        PassPattern = '00a9d580_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
