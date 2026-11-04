@@ -383932,6 +383932,76 @@ $catalog = @(
         TestSource = '00/70/CAnimateThing_AddCombinationAnim_0070d780_test.cpp'
         PassPattern = '0070D780_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005239c0'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_RuntimeSaveEntities_005239c0.cpp'
+        TestSource = '00/52/CThingManager_RuntimeSaveEntities_005239c0_test.cpp'
+        PassPattern = '005239c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00543b30'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_vectordeletingdestructor_00543b30.cpp'
+        TestSource = '00/54/NUISystemCIconText_vectordeletingdestructor_00543b30_test.cpp'
+        PassPattern = '00543b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00553fd0'
+        Module = 'NUISystem::CTable'
+        Source = '00/55/NUISystemCTable_vectordeletingdestructor_00553fd0.cpp'
+        TestSource = '00/55/NUISystemCTable_vectordeletingdestructor_00553fd0_test.cpp'
+        PassPattern = '00553fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bf969'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_RemoveAllConfiscatedItems_005bf969.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_RemoveAllConfiscatedItems_005bf969_test.cpp'
+        PassPattern = '005bf969_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cb610'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/6c/CTCCreatureNavigation_IsPosNavLineOfSightToPos_006cb610.cpp'
+        TestSource = '00/6c/CTCCreatureNavigation_IsPosNavLineOfSightToPos_006cb610_test.cpp'
+        PassPattern = '006cb610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079f960'
+        Module = 'CTCWillLightning'
+        Source = '00/79/CTCWillLightning_SetAICasting_0079f960.cpp'
+        TestSource = '00/79/CTCWillLightning_SetAICasting_0079f960_test.cpp'
+        PassPattern = '0079f960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007beff0'
+        Module = 'NThingShot::CTCShotDefinitionBase'
+        Source = '00/7b/NThingShotCTCShotDefinitionBase_GetPWeapon_007beff0.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionBase_GetPWeapon_007beff0_test.cpp'
+        PassPattern = '007beff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab6a90'
+        Module = 'CJoystickDX'
+        Source = '00/ab/CJoystickDX_CJoystickDX_00ab6a90.cpp'
+        TestSource = '00/ab/CJoystickDX_CJoystickDX_00ab6a90_test.cpp'
+        PassPattern = '00ab6a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b39f70'
+        Module = 'CEnginePrimitiveAttachmentManager'
+        Source = '00/b3/CEnginePrimitiveAttachmentManager_CEnginePrimitiveAttachmentManager_00b39f70.cpp'
+        TestSource = '00/b3/CEnginePrimitiveAttachmentManager_CEnginePrimitiveAttachmentManager_00b39f70_test.cpp'
+        PassPattern = '00b39f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1690'
+        Module = 'NScript::CPersonalScript_EmptyScript::CWhispie'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCWhispie_Main_00ef1690.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCWhispie_Main_00ef1690_test.cpp'
+        PassPattern = '00ef1690_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

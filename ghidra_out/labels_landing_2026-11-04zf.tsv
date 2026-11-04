@@ -1,0 +1,21 @@
+address	name	evidence
+005239c0	CThingManager::RuntimeSaveEntities	landing 2026-11-04zf (chunk 770): Ego_r.pdb order + argument types; RELOCATION_MATCH
+00543b30	NUISystem::CIconText::`vector deleting destructor'`adjustor{4}'	landing 2026-11-04zf (chunk 770): adjustor {4} to 0x00543C70; RELOCATION_MATCH [catalog form of ??_ECIconText@NUISystem@@W3AEPAXI@Z]
+00553fd0	NUISystem::CTable::`vector deleting destructor'`adjustor{4}'	landing 2026-11-04zf (chunk 770): adjustor {4} to 0x005540D0; RELOCATION_MATCH [catalog form of ??_ECTable@NUISystem@@W3AEPAXI@Z]
+005bf969	NInventory::CTCInventoryBase::RemoveAllConfiscatedItems	landing 2026-11-04zf (chunk 770): Ego_r.pdb; RELOCATION_MATCH
+006cb610	CTCCreatureNavigation::IsPosNavLineOfSightToPos	landing 2026-11-04zf (chunk 770): Ego_r.pdb; MATCH
+0079f960	CTCWillLightning::SetAICasting	landing 2026-11-04zf (chunk 770): Ego_r.pdb; RELOCATION_MATCH
+007beff0	NThingShot::CTCShotDefinitionBase::GetPWeapon	landing 2026-11-04zf (chunk 770): Ego_r.pdb; RELOCATION_MATCH
+00ab6a90	CJoystickDX::~CJoystickDX	landing 2026-11-04zf (chunk 770): vtable owner, DirectInput device Unacquire/Release; RELOCATION_MATCH
+00b39f70	CEnginePrimitiveAttachmentManager::~CEnginePrimitiveAttachmentManager	landing 2026-11-04zf (chunk 770): vtable owner, list teardown; RELOCATION_MATCH
+00ef1690	NScript::CPersonalScript_EmptyScript::CWhispie::Main	landing 2026-11-04zf (chunk 770): vtable 0x012F5FE4 slot 1 + Ego_r.pdb CWhispie (ParentClass CPersonalScript_EmptyScript*); RELOCATION_MATCH
+00e0ca50	NScript::CQ_UndeadRisingScript::CUndeadRisingFirefly::Main	landing 2026-11-04zf (chunk 770): vtable slot 1 + strings UndeadRisingGrave/UndeadRisingZombieAttacker; parked
+00e16e00	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1::Main	landing 2026-11-04zf (chunk 770): vtable slot 1 + Ego_r.pdb; parked
+00e17320	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2::Main	landing 2026-11-04zf (chunk 770): vtable 0x012E0B7C (from Guard2 Alloc 0x00E17230) slot 1 + string WB_Guard2Pos 0x012E07A8; parked
+00e11670	NScript::CQ_WaspBossScript::CWaspVictim::Main	landing 2026-11-04zf (chunk 770): vtable 0x012E0490 slot 1; Ego_r.pdb CWaspVictim; not attempted
+00e137b0	NScript::CQ_WaspBossScript::Outro	landing 2026-11-04zf (chunk 770): called from EndMission 0x00E13310 at 0x00E135B4 + landed binding; not attempted
+00e62d60	NScript::CV_ChickenKickingScript::CreateSpectators	landing 2026-11-04zf (chunk 770): landed binding; not attempted
+0078c900	CTCBerserk::InitAbility	landing 2026-11-04zf (chunk 770): landed binding; not attempted
+00828710	CRegionConnectionGraph::InitialiseGraph	landing 2026-11-04zf (chunk 770): landed binding; not attempted
+0079f810	CTCWillLightning::SetLevel	landing 2026-11-04zf (chunk 770): callee of 0x0079F960; Ego_r.pdb private
+00b3a760	std::_List_base<CEngineInternalAttachedPrimitiveInfo, std::allocator<CEngineInternalAttachedPrimitiveInfo>>::clear	landing 2026-11-04zf (chunk 770): callee of 0x00B39F70 [catalog form of VCEngineInternalAttachedPrimitiveInfo::?$_List_base::clear]

@@ -12,12 +12,32 @@
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/CEngineComponent.h"
 class CEngineInit;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_LIST
+// Nested opt-in (chunk 770, row 0x00B39F70 ~CEnginePrimitiveAttachmentManager): the AttachedPrimitives member typed as its Ego_r.pdb
+// list<CEngineInternalAttachedPrimitiveInfo> (STLport 4 bytes at +0x10; _List_base::clear out of line at 0x00B3A760, the sentinel
+// freed with free 0x00BFEA14) and the user-declared virtual destructor (FableWin.pdb ??1CEnginePrimitiveAttachmentManager@@UAE@XZ).
+// CEngineInternalAttachedPrimitiveInfo (Ego_r.pdb, 12 bytes): CBaseClass vptr +0, CEnginePrimitiveHandle PrimitiveHandle +4 (8 bytes,
+// opaque here), virtual ??1CEngineInternalAttachedPrimitiveInfo@@UAE@XZ.
+#include "engine/CBaseClass.h"
+#include "stlport/fable_containers.h"
+class CEngineInternalAttachedPrimitiveInfo : public CBaseClass {
+public:
+    virtual ~CEngineInternalAttachedPrimitiveInfo();
+    unsigned char PrimitiveHandle[0x8];         // +0x04 CEnginePrimitiveHandle
+};
+#endif
 class CEnginePrimitiveAttachmentManager : public CBaseClassNonCopyable, public CEngineComponent {
 public:
     CEnginePrimitiveAttachmentManager();       // 0x00B39F30 ??0CEnginePrimitiveAttachmentManager@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_LIST
+    virtual ~CEnginePrimitiveAttachmentManager();   // 0x00B39F70
+private:
+    std::list<CEngineInternalAttachedPrimitiveInfo> AttachedPrimitives;   // +0x10
+#else
 private:
     unsigned char _pad_0x10[0x4];               // +0x10 members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveAttachmentManager) == 0x14);
 #else // generated flattened Ego_r layout (the landed default, unchanged)

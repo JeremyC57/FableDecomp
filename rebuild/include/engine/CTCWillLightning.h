@@ -10,6 +10,13 @@
 #include "rebuild_abi.h"
 
 class CDefPointeeBase;
+#ifdef FABLE_RETAIL_CTCWILLLIGHTNING_AICASTING
+// chunk 770 (row 0x0079F960): m_tTimer typed as its Ego_r.pdb CWillButtonHelperTimer (retail 0x34 bytes at +0x2c: the STLport vector
+// is 12 bytes, so IsAICasting sits at +0x5a), Ego_r.pdb ?SetAICasting@CTCWillLightning@@QAEXJ@Z (public, 0x0079F960) and the private
+// ?SetLevel@CTCWillLightning@@AAEXJ@Z (0x0079F810).
+#define FABLE_RETAIL_CWILLBUTTONHELPERTIMER_SETAICASTING
+#include "engine/CWillButtonHelperTimer.h"
+#endif
 
 #pragma pack(push, 1)
 class CTCWillLightning {
@@ -24,7 +31,11 @@ public:
     long             PrimaryHandEffect;                      // +0x20
     long             SecondaryHandEffect;                    // +0x24
     CDefPointeeBase* m_lspDef_Object;                        // +0x28 CDefPointer<CSpecialAbilitiesLightningSpellDef_const_>::Object
+#ifdef FABLE_RETAIL_CTCWILLLIGHTNING_AICASTING
+    CWillButtonHelperTimer m_tTimer;                         // +0x2c
+#else
     unsigned char    m_tTimer[0x34];                         // +0x2c CWillButtonHelperTimer
+#endif
     float            m_fTime;                                // +0x60
     float            m_fTimeBase;                            // +0x64
     unsigned char    m_lbBeams[0x4];                         // +0x68 list<CCountedPointer<CTCWillLightning::CLightningBeam>,std::allocator<CCountedPointer<CTCWillLightning::CLightningBeam>_>_>
@@ -57,6 +68,12 @@ public:
     unsigned char    _pad_0xd9[0x3];                         // +0xd9
     long             m_OnhitEveryFrame;                      // +0xdc
     long             m_CombatMultiplierTimer;                // +0xe0
+#ifdef FABLE_RETAIL_CTCWILLLIGHTNING_AICASTING
+    void SetAICasting(long level);                           // 0x0079F960
+private:
+    void SetLevel(long level);                               // 0x0079F810
+public:
+#endif
 };
 #pragma pack(pop)
 

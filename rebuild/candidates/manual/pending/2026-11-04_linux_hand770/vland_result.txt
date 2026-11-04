@@ -1,0 +1,35 @@
+addr       parity           behav  name
+005239c0   WARN SHARED_HEADER_AVAILABLE CThing
+005239c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+005239c0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005239c0   WARN SHARED_HEADER_AVAILABLE CThingManager
+005239c0   RELOCATION_MATCH PASS   RuntimeSaveEntities
+00543b30   WARN RELOC_NAME: ??_ECIconText@NUISystem@@UAEPAXI@Z -> 00543c70 labelled 'NUISystem::CIconText::`scalar_deleting_destructor''
+00543b30   RELOCATION_MATCH PASS   `vector deleting destructor'
+00553fd0   WARN RELOC_NAME: ??_ECTable@NUISystem@@UAEPAXI@Z -> 005540d0 labelled 'NUISystem::CTable::`scalar_deleting_destructor''
+00553fd0   RELOCATION_MATCH PASS   `vector deleting destructor'
+005bf969   RELOCATION_MATCH PASS   RemoveAllConfiscatedItems
+006cb610   MATCH            PASS   IsPosNavLineOfSightToPos
+0079f960   RELOCATION_MATCH PASS   SetAICasting
+007beff0   RELOCATION_MATCH PASS   GetPWeapon
+00ab6a90   RELOCATION_MATCH PASS   ~CJoystickDX
+00b39f70   RELOCATION_MATCH PASS   ~CEnginePrimitiveAttachmentManager
+00c44e80   WARN RELOC_NAME: ?UpdateVolume@CAmbientEmitter@@QAEXXZ -> 00c44dc0 labelled '_unattributed::DispatchScaledDamage_00c44dc0'
+00c44e80   WARN RELOC_NAME: ?IsFinished@CAmbientSourceDef@@QBE_NXZ -> 00c384e0 labelled 'CTCOnHeroPush::IsAngry'
+00c44e80   RELOCATION_MATCH PASS   Update
+00c45980   RELOCATION_MATCH PASS   UpdateLevel
+00ef1690   RELOCATION_MATCH PASS   Main
+
+WINS: 12
+  005239c0 RELOCATION_MATCH CThingManager::?RuntimeSaveEntities@CThingManager@@QAEXJABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@_N@Z
+  00543b30 RELOCATION_MATCH NUISystem::CIconText::??_ECIconText@NUISystem@@W3AEPAXI@Z
+  00553fd0 RELOCATION_MATCH NUISystem::CTable::??_ECTable@NUISystem@@W3AEPAXI@Z
+  005bf969 RELOCATION_MATCH NInventory::CTCInventoryBase::?RemoveAllConfiscatedItems@CTCInventoryBase@NInventory@@UAEXXZ
+  006cb610 MATCH CTCCreatureNavigation::?IsPosNavLineOfSightToPos@CTCCreatureNavigation@@QBE_NABVC3DVector@@0@Z
+  0079f960 RELOCATION_MATCH CTCWillLightning::?SetAICasting@CTCWillLightning@@QAEXJ@Z
+  007beff0 RELOCATION_MATCH NThingShot::CTCShotDefinitionBase::?GetPWeapon@CTCShotDefinitionBase@NThingShot@@QBEPAVCThing@@XZ
+  00ab6a90 RELOCATION_MATCH CJoystickDX::??1CJoystickDX@@UAE@XZ
+  00b39f70 RELOCATION_MATCH CEnginePrimitiveAttachmentManager::??1CEnginePrimitiveAttachmentManager@@UAE@XZ
+  00c44e80 RELOCATION_MATCH CAmbientEmitter::?Update@CAmbientEmitter@@QAEXXZ
+  00c45980 RELOCATION_MATCH CAmbientCube::?UpdateLevel@CAmbientCube@@QAEXM@Z
+  00ef1690 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CWhispie::?Main@CWhispie@CPersonalScript_EmptyScript@NScript@@EAEXXZ

@@ -2029,3 +2029,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A same-TU noinline body for the callee that fills a local container tells VC7.1 the local does not escape: its start stays in a callee-saved register and the second null test goes (0x005EBFA0, 0x00969E70, 0x0070D780, chunk 768).
 - An early `if (!a && !b) { Leave(); return; }` before `if (b) X else Y` lets VC7.1 thread the repeated test into retail's block layout (0x00753380).
 - Landing labels must be catalog form (`Class::Method`): apply_labels.py writes a mangled name verbatim under module `_global`. And a bare vland name qualified from the catalog module can inherit a wrong class; the source `// Leaf:` is authoritative (0x0070D780, landing ze).
+- NScript AddScreenMessage: retail builds the string before loading `Game`; write `{ CCharString m("..."); Game->AddScreenMessage(m, ...); }`, since a temporary argument loads `Game` first (chunk 770).
+- hdrcheck2: splitting an existing declaration line inside a new `#ifdef` reads default=DIFF; keep the original line verbatim under `#else` (chunk 770).

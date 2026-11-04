@@ -1,0 +1,24 @@
+address	name	status	attempts	note
+00543b30	NUISystem::CIconText::`vector deleting destructor' adjustor{4}	RELOCATION_MATCH	1	definer = landed ctor 0x00542330 TU verbatim
+00553fd0	NUISystem::CTable::`vector deleting destructor' adjustor{4}	RELOCATION_MATCH	2	new engine/NUISystem_CTable.h; a1 PPFAIL (CUIDef macros)
+005bf969	NInventory::CTCInventoryBase::RemoveAllConfiscatedItems	RELOCATION_MATCH	1	FABLE_RETAIL_CTCINVENTORYBASE_CONFISCATED
+006cb610	CTCCreatureNavigation::IsPosNavLineOfSightToPos	MATCH	1	FABLE_RETAIL_CTCCREATURENAVIGATION_LINEOFSIGHT
+0079f960	CTCWillLightning::SetAICasting	RELOCATION_MATCH	1	FABLE_RETAIL_CTCWILLLIGHTNING_AICASTING + CWILLBUTTONHELPERTIMER_SETAICASTING
+007beff0	NThingShot::CTCShotDefinitionBase::GetPWeapon	RELOCATION_MATCH	1	new engine/NThingShot_CTCShotDefinitionBase.h
+00ab6a90	CJoystickDX::~CJoystickDX	RELOCATION_MATCH	1	FABLE_RETAIL_CJOYSTICKDX / FABLE_RETAIL_CJOYSTICK
+00b39f70	CEnginePrimitiveAttachmentManager::~CEnginePrimitiveAttachmentManager	RELOCATION_MATCH	1	FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_LIST
+00c44e80	CAmbientEmitter::Update (descriptive, libpk)	RELOCATION_MATCH	1	local libpk model as landed siblings
+00c45980	CAmbientCube::UpdateLevel (descriptive, libpk)	RELOCATION_MATCH	1	local libpk model as landed GetLevel 0x00C45940
+005239c0	CThingManager::RuntimeSaveEntities	RELOCATION_MATCH	2	sibling RuntimeSaveGameHero TU model; global 0x0137548C descriptive g_bRuntimeSaveBinary
+00e0ca50	NScript::CQ_UndeadRisingScript::CUndeadRisingFirefly::Main	PARKED DIFFER(1276v1223)	11	best dl=32 (a10); loop CreateCreature temp dtor inlined (retail calls 0x004AA840)
+00e16e00	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1::Main	PARKED DIFFER(1120v1064)	10	best dl=22 (a1); predicate member ~CScriptThing inlined at entry (retail calls 0x004AA840)
+00e17320	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2::Main	PARKED DIFFER(1120v1064)	1	byte-identical twin of 0x00E16E00 (class CWB_Guard2, "WB_Guard2Pos"); same residue, every Guard1 trial applies
+00ef1690	NScript::CPersonalScript_EmptyScript::CWhispie::Main	RELOCATION_MATCH	4	matched a2 (named CCharString locals per message); a3/a4 moved to shared headers CEntityScriptBase/CIsThingAlive/CPersonalScript_EmptyScript, still RELOCATION_MATCH, vland clean
+00e11670	NScript::CQ_WaspBossScript::CWaspVictim::Main	NOT_ATTEMPTED	0	identity: vtable 0x012E0490 slot 1; 1115 B: predicate temp with partially inlined dtor, scripted-thing handle, CTimer, pDSTGame slots 0x164/0x168, def fields +0xE30..+0xE54
+00e137b0	NScript::CQ_WaspBossScript::Outro	NOT_ATTEMPTED	0	identity: called from EndMission 0x00E13310 at 0x00E135B4; landed binding ?Outro@CQ_WaspBossScript@NScript@@QAEXXZ (catalog DoMission_WaspMenaceOutro)
+00e1f7e0	CTraderToEscort::Init (outer NScript class not proven here)	NOT_ATTEMPTED	0	identity: vtable 0x012E151C slot 2 (slot 1 Main 0x00E20600)
+00e62d60	NScript::CV_ChickenKickingScript::CreateSpectators	NOT_ATTEMPTED	0	landed binding ?CreateSpectators@CV_ChickenKickingScript@NScript@@QAEXXZ
+00ee8390	NScript::CCS_OakValeRevisitedScript::OakVale	NOT_ATTEMPTED	0	PROPOSAL: only caller Main 0x00EE82D0 tail-calls it; Ego_r members Main/OakVale/OakValeFire (catalog DoMission_OakValeRevisited)
+0078c900	CTCBerserk::InitAbility	NOT_ATTEMPTED	0	landed binding ?InitAbility@CTCBerserk@@QAEXXZ
+00828710	CRegionConnectionGraph::InitialiseGraph	NOT_ATTEMPTED	0	landed binding ?InitialiseGraph@CRegionConnectionGraph@@QAEXABVCCharString@@ABVCWorldMap@@@Z
+00785160	(unidentified; catalog CTCPhysicsBase_Update_CustomerInteraction)	NOT_ATTEMPTED	0	bare fistp ceil/floor rounding sites: retail_asm candidate under the 2026-11-04 C++-first rule

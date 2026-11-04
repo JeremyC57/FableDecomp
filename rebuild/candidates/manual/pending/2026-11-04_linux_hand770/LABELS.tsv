@@ -1,0 +1,29 @@
+address	name	evidence
+005239c0	?RuntimeSaveEntities@CThingManager@@QAEXJABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@_N@Z	Ego_r.pdb order + argument types; RELOCATION_MATCH
+00543b30	??_ECIconText@NUISystem@@W3AEPAXI@Z	adjustor {4} to 0x00543C70; RELOCATION_MATCH
+00553fd0	??_ECTable@NUISystem@@W3AEPAXI@Z	adjustor {4} to 0x005540D0; RELOCATION_MATCH
+005bf969	?RemoveAllConfiscatedItems@CTCInventoryBase@NInventory@@UAEXXZ	Ego_r.pdb; RELOCATION_MATCH
+006cb610	?IsPosNavLineOfSightToPos@CTCCreatureNavigation@@QBE_NABVC3DVector@@0@Z	Ego_r.pdb; MATCH
+0079f960	?SetAICasting@CTCWillLightning@@QAEXJ@Z	Ego_r.pdb; RELOCATION_MATCH
+007beff0	?GetPWeapon@CTCShotDefinitionBase@NThingShot@@QBEPAVCThing@@XZ	Ego_r.pdb; RELOCATION_MATCH
+00ab6a90	??1CJoystickDX@@UAE@XZ	vtable owner, DirectInput device Unacquire/Release; RELOCATION_MATCH
+00b39f70	??1CEnginePrimitiveAttachmentManager@@UAE@XZ	vtable owner, list teardown; RELOCATION_MATCH
+00c44e80	?Update@CAmbientEmitter@@QAEXXZ	PROPOSAL descriptive (libpk); RELOCATION_MATCH
+00c45980	?UpdateLevel@CAmbientCube@@QAEXM@Z	PROPOSAL descriptive (libpk); RELOCATION_MATCH
+00ef1690	?Main@CWhispie@CPersonalScript_EmptyScript@NScript@@EAEXXZ	vtable 0x012F5FE4 slot 1 + Ego_r.pdb CWhispie (ParentClass CPersonalScript_EmptyScript*); RELOCATION_MATCH
+00e0ca50	?Main@CUndeadRisingFirefly@CQ_UndeadRisingScript@NScript@@EAEXXZ	vtable slot 1 + strings UndeadRisingGrave/UndeadRisingZombieAttacker; parked
+00e16e00	?Main@CWB_Guard1@CQ_WhiteBalverineKnotholeGladeScript@NScript@@EAEXXZ	vtable slot 1 + Ego_r.pdb; parked
+00e17320	?Main@CWB_Guard2@CQ_WhiteBalverineKnotholeGladeScript@NScript@@EAEXXZ	vtable 0x012E0B7C (from Guard2 Alloc 0x00E17230) slot 1 + string WB_Guard2Pos 0x012E07A8; parked
+00e11670	?Main@CWaspVictim@CQ_WaspBossScript@NScript@@EAEXXZ	vtable 0x012E0490 slot 1; Ego_r.pdb CWaspVictim; not attempted
+00e137b0	?Outro@CQ_WaspBossScript@NScript@@QAEXXZ	called from EndMission 0x00E13310 at 0x00E135B4 + landed binding; not attempted
+00e1f7e0	CTraderToEscort::Init	vtable 0x012E151C slot 2 (slot 1 Main 0x00E20600); outer class not proven; not attempted
+00e62d60	?CreateSpectators@CV_ChickenKickingScript@NScript@@QAEXXZ	landed binding; not attempted
+00ee8390	?OakVale@CCS_OakValeRevisitedScript@NScript@@QAEXXZ	PROPOSAL: sole caller Main 0x00EE82D0 tail-calls it; Ego_r members Main/OakVale/OakValeFire
+0078c900	?InitAbility@CTCBerserk@@QAEXXZ	landed binding; not attempted
+00828710	?InitialiseGraph@CRegionConnectionGraph@@QAEXABVCCharString@@ABVCWorldMap@@@Z	landed binding; not attempted
+00785160	(unidentified)	catalog CTCPhysicsBase_Update_CustomerInteraction unverified; not attempted
+0079f810	?SetLevel@CTCWillLightning@@AAEXJ@Z	callee of 0x0079F960; Ego_r.pdb private
+00b3a760	?clear@?$_List_base@VCEngineInternalAttachedPrimitiveInfo@@V?$allocator@VCEngineInternalAttachedPrimitiveInfo@@@std@@@std@@QAEXXZ	callee of 0x00B39F70
+00c44dc0	?UpdateVolume@CAmbientEmitter@@QAEXXZ	PROPOSAL descriptive; callee of 0x00C44E80
+00c384e0	?IsFinished@CAmbientSourceDef@@QBE_NXZ	PROPOSAL descriptive; callee of 0x00C44E80
+0137548c	g_bRuntimeSaveBinary	descriptive data name: initialised true in .data, read only by 0x005239C0; no PDB data symbol

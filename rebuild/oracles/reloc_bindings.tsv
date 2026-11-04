@@ -36631,3 +36631,10 @@ __imp__GetSystemDirectoryA@8	0143febc	00c565f0
 ?GetHeadPos@CTCLook@@ABE?AVC3DVector@@XZ	00751b30	00753380
 ?GetPNearestInterestingThing@CTCTargetingBase@@QBEPAVCThing@@XZ	007f5860	00753380
 ?Init@CAnimSet@@AAEXAAVCAnimateThing@@ABVCAnimInit@@M@Z	0070d1a0	0070d780
+??1CMemoryDataOutputStream@@QAE@XZ	00996b30	005239c0
+?SetLevelPersistentScript@CEntityRuntimePersistence@NThingManager@@QAEXJABVCCharString@@@Z	00523790	005239c0
+?g_bRuntimeSaveBinary@@3_NA	0137548c	005239c0
+??_ECIconText@NUISystem@@UAEPAXI@Z	00543c70	00543b30
+??_ECTable@NUISystem@@UAEPAXI@Z	005540d0	00553fd0
+?SetLevel@CTCWillLightning@@AAEXJ@Z	0079f810	0079f960
+?clear@?$_List_base@VCEngineInternalAttachedPrimitiveInfo@@V?$allocator@VCEngineInternalAttachedPrimitiveInfo@@@std@@@std@@QAEXXZ	00b3a760	00b39f70

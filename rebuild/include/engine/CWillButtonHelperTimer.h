@@ -23,7 +23,13 @@ public:
     bool GetWillIncrementedFlag() const;
     void SetUpdateAccumulatedLevel(bool);
     void ForceToNextLevel();
+#ifdef FABLE_RETAIL_CWILLBUTTONHELPERTIMER_SETAICASTING
+    // chunk 770 (row 0x0079F960 CTCWillLightning::SetAICasting): inline in retail (FableWin.pdb's debug build has
+    // ?SetAICasting@CWillButtonHelperTimer@@QAEXXZ out of line; Ego_r.pdb and retail have no copy, the caller stores the flag).
+    void SetAICasting() { IsAICasting = true; }
+#else
     void SetAICasting();
+#endif
     void SetAICasting(long);
     void SetAIHoldingDown(bool);
     bool QIsAIHoldingDown() const;

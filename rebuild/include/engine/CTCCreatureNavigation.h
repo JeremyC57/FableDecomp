@@ -52,6 +52,11 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_NAVIGATION; }
     bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity) const;   // 0x006CB620
 #endif
+#ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_LINEOFSIGHT
+    // Nested opt-in (chunk 770, row 0x006CB610): Ego_r.pdb ?IsPosNavLineOfSightToPos@CTCCreatureNavigation@@QBE_NABVC3DVector@@0@Z
+    // (public const), retail a PNavigator slot-10 forward (IsNavLineOfSightClear) just before IsAbleToNavigateFromPosToPos 0x006CB620.
+    bool IsPosNavLineOfSightToPos(const C3DVector& from, const C3DVector& to) const;                       // 0x006CB610
+#endif
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCCreatureNavigation)==0x60);

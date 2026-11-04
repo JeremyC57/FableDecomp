@@ -12,6 +12,44 @@
 class CInputManagerDX;
 struct IDirectInputDevice8W;
 
+#ifdef FABLE_RETAIL_CJOYSTICKDX
+// Retail opt-in (chunk 770, row 0x00AB6A90 ~CJoystickDX): the polymorphic retail class over engine/CJoystick.h's
+// FABLE_RETAIL_CJOYSTICK branch (RTTI .?AVCJoystickDX@@ : CJoystick at +0; vtable 0x0129EA7C), Ego_r.pdb ??1CJoystickDX@@UAE@XZ,
+// and the DirectInput 8 device interface's IUnknown + IDirectInputDevice8W slots up to Unacquire (dinput.h order; __stdcall COM).
+// Same retail offsets as the default path (+0xd18 .. +0xd40, sizeof 0xd44).
+#define FABLE_RETAIL_CJOYSTICK
+#include "engine/CJoystick.h"
+struct IDirectInputDevice8W {
+    virtual long __stdcall QueryInterface(const struct _GUID& riid, void** object);   // slot 0
+    virtual unsigned long __stdcall AddRef();                                       // slot 1
+    virtual unsigned long __stdcall Release();                                      // slot 2 (+0x08)
+    virtual long __stdcall GetCapabilities(struct DIDEVCAPS* caps);                 // slot 3
+    virtual long __stdcall EnumObjects(void* callback, void* ref, unsigned long flags);   // slot 4
+    virtual long __stdcall GetProperty(const struct _GUID& property, struct DIPROPHEADER* header);   // slot 5
+    virtual long __stdcall SetProperty(const struct _GUID& property, const struct DIPROPHEADER* header);   // slot 6
+    virtual long __stdcall Acquire();                                               // slot 7 (+0x1c)
+    virtual long __stdcall Unacquire();                                             // slot 8 (+0x20)
+};
+#pragma pack(push, 1)
+class CJoystickDX : public CJoystick {
+public:
+    virtual ~CJoystickDX();                                  // 0x00AB6A90
+    float                 XAxis;                             // +0xd18
+    float                 YAxis;                             // +0xd1c
+    float                 XAxis2;                            // +0xd20
+    float                 YAxis2;                            // +0xd24
+    long                  XAxisMin;                          // +0xd28
+    long                  XAxisMax;                          // +0xd2c
+    long                  YAxisMin;                          // +0xd30
+    long                  YAxisMax;                          // +0xd34
+    IDirectInputDevice8W* DJoystick;                         // +0xd38
+    bool                  Acquired;                          // +0xd3c
+    unsigned char         _pad_0xd3d[0x3];                   // +0xd3d
+    CInputManagerDX*      InputManagerDX;                    // +0xd40
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CJoystickDX) == 0xd44);
+#else
 #pragma pack(push, 1)
 struct CJoystickDX {
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
@@ -869,6 +907,7 @@ struct CJoystickDX {
 
 FABLE_STATIC_ASSERT(sizeof(CJoystickDX) == 0xd44);
 FABLE_STATIC_ASSERT(offsetof(CJoystickDX, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CJOYSTICKDX
 FABLE_STATIC_ASSERT(offsetof(CJoystickDX, XAxis) == 0xd18);
 FABLE_STATIC_ASSERT(offsetof(CJoystickDX, YAxis) == 0xd1c);
 FABLE_STATIC_ASSERT(offsetof(CJoystickDX, XAxis2) == 0xd20);

@@ -14,7 +14,14 @@ class CInputManager;
 #pragma pack(push, 1)
 class CJoystick {
 public:
+#ifdef FABLE_RETAIL_CJOYSTICK
+    // Retail opt-in (chunk 770, row 0x00AB6A90 ~CJoystickDX): the polymorphic retail class (RTTI .?AVCJoystick@@, no base; vtable
+    // 0x0129C0EC). Only the virtual destructor is declared (slot 9 in retail, Ego_r.pdb ??1CJoystick@@UAE@XZ, retail 0x009E4420);
+    // the vptr takes the +0x00 word of the default path, so every offset below is unchanged.
+    virtual ~CJoystick();                                    // 0x009E4420
+#else
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned char  EventStore[0xd00];                        // +0x04 CInputEvent[64]
     CInputManager* InputManager;                             // +0xd04
     bool           ExclusiveMode;                            // +0xd08
@@ -27,7 +34,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CJoystick) == 0xd18);
+#ifndef FABLE_RETAIL_CJOYSTICK
 FABLE_STATIC_ASSERT(offsetof(CJoystick, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CJoystick, EventStore) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CJoystick, InputManager) == 0xd04);
 FABLE_STATIC_ASSERT(offsetof(CJoystick, ExclusiveMode) == 0xd08);
