@@ -26429,3 +26429,14 @@ chunk	address	module	name	length
 742	00bc3f30	CEnginePrimitiveManagerParticleLineGroup::CEnginePrimitiveManagerParticleLineGroup	RenderSubPrimitive	3357
 742	00bc3f3d	CEnginePrimitiveManagerParticleLineGroup	RenderSubPrimitive	3344
 742	00be0eb0	CEnginePrimitiveManager2DParticleGroup	?RenderSubPrimitive@CEnginePrimitiveManager2DParticleGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	2889
+743	00c8ab70	_global	CreatureHitNotification_Process	800
+743	00c8ae90	_global	CreatureHitNotification_StateProcess	1530
+743	00c8b490	_global	Subsystem_LoadWorldMapAndNotifications	736
+743	00c8d690	_global	WeatherRenderer_ProcessStream	702
+743	00c8ff30	_global	AudioDSP_Process	2470
+743	00c94ae0	_global	Audio_ProcessWeightedCoefficients	1024
+743	00c9c620	_global	Mesh_ComputeDetailLOD	588
+743	00c9c870	_global	Mesh_Process	712
+743	00c9dd60	_global	Mesh_ComputeNormalMap	1308
+743	00c9e280	_global	Mesh_ResizeDetail	541
+743	00c9ef90	CPlayer::CPlayer	ProcessAudioFrame	2346
