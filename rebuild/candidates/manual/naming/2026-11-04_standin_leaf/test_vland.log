@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00401490   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+00401490   WARN STANDIN_LEAF ?CEngineMap_PeekWaterHasType@@YI_NPAVCEngineMap@@H@Z (catalog CEngineMap::PeekWaterHasType)
+00401490   RELOCATION_MATCH PASS   PeekWaterHasType
+00401296   WARN RELOC_ALIAS: ___dllonexit -> 004013de is the import thunk 'MSVCR71.DLL::__dllonexit'
+00401296   RELOCATION_MATCH PASS   __onexit
+00405020   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00405020   WARN SHARED_HEADER_AVAILABLE C2DVector
+00405020   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00405020   WARN SHARED_HEADER_AVAILABLE CRenderManager2D
+00405020   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00405020   WARN SHARED_HEADER_AVAILABLE CSystemManager
+00405020   RELOCATION_MATCH PASS   DrawTextW
+00415cf0   MATCH            PASS   GetVectorParam
+
+WINS: 4
+  00401490 RELOCATION_MATCH CEngineMap::PeekWaterHasType
+  00401296 RELOCATION_MATCH _global::__onexit
+  00405020 RELOCATION_MATCH NUISystem::CIMEFont::DrawTextW
+  00415cf0 MATCH NParticleEngine::CAEnvironmentInteraction::?GetVectorParam@CAEnvironmentInteraction@
+elapsed 4s rc=0

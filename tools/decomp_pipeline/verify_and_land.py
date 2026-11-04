@@ -32,6 +32,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from artifact_layout import shard_directory
 from crawl import purity
 import reloc_identity
+import standin_leaf
 GENERIC_STRUCT_NAMES = {"T", "Sub", "Owner", "Slot", "Info", "Obj", "S", "Self", "This", "Inner",
                         "Foo", "Holder", "Mid", "MidObj"}
 
@@ -564,6 +565,14 @@ def main():
             for h_ in relh: print(f"{addr:10} {h_}")
             if relh or (relw and os.environ.get("LANDVERIFY_STRICT_RELOCS")=="1"):
                 print(f"{addr:10} {'RELOC_IDENTITY':16} {'-':6} {name}"); continue
+        # STANDIN_LEAF (non-blocking): the graded symbol is a stand-in, not the catalog function's name (standin_leaf.py).
+        if st.startswith(("MATCH","RELOCATION")) and ext is None:
+            try:
+                import contextlib, io
+                with contextlib.redirect_stderr(io.StringIO()): gsym=obj_text(sobj, leaf)[2]   # the leaf WARN is printed already
+                why_=standin_leaf.standin(gsym, o.get("name") or (mod+"::"+name if mod!="_global" else name))
+                if why_: print(f"{addr:10} WARN STANDIN_LEAF {why_}")
+            except Exception as ex: print(f"{addr:10} WARN STANDIN_CHECK_ERROR {type(ex).__name__}: {ex}")
         beh=behaviour_of(tst, addr, patt, work, e, sobj)
         print(f"{addr:10} {st:16} {beh:6} {name}")
         if st.startswith(("MATCH","RELOCATION_MATCH")) and beh=="PASS":
