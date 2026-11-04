@@ -53505,11 +53505,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00eaee80	Init	CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
 00eaef30	Main	CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
 00eaf1e0	PlayBeingRumbledCutscene	CV_MurderTwistFinalScript	__thiscall	void	1	CV_MurderTwistFinalScript *	1	yes	accepted									
-00eaf810	DoAskingHeroToKillAssassin	CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
+00eaf810	DoAskingHeroToKillAssassin	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
 00eb03a0	DoesAssassinTrustHero	NScript::CV_MurderTwistFinalScript	__thiscall	bool	1	CV_MurderTwistFinalScript *	1	yes	accepted									
 00eb0700	WaitForEnflameReactionIfNecessary	NScript::CV_MurderTwistFinalScript	__thiscall	void	2	CV_MurderTwistFinalScript *,CScriptThing *	1	yes	accepted									
 00eb07d0	HasHeroEnflamedEntity	NScript::CV_MurderTwistFinalScript	__thiscall	bool	2	CV_MurderTwistFinalScript *,CScriptThing *	1	yes	accepted									
-00eb0830	DoRemindingHeroToKillAssassin	CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
+00eb0830	DoRemindingHeroToKillAssassin	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
 00eb10c0	DoBecomingSuspiciousOfHero	CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
 00eb15c0	DoGivingRewardToHero	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff	__thiscall	void	1	CMurderTwistAssassin *	1	yes	accepted									
 00eb19c0	DoSayingWellDoneToHero	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
@@ -53518,12 +53518,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00eb2000	CVtable_012efee8	CVtable_012efee8	__thiscall	undefined	3	CV_MurderTwistFinalScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
 00eb2060	sub_00eb2060	_global	unknown	undefined	0		0			discovered	gapscan							
 00eb2070	Init	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard	unknown	undefined	0		0			discovered	gapscan							
-00eb2140	Main	CMurderTwistSheriffGuard	__thiscall	void	1	CMurderTwistSheriffGuard *	1	yes	accepted									
-00eb23e0	DoAskingHeroToSpeakToBoss	CMurderTwistSheriffGuard	__thiscall	void	1	CMurderTwistSheriffGuard *	1	yes	accepted									
-00eb2900	DoAskingHeroToSpeakToBossAgain	CMurderTwistSheriffGuard	__thiscall	void	1	CMurderTwistSheriffGuard *	1	yes	accepted									
-00eb2dc0	DoAskingHeroToSpeakToBossAgain	CMurderTwistSheriffGuard	__thiscall	void	1	CMurderTwistSheriffGuard *	1	yes	accepted									
-00eb3280	DoAskingHeroToSpeakToBossAgain	CMurderTwistSheriffGuard	__thiscall	void	1	CMurderTwistSheriffGuard *	1	yes	accepted									
-00eb3740	DoSayingThankYouToHero	CMurderTwistSheriffGuard	__thiscall	void	1	CMurderTwistSheriffGuard *	1	yes	accepted									
+00eb2140	Main	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard	__thiscall	void	1	CMurderTwistSheriffGuard *	1	yes	accepted									
+00eb23e0	DoAskingHeroToSpeakToBoss	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard	__thiscall	void	1	CMurderTwistSheriffGuard *	1	yes	accepted									
+00eb2900	DoRemindingHeroToKillAssassin	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard	__thiscall	void	1	CMurderTwistSheriffGuard *	1	yes	accepted									
+00eb2dc0	DoAskingHeroToSpeakToBossAgain	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard	__thiscall	void	1	CMurderTwistSheriffGuard *	1	yes	accepted									
+00eb3280	DoCongratulatingHero	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard	__thiscall	void	1	CMurderTwistSheriffGuard *	1	yes	accepted									
+00eb3740	DoSayingThankYouToHero	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard	__thiscall	void	1	CMurderTwistSheriffGuard *	1	yes	accepted									
 00eb3ba0	Init	CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
 00eb3c60	Alloc	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00eb3d00	sub_00eb3d00	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -53533,7 +53533,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00eb40c0	DoWatchingForTrouble	CMurderTwistAssassin	__thiscall	void	1	CMurderTwistAssassin *	1	yes	accepted									
 00eb4710	IsFeelingThreatened	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin	__thiscall	bool	1	CMurderTwistAssassin *	1	yes	accepted									
 00eb4760	DoDealWithHero	CMurderTwistAssassin	__thiscall	void	1	CMurderTwistAssassin *	1	yes	accepted									
-00eb4f80	DoRemindingHeroToKillSheriff	CMurderTwistAssassin	__thiscall	void	1	CMurderTwistAssassin *	1	yes	accepted									
+00eb4f80	DoRemindingHeroToKillSheriff	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin	__thiscall	void	1	CMurderTwistAssassin *	1	yes	accepted									
 00eb53a0	Init	CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
 00eb5450	Alloc	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00eb54f0	sub_00eb54f0	_global	unknown	undefined	0		0			discovered	gapscan							

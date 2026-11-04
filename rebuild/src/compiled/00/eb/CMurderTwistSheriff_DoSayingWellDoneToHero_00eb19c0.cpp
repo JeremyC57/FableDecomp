@@ -1,4 +1,4 @@
-// NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoSuspicious() -- the pleased sheriff: talked to by the hero -> paused movie sequence, the "pleased" line (first time,
+// NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoSayingWellDoneToHero() -- the pleased sheriff: talked to by the hero -> paused movie sequence, the "pleased" line (first time,
 //   then HasSaidWellDoneToHero) or that line numbered 1..2 (NextLine); hit by the hero (or a special ability other than 14) ->
 //   wait for the enflame reaction, "pleased, attacked" line, SheriffState 2
 // Leaf: ?DoSayingWellDoneToHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ

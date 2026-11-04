@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-04 (chunk authoring; rounds 2026-11-04a..h landed; chunks 746 + 747 running)
+# Resume here (one page) — updated 2026-11-04 (chunk authoring; rounds 2026-11-04a..i landed; chunk 747 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -14,8 +14,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 - Chunks 738 (CPSCRenderSprite), 739 (CPSCUpdateNormal), 740 (CPSCRenderMesh) cut from the particle groups; brief
   `$S/w22/BRIEF_738.md`, work in `$S/w22/chunk73{8,9}`, `chunk740`. 739 landed 2 of 5 (`batches/2026-11-04_landing_a/`), 740 3 of 5 (`_landing_b/`), 738 3 of 5 (`_landing_c/`), 741 2 of 5 (`_landing_d/`), 743 11 of 11 + 4 Vorbis re-models (`_landing_e/`), 742 2 of 6 (`_landing_f/`); rest staged in
   `pending/2026-11-04_linux_hand73{8,9}/`, `_hand74{0,1,2,3}/`. 744 (CQ_HangingTreeGoodScript) landed 1 of 5 + the GetGuardsHealth
-  respelling (`_landing_g/`), 745 (CV_HeroDuelScript) 4 of 4 (`_landing_h/`); staged in `pending/2026-11-04_linux_hand74{4,5}/`.
-- **Running when this page was written:** chunk 746 (CMurderTwistSheriff / guards, `$S/w22/chunk746`) and chunk 747 = retry of the 65
+  respelling (`_landing_g/`), 745 (CV_HeroDuelScript) 4 of 4 (`_landing_h/`), 746 (MurderTwist sheriff/guard) 4 of 5 (`_landing_i/`); staged in `pending/2026-11-04_linux_hand74{4,5,6}/`.
+- **Running when this page was written:** chunk 747 = retry of the 65
   parked bare-`fistp` rows with the isolated helpers (`$S/w22/chunk747`, brief `$S/w22/BRIEF_747.md`, rows from `$S/asmcand.json`
   "fistp", oracle `$S/batch/chunk747_oracle.tsv`; its mirror is HEAD ab98c12c3). Check each dir's STATUS.tsv / NOTES.md / payload.json,
   then land. Next asm-rule work after 747: the 9 hand SSE/MMX parks (need new isolated helpers with C++ fallbacks, e.g. 0x00988E80,
@@ -23,8 +23,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   (e.g. 0x0042DF9E, 0x005BD993, 0x00899EF0) to C++ + helper. The 45 "asm-impossible" parks that are really scheduling/frame residue
   belong in the normal retry pool.
 - Coverage (refresh with `tools/write_decomp_dashboard.py` then `tools/update_readme_progress.py`; never hand-edit):
-  46,578 genuine of the 49,564-function catalog (93.98%), 56.59% of retail function bytes, 54,130 landed rows,
-  after landing 2026-11-04h. Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`, `2026-11-04_landing_a/` .. `_landing_h/`.
+  46,582 genuine of the 49,564-function catalog (93.98%), 56.65% of retail function bytes, 54,134 landed rows,
+  after landing 2026-11-04i. Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`, `2026-11-04_landing_a/` .. `_landing_h/`.
 - `// Revisit: inline-depth` rows: 65 (129 at the start of the day). Mechanism, levers and why the 65 are left:
   `docs/pipeline/INLINE_DEPTH_REVISIT.md`; research `batches/2026-11-03_inline_split_research/`, `_inline_revisit2/`, `_inline_revisit3/`.
 - Codex: pass 13 landed 47 of 51 (`batches/2026-11-03_codex_pass13_landing/`; data names for `cvdump` in its NAME_DECISIONS.tsv);

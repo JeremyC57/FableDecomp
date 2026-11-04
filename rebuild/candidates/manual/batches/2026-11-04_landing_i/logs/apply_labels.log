@@ -1,0 +1,17 @@
+catalog  00eb23e0 CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBoss -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBoss
+catalog  00eb3740 CMurderTwistSheriffGuard::DoSayingThankYouToHero -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoSayingThankYouToHero
+catalog  00eb4f80 CMurderTwistAssassin::DoRemindingHeroToKillSheriff -> NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::DoRemindingHeroToKillSheriff
+catalog  00eb0830 CMurderTwistSheriff::DoRemindingHeroToKillAssassin -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoRemindingHeroToKillAssassin
+catalog  00eb2900 CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBossAgain -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoRemindingHeroToKillAssassin
+catalog  00eb2dc0 CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBossAgain -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBossAgain
+catalog  00eb3280 CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBossAgain -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoCongratulatingHero
+manifest 00eaf810 CMurderTwistSheriff::DoAskingHeroToKillAssassin -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoAskingHeroToKillAssassin
+manifest 00eb0830 CMurderTwistSheriff::DoRemindingHeroToKillAssassin -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoRemindingHeroToKillAssassin
+manifest 00eb2140 CMurderTwistSheriffGuard::Main -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::Main
+manifest 00eb23e0 CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBoss -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBoss
+manifest 00eb2900 CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBossAgain -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoRemindingHeroToKillAssassin
+manifest 00eb2dc0 CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBossAgain -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBossAgain
+manifest 00eb3280 CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBossAgain -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoCongratulatingHero
+manifest 00eb3740 CMurderTwistSheriffGuard::DoSayingThankYouToHero -> NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoSayingThankYouToHero
+manifest 00eb4f80 CMurderTwistAssassin::DoRemindingHeroToKillSheriff -> NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::DoRemindingHeroToKillSheriff
+labels 13  catalog renamed 7  manifest renamed 9

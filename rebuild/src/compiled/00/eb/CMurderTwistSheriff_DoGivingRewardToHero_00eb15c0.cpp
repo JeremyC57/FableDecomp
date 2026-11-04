@@ -1,4 +1,4 @@
-// NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoRemindingHeroToKillSheriff() -- the sheriff's reaction once the assassin is dead: talked to by the hero
+// NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoGivingRewardToHero() -- the sheriff's reaction once the assassin is dead: talked to by the hero
 //   -> paused movie sequence, "assassin killed" line while alive, 1000 gold, SheriffState 3; hit by the hero (or by any of his
 //   special abilities except ability 14) -> wait for the enflame reaction, paused "hero sussed" line, SheriffState 2
 // Leaf: ?DoGivingRewardToHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ

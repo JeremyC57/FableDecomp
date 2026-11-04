@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00eb0830   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb0830   RELOCATION_MATCH PASS   DoRemindingHeroToKillAssassin
+00eb2900   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb2900   RELOCATION_MATCH PASS   DoRemindingHeroToKillAssassin
+00eb2dc0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb2dc0   RELOCATION_MATCH PASS   DoAskingHeroToSpeakToBossAgain
+00eb3280   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb3280   RELOCATION_MATCH PASS   DoCongratulatingHero
+
+WINS: 4
+  00eb0830 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::?DoRemindingHeroToKillAssassin@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00eb2900 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::?DoRemindingHeroToKillAssassin@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00eb2dc0 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::?DoAskingHeroToSpeakToBossAgain@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00eb3280 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::?DoCongratulatingHero@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ

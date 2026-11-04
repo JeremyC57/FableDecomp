@@ -381365,6 +381365,34 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00e9be60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00eb0830'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriff_DoRemindingHeroToKillAssassin_00eb0830.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriff_DoRemindingHeroToKillAssassin_00eb0830_test.cpp'
+        PassPattern = '00eb0830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb2900'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_DoRemindingHeroToKillAssassin_00eb2900.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_DoRemindingHeroToKillAssassin_00eb2900_test.cpp'
+        PassPattern = '00eb2900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb2dc0'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_DoAskingHeroToSpeakToBossAgain_00eb2dc0.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_DoAskingHeroToSpeakToBossAgain_00eb2dc0_test.cpp'
+        PassPattern = '00eb2dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb3280'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_DoCongratulatingHero_00eb3280.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_DoCongratulatingHero_00eb3280_test.cpp'
+        PassPattern = '00eb3280_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,6 @@
+address	name	status	attempts	note
+00eaf810	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoAskingHeroToKillAssassin	DIFFER(3021v2945)	13	parked differ/; best k (TRetVoid): one pause.Game spill store in the talk block shifts later temp slots (dl=99); next idea: PDB function-local records of this function
+00eb0830	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoRemindingHeroToKillAssassin	RELOCATION_MATCH	1	src+test, vland PASS
+00eb2900	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoRemindingHeroToKillAssassin	RELOCATION_MATCH	2	src+test, vland PASS (catalog label was DoAskingHeroToSpeakToBossAgain)
+00eb2dc0	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBossAgain	RELOCATION_MATCH	1	src+test, vland PASS
+00eb3280	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoCongratulatingHero	RELOCATION_MATCH	1	src+test, vland PASS (catalog label was DoAskingHeroToSpeakToBossAgain)
