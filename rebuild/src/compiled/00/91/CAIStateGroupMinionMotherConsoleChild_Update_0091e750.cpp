@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionMotherConsoleChild::Update() -- for each child-hurt-go-to-mother event (type 0x18) in the mother's entity events: look at the living child and, once it is within 3 units (or dead or gone), play the ST_BLOW_KISS_LOOP animation; stop when the look fails, the child is still too far away or the animation fails; then terminate
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 //   loop instead of `break` (VC7.1 tail-merges it into the shared Terminate). With the break, the function has one exit path
 //   through the loop and VC7.1 shrink-wraps the esi/edi pushes after the presence test and swaps this/child (ebp/edi); the
 //   duplicated exit keeps all four pushes at entry with this in edi and the 0x18 predicate / child in ebp, as retail.
@@ -26,21 +27,13 @@ class C3DVector { public:
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;    // 0x004C73D0
     bool HasTC(long interfaceType) const { return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0; }
@@ -50,8 +43,8 @@ class CThing { public:
         if (present) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
         }
         return present;
     }

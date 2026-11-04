@@ -2,6 +2,7 @@
 // scorpion again; then, if the target still lives, either keep charging the remaining distance or (out of distance /
 // barely moved) drop component 0xC8 and strike
 // Leaf: ?FinishAction@CCreatureAction_ScorpionCharge
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Layout: retail CCombatActionBase is 0x114 (Ego_r.pdb 0x12c): ChargeDistance +0x114, StartPos +0x118 (PDB +0x12c/+0x130);
 //   PTarget +0xa8 (PDB +0xb4); CThing interface bitset +0x20, map +0x44, dead flag +0x91 bit 0 (landed 0x008C5490).
 // Shape: travelled distance is the XY length from StartPos (inline fsqrt); a discarded (compiled-out) debug call with
@@ -12,21 +13,13 @@
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);             // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
     void RemoveTC(ETCInterfaceType type);                         // 0x004C9840
@@ -35,9 +28,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

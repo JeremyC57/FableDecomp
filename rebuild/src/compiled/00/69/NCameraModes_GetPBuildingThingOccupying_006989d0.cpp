@@ -1,5 +1,6 @@
 // NCameraModes::GetPBuildingThingOccupying(const CThing& thing) -- the live building (thing type 3) that the thing's component 0x75 points at, or 0
 // Leaf: ?GetPBuildingThingOccupying@NCameraModes@@YIPBVCThingBuilding@@ABVCThing@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 //
 // Retail 0x006989D0, 83 bytes (+ int3 padding to 96), `ret` (__fastcall: the thing in ecx).
 // Callees: the const CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (inline GetTC),
@@ -18,15 +19,7 @@ class CThingBuilding;
 class CTCBase { public: void* vfptr; CThing* ParentThing; };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;       // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CBaseObject;
@@ -58,7 +51,7 @@ public:
     unsigned char  _pad11[0x20 - 0x11];
     unsigned long  m_presentBits[9];                        // +0x20 interface-present bitset
     CInterfaceMap  m_interfaces;                            // +0x44
-    unsigned char  _pad4c[0x91 - 0x4c];
+    unsigned char  _pad54[0x3d];
     unsigned char  Dead : 1;                                // +0x91 bit 0
     __forceinline bool HasTC(long type) const
     {
@@ -70,8 +63,8 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        const CInterfaceMap::SEntry* end = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        const CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
 };

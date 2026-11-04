@@ -1,5 +1,6 @@
 // CTCInventory::AddCloseInventoryEvent() -- an active, not yet closing interface-0xF6 menu is asked to close itself; otherwise the base queues the close-inventory game event; then the live GUI is toggled back if it was hidden
 // Leaf: ?AddCloseInventoryEvent@CTCInventory@@UAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 27 (family c695): NInventory::CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 is the virtual
 //   ?AddCloseInventoryEvent@CTCInventoryBase@NInventory@@UAEXXZ (Ego_r.pdb + FableWin.pdb; chunk 695), called qualified, and the
 //   override is ?AddCloseInventoryEvent@CTCInventory@@UAEXXZ. Was the global CTCInventoryBase with non-virtual members (QAE).
@@ -28,38 +29,24 @@
 
 class CTCBase;
 
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                   // +0x00
-    SEntry* last;                                    // +0x04
-    SEntry* LowerBound(const ETCInterfaceType& type);            // 0x0040F020
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad_0x00[0x20];
     std::bitset<274> m_present;                         // +0x20
-    unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     bool HasTC(long wanted) { return m_present.test(wanted); }
     template<class T> __forceinline T* GetTCUnchecked(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || wanted < it->first)
-            it = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || wanted < it->first)
+            it = map->end();
         return (T*)it->second;
     }
     template<class T> __forceinline T* GetTC(long wanted)

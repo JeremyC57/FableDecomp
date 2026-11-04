@@ -1,6 +1,7 @@
 // 00a77420 CNavSwitchableLeafNode::Unlock
 // Flags: /Gr
 // Leaf: ?Unlock@CNavSwitchableLeafNode@@AAEXPBVCNavRegion@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 #ifndef _MSC_VER
 #include <stdint.h>
 #endif
@@ -63,21 +64,7 @@ typedef unsigned __int64 Pass9Key;
 #else
 typedef uint64_t Pass9Key;
 #endif
-namespace std {
-template<class A,class B>struct pair{A first;B second;};
-template<class T>class allocator{};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};
-template<class T,class A>class _Vector_base{protected:T*_M_start;T*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:
- typedef unsigned int size_type;
- const T*begin()const{return this->_M_start;}
- size_type size()const{return size_type(this->_M_finish-this->_M_start);}
- const T&operator[](size_type n)const{return *(begin()+n);}
-};
-}
-template<class T>class CArray:public std::vector<T>{public:const T&operator[](unsigned int n)const{return *(this->begin()+n);}};
-template<class K,class V>class CKeyPairCompareLess{};
-template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> >{public:C Compare;bool Dirty;};
+#include "engine/CVectorMap.h"
 class CNavSwitchableLeafNode:public CNavNavigableLeafNode {
  CVectorMap<Pass9Key,bool> UniqueIDsOpen;
  bool IsEveryUniqueIDOpen() const;

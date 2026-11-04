@@ -1,5 +1,6 @@
 // CAIStateGroup_VersusScorpionKing::IsRunnable() -- runnable when the creature's live enemy has the scorpion-king creature def type (0x80000): latch the "ARENA_CentrePoint" thing (or the enemy when there is none) as the arena centre, pick a random circling direction (more than 50 of 100) and latch the enemy
 // Leaf: ?IsRunnable@CAIStateGroup_VersusScorpionKing
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00963640, length 456 bytes (+ int3 padding; plain `ret`, virtual slot 11).
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface ternary form, interface 8 = bit 8 of +0x20;
 //          the miss path reads the never-written slot), the component's virtual slot 29 (+0x74, the current enemy),
@@ -23,15 +24,7 @@
 //          temporaries and the frame words shift by 4 (out +0x18 / temps +0x10 instead of retail's shared +0x14).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CCharString { public:
     void* PStringData;
@@ -99,7 +92,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x70 - 0x4c];
+    unsigned char _pad54[0x1c];
     CDefClassBase* m_pDef;                      // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
@@ -108,8 +101,8 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

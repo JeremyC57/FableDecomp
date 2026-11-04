@@ -1,5 +1,6 @@
 // NCreatureAI::IsOverridingFactionEnemyOnTarget(const CThingAICreature* creature, const CThing* target) -- whether a village member may treat the target as an enemy despite faction: never for creature group 4 or while scripted control holds it; yes when the target's opinion source overrides faction for this witness or the target keeps a hero deed log and the creature's opinion of the hero overrides the faction enmity
 // Leaf: ?IsOverridingFactionEnemyOnTarget@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00864B30, 384 bytes incl. int3 padding, /Gr `__fastcall` (creature in
 //   ecx, target in edx), plain `ret`.
 // Identity: Ego_r/FableWin PDB name set `?IsOverridingFactionEnemyOnTarget@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@@Z`;
@@ -104,15 +105,7 @@ class CThingBaseDef : public CDefClassBase { };
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                          // +0x00
-    SEntry* last;                                           // +0x04
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;       // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {
@@ -120,7 +113,7 @@ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 UsingComponents bitset
     CInterfaceMap m_interfaces;                             // +0x44 Components
-    unsigned char _pad4c[0x70 - 0x4c];
+    unsigned char _pad54[0x1c];
     CDefPointer<const CThingBaseDef> PBaseDef;              // +0x70
 
     __forceinline bool HasTC(long type) const
@@ -133,8 +126,8 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        const CInterfaceMap::SEntry* end = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        const CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
     template <class T> __forceinline bool PeekTC(long type, const T** out) const    // out-pointer form
@@ -142,9 +135,9 @@ public:
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
+            const CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->end() || type < it->first)
+                it = map->end();
             *out = (const T*)it->second;
             return true;
         }

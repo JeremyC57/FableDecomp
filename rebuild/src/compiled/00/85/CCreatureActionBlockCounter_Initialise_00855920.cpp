@@ -1,4 +1,5 @@
 // CCreatureAction_BlockCounter::Initialise() -- notify the owner's combat component, clear the melee-flourish flag of a live target creature (state byte 2) that has one, then CCombatActionBase::Initialise
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00855920, length 189 bytes (+ int3 padding), plain `ret` (virtual, no arguments).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (owner +8 once, target +0xa8 four times: re-fetched per test),
 // CVectorMap::LowerBound 0x0040F020 (inlined component lookup, type 0x30 = CTCCombat = bit 16 of the dword at +0x24),
@@ -10,15 +11,7 @@
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCCombat { public:
@@ -33,7 +26,7 @@ class CThing { public:
     unsigned char _pad11[0x0f];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x45];
+    unsigned char _pad54[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     __forceinline unsigned long HasTC(long interfaceType) const
     {
@@ -44,23 +37,23 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }
         return false;
     }
-    __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
+    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        CInterfaceMap::SEntry* sel;
-        if (it == map->last) sel = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        CInterfaceMap::value_type* sel;
+        if (it == map->end()) sel = map->end();
         else if (it->first <= interfaceType) sel = it;
-        else sel = map->last;
+        else sel = map->end();
         return sel;
     }
 };

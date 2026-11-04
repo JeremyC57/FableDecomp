@@ -1,5 +1,6 @@
 // CTCDegradableBase::OnInitialActivate() -- persist the parent when the def is degradable, re-evaluate a damaged parent's stage, and tell a switchable-navigation component whether the thing initially blocks navigation
 // Leaf: OnInitialActivate
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 //
 // Retail 0x008ECBE0, 151 bytes (plain `ret`; vtable 0x0126A6A4 slot 6, Ego_r.pdb
 // `?OnInitialActivate@CTCDegradableBase@@MAEXXZ`; the catalog "CTCDegradableBarrier::vfunc_6" is the
@@ -23,15 +24,7 @@
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                   // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
@@ -44,9 +37,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

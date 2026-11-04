@@ -1,5 +1,6 @@
 // NCreatureMode::CModeKnockedDown::OnActivate() -- show emote icon 8 (priority 0, 0.1 s, full scale and alpha), reset the interface-0x30 component's ability timers, suspend a player creature's animation, then the base activation
 // Leaf: ?OnActivate@CModeKnockedDown
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D9480, 166 bytes (+ int3 padding), `ret`; vtable 0x01267E78 slot 5.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined lookups: type 0x45 = bit 5 of +0x28 = CTCEmoteIcon, type 0x30 = bit 16
 //   of +0x24), CTCEmoteIcon::SetEmoteIcon(long, long, float, float, unsigned char) @ 0x0071AAB0 (landed), the 0x30
@@ -11,15 +12,7 @@
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                     // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);  // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingAICreature { public:
@@ -38,9 +31,9 @@ class CThing : public CThingAICreature { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }
@@ -54,8 +47,8 @@ class CThing : public CThingAICreature { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->first) ? map->last : it;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
         return (T*)sel->second;
     }
 };

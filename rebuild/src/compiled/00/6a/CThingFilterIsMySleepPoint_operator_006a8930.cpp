@@ -1,5 +1,6 @@
 // CThingFilter_IsMySleepPoint::operator()(CThing* thing) const -- a thing is the sleeper's sleep point when it is a single-person occupiable of occupy type 2 that is either unowned or owned by the sleeper
 // Leaf: ??RCThingFilter_IsMySleepPoint
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A8930, length 162 bytes, `ret 4`, bool in al.
 // Callees: CInterfaceMap::LowerBound const @ 0x004365B0 (TC 0xac = CTCSinglePersonOccupiable, TC 0x33 = CTCOwnedEntity),
 //   CTCSinglePersonOccupiable::IsOfType(EOccupyType) @ 0x0087C420 (engine_api.tsv), CBaseIntelligentPointer::GetPItem
@@ -10,15 +11,7 @@
 //   the owner (a named local) compared and returned directly (`xor edx,edx ; sete dl ; mov al,dl`).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing;
@@ -51,9 +44,9 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return (T*)it->second;
     }
 };

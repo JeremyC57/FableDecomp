@@ -1,5 +1,6 @@
 // CAnimationSet::GetNoAnims(const CCharString& name, const CAnimFilterBase& filter) const -- how many of the animations stored under the name's CRC the filter accepts
 // Leaf: ?GetNoAnims@CAnimationSet@@QBEJABVCCharString@@ABVCAnimFilterBase@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe @ 0x005DC290, 72 bytes (+8 int3), __fastcall `ret 8`. Ego_r.pdb
 // `?GetNoAnims@CAnimationSet@@QBEJABVCCharString@@ABVCAnimFilterBase@@@Z`. Callers: CThingCreatureBase::PreloadAnimation
 // 0x006631C0, CThingCreatureBase::PreloadBasicAnimations 0x00663610 (twice).
@@ -20,22 +21,7 @@ class CAnimFilterBase {
 public:
     virtual bool operator()(const CAnimationEntry& entry) const = 0;   // slot 0
 };
-namespace std {
-template <class T1, class T2> struct pair {
-    T1 first;
-    T2 second;
-};
-}
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class Cmp> class CVectorMap {
-public:
-    typedef std::pair<K, V> value_type;
-    typedef const value_type* const_iterator;
-    const value_type* _M_start;                         // +0x00 (the STLport vector)
-    const value_type* _M_finish;                        // +0x04
-    const value_type* _M_end_of_storage;                // +0x08
-    const_iterator end() const { return _M_finish; }
-};
+#include "engine/CVectorMap.h"
 class CAnimationSet {
 public:
     typedef CVectorMap<unsigned long, CAnimationEntry, CKeyPairCompareLess<unsigned long, CAnimationEntry> > TAnimMap;

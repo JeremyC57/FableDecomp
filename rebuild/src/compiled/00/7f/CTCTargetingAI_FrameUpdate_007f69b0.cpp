@@ -1,5 +1,6 @@
 // CTCTargetingAI::FrameUpdate() -- prune the things-not-to-attack list (dead or vanished things, and stealthed things that have come within 5 units), then refresh the best enemy creature for attack and the nearest interesting thing
 // Leaf: FrameUpdate
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F69B0, 306 bytes (plain `ret`). CTCTargetingAI vtable 0x012411FC slot 9 (the
 //   manifest's "CTCTargetingAI::vfunc_9"; slot 9 is the CTCBase FrameUpdate).
 // Callees: CTCBase::FrameUpdate @ 0x006868A0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, the pointer's virtual
@@ -22,22 +23,14 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
     const C3DVector& GetPos() const;               // 0x004C73D0
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -45,8 +38,8 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        return (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
 };
 inline bool IS_THING_ALIVE(const CThing* thing)

@@ -1,6 +1,7 @@
 // CVillageTaskCarryCrate::IsCreatureValidForTask(CThing* creature) -- a creature suits the task when its carrying state is the opposite of the task's: empty-handed for a pickup, carrying something for a drop-off
 // Grade: RELOCATION_MATCH -- retail's `mov bl,1` at entry (compared against hasItem and Pickup, returned as `mov al,bl`) is a `bool valid = true;` result local that the two failing tests set to false in an if/else-if chain and that is returned at the end; returning false directly folds the constant
 // Leaf: ?IsCreatureValidForTask@CVillageTaskCarryCrate@@
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008614B0, length 115 bytes (padded to 128), `ret 4`.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (inline GetInterface for TC 0x46 = CTCCarrying,
 // present bit `test byte ptr [thing+28h],40h`), CTCCarrying::GetThingInPrimarySlot @ 0x006A1440.
@@ -9,15 +10,7 @@
 // read the result local while it still holds true (bl), the false arms assign it.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                             // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;          // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -27,10 +20,10 @@ class CThing { public:
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

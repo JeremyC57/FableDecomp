@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPos(C3DVector&, CThing*) -- with a live enemy, aim behind the cover (away from the enemy, 0.75 of twice the cover radius, at least 1.5) and ask the creature's navigation for a nearby wander position it can reach
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00970930, length 384 bytes (`ret 8`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound const @ 0x004365B0 (interface 7 =
 //          CTCCreatureNavigation, bit 7 of +0x20), CThing::GetPos @ 0x004C73D0, C3DVector::AccurateNormalise @ 0x00A14440
@@ -22,15 +23,7 @@ class C3DVector { public:
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CBoundsInfo {
     unsigned char _00[0x34];
@@ -40,7 +33,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad1[0x60 - 0x4c];
+    unsigned char _pad9[0xc];
     CBoundsInfo* PBounds;                       // +0x60 (descriptive)
     unsigned char _pad2[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
@@ -49,8 +42,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
 };
 class CTCCreatureNavigation { public:                  // interface 7

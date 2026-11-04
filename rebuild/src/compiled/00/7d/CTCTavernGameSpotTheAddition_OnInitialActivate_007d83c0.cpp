@@ -1,4 +1,5 @@
 // CTCTavernGameSpotTheAddition::OnInitialActivate() -- run the tavern-game activation, find the owner's free game-position action point, create the game piece named by the sub def, then look through the owner's linked things (component 0x21) for the first live one whose type matches the def's cover type: remember it with its position and frame, and lay the cover over the board unless the game is already showing
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe @ 0x007D83C0, 432 bytes (plain `ret`, no EH frame).
 // Shape: the sub-def GetSubDef is a same-TU auto_inline(off) stand-in (def stays in edi, release without re-reading); the linked-things lookup is a const GetInterface (LowerBound 0x4365B0); the cover frame comes from vslot 72 on the thing's +0x60 object.
 // Callees: CTCTavernGame::OnInitialActivate 0x005EA650, CDefClassBase::GetSubDef<T> 0x007D9A80, LowerBound 0x0040F020 / 0x004365B0 (const),
@@ -34,16 +35,7 @@ class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CSpotTheAdditionDef>* def) const;   // 0x007D9A80
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CFrameSource { virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v0a(); virtual void v0b(); virtual void v0c(); virtual void v0d(); virtual void v0e(); virtual void v0f(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v1a(); virtual void v1b(); virtual void v1c(); virtual void v1d(); virtual void v1e(); virtual void v1f(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); virtual void v2a(); virtual void v2b(); virtual void v2c(); virtual void v2d(); virtual void v2e(); virtual void v2f(); virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v3a(); virtual void v3b(); virtual void v3c(); virtual void v3d(); virtual void v3e(); virtual void v3f(); virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47(); 
     virtual const CRightHandedSet& GetRHSet(); };   // vslot 72 (+0x120)
@@ -53,7 +45,7 @@ public:
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CFrameSource* Frame;                                // +0x60
     unsigned char _pad64[0x70 - 0x64];
     CDefClassBase* DefClass;                            // +0x70
@@ -67,9 +59,9 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }
@@ -80,9 +72,9 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

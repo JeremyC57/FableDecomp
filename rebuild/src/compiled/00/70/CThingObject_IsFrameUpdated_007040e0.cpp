@@ -1,5 +1,6 @@
 // CThingObject::IsFrameUpdated() const -- the object needs frame updates when CThing says so, when its kind-0x47 component has an active entry, or when its physics is moving
 // Leaf: ?IsFrameUpdated@CThingObject
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007040E0, length 106 bytes (+ int3 padding). CThingObject vtable 0x01264DCC slot 44
 // (the catalog's "vfunc_44"; Ego_r.pdb has ?IsFrameUpdated@CThingObject@@UBE_NXZ, and slot 44 calls CThing::IsFrameUpdated).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (inlined const GetTC of kind 0x47 = bit 7 of CThing+0x28),
@@ -10,15 +11,7 @@
 // `||` return (int materialised); the bit-7 HasTC test compiles to `test al,al ; jns`.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase { public:
     unsigned char _pad00[0x3c];
@@ -30,7 +23,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     bool HasTC(long interfaceType) const
     {
@@ -43,9 +36,9 @@ public:
         if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(kind);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || kind < it->first)
-                it = map->last;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || kind < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

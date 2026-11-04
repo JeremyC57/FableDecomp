@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverHornetQueenTakeDamage::Update() -- advance the boss phase when ready; on a range attack hit within 90 frames of the last one, count it, and on the third register the target with the combat manager, mark the queen ready to attack and perform the dragon roar; terminate
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095B280, length 352 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, 0xad = CTCBoss, bit 13 of +0x34),
 //          CTCBoss::IsReadyForPhaseChange @ 0x007AEE90 / IncrementBossPhase @ 0x007AED20, CAIStateGroupBase::GetPWorld
@@ -37,15 +38,7 @@ class CAIStateGroup_HoverHornetQueenTakeDamage : public CAIStateGroup_HoverMovem
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CCombatManager;
 class CThing { public:
@@ -59,9 +52,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

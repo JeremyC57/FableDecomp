@@ -515,7 +515,14 @@ inline void __cdecl __stl_throw_out_of_range(const char* message) { puts(message
 template<size_t _Nb> class bitset : public _Base_bitset<(_Nb+8*sizeof(unsigned long)-1)/(8*sizeof(unsigned long))> {
 public:
     bool _Unchecked_test(size_t n) const { return (this->_M_getword(n)&this->_S_maskbit(n))!=0; }
+#ifdef FABLE_RETAIL_STLP_BITSET_TEST_DECL
+    // Per-TU opt-in (plan phase 3, owner-approved 2026-11-04): STLport 4.6 _bitset.h test(), declared only. In the size-optimised
+    // TUs retail calls the out-of-line std::bitset<274>::test at 0x00410DE0 (63 bytes, ?test@?$bitset@$0BBC@@std@@QBE_NI@Z; 337
+    // landed callers bind it) instead of expanding the range check and the word test inline.
+    bool test(size_t n) const;
+#else
     bool test(size_t n) const { if(n>=_Nb) __stl_throw_out_of_range("bitset"); return _Unchecked_test(n); }
+#endif
 };
 // _function_base.h / _algo.h
 template<class _Arg,class _Result> struct unary_function {

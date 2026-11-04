@@ -1,5 +1,6 @@
 // CAIStateGroup_SummonerCharge::IsRunnable() -- once the next charge frame is reached and the summoner holds a live thing in its primary slot, charge a live enemy that lies (2D) between the def's near and far charge ranges and is either running away from combat (stealth timer >= 0) or a creature the summoner is fighting that the combat manager says is chargeable; latch it as the target
 // Leaf: IsRunnable
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096FA90, length 451 bytes (plain `ret`, virtual slot 11).
 // Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (evaluated for the static call), CWorld::GetWorldFrame @ 0x0049D870
 //          (static), CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0x46 CTCCarrying = bit 6 of +0x28, 8 the
@@ -20,15 +21,7 @@
 //          implicit CThing* -> CIntelligentPointer conversion (the temporary re-addressed with `lea` for operator=).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class C3DVector { public: float x, y, z; };
 class C2DVector { public:
@@ -40,7 +33,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x6c - 0x4c];
+    unsigned char _pad54[0x18];
     unsigned long ThingTypeFlags;               // +0x6c
     unsigned char _pad70[0x91 - 0x70];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
@@ -50,9 +43,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }
@@ -63,8 +56,8 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

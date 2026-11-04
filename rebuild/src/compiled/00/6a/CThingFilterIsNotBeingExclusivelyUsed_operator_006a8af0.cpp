@@ -1,5 +1,6 @@
 // CThingFilter_IsNotBeingExclusivelyUsed::operator()(const CThing& thing) const -- the thing has an exclusive-use component and nobody holds it
 // Leaf: ??RCThingFilter_IsNotBeingExclusivelyUsed
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A8AF0, length 78 bytes (+ int3 padding), `ret 4`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound(const ETCInterfaceType&) const @ 0x004365B0,
 //   CBaseIntelligentPointer::GetPItem @ 0x00A01B50.
@@ -15,21 +16,7 @@
 class CTCBase;
 enum ETCInterfaceType { TC_EXCLUSIVE_USE = 0x2f };
 
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                              // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* end_of_storage;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;     // 0x004365B0
-    __forceinline const SEntry* Find(long type) const
-    {
-        const SEntry* it = LowerBound((ETCInterfaceType)type);
-        return (it == last || type < it->first) ? last : it;
-    }
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {

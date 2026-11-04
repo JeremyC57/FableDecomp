@@ -1,5 +1,6 @@
 // CCreatureAction_UnsheatheItemFromInventory::GetAnimationToUse(const CThing& creature, const CThing& item) -- the item's weapon unsheathe animation, else "STANDARD_UNSHEATHE"
 // Leaf: GetAnimationToUse
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069F980, length 96 bytes, `ret 4`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound(const ETCInterfaceType&) const @ 0x004365B0,
 //   CTCWeapon::GetUnsheatheAnim() const @ 0x005DA540 (manifest label "GetSheatheAnim" is propagated; the
@@ -22,21 +23,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                              // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* end_of_storage;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;     // 0x004365B0
-    __forceinline const SEntry* Find(long type) const
-    {
-        const SEntry* it = LowerBound((ETCInterfaceType)type);
-        return (it == last || type < it->first) ? last : it;
-    }
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {
@@ -44,7 +31,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];               // +0x20 bitset<274>
     CInterfaceMap Components;                       // +0x44
-    unsigned char _pad50[0x91 - 0x50];
+    unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                         // +0x91 bit 0
     bool HasTC(ETCInterfaceType type) const
     {

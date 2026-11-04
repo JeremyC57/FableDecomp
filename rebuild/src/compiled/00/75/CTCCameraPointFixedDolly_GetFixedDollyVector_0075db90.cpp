@@ -1,5 +1,6 @@
 // CTCCameraPointFixedDolly::GetFixedDollyVector() const -- the dolly direction: the principal vector of the parent thing's shape-manager component
 // Leaf: ?GetFixedDollyVector@CTCCameraPointFixedDolly@@QBE?AVC3DVector@@XZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075DB90, 104 bytes (+int3 pad to 112), `ret 4` (C3DVector returned
 //   through the hidden pointer).
 // Identity: Ego_r.pdb ?GetFixedDollyVector@CTCCameraPointFixedDolly@@QBE?AVC3DVector@@XZ (the manifest's
@@ -28,15 +29,7 @@ public:
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
@@ -48,9 +41,9 @@ class CThing { public:
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
+            const CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->end() || type < it->first)
+                it = map->end();
             *out = (const T*)((void*)it->second);
             return true;
         }

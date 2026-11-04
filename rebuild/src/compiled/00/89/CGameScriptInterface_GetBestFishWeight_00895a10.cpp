@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00895A10, length 128 bytes.
 // Callees: the hero thing through the player (0x00449970 on PlayerManager, then 0x00487DC0; both labels propagated), live (+0x91 bit 0 clear), the inlined CThing::GetInterface (the presence bitset at +0x20, CVectorMap::LowerBound on the map at +0x44, end or a larger key -> the end entry); CGameDefinitionManager::Get @ 0x0044C6B0 (static), CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CTCInventoryBase::GetBestFishWeight @ 0x005BFC90.
 // Leaf: GetBestFishWeight
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 #include <string.h>
 // CCharString (Ego_r.pdb layout, as the landed CCharString::operator!= 0x0099E960): a 4-byte handle on a 17-byte block.
 #pragma pack(push, 1)
@@ -64,15 +65,7 @@ class CScriptThing : public CBase { public:                       // 12 bytes: v
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                       // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);           // 0x004365B0 / 0x0040F020 (two copies of the same body)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
 struct CThing_Retail {
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();
@@ -91,7 +84,7 @@ struct CThing_Retail {
     unsigned char         _pad11[0xf];
     unsigned long         m_presentBits[9];         // +0x20 std::bitset of the interface types present
     CInterfaceMap_Retail  m_interfaces;             // +0x44 the sorted {type, component} map
-    unsigned char         _pad4c[0x20];
+    unsigned char         _pad54[0x18];
     unsigned char         m_flags;                  // +0x6c (bit 2 = game object, bit 3 = creature)
     unsigned char         _pad6d[0x24];
     unsigned char         m_dead : 1;               // +0x91 bit 0
@@ -118,9 +111,9 @@ struct CThing_Retail {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap_Retail* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap_Retail::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap_Retail::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)((CTCBase_Retail*)it->second);
             return true;
         }

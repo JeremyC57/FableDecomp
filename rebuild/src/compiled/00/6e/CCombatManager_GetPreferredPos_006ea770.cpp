@@ -1,4 +1,5 @@
 // CCombatManager::GetPreferredPos(const CThingCreatureBase& creature) const -- where a registered attacker should stand: the
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Grade: RELOCATION_MATCH -- the frame-slot gap (sub esp,60h v 5Ch: the first UID find key kept its own slot because VC7.1 treated the
 //   extern find's result as possibly derived from the key it was handed, so the spilled &info.AttackerInfo kept that slot alive) closes
@@ -37,15 +38,7 @@ class C3DVector { public:
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;       // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CPhysicsObject {
     unsigned char _pad00[0x0c];
@@ -70,7 +63,7 @@ class CThing { public:
     unsigned __int64 UniqueID;                        // +0x18
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CPhysicsObject* PPhysics;                         // +0x60
     unsigned char _pad64[0x6c - 0x64];
     unsigned char m_flags6c;                          // +0x6c
@@ -82,8 +75,8 @@ class CThing { public:
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(key);
-            component = (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+            const CInterfaceMap::value_type* it = map->LowerBound(key);
+            component = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
         }
         return component;
     }

@@ -1,4 +1,5 @@
 // CTCKraken::StartBeamEffect() -- spawn the BEAM_ATTACK effect at the head's MOUTH_DUMMY and attach its particle emitter to the kraken
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FB6A0, length 457 bytes (+ int3 padding), esp frame, plain `ret`.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CTCGraphicAppearance::GetDummyObject @
 // 0x004C08C0, CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580, CSpecialEffectsDef::GetEffectFromString @ 0x00669D30
@@ -19,15 +20,7 @@ class CTCBase;
 class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CCharString { public:
     void* PStringData;
@@ -97,7 +90,7 @@ public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                  // +0x20 interface-present bitset
     CInterfaceMap  m_interfaces;                      // +0x44
-    unsigned char  _pad4c[0x64 - 0x4c];
+    unsigned char  _pad54[0x10];
     CTCGraphicAppearance* PGraphicAppearance;         // +0x64
     unsigned char  _pad68[0x70 - 0x68];
     CDefClassBase* m_pDef;                            // +0x70
@@ -109,9 +102,9 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

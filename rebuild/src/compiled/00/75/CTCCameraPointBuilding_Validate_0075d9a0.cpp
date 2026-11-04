@@ -1,4 +1,5 @@
 // CTCCameraPointBuilding::vfunc_17(CCharString& error) const -- validity check: the camera point must hang off a live building through its owner link, may not be both a start and an exit point, and its inside/outside position must agree with the start/exit flags; writes the reason into `error` and returns false on the first failure
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075D9A0, 254 bytes (+ int3 padding), `ret 4`. Vtable 0x0123ECBC
 //   (CTCCameraPointBuilding) slot 17, the slot the landed CTCCameraPointScripted::vfunc_17 0x0075CDF0 fills.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const @ 0x004365B0 (inlined GetInterface for type 0x33 =
@@ -22,15 +23,7 @@ class CCharString { public:
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing;
 class CBaseObject;
@@ -53,7 +46,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x6c - 0x4c];
+    unsigned char _pad54[0x18];
     unsigned long ThingTypeFlags;               // +0x6c (0x40 = building)
     unsigned char _pad70[0x91 - 0x70];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
@@ -72,8 +65,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
 };
 class CThingBuilding : public CThing { public:

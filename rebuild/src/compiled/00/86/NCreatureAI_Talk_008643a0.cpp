@@ -1,5 +1,6 @@
 // NCreatureAI::Talk(CThingAICreature& creature, CThingCreatureBase& listener, const CCharString& sound_name, bool, bool tell_listener) -- play the creature's entity-sound for the name at the listener: needs the creature's sound player and entity-sound def and the listener's event component; with tell_listener, skip it while the listener already holds a type-0x12 event and post a CEventHeroHasBeenSpokenToByVillagers after playing
 // Leaf: ?Talk@NCreatureAI@@YIXAAVCThingAICreature@@AAVCThingCreatureBase@@ABVCCharString@@_N3@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008643A0, 320 bytes incl. int3 padding, /Gr `__fastcall` (creature in ecx,
 //   listener in edx, the name, an unused bool and tell_listener on the stack), `ret 0Ch`.
 // Identity: the catalog's "Talk" (_global) is the PDB name set's
@@ -105,15 +106,7 @@ class CThingBaseDef : public CDefClassBase { };
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                          // +0x00
-    SEntry* last;                                           // +0x04
-    SEntry* LowerBound(const ETCInterfaceType& type);                   // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {
@@ -121,7 +114,7 @@ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 UsingComponents bitset
     CInterfaceMap m_interfaces;                             // +0x44 Components
-    unsigned char _pad4c[0x70 - 0x4c];
+    unsigned char _pad54[0x1c];
     CDefPointer<const CThingBaseDef> PBaseDef;              // +0x70
 
     __forceinline bool HasTC(long type) const
@@ -134,8 +127,8 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
-        CInterfaceMap::SEntry* end = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
 };

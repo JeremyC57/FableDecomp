@@ -1,4 +1,5 @@
 // CTCDoor::IsLockPickable() const -- a door can be lock-picked when its def allows it, it is closed (or moving), no interface-0xC2 component holds it, and its owner does not belong to a village that forbids it
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00730AE0, 286 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const @ 0x004365B0 (three inlined GetInterface lookups:
 //   0xC2 = word +0x38 bit 2, 0x33 = CTCOwnedEntity, word +0x24 bit 19, 0x23 = CTCVillageMember, word +0x24 bit 3),
@@ -14,15 +15,7 @@
 //   call appears when the lookup re-reads the member).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing;
 class CBaseObject;
@@ -50,8 +43,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
 };
 struct CTCInterfaceC2 {                         // interface type 0xC2 component

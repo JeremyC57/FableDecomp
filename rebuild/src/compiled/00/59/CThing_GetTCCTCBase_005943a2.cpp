@@ -1,5 +1,6 @@
 // CThing::GetTC<CTCBase>(ETCInterfaceType type, CTCBase** out) -- fetch a thing's component of the given interface type when the thing has one
 // Leaf: ??$GetTC@VCTCBase@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCBase@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005943A2, 73 bytes, `ret 8` (thiscall; returns bool in al).
 // Name: FableWin.pdb `??$GetTC@V<T>@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAV<T>@@@Z` (a member template; one ICF-folded
 // body serves every T, so the instantiation is not recoverable from the bytes -- CTCBase stands for it). No direct
@@ -21,28 +22,9 @@
 enum ETCInterfaceType { TCI_NONE };
 class CTCBase;
 
-namespace std {
-template <unsigned int _Nb> class bitset {
-public:
-    unsigned long _M_w[(_Nb + 31) / 32];
-    bool test(unsigned int __pos) const;             // 0x00410DE0 (bitset<274>)
-};
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-}
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
 
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare = CKeyPairCompareLess<K, V> > class CVectorMap {
-public:
-    typedef std::pair<K, V> value_type;
-    value_type* _M_start;                            // +0x00 (STLport vector)
-    value_type* _M_finish;                           // +0x04
-    value_type* _M_end_of_storage;                   // +0x08
-    value_type* end() const { return _M_finish; }
-    const value_type* LowerBound(const K& key) const;   // 0x004365B0
-};
 
 class CThing {
 public:

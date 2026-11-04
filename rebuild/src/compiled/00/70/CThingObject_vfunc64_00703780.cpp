@@ -1,4 +1,5 @@
 // CThingObject::vfunc_64() -- when the thing has interface 172 (0xac), asks that component whether its def has property bit 1 (0x0087C420); false without the interface
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00703780, length 69 bytes (vtable 0x01264DCC slot 64).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0, the component predicate @ 0x0087C420
 // (manifest "CTCSinglePersonOccupiable::IsOfType"; tests a mask against the def word at +0x28, `ret 4`; its bool returned as is).
@@ -12,15 +13,7 @@ class CTCBase { public:
     bool HasProperty(unsigned long mask);   // 0x0087C420 (tests the mask against its def's +0x28 word)
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     virtual void v00();
@@ -31,10 +24,10 @@ class CThing { public:
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->end() || type < it->first)
+                it = map->end();
             *out = it->second;
             return true;
         }

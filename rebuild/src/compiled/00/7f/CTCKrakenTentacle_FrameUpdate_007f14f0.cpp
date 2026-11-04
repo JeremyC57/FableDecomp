@@ -1,4 +1,5 @@
 // CTCKrakenTentacle::FrameUpdate() -- per frame (virtual slot 9): dies with its kraken; while the tentacle thing's emergence value is still below one, makes it untargetable, spawns the head effect and clears the obstruction (once); otherwise tracks its target or returns to its rest position; then fires the queued strike when its frame arrives
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F14F0, length 224 bytes (+ int3 padding); speed TU (no frame pointer). The oracle label
 // is CTCKrakenTentacle::vfunc_9 (the component FrameUpdate slot).
 // Callees: CTCBase::FrameUpdate @ 0x006868A0 (catalog "$E2"), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice on PKraken),
@@ -27,21 +28,13 @@ struct CPresenceBits {                             // std::bitset<274>
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                   // +0x00
-    SEntry* last;                                    // +0x04
-    SEntry* LowerBound(const ETCInterfaceType& type);            // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits UsingComponents;                   // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
-    unsigned char _pad_0x4c[0x91 - 0x4c];
+    unsigned char _pad_0x54[0x3d];
     unsigned char Dead : 1;                          // +0x91 bit 0
     unsigned char _pad_0x92[0xb4 - 0x92];
     float         EmergeFraction;                    // +0xb4
@@ -50,8 +43,8 @@ class CThing { public:
         if (UsingComponents.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            CInterfaceMap::SEntry* found = (it == map->last || wanted < it->first) ? map->last : it;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            CInterfaceMap::value_type* found = (it == map->end() || wanted < it->first) ? map->end() : it;
             *out = (T*)((void*)found->second);
             return true;
         }

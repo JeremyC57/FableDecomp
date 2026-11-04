@@ -1,4 +1,5 @@
 // CThingCreatureBase::GetMovementSpeedFromCreatureMode(const C3DVector& target, long movementType) -- ask the creature's current mode for the movement speed towards a target, given the offset from the creature and its facing
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00663BA0, 151 bytes (`ret 8`).
 // Callees: CInterfaceMap::LowerBound @ 0x004365B0, CTCCreatureModeManager::GetCurrentMode @ 0x0073A6E0 (label
@@ -19,15 +20,7 @@ class C3DVector { public:
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;       // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CModeBase {                              // CTCCreatureModeManager::CModeBase, vtable 0x012673CC
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -57,15 +50,15 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        const CInterfaceMap* map = &m_interfaces;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
     bool HasTC(long interfaceType) const
     {

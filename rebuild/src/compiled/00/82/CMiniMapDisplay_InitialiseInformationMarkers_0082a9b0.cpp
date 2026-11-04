@@ -1,5 +1,6 @@
 // CMiniMapDisplay::InitialiseInformationMarkers() -- with a region loaded and the main player's creature alive: look up the four body-guard def indices and the hero's followed component (0xbc); for every information thing in the current region that carries the information flag, add a marker: the body-guard graphic ([8].Secondary) when it is one of the hero's followers of a body-guard def, else the information graphic ([2].Secondary)
 // Leaf: ?InitialiseInformationMarkers@CMiniMapDisplay
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082A9B0, 529 bytes (`ret`).
@@ -26,15 +27,7 @@ class CGameDefinitionManager : public CDefinitionManager { public:
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0 (the const copy)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing;
 class CTCFollowed { public:                               // interface 0xbc
@@ -44,7 +37,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                    // +0x44
-    unsigned char _pad4c[0x8c - 0x4c];
+    unsigned char _pad54[0x38];
     unsigned short DefIndex;                       // +0x8c the thing's global def index
     short         MapIndex;                        // +0x8e the world-map index the thing lives on
     long GetMapIndex() const { return MapIndex; }
@@ -61,9 +54,9 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return (const T*)it->second;
     }
 };

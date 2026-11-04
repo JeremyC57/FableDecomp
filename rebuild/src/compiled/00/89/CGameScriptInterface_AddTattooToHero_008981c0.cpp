@@ -1,5 +1,6 @@
 // CGameScriptInterface::AddTattooToHero(const CCharString& tattooDefName) const -- create the named tattoo object just ahead of the live hero (position + 2 x physics vector), hand it to the hero morph (TC 3) and re-upload the hero's texture morphs, then kill the temporary object
 // Leaf: AddTattooToHero
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008981C0, length 382 bytes (`ret 4`).
 // Callees: CEngine::PeekDefinitionManager @ 0x00415FBC (a jmp thunk; manifest "GFGetPreMainMemoryUsed") on the engine
 //   singleton 0x013B86A0, CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CPlayerManager::GetMainPlayer
@@ -52,15 +53,7 @@ struct CThingPhysics_Retail {
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
 class CThing {
 public:
@@ -72,7 +65,7 @@ struct CThing_Retail : public CThing {
     unsigned char         _pad00[0x20];
     unsigned long         m_presentBits[9];         // +0x20
     CInterfaceMap_Retail  m_interfaces;             // +0x44
-    unsigned char         _pad4c[0x14];
+    unsigned char         _pad54[0xc];
     CThingPhysics_Retail* m_pPhysics;               // +0x60
     unsigned char         _pad64[0x2c];
     signed char           m_player;                 // +0x90
@@ -83,9 +76,9 @@ struct CThing_Retail : public CThing {
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap_Retail* map = &m_interfaces;
-        CInterfaceMap_Retail::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        CInterfaceMap_Retail::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return ((CTCBase_Retail*)it->second);
     }
     template<class T> __forceinline bool GetInterfaceOut(T** ppOut, long interfaceType)

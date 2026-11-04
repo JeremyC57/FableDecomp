@@ -1,4 +1,5 @@
 // CTCSmokeGenerator::CreatePositions() -- once the owner's graphic appearance has its resources, collect the focus_chimney_01..09 helper points as smoke generation positions (stopping at the first missing one), then take the generation distance from the smoke def and mark the positions created
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Retail: Fable.exe @ 0x00722590, 432 bytes (plain `ret`).
 // Callees: LowerBound 0x004365B0 (const overload), CTCGraphicAppearance::IsResourcesLoaded 0x004BE3E0 / GetHelperPoint 0x004C0560,
 //   CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / ~ 0x0099EAE0, operator+ 0x0099F570 (__fastcall),
@@ -57,14 +58,7 @@ struct CTCGraphicAppearance {
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first; SEntry* last; SEntry* end;
-    const SEntry* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CSmokeGeneratorDef { public:
     virtual void v00();
@@ -84,15 +78,15 @@ public:
     unsigned char _pad00[0x20];
     unsigned long TCBits[9];                            // +0x20
     CInterfaceMap Interfaces;                           // +0x44
-    unsigned char _pad50[0x20];
+    unsigned char _pad54[0x1c];
     CDefClassBase* DefClass;                            // +0x70
     template <class T> __forceinline bool GetInterface(long type, T** out) const
     {
         if (TCBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             const CInterfaceMap* map = &Interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(key);
-            *out = (T*)(it == map->last || type < it->first ? map->last : it)->second;
+            const CInterfaceMap::value_type* it = map->LowerBound(key);
+            *out = (T*)(it == map->end() || type < it->first ? map->end() : it)->second;
             return true;
         }
         return false;

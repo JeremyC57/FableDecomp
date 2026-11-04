@@ -1,5 +1,6 @@
 // CGameScriptInterface::TurnCreatureInto(const CScriptThing& thing, const CCharString& defName) const -- replace a live creature by a new one built from the named def: an unchanged def returns the thing itself; an AI creature (type 1) is re-created with its script name and game-state persistence; the player creature (type 2) is re-created persisted, takes copies of its component interfaces, and becomes the main player's character and controlled creature; the old thing is killed either way and the new script thing returned
 // Leaf: ?TurnCreatureInto@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0089F4A0, 1134 bytes (+ int3 padding), `ret 0Ch` (hidden result + 2).
 // Callees: CBaseClass ctor/dtor 0x0099A2D0 / 0x0099A2E0, CScriptThing::operator= 0x008AB980 / dtor 0x004AA840 (the
 //   GetScriptThing temporaries), CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, GetDef<CThingCreatureDef> 0x00513160,
@@ -100,15 +101,7 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer
 #pragma auto_inline(on)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingPhysical;
 class CThingBuilding;
@@ -140,7 +133,7 @@ public:
     unsigned char _pad11[0x20 - 0x11];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad4c[0x74 - 0x4c];
+    unsigned char _pad54[0x20];
     CCharString ScriptName;                             // +0x74
     unsigned char _pad78[0x8c - 0x78];
     unsigned short m_defGlobalIndex;                    // +0x8c
@@ -158,8 +151,8 @@ public:
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *out = ((it == map->last || wanted < it->first) ? map->last : it)->second;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            *out = ((it == map->end() || wanted < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

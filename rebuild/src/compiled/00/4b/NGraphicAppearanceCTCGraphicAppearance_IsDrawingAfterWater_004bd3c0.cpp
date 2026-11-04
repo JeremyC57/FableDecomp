@@ -1,5 +1,6 @@
 // 004bd3c0 NGraphicAppearance::CTCGraphicAppearance::IsDrawingAfterWater
 // Leaf: ?IsDrawingAfterWater@CTCGraphicAppearance@NGraphicAppearance@@IBE_NXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Flags:
 #define CTCGraphicAppearance CTCGraphicAppearanceFields
 #include "engine/_quarantine/CTCGraphicAppearance.h"
@@ -11,16 +12,7 @@
 #include "engine/_quarantine/CThingBaseDef.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefPointer.h"
-namespace std {
-template<class T>class allocator {};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};
-template<class A,class B>struct pair {A first;B second;};
-template<class T,class A>class _Vector_base {protected:T*_M_start;T*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:typedef const T*const_iterator;const_iterator begin()const{return this->_M_start;}const_iterator end()const{return this->_M_finish;}};
-}
-template<class T>class CArray:public std::vector<T>{};
-template<class K,class V>class CKeyPairCompareLess{};
-template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> >{public:C Compare;bool Dirty;typedef typename std::vector<std::pair<K,V> >::const_iterator const_iterator;const_iterator LowerBound(const K&)const;};
+#include "engine/CVectorMap.h"
 enum ETCInterfaceType{};
 // Layout: original CThing fields from supplied flattened header. No storage added.
 class CThing:public CThingFields{};

@@ -1,5 +1,6 @@
 // CThingFilter_IsInSameVolumeContextAsThing::operator()(CThing* thing) const -- a thing passes when the override is set, or when it and the filter's reference thing agree on being inside a live volume (the building it is inside, else its owner)
 // Leaf: ??RCThingFilter_IsInSameVolumeContextAsThing
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A8C60, length 193 bytes, `ret 4`, bool in al.
 // Callees: CInterfaceMap::LowerBound const @ 0x004365B0 (TC 0x75: the inside-building component, TC 0x33: the owned-entity
 //   component), CBaseIntelligentPointer::GetPItem @ 0x00A01B50.
@@ -11,15 +12,7 @@
 //   aliveness tests are the inline IS_THING_ALIVE into bool locals, and the agreement is `(!a && !b) || (a && b)`.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing;
@@ -42,7 +35,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];           // +0x20 bitset<274>
     CInterfaceMap Components;                   // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                     // +0x91 bit 0
     bool HasTC(long type) const
     {
@@ -54,9 +47,9 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return (T*)it->second;
     }
 };

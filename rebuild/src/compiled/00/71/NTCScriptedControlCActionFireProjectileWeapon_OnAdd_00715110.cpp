@@ -1,4 +1,5 @@
 // Levers: the local CCountedPointer dtor is retail's 0x0048C5C0 body (it zeroes Data/Info); with that cost VC7.1's per-site rule calls it for the reload temporary (two branches deep) and expands it for the aim/fire temporaries; `hasMissileWeapon` declared before `needsReload` so its false store is an immediate byte (not the bl zero).
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // NTCScriptedControl::CActionFireProjectileWeapon::OnAdd() -- queue reload (when needed), aim and fire creature actions for a creature holding a missile weapon
 // Layout: owning control at +4 (its +4 is the creature, as in the landed 0x007122D0); target CScriptThing at +0xC; the creature-action queue at +0x18.
 // Callees: CVectorMap LowerBound copy @ 0x004365B0, ReloadMissileWeapon ctor 0x00718710, aim ctor 0x00718650, fire ctor 0x008D5110,
@@ -38,15 +39,7 @@ class CTCInventoryAbilities { public: CThing* GetWeaponInHand(); };    // 0x006A
 class CTCWeapon { public: bool IsMissileWeapon(); bool IsLoaded(); };  // 0x005DAA40 / 0x005DA980
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;            // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
@@ -54,16 +47,16 @@ class CThing { public:
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];          // +0x20 bitset<274>
     CInterfaceMap       Components;                  // +0x44
-    unsigned char       _pad4c[0x91 - 0x4c];
+    unsigned char       _pad54[0x3d];
     unsigned char       Flags91;                     // +0x91
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &Components;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            const CInterfaceMap* map = &Components;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

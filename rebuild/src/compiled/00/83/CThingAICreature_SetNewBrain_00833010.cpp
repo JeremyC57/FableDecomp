@@ -1,6 +1,7 @@
 // CThingAICreature::SetNewBrain(CDefPointer<const CAIBrainDef> brainDef) -- tells the idle scheduler (when present) a new brain is coming, builds a brain for this creature from the def over the display engine, world, thing and player managers, and installs it in the counted brain pointer
 // Grade: RELOCATION_MATCH (retry helper C) -- the thing-manager argument is read through an inline accessor GetThingManager() (an inlined call is evaluated before the real getter calls), so CThing::GetPCurrentThingManager() loads into ebx ahead of GetPlayerManager and the brain takes ebp, as retail. Was DIFFER(176v178), parked as a whole-program mod/ref gap.
 // Leaf: SetNewBrain
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00833010, 178 bytes (+14 int3). `ret 4` (the def pointer passed by value).
@@ -39,15 +40,7 @@ struct CDefPointer {                                 // CDefPointer<const CAIBra
     }
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);            // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CDisplayEngine; class CWorld; class CThingManager; class CPlayerManager; class CThingAICreature;
 class CThingManager;
@@ -68,16 +61,16 @@ class CThingAICreature { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                  // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
-    unsigned char _pad4c[0x1a8 - 0x4c];
+    unsigned char _pad54[0x154];
     CBrainPointer PBrain;                            // +0x1a8
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || wanted < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || wanted < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

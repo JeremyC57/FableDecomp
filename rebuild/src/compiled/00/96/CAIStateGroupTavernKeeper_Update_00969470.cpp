@@ -1,5 +1,6 @@
 // CAIStateGroup_TavernKeeper::Update() -- close the keeper's shop stock and reset the 0x23 component, walk back inside the pub if outside, then loop: serve payment requests (old jug point + receive payment), refill empty jug slots on the bar (fetch the jug, walk to it, fill it), or idle at random (do nothing / lean on the bar); terminates when stopped or any step fails
 // Leaf: ?Update@CAIStateGroup_TavernKeeper
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00969470, length 698 bytes (aligned `and esp,-8` frame, virtual slot 12).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0x90 shop keeper, 0x23, 0xb9 tavern bar),
 //   CTCShopKeeper::GetShopTC @ 0x00798F50 (x2), CTCShop::SetStockState @ 0x00773C00, the 0x23 component's 0x007EE540
@@ -22,15 +23,7 @@ class C3DVector { public:
 };
 class CRightHandedSet { public: float m[6]; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingPhysicsBody;
 class CThing { public:
@@ -38,7 +31,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CThingPhysicsBody* PBody;                   // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
@@ -47,8 +40,8 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

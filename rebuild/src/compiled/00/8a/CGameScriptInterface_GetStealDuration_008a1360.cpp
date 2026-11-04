@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetStealDuration(const CScriptThing& thing) const -- for a stealable thing (component 0x33) whose item has a stealable sub-def and whose own def has a creature-stats sub-def: the steal duration interpolated linearly from MinDuration (skill 0) to MaxDuration (skill MaxStealSkill), clamped to MaxDuration above MaxStealSkill; 2 otherwise
 // Leaf: GetStealDuration
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A1360, length 553 bytes (virtual, `ret 4`).
 // Callees: CScriptThing slot 11 GetThing, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const 0x004365B0, GetPItem 0x00A01B50,
 //   CDefClassBase::GetSubDef 0x005130A0 / 0x0059350C (same-TU auto_inline(off) stand-ins that write only the out slot), __ftol2 0x00BFEA70, the defs' slot 1.
@@ -11,15 +12,7 @@
 //   locals in retail's load order (Min, Max, then the skill cap).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0 (const instantiation)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CDefBase {
     virtual void v00();
@@ -74,14 +67,14 @@ public:
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x70 - 0x4c];
+    unsigned char _pad54[0x1c];
     CDefPointer<CDefClassBase> Def;             // +0x70
     template<class T> __forceinline const T* GetTC(long wanted) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (const T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (const T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
     __forceinline unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     CDefPointer<CDefClassBase> GetDef() const { return Def; }

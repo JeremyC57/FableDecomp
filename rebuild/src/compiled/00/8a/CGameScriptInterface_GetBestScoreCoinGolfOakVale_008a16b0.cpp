@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetBestScoreCoinGolfOakVale() const -- the hero's best CoinGolfOakVale score (CTCHeroStats::BestScoreCoinGolfOakVale truncated to long), 0 when the main player's creature is missing or dead
 // Leaf: ?GetBestScoreCoinGolfOakVale@CGameScriptInterface@@UBEJXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008a16b0, 94 bytes, thiscall, `ret`.
 // Identity (proven): vtable 0x01260F0C (RTTI .?AVCGameScriptInterface@@) slot 733; ghidra_out/cgsi_slots_aligned.tsv (Ego_r.pdb vtable order) names it ?GetBestScoreCoinGolfOakVale@CGameScriptInterface@@UBEJXZ; it reads Ego_r.pdb CTCHeroStats::BestScoreCoinGolfOakVale (PDB +412, retail +0x184) through interface 4 (CTCHeroStats in the landed GetInterface(&stats, 4) callers).
 // Callees: CPlayerManager::GetMainPlayer() 0x00449970 (non-const: it calls the non-const GetPlayer 0x004498C0), CPlayer::PeekPControlledCreature() const 0x00487DD0 (Ego_r.pdb, a const
@@ -9,24 +10,7 @@
 // Header debt: engine/CGameScriptInterface.h, CPlayer, CThing and engine/CTCHeroStats.h are flat layouts (PDB offsets); modelled locally.
 enum ETCInterfaceType { ETCInterfaceType_FIRST };
 class CTCBase;
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-}
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    value_type* First;                                     // +0x00
-    value_type* Last;                                      // +0x04
-    value_type* EndOfStorage;                              // +0x08
-    TCompare    Compare;                                   // +0x0C
-    bool        Dirty;                                     // +0x0D
-    const value_type* end() const { return Last; }
-    const value_type* LowerBound(const K& key) const;      // 0x004365B0 for the interface map
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:

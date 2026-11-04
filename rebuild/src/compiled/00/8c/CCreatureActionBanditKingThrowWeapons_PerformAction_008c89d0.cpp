@@ -1,5 +1,6 @@
 // CCreatureAction_BanditKingThrowWeapons::PerformAction() -- a living bandit king takes the things out of its right and left hand carry slots and throws each living one at the target as a shot (the right-hand weapon's def index is remembered by the boss component); the thrown thing gets physics state 2 and its navigator enabled
 // Leaf: ?PerformAction@CCreatureAction_BanditKingThrowWeapons@@UAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C89D0, 595 bytes (+ int3 padding), virtual PerformAction, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, PTarget +0xa8), CVectorMap::LowerBound 0x0040F020
 //   (inlined GetInterface: 0x46 CTCCarrying bit 6 of +0x28, 0xAD boss weapons component bit 13 of +0x34, 0x77
@@ -31,15 +32,7 @@ public:
     long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CDefBase {
     virtual void v00();
@@ -123,7 +116,7 @@ class CThing { public:
     unsigned char   _pad0[0x20];
     unsigned long   m_presentBits[9];                   // +0x20
     CInterfaceMap   m_interfaces;                       // +0x44
-    unsigned char   _pad4c[0x60 - 0x4c];
+    unsigned char   _pad54[0xc];
     CTCPhysicsBase* m_pPhysics;                         // +0x60
     unsigned char   _pad64[0x70 - 0x64];
     CDefClassBase*  m_pDef;                             // +0x70
@@ -135,9 +128,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

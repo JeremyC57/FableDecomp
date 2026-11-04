@@ -1,5 +1,6 @@
 // CThingFilter_NoiseCanBeHeardFromPosition::operator()(CThing* thing) const -- a noise-making thing passes when its distance from the listening position is within the smaller of the listener's hearing range and the thing's noise radius
 // Leaf: ??RCThingFilter_NoiseCanBeHeardFromPosition
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A8240, length 178 bytes, `ret 4`, bool in al.
 // Callees: CInterfaceMap::LowerBound const @ 0x004365B0 (TC 0x37, the noise-emitting component; class not identified),
 //   CThing::GetPos @ 0x004C73D0.
@@ -19,15 +20,7 @@ template<class T> inline const T& Min(const T& left, const T& right) { return ri
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CTCNoiseMaker_37 {                       // the component behind ETCInterfaceType 0x37
     unsigned char _pad00[0x44];
@@ -49,9 +42,9 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return (T*)it->second;
     }
 };

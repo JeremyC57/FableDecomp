@@ -3,43 +3,23 @@
 // pick its combat sequences, point it at the attacked creature with the next attacker number and reset its wheel state,
 // flag it as attacking and put the attacked creature's stealth component in danger
 // Leaf: ?RegisterAttackingCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Shape: the map::insert(const value_type&) instantiation has a same-TU stand-in that builds the pair<iterator, bool>
 //   result in place, so the dropped result shares the find-key frame slot (frame 0xF8 as retail); find has its real
 //   same-TU body and LowerBound a same-TU body.
 extern "C" void __cdecl free(void* block);  // 0x00BFEA14
 
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);   // 0x0040F020
-};
-#pragma auto_inline(off)
-// Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (a template member, compiled in the
-// caller's TU): binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;              // +0x18
     unsigned long m_presentBits[9];         // +0x20
     CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad4c[0x15c - 0x4c];
+    unsigned char _pad54[0x108];
     unsigned char CombatFlags0 : 2;         // +0x15c
     unsigned char IsAttackingCombatant : 1; //        bit 2
     unsigned char IsAttackedCombatant : 1;  //        bit 3
@@ -51,10 +31,10 @@ class CThingCreatureBase { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

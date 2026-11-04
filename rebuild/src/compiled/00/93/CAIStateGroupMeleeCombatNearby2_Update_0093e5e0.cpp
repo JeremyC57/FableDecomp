@@ -1,6 +1,7 @@
 // CAIStateGroup_MeleeCombatNearby2::Update() -- melee combat loop: finish the current action, register with the combat manager against a live enemy, refresh perception, queue the combat message, then while the enemy lives and the group runs: move to the combat position, attack and mark the creature ready to attack again; terminate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093E5E0, length 384 bytes (+ int3 padding).
 // Leaf: ?Update@CAIStateGroup_MeleeCombatNearby2@@MAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Callees: CAIStateGroup_MeleeCombatNearbyBase::UpdateCurrentAction @ 0x0093D140 / ShouldGoStraightIntoStrafe @ 0x0093D180
 //          / AddStrafeMode @ 0x0093D7A0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy +0x14), CAIStateGroupBase::
 //          GetPWorld @ 0x008FCFC0, CCombatManager::RegisterCombatant @ 0x006EDC50 / SetAttackerAsReadyToAttack @ 0x006EA450
@@ -15,29 +16,21 @@
 //          virtual calls through slots 14/15, so the class is modelled locally (PBrain +0x04, PEnemy +0x14).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad1[0x91 - 0x4c];
+    unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

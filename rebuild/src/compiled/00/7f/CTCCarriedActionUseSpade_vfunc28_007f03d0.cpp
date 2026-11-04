@@ -1,5 +1,6 @@
 // CTCCarriedActionUseSpade::vfunc_28(CThingCreatureBase* user) -- a user able to dig starts the "Expression_Dig" activate-quest action; then the spade's interface-0x1a component is notified
 // Leaf: vfunc_28
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F03D0, 187 bytes (`ret 4`, 0xbc-byte frame). OnActionUse(CThing&) slot 28.
 // Callees: the empty base hook @ 0x007EAB90 (another TU), IsThingAbleToDig @ 0x007F0300 (`__fastcall`, user in ecx),
 // CCharString(const char*, long) @ 0x0099EBF0, CCreatureAction_ActivateQuest(CThingCreatureBase*, CThing*, const CCharString&,
@@ -15,15 +16,7 @@
 class CThing;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CCharString { public:
     void* m_pData;
@@ -71,9 +64,9 @@ class CThingCreatureBase { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return it->second;
     }
     bool SetCurrentAction(const CCreatureActionBase& action); // 0x006644F0

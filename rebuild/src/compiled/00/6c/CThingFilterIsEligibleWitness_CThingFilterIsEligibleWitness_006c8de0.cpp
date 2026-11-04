@@ -1,5 +1,6 @@
 // CThingFilter_IsEligibleWitness::CThingFilter_IsEligibleWitness(COpinionDeed* deed, CThing* perpetrator, bool useHearing, CThingAICreature* notRecipient, CFaction* faction, bool reverseFactionSearch, bool unknownThreatSearch) -- build the witness filter chain for a deed; perceiving is skipped when the perpetrator's opinion source is always aware
 // Leaf: ??0CThingFilter_IsEligibleWitness
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C8DE0, length 170 bytes, `ret 1Ch`, returns `this`.
 // Callees: CInterfaceMap::LowerBound const @ 0x004365B0 (TC 0x50 = CTCOpinionSource).
 // Identity: engine_api.tsv gives the seven-argument constructor (COpinionDeed*, CThing*, bool, CThingAICreature*,
@@ -15,15 +16,7 @@
 //   0/1 (`xor eax,eax ; test dl,dl ; sete al`); a plain `= !x` (or == false, ternary, if/else, accessor) gives `sete dl`.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCOpinionSource { public:
@@ -46,9 +39,9 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return (T*)it->second;
     }
 };

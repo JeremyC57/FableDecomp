@@ -1,4 +1,5 @@
 // CAIStateGroup_SetupWares::IsRunnable() -- runnable when the shop's stock state is out of step with its opening hours (open but packed away, closed but still set out, or mid-change) and the wares are not permanently stocked; a permanently stocked shop is just snapped to the right state instead.
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH -- the permanently-stocked branch is `if (open) SetStockState(0); else SetStockState(1); return false;` (one shared return-false tail after the second arm, which the no-shop / condition-false jumps also reach)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00927DF0, length 172 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x90 = CTCShopKeeper, bit 16 of the dword at
@@ -14,22 +15,14 @@ class CWorld;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad1[0x45];
+    unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     __forceinline unsigned long HasTC(long interfaceType) const
     {
@@ -40,24 +33,24 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }
         return false;
     }
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
+    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        CInterfaceMap::SEntry* sel;
-        if (it == map->last) sel = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        CInterfaceMap::value_type* sel;
+        if (it == map->end()) sel = map->end();
         else if (it->first <= interfaceType) sel = it;
-        else sel = map->last;
+        else sel = map->end();
         return sel;
     }
 };

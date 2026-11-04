@@ -1,4 +1,5 @@
 // CTCShopKeeper::CalcAreOtherPeopleInShop() -- true when some other living villager of the keeper's village is inside the shop building without living there (or outside while living there), or blocks its door, or when the hero is in the shop or blocks its door
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Retail: Fable.exe @ 0x00799140, 480 bytes (plain `ret`).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, LowerBound 0x0040F020 (x2), CTCVillageMember::GetPVillage 0x007EE540,
 //   CThing::GetPos 0x004C73D0, CThingBuilding::IsPointInside 0x0082D000, CThingBuilding::IsDoorBlockedBy 0x0082D9C0,
@@ -20,14 +21,7 @@ struct CBaseIntelligentPointer {
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first; SEntry* last; SEntry* end;
-    SEntry* LowerBound(const ETCInterfaceType& key);            // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x10];
@@ -36,7 +30,7 @@ class CThing { public:
     unsigned long TCBits[4];                        // +0x20
     unsigned char _pad30[0x14];
     CInterfaceMap Interfaces;                       // +0x44
-    unsigned char _pad50[0x41];
+    unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                         // +0x91 bit 0
     unsigned char _pad92[0x170 - 0x92];
     CBaseIntelligentPointer HomeBuilding;           // +0x170
@@ -45,8 +39,8 @@ class CThing { public:
         if (TCBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map = &Interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            *out = (T*)(it == map->last || type < it->first ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            *out = (T*)(it == map->end() || type < it->first ? map->end() : it)->second;
             return true;
         }
         return false;

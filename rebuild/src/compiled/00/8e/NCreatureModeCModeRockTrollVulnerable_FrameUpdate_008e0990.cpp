@@ -1,5 +1,6 @@
 // NCreatureMode::CModeRockTrollVulnerable::FrameUpdate() -- count the recovery frames down; once they are spent and the troll's animation list is empty or its current animation may be replaced, recover; then the base frame update
 // Leaf: ?FrameUpdate@CModeRockTrollVulnerable
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E0990, 118 bytes (+ int3 padding), `ret`; vtable 0x01285774 slot 3.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined lookup, type 0x5a = bit 26 of the +0x28 dword = CTCAnimationComplex),
 //   CTCAnimationComplex::GetAnimation @ 0x0070B460, CModeRockTrollVulnerable::Recover @ 0x008DE700, CModeBase::FrameUpdate
@@ -13,15 +14,7 @@
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                     // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);  // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
@@ -36,8 +29,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->first) ? map->last : it;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
         return (T*)sel->second;
     }
     template<class T> __forceinline T* GetTCIfPresent(long interfaceType)

@@ -1,5 +1,6 @@
 // CCreatureAction_SummonerDead::Initialise() -- play FALL_TO_KNEES_OUT_OF, base Initialise, stop mode 0x5c and kill the summoner; when its CSummonerDef names a death object, create it at the summoner and (when it lives and the world is not loading) make the hero its owner; then spawn the summoner's MESH_EXPLODE effect at its position
 // Leaf: ?Initialise@CCreatureAction_SummonerDead@@UAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CB940, length 580 bytes, plain `ret` (virtual).
 // Callees: CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CCombatActionBase::SetCombatAnimation @ 0x008574D0 / Initialise
 //          @ 0x00857520, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020,
@@ -80,22 +81,14 @@ struct CDefClassReference {                                  // a counted CDefCl
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                    // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                         // +0x20
     CInterfaceMap  m_interfaces;                             // +0x44
-    unsigned char  _pad4c[0x5c - 0x4c];
+    unsigned char  _pad54[0x8];
     CTCBase*       PTCDriver;                                // +0x5c
     unsigned char  _pad60[0x70 - 0x60];
     CDefClassBase* m_pDef;                                   // +0x70
@@ -114,8 +107,8 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

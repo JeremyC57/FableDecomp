@@ -1,6 +1,7 @@
 // CAIStateGroup_MinionReactToAlert::Update() -- follow the current alert: terminate when there is none, else remember its id and, when the alerted-about thing is what the creature's perceive component is tracking, mark the creature as indirectly aware of it.
 // Grade: RELOCATION_MATCH -- the typed read of the event's subject (`xor dl,dl ; mov [esp+0Ch],eax ; jne` between the second and third GetPItem) is the landed 0x008D04E0 typed-item test: `if (p.GetPItem() != 0 && IsThingOfType<CThing>(p.GetPItem())) subject = p.GetPItem();` -- the rvalue bound to `const CThing* const&` is homed in a dead slot and CThing's zero ThingTypeMask makes the test a materialised constant
 // Leaf: Update
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090F1C0, length 149 bytes (+ int3 padding). Vtable slot 12.
 // Callees: FindAlertEvent @ 0x0090F110, CAIStateGroupBase::Terminate @ 0x008FCF40 (manifest "CXMVPlaybackInfo"
 // is propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times on the event's pointer at +0x50:
@@ -20,22 +21,14 @@ class CThingAICreature;
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad1[0x20];
+    unsigned char _pad9[0x18];
     unsigned long ThingTypeFlags;               // +0x6c
     unsigned char _pad2[0x21];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
@@ -49,9 +42,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

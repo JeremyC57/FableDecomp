@@ -1,5 +1,6 @@
 // CCreatureAction_OnGenerate::Initialise() -- the GENERATE_DROP animation, base Initialise, then spawn the creature's GENERATE special effect at its position when its special-effects def maps one
 // Leaf: Initialise
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH -- GetSubDef<CSpecialEffectsDef> is an extern call (no same-TU body) whose plain out word is read once, right after the call, into a by-value local (ebp) through an inline helper, inside a block holding the out word, so the release uses the cached pointer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008B74D0, 262 bytes (272 with padding), virtual Initialise.
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("GENERATE_DROP" 0x0127A5AC / "GENERATE" 0x0127A5A0), CCombatActionBase::SetCombatAnimation
@@ -63,21 +64,13 @@ class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);   // 0x00669580
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);             // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
-    unsigned char _pad4c[0x70 - 0x4c];
+    unsigned char _pad54[0x1c];
     CDefClassBase* m_pDef;                            // +0x70
     const C3DVector& GetPos() const;             // 0x004C73D0
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -85,9 +78,9 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return it->second;
     }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -95,9 +88,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

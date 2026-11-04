@@ -1,5 +1,6 @@
 // CGameScriptInterface::SetCreatureGeneratorEnabled(const CScriptThing& thing, bool enabled) const -- when the script thing is valid and its thing has a CTCCreatureGenerator component (interface type 0x3D), call CTCCreatureGenerator::SetAsActive(enabled)
 // Leaf: ?SetCreatureGeneratorEnabled@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089ED20, 91 bytes (+ int3 padding), thiscall, `ret 8`; CGameScriptInterface vtable 0x012615B8 slot 130.
 // Identity: CGameScriptInterface::SetCreatureGeneratorEnabled(const CScriptThing&, bool) const -- proven; evidence: FableWin.pdb name set holds
 //   ?SetCreatureGeneratorEnabled@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z (the catalog label agrees); it calls CTCCreatureGenerator::SetAsActive
@@ -10,15 +11,7 @@
 //   slot; the component is not null-tested; the value is forwarded as a dword.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                       // a thing's sorted {type, component} vector map
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                    // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -30,9 +23,9 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

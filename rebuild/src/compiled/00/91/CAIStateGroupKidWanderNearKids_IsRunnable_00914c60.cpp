@@ -1,6 +1,7 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: KidMap::LowerBound bound to both 0x40f020 and 0x4365b0 (distinct instantiations))
 // CAIStateGroup_KidWanderNearKids::IsRunnable() -- gate idle modes, then find the first eligible child creature.
 // Leaf: IsRunnable
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 29 (family gws): the seed comes from the const ?GetWorldSeed@CWorld@@QBEPAKXZ 0x0049D810 (Ego_r.pdb / FableWin.pdb;
 //   engine/CWorld.h) through PeekWorld(). Was the invented CWorld_Methods::GetPRandomSeed (QAEPAIXZ).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00914C60, 279 bytes (virtual; manifest ?IsRunnable@CAIStateGroup_KidWanderNearKids@@UAE_NXZ).
@@ -35,25 +36,17 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_KidWanderNearKids) == sizeof(CAIStateGr
 
 class CTCBase { public: };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType,CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first; SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& key);                 // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& key) const;     // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char pad[0x20]; unsigned int UsingComponents[9]; CInterfaceMap Interfaces;
     template<class T> __forceinline T* GetTC(int id) {
-        ETCInterfaceType key = (ETCInterfaceType)(id); CInterfaceMap* m=&Interfaces; CInterfaceMap::SEntry* p=m->LowerBound(key);
-        if (p==m->last || id<p->first) p=m->last; return (T*)p->second;
+        ETCInterfaceType key = (ETCInterfaceType)(id); CInterfaceMap* m=&Interfaces; CInterfaceMap::value_type* p=m->LowerBound(key);
+        if (p==m->end() || id<p->first) p=m->end(); return (T*)p->second;
     }
     template<class T> __forceinline T* GetTCConst(int id) const {
-        ETCInterfaceType key = (ETCInterfaceType)(id); const CInterfaceMap* m=&Interfaces; const CInterfaceMap::SEntry* p=m->LowerBound(key);
-        if (p==m->last || id<p->first) p=m->last; return (T*)p->second;
+        ETCInterfaceType key = (ETCInterfaceType)(id); const CInterfaceMap* m=&Interfaces; const CInterfaceMap::value_type* p=m->LowerBound(key);
+        if (p==m->end() || id<p->first) p=m->end(); return (T*)p->second;
     }
 };
 class CTCIdleScheduler : public CTCBase { public: bool IsPreferredIdle(CAIStateGroupBase* group); };   // 0x00801BE0

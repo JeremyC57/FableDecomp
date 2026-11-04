@@ -1,5 +1,6 @@
 // CTCSpecialAbilities::SetupBerserk() -- start the strength-berserk cast on the creature; when its primary-slot weapon is the item it holds in hand, first sheathe it with the berserk cast queued as the follow-up action; false when the creature is barred (flag +0x30 bit 4)
 // Leaf: SetupBerserk
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072CBA0, 352 bytes (`ret`).
 // Callees: CVectorMap::LowerBound const 0x004365B0 (CTCCarrying 0x46, interface 0x13); CTCCarrying::GetThingInPrimarySlot
 //          0x006A1440; CBaseIntelligentPointer::GetPItem 0x00A01B50; operator new 0x00BFEA1A; CCreatureAction_CastStrengthBerserk
@@ -15,15 +16,7 @@
 //          SetCurrentAction call, the sheathe action a named local; both lookups are the ternary GetInterface (this in ebp).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -36,15 +29,15 @@ public:
     unsigned char m_flags30;                        // +0x30
     unsigned char _pad31[0x44 - 0x31];
     CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char m_flags91;                        // +0x91
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->last || interfaceType < it->first ? map->last : it)->second;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
             return true;
         }
         return false;

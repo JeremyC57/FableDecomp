@@ -1,5 +1,6 @@
 // CGameScriptInterface::EntitySetOpinionReactionMask(const CScriptThing& thing, long mask) const -- when the script thing's thing exists and has a CTCCreatureOpinionOfHero (interface 0x4F), pass the mask to its SetOpinionReactionMask
 // Leaf: ?EntitySetOpinionReactionMask@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0089c1f0, 77 bytes, thiscall, `ret 8`.
 // Identity (proven): vtable 0x01260F0C (RTTI .?AVCGameScriptInterface@@) slot 612; ghidra_out/cgsi_slots_aligned.tsv (Ego_r.pdb vtable order) names it ?EntitySetOpinionReactionMask@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z; its callee 0x00681CD0 is bound ?SetOpinionReactionMask@CTCCreatureOpinionOfHero@@QAEXJ@Z (Ego_r.pdb); CTCCreatureOpinionOfHero::GetInterfaceType() is 79 (0x4F, landed).
 // Callees: CScriptThing virtual slot 11 (+0x2C, GetThing), CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> >::
@@ -9,24 +10,7 @@
 // Header debt: engine/CScriptThing.h, CThing and engine/CTCCreatureOpinionOfHero.h are flat layouts; modelled locally.
 enum ETCInterfaceType { ETCInterfaceType_FIRST };
 class CTCBase;
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-}
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    value_type* First;                                     // +0x00 (CArray: STLport vector)
-    value_type* Last;                                      // +0x04
-    value_type* EndOfStorage;                              // +0x08
-    TCompare    Compare;                                   // +0x0C
-    bool        Dirty;                                     // +0x0D
-    value_type* end() { return Last; }
-    value_type* LowerBound(const K& key);                  // 0x0040F020 for the interface map
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:

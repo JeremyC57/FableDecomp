@@ -1,5 +1,6 @@
 // CCountedPointer<CExpressionSet>::DeleteData(void* data) -- the counted pointer's per-type deleter: destroy the expression set (free its entry vector's block) and free the set
 // Leaf: ?DeleteData@
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 //
 // Retail 0x00674E80, 33 bytes (+ int3 padding to 48), plain `ret` (static __fastcall: the object in ecx).
 // Callees: free @ 0x00BFEA14 (STLport __malloc_alloc deallocate of the vector block), operator delete @ 0x00BFE9BC.
@@ -21,39 +22,9 @@ enum EExpressionType { EXPRESSION_TYPE_NONE = -1, EXPRESSION_TYPE_0 = 0 };
 
 class CExpressionSet;
 
-namespace std {
-template <class _T1, class _T2> class pair {
-public:
-    _T1 first;
-    _T2 second;
-};
+#include "engine/CVectorMap.h"
 
-template <class _Tp> class allocator {
-public:
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
 
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    struct : _Alloc { _Tp* _M_data; } _M_end_of_storage;
-    ~vector()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-};
-}
-
-template <class K, class V> class CKeyPairCompareLess { };
-
-template <class K, class V, class C> class CVectorMap {
-public:
-    std::vector<std::pair<K, V> > Entries;                   // +0x00
-    C    Compare;                                            // +0x0c (empty)
-    bool Dirty;                                              // +0x0d
-};
 
 class CExpressionSet {
 public:

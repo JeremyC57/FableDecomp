@@ -1,5 +1,6 @@
 // CAIStateGroup_MinionListenToStory::StandUp() -- when the minion's current creature mode is 10 (sitting on the floor), try a CCreatureAction_GetUpFromSitting with the ST_STAND_UP_FROM_FLOOR animation: hand a clone to the brain's output if the creature is free to perform it, then remove mode 10 either way
 // Leaf: ?StandUp@CAIStateGroup_MinionListenToStory@@
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00910570, 320 bytes (incl. int3 padding), thiscall, plain `ret`. FableWin.pdb
 //   `?StandUp@CAIStateGroup_MinionListenToStory@@IAEXXZ`; OnReplace (vtable 0x01289180 slot 10, 0x009106B0, landed) is
 //   the tail call `jmp 0x00910570`. The catalog's "CTCLightningOrb_Shutdown" is a propagated label.
@@ -24,15 +25,7 @@ extern CCharString g_CCharString_013bb670;                  // 0x013BB670 "ST_ST
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                          // +0x00
-    SEntry* last;                                           // +0x04
-    SEntry* LowerBound(const ETCInterfaceType& type);                   // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {
@@ -45,9 +38,9 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
         }
     }

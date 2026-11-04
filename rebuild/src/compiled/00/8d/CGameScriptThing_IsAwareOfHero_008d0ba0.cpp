@@ -1,4 +1,5 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test exercises a hand-written stand-in, not the candidate)
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // CGameScriptThing::IsAwareOfHero() -- true when the live thing's perception component (interface 0x34) has the player in
 //   extended line of sight, or is aware of (timer non-zero) a live perceived thing of type 2
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D0BA0, 176 bytes.
@@ -22,14 +23,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     T* Get() const { return (T*)GetPItem(); }           // CThing's CBaseObject base is at offset 0
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType,CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first; SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& key) const;                    // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x10];
@@ -37,7 +31,7 @@ class CThing { public:
     unsigned char _pad11[0x0f];
     unsigned long UsingComponents[9];                   // +0x20 bitset<274>
     CInterfaceMap Interfaces;                           // +0x44
-    unsigned char _pad4c[0x45];
+    unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                             // +0x91 bit 0
 };
 class CTCPerceiveThing { public:
@@ -60,9 +54,9 @@ bool CGameScriptThing::IsAwareOfHero()
     CThing* thing;
     if (p->Get() && !p->Get()->Dead && (thing = p->Get())->UsingComponents[0x34 >> 5] & (1UL << (0x34 & 31))) {
         ETCInterfaceType kind = (ETCInterfaceType)(0x34);
-        CInterfaceMap* map = &thing->Interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(kind);
-        if (it == map->last || it->first > 0x34) it = map->last;
+        const CInterfaceMap* map = &thing->Interfaces;
+        const CInterfaceMap::value_type* it = map->LowerBound(kind);
+        if (it == map->end() || it->first > 0x34) it = map->end();
         CTCPerceiveThing* perceive = (CTCPerceiveThing*)it->second;
         if (perceive->IsPlayerExtendedLineOfSight()) return true;
         if (perceive->AwarenessTimer == 0.0f) return false;

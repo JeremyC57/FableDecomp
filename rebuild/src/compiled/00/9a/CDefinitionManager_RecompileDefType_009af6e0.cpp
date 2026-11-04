@@ -10,6 +10,7 @@
 // CDefinitionManager comes from engine/CDefinitionManager.h (rename pattern): SymbolPathList +0x40, CompilePathList
 // +0x4C (12-byte STLport vectors, opaque there), PSymbolMap_Data +0x58.
 // Leaf: ?RecompileDefType@CDefinitionManager@@QAEXABVCCharString@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 class CCharString {
 public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -18,34 +19,8 @@ public:
 };
 class CWideString { public: void* PStringData; };
 
-namespace std {
-    template <class _Tp> class allocator { public: };
-    template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-    template <class _Value, class _Tp, class _MaybeReboundAlloc>
-    class _STLP_alloc_proxy : public _MaybeReboundAlloc { public: _Value _M_data; };
-    template <class _Tp, class _Alloc> class _Vector_base {
-    public:
-        _Tp* _M_start;
-        _Tp* _M_finish;
-        _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-    };
-    template <class _Tp, class _Alloc = allocator<_Tp> >
-    class vector : protected _Vector_base<_Tp, _Alloc> {
-    public:
-        const _Tp* begin() const { return this->_M_start; }
-        const _Tp* end() const { return this->_M_finish; }
-        bool empty() const { return begin() == end(); }
-    };
-}
+#include "engine/CVectorMap.h"
 
-template <class T> class CArray : public std::vector<T> { };
-template <class K, class V, class TCompare> class CVectorMap {     // retail 0x10 bytes
-public:
-    CArray<std::pair<K, V> > Data;                      // +0x00
-    TCompare   Compare;                                 // +0x0C
-    bool       Dirty;                                   // +0x0D
-    bool empty() const { return Data.empty(); }
-};
 template <class T> class CCompareString { };
 
 class CSymbolMap {

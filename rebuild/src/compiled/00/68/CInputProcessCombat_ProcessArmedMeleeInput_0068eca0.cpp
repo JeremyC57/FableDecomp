@@ -1,5 +1,6 @@
 // CInputProcessCombat::ProcessArmedMeleeInput(const CInputEvent& event, CProcessedInput& processed, const CThing& weapon) -- on a button press with a melee weapon: game action 8 queues the CREATURE_ABILITY_FLOURISH (when the hero's combat component allows a flourish) or CREATURE_ABILITY_BREAK_BLOCK ability event 0x16 with the button pressure; action 0xf queues event 0x20; action 0xc the CREATURE_ABILITY_ATTACK event 0x16; action 0xe event 0x22 with a true byte
 // Leaf: ProcessArmedMeleeInput
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068ECA0, 684 bytes (+ int3 padding), `ret 0Ch` (/GS cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
 // Callees: CWorld::PeekMyPlayer 0x0049D9D0, CPlayer::GetPControlledCreature 0x00487DC0, CVectorMap::LowerBound 0x004365B0 (const
@@ -43,15 +44,7 @@ class CDefinitionManager { public:
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -63,8 +56,8 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->last || interfaceType < it->first ? map->last : it)->second;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
             return true;
         }
         return false;

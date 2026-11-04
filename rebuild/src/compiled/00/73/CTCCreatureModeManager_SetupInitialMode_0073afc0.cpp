@@ -1,4 +1,5 @@
 // CTCCreatureModeManager::SetupInitialMode() -- from the creature's CCreatureModeDef: enter the weapon mode when the creature carries something in its primary slot, swap an idle front mode for a random available idle mode, then enter the def's initial mode
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073AFC0, 271 bytes (+ int3 padding).
 // Callees: CDefClassBase::GetSubDef<CCreatureModeDef>(CDefPointer<const CCreatureModeDef>*) @ 0x0073DBE0 (manifest
 //   "GetSubDef<CAICreatureWillPowerIndicatorDef>" is a byte-twin propagation), CVectorMap<ETCInterfaceType,CTCBase*>::
@@ -20,15 +21,7 @@
 class CTCBase;
 class CThing;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
@@ -91,15 +84,15 @@ class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];            // +0x20
     CInterfaceMap  m_interfaces;                // +0x44
-    unsigned char  _pad4c[0x70 - 0x4c];
+    unsigned char  _pad54[0x1c];
     CDefClassBase* PDef;                        // +0x70
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     template<class T> __forceinline T* GetTC(long wanted) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
 };
 class CWorld { public:

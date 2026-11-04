@@ -1,5 +1,6 @@
 // CTCSpecialAbilities::IsAbleToUseAnyAbility(EHeroAbility ability) const -- the hero may use an ability unless the abilities are locked, he is in bed or knocked down, or his interface-0x29 component disallows it; a carried weapon must also be usable by him (ability 8 exempt)
 // Leaf: IsAbleToUseAnyAbility
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072AF30, 254 bytes, `ret 4`.
 // Callees: NCreatureMode::IsKnockedDown(const CThing&) @ 0x0085F010 (`__fastcall`), the const interface LowerBound @ 0x004365B0 (interfaces 0x29,
 //   0x46 = CTCCarrying, 0x48 = CTCWeapon), CTCCarrying::GetThingInPrimarySlot @ 0x006A1440, CTCWeapon::IsUsableBy(const
@@ -14,15 +15,7 @@
 //   FindEntry / GetTC / out-parameter component pushes the argument first or joins the component through eax).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -34,8 +27,8 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        return (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
 };
 namespace NCreatureMode { bool __fastcall IsKnockedDown(const CThing& thing); }   // 0x0085F010

@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00895E70, length 83 bytes.
 // Callees: the script thing validated through its virtual slot 75 (+0x12c), the thing fetched through slot 11 (+0x2c), the inlined CThing::GetInterface (the presence bitset at +0x20, CVectorMap::LowerBound @ 0x0040F020 on the map at +0x44, end or a larger key -> the end entry). Shape: the script thing in esi then the map, the presence bit tested as `test byte ptr [eax+24h],40h`, the type re-read from the stack for the store, `ret 8`.
 // Leaf: SetDoorTriggerType
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 #include "engine/CTCDoor.h"
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
@@ -14,15 +15,7 @@ struct CDefPointer_Retail;
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                 // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020 (a second copy of the same body sits at 0x004365B0)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
 struct CThingPhysics_Retail;
 struct CThing_Retail {
@@ -37,7 +30,7 @@ struct CThing_Retail {
     unsigned char         _pad11[0xf];
     unsigned long         m_presentBits[9];         // +0x20 std::bitset of the interface types present
     CInterfaceMap_Retail  m_interfaces;             // +0x44 the sorted {type, component} map
-    unsigned char         _pad4c[0x14];
+    unsigned char         _pad54[0xc];
     CThingPhysics_Retail* m_pPhysics;               // +0x60
     CThingPhysics_Retail* GetPhysics() { return m_pPhysics; }
     unsigned char         _pad64[8];
@@ -58,9 +51,9 @@ struct CThing_Retail {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap_Retail* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap_Retail::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap_Retail::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)((CTCBase_Retail*)it->second);
             return true;
         }

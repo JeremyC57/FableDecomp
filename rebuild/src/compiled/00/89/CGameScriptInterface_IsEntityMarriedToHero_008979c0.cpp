@@ -1,5 +1,6 @@
 // CGameScriptInterface::IsEntityMarriedToHero(const CScriptThing& thing) const -- a live creature whose wife component (interface 0xd7) answers IsMarriedToThePlayer()
 // Leaf: ?IsEntityMarriedToHero@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe @ 0x008979C0, 101 bytes, `ret 4`; Ego_r.pdb ?IsEntityMarriedToHero@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z.
 // Body: t = thing.GetPThing() (slot 11, +0x2c); if t, not dead (bit 0 of +0x91), a creature (type byte +0x10 == 1) and
 // holding interface 0xd7 (bit 23 of UsingComponents word 6, +0x38), the component from the const Components map
@@ -10,17 +11,7 @@
 // Shape: /O2 (16-aligned entry); the PeekTC out-pointer form.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
-public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry*       LowerBound(const ETCInterfaceType& type);          // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;    // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -29,7 +20,7 @@ public:
     unsigned char _pad11[0x20 - 0x11];
     unsigned long UsingComponents[9];                    // +0x20 bitset<274>
     CInterfaceMap Components;                            // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                              // +0x91 bit 0
     bool IsDead() const { return Dead; }
     bool HasTC(long type) const
@@ -44,9 +35,9 @@ public:
             return false;
         ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
         CInterfaceMap* map = &Components;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || T::INTERFACE_TYPE < it->first)
-            it = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || T::INTERFACE_TYPE < it->first)
+            it = map->end();
         *out = (T*)it->second;
         return true;
     }
@@ -56,9 +47,9 @@ public:
             return false;
         ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
         const CInterfaceMap* map = &Components;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || T::INTERFACE_TYPE < it->first)
-            it = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || T::INTERFACE_TYPE < it->first)
+            it = map->end();
         *out = (const T*)it->second;
         return true;
     }

@@ -1,4 +1,5 @@
 // CTCKrakenTentacle::GetShouldStrike() -- whether the tentacle may strike now: it is allowed to, its kraken is alive, the owning creature is in neither of the two blocking modes, and more frames than the def's time between attacks have passed since the last strike
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F1410, length 224 bytes (+ int3 padding); speed TU (no frame pointer, esp-relative frame).
@@ -27,29 +28,21 @@ struct CPresenceBits {                             // std::bitset<274>
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                   // +0x00
-    SEntry* last;                                    // +0x04
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;      // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits UsingComponents;                   // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
-    unsigned char _pad_0x4c[0x91 - 0x4c];
+    unsigned char _pad_0x54[0x3d];
     unsigned char Dead : 1;                          // +0x91 bit 0
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
     {
         if (UsingComponents.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            const CInterfaceMap::SEntry* found = (it == map->last || wanted < it->first) ? map->last : it;
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            const CInterfaceMap::value_type* found = (it == map->end() || wanted < it->first) ? map->end() : it;
             *out = (T*)((void*)found->second);
             return true;
         }

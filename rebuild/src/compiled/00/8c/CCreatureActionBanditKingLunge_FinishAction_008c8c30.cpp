@@ -1,5 +1,6 @@
 // CCreatureAction_BanditKingLunge::FinishAction() -- base FinishAction; when the lunge ran its full time at a living target the bandit king gets stuck: mode 0x53, the stuck hit location on and the normal one off, a 1.5-radius obstruction half a facing ahead (ignoring the king), and a CCreatureAction_BanditKingStuck (boss def's stuck loop count) -- the obstruction is killed if that action is refused; otherwise a CCreatureAction_BanditKingUnstuck with no target
 // Leaf: ?FinishAction@CCreatureAction_BanditKingLunge@@UAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C8C30, length 830 bytes (+ int3 padding), virtual FinishAction, plain `ret`.
 // Callees: CCombatActionBase::FinishAction @ 0x00859A20, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10,
 //   CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0x31 CTCCreatureModeManager bit 17 of +0x24, 0x7F CTCHitLocations
@@ -39,15 +40,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase { public:                                 // CThing::PhysicsTC (+0x60)
 #define VF(n) virtual void v##n();
@@ -59,7 +52,7 @@ class CThing { public:
     unsigned char   _pad0[0x20];
     unsigned long   m_presentBits[9];                   // +0x20
     CInterfaceMap   m_interfaces;                       // +0x44
-    unsigned char   _pad4c[0x60 - 0x4c];
+    unsigned char   _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     unsigned char   _pad64[0x91 - 0x64];
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
@@ -71,9 +64,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

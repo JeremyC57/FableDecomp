@@ -1,5 +1,6 @@
 // CIsFreeBench::operator()(const CIntelligentPointer<CThing>&) const -- true for an object thing with kind-flag bit 17 (a bench) whose user-action point is free
 // Leaf: ??RCIsFreeBench@@QBE_NABV?$CIntelligentPointer@VCThing@@@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Retail: Fable.exe @ 0x00918050, 123 bytes, thiscall (`this` unused: empty predicate) `ret 4`, bool in al.
 // Identity (proven): its only callers are the find_if bodies 0x009180D0 and 0x00918110; the landed 0x00918110 is
 // std::find_if<_List_iterator<CIntelligentPointer<CThing>, _Const_traits<...> >, CIsFreeBench> (Ego_r.pdb
@@ -16,17 +17,7 @@ class CTCBase;
 // A thing's component table: the presence bitset at +0x20 (bit N of dword N/32) and the sorted {type, component}
 // CVectorMap at +0x44 searched by LowerBound (non-const copy 0x0040F020, const copy 0x004365B0).
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* end;
-    SEntry* LowerBound(const ETCInterfaceType& type);         // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
@@ -40,7 +31,7 @@ class CThing { public:
     unsigned char _pad11[0xf];
     unsigned long m_presentBits[9];               // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                   // +0x44
-    unsigned char _pad50[0x41];
+    unsigned char _pad54[0x3d];
     unsigned char m_flags91;                      // +0x91
     bool HasTC(long type) const { return (m_presentBits[type >> 5] & (1UL << (type & 31))) != 0; }
     template <class T> __forceinline bool GetInterface(long type, T** out)
@@ -48,9 +39,9 @@ class CThing { public:
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
+            const CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->end() || type < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }
@@ -61,9 +52,9 @@ class CThing { public:
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
+            const CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->end() || type < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

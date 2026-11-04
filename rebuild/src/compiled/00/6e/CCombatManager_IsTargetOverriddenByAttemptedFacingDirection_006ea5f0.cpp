@@ -1,5 +1,6 @@
 // CCombatManager::IsTargetOverriddenByAttemptedFacingDirection(const CThingCreatureBase&, const CThing&, const C3DVector&) const -- true when the target lies outside the cone (the controlling thing's combat override angle, default 60 degrees) around the direction the creature tries to face
 // Leaf: IsTargetOverriddenByAttemptedFacingDirection
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EA5F0, 383 bytes (384 with padding). `ret 0Ch`.
 // Callees: CThing::GetPos 0x004C73D0 (twice), C3DVector::AccurateNormalise @ 0x00A14440 (catalogued GetScaled),
@@ -83,15 +84,7 @@ struct CDefClassPointer {                   // CDefPointer<const CDefClassBase>,
 class CTCBase;
 class CThing;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCCarrying { public:                        // interface type 0x46
 public:
@@ -101,7 +94,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad4c[0x24];
+    unsigned char _pad54[0x1c];
     CDefClassPointer PBaseDef;              // +0x70
     unsigned char _pad74[0x1d];
     unsigned char m_flags91;                // +0x91 bit 0: dead
@@ -110,10 +103,10 @@ class CThing { public:
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = (CInterfaceMap*)&m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            const CInterfaceMap* map = (const CInterfaceMap*)&m_interfaces;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

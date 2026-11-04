@@ -1,0 +1,46 @@
+Plan phase 3, wave "w1" (2026-11-04): the rest of the CVectorMap local copies moved onto engine/CVectorMap.h.
+
+HEADER (overlay/rebuild/include/stlport/fable_containers.h): the owner-approved sub-macro FABLE_RETAIL_STLP_BITSET_TEST_DECL
+  declares std::bitset<_Nb>::test(size_t) const without a body. The inline STLport body stays in the #else branch.
+  - Why: retail calls the out-of-line std::bitset<274>::test at 0x00410DE0 (?test@?$bitset@$0BBC@@std@@QBE_NI@Z, 337 landed
+    callers bind it).
+  - hdrcheck2: default=same[350]; every other FABLE_RETAIL_* macro reads =same; only the new macro reads =DIFF.
+  - 184 rows define it (the rows whose local model was an empty `template <unsigned int _Nb> class bitset { bool test(..)
+    const; }` stand-in).
+  - Includers of the header (4,065 landed rows outside this wave) went through gate.py with the overlay: see INCLUDERS below.
+TOOLS (scripts/): hdrmig3.py = phase 2's hdrmig2 plus
+  - repad_bitset: an empty local std::bitset stand-in is 1 byte where the real bitset<274> is 36, so the char pad after it
+    shrinks by 35. A pad that reaches 0, or only covered the next member's alignment, is removed (`_pad21[0x44 - 0x21]`,
+    `_pad1[0x23]`, `_pad24[0x20]`, ...).
+  - defines_if_bitset_stub: the macro is defined only in the rows that had that stub.
+  - const_only_rewrites: when the local CVectorMap declared only the const LowerBound (the row grades the const 0x004365B0),
+    `CInterfaceMap* map = &..` becomes `const CInterfaceMap* map`. Otherwise the header's non-const overload would win and
+    rebind to the 0x0040F020 spelling.
+  - aliasmap3.py: phase 2's aliasmap.py on top of hdrmig3.
+  - The acceptance rule is unchanged: masked sha1, length and relocation targets equal the index's, and symbols change only to
+    the header's spelling or the decided spelling of 0x0040F020 / 0x004365B0.
+ROWS: 1,291 PASS under vland --recheck-landed (RELOCATION_MATCH 1,284, MATCH 7). Parity equals the landed source's on every
+  row (--before baseline). 0 introduced warnings.
+  - The sources tried: all 2,303 landed rows with a local CVectorMap at HEAD (cfg.json) plus the 148 phase-2 alias deferrals
+    (cfg_alias.json).
+  - 1,276 rows pass hdrmig3 without a symbol change. They include all 671 phase-2 READY_PHASE3 rows that still had a local
+    copy, 159 of the 160 phase-2 bitset_stub rows and 110 of the 120 phase-2 const_lowerbound rows.
+  - 20 stand-in maps (aliasmap3) respell to the Ego_r LowerBound spellings (CALLERS.tsv, 21 relocation respells).
+  - gate.py: 1,296 of 1,296 PASS. vland: 1,291 PASS, 5 deferred (below).
+QUEUE LINES (QUEUE_LINES.tsv): 15 NAME_FIXES_QUEUE lines on 0x0040F020 / 0x004365B0 are narrowed (19 and 2 more old binders
+  respelled); none closes (93 / 96 binders of other spellings remain: nested or namespaced map models, alias shapes).
+BINDINGS: none (every respelled spelling still has other binders; the decided spellings are already bound).
+DEFERRED.tsv (1,155 tried rows that did not land in this wave):
+  - compile_fail 489: Find(long) needs an ETCInterfaceType; same-TU LowerBound bodies collide with the header's
+    (C2995); member names the header lacks (Finish / Entry / m_pLast / Last / Data / Get / find / UpperBound);
+    protected _M_finish; a local CKeyPairCompareLess or placement new.
+  - local_std 275: a local namespace std block with content the STLport model lacks (map / set / _Rb_tree / other).
+  - bytes_differ 120, stray_change 9.
+  - const_iterator 78: the row keeps a non-const entry pointer for the const LowerBound result.
+  - bitset_index 56: the row indexes the bitset stand-in (operator[] / reference are not in the STLport model).
+  - alias_* 123: stand-in map shapes the script does not model.
+  - test_link 4: the behaviour test defines LowerBound itself (LNK2005 against the header's COMDAT); move the test.
+  - grade_tagged 1: 0x0065A5BB grades RELOCATION_MATCH[/EHsc] PASS before and after; left for the coordinator.
+INCLUDERS: gate.py --overlay on the 4,065 landed includers of stlport/fable_containers.h that are not in this wave
+  (includers_gate.txt): 4,065 PASS (masked sha1, length and every relocation target equal the index's), so none needs vland.
+  The result is gate_includers.tsv; no includer appears in REGRADE_ROWS.txt.

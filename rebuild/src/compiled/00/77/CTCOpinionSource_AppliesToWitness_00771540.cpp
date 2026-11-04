@@ -1,4 +1,5 @@
 // CTCOpinionSource::AppliesToWitness(const CThingAICreature* witness) const -- does this opinion source affect the witness: no witness never, no faction restriction always, otherwise only witnesses with an enemy component whose faction is allied with the restricting faction (inverted by RestrictToFactionIsReversed)
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00771540, 221 bytes (`ret 4`; PDB ?AppliesToWitness@CTCOpinionSource@@ABE_NPBVCThingAICreature@@@Z).
@@ -57,15 +58,7 @@ class CTCEnemy { public:
     bool IsAlliedWithFaction(const CFaction* faction) const;   // 0x0076C7F0
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;         // 0x004365B0 (const instantiation)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -81,9 +74,9 @@ class CThing { public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        if (it == map->last || type < it->first)
-            it = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        if (it == map->end() || type < it->first)
+            it = map->end();
         return it->second;
     }
 };

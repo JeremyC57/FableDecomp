@@ -1,5 +1,6 @@
 // CThingCreatureBase::IsThingInViewAngle(const CThing& thing, float viewAngle, bool useLookAngle) const -- true when a living thing lies within half of viewAngle (in turns) of this creature's XY facing, or of its head-look direction when useLookAngle and it has a CTCLook
 // Leaf: ?IsThingInViewAngle@CThingCreatureBase@@QBE_NABVCThing@@M_N@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00664E50, 656 bytes (639 without padding), thiscall `ret 0Ch`, bool in al. Ego_r.pdb
 //   name set: ?IsThingInViewAngle@CThingCreatureBase@@QBE_NABVCThing@@M_N@Z; its caller is IsThingInFOV 0x00665190
 //   (`call` at 0x00665247). Catalog label "CVertexBufferWin32_CalculateViewingAngle" is propagated and wrong.
@@ -48,15 +49,7 @@ __forceinline float AngleDifference(float a, float b)
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;     // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase {
 public:
@@ -83,7 +76,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                    // +0x20
     CInterfaceMap m_interfaces;                        // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                         // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char Flags91;                             // +0x91 bit 0: dead
@@ -99,8 +92,8 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (const T*)(it == map->last || interfaceType < it->first ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (const T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
 };
 class CThingCreatureBase : public CThing {

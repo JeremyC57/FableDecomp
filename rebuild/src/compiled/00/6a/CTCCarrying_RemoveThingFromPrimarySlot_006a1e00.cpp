@@ -1,5 +1,6 @@
 // CTCCarrying::RemoveThingFromPrimarySlot(bool) -- take the thing out of the primary carry slot (weapons are dropped, other things removed), notify its components, and remove a following melee weapon left in the slot; returns the removed thing
 // Leaf: RemoveThingFromPrimarySlot
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail 0x006A1E00, 384 bytes, `ret 4` (the argument is unused).
 // Callees: CTCCarrying's primary-slot empty test 0x006A1270 (labelled CThing_Array_GetFirstPhysicalSwitch),
 // GetThingInPrimarySlot 0x006A1440, DropWeapon(CThing*, CTCCarrying*, CThing*) 0x00845CE0 (`__fastcall`),
@@ -12,37 +13,28 @@
 // out first); HasTC + ternary GetTC lookups sharing one key slot; `this` is homed in the frame for the final RemoveThing.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;         // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char m_flags;                              // +0x91 bit 0: dead
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        return (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
     template <class T> __forceinline T* GetTCConst(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        return (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
 };
 struct CTCInterface1A {

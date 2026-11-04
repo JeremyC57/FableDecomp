@@ -1,4 +1,5 @@
 // CAIStateGroup_BoastingCrowdMember::IsRunnable() -- the live hero runs a boasting crowd (interface 0x73) whose current group is active (state not 0 or 10) and accepts this creature: target the group's boaster
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retry 10b (combined getter sweep, FIXES B-15): the player manager and the brain's creature are read through inline getters (`g_pEngine->GetPlayerManager()`, `PBrain->GetCreature()`); plain member reads give the parked register difference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095E790, length 209 bytes (+ int3 padding).
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970 on the singleton 0x013B86A0's +0x1c, CPlayer::GetPControlledCreature @ 0x00487DC0,
@@ -11,15 +12,7 @@
 class CThing;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);           // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing
@@ -27,7 +20,7 @@ class CThing
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad_0x4c[0x91 - 0x4c];
+    unsigned char _pad_0x54[0x3d];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 
     template <class T> __forceinline bool GetInterface(long type, T** out)
@@ -36,9 +29,9 @@ class CThing
         {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->end() || type < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

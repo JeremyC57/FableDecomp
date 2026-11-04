@@ -1,5 +1,6 @@
 // CControlsDef::~CControlsDef() -- free the Controls vector storage, then the parent-def base: the SubDefInfoMap storage, the CDefPointeeBase vptr, ~CResource
 // Leaf: ??1CControlsDef@@UAE@XZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe @ 0x004304A0, 49 bytes; its only caller is 0x00430480 (slot 0 of vtable 0x01230E84, whose COL names
 // .?AVCControlsDef@@ : CParentDefClassBase : CDefClassBase : CDefPointeeBase : CResource; CControlsDef::GetSizeofClass
 // 0x00430470 returns 0x50). Catalog label CCompressedMemoryDataInputStream::~CCompressedMemoryDataInputStream is wrong.
@@ -44,22 +45,7 @@ class CDefString {
 public:
     long TablePos;
 };
-namespace std {
-template <class T1, class T2> struct pair { T1 first; T2 second; };
-template <class T> class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    ~vector() { if (_M_start) free(_M_start); }
-};
-}
-template <class K, class V> class CKeyPairCompareLess { public:};
-template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
-public:
-    C    Compare;                                        // +0x0c
-    bool Dirty;                                          // +0x0d
-};
+#include "engine/CVectorMap.h"
 #pragma pack(push, 1)
 class CParentDefClassBase : public CDefClassBase {
 public:

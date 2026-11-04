@@ -1,5 +1,6 @@
 // CTCStealth::GetVisibilityMultiplier() const -- how visible the thing is: the stealth def's day / night / twilight multiplier when its interface-0x27 component is in effect (else 1), times the interface-0x68 component's multiplier and the interface-4 component's factor when present
 // Leaf: GetVisibilityMultiplier
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00747660, 289 bytes (plain `ret`, float in st0).
 // Callees: the const interface LowerBound @ 0x004365B0 (interfaces 0x27, 0x68, 4), CTCBase::PeekWorld() const @ 0x00686A80
 //   (twice), CGameTimeManager::IsDay() const @ 0x006BB2C0, CGameTimeManager::IsNightTime() const @ 0x006BB210, the 0x68
@@ -15,15 +16,7 @@
 //   product is returned directly.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -35,17 +28,17 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        return (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
     template <class T> __forceinline bool GetInterface(long type, T** out) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
+            const CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->end() || type < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

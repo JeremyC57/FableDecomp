@@ -1,5 +1,6 @@
 // CRandomAppearanceMorph::AddTextureMorphToAll(unsigned long, unsigned long) -- add a texture morph (original texture -> new texture, no group) to the general texture morphs applied to every body part
 // Leaf: ?AddTextureMorphToAll@CRandomAppearanceMorph@@QAEXKK@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail 0x0086BC90, 0x2B bytes (+ int3 padding to 0x30), thiscall `ret 8`. FableWin/Ego_r name:
 // ?AddTextureMorphToAll@CRandomAppearanceMorph@@QAEXKK@Z.
 // Callee: CRandomAppearanceMorph::AddTextureToTextureMorph(CVectorMap<unsigned long, CTextureMorph>&, long, const
@@ -19,7 +20,7 @@ public:
     T* _M_end_of_storage;                            // +0x08
 };
 
-template <class K, class V> class CKeyPairCompareLess { };
+#include "engine/CVectorMap.h"
 
 template <class K, class V> struct SVectorMapPair    // std::pair<K, V>
 {
@@ -27,13 +28,6 @@ template <class K, class V> struct SVectorMapPair    // std::pair<K, V>
     V second;
 };
 
-template <class K, class V, class C> class CVectorMap
-{
-public:
-    CRetailVector<SVectorMapPair<K, V> > Vector;     // +0x00
-    C                                    Compare;    // +0x0C
-    bool                                 Dirty;      // +0x0D
-};
 
 class CRandomAppearanceMorph
 {

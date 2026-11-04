@@ -1,5 +1,6 @@
 // CAIStateGroup_TellStory::Update() -- find the nearest story place marker, then while the villager's village says it is cook time: gather the other creatures within 10 units of the marker, walk to the marker facing a random listener (or the marker's facing point), and tell the story (talk for 2-4 seconds, then act for 3-6); terminates when stopped or cook time ends
 // Leaf: ?Update@CAIStateGroup_TellStory
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00942EE0, length 767 bytes (0x68 frame, virtual slot 12).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 ("STORY_PLACE_MARKER") / ~CCharString @ 0x0099EAE0,
 //   CGameDefinitionManager::Get @ 0x0044C6B0 / GetDefGlobalIndexFromName @ 0x009AD410, CThing::GetPos @ 0x004C73D0,
@@ -19,16 +20,7 @@
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class C3DVector { public:
     float x, y, z;
@@ -54,7 +46,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CThingBody* PBody;                          // +0x60
     const C3DVector& GetPos() const;       // 0x004C73D0
     bool TestTC(long interfaceType) const
@@ -67,9 +59,9 @@ class CThing { public:
         if (has) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
         }
         return has;
@@ -209,9 +201,9 @@ void CAIStateGroup_TellStory::Update()
         if (hasVillager) {
             ETCInterfaceType type = (ETCInterfaceType)(0x23);
             const CInterfaceMap* map = &creature->m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || 0x23 < it->first)
-                it = map->last;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || 0x23 < it->first)
+                it = map->end();
             villager = (CTCVillager*)it->second;
         }
     }

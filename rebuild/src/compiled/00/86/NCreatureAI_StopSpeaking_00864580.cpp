@@ -1,5 +1,6 @@
 // NCreatureAI::StopSpeaking(CThingCreatureBase&) -- clears the creature's speech emote: SetEmoteText(priority 7, L"", 0, 0) on its emote icon component
 // Leaf: ?StopSpeaking@NCreatureAI@@YIXAAVCThingCreatureBase@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail 0x00864580, 0x5C bytes (+ int3 padding), __fastcall (creature in ecx). PDB (Ego_r):
 // ?StopSpeaking@NCreatureAI@@YIXAAVCThingCreatureBase@@@Z. Callers 0x00919A06 (tail jmp), 0x0094BB13, 0x0098013D, ...
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (the non-const twin of 0x004365B0: the
@@ -31,15 +32,7 @@ public:
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                   // +0x00
-    SEntry* last;                                    // +0x04
-    SEntry* LowerBound(const ETCInterfaceType& type);            // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing
@@ -55,9 +48,9 @@ public:
         {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->end() || type < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

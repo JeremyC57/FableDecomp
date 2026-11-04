@@ -1,4 +1,5 @@
 // CTCCarriedActionUseGive::vfunc_28(CThingAICreature* user) -- run the base use hook; when the user is targeting a creature (targeting type 2) it may give to, start a give-item action towards it; otherwise tell the carried thing's interface-0x1a component that the use failed
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007ED170, 250 bytes (+ int3 padding), `ret 4`. Vtable 0x0123FAB4
 //   (CTCCarriedActionUseGive) slot 28.
 // Callees: the base hook @ 0x007EAB90 (empty `ret 4`), CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const @
@@ -18,16 +19,7 @@
 class CTCBase;
 class CThing;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                   // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;             // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -38,15 +30,15 @@ class CThing { public:
     {
         CInterfaceMap* map = &m_interfaces;
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
     template<class T> __forceinline T* GetTCConst(long wanted) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
 };
 class CCreatureActionBase { public:                                // retail sizeof 0xa8

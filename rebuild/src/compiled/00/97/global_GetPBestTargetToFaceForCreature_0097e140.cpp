@@ -1,5 +1,6 @@
 // GetPBestTargetToFaceForCreature(const CThingCreatureBase& creature) -- the thing an AI creature should face: in mode 25 (combat), the creature it is attacking in melee when it is in melee as the attacker and able to strafe, else its targeting component's best enemy; null otherwise
 // Leaf: ?GetPBestTargetToFaceForCreature@
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097E140, 190 bytes, __fastcall (ecx = creature), plain `ret`.
 // Identity: Ego_r.pdb ?GetPBestTargetToFaceForCreature@?A0xbf588e90@@YIPAVCThing@@ABVCThingCreatureBase@@@Z, an
 //   anonymous-namespace helper of the CAIStateGroupBase TU (callers AIAction_MoveToPos 0x0097EC00, MoveToPosProximity
@@ -21,15 +22,7 @@ class CThingCreatureBase;
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CModeBase {                               // CTCCreatureModeManager::CModeBase (local model)
 public:
@@ -73,8 +66,8 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        return (const T*)((it == map->last || type < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (const T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
     bool IsInMelee() const;                     // 0x00661E80
     bool IsInMeleeAsAttacker() const;           // 0x00662410

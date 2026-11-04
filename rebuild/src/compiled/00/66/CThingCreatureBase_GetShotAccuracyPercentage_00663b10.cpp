@@ -1,4 +1,5 @@
 // CThingCreatureBase::GetShotAccuracyPercentage() -- a hero with its experience component asks the component; otherwise 100 while attacking a target that passes the 0x00864CB0 check, else the creature's own ShotAccuracyPercentage
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00663B10, 132 bytes.
 // Callees: CInterfaceMap::LowerBound @ 0x004365B0, CTCHeroExperience::GetShotAccuracyPercentage @ 0x006D6EA0,
 //   CThing::GetWorld @ 0x004C7AB0 (label "CViewBase::GetDisplayEngine" is propagated),
@@ -14,15 +15,7 @@
 //   local (`mov eax,[eax+4ch] ; push esi ; mov ecx,eax`).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;       // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCHeroExperience { public:
     long GetShotAccuracyPercentage();           // 0x006D6EA0
@@ -47,16 +40,16 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x6c - 0x4c];
+    unsigned char _pad54[0x18];
     unsigned char m_flags6c;                    // +0x6c
     CWorld* GetWorld();                         // 0x004C7AB0
     template<class T> __forceinline T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        const CInterfaceMap* map = &m_interfaces;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return (T*)it->second;
     }
     bool HasTC(long interfaceType) const

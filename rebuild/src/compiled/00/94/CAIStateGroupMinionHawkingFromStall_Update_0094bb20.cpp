@@ -1,6 +1,7 @@
 // CAIStateGroup_MinionHawkingFromStall::Update() -- walk to the stall (1.5m), shout the shop's hawking speech at it and pick up a new customer; schedule the next hawk 75..149 frames ahead and terminate
 // Grade: RELOCATION_MATCH -- the presence test reads the bit word into a local and shifts it (`mov ecx,[eax+30h] ; shr ecx,10h ; and cl,1`; the masked form narrows to a byte load); the thing's def is a CDefPointer member (+0x70) reached through operator-> on a named shopThing local, which loads it into eax ahead of the holder's address
 // Leaf: Update
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094BB20, length 384 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x90 = CTCShopKeeper, bit 16 of +0x30 as a
 //          bitset::test byte), CTCShopKeeper::GetShopTC @ 0x00798F50 / AcquireNewCustomer @ 0x00799900,
@@ -16,15 +17,7 @@
 //          +0x14, PStall +0x18); the sub-def's +0x2c speech id is descriptive.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CDefPointee {
     virtual void v00();
@@ -61,7 +54,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad1[0x70 - 0x4c];
+    unsigned char _pad9[0x1c];
     CDefPointer<CDefClassBase> PDef;            // +0x70
     bool TestTC(long interfaceType) const       // a bool masked test: VC7.1 narrows it to `shr ; and cl,1`
     {
@@ -74,9 +67,9 @@ class CThing { public:
         if (has) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
         }
         return has;

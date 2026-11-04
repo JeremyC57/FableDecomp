@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::IsCollisionWithThingToCauseResponse(CTCPhysicsBase* other) -- a thing-thing collision causes a physical response only when this component collides with things (two-way or one-way) and the other does too; a parent with a collision-filter component (interface 0x4D) gets the final say for the other's thing
 // Leaf: IsCollisionWithThingToCauseResponse
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E5750, 127 bytes.
 // Callees: virtual slots 57 (+0xe4, GetCollidesWithThings: the override 0x00724C90 reads +0x84 bit 7) and 58 (+0xe8,
 //   GetCollidesWithThingsOneWay: 0x00724CA0 reads +0x85 bit 0); CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0
@@ -11,15 +12,7 @@
 //   before the argument (an if-assign pick joins it through eax and moves it to ecx).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;       // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
@@ -32,9 +25,9 @@ class CThing { public:
     __forceinline CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return ((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        const CInterfaceMap* map = &m_interfaces;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
 };
 class CTCSolidToThing { public:                     // the interface-0x4D component

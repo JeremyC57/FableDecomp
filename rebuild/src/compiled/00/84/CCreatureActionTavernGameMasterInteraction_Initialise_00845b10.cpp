@@ -1,6 +1,7 @@
 // 00845b10 CCreatureAction_TavernGameMasterInteraction::Initialise
 // Flags:
 // Leaf: ?Initialise@CCreatureAction_TavernGameMasterInteraction@@UAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0).
 #define CClass CClassLayout
 #include "engine/CClass.h"
 #undef CClass
@@ -55,28 +56,8 @@ protected:CThing&ParentThing;
 private:bool ToBeRemoved,IsInGlobalUpdateTCs;unsigned char unobservedAlignment[2];
 };
 
-namespace std {
-template<class T>class allocator { };
-template<class V,class T,class A>class _STLP_alloc_proxy:public A { public:V _M_data; };
-template<class T,class A>class _Vector_base { public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage; };
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A> { };
-template<class K,class V>struct pair { K first;V second; };
-template<unsigned long N>struct _Base_bitset { unsigned long _M_w[N]; };
-template<unsigned long N>class bitset:public _Base_bitset<(N+31)/32> { };
-}
-template<class T>class CArray:public std::vector<T> { };
-template<class K,class V>class CKeyPairCompareLess { };
-template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> > {
-private:
-    C Compare;bool Dirty;
-public:
-    std::pair<K,V>* LowerBound(const K&);
-    std::pair<K,V>* Find(const K& key) {
-        std::pair<K,V>* i=LowerBound(key);
-        if(i==this->_M_finish || key<i->first)return this->_M_finish;
-        return i;
-    }
-};
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
 // Fidelity: explicit specialization is visible before the caller, unlike a delayed template body.
 template<> __declspec(noinline) std::pair<ETCInterfaceType,CTCBase*>*
 CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::LowerBound(const ETCInterfaceType&key){

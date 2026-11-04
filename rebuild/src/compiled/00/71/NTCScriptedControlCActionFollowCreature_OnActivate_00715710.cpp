@@ -2,6 +2,7 @@
 // Layout: CActionFollowCreature offsets are the PDB's (+0xC PTargetThing, +0x18 PTCOldPhysics, +0x25/+0x26); +8 is the base's activated flag;
 // the creature is re-read through the owning control at +4 (its +4), as in the landed CActionLeadCreature::OnActivate 0x007122D0.
 // Leaf: ?OnActivate@CActionFollowCreature@NTCScriptedControl@@UAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // PDB spelling (sweep 3): the class lives in namespace NTCScriptedControl with the Ego_r CActionBase member PTCScript (+0x04);
 //   OnActivate is its virtual (?OnActivate@CActionFollowCreature@NTCScriptedControl@@UAEXXZ) and 0x00713D50 is the private
 //   SetAsSneaking (?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z, was an invented global SetSneaking).
@@ -58,15 +59,7 @@ class CTCPhysicsBase { public:
 class CTCStealth { public: char _pad[0xf]; bool Sneaking; };   // interface 0x36
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;            // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
@@ -74,17 +67,17 @@ class CThing { public:
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];          // +0x20 bitset<274>
     CInterfaceMap       Components;                  // +0x44
-    unsigned char       _pad4c[0x60 - 0x4c];
+    unsigned char       _pad54[0xc];
     CTCPhysicsBase*     PPhysics;                    // +0x60
     void AddTC(const CCharString& name, bool b, const CPhysicsSnapshot& snapshot);   // 0x004C9D60
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &Components;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            const CInterfaceMap* map = &Components;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

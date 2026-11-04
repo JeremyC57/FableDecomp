@@ -1,5 +1,6 @@
 // CThingCreatureBase::OnDie() -- base physical death; spawn the EXPLODE_ON_KILLING_BLOW effect when the def names one; leave a dead-creature body (copying orientation, the carried components and the lighting channel) when the creature and its def allow it; post the death message, tell the killer it killed and the creature's own entity events it died, and drop experience orbs for the hero
 // Leaf: ?OnDie@CThingCreatureBase
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00663F50, 1052 bytes (+ int3 padding), plain `ret`; virtual OnDie of CThingCreatureBase
@@ -58,16 +59,7 @@ class CDefClassBase : public CDefBase { public:
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCPhysicsBase { public:
@@ -139,7 +131,7 @@ public:
     unsigned char _pad11[0x20 - 0x11];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64
@@ -163,9 +155,9 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
-        if (it == map->last || type < it->first)
-            it = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        if (it == map->end() || type < it->first)
+            it = map->end();
         return it->second;
     }
     template <class T> __forceinline bool GetConstInterface(const T** ppOut, long type) const
@@ -173,8 +165,8 @@ public:
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(key);
-            const CInterfaceMap::SEntry* end = map->last;
+            const CInterfaceMap::value_type* it = map->LowerBound(key);
+            const CInterfaceMap::value_type* end = map->end();
             *ppOut = (const T*)(it == end || type < it->first ? end : it)->second;
             return true;
         }
@@ -184,8 +176,8 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        const CInterfaceMap::SEntry* end = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        const CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
 protected:

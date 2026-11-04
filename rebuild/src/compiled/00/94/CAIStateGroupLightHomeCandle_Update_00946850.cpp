@@ -1,4 +1,5 @@
 // CAIStateGroup_LightHomeCandle::Update() -- reserve a free action point on the candle, walk to it and look at the candle while it still needs changing, then use the candle, release the point, clear the candle and terminate
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00946850, length 653 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10, CVectorMap::LowerBound @ 0x0040F020,
 // CTCUserActionPointBase::GetNumberOfActionPointsInUse @ 0x007FEC10 / GetFreeActionPoint @ 0x007FEDE0 / FreeActionPoint
@@ -18,15 +19,7 @@ class C3DVector { public:
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -38,8 +31,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        *ppOut = (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
 };
 class CThingCreatureBase : public CThing { public: };

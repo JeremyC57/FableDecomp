@@ -1,5 +1,6 @@
 // CThingHolySiteDef::CThingHolySiteDef() -- default constructor of a def whose only constructed member is its CEngineGraphic: the CThingBaseDef base out of line, this class's vtable, then Graphic zeroed (bank index, animation step, render size, additive-alpha flag, type)
 // Leaf: ??0CThingHolySiteDef@@QAE@XZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00454D9E, 39 bytes, thiscall, plain `ret`, returns this (a size-optimised /Os def module: unaligned entry).
 // Identity (proven): CThingHolySiteDef::CThingHolySiteDef() (FableWin.pdb name set: ??0CThingHolySiteDef@@QAE@XZ); evidence: RTTI of the stored vtable 0x012331FC is .?AVCThingHolySiteDef@@ (base CThingBaseDef); it zeroes Graphic at +0x70 (Ego_r.pdb CThingHolySiteDef::Graphic +116)
 // Label: the manifest's "CSimVoice" is propagated (family J056: five byte-similar def constructors; the stored vtable names each class).
@@ -24,25 +25,7 @@ class CDefString {
 public:
     long TablePos;
 };
-namespace std {
-template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy { _Value _M_data; };
-template <class _Tp, class _Alloc> class vector {
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-}   // namespace std
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    CArray<std::pair<K, V> > Data;                       // +0x00
-    TCompare                 Compare;                    // +0x0C
-    bool                     Dirty;                      // +0x0D
-};
+#include "engine/CVectorMap.h"
 #pragma pack(push, 1)
 // Layout: the def chain is the retail one from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   CParentDefClassBase : CDefClassBase : CDefPointeeBase : CResource : CIVCountedPointeeBase, vtable 0x01230CBC,

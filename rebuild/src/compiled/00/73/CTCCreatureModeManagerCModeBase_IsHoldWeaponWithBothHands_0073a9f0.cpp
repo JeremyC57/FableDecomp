@@ -1,5 +1,6 @@
 // CTCCreatureModeManager::CModeBase::IsHoldWeaponWithBothHands() const -- true when the creature carries, in the "CARRY_SLOT_BOTH_HANDS" carry slot, a live weapon thing it is able to use
 // Leaf: IsHoldWeaponWithBothHands
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0073A9F0, 208 bytes (`ret`), CModeBase vtable 0x012673CC slot 10. FableWin.pdb names the
 //   slot-10 virtual ?IsHoldWeaponWithBothHands@CModeBase@CTCCreatureModeManager@@UBE_NXZ (the only `bool () const` virtual
 //   left once IsIdleMode / IsRemoveOnDeactivate / IsAllowingPlayerSpecialMovementMoves are placed); the manifest has vfunc_10.
@@ -28,22 +29,14 @@ class CGameDefinitionManager : public CDefinitionManager
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                     // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;  // 0x004365B0 (the const instantiation)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];       // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;           // +0x44
-    unsigned char  _pad4c[0x91 - 0x4c];
+    unsigned char  _pad54[0x3d];
     unsigned char  m_lifeFlags;            // +0x91 (bit 0: dead)
     bool IsDead() const { return (m_lifeFlags & 1) != 0; }
     __forceinline bool HasTC(long interfaceType) const
@@ -56,8 +49,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        const CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->first) ? map->last : it;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        const CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
         return (const T*)sel->second;
     }
 public:

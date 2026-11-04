@@ -1,5 +1,6 @@
 // CAIStateGroup_BanditKingThrowWeapons::IsRunnable() -- with a live hero, a boss component (0xAD) that is not on its final phase but is ready for a phase change, and the hero outside the throw radius (squared XY distance > 25.0f @ 0x0123003C): target the hero
 // Leaf: IsRunnable@CAIStateGroup_BanditKingThrowWeapons
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00961550, length 240 bytes.
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing
 // @ 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (type 0xAD = word 5 bit 13),
@@ -53,15 +54,7 @@ template <> class CIntelligentPointer<CThingPlayerCreature> : public CBaseIntell
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);           // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CThingWithTCs
@@ -75,13 +68,13 @@ struct CThingWithTCs
             return true;
         return false;
     }
-    __forceinline CInterfaceMap::SEntry* FindEntry(long type)
+    __forceinline CInterfaceMap::value_type* FindEntry(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
-        CInterfaceMap::SEntry* end = map->last;
-        CInterfaceMap::SEntry* sel;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        CInterfaceMap::value_type* end = map->end();
+        CInterfaceMap::value_type* sel;
         if (it == end)
             sel = end;
         else if (it->first <= type)

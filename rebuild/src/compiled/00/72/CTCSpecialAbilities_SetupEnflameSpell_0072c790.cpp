@@ -1,4 +1,5 @@
 // CTCSpecialAbilities::SetupEnflameSpell() -- start the creature's enflame-spell cast: target the creature's current combat target (with the player's lock flag when both are player-flagged), and when a primary-slot weapon is alive wrap a heap cast action holding the weapon in a generic strike response; returns whether the action was accepted
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Retail: Fable.exe @ 0x0072C790, 416 bytes (plain `ret`, no EH frame).
 // Callees: LowerBound 0x0040F020 / 0x004365B0 (const), CTCInventory::GetThingInPrimarySlot 0x006A1440, combat TC virtual
 //   slot 33 (+0x84, current target), CThing::PeekPlayer 0x004C7A10, operator new 0x00BFEA1A,
@@ -32,22 +33,14 @@ public:
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first; SEntry* last; SEntry* end;
-    SEntry* LowerBound(const ETCInterfaceType& key);                // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& key) const;    // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char _pad00[0x20];
     unsigned long TCBits[9];                            // +0x20
     CInterfaceMap Interfaces;                           // +0x44
-    unsigned char _pad50[0x1c];
+    unsigned char _pad54[0x18];
     unsigned char Flags6c;                              // +0x6c
     unsigned char _pad6d[0x24];
     unsigned char Dead : 1;                             // +0x91 bit 0
@@ -124,8 +117,8 @@ bool CTCSpecialAbilities::SetupEnflameSpell()
     if (Creature->TCBits[0x46 >> 5] & (1UL << (0x46 & 31))) {
         ETCInterfaceType key = (ETCInterfaceType)(0x46);
         CInterfaceMap* map = &Creature->Interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
-        inventory = (CTCInventory*)(it == map->last || 0x46 < it->first ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        inventory = (CTCInventory*)(it == map->end() || 0x46 < it->first ? map->end() : it)->second;
     }
     CThing* weapon = inventory->GetThingInPrimarySlot();
     CThing* target = 0;
@@ -133,8 +126,8 @@ bool CTCSpecialAbilities::SetupEnflameSpell()
     if (Creature->TCBits[8 >> 5] & (1UL << (8 & 31))) {
         ETCInterfaceType key = (ETCInterfaceType)(8);
         const CInterfaceMap* map = &Creature->Interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        CTCCombat* combat = (CTCCombat*)(it == map->last || 8 < it->first ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        CTCCombat* combat = (CTCCombat*)(it == map->end() || 8 < it->first ? map->end() : it)->second;
         target = combat->GetCurrentTarget();
         if (target && !target->Dead && (target->Flags6c & 8) && (Creature->Flags6c & 0x20))
             lock = Creature->PeekPlayer().LockFlag;

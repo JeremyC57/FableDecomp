@@ -1,4 +1,5 @@
 // CGameScriptInterface::IsObjectInThingsPossession(const CCharString& objectDefName, const CScriptThing& thing) const -- true when the thing holds an object of the named def: in its inventory (TC 0x11), carried (TC 0x46), in its two other item stores (TC 0x13 / 0x12) or in its house (TC 0x3C)
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00897220, length 371 bytes (`ret 8`, bool in al).
 // Callees: CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, the script thing's slot 11 (+0x2c) GetThing,
 //   the const component-map LowerBound @ 0x004365B0, CTCInventoryBase::GetNumberOfItemsOfTypeInInventory(long)
@@ -11,15 +12,7 @@ class CCharString;
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                 // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
 struct CThing_Retail {
     unsigned char         _pad00[0x20];
@@ -30,9 +23,9 @@ struct CThing_Retail {
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap_Retail* map = &m_interfaces;
-        const CInterfaceMap_Retail::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        const CInterfaceMap_Retail::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return ((CTCBase_Retail*)it->second);
     }
 };

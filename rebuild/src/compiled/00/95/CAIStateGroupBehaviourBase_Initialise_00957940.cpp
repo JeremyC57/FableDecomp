@@ -1,5 +1,6 @@
 // CAIStateGroupBehaviourBase::Initialise(brain, creature, priorityValue, priority, name) -- base Initialise, then cache the creature's perception (0x34), opinion-of-hero (0x4F) and creature-mode (0x31) components and run the slot-14 hook
 // Leaf: Initialise@CAIStateGroupBehaviourBase
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00957940, length 216 bytes (`ret 14h`).
 // Callees: CAIStateGroupBase::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&)
 // @ 0x008FCEC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const @ 0x004365B0 (0x34, 0x4F) and non-const @ 0x0040F020
@@ -12,16 +13,7 @@ class CCharString;
 class CThingAICreature;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);           // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing
@@ -40,18 +32,18 @@ class CThing
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
-        if (it == map->last || type < it->first)
-            it = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        if (it == map->end() || type < it->first)
+            it = map->end();
         return it->second;
     }
     __forceinline CTCBase* GetTCConst(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        if (it == map->last || type < it->first)
-            it = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        if (it == map->end() || type < it->first)
+            it = map->end();
         return it->second;
     }
 };

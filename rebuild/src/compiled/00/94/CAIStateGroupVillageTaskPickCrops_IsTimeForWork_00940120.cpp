@@ -1,5 +1,6 @@
 // CAIStateGroup_VillageTaskPickCrops::IsTimeForWork() const -- the creature's CTCVillageMember (interface 0x23) has a village and the village's IsWorkTime holds
 // Leaf: ?IsTimeForWork@CAIStateGroup_VillageTaskPickCrops@@IBE_NXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00940120, 93 bytes, thiscall, `ret`.
 // Identity (proven): Ego_r.pdb ?IsTimeForWork@CAIStateGroup_VillageTaskPickCrops@@IBE_NXZ; callers CAIStateGroup_VillageTaskPickCrops::IsRunnable 0x00940180 (landed) and Update 0x00940310; label correction: reloc_bindings names it ?IsInSchoolHours@CAIStateGroup_WorkBase@@ (PickCrops derives from CAIStateGroupBase only, RTTI) and it tests the work time.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*, ...>::LowerBound 0x0040F020 (the inlined GetInterface on PBrain->Creature, CAIBrain +0x18),
@@ -8,24 +9,7 @@
 // Header debt: engine/CAIStateGroup_VillageTaskPickCrops.h / CAIStateGroupBase.h / CAIBrain.h are flat layouts; modelled locally.
 enum ETCInterfaceType { ETCInterfaceType_FIRST };
 class CTCBase;
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-}
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    value_type* First;                                     // +0x00
-    value_type* Last;                                      // +0x04
-    value_type* EndOfStorage;                              // +0x08
-    TCompare    Compare;                                   // +0x0C
-    bool        Dirty;                                     // +0x0D
-    value_type* end() { return Last; }
-    value_type* LowerBound(const K& key);                  // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:

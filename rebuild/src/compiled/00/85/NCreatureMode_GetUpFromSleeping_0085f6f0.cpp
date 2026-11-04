@@ -1,5 +1,6 @@
 // NCreatureMode::GetUpFromSleeping(CThingCreatureBase& creature, CThing& bed, const CCharString& animation, CAIBrain* brain) -- get a creature out of bed: while it is in the sleep-in-bed mode, leave that mode with a get-out-of-bed action (true); otherwise, when the creature is free to act, post the action through its brain (or set it directly without one) and return false
 // Leaf: ?GetUpFromSleeping@NCreatureMode@@YI_NAAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@PAVCAIBrain@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0085F6F0, 320 bytes (+ int3 padding), /Gr __fastcall (creature in ecx, bed in edx;
 //   animation and brain on the stack), `ret 8`.
 // Identity: Ego_r.pdb ?GetUpFromSleeping@NCreatureMode@@YI_NAAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@PAVCAIBrain@@@Z.
@@ -24,16 +25,7 @@ class CAnimationEntry;
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<long, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* end_of_storage;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CCreatureActionBase { public:                            // retail 0xa8 bytes
@@ -83,8 +75,8 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((void*)((it == map->last || interfaceType < it->first) ? map->last : it)->second);
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((void*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second);
     }
     bool IsFreeToPerformAction(const CCreatureActionBase& action) const;   // 0x00662210
     bool SetCurrentAction(const CCreatureActionBase& action);              // 0x006644F0

@@ -1,5 +1,6 @@
 // CGameScriptInterface::SetHeroAsHavingHadSex(bool) const -- script call: marks the hero as having had (scripted) sex on the main player's hero (skipped when there is no hero, the hero is dead, or it lacks the CTCHeroStats component)
 // Leaf: ?SetHeroAsHavingHadSex@CGameScriptInterface@@UBEX_N@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00897D50, 91 bytes (96 with int3 padding), thiscall `ret 4`.
 // Identity (proven): CGameScriptInterface::SetHeroAsHavingHadSex; evidence: retail CGameScriptInterface vtable 0x01260F0C slot 220 holds this body, and that slot is ?SetHeroAsHavingHadSex@CGameScriptInterface@@UBEX_N@Z in ghidra_out/cgsi_slots_aligned.tsv (the Ego_r.pdb CGameScriptInterface virtual order aligned to the retail table); the body tests interface 0x4 and stores a bool at +0x158, which is CTCHeroStats::HadScriptedSex (Ego_r.pdb +0x16C), set through FableWin.pdb ?SetAsHavingScriptedSex@CTCHeroStats@@QAEX_N@Z.
 // Label: the manifest's "CGameScriptInterface::SetHeroAsHavingHadSex" is propagated across family H029 (seven hero-component setters that differ only in the
@@ -12,24 +13,14 @@
 // Setter: CTCHeroStats::SetAsHavingScriptedSex(bool) (FableWin.pdb ?SetAsHavingScriptedSex@CTCHeroStats@@QAEX_N@Z), inline.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
-public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry*       LowerBound(const ETCInterfaceType& type);          // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;    // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];                    // +0x20 bitset<274>
     CInterfaceMap Components;                            // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                              // +0x91 bit 0
     bool IsDead() const { return Dead; }
     bool HasTC(long type) const
@@ -44,9 +35,9 @@ public:
             return false;
         ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
         CInterfaceMap* map = &Components;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || T::INTERFACE_TYPE < it->first)
-            it = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || T::INTERFACE_TYPE < it->first)
+            it = map->end();
         *out = (T*)it->second;
         return true;
     }

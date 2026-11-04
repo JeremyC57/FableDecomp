@@ -1,5 +1,6 @@
 // CTCOracleMinigame::GetTextWithNarrator'::`2'::`dynamic atexit destructor for 'no_text_entry''() -- destroy the function-local static CWideString no_text_entry at exit
 // Leaf: _$E2
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x01229DE0, 10 bytes: `mov ecx, offset 0x013BAE8C ; jmp 0x0099B510` (~CWideString on the static).
 // Identity (two sources): (1) the only reference to 0x01229DE0 is the `push offset 0x01229DE0 ; call atexit 0x004012BC` at 0x007E606C inside
@@ -65,15 +66,7 @@ private: public:
     CDataBank*    PDataBank;                            // +0x14
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -85,8 +78,8 @@ public:
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            *out = (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            *out = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

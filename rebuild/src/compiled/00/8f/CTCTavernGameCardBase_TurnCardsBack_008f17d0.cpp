@@ -1,5 +1,6 @@
 // CTCTavernGameCardBase::TurnCardsBack() -- clears every card's highlight and flips each card that is face up and not already turning back over (with the flip sound), then goes to state 0x19
 // Leaf: ?TurnCardsBack@CTCTavernGameCardBase@@UAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F17D0, 225 bytes (plain `ret`); vtable slot 55 (CTCTavernGameCardSorting
 // 0x0126F5B4 inherits it). Ego_r.pdb `?TurnCardsBack@CTCTavernGameCardBase@@UAEXXZ`.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (the inline GetTC, interface 0x5B);
@@ -37,15 +38,7 @@ class CTCGraphicAppearance { public:
 }
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
@@ -56,8 +49,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (it == map->last || interfaceType < it->first ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
 };
 class CCard { public:                                  // Ego_r.pdb CCard (0x58 bytes)

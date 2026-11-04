@@ -1,5 +1,6 @@
 // NCreatureMode::CModeOutOfActionBase::OnDeactivate() -- the creature comes back into action: resume its animation if it was in state 1, clear targeting flag 4, wake its physics, kill the out-of-action emitter if it is still alive, then the stand-mode deactivation
 // Leaf: OnDeactivate
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D8F30, 161 bytes (`ret`).
 // Callees: CThingAICreature::SuspendAI(bool, long) 0x00833A10; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // 0x0040F020 (inlined HasTC/GetTC, type 9 = bit 9 of +0x20); the type-9 component's flag setter 0x007EA270 (beside
@@ -13,15 +14,7 @@
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                     // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);  // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CPhysicsObject {
@@ -45,7 +38,7 @@ class CThing : public CThingAnimatable { public:
     unsigned char   _pad11[0x0f];
     unsigned long   m_presentBits[9];      // +0x20 std::bitset of interface types
     CInterfaceMap   m_interfaces;          // +0x44
-    unsigned char   _pad4c[0x14];
+    unsigned char   _pad54[0xc];
     CPhysicsObject* PPhysics;              // +0x60
     unsigned char   _pad64[0x91 - 0x64];
     unsigned char   m_flags91;             // +0x91 bit 0: dead
@@ -60,8 +53,8 @@ class CThing : public CThingAnimatable { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->first) ? map->last : it;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
         return (T*)sel->second;
     }
 };

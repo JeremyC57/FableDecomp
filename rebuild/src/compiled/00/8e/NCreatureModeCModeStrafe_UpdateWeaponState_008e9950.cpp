@@ -1,6 +1,7 @@
 // NCreatureMode::CModeStrafe::UpdateWeaponState() -- track the weapon in the creature's primary carrying slot: switch the strafe anims when the carried weapon (or its absence) differs from ActiveWeapon, and again whenever the weapon's usability for the creature flips
 // Grade: RELOCATION_MATCH -- the usability flip is one `(usable && !LastUsable) || (!usable && LastUsable)` test: VC7.1 lays it out as two tests entering one shared SetChangeOfWeapon block (the nested if/else gave two blocks, `usable != LastUsable` and the ternary fold it)
 // Leaf: UpdateWeaponState
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E9950, 215 bytes (`ret`).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x004365B0 (the const instantiation: inlined const GetInterface for
 // CTCCarrying 0x46 and CTCWeapon 0x48); CTCCarrying::GetThingInPrimarySlot 0x006A1440; CTCWeapon::IsUsableBy(CThing*) 0x005DAB10;
@@ -14,22 +15,14 @@ class CTCBase;
 class CThing;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                     // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;  // 0x004365B0 (the const instantiation)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];       // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;           // +0x44
-    unsigned char  _pad4c[0x8c - 0x4c];
+    unsigned char  _pad54[0x38];
     unsigned short m_weaponId;             // +0x8c
     unsigned char  _pad8e[3];
     unsigned char  m_lifeFlags;            // +0x91 (bit 0: dead)
@@ -39,9 +32,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (const T*)it->second;
             return true;
         }
@@ -57,8 +50,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        const CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->first) ? map->last : it;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        const CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
         return (const T*)sel->second;
     }
 };

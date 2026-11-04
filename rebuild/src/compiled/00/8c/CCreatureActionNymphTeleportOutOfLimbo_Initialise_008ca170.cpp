@@ -1,5 +1,6 @@
 // CCreatureAction_NymphTeleportOutOfLimbo::Initialise() -- play the teleport effect, put the nymph at NewPos (reset and force-move there), name the "TELEPORT_OUTOF_LIMBO" animation, run the combat Initialise, then stop the CTCNymph flying around for the action's TotalTime
 // Leaf: ?Initialise@CCreatureAction_NymphTeleportOutOfLimbo@@UAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008CA170, 176 bytes, thiscall, plain `ret` (virtual).
 // Identity (proven): RTTI vtable 0x01282A04 (.?AVCCreatureAction_NymphTeleportOutOfLimbo@@) slot 12 = Initialise; Ego_r.pdb
 //   ?Initialise@CCreatureAction_NymphTeleportOutOfLimbo@@UAEXXZ (donor 0x00901840, after NymphTeleportIntoLimbo::PerformAction
@@ -53,15 +54,7 @@ public:
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                       // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                    // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {
@@ -70,7 +63,7 @@ public:
     unsigned char _pad_0x04[0x20 - 0x04];
     unsigned long UsingComponents[9];                        // +0x20
     CInterfaceMap Components;                                // +0x44
-    unsigned char _pad_0x4c[0x60 - 0x4c];
+    unsigned char _pad_0x54[0xc];
     CTCPhysicsBase* PhysicsTC;                               // +0x60
     const C3DVector& GetPos() const;                         // 0x004C73D0
     CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }
@@ -79,9 +72,9 @@ public:
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->end() || type < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

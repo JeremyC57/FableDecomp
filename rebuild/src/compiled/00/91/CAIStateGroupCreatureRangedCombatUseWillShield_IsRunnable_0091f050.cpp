@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureRangedCombatUseWillShield::IsRunnable() -- runnable while the creature carries a melee weapon, its targeting component (interface 8) has a target it should attack, and it has no interface 0x93 component
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091F050, length 126 bytes (+ int3 padding).
 // Callees: IsThingCarryingMeleeWeapon(CThing*) @ 0x006A1620 (__fastcall), the interface-map lower bound @ 0x004365B0
@@ -15,15 +16,7 @@ class CThingCreatureBase;
 class CThingAICreature;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;       // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
@@ -34,9 +27,9 @@ class CThing { public:
     __forceinline CTCBase* FindInterface(long interfaceType)    // the lookup half: component straight from the entry
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return ((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        const CInterfaceMap* map = &m_interfaces;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
 };
 

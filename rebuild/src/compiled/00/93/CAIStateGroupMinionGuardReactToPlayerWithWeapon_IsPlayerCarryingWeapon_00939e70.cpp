@@ -1,5 +1,6 @@
 // CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsPlayerCarryingWeapon() const -- true when the creature's opinion of the hero (interface 0x4F) holds a still-happening deed of type 1
 // Leaf: ?IsPlayerCarryingWeapon@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@ABE_NXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00939E70, 90 bytes (+ int3 padding), thiscall, `ret`.
 // Identity (proven): Ego_r.pdb donor order CheckForOtherGuardsNewWarning (0x0095D100) / IsPlayerCarryingWeapon (0x0095D160) /
 //   IsRunnable (0x0095D1D0) = the landed retail 0x00939D70 / this row / the landed 0x00939ED0 (which calls this row).
@@ -44,24 +45,7 @@ public:
 };
 enum ETCInterfaceType { ETCInterfaceType_FIRST };
 class CTCBase;
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-}
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes (the hand955 L083/L084 model)
-public:
-    typedef std::pair<K, V> value_type;
-    value_type* First;                                  // +0x00 (CArray: STLport vector)
-    value_type* Last;                                   // +0x04
-    value_type* EndOfStorage;                           // +0x08
-    TCompare    Compare;                                // +0x0C
-    bool        Dirty;                                  // +0x0D
-    const value_type* end() const { return Last; }
-    const value_type* LowerBound(const K& key) const;   // 0x004365B0 (the const copy)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CClass : public CBaseObject { };
 class CThing : public CClass {

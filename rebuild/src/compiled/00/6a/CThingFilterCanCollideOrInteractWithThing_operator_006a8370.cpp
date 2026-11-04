@@ -1,5 +1,6 @@
 // CThingFilter_CanCollideOrInteractWithThing::operator()(CThing* thing) const -- a thing passes when (creatures allowed or it is not a creature) both sides' solid-to-thing components accept each other, and it has a different physics component that collides or interacts with things
 // Leaf: ??RCThingFilter_CanCollideOrInteractWithThing
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A8370, length 222 bytes, `ret 4`, bool in al.
 // Callees: CInterfaceMap::LowerBound const @ 0x004365B0 (TC 0x4d), CTCSolidToThing::IsSolidToThing(const CThing*) const
@@ -12,15 +13,7 @@
 //   collide/interact pair is an `||` inside the null and identity tests with separate true/false exits.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing;
@@ -49,7 +42,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];           // +0x20 bitset<274>
     CInterfaceMap Components;                   // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     unsigned char _pad64[0x6c - 0x64];
     unsigned long ThingTypeFlags;               // +0x6c
@@ -63,8 +56,8 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
 };
 

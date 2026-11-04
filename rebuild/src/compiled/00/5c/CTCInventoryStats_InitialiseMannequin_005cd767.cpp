@@ -1,5 +1,6 @@
 // CTCInventoryStats::InitialiseMannequin() -- creates the stats-screen mannequin from the hero def's mannequin def at the hero's position, copies the hero's appearance components onto it, adds an animation component and starts its DEFAULT animation, then gives it an editable frame update
 // Leaf: InitialiseMannequin@CTCInventoryStats
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed re-padded by-value maps +8.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005CD767, 745 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CThing::GetPos 0x004C73D0, the thing-create helper 0x00835A20 (`__fastcall` def index / position, stack bool),
@@ -105,28 +106,14 @@ struct CTCEditable {
     void EditFrameUpdate();                             // 0x00707930
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
 class CThing { public:
     unsigned char  _pad00[0x20];
     std::bitset<274>  m_present;                           // +0x20
-    unsigned char  _pad21[0x44 - 0x21];
     CInterfaceMap  m_interfaces;                        // +0x44
-    unsigned char  _pad4c[0x64 - 0x4c];
+    unsigned char  _pad54[0x10];
     CTCBase*       Clothing;                            // +0x64
     unsigned char  _pad68[0x70 - 0x68];
     CDefClassBase* PBaseDef;                            // +0x70
@@ -138,8 +125,8 @@ class CThing { public:
         if (m_present.test(kind)) {
             ETCInterfaceType key = (ETCInterfaceType)(kind);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            *out = (T*)((it == map->last || kind < it->first) ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            *out = (T*)((it == map->end() || kind < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

@@ -1,5 +1,6 @@
 // NCreatureMode::RemoveMovementBlockingModes(CThing& thing) -- drop the sit, sleep, underground, block, dazed, stunned, conversation and caged modes from the thing's mode manager
 // Leaf: ?RemoveMovementBlockingModes@NCreatureMode@@YIXAAVCThing@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F600, length 148 bytes. `__fastcall` free function (ecx = the thing).
 // Mangled (Ego_r.pdb): ?RemoveMovementBlockingModes@NCreatureMode@@YIXAAVCThing@@@Z.
 // Callees: the non-const CVectorMap LowerBound 0x0040F020, CTCCreatureModeManager::RemoveMode 0x0073ABA0 (ten times:
@@ -16,18 +17,8 @@
 //   A mode's vtable slot 1 (+4) returns its NCreatureMode::EMode number (read from each CMode*::vfunc_1 body).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
+#include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> CTCInterfaceEntry;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                 // CVectorMap<ETCInterfaceType, CTCBase*> (retail vector: first/last/end)
-public:
-    CTCInterfaceEntry* first;
-    CTCInterfaceEntry* last;
-    CTCInterfaceEntry* end;
-    const CTCInterfaceEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-    CTCInterfaceEntry* LowerBound(const ETCInterfaceType& type);         // 0x0040F020
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCInterfaceMap;
 class CModeBase {                                       // CTCCreatureModeManager::CModeBase
 public:
@@ -76,7 +67,7 @@ public:
     unsigned char   _pad11[0x20 - 0x11];
     unsigned long   m_tcPresent[9];                     // +0x20 interface present bits
     CTCInterfaceMap m_tcs;                              // +0x44
-    unsigned char   _pad50[0x6c - 0x50];
+    unsigned char   _pad58[0x14];
     unsigned long   ThingTypeFlags;                     // +0x6C THING_TYPE_* bits (1 physical, 3 creature)
     CDefClassBase*  PBaseDef;                           // +0x70 CDefPointer<const CThingDef>::Object
     unsigned char   _pad74[0x91 - 0x74];
@@ -91,14 +82,14 @@ public:
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CTCInterfaceMap* map = &m_tcs;
         const CTCInterfaceEntry* it = map->LowerBound(key);
-        return (it == map->last || type < it->first ? map->last : it)->second;
+        return (it == map->end() || type < it->first ? map->end() : it)->second;
     }
     __forceinline CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CTCInterfaceMap* map = &m_tcs;
         const CTCInterfaceEntry* it = map->LowerBound(key);
-        return (it == map->last || type < it->first ? map->last : it)->second;
+        return (it == map->end() || type < it->first ? map->end() : it)->second;
     }
     template<class T> __forceinline bool GetInterface(T** ppOut, long type) const
     {
@@ -106,7 +97,7 @@ public:
             ETCInterfaceType key = (ETCInterfaceType)(type);
             const CTCInterfaceMap* map = &m_tcs;
             const CTCInterfaceEntry* it = map->LowerBound(key);
-            *ppOut = (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+            *ppOut = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;
@@ -118,7 +109,7 @@ public:
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CTCInterfaceMap* map = &m_tcs;
             const CTCInterfaceEntry* it = map->LowerBound(key);
-            *ppOut = (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+            *ppOut = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

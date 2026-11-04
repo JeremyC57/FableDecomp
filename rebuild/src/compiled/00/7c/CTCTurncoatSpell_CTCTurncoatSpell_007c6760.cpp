@@ -1,5 +1,6 @@
 // CTCTurncoatSpell::CTCTurncoatSpell(CThing* owner) -- build the turncoat-spell component: its will-button helper timer for ability 5, def pointer, intelligent pointers and timers; mark the owner's ability-cast component as busy with ability 5, load SPECIAL_ABILITIES_TURNCOAT_SPELL_DEF, read the owner's turncoat ability level and turn the def's per-level duration tables into whole frames plus fractions
 // Leaf: ??0CTCTurncoatSpell
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x007C6760, 480 bytes (`ret 4`, no EH frame).
@@ -17,16 +18,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -39,23 +31,23 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
-        return (it == map->last || type < it->first ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (it == map->end() || type < it->first ? map->end() : it)->second;
     }
     __forceinline CTCBase* GetTCC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        return (it == map->last || type < it->first ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (it == map->end() || type < it->first ? map->end() : it)->second;
     }
     template<class T> __forceinline void GetInterface(long interfaceType, T** out)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            *out = (T*)(it == map->last || interfaceType < it->first ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            *out = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
         }
     }
     template<class T> __forceinline void GetInterfaceC(long interfaceType, T** out) const
@@ -63,8 +55,8 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(key);
-            *out = (T*)(it == map->last || interfaceType < it->first ? map->last : it)->second;
+            const CInterfaceMap::value_type* it = map->LowerBound(key);
+            *out = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
         }
     }
 };

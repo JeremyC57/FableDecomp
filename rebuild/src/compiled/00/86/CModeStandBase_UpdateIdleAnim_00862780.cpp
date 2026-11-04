@@ -6,6 +6,7 @@
 //   special idle (type 0x19) over a subtle pose when it is not already looping, else (re)start the pose idle (type 6) when
 //   it changed or nothing loops; remember the pose idle name
 // Leaf: ?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00862780, 798 bytes (`ret 4`). Ego_r.pdb: `?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z`.
@@ -69,16 +70,7 @@ public:
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 #define VF(n) virtual void v##n();
@@ -95,7 +87,7 @@ class CThing { public:
     unsigned char _pad04[0x20 - 0x04];
     unsigned long UsingComponents[9];                   // +0x20
     CInterfaceMap Components;                           // +0x44
-    unsigned char _pad4c[0x6c - 0x4c];
+    unsigned char _pad54[0x18];
     unsigned char Flags6c;                              // +0x6c (bit 4: has information to give)
     unsigned char _pad6d[0x91 - 0x6d];
     unsigned char Flags91;                              // +0x91 (bit 0: dead)
@@ -105,9 +97,9 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return (const T*)it->second;
     }
 };

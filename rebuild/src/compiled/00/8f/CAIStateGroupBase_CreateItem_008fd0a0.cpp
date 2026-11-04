@@ -1,4 +1,5 @@
 // CAIStateGroupBase::CreateItem(CCharString&, CCharString&) -- look up the creature's carry slot, create the named thing at its position, then put it in the slot; retail 0x008fd0a0 (266 bytes), using CAIBrain/CThingAICreature headers and the opaque +0x44 map view.
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 #if defined(_MSC_VER)
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
@@ -46,17 +47,8 @@ struct CAIStateGroupBaseCreateItem : CAIStateGroupBase {
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
+#include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> CLongPointerPair;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    CLongPointerPair* first;
-    CLongPointerPair* last;
-    CLongPointerPair* capacity;
-    unsigned long flags;
-    CLongPointerPair* LowerBound(const ETCInterfaceType& key); // 0x0040f020
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CVectorMapLong;
 
 class CRightHandedSet;
@@ -73,8 +65,8 @@ void CAIStateGroupBaseCreateItem::CreateItem(CCharString* definitionName, CCharS
         CVectorMapLong* carries = (CVectorMapLong*)((char*)creature + 0x44);
         ETCInterfaceType key = (ETCInterfaceType)(0x46);
         CLongPointerPair* entry = carries->LowerBound(key);
-        if (entry == carries->last || entry->first > 0x46)
-            entry = carries->last;
+        if (entry == carries->end() || entry->first > 0x46)
+            entry = carries->end();
         CTCCarrying* carry = (CTCCarrying*)((void*)entry->second);
 
         long playerID = brain->PlayerManager->GetMainPlayerNumber();   // 0x00449700 ?GetMainPlayerNumber@CPlayerManager@@QBEJXZ

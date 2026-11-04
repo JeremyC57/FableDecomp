@@ -1,5 +1,6 @@
 // CThingSwitch::OnThingWithScriptNameApplied(const CCharString& name, const C3DVector& position, CThingCreatureBase& creature) -- a switch of trigger type 6 that is not yet triggered fires when the applied thing's script name is its TriggerableObjectScriptName and the thing is within the trigger radius (2D): queue a CEventTriggered for the creature (component 0x42) and latch Triggered
 // Leaf: ?OnThingWithScriptNameApplied@CThingSwitch@@UAEXABVCCharString@@ABVC3DVector@@AAVCThingCreatureBase@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083CC10, length 340 bytes (`ret 0Ch`); CThingSwitch vtable 0x012453FC slot 71.
 //   Name and signature from Ego_r.pdb (`?OnThingWithScriptNameApplied@CThingSwitch@@UAEXABVCCharString@@ABVC3DVector@@AAVCThingCreatureBase@@@Z`);
 //   the catalog calls it "CThingSwitch::vfunc_71".
@@ -50,15 +51,7 @@ class CTCEntityEvents { public:
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CDefPointeeBase { public:
@@ -116,7 +109,7 @@ class CThing { public:
     unsigned char  _pad04[0x20 - 4];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
-    unsigned char  _pad4c[0x8c - 0x4c];
+    unsigned char  _pad54[0x38];
     unsigned short m_defGlobalIndex;                    // +0x8c
     unsigned short _pad8e;
     CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
@@ -130,8 +123,8 @@ class CThing { public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
-        CInterfaceMap::SEntry* end = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
 };

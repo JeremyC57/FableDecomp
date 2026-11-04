@@ -1,5 +1,6 @@
 // CIsImposterHit::operator()() const -- true when the watched thing is alive, has creature mode 0x25 active in its mode manager (component kind 0x42) (the imposter has been hit)
 // Leaf: ??RCIsImposterHit
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00963810, length 108 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three calls on the pointer at +0x14), CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound @ 0x0040F020 (the inlined component lookup), CTCCreatureModeManager::IsModeActive @ 0x00811340 (landed;
@@ -10,22 +11,13 @@
 // and the lookup; the two-exit `mov al,1` / `xor al,al` tail.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                             // a thing's sorted {type, component} vector map at +0x44
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* end;
-    SEntry* LowerBound(const ETCInterfaceType& type);          // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                    // +0x44
-    unsigned char _pad50[0x91 - 0x50];
+    unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                        // +0x91 bit 0
     unsigned char _flags91 : 7;
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -33,9 +25,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

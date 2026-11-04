@@ -1,5 +1,6 @@
 // CThingPhysical::InternalModifyHealth(float delta, bool allowDeath) -- apply a health delta: invulnerability cheats, boss phase floor, def minimum, death floor, observer notifications
 // Leaf: InternalModifyHealth
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Retail: ?InternalModifyHealth@CThingPhysical@@AAEXM_N@Z (private). Callees: CTCBoss::GetCurrentPhase 0x7AED10, GetMinHealthForPhase 0x7AEE40,
 //   TC4 0x57A753 (catalog label AddSuccessfulBlockParry is wrong: hero health observer), TC9 0x7EA270 (label AddExclusiveObserver is wrong: flag setter),
 //   SetAsFrameUpdated 0x4C7C40; LowerBound non-const 0x40F020 (TC 4/9), const 0x4365B0 (TC 0xad).
@@ -7,17 +8,7 @@
 //   +0xb0/+0xb4/+0xbc (fld [esi+0xb4], test byte [esi+0xbc]) where the PDB has +0xc8/+0xcc/+0xd4; the shared header's +0xb4 "Scale" does not fit retail.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* end;
-    SEntry* LowerBound(const ETCInterfaceType& type);                   // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;             // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCBoss { public:                                            // TC 0xad
     unsigned char _pad00[0x0c];
@@ -54,7 +45,7 @@ class CThingPhysical : public CThing { public:
     unsigned char _pad11[0x0f];
     unsigned long m_presentBits[9];                         // +0x20
     CInterfaceMap m_interfaces;                             // +0x44
-    unsigned char _pad50[0x70 - 0x50];
+    unsigned char _pad54[0x1c];
     const CThingPhysicalDef* PBaseDef;                      // +0x70
     unsigned char _pad74[0xb0 - 0x74];
     float MaxHealth;                                        // +0xb0
@@ -67,15 +58,15 @@ class CThingPhysical : public CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (it == map->last || interfaceType < it->first ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
     __forceinline CTCBase* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (it == map->last || interfaceType < it->first ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
 private:
     void InternalModifyHealth(float delta, bool allowDeath);

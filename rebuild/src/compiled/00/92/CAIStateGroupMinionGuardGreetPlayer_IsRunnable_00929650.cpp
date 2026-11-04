@@ -1,5 +1,6 @@
 // 00929650 CAIStateGroup_MinionGuardGreetPlayer::IsRunnable()
 // Leaf: ?IsRunnable@CAIStateGroup_MinionGuardGreetPlayer@@UAE_NXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Flags:
 extern "C" double __cdecl sqrt(double);
 #define CIVCountedPointeeBase CIVCountedPointeeBaseLayout
@@ -42,9 +43,7 @@ extern "C" double __cdecl sqrt(double);
 #define CAIStateGroupBase CAIStateGroupBaseLayout
 #include "engine/CAIStateGroupBase.h"
 #undef CAIStateGroupBase
-namespace std {
-template<class A,class R>struct unary_function {typedef A argument_type;typedef R result_type;};
-}
+#include "engine/CVectorMap.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -52,19 +51,6 @@ template<class A,class R>struct unary_function {typedef A argument_type;typedef 
 class CClass:public CBaseObject {private:unsigned char unobservedClassState[sizeof(CClassLayout)-sizeof(CBaseObject)];};
 enum ETCInterfaceType {};
 class CTCBase;
-namespace std {
-template<class T>class allocator {};
-template<class K,class V>struct pair{K first;V second;};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};
-template<class T,class A>class _Vector_base{protected:T*_M_start;T*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:T*end(){return this->_M_finish;}};
-}
-template<class T>class CArray:public std::vector<T>{};
-template<class K,class V>class CKeyPairCompareLess{};
-template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> > {
-private:C Compare;bool Dirty;
-public:std::pair<K,V>*LowerBound(const K&);
-};
 class C3DVector;
 class CThing:public CClass {
 public:const C3DVector&GetPos()const;

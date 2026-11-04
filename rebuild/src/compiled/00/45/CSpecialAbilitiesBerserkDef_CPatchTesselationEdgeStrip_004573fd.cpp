@@ -1,5 +1,6 @@
 // Native virtual destructor, identified by deleting-dtor slot0 RTTI.
 // Leaf: ??1CSpecialAbilitiesBerserkDef@@UAE@XZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Actual quarantined donor retained. Native packed parent39 vs donor3d;
 // native vectors12 vs donor16. novtable views emit no production vtable.
 #pragma optimize("s",on)
@@ -34,8 +35,7 @@ typedef unsigned long U32;
 #else
 typedef unsigned int U32;
 #endif
-template<class K,class V>class CKeyPairCompareLess{ public:};
-template<class K,class V,class Compare>class CVectorMap { public:void* Start;void* Finish;void* End;Compare CompareKeys;unsigned char Dirty;};
+#include "engine/CVectorMap.h"
 #pragma pack(push,1)
 struct __declspec(novtable) CIVCountedPointeeBase {
  CIVCountedPointeeBase();virtual ~CIVCountedPointeeBase();virtual void Delete() const;

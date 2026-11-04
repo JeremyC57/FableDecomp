@@ -1,5 +1,6 @@
 // COpinionReactionManager::GetHeroStatsInOpinionFormat(EOpinion opinion) const -- the controlled hero's stat that feeds an opinion type, as a float: 0 morality (scaled by the morality maximum, plus appearance goodness, limited to -1..1), 1 renown level fraction, 2 scariness, 3 agreeableness, 4 attractiveness; 0 without a hero or hero stats
 // Leaf: GetHeroStatsInOpinionFormat
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007009D0, 249 bytes + a 5-entry jump table (0x00700ACC), `ret 4`.
 // Callees: CWorld::PeekMyPlayer 0x0049D9D0, CPlayer::PeekPControlledCreature 0x00487DD0, CVectorMap<ETCInterfaceType,
 //   CTCBase*>::LowerBound 0x004365B0 (const; inlined HasTC + GetTC for CTCHeroStats, type 4), CTCHeroStats::GetMoralityMax
@@ -12,15 +13,7 @@
 //   before `fild`).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                     // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;  // 0x004365B0 (the const instantiation)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char  _pad0[0x20];
@@ -36,8 +29,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        const CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->first) ? map->last : it;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        const CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
         return (const T*)sel->second;
     }
 };

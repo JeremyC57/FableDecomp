@@ -1,5 +1,6 @@
 // 008de700 NCreatureMode::CModeRockTrollVulnerable::Recover -- leave the vulnerable troll mode
 // Leaf: ?Recover@CModeRockTrollVulnerable@NCreatureMode@@AAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Flags:
 #define CClass CClassLayout
 #include "engine/CClass.h"
@@ -41,18 +42,7 @@ public:unsigned long GetType()const{return Type;}
 };
 #pragma pack(pop)
 enum ETCInterfaceType {};
-namespace std {
-template<class T>class allocator {};
-template<class K,class V>struct pair{K first;V second;};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};
-template<class T,class A>class _Vector_base{protected:T*_M_start;T*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:T*end(){return this->_M_finish;}};
-}
-template<class T>class CArray:public std::vector<T>{};
-template<class K,class V>class CKeyPairCompareLess{};
-template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> > {
-private:C Compare;bool Dirty;public:std::pair<K,V>*LowerBound(const K&);
-};
+#include "engine/CVectorMap.h"
 #pragma pack(push,1)
 class CThing:public CClass {
 public:

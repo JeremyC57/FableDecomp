@@ -1,5 +1,6 @@
 // CBlurredAttitudesDef::~CBlurredAttitudesDef() -- implicit destructor of the blurred-attitudes definition: free the Attitudes vector storage, then the inline parent-def bases (SubDefInfoMap storage, the CDefPointeeBase vptr) and ~CResource
 // Leaf: ??1CBlurredAttitudesDef@@UAE@XZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0067C370, 49 bytes, thiscall, `jmp` tail; no call or address reference (an
 //   unreferenced COMDAT: VC7.1 emits the implicit `??1` when the TU destroys the object by name; retail kept it).
 // Identity (proven): (1) the scalar deleting destructor 0x0067C520 -- slot 0 of vtable 0x0125B8AC, whose RTTI is
@@ -28,41 +29,7 @@ class CDefString {                                       // Ego_r.pdb, 4 bytes
 public:
     long TablePos;
 };
-namespace std {
-template <class _Tp> class allocator {
-public:
-    allocator() {}
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    ~_Vector_base()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> >
-class vector : public _Vector_base<_Tp, _Alloc> {        // element types here are trivially destructible
-public:
-};
-}
-template <class K, class V> class CKeyPairCompareLess { public: };
-template <class K, class V, class C>
-class CVectorMap : public std::vector<std::pair<K, V> > {   // retail 0x10 bytes
-public:
-    C    Compare;                                        // +0x0c
-    bool Dirty;                                          // +0x0d
-};
+#include "engine/CVectorMap.h"
 enum EOpinionAttitudeType { };                   // global enum (Ego_r W4EOpinionAttitudeType@@); its values do not reach the bytes
 
 #pragma pack(push, 1)                                    // as engine/CParentDefClassBase.h (retail 0x39 bytes)

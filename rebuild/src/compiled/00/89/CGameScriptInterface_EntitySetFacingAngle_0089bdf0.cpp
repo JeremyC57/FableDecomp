@@ -1,6 +1,7 @@
 // CGameScriptInterface::EntitySetFacingAngle(const CScriptThing& entity, float angle, bool immediate) const -- turn a valid entity to the angle (a fraction of a full turn): reset TC 7, stop its looking (TC 0x43); unless immediate, make it look at a point one unit away along the new heading, else set the physics facing directly and reset its perception (TC 0x34)
 // Retry 10b: cos(pitch) held as a FLOAT local (a double local keeps it on the x87 stack past the Y product: `fmul st(1)` + a late `fstp st(0)`; the float is consumed by retail's `fld st(2) ; fmulp` / `fmulp st(1)`).
 // Leaf: ?EntitySetFacingAngle@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089BDF0, length 385 bytes (`ret 0Ch`).
 // Callees: the script thing's slots 75 (+0x12C IsValid), 11 (+0x2C GetThing) and 6 (+0x18, the position), the thing
 //   physics (+0x60) slots 63 (+0xFC, current facing angle) and 66 (+0x108, set facing angle), the component-map
@@ -22,15 +23,7 @@ extern const double TWO_PI; // 0x0124F2B8 ((double)6.2831855f)
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
 struct CThingPhysics_Retail {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
@@ -49,15 +42,15 @@ struct CThing_Retail {
     unsigned char         _pad00[0x20];
     unsigned long         m_presentBits[9];         // +0x20
     CInterfaceMap_Retail  m_interfaces;             // +0x44
-    unsigned char         _pad4c[0x14];
+    unsigned char         _pad54[0xc];
     CThingPhysics_Retail* m_pPhysics;               // +0x60
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     __forceinline CTCBase_Retail* GetInterface(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap_Retail* map = &m_interfaces;
-        CInterfaceMap_Retail::SEntry* it = map->LowerBound(type);
-        return ((CTCBase_Retail*)((it == map->last || interfaceType < it->first) ? map->last : it)->second);
+        CInterfaceMap_Retail::value_type* it = map->LowerBound(type);
+        return ((CTCBase_Retail*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second);
     }
 };
 struct CTCType7 { void Reset(); };                          // 0x006CB6B0

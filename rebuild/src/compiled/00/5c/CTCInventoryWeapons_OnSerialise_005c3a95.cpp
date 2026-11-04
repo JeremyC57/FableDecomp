@@ -1,5 +1,6 @@
 // CTCInventoryWeapons::OnSerialise(CPersistContext& context, long version) -- persists the active weapons: on save, refreshes the active def indices, records whether each active weapon is carried in the primary slot and writes the confiscated / previously wielded weapon def names; on load, reads the carried flags and maps the def names back to global indices; both ways transfer the active def indices
 // Leaf: OnSerialise@CTCInventoryWeapons
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005C3A95, 1020 bytes, `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: RefreshActiveWeaponData 0x005C30D3, CTCInventoryBase::OnSerialise 0x005BFD5E, CPersistContext saving test 0x004AEF50
@@ -60,34 +61,20 @@ class CTCCarrying { public:
     bool IsCarriedThingInPrimarySlot(CThing* thing) const;   // 0x006A1490
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
 struct CThingBase {
     unsigned char  _pad00[0x20];
     std::bitset<274>  m_present;                           // +0x20
-    unsigned char  _pad21[0x44 - 0x21];
     CInterfaceMap  m_interfaces;                        // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long kind) const
     {
         if (m_present.test(kind)) {
             ETCInterfaceType key = (ETCInterfaceType)(kind);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(key);
-            *out = (T*)((it == map->last || kind < it->first) ? map->last : it)->second;
+            const CInterfaceMap::value_type* it = map->LowerBound(key);
+            *out = (T*)((it == map->end() || kind < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

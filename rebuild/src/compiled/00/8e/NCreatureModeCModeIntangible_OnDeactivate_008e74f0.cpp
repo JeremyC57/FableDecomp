@@ -1,5 +1,6 @@
 // NCreatureMode::CModeIntangible::OnDeactivate() -- the creature becomes tangible again: re-enable physics, mapwho and targeting, make it bloody-willable, and for a player creature resume its animation, restore its Damageable bit and start the queued on-deactivate action
 // Leaf: ?OnDeactivate@CModeIntangible
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E74F0, 258 bytes (padded to 272), `ret`; vtable 0x01268514 slot 6.
 // Name: FableWin.pdb `?OnDeactivate@CModeIntangible@NCreatureMode@@UAEXXZ` (slot 6; slot 5 OnActivate 0x008E7390, slot 3
 //   FrameUpdate 0x008E7600, landed).
@@ -17,15 +18,7 @@
 //   named thing local (edi survives the calls); the bit store is a one-bit bitfield assignment (xor/and/xor).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -66,7 +59,7 @@ class CThing { public:
     unsigned char   _pad11[0x0f];
     unsigned long   m_presentBits[9];           // +0x20 std::bitset of interface types
     CInterfaceMap   m_interfaces;               // +0x44
-    unsigned char   _pad4c[0x14];
+    unsigned char   _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     unsigned char   _pad64[0x58];
     unsigned char   Damageable : 1;             // +0xBC bit 0 (CThingPhysical)
@@ -75,9 +68,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

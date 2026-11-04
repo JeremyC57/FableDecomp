@@ -1,6 +1,7 @@
 // EnsureUndoStat() -- the "yes" answer of the experience screen's undo-stat prompt: if the main player's character is alive, undo the pending stat purchase and hand the mouse pointer back from the yes/no dialog, then drop the dialog's yes/no buttons from the UI manager and send the close event
 // Naming wave 35c (queue land0411j 0x00487B70): calls 0x00487B70 as CPlayer::GetPPlayerCharacterThing() const (Ego_r.pdb ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ; was GetPlayerCharacter).
 // Leaf: ?EnsureUndoStat@@YIXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed. Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -56,53 +57,30 @@ class CManager { public:                                    // NUISystem::CManag
 
 class CThing;
 
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
-struct CInterfaceMap {
-    struct SEntry { long type; void* component; };
-    SEntry* first;                                   // +0x00
-    SEntry* last;                                    // +0x04
-    __declspec(noinline) SEntry* LowerBound(const long* type)   // 0x0040F020 (same-TU read-only stand-in)
-    {
-        SEntry* lo = first;
-        int len = last - first;
-        while (len > 0) {
-            int half = len >> 1;
-            SEntry* middle = lo + half;
-            if (middle->type < *type) {
-                lo = middle + 1;
-                len = len - half - 1;
-            }
-            else
-                len = half;
-        }
-        return lo;
-    }
-};
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+class CTCBase;
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char _pad_0x00[0x20];
     std::bitset<274> m_present;                         // +0x20
-    unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
-    unsigned char _pad_0x4c[0x91 - 0x4c];
+    unsigned char _pad_0x54[0x3d];
     unsigned char DeadFlags;                         // +0x91 (bit 0: dead; retail)
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             long type = wanted;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* found = map->LowerBound(&type);
-            CInterfaceMap::SEntry* it;
-            if (found != map->last && !(wanted < found->type))
+            CInterfaceMap::value_type* found = map->LowerBound((const ETCInterfaceType&)type);
+            CInterfaceMap::value_type* it;
+            if (found != map->end() && !(wanted < found->first))
                 it = found;
             else
-                it = map->last;
-            *out = (T*)it->component;
+                it = map->end();
+            *out = (T*)it->second;
             return true;
         }
         return false;

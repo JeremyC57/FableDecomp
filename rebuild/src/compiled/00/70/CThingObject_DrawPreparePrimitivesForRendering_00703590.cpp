@@ -1,5 +1,6 @@
 // CThingObject::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) -- after the CThingPhysical preparation: prepare the weapon trail (interface 0x4C, when trails are shown) and the two draw-preparing components (0x54, 0xCF); take the render position and orientation interpolators from the carry pose when the object is being carried (pushing them into the physics component and updating attached particles, 0xD8) or else from the physics component; then let the graphic appearance prepare itself with them
 // Leaf: DrawPreparePrimitivesForRendering
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Callees: CThingPhysical::DrawPreparePrimitivesForRendering @ 0x006A64D0 (non-virtual), CVectorMap::LowerBound const @ 0x004365B0 /
 //          non-const @ 0x0040F020, CTCWeaponTrail @ 0x0076E6A0, the components' slot 11 (+0x2c), CBaseClass ctor @ 0x0099A2D0 /
 //          dtor @ 0x0099A2E0, CTCCarryable::GetCarriedPositionInfo @ 0x00705B00, physics slots 31/32 (+0x7c/+0x80),
@@ -32,16 +33,7 @@ class C3DOrientationInterpolator : public CBaseClass { public:             // vt
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #define VF(n) virtual void v##n();
 struct CTCDrawPreparer {
@@ -78,7 +70,7 @@ class CThingPhysical { public:
     unsigned char         _pad04[0x1c];
     unsigned long         UsingComponents[9];           // +0x20
     CInterfaceMap         Components;                   // +0x44
-    unsigned char         _pad4c[0x60 - 0x4c];
+    unsigned char         _pad54[0xc];
     CTCPhysicsBase*       PhysicsTC;                    // +0x60
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64
     virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x006A64D0
@@ -87,9 +79,9 @@ class CThingPhysical { public:
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }
@@ -100,8 +92,8 @@ class CThingPhysical { public:
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->last || interfaceType < it->first ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
             return true;
         }
         return false;
@@ -111,8 +103,8 @@ class CThingPhysical { public:
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &Components;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->last || interfaceType < it->first ? map->last : it)->second;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
             return true;
         }
         return false;
@@ -122,9 +114,9 @@ class CThingPhysical { public:
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &Components;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

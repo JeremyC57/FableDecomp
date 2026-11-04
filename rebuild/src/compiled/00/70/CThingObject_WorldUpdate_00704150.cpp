@@ -1,5 +1,6 @@
 // CThingObject::WorldUpdate() -- vtable slot 19: after the game-object update, count down the die-off timer (unless held by TC 0x47 or a shot TC), kill the object when its health is gone or its die-off time is up, else run its own update and the shot component's
 // Leaf: ?WorldUpdate@CThingObject
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00704150, length 215 bytes, `ret`, bool in al; slot 19 of vtable 0x01264DCC =
 //   CThingObject (rtti-vtables.tsv; CThingGameObject's slot 19 is 0x00838BA0, landed callers name it WorldUpdate).
 // Callees: CThingGameObject::WorldUpdate @ 0x00838BA0 (qualified base call), CInterfaceMap::LowerBound const @ 0x004365B0
@@ -13,16 +14,7 @@
 //   non-const one; the update path is the nested success path returning false, the kill block laid out last.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CTCDieOffHold_47 {                       // the component behind ETCInterfaceType 0x47
     unsigned char _pad00[0x10];
@@ -42,7 +34,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];           // +0x20 bitset<274>
     CInterfaceMap Components;                   // +0x44
-    unsigned char _pad4c[0xb4 - 0x4c];
+    unsigned char _pad54[0x60];
     float Health;                               // +0xb4 (CThingPhysical)
     bool WorldUpdate();                         // 0x00838BA0 (slot 19)
     bool HasTC(long type) const
@@ -55,9 +47,9 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return (T*)it->second;
     }
     template<class T> __forceinline bool GetInterface(const T** out, long interfaceType) const
@@ -65,9 +57,9 @@ public:
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &Components;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *out = (const T*)it->second;
             return true;
         }

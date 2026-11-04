@@ -1,5 +1,6 @@
 // CIsOpinionSourceWithReaction::CIsOpinionSourceWithReaction(CAIStateGroup_OpinionReactionRoot* group) -- opinion-reaction filter: remember the state group and the world's reaction manager, work out whether the creature follows the player (AI follower or region follower of the hero's thing), whether it is aware of the player for reactions (its opinion-of-hero target is the hero with a non-zero awareness and the flag set), and cache its opinion-of-hero component
 // Leaf: ??0CIsOpinionSourceWithReaction
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095F9A0, length 416 bytes (`ret 4`).
 // Callees: the out-of-line accessors 0x008FCFC0 (group -> player, manifest label CPlayer::GetCurrentMode is a byte-twin),
 //   0x0049D9D0 (player -> player character), 0x00487DC0 (character -> thing, the handle at +0x2c), 0x007446A0 (opinion TC -> target
@@ -15,15 +16,7 @@
 //   the creature is re-read in each call argument; the hero thing is a named local (ebx) set by an if/else.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                              // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -35,8 +28,8 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->last || interfaceType < it->first ? map->last : it)->second;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
             return true;
         }
         return false;

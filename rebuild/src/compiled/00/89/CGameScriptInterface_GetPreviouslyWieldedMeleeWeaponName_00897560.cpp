@@ -1,6 +1,7 @@
 // CGameScriptInterface::GetPreviouslyWieldedMeleeWeaponName(CCharString& name) const -- the definition name of the
 // melee weapon the hero wielded before (hero TC 0x13), true when there is one with a non-empty name
 // Leaf: ?GetPreviouslyWieldedMeleeWeaponName@CGameScriptInterface@@UBE_NAAVCCharString@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00897560, length 208 bytes, `ret 4`.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the TC map lower bound
 // copy @ 0x004365B0, CDefinitionManager::GetDefNameFromGlobalIndex(long) @ 0x009ACCC0 (CDefString by hidden
@@ -40,15 +41,7 @@ class CGameDefinitionManager : public CDefinitionManager { };
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                    // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;           // 0x004365B0 (this TU's copy of the 0x0040F020 body)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
@@ -56,7 +49,7 @@ class CThing { public:
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];       // +0x20 std::bitset of the interface types present
     CInterfaceMap m_interfaces;           // +0x44
-    unsigned char _pad4c[0x45];
+    unsigned char _pad54[0x3d];
     unsigned char m_dead : 1;             // +0x91 bit 0
     unsigned char m_91_1 : 7;
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
@@ -64,10 +57,10 @@ class CThing { public:
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

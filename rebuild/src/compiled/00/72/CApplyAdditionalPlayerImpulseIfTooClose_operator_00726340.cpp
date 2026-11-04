@@ -1,6 +1,7 @@
 // CApplyAdditionalPlayerImpulseIfTooClose::operator()(CThingCreatureBase* other) -- when the other thing overlaps the player vertically, is within the combined radius plus 0.1 in XY, both collide with things, it is pushable by the hero and the player's collision filter lets them collide: push it away from the player (harder the deeper the overlap) or, when on the same spot, along the player's velocity, turned by a random angle; a moving player also tells a creature it is being pushed
 // Grade: RELOCATION_MATCH (retry A 11a) -- the unit scaling is written per component (X = X / dist ...), not as offset *= 1/dist, and GetXYLengthSquared is sequenced (s = X*X; s += Y*Y)
 // Leaf: ??RCApplyAdditionalPlayerImpulseIfTooClose
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 #include <math.h>
@@ -8,15 +9,7 @@
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0 (the const copy)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing;
 class CTCSolidToThing { public:                     // the interface-0x4D component
@@ -65,7 +58,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     __forceinline unsigned long HasTC(long interfaceType) const
     {
@@ -74,9 +67,9 @@ public:
     __forceinline CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return ((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        const CInterfaceMap* map = &m_interfaces;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
     const C3DVector& GetPos() const;       // 0x004C73D0
 };

@@ -1,5 +1,6 @@
 // CThingFilter_IsNavLineOfSightToThing::CThingFilter_IsNavLineOfSightToThing(const CThing& thing) -- keep the thing's position and, when it has one, its creature-navigation component
 // Leaf: ??0CThingFilter_IsNavLineOfSightToThing
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A8710, length 74 bytes, `ret 4`.
 // Callees: CThing::GetPos() const @ 0x004C73D0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0.
 // Identity: Ego_r.pdb `??0CThingFilter_IsNavLineOfSightToThing@@QAE@ABVCThing@@@Z` and its layout {C3DVector* Pos;
@@ -14,21 +15,7 @@ class CTCBase;
 class C3DVector { public: float X, Y, Z; };
 enum ETCInterfaceType { TC_CREATURE_NAVIGATION = 0x07 };
 
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                              // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* end_of_storage;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;     // 0x004365B0
-    __forceinline const SEntry* Find(long type) const
-    {
-        const SEntry* it = LowerBound((ETCInterfaceType)type);
-        return (it == last || type < it->first) ? last : it;
-    }
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {

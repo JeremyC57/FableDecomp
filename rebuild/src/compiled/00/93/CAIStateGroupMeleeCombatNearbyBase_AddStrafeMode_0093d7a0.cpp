@@ -1,5 +1,6 @@
 // CAIStateGroup_MeleeCombatNearbyBase::AddStrafeMode() -- Enter creature mode 25 (0x19) on the brain's creature's mode manager
 // Leaf: ?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@IAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093D7A0, 83 bytes (+ int3 padding), thiscall.
 // Identity: CAIStateGroup_MeleeCombatNearbyBase::AddStrafeMode() -- proven; evidence: no vtable holds it; its only callers are the Update bodies of CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose 0x0093E2D0, CAIStateGroup_MeleeCombatNearby2 0x0093E5E0 and CAIStateGroup_MeleeCombatNearby 0x0096EE90 (all landed, all calling it AddStrafeMode), and FableWin.pdb's protected CAIStateGroup_MeleeCombatNearbyBase::AddStrafeMode is the base's strafe-mode helper; FableWin.pdb name set holds ?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@IAEXXZ.
 //   Family G047 (8 single-mode state-group hooks; each row's own catalog label agrees).
@@ -10,15 +11,7 @@
 //   call tail); frame: one `push ecx`. Model after the landed CAIStateGroup_MinionReactToCriminal::OnActivate 0x00930DC0.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                       // a thing's sorted {type, component} vector map
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                    // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -30,9 +23,9 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

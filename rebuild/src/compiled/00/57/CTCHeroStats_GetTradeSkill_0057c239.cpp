@@ -1,6 +1,7 @@
 // CTCHeroStats::GetTradeSkill() const -- the trade-skill factor for the hero's trainable stat 5 level (the table's last entry past its end, 0 without experience)
 // Retry 10b: the stats def comes from an inline const getter (`GetDefinitionManager()->GetHeroStatsDef()`, B-4/B-5 accessor idiom), which gives retail's interface select (`mov eax,esi ; mov ecx,[eax+4]`); the plain member read selects into esi.
 // Leaf: GetTradeSkill
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057C239, 173 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`).
@@ -19,43 +20,29 @@
 
 class CTCBase;
 
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                   // +0x00
-    SEntry* last;                                    // +0x04
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;  // 0x004365B0
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad_0x00[0x20];
     std::bitset<274> m_present;                         // +0x20
-    unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     bool HasTC(long wanted) const { return m_present.test(wanted); }
     template<class T> __forceinline T* GetTC(long wanted) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        const CInterfaceMap::SEntry* sel;
-        if (it == map->last)
-            sel = map->last;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        const CInterfaceMap::value_type* sel;
+        if (it == map->end())
+            sel = map->end();
         else if (it->first <= wanted)
             sel = it;
         else
-            sel = map->last;
+            sel = map->end();
         return (T*)sel->second;
     }
 };

@@ -1,4 +1,5 @@
 // CTCShotDefinitionNymphFun::OnCollision(ECollideType type, const C3DVector& pos, const C3DVector& normal, CThing* other) -- on the first hit by a live shooter with the trap-spawner component (TC 0xF5), spawn its trap object at the hit point (on a live terrain-snapping thing: at that thing, raised one unit and dropped onto the ground below), make the shooter and its summons immune to the trap, trigger it, and mark the shot spent; then the base collision
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0) re-padded by-value maps +8.
 // Naming wave 18: the interface-presence stand-in CTCBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe @ 0x007BDB66, 406 bytes (frame-pointer, `leave ; ret 0x10`; unaligned entry = /Os TU).
 // Shape: /Os frame-pointer TU (`optimize("y",off)` + `("s",on)`); C3DVector has a user copy ctor and the implicit operator= (the pos copy goes through registers, the GetPos assignment through movsd); the empty name and the shooter's team are named locals in their own block so the team is read before the Create pushes; the trap component is left uninitialised when TC 0x7D is absent.
@@ -19,29 +20,16 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    unsigned long _M_w[(_Nb + 31) / 32];
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
 class CThing {
 public:
     virtual void v00();
     unsigned char _pad04[0x1c];
     std::bitset<274> TCBits;                                   // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad4c[0x6c - 0x4c];
+    unsigned char _pad54[0x18];
     unsigned char Flags6c;                              // +0x6c (bit 3: snaps to terrain)
     unsigned char _pad6d[0x90 - 0x6d];
     signed char Team;                                   // +0x90
@@ -50,8 +38,8 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
-        return (it == map->last || type < it->first ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (it == map->end() || type < it->first ? map->end() : it)->second;
     }
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DCE0 (CThing*)

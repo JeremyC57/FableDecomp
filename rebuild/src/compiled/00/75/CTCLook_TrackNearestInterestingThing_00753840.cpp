@@ -1,4 +1,5 @@
 // CTCLook::TrackNearestInterestingThing(bool track) -- drives the head-turn state from the creature's targeting: while tracking, keeps the look timer alive as long as there is something interesting, else drops back to the idle turn; starts tracking when something appears; `track` false resets the state (one frame of delay) and clears the stop time. Returns whether the head is tracking
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00753840, length 240 bytes (+ int3 padding, `ret 4`); speed TU (no frame pointer).
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (the inline GetInterface for type 8 = CTCTargetingBase; the bitset test folds
 // to `test ch,1` on the first word), CTCTargetingBase::GetPNearestInterestingThing @ 0x007F5860, CTCLook::UpdateLookTimer
@@ -22,15 +23,7 @@ struct CPresenceBits {                             // std::bitset<274>
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                   // +0x00
-    SEntry* last;                                    // +0x04
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;      // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad_0x00[0x20];
@@ -40,9 +33,9 @@ class CThing { public:
     {
         if (UsingComponents.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            const CInterfaceMap::SEntry* found = (it == map->last || wanted < it->first) ? map->last : it;
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            const CInterfaceMap::value_type* found = (it == map->end() || wanted < it->first) ? map->end() : it;
             *out = (T*)((void*)found->second);
             return true;
         }

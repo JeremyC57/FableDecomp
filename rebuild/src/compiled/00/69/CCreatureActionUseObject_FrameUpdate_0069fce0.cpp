@@ -1,4 +1,5 @@
 // CCreatureAction_UseObject::FrameUpdate() -- finish at once when the used thing is gone; while using the dummy point: keep the base FrameUpdate running until the creature has stopped moving/turning to it, then (with no proximity left and a usable CTCActionUse on the thing) snap the creature's physics to the dummy facing and position; finally the per-frame slot-4 and slot-3 virtuals
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069FCE0, length 369 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PUsedThing +0xa8, PCreature +8), this object's virtual slots 4 (+0x10) and
 // 3 (+0x0c), CCreatureActionBase::FrameUpdate @ 0x00694020 (direct base call), CVectorMap::LowerBound (const instantiation) @ 0x004365B0
@@ -20,15 +21,7 @@ extern "C" double __cdecl fmod(double x, double y);
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;  // 0x004365B0 (the const instantiation)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase { public:
 #define VF(n) virtual void v##n();
@@ -42,7 +35,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x60 - 0x4c];
+    unsigned char _pad54[0xc];
     CTCPhysicsBase* m_pPhysics;                 // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
@@ -50,8 +43,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (const T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (const T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
     __forceinline unsigned long HasTC(long interfaceType) const
     {

@@ -1,5 +1,6 @@
 // NCreatureMode::CModeScorpionKingTailPlunge::Recover() -- end the tail plunge: kill the live tail emitter, spawn the def's TAIL_DUST_EFFECT special effect at the tail position, kill the creature's dependent things (interface 0xAD) and set a CCreatureAction_ScorpionTailWithdraw towards the target as the creature's current action
 // Leaf: ?Recover@CModeScorpionKingTailPlunge
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008DF510, 304 bytes incl. int3 padding, `ret` (private, thiscall).
 // Identity: catalog "CTCLightningOrb_OnUpdate" (_global) is wrong: the PDB name set's
 //   `?Recover@CModeScorpionKingTailPlunge@NCreatureMode@@AAEXXZ`, called from the landed FrameUpdate 0x008E0D20 (+0x3AE),
@@ -76,15 +77,7 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CCountedDe
 #pragma auto_inline(on)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCBoss { public:                                  // interface type 0xAD (descriptive: the dependent-things component)
 public:
@@ -94,7 +87,7 @@ class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];            // +0x20
     CInterfaceMap  m_interfaces;                // +0x44
-    unsigned char  _pad4c[0x70 - 0x4c];
+    unsigned char  _pad54[0x1c];
     CDefClassBase* PDef;                        // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
@@ -109,8 +102,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
     template<class T> __forceinline T* GetTCIfPresent(long interfaceType)
     {

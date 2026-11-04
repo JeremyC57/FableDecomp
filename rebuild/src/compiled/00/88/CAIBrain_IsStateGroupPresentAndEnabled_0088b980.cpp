@@ -1,5 +1,6 @@
 // CAIBrain::IsStateGroupPresentAndEnabled(const CCharString& name) const -- walks the brain's state groups for one named name and returns its Enabled flag; false when none matches
 // Leaf: ?IsStateGroupPresentAndEnabled@CAIBrain@@QBE_NABVCCharString@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe @ 0x0088B980, 91 bytes, thiscall `ret 4`.
 // Identity (proven): both PDBs have ?IsStateGroupPresentAndEnabled@CAIBrain@@QBE_NABVCCharString@@@Z, and its only caller
 //   0x008302C0 forwards CThingAICreature::IsStateGroupPresentAndEnabled (same PDB signature) through PBrain (+0x1A8).
@@ -48,36 +49,8 @@ public:
         return false;
     }
 };
-namespace std {
-template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> >
-class vector {                                           // STLport 4.6 vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-    iterator begin() { return _M_start; }
-    iterator end() { return _M_finish; }
-    const_iterator begin() const { return _M_start; }
-    const_iterator end() const { return _M_finish; }
-};
-}
+#include "engine/CVectorMap.h"
 template <class K, class V> class CKeyPairCompareGreater { public: };
-template <class K, class V, class Cmp> class CVectorMap {   // retail 0x10: the sorted pair vector + the comparator byte
-public:
-    typedef std::pair<K, V> value_type;
-    typedef typename std::vector<value_type>::iterator iterator;
-    typedef typename std::vector<value_type>::const_iterator const_iterator;
-    std::vector<value_type> Data;                        // +0x00
-    Cmp Compare;                                         // +0x0c
-    iterator begin() { return Data.begin(); }
-    iterator end() { return Data.end(); }
-    const_iterator begin() const { return Data.begin(); }
-    const_iterator end() const { return Data.end(); }
-};
 class CAIStateGroupBase {
 public:
     virtual void v00();

@@ -1,5 +1,6 @@
 // CCreatureAction_BattleChargeImpact::FinishAction() -- base FinishAction; release the creature's special-ability lock when the battle charge holds it (0xA7 CTCSpecialAbilities with CurrentAbility 12: AbilityMutexLock and CurrentAbility cleared), re-attach both feet effects (Left / Right particle emitters, interface 0x4B) to the creature, and re-equip the item taken out for the charge (fast unsheathe to the combat pose) when it still lives
 // Leaf: ?FinishAction@CCreatureAction_BattleChargeImpact
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008CD820, 527 bytes, virtual FinishAction (`ret`), frame 0xC0: this is spilled to
 //   [esp+10h] at entry, ebx is never used, the 0x4B key is an immediate in both feet lookups.
 // Callees: CCombatActionBase::FinishAction 0x00859A20, CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap
@@ -26,15 +27,7 @@ class CCharString { public:
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);             // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingCreatureBase;
@@ -53,7 +46,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];                 // +0x20 component bitset
     CInterfaceMap Components;                         // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char Flags91;                            // +0x91 bit 0: dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -61,8 +54,8 @@ class CThing { public:
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

@@ -1,5 +1,6 @@
 // CAIStateGroup_WorkInWarehouse::Cleanup() -- if the group still holds its carry-crate task and the creature is a village member, remove the creature from the task through its village and clear PTask; then always run the move-goods base Cleanup
 // Leaf: ?Cleanup@CAIStateGroup_WorkInWarehouse@@UAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00943B40, 215 bytes, thiscall, `ret`.
 // Identity (proven): vtable 0x0128BC80 (RTTI CAIStateGroup_WorkInWarehouse) slot 9 = Cleanup; Ego_r.pdb
 //   ?Cleanup@CAIStateGroup_WorkInWarehouse@@UAEXXZ (donor 0x00967930, between InitCreaturePosition and IsRunnable).
@@ -41,16 +42,7 @@ public:
 
 class CTCBase;
 enum ETCInterfaceType { };
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > {
-public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> value_type;
-    value_type* first;
-    value_type* last;
-    value_type* LowerBound(const ETCInterfaceType& type);  // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {
@@ -67,8 +59,8 @@ public:
         ETCInterfaceType type = (ETCInterfaceType)interfaceType;
         CInterfaceMap* map = &Components;
         CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->last || interfaceType < it->first)
-            it = map->last;
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
         return (T*)it->second;
     }
 };

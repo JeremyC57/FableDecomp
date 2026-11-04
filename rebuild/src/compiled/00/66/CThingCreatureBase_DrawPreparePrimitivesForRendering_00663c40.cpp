@@ -1,5 +1,6 @@
 // CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) -- let the fly-on-spline TC prepare, run the CThingPhysical pass (false stops here); with a graphic appearance, test the game LOD centre against the creature position within the scaled fade distance: in range draw the appearance, add the weapon trails and the hit notification when trails are shown, let the emote icon prepare, and for a firefly-property creature add the firefly sprite at the interpolated physics position; out of range clear the appearance's primitives and the emote icon's
 // Leaf: ?DrawPreparePrimitivesForRendering@CThingCreatureBase@@MAE_NABVCEnginePrimitivePrepareInfo@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00663C40, 577 bytes, `ret 4`; CThingCreatureBase vtable 0x0125AC0C slot 36
 //   (CThingPhysical 0x01244E84 slot 36 = 0x006A64D0). Ego_r.pdb / FableWin.pdb: protected virtual (MAE).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 / const 0x004365B0 (inline CThing::GetTC<T> /
@@ -183,24 +184,7 @@ bool __fastcall GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVector
 extern float g_primitiveDrawDistanceScale;              // 0x013B8774
 extern bool  g_ShowWeaponTrails;                        // 0x0137548E
 
-namespace std {
-template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-}
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class C = CKeyPairCompareLess<K, V> >
-class CVectorMap {
-public:
-    typedef std::pair<K, V> value_type;
-    typedef value_type* iterator;
-    typedef const value_type* const_iterator;
-    value_type* _M_start;
-    value_type* _M_finish;
-    value_type* _M_end_of_storage;
-    iterator LowerBound(const K& key);                  // 0x0040F020
-    const_iterator LowerBound(const K& key) const;      // 0x004365B0
-    iterator end() { return _M_finish; }
-    const_iterator end() const { return _M_finish; }
-};
+#include "engine/CVectorMap.h"
 
 class CThing {
 public:
@@ -208,7 +192,7 @@ public:
     unsigned char _pad_0x04[0x20 - 0x04];
     unsigned long UsingComponents[9];                   // +0x20 bitset
     CVectorMap<ETCInterfaceType, CTCBase*> Components;  // +0x44
-    unsigned char _pad_0x50[0x60 - 0x50];
+    unsigned char _pad_0x54[0xc];
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
     const C3DVector& GetPos() const;                    // 0x004C73D0

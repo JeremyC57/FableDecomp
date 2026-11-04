@@ -1,5 +1,6 @@
 // NThingShot::CTCShotDefinitionForcePushBall::OnCollision(ECollideType, const C3DVector&, const C3DVector&, CThing*) -- with a live shooter: spawn the impact effect, force-push a game-object thing away from the shooter (adding the pushed TC and a hit-by-ability event if needed), mark it attacked, post the attack message, make a perceiving thing indirectly aware, then fade the shield effect and kill the ball; with no shooter fall back to the base collision
 // Leaf: OnCollision
+// Plan phase 3 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed. Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Grade: RELOCATION_MATCH -- the inlined fast Normalise as `*this *= FastInvSqrt(X*X + Y*Y + Z*Z)` with an inline `operator*=(const float&)` (the landed 0x007AF0F0 / 0x008C0FB0 C3DVector model) gives retail's `fld st(2); fmul st(1)` component-first scaling; was one x87 instruction pair
@@ -47,35 +48,26 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 class CTCBase;
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
-};
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
 private: public:
     unsigned char _pad00[0x20];
     std::bitset<274> m_present;                            // +0x20
-    unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad4c[0x6c - 0x4c];
+    unsigned char _pad54[0x18];
     unsigned long ThingTypeFlags;                       // +0x6c (bit 3: game object)
     bool HasTC(long type) { return m_present.test(type); }
     template <class T> __forceinline T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
+        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
     CTCBase* AddTC(const CCharString& name, bool flag, void* params);   // 0x004C9D60
     void SetAttackedByCreature(CThing* attacker);       // 0x006624F0

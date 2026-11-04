@@ -1,5 +1,6 @@
 // CAIStateGroup_VillageTaskTorch::Initialise(CAIBrain& brain, CThingAICreature& creature, long id, EScriptAIPriority priority, const CCharString& name) -- the base initialisation, then cache the creature's CTCVillageMember component
 // Leaf: ?Initialise@CAIStateGroup_VillageTaskTorch@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0093ec60, 96 bytes, thiscall, `ret 14h`.
 // Identity (proven): vtable 0x0128BA28 (RTTI .?AVCAIStateGroup_VillageTaskTorch@@) slot 1 (Initialise); Ego_r.pdb ?Initialise@CAIStateGroup_VillageTaskTorch@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z; it fills Ego_r.pdb PTCVillageMember (+0x14).
 // Callees: CAIStateGroupBase::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&) 0x008FCEC0
@@ -8,24 +9,7 @@
 // Header debt: engine/CAIStateGroup_VillageTaskTorch.h / CAIStateGroupBase.h are flat layouts; modelled locally.
 enum ETCInterfaceType { ETCInterfaceType_FIRST };
 class CTCBase;
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-}
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    value_type* First;                                     // +0x00 (CArray: STLport vector)
-    value_type* Last;                                      // +0x04
-    value_type* EndOfStorage;                              // +0x08
-    TCompare    Compare;                                   // +0x0C
-    bool        Dirty;                                     // +0x0D
-    value_type* end() { return Last; }
-    value_type* LowerBound(const K& key);                  // 0x0040F020 for the interface map
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:

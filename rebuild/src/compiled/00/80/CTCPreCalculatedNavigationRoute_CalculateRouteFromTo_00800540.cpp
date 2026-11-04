@@ -1,5 +1,6 @@
 // CTCPreCalculatedNavigationRoute::CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, vector<pair<C2DVector,uchar> >& route) -- when the game is running and both ends lie in the same world-map region, spawn the placeholder navigation creature at the owner's position, let its navigation component compute the route, then kill the creature
 // Leaf: CalculateRouteFromTo
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00800540, 400 bytes (`ret 0xc`).
 // Callees: CTCBase accessors 0x00686D60 (`[0x013B8A1C]+0x1c`, its virtual slot 9 gates the body) and 0x00686D20 (world map,
 //          `[0x013B8A1C]+0x28`); CWorldMap::GetMapNumberAt (virtual slot 16, +0x40); CWorldMap::GetRegionNumberMapIsIn 0x004FC190;
@@ -21,15 +22,7 @@ class C2DVector { public: float X, Y; };
 struct CRoute;                                          // STLport vector<pair<C2DVector, unsigned char> >
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingPhysical;
 class CThingBuilding;
@@ -63,8 +56,8 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->last || interfaceType < it->first ? map->last : it)->second;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
             return true;
         }
         return false;

@@ -1,5 +1,6 @@
 // std::__insertion_sort(CThing** first, CThing** last, CThingCompare_BestForTargeting2 comp) -- STLport insertion sort of the targeting candidates: walk the range, moving each candidate the comparator ranks above the first to the front (memmove) or sliding it down with __unguarded_linear_insert
 // Leaf: ??$__insertion_sort@
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FA450, 441 bytes, /Gr `__fastcall` (first ecx, last edx, the 52-byte
 //   comparator by value on the stack, `ret 34h`).
 // Identity: called twice by __final_insertion_sort 0x007FA830 (landed; its 16-element head and the short-range path);
@@ -32,16 +33,7 @@ public:
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                           // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;                 // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCInterface9 {                                           // the component behind ETCInterfaceType 9
 public:
@@ -53,17 +45,17 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                             // +0x20
     CInterfaceMap m_interfaces;                                 // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                                     // +0x91 bit 0
     const C3DVector& GetPos() const;                             // 0x004C73D0
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

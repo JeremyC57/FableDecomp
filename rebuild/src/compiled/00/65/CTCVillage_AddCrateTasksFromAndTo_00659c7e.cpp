@@ -2,6 +2,7 @@
 #pragma optimize("s", on)
 // CTCVillage::AddCrateTasksFromAndTo(const vector<long>&, const vector<long>&) -- rebuild the crate tasks: for every crate stack whose def type is a destination, queue a put-down task per missing crate (up to 2); then for every stack whose type is a source, queue a pick-up task per crate it holds
 // Leaf: ?AddCrateTasksFromAndTo@CTCVillage
+// Plan phase 3 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad24[0x44 - 0x24] removed. Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00659C7E, 555 bytes, `ret 8`, ebp frame (size TU, `optimize("s",on)`).
 // Callees: the crate-task list clear 0x0065FF2D; CBaseIntelligentPointer::GetPItem 0x00A01B50; std::bitset::test
@@ -12,18 +13,10 @@
 //   the crate-stack list +0x70; CThing interface bitset +0x20, map +0x44, PDef +0x70; crate-stack def type +0x28,
 //   crate type +0x2c (descriptive).
 class CTCBase;
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const; // 0x004365B0
-};
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
@@ -59,18 +52,17 @@ __declspec(noinline) bool CDefClassBase::GetSubDef<CCrateStackDef>(CDefPointer<c
 class CThing { public:
     unsigned char _pad00[0x20];
     std::bitset<274> m_present;                    // +0x20
-    unsigned char _pad24[0x44 - 0x24];
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x70 - 0x4c];
+    unsigned char _pad54[0x1c];
     const CDefClassBase* PDef;                        // +0x70
     template<class T> __forceinline T* GetTC(long wanted)
     {
         long type = wanted;
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || wanted < it->type)
-            it = map->last;
-        return (T*)it->component;
+        const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+        if (it == map->end() || wanted < it->first)
+            it = map->end();
+        return (T*)it->second;
     }
 };
 class CTCCrateStack { public:

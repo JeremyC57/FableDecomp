@@ -1,5 +1,6 @@
 // CSimBuildingDef::operator=(const CSimBuildingDef& other) -- the compiler-generated copy assignment of a CParentDefClassBase-derived def: the base part through CParentDefClassBase::operator=, then Property, WorkSpaces, LiveSpaces, returning this
 // Leaf: ??4CSimBuildingDef@@QAEAAV0@ABV0@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0046296E, 39 bytes, thiscall, `ret 4`, returns this.
 // Identity: CSimBuildingDef -- proven; evidence: its only caller is the 5-byte `jmp` 0x00462969 in vtable slot 19 (Copy) of vtable
 //   0x012350C4 (RTTI .?AVCSimBuildingDef@@), i.e. `CSimBuildingDef::Copy(const CDefClassBase* other) { *this = *(const CSimBuildingDef*)other; }`
@@ -20,22 +21,7 @@ class CDefString {
 public:
     long TablePos;
 };
-namespace std {
-template <class T1, class T2> struct pair { T1 first; T2 second; };
-template <class T> class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    vector<T>& operator=(const vector<T>& x);            // 0x00431F90 for pair<unsigned long, CSubDefInfo>
-};
-}
-template <class K, class V> class CKeyPairCompareLess { public:};
-template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
-public:
-    C    Compare;                                        // +0x0c
-    bool Dirty;                                          // +0x0d
-};
+#include "engine/CVectorMap.h"
 // Layout: the def chain is the retail one from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   CParentDefClassBase : CDefClassBase : CDefPointeeBase : CResource : CIVCountedPointeeBase, vtable 0x01230CBC,
 //   0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98, operator= 0x00431ED0);

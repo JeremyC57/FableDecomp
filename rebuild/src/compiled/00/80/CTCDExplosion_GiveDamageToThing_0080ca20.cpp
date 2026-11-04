@@ -1,5 +1,6 @@
 // CTCDExplosion::GiveDamageToThing(CThingGameObject& thing) -- hit a thing caught in the explosion: unless it evades all hits, strike it from the closest point of the blast segment with the max damage (scaled down with distance when the def says so), remember it as hit, and set burnable things on fire
 // Leaf: GiveDamageToThing
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080CA20, 464 bytes (`ret 4`), no EH frame.
 //         Ego_r.pdb: `?GiveDamageToThing@CTCDExplosion@@AAEXAAVCThingGameObject@@@Z`.
 // Callees: NCreatureMode::IsToEvadeAllHits(const CThing&) __fastcall @ 0x0085FA00, CThing::GetPos @ 0x004C73D0,
@@ -57,15 +58,7 @@ public:
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                              // CVectorMap<ETCInterfaceType, CTCBase*>: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);           // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {
@@ -87,7 +80,7 @@ public:
     unsigned char _pad04[0x20 - 0x04];
     unsigned long UsingComponents[9];               // +0x20 bitset<274>
     CInterfaceMap Interfaces;                       // +0x44
-    unsigned char _pad4c[0x6c - 0x4c];
+    unsigned char _pad54[0x18];
     unsigned long ThingTypeFlags;                   // +0x6C
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     const C3DVector& GetPos() const;           // 0x004C73D0
@@ -96,9 +89,9 @@ public:
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &Interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(key);
-        if (it == map->last || type < it->first)
-            it = map->last;
+        CInterfaceMap::value_type* it = map->LowerBound(key);
+        if (it == map->end() || type < it->first)
+            it = map->end();
         return (T*)it->second;
     }
 };

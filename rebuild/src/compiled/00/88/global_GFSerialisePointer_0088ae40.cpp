@@ -1,5 +1,6 @@
 // GFSerialisePointer(CPersistContext& context, const char* name, CIntelligentPointer<CThing>& pointer, unsigned long level) -- persist a thing pointer as its UID: saving writes the live thing's UID remapped for the save (0 for none or dead); loading reads it back and, when non-zero, points at a fresh THING_DUMMY_FOR_SERIALISATION placeholder carrying the remapped UID
 // Leaf: ?GFSerialisePointer@@YIXAAVCPersistContext@@PBDAAV?$CIntelligentPointer@VCThing@@@@K@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088AE40, 431 bytes of code (+ int3 padding), /Gr `__fastcall`
 //   (context in ecx, name in edx, pointer and level on the stack), `ret 8`.
 // Identity: Ego_r/FableWin PDB `?GFSerialisePointer@@YIXAAVCPersistContext@@PBDAAV?$CIntelligentPointer@VCThing@@@@K@Z`
@@ -63,16 +64,7 @@ public:
 
 class CTCBase;
 enum ETCInterfaceType { TCI_THING_UID_DUMMY_FOR_SERIALISATION = 0xEB };   // descriptive enumerator name
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > {
-public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                          // +0x00
-    SEntry* last;                                           // +0x04
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCThingUIDDummyForSerialisation {                    // interface type 0xEB
@@ -88,7 +80,7 @@ public:
     unsigned __int64 UniqueID;                              // +0x18
     unsigned long    UsingComponents[9];                    // +0x20 bitset<274>
     CInterfaceMap    Components;                            // +0x44
-    unsigned char    _pad4c[0x91 - 0x4c];
+    unsigned char    _pad54[0x3d];
     unsigned char    Dead : 1;                              // +0x91 bit 0
     unsigned char    CreatedByOwnerThingCreation : 1;
 
@@ -99,9 +91,9 @@ public:
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)type;
             CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            if (it == map->last || type < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->end() || type < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

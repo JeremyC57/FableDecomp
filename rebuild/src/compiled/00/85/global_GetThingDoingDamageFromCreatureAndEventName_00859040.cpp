@@ -1,5 +1,6 @@
 // GetThingDoingDamageFromCreatureAndEventName(CThing& creature, const CCharString& eventName, bool useCarrySlot, bool second, bool third) -- the thing whose helper points a strike event uses: the creature's carry-slot item named by the event's first helper point (right/left hand), else its living primary-slot weapon when that has the helper points, else the creature itself when it does, else null
 // Leaf: ?GetThingDoingDamageFromCreatureAndEventName@
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00859040, 416 bytes, /Gr __fastcall (creature in ecx, eventName in edx, the three
@@ -105,18 +106,7 @@ CCharString::CCharString(const CCharString& other)                              
 }
 #pragma auto_inline(on)
 
-namespace std {
-template <class _Tp> class allocator { };
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {                  // STLport, 12 bytes
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~vector();                                                                  // 0x00414EA0
-    _Tp& operator[](unsigned int __n) { return *(_M_start + __n); }
-};
-}
+#include "engine/CVectorMap.h"
 
 class CGameDefinitionManager {
 public:
@@ -134,16 +124,6 @@ public:
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                                          // CVectorMap<long, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* end_of_storage;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;                           // 0x004365B0
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing;
@@ -157,7 +137,7 @@ public:
     unsigned char   _pad0[0x20];
     unsigned long   m_presentBits[9];                                           // +0x20
     CInterfaceMap   m_interfaces;                                               // +0x44
-    unsigned char   _pad50[0x91 - 0x50];
+    unsigned char   _pad54[0x3d];
     unsigned char   m_flags91;                                                  // +0x91 bit 0: dead
     __forceinline bool HasTC(long interfaceType) const
     {
@@ -169,8 +149,8 @@ public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((void*)((it == map->last || interfaceType < it->first) ? map->last : it)->second);
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((void*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second);
     }
 };
 

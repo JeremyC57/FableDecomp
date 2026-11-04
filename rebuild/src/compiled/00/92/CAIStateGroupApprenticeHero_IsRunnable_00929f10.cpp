@@ -1,5 +1,6 @@
 // CAIStateGroup_ApprenticeHero::IsRunnable() -- runnable when the creature is a village member (interface 0x23) whose village says it is cook time
 // Leaf: ?IsRunnable@CAIStateGroup_ApprenticeHero@@MAE_NXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Grade: RELOCATION_MATCH (was DIFFER 82v87 nd=9) -- levers: counted-pointer model moved onto engine/CCountedPointer.h;
 //   HasTC written as a byte test with named const unsigned char bits / mask locals and `mask & bits` (gives retail's mov
 //   dl,[eax+24h]; mov cl,8; test cl,dl and the eax->ecx tail copy).
@@ -44,26 +45,7 @@ public:
 };
 enum ETCInterfaceType { ETCInterfaceType_FIRST };
 class CTCBase;
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-}
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes (the hand955 L083/L084 model)
-public:
-    typedef std::pair<K, V> value_type;
-    value_type* First;                                  // +0x00 (CArray: STLport vector)
-    value_type* Last;                                   // +0x04
-    value_type* EndOfStorage;                           // +0x08
-    TCompare    Compare;                                // +0x0C
-    bool        Dirty;                                  // +0x0D
-    value_type* end() { return Last; }
-    const value_type* end() const { return Last; }
-    value_type* LowerBound(const K& key);               // 0x0040F020
-    const value_type* LowerBound(const K& key) const;   // 0x004365B0 (the const copy)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CClass : public CBaseObject { };
 class CThing : public CClass {

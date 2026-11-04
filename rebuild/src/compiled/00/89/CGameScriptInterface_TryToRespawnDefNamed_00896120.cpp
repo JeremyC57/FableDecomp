@@ -4,6 +4,7 @@
 // Callees: CScriptThing virtual slot 11 (+0x2c, GetThing), the inlined CThing::GetInterface (LowerBound @ 0x0040F020, the key in the dead script-thing slot), CTCVillage::TryToRespawnDefNamed @ 0x0065B349,
 // CThing::GetScriptThing @ 0x004C7E50 (into the hidden result), CBaseClass::CBaseClass @ 0x0099A2D0 then the CScriptThing vtable @ 0x01238C8C and two zero words (the inline default ctor).
 // Leaf: TryToRespawnDefNamed
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 #include <string.h>
 class CThing;
 class CScriptThing;
@@ -57,15 +58,7 @@ class CScriptThing : public CBaseClass { public:                       // 12 byt
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                       // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);           // 0x004365B0 / 0x0040F020 (two copies of the same body)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
 class CThing { public:
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();
@@ -84,7 +77,7 @@ class CThing { public:
     unsigned char         _pad11[0xf];
     unsigned long         m_presentBits[9];         // +0x20 std::bitset of the interface types present
     CInterfaceMap_Retail  m_interfaces;             // +0x44 the sorted {type, component} map
-    unsigned char         _pad4c[0x20];
+    unsigned char         _pad54[0x18];
     unsigned char         m_flags;                  // +0x6c (bit 2 = game object, bit 3 = creature)
     unsigned char         _pad6d[0x24];
     unsigned char         m_dead : 1;               // +0x91 bit 0
@@ -111,9 +104,9 @@ class CThing { public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap_Retail* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap_Retail::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap_Retail::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)((CTCBase_Retail*)it->second);
             return true;
         }
@@ -123,8 +116,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap_Retail* map = &m_interfaces;
-        CInterfaceMap_Retail::SEntry* it = map->LowerBound(type);
-        return (T*)((CTCBase_Retail*)((it == map->last || wanted < it->first) ? map->last : it)->second);
+        CInterfaceMap_Retail::value_type* it = map->LowerBound(type);
+        return (T*)((CTCBase_Retail*)((it == map->end() || wanted < it->first) ? map->end() : it)->second);
     }
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };

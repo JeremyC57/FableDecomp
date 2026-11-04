@@ -1,5 +1,6 @@
 // CTCInventoryBase::GetInventoryShoppingValidity() -- the shop is valid while the shopkeeper lives; when it does, its shop's keeper creature (if alive) finishes any action it may, and with the hero alive the keeper is turned to face the hero
 // Leaf: GetInventoryShoppingValidity
+// Plan phase 3 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed. Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BE119, 363 bytes, plain `ret`. Size TU with a frame pointer:
 //   `#pragma optimize("y", off)` + `("s", on)` (`leave`, `push 53h ; pop edi`).
@@ -24,25 +25,16 @@
 #pragma intrinsic(atan2, fmod)
 
 class CTCBase;
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
-};
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class C3DVector { public: float X, Y, Z; };
 class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } };
 class CThing {
 public:
     unsigned char _pad00[0x20];
     std::bitset<274> present;                                  // +0x20 std::bitset of interface types
-    unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     const C3DVector& GetPos() const;                   // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -50,8 +42,8 @@ public:
         if (present.test(interfaceType)) {
             long type = interfaceType;
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;
@@ -68,20 +60,6 @@ template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // <CThing*
 // Same-TU stand-ins: with these bodies visible VC7.1 sees that the pointer addresses and the lookup key do not
 // escape, and packs the frame as retail did.
 bool IsAlive(const CThing* thing);
-#pragma auto_inline(off)
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* lo = first;
-    SEntry* hi = last;
-    while (lo < hi) {
-        SEntry* mid = lo + (hi - lo) / 2;
-        if (mid->type < *type)
-            lo = mid + 1;
-        else
-            hi = mid;
-    }
-    return lo;
-}
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing) { return thing != 0 && IsAlive(thing); }
 #pragma auto_inline(on)
 

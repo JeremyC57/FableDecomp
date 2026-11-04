@@ -1,5 +1,6 @@
 // NCreatureMode::CModeScorpionKingExhausted::OnDeactivate() -- switch the type-9 component on, wake the scorpion's physics, set creature flag 1 and mark the mode inactive
 // Leaf: ?OnDeactivate@CModeScorpionKingExhausted
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DA3B0, 94 bytes (+ int3 padding), `ret`; vtable 0x012858A0 slot 6.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined HasTC + GetTC, type 9 = bit 9 of the +0x20 dword), the physics
 //   body's (+0x60) virtual slot 44 (+0xb0, wake; as the landed CModeOutOfActionBase::OnDeactivate 0x008D8F30).
@@ -11,15 +12,7 @@
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                     // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);  // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CPhysicsObject {
@@ -35,7 +28,7 @@ class CThing { public:
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];      // +0x20 std::bitset of interface types
     CInterfaceMap   m_interfaces;          // +0x44
-    unsigned char   _pad4c[0x14];
+    unsigned char   _pad54[0xc];
     CPhysicsObject* PPhysics;              // +0x60
     unsigned char   _pad64[0xbc - 0x64];
     unsigned char   CreatureFlags;         // +0xbc (creature-derived member)
@@ -47,8 +40,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(type);
-        CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->first) ? map->last : it;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
         return (T*)sel->second;
     }
 };

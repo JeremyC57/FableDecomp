@@ -1,5 +1,6 @@
 // CHitParameters::SetAsModifiedByArmour(const CThing& thing, CDefPointer<const CArmourDef>& armour) -- collect the thing's armour defs (or the given armour at weight 1 when it has none), raise the recoil / negate / knock-down flags the armour asks for, then run every damage attribute through the armour tree (a ranged hit above the shot build-up time negates the hit), buff it by the hit's augmentations, scale it by the effective damage multiplier and, for absorbing things, clamp the total to the armour absorb value; no damage left and no guaranteed hit negates the hit
 // Leaf: SetAsModifiedByArmour
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00869020, 955 bytes, `ret 8`.
 // Shape notes (what the lane needs to reproduce retail's register/schedule choices):
 //  * same-TU `__declspec(noinline)` stand-ins under `#pragma auto_inline(off)` for three callees whose retail bodies sat
@@ -159,15 +160,7 @@ struct CAugmentationArray {                                    // vector<EObject
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;          // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCWeapon { public:                                             // interface 0x77 (descriptive)
     bool IsRanged() const;                                     // 0x007BED60 (descriptive)
@@ -179,7 +172,7 @@ public:
     unsigned char _pad11[0x20 - 0x11];
     unsigned long m_presentBits[9];                            // +0x20
     CInterfaceMap m_interfaces;                                // +0x44
-    unsigned char _pad4c[0x6c - 0x4c];
+    unsigned char _pad54[0x18];
     unsigned char Flags6c;                                     // +0x6c (descriptive)
     unsigned char _pad6d[0x91 - 0x6d];
     unsigned char Dead : 1;                                    // +0x91 bit 0
@@ -192,8 +185,8 @@ public:
         if (m_presentBits[3] & 0x800000) {
             ETCInterfaceType type = (ETCInterfaceType)(0x77);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(type);
-            return ((CTCWeapon*)(it == map->last || 0x77 < it->first ? map->last : it)->second)->IsRanged();
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            return ((CTCWeapon*)(it == map->end() || 0x77 < it->first ? map->end() : it)->second)->IsRanged();
         }
         return false;
     }

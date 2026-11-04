@@ -1,5 +1,6 @@
 // CTCSpecialAbilities::SetupAssassinRush() -- start the assassin-rush cast action on the hero (not while interfaces 0xA8/0xA9 are present): aimed at a live creature target when the targeting component has one (with the player's Z-targeting flag for a player-controlled hero), otherwise untargeted; returns whether the action was set
 // Leaf: SetupAssassinRush
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072CAA0, 252 bytes (plain `ret`).
 // Callees: the const interface LowerBound @ 0x004365B0 (interface 8), the targeting component's slot 33 (+0x84, target thing),
 //   CThing::GetPlayer() @ 0x004C7A10, CCreatureAction_CastAssassinRush(CThingCreatureBase&, CThing&, bool, long,
@@ -15,39 +16,9 @@
 //   pointer is built in its argument slot (user copy constructor).
 extern "C" int __cdecl puts(const char* text);              // 0x00BFEAF2 (MSVCR71 import thunk)
 extern "C" __declspec(noreturn) void __cdecl abort(void);   // 0x00BFEAEC
-namespace std {
-template <unsigned int _Nb>
-class bitset {                                              // STLport 4.6 bitset<274>: 9 words, test() range-checked (no exceptions)
-public:
-    enum { _Words = (_Nb + 31) / 32 };
-    unsigned long _M_w[_Words];
-    static unsigned int _S_whichword(unsigned int __pos) { return __pos / 32; }
-    static unsigned int _S_whichbit(unsigned int __pos) { return __pos % 32; }
-    static unsigned long _S_maskbit(unsigned int __pos) { return 1UL << _S_whichbit(__pos); }
-    unsigned long _M_getword(unsigned int __pos) const { return _M_w[_S_whichword(__pos)]; }
-    bool _Unchecked_test(unsigned int __pos) const { return (_M_getword(__pos) & _S_maskbit(__pos)) != 0; }
-    bool test(unsigned int __pos) const
-    {
-        if (__pos >= _Nb) {
-            puts("bitset");
-            abort();
-        }
-        return _Unchecked_test(__pos);
-    }
-};
-}
+#include "engine/CVectorMap.h"
 class CTCBase;
 enum ETCInterfaceType { TC_NONE = 0 };
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                   // CVectorMap<ETCInterfaceType, CTCBase*, ...>
-public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayer {
 public:
@@ -70,7 +41,7 @@ public:
     unsigned char _pad00[0x20];
     std::bitset<274> UsingComponents;                   // +0x20
     CInterfaceMap Components;                           // +0x44
-    unsigned char _pad4c[0x6c - 0x4c];
+    unsigned char _pad54[0x18];
     unsigned long ThingTypeFlags;                       // +0x6c
     unsigned char _pad70[0x91 - 0x70];
     unsigned char Dead : 1;                             // +0x91 bit 0
@@ -80,8 +51,8 @@ public:
     {
         ETCInterfaceType key = type;
         const CInterfaceMap* map = &Components;
-        const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        return (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(key);
+        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
 };
 class CCreatureActionBase;

@@ -1,5 +1,6 @@
 // CTCKraken::OnInitialActivate() -- link the boss component and the kraken def, find the centre marker, reset the explosion list and the attack state, enter the boss's current phase, then make the kraken untargetable and clear its leave-experience-orbs override
 // Leaf: OnInitialActivate
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FC8E0, 230 bytes (plain `ret`). Vtable 0x01241B94 (CTCKraken, rtti-vtables.tsv) slot 6.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (twice: CTCBoss 0xAD, CTCTargeted 9),
 // CDefClassBase::GetSubDef<CKrakenDef>(CDefPointer*) @ 0x007FCD50 (manifest "GetSubDef<CAICreatureWillPowerIndicatorDef>",
@@ -16,15 +17,7 @@
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);                // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CDefPointee {
@@ -50,7 +43,7 @@ public:
     unsigned char              _pad00[0x20];
     unsigned long              m_presentBits[9];         // +0x20
     CInterfaceMap              m_interfaces;             // +0x44
-    unsigned char              _pad4c[0x70 - 0x4c];
+    unsigned char              _pad54[0x1c];
     CDefPointer<CDefClassBase> PDef;                     // +0x70
     CDefPointer<CDefClassBase> GetDef() const { return PDef; }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -58,9 +51,9 @@ public:
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(type);
-            if (it == map->last || interfaceType < it->first)
-                it = map->last;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

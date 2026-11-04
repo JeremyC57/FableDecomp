@@ -1,6 +1,7 @@
 // CThingAICreature::GetGatherPosInBuilding(CIntelligentPointer<const CThingBuilding> building) -- the building's GATHER_POSITION helper point, else (creature has navigation) the building position when navigable, the nearest navigable position within the building's physics radius, or the first navigable cell of an 11x11 half-unit grid around it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008334F0, length 543 bytes (`ret 0xC`: hidden return + the 8-byte by-value pointer).
 // Leaf: ?GetGatherPosInBuilding@CThingAICreature@@QBE?AVC3DVector@@V?$CIntelligentPointer@$$CBVCThingBuilding@@@@@Z
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Name: Ego_r.pdb donor order IsMessageEventWithinSightRange / ...HearingRange / GetSleepTimes / GetGatherPosInBuilding
 //   matches retail 0x00833230 / 0x008332E0 / 0x00833390 (all landed) / 0x008334F0; the PDB signature (const, C3DVector by
 //   value, CIntelligentPointer<const CThingBuilding> by value) matches `ret 0xC` and the closing ~CBaseIntelligentPointer.
@@ -34,17 +35,7 @@ class C3DVector { public:
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*>
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* endOfStorage;
-    long    pad0c;
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;       // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 
@@ -78,8 +69,8 @@ class CThing : public CBaseObject { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(type);
-        return (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
     const C3DVector& GetPos() const;                        // 0x004C73D0
 };

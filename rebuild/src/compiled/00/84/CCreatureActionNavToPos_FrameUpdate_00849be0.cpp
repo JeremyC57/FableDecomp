@@ -1,5 +1,6 @@
 // CCreatureAction_NavToPos::FrameUpdate() -- ask the creature's navigation component for the next step towards NavPos: on failure move to where it stands and finish; on a step move to position + step and, unless the player is Z-targeting, look at it (priority 0x11); on arrival move to where it stands and finish; then the base FrameUpdate
 // Leaf: ?FrameUpdate@CCreatureAction_NavToPos@@UAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00849BE0, 421 bytes, plain `ret` (virtual; Ego_r.pdb UAEXXZ).
 // Callees (Ego_r spellings): CBaseIntelligentPointer::GetPItem() const 0x00A01B50, CVectorMap<ETCInterfaceType, CTCBase*,
 //   CKeyPairCompareLess<...> >::LowerBound 0x0040F020 (inside CThing::GetTC<CTCCreatureNavigation> / GetTC<CTCLook>),
@@ -29,16 +30,7 @@ public:
 };
 class CTCBase;
 enum ETCInterfaceType { TCI_CREATURE_NAVIGATION = 7, TCI_LOOK = 0x43 };   // descriptive enumerator names
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > {
-public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayer {
 public:
@@ -89,8 +81,8 @@ public:
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)type;
             CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(key);
-            *out = (T*)((it == map->last || type < it->first) ? map->last : it)->second;
+            CInterfaceMap::value_type* it = map->LowerBound(key);
+            *out = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

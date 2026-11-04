@@ -1,5 +1,6 @@
 // CThingManager::CopyHeroToHero(CThing& from, CThing& to, vector<CThing*>& things) -- carries the hero state over from one hero thing to another: the components the source has (interface types 3, 4, 0x5E, 0x5C, 0x68) are copied into the target through CThing::CopyTCState (type 3 after resetting the target's), types 0x6F and 0x14 through the target component's virtual copy
 // Leaf: ?CopyHeroToHero@CThingManager@@
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0051F0E0, 595 bytes (0x253 + int3 padding to 608), thiscall `ret 0Ch` (`this` and
 //   `things` unused). Callers: CThingManager 0x00521E42 (the morph loader at 0x00521CF0) and a function-pointer slot at
 //   0x0047FB0C.
@@ -34,16 +35,7 @@ struct CPresenceBits {                               // std::bitset<274> (nine w
     bool operator[](unsigned int pos) const { return (_M_w[pos / 32] & (1UL << (pos % 32))) != 0; }
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;                                   // +0x00
-    SEntry* last;                                    // +0x04
-    SEntry* LowerBound(const ETCInterfaceType& type);            // 0x0040F020
-    const SEntry* LowerBound(const ETCInterfaceType& type) const;      // 0x004365B0 (the const overload: a byte-identical copy)
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -56,12 +48,12 @@ public:
         if (m_present[wanted]) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
             CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* found = map->LowerBound(type);
-            const CInterfaceMap::SEntry* it;
-            if (found != map->last && !(wanted < found->first))
+            const CInterfaceMap::value_type* found = map->LowerBound(type);
+            const CInterfaceMap::value_type* it;
+            if (found != map->end() && !(wanted < found->first))
                 it = found;
             else
-                it = map->last;
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }
@@ -72,12 +64,12 @@ public:
         if (m_present[wanted]) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* found = map->LowerBound(type);
-            const CInterfaceMap::SEntry* it;
-            if (found != map->last && !(wanted < found->first))
+            const CInterfaceMap::value_type* found = map->LowerBound(type);
+            const CInterfaceMap::value_type* it;
+            if (found != map->end() && !(wanted < found->first))
                 it = found;
             else
-                it = map->last;
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }
@@ -85,15 +77,6 @@ public:
     }
 };
 
-namespace std {
-template <class _Tp> class allocator { };
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-};
-}
 
 class CThingManager {
 public:
