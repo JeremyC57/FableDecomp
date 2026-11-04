@@ -1,0 +1,9 @@
+address	module	name	length	group
+0078c900	CTCBerserk	InitAbility	1152	G0078c150
+00828710	CRegionConnectionGraph	InitialiseGraph	1289	G00828710
+00e11670	CWaspVictim	Main	1115	G00e11670
+00e137b0	_global	DoMission_WaspMenaceOutro	1080	G00e137b0
+00e1f7e0	CTraderToEscort	Init	1286	G00e1f7e0
+00e62d60	CV_ChickenKickingScript	CreateSpectators	1161	G00e62d60
+00ee8390	_global	DoMission_OakValeRevisited	1240	G00ee82d0
+00d29880	CHookCoastTeleporter	Main	1319	G00d29880

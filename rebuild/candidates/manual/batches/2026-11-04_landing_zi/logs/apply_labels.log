@@ -1,0 +1,6 @@
+catalog  00cbe87f _global::AddLogbookStoryEntry -> AddLogbookStoryEntry
+catalog  00e11670 CWaspVictim::Main -> NScript::CQ_WaspBossScript::CWaspVictim::Main
+catalog  00e137b0 _global::DoMission_WaspMenaceOutro -> NScript::CQ_WaspBossScript::Outro
+catalog  00e62d60 CV_ChickenKickingScript::CreateSpectators -> NScript::CV_ChickenKickingScript::CreateSpectators
+manifest 00e20210 CQR_EscortTraderScript::WatchForTraderHit -> NScript::CQR_EscortTraderScript::WatchForTraderHit
+labels 11  catalog renamed 4  manifest renamed 1

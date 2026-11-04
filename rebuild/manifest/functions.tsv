@@ -52196,7 +52196,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e1fcf0	WatchForExpressionFollow	CQR_EscortTraderScript	__thiscall	void	2	CQR_EscortTraderScript *,CScriptThing	1	yes	accepted									
 00e1feb0	ResetRandomSpeechTime	CV_AmbushScamScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
 00e1fef0	WatchForExpressionWait	CQR_EscortTraderScript	__thiscall	void	2	CQR_EscortTraderScript *,CScriptThing	1	yes	accepted									
-00e20210	WatchForTraderHit	CQR_EscortTraderScript	__thiscall	void	2	CQR_EscortTraderScript *,CScriptThing	1	yes	accepted									
+00e20210	WatchForTraderHit	NScript::CQR_EscortTraderScript	__thiscall	void	2	CQR_EscortTraderScript *,CScriptThing	1	yes	accepted									
 00e205d0	OnPersist	NScript::CQR_EscortTraderScript::CM_BanditTrigger	unknown	undefined	0		0			discovered	gapscan							
 00e20600	Main	NScript::CQR_EscortTraderScript::CTraderToEscort	unknown	undefined	0		0			discovered	gapscan							
 00e23eb0	ForceEnableWait	CQR_EscortTraderScript	__thiscall	void	2	CQR_EscortTraderScript *,CScriptThing *	1	yes	accepted									

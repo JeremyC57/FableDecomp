@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00e11670   RELOCATION_MATCH PASS   Main
+00e137b0   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e137b0   RELOCATION_MATCH PASS   Outro
+00e62d60   RELOCATION_MATCH PASS   CreateSpectators
+
+WINS: 3
+  00e11670 RELOCATION_MATCH NScript::CQ_WaspBossScript::CWaspVictim::?Main@CWaspVictim@CQ_WaspBossScript@NScript@@EAEXXZ
+  00e137b0 RELOCATION_MATCH NScript::CQ_WaspBossScript::?Outro@CQ_WaspBossScript@NScript@@QAEXXZ
+  00e62d60 RELOCATION_MATCH NScript::CV_ChickenKickingScript::?CreateSpectators@CV_ChickenKickingScript@NScript@@QAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NScriptCQWaspBossScriptCWaspVictim_Main_00e11670
+  NScriptCQWaspBossScript_Outro_00e137b0
+  NScriptCVChickenKickingScript_CreateSpectators_00e62d60

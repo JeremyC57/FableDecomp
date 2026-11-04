@@ -1,0 +1,12 @@
+address	name	evidence
+00e11670	NScript::CQ_WaspBossScript::CWaspVictim::Main	landing 2026-11-04zi (chunk 772): vtable 0x012E0490 slot 1 (Alloc 0x00E11580) + Ego_r/FableWin ?Main@CWaspVictim@CQ_WaspBossScript@NScript@@EAEXXZ; WaspBoss seed-corpus Lua
+00e137b0	NScript::CQ_WaspBossScript::Outro	landing 2026-11-04zi (chunk 772): Ego_r/FableWin ?Outro@CQ_WaspBossScript@NScript@@QAEXXZ + landed EndMission 0x00E13310 call
+00e62d60	NScript::CV_ChickenKickingScript::CreateSpectators	landing 2026-11-04zi (chunk 772): Ego_r/FableWin ?CreateSpectators@CV_ChickenKickingScript@NScript@@QAEXXZ + spawned from landed Main 0x00E62A00
+00e1f7e0	NScript::CQR_EscortTraderScript::CTraderToEscort::Init	landing 2026-11-04zi (chunk 772): vtable 0x012E151C slot 2 + Ego_r ?Init@CTraderToEscort@CQR_EscortTraderScript@NScript@@EAEXXZ
+00d29880	NScript::CQ_EndGameScript::CHookCoastTeleporter::Main	landing 2026-11-04zi (chunk 772): vtable 0x012CBC3C slot 1 (Alloc 0x00D28F70) + Ego_r/FableWin ?Main@CHookCoastTeleporter@CQ_EndGameScript@NScript@@EAEXXZ
+0078c900	CTCBerserk::InitAbility	landing 2026-11-04zi (chunk 772): Ego_r/FableWin ?InitAbility@CTCBerserk@@QAEXXZ + bsim port audit (not authored)
+00828710	CRegionConnectionGraph::InitialiseGraph	landing 2026-11-04zi (chunk 772): Ego_r ?InitialiseGraph@CRegionConnectionGraph@@QAEXABVCCharString@@ABVCWorldMap@@@Z + landed binding (not authored)
+00e200b0	NScript::CQR_EscortTraderScript::WatchForTraderDead	landing 2026-11-04zi (chunk 772): literal/member-pointer pairing in 0x00E1F7E0 + PDB symbol
+00e20210	NScript::CQR_EscortTraderScript::WatchForTraderHit	landing 2026-11-04zi (chunk 772): literal/member-pointer pairing in 0x00E1F7E0 + PDB symbol
+0099f570	operator+	landing 2026-11-04zi (chunk 772): Ego_r/FableWin ??H@YI?AVCCharString@@ABV0@0@Z + two-temporary call shape in 0x00E1F7E0
+00cbe87f	AddLogbookStoryEntry	landing 2026-11-04zi (chunk 772): Ego_r ?AddLogbookStoryEntry@@YIXJ@Z (__fastcall) + landed CMK_GHC_HERO3::Main 0x00D29DB0 binding; called with 240 by 0x00D29880

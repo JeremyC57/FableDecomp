@@ -27,6 +27,11 @@ public:
     long SavedVillagerCount;
     bool QuestStartScreened;
     CTimer ReachedWaspHelper;
+#ifdef FABLE_RETAIL_CQ_WASPBOSSSCRIPT_ENTITIES
+    // Chunk 772: nested entity scripts (Ego_r.pdb CQ_WaspBossScript::CWaspVictim, 0x1c: ParentClass +0x14, PMasterData +0x18;
+    // vtable 0x012E0490, Alloc 0x00E11580). A row defines the class body after the include.
+    class CWaspVictim;
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_WaspBossScript)==0x5c);

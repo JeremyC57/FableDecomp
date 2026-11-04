@@ -1,0 +1,9 @@
+address	name	status	attempts	note
+00e11670	NScript::CQ_WaspBossScript::CWaspVictim::Main	RELOCATION_MATCH	13	matched at grade i (9th), l re-spelled IsAlive && as same-TU Outro; shared headers + FABLE_RETAIL_CQ_WASPBOSSSCRIPT_ENTITIES; same-TU noinline CTimer ctor/dtor + __forceinline operator=
+00e137b0	NScript::CQ_WaspBossScript::Outro	RELOCATION_MATCH	7	EndMission TU prelude + STLP_MAP + __forceinline ScriptedThingBase operator= (OUTOFLINE_ASSIGN decl) + && IsAlive
+00e62d60	NScript::CV_ChickenKickingScript::CreateSpectators	RELOCATION_MATCH	3	shared NScript_CV_ChickenKickingScript.h; second wait `!= false` (setne)
+00ee8390	NScript::CCS_OakValeRevisitedScript::OakVale	PARKED DIFFER(1224v1240)	9	dl=12: retail expands resize(n) with out-of-line ~CScriptThing inside; VC7.1 calls resize(n) (inline-depth family)
+00e1f7e0	NScript::CQR_EscortTraderScript::CTraderToEscort::Init	PARKED DIFFER(1357v1286)	6	dl=61: CSpawnedFunc1 Par1 copy inline (retail 0x004ABE90 call); two-view/inline-depth family
+00d29880	NScript::CQ_EndGameScript::CHookCoastTeleporter::Main	PARKED DIFFER(1274v1319)	10	dl=74: c2 static-frequency split; retail expands movie ctor/dtor and calls final ~CTimer; ours the reverse (do-while(0) cut-scene block gives 1322v1319 dl=96)
+0078c900	CTCBerserk::InitAbility	NOT_ATTEMPTED	0	context/time budget spent on the six NScript rows; callee map in NOTES.md (no shared CTCBerserk retail model: generated header is opaque, landed siblings are local views)
+00828710	CRegionConnectionGraph::InitialiseGraph	NOT_ATTEMPTED	0	context/time budget; decoded flow + callee map in NOTES.md (needs new CRegionConnectionGraph/Node headers; CStringParser/CVectorMap/CWorldMap headers exist)

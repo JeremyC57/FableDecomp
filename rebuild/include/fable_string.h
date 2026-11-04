@@ -241,6 +241,11 @@ CCharString FABLE_FASTCALL operator+(
 // Codex pass 13: the free ??H@YI?AVCCharString@@PBDABV0@@Z (Ego_r + FableWin; `const char*` + CCharString, __fastcall).
 CCharString FABLE_FASTCALL operator+(const char*,const CCharString&);
 #endif
+#ifdef FABLE_RETAIL_CCHARSTRING_CONCAT_STRING
+// Chunk 772: the free ??H@YI?AVCCharString@@ABV0@0@Z (Ego_r + FableWin; CCharString + CCharString, __fastcall), retail 0x0099F570:
+// NScript spawn names `CCharString("ParentClass.") + CCharString("<Func>")` (e.g. 0x00E1F86F, 0x00E0DAA0's row).
+CCharString FABLE_FASTCALL operator+(const CCharString&,const CCharString&);
+#endif
 
 // Retail folds equivalent narrow/wide string lifetime helpers. These counters
 // remain separate because their addresses and object families are distinct.

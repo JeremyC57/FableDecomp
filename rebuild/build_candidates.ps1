@@ -384059,6 +384059,27 @@ $catalog = @(
         TestSource = '00/5c/CPersistTraitsNInventoryCItem_TransferBinaryIn_005c19a3_test.cpp'
         PassPattern = '005c19a3_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e11670'
+        Module = 'NScript::CQ_WaspBossScript::CWaspVictim'
+        Source = '00/e1/NScriptCQWaspBossScriptCWaspVictim_Main_00e11670.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScriptCWaspVictim_Main_00e11670_test.cpp'
+        PassPattern = '00e11670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e137b0'
+        Module = 'NScript::CQ_WaspBossScript'
+        Source = '00/e1/NScriptCQWaspBossScript_Outro_00e137b0.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScript_Outro_00e137b0_test.cpp'
+        PassPattern = '00e137b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e62d60'
+        Module = 'NScript::CV_ChickenKickingScript'
+        Source = '00/e6/NScriptCVChickenKickingScript_CreateSpectators_00e62d60.cpp'
+        TestSource = '00/e6/NScriptCVChickenKickingScript_CreateSpectators_00e62d60_test.cpp'
+        PassPattern = '00e62d60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,3 @@
+header	landed_includer	note
+engine/NScript_CQ_WaspBossScript.h	rebuild/src/compiled/00/e1/NScriptCQWaspBossScript_EndMission_00e13310.cpp	default branch byte-identical (hdrcheck2 default=same); new macro not defined by it; regraded on the chunk mirror: RELOCATION_MATCH
+fable_string.h	(1940 landed includers)	default branch byte-identical (hdrcheck2 default=same); FABLE_RETAIL_CCHARSTRING_CONCAT_STRING defined only by chunk 772 rows
