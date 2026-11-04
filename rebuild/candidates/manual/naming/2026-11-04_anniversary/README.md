@@ -37,3 +37,12 @@ second source for those class names under the naming rule; nothing to apply.
 - Instead of a BSim/Version Tracking diff for the ~690 remaining placeholders: TLC-internal naming from the quest scripts' entity
   registrations (name string + ClassAllocFunc -> Alloc -> ctor -> vtable, checked against the PDB's `?Alloc@<Inner>@<Outer>@NScript@@`),
   with Anniversary as a cross-check only: `$S/anniv/wave3/`.
+
+## Recheck of the high-confidence wave (owner question, 2026-11-04)
+Wave 2 showed the order matcher misnamed neighbouring vtables, and the high-wave check (PDB method for the class + slot layout +
+refs=1) cannot tell sibling entity classes apart, so every high-wave class is being re-proven from TLC alone:
+- **Def classes (5): confirmed.** The field-name strings each class's Transfer persists match that class's Ego_r members and no
+  other class: CArenaWaveDef 3/3 (next best 2), CFeatDef 15/15 (1), CHeroSoulsCreatureDef 3/3 (2), CRegionScriptDef 4/4 (0),
+  CScriptDef 92/92 (0).
+- **Script classes (12):** re-proven through the parent script's entity registration (name string -> Alloc -> vtable) or the
+  script registry for the 3 level scripts; result in `$S/anniv/wave3/recheck_high.tsv`, applied or reverted with wave 3.
