@@ -27261,3 +27261,11 @@ chunk	address	module	name	length
 771	00ac44d0	CVertexStreamConverter	ConvertFrom	1076
 771	00ac4910	CVertexStreamConverter	ConvertTo	1120
 771	00e10e60	CWaspChaseWoman	Main	1306
+772	0078c900	never-graded	CTCBerserk	InitAbility
+772	00828710	never-graded	CRegionConnectionGraph	InitialiseGraph
+772	00e11670	never-graded	CWaspVictim	Main
+772	00e137b0	never-graded	_global	DoMission_WaspMenaceOutro
+772	00e1f7e0	never-graded	CTraderToEscort	Init
+772	00e62d60	never-graded	CV_ChickenKickingScript	CreateSpectators
+772	00ee8390	never-graded	_global	DoMission_OakValeRevisited
+772	00d29880	never-graded	CHookCoastTeleporter	Main
