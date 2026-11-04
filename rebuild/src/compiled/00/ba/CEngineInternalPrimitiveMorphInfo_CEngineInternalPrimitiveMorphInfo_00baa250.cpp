@@ -3,6 +3,7 @@
 // "CTCOpinionSource::CTCOpinionSource"; its caller @ 0x00BAA362 is the CEngineInternalPrimitiveMorphedStaticMesh constructor
 // (vtable 0x012A51B4) building its Morph member at +0xac, and the destructor @ 0x00BAA2B0 tears the same four members down).
 // Leaf: ??0CEngineInternalPrimitiveMorphInfo
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Callees: malloc @ 0x00BFEA0E (the set's 0x14-byte header node).
 // PDB CEngineInternalPrimitiveMorphInfo (retail 0x38 bytes): TextureDecals (CVectorMap: vector +0x00, comparator +0x0c,
 // flag +0x0d), CompositeSurfaces (CVectorMap +0x10), HiddenMaterialNames (STLport set<CCharString>: header +0x20,
@@ -66,9 +67,7 @@ struct CStringSet : CRbTreeBase {                   // set<CCharString>
     }
 };
 
-template<class T> class CArray : public CRetailVector<T> { public:   // retail CArray: an STLport vector (three words)
-    CArray() {}
-};
+#include "engine/CArray.h"
 
 struct CEngineTextureDecalEntry { long key[2]; long value[4]; };
 struct CCompositeSurfaceEntry { long key; long value[6]; };

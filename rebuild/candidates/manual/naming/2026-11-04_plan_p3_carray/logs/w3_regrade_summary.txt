@@ -1,0 +1,7 @@
+  WARN leaf '?AllocateMapUID@CWorldMap@@IAEKJ@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?UpdateEntry@CBankFile@@QAEXKAAVCDataInputStream@@K0K_N@Z' matches no symbol in x.obj; graded the largest function
+gate: 608 rows {'PASS': 551, 'FAIL': 57} in 36.6s (0.06s/row wall, NJ=6)
+gate: 551 PASS of 608
+vland:
+     87 MATCH PASS
+    521 RELOCATION_MATCH PASS

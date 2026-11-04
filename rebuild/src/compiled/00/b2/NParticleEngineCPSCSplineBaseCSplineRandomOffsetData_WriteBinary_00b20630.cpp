@@ -1,4 +1,5 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::WriteBinary(CDataOutputStream& out) const -- write the two offset flags, the control-point count, then each point's offset limit and offset speed
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B20630, 119 bytes; `ret 4`. Callees: CDataOutputStream::WriteEBOOL(bool) @ 0x00993E30 (x2),
 //          WriteULONG(unsigned long) @ 0x00993EA0 (catalog "WriteCBYTE"; GOTCHAS: it writes a long), Write3DVector(const C3DVector&) @ 0x00993FD0.
 // Layout: Ego_r.pdb CSplineRandomOffsetData with retail's 12-byte STLport CArray: InitialSpline +0, ThisSpline +4, PreviousSpline +0x18,
@@ -6,14 +7,7 @@
 // Shape: the count is the limits array's size (pointer difference / 12, signed); the loop index walks both arrays through
 //        `*(begin() + i)` so each begin pointer is re-read per call.
 class C3DVector { public: float X, Y, Z; };
-template <class T> class CArray { public:                 // STLport vector<T>: start / finish / end of storage
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() const { return _M_start; }
-    long size() const { return _M_finish - _M_start; }
-    const T& operator[](unsigned long n) const { return *(begin() + n); }
-};
+#include "engine/CArray.h"
 class CCardinalSpline { public:                           // retail 20 bytes
     CArray<C3DVector> ControlPoints;
     float             Tension;

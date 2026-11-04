@@ -1,5 +1,6 @@
 // CEngineSceneGrid::RenderCellClipped(ulong x, ulong y, EEngineRenderLayer layer, const CEngineCamera& camera, bool clipped, CEngineSceneRenderStats& stats) -- render one grid cell against the camera: skip empty cells and cells without the layer, clip the cell box unless already inside, render the cell's primitives of the layer that pass their own camera test, recurse into the four child cells and mark the cell rendered
 // Leaf: ?RenderCellClipped@CEngineSceneGrid@@QAEXKKW4EEngineRenderLayer@@ABVCEngineCamera@@_NAAVCEngineSceneRenderStats@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B92500, length 352 bytes (with int3 padding; body 0x157), `ret 18h`.
 // PDB: ?RenderCellClipped@CEngineSceneGrid@@QAEXKKW4EEngineRenderLayer@@ABVCEngineCamera@@_NAAVCEngineSceneRenderStats@@@Z.
 // Callees: CEngineSceneGrid::GetCellRenderMask(ulong, ulong) @ 0x00B91DC0, GetCellBoundingBoxAndDrawDistance(C3DBoundingBox&,
@@ -71,12 +72,7 @@ class CEngineSceneGridCell { public:
     unsigned char                 HasOcclusionResults : 1;
 };
 
-template <class T> class CArray { public:
-    T* m_pBegin;
-    T* m_pEnd;
-    T* m_pCapacity;
-    T& operator[](unsigned long i) { return m_pBegin[i]; }
-};
+#include "engine/CArray.h"
 
 class CEngineSceneGrid { public:
     void*                         _vptr;         // +0x00

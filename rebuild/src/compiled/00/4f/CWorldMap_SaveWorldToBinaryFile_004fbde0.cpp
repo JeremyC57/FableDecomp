@@ -2,6 +2,7 @@
 // real map from index 1, region count and every real region from index 1) into a memory stream and write it to a
 // new disk file
 // Leaf: SaveWorldToBinaryFile
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FBDE0, 371 bytes, `ret 4`. PDB ?SaveWorldToBinaryFile@CWorldMap@@QAEXAAVCWideString@@@Z;
 //   CMapInfo/CRegion ::SaveBinary(CDataOutputStream&) (QAE, non-const).
 // Callees: CMemoryDataOutputStream ctor 0x00996AF0 / dtor 0x00996B30, CDataOutputStream::WriteSLONG 0x00993EB0,
@@ -57,13 +58,7 @@ class CRegion { public:                                    // 0x58 bytes
     unsigned char _body[0x58];
     void SaveBinary(CDataOutputStream& stream);         // 0x006BBFD0
 };
-template <class T> class CArray { public:                  // STLport vector layout (12 bytes)
-    T* Start;
-    T* Finish;
-    T* EndOfStorage;
-    unsigned long size() const { return Finish - Start; }
-    T& operator[](unsigned long i) { return Start[i]; }
-};
+#include "engine/CArray.h"
 class CWorldMap { public:
     unsigned char    _pad00[0x20];
     CArray<CMapInfo> Maps;                          // +0x20

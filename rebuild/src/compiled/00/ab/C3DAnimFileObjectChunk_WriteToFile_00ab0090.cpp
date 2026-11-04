@@ -1,4 +1,5 @@
 // C3DAnimFileObjectChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const -- name, sub-mesh index, then the sub-chunks
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB0090, length 48 bytes.
 // Callees: CDataOutputStream::WriteNullTerminatedString @ 0x00995AE0, CDataOutputStream::WriteSLONG @ 0x00993EB0, CChunkedFileSuperChunk::WriteToFile @ 0x00AA78C0.
 // Only Name (+0x2c, by reference: `lea eax,[esi+2Ch]`) and SubMeshIndex (+0x30) are written; the tree indices are
@@ -27,16 +28,7 @@ public:
     void WriteSLONG(long);   // 0x00993EB0
 };
 
-template <class T>
-class CArray { public:                             // retail CArray is 12 bytes (the PDB's is 16)
-    T* m_pBegin;                            // +0
-    T* m_pEnd;                              // +4
-    T* m_pEndOfStorage;                     // +8
-    CArray() : m_pBegin(0), m_pEnd(0), m_pEndOfStorage(0) {}
-    unsigned long Size() const { return (unsigned long)(m_pEnd - m_pBegin); }
-    T& operator[](unsigned long i) { return m_pBegin[i]; }
-    const T& operator[](unsigned long i) const { return m_pBegin[i]; }
-};
+#include "engine/CArray.h"
 
 struct SCountBlock {
     long m_references;                      // +0

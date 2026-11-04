@@ -1,5 +1,6 @@
 // CParticleProgram::GetUsedBones(CArray<bool>& used, const CArray<C3DGroup2>& groups) -- private static helper: flag every bone that a group with at least one vertex blend is skinned to
 // Leaf: ?GetUsedBones@CParticleProgram@@CIXAAV?$CArray@_N@@ABV?$CArray@VC3DGroup2@@@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE1210, 79 bytes, static __fastcall (used in ecx, groups in edx), plain `ret`.
 // Identity: Ego_r.pdb `?GetUsedBones@CParticleProgram@@CIXAAV?$CArray@_N@@ABV?$CArray@VC3DGroup2@@@@@Z` (private static
 //   __fastcall); its only callers are the public CParticleProgram::GetUsedBones(CArray<bool>&) const @ 0x00AE15D0 (landed,
@@ -9,15 +10,7 @@
 // Shape: `for (i = 0; i < groups.size(); ++i) if ((long)groups[i].VertexBlends.size() > 0) used[groups[i].BoneIndex] = true;`
 //   -- the signed blend-count test folds to `test ebx,0FFFFFFF8h ; jle`, and the group array (and its size) is re-read
 //   after every byte store (a bool store may alias the CArray's pointers).
-template <class T> class CArray {                      // retail CArray<T>: STLport vector, three pointers
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    T& operator[](unsigned int i) { return _M_start[i]; }
-    const T& operator[](unsigned int i) const { return _M_start[i]; }
-};
+#include "engine/CArray.h"
 class C3DVertexBlend2 { public: long Vertex; float Weight; };   // 8 bytes
 class C3DGroup2 {                                      // 16 bytes in retail
 public:

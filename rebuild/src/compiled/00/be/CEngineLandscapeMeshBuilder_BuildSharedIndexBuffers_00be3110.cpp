@@ -1,5 +1,6 @@
 // CEngineLandscapeMeshBuilder::BuildSharedIndexBuffers() -- for every power-of-two patch size 2..16 x 2..16 build the index list into a temporary CArray, copy it into a new 16-bit triangle-strip index buffer and keep it in SharedIndexBuffers[x][y]
 // Leaf: ?BuildSharedIndexBuffers@CEngineLandscapeMeshBuilder@@AAEXXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BE3110, 386 bytes, thiscall, plain `ret`; 8-aligned frame (the C2DCoordI[289] local).
 // Identity: Ego_r.pdb ?BuildSharedIndexBuffers@CEngineLandscapeMeshBuilder@@AAEXXZ (private); its one callee is BuildSharedIndexBufferGenerationTables 0x00BE2CD0
 //   (Ego_r ?BuildSharedIndexBufferGenerationTables@CEngineLandscapeMeshBuilder@@QAEXPAVC2DCoordI@@PAG1JJAAJ@Z).
@@ -15,58 +16,7 @@ extern "C" void* __cdecl memcpy(void* dst, const void* src, unsigned int size);
 #pragma intrinsic(memcpy)
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 
-namespace std {
-template <class _Tp> class allocator {
-public:
-    allocator() { }
-    allocator(const allocator<_Tp>&) { }
-    _Tp* allocate(unsigned int __n, const void* = 0) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-    _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) { }
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    typedef _Alloc allocator_type;
-    _Vector_base(unsigned int __n, const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0)
-    {
-        _M_start = _M_end_of_storage.allocate(__n);
-        _M_finish = _M_start;
-        _M_end_of_storage._M_data = _M_start + __n;
-    }
-    ~_Vector_base() { if (_M_start != 0) _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _ForwardIter, class _Size, class _Tp>
-inline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
-{
-    for ( ; __n > 0; --__n, ++__first)
-        *__first = __x;
-    return __first;
-}
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    typedef unsigned int size_type;
-    explicit vector(size_type __n) : _Vector_base<_Tp, _Alloc>(__n, _Alloc())
-    {
-        this->_M_finish = __uninitialized_fill_n(this->_M_start, __n, _Tp());
-    }
-    size_type size() const { return size_type(this->_M_finish - this->_M_start); }
-};
-}
-template <class T> class CArray : public std::vector<T> {
-public:
-    explicit CArray(unsigned long size) : std::vector<T>(size) { }
-    T* GetAsCArray() { return this->size() > 0 ? this->_M_start : GetZeroSizeArray(); }
-private:
-    T* GetZeroSizeArray() { return reinterpret_cast<T*>(this); }
-};
+#include "engine/CArray.h"
 
 class C2DCoordI { public: long X, Y; };
 enum EIndexBufferFormat { };

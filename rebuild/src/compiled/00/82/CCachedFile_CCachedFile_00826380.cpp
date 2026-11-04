@@ -1,5 +1,6 @@
 // CCachedFile::~CCachedFile() -- close the file, then destroy PDiskFile, Pathname and DataBuffer and run the base destructor (tail jump to ~CBaseClassNonCopyable)
 // Leaf: ??1CCachedFile@@UAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00826380, 95 bytes (int3 padding 0x008263DF): push esi ; mov esi,ecx ; the CCachedFile vtable
 //   store 0x012724D4 ; call Close 0x00A5AFA0 (direct: a virtual called by name inside a destructor binds statically) ; the inline
 //   ~CCountedPointer on PDiskFile +0x1C (Info +0x20) ; `lea ecx,[esi+18h]` ; Data = 0, Info = 0 ; call ~CWideString 0x0099B510
@@ -25,52 +26,7 @@
 //   engine/CCountedPointer.h, the vector STLport 4.6 (_Vector_base + _STLP_alloc_proxy, as the landed 0x00B18780).
 // Shape: the user destructor body is `Close();`; the member and base destructors follow implicitly in reverse declaration order.
 extern "C" void __cdecl free(void* block);                      // 0x00BFEA14
-namespace std {
-struct __true_type { };
-struct __false_type { };
-template <class _Tp> struct __type_traits { typedef __false_type has_trivial_destructor; };
-template <> struct __type_traits<unsigned char> { typedef __true_type has_trivial_destructor; };
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator>
-inline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
-{
-    for ( ; __first != __last; ++__first)
-        _Destroy(&*__first);
-}
-template <class _ForwardIterator>
-inline void __destroy_aux(_ForwardIterator, _ForwardIterator, const __true_type&) { }
-template <class _Tp> inline void _Destroy(_Tp* __first, _Tp* __last)
-{
-    typedef typename __type_traits<_Tp>::has_trivial_destructor _Trivial_destructor;
-    __destroy_aux(__first, __last, _Trivial_destructor());
-}
-template <class _Tp> class allocator {
-public:
-    allocator() { }
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc> class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Vector_base() : _M_start(0), _M_finish(0) { _M_end_of_storage._M_data = 0; }
-    ~_Vector_base()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-}   // namespace std
-template <class T> class CArray : public std::vector<T> { };   // Lionhead CArray over STLport vector (0xC)
+#include "engine/CArray.h"
 
 #include "fable_string.h"
 #include "engine/CBaseClassNonCopyable.h"

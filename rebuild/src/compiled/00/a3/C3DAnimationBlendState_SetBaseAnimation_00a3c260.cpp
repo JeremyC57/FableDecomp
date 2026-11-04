@@ -1,4 +1,5 @@
 // C3DAnimationBlendState::SetBaseAnimation(const C3DAnimationState&) -- unshare the data, then replace its base animation with a heap copy of the state
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A3C260, 112 bytes. Callees: C3DAnimationBlendState::MakeOwnCopyOfData
 // 0x00A3C1A0, operator new 0x00BFEA1A, the old state's virtual Delete (slot 1, +4) when its count drops to zero.
 // Vtables: CIVCountedPointeeBase 0x012354D0, C3DAnimationState 0x01249F50.
@@ -45,12 +46,7 @@ class CIVCountedPointer { public:
 };
 
 class C3DAnimationStateAlpha;
-template <class T>
-class CArray { public:                            // retail CArray is 12 bytes (the PDB's is 16)
-    T* m_pBegin;                           // +0
-    T* m_pEnd;                             // +4
-    T* m_pEndOfStorage;                    // +8
-};
+#include "engine/CArray.h"
 
 struct CSharedData {
     virtual void Destroy(int flags);

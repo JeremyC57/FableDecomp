@@ -1,4 +1,5 @@
 // C3DAnimFileTimingEventChunk::C3DAnimFileTimingEventChunk() -- "TMEV" leaf chunk with a default-constructed name
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAE170, length 32 bytes.
 // Callees: CChunkedFileChunk::CChunkedFileChunk(const char*) @ 0x00AA7590, CCharString::CCharString() @ 0x0099E4B0.
 // Base constructor with the chunk type literal (@ 0x0129E7AC), this class's vtable (0x0129E7F0), then the Name
@@ -23,16 +24,7 @@ class CDataOutputStream { public:
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
 };
 
-template <class T>
-class CArray { public:                             // retail CArray is 12 bytes (the PDB's is 16)
-    T* m_pBegin;                            // +0
-    T* m_pEnd;                              // +4
-    T* m_pEndOfStorage;                     // +8
-    CArray() : m_pBegin(0), m_pEnd(0), m_pEndOfStorage(0) {}
-    unsigned long Size() const { return (unsigned long)(m_pEnd - m_pBegin); }
-    T& operator[](unsigned long i) { return m_pBegin[i]; }
-    const T& operator[](unsigned long i) const { return m_pBegin[i]; }
-};
+#include "engine/CArray.h"
 
 struct SCountBlock {
     long m_references;                      // +0

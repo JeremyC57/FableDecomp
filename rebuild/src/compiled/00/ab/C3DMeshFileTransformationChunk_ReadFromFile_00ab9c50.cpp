@@ -1,4 +1,5 @@
 // C3DMeshFileTransformationChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&) -- read the matrix, pass the remaining chunk bytes to the super-chunk reader
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB9C50, length 96 bytes.
 // Callees: vslot +0x08 CDataInputStream::GetPosition x2, 0x00995340 CDataInputStream::ReadMatrix3x4 (by value), 0x00AA8830 CChunkedFileSuperChunk::ReadFromFile
 // ReadMatrix3x4 returns through a 0x30-byte hidden temporary that is copied into Transform (rep movsd);
@@ -24,12 +25,7 @@ class CMatrix3x4 { public:                                     // 48 bytes: thre
     C3DVector XAxis, YAxis, ZAxis, Position;
 };
 
-template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity, no allocator state
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray() : m_begin(0), m_end(0), m_capacity(0) {}
-    unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
-    const T& operator[](unsigned long index) const { return m_begin[index]; }
-};
+#include "engine/CArray.h"
 
 class CChunkedFileSaver;
 class CChunkedFileLoader;

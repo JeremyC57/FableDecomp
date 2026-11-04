@@ -1,5 +1,6 @@
 // CEnvironmentThemeDaySetDef::Transfer(CPersistContext& context) -- persist the CEnvironmentThemeDaySetDef's fields (10 typed binary transfers) in the def's own TRANSFER order
 // Leaf: ?Transfer@CEnvironmentThemeDaySetDef@@UAEXAAVCPersistContext@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00476DC3, 123 bytes, virtual thiscall `ret 4`; size-optimised def TU (unaligned entry, every member address through eax).
 // Identity (proven): CEnvironmentThemeDaySetDef::Transfer(CPersistContext&); evidence: slot 18 (the def Transfer slot, as the landed CHeroCombatDef 0x004665B6) of
 //   vtable 0x0123360C, whose RTTI type descriptor is .?AVCEnvironmentThemeDaySetDef@@; the Ego_r/FableWin.pdb name sets hold ?Transfer@CEnvironmentThemeDaySetDef@@UAEXAAVCPersistContext@@@Z.
@@ -9,12 +10,7 @@
 //   engine/CEnvironmentThemeDaySetDef.h exists but is the flattened data-only view (no virtual Transfer to define), so a local class is used -- Review at landing.
 // Shape: context in edi, this in esi, one `lea eax,[esi+N] ; push eax ; mov ecx,edi ; call` per member, the last address formed in place (`add esi,N`).
 #pragma optimize("s", on)
-template <class T> class CArray {                                       // 12 bytes in retail (16 in Ego_r.pdb)
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-};
+#include "engine/CArray.h"
 class CEnvironmentThemeDef {                                       // Ego_r.pdb, 200 bytes (opaque here)
 public:
     unsigned char _body[200];

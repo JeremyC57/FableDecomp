@@ -10,10 +10,8 @@
 // tail-duplicated). A const-reference max template re-reads the argument through its address, and `groupID < Max` swaps
 // the compare operands (`cmp edi,eax ; jae`).
 // Leaf: AddTextureMorphToBodyPart
-template<class T> class CArray { public:
-    T* m_first; T* m_last; T* m_end;
-    T& operator[](unsigned long index) { return m_first[index]; }
-};
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
+#include "engine/CArray.h"
 struct CKeyPairCompareLess {};
 template<class K, class V> class CVectorMap { public:
     CArray<V> m_vector; CKeyPairCompareLess m_compare; bool m_sorted;

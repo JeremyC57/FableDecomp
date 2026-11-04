@@ -1,4 +1,5 @@
 // C3DAnimFileSequenceChunk::CreateNewInstance() const -- allocate and register a fresh "ASEQ" chunk
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAF7A0, length 96 bytes.
 // Callees: operator new @ 0x00BFEA1A, CChunkedFileSuperChunk::CChunkedFileSuperChunk(const char*) @ 0x00AA8360, CCharString::CCharString() @ 0x0099E4B0, virtual InitNewInstance (slot 10).
 // `new` with the constructor inlined (null-checked: on allocation failure the virtual gets a null), then the
@@ -27,16 +28,7 @@ class CDataOutputStream { public:
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
 };
 
-template <class T>
-class CArray { public:                             // retail CArray is 12 bytes (the PDB's is 16)
-    T* m_pBegin;                            // +0
-    T* m_pEnd;                              // +4
-    T* m_pEndOfStorage;                     // +8
-    CArray() : m_pBegin(0), m_pEnd(0), m_pEndOfStorage(0) {}
-    unsigned long Size() const { return (unsigned long)(m_pEnd - m_pBegin); }
-    T& operator[](unsigned long i) { return m_pBegin[i]; }
-    const T& operator[](unsigned long i) const { return m_pBegin[i]; }
-};
+#include "engine/CArray.h"
 
 struct SCountBlock {
     long m_references;                      // +0

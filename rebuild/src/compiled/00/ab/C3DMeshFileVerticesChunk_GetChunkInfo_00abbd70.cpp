@@ -1,5 +1,6 @@
 // C3DMeshFileVerticesChunk::GetChunkInfo() const -- "Number of vertices: %u" over the vertex list, returned as a CCharString
 // Leaf: ?GetChunkInfo@C3DMeshFileVerticesChunk@@UBE?BVCCharString@@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ABBD70, 92 bytes, thiscall, `ret 4` (hidden result), /GS frame (cookie 0x0139C8A8,
 //   check 0x00BFE9F9).
 // Flags: /GS
@@ -34,22 +35,7 @@ public:
     virtual const CCharString GetChunkInfo() const;
 };
 
-namespace std {
-template <class T> class allocator { };
-template <class V, class T, class A> class _STLP_alloc_proxy : public A { public: V _M_data; };
-template <class T, class A> class _Vector_base {
-public:
-    T* _M_start;
-    T* _M_finish;
-    _STLP_alloc_proxy<T*, T, A> _M_end_of_storage;
-};
-template <class T, class A = allocator<T> > class vector : public _Vector_base<T, A> {
-public:
-    typedef unsigned int size_type;
-    size_type size() const { return size_type(this->_M_finish - this->_M_start); }
-};
-}
-template <class T> class CArray : public std::vector<T> { };
+#include "engine/CArray.h"
 
 class C3DVertex2 { public: unsigned char _body[0x20]; };   // 32 bytes (position, normal, uv)
 

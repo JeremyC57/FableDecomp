@@ -1,6 +1,7 @@
 // CRandomAppearanceMorph::AddTextureMorphToMesh(unsigned long, unsigned long, unsigned long, unsigned long) -- add a texture morph (new texture + group) for one texture of every body-part mesh with the given mesh ID, and raise the max texture group id
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086BD20, length 185 bytes, `ret 10h` (an 8-byte stack morph).
 // Leaf: AddTextureMorphToMesh
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // The per-mesh sibling of the landed AddTextureMorphToBodyPart (0x0086BCC0): same morph local, same callee
 // (0x0086BC10, the protected insert into a texture-morph map; PDB AddTextureToTextureMorph, the landed sibling's
 // AddTextureMorph name kept), same tail-duplicated max.
@@ -10,11 +11,7 @@
 // Shape: the body parts are walked by a counted `for` over the three slots (`cmp edi,24h`), the meshes by an unsigned
 // index against a size() recomputed every pass, both through `operator[]` on a part reference; the morph is built
 // inside the hit block.
-template<class T> class CArray { public:
-    T* m_first; T* m_last; T* m_end;
-    unsigned long size() const { return m_last - m_first; }
-    T& operator[](unsigned long index) { return m_first[index]; }
-};
+#include "engine/CArray.h"
 struct CKeyPairCompareLess {};
 template<class K, class V> class CVectorMap { public:
     CArray<V> m_vector; CKeyPairCompareLess m_compare; bool m_sorted;

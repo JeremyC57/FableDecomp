@@ -1,5 +1,6 @@
 // CAIStateGroup_EatAtHome::IsTime() -- Check whether the creature village is in its eating period.
 // Leaf: ?IsTime@CAIStateGroup_EatAtHome@@MBE_NXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: Own RTTI0128d25c IsTime slot15 and PDB signature; TC35 CTCVillageMember GetPVillage007ee540.00658bb9 is IsEatTime: CVillageDef EatStartTimes retail132/EatDuration144 (donor152/168 reduced by five/four-byte vector changes), not catalog IsCookTime.
 #include "engine/CTCBase.h"
 #include "engine/CAIBrain.h"
@@ -17,8 +18,8 @@
 #define __declspec(x)
 #endif
 enum ETCInterfaceType{TC_VILLAGE_MEMBER=35};
-namespace std{template<class K,class V>struct pair{K first;V second;};template<class T>class allocator{};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};template<class T,class A>class _Vector_base{public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;};template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:const T* begin()const{return this->_M_start;}const T* end()const{return this->_M_finish;}};}
-template<class T>class CArray:public std::vector<T>{};template<class K,class V>class CKeyPairCompareLess{};
+#include "engine/CArray.h"
+template<class K,class V>class CKeyPairCompareLess{};
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:typedef std::pair<K,V> value_type;typedef const value_type* const_iterator;CArray<value_type> Data;Cmp Compare;bool Dirty;__declspec(noinline) const_iterator LowerBound(const K& key)const{const_iterator first=Data.begin();long count=Data.end()-first;while(count>0){long half=count/2;const_iterator middle=first+half;if(middle->first<key){first=middle+1;count-=half+1;}else count=half;}return first;}V Get(const K key)const{const_iterator p=LowerBound(key);const_iterator last=Data.end();return (p==last || key<p->first?last:p)->second;}};
 // Layout: no active CThing header. Original UsingComponents+32 and Components+68; actual const LowerBound overload004365b0.
 class CThing{public:unsigned char Prefix[32];unsigned int UsingComponents[9];CVectorMap<ETCInterfaceType,CTCBase*> Components;template<class T>__forceinline bool GetTC(T** out)const{if(!(UsingComponents[1]&8))return false;*out=(T*)Components.Get(TC_VILLAGE_MEMBER);return true;}};class CThingCreatureBase:public CThing{};class CThingAICreature:public CThingCreatureBase{};

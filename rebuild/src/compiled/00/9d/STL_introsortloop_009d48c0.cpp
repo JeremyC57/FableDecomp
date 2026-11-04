@@ -1,5 +1,6 @@
 // std::__introsort_loop(unsigned long* first, unsigned long* last, unsigned long*, int depth_limit, CBankFile::CompareDataOffset comp) -- introsort recursion of a bank's entry-index sort by data offset: median-of-three partition until 16 indices remain, partial (heap) sort when the depth budget runs out
 // Leaf: ??$__introsort_loop@
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D48C0, 136 bytes, `ret 0Ch` (/Gr algorithm TU: first in ecx, last in
 //   edx; the value-type tag pointer, the depth limit and the one-pointer comparator on the stack).
 // Identity: called by the CBankFile entry sort 0x009D06DA (`__lg(n) * 2`) and recursively by itself; comparator
@@ -10,12 +11,7 @@
 //   last, (_Tp*)0, comp) @ 0x009D4620 (this chunk), itself.
 // Shape: the shape of the turning-animation loop 0x0087E530: `while (last - first > 16)`, the comparator push hoisted
 //   above the depth test, `--depth_limit` written back to its argument slot, `last = cut`.
-template <class T> class CArray { public:                 // retail CArray: 12 bytes
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
+#include "engine/CArray.h"
 
 struct CRuntimeData {                              // CBankFile::CRuntimeData, 12 bytes
     unsigned long DataOffset;                      // +0x00

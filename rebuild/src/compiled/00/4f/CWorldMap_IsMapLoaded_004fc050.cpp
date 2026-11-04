@@ -1,5 +1,6 @@
 // CWorldMap::IsMapLoaded(long) const -- is the map slot used, activated and holding its CMap?
 // Leaf: ?IsMapLoaded@CWorldMap@@UBE_NJ@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004FC050, 47 bytes, `ret 4`. PDB ?IsMapLoaded@CWorldMap@@UBE_NJ@Z (primary vtable 0x01244AEC
 // slot 10, +0x28).
 // Retail CWorldMap (engine/CWorldMap.h is the PDB layout with 16-byte containers; retail STLport vectors / CArrays and
@@ -25,13 +26,7 @@ public:
     unsigned char _rest[0x20];                  // +0x28 .. +0x48
 };
 
-template <class T> class CArray {
-public:
-    T* Start;                                   // +0x00
-    T* Finish;                                  // +0x04
-    T* EndOfStorage;                            // +0x08
-    const T& operator[](unsigned long i) const { return Start[i]; }
-};
+#include "engine/CArray.h"
 
 class CWorldMap {
 public:

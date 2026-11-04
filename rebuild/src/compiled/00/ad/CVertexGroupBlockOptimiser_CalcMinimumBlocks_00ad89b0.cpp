@@ -1,17 +1,11 @@
 // CVertexGroupBlockOptimiser::CalcMinimumBlocks(const CArray<unsigned long>&, unsigned long&, CArray<bool>&, unsigned long, unsigned long) -- recursive search for the minimum number of blocks: try every still-available size from `start` that fits the current block (MaxN), recurse, keep the minimum; when nothing fits, open a new block with the first available size
 // Leaf: ?CalcMinimumBlocks@CVertexGroupBlockOptimiser@@AAEKABV?$CArray@K@@AAKAAV?$CArray@_N@@KK@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD89B0, 314 bytes, `ret 14h`; recursive (the only callee is itself).
 // Shape: every availability access re-indexes available[i] (no named slot reference); the restore after the recursion is
 //   current, remaining, then the flag; best is homed in the frame because std::min takes it by reference; the fresh-block
 //   arm restores its flag and `break`s to the shared `return best`.
-template <class T> class CArray { public:                 // retail 12-byte STLport-style vector
-    T* m_first;
-    T* m_last;
-    T* m_end;
-    T* begin() const { return m_first; }
-    unsigned long size() const { return m_last - m_first; }
-    T& operator[](unsigned long n) const { return *(begin() + n); }
-};
+#include "engine/CArray.h"
 template <class T> inline const T& min_of(const T& a, const T& b) { return b < a ? b : a; }   // STLport std::min
 struct CVertexGroupBlockOptimiser {                // retail layout (see the landed InsertBlock 0x00AD92E0)
     unsigned char _pad00[0x44];

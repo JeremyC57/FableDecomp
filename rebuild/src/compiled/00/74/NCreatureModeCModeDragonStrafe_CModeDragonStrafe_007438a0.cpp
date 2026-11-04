@@ -1,6 +1,7 @@
 // NCreatureMode::CModeDragonStrafe::CModeDragonStrafe(CThing*) -- CModeDragonFlyingBase(thing), own vtable, the "STRAFE" filter, Timer = 0, Speed = 0
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the spline's CArray modelled with the STLport alloc-proxy end-of-storage member: the `push -1` of the filter name lands after the three zero stores as in retail
 // Leaf: ??0CModeDragonStrafe
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007438A0 (`ret 4`). Vtable 0x012686C8 = NCreatureMode::CModeDragonStrafe (rtti-vtables.tsv); the manifest label CModeDragonFlying is propagated.
 // Callees: CModeBase::CModeBase(CThing*) @ 0x0073EAC0, CCharString @ 0x0099EBF0 / 0x0099E4B0 / operator= 0x0099EFB0 /
 // ~ 0x0099EAE0, CRC @ 0x004014A0.
@@ -67,12 +68,7 @@ template <class T> struct CArrayAllocProxy {   // STLport _STLP_alloc_proxy: the
     T* p;
     CArrayAllocProxy(T* v) : p(v) { }
 };
-template <class T> class CArray { public:         // retail CArray is 0x0c with the STLport _Vector_base shape (start, finish, alloc-proxy end)
-    T*                  _M_start;
-    T*                  _M_finish;
-    CArrayAllocProxy<T> _M_end_of_storage;
-    CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-};
+#include "engine/CArray.h"
 
 class CCardinalSpline { public:                   // retail 0x14 (PDB 0x18 with the 16-byte CArray)
     CArray<C3DVector> ControlPoints;       // +0

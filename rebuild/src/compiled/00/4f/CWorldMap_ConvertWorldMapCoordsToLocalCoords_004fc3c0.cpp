@@ -1,5 +1,6 @@
 // CWorldMap::ConvertWorldMapCoordsToLocalCoords(long, const C2DCoordI&) const -- a world block relative to one map's corner
 // Leaf: ?ConvertWorldMapCoordsToLocalCoords@CWorldMap@@QBE?AVC2DCoordI@@JABV2@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004FC3C0, 43 bytes, `ret 0Ch` (hidden C2DCoordI result). PDB ?ConvertWorldMapCoordsToLocalCoords@CWorldMap@@QBE?AVC2DCoordI@@JABV2@@Z
 // Callees: none.
 // Retail CWorldMap (engine/CWorldMap.h is the PDB layout with 16-byte containers; retail STLport vectors / CArrays
@@ -33,13 +34,7 @@ public:
     unsigned char _rest[0x38];                  // +0x10 .. +0x48
 };
 
-template <class T> class CArray {
-public:
-    T* Start;                                   // +0x00
-    T* Finish;                                  // +0x04
-    T* EndOfStorage;                            // +0x08
-    const T& operator[](unsigned long i) const { return Start[i]; }
-};
+#include "engine/CArray.h"
 
 class CWorldMap {
 public:

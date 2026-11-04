@@ -1,5 +1,6 @@
 // CMirroredTextureHighlightsChunk::`scalar deleting destructor'(unsigned int flags) -- this class's vptr, free the TriangleVertexIndexList storage, the CChunkedFileChunk destructor, then free this when bit 0 of flags is set
 // Leaf: ??_GCMirroredTextureHighlightsChunk@@UAEPAXI@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A9D360, 54 bytes, thiscall, `ret 4`, returns this.
 // Identity (proven): it stores vtable 0x0129E0E0 (RTTI .?AVCMirroredTextureHighlightsChunk@@, bases CChunkedFileChunk : CBaseClassNonCopyable : CBaseClass); Ego_r.pdb ??_GCMirroredTextureHighlightsChunk@@UAEPAXI@Z and
 //   ??1CMirroredTextureHighlightsChunk@@UAE@XZ; member TriangleVertexIndexList (CArray<unsigned long>) at retail +0x10.
@@ -9,39 +10,7 @@
 //   the ??_G (an in-class inline definition is not: ??_G then calls ??1 out of line): the class vptr, the member CArray's
 //   STLport destructor, the base destructor out of line; a `new` of the class emits the vtable and the ??_G.
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
-namespace std {
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _Tp> inline void _Destroy(_Tp* __first, _Tp* __last) { for (; __first != __last; ++__first) _Destroy(__first); }
-template <class _Tp> class allocator {
-public:
-    allocator() { }
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-    _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) { }
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) { }
-    ~_Vector_base()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-    _Tp* _M_start;                                          // +0x0
-    _Tp* _M_finish;                                         // +0x4
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage; // +0x8
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    vector() : _Vector_base<_Tp, _Alloc>(_Alloc()) { }
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-}
-template <class T> class CArray : public std::vector<T> { };   // Fable's CArray<T>: an STLport vector<T>, 12 bytes in retail
+#include "engine/CArray.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:

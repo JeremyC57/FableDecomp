@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSingleSprite::CPSCSingleSprite() -- construct the single-sprite render component: white start/mid/end colours, unit sizes and animation time, default blend modes, fade/trail settings and empty primitive state
 // Leaf: ??0CPSCSingleSprite
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B09360, length 321 bytes (padded to 336); vtable 0x0129FB84.
 // Callees: NParticleEngine::CPSCSplineBase::CPSCSplineBase() @ 0x00B21530 (base), CEnginePrimitiveSpriteTrail ctor @ 0x00B09F90
 //          (manifest label "C3DPrimitive2"), CParticleEmitterManager::Get() @ 0x00AEAAF0 (returns the instance @ 0x013D2E1C;
@@ -42,12 +43,7 @@ struct CEnginePrimitiveSpriteTrail {
     CEnginePrimitiveSpriteTrail();                  // 0x00B09F90
 };
 
-template <class T> class CArray { public:
-    T*   Data;
-    long Size;
-    long Capacity;
-    CArray() : Data(0), Size(0), Capacity(0) {}
-};
+#include "engine/CArray.h"
 
 namespace NParticleEngine {
 

@@ -1,5 +1,6 @@
 // NUISystem::CUIIconsDef::CUIIconsDef() -- default constructor of a CParentDefClassBase-derived def: CResource base out of line, then the inlined def bases (PDefManager 0, the three flag bits cleared, InstantiationName -1, an empty SubDefInfoMap), then this class's vtable
 // Leaf: ??0CUIIconsDef@NUISystem@@QAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00431BE0, 51 bytes (+ int3 padding to 64), thiscall, plain `ret`, returns this.
 // Identity (proven): NUISystem::CUIIconsDef::CUIIconsDef() (FableWin.pdb name set: ??0CUIIconsDef@NUISystem@@QAE@XZ); evidence: RTTI of the stored vtable 0x01230F54 is .?AVCUIIconsDef@NUISystem@@ (bases CParentDefClassBase, CDefClassBase, CDefPointeeBase, CResource, CIVCountedPointeeBase); its size slot 20 (0x00431C20) returns 0xBC = Ego_r.pdb CUIIconsDef 0xC0 less 4
 // Label: the manifest's "CBlurredAttitudesDef" is propagated (family J048: five byte-similar def constructors; the stored vtable names each class; CBlurredAttitudesDef's own constructor would also build its Attitudes vector).
@@ -53,26 +54,7 @@ public:
     CDefString() : TablePos(-1) { }
     long TablePos;
 };
-namespace std {
-template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {
-    _Value _M_data;
-    _STLP_alloc_proxy(const _MaybeReboundAlloc&, _Value __p) : _M_data(__p) { }
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) { }
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc> class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    explicit vector(const _Alloc& __a = _Alloc()) : _Vector_base<_Tp, _Alloc>(__a) { }
-};
-}   // namespace std
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
+#include "engine/CArray.h"
 template <class K, class V> class CKeyPairCompareLess { };
 template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
 public:

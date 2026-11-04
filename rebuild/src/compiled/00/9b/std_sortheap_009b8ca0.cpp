@@ -1,5 +1,6 @@
 // std::sort_heap(SDefClassInfoEntry* first, SDefClassInfoEntry* last, CKeyPairCompareLess comp) -- SGI sort_heap over the definition manager's (CRC, CDefClassInfo) vector map: pop the root to the back until one element remains
 // Leaf: sort_heap
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B8CA0, length 233 bytes, `ret 4`.
 // Identity: the catalog label `_Sort_heap<pair<unsigned long,C3DHelperPoint>*,...>` is propagated over the
 // byte-identical skeleton. Stride 0x18 (0x2AAAAAAB / sar 2); the callee 0x009B8770 (manifest `_Pop_heap<CTestQuest*,
@@ -53,7 +54,7 @@ template <class T> struct vector : _Vector_base<T> {
         this->_M_finish = __uninitialized_copy((const T*)x._M_start, (const T*)x._M_finish, this->_M_start, tag);
     }
 };
-template <class T> class CArray : public vector<T> { public: };
+#include "engine/CArray.h"
 
 class CCharString { public:
     void* m_pData;

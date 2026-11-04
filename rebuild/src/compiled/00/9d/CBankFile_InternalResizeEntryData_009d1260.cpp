@@ -1,5 +1,6 @@
 // CBankFile::InternalResizeEntryData(unsigned long index, unsigned long size) -- give an entry room for `size` bytes: a new entry of a solid bank goes at the end of the file; otherwise, when the aligned size outgrows the entry's block, move it to the first free block (and invalidate the block order); the record takes the new size
 // Leaf: InternalResizeEntryData
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D1260, length 186 bytes (+6 int3), ret 8.
 // Callees: CBankFile::GetAllocatedBlockSize @ 0x009D0FC0, CBankFile::FindEmptyBlockOffset @ 0x009D0EF0, the disk file's
 // (+0x7c) virtual slot 9 (+0x24, GetLength), memmove @ 0x00BFEAE6 (the inlined BlockOrder.clear()).
@@ -17,21 +18,7 @@ struct CRuntimeData {                              // CBankFile::CRuntimeData, 1
     bool          Valid;                           // +0x09
     CRuntimeData() : DataOffset(0), DataSize(0), DataType(0), Valid(false) {}
 };
-template <class T> class CArray { public:                 // retail CArray: 12 bytes
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    unsigned long size() const { return m_pLast - m_pFirst; }
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-    static T* CopyDown(T* src, T* srcEnd, T* dest)
-    {
-        if (src == srcEnd)
-            return dest;
-        unsigned long bytes = (unsigned long)((char*)srcEnd - (char*)src);
-        return (T*)((char*)memmove(dest, src, bytes) + bytes);
-    }
-    void clear() { m_pLast = CopyDown(m_pLast, m_pLast, m_pFirst); }
-};
+#include "engine/CArray.h"
 
 struct CDiskFileCalls {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

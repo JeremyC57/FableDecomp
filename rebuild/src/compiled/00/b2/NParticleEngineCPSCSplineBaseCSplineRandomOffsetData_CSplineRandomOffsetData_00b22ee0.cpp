@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::~CSplineRandomOffsetData() -- free the two offset arrays and both splines' control points
 // Leaf: ??1CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x00B22EE0, 69 bytes, plain `ret`. Catalog label "CWound::Kill" is propagated; no reference in the
 // image (out-of-line copy of the destructor that 0x00B23110, the PDB-listed ??_G, inlines).
 // Identification: the constructor 0x00B21DD0 (`InitialSpline` +0, ThisSpline copy at +4 via CArray copy 0x0075B8D0,
@@ -12,12 +13,7 @@ extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 class C3DVector { public: float X, Y, Z; };
 
-template <class T> class CArray { public:                  // retail CArray: STLport vector, three words
-    T* m_begin;
-    T* m_end;
-    T* m_capacity;
-    ~CArray() { if (m_begin) free(m_begin); }
-};
+#include "engine/CArray.h"
 
 class CCardinalSpline { public:                            // 0x14 bytes retail
     CArray<C3DVector> ControlPoints;                // +0x00

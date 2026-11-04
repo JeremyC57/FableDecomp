@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A5D510, 213 bytes (+ int3 padding), `ret 8` (hidden result + index). Ego_r.pdb
 //   `?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@K@Z`.
 // Leaf: ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@K@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Callees: CShaderDataBank::GetVertexShader(unsigned long) const @ 0x00A61FA0 (PDB; CShaderBankEntry*), operator new @ 0x00BFEA1A,
 //   CCharString(const CCharString&) @ 0x0099EC30, CBankFile::GetEntrySymbol(unsigned long) const @ 0x009CC1D0 (by value; landed
 //   name), CVertexShader::CVertexShader(const CArray<unsigned long>&, const _D3DVERTEXELEMENT9*, const CCharString&,
@@ -20,12 +21,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-template <class T> class CArray { public:                      // retail CArray (STLport vector): 12 bytes
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T& operator[](unsigned long n) { return *(_M_start + n); }
-};
+#include "engine/CArray.h"
 struct _D3DVERTEXELEMENT9;
 
 class CShaderBankEntry {

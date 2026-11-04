@@ -1,5 +1,6 @@
 // DeleteSplineRandomOffsetData(CSplineRandomOffsetData* data) -- the counted-pointer deleter of CSplineRandomOffsetData: null test, the inlined destructor frees its four C3DVector arrays, then operator delete
 // Leaf: DeleteSplineRandomOffsetData
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B231E0, length 82 bytes (+ int3 padding).
 // Callees: free @ 0x00BFEA14 four times (the inline CArray destructors), operator delete @ 0x00BFE9BC.
 // Evidence: the address is stored as the destroy function (+4) of the 12-byte count block built by the
@@ -17,13 +18,7 @@ void __cdecl operator delete(void* block);         // 0x00BFE9BC
 
 class C3DVector { public: float X, Y, Z; };
 
-template <class T>
-class CArray { public:                                    // retail CArray<T>: first / last / end (0x0c bytes)
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    __forceinline ~CArray() { if (m_pFirst) free(m_pFirst); }
-};
+#include "engine/CArray.h"
 
 class CCardinalSpline { public:                           // retail 0x14 bytes
     CArray<C3DVector> ControlPoints;               // +0x00

@@ -1,5 +1,6 @@
 // CBankFile::DeleteEntry(unsigned long index) -- forget an entry: reset its runtime record, delete its pending update data, clear the block order and bump the change count
 // Leaf: DeleteEntry
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CD3C0, length 184 bytes (+8 int3), ret 4.
 // Callees: operator delete[] @ 0x00BFEB1C (the update's InfoBuffer), CSmallVector<CCharString,8>::Clear @ 0x009D2110,
 // operator delete @ 0x00BFE9BC, memmove @ 0x00BFEAE6 (the inlined BlockOrder.clear()).
@@ -43,21 +44,7 @@ class CBankFileEntryUpdateData { public:
         InfoSize = 0;
     }
 };
-template <class T> class CArray { public:                 // retail CArray: 12 bytes
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    unsigned long size() const { return m_pLast - m_pFirst; }
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-    static T* CopyDown(T* src, T* srcEnd, T* dest)
-    {
-        if (src == srcEnd)
-            return dest;
-        unsigned long bytes = (unsigned long)((char*)srcEnd - (char*)src);
-        return (T*)((char*)memmove(dest, src, bytes) + bytes);
-    }
-    void clear() { m_pLast = CopyDown(m_pLast, m_pLast, m_pFirst); }
-};
+#include "engine/CArray.h"
 
 class CBankFile {
 public:

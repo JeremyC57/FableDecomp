@@ -1,5 +1,6 @@
 // N3DPrimitive::CDeviceIndependent::GetTotalTriangleCount() -- sum of the triangle counts of every triangle list of the primitive
 // Leaf: ?GetTotalTriangleCount@CDeviceIndependent@N3DPrimitive@@QBEKXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A8ECE0, 80 bytes. Ego_r.pdb `?GetTotalTriangleCount@CDeviceIndependent@N3DPrimitive@@QBEKXZ`
 //   (donor 0x00BD1520, directly before GetTotalIndexCount 0x00BD1560 -- retail 0x00A8ECE0 / 0x00A8ED30). Its caller
 //   0x00A92218 (the "CLTH" cloth-primitive loader 0x00A91640) stores the result and then calls GetTotalIndexCount.
@@ -14,31 +15,8 @@ public:
     T* operator->() const { return Object; }
 };
 
-namespace std {
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start;                                      // +0x00
-    _Tp* _M_finish;                                     // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    typedef const _Tp* const_iterator;
-    typedef const _Tp& const_reference;
-    typedef unsigned int size_type;
-    const_iterator begin() const { return this->_M_start; }
-    const_iterator end() const { return this->_M_finish; }
-    size_type size() const { return size_type(end() - begin()); }
-    const_reference operator[](size_type __n) const { return *(begin() + __n); }
-};
-}
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T> { };
 
 class C3DTriangle2 { public: unsigned short Index[3]; };   // 6 bytes
 class C3DVertex2;

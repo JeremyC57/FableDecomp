@@ -1,5 +1,6 @@
 // CAIBrain::~CAIBrain() -- AI brain dtor: run OnKill unless it already ran, delete every state group (popping them off the back of the state-group vector map), then the member dtors in reverse order (update zones, brain def, the output's look-at thing and action, the state-group storage) and the tail jump to ~CSuspendableProcessMicrothread
 // Leaf: ??1CAIBrain@@UAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0088BBE0, 199 bytes, tail jump to the base destructor.
 // Identity: the one vptr store 0x012780C4 carries RTTI `.?AVCAIBrain@@` (rtti_bases: CSuspendableProcessMicrothread at +0);
 //   both PDBs have `??1CAIBrain@@UAE@XZ`. The catalog label is right.
@@ -18,45 +19,8 @@
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-namespace std {
-template <class _Tp> class allocator { public:
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc { public:
-    _Tp _M_data;
-};
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
-{
-    for (; __first != __last; ++__first)
-        _Destroy(&*__first);
-}
-template <class _Tp, class _Alloc> class _Vector_base { public:
-    _Tp* _M_start;                                          // +0x0
-    _Tp* _M_finish;                                         // +0x4
-    _STLP_alloc_proxy<_Tp*, _Alloc> _M_end_of_storage;      // +0x8
-    ~_Vector_base()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> { public:
-    typedef _Tp* iterator;
-    iterator end() { return this->_M_finish; }
-    bool empty() const { return this->_M_start == this->_M_finish; }
-    _Tp& back() { return *(end() - 1); }
-    void pop_back() { --this->_M_finish; _Destroy(this->_M_finish); }
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-} // namespace std
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { public:
-};
 template <class K, class V> class CKeyPairCompareGreater { public:
 };
 template <class K, class V, class TCompare> class CVectorMap : public CArray<std::pair<K, V> > { public:  // retail 0x10 bytes

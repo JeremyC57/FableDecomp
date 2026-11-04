@@ -1,5 +1,6 @@
 // C3DMeshFileVerticesChunk::~C3DMeshFileVerticesChunk() -- store the own vtable, free VertexList's element block (the STLport vector destructor inline: trivial elements, then `if (_M_start) free(_M_start)`), then the CChunkedFileChunk destructor as a tail jump
 // Leaf: ??1C3DMeshFileVerticesChunk@@UAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABC7B0, 33 bytes (+ int3 padding to 48), thiscall, tail `jmp` to the base destructor.
 // Identity (proven): C3DMeshFileVerticesChunk::~C3DMeshFileVerticesChunk() (Ego_r.pdb / FableWin.pdb ??1C3DMeshFileVerticesChunk@@UAE@XZ); evidence: it stores the C3DMeshFileVerticesChunk vtable 0x0129ECF8 first (RTTI .?AVC3DMeshFileVerticesChunk@@; bases CChunkedFileChunk <- CBaseClassNonCopyable <- CBaseClass) and tail-jumps to the parent's destructor
 // Label: the manifest's "OnDie" is propagated across byte-identical bodies (family J023: six destructors of a class
@@ -10,35 +11,7 @@
 //   Local model: the generated engine headers for these classes carry a data-member vptr (and Dinkumware vector sizes).
 #include <stddef.h>
 extern "C" void __cdecl free(void* block);                      // 0x00BFEA14
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc>
-class _Vector_base {
-public:
-    ~_Vector_base() { if (_M_start) free(_M_start); }
-    _Tp* _M_start;                                              // +0x00
-    _Tp* _M_finish;                                             // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;     // +0x08
-};
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator>
-inline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last)
-{
-    for ( ; __first != __last; ++__first)
-        _Destroy(&*__first);
-}
-template <class _Tp, class _Alloc = allocator<_Tp> >
-class vector : protected _Vector_base<_Tp, _Alloc> {
-public:
-    ~vector() { __destroy_aux(this->_M_start, this->_M_finish); }
-};
-}
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };   // Fable's CArray over the STLport vector
+#include "engine/CArray.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {

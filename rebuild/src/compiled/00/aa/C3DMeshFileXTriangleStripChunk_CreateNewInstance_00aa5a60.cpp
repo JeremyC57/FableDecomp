@@ -1,5 +1,6 @@
 // C3DMeshFileXTriangleStripChunk::CreateNewInstance() const -- Construct a new chunk and pass it through the original initialization hook.
 // Leaf: ?CreateNewInstance@C3DMeshFileXTriangleStripChunk@@UBEPAVCChunkedFileChunk@@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: own vtable129e380 slot9 and exact PDB const virtual method. Literal XTST, protected base constructor00aa7590 and virtual InitNewInstance slot10.
 // Layout: shared flattened headers aliased; real CBaseClassNonCopyable/Chunk/SuperChunk bases and original named arrays restored. Base16 or44, final28 or56. UnusedSlot names represent untouched virtual slots, not recovered names.
 #define CChunkedFileSuperChunk CChunkedFileSuperChunk_HeaderLayout
@@ -27,8 +28,7 @@ virtual CChunkedFileChunk* CreateNewInstance()const=0;
 protected:CChunkedFileChunk(const char*);virtual CChunkedFileChunk* InitNewInstance(CChunkedFileChunk* p)const{return p;}
 };
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;};
-namespace std{template<class T>class allocator{};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};template<class T,class A>class _Vector_base{public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;_Vector_base():_M_start(0),_M_finish(0){_M_end_of_storage._M_data=0;}};template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{};}
-template<class T>class CArray:public std::vector<T>{};
+#include "engine/CArray.h"
 class CChunkedFileSuperChunk:public CChunkedFileChunk{public:CArray<CCountedPointer<CChunkedFileChunk> > SubChunks,RegisteredSubChunkTypes;unsigned long CurrentChunkIndex;protected:CChunkedFileSuperChunk(const char*);};
 class C3DTriangle2;
 class C3DMeshFileXTriangleStripChunk:public CChunkedFileChunk{public:CArray<unsigned short> StripVertices;C3DMeshFileXTriangleStripChunk():CChunkedFileChunk("XTST"){}virtual CChunkedFileChunk* CreateNewInstance()const;};

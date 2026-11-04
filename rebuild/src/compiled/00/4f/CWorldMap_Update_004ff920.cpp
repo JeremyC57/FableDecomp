@@ -1,5 +1,6 @@
 // CWorldMap::Update() -- per-frame world-map update: run the level loader, update every used loaded map, update the destroyed theme areas, set moving the physical things inside each height-changed area (then clear that list), and switch the passability overlay to follow its debug toggle
 // Leaf: ?Update@CWorldMap@@UAEXXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FF920, 319 bytes, plain `ret` (virtual: CWorldMap vtable 0x01244AEC slot 27).
 // Name: Ego_r.pdb ?Update@CWorldMap@@UAEXXZ (public virtual; the PDB name sets carry no other CWorldMap::Update).
 // Callees: PLevelLoader->RunSuspendableProcess() (CLevelLoader vtable 0x0125D9B0 slot 1 = CSuspendableProcessMicrothread::
@@ -81,34 +82,7 @@ class CMapInfo { public:                               // 0x48 bytes
     bool          Used;                                // +0x24
     unsigned char _body[0x23];
 };
-template <class T> class CArray { public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned int size() const { return _M_finish - _M_start; }
-    T& operator[](unsigned int i) { return *(_M_start + i); }
-};
-namespace std {
-template <class T> class vector { public:            // STLport vector of PODs (12 bytes in retail)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() { return _M_start; }
-    T* end() { return _M_finish; }
-    T* erase(T* first, T* last)
-    {
-        T* result = first;
-        for (long n = _M_finish - last; n > 0; --n) {
-            *result = *last;
-            ++last;
-            ++result;
-        }
-        _M_finish = result;
-        return first;
-    }
-    void clear() { erase(begin(), end()); }
-};
-}
+#include "engine/CArray.h"
 #include "engine/CSuspendableProcessMicrothread.h"    // slot 1 RunSuspendableProcess 0x00A44880
 class CLevelLoader : public CSuspendableProcessMicrothread { };   // vtable 0x0125D9B0
 extern bool g_bShowPassability;                        // 0x013B8A78

@@ -1,5 +1,6 @@
 // Original typed voice variation selection and real integer random helper.
 // Leaf: ?GetRandomSampleIndexVariation@CSimVoice@@QBEJW4EReactionSpeechType@@AAK@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -8,14 +9,7 @@ class CInitBaseClass:public CBaseClass {public:virtual~CInitBaseClass();virtual 
 enum EReactionSpeechType {};
 long __fastcall GFROR13(unsigned long);
 __forceinline unsigned long __fastcall GFRandom(unsigned long range,unsigned long*seed){*seed=*seed*0x24a1+0x24df;*seed=GFROR13(*seed);return range?*seed%range:0;}
-namespace std {
-template<class K,class V>struct pair {typedef K first_type;typedef V second_type;K first;V second;pair():first(K()),second(V()){}pair(const K&k,const V&v):first(k),second(v){}};
-template<class T>class allocator {};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A {public:V _M_data;};
-template<class T,class A>class _Vector_base {protected:T*_M_start,*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A> {public:typedef T*iterator;typedef const T*const_iterator;iterator begin(){return this->_M_start;}const_iterator begin()const{return this->_M_start;}iterator end(){return this->_M_finish;}const_iterator end()const{return this->_M_finish;}};
-}
-template<class T>class CArray:public std::vector<T> {};
+#include "engine/CArray.h"
 template<class K,class V>class CKeyPairCompareLess {public:bool operator()(const K&a,const K&b)const{return a<b;}};
 template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> > {public:typedef std::pair<K,V>value_type;typedef const value_type*const_iterator;C Compare;bool Dirty;const_iterator LowerBound(const K&)const;const_iterator UpperBound(const K&)const;};
 // Real helpers006804C0/00680500: complete observed read-only binary searches.

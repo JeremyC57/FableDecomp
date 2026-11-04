@@ -1,4 +1,5 @@
 // CWorldMap::GetMapNumberFromMapUID(unsigned long) const -- index of the map with this UID, 0 when none
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004FB920, 99 bytes. PDB ?GetMapNumberFromMapUID@CWorldMap@@QBEJK@Z. No callees.
 // Retail CWorldMap (the engine header engine/CWorldMap.h is the PDB layout with 16-byte containers; retail STLport
 // vectors / CArrays are 12 bytes and the map member is 12 bytes, so everything after +0x14 sits lower):
@@ -16,13 +17,7 @@ class CMapInfo { public:
     unsigned char _rest[0x24];                  // +0x24 .. +0x48
 };
 
-template <class T> class CArray { public:
-    T* Start;                                   // +0x00
-    T* Finish;                                  // +0x04
-    T* EndOfStorage;                            // +0x08
-    unsigned long size() const { return Finish - Start; }
-    const T& operator[](unsigned long i) const { return Start[i]; }
-};
+#include "engine/CArray.h"
 
 class CWorldMap { public:
     unsigned char    _pad[0x20];

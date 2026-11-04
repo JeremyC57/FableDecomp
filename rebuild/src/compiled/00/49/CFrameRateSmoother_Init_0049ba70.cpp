@@ -1,5 +1,6 @@
 // CFrameRateSmoother::Init(long, long) -- initialise the frame-time ring: base Initialise, Times sized to maxNoTimes, smoothed time 0.1, counters reset
 // Leaf: ?Init@CFrameRateSmoother@@QAE_NJJ@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x0049BA70, 85 bytes (16-aligned /O2 entry), thiscall `ret 8`, returns bool.
 // Identity: Ego_r.pdb `?Init@CFrameRateSmoother@@QAE_NJJ@Z`: the body starts with CInitBaseClass::Initialise() 0x0099A350
 // (RTTI: CFrameRateSmoother -> CInitBaseClass -> CBaseClass), resizes Times (+0x08), stores SmoothedTime (+0x28),
@@ -10,18 +11,7 @@
 // std::vector<float>::resize(size_type, const float&) 0x00442770 (STLport; reached through the inline resize(n), whose
 // `_Tp()` temporary is the zeroed frame word).
 // Shape: the success path is the if body (an early `return false` moves the failure block up); 0.1f widened at compile time (the double pool constant 0x01238B48 = 0x3FB99999A0000000).
-namespace std {
-template <class _Tp> class allocator { };
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector { public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-    _Tp& operator[](unsigned int __n) { return *(_M_start + __n); }
-    void resize(unsigned int __new_size, const _Tp& __x);                 // 0x00442770 (vector<float>)
-    void resize(unsigned int __new_size) { resize(__new_size, _Tp()); }
-};
-}
-template <class T> class CArray : public std::vector<T> { };
+#include "engine/CArray.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CInitBaseClass : public CBaseClass { public:
     bool Valid;                                      // +0x04

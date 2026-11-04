@@ -1,5 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::ReplaceMeshWithNext() -- step to the next replacement mesh of the def (wrapping to the first) and switch to it
 // Leaf: ?ReplaceMeshWithNext@CTCGraphicAppearanceReplaceableMesh@NGraphicAppearance@@QAEXXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A6B20, 62 bytes, `call ; ret`.
 // Identity: Ego_r.pdb `?ReplaceMeshWithNext@CTCGraphicAppearanceReplaceableMesh@NGraphicAppearance@@QAEXXZ`, the donor's next
 //   function after ReplaceMeshByIndex (donor 0x7AB780 / 0x7AB850); retail has the landed ReplaceMeshByIndex 0x007A69F0 just
@@ -22,17 +23,7 @@ public:
 };
 #pragma pack(pop)
 
-namespace std {
-template <class _Tp> class allocator { public: };
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {      // STLport 4.6 layout (_Vector_base members)
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
-};
-}
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };   // Fable's CArray over the STLport vector
+#include "engine/CArray.h"
 
 namespace NGraphicAppearance {
 class CReplaceableMeshes {

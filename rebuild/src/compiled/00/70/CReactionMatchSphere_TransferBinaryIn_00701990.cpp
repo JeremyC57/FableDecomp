@@ -10,6 +10,7 @@
 // memcpy fast path, overflow reader) into a float local homed in the dead stream-argument slot, then one store
 // of the local to SqRadius on every path.
 // Leaf: TransferBinaryIn@CReactionMatch_Sphere
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -40,9 +41,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 
-template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
-    T* m_begin; T* m_end; T* m_capacity;
-};
+#include "engine/CArray.h"
 
 class COpinionSet { public:
     CArray<float> OpinionValues;                        // +0x00

@@ -1,5 +1,6 @@
 // CGPUScratchBufferTextureManager::~CGPUScratchBufferTextureManager() -- free every memory page still bound to a scratch pool (FreeMemoryPage(i) while ScratchPool > -1), then the five member arrays (FreeTextureSlots, FreeTexturePageSlots, ScratchPools, MemoryPages with each page's ResourceList, Resources), then the CBaseClassNonCopyable base
 // Leaf: ??1CGPUScratchBufferTextureManager
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F37570, 225 bytes. Callers: the ??_G 0x00F388D0 (slot 0 of the vtable 0x01301CE4) and
 //   0x00B3B984 (an owner's destructor destroying the manager embedded at its +0x3190).
 // Identity: first store = vtable 0x01301CE4 (RTTI .?AVCGPUScratchBufferTextureManager@@ : CBaseClassNonCopyable : CBaseClass);
@@ -16,41 +17,7 @@
 // Label: manifest "_global::CGPUScratchBufferTextureManager_Destructor" was descriptive; the PDB name is the class dtor.
 // Model: no engine header for the class; CArray<T> is the engine's empty wrapper over the STLport vector.
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
-namespace std {
-template <class _Tp> class allocator {
-public:
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
-{
-    for (; __first != __last; ++__first) _Destroy(&*__first);
-}
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-    ~_Vector_base()
-    {
-        if (_M_start != 0) _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    typedef _Tp& reference;
-    typedef unsigned int size_type;
-    size_type size() const { return size_type(this->_M_finish - this->_M_start); }
-    reference operator[](size_type __n) { return *(this->_M_start + __n); }
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-} // namespace std
-template <class T> class CArray : public std::vector<T> { };
+#include "engine/CArray.h"
 #include "engine/CBaseClassNonCopyable.h"
 class CTexture;
 class CSurface;

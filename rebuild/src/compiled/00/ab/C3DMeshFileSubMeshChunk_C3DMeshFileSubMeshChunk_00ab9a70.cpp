@@ -1,4 +1,5 @@
 // C3DMeshFileSubMeshChunk::C3DMeshFileSubMeshChunk() -- base chunk "SUBM", default Name, the four hierarchy indices -1
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB9A70, length 46 bytes.
 // Callees: 0x00AA8360 CChunkedFileSuperChunk ctor, 0x0099E4B0 CCharString::CCharString()
 //
@@ -22,12 +23,7 @@ class CMatrix3x4 { public:                                     // 48 bytes: thre
     C3DVector XAxis, YAxis, ZAxis, Position;
 };
 
-template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity, no allocator state
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray() : m_begin(0), m_end(0), m_capacity(0) {}
-    unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
-    const T& operator[](unsigned long index) const { return m_begin[index]; }
-};
+#include "engine/CArray.h"
 
 class CChunkedFileSaver;
 class CChunkedFileLoader;

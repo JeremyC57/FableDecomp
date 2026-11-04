@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCLight::CPSCLight() -- particle light component: CPSCBase base, lifetime/respawn timers and radii, the light flags (enabled + start colour), black fade colour, white start/mid/end colours, an empty primitive handle and an emptied user-point array
 // Leaf: ??0CPSCLight
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1A640, length 192 bytes. Vtable 0x012A0624 (RTTI NParticleEngine::CPSCLight).
 // Callees: NParticleEngine::CPSCBase::CPSCBase @ 0x00AF2620, CBaseClass::CBaseClass @ 0x0099A2D0 (the handle's base),
 //          SGI __copy<12-byte> @ 0x0074CA20 (the array's clear(): erase(begin, end) = `last = copy(end, end, begin)`,
@@ -35,20 +36,9 @@ class CRGBColour { public:                               // B,G,R,A bytes over a
 
 class C3DVector { public: float X, Y, Z; };
 
-namespace std {
-struct random_access_iterator_tag { random_access_iterator_tag() { } };
-template <class _RandomAccessIter, class _OutputIter, class _Distance>
-_OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
-                              const random_access_iterator_tag&, _Distance*);   // 0x0074CA20 <C3DVector*, C3DVector*, int>
-}
+#include "engine/CArray.h"
 
 template<class T> struct SAllocProxy { T* _M_data; SAllocProxy(T* p) : _M_data(p) { } };
-template<class T> class CArray { public:                  // the engine's 12-byte vector
-    T* first; T* last; SAllocProxy<T> end_of_storage;
-    void erase(T* f, T* l) { last = std::__copy(l, last, f, std::random_access_iterator_tag(), (int*)0); }
-    void clear() { erase(first, last); }
-    CArray() : first(0), last(0), end_of_storage(0) { }
-};
 
 namespace NParticleEngine {
 class CParticleSystem;

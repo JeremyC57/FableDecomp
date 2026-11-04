@@ -1,5 +1,6 @@
 // CEngine::RenderFrame(const CEngineInterpolationInfo& info) -- renders one frame: opens a render-state capture block, sets the interpolated world time, builds the component parameters, runs FrameStart on every component whose scene filter matches, renders every layer, runs FrameEnd, frees the frame memory pool, counts the frame and restores the captured render states
 // Leaf: ?RenderFrame@CEngine@@AAEXABVCEngineInterpolationInfo@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B25950, 365 bytes, thiscall `ret 4` (ebp frame aligned to 8).
 // Identity (proven): Ego_r.pdb ?RenderFrame@CEngine@@AAEXABVCEngineInterpolationInfo@@@Z (private; donor 0x009AFFD0); its
 //   caller is CEngine::Render 0x00B27D90 (Ego_r ?Render@CEngine@@UAEXABVCEngineInterpolationInfo@@K@Z, vtable slot 8).
@@ -102,26 +103,7 @@ public:
 };
 extern CRenderStateManager* g_pRenderStateManager_013cb508;   // 0x013CB508
 
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    typedef _Tp* iterator;
-    iterator begin() { return this->_M_start; }
-    iterator end() { return this->_M_finish; }
-};
-}
-template <class T> class CArray : public std::vector<T> { };
+#include "engine/CArray.h"
 
 class CEngine {
 public:

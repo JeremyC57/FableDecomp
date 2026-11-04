@@ -1,5 +1,6 @@
 // CWorldMap::UnloadLevel(long) -- unload one map: mark it inactive, drop it from the loaded-map list, remove it from the engine, the thing manager, the map's own pointer, the thing-map manager and the navigator
 // Leaf: UnloadLevel
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004FEDE0, 222 bytes, `ret 4`. PDB ?UnloadLevel@CWorldMap@@IAEXJ@Z (protected)
 // Callees: SGI __find<long*>(first, last, const long&, random_access_iterator_tag) 0x0050E540 (`__fastcall`, landed
 // global_Find0050e540), memmove 0x00BFEAE6, CTBaseSingleton<CEngineManager>::Get 0x00436FB0 (`__fastcall`; manifest
@@ -97,12 +98,7 @@ class CMapInfo { public:                                            // 0x48 byte
     bool                  Activated;                         // +0x26
     unsigned char         _rest[0x21];                       // +0x27 .. +0x48
 };
-template <class T> class CArray { public:
-    T* Start;                                                // +0x00
-    T* Finish;                                               // +0x04
-    T* EndOfStorage;                                         // +0x08
-    T& operator[](unsigned long i) { return Start[i]; }
-};
+#include "engine/CArray.h"
 
 class CEngineManager { public:
     static CEngineManager& __fastcall Get();                 // 0x00436FB0 CTBaseSingleton<CEngineManager>::Get

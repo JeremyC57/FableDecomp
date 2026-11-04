@@ -1,5 +1,6 @@
 // CEngineWorldMap::OpenStaticMaps(CEngineMap::STATIC_MAP_OPEN_STATE state) -- switch the world's static maps to a new open state: build the grid, then either open every map's development static map in place (state 2), or open the static-map bank file, hand it to the water renderer, and load the whole bank at once when it carries the global entry, else open every map from it
 // Leaf: OpenStaticMaps
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B42750, length 400 bytes (with int3 padding; body 0x17f), `ret 4`.
 // PDB: ?OpenStaticMaps@CEngineWorldMap@@AAEXW4STATIC_MAP_OPEN_STATE@CEngineMap@@@Z.
 // Callees: AutoBuildWorldMapGrid @ 0x00B40070; CCharString(const char*, long) @ 0x0099EBF0 / copy @ 0x0099EC30 /
@@ -75,13 +76,7 @@ class CEngineMap { public:
     void OpenDevelopmentStaticMap(CStaticMapBankFile& file, STATIC_MAP_OPEN_STATE state);   // 0x00B42530
 };
 
-template <class T> class CArray { public:                  // retail CArray (STLport vector): begin, end, capacity
-    T* First;
-    T* Last;
-    T* End;
-    unsigned long size() const { return Last - First; }
-    T& operator[](unsigned long index) { return First[index]; }
-};
+#include "engine/CArray.h"
 
 class CEngineWorldMap { public:
     void*                 _vptr;                    // +0x000

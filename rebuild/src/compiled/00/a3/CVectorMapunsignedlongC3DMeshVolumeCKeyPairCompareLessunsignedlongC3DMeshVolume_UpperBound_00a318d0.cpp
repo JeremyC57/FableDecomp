@@ -8,6 +8,7 @@
 // ... ABK@Z (const; retail's STLport const_iterator is a const pair pointer, the spelling the landed CVectorMap
 // LowerBound rows use). CVectorMap retail layout: Data (CArray = STLport vector) +0, Compare +0xC, Dirty +0xD.
 // Leaf: ?UpperBound@?$CVectorMap@KVC3DMeshVolume@@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@@QBEPBU?$pair@KVC3DMeshVolume@@@std@@ABK@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 class CCharString { public: void* PStringData; };
 class CCPPointerInfo;
 template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };
@@ -19,27 +20,8 @@ public:
     CCountedPointer<CContainmentVolume> ConvexVolume;   // +0x04
 };
 
-namespace std {
-    template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-    template <class _Tp> class allocator { public: };
-    template <class _Value, class _Tp, class _MaybeReboundAlloc>
-    class _STLP_alloc_proxy : public _MaybeReboundAlloc { public: _Value _M_data; };
-    template <class _Tp, class _Alloc> class _Vector_base {
-    public:
-        _Tp* _M_start;
-        _Tp* _M_finish;
-        _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-    };
-    template <class _Tp, class _Alloc = allocator<_Tp> >
-    class vector : public _Vector_base<_Tp, _Alloc> {
-    public:
-        typedef const _Tp* const_iterator;
-        const_iterator begin() const { return this->_M_start; }
-        const_iterator end() const { return this->_M_finish; }
-    };
-}
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T> { };
 
 template <class K, class V> class CKeyPairCompareLess {
 public:

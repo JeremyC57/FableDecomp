@@ -1,5 +1,6 @@
 // NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Init() -- Initialise the scorpion count and flourish hint.
 // Leaf: ?Init@CScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@EAEXXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: Own named ScorpionHome registration00d61ee2 ->factory00d63cc0 ->vtable012d19c0 slot2; original PDB nested private virtual Init, named ScorpionsLeft/FlourishHint and CScriptDef GUI_DepartureBeetles; global0143e90c and typed retail field+3852.
 // Layout: original CEntityScriptBase20, parent/master20/24, count28, hint32, full child36. Typed definition prefix through GUI_MeleeBeetles; original def base chain with packed parent57 and STLport12-byte vectors reconciles donor offsets. No opaque base prefix; inactive virtual slots are descriptive.
 #include <stddef.h>
@@ -21,17 +22,7 @@ namespace NScript{class CQ_SunnyvaleMasterData;}
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
-namespace std{
-template<class T>class allocator{};template<class A,class B>struct pair{typedef A first_type;typedef B second_type;A first;B second;};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};
-struct _List_node_base{_List_node_base* _M_next;_List_node_base* _M_prev;};template<class T>struct _List_node:public _List_node_base{T _M_data;};
-template<class T,class A>class _List_base{protected:typedef _List_node<T> _Node;typedef allocator<_Node> _NodeAlloc;_STLP_alloc_proxy<_Node*,_Node,_NodeAlloc> _M_node;};
-template<class T,class A=allocator<T> >class list:protected _List_base<T,A>{};
-template<class T,class A>class _Vector_base{protected:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;};
-template<class T,class A=allocator<T> >class vector:protected _Vector_base<T,A>{public:T* begin(){return this->_M_start;}T* end(){return this->_M_finish;}};
-template<class Iter,class Compare>void __fastcall sort(Iter,Iter,Compare);
-}
-template<class T>class CArray:public std::vector<T>{};
+#include "engine/CArray.h"
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};

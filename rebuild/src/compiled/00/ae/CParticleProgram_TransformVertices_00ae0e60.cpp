@@ -6,6 +6,7 @@
 // into the shared group buffer, transform them by the group's matrix and accumulate each into its output vertex scaled
 // by the blend weight (SSE when the processor supports it, x87 otherwise)
 // Leaf: ?TransformVertices@CParticleProgram@@ABEXPAVC4DVector@@PBV2@KPBVCMatrix4x4@@ABV?$CArray@VC3DGroup2@@@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE0E60, 0x1C9 bytes (padded to 464), `ret 14h`, `and esp,-16` frame.
 // Callees: GFClear4DVectors(C4DVector*, unsigned long, C4DVector*) 0x00A5C300 (cdecl), C3DGroup2's GetList 0x00AC40A0,
 //   GetGroupVectorBuffer(unsigned long) 0x00AE05A0 (__fastcall), CMatrix4x4::AlignedTransformTransposedAssumeW
@@ -37,14 +38,7 @@ public:
     unsigned long VertexIndex;                          // +0x00
     float         BlendValue;                           // +0x04
 };
-template <class T> class CArray {                       // retail STLport vector (12 bytes)
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned long size() const { return _M_finish - _M_start; }
-    const T& operator[](unsigned long i) const { return _M_start[i]; }
-};
+#include "engine/CArray.h"
 class C3DGroup2 {
 public:
     long                     BoneIndex;                 // +0x00

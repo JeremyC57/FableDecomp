@@ -1,5 +1,6 @@
 // CBankFile::InternalWriteEntryData(unsigned long index, unsigned long start, const void* data, unsigned long size) -- write part of an entry's data: on the first write reopen the bank file for writing at the same position, seek to the entry offset + start, write, and when the write ends the entry pad it to the alignment and clear the entry's pending-update flag
 // Leaf: InternalWriteEntryData
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CCCD0, length 229 bytes (+11 int3), ret 0x10.
 // Callees: CPackedUIntArray::operator[] @ 0x00A629F0 (inline GetEntryDataSize / GetEntryDataOffset, as the landed
 // 0x009CC240 / 0x009CC270), the disk file's (+0x7c) virtual slots 7 (+0x1c, GetPosition), 2 (+0x08, Close), 1 (+0x04,
@@ -43,13 +44,7 @@ struct CPackedUIntArray {               // 16 bytes; m_pData == 0 means "not pac
     bool IsPacked() const { return m_pData != 0; }
 };
 
-template <class T> class CArray { public:      // retail CArray: 12 bytes
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    long GetCount() const { return m_pLast - m_pFirst; }
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
+#include "engine/CArray.h"
 
 struct CBankFile_Retail {        // the retail layout; engine/CBankFile.h (PDB) disagrees with the bytes
     void*                     __vftable;            // +0x00

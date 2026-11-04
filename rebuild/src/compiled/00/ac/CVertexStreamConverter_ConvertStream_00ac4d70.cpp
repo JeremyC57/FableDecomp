@@ -3,6 +3,7 @@
 // const CVertexCompressionParams& params) -- for each data element the two formats share, read every vertex's element
 // into a C4DVector and write it back in the destination type, then advance both element offsets by the type sizes
 // Leaf: ConvertStream
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC4D70, 320 bytes (padded to 336), `ret 0x20`.
 // Signature: Ego_r.pdb ?ConvertStream@CVertexStreamConverter@@QAEXPBXJABVCVertexStreamFormat@@PAXJ1KABVCVertexCompressionParams@@@Z.
 // Callees: ConvertFrom(const char*, EVertexStreamDataType, C4DVector&, const CVertexCompressionParams&) 0x00AC44D0,
@@ -16,13 +17,7 @@ class C4DVector { public:
     float X, Y, Z, W;
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) {}
 };
-template <class T> class CArray { public:                     // STLport vector storage
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
-    const T& operator[](unsigned long i) const { return _M_start[i]; }
-};
+#include "engine/CArray.h"
 class CVertexStreamFormat { public:
     class CDataElement { public:
         unsigned long         Register;                // +0x00

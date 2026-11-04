@@ -11,6 +11,7 @@
 // Retail offsets (PDB - 4): VertexBuffer +0x30 (CVertexBufferWin32: compression params +0x14), VertexBufferStatus +0x38,
 // RepeatingMeshReps +8, Data (scoped_ptr<N3DPrimitive::CDeviceIndependent>, 32-byte vertex vector at +4) +0x2c.
 // Leaf: UploadToVertexBufferStatic@C3DPrimitive2
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 class CVertexCompressionParams { public: float PosScale[4]; float PosBias[4]; };
 struct CVertexFormat {
     unsigned long GetVertexSize() const;            // 0x00AB37B0
@@ -40,10 +41,7 @@ class CVertexBufferWin32 { public:
     void Unlock();                                  // 0x00AC20B0
 };
 struct CStaticVertex { unsigned char _body[0x20]; };
-template<class T> class CArray { public:                   // retail CArray<T>: begin/end/capacity
-    T* m_begin; T* m_end; T* m_capacity;
-    unsigned long size() const { return (unsigned long)(m_end - m_begin); }
-};
+#include "engine/CArray.h"
 namespace N3DPrimitive {
 class CDeviceIndependent { public:
     long m_00;

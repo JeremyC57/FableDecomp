@@ -1,6 +1,7 @@
 // CParticleProgram::GetUsedBones(CArray<bool>& used) const -- mark the bones used by the simulated groups, then by the non-simulated groups
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE15D0, length 33 bytes (padded to 48).
 // Leaf: ?GetUsedBones@CParticleProgram@@QBEXAAV?$CArray@_N@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Label correction: the catalog "_Dest_val<..., std::pair<long, CMusicManager::CRegisteredMusicEntry>>" is propagated.
 // Ego_r.pdb lists the pair ?GetUsedBones@CParticleProgram@@QBEXAAV?$CArray@_N@@@Z (this row) and the private static
 // __fastcall ?GetUsedBones@CParticleProgram@@CIXAAV?$CArray@_N@@ABV?$CArray@VC3DGroup2@@@@@Z (0x00AE1210, manifest
@@ -18,14 +19,7 @@
 class C4DVector;
 class CMovableResourceMemoryPool;
 class C3DTriangle2; class C3DQuad2; class C3DClothRenderVertex; class C2DVector;
-template <class T> class CArray { public:                     // retail CArray<T>: STLport vector, three pointers
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    T& operator[](unsigned int i) { return _M_start[i]; }
-    const T& operator[](unsigned int i) const { return _M_start[i]; }
-};
+#include "engine/CArray.h"
 class C3DVertexBlend2 { public: long Vertex; float Weight; };   // 8 bytes
 class C3DGroup2 { public:                                     // 16 bytes in retail
     long                     BoneIndex;                // +0x0

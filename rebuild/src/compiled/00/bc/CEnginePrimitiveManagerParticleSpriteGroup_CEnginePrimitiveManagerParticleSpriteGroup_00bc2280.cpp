@@ -1,5 +1,6 @@
 // CEnginePrimitiveManagerParticleSpriteGroup::~CEnginePrimitiveManagerParticleSpriteGroup() -- compiler-generated destructor: the index buffer and vertex buffer released, the three pixel and three vertex displacement shaders released, the three CArray<CVertexShader> point-light shader tables destroyed and freed, then the CBaseClassNonCopyable base
 // Leaf: ??1CEnginePrimitiveManagerParticleSpriteGroup
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC2280, length 361 bytes (tail `jmp` to the base destructor).
 // Callees: CIndexBuffer::Uninitialise @ 0x00AC1EE0 (manifest "CVolume::ReleaseVolume", propagated), CVertexBufferWin32::
@@ -66,17 +67,7 @@ template <class T> __forceinline void DestroyRange(T* first, T* last)
         first->~T();
 }
 
-template <class T> class CArray { public:                 // retail CArray<T> (STLport vector), 12 bytes
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    __forceinline ~CArray()
-    {
-        DestroyRange(_M_start, _M_finish);
-        if (_M_start)
-            free(_M_start);
-    }
-};
+#include "engine/CArray.h"
 
 class CVertexBufferWin32 : public CBaseClassNonCopyable { public:   // vtable 0x0129BA20, 0x34 bytes
     unsigned char _body[0x30];

@@ -7,6 +7,7 @@
 // Layout: the PDB header agrees on the offsets but its CArray is 0x10 wide; the retail allocation is 0x4c,
 // so this file models the retail layout with the PDB names (see 0x00AA58C0).
 // Leaf: CreateNewInstance
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 //
 class CCharString { public:
     CCharString();                                      // 0x0099E4B0 default
@@ -27,12 +28,7 @@ class CMatrix3x4 { public:                                     // 48 bytes: thre
     }
 };
 
-template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity, no allocator state
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray() : m_begin(0), m_end(0), m_capacity(0) {}
-    unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
-    const T& operator[](unsigned long index) const { return m_begin[index]; }
-};
+#include "engine/CArray.h"
 
 class CChunkedFileSaver;
 class CChunkedFileLoader;

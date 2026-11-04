@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>::GetVectorParam(C3DVector& vector, const unsigned long& key) const -- looks up the vector parameter registered for a (non-zero) key and copies it out; false when absent
 // Leaf: ?GetVectorParam@
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B059F0, length 82 bytes, `ret 8`.
 // Signature from Ego_r.pdb: ?GetVectorParam@?$CParticleUpdateParameters@KK@NParticleEngine@@QBE_NAAVC3DVector@@ABK@Z.
 // Callees: CVectorMap<K, C3DVector, CParticleUpdateCCompareVector<K>>::LowerBound(const K&) const @ 0x00B05890 (out of
@@ -18,34 +19,8 @@ public:
     float X, Y, Z;
 };
 
-namespace std {
+#include "engine/CArray.h"
 
-template <class _T1, class _T2> struct pair {
-    typedef _T1 first_type;
-    typedef _T2 second_type;
-    _T1 first;
-    _T2 second;
-};
-
-template <class _Tp> class allocator { };
-
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {   // the end-of-storage pointer
-    _Value _M_data;
-};
-
-template <class _Tp, class _Alloc> class vector {         // retail STLport vector (12 bytes)
-public:
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;                                          // +0x00
-    _Tp* _M_finish;                                         // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage; // +0x08
-    const_iterator begin() const { return _M_start; }
-    const_iterator end() const { return _M_finish; }
-};
-
-}   // namespace std
-
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };   // Fable's CArray over the STLport vector
 
 template <class K, class V, class TCompare> class CVectorMap {   // sorted-on-demand vector map, retail 0x10 bytes
 public:

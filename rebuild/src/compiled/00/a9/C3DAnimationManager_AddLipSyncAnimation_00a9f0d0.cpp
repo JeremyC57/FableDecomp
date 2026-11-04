@@ -13,6 +13,7 @@
 // Layout: Ego_r.pdb CLipSyncPhoneme {Symbol, ID, Weight}; C3DAnimationStateAlpha (0x14): CIVCountedPointeeBase
 // {vptr, IVRefCount +4}, AnimationIndex +8, AnimationTime +0xc, AlphaWeight +0x10; retail CArray is 12 bytes.
 // Leaf: AddLipSyncAnimation@C3DAnimationManager
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
@@ -25,13 +26,7 @@ class CLipSyncPhoneme { public:
     float Weight;                                  // +8
 };
 
-template <class T> class CArray { public:                 // retail: begin, end, end of storage
-    T* m_pBegin;
-    T* m_pEnd;
-    T* m_pCapacity;
-    unsigned long size() const { return m_pEnd - m_pBegin; }
-    const T& operator[](unsigned long i) const { return m_pBegin[i]; }
-};
+#include "engine/CArray.h"
 
 class CLipSyncFrameData { public:
     CArray<CLipSyncPhoneme> Phonemes;              // +0

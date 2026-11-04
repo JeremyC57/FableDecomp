@@ -1,5 +1,6 @@
 // 0081b0a0 CTextureMorphs::GetAllMorphsOfType -- copy the selected morph type's complete entries
 // Leaf: ?GetAllMorphsOfType@CTextureMorphs@@QBE_NW4EHeroMorphType@@AAV?$vector@VCTextureMorphEntry@@V?$allocator@VCTextureMorphEntry@@@std@@@std@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
 enum EHeroMorphType { };
 enum ECompositeBlendType { };
@@ -11,20 +12,7 @@ public:
     long BankIndex;
     ECompositeBlendType Blend;
 };
-namespace std {
-template<class T>class allocator { };
-template<class V,class T,class A>class _STLP_alloc_proxy:public A { public:V _M_data; };
-template<class T,class A>class _Vector_base { public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage; };
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A> {
-public:
-    T* begin() { return this->_M_start; }
-    const T* begin()const { return this->_M_start; }
-    void resize(unsigned int,const T&);
-    void resize(unsigned int n) { resize(n,T()); }
-};
-template<class K,class V>struct pair { K first;V second; };
-}
-template<class T>class CArray:public std::vector<T> { };
+#include "engine/CArray.h"
 template<class K,class V>class CKeyPairCompareLess { };
 template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> > {
 public:

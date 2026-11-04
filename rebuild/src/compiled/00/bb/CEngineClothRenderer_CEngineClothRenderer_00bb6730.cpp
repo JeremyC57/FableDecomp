@@ -1,5 +1,6 @@
 // CEngineClothRenderer::~CEngineClothRenderer() -- compiler-generated destructor: memory pools, index buffer, six vertex shaders and six CArray<CVertexShader> members torn down, then ~CBaseClassNonCopyable
 // Leaf: ??1CEngineClothRenderer@@UAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail 0x00BB6730, 537 bytes. Compiler-generated: emitted by defining the real ctor in the TU (no vtable store of its own).
 //   Members in reverse: two CSimpleMemoryPool (~ { ClearMemoryBlocks(); } 0x00A5C600), CIndexBuffer (Uninitialise 0x00AC1EE0),
 //   six CVertexShader (shared-data release), six CArray<CVertexShader> (STLport-style storage, free 0x00BFEA14), then
@@ -8,34 +9,8 @@
 
 extern "C" void __cdecl free(void* block);                       // 0x00BFEA14 (MSVCR71)
 
-namespace std {
-template <class _Tp> class allocator {
-public:
-    allocator() { }
-    void deallocate(_Tp* p, unsigned int) { free(p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc> class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp> inline void _Destroy(_Tp* p) { p->~_Tp(); }
-template <class _Tp> inline void _Destroy(_Tp* first, _Tp* last) { for (; first != last; ++first) _Destroy(first); }
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start;                                              // +0x00
-    _Tp* _M_finish;                                             // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;     // +0x08
-    ~_Vector_base() { if (_M_start != 0) _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    vector();
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-}
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T> {
-};
 
 class CVertexShaderData {
 public:

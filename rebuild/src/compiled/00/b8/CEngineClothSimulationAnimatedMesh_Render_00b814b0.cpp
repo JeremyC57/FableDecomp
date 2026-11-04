@@ -1,5 +1,6 @@
 // CEngineClothSimulationAnimatedMesh::Render(const C3DPrimitive2& primitive, const CEngineSubPrimitiveAnimatedMesh& subPrimitive, const C3DMesh2& mesh, const C3DAnimationBlendState& blendState1, const C3DAnimationBlendState& blendState2, float blend, const CMatrix3x4& transform, ERenderPassType passType) -- render every cloth simulation of an animated mesh: fade it out by the distance of the transformed mesh bounding-sphere centre, interpolate the particle program's animated render positions (both blend states, the owner's animation manager, bone scalings and bone transformations) into the cloth renderer's position buffer, then hand the simulation and its cloth primitive to the cloth renderer
 // Leaf: ?Render@CEngineClothSimulationAnimatedMesh@@UAEXABVC3DPrimitive2@@ABVCEngineSubPrimitiveAnimatedMesh@@ABVC3DMesh2@@ABVC3DAnimationBlendState@@3MABVCMatrix3x4@@W4ERenderPassType@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B814B0, length 397 bytes, `ret 20h`; byte-identical to the 2D sibling 0x00B81640
 //   except the final cloth-renderer call (RenderClothPrimitive here, Render2DClothPrimitive there).
 // Name: FableWin.pdb + Ego_r.pdb, the catalog spelling (virtual, public).
@@ -62,13 +63,7 @@ template <class T> class CCountedPointer { public:
     T* Get() const { return Data; }
     T* operator->() const { return Data; }
 };
-template <class T> class CArray { public:                 // retail CArray<T>: three pointers
-    T* m_pData;
-    T* m_pLast;
-    T* m_pEnd;
-    unsigned long size() const { return m_pLast - m_pData; }
-    const T& operator[](unsigned long i) const { return m_pData[i]; }
-};
+#include "engine/CArray.h"
 class CParticleSimulation { public:                        // Ego_r.pdb, retail 0x80 bytes (landed 0x00AE1600 model)
     void*         __vftable;                               // +0x00
     unsigned char RenderData[8];                           // +0x04 CCountedPointer<CParticleSimulationRenderData>

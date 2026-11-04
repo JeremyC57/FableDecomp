@@ -8,15 +8,11 @@
 // floor); the sum is a named float local (dead argument slot, `fstp ; fld`) clamped through an inline reference
 // Clamp(v, lo, hi) whose 0.0f/1.0f temporaries live in the frame.
 // Leaf: Match@CReactionMatch_SecondaryAxisCentredMRShifted
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 #include <math.h>
 #include "engine/CReactionMatch_SecondaryAxisCentredMRShifted.h"
 
-template <class T> class CArray { public:                      // retail CArray<T>: begin/end/capacity (0x0c; PDB says 0x10)
-    T*   Data;                                          // +0x00
-    T*   m_end;                                         // +0x04
-    T*   m_capacity;                                    // +0x08
-    const T& operator[](long i) const { return Data[i]; }
-};
+#include "engine/CArray.h"
 
 class COpinionSet { public:
     CArray<float> OpinionValues;                        // +0x00

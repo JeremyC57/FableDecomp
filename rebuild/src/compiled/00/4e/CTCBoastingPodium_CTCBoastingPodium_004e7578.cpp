@@ -1,5 +1,6 @@
 // CTCBoastingPodium::~CTCBoastingPodium() -- the compiler-generated (implicit) destructor, kept out of line: release the def pointer PDef (+0x28), destroy BoastingPositions (+0xC), then the base destructor CTCBase::~CTCBase
 // Leaf: ??1CTCBoastingPodium@@UAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E7578, 40 bytes (+ int3 padding), thiscall, no return value; size-optimised TU (odd entry,
 //   `and dword ptr [esi+28h],0`); reached only from its scalar deleting destructor 0x004E755C.
 // Identity (proven): CTCBoastingPodium::~CTCBoastingPodium(); evidence: its only caller is the scalar deleting destructor 0x004E755C in slot 0 of vtable 0x0124346C, whose RTTI is .?AVCTCBoastingPodium@@ : CTCBase : CBaseClassNonCopyable : CBaseClass; the PDB name sets hold ??1CTCBoastingPodium@@UAE@XZ; the released and destroyed offsets +0x28 / +0xC are Ego_r.pdb CTCBoastingPodium::PDef / BoastingPositions (rebased: one 16-byte PDB container precedes PDef), and the tail jump is the base's destructor.
@@ -51,27 +52,7 @@ public:
     }
     CDefPointeeBase* Object;                             // +0x0
 };
-namespace std {
-template <class _Tp> class allocator { };
-template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc>
-class _Vector_base {
-public:
-    _Tp* _M_start;                                              // +0x00
-    _Tp* _M_finish;                                             // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;     // +0x08
-};
-template <class _Tp, class _Alloc = allocator<_Tp> >
-class vector : protected _Vector_base<_Tp, _Alloc> {            // STLport 4.6, 12 bytes
-public:
-    ~vector();                                                  // out of line in retail
-};
-}   // namespace std
+#include "engine/CArray.h"
 class CThing;
 class CTCBase {                                          // retail 0x0C bytes (agent951 G056 / J079 model)
 public:
@@ -82,7 +63,6 @@ public:
     bool    IsInGlobalUpdateTCs;                         // +0x09
 };
 template <class K, class V> class CKeyPairCompareLess { };
-template <class T> class CArray : public std::vector<T> { };   // 12 bytes in retail (16 in Ego_r.pdb)
 template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
 public:
     ~CVectorMap();                                       // 0x004E34EC for <long, CIntelligentPointer<CThing>, CKeyPairCompareLess<...> >

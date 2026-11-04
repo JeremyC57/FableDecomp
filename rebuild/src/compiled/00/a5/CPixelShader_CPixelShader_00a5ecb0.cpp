@@ -1,5 +1,6 @@
 // CPixelShader::CPixelShader(IDirect3DPixelShader9* shader, const CArray<long>& constIndices, const CCharString& name) -- allocate the shared CPixelShaderData (0x14 bytes) from the arguments and keep it at +4
 // Leaf: ??0CPixelShader@@AAE@PAUIDirect3DPixelShader9@@ABV?$CArray@J@@ABVCCharString@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Naming wave 27 (family pxs, DECISIONS_W26 D4): the ctor is private (Ego_r.pdb / FableWin.pdb AAE) with
 //   CShaderRenderManager a friend (its CreatePixelShader 0x0098A9A0 constructs the shader). Was public (QAE).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5ECB0, length 65 bytes.
@@ -13,7 +14,7 @@
 // ReferenceCount, ConstCount, ConstIndices).
 struct IDirect3DPixelShader9;
 class CCharString { public: void* m_pData; };
-template <class T> class CArray { public: T* m_pFirst; T* m_pLast; T* m_pEnd; };
+#include "engine/CArray.h"
 
 struct CPixelShaderData {                          // 0x14 bytes, vtable 0x0129D58C
     virtual ~CPixelShaderData();                   // +0x00 vptr

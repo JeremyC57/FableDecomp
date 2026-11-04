@@ -1,5 +1,6 @@
 // CSetAndArray_0051a040::CSetAndArray_0051a040() -- default constructor of an unidentified 0x1C-byte record: an empty STLport set of 4-byte keys (header node malloc'd, red, self-linked) followed by a zeroed array and count
 // Leaf: ??0CSetAndArray_0051a040
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 //
 // Retail 0x0051A040, 57 bytes (+ int3 padding to 64), plain `ret` (this in ecx, returned in eax).  Callee: 0x00BFEA0E malloc (the 0x14-byte
 //   header node = _Rb_tree_node<4-byte value>).
@@ -38,13 +39,7 @@ public:
     }
 };
 
-template <class T> class CArray {              // retail CArray: STLport vector, three pointers
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-};
+#include "engine/CArray.h"
 
 class CSetAndArray_0051a040 {
 public:

@@ -1,4 +1,5 @@
 // C3DAnimationSequenceData::InitialiseAsConstant(const CMatrix3x4& matrix, unsigned short frameCount, float samplesPerSecond, long mode) -- build a one-matrix sequence chunk on the stack, initialise from it, then set the frame count, rate and bone type
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Grade: DIFFER(132v130) -- /GS lane gap: the lane caches the matrix reference argument in edi at entry (push edi), retail re-reads its slot right before AddMatrix; the rest (inline chunk destructor without vtable store, bitfield clear) lines up
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A4FD70, 130 bytes (`ret 10h`). Callees: C3DAnimFileSequenceChunk::
@@ -19,13 +20,7 @@ class CCharString { public:
 
 class CMatrix3x4 { public: float m_row[3][4]; };           // 48 bytes
 
-template <class T>
-class CArray { public:                                     // retail CArray: begin/end/capacity
-    T* m_pBegin;
-    T* m_pEnd;
-    T* m_pEndOfStorage;
-    ~CArray() { if (m_pBegin) free(m_pBegin); }
-};
+#include "engine/CArray.h"
 
 class CChunkedFileSuperChunk { public:
     virtual ~CChunkedFileSuperChunk();              // 0x00AA8490

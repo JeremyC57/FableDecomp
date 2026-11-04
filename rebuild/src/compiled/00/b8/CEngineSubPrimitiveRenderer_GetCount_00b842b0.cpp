@@ -1,5 +1,6 @@
 // CEngineSubPrimitiveRenderer::GetCount(ESubPrimitiveType type) const -- number of sort elements queued in the list of one sub-primitive type
 // Leaf: ?GetCount@CEngineSubPrimitiveRenderer@@QBEKW4ESubPrimitiveType@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B842B0, 25 bytes (+ int3 padding), __fastcall, `ret 4`.
 // Identity: FableWin.pdb / Ego_r.pdb `?GetCount@CEngineSubPrimitiveRenderer@@QBEKW4ESubPrimitiveType@@@Z`; the manifest
 //   label "CEnginePrimitiveRenderer_GetIndexCount" is descriptive and names the wrong class. The retail
@@ -13,13 +14,7 @@ class CEngineSubPrimitiveBase;
 
 enum ESubPrimitiveType { ESUBPRIMITIVE_TYPE_FIRST = 0 };
 
-template <class _Tp> class CArray {                     // retail: an STLport vector<_Tp> (12 bytes)
-public:
-    _Tp* _M_start;                                      // +0x00
-    _Tp* _M_finish;                                     // +0x04
-    _Tp* _M_end_of_storage;                             // +0x08
-    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
-};
+#include "engine/CArray.h"
 
 class CEngineSubPrimitiveRenderer {
 public:

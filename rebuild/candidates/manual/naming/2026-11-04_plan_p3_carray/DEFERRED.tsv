@@ -1,0 +1,682 @@
+address	stage	reason
+0042d4f7	local_std	LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00434540	compile_fail	COMPILE_FAIL error C2079: 'std::pair<_T1,_T2>::second' uses undefined class 'CDefClassBase::CSubDefInfo'
+0044bfa0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+0045647d	compile_fail	COMPILE_FAIL error C2079: 'std::pair<_T1,_T2>::second' uses undefined class 'CSoundPair'
+00463bff	local_std	LOCAL_STD _Alloc,map
+00464be9	local_std	LOCAL_STD _Alloc,map
+0046a130	local_std	LOCAL_STD _Alloc,map
+0046a178	local_std	LOCAL_STD _Alloc,map
+0046a260	local_std	LOCAL_STD _Alloc,map
+0046cdfc	local_std	LOCAL_STD _Alloc,map
+0046f020	compile_fail	COMPILE_FAIL error C2039: '_M_allocate_and_copy' : is not a member of 'std::vector<_Tp>'
+0046f43e	local_std	LOCAL_STD _Alloc,map
+0046fc51	local_std	LOCAL_STD _Alloc,map
+0047204b	compile_fail	COMPILE_FAIL error C2039: '_M_allocate_and_copy' : is not a member of 'std::vector<_Tp>'
+00472415	local_std	LOCAL_STD _Alloc,map
+0047616e	bytes_differ	length 55 != 60
+00478533	compile_fail	COMPILE_FAIL error C2039: '_M_allocate_and_copy' : is not a member of 'std::vector<_Tp>'
+00478a1e	compile_fail	COMPILE_FAIL error C2039: '_M_allocate_and_copy' : is not a member of 'std::vector<_Tp>'
+00478a6d	compile_fail	COMPILE_FAIL error C2039: '_M_allocate_and_copy' : is not a member of 'std::vector<_Tp>'
+0048f6bd	compile_fail	COMPILE_FAIL error C2039: 'm_pFirst' : is not a member of 'CArray<T>'
+004a08d0	bytes_differ	length 129 != 112
+004a2f10	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+004acab0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+004b0b90	local_std	LOCAL_STD A,_Identity,_Nonconst_traits,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,set
+004b4a10	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+004c7da0	local_std	LOCAL_STD A,_Identity,_Nonconst_traits,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,set
+004c8310	local_std	LOCAL_STD other content
+004cea60	local_std	LOCAL_STD _Alloc_traits,_Is_integer,_Nonconst_traits
+004d1d50	local_std	LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,set
+004ea26b	compile_fail	COMPILE_FAIL error C2039: 'data' : is not a member of 'CArray<T>'
+004ea2c9	compile_fail	COMPILE_FAIL error C2039: 'data' : is not a member of 'CArray<T>'
+004ec85a	local_std	LOCAL_STD _Rb_global,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,map
+004ec8c2	local_std	LOCAL_STD _Alloc,_Nonconst_traits,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st,ma
+004ec9b5	local_std	LOCAL_STD other content
+004eda6c	compile_fail	COMPILE_FAIL error C2244: 'std::vector<_Tp,_Alloc>::resize' : unable to match function definition to an existing declaration
+004f9d7b	bytes_differ	length 55 != 60
+004fa1f0	bytes_differ	length 55 != 60
+004fe550	local_std	LOCAL_STD Alloc,_Rb_global,_Rb_tree,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+004fe5b0	local_std	LOCAL_STD Alloc,_Rb_global,_Rb_tree,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+004ff080	compile_fail	COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+004ff440	bytes_differ	masked sha1 differs
+005066e0	local_std	LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00506f30	bytes_differ	length 419 != 314
+005157a0	local_std	LOCAL_STD other content
+00518c00	bytes_differ	length 147 != 142
+00518c90	bytes_differ	length 148 != 140
+005191e0	compile_fail	COMPILE_FAIL error C2036: 'NThingMap::CThingMapManager::CThingMapInfo *' : unknown size
+00519eb0	bytes_differ	length 49 != 51
+0051a0a0	local_std	LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,set
+0051a350	local_std	LOCAL_STD other content
+0051b560	compile_fail	COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+0051c110	local_std	LOCAL_STD other content
+0051c800	compile_fail	COMPILE_FAIL error C2509: 'push_back' : member function not declared in 'CArray<T>'
+0051ccd0	bytes_differ	length 61 != 50
+0051cdf0	local_std	LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+0051e800	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00520390	local_std	LOCAL_STD _Alloc_traits,_Is_integer,_Nonconst_traits,__type_traits_aux
+00523440	local_std	LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00523540	local_std	LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,map
+00523860	compile_fail	COMPILE_FAIL error C2039: 'first' : is not a member of 'CEntityScriptArray'
+00523910	compile_fail	COMPILE_FAIL error C2039: 'data' : is not a member of 'CArray<T>'
+0052b510	compile_fail	COMPILE_FAIL error C2995: 'void std::_Construct(T *,const U &)' : template function has already been defined
+0052b5e0	compile_fail	COMPILE_FAIL error C2995: 'O std::__copy(I,I,O,const std::random_access_iterator_tag &,D *)' : template function has already been defined
+0052bb40	compile_fail	COMPILE_FAIL error C2995: 'void std::_Construct(T *,const U &)' : template function has already been defined
+0052bbe0	compile_fail	COMPILE_FAIL error C2995: 'void std::_Construct(T *,const U &)' : template function has already been defined
+0052bca0	compile_fail	COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+0052bd10	compile_fail	COMPILE_FAIL error C2995: 'O std::__copy(I,I,O,const std::random_access_iterator_tag &,D *)' : template function has already been defined
+0052bd70	compile_fail	COMPILE_FAIL error C2995: 'void std::_Destroy(T *)' : template function has already been defined
+0052bff0	local_std	LOCAL_STD other content
+0052c580	compile_fail	COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+0052c630	local_std	LOCAL_STD output_iterator_tag
+0052c6a0	local_std	LOCAL_STD other content
+005d64dd	local_std	LOCAL_STD _Alloc,map
+005dedc0	compile_fail	COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+005e3170	compile_fail	COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+005e38c0	local_std	LOCAL_STD other content
+005e3920	compile_fail	COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+0062cf90	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00634890	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+006349b0	compile_fail	COMPILE_FAIL error C2976: 'std::_List_iterator' : too few template arguments
+00634a30	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00634f60	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00635080	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00635190	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+006352a0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+006353b0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+006354c0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00635e90	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+006360a0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00636270	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00636400	compile_fail	COMPILE_FAIL error C2976: 'std::_List_iterator' : too few template arguments
+006369b0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00636b00	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00636d40	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+0065a075	local_std	LOCAL_STD A,_Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_R
+006753f0	local_std	LOCAL_STD other content
+006758b0	local_std	LOCAL_STD other content
+00675980	local_std	LOCAL_STD other content
+00675b60	bytes_differ	length 117 != 83
+00680950	compile_fail	COMPILE_FAIL error C2039: 'm_begin' : is not a member of 'CArray<T>'
+0069a1a0	compile_fail	COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__false_type &,std::vector<_Tp
+006a2220	compile_fail	COMPILE_FAIL error C2039: 'InsertGrow' : is not a member of 'CArray<T>'
+006b5df0	bytes_differ	length 20 != 222
+006b6010	compile_fail	COMPILE_FAIL error C2995: 'void std::_Construct(T *,const U &)' : template function has already been defined
+006b6180	bytes_differ	length 20 != 205
+006b6610	compile_fail	COMPILE_FAIL error C2995: 'void std::_Destroy(T *)' : template function has already been defined
+006b67a0	compile_fail	COMPILE_FAIL error C2995: 'void std::_Destroy(T *)' : template function has already been defined
+006b6990	compile_fail	COMPILE_FAIL error C2373: 'std::__uninitialized_copy' : redefinition; different type modifiers
+006b6b30	compile_fail	COMPILE_FAIL error C2995: 'void std::_Construct(T *,const U &)' : template function has already been defined
+006b7380	bytes_differ	length 223 != 263
+006ba8b0	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+006bf410	local_std	LOCAL_STD other content
+006c1150	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+006c3ca0	local_std	LOCAL_STD other content
+006c9900	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'const std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+006ca850	local_std	LOCAL_STD other content
+006ca950	bytes_differ	length 201 != 145
+006d4970	stray_change	006d4750: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@QAEXPAU?$pair@VCCharString@@J@2@ABU32@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@J@2@ABU32@ABU__false_type@2@I_N@Z
+006ed480	local_std	LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,set
+006f95a0	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+006f96c0	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+006fc520	stray_change	006fc130: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@M@std@@V?$allocator@U?$pair@VCCharString@@M@std@@@2@@std@@QAEXPAU?$pair@VCCharString@@M@2@ABU32@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@M@std@@V?$allocator@U?$pair@VCCharString@@M@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@M@2@ABU32@ABU__false_type@2@I_N@Z
+006fc620	local_std	LOCAL_STD other content
+006fd0b0	compile_fail	COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+007003a0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+007020d0	compile_fail	COMPILE_FAIL error C2039: 'm_begin' : is not a member of 'CArray<T>'
+00707b10	local_std	LOCAL_STD other content
+0070c770	bytes_differ	length 130 != 131
+00717950	compile_fail	COMPILE_FAIL error C2036: 'CSubtitledMessage *' : unknown size
+0071a2f0	local_std	LOCAL_STD _Alloc_traits,_Is_integer,_Nonconst_traits
+00722270	compile_fail	COMPILE_FAIL error C2373: 'std::__destroy_aux' : redefinition; different type modifiers
+007222b0	bytes_differ	length 75 != 58
+00728bb0	local_std	LOCAL_STD other content
+00728c10	compile_fail	COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+00728c40	local_std	LOCAL_STD other content
+00728d10	local_std	LOCAL_STD other content
+00728df0	local_std	LOCAL_STD output_iterator_tag
+0072acf0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+0072b940	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'const std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+0075f980	compile_fail	COMPILE_FAIL error C2668: 'std::_Construct' : ambiguous call to overloaded function
+0076b320	local_std	LOCAL_STD other content
+0076cfe0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'const std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00772510	local_std	LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00772590	local_std	LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+007783f0	local_std	LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,set
+007865e0	compile_fail	COMPILE_FAIL error C2036: 'CTCSkeletalMorph::CSkeletalMorph *' : unknown size
+00786650	bytes_differ	length 33 != 23
+00786670	compile_fail	COMPILE_FAIL error C2244: 'std::vector<_Tp>::_M_insert_overflow' : unable to match function definition to an existing declaration
+00787500	compile_fail	COMPILE_FAIL error C2244: 'std::vector<_Tp>::_M_insert_overflow' : unable to match function definition to an existing declaration
+007a8be0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+007b9d30	local_std	LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,set
+007c0e80	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'const std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+007c89f0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+007ca350	local_std	LOCAL_STD other content
+007cd930	compile_fail	COMPILE_FAIL error C2976: 'std::_List_iterator' : too few template arguments
+007cf040	compile_fail	COMPILE_FAIL error C2976: 'std::_List_iterator' : too few template arguments
+008091a0	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+0081b510	compile_fail	COMPILE_FAIL error C2059: syntax error : 'string'
+0081d8a0	local_std	LOCAL_STD other content
+0082e780	local_std	LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,set
+00845040	compile_fail	COMPILE_FAIL error C2995: 'const T &std::min(const T &,const T &)' : template function has already been defined
+00845fe0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00847470	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00847990	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00847be0	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00848850	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00848f10	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00849d90	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00849e80	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+0084a0a0	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00854b90	compile_fail	COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__false_type &,std::vector<_Tp
+0086b810	compile_fail	COMPILE_FAIL error C2039: 'InsertGrow' : is not a member of 'CArray<T>'
+0086b900	stray_change	0086d370: ?_M_insert_overflow@?$vector@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@@std@@QAEXPAVCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@ABV345@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@V?$allocator@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@@std@@@std@@IAEXPAVCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@ABV345@ABU__false_type@2@I_N@Z
+0086bb60	local_std	LOCAL_STD other content
+0086c4d0	compile_fail	COMPILE_FAIL error C2036: 'CRandomAppearanceMorph::CSkeletalMorph *' : unknown size
+0086d6c0	local_std	LOCAL_STD other content
+0086d7d0	stray_change	0086d370: ?_M_insert_overflow@?$vector@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@V?$allocator@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@@std@@@std@@QAEXPAVCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@ABV345@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@V?$allocator@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@@std@@@std@@IAEXPAVCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@ABV345@ABU__false_type@2@I_N@Z
+0086e0b0	local_std	LOCAL_STD other content
+0086e150	local_std	LOCAL_STD other content
+0086e7c0	local_std	LOCAL_STD other content
+0086eb70	local_std	LOCAL_STD other content
+0086eca0	local_std	LOCAL_STD other content
+0086ede0	local_std	LOCAL_STD output_iterator_tag
+0086ffc0	local_std	LOCAL_STD other content
+00886160	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+008865c0	local_std	LOCAL_STD other content
+00887830	stray_change	004428f0: ?resize@?$CArray@J@@QAEXKABJ@Z -> ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z ; 00442770: ?resize@?$CArray@M@@QAEXKABM@Z -> ?resize@?$vector@MV?$allocator@M@std@@@std@@QAEXIABM@Z
+00888260	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+008883c0	compile_fail	COMPILE_FAIL error C2036: 'NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::CThemeWeight *' : unknown size
+008889c0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+008895f0	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00889ab0	local_std	LOCAL_STD other content
+00889b20	compile_fail	COMPILE_FAIL error C2995: 'const T &std::max(const T &,const T &)' : template function has already been defined
+0088a9c0	local_std	LOCAL_STD output_iterator_tag
+0088b910	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+008a4560	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008a4da0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008a5890	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008a5b50	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008a5e10	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008a60d0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008a6390	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008a6bf0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008a6eb0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008a7170	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008a7430	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008aa480	compile_fail	COMPILE_FAIL error C2011: 'std::input_iterator_tag' : 'struct' type redefinition
+008aa4d0	compile_fail	COMPILE_FAIL error C2955: 'CArray' : use of class template requires template argument list
+008ad950	local_std	LOCAL_STD other content
+008b7ba0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008b9ff0	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+008ba140	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+008ba6b0	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+008baa90	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+008bf740	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+008c1e00	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008c7200	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008cb120	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008e3eb0	local_std	LOCAL_STD other content
+008f3a50	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008f42a0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+008f4570	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00909690	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00909730	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+009097e0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00909890	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+009099b0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00909b50	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00916e30	compile_fail	COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'unsigned long' to 'std::bitset<_Nb>'
+00916e90	compile_fail	COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'unsigned long' to 'std::bitset<_Nb>'
+00919780	local_std	LOCAL_STD other content
+0091b190	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'const std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+0093b1d0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'const std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+0093b5e0	compile_fail	COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'unsigned long' to 'std::bitset<_Nb>'
+0094d930	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00956a70	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00962af0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+0096bcb0	local_std	LOCAL_STD other content
+009779a0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+0097b870	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+0097c5e0	bitset_index	COMPILE_FAIL error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+0098a540	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+0098a8e0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+0098a9a0	compile_fail	COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+0098abf0	bytes_differ	length 221 != 246
+0098db20	local_std	LOCAL_STD A,_Rb_tree_iterator,_Rb_tree_node_base,map
+00994b40	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00996b60	local_std	LOCAL_STD other content
+00996bc0	compile_fail	COMPILE_FAIL error C2039: 'reserve' : is not a member of 'CArray<T>'
+009972e0	local_std	LOCAL_STD other content
+009a76d0	local_std	LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+009ae5f0	compile_fail	COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+009b02e0	compile_fail	COMPILE_FAIL error C2036: 'CInstantiatedDefInfo *' : unknown size
+009b0470	compile_fail	COMPILE_FAIL error C2036: 'CInstantiatedDefInfo *' : unknown size
+009b4a90	local_std	LOCAL_STD other content
+009b4ae0	local_std	LOCAL_STD other content
+009b4b80	local_std	LOCAL_STD other content
+009b5db0	local_std	LOCAL_STD other content
+009b5f30	local_std	LOCAL_STD other content
+009b5fb0	local_std	LOCAL_STD other content
+009b6e00	local_std	LOCAL_STD other content
+009b6eb0	local_std	LOCAL_STD other content
+009b7320	compile_fail	COMPILE_FAIL error C2995: 'O std::__uninitialized_copy(I,I,O,const std::__false_type &)' : template function has already been defined
+009b73e0	compile_fail	COMPILE_FAIL error C2995: 'I std::__uninitialized_fill_n(I,N,const T &,const std::__false_type &)' : template function has already been defined
+009b7650	bytes_differ	length 169 != 153
+009b76f0	bytes_differ	length 156 != 139
+009b77b0	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+009b7870	bytes_differ	length 127 != 115
+009b7930	local_std	LOCAL_STD other content
+009b79b0	local_std	LOCAL_STD other content
+009b7b10	local_std	LOCAL_STD other content
+009b8070	local_std	LOCAL_STD other content
+009b8220	bytes_differ	length 292 != 272
+009b8770	bytes_differ	length 172 != 161
+009b8c00	local_std	LOCAL_STD other content
+009b8dd0	local_std	LOCAL_STD other content
+009b9170	compile_fail	COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::push_back(const _Tp &)' : template function has already been defined
+009c01c0	local_std	LOCAL_STD other content
+009c02d0	local_std	LOCAL_STD _Alloc,_Identity,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,set
+009c05c0	local_std	LOCAL_STD _Alloc,_Identity,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,set
+009c76d0	compile_fail	COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+009c82c0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+009c85a0	compile_fail	COMPILE_FAIL error C2036: 'NGameText::CDataBankTextEntry *' : unknown size
+009c8660	compile_fail	COMPILE_FAIL error C2039: 'Last' : is not a member of 'CArray<T>'
+009c87c0	compile_fail	COMPILE_FAIL error C2011: 'std::__true_type' : 'struct' type redefinition
+009c8990	local_std	LOCAL_STD A,_Alloc_traits,_Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_R
+009cb730	compile_fail	COMPILE_FAIL error C2011: 'std::__true_type' : 'struct' type redefinition
+009cc1d0	compile_fail	COMPILE_FAIL error C2039: 'IsEmpty' : is not a member of 'CArray<T>'
+009cc300	compile_fail	COMPILE_FAIL error C2039: 'GetCount' : is not a member of 'CArray<T>'
+009cc530	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+009cc8b0	bytes_differ	length 263 != 307
+009ccdf0	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+009cd140	compile_fail	COMPILE_FAIL error C2665: 'CArray<T>::__ctor' : none of the 4 overloads can convert parameter 1 from type 'unsigned long *'
+009cd620	compile_fail	COMPILE_FAIL error C2011: 'std::__true_type' : 'struct' type redefinition
+009cd740	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+009cd850	compile_fail	COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+009cda70	bytes_differ	masked sha1 differs
+009ce180	local_std	LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,multimap
+009ceae0	compile_fail	COMPILE_FAIL error C2039: 'exception' : is not a member of 'operator``global namespace'''
+009d0ef0	compile_fail	COMPILE_FAIL error C2039: 'm_pFirst' : is not a member of 'CArray<T>'
+009d0fc0	compile_fail	COMPILE_FAIL error C2039: 'm_pFirst' : is not a member of 'CArray<T>'
+009d3160	local_std	LOCAL_STD other content
+009d3750	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+009d3d90	local_std	LOCAL_STD other content
+009d3fb0	compile_fail	COMPILE_FAIL error C2995: 'std::vector<_Tp,_Alloc>::~vector(void)' : template function has already been defined
+009d5a30	local_std	LOCAL_STD other content
+009d6420	compile_fail	COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+009e2e30	stray_change	009e3580: ?resize@?$CArray@PAVCVertexBufferWin32@@@@QAEXJABQAVCVertexBufferWin32@@@Z -> ?resize@?$vector@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAEXIABQAVCVertexBufferWin32@@@Z
+009e5290	stray_change	009e76f0: ?_M_insert_overflow@?$vector@VCSymbolInfo@CSymbolMap@@@std@@QAEXPAVCSymbolInfo@CSymbolMap@@ABV34@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@VCSymbolInfo@CSymbolMap@@V?$allocator@VCSymbolInfo@CSymbolMap@@@std@@@std@@IAEXPAVCSymbolInfo@CSymbolMap@@ABV34@ABU__false_type@2@I_N@Z
+009e5c30	compile_fail	COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+009e5c60	bytes_differ	length 38 != 33
+009e7680	compile_fail	COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+009e79e0	local_std	LOCAL_STD other content
+009e7c70	compile_fail	COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+009e9330	local_std	LOCAL_STD output_iterator_tag
+009e9390	local_std	LOCAL_STD output_iterator_tag
+009e95f0	compile_fail	COMPILE_FAIL error C2039: 'SetSize' : is not a member of 'CArray<T>'
+009e9760	local_std	LOCAL_STD _BothPtrType,output_iterator_tag
+009e97b0	local_std	LOCAL_STD output_iterator_tag
+009ec890	compile_fail	COMPILE_FAIL error C2079: 'std::_List_node<_Tp>::_M_data' uses undefined class 'CStringParserCommentBoundaries'
+009feb80	bytes_differ	length 66 != 61
+009fece0	bytes_differ	length 73 != 68
+00a02ad0	compile_fail	COMPILE_FAIL error C2039: 'GetCount' : is not a member of 'CArray<T>'
+00a03af0	compile_fail	COMPILE_FAIL error C2509: 'push_back' : member function not declared in 'CArray<T>'
+00a26530	local_std	LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00a26660	compile_fail	COMPILE_FAIL error C2039: 'reserve' : is not a member of 'CArray<T>'
+00a26d40	compile_fail	COMPILE_FAIL error C2679: binary '!=' : no operator found which takes a right-hand operand of type 'std::_STLP_alloc_proxy<_Value,_Tp,_MaybeReboundAlloc>' (or ther
+00a27030	compile_fail	COMPILE_FAIL error C2036: 'C3DMeshInfo *' : unknown size
+00a27350	local_std	LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00a2b240	local_std	LOCAL_STD _Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st
+00a2d8b0	compile_fail	COMPILE_FAIL error C2509: 'push_back' : member function not declared in 'CArray<T>'
+00a2dc20	local_std	LOCAL_STD _Rb_tree,_Rb_tree_node,_Rb_tree_node_base
+00a2dc90	local_std	LOCAL_STD _Rb_global,_Rb_tree,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st
+00a2def0	local_std	LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base
+00a2e9a0	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00a2eef0	local_std	LOCAL_STD _Alloc,_Rb_global,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,set
+00a2f210	compile_fail	COMPILE_FAIL error C2036: 'C3DGeneratorObject *' : unknown size
+00a2f270	compile_fail	COMPILE_FAIL error C2036: 'C3DGeneratorObject *' : unknown size
+00a38fe0	bytes_differ	length 38 != 33
+00a39010	local_std	LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,set
+00a39900	local_std	LOCAL_STD other content
+00a39950	local_std	LOCAL_STD other content
+00a39a00	local_std	LOCAL_STD other content
+00a3add0	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00a3c0c0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00a3c1a0	compile_fail	COMPILE_FAIL error C2036: 'C3DAnimationStateAlpha *' : unknown size
+00a3d330	compile_fail	COMPILE_FAIL error C2036: 'C3DAnimationStateAlpha *const ' : unknown size
+00a42b80	compile_fail	COMPILE_FAIL error C2036: 'CLipSyncDataBankEntry *' : unknown size
+00a42df0	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00a43960	compile_fail	COMPILE_FAIL error C2039: 'Sizeof' : is not a member of 'CArray<T>'
+00a44130	bytes_differ	length 55 != 50
+00a44e60	compile_fail	COMPILE_FAIL error C2036: 'C3DSkeletalBoneMorph *' : unknown size
+00a44e80	compile_fail	COMPILE_FAIL error C2955: 'CArray' : use of class template requires template argument list
+00a45150	compile_fail	COMPILE_FAIL error C2955: 'CArray' : use of class template requires template argument list
+00a455a0	compile_fail	COMPILE_FAIL error C2036: 'C3DSkeletalBoneMorph *' : unknown size
+00a48ac0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00a49240	stray_change	00a49f20: ?erase@?$CArray@VCComplexNumber@@@@QAEPAVCComplexNumber@@PAV2@0@Z -> ?erase@?$vector@VCComplexNumber@@V?$allocator@VCComplexNumber@@@std@@@std@@QAEPAVCComplexNumber@@PAV3@0@Z ; 00a4a3d0: ?_M_fill_insert@?$CArray@VCComplexNumber@@@@QAEXPAVCComplexNumber@@KABV2@@Z -> ?_M_fill_insert@?$vector@VCComplexNumber@@V?$allocator@VCComplexNumber@@@std@@@std@@QAEXPAVCComplexNumber@@IABV3@@Z
+00a4af00	local_std	LOCAL_STD other content
+00a4b020	local_std	LOCAL_STD other content
+00a4b160	local_std	LOCAL_STD output_iterator_tag
+00a4b1d0	compile_fail	COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::resize(std::vector<_Tp,_Alloc>::size_type,const _Tp &)' : template function has already been defined
+00a4df10	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00a5ae00	local_std	LOCAL_STD other content
+00a5d620	compile_fail	COMPILE_FAIL error C2039: 'm_pFirst' : is not a member of 'CArray<T>'
+00a5d750	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00a5d7c0	stray_change	00a5e6a0: ?resize@?$CArray@PAVCShaderBase@@@@QAEXKABQAVCShaderBase@@@Z -> ?resize@?$vector@PAVCShaderBase@@V?$allocator@PAVCShaderBase@@@std@@@std@@QAEXIABQAVCShaderBase@@@Z
+00a5d8b0	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00a5e7f0	stray_change	00a5e0a0: ??0?$CArray@VCDataElement@CVertexStreamFormat@@@@QAE@ABV0@@Z -> ??0?$vector@VCDataElement@CVertexStreamFormat@@V?$allocator@VCDataElement@CVertexStreamFormat@@@std@@@std@@QAE@ABV01@@Z
+00a5e900	local_std	LOCAL_STD other content
+00a5e9c0	local_std	LOCAL_STD other content
+00a5f430	compile_fail	COMPILE_FAIL error C2244: 'std::vector<_Tp,_Alloc>::_M_insert_overflow' : unable to match function definition to an existing declaration
+00a62120	compile_fail	COMPILE_FAIL error C2244: 'std::vector<_Tp,_Alloc>::_M_insert_overflow' : unable to match function definition to an existing declaration
+00a623d0	compile_fail	COMPILE_FAIL error C2244: 'std::vector<_Tp,_Alloc>::_M_insert_overflow' : unable to match function definition to an existing declaration
+00a6a330	bytes_differ	length 42 != 45
+00a6a540	stray_change	00a6c020: ?resize@?$CArray@V?$CIVCountedPointer@VCManagedTextureData@@@@@@QAEXIABV?$CIVCountedPointer@VCManagedTextureData@@@@@Z -> ?resize@?$vector@V?$CIVCountedPointer@VCManagedTextureData@@@@V?$allocator@V?$CIVCountedPointer@VCManagedTextureData@@@@@std@@@std@@QAEXIABV?$CIVCountedPointer@VCManagedTextureData@@@@@Z
+00a6be40	local_std	LOCAL_STD other content
+00a6c900	compile_fail	COMPILE_FAIL error C2039: 'capacity' : is not a member of 'CArray<T>'
+00a6cb20	bytes_differ	length 131 != 129
+00a6d550	local_std	LOCAL_STD other content
+00a6da40	compile_fail	COMPILE_FAIL error C2036: 'C2DLineF *' : unknown size
+00a71f40	compile_fail	COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+00a725d0	local_std	LOCAL_STD other content
+00a74c60	compile_fail	COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+00a74ea0	local_std	LOCAL_STD other content
+00a74fb0	local_std	LOCAL_STD other content
+00a75010	local_std	LOCAL_STD other content
+00a750e0	local_std	LOCAL_STD other content
+00a75230	compile_fail	COMPILE_FAIL error C2036: 'C2DLineF *' : unknown size
+00a752a0	compile_fail	COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::resize(std::vector<_Tp,_Alloc>::size_type,const _Tp &)' : template function has already been defined
+00a792e0	compile_fail	COMPILE_FAIL error C2039: 'ClearAndFree' : is not a member of 'CArray<T>'
+00a812f0	local_std	LOCAL_STD other content
+00a85560	local_std	LOCAL_STD other content
+00a85700	bytes_differ	length 22 != 55
+00a85930	local_std	LOCAL_STD other content
+00a85b90	compile_fail	COMPILE_FAIL error C2373: 'std::__uninitialized_copy' : redefinition; different type modifiers
+00a85cc0	compile_fail	COMPILE_FAIL error C2373: 'std::__uninitialized_copy' : redefinition; different type modifiers
+00a85e40	compile_fail	COMPILE_FAIL error C2079: 'std::_List_node<_Tp>::_M_data' uses undefined class 'C2DLineF'
+00a85ec0	local_std	LOCAL_STD output_iterator_tag
+00a86b30	stray_change	00a87090: ??0?$CArray@G@@QAE@ABV0@@Z -> ??0?$vector@GV?$allocator@G@std@@@std@@QAE@ABV01@@Z
+00a8b6c0	local_std	LOCAL_STD other content
+00a90450	compile_fail	COMPILE_FAIL error C2039: 'Capacity' : is not a member of 'CArray<T>'
+00a90790	bytes_differ	length 202 != 197
+00a90860	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00a90fc0	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00a91390	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00a92740	compile_fail	COMPILE_FAIL error C2039: 'first' : is not a member of 'CArray<T>'
+00a972a0	compile_fail	COMPILE_FAIL error C2039: 'Capacity' : is not a member of 'CArray<T>'
+00a98100	compile_fail	COMPILE_FAIL error C2036: 'C3DVertex2 *' : unknown size
+00a98470	bytes_differ	length 91 != 126
+00a99840	compile_fail	COMPILE_FAIL error C2039: 'exception' : is not a member of 'operator``global namespace'''
+00a9ba70	compile_fail	COMPILE_FAIL error C2039: 'exception' : is not a member of 'operator``global namespace'''
+00aa4650	compile_fail	COMPILE_FAIL error C2039: 'm_pEnd' : is not a member of 'CArray<T>'
+00aa48d0	compile_fail	COMPILE_FAIL error C2039: 'm_pEnd' : is not a member of 'CArray<T>'
+00aa5720	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CVector<T>'
+00aa57f0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CRawArray<T>'
+00aa58c0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CRawArray<T>'
+00aa5930	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArrayWithList<T>'
+00aa65a0	local_std	LOCAL_STD _Is_POD
+00aa66b0	compile_fail	COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00aa6960	compile_fail	COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00aa6a60	compile_fail	COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00aa7480	compile_fail	COMPILE_FAIL error C2036: 'C3DIndexedBoneWeight *' : unknown size
+00aa8400	local_std	LOCAL_STD output_iterator_tag
+00aaa9a0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00aad150	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00aad5d0	compile_fail	COMPILE_FAIL error C2244: 'CArray<T>::__ctor' : unable to match function definition to an existing declaration
+00aaf5b0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00aaf650	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00aaf730	bytes_differ	length 81 != 52
+00ab0020	bytes_differ	length 81 != 31
+00ab00c0	bytes_differ	length 81 != 70
+00ab06b0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00ab0790	stray_change	00467686: ?resize@?$CArray@_N@@QAEXKAB_N@Z -> ?resize@?$vector@_NV?$allocator@_N@std@@@std@@QAEXIAB_N@Z
+00ab1f30	local_std	LOCAL_STD other content
+00ab3810	local_std	LOCAL_STD other content
+00ab3b40	stray_change	00a5e0a0: ??0?$CArray@VCDataElement@CVertexStreamFormat@@@@QAE@ABV0@@Z -> ??0?$vector@VCDataElement@CVertexStreamFormat@@V?$allocator@VCDataElement@CVertexStreamFormat@@@std@@@std@@QAE@ABV01@@Z
+00ab4450	stray_change	00a5e0a0: ??0?$CArray@VCDataElement@CVertexStreamFormat@@@@QAE@ABV0@@Z -> ??0?$vector@VCDataElement@CVertexStreamFormat@@V?$allocator@VCDataElement@CVertexStreamFormat@@@std@@@std@@QAE@ABV01@@Z
+00ab4490	local_std	LOCAL_STD other content
+00ab4540	stray_change	00a5e0a0: ??0?$CArray@VCDataElement@CVertexStreamFormat@@@@QAE@ABV0@@Z -> ??0?$vector@VCDataElement@CVertexStreamFormat@@V?$allocator@VCDataElement@CVertexStreamFormat@@@std@@@std@@QAE@ABV01@@Z
+00ab4640	local_std	LOCAL_STD other content
+00abae50	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abaee0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abbdf0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abbe90	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abbf30	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abbfc0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abc040	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abc440	compile_fail	COMPILE_FAIL error C2039: 'm_first' : is not a member of 'CArray<T>'
+00abc780	compile_fail	COMPILE_FAIL error C2036: 'C3DVertex2 *' : unknown size
+00abc800	compile_fail	COMPILE_FAIL error C2036: 'C3DVertex2 *' : unknown size
+00abc860	compile_fail	COMPILE_FAIL error C2036: 'C3DTriangle2 *' : unknown size
+00abc8e0	compile_fail	COMPILE_FAIL error C2036: 'C3DTriangle2 *' : unknown size
+00abc980	compile_fail	COMPILE_FAIL error C2244: 'std::vector<_Tp,_Alloc>::_M_insert_overflow' : unable to match function definition to an existing declaration
+00abcaf0	compile_fail	COMPILE_FAIL error C2244: 'std::vector<_Tp,_Alloc>::_M_insert_overflow' : unable to match function definition to an existing declaration
+00abcc20	compile_fail	COMPILE_FAIL error C2084: function 'void *operator new(unsigned int,void *)' already has a body
+00abcf10	compile_fail	COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00abcf40	compile_fail	COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00abd080	bytes_differ	length 81 != 66
+00abd0d0	stray_change	004428f0: ?resize@?$CArray@J@@QAEXKABJ@Z -> ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z
+00abd150	compile_fail	COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00abd280	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00ac39c0	compile_fail	COMPILE_FAIL error C2036: 'C3DTriangle2 *' : unknown size
+00ac3e00	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00ac4150	stray_change	00abeb40: ?InsertGrow@?$CArray@VC3DVertexBlend2@@@@QAEXPAVC3DVertexBlend2@@ABV2@ABUSScalarTag@@K_N@Z -> ?_M_insert_overflow@?$vector@VC3DVertexBlend2@@V?$allocator@VC3DVertexBlend2@@@std@@@std@@IAEXPAVC3DVertexBlend2@@ABV3@ABU__false_type@2@I_N@Z
+00ac5080	stray_change	00464931: ?resize@?$CArray@K@@QAEXKABK@Z -> ?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z
+00ac6600	compile_fail	COMPILE_FAIL error C2039: 'm_pEnd' : is not a member of 'CArray<T>'
+00ac6750	compile_fail	COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00ac7a90	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00ac8170	local_std	LOCAL_STD _Nonconst_traits
+00ac8840	local_std	LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_
+00ac8a60	local_std	LOCAL_STD A,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_nod
+00ac96e0	local_std	LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base
+00ac9d50	local_std	LOCAL_STD other content
+00aca0c0	local_std	LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_
+00acd900	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00ad8720	compile_fail	COMPILE_FAIL error C2509: 'push_back' : member function not declared in 'CArray<T>'
+00ad8dd0	local_std	LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00ad8ed0	local_std	LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00ad94f0	local_std	LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_
+00ad9720	local_std	LOCAL_STD _Alloc,map
+00adca30	local_std	LOCAL_STD map
+00adcfd0	local_std	LOCAL_STD _Alloc,map
+00ae1030	compile_fail	COMPILE_FAIL error C2039: 'Finish' : is not a member of 'CArray<T>'
+00ae1260	compile_fail	COMPILE_FAIL error C2182: 'value' : illegal use of type 'void'
+00ae1600	compile_fail	COMPILE_FAIL error C2182: 'value' : illegal use of type 'void'
+00ae1730	compile_fail	COMPILE_FAIL error C2039: 'GetByteSize' : is not a member of 'CArray<T>'
+00ae18c0	compile_fail	COMPILE_FAIL error C2039: 'GetByteSize' : is not a member of 'CArray<T>'
+00ae2230	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00ae3550	compile_fail	COMPILE_FAIL error C2036: 'C3DTriangle2 *' : unknown size
+00ae37d0	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00ae3a30	local_std	LOCAL_STD map
+00ae7530	compile_fail	COMPILE_FAIL error C2036: 'C3DVertexBlend2 *const ' : unknown size
+00ae7660	bytes_differ	length 57 != 61
+00ae76a0	local_std	LOCAL_STD other content
+00ae79f0	compile_fail	COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+00ae7a20	local_std	LOCAL_STD other content
+00ae7ec0	bytes_differ	length 45 != 44
+00ae7f30	local_std	LOCAL_STD other content
+00ae7fe0	local_std	LOCAL_STD other content
+00ae80f0	local_std	LOCAL_STD other content
+00ae81f0	local_std	LOCAL_STD other content
+00ae82c0	local_std	LOCAL_STD other content
+00ae83d0	local_std	LOCAL_STD other content
+00ae8490	bytes_differ	length 95 != 45
+00ae8540	stray_change	00ae82c0: ?insert@?$vector@VC3DGroup2@@V?$allocator@VC3DGroup2@@@std@@@std@@QAEXPAVC3DGroup2@@IABV3@@Z -> ?_M_fill_insert@?$vector@VC3DGroup2@@V?$allocator@VC3DGroup2@@@std@@@std@@QAEXPAVC3DGroup2@@IABV3@@Z
+00aebaf0	compile_fail	COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+00af15b0	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00af1600	compile_fail	COMPILE_FAIL error C2036: 'NParticleEngine::CParticleEmitterInfo *' : unknown size
+00af1670	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00af2160	compile_fail	COMPILE_FAIL error C2036: 'NParticleEngine::CParticleEmitterInfo *' : unknown size
+00af5380	compile_fail	COMPILE_FAIL error C2036: 'CEnginePrimitiveHandle *' : unknown size
+00af7910	local_std	LOCAL_STD other content
+00afe4b0	compile_fail	COMPILE_FAIL error C2995: 'I std::__uninitialized_fill_n(I,N,const T &,const std::__false_type &)' : template function has already been defined
+00afe5c0	compile_fail	COMPILE_FAIL error C2995: 'O std::__uninitialized_copy(I,I,O,const std::__false_type &)' : template function has already been defined
+00afe660	compile_fail	COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+00afe6f0	local_std	LOCAL_STD other content
+00afe7c0	local_std	LOCAL_STD other content
+00afe980	compile_fail	COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::resize(std::vector<_Tp,_Alloc>::size_type,const _Tp &)' : template function has already been defined
+00b07570	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b0a160	local_std	LOCAL_STD other content
+00b0f210	stray_change	00b0f9f0: ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@QAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@IAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z
+00b0fb40	stray_change	00b0f9f0: ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@QAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@IAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z
+00b158a0	stray_change	00b0f9f0: ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@QAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@IAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z
+00b17f70	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00b1b380	stray_change	00b0f9f0: ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@QAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@IAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z
+00b20b10	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b20fd0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b21090	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b21160	bytes_differ	length 98 != 79
+00b21450	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b214c0	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b215a0	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b21630	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b217d0	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b21850	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b218b0	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b21940	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b219a0	compile_fail	COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b21a00	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b21c90	stray_change	00464931: ?resize@?$CArray@K@@QAEXKABK@Z -> ?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z
+00b21dd0	bytes_differ	length 171 != 181
+00b21e90	bytes_differ	length 573 != 619
+00b22100	bytes_differ	masked sha1 differs
+00b22310	bytes_differ	length 563 != 539
+00b22530	bytes_differ	length 354 != 308
+00b22b40	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b25d50	bytes_differ	length 44 != 46
+00b25d80	bytes_differ	masked sha1 differs
+00b262c0	local_std	LOCAL_STD other content
+00b2ac80	local_std	LOCAL_STD other content
+00b33ae0	compile_fail	COMPILE_FAIL error C2084: function 'void operator delete(void *,void *)' already has a body
+00b3a110	compile_fail	COMPILE_FAIL error C2039: 'InsertGrow' : is not a member of 'CArray<T>'
+00b3c4b0	stray_change	00464931: ?resize@?$CArray@K@@QAEXKABK@Z -> ?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z
+00b40000	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b40070	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b423f0	compile_fail	COMPILE_FAIL error C2036: 'C2DBoxI *' : unknown size
+00b42b10	bytes_differ	length 334 != 342
+00b42c70	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b42d10	stray_change	00b44170: ?resize@?$CArray@PAVCEngineMap@@@@QAEXKABQAVCEngineMap@@@Z -> ?resize@?$vector@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@QAEXIABQAVCEngineMap@@@Z
+00b42e70	local_std	LOCAL_STD other content
+00b42ed0	stray_change	00b44170: ?resize@?$CArray@PAVCEngineMap@@@@QAEXKABQAVCEngineMap@@@Z -> ?resize@?$vector@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@QAEXIABQAVCEngineMap@@@Z
+00b47b50	local_std	LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,set
+00b49fe0	bytes_differ	length 91 != 121
+00b4a060	bytes_differ	length 91 != 121
+00b4abb0	compile_fail	COMPILE_FAIL error C2084: function 'void operator delete(void *,void *)' already has a body
+00b54100	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b54210	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b54310	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b5e700	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b61690	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b61cd0	compile_fail	COMPILE_FAIL error C2039: 'Data' : is not a member of 'CArray<T>'
+00b63010	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b63260	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b63530	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b6e010	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+00b6e260	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+00b6e3e0	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+00b75ca0	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+00b76bc0	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+00b77e20	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+00b7c510	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+00b7ec40	compile_fail	COMPILE_FAIL error C2039: 'GetCount' : is not a member of 'CArray<T>'
+00b7ec60	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b7ecf0	compile_fail	COMPILE_FAIL error C2039: 'GetCount' : is not a member of 'CArray<T>'
+00b7ed10	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b7eec0	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+00b7f0f0	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+00b7f3b0	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+00b7f600	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b7fa20	compile_fail	COMPILE_FAIL error C2039: 'First' : is not a member of 'CArray<T>'
+00b7fce0	stray_change	00b7fd00: ?resize@?$CArray@VCTVertexWaterBackground@@@@QAEXIABVCTVertexWaterBackground@@@Z -> ?resize@?$vector@VCTVertexWaterBackground@@V?$allocator@VCTVertexWaterBackground@@@std@@@std@@QAEXIABVCTVertexWaterBackground@@@Z
+00b80100	stray_change	00b80120: ?resize@?$CArray@VCTVertexSeaBackground@@@@QAEXIABVCTVertexSeaBackground@@@Z -> ?resize@?$vector@VCTVertexSeaBackground@@V?$allocator@VCTVertexSeaBackground@@@std@@@std@@QAEXIABVCTVertexSeaBackground@@@Z
+00b81450	bytes_differ	length 119 != 85
+00b83d30	local_std	LOCAL_STD other content
+00b84120	local_std	LOCAL_STD other content
+00b84990	local_std	LOCAL_STD other content
+00b88bc0	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b8d420	compile_fail	COMPILE_FAIL error C2039: 'PeekAsCArray' : is not a member of 'CArray<T>'
+00b8da80	bytes_differ	length 319 != 344
+00b91d20	compile_fail	COMPILE_FAIL error C2039: 'm_pData' : is not a member of 'CArray<T>'
+00b91dc0	compile_fail	COMPILE_FAIL error C2039: 'm_pData' : is not a member of 'CArray<T>'
+00b91f00	compile_fail	COMPILE_FAIL error C2039: 'm_pData' : is not a member of 'CArray<T>'
+00b92250	compile_fail	COMPILE_FAIL error C2039: 'm_pData' : is not a member of 'CArray<T>'
+00b92c20	compile_fail	COMPILE_FAIL error C2039: 'Data' : is not a member of 'CArray<T>'
+00b937a0	compile_fail	COMPILE_FAIL error C2039: 'm_pData' : is not a member of 'CArray<T>'
+00b94180	local_std	LOCAL_STD _Alloc,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tre
+00ba6dc0	local_std	LOCAL_STD A,set
+00badb40	local_std	LOCAL_STD map
+00bb8090	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bb8690	compile_fail	COMPILE_FAIL error C2036: 'CEngineInternalPrimitiveParticleGroup::CPrimitiveIterator *' : unknown size
+00bbd600	local_std	LOCAL_STD _Nonconst_traits
+00bbd630	local_std	LOCAL_STD _Nonconst_traits
+00bc1420	compile_fail	COMPILE_FAIL error C2036: 'CEngineInternalPrimitiveParticleGroup::CPrimitiveIterator *' : unknown size
+00bc4cd0	compile_fail	COMPILE_FAIL error C2036: 'CEngineInternalPrimitiveParticleGroup::CPrimitiveIterator *' : unknown size
+00bc56a0	local_std	LOCAL_STD _Alloc,map
+00bc56d0	local_std	LOCAL_STD _Alloc,map
+00bc5700	local_std	LOCAL_STD _Alloc,map
+00bc5730	local_std	LOCAL_STD _Alloc,map
+00bc5760	local_std	LOCAL_STD _Alloc,map
+00bc5790	local_std	LOCAL_STD _Alloc,map
+00bcdb10	local_std	LOCAL_STD other content
+00bcdb70	local_std	LOCAL_STD other content
+00bcdca0	local_std	LOCAL_STD other content
+00bcde70	compile_fail	COMPILE_FAIL error C2036: 'C3DVector *' : unknown size
+00bcdee0	compile_fail	COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::resize(std::vector<_Tp,_Alloc>::size_type,const _Tp &)' : template function has already been defined
+00bd2920	local_std	LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00bd2bc0	local_std	LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00bd8a60	local_std	LOCAL_STD _Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1s
+00bd8b30	local_std	LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base
+00bd8c00	local_std	LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base
+00bd8dc0	local_std	LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base
+00bd9110	local_std	LOCAL_STD _Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,map
+00bdbb70	local_std	LOCAL_STD other content
+00be25f0	compile_fail	COMPILE_FAIL error C2036: 'CEnginePrimitiveHandle *' : unknown size
+00be3660	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00be4f90	compile_fail	COMPILE_FAIL error C2509: 'push_back' : member function not declared in 'CArray<T>'
+00be5950	compile_fail	COMPILE_FAIL error C2509: 'push_back' : member function not declared in 'CArray<T>'
+00be8b00	compile_fail	COMPILE_FAIL error C2509: 'size' : member function not declared in 'CArray<T>'
+00beaca0	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bec8d0	local_std	LOCAL_STD _Identity,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,set
+00bfc880	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfca20	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfcbc0	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfcd60	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfcf00	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfcf90	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfd020	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfd0b0	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfd670	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00cb8930	bytes_differ	length 38 != 33
+00d83300	local_std	LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00e629a0	local_std	LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00e64d10	local_std	LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00eadb60	compile_fail	COMPILE_FAIL error C2084: function 'void *operator new(PlacementSize,void *)' already has a body
+00eae550	compile_fail	COMPILE_FAIL error C2084: function 'void *operator new(PlacementSize,void *)' already has a body
+00eae620	compile_fail	COMPILE_FAIL error C2084: function 'void *operator new(PlacementSize,void *)' already has a body
+00eae670	compile_fail	COMPILE_FAIL error C2084: function 'void *operator new(PlacementSize,void *)' already has a body
+00eae700	compile_fail	COMPILE_FAIL error C2084: function 'void *operator new(PlacementSize,void *)' already has a body
+00eae790	compile_fail	COMPILE_FAIL error C2084: function 'void *operator new(PlacementSize,void *)' already has a body
+00edec50	local_std	LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00f29fa0	compile_fail	COMPILE_FAIL error C2079: 'std::pair<_T1,_T2>::second' uses undefined class 'CDefClassBase::CSubDefInfo'
+00f372b0	compile_fail	COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+00f3a270	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00f3a2e0	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00f3a5d0	stray_change	004649a3: ?InsertN@?$CArray@K@@QAEXPAKKABK@Z -> ?_M_fill_insert@?$vector@KV?$allocator@K@std@@@std@@QAEXPAKIABK@Z
+00f3a710	compile_fail	COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00f3ae50	local_std	LOCAL_STD other content
+00f3afc0	compile_fail	COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00f3b640	local_std	LOCAL_STD other content
+00f3b760	compile_fail	COMPILE_FAIL error C2373: 'std::__uninitialized_copy' : redefinition; different type modifiers
+00f3b7d0	compile_fail	COMPILE_FAIL error C2373: 'std::__uninitialized_fill_n' : redefinition; different type modifiers
+00f3b850	compile_fail	COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+00f3b8a0	compile_fail	COMPILE_FAIL error C2995: 'O std::__copy(I,I,O,const std::random_access_iterator_tag &,D *)' : template function has already been defined
+00f3b8f0	bytes_differ	length 76 != 66
+00f3b970	compile_fail	COMPILE_FAIL error C2039: 'InsertGrow' : is not a member of 'CArray<T>'
+00f3d830	compile_fail	COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00f3f5a0	compile_fail	COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+00f3f7c0	local_std	LOCAL_STD other content
+00f3f890	local_std	LOCAL_STD other content
+00f3f960	local_std	LOCAL_STD other content
+0122ad80	bytes_differ	length 54 != 43

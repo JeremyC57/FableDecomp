@@ -1,5 +1,6 @@
 // CObjectAugmentationParticleSet::~CObjectAugmentationParticleSet() -- release the EndPoint then the StartPoint arrays
 // Leaf: ??1CObjectAugmentationParticleSet@@QAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004E25F1, 33 bytes, plain `ret` (__thiscall).
 // Identity: Ego_r.pdb ??1CObjectAugmentationParticleSet@@QAE@XZ (non-virtual) and layout {float PeriodSecs,
 // long ParticleEffect, ParticleEffectToBlendTo, AttackParticleEffect, AttackParticleEffectToBlendTo,
@@ -18,22 +19,8 @@ public:
     long TablePos;                                       // +0x00
 };
 
-namespace std {
-template <class _Tp> class allocator {
-public:
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
-public:
-    _Tp* _M_start;                                       // +0x00
-    _Tp* _M_finish;                                      // +0x04
-    _Tp* _M_end_of_storage;                              // +0x08
-    ~vector() { _Alloc().deallocate(_M_start, _M_end_of_storage - _M_start); }
-};
-}
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T> {
-};
 
 class CObjectAugmentationParticleSet {
 public:

@@ -1,5 +1,6 @@
 // CStreamingFontDataBank::NotifyEntryRemoved(unsigned long index) -- Delete the entry and clear its slot.
 // Leaf: ?NotifyEntryRemoved@CStreamingFontDataBank@@MAEXK@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: own vtable129d5cc slot14 and original PDB protected virtual method. Delete through original entry base; reread array after virtual deletion.
 #define CBankFile CBankFile_HeaderLayout
 #include "engine/CBankFile.h"
@@ -60,8 +61,7 @@ class CBankFile:public CBaseClassNonCopyable{public:
     unsigned char               ChecksumCache[0x18];         // +0xf8 CChecksumCacheFile
 };class CBankFileAsync:public CBankFile{public:unsigned char UnusedAsyncPayload[84];};
 #pragma pack(pop)
-namespace std{template<class T>class allocator{};template<class T,class A>struct _STLP_alloc_proxy:A{T _M_data;};template<class T,class A>class _Vector_base{public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,A> _M_end_of_storage;};template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:T& operator[](unsigned long n){return this->_M_start[n];}};}
-template<class T>class CArray:public std::vector<T>{};
+#include "engine/CArray.h"
 // Layout: active owner/entry headers are flattened; restore original RTTI CBankFile/CBankFileAsync bases and CBaseClassNonCopyable entry. Shared bank272/async356 retained; Fonts at376. StateBlock opaque and untouched, real CArray pointers. Entry fields are never accessed, only its original virtual destructor.
 class CStreamingFontDataBankEntry:public CBaseClassNonCopyable{public:virtual ~CStreamingFontDataBankEntry(){}};
 class CStreamingFontDataBank:public CBankFileAsync{public:unsigned char StateBlock[20];CArray<CStreamingFontDataBankEntry*> Fonts;protected:virtual void NotifyEntryRemoved(unsigned long);};

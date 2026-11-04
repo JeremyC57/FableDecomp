@@ -1,5 +1,6 @@
 // CEngineSceneGrid::GetTotalCellCount(unsigned long x, unsigned long y) -- count the scene-grid cells that exist under one cell: 0 when the cell was never created, else 1 plus the totals of its four children on the next level down
 // Leaf: ?GetTotalCellCount@CEngineSceneGrid@@AAEKKK@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B91E70, 129 bytes, thiscall `ret 8`.
 // Identity (proven): Ego_r.pdb `?GetTotalCellCount@CEngineSceneGrid@@AAEKKK@Z` (private, unsigned long (unsigned long,
 //   unsigned long)); in Ego_r donor order it follows GetCellTotalPrimitiveCount / GetCellRenderMask and precedes
@@ -11,18 +12,8 @@
 //   counted loops run dy outer / dx inner with unsigned counters (`jb`).
 class CEngineSceneGridCell;
 
-namespace std {
-template <class _Tp> class allocator { };
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
-public:
-    _Tp* _M_start;                                         // +0x0
-    _Tp* _M_finish;                                        // +0x4
-    _Tp* _M_end_of_storage;                                // +0x8
-    _Tp& operator[](unsigned int __n) { return *(_M_start + __n); }
-};
-}
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T> { };
 
 class CEngineSceneGrid {
 public:

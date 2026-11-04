@@ -1,5 +1,6 @@
 // NCreatureMode::CModeDragonFlyingBase::~CModeDragonFlyingBase() -- free the flight spline's control points, then the CModeBase part: its vtable, the weapon anim filter's group string and the filter's base vtable
 // Leaf: ??1CModeDragonFlyingBase
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00742FD0, 42 bytes (+ int3 padding).
 // Caller: 0x00743960, the scalar deleting destructor of the derived CModeDragonStrafe (it destroys
 // the strafe's own CAnimFilterOfGroup at +0x38 first, then calls this base destructor).
@@ -27,17 +28,7 @@ class C3DVector { public:
     float X, Y, Z;
 };
 
-template<class T> class CArray { public:
-    T* Data;                                    // +0x0
-    long Size;                                  // +0x4
-    long Capacity;                              // +0x8
-    long GrowBy;                                // +0xc
-    ~CArray()
-    {
-        if (Data)
-            free(Data);
-    }
-};
+#include "engine/CArray.h"
 
 class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;            // +0x00

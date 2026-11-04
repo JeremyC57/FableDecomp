@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // CStreamingFontDataBank::PrepareDataForInclusion (0x00a5f0f0)
 //
 // Retail body: push esi; load the by-value CCountedPointer<CBankStateBlock>
@@ -13,7 +14,7 @@
 
 class CCharString {};
 
-template <class T> class CArray { public: T* p; long n; long cap; };
+#include "engine/CArray.h"
 
 // CCountedPointer's control block. Destruction decrements the shared count
 // and, at zero, invokes the virtual release then frees the block.

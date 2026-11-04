@@ -1,6 +1,7 @@
 // CShaderDataBank::CloseShaders() -- delete every shader entry in the Shaders array, then empty the array
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A62050, 128 bytes (padding included).
 // Leaf: CloseShaders
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Label correction: the catalog row is the propagated "CMeshDataBank::FreeDeviceSpecificResources";
 // the landed CShaderDataBank deleting destructor 0x00A62860 calls this body on its Shaders vector
 // (+0x110), and the PDB's private `void CShaderDataBank::CloseShaders()` is the matching member.
@@ -16,29 +17,7 @@ public:
     virtual ~CShaderBankEntry();                    // slot 0 (deleting destructor)
 };
 
-template <class T> class CArray { public:                  // retail CArray (STLport vector): first / last / end
-    T* m_first;
-    T* m_last;
-    T* m_end;
-    static T* CopyTrivial(const T* first, const T* last, T* result)
-    {
-        if (first == last)
-            return result;
-        unsigned int n = (const char*)last - (const char*)first;
-        return (T*)((char*)memmove(result, first, n) + n);
-    }
-    unsigned long size() const { return m_last - m_first; }
-    T* begin() { return m_first; }
-    T* end() { return m_last; }
-    T& operator[](unsigned long n) { return *(begin() + n); }
-    T* erase(T* first, T* last)
-    {
-        T* i = CopyTrivial(last, m_last, first);
-        m_last = i;
-        return first;
-    }
-    void clear() { erase(begin(), end()); }
-};
+#include "engine/CArray.h"
 
 class CShaderDataBank {
 public:

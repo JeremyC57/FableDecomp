@@ -1,4 +1,5 @@
 // CPreallocTexturePool::GetTexturesInUse(unsigned long) const -- count the pool's allocated textures that were used within the given number of frames
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A69ED0, length 61 bytes.
 // Callees: CResource::GetUnusedFrames @ 0x009FBF70 (landed). Ego_r.pdb ?GetTexturesInUse@CPreallocTexturePool@@QBEKK@Z.
 // Layout (Ego_r.pdb, retail CArray 12 bytes): Count +0x3c, Textures (CArray<CIVCountedPointer<
@@ -16,12 +17,7 @@ template <class T> class CIVCountedPointer { public:               // intrusive 
     T* operator->() const { return Data; }
 };
 
-template <class T> class CArray { public:                          // retail CArray: three pointers (12 bytes)
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    const T& operator[](unsigned long i) const { return m_pFirst[i]; }
-};
+#include "engine/CArray.h"
 
 struct CPreallocTexturePool {
     void*                                        __vftable; // +0x00

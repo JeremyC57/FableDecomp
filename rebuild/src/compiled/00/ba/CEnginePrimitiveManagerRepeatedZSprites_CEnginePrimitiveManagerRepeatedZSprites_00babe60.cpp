@@ -1,5 +1,6 @@
 // CEnginePrimitiveManagerRepeatedZSprites::~CEnginePrimitiveManagerRepeatedZSprites() -- free the dynamic texture page, then destroy PrimitiveSortList, IndexBuffer, VertexBuffer and the three shaders in reverse order and ~CEnginePrimitiveManagerOcclusionBase
 // Leaf: ??1CEnginePrimitiveManagerRepeatedZSprites@@UAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BABE60, 200 bytes, tail jump to ~CEnginePrimitiveManagerOcclusionBase 0x00B38590; sole
 //   caller the scalar deleting dtor 0x00BAC970 (slot 0 of the class vtable 0x012A5314).
 // Identity (proven): rtti-vtables.tsv / the RTTI COL at 0x012A5314-4 (.?AVCEnginePrimitiveManagerRepeatedZSprites@@ :
@@ -19,46 +20,7 @@
 //   0x00AC1EE0, CVertexBufferWin32::Uninitialise 0x00A63200, ~CBaseClassNonCopyable 0x0099A300,
 //   ~CEnginePrimitiveManagerOcclusionBase 0x00B38590.
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
-namespace std {
-// STLport 4.6 stl/_alloc.h, stl/_construct.h, stl/_vector.h (the members this row needs; the malloc-backed allocator of
-// this build: deallocate = free 0x00BFEA14)
-struct __false_type { __false_type() { } };
-template <class _Tp> class allocator {
-public:
-    typedef _Tp value_type;
-    allocator() { }
-    allocator(const allocator<_Tp>&) { }
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator>
-inline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
-{
-    for ( ; __first != __last; ++__first)
-        _Destroy(&*__first);
-}
-template <class _Tp> inline void _Destroy(_Tp* __first, _Tp* __last) { __destroy_aux(__first, __last, __false_type()); }
-template <class _Tp, class _Alloc>
-class _Vector_base {
-public:
-    typedef _Alloc allocator_type;
-    ~_Vector_base() { if (_M_start != 0) _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
-protected:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> >
-class vector : protected _Vector_base<_Tp, _Alloc> {
-public:
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-}
+#include "engine/CArray.h"
 // Shader models as the landed 0x00BABB50 / 0x00BAD040 (RTTI: CVertexShader 0x0129B3D0 / CPixelShader 0x0129A054 : CShaderBase
 // 0x0129A030, 8 bytes each; Ego_r has no ??1 for any of the three, so their user dtors are inline). The shader data objects are
 // intrusively counted (ReferenceCount +0x10 / +0x08) with a virtual deleting dtor.
@@ -100,7 +62,6 @@ struct CEngineGlobal_01436e98 {
     CGPUScratchBufferTextureManager ScratchTextures;   // +0x3190
 };
 extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
-template <class T> class CArray : public std::vector<T> { };
 class CMovableResource {
 public:
     virtual ~CMovableResource() { }                // inline in Ego_r (only FableWin lists ??1CMovableResource)

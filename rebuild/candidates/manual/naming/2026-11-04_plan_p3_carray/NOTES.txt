@@ -1,0 +1,22 @@
+Plan phase 3, wave "w3" (2026-11-04): CArray local copies moved onto engine/CArray.h.
+
+HEADER: engine/CArray.h (it includes stlport/fable_containers.h as it is at HEAD) is used as it is: no change, no sub-macro, no
+  includer regrade.
+ROWS: 608 PASS under vland --recheck-landed (RELOCATION_MATCH 521, MATCH 87). Parity equals the landed source's on every row.
+  No symbol change, 0 introduced warnings.
+  - 360 of them are the empty-vector variants (`class CArray : public std::vector<T> {}` in its 3 spellings).
+  - The sources: the 1,289 local CArray rows at HEAD outside w1 went through scripts/hdrmig3.py (cfg.json). The local CArray and
+    its namespace std block are removed and the header is included in their place.
+  - New in hdrmig3 for this wave:
+    - `std_provided_functions`: a std block may also hold namespace-scope STLport helpers the header model defines
+      (_Destroy, _Construct, __copy_trivial, __uninitialized_copy / fill_n, fill(_n), max / min, sort ...); they go with it.
+    - A local one-line placement `operator new(unsigned int, void*)` is removed: <new> comes with the header.
+    - Without these, 393 rows passed; with them, 608.
+  - 86 of the rows also pass the C3DVector migration; they are in this wave only (w2 excludes them).
+  - gate.py: 608 of 608 PASS.
+QUEUE LINES / BINDINGS / CALLERS: none.
+DEFERRED.tsv (681):
+  - compile_fail 329: Size / GetData / First / Resize / DeallocateUnusedMemory on pointer-triple local models; protected
+    _M_start; a local ptrdiff_t;
+  - local_std 203: local map / set / _Rb_tree models (they need a std::map / set header);
+  - bitset_index 59; bytes_differ 59; stray_change 31.

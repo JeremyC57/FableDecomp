@@ -1,5 +1,6 @@
 // CGameScriptThing::MsgTalkedToAnyone() const -- true when the live thing's entity-event list holds an event of type 0x21 stamped inside the running quest thread's (last, current] script-frame window
 // Leaf: ?MsgTalkedToAnyone@CGameScriptThing@@UBE_NXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D3A10, 219 bytes, thiscall, plain `ret`.
 // Identity (proven): CGameScriptThing vtable 0x012852CC slot 54; the manifest label is its FableWin.pdb mangled name.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (x3), CVectorMap<ETCInterfaceType, CTCBase*, ...>::LowerBound(const
@@ -11,59 +12,7 @@
 //   MsgPerformedAnyAggressiveSpecialAbility 0x008D27E0 without its Aggressive flag, on Ego_r.pdb types. Header debt:
 //   engine/CGameScriptThing.h / CTCEntityEvents.h / CQuestManager.h flatten the vptr or hold PDB-width containers.
 #include <stddef.h>
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class vector {           // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;                                            // +0x00
-    _Tp* _M_finish;                                           // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    const_iterator end() const { return this->_M_finish; }
-};
-template <size_t _Nw> struct _Base_bitset {
-    typedef unsigned long _WordT;
-    _WordT _M_w[_Nw];
-    static size_t _S_whichword(size_t __pos) { return __pos / 32; }
-    static _WordT _S_maskbit(size_t __pos) { return 1UL << (__pos % 32); }
-    _WordT _M_getword(size_t __pos) const { return _M_w[_S_whichword(__pos)]; }
-};
-template <size_t _Nb> class bitset : public _Base_bitset<(_Nb + 31) / 32> {
-public:
-    bool operator[](size_t __pos) const { return _Unchecked_test(__pos); }
-    bool _Unchecked_test(size_t __pos) const { return (this->_M_getword(__pos) & this->_S_maskbit(__pos)) != 0; }
-};
-struct _List_node_base {
-    _List_node_base* _M_next;                                 // +0x00
-    _List_node_base* _M_prev;                                 // +0x04
-};
-template <class _Tp> struct _List_node : public _List_node_base {
-    _Tp _M_data;                                              // +0x08
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {   // STLport list, 4 bytes
-public:
-    struct const_iterator {
-        _List_node_base* _M_node;
-        const_iterator(_List_node_base* __x) : _M_node(__x) { }
-        const _Tp& operator*() const { return ((_List_node<_Tp>*)_M_node)->_M_data; }
-        const _Tp* operator->() const { return &((_List_node<_Tp>*)_M_node)->_M_data; }
-        const_iterator& operator++() { _M_node = _M_node->_M_next; return *this; }
-        bool operator!=(const const_iterator& __y) const { return _M_node != __y._M_node; }
-    };
-    _STLP_alloc_proxy<_List_node<_Tp>*, _Tp, allocator<_List_node<_Tp> > > _M_node;   // +0x00
-    const_iterator begin() const { return const_iterator(_M_node._M_data->_M_next); }
-    const_iterator end() const { return const_iterator(_M_node._M_data); }
-};
-}   // namespace std
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
+#include "engine/CArray.h"
 template <class K, class V> class CKeyPairCompareLess { };
 template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
 public:

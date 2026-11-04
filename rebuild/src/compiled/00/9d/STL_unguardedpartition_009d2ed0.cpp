@@ -1,5 +1,6 @@
 // std::__unguarded_partition(unsigned long* first, unsigned long* last, unsigned long pivot, CBankFile::CompareDataOffset comp) -- STLport quicksort partition of a bank's entry indices around a pivot index, ordered by each entry's data offset (packed array or runtime record); returns the split point
 // Leaf: __unguarded_partition
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D2ED0, 234 bytes (+ int3 padding), `ret 8` (__fastcall: first in ecx,
 // last in edx, the pivot index and the one-pointer comparator by value on the stack -- the SGI/STLport algorithm TUs
 // are /Gr). Caller: 0x009D490A (__introsort_loop of the CBankFile entry sort; __final_insertion_sort is 0x009D3ED0).
@@ -12,12 +13,7 @@
 // Shape: `first` and `last` live in the two `sub esp,8` frame words, the bank in esi, the pivot in ebp; each comparison
 // inlines GetEntryDataOffset twice (left operand first); the `--last` loop reads *last before the pivot's offset;
 // iter_swap moves both elements through eax/edi; unsigned `<` (`jae` / `jb`).
-template <class T> class CArray { public:                 // retail CArray: 12 bytes
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
+#include "engine/CArray.h"
 
 struct CRuntimeData {                              // CBankFile::CRuntimeData, 12 bytes
     unsigned long DataOffset;                      // +0x00

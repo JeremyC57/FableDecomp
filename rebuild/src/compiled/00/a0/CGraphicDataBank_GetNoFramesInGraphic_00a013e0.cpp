@@ -1,5 +1,6 @@
 // CGraphicDataBank::GetNoFramesInGraphic(unsigned long index) const -- Return the graphic header field.
 // Leaf: ?GetNoFramesInGraphic@CGraphicDataBank@@UBEKK@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: Own CGraphicDataBank vtable129c8cc slot20 and PDB exact const virtual overload. GraphicList+480 size44; header FrameCount read. Out-of-range access has retail non-null precondition and is not converted to a zero result.
 #define CBankFile CBankFile_HeaderLayout
 #include "engine/CBankFile.h"
@@ -66,13 +67,7 @@ class CGraphicInfoFrame;class CGraphicDataBank;enum ETextureType{TEXTURE_TYPE_UN
 struct CGraphicHeader {unsigned short Width,Height,Depth,FrameWidth,FrameHeight,FrameCount;CPixelFormat PixelFormat;unsigned char TransparencyType,MipmapLevels,IsFlatAnimatedGraphic:1;unsigned long FrameDataSize,CompressedMipmapSizes[1];};
 // Layout: CGraphicHeader28 with natural padding at19; CGraphicInfo44. Original member names from PDB, fields confirmed by own reads.
 class CGraphicInfo {public:CGraphicHeader Header;ETextureType TextureType;CGraphicDataBank* Bank;long Index;CGraphicInfoFrame* Frames;};
-namespace std {
-template<class T>class allocator{};
-template<class T,class A>struct _STLP_alloc_proxy:A{T _M_data;};
-template<class T,class A>class _Vector_base {public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,A> _M_end_of_storage;};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:__forceinline unsigned int size()const{return this->_M_finish-this->_M_start;}__forceinline const T& operator[](unsigned int index)const{return this->_M_start[index];}};
-}
-template<class T>class CArray:public std::vector<T>{};
+#include "engine/CArray.h"
 class CGraphicDataBank:public CBankFileAsync,public CResourceBank {public:
  CArray<CGraphicInfo> GraphicList;
  __forceinline const CGraphicInfo* GetGraphicInfo(unsigned long index)const{return index<GraphicList.size()?&GraphicList[index]:0;}

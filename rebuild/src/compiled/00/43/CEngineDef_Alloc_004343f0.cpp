@@ -1,5 +1,6 @@
 // CEngineDef::Alloc() -- the def class's static allocator: `new CEngineDef` (inlined default constructor), or null when the allocation fails
 // Leaf: ?Alloc@CEngineDef@@SIPAVCDefClassBase@@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004343F0, 76 bytes, static __fastcall (no arguments), plain `ret`.
 // Identity (proven): Ego_r.pdb / FableWin.pdb ?Alloc@CEngineDef@@SIPAVCDefClassBase@@XZ; the object it builds stores vtable 0x0123118C
 // (RTTI .?AVCEngineDef@@, bases CParentDefClassBase / CDefClassBase / CDefPointeeBase / CResource), and the
@@ -52,26 +53,7 @@ public:
     CDefString() : TablePos(-1) { }
     long TablePos;
 };
-namespace std {
-template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {
-    _Value _M_data;
-    _STLP_alloc_proxy(const _MaybeReboundAlloc&, _Value __p) : _M_data(__p) { }
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) { }
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc> class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    explicit vector(const _Alloc& __a = _Alloc()) : _Vector_base<_Tp, _Alloc>(__a) { }
-};
-}   // namespace std
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
+#include "engine/CArray.h"
 template <class K, class V> class CKeyPairCompareLess { };
 template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
 public:

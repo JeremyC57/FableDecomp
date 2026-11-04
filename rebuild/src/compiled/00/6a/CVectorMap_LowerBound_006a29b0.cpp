@@ -1,5 +1,6 @@
 // CVectorMap::LowerBound(const long& key) -- (CVectorMap<long, CIntelligentPointer<CThing> >) binary search of the sorted 12-byte entries for the first entry whose key is not below `key`
 // Leaf: ?LowerBound@?$CVectorMap@JV?$CIntelligentPointer@VCThing@@@@V?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@@QAEPAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@ABJ@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A29B0, 82 bytes (+ int3 padding to 96), thiscall `ret 4`; the STLport
 //   iterator is a plain pointer returned in eax.
 // Identity (proven): CVectorMap<long, CIntelligentPointer<CThing>, CKeyPairCompareLess<...> >::LowerBound(const long&); evidence: CTCCarrying::CarrySlots (Ego_r.pdb CVectorMap<long, CIntelligentPointer<CThing>, ...> at +0xC); its callers are CTCCarrying::RemoveThingInCarrySlot 0x006A16A0 (0x006A16ED) and PutThingInCarrySlot 0x006A1F80 (0x006A1FD7), both non-const in Ego_r.pdb (?RemoveThingInCarrySlot@CTCCarrying@@QAEPAVCThing@@J_N@Z, ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z), so the non-const overload; its byte twin 0x006A2A10 is the const one (callers HasCarrySlot / GetThingInCarrySlot / IsCarrySlotFree, all QBE). FableWin.pdb names both overloads.
@@ -20,32 +21,8 @@ public:
     CBaseObjectPointer* PData;                                // +0x4
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
-namespace std {
-template <class _T1, class _T2> struct pair {
-    typedef _T1 first_type;
-    typedef _T2 second_type;
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {   // the end-of-storage pointer
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class vector {           // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;                                            // +0x00
-    _Tp* _M_finish;                                           // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    iterator begin() { return this->_M_start; }
-    iterator end() { return this->_M_finish; }
-    const_iterator begin() const { return this->_M_start; }
-    const_iterator end() const { return this->_M_finish; }
-};
-}   // namespace std
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };   // Fable's CArray over the STLport vector
 
 template <class K, class V> class CKeyPairCompareLess {
 public:

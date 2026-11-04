@@ -1,4 +1,5 @@
 // CBankFile::GetTotalDataSize() const -- sum of the data sizes of every live entry of the bank
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009CC450, 112 bytes, __fastcall, no arguments (CBankFile::GetUnusedSpace
 // 0x009CC4C0 calls it).
 // Callee: CPackedUIntArray::operator[] 0x00A629F0 (twice: the packed validity flags and the packed sizes).
@@ -10,12 +11,7 @@
 // reduced to the record offset in ebx, then `index < Size` with the Size re-read every pass) and
 // GetEntryDataSize; the packed validity result is normalised with `test ; setne`, the record's Valid byte
 // is used as is.
-template <class T> class CArray { public:                 // retail CArray: 12 bytes
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
+#include "engine/CArray.h"
 
 struct CRuntimeData {                              // CBankFile::CRuntimeData, 12 bytes, RuntimeData[0] is unused
     unsigned long DataOffset;                      // +0x00

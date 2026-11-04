@@ -1,5 +1,6 @@
 // CTCOpinionSource::OnCreate() -- give the source a fresh opinion set (five zero opinion values), turn on every reaction flag from 18 up, keep the thing frame-updating unless its def always updates, and add the thing to the world opinion manager's source list
 // Leaf: ?OnCreate@CTCOpinionSource@@UAEXXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00771660, 265 bytes, plain `ret`.
 // Callees: operator new 0x00BFEA1A (the 12-byte COpinionSet), malloc 0x00BFEA0E (the five-float opinion buffer and the
 //   16-byte list node), CCountedPointer<COpinionSet>::Reset(T*) 0x00771B60 (landed), CThing::SetForceFrameUpdate
@@ -41,12 +42,7 @@ template <class T> struct CArrayBase {              // STLport _Vector_base
         m_End._M_data = m_pData + count;
     }
 };
-template <class T> class CArray : public CArrayBase<T> { public:  // retail CArray: 12 bytes
-    __forceinline CArray(unsigned long count) : CArrayBase<T>(count)
-    {
-        this->m_pLast = FillN(this->m_pData, count, T());
-    }
-};
+#include "engine/CArray.h"
 class COpinionSet { public:                                // retail 12 bytes
     CArray<float> OpinionValues;
     __forceinline COpinionSet() : OpinionValues(5) { }
@@ -91,7 +87,6 @@ template <class T> __forceinline void ListInsert(SListNode<T>* position, const T
     prev->Next = node;
     position->Prev = node;
 }
-inline void* operator new(unsigned int, void* where) { return where; }
 
 struct COpinionManager {
     unsigned char _pad00[0x71c];

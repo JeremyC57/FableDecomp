@@ -1,5 +1,6 @@
 // CEngineClothSimulationStaticMesh::Render(const C3DPrimitive2& primitive, const CEngineSubPrimitiveStaticMesh& subPrimitive, ERenderPassType passType) -- render every cloth simulation of a static mesh: fade it out by the distance of the owner-transformed mesh bounding-sphere centre, interpolate the particle program's render positions into the cloth renderer's position buffer, then hand the simulation and its cloth primitive to the cloth renderer
 // Leaf: ?Render@CEngineClothSimulationStaticMesh@@QAEXABVC3DPrimitive2@@ABVCEngineSubPrimitiveStaticMesh@@W4ERenderPassType@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B812F0, length 343 bytes, `ret 0Ch`.
 // Name: Ego_r.pdb `?Render@CEngineClothSimulationStaticMesh@@QAEXABVC3DPrimitive2@@ABVCEngineSubPrimitiveStaticMesh@@W4ERenderPassType@@@Z`
 //   (public, non-virtual; the two animated-mesh siblings 0x00B814B0 / 0x00B81640 are the virtual overloads).
@@ -52,13 +53,7 @@ template <class T> class CCountedPointer { public:
     T* Get() const { return Data; }
     T* operator->() const { return Data; }
 };
-template <class T> class CArray { public:                 // retail CArray<T>: three pointers
-    T* m_pData;
-    T* m_pLast;
-    T* m_pEnd;
-    unsigned long size() const { return m_pLast - m_pData; }
-    const T& operator[](unsigned long i) const { return m_pData[i]; }
-};
+#include "engine/CArray.h"
 class CParticleSimulation { public:                        // Ego_r.pdb, retail 0x80 bytes (landed 0x00AE1600 model)
     void*         __vftable;                               // +0x00
     unsigned char RenderData[8];                           // +0x04 CCountedPointer<CParticleSimulationRenderData>

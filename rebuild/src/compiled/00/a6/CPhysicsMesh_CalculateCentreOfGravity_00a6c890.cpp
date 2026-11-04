@@ -1,6 +1,7 @@
 // CPhysicsMesh::CalculateCentreOfGravity() -- zero the centre of gravity, sum every mesh point into it with for_each(CAddElements), then scale it by 1 / point count
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6C890, length 110 bytes (+ int3 padding).
 // Leaf: CalculateCentreOfGravity
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Callees: for_each<C3DVector*, CAddElements<C3DVector>> @ 0x00A6ECE0 (`__fastcall`: hidden result in ecx -- the
 // `push ecx` frame word --, first in edx, last and the functor by value on the stack).
 // Constants: 4294967296.0f @ 0x0122DCB4 (unsigned-to-float fix-up), 1.0f @ 0x0122DED8.
@@ -29,15 +30,7 @@ class CAddElements { public:
 };
 template <class It, class F> F __fastcall for_each(It first, It last, F f);   // 0x00A6ECE0 for (C3DVector*, CAddElements<C3DVector>)
 
-template <class T>
-class CArray { public:                                    // retail CArray<T>: first / last / end
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    T* begin() { return m_pFirst; }
-    T* end() { return m_pLast; }
-    unsigned long size() const { return (unsigned long)(m_pLast - m_pFirst); }
-};
+#include "engine/CArray.h"
 
 class CPhysicsMesh { public:
     unsigned char      _pad00[0x3c];

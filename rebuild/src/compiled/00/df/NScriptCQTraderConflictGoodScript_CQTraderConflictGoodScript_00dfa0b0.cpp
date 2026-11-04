@@ -1,5 +1,6 @@
 // NScript::CQ_TraderConflictGoodScript::CQ_TraderConflictGoodScript(CScriptDataBase* data,CGameScriptInterfaceBase& game) -- Initialize script ownership and its empty vector.
 // Leaf: ??0CQ_TraderConflictGoodScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: own script-info registration00cd7750 literalQ_TraderConflictGood -> factory -> constructor00dfa0b0/vtable012deac8; exact original PDB signature.
 // Layout: real typed CScriptBase64/CLevelScriptBase72, original named fields and STLport containers; PC allocation104. Handle headers included under aliases to restore original inheritance. Only vector default initialization emits stores; scalar progress state is left for Init.
 #ifndef _MSC_VER
@@ -15,17 +16,7 @@ class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
-namespace std{
-template<class T>class allocator{};template<class A,class B>struct pair{typedef A first_type;typedef B second_type;A first;B second;};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;_STLP_alloc_proxy(const A& a,V p):A(a),_M_data(p){}};
-struct _List_node_base{_List_node_base* _M_next;_List_node_base* _M_prev;};template<class T>struct _List_node:public _List_node_base{T _M_data;};
-template<class T,class A>class _List_base{protected:typedef _List_node<T> _Node;typedef allocator<_Node> _NodeAlloc;_STLP_alloc_proxy<_Node*,_Node,_NodeAlloc> _M_node;};
-template<class T,class A=allocator<T> >class list:protected _List_base<T,A>{};
-template<class T,class A>class _Vector_base{protected:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;_Vector_base(const A& a):_M_start(0),_M_finish(0),_M_end_of_storage(a,0){} };
-template<class T,class A=allocator<T> >class vector:protected _Vector_base<T,A>{public:vector():_Vector_base<T,A>(A()){}T* begin(){return this->_M_start;}T* end(){return this->_M_finish;}};
-template<class Iter,class Compare>void __fastcall sort(Iter,Iter,Compare);
-}
-template<class T>class CArray:public std::vector<T>{};
+#include "engine/CArray.h"
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};

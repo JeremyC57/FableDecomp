@@ -1,5 +1,6 @@
 // CMemoryFile::Read(void*, long, CASuspendableProcess*) -- copy `size` bytes from the memory file at the current position into `buffer`, advancing the position; throws CBBBFileException "Null dst parameter" (type 1) for a null buffer and "Cannot read past end of file" (type 3) when the read would pass Length
 // Leaf: ?Read@CMemoryFile@@UAEXPAXJPAVCASuspendableProcess@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E9220, 258 bytes (`ret 0xc`, virtual).
 // Callees: CCharString(const char*, long) 0x0099EBF0, __fastcall operator+(const CCharString&, const char*) 0x0099F600
 //   (labelled CCharString::AppendCString), CCharString copy ctor 0x0099EC30, operator const char* 0x0099E4C0, ~CCharString
@@ -28,14 +29,7 @@ public:
     CBBBFileException(CCharString text, EFileExceptionType type) : CExceptionBase(static_cast<const char*>(text)), Type(type) { }
 };
 class CASuspendableProcess;
-template <class T> class CArray { public:                     // CArray<T>: the element block first
-    T*   Data;
-    long Count;
-    long Capacity;
-    long Grow;
-    void SetSize(long size);                           // 0x004897F0
-    T& operator[](long index) { return Data[index]; }
-};
+#include "engine/CArray.h"
 class CMemoryFile { public:
     // vptr at +0x00
     long                   AccessType;                  // +0x04 FileAccessType (1: read only)

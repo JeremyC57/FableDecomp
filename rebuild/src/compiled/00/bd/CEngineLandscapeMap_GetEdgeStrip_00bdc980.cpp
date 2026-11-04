@@ -3,6 +3,7 @@
 //   side in ecx and settles the whole colouring. The side-0/1 walk keeps its own walkY (walking testY in place gives 548v556).
 // CEngineLandscapeMap::GetEdgeStrip(long x, long y, long length, LANDSCAPE_EDGE_STRIP_SIDE side) -- find the tesselation edge strip on the given side of a landscape span: when the probe cell lies inside this map, ask its background tree; otherwise find the neighbouring map through the world map grid (walking along the edge in 32-unit cells when the first cell is empty), clip the span to that map and recurse into its landscape
 // Leaf: GetEdgeStrip
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BDC980, length 543 bytes + the 4-entry switch table (`ret 10h`).
 // Callees: CLandscapeBackgroundTreeNode::GetEdgeStrip @ 0x00BF6930 (landed). Globals: the world map @ 0x01436E8C.
 // Layout: CEngineLandscapeMap: background tree +0x04, owning CEngineMap +0x14; CEngineMap: landscape +0x00, MapWidth/Height
@@ -25,12 +26,7 @@ class CEngineMap { public:
     unsigned short WorldPosX;                      // +0x60
     unsigned short WorldPosY;                      // +0x62
 };
-template <class T> class CArray { public:
-    T* m_pBegin;
-    T* m_pEnd;
-    T* m_pCapacity;
-    T& operator[](unsigned long i) { return m_pBegin[i]; }
-};
+#include "engine/CArray.h"
 class CEngineWorldMap { public:
     void*               _vptr;                     // +0x00
     unsigned char       _pad04[0x8];

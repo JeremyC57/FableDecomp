@@ -1,5 +1,6 @@
 // CWADFile::GetFileInformation() -- the WAD entry's file information (creation/access/write times, read-only flag) read from the bank entry's info buffer
 // Leaf: ?GetFileInformation@CWADFile@@UAE?AVCFileInformation@@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A39D20, 85 bytes (+11 int3 padding), thiscall, `ret 4` (hidden result pointer).
 //   CWADFile vtable 0x0129CF8C slot 15; the PDB name set lists ?GetFileInformation@CWADFile@@UAE?AVCFileInformation@@XZ.
 // Callees: CDateAndTime::CDateAndTime @ 0x009E9AB0 (zeroes the seven words), CBankFileEntryUpdateData::ReadInfo
@@ -35,13 +36,7 @@ public:
     void ReadInfo(unsigned long offset, void* dest, unsigned long size) const;   // 0x009CBE90
 };
 
-template <class T> class CArray {           // retail CArray: 12 bytes
-public:
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
+#include "engine/CArray.h"
 
 class CBankFileAsync {                      // CBankFile base part as far as the update data (retail offsets)
 public:

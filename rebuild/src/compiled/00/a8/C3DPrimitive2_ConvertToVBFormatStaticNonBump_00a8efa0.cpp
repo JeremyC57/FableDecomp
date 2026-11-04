@@ -1,5 +1,6 @@
 // C3DPrimitive2::ConvertToVBFormatStaticNonBump(CTVertexNormTex1* vertices) -- copy every device-independent C3DVertex2 (position, normal, U, V) into the static non-bump vertex-buffer format
 // Leaf: ?ConvertToVBFormatStaticNonBump@C3DPrimitive2@@AAEXPAVCTVertexNormTex1@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A8EFA0, 520 bytes, thiscall, `ret 4`.
 // Identity (proven): the one caller is 0x00A9282B inside the landed C3DPrimitive2::ConvertToVBFormatStatic 0x00A92740
 //   (`flags & 2` picks the bump sibling 0x00A8F1B0, else this one); Ego_r.pdb C3DPrimitive2 declares the private pair
@@ -23,13 +24,7 @@ template<class T>class CGenericVertex:public T{public:
  void SetU1(float u){this->U1=u;}void SetV1(float v){this->V1=v;}
 };
 class CTVertexNormTex1:public CGenericVertex<CTVertexNormTex1Base>{};
-namespace std{
-template<class T>class allocator{};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};
-template<class T,class A>class _Vector_base{protected:T*_M_start,*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:unsigned int size()const{return this->_M_finish-this->_M_start;}T&operator[](unsigned int i){return this->_M_start[i];}const T&operator[](unsigned int i)const{return this->_M_start[i];}};
-}
-template<class T>class CArray:public std::vector<T>{public:T&operator[](unsigned int i){return this->_M_start[i];}const T&operator[](unsigned int i)const{return this->_M_start[i];}};
+#include "engine/CArray.h"
 namespace boost{template<class T>class scoped_ptr{T*ptr;public:T*operator->()const{return ptr;}};}
 namespace N3DPrimitive{class CDeviceIndependent:public CBaseClassNonCopyable{private:CArray<C3DVertex2>Vertices;public:unsigned long GetVertexCount()const{return Vertices.size();}const C3DVertex2&PeekVertex(unsigned long i)const{return Vertices[i];}};}
 class C3DPrimitive2:public CMovableResource{long MaterialIndex,RepeatingMeshReps;unsigned char _pad_0x0c[0x20];boost::scoped_ptr<N3DPrimitive::CDeviceIndependent>Data;void ConvertToVBFormatStaticNonBump(CTVertexNormTex1*);};

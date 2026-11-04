@@ -1,5 +1,6 @@
 // CEngineOcclusionManager::GetPrevFrameFlareTestResult(unsigned long handle) -- last frame's visible fraction of a flare test: 0 for an unknown handle, else the occluded pixel count over MaxPixelCount clamped to 1
 // Leaf: ?GetPrevFrameFlareTestResult@CEngineOcclusionManager@@QAEMK@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B8D2F0, 108 bytes, thiscall, `ret 4`, float in st0.
 // Identity (proven): Ego_r.pdb ?GetPrevFrameFlareTestResult@CEngineOcclusionManager@@QAEMK@Z, placed right after
 //   GetFlareTestResult (0x00B8D280); the landed GetPrevFrameFlareTestResultFromRetrivalID (0x00B8D3C0) tail-jumps here.
@@ -23,14 +24,7 @@ struct COccluderFlareEntry {                    // Ego_r.pdb CEngineOcclusionMan
     unsigned long OccluderHandle;               // +0x18
 };
 
-template <class T> class CArray {               // retail CArray: the STLport 4.6 vector words
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned int size() const { return _M_finish - _M_start; }
-    T& operator[](unsigned int i) { return _M_start[i]; }
-};
+#include "engine/CArray.h"
 
 class CEngineOcclusionManager : public CEngineOcclusionManagerLayout {
 public:

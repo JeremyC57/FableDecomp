@@ -1,5 +1,6 @@
 // CMemoryDataOutputStream::SetPosition(unsigned long position) -- move the write position within the written data; a position past the end throws CBBBFileException(SeekOutOfRange)
 // Leaf: ?SetPosition@CMemoryDataOutputStream@@UAEXK@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Grade: RELOCATION_MATCH over 46 bytes -- byte-exact including the int3 VC7.1 emits after the noreturn
 //   _CxxThrowException call; the catalog's 45-byte extent stripped that byte as padding (BOUNDS_FIX.tsv /
 //   oracle_extra.tsv; q3.py trims it, verify_and_land grades RELOCATION_MATCH + PASS)
@@ -30,13 +31,7 @@ public:
     CBBBFileException(EFileExceptionType type) : Type(type) { }
 };
 
-template <class T> class CArray {                        // STLport vector<T>: start, finish, end of storage (12 bytes)
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
-};
+#include "engine/CArray.h"
 
 class CDataOutputStream {
 public:

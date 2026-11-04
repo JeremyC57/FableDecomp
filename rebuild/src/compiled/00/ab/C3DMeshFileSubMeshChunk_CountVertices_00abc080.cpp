@@ -11,6 +11,7 @@
 // with the zeroing counted-pointer dtor (its zero stores scheduled into the next call's argument setup).
 // Layout: Ego_r.pdb C3DMeshFileVerticesChunk VertexList +0x10 (CArray<C3DVertex2>, 32-byte elements, retail 12-byte vector).
 // Leaf: CountVertices@C3DMeshFileSubMeshChunk
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 struct SCountBlock { long references; void (__fastcall* destroy)(void*); void* object; };
 template<class T> class CCountedPointer { public:
     T* Object; SCountBlock* Count;
@@ -32,12 +33,7 @@ template<class T> class CCountedPointer { public:
     T* operator->() const { return Object; }
 };
 
-template <class T> class CArray { public:                 // retail STLport vector layout
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned long size() const { return _M_finish - _M_start; }
-};
+#include "engine/CArray.h"
 class C3DVertex2 { public: unsigned char _body[0x20]; };
 
 class CChunkedFileChunk;

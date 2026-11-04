@@ -1,4 +1,5 @@
 // CEnginePrimitiveManager2DParticleGroup::CreateInternalPrimitive(EEnginePrimitiveType type) -- allocates and constructs a 2D particle group primitive (0x108 bytes); null when the allocation fails
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE1A00, length 121 bytes (128 with padding).
 // Callees: operator new @ 0x00BFEA1A, CEngineInternalPrimitiveBase::CEngineInternalPrimitiveBase(long type, unsigned long flags)
 // @ 0x00B8FF00 (called with (0x20, 0x80000000)), malloc @ 0x00BFEA0E (the two list sentinels). Vtables (rtti-vtables.tsv):
@@ -45,13 +46,7 @@ class CEnginePrimitiveHandle { public:                    // 8 bytes: the handle
 
 struct CPrimitiveIterator { unsigned char m_used; void* m_pNode; };
 
-template <class T>
-class CArray { public:                                    // retail CArray: first, last, end
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    CArray() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
-};
+#include "engine/CArray.h"
 
 struct CEngineInternalPrimitiveParticleGroup : CEngineInternalPrimitiveBase {   // vtable 0x012A59D4
     CRetailSTLportList<CEnginePrimitiveHandle> Primitives;          // +0x48

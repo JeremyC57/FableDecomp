@@ -1,5 +1,6 @@
 // CEngine::~CEngine() -- engine destructor: Uninitialise(), then the members in reverse order (the three component/layer/Z-buffer CArrays freed, FrameMemoryPool, the four video-option def pointers, PEngineDef, PEnvironmentDef, PreloadCameras), then ~CIEngine inline and ~CInitBaseClass
 // Leaf: ??1CEngine@@UAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B261D0, 238 bytes, thiscall, tail jump to ~CInitBaseClass 0x0099A410.
 // Identity (proven): stores vtable 0x012A0F3C first (rtti-vtables.tsv / COL: .?AVCEngine@@ : CIEngine : CInitBaseClass : CBaseClass,
 //   CDeviceResetCallback at +0x0C, whose vtable 0x012A0F30 is the second store); the sole caller 0x00B2AB13 is the scalar deleting
@@ -26,36 +27,7 @@
 #include "engine/CDefPointer.h"
 
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
-namespace std {
-template <class _Tp> class allocator { public:
-    allocator() { }
-    void deallocate(_Tp* __p, unsigned int) { free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc { public:
-    _Value _M_data;
-    _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) { }
-};
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
-{
-    for (; __first != __last; ++__first) _Destroy(&*__first);
-}
-template <class _Tp, class _Alloc> class _Vector_base { public:
-    _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) { }
-    ~_Vector_base() { if (_M_start != 0) _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : protected _Vector_base<_Tp, _Alloc> { public:
-    typedef _Alloc allocator_type;
-    explicit vector(const allocator_type& __a = allocator_type()) : _Vector_base<_Tp, _Alloc>(__a) { }
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-} // namespace std
-template <class T> class CArray : public std::vector<T> {   // retail CArray<T>: the 12-byte STLport vector
-};
+#include "engine/CArray.h"
 
 class C3DVector { public: float X, Y, Z; };
 class C2DExtentsI { public: long X, Y; };

@@ -1,5 +1,6 @@
 // CEngineLandscapeRenderer::GetForegroundVertexShader(long) -- the vertex shader for n lights, clamped to the last one in the set
 // Leaf: ?GetForegroundVertexShader@CEngineLandscapeRenderer@@QAEAAVCVertexShader@@J@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x00BF5C20, 52 bytes, `ret 4`; Ego_r.pdb same symbol (0x00A3A550). Catalog label CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader is wrong (off by one getter): this reads ForegroundVertexShaders (+0x4dc), the first of the arrays.
 // Returns &ForegroundVertexShaders[min(n, size - 1)] with an unsigned compare, re-reading the array bounds in the clamp arm and
 // _M_start for the result.
@@ -16,7 +17,7 @@ public:
     unsigned int size() const { return unsigned int(_M_finish - _M_start); }
     T& operator[](unsigned int n) { return *(_M_start + n); }
 };
-template <class T> class CArray : public vector<T> {};
+#include "engine/CArray.h"
 class CEngineLandscapeRenderer {
 public:
     CVertexShader& GetForegroundVertexShader(long n);

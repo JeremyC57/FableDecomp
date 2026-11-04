@@ -1,5 +1,6 @@
 // N3DPrimitive::CVertexShaderInputStatic::Initialise(unsigned long flags, bool b) -- builds the static vertex stream format (compressed: position 13 or 2, normal 12, uv 7; else 2, 2, 1; optional colour 11/3 when flags & 2) and adds it as stream 0
 // Leaf: Initialise
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A90560, 195 bytes (padded to 208), `ret 8`.
 //   PDB name ?Initialise@CVertexShaderInputStatic@N3DPrimitive@@QAEXK_N@Z.
 // Callees: CVertexStreamFormat::CVertexStreamFormat() 0x00AB37F0, CVertexStreamFormat::AddDataElement(unsigned long,
@@ -19,16 +20,7 @@ enum EVertexStreamDataType {                       // values follow D3DDECLTYPE
     VSDT_FLOAT2 = 1, VSDT_FLOAT3 = 2, VSDT_FLOAT4 = 3, VSDT_D3DCOLOR = 4, VSDT_SHORT4 = 7,
     VSDT_USHORT2N = 11, VSDT_USHORT4N = 12, VSDT_UDEC3 = 13
 };
-template <class T> class CArray { public:                 // retail CArray (STLport vector, 12 bytes)
-    T* m_first;
-    T* m_last;
-    T* m_end;
-    ~CArray()
-    {
-        if (m_first)
-            free(m_first);
-    }
-};
+#include "engine/CArray.h"
 class CVertexStreamFormat : public CBaseClass { public:          // 16 bytes
     class CDataElement { public: unsigned long Usage; EVertexStreamDataType Type; };
     CArray<CDataElement> DataElements;             // +0x04

@@ -11,18 +11,12 @@
 // Shape: three indexed walks over the sub-contractions; the existence scan takes the count once and keeps the vertex
 //   array in a register (an early return out of the loop); the two work loops re-read size() after every call.
 // Leaf: ?PerformContraction@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXAAVCVertexPairContraction@2@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 class C3DVector {
 public:
     float X, Y, Z;
 };
-template <class T> class CArray {                  // retail CArray (STLport vector): first / last / end
-public:
-    T* m_first;
-    T* m_last;
-    T* m_end;
-    unsigned long size() const { return m_last - m_first; }
-    T& operator[](unsigned long n) const { return m_first[n]; }
-};
+#include "engine/CArray.h"
 namespace QuadricOptimiserInternals {
 class COptimisedVertex {                           // retail 0xb8 bytes (Ego_r.pdb order, STLport maps)
 public:

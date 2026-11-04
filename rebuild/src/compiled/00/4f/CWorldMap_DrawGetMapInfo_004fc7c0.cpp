@@ -1,5 +1,6 @@
 // CWorldMap::DrawGetMapInfo(long) const -- draw interface: describe one map for the renderer (valid flag, loadable flags, map pointer, static mesh name, position, UID and extents)
 // Leaf: ?DrawGetMapInfo@CWorldMap@@UBE?AVCDrawMapInfo@@J@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004FC7C0, 221 bytes, `ret 8`. PDB ?DrawGetMapInfo@CWorldMap@@UBE?AVCDrawMapInfo@@J@Z
 // Virtual slot 1 of the CIDrawWorldMap interface (vtable 0x01244AB4) at +0x04 of CWorldMap: `this` arrives at +4, so
 // the Maps array (+0x20) is read at +0x1C.
@@ -52,12 +53,7 @@ class CDrawMapInfo { public:                                        // 0x20 byte
     C2DExtentsI   Extents;                                   // +0x18
 };
 
-template <class T> class CArray { public:
-    T* Start;                                                // +0x00
-    T* Finish;                                               // +0x04
-    T* EndOfStorage;                                         // +0x08
-    const T& operator[](unsigned long i) const { return Start[i]; }
-};
+#include "engine/CArray.h"
 
 struct CIWorldMap {                                          // primary vtable 0x01244AEC
     virtual void v00();

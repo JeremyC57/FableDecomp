@@ -1,5 +1,6 @@
 // CVectorMap::LowerBound(const EExpressionType& key) const -- (CVectorMap<EExpressionType, CExpressionSet::CEntry >) binary search of the sorted 12-byte entries for the first entry whose key is not below `key`
 // Leaf: ?LowerBound@?$CVectorMap@W4EExpressionType@@VCEntry@CExpressionSet@@V?$CKeyPairCompareLess@W4EExpressionType@@VCEntry@CExpressionSet@@@@@@QBEPBU?$pair@W4EExpressionType@@VCEntry@CExpressionSet@@@std@@ABW4EExpressionType@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086F180, 82 bytes (+ int3 padding to 96), thiscall `ret 4`; the STLport
 //   iterator is a plain pointer returned in eax.
 // Identity (proven): CVectorMap<EExpressionType, CExpressionSet::CEntry, CKeyPairCompareLess<...> >::LowerBound(const EExpressionType&) const; evidence: its only caller 0x0086F510 is CExpressionSet::GetRandomExpression(EExpressionType, unsigned long&) const (Ego_r.pdb ?GetRandomExpression@CExpressionSet@@QBEJW4EExpressionType@@AAK@Z: LowerBound and UpperBound of the type, one generator step, the entry's AnimIndex at value +4 returned; CTCCreatureExpression::SetExpression reaches it through the def's CCountedPointer<CExpressionSet>), whose only member is Expressions = CVectorMap<EExpressionType, CExpressionSet::CEntry, ...> (Ego_r.pdb; CEntry {EExpressionType Type, long AnimIndex}, 8 bytes) -- a const caller, so the const overload, the only one FableWin.pdb names for this map.
@@ -21,32 +22,8 @@ public:
         long AnimIndex;                                       // +0x4
     };
 };
-namespace std {
-template <class _T1, class _T2> struct pair {
-    typedef _T1 first_type;
-    typedef _T2 second_type;
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {   // the end-of-storage pointer
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class vector {           // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;                                            // +0x00
-    _Tp* _M_finish;                                           // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    iterator begin() { return this->_M_start; }
-    iterator end() { return this->_M_finish; }
-    const_iterator begin() const { return this->_M_start; }
-    const_iterator end() const { return this->_M_finish; }
-};
-}   // namespace std
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };   // Fable's CArray over the STLport vector
 
 template <class K, class V> class CKeyPairCompareLess {
 public:

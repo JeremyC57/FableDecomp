@@ -1,5 +1,6 @@
 // CWorldMap::GetMapWithIndex(long index) const -- the const reference to Maps[index] (a 0x48-byte CMapInfo)
 // Leaf: ?GetMapWithIndex@CWorldMap@@QBEABVCMapInfo@@J@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FC170, 16 bytes, thiscall `ret 4`: mov eax,[esp+4] ; mov ecx,[ecx+20h] ;
 //   lea eax,[eax+eax*8] ; lea eax,[ecx+eax*8] (index * 72).
 // Identity: probable. The row sits in the CWorldMap accessor run (after PeekMapAt 0x004FC150, before the const
@@ -15,32 +16,8 @@ public:
     unsigned char _pad00[0x48];                 // retail/PDB sizeof 0x48 (LevelName +0x18)
 };
 
-namespace std {
-template <class _Tp> class allocator { public: };
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc { public: _Value _M_data; };
-template <class _Tp, class _Alloc>
-class _Vector_base {
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> >
-class vector : protected _Vector_base<_Tp, _Alloc> {
-public:
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    typedef _Tp& reference;
-    typedef const _Tp& const_reference;
-    iterator begin() { return this->_M_start; }
-    const_iterator begin() const { return this->_M_start; }
-    reference operator[](unsigned int __n) { return *(begin() + __n); }
-    const_reference operator[](unsigned int __n) const { return *(begin() + __n); }
-};
-} // namespace std
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };   // Fable's CArray over the STLport vector
 
 class CWorldMap {
 public:

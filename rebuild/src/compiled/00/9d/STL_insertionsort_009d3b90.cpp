@@ -1,5 +1,6 @@
 // std::__insertion_sort(unsigned long* first, unsigned long* last, CBankFile::CompareDataOffset comp) -- STLport insertion sort of a bank's entry indices by each entry's data offset (packed array or runtime record), __linear_insert inlined: an index whose data comes first shifts the run up one slot with memmove and goes first, anything else goes through the out-of-line __unguarded_linear_insert
 // Leaf: __insertion_sort
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D3B90, 217 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the
 // one-pointer comparator on the stack -- the SGI/STLport algorithm TUs are /Gr).
 // Callees: 0x00A629F0 CPackedUIntArray::operator[](unsigned long), 0x00BFEAE6 memmove, 0x009D2FC0
@@ -15,12 +16,7 @@
 // result - n, first, n)` -- an element count adds `sar eax,2 ; shl eax,2`); `*first = val` re-reads `first`.
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
-template <class T> class CArray { public:                 // retail CArray: 12 bytes
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
+#include "engine/CArray.h"
 
 struct CRuntimeData {                              // CBankFile::CRuntimeData, 12 bytes
     unsigned long DataOffset;                      // +0x00

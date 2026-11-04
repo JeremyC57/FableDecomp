@@ -1,5 +1,6 @@
 // N3DPrimitive::CAnimatedBlock::ConvertToVBFormatNonBump(CTVertexNormBlend4Tex1* out, CDeviceIndependent& mesh) -- fill the blended vertex buffer: for every block vertex copy position/normal/uv from the mesh vertex it indexes, then its bone indices (x3, palette slots) and weights, zero-padding to four
 // Leaf: ?ConvertToVBFormatNonBump@CAnimatedBlock@N3DPrimitive@@AAEXPAVCTVertexNormBlend4Tex1@@AAVCDeviceIndependent@2@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A8FF50, length 231 bytes (+9 int3), `ret 8`. No callees.
 // Layout: Ego_r.pdb CAnimatedBlock (BonesPerVertex +0x14, Data +0x2c CIVCountedPointer<CDeviceIndependent>: VertexList +0x08,
@@ -20,13 +21,7 @@ template<class T>class CGenericVertex:public T{public:
 };
 class CTVertexNormBlend4Tex1:public CGenericVertex<CTVertexNormBlend4Tex1Base>{};
 class C3DIndexedBoneWeight{public:unsigned long BoneIndex;unsigned long Weight;};
-namespace std{
-template<class T>class allocator{};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};
-template<class T,class A>class _Vector_base{protected:T*_M_start,*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:unsigned int size()const{return this->_M_finish-this->_M_start;}T&operator[](unsigned int i){return this->_M_start[i];}const T&operator[](unsigned int i)const{return this->_M_start[i];}};
-}
-template<class T>class CArray:public std::vector<T>{public:T&operator[](unsigned int i){return this->_M_start[i];}const T&operator[](unsigned int i)const{return this->_M_start[i];}};
+#include "engine/CArray.h"
 template<class T>class CIVCountedPointer{T*Data;public:T*operator->()const{return Data;}};
 namespace N3DPrimitive{
 class CDeviceIndependent:public CBaseClassNonCopyable{private:CArray<C3DVertex2>Vertices;public:unsigned long GetVertexCount()const{return Vertices.size();}const C3DVertex2&PeekVertex(unsigned long i)const{return Vertices[i];}};

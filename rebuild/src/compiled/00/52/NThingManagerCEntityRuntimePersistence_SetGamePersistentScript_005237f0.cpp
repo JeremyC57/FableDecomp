@@ -1,5 +1,6 @@
 // NThingManager::CEntityRuntimePersistence::SetGamePersistentScript(long index, const CCharString& script) -- grow the game-persistent script table to cover index, store the entity's script there and mark the slot valid
 // Leaf: ?SetGamePersistentScript@CEntityRuntimePersistence@NThingManager@@QAEXJABVCCharString@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 //
 // Retail 0x005237F0, 111 bytes (then int3 padding), `ret 8` (thiscall).
 // Callees: 0x0052C6A0 vector<CEntityScriptInfo>::resize(size_type), 0x0099EFB0 CCharString::operator=.
@@ -24,17 +25,7 @@ public:
 };
 
 // STLport vector view (start, finish, end of storage); CArray<T> derives from it.
-template <class T> class CArray {
-public:
-    T* _M_start;                                            // +0x0
-    T* _M_finish;                                           // +0x4
-    T* _M_end_of_storage;                                   // +0x8
-    unsigned int size() const { return (unsigned int)(this->_M_finish - this->_M_start); }
-    T& operator[](unsigned int n) { return *(this->_M_start + n); }
-    T* data() { return size() ? this->_M_start : (T*)this; }   // the engine's empty-array buffer fallback
-    void resize(unsigned int new_size, const T& x);         // vector<unsigned char>: 0x00486189
-    void resize(unsigned int new_size) { resize(new_size, T()); }
-};
+#include "engine/CArray.h"
 
 namespace NThingManager {
 class CEntityRuntimePersistence {

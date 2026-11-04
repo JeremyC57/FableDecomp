@@ -1,5 +1,6 @@
 // QuadricOptimiserInternals::CVertexPairContraction::CleanUp() -- removes duplicate sub-contractions: for each pair, every later pair with the same Index1/Index2 is erased from SubContractions
 // Leaf: CleanUp
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC7B00, 188 bytes, plain `ret`.
 //   PDB name ?CleanUp@CVertexPairContraction@QuadricOptimiserInternals@@QAEXXZ.
 // Callees: none (STLport vector::erase and the SGI random-access copy loop are inline).
@@ -8,31 +9,7 @@
 // Shape: two index loops re-reading size() every pass; `a` is a reference to element i taken once per outer pass;
 //   erase(begin() + j) copies the tail down element by element (STLport __copy_ptrs with __false_type: SGI
 //   `for (n = last - first; n > 0; --n)`), decrements finish, and the loop steps j back.
-template <class T> class CArray { public:                 // retail CArray (STLport vector): first / last / end
-    T* m_first;
-    T* m_last;
-    T* m_end;
-    T* begin() const { return m_first; }
-    T* end() const { return m_last; }
-    unsigned long size() const { return m_last - m_first; }
-    T& operator[](unsigned long n) const { return *(begin() + n); }
-    static T* copy(T* first, T* last, T* result)
-    {
-        for (long n = last - first; n > 0; --n) {
-            *result = *first;
-            ++first;
-            ++result;
-        }
-        return result;
-    }
-    T* erase(T* position)
-    {
-        if (position + 1 != end())
-            copy(position + 1, m_last, position);
-        --m_last;
-        return position;
-    }
-};
+#include "engine/CArray.h"
 namespace QuadricOptimiserInternals {
 class CSubContraction { public:
     unsigned long Index1;                          // +0x00

@@ -1,4 +1,5 @@
 // C3DMeshFileGroupChunk::C3DMeshFileGroupChunk() -- base chunk "VGRP", BoneIndex = -1, empty vertex CArray
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABC650, length 48 bytes.
 // Callees: 0x00AA8360 CChunkedFileSuperChunk::CChunkedFileSuperChunk(const char*)
 // The out-of-line copy of the inline constructor (CreateNewInstance @ 0x00ABC6E0 inlines the same body).
@@ -57,10 +58,7 @@ struct CChunkedFileChunkFactory {
 };
 // ------------------------------------------------------------------------------------------------
 
-template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray() : m_begin(0), m_end(0), m_capacity(0) {}
-};
+#include "engine/CArray.h"
 
 class C3DVertexBlend2 { public: long BoneIndex; float Weight; };   // 8-byte element
 class C3DMeshFileGroupChunk : public CChunkedFileSuperChunk { public:

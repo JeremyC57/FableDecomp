@@ -1,5 +1,6 @@
 // CKeyedArrayRecord::`scalar_deleting_destructor'(unsigned int) -- free the array at +8, then the record if asked
 // Leaf: ??_GCKeyedArrayRecord
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BBBCE, length 37 bytes (a /Os module: no alignment
 // padding, `pop ecx` argument cleanup).
 // Callees: free @ 0x00BFEA14 (the array buffer), operator delete @ 0x00BFE9BC.
@@ -16,13 +17,7 @@
 
 extern "C" void __cdecl free(void* block);       // 0x00BFEA14
 
-template<class T>
-class CArray { public:
-    T* m_first;
-    T* m_last;
-    T* m_end;
-    ~CArray() { if (m_first) free(m_first); }
-};
+#include "engine/CArray.h"
 
 struct CKeyedArrayRecord {
     long         m_key;                          // +0x00

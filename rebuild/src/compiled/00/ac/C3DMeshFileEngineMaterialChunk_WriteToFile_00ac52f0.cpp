@@ -1,4 +1,5 @@
 // C3DMeshFileEngineMaterialChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) -- retail @ 0x00AC52F0, 256 bytes; stream type, material values and optional map filenames, then inherit the subchunk writer. Retained CChunkedFileChunk -> CChunkedFileSuperChunk -> C3DMeshFileChunk hierarchy; its retail base is 0x2c bytes though the donor's 0x10-byte counted-vector layout grows it to 0x34. Calls stream writes at 0x00993EA0/0x00993EB0/0x00993E30/0x00995AE0 and SuperChunk::WriteToFile 0x00AA78C0.
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 class CCharString { public: void* m_pStringData; };
 #define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
@@ -24,7 +25,7 @@ class CDataInputStream;
 #endif
 struct SCountBlock { long references; void (RETAIL_FASTCALL* destroy)(void*); void* object; };
 template<class T> class CCountedPointer { public: T* object; SCountBlock* count; };
-template<class T> class CArray { public: T* begin; T* end; T* capacity; };
+#include "engine/CArray.h"
 class CChunkedFileSuperChunk;
 // The shared CChunkedFileChunk header contains an explicit vptr data member, not virtual methods.
 // This equivalent 0x10-byte virtual shell is required for WriteToFile slot8 and the qualified base call.

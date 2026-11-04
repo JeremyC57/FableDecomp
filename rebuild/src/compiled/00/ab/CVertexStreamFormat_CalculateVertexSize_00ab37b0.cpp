@@ -1,22 +1,14 @@
 // 00ab37b0 CVertexStreamFormat::CalculateVertexSize
 // Flags:
 // Leaf: ?CalculateVertexSize@CVertexStreamFormat@@QBEKXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 #ifndef _MSC_VER
 #define __fastcall
 #define __declspec(x)
 #endif
 enum EVertexStreamDataType{};
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-namespace std{
- template<class T>class allocator{};
- template<class P,class T,class A>class _STLP_alloc_proxy:public A{public:P _M_data;};
- template<class T,class A>class _Vector_base{protected:T*_M_start,*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;};
- template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:
-  unsigned int size()const{return this->_M_finish-this->_M_start;}
-  const T&operator[](unsigned int n)const{return this->_M_start[n];}
- };
-}
-template<class T>class CArray:public std::vector<T>{public:const T&operator[](unsigned int n)const{return std::vector<T>::operator[](n);}};
+#include "engine/CArray.h"
 // Layout: real CBaseClass4 and STLport12-byte CArray DataElements4. Original
 // CDataElement Register0/DataType4, size8; donor20-byteowner shrinks to16.
 class CVertexStreamFormat:public CBaseClass{public:

@@ -1,5 +1,6 @@
 // CWorldMap::GetAdjacentMaps(long, vector<unsigned long>&) const -- collect the maps touching one map: grow its area by one unit on every side, clip it to the world, list the maps in it and drop the map itself
 // Leaf: GetAdjacentMaps
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004FEA30, 195 bytes, `ret 8`. PDB ?GetAdjacentMaps@CWorldMap@@QBEXJAAV?$vector@KV?$allocator@K@std@@@std@@@Z
 // Callees: memmove 0x00BFEAE6 (the inlined vector erase copy-downs), CWorldMap virtual slot 13 GetDimensions() const
 // (vtable 0x01244AEC -> 0x0051CDE0, returns &Area at +0x5C), C2DBoxI::ClipTo(const C2DBoxI&) 0x0049C810, CWorldMap virtual
@@ -51,12 +52,7 @@ class CMapInfo { public:                                            // 0x48 byte
     C2DBoxI       Area;                                      // +0x00
     unsigned char _rest[0x38];                               // +0x10 .. +0x48
 };
-template <class T> class CArray { public:
-    T* Start;                                                // +0x00
-    T* Finish;                                               // +0x04
-    T* EndOfStorage;                                         // +0x08
-    const T& operator[](unsigned long i) const { return Start[i]; }
-};
+#include "engine/CArray.h"
 
 class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

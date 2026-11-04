@@ -1,5 +1,6 @@
 // CWorldMap::IsPosInMap(const C3DVector&) const -- is the world position inside the world area and on a map that is loaded?
 // Leaf: ?IsPosInMap@CWorldMap@@QBE_NABVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004FC600, 128 bytes. PDB ?IsPosInMap@CWorldMap@@QBE_NABVC3DVector@@@Z
 // Callees: _ftol2 0x00BFEA70, virtual slot 17 GetMapNumberAt(const C2DCoordI&) 0x004FC080 (+0x44; rtti-vtables.tsv).
 // Retail CWorldMap (the engine header engine/CWorldMap.h is the PDB layout with 16-byte containers; retail STLport
@@ -24,12 +25,7 @@ class CMapInfo { public:
     unsigned char _rest[0x30];                  // +0x18 .. +0x48
 };
 
-template <class T> class CArray { public:
-    T* Start;                                   // +0x00
-    T* Finish;                                  // +0x04
-    T* EndOfStorage;                            // +0x08
-    const T& operator[](unsigned long i) const { return Start[i]; }
-};
+#include "engine/CArray.h"
 
 class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

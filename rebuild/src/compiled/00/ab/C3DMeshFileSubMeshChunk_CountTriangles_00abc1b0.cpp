@@ -1,5 +1,6 @@
 // C3DMeshFileSubMeshChunk::CountTriangles() const -- total triangle count over every TRIS chunk of every primitive of the sub mesh
 // Leaf: CountTriangles@C3DMeshFileSubMeshChunk
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail @ 0x00ABC1B0, 438 bytes (`ret`, unsigned long in eax; 8-byte aligned frame).
 // Callees: C3DMeshFileSubMeshChunk::FindFirstPrimitive() const 0x00ABA980 / FindNextPrimitive(const CCountedPointer&)
 //   const 0x00ABAA10, C3DMeshFilePrimitiveChunk::FindFirstTriangles() const 0x00ABB300 ("TRIS") / FindNextTriangles(const
@@ -31,12 +32,7 @@ template<class T> class CCountedPointer { public:
     T* operator->() const { return Object; }
 };
 
-template <class T> class CArray { public:                 // retail STLport vector layout
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned long size() const { return _M_finish - _M_start; }
-};
+#include "engine/CArray.h"
 class C3DTriangle2 { public: unsigned short Index[3]; };
 
 class CChunkedFileChunk;

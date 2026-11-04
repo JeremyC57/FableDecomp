@@ -1,4 +1,5 @@
 // C3DAnimationManager::CombineBaseAnimationsBoneList(const C3DAnimationStateBase&, C3DKeyframe*, unsigned long, unsigned long, const C3DMesh2&, const CArray<unsigned long>&) -- evaluate an animation state tree for a list of bones
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA0C50, length 351 bytes (`ret 18h`). Ego_r.pdb
 //          ?CombineBaseAnimationsBoneList@C3DAnimationManager@@AAEXABVC3DAnimationStateBase@@PAVC3DKeyframe@@KKABVC3DMesh2@@ABV?$CArray@K@@@Z.
 // Callees: state virtual slot 2 (+8) GetStateType, the mesh bank's GetAnimationInfo(long) @ 0x00A242C0 (manifest
@@ -37,12 +38,7 @@ template <class T> class CCountedPointer { public:
     }
     T* operator->() const { return m_pObject; }
 };
-template <class T> class CArray { public:
-    T* m_pBegin;
-    T* m_pEnd;
-    T* m_pEndOfStorage;
-    const T& operator[](unsigned long i) const { return m_pBegin[i]; }
-};
+#include "engine/CArray.h"
 
 class C3DKeyframe { public: float Rotation[4]; float Position[4]; float Scaling[4]; };   // 0x30
 class C3DMesh2;

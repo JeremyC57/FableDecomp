@@ -2,6 +2,7 @@
 // environment's spell-effect screen stack, activate the player GUI, activate the initial quests, then post the
 // "world activated" game event for the main player and stamp the 3D-rendering start frame
 // Leaf: ActivateWorld
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -30,7 +31,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-template<class T> class CArray { public: T* First; T* Last; T* End; long Pad; };
+#include "engine/CArray.h"
 namespace NProfileTimer {
 void __fastcall StartProfile(const CCharString& name, long level);      // 0x009D8240 (empty in retail)
 void __fastcall EndProfile(long level);                                 // 0x009D8250 (empty in retail)

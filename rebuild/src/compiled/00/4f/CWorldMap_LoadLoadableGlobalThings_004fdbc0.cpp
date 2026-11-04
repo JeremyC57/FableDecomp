@@ -1,4 +1,5 @@
 // CWorldMap::LoadLoadableGlobalThings() -- walk every map after the first, show the "Loading global things" progress bar, and load the global things of each used map that loads on player proximity
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004FDBC0, 233 bytes. PDB ?LoadLoadableGlobalThings@CWorldMap@@IAEXXZ (protected)
 // Callees: CCharString::CCharString(const char*, long) 0x0099EBF0 ("Loading global things" 0x012445D4),
 // __fastcall NProgressDisplay::DisplayProgress(const CCharString&, float, bool, bool) 0x009E9F40, ~CCharString
@@ -27,13 +28,7 @@ class CMapInfo { public:                                            // 0x48 byte
     bool          LoadedOnPlayerProximity;                   // +0x28
     unsigned char _rest[0x1f];                               // +0x29 .. +0x48
 };
-template <class T> class CArray { public:
-    T* Start;                                                // +0x00
-    T* Finish;                                               // +0x04
-    T* EndOfStorage;                                         // +0x08
-    unsigned long size() const { return Finish - Start; }
-    const T& operator[](unsigned long i) const { return Start[i]; }
-};
+#include "engine/CArray.h"
 
 class CWorldMap { public:
     unsigned char    _pad00[0x20];

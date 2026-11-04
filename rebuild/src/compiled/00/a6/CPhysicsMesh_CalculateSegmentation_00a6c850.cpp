@@ -1,4 +1,5 @@
 // CPhysicsMesh::CalculateSegmentation() -- with more than 60 triangles, build the face segmentation tree (0x00A86CD0) and store it in the counted pointer at +0xB4
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6C850, length 55 bytes.
 // Callees: the static segment factory `CIPhysicsFacesSegmentBase::Create(const CArray<C3DTriangle2>&,
 // const CArray<C3DVector>&)` @ 0x00A86CD0 (`__fastcall`: triangles in ecx, vertices in edx),
@@ -10,12 +11,7 @@
 // containers, so the PDB +0x38/+0x48/+0xD0 sit at +0x30/+0x3C/+0xB4 here.
 class C3DTriangle2 { public: unsigned short m_index[3]; };
 class C3DVector { public: float x, y, z; };
-template <class T> class CArray { public:
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    unsigned long size() const { return m_pLast - m_pFirst; }
-};
+#include "engine/CArray.h"
 class CIPhysicsFacesSegmentBase { public:
     static CIPhysicsFacesSegmentBase* __fastcall Create(const CArray<C3DTriangle2>& triangles, const CArray<C3DVector>& vertices);   // 0x00A86CD0
 };

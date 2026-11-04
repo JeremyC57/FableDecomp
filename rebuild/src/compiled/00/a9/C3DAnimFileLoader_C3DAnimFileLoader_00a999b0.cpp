@@ -1,5 +1,6 @@
 // C3DAnimFileLoader::C3DAnimFileLoader() -- build the "3DAF" chunked-file loader: create the ANRT root chunk type, then register the object/helpers sub-chunk types under the root, sequence/bone-mask under the object, movement-vector/timing-event under the helpers and the movement track under the movement vector, keeping each registered type
 // Leaf: ??0C3DAnimFileLoader
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A999B0, 1152 bytes, plain ret.
 // Callees: CChunkedFileLoader::CChunkedFileLoader(const char*) 0x00AA7510 ("3DAF"), operator new 0x00BFEA1A,
 //   CChunkedFileSuperChunk::CChunkedFileSuperChunk(const char*) 0x00AA8360 ("ANRT"; C3DAnimFileRootChunk vtable
@@ -68,14 +69,7 @@ class CCountedPointer { public:
     void Reset(T* object);                  // 0x00A9A420
 };
 
-template <class T>
-class CArray { public:                             // retail CArray is 12 bytes (the PDB's is 16)
-    T* m_pBegin;
-    T* m_pEnd;
-    T* m_pEndOfStorage;
-    CArray() : m_pBegin(0), m_pEnd(0), m_pEndOfStorage(0) {}
-    ~CArray() { if (m_pBegin) free(m_pBegin); }
-};
+#include "engine/CArray.h"
 
 // STLport vector<CChunkedFileChunk*> with its real base structure (end-of-storage in an allocator proxy).
 template <class T> struct allocator { allocator() {} allocator(const allocator&) {} };

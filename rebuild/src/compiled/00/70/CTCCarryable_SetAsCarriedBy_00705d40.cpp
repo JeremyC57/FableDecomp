@@ -1,5 +1,6 @@
 // 00705d40 CTCCarryable::SetAsCarriedBy
 // Leaf: ?SetAsCarriedBy@CTCCarryable@@AAEXPAVCTCCarrying@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CBaseClassNonCopyable.h"
@@ -124,8 +125,8 @@ namespace NGraphicAppearance{
 // Layout: shared graphics header Alpha5a and bitgroup59; original ForceResendEveryRenderFrame is bit1 in donor71/native59.
 class CTCGraphicAppearance:public CTCGraphicAppearanceFields{public:void RemoveAllMeshEffectsInheritedFromCarrier();void InheritMeshEffectsFromCarrier(const CTCGraphicAppearance*);void SetAlpha(unsigned char);unsigned char GetAlpha()const{return Alpha;}void SetForceResendEveryRenderFrame(bool b){if(b)PrimitivesDrawn[0]|=2;else PrimitivesDrawn[0]&=~2;}};
 }
-namespace std{template<class T>class allocator{};template<class A,class B>struct pair{A first;B second;};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};template<class T,class A>class _Vector_base{protected:T*_M_start,*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;};template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:T*end(){return this->_M_finish;}};}
-template<class T>class CArray:public std::vector<T>{};template<class K,class V>class CKeyPairCompareLess{};template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> >{C Compare;bool Dirty;public:std::pair<K,V>*LowerBound(const K&);};
+#include "engine/CArray.h"
+template<class K,class V>class CKeyPairCompareLess{};template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> >{C Compare;bool Dirty;public:std::pair<K,V>*LowerBound(const K&);};
 class CThingBaseDef:public CParentDefClassBase{};
 // Layout: shared native CThing PhysicsTC60, graphics64, base-definition70 and component map44/bitset20.
 class CThing:public CThingFields{public:const C3DVector&GetPos()const;void SetCurrentMapNumber(long);void SetThingScanInclusion(bool);

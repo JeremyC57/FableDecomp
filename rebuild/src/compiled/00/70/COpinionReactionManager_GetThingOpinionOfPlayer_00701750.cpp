@@ -1,5 +1,6 @@
 // 00701750 COpinionReactionManager::GetThingOpinionOfPlayer
 // Leaf: ?GetThingOpinionOfPlayer@COpinionReactionManager@@QBEMABVCThing@@W4EOpinion@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
 #include <stddef.h>
 extern "C" void*__cdecl malloc(size_t);extern "C" void __cdecl free(void*);
@@ -14,18 +15,7 @@ extern "C" void*__cdecl malloc(size_t);extern "C" void __cdecl free(void*);
 #define CPlayer CPlayerFields
 #include "engine/CPlayer.h"
 #undef CPlayer
-namespace std{
-template<class T>class allocator{public:T*allocate(size_t n){return static_cast<T*>(malloc(n*sizeof(T)));}void deallocate(T*p,size_t){free(p);}};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;_STLP_alloc_proxy(const A&a,V p):A(a),_M_data(p){}};
-template<class Out,class N,class T>inline Out fill_n(Out first,N n,const T&v){for(;n>0;--n,++first)*first=v;return first;}
-struct __true_type{};
-template<class I,class N,class T>inline I __uninitialized_fill_n(I first,N n,const T&v,const __true_type&){return fill_n(first,n,v);}
-template<class I,class N,class T>inline I uninitialized_fill_n(I first,N n,const T&v){return __uninitialized_fill_n(first,n,v,__true_type());}
-template<class T,class A>class _Vector_base{protected:T*_M_start,*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;public:_Vector_base(size_t n,const A&a):_M_start(0),_M_finish(0),_M_end_of_storage(a,0){_M_start=_M_end_of_storage.allocate(n);_M_finish=_M_start;_M_end_of_storage._M_data=_M_start+n;}~_Vector_base(){if(_M_start)_M_end_of_storage.deallocate(_M_start,_M_end_of_storage._M_data-_M_start);}};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:explicit vector(size_t n):_Vector_base<T,A>(n,A()){this->_M_finish=uninitialized_fill_n(this->_M_start,n,T());}vector&operator=(const vector&x){if(this!=&x){size_t n=x._M_finish-x._M_start;if(n>size_t(this->_M_end_of_storage._M_data-this->_M_start)){T*tmp=this->_M_end_of_storage.allocate(n);for(size_t i=0;i<n;++i)tmp[i]=x._M_start[i];if(this->_M_start)this->_M_end_of_storage.deallocate(this->_M_start,this->_M_end_of_storage._M_data-this->_M_start);this->_M_start=tmp;this->_M_end_of_storage._M_data=tmp+n;}else{for(size_t i=0;i<n;++i)this->_M_start[i]=x._M_start[i];}this->_M_finish=this->_M_start+n;}return *this;}const T&operator[](size_t n)const{return this->_M_start[n];}const T*begin()const{return this->_M_start;}const T*end()const{return this->_M_finish;}};
-template<class A,class B>struct pair{A first;B second;};
-}
-template<class T>class CArray:public std::vector<T>{public:explicit CArray(unsigned int n):std::vector<T>(n){}const T&operator[](unsigned int n)const{return std::vector<T>::operator[](n);}T&operator[](unsigned int n){return const_cast<T&>(static_cast<const std::vector<T>&>(*this)[n]);} };
+#include "engine/CArray.h"
 class COpinionSet{protected:CArray<float>OpinionValues;public:float&operator[](long n){return const_cast<float&>(OpinionValues[n]);}COpinionSet():OpinionValues(5){}float operator[](long n)const{return OpinionValues[n];}};
 enum EOpinion{};enum ETCInterfaceType{};class CTCBase;
 template<class K,class V>class CKeyPairCompareLess{};

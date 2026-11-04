@@ -1,5 +1,6 @@
 // CEnginePrimitiveAttachmentManager::IsVisible(const C3DBoundingSphere& sphere, float maxDistance, const CArray<CEngineCamera*>& cameras) const -- true when any camera is closer than maxDistance - radius to the sphere and sees it inside its near/far planes and four frustum planes
 // Leaf: IsVisible
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B38ED0, 420 bytes (+int3 padding), `ret 0Ch`; `this` (ecx) is never read. Called from
 //   0x00B3A068 (the attachment update, which passes a sphere local, the distance and the camera vector).
 // Callees: none (fsqrt inline through the `sqrt` intrinsic).
@@ -26,14 +27,7 @@ class C3DVector { public:
 };
 class CPlane { public: C3DVector Normal; float D; };
 class C3DBoundingSphere { public: C3DVector Center; float Radius; };
-template <class T> class CArray { public:          // Fable CArray<T> over STLport vector<T> (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    typedef T const* const_iterator;
-    const_iterator begin() const { return _M_start; }
-    const_iterator end() const { return _M_finish; }
-};
+#include "engine/CArray.h"
 class CEnginePrimitiveAttachmentManager : public CEnginePrimitiveAttachmentManagerLayout {   // header layout (vptr word flattened)
     bool IsVisible(const C3DBoundingSphere& sphere, float maxDistance, const CArray<CEngineCamera*>& cameras) const;   // Ego_r.pdb: private const
 };

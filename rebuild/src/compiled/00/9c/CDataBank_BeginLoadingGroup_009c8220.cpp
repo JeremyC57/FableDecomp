@@ -1,4 +1,5 @@
 // CDataBank::BeginLoadingGroup(unsigned long index) -- start the asynchronous load of a group entry: only when the bank entry's data type is the group type (1) and the entry record exists
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C8220, length 42 bytes.
 // Callees: CBankFile::GetEntryDataType(unsigned long) @ 0x009CC210 (on `this`), CDataBankGroupEntry::BeginLoading(unsigned long, CDataBank*) @ 0x009C80F0
 // (ecx = the entry record, arguments pushed right to left: the bank, then the index).
@@ -12,12 +13,7 @@ struct CDataBankGroupEntry {
     void BeginLoading(unsigned long index, CDataBank* bank);   // 0x009C80F0
 };
 
-template <class T> class CArray { public:      // retail CArray: 12 bytes
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
+#include "engine/CArray.h"
 
 class CBankFile
 {

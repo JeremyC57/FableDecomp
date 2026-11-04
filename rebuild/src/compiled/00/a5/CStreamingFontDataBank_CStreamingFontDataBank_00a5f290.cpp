@@ -1,6 +1,7 @@
 // CStreamingFontDataBank::CStreamingFontDataBank() -- builds the CBankFile base, the font state block, the empty font array, an empty file name and a null streaming entry
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- CArray modelled as the STLport _Vector_base shape (start, finish, alloc-proxy end with its own constructor): the member-object boundary lets `mov ecx,edi` (Filename's this) schedule between the second and third zero store as in retail
 // Leaf: ??0CStreamingFontDataBank
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5F290, 89 bytes (+7 int3 padding). Callees: CBankFile::CBankFile @
 // 0x009D5F80, CCharString::CCharString() @ 0x0099E4B0, CCharString::operator=(const char*) @ 0x0099EFE0 (with the
 // empty literal @ 0x0122D70E). Vtables: CStreamingFontDataBank 0x0129D5CC (+0x0), CStreamingFontBankStateBlock
@@ -36,12 +37,7 @@ template<class T> struct CArrayAllocProxy {   // STLport _STLP_alloc_proxy: the 
     T* p;
     CArrayAllocProxy(T* v) : p(v) { }
 };
-template<class T> class CArray { public:                    // retail CArray is 0x0c with the STLport _Vector_base shape (start, finish, alloc-proxy end)
-    T*                  _M_start;
-    T*                  _M_finish;
-    CArrayAllocProxy<T> _M_end_of_storage;
-    CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-};
+#include "engine/CArray.h"
 
 class CCharString {
 public:

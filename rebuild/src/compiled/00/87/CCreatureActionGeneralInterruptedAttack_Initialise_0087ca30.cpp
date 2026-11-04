@@ -1,5 +1,6 @@
 // CCreatureAction_GeneralInterruptedAttack::Initialise() -- rumble the player's joystick (type 3), run the combat-action Initialise, then kick up a dust effect behind the creature (opposite its facing)
 // Leaf: ?Initialise@CCreatureAction_GeneralInterruptedAttack@@UAEXXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087CA30, 210 bytes, thiscall virtual (slot 12), plain `ret`.
 // Identity (proven): RTTI vtable of .?AVCCreatureAction_GeneralInterruptedAttack@@ slot 12 = Initialise; Ego_r.pdb / FableWin.pdb
 //   ?Initialise@CCreatureAction_GeneralInterruptedAttack@@UAEXXZ.
@@ -30,26 +31,8 @@ public:
 #pragma pack(pop)
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc> class vector {              // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-    iterator end() { return this->_M_finish; }
-    const_iterator end() const { return this->_M_finish; }
-    _Tp& operator[](unsigned int n) { return *(this->_M_start + n); }
-};
-}   // namespace std
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
 template <class K, class V> class CKeyPairCompareLess { };
 template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
 public:

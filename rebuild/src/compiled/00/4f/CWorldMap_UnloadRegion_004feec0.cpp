@@ -1,5 +1,6 @@
 // CWorldMap::UnloadRegion(long region, bool b) -- unloads every map of a region: tells the quest manager and the thing manager, then for each loaded map clears its active flag, removes it from the engine and the loaded-map list and releases the map; then drops each map from the thing-map manager and the navigator, clears the loaded region and posts the region-unloaded message
 // Leaf: ?UnloadRegion@CWorldMap@@IAEXJ_N@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FEEC0, 444 bytes (+ int3 padding), `ret 8`. PDB ?UnloadRegion@CWorldMap@@IAEXJ_N@Z.
 // Callees: the quest manager (global 0x013B89FC) OnRegionUnloaded 0x004AFC30 (const CCharString&), CWorld virtual slot 3
@@ -112,12 +113,7 @@ struct CRegion {                                             // 0x58 bytes
     CCharString   Name;                                      // +0x18
     unsigned char _rest[0x58 - 0x1c];
 };
-template <class T> struct CArray {
-    T* Start;                                                // +0x00
-    T* Finish;                                               // +0x04
-    T* EndOfStorage;                                         // +0x08
-    T& operator[](unsigned long i) { return Start[i]; }
-};
+#include "engine/CArray.h"
 
 struct CQuestManager {
     void OnRegionUnloaded(const CCharString& region);      // 0x004AFC30

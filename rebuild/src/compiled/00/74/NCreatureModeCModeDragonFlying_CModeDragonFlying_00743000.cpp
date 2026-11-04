@@ -1,5 +1,6 @@
 // NCreatureMode::CModeDragonFlying::~CModeDragonFlying() -- release PEndAction, destroy the filter, free the flight spline's control points (CModeDragonFlyingBase), then the inlined CModeBase destructor
 // Leaf: ??1CModeDragonFlying
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00743000, 121 bytes (`ret`).
 // Label: the catalog's "CModeIntangible::~CModeIntangible" is a byte-twin propagation; the offsets (counted pointer
 // +0x80/+0x84, filter +0x38 with its string at +0x3c, the spline block at +0x1c freed with free) are
@@ -65,12 +66,7 @@ struct CModeBase {                                   // CTCCreatureModeManager::
 class CCreatureActionBase;
 class C3DVector { public: float x, y, z; };
 
-template <class T> class CArray { public:                   // retail CArray is 0x0c: data, size, capacity
-    T*   m_pData;
-    long m_size;
-    long m_capacity;
-    ~CArray() { if (m_pData) free(m_pData); }
-};
+#include "engine/CArray.h"
 
 class CCardinalSpline { public:                             // retail 0x14
     CArray<C3DVector> ControlPoints;                 // +0

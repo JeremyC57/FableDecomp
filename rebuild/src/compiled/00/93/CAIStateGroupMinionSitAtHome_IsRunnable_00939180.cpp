@@ -1,5 +1,6 @@
 // 00939180 CAIStateGroup_MinionSitAtHome::IsRunnable -- consult idle scheduler then set sitting deadline
 // Leaf: ?IsRunnable@CAIStateGroup_MinionSitAtHome@@MAE_NXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
 #define CClass CClassLayout
 #include "engine/CClass.h"
@@ -33,17 +34,14 @@ public:float X,Y,Z;
     const C3DVector operator-(const C3DVector&v)const{return C3DVector(X-v.X,Y-v.Y,Z-v.Z);}
 };
 #pragma pack(pop)
-namespace std {
-template<class A,class R>struct unary_function {typedef A argument_type;typedef R result_type;};
-}
+#include "engine/CArray.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #pragma pack(push,1)
 class CClass:public CBaseObject {private:unsigned char unobservedClassState[sizeof(CClassLayout)-sizeof(CBaseObject)];};
 enum ETCInterfaceType{};class CTCBase;
-namespace std{template<class T>class allocator{};template<class K,class V>struct pair{K first;V second;};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};template<class T,class A>class _Vector_base{protected:T*_M_start;T*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;};template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:T*end(){return this->_M_finish;}};}
-template<class T>class CArray:public std::vector<T>{};template<class K,class V>class CKeyPairCompareLess{};
+template<class K,class V>class CKeyPairCompareLess{};
 template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> >{private:C Compare;bool Dirty;public:std::pair<K,V>*LowerBound(const K&);};
 class CThing:public CClass {
 public:template<class T>__forceinline bool GetTC(T**out){

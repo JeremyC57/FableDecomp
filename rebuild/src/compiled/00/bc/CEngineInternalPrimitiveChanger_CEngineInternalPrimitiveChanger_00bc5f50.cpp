@@ -1,6 +1,7 @@
 // CEngineInternalPrimitiveChanger::~CEngineInternalPrimitiveChanger() -- release the mesh effect, destroy every child primitive handle and free the handle array, then fall back to the counted-pointee base (its vtable restored)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC5F50, length 80 bytes.
 // Leaf: ??1CEngineInternalPrimitiveChanger
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Label correction: the catalog "_Dest_val<..., std::pair<EAnimComponent, CIVCountedPointer<CAnimComponentBase>>>" is
 // propagated. The only caller is 0x00BC5F33 inside the deleting destructor 0x00BC5F30, which is slot 0 of vtable
 // 0x012A662C = CEngineInternalPrimitiveChanger (rtti-vtables), so this is that class's destructor.
@@ -43,25 +44,7 @@ class CEnginePrimitiveHandle { public:             // vtable 0x0122F598
     virtual ~CEnginePrimitiveHandle();      // slot 0
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
 };
-namespace std {
-template <class T> inline void _Destroy(T* first, T* last)
-{
-    for (; first != last; ++first)
-        first->~T();
-}
-template <class T> struct vector {          // retail STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    ~vector()
-    {
-        _Destroy(_M_start, _M_finish);
-        if (_M_start)
-            free(_M_start);
-    }
-};
-}
-template <class T> class CArray : public std::vector<T> { public: };
+#include "engine/CArray.h"
 struct __declspec(novtable) CEngineInternalPrimitiveBase : CIVCountedPointeeBase {   // vtable 0x012A3D7C, 0x48 bytes
     unsigned char _body[0x48 - 0x08];       // EnginePrimitiveFlags .. RefLayerMask (engine/CEngineInternalPrimitiveBase.h)
 };

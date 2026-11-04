@@ -1,5 +1,6 @@
 // COptimisedPrimitive::CollapseSegments(float) -- mark every segment no longer than the threshold and, when any is marked, retire the faces that belong to a marked segment
 // Leaf: CollapseSegments
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC85D0, 163 bytes (+ int3 padding; `ret 4`).
 // Callees: CArray<unsigned char>::CArray(count, const unsigned char& fill, const allocator&) 0x009D2A40 (landed as CByteArray in
 //   CCachedFile::CCachedFile 0x00A5B590), free 0x00BFEA14 (the byte array's inline destructor).
@@ -31,13 +32,7 @@ __declspec(noinline) CByteArray::CByteArray(unsigned long count, const unsigned 
 }
 #pragma auto_inline(on)
 class C3DVector { public: float X, Y, Z; };
-template <class T> class CArray { public:                   // retail CArray (STLport vector): first / last / end
-    T* m_first;
-    T* m_last;
-    T* m_end;
-    unsigned long size() const { return m_last - m_first; }
-    T& operator[](unsigned long n) const { return m_first[n]; }
-};
+#include "engine/CArray.h"
 namespace QuadricOptimiserInternals {
 class COptimisedFace { public:                              // 72 bytes
     unsigned long VertexIndices[3];                  // +0x00

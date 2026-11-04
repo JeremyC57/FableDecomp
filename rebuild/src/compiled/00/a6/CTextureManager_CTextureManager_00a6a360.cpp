@@ -1,5 +1,6 @@
 // CTextureManager::CTextureManager() -- the texture manager starts uninitialised with no pools: the sixteen prealloc pools are built in place (resource list base, empty texture arrays, pool index -1), the failure counters, buffer size and buffer pointer cleared
 // Leaf: ??0CTextureManager
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A6A360, 219 bytes (+5 int3). __fastcall, `ret`. CTextureManager vtable 0x0129DC5C,
 //         CPreallocTexturePool vtable 0x0129DC50.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() 0x0099A2F0, CResourceList::CResourceList() 0x009FC570 (the pool's base).
@@ -43,9 +44,7 @@ template <class T> struct CVectorBase {        // STLport _Vector_base<T, alloca
         _M_end_of_storage.m_data = _M_start + count;
     }
 };
-template <class T> class CArray : public CVectorBase<T> { public:   // retail CArray<T> = STLport vector<T> (12 bytes): vector(n) with n = 0
-    explicit CArray(unsigned long count) : CVectorBase<T>(count, CAllocator<T>()) { this->_M_finish = this->_M_start; }
-};
+#include "engine/CArray.h"
 class CManagedTextureData;
 struct CIVCountedPointer { CManagedTextureData* Object; };
 struct CPreallocTexturePool : CResourceList {  // vtable 0x0129DC50, retail 0x54 bytes

@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCAttractor::Update(CParticleSystem& system, const CParticleUpdateParameters<unsigned long, unsigned long>& params, bool&) -- pull every active particle inside the attractor's influence radius towards the attractor position (a named vector parameter or the component's current position) with a force that falls off with distance; unless the system uses all attractors only the closest one so far applies
 // Leaf: ?Update@CPSCAttractor@NParticleEngine@@UAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AA_N@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B179A0, 554 bytes, thiscall, `ret 0Ch`.
 // Identity: Ego_r.pdb `?Update@CPSCAttractor@NParticleEngine@@UAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AA_N@Z`;
 //   vtable 0x012A04AC slot 9 (Update on the landed CPSCLight / CPSCSingleSprite / CPSCDecalRenderer vtables); no direct
@@ -35,25 +36,8 @@ public:
     const C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }      // ??YC3DVector@@QAEABV0@ABV0@@Z
 };
 
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy { _Value _M_data; };
-template <class _Tp, class _Alloc> class vector {         // retail STLport vector (12 bytes)
-public:
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;                                          // +0x00
-    _Tp* _M_finish;                                         // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage; // +0x08
-    const_iterator begin() const { return _M_start; }
-    const_iterator end() const { return _M_finish; }
-};
-}   // namespace std
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
 
 template <class K, class V, class TCompare> class CVectorMap {   // sorted-on-demand vector map, retail 0x10 bytes
 public:

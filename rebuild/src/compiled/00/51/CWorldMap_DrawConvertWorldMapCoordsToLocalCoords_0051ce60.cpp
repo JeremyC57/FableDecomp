@@ -1,5 +1,6 @@
 // CWorldMap::DrawConvertWorldMapCoordsToLocalCoords(long, const C3DVector&) const -- draw interface: a world position relative to one map's corner (Z kept)
 // Leaf: ?DrawConvertWorldMapCoordsToLocalCoords@CWorldMap@@UBE?AVC3DVector@@JABV2@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x0051CE60, 45 bytes, `ret 0Ch` (hidden C3DVector result). PDB
 // ?DrawConvertWorldMapCoordsToLocalCoords@CWorldMap@@UBE?AVC3DVector@@JABV2@@Z
 // Virtual slot 6 of the CIDrawWorldMap interface (vtable 0x01244AB4, RTTI: CWorldMap : CBaseClassNonCopyable,
@@ -22,13 +23,7 @@ public:
     unsigned char _rest[0x38];                  // +0x10 .. +0x48
 };
 
-template <class T> class CArray {
-public:
-    T* Start;                                   // +0x00
-    T* Finish;                                  // +0x04
-    T* EndOfStorage;                            // +0x08
-    const T& operator[](unsigned long i) const { return Start[i]; }
-};
+#include "engine/CArray.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {

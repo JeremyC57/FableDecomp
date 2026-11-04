@@ -1,5 +1,6 @@
 // CCreatureAction_StopFillingTankard::PerformAction() -- set the creature mode for this action.
 // Leaf: ?PerformAction@CCreatureAction_StopFillingTankard@@UAEXXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: proven; own RTTI class/method slot and both PDB method declaration; real tracked PCreature+8 GetPItem00A01B50; TC bitset+0x20 and map+0x44 LowerBound0040F020; RemoveMode argument42.
 // Layout: original RTTI CBaseClass/CBaseObject/CCreatureActionBase chain explicit, plus actual CClass/Thing/Physical/GameObject/Creature chain; shared CBaseObject data header included unchanged under alias. GoUnderground immediate base is CCombatActionBase.  shared CTCBase header included unchanged; own component storage is CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > over CArray/std::vector. Original Components donor+0x48 becomes retail+0x44; Compare/Dirty follow three-pointer data. Both PDB LowerBound template name sets confirm enum and real component base.  generated action/base headers flatten polymorphic inheritance and tracked-pointer APIs; minimal real base/PCreature chain retained. CThing header lacks usable template GetTC and bitset/map APIs, so named projection models actual bitset9 and sorted map. No false-branch pointer initialization invented; N091 requires its TC to exist.
 #include "engine/CTCBase.h"
@@ -7,8 +8,7 @@
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CClass:public CBaseObject{public:unsigned char _unmodeled08[0x14-8];};
-namespace std{template<class K,class V>struct pair{K first;V second;};template<class T>class allocator{};template<class V,class T,class Al>class _STLP_alloc_proxy:public Al{public:V _M_data;};template<class T,class Al>class _Vector_base{public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,Al> _M_end_of_storage;};template<class T,class Al=allocator<T> >class vector:public _Vector_base<T,Al>{public:T* begin(){return this->_M_start;}T* end(){return this->_M_finish;}};}
-template<class T>class CArray:public std::vector<T>{};
+#include "engine/CArray.h"
 enum ETCInterfaceType{TC_COMBAT=48,TC_CREATURE_MODE_MANAGER=49};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& entry,const K& key)const{return entry.first<key;}};
 template<class K,class V,class CompareType=CKeyPairCompareLess<K,V> >class CVectorMap{public:typedef std::pair<K,V> value_type;typedef value_type* iterator;CArray<value_type> Data;CompareType Compare;bool Dirty;iterator LowerBound(const K& key);iterator end(){return Data.end();}V& operator[](const K& key){K keyCopy=key;iterator p=LowerBound(keyCopy);if(p==end() || key<p->first)p=end();return p->second;}};

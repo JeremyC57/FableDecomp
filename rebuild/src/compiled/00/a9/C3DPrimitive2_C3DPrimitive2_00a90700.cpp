@@ -1,6 +1,7 @@
 // C3DPrimitive2::C3DPrimitive2() -- vtable, then every pointer, count and status cleared, the recorded texture stages set to "none" (-1, -1, no blank textures), no recorded constants, recorded frame -1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A90700, length 137 bytes.
 // Leaf: ??0C3DPrimitive2
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Shape: a root polymorphic class: the vtable store comes first, then the member initialisers in address
 // order from one zero register (ecx; `this` moves to eax) and `or edx,-1` for the -1 words; MaterialIndex,
 // AverageTextureStretch, the vertex/triangle/index counts, VertexStreamFlags and InitFlags stay uninitialised.
@@ -21,10 +22,7 @@ class C3DBoundingSphere { public:                           // centre + radius, 
     long m_x, m_y, m_z, m_radiusBits;
     C3DBoundingSphere() : m_x(0), m_y(0), m_z(0), m_radiusBits(0) { }
 };
-template<class T> class CArray { public:                    // retail CArray<T>: begin/end/capacity
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray() : m_begin(0), m_end(0), m_capacity(0) { }
-};
+#include "engine/CArray.h"
 template<class T> struct scoped_ptr {
     T* m_p;
     scoped_ptr() : m_p(0) { }

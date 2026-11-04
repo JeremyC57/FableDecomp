@@ -1,5 +1,6 @@
 // CEngineResourceManager::~CEngineResourceManager() -- unregister the async-loading callback, uninitialise the shaders, close the pixel shader bank and (outside retail-bank mode) the engine mesh bank, unregister the VS constant layouts, then destroy every member in reverse order
 // Leaf: ??1CEngineResourceManager@@UAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
@@ -27,20 +28,7 @@ public:
     }
     T* operator->() const { return Data; }
 };
-template <class T> class CArray {                       // retail CArray: first, last, end (12 bytes)
-public:
-    T* m_first;
-    T* m_last;
-    T* m_end;
-    ~CArray()
-    {
-        T* last = m_last;
-        for (T* p = m_first; p != last; ++p)
-            p->~T();
-        if (m_first)
-            free(m_first);
-    }
-};
+#include "engine/CArray.h"
 class CTexture { public:                                // 8 bytes
     void*         Texture;
     unsigned long Flags;

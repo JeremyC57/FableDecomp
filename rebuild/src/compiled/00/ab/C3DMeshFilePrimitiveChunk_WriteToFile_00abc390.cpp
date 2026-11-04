@@ -1,4 +1,5 @@
 // C3DMeshFilePrimitiveChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const -- one material index as a plain long, otherwise the count tagged with the top bit followed by every index; then the sub-chunks
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ABC390, 144 bytes. Callees: CDataOutputStream::WriteSLONG 0x00993EB0,
 // CChunkedFileSuperChunk::WriteToFile 0x00AA78C0.
 // The PDB header (engine/C3DMeshFilePrimitiveChunk.h) sits 8 bytes high; retail MaterialIndices CArray<long> +0x2C
@@ -31,16 +32,7 @@ public:
     void WriteSLONG(long);   // 0x00993EB0
 };
 
-template <class T>
-class CArray { public:                             // retail CArray is 12 bytes (the PDB's is 16)
-    T* m_pBegin;                            // +0
-    T* m_pEnd;                              // +4
-    T* m_pEndOfStorage;                     // +8
-    CArray() : m_pBegin(0), m_pEnd(0), m_pEndOfStorage(0) {}
-    unsigned long Size() const { return (unsigned long)(m_pEnd - m_pBegin); }
-    T& operator[](unsigned long i) { return m_pBegin[i]; }
-    const T& operator[](unsigned long i) const { return m_pBegin[i]; }
-};
+#include "engine/CArray.h"
 
 struct SCountBlock {
     long m_references;                      // +0

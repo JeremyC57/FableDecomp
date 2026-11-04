@@ -1,4 +1,5 @@
 // CBankFileEntryUpdateData::SetFilenames(const CArray<CCharString>& names) -- size the entry's filename list to match and copy every name across
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009CC840, 104 bytes (+8 int3), __fastcall, ret 4.
 // Callees: CCharString::CCharString() 0x0099E4B0, CSmallVector<CCharString,8>::resize(long, const CCharString&)
 // 0x009D2660 (labelled with another instantiation), CCharString::~CCharString 0x0099EAE0, CCharString::operator=
@@ -17,16 +18,7 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-template <class T>
-class CArray {                                       // retail CArray: 12 bytes
-public:
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    const T* begin() const { return m_pFirst; }
-    unsigned long size() const { return m_pLast - m_pFirst; }
-    const T& operator[](unsigned long n) const { return *(begin() + n); }
-};
+#include "engine/CArray.h"
 
 template <class T, int N>
 class CSmallVector {

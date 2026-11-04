@@ -1,6 +1,7 @@
 // CMeshDataBank::NotifyEntryRemoved(unsigned long) -- an entry left the bank: drop its dynamic-info counted pointer (when in range) and clear its slot in the entry table
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A24330, 128 bytes (padding included); vtable 0x0129CE94 slot 14.
 // Leaf: ?NotifyEntryRemoved@CMeshDataBank@@MAEXK@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Shape: `index < DynamicInfoBuffer.size()` (+0x3b0, 8-byte CCountedPointer<CMeshDataBankEntry>
 // elements, unsigned) selects the element through STLport's `*(begin() + n)` and assigns null to it:
 // inline release (count re-read after the decrement; deleter +4 on the object +8, block freed by
@@ -33,14 +34,7 @@ template <class T> class CCountedPointer { public:
     }
 };
 
-template <class T> class CArray { public:                  // STLport vector
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned long size() const { return _M_finish - _M_start; }
-    T* begin() { return _M_start; }
-    T& operator[](unsigned long n) { return *(begin() + n); }
-};
+#include "engine/CArray.h"
 
 class CMeshDataBank { public:
     virtual void v00();

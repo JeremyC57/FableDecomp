@@ -1,11 +1,12 @@
 // NEnvironmentInternal::CBlendedEnvironmentTheme::CBlendedEnvironmentTheme() -- construct the 3 embedded STLport texture-set vectors first, then zero 19 colour records and 30 scalers.
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008864A0, 281 bytes; no callees. No generated CBlendedEnvironmentTheme header exists, so this local PDB-named view is checked against landed CBlendedEnvironmentTheme::operator= 0x006B5DF0.
 // Retail layout: TimeOfDay+0, Colours+4, Scalers+0x134, TextureSets+0x1ac. The native 12-byte CArray/STLport model and its initialization shape follow landed CThemeChannel::CThemeChannel 006B5FB0; PDB CArray's 16-byte donor layout is too large.
 template<class T> struct allocator { allocator(){} allocator(const allocator&){} };
 template<class Value,class T,class Alloc> struct _STLP_alloc_proxy : Alloc { Value _M_data; _STLP_alloc_proxy(const Alloc& a,Value p):Alloc(a),_M_data(p){} };
 template<class T> struct _Vector_base { typedef allocator<T> allocator_type; T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,allocator_type> _M_end_of_storage; _Vector_base(const allocator_type& a):_M_start(0),_M_finish(0),_M_end_of_storage(a,(T*)0){} };
 template<class T> struct vector : _Vector_base<T> { typedef allocator<T> allocator_type; explicit vector(const allocator_type& a=allocator_type()):_Vector_base<T>(a){} };
-template<class T> class CArray : public vector<T> { public: CArray(){} };
+#include "engine/CArray.h"
 class CRGBFloatColour { public: float R,G,B,A; };
 struct CIDrawEnvironmentTextureSet { CArray<long> Textures; CArray<float> Blends; };
 namespace NEnvironmentInternal {

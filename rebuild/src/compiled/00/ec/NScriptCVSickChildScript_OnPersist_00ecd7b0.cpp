@@ -1,5 +1,6 @@
 // NScript::CV_SickChildScript::OnPersist(CPersistContext&) -- transfer six original progress fields in script order.
 // Leaf: ?OnPersist@CV_SickChildScript@NScript@@UAEXAAVCPersistContext@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: proven original field-name literals in own body reconcile original named PDB owner layout and public virtual OnPersist signature; actual script virtualslot4. PATH_ID/STAGE_IN_PATH are original nested enums of CV_ExposeMayorScript (PDB template Transfer qualifiers), zero enumerator names explicitly descriptive. Exact bool/long/enum reference Transfer<T>(constchar*,T&,constT&) APIs.
 // Model amendment: original protected CBaseClassNonCopyable ctor/dtor; genuine protected _List_base/rebound-node proxy and _Vector_base/end-storage proxy. Existing active vector APIs/bodies preserved verbatim; unused map/tree definitions removed.
 // Layout: accepted original typed CScriptBase64/CLevelScriptBase72, original own fields and full typed handle inheritance; retail size116. CCountedPointer specialmembers retained; actual CCharString ctor(constchar*,long) and non-POD members, true context44 typed prefix. Unused original interfaces omitted explicitly; shared handle headers aliased. Own flag/scalar offsets reconcile donor20-byte larger CScriptBase.
@@ -16,16 +17,7 @@ class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
-namespace std{
-template<class A,class B>struct pair{A first;B second;};template<class T>class allocator{};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};
-struct _List_node_base{_List_node_base* _M_next;_List_node_base* _M_prev;};template<class T>struct _List_node:public _List_node_base{T _M_data;};template<class T,class A>class _List_base{protected:typedef _List_node<T> _Node;typedef allocator<_Node> _NodeAlloc;_STLP_alloc_proxy<_Node*,_Node,_NodeAlloc> _M_node;};template<class T,class A=allocator<T> >class list:protected _List_base<T,A>{};
-
-template<class T,class A>class _Vector_base{protected:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;};
-template<class T,class A=allocator<T> >class vector:protected _Vector_base<T,A>{public:T* begin(){return this->_M_start;}T* end(){return this->_M_finish;}};
-template<class Iter,class Compare>void __fastcall sort(Iter first,Iter last,Compare comp);
-}
-template<class T>class CArray:public std::vector<T>{};
+#include "engine/CArray.h"
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};

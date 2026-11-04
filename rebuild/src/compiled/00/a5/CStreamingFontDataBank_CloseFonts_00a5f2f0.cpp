@@ -1,6 +1,7 @@
 // CStreamingFontDataBank::CloseFonts() -- unload and delete every streaming font entry, empty the font table and forget the bank's file name
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A5F2F0, 161 bytes (+ int3 padding), `ret`.
 // Leaf: CloseFonts
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Callees: CStreamingFontDataBankEntry virtuals (vtable 0x0129D5B4, RTTI): slot 0 deleting destructor (`push 1`),
 //   slot 1 IsLoaded (0x00A5F220), slot 2 CanUnload (0x00A5F230, result unused), slot 3 Unload (0x00A5F250);
 //   memmove @ 0x00BFEAE6 (the erase tail copy), CCharString::operator=(const char*) @ 0x0099EFE0 ("" @ 0x0122D70E).
@@ -26,29 +27,7 @@ public:
     virtual void Unload();                              // slot 3 (0x00A5F250)
 };
 
-template <class T> class CArray { public:                      // retail CArray (STLport vector): first / last / end
-    T* m_first;
-    T* m_last;
-    T* m_end;
-    static T* CopyTrivial(const T* first, const T* last, T* result)
-    {
-        if (first == last)
-            return result;
-        unsigned int n = (const char*)last - (const char*)first;
-        return (T*)((char*)memmove(result, first, n) + n);
-    }
-    unsigned long size() const { return m_last - m_first; }
-    T* begin() { return m_first; }
-    T* end() { return m_last; }
-    T& operator[](unsigned long n) { return *(begin() + n); }
-    T* erase(T* first, T* last)
-    {
-        T* i = CopyTrivial(last, m_last, first);
-        m_last = i;
-        return first;
-    }
-    void clear() { erase(begin(), end()); }
-};
+#include "engine/CArray.h"
 
 class CStreamingFontDataBank {
 public:

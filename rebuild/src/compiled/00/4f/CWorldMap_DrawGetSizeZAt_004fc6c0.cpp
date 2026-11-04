@@ -1,5 +1,6 @@
 // CWorldMap::DrawGetSizeZAt(const C3DVector&, float) const -- draw interface: ask the loaded map under a world position for its Z size there (0 when no loaded map)
 // Leaf: ?DrawGetSizeZAt@CWorldMap@@UBEMABVC3DVector@@M@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004FC6C0, 153 bytes, `ret 8`. PDB ?DrawGetSizeZAt@CWorldMap@@UBEMABVC3DVector@@M@Z
 // Virtual slot 5 of the CIDrawWorldMap interface (vtable 0x01244AB4) at +0x04 of CWorldMap (primary vtable 0x01244AEC):
 // `this` arrives at +4 and the primary calls go through `lea esi,[ebp-4]`.
@@ -33,12 +34,7 @@ class CMapInfo { public:
     unsigned char _rest[0x38];                  // +0x10 .. +0x48
 };
 
-template <class T> class CArray { public:
-    T* Start;                                   // +0x00
-    T* Finish;                                  // +0x04
-    T* EndOfStorage;                            // +0x08
-    const T& operator[](unsigned long i) const { return Start[i]; }
-};
+#include "engine/CArray.h"
 
 struct CIWorldMap {                             // primary vtable 0x01244AEC
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

@@ -1,5 +1,6 @@
 // CEngineClothSimulationMeshBase::IsRunning() const -- the cloth runs while it holds particle simulations: its ParticleSims vector is not empty
 // Leaf: ?IsRunning@CEngineClothSimulationMeshBase@@UBE_NXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B80930, 10 bytes, thiscall, `ret`: mov eax,[ecx+0Ch] ; cmp eax,[ecx+10h] ; setne al ; ret
 // Identity (proven): slot 7 of vtable 0x012A3924 (RTTI CEngineClothSimulationMeshBase) and of the derived cloth vtables
 //   (references 0x012A3940 / 0x012A39B4 / 0x012A39DC / 0x012A3A08); Ego_r.pdb ?IsRunning@CEngineClothSimulationMeshBase@@UBE_NXZ.
@@ -14,13 +15,7 @@ public:
     void* Info;
 };
 
-template <class T> class CArray {           // retail CArray: the STLport 4.6 vector words
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    bool empty() const { return _M_start == _M_finish; }
-};
+#include "engine/CArray.h"
 
 class CEngineSimulationBase {
 public:

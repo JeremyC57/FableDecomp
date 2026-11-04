@@ -1,5 +1,6 @@
 // CTCNymph::CTCNymph(CThing* thing) -- CTCBase(thing), own vtable, null def, an empty flight spline (tension 0.5), null effect/old-effect/target pointers
 // Leaf: ??0CTCNymph
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3325, length 97 bytes (`ret 4`; size TU, odd start). Vtable 0x01242AD4 (CTCNymph).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (catalog "CEngineSubPrimitive2DClockSprite" is propagated),
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (x3: CIntelligentPointer<CThing> vtable 0x01238C6C twice,
@@ -38,12 +39,7 @@ template <class T> struct CAllocProxy : CAllocator<T> {
     long m_capacity;
     CAllocProxy(const CAllocator<T>& a, long c) : CAllocator<T>(a), m_capacity(c) { }
 };
-template <class T> class CArray { public:                  // retail CArray is 0x0c: data, size, capacity
-    T*   m_pData;
-    long m_size;
-    CAllocProxy<T> m_capacity;
-    CArray() : m_pData(0), m_size(0), m_capacity(CAllocator<T>(), 0) { }
-};
+#include "engine/CArray.h"
 class CCardinalSpline { public:                            // retail 0x14
     CArray<C3DVector> ControlPoints;                // +0
     float             Tension;                      // +0xc

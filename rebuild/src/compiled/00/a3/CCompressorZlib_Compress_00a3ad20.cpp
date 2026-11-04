@@ -1,5 +1,6 @@
 // CCompressorZlib::Compress(const void* data, long count, long elementSize, CArray<unsigned char>& output) -- compress count*elementSize bytes into a CArray: refuse when the worst-case block size overflows a long, size the array to the bound, deflate through the virtual Compress, trim to the result; returns the compressed size
 // Leaf: ?Compress@CCompressorZlib@@QAEJPBXJJAAV?$CArray@E@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x00A3AD20, 166 bytes (+ int3 padding), thiscall `ret 10h`. FableWin.pdb
 //   ?Compress@CCompressorZlib@@QAEJPBXJJAAV?$CArray@E@@@Z (no rel32 caller in TLC: kept, unreferenced).
 // Callees: __allmul 0x00BFEB50 (the 64-bit `* 2`), vector<unsigned char>::resize(n, const unsigned char&) 0x00486189
@@ -22,25 +23,8 @@ public:
 };
 #pragma pack(pop)
 
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
-public:
-    _Tp* _M_start;                                          // +0x00
-    _Tp* _M_finish;                                         // +0x04
-    _Tp* _M_end_of_storage;                                 // +0x08
-    unsigned int size() const { return _M_finish - _M_start; }
-    bool empty() const { return _M_start == _M_finish; }
-    _Tp& operator[](unsigned int n) { return _M_start[n]; }
-    void resize(unsigned int __new_size, const _Tp& __x);   // 0x00486189 (vector<unsigned char>)
-    void resize(unsigned int __new_size) { resize(__new_size, _Tp()); }
-};
-}
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T> {  // retail 12 bytes
-public:
-    T* GetAsCArray() { return this->size() != 0 ? &(*this)[0] : (T*)this; }
-};
 
 class CACompressor {
 public:

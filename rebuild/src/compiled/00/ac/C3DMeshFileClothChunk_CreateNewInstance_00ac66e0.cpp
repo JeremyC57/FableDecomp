@@ -1,4 +1,5 @@
 // C3DMeshFileClothChunk::CreateNewInstance() const -- `new C3DMeshFileClothChunk` (inline constructor, 0x44 bytes) handed to the virtual InitNewInstance
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC66E0, 112 bytes. Callees: operator new 0x00BFEA1A, CChunkedFileSuperChunk(const char*)
 // 0x00AA8360 ("CLTH" @ 0x0129DF30), CCharString() 0x0099E4B0 (x2), this->InitNewInstance (slot 10, +0x28).
 // Vtable: C3DMeshFileClothChunk 0x0129F008. Shared retail model of the landed C3DMeshFile*Chunk family
@@ -55,10 +56,7 @@ class CChunkedFileSuperChunk { public:      // RTTI direct base of the mesh/anim
 
 // ------------------------------------------------------------------------------------------------
 
-template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray() : m_begin(0), m_end(0), m_capacity(0) {}
-};
+#include "engine/CArray.h"
 
 class C3DMeshFileClothChunk : public CChunkedFileSuperChunk { public:
     CCharString  Name;           // +0x2c

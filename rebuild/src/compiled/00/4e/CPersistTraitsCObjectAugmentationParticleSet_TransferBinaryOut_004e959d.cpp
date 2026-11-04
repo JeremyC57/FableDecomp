@@ -1,4 +1,5 @@
 // CPersistTraits<CObjectAugmentationParticleSet>::TransferBinaryOut(CDataOutputStream*, const CObjectAugmentationParticleSet*) -- write PeriodSecs, the four particle-effect indices and the StartPoint/EndPoint def-string arrays
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004E959D, 88 bytes, `ret 8` (__fastcall, the empty traits `this` is unused).
 // Callees: CDataOutputStream::WriteFloat @ 0x00993EE0, WriteLong @ 0x00993EB0 (x4), and the same-TU
 //   GFSerialiseVectorBinaryOut<4-byte element> @ 0x004E95F5 (__fastcall: stream in ecx, vector in edx; landed as
@@ -12,11 +13,7 @@
 
 
 class CDefString { public: long Index; };
-template<class T> class CArray { public:                   // STLport vector, 12 bytes in retail
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-};
+#include "engine/CArray.h"
 
 class CObjectAugmentationParticleSet { public:
     float              PeriodSecs;                      // +0x00

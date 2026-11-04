@@ -1,5 +1,6 @@
 // NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::RebalanceWeights() -- renormalise the stack entry's theme weights so the locked weights keep their share (scaled to 1 when they already exceed it) and the unlocked ones share the rest, then drop near-zero themes, unlock the survivors and give the base the remaining weight
 // Leaf: RebalanceWeights
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00886200, length 512 bytes (body 0x1f5 + int3 padding), plain `ret`.
 // Layout: PDB CEnvironmentThemePriorityStackEntry: BaseWeight +0, BaseWeightLocked +4, Themes +8 (CArray<CThemeWeight>, the
 //   retail 12-byte STLport vector); CThemeWeight {ThemeID +0, Weight +4, LockWeight +8} (12 bytes). No engine header.
@@ -23,20 +24,7 @@ template <class T> inline T* copy_range(T* first, T* last, T* result)
     return result;
 }
 
-template <class T> class CArray { public:                 // STLport vector
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned long size() const { return _M_finish - _M_start; }
-    T& operator[](unsigned long index) { return _M_start[index]; }
-    __forceinline T* erase(T* position)
-    {
-        if (position + 1 != _M_finish)
-            copy_range(position + 1, _M_finish, position);
-        --_M_finish;
-        return position;
-    }
-};
+#include "engine/CArray.h"
 
 namespace NEnvironmentInternal {
 class CEnvironmentThemePriorityStackEntry { public:

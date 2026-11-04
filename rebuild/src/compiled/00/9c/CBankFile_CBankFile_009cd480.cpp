@@ -17,6 +17,7 @@
 //        node malloc'd, count zeroed, then _M_empty_initialize re-reading the header), the vector map and block order;
 //        the remaining scalars are body assignments.
 // Leaf: ??0CBankFile
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
@@ -48,9 +49,7 @@ template <class T> struct _Vector_base {
     _STLP_alloc_proxy<T*, allocator<T> > _M_end_of_storage;
     _Vector_base(const allocator<T>& a) : _M_start(0), _M_finish(0), _M_end_of_storage(a, (T*)0) { }
 };
-template <class T> class CArray : public _Vector_base<T> { public:   // the engine's CArray is the STLport vector (12 bytes in retail)
-    explicit CArray(const allocator<T>& a = allocator<T>()) : _Vector_base<T>(a) { }
-};
+#include "engine/CArray.h"
 
 struct CPackedUIntArray {                            // 16 bytes
     unsigned long* PackedInts;

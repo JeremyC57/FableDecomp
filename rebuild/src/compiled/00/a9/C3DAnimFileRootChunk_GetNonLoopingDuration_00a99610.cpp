@@ -10,6 +10,7 @@
 // Layout: retail C3DAnimFileSequenceChunk (0x4c, PDB 0x58): SamplesPerSecond +0x38, Matrices +0x40 (12-byte CArray),
 // as in the landed ctor 0x00AAF730.
 // Leaf: GetNonLoopingDuration@C3DAnimFileRootChunk
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 struct SCountBlock {
     long m_references;                              // +0
     void (__fastcall* m_pfnDestroy)(void*);         // +4
@@ -41,10 +42,7 @@ template<class T> class CCountedPointer { public:
 };
 
 class CMatrix3x4 { public: float m[12]; };
-template<class T> class CArray { public:                   // retail CArray<T>: begin/end/capacity
-    T* m_begin; T* m_end; T* m_capacity;
-    unsigned long size() const { return (unsigned long)(m_end - m_begin); }
-};
+#include "engine/CArray.h"
 
 class C3DAnimFileSequenceChunk { public:
     unsigned char _base[0x38];                      // CChunkedFileSuperChunk base, BoneIndex, ParentIndex, BoneName

@@ -1,5 +1,6 @@
 // CBankFile::UpdateEntry(unsigned long index, CDataInputStream& data, unsigned long dataSize, CDataInputStream& info, unsigned long infoSize, bool computeChecksum) -- CRC the entry's disk filenames into its checksum slot, store the info bytes on the update record, resize the entry's data and write it at its aligned offset, clear RequiresUpdate and notify
 // Leaf: ?UpdateEntry@CBankFile@@QAEXKAAVCDataInputStream@@K0K_N@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D1320, 726 bytes (`ret 0x18`, esp frame 0x20).
 // Callees: CPackedUIntArray::operator[] @ 0x00A629F0, virtual IsDiskFile (slot 17, +0x44), CCharString copy ctor
 //          @ 0x0099EC30 / dtor @ 0x0099EAE0 / ToWideString @ 0x0099E480, CWideString dtor @ 0x0099B510,
@@ -107,12 +108,7 @@ struct CPackedUIntArray {
     unsigned long operator[](unsigned long index) const;   // 0x00A629F0
     bool IsPacked() const { return m_pData != 0; }
 };
-template <class T> class CArray { public:
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
+#include "engine/CArray.h"
 struct CChecksumCacheFile {
     unsigned long GetChecksum(const CWideString& path);   // 0x00A60FB0
 };

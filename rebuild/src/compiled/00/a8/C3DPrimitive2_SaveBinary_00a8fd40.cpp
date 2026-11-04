@@ -1,4 +1,5 @@
 // C3DPrimitive2::SaveBinary(CDataOutputStream&) const -- write the primitive header, static/animated blocks, the vertex buffer (format block + raw data), the index buffer and every cloth primitive
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A8FD40, 528 bytes (ret 4).
 // Callees: CDataOutputStream::WriteSLONG 0x00993EB0, Write3DVector 0x00993FD0, WriteFloat 0x00993EE0, WriteULong 0x00993EA0,
 //   WriteBool 0x00993E30, WriteUChar 0x00993E50, WriteData (vtable slot 4), WriteBuffer 0x00996610 (compressed block),
@@ -46,11 +47,7 @@ class C3DClothPrimitive { public:
     void SaveBinary(CDataOutputStream& out) const;      // 0x00AC3B00
 };
 template<class T> class CCountedPointer { public: T* Data; void* Info; };
-template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
-    T* m_begin; T* m_end; T* m_capacity;
-    unsigned long size() const { return (unsigned long)(m_end - m_begin); }
-    T& operator[](unsigned long i) const { return m_begin[i]; }
-};
+#include "engine/CArray.h"
 
 struct CStaticBlock {                                   // 0x20 bytes
     unsigned long StartIndex;                           // +0x00

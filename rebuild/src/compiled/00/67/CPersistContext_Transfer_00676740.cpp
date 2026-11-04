@@ -1,5 +1,6 @@
 // CPersistContext::Transfer(CRandomAppearanceMorph& value) -- persist a random-appearance morph by binary stream only: CRC-check the empty key, build the default value, then load or save the morph by the context's binary mode
 // Leaf: ??$Transfer@
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00676740, 256 bytes (247 without padding), thiscall `ret 4`.
 // Callers: CCreatureDef::Transfer 0x00675E20 (PRandomAppearanceMorph's object, `call` at 0x00675E61) and the two-argument
 //   forwarder 0x006768B0 (`push [esp+8] ; call ; ret 8`).
@@ -25,52 +26,8 @@ extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 class CDataOutputStream;
 class CMemoryDataInputStream;
 
-namespace std {
-struct __false_type { __false_type() { } };
+#include "engine/CArray.h"
 
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator>
-inline void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
-{
-    for (; __first != __last; ++__first)
-        _Destroy(&*__first);
-}
-template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
-{
-    __destroy_aux(__first, __last, __false_type());
-}
-
-template <class _Tp> class allocator {
-public:
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    ~_Vector_base()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-}
-
-template <class T> class CArray : public std::vector<T> { };   // retail CArray<T>: an STLport vector (12 bytes)
 
 template <class K, class V> class CKeyPairCompareLess { };
 template <class K, class V, class Compare> class CVectorMap {   // retail 16 bytes

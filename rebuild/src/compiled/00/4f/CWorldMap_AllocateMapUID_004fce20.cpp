@@ -1,5 +1,6 @@
 // CWorldMap::AllocateMapUID(long) -- make a 22-bit map UID from the system clock (hashed), offset by map * allocation count, retrying until no used map has it
 // Leaf: ?AllocateMapUID@CWorldMap@@IAEKJ@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004FCE20, 318 bytes, `ret 4`.
 // Callees: the CRT pow intrinsic 0x00BFEB40 and _ftol 0x00BFEA70, _allmul 0x00BFEB50, GetSystemTime (import 0x0143FE18),
 //   GFROR13 0x00497890 (__fastcall).
@@ -18,13 +19,7 @@ class CMapInfo { public:                                      // 0x48 bytes
     bool          Used;                                // +0x24
     unsigned char _body[0x23];
 };
-template <class T> class CArray { public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned long size() const { return _M_finish - _M_start; }
-    T& operator[](unsigned long i) { return *(_M_start + i); }
-};
+#include "engine/CArray.h"
 class CWorldMap {
 public:
     unsigned char    _pad00[0x20];

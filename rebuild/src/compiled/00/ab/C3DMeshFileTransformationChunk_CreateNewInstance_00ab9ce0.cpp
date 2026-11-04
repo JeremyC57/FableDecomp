@@ -6,6 +6,7 @@
 // zeros from edi in descending order then the three 1.0f. The null arm of `new` passes 0 to the
 // registrar (tail-duplicated call). Same factory shape as the landed 0x00AA4B00.
 // Leaf: CreateNewInstance
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 //
 // The PDB header rebuild/include/engine/<Class>.h comes from Ego_r.pdb, a later build in which the
 // CChunkedFileSuperChunk base is 0x34 bytes and CArray<T> is 0x10 bytes; in retail TLC the base is 0x2c
@@ -32,12 +33,7 @@ class CMatrix3x4 { public:                                     // 48 bytes: thre
     }
 };
 
-template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity, no allocator state
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray() : m_begin(0), m_end(0), m_capacity(0) {}
-    unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
-    const T& operator[](unsigned long index) const { return m_begin[index]; }
-};
+#include "engine/CArray.h"
 
 class CChunkedFileSaver;
 class CChunkedFileLoader;

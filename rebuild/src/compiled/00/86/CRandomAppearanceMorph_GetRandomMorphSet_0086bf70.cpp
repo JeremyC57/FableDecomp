@@ -8,7 +8,8 @@
 // Shape: three member calls forwarding the seed and the set; the last passes group 0, the class's general texture-morph map
 // (`lea ecx,[esi+28h]`) and the set's array (`add edi,18h` on the set register, no longer needed).
 // Leaf: GetRandomMorphSet
-template<class T> class CArray { public: T* m_first; T* m_last; T* m_end; };
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
+#include "engine/CArray.h"
 struct CKeyPairCompareLess {};
 template<class K, class V> class CVectorMap { public:
     CArray<V> m_vector; CKeyPairCompareLess m_compare; bool m_sorted;

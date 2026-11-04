@@ -1,5 +1,6 @@
 // CWorldMap::ClipAndConvertWorldMapAreaToLocalArea(long, const C2DBoxI&) const -- clip a world-map box to one map's area and express it relative to that map's corner
 // Leaf: ClipAndConvertWorldMapAreaToLocalArea
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004FC4D0, 142 bytes, `ret 0Ch` (hidden C2DBoxI result). PDB
 // ?ClipAndConvertWorldMapAreaToLocalArea@CWorldMap@@QBE?AVC2DBoxI@@JABV2@@Z
 // Callee: C2DBoxI::ClipTo(const C2DBoxI&) 0x0049C810.
@@ -38,12 +39,7 @@ class CMapInfo { public:
     unsigned char _rest[0x38];                  // +0x10 .. +0x48
 };
 
-template <class T> class CArray { public:
-    T* Start;                                   // +0x00
-    T* Finish;                                  // +0x04
-    T* EndOfStorage;                            // +0x08
-    const T& operator[](unsigned long i) const { return Start[i]; }
-};
+#include "engine/CArray.h"
 
 class CWorldMap { public:
     unsigned char    _pad[0x20];

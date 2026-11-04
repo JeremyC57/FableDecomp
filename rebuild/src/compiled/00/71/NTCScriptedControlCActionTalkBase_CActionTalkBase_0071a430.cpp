@@ -1,5 +1,6 @@
 // NTCScriptedControl::CActionTalkBase::~CActionTalkBase() -- scripted talk action dtor (compiler-generated): the member dtors in reverse order (the conversation counted pointer, the subtitled message array, the target script thing) and the CActionBase / CBaseClassNonCopyable chain
 // Leaf: ??1CActionTalkBase@NTCScriptedControl@@UAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0071A430, 161 bytes, tail jump to the root destructor.
 // Identity: the callers are 0x0071A530, slot 0 (scalar deleting dtor) of vtable 0x012659A8 with RTTI
 //   `.?AVCActionTalkBase@NTCScriptedControl@@`, the CActionTalkToThing dtor 0x0071A570 (vtable 0x012659C8; it destroys its own
@@ -23,33 +24,7 @@
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-namespace std {
-template <class _Tp> class allocator { public:
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc { public:
-    _Tp _M_data;
-};
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
-{
-    for (; __first != __last; ++__first)
-        _Destroy(&*__first);
-}
-template <class _Tp, class _Alloc> class _Vector_base { public:
-    _Tp* _M_start;                                          // +0x0
-    _Tp* _M_finish;                                         // +0x4
-    _STLP_alloc_proxy<_Tp*, _Alloc> _M_end_of_storage;      // +0x8
-    ~_Vector_base()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> { public:
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-} // namespace std
+#include "engine/CArray.h"
 
 class CCPPointerInfo { public:                              // CCountedPointer count block
     unsigned long RefCount;                                 // +0x00
@@ -86,8 +61,6 @@ inline CScriptThing::~CScriptThing() { }
 class CSubtitledMessage { public:                           // retail 0x44 bytes, destroyed out of line
     unsigned char   _data[0x44];                            // PSpeechBank, SpeechIndex, Speech3D, Text, Narrator, three CVectorMaps (Ego_r)
     ~CSubtitledMessage();                                   // 0x004D1DB0
-};
-template <class T> class CArray : public std::vector<T> { public:   // Lionhead array over the STLport vector (retail 0xC)
 };
 enum EConversationAttitude { };                             // values not needed here
 class C3DVector { public:

@@ -1,5 +1,6 @@
 // CThemeChannel::CThemeChannel() -- default constructor: Colours and Scalers are left uninitialised; the three CIDrawEnvironmentTextureSets each get their two empty CArrays (Textures, Blends: three null pointers each)
 // Leaf: ??0CThemeChannel
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x006B5FB0, 90 bytes (+ int3 padding). No callees.
 // Layout: PDB CThemeChannel: Colours CRGBFloatColour[19] +0, Scalers float[30] +0x130, TextureSets
 // CIDrawEnvironmentTextureSet[3] +0x1a8; the retail texture set is 0x18 bytes (two 12-byte STLport-style CArrays,
@@ -34,9 +35,7 @@ template <class T> struct vector : _Vector_base<T> {
     explicit vector(const allocator_type& a = allocator_type()) : _Vector_base<T>(a) { }
 };
 
-template <class T> class CArray : public vector<T> { public:     // retail 12 bytes
-    CArray() { }
-};
+#include "engine/CArray.h"
 
 class CRGBFloatColour { public:
     float R, G, B, A;

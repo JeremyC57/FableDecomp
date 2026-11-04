@@ -1,5 +1,6 @@
 // CEngine::SmartRestoreComponentVideoMemory() -- after a device reset: release and restore every engine component's default-pool resources, then re-apply the shadow and effects video options; while any renderer refuses its option, step the shadow quality down (above 1 first), then the effects quality, then the shadow quality again, and retry; reports whether a quality had to drop, or failure
 // Leaf: ?SmartRestoreComponentVideoMemory@CEngine@@AAE?AW4ESmartRestoreComponentVideoMemoryResult@1@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B24500, 399 bytes, thiscall `ret`, returns 0 (restored as set), 1 (restored
 //   at a lower quality) or 2 (a component failed to restore, or nothing is left to lower).
 // Identity (proven): Ego_r.pdb ?SmartRestoreComponentVideoMemory@CEngine@@AAE?AW4ESmartRestoreComponentVideoMemoryResult@1@XZ
@@ -69,26 +70,7 @@ extern CEngineScreenEffectDisplacementRenderer* g_pDisplacementRenderer_01436e38
 extern CEngineScreenEffectGlowRenderer* g_pGlowRenderer_01436e34;               // 0x01436E34
 extern CEngineScreenEffectRadialBlurRenderer* g_pRadialBlurRenderer_01436e30;   // 0x01436E30
 
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start;                                         // +0x0
-    _Tp* _M_finish;                                        // +0x4
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x8
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    typedef _Tp* iterator;
-    iterator begin() { return this->_M_start; }
-    iterator end() { return this->_M_finish; }
-};
-}
-template <class T> class CArray : public std::vector<T> { };
+#include "engine/CArray.h"
 template <class T> class CDefPointer {
 public:
     T* Object;

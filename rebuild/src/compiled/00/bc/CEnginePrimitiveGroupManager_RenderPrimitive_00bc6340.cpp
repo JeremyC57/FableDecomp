@@ -1,6 +1,7 @@
 // CEnginePrimitiveGroupManager::RenderPrimitive(CEngineInternalPrimitiveBase& group, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain) -- render a primitive group: during an occlusion pass make sure the group owns the pass's occlusion info and share it with each child's occlusion target, render every enabled child of the layer through its type's manager and return the best render result
 // Grade: RELOCATION_MATCH -- the child is tested through the handle (`handle.Data && (handle.Data->RenderLayerMask & layer) && handle.Data->Enable`) and only then named, which leaves retail's dead `lea eax,[eax+ecx*8]` after the child load; `result` declared before `count` loads begin into ecx and schedules `xor eax,eax` before the `sar`
 // Leaf: ?RenderPrimitive@CEnginePrimitiveGroupManager
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC6340, length 322 bytes, `ret 0Ch` (virtual, slot 7).
 // Callees: operator new @ 0x00BFEA1A, CEnginePrimitiveOcclusionInfo::CEnginePrimitiveOcclusionInfo @ 0x00B2FA90 (0x20 bytes),
 //   the child's virtual slot 27 (+0x6c, the primitive that carries its occlusion info; name unknown), the counted info's
@@ -60,13 +61,7 @@ class CEnginePrimitiveHandle { public:
     void* _vptr;
     CEngineInternalPrimitiveBase* Data;            // +0x04
 };
-template <class T> class CArray { public:
-    T* m_pBegin;
-    T* m_pEnd;
-    T* m_pCapacity;
-    unsigned long size() const { return m_pEnd - m_pBegin; }
-    T& operator[](unsigned long i) { return m_pBegin[i]; }
-};
+#include "engine/CArray.h"
 
 class CEngineInternalPrimitiveBase {
 public:

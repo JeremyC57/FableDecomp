@@ -1,5 +1,6 @@
 // CEnginePrimitiveRenderer::Render(const CEngineComponentRenderParams& params) -- render one layer when the camera allows it: inside a render-state capture block, prepare the layer, then per layer either render every scene, flush the matching sub-primitive lists (with the water/shadow renderers around them where enabled) or draw the occlusion pass; finally flush list 0 (and list 1 on request) and finish the layer
 // Leaf: ?Render@CEnginePrimitiveRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Layout: local model -- the method overrides the CEngineComponent base at +0x268 (this arrives adjusted, the body works on
 //   this-0x268); full-object fields: light-index mode +0x78, flags +0xbd/+0xbe, the scene vector at +0x338 (retail STLport 12 bytes).
 struct CTrackedRenderState;
@@ -72,13 +73,7 @@ class CEngineScene { public:
     void RenderLit(long layer, CEngineLightingManager* lighting, long mode, bool flag);   // 0x00B942A0
     void Render(long layer, CEngineLightingManager* lighting);   // 0x00B93F40
 };
-template <class T> class CArray { public:
-    T* First;
-    T* Last;
-    T* End;
-    T* begin() { return First; }
-    T* end() { return Last; }
-};
+#include "engine/CArray.h"
 
 class CCamera { public:
     unsigned char _pad[0x78];

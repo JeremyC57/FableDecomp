@@ -1,4 +1,5 @@
 // CPhysicsMesh::GetNavigationLines(long level) -- the per-level navigation line array (12-byte CArray<C2DLineF> records at +0x48..+0x4C) for the level, falling back to the first one when the level is out of range
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A73D70, length 52 bytes.
 // Callees: none.
 // Shape: the record count is the byte difference times 0x2AAAAAAB with `sar edx,1` (= / 12) and is
@@ -8,11 +9,7 @@
 // loads (a raw `first[n]` keeps `first` in esi: 49 v 52). Retail CArray / std::vector are
 // first/last/end (12 bytes).
 class C2DLineF { public: float m_x0, m_y0, m_x1, m_y1; };
-template <class T> class CArray { public:
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-};
+#include "engine/CArray.h"
 
 template <class T> struct CRetailVector {         // retail std::vector: first/last/end, 12 bytes
     T* m_pFirst;

@@ -1,5 +1,6 @@
 // C3DAnimFileXLoader::C3DAnimFileXLoader() -- build the anim-file loader and register the XSEQ / XALO extension chunk types
 // Leaf: ??0C3DAnimFileXLoader
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA4710, length 365 bytes.
 // Identity: stores vtable 0x0129E1E4 after the C3DAnimFileLoader base ctor; the prototype chunks store the
 //          C3DAnimFileXSequenceChunk (0x0129E194, "XSEQ" @ 0x0129D4F8) and C3DAnimFileXAllocationSizeChunk
@@ -40,14 +41,7 @@ class CCountedPointer { public:
     }
 };
 
-template <class T>
-class CArray { public:                             // retail CArray is 12 bytes (the PDB's is 16)
-    T* m_pBegin;
-    T* m_pEnd;
-    T* m_pEndOfStorage;
-    CArray() : m_pBegin(0), m_pEnd(0), m_pEndOfStorage(0) {}
-    ~CArray() { if (m_pBegin) free(m_pBegin); }
-};
+#include "engine/CArray.h"
 
 class CChunkedFileSuperChunk;
 class CChunkedFileChunk { public:                  // PDB sizeof 0x10

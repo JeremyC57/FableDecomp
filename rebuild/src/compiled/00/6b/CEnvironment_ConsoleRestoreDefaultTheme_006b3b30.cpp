@@ -1,5 +1,6 @@
 // CEnvironment::ConsoleRestoreDefaultTheme(CEnvironment& env, const vector<CGenericVar>& args) -- console: transition (channel, priority) back to the default theme over a duration, even while a theme is forced
 // Leaf: ?ConsoleRestoreDefaultTheme@CEnvironment@@CIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B3B30, length 80 bytes (68 code + int3 pad), private static
 //   __fastcall (`CI`): ecx = env, edx = args, plain `ret`.
 // Callees: NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::TransitionToDefaultTheme(float) @ 0x00886400,
@@ -20,13 +21,7 @@ public:
 };
 }
 
-template <class T> class CArray {                           // retail 12-byte array (STLport vector body)
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T& operator[](long index) { return _M_start[index]; }
-};
+#include "engine/CArray.h"
 
 namespace NEnvironmentInternal {
 class CEnvironmentThemePriorityStack {
@@ -48,16 +43,6 @@ public:
     float         ValFloat;                                 // +0x18
 };
 
-namespace std {
-template <class T> class allocator { };
-template <class T, class A = allocator<T> > class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    const T& operator[](unsigned int n) const { return *(_M_start + n); }
-};
-}
 using std::vector;
 
 enum { ENVIRONMENT_CHANNEL_COUNT = 6, ENVIRONMENT_PRIORITY_COUNT = 5 };

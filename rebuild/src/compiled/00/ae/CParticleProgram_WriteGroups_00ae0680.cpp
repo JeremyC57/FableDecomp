@@ -1,5 +1,6 @@
 // CParticleProgram::WriteGroups(CDataOutputStream& stream, const CArray<C3DGroup2>& groups) -- private static save helper: the group count, then per group its bone index, its vertex-blend count and the raw blend array
 // Leaf: ?WriteGroups@CParticleProgram@@CIXAAVCDataOutputStream@@ABV?$CArray@VC3DGroup2@@@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE0680, 133 bytes, static __fastcall (stream in ecx, groups in edx), plain `ret`.
 // Identity: Ego_r.pdb `?WriteGroups@CParticleProgram@@CIXAAVCDataOutputStream@@ABV?$CArray@VC3DGroup2@@@@@Z`; its only
 //   callers are the two tail calls of CParticleProgram::WriteToFile 0x00AE2230 (landed; SimGroups +0xFC, NonSimGroups +0x108).
@@ -13,14 +14,7 @@
 //   first (right-to-left), and the stream's vtable is fetched ahead of the out-of-line accessor call.
 class C3DVertexBlend2 { public: long Vertex; float Weight; };   // 8 bytes
 
-template <class T> class CArray {                      // retail CArray<T>: STLport vector, three pointers
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    const T& operator[](unsigned int i) const { return _M_start[i]; }
-};
+#include "engine/CArray.h"
 
 class C3DGroup2 {                                      // 16 bytes in retail
 public:

@@ -1,5 +1,6 @@
 // CEngine::PeekGlobalDiffuseColour() const -- the lighting manager's global (theme channel 0) Diffuse colour, returned by value
 // Leaf: ?PeekGlobalDiffuseColour@CEngine@@UBE?BVCRGBFloatColour@@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00b25d20, 41 bytes, thiscall (`this` unused), `ret 4` (hidden result).
 // Identity (proven): Ego_r.pdb ?PeekGlobalDiffuseColour@CEngine@@UBE?BVCRGBFloatColour@@XZ (the CIEngine virtual) and its inline callee
 //   ?PeekGlobalDiffuseColour@CEngineLightingManager@@QBEABVCRGBFloatColour@@XZ; the global at 0x01436E9C is the lighting manager
@@ -11,26 +12,7 @@
 //   types have no header, so the members used are modelled locally.
 class CRGBFloatColour { public: float R, G, B, A; };
 
-namespace std {
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    typedef unsigned int size_type;
-    const _Tp* begin() const { return this->_M_start; }
-    const _Tp& operator[](size_type __n) const { return *(begin() + __n); }
-};
-}
-template <class T> class CArray : public std::vector<T> { };
+#include "engine/CArray.h"
 
 class C3DVector { public: float X, Y, Z; };
 class C4DVector { public: float X, Y, Z, W; };

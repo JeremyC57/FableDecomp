@@ -1,5 +1,6 @@
 // CVertexShaderConstantLayout::~CVertexShaderConstantLayout() -- the vertex shader constant layout's implicit (compiler-generated) dtor: free the reserved-presets array, then each CShaderConstantRange member in reverse order (their implicit dtors are ~CBaseClass), the four texture transforms in a counted loop, and the tail jump to ~CBaseClass
 // Leaf: ??1CVertexShaderConstantLayout@@UAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0098D710, 270 bytes, tail jump to the base destructor.
 // Identity: no vptr store (the class and every CShaderConstantRange member have compiler-generated dtors); the member offsets are
 //   exactly Ego_r.pdb CVertexShaderConstantLayout's (Reserved +0x04 .. ScreenSpaceTransformOffset +0x134, TextureTransform[4]
@@ -14,42 +15,10 @@
 //   the member array with an inline countdown loop (`mov ebx,4 ; sub edi,0Ch`).
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-namespace std {
-template <class _Tp> class allocator { public:
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc { public:
-    _Tp _M_data;
-};
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
-{
-    for (; __first != __last; ++__first)
-        _Destroy(&*__first);
-}
-template <class _Tp, class _Alloc> class _Vector_base { public:
-    _Tp* _M_start;                                          // +0x0
-    _Tp* _M_finish;                                         // +0x4
-    _STLP_alloc_proxy<_Tp*, _Alloc> _M_end_of_storage;      // +0x8
-    ~_Vector_base()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> { public:
-    typedef _Tp* iterator;
-    iterator begin() { return this->_M_start; }
-    unsigned int size() const { return unsigned int(this->_M_finish - this->_M_start); }
-    _Tp& operator[](unsigned int __n) { return *(begin() + __n); }
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-} // namespace std
+#include "engine/CArray.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-template <class T> class CArray : public std::vector<T> { public:
-};
 class CVertexShaderConstant { public:
     float X;                                                // +0x00
     float Y;                                                // +0x04

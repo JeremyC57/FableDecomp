@@ -1,5 +1,6 @@
 // C3DPrimitive2::FreeData() -- release the primitive's device data: empty the partitioned-mesh index buffer, delete the device-independent data, vertex buffer and index buffer (zeroing their statuses), destroy the animated blocks and forget the block arrays
 // Leaf: FreeData
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A901E0, length 126 bytes.
 // Label correction: catalogued as CInputManagerDX::~CInputManagerDX; it stores no vtable, and its callers are
 // C3DPrimitive2's destructor 0x00A90790 (right after storing vtable 0x0129DF94 = C3DPrimitive2) and 0x00A91640.
@@ -11,23 +12,7 @@
 // member read once), the byte count added to memmove's result; each scoped_ptr reset clears the member before the null
 // test; one zero register (edi) for every store.
 #include <string.h>
-template <class T> class CArray { public:                 // retail CArray: first / last / end
-    T* m_first; T* m_last; T* m_end;
-    static T* CopyTrivial(const T* first, const T* last, T* result)
-    {
-        if (first == last)
-            return result;
-        size_t n = (const char*)last - (const char*)first;
-        return (T*)((char*)memmove(result, first, n) + n);
-    }
-    T* erase(T* first, T* last)
-    {
-        T* i = CopyTrivial(last, m_last, first);
-        m_last = i;
-        return first;
-    }
-    void clear() { erase(m_first, m_last); }
-};
+#include "engine/CArray.h"
 template <class T> struct scoped_ptr {
     T* m_p;
     void reset()

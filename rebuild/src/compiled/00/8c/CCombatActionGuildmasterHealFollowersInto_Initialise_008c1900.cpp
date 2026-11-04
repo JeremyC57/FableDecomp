@@ -1,5 +1,6 @@
 // CCombatAction_Guildmaster_HealFollowersInto::Initialise() -- start the power-up animation and add its five-second creature mode.
 // Leaf: ?Initialise@CCombatAction_Guildmaster_HealFollowersInto@@UAEXXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: proven; own RTTI/PDB Initialise hook; POWER_UP_INTO SetCombatAnimation008574D0 then CCombatActionBase::Initialise00857520; original enum/CTCBase component map mutable0040F020; real nested counted mode pointer ctor00718A00/AddMode0073ACC0 exact PDB; new mode008DB030(CThing&,5.f), actual allocation144.
 // Signature audit: original CCharString(const char*,long) uses PDB ??0CCharString@@QAE@PBDJ@Z; old int/H alias removed, actual test constructor corrected too.
 // Layout: shared CTCBase included unchanged. Generated action and mode headers flatten virtual base chains and omit actual constructors/helpers; local original CBaseClass/CBaseObject/action chain has PCreature+8, Thing primary hierarchy Components68. New mode uses genuine global stand-base104/filter12/timer4/two STLport vectors12, exact tracked element types; constructor external.
@@ -11,8 +12,7 @@ void* __cdecl operator new(unsigned int);
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CClass:public CBaseObject{public:unsigned char _unmodeled08[0x14-8];};
-namespace std{template<class K,class V>struct pair{K first;V second;};template<class T>class allocator{};template<class V,class T,class Al>class _STLP_alloc_proxy:public Al{public:V _M_data;};template<class T,class Al>class _Vector_base{public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,Al> _M_end_of_storage;};template<class T,class Al=allocator<T> >class vector:public _Vector_base<T,Al>{public:T* begin(){return this->_M_start;}T* end(){return this->_M_finish;}};}
-template<class T>class CArray:public std::vector<T>{};
+#include "engine/CArray.h"
 enum ETCInterfaceType{TC_COMBAT=48,TC_CREATURE_MODE_MANAGER=49};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& entry,const K& key)const{return entry.first<key;}};
 template<class K,class V,class CompareType=CKeyPairCompareLess<K,V> >class CVectorMap{public:typedef std::pair<K,V> value_type;typedef value_type* iterator;CArray<value_type> Data;CompareType Compare;bool Dirty;iterator LowerBound(const K& key);iterator end(){return Data.end();}V& operator[](const K& key){K keyCopy=key;iterator p=LowerBound(keyCopy);if(p==end() || key<p->first)p=end();return p->second;}};

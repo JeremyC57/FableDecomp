@@ -1,6 +1,7 @@
 // 006772d0 CThingBaseDef::CThingBaseDef
 // Flags:
 // Leaf: ??0CThingBaseDef@@QAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Layout: shared flattened header supplies the 0x70 extent and native member offsets;
 // typed inheritance below restores the original PDB classes and STLport members.
 #define CThingBaseDef CThingBaseDefLayout
@@ -16,14 +17,7 @@
 #include "engine/CDefPointeeBase.h"
 class CCharString;class CDefinitionManager;class CPersistContext;class CDataInputStream;class CDataOutputStream;class CValidateDefinitionInitBase;
 class CDefString{long TablePos;public:CDefString():TablePos(-1){}void Clear(){TablePos=-1;}};
-namespace std{
-template<class T>class allocator{};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;_STLP_alloc_proxy(const A&a,V p):A(a),_M_data(p){}};
-template<class T,class A>class _Vector_base{protected:T*_M_start,*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;public:_Vector_base():_M_start(0),_M_finish(0),_M_end_of_storage(A(),0){}};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{};
-template<class K,class V>struct pair{K first;V second;};
-}
-template<class T>class CArray:public std::vector<T>{};
+#include "engine/CArray.h"
 template<class K,class V>class CKeyPairCompareLess{};
 template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> >{C Compare;bool Dirty;public:CVectorMap():Dirty(false){}};
 template<class T>class CDefPointer;

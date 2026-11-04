@@ -1,5 +1,6 @@
 // CBankFileEntryUpdateData::Equals(const CArray<CCharString>& filenames, CCountedPointer<CBankStateBlock> stateBlock) const -- the update record still matches when the state block's CRC and every source filename are unchanged
 // Leaf: ?Equals@CBankFileEntryUpdateData@@
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CC750, length 235 bytes (+5 int3), ret 0xc. Ego_r.pdb
 // ?Equals@CBankFileEntryUpdateData@@ABE_NABV?$CArray@VCCharString@@@@V?$CCountedPointer@VCBankStateBlock@@@@@Z (private
 // there; public here).
@@ -21,13 +22,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     const char* c_str() const { if (PStringData == 0) return g_emptyString; return PStringData->Text; }
 };
-template <class T> class CArray { public:                 // retail CArray: 12 bytes
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    long size() const { return m_pLast - m_pFirst; }
-    const T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
+#include "engine/CArray.h"
 template <class T, int N> class CSmallVector { public:
     T* Start;                                      // +0
     signed char Size;                              // +4

@@ -1,5 +1,6 @@
 // CEngineLandscapeRenderer::GetForegroundBumpShadowedVertexShader(long) -- the vertex shader for n lights, clamped to the last one in the active set
 // Leaf: ?GetForegroundBumpShadowedVertexShader@CEngineLandscapeRenderer@@QAEAAVCVertexShader@@J@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x00BF5CD0, 42 bytes; Ego_r.pdb same symbol (0x00A3A5E0). Reads the CArray<CVertexShader>* ForegroundBumpShadowedVertexShaders
 // (0x548) and returns &(*p)[min(n, size - 1)] with an unsigned compare, re-reading the pointer and the size in each arm.
 // The three pointer members sit at +0x544 / +0x548 / +0x54c (Shadowed / BumpShadowed / SpotShadowed, the Ego_r.pdb
@@ -17,7 +18,7 @@ public:
     unsigned int size() const { return unsigned int(_M_finish - _M_start); }
     T& operator[](unsigned int n) { return *(_M_start + n); }
 };
-template <class T> class CArray : public vector<T> {};
+#include "engine/CArray.h"
 class CEngineLandscapeRenderer {
 public:
     CVertexShader& GetForegroundBumpShadowedVertexShader(long n);

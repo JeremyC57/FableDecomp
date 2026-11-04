@@ -1,6 +1,7 @@
 // CShaderResource::CShaderResource() -- CBaseClassNonCopyable base, this class's vtable, the shader bank and the shader array cleared, the vertex-shader input built out of line, the declaration / vertex format cleared and the render manager cleared in the body
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5D870, length 51 bytes.
 // Leaf: ??0CShaderResource
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() @ 0x0099A2F0, CVertexShaderInput::CVertexShaderInput() @ 0x00AB3B10.
 // Layout: retail CArray is 12 bytes, so everything after Shaders sits 4 bytes below the PDB offsets
 // (ShaderRenderManager +0x14, VertexShaderInput +0x18 (0x1c bytes), VertexShaderDeclaration +0x34, VertexFormat +0x38).
@@ -39,7 +40,7 @@ template <class T> struct CSTLportVector : CVectorBase<T> {     // STLport vecto
     explicit CSTLportVector(const CAllocator<T>& alloc = CAllocator<T>()) : CVectorBase<T>(alloc) { }
 };
 
-template <class T> class CArray : public CSTLportVector<T> { public: };
+#include "engine/CArray.h"
 
 
 class CVertexShaderInput { public:                     // vtable 0x0129EA08, 0x1c bytes

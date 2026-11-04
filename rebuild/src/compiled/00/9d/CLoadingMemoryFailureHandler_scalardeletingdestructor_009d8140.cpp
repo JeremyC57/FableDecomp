@@ -1,5 +1,6 @@
 // CLoadingMemoryFailureHandler::`scalar deleting destructor'(unsigned int) -- delete the critical section, free the bank list, the inlined CFailedAllocationHandler destructor stores its vtable, flag-tested delete
 // Leaf: ??_GCLoadingMemoryFailureHandler@@UAEPAXI@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009D8140, 63 bytes (+1 int3 padding), thiscall, `ret 4`.
 // Identity: slot 0 of the CLoadingMemoryFailureHandler vtable 0x0129B8C4 (rtti-vtables.tsv); the second vptr store
 //   0x0129B874 is CFailedAllocationHandler's. The catalog label CWaterPatchMesh::`scalar_deleting_destructor' is propagated.
@@ -23,13 +24,7 @@ struct _RTL_CRITICAL_SECTION {                           // 24 bytes (winnt.h)
 extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(_RTL_CRITICAL_SECTION* section);   // [0x0143FDE4]
 
 class CBankFileAsync;
-template <class T> class CArray {                        // retail CArray: STLport vector<T> over the malloc allocator
-public:
-    T* m_pData;
-    T* m_pLast;
-    T* m_pEnd;
-    ~CArray() { if (m_pData) free(m_pData); }
-};
+#include "engine/CArray.h"
 class CFailedAllocationHandler {                         // vtable 0x0129B874
 public:
     virtual ~CFailedAllocationHandler() {}

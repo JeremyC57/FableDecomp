@@ -1,5 +1,6 @@
 // NScript::CQ_OakValeBanditRaidScript::CQ_OakValeBanditRaidScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- script-module object: CScriptBase base, the two arguments stored at +0x44 / +0x40, this class's vtable, a cleared three-word array at +0x4c and an embedded CScriptThing at +0x64
 // Leaf: ??0CQ_OakValeBanditRaidScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DBF190, length 71 bytes.
 // Callees: CScriptBase::CScriptBase() @ 0x00CB8110, CBaseClass::CBaseClass() @ 0x0099A2D0 (the CScriptThing's base).
 // The manifest label "CShaderResource::CShaderResource" is propagated (vtable 0x012D9E18 has no RTTI: script module,
@@ -54,7 +55,7 @@ template <class T> struct CSTLportVector : CVectorBase<T> {     // STLport vecto
     explicit CSTLportVector(const CAllocator<T>& alloc = CAllocator<T>()) : CVectorBase<T>(alloc) { }
 };
 
-template <class T> class CArray : public CSTLportVector<T> { public: };
+#include "engine/CArray.h"
 
 
 struct __declspec(novtable) CScriptPairBase : CScriptBase {

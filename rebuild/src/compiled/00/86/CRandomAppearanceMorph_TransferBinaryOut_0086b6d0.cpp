@@ -1,4 +1,5 @@
 // CRandomAppearanceMorph::TransferBinaryOut(CDataOutputStream* out) -- write the morph: the three body parts' mesh lists, the three per-part texture-morph maps, the skeletal morphs, the general texture morphs and the max texture group id
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0086B6D0, length 308 bytes, `ret 4`.
 // Callees: CDataOutputStream::WriteULONG 0x00993EA0, WriteLong 0x00993EB0, WriteBool 0x00993E30 (the skeletal morph's
 // flag byte), GFWriteVectorMapMemDump<CTextureMorph, unsigned long, ...>(CDataOutputStream*, const CVectorMap&)
@@ -17,13 +18,7 @@ public:
     void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
-template <class T> class CArray { public:                     // STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
-    T& operator[](unsigned long n) { return *(_M_start + n); }
-};
+#include "engine/CArray.h"
 
 class CTextureMorphEntry { public:                            // pair<unsigned long, CTextureMorph> (12 bytes)
     unsigned long Key;

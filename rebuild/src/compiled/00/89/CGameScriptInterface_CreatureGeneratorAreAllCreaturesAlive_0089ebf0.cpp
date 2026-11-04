@@ -1,5 +1,6 @@
 // CGameScriptInterface::CreatureGeneratorAreAllCreaturesAlive(const CScriptThing& thing) const -- Forward the creature request under retail lifetime and type checks.
 // Leaf: ?CreatureGeneratorAreAllCreaturesAlive@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: original PDB virtual const signature; direct mode/generator calls independently named.
 #include "engine/CTCBase.h"
 #include "engine/CTCTargeted.h"
@@ -9,12 +10,7 @@
 #endif
 class CCPPointerInfo;
 enum ETCInterfaceType {TC_TARGETED=9,TC_ENEMY=73};
-namespace std {
-template<class K,class V>struct pair {K first;V second;};template<class T>class allocator{};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};
-template<class T,class A=allocator<T> >class vector {public:typedef T* iterator;T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;T* begin(){return _M_start;}T* end(){return _M_finish;}};
-}
-template<class T>class CArray:public std::vector<T>{};
+#include "engine/CArray.h"
 template<class K,class V>class CKeyPairCompareLess {public:bool operator()(const std::pair<K,V>& entry,const K& key)const{return entry.first<key;}};
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap {public:typedef std::pair<K,V> value_type;typedef value_type* iterator;CArray<value_type> Data;Cmp Compare;bool Dirty;
 __declspec(noinline) iterator LowerBound(const K& key){iterator first=Data.begin();int count=Data.end()-first;while(count>0){int half=count/2;iterator middle=first+half;if(Compare(*middle,key)){first=middle+1;count-=half+1;}else count=half;}return first;}

@@ -1,5 +1,6 @@
 // CMemoryDataOutputStream::`scalar deleting destructor'(unsigned int) -- free the data buffer, destroy the inherited NewLine string, the inlined CDataStream destructor stores its vtable and calls the root base destructor, flag-tested delete
 // Leaf: ??_GCMemoryDataOutputStream@@UAEPAXI@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009973C0, 68 bytes, thiscall, `ret 4`.
 // Identity: slot 0 of the CMemoryDataOutputStream vtable 0x0129A788 (rtti-vtables.tsv); the second vptr store 0x0129A69C is
@@ -19,13 +20,7 @@ public:
     void* PStringData;
     ~CCharString();                                      // 0x0099EAE0
 };
-template <class T> class CArray {                        // retail CArray: STLport vector<T> over the malloc allocator
-public:
-    T* m_pData;
-    T* m_pLast;
-    T* m_pEnd;
-    ~CArray() { if (m_pData) free(m_pData); }
-};
+#include "engine/CArray.h"
 class CBaseClassNonCopyable {
 public:
     protected:

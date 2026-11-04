@@ -1,5 +1,6 @@
 // CWorldMap::RemoveLevel(long) -- unload a map if loaded, clear its placement cells, remove it from the engine and mark the slot unused
 // Leaf: ?RemoveLevel@CWorldMap@@UAEXJ@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004FF8B0, 71 bytes, `ret 4`. PDB ?RemoveLevel@CWorldMap@@UAEXJ@Z (primary vtable 0x01244AEC
 // slot 5).
 // Callees: virtual slot 10 IsMapLoaded(long) const 0x004FC050 (+0x28), CWorldMap::UnloadLevel(long) 0x004FEDE0,
@@ -28,14 +29,7 @@ public:
     unsigned char _rest[0x20];                  // +0x28 .. +0x48
 };
 
-template <class T> class CArray {
-public:
-    T* Start;                                   // +0x00
-    T* Finish;                                  // +0x04
-    T* EndOfStorage;                            // +0x08
-    T* begin() { return Start; }
-    T& operator[](unsigned long i) { return *(begin() + i); }
-};
+#include "engine/CArray.h"
 
 class CEngineManager {
 public:

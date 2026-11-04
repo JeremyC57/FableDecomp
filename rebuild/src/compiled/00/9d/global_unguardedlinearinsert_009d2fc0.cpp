@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009D2FC0, 127 bytes (+1 int3), __fastcall (/Gr algorithm TU: `last` in ecx,
 // `value` in edx, the one-pointer comparator by value on the stack), ret 4.
 // Leaf: __unguarded_linear_insert
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // The catalog label (CBankFile::InsertionSort_PackedEntry) describes it; the body is the SGI STL helper
 // instantiated for the CBankFile entry sort (GOTCHAS: the retail algorithms are SGI and their TUs use /Gr).
 // Callee: CPackedUIntArray::operator[] 0x00A629F0.
@@ -10,12 +11,7 @@
 // Shape: `next = last - 1` in ebx, `last` and `value` spilled to the frame (two words), the comparator's
 // GetEntryDataOffset inlined twice (value first, then *next, read into edi before the packed test), the
 // unsigned `<` (`jae` exits), the element moved through eax and `last` re-pointed via the frame slot.
-template <class T> class CArray { public:                 // retail CArray: 12 bytes
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
+#include "engine/CArray.h"
 
 struct CRuntimeData {                              // CBankFile::CRuntimeData, 12 bytes
     unsigned long DataOffset;                      // +0x00

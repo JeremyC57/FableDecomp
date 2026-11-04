@@ -1,6 +1,7 @@
 // CChunkedFileSuperChunk::CChunkedFileSuperChunk(const char* type) -- the CChunkedFileChunk base inlined (CBaseClassNonCopyable base called, its vtable, Parent cleared, ChunkType zero-filled then the four type characters copied), this class's vtable, both sub-chunk arrays and CurrentChunkIndex cleared
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA8360, length 74 bytes.
 // Leaf: ??0CChunkedFileSuperChunk
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() @ 0x0099A2F0.
 // The manifest label "CShopItemDef::CShopItemDef" is propagated: vtables 0x0129E474 (CChunkedFileChunk) and 0x0129E4F0
 // (CChunkedFileSuperChunk) in rtti-vtables.tsv; the landed C3DAnimFileObjectChunk constructor 0x00AB0020 calls this body
@@ -18,12 +19,7 @@ struct CBaseClassNonCopyable {                  // vtable 0x0129A7C4
     CBaseClassNonCopyable();                    // 0x0099A2F0
 };
 
-template <class T> class CArray { public:              // retail CArray is 12 bytes (the PDB's is 16)
-    T* m_pBegin;
-    T* m_pEnd;
-    T* m_pEndOfStorage;
-    CArray() : m_pBegin(0), m_pEnd(0), m_pEndOfStorage(0) { }
-};
+#include "engine/CArray.h"
 
 struct SCountBlock;
 

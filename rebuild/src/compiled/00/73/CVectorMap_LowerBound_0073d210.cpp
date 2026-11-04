@@ -1,22 +1,11 @@
 // CVectorMap::LowerBound(const unsigned long& key) const -- Find the first entry whose key is at least key.
 // Leaf: ?LowerBound@?$CVectorMap@KVCRegisteredModeInfo@CTCCreatureModeManager@@V?$CKeyPairCompareLess@KVCRegisteredModeInfo@CTCCreatureModeManager@@@@@@QBEPBU?$pair@KVCRegisteredModeInfo@CTCCreatureModeManager@@@std@@ABK@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: Own Count0073da50 and AllocateMode0073a8e0; PDB CRegisteredModeInfo::AllocFunc, const registry lookup.
 #ifndef _MSC_VER
 #define __cdecl
 #endif
-namespace std {
-template<class A,class B> struct pair {A first;B second;};
-template<class T> class allocator {};
-template<class V,class T,class A> class _STLP_alloc_proxy : public A {public:V _M_data;};
-template<class T,class A> class vector {
-public:
-    typedef T* iterator;typedef const T* const_iterator;
-    T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;
-    const_iterator begin()const{return _M_start;}
-    const_iterator end()const{return _M_finish;}
-};
-}
-template<class T> class CArray : public std::vector<T,std::allocator<T> > {};
+#include "engine/CArray.h"
 template<class K,class V> class CKeyPairCompareLess {
 public:bool operator()(const std::pair<K,V>& entry,const K& key)const{return entry.first<key;}
 };

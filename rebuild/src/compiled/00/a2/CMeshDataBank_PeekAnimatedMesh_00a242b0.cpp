@@ -1,6 +1,7 @@
 // CMeshDataBank::PeekAnimatedMesh(unsigned long index) const -- the bank entry at index, as its C3DMeshInfo
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A242B0, length 16 bytes, `ret 4`.
 // Leaf: ?PeekAnimatedMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Naming: Ego_r.pdb ?PeekAnimatedMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z @ 0x00B60560. The Ego_r TU has eight one-line Peek accessors in a row (PeekPhysicsMeshInfo
 //   0x00B60500, PeekMeshInfo, PeekMesh, PeekStaticMesh, PeekRepeatedMesh, PeekParticleMesh, PeekAnimatedMesh, PeekAnimation
 //   0x00B60570) and retail has eight byte-identical 16-byte bodies at 0x00A24250..0x00A242C0 in the same order (no ICF in
@@ -19,13 +20,7 @@ public:
 };
 class C3DMeshInfo : public CMeshDataBankEntry { };
 
-template <class T> class CArray {                       // retail CArray: the bare STLport vector
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    const T& operator[](unsigned long i) const { return _M_start[i]; }
-};
+#include "engine/CArray.h"
 
 class CMeshDataBank {
 public:

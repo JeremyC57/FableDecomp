@@ -1,5 +1,6 @@
 // 00b93860 CEngineSceneGrid::MovePrimitivesDown
 // Leaf: ?MovePrimitivesDown@CEngineSceneGrid@@AAEXXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
 #include <new>
 #include "rebuild_abi.h"
@@ -13,8 +14,7 @@ class CEngineInternalPrimitiveBase:public CEngineInternalPrimitiveBaseFields{pub
 class CEngineSceneGrid;
 class CEngineSceneGridCell{friend class CEngineSceneGrid;private:CEngineSceneGridCell*Parent;CEngineInternalPrimitiveBase*FirstPrimitive;unsigned char unobservedBoundingBoxDrawAndHandles[0x2c];long LocalCount;unsigned long TotalCount,RenderMask,OccludedLayers;unsigned char BoundingBoxValid:1;unsigned char TotalCountValid:1;unsigned char RenderMaskValid:1;unsigned char WasRendered:1;unsigned char HasOcclusionResults:1;unsigned char OccludedFrames,PreloadFrames;
 CEngineSceneGridCell(CEngineSceneGridCell*);void InvalidateAll();__forceinline void AddPrimitive(CEngineInternalPrimitiveBase&p){p.AddToList(&FirstPrimitive);++LocalCount;if(BoundingBoxValid||TotalCountValid||RenderMaskValid){BoundingBoxValid=0;TotalCountValid=0;RenderMaskValid=0;if(Parent)Parent->InvalidateAll();}}};
-namespace std{template<class T>class allocator{};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};template<class T,class A>class _Vector_base{protected:T*_M_start,*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;};template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:T&operator[](unsigned int n){return this->_M_start[n];}};}
-template<class T>class CArray:public std::vector<T>{public:T&operator[](unsigned int n){return std::vector<T>::operator[](n);}};
+#include "engine/CArray.h"
 class CBaseClassNonCopyable{protected:virtual~CBaseClassNonCopyable();};
 class CEngineSceneGrid:public CBaseClassNonCopyable{
 private:unsigned long Level;CEngineSceneGrid*LevelUp,*LevelDown;unsigned long Size;CArray<CEngineSceneGridCell*>GridCells;

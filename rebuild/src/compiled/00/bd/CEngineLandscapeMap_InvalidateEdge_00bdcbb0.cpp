@@ -1,5 +1,6 @@
 // CEngineLandscapeMap::InvalidateEdge(long x, long y, long length, long direction) -- invalidate a landscape edge span: parts of the span that fall outside this map are forwarded (cell by cell through the world map grid) to the neighbouring maps' landscapes, the in-map remainder goes to this map's background tree; directions 0/1 run along y (1 probes the cell to the left), 2/3 along x (3 probes the cell above)
 // Leaf: InvalidateEdge
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BDCBB0, length 1328 bytes (`ret 10h`, no EH frame).
 // Callees: CLandscapeBackgroundTreeNode::InvalidateEdge @ 0x00BF67F0, itself (neighbour landscapes; the self calls on `this` are
 //   tail calls VC7.1 turns into the loop back to the top). Globals: the world map @ 0x01436E8C.
@@ -20,12 +21,7 @@ class CEngineMap { public:
     unsigned short WorldPosX;                      // +0x60
     unsigned short WorldPosY;                      // +0x62
 };
-template <class T> class CArray { public:
-    T* m_pBegin;
-    T* m_pEnd;
-    T* m_pCapacity;
-    T& operator[](unsigned long i) { return m_pBegin[i]; }
-};
+#include "engine/CArray.h"
 class CEngineWorldMap { public:
     void*               _vptr;                     // +0x00
     unsigned char       _pad04[0x8];

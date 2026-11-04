@@ -1,5 +1,6 @@
 // CCreatureAction_InterruptableMidAttackAutoTurn::CCreatureAction_InterruptableMidAttackAutoTurn(CThingCreatureBase& creature, CThing& target, const CThing* weapon, const C3DVector& requiredFacing, const CDefPointer<const CMeleeCombatAbilityDef>& meleeAbility) -- combat action (priority 0x96, no sounds) that remembers the facing to turn to and the weapon, and takes the melee ability def
 // Leaf: ??0CCreatureAction_InterruptableMidAttackAutoTurn@@QAE@AAVCThingCreatureBase@@AAVCThing@@PBV2@ABVC3DVector@@ABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087CDF0, 201 bytes, thiscall, `ret 0x14`.
 // Identity (proven): stores vtable 0x012778CC (.?AVCCreatureAction_InterruptableMidAttackAutoTurn@@); the parameter list is one of the
 //   two Ego_r.pdb / FableWin.pdb constructors (the five-argument one calls the CThing& base, the four-argument one the creature-only base).
@@ -27,26 +28,8 @@ public:
 #pragma pack(pop)
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc> class vector {              // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-    iterator end() { return this->_M_finish; }
-    const_iterator end() const { return this->_M_finish; }
-    _Tp& operator[](unsigned int n) { return *(this->_M_start + n); }
-};
-}   // namespace std
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
 template <class K, class V> class CKeyPairCompareLess { };
 template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
 public:

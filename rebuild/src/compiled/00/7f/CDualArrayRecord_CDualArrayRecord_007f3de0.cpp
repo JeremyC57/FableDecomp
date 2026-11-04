@@ -1,5 +1,6 @@
 // CDualArrayRecord::~CDualArrayRecord() -- free the second array's buffer, then the first's
 // Leaf: ??1CDualArrayRecord
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F3DE0, length 36 bytes (+ int3 padding).
 // Callee: free @ 0x00BFEA14 (twice).
 // Identity: the manifest label "CSystemRegistry::~CSystemRegistry" is propagated over byte-identical
@@ -13,13 +14,7 @@
 // CArray is three pointers (0x0c bytes).
 extern "C" void __cdecl free(void* block);       // 0x00BFEA14
 
-template<class T>
-class CArray { public:
-    T* m_first;
-    T* m_last;
-    T* m_end;
-    ~CArray() { if (m_first) free(m_first); }
-};
+#include "engine/CArray.h"
 
 class CDualArrayRecord {
 public:

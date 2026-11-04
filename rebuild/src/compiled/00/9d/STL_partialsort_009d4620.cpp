@@ -1,5 +1,6 @@
 // std::__partial_sort(unsigned long* first, unsigned long* middle, unsigned long* last, unsigned long*, CBankFile::CompareDataOffset comp) -- introsort depth-limit fallback of a bank's entry-index sort: heap the prefix, pop every index whose data offset is lower from the rest into it, then heap-sort the prefix
 // Leaf: ??$__partial_sort@
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D4620, 168 bytes (+ int3 padding), `ret 0Ch` (/Gr algorithm TU: first
 //   in ecx, middle in edx; last, the value-type tag pointer and the one-pointer comparator on the stack).
 // Identity: called by the __introsort_loop @ 0x009D48C0 (`partial_sort(first, last, last, comp)`) of the CBankFile entry
@@ -12,12 +13,7 @@
 //   PackedDataOffset +0x38, packed when its Size word, +4, is non-zero); engine/CBankFile.h's default layout disagrees.
 // Shape: STLport make_heap / __pop_heap inline; the comparator inline (left offset parked in the comparator's dead
 //   argument slot, the bank in esi); `middle` spilled to the `push ecx` word because `i` takes ebx.
-template <class T> class CArray { public:                 // retail CArray: 12 bytes
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
+#include "engine/CArray.h"
 
 struct CRuntimeData {                              // CBankFile::CRuntimeData, 12 bytes
     unsigned long DataOffset;                      // +0x00

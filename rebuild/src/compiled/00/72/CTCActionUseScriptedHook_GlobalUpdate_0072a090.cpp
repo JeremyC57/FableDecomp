@@ -1,5 +1,6 @@
 // CTCActionUseScriptedHook::GlobalUpdate(bool) -- while a confirmation is pending consume the confirm message (setting PerformAction on a yes); otherwise perform the queued action: teleport the hero through the connected entrance (door-latch sound, or the locked-door sound), then start a spline scripted camera mode on the camera track when its camera point is a track point
 // Leaf: ?GlobalUpdate@CTCActionUseScriptedHook@@UAEX_N@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072A090, 844 bytes, thiscall `ret 4`, /GS cookie; vtable 0x0126664C slot 26
 //   (Ego_r.pdb ?GlobalUpdate@CTCActionUseScriptedHook@@UAEX_N@Z).
@@ -30,19 +31,7 @@ public:
 class C3DVector { public: float X, Y, Z; };
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 enum EMessageEventType { EMessageEventType_Force32 = 0x7fffffff };
-namespace std {
-template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc> class vector {              // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-    iterator end() { return this->_M_finish; }
-};
-}   // namespace std
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
+#include "engine/CArray.h"
 template <class K, class V> class CKeyPairCompareLess { };
 template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
 public:

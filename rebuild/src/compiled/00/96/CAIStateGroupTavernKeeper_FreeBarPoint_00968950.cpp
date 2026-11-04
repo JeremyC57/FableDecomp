@@ -1,5 +1,6 @@
 // CAIStateGroup_TavernKeeper::FreeBarPoint() -- Return the reserved action point and clear its index.
 // Leaf: ?FreeBarPoint@CAIStateGroup_TavernKeeper@@QAEXXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: Original PDB owner method and tracked/index fields; TC185 CTCTavernBar, helper007ba4f0 original FreeSlot(long). Own header offsets distinguish server from keeper; old FreeBarPoint labels propagated.
 #include "engine/CTCBase.h"
 #define CAIStateGroup_TavernKeeper CAIStateGroup_TavernKeeper_HeaderLayout
@@ -8,8 +9,7 @@
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
-namespace std{template<class K,class V>struct pair{K first;V second;};template<class T>class allocator{};template<class V,class T,class Al>class _STLP_alloc_proxy:public Al{public:V _M_data;};template<class T,class Al>class _Vector_base{public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,Al> _M_end_of_storage;};template<class T,class Al=allocator<T> >class vector:public _Vector_base<T,Al>{public:T* begin(){return this->_M_start;}T* end(){return this->_M_finish;}};}
-template<class T>class CArray:public std::vector<T>{};
+#include "engine/CArray.h"
 enum ETCInterfaceType{TC_TABLE=184,TC_BAR=185};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& entry,const K& key)const{return entry.first<key;}};
 template<class K,class V,class CompareType=CKeyPairCompareLess<K,V> >class CVectorMap{public:typedef std::pair<K,V> value_type;typedef value_type* iterator;CArray<value_type> Data;CompareType Compare;bool Dirty;iterator LowerBound(const K& key);iterator end(){return Data.end();}__forceinline V& operator[](const K& key){K keyCopy=key;iterator p=LowerBound(keyCopy);if(p==end() || key<p->first)p=end();return p->second;}};

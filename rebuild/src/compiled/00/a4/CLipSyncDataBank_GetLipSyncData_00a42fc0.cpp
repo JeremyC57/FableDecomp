@@ -1,5 +1,6 @@
 // CLipSyncDataBank::GetLipSyncData(long index) -- make sure entry `index` is decoded (start loading it when the bank holds it, build it), touch it in its resource list and return its counted data pointer
 // Leaf: GetLipSyncData
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A42FC0, 155 bytes. Callees: CBankFile::EntryExists 0x009CC190 (bool),
 // CLipSyncDataBankEntry::BeginLoading 0x00A42980 (index, bank), CLipSyncDataBankEntry::CData::BuildLipSync
 // 0x00A42EA0, CResource::ListRemove 0x009FBFB0, CResource::ListInsert 0x009FBF90.
@@ -70,14 +71,7 @@ class CLipSyncDataBankEntry { public:
     void BeginLoading(long index, CLipSyncDataBank* bank);   // 0x00A42980
 };
 
-template <class T>
-class CArray { public:                            // retail CArray: begin/end/capacity
-    T* m_pBegin;
-    T* m_pEnd;
-    T* m_pEndOfStorage;
-    T* begin() { return m_pBegin; }
-    T& operator[](long i) { return *(begin() + i); }
-};
+#include "engine/CArray.h"
 
 class CLipSyncDataBank { public:
     virtual void v00();

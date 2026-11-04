@@ -1,5 +1,6 @@
 // C3DAnimationManager::CombineBlendedBaseAnimationsBoneList(const C3DAnimationStateBase& stateA, const C3DAnimationStateBase& stateB, float blend, C3DKeyframe* out, unsigned long count, unsigned long depth, const C3DMesh2& mesh, const CArray<unsigned long>& bones) -- evaluate two parallel animation state trees blended by a factor for a list of bones
 // Leaf: CombineBlendedBaseAnimationsBoneList
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail @ 0x00AA0DC0, 413 bytes (`ret 20h`). Merge of the landed siblings CombineBlendedBaseAnimations 0x00A9F2F0 (state
 //   pair + InterpolateFloat time/progress) and CombineBaseAnimationsBoneList 0x00AA0C50 (per-bone loops through
 //   CalcLocalBoneTransformationRelative 0x00A4D920 / CalcLocalBoneTransformation 0x00A4D330); same callees otherwise
@@ -26,12 +27,7 @@ template <class T> class CCountedPointer { public:
     }
     T* operator->() const { return m_pObject; }
 };
-template <class T> class CArray { public:
-    T* m_pBegin;
-    T* m_pEnd;
-    T* m_pEndOfStorage;
-    const T& operator[](unsigned long i) const { return m_pBegin[i]; }
-};
+#include "engine/CArray.h"
 
 class C3DKeyframe { public: float Rotation[4]; float Position[4]; float Scaling[4]; };   // 0x30
 class C3DMesh2;

@@ -1,5 +1,6 @@
 // NScript::CV_TalentlessBardScript::IsHeroDressedAsApprentice() -- require the complete original four-piece hero outfit.
 // Leaf: ?IsHeroDressedAsApprentice@CV_TalentlessBardScript@NScript@@QAE_NXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: proven; original PDB method owner/privateAAE or publicQAE signature and own four unique item-definition literals. Original Game interface GetHero()ref slot70/IsWearingClothingItem(constThing&,constString&)const slot187 follow actual own vtable01260f0c. First two are GoodKnight/EvilMage nested DemonDoors entity scripts, third is TalentlessBard apprentice method; catalog copied labels are false.
 // Model amendment: original protected CBaseClassNonCopyable ctor/dtor; genuine protected _List_base/rebound-node proxy and _Vector_base/end-storage proxy. Existing active vector APIs/bodies preserved verbatim; unused map/tree definitions removed.
 // Layout: original typed script64/level72 and entity20 API projection (Game+4/Me+8), nested parent/master fields28; TalentlessBard own suffix unused and explicitly omitted. Full original declared bases where known; CEntityScriptBase polymorphic prefix has no proven further base. Available handle headers aliased. Game interface actual NonCopyable/CBaseClass chain; unused slots explicitly descriptive. True CCharString implicit ctor(constchar*,long) and external dtor retain conditional temporary lifetimes, short circuit and original virtual arguments.
@@ -16,16 +17,7 @@ class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
-namespace std{
-template<class A,class B>struct pair{A first;B second;};template<class T>class allocator{};
-template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};
-struct _List_node_base{_List_node_base* _M_next;_List_node_base* _M_prev;};template<class T>struct _List_node:public _List_node_base{T _M_data;};template<class T,class A>class _List_base{protected:typedef _List_node<T> _Node;typedef allocator<_Node> _NodeAlloc;_STLP_alloc_proxy<_Node*,_Node,_NodeAlloc> _M_node;};template<class T,class A=allocator<T> >class list:protected _List_base<T,A>{};
-
-template<class T,class A>class _Vector_base{protected:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;};
-template<class T,class A=allocator<T> >class vector:protected _Vector_base<T,A>{public:T* begin(){return this->_M_start;}T* end(){return this->_M_finish;}};
-template<class Iter,class Compare>void __fastcall sort(Iter first,Iter last,Compare comp);
-}
-template<class T>class CArray:public std::vector<T>{};
+#include "engine/CArray.h"
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};

@@ -1,5 +1,6 @@
 // CEnvironment::TransitionToDefaultTheme(long channel, long priority, float duration) -- fade one channel's priority layer back to its default theme
 // Leaf: ?TransitionToDefaultTheme@CEnvironment@@QAEXJJM@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B3880, length 80 bytes (66 code + int3 pad), thiscall `ret 0xc`.
 // Callees: NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::TransitionToDefaultTheme(float) @ 0x00886400.
 // Identity: Ego_r.pdb `?TransitionToDefaultTheme@CEnvironment@@QAEXJJM@Z` (name set only; donor-keyed address);
@@ -18,13 +19,7 @@ public:
 };
 }
 
-template <class T> class CArray {                           // retail 12-byte array (STLport vector body)
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T& operator[](long index) { return _M_start[index]; }
-};
+#include "engine/CArray.h"
 
 namespace NEnvironmentInternal {
 class CEnvironmentThemePriorityStack {

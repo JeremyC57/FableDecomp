@@ -10,6 +10,7 @@
 // Shape: STLport `*(begin() + i)` over the cloth array (size re-read each pass); each group byte widened into the
 // operator[] key temporary and replaced by the low byte of the mapped value.
 // Leaf: RemapBoneIndices@C3DPrimitive2
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 struct CBoneMap {                                   // map<unsigned long, unsigned long>
     unsigned long& operator[](const unsigned long& key);   // 0x00553E60
 };
@@ -25,12 +26,7 @@ template<class T> class CCountedPointer { public:
     T* Object; void* Count;
     T* operator->() const { return Object; }
 };
-template<class T> class CArray { public:                   // retail CArray<T>: begin/end/capacity
-    T* m_begin; T* m_end; T* m_capacity;
-    T* begin() const { return m_begin; }
-    unsigned long size() const { return (unsigned long)(m_end - m_begin); }
-    T& operator[](unsigned long n) const { return *(begin() + n); }
-};
+#include "engine/CArray.h"
 struct CAnimatedBlock {                             // 0x30
     unsigned char _00[0x0c];
     unsigned long BoneConstantsFixupOffset;         // +0x0c

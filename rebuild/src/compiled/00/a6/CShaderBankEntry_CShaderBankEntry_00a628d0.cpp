@@ -1,5 +1,6 @@
 // CShaderBankEntry::~CShaderBankEntry() -- implicit destructor of a shader bank entry: VSConstantLayout, the ShaderConstants strings and block, the ShaderCode block, then ~CBaseClassNonCopyable
 // Leaf: ??1CShaderBankEntry@@UAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A628D0, 79 bytes, thiscall, tail `jmp ~CBaseClassNonCopyable` 0x0099A300.
 // Identity (proven, two sources): its only caller is the scalar deleting dtor 0x00A628B0, slot 0 of vtable 0x0129D698 (rtti-vtables.tsv:
 //   RTTI .?AVCShaderBankEntry@@ : CBaseClassNonCopyable : CBaseClass), the vtable the ctor 0x00A62120 stores (it zeroes the two vectors
@@ -20,40 +21,8 @@
 
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14 _free (MSVCR71 import thunk)
 
-namespace std {                                             // STLport 4.6 (_alloc.h / _construct.h / _vector.h), the members this body expands
-template <class _Tp> class allocator { public:
-    typedef unsigned int size_type;
-    void deallocate(_Tp* __p, size_type) { if (__p != 0) free((void*)__p); }   // __sgi_alloc = the malloc allocator
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc> class _STLP_alloc_proxy : public _MaybeReboundAlloc { public:
-    _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) {}
-    _Value _M_data;
-};
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
-{
-    for (; __first != __last; ++__first)
-        _Destroy(&*__first);
-}
-template <class _Tp, class _Alloc> class _Vector_base { public:
-    _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) {}
-    ~_Vector_base()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-    _Tp* _M_start;                                          // +0x0
-    _Tp* _M_finish;                                         // +0x4
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage; // +0x8
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> { public:
-    typedef _Alloc allocator_type;
-    explicit vector(const allocator_type& __a = allocator_type()) : _Vector_base<_Tp, _Alloc>(__a) {}
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-}
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };   // Fable's CArray over the STLport vector
 
 class CShaderDataBank;
 

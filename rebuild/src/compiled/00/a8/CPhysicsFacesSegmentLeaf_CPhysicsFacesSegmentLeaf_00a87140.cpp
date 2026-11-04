@@ -1,5 +1,6 @@
 // CPhysicsFacesSegmentLeaf::~CPhysicsFacesSegmentLeaf() -- free the triangle index array, fall back to the base vtable
 // Leaf: ??1CPhysicsFacesSegmentLeaf
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A87140, length 33 bytes.
 // Callee: free @ 0x00BFEA14 (the CArray<unsigned short> buffer).
 // Identity: the manifest label "CSystemRegistry::~CSystemRegistry" is propagated over a byte-identical
@@ -15,13 +16,7 @@
 // CPhysicsFacesSegmentLeaf_Retail (retail CArray = 12 bytes).
 extern "C" void __cdecl free(void* block);       // 0x00BFEA14
 
-template<class T>
-class CArray { public:
-    T* m_first;
-    T* m_last;
-    T* m_end;
-    ~CArray() { if (m_first) free(m_first); }
-};
+#include "engine/CArray.h"
 
 class CIPhysicsFacesSegmentBase {
 public:

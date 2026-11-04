@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveChanger::SetAnimation(const CEnginePrimitiveAnimation& animation) -- forward the animation to every child primitive the changer holds
 // Leaf: ?SetAnimation@CEngineInternalPrimitiveChanger@@UAEXABVCEnginePrimitiveAnimation@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BC5620, 64 bytes, thiscall, `ret 4`.
 // Identity (proven): slot 23 of vtable 0x012A662C (RTTI .?AVCEngineInternalPrimitiveChanger@@ : CEngineInternalPrimitiveBase :
 //   CEnginePersistentPrimitiveBase : CIVCountedPointeeBase); Ego_r.pdb ?SetAnimation@CEngineInternalPrimitiveChanger@@UAEXABVCEnginePrimitiveAnimation@@@Z
@@ -11,29 +12,7 @@
 //   ?IsNull@CEnginePrimitiveHandle@@QBE_NXZ, ?GetData@CEnginePrimitiveHandle@@QBEAAVCEnginePersistentPrimitiveBase@@XZ).
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-namespace std {
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start;                                              // +0x00
-    _Tp* _M_finish;                                             // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;     // +0x08
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    typedef _Tp* iterator;
-    typedef unsigned int size_type;
-    iterator begin() { return this->_M_start; }
-    iterator end() { return this->_M_finish; }
-    size_type size() const { return size_type(this->_M_finish - this->_M_start); }
-    _Tp& operator[](size_type __n) { return *(begin() + __n); }
-};
-}
-template <class T> class CArray : public std::vector<T> { };
+#include "engine/CArray.h"
 
 class CIVCountedPointeeBase {
 public:

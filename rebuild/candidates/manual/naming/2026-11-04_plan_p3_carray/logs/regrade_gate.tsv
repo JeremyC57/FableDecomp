@@ -1,0 +1,609 @@
+address	verdict	reason	changes	name_notes	secs
+00431be0	PASS				0.34
+00432180	PASS				0.29
+00433f90	PASS				0.32
+004340d0	PASS				0.34
+00434240	PASS				0.43
+004343f0	PASS				0.38
+00434660	PASS				0.31
+00476dc3	PASS				0.32
+0049b9a0	PASS				0.39
+0049ba20	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.35
+0049ba70	PASS				0.44
+0049f180	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+004d1db0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.34
+004e25f1	PASS				0.33
+004e2612	PASS				0.28
+004e3325	PASS			NAME_CLASH ??_7CIntelligentPointerCreature@@6B@ bound here to 0123e7d8, in the index to 01237f1c,0123e7e0 | NAME_CLASH ??_7CIntelligentPointerThing@@6B@ bound here to 01238c6c, in the index to 01231c4c,01237f1c,0123e7d8,0123e7e0,01244344,0128b098,0128b0a8	0.32
+004e7578	PASS				0.43
+004e959d	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+004fb880	PASS				0.26
+004fb920	PASS				0.39
+004fbde0	PASS				0.38
+004fc050	PASS				0.31
+004fc170	PASS				0.31
+004fc2a0	PASS				0.37
+004fc2d0	PASS				0.31
+004fc330	PASS				0.34
+004fc360	PASS				0.29
+004fc3c0	PASS				0.34
+004fc3f0	PASS				0.37
+004fc470	PASS				0.26
+004fc4a0	PASS				0.33
+004fc4d0	PASS				0.35
+004fc560	PASS				0.29
+004fc5b0	PASS				0.36
+004fc600	PASS				0.33
+004fc6c0	PASS				0.33
+004fc7c0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.34
+004fc930	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.44
+004fce20	PASS				0.34
+004fdbc0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.44
+004fea30	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.47
+004fede0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf | NAME_CLASH ?Find@@YIPAJPAJ0ABJABUCIteratorTag@@@Z bound here to 0050e540, in the index to 006bcc10 | NAME_CLASH ?RemoveMap@CEngineManager@@QAEXJ@Z -> 00640430 is defined at 006403d0 | NAME_CLASH ?RemoveMap@CEngineManager@@QAEXJ@Z bound here to 00640430, in the index to 006403d0 | NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.43
+004feec0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf | NAME_CLASH ?Find@@YIPAJPAJ0ABJABUCIteratorTag@@@Z bound here to 0050e540, in the index to 006bcc10 | NAME_CLASH ?RemoveMap@CEngineManager@@QAEXJ@Z -> 00640430 is defined at 006403d0 | NAME_CLASH ?RemoveMap@CEngineManager@@QAEXJ@Z bound here to 00640430, in the index to 006403d0 | NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.43
+004ff8b0	PASS			NAME_CLASH ?RemoveMap@CEngineManager@@QAEXJ@Z bound here to 006403d0, in the index to 00640430	0.34
+004ff920	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00515620	PASS				0.31
+00517620	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.36
+0051a040	PASS				0.35
+0051ce60	PASS				0.38
+00523790	PASS				0.35
+005237f0	PASS				0.40
+0052aad0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.31
+005bbbce	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.35
+005df960	PASS				0.31
+005f7f4c	PASS				0.30
+005f7f89	PASS				0.36
+005f7fdf	PASS				0.26
+006174f0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.33
+00671100	PASS				0.42
+006755a0	PASS				0.42
+00676740	PASS				0.33
+006772d0	PASS				0.44
+00680840	PASS				0.40
+006a29b0	PASS			NAME_CLASH own ?LowerBound@?$CVectorMap@JV?$CIntelligentPointer@VCThing@@@@V?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@@QAEPAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@ABJ@Z is defined at 00447c80	0.33
+006a2a10	PASS				0.36
+006b3880	PASS				0.33
+006b3b30	PASS				0.37
+006b5b00	PASS				0.33
+006b5fb0	PASS				0.38
+006b6af0	PASS				0.46
+006b6f10	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.34
+006b7570	PASS				0.42
+006b8a80	PASS				0.39
+006b8ae0	PASS				0.41
+006be5e0	PASS				0.31
+006faf20	PASS				0.38
+006faf80	PASS				0.40
+00700180	PASS				0.33
+00700200	PASS				0.38
+007002a0	PASS				0.37
+00700320	PASS				0.49
+00701750	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00701990	PASS			NAME_CLASH ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z bound here to 00993ca0, in the index to 006281ab	0.31
+00705d40	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0070b1c0	PASS				0.44
+0071a430	PASS			NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.35
+00727bf0	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.35
+0072a090	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.37
+0073d210	PASS				0.36
+00742fd0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.39
+00743000	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.37
+007437c0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.36
+007438a0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.35
+0074aa00	PASS				0.36
+0075f830	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.37
+00771660	PASS			NAME_CLASH ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ bound here to 01237f1c, in the index to 01238c6c	0.42
+00771b30	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.36
+007a6b20	PASS				0.41
+007e1590	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.36
+007f3de0	PASS				0.37
+00819d50	PASS				0.29
+00819e60	PASS				0.38
+00819f70	PASS				0.37
+0081b0a0	PASS				0.38
+00826380	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00827b00	PASS				0.31
+00827b60	PASS				0.37
+00835fd0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0084a290	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.36
+0084a2f0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.44
+0084d790	PASS				0.40
+00855880	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.44
+008558d0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.33
+0086b6d0	PASS				0.38
+0086bcc0	PASS				0.31
+0086bd20	PASS				0.42
+0086bf70	PASS				0.37
+0086e110	PASS				0.42
+0086e900	PASS				0.42
+0086f180	PASS				0.38
+00872480	PASS				0.31
+0087ca30	PASS				0.40
+0087cdf0	PASS			NAME_CLASH ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ bound here to 01237f1c, in the index to 01238c6c	0.41
+0087cec0	PASS			NAME_CLASH ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ bound here to 01237f1c, in the index to 01238c6c	0.40
+00886200	PASS				0.33
+008864a0	PASS				0.40
+00887380	PASS				0.35
+00887b00	PASS				0.37
+008894a0	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.39
+0088bbe0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.43
+00895650	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.55
+00895b60	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00896660	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.54
+00896730	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.50
+0089c000	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.58
+0089c080	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.43
+0089c330	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0089c380	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0089c3d0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0089d420	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0089d4c0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0089d560	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0089d690	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0089d6f0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0089ddf0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.53
+0089e9c0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0089eb80	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0089ebf0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+008a05a0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.42
+008a0660	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.52
+008a7ee0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.56
+008b75e0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.45
+008b8260	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.38
+008b8310	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.34
+008c1900	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.41
+008c1a10	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.40
+008c1b20	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.35
+008cb250	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+008cb8f0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.48
+008d2700	PASS				0.34
+008d3170	PASS				0.32
+008d3850	PASS				0.34
+008d3930	PASS				0.35
+008d3a10	PASS				0.34
+008ddfb0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.30
+0090ba20	PASS			NAME_CLASH own ??1CDualArrayRecord@@QAE@XZ is defined at 007f3de0	0.37
+00923aa0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00923b00	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+009240c0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00924200	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00924350	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00939180	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00950b20	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+009670a0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.40
+00967110	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.40
+00968950	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 0040f020 is defined at 006804c0	0.36
+0096c250	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0096d200	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0097baa0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0098d710	PASS			NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300	0.44
+00992290	PASS				0.33
+00994b10	PASS				0.33
+00995e70	PASS				0.41
+00996b30	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+009973c0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.35
+009b20d0	PASS				0.38
+009b2130	PASS				0.39
+009b21f0	PASS				0.31
+009b2290	PASS				0.38
+009b5d30	PASS				0.33
+009b5d50	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.41
+009b80c0	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.40
+009b8630	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.43
+009b8820	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.35
+009b8ca0	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.33
+009b8f70	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.39
+009b9030	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.44
+009b9290	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.39
+009b9320	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.29
+009c6f40	PASS			NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.36
+009c7d00	PASS				0.35
+009c8220	PASS				0.40
+009c8630	PASS				0.38
+009cae60	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.44
+009cbf90	PASS				0.39
+009cc190	PASS				0.33
+009cc210	PASS				0.38
+009cc240	PASS				0.28
+009cc270	PASS				0.35
+009cc2a0	PASS				0.38
+009cc350	PASS				0.39
+009cc3b0	PASS				0.33
+009cc450	PASS				0.38
+009cc750	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.36
+009cc840	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.35
+009cccd0	PASS				0.40
+009cd3c0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf | NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.34
+009cd480	PASS			NAME_CLASH ??_7CBankFile@@6B@ bound here to 0129b54c, in the index to 012b87f4	0.37
+009d1260	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.28
+009d1320	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z bound here to 00993ca0, in the index to 006281ab	0.40
+009d20d0	PASS				0.32
+009d2ed0	PASS				0.34
+009d2fc0	PASS				0.32
+009d3670	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.34
+009d3b90	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.31
+009d4620	PASS				0.35
+009d48c0	PASS				0.31
+009d8140	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf | NAME_CLASH ??_7CFailedAllocationHandler@@6B@ bound here to 0129b874, in the index to 012b37fc	0.41
+009d88d0	PASS				0.34
+009e9220	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.33
+00a013e0	PASS				0.37
+00a01430	PASS				0.39
+00a01480	PASS				0.46
+00a02db0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.38
+00a24250	PASS				0.37
+00a24260	PASS				0.32
+00a24270	PASS				0.33
+00a24280	PASS				0.34
+00a24290	PASS				0.35
+00a242a0	PASS				0.29
+00a242b0	PASS				0.36
+00a242c0	PASS				0.34
+00a24330	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.38
+00a25420	PASS				0.36
+00a31880	PASS				0.39
+00a318d0	PASS				0.40
+00a39d20	PASS				0.36
+00a3ad20	PASS				0.31
+00a3c260	PASS				0.38
+00a42fc0	PASS				0.40
+00a440f0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.37
+00a4a910	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.38
+00a4fd70	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.36
+00a56aa0	PASS				0.38
+00a5d510	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.40
+00a5d870	PASS				0.31
+00a5e670	PASS			NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.36
+00a5ecb0	PASS				0.41
+00a5f0b0	PASS				0.43
+00a5f0f0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.32
+00a5f290	PASS				0.34
+00a5f2f0	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.32
+00a5f3a0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.41
+00a61fc0	PASS				0.39
+00a62050	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.35
+00a620d0	PASS				0.34
+00a628d0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00a635f0	PASS				0.47
+00a63630	PASS				0.36
+00a69ed0	PASS				0.45
+00a6a360	PASS				0.45
+00a6c560	PASS				0.33
+00a6c5a0	PASS				0.36
+00a6c5f0	PASS				0.36
+00a6c850	PASS				0.35
+00a6c890	PASS				0.39
+00a73d70	PASS				0.35
+00a7dd40	PASS				0.33
+00a86cd0	PASS				0.36
+00a87140	PASS				0.35
+00a8ece0	PASS				0.35
+00a8ed30	PASS				0.35
+00a8efa0	PASS				0.44
+00a8f770	PASS				0.45
+00a8fd40	PASS				0.45
+00a8ff50	PASS				0.38
+00a901e0	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.40
+00a90510	PASS				0.41
+00a90560	PASS			NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300	0.43
+00a90630	PASS			NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300	0.44
+00a90700	PASS				0.37
+00a90f00	PASS				0.38
+00a931f0	PASS				0.40
+00a98a70	PASS				0.34
+00a99610	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.41
+00a999b0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.40
+00a9a7c0	PASS				0.42
+00a9d270	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.36
+00a9d330	PASS				0.38
+00a9d360	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.33
+00a9d3a0	PASS				0.42
+00a9d3c0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.40
+00a9f0d0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.38
+00aa0c50	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.39
+00aa0dc0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.31
+00aa0f60	PASS				0.36
+00aa4170	PASS				0.47
+00aa46b0	PASS				0.43
+00aa4710	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.30
+00aa49f0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.40
+00aa4b00	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00aa4b50	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00aa4b90	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00aa4c00	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00aa4c30	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00aa4ca0	PASS				0.42
+00aa4cd0	PASS				0.31
+00aa4fb0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00aa5250	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00aa59c0	PASS				0.32
+00aa5a60	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00aa5b30	PASS				0.36
+00aa5c20	PASS				0.38
+00aa64e0	PASS				0.35
+00aa7250	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.34
+00aa72a0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.37
+00aa7320	PASS				0.28
+00aa8360	PASS				0.37
+00aa84f0	PASS				0.34
+00aa87e0	PASS				0.34
+00aa9ad0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.38
+00aaaa10	PASS				0.29
+00aaaa60	PASS				0.37
+00aadfc0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.43
+00aae130	PASS				0.39
+00aae170	PASS				0.34
+00aae220	PASS				0.42
+00aae250	PASS				0.40
+00aae4d0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.41
+00aae920	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.35
+00aaf7a0	PASS				0.37
+00ab0090	PASS				0.33
+00ab01e0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00ab0540	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.39
+00ab0700	PASS				0.32
+00ab0730	PASS				0.31
+00ab1660	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.36
+00ab37b0	PASS				0.43
+00ab9a70	PASS				0.33
+00ab9af0	PASS				0.33
+00ab9b50	PASS				0.31
+00ab9bb0	PASS				0.35
+00ab9be0	PASS				0.34
+00ab9c50	PASS				0.37
+00ab9cb0	PASS				0.30
+00ab9ce0	PASS				0.40
+00aba390	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00abadd0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00abbd70	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00abc080	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.37
+00abc1b0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.39
+00abc390	PASS				0.38
+00abc470	PASS				0.41
+00abc4a0	PASS				0.39
+00abc500	PASS				0.33
+00abc560	PASS				0.37
+00abc590	PASS				0.39
+00abc5f0	PASS				0.40
+00abc650	PASS				0.34
+00abc680	PASS				0.35
+00abc6e0	PASS				0.41
+00abc7b0	PASS				0.45
+00abc890	PASS				0.43
+00abcec0	PASS				0.47
+00abecb0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.44
+00abedd0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.40
+00abee10	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.33
+00abee50	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.47
+00abfcf0	PASS				0.32
+00ac3a10	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.39
+00ac4110	PASS				0.38
+00ac4d70	PASS				0.37
+00ac4f30	PASS				0.39
+00ac4fe0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00ac52f0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00ac66a0	PASS				0.42
+00ac66e0	PASS				0.39
+00ac7b00	PASS				0.38
+00ac85d0	PASS				0.37
+00ac8680	PASS				0.29
+00acd500	PASS				0.37
+00acd840	PASS				0.41
+00acdae0	PASS				0.46
+00ad5ed0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.42
+00ad89b0	PASS				0.41
+00ae0680	PASS				0.42
+00ae0e60	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00ae1210	PASS				0.35
+00ae15d0	PASS				0.32
+00ae3360	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.43
+00ae3670	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.50
+00ae3a60	PASS			NAME_CLASH ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z bound here to 00993ca0, in the index to 006281ab	0.43
+00ae7ef0	PASS				0.44
+00ae7fa0	PASS				0.48
+00ae9520	PASS				0.41
+00ae9580	PASS				0.41
+00af2250	PASS				0.40
+00af22c0	PASS				0.42
+00af60c0	PASS				0.40
+00af7b60	PASS				0.45
+00afe910	PASS				0.40
+00b059f0	PASS				0.40
+00b05b10	PASS				0.46
+00b09360	PASS				0.37
+00b0a060	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.50
+00b15b50	PASS				0.26
+00b179a0	PASS				0.41
+00b18780	PASS				0.39
+00b1a640	PASS				0.40
+00b1aeb0	PASS			NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300	0.32
+00b20630	PASS				0.31
+00b22ee0	PASS				0.33
+00b230e0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.34
+00b23110	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.35
+00b231e0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.39
+00b24500	PASS				0.35
+00b25950	PASS				0.31
+00b25d20	PASS				0.33
+00b261d0	PASS				0.54
+00b29780	PASS				0.40
+00b29930	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.38
+00b299d0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.35
+00b29a70	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.39
+00b29b10	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.39
+00b29bb0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.37
+00b29c50	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.37
+00b29cf0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.42
+00b29d90	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.37
+00b29e30	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.33
+00b29ed0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.37
+00b29f70	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.41
+00b2a0c0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.44
+00b2a160	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.41
+00b2a200	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.41
+00b2a2a0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.35
+00b2a340	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.35
+00b2a3e0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.30
+00b2a480	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.40
+00b2a520	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.27
+00b2a5c0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.37
+00b2a660	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.35
+00b2a700	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.36
+00b2a7a0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.35
+00b2a840	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.29
+00b2a8e0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.33
+00b2a980	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.36
+00b2f8b0	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.41
+00b2f9f0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00b2fa90	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00b2fb30	PASS				0.33
+00b33010	PASS				0.29
+00b38ed0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00b3b8e0	PASS			NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf | NAME_CLASH ?Uninitialise@CTexture@@QAEXXZ -> 009f9f70 is defined at 00caa6e0 | NAME_CLASH ?g_BankFileManager@@3VCBankFileManager@@A bound here to 013ca7b0, in the index to 013ca79c	0.38
+00b42750	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.32
+00b48220	PASS				0.37
+00b59be0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.35
+00b676f0	PASS				0.34
+00b80930	PASS				0.35
+00b812c0	PASS				0.35
+00b812f0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00b814b0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00b81640	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00b81e00	PASS				0.23
+00b842b0	PASS				0.36
+00b84390	PASS				0.39
+00b8d280	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00b8d2f0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00b91e70	PASS				0.36
+00b92500	PASS				0.34
+00b92790	PASS				0.30
+00b93860	PASS				0.41
+00b93e40	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.44
+00baa250	PASS				0.38
+00babe60	PASS				0.42
+00bb1640	PASS				0.41
+00bb1ef0	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+00bb6730	PASS				0.38
+00bb8610	PASS				0.30
+00bc13a0	PASS				0.39
+00bc2280	PASS				0.43
+00bc3390	PASS				0.31
+00bc3c20	PASS				0.42
+00bc4c50	PASS				0.43
+00bc5620	PASS				0.32
+00bc5660	PASS				0.34
+00bc5f50	PASS				0.43
+00bc6210	PASS				0.40
+00bc6270	PASS				0.39
+00bc6340	PASS				0.43
+00bc7920	PASS				0.41
+00bca080	PASS				0.35
+00bcc1c0	PASS				0.36
+00bcc340	PASS				0.44
+00bd28a0	PASS				0.42
+00bdc980	PASS				0.34
+00bdcbb0	PASS				0.36
+00bded60	PASS				0.36
+00be1a00	PASS				0.32
+00be3110	PASS				0.41
+00bef580	PASS				0.36
+00bf5c20	PASS				0.32
+00bf5c60	PASS				0.38
+00bf5ca0	PASS				0.27
+00bf5cd0	PASS				0.34
+00bf5d00	PASS				0.37
+00cfbd90	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.53
+00cfcb50	PASS				0.55
+00cfddc0	PASS				0.46
+00d16920	PASS			NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300 | NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.51
+00d16d00	PASS			NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300 | NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.39
+00d179b0	PASS				0.53
+00d1cfc0	PASS				0.50
+00d2f710	PASS				0.47
+00d34410	PASS				0.53
+00d5ab40	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.56
+00d5dd40	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.60
+00d63d80	PASS				0.40
+00d64080	PASS			NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300 | NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.58
+00d66c60	PASS				0.54
+00d66f50	PASS			NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300 | NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.55
+00d78500	PASS				0.63
+00d8f040	PASS			NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300 | NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.57
+00d8fd20	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.51
+00d91da0	PASS				0.55
+00d9b8a0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.50
+00d9bf10	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.57
+00da30b0	PASS				0.56
+00da4300	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.50
+00da49d0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.59
+00da4c30	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.58
+00da5bf0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.59
+00da5d40	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.54
+00daab70	PASS				0.56
+00daabd0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.51
+00dbf190	PASS				0.52
+00dc3ea0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.46
+00dc4d00	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.50
+00dc5f10	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.52
+00dc7420	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.60
+00dcc000	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.38
+00dd2c80	PASS				0.44
+00dfa0b0	PASS				0.63
+00e00610	PASS				0.55
+00e00ce0	PASS				0.63
+00e03480	PASS				0.57
+00e19390	PASS				0.39
+00e337c0	PASS				0.51
+00e38680	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.62
+00e3b8f0	PASS				0.53
+00e477a0	PASS				0.66
+00e53c70	PASS				0.57
+00e57bb0	PASS				0.41
+00e57d20	PASS				0.52
+00e5d0b0	PASS				0.61
+00e5d110	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.61
+00e5f190	PASS				0.49
+00e69f00	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.49
+00e730a0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.69
+00e731f0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.49
+00e75790	PASS				0.57
+00e8d2a0	PASS				0.55
+00e90830	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.53
+00e9c360	PASS				0.57
+00e9e110	PASS				0.45
+00e9fb40	PASS				0.57
+00e9fba0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.67
+00ea3640	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.52
+00ea86f0	PASS				0.43
+00eae890	PASS				0.55
+00eb1f80	PASS				0.52
+00eb7aa0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.53
+00eb98a0	PASS				0.44
+00ebcd70	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.61
+00ec12e0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.67
+00ec4540	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.51
+00ec6860	PASS				0.55
+00ecbd50	PASS				0.57
+00ecca30	PASS				0.57
+00ecd7b0	PASS				0.50
+00ed4c50	PASS				0.48
+00ed51e0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.54
+00eda490	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.56
+00edbc80	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.46
+00ee0240	PASS				0.46
+00ee9f00	PASS				0.50
+00eeb730	PASS				0.45
+00eed060	PASS				0.43
+00eed360	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.52
+00eef5d0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.48
+00eef760	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.51
+00efca00	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.47
+00efe4b0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099b510	0.46
+00f29c10	PASS				0.39
+00f37570	PASS				0.39
+00f386d0	PASS				0.35
+00f3faf0	PASS				0.27
+01224140	FAIL	no usable index entry (ERR [Errno 2] No such file or directory: 'D:\\Tools\\vc71/bin/cl.exe')			0.00
+0122ad60	PASS			NAME_CLASH own _$E2 is defined at 012289b0	0.24

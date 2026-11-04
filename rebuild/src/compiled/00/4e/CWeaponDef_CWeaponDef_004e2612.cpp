@@ -1,5 +1,6 @@
 // CWeaponDef::CWeaponDef() -- weapon definition default constructor: base sub-def, then every member with a constructor
 // Leaf: ??0CWeaponDef
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E2612, length 164 bytes, `ret`.
 // The manifest label "CEngineVSConstantLayoutLights::CEngineVSConstantLayoutLights" is propagated: the body stores
 // vtable 0x0124291C, which rtti-vtables.tsv names CWeaponDef (slot 0 0x004E3D2E is its deleting dtor, whose
@@ -30,12 +31,7 @@ class CSubDefClassBase { public:
     CSubDefClassBase();               // 0x0044C0C0
 };
 
-template <class T> class CArray { public:
-    T* Data;
-    long Size;
-    long Capacity;
-    CArray() : Data(0), Size(0), Capacity(0) {}
-};
+#include "engine/CArray.h"
 
 class CDefString { public: long Index; };
 

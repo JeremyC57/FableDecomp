@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveSpriteTrail::GetWorldPosition(C3DVector& position) -- the centre of the box bounding every trail point grown by the trail width; false for an empty trail
 // Leaf: ?GetWorldPosition@CEngineInternalPrimitiveSpriteTrail@@UAE_NAAVC3DVector@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Grade: RELOCATION_MATCH (retry wave 2) -- the bounds are two C3DVector locals (min at +FLT_MAX, max at -FLT_MAX)
 //   instead of one C3DBoundingBox, which puts them below the point copy in the frame as retail
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCC1C0, length 334 bytes, `ret 4`.
@@ -25,14 +26,7 @@ class C3DBoundingBox { public:
         : MinCoord(3.402823466e+38f, 3.402823466e+38f, 3.402823466e+38f),
           MaxCoord(-3.402823466e+38f, -3.402823466e+38f, -3.402823466e+38f) { }
 };
-template <class T> class CArray { public:                 // retail CArray<T>: three pointers
-    T* m_pData;
-    T* m_pLast;
-    T* m_pEnd;
-    unsigned long size() const { return m_pLast - m_pData; }
-    T* begin() const { return m_pData; }
-    T* end() const { return m_pLast; }
-};
+#include "engine/CArray.h"
 class CEngineInternalPrimitiveSpriteTrail { public:
     class CSpriteTrailEntry { public:
         C3DVector Position;                                // +0x00

@@ -1,5 +1,6 @@
 // CFontDataBank::CFontDataBank() -- CBankFile base, this vtable, the embedded CFontBankStateBlock's vtable, an empty Fonts array, then an empty Filename
 // Leaf: ??0CFontDataBank@@QAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A63630, 75 bytes. Name: Ego_r.pdb ??0CFontDataBank@@QAE@XZ; the catalog label agrees.
 // Layout: engine/CFontDataBank.h (retail 0x130: CBankFile base 0x110, StateBlock +0x110, Fonts +0x120, Filename +0x12C);
 //   Ego_r.pdb CFontBankStateBlock {vptr, CStateBlock State} (State has no constructor code), Fonts = CArray<CFontDataBankEntry*>.
@@ -29,27 +30,7 @@ public:
     CFontBankStateBlock() { }
 };
 class CFontDataBankEntry;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-    _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) { }
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) { }
-    _Tp* _M_start;                                      // +0x00
-    _Tp* _M_finish;                                     // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : protected _Vector_base<_Tp, _Alloc> {
-public:
-    vector() : _Vector_base<_Tp, _Alloc>(_Alloc()) { }
-};
-}
-template <class T> class CArray : public std::vector<T> { };
+#include "engine/CArray.h"
 
 class CFontDataBank : public CBankFile {               // vtable 0x0129DA84
 public:

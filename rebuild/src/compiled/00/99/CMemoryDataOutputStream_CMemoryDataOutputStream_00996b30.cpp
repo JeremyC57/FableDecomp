@@ -1,5 +1,6 @@
 // CMemoryDataOutputStream::~CMemoryDataOutputStream() -- free the Data byte array, then the inlined base destructors: the NewLine string (~CDataOutputStream) and ~CDataStream, chaining to ~CBaseClassNonCopyable
 // Leaf: ??1CMemoryDataOutputStream@@UAE@XZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00996B30, 47 bytes, thiscall, tail `jmp` to the root destructor.
 // Identity (proven): the body stores vtable 0x0129A788 = .?AVCMemoryDataOutputStream@@ (RTTI COL: CMemoryDataOutputStream -> CDataOutputStream
 //   -> CDataStream -> CBaseClassNonCopyable -> CBaseClass; slots 1-4 SetPosition 0x00994B10, GetPosition 0x009945B0, Close 0x009945C0, Write
@@ -18,31 +19,7 @@
 #include "engine/CMemoryDataOutputStream.h"
 #undef CMemoryDataOutputStream
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
-namespace std {
-template <class _Tp> class allocator {
-public:
-    void deallocate(_Tp* __p, unsigned int) { free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc { public: _Value _M_data; };
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    ~_Vector_base()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-protected:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : protected _Vector_base<_Tp, _Alloc> {
-public:
-    ~vector() { }                                          // _Destroy(_M_start, _M_finish): trivial for char
-};
-}
-template <class T> class CArray : public std::vector<T> { };
+#include "engine/CArray.h"
 class CCharStringData;
 class CCharString {
 public:

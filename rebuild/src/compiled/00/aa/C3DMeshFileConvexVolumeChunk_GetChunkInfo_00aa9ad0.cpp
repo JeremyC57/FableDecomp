@@ -1,4 +1,5 @@
 // C3DMeshFileConvexVolumeChunk::GetChunkInfo() const -- "Name: " + Name, built straight into the hidden return slot
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA9AD0, length 51 bytes.
 // Callees: 0x0099EBF0 CCharString(const char*, long), 0x0099F570 __fastcall operator+(const CCharString&, const CCharString&), 0x0099EAE0 ~CCharString
 //
@@ -54,10 +55,7 @@ struct CChunkedFileChunkFactory {
 };
 // ------------------------------------------------------------------------------------------------
 
-template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray() : m_begin(0), m_end(0), m_capacity(0) {}
-};
+#include "engine/CArray.h"
 
 struct C3DVector4 { float X, Y, Z, W; };
 class C3DMeshFileConvexVolumeChunk : public C3DMeshFileChunk { public:

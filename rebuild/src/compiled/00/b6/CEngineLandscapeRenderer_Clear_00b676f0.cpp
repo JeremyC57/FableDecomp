@@ -1,5 +1,6 @@
 // CEngineLandscapeRenderer::Clear() -- clear the landscape of every loaded engine map: walk the world map's MapList and call CEngineLandscapeMap::Clear on each map that has a landscape
 // Leaf: ?Clear@CEngineLandscapeRenderer@@QAEXXZ
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B676F0, 69 bytes, thiscall (this unused), plain `ret`.
 // Identity (probable): Ego_r.pdb lays the class out as OnReleaseDefaultPoolResources (0x009A89B0), Clear (0x009A89F0), then the
 //   console commands SetMeshDetail / SetProceduralTextureDetail / SetForegroundFade; retail has the same run -- the landed
@@ -19,19 +20,7 @@ class CEngineMap {
 public:
     CEngineLandscapeMap* LandscapeMap;                   // +0x00
 };
-namespace std {
-template <class _Tp> class allocator { };
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
-public:
-    typedef unsigned int size_type;
-    _Tp* _M_start;                                       // +0x00
-    _Tp* _M_finish;                                      // +0x04
-    _Tp* _M_end_of_storage;                              // +0x08
-    size_type size() const { return size_type(_M_finish - _M_start); }
-    _Tp& operator[](size_type __n) { return *(_M_start + __n); }
-};
-}   // namespace std
-template <class T> class CArray : public std::vector<T> { };
+#include "engine/CArray.h"
 class CEngineWorldMap {
 public:
     unsigned char      _pad_0x00[0x20];                  // vptr, Map, MapArrayWidth/Height, MapOffsetX/Y

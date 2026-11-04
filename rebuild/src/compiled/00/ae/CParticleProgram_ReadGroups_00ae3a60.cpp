@@ -1,5 +1,6 @@
 // CParticleProgram::ReadGroups(CDataInputStream& stream, CArray<C3DGroup2>& groups) -- private static load helper: read the group count, resize the array, then per group its bone index, its vertex-blend count (resizing the blend array) and the raw blend array
 // Leaf: ?ReadGroups@CParticleProgram@@CIXAAVCDataInputStream@@AAV?$CArray@VC3DGroup2@@@@@Z
+// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE3A60, 456 bytes, private static __fastcall (stream in ecx, groups in edx), plain `ret`.
 // Identity (two sources): Ego_r.pdb `?ReadGroups@CParticleProgram@@CIXAAVCDataInputStream@@AAV?$CArray@VC3DGroup2@@@@@Z`
 //   (the only PDB function taking (CDataInputStream&, CArray<C3DGroup2>&), exactly retail's ecx/edx shape) and its two
@@ -40,41 +41,8 @@ public:
     __forceinline long ReadSLONG() { return ReadType<long>(); }                                         // PDB ReadSLONG
 };
 
-namespace std {
-template <class _Tp> class allocator {
-public:
-    allocator() { }
-    allocator(const allocator<_Tp>&) { }
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-    _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) { }
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) { }
-    ~_Vector_base() { _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    typedef unsigned int size_type;
-    typedef _Alloc allocator_type;
-    explicit vector(const allocator_type& __a = allocator_type()) : _Vector_base<_Tp, _Alloc>(__a) { }
-    size_type size() const { return size_type(this->_M_finish - this->_M_start); }
-    _Tp& operator[](size_type __n) { return *(this->_M_start + __n); }
-    void resize(size_type __new_size);                     // 0x00AE8540 (T = C3DGroup2), out of line
-};
-}
+#include "engine/CArray.h"
 
-template <class T> class CArray : public std::vector<T> {   // engine CArray over the STLport 4.6 vector (0xC bytes)
-public:
-};
 
 class C3DVertexBlend2 { public: long Vertex; float Weight; };   // 8 bytes
 
