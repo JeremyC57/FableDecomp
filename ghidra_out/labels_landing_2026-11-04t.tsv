@@ -1,0 +1,3 @@
+address	name	evidence
+00911a90	CAIStateGroup_WanderAroundInitialPos::Update	landing 2026-11-04t (chunk 757): 
+00a1abf0	CNavigatorAStar::IsNewDestinationGoingToCauseRestart	landing 2026-11-04t (chunk 757): 

@@ -1990,3 +1990,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Check the narrow/wide twin (CParsedItem/CWParsedItem, CStringParser/CWStringParser) and the PDB calling convention / `PB_W` wchar_t mangling before register work (chunk 756).
 - vland payload `flags` must be a list (`["/Gr"]`); a string silently grades without the flag (chunk 756: DIFFER(89v81) on the swap rows).
 - Parallel chunks declare the same member under different sub-macros: at landing, keep the landed declaration and make the newer row define its sub-macro (chunk 756, GetCurrentWorldFrame).
+- An inner `{}` scope around interface lookups and a query (bool result) can fix an esi/edi swap in an AI Update (chunk 757, 0x00911A90).
+- A named float for a virtual call's result, then `+=` / `*=`, gives retail's x87 order where one expression does not (chunk 757, 0x00A1ABF0).
+- VC7.1 orders commutative fmul operands itself; no source order moves it (chunk 757: 0x00C1D1C0, 0x00986ED0, 0x0085C7D0 parked).

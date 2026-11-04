@@ -1,0 +1,5 @@
+catalog  00911a90 ?Update@CAIStateGroup_WanderAroundInitialPos@@UAEXXZ -> CAIStateGroup_WanderAroundInitialPos::Update
+catalog  00a1abf0 ?IsNewDestinationGoingToCauseRestart@CNavigatorAStar@@UBE_NABVC3DVector@@M@Z -> CNavigatorAStar::IsNewDestinationGoingToCauseRestart
+manifest 00911a90 CAIStateGroup_WanderAroundInitialPos::?Update@CAIStateGroup_WanderAroundInitialPos@@UAEXXZ -> CAIStateGroup_WanderAroundInitialPos::Update
+manifest 00a1abf0 CNavigatorAStar::?IsNewDestinationGoingToCauseRestart@CNavigatorAStar@@UBE_NABVC3DVector@@M@Z -> CNavigatorAStar::IsNewDestinationGoingToCauseRestart
+labels 2  catalog renamed 2  manifest renamed 2

@@ -31086,7 +31086,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00911710	Update	CAIStateGroup_Wander	__thiscall	void	1	CAIStateGroup_Wander *	1	yes	accepted									
 009118a0	Update	CAIStateGroup_ChickenWander	__thiscall	void	1	CAIStateGroup_ChickenWander *	1	yes	accepted									
 00911a00	IsRunnable	CAIStateGroup_WanderAroundInitialPos	__thiscall	bool	1	CAIStateGroup_WanderAroundInitialPos *	1	yes	accepted									
-00911a90	?Update@CAIStateGroup_WanderAroundInitialPos@@UAEXXZ	CAIStateGroup_WanderAroundInitialPos	__thiscall	void	1	CAIStateGroup_WanderAroundInitialPos *	1	yes	accepted									
+00911a90	Update	CAIStateGroup_WanderAroundInitialPos	__thiscall	void	1	CAIStateGroup_WanderAroundInitialPos *	1	yes	accepted									
 00911c20	IsRunnable	CAIStateGroup_ChickenPanic	__thiscall	bool	1	CAIStateGroup_ChickenPanic *	1	yes	accepted									
 00911d90	Update	CAIStateGroup_ChickenPanic	__thiscall	void	1	CAIStateGroup_ChickenPanic *	1	yes	accepted									
 00911ef0	IsRunnable	CAIStateGroup_ChickenBeg	__thiscall	bool	1	CAIStateGroup_ChickenBeg *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\91\CAIStateGroupChickenBeg_IsRunnable_00911ef0.cpp
@@ -36045,7 +36045,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a1a260	IsRouteClear	CNavigatorAStar	__thiscall	bool	4	CNavigatorAStar *,CNavWayPoint *,CNavWayPoint *,bool	1	yes	accepted									
 00a1a7e0	GetIntersectionPointsBetweenNodes	CNavigatorAStar	unknown	undefined	0		0	yes	accepted									
 00a1ab40	GetNearestNavigablePosTo	CNavigatorAStar	__thiscall	bool	4	CNavigatorAStar *,C3DVector *,float,C3DVector *	1	yes	accepted									
-00a1abf0	?IsNewDestinationGoingToCauseRestart@CNavigatorAStar@@UBE_NABVC3DVector@@M@Z	CNavigatorAStar	__thiscall	bool	3	CNavigatorAStar *,C3DVector *,float	1	yes	accepted									
+00a1abf0	IsNewDestinationGoingToCauseRestart	CNavigatorAStar	__thiscall	bool	3	CNavigatorAStar *,C3DVector *,float	1	yes	accepted									
 00a1ad40	GetPosInDirection	CNavigatorAStar	unknown	undefined	0		0	yes	accepted									
 00a1aec0	GetMyNodeAt	CNavigatorAStar	__thiscall	CANavQuadTreeNode *	2	CNavigatorAStar *,C3DVector *	1	yes	accepted									
 00a1af00	IsNavLineOfSightClear	CNavigatorAStar	__thiscall	bool	3	CNavigatorAStar *,C3DVector *,C3DVector *	1	yes	accepted									

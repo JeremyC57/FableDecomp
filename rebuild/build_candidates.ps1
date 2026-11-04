@@ -382218,6 +382218,20 @@ $catalog = @(
         TestSource = '00/bc/CEngineInternalPrimitiveLine_GetBoundingSphereWorldSpace_00bc7db0_test.cpp'
         PassPattern = '00bc7db0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00911a90'
+        Module = 'CAIStateGroup_WanderAroundInitialPos'
+        Source = '00/91/CAIStateGroupWanderAroundInitialPos_Update_00911a90.cpp'
+        TestSource = '00/91/CAIStateGroupWanderAroundInitialPos_Update_00911a90_test.cpp'
+        PassPattern = '00911a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1abf0'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_IsNewDestinationGoingToCauseRestart_00a1abf0.cpp'
+        TestSource = '00/a1/CNavigatorAStar_IsNewDestinationGoingToCauseRestart_00a1abf0_test.cpp'
+        PassPattern = '00a1abf0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

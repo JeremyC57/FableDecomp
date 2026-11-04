@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00911a90   WARN SHARED_HEADER_AVAILABLE CThing
+00911a90   WARN SHARED_HEADER_AVAILABLE CTCCreatureNavigation
+00911a90   WARN SHARED_HEADER_AVAILABLE CTCTargetingBase
+00911a90   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+00911a90   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00911a90   RELOCATION_MATCH PASS   Update
+00a1abf0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a1abf0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a1abf0   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+00a1abf0   RELOCATION_MATCH PASS   IsNewDestinationGoingToCauseRestart
+
+WINS: 2
+  00911a90 RELOCATION_MATCH CAIStateGroup_WanderAroundInitialPos::?Update@CAIStateGroup_WanderAroundInitialPos@@UAEXXZ
+  00a1abf0 RELOCATION_MATCH CNavigatorAStar::?IsNewDestinationGoingToCauseRestart@CNavigatorAStar@@UBE_NABVC3DVector@@M@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupWanderAroundInitialPos_Update_00911a90
+  CNavigatorAStar_IsNewDestinationGoingToCauseRestart_00a1abf0

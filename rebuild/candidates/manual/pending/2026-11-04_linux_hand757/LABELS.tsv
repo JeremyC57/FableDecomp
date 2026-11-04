@@ -1,0 +1,3 @@
+address	name
+00911a90	CAIStateGroup_WanderAroundInitialPos::Update
+00a1abf0	CNavigatorAStar::IsNewDestinationGoingToCauseRestart

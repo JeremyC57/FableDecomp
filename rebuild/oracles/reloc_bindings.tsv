@@ -36428,3 +36428,6 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ?IsSpeechAllowed@CombatDialogueManager@@QBE_NABVCThingCreatureBase@@@Z	008af5f0	008af6e0
 ?find@?$_Rb_tree@KU?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@U?$_Select1st@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@U?$_Const_traits@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@@2@ABK@Z	008aef20	008af6e0
 ??$GetAllLeafThings@VCThingObject@@V?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@VCIsSeatWithSpaceOwnedBy@@@CThingSearchTools@@QBEXABVCIsSeatWithSpaceOwnedBy@@AAV?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@@Z	00910a90	009104d0
+?ClearTargets@CTCTargetingBase@@QAEXXZ	007f6160	00911a90
+?FindNearestNavigableNode@CNavigatorBase@@IBEPBVCANavQuadTreeNode@@PBV2@0ABVC3DVector@@MPBVCNavigatorManager@@@Z	00a475c0	00a1abf0
+?IsEqual@CNavigatorAStar@@ABE_NPBVCANavQuadTreeNode@@0@Z	00a1a170	00a1abf0
