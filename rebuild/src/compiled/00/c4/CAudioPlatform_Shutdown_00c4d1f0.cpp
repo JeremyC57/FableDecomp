@@ -1,5 +1,6 @@
 // CAudioPlatform::Shutdown() -- empty the platform layer's four voice pools, restore the global audio configuration record from its defaults and forget the global audio master
 // Leaf: ?Shutdown@CAudioPlatform@@
+// Vendor naming wave V1 (one address, one name): 0x00C3C930 ?Clear@CNodePool@@QAEXXZ (was ?Clear@CVoicePool@@QAEXXZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4D1F0, length 66 bytes (+ int3 padding); plain `ret`; slot 3 of the
 // platform layer's vtable 0x012B5B80, also called directly by its destructor 0x00C3E2A0 (landed as
 // "CTCFishingSpot_00c3e2a0::~CTCFishingSpot_00c3e2a0", a propagated label; there it is "Cleanup").
@@ -19,7 +20,7 @@ struct CPooledVoice {                               // a recyclable voice (lande
     CPooledVoice* m_pNext;                          // +0x08
 };
 
-struct CVoicePool {                                 // 0x14 bytes (landed CNodePool_00c3c930 / CCombatActionPool_00c3c9b0)
+struct CNodePool {                                 // 0x14 bytes (landed CNodePool_00c3c930 / CCombatActionPool_00c3c9b0)
     void*         m_pOwner;                         // +0x00
     CPooledVoice* m_pActiveHead;                    // +0x04
     CPooledVoice* m_pFreeHead;                      // +0x08
@@ -60,10 +61,10 @@ struct CAudioPlatform {                             // vtable 0x012B5B80 (the ba
     virtual void v14();
     virtual CPooledVoice* CreateVoiceA();           // slot 6 (+0x18)
     virtual CPooledVoice* CreateVoiceB();           // slot 7 (+0x1c)
-    CVoicePool m_pool04;                            // +0x04
-    CVoicePool m_pool18;                            // +0x18
-    CVoicePool m_poolA;                             // +0x2c
-    CVoicePool m_poolB;                             // +0x40
+    CNodePool m_pool04;                            // +0x04
+    CNodePool m_pool18;                            // +0x18
+    CNodePool m_poolA;                             // +0x2c
+    CNodePool m_poolB;                             // +0x40
     long AcquireVoiceA(CSoundDesc* desc, CPooledVoice** out);
     long AcquireVoiceB(CSoundDesc* desc, CPooledVoice** out);
 };

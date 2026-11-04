@@ -1,5 +1,6 @@
 // CVtable_012bedcc::UpdateVoices(bool crossfade) -- under the effect's lock, record whether the next block cross-fades and rebuild the two voice records of the set being set up (the pending set when cross-fading, else the current one): both take the rear-louder-than-front output swap, then each is configured from its gain and tap descriptor
 // Leaf: ?UpdateVoices@CVtable_012bedcc
+// Vendor naming wave V1 (one address, one name): 0x00C705B0 ?SetupVoice@CVtable_012bedcc@@QAEXPAUSResampleVoice@@MPBUSUnprovenImpulse52@@@Z (was ?SetupVoice@CVtable_012bedcc@@QAEXPAUSResampleVoice@@MPBUSVoiceTap@@@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C70750, length 225 bytes (+ int3 padding), `ret 4`.
 // Module: libpk's software mixer, the resampling voice effect of vtable 0x012BEDCC (no PDB/RTTI; named by vtable like
 //   the landed siblings CVtable_012beda4 / CVtable_012bedb8). Its slot-3 SetParameters 0x00C70840 and slot-4
@@ -18,7 +19,7 @@ struct _RTL_CRITICAL_SECTION;
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(_RTL_CRITICAL_SECTION* section);
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(_RTL_CRITICAL_SECTION* section);
 
-struct SVoiceTap;                                      // tap descriptor (word at +0x32: the fractional delay)
+struct SUnprovenImpulse52;                                      // tap descriptor (word at +0x32: the fractional delay)
 
 struct SResampleVoice {                                // 0x124 bytes
     unsigned char _pad000[0x121];
@@ -45,10 +46,10 @@ public:
     float            m_gains[2];                       // +0x654
     float            m_front;                          // +0x65c
     float            m_rear;                           // +0x660
-    const SVoiceTap* m_taps[2];                        // +0x664
+    const SUnprovenImpulse52* m_taps[2];                        // +0x664
 
     virtual void v00();
-    void SetupVoice(SResampleVoice* voice, float gain, const SVoiceTap* tap);   // 0x00C705B0
+    void SetupVoice(SResampleVoice* voice, float gain, const SUnprovenImpulse52* tap);   // 0x00C705B0
     void UpdateVoices(bool crossfade);
 };
 

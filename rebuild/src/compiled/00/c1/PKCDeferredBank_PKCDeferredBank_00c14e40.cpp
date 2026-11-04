@@ -1,5 +1,6 @@
 // PKCDeferredBank::PKCDeferredBank(CThing* parent, const CDiceGameSetup* setup, long seed) -- (labelled Initialize: it is the constructor) builds the component: parent link, two inline-buffered rule holders, the seeded pair, three short quads, then allocates the game state (0xd4 bytes, from the setup's first word) and the 0x64-byte controller
 // Leaf: ??0PKCDeferredBank@@
+// Vendor naming wave V1 (one address, one name): 0x00C2C6B0 ??0CFlagOverride@@QAE@XZ (was ??0CDiceQuad@@QAE@XZ)
 // Class (naming wave 13, owner decision 2026-11-01): PKCDeferredBank, the libpk deferred-bank object whose third vtable is
 //   0x012B29F8 (built by 0x00C14E40, destroyed by 0x00C14F90); descriptive, libpk has no RTTI and no class strings.
 // Flags: /EHsc
@@ -39,9 +40,9 @@ struct CDiceSeedPair {
     CDiceSeedPair(long a, long b);                          // 0x00C2D0C0
     long A, B;
 };
-struct CDiceQuad {
-    CDiceQuad();                                            // 0x00C2C6B0
-    virtual ~CDiceQuad();
+struct CFlagOverride {
+    CFlagOverride();                                            // 0x00C2C6B0
+    virtual ~CFlagOverride();
     short V[4];
 };
 class PKCDeferredBank;
@@ -66,9 +67,9 @@ class PKCDeferredBank : public CTCBaseShell { public:
     CDiceRuleHolderA HolderA;                               // +0x10
     CDiceRuleHolderB HolderB;                               // +0x40
     CDiceSeedPair    Seed;                                  // +0x70
-    CDiceQuad        QuadA;                                 // +0x78
-    CDiceQuad        QuadB;                                 // +0x84
-    CDiceQuad        QuadC;                                 // +0x90
+    CFlagOverride        QuadA;                                 // +0x78
+    CFlagOverride        QuadB;                                 // +0x84
+    CFlagOverride        QuadC;                                 // +0x90
     long             Field9C;                               // +0x9c
     long             FieldA0;                               // +0xa0
 };

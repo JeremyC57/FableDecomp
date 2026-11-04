@@ -47930,41 +47930,41 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca4870	operator_new_00ca4870	_global	__fastcall	void *	1	uint	1	yes	accepted									
 00ca48a0	CAutoLock	CAutoLock	__thiscall	undefined	3	_List_unchecked_const_iterator<std::_List_val<CVsyncCallbackTimer::CPendingQuery,std::allocator<CVsyncCallbackTimer::CPendingQuery>_>,std::_Iterator_base0> *,_Node *,_List_val<CVsyncCallbackTimer::CPendingQuery,std::allocator<CVsyncCallbackTimer::CPendingQuery>_> *	0	yes	accepted									
 00ca48c0	~CClass_00ca48c0	_unattributed	__thiscall	void	1	CPersistTraits<CReactionFrequencyTraitsArray> *	1	yes	accepted									
-00ca48f0	vfunc_6	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00ca48f0	GetPinCount	CBaseRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00ca4910	FindPin	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
-00ca4990	Rebuild	CAppearanceOwner_00ca4990	__thiscall	void	2	CEngineResourceManager *,bool	1	yes	accepted									
-00ca49b0	vfunc_29	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00ca49c0	vfunc30	CTextureRenderer	__thiscall	bool	2	CThingFilter_HasNavigationInformation *,CThingPhysical *	1	yes	accepted									
-00ca49e0	sub_00ca49e0	_global	unknown	undefined	0		0			discovered	gapscan							
+00ca4990	EndFlush	CBaseRenderer	__thiscall	void	2	CEngineResourceManager *,bool	1	yes	accepted									
+00ca49b0	Active	CBaseRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00ca49c0	Inactive	CBaseRenderer	__thiscall	bool	2	CThingFilter_HasNavigationInformation *,CThingPhysical *	1	yes	accepted									
+00ca49e0	SetMediaType	CBaseRenderer	unknown	undefined	0		0			discovered	gapscan							
 00ca49f0	GetSampleTimes	CBaseRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00ca4a50	sub_00ca4a50	_global	unknown	undefined	0		0			discovered	gapscan							
-00ca4a70	CancelRequest	CAsyncRequester_00ca4a70	__thiscall	void	1	CGuiWindow *	1	yes	accepted									
+00ca4a50	ShouldDrawSampleNow	CBaseRenderer	unknown	undefined	0		0			discovered	gapscan							
+00ca4a70	CancelNotification	CBaseRenderer	__thiscall	void	1	CGuiWindow *	1	yes	accepted									
 00ca4aa0	ScheduleSample	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca4b20	Render	CBaseRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00ca4b60	HasOwner	CLockedOwner_00ca4b60	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
-00ca4b90	RemoveExclusiveForegroundWindow	CGuiWindowManager	__thiscall	void	2	CGuiWindowManager *,CGuiWindow *	1	yes	accepted									
+00ca4b60	HaveCurrentSample	CBaseRenderer	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
+00ca4b90	GetCurrentSample	CBaseRenderer	__thiscall	void	2	CGuiWindowManager *,CGuiWindow *	1	yes	accepted									
 00ca4bf0	ClearPendingSample	CBaseRenderer	__thiscall	void	1	CVolume *	1	yes	accepted									
 00ca4c60	TimerCallback	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca4cc0	NotifyEndOfStream	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca4d60	ClearTextures	CLandscapeBackgroundPatch	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_ClearTextures_00ca4d60.cpp
-00ca4d80	Audio_StartPlayback	_global	unknown	undefined	0		0	yes	accepted									
+00ca4d80	StartStreaming	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca4e30	StopStreaming	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca4ea0	SetRepaintStatus	CBaseRenderer	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
-00ca4f20	sub_00ca4f20	_global	unknown	undefined	0		0			discovered	gapscan							
-00ca4f30	sub_00ca4f30	_global	unknown	undefined	0		0			discovered	gapscan							
-00ca4f40	CEnginePrimitiveTypeInfoDerived_00ca4f40	CEnginePrimitiveTypeInfoDerived_00ca4f40	__thiscall	undefined	1	CAIStateGroup_WhisperPotionCombat *	0	yes	accepted									
+00ca4f20	OnRenderStart	CBaseRenderer	unknown	undefined	0		0			discovered	gapscan							
+00ca4f30	OnRenderEnd	CBaseRenderer	unknown	undefined	0		0			discovered	gapscan							
+00ca4f40	CRendererInputPin	CRendererInputPin	__thiscall	undefined	1	CAIStateGroup_WhisperPotionCombat *	0	yes	accepted									
 00ca4f90	EndOfStream	CRendererInputPin	unknown	undefined	0		0	yes	accepted									
 00ca5030	BeginFlush	CRendererInputPin	__thiscall	void	3	CQ_BanditCampBossBattleScript *,float,CCharString	1	yes	accepted									
 00ca50d0	EndFlush	CRendererInputPin	unknown	undefined	0		0	yes	accepted									
-00ca5170	DetachTarget	CMediaGraphOwner_00ca5170	__thiscall	void	1	CRenderTarget *	1	yes	accepted									
+00ca5170	BreakConnect	CRendererInputPin	__thiscall	void	1	CRenderTarget *	1	yes	accepted									
 00ca5190	CompleteConnect	CRendererInputPin	unknown	undefined	0		0			discovered	gapscan							
 00ca51c0	QueryId	CRendererInputPin	unknown	undefined	0		0	yes	accepted									
 00ca5200	CheckMediaType	CRendererInputPin	unknown	undefined	0		0			discovered	gapscan							
 00ca52a0	ResetStreamingTimes	CBaseVideoRenderer	__thiscall	void	1	CAIStateGroup_MinionHasInformation *	1	yes	accepted									
 00ca5360	OnStartStreaming	CBaseVideoRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00ca5380	OnStopStreaming	CBaseVideoRenderer	__thiscall	bool	1	CTCTalk *	1	yes	accepted									
-00ca53a0	vfunc_18	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00ca53b0	vfunc_19	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00ca53a0	OnWaitStart	CBaseVideoRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00ca53b0	OnWaitEnd	CBaseVideoRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00ca53c0	QueryInterface	CBasePin	__thiscall	void	2	CConsoleCommand<CNewFrontendGameComponent> *,vector<CGenericVar,std::allocator<CGenericVar>_> *	1	yes	accepted									
 00ca53f0	AddRef	CBasePin	__thiscall	bool	2	CScriptThing *,CScriptThing *	1	yes	accepted									
 00ca5400	RecordFrameLateness	CBaseVideoRenderer	unknown	undefined	0		0			discovered	boundary							
@@ -48005,7 +48005,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca66d0	Stop	CBaseRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00ca67b0	Pause	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca68f0	Run	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
-00ca6a30	GetOrCreate_CAIStateGroup_WhisperPotionCombat	_global	unknown	undefined	0		0	yes	accepted									
+00ca6a30	GetPin	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca6b00	EndOfStream	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca6b40	BeginFlush	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca6b80	CompleteConnect	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
@@ -48013,10 +48013,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca6c40	PrepareReceive	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca6e10	Receive	CBaseRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00ca6f90	SendEndOfStream	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
-00ca7030	Reset	CTimedQueue_00ca7030	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted									
+00ca7030	ResetEndOfStream	CBaseRenderer	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted									
 00ca7080	SendRepaint	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca7120	OnDisplayChange	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
-00ca71e0	`scalar deleting destructor'	CVtable_012bf408	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_vectordeletingdestructor_00ca71e0.cpp
+00ca71e0	`scalar deleting destructor'	CRendererInputPin	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_vectordeletingdestructor_00ca71e0.cpp
 00ca7200	TailJmp__CVolume_00ca8940_00ca7200	_global	__thiscall	void	1	CVolume *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CVolume_ReleaseVolume_00ca7200.cpp
 00ca7210	Receive	CRendererInputPin	unknown	undefined	0		0			discovered	gapscan							
 00ca7310	~CBaseVideoRenderer	CBaseVideoRenderer	__thiscall	void	1	CTCStealth *	1	yes	accepted									
@@ -48031,9 +48031,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca77a0	StreamTime	CBaseFilter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00ca77f0	QueryFilterInfo	CBaseFilter	__thiscall	undefined	2	CSurface *,CSurface *	0	yes	accepted									
 00ca7850	JoinFilterGraph	CBaseFilter	unknown	undefined	0		0	yes	accepted									
-00ca7920	vfunc_14	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00ca7920	QueryVendorInfo	CBaseFilter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00ca7930	NotifyEvent	CBaseFilter	__thiscall	long	1	CSurface *	1	yes	accepted									
-00ca79f0	vfunc_5	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00ca79f0	GetPinVersion	CBaseFilter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00ca7a10	TailJmp__CEngineLandscapePatch_00cb1890_00ca7a10	_global	__thiscall	void	1	CEngineLandscapePatch *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CEngineLandscapePatch_DestroyProceduralTextureVertexBuffers_00ca7a10.cpp
 00ca7a20	~CTCGraphicAppearanceAnimatedMesh_00ca7a20	_unattributed	__thiscall	void	2	CTCGraphicAppearanceAnimatedMesh *,vector<NGraphicAppearance::CMeshInfo,std::allocator<NGraphicAppearance::CMeshInfo>_> *	1	yes	accepted									
 00ca7a80	QueryInterface	CEnumPins	unknown	undefined	0		0			discovered	gapscan							
@@ -48063,9 +48063,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca8490	QueryDirection	CBasePin	unknown	undefined	0		0			discovered	gapscan							
 00ca84b0	QueryId	CBasePin	unknown	undefined	0		0			discovered	gapscan							
 00ca84c0	QueryAccept	CBasePin	unknown	undefined	0		0			discovered	gapscan							
-00ca84f0	sub_00ca84f0	_global	unknown	undefined	0		0			discovered	gapscan							
-00ca8500	sub_00ca8500	_global	unknown	undefined	0		0			discovered	gapscan							
-00ca8530	sub_00ca8530	_global	unknown	undefined	0		0			discovered	gapscan							
+00ca84f0	GetMediaType	CBasePin	unknown	undefined	0		0			discovered	gapscan							
+00ca8500	GetMediaTypeVersion	CBasePin	unknown	undefined	0		0			discovered	gapscan							
+00ca8530	Run	CBasePin	unknown	undefined	0		0			discovered	gapscan							
 00ca8550	EndOfStream	CBaseInputPin	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\AddChildPrimitive_AddChildPrimitive_00ca8550.cpp
 00ca8560	SetSink	CBasePin	unknown	undefined	0		0			discovered	gapscan							
 00ca8590	sub_00ca8590	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -48122,13 +48122,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca9710	Release	CDynamicOutputPin	unknown	undefined	0		0	unmeasured	accepted									
 00ca9820	BlockOutputPin	CDynamicOutputPin	__thiscall	void	2	CPhysicalPrimitiveCylinder *,CDataOutputStream *	1	yes	accepted									
 00ca9860	UnblockOutputPin	CDynamicOutputPin	unknown	undefined	0		0	yes	accepted									
-00ca98e0	WaitForAsyncCompletion_WithRetry	_global	unknown	undefined	0		0	yes	accepted									
+00ca98e0	StartUsingOutputPin	CDynamicOutputPin	unknown	undefined	0		0	yes	accepted									
 00ca9a00	StopUsingOutputPin	CDynamicOutputPin	unknown	undefined	0		0	yes	accepted									
-00ca9a40	HasPending	CLockedQueue_00ca9a40	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
-00ca9a90	Pause	CVideoPlayer_00ca9a90	__thiscall	long	1	CMultiStatBar *	1	yes	accepted									
-00ca9ae0	Resume	CVideoPlayer_00ca9a90	__thiscall	bool	2	CTCGraphicAppearance *,C3DAnimationInterpolator *	1	yes	accepted									
-00ca9b10	ResumeStream	CVideoPlayer_00ca9a90	__thiscall	bool	2	CTCGraphicAppearance *,C3DAnimationInterpolator *	1	yes	accepted									
-00ca9b40	SuspendStream	CVideoPlayer_00ca9a90	__thiscall	bool	2	CTCGraphicAppearance *,C3DAnimationInterpolator *	1	yes	accepted									
+00ca9a40	StreamingThreadUsingOutputPin	CDynamicOutputPin	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
+00ca9a90	Active	CDynamicOutputPin	__thiscall	long	1	CMultiStatBar *	1	yes	accepted									
+00ca9ae0	Inactive	CDynamicOutputPin	__thiscall	bool	2	CTCGraphicAppearance *,C3DAnimationInterpolator *	1	yes	accepted									
+00ca9b10	DeliverBeginFlush	CDynamicOutputPin	__thiscall	bool	2	CTCGraphicAppearance *,C3DAnimationInterpolator *	1	yes	accepted									
+00ca9b40	DeliverEndFlush	CDynamicOutputPin	__thiscall	bool	2	CTCGraphicAppearance *,C3DAnimationInterpolator *	1	yes	accepted									
 00ca9b70	ChangeMediaTypeHelper	CDynamicOutputPin	unknown	undefined	0		0	yes	accepted									
 00ca9c80	CompleteConnect	CDynamicOutputPin	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\ca\0x00CA9C80_global_Object_AcquireField26.cpp				
 00ca9d00	~CBaseAllocator	CBaseAllocator	__thiscall	void	1	CVertexShaderData *	1	yes	accepted									
@@ -48161,23 +48161,23 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00caadb0	FindPin	CBaseFilter	unknown	undefined	0		0	yes	accepted									
 00caaea0	Register	CBaseFilter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00caaf10	Unregister	CBaseFilter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00caaf90	`scalar deleting destructor'	CVtable_012bf69c	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_vectordeletingdestructor_00caaf90.cpp
+00caaf90	`scalar deleting destructor'	CEnumPins	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_vectordeletingdestructor_00caaf90.cpp
 00caafc0	Next	CEnumPins	unknown	undefined	0		0	yes	accepted									
 00cab0e0	Skip	CEnumPins	unknown	undefined	0		0	yes	accepted									
-00cab120	`scalar deleting destructor'	CVtable_012bf6bc	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
+00cab120	`scalar deleting destructor'	CEnumMediaTypes	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
 00cab160	Next	CEnumMediaTypes	unknown	undefined	0		0	yes	accepted									
 00cab2b0	Skip	CEnumMediaTypes	unknown	undefined	0		0	yes	accepted									
 00cab370	CEntry_Constructor	CParticleMorphs	unknown	undefined	0		0	yes	accepted									
 00cab470	Connect	CBasePin	unknown	undefined	0		0			discovered	gapscan							
 00cab580	Disconnect	CBasePin	unknown	undefined	0		0			discovered	gapscan							
 00cab6d0	`scalar deleting destructor'	CBufferedReader_00cab6d0	__thiscall	void *	2	CEngineComponent *,uint	1	yes	accepted									
-00cab750	`scalar deleting destructor'	CVtable_012bf7a8	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_vectordeletingdestructor_00cab750.cpp
+00cab750	`scalar deleting destructor'	CDynamicOutputPin	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_vectordeletingdestructor_00cab750.cpp
 00cab770	CDynamicOutputPin	CDynamicOutputPin	unknown	undefined	0		0	yes	accepted									
 00cab870	AsynchronousBlockOutputPin	CDynamicOutputPin	unknown	undefined	0		0	yes	accepted									
 00cab990	ChangeMediaType	CDynamicOutputPin	unknown	undefined	0		0	yes	accepted									
 00cabae0	CBaseAllocator	CBaseAllocator	unknown	undefined	0		0			discovered	gapscan							
 00cabb70	ReleaseBuffer	CBaseAllocator	unknown	undefined	0		0			discovered	gapscan							
-00cabc60	`scalar deleting destructor'	CVtable_012bf83c	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_vectordeletingdestructor_00cabc60.cpp
+00cabc60	`scalar deleting destructor'	CMemAllocator	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_vectordeletingdestructor_00cabc60.cpp
 00cabe00	CVsyncCallbackTimer	CVsyncCallbackTimer::CVsyncCallbackTimer	unknown	undefined	0		0	yes	accepted									
 00cabed0	Clone	CEnumPins	unknown	undefined	0		0			discovered	gapscan							
 00cabf70	CEnumMediaTypes	CEnumMediaTypes	unknown	undefined	0		0	yes	accepted									
@@ -48194,7 +48194,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cac890	EnumPins	CBaseFilter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00cac920	Block	CDynamicOutputPin	unknown	undefined	0		0	yes	accepted									
 00cac9d0	CreateInstance	_global	__thiscall	CEngineInternalPrimitiveBase *	2	CEnginePrimitiveManagerRepeatedZSprites *,EEnginePrimitiveType	1	yes	accepted									
-00cacaf0	~CBaseObject	CBaseObject	unknown	undefined	0		0	yes	accepted									
+00cacaf0	~CMyBaseObject	CMyBaseObject	unknown	undefined	0		0	yes	accepted									
 00cacb20	LoadOLEAut32	_global	unknown	undefined	0		0	yes	accepted									
 00cacb80	CUnknown	CUnknown	unknown	undefined	0		0	yes	accepted									
 00cacbe0	GetInterface	_global	__thiscall	bool	3	CMovableResourceMemoryPool *,void *,long	1	yes	accepted									
@@ -48239,14 +48239,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cadc10	COM_InitializeFromDispatch	_global	unknown	undefined	0		0	yes	accepted									
 00cadcc0	RegisterMediaTime	CRendererPosPassThru	__fastcall	void	2	CTVertexLandscapeBackground *,ulong	1	yes	accepted									
 00cadd00	ExecuteTask	CThreadedManager::CThreadedManager	unknown	undefined	0		0	yes	accepted									
-00caddc0	Rebuild	CAppearance_00caddc0	__thiscall	undefined	2	CTCGraphicAppearanceMultipleStaticMeshes *,CThing *	0	yes	accepted									
+00caddc0	ResetMediaTime	CRendererPosPassThru	__thiscall	undefined	2	CTCGraphicAppearanceMultipleStaticMeshes *,CThing *	0	yes	accepted									
 00caddf0	EOS	CRendererPosPassThru	unknown	undefined	0		0	yes	accepted									
 00cae170	CheckTime	CCmdQueue	unknown	undefined	0		0	yes	accepted									
 00cae9b0	CDispParams	CDispParams	unknown	undefined	0		0	yes	accepted									
 00caebb0	~CDispParams	CDispParams	unknown	undefined	0		0	yes	accepted									
 00caec30	NonDelegatingQueryInterface	CDeferredCommand	unknown	undefined	0		0			discovered	gapscan							
-00caec80	Unadvise	CAdviseHolder_00caec80	__thiscall	bool	2	CTCGraphicAppearance *,C3DAnimationInterpolator *	1	yes	accepted									
-00caecb0	sub_00caecb0	_global	unknown	undefined	0		0			discovered	gapscan							
+00caec80	Cancel	CDeferredCommand	__thiscall	bool	2	CTCGraphicAppearance *,C3DAnimationInterpolator *	1	yes	accepted									
+00caecb0	Confidence	CDeferredCommand	unknown	undefined	0		0			discovered	gapscan							
 00caecc0	GetHResult	CDeferredCommand	unknown	undefined	0		0			discovered	gapscan							
 00caecf0	Postpone	CDeferredCommand	unknown	undefined	0		0			discovered	gapscan							
 00caed50	Invoke	CDeferredCommand	unknown	undefined	0		0	yes	accepted									
@@ -48278,7 +48278,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cafc40	QueryInterface	CPosPassThru	unknown	undefined	0		0			discovered	gapscan							
 00cafcc0	ScalarDeletingDtor_00cafcc0	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_vectordeletingdestructor_00cafcc0.cpp
 00cafce0	CVtable_012bf994	CVtable_012bf994	__thiscall	undefined	1	CCompressedMemoryDataInputStream *	0	yes	accepted									
-00cafd60	sub_00cafd60	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00cafd60	`scalar deleting destructor'	CRendererPosPassThru	unknown	undefined	0		0			discovered	gapscan							
 00cafd70	`scalar deleting destructor'	CLockedAudioObject00cafd90	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_vectordeletingdestructor_00cafd70.cpp
 00cafd90	~CLockedAudioObject00cafd90	CLockedAudioObject00cafd90	__thiscall	void	5	CRenderManager2D *,CTVertexRHWColSpecTex1 *,CTVertexRHWColSpecTex1 *,ulong,CTexture *	1	yes	accepted									
 00cafe90	InsertTrackNodeSorted	CEditControlCentre	unknown	undefined	0		0	yes	accepted									

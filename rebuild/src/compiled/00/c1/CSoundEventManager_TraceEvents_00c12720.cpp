@@ -1,5 +1,6 @@
 // CSoundEventManager::TraceEvents() -- under the module lock, refreshes the events and then builds the description string of every active event of the pool at +0x5c for the (compiled-out) trace output
 // Leaf: ?TraceEvents@CSoundEventManager@@QAEXXZ
+// Vendor naming wave V1 (one address, one name): 0x00C11CB0 ?UpdateItems@CSoundEventManager@@QAEXXZ (was ?UpdateEvents@CSoundEventManager@@QAEXXZ)
 // Flags: /EHsc
 // Naming (sweep1, 2026-10-25): libpk class set CSoundEventManager (vtable 0x012B2748) / CSoundEventSet (its +0x2C
 //   member) / CSoundEvent (0xB4 bytes, vtable 0x012B3674): the describer 0x00C21040 called by TraceEvents/
@@ -56,14 +57,14 @@ struct CSoundEventManager {
     CSoundEventPool m_events;               // +0x5c
     unsigned long GetNumEvents() { return m_events.m_count; }
     CSoundEvent* GetEvent(unsigned long index) { return m_events.Get(index); }
-    void UpdateEvents();                   // 0x00C11CB0
+    void UpdateItems();                   // 0x00C11CB0
     void TraceEvents();
 };
 
 void CSoundEventManager::TraceEvents()
 {
     PKCProtectionInstance lock(&g_lock_0143bb14);
-    UpdateEvents();
+    UpdateItems();
     for (unsigned long i = 0; i < GetNumEvents(); ++i) {
         CSoundEvent* event = GetEvent(i);
         if (event->IsActive())

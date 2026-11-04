@@ -1,5 +1,6 @@
 // CSoundSystem::~CSoundSystem() -- EH-framed destructor (the manifest's "Cleanup" is propagated): vtable 0x012B1E24; stops its work (@ 0x00C08A80 and WaitForSprite 0x00C08AE0), deletes the +0x6c helper (destructor @ 0x00C16580), detaches (@ 0x00C08A00), sleeps 200 ms, releases (@ 0x00C088D0), deletes the +0x60 object through its slot-0 virtual destructor, frees the raw +0x68 block, the +0x38 sound-event manager (the landed ~CSoundEventManager 0x00C13470) and the +0x34 parameter block (~CAudioParamBlock @ 0x00C0A9A0), deletes the +0x5c object through its slot-1 virtual destructor and clears the module byte at 0x0143BAF8; the compiler then destroys the +0x3c member (the landed 0x00C10320; state 1), the +4 container (vtable 0x012B1C98, its node @ 0x00C19250 at +0xc, root vtable 0x012B1AB0; state 3 for the root unwind @ 0x00C09DB0) and the vptr-only base (vtable 0x012B1A64, out-of-line unwind @ 0x00C09770); states 0-2 unwind the base, the container and the member
 // Leaf: ??1CSoundSystem@@UAE@XZ
+// Vendor naming wave V1 (one address, one name): 0x00C19250 ??1PKCTRRedblackTree@@QAE@XZ (was ??1CNode_00c09380@@QAE@XZ)
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): CAudioOwner -> CSoundSystem, the one class name for vtable 0x012B1E24 (the libpk sound system CreateSoundSystem_00c096e0 0x00C096E0 returns and the landed CSoundManagerLH ctor 0x00A3EF00 drives; descriptive, libpk has no PDB).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C09380, oracle length 287 bytes. Built under /EHsc.
@@ -18,17 +19,17 @@ extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds
 void __cdecl operator delete(void* block);
 extern unsigned char g_bJumping_0143baf8;  // 0x0143BAF8
 
-struct CNode_00c09380 {                    // 0x28 bytes
+struct PKCTRRedblackTree {                    // 0x28 bytes
     unsigned char _body[0x28];
-    ~CNode_00c09380();                     // 0x00C19250
+    ~PKCTRRedblackTree();                     // 0x00C19250
 };
 struct CRoot_00c09380 {                    // vtable 0x012B1AB0
     virtual void v00();
-    CNode_00c09380* m_pNode;               // +4
+    PKCTRRedblackTree* m_pNode;               // +4
     ~CRoot_00c09380() { }
 };
 struct CContainer_00c09380 : CRoot_00c09380 {   // vtable 0x012B1C98, +4
-    CNode_00c09380 m_node;
+    PKCTRRedblackTree m_node;
     ~CContainer_00c09380() { }
 };
 

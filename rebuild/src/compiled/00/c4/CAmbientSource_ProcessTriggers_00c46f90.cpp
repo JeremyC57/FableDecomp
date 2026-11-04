@@ -1,5 +1,6 @@
 // CAmbientSource::ProcessTriggers() -- fire the source's due triggers: while the first pending trigger (+0x08 list) is due by the sound system clock (set +4 -> bank +0 -> system +0x70), remove it, fire it and let it schedule itself again
 // Leaf: ?ProcessTriggers@CAmbientSource@@QAEXXZ
+// Vendor naming wave V1 (one address, one name): 0x00C62530 ?Play@CAmbientTrigger@@QAEXPAVCAmbientSource@@@Z (was ?Fire@CAmbientTrigger@@QAEXPAVCAmbientSource@@@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C46F90, 83 bytes (+ int3 padding), __fastcall `ret`.
 // Library: libpk ambient sound (no PDB/RTTI): descriptive names. The source is built by 0x00C47340 (owner set +0,
 //   definition +4, trigger list +0x08, channel list +0x38; it adds itself to the set's +0x28 list, then runs
@@ -43,7 +44,7 @@ public:
     long          m_handle;                 // +0x08 (-1)
     unsigned long m_words[3];               // +0x0c
     CAmbientTrigger(unsigned long soundId); // 0x00C62320
-    void Fire(CAmbientSource* source);      // 0x00C62530
+    void Play(CAmbientSource* source);      // 0x00C62530
     void Schedule(CAmbientSource* source);  // 0x00C62400: pick the next due time, add to the source's +0x08 list
 };
 
@@ -112,7 +113,7 @@ void CAmbientSource::ProcessTriggers()
     CAmbientTrigger* trigger;
     while ((trigger = m_triggers.GetFirst()) != 0 && trigger->m_time <= m_pSet->m_pBank->m_pSystem->m_clock.GetTime()) {
         m_triggers.RemoveItem(trigger);
-        trigger->Fire(this);
+        trigger->Play(this);
         trigger->Schedule(this);
     }
 }

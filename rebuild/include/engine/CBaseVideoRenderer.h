@@ -219,6 +219,10 @@ public:
     CBaseRenderer(const GUID&,const unsigned short*,IUnknown*,long*);
     ~CBaseRenderer();
     // primary-vtable virtuals in renbase.h declaration order (slots 9..44)
+#ifdef FABLE_RETAIL_CBASEVIDEORENDERER_OVERRIDES   // vendor naming V1: strmbase override declarations
+    int GetPinCount();                                                      // 6 (+0x18) 0x00CA48F0 (renbase.h override)
+    CBasePin* GetPin(int n);                                                // 7 (+0x1c) 0x00CA6A30 (renbase.h override)
+#endif
     virtual long GetMediaPositionInterface(const GUID& riid, void** ppv);   // 9 (+0x24)
     long __stdcall NonDelegatingQueryInterface(const GUID& riid, void** ppv);
     virtual long SourceThreadCanWait(int bCanWait);                         // 10 (+0x28)
@@ -266,6 +270,9 @@ public:
     virtual long DoRenderSample(IMediaSample* pMediaSample) = 0;            // 43 (+0xac)
     virtual long CheckMediaType(const CMediaType* pmt) = 0;                 // 44 (+0xb0)
     void WaitForReceiveToComplete();                                        // 0x00CA47D0
+#ifdef FABLE_RETAIL_CBASEVIDEORENDERER_OVERRIDES   // vendor naming V1: strmbase override declarations
+    void ResetEndOfStreamTimer();                                           // renbase.cpp (inlined into ResetEndOfStream 0x00CA7030)
+#endif
 };
 enum QualityMessageType { Famine, Flood };
 struct tagQuality { QualityMessageType Type; long Proportion; REFERENCE_TIME Late; REFERENCE_TIME TimeStamp; };
@@ -310,6 +317,16 @@ public:
     CBaseVideoRenderer(const GUID&,const unsigned short*,IUnknown*,long*);
     ~CBaseVideoRenderer();
     void PreparePerformanceData(int trLate,int trFrame);
+#ifdef FABLE_RETAIL_CBASEVIDEORENDERER_OVERRIDES   // vendor naming V1: strmbase override declarations
+    // renbase.h CBaseVideoRenderer overrides of CBaseRenderer slots (vtable 0x012BF5D8; vendor naming wave V1)
+    void OnRenderStart(IMediaSample* pMediaSample);                         // 14 0x00CA55E0
+    void OnRenderEnd(IMediaSample* pMediaSample);                           // 15 0x00CA5610
+    void OnWaitStart();                                                     // 18 0x00CA53A0
+    void OnWaitEnd();                                                       // 19 0x00CA53B0
+    long OnStartStreaming();                                                // 16 0x00CA5360
+    long OnStopStreaming();                                                 // 17 0x00CA5380
+    int ScheduleSample(IMediaSample* pMediaSample);                         // 21 0x00CA5CF0
+#endif
     virtual void RecordFrameLateness(int trLate,int trFrame);
     virtual void OnDirectRender(IMediaSample*);
     virtual long ResetStreamingTimes();

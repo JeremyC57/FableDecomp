@@ -1,5 +1,6 @@
-// CFader::FadeOut() -- unless the fader is already silent (state 2): a fader whose parameter is at zero goes silent at once (level 0), any other starts fading out (state 0)
-// Leaf: FadeOut
+// CView_00c11860::Update() -- unless the fader is already silent (state 2): a fader whose parameter is at zero goes silent at once (level 0), any other starts fading out (state 0)
+// Leaf: Update
+// Vendor naming wave V1 (one address, one name): 0x00C25EA0 ?Update@CView_00c11860@@QAEXXZ (was ?FadeOut@CFader@@QAEXXZ)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C25EA0, 90 bytes (`ret`). Descriptive names (no PDB covers the libpk audio
 //   library): the manifest's "C3DMeshFileTransformationChunk_UpdateAngle" is propagated. Its caller 0x00C118B1 is a
 //   panel member calling it on the +0x7D8 fader right after raising the panel's +0x828 flag.
@@ -38,7 +39,7 @@ inline float CRampedParam::GetValue() const
     return value;
 }
 
-struct CFader {                                 // 0x50-byte fader (the panel holds one at +0x7D8)
+struct CView_00c11860 {                                 // 0x50-byte fader (the panel holds one at +0x7D8)
     float        m_timeStep;                    // +0x00 update period
     float        m_level;                       // +0x04 fade level 0..1
     CRampedParam m_param;                       // +0x08
@@ -47,10 +48,10 @@ struct CFader {                                 // 0x50-byte fader (the panel ho
     float        m_fadeInStep;                  // +0x44 level gained per update while fading in
     float        m_fadeOutStep;                 // +0x48 level lost per update while fading out
     long         m_state;                       // +0x4C 0 fading out, 1 fading in, 2 silent, 3 full
-    void FadeOut();
+    void Update();
 };
 
-void CFader::FadeOut()
+void CView_00c11860::Update()
 {
     if (m_state != 2) {
         if (m_param.GetValue() == 0.0f) {

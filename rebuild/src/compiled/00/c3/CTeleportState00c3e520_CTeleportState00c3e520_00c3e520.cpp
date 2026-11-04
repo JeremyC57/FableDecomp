@@ -1,4 +1,5 @@
 // CTeleportState_00c3e520::CTeleportState_00c3e520() -- the TeleportData-style record base (@ 0x00C4D000), then twelve state words cleared and the own vtable stored
+// Vendor naming wave V1 (one address, one name): 0x00C4D000 ??0CAudioPlatform@@QAE@XZ (was ??0TeleportData_00c4d000@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C3E520, length 89 bytes.
 // Callees: the record base constructor @ 0x00C4D000 (landed as TeleportData_00c4d000: a novtable root with four 0x14-byte
 // members; it stores its own vtable, overwritten here by 0x012B5BC0, which is not in rtti-vtables.tsv).
@@ -7,13 +8,13 @@
 // init list is emitted in declaration order); the vtable store is sunk below them by the scheduler. The
 // manifest label "CDataInputStream::CDataInputStream" is propagated from a same-shape body; the class is named by
 // address.
-struct TeleportData_00c4d000 {                 // 0x54 bytes: vptr + four 0x14-byte members
+struct CAudioPlatform {                 // 0x54 bytes: vptr + four 0x14-byte members
     virtual void v00();
     unsigned char _members[0x54 - 4];
-    TeleportData_00c4d000();                   // 0x00C4D000
+    CAudioPlatform();                   // 0x00C4D000
 };
 
-struct CTeleportState_00c3e520 : TeleportData_00c4d000 {   // vtable 0x012B5BC0
+struct CTeleportState_00c3e520 : CAudioPlatform {   // vtable 0x012B5BC0
     virtual void v00();
     unsigned char _pad54[4];                   // +0x54
     long m_pending;                            // +0x58
@@ -36,7 +37,7 @@ struct CTeleportState_00c3e520 : TeleportData_00c4d000 {   // vtable 0x012B5BC0
 };
 
 CTeleportState_00c3e520::CTeleportState_00c3e520()
-    : TeleportData_00c4d000()
+    : CAudioPlatform()
 {
     m_g = 0;
     m_h = 0;

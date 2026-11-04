@@ -1,5 +1,6 @@
 // CSoundEventManager::Update() -- EH-framed per-tick update under a scoped lock over the global @ 0x0143BB14: every active event of the pool at +0x5c (count at +0x60, accessor @ 0x00C13620, CSoundEvent::IsActive @ 0x00C20840) is applied with `this` and the flags at +0x7c8 (@ 0x00C21A50); then the flags are cleared, the pending events assigned (AssignPendingItems @ 0x00C10CD0), the step @ 0x00C12040 run and the owned part at +0x7bc finished (@ 0x00C1C6A0)
 // Leaf: ?Update@CSoundEventManager@@QAEXXZ
+// Vendor naming wave V1 (one address, one name): 0x00C21A50 ?Update@CSoundEvent@@QAEXPAUCSoundEventManager@@K@Z (was ?Apply@CSoundEvent@@QAEXPAUCSoundEventManager@@K@Z)
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): CAudioOwner -> CSoundSystem, the one class name for vtable 0x012B1E24 (the libpk sound system CreateSoundSystem_00c096e0 0x00C096E0 returns and the landed CSoundManagerLH ctor 0x00A3EF00 drives; descriptive, libpk has no PDB).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C12880, oracle length 179 bytes. Built under /EHsc.
@@ -25,7 +26,7 @@ class PKCProtectionInstance { public:                       // 8-byte scoped loc
 struct CSoundEventManager;
 struct CSoundEvent {
     long IsActive();                       // 0x00C20840
-    void Apply(CSoundEventManager* manager, unsigned long flags);   // 0x00C21A50
+    void Update(CSoundEventManager* manager, unsigned long flags);   // 0x00C21A50
 };
 
 struct CSoundEventPool {             // +0x5c
@@ -55,7 +56,7 @@ void CSoundEventManager::Update()
     for (unsigned long i = 0; i < m_events.GetCount(); ++i) {
         CSoundEvent* event = m_events.Get(i);
         if (event->IsActive())
-            event->Apply(this, m_flags);
+            event->Update(this, m_flags);
     }
     m_flags = 0;
     AssignPendingItems();

@@ -1,4 +1,5 @@
-// CMusicManager::SetVolumeParams(SVolumeParams**, SVolumeParams*, const SVolumeParams*) -- set or clear an optional volume-parameter record and mark it dirty
+// CAudioObject::UpdateVolumeParams(SVolumeParams**, SVolumeParams*, const SVolumeParams*) -- set or clear an optional volume-parameter record and mark it dirty
+// Vendor naming wave V1 (one address, one name): 0x00C434A0 ?UpdateVolumeParams@CAudioObject@@QAEXPAPAUSVolumeParams@@PAU2@PBU2@@Z (was ?SetVolumeParams@CMusicManager@@QAEXPAPAUSVolumeParams@@PAU2@PBU2@@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C434A0, 143 bytes (+ int3 padding; `ret 0Ch`).
 // A null value clears the current pointer (dirty only if it was set); with no current record the value is copied into the
 //   caller's storage, which becomes current; otherwise the storage is overwritten only when the value differs. Each change
@@ -15,13 +16,13 @@ struct SVolumeParams {
     }
 };
 
-class CMusicManager { public:
+class CAudioObject { public:
     unsigned char _pad00[0x14];
     unsigned long m_dirtyFlags;                    // +0x14
-    void SetVolumeParams(SVolumeParams** current, SVolumeParams* storage, const SVolumeParams* value);
+    void UpdateVolumeParams(SVolumeParams** current, SVolumeParams* storage, const SVolumeParams* value);
 };
 
-void CMusicManager::SetVolumeParams(SVolumeParams** current, SVolumeParams* storage, const SVolumeParams* value)
+void CAudioObject::UpdateVolumeParams(SVolumeParams** current, SVolumeParams* storage, const SVolumeParams* value)
 {
     if (!value) {
         if (*current) {

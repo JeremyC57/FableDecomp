@@ -1,5 +1,6 @@
 // PKCWorkerQueue_00c14630::~PKCWorkerQueue_00c14630() -- worker-queue destructor: under its own critical section it appends a null (quit) request to the request vector and releases the semaphore once, then joins the worker thread and deletes it; the compiler then destroys the semaphore, the vector and the critical section
 // Leaf: ??1PKCWorkerQueue_00c14630@
+// Vendor naming wave V1 (one address, one name): 0x00C2A150 ?Release@PKCSemaphore@@QAEXXZ (was ?Release@PKCSemaphore_00c14630@@QAEXXZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C14630, 204 bytes (+ int3 padding), __fastcall `ret`, EH-framed.
 // Identity: a libpk worker queue (no vtable): the critical section +0 (InitializeCriticalSection @ 0x00C1C810 /
@@ -34,10 +35,10 @@ class PKCProtectionInstance { public:                      // 8 bytes: section +
     ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
-struct PKCSemaphore_00c14630 {                     // a Win32 semaphore handle
+struct PKCSemaphore {                     // a Win32 semaphore handle
     void* m_hSemaphore;
     void Release();                            // 0x00C2A150
-    ~PKCSemaphore_00c14630();                       // 0x00C29FB0
+    ~PKCSemaphore();                       // 0x00C29FB0
 };
 
 struct PKCThread_00c14630 {                        // polymorphic worker thread
@@ -85,7 +86,7 @@ public:
     ~PKCWorkerQueue_00c14630();
     PKCCriticalSection_00c14630              m_section;     // +0x00
     std::vector<PKCRequest_00c14630*>        m_requests;    // +0x18
-    PKCSemaphore_00c14630                    m_semaphore;   // +0x28
+    PKCSemaphore                    m_semaphore;   // +0x28
     PKCThread_00c14630*                      m_pThread;     // +0x2c
 };
 

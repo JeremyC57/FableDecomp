@@ -1,5 +1,6 @@
 // C3DAnimationUtil::C3DAnimationUtil() -- base C3DAnimationBlendState() then this class's vtable
 // Leaf: ??0C3DAnimationUtil@
+// Vendor naming wave V1 (one address, one name): 0x00C59BA0 ??0CCodaVoice@@QAE@XZ (was ??0C3DAnimationBlendState@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C72600, oracle length 18 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -9,17 +10,17 @@
 // constructor @ 0x00C59BA0 runs, then the compiler stores this class's vtable (0x012BEE40
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
 // bodies of this shape.
-class C3DAnimationBlendState { public:
+class CCodaVoice { public:
     virtual void v00();
-    C3DAnimationBlendState();                           // 0x00C59BA0
+    CCodaVoice();                           // 0x00C59BA0
 };
 
-struct C3DAnimationUtil : C3DAnimationBlendState {
+struct C3DAnimationUtil : CCodaVoice {
     virtual void v00();                    // this class has its own vtable
     C3DAnimationUtil();
 };
 
 C3DAnimationUtil::C3DAnimationUtil()
-    : C3DAnimationBlendState()
+    : CCodaVoice()
 {
 }

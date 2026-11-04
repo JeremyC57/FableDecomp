@@ -1,4 +1,5 @@
 // SPair_00c200d0::~SPair_00c200d0() -- EH-framed pair destructor: the CString second at +0x18 (@ 0x00C0BA40, state 0), then the first's 0x10-byte member at +8 (@ 0x00C349C0, state 1) and the first's polymorphic base (vtable 0x012B3420) with its empty inline destructor
+// Vendor naming wave V1 (one address, one name): 0x00C349C0 ??1CVtable_012b4fbc@@QAE@XZ (was ??1CMember8@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C200D0, oracle length 83 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -12,9 +13,9 @@
 // compared; the funclets land through the funclet pass). The manifest label
 // (`_Dest_val<allocator<pair<...>>>`) is propagated; the types are modelled by layout. One of
 // 3 bodies of this shape.
-struct CMember8 {                          // +8, 0x10 bytes, destroyed out of line
+struct CVtable_012b4fbc {                          // +8, 0x10 bytes, destroyed out of line
     unsigned char _body[0x10];
-    ~CMember8();                           // 0x00C349C0
+    ~CVtable_012b4fbc();                           // 0x00C349C0
 };
 
 class CString { public:                      // the shared-buffer stream
@@ -28,7 +29,7 @@ struct CBase {                             // vtable 0x012B3420
 
 struct CFirst : CBase {                    // 0x18 bytes: vptr, a pointer, the member
     void* m_4;
-    CMember8 m_member8;                    // +8
+    CVtable_012b4fbc m_member8;                    // +8
 };
 
 struct SPair_00c200d0 {

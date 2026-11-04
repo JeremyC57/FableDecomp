@@ -1,11 +1,12 @@
-class C3DAnimationSequenceData { public:
+// Vendor naming wave V1 (one address, one name): 0x00C1BC10 ?SetLooped@CSoundPlayParameters@@QAEX_N@Z (was ?SetupIdentityFlag@C3DAnimationSequenceData@@QAEX_N@Z)
+class CSoundPlayParameters { public:
     char pad0;
     char pad1;
     unsigned char flags;
-    void SetupIdentityFlag(bool set);
+    void SetLooped(bool set);
 };
 
-void C3DAnimationSequenceData::SetupIdentityFlag(bool set)
+void CSoundPlayParameters::SetLooped(bool set)
 {
     if (set)
         flags = (unsigned char)(flags | 1);

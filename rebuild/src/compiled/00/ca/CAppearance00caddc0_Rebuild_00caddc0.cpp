@@ -1,17 +1,18 @@
-// CAppearance_00caddc0::Rebuild() -- under the critical section at +0x1c clear the four counters at +0x38..+0x44 and set the dirty word at +0x48 to 1; returns 0
+// CRendererPosPassThru::ResetMediaTime() -- under the critical section at +0x1c clear the four counters at +0x38..+0x44 and set the dirty word at +0x48 to 1; returns 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CADDC0, length 47 bytes (48 with padding).
-// Leaf: Rebuild
+// Leaf: ResetMediaTime
+// Vendor naming wave V1 (one address, one name): 0x00CADDC0 ?ResetMediaTime@CRendererPosPassThru@@QAEJXZ (was ?Rebuild@CAppearance_00caddc0@@QAEJXZ)
 // Callees: KERNEL32 EnterCriticalSection / LeaveCriticalSection (IAT 0x0143FE0C / 0x0143FE10).
 // The chunk label "CTCGraphicAppearanceMultipleStaticMeshes::CTCGraphicAppearanceMultipleStaticMeshes" is propagated and wrong:
 // third-party media code called only from 0x00CA499A and 0x00CA49CA (landed CAppearanceOwner_00ca4990::Rebuild, which
-// declares this callee as CAppearance_00caddc0::Rebuild on the object at +0x50); the class keeps that name.
+// declares this callee as CRendererPosPassThru::Rebuild on the object at +0x50); the class keeps that name.
 // Shape: the section address lives in edi for both calls; the four zero stores share the `xor eax,eax` register and are
 // scheduled after the second call's `push edi`; the result needs a second `xor eax,eax` after the leave call.
 struct _RTL_CRITICAL_SECTION { unsigned char _body[0x18]; };
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(_RTL_CRITICAL_SECTION* cs);   // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(_RTL_CRITICAL_SECTION* cs);   // IAT 0x0143FE10
 
-struct CAppearance_00caddc0 {
+struct CRendererPosPassThru {
     unsigned char         _pad00[0x1c];
     _RTL_CRITICAL_SECTION m_lock;                 // +0x1c
     unsigned char         _pad34[0x04];
@@ -20,10 +21,10 @@ struct CAppearance_00caddc0 {
     long                  m_count2;               // +0x40
     long                  m_count3;               // +0x44
     long                  m_dirty;                // +0x48
-    long Rebuild();
+    long ResetMediaTime();
 };
 
-long CAppearance_00caddc0::Rebuild()
+long CRendererPosPassThru::ResetMediaTime()
 {
     EnterCriticalSection(&m_lock);
     m_count0 = 0;

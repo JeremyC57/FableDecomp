@@ -1,9 +1,10 @@
 // CSoftwareStreamVoice::SetParameters(CCodaBuffer* buffer, const SVoiceDesc* desc) -- the stream voice's override: the software voice's parameter set-up, plus capability 0x1000 for a buffer flagged in +0x12 bit 0 and the two filter capabilities (0x80 / 0x100) when the description or (for a non-stream buffer) the sample header asks for that filter; both filters are reset
 // Leaf: ?SetParameters@CSoftwareStreamVoice@@
+// Vendor naming wave V1 (one address, one name): 0x00C6B720 ?Reset@SBodyRecord_00c55030@@QAEXXZ (was ?Reset@CVoiceFilter@@QAEXXZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C5C2D0, length 140 bytes (+ int3 padding); `ret 8`. Virtual slot
 // 22 of vtable 0x012B5D70 (0x012B5DC8).
 // Callees: buffer virtual slot 1 (IsStream), CSoftwareVoice::SetParameters 0x00C5BD00 (qualified, direct),
-// CVoiceFilter::Reset 0x00C6B720 (x2, +0xDC / +0x100).
+// SBodyRecord_00c55030::Reset 0x00C6B720 (x2, +0xDC / +0x100).
 // Label: the manifest's "CTCTavernGameCoinGolf_Update" is propagated; descriptive names (GameCODA, no PDB).
 // Shape: `neg al ; sbb eax,eax ; not eax ; and eax,esi ; add eax,0FCh` is `&(IsStream() ? 0 : sample)->m_info`,
 // homed in the dead `buffer` slot; the buffer flag is a byte test (`test byte ptr [esi+12h],1`; a dword
@@ -78,7 +79,7 @@ public:
     unsigned char* ReadPointer() const { return m_pData + m_readPos * m_frameBytes; }
 };
 extern CAudioRingBuffer g_mixRing;                      // 0x0143BF68 (the planar 16-bit mix ring)
-class CVoiceFilter {                                    // 0x24 bytes (ctor 0x00C6B9A0)
+class SBodyRecord_00c55030 {                                    // 0x24 bytes (ctor 0x00C6B9A0)
 public:
     float m_coef[3];                                    // +0x00 current coefficients
     float m_target[3];                                  // +0x0c target coefficients
@@ -152,7 +153,7 @@ public:
     virtual unsigned long SetParameters(CCodaBuffer* buffer, const SVoiceDesc* desc);   // slot 22, 0x00C5BD00
     CAudioRingBuffer m_ring;                            // +0xb4 (the voice's ring object spans 0x28 bytes)
     unsigned char _padd4[8];
-    CVoiceFilter m_filters[2];                          // +0xdc
+    SBodyRecord_00c55030 m_filters[2];                          // +0xdc
     unsigned char _pad124[0xc4];
     unsigned long m_step;                               // +0x1e8 resampling step, 20.12 fixed point
     unsigned long m_phase;                              // +0x1ec resampling phase (fraction)

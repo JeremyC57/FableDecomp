@@ -2034,3 +2034,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - VC7.1 `for(;;) switch` rotates the dispatch to the loop bottom; a `done`-flag `while (!done)` loop jumps back to the state load. Empty cases that share default's block drop out of the jump table: give each its own `done = true; break;`. Case blocks are laid out in source order (chunk 769).
 - `!(x <= 0.0f)` gives `test ah,41h ; jnp` where `x > 0.0f` gives `jne`; `((n >> 7) + 1) << 7` simplifies to `and ; add 80h` while `(n / 128 + 1) * 128` keeps `shr ; inc ; shl`; retail `rand` is the msvcrt import (`__declspec(dllimport)`) (chunk 769).
 - vland builds behaviour tests with VC7.1 too: no `decltype`, no `T{...}` temporaries, no C++11 (chunk 769).
+- Fable's strmbase is the DX9-era DirectShow BaseClasses, built UNICODE; Fable renamed CBaseObject to CMyBaseObject (RTTI), so its ~CBaseObject is not the engine's `??1CBaseObject@@QAE@XZ` 0x0099A430 (vendor naming V1).

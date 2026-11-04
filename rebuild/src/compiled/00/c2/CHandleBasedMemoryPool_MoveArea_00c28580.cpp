@@ -1,5 +1,6 @@
 // CHandleBasedMemoryPool_012b4098::MoveArea(CHeader* from, CHeader* to) -- defragment step: have the owner move the resource's bytes into the free area, cut that area down to the moved size, hand it the resource, handle and lock flag, repoint the handle table, account the padding change and free the old area
 // Leaf: ?MoveArea@CHandleBasedMemoryPool_012b4098@@
+// Vendor naming wave V1 (one address, one name): 0x00C27EF0 ?InsertFreeArea_00c27ef0@CHandleBasedMemoryPool_012b4098@@QAEXPAUCHeader@@@Z (was ?InsertFreeArea@CHandleBasedMemoryPool_012b4098@@QAEXPAUCHeader@@@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C28580, 129 bytes (`ret 8`). The libpk build of the engine's
 //   CHandleBasedMemoryPool_012b4098::MoveArea (engine copy 0x00A028F0; Ego_r.pdb name set `MoveArea(CHeader*, CHeader*)` and the
 //   virtual `MoveResource(void*, long, void*, void*, unsigned long)`); the manifest's "Thiscall_BlockDefragmentCopy" is
@@ -67,7 +68,7 @@ class CHandleBasedMemoryPool_012b4098 { public:                 // this library'
     std::vector<CHeader*> Handles;              // +0x43c
     void RemoveFreeArea(CHeader* area);         // 0x00C27F50
     void ResizeArea(CHeader* area, long newSize);   // 0x00C28290
-    void InsertFreeArea(CHeader* area);         // 0x00C27EF0
+    void InsertFreeArea_00c27ef0(CHeader* area);         // 0x00C27EF0
     void MoveArea(CHeader* from, CHeader* to);
 };
 
@@ -84,5 +85,5 @@ void CHandleBasedMemoryPool_012b4098::MoveArea(CHeader* from, CHeader* to)
     Handles[from->Handle] = to;
     AllocatedSize += to->Padding - from->Padding;
     from->Status = 'N';
-    InsertFreeArea(from);
+    InsertFreeArea_00c27ef0(from);
 }

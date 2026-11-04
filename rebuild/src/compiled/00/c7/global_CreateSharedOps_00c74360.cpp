@@ -1,5 +1,6 @@
 // CreateSharedOps() -- create the libpk reverb's shared DSP kernel table (CDspObject::s_pOps, 0x0143CCDC): the SIMD build (constructor 0x00C88A30, vtable 0x012BF1F4) when the CPU-feature byte 0x0143BC7C is set, else the x87 build (vtable 0x012BF02C, inline constructor), both through the table's class operator new (0x00C763C0); on success the reference count (0x0143CCE0) starts at 1
 // Leaf: ?CreateSharedOps@@YA_NXZ
+// Vendor naming wave V1 (one address, one name): 0x00C88A30 ??0CVtable_012bf1f4@@QAE@XZ (was ??0CDspOpsSimd@@QAE@XZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C74360, 138 bytes, __cdecl, returns bool.
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 444 "0xC74360 CreateHeroStatsListener builds the shared DSP ops table"):
@@ -32,9 +33,9 @@ public:
     virtual void v08();                                                                             // 0x00C76880 (shared)
 };
 
-class CDspOpsSimd : public CDspOps {                    // vtable 0x012BF1F4 (SIMD kernels)
+class CVtable_012bf1f4 : public CDspOps {                    // vtable 0x012BF1F4 (SIMD kernels)
 public:
-    CDspOpsSimd();                                      // 0x00C88A30
+    CVtable_012bf1f4();                                      // 0x00C88A30
 };
 
 class CDspObject {                                      // vtable 0x012BF050: the reverb DSP parts' base
@@ -49,7 +50,7 @@ bool CreateSharedOps()
 {
     CDspOps* ops;
     if (g_bUseSimd)
-        ops = new CDspOpsSimd;
+        ops = new CVtable_012bf1f4;
     else
         ops = new CDspOps;
     CDspObject::s_pOps = ops;

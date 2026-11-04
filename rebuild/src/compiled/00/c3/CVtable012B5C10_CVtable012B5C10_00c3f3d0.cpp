@@ -1,5 +1,6 @@
 // CVtable_012B5C10::~CVtable_012B5C10() -- destructor: own vtable; unless the stopped flag (bit 31 of +0x2c) is already set, Stop() runs (the virtual slot 2, devirtualised); then the list-node base destructor
 // Leaf: ??1CVtable_012B5C10
+// Vendor naming wave V1 (one address, one name): 0x00C4CF40 ??1CVtable_012B8778@@UAE@XZ (was ??1CListNode@@UAE@XZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C3F3D0, length 91 bytes (EH frame; built under /EHsc).
 // Callees: CVtable_012B5C10::Stop() @ 0x00C59710 (vtable slot 2: `mov dword ptr [ecx+2Ch],80000000h`),
@@ -16,13 +17,13 @@
 // `!IsStopped()`, `!(bool)m_stopped` or an unsigned char accessor drops the `not al`);
 // the virtual Stop() called on `this` inside the destructor is devirtualised to a direct call.
 
-struct CListNode {                                                        // base: intrusive list node
-    virtual ~CListNode();                                                 // 0x00C4CF40
-    CListNode* m_prev;                                                    // +0x04
-    CListNode* m_next;                                                    // +0x08
+struct CVtable_012B8778 {                                                        // base: intrusive list node
+    virtual ~CVtable_012B8778();                                                 // 0x00C4CF40
+    CVtable_012B8778* m_prev;                                                    // +0x04
+    CVtable_012B8778* m_next;                                                    // +0x08
 };
 
-struct CVtable_012B5C10 : CListNode {                                     // vtable 0x012B5C10 (no RTTI)
+struct CVtable_012B5C10 : CVtable_012B8778 {                                     // vtable 0x012B5C10 (no RTTI)
     unsigned char _body[0x20];                                            // +0x0c .. +0x2c
     unsigned long m_state   : 31;                                         // +0x2c bits 0..30
     unsigned long m_stopped : 1;                                          // +0x2c bit 31

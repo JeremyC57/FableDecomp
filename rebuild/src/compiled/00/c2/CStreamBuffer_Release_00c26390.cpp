@@ -1,10 +1,11 @@
 // CStreamBuffer::Release(CPanel* panel) -- take the buffer off the panel's loading queue (state 1) or idle + cached queues (state 3), free its pool block, and drop the sample reference
 // Leaf: ?Release@CStreamBuffer@@
+// Vendor naming wave V1 (one address, one name): 0x00C28690 ?Free@CHandleBasedMemoryPool_012b4098@@QAEXJ@Z (was ?Free@CHandleBasedMemoryPool@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C26390, 110 bytes (`ret 4`). Descriptive names (no PDB covers the libpk audio
 //   library): the manifest's "ParticleEffect_Release" is propagated. Callers: 0x00C121E7, 0x00C2196E, the panel's
 //   allocation-failure handler 0x00C220CE, 0x00C26963, 0x00C26E4D.
 // Callees: the panel's queues Remove (slot 8): loading +0x314, idle +0x2B4, cached +0x284;
-//   CHandleBasedMemoryPool::Free @ 0x00C28690 on the panel's pool (+0x360); CSoundSample::Release @ 0x00C1EA40.
+//   CHandleBasedMemoryPool_012b4098::Free @ 0x00C28690 on the panel's pool (+0x360); CSoundSample::Release @ 0x00C1EA40.
 // Shape: the two state arms end in the same `Remove(this) ; m_state = 0` tail, which VC7.1 cross-jumps (the state-1
 //   arm loads the queue into ecx and jumps into the state-3 arm's last call).
 
@@ -42,7 +43,7 @@ struct CStreamBufferQueue {                     // 0x30-byte polymorphic buffer 
     unsigned char _pad04[0x2c];
 };
 
-class CHandleBasedMemoryPool { public:                 // this library's pool variant (Handles table +0x440)
+class CHandleBasedMemoryPool_012b4098 { public:                 // this library's pool variant (Handles table +0x440)
     void Lock(long handle);                     // 0x00C283C0
     void Unlock(long handle);                   // 0x00C283E0
     void Free(long handle);                     // 0x00C28690
@@ -56,7 +57,7 @@ struct CPanel {
     CStreamBufferQueue     m_loadingBuffers;    // +0x314 state 1: being filled
     unsigned char          _pad344[0x35c - 0x344];
     long                   m_useStamp;          // +0x35C LRU stamp given to buffers going idle
-    CHandleBasedMemoryPool m_pool;              // +0x360
+    CHandleBasedMemoryPool_012b4098 m_pool;              // +0x360
 };
 
 struct CStreamBuffer {                          // 0x2C-byte stream buffer (operator new(0x2c) + ctor 0x00C262A0)

@@ -1,5 +1,6 @@
-// CSoundEvent::GetRecordFlag(long unused) -- false when the event's parameter-block mode (+0x48, CheckState-guarded getter 0x00C20EE0) is zero, else the flag byte (+0xC) of the 16-byte record copied out of the parameter block at +0x38 (CSoundParams::GetRecord 0x00C34600)
+// CSoundEvent::GetRecordFlag(long unused) -- false when the event's parameter-block mode (+0x48, CheckState-guarded getter 0x00C20EE0) is zero, else the flag byte (+0xC) of the 16-byte record copied out of the parameter block at +0x38 (CQuadHolder::GetRecord 0x00C34600)
 // Leaf: ?GetRecordFlag@CSoundEvent@@QBE_NJ@Z
+// Vendor naming wave V1 (one address, one name): 0x00C34600 ?GetValue@CQuadHolder@@QBE?AUSQuad@@XZ (was ?GetRecord@CSoundParams@@QBE?AUSEventRecord@@XZ)
 // Naming (sweep1, 2026-10-25): libpk class set CSoundEventManager (vtable 0x012B2748) / CSoundEventSet (its +0x2C
 //   member) / CSoundEvent (0xB4 bytes, vtable 0x012B3674): the describer 0x00C21040 called by TraceEvents/
 //   TracePlaybacks prints "EventId(", "Priority=", "State='Waiting for data'" / "Playing using physical player";
@@ -17,21 +18,21 @@
 // ; push eax`), its byte +0xC is the result; the early `xor al,al` exit. Retail keeps `this` in ecx across the
 // 0x00C20EE0 call: both that getter and its callee 0x00C20720 are compiled in the same TU above the caller and never
 // touch ecx (VC7.1 callee register-usage knowledge), so their bodies are written out here.
-struct SEventRecord {                            // 16 bytes, copied whole by the getter
+struct SQuad {                            // 16 bytes, copied whole by the getter
     long          m_a;
     long          m_b;
     long          m_c;
     bool          m_flag;                          // +0x0c (the result)
     unsigned char _pad[3];
-    SEventRecord() { }
+    SQuad() { }
 };
-struct CSoundParams {
-    SEventRecord GetRecord() const;              // 0x00C34600
+struct CQuadHolder {
+    SQuad GetValue() const;              // 0x00C34600
 };
 
 struct CSoundEvent {
     unsigned char        _pad00[0x38];
-    CSoundParams m_params;                 // +0x38
+    CQuadHolder m_params;                 // +0x38
     unsigned char        _pad39[0x48 - 0x39];
     long                 m_mode;                // +0x48
     unsigned char        _pad4c[0xac - 0x4c];
@@ -59,6 +60,6 @@ bool CSoundEvent::GetRecordFlag(long unused) const
 {
     if (!GetMode())
         return false;
-    SEventRecord record = m_params.GetRecord();
+    SQuad record = m_params.GetValue();
     return record.m_flag;
 }

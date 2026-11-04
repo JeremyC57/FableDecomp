@@ -1,0 +1,330 @@
+addr       parity           behav  name
+  WARN leaf 'Assign' matches no symbol in 00c3b710.obj; graded the largest function
+  WARN leaf 'Assign' matches no symbol in 00c3b710.obj; graded the largest function
+00c3b710   WARN RELOC_NAME: ??0CShaderResourceBase_00c3b710@@QAE@ABU0@@Z -> 00c0dab0 labelled 'CString::CString'
+00c3b710   WARN RELOC_NAME: ?At@CResourceItems_00c3b710@@QAEPAPAXK@Z -> 00c2ebc0 labelled '_global::PKCAutoDeleteArray_RangeCheck_Abort'
+00c3b710   RELOCATION_MATCH PASS   CShaderResourceArray::CShaderResourceArray::Assign
+  WARN leaf 'CAutoMapEntry_00c3baf0' matches no symbol in 00c3baf0.obj; graded the largest function
+  WARN leaf 'CAutoMapEntry_00c3baf0' matches no symbol in 00c3baf0.obj; graded the largest function
+00c3baf0   RELOCATION_MATCH PASS   CAutoMapEntry_00c3baf0::CAutoMapEntry_00c3baf0
+00c3c660   RELOCATION_MATCH PASS   _unattributed::CAIStateGroupBase_00c3c660
+  WARN leaf '??0SExpSpendUndo@' matches no symbol in 00c3d7d0.obj; graded the largest function
+  WARN leaf '??0SExpSpendUndo@' matches no symbol in 00c3d7d0.obj; graded the largest function
+00c3d7d0   RELOCATION_MATCH PASS   CVtable_012b5870::CVtable_012b5870
+00c3e520   RELOCATION_MATCH PASS   CTeleportState_00c3e520::CTeleportState_00c3e520
+  WARN leaf 'CreateNavigationLayerAction' matches no symbol in 00c3ee10.obj; graded the largest function
+  WARN leaf 'CreateNavigationLayerAction' matches no symbol in 00c3ee10.obj; graded the largest function
+00c3ee10   WARN RELOC_NAME: ?Allocate_00c3ee10@@YAPAXI@Z -> 00c3c360 labelled 'CodaMalloc'
+00c3ee10   WARN RELOC_NAME: ??0CGroupB_00c3ee10@@QAE@XZ -> 00c573e0 labelled 'CVtable_012b8e20::CVtable_012b8e20'
+00c3ee10   RELOCATION_MATCH PASS   CTCHeroStats::CTCHeroStats::CreateNavigationLayerAction
+00c3f3d0   RELOCATION_MATCH PASS   CCodaVoice::~CCodaVoice
+00c3f600   RELOCATION_MATCH PASS   CVtable_012b5cd0::CVtable_012b5cd0
+00c3f660   RELOCATION_MATCH PASS   C3DAnimationUtil::C3DAnimationUtil
+00c3f760   RELOCATION_MATCH PASS   CVtable_012b5d70::CVtable_012b5d70
+00c3f7b0   RELOCATION_MATCH PASS   C3DAnimationUtil::C3DAnimationUtil
+  WARN leaf 'SetLoopPoints' matches no symbol in 00c43420.obj; graded the largest function
+  WARN leaf 'SetLoopPoints' matches no symbol in 00c43420.obj; graded the largest function
+00c43420   MATCH            PASS   CMusicManager::SetLoopPoints
+  WARN leaf 'SetVolumeParams' matches no symbol in 00c434a0.obj; graded the largest function
+  WARN leaf 'SetVolumeParams' matches no symbol in 00c434a0.obj; graded the largest function
+00c434a0   MATCH            PASS   CMusicManager::SetVolumeParams
+00c44250   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+  WARN leaf 'CDisplayEngineInit' matches no symbol in 00c44250.obj; graded the largest function
+  WARN leaf 'CDisplayEngineInit' matches no symbol in 00c44250.obj; graded the largest function
+00c44250   MATCH            PASS   CDisplayEngineInit::CDisplayEngineInit
+00c44360   RELOCATION_MATCH PASS   CEventDataBuffer::Allocate
+00c44a90   RELOCATION_MATCH PASS   CAmbientEmitter::GetVolume
+  WARN leaf '??1CRegionMap@@QAE@XZ' matches no symbol in 00c46860.obj; graded the largest function
+  WARN leaf '??1CRegionMap@@QAE@XZ' matches no symbol in 00c46860.obj; graded the largest function
+00c46860   RELOCATION_MATCH PASS   CRegionMap::~CRegionMap
+00c46900   RELOCATION_MATCH PASS   CGridCircle::CGridCircle
+00c46f90   WARN RELOC_NAME: ?GetTime@CClock@@QBEKXZ -> 00c2d0f0 labelled '_global::GetMember_dword0x0_00c2d0f0'
+00c46f90   WARN RELOC_NAME: ?Schedule@CAmbientTrigger@@QAEXPAVCAmbientSource@@@Z -> 00c62400 labelled 'CThingPlayerCreature::ResolveMovementBandType'
+00c46f90   RELOCATION_MATCH PASS   CAmbientSource::ProcessTriggers
+00c47300   RELOCATION_MATCH PASS   CAmbientSource::Update
+  WARN leaf 'CIsThingAlive>' matches no symbol in 00c473f0.obj; graded the largest function
+  WARN leaf 'CIsThingAlive>' matches no symbol in 00c473f0.obj; graded the largest function
+00c473f0   WARN RELOC_NAME: ?Cleanup@CPredicateOwner_00c473f0@@QAEXXZ -> 00c471c0 labelled 'SContext_00c62500::ClearChannels'
+00c473f0   WARN RELOC_NAME: ?Drain@CPredicateOwner_00c473f0@@QAEXXZ -> 00c47170 labelled 'SContext_00c62500::ClearTriggers'
+00c473f0   RELOCATION_MATCH PASS   ~CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::~CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  WARN leaf '??1CAIStateGroup_CreatureUseCoverBase@' matches no symbol in 00c48220.obj; graded the largest function
+  WARN leaf '??1CAIStateGroup_CreatureUseCoverBase@' matches no symbol in 00c48220.obj; graded the largest function
+00c48220   WARN RELOC_NAME: ??1CMember_00c48220@@QAE@XZ -> 00c48db0 labelled 'PKCStaticQueue<SDecoderMessage>::~PKCStaticQueue'
+00c48220   RELOCATION_MATCH PASS   CVtable_012b8034::~CVtable_012b8034
+  WARN leaf '~CPair_00c487b0' matches no symbol in 00c487b0.obj; graded the largest function
+  WARN leaf '~CPair_00c487b0' matches no symbol in 00c487b0.obj; graded the largest function
+00c487b0   RELOCATION_MATCH PASS   _unattributed::~CPair_00c487b0
+00c48800   RELOCATION_MATCH PASS   _unattributed::CScriptEntry_00c48800
+00c48860   WARN SHARED_HEADER_AVAILABLE CString
+  WARN leaf 'PKCMailbox_ProcessMessage' matches no symbol in 00c48860.obj; graded the largest function
+  WARN leaf 'PKCMailbox_ProcessMessage' matches no symbol in 00c48860.obj; graded the largest function
+00c48860   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c48860   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c48860   RELOCATION_MATCH PASS   _global::PKCMailbox_ProcessMessage
+00c48960   RELOCATION_MATCH PASS   _unattributed::ProcessMessage_CMailboxQueue_00c48960
+00c48a00   RELOCATION_MATCH PASS   _unattributed::ProcessMessage_CMailboxQueue_00c48a00
+00c48aa0   RELOCATION_MATCH PASS   _unattributed::ProcessMessage_CMailboxQueue_00c48aa0
+00c48b40   RELOCATION_MATCH PASS   _unattributed::ProcessMessage_CMailboxQueue_00c48b40
+00c48be0   RELOCATION_MATCH PASS   _unattributed::ProcessMessage_CMailboxQueue_00c48be0
+  WARN leaf 'SyncQueue_TryEnqueueLocked_E' matches no symbol in 00c48c80.obj; graded the largest function
+  WARN leaf 'SyncQueue_TryEnqueueLocked_E' matches no symbol in 00c48c80.obj; graded the largest function
+00c48c80   RELOCATION_MATCH PASS   _global::SyncQueue_TryEnqueueLocked_E
+00c49650   WARN SHARED_HEADER_AVAILABLE CString
+  WARN leaf 'CCodaFrameStreamer_dtor' matches no symbol in 00c49650.obj; graded the largest function
+  WARN leaf 'CCodaFrameStreamer_dtor' matches no symbol in 00c49650.obj; graded the largest function
+00c49650   WARN RELOC_NAME: _StopSource_00c49650@12 -> 00c35c30 labelled '_unattributed::ForwardIfStateMask217'
+00c49650   WARN RELOC_NAME: _ReleaseSource_00c49650@4 -> 00c35d50 labelled '_global::Uninitialise'
+00c49650   WARN RELOC_NAME: _DestroySource_00c49650@4 -> 00c35980 labelled '_global::Static_RecycleAction_on_0143bb58_00c35980'
+00c49650   WARN RELOC_NAME: ?Pop@CFrameQueue_00c49650@@QAEPAUCFrame_00c49650@@XZ -> 00c49ff0 labelled '_global::CTCHeroExperience_OnTrophyNotification'
+00c49650   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c49650   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c49650   WARN RELOC_NAME: ??1CFrame_00c49650@@QAE@XZ -> 00c491b0 labelled 'CLocalDetailCacheMap::CloseStaticMap'
+00c49650   WARN RELOC_NAME: ??1CPart48_00c49650@@QAE@XZ -> 00c49d00 labelled '_unattributed::~SPair_00c49d00'
+00c49650   WARN RELOC_NAME: ??1CHandleTable_00c49650@@QAE@XZ -> 00c1c820 labelled 'PKCCriticalSection::~PKCCriticalSection'
+00c49650   WARN RELOC_NAME: ??1CPart8_00c49650@@QAE@XZ -> 00c49af0 labelled 'PKCStaticQueue<CCodaFrame *>::~PKCStaticQueue'
+00c49650   RELOCATION_MATCH PASS   _global::CCodaFrameStreamer_dtor
+  WARN leaf '~CPair_00c49a70' matches no symbol in 00c49a70.obj; graded the largest function
+  WARN leaf '~CPair_00c49a70' matches no symbol in 00c49a70.obj; graded the largest function
+00c49a70   RELOCATION_MATCH PASS   _unattributed::~CPair_00c49a70
+00c49b30   RELOCATION_MATCH PASS   _unattributed::CScriptEntry_00c49b30
+00c49b90   RELOCATION_MATCH PASS   _unattributed::ProcessMessage_CMailboxQueue_00c49b90
+  WARN leaf 'CLocalDetailPrimitiveRepeatedMesh' matches no symbol in 00c49c90.obj; graded the largest function
+  WARN leaf 'CLocalDetailPrimitiveRepeatedMesh' matches no symbol in 00c49c90.obj; graded the largest function
+00c49c90   RELOCATION_MATCH PASS   CLocalDetailPrimitiveRepeatedMesh::CLocalDetailPrimitiveRepeatedMesh
+  WARN leaf '~SPair_00c49d00' matches no symbol in 00c49d00.obj; graded the largest function
+  WARN leaf '~SPair_00c49d00' matches no symbol in 00c49d00.obj; graded the largest function
+00c49d00   RELOCATION_MATCH PASS   _unattributed::~SPair_00c49d00
+00c49ff0   WARN SHARED_HEADER_AVAILABLE CString
+  WARN leaf 'CTCHeroExperience_OnTrophyNotification' matches no symbol in 00c49ff0.obj; graded the largest function
+  WARN leaf 'CTCHeroExperience_OnTrophyNotification' matches no symbol in 00c49ff0.obj; graded the largest function
+00c49ff0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c49ff0   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c49ff0   RELOCATION_MATCH PASS   _global::CTCHeroExperience_OnTrophyNotification
+  WARN leaf '~CPair_00c4bab0' matches no symbol in 00c4bab0.obj; graded the largest function
+  WARN leaf '~CPair_00c4bab0' matches no symbol in 00c4bab0.obj; graded the largest function
+00c4bab0   RELOCATION_MATCH PASS   _unattributed::~CPair_00c4bab0
+00c4bc20   RELOCATION_MATCH PASS   _unattributed::CScriptEntry_00c4bc20
+00c4bc80   WARN SHARED_HEADER_AVAILABLE CString
+  WARN leaf 'PKCMailbox_GetResult' matches no symbol in 00c4bc80.obj; graded the largest function
+  WARN leaf 'PKCMailbox_GetResult' matches no symbol in 00c4bc80.obj; graded the largest function
+00c4bc80   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c4bc80   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4bc80   RELOCATION_MATCH PASS   _global::PKCMailbox_GetResult
+00c4bd70   RELOCATION_MATCH PASS   _unattributed::ProcessMessage_CMailboxQueue_00c4bd70
+  WARN leaf 'Query_00c4be10' matches no symbol in 00c4be10.obj; graded the largest function
+  WARN leaf 'Query_00c4be10' matches no symbol in 00c4be10.obj; graded the largest function
+00c4be10   RELOCATION_MATCH PASS   _unattributed::Query_00c4be10
+00c4c2f0   RELOCATION_MATCH PASS   CLockedQueue_00c4c2f0::CLockedQueue_00c4c2f0
+  WARN leaf 'AddString' matches no symbol in 00c4c330.obj; graded the largest function
+  WARN leaf 'AddString' matches no symbol in 00c4c330.obj; graded the largest function
+00c4c330   RELOCATION_MATCH PASS   CDebugString::AddString
+00c4c370   WARN SHARED_HEADER_AVAILABLE CString
+  WARN leaf 'PKRACMasterObject_FinalizeObject' matches no symbol in 00c4c370.obj; graded the largest function
+  WARN leaf 'PKRACMasterObject_FinalizeObject' matches no symbol in 00c4c370.obj; graded the largest function
+00c4c370   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c4c370   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4c370   RELOCATION_MATCH PASS   _global::PKRACMasterObject_FinalizeObject
+00c4cab0   WARN SHARED_HEADER_AVAILABLE CString
+00c4cab0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c4cab0   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4cab0   WARN RELOC_NAME: ?Reset@CMasterObject_00c4c8b0@@QAEXXZ -> 00c4c330 labelled 'CDebugString::AddString'
+00c4cab0   WARN RELOC_NAME: ?Commit@CMasterObject_00c4c8b0@@QAEXXZ -> 00c4c6c0 labelled '_global::PKRACDependency_OnFinalized'
+00c4cab0   RELOCATION_MATCH PASS   CMasterObject_00c4c8b0::LoadSlave
+00c4d1f0   RELOCATION_MATCH PASS   CAudioPlatform::Shutdown
+00c55030   RELOCATION_MATCH PASS   CAudioSource::Reset
+00c55070   RELOCATION_MATCH PASS   C3DAnimationUtil::C3DAnimationUtil
+00c550b0   RELOCATION_MATCH PASS   C3DAnimationUtil::C3DAnimationUtil
+00c550d0   RELOCATION_MATCH PASS   C3DAnimationUtil::C3DAnimationUtil
+00c55110   RELOCATION_MATCH PASS   C3DAnimationUtil::C3DAnimationUtil
+00c551d0   WARN RELOC_NAME: ?Configure@CAudioSource@@QAEKPAUCSoundDesc@@PAUCPlayParams@@@Z -> 00c5bd00 labelled 'CSoftwareVoice::SetParameters'
+00c551d0   RELOCATION_MATCH PASS   CAudioSource::Start
+  WARN leaf '~CBossDef' matches no symbol in 00c555e0.obj; graded the largest function
+  WARN leaf '~CBossDef' matches no symbol in 00c555e0.obj; graded the largest function
+00c555e0   RELOCATION_MATCH PASS   CBossDef::~CBossDef
+  WARN leaf 'CComponentInstance>' matches no symbol in 00c55cd0.obj; graded the largest function
+  WARN leaf 'CComponentInstance>' matches no symbol in 00c55cd0.obj; graded the largest function
+00c55cd0   WARN RELOC_NAME: ?Init@CParticleTypePair_00c55cd0@@QAEXJ@Z -> 00c55b70 labelled 'CAudioContext::Reset'
+00c55cd0   RELOCATION_MATCH PASS   pair<NParticleEngine::EPSCType,NParticleEngine::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance>
+00c5c2d0   RELOCATION_MATCH PASS   CSoftwareStreamVoice::SetParameters
+  WARN leaf 'ClearTextures' matches no symbol in 00c5e3d0.obj; graded the largest function
+  WARN leaf 'ClearTextures' matches no symbol in 00c5e3d0.obj; graded the largest function
+00c5e3d0   RELOCATION_MATCH PASS   CLandscapeBackgroundPatch::ClearTextures
+00c61ca0   WARN RELOC_NAME: ?GetTime@CFrameData@@QBEMXZ -> 00c1bb00 labelled 'CGraphicFrameData::GetFloatTLX'
+00c61ca0   RELOCATION_MATCH PASS   CThingPlayerCreature::ResolveMovementBandType
+00c62400   WARN RELOC_NAME: ?GetTime@CFrameData@@QBEMXZ -> 00c1bb00 labelled 'CGraphicFrameData::GetFloatTLX'
+00c62400   WARN RELOC_NAME: ?GetEmitterDef@CInitialiser@@QAEPAUCEmitterDef@@PAUSParticle@@@Z -> 00c623f0 labelled 'std::_List_const_iterator<std::_List_val<CVsyncCallbackTimer::CPendingQuery,std::allocator<CVsyncCallbackTimer::CPendingQuery>_>_>::operator--'
+00c62400   RELOCATION_MATCH PASS   CThingPlayerCreature::ResolveMovementBandType
+00c62c70   WARN SHARED_HEADER_AVAILABLE CString
+00c62c70   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c62c70   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c62c70   RELOCATION_MATCH PASS   CSBAgents::CSBAgents::CSBAgents
+00c6a5d0   WARN RELOC_NAME: ?ProcessMix@CReverbProcessor@@QAEXKPAM@Z -> 00c6a080 labelled 'NScript::CQ_GuildTrainingSkillScript::TransformGeometry'
+00c6a5d0   RELOCATION_MATCH PASS   CReverbProcessor::Process
+  WARN leaf 'BeginScript' matches no symbol in 00c6a8b0.obj; graded the largest function
+  WARN leaf 'BeginScript' matches no symbol in 00c6a8b0.obj; graded the largest function
+00c6a8b0   WARN RELOC_NAME: ?ReleaseStorage@@YAXPAX@Z -> 00c3c370 labelled 'CodaFree'
+00c6a8b0   WARN RELOC_NAME: ?ReallocateStateBuffers@BufferState@@QAE_NXZ -> 00c775e0 labelled 'CMixerStream::AllocatePlanes'
+00c6a8b0   WARN RELOC_NAME: ?Build@BufferState@@QAEXPBUConfiguration@@PAXPAK@Z -> 00c6a460 labelled 'CReverbProcessor::Allocate'
+00c6a8b0   WARN RELOC_NAME: ?AllocateStorage@@YAPAXK@Z -> 00c3c360 labelled 'CodaMalloc'
+00c6a8b0   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingSkillScript::BeginScript
+00c6afc0   WARN RELOC_NAME: ??0CSoundRecord00c77770@@QAE@XZ -> 00c77770 labelled 'CGameEventPackage::Clear'
+00c6afc0   RELOCATION_MATCH PASS   CSoundOutput00c6afc0::CSoundOutput00c6afc0
+00c70750   RELOCATION_MATCH PASS   CVtable_012bedcc::UpdateVoices
+00c71120   RELOCATION_MATCH PASS   CVtable_012bede0::UpdateVoices
+00c72600   RELOCATION_MATCH PASS   CVtable_012bee40::CVtable_012bee40
+00c72800   RELOCATION_MATCH PASS   CAudioSource::Rewind
+00c74360   RELOCATION_MATCH PASS   CreateSharedOps
+  WARN leaf 'InformOfEvent' matches no symbol in 00c763c0.obj; graded the largest function
+  WARN leaf 'InformOfEvent' matches no symbol in 00c763c0.obj; graded the largest function
+00c763c0   RELOCATION_MATCH PASS   _global::TailJmp_operator_new_00c763c0
+  WARN leaf 'InformOfEvent' matches no symbol in 00c763d0.obj; graded the largest function
+  WARN leaf 'InformOfEvent' matches no symbol in 00c763d0.obj; graded the largest function
+00c763d0   RELOCATION_MATCH PASS   _global::TailJmp_InformOfEvent_00c763d0
+00c783f0   WARN RELOC_NAME: ?Stage_00c78150@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c78150 labelled 'CReverbProcessor::UpdateTapDelays'
+00c783f0   WARN RELOC_NAME: ?Stage_00c780c0@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c780c0 labelled 'Audio_Channel_ComputeEnvelope_Amplitude'
+00c783f0   WARN RELOC_NAME: ?Stage_00c77fc0@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77fc0 labelled 'CReverbProcessor::UpdateChorusLength'
+00c783f0   WARN RELOC_NAME: ?Stage_00c77800@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77800 labelled 'CAudioChannel_SetupAudioFilter'
+00c783f0   WARN RELOC_NAME: ?Stage_00c78040@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c78040 labelled 'CReverbProcessor::UpdateDelayLength'
+00c783f0   WARN RELOC_NAME: ?Stage_00c77c80@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77c80 labelled 'CReverbProcessor::UpdateLineAndTapLengths'
+00c783f0   WARN RELOC_NAME: ?Stage_00c77b30@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77b30 labelled 'CAudioChannel_ApplyDistortionEffect'
+00c783f0   WARN RELOC_NAME: ?Stage_00c77ae0@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77ae0 labelled 'CReverbProcessor::UpdateLineGains'
+00c783f0   WARN RELOC_NAME: ?Stage_00c783b0@CEffectPart260@@QAEXPAUSVoiceEffectParameters@@@Z -> 00c783b0 labelled 'CChannelMixer_00c783b0::Mix'
+00c783f0   WARN RELOC_NAME: ?Stage_00c77c00@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77c00 labelled 'CReverbProcessor::UpdateTapLevels'
+00c783f0   RELOCATION_MATCH PASS   CEffectPart260::Configure
+  WARN leaf '~CClass_00ca48c0' matches no symbol in 00ca48c0.obj; graded the largest function
+  WARN leaf '~CClass_00ca48c0' matches no symbol in 00ca48c0.obj; graded the largest function
+00ca48c0   RELOCATION_MATCH PASS   _unattributed::~CClass_00ca48c0
+00ca48f0   MATCH            PASS   CTextureRenderer::vfunc_6
+00ca4990   WARN RELOC_NAME: ?ResetMediaTime@CRendererPosPassThru@@QAEJXZ -> 00caddc0 labelled 'CAppearance_00caddc0::Rebuild'
+00ca4990   RELOCATION_MATCH PASS   CAppearanceOwner_00ca4990::Rebuild
+00ca49b0   MATCH            PASS   CTextureRenderer::vfunc_29
+00ca49c0   WARN RELOC_NAME: ?ResetMediaTime@CRendererPosPassThru@@QAEJXZ -> 00caddc0 labelled 'CAppearance_00caddc0::Rebuild'
+00ca49c0   RELOCATION_MATCH PASS   CTextureRenderer::vfunc30
+00ca49e0   MATCH            PASS   sub_00ca49e0
+00ca4a50   MATCH            PASS   sub_00ca4a50
+00ca4a70   RELOCATION_MATCH PASS   CAsyncRequester_00ca4a70::CancelRequest
+00ca4b20   MATCH            PASS   CBaseRenderer::Render
+00ca4b60   RELOCATION_MATCH PASS   CLockedOwner_00ca4b60::HasOwner
+00ca4b90   RELOCATION_MATCH PASS   CGuiWindowManager::RemoveExclusiveForegroundWindow
+00ca4bf0   RELOCATION_MATCH PASS   CBaseRenderer::ClearPendingSample
+00ca4d80   RELOCATION_MATCH PASS   _global::Audio_StartPlayback
+00ca4f20   MATCH            PASS   sub_00ca4f20
+00ca4f30   MATCH            PASS   sub_00ca4f30
+00ca52a0   RELOCATION_MATCH PASS   CBaseVideoRenderer::ResetStreamingTimes
+00ca5380   RELOCATION_MATCH PASS   CBaseVideoRenderer::OnStopStreaming
+00ca53a0   MATCH            PASS   CTextureRenderer::vfunc_18
+00ca53b0   MATCH            PASS   CTextureRenderer::vfunc_19
+00ca5400   MATCH            PASS   CBaseVideoRenderer::RecordFrameLateness
+00ca55e0   RELOCATION_MATCH PASS   CBaseVideoRenderer::OnRenderStart
+00ca7030   RELOCATION_MATCH PASS   CTimedQueue_00ca7030::Reset
+00ca79f0   MATCH            PASS   CTextureRenderer::vfunc_5
+00caa410   WARN RELOC_NAME: ?Stop@CVtable_012bf83c@@UAGJXZ -> 00caa160 labelled 'CBaseAllocator::Decommit'
+00caa410   WARN RELOC_NAME: ?DeallocateScriptEntries@CVtable_012bf83c@@QAEXXZ -> 00caa3c0 labelled 'CMemAllocator::ReallyFree'
+00caa410   RELOCATION_MATCH PASS   CVtable_012bf83c::~CVtable_012bf83c
+00caddc0   RELOCATION_MATCH PASS   CAppearance_00caddc0::Rebuild
+00caefb0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+  WARN leaf '??1CBase_00caefb0' matches no symbol in 00caefb0.obj; graded the largest function
+  WARN leaf '??1CBase_00caefb0' matches no symbol in 00caefb0.obj; graded the largest function
+00caefb0   RELOCATION_MATCH PASS   CBase_00caefb0::~CBase_00caefb0
+00ca5850   MATCH            PASS   CBaseVideoRenderer::ShouldDrawSampleNow
+
+WINS: 99
+  00c3b710 RELOCATION_MATCH CShaderResourceArray::Assign
+  00c3baf0 RELOCATION_MATCH CAutoMapEntry_00c3baf0::CAutoMapEntry_00c3baf0
+  00c3c660 RELOCATION_MATCH _unattributed::CAIStateGroupBase_00c3c660
+  00c3d7d0 RELOCATION_MATCH CVtable_012b5870::??0SExpSpendUndo@
+  00c3e520 RELOCATION_MATCH CTeleportState_00c3e520::CTeleportState_00c3e520
+  00c3ee10 RELOCATION_MATCH _unattributed::CreateNavigationLayerAction
+  00c3f3d0 RELOCATION_MATCH CVtable_012B5C10::??1CVtable_012B5C10
+  00c3f600 RELOCATION_MATCH CVtable_012b5cd0::??0C3DAnimationUtil@
+  00c3f660 RELOCATION_MATCH C3DAnimationUtil::C3DAnimationUtil
+  00c3f760 RELOCATION_MATCH CVtable_012b5d70::??0CAIStateGroupBase@
+  00c3f7b0 RELOCATION_MATCH C3DAnimationUtil::C3DAnimationUtil
+  00c43420 MATCH CMusicManager::SetLoopPoints
+  00c434a0 MATCH CMusicManager::SetVolumeParams
+  00c44250 MATCH CDisplayEngineInit::CDisplayEngineInit
+  00c44360 RELOCATION_MATCH CEventDataBuffer::Allocate
+  00c44a90 RELOCATION_MATCH CAmbientEmitter::?GetVolume@CAmbientEmitter@@QBEMXZ
+  00c46860 RELOCATION_MATCH CRegionMap::??1CRegionMap@@QAE@XZ
+  00c46900 RELOCATION_MATCH CGridCircle::??0CGridCircle@@QAE@MPAVCCellVisitor@@@Z
+  00c46f90 RELOCATION_MATCH CAmbientSource::?ProcessTriggers@CAmbientSource@@QAEXXZ
+  00c47300 RELOCATION_MATCH CAmbientSource::?Update@CAmbientSource@@QAEXXZ
+  00c473f0 RELOCATION_MATCH _unattributed::CIsThingAlive>
+  00c48220 RELOCATION_MATCH CVtable_012b8034::??1CAIStateGroup_CreatureUseCoverBase@
+  00c487b0 RELOCATION_MATCH _unattributed::~CPair_00c487b0
+  00c48800 RELOCATION_MATCH _unattributed::CScriptEntry_00c48800
+  00c48860 RELOCATION_MATCH _unattributed::PKCMailbox_ProcessMessage
+  00c48960 RELOCATION_MATCH _unattributed::ProcessMessage_CMailboxQueue_00c48960
+  00c48a00 RELOCATION_MATCH _unattributed::ProcessMessage_CMailboxQueue_00c48a00
+  00c48aa0 RELOCATION_MATCH _unattributed::ProcessMessage_CMailboxQueue_00c48aa0
+  00c48b40 RELOCATION_MATCH _unattributed::ProcessMessage_CMailboxQueue_00c48b40
+  00c48be0 RELOCATION_MATCH _unattributed::ProcessMessage_CMailboxQueue_00c48be0
+  00c48c80 RELOCATION_MATCH _unattributed::SyncQueue_TryEnqueueLocked_E
+  00c49650 RELOCATION_MATCH CCodaFrameStreamer::CCodaFrameStreamer_dtor
+  00c49a70 RELOCATION_MATCH _unattributed::~CPair_00c49a70
+  00c49b30 RELOCATION_MATCH _unattributed::CScriptEntry_00c49b30
+  00c49b90 RELOCATION_MATCH _unattributed::ProcessMessage_CMailboxQueue_00c49b90
+  00c49c90 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::CLocalDetailPrimitiveRepeatedMesh
+  00c49d00 RELOCATION_MATCH _unattributed::~SPair_00c49d00
+  00c49ff0 RELOCATION_MATCH _unattributed::CTCHeroExperience_OnTrophyNotification
+  00c4bab0 RELOCATION_MATCH _unattributed::~CPair_00c4bab0
+  00c4bc20 RELOCATION_MATCH _unattributed::CScriptEntry_00c4bc20
+  00c4bc80 RELOCATION_MATCH _unattributed::PKCMailbox_GetResult
+  00c4bd70 RELOCATION_MATCH _unattributed::ProcessMessage_CMailboxQueue_00c4bd70
+  00c4be10 RELOCATION_MATCH _unattributed::Query_00c4be10
+  00c4c2f0 RELOCATION_MATCH CLockedQueue_00c4c2f0::CLockedQueue_00c4c2f0
+  00c4c330 RELOCATION_MATCH CDebugString::AddString
+  00c4c370 RELOCATION_MATCH _unattributed::PKRACMasterObject_FinalizeObject
+  00c4cab0 RELOCATION_MATCH CMasterObject_00c4c8b0::?LoadSlave@CMasterObject_00c4c8b0@@
+  00c4d1f0 RELOCATION_MATCH CAudioPlatform::?Shutdown@CAudioPlatform@@
+  00c55030 RELOCATION_MATCH CAudioSource::?Reset@CAudioSource@@QAEXXZ
+  00c55070 RELOCATION_MATCH C3DAnimationUtil::C3DAnimationUtil
+  00c550b0 RELOCATION_MATCH C3DAnimationUtil::C3DAnimationUtil
+  00c550d0 RELOCATION_MATCH C3DAnimationUtil::C3DAnimationUtil
+  00c55110 RELOCATION_MATCH C3DAnimationUtil::C3DAnimationUtil
+  00c551d0 RELOCATION_MATCH CAudioSource::?Start@CAudioSource@@
+  00c555e0 RELOCATION_MATCH _unattributed::~CBossDef
+  00c55cd0 RELOCATION_MATCH _unattributed::CComponentInstance>
+  00c5c2d0 RELOCATION_MATCH CSoftwareStreamVoice::?SetParameters@CSoftwareStreamVoice@@
+  00c5e3d0 RELOCATION_MATCH CLandscapeBackgroundPatch::ClearTextures
+  00c61ca0 RELOCATION_MATCH CThingPlayerCreature::ResolveMovementBandType
+  00c62400 RELOCATION_MATCH CThingPlayerCreature::ResolveMovementBandType
+  00c62c70 RELOCATION_MATCH CSBAgents::CSBAgents
+  00c6a5d0 RELOCATION_MATCH CReverbProcessor::?Process@CReverbProcessor@@UAE_NPBM_NPBQBMK@Z
+  00c6a8b0 RELOCATION_MATCH NScript::CQ_GuildTrainingSkillScript::BeginScript
+  00c6afc0 RELOCATION_MATCH CSoundOutput00c6afc0::??0CSoundOutput00c6afc0
+  00c70750 RELOCATION_MATCH CVtable_012bedcc::?UpdateVoices@CVtable_012bedcc
+  00c71120 RELOCATION_MATCH CVtable_012bede0::?UpdateVoices@CVtable_012bede0
+  00c72600 RELOCATION_MATCH CVtable_012bee40::??0C3DAnimationUtil@
+  00c72800 RELOCATION_MATCH CAudioSource::?Rewind@CAudioSource@@
+  00c74360 RELOCATION_MATCH _global::?CreateSharedOps@@YA_NXZ
+  00c763c0 RELOCATION_MATCH _global::InformOfEvent
+  00c763d0 RELOCATION_MATCH _global::InformOfEvent
+  00c783f0 RELOCATION_MATCH CEffectPart260::?Configure@CEffectPart260@@
+  00ca48c0 RELOCATION_MATCH _unattributed::~CClass_00ca48c0
+  00ca48f0 MATCH CBaseRenderer::?GetPinCount@CBaseRenderer@@UAEHXZ
+  00ca4990 RELOCATION_MATCH CBaseRenderer::?EndFlush@CBaseRenderer@@UAEJXZ
+  00ca49b0 MATCH CBaseRenderer::?Active@CBaseRenderer@@UAEJXZ
+  00ca49c0 RELOCATION_MATCH CBaseRenderer::?Inactive@CBaseRenderer@@UAEJXZ
+  00ca49e0 MATCH CBaseRenderer::?SetMediaType@CBaseRenderer@@UAEJPBVCMediaType@@@Z
+  00ca4a50 MATCH CBaseRenderer::?ShouldDrawSampleNow@CBaseRenderer@@UAEJPAUIMediaSample@@PA_J1@Z
+  00ca4a70 RELOCATION_MATCH CBaseRenderer::?CancelNotification@CBaseRenderer@@UAEJXZ
+  00ca4b20 MATCH CBaseRenderer::?Render@CBaseRenderer@@UAEJPAUIMediaSample@@@Z
+  00ca4b60 RELOCATION_MATCH CBaseRenderer::?HaveCurrentSample@CBaseRenderer@@UAEHXZ
+  00ca4b90 RELOCATION_MATCH CBaseRenderer::?GetCurrentSample@CBaseRenderer@@UAEPAUIMediaSample@@XZ
+  00ca4bf0 RELOCATION_MATCH CBaseRenderer::?ClearPendingSample@CBaseRenderer@@UAEJXZ
+  00ca4d80 RELOCATION_MATCH CBaseRenderer::?StartStreaming@CBaseRenderer@@UAEJXZ
+  00ca4f20 MATCH CBaseRenderer::?OnRenderStart@CBaseRenderer@@UAEXPAUIMediaSample@@@Z
+  00ca4f30 MATCH CBaseRenderer::?OnRenderEnd@CBaseRenderer@@UAEXPAUIMediaSample@@@Z
+  00ca52a0 RELOCATION_MATCH CBaseVideoRenderer::?ResetStreamingTimes@CBaseVideoRenderer@@UAEJXZ
+  00ca5380 RELOCATION_MATCH CBaseVideoRenderer::?OnStopStreaming@CBaseVideoRenderer@@UAEJXZ
+  00ca53a0 MATCH CBaseVideoRenderer::?OnWaitStart@CBaseVideoRenderer@@UAEXXZ
+  00ca53b0 MATCH CBaseVideoRenderer::?OnWaitEnd@CBaseVideoRenderer@@UAEXXZ
+  00ca5400 MATCH CBaseVideoRenderer::?RecordFrameLateness@CBaseVideoRenderer@@UAEXHH@Z
+  00ca55e0 RELOCATION_MATCH CBaseVideoRenderer::?OnRenderStart@CBaseVideoRenderer@@UAEXPAUIMediaSample@@@Z
+  00ca7030 RELOCATION_MATCH CBaseRenderer::?ResetEndOfStream@CBaseRenderer@@UAEJXZ
+  00ca79f0 MATCH CBaseFilter::?GetPinVersion@CBaseFilter@@UAEJXZ
+  00caa410 RELOCATION_MATCH CVtable_012bf83c::??1CVtable_012bf83c
+  00caddc0 RELOCATION_MATCH CAppearance_00caddc0::ResetMediaTime
+  00caefb0 RELOCATION_MATCH CBase_00caefb0::??1CBase_00caefb0
+  00ca5850 MATCH _global::?ShouldDrawSampleNow@CBaseVideoRenderer@@UAEJPAUIMediaSample@@PA_J1@Z

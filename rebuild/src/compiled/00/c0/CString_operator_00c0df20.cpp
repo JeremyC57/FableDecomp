@@ -1,5 +1,6 @@
 // CString::operator<<(const void* pointer) -- appends the pointer formatted with "%p" in place and returns *this for chaining (LTCG register convention)
 // Leaf: ??6CString@@QAIAAV0@PBX@Z
+// Vendor naming wave V1 (one address, one name): 0x00C0DE50 ?AppendPointer_00C0DE50@CString@@QAEXPBX@Z (was ?Append@CString@@QAEXPBX@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C0DF20, 13 bytes:
 //   push esi ; push edx ; mov esi,ecx ; call 0xc0de50 ; mov eax,esi ; pop esi ; ret
 // Naming (sweep1, 2026-10-25): was landed as a global `operator&&<...CPredicate_And...>` stand-in (`operator_And(CPredicate_And*, CIsThingAlive*)`, a
@@ -17,12 +18,12 @@
 class CString {
 public:
     char* m_pchData;                            // +0x00
-    void Append(const void* pointer);       // 0x00C0DE50 (thiscall, `ret 4`; "%p")
+    void AppendPointer_00C0DE50(const void* pointer);       // 0x00C0DE50 (thiscall, `ret 4`; "%p")
     CString& __fastcall operator<<(const void* pointer);
 };
 
 CString& __fastcall CString::operator<<(const void* pointer)
 {
-    Append(pointer);
+    AppendPointer_00C0DE50(pointer);
     return *this;
 }

@@ -1,4 +1,5 @@
 // CCombatGeometry_00c12d50::ResolveBlock(attacker, context, target) -- EH-framed under the module's profiling lock (0x0143BB14; @ 0x00C0FFC0 / 0x00C0FFE0, state 0): -1 without an attacker; otherwise a 0x50-byte query record is built on the frame (two parts with plain constructors @ 0x00C203A0 / 0x00C20390, the scalars 0, 0, 1.0f, 1.0f, 0 and 0.0f, 0 (word), 0.0f, 0.0f between them), bound to the target (@ 0x00C27C10) and resolved (@ 0x00C12CD0 with the attacker, the context, the record and 0); the hit's +0xc value or -1 is returned
+// Vendor naming wave V1 (one address, one name): 0x00C203A0 ??0CMessageListOwner_00c203a0@@QAE@XZ (was ??0CPartA_00c12d50@@QAE@XZ); 0x00C20390 ??0SEventRecord@@QAE@XZ (was ??0CPartB_00c12d50@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C12D50, oracle length 256 bytes. Built under /EHsc.
 // Retail bytes:  ... sub esp,58h ; push ebx ; push esi ; push edi ; mov edi,ecx ; push offset g_section ; lea ecx,[esp+10h] ; call CProfileLock::CProfileLock ; mov ebx,[esp+74h] ; xor esi,esi ; cmp ebx,esi ; mov [esp+6Ch],esi ; jne go ; lea ecx,[esp+0Ch] ; mov dword ptr [esp+6Ch],-1 ; call ~CProfileLock ; ... or eax,-1 ; ... ret 0Ch ; go: lea ecx,[esp+14h] ; call CPartA::CPartA ; lea ecx,[esp+44h] ; mov [esp+30h],esi ; mov [esp+34h],esi ; mov dword ptr [esp+38h],3F800000h ; mov dword ptr [esp+3Ch],3F800000h ; mov [esp+40h],esi ; call CPartB::CPartB ; mov eax,[esp+7Ch] ; push eax ; lea ecx,[esp+18h] ; mov dword ptr [esp+58h],0 ; mov [esp+5Ch],si ; mov dword ptr [esp+60h],0 ; mov dword ptr [esp+64h],0 ; call CQuery::Bind ; mov edx,[esp+78h] ; push esi ; lea ecx,[esp+18h] ; push ecx ; push edx ; push ebx ; mov ecx,edi ; call Resolve ; cmp eax,esi ; je miss ; mov esi,[eax+0Ch] ; jmp done ; miss: or esi,-1 ; done: lea ecx,[esp+0Ch] ; mov dword ptr [esp+6Ch],-1 ; call ~CProfileLock ; ... mov eax,esi ; ... ret 0Ch
 // The manifest label is propagated; the classes are named by address.
@@ -12,17 +13,17 @@ class PKCProtectionInstance { public:             // 8 bytes: section + entry ti
     ~PKCProtectionInstance();              // 0x00C0FFE0
 };
 
-struct CPartA_00c12d50 { unsigned char _body[0x1c]; CPartA_00c12d50(); };   // 0x00C203A0
-struct CPartB_00c12d50 { unsigned char _body[0x10]; CPartB_00c12d50(); };   // 0x00C20390
+struct CMessageListOwner_00c203a0 { unsigned char _body[0x1c]; CMessageListOwner_00c203a0(); };   // 0x00C203A0
+struct SEventRecord { unsigned char _body[0x10]; SEventRecord(); };   // 0x00C20390
 
 struct CQuery_00c12d50 {                   // 0x50-byte query record
-    CPartA_00c12d50 m_0;
+    CMessageListOwner_00c203a0 m_0;
     long m_1c;
     long m_20;
     float m_24;
     float m_28;
     long m_2c;
-    CPartB_00c12d50 m_30;
+    SEventRecord m_30;
     float m_40;                            // the three floats take immediate zeros, the words the zero register
     short m_44;
     float m_48;

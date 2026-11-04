@@ -1,0 +1,153 @@
+caller	targets	status	source	note
+00c09380	00c19250	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c0/CSoundSystem_CSoundSystem_00c09380.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c0a8c0	00c0af00	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c0/CBitMaskPair00c0a8c0_SetFlag_00c0a8c0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c0ab60	00c111c0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c0/unattributed_SetElement00c0ab60_00c0ab60.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c0af20	00c11180	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c0/CAudioParamBlock_Update_00c0af20.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c0b380	00c11180	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c0/CAudioParamBlock_SetSlot_00c0b380.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c0df20	00c0de50	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c0/CString_operator_00c0df20.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c108a0	00c20390	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c1/SPKPlaybackRequest_SPKPlaybackRequest_00c108a0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c10a30	00c20390,00c203a0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c1/CPKVoiceParams_CPKVoiceParams_00c10a30.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c12720	00c11cb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c1/CSoundEventManager_TraceEvents_00c12720.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c127c0	00c11cb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c1/CSoundEventManager_TracePlaybacks_00c127c0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c12880	00c21a50	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c1/CSoundEventManager_Update_00c12880.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c12d50	00c20390,00c203a0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c1/unattributed_CCombatGeometryResolveBlock00c12d50_00c12d50.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c13310	00c20390,00c203a0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c1/unattributed_LoadLayer00c13310_00c13310.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c13470	00c1c230	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c1/CSoundEventManager_CSoundEventManager_00c13470.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c14560	00c29fb0,00c2a150	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c1/PKCWorkerQueue00c14560_PKCWorkerQueue00c14560_00c14560.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c14630	00c29fb0,00c2a150	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c1/PKCWorkerQueue00c14630_PKCWorkerQueue00c14630_00c14630.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c14e40	00c2c6b0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c1/PKCDeferredBank_PKCDeferredBank_00c14e40.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c15c70	00c2d490	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c1/unattributed_Update00c15c70_00c15c70.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c15cd0	00c2d210	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c1/CSoundInstance00c15cd0_SetPlaybackValue_00c15cd0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c17910	00c2ef30	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c1/CWaypointDataOwner00c17910_ReleaseWaypointData_00c17910.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c1adb0	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c1/unattributed_SPair00c1adb0_00c1adb0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c1bed0	00c336f0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c1/CConstraintOwner00c1bed0_AddConstraintRepeat_00c1bed0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c1c230	00c33820,00c33990	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c1/CTripleResource00c1c230_CTripleResource00c1c230_00c1c230.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c1d780	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c1/unattributed_CPair00c1d780_00c1d780.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c1df70	00c1dce0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c1/unattributed_AIStateGroupInitializeAndDispatch00c1df70_00c1df70.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c1e280	00c1e9c0,00c1e9f0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c1/unattributed_QueryDistance00c1e280_00c1e280.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c1e300	00c1e9c0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c1/CVtable012b33f0_Read_00c1e300.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c1f550	00c349c0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c1/unattributed_CVtable012b3420Derived00c1f550_00c1f550.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c1ff20	00c349c0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c1/unattributed_CVtable012b3420Derived00c1ff20_00c1ff20.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c200d0	00c349c0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c2/unattributed_SPair00c200d0_00c200d0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c21040	00c34600	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c2/CSoundEvent_Describe_00c21040.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c21330	00c34600	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c2/CSoundEvent_GetRecordFlag_00c21330.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c22260	00c22240	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c2/CUnprovenCollectionOwner00C22260_ApplyFilter_00c22260.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c23ba0	00c207f0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c2/CVtable012b3a94_CVtable012b3a94_00c23ba0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c262e0	00c283c0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c2/CStreamBuffer_Attach_00c262e0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c26390	00c28690	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c2/CStreamBuffer_Release_00c26390.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c26410	00c283c0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c2/CStreamBuffer_AddUsers_00c26410.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c26480	00c283e0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c2/CStreamBuffer_RemoveUsers_00c26480.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c265b0	00c28690	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c2/CPooledResource_Release_00c265b0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c266e0	00c20390,00c203a0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c2/CNavigationTask012b3fdc_CNavigationTask012b3fdc_00c266e0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c26c10	00c1c810	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c2/unattributed_CPredicateChain00c26c10ctor_00c26c10.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c26cd0	00c2a150	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c2/CMailboxQueue00c26cd0_PostMessage_00c26cd0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c27070	00c1c810	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c2/unattributed_CPredicateChain00c27070ctor_00c27070.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c27130	00c2a150	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c2/CMailboxQueue00c27130_PostMessage_00c27130.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c28580	00c27ef0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c2/CHandleBasedMemoryPool_MoveArea_00c28580.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c2a7f0	00c2a690	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c2/CUnprovenCollectionOwner00C2A7F0_ApplyFilter_00c2a7f0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c2a840	00c2a6b0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c2/CUnprovenCollectionOwner00C2A840_ApplyFilter_00c2a840.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c2a9b0	00c19250	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c2/CTCDPhysicalObstruction_CTCDPhysicalObstructiondtor00c2a9b0_00c2a9b0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c2be10	00c19250	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c2/unattributed_CLineCountedMemoryDataOutputStream00c2be10dtor_00c2be10.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c2d210	00c3a950	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c2/CInstanceManager_FadeOutAll_00c2d210.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c2d2f0	00c2d1a0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c2/unattributed_C3DMeshVolume00c2d2f0ctor_00c2d2f0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c2d5e0	00c3a950	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c2/CInstanceManager_Assign_00c2d5e0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c30940	00c19250	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c3/unattributed_CTypedContainer00c30940dtor_00c30940.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c32060	00c1dce0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c3/CRemoteLoader_LoadDataFromRemote_00c32060.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c33100	00c3c370	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/CTCHeroStats_InformOfEvent_00c33100.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c33110	00c3c370	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/CTCHeroStats_InformOfEvent_00c33110.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c34370	00c1bd60,00c1bd70	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c3/CEnginePrimitiveOcclusionManager_Set_00c34370.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c354a0	00c29fb0,00c2a090	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CScriptModule00c354a0_00c354a0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c35510	00c2a150	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c3/unattributed_ProcessThreadManager00c35510_00c35510.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c36590	00c19250	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c3/unattributed_CResourceMapOwner00c36590dtor_00c36590.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c37840	00c20390	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/CSoundLoop00c37840_Update_00c37840.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c37da0	00c19250	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c3/unattributed_CTCActivationTrigger00c37da0dtor_00c37da0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c383d0	00c2c7b0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c3/CRegistryLayer00c383d0_Add_00c383d0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c38570	00c0b510,00c2c6b0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/CConstraintRepeat00c38470_CConstraintRepeat00c38470_00c38570.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c386a0	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CPair00c386a0_00c386a0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c386f0	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CPair00c386f0_00c386f0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c38740	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CPair00c38740_00c38740.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c38790	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CPair00c38790_00c38790.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c387e0	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CPair00c387e0_00c387e0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c38ac0	00c39670	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/CMessageReceiver00c38ac0_ReceiveMessage_00c38ac0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c39290	00c1c810	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CScriptEntry00c39290_00c39290.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c392f0	00c2a090	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c3/unattributed_DispatchMessageCMailboxQueue00c392f0_00c392f0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c39450	00c1c810	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CScriptEntry00c39450_00c39450.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c394b0	00c2a090	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c3/unattributed_DispatchMessageCMailboxQueue00c394b0_00c394b0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c39610	00c1c810	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CScriptEntry00c39610_00c39610.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c39670	00c2a090	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c3/unattributed_DispatchMessageCMailboxQueue00c39670_00c39670.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c397d0	00c1c810	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CScriptEntry00c397d0_00c397d0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c39830	00c2a090	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c3/unattributed_DispatchMessageCMailboxQueue00c39830_00c39830.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c39990	00c1c810	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CScriptEntry00c39990_00c39990.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c399f0	00c2a090	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c3/unattributed_DispatchMessageCMailboxQueue00c399f0_00c399f0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c39ba0	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CPair00c39ba0_00c39ba0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c39bf0	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CPair00c39bf0_00c39bf0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c39c40	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CPair00c39c40_00c39c40.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c39c90	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CPair00c39c90_00c39c90.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c39ce0	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CPair00c39ce0_00c39ce0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c3ac40	00c19250	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CTypedContainer00c3ac40dtor_00c3ac40.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c3b1d0	00c19250	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CTypedContainer00c3b1d0dtor_00c3b1d0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c3c660	00c3c3b0,00c4d850	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/unattributed_CAIStateGroupBase00c3c660_00c3c660.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c3d7d0	00c3c8a0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/SExpSpendUndo_SExpSpendUndo00c3d7d0ctor_00c3d7d0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c3e520	00c4d000	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/CTeleportState00c3e520_CTeleportState00c3e520_00c3e520.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c3ee10	00c57780	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c3/unattributed_CAnimationOwnerCreateNavigationLayer00c3ee10_00c3ee10.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c3f3d0	00c4cf40	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/CVtable012B5C10_CVtable012B5C10_00c3f3d0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c3f600	00c5b1a0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/C3DAnimationUtil_C3DAnimationUtil_00c3f600.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c3f660	00c3efa0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/C3DAnimationUtil_C3DAnimationUtil_00c3f660.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c3f760	00c5b1a0,00c5d0a0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/CAIStateGroupBase_CAIStateGroupBase_00c3f760.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c3f7b0	00c3efa0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c3/C3DAnimationUtil_C3DAnimationUtil_00c3f7b0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c44360	00c3c360	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/CEventDataBuffer_Allocate_00c44360.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c44a90	00c38510	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/CAmbientEmitter_GetVolume_00c44a90.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c46860	00c19250	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/CRegionMap_CRegionMap_00c46860.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c46900	00c62090	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/CGridCircle_CGridCircle_00c46900.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c46f90	00c62530	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c4/CAmbientSource_ProcessTriggers_00c46f90.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c47300	00c384e0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/CAmbientSource_Update_00c47300.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c473f0	00c19250	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c4/unattributed_CPredicateOwner00c473f0dtor_00c473f0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c48220	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c4/unattributed_CScriptDefinitionManager00c48220dtor_00c48220.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c487b0	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_CPair00c487b0_00c487b0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c48800	00c1c810	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_CScriptEntry00c48800_00c48800.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c48860	00c2a090	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c4/unattributed_CMailboxTake00c48860_00c48860.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c48960	00c2a150	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_ProcessMessageCMailboxQueue00c48960_00c48960.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c48a00	00c2a150	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_ProcessMessageCMailboxQueue00c48a00_00c48a00.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c48aa0	00c2a150	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_ProcessMessageCMailboxQueue00c48aa0_00c48aa0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c48b40	00c2a150	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_ProcessMessageCMailboxQueue00c48b40_00c48b40.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c48be0	00c2a150	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_ProcessMessageCMailboxQueue00c48be0_00c48be0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c48c80	00c2a150	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_ProcessMessage00c48c80_00c48c80.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c49650	00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c4/CCodaFrameStreamer_CCodaFrameStreamer00c49650dtor_00c49650.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c49a70	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_CPair00c49a70_00c49a70.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c49b30	00c1c810	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_CScriptEntry00c49b30_00c49b30.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c49b90	00c2a150	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_ProcessMessageCMailboxQueue00c49b90_00c49b90.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c49c90	00c1c810	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/CLocalDetailPrimitiveRepeatedMesh_CLocalDetailPrimitiveRepeatedMesh_00c49c90.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c49d00	00c1c820	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_SPair00c49d00_00c49d00.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c49ff0	00c2a090	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c4/unattributed_GetResult00c49ff0_00c49ff0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c4bab0	00c1c820,00c29fb0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_CPair00c4bab0_00c4bab0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c4bc20	00c1c810	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_CScriptEntry00c4bc20_00c4bc20.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c4bc80	00c2a090	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c4/unattributed_GetResult00c4bc80_00c4bc80.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c4bd70	00c2a150	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/unattributed_ProcessMessageCMailboxQueue00c4bd70_00c4bd70.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c4c2f0	00c1c810	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/CLockedQueue00c4c2f0_CLockedQueue00c4c2f0_00c4c2f0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c4c370	00c1c820	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c4/unattributed_CMasterObject00c4c370dtor_00c4c370.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c4cab0	00c62e20	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c4/CMasterObject00c4c8b0_LoadSlave_00c4cab0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c4d1f0	00c3c930	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c4/CAudioPlatform_Shutdown_00c4d1f0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c55030	00c6b720	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c5/CAudioSource_Reset_00c55030.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c55070	00c6ca20	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c5/C3DAnimationUtil_C3DAnimationUtil_00c55070.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c550b0	00c6e760	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c5/C3DAnimationUtil_C3DAnimationUtil_00c550b0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c550d0	00c6ca20	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c5/C3DAnimationUtil_C3DAnimationUtil_00c550d0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c55110	00c6e760	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c5/C3DAnimationUtil_C3DAnimationUtil_00c55110.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c551d0	00c6b720	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c5/CAudioSource_Start_00c551d0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c555e0	00c5b1a0,00c5d0a0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c5/unattributed_CLandscapeBackgroundTreeNode00c555e0ctor_00c555e0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c55cd0	00c71420	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c5/unattributed_CParticleTypePair00c55cd0ctor_00c55cd0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c5c2d0	00c6b720	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c5/CSoftwareStreamVoice_SetParameters_00c5c2d0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c61ca0	00c2d100	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c6/CThingPlayerCreature_ResolveMovementBandType_00c61ca0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c62400	00c2d100	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c6/CThingPlayerCreature_ResolveMovementBandType_00c62400.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c62c70	00c62e20	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c6/CSBAgents_CSBAgents00c62c70ctor_00c62c70.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c6a5d0	00c69c60	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c6/CReverbProcessor_Process_00c6a5d0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c6a8b0	00c75000	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c6/NScriptCQGuildTrainingSkillScript_BeginScript_00c6a8b0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c6afc0	00c6a650	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c6/CSoundOutput00c6afc0_CSoundOutput00c6afc0_00c6afc0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c70750	00c705b0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c7/CVtable012bedcc_UpdateVoices_00c70750.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c71120	00c70f80	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c7/CVtable012bede0_UpdateVoices_00c71120.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c72600	00c59ba0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c7/C3DAnimationUtil_C3DAnimationUtil_00c72600.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c72800	00c575f0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c7/CAudioSource_Rewind_00c72800.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c74360	00c88a30	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c7/global_CreateSharedOps_00c74360.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c763c0	00c3c360	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c7/CTCHeroStats_InformOfEvent_00c763c0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c763d0	00c3c370	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS)	00/c7/CTCHeroStats_InformOfEvent_00c763d0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00c783f0	00c77700	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/c7/CEffectPart260_Configure_00c783f0.cpp	callee spellings unified to the DECISIONS_V1 winner
+00caa410	00ca9d00	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/ca/CVtable012bf83c_CVtable012bf83c_00caa410.cpp	callee spellings unified to the DECISIONS_V1 winner

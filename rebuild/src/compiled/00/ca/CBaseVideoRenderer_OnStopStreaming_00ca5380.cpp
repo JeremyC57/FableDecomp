@@ -1,26 +1,16 @@
-// CBaseVideoRenderer::OnStopStreaming() -- DirectShow base-class hook: turns the streaming start time into the elapsed streaming time, returns NOERROR
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA5380, length 25 bytes. Vtable 0x0129D08C slot 17 (the CTextureRenderer
-// video renderer, derived from the DirectShow SDK's CBaseVideoRenderer; also referenced from 0x012BF61C).
-// Callee: winmm timeGetTime through its import slot @ 0x014404B4 (`call [__imp__timeGetTime@0]`).
-// Identity: the DirectShow base classes (renbase.cpp) define exactly this body:
-//   HRESULT CBaseVideoRenderer::OnStopStreaming() { m_tStreamingStart = timeGetTime() - m_tStreamingStart; return NOERROR; }
-// The catalog label "CTCTalk::IsTalking" is propagated over an unrelated body and rejected. m_tStreamingStart (int) sits at
-// +0x158 of the retail renderer; the rest of the object is opaque here.
-// Shape: the import must be `extern "C" __declspec(dllimport)` (no SDK header) for the indirect call; `xor eax,eax` is the
-// long HRESULT result.
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);   // 0x014404B4 import slot
-
-typedef long HRESULT;
-
-struct CBaseVideoRenderer {
-    virtual void v00();
-    unsigned char _pad_0x04[0x154];          // CBaseRenderer state, quality-management counters
-    int           m_tStreamingStart;         // +0x158
-    HRESULT OnStopStreaming();
-};
-
-HRESULT CBaseVideoRenderer::OnStopStreaming()
+// CBaseVideoRenderer::OnStopStreaming() -- end of streaming: m_tStreamingStart becomes the elapsed streaming time (timeGetTime() - start) (DirectShow BaseClasses)
+// Leaf: ?OnStopStreaming@CBaseVideoRenderer@@UAEJXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00CA5380, 25 bytes, thiscall (__fastcall this=ecx).
+// Identity (vendor naming wave V1, proven): BaseClasses renbase.h: CBaseVideoRenderer overrides OnStopStreaming (primary slot 17); retail CBaseVideoRenderer vtable 0x012BF5D8 slot 17 (its ??_G 0x00CA73D0) holds 0x00CA5380, CBaseRenderer vtable 0x012BF498 slot 17 holds 0x00CA6310.
+//   Body: the BaseClasses source of that member (DX9-era SDK; the Win7 sample text differs only where noted), modelled on the
+//   shared engine/CBaseVideoRenderer.h class (renbase.h layout) instead of a local stand-in.
+//   Was: CBaseVideoRenderer::OnStopStreaming() -- DirectShow base-class hook: turns the streaming start time into the elapsed streaming time, returns NOERROR (Leaf none, module CBaseVideoRenderer).
+#define FABLE_RETAIL_CBASEVIDEORENDERER
+#define FABLE_RETAIL_CBASEVIDEORENDERER_OVERRIDES
+#include "engine/CBaseVideoRenderer.h"
+extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);   // WINMM import 0x014404B4
+long CBaseVideoRenderer::OnStopStreaming()
 {
     m_tStreamingStart = timeGetTime() - m_tStreamingStart;
-    return 0;   // NOERROR
+    return NOERROR;
 }

@@ -1,0 +1,178 @@
+action	symbol	target	by_row	note
+ADD	?SetMaskBit8@@YIXK_NPAG1@Z	00c0af00	00c0a8c0	vendor naming wave V1: decided placeholder spelling of 0x00C0AF00 emitted by the respelled row
+ADD	?SetFlagBit0@CLockedFlagOwner_00c111c0@@QAEXXZ	00c111c0	00c0ab60	vendor naming wave V1: decided placeholder spelling of 0x00C111C0 emitted by the respelled row
+ADD	?SetFlagBit1@CLockedFlagOwner_00c11180@@QAEXXZ	00c11180	00c0af20	vendor naming wave V1: decided placeholder spelling of 0x00C11180 emitted by the respelled row
+ADD	?AppendPointer_00C0DE50@CString@@QAEXPBX@Z	00c0de50	00c0df20	vendor naming wave V1: decided placeholder spelling of 0x00C0DE50 emitted by the respelled row
+ADD	?UpdateItems@CSoundEventManager@@QAEXXZ	00c11cb0	00c12720	vendor naming wave V1: decided placeholder spelling of 0x00C11CB0 emitted by the respelled row
+ADD	?Update@CSoundEvent@@QAEXPAUCSoundEventManager@@K@Z	00c21a50	00c12880	vendor naming wave V1: decided placeholder spelling of 0x00C21A50 emitted by the respelled row
+ADD	??1CTripleResource_00c1c230@@QAE@XZ	00c1c230	00c13470	vendor naming wave V1: decided placeholder spelling of 0x00C1C230 emitted by the respelled row
+ADD	??1PKCSemaphore@@QAE@XZ	00c29fb0	00c14560	vendor naming wave V1: decided placeholder spelling of 0x00C29FB0 emitted by the respelled row
+ADD	??0CFlagOverride@@QAE@XZ	00c2c6b0	00c14e40	vendor naming wave V1: decided placeholder spelling of 0x00C2C6B0 emitted by the respelled row
+ADD	?Update@CInstanceManager@@QAEXXZ	00c2d490	00c15c70	vendor naming wave V1: decided placeholder spelling of 0x00C2D490 emitted by the respelled row
+ADD	?FadeOutAll@CInstanceManager@@QAEXM@Z	00c2d210	00c15cd0	vendor naming wave V1: decided placeholder spelling of 0x00C2D210 emitted by the respelled row
+ADD	??1PKCCriticalSection@@QAE@XZ	00c1c820	00c1adb0	vendor naming wave V1: decided placeholder spelling of 0x00C1C820 emitted by the respelled row
+ADD	?AudioSystem_SetListenerTarget@@YGXPAX@Z	00c336f0	00c1bed0	vendor naming wave V1: decided placeholder spelling of 0x00C336F0 emitted by the respelled row
+ADD	?CUnprovenForwarder_00c33990@@YGXPAX@Z	00c33990	00c1c230	vendor naming wave V1: decided placeholder spelling of 0x00C33990 emitted by the respelled row
+ADD	?CUnprovenForwarder_00c33820@@YGXPAX@Z	00c33820	00c1c230	vendor naming wave V1: decided placeholder spelling of 0x00C33820 emitted by the respelled row
+ADD	??1CReplyMailbox@@QAE@XZ	00c1dce0	00c1df70	vendor naming wave V1: decided placeholder spelling of 0x00C1DCE0 emitted by the respelled row
+ADD	?GetAlignedDuration@CSequenceClient00c1e9f0@@QAEJXZ	00c1e9f0	00c1e280	vendor naming wave V1: decided placeholder spelling of 0x00C1E9F0 emitted by the respelled row
+ADD	?GetSequencePhase@CSequenceClient00c1e9f0@@QAEJXZ	00c1e9c0	00c1e280	vendor naming wave V1: decided placeholder spelling of 0x00C1E9C0 emitted by the respelled row
+ADD	??1CVtable_012b4fbc@@QAE@XZ	00c349c0	00c1f550	vendor naming wave V1: decided placeholder spelling of 0x00C349C0 emitted by the respelled row
+ADD	?GetValue@CQuadHolder@@QBE?AUSQuad@@XZ	00c34600	00c21040	vendor naming wave V1: decided placeholder spelling of 0x00C34600 emitted by the respelled row
+ADD	??0CVtable_012b3858@@QAE@PAX@Z	00c22240	00c22260	vendor naming wave V1: decided placeholder spelling of 0x00C22240 emitted by the respelled row
+ADD	??1CSoundEvent@@QAE@XZ	00c207f0	00c23ba0	vendor naming wave V1: decided placeholder spelling of 0x00C207F0 emitted by the respelled row
+ADD	??0PKCCriticalSection@@QAE@XZ	00c1c810	00c26c10	vendor naming wave V1: decided placeholder spelling of 0x00C1C810 emitted by the respelled row
+ADD	?InsertFreeArea_00c27ef0@CHandleBasedMemoryPool_012b4098@@QAEXPAUCHeader@@@Z	00c27ef0	00c27ef0	vendor naming wave V1: decided placeholder spelling of 0x00C27EF0 emitted by the respelled row
+ADD	??0CVtable_012b4180@@QAE@PAX@Z	00c2a690	00c2a7f0	vendor naming wave V1: decided placeholder spelling of 0x00C2A690 emitted by the respelled row
+ADD	??0CVtable_012b4188@@QAE@PAX@Z	00c2a6b0	00c2a840	vendor naming wave V1: decided placeholder spelling of 0x00C2A6B0 emitted by the respelled row
+ADD	?SetTarget@CInterpolatedFloat_00c3a950@@QAEXMM@Z	00c3a950	00c2d210	vendor naming wave V1: decided placeholder spelling of 0x00C3A950 emitted by the respelled row
+ADD	??0SPKVoiceSettings@@QAE@XZ	00c2d1a0	00c2d2f0	vendor naming wave V1: decided placeholder spelling of 0x00C2D1A0 emitted by the respelled row
+ADD	?Add@CRegistryLayer_00c2c7b0@@QAEPAUCRegisteredItem@@PAU2@_N1@Z	00c2c7b0	00c383d0	vendor naming wave V1: decided placeholder spelling of 0x00C2C7B0 emitted by the respelled row
+ADD	?SetImmediate@CRampedParam@@QAEXM@Z	00c0b510	00c38570	vendor naming wave V1: decided placeholder spelling of 0x00C0B510 emitted by the respelled row
+ADD	?DispatchMessage_CMailboxQueue_00c39670@CMailboxQueue_00c39670@@QAEPAXPAX@Z	00c39670	00c38ac0	vendor naming wave V1: decided placeholder spelling of 0x00C39670 emitted by the respelled row
+ADD	??0CVtable_012b4f74@@QAE@XZ	00c3c3b0	00c3c660	vendor naming wave V1: decided placeholder spelling of 0x00C3C3B0 emitted by the respelled row
+ADD	??0CSentinelPair_00c4d850@@QAE@XZ	00c4d850	00c3c660	vendor naming wave V1: decided placeholder spelling of 0x00C4D850 emitted by the respelled row
+ADD	??0CNodePool@@QAE@XZ	00c3c8a0	00c3d7d0	vendor naming wave V1: decided placeholder spelling of 0x00C3C8A0 emitted by the respelled row
+ADD	??0CAudioPlatform@@QAE@XZ	00c4d000	00c3e520	vendor naming wave V1: decided placeholder spelling of 0x00C4D000 emitted by the respelled row
+ADD	??0CVtable_012b8ed4@@QAE@XZ	00c57780	00c3ee10	vendor naming wave V1: decided placeholder spelling of 0x00C57780 emitted by the respelled row
+ADD	??0CSoftwareVoice@@QAE@XZ	00c5b1a0	00c3f600	vendor naming wave V1: decided placeholder spelling of 0x00C5B1A0 emitted by the respelled row
+ADD	??0CLimitedMixBuffer@@QAE@XZ	00c3efa0	00c3f660	vendor naming wave V1: decided placeholder spelling of 0x00C3EFA0 emitted by the respelled row
+ADD	??0CAudioRingBuffer@@QAE@XZ	00c5d0a0	00c3f760	vendor naming wave V1: decided placeholder spelling of 0x00C5D0A0 emitted by the respelled row
+ADD	?GetValue@CRampedParamOwner_00c38510@@QBEMXZ	00c38510	00c44a90	vendor naming wave V1: decided placeholder spelling of 0x00C38510 emitted by the respelled row
+ADD	?Length@CPKIntVector2@@QBEMXZ	00c62090	00c46900	vendor naming wave V1: decided placeholder spelling of 0x00C62090 emitted by the respelled row
+ADD	?Play@CAmbientTrigger@@QAEXPAVCAmbientSource@@@Z	00c62530	00c46f90	vendor naming wave V1: decided placeholder spelling of 0x00C62530 emitted by the respelled row
+ADD	?IsAngry@CFloatPair_00c384e0@@QBE_NXZ	00c384e0	00c47300	vendor naming wave V1: decided placeholder spelling of 0x00C384E0 emitted by the respelled row
+ADD	??0PKRASlaveObject@@QAE@PAX@Z	00c62e20	00c4cab0	vendor naming wave V1: decided placeholder spelling of 0x00C62E20 emitted by the respelled row
+ADD	?Clear@CNodePool@@QAEXXZ	00c3c930	00c4d1f0	vendor naming wave V1: decided placeholder spelling of 0x00C3C930 emitted by the respelled row
+ADD	??0CVtable_012bed7c@@QAE@XZ	00c6ca20	00c55070	vendor naming wave V1: decided placeholder spelling of 0x00C6CA20 emitted by the respelled row
+ADD	??0CVtable_012bedb8@@QAE@XZ	00c6e760	00c550b0	vendor naming wave V1: decided placeholder spelling of 0x00C6E760 emitted by the respelled row
+ADD	??0CUnprovenMixerVolumeControl_00c71420@@QAE@XZ	00c71420	00c55cd0	vendor naming wave V1: decided placeholder spelling of 0x00C71420 emitted by the respelled row
+ADD	?PickDelay@CRandomDelay_00c2d100@@QAEJM@Z	00c2d100	00c61ca0	vendor naming wave V1: decided placeholder spelling of 0x00C2D100 emitted by the respelled row
+ADD	?ProcessInput@CReverbProcessor@@QAEXPBM_NK@Z	00c69c60	00c6a5d0	vendor naming wave V1: decided placeholder spelling of 0x00C69C60 emitted by the respelled row
+ADD	?Detach@CStereoDelayLine@@QAEXXZ	00c75000	00c6a8b0	vendor naming wave V1: decided placeholder spelling of 0x00C75000 emitted by the respelled row
+ADD	??0CReverbProcessor@@QAE@XZ	00c6a650	00c6afc0	vendor naming wave V1: decided placeholder spelling of 0x00C6A650 emitted by the respelled row
+ADD	?SetupVoice@CVtable_012bedcc@@QAEXPAUSResampleVoice@@MPBUSUnprovenImpulse52@@@Z	00c705b0	00c70750	vendor naming wave V1: decided placeholder spelling of 0x00C705B0 emitted by the respelled row
+ADD	?SetupVoice@CVtable_012bede0@@QAEXPAUSFilteredVoice@@MPBUSUnprovenImpulse52@@@Z	00c70f80	00c71120	vendor naming wave V1: decided placeholder spelling of 0x00C70F80 emitted by the respelled row
+ADD	??0CCodaVoice@@QAE@XZ	00c59ba0	00c72600	vendor naming wave V1: decided placeholder spelling of 0x00C59BA0 emitted by the respelled row
+ADD	??0CVtable_012bf1f4@@QAE@XZ	00c88a30	00c74360	vendor naming wave V1: decided placeholder spelling of 0x00C88A30 emitted by the respelled row
+ADD	?MillibelsToAmplitude@@YAMJ@Z	00c77700	00c783f0	vendor naming wave V1: decided placeholder spelling of 0x00C77700 emitted by the respelled row
+ADD	??1CScopedSectionLock@@QAE@XZ	00ca48c0	00ca48c0	vendor naming wave V1: decided placeholder spelling of 0x00CA48C0 emitted by the respelled row
+ADD	?GetPinCount@CBaseRenderer@@UAEHXZ	00ca48f0	00ca48f0	vendor naming wave V1: proven spelling of 0x00CA48F0 emitted by the respelled row
+ADD	?EndFlush@CBaseRenderer@@UAEJXZ	00ca4990	00ca4990	vendor naming wave V1: proven spelling of 0x00CA4990 emitted by the respelled row
+ADD	?Active@CBaseRenderer@@UAEJXZ	00ca49b0	00ca49b0	vendor naming wave V1: proven spelling of 0x00CA49B0 emitted by the respelled row
+ADD	?Inactive@CBaseRenderer@@UAEJXZ	00ca49c0	00ca49c0	vendor naming wave V1: proven spelling of 0x00CA49C0 emitted by the respelled row
+ADD	?SetMediaType@CBaseRenderer@@UAEJPBVCMediaType@@@Z	00ca49e0	00ca49e0	vendor naming wave V1: proven spelling of 0x00CA49E0 emitted by the respelled row
+ADD	?ShouldDrawSampleNow@CBaseRenderer@@UAEJPAUIMediaSample@@PA_J1@Z	00ca4a50	00ca4a50	vendor naming wave V1: proven spelling of 0x00CA4A50 emitted by the respelled row
+ADD	?CancelNotification@CBaseRenderer@@UAEJXZ	00ca4a70	00ca4a70	vendor naming wave V1: proven spelling of 0x00CA4A70 emitted by the respelled row
+ADD	?Render@CBaseRenderer@@UAEJPAUIMediaSample@@@Z	00ca4b20	00ca4b20	vendor naming wave V1: proven spelling of 0x00CA4B20 emitted by the respelled row
+ADD	?HaveCurrentSample@CBaseRenderer@@UAEHXZ	00ca4b60	00ca4b60	vendor naming wave V1: proven spelling of 0x00CA4B60 emitted by the respelled row
+ADD	?GetCurrentSample@CBaseRenderer@@UAEPAUIMediaSample@@XZ	00ca4b90	00ca4b90	vendor naming wave V1: proven spelling of 0x00CA4B90 emitted by the respelled row
+ADD	?StartStreaming@CBaseRenderer@@UAEJXZ	00ca4d80	00ca4d80	vendor naming wave V1: proven spelling of 0x00CA4D80 emitted by the respelled row
+ADD	?OnRenderStart@CBaseRenderer@@UAEXPAUIMediaSample@@@Z	00ca4f20	00ca4f20	vendor naming wave V1: proven spelling of 0x00CA4F20 emitted by the respelled row
+ADD	?OnRenderEnd@CBaseRenderer@@UAEXPAUIMediaSample@@@Z	00ca4f30	00ca4f30	vendor naming wave V1: proven spelling of 0x00CA4F30 emitted by the respelled row
+ADD	?OnStopStreaming@CBaseVideoRenderer@@UAEJXZ	00ca5380	00ca5380	vendor naming wave V1: proven spelling of 0x00CA5380 emitted by the respelled row
+ADD	?OnWaitStart@CBaseVideoRenderer@@UAEXXZ	00ca53a0	00ca53a0	vendor naming wave V1: proven spelling of 0x00CA53A0 emitted by the respelled row
+ADD	?OnWaitEnd@CBaseVideoRenderer@@UAEXXZ	00ca53b0	00ca53b0	vendor naming wave V1: proven spelling of 0x00CA53B0 emitted by the respelled row
+ADD	?RecordFrameLateness@CBaseVideoRenderer@@UAEXHH@Z	00ca5400	00ca5400	vendor naming wave V1: proven spelling of 0x00CA5400 emitted by the respelled row
+ADD	?OnRenderStart@CBaseVideoRenderer@@UAEXPAUIMediaSample@@@Z	00ca55e0	00ca55e0	vendor naming wave V1: proven spelling of 0x00CA55E0 emitted by the respelled row
+ADD	?ResetEndOfStream@CBaseRenderer@@UAEJXZ	00ca7030	00ca7030	vendor naming wave V1: proven spelling of 0x00CA7030 emitted by the respelled row
+ADD	?GetPinVersion@CBaseFilter@@UAEJXZ	00ca79f0	00ca79f0	vendor naming wave V1: proven spelling of 0x00CA79F0 emitted by the respelled row
+ADD	??1CBaseAllocator@@UAE@XZ	00ca9d00	00caa410	vendor naming wave V1: proven spelling of 0x00CA9D00 emitted by the respelled row
+RETIRE	?SetMaskBit8_00c0af00@@YIXK_NPAG1@Z	00c0af00	00c0a8c0	no landed row emits it for 0x00C0AF00 after the overlay (losing spelling of the DECISIONS_V1 winner ?SetMaskBit8@@YIXK_NPAG1@Z)
+RETIRE	?Refresh@CDisplay@@QAEXXZ	00c11180	00c0af20	no landed row emits it for 0x00C11180 after the overlay (losing spelling of the DECISIONS_V1 winner ?SetFlagBit1@CLockedFlagOwner_00c11180@@QAEXXZ)
+RETIRE	?Refresh@CDisplay_00c0ab60@@QAEXXZ	00c111c0	00c0ab60	no landed row emits it for 0x00C111C0 after the overlay (losing spelling of the DECISIONS_V1 winner ?SetFlagBit0@CLockedFlagOwner_00c111c0@@QAEXXZ)
+RETIRE	??1CMap_00c2be10@@QAE@XZ	00c19250	00c2be10	no landed row emits it for 0x00C19250 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCTRRedblackTree@@QAE@XZ)
+RETIRE	??1CMap_00c30940@@QAE@XZ	00c19250	00c30940	no landed row emits it for 0x00C19250 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCTRRedblackTree@@QAE@XZ)
+RETIRE	??1CMap_00c3ac40@@QAE@XZ	00c19250	00c3ac40	no landed row emits it for 0x00C19250 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCTRRedblackTree@@QAE@XZ)
+RETIRE	??1CMap_00c3b1d0@@QAE@XZ	00c19250	00c3b1d0	no landed row emits it for 0x00C19250 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCTRRedblackTree@@QAE@XZ)
+RETIRE	??1CNode_00c09380@@QAE@XZ	00c19250	00c09380	no landed row emits it for 0x00C19250 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCTRRedblackTree@@QAE@XZ)
+RETIRE	??1CNode_00c2a9b0@@QAE@XZ	00c19250	00c2a9b0	no landed row emits it for 0x00C19250 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCTRRedblackTree@@QAE@XZ)
+RETIRE	??1CNode_00c36590@@QAE@XZ	00c19250	00c36590	no landed row emits it for 0x00C19250 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCTRRedblackTree@@QAE@XZ)
+RETIRE	??1CNode_00c37da0@@QAE@XZ	00c19250	00c37da0	no landed row emits it for 0x00C19250 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCTRRedblackTree@@QAE@XZ)
+RETIRE	??1CNode_00c473f0@@QAE@XZ	00c19250	00c473f0	no landed row emits it for 0x00C19250 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCTRRedblackTree@@QAE@XZ)
+RETIRE	??1CPKListImpl@@QAE@XZ	00c19250	00c46860	no landed row emits it for 0x00C19250 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCTRRedblackTree@@QAE@XZ)
+RETIRE	?SetFirst@SRange@@QAEXM@Z	00c1bd60	00c34370	no landed row emits it for 0x00C1BD60 after the overlay (losing spelling of the DECISIONS_V1 winner ?SetX@CFloatPair@@QAEXM@Z)
+RETIRE	?SetSecond@SRange@@QAEXM@Z	00c1bd70	00c34370	no landed row emits it for 0x00C1BD70 after the overlay (losing spelling of the DECISIONS_V1 winner ?SetY@CFloatPair@@QAEXM@Z)
+RETIRE	??1CPartB_00c13470@@QAE@XZ	00c1c230	00c13470	no landed row emits it for 0x00C1C230 after the overlay (losing spelling of the DECISIONS_V1 winner ??1CTripleResource_00c1c230@@QAE@XZ)
+RETIRE	??0CBase_00c1c810@@QAE@XZ	00c1c810	00c1afd0	no landed row emits it for 0x00C1C810 after the overlay (losing spelling of the DECISIONS_V1 winner ??0PKCCriticalSection@@QAE@XZ)
+RETIRE	??0CCriticalSection_00c1c810@@QAE@XZ	00c1c810	00c4c2f0	no landed row emits it for 0x00C1C810 after the overlay (losing spelling of the DECISIONS_V1 winner ??0PKCCriticalSection@@QAE@XZ)
+RETIRE	??0CLocalDetailPrimitiveBase_00c49c90@@QAE@XZ	00c1c810	00c49c90	no landed row emits it for 0x00C1C810 after the overlay (losing spelling of the DECISIONS_V1 winner ??0PKCCriticalSection@@QAE@XZ)
+RETIRE	??0CPredicateBase_00c26c10@@QAE@XZ	00c1c810	00c26c10	no landed row emits it for 0x00C1C810 after the overlay (losing spelling of the DECISIONS_V1 winner ??0PKCCriticalSection@@QAE@XZ)
+RETIRE	??0CPredicateBase_00c27070@@QAE@XZ	00c1c810	00c27070	no landed row emits it for 0x00C1C810 after the overlay (losing spelling of the DECISIONS_V1 winner ??0PKCCriticalSection@@QAE@XZ)
+RETIRE	??1CMember_00c4c370@@QAE@XZ	00c1c820	00c4c370	no landed row emits it for 0x00C1C820 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCCriticalSection@@QAE@XZ)
+RETIRE	?First@CTarget_00c1e280@@QAEJXZ	00c1e9c0	00c1e280	no landed row emits it for 0x00C1E9C0 after the overlay (losing spelling of the DECISIONS_V1 winner ?GetSequencePhase@CSequenceClient00c1e9f0@@QAEJXZ)
+RETIRE	?Second@CTarget_00c1e280@@QAEJXZ	00c1e9f0	00c1e280	no landed row emits it for 0x00C1E9F0 after the overlay (losing spelling of the DECISIONS_V1 winner ?GetAlignedDuration@CSequenceClient00c1e9f0@@QAEJXZ)
+RETIRE	??0CNavigationLayer@@QAE@XZ	00c20390	00c10a30	no landed row emits it for 0x00C20390 after the overlay (losing spelling of the DECISIONS_V1 winner ??0SEventRecord@@QAE@XZ)
+RETIRE	??0CNavigationLayer_00c13310@@QAE@XZ	00c20390	00c13310	no landed row emits it for 0x00C20390 after the overlay (losing spelling of the DECISIONS_V1 winner ??0SEventRecord@@QAE@XZ)
+RETIRE	??0CPartB_00c12d50@@QAE@XZ	00c20390	00c12d50	no landed row emits it for 0x00C20390 after the overlay (losing spelling of the DECISIONS_V1 winner ??0SEventRecord@@QAE@XZ)
+RETIRE	??0SPKHandle@@QAE@XZ	00c20390	00c108a0	no landed row emits it for 0x00C20390 after the overlay (losing spelling of the DECISIONS_V1 winner ??0SEventRecord@@QAE@XZ)
+RETIRE	??0CMessageListOwner@@QAE@XZ	00c203a0	00c10a30	no landed row emits it for 0x00C203A0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CMessageListOwner_00c203a0@@QAE@XZ)
+RETIRE	??0CMessageListOwner_00c13310@@QAE@XZ	00c203a0	00c13310	no landed row emits it for 0x00C203A0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CMessageListOwner_00c203a0@@QAE@XZ)
+RETIRE	??0CPartA_00c12d50@@QAE@XZ	00c203a0	00c12d50	no landed row emits it for 0x00C203A0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CMessageListOwner_00c203a0@@QAE@XZ)
+RETIRE	??1SEntry_00c207f0@@QAE@XZ	00c207f0	00c23ba0	no landed row emits it for 0x00C207F0 after the overlay (losing spelling of the DECISIONS_V1 winner ??1CSoundEvent@@QAE@XZ)
+RETIRE	??0CUnprovenVisitAdapter_00C22240@@QAE@PAX@Z	00c22240	00c22260	no landed row emits it for 0x00C22240 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CVtable_012b3858@@QAE@PAX@Z)
+RETIRE	?FreeAllocation@CHandleBasedMemoryPool_012b4098@@QAEXJ@Z	00c28690	00c265b0	no landed row emits it for 0x00C28690 after the overlay (losing spelling of the DECISIONS_V1 winner ?Free@CHandleBasedMemoryPool_012b4098@@QAEXJ@Z)
+RETIRE	??1CEvent_00c49650@@QAE@XZ	00c29fb0	00c49650	no landed row emits it for 0x00C29FB0 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCSemaphore@@QAE@XZ)
+RETIRE	??1CMember_00c29fb0@@QAE@XZ	00c29fb0	00c1d780	no landed row emits it for 0x00C29FB0 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCSemaphore@@QAE@XZ)
+RETIRE	??1CSecond_00c1adb0@@QAE@XZ	00c29fb0	00c1adb0	no landed row emits it for 0x00C29FB0 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCSemaphore@@QAE@XZ)
+RETIRE	??1CSecond_00c48220@@QAE@XZ	00c29fb0	00c48220	no landed row emits it for 0x00C29FB0 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCSemaphore@@QAE@XZ)
+RETIRE	??1PKCSemaphore_00c14560@@QAE@XZ	00c29fb0	00c14560	no landed row emits it for 0x00C29FB0 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCSemaphore@@QAE@XZ)
+RETIRE	??1PKCSemaphore_00c14630@@QAE@XZ	00c29fb0	00c14630	no landed row emits it for 0x00C29FB0 after the overlay (losing spelling of the DECISIONS_V1 winner ??1PKCSemaphore@@QAE@XZ)
+RETIRE	?Acquire@CSemaphore@@QAEXXZ	00c2a090	00c1b030	no landed row emits it for 0x00C2A090 after the overlay (losing spelling of the DECISIONS_V1 winner ?Wait@PKCSemaphore@@QAEXXZ)
+RETIRE	?Acquire@CSemaphore_00c48860@@QAEXXZ	00c2a090	00c48860	no landed row emits it for 0x00C2A090 after the overlay (losing spelling of the DECISIONS_V1 winner ?Wait@PKCSemaphore@@QAEXXZ)
+RETIRE	?Clear@CMember_00c354a0@@QAEXXZ	00c2a090	00c354a0	no landed row emits it for 0x00C2A090 after the overlay (losing spelling of the DECISIONS_V1 winner ?Wait@PKCSemaphore@@QAEXXZ)
+RETIRE	?Wait@CSemaphore_00c49ff0@@QAEXXZ	00c2a090	00c49ff0	no landed row emits it for 0x00C2A090 after the overlay (losing spelling of the DECISIONS_V1 winner ?Wait@PKCSemaphore@@QAEXXZ)
+RETIRE	?Wait@CSemaphore_00c4bc80@@QAEXXZ	00c2a090	00c4bc80	no landed row emits it for 0x00C2A090 after the overlay (losing spelling of the DECISIONS_V1 winner ?Wait@PKCSemaphore@@QAEXXZ)
+RETIRE	?Release@CSemaphore@@QAEXXZ	00c2a150	00c1dc40	no landed row emits it for 0x00C2A150 after the overlay (losing spelling of the DECISIONS_V1 winner ?Release@PKCSemaphore@@QAEXXZ)
+RETIRE	?Release@CSemaphore_00c35510@@QAEXXZ	00c2a150	00c35510	no landed row emits it for 0x00C2A150 after the overlay (losing spelling of the DECISIONS_V1 winner ?Release@PKCSemaphore@@QAEXXZ)
+RETIRE	?Release@CSemaphore_00c48c80@@QAEXXZ	00c2a150	00c48c80	no landed row emits it for 0x00C2A150 after the overlay (losing spelling of the DECISIONS_V1 winner ?Release@PKCSemaphore@@QAEXXZ)
+RETIRE	?Release@PKCSemaphore_00c14560@@QAEXXZ	00c2a150	00c14560	no landed row emits it for 0x00C2A150 after the overlay (losing spelling of the DECISIONS_V1 winner ?Release@PKCSemaphore@@QAEXXZ)
+RETIRE	?Release@PKCSemaphore_00c14630@@QAEXXZ	00c2a150	00c14630	no landed row emits it for 0x00C2A150 after the overlay (losing spelling of the DECISIONS_V1 winner ?Release@PKCSemaphore@@QAEXXZ)
+RETIRE	??0CUnprovenVisitAdapter_00C2A690@@QAE@PAX@Z	00c2a690	00c2a7f0	no landed row emits it for 0x00C2A690 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CVtable_012b4180@@QAE@PAX@Z)
+RETIRE	??0CUnprovenVisitAdapter_00C2A6B0@@QAE@PAX@Z	00c2a6b0	00c2a840	no landed row emits it for 0x00C2A6B0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CVtable_012b4188@@QAE@PAX@Z)
+RETIRE	??0CConstraintSlot_00c38470@@QAE@XZ	00c2c6b0	00c38570	no landed row emits it for 0x00C2C6B0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CFlagOverride@@QAE@XZ)
+RETIRE	??0CDiceQuad@@QAE@XZ	00c2c6b0	00c14e40	no landed row emits it for 0x00C2C6B0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CFlagOverride@@QAE@XZ)
+RETIRE	?Add@CRegistryParent_00c383d0@@QAEPAUCRegisteredItem@@PAU2@_N1@Z	00c2c7b0	00c383d0	no landed row emits it for 0x00C2C7B0 after the overlay (losing spelling of the DECISIONS_V1 winner ?Add@CRegistryLayer_00c2c7b0@@QAEPAUCRegisteredItem@@PAU2@_N1@Z)
+RETIRE	?Pick@CRandomTable@@QAEJM@Z	00c2d100	00c61ca0	no landed row emits it for 0x00C2D100 after the overlay (losing spelling of the DECISIONS_V1 winner ?PickDelay@CRandomDelay_00c2d100@@QAEJM@Z)
+RETIRE	??0CVolumeData_00c2d2f0@@QAE@XZ	00c2d1a0	00c2d2f0	no landed row emits it for 0x00C2D1A0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0SPKVoiceSettings@@QAE@XZ)
+RETIRE	?SetValue@CSoundPlayer_00c15cd0@@QAEXM@Z	00c2d210	00c15cd0	no landed row emits it for 0x00C2D210 after the overlay (losing spelling of the DECISIONS_V1 winner ?FadeOutAll@CInstanceManager@@QAEXM@Z)
+RETIRE	?Step@CTarget_00c15c70@@QAEXXZ	00c2d490	00c15c70	no landed row emits it for 0x00C2D490 after the overlay (losing spelling of the DECISIONS_V1 winner ?Update@CInstanceManager@@QAEXXZ)
+RETIRE	??1WaypointData@@QAE@XZ	00c2ef30	00c17910	no landed row emits it for 0x00C2EF30 after the overlay (losing spelling of the DECISIONS_V1 winner ??1CBankData@@QAE@XZ)
+RETIRE	?NotifyGlobalManager_00c336f0@@YGXPAX@Z	00c336f0	00c1bed0	no landed row emits it for 0x00C336F0 after the overlay (losing spelling of the DECISIONS_V1 winner ?AudioSystem_SetListenerTarget@@YGXPAX@Z)
+RETIRE	?ReleaseB_00c33820@@YGXPAX@Z	00c33820	00c1c230	no landed row emits it for 0x00C33820 after the overlay (losing spelling of the DECISIONS_V1 winner ?CUnprovenForwarder_00c33820@@YGXPAX@Z)
+RETIRE	?ReleaseA_00c33990@@YGXPAX@Z	00c33990	00c1c230	no landed row emits it for 0x00C33990 after the overlay (losing spelling of the DECISIONS_V1 winner ?CUnprovenForwarder_00c33990@@YGXPAX@Z)
+RETIRE	??1CMember8@@QAE@XZ	00c349c0	00c200d0	no landed row emits it for 0x00C349C0 after the overlay (losing spelling of the DECISIONS_V1 winner ??1CVtable_012b4fbc@@QAE@XZ)
+RETIRE	??1CMember_00c349c0@@QAE@XZ	00c349c0	00c1f550	no landed row emits it for 0x00C349C0 after the overlay (losing spelling of the DECISIONS_V1 winner ??1CVtable_012b4fbc@@QAE@XZ)
+RETIRE	?IsFinished@CAmbientSourceDef@@QBE_NXZ	00c384e0	00c47300	no landed row emits it for 0x00C384E0 after the overlay (losing spelling of the DECISIONS_V1 winner ?IsAngry@CFloatPair_00c384e0@@QBE_NXZ)
+RETIRE	?GetValue@CRampedParam_00c38510@@QBEMXZ	00c38510	00c44a90	no landed row emits it for 0x00C38510 after the overlay (losing spelling of the DECISIONS_V1 winner ?GetValue@CRampedParamOwner_00c38510@@QBEMXZ)
+RETIRE	?DispatchMessage@CMailboxQueue@@QAEPAXPAX@Z	00c39670	00c38ac0	no landed row emits it for 0x00C39670 after the overlay (losing spelling of the DECISIONS_V1 winner ?DispatchMessage_CMailboxQueue_00c39670@CMailboxQueue_00c39670@@QAEPAXPAX@Z)
+RETIRE	?RampTo@CRampedParam@@QAEXMM@Z	00c3a950	00c2d210	no landed row emits it for 0x00C3A950 after the overlay (losing spelling of the DECISIONS_V1 winner ?SetTarget@CInterpolatedFloat_00c3a950@@QAEXMM@Z)
+RETIRE	_EventAlloc	00c3c360	00c44360	no landed row emits it for 0x00C3C360 after the overlay (losing spelling of the DECISIONS_V1 winner _CodaMalloc)
+RETIRE	??0CAIStateGroupRoot_00c3c660@@QAE@XZ	00c3c3b0	00c3c660	no landed row emits it for 0x00C3C3B0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CVtable_012b4f74@@QAE@XZ)
+RETIRE	??0CList_00c3d7d0@@QAE@XZ	00c3c8a0	00c3d7d0	no landed row emits it for 0x00C3C8A0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CNodePool@@QAE@XZ)
+RETIRE	?Clear@CVoicePool@@QAEXXZ	00c3c930	00c4d1f0	no landed row emits it for 0x00C3C930 after the overlay (losing spelling of the DECISIONS_V1 winner ?Clear@CNodePool@@QAEXXZ)
+RETIRE	??0CBase_00c3efa0@@QAE@XZ	00c3efa0	00c3f660	no landed row emits it for 0x00C3EFA0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CLimitedMixBuffer@@QAE@XZ)
+RETIRE	??1CListNode@@UAE@XZ	00c4cf40	00c3f3d0	no landed row emits it for 0x00C4CF40 after the overlay (losing spelling of the DECISIONS_V1 winner ??1CVtable_012B8778@@UAE@XZ)
+RETIRE	??0TeleportData_00c4d000@@QAE@XZ	00c4d000	00c3e520	no landed row emits it for 0x00C4D000 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CAudioPlatform@@QAE@XZ)
+RETIRE	??0CAIStateGroupMember_00c3c660@@QAE@XZ	00c4d850	00c3c660	no landed row emits it for 0x00C4D850 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CSentinelPair_00c4d850@@QAE@XZ)
+RETIRE	?PlaySource@CAudioContext@@QAEXK@Z	00c575f0	00c72800	no landed row emits it for 0x00C575F0 after the overlay (losing spelling of the DECISIONS_V1 winner ?SourcePlay@CAudioContext@@QAEXK@Z)
+RETIRE	??0CGroupA_00c3ee10@@QAE@XZ	00c57780	00c3ee10	no landed row emits it for 0x00C57780 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CVtable_012b8ed4@@QAE@XZ)
+RETIRE	??0C3DAnimationBlendState@@QAE@XZ	00c59ba0	00c72600	no landed row emits it for 0x00C59BA0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CCodaVoice@@QAE@XZ)
+RETIRE	??0CAIStateGroupRoot@@QAE@XZ	00c5b1a0	00c3f760	no landed row emits it for 0x00C5B1A0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CSoftwareVoice@@QAE@XZ)
+RETIRE	??0CBase_00c5b1a0@@QAE@XZ	00c5b1a0	00c3f600	no landed row emits it for 0x00C5B1A0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CSoftwareVoice@@QAE@XZ)
+RETIRE	??0CTreeRoot_00c555e0@@QAE@XZ	00c5b1a0	00c555e0	no landed row emits it for 0x00C5B1A0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CSoftwareVoice@@QAE@XZ)
+RETIRE	??0CAIStateGroupMember@@QAE@XZ	00c5d0a0	00c3f760	no landed row emits it for 0x00C5D0A0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CAudioRingBuffer@@QAE@XZ)
+RETIRE	??0CTreeSlot_00c555e0@@QAE@XZ	00c5d0a0	00c555e0	no landed row emits it for 0x00C5D0A0 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CAudioRingBuffer@@QAE@XZ)
+RETIRE	?GetLength@C2DVectorI@@QBEMXZ	00c62090	00c46900	no landed row emits it for 0x00C62090 after the overlay (losing spelling of the DECISIONS_V1 winner ?Length@CPKIntVector2@@QBEMXZ)
+RETIRE	?Fire@CAmbientTrigger@@QAEXPAVCAmbientSource@@@Z	00c62530	00c46f90	no landed row emits it for 0x00C62530 after the overlay (losing spelling of the DECISIONS_V1 winner ?Play@CAmbientTrigger@@QAEXPAVCAmbientSource@@@Z)
+RETIRE	??0CSlaveObject_00c62c70@@QAE@PAX@Z	00c62e20	00c62c70	no landed row emits it for 0x00C62E20 after the overlay (losing spelling of the DECISIONS_V1 winner ??0PKRASlaveObject@@QAE@PAX@Z)
+RETIRE	??0CSoundStream00c6a650@@QAE@XZ	00c6a650	00c6afc0	no landed row emits it for 0x00C6A650 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CReverbProcessor@@QAE@XZ)
+RETIRE	?Reset@CVoiceFilter@@QAEXXZ	00c6b720	00c5c2d0	no landed row emits it for 0x00C6B720 after the overlay (losing spelling of the DECISIONS_V1 winner ?Reset@SBodyRecord_00c55030@@QAEXXZ)
+RETIRE	?Reset@SRampedVector@@QAEXXZ	00c6b720	00c551d0	no landed row emits it for 0x00C6B720 after the overlay (losing spelling of the DECISIONS_V1 winner ?Reset@SBodyRecord_00c55030@@QAEXXZ)
+RETIRE	??0CEnvironmentSpellEffectInterface@@QAE@XZ	00c6ca20	00c55070	no landed row emits it for 0x00C6CA20 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CVtable_012bed7c@@QAE@XZ)
+RETIRE	??0CBase_00c6e760@@QAE@XZ	00c6e760	00c550b0	no landed row emits it for 0x00C6E760 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CVtable_012bedb8@@QAE@XZ)
+RETIRE	?SetupVoice@CVtable_012bedcc@@QAEXPAUSResampleVoice@@MPBUSVoiceTap@@@Z	00c705b0	00c70750	no landed row emits it for 0x00C705B0 after the overlay (losing spelling of the DECISIONS_V1 winner ?SetupVoice@CVtable_012bedcc@@QAEXPAUSResampleVoice@@MPBUSUnprovenImpulse52@@@Z)
+RETIRE	?SetupVoice@CVtable_012bede0@@QAEXPAUSFilteredVoice@@MPBUSVoiceTap@@@Z	00c70f80	00c71120	no landed row emits it for 0x00C70F80 after the overlay (losing spelling of the DECISIONS_V1 winner ?SetupVoice@CVtable_012bede0@@QAEXPAUSFilteredVoice@@MPBUSUnprovenImpulse52@@@Z)
+RETIRE	??0CMember_00c55cd0@@QAE@XZ	00c71420	00c55cd0	no landed row emits it for 0x00C71420 after the overlay (losing spelling of the DECISIONS_V1 winner ??0CUnprovenMixerVolumeControl_00c71420@@QAE@XZ)
+RETIRE	?Reset@ResetState@@QAEXXZ	00c75000	00c6a8b0	no landed row emits it for 0x00C75000 after the overlay (losing spelling of the DECISIONS_V1 winner ?Detach@CStereoDelayLine@@QAEXXZ)
+RETIRE	?MillibelsToGain_00c77700@@YAMJ@Z	00c77700	00c783f0	no landed row emits it for 0x00C77700 after the overlay (losing spelling of the DECISIONS_V1 winner ?MillibelsToAmplitude@@YAMJ@Z)

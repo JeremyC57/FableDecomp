@@ -1,11 +1,12 @@
 // CStreamBuffer::Attach(CPanel* panel, CSoundSample* sample, long handle, long users) -- take a reference on the sample, copy its format (minus the header), record the pool handle and user count, queue the buffer as loading and lock its pool block
 // Leaf: Attach
+// Vendor naming wave V1 (one address, one name): 0x00C283C0 ?Lock@CHandleBasedMemoryPool_012b4098@@QAEXJ@Z (was ?Lock@CHandleBasedMemoryPool@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C262E0, 162 bytes (`ret 10h`). Descriptive names (no PDB covers the libpk
 //   audio library): the manifest's "Thiscall_ParticleTrailSetup" is propagated. Callers: 0x00C218DB (right after
 //   `operator new(0x2c)` + the buffer constructor 0x00C262A0) and 0x00C26940.
 // Callees: CSoundSample::AddRef @ 0x00C1EA30, CSoundSample::GetDataSize @ 0x00C1E9C0, the sample's virtual slots 5
 //   (header size, twice) and 4 (looping flag), the panel's loading queue (+0x314) Add (slot 9),
-//   CHandleBasedMemoryPool::Lock @ 0x00C283C0 on the panel's pool (+0x360).
+//   CHandleBasedMemoryPool_012b4098::Lock @ 0x00C283C0 on the panel's pool (+0x360).
 // Shape: the format is a POD struct assignment (five dword moves through ebx, the destination pointer kept in edi
 //   for the later `m_format.m_dataSize -=`); the data size is assigned and then incremented in a second statement.
 
@@ -43,7 +44,7 @@ struct CStreamBufferQueue {                     // 0x30-byte polymorphic buffer 
     unsigned char _pad04[0x2c];
 };
 
-class CHandleBasedMemoryPool { public:                 // this library's pool variant (Handles table +0x440)
+class CHandleBasedMemoryPool_012b4098 { public:                 // this library's pool variant (Handles table +0x440)
     void Lock(long handle);                     // 0x00C283C0
     void Unlock(long handle);                   // 0x00C283E0
     void Free(long handle);                     // 0x00C28690
@@ -57,7 +58,7 @@ struct CPanel {
     CStreamBufferQueue     m_loadingBuffers;    // +0x314 state 1: being filled
     unsigned char          _pad344[0x35c - 0x344];
     long                   m_useStamp;          // +0x35C LRU stamp given to buffers going idle
-    CHandleBasedMemoryPool m_pool;              // +0x360
+    CHandleBasedMemoryPool_012b4098 m_pool;              // +0x360
 };
 
 struct CStreamBuffer {                          // 0x2C-byte stream buffer (operator new(0x2c) + ctor 0x00C262A0)

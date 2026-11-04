@@ -1,4 +1,5 @@
 // Free-function forwarder VC7.1 tail-calls (`jmp rel32`): same signature, no cleanup.
 // Leaf: InformOfEvent
-extern "C" void ForwardTarget_00c3c360();
-extern "C" void Forward() { ForwardTarget_00c3c360(); }
+// Vendor naming wave V1 (one address, one name): 0x00C3C360 _CodaMalloc (was _ForwardTarget_00c3c360)
+extern "C" void CodaMalloc();
+extern "C" void Forward() { CodaMalloc(); }

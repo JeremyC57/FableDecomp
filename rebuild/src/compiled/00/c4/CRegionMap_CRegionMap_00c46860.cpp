@@ -1,5 +1,6 @@
-// CRegionMap::~CRegionMap() -- free the region map: pop every region node off its region list (+0x04) and delete it, then destroy the list (its implementation member out of line, then the abstract list base)
+// CVarState_00c37050::~CVarState_00c37050() -- free the region map: pop every region node off its region list (+0x04) and delete it, then destroy the list (its implementation member out of line, then the abstract list base)
 // Leaf: ??1CRegionMap@@QAE@XZ
+// Vendor naming wave V1 (one address, one name): 0x00C19250 ??1PKCTRRedblackTree@@QAE@XZ (was ??1CPKListImpl@@QAE@XZ); 0x00C46860 ??1CVarState_00c37050@@QAE@XZ (was ??1CRegionMap@@QAE@XZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C46860, 120 bytes, __fastcall `ret`, EH-framed (handler 0x0121559D: state 0
 //   the list member, state 1 the list's base).
@@ -22,10 +23,10 @@ public:
     virtual void* Alloc();                  // slot 1 (0x00C19650)
 };
 
-class CPKListImpl {
+class PKCTRRedblackTree {
 public:
-    CPKListImpl(CNodeAllocator* allocator); // 0x00C194F0
-    ~CPKListImpl();                         // 0x00C19250
+    PKCTRRedblackTree(CNodeAllocator* allocator); // 0x00C194F0
+    ~PKCTRRedblackTree();                         // 0x00C19250
     unsigned char m_body[0x28];
 };
 
@@ -69,8 +70,8 @@ public:
             Remove(item);
         return item;
     }
-    CPKListImpl* m_pImpl;                   // +0x04 (-> m_impl)
-    CPKListImpl  m_impl;                    // +0x08
+    PKCTRRedblackTree* m_pImpl;                   // +0x04 (-> m_impl)
+    PKCTRRedblackTree  m_impl;                    // +0x08
 };
 
 struct SRegionNode {                        // 16 bytes (MarkRegion 0x00C465F0)
@@ -80,16 +81,16 @@ struct SRegionNode {                        // 16 bytes (MarkRegion 0x00C465F0)
     float m_length;                         // +0x0c
 };
 
-class CRegionMap {
+class CVarState_00c37050 {
 public:
     CNodeAllocator         m_allocator;     // +0x00
     PKCTRList<SRegionNode> m_regions;       // +0x04
     float                  m_cellSize;      // +0x34
     float                  m_radius;        // +0x38
-    ~CRegionMap();
+    ~CVarState_00c37050();
 };
 
-CRegionMap::~CRegionMap()
+CVarState_00c37050::~CVarState_00c37050()
 {
     SRegionNode* node;
     while ((node = m_regions.PopFirst()) != 0)

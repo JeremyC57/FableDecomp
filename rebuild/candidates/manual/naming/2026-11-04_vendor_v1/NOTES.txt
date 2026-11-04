@@ -1,0 +1,70 @@
+Vendor naming pass, wave V1 (2026-11-04): libpk / GameCODA / DirectShow strmbase
+================================================================================
+Repo untouched (no git). Everything is in this dir; overlay graded read-only with vland --recheck-landed
+(FABLE_HDR_OVERLAY=overlay/rebuild/include, LANDVERIFY_WORK=vw_0 / vw_1; logs/recheck_0.log, logs/recheck_1.log).
+
+METHOD
+1. Spellings in use TODAY, not the first-binder table: every landed row in 0xC08AE0..0xCB8000 plus every landed row whose retail bytes
+   call into the range or that reloc_bindings lists as a binder (5,286 rows) was compiled (scripts/symscan.py, scripts/defsyms.py;
+   logs/scan_base.tsv = caller relocation pairs, logs/defs_base.tsv = the symbol each definer emits). reloc_bindings.tsv records only
+   the first binder of a symbol, so its "counts" are all 1 and it misses respells done since (e.g. 00c1a230 already emits
+   ?Wait@PKCSemaphore@@QAEXXZ although the table still holds ?Wait@CEvent_00c1a230). logs/SPELL.tsv = per-target spellings.
+2. DECISIONS_V1.tsv (scripts/decide.py), per in-scope target emitted under >1 spelling (definer + callers), plus proven targets:
+   proven (proven.tsv: strmbase vtable slot + BaseClasses declaration order; BaseClasses-declared Class::Method agreeing with the
+   catalog, signature keys checked) > rule 1b (a spelling whose class is the body's __FILE__ class, one source) > rule 2 the landed
+   definer's symbol > rule 3 the most-used caller spelling (ties: label agreement, __FILE__ class, length).
+   Spellings rejected as winners: free fastcall/class-pointer stand-ins for members, generic classes (T, S, Obj...), engine PDB class
+   names (Ego_r/FableWin name sets) or gameplay vocabulary on an audio-library function (propagated labels: CCreatureActionHeroJump,
+   CTCHeroExperience, CParticleMorphs, CWorld...), and any winner already decided for / defined at / bound to another address
+   (54 CONFLICT rows -> deferred). Held rows from hand769/hand770 (coordinator note) are the 6 HELD rows at the end of the file.
+3. Respell (scripts/respell.py): align the demangled loser and winner, derive identifier renames (class names everywhere, method
+   names in code / the Leaf line only), recompile, accept only if the graded block's bytes are identical, every changed relocation
+   now names its target's decided winner, and the row's own symbol is unchanged or becomes its own decided winner. Each respelled
+   source gets a `// Vendor naming wave V1 (one address, one name): 0x... <new> (was <old>)` line after its Leaf line.
+4. strmbase definers (22, hand): rewritten on the shared engine/CBaseVideoRenderer.h (retail branch) with the BaseClasses source
+   bodies (DX9-era SDK: GetPinCount returns 1). Overlay header: overlay/rebuild/include/engine/CBaseVideoRenderer.h adds the
+   renbase.h overrides CBaseRenderer::GetPinCount/GetPin, CBaseVideoRenderer::OnRenderStart/OnRenderEnd/OnWaitStart/OnWaitEnd/
+   OnStartStreaming/OnStopStreaming/ScheduleSample (overrides of existing slots: no layout or vtable change) and the non-virtual
+   CBaseRenderer::ResetEndOfStreamTimer. Its one landed includer 00ca5850 regraded MATCH PASS with the overlay.
+   Files renamed to <Class>_<Method>_<addr>.cpp (RENAMES.tsv; tests copied unchanged under the new names).
+
+COUNTS
+  Decisions: 1,376 targets: proven 48 (strmbase), placeholder 1,063 (incl. 6 held rows), deferred 265, ICF 0.
+  Respelled + passing: 198 (PASS.tsv): 22 strmbase definers (proven names) + 176 automatic (152 with callee respells, 31 with the row's
+    own symbol moved to its decided winner, e.g. 00caddc0 -> ?ResetMediaTime@CRendererPosPassThru@@QAEJXZ, 00c3a9c0 drops the
+    engine label CV_MurderTwistScript). 23 MATCH, 175 RELOCATION_MATCH, all behaviour PASS. 67 carry only inherited warnings
+    (present in the landed object too; SHARED_HEADER_AVAILABLE CString etc.); 00ca4990 carries RELOC_NAME on ResetMediaTime vs the
+    junk catalog label of 0x00CADDC0 (LABELS.tsv fixes it).
+  Callers respelled: 152 rows (CALLERS.tsv).
+  Bindings: ADD 79, RETIRE 98 candidates (BINDINGS.tsv), 0 CONFLICT.
+  Deferred (DEFERRED.tsv): 55 graded rows: 47 introduced RELOC_NAME/RELOC_CONFLICT (decided placeholder vs a propagated catalog
+    label; strict rule), 5 whose decision changed after grading (CMyBaseObject, a bindings conflict, a junk winner), 2 adopting
+    CAIStateGroup* names, 1 DIFFER (00c1bb40); plus 3 decision-level (00ca6670 header enum, 00ca6a30 GetPin needs a pin model,
+    00cacaf0 CMyBaseObject callers).
+  QUEUE_V2.tsv: 1,722 lines: 1,397 caller/definer rows the automatic respell could not do (mostly "shape differs": parameter
+    types/class keys differ, which needs a hand respell), 265 deferred decisions, 42 strmbase LABELS whose definers are not
+    respelled, 18 definers to move to their decided spelling.
+  strmbase source: DirectShow BaseClasses fetched (raw.githubusercontent.com, Windows-classic-samples Win7Samples baseclasses) into
+    dl_baseclasses/ (gh api is blocked; raw works). Used for declaration order, bodies, prototypes.
+
+DECISIONS FOR THE COORDINATOR / OWNER
+  D1 Placeholder consolidation moves callers from one placeholder to another (e.g. CListImpl -> CMember_00c17b10). It follows the
+     brief's rule order; say if placeholder-to-placeholder respells are wanted at all, or only proven/__FILE__ ones.
+  D2 Fable's strmbase is a UNICODE build with CBaseObject renamed CMyBaseObject: 0x00CACAF0 must be ??1CMyBaseObject@@QAE@XZ;
+     00caa790 / 00caaac0 now bind the engine's ??1CBaseObject@@QAE@XZ (pre-existing RELOC_CONFLICT). Needs the header's retail
+     branch in those rows (queued).
+  D3 Header debt: engine/CBaseVideoRenderer.h names the enum FILTER_STATE (strmif.h tag _FilterState) and passes it as long to
+     CompleteStateChange; adopt the overlay header (overrides only) with the 22 strmbase rows.
+  D4 The 47 rows deferred only for RELOC_NAME against propagated catalog labels byte-match and pass; accept them if the catalog
+     labels of those targets are to be replaced by the decided placeholders.
+  D5 Held rows (coordinator note): spell 0x00C44E80 ?Update@CAmbientEmitter@@QAEXXZ, 0x00C45980 ?UpdateLevel@CAmbientCube@@QAEXM@Z,
+     0x00C12940 ?StartEvent@CSoundEventManager@@QAEPAUCSoundEvent@@JPBUCSoundPlayParameters@@JPAUCDriver@@PBUCPKVoiceParams@@PAJ@Z,
+     0x00C38D60 ?Update@CInstance@@QAEXKKK@Z, 0x00C89350 ?ProcessRamped@CReverbDiffuserStage@@QAEXPAUSDiffuserStageParams@@PBU2@PBUCRingBuffer@@PAM3II@Z,
+     0x00C54190 ?SetProperties@CDecodedStream@@UAEXPBUSSourceUpdate_00c54190@@@Z (the held leaves); respell their single callers
+     (00c36230, 00c36430, 00c12cd0, 00c2d490, 00c75ab0) at landing. Class names structural, method names one source (NAME_FIXES PROPOSAL).
+
+GOTCHAS one-liners
+- reloc_bindings.tsv keeps the first binder per symbol only: count spellings by compiling the landed rows (logs/scan_base.tsv), not from the table.
+- Fable's DirectShow strmbase is a UNICODE build (LPCTSTR = PBG) with CBaseObject renamed CMyBaseObject; ??1CBaseObject@@QAE@XZ is the engine class 0x0099A430.
+- strmbase is DX9-era BaseClasses: CBaseRenderer::GetPinCount is `return 1` (the Win7 sample lazily creates the pin); vtable 0x012BF498 slot order = renbase.h declaration order exactly.
+- Most libpk caller stand-in names are propagated engine labels (CCreatureActionHeroJump, CTCHeroExperience, CParticleMorphs, CWorld): never adopt one as the address's name.

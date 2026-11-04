@@ -1,5 +1,6 @@
 // CSoundEventManager::TracePlaybacks() -- under the module lock, refreshes the events and then, for every playback slot of the pool at +0x224 that holds an event, builds the event's description and the slot's status strings for the (compiled-out) trace output
 // Leaf: ?TracePlaybacks@CSoundEventManager@@QAEXXZ
+// Vendor naming wave V1 (one address, one name): 0x00C11CB0 ?UpdateItems@CSoundEventManager@@QAEXXZ (was ?UpdateEvents@CSoundEventManager@@QAEXXZ)
 // Flags: /EHsc
 // Naming (sweep1, 2026-10-25): libpk class set CSoundEventManager (vtable 0x012B2748) / CSoundEventSet (its +0x2C
 //   member) / CSoundEvent (0xB4 bytes, vtable 0x012B3674): the describer 0x00C21040 called by TraceEvents/
@@ -63,14 +64,14 @@ struct CSoundEventManager {
     CPlaybackPool_00c127c0 m_playbacks;         // +0x224
     unsigned long GetNumPlaybacks() { return m_playbacks.m_count; }
     CPlaybackSlot_00c127c0* GetPlayback(unsigned long index) { return m_playbacks.Get(index); }
-    void UpdateEvents();                   // 0x00C11CB0
+    void UpdateItems();                   // 0x00C11CB0
     void TracePlaybacks();
 };
 
 void CSoundEventManager::TracePlaybacks()
 {
     PKCProtectionInstance lock(&g_lock_0143bb14);
-    UpdateEvents();
+    UpdateItems();
     for (unsigned long i = 0; i < GetNumPlaybacks(); ++i) {
         CPlaybackSlot_00c127c0* slot = GetPlayback(i);
         if (slot->m_pEvent)

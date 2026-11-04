@@ -1,5 +1,6 @@
 // CSoundInstance_00c15cd0::SetPlaybackValue(unsigned long value) -- under the module lock, forwards the unsigned value as a float to the player object at +8 (which applies it to both of its 0x180-byte voices)
 // Leaf: SetPlaybackValue
+// Vendor naming wave V1 (one address, one name): 0x00C2D210 ?FadeOutAll@CInstanceManager@@QAEXM@Z (was ?SetValue@CSoundPlayer_00c15cd0@@QAEXM@Z)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C15CD0, 114 bytes (+ int3 padding), __fastcall `ret 4`, EH-framed.
 // Identity: a libpk sound class (vtable slot at 0x012B2A7C; no RTTI). Callees: the module's scoped lock over the
@@ -19,19 +20,19 @@ class PKCProtectionInstance { public:              // 8 bytes: section + entry t
     ~PKCProtectionInstance();               // 0x00C0FFE0
 };
 
-struct CSoundPlayer_00c15cd0 {
-    void SetValue(float value);            // 0x00C2D210
+struct CInstanceManager {
+    void FadeOutAll(float value);            // 0x00C2D210
 };
 
 struct CSoundInstance_00c15cd0 {
     void* m_vtable;                        // +0x00
     long m_4;
-    CSoundPlayer_00c15cd0* m_pPlayer;      // +0x08
+    CInstanceManager* m_pPlayer;      // +0x08
     void SetPlaybackValue(unsigned long value);
 };
 
 void CSoundInstance_00c15cd0::SetPlaybackValue(unsigned long value)
 {
     PKCProtectionInstance lock(&g_lock_0143bb14);
-    m_pPlayer->SetValue((float)value);
+    m_pPlayer->FadeOutAll((float)value);
 }

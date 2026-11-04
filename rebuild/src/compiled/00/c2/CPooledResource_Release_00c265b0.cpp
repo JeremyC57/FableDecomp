@@ -1,5 +1,6 @@
 // CPooledResource::Release(CPooledResourceManager*) -- if the entry is active it is first deactivated with its manager, then its pool allocation (when it holds one) is freed
 // Leaf: ?Release@CPooledResource
+// Vendor naming wave V1 (one address, one name): 0x00C28690 ?Free@CHandleBasedMemoryPool_012b4098@@QAEXJ@Z (was ?FreeAllocation@CHandleBasedMemoryPool_012b4098@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C265B0, 47 bytes (+1 int3). Callers: 0x00C130C7, 0x00C269E8.
 // Callees: the entry's "is active" test @ 0x00C265A0 (`xor eax,eax ; cmp word ptr [ecx+74h],1 ; sete al`), its deactivate
 //          @ 0x00C26580 (state 2, then the manager's +0x2C list slot 8 with the entry; its twin 0x00C26560 sets state 1
@@ -16,7 +17,7 @@
 // last use of `this`), tested signed (`jl`).
 struct CPooledResource;
 class CHandleBasedMemoryPool_012b4098 { public:
-    void FreeAllocation(long handle);         // 0x00C28690
+    void Free(long handle);         // 0x00C28690
 };
 struct CPooledResourceManager {
     unsigned char _pad_0x00[0x360];
@@ -43,5 +44,5 @@ void CPooledResource::Release(CPooledResourceManager* manager)
         Deactivate(manager);
     long handle = m_handle;
     if (handle >= 0)
-        manager->m_pool.FreeAllocation(handle);
+        manager->m_pool.Free(handle);
 }

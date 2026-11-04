@@ -1,5 +1,6 @@
 // CAmbientSource::Update() -- per-frame update of an ambient source: update its channels, fire its due triggers, update the triggers while the owning set is active (+0x24), and finish once the definition says so (tail call)
 // Leaf: ?Update@CAmbientSource@@QAEXXZ
+// Vendor naming wave V1 (one address, one name): 0x00C384E0 ?IsAngry@CFloatPair_00c384e0@@QBE_NXZ (was ?IsFinished@CAmbientSourceDef@@QBE_NXZ)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C47300, 53 bytes (+ int3 padding), __fastcall `ret`.
 // Library: libpk ambient sound (no PDB/RTTI): descriptive names. The source is built by 0x00C47340 (owner set +0,
 //   definition +4, trigger list +0x08, channel list +0x38; it adds itself to the set's +0x28 list, then runs
@@ -90,16 +91,16 @@ struct CAmbientSourceData {
     CPtrArray<unsigned long> m_triggerIds;  // +0x14
 };
 
-struct CAmbientSourceDef {
+struct CFloatPair_00c384e0 {
     unsigned long       m_words[2];
     CAmbientSourceData* m_pData;            // +0x08
-    bool IsFinished() const;                // 0x00C384E0 (compares the floats at +0x20 / +0x24)
+    bool IsAngry() const;                // 0x00C384E0 (compares the floats at +0x20 / +0x24)
 };
 
 class CAmbientSource {
 public:
     CAmbientSet*                m_pSet;     // +0x00
-    CAmbientSourceDef*          m_pDef;     // +0x04
+    CFloatPair_00c384e0*          m_pDef;     // +0x04
     PKCTRList<CAmbientTrigger>  m_triggers; // +0x08 time-ordered pending triggers
     PKCTRList<CAmbientChannel>  m_channels; // +0x38
     void UpdateChannels();                  // 0x00C47210
@@ -115,6 +116,6 @@ void CAmbientSource::Update()
     ProcessTriggers();
     if (m_pSet->m_bActive)
         UpdateTriggers();
-    if (m_pDef->IsFinished())
+    if (m_pDef->IsAngry())
         Finish();
 }

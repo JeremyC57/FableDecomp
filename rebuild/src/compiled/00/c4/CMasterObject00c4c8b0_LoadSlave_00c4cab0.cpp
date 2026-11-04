@@ -1,5 +1,6 @@
 // CMasterObject_00c4c8b0::LoadSlave(IScriptReader_00c4c8b0* reader, void* a, unsigned long stride, void* d) -- EH-framed under the master object's profiling lock: warn when already finalised (PKRACMasterObject.cpp line 124), new an 8-byte slave object over this (EMEM warning, line 129, when it fails), let the reader load count*stride bytes into it; on failure delete the slave and reset the object, else commit it
 // Leaf: ?LoadSlave@CMasterObject_00c4c8b0@@
+// Vendor naming wave V1 (one address, one name): 0x00C62E20 ??0PKRASlaveObject@@QAE@PAX@Z (was ??0CSlaveObject_00c62c70@@QAE@PAX@Z)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C4CAB0, 471 bytes, thiscall `ret 10h`, /EHsc.
 // Identity: libpk PKRACMasterObject.cpp (trace lines 124 / 129); same class and shape as the landed LoadScriptInfo 0x00C4C8B0.
@@ -32,15 +33,15 @@ struct CMasterObject_00c4c8b0;
 struct CSlaveClass_00c4c8b0 { void* m_vtable; };   // the global slave class object at 0x0139CA38
 extern CSlaveClass_00c4c8b0 g_slaveClass_0139ca38;
 
-struct CSlaveObject_00c62c70 {             // the 8-byte slave object
+struct PKRASlaveObject {             // the 8-byte slave object
     virtual void Destroy(int flags);       // deleting destructor
     void* m_pOwner;                        // +0x04
-    CSlaveObject_00c62c70(void* owner);    // 0x00C62E20
+    PKRASlaveObject(void* owner);    // 0x00C62E20
 };
 
 struct IScriptReader_00c4c8b0 {            // the reader interface: count at +8, load at +4
     virtual void v00();
-    virtual bool Load(void* a, unsigned long stride, unsigned long size, void* d, CSlaveObject_00c62c70* slave, CSlaveClass_00c4c8b0* slaveClass);
+    virtual bool Load(void* a, unsigned long stride, unsigned long size, void* d, PKRASlaveObject* slave, CSlaveClass_00c4c8b0* slaveClass);
     virtual unsigned long GetCount();
 };
 
@@ -65,7 +66,7 @@ void CMasterObject_00c4c8b0::LoadSlave(IScriptReader_00c4c8b0* reader, void* a, 
         }
         CDebugBreak();
     }
-    CSlaveObject_00c62c70* slave = new CSlaveObject_00c62c70(this);
+    PKRASlaveObject* slave = new PKRASlaveObject(this);
     if (!slave) {
         {
             CString line;

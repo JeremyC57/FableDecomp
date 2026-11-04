@@ -1,4 +1,5 @@
 // CThingPlayerCreature::ResolveMovementBandType(SParticle*) -- picks this initialiser's value from the particle's emitter table at the owner's current time (def found through an out-of-line helper), then hands itself to the particle's slot-9 sink
+// Vendor naming wave V1 (one address, one name): 0x00C2D100 ?PickDelay@CRandomDelay_00c2d100@@QAEJM@Z (was ?Pick@CRandomTable@@QAEJM@Z)
 // Retail: Fable.exe 0x00C62400, 57 bytes. The class/method label is a propagated manifest name (twin of
 // 0x00C61CA0 in the particle-component code; no creature member is used); the model is descriptive.
 // Callees: 0x00C1BB00 (frame-data time on the owner's member at +8), 0x00C623F0 (this TU's helper,
@@ -16,13 +17,13 @@ struct COwner {
     CFrameData    m_frameData;                           // +0x08
 };
 
-struct CRandomTable {
-    long Pick(float time);                               // 0x00C2D100
+struct CRandomDelay_00c2d100 {
+    long PickDelay(float time);                               // 0x00C2D100
 };
 
 struct CEmitterDef {
     unsigned char _pad00[0x70];
-    CRandomTable  m_table;                               // +0x70
+    CRandomDelay_00c2d100  m_table;                               // +0x70
 };
 
 struct CEmitterSlot  { CEmitterDef* m_pDef; };
@@ -59,6 +60,6 @@ CEmitterDef* CInitialiser::GetEmitterDef(SParticle* particle)
 
 void CInitialiser::ResolveMovementBandType(SParticle* particle)
 {
-    m_value = GetEmitterDef(particle)->m_table.Pick(m_pOwner->m_frameData.GetTime());
+    m_value = GetEmitterDef(particle)->m_table.PickDelay(m_pOwner->m_frameData.GetTime());
     particle->m_sink.Accept(this);
 }

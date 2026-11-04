@@ -1,4 +1,5 @@
 // CParticleTypePair_00c55cd0::CParticleTypePair_00c55cd0() -- EH-framed constructor: the polymorphic root (user destructor, EH state 0) under the own vtable (0x012B8C18), the member at +0x110 built out of line (@ 0x00C71420, trivially destructible), three body zeros (+4, +0x1b4, the byte at +0x10c), an out-of-line initialisation with 1 (@ 0x00C55B70), then more body zeros: nine words at +8..+0x28, +0xfc, +0x1ac and the bytes at +0x104 and +0x1b0
+// Vendor naming wave V1 (one address, one name): 0x00C71420 ??0CUnprovenMixerVolumeControl_00c71420@@QAE@XZ (was ??0CMember_00c55cd0@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C55CD0, oracle length 147 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push ebx ; push esi ; mov esi,ecx ; mov [esp+8],esi ; xor ebx,ebx ; lea ecx,[esi+110h] ; mov [esp+14h],ebx ; mov dword ptr [esi],offset vtable ; call CMember::CMember ; push 1 ; mov ecx,esi ; mov [esi+4],ebx ; mov [esi+1B4h],ebx ; mov [esi+10Ch],bl ; call Init ; mov ecx,[esp+0Ch] ; mov [esi+8],ebx ; ... ; mov [esi+28h],ebx ; mov [esi+0FCh],ebx ; mov [esi+1ACh],ebx ; mov [esi+104h],bl ; mov [esi+1B0h],bl ; mov eax,esi ; pop esi ; pop ebx ; mov fs:[0],ecx ; add esp,10h ; ret
 // All the zero stores are body assignments: the ones after the member constructor call cannot
@@ -8,9 +9,9 @@ struct CParticleRoot_00c55cd0 {            // the polymorphic root with a user d
     ~CParticleRoot_00c55cd0() { }
 };
 
-struct CMember_00c55cd0 {                  // +0x110, 0x9c bytes, trivially destructible
+struct CUnprovenMixerVolumeControl_00c71420 {                  // +0x110, 0x9c bytes, trivially destructible
     unsigned char _body[0x9c];
-    CMember_00c55cd0();                    // 0x00C71420
+    CUnprovenMixerVolumeControl_00c71420();                    // 0x00C71420
 };
 
 struct CParticleTypePair_00c55cd0 : CParticleRoot_00c55cd0 {   // vtable 0x012B8C18
@@ -23,7 +24,7 @@ struct CParticleTypePair_00c55cd0 : CParticleRoot_00c55cd0 {   // vtable 0x012B8
     unsigned char _pad3[7];
     bool m_10c;
     unsigned char _pad4[3];
-    CMember_00c55cd0 m_member;             // +0x110
+    CUnprovenMixerVolumeControl_00c71420 m_member;             // +0x110
     long m_1ac;
     bool m_1b0;
     unsigned char _pad5[3];

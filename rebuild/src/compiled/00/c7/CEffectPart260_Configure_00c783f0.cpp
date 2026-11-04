@@ -1,5 +1,6 @@
 // CEffectPart260::Configure(CVoiceEffect* owner, SVoiceEffectParameters* parameters) -- apply a voice effect's dirty parameter flags: run each flagged recalculation stage (filters, envelopes, delay, gain), then clear the flag word
 // Leaf: ?Configure@CEffectPart260@@
+// Vendor naming wave V1 (one address, one name): 0x00C77700 ?MillibelsToAmplitude@@YAMJ@Z (was ?MillibelsToGain_00c77700@@YAMJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C783F0, 405 bytes, thiscall, `ret 8`.
 // Module: libpk's software mixer (no PDB/RTTI; class, member and stage names descriptive). Name: bound
 //   `?Configure@CEffectPart260@@...` by the landed caller CVoiceEffect::Configure 0x00C6AEF0 (this = voice +0x260, owner =
@@ -45,7 +46,7 @@ struct CVoiceEffect {
     float         RateStep;                        // +0x220
 };
 void __cdecl MixChannels_00c77d90(float* source, float* target, long count, long channels);   // 0x00C77D90
-float __cdecl MillibelsToGain_00c77700(long millibels);                                      // 0x00C77700
+float __cdecl MillibelsToAmplitude(long millibels);                                      // 0x00C77700
 struct CEffectPart260 {
     float         Values[10];                      // +0x00
     CMixContext*  Context;                         // +0x28
@@ -113,6 +114,6 @@ void CEffectPart260::Configure(CVoiceEffect* owner, SVoiceEffectParameters* para
     if (parameters->Flags & 0xc000)
         Stage_00c77c00(owner, parameters);
     if (parameters->Flags & 0x20)
-        owner->LowPass.Gain = MillibelsToGain_00c77700(parameters->Level);
+        owner->LowPass.Gain = MillibelsToAmplitude(parameters->Level);
     parameters->Flags = 0;
 }

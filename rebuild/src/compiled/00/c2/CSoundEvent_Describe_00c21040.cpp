@@ -1,5 +1,6 @@
 // CSoundEvent::Describe(CSoundEventManager* manager) -- the trace description of one sound event: "EventId(<id>), Priority=<p>, State='<state>', offset(..), loops(..), " + behaviour emitter + 2D/3D position + base / user gain, returned by value
 // Leaf: ?Describe@CSoundEvent@@QAE?AVCString@@PAUCSoundEventManager@@@Z
+// Vendor naming wave V1 (one address, one name): 0x00C34600 ?GetValue@CQuadHolder@@QBE?AUSQuad@@XZ (was ?GetRecord@CSoundParams@@QBE?AUSEventRecord@@XZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C21040, 684 bytes (body to the `ret 8` at 0x00C212D3; the 5-entry state jump table at
 //   0x00C212D8 follows it), EH-framed, hidden CString result.
@@ -10,14 +11,14 @@
 //   6 "Playing using physical player", checked by hand against the table), "', offset(", "), loops(", "), ", " offset=1.0, ",
 //   "Emitter ID = " / "Not in behaviour, ", ", 3D(", "HEADRELATIVE:", ",", "2D(", ")", ", base gain(", "), user gain(".
 // Header: engine/CString.h (FABLE_RETAIL_CSTRING_BUILDERS adds the ctor/dtor/builder declarations, chunk 750 overlay).
-// Callees: CheckState 0x00C20720 (-1), GetLevel 0x00C20BE0 (manager, &level), GetMode 0x00C20EE0, CSoundParams::GetRecord 0x00C34600
+// Callees: CheckState 0x00C20720 (-1), GetLevel 0x00C20BE0 (manager, &level), GetMode 0x00C20EE0, CQuadHolder::GetRecord 0x00C34600
 //   (+0x38, hidden result), the libpk MFC-style CString: ctor(const char*) 0x00C0BFE0, copy ctor 0x00C0DAB0, dtor 0x00C0BA40 and the
 //   `__fastcall` builders operator<<(const char*) 0x00C0DEC0, (unsigned long) 0x00C0DF10, (long) 0x00C0DF00 (the bound spellings)
 //   and (double) 0x00C0DED0 (`fld qword [esp+4]`, `ret 8`; no spelling bound yet).
 // Layout: +0x0C event id, +0x14 priority, +0x24 behaviour emitter id, +0x38 the parameter block (its 2D pan +0x28 = event +0x60,
 //   base gain +0x2C, user gain +0x30: the landed setters 0x00C34580 / 0x00C34500 write those words), +0xAC state, +0xB0 in-behaviour
 //   flag. The level record (gain float, loop count long) and the 16-byte position record (x, y, z, head-relative flag) are the
-//   landed SEventLevel / SEventRecord.
+//   landed SEventLevel / SQuad.
 // Shape: each output line is one chained `<<` expression (VC evaluates the double arguments of the whole chain first, which
 //   is why retail stores two or three doubles before the first call); the first chain builds a CString temporary that copy-
 //   constructs the local; `return s;` copies into the hidden result (no NRVO in VC7.1).
@@ -31,20 +32,20 @@ struct SEventLevel {                         // the 8-byte level record (GetLeve
     long m_loops;                            // +4
 };
 
-struct SEventRecord {                        // 16 bytes: the 3D position and the head-relative flag
+struct SQuad {                        // 16 bytes: the 3D position and the head-relative flag
     float m_x;
     float m_y;
     float m_z;
     bool m_headRelative;
 };
 
-struct CSoundParams {                        // +0x38 (0x40 bytes)
+struct CQuadHolder {                        // +0x38 (0x40 bytes)
     unsigned char _pad00[0x28];
     float m_pan;                             // +0x28 (event +0x60)
     float m_baseGain;                        // +0x2C (event +0x64)
     float m_userGain;                        // +0x30 (event +0x68)
     unsigned char _pad34[0x40 - 0x34];
-    SEventRecord GetRecord() const;          // 0x00C34600 (hidden result)
+    SQuad GetValue() const;          // 0x00C34600 (hidden result)
 };
 
 struct CSoundEvent {                         // 0xB4 bytes, vtable 0x012B3674 (no RTTI)
@@ -56,7 +57,7 @@ struct CSoundEvent {                         // 0xB4 bytes, vtable 0x012B3674 (n
     unsigned char _pad18[0x24 - 0x18];
     unsigned long m_idEmitter;               // +0x24
     unsigned char _pad28[0x38 - 0x28];
-    CSoundParams m_params;                   // +0x38
+    CQuadHolder m_params;                   // +0x38
     unsigned char _pad78[0xAC - 0x78];
     unsigned short m_state;                  // +0xAC
     unsigned char _padae[2];
@@ -97,7 +98,7 @@ CString CSoundEvent::Describe(CSoundEventManager* manager)
     else
         s << "Not in behaviour, ";
     if (GetMode()) {
-        SEventRecord record = m_params.GetRecord();
+        SQuad record = m_params.GetValue();
         s << ", 3D(";
         if (record.m_headRelative)
             s << "HEADRELATIVE:";

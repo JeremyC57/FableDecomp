@@ -1,6 +1,7 @@
 // CVtable_012bf83c::~CVtable_012bf83c() -- EH-framed destructor: both vtables, the second interface's stop method on itself, the entry queue released, then the base destructor
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAA410, length 96 bytes. Built under /EHsc.
 // Leaf: ??1CVtable_012bf83c
+// Vendor naming wave V1 (one address, one name): 0x00CA9D00 ??1CBaseAllocator@@UAE@XZ (was ??1CBase_00ca9d00@@UAE@XZ)
 // Flags: /EHsc
 // Retail bytes: push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; lea eax,[esi+0Ch] ;
 //               mov [esp+4],esi ; mov dword ptr [esi],offset vftable(0x012BF83C) ; mov dword ptr [eax],offset vftable(0x012BF810) ; push eax ;
@@ -38,12 +39,12 @@ struct CUnknownRetail : IUnknownRetail {       // 0x0c bytes: vptr, module refer
     long                      m_refCount;          // +0x08
 };
 
-struct CBase_00ca9d00 : CUnknownRetail, IStreamCallback_012bf810 {   // the base (interface at +0x0c)
+struct CBaseAllocator : CUnknownRetail, IStreamCallback_012bf810 {   // the base (interface at +0x0c)
     unsigned char m_body[0x60 - 0x10];         // +0x10 critical section, queue, handles, COM pointer
-    ~CBase_00ca9d00();                         // 0x00CA9D00
+    ~CBaseAllocator();                         // 0x00CA9D00
 };
 
-struct CVtable_012bf83c : CBase_00ca9d00 {     // vtables 0x012BF83C / 0x012BF810
+struct CVtable_012bf83c : CBaseAllocator {     // vtables 0x012BF83C / 0x012BF810
     void* m_pBlock;                            // +0x60
     virtual long __stdcall QueryInterface(const void* iid, void** object);   // 0x00CA9D70
     virtual unsigned long __stdcall AddRef();  // 0x00CACD00

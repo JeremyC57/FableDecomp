@@ -1,10 +1,11 @@
 // CMailboxQueue_00c26cd0::PostMessage(CMailboxMessage_00c26cd0* message) -- under the scoped queue lock append the message to the pending vector at +0x18, then release the queue's semaphore at +0x28
+// Vendor naming wave V1 (one address, one name): 0x00C2A150 ?Release@PKCSemaphore@@QAEXXZ (was ?Release@CSemaphore@@QAEXXZ)
 // Grade: RELOCATION_MATCH (wave-2 sec6): the VC6 Dinkumware two-argument insert(end(), x) (inline: off = P - begin();
 //   insert(P, 1, x); return begin() + off) at the call site gives retail's edx temp address and the lea ecx between the
 //   count and position pushes
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C26CD0, length 115 bytes. Flags: /EHsc (the lock lives in EH state 0).
 // Callees: PKCProtectionInstance::PKCProtectionInstance(queue) @ 0x00C0FFC0 / ~PKCProtectionInstance @ 0x00C0FFE0 (the 8-byte scoped lock of the landed mailbox-queue bodies,
-// e.g. 0x00C48BE0), the VC6 vector's insert(position, count, const T&) @ 0x00C14270 (out of line), CSemaphore::Release @ 0x00C2A150.
+// e.g. 0x00C48BE0), the VC6 vector's insert(position, count, const T&) @ 0x00C14270 (out of line), PKCSemaphore::Release @ 0x00C2A150.
 // Label correction: the manifest's "CEditControlCentre::CreateAndSaveNewLevel" (4 parameters) is a propagated name -- the body takes one
 // argument (`ret 4`) and is the post side of a mailbox queue in the 0x00C0..0x00C4 script/thread module; the class is named by address
 // (twin @ 0x00C27130: same body, a different element type, so a different insert instantiation).
@@ -23,7 +24,7 @@ class PKCProtectionInstance { public:     // libpk scoped lock (trace string '.\
     ~PKCProtectionInstance();                           // 0x00C0FFE0
 };
 
-struct CSemaphore {
+struct PKCSemaphore {
     long m_value;
     void Release();                          // 0x00C2A150
 };
@@ -51,7 +52,7 @@ struct CRetailVectorVC6 {                   // VC6 Dinkumware vector: allocator 
 struct CMailboxQueue_00c26cd0 {
     unsigned char _pad[0x18];
     CRetailVectorVC6<CMailboxMessageBase_00c26cd0*> m_pending;   // +0x18
-    CSemaphore m_semaphore;                  // +0x28
+    PKCSemaphore m_semaphore;                  // +0x28
     void PostMessage(CMailboxMessage_00c26cd0* message);
 };
 

@@ -1,5 +1,6 @@
 // CSoundEventManager::~CSoundEventManager() -- EH-framed destructor (vtable 0x012B2748; state 1 at entry): the module's profiling lock (0x0143BB14; @ 0x00C0FFC0 / 0x00C0FFE0, state 2) is held around Shutdown (@ 0x00C123B0), then the four owned parts at +0x7c4 / +0x7bc / +0x7b8 / +0x7b4 are deleted through non-virtual destructors (@ 0x00C25C20, @ 0x00C1C230, and two whose implicit destructors only destroy their PKCWorkerQueue member at +0xc @ 0x00C14630 / 0x00C14560) and cleared, and the members at +0x7d8 (@ 0x00C25E90, state 0) and the event set at +0x2c (@ 0x00C22520) destroyed
 // Leaf: ??1CSoundEventManager@@UAE@XZ
+// Vendor naming wave V1 (one address, one name): 0x00C1C230 ??1CTripleResource_00c1c230@@QAE@XZ (was ??1CPartB_00c13470@@QAE@XZ)
 // Flags: /EHsc
 // Naming (sweep1, 2026-10-25): libpk class set CSoundEventManager (vtable 0x012B2748) / CSoundEventSet (its +0x2C
 //   member) / CSoundEvent (0xB4 bytes, vtable 0x012B3674): the describer 0x00C21040 called by TraceEvents/
@@ -23,7 +24,7 @@ class PKCProtectionInstance { public:             // 8 bytes: section + entry ti
 };
 
 struct CPartA_00c13470 { unsigned char _body[4]; ~CPartA_00c13470(); };   // 0x00C25C20
-struct CPartB_00c13470 { unsigned char _body[4]; ~CPartB_00c13470(); };   // 0x00C1C230
+struct CTripleResource_00c1c230 { unsigned char _body[4]; ~CTripleResource_00c1c230(); };   // 0x00C1C230
 struct PKCWorkerQueue_00c14630 { unsigned char _body[4]; ~PKCWorkerQueue_00c14630(); };   // 0x00C14630
 struct PKCWorkerQueue_00c14560 { unsigned char _body[4]; ~PKCWorkerQueue_00c14560(); };   // 0x00C14560
 struct CPartC_00c13470 { unsigned char _pad[0xc]; PKCWorkerQueue_00c14630 m_c; };   // implicit destructor: only the +0xc member
@@ -38,7 +39,7 @@ struct CSoundEventManager {
     CSoundEventSet m_eventSet;               // +0x2c
     CPartD_00c13470* m_pD;                 // +0x7b4
     CPartC_00c13470* m_pC;                 // +0x7b8
-    CPartB_00c13470* m_pB;                 // +0x7bc
+    CTripleResource_00c1c230* m_pB;                 // +0x7bc
     long m_7c0;
     CPartA_00c13470* m_pA;                 // +0x7c4
     unsigned char _pad2[0x10];             // +0x7c8

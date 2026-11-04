@@ -1,4 +1,5 @@
-// CDisplayEngineInit::CDisplayEngineInit() -- zero every field of the display-engine initialisation record
+// CCoverMember_00c42d60::CCoverMember_00c42d60() -- zero every field of the display-engine initialisation record
+// Vendor naming wave V1 (one address, one name): 0x00C44250 ??0CCoverMember_00c42d60@@QAE@XZ (was ??0CDisplayEngineInit@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C44250, length 32 bytes.
 // Callees: none. PDB CDisplayEngineInit (36 bytes): Component +0, DefinitionManager +4, PlayerManager +8, World +0xc,
 // MainGraphicBank +0x10, Width +0x14, Height +0x18, CPixelFormat PixelFormat +0x1c (long FormatIndex), MeshBank +0x20.
@@ -11,7 +12,7 @@ class CPixelFormat { public:
     long FormatIndex;
 };
 
-class CDisplayEngineInit { public:
+class CCoverMember_00c42d60 { public:
     CMainGameComponent*     Component;             // +0x00
     CGameDefinitionManager* DefinitionManager;     // +0x04
     CPlayerManager*         PlayerManager;         // +0x08
@@ -21,10 +22,10 @@ class CDisplayEngineInit { public:
     unsigned long           Height;                // +0x18
     CPixelFormat            PixelFormat;           // +0x1c
     CMeshDataBank*          MeshBank;              // +0x20
-    CDisplayEngineInit();
+    CCoverMember_00c42d60();
 };
 
-CDisplayEngineInit::CDisplayEngineInit()
+CCoverMember_00c42d60::CCoverMember_00c42d60()
     : PlayerManager(0)
 {
     Component = 0;

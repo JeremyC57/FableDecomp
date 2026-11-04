@@ -1,5 +1,6 @@
 // CSoundLoop_00c377f0::Update() -- per-frame upkeep of a looping sound: drop a finished voice, stop the voice when the volume is zero, start it (with default play parameters and the current volume) when silent, else push the new volume to the playing voice
 // Leaf: Update@CSoundLoop_00c377f0
+// Vendor naming wave V1 (one address, one name): 0x00C20390 ??0SEventRecord@@QAE@XZ (was ??0CNavigationLayer@@QAE@XZ)
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): the play-parameter record is CPKVoiceParams (ctor 0x00C10A30; setters SetMinDistance 0x00C20480 / SetMaxDistance 0x00C204A0 / SetScale 0x00C20420, descriptive) and the table Play 0x00C13140 is called on is the landed CSoundEventManager (CSoundSystem+0x38, vtable 0x012B2748).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C37840, length 232 bytes, plain `ret`.
 // Identity: library code in the 0x00C3xxxx module; the catalog label "CPlayer::CPlayer::OnModeActivityUpdate" is
@@ -26,12 +27,12 @@ struct CMessageListOwner_00c203a0 {                     // 12 bytes
     CMessageListOwner_00c203a0();                       // 0x00C203A0
 };
 
-struct CNavigationLayer {                               // 16 bytes
+struct SEventRecord {                               // 16 bytes
     void* m_pFirst;                                     // +0x00
     void* m_pSecond;                                    // +0x04
     void* m_pThird;                                     // +0x08
     unsigned char m_flag;                               // +0x0c
-    CNavigationLayer();                                 // 0x00C20390
+    SEventRecord();                                 // 0x00C20390
 };
 
 struct CPKVoiceParams {                      // 0x50 bytes
@@ -42,7 +43,7 @@ struct CPKVoiceParams {                      // 0x50 bytes
     float m_volume;                                     // +0x24
     float m_pitch;                                      // +0x28
     long  m_priority;                                   // +0x2c
-    CNavigationLayer m_links;                           // +0x30
+    SEventRecord m_links;                           // +0x30
     long  m_flags;                                      // +0x40
     short m_group;                                      // +0x44
     long  m_owner;                                      // +0x48

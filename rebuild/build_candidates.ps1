@@ -107364,58 +107364,58 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca48f0'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00ca48f0_00ca48f0.cpp'
-        TestSource = '00/ca/gapscan_sub00ca48f0_00ca48f0_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_GetPinCount_00ca48f0.cpp'
+        TestSource = '00/ca/CBaseRenderer_GetPinCount_00ca48f0_test.cpp'
         PassPattern = 'PASS_00ca48f0'
     }
     [pscustomobject]@{
         Address = '00ca49b0'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00ca49b0_00ca49b0.cpp'
-        TestSource = '00/ca/gapscan_sub00ca49b0_00ca49b0_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_Active_00ca49b0.cpp'
+        TestSource = '00/ca/CBaseRenderer_Active_00ca49b0_test.cpp'
         PassPattern = 'PASS_00ca49b0'
     }
     [pscustomobject]@{
         Address = '00ca49e0'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00ca49e0_00ca49e0.cpp'
-        TestSource = '00/ca/gapscan_sub00ca49e0_00ca49e0_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_SetMediaType_00ca49e0.cpp'
+        TestSource = '00/ca/CBaseRenderer_SetMediaType_00ca49e0_test.cpp'
         PassPattern = 'PASS_00ca49e0'
     }
     [pscustomobject]@{
         Address = '00ca4a50'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00ca4a50_00ca4a50.cpp'
-        TestSource = '00/ca/gapscan_sub00ca4a50_00ca4a50_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_ShouldDrawSampleNow_00ca4a50.cpp'
+        TestSource = '00/ca/CBaseRenderer_ShouldDrawSampleNow_00ca4a50_test.cpp'
         PassPattern = 'PASS_00ca4a50'
     }
     [pscustomobject]@{
         Address = '00ca4f20'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00ca4f20_00ca4f20.cpp'
-        TestSource = '00/ca/gapscan_sub00ca4f20_00ca4f20_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_OnRenderStart_00ca4f20.cpp'
+        TestSource = '00/ca/CBaseRenderer_OnRenderStart_00ca4f20_test.cpp'
         PassPattern = 'PASS_00ca4f20'
     }
     [pscustomobject]@{
         Address = '00ca4f30'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00ca4f30_00ca4f30.cpp'
-        TestSource = '00/ca/gapscan_sub00ca4f30_00ca4f30_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_OnRenderEnd_00ca4f30.cpp'
+        TestSource = '00/ca/CBaseRenderer_OnRenderEnd_00ca4f30_test.cpp'
         PassPattern = 'PASS_00ca4f30'
     }
     [pscustomobject]@{
         Address = '00ca53a0'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00ca53a0_00ca53a0.cpp'
-        TestSource = '00/ca/gapscan_sub00ca53a0_00ca53a0_test.cpp'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_OnWaitStart_00ca53a0.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_OnWaitStart_00ca53a0_test.cpp'
         PassPattern = 'PASS_00ca53a0'
     }
     [pscustomobject]@{
         Address = '00ca53b0'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00ca53b0_00ca53b0.cpp'
-        TestSource = '00/ca/gapscan_sub00ca53b0_00ca53b0_test.cpp'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_OnWaitEnd_00ca53b0.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_OnWaitEnd_00ca53b0_test.cpp'
         PassPattern = 'PASS_00ca53b0'
     }
     [pscustomobject]@{
@@ -107427,9 +107427,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca79f0'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00ca79f0_00ca79f0.cpp'
-        TestSource = '00/ca/gapscan_sub00ca79f0_00ca79f0_test.cpp'
+        Module = 'CBaseFilter'
+        Source = '00/ca/CBaseFilter_GetPinVersion_00ca79f0.cpp'
+        TestSource = '00/ca/CBaseFilter_GetPinVersion_00ca79f0_test.cpp'
         PassPattern = 'PASS_00ca79f0'
     }
     [pscustomobject]@{
@@ -186051,9 +186051,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca4b90'
-        Module = 'CGuiWindowManager'
-        Source = '00/ca/CGuiWindowManager_RemoveExclusiveForegroundWindow_00ca4b90.cpp'
-        TestSource = '00/ca/CGuiWindowManager_RemoveExclusiveForegroundWindow_00ca4b90_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_GetCurrentSample_00ca4b90.cpp'
+        TestSource = '00/ca/CBaseRenderer_GetCurrentSample_00ca4b90_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00ca4b90_TEST PASS'
     }
@@ -186371,9 +186371,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca4bf0'
-        Module = 'CTextureRenderer'
-        Source = '00/ca/unattributed_ReleaseForegroundWindow00ca4bf0_00ca4bf0.cpp'
-        TestSource = '00/ca/unattributed_ReleaseForegroundWindow00ca4bf0_00ca4bf0_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_ClearPendingSample_00ca4bf0.cpp'
+        TestSource = '00/ca/CBaseRenderer_ClearPendingSample_00ca4bf0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00ca4bf0_TEST PASS'
     }
@@ -190497,9 +190497,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca4d80'
-        Module = '_unattributed'
-        Source = '00/ca/unattributed_Start00ca4d80_00ca4d80.cpp'
-        TestSource = '00/ca/unattributed_Start00ca4d80_00ca4d80_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_StartStreaming_00ca4d80.cpp'
+        TestSource = '00/ca/CBaseRenderer_StartStreaming_00ca4d80_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00ca4d80_TEST PASS'
     }
@@ -199302,9 +199302,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca4b60'
-        Module = 'CLockedOwner_00ca4b60'
-        Source = '00/ca/CLockedOwner00ca4b60_HasOwner_00ca4b60.cpp'
-        TestSource = '00/ca/CLockedOwner00ca4b60_HasOwner_00ca4b60_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_HaveCurrentSample_00ca4b60.cpp'
+        TestSource = '00/ca/CBaseRenderer_HaveCurrentSample_00ca4b60_test.cpp'
         PassPattern = '00ca4b60_TEST PASS'
     }
     [pscustomobject]@{
@@ -200283,9 +200283,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca4990'
-        Module = 'CAppearanceOwner_00ca4990'
-        Source = '00/ca/CAppearanceOwner00ca4990_Rebuild_00ca4990.cpp'
-        TestSource = '00/ca/CAppearanceOwner00ca4990_Rebuild_00ca4990_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_EndFlush_00ca4990.cpp'
+        TestSource = '00/ca/CBaseRenderer_EndFlush_00ca4990_test.cpp'
         PassPattern = '00ca4990_TEST PASS'
     }
     [pscustomobject]@{
@@ -203167,9 +203167,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca4a70'
-        Module = 'CAsyncRequester_00ca4a70'
-        Source = '00/ca/CAsyncRequester00ca4a70_CancelRequest_00ca4a70.cpp'
-        TestSource = '00/ca/CAsyncRequester00ca4a70_CancelRequest_00ca4a70_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_CancelNotification_00ca4a70.cpp'
+        TestSource = '00/ca/CBaseRenderer_CancelNotification_00ca4a70_test.cpp'
         PassPattern = '00ca4a70_TEST PASS'
     }
     [pscustomobject]@{
@@ -204217,9 +204217,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca7030'
-        Module = 'CTimedQueue_00ca7030'
-        Source = '00/ca/CTimedQueue00ca7030_Reset_00ca7030.cpp'
-        TestSource = '00/ca/CTimedQueue00ca7030_Reset_00ca7030_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_ResetEndOfStream_00ca7030.cpp'
+        TestSource = '00/ca/CBaseRenderer_ResetEndOfStream_00ca7030_test.cpp'
         PassPattern = '00ca7030_TEST PASS'
     }
     [pscustomobject]@{
@@ -218016,9 +218016,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca49c0'
-        Module = 'CTextureRenderer'
-        Source = '00/ca/CTextureRenderer_vfunc30_00ca49c0.cpp'
-        TestSource = '00/ca/CTextureRenderer_vfunc30_00ca49c0_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_Inactive_00ca49c0.cpp'
+        TestSource = '00/ca/CBaseRenderer_Inactive_00ca49c0_test.cpp'
         PassPattern = '00ca49c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -235316,7 +235316,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca52a0'
-        Module = 'CTextureRenderer'
+        Module = 'CBaseVideoRenderer'
         Source = '00/ca/CBaseVideoRenderer_ResetStreamingTimes_00ca52a0.cpp'
         TestSource = '00/ca/CBaseVideoRenderer_ResetStreamingTimes_00ca52a0_test.cpp'
         PassPattern = '00ca52a0_TEST PASS'

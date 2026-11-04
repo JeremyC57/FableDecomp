@@ -1,0 +1,199 @@
+address	grade	log	family	introduced_warnings	inherited_warnings
+00c09380	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ??1CHelper_00c09380@@QAE@XZ -> 00c16580 labelled 'CVtable_012b2ab0::CVtable_012b2ab0' | RELOC_NAME: ?ProcessAll@CSoundSystem@@QAEXXZ -> 00c08a00 labelled '_global::EventQueue_ProcessBlockParrySuccesses' | RELOC_NAME: ??1CPart3c_00c09380@@QAE@XZ -> 00c10320 labelled 'CNavButton::IsAcceptButton'
+00c0a8c0	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c0ab60	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c0af20	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		SHARED_HEADER_AVAILABLE CSprite | RELOC_NAME: ?Update@CSprite@@QAEXXZ -> 00c15b90 labelled 'insert<std::_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::insert<std::_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>'
+00c0b380	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		SHARED_HEADER_AVAILABLE CSprite | RELOC_NAME: ?Update@CSprite@@QAEXXZ -> 00c15b90 labelled 'insert<std::_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::insert<std::_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>'
+00c0df20	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		SHARED_HEADER_AVAILABLE CString
+00c0e950	MATCH PASS	logs/recheck_0.log	auto		
+00c108a0	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c10a30	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c12720	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		SHARED_HEADER_AVAILABLE CString
+00c127c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ?GetStatus@CPlaybackSlot_00c127c0@@QAE?AVCString@@XZ -> 00c27760 labelled '_global::Playback_LogStatus'
+00c12880	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ?Rebuild@CSoundEventManager@@QAEXXZ -> 00c12040 labelled 'CV_BordelloScript::HeroWorksInBrothel' | RELOC_NAME: ?Finish@COwner_00c12880@@QAEXXZ -> 00c1c6a0 labelled '_unattributed::Update_00c1c6a0'
+00c12d50	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ?Bind@CQuery_00c12d50@@QAEXPAX@Z -> 00c27c10 labelled 'CPKVoiceParams::Load' | RELOC_NAME: ?Resolve@CCombatGeometry_00c12d50@@QAEPAUCHit_00c12d50@@PAX0PAUCQuery_00c12d50@@J@Z -> 00c12cd0 labelled '_global::CombatBlockReward_ProcessWithExceptionHandler'
+00c13310	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ?Bind@SNavigationRequest_00c13310@@QAEXPAX@Z -> 00c27c10 labelled 'CPKVoiceParams::Load' | RELOC_NAME: ?Load@CNavigationHost_00c13310@@QAEJPAXPAUSNavigationRequest_00c13310@@@Z -> 00c131c0 labelled 'CSoundSystem_00c131c0::PlaySoundList'
+00c13470	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ??1CPartA_00c13470@@QAE@XZ -> 00c25c20 labelled 'CTimerHost_00c25c20::Close' | RELOC_NAME: ??1CMember7D8_00c13470@@QAE@XZ -> 00c25e90 labelled '_global::Nop_ret0_00c25e90' | RELOC_NAME: ??1CSoundEventSet@@QAE@XZ -> 00c22520 labelled 'CEngineVSConstantBlockSet::~CEngineVSConstantBlockSet'
+00c14560	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ??1PKCCriticalSection_00c14560@@QAE@XZ -> 00c1c820 labelled 'PKCCriticalSection::~PKCCriticalSection'
+00c14630	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ??1PKCCriticalSection_00c14630@@QAE@XZ -> 00c1c820 labelled 'PKCCriticalSection::~PKCCriticalSection'
+00c14e40	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ??0CDiceRuleSet@@QAE@J@Z -> 00c194f0 labelled 'PKCTRRedblackTree_00c18b20::PKCTRRedblackTree_00c18b20' | RELOC_NAME: ??0CDiceSeedPair@@QAE@JJ@Z -> 00c2d0c0 labelled 'CDateAndTime::CDateAndTime' | RELOC_NAME: ??0CDiceGameState@@QAE@PAVPKCDeferredBank@@J@Z -> 00c2a8c0 labelled '_global::CTCDiceGame_InitializeTree' | RELOC_NAME: ??0CDiceController@@QAE@PAVPKCDeferredBank@@@Z -> 00c2bd90 labelled 'CVtable_012b4510::CVtable_012b4510'
+00c15aa0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ?Update@CTarget_00c15aa0@@QAEXXZ -> 00c2d2d0 labelled '_global::Dtor_Fastcall_FindAnimationTriggersBase_00c2d2d0'
+00c15c70	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c15cd0	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c17910	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c1adb0	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c1bbe0	MATCH PASS	logs/recheck_0.log	auto		
+00c1bc10	MATCH PASS	logs/recheck_0.log	auto		
+00c1bc30	MATCH PASS	logs/recheck_0.log	auto		
+00c1bc50	MATCH PASS	logs/recheck_0.log	auto		
+00c1bed0	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c1c230	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ?ReleaseC_00c334f0@@YGXPAX@Z -> 00c334f0 labelled 'CThingFilter_IsValid::operator()'
+00c1d780	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c1df70	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ??0CHead_00c1df70@@QAE@XZ -> 00c1dd50 labelled 'PKCOneShotQueue<SFileReply>::PKCOneShotQueue' | RELOC_NAME: ??0CPart_00c1df70@@QAE@PAUCHead_00c1df70@@J@Z -> 00c1d9d0 labelled 'PKCMailbox<SFileReply>::PKCMailbox' | RELOC_NAME: ?GetResult@CPart_00c1df70@@QAEXPAUSResult_00c1df70@@@Z -> 00c1da30 labelled 'PKCMailbox<SFileReply>::Receive'
+00c1e280	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ?Count@CSub_00c1e280@@QAEJXZ -> 00c2d920 labelled 'CSoundFormat::GetPCMBufferSize'
+00c1e300	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ?ReadChunkExtent_00c347b0@@YIJPAX0PAJ1@Z -> 00c347b0 labelled '_global::Fastcall_WADSegmentDecompress' | RELOC_NAME: ?DecodeSoundData_00c34630@@YIJPAUCSoundFormat@@PAX1K@Z -> 00c34630 labelled '_global::DecodeAdpcmToPcm'
+00c1ea30	MATCH PASS	logs/recheck_0.log	auto		
+00c1f550	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c1ff20	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c200d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		SHARED_HEADER_AVAILABLE CString
+00c21040	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub' | RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)' | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@N@Z -> 00c0ded0 labelled 'CString::operator<<(double)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c21330	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c22260	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c23ba0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ??_M@YGXPAXIHP6EX0@Z@Z -> 00bfeed8 labelled '`eh_vector_destructor_iterator''
+00c25ea0	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c262e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ?AddRef@CSoundSample@@QAEXXZ -> 00c1ea30 labelled 'CParticle::IncrementLifetimer' | RELOC_NAME: ?GetDataSize@CSoundSample@@QAEJXZ -> 00c1e9c0 labelled 'CSequenceClient00c1e9f0::GetSequencePhase'
+00c26390	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ?Release@CSoundSample@@QAEXXZ -> 00c1ea40 labelled 'NParticleEngine::CParticle::IncrementLifetimer'
+00c26410	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c26480	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c265b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ?Deactivate@CPooledResource@@QAEXPAUCPooledResourceManager@@@Z -> 00c26580 labelled 'NScript::CIsThingAlive::operator()'
+00c266e0	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c26c10	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ??0CNodeBase_00c26c10@@QAE@J@Z -> 00c2a230 labelled 'CVtable_012b4148::CVtable_012b4148' | RELOC_NAME: ?Register@CChainNode_00c26c10@@QAEXXZ -> 00c2a270 labelled 'CAsyncThreadLauncher::StartThread'
+00c26cd0	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c27070	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ??0CNodeBase_00c27070@@QAE@J@Z -> 00c2a230 labelled 'CVtable_012b4148::CVtable_012b4148' | RELOC_NAME: ?Register@CChainNode_00c27070@@QAEXXZ -> 00c2a270 labelled 'CAsyncThreadLauncher::StartThread'
+00c27130	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c27ef0	MATCH PASS	logs/recheck_0.log	auto		
+00c28580	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c2a7f0	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c2a840	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c2a9b0	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c2be10	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c2d210	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ?IsIdle@CInstance@@QBE_NXZ -> 00c38840 labelled 'CAnimFilterNoGroup::operator()'
+00c2d2f0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ??1CMeshPart_00c2d2f0@@QAE@XZ -> 00c38b20 labelled '_global::CTCActivationReceptor_Update' | RELOC_NAME: ??0CMeshPart_00c2d2f0@@QAE@XZ -> 00c39130 labelled 'CActivationReceptor_00c38b20::CActivationReceptor_00c38b20' | RELOC_NAME: ??_L@YGXPAXIHP6EX0@Z1@Z -> 00f3fb96 labelled '`eh_vector_constructor_iterator'' | RELOC_NAME: ?Bind@CMeshPart_00c2d2f0@@QAEXPAX@Z -> 00c38850 labelled 'CInstance::SetScale'
+00c2d5e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ?IsIdle@CInstance@@QAE_NXZ -> 00c38840 labelled 'CAnimFilterNoGroup::operator()' | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)' | RELOC_NAME: ?StartInstance@CInstanceManager@@QAEXJPBUSThemeRequest@@@Z -> 00c2d260 labelled 'CInstanceManager::UseInstance'
+00c2dbe0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??1CNode_00c2dbe0@@QAE@XZ -> 00c19250 labelled 'PKCTRRedblackTree::~PKCTRRedblackTree' | RELOC_NAME: ??1CTeleportBase_00c2dbe0@@QAE@XZ -> 00c3a9d0 labelled 'std::_Dest_val<std::allocator<NScript::CQ_BountyHuntScript::TeleportData>,NScript::CQ_BountyHuntScript::TeleportData>'
+00c30940	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		SHARED_HEADER_AVAILABLE CString
+00c31960	MATCH PASS	logs/recheck_0.log	auto		
+00c32060	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ??0CReplyHandler@@QAE@XZ -> 00c1dd50 labelled 'PKCOneShotQueue<SFileReply>::PKCOneShotQueue' | RELOC_NAME: ?Dispatch@CMailbox@@QAEPAXPAX@Z -> 00c1da30 labelled 'PKCMailbox<SFileReply>::Receive'
+00c33100	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c33110	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c34370	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		SHARED_HEADER_AVAILABLE CEnginePrimitiveOcclusionManager
+00c354a0	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c35510	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c36590	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	auto		RELOC_NAME: ?Release@CResourceMapOwner_00c36590@@QAEXPAX@Z -> 00c36290 labelled 'CResourceWorld::FreeAllocation'
+00c37840	RELOCATION_MATCH PASS	logs/recheck_0.log	auto		
+00c37da0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ?ReleasePredicate@CTCActivationTrigger_00c37da0@@QAEXPAX@Z -> 00c37b90 labelled 'CEntryHost_00c37b90::DestroyEntry' | RELOC_NAME: ??1CMember_00c37da0@@QAE@XZ -> 00c38350 labelled '_global::Nop_ret0_00c38350'
+00c383d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ?Add@CItemList_00c383d0@@QAEXPAUCRegisteredItem@@@Z -> 00c2c670 labelled 'CFlagOverride::ApplyTo'
+00c38570	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c386a0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c386f0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c38740	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c38790	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c387e0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c38ac0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c39290	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c392f0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c39450	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c394b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c39610	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c39670	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c397d0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c39830	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c39990	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c399f0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c39ba0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c39bf0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c39c40	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c39c90	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c39ce0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c3a9c0	MATCH PASS	logs/recheck_1.log	auto		
+00c3ac40	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c3b1d0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c3b6b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CString
+00c3b710	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ??0CShaderResourceBase_00c3b710@@QAE@ABU0@@Z -> 00c0dab0 labelled 'CString::CString' | RELOC_NAME: ?At@CResourceItems_00c3b710@@QAEPAPAXK@Z -> 00c2ebc0 labelled '_global::PKCAutoDeleteArray_RangeCheck_Abort'
+00c3baf0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c3c660	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c3d7d0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c3e520	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c3ee10	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ?Allocate_00c3ee10@@YAPAXI@Z -> 00c3c360 labelled 'CodaMalloc' | RELOC_NAME: ??0CGroupB_00c3ee10@@QAE@XZ -> 00c573e0 labelled 'CVtable_012b8e20::CVtable_012b8e20'
+00c3f3d0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c3f600	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c3f660	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c3f760	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c3f7b0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c43420	MATCH PASS	logs/recheck_1.log	auto		
+00c434a0	MATCH PASS	logs/recheck_1.log	auto		
+00c44250	MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CPixelFormat
+00c44360	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c44a90	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c46860	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c46900	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c46f90	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ?GetTime@CClock@@QBEKXZ -> 00c2d0f0 labelled '_global::GetMember_dword0x0_00c2d0f0' | RELOC_NAME: ?Schedule@CAmbientTrigger@@QAEXPAVCAmbientSource@@@Z -> 00c62400 labelled 'CThingPlayerCreature::ResolveMovementBandType'
+00c47300	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c473f0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ?Cleanup@CPredicateOwner_00c473f0@@QAEXXZ -> 00c471c0 labelled 'SContext_00c62500::ClearChannels' | RELOC_NAME: ?Drain@CPredicateOwner_00c473f0@@QAEXXZ -> 00c47170 labelled 'SContext_00c62500::ClearTriggers'
+00c48220	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ??1CMember_00c48220@@QAE@XZ -> 00c48db0 labelled 'PKCStaticQueue<SDecoderMessage>::~PKCStaticQueue'
+00c487b0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c48800	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c48860	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c48960	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c48a00	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c48aa0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c48b40	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c48be0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c48c80	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c49650	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: _StopSource_00c49650@12 -> 00c35c30 labelled '_unattributed::ForwardIfStateMask217' | RELOC_NAME: _ReleaseSource_00c49650@4 -> 00c35d50 labelled '_global::Uninitialise' | RELOC_NAME: _DestroySource_00c49650@4 -> 00c35980 labelled '_global::Static_RecycleAction_on_0143bb58_00c35980' | RELOC_NAME: ?Pop@CFrameQueue_00c49650@@QAEPAUCFrame_00c49650@@XZ -> 00c49ff0 labelled '_global::CTCHeroExperience_OnTrophyNotification' | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)' | RELOC_NAME: ??1CFrame_00c49650@@QAE@XZ -> 00c491b0 labelled 'CLocalDetailCacheMap::CloseStaticMap' | RELOC_NAME: ??1CPart48_00c49650@@QAE@XZ -> 00c49d00 labelled '_unattributed::~SPair_00c49d00' | RELOC_NAME: ??1CHandleTable_00c49650@@QAE@XZ -> 00c1c820 labelled 'PKCCriticalSection::~PKCCriticalSection' | RELOC_NAME: ??1CPart8_00c49650@@QAE@XZ -> 00c49af0 labelled 'PKCStaticQueue<CCodaFrame *>::~PKCStaticQueue'
+00c49a70	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c49b30	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c49b90	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c49c90	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c49d00	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c49ff0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4bab0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c4bc20	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c4bc80	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4bd70	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c4be10	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c4c2f0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c4c330	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c4c370	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4cab0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)' | RELOC_NAME: ?Reset@CMasterObject_00c4c8b0@@QAEXXZ -> 00c4c330 labelled 'CDebugString::AddString' | RELOC_NAME: ?Commit@CMasterObject_00c4c8b0@@QAEXXZ -> 00c4c6c0 labelled '_global::PKRACDependency_OnFinalized'
+00c4d1f0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c55030	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c55070	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c550b0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c550d0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c55110	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c551d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ?Configure@CAudioSource@@QAEKPAUCSoundDesc@@PAUCPlayParams@@@Z -> 00c5bd00 labelled 'CSoftwareVoice::SetParameters'
+00c555e0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c55cd0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ?Init@CParticleTypePair_00c55cd0@@QAEXJ@Z -> 00c55b70 labelled 'CAudioContext::Reset'
+00c5c2d0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c5e3d0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c61ca0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ?GetTime@CFrameData@@QBEMXZ -> 00c1bb00 labelled 'CGraphicFrameData::GetFloatTLX'
+00c62400	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ?GetTime@CFrameData@@QBEMXZ -> 00c1bb00 labelled 'CGraphicFrameData::GetFloatTLX' | RELOC_NAME: ?GetEmitterDef@CInitialiser@@QAEPAUCEmitterDef@@PAUSParticle@@@Z -> 00c623f0 labelled 'std::_List_const_iterator<std::_List_val<CVsyncCallbackTimer::CPendingQuery,std::allocator<CVsyncCallbackTimer::CPendingQuery>_>_>::operator--'
+00c62c70	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c6a5d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ?ProcessMix@CReverbProcessor@@QAEXKPAM@Z -> 00c6a080 labelled 'NScript::CQ_GuildTrainingSkillScript::TransformGeometry'
+00c6a8b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ?ReleaseStorage@@YAXPAX@Z -> 00c3c370 labelled 'CodaFree' | RELOC_NAME: ?ReallocateStateBuffers@BufferState@@QAE_NXZ -> 00c775e0 labelled 'CMixerStream::AllocatePlanes' | RELOC_NAME: ?Build@BufferState@@QAEXPBUConfiguration@@PAXPAK@Z -> 00c6a460 labelled 'CReverbProcessor::Allocate' | RELOC_NAME: ?AllocateStorage@@YAPAXK@Z -> 00c3c360 labelled 'CodaMalloc'
+00c6afc0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ??0CSoundRecord00c77770@@QAE@XZ -> 00c77770 labelled 'CGameEventPackage::Clear'
+00c70750	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c71120	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c72600	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c72800	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c74360	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c763c0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c763d0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00c783f0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ?Stage_00c78150@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c78150 labelled 'CReverbProcessor::UpdateTapDelays' | RELOC_NAME: ?Stage_00c780c0@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c780c0 labelled 'Audio_Channel_ComputeEnvelope_Amplitude' | RELOC_NAME: ?Stage_00c77fc0@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77fc0 labelled 'CReverbProcessor::UpdateChorusLength' | RELOC_NAME: ?Stage_00c77800@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77800 labelled 'CAudioChannel_SetupAudioFilter' | RELOC_NAME: ?Stage_00c78040@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c78040 labelled 'CReverbProcessor::UpdateDelayLength' | RELOC_NAME: ?Stage_00c77c80@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77c80 labelled 'CReverbProcessor::UpdateLineAndTapLengths' | RELOC_NAME: ?Stage_00c77b30@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77b30 labelled 'CAudioChannel_ApplyDistortionEffect' | RELOC_NAME: ?Stage_00c77ae0@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77ae0 labelled 'CReverbProcessor::UpdateLineGains' | RELOC_NAME: ?Stage_00c783b0@CEffectPart260@@QAEXPAUSVoiceEffectParameters@@@Z -> 00c783b0 labelled 'CChannelMixer_00c783b0::Mix' | RELOC_NAME: ?Stage_00c77c00@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77c00 labelled 'CReverbProcessor::UpdateTapLevels'
+00ca48c0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00ca48f0	MATCH PASS	logs/recheck_0.log	strm		
+00ca4990	RELOCATION_MATCH PASS LABEL_PENDING	logs/recheck_0.log	strm	RELOC_NAME: ?ResetMediaTime@CRendererPosPassThru@@QAEJXZ -> 00caddc0 labelled 'CAppearance_00caddc0::Rebuild'	
+00ca49b0	MATCH PASS	logs/recheck_0.log	strm		
+00ca49c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_0.log	strm		RELOC_NAME: ?ResetMediaTime@CRendererPosPassThru@@QAEJXZ -> 00caddc0 labelled 'CAppearance_00caddc0::Rebuild'
+00ca49e0	MATCH PASS	logs/recheck_0.log	strm		
+00ca4a50	MATCH PASS	logs/recheck_0.log	strm		
+00ca4a70	RELOCATION_MATCH PASS	logs/recheck_0.log	strm		
+00ca4b20	MATCH PASS	logs/recheck_0.log	strm		
+00ca4b60	RELOCATION_MATCH PASS	logs/recheck_0.log	strm		
+00ca4b90	RELOCATION_MATCH PASS	logs/recheck_0.log	strm		
+00ca4bf0	RELOCATION_MATCH PASS	logs/recheck_0.log	strm		
+00ca4d80	RELOCATION_MATCH PASS	logs/recheck_0.log	strm		
+00ca4f20	MATCH PASS	logs/recheck_0.log	strm		
+00ca4f30	MATCH PASS	logs/recheck_0.log	strm		
+00ca52a0	RELOCATION_MATCH PASS	logs/recheck_0.log	strm		
+00ca5380	RELOCATION_MATCH PASS	logs/recheck_0.log	strm		
+00ca53a0	MATCH PASS	logs/recheck_0.log	strm		
+00ca53b0	MATCH PASS	logs/recheck_0.log	strm		
+00ca5400	MATCH PASS	logs/recheck_0.log	strm		
+00ca55e0	RELOCATION_MATCH PASS	logs/recheck_0.log	strm		
+00ca7030	RELOCATION_MATCH PASS	logs/recheck_0.log	strm		
+00ca79f0	MATCH PASS	logs/recheck_0.log	strm		
+00caa410	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		RELOC_NAME: ?Stop@CVtable_012bf83c@@UAGJXZ -> 00caa160 labelled 'CBaseAllocator::Decommit' | RELOC_NAME: ?DeallocateScriptEntries@CVtable_012bf83c@@QAEXXZ -> 00caa3c0 labelled 'CMemAllocator::ReallyFree'
+00caddc0	RELOCATION_MATCH PASS	logs/recheck_1.log	auto		
+00caefb0	RELOCATION_MATCH PASS INHERITED_WARN	logs/recheck_1.log	auto		SHARED_HEADER_AVAILABLE CBaseObject

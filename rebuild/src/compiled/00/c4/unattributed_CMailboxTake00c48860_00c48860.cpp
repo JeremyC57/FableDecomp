@@ -1,4 +1,5 @@
 // CMailbox_00c48860::Take() -- EH-framed by-value pop (the manifest's "PKCMailbox_ProcessMessage" is propagated): the counting semaphore at +0x1c is acquired (@ 0x00C2A090), the mailbox's own section held through a profiling lock (@ 0x00C0FFC0 / 0x00C0FFE0, state 1); an empty queue (slot 2 count, unsigned) raises the warning at PKCMailbox.h line 63 (MFC-style string in a nested block, log sink at 0x0143BB2C, the trace temporary on a free frame byte), then the queue's slot-0 virtual pops the message straight into the hidden result (its constructed flag at +0xc set before the lock is released)
+// Vendor naming wave V1 (one address, one name): 0x00C2A090 ?Wait@PKCSemaphore@@QAEXXZ (was ?Acquire@CSemaphore_00c48860@@QAEXXZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C48860, oracle length 254 bytes. Built under /EHsc.
 // Retail bytes:  ... sub esp,14h ; push esi ; mov esi,ecx ; lea ecx,[esi+1Ch] ; mov dword ptr [esp+0Ch],0 ; call CSemaphore::Acquire ; push esi ; lea ecx,[esp+14h] ; call CProfileLock::CProfileLock ; mov ecx,[esi+18h] ; mov eax,[ecx] ; mov dword ptr [esp+20h],1 ; call [eax+8] ; test eax,eax ; ja pop ; mov ecx,[g_pchNil] ; mov [esp+8],ecx ; mov edx,offset "d:\dev\audio\ver_fable_1.5_b\libpk\PKCMailbox.h" ; lea ecx,[esp+8] ; mov byte ptr [esp+20h],2 ; call Append ; ... mov edx,3Fh ; ... call AppendNumber ; ... call Append (text) ; ... call Append ("\n") ; mov eax,[g_pfnLogSink] ; test eax,eax ; je skip ; mov ecx,[esp+8] ; call eax ; skip: lea ecx,[esp+8] ; mov byte ptr [esp+20h],1 ; call ~CString ; lea ecx,[esp+7] ; call CTrace::CTrace ; pop: mov ecx,[esi+18h] ; mov esi,[esp+28h] ; mov edx,[ecx] ; push esi ; call [edx] ; lea ecx,[esp+10h] ; mov dword ptr [esp+0Ch],1 ; mov byte ptr [esp+20h],0 ; call ~CProfileLock ; ... mov eax,esi ; ... ret 4
 // The sibling peek at 0x00C48960 returns the result through the same hidden pointer. The classes are named by address.
@@ -37,18 +38,18 @@ struct IQueue_00c48860 {
     virtual unsigned long Count();         // slot 8
 };
 
-struct CSemaphore_00c48860 { void Acquire(); };   // 0x00C2A090
+struct PKCSemaphore { void Wait(); };   // 0x00C2A090
 
 struct CMailbox_00c48860 {
     unsigned char _pad[0x18];
     IQueue_00c48860* m_pQueue;             // +0x18
-    CSemaphore_00c48860 m_semaphore;       // +0x1c
+    PKCSemaphore m_semaphore;       // +0x1c
     CMessage_00c48860 Take();
 };
 
 CMessage_00c48860 CMailbox_00c48860::Take()
 {
-    m_semaphore.Acquire();
+    m_semaphore.Wait();
     PKCProtectionInstance lock((PKCCriticalSection*)this);
     if (!(m_pQueue->Count() > 0)) {
         {

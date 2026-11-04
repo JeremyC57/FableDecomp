@@ -1,6 +1,7 @@
 // CBitMaskPair_00c0a8c0::SetFlag(unsigned long index, bool set) -- set or clear bit `index` (of 8) in the 16-bit state mask at +0x4e and mark it in the touched mask at +0x2c through the shared __fastcall bit helper
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C0A8C0, length 24 bytes.
 // Leaf: ?SetFlag@CBitMaskPair_00c0a8c0@@QAEXK_N@Z
+// Vendor naming wave V1 (one address, one name): 0x00C0AF00 ?SetMaskBit8@@YIXK_NPAG1@Z (was ?SetMaskBit8_00c0af00@@YIXK_NPAG1@Z)
 // Callees: the __fastcall helper @ 0x00C0AF00 (ecx = index, dl = set, stack = the mask, then the touched mask; it
 // forwards to SetMaskBit 0x00C0AE70 with a bit count of 8, which ORs `1 << index` into the touched mask -- the SECOND
 // stack word, here +0x2c -- and sets or clears it in the FIRST stack word, here +0x4e). The chunk label
@@ -11,7 +12,7 @@
 // Fix (sweep1, 2026-10-25): the mask roles were swapped in the comments and member names (FINDINGS chunk 431); the
 // bytes push +0x2c (the helper's OR-only touched word) first and +0x4e (the set/cleared word) second, as the landed
 // SetMaskBit 0x00C0AE70 reads them.
-void __fastcall SetMaskBit8_00c0af00(unsigned long index, bool set, unsigned short* pMask, unsigned short* pTouched);   // 0x00C0AF00
+void __fastcall SetMaskBit8(unsigned long index, bool set, unsigned short* pMask, unsigned short* pTouched);   // 0x00C0AF00
 
 struct CBitMaskPair_00c0a8c0 {
     unsigned char  _pad[0x2c];
@@ -23,5 +24,5 @@ struct CBitMaskPair_00c0a8c0 {
 
 void CBitMaskPair_00c0a8c0::SetFlag(unsigned long index, bool set)
 {
-    SetMaskBit8_00c0af00(index, set, &m_stateMask, &m_touchedMask);
+    SetMaskBit8(index, set, &m_stateMask, &m_touchedMask);
 }

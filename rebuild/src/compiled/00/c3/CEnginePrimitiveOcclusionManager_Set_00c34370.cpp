@@ -1,5 +1,6 @@
 // CEnginePrimitiveOcclusionManager::Set(const SOcclusionSetup* setup, const SOcclusionFade* fade) -- copy a setup record: the mode word always, the head record and both ranges when the mode is non-zero (else only the fallback value), then the fade record
 // Leaf: ?Set@CEnginePrimitiveOcclusionManager
+// Vendor naming wave V1 (one address, one name): 0x00C1BD60 ?SetX@CFloatPair@@QAEXM@Z (was ?SetFirst@SRange@@QAEXM@Z); 0x00C1BD70 ?SetY@CFloatPair@@QAEXM@Z (was ?SetSecond@SRange@@QAEXM@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C34370, length 160 bytes (146 + int3 padding).
 // Callees: the 8-byte range's SetFirst @ 0x00C1BD60 (`[ecx] = arg`) and SetSecond @ 0x00C1BD70
 // (`[ecx+4] = arg`), each called twice, out of line.
@@ -15,10 +16,10 @@ struct SOcclusionHead {                 // 16 bytes (0x00C20390 zeroes three dwo
     long a, b, c;
     bool flag;
 };
-struct SRange {
+struct CFloatPair {
     float first, second;
-    void SetFirst(float v);             // 0x00C1BD60
-    void SetSecond(float v);            // 0x00C1BD70
+    void SetX(float v);             // 0x00C1BD60
+    void SetY(float v);            // 0x00C1BD70
 };
 struct SOcclusionFade {                 // 20 bytes
     float f0, f1, f2, f3;
@@ -37,8 +38,8 @@ struct SOcclusionSetup {
 class CEnginePrimitiveOcclusionManager { public:
     SOcclusionHead m_head;              // +0x00
     long           m_mode;              // +0x10
-    SRange         m_range;             // +0x14
-    SRange         m_secondRange;       // +0x1c
+    CFloatPair         m_range;             // +0x14
+    CFloatPair         m_secondRange;       // +0x1c
     long           m_extra;             // +0x24
     long           m_fallback;          // +0x28
     SOcclusionFade m_fade;              // +0x2c
@@ -49,10 +50,10 @@ void CEnginePrimitiveOcclusionManager::Set(const SOcclusionSetup* setup, const S
 {
     if ((m_mode = setup->mode) != 0) {
         m_head = setup->head;
-        m_range.SetFirst(setup->rangeFirst);
-        m_range.SetSecond(setup->rangeSecond);
-        m_secondRange.SetFirst(0);
-        m_secondRange.SetSecond(setup->secondRangeSecond);
+        m_range.SetX(setup->rangeFirst);
+        m_range.SetY(setup->rangeSecond);
+        m_secondRange.SetX(0);
+        m_secondRange.SetY(setup->secondRangeSecond);
         m_extra = setup->extra;
     } else {
         m_fallback = setup->fallback;

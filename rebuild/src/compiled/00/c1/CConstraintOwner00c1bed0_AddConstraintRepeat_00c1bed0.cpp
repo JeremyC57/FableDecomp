@@ -1,4 +1,5 @@
-// CConstraintOwner_00c1bed0::AddConstraintRepeat(void*) -- under the profile lock at 0x0143BAFC, hands the argument to the global manager's notify routine (@ 0x00C336F0); `this` is not used
+// CTarget_00c10b30::Add(void*) -- under the profile lock at 0x0143BAFC, hands the argument to the global manager's notify routine (@ 0x00C336F0); `this` is not used
+// Vendor naming wave V1 (one address, one name): 0x00C336F0 ?AudioSystem_SetListenerTarget@@YGXPAX@Z (was ?NotifyGlobalManager_00c336f0@@YGXPAX@Z); 0x00C1BED0 ?Add@CTarget_00c10b30@@QAEXPAX@Z (was ?AddConstraintRepeat@CConstraintOwner_00c1bed0@@QAEXPAX@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C1BED0, 41 bytes (`ret 4`).
 // Callees: PKCProtectionInstance::PKCProtectionInstance(void*) @ 0x00C0FFC0 / ~PKCProtectionInstance @ 0x00C0FFE0 (the 8-byte scoped lock),
 // the `__stdcall` notify @ 0x00C336F0 (labelled "Constraint_NotifyGlobalManager"; it reads the manager singleton
@@ -17,14 +18,14 @@ class PKCProtectionInstance { public:                                // 8 bytes:
 };
 
 extern PKCCriticalSection g_soundLock;   // 0x0143BAFC
-void __stdcall NotifyGlobalManager_00c336f0(void* constraint);   // 0x00C336F0
+void __stdcall AudioSystem_SetListenerTarget(void* constraint);   // 0x00C336F0
 
-struct CConstraintOwner_00c1bed0 {
-    void AddConstraintRepeat(void* constraint);
+struct CTarget_00c10b30 {
+    void Add(void* constraint);
 };
 
-void CConstraintOwner_00c1bed0::AddConstraintRepeat(void* constraint)
+void CTarget_00c10b30::Add(void* constraint)
 {
     PKCProtectionInstance lock(&g_soundLock);
-    NotifyGlobalManager_00c336f0(constraint);
+    AudioSystem_SetListenerTarget(constraint);
 }

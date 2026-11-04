@@ -1,4 +1,5 @@
 // CMasterObject_00c4c370::~CMasterObject_00c4c370() -- EH-framed destructor: when the finalised flag at +0x28 is clear a log line is built on the stack (`.\\PKRACMasterObject.cpp(8) : If it was not finalised, then how did I get here?`, state 1 over the member state 0, chained `__fastcall` builders, optional sink @ 0x0143BB2C, release @ 0x00C0BA40) and an empty trace temporary built in a dead frame byte (@ 0x00C16750); then the member at +0x10 is destroyed out of line (@ 0x00C1C820)
+// Vendor naming wave V1 (one address, one name): 0x00C1C820 ??1PKCCriticalSection@@QAE@XZ (was ??1CMember_00c4c370@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4C370, oracle length 204 bytes. Built under /EHsc.
 // Retail bytes:  ... mov al,[esi+28h] ; test al,al ; mov dword ptr [esp+18h],0 ; jne done ; mov eax,[g_logBuffer] ; mov [esp+8],eax ; mov edx,offset file ; lea ecx,[esp+8] ; mov byte ptr [esp+18h],1 ; call Append ; ... AppendNumber(8) ... ; mov eax,[g_pfnLogSink] ; test eax,eax ; je rel ; mov ecx,[esp+8] ; call eax ; rel: lea ecx,[esp+8] ; mov byte ptr [esp+18h],0 ; call ~CLogLine ; lea ecx,[esp+7] ; call CTrace::CTrace ; done: lea ecx,[esi+10h] ; mov dword ptr [esp+18h],-1 ; call ~CMember ; ...
 // The empty trace temporary lands on the high byte of a frame slot (a named local gets its own slot under the DDK). The class stores no vtable of
@@ -19,14 +20,14 @@ struct CDebugBreak {                       // empty temporary (a debug-break hel
     CDebugBreak();                         // 0x00C16750: calls an import and returns `this`
 };
 
-struct CMember_00c4c370 {                  // +0x10
+struct PKCCriticalSection {                  // +0x10
     unsigned char _body[0x18];
-    ~CMember_00c4c370();                       // 0x00C1C820
+    ~PKCCriticalSection();                       // 0x00C1C820
 };
 
 struct CMasterObject_00c4c370 {
     unsigned char _pad[0x10];
-    CMember_00c4c370 m_10;                     // +0x10
+    PKCCriticalSection m_10;                     // +0x10
     bool m_finalised;                      // +0x28
     ~CMasterObject_00c4c370();
 };

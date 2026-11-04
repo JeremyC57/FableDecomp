@@ -1,5 +1,6 @@
 // CEventDataBuffer::Allocate(long) -- allocates and zeroes room for `count` 12-byte event records, resetting the cursors (sets error -5 when out of memory)
 // Leaf: Allocate
+// Vendor naming wave V1 (one address, one name): 0x00C3C360 _CodaMalloc (was _EventAlloc)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C44360, 112 bytes; default /O2 TU, no frame, `ret 4`.
 // Label correction: the catalog row "CTCHeroStats::AllocateEventData" is propagated; the body belongs to a library
 // object of the 0xC3xxxx-0xC6xxxx block (only caller 0x00C43F1B). Class and member names are descriptive.
@@ -17,7 +18,7 @@ struct CErrorState {
 
 extern CErrorState g_ErrorState;                     // 0x0143BB58
 
-extern "C" void* __cdecl EventAlloc(unsigned long size);  // 0x00C3C360
+extern "C" void* __cdecl CodaMalloc(unsigned long size);  // 0x00C3C360
 
 extern "C" void* __cdecl memset(void* dst, int value, unsigned int size);
 #pragma intrinsic(memset)
@@ -36,7 +37,7 @@ struct CEventDataBuffer {
 bool CEventDataBuffer::Allocate(long count)
 {
     unsigned long size = count * 12;
-    m_data = (long*)EventAlloc(size);
+    m_data = (long*)CodaMalloc(size);
     if (m_data == 0) {
         ((CCodaContext*)&g_ErrorState)->SetError(-5);
         return false;

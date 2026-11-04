@@ -1,8 +1,9 @@
-// CBase_00caefb0::~CBase_00caefb0() -- EH-framed destructor of a strmbase-style COM object: release the +0x10 COM pointer (its smart-pointer member's destructor), then the CUnknown base at +4 (its CBaseObject destructor at +8)
+// CAudioObjectBase00caefb0::~CAudioObjectBase00caefb0() -- EH-framed destructor of a strmbase-style COM object: release the +0x10 COM pointer (its smart-pointer member's destructor), then the CUnknown base at +4 (its CBaseObject destructor at +8)
 // Retry 10b: the COM pointer at +10h is a smart-pointer MEMBER whose inline destructor releases it (the destructor body is empty):
 // the release then dereferences the member's `this`, not the destructor's, so VC7.1 keeps the `test esi,esi` null check of
 // the base conversions; a release written in the destructor body dereferences `this` and the check is dropped.
 // Leaf: ??1CBase_00caefb0
+// Vendor naming wave V1 (one address, one name): 0x00CAEFB0 ??1CAudioObjectBase00caefb0@@UAE@XZ (was ??1CBase_00caefb0@@UAE@XZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAEFB0, length 118 bytes.
 // Label correction: the catalog's "CVolume::ReleaseVolume" is propagated. Callers: the derived destructors 0x00CAF070
@@ -36,11 +37,11 @@ struct CComPointer_Retail {                       // inline smart pointer: relea
     IUnknownRetail* p;
     ~CComPointer_Retail() { if (p) p->Release(); }
 };
-class __declspec(novtable) CBase_00caefb0 : public IUnknownRetail, public CUnknown {
+class __declspec(novtable) CAudioObjectBase00caefb0 : public IUnknownRetail, public CUnknown {
 public:
     CComPointer_Retail m_pObject;                  // +0x10
-    ~CBase_00caefb0();
+    ~CAudioObjectBase00caefb0();
 };
-CBase_00caefb0::~CBase_00caefb0()
+CAudioObjectBase00caefb0::~CAudioObjectBase00caefb0()
 {
 }

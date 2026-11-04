@@ -1,9 +1,10 @@
 // CAudioSource::Start(CSoundDesc* desc, CPlayParams* params) -- add a reference to the description, configure the voice for it, force unit gains unless the description keeps its own, add the loop capability bits and reset the voice (inline Reset), returning the capability word
 // Leaf: ?Start@CAudioSource@@
+// Vendor naming wave V1 (one address, one name): 0x00C6B720 ?Reset@SBodyRecord_00c55030@@QAEXXZ (was ?Reset@SRampedVector@@QAEXXZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C551D0, length 153 bytes (+ int3 padding); `ret 8`; slot 10 of the voice
 // vtable (referenced at 0x012B8B38).
 // Callees: the description's slot 1 (AddRef), Configure 0x00C5BD00 (thiscall on the voice), then the landed Reset
-// 0x00C55030 inlined: the stream's slot 1, SRampedVector::Reset 0x00C6B720 twice, the +0x22c / +0x238 clears.
+// 0x00C55030 inlined: the stream's slot 1, SBodyRecord_00c55030::Reset 0x00C6B720 twice, the +0x22c / +0x238 clears.
 // The catalog label "CTCTavernGameCoinGolf_UpdateRotation" is propagated.
 // Shape: the capability word lives in edi (`or edi,1BF8000h`); `params->m_loopStart != 0` / `m_loopCount != 0` share
 // the zero register ebx (the dead description pointer) with the final clears.
@@ -11,7 +12,7 @@
 // (polymorphic, slot 1 = Rewind), the left / right gains +0x218 / +0x21c, two ramped 3-vector records +0xdc / +0x100 (the
 // landed SBodyRecord_00c55030 / Reset 0x00C6B720), the packed 16-bit volume +0x23c, its ramp target +0x23e and the
 // ramp flag +0x240. The landed 0x00C55030 (CBodyOwner_00c55030::Reset) is this class's Reset.
-struct SRampedVector {                             // 0x24 bytes: current, rest, rate
+struct SBodyRecord_00c55030 {                             // 0x24 bytes: current, rest, rate
     float m_current[3];
     float m_rest[3];
     float m_rate[3];
@@ -54,8 +55,8 @@ struct CStreamHandle {
 struct CAudioSource {
     void*           __vftable;                     // +0x00
     unsigned char   _pad4[0xd8];
-    SRampedVector   m_rampA;                       // +0xdc
-    SRampedVector   m_rampB;                       // +0x100
+    SBodyRecord_00c55030   m_rampA;                       // +0xdc
+    SBodyRecord_00c55030   m_rampB;                       // +0x100
     unsigned char   _pad124[0xec];
     long            m_210;                         // +0x210
     long            m_214;                         // +0x214

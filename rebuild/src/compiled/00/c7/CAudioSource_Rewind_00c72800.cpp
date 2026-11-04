@@ -1,5 +1,6 @@
 // CAudioSource::Rewind(long keepState) -- vtable slot 14 of the OpenAL voice: unless told to keep the state, read the source state (alGetSourcei AL_SOURCE_STATE), rewind the OpenAL source (alSourceRewind) and start it again when it had been playing (AL_PLAYING)
 // Leaf: ?Rewind@CAudioSource@@
+// Vendor naming wave V1 (one address, one name): 0x00C575F0 ?SourcePlay@CAudioContext@@QAEXK@Z (was ?PlaySource@CAudioContext@@QAEXK@Z)
 // Grade: RELOCATION_MATCH (wave-2 sec6): chunk 599's reference-local lever -- CAudioContext& context = g_AudioContext;
 //   gives retail's this-in-edi / SourceId-in-esi colouring (direct g_AudioContext. calls swap them)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C72800, 179 bytes, thiscall `ret 4` (the dword argument is tested as a whole). The state
@@ -29,7 +30,7 @@ struct CAudioContext {
     unsigned char      _pad88[0x7c];
     bool               UseALGetProcAddress;         // +0x104 (0x0143BEB4)
     void* GetProcAddress(const char* name);         // 0x00C4D740
-    void PlaySource(unsigned long source);          // 0x00C575F0 ("alSourcePlay", out of line)
+    void SourcePlay(unsigned long source);          // 0x00C575F0 ("alSourcePlay", out of line)
     void Sourcei(unsigned long source, long param, long value);   // 0x00C57550 ("alSourcei", out of line)
     void GetSourcei(unsigned long source, long param, long* value)   // inline here (out of line at 0x00C575A0)
     {
@@ -117,5 +118,5 @@ void CAudioSource::Rewind(long keepState)
     context.GetSourcei(SourceId, 0x1010 /* AL_SOURCE_STATE */, &state);
     context.SourceRewind(SourceId);
     if (state == 0x1012 /* AL_PLAYING */)
-        context.PlaySource(SourceId);
+        context.SourcePlay(SourceId);
 }

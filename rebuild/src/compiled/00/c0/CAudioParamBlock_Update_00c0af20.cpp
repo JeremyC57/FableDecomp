@@ -1,5 +1,6 @@
 // CAudioParamBlock::Update() -- advance every ramped gain parameter whose ramp has not finished by one tick (1000 / the owner's tick rate) and, when any moved, refresh the owner's display object and its optional sprite
 // Leaf: Update
+// Vendor naming wave V1 (one address, one name): 0x00C11180 ?SetFlagBit1@CLockedFlagOwner_00c11180@@QAEXXZ (was ?Refresh@CDisplay@@QAEXXZ)
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): CAudioOwner -> CSoundSystem, the one class name for vtable 0x012B1E24 (the libpk sound system CreateSoundSystem_00c096e0 0x00C096E0 returns and the landed CSoundManagerLH ctor 0x00A3EF00 drives; descriptive, libpk has no PDB).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C0AF20, 108 bytes (`ret`; the sprite update is a tail `jmp`). Descriptive
 //   names (no PDB covers this library): the manifest's "NUISystem_CComponent_UpdateAnimation" is propagated. Callers:
@@ -23,12 +24,12 @@ struct CRampedParam {                           // 0x34 bytes
     void Update(float dt);                      // 0x00C0B7B0
 };
 
-struct CDisplay { void Refresh(); };            // 0x00C11180
+struct CLockedFlagOwner_00c11180 { void SetFlagBit1(); };            // 0x00C11180
 struct CSprite { void Update(); };              // 0x00C15B90
 
 struct CSoundSystem {
     unsigned char _pad0[0x38];
-    CDisplay* m_pDisplay;                       // +0x38
+    CLockedFlagOwner_00c11180* m_pDisplay;                       // +0x38
     unsigned char _pad3c[0x60 - 0x3c];
     CSprite* m_pSprite;                         // +0x60
     unsigned char _pad64[0x70 - 0x64];
@@ -54,7 +55,7 @@ void CAudioParamBlock::Update()
         }
     }
     if (changed) {
-        m_pOwner->m_pDisplay->Refresh();
+        m_pOwner->m_pDisplay->SetFlagBit1();
         if (m_pOwner->m_pSprite)
             m_pOwner->m_pSprite->Update();
     }

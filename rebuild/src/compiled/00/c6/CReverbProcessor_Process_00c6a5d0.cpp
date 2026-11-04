@@ -1,5 +1,6 @@
 // CReverbProcessor::Process(const float* dry, bool active, const float* const* inputs, unsigned long count) -- the software reverb's per-block entry: false until the reverb is set up (+0x294); else feed the dry block into the input delay line, run the comb bank into an aligned 0x200-byte scratch block, post-process it, run the +0x94 and +0x144 stages over the channel blocks, and remember whether this block was active (+0x28c)
 // Leaf: ?Process@CReverbProcessor@@UAE_NPBM_NPBQBMK@Z
+// Vendor naming wave V1 (one address, one name): 0x00C69C60 ?ProcessInput@CReverbProcessor@@QAEXPBM_NK@Z (was ?WriteInput@CReverbProcessor@@QAEXPBM_NK@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C6A5D0, 123 bytes, thiscall `ret 10h`, `and esp,-16` frame.
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 443 "0xC6A5D0 "CEditControlCentre::GetCurrentMask" = reverb per-block
 //   Process"): `this` is agent443's CReverbProcessor (vtable 0x012B9594; ctor 0x00C6A650, dtor 0x00C6A780, which clears the
@@ -28,7 +29,7 @@ public:
     bool          m_bWasActive;                    // +0x28c
     unsigned char _pad28d[0x294 - 0x28d];
     bool          m_bReady;                        // +0x294 (cleared by the destructor 0x00C6A780)
-    void WriteInput(const float* dry, bool active, unsigned long count);           // 0x00C69C60
+    void ProcessInput(const float* dry, bool active, unsigned long count);           // 0x00C69C60
     void ProcessCombs(const float* const* inputs, unsigned long count, float* output);   // 0x00C69FB0
     void ProcessMix(unsigned long count, float* mix);                              // 0x00C6A080
     void ProcessStage94(const float* const* inputs, unsigned long count);          // 0x00C6A180
@@ -41,7 +42,7 @@ bool CReverbProcessor::Process(const float* dry, bool active, const float* const
     __declspec(align(16)) float mix[128];                // one 128-sample mix block
     if (!m_bReady)
         return false;
-    WriteInput(dry, active, count);
+    ProcessInput(dry, active, count);
     ProcessCombs(inputs, count, mix);
     ProcessMix(count, mix);
     ProcessStage94(inputs, count);

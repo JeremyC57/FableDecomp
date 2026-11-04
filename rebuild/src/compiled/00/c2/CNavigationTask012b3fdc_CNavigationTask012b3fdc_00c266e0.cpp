@@ -1,5 +1,6 @@
 // CNavigationTask_012b3fdc::CNavigationTask_012b3fdc() -- constructor: own vtable, four zeroed words, the embedded 0x50-byte navigation request (inline constructor), two zeroed shorts
 // Leaf: ??0CNavigationTask_012b3fdc
+// Vendor naming wave V1 (one address, one name): 0x00C20390 ??0SEventRecord@@QAE@XZ (was ??0CNavigationLayer@@QAE@XZ); 0x00C203A0 ??0CMessageListOwner_00c203a0@@QAE@XZ (was ??0CMessageListOwner@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C266E0, length 90 bytes.
 // Callees: CMessageListOwner::CMessageListOwner @ 0x00C203A0, CNavigationLayer::CNavigationLayer @ 0x00C20390
 // (the request's two member constructors, the request's own constructor 0x00C10A30 being inlined here).
@@ -9,27 +10,27 @@
 // initialisers +4/+8/+0x14/+0x18 through the shared ebx zero (the words at +0xc/+0x10/+0x1c/+0x20 are
 // not initialised), the request at +0x24 addressed through esi, then the two shorts at +0x74/+0x76.
 // The manifest label "CScriptModuleBase::CScriptModuleBase" is propagated from an unrelated body.
-struct CMessageListOwner {                    // 0x1c bytes
+struct CMessageListOwner_00c203a0 {                    // 0x1c bytes
     unsigned char _body[0x1c];
-    CMessageListOwner();                      // 0x00C203A0
+    CMessageListOwner_00c203a0();                      // 0x00C203A0
 };
 
-struct CNavigationLayer {                     // 0x10 bytes
+struct SEventRecord {                     // 0x10 bytes
     void* m_pFirst;
     void* m_pSecond;
     void* m_pThird;
     unsigned char m_flag;
-    CNavigationLayer();                       // 0x00C20390
+    SEventRecord();                       // 0x00C20390
 };
 
 struct SNavigationRequest {                   // 0x50 bytes
-    CMessageListOwner m_messages;             // +0x00
+    CMessageListOwner_00c203a0 m_messages;             // +0x00
     long              m_1c;                   // +0x1c
     long              m_20;                   // +0x20
     float             m_scaleX;               // +0x24
     float             m_scaleY;               // +0x28
     long              m_2c;                   // +0x2c
-    CNavigationLayer  m_layer;                // +0x30
+    SEventRecord  m_layer;                // +0x30
     long              m_40;                   // +0x40
     short             m_44;                   // +0x44
     long              m_48;                   // +0x48

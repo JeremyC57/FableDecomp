@@ -1,5 +1,6 @@
 // CRemoteLoader::LoadDataFromRemote(unsigned long offset, unsigned long size, void* dest) -- synchronous read over the async file reader: posts the request with a user-mailbox reply callback, then waits on the local mailbox for the completion flag
 // Leaf: LoadDataFromRemote
+// Vendor naming wave V1 (one address, one name): 0x00C1DCE0 ??1CReplyMailbox@@QAE@XZ (was ??1CSyncWait@@QAE@XZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C32060, 206 bytes, __fastcall `ret 0Ch`, al = the reply flag (0 when the request
 //   is refused). Descriptive name (no PDB covers this library; the catalog's `CResourceContainer_LoadDataFromRemote`
@@ -32,11 +33,11 @@ struct CMailbox {                           // 0x20 bytes
     void* Dispatch(void* message);          // 0x00C1DA30
 };
 
-struct CSyncWait {                          // 0x30 bytes
+struct CReplyMailbox {                          // 0x30 bytes
     CReplyHandler m_handler;                // +0x00
     CMailbox m_mailbox;                     // +0x10
-    CSyncWait() : m_mailbox(&m_handler, 1) { }
-    ~CSyncWait();                           // 0x00C1DCE0
+    CReplyMailbox() : m_mailbox(&m_handler, 1) { }
+    ~CReplyMailbox();                           // 0x00C1DCE0
 };
 
 struct CAsyncFileReader;
@@ -64,7 +65,7 @@ struct CRemoteLoader {
 
 bool CRemoteLoader::LoadDataFromRemote(unsigned long offset, unsigned long size, void* dest)
 {
-    CSyncWait wait;
+    CReplyMailbox wait;
     CUserMailboxCallback callback(&wait.m_mailbox, m_pReader);
     if (!m_pReader->ReadRemote(offset, size, dest, 0, &callback))
         return false;

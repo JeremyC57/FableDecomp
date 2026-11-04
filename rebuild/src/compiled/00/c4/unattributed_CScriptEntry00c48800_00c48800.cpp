@@ -1,4 +1,5 @@
 // CScriptEntry_00c48800::CScriptEntry_00c48800(void*, void*) -- EH-framed: base @ 0x00C1C810, first argument at +0x18, member at +0x1c constructed from (0, second argument)
+// Vendor naming wave V1 (one address, one name): 0x00C1C810 ??0PKCCriticalSection@@QAE@XZ (was ??0CBase_00c1c810@@QAE@XZ)
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): the member built out of line @ 0x00C29FC0 is the landed PKCSemaphore (PKCSemaphore::PKCSemaphore(long initialCount, long maximumCount), file .\PKCSemaphore.cpp; dtor 0x00C29FB0); the stand-in spelling is gone.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C48800, oracle length 84 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
@@ -9,10 +10,10 @@
 // first (its destructor gives EH state 0), the first argument is stored at +0x18 and the
 // member at +0x1c is constructed out of line @ 0x00C29FC0 from (0, second argument). No
 // vtables are stored. Manifest labels here are propagated; classes are placeholders. One of 10 bodies.
-struct CBase_00c1c810 {
+struct PKCCriticalSection {
     void* m_data;
-    CBase_00c1c810();                    // 0x00C1C810
-    ~CBase_00c1c810();
+    PKCCriticalSection();                    // 0x00C1C810
+    ~PKCCriticalSection();
 };
 
 class PKCSemaphore { public:
@@ -20,7 +21,7 @@ class PKCSemaphore { public:
     PKCSemaphore(long initialCount, long maximumCount);   // 0x00C29FC0
 };
 
-struct CScriptEntry_00c48800 : CBase_00c1c810 {
+struct CScriptEntry_00c48800 : PKCCriticalSection {
     unsigned char _pad[0x14];
     void* m_pFirst;                        // +0x18
     PKCSemaphore m_member;              // +0x1c
@@ -28,7 +29,7 @@ struct CScriptEntry_00c48800 : CBase_00c1c810 {
 };
 
 CScriptEntry_00c48800::CScriptEntry_00c48800(void* first, void* second)
-    : CBase_00c1c810()
+    : PKCCriticalSection()
     , m_pFirst(first)
     , m_member(0, (long)second)
 {
