@@ -1,0 +1,25 @@
+address	name	evidence
+0x0054C140	??_ECSlider@NUISystem@@W3AEPAXI@Z	matched (RELOCATION_MATCH); `sub ecx,4 ; jmp 0x0054C1B0`, slot 0 of the CObserver (+4) vtable 0x01248CE0; emitted by the out-of-line ~CSlider in the TU
+0x0054C150	??_ECSlider@NUISystem@@WBI@AEPAXI@Z	matched (RELOCATION_MATCH); `sub ecx,18h ; jmp 0x0054C1B0`, slot 0 of the CActionParam (+0x18) vtable 0x01248CD8
+0x00555120	??_ECMorphingSprite@NUISystem@@W3AEPAXI@Z	matched (RELOCATION_MATCH); `sub ecx,4 ; jmp 0x00555140`, CObserver vtable 0x0124A474 slot 0
+0x00555130	??_ECMorphingSprite@NUISystem@@WBI@AEPAXI@Z	matched (RELOCATION_MATCH); `sub ecx,18h ; jmp 0x00555140`, CActionParam vtable 0x0124A46C slot 0
+0x0055A380	??_ECScrollBar@NUISystem@@W3AEPAXI@Z	matched (RELOCATION_MATCH); `sub ecx,4 ; jmp 0x0055A3A0`, CObserver vtable 0x0124B7BC slot 0
+0x0055A390	??_ECScrollBar@NUISystem@@WBI@AEPAXI@Z	matched (RELOCATION_MATCH); `sub ecx,18h ; jmp 0x0055A3A0`, CActionParam vtable 0x0124B7B4 slot 0
+0x0054AC90	?ProcessEvent@CSlider@NUISystem@@UAEXW4EEvent@2@@Z	parked; CSlider CObserver vtable 0x01248CE0 slot 1 (this = full-4); Ego_r.pdb name set; `ret 4`; switch on SELECT/BACK/LEFT/RIGHT
+0x00554740	?Draw@CMorphingSprite@NUISystem@@UAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@JPAJPAVCComponent@2@@Z	parked; primary vtable 0x0124A49C slot 2 (CComponent::Draw slot); Ego_r.pdb; `ret 14h`; the CMovie / CText / CMesh Draw siblings share the shape
+0x00559A90	?ProcessEvent@CScrollBar@NUISystem@@UAEXW4EEvent@2@@Z	parked; CScrollBar CObserver vtable 0x0124B7BC slot 1; Ego_r.pdb; tail-calls CClickable::ProcessEvent 0x0055AD60
+0x0054C1B0	??_ECSlider@NUISystem@@UAEPAXI@Z	target of both CSlider thunks; Ego_r.pdb names the slot-0 body ??_E (NAME_FIXES)
+0x00555140	??_ECMorphingSprite@NUISystem@@UAEPAXI@Z	target of both CMorphingSprite thunks (NAME_FIXES)
+0x0055A3A0	??_ECScrollBar@NUISystem@@UAEPAXI@Z	target of both CScrollBar thunks (NAME_FIXES)
+0x00555100	?SetGraphicIndex@CMorphingSprite@NUISystem@@UAEXK@Z	CMorphingSprite primary vtable slot 145 (overrides CSprite::SetGraphicIndex); stores +0x198 (SpriteGraphicIndex, read by Draw)
+0x00555110	?GetGRaphicIndices@CMorphingSprite@NUISystem@@UAEAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@XZ	slot 149 (first new virtual); returns this+0x18C; PDB spelling keeps the capital R
+0x00554140	?UpdateMorph@CMorphingSprite@NUISystem@@MAEXM@Z	slot 150 (`ret 4`, one float)
+0x00554130	?ChangeGraphic@CMorphingSprite@NUISystem@@MAEXKM@Z	slot 151 (`ret 8`)
+0x00553E60	??A?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAEAAKABK@Z	CMorphingSprite::Draw 0x00554A96 calls it on GraphicIndices (+0x18C) with &TargetState; our compile emits exactly this symbol at the reloc
+0x005550D0	?push_back@?$list@PAVCEnginePrimitiveHandle@@V?$allocator@PAVCEnginePrimitiveHandle@@@std@@@std@@QAEXABQAVCEnginePrimitiveHandle@@@Z	out-of-line push_back on Handles (+0x188) in the NoRender path of Draw 0x005548AB
+0x00559650	?SetDeltaForActionUp@CScrollBar@NUISystem@@UAEXAAVC2DVector@@@Z	CScrollBar slot 154 (+0x1BC)
+0x00559670	?SetDeltaForActionDown@CScrollBar@NUISystem@@UAEXAAVC2DVector@@@Z	slot 155
+0x00559690	?SetAmountActionsUp@CScrollBar@NUISystem@@UAEXK@Z	slot 156 (+0x1CC)
+0x005596A0	?SetAmountActionsDown@CScrollBar@NUISystem@@UAEXK@Z	slot 157
+0x005596B0	?SetMaxAmountActionsUp@CScrollBar@NUISystem@@UAEXK@Z	slot 158
+0x005596C0	?SetMaxAmountActionsDown@CScrollBar@NUISystem@@UAEXK@Z	slot 159

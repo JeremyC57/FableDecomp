@@ -1,0 +1,7 @@
+address	name	length	bytes
+0054c140	NUISystem::CSlider::NUISystem::CSlider::vfunc_0	8	83e904e968000000
+0054c150	NUISystem::CSlider::NUISystem::CSlider::vfunc_0	8	83e918e958000000
+00555120	NUISystem::CMorphingSprite::NUISystem::CMorphingSprite::vfunc_0	8	83e904e918000000
+00555130	NUISystem::CMorphingSprite::NUISystem::CMorphingSprite::vfunc_0	8	83e918e908000000
+0055a380	NUISystem::CScrollBar::NUISystem::CScrollBar::vfunc_0	8	83e904e918000000
+0055a390	NUISystem::CScrollBar::NUISystem::CScrollBar::vfunc_0	8	83e918e908000000

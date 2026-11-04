@@ -9706,17 +9706,17 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054a6f0	AdjustValueToProfile	NUISystem::CSlider	__thiscall	void	1	CSlider *	1	yes	accepted									
 0054a990	ChangeState	NUISystem::CSlider	__thiscall	void	2	CSlider *,ulong	1	yes	accepted									
 0054abe0	RevertValue	NUISystem::CSlider	__thiscall	void	1	CSlider *	1	yes	accepted									
-0054ac90	NUISystem::CSlider::vfunc_1	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054ac90	ProcessEvent	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054b360	~CSlider	NUISystem::CSlider	__thiscall	void	1	CSlider *	1	yes	accepted									
 0054b4b0	GetDataFromDef	NUISystem::CSlider	unknown	undefined	0		0	yes	accepted									
 0054ba20	Update	NUISystem::CSlider	__thiscall	void	2	CSlider *,float	1	yes	accepted									
 0054bbb0	GetValueFromProfile	NUISystem::CSlider	__thiscall	void	1	CSlider *	1	yes	accepted									
 0054c050	CSlider	NUISystem::CSlider	__thiscall	undefined	2	CSlider *,long	0	yes	accepted									
 0054c130	vfunc_7	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054c140	NUISystem::CSlider::vfunc_0	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054c150	NUISystem::CSlider::vfunc_0	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054c140	`vector deleting destructor'`adjustor{4}'	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054c150	`vector deleting destructor'`adjustor{24}'	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054c160	AddAction	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054c1b0	`scalar_deleting_destructor'	NUISystem::CSlider	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_0054c1b0.cpp
+0054c1b0	`vector deleting destructor'	NUISystem::CSlider	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_0054c1b0.cpp
 0054c1d0	CListArrow	NUISystem::CListArrow	__thiscall	undefined	2	CComponentContainer *,long	0	yes	accepted									
 0054c250	Initialise	NUISystem::CListArrow	__thiscall	void	1	CEngine *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CEngine_ChangeCameraAngle_0054c250.cpp
 0054c270	ChangeState	NUISystem::CListArrow	__thiscall	void	2	CListArrow *,ulong	1	yes	accepted									
@@ -9861,7 +9861,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00553ba0	RbTree_Clear_00553ba0	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CTCCarryable_OnKill_00553ba0.cpp
 00553c00	~CRetailTree_erase00553690	CRetailTree_erase00553690	unknown	undefined	0		0	yes	accepted									
 00553c50	insert_unique	std::_Rb_tree<NUISystem::ETableSprites, std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>, std::_Select1st<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>>, std::less<NUISystem::ETableSprites>, std::allocator<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>>>	unknown	undefined	0		0	yes	accepted									
-00553e60	operator[]	std::map<unsigned long, unsigned long>	unknown	undefined	0		0	yes	accepted									
+00553e60	operator[]	std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<unsigned long const,unsigned long>>>	unknown	undefined	0		0	yes	accepted									
 00553ee0	map	std::map<NUISystem::ETableSprites, CCountedPointer<NUISystem::CComponent>, std::less<NUISystem::ETableSprites>, std::allocator<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>>>	unknown	undefined	0		0	yes	accepted									
 00553f20	~CRetailTree_erase00553690	CRetailTree_erase00553690	unknown	undefined	0		0	yes	accepted									
 00553fd0	NUISystem::CTable::vfunc_0	NUISystem::CTable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9870,24 +9870,24 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005540d0	`scalar_deleting_destructor'	NUISystem::CTable	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_005540d0.cpp
 005540f0	Initialise	NUISystem::CMorphingSprite	__thiscall	void	1	CMemoryDataOutputStream *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CMemoryDataOutputStream_Clear_005540f0.cpp
 00554110	InternalChanged	NUISystem::CMorphingSprite	__thiscall	bool	1	CMorphingSprite *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CMorphingSprite_InternalChanged_00554110.cpp
-00554130	vfunc_151	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00554140	vfunc_150	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00554130	ChangeGraphic	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00554140	UpdateMorph	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00554150	Update	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005541e0	~CMorphingSprite	NUISystem::CMorphingSprite	__thiscall	void	1	CMorphingSprite *	1	yes	accepted									
 005542f0	GetDataFromDef	CMorphingSprite	__thiscall	void	1	CMorphingSprite *	1	yes	accepted									
 005545d0	CMorphingSprite	NUISystem::CMorphingSprite	unknown	undefined	0		0	yes	accepted									
 005546f0	ProcessChangeState	NUISystem::CMorphingSprite	__thiscall	void	1	CMorphingSprite *	1	yes	accepted									
-00554740	NUISystem::CMorphingSprite::vfunc_2	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00554740	Draw	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00554ef0	StdList_Clear_00554ef0	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CGuiControlTreePane_SortTreeRecursively_00554ef0.cpp
 00554fa0	StdList_Ctor_00554fa0	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\global_CircularLinkedListInitializeSmall_00554fa0.cpp
 00554fc0	StdList_Clear_00554fc0	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CGuiControlTreePane_SortTreeRecursively_00554fc0.cpp
 00555040	StdList_Ctor_00555040	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\global_CircularLinkedListInitializeSmall_00555040.cpp
-005550d0	push_back_node	std::list::std::list	unknown	undefined	0		0	yes	accepted									
-00555100	vfunc_145	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00555110	vfunc_149	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00555120	NUISystem::CMorphingSprite::vfunc_0	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00555130	NUISystem::CMorphingSprite::vfunc_0	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00555140	`scalar_deleting_destructor'	NUISystem::CMorphingSprite	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_00555140.cpp
+005550d0	push_back	std::list<CEnginePrimitiveHandle *,std::allocator<CEnginePrimitiveHandle *>>	unknown	undefined	0		0	yes	accepted									
+00555100	SetGraphicIndex	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00555110	GetGRaphicIndices	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00555120	`vector deleting destructor'`adjustor{4}'	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00555130	`vector deleting destructor'`adjustor{24}'	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00555140	`vector deleting destructor'	NUISystem::CMorphingSprite	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_00555140.cpp
 00555180	CScrollableList	NUISystem::CScrollableList	__thiscall	undefined	2	CTCHeroPodium *,CThing *	0	yes	accepted									
 005551d0	CScrollableList	NUISystem::CScrollableList	unknown	undefined	0		0			discovered	gapscan							
 00555220	Update	NUISystem::CScrollableList	__thiscall	void	2	CScrollableList *,float	1	yes	accepted									
@@ -9987,24 +9987,24 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00559600	Update	NUISystem::CScrollBar	__thiscall	void	2	CScrollBar *,float	1	yes	accepted									
 00559650	SetDeltaForActionUp	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00559670	SetDeltaForActionDown	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00559690	vfunc_156	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005596a0	vfunc_157	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005596b0	vfunc_158	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005596c0	vfunc_159	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00559690	SetAmountActionsUp	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005596a0	SetAmountActionsDown	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005596b0	SetMaxAmountActionsUp	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005596c0	SetMaxAmountActionsDown	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005596d0	OnLeftClicked	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00559700	GetDataFromDef	NUISystem::CScrollBar	unknown	undefined	0		0	yes	accepted									
 00559830	CScrollBar	NUISystem::CScrollBar	__thiscall	undefined	2	CScrollBar *,long	0	yes	accepted									
 005598f0	AddActionOnDraggedUp	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00559980	AddActionOnDraggedDown	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00559a10	~CScrollBar	NUISystem::CScrollBar	unknown	undefined	0		0	yes	accepted									
-00559a90	NUISystem::CScrollBar::vfunc_1	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00559a90	ProcessEvent	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055a330	vfunc_150	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055a340	SetPositionBeforeDrag	NUISystem::CDraggable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055a360	vfunc_152	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055a370	vfunc_132	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0055a380	NUISystem::CScrollBar::vfunc_0	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0055a390	NUISystem::CScrollBar::vfunc_0	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0055a3a0	`scalar_deleting_destructor'	NUISystem::CScrollBar	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_0055a3a0.cpp
+0055a380	`vector deleting destructor'`adjustor{4}'	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0055a390	`vector deleting destructor'`adjustor{24}'	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0055a3a0	`vector deleting destructor'	NUISystem::CScrollBar	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_0055a3a0.cpp
 0055a3d0	Initialise	NUISystem::CDraggable	__thiscall	void	1	CClickable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CClickable_Initialise_0055a3d0.cpp
 0055a3e0	Update	NUISystem::CDraggable	__thiscall	void	2	CDraggable *,float	1	yes	accepted									
 0055a510	ProcessEvent	NUISystem::CDraggable	__thiscall	void	2	CDraggable *,EEvent	1	yes	accepted									

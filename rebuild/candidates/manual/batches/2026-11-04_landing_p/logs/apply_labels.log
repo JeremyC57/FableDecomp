@@ -1,0 +1,42 @@
+catalog  0054c1b0 NUISystem::CSlider::`scalar_deleting_destructor' -> NUISystem::CSlider::`vector deleting destructor'
+catalog  00555140 NUISystem::CMorphingSprite::`scalar_deleting_destructor' -> NUISystem::CMorphingSprite::`vector deleting destructor'
+catalog  0055a3a0 NUISystem::CScrollBar::`scalar_deleting_destructor' -> NUISystem::CScrollBar::`vector deleting destructor'
+catalog  00554130 NUISystem::CMorphingSprite::vfunc_151 -> NUISystem::CMorphingSprite::ChangeGraphic
+catalog  00554140 NUISystem::CMorphingSprite::vfunc_150 -> NUISystem::CMorphingSprite::UpdateMorph
+catalog  00555100 NUISystem::CMorphingSprite::vfunc_145 -> NUISystem::CMorphingSprite::SetGraphicIndex
+catalog  00555110 NUISystem::CMorphingSprite::vfunc_149 -> NUISystem::CMorphingSprite::GetGRaphicIndices
+catalog  00559690 NUISystem::CScrollBar::vfunc_156 -> NUISystem::CScrollBar::SetAmountActionsUp
+catalog  005596a0 NUISystem::CScrollBar::vfunc_157 -> NUISystem::CScrollBar::SetAmountActionsDown
+catalog  005596b0 NUISystem::CScrollBar::vfunc_158 -> NUISystem::CScrollBar::SetMaxAmountActionsUp
+catalog  005596c0 NUISystem::CScrollBar::vfunc_159 -> NUISystem::CScrollBar::SetMaxAmountActionsDown
+catalog  00553e60 std::map<unsigned long, unsigned long>::operator[] -> std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<unsigned long const,unsigned long>>>::operator[]
+catalog  005550d0 std::list::std::list::push_back_node -> std::list<CEnginePrimitiveHandle *,std::allocator<CEnginePrimitiveHandle *>>::push_back
+catalog  0054c140 NUISystem::CSlider::NUISystem::CSlider::vfunc_0 -> NUISystem::CSlider::`vector deleting destructor'`adjustor{4}'
+catalog  0054c150 NUISystem::CSlider::NUISystem::CSlider::vfunc_0 -> NUISystem::CSlider::`vector deleting destructor'`adjustor{24}'
+catalog  00555120 NUISystem::CMorphingSprite::NUISystem::CMorphingSprite::vfunc_0 -> NUISystem::CMorphingSprite::`vector deleting destructor'`adjustor{4}'
+catalog  00555130 NUISystem::CMorphingSprite::NUISystem::CMorphingSprite::vfunc_0 -> NUISystem::CMorphingSprite::`vector deleting destructor'`adjustor{24}'
+catalog  0055a380 NUISystem::CScrollBar::NUISystem::CScrollBar::vfunc_0 -> NUISystem::CScrollBar::`vector deleting destructor'`adjustor{4}'
+catalog  0055a390 NUISystem::CScrollBar::NUISystem::CScrollBar::vfunc_0 -> NUISystem::CScrollBar::`vector deleting destructor'`adjustor{24}'
+manifest 0054ac90 NUISystem::CSlider::NUISystem::CSlider::vfunc_1 -> NUISystem::CSlider::ProcessEvent
+manifest 0054c140 NUISystem::CSlider::NUISystem::CSlider::vfunc_0 -> NUISystem::CSlider::`vector deleting destructor'`adjustor{4}'
+manifest 0054c150 NUISystem::CSlider::NUISystem::CSlider::vfunc_0 -> NUISystem::CSlider::`vector deleting destructor'`adjustor{24}'
+manifest 0054c1b0 NUISystem::CSlider::`scalar_deleting_destructor' -> NUISystem::CSlider::`vector deleting destructor'
+manifest 00553e60 std::map<unsigned long, unsigned long>::operator[] -> std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<unsigned long const,unsigned long>>>::operator[]
+manifest 00554130 NUISystem::CMorphingSprite::vfunc_151 -> NUISystem::CMorphingSprite::ChangeGraphic
+manifest 00554140 NUISystem::CMorphingSprite::vfunc_150 -> NUISystem::CMorphingSprite::UpdateMorph
+manifest 00554740 NUISystem::CMorphingSprite::NUISystem::CMorphingSprite::vfunc_2 -> NUISystem::CMorphingSprite::Draw
+manifest 005550d0 std::list::std::list::push_back_node -> std::list<CEnginePrimitiveHandle *,std::allocator<CEnginePrimitiveHandle *>>::push_back
+manifest 00555100 NUISystem::CMorphingSprite::vfunc_145 -> NUISystem::CMorphingSprite::SetGraphicIndex
+manifest 00555110 NUISystem::CMorphingSprite::vfunc_149 -> NUISystem::CMorphingSprite::GetGRaphicIndices
+manifest 00555120 NUISystem::CMorphingSprite::NUISystem::CMorphingSprite::vfunc_0 -> NUISystem::CMorphingSprite::`vector deleting destructor'`adjustor{4}'
+manifest 00555130 NUISystem::CMorphingSprite::NUISystem::CMorphingSprite::vfunc_0 -> NUISystem::CMorphingSprite::`vector deleting destructor'`adjustor{24}'
+manifest 00555140 NUISystem::CMorphingSprite::`scalar_deleting_destructor' -> NUISystem::CMorphingSprite::`vector deleting destructor'
+manifest 00559690 NUISystem::CScrollBar::vfunc_156 -> NUISystem::CScrollBar::SetAmountActionsUp
+manifest 005596a0 NUISystem::CScrollBar::vfunc_157 -> NUISystem::CScrollBar::SetAmountActionsDown
+manifest 005596b0 NUISystem::CScrollBar::vfunc_158 -> NUISystem::CScrollBar::SetMaxAmountActionsUp
+manifest 005596c0 NUISystem::CScrollBar::vfunc_159 -> NUISystem::CScrollBar::SetMaxAmountActionsDown
+manifest 00559a90 NUISystem::CScrollBar::NUISystem::CScrollBar::vfunc_1 -> NUISystem::CScrollBar::ProcessEvent
+manifest 0055a380 NUISystem::CScrollBar::NUISystem::CScrollBar::vfunc_0 -> NUISystem::CScrollBar::`vector deleting destructor'`adjustor{4}'
+manifest 0055a390 NUISystem::CScrollBar::NUISystem::CScrollBar::vfunc_0 -> NUISystem::CScrollBar::`vector deleting destructor'`adjustor{24}'
+manifest 0055a3a0 NUISystem::CScrollBar::`scalar_deleting_destructor' -> NUISystem::CScrollBar::`vector deleting destructor'
+labels 24  catalog renamed 19  manifest renamed 22

@@ -1,0 +1,10 @@
+address	name	status	attempts	note
+0054ac90	NUISystem::CSlider::ProcessEvent	PARKED	36	differ/0054ac90.cpp DIFFER(1454v1454) dl=26: LEFT-case action loop schedules `lea ebx,[edi*8]` before the first element access (RIGHT's identical loop matches); needs C2DVector::operator== __forceinline (header, FABLE_RETAIL_C2DVECTOR)
+0054c140	NUISystem::CSlider::`vector deleting destructor'`adjustor{4}'	RELOCATION_MATCH	3	src/0054c140.cpp, ~CSlider TU; vland RELOCATION_MATCH PASS
+0054c150	NUISystem::CSlider::`vector deleting destructor'`adjustor{24}'	RELOCATION_MATCH	3	src/0054c150.cpp; vland RELOCATION_MATCH PASS
+00554740	NUISystem::CMorphingSprite::Draw	PARKED	27	differ/00554740.cpp DIFFER(1524v1572) dl=73: Clear + handle ctor called out of line at two cold NoRender sites (retail expands them; c2 frequency); with them expanded 46 lines of register colouring in the inlined GetFrame touch block + sprite argument loads remain
+00555120	NUISystem::CMorphingSprite::`vector deleting destructor'`adjustor{4}'	RELOCATION_MATCH	2	src/00555120.cpp, ~CMorphingSprite TU; vland RELOCATION_MATCH PASS
+00555130	NUISystem::CMorphingSprite::`vector deleting destructor'`adjustor{24}'	RELOCATION_MATCH	2	src/00555130.cpp; vland RELOCATION_MATCH PASS
+00559a90	NUISystem::CScrollBar::ProcessEvent	PARKED	10	differ/00559a90.cpp DIFFER(2144v2163) dl=78: frame-slot sharing only (retail 0x5C frame, a slot per def-pointer / GetUIScale temporary; ours 0x30), hence 3 dead def-pointer zero stores and one alignment pad
+0055a380	NUISystem::CScrollBar::`vector deleting destructor'`adjustor{4}'	RELOCATION_MATCH	2	src/0055a380.cpp, ~CScrollBar TU; vland RELOCATION_MATCH PASS
+0055a390	NUISystem::CScrollBar::`vector deleting destructor'`adjustor{24}'	RELOCATION_MATCH	2	src/0055a390.cpp; vland RELOCATION_MATCH PASS

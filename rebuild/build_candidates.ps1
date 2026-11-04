@@ -381878,6 +381878,48 @@ $catalog = @(
         TestSource = '00/ca/IMediaSeeking_vcall44_00caef60_test.cpp'
         PassPattern = '00caef60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0054c140'
+        Module = 'NUISystem::CSlider'
+        Source = '00/54/NUISystemCSlider_vectordeletingdestructor_0054c140.cpp'
+        TestSource = '00/54/NUISystemCSlider_vectordeletingdestructor_0054c140_test.cpp'
+        PassPattern = '0054c140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054c150'
+        Module = 'NUISystem::CSlider'
+        Source = '00/54/NUISystemCSlider_vectordeletingdestructor_0054c150.cpp'
+        TestSource = '00/54/NUISystemCSlider_vectordeletingdestructor_0054c150_test.cpp'
+        PassPattern = '0054c150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00555120'
+        Module = 'NUISystem::CMorphingSprite'
+        Source = '00/55/NUISystemCMorphingSprite_vectordeletingdestructor_00555120.cpp'
+        TestSource = '00/55/NUISystemCMorphingSprite_vectordeletingdestructor_00555120_test.cpp'
+        PassPattern = '00555120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00555130'
+        Module = 'NUISystem::CMorphingSprite'
+        Source = '00/55/NUISystemCMorphingSprite_vectordeletingdestructor_00555130.cpp'
+        TestSource = '00/55/NUISystemCMorphingSprite_vectordeletingdestructor_00555130_test.cpp'
+        PassPattern = '00555130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055a380'
+        Module = 'NUISystem::CScrollBar'
+        Source = '00/55/NUISystemCScrollBar_vectordeletingdestructor_0055a380.cpp'
+        TestSource = '00/55/NUISystemCScrollBar_vectordeletingdestructor_0055a380_test.cpp'
+        PassPattern = '0055a380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055a390'
+        Module = 'NUISystem::CScrollBar'
+        Source = '00/55/NUISystemCScrollBar_vectordeletingdestructor_0055a390.cpp'
+        TestSource = '00/55/NUISystemCScrollBar_vectordeletingdestructor_0055a390_test.cpp'
+        PassPattern = '0055a390_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

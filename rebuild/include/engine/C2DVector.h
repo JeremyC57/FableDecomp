@@ -11,6 +11,7 @@
 // `lea ecx,[esi+146h]` -> Transfer<float> 0x00431061) right after Inverted at +0x141; Ego_r.pdb places the same member
 // at CUIDef+0x15E and COldFileFormatThingBrushInfo::PositionOffset at +0x11 (struct_layouts_egor.tsv), neither reachable
 // with 4-byte alignment; the raw C2DVector TPI records (Ego_r 0x9ebe, FableWin 0x9b09) carry the packed property bit.
+extern const float DELTA_NOTIONAL_ZERO;                 // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (1e-4f)
 #pragma pack(push, 1)
 class C2DVector {
 public:
@@ -32,6 +33,16 @@ public:
     // Y then X, adds, and runs fsqrt through the float overload (`fsqrt ; fstp st(2) ; fstp st(0)`, the dead difference
     // vector popped under the result), which `(float)sqrt(X*X+Y*Y)` does not give (it stores before popping).
     float GetMagnitude() const { return sqrtf(X*X+Y*Y); }
+    // Chunk 752 (row 0x0054AC90 CSlider::ProcessEvent): Ego_r.pdb ??8C2DVector@@QBE_NABV0@@Z, the epsilon compare against
+    // ?DELTA_NOTIONAL_ZERO@@3MB 0x0129BA3C (`fld [a.X] ; fsub [b.X] ; fabs ; fcomp [129BA3Ch] ; test ah,41h ; jp`, then the Y test),
+    // `<=` per component as the landed ~CSlider 0x0054B360 proved. __forceinline: retail expands it at every site, including the
+    // low-frequency switch cases of CSlider::ProcessEvent where VC7.1 calls a plain-inline copy out of line; the five retail
+    // out-of-line copies (0x0052E3D0, 0x0054A4A0, 0x006CB570, 0x00704D30, 0x00A88C50) have no caller at all (no call/jmp/jcc
+    // or address reference in Fable.exe), while a plain-inline copy would be called from such sites.
+    __forceinline bool operator==(const C2DVector& vector) const
+    {
+        return fabs(X-vector.X)<=DELTA_NOTIONAL_ZERO && fabs(Y-vector.Y)<=DELTA_NOTIONAL_ZERO;
+    }
 };
 #pragma pack(pop)
 #else

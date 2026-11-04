@@ -25,6 +25,12 @@ public: static NUISystem::CManager * __fastcall GetInstance();
 // Retail branch (chunk 726): Ego_r.pdb ?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ, out of line at 0x0041CF47
 // (CList::ComputeChildrenVisibility 0x005379F5 and CScrollingViewport::Update 0x0053F1C0 call it with a hidden result).
 public: C2DVector GetUIScale() const;
+// Chunk 752 (row 0x00559A90 CScrollBar::ProcessEvent): Ego_r.pdb ?GetMouseMovement@CManager@NUISystem@@QAEAAVC2DVector@@XZ, inline
+// in retail (the row copies MouseMovement +0xB0 in place: `mov edx,[eax+0B0h] ; add eax,0B0h ; ... mov eax,[eax+4]`).
+public: C2DVector& GetMouseMovement() { return MouseMovement; }
+// Chunk 752 (row 0x00554740 CMorphingSprite::Draw): Ego_r.pdb ?GetGraphicsBank@CManager@NUISystem@@QAE?AV?$CCountedPointer@
+// VCGraphicDataBank@@@@XZ, inline in retail (the row copies PGraphicsBank +0x10 / +0x14 in place and bumps the count).
+public: CCountedPointer<CGraphicDataBank> GetGraphicsBank() { return PGraphicsBank; }
 // Chunk 735 (rows 0x005729D8 / 0x00573792 CTCInventoryExperience::AddStatToList(PC)): Ego_r.pdb / FableWin.pdb
 // ?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBFloatColour@@MM_N32M@Z,
 // out of line at 0x00427216 (also called by the landed CTCInventoryStats::AddHeroAbility 0x005D64DD). Parameter names unknown.

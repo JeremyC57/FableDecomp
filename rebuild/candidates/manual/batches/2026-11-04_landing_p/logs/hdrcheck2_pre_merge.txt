@@ -1,0 +1,6 @@
+CHANGED engine/C2DVector.h default=same[9] FABLE_RETAIL_C2DVECTOR=DIFF[17]
+NEW    engine/NUISystem_CActionParamFloat.h
+CHANGED engine/NUISystem_CManager.h default=same[1237] FABLE_RETAIL_CMANAGER=DIFF[1241]
+NEW    engine/NUISystem_CMorphingSprite.h
+NEW    engine/NUISystem_CScrollBar.h
+NEW    engine/NUISystem_CSlider.h

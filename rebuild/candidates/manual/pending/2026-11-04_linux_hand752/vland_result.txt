@@ -1,0 +1,21 @@
+addr       parity           behav  name
+0054c140   WARN RELOC_NAME: ??_ECSlider@NUISystem@@UAEPAXI@Z -> 0054c1b0 labelled 'NUISystem::CSlider::`scalar_deleting_destructor''
+0054c140   RELOCATION_MATCH PASS   `vector deleting destructor'
+0054c150   WARN RELOC_NAME: ??_ECSlider@NUISystem@@UAEPAXI@Z -> 0054c1b0 labelled 'NUISystem::CSlider::`scalar_deleting_destructor''
+0054c150   RELOCATION_MATCH PASS   `vector deleting destructor'
+00555120   WARN RELOC_NAME: ??_ECMorphingSprite@NUISystem@@UAEPAXI@Z -> 00555140 labelled 'NUISystem::CMorphingSprite::`scalar_deleting_destructor''
+00555120   RELOCATION_MATCH PASS   `vector deleting destructor'
+00555130   WARN RELOC_NAME: ??_ECMorphingSprite@NUISystem@@UAEPAXI@Z -> 00555140 labelled 'NUISystem::CMorphingSprite::`scalar_deleting_destructor''
+00555130   RELOCATION_MATCH PASS   `vector deleting destructor'
+0055a380   WARN RELOC_NAME: ??_ECScrollBar@NUISystem@@UAEPAXI@Z -> 0055a3a0 labelled 'NUISystem::CScrollBar::`scalar_deleting_destructor''
+0055a380   RELOCATION_MATCH PASS   `vector deleting destructor'
+0055a390   WARN RELOC_NAME: ??_ECScrollBar@NUISystem@@UAEPAXI@Z -> 0055a3a0 labelled 'NUISystem::CScrollBar::`scalar_deleting_destructor''
+0055a390   RELOCATION_MATCH PASS   `vector deleting destructor'
+
+WINS: 6
+  0054c140 RELOCATION_MATCH NUISystem::CSlider::??_ECSlider@NUISystem@@W3AEPAXI@Z
+  0054c150 RELOCATION_MATCH NUISystem::CSlider::??_ECSlider@NUISystem@@WBI@AEPAXI@Z
+  00555120 RELOCATION_MATCH NUISystem::CMorphingSprite::??_ECMorphingSprite@NUISystem@@W3AEPAXI@Z
+  00555130 RELOCATION_MATCH NUISystem::CMorphingSprite::??_ECMorphingSprite@NUISystem@@WBI@AEPAXI@Z
+  0055a380 RELOCATION_MATCH NUISystem::CScrollBar::??_ECScrollBar@NUISystem@@W3AEPAXI@Z
+  0055a390 RELOCATION_MATCH NUISystem::CScrollBar::??_ECScrollBar@NUISystem@@WBI@AEPAXI@Z

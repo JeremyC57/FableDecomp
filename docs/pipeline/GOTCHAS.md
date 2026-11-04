@@ -1978,3 +1978,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A traits-local `Transfer<T>` needs the retail CPersistTraits ctor and `return` in each case; with `break` the two frame slots swap (chunk 751).
 - VC7.1 names stdcall vcall thunks `??_9@$B<off>@AG` with no class; any TU taking `&I::VirtualMethod` emits them; they are not functors (chunk 753).
 - A slot label on a base-class function can come from whichever vtable lists it first: scan every vtable for the address and name it from the base class's own vtable (chunk 753, CComponent::SetName in 43 vtables).
+- VC7.1 calls a plain-inline helper (e.g. handle Clear / ctor) out of line at rarely-run exits but expands it at frequent sites (c2 static-frequency rule); `do{}while(0)` flips it but is not a proven retail construct (chunks 749, 752).
+- A plain-inline `C2DVector::operator==` goes out of line inside switch cases; retail expands it, so the retail branch uses `__forceinline` (chunk 752).
