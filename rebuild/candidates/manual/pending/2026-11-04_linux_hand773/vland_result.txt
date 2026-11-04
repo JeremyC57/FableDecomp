@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00f38a10   RELOCATION_MATCH PASS   SetBlendMode
+00eaf1e0   RELOCATION_MATCH PASS   PlayBeingRumbledCutscene
+
+WINS: 2
+  00f38a10 RELOCATION_MATCH CSurfaceCompositor::?SetBlendMode@CSurfaceCompositor@@IAEXW4ECompositeBlendType@@@Z
+  00eaf1e0 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::?PlayBeingRumbledCutscene@CV_MurderTwistFinalScript@NScript@@QAEXXZ

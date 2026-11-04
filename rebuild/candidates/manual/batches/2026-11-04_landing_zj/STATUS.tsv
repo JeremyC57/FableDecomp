@@ -1,0 +1,13 @@
+address	name	status	attempts	note
+00f38a10	CSurfaceCompositor::SetBlendMode	RELOCATION_MATCH	5	cases in retail block order 2,1,3,4; new FABLE_RETAIL_CRENDERSTATEMANAGER_COLOURWRITE4 inline; shared CRenderStateCaptureBlock.h (vland clean)
+00eaf1e0	NScript::CV_MurderTwistFinalScript::PlayBeingRumbledCutscene	RELOCATION_MATCH	3	shared CV_MurderTwistFinalScript.h; inline ~CScriptThing; named guard handle refs (vland clean)
+00671600	CThingCreatureDef::Transfer	DIFFER(1449v1450)	10	parked: IsIndestructible bit-7 merge loads old byte before the flag (and al,7f vs retail and cl,7f); differ/
+00ebe620	NScript::CV_OracleScript::CVO_Woman::Main	DIFFER(1500v1482)	10	parked: hit-site MovieBase ctor expanded where retail calls COMDAT 0x006E7B60; differ/
+005c2118	CPersistTraits<NInventory::CItem>::TransferIn	DIFFER(1571v1569)	6	parked under budget: frame-slot order (defName/name/symbol/count/pData) and i not cached in esi; dl=32; differ/
+00524290	CThingManager::SaveGameState	NOT_ATTEMPTED	0	surveyed only (1553 B: local CEntityRuntimePersistence, two inlined map<CCharString,..> walks, string concatenation); out of session budget
+0069a2a0	CGameCameraManager_UpdateMode (catalog)	NOT_ATTEMPTED	0	surveyed only (10x 0x00A01B50 / 10x 0x00697E20 calls, operator new/delete); identity not proven
+006b97e0	CWorld_InitFactions (catalog)	NOT_ATTEMPTED	0	surveyed only (CFaction group ctor with counted-pointer vector); identity not proven
+008185b0	Geometry_PolygonClipping (catalog)	NOT_ATTEMPTED	0	surveyed only: fastcall(ecx,edx) angle sweep with fsin/fcos and an inlined vector<pair-of-floats> push_back (malloc/memmove/free); catalog name looks wrong
+00a58130	CPSCSplineBase_GenerateCurvePoints (catalog)	NOT_ATTEMPTED	0	surveyed only (x87 heavy, 0x00A13C60 / 0x007653B0 / 0x0066E370 callees)
+00a8f1b0	TransformVertexBufferWithNormals_LoopUnrolled (catalog)	NOT_ATTEMPTED	0	surveyed only: no SIMD (0 xmm/mm); a VC7.1 unroll-by-4 x87 vertex loop over a C3DPrimitive2 (+0x2C) with 32-byte and 12-byte streams; not hand asm
+00f3c990	CTriangleStripifier2_GenerateStrips_Part1 (catalog)	NOT_ATTEMPTED	0	surveyed only (vector malloc/memmove/free, 0x00451583 x2)

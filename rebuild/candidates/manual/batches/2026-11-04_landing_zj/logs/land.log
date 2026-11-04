@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00f38a10   RELOCATION_MATCH PASS   SetBlendMode
+00eaf1e0   RELOCATION_MATCH PASS   PlayBeingRumbledCutscene
+
+WINS: 2
+  00f38a10 RELOCATION_MATCH CSurfaceCompositor::?SetBlendMode@CSurfaceCompositor@@IAEXW4ECompositeBlendType@@@Z
+  00eaf1e0 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::?PlayBeingRumbledCutscene@CV_MurderTwistFinalScript@NScript@@QAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CSurfaceCompositor_SetBlendMode_00f38a10
+  NScriptCVMurderTwistFinalScript_PlayBeingRumbledCutscene_00eaf1e0

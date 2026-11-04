@@ -14929,7 +14929,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006714b0	operator=	std::vector<ENavigatorType>	unknown	undefined	0		0	yes	accepted									
 006715a0	_M_allocate_and_copy<const ENavigatorType*>	std::vector<ENavigatorType>	unknown	undefined	0		0	yes	accepted									
 006715f0	_M_clear	std::vector<ENavigatorType>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\67\CActiveFile_OnReadFinished_006715f0.cpp
-00671600	CThingCreatureDef::Transfer	CThingCreatureDef	__thiscall	void	2	CThingCreatureDef *,CPersistContext &	1	yes	accepted									
+00671600	Transfer	CThingCreatureDef	__thiscall	void	2	CThingCreatureDef *,CPersistContext &	1	yes	accepted									
 00671bb0	adjacent_find<ENavigatorType*,equal_to<ENavigatorType> >	std	__fastcall	ENavigatorType *	2	ENavigatorType *,ENavigatorType *	1	yes	accepted									
 00671be0	__unique_copy	std	__fastcall	C3DVector *	3	C3DVector *,C3DVector *,unary_negate<CVectorFilter_IsWithinHeightRange>	1	yes	accepted									
 00671c10	Transfer	CPersistContext	unknown	undefined	0		0	yes	accepted									
@@ -53504,7 +53504,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00eaee10	OnPredicateFail	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff	unknown	undefined	0		0			discovered	gapscan							
 00eaee80	Init	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
 00eaef30	Main	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
-00eaf1e0	PlayBeingRumbledCutscene	CV_MurderTwistFinalScript	__thiscall	void	1	CV_MurderTwistFinalScript *	1	yes	accepted									
+00eaf1e0	PlayBeingRumbledCutscene	NScript::CV_MurderTwistFinalScript	__thiscall	void	1	CV_MurderTwistFinalScript *	1	yes	accepted									
 00eaf810	DoAskingHeroToKillAssassin	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
 00eb03a0	DoesAssassinTrustHero	NScript::CV_MurderTwistFinalScript	__thiscall	bool	1	CV_MurderTwistFinalScript *	1	yes	accepted									
 00eb0700	WaitForEnflameReactionIfNecessary	NScript::CV_MurderTwistFinalScript	__thiscall	void	2	CV_MurderTwistFinalScript *,CScriptThing *	1	yes	accepted									

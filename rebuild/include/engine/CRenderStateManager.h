@@ -196,7 +196,17 @@ public:
     __forceinline void SetTextureMipmapLODBias(long stage, float bias) { SetRenderState(*(unsigned long*)&bias, DeviceState.TextureMipmapLODBias[stage]); }
 
     // The rest of the PDB interface (out of line).
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_COLOURWRITE4
+    // Chunk 773 (row 0x00F38A10 CSurfaceCompositor::SetBlendMode): ?SetColourWriteEnable@CRenderStateManager@@QAEX_N000@Z is in
+    // FableWin.pdb only (debug copy); Ego_r.pdb and retail Fable.exe have no out-of-line copy, and 0x00F38F71 expands it with the
+    // folded D3DRS_COLORWRITEENABLE mask 7 (red | green | blue) straight into SetRenderState on ColourWriteEnable (+0x28).
+    __forceinline void SetColourWriteEnable(bool red, bool green, bool blue, bool alpha)
+    {
+        SetRenderState((red ? 1 : 0) | (green ? 2 : 0) | (blue ? 4 : 0) | (alpha ? 8 : 0), DeviceState.ColourWriteEnable);
+    }
+#else
     void SetColourWriteEnable(bool,bool,bool,bool);
+#endif
     void SetColourWriteEnable(bool);
     void SetVertexBlending(VERTEX_BLEND_MODE);
     void SetFogDensity(float);

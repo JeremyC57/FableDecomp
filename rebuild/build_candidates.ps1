@@ -384080,6 +384080,20 @@ $catalog = @(
         TestSource = '00/e6/NScriptCVChickenKickingScript_CreateSpectators_00e62d60_test.cpp'
         PassPattern = '00e62d60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00f38a10'
+        Module = 'CSurfaceCompositor'
+        Source = '00/f3/CSurfaceCompositor_SetBlendMode_00f38a10.cpp'
+        TestSource = '00/f3/CSurfaceCompositor_SetBlendMode_00f38a10_test.cpp'
+        PassPattern = '00f38a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eaf1e0'
+        Module = 'NScript::CV_MurderTwistFinalScript'
+        Source = '00/ea/NScriptCVMurderTwistFinalScript_PlayBeingRumbledCutscene_00eaf1e0.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistFinalScript_PlayBeingRumbledCutscene_00eaf1e0_test.cpp'
+        PassPattern = '00eaf1e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

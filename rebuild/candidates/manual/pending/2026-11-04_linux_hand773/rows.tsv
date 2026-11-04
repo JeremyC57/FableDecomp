@@ -1,0 +1,13 @@
+address	module	name	length	group
+00524290	_global	CThingManager_SaveGameState	1553	G0051eda0
+005c2118	CPersistTraits<NInventory::CItem>	TransferIn	1569	G005c2118
+00671600	CThingCreatureDef::CThingCreatureDef	Transfer	1450	G00671600
+0069a2a0	_global	CGameCameraManager_UpdateMode	1452	G0069a2a0
+006b97e0	_global	CWorld_InitFactions	1438	G006b9610
+008185b0	_global	Geometry_PolygonClipping	1360	G008185b0
+00a58130	_global	CPSCSplineBase_GenerateCurvePoints	1272	G00a58130
+00a8f1b0	_global	TransformVertexBufferWithNormals_LoopUnrolled	1469	G00a8f1b0
+00eaf1e0	CV_MurderTwistFinalScript	PlayBeingRumbledCutscene	1573	G00eaf1e0
+00ebe620	CVO_Woman	Main	1482	G00ebe620
+00f38a10	CSurfaceCompositor	SetBlendMode	1504	G00f38a10
+00f3c990	_global	CTriangleStripifier2_GenerateStrips_Part1	1463	G00f3ba70

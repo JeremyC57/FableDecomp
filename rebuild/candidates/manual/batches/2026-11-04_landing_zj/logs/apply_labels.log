@@ -1,0 +1,4 @@
+catalog  00eaf1e0 CV_MurderTwistFinalScript::PlayBeingRumbledCutscene -> NScript::CV_MurderTwistFinalScript::PlayBeingRumbledCutscene
+manifest 00671600 CThingCreatureDef::CThingCreatureDef::Transfer -> CThingCreatureDef::Transfer
+manifest 00eaf1e0 CV_MurderTwistFinalScript::PlayBeingRumbledCutscene -> NScript::CV_MurderTwistFinalScript::PlayBeingRumbledCutscene
+labels 5  catalog renamed 1  manifest renamed 2

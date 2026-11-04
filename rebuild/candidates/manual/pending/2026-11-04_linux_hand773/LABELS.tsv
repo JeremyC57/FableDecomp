@@ -1,0 +1,7 @@
+address	name	evidence
+00f38a10	CSurfaceCompositor::SetBlendMode	PDB ?SetBlendMode@CSurfaceCompositor@@IAEXW4ECompositeBlendType@@@Z (Ego_r + FableWin); vtable 0x01301CF0 class; RELOCATION_MATCH
+00eaf1e0	NScript::CV_MurderTwistFinalScript::PlayBeingRumbledCutscene	PDB ?PlayBeingRumbledCutscene@CV_MurderTwistFinalScript@NScript@@QAEXXZ; landed same-TU siblings 0x00EB0830 etc.; RELOCATION_MATCH
+00ebe620	NScript::CV_OracleScript::CVO_Woman::Main	PDB ?Main@CVO_Woman@CV_OracleScript@NScript@@EAEXXZ; texts TEXT_QST_B20_WOMAN_*; entity vtable slot 1; DIFFER (parked)
+00671600	CThingCreatureDef::Transfer	PDB ?Transfer@CThingCreatureDef@@UAEXAAVCPersistContext@@@Z; member names/literals match the field transfer list; DIFFER (parked)
+005c2118	CPersistTraits<NInventory::CItem>::TransferIn	PDB ?TransferIn@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCItem@NInventory@@@Z; called by landed 0x005C20D8; text twin of landed TransferOut 0x005C0E81 / binary twin 0x005C19A3; DIFFER (parked)
+00524290	CThingManager::SaveGameState	PDB ?SaveGameState@CThingManager@@QAEXAAVCPersistContext@@@Z (Ego_r); calls RuntimeSaveGameHero 0x00523B40, CEntityRuntimePersistence::Clear 0x005236F0 / SaveToGameStateBinary 0x00521620 on this+0xA0, IsBinary test (Mode 2/3) on the context arg; PROPOSAL (not graded)

@@ -1,0 +1,6 @@
+address	name	evidence
+00f38a10	CSurfaceCompositor::SetBlendMode	landing 2026-11-04zj (chunk 773): PDB ?SetBlendMode@CSurfaceCompositor@@IAEXW4ECompositeBlendType@@@Z (Ego_r + FableWin); vtable 0x01301CF0 class; RELOCATION_MATCH
+00eaf1e0	NScript::CV_MurderTwistFinalScript::PlayBeingRumbledCutscene	landing 2026-11-04zj (chunk 773): PDB ?PlayBeingRumbledCutscene@CV_MurderTwistFinalScript@NScript@@QAEXXZ; landed same-TU siblings 0x00EB0830 etc.; RELOCATION_MATCH
+00ebe620	NScript::CV_OracleScript::CVO_Woman::Main	landing 2026-11-04zj (chunk 773): PDB ?Main@CVO_Woman@CV_OracleScript@NScript@@EAEXXZ; texts TEXT_QST_B20_WOMAN_*; entity vtable slot 1; DIFFER (parked)
+00671600	CThingCreatureDef::Transfer	landing 2026-11-04zj (chunk 773): PDB ?Transfer@CThingCreatureDef@@UAEXAAVCPersistContext@@@Z; member names/literals match the field transfer list; DIFFER (parked)
+005c2118	CPersistTraits<NInventory::CItem>::TransferIn	landing 2026-11-04zj (chunk 773): PDB ?TransferIn@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCItem@NInventory@@@Z; called by landed 0x005C20D8; text twin of landed TransferOut 0x005C0E81 / binary twin 0x005C19A3; D
