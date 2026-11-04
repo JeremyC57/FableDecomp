@@ -1,0 +1,9 @@
+catalog  00e987c0 CV_HeroDuelScript::Main -> NScript::CV_HeroDuelScript::Main
+catalog  00e9a970 CV_HeroDuelScript::FirstFleeCutscene -> NScript::CV_HeroDuelScript::FirstFleeCutscene
+catalog  00e9b240 CV_HeroDuelScript::DuelLost -> NScript::CV_HeroDuelScript::DuelLost
+catalog  00e9be60 CV_HeroDuelScript::Duel -> NScript::CV_HeroDuelScript::Duel
+manifest 00e987c0 CV_HeroDuelScript::Main -> NScript::CV_HeroDuelScript::Main
+manifest 00e9a970 CV_HeroDuelScript::FirstFleeCutscene -> NScript::CV_HeroDuelScript::FirstFleeCutscene
+manifest 00e9b240 CV_HeroDuelScript::DuelLost -> NScript::CV_HeroDuelScript::DuelLost
+manifest 00e9be60 CV_HeroDuelScript::Duel -> NScript::CV_HeroDuelScript::Duel
+labels 6  catalog renamed 4  manifest renamed 4

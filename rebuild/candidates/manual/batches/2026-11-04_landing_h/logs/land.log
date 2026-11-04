@@ -1,0 +1,20 @@
+addr       parity           behav  name
+00e987c0   RELOCATION_MATCH PASS   Main
+00e9a970   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e9a970   RELOCATION_MATCH PASS   FirstFleeCutscene
+00e9b240   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e9b240   RELOCATION_MATCH PASS   DuelLost
+00e9be60   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e9be60   RELOCATION_MATCH PASS   Duel
+
+WINS: 4
+  00e987c0 RELOCATION_MATCH NScript::CV_HeroDuelScript::?Main@CV_HeroDuelScript@NScript@@UAEXXZ
+  00e9a970 RELOCATION_MATCH NScript::CV_HeroDuelScript::?FirstFleeCutscene@CV_HeroDuelScript@NScript@@QAEXXZ
+  00e9b240 RELOCATION_MATCH NScript::CV_HeroDuelScript::?DuelLost@CV_HeroDuelScript@NScript@@QAEXXZ
+  00e9be60 RELOCATION_MATCH NScript::CV_HeroDuelScript::?Duel@CV_HeroDuelScript@NScript@@QAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  NScriptCVHeroDuelScript_Main_00e987c0
+  NScriptCVHeroDuelScript_FirstFleeCutscene_00e9a970
+  NScriptCVHeroDuelScript_DuelLost_00e9b240
+  NScriptCVHeroDuelScript_Duel_00e9be60

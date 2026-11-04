@@ -6,6 +6,10 @@
 #include "engine/CScriptThing.h"
 #include "stlport/fable_containers.h"
 // Layout: original complete PDB field order, native base0x48 and twelve-byte vectors.
+// Retail opt-in FABLE_RETAIL_CQ_HANGINGTREEGOODSCRIPT (chunk 744): the remaining PDB methods (Ego_r/FableWin name sets, all
+// ...@CQ_HangingTreeGoodScript@NScript@@QAE..) with their retail addresses, and the ten nested entity scripts the Main 0x00D6F4B0
+// binds (FableWin/Ego_r ?Alloc@CHTG_*@CQ_HangingTreeGoodScript@NScript@@SI...; Alloc address = the ClassAllocFunc stored by Main).
+// Requires engine/CEntityScriptBase.h and engine/CCountedPointer.h before the include. The default text is unchanged.
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_HangingTreeGoodScript:public CLevelScriptBase<CQ_SunnyvaleMasterData> {
@@ -20,6 +24,30 @@ public:
     void ReassignLeader();
     void WatchForHeroNearExit();
     void SpawnParty(long RemainingGuards,CScriptThing& SpawnPoint);
+#ifdef FABLE_RETAIL_CQ_HANGINGTREEGOODSCRIPT
+    void RemoveDregs();                                                  // 0x00D6FD00
+    void CleanUp();                                                      // 0x00D72B70
+    void RemoveParty(bool);                                              // 0x00D732F0
+    void DoMission();                                                    // 0x00D74430
+    void WatchForMissionEnd();                                           // 0x00D74CE0
+    void MonitorHeroProximity();                                         // 0x00D74D30
+    void FinalRound();                                                   // 0x00D75060
+    void SetGuardsHealth();                                              // 0x00D766C0
+    void DoConversations();                                              // 0x00D767F0
+    void GetGuardsHealth();                                              // 0x00D77340
+    void MonitorRegionPresence();                                        // 0x00D773E0
+    void DoCutscene(long);                                               // 0x00D77690
+    class CHTG_Prisoner : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };           // 0x00D71980
+    class CHTG_Guard : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };              // 0x00D70520
+    class CHTG_AmbushPoint : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };        // 0x00D6FD70
+    class CHTG_AmbushPointRear : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };    // 0x00D6FF30
+    class CHTG_AmbushPointCond : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };    // 0x00D6FE50
+    class CHTG_AmbushPointBackup : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };  // 0x00D70010
+    class CHTG_Executioner : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };        // 0x00D731A0
+    class CHTG_Audience : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };           // 0x00D720E0
+    class CHTG_Boss : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };               // 0x00D724D0
+    class CHTG_FreedomFighter : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };     // 0x00D700E0
+#endif
     bool LeaderSpokenTo; // +0x48
     bool PartySuccessfullySetUp; // +0x49
     bool MissionSucceeded; // +0x4a

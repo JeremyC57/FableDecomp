@@ -225553,8 +225553,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00d77340'
         Module = 'NScript::CQ_HangingTreeGoodScript'
-        Source = '00/d7/NScriptCQHangingTreeGoodScript_StoreGuardsHealth_00d77340.cpp'
-        TestSource = '00/d7/NScriptCQHangingTreeGoodScript_StoreGuardsHealth_00d77340_test.cpp'
+        Source = '00/d7/NScriptCQHangingTreeGoodScript_GetGuardsHealth_00d77340.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScript_GetGuardsHealth_00d77340_test.cpp'
         PassPattern = '00d77340_TEST PASS'
     }
     [pscustomobject]@{
@@ -381325,6 +381325,45 @@ $catalog = @(
         Source = '00/bb/CEnginePrimitiveManagerParticleGroup_RenderSubPrimitive_00bbc460.cpp'
         TestSource = '00/bb/CEnginePrimitiveManagerParticleGroup_RenderSubPrimitive_00bbc460_test.cpp'
         PassPattern = '00bbc460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d74430'
+        Module = 'NScript::CQ_HangingTreeGoodScript'
+        Source = '00/d7/NScriptCQHangingTreeGoodScript_DoMission_00d74430.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScript_DoMission_00d74430_test.cpp'
+        PassPattern = '00d74430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e987c0'
+        Module = 'NScript::CV_HeroDuelScript'
+        Source = '00/e9/NScriptCVHeroDuelScript_Main_00e987c0.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScript_Main_00e987c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00e987c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9a970'
+        Module = 'NScript::CV_HeroDuelScript'
+        Source = '00/e9/NScriptCVHeroDuelScript_FirstFleeCutscene_00e9a970.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScript_FirstFleeCutscene_00e9a970_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00e9a970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9b240'
+        Module = 'NScript::CV_HeroDuelScript'
+        Source = '00/e9/NScriptCVHeroDuelScript_DuelLost_00e9b240.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScript_DuelLost_00e9b240_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00e9b240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9be60'
+        Module = 'NScript::CV_HeroDuelScript'
+        Source = '00/e9/NScriptCVHeroDuelScript_Duel_00e9be60.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScript_Duel_00e9be60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00e9be60_TEST PASS'
     }
 )
 

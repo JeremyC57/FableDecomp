@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00d76030   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::SpawnParty
+
+WINS: 1
+  00d76030 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?SpawnParty@CQ_HangingTreeGoodScript@NScript@@QAEXJAAVCScriptThing@@@Z

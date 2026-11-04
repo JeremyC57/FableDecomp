@@ -1,0 +1,2 @@
+address	source	header	result
+00d76030	rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_SpawnParty_00d76030.cpp	engine/CQ_HangingTreeGoodScript.h	not regraded: it does not define FABLE_RETAIL_CQ_HANGINGTREEGOODSCRIPT and hdrcheck2 reports default=same (the change is gated)

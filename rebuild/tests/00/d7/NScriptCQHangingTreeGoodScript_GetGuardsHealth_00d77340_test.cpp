@@ -1,4 +1,4 @@
-// Behaviour test for 0x00d77340 CQ_HangingTreeGoodScript::StoreGuardsHealth
+// Behaviour test for 0x00d77340 CQ_HangingTreeGoodScript::GetGuardsHealth
 #include <cstdio>
 class CScriptThing { public: float m_health; };
 struct CGameScriptInterface_Calls { virtual float GetHealth(const CScriptThing& thing) const { return thing.m_health; } };
@@ -13,7 +13,7 @@ struct CQ_HangingTreeGoodScript {
     CGameScriptInterface_Calls* GSI;
     CRetailVector<CScriptThing> CurrentGuardVector; CRetailVector<float> GuardsHealthVector;
     bool IsActiveThreadTerminating() { return ++m_checks > m_terminateAfter; }
-    void StoreGuardsHealth()
+    void GetGuardsHealth()
     {
         for (unsigned long i = 0; i < CurrentGuardVector.size(); ++i) {
             if (IsActiveThreadTerminating()) return;
@@ -30,10 +30,10 @@ int main()
     CQ_HangingTreeGoodScript s; s.GSI = &gsi; s.m_terminateAfter = 100; s.m_checks = 0;
     s.CurrentGuardVector.m_pBegin = guards; s.CurrentGuardVector.m_pEnd = s.CurrentGuardVector.m_pCapacity = guards + 3;
     s.GuardsHealthVector.m_pBegin = s.GuardsHealthVector.m_pEnd = health; s.GuardsHealthVector.m_pCapacity = health + 3;
-    s.StoreGuardsHealth();
+    s.GetGuardsHealth();
     bool ok = s.GuardsHealthVector.size() == 3 && health[1] == 20.0f && s.m_checks == 4;
     s.GuardsHealthVector.m_pEnd = health; s.m_checks = 0; s.m_terminateAfter = 1;   // terminates on the second guard
-    s.StoreGuardsHealth();
+    s.GetGuardsHealth();
     ok = ok && s.GuardsHealthVector.size() == 1 && s.m_checks == 2;
     if (!ok) { std::printf("00d77340_TEST FAIL\n"); return 1; }
     std::printf("00d77340_TEST PASS\n");

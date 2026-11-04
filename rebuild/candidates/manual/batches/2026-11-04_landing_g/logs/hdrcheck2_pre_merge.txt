@@ -1,0 +1,2 @@
+NEW    engine/CQ_HangingTreeEvilScript.h
+CHANGED engine/CQ_HangingTreeGoodScript.h default=same[508](cpp-err) FABLE_RETAIL_CQ_HANGINGTREEGOODSCRIPT=DIFF[508](cpp-err)

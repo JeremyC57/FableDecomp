@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00d77340   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d77340   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::GetGuardsHealth
+00d74430   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::DoMission
+
+WINS: 2
+  00d77340 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::GetGuardsHealth
+  00d74430 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?DoMission@CQ_HangingTreeGoodScript@NScript@@QAEXXZ

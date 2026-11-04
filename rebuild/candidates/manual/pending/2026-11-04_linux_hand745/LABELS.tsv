@@ -1,0 +1,8 @@
+address	name	evidence
+0x00E987C0	NScript::CV_HeroDuelScript::Main	vtable 0x012ED0D4 slot 2 (CScriptBase Main slot); Ego_r ?Main@CV_HeroDuelScript@NScript@@UAEXXZ; spawns the class's own threads
+0x00E9A970	NScript::CV_HeroDuelScript::FirstFleeCutscene	Ego_r ?FirstFleeCutscene@CV_HeroDuelScript@NScript@@QAEXXZ; sole caller CThunder::Main 0x00E9A5C0 @0x00E9A6F8; CS_GIBBETHILL_HERODUEL_CLIFF literals
+0x00E9B240	NScript::CV_HeroDuelScript::DuelLost	Ego_r ?DuelLost@CV_HeroDuelScript@NScript@@QAEXXZ; sole caller CThunder::Main @0x00E9A95A; CS_GIBBETHILL_HERODUEL_END literals, Thunder trophy
+0x00E9BE60	NScript::CV_HeroDuelScript::Duel	Ego_r ?Duel@CV_HeroDuelScript@NScript@@QAEXXZ; sole caller DoMission 0x00E9B690 @0x00E9BBA8; CS_GIBBETHILL_HERODUEL_HILLTOP literals
+0x00E98700	NScript::CV_HeroDuelScript::RegisterMain	vtable 0x012ED0D4 slot 1 (already landed under this name; confirmation only)
+0x00E986D0	NScript::CV_HeroDuelScript::Init	vtable 0x012ED0D4 slot 3 (already landed under this name; confirmation only)
+0x00CDBFB0	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map	see NAME_FIXES.tsv

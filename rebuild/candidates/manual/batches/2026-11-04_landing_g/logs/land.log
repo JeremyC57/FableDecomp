@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00d74430   WARN RELOC_NAME: ?GetGuardsHealth@CQ_HangingTreeGoodScript@NScript@@QAEXXZ -> 00d77340 labelled 'NScript::CQ_HangingTreeGoodScript::StoreGuardsHealth'
+00d74430   RELOCATION_MATCH PASS   DoMission
+
+WINS: 1
+  00d74430 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?DoMission@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQHangingTreeGoodScript_DoMission_00d74430

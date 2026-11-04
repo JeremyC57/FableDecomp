@@ -1,0 +1,13 @@
+address	name
+00d69480	NScript::CQ_HangingTreeEvilScript::Main
+00d6f4b0	NScript::CQ_HangingTreeGoodScript::Main
+00d74430	NScript::CQ_HangingTreeGoodScript::DoMission
+00d75060	NScript::CQ_HangingTreeGoodScript::FinalRound
+00d77690	NScript::CQ_HangingTreeGoodScript::DoCutscene
+00d74d30	NScript::CQ_HangingTreeGoodScript::MonitorHeroProximity
+00d767f0	NScript::CQ_HangingTreeGoodScript::DoConversations
+00d77340	NScript::CQ_HangingTreeGoodScript::GetGuardsHealth
+00d74ce0	NScript::CQ_HangingTreeGoodScript::WatchForMissionEnd
+00d773e0	NScript::CQ_HangingTreeGoodScript::MonitorRegionPresence
+00d731a0	NScript::CQ_HangingTreeGoodScript::CHTG_Executioner::Alloc
+00d720e0	NScript::CQ_HangingTreeGoodScript::CHTG_Audience::Alloc

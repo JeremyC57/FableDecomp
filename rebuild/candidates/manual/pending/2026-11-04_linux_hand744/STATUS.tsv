@@ -1,0 +1,6 @@
+address	name	status	attempts	note
+00d69480	NScript::CQ_HangingTreeEvilScript::Main	DIFFER	4 grades + ~20 compile-only probes	2118v2118 dl=15: failure-branch scratch-register rotation (eax<->edx/ecx) only; differ/; catalog said CQ_HangingTreeGoodScript::Main (wrong class)
+00d6f4b0	NScript::CQ_HangingTreeGoodScript::Main	DIFFER	1 grade + 2 compile-only probes	2106v2106 dl=13: the same failure-branch rotation as 0x00D69480; differ/
+00d74430	NScript::CQ_HangingTreeGoodScript::DoMission	MATCH	4 (3 + comment-only regrade)	RELOCATION_MATCH + test PASS, vland WIN; CScriptThing::operator= __forceinline in the TU (plain inline / implicit leave the top-level PartySpawnPoint assignment a call)
+00d75060	NScript::CQ_HangingTreeGoodScript::FinalRound	DIFFER	1	5237v4044 first draft; per-exit inline splits of ~CScriptThing / ~ScriptedThingBase / ~vector + frame slots; differ/
+00d77690	NScript::CQ_HangingTreeGoodScript::DoCutscene	NOT_ATTEMPTED	0	3064 bytes, switch(long) over three movie/cutscene sequences with CCutsceneCastMap + RunScriptedCutscene and per-exit inline splits; out of session budget (structure notes in NOTES.md)

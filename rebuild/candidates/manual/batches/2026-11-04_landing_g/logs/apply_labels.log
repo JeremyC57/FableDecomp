@@ -1,0 +1,11 @@
+catalog  00d77340 NScript::CQ_HangingTreeGoodScript::StoreGuardsHealth -> NScript::CQ_HangingTreeGoodScript::GetGuardsHealth
+catalog  00d773e0 CQ_HangingTreeGoodScript::MonitorRegionPresence -> NScript::CQ_HangingTreeGoodScript::MonitorRegionPresence
+catalog  00d74430 CQ_HangingTreeGoodScript::DoMission -> NScript::CQ_HangingTreeGoodScript::DoMission
+manifest 00d69480 CQ_HangingTreeGoodScript::Main -> NScript::CQ_HangingTreeEvilScript::Main
+manifest 00d6f4b0 CQ_HangingTreeGoodScript::Main -> NScript::CQ_HangingTreeGoodScript::Main
+manifest 00d74430 CQ_HangingTreeGoodScript::DoMission -> NScript::CQ_HangingTreeGoodScript::DoMission
+manifest 00d75060 CQ_HangingTreeGoodScript::FinalRound -> NScript::CQ_HangingTreeGoodScript::FinalRound
+manifest 00d77340 NScript::CQ_HangingTreeGoodScript::StoreGuardsHealth -> NScript::CQ_HangingTreeGoodScript::GetGuardsHealth
+manifest 00d773e0 CQ_HangingTreeGoodScript::MonitorRegionPresence -> NScript::CQ_HangingTreeGoodScript::MonitorRegionPresence
+manifest 00d77690 CQ_HangingTreeGoodScript::DoCutscene -> NScript::CQ_HangingTreeGoodScript::DoCutscene
+labels 12  catalog renamed 3  manifest renamed 7

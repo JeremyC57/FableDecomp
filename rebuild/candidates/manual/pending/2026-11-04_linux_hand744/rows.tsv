@@ -1,0 +1,6 @@
+address	module	name	length	group	anchor	gap_to_next_start
+00d69480	CQ_HangingTreeGoodScript	Main	2118	G00d69480	CQ_HangingTreeGoodScript	2128
+00d6f4b0	CQ_HangingTreeGoodScript	Main	2106	G00d69480	CQ_HangingTreeGoodScript	2112
+00d74430	CQ_HangingTreeGoodScript	DoMission	2216	G00d69480	CQ_HangingTreeGoodScript	2224
+00d75060	CQ_HangingTreeGoodScript	FinalRound	4044	G00d69480	CQ_HangingTreeGoodScript	4048
+00d77690	CQ_HangingTreeGoodScript	DoCutscene	3064	G00d69480	CQ_HangingTreeGoodScript	3120

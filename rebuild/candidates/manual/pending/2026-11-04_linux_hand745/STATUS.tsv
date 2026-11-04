@@ -1,0 +1,5 @@
+address	name	status	attempts	note
+00e987c0	NScript::CV_HeroDuelScript::Main	RELOCATION_MATCH	1	src/00e987c0.cpp + test PASS; calls aligned (calls.py 110/110); vland RELOCATION_MATCH+PASS
+00e9a970	NScript::CV_HeroDuelScript::FirstFleeCutscene	RELOCATION_MATCH	1	src + test PASS; calls aligned 93/93 (RunCutsceneMacro shown by address only); vland RELOCATION_MATCH+PASS
+00e9b240	NScript::CV_HeroDuelScript::DuelLost	RELOCATION_MATCH	1	src + test PASS; calls aligned 70/70; vland RELOCATION_MATCH+PASS
+00e9be60	NScript::CV_HeroDuelScript::Duel	RELOCATION_MATCH	1	src + test PASS; calls aligned 77/77; vland RELOCATION_MATCH+PASS

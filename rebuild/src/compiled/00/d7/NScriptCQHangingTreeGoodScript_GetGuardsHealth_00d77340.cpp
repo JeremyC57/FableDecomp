@@ -1,5 +1,5 @@
-// CQ_HangingTreeGoodScript::StoreGuardsHealth() -- record the current health of every guard in GuardsHealthVector (stopping early if the script thread is terminating)
-// Leaf: StoreGuardsHealth
+// CQ_HangingTreeGoodScript::GetGuardsHealth() -- record the current health of every guard in GuardsHealthVector (stopping early if the script thread is terminating)
+// Leaf: GetGuardsHealth
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D77340, 149 bytes (+ int3 padding).
 // Label correction: the manifest's "CEngineWorldMap::BuildAndSaveSea" is propagated. The body sits between the
 //   CQ_HangingTreeGoodScript functions (0x00D766C0 SetGuardsHealth, 0x00D773E0 MonitorRegionPresence), uses the quest
@@ -100,12 +100,12 @@ public:
     std::vector<CScriptThing> CurrentGuardVector;         // +0xac
     unsigned char               _padb8[0xd0 - 0xb8];        // RegionsWhereSpawned, AreasSpawnedIn
     std::vector<float>        GuardsHealthVector;         // +0xd0
-    void StoreGuardsHealth();
+    void GetGuardsHealth();
 };
 } // namespace NScript
 using NScript::CQ_HangingTreeGoodScript;
 
-void NScript::CQ_HangingTreeGoodScript::StoreGuardsHealth()
+void NScript::CQ_HangingTreeGoodScript::GetGuardsHealth()
 {
     for (unsigned long i = 0; i < CurrentGuardVector.size(); ++i) {
         if (IsActiveThreadTerminating())
