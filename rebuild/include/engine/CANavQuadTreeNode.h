@@ -43,6 +43,11 @@ protected:
     // chunk 747 (row 0x00A770B0 CNavQuadTree::GetNodeAt): retail calls the protected slot 11 from CNavQuadTree (`call [edx+2Ch]`
     // on the cell node), so the original grants CNavQuadTree access.
     friend class CNavQuadTree;
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_FRIENDNODE
+    // Nested opt-in (chunk 768, row 0x00A76770 CNavQuadTreeNode::GetLeafNodeAt): the quad node recurses through its children's
+    // protected slot 11 (`jmp [eax+2Ch]` on TLNode..BRNode, CANavQuadTreeNode*), so the original grants CNavQuadTreeNode access too.
+    friend class CNavQuadTreeNode;
+#endif
     virtual const CANavQuadTreeNode* GetLeafNodeAt(const C2DVector&) const;              // slot 11
 public:
     virtual bool MakeRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);          // slot 12 (+0x30)

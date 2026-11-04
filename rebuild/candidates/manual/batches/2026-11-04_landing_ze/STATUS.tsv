@@ -1,0 +1,15 @@
+address	name	status	attempts	note
+005ebfa0	CTCTavernGame::CameraUseCameraPoint	matched	2	RELOCATION_MATCH: real-callee port (retail CTCBase/CThing/CWorld/CThingSearchTools/CTCTavernGame headers, PeekWorld().PeekThingSearchTools().GetAllThings<CThing>(CThingFilter_HasScriptName(name), things), GetTC(&point), GetPointType(&scripted)) + same-TU noinline GetAllThings body overlay (CTHINGSEARCHTOOLS_ALLTHINGSBODY)
+0096dbc0	CCreatureAction_ScreamerIntoAggressive::Initialise	matched	5	RELOCATION_MATCH: the two mode constructions written as two full AddMode(CCountedPointer(new ...)) calls (cross-jumped tail); ternary / mode local rotate esi/ebp/ebx
+00969e70	CAIStateGroup_SleepOnFloor::IsRunnable	matched	12	RELOCATION_MATCH: named C2DVector centre + same-TU noinline rough-area body (ROUGHAREABODY)
+00753380	CTCLook::FrameUpdateHeadInterested	matched	5	RELOCATION_MATCH: retail-header port (CThing GetTC, CTCTargetingBase IsLookingAtCamera inline, GetGameCamera()->PeekCurrentPos, GetPhysicsTC()->GetPosition) + early no-target exit then camera/thing choice
+0070d780	CAnimateThing::AddCombinationAnim	matched	7	RELOCATION_MATCH: STLport vector/list members, same-TU noinline CAnimSet::Init body (PDB signature), LastAlpha before the OwnedByMainAnim bit
+00c3a7d0	CRampedParam::ApplyGainToFrame	parked	23	DIFFER(272v273) dl=7: x87 store order (retail fst before fcomp 0, reload; ours fcom/fst keep)
+0083dc80	CThingPhysicalSwitch::DrawPreparePrimitivesForRendering	parked	15	DIFFER(304v309) dl=34: x87 add order Z,Y,X v retail X,Y,Z with stores; early channel-desc stores; PhysicsTC CSE; frame 0x8c v 0x80
+00837b30	CThingTrackNode::DrawPreparePrimitivesForRendering	parked	10	DIFFER(309v314) dl=34: twin of 0x0083DC80, same residue
+0089da70	CGameScriptInterface::EntitySetAlpha	parked	13	DIFFER(314v314) dl=43: loop register swap (retail start eax / item ecx)
+009d5bf0	CBankFileAsync::HandleFailedAllocation	parked	11	DIFFER(305v314) dl=47: register allocation (retail spills this, count ebp, data esi across FreeResource)
+00a76770	CNavQuadTreeNode::GetLeafNodeAt	parked	14	DIFFER(318v321) dl=58: QuadTreeLevel byte CSE -> pos in esi, no tail jumps
+00ed9bb0	NScript::CV_TalentlessBardScript::ProcessSongsClothes	parked	10	DIFFER(298v306) dl=1: missing entry dead store mov [esp+4],0
+00f35c60	NFractal::CNoise::PerlinNoise	parked	10	DIFFER(312v316) dl=13: b11 load scheduling / fmul fold
+00bcfb00	CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitiveBlocksIndexBuffer	parked	11	DIFFER(329v336) dl=35: register/frame allocation round expanded DrawBuffersIndexed

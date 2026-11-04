@@ -1,0 +1,16 @@
+addr       parity           behav  name
+005ebfa0   RELOCATION_MATCH PASS   CameraUseCameraPoint
+0096dbc0   RELOCATION_MATCH PASS   Initialise
+00969e70   WARN RELOC_NAME: ?ToC2DBoxI@C2DBoxF@@QBE?AVC2DBoxI@@XZ -> 00a55a30 labelled 'C2DBoxF::ToBoxI'
+00969e70   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsMySleepPoint@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsMySleepPoint@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 00969fb0 labelled 'GetAllThingsInRoughArea<CThing,std::list<CThing*,std::allocator<CThing*>_>,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea>_>'
+00969e70   RELOCATION_MATCH PASS   IsRunnable
+00753380   WARN RELOC_CONFLICT: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 004365b0 here, 0040f020 in landed 00635080
+00753380   RELOCATION_MATCH PASS   FrameUpdateHeadInterested
+0070d780   RELOCATION_MATCH PASS   AddCombinationAnim
+
+WINS: 5
+  005ebfa0 RELOCATION_MATCH CTCTavernGame::?CameraUseCameraPoint@CTCTavernGame@@QAEXABVCCharString@@@Z
+  0096dbc0 RELOCATION_MATCH CCreatureAction_ScreamerIntoAggressive::?Initialise@CCreatureAction_ScreamerIntoAggressive@?A0x
+  00969e70 RELOCATION_MATCH CAIStateGroup_SleepOnFloor::?IsRunnable@CAIStateGroup_SleepOnFloor@@UAE_NXZ
+  00753380 RELOCATION_MATCH CTCLook::?FrameUpdateHeadInterested@CTCLook@@AAEXXZ
+  0070d780 RELOCATION_MATCH CAnimateThing::?AddCombinationAnim@CAnimateThing@@QAEXABVCAnimInit@@JJ_N1@Z

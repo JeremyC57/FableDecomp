@@ -1,0 +1,12 @@
+header	landed_includers	change
+engine/CThingSearchTools.h	164	new nested FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY / _ROUGHAREABODY (CLIPAREA test widened to either); hdrcheck2 default and every existing macro = same
+engine/CThing.h	78	new nested FABLE_RETAIL_CTHING_STATTYPEFLAGS; all existing macros same
+engine/CTCMapwho.h	47	new nested FABLE_RETAIL_CTCMAPWHO_SEARCHID; same
+engine/CTCTavernGame.h	11	new nested FABLE_RETAIL_CTCTAVERNGAME_CAMERAPOINT; same
+engine/C2DVector.h	9	new nested FABLE_RETAIL_C2DVECTOR_FROM3D / _INITIALISE; same
+engine/CANavQuadTreeNode.h	9	new nested FABLE_RETAIL_CANAVQUADTREENODE_FRIENDNODE; same
+engine/C2DBoxF.h	5	new nested FABLE_RETAIL_C2DBOXF_CENTRE; same
+engine/NGraphicAppearance_CTCGraphicAppearance.h	5	new FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETALPHA / _FOCALPOS (declarations); default and existing macros same
+engine/CTCTargetingBase.h	4	new FABLE_RETAIL_CTCTARGETINGBASE_LOOKATCAMERA (declaration + inline accessor); default same
+engine/CTCCarrying.h	3	new FABLE_RETAIL_CTCCARRYING_ALLCARRIED (declaration); default and existing macros same
+engine/NThingMap_CThingMap.h	0	NEW header (NThingMap::CThingMap / CMapwhoLevelInfo / CThingMapCell, landed global spellings)

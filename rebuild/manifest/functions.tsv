@@ -1155,7 +1155,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00430470	GetSizeofClass	CControlsDef	__thiscall	ulong	1	CControlsDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CControlsDef_GetSizeofClass_00430470.cpp
 00430480	`scalar_deleting_destructor'	CControlsDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CLandscapeBackgroundPatch_vectordeletingdestructor_00430480.cpp
 004304a0	~CControlsDef	CControlsDef	__thiscall	void	1	CCompressedMemoryDataInputStream *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_004304a0.cpp
-004304e0	??0CUIMiscThingsDef@NUISystem@@QAE@XZ	_global	__thiscall	undefined	1	CUIMiscThingsDef *	0	yes	accepted									
+004304e0	CUIMiscThingsDef	NUISystem::CUIMiscThingsDef	__thiscall	undefined	1	CUIMiscThingsDef *	0	yes	accepted									
 004308f0	GetSizeofClass	NUISystem::CUIMiscThingsDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00430900	Transfer	NUISystem::CUIMiscThingsDef	__fastcall	void	0		1	yes	accepted									
 00431020	Transfer<unsigned long>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CEngineLightingManager_UpdateShadowScene_00431020.cpp
@@ -4109,7 +4109,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00490927	IsAllowedToSetText	CSubtitleRenderer	__thiscall	bool	2	CSubtitleRenderer *,bool	1	yes	accepted									
 00490a22	IsInInteractiveState	CSubtitleRenderer	__thiscall	bool	1	CSubtitleRenderer *	1	yes	accepted									
 00490be0	ProcessEmbeddedGraphicTags_ResolveButtonName	_global	unknown	undefined	0		0	yes	accepted									
-0049124e	?GetActionNameFromEmbeddedTag@CSubtitleRenderer@@CI_NABVCWideString@@AAV2@@Z	_global	__fastcall	bool	2	CWideString *,CWideString *	1	yes	accepted									
+0049124e	GetActionNameFromEmbeddedTag	CSubtitleRenderer	__fastcall	bool	2	CWideString *,CWideString *	1	yes	accepted									
 0049166e	CSubtitleRenderer	CSubtitleRenderer	__thiscall	undefined	2	CSubtitleRenderer *,CGraphicDataBank *	0	yes	accepted									
 004917b5	FormatTextWithGameActionNames	CSubtitleRenderer	__fastcall	CWideString	2	CWideString *,vector<CWideString,std::allocator<CWideString>_> *	1	yes	accepted									
 00491ad2	ProcessEmbeddedHighlightTags	CSubtitleRenderer	__thiscall	void	1	CSubtitleRenderer *	1	yes	accepted									
@@ -4310,7 +4310,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0049cf80	CRightHandedSet	CRightHandedSet	__thiscall	undefined	2	CNearestBuildingWithProperty *,CNearestBuildingWithProperty *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\49\CNearestBuildingWithProperty_CNearestBuildingWithProperty_0049cf80.cpp
 0049cfe0	CNamedValue_0049cfe0	CNamedValue_0049cfe0	__thiscall	undefined	1	PerEffectInfo *	0	yes	accepted									
 0049d000	CEnginePrimitiveWeatherMask	CEnginePrimitiveWeatherMask	__thiscall	undefined	7	CEnginePrimitiveWeatherMask *,C3DBoundingSphere *,C3DBoundingBox *,CMatrix3x4 *,float,ulong,EEngineInterpolationSet	0	yes	accepted									
-0049d150	GetInterpolatedPosition	CTCPhysicsBase	__thiscall	C3DVector	2	CTCPhysicsStandard *,float	1	yes	accepted									
+0049d150	GetPosition	CTCPhysicsBase	__thiscall	C3DVector	2	CTCPhysicsStandard *,float	1	yes	accepted									
 0049d210	sub_0049d210	_global	unknown	undefined	0		0			discovered	gapscan							
 0049d310	IsFading	CTCFadeOutAndIn	__thiscall	bool	1	CTCFadeOutAndIn *	1	yes	accepted									
 0049d380	CCamera	CCamera	__thiscall	undefined	2	CCamera *,CCamera *	0	yes	accepted									
@@ -13213,7 +13213,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00626e40	ConstructItemCategoryList	CTCQuickAccessMenu	unknown	undefined	0		0	yes	accepted									
 00627400	ConstructExpressionCategoryList	CTCQuickAccessMenu	__thiscall	void	5	CTCQuickAccessMenu *,CWideString *,CList *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *,CComponent *	1	yes	accepted									
 006276f0	GetItemsListUI	CTCQuickAccessMenu	__thiscall	CComponent *	3	CTCQuickAccessMenu *,long *,CComponent *	1	yes	accepted									
-00627be0	?GetExpressionsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z	_global	__thiscall	CComponent *	3	CTCQuickAccessMenu *,long *,CComponent *	1	yes	accepted									
+00627be0	GetExpressionsListUI	CTCQuickAccessMenu	__thiscall	CComponent *	3	CTCQuickAccessMenu *,long *,CComponent *	1	yes	accepted									
 00628000	Activate	CTCQuickAccessMenu	__thiscall	void	1	CTCQuickAccessMenu *	1	yes	accepted									
 006285e0	GetInterfaceType	CTCQuickAccessMenu	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006285f0	GetClassTypeName	CTCQuickAccessMenu	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CActionDoCreatureAction_GetActionName_006285f0.cpp
@@ -18369,7 +18369,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0070d390	UpdateCombinationAnimList	CAnimateThing	__thiscall	void	3	CAnimateThing *,list<CAnimSet,std::allocator<CAnimSet>_> *,CAnimateThingUpdate *	1	yes	accepted									
 0070d510	ClearQueues	CAnimateThing	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0070d510.cpp
 0070d580	SetMainAnim	CAnimateThing	__thiscall	void	4	CAnimateThing *,CAnimInit *,long,long	1	yes	accepted									
-0070d780	AddCombinationAnim	CTCAnimation	__thiscall	void	6	CAnimateThing *,CAnimInit *,long,long,bool,bool	1	yes	accepted									
+0070d780	AddCombinationAnim	CAnimateThing	__thiscall	void	6	CAnimateThing *,CAnimInit *,long,long,bool,bool	1	yes	accepted									
 0070d8c0	RemoveCombinationAnimsOfType	CTCAnimation	__thiscall	void	2	CSpellContainerList *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CSpellContainerList_AddChild_0070d8c0.cpp
 0070d8e0	RemoveCombinationAnim	CTCAnimation	__thiscall	void	2	CSpellContainerList *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CSpellContainerList_AddChild_0070d8e0.cpp
 0070d900	AddChild	NUISystem::CSpellContainerList	__thiscall	void	2	CSpellContainerList *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CSpellContainerList_AddChild_0070d900.cpp
@@ -32539,8 +32539,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00969a80	OnActivate	CAIStateGroup_SleepOnFloor	__thiscall	void	1	CAIStateGroup_SleepOnFloor *	1	yes	accepted									
 00969ae0	OnReplace	CAIStateGroup_SleepOnFloor	__thiscall	void	1	CAIStateGroup_SleepOnFloor *	1	yes	accepted									
 00969cb0	Update	CAIStateGroup_SleepOnFloor	__thiscall	void	1	CAIStateGroup_SleepOnFloor *	1	yes	accepted									
-00969e70	?IsRunnable@CAIStateGroup_SleepOnFloor@@UAE_NXZ	CAIStateGroup_SleepOnFloor	__thiscall	bool	1	CAIStateGroup_SleepOnFloor *	1	yes	accepted									
-00969fb0	GetAllThingsInRoughArea<CThing,std::list<CThing*,std::allocator<CThing*>_>,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea>_>	_global	__thiscall	void	4	CThingSearchTools *,C2DBoxI *,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea> *,list<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
+00969e70	IsRunnable	CAIStateGroup_SleepOnFloor	__thiscall	bool	1	CAIStateGroup_SleepOnFloor *	1	yes	accepted									
+00969fb0	GetAllThingsInRoughArea	CThingSearchTools	__thiscall	void	4	CThingSearchTools *,C2DBoxI *,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea> *,list<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
 0096a250	Initialise	CAIStateGroup_WhisperRetreat	__thiscall	void	6	CAIStateGroup_WhisperRetreat *,CAIBrain &,CThingAICreature &,long,EScriptAIPriority,CCharString const &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\96\CAIStateGroupWhisperRetreat_Initialise_0096a250.cpp
 0096a260	FindHitEvent	CAIStateGroup_WhisperRetreat	__thiscall	bool	1	CAIStateGroup_WhisperRetreat *	1	yes	accepted									
 0096a350	Cleanup	CAIStateGroup_WhisperRetreat	__thiscall	void	1	CAIStateGroup_WhisperRetreat *	1	yes	accepted									
@@ -37246,7 +37246,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a55670	resize	std::vector	__thiscall	void	3	vector<CBrainBehaviour,std::allocator<CBrainBehaviour>_> *,uint,CBrainBehaviour	1	yes	accepted									
 00a557e0	copy	std	unknown	undefined	0		0	yes	accepted									
 00a55880	__copy	std	unknown	undefined	0		0	yes	accepted									
-00a55a30	ToBoxI	C2DBoxF	__thiscall	C2DBoxI	3	CEditWorldMap *,C2DCoordI *,CEditMapPen *	1	yes	accepted									
+00a55a30	ToC2DBoxI	C2DBoxF	__thiscall	C2DBoxI	3	CEditWorldMap *,C2DCoordI *,CEditMapPen *	1	yes	accepted									
 00a55a80	ToC3DBoxI	C3DBoxF	__fastcall	CWideString	4	CWideString *,CWideString *,CWideString *,CWideString *	1	yes	accepted									
 00a55c00	Init	_global	__thiscall	void	1	CMeleeApprentice *	1	yes	accepted									
 00a55d80	InitialiseSkewedSymmetric	CMatrix3x4	__thiscall	void	2	CMatrix3x4 *,C3DVector *	1	yes	accepted									
@@ -37991,7 +37991,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a76550	GetMemoryUsage	CNavSwitchableLeafNode	__thiscall	ulong	5	CNavSwitchableLeafNode *,ulong &,ulong &,ulong &,ulong &	1	yes	accepted									
 00a76580	CNavQuadTreeNode	CNavQuadTreeNode	__thiscall	undefined	5	CNavQuadTreeNode *,C2DVector *,uchar,uchar,CAFile *	0	yes	accepted									
 00a76640	GoToHigherDetail	CNavQuadTreeNode	__thiscall	bool	2	CNavQuadTreeNode *,vector<C2DBoxF,std::allocator<C2DBoxF>_> *	1	yes	accepted									
-00a76770	CNavQuadTreeNode::GetLeafNodeAt	CNavQuadTreeNode	__thiscall	CANavQuadTreeNode const *	2	CNavQuadTreeNode *,C2DVector const &	1	yes	accepted									
+00a76770	GetLeafNodeAt	CNavQuadTreeNode	__thiscall	CANavQuadTreeNode const *	2	CNavQuadTreeNode *,C2DVector const &	1	yes	accepted									
 00a768c0	CNavBlockedQuadTreeNode	CNavBlockedQuadTreeNode	__thiscall	undefined	3	CNavBlockedQuadTreeNode *,uchar,uchar	0	yes	accepted									
 00a76900	CNavBlockedQuadTreeNode	CNavBlockedQuadTreeNode	__thiscall	undefined	2	CNavBlockedQuadTreeNode *,CNavBlockedQuadTreeNode *	0	yes	accepted									
 00a76950	SaveToFile	CNavBlockedQuadTreeNode	__thiscall	void	5	CNavBlockedQuadTreeNode *,CAFile &,std::map<CANavQuadTreeNode const *,long,std::less<CANavQuadTreeNode const *>,std::allocator<std::pair<CANavQuadTreeNode const * const,long> > > const &,bool,C2DVector const &	1	yes	accepted									

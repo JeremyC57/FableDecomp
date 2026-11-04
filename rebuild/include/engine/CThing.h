@@ -157,6 +157,11 @@ public:
     // Retail opt-in (2026-11-03, chunk 718 row 0x008A93A0): FableWin.pdb ?GetTypeFlags@CThing@@QBEKXZ (inline in retail:
     // EntityWillTeleportToArea tests the +0x6C flags in place). A declaration with its body only: no layout change.
     unsigned long GetTypeFlags() const { return ThingTypeFlags; }
+#ifdef FABLE_RETAIL_CTHING_STATTYPEFLAGS
+    // Nested opt-in (chunk 768, row 0x00969E70 via the CThingSearchTools rough-area body): FableWin.pdb ?StatGetTypeFlags@CThing@@SIKXZ
+    // (static fastcall; inline in retail, where the IsThingOfType<CThing> test folds: CThing's mask is 0).
+    static unsigned long __fastcall StatGetTypeFlags() { return 0; }
+#endif
     // Retail opt-in (2026-11-03, chunk 720 rows 0x005C552C / 0x005C36C2): Ego_r.pdb / FableWin.pdb
     // ?GetTCGraphicAppearance@CThing@@QAEPAVCTCGraphicAppearance@NGraphicAppearance@@XZ (and the QBE const twin), inline in
     // retail (`mov ecx,[esi+64h]` straight off the thing before SetScale). Declarations with bodies only: no layout change.

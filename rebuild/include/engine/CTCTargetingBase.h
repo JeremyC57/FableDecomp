@@ -24,6 +24,13 @@ public: virtual bool GetTargetedPos(C3DVector &,float) const;
 public: virtual bool IsTargetedThingInRange(unsigned long) const;
 protected: virtual void UpdateNearestInterestingThing();
 public: virtual ~CTCTargetingBase();
+#ifdef FABLE_RETAIL_CTCTARGETINGBASE_LOOKATCAMERA
+// Nested opt-in (chunk 768, row 0x00753380 CTCLook::FrameUpdateHeadInterested): Ego_r.pdb / FableWin.pdb
+// ?GetPNearestInterestingThing@CTCTargetingBase@@QBEPAVCThing@@XZ (out of line, retail 0x007F5860) and FableWin.pdb
+// ?IsLookingAtCamera@CTCTargetingBase@@QBE_NXZ (inline in retail: `mov al,[edi+34h]`, LookAtCamera). No layout change.
+public: CThing* GetPNearestInterestingThing() const;
+public: bool IsLookingAtCamera() const { return LookAtCamera; }
+#endif
 protected:bool ScriptOverrideIgnoreEverything;unsigned char PNearestInterestingThing[8],PScriptOverrideInterestingThing[8],PScriptOverrideRangedTarget[8],PTargetedThing[8];CDefPointer<const CTargetingDef> PTargetingDef;bool LookAtCamera;
 };
 FABLE_STATIC_ASSERT(sizeof(CTCTargetingBase)==56);

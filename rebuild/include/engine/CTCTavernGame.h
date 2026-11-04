@@ -94,6 +94,11 @@ public:
     void ChangeBet(bool);                                                // 0x005EB810
     CThingObject* CreateGamePiece(long);                                 // 0x005EA9B0
     long GetBanter() const;                                              // 0x005EA3C0
+#ifdef FABLE_RETAIL_CTCTAVERNGAME_CAMERAPOINT
+    // Nested opt-in (chunk 768, row 0x005EBFA0): Ego_r.pdb / FableWin.pdb ?CameraUseCameraPoint@CTCTavernGame@@QAEXABVCCharString@@@Z
+    // (public; the landed CTCTavernGameShoveHaPenny::EnterGame 0x007CF530 calls it). Declaration only.
+    void CameraUseCameraPoint(const CCharString& name);                  // 0x005EBFA0
+#endif
 #ifdef FABLE_RETAIL_CTCTAVERNGAME_GETDEF_OUTOFLINE
     // Per-TU opt-in (chunk 765, row 0x005EA000): retail does keep an out-of-line GetDef at 0x005EA000 (`mov ecx,[ecx+4] ; mov ecx,[ecx+70h] ;
     // jmp GetSubDef<CTavernGameDef> 0x005ED4A0`), called 55 times from the CTCTavernGameShoveHaPenny / CoinGolf TUs; FrameUpdate expands

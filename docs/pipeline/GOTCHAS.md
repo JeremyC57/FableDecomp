@@ -2026,3 +2026,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - VC7.1 local-static scope digits: function scope is `?1?`; inside one if-block (or after `if (a) { ...; return; }`) `?4?`; after an unbraced if `?3?`. The digit is the undname scope minus 1; above 10 it is hex A-P plus `@` (scope 43 = `?CL@`) (chunk 767).
 - Behaviour tests also build under VC7.1 `/Od`: its Dinkumware `list::remove_if` takes no generic predicate and `std::_Exit` is missing, so tests must compile under both (chunk 767).
 - `return f() != 0;` compiles to neg/sbb/neg; `if (f()) return true; return false;` gives retail's test/setne (chunk 767).
+- A same-TU noinline body for the callee that fills a local container tells VC7.1 the local does not escape: its start stays in a callee-saved register and the second null test goes (0x005EBFA0, 0x00969E70, 0x0070D780, chunk 768).
+- An early `if (!a && !b) { Leave(); return; }` before `if (b) X else Y` lets VC7.1 thread the repeated test into retail's block layout (0x00753380).
+- Landing labels must be catalog form (`Class::Method`): apply_labels.py writes a mangled name verbatim under module `_global`. And a bare vland name qualified from the catalog module can inherit a wrong class; the source `// Leaf:` is authoritative (0x0070D780, landing ze).

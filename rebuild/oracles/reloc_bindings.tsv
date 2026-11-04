@@ -36620,3 +36620,14 @@ __imp__GetSystemDirectoryA@8	0143febc	00c565f0
 ?interpolated_theme@?4??RenderUpdate@CEnvironment@@QAEXM@Z@4VCBlendedEnvironmentTheme@NEnvironmentInternal@@A	013ba900	01229390
 ?no_text_entry@?1??GetText@CTCBetting@@QAE?AVCWideString@@K@Z@4V3@A	013bae84	01229dd0
 ?no_text_entry@?1??GetText@CTCFireheartMinigame@@QAE?AVCWideString@@K@Z@4V3@A	013baea4	01229e10
+??0CScriptModuleTavernGame@NCameraModes@@QAE@ABVC3DVector@@0@Z	005ed240	005ebfa0
+??0CModeScreamerAggressive@NCreatureMode@@QAE@AAVCThing@@0@Z	0096dd10	0096dbc0
+??0CModeScreamerAggressive@NCreatureMode@@QAE@AAVCThing@@@Z	007412b0	0096dbc0
+??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsMySleepPoint@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsMySleepPoint@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	00969fb0	00969e70
+?ToC2DBoxI@C2DBoxF@@QBE?AVC2DBoxI@@XZ	00a55a30	00969e70
+?CentreHead@CTCLook@@AAEXXZ	007528a0	00753380
+?FrameUpdateHeadLookAtPos@CTCLook@@AAEXABVC3DVector@@_N@Z	007530d0	00753380
+?GetFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DVector@@M@Z	004c11d0	00753380
+?GetHeadPos@CTCLook@@ABE?AVC3DVector@@XZ	00751b30	00753380
+?GetPNearestInterestingThing@CTCTargetingBase@@QBEPAVCThing@@XZ	007f5860	00753380
+?Init@CAnimSet@@AAEXAAVCAnimateThing@@ABVCAnimInit@@M@Z	0070d1a0	0070d780

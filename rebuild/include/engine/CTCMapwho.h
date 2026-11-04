@@ -34,6 +34,12 @@ public:
     void RemoveFromMapwho();                                             // 0x0071A730
     void MoveInMapwho(const C3DVector&);                                 // 0x0071A750
     bool IsInMap() const { return InMapwho; }
+#ifdef FABLE_RETAIL_CTCMAPWHO_SEARCHID
+    // Nested opt-in (chunk 768, the CThingSearchTools rough-area body): FableWin.pdb ?GetSearchID@CTCMapwho@@QBEKXZ and
+    // ?SetSearchID@CTCMapwho@@QAEXK@Z (inline in retail: the rough-area scans read and stamp +0x4C in place).
+    unsigned long GetSearchID() const { return SearchID; }
+    void SetSearchID(unsigned long id) { SearchID = id; }
+#endif
 private:
     NThingMap::CMapwhoNode TLNode;                                       // +0x0c
     NThingMap::CMapwhoNode TRNode;                                       // +0x1c

@@ -1,0 +1,15 @@
+address	name	evidence
+0x006A2220	?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	Ego_r.pdb 0x006C6970; retail caller 0x0089DA70 passes a vector<CThing*> to fill (two sources)
+0x00A55A30	?ToC2DBoxI@C2DBoxF@@QBE?AVC2DBoxI@@XZ	Ego_r.pdb name; callers 0x00969E70 (float box -> integer box by hidden pointer) and the landed body
+0x0049D150	?GetPosition@CTCPhysicsBase@@QBE?AVC3DVector@@M@Z	Ego_r.pdb 0x004A6810 + FableWin.pdb; body (Position-OldPosition)*t+OldPosition, ret 8
+0x008FD000	?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ	Ego_r.pdb; engine/CAIStateGroupBase.h _PEEK (landed 0x009104D0, 0x00969E70)
+0x008FCFD0	?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ	Ego_r.pdb; engine/CAIStateGroupBase.h _MEMBERS
+0x00969FB0	??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsMySleepPoint@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsMySleepPoint@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	Ego_r.pdb instance 0x0098E650 (IsRunnable 0x0098E950 calls it); retail body calls the IsMySleepPoint / negated IsOccupiableOccupied filters (0x006A8930 / 0x006A8A30), only caller 0x00969E70 (vector result)
+0x007528A0	?CentreHead@CTCLook@@AAEXXZ	FableWin.pdb (private); called by 0x00753380
+0x007530D0	?FrameUpdateHeadLookAtPos@CTCLook@@AAEXABVC3DVector@@_N@Z	FableWin.pdb (private); called by 0x00753380
+0x00751B30	?GetHeadPos@CTCLook@@ABE?AVC3DVector@@XZ	FableWin.pdb (private const, hidden result); called by 0x00753380
+0x00753380	?FrameUpdateHeadInterested@CTCLook@@AAEXXZ	FableWin.pdb (private); manifest FrameUpdateHeadInterested
+0x007F5860	?GetPNearestInterestingThing@CTCTargetingBase@@QBEPAVCThing@@XZ	Ego_r.pdb (const); callers 0x00753380 / 0x00753840
+0x004C11D0	?GetFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DVector@@M@Z	Ego_r.pdb 0x004C2870 + FableWin.pdb (reference, not pointer)
+0x0070D1A0	?Init@CAnimSet@@AAEXAAVCAnimateThing@@ABVCAnimInit@@M@Z	Ego_r.pdb 0x00576950 (private; CAnimateThing&, const CAnimInit&); caller 0x0070D780
+0x00A76770	?GetLeafNodeAt@CNavQuadTreeNode@@MBEPBVCANavQuadTreeNode@@ABVC2DVector@@@Z	Ego_r.pdb 0x00BBC3A0 (protected virtual const, slot 11); vtable 0x0129DCD4

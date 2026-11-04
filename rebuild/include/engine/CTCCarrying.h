@@ -25,5 +25,11 @@ public:
     // ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z (0x006A1F80).
     void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);
 #endif
+#ifdef FABLE_RETAIL_CTCCARRYING_ALLCARRIED
+    // Nested opt-in (chunk 768, row 0x0089DA70 CGameScriptInterface::EntitySetAlpha): Ego_r.pdb (0x006C6970)
+    // ?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z, retail 0x006A2220 (const, the
+    // STLport vector by reference). Declaration only; needs std::vector (stlport/fable_containers.h) before this header.
+    void GetAllCarriedThings(std::vector<CThing*>& things) const;   // 0x006A2220
+#endif
 };
 #endif

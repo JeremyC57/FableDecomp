@@ -1,6 +1,6 @@
 address	name	evidence
-004304e0	??0CUIMiscThingsDef@NUISystem@@QAE@XZ	landing 2026-11-04zc (chunk 766): 
-0049124e	?GetActionNameFromEmbeddedTag@CSubtitleRenderer@@CI_NABVCWideString@@AAV2@@Z	landing 2026-11-04zc (chunk 766): 
-00627be0	?GetExpressionsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z	landing 2026-11-04zc (chunk 766): 
+004304e0	NUISystem::CUIMiscThingsDef::CUIMiscThingsDef	landing 2026-11-04zc (chunk 766):  [catalog form of ??0CUIMiscThingsDef@NUISystem@@QAE@XZ]
+0049124e	CSubtitleRenderer::GetActionNameFromEmbeddedTag	landing 2026-11-04zc (chunk 766):  [catalog form of ?GetActionNameFromEmbeddedTag@CSubtitleRenderer@@CI_NABVCWideString@@AAV2@@Z]
+00627be0	CTCQuickAccessMenu::GetExpressionsListUI	landing 2026-11-04zc (chunk 766):  [catalog form of ?GetExpressionsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z]
 00c42b80	CUnprovenPtrList_00c42b50::RemoveAt	landing 2026-11-04zc (chunk 766): landed leaf ?RemoveAt@CUnprovenPtrList_00c42b50@@QAEXK@Z (placeholder class of the landed callers; one-class PROPOSAL queued)
 00c47f00	CAIStateGroup_BirdFlyToFood_00c48300::Issue	landing 2026-11-04zc (chunk 766): landed leaf ?Issue@CAIStateGroup_BirdFlyToFood_00c48300@@QAEXPAUSActionRequest_00c48300@@@Z (placeholder class of the landed callers)

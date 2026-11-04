@@ -10,7 +10,7 @@ namespace NThingMap { class CThingMap;class CThingMapManager; }
 class CThingSearchTools {
 protected:
     const std::list<CClass*>& PeekTypeList(long)const;
-#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_CLIPAREA
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_CLIPAREA) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY)
     // Chunk 756 (row 0x0049C700): Ego_r.pdb ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z
     // (protected const, out of line in retail at 0x0049C700).
     C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(const NThingMap::CThingMap& map,const C2DBoxI& area)const;
@@ -53,12 +53,81 @@ public:
     // Chunk 728 (row 0x0074B770): GetAllThings<T,Container,Filter>, out of line in retail (Ego_r.pdb
     // ??$GetAllThings@VCThingMarker@@V?$vector@PAVCThingMarker@@...@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXAB...@AAV...@Z;
     // retail instance 0x0074D940). A declaration only: no layout change.
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY
+    // Chunk 768 (row 0x005EBFA0 CTCTavernGame::CameraUseCameraPoint): the GetAllThings<T,Container,Filter> body (retail instance
+    // 0x005ED860 <CThing, vector<CThing*>, CThingFilter_HasScriptName>, landed: PeekClassList 0x0049C770, the scan test, the filter on
+    // the thing, push_back; the CThing type-mask test folds), a same-TU noinline body like GetAllLeafThings above: the caller then knows
+    // the result vector is not captured and frees its storage without a second null test.
+    template<class T,class Container,class Filter> __declspec(noinline) void GetAllThings(const Filter& filter,Container& result) const {
+        const std::list<CClass*>& things=PeekClassList();
+        for(std::list<CClass*>::const_iterator it=things.begin();it!=things.end();++it) {
+            T* thing=static_cast<T*>(*it);
+            if(thing->IsIncludedInThingScans() && filter(*thing))
+                result.push_back(thing);
+        }
+    }
+protected:
+    const std::list<CClass*>& PeekClassList() const;    // 0x0049C770 ?PeekClassList@CThingSearchTools@@IBEABV?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@XZ
+public:
+#else
     template<class T,class Container,class Filter>
     void GetAllThings(const Filter&,Container&)const;
+#endif
     CThingSearchTools(CThingManager&,CWorldMap&);
     ~CThingSearchTools();
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY
+    // Chunk 768 (row 0x00969E70 CAIStateGroup_SleepOnFloor::IsRunnable): the GetAllThingsInRoughArea<T,Container,Filter> body (the
+    // landed instances 0x0075BC40 / 0x00969FB0 shape: the maps under the area 0x0049C6F0, the search stamp bump, per map the local
+    // area 0x0049C700, per mapwho layer the area scaled down by the layer's shift, then every cell's node list: a component not yet
+    // stamped this search is stamped and its thing, when of type T, goes through the filter into the result; AreaMaps is cleared),
+    // a same-TU noinline body like GetAllLeafThings above (retail compiles 0x00969FB0 straight after its caller 0x00969E70): the
+    // caller then knows the result vector is not captured and keeps its start in a register across the later calls.
+    // Needs engine/NThingMap_CThingMap.h, FABLE_RETAIL_CTCMAPWHO + FABLE_RETAIL_CTCMAPWHO_SEARCHID (engine/CTCMapwho.h) and
+    // FABLE_RETAIL_CTHING_STATTYPEFLAGS (T::StatGetTypeFlags) at the point of instantiation.
+    template<class T,class Container,class Filter> __declspec(noinline) void GetAllThingsInRoughArea(const C2DBoxI& area,const Filter& filter,Container& result) const {
+        std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);
+        GetAllThingMapsInArea(area,maps);
+        ++SearchCount_013b89a8;
+        SearchWork_013b89ac=0;
+        ++SearchID_013b89b0;
+        for(std::vector<NThingMap::CThingMap*>::iterator it=maps.begin();it!=maps.end();++it) {
+            const NThingMap::CThingMap& map=**it;
+            C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
+            for(long layer=0;layer<NThingMap::g_NoMapwhoLevels;++layer) {
+                long shift=LayerInfo_0137dad8[layer].ScaleShift;
+                C2DBoxI cells;
+                cells.TLX=local.TLX>>shift;
+                cells.TLY=local.TLY>>shift;
+                cells.BRX=((local.BRX-1)>>shift)+1;
+                cells.BRY=((local.BRY-1)>>shift)+1;
+                if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
+                    continue;
+                for(long y=cells.TLY;y<cells.BRY;++y) {
+                    const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+                    for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
+                        for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
+                            CTCMapwho* who=node->PMapwho;
+                            if(who->GetSearchID()<SearchID_013b89b0) {
+                                who->SetSearchID(SearchID_013b89b0);
+                                CThing& thing=who->GetParentThing();
+                                unsigned long mask=T::StatGetTypeFlags();
+                                if((thing.GetTypeFlags()&mask)==mask && filter(static_cast<const T&>(thing)))
+                                    result.push_back(static_cast<T*>(&thing));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        maps.clear();
+    }
+protected:
+    void GetAllThingMapsInArea(const C2DBoxI& area,std::vector<NThingMap::CThingMap*>& maps) const;   // 0x0049C6F0 (Ego_r.pdb, protected const)
+public:
+#else
     template<class T,class Container,class Filter>
     void GetAllThingsInRoughArea(const C2DBoxI&,const Filter&,Container&) const;
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingSearchTools)==0x18);
 #else

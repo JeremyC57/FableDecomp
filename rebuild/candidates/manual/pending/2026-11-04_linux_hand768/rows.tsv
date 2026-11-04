@@ -1,0 +1,15 @@
+address	manifest_name	length	draft_path	residue_class
+00753380	FrameUpdateHeadInterested	297	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk764/differ/00753380.cpp	block/arm-layout
+0070d780	AddCombinationAnim	305	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk764/differ/0070d780.cpp	register-tie
+00ed9bb0	ProcessSongsClothes	306	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk764/differ/00ed9bb0.cpp	stack-slot/frame
+0083dc80	DrawPreparePrimitivesForRendering	309	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk764/differ/0083dc80.cpp	x87-order
+00969e70	?IsRunnable@CAIStateGroup_SleepOnFloor@@UAE_NXZ	311	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk764/differ/00969e70.cpp	x87-order
+00837b30	DrawPreparePrimitivesForRendering	314	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk764/differ/00837b30.cpp	x87-order
+0089da70	?EntitySetAlpha@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z	314	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk764/differ/0089da70.cpp	stack-slot/frame
+009d5bf0	HandleFailedAllocation	314	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk764/differ/009d5bf0.cpp	register-tie
+00f35c60	PerlinNoise	316	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk764/differ/00f35c60.cpp	block/arm-layout
+00a76770	CNavQuadTreeNode::GetLeafNodeAt	321	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk764/differ/00a76770.cpp	block/arm-layout
+005ebfa0	CameraUseCameraPoint	329	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk764/differ/005ebfa0.cpp	block/arm-layout
+0096dbc0	Initialise	331	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk764/differ/0096dbc0.cpp	register-tie
+00bcfb00	RenderPrimitiveBlocksIndexBuffer	336	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk764/differ/00bcfb00.cpp	register-tie
+00c3a7d0	AudioLib_ApplyGainEnvelope_00c3a7d0	273	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk763/differ/00c3a7d0.cpp	x87-order

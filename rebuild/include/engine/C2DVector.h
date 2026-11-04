@@ -19,6 +19,16 @@ public:
     C2DVector() { }
     C2DVector(float x,float y) : X(x),Y(y) { }
     C2DVector(const C2DVector& p) : X(p.X),Y(p.Y) { }
+#ifdef FABLE_RETAIL_C2DVECTOR_INITIALISE
+    // Nested opt-in (chunk 768, row 0x00A76770 CNavQuadTreeNode::GetLeafNodeAt): FableWin.pdb ?Initialise@C2DVector@@QAEXMM@Z (inline in
+    // retail: the arguments are built right to left, Y first, then X and Y are stored).
+    void Initialise(float x,float y) { X=x; Y=y; }
+#endif
+#ifdef FABLE_RETAIL_C2DVECTOR_FROM3D
+    // Nested opt-in (chunk 768, row 0x00969E70): FableWin.pdb ??0C2DVector@@QAE@ABVC3DVector@@@Z (the X / Y of a 3D position; inline in
+    // retail; the body follows the class).
+    C2DVector(const class C3DVector& v);
+#endif
     C2DVector operator+(const C2DVector& vector) const { return C2DVector(X+vector.X,Y+vector.Y); }
     C2DVector operator-(const C2DVector& vector) const { return C2DVector(X-vector.X,Y-vector.Y); }
     // lib_coord.hpp arithmetic used by Mass (row 008eec70; Codex pass 11 Mass model, parked row).
@@ -50,6 +60,10 @@ public:
     }
 };
 #pragma pack(pop)
+#ifdef FABLE_RETAIL_C2DVECTOR_FROM3D
+#include "engine/C3DVector.h"
+inline C2DVector::C2DVector(const C3DVector& v) : X(v.X),Y(v.Y) { }
+#endif
 #else
 class C2DVector {
 public:

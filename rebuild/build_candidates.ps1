@@ -383897,6 +383897,41 @@ $catalog = @(
         TestSource = '01/22/CTCFireheartMinigame_dynamicatexitdestructorfornotextentry_01229e10_test.cpp'
         PassPattern = '01229e10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005ebfa0'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_CameraUseCameraPoint_005ebfa0.cpp'
+        TestSource = '00/5e/CTCTavernGame_CameraUseCameraPoint_005ebfa0_test.cpp'
+        PassPattern = '005EBFA0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096dbc0'
+        Module = 'CCreatureAction_ScreamerIntoAggressive'
+        Source = '00/96/CCreatureActionScreamerIntoAggressive_Initialise_0096dbc0.cpp'
+        TestSource = '00/96/CCreatureActionScreamerIntoAggressive_Initialise_0096dbc0_test.cpp'
+        PassPattern = '0096DBC0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00969e70'
+        Module = 'CAIStateGroup_SleepOnFloor'
+        Source = '00/96/CAIStateGroupSleepOnFloor_IsRunnable_00969e70.cpp'
+        TestSource = '00/96/CAIStateGroupSleepOnFloor_IsRunnable_00969e70_test.cpp'
+        PassPattern = '00969E70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00753380'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_FrameUpdateHeadInterested_00753380.cpp'
+        TestSource = '00/75/CTCLook_FrameUpdateHeadInterested_00753380_test.cpp'
+        PassPattern = '00753380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070d780'
+        Module = 'CAnimateThing'
+        Source = '00/70/CAnimateThing_AddCombinationAnim_0070d780.cpp'
+        TestSource = '00/70/CAnimateThing_AddCombinationAnim_0070d780_test.cpp'
+        PassPattern = '0070D780_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

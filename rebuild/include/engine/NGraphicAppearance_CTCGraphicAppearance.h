@@ -24,6 +24,16 @@ public:
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE
     void UnregisterComponent(CAGraphicAppearanceComponent& component);   // 0x004C0000
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETALPHA
+    // Nested opt-in (chunk 768, row 0x0089DA70 CGameScriptInterface::EntitySetAlpha): Ego_r.pdb / FableWin.pdb
+    // ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z (the bound spelling at 0x004BFAC0). Declaration only.
+    void SetAlpha(unsigned char alpha);                      // 0x004BFAC0
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCALPOS
+    // Nested opt-in (chunk 768, row 0x00753380 CTCLook::FrameUpdateHeadInterested): Ego_r.pdb / FableWin.pdb
+    // ?GetFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DVector@@M@Z (out of line, retail 0x004C11D0). Declaration only.
+    bool GetFocalPosIfLoaded(C3DVector& pos, float time) const;   // 0x004C11D0
+#endif
 };
 }
 #endif
