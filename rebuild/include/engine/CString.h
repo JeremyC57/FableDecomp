@@ -6,6 +6,11 @@
 // Layout: real libpk MFC-derived CString has its sole character pointer at +0;
 // CStringData is the preceding three native long words at -12, -8 and -4.
 // Native SetAt/Replace/FormatV and original MFC CString declarations corroborate.
+// Retail opt-in (chunk 750, row 0x00C21040 CSoundEvent::Describe): define FABLE_RETAIL_CSTRING_BUILDERS for the out-of-line
+// constructors, destructor and the `__fastcall` stream builders the libpk trace code chains (`mov edx,arg ; mov ecx,eax ; call`;
+// the double builder takes its argument on the stack, `fld qword [esp+4]` ... `ret 8`). The spellings are the ones bound to
+// these addresses in rebuild/oracles/reloc_bindings.tsv (operator<<(double) 0x00C0DED0 was unbound; same family). Declarations
+// only: no layout change.
 typedef void (__fastcall* PFNASSERTHOOK)(const char* message);
 extern PFNASSERTHOOK g_pfnAssertHook;
 struct CDebugBreak { CDebugBreak(); };
@@ -28,5 +33,14 @@ public:
     char* GetBuffer(int nMinBufLength);
     void ReleaseBuffer(int nNewLength = -1);
     void FormatV(const char* lpszFormat, va_list argList);
+#ifdef FABLE_RETAIL_CSTRING_BUILDERS
+    CString(const char* text);                               // 0x00C0BFE0 ??0CString@@QAE@PBD@Z
+    CString(const CString& other);                           // 0x00C0DAB0 ??0CString@@QAE@ABV0@@Z
+    ~CString();                                              // 0x00C0BA40 ??1CString@@QAE@XZ
+    CString& __fastcall operator<<(const char* text);        // 0x00C0DEC0 ??6CString@@QAIAAV0@PBD@Z
+    CString& __fastcall operator<<(unsigned long value);     // 0x00C0DF10 ??6CString@@QAIAAV0@K@Z
+    CString& __fastcall operator<<(long value);              // 0x00C0DF00 ??6CString@@QAIAAV0@J@Z
+    CString& __fastcall operator<<(double value);            // 0x00C0DED0 ??6CString@@QAIAAV0@N@Z
+#endif
 };
 #endif

@@ -1,0 +1,24 @@
+address	name
+00558fd0	NUISystem::CDraggableInto::~CDraggableInto
+00559020	[thunk] NUISystem::CDraggableInto::`vector deleting destructor'`adjustor{4}' (??_ECDraggableInto@NUISystem@@W3AEPAXI@Z)
+00559030	[thunk] NUISystem::CDraggableInto::`vector deleting destructor'`adjustor{24}' (??_ECDraggableInto@NUISystem@@WBI@AEPAXI@Z)
+0077b290	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::~CTCGraphicAppearanceAnimatedMesh
+0077b9f0	NGraphicAppearance::CTCGraphicAppearanceStaticMesh::~CTCGraphicAppearanceStaticMesh
+0077be80	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::~CTCGraphicAppearanceStaticMeshFadeOutOnProximity
+0077c440	NGraphicAppearance::CTCGraphicAppearanceSprite::~CTCGraphicAppearanceSprite
+008ffbee	CAIStateGroup_KidPlayHopscotch::CAIStateGroup_KidPlayHopscotch
+008ffd84	CAIStateGroup_WorkSawingWood::CAIStateGroup_WorkSawingWood
+008ffdce	CAIStateGroup_WorkHammerAnvil::CAIStateGroup_WorkHammerAnvil
+00c207f0	CSoundEvent::~CSoundEvent
+00c20810	CSoundEvent::StopListening
+00c21040	CSoundEvent::Describe
+00c21780	CSoundEvent::Play
+00c21ba0	CSoundEvent::CSoundEvent
+00c22c30	CSoundEvent::`vector deleting destructor'
+00c0ded0	CString::operator<<(double)
+00c1ea80	CSoundSample::GetSize
+00c1ea60	CSoundSample::LoadData
+00c262a0	CStreamBuffer::CStreamBuffer
+00c26400	CStreamBuffer::~CStreamBuffer
+00c25c60	CSampleRef::GetSample
+00c25ca0	CSampleRef::~CSampleRef

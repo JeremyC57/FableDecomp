@@ -381477,6 +381477,106 @@ $catalog = @(
         TestSource = '00/a9/CMatrix4x4_AlignedPreScaleTransposed_00a9d580_test.cpp'
         PassPattern = '00a9d580_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00558fd0'
+        Module = 'NUISystem::CDraggableInto'
+        Source = '00/55/NUISystemCDraggableInto_CDraggableInto_00558fd0.cpp'
+        TestSource = '00/55/NUISystemCDraggableInto_CDraggableInto_00558fd0_test.cpp'
+        PassPattern = '00558fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00559020'
+        Module = 'NUISystem::CDraggableInto'
+        Source = '00/55/NUISystemCDraggableInto_vectordeletingdestructoradjustor4_00559020.cpp'
+        TestSource = '00/55/NUISystemCDraggableInto_vectordeletingdestructoradjustor4_00559020_test.cpp'
+        PassPattern = '00559020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00559030'
+        Module = 'NUISystem::CDraggableInto'
+        Source = '00/55/NUISystemCDraggableInto_vectordeletingdestructoradjustor24_00559030.cpp'
+        TestSource = '00/55/NUISystemCDraggableInto_vectordeletingdestructoradjustor24_00559030_test.cpp'
+        PassPattern = '00559030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077b290'
+        Module = 'NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh'
+        Source = '00/77/NGraphicAppearanceCTCGraphicAppearanceAnimatedMesh_CTCGraphicAppearanceAnimatedMesh_0077b290.cpp'
+        TestSource = '00/77/NGraphicAppearanceCTCGraphicAppearanceAnimatedMesh_CTCGraphicAppearanceAnimatedMesh_0077b290_test.cpp'
+        PassPattern = '0077b290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077b9f0'
+        Module = 'NGraphicAppearance::CTCGraphicAppearanceStaticMesh'
+        Source = '00/77/NGraphicAppearanceCTCGraphicAppearanceStaticMesh_CTCGraphicAppearanceStaticMesh_0077b9f0.cpp'
+        TestSource = '00/77/NGraphicAppearanceCTCGraphicAppearanceStaticMesh_CTCGraphicAppearanceStaticMesh_0077b9f0_test.cpp'
+        PassPattern = '0077b9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077be80'
+        Module = 'NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity'
+        Source = '00/77/NGraphicAppearanceCTCGraphicAppearanceStaticMeshFadeOutOnProximity_CTCGraphicAppearanceStaticMeshFadeOutOnProximity_0077be80.cpp'
+        TestSource = '00/77/NGraphicAppearanceCTCGraphicAppearanceStaticMeshFadeOutOnProximity_CTCGraphicAppearanceStaticMeshFadeOutOnProximity_0077be80_test.cpp'
+        PassPattern = '0077be80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077c440'
+        Module = 'NGraphicAppearance::CTCGraphicAppearanceSprite'
+        Source = '00/77/NGraphicAppearanceCTCGraphicAppearanceSprite_CTCGraphicAppearanceSprite_0077c440.cpp'
+        TestSource = '00/77/NGraphicAppearanceCTCGraphicAppearanceSprite_CTCGraphicAppearanceSprite_0077c440_test.cpp'
+        PassPattern = '0077c440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ffbee'
+        Module = 'CAIStateGroup_KidPlayHopscotch'
+        Source = '00/8f/CAIStateGroupKidPlayHopscotch_CAIStateGroupKidPlayHopscotch_008ffbee.cpp'
+        TestSource = '00/8f/CAIStateGroupKidPlayHopscotch_CAIStateGroupKidPlayHopscotch_008ffbee_test.cpp'
+        PassPattern = '008ffbee_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ffd84'
+        Module = 'CAIStateGroup_WorkSawingWood'
+        Source = '00/8f/CAIStateGroupWorkSawingWood_CAIStateGroupWorkSawingWood_008ffd84.cpp'
+        TestSource = '00/8f/CAIStateGroupWorkSawingWood_CAIStateGroupWorkSawingWood_008ffd84_test.cpp'
+        PassPattern = '008ffd84_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ffdce'
+        Module = 'CAIStateGroup_WorkHammerAnvil'
+        Source = '00/8f/CAIStateGroupWorkHammerAnvil_CAIStateGroupWorkHammerAnvil_008ffdce.cpp'
+        TestSource = '00/8f/CAIStateGroupWorkHammerAnvil_CAIStateGroupWorkHammerAnvil_008ffdce_test.cpp'
+        PassPattern = '008ffdce_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c207f0'
+        Module = 'CSoundEvent'
+        Source = '00/c2/CSoundEvent_CSoundEvent_00c207f0.cpp'
+        TestSource = '00/c2/CSoundEvent_CSoundEvent_00c207f0_test.cpp'
+        PassPattern = '00c207f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c20810'
+        Module = 'CSoundEvent'
+        Source = '00/c2/CSoundEvent_StopListening_00c20810.cpp'
+        TestSource = '00/c2/CSoundEvent_StopListening_00c20810_test.cpp'
+        PassPattern = '00c20810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c21040'
+        Module = 'CSoundEvent'
+        Source = '00/c2/CSoundEvent_Describe_00c21040.cpp'
+        TestSource = '00/c2/CSoundEvent_Describe_00c21040_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c21040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c21780'
+        Module = 'CSoundEvent'
+        Source = '00/c2/CSoundEvent_Play_00c21780.cpp'
+        TestSource = '00/c2/CSoundEvent_Play_00c21780_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c21780_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

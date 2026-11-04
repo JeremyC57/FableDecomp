@@ -1968,3 +1968,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - 2026-11-04 (chunk 748) `// Retail-asm-helper:` takes identifiers split on spaces/commas (list macro or inline names, never prose); purity.py only sees helpers the row spells, so an inline member that expands an asm macro must sit in the helper header and be listed there.
 - 2026-11-04 (chunk 748) VC7.1's x87 `E *= s` operand order follows function-wide value numbering, not spelling: change the loop structure, not the expressions. Portable twins of 32-bit layouts use `unsigned int`, not `unsigned long` (8 bytes on 64-bit g++).
 - A landed source that newly includes a shared header gains the header's inline functions in its object; without a `// Leaf: <symbol>` line `vland` grades the wrong function (DIFFER). Add the Leaf line when a respell switches a stand-in to a header (wave 35d, 00cdd2f0).
+- Adjustor thunks for a virtual destructor are `??_E<Class>@@W<adj>AEPAXI@Z`; defining the virtual destructor out of line emits them (chunk 750).
+- vland's purity scan rejects any identifier containing `_emit` (e.g. `m_emitterId`) as NOT_GENUINE: rename the identifier (chunk 750).
+- A three-register rotation that no accessor/temporary spelling moves can come from VC7.1 cross-jumping identical exit tails: write each exit out in full (chunk 750, CSoundEvent::Play).

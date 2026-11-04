@@ -1,0 +1,15 @@
+address	name	status	attempts	note
+00558fd0	NUISystem::CDraggableInto::~CDraggableInto	RELOCATION_MATCH	1	landed ??_G 0x00559040 model; test PASS
+00559020	NUISystem::CDraggableInto::`vector deleting destructor' [thunk] adjustor{4} (??_ECDraggableInto@NUISystem@@W3AEPAXI@Z)	RELOCATION_MATCH	1	compiler thunk from the same model; test PASS
+00559030	NUISystem::CDraggableInto::`vector deleting destructor' [thunk] adjustor{24} (??_ECDraggableInto@NUISystem@@WBI@AEPAXI@Z)	RELOCATION_MATCH	1	compiler thunk; test PASS
+0077b290	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::~CTCGraphicAppearanceAnimatedMesh	RELOCATION_MATCH	1	hdr overlay NGraphicAppearance_CTCGraphicAppearance.h (FABLE_RETAIL_CTCGRAPHICAPPEARANCE); test PASS
+0077b9f0	NGraphicAppearance::CTCGraphicAppearanceStaticMesh::~CTCGraphicAppearanceStaticMesh	RELOCATION_MATCH	1	test PASS
+0077be80	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::~CTCGraphicAppearanceStaticMeshFadeOutOnProximity	RELOCATION_MATCH	1	test PASS
+0077c440	NGraphicAppearance::CTCGraphicAppearanceSprite::~CTCGraphicAppearanceSprite	RELOCATION_MATCH	1	test PASS
+008ffbee	CAIStateGroup_KidPlayHopscotch::CAIStateGroup_KidPlayHopscotch	RELOCATION_MATCH	1	real fn (unaligned AI state-group TU); test PASS
+008ffd84	CAIStateGroup_WorkSawingWood::CAIStateGroup_WorkSawingWood	RELOCATION_MATCH	1	test PASS
+008ffdce	CAIStateGroup_WorkHammerAnvil::CAIStateGroup_WorkHammerAnvil	RELOCATION_MATCH	1	test PASS
+00c207f0	CSoundEvent::~CSoundEvent	RELOCATION_MATCH	2	libpk; member dtor respelled ??1CSampleRef (NAME_FIXES); test PASS
+00c20810	CSoundEvent::StopListening	RELOCATION_MATCH	1	libpk; bound spelling; test PASS
+00c21040	CSoundEvent::Describe	RELOCATION_MATCH	3	libpk, /EHsc; engine/CString.h overlay (FABLE_RETAIL_CSTRING_BUILDERS); jump table pairing checked by hand; test PASS
+00c21780	CSoundEvent::Play	RELOCATION_MATCH	8	libpk, /EHsc; matched once both failure exits and both play exits are spelled out (VC7.1 cross-jumps them); test PASS

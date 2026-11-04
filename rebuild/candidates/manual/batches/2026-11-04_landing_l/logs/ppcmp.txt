@@ -1,0 +1,2 @@
+SAME rebuild/src/compiled/00/6a/CThingPlayerCreature_DrawPreparePrimitivesForRendering_006aa2e0.cpp
+SAME rebuild/src/compiled/00/c0/global_00c0d1b0_00c0d1b0.cpp

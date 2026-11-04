@@ -9968,9 +9968,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00558e10	Initialize	NUISystem::CDraggableInto	unknown	undefined	0		0	yes	accepted									
 00558ec0	CDraggableInto	NUISystem::CDraggableInto	__thiscall	undefined	2	CDraggableInto *,long	0	yes	accepted									
 00558f40	AddAction	NUISystem::CDraggableInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00558fd0	~CDraggableInto	CDraggableInto	__thiscall	void	1	CDraggableInto *	1	yes	accepted									
-00559020	NUISystem::CDraggableInto::vfunc_0	NUISystem::CDraggableInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00559030	NUISystem::CDraggableInto::vfunc_0	NUISystem::CDraggableInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00558fd0	~CDraggableInto	NUISystem::CDraggableInto	__thiscall	void	1	CDraggableInto *	1	yes	accepted									
+00559020	`vector deleting destructor'`adjustor{4}'	NUISystem::CDraggableInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00559030	`vector deleting destructor'`adjustor{24}'	NUISystem::CDraggableInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00559040	`scalar deleting destructor'	NUISystem::CDraggableInto	unknown	undefined	0		0	yes	accepted									
 005590a0	Initialise	NUISystem::CScrollBarOutside	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005590b0	vfunc_152	NUISystem::CScrollBarOutside	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -21023,7 +21023,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0077b230	vfunc_9	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077b240	vfunc_1	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077b250	CTCGraphicAppearanceAnimatedMesh	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh	__thiscall	undefined	2	CTCGraphicAppearanceAnimatedMesh *,CThing *	0	yes	accepted									
-0077b290	~CTCGraphicAppearanceAnimatedMesh	CTCGraphicAppearanceAnimatedMesh	__thiscall	void	1	CTCGraphicAppearanceAnimatedMesh *	1	yes	accepted									
+0077b290	~CTCGraphicAppearanceAnimatedMesh	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh	__thiscall	void	1	CTCGraphicAppearanceAnimatedMesh *	1	yes	accepted									
 0077b2d0	OnCreate	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077b2e0	GetMeshesUsed	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh	unknown	undefined	0		0	yes	accepted									
 0077b350	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::vfunc_0	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -21036,7 +21036,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0077b860	operator=	std::vector	unknown	undefined	0		0	yes	accepted									
 0077b9a0	vfunc_1	NGraphicAppearance::CTCGraphicAppearanceStaticMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077b9b0	CTCGraphicAppearanceStaticMesh	NGraphicAppearance::CTCGraphicAppearanceStaticMesh	__thiscall	undefined	2	CTCGraphicAppearanceAnimatedMesh *,CThing *	0	yes	accepted									
-0077b9f0	~CTCGraphicAppearanceAnimatedMesh	CTCGraphicAppearanceAnimatedMesh	__thiscall	void	1	CTCGraphicAppearanceAnimatedMesh *	1	yes	accepted									
+0077b9f0	~CTCGraphicAppearanceStaticMesh	NGraphicAppearance::CTCGraphicAppearanceStaticMesh	__thiscall	void	1	CTCGraphicAppearanceAnimatedMesh *	1	yes	accepted									
 0077ba30	vfunc_6	NGraphicAppearance::CTCGraphicAppearanceStaticMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077ba40	NGraphicAppearance::CTCGraphicAppearanceStaticMesh::vfunc_0	NGraphicAppearance::CTCGraphicAppearanceStaticMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077bc80	GetMeshesUsed	NGraphicAppearance::CTCGraphicAppearanceStaticMesh	unknown	undefined	0		0	yes	accepted									
@@ -21046,7 +21046,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0077bd70	CEnginePrimitiveStaticMesh	CEnginePrimitiveStaticMesh	__thiscall	undefined	13	CEnginePrimitiveStaticMesh *,__uint64,ulong,C3DVector *,CRightHandedSet *,float,bool,uchar,CRGBColour,float,EEngineInterpolationSet,CEnginePrimitiveThemeChannelDesc *,bool	0	yes	accepted									
 0077be30	vfunc_1	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077be40	CTCGraphicAppearanceStaticMeshFadeOutOnProximity	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity	__thiscall	undefined	2	CTCGraphicAppearanceAnimatedMesh *,CThing *	0	yes	accepted									
-0077be80	~CTCGraphicAppearanceAnimatedMesh	CTCGraphicAppearanceAnimatedMesh	__thiscall	void	1	CTCGraphicAppearanceAnimatedMesh *	1	yes	accepted									
+0077be80	~CTCGraphicAppearanceStaticMeshFadeOutOnProximity	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity	__thiscall	void	1	CTCGraphicAppearanceAnimatedMesh *	1	yes	accepted									
 0077bec0	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::vfunc_0	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077c160	GetMeshesUsed	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity	__thiscall	void	2	CTCGraphicAppearanceStaticMeshFadeOutOnProximity *,vector<NGraphicAppearance::CMeshInfo,std::allocator<NGraphicAppearance::CMeshInfo>_> *	1	yes	accepted									
 0077c210	CEngineMeshEffectDistanceFade	CEngineMeshEffectDistanceFade	__thiscall	undefined	4	CQuestInfoElementCounterList *,long,long,float	0	yes	accepted									
@@ -21058,7 +21058,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0077c360	GetFraction	CLoopedRange	unknown	undefined	0		0	yes	accepted									
 0077c3d0	vfunc_2	NGraphicAppearance::CTCGraphicAppearanceSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077c3e0	CTCGraphicAppearanceSprite	NGraphicAppearance::CTCGraphicAppearanceSprite	__thiscall	undefined	2	CTCGraphicAppearanceSprite *,CThing *	0	yes	accepted									
-0077c440	~CTCGraphicAppearanceAnimatedMesh	CTCGraphicAppearanceAnimatedMesh	__thiscall	void	1	CTCGraphicAppearanceAnimatedMesh *	1	yes	accepted									
+0077c440	~CTCGraphicAppearanceSprite	NGraphicAppearance::CTCGraphicAppearanceSprite	__thiscall	void	1	CTCGraphicAppearanceAnimatedMesh *	1	yes	accepted									
 0077c480	OnCreate	NGraphicAppearance::CTCGraphicAppearanceSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077c490	SetRotationAngle	NGraphicAppearance::CTCGraphicAppearanceSprite	__thiscall	void	2	CTCGraphicAppearanceSprite *,float	1	yes	accepted									
 0077c4d0	NGraphicAppearance::CTCGraphicAppearanceSprite::vfunc_0	NGraphicAppearance::CTCGraphicAppearanceSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -30355,7 +30355,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008ffb88	`scalar_deleting_destructor'	CAIStateGroup_KidWanderNearKids	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ffb88.cpp
 008ffba4	CAIStateGroup_KidWatchHopscotch	CAIStateGroup_KidWatchHopscotch	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffbc8	`scalar_deleting_destructor'	CAIStateGroup_KidWatchHopscotch	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffbc8.cpp
-008ffbee	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ffbee	CAIStateGroup_KidPlayHopscotch	CAIStateGroup_KidPlayHopscotch	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffc12	`scalar_deleting_destructor'	CAIStateGroup_KidPlayHopscotch	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffc12.cpp
 008ffc5c	`scalar_deleting_destructor'	CAIStateGroup_KidHurtSelfRunToMother	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ffc5c.cpp
 008ffc78	CAIStateGroup_KidReactToBlockage	CAIStateGroup_KidReactToBlockage	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
@@ -30367,9 +30367,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008ffd1e	`scalar_deleting_destructor'	CAIStateGroup_MoveGoodsBase	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ffd1e.cpp
 008ffd3a	CAIStateGroup_WorkInWarehouse	CAIStateGroup_WorkInWarehouse	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffd5e	`scalar_deleting_destructor'	CAIStateGroup_WorkInWarehouse	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffd5e.cpp
-008ffd84	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ffd84	CAIStateGroup_WorkSawingWood	CAIStateGroup_WorkSawingWood	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffda8	`scalar_deleting_destructor'	CAIStateGroup_WorkSawingWood	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffda8.cpp
-008ffdce	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ffdce	CAIStateGroup_WorkHammerAnvil	CAIStateGroup_WorkHammerAnvil	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffdf2	`scalar_deleting_destructor'	CAIStateGroup_WorkHammerAnvil	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffdf2.cpp
 008ffe3c	`scalar_deleting_destructor'	CAIStateGroup_StayNearSchool	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ffe3c.cpp
 008ffe7c	`scalar_deleting_destructor'	CAIStateGroup_ThrowLogsOnFire	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ffe7c.cpp
@@ -44463,8 +44463,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c1ea30	IncrementLifetimer	CParticle	__thiscall	void	1	CParticle *	1	yes	accepted									
 00c1ea40	IncrementLifetimer	NParticleEngine::CParticle	__thiscall	void	1	CParticle *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CParticle_IncrementLifetimer_00c1ea40.cpp
 00c1ea50	sub_00c1ea50	_global	unknown	undefined	0		0			discovered	gapscan							
-00c1ea60	IsPosNavLineOfSightTo	CTCCreatureNavigation	__thiscall	bool	2	CTCCreatureNavigation *,C3DVector *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CTCCreatureNavigation_IsPosNavLineOfSightTo_00c1ea60.cpp
-00c1ea80	GetMemoryFootprint	CMap	__thiscall	long	1	CMap *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CMap_GetMemoryFootprint_00c1ea80.cpp
+00c1ea60	LoadData	CSoundSample	__thiscall	bool	2	CTCCreatureNavigation *,C3DVector *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CTCCreatureNavigation_IsPosNavLineOfSightTo_00c1ea60.cpp
+00c1ea80	GetSize	CSoundSample	__thiscall	long	1	CMap *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CMap_GetMemoryFootprint_00c1ea80.cpp
 00c1eaa0	CUIComponentBase	CUIComponentBase	unknown	undefined	0		0	yes	accepted									
 00c1eb10	~CVtable_012b3404	CVtable_012b3404	__fastcall	void *	1	uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\global_operatornew_00c1eb10.cpp
 00c1eb30	Expand	CUnprovenPointerArray<CUnprovenPointerElement_00C1EB30>	unknown	undefined	0		0	yes	accepted									
@@ -44601,8 +44601,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c20750	GetActivePlayer	CSoundEvent	unknown	undefined	0		0	yes	accepted									
 00c207a0	IsState5_00C207A0	CUnprovenStateObject_00C20720	unknown	undefined	0		0	yes	accepted									
 00c207c0	IsWaitingOrPlayingPhysical	CSoundEvent	unknown	undefined	0		0	yes	accepted									
-00c207f0	Object_Destruct_c207f0	_global	unknown	undefined	0		0	unmeasured	review-low									
-00c20810	OnActivate	CActionSummonerLightningAttackTarget	__thiscall	void	1	CActionSummonerLightningAttackTarget *	1	yes	accepted									
+00c207f0	~CSoundEvent	CSoundEvent	unknown	undefined	0		0	unmeasured	review-low									
+00c20810	StopListening	CSoundEvent	__thiscall	void	1	CActionSummonerLightningAttackTarget *	1	yes	accepted									
 00c20840	IsActive	CSoundEvent	__thiscall	wchar_t	1	CManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CInput_GetKeyPressed_00c20840.cpp
 00c20850	WaitForData	CSoundEvent	unknown	undefined	0		0	yes	accepted									
 00c20880	WaitForMemory	CSoundEvent	unknown	undefined	0		0	yes	accepted									
@@ -44640,11 +44640,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c216d0	YieldPhysicalPlayer	CSoundEvent	__thiscall	void	3	CWorldMap *,CScriptedMapBrush *,bool	1	yes	accepted									
 00c21700	Restart	CSoundEvent	unknown	undefined	0		0	yes	accepted									
 00c21750	AssignPhysicalPlayer	CSoundEvent	__thiscall	int	2	basic_string<char,std::char_traits<char>,std::allocator<char>_> *,char *	1	yes	accepted									
-00c21780	CInputProcessRebootGame_HandleInputEvent	_global	unknown	undefined	0		0	yes	accepted									
+00c21780	Play	CSoundEvent	unknown	undefined	0		0	yes	accepted									
 00c219f0	ProcessEvent	CInputEventProcessor_00c219f0	__thiscall	void	2	CSpellContainerList *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
 00c21a20	ActivateThemeDensityDisplay	CThemeDisplay_00c21a20	__thiscall	void	2	CEditControlCentre *,long	1	yes	accepted									
 00c21a50	Update	CSoundEvent	unknown	undefined	0		0	yes	accepted									
-00c21ba0	CScriptModuleBase	CScriptModuleBase	__thiscall	undefined	1	CScriptModuleBase *	0	yes	accepted									
+00c21ba0	CSoundEvent	CSoundEvent	__thiscall	undefined	1	CScriptModuleBase *	0	yes	accepted									
 00c21c20	CRebootGameActionHandler_Initialize	_global	unknown	undefined	0		0	yes	accepted									
 00c21d50	sub_00c21d50	_global	unknown	undefined	0		0			discovered	gapscan							
 00c21d80	SetMemberConst_00c21d80	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CBase_CBase_00c21d80.cpp
@@ -44894,9 +44894,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c25b10	CTimerHost	CTimerHost	unknown	undefined	0		0	yes	accepted									
 00c25c20	Close	CTimerHost_00c25c20	__thiscall	void	1	CGuiControlListBoxPane *	1	yes	accepted									
 00c25c50	C3DGroup2	C3DGroup2	__thiscall	undefined	1	C3DGroup2 *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\C3DGroup2_C3DGroup2_00c25c50.cpp
-00c25c60	GetMember_dword0x0_00c25c60	_global	__thiscall	EInputKey	1	CInputEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CInputEvent_GetKey_00c25c60.cpp
+00c25c60	GetSample	CSampleRef	__thiscall	EInputKey	1	CInputEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CInputEvent_GetKey_00c25c60.cpp
 00c25c70	Bind	CParticleRef_00c25c70	__thiscall	void	3	CAnimateThing *,C3DAnimationBlendState * *,C3DAnimationBlendState * *	1	yes	accepted									
-00c25ca0	Nop_ret0_00c25ca0	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\E2_E2_00c25ca0.cpp
+00c25ca0	~CSampleRef	CSampleRef	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\E2_E2_00c25ca0.cpp
 00c25cb0	~CParticleHandle	CParticleHandle	__thiscall	void	1	CTCStealth *	1	yes	accepted									
 00c25ce0	CompareEvents	CInputEvent	unknown	undefined	0		0	yes	accepted									
 00c25d50	LessThanComparator	CInputEvent	unknown	undefined	0		0	yes	accepted									
@@ -44916,10 +44916,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c26240	operator()	CAnimFilterOfGroup	__thiscall	bool	2	CAnimFilterOfGroup *,CAnimationEntry *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CAnimFilterOfGroup_operator_00c26240.cpp
 00c26260	Catch@0040d959	_global	unknown	undefined	0		0	yes	accepted									
 00c26280	DrawGetEnvironment	CWorld	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CWorld_DrawGetEnvironment_00c26280.cpp
-00c262a0	CSoundFormat_00c262a0	CSoundFormat_00c262a0	__thiscall	undefined	1	CAnimationSet *	0	yes	accepted									
+00c262a0	CStreamBuffer	CStreamBuffer	__thiscall	undefined	1	CAnimationSet *	0	yes	accepted									
 00c262e0	Attach	CStreamBuffer	unknown	undefined	0		0	yes	accepted									
 00c26390	Release	CStreamBuffer	unknown	undefined	0		0	yes	accepted									
-00c26400	Nop_ret0_00c26400	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\E2_E2_00c26400.cpp
+00c26400	~CStreamBuffer	CStreamBuffer	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\E2_E2_00c26400.cpp
 00c26410	AddUsers	CStreamBuffer	unknown	undefined	0		0	yes	accepted									
 00c26480	RemoveUsers	CStreamBuffer	unknown	undefined	0		0	yes	accepted									
 00c26500	SetDebugCameraType	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CGameScriptInterface_SetDebugCameraType_00c26500.cpp

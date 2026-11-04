@@ -1,0 +1,24 @@
+address	name	evidence
+00558fd0	NUISystem::CDraggableInto::~CDraggableInto	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00559020	NUISystem::CDraggableInto::`vector deleting destructor'`adjustor{4}'	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00559030	NUISystem::CDraggableInto::`vector deleting destructor'`adjustor{24}'	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+0077b290	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::~CTCGraphicAppearanceAnimatedMesh	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+0077b9f0	NGraphicAppearance::CTCGraphicAppearanceStaticMesh::~CTCGraphicAppearanceStaticMesh	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+0077be80	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::~CTCGraphicAppearanceStaticMeshFadeOutOnProximity	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+0077c440	NGraphicAppearance::CTCGraphicAppearanceSprite::~CTCGraphicAppearanceSprite	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+008ffbee	CAIStateGroup_KidPlayHopscotch::CAIStateGroup_KidPlayHopscotch	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+008ffd84	CAIStateGroup_WorkSawingWood::CAIStateGroup_WorkSawingWood	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+008ffdce	CAIStateGroup_WorkHammerAnvil::CAIStateGroup_WorkHammerAnvil	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00c207f0	CSoundEvent::~CSoundEvent	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00c20810	CSoundEvent::StopListening	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00c21040	CSoundEvent::Describe	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00c21780	CSoundEvent::Play	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00c21ba0	CSoundEvent::CSoundEvent	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00c22c30	CSoundEvent::`vector deleting destructor'	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00c0ded0	CString::operator<<(double)	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00c1ea80	CSoundSample::GetSize	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00c1ea60	CSoundSample::LoadData	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00c262a0	CStreamBuffer::CStreamBuffer	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00c26400	CStreamBuffer::~CStreamBuffer	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00c25c60	CSampleRef::GetSample	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol
+00c25ca0	CSampleRef::~CSampleRef	landing 2026-11-04l (chunk 750): vtable/caller/string evidence, NOTES.md + objdump symbol

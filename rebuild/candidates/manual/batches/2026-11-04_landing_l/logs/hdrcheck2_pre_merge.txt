@@ -1,0 +1,2 @@
+CHANGED engine/CString.h default=same[21] FABLE_RETAIL_CSTRING_BUILDERS=DIFF[21]
+CHANGED engine/NGraphicAppearance_CTCGraphicAppearance.h default=same[127] FABLE_RETAIL_CTCBASE=same[127] FABLE_RETAIL_CTCGRAPHICAPPEARANCE=DIFF[127]

@@ -1,0 +1,48 @@
+addr       parity           behav  name
+00558fd0   RELOCATION_MATCH PASS   ~CDraggableInto
+00559020   WARN RELOC_NAME: ??_ECDraggableInto@NUISystem@@UAEPAXI@Z -> 00559040 labelled 'NUISystem::CDraggableInto::`scalar deleting destructor''
+00559020   RELOCATION_MATCH PASS   `vector deleting destructor' adjustor{4}
+00559030   WARN RELOC_NAME: ??_ECDraggableInto@NUISystem@@UAEPAXI@Z -> 00559040 labelled 'NUISystem::CDraggableInto::`scalar deleting destructor''
+00559030   RELOCATION_MATCH PASS   `vector deleting destructor' adjustor{24}
+0077b290   RELOCATION_MATCH PASS   ~CTCGraphicAppearanceAnimatedMesh
+0077b9f0   RELOCATION_MATCH PASS   ~CTCGraphicAppearanceStaticMesh
+0077be80   RELOCATION_MATCH PASS   ~CTCGraphicAppearanceStaticMeshFadeOutOnProximity
+0077c440   RELOCATION_MATCH PASS   ~CTCGraphicAppearanceSprite
+008ffbee   RELOCATION_MATCH PASS   CAIStateGroup_KidPlayHopscotch
+008ffd84   RELOCATION_MATCH PASS   CAIStateGroup_WorkSawingWood
+008ffdce   RELOCATION_MATCH PASS   CAIStateGroup_WorkHammerAnvil
+00c207f0   WARN RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'
+00c207f0   WARN RELOC_NAME: ??1CSampleRef@@QAE@XZ -> 00c25ca0 labelled '_global::Nop_ret0_00c25ca0'
+00c207f0   RELOCATION_MATCH PASS   ~CSoundEvent
+00c20810   WARN RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'
+00c20810   RELOCATION_MATCH PASS   StopListening
+00c21040   WARN RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'
+00c21040   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c21040   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c21040   WARN RELOC_NAME: ??6CString@@QAIAAV0@N@Z -> 00c0ded0 labelled 'CString::operator<<(double)'
+00c21040   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c21040   WARN RELOC_NAME: ?GetRecord@CSoundParams@@QBE?AUSEventRecord@@XZ -> 00c34600 labelled 'CQuadHolder::GetValue'
+00c21040   RELOCATION_MATCH PASS   Describe
+00c21780   WARN RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'
+00c21780   WARN RELOC_NAME: ?GetSample@CSampleRef@@QAEPAUCSoundSample@@XZ -> 00c25c60 labelled '_global::GetMember_dword0x0_00c25c60'
+00c21780   WARN RELOC_NAME: ?GetSize@CSoundSample@@QAEJXZ -> 00c1ea80 labelled 'CMap::GetMemoryFootprint'
+00c21780   WARN RELOC_NAME: ??0CStreamBuffer@@QAE@XZ -> 00c262a0 labelled 'CSoundFormat_00c262a0::CSoundFormat_00c262a0'
+00c21780   WARN RELOC_NAME: ?LoadData@CSoundSample@@QAEJPAUCSoundEventManager@@PAUCStreamBuffer@@@Z -> 00c1ea60 labelled 'CTCCreatureNavigation::IsPosNavLineOfSightTo'
+00c21780   WARN RELOC_NAME: ??1CStreamBuffer@@QAE@XZ -> 00c26400 labelled '_global::Nop_ret0_00c26400'
+00c21780   RELOCATION_MATCH PASS   Play
+
+WINS: 14
+  00558fd0 RELOCATION_MATCH NUISystem::CDraggableInto::??1CDraggableInto@NUISystem@@UAE@XZ
+  00559020 RELOCATION_MATCH NUISystem::CDraggableInto::??_ECDraggableInto@NUISystem@@W3AEPAXI@Z
+  00559030 RELOCATION_MATCH NUISystem::CDraggableInto::??_ECDraggableInto@NUISystem@@WBI@AEPAXI@Z
+  0077b290 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::??1CTCGraphicAppearanceAnimatedMesh@NGraphicAppearance@@UAE@XZ
+  0077b9f0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceStaticMesh::??1CTCGraphicAppearanceStaticMesh@NGraphicAppearance@@UAE@XZ
+  0077be80 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::??1CTCGraphicAppearanceStaticMeshFadeOutOnProximity@NGraphicAppearance@@UAE@XZ
+  0077c440 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceSprite::??1CTCGraphicAppearanceSprite@NGraphicAppearance@@UAE@XZ
+  008ffbee RELOCATION_MATCH CAIStateGroup_KidPlayHopscotch::??0CAIStateGroup_KidPlayHopscotch@@QAE@XZ
+  008ffd84 RELOCATION_MATCH CAIStateGroup_WorkSawingWood::??0CAIStateGroup_WorkSawingWood@@QAE@XZ
+  008ffdce RELOCATION_MATCH CAIStateGroup_WorkHammerAnvil::??0CAIStateGroup_WorkHammerAnvil@@QAE@XZ
+  00c207f0 RELOCATION_MATCH CSoundEvent::??1CSoundEvent@@QAE@XZ
+  00c20810 RELOCATION_MATCH CSoundEvent::?StopListening@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z
+  00c21040 RELOCATION_MATCH CSoundEvent::?Describe@CSoundEvent@@QAE?AVCString@@PAUCSoundEventManager@@@Z
+  00c21780 RELOCATION_MATCH CSoundEvent::?Play@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z

@@ -1,0 +1,41 @@
+catalog  00c1ea80 CMap::GetMemoryFootprint -> CSoundSample::GetSize
+catalog  00c1ea60 CTCCreatureNavigation::IsPosNavLineOfSightTo -> CSoundSample::LoadData
+catalog  00c25ca0 _global::Nop_ret0_00c25ca0 -> CSampleRef::~CSampleRef
+catalog  00c26400 _global::Nop_ret0_00c26400 -> CStreamBuffer::~CStreamBuffer
+catalog  00c25c60 _global::GetMember_dword0x0_00c25c60 -> CSampleRef::GetSample
+catalog  00c21ba0 CScriptModuleBase::CScriptModuleBase -> CSoundEvent::CSoundEvent
+catalog  00c262a0 CSoundFormat_00c262a0::CSoundFormat_00c262a0 -> CStreamBuffer::CStreamBuffer
+catalog  00558fd0 CDraggableInto::~CDraggableInto -> NUISystem::CDraggableInto::~CDraggableInto
+catalog  00559020 NUISystem::CDraggableInto::NUISystem::CDraggableInto::vfunc_0 -> NUISystem::CDraggableInto::`vector deleting destructor'`adjustor{4}'
+catalog  00559030 NUISystem::CDraggableInto::NUISystem::CDraggableInto::vfunc_0 -> NUISystem::CDraggableInto::`vector deleting destructor'`adjustor{24}'
+catalog  0077b290 CTCGraphicAppearanceAnimatedMesh::~CTCGraphicAppearanceAnimatedMesh -> NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::~CTCGraphicAppearanceAnimatedMesh
+catalog  0077b9f0 CTCGraphicAppearanceAnimatedMesh::~CTCGraphicAppearanceAnimatedMesh -> NGraphicAppearance::CTCGraphicAppearanceStaticMesh::~CTCGraphicAppearanceStaticMesh
+catalog  0077be80 CTCGraphicAppearanceAnimatedMesh::~CTCGraphicAppearanceAnimatedMesh -> NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::~CTCGraphicAppearanceStaticMeshFadeOutOnProximity
+catalog  0077c440 CTCGraphicAppearanceAnimatedMesh::~CTCGraphicAppearanceAnimatedMesh -> NGraphicAppearance::CTCGraphicAppearanceSprite::~CTCGraphicAppearanceSprite
+catalog  008ffbee CAIStateGroupBehaviourBase::CAIStateGroupBehaviourBase -> CAIStateGroup_KidPlayHopscotch::CAIStateGroup_KidPlayHopscotch
+catalog  008ffd84 CAIStateGroupBehaviourBase::CAIStateGroupBehaviourBase -> CAIStateGroup_WorkSawingWood::CAIStateGroup_WorkSawingWood
+catalog  008ffdce CAIStateGroupBehaviourBase::CAIStateGroupBehaviourBase -> CAIStateGroup_WorkHammerAnvil::CAIStateGroup_WorkHammerAnvil
+catalog  00c207f0 _global::Object_Destruct_c207f0 -> CSoundEvent::~CSoundEvent
+catalog  00c20810 CActionSummonerLightningAttackTarget::OnActivate -> CSoundEvent::StopListening
+catalog  00c21780 _global::CInputProcessRebootGame_HandleInputEvent -> CSoundEvent::Play
+manifest 00558fd0 CDraggableInto::~CDraggableInto -> NUISystem::CDraggableInto::~CDraggableInto
+manifest 00559020 NUISystem::CDraggableInto::NUISystem::CDraggableInto::vfunc_0 -> NUISystem::CDraggableInto::`vector deleting destructor'`adjustor{4}'
+manifest 00559030 NUISystem::CDraggableInto::NUISystem::CDraggableInto::vfunc_0 -> NUISystem::CDraggableInto::`vector deleting destructor'`adjustor{24}'
+manifest 0077b290 CTCGraphicAppearanceAnimatedMesh::~CTCGraphicAppearanceAnimatedMesh -> NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::~CTCGraphicAppearanceAnimatedMesh
+manifest 0077b9f0 CTCGraphicAppearanceAnimatedMesh::~CTCGraphicAppearanceAnimatedMesh -> NGraphicAppearance::CTCGraphicAppearanceStaticMesh::~CTCGraphicAppearanceStaticMesh
+manifest 0077be80 CTCGraphicAppearanceAnimatedMesh::~CTCGraphicAppearanceAnimatedMesh -> NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::~CTCGraphicAppearanceStaticMeshFadeOutOnProximity
+manifest 0077c440 CTCGraphicAppearanceAnimatedMesh::~CTCGraphicAppearanceAnimatedMesh -> NGraphicAppearance::CTCGraphicAppearanceSprite::~CTCGraphicAppearanceSprite
+manifest 008ffbee CAIStateGroupBehaviourBase::CAIStateGroupBehaviourBase -> CAIStateGroup_KidPlayHopscotch::CAIStateGroup_KidPlayHopscotch
+manifest 008ffd84 CAIStateGroupBehaviourBase::CAIStateGroupBehaviourBase -> CAIStateGroup_WorkSawingWood::CAIStateGroup_WorkSawingWood
+manifest 008ffdce CAIStateGroupBehaviourBase::CAIStateGroupBehaviourBase -> CAIStateGroup_WorkHammerAnvil::CAIStateGroup_WorkHammerAnvil
+manifest 00c1ea60 CTCCreatureNavigation::IsPosNavLineOfSightTo -> CSoundSample::LoadData
+manifest 00c1ea80 CMap::GetMemoryFootprint -> CSoundSample::GetSize
+manifest 00c207f0 _global::Object_Destruct_c207f0 -> CSoundEvent::~CSoundEvent
+manifest 00c20810 CActionSummonerLightningAttackTarget::OnActivate -> CSoundEvent::StopListening
+manifest 00c21780 _global::CInputProcessRebootGame_HandleInputEvent -> CSoundEvent::Play
+manifest 00c21ba0 CScriptModuleBase::CScriptModuleBase -> CSoundEvent::CSoundEvent
+manifest 00c25c60 _global::GetMember_dword0x0_00c25c60 -> CSampleRef::GetSample
+manifest 00c25ca0 _global::Nop_ret0_00c25ca0 -> CSampleRef::~CSampleRef
+manifest 00c262a0 CSoundFormat_00c262a0::CSoundFormat_00c262a0 -> CStreamBuffer::CStreamBuffer
+manifest 00c26400 _global::Nop_ret0_00c26400 -> CStreamBuffer::~CStreamBuffer
+labels 23  catalog renamed 20  manifest renamed 20

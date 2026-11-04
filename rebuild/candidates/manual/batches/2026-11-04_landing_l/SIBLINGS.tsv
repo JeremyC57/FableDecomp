@@ -1,0 +1,3 @@
+landed_includer	header	macro	result
+006aa2e0	engine/NGraphicAppearance_CTCGraphicAppearance.h	(none; new macro FABLE_RETAIL_CTCGRAPHICAPPEARANCE unused there)	RELOCATION_MATCH PASS (vland --recheck-landed on the mirror, sib/vland_sib.txt)
+00c0d1b0	engine/CString.h	(none; new macro FABLE_RETAIL_CSTRING_BUILDERS unused there)	RELOCATION_MATCH PASS (sib/vland_sib.txt)
