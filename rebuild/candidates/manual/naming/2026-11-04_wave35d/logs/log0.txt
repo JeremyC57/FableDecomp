@@ -1,0 +1,104 @@
+addr       parity           behav  name
+00cdd2f0   DIFFER(30v27)    PASS   CVtable_012c2f50::CVtable_012c2f50
+00cdec30   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00cdec30   WARN SHARED_HEADER_AVAILABLE CPersonalScript_GlobalThingsScript
+00cdec30   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cdec30   MATCH            PASS   NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::OnPersist
+00cded90   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00cded90   WARN SHARED_HEADER_AVAILABLE CPersonalScript_GlobalThingsScript
+00cded90   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cded90   RELOCATION_MATCH PASS   NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::`scalar deleting destructor'
+00ce6c80   RELOCATION_MATCH PASS   NScript::CHeroBoastsScript::`scalar deleting destructor'
+00cef9a0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00cef9a0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00cef9a0.obj; graded the largest function
+00cef9a0   RELOCATION_MATCH PASS   NScript::CGameflowScript::`scalar deleting destructor'
+00cfee30   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cfee30   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00cfee30   WARN SHARED_HEADER_AVAILABLE CHeroLogBook
+00cfee30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cfee30   RELOCATION_MATCH PASS   COracleTablet::RemoveCursedTablets
+00d34440   RELOCATION_MATCH PASS   NScript::CQ_EndGameBossBattleScript::`scalar deleting destructor'
+00dcdec0   MATCH            PASS   NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::GetParentScript
+00dcded0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData
+00dcded0   RELOCATION_MATCH PASS   NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::OnPredicateFail
+00dcf760   RELOCATION_MATCH PASS   NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::`scalar deleting destructor'
+00e02950   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00e02950   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e02950   WARN SHARED_HEADER_AVAILABLE CHeroLogBook
+00e02950   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00e02950   WARN SHARED_HEADER_AVAILABLE CQ_TraderEscortScript
+00e02950   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e02950   RELOCATION_MATCH PASS   NScript::CQ_TraderEscortScript::CInfectedBalverine::Main
+00e0afb0   RELOCATION_MATCH PASS   NScript::CQ_TraderEscortScript::`scalar deleting destructor'
+00e0e7b0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e0e7b0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e0e7b0.obj; graded the largest function
+00e0e7b0   WARN RELOC_NAME: ??1CVector_008ac970@@QAE@XZ -> 008ac970 labelled 'std::vector<CScriptThing, std::allocator<CScriptThing>>::~vector'
+00e0e7b0   RELOCATION_MATCH PASS   NScript::CQ_UndeadRisingScript::`scalar deleting destructor'
+00e2ab60   RELOCATION_MATCH PASS   NScript::CV_AmbushScamScript::CV_AmbushScamScript
+00e322f0   RELOCATION_MATCH PASS   NScript::CV_AmbushScamScript::`scalar deleting destructor'
+00e569d0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00e569d0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00e569d0   WARN SHARED_HEADER_AVAILABLE CConversation
+00e569d0   RELOCATION_MATCH PASS   NScript::CV_BookCollectingScript::DoConversation
+00e6e280   RELOCATION_MATCH PASS   NScript::CV_ChapelOfEvilScript::`scalar deleting destructor'
+00e92940   RELOCATION_MATCH PASS   NScript::CV_GuildMasterScript::`scalar deleting destructor'
+00e9c300   RELOCATION_MATCH PASS   _global::Alloc_CVtable_012ed0d4
+00ea0b10   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00ea0b10   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ea0b10   WARN SHARED_HEADER_AVAILABLE CHeroLogBook
+00ea0b10   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ea0b10   WARN RELOC_NAME: ?g_pGameScriptInterface@@3PAUGameCalls@@A -> 0143e8f8 labelled 'pDSTGame'
+00ea0b10   RELOCATION_MATCH PASS   NScript::CV_KnotholeGladeGatesScript::CKGG_SurpriseBalverine::Main
+00ed0e30   RELOCATION_MATCH PASS   NScript::CV_SickChildScript::`scalar deleting destructor'
+00ed0e60   RELOCATION_MATCH PASS   NScript::CV_SingingStonesScript::CV_SingingStonesScript
+00ed39d0   RELOCATION_MATCH PASS   NScript::CV_SingingStonesScript::`scalar deleting destructor'
+00ee90d0   RELOCATION_MATCH PASS   NScript::CGlobal_WatchForHeroDeathScript::`scalar deleting destructor'
+00ee9480   RELOCATION_MATCH PASS   NScript::CGlobal_DebugCycleThroughSpeechScript::`scalar deleting destructor'
+00ee9f30   RELOCATION_MATCH PASS   NScript::CExpression_FishScript::`scalar deleting destructor'
+00eea410   RELOCATION_MATCH PASS   NScript::CExpression_FollowScript::`scalar deleting destructor'
+00eea770   RELOCATION_MATCH PASS   NScript::CExpression_WaitScript::`scalar deleting destructor'
+00eeaea0   RELOCATION_MATCH PASS   NScript::CExpression_DigScript::`scalar deleting destructor'
+00eeb760   RELOCATION_MATCH PASS   NScript::CExpression_PickpocketScript::`scalar deleting destructor'
+00eebda0   RELOCATION_MATCH PASS   NScript::CExpression_PicklockScript::`scalar deleting destructor'
+00eec3c0   RELOCATION_MATCH PASS   NScript::CExpression_StealScript::`scalar deleting destructor'
+00eec780   RELOCATION_MATCH PASS   NScript::CGlobal_GiveHeroItemsFromRewardChestScript::`scalar deleting destructor'
+00eeced0   RELOCATION_MATCH PASS   NScript::CGlobal_OpenChestScript::`scalar deleting destructor'
+00eed090   RELOCATION_MATCH PASS   NScript::CGlobal_ToggleTimeDisplayScript::`scalar deleting destructor'
+
+WINS: 34
+  00cdec30 MATCH NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::?OnPersist@CArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@EAEXAAVCPersistContext@@@Z
+  00cded90 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::??_GCArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00ce6c80 RELOCATION_MATCH NScript::CHeroBoastsScript::??_GCHeroBoastsScript@NScript@@UAEPAXI@Z
+  00cef9a0 RELOCATION_MATCH CVtable_012c3fa4::`vector_deleting_destructor'
+  00cfee30 RELOCATION_MATCH COracleTablet::RemoveCursedTablets
+  00d34440 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::??_GCQ_EndGameBossBattleScript@NScript@@UAEPAXI@Z
+  00dcdec0 MATCH NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::?GetParentScript@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@UBEPAVCScriptBase@@XZ
+  00dcded0 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::?OnPredicateFail@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ
+  00dcf760 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::??_GCCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@UAEPAXI@Z
+  00e02950 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CInfectedBalverine::?Main@CInfectedBalverine@@
+  00e0afb0 RELOCATION_MATCH NScript::CQ_TraderEscortScript::??_GCQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e0e7b0 RELOCATION_MATCH CVtable_012dfd3c::`vector_deleting_destructor'
+  00e2ab60 RELOCATION_MATCH NScript::CV_AmbushScamScript::??0CV_AmbushScamScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e322f0 RELOCATION_MATCH NScript::CV_AmbushScamScript::??_GCV_AmbushScamScript@NScript@@UAEPAXI@Z
+  00e569d0 RELOCATION_MATCH NScript::CV_BookCollectingScript::DoConversation
+  00e6e280 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::??_GCV_ChapelOfEvilScript@NScript@@UAEPAXI@Z
+  00e92940 RELOCATION_MATCH NScript::CV_GuildMasterScript::??_GCV_GuildMasterScript@NScript@@UAEPAXI@Z
+  00e9c300 RELOCATION_MATCH _global::Alloc_CVtable_012ed0d4
+  00ea0b10 RELOCATION_MATCH NScript::CV_KnotholeGladeGatesScript::CKGG_SurpriseBalverine::Main
+  00ed0e30 RELOCATION_MATCH NScript::CV_SickChildScript::??_GCV_SickChildScript@NScript@@UAEPAXI@Z
+  00ed0e60 RELOCATION_MATCH NScript::CV_SingingStonesScript::??0CV_SingingStonesScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00ed39d0 RELOCATION_MATCH NScript::CV_SingingStonesScript::??_GCV_SingingStonesScript@NScript@@UAEPAXI@Z
+  00ee90d0 RELOCATION_MATCH NScript::CGlobal_WatchForHeroDeathScript::??_GCGlobal_WatchForHeroDeathScript@NScript@@UAEPAXI@Z
+  00ee9480 RELOCATION_MATCH NScript::CGlobal_DebugCycleThroughSpeechScript::??_GCGlobal_DebugCycleThroughSpeechScript@NScript@@UAEPAXI@Z
+  00ee9f30 RELOCATION_MATCH NScript::CExpression_FishScript::??_GCExpression_FishScript@NScript@@UAEPAXI@Z
+  00eea410 RELOCATION_MATCH NScript::CExpression_FollowScript::??_GCExpression_FollowScript@NScript@@UAEPAXI@Z
+  00eea770 RELOCATION_MATCH NScript::CExpression_WaitScript::??_GCExpression_WaitScript@NScript@@UAEPAXI@Z
+  00eeaea0 RELOCATION_MATCH NScript::CExpression_DigScript::??_GCExpression_DigScript@NScript@@UAEPAXI@Z
+  00eeb760 RELOCATION_MATCH NScript::CExpression_PickpocketScript::??_GCExpression_PickpocketScript@NScript@@UAEPAXI@Z
+  00eebda0 RELOCATION_MATCH NScript::CExpression_PicklockScript::??_GCExpression_PicklockScript@NScript@@UAEPAXI@Z
+  00eec3c0 RELOCATION_MATCH NScript::CExpression_StealScript::??_GCExpression_StealScript@NScript@@UAEPAXI@Z
+  00eec780 RELOCATION_MATCH NScript::CGlobal_GiveHeroItemsFromRewardChestScript::??_GCGlobal_GiveHeroItemsFromRewardChestScript@NScript@@UAEPAXI@Z
+  00eeced0 RELOCATION_MATCH NScript::CGlobal_OpenChestScript::??_GCGlobal_OpenChestScript@NScript@@UAEPAXI@Z
+  00eed090 RELOCATION_MATCH NScript::CGlobal_ToggleTimeDisplayScript::??_GCGlobal_ToggleTimeDisplayScript@NScript@@UAEPAXI@Z

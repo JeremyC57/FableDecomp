@@ -1,0 +1,68 @@
+Naming wave 35d (2026-11-04): wave 35a D5 deferrals regenerated on the respelled storers + the 35b/35c follow-up respells
+=====================================================================================================================
+Read-only on the repo. Overlay: overlay/rebuild/src/compiled + overlay/rebuild/tests (35 + 35 files). No header change (no FABLE_HDR_OVERLAY).
+Graded from the overlay files: logs/recheck_g2.log (vland --recheck-landed, LANDVERIFY_WORK=vw_g2); PASS.tsv; objdump -t: logs/objdump_symbols.tsv.
+
+COUNTS
+  Task 1 (the 30 wave-35a D5 rows):  24 respelled + PASS, 6 deferred
+     22 ??_G (20 level scripts from their 35b PDB ctor rows, 2 entities from their PDB Alloc rows), 2 entity slot functions
+     (00cdec30 OnPersist, 00dcdec0 GetParentScript; Alloc-row TU, 35a path A).
+     28 of the 30 storers were already PDB-named by wave 35b; the other two ctor rows were respelled here (task 1 "respell the
+     source row too"): 0x00E2AB60 NScript::CV_AmbushScamScript ctor (was ??0CVtable_012E2428) and 0x00ED0E60
+     NScript::CV_SingingStonesScript ctor (was CVtable_012f2b0c, no Leaf) -> both RELOCATION_MATCH PASS, then their ??_G 00e322f0 /
+     00ed39d0 regenerated from them.
+     6 deferred (DEFERRED.tsv): ??_G 00cef9a0 00d1cbd0 00dc2540 00dfa080 00e0e7b0 00e2ab30 -- the storer is now the PDB ctor but its
+     class model lacks the members whose destructors retail's ??_G expands (same class as the 11 wave-35a "storer model lacks the
+     member destructors" rows); the member classes are not proven.
+  Task 2 follow-ups (in place, graded):
+     00dcded0 CGuardTeamMember -> CCrateTeamMember (renamed file; RELOCATION_MATCH PASS).
+     global 0x01375748 -> NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations in 00e02950 00cfee30 00e569d0 00ea0b10 (all PASS;
+       00ea0b10 keeps an inherited RELOC_NAME, see below). Spelling: reloc_bindings (bound by 00d1eb80, codex pass 13 label) + the
+       Anniversary PDB publics (?GDefaultToUsingPhysicsInCutsceneAnimations@NGlobalConsole@@3_NA, global_console_base.cpp) + 35b.
+     CScriptBase ctor 0x00CB8110 stand-ins: 00e9c300, 00cdd2f0 respelled (local CBase_00cb8110 -> engine/CScriptBase.h, its 0x3c pad
+       dropped: the header's members fill it; PASS). 00ed0e30 is fully respelled by task 1 (its file is replaced). 00cef9a0 / 00e0e7b0
+       already spell the class CScriptBase: only their comment named CRecordSet_00cbd510 -> comment fix in place (PASS; their own ??_G
+       respell is deferred). 00cbd510 (the ~CScriptBase row itself, Leaf ??1CRecordSet_00cbd510) DEFERRED (header policy, below).
+  Totals: 35 overlay rows PASS (31 clean + 3 PASS_WITH_INHERITED_WARN: 00e0e7b0, 00ea0b10, 00cef9a0 -- all pre-existing, verified on the
+  landed sources in logs/recheck_baseline_inherited.log); 7 deferred.
+  Callers: CALLERS.tsv -- 0 landed callers to respell (00e2ab60's only caller, Alloc 00e322c0, already binds the PDB ctor; 00ed0e60's
+  only caller is the uncatalogued Alloc 0x00ED39A0; every ??_G / slot row has exactly its one vtable reference).
+  Bindings: BINDINGS.tsv -- ADD 4 (??_7 / ??1 of CV_AmbushScamScript and CV_SingingStonesScript; ??1 are FableWin.pdb spellings, ??_7 are
+  the PDB classes' vtables, wave 35b precedent), RETIRE 4 (??0CBase_00cb8110, ??_7CVtable_012E2428, ??0CVtable_012c1648,
+  ??_7CVtable_012f2b0c: no landed source names them after the overlay, comments excluded), KEEP 1, CONFLICT 0.
+
+METHOD (scripts/)
+  srcstate.py: for each of the 30 rows, the storer's current Leaf vs the PDB name sets. ROWS.tsv = the 30 rows.
+  Wave 35a generators copied with W -> wave35d (classify.py, survey.py, gen_ent.py, gen_sdd.py). gen_sdd.py changes: (1) a storer row
+  respelled in this wave is read from ctor/src (ctor/gen.tsv); (2) DROP_FIRST=1 tries the "user-declared destructor dropped" variant
+  first (D1). gen_ent path A does not compile-check: 00cdec30 needed `class CPersistContext;` (added).
+  build.py: overlay + all.tsv + vland payload from the overlay files (35a mkoverlay test renames for ent/sdd). grade.sh: one vland run.
+  mkbind.py: ADD/RETIRE/KEEP/CONFLICT from the vw_g2 objects (RETIRE only for spellings the row's code, comments stripped, lost).
+  Families: ent 2, sdd 22, ctor 2 (hand-written), man 1 (00dcded0), glob 4, sbase 2, cmt 2.
+
+DECISIONS FOR THE COORDINATOR
+  D1 20 of the 22 ??_G are generated from their storer TU with the storer's user-declared `virtual ~X();` dropped: the as-is TU also
+     byte-matches (RELOCATION_MATCH), but its ??_G then calls ??1X while retail's calls ~CScriptBase 0x00CBD510 / ~CEntityScriptBase
+     0x00F35B40 directly (RELOC_NAME on ??1X in logs/recheck_g1.log). Retail's dtor of these classes is therefore compiler-generated:
+     the 35b ctor rows 0x00CE1A00 0x00D2F6B0 0x00E00690 0x00E68F70 0x00E90750 0x00EC53C0 0x00EE8E80 0x00EE90F0 0x00EE94A0 0x00EE9F50
+     0x00EEA430 0x00EEA790 0x00EEAEC0 0x00EEB780 0x00EEBDC0 0x00EEC3E0 0x00EEC7A0 0x00EECEF0 and the Alloc rows 0x00CDEB40 / 0x00DCDE20
+     declare a destructor retail does not have (harmless to their own bytes). Accept the dropped variant; optionally remove the
+     declaration from those storer rows in a later pass.
+  D2 00e2ab60 is modelled on the shared header engine/CV_AmbushScamScript.h unchanged (the 35b Alloc and the landed ~ row use local
+     models); 00ed0e60 reuses the landed ~CV_SingingStonesScript row's (0x00ED39F0) TU unchanged, so the ctor, dtor and ??_G rows of that
+     class share one model.
+  D3 00cbd510 ~CScriptBase stays ??1CRecordSet_00cbd510: a local `class CScriptBase` model gives SHARED_HEADER_AVAILABLE CScriptBase, and
+     engine/CScriptBase.h (opaque containers, not novtable) cannot express the body. Needs a header completion: typed Threads /
+     EntityScripts / EntityScriptBindings / RuntimeScriptedEntityPersist, and an answer to why retail's ~CScriptBase stores no vtable.
+  D4 NAME_FIXES.tsv: three in-place rows touched here still define non-NScript-qualified symbols (00e02950, 00ea0b10, 00cfee30) and
+     00ed76e0 still binds ??0CScriptBaseNative for 0x00CB8110 -- not in this wave's brief, listed for a later pass.
+  D5 The 6 DIFFER ??_G need their ctor rows' models completed with the destroyed members (vector<CCharString> x2 for CGameflowScript; the
+     others' member classes, 0x008AC970 / 0x00CDBFB0 / 0x009AC310 / 0x00CDBC90, are unproven), and CQ_BountyHuntScript.h declares a
+     user dtor where retail's is implicit.
+
+GOTCHAS (one line each)
+  - A storer TU that keeps a user-declared virtual dtor still byte-matches the ??_G (call target masked); only the RELOC_NAME check shows
+    that retail's ??_G calls the base dtor, i.e. the derived dtor is implicit.
+  - gen_ent path A (Alloc-row TU) is not compile-checked by the generator: an OnPersist member needs `class CPersistContext;` in that TU.
+  - A level script whose implicit dtor is too big to inline (CV_AmbushScamScript, CV_SingingStonesScript) gets an out-of-line ??1 that
+    its ??_G calls: no destructor declaration is needed for the ??_G to match.

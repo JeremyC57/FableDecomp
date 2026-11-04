@@ -1,7 +1,7 @@
 // CThingSwitch::`vector_deleting_destructor' @ 0x00E0E7B0 (retail, 48 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
 // Leaf: `vector_deleting_destructor'
 // stack slot, __thiscall shape modelled as __fastcall with a dead edx): destroys the members last-to-first,
-// +0x6c CVector_008ac970 (~ @ 0x008AC970), +0x60 CVector_008ac970 (~ @ 0x008AC970), then the base CRecordSet_00cbd510 (~ @ 0x00CBD510), and frees the block with operator delete
+// +0x6c CVector_008ac970 (~ @ 0x008AC970), +0x60 CVector_008ac970 (~ @ 0x008AC970), then the base CScriptBase (~CScriptBase @ 0x00CBD510, ??1CScriptBase@@UAE@XZ; naming wave 35d: the comment named the stand-in CRecordSet_00cbd510), and frees the block with operator delete
 // (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
 // retail labels); the class itself is not attributed, so it is named by address.
 #pragma optimize("t", on)

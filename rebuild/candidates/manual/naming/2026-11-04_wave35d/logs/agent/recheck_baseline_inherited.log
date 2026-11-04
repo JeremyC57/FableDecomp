@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00e0e7b0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e0e7b0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e0e7b0.obj; graded the largest function
+00e0e7b0   WARN RELOC_NAME: ??1CVector_008ac970@@QAE@XZ -> 008ac970 labelled 'std::vector<CScriptThing, std::allocator<CScriptThing>>::~vector'
+00e0e7b0   RELOCATION_MATCH PASS   NScript::CQ_UndeadRisingScript::`scalar deleting destructor'
+00ea0b10   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00ea0b10   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ea0b10   WARN SHARED_HEADER_AVAILABLE CHeroLogBook
+00ea0b10   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ea0b10   WARN RELOC_NAME: ?g_pGameScriptInterface@@3PAUGameCalls@@A -> 0143e8f8 labelled 'pDSTGame'
+00ea0b10   WARN RELOC_NAME: ?g_bScriptAnimationFlag@@3_NA -> 01375748 labelled 'NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations'
+00ea0b10   RELOCATION_MATCH PASS   NScript::CV_KnotholeGladeGatesScript::CKGG_SurpriseBalverine::Main
+
+WINS: 2
+  00e0e7b0 RELOCATION_MATCH CVtable_012dfd3c::`vector_deleting_destructor'
+  00ea0b10 RELOCATION_MATCH NScript::CV_KnotholeGladeGatesScript::CKGG_SurpriseBalverine::Main

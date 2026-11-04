@@ -1,0 +1,10 @@
+action	symbol	target	by_row	note
+ADD	??_7CV_AmbushScamScript@NScript@@6B@	012e2428	00e2ab60	naming wave 35d: vtable of the PDB class (??1CV_AmbushScamScript@NScript@@UAE@XZ in the PDB name sets), emitted by the respelled row (wave 35b precedent)
+ADD	??1CV_AmbushScamScript@NScript@@UAE@XZ	00e32310	00e322f0	naming wave 35d: emitted by the respelled row (exact PDB spelling: FableWin)
+ADD	??_7CV_SingingStonesScript@NScript@@6B@	012f2b0c	00ed0e60	naming wave 35d: vtable of the PDB class (??1CV_SingingStonesScript@NScript@@UAE@XZ in the PDB name sets), emitted by the respelled row (wave 35b precedent)
+ADD	??1CV_SingingStonesScript@NScript@@UAE@XZ	00ed39f0	00ed39d0	naming wave 35d: emitted by the respelled row (exact PDB spelling: FableWin)
+RETIRE	??0CBase_00cb8110@@QAE@XZ	00cb8110	00cdd2f0	no landed source names CBase_00cb8110 after wave 35d (was bound by 00cdd2f0)
+RETIRE	??_7CVtable_012E2428@@6B@	012e2428	00e2ab60	no landed source names CVtable_012E2428 after wave 35d (was bound by 00e2ab60)
+RETIRE	??0CVtable_012c1648@@QAE@XZ	00cb8110	00ed0e60	no landed source names CVtable_012c1648 after wave 35d (was bound by 00ed0e60)
+RETIRE	??_7CVtable_012f2b0c@@6B@	012f2b0c	00ed0e60	no landed source names CVtable_012f2b0c after wave 35d (was bound by 00ed0e60)
+KEEP	?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z	00cbd510	00d34440	still named by 11 landed source(s) after the overlay (text search for AutoTinyCompositeDestructor_00cbd510), e.g. rebuild/src/compiled/00/d6/CEngineSubPrimitiveText_scalardeletingdestructor_00d61c00.cpp; the first binder 00d34440 no longer emits it

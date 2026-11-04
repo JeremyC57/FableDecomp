@@ -1,0 +1,52 @@
+#include <cstdio>
+static int g_AutoTinySequence[6] = {0};
+static int g_AutoTinySequenceCount = 0;
+static void* g_AutoTinyFirstMember = 0;
+static void* g_AutoTinySecondMember = 0;
+static int g_AutoTinyCompositeDeleteCalls = 0;
+void __fastcall AutoTinyFirstMemberDestructor(void* member)
+{
+    g_AutoTinyFirstMember = member;
+    g_AutoTinySequence[g_AutoTinySequenceCount++] = 1;
+}
+void __fastcall AutoTinySecondMemberDestructor_007e74d0(void* member)
+{
+    g_AutoTinySecondMember = member;
+    g_AutoTinySequence[g_AutoTinySequenceCount++] = 2;
+}
+void __fastcall AutoTinyCompositeDestructor_00cbd510(void*)
+{
+    g_AutoTinySequence[g_AutoTinySequenceCount++] = 3;
+}
+void __cdecl AutoTinyCompositeDelete(void*)
+{
+    ++g_AutoTinyCompositeDeleteCalls;
+}
+void* __fastcall CQ_EndGameBossBattleScript_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
+{
+    AutoTinyFirstMemberDestructor(static_cast<unsigned char*>(self) + 96);
+    AutoTinySecondMemberDestructor_007e74d0(static_cast<unsigned char*>(self) + 80);
+    AutoTinyCompositeDestructor_00cbd510(self);
+    if (flags & 1)
+        AutoTinyCompositeDelete(self);
+    return self;
+}
+int main()
+{
+    unsigned char object[256] = {0};
+    if (CQ_EndGameBossBattleScript_CompositeScalarDeletingDestructor(object, 0, 0) != object ||
+        g_AutoTinyFirstMember != object + 96 ||
+        g_AutoTinySecondMember != object + 80 ||
+        g_AutoTinySequenceCount != 3 ||
+        g_AutoTinySequence[0] != 1 ||
+        g_AutoTinySequence[1] != 2 ||
+        g_AutoTinySequence[2] != 3 ||
+        g_AutoTinyCompositeDeleteCalls != 0)
+        return 1;
+    CQ_EndGameBossBattleScript_CompositeScalarDeletingDestructor(object, 0, 1);
+    if (g_AutoTinySequenceCount != 6 ||
+        g_AutoTinyCompositeDeleteCalls != 1)
+        return 1;
+    std::printf("AUTO_TINY_00d34440_TEST PASS\n");
+    return 0;
+}

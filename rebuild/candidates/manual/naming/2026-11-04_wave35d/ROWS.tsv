@@ -1,0 +1,31 @@
+address	catalog_name	current_leaf	current_source
+00cdec30	NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::OnPersist		00/cd/gapscan_sub00cdec30_00cdec30.cpp
+00cded90	NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::`scalar deleting destructor'	`vector_deleting_destructor'	00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cded90.cpp
+00ce6c80	NScript::CHeroBoastsScript::`scalar deleting destructor'	`scalar_deleting_destructor'	00/ce/CEngineSubPrimitiveText_scalardeletingdestructor_00ce6c80.cpp
+00cef9a0	NScript::CGameflowScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ce/CThingSwitch_vectordeletingdestructor_00cef9a0.cpp
+00d1cbd0	NScript::CQ_BountyHuntScript::`scalar deleting destructor'		00/d1/unattributed_ScalarDeletingDestructorCBase00cbd510Derived00d1_00d1cbd0.cpp
+00d34440	NScript::CQ_EndGameBossBattleScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/d3/CThingSwitch_vectordeletingdestructor_00d34440.cpp
+00dc2540	NScript::CQ_OakValeBanditRaidScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/dc/CThingSwitch_vectordeletingdestructor_00dc2540.cpp
+00dcdec0	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::GetParentScript		00/dc/gapscan_sub00dcdec0_00dcdec0.cpp
+00dcf760	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::`scalar deleting destructor'	`scalar_deleting_destructor'	00/dc/CEngineSubPrimitiveText_scalardeletingdestructor_00dcf760.cpp
+00dfa080	NScript::CQ_TraderConflictEvilScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/df/CThingSwitch_vectordeletingdestructor_00dfa080.cpp
+00e0afb0	NScript::CQ_TraderEscortScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/e0/CThingSwitch_vectordeletingdestructor_00e0afb0.cpp
+00e0e7b0	NScript::CQ_UndeadRisingScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/e0/CThingSwitch_vectordeletingdestructor_00e0e7b0.cpp
+00e2ab30	NScript::CQS_ScytheInfoScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/e2/CThingSwitch_vectordeletingdestructor_00e2ab30.cpp
+00e322f0	NScript::CV_AmbushScamScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/e3/CLandscapeBackgroundPatch_vectordeletingdestructor_00e322f0.cpp
+00e6e280	NScript::CV_ChapelOfEvilScript::`scalar deleting destructor'	`scalar_deleting_destructor'	00/e6/CEngineSubPrimitiveText_scalardeletingdestructor_00e6e280.cpp
+00e92940	NScript::CV_GuildMasterScript::`scalar deleting destructor'	`scalar_deleting_destructor'	00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e92940.cpp
+00ed0e30	NScript::CV_SickChildScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ed/CThingSwitch_vectordeletingdestructor_00ed0e30.cpp
+00ed39d0	NScript::CV_SingingStonesScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed39d0.cpp
+00ee90d0	NScript::CGlobal_WatchForHeroDeathScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee90d0.cpp
+00ee9480	NScript::CGlobal_DebugCycleThroughSpeechScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee9480.cpp
+00ee9f30	NScript::CExpression_FishScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee9f30.cpp
+00eea410	NScript::CExpression_FollowScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eea410.cpp
+00eea770	NScript::CExpression_WaitScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eea770.cpp
+00eeaea0	NScript::CExpression_DigScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeaea0.cpp
+00eeb760	NScript::CExpression_PickpocketScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeb760.cpp
+00eebda0	NScript::CExpression_PicklockScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eebda0.cpp
+00eec3c0	NScript::CExpression_StealScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eec3c0.cpp
+00eec780	NScript::CGlobal_GiveHeroItemsFromRewardChestScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eec780.cpp
+00eeced0	NScript::CGlobal_OpenChestScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeced0.cpp
+00eed090	NScript::CGlobal_ToggleTimeDisplayScript::`scalar deleting destructor'	`vector_deleting_destructor'	00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed090.cpp

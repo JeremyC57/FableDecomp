@@ -1048,7 +1048,7 @@ inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); 
 __forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 __forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-extern bool g_bScriptAnimationFlag;                 // 0x01375748
+namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748 ?GDefaultToUsingPhysicsInCutsceneAnimations@NGlobalConsole@@3_NA (established spelling; naming wave 35d: was NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations)
 struct CV_KnotholeGladeGatesScript {
  unsigned char BaseState[0x68];
  bool FirstBalvDead;                                // +0x68 (PDB +0x7c)
@@ -1083,7 +1083,7 @@ void CKGG_SurpriseBalverine::Main()
  bool timerSet = false;
  CTimer timer;
  Game->EntitySetFacingAngleTowardsThing(Me, Game->GetThingWithScriptName("WB_DeadVillager"), false);
- handle.PlayLoopingAnimation("ST_MUNCH", -1, false, false, false, true, g_bScriptAnimationFlag, false, false);
+ handle.PlayLoopingAnimation("ST_MUNCH", -1, false, false, false, true, NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations, false, false);
  while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), 5.0f) && !Me.MsgIsHitBy("SCRIPT_NAME_HERO") && (!Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") || Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO")) && (!timerSet || timer.GetTime() > 0)) {
   Game->NewScriptFrame();
   if (IsActiveThreadTerminating()) return;

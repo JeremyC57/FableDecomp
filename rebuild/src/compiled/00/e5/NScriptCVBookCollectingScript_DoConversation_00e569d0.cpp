@@ -137,7 +137,7 @@ class CScriptGameResourceObjectScriptedThingBase { public:      // vtable 0x0127
     void* PImp_Data;
     void* PImp_Info;
 };
-extern bool g_bScriptAnimationFlag;                      // 0x01375748 (a global bool the script headers pass as an animation default)
+namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748 ?GDefaultToUsingPhysicsInCutsceneAnimations@NGlobalConsole@@3_NA (established spelling; naming wave 35d: was NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations) (a global bool the script headers pass as an animation default)
 template <class T> struct vector {                       // STLport vector: {_M_start, _M_finish, _M_end_of_storage}
     T* _M_start;
     T* _M_finish;
@@ -202,12 +202,12 @@ void NScript::CV_BookCollectingScript::DoConversation(long book, long line)
         if (animLoop == "NULL") {
             if (IsActiveThreadTerminating())
                 return;
-            handle->PlayAnimation(animation, false, true, false, true, g_bScriptAnimationFlag, false, false);
+            handle->PlayAnimation(animation, false, true, false, true, NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations, false, false);
         } else {
             if (IsActiveThreadTerminating())
                 return;
-            handle->PlayAnimation(animation, false, true, false, false, g_bScriptAnimationFlag, false, false);
-            handle->PlayLoopingAnimation(animLoop, -1, false, false, true, false, g_bScriptAnimationFlag, false, false);
+            handle->PlayAnimation(animation, false, true, false, false, NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations, false, false);
+            handle->PlayLoopingAnimation(animLoop, -1, false, false, true, false, NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations, false, false);
         }
     }
     while ((Game->IsConversationActive(conversation) || handle->IsPerformingScriptTask()) && !ReadingBook) {

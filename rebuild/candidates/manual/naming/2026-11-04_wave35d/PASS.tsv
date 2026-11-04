@@ -1,0 +1,36 @@
+address	grade	log	family	warnings
+00cdd2f0	RELOCATION_MATCH PASS	logs/recheck_g2.log	sbase	
+00cdec30	MATCH PASS	logs/recheck_g2.log	ent	
+00cded90	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00ce6c80	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00cef9a0	RELOCATION_MATCH PASS PASS_WITH_INHERITED_WARN	logs/recheck_g2.log	cmt	leaf `vector_deleting_destructor' matches no symbol (graded the largest function): pre-existing stand-in Leaf; this row changes a comment only; NOTE: comment-only in-place fix (35b follow-up); the row's own respell to ??_G is in DEFERRED.tsv
+00cfee30	RELOCATION_MATCH PASS	logs/recheck_g2.log	glob	
+00d34440	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00dcdec0	MATCH PASS	logs/recheck_g2.log	ent	
+00dcded0	RELOCATION_MATCH PASS	logs/recheck_g2.log	man	
+00dcf760	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00e02950	RELOCATION_MATCH PASS	logs/recheck_g2.log	glob	
+00e0afb0	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00e0e7b0	RELOCATION_MATCH PASS PASS_WITH_INHERITED_WARN	logs/recheck_g2.log	cmt	RELOC_NAME ??1CVector_008ac970@@QAE@XZ -> 008ac970 (std::vector<CScriptThing>::~vector label) and leaf `vector_deleting_destructor' matches no symbol: both pre-existing in the landed source (logs/recheck_baseline_inherited.log); this row changes a comment only; NOTE: comment-only in-place fix (35b follow-up); the row's own respell to ??_G is in DEFERRED.tsv
+00e2ab60	RELOCATION_MATCH PASS	logs/recheck_g2.log	ctor	
+00e322f0	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00e569d0	RELOCATION_MATCH PASS	logs/recheck_g2.log	glob	
+00e6e280	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00e92940	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00e9c300	RELOCATION_MATCH PASS	logs/recheck_g2.log	sbase	
+00ea0b10	RELOCATION_MATCH PASS PASS_WITH_INHERITED_WARN	logs/recheck_g2.log	glob	RELOC_NAME ?g_pGameScriptInterface@@3PAUGameCalls@@A -> 0143e8f8 (pDSTGame): pre-existing in the landed source (logs/recheck_baseline_inherited.log); the second pre-existing warning (g_bScriptAnimationFlag) is fixed by this row
+00ed0e30	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00ed0e60	RELOCATION_MATCH PASS	logs/recheck_g2.log	ctor	
+00ed39d0	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00ee90d0	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00ee9480	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00ee9f30	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00eea410	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00eea770	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00eeaea0	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00eeb760	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00eebda0	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00eec3c0	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00eec780	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00eeced0	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	
+00eed090	RELOCATION_MATCH PASS	logs/recheck_g2.log	sdd	

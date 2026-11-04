@@ -915,7 +915,7 @@ struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : D
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
-extern bool g_bScriptAnimationFlag;                 // 0x01375748 (a global bool the script headers pass as an animation default)
+namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748 ?GDefaultToUsingPhysicsInCutsceneAnimations@NGlobalConsole@@3_NA (established spelling; naming wave 35d: was NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations) (a global bool the script headers pass as an animation default)
 class CEntityScriptBase
 {
 public:

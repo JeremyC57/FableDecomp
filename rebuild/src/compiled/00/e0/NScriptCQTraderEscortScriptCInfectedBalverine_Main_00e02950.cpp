@@ -1034,7 +1034,7 @@ public:
 };
 extern GameCalls* g_pGameScriptInterface;          // 0x0143E8F8
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-extern bool g_bScriptAnimationFlag;                 // 0x01375748
+namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748 ?GDefaultToUsingPhysicsInCutsceneAnimations@NGlobalConsole@@3_NA (established spelling; naming wave 35d: was NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations)
 class CScriptDef { public:
  unsigned char _pad[0xe0c];
  long InfectedBalverineNoticeRange;                 // +0xE0C (descriptive)
@@ -1079,7 +1079,7 @@ void CInfectedBalverine::Main()
   if (IsActiveThreadTerminating()) return;
   if (!handle.IsPerformingScriptTask()) {
    if (IsActiveThreadTerminating()) return;
-   handle.PlayLoopingAnimation("ST_MUNCH", -1, false, false, false, true, g_bScriptAnimationFlag, false, false);
+   handle.PlayLoopingAnimation("ST_MUNCH", -1, false, false, false, true, NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations, false, false);
   }
   if (IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)range)) {
    if (IsActiveThreadTerminating()) return;
