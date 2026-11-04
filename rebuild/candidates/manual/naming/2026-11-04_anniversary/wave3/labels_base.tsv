@@ -1,0 +1,2 @@
+address	name	evidence
+00cdebf0	CEntityScriptBase::`scalar deleting destructor'	base vtable 012c3224 slot 0: every entity Alloc (614, e.g. 00d1e090) stores 012c3224 into the new block before the CScriptThing copy 0x004ABE90 and the class vtable = the inlined CEntityScriptBase ctor (PDB ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z); slots 1 and 3 are _purecall 0x00BFEA08 (pure Main / GetParentScript); PDB ??_ECEntityScriptBase@@UAEPAXI@Z + ??1CEntityScriptBase@@UAE@XZ; refs=1; was CVtable_012c3224::`scalar deleting destructor'

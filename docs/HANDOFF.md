@@ -20,9 +20,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 - 748 (8 hand-SSE parks) landed 1 via the new macro isolation headers (`_landing_k/`); the other 7 have exact SSE blocks and x87/frame
   residue (`pending/2026-11-04_linux_hand748/`). Next asm-rule work: de-bake the 13 landed asm_bake rows (e.g. 0x0042DF9E, 0x005BD993,
   0x00899EF0) with the same order (C++, intrinsics, macro vs function isolation); the 10 LTCG reg-arg parks (pure C++).
-- Fable Anniversary exe (owner-supplied): names for TLC's RTTI-less vtables, `docs/re_reference/FABLE_ANNIVERSARY.md`; 17 high-confidence classes applied
-  (63 names, `naming/2026-11-04_anniversary/`; 45 landed respellings queued land0411k). Running: medium/low verification (`$S/anniv/wave2/`)
-  and TLC-internal Alloc-registration naming of the remaining placeholders (`$S/anniv/wave3/`).
+- Fable Anniversary exe (owner-supplied): naming waves high + 2 + 3 applied (`naming/2026-11-04_anniversary/README.md`, 2,523 labels,
+  every name proven from TLC). Next: the naming pass (respell the landed sources these renamed; queue tags land0411*); the Xbox 360
+  Anniversary PDB is being indexed as a reading aid only (`$S/anniv_pdb/`, never in the repo).
 - Coverage (refresh with `tools/write_decomp_dashboard.py` then `tools/update_readme_progress.py`; never hand-edit):
   46,594 genuine of the 49,564-function catalog (94.01%), 56.69% of retail function bytes, 54,146 landed rows (207 retail_asm),
   after landing 2026-11-04k. Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`, `2026-11-04_landing_a/` .. `_landing_h/`.

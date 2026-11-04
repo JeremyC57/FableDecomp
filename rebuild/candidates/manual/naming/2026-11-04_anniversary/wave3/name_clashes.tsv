@@ -1,0 +1,7 @@
+other_address	its_catalog_name	proven_address	evidence
+004538eb	NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::OnPersist	00d446a0	the name belongs to the slot-4 override of the CApprenticeSpeedTest vtable (refs=1); 004538eb is an unaligned start with an unrelated body (558bec...)
+00487120	NScript::CQ_HangingTreeGoodScript::CHTG_Executioner::OnPredicateFail	00d732a0	slot 5 of CHTG_Executioner vtable 012d29b8 (refs=1); 00487120/00487150 are unrelated small engine bodies (566a11/566a12 8bf1 call)
+00487150	NScript::CQ_HangingTreeGoodScript::CHTG_Executioner::OnPredicateFail	00d732a0	same
+00594f28	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>::SuspendableProcess	00debee0	slot 4 of the CSpawnedFunc vtable stored by CQ_RansomVictimChiefsHouseScript::RegisterMain; 00594f28 body differs
+005da4e0	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon::Init	00e8cb10	slot 2 of the CGhostGrannySon vtable (refs=1); 005da4e0 body differs
+00431773	NScript::CExpression_DigScript::Alloc	00eeae70	RegisterScripts factory for "Expression_Dig"; 00431773 is an unaligned start with an unrelated body

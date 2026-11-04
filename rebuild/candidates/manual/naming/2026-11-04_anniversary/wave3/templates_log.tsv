@@ -1,0 +1,720 @@
+address	name	action	note
+00efe610	CEntityScriptBinding<NScript::CBenTestScriptsScript>::GetEntityScriptName	RENAME	was sub_00efe610
+00efee50	CEntityScriptBinding<NScript::CBenTestScriptsScript>::CreateActiveEntityScript	SAME	
+00efefd0	CActiveEntityScript<NScript::CBenTestScriptsScript>::`scalar deleting destructor'	RENAME	was CVtable_012f6f74::`scalar deleting destructor'
+00efef60	CActiveEntityScript<NScript::CBenTestScriptsScript>::SuspendableProcess	SAME	
+00efefb0	CSpawnedFunc<NScript::CBenTestScriptsScript>::`scalar deleting destructor'	SAME	
+00efe4a0	CSpawnedFunc<NScript::CBenTestScriptsScript>::SuspendableProcess	RENAME	was CVtable_012f6ed4::vfunc_4
+00efbd30	CEntityScriptBinding<NScript::CGuildSealTriggerTestScript>::GetEntityScriptName	RENAME	was sub_00efbd30
+00efbf80	CEntityScriptBinding<NScript::CGuildSealTriggerTestScript>::CreateActiveEntityScript	SAME	
+00efc100	CActiveEntityScript<NScript::CGuildSealTriggerTestScript>::`scalar deleting destructor'	RENAME	was CVtable_012f6c3c::`scalar deleting destructor'
+00efc090	CActiveEntityScript<NScript::CGuildSealTriggerTestScript>::SuspendableProcess	SAME	
+00efc0e0	CSpawnedFunc<NScript::CGuildSealTriggerTestScript>::`scalar deleting destructor'	SAME	
+00efbc90	CSpawnedFunc<NScript::CGuildSealTriggerTestScript>::SuspendableProcess	RENAME	was CVtable_012f6be8::vfunc_4
+00efb7d0	CEntityScriptBinding<NScript::CHitSwitchTestScript>::GetEntityScriptName	RENAME	was sub_00efb7d0
+00efb9c0	CEntityScriptBinding<NScript::CHitSwitchTestScript>::CreateActiveEntityScript	SAME	
+00efbb40	CActiveEntityScript<NScript::CHitSwitchTestScript>::`scalar deleting destructor'	RENAME	was CVtable_012f6bb8::`scalar deleting destructor'
+00efbad0	CActiveEntityScript<NScript::CHitSwitchTestScript>::SuspendableProcess	SAME	
+00efbb20	CSpawnedFunc<NScript::CHitSwitchTestScript>::`scalar deleting destructor'	SAME	
+00efb730	CSpawnedFunc<NScript::CHitSwitchTestScript>::SuspendableProcess	RENAME	was CVtable_012f6b6c::vfunc_4
+00efcb60	CEntityScriptBinding<NScript::CMarkTestScriptsScript>::GetEntityScriptName	RENAME	was sub_00efcb60
+00efda90	CEntityScriptBinding<NScript::CMarkTestScriptsScript>::CreateActiveEntityScript	SAME	
+00efdc10	CActiveEntityScript<NScript::CMarkTestScriptsScript>::`scalar deleting destructor'	RENAME	was CVtable_012f6e60::`scalar deleting destructor'
+00efdba0	CActiveEntityScript<NScript::CMarkTestScriptsScript>::SuspendableProcess	SAME	
+00efdbf0	CSpawnedFunc<NScript::CMarkTestScriptsScript>::`scalar deleting destructor'	SAME	
+00efc9f0	CSpawnedFunc<NScript::CMarkTestScriptsScript>::SuspendableProcess	RENAME	was CVtable_012f6d14::vfunc_4
+00effff0	CEntityScriptBinding<NScript::COracleMinigameTestScript>::GetEntityScriptName	RENAME	was sub_00effff0
+00f01150	CEntityScriptBinding<NScript::COracleMinigameTestScript>::CreateActiveEntityScript	SAME	
+00f012d0	CActiveEntityScript<NScript::COracleMinigameTestScript>::`scalar deleting destructor'	RENAME	was CVtable_012f72a8::`scalar deleting destructor'
+00f01260	CActiveEntityScript<NScript::COracleMinigameTestScript>::SuspendableProcess	SAME	
+00f012b0	CSpawnedFunc<NScript::COracleMinigameTestScript>::`scalar deleting destructor'	SAME	
+00effe00	CSpawnedFunc<NScript::COracleMinigameTestScript>::SuspendableProcess	RENAME	was CVtable_012f70b4::vfunc_4
+00ef1040	CEntityScriptBinding<NScript::CPersonalScript_EmptyScript>::GetEntityScriptName	RENAME	was sub_00ef1040
+00ef5070	CEntityScriptBinding<NScript::CPersonalScript_EmptyScript>::CreateActiveEntityScript	SAME	
+00ef51d0	CActiveEntityScript<NScript::CPersonalScript_EmptyScript>::`scalar deleting destructor'	RENAME	was CVtable_012f65ac::`scalar deleting destructor'
+00ef5180	CActiveEntityScript<NScript::CPersonalScript_EmptyScript>::SuspendableProcess	SAME	
+00ef0070	CSpawnedFunc<NScript::CPersonalScript_EmptyScript>::`scalar deleting destructor'	SAME	
+00ef0060	CSpawnedFunc<NScript::CPersonalScript_EmptyScript>::SuspendableProcess	RENAME	was CVtable_012f5d90::vfunc_4
+00cdeb30	CEntityScriptBinding<NScript::CPersonalScript_GlobalThingsScript>::GetEntityScriptName	RENAME	was sub_00cdeb30
+00ce0ef0	CEntityScriptBinding<NScript::CPersonalScript_GlobalThingsScript>::CreateActiveEntityScript	DISAGREE	current ExternalRetry_00ce0ef0::CEntityScriptBinding<ExternalRetry_00ce0ef0::NScript::CPersonalScript_GlobalThingsScript>::CreateActiveEntityScript kept
+00ce1250	CActiveEntityScript<NScript::CPersonalScript_GlobalThingsScript>::`scalar deleting destructor'	RENAME	was CVtable_012c3578::`scalar deleting destructor'
+00ce11b0	CActiveEntityScript<NScript::CPersonalScript_GlobalThingsScript>::SuspendableProcess	SAME	
+00ce1230	CSpawnedFunc<NScript::CPersonalScript_GlobalThingsScript>::`scalar deleting destructor'	SAME	
+00cde410	CSpawnedFunc<NScript::CPersonalScript_GlobalThingsScript>::SuspendableProcess	RENAME	was CVtable_012c30e0::vfunc_4
+00eed4c0	CEntityScriptBinding<NScript::CPersonalScript_alextestScript>::GetEntityScriptName	RENAME	was sub_00eed4c0
+00eeda40	CEntityScriptBinding<NScript::CPersonalScript_alextestScript>::CreateActiveEntityScript	SAME	
+00eedbc0	CActiveEntityScript<NScript::CPersonalScript_alextestScript>::`scalar deleting destructor'	RENAME	was CVtable_012f58c8::`scalar deleting destructor'
+00eedb50	CActiveEntityScript<NScript::CPersonalScript_alextestScript>::SuspendableProcess	SAME	
+00eedba0	CSpawnedFunc<NScript::CPersonalScript_alextestScript>::`scalar deleting destructor'	SAME	
+00eed350	CSpawnedFunc<NScript::CPersonalScript_alextestScript>::SuspendableProcess	RENAME	was CVtable_012f5828::vfunc_4
+00efb270	CEntityScriptBinding<NScript::CProximityPodiumTestScript>::GetEntityScriptName	RENAME	was sub_00efb270
+00efb460	CEntityScriptBinding<NScript::CProximityPodiumTestScript>::CreateActiveEntityScript	SAME	
+00efb5e0	CActiveEntityScript<NScript::CProximityPodiumTestScript>::`scalar deleting destructor'	RENAME	was CVtable_012f6b3c::`scalar deleting destructor'
+00efb570	CActiveEntityScript<NScript::CProximityPodiumTestScript>::SuspendableProcess	SAME	
+00efb5c0	CSpawnedFunc<NScript::CProximityPodiumTestScript>::`scalar deleting destructor'	SAME	
+00efb1d0	CSpawnedFunc<NScript::CProximityPodiumTestScript>::SuspendableProcess	RENAME	was CVtable_012f6aec::vfunc_4
+00e1e520	CEntityScriptBinding<NScript::CQR_EscortTraderScript>::GetEntityScriptName	RENAME	was sub_00e1e520
+00e1f620	CEntityScriptBinding<NScript::CQR_EscortTraderScript>::CreateActiveEntityScript	SAME	
+00e1f7b0	CActiveEntityScript<NScript::CQR_EscortTraderScript>::`scalar deleting destructor'	RENAME	was CVtable_012e1610::`scalar deleting destructor'
+00e1f730	CActiveEntityScript<NScript::CQR_EscortTraderScript>::SuspendableProcess	SAME	
+00e1dcd0	CSpawnedFunc<NScript::CQR_EscortTraderScript>::`scalar deleting destructor'	SAME	
+00e1dcc0	CSpawnedFunc<NScript::CQR_EscortTraderScript>::SuspendableProcess	RENAME	was CVtable_012e12f4::vfunc_4
+00e26ae0	CEntityScriptBinding<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>::GetEntityScriptName	RENAME	was sub_00e26ae0
+00e26c50	CEntityScriptBinding<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>::CreateActiveEntityScript	SAME	
+00e26dd0	CActiveEntityScript<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>::`scalar deleting destructor'	RENAME	was CVtable_012e1f90::`scalar deleting destructor'
+00e26d60	CActiveEntityScript<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>::SuspendableProcess	SAME	
+00e26db0	CSpawnedFunc<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>::`scalar deleting destructor'	SAME	
+00e268b0	CSpawnedFunc<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>::SuspendableProcess	RENAME	was CVtable_012e1f1c::vfunc_4
+00e25c60	CEntityScriptBinding<NScript::CQS_GuardianSisterInfoScript>::GetEntityScriptName	RENAME	was sub_00e25c60
+00e25d90	CEntityScriptBinding<NScript::CQS_GuardianSisterInfoScript>::CreateActiveEntityScript	SAME	
+00e25f10	CActiveEntityScript<NScript::CQS_GuardianSisterInfoScript>::`scalar deleting destructor'	RENAME	was CVtable_012e1e44::`scalar deleting destructor'
+00e25ea0	CActiveEntityScript<NScript::CQS_GuardianSisterInfoScript>::SuspendableProcess	SAME	
+00e25ef0	CSpawnedFunc<NScript::CQS_GuardianSisterInfoScript>::`scalar deleting destructor'	SAME	
+00e25aa0	CSpawnedFunc<NScript::CQS_GuardianSisterInfoScript>::SuspendableProcess	RENAME	was CVtable_012e1dc0::vfunc_4
+00e27ab0	CEntityScriptBinding<NScript::CQS_GuardianTrophyDealerInfoScript>::GetEntityScriptName	RENAME	was sub_00e27ab0
+00e27cb0	CEntityScriptBinding<NScript::CQS_GuardianTrophyDealerInfoScript>::CreateActiveEntityScript	SAME	
+00e27e30	CActiveEntityScript<NScript::CQS_GuardianTrophyDealerInfoScript>::`scalar deleting destructor'	RENAME	was CVtable_012e20c0::`scalar deleting destructor'
+00e27dc0	CActiveEntityScript<NScript::CQS_GuardianTrophyDealerInfoScript>::SuspendableProcess	SAME	
+00e27e10	CSpawnedFunc<NScript::CQS_GuardianTrophyDealerInfoScript>::`scalar deleting destructor'	SAME	
+00e27910	CSpawnedFunc<NScript::CQS_GuardianTrophyDealerInfoScript>::SuspendableProcess	RENAME	was CVtable_012e202c::vfunc_4
+00e28f60	CEntityScriptBinding<NScript::CQS_MeetSisterScript>::GetEntityScriptName	RENAME	was sub_00e28f60
+00e29110	CEntityScriptBinding<NScript::CQS_MeetSisterScript>::CreateActiveEntityScript	SAME	
+00e29290	CActiveEntityScript<NScript::CQS_MeetSisterScript>::`scalar deleting destructor'	RENAME	was CVtable_012e2268::`scalar deleting destructor'
+00e29220	CActiveEntityScript<NScript::CQS_MeetSisterScript>::SuspendableProcess	SAME	
+00e29270	CSpawnedFunc<NScript::CQS_MeetSisterScript>::`scalar deleting destructor'	SAME	
+00e28dd0	CSpawnedFunc<NScript::CQS_MeetSisterScript>::SuspendableProcess	RENAME	was CVtable_012e21a8::vfunc_4
+00e29e70	CEntityScriptBinding<NScript::CQS_ScytheInfoScript>::GetEntityScriptName	RENAME	was sub_00e29e70
+00e2a170	CEntityScriptBinding<NScript::CQS_ScytheInfoScript>::CreateActiveEntityScript	SAME	
+00e2a2f0	CActiveEntityScript<NScript::CQS_ScytheInfoScript>::`scalar deleting destructor'	RENAME	was CVtable_012e23d4::`scalar deleting destructor'
+00e2a280	CActiveEntityScript<NScript::CQS_ScytheInfoScript>::SuspendableProcess	SAME	
+00e2a2d0	CSpawnedFunc<NScript::CQS_ScytheInfoScript>::`scalar deleting destructor'	SAME	
+00e29b10	CSpawnedFunc<NScript::CQS_ScytheInfoScript>::SuspendableProcess	RENAME	was CVtable_012e22dc::vfunc_4
+00f03550	CEntityScriptBinding<NScript::CQ_AmbushTradersScript>::GetEntityScriptName	RENAME	was sub_00f03550
+00f09b10	CEntityScriptBinding<NScript::CQ_AmbushTradersScript>::CreateActiveEntityScript	SAME	
+00f09ca0	CActiveEntityScript<NScript::CQ_AmbushTradersScript>::`scalar deleting destructor'	RENAME	was CVtable_012f8178::`scalar deleting destructor'
+00f09c20	CActiveEntityScript<NScript::CQ_AmbushTradersScript>::SuspendableProcess	SAME	
+00cf95f0	CSpawnedFunc<NScript::CQ_AmbushTradersScript>::`scalar deleting destructor'	SAME	
+00cf95e0	CSpawnedFunc<NScript::CQ_AmbushTradersScript>::SuspendableProcess	RENAME	was CVtable_012c6cc0::vfunc_4
+00cf0b50	CEntityScriptBinding<NScript::CQ_ArenaHoldingScriptScript>::GetEntityScriptName	RENAME	was sub_00cf0b50
+00cf66e0	CEntityScriptBinding<NScript::CQ_ArenaHoldingScriptScript>::CreateActiveEntityScript	SAME	
+00cf6860	CActiveEntityScript<NScript::CQ_ArenaHoldingScriptScript>::`scalar deleting destructor'	RENAME	was CVtable_012c695c::`scalar deleting destructor'
+00cf67f0	CActiveEntityScript<NScript::CQ_ArenaHoldingScriptScript>::SuspendableProcess	SAME	
+00cf6840	CSpawnedFunc<NScript::CQ_ArenaHoldingScriptScript>::`scalar deleting destructor'	SAME	
+00cf0780	CSpawnedFunc<NScript::CQ_ArenaHoldingScriptScript>::SuspendableProcess	RENAME	was CVtable_012c60b4::vfunc_4
+00f14260	CEntityScriptBinding<NScript::CQ_ArenaScript>::GetEntityScriptName	RENAME	was sub_00f14260
+00f1cb50	CEntityScriptBinding<NScript::CQ_ArenaScript>::CreateActiveEntityScript	SAME	
+00f1ccb0	CActiveEntityScript<NScript::CQ_ArenaScript>::`scalar deleting destructor'	RENAME	was CVtable_012f9ec0::`scalar deleting destructor'
+00f1cc60	CActiveEntityScript<NScript::CQ_ArenaScript>::SuspendableProcess	SAME	
+00cfaaf0	CSpawnedFunc<NScript::CQ_ArenaScript>::`scalar deleting destructor'	SAME	
+00cfaae0	CSpawnedFunc<NScript::CQ_ArenaScript>::SuspendableProcess	RENAME	was CVtable_012c7834::vfunc_4
+00cfbb10	CEntityScriptBinding<NScript::CQ_AwakeningTheOracleScript>::GetEntityScriptName	RENAME	was sub_00cfbb10
+00cfde40	CEntityScriptBinding<NScript::CQ_AwakeningTheOracleScript>::CreateActiveEntityScript	SAME	
+00cfdfa0	CActiveEntityScript<NScript::CQ_AwakeningTheOracleScript>::`scalar deleting destructor'	RENAME	was CVtable_012c7da0::`scalar deleting destructor'
+00cfdf50	CActiveEntityScript<NScript::CQ_AwakeningTheOracleScript>::SuspendableProcess	SAME	
+00cfaf50	CSpawnedFunc<NScript::CQ_AwakeningTheOracleScript>::`scalar deleting destructor'	SAME	
+00cfaf40	CSpawnedFunc<NScript::CQ_AwakeningTheOracleScript>::SuspendableProcess	RENAME	was CVtable_012c78ec::vfunc_4
+00d04760	CEntityScriptBinding<NScript::CQ_BanditCampBossBattleScript>::GetEntityScriptName	RENAME	was None
+00d0ec50	CEntityScriptBinding<NScript::CQ_BanditCampBossBattleScript>::CreateActiveEntityScript	SAME	
+00d0ede0	CActiveEntityScript<NScript::CQ_BanditCampBossBattleScript>::`scalar deleting destructor'	RENAME	was CVtable_012c9a70::`scalar deleting destructor'
+00d0ed60	CActiveEntityScript<NScript::CQ_BanditCampBossBattleScript>::SuspendableProcess	SAME	
+00d038c0	CSpawnedFunc<NScript::CQ_BanditCampBossBattleScript>::`scalar deleting destructor'	SAME	
+00d038b0	CSpawnedFunc<NScript::CQ_BanditCampBossBattleScript>::SuspendableProcess	RENAME	was CVtable_012c88f4::vfunc_4
+00d014b0	CEntityScriptBinding<NScript::CQ_BanditCampScript>::GetEntityScriptName	RENAME	was sub_00d014b0
+00d03160	CEntityScriptBinding<NScript::CQ_BanditCampScript>::CreateActiveEntityScript	SAME	
+00d032c0	CActiveEntityScript<NScript::CQ_BanditCampScript>::`scalar deleting destructor'	RENAME	was CVtable_012c88ac::`scalar deleting destructor'
+00d03270	CActiveEntityScript<NScript::CQ_BanditCampScript>::SuspendableProcess	SAME	
+00d00a70	CSpawnedFunc<NScript::CQ_BanditCampScript>::`scalar deleting destructor'	SAME	
+00d00a60	CSpawnedFunc<NScript::CQ_BanditCampScript>::SuspendableProcess	RENAME	was CVtable_012c83e8::vfunc_4
+00d151c0	CEntityScriptBinding<NScript::CQ_BountyHuntScript>::GetEntityScriptName	RENAME	was sub_00d151c0
+00d17180	CEntityScriptBinding<NScript::CQ_BountyHuntScript>::CreateActiveEntityScript	SAME	
+00d17310	CActiveEntityScript<NScript::CQ_BountyHuntScript>::`scalar deleting destructor'	RENAME	was CVtable_012ca6ac::`scalar deleting destructor'
+00d17290	CActiveEntityScript<NScript::CQ_BountyHuntScript>::SuspendableProcess	SAME	
+00d13110	CSpawnedFunc<NScript::CQ_BountyHuntScript>::`scalar deleting destructor'	SAME	
+00d13100	CSpawnedFunc<NScript::CQ_BountyHuntScript>::SuspendableProcess	RENAME	was CVtable_012c9edc::vfunc_4
+00d24200	CEntityScriptBinding<NScript::CQ_BowerstoneTownLifeIntroScript>::GetEntityScriptName	RENAME	was sub_00d24200
+00d244b0	CEntityScriptBinding<NScript::CQ_BowerstoneTownLifeIntroScript>::CreateActiveEntityScript	SAME	
+00d24630	CActiveEntityScript<NScript::CQ_BowerstoneTownLifeIntroScript>::`scalar deleting destructor'	RENAME	was CVtable_012cb5fc::`scalar deleting destructor'
+00d245c0	CActiveEntityScript<NScript::CQ_BowerstoneTownLifeIntroScript>::SuspendableProcess	SAME	
+00d24610	CSpawnedFunc<NScript::CQ_BowerstoneTownLifeIntroScript>::`scalar deleting destructor'	SAME	
+00d23db0	CSpawnedFunc<NScript::CQ_BowerstoneTownLifeIntroScript>::SuspendableProcess	RENAME	was CVtable_012cb540::vfunc_4
+00d1d7c0	CEntityScriptBinding<NScript::CQ_BreakSiegeScript>::GetEntityScriptName	RENAME	was sub_00d1d7c0
+00d20600	CEntityScriptBinding<NScript::CQ_BreakSiegeScript>::CreateActiveEntityScript	SAME	
+00d20760	CActiveEntityScript<NScript::CQ_BreakSiegeScript>::`scalar deleting destructor'	RENAME	was CVtable_012cb140::`scalar deleting destructor'
+00d20710	CActiveEntityScript<NScript::CQ_BreakSiegeScript>::SuspendableProcess	SAME	
+00d1cfa0	CSpawnedFunc<NScript::CQ_BreakSiegeScript>::`scalar deleting destructor'	SAME	
+00d1cf90	CSpawnedFunc<NScript::CQ_BreakSiegeScript>::SuspendableProcess	RENAME	was CVtable_012cab98::vfunc_4
+00f01b50	CEntityScriptBinding<NScript::CQ_CinemaTestScript>::GetEntityScriptName	RENAME	was sub_00f01b50
+00f01d20	CEntityScriptBinding<NScript::CQ_CinemaTestScript>::CreateActiveEntityScript	SAME	
+00f01e80	CActiveEntityScript<NScript::CQ_CinemaTestScript>::`scalar deleting destructor'	RENAME	was CVtable_012f7354::`scalar deleting destructor'
+00f01e30	CActiveEntityScript<NScript::CQ_CinemaTestScript>::SuspendableProcess	SAME	
+00f01890	CSpawnedFunc<NScript::CQ_CinemaTestScript>::`scalar deleting destructor'	SAME	
+00f01880	CSpawnedFunc<NScript::CQ_CinemaTestScript>::SuspendableProcess	RENAME	was CVtable_012f7314::vfunc_4
+00d257c0	CEntityScriptBinding<NScript::CQ_DragonBossFightScript>::GetEntityScriptName	RENAME	was sub_00d257c0
+00d26000	CEntityScriptBinding<NScript::CQ_DragonBossFightScript>::CreateActiveEntityScript	SAME	
+00d26160	CActiveEntityScript<NScript::CQ_DragonBossFightScript>::`scalar deleting destructor'	RENAME	was CVtable_012cb7c4::`scalar deleting destructor'
+00d26110	CActiveEntityScript<NScript::CQ_DragonBossFightScript>::SuspendableProcess	SAME	
+00d255c0	CSpawnedFunc<NScript::CQ_DragonBossFightScript>::`scalar deleting destructor'	SAME	
+00d255b0	CSpawnedFunc<NScript::CQ_DragonBossFightScript>::SuspendableProcess	RENAME	was CVtable_012cb720::vfunc_4
+00d2fa30	CEntityScriptBinding<NScript::CQ_EndGameBossBattleScript>::GetEntityScriptName	RENAME	was sub_00d2fa30
+00d2fea0	CEntityScriptBinding<NScript::CQ_EndGameBossBattleScript>::CreateActiveEntityScript	SAME	
+00d30000	CActiveEntityScript<NScript::CQ_EndGameBossBattleScript>::`scalar deleting destructor'	SKIP	refs=4 pdb=True
+00d2ffb0	CActiveEntityScript<NScript::CQ_EndGameBossBattleScript>::SuspendableProcess	SAME	
+00d2f7d0	CSpawnedFunc<NScript::CQ_EndGameBossBattleScript>::`scalar deleting destructor'	SAME	
+00d2f7c0	CSpawnedFunc<NScript::CQ_EndGameBossBattleScript>::SuspendableProcess	RENAME	was CVtable_012cc620::vfunc_4
+00d2c130	CEntityScriptBinding<NScript::CQ_EndGameFocalSitesScript>::GetEntityScriptName	RENAME	was None
+00d2d570	CEntityScriptBinding<NScript::CQ_EndGameFocalSitesScript>::CreateActiveEntityScript	SAME	
+00d2d700	CActiveEntityScript<NScript::CQ_EndGameFocalSitesScript>::`scalar deleting destructor'	RENAME	was CVtable_012cc470::`scalar deleting destructor'
+00d2d680	CActiveEntityScript<NScript::CQ_EndGameFocalSitesScript>::SuspendableProcess	SAME	
+00d2a9f0	CSpawnedFunc<NScript::CQ_EndGameFocalSitesScript>::`scalar deleting destructor'	SAME	
+00d2a9e0	CSpawnedFunc<NScript::CQ_EndGameFocalSitesScript>::SuspendableProcess	RENAME	was CVtable_012cbfbc::vfunc_4
+00d27940	CEntityScriptBinding<NScript::CQ_EndGameScript>::GetEntityScriptName	RENAME	was sub_00d27940
+00d29680	CEntityScriptBinding<NScript::CQ_EndGameScript>::CreateActiveEntityScript	SAME	
+00d29800	CActiveEntityScript<NScript::CQ_EndGameScript>::`scalar deleting destructor'	RENAME	was CVtable_012cbcc8::`scalar deleting destructor'
+00d29790	CActiveEntityScript<NScript::CQ_EndGameScript>::SuspendableProcess	SAME	
+00d297e0	CSpawnedFunc<NScript::CQ_EndGameScript>::`scalar deleting destructor'	SAME	
+00d27450	CSpawnedFunc<NScript::CQ_EndGameScript>::SuspendableProcess	RENAME	was CVtable_012cba6c::vfunc_4
+00d36130	CEntityScriptBinding<NScript::CQ_FireHeartScript>::GetEntityScriptName	RENAME	was sub_00d36130
+00d38b90	CEntityScriptBinding<NScript::CQ_FireHeartScript>::CreateActiveEntityScript	SAME	
+00d38cf0	CActiveEntityScript<NScript::CQ_FireHeartScript>::`scalar deleting destructor'	RENAME	was CVtable_012cd1a0::`scalar deleting destructor'
+00d38ca0	CActiveEntityScript<NScript::CQ_FireHeartScript>::SuspendableProcess	SAME	
+00d34700	CSpawnedFunc<NScript::CQ_FireHeartScript>::`scalar deleting destructor'	SAME	
+00d346f0	CSpawnedFunc<NScript::CQ_FireHeartScript>::SuspendableProcess	RENAME	was CVtable_012ccba4::vfunc_4
+00d509c0	CEntityScriptBinding<NScript::CQ_GuildTrainingDepartureScript>::GetEntityScriptName	RENAME	was sub_00d509c0
+00d50ab0	CEntityScriptBinding<NScript::CQ_GuildTrainingDepartureScript>::CreateActiveEntityScript	SAME	
+00d50c30	CActiveEntityScript<NScript::CQ_GuildTrainingDepartureScript>::`scalar deleting destructor'	RENAME	was CVtable_012cf6e0::`scalar deleting destructor'
+00d50bc0	CActiveEntityScript<NScript::CQ_GuildTrainingDepartureScript>::SuspendableProcess	SAME	
+00d50c10	CSpawnedFunc<NScript::CQ_GuildTrainingDepartureScript>::`scalar deleting destructor'	SAME	
+00d507f0	CSpawnedFunc<NScript::CQ_GuildTrainingDepartureScript>::SuspendableProcess	RENAME	was CVtable_012cf6a0::vfunc_4
+00d565b0	CEntityScriptBinding<NScript::CQ_GuildTrainingMeleeScript>::GetEntityScriptName	RENAME	was sub_00d565b0
+00d58300	CEntityScriptBinding<NScript::CQ_GuildTrainingMeleeScript>::CreateActiveEntityScript	SAME	
+00d58460	CActiveEntityScript<NScript::CQ_GuildTrainingMeleeScript>::`scalar deleting destructor'	RENAME	was CVtable_012d0580::`scalar deleting destructor'
+00d58410	CActiveEntityScript<NScript::CQ_GuildTrainingMeleeScript>::SuspendableProcess	SAME	
+00d55e70	CSpawnedFunc<NScript::CQ_GuildTrainingMeleeScript>::`scalar deleting destructor'	SAME	
+00d55e60	CSpawnedFunc<NScript::CQ_GuildTrainingMeleeScript>::SuspendableProcess	RENAME	was CVtable_012d0288::vfunc_4
+00d51e10	CEntityScriptBinding<NScript::CQ_GuildTrainingPreMeleeScript>::GetEntityScriptName	RENAME	was sub_00d51e10
+00d52310	CEntityScriptBinding<NScript::CQ_GuildTrainingPreMeleeScript>::CreateActiveEntityScript	SAME	
+00d52470	CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>::`scalar deleting destructor'	RENAME	was CVtable_012cf890::`scalar deleting destructor'
+00d52420	CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>::SuspendableProcess	SAME	
+00d51500	CSpawnedFunc<NScript::CQ_GuildTrainingPreMeleeScript>::`scalar deleting destructor'	SAME	
+00d514f0	CSpawnedFunc<NScript::CQ_GuildTrainingPreMeleeScript>::SuspendableProcess	RENAME	was CVtable_012cf79c::vfunc_4
+00d3c8e0	CEntityScriptBinding<NScript::CQ_GuildTrainingScript>::GetEntityScriptName	RENAME	was sub_00d3c8e0
+00d444c0	CEntityScriptBinding<NScript::CQ_GuildTrainingScript>::CreateActiveEntityScript	SAME	
+00d44620	CActiveEntityScript<NScript::CQ_GuildTrainingScript>::`scalar deleting destructor'	RENAME	was CVtable_012ce48c::`scalar deleting destructor'
+00d445d0	CActiveEntityScript<NScript::CQ_GuildTrainingScript>::SuspendableProcess	SAME	
+00d3bbf0	CSpawnedFunc<NScript::CQ_GuildTrainingScript>::`scalar deleting destructor'	SAME	
+00d3bbe0	CSpawnedFunc<NScript::CQ_GuildTrainingScript>::SuspendableProcess	RENAME	was CVtable_012cd5ec::vfunc_4
+00d5abd0	CEntityScriptBinding<NScript::CQ_GuildTrainingSkillScript>::GetEntityScriptName	RENAME	was sub_00d5abd0
+00d5acc0	CEntityScriptBinding<NScript::CQ_GuildTrainingSkillScript>::CreateActiveEntityScript	SAME	
+00d5ae40	CActiveEntityScript<NScript::CQ_GuildTrainingSkillScript>::`scalar deleting destructor'	RENAME	was CVtable_012d09f4::`scalar deleting destructor'
+00d5add0	CActiveEntityScript<NScript::CQ_GuildTrainingSkillScript>::SuspendableProcess	SAME	
+00d5ae20	CSpawnedFunc<NScript::CQ_GuildTrainingSkillScript>::`scalar deleting destructor'	SAME	
+00d5ab30	CSpawnedFunc<NScript::CQ_GuildTrainingSkillScript>::SuspendableProcess	RENAME	was CVtable_012d09b4::vfunc_4
+00d5ddd0	CEntityScriptBinding<NScript::CQ_GuildTrainingWillScript>::GetEntityScriptName	RENAME	was sub_00d5ddd0
+00d5dec0	CEntityScriptBinding<NScript::CQ_GuildTrainingWillScript>::CreateActiveEntityScript	SAME	
+00d5e040	CActiveEntityScript<NScript::CQ_GuildTrainingWillScript>::`scalar deleting destructor'	RENAME	was CVtable_012d108c::`scalar deleting destructor'
+00d5dfd0	CActiveEntityScript<NScript::CQ_GuildTrainingWillScript>::SuspendableProcess	SAME	
+00d5e020	CSpawnedFunc<NScript::CQ_GuildTrainingWillScript>::`scalar deleting destructor'	SAME	
+00d5dd30	CSpawnedFunc<NScript::CQ_GuildTrainingWillScript>::SuspendableProcess	RENAME	was CVtable_012d104c::vfunc_4
+00d62260	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsDepartureScript>::GetEntityScriptName	RENAME	was sub_00d62260
+00d64210	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsDepartureScript>::CreateActiveEntityScript	SAME	
+00d64370	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsDepartureScript>::`scalar deleting destructor'	RENAME	was CVtable_012d1a64::`scalar deleting destructor'
+00d64320	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsDepartureScript>::SuspendableProcess	SAME	
+00d61d00	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsDepartureScript>::`scalar deleting destructor'	SAME	
+00d61cf0	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsDepartureScript>::SuspendableProcess	RENAME	was CVtable_012d1610::vfunc_4
+00d66870	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsMeleeScript>::GetEntityScriptName	RENAME	was sub_00d66870
+00d670e0	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsMeleeScript>::CreateActiveEntityScript	SAME	
+00d67240	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsMeleeScript>::`scalar deleting destructor'	RENAME	was CVtable_012d1dbc::`scalar deleting destructor'
+00d671f0	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsMeleeScript>::SuspendableProcess	SAME	
+00d66600	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsMeleeScript>::`scalar deleting destructor'	SAME	
+00d665f0	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsMeleeScript>::SuspendableProcess	RENAME	was CVtable_012d1d30::vfunc_4
+00d68710	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsWillScript>::GetEntityScriptName	RENAME	was sub_00d68710
+00d68d10	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsWillScript>::CreateActiveEntityScript	SAME	
+00d68e70	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsWillScript>::`scalar deleting destructor'	RENAME	was CVtable_012d1f7c::`scalar deleting destructor'
+00d68e20	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsWillScript>::SuspendableProcess	SAME	
+00d67870	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsWillScript>::`scalar deleting destructor'	SAME	
+00d67860	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsWillScript>::SuspendableProcess	RENAME	was CVtable_012d1e1c::vfunc_4
+00d69d40	CEntityScriptBinding<NScript::CQ_HangingTreeEvilScript>::GetEntityScriptName	RENAME	was sub_00d69d40
+00d6b590	CEntityScriptBinding<NScript::CQ_HangingTreeEvilScript>::CreateActiveEntityScript	SAME	
+00d6b6f0	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript>::`scalar deleting destructor'	RENAME	was CVtable_012d22b8::`scalar deleting destructor'
+00d6b6a0	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript>::SuspendableProcess	SAME	
+00d69430	CSpawnedFunc<NScript::CQ_HangingTreeEvilScript>::`scalar deleting destructor'	SAME	
+00d69420	CSpawnedFunc<NScript::CQ_HangingTreeEvilScript>::SuspendableProcess	RENAME	was CVtable_012d1fe8::vfunc_4
+00d6fcf0	CEntityScriptBinding<NScript::CQ_HangingTreeGoodScript>::GetEntityScriptName	RENAME	was sub_00d6fcf0
+00d729e0	CEntityScriptBinding<NScript::CQ_HangingTreeGoodScript>::CreateActiveEntityScript	SAME	
+00d72b40	CActiveEntityScript<NScript::CQ_HangingTreeGoodScript>::`scalar deleting destructor'	RENAME	was CVtable_012d299c::`scalar deleting destructor'
+00d72af0	CActiveEntityScript<NScript::CQ_HangingTreeGoodScript>::SuspendableProcess	SAME	
+00d6f460	CSpawnedFunc<NScript::CQ_HangingTreeGoodScript>::`scalar deleting destructor'	SAME	
+00d6f450	CSpawnedFunc<NScript::CQ_HangingTreeGoodScript>::SuspendableProcess	RENAME	was CVtable_012d264c::vfunc_4
+00d7d8c0	CEntityScriptBinding<NScript::CQ_HeroSoulsArenaScript>::GetEntityScriptName	RENAME	was sub_00d7d8c0
+00d7fab0	CEntityScriptBinding<NScript::CQ_HeroSoulsArenaScript>::CreateActiveEntityScript	SAME	
+00d7fc10	CActiveEntityScript<NScript::CQ_HeroSoulsArenaScript>::`scalar deleting destructor'	RENAME	was CVtable_012d3fe0::`scalar deleting destructor'
+00d7fbc0	CActiveEntityScript<NScript::CQ_HeroSoulsArenaScript>::SuspendableProcess	SAME	
+00d7c7e0	CSpawnedFunc<NScript::CQ_HeroSoulsArenaScript>::`scalar deleting destructor'	SAME	
+00d7c7d0	CSpawnedFunc<NScript::CQ_HeroSoulsArenaScript>::SuspendableProcess	RENAME	was CVtable_012d39a8::vfunc_4
+00d81620	CEntityScriptBinding<NScript::CQ_HeroSoulsBriarScript>::GetEntityScriptName	RENAME	was sub_00d81620
+00d82210	CEntityScriptBinding<NScript::CQ_HeroSoulsBriarScript>::CreateActiveEntityScript	SAME	
+00d82370	CActiveEntityScript<NScript::CQ_HeroSoulsBriarScript>::`scalar deleting destructor'	RENAME	was CVtable_012d4428::`scalar deleting destructor'
+00d82320	CActiveEntityScript<NScript::CQ_HeroSoulsBriarScript>::SuspendableProcess	SAME	
+00d80df0	CSpawnedFunc<NScript::CQ_HeroSoulsBriarScript>::`scalar deleting destructor'	SAME	
+00d80de0	CSpawnedFunc<NScript::CQ_HeroSoulsBriarScript>::SuspendableProcess	RENAME	was CVtable_012d41d0::vfunc_4
+00d85a20	CEntityScriptBinding<NScript::CQ_HeroSoulsGuildmasterScript>::GetEntityScriptName	RENAME	was sub_00d85a20
+00d87140	CEntityScriptBinding<NScript::CQ_HeroSoulsGuildmasterScript>::CreateActiveEntityScript	SAME	
+00d872a0	CActiveEntityScript<NScript::CQ_HeroSoulsGuildmasterScript>::`scalar deleting destructor'	RENAME	was CVtable_012d4c78::`scalar deleting destructor'
+00d87250	CActiveEntityScript<NScript::CQ_HeroSoulsGuildmasterScript>::SuspendableProcess	SAME	
+00d84cc0	CSpawnedFunc<NScript::CQ_HeroSoulsGuildmasterScript>::`scalar deleting destructor'	SAME	
+00d84cb0	CSpawnedFunc<NScript::CQ_HeroSoulsGuildmasterScript>::SuspendableProcess	RENAME	was CVtable_012d4818::vfunc_4
+00d83ce0	CEntityScriptBinding<NScript::CQ_HeroSoulsMotherScript>::GetEntityScriptName	RENAME	was sub_00d83ce0
+00d844a0	CEntityScriptBinding<NScript::CQ_HeroSoulsMotherScript>::CreateActiveEntityScript	SAME	
+00d84600	CActiveEntityScript<NScript::CQ_HeroSoulsMotherScript>::`scalar deleting destructor'	RENAME	was CVtable_012d47c0::`scalar deleting destructor'
+00d845b0	CActiveEntityScript<NScript::CQ_HeroSoulsMotherScript>::SuspendableProcess	SAME	
+00d83580	CSpawnedFunc<NScript::CQ_HeroSoulsMotherScript>::`scalar deleting destructor'	SAME	
+00d83570	CSpawnedFunc<NScript::CQ_HeroSoulsMotherScript>::SuspendableProcess	RENAME	was CVtable_012d4604::vfunc_4
+00d88250	CEntityScriptBinding<NScript::CQ_HeroSoulsNostroScript>::GetEntityScriptName	RENAME	was sub_00d88250
+00d89580	CEntityScriptBinding<NScript::CQ_HeroSoulsNostroScript>::CreateActiveEntityScript	SAME	
+00d896e0	CActiveEntityScript<NScript::CQ_HeroSoulsNostroScript>::`scalar deleting destructor'	RENAME	was CVtable_012d4f84::`scalar deleting destructor'
+00d89690	CActiveEntityScript<NScript::CQ_HeroSoulsNostroScript>::SuspendableProcess	SAME	
+00d87c40	CSpawnedFunc<NScript::CQ_HeroSoulsNostroScript>::`scalar deleting destructor'	SAME	
+00d87c30	CSpawnedFunc<NScript::CQ_HeroSoulsNostroScript>::SuspendableProcess	RENAME	was CVtable_012d4d40::vfunc_4
+00d79b80	CEntityScriptBinding<NScript::CQ_HeroSoulsScript>::GetEntityScriptName	RENAME	was sub_00d79b80
+00d7a8a0	CEntityScriptBinding<NScript::CQ_HeroSoulsScript>::CreateActiveEntityScript	SAME	
+00d7aa00	CActiveEntityScript<NScript::CQ_HeroSoulsScript>::`scalar deleting destructor'	RENAME	was CVtable_012d346c::`scalar deleting destructor'
+00d7a9b0	CActiveEntityScript<NScript::CQ_HeroSoulsScript>::SuspendableProcess	SAME	
+00d785c0	CSpawnedFunc<NScript::CQ_HeroSoulsScript>::`scalar deleting destructor'	SAME	
+00d785b0	CSpawnedFunc<NScript::CQ_HeroSoulsScript>::SuspendableProcess	RENAME	was CVtable_012d2f5c::vfunc_4
+00d7b3f0	CEntityScriptBinding<NScript::CQ_HeroSoulsThunderScript>::GetEntityScriptName	RENAME	was sub_00d7b3f0
+00d7c2e0	CEntityScriptBinding<NScript::CQ_HeroSoulsThunderScript>::CreateActiveEntityScript	SAME	
+00d7c440	CActiveEntityScript<NScript::CQ_HeroSoulsThunderScript>::`scalar deleting destructor'	RENAME	was CVtable_012d3978::`scalar deleting destructor'
+00d7c3f0	CActiveEntityScript<NScript::CQ_HeroSoulsThunderScript>::SuspendableProcess	SAME	
+00d7ae10	CSpawnedFunc<NScript::CQ_HeroSoulsThunderScript>::`scalar deleting destructor'	SAME	
+00d7ae00	CSpawnedFunc<NScript::CQ_HeroSoulsThunderScript>::SuspendableProcess	RENAME	was CVtable_012d349c::vfunc_4
+00d8a230	CEntityScriptBinding<NScript::CQ_HerosOldHouseScript>::GetEntityScriptName	RENAME	was sub_00d8a230
+00d8a960	CEntityScriptBinding<NScript::CQ_HerosOldHouseScript>::CreateActiveEntityScript	SAME	
+00d8aae0	CActiveEntityScript<NScript::CQ_HerosOldHouseScript>::`scalar deleting destructor'	RENAME	was CVtable_012d5114::`scalar deleting destructor'
+00d8aa70	CActiveEntityScript<NScript::CQ_HerosOldHouseScript>::SuspendableProcess	SAME	
+00d8aac0	CSpawnedFunc<NScript::CQ_HerosOldHouseScript>::`scalar deleting destructor'	SAME	
+00d89e50	CSpawnedFunc<NScript::CQ_HerosOldHouseScript>::SuspendableProcess	RENAME	was CVtable_012d502c::vfunc_4
+00d8ee40	CEntityScriptBinding<NScript::CQ_HobbeCaveScript>::GetEntityScriptName	RENAME	was sub_00d8ee40
+00d915b0	CEntityScriptBinding<NScript::CQ_HobbeCaveScript>::CreateActiveEntityScript	SAME	
+00d91710	CActiveEntityScript<NScript::CQ_HobbeCaveScript>::`scalar deleting destructor'	RENAME	was CVtable_012d5b70::`scalar deleting destructor'
+00d916c0	CActiveEntityScript<NScript::CQ_HobbeCaveScript>::SuspendableProcess	SAME	
+00d8dca0	CSpawnedFunc<NScript::CQ_HobbeCaveScript>::`scalar deleting destructor'	SAME	
+00d8dc90	CSpawnedFunc<NScript::CQ_HobbeCaveScript>::SuspendableProcess	RENAME	was CVtable_012d567c::vfunc_4
+00d9b410	CEntityScriptBinding<NScript::CQ_HobbeToothContestScript>::GetEntityScriptName	RENAME	was sub_00d9b410
+00d9d930	CEntityScriptBinding<NScript::CQ_HobbeToothContestScript>::CreateActiveEntityScript	SAME	
+00d9dac0	CActiveEntityScript<NScript::CQ_HobbeToothContestScript>::`scalar deleting destructor'	RENAME	was CVtable_012d6c44::`scalar deleting destructor'
+00d9da40	CActiveEntityScript<NScript::CQ_HobbeToothContestScript>::SuspendableProcess	SAME	
+00d9a140	CSpawnedFunc<NScript::CQ_HobbeToothContestScript>::`scalar deleting destructor'	SAME	
+00d9a130	CSpawnedFunc<NScript::CQ_HobbeToothContestScript>::SuspendableProcess	RENAME	was CVtable_012d660c::vfunc_4
+00d9e8a0	CEntityScriptBinding<NScript::CQ_MinionCampScript>::GetEntityScriptName	RENAME	was sub_00d9e8a0
+00d9ffd0	CEntityScriptBinding<NScript::CQ_MinionCampScript>::CreateActiveEntityScript	SKIP	refs=10 pdb=True body=True
+00da0130	CActiveEntityScript<NScript::CQ_MinionCampScript>::`scalar deleting destructor'	SKIP	refs=2 pdb=True
+00da00e0	CActiveEntityScript<NScript::CQ_MinionCampScript>::SuspendableProcess	SAME	
+00d9e5c0	CSpawnedFunc<NScript::CQ_MinionCampScript>::`scalar deleting destructor'	SAME	
+00d9e5b0	CSpawnedFunc<NScript::CQ_MinionCampScript>::SuspendableProcess	RENAME	was CVtable_012d6cac::vfunc_4
+00da3f30	CEntityScriptBinding<NScript::CQ_MinionClifftopChaseScript>::GetEntityScriptName	RENAME	was sub_00da3f30
+00da8320	CEntityScriptBinding<NScript::CQ_MinionClifftopChaseScript>::CreateActiveEntityScript	SAME	
+00da84b0	CActiveEntityScript<NScript::CQ_MinionClifftopChaseScript>::`scalar deleting destructor'	RENAME	was CVtable_012d7844::`scalar deleting destructor'
+00da8430	CActiveEntityScript<NScript::CQ_MinionClifftopChaseScript>::SuspendableProcess	SAME	
+00da3440	CSpawnedFunc<NScript::CQ_MinionClifftopChaseScript>::`scalar deleting destructor'	SAME	
+00da3430	CSpawnedFunc<NScript::CQ_MinionClifftopChaseScript>::SuspendableProcess	RENAME	was CVtable_012d716c::vfunc_4
+00dac2b0	CEntityScriptBinding<NScript::CQ_NewOakValeIntroScript>::GetEntityScriptName	RENAME	was sub_00dac2b0
+00db8520	CEntityScriptBinding<NScript::CQ_NewOakValeIntroScript>::CreateActiveEntityScript	SAME	
+00db8680	CActiveEntityScript<NScript::CQ_NewOakValeIntroScript>::`scalar deleting destructor'	RENAME	was CVtable_012d95b0::`scalar deleting destructor'
+00db8630	CActiveEntityScript<NScript::CQ_NewOakValeIntroScript>::SuspendableProcess	SAME	
+00daad80	CSpawnedFunc<NScript::CQ_NewOakValeIntroScript>::`scalar deleting destructor'	SAME	
+00daad70	CSpawnedFunc<NScript::CQ_NewOakValeIntroScript>::SuspendableProcess	RENAME	was CVtable_012d7a3c::vfunc_4
+00dbf9d0	CEntityScriptBinding<NScript::CQ_OakValeBanditRaidScript>::GetEntityScriptName	RENAME	was sub_00dbf9d0
+00dc0170	CEntityScriptBinding<NScript::CQ_OakValeBanditRaidScript>::CreateActiveEntityScript	SAME	
+00dc02d0	CActiveEntityScript<NScript::CQ_OakValeBanditRaidScript>::`scalar deleting destructor'	RENAME	was CVtable_012d9f9c::`scalar deleting destructor'
+00dc0280	CActiveEntityScript<NScript::CQ_OakValeBanditRaidScript>::SuspendableProcess	SAME	
+00dbf2b0	CSpawnedFunc<NScript::CQ_OakValeBanditRaidScript>::`scalar deleting destructor'	SAME	
+00dbf2a0	CSpawnedFunc<NScript::CQ_OakValeBanditRaidScript>::SuspendableProcess	RENAME	was CVtable_012d9e2c::vfunc_4
+00dc3ce0	CEntityScriptBinding<NScript::CQ_OpeningGraveyardSecretPassageScript>::GetEntityScriptName	RENAME	was sub_00dc3ce0
+00dc8700	CEntityScriptBinding<NScript::CQ_OpeningGraveyardSecretPassageScript>::CreateActiveEntityScript	SAME	
+00dc8860	CActiveEntityScript<NScript::CQ_OpeningGraveyardSecretPassageScript>::`scalar deleting destructor'	RENAME	was CVtable_012daa38::`scalar deleting destructor'
+00dc8810	CActiveEntityScript<NScript::CQ_OpeningGraveyardSecretPassageScript>::SuspendableProcess	SAME	
+00dc2750	CSpawnedFunc<NScript::CQ_OpeningGraveyardSecretPassageScript>::`scalar deleting destructor'	SAME	
+00dc2740	CSpawnedFunc<NScript::CQ_OpeningGraveyardSecretPassageScript>::SuspendableProcess	RENAME	was CVtable_012da140::vfunc_4
+00dcd0d0	CEntityScriptBinding<NScript::CQ_OrchardFarmRaidScript>::GetEntityScriptName	RENAME	was sub_00dcd0d0
+00dcf790	CEntityScriptBinding<NScript::CQ_OrchardFarmRaidScript>::CreateActiveEntityScript	SAME	
+00dcf8f0	CActiveEntityScript<NScript::CQ_OrchardFarmRaidScript>::`scalar deleting destructor'	RENAME	was CVtable_012db50c::`scalar deleting destructor'
+00dcf8a0	CActiveEntityScript<NScript::CQ_OrchardFarmRaidScript>::SuspendableProcess	SAME	
+00dcc700	CSpawnedFunc<NScript::CQ_OrchardFarmRaidScript>::`scalar deleting destructor'	SAME	
+00dcc6f0	CSpawnedFunc<NScript::CQ_OrchardFarmRaidScript>::SuspendableProcess	RENAME	was CVtable_012db13c::vfunc_4
+00dd35c0	CEntityScriptBinding<NScript::CQ_PrisonEscapeRescueMotherScript>::GetEntityScriptName	RENAME	was sub_00dd35c0
+00dd9300	CEntityScriptBinding<NScript::CQ_PrisonEscapeRescueMotherScript>::CreateActiveEntityScript	SAME	
+00dd9460	CActiveEntityScript<NScript::CQ_PrisonEscapeRescueMotherScript>::`scalar deleting destructor'	RENAME	was CVtable_012dc584::`scalar deleting destructor'
+00dd9410	CActiveEntityScript<NScript::CQ_PrisonEscapeRescueMotherScript>::SuspendableProcess	SAME	
+00dd2c60	CSpawnedFunc<NScript::CQ_PrisonEscapeRescueMotherScript>::`scalar deleting destructor'	SAME	
+00dd2c50	CSpawnedFunc<NScript::CQ_PrisonEscapeRescueMotherScript>::SuspendableProcess	RENAME	was CVtable_012db954::vfunc_4
+00ddb2e0	CEntityScriptBinding<NScript::CQ_PrisonRaceScript>::GetEntityScriptName	RENAME	was sub_00ddb2e0
+00ddc7d0	CEntityScriptBinding<NScript::CQ_PrisonRaceScript>::CreateActiveEntityScript	SAME	
+00ddc950	CActiveEntityScript<NScript::CQ_PrisonRaceScript>::`scalar deleting destructor'	RENAME	was CVtable_012dca80::`scalar deleting destructor'
+00ddc8e0	CActiveEntityScript<NScript::CQ_PrisonRaceScript>::SuspendableProcess	SAME	
+00ddc930	CSpawnedFunc<NScript::CQ_PrisonRaceScript>::`scalar deleting destructor'	SAME	
+00ddae30	CSpawnedFunc<NScript::CQ_PrisonRaceScript>::SuspendableProcess	RENAME	was CVtable_012dc8a0::vfunc_4
+00dde220	CEntityScriptBinding<NScript::CQ_PrisonWardenGameScript>::GetEntityScriptName	RENAME	was sub_00dde220
+00ddeee0	CEntityScriptBinding<NScript::CQ_PrisonWardenGameScript>::CreateActiveEntityScript	SAME	
+00ddf060	CActiveEntityScript<NScript::CQ_PrisonWardenGameScript>::`scalar deleting destructor'	RENAME	was CVtable_012dcd2c::`scalar deleting destructor'
+00ddeff0	CActiveEntityScript<NScript::CQ_PrisonWardenGameScript>::SuspendableProcess	SAME	
+00ddf040	CSpawnedFunc<NScript::CQ_PrisonWardenGameScript>::`scalar deleting destructor'	SAME	
+00ddde10	CSpawnedFunc<NScript::CQ_PrisonWardenGameScript>::SuspendableProcess	RENAME	was CVtable_012dcb54::vfunc_4
+00dec4b0	CEntityScriptBinding<NScript::CQ_RansomVictimChiefsHouseScript>::GetEntityScriptName	RENAME	was sub_00dec4b0
+00dec5b0	CEntityScriptBinding<NScript::CQ_RansomVictimChiefsHouseScript>::CreateActiveEntityScript	SAME	
+00dec730	CActiveEntityScript<NScript::CQ_RansomVictimChiefsHouseScript>::`scalar deleting destructor'	RENAME	was CVtable_012ddc04::`scalar deleting destructor'
+00dec6c0	CActiveEntityScript<NScript::CQ_RansomVictimChiefsHouseScript>::SuspendableProcess	SAME	
+00dec710	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>::`scalar deleting destructor'	SAME	
+00debee0	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>::SuspendableProcess	RENAME	was CVtable_012ddbbc::vfunc_4
+00de1490	CEntityScriptBinding<NScript::CQ_RansomVictimScript>::GetEntityScriptName	RENAME	was sub_00de1490
+00de4480	CEntityScriptBinding<NScript::CQ_RansomVictimScript>::CreateActiveEntityScript	SAME	
+00de45e0	CActiveEntityScript<NScript::CQ_RansomVictimScript>::`scalar deleting destructor'	RENAME	was CVtable_012dd4a0::`scalar deleting destructor'
+00de4590	CActiveEntityScript<NScript::CQ_RansomVictimScript>::SuspendableProcess	SAME	
+00de0830	CSpawnedFunc<NScript::CQ_RansomVictimScript>::`scalar deleting destructor'	SAME	
+00de0820	CSpawnedFunc<NScript::CQ_RansomVictimScript>::SuspendableProcess	RENAME	was CVtable_012dcf1c::vfunc_4
+00ded190	CEntityScriptBinding<NScript::CQ_SecretPassageScript>::GetEntityScriptName	RENAME	was sub_00ded190
+00def220	CEntityScriptBinding<NScript::CQ_SecretPassageScript>::CreateActiveEntityScript	SAME	
+00def380	CActiveEntityScript<NScript::CQ_SecretPassageScript>::`scalar deleting destructor'	RENAME	was CVtable_012ddf08::`scalar deleting destructor'
+00def330	CActiveEntityScript<NScript::CQ_SecretPassageScript>::SuspendableProcess	SAME	
+00decab0	CSpawnedFunc<NScript::CQ_SecretPassageScript>::`scalar deleting destructor'	SAME	
+00decaa0	CSpawnedFunc<NScript::CQ_SecretPassageScript>::SuspendableProcess	RENAME	was CVtable_012ddc54::vfunc_4
+00df16a0	CEntityScriptBinding<NScript::CQ_SummoningTheShipScript>::GetEntityScriptName	RENAME	was sub_00df16a0
+00df3550	CEntityScriptBinding<NScript::CQ_SummoningTheShipScript>::CreateActiveEntityScript	SAME	
+00df36b0	CActiveEntityScript<NScript::CQ_SummoningTheShipScript>::`scalar deleting destructor'	RENAME	was CVtable_012de350::`scalar deleting destructor'
+00df3660	CActiveEntityScript<NScript::CQ_SummoningTheShipScript>::SuspendableProcess	SAME	
+00df1380	CSpawnedFunc<NScript::CQ_SummoningTheShipScript>::`scalar deleting destructor'	SAME	
+00df1370	CSpawnedFunc<NScript::CQ_SummoningTheShipScript>::SuspendableProcess	RENAME	was CVtable_012de120::vfunc_4
+00df4510	CEntityScriptBinding<NScript::CQ_TentacleKrakenBossFightScript>::GetEntityScriptName	RENAME	was sub_00df4510
+00df4a50	CEntityScriptBinding<NScript::CQ_TentacleKrakenBossFightScript>::CreateActiveEntityScript	SAME	
+00df4bb0	CActiveEntityScript<NScript::CQ_TentacleKrakenBossFightScript>::`scalar deleting destructor'	RENAME	was CVtable_012de5e4::`scalar deleting destructor'
+00df4b60	CActiveEntityScript<NScript::CQ_TentacleKrakenBossFightScript>::SuspendableProcess	SAME	
+00df41f0	CSpawnedFunc<NScript::CQ_TentacleKrakenBossFightScript>::`scalar deleting destructor'	SAME	
+00df41e0	CSpawnedFunc<NScript::CQ_TentacleKrakenBossFightScript>::SuspendableProcess	RENAME	was CVtable_012de524::vfunc_4
+00df7970	CEntityScriptBinding<NScript::CQ_TraderConflictEvilScript>::GetEntityScriptName	RENAME	was sub_00df7970
+00df99f0	CEntityScriptBinding<NScript::CQ_TraderConflictEvilScript>::CreateActiveEntityScript	SAME	
+00df9b50	CActiveEntityScript<NScript::CQ_TraderConflictEvilScript>::`scalar deleting destructor'	RENAME	was CVtable_012deaac::`scalar deleting destructor'
+00df9b00	CActiveEntityScript<NScript::CQ_TraderConflictEvilScript>::SuspendableProcess	SAME	
+00df5ff0	CSpawnedFunc<NScript::CQ_TraderConflictEvilScript>::`scalar deleting destructor'	SAME	
+00df5fe0	CSpawnedFunc<NScript::CQ_TraderConflictEvilScript>::SuspendableProcess	RENAME	was CVtable_012de70c::vfunc_4
+00dfaea0	CEntityScriptBinding<NScript::CQ_TraderConflictGoodScript>::GetEntityScriptName	RENAME	was sub_00dfaea0
+00dfc100	CEntityScriptBinding<NScript::CQ_TraderConflictGoodScript>::CreateActiveEntityScript	SAME	
+00dfc260	CActiveEntityScript<NScript::CQ_TraderConflictGoodScript>::`scalar deleting destructor'	RENAME	was CVtable_012dee4c::`scalar deleting destructor'
+00dfc210	CActiveEntityScript<NScript::CQ_TraderConflictGoodScript>::SuspendableProcess	SAME	
+00dfa430	CSpawnedFunc<NScript::CQ_TraderConflictGoodScript>::`scalar deleting destructor'	SAME	
+00dfa420	CSpawnedFunc<NScript::CQ_TraderConflictGoodScript>::SuspendableProcess	RENAME	was CVtable_012deb2c::vfunc_4
+00e015e0	CEntityScriptBinding<NScript::CQ_TraderEscortScript>::GetEntityScriptName	RENAME	was sub_00e015e0
+00e05170	CEntityScriptBinding<NScript::CQ_TraderEscortScript>::CreateActiveEntityScript	SAME	
+00e05300	CActiveEntityScript<NScript::CQ_TraderEscortScript>::`scalar deleting destructor'	RENAME	was CVtable_012df7d4::`scalar deleting destructor'
+00e05280	CActiveEntityScript<NScript::CQ_TraderEscortScript>::SuspendableProcess	SAME	
+00e00cc0	CSpawnedFunc<NScript::CQ_TraderEscortScript>::`scalar deleting destructor'	SAME	
+00e00cb0	CSpawnedFunc<NScript::CQ_TraderEscortScript>::SuspendableProcess	RENAME	was CVtable_012df224::vfunc_4
+00e0c4b0	CEntityScriptBinding<NScript::CQ_UndeadRisingScript>::GetEntityScriptName	RENAME	was sub_00e0c4b0
+00e0e5a0	CEntityScriptBinding<NScript::CQ_UndeadRisingScript>::CreateActiveEntityScript	SAME	
+00e0e730	CActiveEntityScript<NScript::CQ_UndeadRisingScript>::`scalar deleting destructor'	RENAME	was CVtable_012e00c8::`scalar deleting destructor'
+00e0e6b0	CActiveEntityScript<NScript::CQ_UndeadRisingScript>::SuspendableProcess	SAME	
+00e0b140	CSpawnedFunc<NScript::CQ_UndeadRisingScript>::`scalar deleting destructor'	SAME	
+00e0b130	CSpawnedFunc<NScript::CQ_UndeadRisingScript>::SuspendableProcess	RENAME	was CVtable_012dfd50::vfunc_4
+00e0f1c0	CEntityScriptBinding<NScript::CQ_WaspBossScript>::GetEntityScriptName	RENAME	was sub_00e0f1c0
+00e12170	CEntityScriptBinding<NScript::CQ_WaspBossScript>::CreateActiveEntityScript	SAME	
+00e122d0	CActiveEntityScript<NScript::CQ_WaspBossScript>::`scalar deleting destructor'	RENAME	was CVtable_012e0574::`scalar deleting destructor'
+00e12280	CActiveEntityScript<NScript::CQ_WaspBossScript>::SuspendableProcess	SAME	
+00e0e980	CSpawnedFunc<NScript::CQ_WaspBossScript>::`scalar deleting destructor'	SAME	
+00e0e970	CSpawnedFunc<NScript::CQ_WaspBossScript>::SuspendableProcess	SKIP	refs=2 pdb=True
+00e154f0	CEntityScriptBinding<NScript::CQ_WhiteBalverineKnotholeGladeScript>::GetEntityScriptName	RENAME	was sub_00e154f0
+00e18220	CEntityScriptBinding<NScript::CQ_WhiteBalverineKnotholeGladeScript>::CreateActiveEntityScript	SAME	
+00e18380	CActiveEntityScript<NScript::CQ_WhiteBalverineKnotholeGladeScript>::`scalar deleting destructor'	RENAME	was CVtable_012e0cc8::`scalar deleting destructor'
+00e18330	CActiveEntityScript<NScript::CQ_WhiteBalverineKnotholeGladeScript>::SuspendableProcess	SAME	
+00e13ec0	CSpawnedFunc<NScript::CQ_WhiteBalverineKnotholeGladeScript>::`scalar deleting destructor'	SAME	
+00e13eb0	CSpawnedFunc<NScript::CQ_WhiteBalverineKnotholeGladeScript>::SuspendableProcess	RENAME	was CVtable_012e077c::vfunc_4
+00e18ea0	CEntityScriptBinding<NScript::CQ_WhiteBalverineWWScript>::GetEntityScriptName	RENAME	was sub_00e18ea0
+00e193d0	CEntityScriptBinding<NScript::CQ_WhiteBalverineWWScript>::CreateActiveEntityScript	SAME	
+00e19530	CActiveEntityScript<NScript::CQ_WhiteBalverineWWScript>::`scalar deleting destructor'	RENAME	was CVtable_012e0e84::`scalar deleting destructor'
+00e194e0	CActiveEntityScript<NScript::CQ_WhiteBalverineWWScript>::SuspendableProcess	SAME	
+00e18610	CSpawnedFunc<NScript::CQ_WhiteBalverineWWScript>::`scalar deleting destructor'	SAME	
+00e18600	CSpawnedFunc<NScript::CQ_WhiteBalverineWWScript>::SuspendableProcess	RENAME	was CVtable_012e0cf8::vfunc_4
+00e1ae40	CEntityScriptBinding<NScript::CQ_WizardBattleScript>::GetEntityScriptName	RENAME	was sub_00e1ae40
+00e1bf60	CEntityScriptBinding<NScript::CQ_WizardBattleScript>::CreateActiveEntityScript	SAME	
+00e1c0c0	CActiveEntityScript<NScript::CQ_WizardBattleScript>::`scalar deleting destructor'	RENAME	was CVtable_012e10e8::`scalar deleting destructor'
+00e1c070	CActiveEntityScript<NScript::CQ_WizardBattleScript>::SuspendableProcess	SAME	
+00e1a970	CSpawnedFunc<NScript::CQ_WizardBattleScript>::`scalar deleting destructor'	SAME	
+00e1a960	CSpawnedFunc<NScript::CQ_WizardBattleScript>::SuspendableProcess	RENAME	was CVtable_012e0f68::vfunc_4
+00eff3e0	CEntityScriptBinding<NScript::CTonyTestScriptsScript>::GetEntityScriptName	RENAME	was sub_00eff3e0
+00eff5c0	CEntityScriptBinding<NScript::CTonyTestScriptsScript>::CreateActiveEntityScript	SAME	
+00eff740	CActiveEntityScript<NScript::CTonyTestScriptsScript>::`scalar deleting destructor'	RENAME	was CVtable_012f7038::`scalar deleting destructor'
+00eff6d0	CActiveEntityScript<NScript::CTonyTestScriptsScript>::SuspendableProcess	SAME	
+00eff720	CSpawnedFunc<NScript::CTonyTestScriptsScript>::`scalar deleting destructor'	SAME	
+00eff120	CSpawnedFunc<NScript::CTonyTestScriptsScript>::SuspendableProcess	RENAME	was CVtable_012f6fa4::vfunc_4
+00e2bab0	CEntityScriptBinding<NScript::CV_AmbushScamScript>::GetEntityScriptName	RENAME	was sub_00e2bab0
+00e2e900	CEntityScriptBinding<NScript::CV_AmbushScamScript>::CreateActiveEntityScript	SKIP	refs=5 pdb=True body=True
+00e2ea90	CActiveEntityScript<NScript::CV_AmbushScamScript>::`scalar deleting destructor'	RENAME	was CVtable_012e2b30::`scalar deleting destructor'
+00e2ea10	CActiveEntityScript<NScript::CV_AmbushScamScript>::SuspendableProcess	SAME	
+00e2ad30	CSpawnedFunc<NScript::CV_AmbushScamScript>::`scalar deleting destructor'	SAME	
+00e2ad20	CSpawnedFunc<NScript::CV_AmbushScamScript>::SuspendableProcess	RENAME	was CVtable_012e24b4::vfunc_4
+00e33030	CEntityScriptBinding<NScript::CV_ArcheryCompetitionScript>::GetEntityScriptName	RENAME	was sub_00e33030
+00e37340	CEntityScriptBinding<NScript::CV_ArcheryCompetitionScript>::CreateActiveEntityScript	SAME	
+00e374f0	CActiveEntityScript<NScript::CV_ArcheryCompetitionScript>::`scalar deleting destructor'	RENAME	was CVtable_012e34e0::`scalar deleting destructor'
+00e37450	CActiveEntityScript<NScript::CV_ArcheryCompetitionScript>::SuspendableProcess	SAME	
+00e374a0	CSpawnedFunc<NScript::CV_ArcheryCompetitionScript>::`scalar deleting destructor'	SAME	
+00e32530	CSpawnedFunc<NScript::CV_ArcheryCompetitionScript>::SuspendableProcess	RENAME	was CVtable_012e2fe8::vfunc_4
+00e37ce0	CEntityScriptBinding<NScript::CV_AssassinAttacksScript>::GetEntityScriptName	RENAME	was sub_00e37ce0
+00e38bd0	CEntityScriptBinding<NScript::CV_AssassinAttacksScript>::CreateActiveEntityScript	SAME	
+00e38d50	CActiveEntityScript<NScript::CV_AssassinAttacksScript>::`scalar deleting destructor'	RENAME	was CVtable_012e3780::`scalar deleting destructor'
+00e38ce0	CActiveEntityScript<NScript::CV_AssassinAttacksScript>::SuspendableProcess	SAME	
+00e38d30	CSpawnedFunc<NScript::CV_AssassinAttacksScript>::`scalar deleting destructor'	SAME	
+00e377c0	CSpawnedFunc<NScript::CV_AssassinAttacksScript>::SuspendableProcess	RENAME	was CVtable_012e35c4::vfunc_4
+00e474f0	CEntityScriptBinding<NScript::CV_BanditCampPathScript>::GetEntityScriptName	RENAME	was sub_00e474f0
+00e47610	CEntityScriptBinding<NScript::CV_BanditCampPathScript>::CreateActiveEntityScript	SAME	
+00e47770	CActiveEntityScript<NScript::CV_BanditCampPathScript>::`scalar deleting destructor'	RENAME	was CVtable_012e4b60::`scalar deleting destructor'
+00e47720	CActiveEntityScript<NScript::CV_BanditCampPathScript>::SuspendableProcess	SAME	
+00e46ce0	CSpawnedFunc<NScript::CV_BanditCampPathScript>::`scalar deleting destructor'	SAME	
+00e46cd0	CSpawnedFunc<NScript::CV_BanditCampPathScript>::SuspendableProcess	RENAME	was CVtable_012e4ab0::vfunc_4
+00e482e0	CEntityScriptBinding<NScript::CV_BanditTollScript>::GetEntityScriptName	RENAME	was sub_00e482e0
+00e4b1d0	CEntityScriptBinding<NScript::CV_BanditTollScript>::CreateActiveEntityScript	SAME	
+00e4b350	CActiveEntityScript<NScript::CV_BanditTollScript>::`scalar deleting destructor'	RENAME	was CVtable_012e510c::`scalar deleting destructor'
+00e4b2e0	CActiveEntityScript<NScript::CV_BanditTollScript>::SuspendableProcess	SAME	
+00e4b330	CSpawnedFunc<NScript::CV_BanditTollScript>::`scalar deleting destructor'	SAME	
+00e479a0	CSpawnedFunc<NScript::CV_BanditTollScript>::SuspendableProcess	RENAME	was CVtable_012e4b90::vfunc_4
+00e503c0	CEntityScriptBinding<NScript::CV_BeardyBaldyScript>::GetEntityScriptName	RENAME	was sub_00e503c0
+00e540a0	CEntityScriptBinding<NScript::CV_BeardyBaldyScript>::CreateActiveEntityScript	SAME	
+00e54230	CActiveEntityScript<NScript::CV_BeardyBaldyScript>::`scalar deleting destructor'	RENAME	was CVtable_012e5ee0::`scalar deleting destructor'
+00e541b0	CActiveEntityScript<NScript::CV_BeardyBaldyScript>::SuspendableProcess	SAME	
+00e4f7d0	CSpawnedFunc<NScript::CV_BeardyBaldyScript>::`scalar deleting destructor'	SAME	
+00e4f7c0	CSpawnedFunc<NScript::CV_BeardyBaldyScript>::SuspendableProcess	RENAME	was CVtable_012e5894::vfunc_4
+00e58c50	CEntityScriptBinding<NScript::CV_BeggarAndChildScript>::GetEntityScriptName	RENAME	was sub_00e58c50
+00e5cf20	CEntityScriptBinding<NScript::CV_BeggarAndChildScript>::CreateActiveEntityScript	SAME	
+00e5d080	CActiveEntityScript<NScript::CV_BeggarAndChildScript>::`scalar deleting destructor'	RENAME	was CVtable_012e6e30::`scalar deleting destructor'
+00e5d030	CActiveEntityScript<NScript::CV_BeggarAndChildScript>::SuspendableProcess	SAME	
+00e57d00	CSpawnedFunc<NScript::CV_BeggarAndChildScript>::`scalar deleting destructor'	SAME	
+00e57cf0	CSpawnedFunc<NScript::CV_BeggarAndChildScript>::SuspendableProcess	RENAME	was CVtable_012e65f4::vfunc_4
+00e5d8f0	CEntityScriptBinding<NScript::CV_BodyGuardScript>::GetEntityScriptName	RENAME	was sub_00e5d8f0
+00e5f000	CEntityScriptBinding<NScript::CV_BodyGuardScript>::CreateActiveEntityScript	SAME	
+00e5f160	CActiveEntityScript<NScript::CV_BodyGuardScript>::`scalar deleting destructor'	RENAME	was CVtable_012e70ac::`scalar deleting destructor'
+00e5f110	CActiveEntityScript<NScript::CV_BodyGuardScript>::SuspendableProcess	SAME	
+00e5d2e0	CSpawnedFunc<NScript::CV_BodyGuardScript>::`scalar deleting destructor'	SAME	
+00e5d2d0	CSpawnedFunc<NScript::CV_BodyGuardScript>::SuspendableProcess	RENAME	was CVtable_012e6e60::vfunc_4
+00e54570	CEntityScriptBinding<NScript::CV_BookCollectingScript>::GetEntityScriptName	RENAME	was sub_00e54570
+00e546d0	CEntityScriptBinding<NScript::CV_BookCollectingScript>::CreateActiveEntityScript	SAME	
+00e54850	CActiveEntityScript<NScript::CV_BookCollectingScript>::`scalar deleting destructor'	RENAME	was CVtable_012e5f5c::`scalar deleting destructor'
+00e547e0	CActiveEntityScript<NScript::CV_BookCollectingScript>::SuspendableProcess	SAME	
+00e54830	CSpawnedFunc<NScript::CV_BookCollectingScript>::`scalar deleting destructor'	SAME	
+00e54440	CSpawnedFunc<NScript::CV_BookCollectingScript>::SuspendableProcess	RENAME	was CVtable_012e5f10::vfunc_4
+00e3a140	CEntityScriptBinding<NScript::CV_BordelloScript>::GetEntityScriptName	RENAME	was sub_00e3a140
+00e3b740	CEntityScriptBinding<NScript::CV_BordelloScript>::CreateActiveEntityScript	SAME	
+00e3b8c0	CActiveEntityScript<NScript::CV_BordelloScript>::`scalar deleting destructor'	RENAME	was CVtable_012e3c08::`scalar deleting destructor'
+00e3b850	CActiveEntityScript<NScript::CV_BordelloScript>::SuspendableProcess	SAME	
+00e3b8a0	CSpawnedFunc<NScript::CV_BordelloScript>::`scalar deleting destructor'	SAME	
+00e39b30	CSpawnedFunc<NScript::CV_BordelloScript>::SuspendableProcess	RENAME	was CVtable_012e38c4::vfunc_4
+00e69ff0	CEntityScriptBinding<NScript::CV_ChapelOfEvilScript>::GetEntityScriptName	RENAME	was sub_00e69ff0
+00e6b240	CEntityScriptBinding<NScript::CV_ChapelOfEvilScript>::CreateActiveEntityScript	SAME	
+00e6b3d0	CActiveEntityScript<NScript::CV_ChapelOfEvilScript>::`scalar deleting destructor'	RENAME	was CVtable_012e851c::`scalar deleting destructor'
+00e6b350	CActiveEntityScript<NScript::CV_ChapelOfEvilScript>::SuspendableProcess	SAME	
+00e690d0	CSpawnedFunc<NScript::CV_ChapelOfEvilScript>::`scalar deleting destructor'	SAME	
+00e690c0	CSpawnedFunc<NScript::CV_ChapelOfEvilScript>::SuspendableProcess	RENAME	was CVtable_012e8094::vfunc_4
+00e62d50	CEntityScriptBinding<NScript::CV_ChickenKickingScript>::GetEntityScriptName	RENAME	was sub_00e62d50
+00e64020	CEntityScriptBinding<NScript::CV_ChickenKickingScript>::CreateActiveEntityScript	SAME	
+00e64180	CActiveEntityScript<NScript::CV_ChickenKickingScript>::`scalar deleting destructor'	RENAME	was CVtable_012e74fc::`scalar deleting destructor'
+00e64130	CActiveEntityScript<NScript::CV_ChickenKickingScript>::SuspendableProcess	SAME	
+00e62980	CSpawnedFunc<NScript::CV_ChickenKickingScript>::`scalar deleting destructor'	SAME	
+00e62970	CSpawnedFunc<NScript::CV_ChickenKickingScript>::SuspendableProcess	RENAME	was CVtable_012e732c::vfunc_4
+00e6e950	CEntityScriptBinding<NScript::CV_DemonDoorsScript>::GetEntityScriptName	RENAME	was sub_00e6e950
+00e74bc0	CEntityScriptBinding<NScript::CV_DemonDoorsScript>::CreateActiveEntityScript	SAME	
+00e74d40	CActiveEntityScript<NScript::CV_DemonDoorsScript>::`scalar deleting destructor'	RENAME	was CVtable_012e9600::`scalar deleting destructor'
+00e74cd0	CActiveEntityScript<NScript::CV_DemonDoorsScript>::SuspendableProcess	SAME	
+00e74d20	CSpawnedFunc<NScript::CV_DemonDoorsScript>::`scalar deleting destructor'	SAME	
+00e6e370	CSpawnedFunc<NScript::CV_DemonDoorsScript>::SuspendableProcess	RENAME	was CVtable_012e8b24::vfunc_4
+00e76350	CEntityScriptBinding<NScript::CV_ExposeMayorScript>::GetEntityScriptName	RENAME	was sub_00e76350
+00e774e0	CEntityScriptBinding<NScript::CV_ExposeMayorScript>::CreateActiveEntityScript	SAME	
+00e77660	CActiveEntityScript<NScript::CV_ExposeMayorScript>::`scalar deleting destructor'	RENAME	was CVtable_012e9960::`scalar deleting destructor'
+00e775f0	CActiveEntityScript<NScript::CV_ExposeMayorScript>::SuspendableProcess	SAME	
+00e75770	CSpawnedFunc<NScript::CV_ExposeMayorScript>::`scalar deleting destructor'	SAME	
+00e75760	CSpawnedFunc<NScript::CV_ExposeMayorScript>::SuspendableProcess	RENAME	was CVtable_012e96e0::vfunc_4
+00e7b7a0	CEntityScriptBinding<NScript::CV_FishermanScript>::GetEntityScriptName	RENAME	was sub_00e7b7a0
+00e7c6b0	CEntityScriptBinding<NScript::CV_FishermanScript>::CreateActiveEntityScript	SAME	
+00e7c860	CActiveEntityScript<NScript::CV_FishermanScript>::`scalar deleting destructor'	RENAME	was CVtable_012ea1f8::`scalar deleting destructor'
+00e7c7c0	CActiveEntityScript<NScript::CV_FishermanScript>::SuspendableProcess	SAME	
+00e7c810	CSpawnedFunc<NScript::CV_FishermanScript>::`scalar deleting destructor'	SAME	
+00e7b4d0	CSpawnedFunc<NScript::CV_FishermanScript>::SuspendableProcess	RENAME	was CVtable_012ea038::vfunc_4
+00e7e560	CEntityScriptBinding<NScript::CV_FishingCompetitionScript>::GetEntityScriptName	RENAME	was sub_00e7e560
+00e7ed60	CEntityScriptBinding<NScript::CV_FishingCompetitionScript>::CreateActiveEntityScript	SAME	
+00e7eec0	CActiveEntityScript<NScript::CV_FishingCompetitionScript>::`scalar deleting destructor'	RENAME	was CVtable_012ea604::`scalar deleting destructor'
+00e7ee70	CActiveEntityScript<NScript::CV_FishingCompetitionScript>::SuspendableProcess	SAME	
+00e7e1f0	CSpawnedFunc<NScript::CV_FishingCompetitionScript>::`scalar deleting destructor'	SAME	
+00e7e1e0	CSpawnedFunc<NScript::CV_FishingCompetitionScript>::SuspendableProcess	RENAME	was CVtable_012ea48c::vfunc_4
+00e824d0	CEntityScriptBinding<NScript::CV_FisticuffsClubScript>::GetEntityScriptName	RENAME	was sub_00e824d0
+00e83bc0	CEntityScriptBinding<NScript::CV_FisticuffsClubScript>::CreateActiveEntityScript	SAME	
+00e83d20	CActiveEntityScript<NScript::CV_FisticuffsClubScript>::`scalar deleting destructor'	RENAME	was CVtable_012eb1e0::`scalar deleting destructor'
+00e83cd0	CActiveEntityScript<NScript::CV_FisticuffsClubScript>::SuspendableProcess	SAME	
+00e82170	CSpawnedFunc<NScript::CV_FisticuffsClubScript>::`scalar deleting destructor'	SAME	
+00e82160	CSpawnedFunc<NScript::CV_FisticuffsClubScript>::SuspendableProcess	RENAME	was CVtable_012eaf28::vfunc_4
+00e8bd20	CEntityScriptBinding<NScript::CV_GhostGrannyNecklaceScript>::GetEntityScriptName	RENAME	was sub_00e8bd20
+00e8d0e0	CEntityScriptBinding<NScript::CV_GhostGrannyNecklaceScript>::CreateActiveEntityScript	SAME	
+00e8d270	CActiveEntityScript<NScript::CV_GhostGrannyNecklaceScript>::`scalar deleting destructor'	RENAME	was CVtable_012ebd00::`scalar deleting destructor'
+00e8d1f0	CActiveEntityScript<NScript::CV_GhostGrannyNecklaceScript>::SuspendableProcess	SAME	
+00e8b940	CSpawnedFunc<NScript::CV_GhostGrannyNecklaceScript>::`scalar deleting destructor'	SAME	
+00e8b930	CSpawnedFunc<NScript::CV_GhostGrannyNecklaceScript>::SuspendableProcess	RENAME	was CVtable_012eba50::vfunc_4
+00e908c0	CEntityScriptBinding<NScript::CV_GuildMasterScript>::GetEntityScriptName	RENAME	was sub_00e908c0
+00e90a30	CEntityScriptBinding<NScript::CV_GuildMasterScript>::CreateActiveEntityScript	SAME	
+00e90bb0	CActiveEntityScript<NScript::CV_GuildMasterScript>::`scalar deleting destructor'	RENAME	was CVtable_012ec1a0::`scalar deleting destructor'
+00e90b40	CActiveEntityScript<NScript::CV_GuildMasterScript>::SuspendableProcess	SAME	
+00e90b90	CSpawnedFunc<NScript::CV_GuildMasterScript>::`scalar deleting destructor'	SAME	
+00e90820	CSpawnedFunc<NScript::CV_GuildMasterScript>::SuspendableProcess	RENAME	was CVtable_012ec14c::vfunc_4
+00e96fa0	CEntityScriptBinding<NScript::CV_HeroDollsScript>::GetEntityScriptName	RENAME	was sub_00e96fa0
+00e98460	CEntityScriptBinding<NScript::CV_HeroDollsScript>::CreateActiveEntityScript	SAME	
+00e985e0	CActiveEntityScript<NScript::CV_HeroDollsScript>::`scalar deleting destructor'	RENAME	was CVtable_012ed0a8::`scalar deleting destructor'
+00e98570	CActiveEntityScript<NScript::CV_HeroDollsScript>::SuspendableProcess	SAME	
+00e985c0	CSpawnedFunc<NScript::CV_HeroDollsScript>::`scalar deleting destructor'	SAME	
+00e96f00	CSpawnedFunc<NScript::CV_HeroDollsScript>::SuspendableProcess	RENAME	was CVtable_012ece90::vfunc_4
+00e98fa0	CEntityScriptBinding<NScript::CV_HeroDuelScript>::GetEntityScriptName	RENAME	was sub_00e98fa0
+00e9a0e0	CEntityScriptBinding<NScript::CV_HeroDuelScript>::CreateActiveEntityScript	SAME	
+00e9a240	CActiveEntityScript<NScript::CV_HeroDuelScript>::`scalar deleting destructor'	RENAME	was CVtable_012ed370::`scalar deleting destructor'
+00e9a1f0	CActiveEntityScript<NScript::CV_HeroDuelScript>::SuspendableProcess	SAME	
+00e987a0	CSpawnedFunc<NScript::CV_HeroDuelScript>::`scalar deleting destructor'	SAME	
+00e98790	CSpawnedFunc<NScript::CV_HeroDuelScript>::SuspendableProcess	RENAME	was CVtable_012ed0e8::vfunc_4
+00e92f60	CEntityScriptBinding<NScript::CV_HiddenBootyScript>::GetEntityScriptName	RENAME	was sub_00e92f60
+00e93a60	CEntityScriptBinding<NScript::CV_HiddenBootyScript>::CreateActiveEntityScript	SAME	
+00e93be0	CActiveEntityScript<NScript::CV_HiddenBootyScript>::`scalar deleting destructor'	RENAME	was CVtable_012ecb04::`scalar deleting destructor'
+00e93b70	CActiveEntityScript<NScript::CV_HiddenBootyScript>::SuspendableProcess	SAME	
+00e93bc0	CSpawnedFunc<NScript::CV_HiddenBootyScript>::`scalar deleting destructor'	SAME	
+00e92a40	CSpawnedFunc<NScript::CV_HiddenBootyScript>::SuspendableProcess	RENAME	was CVtable_012ec9b8::vfunc_4
+00e9c8c0	CEntityScriptBinding<NScript::CV_IntroductionToTrophiesScript>::GetEntityScriptName	RENAME	was sub_00e9c8c0
+00e9df30	CEntityScriptBinding<NScript::CV_IntroductionToTrophiesScript>::CreateActiveEntityScript	SAME	
+00e9e0e0	CActiveEntityScript<NScript::CV_IntroductionToTrophiesScript>::`scalar deleting destructor'	RENAME	was CVtable_012ed6d4::`scalar deleting destructor'
+00e9e040	CActiveEntityScript<NScript::CV_IntroductionToTrophiesScript>::SuspendableProcess	SAME	
+00e9e090	CSpawnedFunc<NScript::CV_IntroductionToTrophiesScript>::`scalar deleting destructor'	SAME	
+00e9c4a0	CSpawnedFunc<NScript::CV_IntroductionToTrophiesScript>::SuspendableProcess	RENAME	was CVtable_012ed56c::vfunc_4
+00e9ff60	CEntityScriptBinding<NScript::CV_KnotholeGladeGatesScript>::GetEntityScriptName	RENAME	was sub_00e9ff60
+00ea0f00	CEntityScriptBinding<NScript::CV_KnotholeGladeGatesScript>::CreateActiveEntityScript	SAME	
+00ea1060	CActiveEntityScript<NScript::CV_KnotholeGladeGatesScript>::`scalar deleting destructor'	RENAME	was CVtable_012edb88::`scalar deleting destructor'
+00ea1010	CActiveEntityScript<NScript::CV_KnotholeGladeGatesScript>::SuspendableProcess	SAME	
+00e9fcb0	CSpawnedFunc<NScript::CV_KnotholeGladeGatesScript>::`scalar deleting destructor'	SAME	
+00e9fca0	CSpawnedFunc<NScript::CV_KnotholeGladeGatesScript>::SuspendableProcess	RENAME	was CVtable_012ed9e8::vfunc_4
+00ea34e0	CEntityScriptBinding<NScript::CV_LostTraderScript>::GetEntityScriptName	RENAME	was sub_00ea34e0
+00ea5780	CEntityScriptBinding<NScript::CV_LostTraderScript>::CreateActiveEntityScript	SAME	
+00ea5900	CActiveEntityScript<NScript::CV_LostTraderScript>::`scalar deleting destructor'	RENAME	was CVtable_012ee154::`scalar deleting destructor'
+00ea5890	CActiveEntityScript<NScript::CV_LostTraderScript>::SuspendableProcess	SAME	
+00ea58e0	CSpawnedFunc<NScript::CV_LostTraderScript>::`scalar deleting destructor'	SAME	
+00ea2e70	CSpawnedFunc<NScript::CV_LostTraderScript>::SuspendableProcess	RENAME	was CVtable_012edcfc::vfunc_4
+00eb70e0	CEntityScriptBinding<NScript::CV_MayorsInvitationScript>::GetEntityScriptName	RENAME	was sub_00eb70e0
+00eb9710	CEntityScriptBinding<NScript::CV_MayorsInvitationScript>::CreateActiveEntityScript	SAME	
+00eb9870	CActiveEntityScript<NScript::CV_MayorsInvitationScript>::`scalar deleting destructor'	RENAME	was CVtable_012f0808::`scalar deleting destructor'
+00eb9820	CActiveEntityScript<NScript::CV_MayorsInvitationScript>::SuspendableProcess	SAME	
+00eb6d50	CSpawnedFunc<NScript::CV_MayorsInvitationScript>::`scalar deleting destructor'	SAME	
+00eb6d40	CSpawnedFunc<NScript::CV_MayorsInvitationScript>::SuspendableProcess	RENAME	was CVtable_012f0548::vfunc_4
+00ea7980	CEntityScriptBinding<NScript::CV_MazeResearchScript>::GetEntityScriptName	RENAME	was sub_00ea7980
+00ea7ef0	CEntityScriptBinding<NScript::CV_MazeResearchScript>::CreateActiveEntityScript	SAME	
+00ea8070	CActiveEntityScript<NScript::CV_MazeResearchScript>::`scalar deleting destructor'	RENAME	was CVtable_012ee5a0::`scalar deleting destructor'
+00ea8000	CActiveEntityScript<NScript::CV_MazeResearchScript>::SuspendableProcess	SAME	
+00ea8050	CSpawnedFunc<NScript::CV_MazeResearchScript>::`scalar deleting destructor'	SAME	
+00ea77f0	CSpawnedFunc<NScript::CV_MazeResearchScript>::SuspendableProcess	RENAME	was CVtable_012ee458::vfunc_4
+00eaed00	CEntityScriptBinding<NScript::CV_MurderTwistFinalScript>::GetEntityScriptName	RENAME	was sub_00eaed00
+00eb6370	CEntityScriptBinding<NScript::CV_MurderTwistFinalScript>::CreateActiveEntityScript	SAME	
+00eb64f0	CActiveEntityScript<NScript::CV_MurderTwistFinalScript>::`scalar deleting destructor'	RENAME	was CVtable_012f040c::`scalar deleting destructor'
+00eb6480	CActiveEntityScript<NScript::CV_MurderTwistFinalScript>::SuspendableProcess	SAME	
+00eb64d0	CSpawnedFunc<NScript::CV_MurderTwistFinalScript>::`scalar deleting destructor'	SAME	
+00eaea10	CSpawnedFunc<NScript::CV_MurderTwistFinalScript>::SuspendableProcess	RENAME	was CVtable_012ef98c::vfunc_4
+00ea8c10	CEntityScriptBinding<NScript::CV_MurderTwistScript>::GetEntityScriptName	RENAME	was sub_00ea8c10
+00ead860	CEntityScriptBinding<NScript::CV_MurderTwistScript>::CreateActiveEntityScript	SAME	
+00ead9c0	CActiveEntityScript<NScript::CV_MurderTwistScript>::`scalar deleting destructor'	RENAME	was CVtable_012ef7e4::`scalar deleting destructor'
+00ead970	CActiveEntityScript<NScript::CV_MurderTwistScript>::SuspendableProcess	SAME	
+00ea87e0	CSpawnedFunc<NScript::CV_MurderTwistScript>::`scalar deleting destructor'	SAME	
+00ea87d0	CSpawnedFunc<NScript::CV_MurderTwistScript>::SuspendableProcess	RENAME	was CVtable_012ee648::vfunc_4
+00ebce70	CEntityScriptBinding<NScript::CV_OracleScript>::GetEntityScriptName	RENAME	was sub_00ebce70
+00ebebf0	CEntityScriptBinding<NScript::CV_OracleScript>::CreateActiveEntityScript	SAME	
+00ebed70	CActiveEntityScript<NScript::CV_OracleScript>::`scalar deleting destructor'	RENAME	was CVtable_012f0ec0::`scalar deleting destructor'
+00ebed00	CActiveEntityScript<NScript::CV_OracleScript>::SuspendableProcess	SAME	
+00ebed50	CSpawnedFunc<NScript::CV_OracleScript>::`scalar deleting destructor'	SAME	
+00ebcd60	CSpawnedFunc<NScript::CV_OracleScript>::SuspendableProcess	RENAME	was CVtable_012f0c98::vfunc_4
+00ebf1d0	CEntityScriptBinding<NScript::CV_ParanoidWhispersScript>::GetEntityScriptName	RENAME	was sub_00ebf1d0
+00ec1000	CEntityScriptBinding<NScript::CV_ParanoidWhispersScript>::CreateActiveEntityScript	SAME	
+00ec1180	CActiveEntityScript<NScript::CV_ParanoidWhispersScript>::`scalar deleting destructor'	RENAME	was CVtable_012f1214::`scalar deleting destructor'
+00ec1110	CActiveEntityScript<NScript::CV_ParanoidWhispersScript>::SuspendableProcess	SAME	
+00ec1160	CSpawnedFunc<NScript::CV_ParanoidWhispersScript>::`scalar deleting destructor'	SAME	
+00ebef70	CSpawnedFunc<NScript::CV_ParanoidWhispersScript>::SuspendableProcess	RENAME	was CVtable_012f0f4c::vfunc_4
+00ec13e0	CEntityScriptBinding<NScript::CV_PicnicAreaAfterWaspBossScript>::GetEntityScriptName	RENAME	was sub_00ec13e0
+00ec15d0	CEntityScriptBinding<NScript::CV_PicnicAreaAfterWaspBossScript>::CreateActiveEntityScript	SAME	
+00ec1750	CActiveEntityScript<NScript::CV_PicnicAreaAfterWaspBossScript>::`scalar deleting destructor'	RENAME	was CVtable_012f12bc::`scalar deleting destructor'
+00ec16e0	CActiveEntityScript<NScript::CV_PicnicAreaAfterWaspBossScript>::SuspendableProcess	SAME	
+00ec1730	CSpawnedFunc<NScript::CV_PicnicAreaAfterWaspBossScript>::`scalar deleting destructor'	SAME	
+00ec12d0	CSpawnedFunc<NScript::CV_PicnicAreaAfterWaspBossScript>::SuspendableProcess	RENAME	was CVtable_012f1244::vfunc_4
+00ec1b60	CEntityScriptBinding<NScript::CV_RandomPopulationSimScript>::GetEntityScriptName	RENAME	was sub_00ec1b60
+00ec2860	CEntityScriptBinding<NScript::CV_RandomPopulationSimScript>::CreateActiveEntityScript	SAME	
+00ec29c0	CActiveEntityScript<NScript::CV_RandomPopulationSimScript>::`scalar deleting destructor'	RENAME	was CVtable_012f13f4::`scalar deleting destructor'
+00ec2970	CActiveEntityScript<NScript::CV_RandomPopulationSimScript>::SuspendableProcess	SAME	
+00ec18f0	CSpawnedFunc<NScript::CV_RandomPopulationSimScript>::`scalar deleting destructor'	SAME	
+00ec18e0	CSpawnedFunc<NScript::CV_RandomPopulationSimScript>::SuspendableProcess	RENAME	was CVtable_012f12ec::vfunc_4
+00ec41e0	CEntityScriptBinding<NScript::CV_RockTrollFirstEncounterScript>::GetEntityScriptName	RENAME	was sub_00ec41e0
+00ec47c0	CEntityScriptBinding<NScript::CV_RockTrollFirstEncounterScript>::CreateActiveEntityScript	SAME	
+00ec4940	CActiveEntityScript<NScript::CV_RockTrollFirstEncounterScript>::`scalar deleting destructor'	RENAME	was CVtable_012f16fc::`scalar deleting destructor'
+00ec48d0	CActiveEntityScript<NScript::CV_RockTrollFirstEncounterScript>::SuspendableProcess	SAME	
+00ec4920	CSpawnedFunc<NScript::CV_RockTrollFirstEncounterScript>::`scalar deleting destructor'	SAME	
+00ec3d30	CSpawnedFunc<NScript::CV_RockTrollFirstEncounterScript>::SuspendableProcess	RENAME	was CVtable_012f15d8::vfunc_4
+00ec5bb0	CEntityScriptBinding<NScript::CV_SickChildScript>::GetEntityScriptName	RENAME	was sub_00ec5bb0
+00ecd600	CEntityScriptBinding<NScript::CV_SickChildScript>::CreateActiveEntityScript	SAME	
+00ecd780	CActiveEntityScript<NScript::CV_SickChildScript>::`scalar deleting destructor'	RENAME	was CVtable_012f243c::`scalar deleting destructor'
+00ecd710	CActiveEntityScript<NScript::CV_SickChildScript>::SuspendableProcess	SAME	
+00ecd760	CSpawnedFunc<NScript::CV_SickChildScript>::`scalar deleting destructor'	SAME	
+00ec54d0	CSpawnedFunc<NScript::CV_SickChildScript>::SuspendableProcess	RENAME	was CVtable_012f17f0::vfunc_4
+00ed13a0	CEntityScriptBinding<NScript::CV_SingingStonesScript>::GetEntityScriptName	RENAME	was sub_00ed13a0
+00ed28c0	CEntityScriptBinding<NScript::CV_SingingStonesScript>::CreateActiveEntityScript	SAME	
+00ed2a20	CActiveEntityScript<NScript::CV_SingingStonesScript>::`scalar deleting destructor'	RENAME	was CVtable_012f2dc0::`scalar deleting destructor'
+00ed29d0	CActiveEntityScript<NScript::CV_SingingStonesScript>::SuspendableProcess	SAME	
+00ed0ff0	CSpawnedFunc<NScript::CV_SingingStonesScript>::`scalar deleting destructor'	SAME	
+00ed0fe0	CSpawnedFunc<NScript::CV_SingingStonesScript>::SuspendableProcess	RENAME	was CVtable_012f2b20::vfunc_4
+00ed40b0	CEntityScriptBinding<NScript::CV_StatueMasterScript>::GetEntityScriptName	RENAME	was sub_00ed40b0
+00ed4890	CEntityScriptBinding<NScript::CV_StatueMasterScript>::CreateActiveEntityScript	SAME	
+00ed4a10	CActiveEntityScript<NScript::CV_StatueMasterScript>::`scalar deleting destructor'	RENAME	was CVtable_012f3000::`scalar deleting destructor'
+00ed49a0	CActiveEntityScript<NScript::CV_StatueMasterScript>::SuspendableProcess	SAME	
+00ed49f0	CSpawnedFunc<NScript::CV_StatueMasterScript>::`scalar deleting destructor'	SAME	
+00ed3b20	CSpawnedFunc<NScript::CV_StatueMasterScript>::SuspendableProcess	RENAME	was CVtable_012f2e80::vfunc_4
+00ed5120	CEntityScriptBinding<NScript::CV_SwordInTheStoneScript>::GetEntityScriptName	RENAME	was sub_00ed5120
+00ed5340	CEntityScriptBinding<NScript::CV_SwordInTheStoneScript>::CreateActiveEntityScript	SAME	
+00ed54a0	CActiveEntityScript<NScript::CV_SwordInTheStoneScript>::`scalar deleting destructor'	RENAME	was CVtable_012f3190::`scalar deleting destructor'
+00ed5450	CActiveEntityScript<NScript::CV_SwordInTheStoneScript>::SuspendableProcess	SAME	
+00ed4c30	CSpawnedFunc<NScript::CV_SwordInTheStoneScript>::`scalar deleting destructor'	SAME	
+00ed4c20	CSpawnedFunc<NScript::CV_SwordInTheStoneScript>::SuspendableProcess	RENAME	was CVtable_012f3030::vfunc_4
+00ed7a30	CEntityScriptBinding<NScript::CV_TalentlessBardScript>::GetEntityScriptName	RENAME	was sub_00ed7a30
+00ed8210	CEntityScriptBinding<NScript::CV_TalentlessBardScript>::CreateActiveEntityScript	SAME	
+00ed8390	CActiveEntityScript<NScript::CV_TalentlessBardScript>::`scalar deleting destructor'	RENAME	was CVtable_012f34f4::`scalar deleting destructor'
+00ed8320	CActiveEntityScript<NScript::CV_TalentlessBardScript>::SuspendableProcess	SAME	
+00ed8370	CSpawnedFunc<NScript::CV_TalentlessBardScript>::`scalar deleting destructor'	SAME	
+00ed7820	CSpawnedFunc<NScript::CV_TalentlessBardScript>::SuspendableProcess	RENAME	was CVtable_012f343c::vfunc_4
+00edbd70	CEntityScriptBinding<NScript::CV_TempleOfLightScript>::GetEntityScriptName	RENAME	was sub_00edbd70
+00edcea0	CEntityScriptBinding<NScript::CV_TempleOfLightScript>::CreateActiveEntityScript	SAME	
+00edd030	CActiveEntityScript<NScript::CV_TempleOfLightScript>::`scalar deleting destructor'	RENAME	was CVtable_012f3f00::`scalar deleting destructor'
+00edcfb0	CActiveEntityScript<NScript::CV_TempleOfLightScript>::SuspendableProcess	SAME	
+00edaf10	CSpawnedFunc<NScript::CV_TempleOfLightScript>::`scalar deleting destructor'	SAME	
+00edaf00	CSpawnedFunc<NScript::CV_TempleOfLightScript>::SuspendableProcess	RENAME	was CVtable_012f3c7c::vfunc_4
+00ee49f0	CEntityScriptBinding<NScript::CV_TourGuideScript>::GetEntityScriptName	RENAME	was sub_00ee49f0
+00ee5570	CEntityScriptBinding<NScript::CV_TourGuideScript>::CreateActiveEntityScript	SAME	
+00ee56f0	CActiveEntityScript<NScript::CV_TourGuideScript>::`scalar deleting destructor'	RENAME	was CVtable_012f5194::`scalar deleting destructor'
+00ee5680	CActiveEntityScript<NScript::CV_TourGuideScript>::SuspendableProcess	SAME	
+00ee56d0	CSpawnedFunc<NScript::CV_TourGuideScript>::`scalar deleting destructor'	SAME	
+00ee47a0	CSpawnedFunc<NScript::CV_TourGuideScript>::SuspendableProcess	RENAME	was CVtable_012f50ac::vfunc_4
+00edf2a0	CEntityScriptBinding<NScript::CV_TravellingHeroesScript>::GetEntityScriptName	RENAME	was sub_00edf2a0
+00ee1c10	CEntityScriptBinding<NScript::CV_TravellingHeroesScript>::CreateActiveEntityScript	SAME	
+00ee1d90	CActiveEntityScript<NScript::CV_TravellingHeroesScript>::`scalar deleting destructor'	RENAME	was CVtable_012f4454::`scalar deleting destructor'
+00ee1d20	CActiveEntityScript<NScript::CV_TravellingHeroesScript>::SuspendableProcess	SAME	
+00ee1d70	CSpawnedFunc<NScript::CV_TravellingHeroesScript>::`scalar deleting destructor'	SAME	
+00eded00	CSpawnedFunc<NScript::CV_TravellingHeroesScript>::SuspendableProcess	RENAME	was CVtable_012f4090::vfunc_4
+00ee7190	CEntityScriptBinding<NScript::CV_TrophyDealerScript>::GetEntityScriptName	RENAME	was sub_00ee7190
+00ee7540	CEntityScriptBinding<NScript::CV_TrophyDealerScript>::CreateActiveEntityScript	SAME	
+00ee76c0	CActiveEntityScript<NScript::CV_TrophyDealerScript>::`scalar deleting destructor'	RENAME	was CVtable_012f52f8::`scalar deleting destructor'
+00ee7650	CActiveEntityScript<NScript::CV_TrophyDealerScript>::SuspendableProcess	SAME	
+00ee76a0	CSpawnedFunc<NScript::CV_TrophyDealerScript>::`scalar deleting destructor'	SAME	
+00ee6e80	CSpawnedFunc<NScript::CV_TrophyDealerScript>::SuspendableProcess	RENAME	was CVtable_012f5234::vfunc_4
+00efaa50	CEntityScriptBinding<NScript::Cbandit_level_cutsceneScript>::GetEntityScriptName	RENAME	was sub_00efaa50
+00efad80	CEntityScriptBinding<NScript::Cbandit_level_cutsceneScript>::CreateActiveEntityScript	SAME	
+00efaf00	CActiveEntityScript<NScript::Cbandit_level_cutsceneScript>::`scalar deleting destructor'	RENAME	was CVtable_012f6a8c::`scalar deleting destructor'
+00efae90	CActiveEntityScript<NScript::Cbandit_level_cutsceneScript>::SuspendableProcess	SAME	
+00efaee0	CSpawnedFunc<NScript::Cbandit_level_cutsceneScript>::`scalar deleting destructor'	SAME	
+00efa4e0	CSpawnedFunc<NScript::Cbandit_level_cutsceneScript>::SuspendableProcess	RENAME	was CVtable_012f69fc::vfunc_4
+00efa0a0	CEntityScriptBinding<NScript::Cguy_scriptScript>::GetEntityScriptName	RENAME	was sub_00efa0a0
+00efa210	CEntityScriptBinding<NScript::Cguy_scriptScript>::CreateActiveEntityScript	SAME	
+00efa390	CActiveEntityScript<NScript::Cguy_scriptScript>::`scalar deleting destructor'	RENAME	was CVtable_012f69cc::`scalar deleting destructor'
+00efa320	CActiveEntityScript<NScript::Cguy_scriptScript>::SuspendableProcess	SAME	
+00efa370	CSpawnedFunc<NScript::Cguy_scriptScript>::`scalar deleting destructor'	SAME	
+00efa000	CSpawnedFunc<NScript::Cguy_scriptScript>::SuspendableProcess	RENAME	was CVtable_012f6980::vfunc_4
+00eeea60	CSpawnedFunc<NScript::CTestTheInventoryScript>::SuspendableProcess	SKIP	storers=['NScript::CTestTheInventoryScript::RegisterMain', 'NScript::CTestTheInventoryScript::TestForLampOn', 'CTestTheInventoryScript::TestForLampOff', 'CTestTheInventoryScript::Main'] pdb=True refs=1
+00ce7640	CSpawnedFunc<NScript::CGameflowScript>::SuspendableProcess	SKIP	storers=['NScript::CGameflowScript::RegisterMain', 'sub_00ce7670'] pdb=True refs=1
+00e0e970	CSpawnedFunc<NScript::CQ_WaspBossScript>::SuspendableProcess	SKIP	storers=['NScript::CQ_WaspBossScript::RegisterMain', 'NScript::CQ_WaspBossScript::Main', 'NScript::CQ_WaspBossScript::DoMission'] pdb=True refs=2
+00e93e30	CSpawnedFunc<NScript::CV_HauntedHouseScript>::SuspendableProcess	SKIP	storers=['NScript::CV_HauntedHouseScript::RegisterMain', 'CSpawnedFunc<NScript::CV_HauntedHouseScript>::CSpawnedFunc'] pdb=True refs=1
+00ee82a0	CSpawnedFunc<NScript::CCS_OakValeRevisitedScript>::SuspendableProcess	SKIP	storers=['NScript::CCS_OakValeRevisitedScript::RegisterMain', 'DoMission_OakValeRevisited'] pdb=True refs=1

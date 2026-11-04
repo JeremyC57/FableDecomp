@@ -1,0 +1,374 @@
+00cd4a60	SKIP	names ['PersonalScript_alextest', 'alextest']
+00cd4ac0	SKIP	names ['Empty', 'PersonalScript_Empty', 'TestNewNav1', 'TestNewNav2', 'TestNewNav3', 'TestNewNav4', 'TestNewNav5', 'TestQuestCard1', 'TestQuestCard2', 'TestQuestCard3', 'TestTheInventory']
+00cd4b20	SKIP	names ['bandit_level_cutscene', 'guy_script', 'joss_test_scripts']
+00cd4b80	SKIP	names ['DanyalTestScripts', 'GuildSealTriggerTest', 'HeroTurningDebugger', 'HitSwitchTest', 'PersonalScript_Aardvark', 'ProximityPodiumTest']
+00cdd550	RENAME	was _global::Alloc_CVtable_012c2f64
+00cdd330	SAME	
+00cdd590	SAME	
+00cdd380	SAME	
+00cdd360	RENAME	was CVtable_012c2f64::vfunc_2
+00cbd4d0	SKIP	NScript::CQ_SunnyvaleMasterScript::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CQ_SunnyvaleMasterScript::OnPersist refs=85 pdb=False
+00cdd530	SAME	
+00cdd430	RENAME	was CVtable_012c2f78::vfunc_4
+00cddb60	RENAME	was _global::Alloc_CVtable_012c2fb8
+00cdd5b0	SAME	
+00cddba0	SAME	
+00cdd5f0	SAME	
+00cdd6b0	RENAME	was CGlobal_TeleportToHeroGuildScript::Main (namespace spelling)
+00cdd5e0	RENAME	was sub_00cdd5e0
+00cbd4e0	SKIP	NScript::CGlobal_TeleportToHeroGuildScript::OnPersist refs=85 pdb=False
+00cdd690	SAME	
+00cdd680	RENAME	was CVtable_012c2fcc::vfunc_4
+00cde2f0	RENAME	was _global::Alloc_CVtable_012c3000
+00cddbc0	SAME	
+00cde330	SAME	
+00cddbf0	SAME	
+00cddcb0	RENAME	was CPersonalScriptMainScript::Main (namespace spelling)
+00cbd4d0	SKIP	NScript::CPersonalScriptMainScript::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CPersonalScriptMainScript::OnPersist refs=85 pdb=False
+00cddc90	SAME	
+00cddc80	RENAME	was CVtable_012c3014::vfunc_4
+00ce6c40	RENAME	was _global::Alloc_CVtable_012c3688
+00ce1a00	RENAME	was CVtable_012C3688::CVtable_012C3688
+00ce6c80	RENAME	was CVtable_012c3688::`scalar deleting destructor'
+00ce1a30	SAME	
+00ce1af0	SAME	
+00cbd4d0	SKIP	NScript::CHeroBoastsScript::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CHeroBoastsScript::OnPersist refs=85 pdb=False
+00ce1ad0	SAME	
+00ce1ac0	RENAME	was CVtable_012c369c::vfunc_4
+00cef950	SAME	
+00ce6cb0	RENAME	was CVtable_012c3fa4::CVtable_012c3fa4
+00cef9a0	RENAME	was CVtable_012c3fa4::`scalar deleting destructor'
+00ce75b0	SAME	
+00ce7670	RENAME	was sub_00ce7670
+00ce6cf0	RENAME	was sub_00ce6cf0
+00cef8e0	SAME	
+00ce7650	SAME	
+00ce7640	RENAME	was CVtable_012c44b4::vfunc_4
+00cf0640	RENAME	was _global::Alloc_CVtable_012c5de0
+00cef9d0	SAME	
+00cf0680	SAME	
+00cefa20	SAME	
+00cefac0	SAME	
+00cefa00	SAME	
+00cf0560	SAME	
+00cf0540	SAME	
+00cefab0	RENAME	was CVtable_012c5df4::vfunc_4
+00cf91c0	SAME	
+00cf88c0	SAME	
+00cf91f0	SAME	
+00cf9100	SAME	
+00cf8a70	RENAME	was CLadyGreyWifeManagerScript::Main (namespace spelling)
+00cf8970	RENAME	was CLadyGreyWifeManagerScript::Init (namespace spelling)
+00cbd4e0	SKIP	NScript::CLadyGreyWifeManagerScript::OnPersist refs=85 pdb=False
+00cf91a0	SAME	
+00cf9190	RENAME	was CVtable_012c6c90::vfunc_4
+00d12c50	RENAME	was _global::Alloc_CVtable_012c9e14
+00d12980	SAME	
+00d12c90	SAME	
+00d12b60	SAME	
+00d129c0	SAME	
+00d129b0	RENAME	was sub_00d129b0
+00d12c20	RENAME	was _unattributed::PersistTransfer_PathReached_00d12c20
+00d12c00	SAME	
+00d12bf0	RENAME	was CVtable_012c9e40::vfunc_4
+00dd2300	RENAME	was _global::Alloc_CVtable_012db7b0
+00dd1fe0	SAME	
+00dd2340	SAME	
+00dd2240	SAME	
+00dd2010	RENAME	was sub_00dd2010
+00dd2020	RENAME	was CQ_OrchardFarmRaidEvilScript::Init (namespace spelling)
+00cbd4e0	SKIP	NScript::CQ_OrchardFarmRaidEvilScript::OnPersist refs=85 pdb=False
+00dd22e0	SAME	
+00dd22d0	RENAME	was CVtable_012db7f4::vfunc_4
+00dd2680	RENAME	was _global::Alloc_CVtable_012db810
+00dd2360	SAME	
+00dd26c0	SAME	
+00dd25c0	SAME	
+00dd2390	RENAME	was sub_00dd2390
+00dd23a0	SAME	
+00cbd4e0	SKIP	NScript::CQ_OrchardFarmRaidGoodScript::OnPersist refs=85 pdb=False
+00dd2660	SAME	
+00dd2650	RENAME	was CVtable_012db850::vfunc_4
+00e25970	RENAME	was _global::Alloc_CVtable_012e1d48
+00e24dd0	SAME	
+00e259b0	SAME	
+00e25690	SAME	
+00e24e10	RENAME	was CQR_EscortTrader_ManagerScript::Main (namespace spelling)
+00e24e00	RENAME	was sub_00e24e00
+00e25750	SAME	
+00e25730	SAME	
+00e25720	RENAME	was CVtable_012e1d5c::vfunc_4
+00e96dd0	RENAME	was _global::Alloc_CVtable_012ecb94
+00e93d50	SAME	
+00e96e10	SAME	
+00e93da0	SAME	
+00e93eb0	RENAME	was sub_00e93eb0
+00e93d80	SAME	
+00e93e60	RENAME	was _unattributed::PersistTransfer2_00e93e60
+00e93e40	SAME	
+00e93e30	RENAME	was CVtable_012ecba8::SuspendableProcess
+00ee8be0	SKIP	PDB has no ?Alloc@CCS_OVRScript@NScript@@
+00ee90a0	RENAME	was None
+00ee8e80	RENAME	was CVtable_012f5470::CVtable_012f5470
+00ee90d0	RENAME	was CVtable_012f5470::`scalar deleting destructor'
+00ee8eb0	SAME	
+00ee8f50	SAME	
+00ee8ea0	RENAME	was sub_00ee8ea0
+00cbd4e0	SKIP	NScript::CGlobal_WatchForHeroDeathScript::OnPersist refs=85 pdb=False
+00ee9080	SAME	
+00ee8f40	RENAME	was CVtable_012f5484::vfunc_4
+00ee9450	RENAME	was None
+00ee90f0	RENAME	was CVtable_012f54b4::CVtable_012f54b4
+00ee9480	RENAME	was CVtable_012f54b4::`scalar deleting destructor'
+00ee9120	SAME	
+00ee91e0	SAME	
+00ee9110	RENAME	was sub_00ee9110
+00cbd4e0	SKIP	NScript::CGlobal_DebugCycleThroughSpeechScript::OnPersist refs=85 pdb=False
+00ee91c0	SAME	
+00ee91b0	RENAME	was CVtable_012f54c8::vfunc_4
+00ee9f00	SAME	
+00ee94a0	RENAME	was CVtable_012f54e4::CVtable_012f54e4
+00ee9f30	RENAME	was CVtable_012f54e4::`scalar deleting destructor'
+00ee94d0	SAME	
+00ee95c0	RENAME	was CExpression_FishScript::Main (namespace spelling)
+00ee94c0	RENAME	was sub_00ee94c0
+00ee9590	RENAME	was _unattributed::PersistTransfer_LastFishingLevel_00ee9590
+00ee9570	SAME	
+00ee9560	RENAME	was CVtable_012f54f8::vfunc_4
+00eea3e0	RENAME	was None
+00ee9f50	RENAME	was CVtable_012f55b8::CVtable_012f55b8
+00eea410	RENAME	was CVtable_012f55b8::`scalar deleting destructor'
+00ee9f80	SAME	
+00eea020	SAME	
+00ee9f70	RENAME	was sub_00ee9f70
+00cbd4e0	SKIP	NScript::CExpression_FollowScript::OnPersist refs=85 pdb=False
+00eea3c0	SAME	
+00eea010	RENAME	was CVtable_012f55cc::vfunc_4
+00eea740	RENAME	was None
+00eea430	RENAME	was CVtable_012f55f8::CVtable_012f55f8
+00eea770	SAME	
+00eea680	SAME	
+00eea460	SAME	
+00eea450	SAME	
+00cbd4e0	SKIP	NScript::CExpression_WaitScript::OnPersist refs=85 pdb=False
+00eea720	SAME	
+00eea710	RENAME	was CVtable_012f560c::vfunc_4
+00eeae70	RENAME	was None
+00eea790	RENAME	was CVtable_012f5628::CVtable_012f5628
+00eeaea0	RENAME	was CVtable_012f5628::`scalar deleting destructor'
+00eeadb0	SAME	
+00eea7c0	RENAME	was CExpression_DigScript::Main (namespace spelling)
+00eea7b0	RENAME	was sub_00eea7b0
+00cbd4e0	SKIP	NScript::CExpression_DigScript::OnPersist refs=85 pdb=False
+00eeae50	SAME	
+00eeae40	RENAME	was CVtable_012f5684::vfunc_4
+00eeb730	SAME	
+00eeaec0	RENAME	was CVtable_012f56a0::CVtable_012f56a0
+00eeb760	RENAME	was CVtable_012f56a0::`scalar deleting destructor'
+00eeb670	SAME	
+00eeaef0	DISAGREE	current Script_PickpocketExpression kept
+00eeaee0	RENAME	was sub_00eeaee0
+00cbd4e0	SKIP	NScript::CExpression_PickpocketScript::OnPersist refs=85 pdb=False
+00eeb710	SAME	
+00eeb700	RENAME	was CVtable_012f56b4::vfunc_4
+00eebd70	RENAME	was None
+00eeb780	RENAME	was CVtable_012f56d0::CVtable_012f56d0
+00eebda0	RENAME	was CVtable_012f56d0::`scalar deleting destructor'
+00eebcb0	SAME	
+00eeb7b0	RENAME	was CExpression_PicklockScript::Main (namespace spelling)
+00eeb7a0	RENAME	was sub_00eeb7a0
+00cbd4e0	SKIP	NScript::CExpression_PicklockScript::OnPersist refs=85 pdb=False
+00eebd50	SAME	
+00eebd40	RENAME	was CVtable_012f56e4::vfunc_4
+00eec390	RENAME	was None
+00eebdc0	RENAME	was CVtable_012f5700::CVtable_012f5700
+00eec3c0	RENAME	was CVtable_012f5700::`scalar deleting destructor'
+00eec2d0	SAME	
+00eebdf0	RENAME	was CExpression_StealScript::Main (namespace spelling)
+00eebde0	RENAME	was sub_00eebde0
+00cbd4e0	SKIP	NScript::CExpression_StealScript::OnPersist refs=85 pdb=False
+00eec370	SAME	
+00eec360	RENAME	was CVtable_012f5714::vfunc_4
+00eec750	RENAME	was None
+00eec3e0	RENAME	was CVtable_012f5730::CVtable_012f5730
+00eec780	RENAME	was CVtable_012f5730::`scalar deleting destructor'
+00eec690	SAME	
+00eec410	RENAME	was CGlobal_GiveHeroItemsFromRewardChestScript::Main (namespace spelling)
+00eec400	RENAME	was sub_00eec400
+00cbd4e0	SKIP	NScript::CGlobal_GiveHeroItemsFromRewardChestScript::OnPersist refs=85 pdb=False
+00eec730	SAME	
+00eec720	RENAME	was CVtable_012f5744::vfunc_4
+00eecea0	RENAME	was None
+00eec7a0	RENAME	was CVtable_012f5760::CVtable_012f5760
+00eeced0	RENAME	was CVtable_012f5760::`scalar deleting destructor'
+00eec7d0	SAME	
+00eec890	RENAME	was CGlobal_OpenChestScript::Main (namespace spelling)
+00eec7c0	RENAME	was sub_00eec7c0
+00cbd4e0	SKIP	NScript::CGlobal_OpenChestScript::OnPersist refs=85 pdb=False
+00eec870	SAME	
+00eec860	RENAME	was CVtable_012f5774::vfunc_4
+00eed060	SAME	
+00eecef0	RENAME	was CVtable_012f57a0::CVtable_012f57a0
+00eed090	RENAME	was CVtable_012f57a0::`scalar deleting destructor'
+00eecf70	SAME	
+00eecf20	SAME	
+00eecf10	RENAME	was sub_00eecf10
+00eed030	RENAME	was _unattributed::PersistTransfer_TimeDisplayActive_00eed030
+00eed010	SAME	
+00eed000	RENAME	was CVtable_012f57b4::vfunc_4
+00eed220	RENAME	was _global::Alloc_CVtable_012f57e4
+00eed0b0	SAME	
+00eed260	SAME	
+00eed160	SAME	
+00eed0e0	SAME	
+00cbd4d0	SKIP	NScript::CalextestScript::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CalextestScript::OnPersist refs=85 pdb=False
+00eed200	SAME	
+00eed1f0	RENAME	was CVtable_012f57f8::vfunc_4
+00eee940	RENAME	was _global::Alloc_CVtable_012f5954
+00eee730	SAME	
+00eee980	SAME	
+00eee760	SAME	
+00eee800	SAME	
+00cbd4d0	SKIP	NScript::CEmptyScript::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CEmptyScript::OnPersist refs=85 pdb=False
+00eee920	SKIP	CSpawnedFunc<NScript::CEmptyScript>::`scalar deleting destructor' refs=3 pdb=True
+00eee7f0	RENAME	was CVtable_012f5968::vfunc_4
+00eeee40	RENAME	was _global::Alloc_CVtable_012f5998
+00eee9a0	SAME	
+00eeee80	SAME	
+00eee9d0	SAME	
+00eeea90	RENAME	was CTestTheInventoryScript::Main (namespace spelling)
+00cbd4d0	SKIP	NScript::CTestTheInventoryScript::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CTestTheInventoryScript::OnPersist refs=85 pdb=False
+00eeea70	SAME	
+00eeea60	RENAME	was CVtable_012f59ac::vfunc_4
+00eef540	RENAME	was _global::Alloc_CVtable_012f5a78
+00eeeea0	SAME	
+00eef580	SAME	
+00eeeed0	SAME	
+00eeef70	SAME	
+00cbd4d0	SKIP	NScript::CTestQuestCard1Script::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CTestQuestCard1Script::OnPersist refs=85 pdb=False
+00eef520	SAME	
+00eeef60	RENAME	was CVtable_012f5a8c::vfunc_4
+00eef6d0	RENAME	was _global::Alloc_CVtable_012f5bf4
+00eef5a0	SAME	
+00eef710	SAME	
+00eef610	SAME	
+00eef5d0	SAME	
+00cbd4d0	SKIP	NScript::CTestQuestCard2Script::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CTestQuestCard2Script::OnPersist refs=85 pdb=False
+00eef6b0	SAME	
+00eef6a0	RENAME	was CVtable_012f5c24::vfunc_4
+00eef860	RENAME	was _global::Alloc_CVtable_012f5c40
+00eef730	SAME	
+00eef8a0	SAME	
+00eef7a0	SAME	
+00eef760	SAME	
+00cbd4d0	SKIP	NScript::CTestQuestCard3Script::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CTestQuestCard3Script::OnPersist refs=85 pdb=False
+00eef840	SAME	
+00eef830	RENAME	was CVtable_012f5c70::vfunc_4
+00eef9c0	RENAME	was _global::Alloc_CVtable_012f5c8c
+00eef8c0	SAME	
+00eefa00	SAME	
+00eef900	SAME	
+00eef8f0	RENAME	was sub_00eef8f0
+00cbd4d0	SKIP	NScript::CTestNewNav1Script::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CTestNewNav1Script::OnPersist refs=85 pdb=False
+00eef9a0	SAME	
+00eef990	RENAME	was CVtable_012f5ca0::vfunc_4
+00eefb20	RENAME	was _global::Alloc_CVtable_012f5cbc
+00eefa20	SAME	
+00eefb60	SAME	
+00eefa60	SAME	
+00eefa50	RENAME	was sub_00eefa50
+00cbd4d0	SKIP	NScript::CTestNewNav2Script::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CTestNewNav2Script::OnPersist refs=85 pdb=False
+00eefb00	SAME	
+00eefaf0	RENAME	was CVtable_012f5cd0::vfunc_4
+00eefc80	RENAME	was _global::Alloc_CVtable_012f5cec
+00eefb80	SAME	
+00eefcc0	SAME	
+00eefbc0	SAME	
+00eefbb0	RENAME	was sub_00eefbb0
+00cbd4d0	SKIP	NScript::CTestNewNav3Script::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CTestNewNav3Script::OnPersist refs=85 pdb=False
+00eefc60	SAME	
+00eefc50	RENAME	was CVtable_012f5d00::vfunc_4
+00eefde0	RENAME	was _global::Alloc_CVtable_012f5d1c
+00eefce0	SAME	
+00eefe20	SAME	
+00eefd20	SAME	
+00eefd10	RENAME	was sub_00eefd10
+00cbd4d0	SKIP	NScript::CTestNewNav4Script::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CTestNewNav4Script::OnPersist refs=85 pdb=False
+00eefdc0	SAME	
+00eefdb0	RENAME	was CVtable_012f5d30::vfunc_4
+00eeff40	RENAME	was _global::Alloc_CVtable_012f5d4c
+00eefe40	SAME	
+00eeff80	SAME	
+00eefe80	SAME	
+00eefe70	RENAME	was sub_00eefe70
+00cbd4d0	SKIP	NScript::CTestNewNav5Script::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CTestNewNav5Script::OnPersist refs=85 pdb=False
+00eeff20	SAME	
+00eeff10	RENAME	was CVtable_012f5d60::vfunc_4
+00ef9ee0	RENAME	was _global::Alloc_CVtable_012f68d0
+00ef9190	SAME	
+00ef9f20	SAME	
+00ef91c0	SAME	
+00ef9280	RENAME	was sub_00ef9280
+00cbd4d0	SKIP	NScript::Cjoss_test_scriptsScript::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::Cjoss_test_scriptsScript::OnPersist refs=85 pdb=False
+00ef9260	SAME	
+00ef9250	RENAME	was CVtable_012f68e4::vfunc_4
+00efb0b0	RENAME	was _global::Alloc_CVtable_012f6aa8
+00efaf90	SAME	
+00efb0f0	SAME	
+00efaff0	SAME	
+00efafc0	RENAME	was CVtable_012f6aa8::PumpUntilTerminating_00efafc0
+00cbd4d0	SKIP	NScript::CDanyalTestScriptsScript::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CDanyalTestScriptsScript::OnPersist refs=85 pdb=False
+00efb090	SAME	
+00efb080	RENAME	was CVtable_012f6abc::vfunc_4
+00efc460	RENAME	was _global::Alloc_CVtable_012f6c58
+00efc190	SAME	
+00efc4a0	SAME	
+00efc1c0	SAME	
+00efc260	SAME	
+00cbd4d0	SKIP	NScript::CHeroTurningDebuggerScript::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CHeroTurningDebuggerScript::OnPersist refs=85 pdb=False
+00efc440	SAME	
+00efc250	RENAME	was CVtable_012f6c6c::vfunc_4
+00efc8d0	RENAME	was _global::Alloc_CVtable_012f6ca8
+00efc4c0	SAME	
+00efc910	SAME	
+00efc7e0	SAME	
+00efc500	SAME	
+00efc4f0	RENAME	was sub_00efc4f0
+00efc8a0	RENAME	was _unattributed::PersistTransfer_ScriptVar_00efc8a0
+00efc880	SAME	
+00efc870	RENAME	was CVtable_012f6cd8::vfunc_4
+00effcd0	RENAME	was _global::Alloc_CVtable_012f7054
+00eff7d0	SAME	
+00effd10	SAME	
+00eff800	SAME	
+00eff8a0	SAME	
+00cbd4d0	SKIP	NScript::CShowTargetedThingHealthScript::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CShowTargetedThingHealthScript::OnPersist refs=85 pdb=False
+00effcb0	SAME	
+00eff890	RENAME	was CVtable_012f7068::vfunc_4
+00f01760	RENAME	was _global::Alloc_CVtable_012f72d0
+00f01390	SAME	
+00f017a0	SAME	
+00f013c0	SAME	
+00f01480	SAME	
+00cbd4d0	SKIP	NScript::CCS_PlayCutsceneScript::Init refs=45 pdb=False
+00cbd4e0	SKIP	NScript::CCS_PlayCutsceneScript::OnPersist refs=85 pdb=False
+00f01460	SAME	
+00f01450	RENAME	was CVtable_012f72e4::vfunc_4
