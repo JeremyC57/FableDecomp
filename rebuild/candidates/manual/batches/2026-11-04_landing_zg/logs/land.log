@@ -1,0 +1,32 @@
+addr       parity           behav  name
+00862aa0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00862aa0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00862aa0   WARN SHARED_HEADER_AVAILABLE CThing
+00862aa0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00862aa0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00862aa0   RELOCATION_MATCH PASS   UpdateWalkingAnim
+00c47f10   WARN RELOC_NAME: ?Take@CMailbox_00c48860@@QAE?AUSDecoderRequest@@XZ -> 00c48860 labelled '_global::PKCMailbox_ProcessMessage'
+00c47f10   WARN RELOC_NAME: ?CloseReply@SDecoderRequest@@QAEAAPAUCMailboxQueue_00c48a00@@XZ -> 00c47ec0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c47f10   WARN RELOC_NAME: ?SeekArgs@SDecoderRequest@@QAEAAUSSeekArgs@@XZ -> 00c47ed0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c47f10   WARN RELOC_NAME: ?GetPosition@CPKDecompressedStream@@QAEJXZ -> 00c62780 labelled 'CEditWorld::DrawGetWorldMap'
+00c47f10   WARN RELOC_NAME: ?GetUserData@CPKDecompressedStream@@QAEJXZ -> 00c628c0 labelled 'CEditWorld::DrawGetWorldMap'
+00c47f10   WARN RELOC_NAME: ?ReadArgs@SDecoderRequest@@QAEAAUSReadArgs@@XZ -> 00c47ee0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c47f10   WARN RELOC_NAME: ?GetData@CCodaFrame@@QAEPAFXZ -> 00c491d0 labelled '_global::GetMember_dword0x10_00c491d0'
+00c47f10   WARN RELOC_NAME: ??1C16BitSamplePtr@@QAE@XZ -> 00c62a20 labelled '_global::Nop_ret0_00c62a20'
+00c47f10   WARN RELOC_NAME: ?OpenArgs@SDecoderRequest@@QAEAAUSOpenArgs@@XZ -> 00c47eb0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c47f10   WARN RELOC_NAME: ??0CPKDecompressedStream@@QAE@PAVIStreamOpener_00c62920@@PBDABUSStreamSegment@@@Z -> 00c62920 labelled 'CAudioStreamOwner_00c62920::CAudioStreamOwner_00c62920'
+00c47f10   WARN RELOC_NAME: ?GetChannels@CPKDecompressedStream@@QAEJXZ -> 00c628f0 labelled '_unattributed::GetIndex'
+00c47f10   WARN RELOC_NAME: ?GetRate@CPKDecompressedStream@@QAEJXZ -> 00c628d0 labelled 'CAIBrain::GetCurrentStateGroupDebugText'
+00c47f10   WARN RELOC_NAME: ?GetUnitSize@CPKDecompressedStream@@QAEJXZ -> 00c628a0 labelled 'CAIBrain::GetCurrentStateGroupDebugText'
+00c47f10   WARN RELOC_NAME: ??1CIntelligentPointer_00c16900@@QAE@XZ -> 00c167c0 labelled 'CFileInstaller::CActiveFile::OnReadFinished'
+00c47f10   WARN RELOC_NAME: ?ExitReply@SDecoderRequest@@QAEAAPAUCMailboxQueue_00c48c80@@XZ -> 00c47ef0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c47f10   WARN RELOC_NAME: ?ProcessMessage@CMailboxQueue_00c48c80@@QAEJPAX@Z -> 00c48c80 labelled '_global::SyncQueue_TryEnqueueLocked_E'
+00c47f10   RELOCATION_MATCH PASS   Run
+
+WINS: 2
+  00862aa0 RELOCATION_MATCH CModeStandBase::?UpdateWalkingAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z
+  00c47f10 RELOCATION_MATCH CAsyncDecoder_00c48640::?Run@CAsyncDecoder_00c48640@@UAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CModeStandBase_UpdateWalkingAnim_00862aa0
+  CAsyncDecoder00c48640_Run_00c47f10

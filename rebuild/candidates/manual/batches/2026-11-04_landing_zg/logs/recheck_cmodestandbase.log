@@ -1,0 +1,27 @@
+addr       parity           behav  name
+00862780   WARN SHARED_HEADER_AVAILABLE C3DVector
+00862780   WARN SHARED_HEADER_AVAILABLE CThing
+00862780   WARN SHARED_HEADER_AVAILABLE CTCCombat
+00862780   WARN SHARED_HEADER_AVAILABLE CPlayer
+00862780   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00862780   WARN RELOC_NAME: ?GetHasInformation@CThingAICreature@@QBE_NXZ -> 008300d0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00862780   WARN RELOC_NAME: ?GetWaveWithInformation@CThingAICreature@@QBE_NXZ -> 008300f0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00862780   WARN RELOC_NAME: ?GetAnimationTransitionInTime@CAnimationEntry@@QBEJXZ -> 005dc1f0 labelled 'CAnimationEntry::GetDelayTime'
+00862780   WARN RELOC_NAME: ?Set@CAnimInit@@QAEXJJJJ_NKJ@Z -> 0070c050 labelled 'CAnimInit::Init'
+00862780   RELOCATION_MATCH PASS   CModeStandBase::UpdateIdleAnim
+00862ec0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00862ec0   WARN SHARED_HEADER_AVAILABLE CWorld
+00862ec0   WARN SHARED_HEADER_AVAILABLE CThing
+00862ec0   WARN RELOC_NAME: ?GetGlobalComponents@CModeBase@@QBEPAUCGlobalComponents@@XZ -> 0073a680 labelled '_global::GetGlobal_013b8a1c_deref0x24_0073a680'
+00862ec0   RELOCATION_MATCH PASS   CModeStandBase::AnimUpdate
+00862aa0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00862aa0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00862aa0   WARN SHARED_HEADER_AVAILABLE CThing
+00862aa0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00862aa0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00862aa0   RELOCATION_MATCH PASS   CModeStandBase::UpdateWalkingAnim
+
+WINS: 3
+  00862780 RELOCATION_MATCH CModeStandBase::?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z
+  00862ec0 RELOCATION_MATCH CModeStandBase::AnimUpdate
+  00862aa0 RELOCATION_MATCH CModeStandBase::?UpdateWalkingAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z

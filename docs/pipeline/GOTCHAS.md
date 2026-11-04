@@ -2031,3 +2031,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Landing labels must be catalog form (`Class::Method`): apply_labels.py writes a mangled name verbatim under module `_global`. And a bare vland name qualified from the catalog module can inherit a wrong class; the source `// Leaf:` is authoritative (0x0070D780, landing ze).
 - NScript AddScreenMessage: retail builds the string before loading `Game`; write `{ CCharString m("..."); Game->AddScreenMessage(m, ...); }`, since a temporary argument loads `Game` first (chunk 770).
 - hdrcheck2: splitting an existing declaration line inside a new `#ifdef` reads default=DIFF; keep the original line verbatim under `#else` (chunk 770).
+- VC7.1 `for(;;) switch` rotates the dispatch to the loop bottom; a `done`-flag `while (!done)` loop jumps back to the state load. Empty cases that share default's block drop out of the jump table: give each its own `done = true; break;`. Case blocks are laid out in source order (chunk 769).
+- `!(x <= 0.0f)` gives `test ah,41h ; jnp` where `x > 0.0f` gives `jne`; `((n >> 7) + 1) << 7` simplifies to `and ; add 80h` while `(n / 128 + 1) * 128` keeps `shr ; inc ; shl`; retail `rand` is the msvcrt import (`__declspec(dllimport)`) (chunk 769).
+- vland builds behaviour tests with VC7.1 too: no `decltype`, no `T{...}` temporaries, no C++11 (chunk 769).

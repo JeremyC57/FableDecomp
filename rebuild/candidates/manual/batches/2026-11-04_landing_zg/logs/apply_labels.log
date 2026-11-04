@@ -1,0 +1,3 @@
+catalog  00c47f10 _global::CTCHeroStats_ProcessStateTransition -> CAsyncDecoder_00c48640::Run
+manifest 00c47f10 _global::CTCHeroStats_ProcessStateTransition -> CAsyncDecoder_00c48640::Run
+labels 2  catalog renamed 1  manifest renamed 1

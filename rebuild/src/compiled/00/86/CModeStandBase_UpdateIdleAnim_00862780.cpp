@@ -5,7 +5,7 @@
 //   once it has idled long enough; unless it is performing an action, reset the idle counter for a special idle, play the
 //   special idle (type 0x19) over a subtle pose when it is not already looping, else (re)start the pose idle (type 6) when
 //   it changed or nothing loops; remember the pose idle name
-// Leaf: ?UpdateIdleAnim@CModeStandBase
+// Leaf: ?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00862780, 798 bytes (`ret 4`). Ego_r.pdb: `?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z`.
@@ -220,6 +220,7 @@ public:
     float       MaxJogSpeed;                    // +0x2c
     float       MaxWalkSpeed;                   // +0x30
     CCharString PoseAnimName;                   // +0x34
+private:   // Ego_r.pdb ?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z (private)
     void UpdateIdleAnim(CAnimateThing& anim);
 };
 

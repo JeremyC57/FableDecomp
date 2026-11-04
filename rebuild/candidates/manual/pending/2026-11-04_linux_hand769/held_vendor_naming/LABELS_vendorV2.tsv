@@ -1,0 +1,18 @@
+address	name	evidence
+0x00C12940	CSoundEventManager::StartEvent	descriptive (libpk): RELOCATION_MATCH; caller 0x00C12CD0, CSoundEventManager method range under g_lock_0143bb14
+0x00C12E50	CSoundEventManager::PlayStreamed	descriptive: slot 14 of CSoundEventManager vtable 0x012B2748 (parked DIFFER)
+0x00C271F0	CCodaPlayback::Setup_00c271f0	catalog group anchor CCodaPlayback; CODA source setup under lock 0x0143BAFC (not graded)
+0x00C38D60	CInstance::Update	caller binding ?Update@CInstance + .\CInstance.cpp asserts (RELOCATION_MATCH)
+0x00C3BF30	PKCFile::Read_00c3bf30	libpk PKCFile / CRACBuffer read path (not graded)
+0x00C3F9D0	CAudioSystem::InitSubSystemB_00c3f9d0	caller binding ?InitSubSystemB@CUnknownSystem1D8 (class unproven; not graded)
+0x00C4DE00	CAudioSoundBuffer::KeepShadowCopy	landed caller binding (parked DIFFER)
+0x00C54190	CDecodedStream::SetProperties	slot 6 of vtable 0x012B89C4 (RELOCATION_MATCH)
+0x00C6F3E0	CAudioMixer::ProcessChannels_00c6f3e0	catalog CAudioMixer_ProcessChannels_64bit (lane gap park)
+0x00C89350	CReverbDiffuserStage::ProcessRamped	landed caller CReverbDiffuser::ProcessRamped 0x00C75AB0; ramped twin of Process 0x00C891A0 (RELOCATION_MATCH)
+0x00C11F00	CSoundEventManager::AcquireEvent	PROPOSAL: returns the free event (see NAME_FIXES)
+0x00C11230	CSoundEventManager::CheckExisting	PROPOSAL: descriptive
+0x00C1BAE0	CSoundPlayParameters::GetStreamed	mirror of SetStreamed 0x00C1BC30
+0x00C21C20	CSoundEvent::Initialise	PROPOSAL: landed StopListening comment + this caller
+0x00C38B20	CInstance::~CInstance	same record as CInstance::Update / SetScale
+0x00C483A0	CRegistry_00c38b20::Attach	PROPOSAL
+0x00C62920	CPKDecompressedStream::CPKDecompressedStream	dtor 0x00C62750 + Seek 0x00C626A0 of the same object

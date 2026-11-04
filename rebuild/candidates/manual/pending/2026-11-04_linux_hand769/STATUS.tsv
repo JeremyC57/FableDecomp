@@ -1,0 +1,13 @@
+address	name	status	attempts	note
+00c54190	CDecodedStream::SetProperties	RELOCATION_MATCH	4	descriptive name; landed setter spellings bound
+00862aa0	CModeStandBase::UpdateWalkingAnim	RELOCATION_MATCH	14	one-arg inline CMovementSetup ctor for the stand setup (inferred)
+00c89350	CReverbDiffuserStage::ProcessRamped	RELOCATION_MATCH	9	ramp fraction through its own float local; named tap-step local; landed caller binding respelled (NAME_FIXES)
+00c12940	CSoundEventManager::StartEvent	RELOCATION_MATCH	6	descriptive; AcquireEvent 0x00C11F00 returns the event (landed void OnKey: NAME_FIXES)
+00c38d60	CInstance::Update	RELOCATION_MATCH	6	done-flag loop + explicit cases 0/6 (table 0..6, no loop rotation); counts unsigned (caller binding respelled)
+00c47f10	CAsyncDecoder_00c48640::Run	RELOCATION_MATCH	6	cases in retail block order; 4-byte acks (exit one block-scoped); seek reply posted via goto; ctor respelled CPKDecompressedStream (NAME_FIXES)
+00c12e50	CSoundEventManager::PlayStreamed	DIFFER(741v741)	10	parked: one request store (+0x14 offset) scheduled early; dl=2
+00c4de00	CAudioSoundBuffer::KeepShadowCopy	DIFFER(934v929)	11	parked: edi/ebp swap at the upload error check splits the flag-clear RMW
+00c6f3e0	CAudioMixer_ProcessChannels_64bit	LANE_GAP	0	parked: LTCG register-argument static callee 0x00C6F1A0 (ecx carries an argument, cdecl stack cleanup) plus an MMX movq/emms copy block
+00c3f9d0	CUnknownSystem1D8::InitSubSystemB	DIFFER(836v848)	10	parked: flag-clear masks folded by VC7.1; device pointer register copy; setcc register choice
+00c271f0	CCodaPlayback::Setup_00c271f0	NOT_GRADED	0	out of time: CODA source setup (20+ stdcall CODA callees, __ftol, floor import); triaged only
+00c3bf30	PKCFile::Read_00c3bf30	NOT_GRADED	0	out of time: CRACBuffer-aligned read path with assert line 0x1C; triaged only

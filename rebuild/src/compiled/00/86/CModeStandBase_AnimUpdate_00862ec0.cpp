@@ -109,6 +109,7 @@ public:
     long IdleCounter;                           // +0x1c
     long FramesToKeepUpdatingMovement;          // +0x20
     virtual void AnimUpdate(CAnimateThing& anim);
+private:   // Ego_r.pdb: both are private (AAE)
     void UpdateIdleAnim(CAnimateThing& anim);   // 0x00862780
     void UpdateWalkingAnim(CAnimateThing& anim);   // 0x00862AA0
 };

@@ -46537,7 +46537,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c47ee0	GetAnimFilter	NCreatureMode::CModeBlock	__thiscall	CAnimFilterBase *	1	CModeBlock *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\GetAnimFilter_GetAnimFilter_00c47ee0.cpp
 00c47ef0	GetAnimFilter	NCreatureMode::CModeBlock	__thiscall	CAnimFilterBase *	1	CModeBlock *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\GetAnimFilter_GetAnimFilter_00c47ef0.cpp
 00c47f00	Issue	CAIStateGroup_BirdFlyToFood_00c48300	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
-00c47f10	CTCHeroStats_ProcessStateTransition	_global	unknown	undefined	0		0	yes	accepted									
+00c47f10	Run	CAsyncDecoder_00c48640	unknown	undefined	0		0	yes	accepted									
 00c48220	~CVtable_012b8034	CVtable_012b8034	__thiscall	void	1	CAIStateGroup_CreatureUseCoverBase *	1	yes	accepted									
 00c48290	~CAInputProcess_00c48290	_unattributed	__thiscall	void	1	CAInputProcess *	1	yes	accepted									
 00c48300	Update	CAIStateGroup_BirdFlyToFood	__thiscall	void	1	CAIStateGroup_BirdFlyToFood *	1	yes	accepted									

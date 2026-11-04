@@ -1,0 +1,3 @@
+address	name	evidence
+00862aa0	CModeStandBase::UpdateWalkingAnim	landing 2026-11-04zg (chunk 769): landed binding + Ego_r.pdb CModeStandBase members (RELOCATION_MATCH)
+00c47f10	CAsyncDecoder_00c48640::Run	landing 2026-11-04zg (chunk 769): slot 5 of vtable 0x012B8020, landed ctor 0x00C48640 (RELOCATION_MATCH)

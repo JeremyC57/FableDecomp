@@ -384002,6 +384002,21 @@ $catalog = @(
         TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCWhispie_Main_00ef1690_test.cpp'
         PassPattern = '00ef1690_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00862aa0'
+        Module = 'CModeStandBase'
+        Source = '00/86/CModeStandBase_UpdateWalkingAnim_00862aa0.cpp'
+        TestSource = '00/86/CModeStandBase_UpdateWalkingAnim_00862aa0_test.cpp'
+        PassPattern = '00862aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c47f10'
+        Module = 'CAsyncDecoder_00c48640'
+        Source = '00/c4/CAsyncDecoder00c48640_Run_00c47f10.cpp'
+        TestSource = '00/c4/CAsyncDecoder00c48640_Run_00c47f10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c47f10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
