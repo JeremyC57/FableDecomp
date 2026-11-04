@@ -2,7 +2,7 @@
 // drop its old attacking record (registering the attacked side when that has none), make sure it has a combatant record,
 // pick its combat sequences, point it at the attacked creature with the next attacker number and reset its wheel state,
 // flag it as attacking and put the attacked creature's stealth component in danger
-// Leaf: RegisterCombatant
+// Leaf: ?RegisterAttackingCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z
 // Shape: the map::insert(const value_type&) instantiation has a same-TU stand-in that builds the pair<iterator, bool>
 //   result in place, so the dropped result shares the find-key frame slot (frame 0xF8 as retail); find has its real
 //   same-TU body and LowerBound a same-TU body.

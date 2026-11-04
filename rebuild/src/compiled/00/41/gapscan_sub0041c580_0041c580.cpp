@@ -1,5 +1,5 @@
 // Byte-member setter at this+0x10 from a stack arg. __fastcall this=ecx (ret 4).
-// Leaf: vfunc_7
+// Leaf: ?Set@T@@QAEXD@Z
 #pragma pack(push,1)
 struct T {
     char pad[0x10];

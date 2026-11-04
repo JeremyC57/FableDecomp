@@ -1,5 +1,5 @@
 struct RefCounted {
-// Leaf: CTriangleList>_>
+// Leaf: ?Dest_val@@YIXPAUCIVCountedPointer@@PAX@Z
     void** vtbl;
     int refcount;
 };

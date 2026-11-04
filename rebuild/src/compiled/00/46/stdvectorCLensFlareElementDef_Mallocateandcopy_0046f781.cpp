@@ -1,5 +1,5 @@
 // std::vector<CLensFlareElementDef>::_M_allocate_and_copy(unsigned int n, const CLensFlareElementDef* first, const CLensFlareElementDef* last) -- STLport growth helper: allocate n CLensFlareElementDefs and copy-construct [first, last) into the block; returns it
-// Leaf: ??$_M_allocate_and_copy@PBVCLensFlareElementDef@@@?$vector@VCLensFlareElementDef@@V?$allocator@VCLensFlareElementDef@@@std@@@std@@QAEPAVCLensFlareElementDef@@IPBV2@0@Z
+// Leaf: ??$_M_allocate_and_copy@PBVCLensFlareElementDef@@@?$vector@VCLensFlareElementDef@@V?$allocator@VCLensFlareElementDef@@@std@@@std@@IAEPAVCLensFlareElementDef@@IPBV2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0046F781, 71 bytes, thiscall `ret 0Ch` (`this` is never read: the allocator is empty); size-optimised def TU.
 // Identity (proven): vector<CLensFlareElementDef>::_M_allocate_and_copy<const CLensFlareElementDef*>; evidence: its copy constructor callee 0x0046F6DC stores the vptr of RTTI .?AVCLensFlareElementDef@@ (after the CParentDefClassBase copy constructor 0x0046EE98), the element stride 0x4C is that class's retail size, and its only caller 0x0046F565 is vector<CLensFlareElementDef>::operator= (assigning CSkyDef::FlareElements).
 // Label: the manifest's "CLensFlareElementDef_CopyConstructArray" is descriptive (family H059: six def-vector allocate-and-copy helpers, one per element).

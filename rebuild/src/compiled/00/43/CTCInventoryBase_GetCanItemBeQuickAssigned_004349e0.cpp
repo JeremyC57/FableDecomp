@@ -1,5 +1,5 @@
 // Member getter at this+0xec. __fastcall this=ecx.
-// Leaf: GetCanItemBeQuickAssigned
+// Leaf: ?Get@T@@QAEDXZ
 struct T {
     char pad[0xec];
     char field;

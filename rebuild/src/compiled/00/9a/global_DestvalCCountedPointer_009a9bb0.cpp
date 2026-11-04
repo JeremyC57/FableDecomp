@@ -1,5 +1,5 @@
 // _Dest_val<std::allocator<CCountedPointer<T>_>,CCountedPointer<T>_> @ 0x009A9BB0
-// Leaf: COptimisedPrimitive>_>
+// Leaf: @Dest_val_CCountedPointer@8
 //
 // Genuine C++ reconstruction (no inline assembly). STL _Dest_val destroys the
 // CCountedPointer<T> in place: decrement the shared refcount block, invoke the

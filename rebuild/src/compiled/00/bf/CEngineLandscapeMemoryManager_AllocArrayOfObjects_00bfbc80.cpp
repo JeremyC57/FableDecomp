@@ -1,5 +1,5 @@
 // CEngineLandscapeMemoryManager::AllocArrayOfObjects(long count, void* owner) -- [T = CLocalDetailPrimitiveMeshZSpriteBatch::CObject] allocate a count-element array of z-sprite batch objects from the landscape virtual memory (refusing a byte size outside 0..0x7fffffff) and default-construct every element
-// Leaf: ?AllocArrayOfObjects@
+// Leaf: ??$AllocArrayOfObjects@VCObject@CLocalDetailPrimitiveMeshZSpriteBatch@@@CEngineLandscapeMemoryManager@@QAEPAVCObject@CLocalDetailPrimitiveMeshZSpriteBatch@@JPAX@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BFBC80, length 145 bytes (+ int3 padding), `ret 8`; called out of line by the landed
 // CLocalDetailPrimitiveMeshZSpriteBatch::Load 0x00BFB210 (which models it as this member template).
 // Callees: __allmul @ 0x00BFEB50 (the 64-bit `count * 0x4c` size check), CEngineLandscapeMemoryManager::AllocVirtual(long, void*)

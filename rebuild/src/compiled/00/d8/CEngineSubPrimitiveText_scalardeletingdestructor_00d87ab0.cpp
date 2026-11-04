@@ -1,5 +1,5 @@
 #pragma optimize("t", on)
-// Leaf: `scalar_deleting_destructor'
+// Leaf: ?CEngineSubPrimitiveText_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
 extern void __fastcall AutoTinyMemberDestructor_007add50(void* member);
 extern void __fastcall AutoTinyCompositeDestructor_00cbd510(void* self);
 void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)

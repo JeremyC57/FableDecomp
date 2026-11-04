@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
 typedef unsigned int uint;
 
 struct Sub;

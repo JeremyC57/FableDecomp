@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: CTriangleList>_>
+// Leaf: ?Dest_val_CIVCountedPointer_CTriangleList___@@YIXPAUCIVCountedPointer_CTriangleList___@@@Z
 // Byte-exact reconstruction of the CIVCountedPointer<CTriangleList> destroy body
 // inlined as _Dest_val<...> at retail 0x005920e1.
 struct RefCounted { void** vtable; int refCount; };

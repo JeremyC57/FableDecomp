@@ -1,5 +1,5 @@
 // _Dest_val<allocator<pair<CCharString,CSymbolMap::CSymbolInfo> >, pair<...> >
-// Leaf: CSymbolInfo>_>
+// Leaf: ?_Dest_val@@YIXPAUSymPair@@PAX@Z
 // Retail 0x00927be0. Destroys the two internal sub-objects of the pair
 // (at +0x14 and +0xc) then tail-calls the pair's own destructor.
 

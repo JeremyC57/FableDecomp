@@ -14,7 +14,7 @@ public:
     virtual ~CCombatActionBase();   // 0x0062E900
 };
 struct Sub { char b; };
-// Leaf: CRegisteredMusicEntry>_>
+// Leaf: ?DestVal_Music_C@@YIXPAUOwner@@@Z
 
 // call target at 0xa01c10: __fastcall method (ecx = this+0x114)
 // tail-call target at 0x62e900: __fastcall method (ecx = this)

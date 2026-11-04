@@ -1,5 +1,5 @@
 struct EWeaponClass;
-// Leaf: _Umove<EWeaponClass*>
+// Leaf: ?vector_Umove@@YIPAUEWeaponClass@@PAUVec@@HPAU1@@Z
 
 struct Dest {
     EWeaponClass* copy(EWeaponClass* first, int* local);

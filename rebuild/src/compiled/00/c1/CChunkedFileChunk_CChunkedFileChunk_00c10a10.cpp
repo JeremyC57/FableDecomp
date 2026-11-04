@@ -1,5 +1,5 @@
 #include "rebuild_abi.h"
-// Leaf: ??1CChunkedFileChunk@
+// Leaf: ?Dtor@CChunkedFileChunk@@QAEXXZ
 // CChunkedFileChunk::~CChunkedFileChunk @ 0x00c10a10
 // [ecx]=vtbl; jmp base_dtor
 extern void *FableVtbl_CChunkedFileChunk_c10a10[];

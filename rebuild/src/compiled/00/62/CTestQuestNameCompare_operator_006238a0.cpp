@@ -1,5 +1,5 @@
 // CTestQuestNameCompare::operator()(const CTestQuest* a, const CTestQuest* b) -- orders test quests by display name (falling back to the quest name when the display name is empty), case-insensitively
-// Leaf: operator()
+// Leaf: ??RCTestQuestNameCompare@@QBE_NPBVCTestQuest@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006238A0, 225 bytes. `ret 8`, bool in al.
 // Callees: CCharString::CCharString(const CCharString&) 0x0099EC30; CBasicString<char>::operator==(const char*) 0x004115A0
 //          (on the data block, inside the inline CCharString::operator==; "" @ 0x0122D70E); CCharString::operator= 0x0099EFB0; _stricmp 0x00BFEBA8

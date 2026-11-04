@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z
 // Byte-exact reconstruction of CLandscapeBackgroundPatch scalar deleting destructor @ 0x00656e6f
 // __fastcall(this, unsigned int flags) -> void*
 //   push esi; mov esi,ecx

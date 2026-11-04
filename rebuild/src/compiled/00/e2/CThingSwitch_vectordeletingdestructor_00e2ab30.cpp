@@ -1,5 +1,5 @@
 #pragma optimize("t", on)
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
 extern void __fastcall AutoTinyFirstMemberDestructor_00cdbfb0(void* member);
 extern void __fastcall AutoTinySecondMemberDestructor_009ac310(void* member);
 extern void __fastcall AutoTinyCompositeDestructor_00cbd510(void* self);

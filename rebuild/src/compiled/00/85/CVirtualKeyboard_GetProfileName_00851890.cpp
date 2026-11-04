@@ -1,5 +1,5 @@
 // CVirtualKeyboard::GetProfileName() -- the entry box text with leading and trailing spaces trimmed
-// Leaf: ?GetProfileName@CVirtualKeyboard@@QAE?AVCWideString@@XZ
+// Leaf: ?GetProfileName@CVirtualKeyboard_Methods@@QAE?AVCWideString@@XZ
 // Retail: Fable.exe @ 0x00851890, 137 bytes, `ret 4` (hidden return buffer); callers 0x00599F39, 0x0085193E.
 // Body: text = PEntryBox->GetText() (CEditBox slot 142, 0x00540CF0: copy of the CWideString at +0x164); first = 0,
 // last = GetLength() - 1 (0x0099B220); skip leading L' ' through GetAsCharArray() (0x0099AF10) while first <

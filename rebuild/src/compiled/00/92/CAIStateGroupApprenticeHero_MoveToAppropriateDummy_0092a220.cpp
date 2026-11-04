@@ -1,5 +1,5 @@
 // CAIStateGroup_ApprenticeHero::MoveToAppropriateDummy() -- pick the target point for the current practice action (the dummy, or a random "RangedPractice" thing) and a random proximity, then keep moving there while the dummy type stays legal; true once arrived
-// Leaf: MoveToAppropriateDummy@CAIStateGroup_ApprenticeHero
+// Leaf: ?MoveToAppropriateDummy@CAIStateGroupApprenticeHeroMethods@@QAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092A220, length 455 bytes.
 // Callees: CThing::GetPosition @ 0x004C73D0, GetPWorldSeed @ 0x008FCFD0, GFFloatRandom @ 0x004978A0 (__fastcall: range on the
 //          stack, seed in ecx), CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0 ("RangedPractice" @ 0x01291A40), the dummy finder

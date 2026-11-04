@@ -1,5 +1,5 @@
 enum EHeroMorphType { MORPH_A_DUMMY };
-// Leaf: CEntry>_const&>
+// Leaf: ?Cons_val_pair_morph_a@DummyAllocator@@QAEXPAU?$fpair_00a03bb0@W4EHeroMorphType@@VCEntry@CParticleMorphs@@@@@Z
 
 class CParticleMorphs
 {

@@ -8,7 +8,7 @@
 // no null test (the store precedes the increment). The release lives on the object (inline
 // `Release()`): written through the member it re-reads m_pObject after the decrement.
 
-// Leaf: operator=
+// Leaf: ??4CSharedObjectHandle_009d8960@@QAEAAU0@ABU0@@Z
 
 struct CSharedObject {
     virtual void DeleteThis(unsigned int flags);   // slot 0 (scalar deleting destructor)

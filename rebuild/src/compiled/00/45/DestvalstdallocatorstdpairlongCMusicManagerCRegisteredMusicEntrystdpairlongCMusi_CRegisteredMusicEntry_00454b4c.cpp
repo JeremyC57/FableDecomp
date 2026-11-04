@@ -1,5 +1,5 @@
 struct Inner { void dtor(); };
-// Leaf: CRegisteredMusicEntry>_>
+// Leaf: ?Dest_val@@YIXPAUPair@@@Z
 struct Pair { char pad[0x39]; Inner inner; void dtor(); };
 
 void __fastcall Dest_val(Pair* self)

@@ -1,5 +1,5 @@
 // CTCPhysicsNavigator::UpdateAdditionalImpulse() -- clear the additional impulse; when the feature is on and the owner creature is busy with an action, pushable and pushable by self-avoidance, gather the other things in the area it could reach this frame and let each one that is in combat and too close add to its impulse
-// Leaf: ?UpdateAdditionalImpulse@CTCPhysicsNavigator@@IAEXXZ
+// Leaf: ?UpdateAdditionalImpulse@CTCPhysicsNavigator@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00726BE0, 254 bytes, plain `ret`.
 // Callees: CThingCreatureBase::IsPerformingAnyAction() const 0x006622A0, the physics TC's virtual slot 83 (+0x14c,
 //   IsPushableByHero as the landed 0x00715710), NCreatureMode::IsPhysicsPushableBySelfAvoidance(const CThing&) 0x0085FE60

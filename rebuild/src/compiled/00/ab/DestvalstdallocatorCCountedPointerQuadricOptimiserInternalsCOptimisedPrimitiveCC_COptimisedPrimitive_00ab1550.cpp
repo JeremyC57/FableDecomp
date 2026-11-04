@@ -1,5 +1,5 @@
 // _Dest_val body inlined into a vector deleting destructor: release the counted-pointer
-// Leaf: COptimisedPrimitive>_>
+// Leaf: ?VecDel@Slot@@QAEPAXI@Z
 // slot, clear both words, then optionally free the object itself.
 // __fastcall this=ecx, flags=stack (ret 4).
 struct Owner;

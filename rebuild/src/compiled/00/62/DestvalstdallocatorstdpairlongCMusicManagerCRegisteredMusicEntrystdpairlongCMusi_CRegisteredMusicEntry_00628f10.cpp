@@ -14,7 +14,7 @@ public:
     virtual ~CCreatureActionBase();   // 0x00693EF0
 };
 struct Sub { int q; };
-// Leaf: CRegisteredMusicEntry>_>
+// Leaf: ?DestVal_Music_A@@YIXPAUM@@PAX@Z
 struct M { char pad[0xa8]; Sub sub; };
 void __fastcall DestVal_Music_A(M* self, void* /*edx*/)
 {

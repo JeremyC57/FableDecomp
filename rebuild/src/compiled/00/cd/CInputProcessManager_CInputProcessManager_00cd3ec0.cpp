@@ -3,7 +3,7 @@ public:
     virtual ~CDefinitionManager();   // 0x009B02E0
 };
 extern "C" void __fastcall MemberDtor_686df0_00cbeeb0(void* self);
-// Leaf: ??1CInputProcessManager@
+// Leaf: @DtorInputProcessManager@8
 
 class CInputProcessManager { public:
     void** vtbl;

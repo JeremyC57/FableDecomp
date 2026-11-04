@@ -1,5 +1,5 @@
 class CWideString { public: void* p; void ctor_0099ec30(const void* src); };
-// Leaf: GetBankHandle
+// Leaf: ?CMemoryFile_GetPathname@@YIPAVCWideString@@PBVCMemoryFile@@PAXPAV1@@Z
 class CMemoryFile { public: char pad[0x20]; char member[4]; };
 CWideString* __fastcall CMemoryFile_GetPathname(const CMemoryFile* self, void* edx, CWideString* ret)
 {

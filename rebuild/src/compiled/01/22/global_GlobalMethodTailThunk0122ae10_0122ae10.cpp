@@ -1,5 +1,5 @@
 struct AutoTinyThunkTarget
-// Leaf: CEntry>_const&>
+// Leaf: ?GlobalMethodTailThunk_0122ae10@@YIXXZ
 {
     void Invoke_00c3caa0();
 };

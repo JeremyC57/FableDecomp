@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: CTriangleList>_>
+// Leaf: ?_Dest_val@CIVCountedPointer@@QAEXXZ
 // Counted object: vtable at +0, refcount at +4.
 struct CCounted {
     virtual void f0();          // slot 0

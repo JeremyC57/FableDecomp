@@ -1,5 +1,5 @@
 // CVarState_00c37050::~CVarState_00c37050() -- free the region map: pop every region node off its region list (+0x04) and delete it, then destroy the list (its implementation member out of line, then the abstract list base)
-// Leaf: ??1CRegionMap@@QAE@XZ
+// Leaf: ??1CVarState_00c37050@@QAE@XZ
 // Vendor naming wave V1 (one address, one name): 0x00C19250 ??1PKCTRRedblackTree@@QAE@XZ (was ??1CPKListImpl@@QAE@XZ); 0x00C46860 ??1CVarState_00c37050@@QAE@XZ (was ??1CRegionMap@@QAE@XZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C46860, 120 bytes, __fastcall `ret`, EH-framed (handler 0x0121559D: state 0

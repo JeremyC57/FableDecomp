@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: _Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+// Leaf: ?Fill_n_impl@@YIPAKPAKI0@Z
 // std::_Fill_n<unsigned long*, unsigned int, unsigned long>
 unsigned long * __fastcall Fill_n_impl(unsigned long *dest, unsigned int count, unsigned long *val)
 {

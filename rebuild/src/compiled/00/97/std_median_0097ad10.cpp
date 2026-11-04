@@ -1,5 +1,5 @@
 // std::__median(CThing* const& a, CThing* const& b, CThing* const& c, CThingCompare_InDirectionOfAndNearestToHeuristicBitch comp) -- STLport median-of-three pivot choice of the take-cover candidates
-// Leaf: ??$__median@PAVCThing@@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x1ce86b99@@@std@@YIABQAVCThing@@ABQAV1@00VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x1ce86b99@@@Z
+// Leaf: ??$__median@PAVCThing@@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097AD10, 132 bytes (+int3 pad to 144), `__fastcall` `ret 14h` (&a in ecx, &b in
 //   edx; &c and the 16-byte comparator by value on the stack); returns the chosen reference in eax.
 // Callee: (anonymous namespace)::CThingCompare_InDirectionOfAndNearestToHeuristicBitch::operator()(const CThing*, const CThing*) const 0x0097ABF0 (TakeCover's own copy).

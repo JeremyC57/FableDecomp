@@ -1,5 +1,5 @@
 class C2DBoxI;
-// Leaf: CEntry>_const&>
+// Leaf: ?SetViewport_00A0AA90@CTCInventoryBaseViewportView@@QAEXABVC2DBoxI@@@Z
 
 class CDisplayManager
 { public:

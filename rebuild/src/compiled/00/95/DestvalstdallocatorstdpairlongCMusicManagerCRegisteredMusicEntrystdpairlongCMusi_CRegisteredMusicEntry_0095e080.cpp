@@ -14,7 +14,7 @@ private:
     CBaseObjectPointer* PData;                           // +0x04
 };
 struct Sub { int x; };
-// Leaf: CRegisteredMusicEntry>_>
+// Leaf: ?DestVal_A8_I@@YIXPAUT@@@Z
 struct T {
     char pad[0xa8];
     Sub sub;

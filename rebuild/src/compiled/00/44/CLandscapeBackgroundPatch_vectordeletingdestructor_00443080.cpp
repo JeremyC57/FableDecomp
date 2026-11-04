@@ -1,5 +1,5 @@
 class CLandscapeBackgroundPatch { public:
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?CLandscapeBackgroundPatch_vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z
     void* vftable;
     void* CLandscapeBackgroundPatch_vector_deleting_destructor(unsigned int flags);
 };

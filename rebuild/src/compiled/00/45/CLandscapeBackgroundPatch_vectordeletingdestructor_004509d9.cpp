@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
 class CCharString { public:
     ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
 };

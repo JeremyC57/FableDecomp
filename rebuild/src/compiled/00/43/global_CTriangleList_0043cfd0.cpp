@@ -1,5 +1,5 @@
 #include "rebuild_abi.h"
-// Leaf: CTriangleList>_>
+// Leaf: ?Dest_val_0043cfd0@@YIXPAUCountedPtr@@@Z
 
 // 0043cfd0 _Dest_val<std::allocator<CIVCountedPointer<CTriangleList> >, CIVCountedPointer<CTriangleList> >
 // Releases a CIVCountedPointer: loads the shared counted object; if non-null,

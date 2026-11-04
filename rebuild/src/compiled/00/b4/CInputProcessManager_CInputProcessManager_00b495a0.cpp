@@ -3,7 +3,7 @@ public:
     virtual ~CDynamicObjectHeapBase();   // 0x00F36C90
 };
 class CInputProcessManager { public:
-// Leaf: ??1CInputProcessManager@
+// Leaf: ?DtorIPM_D@@YIXPAVCInputProcessManager@@@Z
     void* vtbl;
 };
 

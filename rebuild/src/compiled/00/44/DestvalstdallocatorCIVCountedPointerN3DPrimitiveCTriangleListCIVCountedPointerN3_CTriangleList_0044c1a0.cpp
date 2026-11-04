@@ -1,5 +1,5 @@
 struct RefCounted { void (**vtbl)(void); int refcount; };
-// Leaf: CTriangleList>_>
+// Leaf: ?Dest_val@@YIXPAUCountedPtr@@@Z
 struct CountedPtr { RefCounted* p; };
 
 void __fastcall Dest_val(CountedPtr* self)

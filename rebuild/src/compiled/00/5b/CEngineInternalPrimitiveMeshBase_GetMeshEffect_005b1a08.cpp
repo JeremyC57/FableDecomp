@@ -1,5 +1,5 @@
 #pragma optimize("s", on)
-// Leaf: GetMeshEffect
+// Leaf: ?Assign@AutoTinyCountedHandle@@QAEXPAU1@@Z
 struct AutoTinyCountedObject
 {
     void** vtable;

@@ -1,5 +1,5 @@
 // std::sort_heap(const CThing** first, const CThing** last, CCompare_FurthestFromInitPos2D comp) -- STLport heap-sort tail of the furthest-from-initial-position thing sort: pop the heap root to the back until one element remains
-// Leaf: ??$sort_heap@PAPBVCThing@@VCCompare_FurthestFromInitPos2D@?A0x2068fc7d@@@std@@YIXPAPBVCThing@@0VCCompare_FurthestFromInitPos2D@?A0x2068fc7d@@@Z
+// Leaf: ??$sort_heap@PAPBVCThing@@VCCompare_FurthestFromInitPos2D@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00749390, 78 bytes (+ int3 padding to 80), `__fastcall` (/Gr algorithm TU: first in
 //   ecx, last in edx, the 4-byte comparator on the stack), `ret 4`.
 // Identity (proven): _RandomAccessIterator = const CThing**, _Compare = CCompare_FurthestFromInitPos2D. its callee 0x00748C90 is the landed __adjust_heap over things with CCompare_FurthestFromInitPos2D (operator() 0x007483E0) and its caller the partial_sort 0x00749530 of the same instantiation; the Ego_r.pdb name set spells it ??$sort_heap@PAPBVCThing@@VCCompare_FurthestFromInitPos2D@?A0xae0dd725@@... (const CThing*, an anonymous-namespace empty comparator); the catalog's non-template ?sort_heap@std@@YIXPAPAUCThing@@0UCCompare_FurthestFromInitPos2D@@@Z is the landed caller's model.

@@ -1,5 +1,5 @@
 // std::__destroy_aux(CThemeChannel* first, CThemeChannel* last, const __false_type&) -- destroy a range of environment theme channels: each frees the six vector blocks of its three texture sets
-// Leaf: ?__destroy_aux@std@@
+// Leaf: ??$__destroy_aux@PAUCThemeChannel@@@std@@YIXPAUCThemeChannel@@0ABU__false_type@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B6610, 84 bytes (+ int3 padding), `ret 4`.
 // Callees: free @ 0x00BFEA14 (the STLport malloc allocator's deallocate, inlined from ~_Vector_base).
 // Types (Ego_r.pdb, shrunk to retail 12-byte STLport vectors): CThemeChannel = Colours CRGBFloatColour[19] +0,

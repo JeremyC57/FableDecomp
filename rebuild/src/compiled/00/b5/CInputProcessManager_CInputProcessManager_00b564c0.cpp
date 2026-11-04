@@ -1,4 +1,4 @@
-// Leaf: ??1CInputProcessManager@
+// Leaf: @DtorIPM_G@4
 class CVertexBufferWin32 {
 public:
     void Uninitialise();   // 0x00A63200

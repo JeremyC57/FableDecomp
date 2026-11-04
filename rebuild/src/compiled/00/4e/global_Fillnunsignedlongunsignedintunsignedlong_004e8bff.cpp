@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: _Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+// Leaf: ?Fill_n_ulong@@YIPAKPAKI0@Z
 // std::_Fill_n<unsigned long*, unsigned int, unsigned long>
 // __fastcall: ecx = dest, edx = count, [esp+4] = val (pointer to fill value)
 // Returns the one-past-the-end output iterator in eax (walked dest pointer).

@@ -1,5 +1,5 @@
 class CLandscapeBackgroundPatch { public:
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
     void* vftable;
 };
 

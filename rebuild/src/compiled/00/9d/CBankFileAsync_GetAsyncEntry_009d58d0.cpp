@@ -1,5 +1,5 @@
 // CBankFileAsync::GetAsyncEntry(unsigned long index) -- allocate a CBankFileAsyncEntry bound to this bank and entry index and return it in a fresh counted pointer
-// Leaf: CreateEntry
+// Leaf: ?GetAsyncEntry@CBankFileAsync@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009D58D0, 152 bytes (+ int3 padding).
 // Label correction: the manifest's "CEngineWorldMap::CreateNewBankMap" is propagated over byte-similar factories; the
 //   object built here stores the CBankFileAsyncEntry vtable 0x0129B880 (rtti-vtables.tsv) and its constructor body is the

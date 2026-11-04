@@ -1,5 +1,5 @@
 // CIntelligentPointer<T>::operator= (pointee unproven; the row is one of 24 byte-identical instance bodies)
-// Leaf: ??4?$CIntelligentPointer@
+// Leaf: ??4CIntelligentPointer@@QAEPAV0@PAV0@@Z
 // Smart-pointer copy assignment: SetPItem(rhs->GetPItem()); return this;
 
 class CBaseObject;

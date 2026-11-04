@@ -1,4 +1,4 @@
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?CLandscapeBackgroundPatch_vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z
 
 class CLandscapeBackgroundPatch { public:
     void* vftable;

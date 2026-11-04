@@ -1,4 +1,4 @@
-// Leaf: CEntry>_const&>
+// Leaf: ?Dest_val@@YIXPAX@Z
 class CTCPerceiveThing {
 public:
     void ResetPerceptionVariables();   // 0x00744DB0

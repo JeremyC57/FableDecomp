@@ -1,5 +1,5 @@
 struct RefCounted {
-// Leaf: COptimisedPrimitive>_>
+// Leaf: ?_Dest_val@@YIXPAUCCountedPointer@@@Z
     int count;      /* +0 */
     void (__fastcall *dtor)(void*); /* +4 */
     void* arg;      /* +8 */

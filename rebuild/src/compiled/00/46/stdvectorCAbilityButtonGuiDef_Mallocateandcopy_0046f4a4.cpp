@@ -1,5 +1,5 @@
 // std::vector<CAbilityButtonGuiDef>::_M_allocate_and_copy(unsigned int n, const CAbilityButtonGuiDef* first, const CAbilityButtonGuiDef* last) -- STLport growth helper: allocate n CAbilityButtonGuiDefs and copy-construct [first, last) into the block; returns it
-// Leaf: ??$_M_allocate_and_copy@PBVCAbilityButtonGuiDef@@@?$vector@VCAbilityButtonGuiDef@@V?$allocator@VCAbilityButtonGuiDef@@@std@@@std@@QAEPAVCAbilityButtonGuiDef@@IPBV2@0@Z
+// Leaf: ??$_M_allocate_and_copy@PBVCAbilityButtonGuiDef@@@?$vector@VCAbilityButtonGuiDef@@V?$allocator@VCAbilityButtonGuiDef@@@std@@@std@@IAEPAVCAbilityButtonGuiDef@@IPBV2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0046F4A4, 71 bytes, thiscall `ret 0Ch` (`this` is never read: the allocator is empty); size-optimised def TU.
 // Identity (proven): vector<CAbilityButtonGuiDef>::_M_allocate_and_copy<const CAbilityButtonGuiDef*>; evidence: its copy constructor callee 0x0046F1B4 stores the vptr of RTTI .?AVCAbilityButtonGuiDef@@ (after the CParentDefClassBase copy constructor 0x0046EE98), the element stride 0x5C is that class's retail size, and its only caller 0x0046F06A is vector<CAbilityButtonGuiDef>::operator=.
 // Label: the manifest's "CAbilityButtonGuiDef_CopyConstructArray" is descriptive (family H059: six def-vector allocate-and-copy helpers, one per element).

@@ -1,5 +1,5 @@
 #pragma optimize("s", on)
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?CLandscapeBackgroundPatch_ScalarDeletingDestructor@@YIPAXPAXHI@Z
 extern void __fastcall AutoTinyScalarDestructor_00414ea0(void* self);
 void* __fastcall CLandscapeBackgroundPatch_ScalarDeletingDestructor(void* self, int, unsigned int flags)
 {

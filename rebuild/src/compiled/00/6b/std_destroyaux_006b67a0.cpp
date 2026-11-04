@@ -1,5 +1,5 @@
 // std::__destroy_aux(CBlendedEnvironmentTheme* first, CBlendedEnvironmentTheme* last, const __false_type&) -- destroy a range of blended environment themes: each frees the six vector blocks of its three texture sets
-// Leaf: ?__destroy_aux@std@@
+// Leaf: ??$__destroy_aux@PAUCBlendedEnvironmentTheme@@@std@@YIXPAUCBlendedEnvironmentTheme@@0ABU__false_type@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B67A0, 84 bytes, `ret 4`.
 // Callers: the landed vector<CBlendedEnvironmentTheme> range destroy 0x006B6FF0 (modelled there as an opaque 0x1F4-byte
 //   "SThemeBlock").

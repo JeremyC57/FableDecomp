@@ -1,5 +1,5 @@
 void operator delete(void*);
-// Leaf: COptimisedPrimitive>_>
+// Leaf: ?Dest_val@@YIXPAUCCountedPointer@@@Z
 
 struct RefBlock {
     int count;

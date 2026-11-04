@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: pair<unsigned_long,CAnimationEntry>_>_>
+// Leaf: ?Destroy_range@@YIXPAUAnimPair@@0PAUAnimAlloc@@@Z
 // _Destroy_range<allocator<pair<unsigned long, CAnimationEntry> > >
 // Retail 0x00594697. STL destroy-range loop over 8-byte elements.
 

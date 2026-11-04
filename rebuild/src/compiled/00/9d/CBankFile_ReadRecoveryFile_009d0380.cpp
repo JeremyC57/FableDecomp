@@ -1,7 +1,7 @@
 // CBankFile::ReadRecoveryFile(unsigned long validation) -- reload the entry list from the bank's recovery file: false when the file
 //   is missing, its "BREC" signature does not match or its validation word differs from `validation`; otherwise read the two
 //   entry-list words and hand the stream to ReadEntryList
-// Leaf: ?ReadRecoveryFile@CBankFile@@
+// Leaf: ?ReadRecoveryFile@CBankFile_Retail@@QAE_NK@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009D0380, 679 bytes, ret 4; PDB ?ReadRecoveryFile@CBankFile@@AAE_NK@Z. Flags: /GS (cookie
 //   0x0139C8A8, check 0x00BFE9F9; char signature[5] from "BREC" 0x0129B59C, as the landed WriteRecoveryFile 0x009CDF50 writes it).

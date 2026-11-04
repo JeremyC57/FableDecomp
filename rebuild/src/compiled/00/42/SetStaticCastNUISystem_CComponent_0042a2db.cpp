@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: CComponent>
+// Leaf: ?SetStaticCast@T@@QAEXPBUCP@@@Z
 // SetStaticCast<T> — unpack the source counted pointer and forward both words to
 // ShareData (a this-in-ecx member that cleans its own two args). __fastcall this=ecx,
 // src=stack (ret 4).

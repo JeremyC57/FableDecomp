@@ -1,5 +1,5 @@
 // forward-declared external targets (relocation-masked)
-// Leaf: CRegisteredMusicEntry>_>
+// Leaf: ?DestVal_Music_E@@YIXPAUObj@@PAX@Z
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

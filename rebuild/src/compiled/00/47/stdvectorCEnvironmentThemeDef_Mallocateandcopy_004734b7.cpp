@@ -1,5 +1,5 @@
 // std::vector<CEnvironmentThemeDef>::_M_allocate_and_copy(unsigned int n, const CEnvironmentThemeDef* first, const CEnvironmentThemeDef* last) -- STLport growth helper: allocate n CEnvironmentThemeDefs and copy-construct [first, last) into the block; returns it
-// Leaf: ??$_M_allocate_and_copy@PBVCEnvironmentThemeDef@@@?$vector@VCEnvironmentThemeDef@@V?$allocator@VCEnvironmentThemeDef@@@std@@@std@@QAEPAVCEnvironmentThemeDef@@IPBV2@0@Z
+// Leaf: ??$_M_allocate_and_copy@PBVCEnvironmentThemeDef@@@?$vector@VCEnvironmentThemeDef@@V?$allocator@VCEnvironmentThemeDef@@@std@@@std@@IAEPAVCEnvironmentThemeDef@@IPBV2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004734B7, 77 bytes, thiscall `ret 0Ch` (`this` is never read: the allocator is empty); size-optimised def TU.
 // Identity (proven): vector<CEnvironmentThemeDef>::_M_allocate_and_copy<const CEnvironmentThemeDef*>; evidence: its copy constructor callee 0x0047318D stores the vptr of RTTI .?AVCEnvironmentThemeDef@@ (after the CParentDefClassBase copy constructor 0x0046EE98), the element stride 0xC4 is that class's retail size, and its only caller 0x00472EDA is vector<CEnvironmentThemeDef>::operator= (assigning CEnvironmentThemeDaySetDef::TimeTheme).
 // Label: the manifest's "EnvironmentTheme_AllocCopy" is descriptive (family H059: six def-vector allocate-and-copy helpers, one per element).

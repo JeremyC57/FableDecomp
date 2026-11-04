@@ -1,5 +1,5 @@
 void operator delete(void*);
-// Leaf: COptimisedPrimitive>_>
+// Leaf: ?_Dest_val@@YIXPAUCCP@@@Z
 
 struct Counter {
     long refcount;

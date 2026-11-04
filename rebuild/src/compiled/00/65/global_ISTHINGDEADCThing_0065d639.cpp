@@ -1,5 +1,5 @@
 class CThing { public:
-// Leaf: IS_THING_DEAD<CThing*>
+// Leaf: ?IS_THING_DEAD@@YI_NPAPAVCThing@@@Z
     char pad[0x91];
     unsigned char flags;
 };

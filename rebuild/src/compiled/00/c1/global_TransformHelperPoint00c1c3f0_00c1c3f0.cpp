@@ -4,7 +4,7 @@
 // Name: descriptive. The parked CPhysicsMeshObject::GetHelperPointPositionStatic is disproved: Ego_r.pdb declares that one as
 //   `C3DVector (const CCharString&, long) const` (a by-name lookup, not a matrix transform) and reloc_bindings binds the
 //   GetHelperPointPositionStatic family to 0x00A6C9C0; the only caller here is 0x00C1C573 inside the unnamed 0x00C1C460.
-// Leaf: ?TransformHelperPoint_00c1c3f0@@YA?AVC3DVector@@ABUC3DMatrix@@ABU1@@Z
+// Leaf: ?TransformHelperPoint_00c1c3f0@@YA?AVC3DVector@@ABUC3DMatrix@@ABV1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1C3F0, length 110 bytes (+ int3 padding).
 // Shape: each component is ((m[2][c]*p.z + m[1][c]*p.y) + m[0][c]*p.x) + t[c] into a 12-byte frame local, then the local
 // is copied word by word to the result; `ret`.

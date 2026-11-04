@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: pair<unsigned_long,CAnimationEntry>_>_>
+// Leaf: ?_Destroy_range_pair@@YIXPAUCAnimEntryPair@@0PAUAllocDummy@@@Z
 // _Destroy_range<std::allocator<std::pair<unsigned_long,CAnimationEntry>>>
 // retail 004dbe73, __fastcall(first, last, allocator&)
 // loop over [first,last) stride 0xc calling element dtor via thiscall.

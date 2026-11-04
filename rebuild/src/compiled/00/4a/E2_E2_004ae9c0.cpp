@@ -1,3 +1,3 @@
 struct C004ae9c0 { int x; void M(); };
-// Leaf: $E2
+// Leaf: ?M@C004ae9c0@@QAEXXZ
 void C004ae9c0::M(){ }

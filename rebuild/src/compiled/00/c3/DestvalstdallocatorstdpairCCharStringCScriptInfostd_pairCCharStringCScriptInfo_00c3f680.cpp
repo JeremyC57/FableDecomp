@@ -1,4 +1,4 @@
 // Free-function forwarder VC7.1 tail-calls (`jmp rel32`): same signature, no cleanup.
-// Leaf: ??0?$pair@
+// Leaf: _Forward
 extern "C" void ForwardTarget_00c3f030();
 extern "C" void Forward() { ForwardTarget_00c3f030(); }

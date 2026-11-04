@@ -1,5 +1,5 @@
 #include "rebuild_abi.h"
-// Leaf: CRegisteredMusicEntry>_>
+// Leaf: @FableDestVal_008fd544@4
 struct FableDestVal_008fd544_t
 { char pad[0x14]; void FABLE_FASTCALL inner(); void FABLE_FASTCALL outer(); };
 extern "C" void FABLE_FASTCALL FableDestVal_008fd544(FableDestVal_008fd544_t* self)

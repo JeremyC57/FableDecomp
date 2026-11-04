@@ -1,5 +1,5 @@
 #pragma optimize("t", on)
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
 // Naming wave 28 (family sfb): the base destructor is ??1CSpawnedFuncBase@@UAE@XZ 0x00CDD4C0 (chunk 696: the ctor 0x00CDD450 stores vtable
 //   0x012C2F9C, whose ??_G 0x00CDD4A0 calls it; Ego_r.pdb + FableWin.pdb), called qualified. Was the free
 //   __fastcall ?AutoTinyCompositeDestructor@@YIXPAX@Z stand-in.

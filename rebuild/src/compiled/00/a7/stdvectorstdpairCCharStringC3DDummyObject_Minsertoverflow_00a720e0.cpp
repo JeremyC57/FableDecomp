@@ -1,5 +1,5 @@
 // std::vector<std::pair<CCharString, C3DDummyObject> >::_M_insert_overflow(std::pair<CCharString, C3DDummyObject>* position, const std::pair<CCharString, C3DDummyObject>& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport vector growth for the dummy-object map entries (56 bytes): move into a size + max(size, fill_len) block with x inserted fill_len times at position
-// Leaf: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@VC3DDummyObject@@@std@@V?$allocator@U?$pair@VCCharString@@VC3DDummyObject@@@std@@@2@@std@@QAEXPAU?$pair@VCCharString@@VC3DDummyObject@@@2@ABU32@ABU__false_type@2@I_N@Z
+// Leaf: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@VC3DDummyObject@@@std@@V?$allocator@U?$pair@VCCharString@@VC3DDummyObject@@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@VC3DDummyObject@@@2@ABU32@ABU__false_type@2@I_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A720E0, 282 bytes, thiscall `ret 14h` (a /Gr TU: the helpers are __fastcall).
 // Identity: reloc_bindings has it as vector<pair<CCharString, C3DDummyObject> >::_M_insert_overflow from the caller
 //   0x00A72700; the 56-byte element (`0x92492493 ; sar 5`, `imul 38h`) is CPhysicsMesh::DummyObjects' CVectorMap entry

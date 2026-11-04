@@ -1,6 +1,6 @@
 // 004eaad0 std::vector<CPrizeScoreDef>::operator=
 // Flags: /O2 /Oy /W3 /O1 /Oy-
-// Leaf: operator=
+// Leaf: ??4?$vector@UCPrizeScoreDef@X_004eaad0@@@X_004eaad0@@QAEAAU01@ABU01@@Z
 #include <stdlib.h>
 #include <string.h>
 #include <new>

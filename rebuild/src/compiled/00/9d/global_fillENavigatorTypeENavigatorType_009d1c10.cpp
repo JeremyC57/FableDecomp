@@ -1,5 +1,5 @@
 typedef int ENavigatorType;
-// Leaf: fill<ENavigatorType*,ENavigatorType>
+// Leaf: ?fill_ENavigatorType@@YIXPAH0PBH@Z
 
 void __fastcall fill_ENavigatorType(ENavigatorType *_First, ENavigatorType *_Last, const ENavigatorType *_Val)
 {

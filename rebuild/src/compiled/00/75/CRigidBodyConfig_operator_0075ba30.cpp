@@ -1,5 +1,5 @@
 // CRigidBodyConfig::operator=(const CRigidBodyConfig& other) -- the compiler-generated memberwise assignment of a rigid body's physical state
-// Leaf: ??4CRigidBodyConfig@@QAEAAV0@ABV0@@Z
+// Leaf: ??4CRigidBodyConfig@@QAEAAU0@ABU0@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075BA30, length 196 bytes (`ret 4`, returns `this`).
 // Callees: std::vector<C3DVector>::operator=(const vector&) @ 0x0075B8D0 (BoundingVertices; manifest "Std_Vector_Assign").
 // Layout: Ego_r.pdb CRigidBodyConfig (0xb8) with retail's 12-byte STLport vector (0xb4): CMPosition +0x00,

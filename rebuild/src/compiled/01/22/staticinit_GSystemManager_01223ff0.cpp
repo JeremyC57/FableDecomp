@@ -1,5 +1,5 @@
 // dynamic initializer for 'GSystemManager' @ 0x013CA618 -- default-constructs the CSystemManager out of line, then registers its destructor with atexit
-// Leaf: ??__EGSystemManager@@YAXXZ
+// Leaf: _$E1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x01223FF0, oracle length 22 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

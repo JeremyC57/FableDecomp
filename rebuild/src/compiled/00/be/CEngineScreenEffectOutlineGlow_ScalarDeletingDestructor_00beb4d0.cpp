@@ -1,5 +1,5 @@
 #include <new>
-// Leaf: FinishWithDynamicTextures
+// Leaf: ?ScalarDeletingDestructor@CEngineScreenEffectOutlineGlow@@QAEPAV1@I@Z
 #include "candidates/outline_glow_compiled.h"
 
 CEngineScreenEffectOutlineGlow*

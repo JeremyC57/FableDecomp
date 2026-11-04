@@ -1,5 +1,5 @@
 struct CThingInner { char pad[0x91]; unsigned char flags; };
-// Leaf: IS_THING_ALIVE<CThingBuilding*>
+// Leaf: ?IS_THING_ALIVE@@YI_NPBUCThingHolder@@@Z
 struct CThingHolder { CThingInner* inner; };
 
 bool __fastcall IS_THING_ALIVE(const CThingHolder* self)

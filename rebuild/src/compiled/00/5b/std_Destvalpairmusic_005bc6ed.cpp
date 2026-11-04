@@ -1,5 +1,5 @@
 // _Dest_val<allocator<pair<long,CMusicManager::CRegisteredMusicEntry>>,pair<long,CMusicManager::CRegisteredMusicEntry>>
-// Leaf: CRegisteredMusicEntry>_>
+// Leaf: @Dest_val_pair_music@8
 // Retail bytes: e8ae0be5ff 8bc8 e9c7a5e4ff
 //   call helper(pair*) -> eax        (call rel32)
 //   mov ecx, eax                    (set up this for tailcall)

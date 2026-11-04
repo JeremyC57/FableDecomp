@@ -3,7 +3,7 @@ public:
     virtual ~CResource();   // 0x009FC550
 };
 struct Member;
-// Leaf: ??1CAIStateGroup_HoverWanderAroundThing@
+// Leaf: ?CAIStateGroup_HoverWanderAroundThing_dtor@@YIXPAUCAIStateGroup_HoverWanderAroundThing@@@Z
 extern "C" void __fastcall Member_dtor_00453e1a(Member* m);
 struct Base;
 extern void* const g_vtbl[1];

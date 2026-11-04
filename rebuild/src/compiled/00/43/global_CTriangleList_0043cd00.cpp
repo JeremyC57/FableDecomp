@@ -1,5 +1,5 @@
 #include "rebuild_abi.h"
-// Leaf: CTriangleList>_>
+// Leaf: ?Dest_val_0043cd00@@YIXPAUCIVCountedPointer@@@Z
 
 // _Dest_val<std::allocator<CIVCountedPointer<CTriangleList> >, CIVCountedPointer<CTriangleList> >
 // Destroys a CIVCountedPointer: if the held object exists, decrement its refcount

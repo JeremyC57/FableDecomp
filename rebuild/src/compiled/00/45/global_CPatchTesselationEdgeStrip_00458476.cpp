@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: ??1CPatchTesselationEdgeStrip@
+// Leaf: ?CPatchTesselationEdgeStrip_dtor@@YIXPAVCPatchTesselationEdgeStrip@@@Z
 #include "rebuild_abi.h"
 
 // operator delete (relocation-masked target)

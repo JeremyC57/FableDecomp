@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: ??1C3DAnimationBlendState@
+// Leaf: ?dtor@@YIXPAVC3DAnimationBlendState@@@Z
 // Byte-exact reconstruction of C3DAnimationBlendState::~C3DAnimationBlendState @ 0x004dc916
 
 class CTCBase {

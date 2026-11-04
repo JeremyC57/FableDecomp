@@ -1,5 +1,5 @@
 // std::sort_heap(const CAnimationEntry** first, const CAnimationEntry** last, CTurningAnimCompare comp) -- STLport heap-sort tail of the turning-animation candidates (closest rotation first): pop the heap root to the back until one element remains
-// Leaf: ??$sort_heap@PAPBVCAnimationEntry@@VCTurningAnimCompare@?A0x288ffcb4@@@std@@YIXPAPBVCAnimationEntry@@0VCTurningAnimCompare@?A0x288ffcb4@@@Z
+// Leaf: ??$sort_heap@PAPBVCAnimationEntry@@VCTurningAnimCompare@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087E3B0, 78 bytes (+ int3 padding to 80), `__fastcall` (/Gr algorithm TU: first in
 //   ecx, last in edx, the 4-byte comparator on the stack), `ret 4`.
 // Identity (proven): _RandomAccessIterator = const CAnimationEntry**, _Compare = CTurningAnimCompare. its callee 0x0087DE50 is the landed __adjust_heap<const CAnimationEntry**, ..., CTurningAnimCompare> and its caller the partial_sort 0x0087E450 of the same instantiation (catalog binding ??$sort_heap@PAPBVCAnimationEntry@@VCTurningAnimCompare@?A0x9bfa228e@@...); the Ego_r.pdb name set holds sort_heap<const CAnimationEntry**, (anonymous)::CTurningAnimCompare>.

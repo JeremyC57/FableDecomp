@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: CTriangleList>_>
+// Leaf: ?Dest_val_CTriangleList___@@YIXPAUCIVCountedPointer_CTriangleList___@@@Z
 struct Counted {
     void** vtable;
     int    refcount;

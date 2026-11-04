@@ -1,5 +1,5 @@
 // CThingFilter_OverlappingArea::operator()(CThing* thing) const -- true when the thing's bounding centre lies in the filter area grown by the thing's radius (rounded up)
-// Leaf: operator()
+// Leaf: ??RCThingFilter_OverlappingArea@@QBE_NPAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0050EF30, length 242 bytes, `ret 4`, ebp frame.
 // Callees: CTCPhysicsBase::GetBoundingInfo(C3DVector*, float*) @ 0x006AF640, __ftol2 @ 0x00BFEA70 (six times).
 // Shape: the radius out-value (homed in the dead `thing` argument slot) is rounded up in place by the engine's inline-asm

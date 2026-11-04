@@ -1,6 +1,6 @@
 // Grade: DIFFER(424v280) -- the catalog row holds only the 280 code bytes; the compiled symbol also carries its three inline jump tables (144 bytes). Against the full 0x1A8-byte retail range (code + tables, qx.py, default and raw-COFF extractors) this source is a RELOCATION_MATCH. Re-bound the row to 424 bytes, then land.
 // CInputTypeMouseButtonEvent::GetEventTypeFromGeneralButtonType(EInputButtonEventType type) const -- map (button, pressed/held/released) to the mouse input event type
-// Leaf: ?GetEventTypeFromGeneralButtonType@CInputTypeMouseButtonEvent@@
+// Leaf: ?GetEventTypeFromGeneralButtonType@CInputTypeMouseButtonEvent_Methods@@QBE?AW4EInputEventType@@W4EInputButtonEventType@@@Z
 // Retail: Fable.exe @ 0x0066F060, 280 bytes of code (`ret 4`) followed by its three 12-entry jump tables (0x0066F178,
 // 0x0066F1A8, 0x0066F1D8). Called by IsEventOfThisTypeInQueue (0x0066F6D0, landed). The general type (1..3) picks one
 // inner switch on Button (+0x04, EMouseButtonControl 1..12; 4..7 and anything else give 0): the left / middle / right

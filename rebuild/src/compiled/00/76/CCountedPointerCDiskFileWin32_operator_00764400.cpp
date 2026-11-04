@@ -1,5 +1,5 @@
 // CCountedPointer<T>::operator=(const CCountedPointer<T>&) @ 0x009A9BF0
-// Leaf: ??4?$CCountedPointer@
+// Leaf: @CCountedPtr_assign@12
 //
 // Genuine C++ reconstruction (no inline assembly). Releases this object's
 // current reference (decrementing the shared refcount block and, on the

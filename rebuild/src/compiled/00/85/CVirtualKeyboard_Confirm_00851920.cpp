@@ -1,5 +1,5 @@
 // CVirtualKeyboard::Confirm() -- accept the entered profile name: when not already done and the name is non-empty, mark the keyboard done (not cancelled) and, if the IME is composing, finalise its string with commit
-// Leaf: ?Confirm@CVirtualKeyboard@@
+// Leaf: ?Confirm@CVirtualKeyboard_Methods@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00851920, length 121 bytes.
 // Callees: CVirtualKeyboard::GetProfileName @ 0x00851890 (CWideString by value), CWideString::GetLength @ 0x0099B220 (catalog
 // "CCharString::GetLength"), CWideString::~CWideString @ 0x0099B510 (conditional temporary), the IME singleton accessor

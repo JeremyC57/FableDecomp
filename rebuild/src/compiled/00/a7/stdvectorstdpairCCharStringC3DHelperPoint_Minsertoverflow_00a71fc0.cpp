@@ -1,5 +1,5 @@
 // std::vector<std::pair<CCharString, C3DHelperPoint> >::_M_insert_overflow(std::pair<CCharString, C3DHelperPoint>* position, const std::pair<CCharString, C3DHelperPoint>& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport vector growth for the helper-point map entries (20 bytes): move into a size + max(size, fill_len) block with x inserted fill_len times at position
-// Leaf: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@VC3DHelperPoint@@@std@@V?$allocator@U?$pair@VCCharString@@VC3DHelperPoint@@@std@@@2@@std@@QAEXPAU?$pair@VCCharString@@VC3DHelperPoint@@@2@ABU32@ABU__false_type@2@I_N@Z
+// Leaf: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@VC3DHelperPoint@@@std@@V?$allocator@U?$pair@VCCharString@@VC3DHelperPoint@@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@VC3DHelperPoint@@@2@ABU32@ABU__false_type@2@I_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A71FC0, 283 bytes, thiscall `ret 14h` (a /Gr TU: the helpers are __fastcall).
 // Identity: its callers are the landed push_back 0x00A72690 (reached from CVectorMap<CCharString, C3DHelperPoint>::Add
 //   0x00A72B90, which sets the map's Dirty byte +0x0D) and CPhysicsMesh::GetHelperDataFromFileData (0x00A6D1E3); the

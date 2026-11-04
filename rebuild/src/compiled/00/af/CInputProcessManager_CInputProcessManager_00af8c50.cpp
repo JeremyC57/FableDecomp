@@ -3,7 +3,7 @@ public:
     virtual ~CDynamicObjectHeapBase();   // 0x00F36C90
 };
 extern "C" void __fastcall MemberDtor_686df0_00af8bc0(void* self);
-// Leaf: ??1CInputProcessManager@
+// Leaf: @DtorInputProcessManager@8
 
 class CInputProcessManager { public:
     void** vtbl;

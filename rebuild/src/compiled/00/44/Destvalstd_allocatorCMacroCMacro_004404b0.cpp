@@ -1,5 +1,5 @@
 // _Dest_val<std::allocator<CMacro>,CMacro> @ 0x004404b0 (leading function only).
-// Leaf: allocator<CMacro>,CMacro>
+// Leaf: ?Dest_val@@YIXPAUHost@@@Z
 //
 // Genuine C++ reconstruction (real statements only, no inline assembly).
 //

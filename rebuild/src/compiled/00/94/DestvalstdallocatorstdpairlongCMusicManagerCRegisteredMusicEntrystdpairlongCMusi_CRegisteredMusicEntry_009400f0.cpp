@@ -1,5 +1,5 @@
 struct Sub {
-// Leaf: CRegisteredMusicEntry>_>
+// Leaf: ?DestVal_A8_G@Obj@@QAEXXZ
     void Dtor();
 };
 struct Obj {

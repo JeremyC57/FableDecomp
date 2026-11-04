@@ -1,5 +1,5 @@
 #pragma optimize("t", on)
-// Leaf: `scalar_deleting_destructor'
+// Leaf: ?CCreatureAction_SummonerFlameSlice_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

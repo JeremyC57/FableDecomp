@@ -1,5 +1,5 @@
 struct CCounted {
-// Leaf: CTriangleList>_>
+// Leaf: ?Dest_val@@YIXPAUCIVCountedPointer@@@Z
     void (__fastcall **vtbl)(CCounted*);
     long refcount;
 };

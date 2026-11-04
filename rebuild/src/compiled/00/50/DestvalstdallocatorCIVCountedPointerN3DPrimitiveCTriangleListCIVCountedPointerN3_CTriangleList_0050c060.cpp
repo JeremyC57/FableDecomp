@@ -1,5 +1,5 @@
 #pragma optimize("t", on)
-// Leaf: CTriangleList>_>
+// Leaf: ?Reset@AutoTinyCountedHandle@@QAEXXZ
 struct AutoTinyCountedObject
 {
     void** vtable;

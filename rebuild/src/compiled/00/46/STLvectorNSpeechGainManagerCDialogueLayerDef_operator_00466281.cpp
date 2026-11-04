@@ -1,6 +1,6 @@
 // 00466281 std::vector<NSpeechGainManager::CDialogueLayerDef>::operator=
 // Flags: /O2 /Oy /W3 /O1 /Oy-
-// Leaf: ??4?$vector@VCDialogueLayerDef@NSpeechGainManager@@@std@@QAEAAU01@ABU01@@Z
+// Leaf: ??4?$vector@VCDialogueLayerDef@NSpeechGainManager@@@std@@IAEAAU01@ABU01@@Z
 #include <stdlib.h>
 #include <new>
 namespace NSpeechGainManager {

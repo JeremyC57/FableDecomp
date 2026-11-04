@@ -1,5 +1,5 @@
 // CSoundEventSet::~CSoundEventSet() -- compiler-generated member teardown (EH-tracked) of a vertex-shader constant aggregate: the parameter blocks, data-bank arrays and resource handles in reverse declaration order
-// Leaf: ??1CEngineVSConstantBlockSet
+// Leaf: ??1CSoundEventSet@@QAE@XZ
 // Vendor naming V2 (plan phase 1, one address, one name): 0x00C287E0 ??1CStackOwner_00c287e0@@QAE@XZ (was ??1CResourceE@@QAE@XZ); 0x00C24240 ??1CVtable_012b3aa4@@QAE@XZ (was ??1CResourceD@@QAE@XZ); 0x00C19250 ??1PKCTRRedblackTree@@QAE@XZ (was ??1CParamBlock@@QAE@XZ); 0x00C23FE0 ??1CVtable_012b3a9c@@QAE@XZ (was ??1CResourceC@@QAE@XZ); 0x00C23BA0 ??1CVtable_012b3a94@@QAE@XZ (was ??1CResourceA@@QAE@XZ); 0x00C22520 ??1CSoundEventSet@@QAE@XZ (was ??1CEngineVSConstantBlockSet@@QAE@XZ)
 // Flags: /EHsc
 // Layout: the row label (CEngineVSConstantLayoutLights ctor) is wrong -- that class is 0x150 bytes and this is a destructor of an

@@ -1,0 +1,40 @@
+Plan phase 2, wave "leaf" (2026-11-04): LEAFGUESS cleanup. Comment-only respells of `// Leaf:` lines, proven by grade.
+
+INPUT
+- The 3,873 LEAFGUESS rows of the symbol index after bringing it to HEAD (symindex2.py --all, NJ=6; post/LEAFGUESS.tsv).
+  A LEAFGUESS row's `// Leaf:` names no symbol in its object, so vland (verify_and_land.obj_text) grades the largest function.
+
+METHOD (scripts/leafplan.py, scripts/wave.py)
+- The graded function is found the way vland finds it: the object's .text blocks that start at offset 0; no leaf match ->
+  the largest.  The new `// Leaf:` is that function's full mangled symbol, so vland's substring match now selects the
+  same function by name (it is also still the largest, so the selection cannot move).  Anonymous-namespace symbols
+  (`?A0x<hash>`, 5 rows) take the prefix up to `?A0x`: the hash follows the compile path, so a full leaf would miss again
+  in vland's work directory.
+- Proof that the graded function did not move: gate.py PASS on all 3,680 (index length + masked sha1 + relocation targets
+  identical; the defined symbol identical up to the ?A0x path hash), the new leaf names a symbol of the object (3,680/3,680),
+  and vland --recheck-landed read-only on the landed source (logs/vland_leafB*.log) and on the respelled source
+  (logs/vland_leafA*.log): same parity on every row, no leaf warning after.  13 batches of <= 300, at most 3 at once.
+- No symbol, byte or relocation changes, so no BINDINGS / CALLERS / RENAMES lines and no queue lines closed.
+
+COUNTS
+- PASS 3,679: MATCH 1,037, RELOCATION_MATCH 2,642 (1,371 carry warnings that the landed source had too: INHERITED_WARN;
+  no introduced warnings).
+- DEFERRED 194 (DEFERRED.tsv):
+  - graded_other_function 132: the graded symbol is the PDB name, or the catalog name, of a different function (sdd rows of a
+    base class graded for a derived class: ??_GCInputTypeBase for 9 CInputType* sdds, ??_GCWideString / ??_GCCharString for
+    placeholder sdds, a forwarder that defines its callee CPlayerGui::AddDamageChange ...).  The row's source defines the wrong
+    function name; respelling the leaf would enshrine it.
+  - leaf_is_pdb 55: the leaf is already the exact PDB spelling and the SOURCE emits a near miss (access M/I/A vs Q, const,
+    _W vs G, class-key, parameter list).  The fix is the source, not the leaf (a naming row each).
+  - several_functions 6: the object defines functions as large as the graded one; the leaf cannot be decided from the grade.
+  - grade 1: 0x00A9C960 grades DIFFER(48v27) under --recheck-landed both before and after (pre-existing; the landed row
+    does not reproduce under vland today: a regression for the coordinator to look at).
+- STANDIN.tsv (3,623 of the passing rows): the graded symbol is a stand-in, not the catalog function's name
+  (`?Get@T@@QAEHXZ`, `?DestVal@Slot@@QAEXXZ`, `@CCountedPtr_ctor@12`, ...); 2,904 of them share their symbol with other
+  rows (`*_shared`).  The leaf is now honest about what is graded; the names are naming-wave debt (plan step 6), listed so
+  they stay visible now that vland no longer warns on them.  Only 57 respelled rows grade their own catalog name.
+
+GOTCHAS (one line each)
+- A full `?A0x<hash>` leaf never matches under vland: the anonymous-namespace hash follows the compile path; cut the leaf at `?A0x`.
+- vland's leaf match is a substring test and the fallback is the largest function: a leaf respelled to the graded symbol
+  cannot change the selection, but prove it with the grade anyway (same parity, gate length + sha1).

@@ -1,5 +1,5 @@
 #pragma optimize("t", on)
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
 class CTimer { public:
     ~CTimer();   // 0x00CD4470 (Ego_r.pdb ??1CTimer@@QAE@XZ)
 };

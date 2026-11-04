@@ -1,5 +1,5 @@
 // Byte-exact reconstruction of retail 0x00900f43
-// Leaf: CSymbolInfo>_>
+// Leaf: ?Dest_val@@YIXPAUPair@@@Z
 //   std::_Dest_val<allocator<pair<CCharString,CSymbolMap::CSymbolInfo>>, pair<...>>
 // Retail shape:
 //   push esi; mov esi,ecx

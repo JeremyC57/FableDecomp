@@ -1,5 +1,5 @@
 class CDisplayManager { public:
-// Leaf: `scalar_deleting_destructor'
+// Leaf: ?CDisplayManager_scalar_deleting_destructor@@YIPAXPAVCDisplayManager@@HI@Z
     void* vftable;
 };
 

@@ -1,3 +1,3 @@
 struct C_00a5d4e0 { char pad[0x34]; unsigned long f; void M(unsigned long v); };
-// Leaf: AddExclusiveObserver
+// Leaf: ?M@C_00a5d4e0@@QAEXK@Z
 void C_00a5d4e0::M(unsigned long v){ this->f = v; }

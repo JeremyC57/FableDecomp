@@ -1,5 +1,5 @@
 #pragma optimize("t", on)
-// Leaf: `scalar_deleting_destructor'
+// Leaf: ?CEngineSubPrimitiveText_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEngineInternalPrimitiveMeshBase {
 public:

@@ -10,7 +10,7 @@
 //   `strcmp(text, "") == 0` (the repe cmpsb); the type temporary dies before the branch; the name is the input's
 //   CCharString at +4 (inline GetName). A brace-initialised iterator in the for-init is a VC7.1 syntax error.
 // Layout: retail CConsole RegisteredConsoleInputs header +0x40 (as the landed 0x009EB590 / 0x009EB430).
-// Leaf: ?ConsoleCommandList@CConsole@@SIXAAU1@ABU?$vector@VCGenericVar@@@std@@@Z
+// Leaf: ?ConsoleCommandList@CConsole@@SIXAAV1@ABU?$vector@VCGenericVar@@@std@@@Z
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 

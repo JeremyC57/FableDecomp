@@ -1,5 +1,5 @@
 #include "fable_render_window.h"
-// Leaf: CEntry>_const&>
+// Leaf: ?SetAWindow@CRenderManagerCoreWindowView@@QAEXABVC2DBoxF@@@Z
 
 void CRenderManagerCoreWindowView::SetAWindow(
     const C2DBoxF& window)

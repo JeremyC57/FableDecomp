@@ -14,7 +14,7 @@ public:
     virtual ~CCombatActionBase();   // 0x0062E900
 };
 struct Sub { int x; };
-// Leaf: CRegisteredMusicEntry>_>
+// Leaf: @DestVal_114_A@8
 struct Self {
     char pad[0x114];
     Sub m114;

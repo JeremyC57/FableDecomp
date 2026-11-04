@@ -1,5 +1,5 @@
 #include "fable_filesystem.h"
-// Leaf: ??1CCharString@
+// Leaf: ??1CWideString@@QAE@XZ
 
 #include <stdlib.h>
 

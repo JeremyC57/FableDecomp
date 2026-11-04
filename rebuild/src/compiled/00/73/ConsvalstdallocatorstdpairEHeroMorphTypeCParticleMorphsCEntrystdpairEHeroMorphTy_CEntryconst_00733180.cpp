@@ -1,5 +1,5 @@
 // Forwarder to a member of the sub-object pointer at this+0x24. VC7.1 tail-calls
-// Leaf: CEntry>_const&>
+// Leaf: ?Run@T@@QAEXXZ
 // a void member->void member forward, so retail is `mov ecx,[ecx+d]; jmp rel32`.
 #pragma pack(push,1)
 class CThingCreatureBase { public: public:

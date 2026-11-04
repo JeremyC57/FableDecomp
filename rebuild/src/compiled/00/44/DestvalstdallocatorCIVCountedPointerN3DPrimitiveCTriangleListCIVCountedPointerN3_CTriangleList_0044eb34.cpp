@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: CTriangleList>_>
+// Leaf: ?Dest_val@@YIXPAUCIVCountedPointer@@PAX@Z
 struct CountedObj { void (__fastcall **vtbl)(CountedObj*); long refcount; };
 struct CIVCountedPointer { CountedObj* obj; };
 

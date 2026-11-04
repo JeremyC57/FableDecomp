@@ -1,5 +1,5 @@
 #pragma optimize("t", on)
-// Leaf: `scalar_deleting_destructor'
+// Leaf: ?CEngineSubPrimitiveText_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
 class CCharString { public:
     ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
 };

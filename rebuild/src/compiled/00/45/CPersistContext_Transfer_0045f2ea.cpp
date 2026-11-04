@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: Transfer
+// Leaf: ?CEngineLightingManager_UpdateShadowScene@@YIXPAVCEngineLightingManager@@PAX1@Z
 extern "C" void __stdcall Profile_Enter(int marker);
 
 extern void __fastcall LM_ShadowApply24_0045f360(void* self24, void* arg);

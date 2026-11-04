@@ -1,5 +1,5 @@
 // Member setter at this+0x64: one stack arg, `ret 4`. __fastcall this=ecx.
-// Leaf: AddExclusiveObserver
+// Leaf: ?Set@T@@QAEXH@Z
 struct T {
     char pad[0x64];
     int field;

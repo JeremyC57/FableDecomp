@@ -1,5 +1,5 @@
 // std::vector<std::pair<unsigned long,CDefClassBase::CSubDefInfo> >::_M_allocate_and_copy<const std::pair<unsigned long,CDefClassBase::CSubDefInfo>*>(unsigned int n, first, last) -- allocate an n-element block of (sub-def CRC, CSubDefInfo) entries and copy-construct [first, last) into it
-// Leaf: ??$_M_allocate_and_copy@PBU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAEPAU?$pair@KVCSubDefInfo@CDefClassBase@@@1@IPBU21@0@Z
+// Leaf: ??$_M_allocate_and_copy@PBU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@IAEPAU?$pair@KVCSubDefInfo@CDefClassBase@@@1@IPBU21@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B2780, 86 bytes, thiscall `ret 0Ch` (this unused). Catalog name
 // "Deque_AllocateBuffer" is wrong: the body is STLport vector::_M_allocate_and_copy (caller: vector::reserve @ 0x009B4D80).
 // Identity: the reserve 0x009B4D80 is called on `lea ebp,[ebx+29h]` by CParentDefClassBase::InternalLoadBinary

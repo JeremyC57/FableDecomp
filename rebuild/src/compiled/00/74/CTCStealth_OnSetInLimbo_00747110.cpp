@@ -1,5 +1,5 @@
 // CTCStealth::OnSetInLimbo(bool on) -- reset the region-based danger-thing limit; when switched off, take it from the current region's def (MaxNumAttackersOnHero) if the region has one
-// Leaf: vfunc_16
+// Leaf: ?OnSetInLimbo@CTCStealth@@QAEX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00747110, length 137 bytes (`ret 4`); CTCStealth vtable 0x012689EC slot 16 (a CTCBase bool
 // notification, no catalog name).
 // Callees: CTCBase::GetWorld() @ 0x00686A70 (`[[0x13B8A1C]+0x24]`; manifest label "CViewBase::GetDisplayEngine" is a byte twin) twice,

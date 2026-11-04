@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: pair<unsigned_long,CAnimationEntry>_>_>
+// Leaf: ?Destroy_range_pair_unsigned_long_CAnimationEntry@@YIXPAUPair@@0PAUAllocator@@@Z
 // Byte-exact reconstruction of std::_Destroy_range<allocator<pair<unsigned long,CAnimationEntry>>>
 // retail 0x005c1121
 

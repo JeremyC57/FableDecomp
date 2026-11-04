@@ -1,5 +1,5 @@
 // Byte-exact reconstruction of CRegion::`vector deleting destructor'
-// Leaf: `scalar_deleting_destructor'
+// Leaf: @VecDelDtor@12
 // retail 0x0047b300, __fastcall(self, uint flags) -> void*
 //
 // Pattern:

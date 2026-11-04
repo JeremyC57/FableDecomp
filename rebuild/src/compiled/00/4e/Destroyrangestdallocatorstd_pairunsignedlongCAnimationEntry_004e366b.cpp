@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: pair<unsigned_long,CAnimationEntry>_>_>
+// Leaf: ?Destroy_range_allocator@@YIXPAUPair@@0PAUAlloc@@@Z
 // pair<unsigned long, CAnimationEntry> is 8 bytes; its destructor is external.
 struct Pair {
     unsigned long first;

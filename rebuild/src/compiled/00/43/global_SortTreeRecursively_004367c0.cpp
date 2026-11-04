@@ -1,5 +1,5 @@
 #include "rebuild_abi.h"
-// Leaf: SortTreeRecursively
+// Leaf: ?sub_4367c0@@YIXPAUlist_hdr@@@Z
 
 // Retail 0x004367c0 : CGuiControlTreePane list-clear (std::list::clear-style)
 // __fastcall(this) -> void

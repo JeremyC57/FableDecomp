@@ -1,4 +1,4 @@
-// Leaf: ??0?$pair@
+// Leaf: ?Dest_val@@YIXPAUPair@@@Z
 
 struct CtrlBlock {
     long refcount;      /* +0x0 */

@@ -1,5 +1,5 @@
 // Member getter at this+0x32c. __fastcall this=ecx.
-// Leaf: DrawGetEnvironment
+// Leaf: ?Get@T@@QAEHXZ
 struct T {
     char pad[0x32c];
     int field;

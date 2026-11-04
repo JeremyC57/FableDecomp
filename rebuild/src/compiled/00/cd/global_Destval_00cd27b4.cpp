@@ -1,5 +1,5 @@
 #include "rebuild_abi.h"
-// Leaf: ??1CPair@
+// Leaf: @FableDestVal_00cd27b4@4
 
 // _Dest_val<std::allocator<...>,...> @ 0x00cd27b4
 // Destructor forwarder: destroys the embedded member at +0x4, then

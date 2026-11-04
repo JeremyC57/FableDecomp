@@ -1,5 +1,5 @@
 // <unattributed> destructor: vtable 0x012B8FC8, DeleteCriticalSection(&this->+0x04)
-// Leaf: AddLearnedExpression
+// Leaf: ??1CCriticalSectionOwner_012B8FC8@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C5D570, oracle length 17 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
 //        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.

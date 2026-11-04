@@ -1,5 +1,5 @@
 // Byte-exact reconstruction of _Destroy_range<allocator<CSpeechFrame> > at 0x004d26f0
-// Leaf: allocator<CSpeechFrame>_>
+// Leaf: ?_Destroy_range_allocator_CSpeechFrame___@@YIXPAVCSpeechFrame@@0@Z
 // element size 0x44 = 68 bytes; destructor at 0x4d1db0 (thiscall); epilogue = ret (0)
 
 class CSpeechFrame { public:

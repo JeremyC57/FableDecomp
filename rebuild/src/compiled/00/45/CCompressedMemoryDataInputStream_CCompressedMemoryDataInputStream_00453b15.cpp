@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: ??1CCompressedMemoryDataInputStream@
+// Leaf: ?CCompressedMemoryDataInputStream_dtor@@YIXPAUCCompressedMemoryDataInputStream@@@Z
 class CResource {
 public:
     virtual ~CResource();   // 0x009FC550

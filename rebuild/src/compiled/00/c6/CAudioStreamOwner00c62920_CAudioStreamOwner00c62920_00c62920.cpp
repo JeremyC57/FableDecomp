@@ -1,5 +1,5 @@
 // CAudioStreamOwner_00c62920::CAudioStreamOwner_00c62920(IStreamOpener_00c62920* opener, const unsigned short* name, const SStreamSegment& segment) -- the 0x14-byte owner of a sound's decoded stream: no source, no stream, position -1, not finished; with the test-tone switch set it owns a new tone stream (constructed with 800.0f) instead; otherwise it opens the named source through the opener (slot 0) and, when that succeeds, aligns the segment start up to the source's block size (slot 2) and creates the matching decoder stream for the name (0x00C73AF0)
-// Leaf: ??0CAudioStreamOwner_00c62920@@QAE@PAVIStreamOpener_00c62920@@PBDABUSStreamSegment@@@Z
+// Leaf: ??0CAudioStreamOwner_00c62920@@QAE@PAVIStreamOpener_00c62920@@PBGABUSStreamSegment@@@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C62920, 256 bytes, thiscall `ret 0Ch`, returns `this`; EH frame (state 0 around the tone
 //   stream's constructor after the scalar operator new 0x00BFEA1A of 0x10 bytes). The segment copy is a frame local.

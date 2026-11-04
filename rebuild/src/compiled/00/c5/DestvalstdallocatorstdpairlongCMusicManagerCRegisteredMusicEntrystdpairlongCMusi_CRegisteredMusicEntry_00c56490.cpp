@@ -1,5 +1,5 @@
 struct Sub;
-// Leaf: CRegisteredMusicEntry>_>
+// Leaf: ?DestVal_110@@YIXPAUT@@PAX@Z
 struct T;
 void __fastcall Sub_Cleanup(Sub* self);
 void __fastcall T_Base(T* self);

@@ -1,5 +1,5 @@
 // std::_Rb_tree<CCharString, pair<const CCharString, CUnprovenValue_00cd2b1c>, ...>::_M_find(const CCharString& k) const -- STLport exact-key lookup: the last node whose key is not less than k, unless it is the header or k is less than its key (then the header)
-// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@ECUnprovenValue_00cd2b1c@@
+// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@UCUnprovenValue_00cd2b1c@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@UCUnprovenValue_00cd2b1c@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@UCUnprovenValue_00cd2b1c@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@UCUnprovenValue_00cd2b1c@@@std@@@2@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CD2B1C, 92 bytes, thiscall `ret 4`, frame pointer (size TU); returns the node.
 // Identity (descriptive): a CCharString-keyed tree of the cutscene code (caller 0x00CBF7FE, the cutscene sound player); probably one of RunCutsceneMacro's flag/argument maps, not proven.
 // Callees: std::less<CCharString>::operator() 0x0042AAB3 (out of line in this TU, `this` = the tree's comparator at +8).

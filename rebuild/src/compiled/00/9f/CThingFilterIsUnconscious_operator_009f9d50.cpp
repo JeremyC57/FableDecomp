@@ -1,5 +1,5 @@
 bool __fastcall fn_operator()
-// Leaf: ??RCThingFilter_IsUnconscious@
+// Leaf: ?fn_operator@@YI_NXZ
 {
     return false;
 }

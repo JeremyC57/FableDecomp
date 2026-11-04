@@ -10,7 +10,7 @@ private:
     CBaseObjectPointer* PData;                           // +0x04
 };
 class CLandscapeBackgroundPatch { public:
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
     void* vftable;
 };
 

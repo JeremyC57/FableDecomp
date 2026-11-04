@@ -1,5 +1,5 @@
 #pragma optimize("t", on)
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
 extern void __fastcall AutoTinyFirstMemberDestructor_007add50(void* member);
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"

@@ -1,5 +1,5 @@
 #pragma optimize("s", on)
-// Leaf: `scalar_deleting_destructor'
+// Leaf: ?CAssoc_ScalarDeletingDestructor@@YIPAXPAXHI@Z
 extern void __fastcall AutoTinyScalarDestructor_00591f62(void* self);
 void* __fastcall CAssoc_ScalarDeletingDestructor(void* self, int, unsigned int flags)
 {

@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: ??1CSystemRegistry@
+// Leaf: ?CSystemRegistry_dtor@@YIXPAUCSystemRegistry@@@Z
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CSystemRegistry {

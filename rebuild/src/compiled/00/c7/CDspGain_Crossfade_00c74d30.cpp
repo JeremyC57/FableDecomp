@@ -1,5 +1,5 @@
 // CDspGain::Crossfade(SGainParams* oldParams, const SGainParams* newParams, const float* source, float* block, bool mode, unsigned int count, unsigned int remaining) -- cross-fade a gain change over 512 samples: run the new settings' ramps into an aligned scratch block and the old settings' ramps into the output block, fade the old master out and the new master in (each by master/512 per sample from the remaining fraction), mix the scratch block in, and adopt the new settings once the fade ends in this block
-// Leaf: ?Crossfade@CDspGain@@QAEXPAUSGainParams@@PBU2@PBMPAMHII@Z
+// Leaf: ?Crossfade@CDspGain@@QAEXPAUSGainParams@@PBU2@PBMPAM_NII@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C74D30, 297 bytes, thiscall `ret 1Ch`, `and esp,-16` frame (the 128-float scratch
 //   block is 16-byte aligned for the SIMD ops table).
 // Identity (descriptive: the libpk reverb module has no PDB or RTTI): the CDspGain of the landed Apply 0x00C74CE0 (same

@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: ??1C3DAnimationBlendState@
+// Leaf: ?dtor_C3DAnimationBlendState@@YIXPAVC3DAnimationBlendState@@@Z
 struct RefCounted {
     void** vtbl;
     int    refc;

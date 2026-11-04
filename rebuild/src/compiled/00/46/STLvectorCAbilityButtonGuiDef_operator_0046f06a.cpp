@@ -1,6 +1,6 @@
 // 0046f06a std::vector<CAbilityButtonGuiDef>::operator=
 // Flags: /O2 /Oy /W3 /O1 /Oy-
-// Leaf: ??4?$vector@VCAbilityButtonGuiDef@@@std@@QAEAAU01@ABU01@@Z
+// Leaf: ??4?$vector@VCAbilityButtonGuiDef@@@std@@IAEAAU01@ABU01@@Z
 #include <stdlib.h>
 #include <new>
 

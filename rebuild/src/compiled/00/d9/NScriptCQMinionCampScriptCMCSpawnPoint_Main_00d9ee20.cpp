@@ -1,7 +1,7 @@
 // NScript::CQ_MinionCampScript::CMC_SpawnPoint::Main() -- minion-camp spawn point: once the minions are summoned and the
 //   stage is 3, every frame while the stage stays 3, when the parent picks this point to spawn, create a dread-wing (2 in 3)
 //   or a war-dog minion at the point (script name "MC_Minion"), attach it to the active quest and clear ShouldSpawn
-// Leaf: ?Main@CMC_SpawnPoint@CQ_MinionCampScript@NScript
+// Leaf: ?Main@CMC_SpawnPoint@NScript@@QAEXXZ
 // Retail: Fable.exe @ 0x00D9EE20, 592 bytes (+ int3 padding), plain `ret`.
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840), SetPredicate
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, the parent's spawn-point test 0x00D9F070 (descriptive; ShouldSpawn and

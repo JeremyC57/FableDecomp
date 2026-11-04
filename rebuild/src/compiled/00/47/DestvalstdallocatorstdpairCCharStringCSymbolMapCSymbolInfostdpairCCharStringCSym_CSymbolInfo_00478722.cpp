@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: CSymbolInfo>_>
+// Leaf: ?_Dest_val_CSymbolInfo___@@YIXPAUSymPair@@@Z
 // Byte-exact reconstruction of _Dest_val<allocator<pair<CCharString,CSymbolMap::CSymbolInfo>>, pair<...>>
 // retail 0x00478722
 //

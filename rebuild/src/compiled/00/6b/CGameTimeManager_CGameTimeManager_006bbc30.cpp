@@ -1,7 +1,7 @@
 // CGameTimeManager::CGameTimeManager(CMainGameComponent& gameComponent, CWorld& world) -- (manifest: "CCombatManager
 // Init") member defaults, an empty stop-time set, the start time and time step from the world's environment def, and
 // the SetTimeOfDay / SetDaySpeed console commands registered with the global console (made on first use)
-// Leaf: Init
+// Leaf: ??0CGameTimeManager@@QAE@AAVCMainGameComponent@@AAVCWorld@@@Z
 // Layout: Ego_r.pdb CGameTimeManager (0x40): World +0, GameComponent +4, Time +8, PrevTime +0xc, TimeStep +0x10, DayCount
 //   +0x14, UsingVillageTime +0x18, VillageTime +0x1c, VillageDay +0x20, FastForwardingToTime +0x21, TimeFastForwardingTo
 //   +0x24, SecondsLeftToFastForwardTime +0x28, StopTimeIndexes +0x2c (retail STLport set is 12 bytes, PDB 16),

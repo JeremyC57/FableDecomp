@@ -8,7 +8,7 @@
 //   RegisteredConsoleInputs, inline CCharString::operator==(const char*) (null-block arm `strcmp(text, "") == 0`),
 //   the type temporary destroyed before the branch, the input's Name (+4) sent to the user.
 // Layout: retail CConsole RegisteredConsoleInputs header +0x40 (as the landed 0x009EB590 / 0x009EB430).
-// Leaf: ?ConsoleVariableList@CConsole@@SIXAAU1@ABU?$vector@VCGenericVar@@@std@@@Z
+// Leaf: ?ConsoleVariableList@CConsole@@SIXAAV1@ABU?$vector@VCGenericVar@@@std@@@Z
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 

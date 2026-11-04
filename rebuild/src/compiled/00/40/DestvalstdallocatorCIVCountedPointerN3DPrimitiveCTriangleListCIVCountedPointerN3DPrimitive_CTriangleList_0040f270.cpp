@@ -1,5 +1,5 @@
 struct CCounted {
-// Leaf: CTriangleList>_>
+// Leaf: ?_Dest_val@@YIXPAUCCountedPtr@@PAX@Z
     void* vtbl;      // +0x0
     int   refcount;  // +0x4
 };

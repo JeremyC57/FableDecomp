@@ -1,7 +1,7 @@
 class CCharString { public:
     ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
 };
-// Leaf: `scalar_deleting_destructor'
+// Leaf: ?CEngineSubPrimitiveText_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
 class CWideString { public:
     ~CWideString();   // 0x0099B510 (Ego_r.pdb ??1CWideString@@QAE@XZ)
 };

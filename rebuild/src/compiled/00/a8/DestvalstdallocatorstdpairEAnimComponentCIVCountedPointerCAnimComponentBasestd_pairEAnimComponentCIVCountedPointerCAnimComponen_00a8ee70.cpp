@@ -1,5 +1,5 @@
 // Counted object: vtable ptr at +0, refcount at +4.
-// Leaf: ??0?$pair@
+// Leaf: ?_Dest_val_release@@YIXPAUPairHolder@@H@Z
 class CAnimComponentBase { public:
     virtual void v0();      // slot 0
     virtual void release(); // slot 1 -> call [eax+4]

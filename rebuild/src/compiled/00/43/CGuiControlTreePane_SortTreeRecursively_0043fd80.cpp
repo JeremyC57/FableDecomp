@@ -1,5 +1,5 @@
 // Circular-list teardown: free every node, re-point the sentinel at itself, then free
-// Leaf: SortTreeRecursively
+// Leaf: ?Destroy@List@@QAEXXZ
 // the sentinel. __fastcall this=ecx, no args.
 struct Node { Node* next; Node* prev; };
 struct List { Node* head; void Destroy(); };

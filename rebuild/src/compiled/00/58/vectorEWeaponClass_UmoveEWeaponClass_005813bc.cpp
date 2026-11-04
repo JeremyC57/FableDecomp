@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: _Umove<EWeaponClass*>
+// Leaf: ?_Umove@VecMove@@QAEPAHPAH@Z
 // std::vector<EWeaponClass>::_Umove faithful reconstruction @ 005813bc
 // Shape: return this->m_field4->Callee(param, &zeroed_local);
 

@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: GetMeshEffect
+// Leaf: ?SetHeld@CRefHandle@@QAEXPAU1@@Z
 // CEngineInternalPrimitiveMeshBase::GetMeshEffect @ 0x00419603 (47 bytes)
 // Despite the "GetMeshEffect" manifest name, the retail body is a refcounted
 // smart-pointer ASSIGNMENT (TCRefPtr::operator= shape): it stores src's held

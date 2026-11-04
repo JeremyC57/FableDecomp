@@ -2,7 +2,7 @@
 // Retry 10b: the COM pointer at +10h is a smart-pointer MEMBER whose inline destructor releases it (the destructor body is empty):
 // the release then dereferences the member's `this`, not the destructor's, so VC7.1 keeps the `test esi,esi` null check of
 // the base conversions; a release written in the destructor body dereferences `this` and the check is dropped.
-// Leaf: ??1CBase_00caefb0
+// Leaf: ??1CAudioObjectBase00caefb0@@UAE@XZ
 // Vendor naming V2 (plan phase 1, one address, one name; V1 decision D2): 0x00CACAF0 ??1CMyBaseObject@@QAE@XZ (was ??1CBaseObject@N_00cacaf0@@QAE@XZ): Fable's strmbase renames combase.h CBaseObject to CMyBaseObject (RTTI of vtable 0x0129D08C), which keeps it apart from the engine's CBaseObject 0x0099A380 / 0x0099A430 without a namespace
 // Vendor naming wave V1 (one address, one name): 0x00CAEFB0 ??1CAudioObjectBase00caefb0@@UAE@XZ (was ??1CBase_00caefb0@@UAE@XZ)
 // Flags: /EHsc

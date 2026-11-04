@@ -1,5 +1,5 @@
 // CScriptDefinitionManager_00c48220::~CScriptDefinitionManager_00c48220() -- EH-framed destructor: own vtable (0x012B8034), the pair member at +0x18 destroyed inline (its second at +0x34 @ 0x00C29FB0 at state 1, its first @ 0x00C1C820 at state 0), then the member at +4 destroyed out of line (@ 0x00C48DB0)
-// Leaf: ??1CAIStateGroup_CreatureUseCoverBase@
+// Leaf: ??1CScriptDefinitionManager_00c48220@@QAE@XZ
 // Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C1C820 ??1PKCCriticalSection@@QAE@XZ (was ??1CFirst_00c48220@@QAE@XZ); 0x00C29FB0 ??1PKCSemaphore@@QAE@XZ (was ??1CSecond_00c48220@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C48220, oracle length 111 bytes. Built under /EHsc.

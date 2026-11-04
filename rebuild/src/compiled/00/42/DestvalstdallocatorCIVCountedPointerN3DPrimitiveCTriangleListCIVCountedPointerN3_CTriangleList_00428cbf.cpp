@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: CTriangleList>_>
+// Leaf: ?CIVCountedPointer_Dest_val@@YIXPAUCIVCountedPointer@@@Z
 struct CRefCounted {
     void** vtbl;   // +0x0
     long   refs;   // +0x4

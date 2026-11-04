@@ -1,5 +1,5 @@
 // Reconstruction of std::fill<ENavigatorType*> at 0x00c13a80
-// Leaf: fill<ENavigatorType*,ENavigatorType>
+// Leaf: ?fill_ENavigatorType@@YIXPAW4ENavigatorType@@00@Z
 // __fastcall: ecx = first, edx = last, [esp+4] = pointer to value
 
 enum ENavigatorType { NAV_A, NAV_B };

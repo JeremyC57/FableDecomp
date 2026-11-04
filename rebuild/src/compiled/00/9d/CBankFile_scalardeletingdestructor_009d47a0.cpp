@@ -1,5 +1,5 @@
 class CBankFile { public:
-// Leaf: `scalar_deleting_destructor'
+// Leaf: ?CBankFile_scalar_deleting_destructor@@YIPAXPAVCBankFile@@HI@Z
     void* vftable;
 };
 

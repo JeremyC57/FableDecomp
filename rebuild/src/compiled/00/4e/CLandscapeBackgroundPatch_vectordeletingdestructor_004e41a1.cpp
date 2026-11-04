@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
 // Byte-exact reconstruction of CLandscapeBackgroundPatch::`vector_deleting_destructor'
 // retail 0x004e41a1, __fastcall(CLandscapeBackgroundPatch*, uint flags) -> void*
 

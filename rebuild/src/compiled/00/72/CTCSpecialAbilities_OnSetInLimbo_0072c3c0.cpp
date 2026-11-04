@@ -1,5 +1,5 @@
 // CTCSpecialAbilities::OnSetInLimbo(bool on) -- when switched on, kill every reclaimed undead follower whose thing is still alive and conscious
-// Leaf: vfunc_16
+// Leaf: ?OnSetInLimbo@CTCSpecialAbilities@@QAEX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072C3C0, length 98 bytes (`ret 4`), CTCSpecialAbilities vtable 0x0126683C slot 16
 // (a CTCBase bool notification; the catalog has no name for it).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (four times, once per use), CThing 0x0085EE40 (no-argument bool on the thing;

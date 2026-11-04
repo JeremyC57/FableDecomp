@@ -1,5 +1,5 @@
 // CGraphicDataBank::~CGraphicDataBank() native009FEBC0 / PDB00B5D2A0, FW03117820.
-// Leaf: ~CGraphicDataBank
+// Leaf: ??1CGraphicDataBank@@UAE@XZ
 #define CGraphicDataBank CGraphicDataBankDonor
 #include "engine/_quarantine/CGraphicDataBank.h"
 #undef CGraphicDataBank

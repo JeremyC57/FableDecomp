@@ -1,5 +1,5 @@
 #include "rebuild_abi.h"
-// Leaf: IS_THING_DEAD<CThing*>
+// Leaf: @FableIsDead_5cbdbd@4
 // IS_THING_DEAD(CThing*) @ 0x005cbdbd
 class CThing { public: char pad[0x91]; unsigned char m_flags; };
 struct Wrap { CThing *m_p; };

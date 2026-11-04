@@ -4,7 +4,7 @@
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CParentDefClassBase.h"
 class CLandscapeBackgroundPatch { public:
-// Leaf: `vector_deleting_destructor'
+// Leaf: ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
     void* vftable;
 };
 

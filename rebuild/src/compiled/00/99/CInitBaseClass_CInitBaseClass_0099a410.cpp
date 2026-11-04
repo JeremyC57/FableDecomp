@@ -1,5 +1,5 @@
 // ~CInitBaseClass 0x0099a410
-// Leaf: ??1CInitBaseClass@
+// Leaf: ?dtor_CInitBaseClass@CInitBaseClass@@QAEXXZ
 // Virtual destructor: stores derived vtable, conditionally deregisters, stores base vtable.
 // Modeled as a struct method so ecx=self (__fastcall). The two vtable pointers and the
 // global registration counter are the module's absolute addresses (relocated at link time).

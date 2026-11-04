@@ -1,5 +1,5 @@
 // std::_Rb_tree<EHeroAbility, std::pair<const EHeroAbility, NUISystem::CComponent*>, ...>::_M_lower_bound(const EHeroAbility& k) const -- STLport lower bound: walk to the first node whose key is not less than k; return it, or the header when none
-// Leaf: ?_M_lower_bound@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@@std@@QBEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@2@ABW4EHeroAbility@@@Z
+// Leaf: ?_M_lower_bound@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@2@ABW4EHeroAbility@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005f89b7, 37 bytes, thiscall, `ret 4`; size-optimised TU (unaligned address).
 // Identity (proven): bound (owner map) ?_M_lower_bound@?$map@W4EHeroAbility@@PAVCComponent@NUISystem@@...; callers that map's operator[] 0x005F9EA5 and tree helpers 0x005F900A / 0x005F9495.
 // Callees: none.
