@@ -22,3 +22,4 @@
 
   - Most compile failures are local member names the header lacks (`GetLengthSquared`, `GetLength`, `Normalise`, ...).
   - 77 of them are a local `C2DCoordI` that collides with the header's include.
+- **After the index was refreshed with the lane env**, gate.py was rerun on the 327 "no usable index entry" rows of w2 and w3: 327 / 327 PASS (`logs/regate_after_index_refresh.tsv`).

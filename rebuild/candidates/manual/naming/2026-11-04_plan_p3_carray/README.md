@@ -26,3 +26,4 @@
 | CVectorMap | 2,348 | 1,077 |
 | C3DVector | 3,450 | 1,363 |
 | CArray | 1,320 | 685 |
+- **After the index was refreshed with the lane env**, gate.py was rerun on the 327 "no usable index entry" rows of w2 and w3: 327 / 327 PASS (`logs/regate_after_index_refresh.tsv`).
