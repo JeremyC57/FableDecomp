@@ -63,3 +63,8 @@ placeholder classes (1,259 rows). Anniversary has RTTI with base-class lists for
   functions only (39% of publics share a folded address); (5) record a use as "Anniv360 (third source)"; no new pipeline step.
 - Applied from it (as the third source): 13 NParticleEngine globals 0x00AEAA10..0x00AEAB00 named from Ego_r donor order, anchored by
   four already-named retail rows at a constant offset (`ghidra_out/labels_naming_2026-11-04_particle_engine_globals.tsv`).
+- **The `.xdb` + `.xex` (owner-supplied as "prototype", 2026-11-04): not a prototype, and nothing new.** The `.xdb` (10 MB, sha256
+  fde88827…) has the same GUID {3EE45A73-…}, signature 0x52CE7628 and age 1 as the PDB above, and its 801 modules are only the XDK /
+  CRT / D3D / XAudio2 libraries: zero Fable objects. The `.xex` (33 MB, sha256 f73918b9…) is `WellingtonGame-Xbox360-Shipping.pe`,
+  image timestamp 0x52CE7650 (40 s after the PDB), base 0x82000000: the same shipping build. With no debug info for Fable code, it would
+  only show PowerPC code with public names; not set up, kept private in the lane scratch.
