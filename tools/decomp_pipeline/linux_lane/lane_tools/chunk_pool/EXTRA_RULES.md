@@ -181,3 +181,4 @@ headers, never as asm in the row.
   gives `__ftol2`, `/QIfist` gives `fistp qword`): bare `fistp dword`, `rdtsc`, `cpuid`, `pushfd`, MASM-aligned SIMD kernels. These look
   like asm but are C++: `exp`/`cos`/`sqrt` via /Oi, `#pragma intrinsic(log10)`, `_MM_GET/SET_ROUNDING_MODE`, and `(float)g_Double * x`.
   NOTES.md lists every helper call a row makes, with the reason it is unavoidable.
+- Owner 2026-11-04: a row that needs an impossible-list instruction still LANDS (grade `retail_asm`): the row itself is C++ and calls the isolated shared helper (`__asm` path + `FABLE_PORTABLE` C++ fallback + dual-path test). It goes in src/ like any other match, never in differ/.
