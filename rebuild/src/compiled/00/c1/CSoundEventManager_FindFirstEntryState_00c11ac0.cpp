@@ -1,5 +1,6 @@
 // CSoundEventManager::FindFirstEntryState(void* tag, const SObjectKey_00c196a0* key) -- vtable 0x012B2748 slot 17: under the module lock, resolve the key through the owner's object map, then walk the found object's entry table (group by group, entry by entry) and return the first non-negative state slot 18 reports for (tag, entry); -1 when the key resolves to nothing or no entry has a state
 // Leaf: ?FindFirstEntryState@CSoundEventManager@@UAEJPAXPBUSObjectKey_00c196a0@@@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C11AC0, 320 bytes (no padding after: the next function starts at once), thiscall
 //   `ret 8`, EH-framed (one state: the lock).
@@ -16,16 +17,9 @@
 //   exhausted), each destroying the lock. The entry is a named local: as a nested argument VC7.1 loads this manager's
 //   vtable before the GetEntry call and keeps `this` only in the frame (321v320); the parameter order (tag, key) is retail's
 //   (Find gets the second argument, slot 18 the first). Virtual slots whose meaning is unknown are named UnprovenSlotNN.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;          // 0x0143BB14: the module's critical section
 
-class PKCProtectionInstance {
-public:                                             // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                            // 0x00C0FFE0
-};
 
 struct CEntry_00c119d0;                             // the entry type slot 18 takes (landed 0x00C119D0)
 

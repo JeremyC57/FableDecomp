@@ -1,17 +1,12 @@
 // CHeroExperience_00c19760::QueryDamage(IStats*, unsigned long, unsigned long) -- EH-framed: under a scoped lock over the global @ 0x0143BB14, the table behind the object's virtual slot 5 is consulted (re-fetched for each use): 0 when the first index is at or beyond its count (slot 5) or the second at or beyond the row length (slot 4 with the first); else the entry (slot 6 with both)
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C19760, oracle length 232 bytes. Built under /EHsc.
 // Retail bytes:  ... mov esi,[esp+20h] ; mov eax,[esi] ; mov ecx,esi ; mov dword ptr [esp+18h],0 ; call [eax+14h] ; mov edx,[eax] ; mov ecx,eax ; call [edx+14h] ; mov edi,[esp+24h] ; cmp edi,eax ; jb row ; lea ecx,[esp+8] ; mov dword ptr [esp+18h],-1 ; call ~PKCProtectionInstance ; ... xor eax,eax ... ret 0Ch ; row: mov eax,[esi] ; push ebx ; mov ecx,esi ; call [eax+14h] ; mov edx,[eax] ; push edi ; mov ecx,eax ; call [edx+10h] ; mov ebx,[esp+2Ch] ; cmp ebx,eax ; jb entry ; ... xor eax,eax ... ret 0Ch ; entry: mov eax,[esi] ; mov ecx,esi ; call [eax+14h] ; mov edx,[eax] ; push ebx ; push edi ; mov ecx,eax ; call [edx+18h] ; ... mov esi,eax ... ret 0Ch
 // `this` is unused; each early return keeps its own epilogue. The manifest label is a
 // description; the classes are named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct IDamageTable_00c19760 {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

@@ -1,4 +1,6 @@
 // CScriptEntry_00c4bc20::CScriptEntry_00c4bc20(void*, void*) -- EH-framed: base @ 0x00C1C810, first argument at +0x18, member at +0x1c constructed from (0, second argument)
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C1C810 ??0PKCCriticalSection@@QAE@XZ (was ??0CBase_00c1c810@@QAE@XZ)
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): the member built out of line @ 0x00C29FC0 is the landed PKCSemaphore (PKCSemaphore::PKCSemaphore(long initialCount, long maximumCount), file .\PKCSemaphore.cpp; dtor 0x00C29FB0); the stand-in spelling is gone.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4BC20, oracle length 84 bytes.
@@ -10,19 +12,11 @@
 // first (its destructor gives EH state 0), the first argument is stored at +0x18 and the
 // member at +0x1c is constructed out of line @ 0x00C29FC0 from (0, second argument). No
 // vtables are stored. Manifest labels here are propagated; classes are placeholders. One of 10 bodies.
-struct PKCCriticalSection {
-    void* m_data;
-    PKCCriticalSection();                    // 0x00C1C810
-    ~PKCCriticalSection();
-};
+#include "libpk/PKCProtectionInstance.h"
 
-class PKCSemaphore { public:
-    void* m_hSemaphore;                    // the Win32 semaphore handle
-    PKCSemaphore(long initialCount, long maximumCount);   // 0x00C29FC0
-};
+#include "libpk/PKCSemaphore.h"
 
 struct CScriptEntry_00c4bc20 : PKCCriticalSection {
-    unsigned char _pad[0x14];
     void* m_pFirst;                        // +0x18
     PKCSemaphore m_member;              // +0x1c
     CScriptEntry_00c4bc20(void* first, void* second);

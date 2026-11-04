@@ -1,5 +1,7 @@
 // PKCMailbox::Receive(T* item) -- EH-framed, PKCMailbox<SFileRequest>: waits on the item semaphore at +0x1c (@ 0x00C2A090), then under the mailbox lock (PKCProtectionInstance over the +0 section) warns and breaks unless the queue at +0x18 holds an item (virtual GetCount, slot 2), pops it into *item (virtual Pop, slot 0) and returns item
 // Leaf: ?Receive@?$PKCMailbox@USFileRequest@@@@QAEPAUSFileRequest@@PAU2@@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1B030, 241 bytes, thiscall `ret 4`, returns its argument; built under /EHsc.
 // Retail bytes:  (EH prologue) ; sub esp,10h ; push esi ; mov esi,ecx ; lea ecx,[esi+1Ch] ; call PKCSemaphore::Wait ; push esi ; lea ecx,[esp+10h] ; call PKCProtectionInstance::PKCProtectionInstance ; mov ecx,[esi+18h] ; mov eax,[ecx] ; mov dword ptr [esp+1Ch],0 ; call [eax+8] ; test eax,eax ; ja pop ; (CString warning ".PKCMailbox.h(63) : the queue is out of step with the mailbox handler" through operator<< 0x00C0DEC0/0x00C0DF00, the hook 0x0143BB2C, ~CString 0x00C0BA40, CDebugBreak 0x00C16750) ; pop: mov ecx,[esi+18h] ; mov esi,[item] ; mov edx,[ecx] ; push esi ; call [edx] ; lea ecx,[esp+0Ch] ; mov dword ptr [esp+1Ch],-1 ; call ~PKCProtectionInstance ; ... mov eax,esi ; ... ret 4
@@ -34,29 +36,10 @@ struct SFileRequest {                           // seven words: handle, key and 
     long m_e;
 };
 
-class PKCCriticalSection {                      // a Win32 CRITICAL_SECTION (0x18 bytes)
-public:
-    unsigned char m_section[0x18];
-    PKCCriticalSection();                       // 0x00C1C810
-    ~PKCCriticalSection();                      // 0x00C1C820
-};
+#include "libpk/PKCProtectionInstance.h"
 
-class PKCProtectionInstance {                   // scoped guard: section + entry tick
-public:
-    PKCCriticalSection* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                   // 0x00C0FFE0
-};
 
-class PKCSemaphore {                            // a Win32 handle
-public:
-    void* m_hSemaphore;
-    PKCSemaphore(long initialCount, long maximumCount);   // 0x00C29FC0
-    ~PKCSemaphore();                            // 0x00C29FB0
-    void Wait();                                // 0x00C2A090
-    void Release();                             // 0x00C2A150
-};
+#include "libpk/PKCSemaphore.h"
 
 template<class T> class PKCQueue {              // the queue interface PKCMailbox drives (4 pure slots, no destructor slot)
 public:

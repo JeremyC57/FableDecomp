@@ -1,5 +1,6 @@
 // CSoundSystem::Update() -- EH-framed per-tick update under a scoped lock over the global @ 0x0143BB14: an out-of-line step on `this` (@ 0x00C091A0), then the parameter block at +0x34 (CAudioParamBlock::Update @ 0x00C0AF20) and the sound-event manager at +0x38 (@ 0x00C12880) are updated, and the optional object at +0x64 advanced (@ 0x00C14DD0)
 // Leaf: ?Update@CSoundSystem@@QAEXXZ
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): CAudioOwner -> CSoundSystem, the one class name for vtable 0x012B1E24 (the libpk sound system CreateSoundSystem_00c096e0 0x00C096E0 returns and the landed CSoundManagerLH ctor 0x00A3EF00 drives; descriptive, libpk has no PDB).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C091F0, oracle length 116 bytes. Built under /EHsc.
@@ -13,15 +14,9 @@
 //   (OnActivate 0x00C091A0, Advance 0x00C14DD0).
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push offset g_lock ; lea ecx,[esp+8] ; call PKCProtectionInstance::PKCProtectionInstance ; mov ecx,esi ; mov dword ptr [esp+14h],0 ; call OnActivate ; mov ecx,[esi+34h] ; call CAudioParamBlock::Update ; mov ecx,[esi+38h] ; call CSoundEventManager::Update ; mov ecx,[esi+64h] ; test ecx,ecx ; pop esi ; je skip ; call CThird::Advance ; skip: lea ecx,[esp] ; mov dword ptr [esp+10h],-1 ; call ~PKCProtectionInstance ; mov ecx,[esp+8] ; mov fs:[0],ecx ; add esp,14h ; ret
 // No vtable store and no return value. The member pointers are called, not deleted.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CAudioParamBlock { void Update(); };       // 0x00C0AF20
 struct CSoundEventManager { void Update(); };     // 0x00C12880

@@ -1,16 +1,11 @@
 // CCollection_00c0eb70::GetAt(unsigned long) -- EH-framed: under a scoped lock over the global @ 0x0143BB14, null when the index is not below the count of the polymorphic member at +0x50 (virtual slot 15), else the element fetched out of line (@ 0x00C0EA70); the result survives the lock's destructor in esi
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C0EB70, oracle length 150 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push offset g_lock ; lea ecx,[esp+8] ; call PKCProtectionInstance::PKCProtectionInstance ; mov eax,[esi+50h] ; lea ecx,[esi+50h] ; mov dword ptr [esp+14h],0 ; call [eax+3Ch] ; mov ecx,[index] ; cmp ecx,eax ; jb fetch ; lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~PKCProtectionInstance ; xor eax,eax ; pop esi ; ... ret 4 ; fetch: push ecx ; mov ecx,esi ; call Fetch ; lea ecx,[esp+4] ; mov esi,eax ; mov dword ptr [esp+14h],-1 ; call ~PKCProtectionInstance ; mov ecx,[esp+0Ch] ; mov eax,esi ; pop esi ; ...
 // The manifest label is propagated; the class is named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CItems_00c0eb70 {                   // polymorphic member at +0x50
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

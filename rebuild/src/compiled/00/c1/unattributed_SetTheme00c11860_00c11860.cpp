@@ -1,18 +1,13 @@
 // CEditControlCentre_00c11860::SetTheme(const STheme*) -- EH-framed: under a scoped lock over the global @ 0x0143BB14, the 84-byte theme record at +0x82c is copied from the argument (`rep movsd`), the dirty byte at +0x828 set, the member at +0x7d8 updated out of line (@ 0x00C25EA0); returns true
 // Leaf: ??0C3DMeshFileTransformationChunk@
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C11860, oracle length 125 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push ebx ; push esi ; push edi ; mov ebx,ecx ; push offset g_lock ; lea ecx,[esp+10h] ; call PKCProtectionInstance::PKCProtectionInstance ; mov esi,[theme] ; lea edi,[ebx+82Ch] ; mov ecx,15h ; rep movsd ; lea ecx,[ebx+7D8h] ; mov dword ptr [esp+1Ch],0 ; mov byte ptr [ebx+828h],1 ; call CView::Update ; lea ecx,[esp+0Ch] ; mov dword ptr [esp+1Ch],-1 ; call ~PKCProtectionInstance ; mov ecx,[esp+14h] ; pop edi ; pop esi ; mov al,1 ; pop ebx ; mov fs:[0],ecx ; add esp,14h ; ret 4
 // A structure assignment of 21 dwords is the intrinsic block copy. The manifest label is
 // propagated; the class is named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct STheme_00c11860 {                   // 84 bytes
     long m_values[21];

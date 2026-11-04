@@ -1,5 +1,6 @@
 // CCodaPlayback::SetPosition(const C3DVector& position) -- under the audio module lock, hand a 3D source's position to CODA (Y and Z swapped into CODA's axes)
 // Leaf: ?SetPosition@CCodaPlayback@@
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C27550, 139 bytes (`ret 4`, EH-framed). Descriptive names (no PDB or RTTI
 //   covers the libpk audio library): the manifest's "CPhysicalPrimitive_InitializeFromMesh" is propagated. The
@@ -9,19 +10,13 @@
 //   CODA_SetSourcePosition @ 0x00C33FD0 (`__stdcall`, extern "C").
 // Shape: the swapped vector is ASSIGNED to a declared local (return temporary at esp+0x18 copied dword by dword to
 //   the local at esp+0xc); `C3DVector v = position.SwapYZ();` builds straight into the local (0x14-byte frame).
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector SwapYZ() const;                   // 0x00C1C070
 };
 
-class PKCProtectionInstance { public:                            // 8-byte scoped lock (chunk 431 model)
-    void*         m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);                 // 0x00C0FFC0
-    ~PKCProtectionInstance();                             // 0x00C0FFE0
-};
 
 extern PKCCriticalSection g_soundLock;             // 0x0143BAFC the audio library's module lock
 

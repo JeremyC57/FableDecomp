@@ -1,6 +1,8 @@
 // PKCWorkerThread::ProcessNextRequest() -- worker-thread step: wait on the queue's semaphore, pop the front request under the queue's lock, hand a real request to the handler; returns 1 when the popped request was the null (stop) request, else 0
 // Flags: /EHsc
 // Leaf: ?ProcessNextRequest@
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C26B20, 153 bytes (`ret`, EH-framed for the scoped lock). Descriptive names (no
 //   PDB or RTTI covers the libpk audio library): the manifest's "Container_TryRemoveItem" is propagated. The function is
 //   slot 1 of vtable 0x012B4010 (slot 0 the deleting destructor, which chains to the thread base destructor
@@ -14,18 +16,9 @@
 //   store; `!empty()` is Dinkumware's `size() == 0` test (`_Myfirst == 0 ? 0 : _Mylast - _Myfirst`). The front
 //   request is read through ONE named begin() iterator that is then erased: `front()` plus a second `begin()`
 //   reloads _Myfirst (`mov eax,ecx ; mov edx,[eax+4]`) instead of reusing the size() test's edx.
-class PKCCriticalSection;
-class PKCProtectionInstance { public:                            // 8-byte scoped lock (chunk 431 model)
-    void*         m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);                 // 0x00C0FFC0
-    ~PKCProtectionInstance();                             // 0x00C0FFE0
-};
+#include "libpk/PKCProtectionInstance.h"
 
-struct PKCSemaphore {                           // a Win32 semaphore handle
-    void* m_hSemaphore;
-    void Wait();                                // 0x00C2A090
-};
+#include "libpk/PKCSemaphore.h"
 
 struct PKCRequest;
 

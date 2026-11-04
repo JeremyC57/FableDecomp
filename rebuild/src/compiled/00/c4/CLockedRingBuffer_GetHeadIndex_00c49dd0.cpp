@@ -1,5 +1,6 @@
 // CLockedRingBuffer::GetHeadIndex() -- under the ring's own critical section return the slot index of the oldest entry of the fixed-capacity FIFO: the tail index minus the count, wrapped by the capacity when negative
 // Leaf: ?GetHeadIndex@CLockedRingBuffer@@QAEJXZ
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C49DD0, 45 bytes (+ int3 padding), __fastcall, plain `ret`, no EH frame.
 // Library: libpk audio (no PDB/RTTI): descriptive names. Only caller: the ring's Pop, landed 0x00C4A0E0 (it reads
 //   m_pSlots[GetHeadIndex()] and decrements the count while holding the same recursive lock); the Push twin is
@@ -8,13 +9,7 @@
 // Callees: PKCProtectionInstance::PKCProtectionInstance(void*) 0x00C0FFC0 / ~PKCProtectionInstance 0x00C0FFE0.
 // Shape: a named `head` local survives the lock's destructor in esi; nothing in the lock's scope can throw, so no EH
 //   frame is built (with or without /EHsc).
-class PKCCriticalSection;
-class PKCProtectionInstance { public:
-    PKCProtectionInstance(PKCCriticalSection* section);                 // 0x00C0FFC0
-    ~PKCProtectionInstance();                             // 0x00C0FFE0
-    void* m_pSection;
-    long  m_entryTick;
-};
+#include "libpk/PKCProtectionInstance.h"
 
 struct CCodaFrame;
 

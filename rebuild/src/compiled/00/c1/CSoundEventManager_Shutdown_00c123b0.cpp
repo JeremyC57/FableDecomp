@@ -1,5 +1,6 @@
 // CSoundEventManager::Shutdown() -- under the module lock, stops every active event of the pool at +0x5c (handing it the manager), then detaches every listener the event set at +0x2c still yields (its virtual slot 11, re-queried after each detach)
 // Leaf: ?Shutdown@CSoundEventManager@@QAEXXZ
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Naming (sweep1, 2026-10-25): libpk class set CSoundEventManager (vtable 0x012B2748) / CSoundEventSet (its +0x2C
 //   member) / CSoundEvent (0xB4 bytes, vtable 0x012B3674): the describer 0x00C21040 called by TraceEvents/
@@ -22,15 +23,9 @@
 //   ebx/ebp are pushed inside the guarded block, `lea esp,[esp]` aligns the loop; the listener loop loads the set's
 //   vtable before forming its address (`mov eax,[esi+2Ch] ; lea edi,[esi+2Ch]`).
 // Label correction: the catalog's `C3DMesh2_OnDestructorCleanup` is propagated.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-class PKCProtectionInstance { public:                  // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);        // 0x00C0FFC0
-    ~PKCProtectionInstance();                    // 0x00C0FFE0
-};
 
 struct CSoundEventManager;
 

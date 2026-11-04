@@ -1,4 +1,6 @@
 // CMailboxQueue_00c26cd0::PostMessage(CMailboxMessage_00c26cd0* message) -- under the scoped queue lock append the message to the pending vector at +0x18, then release the queue's semaphore at +0x28
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C2A150 ?Release@PKCSemaphore@@QAEXXZ (was ?Release@CSemaphore@@QAEXXZ)
 // Grade: RELOCATION_MATCH (wave-2 sec6): the VC6 Dinkumware two-argument insert(end(), x) (inline: off = P - begin();
 //   insert(P, 1, x); return begin() + off) at the call site gives retail's edx temp address and the lea ecx between the
@@ -16,18 +18,9 @@
 // Flags: /EHsc
 struct CMailboxQueue_00c26cd0;
 
-class PKCCriticalSection;
-class PKCProtectionInstance { public:     // libpk scoped lock (trace string '.\\PKCProtectionInstance.cpp'; landed mailbox rows)                         // 8-byte scoped lock over the queue
-    CMailboxQueue_00c26cd0* m_pQueue;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* section);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                           // 0x00C0FFE0
-};
+#include "libpk/PKCProtectionInstance.h"
 
-struct PKCSemaphore {
-    long m_value;
-    void Release();                          // 0x00C2A150
-};
+#include "libpk/PKCSemaphore.h"
 
 struct CMailboxMessageBase_00c26cd0 {
     long m_id;

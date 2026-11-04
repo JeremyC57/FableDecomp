@@ -1,5 +1,6 @@
 // CBasePin::~CBasePin() -- DirectShow BaseClasses amfilter.cpp: free the pin name; then m_mt (CMediaType::~CMediaType 0x00CB1CC0) and the CUnknown base's CBaseObject (0x00CACAF0) are destroyed
 // Leaf: ??1CBasePin@@UAE@XZ
+// Vendor naming V2 (plan phase 1, one address, one name; V1 decision D2): 0x00CACAF0 ??1CMyBaseObject@@QAE@XZ (was ??1CBaseObject@N_00cacaf0@@QAE@XZ): Fable's strmbase renames combase.h CBaseObject to CMyBaseObject (RTTI of vtable 0x0129D08C), which keeps it apart from the engine's CBaseObject 0x0099A380 / 0x0099A430 without a namespace
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7C80, 94 bytes, thiscall, plain `ret`; /EHsc frame: EH state 1 over the body, 0 while m_mt
 //   is destroyed, -1 before ~CBaseObject (this + 4); no vptr store (CBasePin and CUnknown are AM_NOVTABLE).
@@ -45,12 +46,12 @@ public:
 };
 // combase.h CBaseObject (no data in release; counts live objects), in the namespace the landed strmbase rows use so
 // its destructor's symbol stays apart from the game's own CBaseObject (0x0099A380 / 0x0099A430) in the relocation bindings.
-namespace N_00cacaf0 { class CBaseObject {
+class CMyBaseObject {
 public:
-    CBaseObject(const unsigned short* pName);
-    ~CBaseObject();                              // 0x00CACAF0
-}; } using N_00cacaf0::CBaseObject;
-class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CBaseObject {   // combase.h (AM_NOVTABLE)
+    CMyBaseObject(const unsigned short* pName);
+    ~CMyBaseObject();                              // 0x00CACAF0
+};
+class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CMyBaseObject {   // combase.h (AM_NOVTABLE)
     IUnknown* const m_pUnknown;                  // +0x04 owner of this object
 protected:
     long m_cRef;                                 // +0x08 (combase.h qualifies it; no access here)

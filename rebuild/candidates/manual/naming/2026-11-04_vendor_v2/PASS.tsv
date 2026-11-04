@@ -1,0 +1,335 @@
+address	grade	log	family	introduced_warnings	inherited_warnings
+00c088d0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c08940	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Handle@COptionalHandler_00c08940@@QAEXPAUCEvent_00c08940@@@Z -> 00c14ad0 labelled 'CEntryOwner_00c14ad0::ReleaseTarget' | RELOC_NAME: ?Handle@CHandler_00c08940@@QAEXPAUCEvent_00c08940@@@Z -> 00c12140 labelled 'CSoundEventManager::ReleaseTarget'
+00c08a00	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Process@CEventQueue_00c08a00@@QAEXPAX@Z -> 00c08940 labelled '_global::CTCHero_OnBlockParrySuccess'
+00c08a80	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c08ae0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		SHARED_HEADER_AVAILABLE CSprite | RELOC_NAME: ?IsFinished@CSprite@@QAE_NXZ -> 00c15b00 labelled '_global::CAnimateThing_HasAnimationTriggers'
+00c08b80	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ??0CTCDiceGame_00c08b80@@QAE@PAUCDiceHost_00c08b80@@PAPAXPAX@Z -> 00c14e40 labelled 'PKCDeferredBank::PKCDeferredBank'
+00c08c50	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ??0CAction_00c08c50@@QAE@PAUCList_00c08c50@@PAXJ@Z -> 00c16050 labelled 'C3DMeshObject::C3DMeshObject::InitializeWithPhysics'
+00c09110	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ??0CRequest_00c09110@@QAE@PAX@Z -> 00c08d20 labelled 'CVtable_012b1b40::CVtable_012b1b40'
+00c091f0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Advance@CThird_00c091f0@@QAEXXZ -> 00c14dd0 labelled '_global::CActionSummonerLightningAttackTarget_OnMapLoadComplete'
+00c09270	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Rebuild@CTCInventoryExperience_00c09270@@QAEXXZ -> 00c091f0 labelled 'CSoundSystem::Update'
+00c092d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Finish@CTarget_00c092d0@@QAEXXZ -> 00c15c70 labelled '_unattributed::Update_00c15c70' | RELOC_NAME: ?Shutdown@CPixelShader_00c092d0@@QAEXXZ -> 00c091f0 labelled 'CSoundSystem::Update'
+00c094a0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ??0CTreeHeader@@QAE@H@Z -> 00c194f0 labelled 'PKCTRRedblackTree_00c18b20::PKCTRRedblackTree_00c18b20' | RELOC_NAME: ??0CSteeringList@@QAE@XZ -> 00c0a6d0 labelled 'CVtable_012b1b78::CVtable_012b1b78' | RELOC_NAME: ?SetSteeringWorld@@YIXPAX@Z -> 00c1beb0 labelled '_global::SetCurrentThingManager' | RELOC_NAME: ?SetSteeringOption@@YIXH_N@Z -> 00c1be20 labelled '_global::Nop_ret0_00c1be20' | RELOC_NAME: ?SetSteeringMode@@YIXHHH@Z -> 00c1be00 labelled '_global::Nop_ret4_00c1be00' | RELOC_NAME: ?SetSteeringTimeStep@@YGXM@Z -> 00c1bd80 labelled '_global::SetAlphaFalloffSharpness' | RELOC_NAME: ?SetSteeringRange@@YGXHH@Z -> 00c1b9a0 labelled '_global::SetDefaultRange' | RELOC_NAME: ??0CSBAgents@@QAE@H@Z -> 00c1b950 labelled 'CVtable_012b3224::CVtable_012b3224' | RELOC_NAME: ??0CSBDefaultAgents@@QAE@H@Z -> 00c1ac40 labelled 'PKCDefaultFileManager::PKCDefaultFileManager' | RELOC_NAME: ??0CSteeringHelper68@@QAE@PAUCSoundSystem@@@Z -> 00c19e40 labelled 'CVtable_012b2f98::CVtable_012b2f98' | RELOC_NAME: ??0CSteeringHelper6C@@QAE@PAUCSoundSystem@@@Z -> 00c165a0 labelled 'CVtable012b2ab0::CVtable012b2ab0'
+00c09b70	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_0.log	reloc47	RELOC_NAME: ??1CMember_00c17b10@@QAE@XZ -> 00c17b10 labelled 'CPixelShaderData::~CPixelShaderData'	
+00c0aa10	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c0aa40	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		SHARED_HEADER_AVAILABLE CString
+00c0aad0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c0ab60	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c0ac00	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c0ac30	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		SHARED_HEADER_AVAILABLE CString
+00c0b380	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		SHARED_HEADER_AVAILABLE CSprite | RELOC_NAME: ?Update@CSprite@@QAEXXZ -> 00c15b90 labelled 'insert<std::_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::insert<std::_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>'
+00c0e600	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c0e980	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c0eb70	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Fetch@CCollection_00c0eb70@@QAEPAXK@Z -> 00c0ea70 labelled 'CHobbeTorrent::Init'
+00c0ece0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	reloc47		RELOC_NAME: ?Stop1@CCombatAbilityStrafeDef_00c0ece0@@QAEXXZ -> 00c0eb40 labelled 'CScriptHost::DeleteAllWatchers' | RELOC_NAME: ?Stop2@CCombatAbilityStrafeDef_00c0ece0@@QAEXXZ -> 00c0eaf0 labelled 'CScriptHost::DeleteAllScripts' | RELOC_NAME: ?Stop3@CCombatAbilityStrafeDef_00c0ece0@@QAEXXZ -> 00c0ec60 labelled 'CQueueOwner_00c0ec60::ClearAll' | RELOC_NAME: ?Stop4@CCombatAbilityStrafeDef_00c0ece0@@QAEXXZ -> 00c0ea10 labelled 'CScriptHost::ClearEvents' | RELOC_NAME: ??1CSmallNode_00c0ece0@@QAE@XZ -> 00c17b10 labelled 'CPixelShaderData::~CPixelShaderData' | RELOC_NAME: ??1CNavButton_00c0ece0@@QAE@XZ -> 00c10320 labelled 'CNavButton::IsAcceptButton'
+00c0ffc0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c0ffe0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)' | RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c10320	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_0.log	reloc47	RELOC_NAME: ??1CMember_00c17b10@@QAE@XZ -> 00c17b10 labelled 'CPixelShaderData::~CPixelShaderData'	
+00c10a90	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c10b00	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c10b30	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c10ba0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c10c10	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Find@CTarget_00c10c10@@QAEPAXPAX@Z -> 00c1bec0 labelled 'CEngineInternalPrimitiveBase::AddChildPrimitive'
+00c10d40	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?SetHidden@CTarget_00c10d40@@QAEX_N@Z -> 00c1c620 labelled 'CWorld::SetAsPaused'
+00c10dd0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Helper_00c1bd80@@YGXPAX@Z -> 00c1bd80 labelled '_global::SetAlphaFalloffSharpness'
+00c10e50	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Equals@C3DVector_00c10e50@@QBI_NABU1@@Z -> 00c256f0 labelled 'C3DVector::operator=='
+00c10f40	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?VectorsEqual_00c256f0@@YI_NPBUC3DVector_00c10f40@@0@Z -> 00c256f0 labelled 'C3DVector::operator=='
+00c10fe0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Update@CPhysicalPrimitiveMesh_00c10fe0@@QAEXABUC3DVector_00c10fe0@@00@Z -> 00c10e50 labelled 'CEnginePrimitiveRenderer2D::SetLightingParameters'
+00c110a0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c11120	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c11150	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c11180	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c111c0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c11200	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c11330	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Refresh@CInventory_00c11330@@QAEXXZ -> 00c10cd0 labelled 'CSoundEventManager::AssignPendingItems'
+00c113b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		SHARED_HEADER_AVAILABLE CObserver
+00c11430	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		SHARED_HEADER_AVAILABLE CObserver
+00c114b0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c115d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		SHARED_HEADER_AVAILABLE CObserver
+00c11650	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c11710	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?AddObserver_00c25e80@CObservable@@QAEXPAX@Z -> 00c25e80 labelled 'CFader::SetMaxRate'
+00c11780	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?AddObserver@CObservable@@QAEXPAX@Z -> 00c25e20 labelled 'CFader::SetFadeInTime'
+00c117f0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?AddObserver_00c25e50@CObservable@@QAEXPAX@Z -> 00c25e50 labelled 'CFader::SetFadeOutTime'
+00c11860	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Update@CView_00c11860@@QAEXXZ -> 00c25ea0 labelled 'CFader::FadeOut'
+00c118e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Transfer@CTarget_00c118e0@@QAEXPAX0@Z -> 00c25ff0 labelled 'CFader::SetValue'
+00c11950	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?FindNext@CRegistry_00c11950@@QAEPAUCElement_00c11950@@PAX@Z -> 00c21ee0 labelled 'CRegistryOwner_00c21ee0::Lookup' | RELOC_NAME: ?Update@CElement_00c11950@@QAEXPAUCEditControlCentre_00c11950@@@Z -> 00c21a20 labelled 'CThemeDisplay_00c21a20::ActivateThemeDensityDisplay'
+00c119d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ??0CKey_00c119d0@@QAE@XZ -> 00c25c50 labelled 'C3DGroup2::C3DGroup2' | RELOC_NAME: ?Lookup@CTable_00c119d0@@QAEPAXPAX@Z -> 00c1bac0 labelled 'NUISystem::CManager::GetKeyPressed' | RELOC_NAME: ?Set@CKeyFields_00c119d0@@QAEXPAXPAUCEntry_00c119d0@@0@Z -> 00c25c70 labelled 'CParticleRef_00c25c70::Bind' | RELOC_NAME: ?Clear@CKey_00c119d0@@QAEXXZ -> 00c25cb0 labelled 'CParticleHandle::~CParticleHandle' | RELOC_NAME: ??1CKey_00c119d0@@QAE@XZ -> 00c25ca0 labelled 'CSampleRef::~CSampleRef'
+00c11ac0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c11c00	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c11f50	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Refresh@CEntry_00c11f50@@QAEXXZ -> 00c276b0 labelled 'CCodaPlayback::Update' | RELOC_NAME: ?Validate@CElement_00c11f50@@QAE_NPAUCEditControlCentre_00c11f50@@@Z -> 00c20c10 labelled 'CSoundEvent::IsAudible' | RELOC_NAME: ?Process@CElement_00c11f50@@QAEXPAUCEditControlCentre_00c11f50@@@Z -> 00c21620 labelled 'CSoundEvent::Stop' | RELOC_NAME: ?Refresh@CEditControlCentre_00c11f50@@QAEXXZ -> 00c10cd0 labelled 'CSoundEventManager::AssignPendingItems'
+00c120a0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?IsBound@CEntity_00c120a0@@QAEJXZ -> 00c20840 labelled 'CSoundEvent::IsActive' | RELOC_NAME: ?Process@CEntity_00c120a0@@QAEXPAUCInventory_00c120a0@@@Z -> 00c21620 labelled 'CSoundEvent::Stop'
+00c12140	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Detach@CEntry_00c12140@@QAEXPAUCSoundEventManager@@@Z -> 00c26390 labelled 'CStreamBuffer::Release' | RELOC_NAME: ??1CEntry_00c12140@@QAE@XZ -> 00c26400 labelled 'CStreamBuffer::~CStreamBuffer' | RELOC_NAME: ?Remove@CSoundEventSet@@QAEXPAUCTarget_00c12140@@@Z -> 00c22260 labelled 'CUnprovenCollectionOwner_00C22260::ApplyFilter' | RELOC_NAME: ?FindNext@CSoundEventSet@@QAEPAUCItem_00c12140@@PAUCTarget_00c12140@@@Z -> 00c21f50 labelled '_unattributed::WriteToFile_00c21f50' | RELOC_NAME: ?Reset@CItem_00c12140@@QAEXPAUCSoundEventManager@@@Z -> 00c26580 labelled 'NScript::CIsThingAlive::operator()'
+00c12270	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?OnCreated@CEntity_00c12270@@QAEXPAUCTCHero_00c12270@@@Z -> 00c21700 labelled 'CSoundEvent::Restart'
+00c12300	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c123b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Detach@CListener_00c123b0@@QAEXPAUCSoundEventManager@@@Z -> 00c26580 labelled 'NScript::CIsThingAlive::operator()'
+00c12460	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?IsBound@CEntity_00c12460@@QAEJXZ -> 00c20840 labelled 'CSoundEvent::IsActive' | RELOC_NAME: ?Release@CEntity_00c12460@@QAEXPAUCInventory_00c12460@@@Z -> 00c21620 labelled 'CSoundEvent::Stop' | RELOC_NAME: ?Find@CObservable_00c12460@@QAEPAUCObserver_00c12460@@PAX@Z -> 00c21ff0 labelled '_unattributed::WriteToFile_00c21ff0' | RELOC_NAME: ?Detach@CObserver_00c12460@@QAEXPAUCInventory_00c12460@@@Z -> 00c26580 labelled 'NScript::CIsThingAlive::operator()'
+00c12520	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?IsBound@CEntity_00c12520@@QAEJXZ -> 00c20840 labelled 'CSoundEvent::IsActive' | RELOC_NAME: ?Release@CEntity_00c12520@@QAEXPAUCInventory_00c12520@@@Z -> 00c21620 labelled 'CSoundEvent::Stop' | RELOC_NAME: ?Find@CObservable_00c12520@@QAEPAUCObserver_00c12520@@PAX@Z -> 00c21fa0 labelled '_unattributed::WriteToFile_00c21fa0' | RELOC_NAME: ?Detach@CObserver_00c12520@@QAEXPAUCInventory_00c12520@@@Z -> 00c26580 labelled 'NScript::CIsThingAlive::operator()'
+00c125e0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c12680	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?IsPlayingPhysical@CSoundEvent@@QAEJXZ -> 00c20f20 labelled 'CUnprovenStateObject_00C20720::IsState6_00C20F20' | RELOC_CONFLICT: ?IsPlayingVirtual@CSoundEvent@@QAEJXZ -> 00c20f40 here, 00c207a0 in landed 00c21a50 | RELOC_NAME: ?IsPlayingVirtual@CSoundEvent@@QAEJXZ -> 00c20f40 labelled 'CUnprovenStateObject_00C20720::IsState5_00C20F40'
+00c12720	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		SHARED_HEADER_AVAILABLE CString
+00c127c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ?GetStatus@CPlaybackSlot_00c127c0@@QAE?AVCString@@XZ -> 00c27760 labelled '_global::Playback_LogStatus'
+00c12880	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Rebuild@CSoundEventManager@@QAEXXZ -> 00c12040 labelled 'CV_BordelloScript::HeroWorksInBrothel' | RELOC_NAME: ?Finish@COwner_00c12880@@QAEXXZ -> 00c1c6a0 labelled '_unattributed::Update_00c1c6a0'
+00c12cd0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_0.log	held+pklock	RELOC_NAME: ?StartEvent@CSoundEventManager@@QAEPAUCSoundEvent@@JPBUCSoundPlayParameters@@JPAUCDriver@@PBUCPKVoiceParams@@PAJ@Z -> 00c12940 labelled 'CTCHero_HandleCombatActions'	
+00c12d50	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Bind@CQuery_00c12d50@@QAEXPAX@Z -> 00c27c10 labelled 'CPKVoiceParams::Load' | RELOC_NAME: ?Resolve@CCombatGeometry_00c12d50@@QAEPAUCHit_00c12d50@@PAX0PAUCQuery_00c12d50@@J@Z -> 00c12cd0 labelled '_global::CombatBlockReward_ProcessWithExceptionHandler'
+00c13140	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?FindEntry_00c12cd0@CSoundEventManager@@QAEPAUCSoundEventEntry_00c13140@@JJPBUCPKVoiceParams@@J@Z -> 00c12cd0 labelled '_global::CombatBlockReward_ProcessWithExceptionHandler'
+00c131c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?StartSound@CSoundSystem_00c131c0@@QAEPAUCSoundInstance_00c131c0@@PAX0PAUCSoundRequest_00c131c0@@J@Z -> 00c12cd0 labelled '_global::CombatBlockReward_ProcessWithExceptionHandler' | RELOC_NAME: ?Init@CSoundGroup_00c29ec0@@QAEXPAVCSoundSystem_00c131c0@@JPAUCSoundInstance_00c131c0@@@Z -> 00c29f70 labelled 'CTrailListener_00c29f70::Attach' | RELOC_NAME: ?AddMember@CSoundGroup_00c29ec0@@QAEXPAUCSoundInstance_00c131c0@@@Z -> 00c29ec0 labelled 'CSteeringGroup::AddAgent'
+00c13310	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Bind@SNavigationRequest_00c13310@@QAEXPAX@Z -> 00c27c10 labelled 'CPKVoiceParams::Load' | RELOC_NAME: ?Load@CNavigationHost_00c13310@@QAEJPAXPAUSNavigationRequest_00c13310@@@Z -> 00c131c0 labelled 'CSoundSystem_00c131c0::PlaySoundList'
+00c133d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?ResolveEntry@CTCHeroExperience_00c133d0@@QAEJPAUCEntry_00c133d0@@PAX@Z -> 00c13310 labelled '_global::CNavigationLayer_LoadAndInitialize'
+00c13470	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ??1CPartA_00c13470@@QAE@XZ -> 00c25c20 labelled 'CTimerHost_00c25c20::Close' | RELOC_NAME: ??1CMember7D8_00c13470@@QAE@XZ -> 00c25e90 labelled '_global::Nop_ret0_00c25e90' | RELOC_NAME: ??1CSoundEventSet@@QAE@XZ -> 00c22520 labelled 'CEngineVSConstantBlockSet::~CEngineVSConstantBlockSet'
+00c14560	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock+pksem		RELOC_NAME: ??1PKCCriticalSection_00c14560@@QAE@XZ -> 00c1c820 labelled 'PKCCriticalSection::~PKCCriticalSection'
+00c14630	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock+pksem		RELOC_NAME: ??1PKCCriticalSection_00c14630@@QAE@XZ -> 00c1c820 labelled 'PKCCriticalSection::~PKCCriticalSection'
+00c14820	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c14860	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c14890	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c148c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Transfer@CTarget_00c148c0@@QAEXPAX0@Z -> 00c2a300 labelled 'CResourceRegistry::SetEntryValue'
+00c14930	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c14970	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c149e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Add@CTarget_00c149e0@@QAEXPAX@Z -> 00c2a6d0 labelled 'CResourceRegistry::ReleaseByKey'
+00c14b20	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c14b50	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c14bc0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c14ca0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c14d00	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c14dd0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Step@CActionSummonerLightning_00c14dd0@@QAEXXZ -> 00c14d80 labelled '_unattributed::OnActivate_00c14d80' | RELOC_NAME: ?Update@CFirst_00c14dd0@@QAEXXZ -> 00c2a890 labelled 'CNavigatorSwitch::SendStateAndReset' | RELOC_NAME: ?Update@CSecond_00c14dd0@@QAEXXZ -> 00c2bca0 labelled '_unattributed::OnActivate_00c2bca0'
+00c15aa0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Update@CTarget_00c15aa0@@QAEXXZ -> 00c2d2d0 labelled '_global::Dtor_Fastcall_FindAnimationTriggersBase_00c2d2d0'
+00c15b00	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Query@CTarget_00c15b00@@QAE_NXZ -> 00c2d160 labelled 'CInstanceManager::StartIdleInstances'
+00c15b90	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?GetAngle@CTCGraphicAppearanceSprite_00c15b90@@QAEMXZ -> 00c15a70 labelled '_unattributed::ApplyScaledOwnerValue' | RELOC_NAME: ?SetAngle@CTarget_00c15b90@@QAEXM@Z -> 00c2d1e0 labelled 'CFontBankStateBlock::CreateCRC'
+00c15c00	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Apply@CTarget_00c15c00@@QAEMPAXG@Z -> 00c0b130 labelled 'CAudioParamBlock::GetPitch'
+00c15c70	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c15cd0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c15d50	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Query@CStats_00c15d50@@QAE_NPAJ00@Z -> 00c2d420 labelled 'CInstanceManager::GetCurrentInfo'
+00c15e30	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ?Update@CTCGraphicAppearanceSprite_00c15e30@@QAEXXZ -> 00c15b90 labelled 'insert<std::_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::insert<std::_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>'
+00c15ea0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c15f10	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c15f30	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c15f60	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c15f90	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c15fc0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c15ff0	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c16020	RELOCATION_MATCH PASS	logs/vland_v2_0.log	pklock		
+00c161a0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_0.log	pklock		RELOC_NAME: ??0CVolumeRecord_00c161a0@@QAE@XZ -> 00c2d1a0 labelled 'SPKVoiceSettings::SPKVoiceSettings' | RELOC_NAME: ?Assign@CBuffer_00c161a0@@QAEXPBU1@@Z -> 00c16970 labelled 'PKCWideString::operator=' | RELOC_NAME: ?AddSlice@CMeshVolume_00c161a0@@QAEJMPAUCVolumeRecord_00c161a0@@@Z -> 00c2d5e0 labelled 'CInstanceManager::Assign' | RELOC_NAME: ?Release@CBuffer_00c161a0@@QAEXXZ -> 00c167c0 labelled 'CFileInstaller::CActiveFile::OnReadFinished'
+00c16310	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?Convert@SRange_00c16310@@QAEKK@Z -> 00c2d820 labelled 'CAudioFormat::SamplesToBytes' | RELOC_NAME: ?Open@CEngine_00c16310@@QAEPAXPBUSRange_00c16310@@PAX1@Z -> 00c0e770 labelled '_global::Alloc' | RELOC_NAME: ??0CRecordBuilder_00c16310@@QAE@XZ -> 00c1bd10 labelled '_unattributed::CClass_00c1bd10' | RELOC_NAME: ?Set0@CRecordBuilder_00c16310@@QAEXJ@Z -> 00c1bb20 labelled 'CAIStateGroup_CreatureGoUnderground::IsRunnable' | RELOC_NAME: ?Set4@CRecordBuilder_00c16310@@QAEXJ@Z -> 00c1bb40 labelled 'C3DAnimationSequence::InitialiseFromFileData' | RELOC_NAME: ?Set8@CRecordBuilder_00c16310@@QAEXJ@Z -> 00c1bb60 labelled 'CTCVillage::ResetCrier' | RELOC_NAME: ?SetC@CRecordBuilder_00c16310@@QAEXJ@Z -> 00c1bb80 labelled 'std::vector<CCharString,std::allocator<CCharString>_>::_Insert<std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std::allocator<CCharString>,0>_>_>_>' | RELOC_NAME: ?Set10@CRecordBuilder_00c16310@@QAEXJ@Z -> 00c1bba0 labelled 'std::vector<CCharString,std::allocator<CCharString>_>::_Insert<std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std::allocator<CCharString>,0>_>_>_>' | RELOC_NAME: ?Set14@CRecordBuilder_00c16310@@QAEXJ@Z -> 00c1bbc0 labelled 'CThing::SetCurrentMapNumber' | RELOC_NAME: ?Set18@CRecordBuilder_00c16310@@QAEXJ@Z -> 00c1bbd0 labelled 'CThing::SetCurrentMapNumber' | RELOC_NAME: ?Set1C@CRecordBuilder_00c16310@@QAEXG@Z -> 00c1bbe0 labelled 'CChickenSign::SetWordC' | RELOC_NAME: ?Set1E@CRecordBuilder_00c16310@@QAEXG@Z -> 00c1bbf0 labelled 'CChickenSign::SetByteD' | RELOC_NAME: ?Set20@CRecordBuilder_00c16310@@QAEXJ@Z -> 00c1bc00 labelled 'CThing::SetCurrentMapNumber' | RELOC_NAME: ?Set24@CRecordBuilder_00c16310@@QAEXE@Z -> 00c1bc10 labelled 'C3DAnimationSequenceData::SetupIdentityFlag' | RELOC_NAME: ?Set28@CRecordBuilder_00c16310@@QAEXJ@Z -> 00c1bc70 labelled 'C3DAnimationSequence::InitialiseFromFileData' | RELOC_NAME: ?Apply@CEngine_00c16310@@QAEJPAXPBUCRecordBuilder_00c16310@@@Z -> 00c0e870 labelled 'CScriptHost::CreateDriver'
+00c164b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?ClearEntry@CTCMapwho_00c164b0@@QAEXPAUCMapwhoEntry_00c164b0@@@Z -> 00c0ec10 labelled 'CScriptHost::DestroyOwner'
+00c19760	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c19850	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c198c0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c199a0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?GetDamage@CDamageRecord_00c199a0@@QAEMXZ -> 00c1ba70 labelled 'CUnprovenPackedParameterRange::GetMaximum'
+00c19ad0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?ResolveEntry@CClothingSuitMap_00c19ad0@@QAEJPAUCEntry_00c19ad0@@PAX1@Z -> 00c19760 labelled '_global::HeroExperience_QueryDamageWithRange'
+00c19b70	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?ResolveEntry@CClothingSuitMap_00c19b70@@QAEJPAUCEntry_00c19b70@@@Z -> 00c19850 labelled '_unattributed::GetDamageValue_00c19850'
+00c19c10	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?ResolveEntry@CClothingSuitMap_00c19c10@@QAEJPAUCEntry_00c19c10@@PAX@Z -> 00c198c0 labelled '_global::HeroExperience_QueryClampedValue'
+00c19cb0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?Find@CClothingSuitPartMap_00c19cb0@@QAEPAUCNode_00c19cb0@@PAX@Z -> 00c19680 labelled 'CObjectMap::GetScope'
+00c19d20	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?Find@CClothingSuitPartMap_00c19d20@@QAEPAUCNode_00c19d20@@PAX@Z -> 00c19680 labelled 'CObjectMap::GetScope'
+00c19d90	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?Find@CClothingSuitMap_00c19d90@@QAEPAUCNode_00c19d90@@PAX@Z -> 00c19680 labelled 'CObjectMap::GetScope'
+00c1a070	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c1a110	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c1a230	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock+pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c1a370	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c1a9c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock+pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)' | RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)' | RELOC_NAME: ??6CString@@QAIAAV0@I@Z -> 00c0def0 labelled 'CString::operator<<(unsigned int)'
+00c1ac40	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock+pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c1adb0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pksem		
+00c1afd0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c1b030	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock+pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c1b130	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c1b2a0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c1b6d0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c1bab0	MATCH PASS	logs/vland_v2_3dm.log	defmove		
+00c1bed0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c1c030	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?GetDefaultSettings@@YGXPAUCDefaultSettings@@@Z -> 00c33400 labelled '_unattributed::GetDefaults_0139c988'
+00c1c0b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?GetDefaultSettings@@YGXPAUCDefaultSettings@@@Z -> 00c33400 labelled '_unattributed::GetDefaults_0139c988'
+00c1c110	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: _Flush_00c336a0 -> 00c336a0 labelled '_global::Static_UpdateRenderState_on_0143bb58_00c336a0' | RELOC_NAME: ?Release@COwner_00c1c110@@QAEXXZ -> 00c11f50 labelled '_global::CAIStateGroup_OnMapTextureChanged' | RELOC_NAME: ?Close@CDevice_00c1c110@@QAEXXZ -> 00c092d0 labelled '_global::EventQueue_ProcessInventoryTimeout'
+00c1c280	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		SHARED_HEADER_AVAILABLE C3DVector | RELOC_NAME: ?SetListenerPosition@@YGXPAXPBVC3DVector@@@Z -> 00c338c0 labelled 'CScriptRenderBinding_00c338c0::SetTargetPosition' | RELOC_NAME: ?SetListenerOrientation@@YGXPAXPBVC3DVector@@1@Z -> 00c33920 labelled '_global::SetOrientationVectorsFromCopies'
+00c1c620	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?LibNotifyWorldState@@YG_NJJ@Z -> 00c335c0 labelled '_global::AudioSystem_Query' | RELOC_NAME: ?Refresh@CWorld@@QAEXXZ -> 00c1c460 labelled 'ParticleMorphs_UpdateEditor'
+00c1c6a0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?Step@CTCInventoryMagic_00c1c6a0@@QAEXXZ -> 00c1c460 labelled 'ParticleMorphs_UpdateEditor'
+00c1c810	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c1c820	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c1c830	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c1c840	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c1d780	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c1d9d0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c1da30	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock+pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c1dc40	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c1dce0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c1dd50	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c1df30	MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c1df40	MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c1df50	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c1e280	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?Count@CSub_00c1e280@@QAEJXZ -> 00c2d920 labelled 'CSoundFormat::GetPCMBufferSize'
+00c1e300	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?ReadChunkExtent_00c347b0@@YIJPAX0PAJ1@Z -> 00c347b0 labelled '_global::Fastcall_WADSegmentDecompress' | RELOC_NAME: ?DecodeSoundData_00c34630@@YIJPAUCSoundFormat@@PAX1K@Z -> 00c34630 labelled '_global::DecodeAdpcmToPcm'
+00c1e4d0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c1e500	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?Get@CTarget_00c1e500@@QAEMXZ -> 00c2d9a0 labelled 'CPersistTraits<CReactionFrequencyTraitsArray>::~CPersistTraits<CReactionFrequencyTraitsArray>'
+00c1e570	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c1fcc0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ??0CMember_00c34aa0@@QAE@XZ -> 00c34aa0 labelled 'CVtable_012b4fbc::CVtable_012b4fbc'	RELOC_NAME: ??0CMemberN@@QAE@PAX@Z -> 00c0dab0 labelled 'CString::CString'
+00c203a0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ??0CSoundPlayParameters@@QAE@XZ -> 00c1bd10 labelled '_unattributed::CClass_00c1bd10'	
+00c20440	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ?Set18@CRecordBuilder_00c16310@@QAEXJ@Z -> 00c1bbd0 labelled 'CThing::SetCurrentMapNumber'	
+00c20560	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ?Set20@CRecordBuilder_00c16310@@QAEXJ@Z -> 00c1bc00 labelled 'CThing::SetCurrentMapNumber'	
+00c20c50	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'	RELOC_NAME: ?SetFloat38@CUnprovenSoundParams_00c344d0@@QAEJM@Z -> 00c344d0 labelled 'CVoiceParams::SetPitchScale'
+00c20c80	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'	RELOC_NAME: ?SetUserGain@CUnprovenSoundParams_00c344d0@@QAEJM@Z -> 00c34500 labelled 'CVoiceParams::SetGainScale'
+00c20e50	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'	RELOC_NAME: ?Set3DPosition@CUnprovenSoundParams_00c344d0@@QAEJABVCUnprovenVector_00c345b0@@@Z -> 00c345b0 labelled 'SUIStyleRecord_00c345b0::Assign'
+00c20eb0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'	RELOC_NAME: ?Set2DPosition@CUnprovenSoundParams_00c344d0@@QAEJM@Z -> 00c34580 labelled 'CVoiceParams::SetUnprovenParameter28'
+00c20f60	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'	
+00c21560	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'	RELOC_NAME: ?LeaveState2@CSoundEvent@@QAEPAXPAUCSoundEventManager@@@Z -> 00c20920 labelled 'CSoundEvent::StopWaitingForData' | RELOC_NAME: ?LeaveState6@CSoundEvent@@QAEPAXPAUCSoundEventManager@@@Z -> 00c20b50 labelled 'CSoundEvent::StopPhysical' | RELOC_NAME: ?LeaveState5@CSoundEvent@@QAEPAXPAUCSoundEventManager@@@Z -> 00c20bb0 labelled 'CSoundEvent::StopVirtual' | RELOC_NAME: ?LeaveState3@CSoundEvent@@QAEPAXPAUCSoundEventManager@@@Z -> 00c209c0 labelled 'CSoundEvent::StopWaitingForPhysicalPlayer' | RELOC_NAME: ?LeaveState4@CSoundEvent@@QAEPAXPAUCSoundEventManager@@@Z -> 00c208e0 labelled 'CSoundEvent::StopWaitingForMemory'
+00c21700	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'	RELOC_NAME: ?LeaveState3@CSoundEvent@@QAEPAXPAUCSoundEventManager@@@Z -> 00c209c0 labelled 'CSoundEvent::StopWaitingForPhysicalPlayer' | RELOC_NAME: ?EnterState4@CSoundEvent@@QAEPAXPAUCSoundEventManager@@@Z -> 00c20880 labelled 'CSoundEvent::WaitForMemory' | RELOC_NAME: ?LeaveState6@CSoundEvent@@QAEPAXPAUCSoundEventManager@@@Z -> 00c20b50 labelled 'CSoundEvent::StopPhysical'
+00c21ba0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ??0CKey_00c119d0@@QAE@XZ -> 00c25c50 labelled 'C3DGroup2::C3DGroup2'	RELOC_NAME: ??0COcclusion_00c21ba0@@QAE@XZ -> 00c34320 labelled 'CEnginePrimitiveOcclusionManager::CEnginePrimitiveOcclusionManager' | RELOC_NAME: ?Init@CScriptModuleBase@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'
+00c22520	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ??1CStackOwner_00c287e0@@QAE@XZ -> 00c287e0 labelled 'Stack<unsigned_long,64>::Stack<unsigned_long,64>::~Stack<unsigned_long,64>'	RELOC_NAME: ??1CBankArray@@QAE@XZ -> 00c22a00 labelled 'CVtable_012b3820::CVtable_012b3820'
+00c23fe0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ??1SEntry_00c23e00@@QAE@XZ -> 00c271d0 labelled 'SoundObject_SetVtable_c271d0'	RELOC_NAME: ??_M@YGXPAXIHP6EX0@Z@Z -> 00bfeed8 labelled '`eh_vector_destructor_iterator''
+00c24240	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ??1SEntry_00c24050@@QAE@XZ -> 00c29eb0 labelled 'CSteeringGroup::~CSteeringGroup'	RELOC_NAME: ??_M@YGXPAXIHP6EX0@Z@Z -> 00bfeed8 labelled '`eh_vector_destructor_iterator''
+00c25c20	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ??1CInputObject_00c48290@@QAE@XZ -> 00c354a0 labelled '_unattributed::~CScriptModule_00c354a0'	
+00c25cb0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ?Release@CSoundSample@@QAEXXZ -> 00c1ea40 labelled 'NParticleEngine::CParticle::IncrementLifetimer'	
+00c26060	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ?Release@CSoundSample@@QAEXXZ -> 00c1ea40 labelled 'NParticleEngine::CParticle::IncrementLifetimer'	
+00c267e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?CreateSample@CStreamSoundBank@@QAEPAVCSoundSample@@PAUSSampleFormat@@JJJ@Z -> 00c0e7e0 labelled '_global::Alloc' | RELOC_NAME: ??0CSoundPlayParameters@@QAE@XZ -> 00c1bd10 labelled '_unattributed::CClass_00c1bd10' | RELOC_NAME: ?StartSound@CPooledResourceManager@@QAEXPAVCSoundDriver@@JPAJ1@Z -> 00c12cd0 labelled '_global::CombatBlockReward_ProcessWithExceptionHandler' | RELOC_NAME: ??1CPooledResource@@QAE@XZ -> 00c26550 labelled '_global::SetMemberConst_00c26550'
+00c26b20	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c26c10	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock+pksem		RELOC_NAME: ??0CNodeBase_00c26c10@@QAE@J@Z -> 00c2a230 labelled 'CVtable_012b4148::CVtable_012b4148' | RELOC_NAME: ?Register@CChainNode_00c26c10@@QAEXXZ -> 00c2a270 labelled 'CAsyncThreadLauncher::StartThread'
+00c26cd0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c26de0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?Equip@CItem_00c26de0@@QAEJPAUCOwner_00c26de0@@J@Z -> 00c26090 labelled 'CStreamBuffer::FinishLoading' | RELOC_NAME: ?Detach@CItem_00c26de0@@QAEXPAUCOwner_00c26de0@@@Z -> 00c26390 labelled 'CStreamBuffer::Release' | RELOC_NAME: ??1CItem_00c26de0@@QAE@XZ -> 00c26400 labelled 'CStreamBuffer::~CStreamBuffer'
+00c26f80	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c27070	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock+pksem		RELOC_NAME: ??0CNodeBase_00c27070@@QAE@J@Z -> 00c2a230 labelled 'CVtable_012b4148::CVtable_012b4148' | RELOC_NAME: ?Register@CChainNode_00c27070@@QAEXXZ -> 00c2a270 labelled 'CAsyncThreadLauncher::StartThread'
+00c27130	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock+pksem		
+00c27550	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		SHARED_HEADER_AVAILABLE C3DVector | RELOC_NAME: _CODA_SetSourcePosition@8 -> 00c33fd0 labelled 'SetVectorA'
+00c275e0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	pklock+reloc47	RELOC_NAME: _New_c35b10@8 -> 00c35b10 labelled 'CEngineSubPrimitiveBase::operator_new'	
+00c27620	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c27670	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: _CodaSource_SetPropertyFCUnlessAccepted@8 -> 00c35f20 labelled '_global::Enable2DSceneRenderingOnRejectingObject'
+00c276b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: _CODA_StopSource@8 -> 00c35dd0 labelled 'CDrawAutoPickups_ShouldRender'
+00c27760	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c27890	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c279a0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?RenderBuffer_00c35dd0@@YGXPAXJ@Z -> 00c35dd0 labelled 'CDrawAutoPickups_ShouldRender'
+00c279e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?ProcessQueue_00c35c50@@YGXPAXJJ@Z -> 00c35c50 labelled '_global::DispatchNavigationUpdate_00c35c50'
+00c27a20	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?NotifyTarget@@YGXPAUCMailboxTarget@@JJ@Z -> 00c35c30 labelled '_unattributed::ForwardIfStateMask217'
+00c27a60	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	pklock+reloc47	RELOC_NAME: ?StdcallForward_00c3cde0@@YGXPAX@Z -> 00c36090 labelled 'operator_new'	RELOC_NAME: ?Remove@CRegistry_00c27a60@@QAEXPAUCInventoryItem_00c27a60@@@Z -> 00c21ea0 labelled 'NScript::CIsThingAlive::operator()' | RELOC_NAME: ?FreeBlockC_00c35980@@YGXPAX@Z -> 00c35980 labelled '_global::Static_RecycleAction_on_0143bb58_00c35980'
+00c27d80	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_3dm.log	defmove	RELOC_NAME: ?GetGroup@CSoundPlayParameters@@QBEGXZ -> 00c1bab0 labelled 'CChickenSign::GetByteD'	
+00c29fb0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pksem		
+00c29fc0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c2a090	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c2a150	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c2c590	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?ReadLeafData_00c2c590@@YIXPAX_NPAF2@Z -> 00c0aee0 labelled '_global::SetMaskBit16'
+00c2c600	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?ReadLeafData_00c2c600@@YIXPAX_NPAF2@Z -> 00c0af00 labelled '_global::SetMaskBit8'
+00c2c750	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?Add@CTarget_00c2c750@@QAEXPAUCParticleProgram_00c2c750@@@Z -> 00c14a50 labelled 'PKCDeferredBank::DeleteData'
+00c2c7e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?Lookup@CTarget_00c2c7e0@@QAEPAUCResolvedKey_00c2c7e0@@PAX@Z -> 00c0e950 labelled 'CScriptHost::FindGroup' | RELOC_NAME: ??0CEvent_00c2c7e0@@QAE@PAUCCombatEventSource_00c2c7e0@@PAUCResolvedKey_00c2c7e0@@PAX@Z -> 00c38570 labelled 'CConstraintRepeat_00c38470::CConstraintRepeat_00c38470' | RELOC_NAME: ?Register@CDispatcherA_00c2c7e0@@QAEXPAUCEvent_00c2c7e0@@@Z -> 00c2a7f0 labelled 'CUnprovenCollectionOwner_00C2A7F0::ApplyFilter'
+00c2c8f0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?Handle@CAgentA_00c2c8f0@@QAEXPAUCEvent_00c2c8f0@@@Z -> 00c2a840 labelled 'CUnprovenCollectionOwner_00C2A840::ApplyFilter'
+00c2c970	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c2c9d0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c2ca40	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pklock		RELOC_NAME: ?Create@CEventFactory_00c2ca40@@QAEPAXPAUCCombat_00c2ca40@@PAX11111@Z -> 00c2a490 labelled '_global::CTCPropertyContainer_InitializeObject'
+00c2cad0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pklock		
+00c2d3b0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ??1CActivationReceptor_00c38b20@@QAE@XZ -> 00c38b20 labelled '_global::CTCActivationReceptor_Update'	RELOC_NAME: ?Reset@CArtResourceSet_00c2d3b0@@QAEXJ@Z -> 00c2d210 labelled 'CInstanceManager::FadeOutAll' | RELOC_NAME: ??1CMember_00c2d3b0@@QAE@XZ -> 00c167c0 labelled 'CFileInstaller::CActiveFile::OnReadFinished' | RELOC_NAME: ??_M@YGXPAXIHP6EX0@Z@Z -> 00bfeed8 labelled '`eh_vector_destructor_iterator''
+00c2d490	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	held	RELOC_NAME: ?Update@CInstance@@QAEXKKK@Z -> 00c38d60 labelled 'CTCActivationReceptorBase_HandleStateTransition'	RELOC_NAME: ?IsIdle@CInstance@@QBE_NXZ -> 00c38840 labelled 'CAnimFilterNoGroup::operator()'
+00c2e140	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ??1CTypedContainer_00c3b1d0@@QAE@XZ -> 00c3b1d0 labelled '_global::Map_ClearAll' | RELOC_NAME: ??1CTypedContainer_00c3ac40@@QAE@XZ -> 00c3ac40 labelled '_global::ScriptInfo_Destructor'	
+00c30550	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ??1CMember_00c17b10@@QAE@XZ -> 00c17b10 labelled 'CPixelShaderData::~CPixelShaderData'	SHARED_HEADER_AVAILABLE CItem | RELOC_NAME: ??1CItem@N_00c3b840@@QAE@XZ -> 00c3b840 labelled 'CUnprovenTransferRecord_00C3B850::~CUnprovenTransferRecord_00C3B850'
+00c30640	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ??1CMember_00c17b10@@QAE@XZ -> 00c17b10 labelled 'CPixelShaderData::~CPixelShaderData'	SHARED_HEADER_AVAILABLE CItem | RELOC_NAME: ??1CItem@N_00c3b960@@QAE@XZ -> 00c3b960 labelled 'CUnprovenTransferRecord_00C3B970::~CUnprovenTransferRecord_00C3B970'
+00c30730	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ??1CUnprovenTransferRecord_00C3B7A0@@QAE@XZ -> 00c3b6b0 labelled '_unattributed::~CTCInventoryItem_00c3b6b0' | RELOC_NAME: ??1CMember_00c17b10@@QAE@XZ -> 00c17b10 labelled 'CPixelShaderData::~CPixelShaderData'	
+00c34a50	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ?GetCount@?$CPtrArray@PAUCTableEntry@@@@QAEKXZ -> 00c42ac0 labelled '_global::GetMember_dword0x8_00c42ac0'	
+00c34aa0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_1.log	reloc47	RELOC_NAME: ??0CPlaybackEntry@@QAE@XZ -> 00c42a60 labelled 'CIndexBuffer::CIndexBuffer'	
+00c354a0	RELOCATION_MATCH PASS	logs/vland_v2_1.log	pksem		
+00c35510	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c355e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_1.log	pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ?ThreadProc_00c35510@@YGKPAX@Z -> 00c35510 labelled '_global::ThreadManager_ValidateAndProcess' | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c36230	RELOCATION_MATCH PASS	logs/vland_v2_2.log	held		
+00c36430	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	held	RELOC_NAME: ?Init@CAmbientCube@@QAEXJPAX@Z -> 00c461e0 labelled 'CMatrix::InterpolateViewport'	SHARED_HEADER_AVAILABLE CThing
+00c37130	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ??1CVar_00c37050@@QAE@XZ -> 00c463a0 labelled '_unattributed::ReleaseMember_00c463a0'	
+00c37b90	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ??1CPredicateOwner_00c473f0@@QAE@XZ -> 00c473f0 labelled '~CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::~CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'	
+00c38410	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock		RELOC_NAME: ?Add@CTarget_00c38410@@QAEXPAUCParticleProgram_00c38410@@@Z -> 00c2c8f0 labelled '_global::Combat_HandleBlockParryEvent'
+00c384e0	MATCH PASS	logs/vland_v2_3dm.log	defmove		
+00c38600	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock		RELOC_NAME: ?Select@CGuiTree_00c38600@@QAEXPAX00@Z -> 00c0b570 labelled 'CAngleInterpolator::SetTarget'
+00c386a0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c386f0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c38740	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c38790	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c387e0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c39290	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c392f0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock+pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c393f0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c39450	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c394b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock+pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c395b0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c39610	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c39670	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock+pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c39770	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c397d0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c39830	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock+pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c39930	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c39990	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c399f0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock+pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c39af0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c39ba0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c39bf0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c39c40	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c39c90	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c39ce0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c3c590	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ??0CPooledNode@@QAE@XZ -> 00c4cf20 labelled 'CBase_00c4cf20::CBase_00c4cf20'	
+00c3c720	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ?Destroy@CDeviceBuffer_00c3c7a0@@QAEXXZ -> 00c4d9b0 labelled 'Audio_DeleteBuffers'	
+00c3ce50	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ??0CPooledNode@@QAE@XZ -> 00c4cf20 labelled 'CBase_00c4cf20::CBase_00c4cf20'	
+00c3cea0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ??0CPooledNode@@QAE@XZ -> 00c4cf20 labelled 'CBase_00c4cf20::CBase_00c4cf20'	
+00c3dcd0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ??0CPooledNode@@QAE@XZ -> 00c4cf20 labelled 'CBase_00c4cf20::CBase_00c4cf20'	RELOC_NAME: ?Take@CPool_00c3dcd0@@QAEPAUCAction_00c3dcd0@@XZ -> 00c3c9a0 labelled 'CNodePool::GetFree' | RELOC_NAME: ??2CMorphAction_00c3dcd0@@SAPAXI@Z -> 00c3c360 labelled 'CodaMalloc' | RELOC_NAME: ?Touch@CPool_00c3dcd0@@QAEXXZ -> 00c3ca30 labelled 'CNodePool::PopFree' | RELOC_NAME: ?Register@CPool_00c3dcd0@@QAEXPAUCAction_00c3dcd0@@@Z -> 00c3c9b0 labelled 'CNodePool::PushActive'
+00c42d60	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ??0CPooledNode@@QAE@XZ -> 00c4cf20 labelled 'CBase_00c4cf20::CBase_00c4cf20'	RELOC_NAME: ??0CCoverMember_00c42d60@@QAE@XZ -> 00c44250 labelled 'CDisplayEngineInit::CDisplayEngineInit'
+00c44270	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ?Release@CReferenceLease@@QAEXXZ -> 00c3c5f0 labelled 'NInventory::CItem::SetQuestPersistentFlag'	
+00c443d0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ?Release@CReferenceLease@@QAEXXZ -> 00c3c5f0 labelled 'NInventory::CItem::SetQuestPersistentFlag'	
+00c44580	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ??0CIcicleData@@QAE@XZ -> 00c42d60 labelled '_unattributed::CAIStateGroup_CreatureUseCoverBase_00c42d60'	
+00c44ab0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ?Apply@CTarget@@QAEXMG@Z -> 00c0b420 labelled 'CAudioParamBlock::GetGain'	RELOC_NAME: ?GetSnapshot@CInputSource@@QAEAAUSInputSnapshot@@AAU2@JJ@Z -> 00c383d0 labelled 'CRegistryLayer_00c383d0::Add' | RELOC_NAME: ?GetPressed@SInputSnapshot@@QAEGJ@Z -> 00c27bc0 labelled 'CMaskedChickenSign::GetWordC'
+00c44f80	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ??1CBankArray@@QAE@XZ -> 00c22a00 labelled 'CVtable_012b3820::CVtable_012b3820'	RELOC_NAME: ??1CLast_00c44f80@@QAE@XZ -> 00c61bd0 labelled '_unattributed::ReleaseMember_00c61bd0'
+00c47300	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_3dm.log	defmove	RELOC_NAME: ?IsFinished@CAmbientSourceDef@@QBE_NXZ -> 00c384e0 labelled 'CTCOnHeroPush::IsAngry'	
+00c48220	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pksem		RELOC_NAME: ??1CMember_00c48220@@QAE@XZ -> 00c48db0 labelled 'PKCStaticQueue<SDecoderMessage>::~PKCStaticQueue'
+00c487b0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c48800	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c48860	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock+pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c48960	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c48a00	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c48aa0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c48b40	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c48be0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c48c80	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c49420	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c49650	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock+pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: _StopSource_00c49650@12 -> 00c35c30 labelled '_unattributed::ForwardIfStateMask217' | RELOC_NAME: _ReleaseSource_00c49650@4 -> 00c35d50 labelled '_global::Uninitialise' | RELOC_NAME: _DestroySource_00c49650@4 -> 00c35980 labelled '_global::Static_RecycleAction_on_0143bb58_00c35980' | RELOC_NAME: ?Pop@CFrameQueue_00c49650@@QAEPAUCFrame_00c49650@@XZ -> 00c49ff0 labelled '_global::CTCHeroExperience_OnTrophyNotification' | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)' | RELOC_NAME: ??1CFrame_00c49650@@QAE@XZ -> 00c491b0 labelled 'CLocalDetailCacheMap::CloseStaticMap' | RELOC_NAME: ??1CPart48_00c49650@@QAE@XZ -> 00c49d00 labelled '_unattributed::~SPair_00c49d00' | RELOC_NAME: ??1CHandleTable_00c49650@@QAE@XZ -> 00c1c820 labelled 'PKCCriticalSection::~PKCCriticalSection' | RELOC_NAME: ??1CPart8_00c49650@@QAE@XZ -> 00c49af0 labelled 'PKCStaticQueue<CCodaFrame *>::~PKCStaticQueue'
+00c497e0	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ?StdcallForward_00c3cde0@@YGXPAX@Z -> 00c36090 labelled 'operator_new'	
+00c49820	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock+pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??0CMailboxQueue@@QAE@PAXJ@Z -> 00c49b30 labelled '_unattributed::CScriptEntry_00c49b30' | RELOC_NAME: ??0CFrameStack@@QAE@J@Z -> 00c49c90 labelled 'CLocalDetailPrimitiveRepeatedMesh::CLocalDetailPrimitiveRepeatedMesh' | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)' | RELOC_NAME: _CreateSource_00c35ec0@4 -> 00c35ec0 labelled '_global::AudioSystem_SetOutputFlags' | RELOC_NAME: _CODA_StopSource@8 -> 00c35dd0 labelled 'CDrawAutoPickups_ShouldRender'
+00c49a70	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c49b30	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c49b90	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c49c30	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c49c90	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c49d50	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c49dd0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c49ff0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4a0e0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c4b270	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock+pksem		RELOC_NAME: ??1PKCReadRequestQueue@@QAE@XZ -> 00c4bb00 labelled 'PKCStaticQueue<SReadRequest>::~PKCStaticQueue'
+00c4bab0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c4bc20	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c4bc80	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pksem		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4bd70	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock+pksem		
+00c4be10	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c4c2f0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c4c330	RELOCATION_MATCH PASS	logs/vland_v2_2.log	pklock		
+00c4c370	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4c440	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4c6c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4c7a0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4c8b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)' | RELOC_NAME: ??0CSBAgents_00c4c8b0@@QAE@PAUCMasterObject_00c4c8b0@@KPAX11@Z -> 00c62c70 labelled 'CSBAgents::CSBAgents::CSBAgents' | RELOC_NAME: ?GetBuffer@CSBAgents_00c4c8b0@@QAEPAXXZ -> 00c62c20 labelled '_global::GetMember_dword0x14_00c62c20' | RELOC_NAME: ?Reset@CMasterObject_00c4c8b0@@QAEXXZ -> 00c4c330 labelled 'CDebugString::AddString' | RELOC_NAME: ?Commit@CMasterObject_00c4c8b0@@QAEXXZ -> 00c4c6c0 labelled '_global::PKRACDependency_OnFinalized'
+00c4cab0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)' | RELOC_NAME: ?Reset@CMasterObject_00c4c8b0@@QAEXXZ -> 00c4c330 labelled 'CDebugString::AddString' | RELOC_NAME: ?Commit@CMasterObject_00c4c8b0@@QAEXXZ -> 00c4c6c0 labelled '_global::PKRACDependency_OnFinalized'
+00c4cd80	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock		SHARED_HEADER_AVAILABLE CString | RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)' | RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)' | RELOC_NAME: ??1CMasterObject_00c4cd80@@QAE@XZ -> 00c4c370 labelled '_global::PKRACMasterObject_FinalizeObject'
+00c54090	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ??0CAudioContextBase@@QAE@XZ -> 00c6ad70 labelled 'CVtable_012b95c4::CVtable_012b95c4'	
+00c62440	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: _FableRet_c623f0@4 -> 00c623f0 labelled 'std::_List_const_iterator<std::_List_val<CVsyncCallbackTimer::CPendingQuery,std::allocator<CVsyncCallbackTimer::CPendingQuery>_>_>::operator--'	SHARED_HEADER_AVAILABLE CRegion
+00c6ec80	RELOCATION_MATCH PASS INTRODUCED_WARN	logs/vland_v2_2.log	reloc47	RELOC_NAME: ?RebuildGain@CVtable_012bedb8@@QAEX_N@Z -> 00c6ebe0 labelled 'Audio_SetVolume_Channel'	
+00ca6670	RELOCATION_MATCH PASS	logs/vland_v2_2.log	filterstate		
+00ca7780	RELOCATION_MATCH PASS	logs/vland_v2_2.log	cmy		
+00ca7920	MATCH PASS	logs/vland_v2_2.log	strm		
+00ca7c80	RELOCATION_MATCH PASS	logs/vland_v2_2.log	cmy		
+00ca84f0	MATCH PASS	logs/vland_v2_2.log	strm		
+00ca8500	MATCH PASS	logs/vland_v2_2.log	strm		
+00ca8530	MATCH PASS	logs/vland_v2_2.log	strm		
+00ca98e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	strm		RELOC_NAME: ?LastErrorToHResult_00ca98e0@@YAJXZ -> 00cb0bc0 labelled '_global::AmGetLastErrorToHResult'
+00ca9a40	RELOCATION_MATCH PASS	logs/vland_v2_2.log	strm		
+00ca9a90	RELOCATION_MATCH PASS	logs/vland_v2_2.log	strm		
+00ca9ae0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	strm		
+00ca9b10	RELOCATION_MATCH PASS	logs/vland_v2_2.log	strm		
+00ca9b40	RELOCATION_MATCH PASS	logs/vland_v2_2.log	strm		
+00ca9d00	RELOCATION_MATCH PASS	logs/vland_v2_2.log	cmy		
+00caa790	RELOCATION_MATCH PASS	logs/vland_v2_2.log	cmy		
+00caaac0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	cmy		SHARED_HEADER_AVAILABLE CJoystickDX
+00cacaf0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	cmy		
+00cacb80	RELOCATION_MATCH PASS	logs/vland_v2_2.log	cmy		
+00cacc80	RELOCATION_MATCH PASS	logs/vland_v2_2.log	cmy		
+00caec80	MATCH PASS	logs/vland_v2_2.log	strm		
+00caecb0	MATCH PASS	logs/vland_v2_2.log	strm		
+00caefb0	RELOCATION_MATCH PASS	logs/vland_v2_2.log	cmy		
+00caf480	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	cmy		RELOC_NAME: ??1CMember_00caebb0@@QAE@XZ -> 00caebb0 labelled 'CDispParams::~CDispParams'
+01211781	RELOCATION_MATCH PASS	logs/vland_v2_2.log	includer		
+01216d00	RELOCATION_MATCH PASS	logs/vland_v2_2.log	includer		
+01224b00	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock		RELOC_CONFLICT: _$E2 -> 0122add0 here, 01228930 in landed 01219f00 | RELOC_NAME: _$E2 -> 0122add0 labelled '_global::Static_operator_new_00c1c820_on_0143bafc_0122add0'
+01224b20	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_v2_2.log	pklock		RELOC_CONFLICT: _$E2 -> 0122ade0 here, 01228930 in landed 01219f00 | RELOC_NAME: _$E2 -> 0122ade0 labelled '_global::Static_operator_new_00c1c820_on_0143bb14_0122ade0'

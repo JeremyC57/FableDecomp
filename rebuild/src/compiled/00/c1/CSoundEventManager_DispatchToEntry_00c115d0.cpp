@@ -1,5 +1,6 @@
 // CSoundEventManager::DispatchToEntry(void* key, void* argument) -- vtable 0x012B2748 slot 24: under a scoped lock over the module section @ 0x0143BB14, the event set at +0x2c looks the key up (@ 0x00C21E20) and the entry found, if any, is notified through its virtual slot 7 with (this, argument); EH-framed
 // Leaf: ?DispatchToEntry@CSoundEventManager@@QAEXPAX0@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Naming (sweep1, 2026-10-25): libpk class set CSoundEventManager (vtable 0x012B2748) / CSoundEventSet (its +0x2C
 //   member) / CSoundEvent (0xB4 bytes, vtable 0x012B3674): the describer 0x00C21040 called by TraceEvents/
@@ -20,15 +21,9 @@
 // CSoundEventManager vtable 0x012B2748 (0x012B27A8), and the +0x2c member is the manager's event set; the method name is
 // descriptive.
 // One of 3 bodies of this shape.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;   // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CObserver {
     virtual void v00();

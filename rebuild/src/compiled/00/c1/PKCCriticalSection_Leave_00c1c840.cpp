@@ -1,5 +1,6 @@
 // PKCCriticalSection::Leave() -- leave the embedded Win32 critical section (LeaveCriticalSection(this))
 // Leaf: ?Leave@PKCCriticalSection@@QAEXXZ
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1C840, 8 bytes (`push ecx ; call [LeaveCriticalSection] ; ret`), thiscall.
 // Identity: `this` is a bare 0x18-byte CRITICAL_SECTION handed to the KERNEL32 LeaveCriticalSection import (IAT 0x0143FE10); callers:
 //   its only caller, ~PKCProtectionInstance 0x00C0FFE0 (call 0x00C100C7).
@@ -10,14 +11,7 @@
 // Label correction: the landed row was the free `__fastcall operator_new_00c1c840(void*)` over an address-named import (catalog "operator_new", propagated).
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void* section);   // KERNEL32 import 0x0143FE10
 
-class PKCCriticalSection {                      // a Win32 CRITICAL_SECTION (0x18 bytes)
-public:
-    unsigned char m_section[0x18];
-    PKCCriticalSection();                       // 0x00C1C810
-    ~PKCCriticalSection();                      // 0x00C1C820
-    void Enter();                               // 0x00C1C830
-    void Leave();                               // 0x00C1C840
-};
+#include "libpk/PKCProtectionInstance.h"
 
 void PKCCriticalSection::Leave()
 {

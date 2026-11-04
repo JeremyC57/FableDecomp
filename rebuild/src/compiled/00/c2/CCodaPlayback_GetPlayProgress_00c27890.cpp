@@ -1,5 +1,6 @@
 // CCodaPlayback::GetPlayProgress(CPanel* panel, SPlayProgress* progress) -- under the audio module lock, report how far the CODA source has played (position / length) and its loops left; a stopped source, or a one-shot that sat at position 0 after it started for longer than the panel's end timeout, reports 1.0 and 0 loops
 // Leaf: ?GetPlayProgress@CCodaPlayback@@
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C27890, 257 bytes, thiscall, `ret 8`. Slot 2 of the CCodaPlayback vtable 0x012B4034
 //   (at 0x012B403C; slots 0/1/6/7 are the landed SetSourceProperty20 0x00C275E0, SetVolume 0x00C27620,
@@ -12,17 +13,7 @@
 // Shape: the EH frame with no state-0 store (`mov eax,fs:[0]` first) comes from the early returns inside the lock's
 //   scope (the landed Update 0x00C276B0 lesson); the finished result stores the loop count before the 1.0f; both
 //   unsigned-to-float conversions get the `jge ; fadd [2^32]` fix-up.
-class PKCCriticalSection {                               // a Win32 CRITICAL_SECTION (0x18 bytes)
-public:
-    unsigned char m_section[0x18];
-};
-class PKCProtectionInstance {                            // scoped guard: section + entry tick
-public:
-    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
-    ~PKCProtectionInstance();                            // 0x00C0FFE0
-    PKCCriticalSection* m_pSection;                      // +0
-    unsigned long m_tick;                                // +4
-};
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_soundLock;                   // 0x0143BAFC the audio library's module lock
 
 struct CODASource;                                       // opaque CODA source object

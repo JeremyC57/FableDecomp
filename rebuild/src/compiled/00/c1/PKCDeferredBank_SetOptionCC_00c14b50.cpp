@@ -4,6 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C14B50, 108 bytes (+4 int3), __fastcall, ret 4; vtable 0x012B29F8 slot 1 (no RTTI).
 // Flags: /EHsc
 // Leaf: SetOptionCC
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy). Spellings unified: 0143bb14: ?g_settingsLock@@3UPKCCriticalSection@@A -> ?g_settingsLock@@3VPKCCriticalSection@@A; 00c0ffc0: ??0PKCProtectionInstance@@QAE@PAUPKCCriticalSection@@@Z -> ??0PKCProtectionInstance@@QAE@PAVPKCCriticalSection@@@Z
 // The catalog label (CBankFileAsyncData::OnFileReadCompletion) is propagated: the row is reached only through
 // slot 1 of the unnamed vtable at 0x012B29F8 (its twin, slot 2, sets the neighbouring byte); the class is named
 // by its vtable.
@@ -16,15 +17,9 @@
 // Shape: early return out of the guarded scope -- the second exit keeps the /EHsc frame (fs:[0] chain, one state -1
 // store hoisted above the branch and a single destructor call); the compare loads the record byte
 // before the argument, the record pointer is re-read for each store, and the lock dies on both paths.
-struct PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_settingsLock;          // 0x0143BB14
 
-struct PKCProtectionInstance {                              // 8 bytes
-    PKCCriticalSection* m_pSection;
-    unsigned long m_entryTick;
-    PKCProtectionInstance(PKCCriticalSection* section);    // 0x00C0FFC0
-    ~PKCProtectionInstance();                               // 0x00C0FFE0
-};
 
 struct SSettingsRecord {
     unsigned long m_00;

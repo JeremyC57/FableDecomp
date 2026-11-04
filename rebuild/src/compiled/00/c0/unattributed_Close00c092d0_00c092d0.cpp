@@ -1,17 +1,12 @@
 // CPixelShader_00c092d0::Close() -- EH-framed: under a scoped lock over the global @ 0x0143BB14, the optional object at +0x60 is finished (@ 0x00C15C70); when the timer at +0x74 is armed, the tick count (import) past the deadline at +0x78 triggers the shutdown landed at 0x00C091F0 and re-arms the deadline to now minus (-1000 / the rate at +0x70)
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C092D0, oracle length 175 bytes. Built under /EHsc.
 // Retail bytes:  ... mov ecx,[esi+60h] ; test ecx,ecx ; mov dword ptr [esp+14h],0 ; je skip ; call CTarget::Finish ; skip: mov eax,[esi+74h] ; test eax,eax ; jne armed ; ... ret ; armed: push edi ; call [__imp_GetTickCount] ; mov edi,eax ; cmp edi,[esi+78h] ; jbe done ; mov ecx,esi ; call Shutdown ; fld dword ptr [pool] ; fdiv dword ptr [esi+70h] ; call __ftol ; sub edi,eax ; mov [esi+78h],edi ; done: lea ecx,[esp+8] ; mov dword ptr [esp+18h],-1 ; call ~PKCProtectionInstance ; ...
 // The edi save is sunk into the armed path; the pool constant is -1000.0f. The manifest label is
 // propagated; the class is named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount();   // IAT 0x0143FDFC
 

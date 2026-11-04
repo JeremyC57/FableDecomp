@@ -1,5 +1,6 @@
 // CEntryHost_00c37b90::DestroyEntry(void* key) -- find the registered entry for `key` in the host's registry (+0x28, slot-17 lookup by key address) and delete it (its destructor 0x00C473F0 unregisters it)
 // Leaf: ?DestroyEntry@CEntryHost_00c37b90@@
+// Vendor naming V2 (plan phase 1, one address, one name): 0x00C473F0 ??1CPredicateOwner_00c473f0@@QAE@XZ (was ??1CRegisteredEntry_00c37b90@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C37B90, 49 bytes (+ int3 padding), __fastcall `ret 4`.
 // Library: libpk audio (no PDB/RTTI); descriptive names. The inverse of CreateEntry 0x00C37990 (same host, same
 //   0x68-byte entry of the landed 0x00C47340 / 0x00C473F0 constructor/destructor). Reached through 0x00C2BAD0 and
@@ -10,20 +11,20 @@
 //   the argument slot (`mov eax,[esp+4] ; mov [esp+4],eax`) before the lookup; `delete entry` keeps its null test.
 void __cdecl operator delete(void* block) throw();             // 0x00BFE9BC
 
-struct CRegisteredEntry_00c37b90 {              // 0x68 bytes, not polymorphic
+struct CPredicateOwner_00c473f0 {              // 0x68 bytes, not polymorphic
     unsigned char _body[0x68];
-    ~CRegisteredEntry_00c37b90();               // 0x00C473F0
+    ~CPredicateOwner_00c473f0();               // 0x00C473F0
 };
 
 struct CEntryRegistry_00c37b90 {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07();
-    virtual void Remove(CRegisteredEntry_00c37b90* entry);     // slot 8 (+0x20)
-    virtual void Add(CRegisteredEntry_00c37b90* entry);        // slot 9 (+0x24)
+    virtual void Remove(CPredicateOwner_00c473f0* entry);     // slot 8 (+0x20)
+    virtual void Add(CPredicateOwner_00c473f0* entry);        // slot 9 (+0x24)
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
     virtual void v15(); virtual void v16();
-    virtual CRegisteredEntry_00c37b90* Lookup(void* const* key);   // slot 17 (+0x44)
-    CRegisteredEntry_00c37b90* Find(void* key) { return Lookup(&key); }
+    virtual CPredicateOwner_00c473f0* Lookup(void* const* key);   // slot 17 (+0x44)
+    CPredicateOwner_00c473f0* Find(void* key) { return Lookup(&key); }
 };
 
 struct CEntryHost_00c37b90 {
@@ -34,6 +35,6 @@ struct CEntryHost_00c37b90 {
 
 void CEntryHost_00c37b90::DestroyEntry(void* key)
 {
-    CRegisteredEntry_00c37b90* entry = m_registry.Find(key);
+    CPredicateOwner_00c473f0* entry = m_registry.Find(key);
     delete entry;
 }

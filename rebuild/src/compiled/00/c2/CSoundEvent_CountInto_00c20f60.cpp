@@ -1,5 +1,6 @@
 // CSoundEvent::CountInto(CSoundEventStats* stats) -- check the event state (any state accepted), then bump the per-state counter of the caller's statistics record for event states 2..6
 // Leaf: ?CountInto@CSoundEvent@@QAEXPAUCSoundEventStats@@@Z
+// Vendor naming V2 (plan phase 1, one address, one name): 0x00C20720 ?CheckState@CSoundEvent@@QAEXJ@Z (was ?ChangeState@CSoundEvent@@QAEXJ@Z)
 // Naming (sweep1, 2026-10-25): libpk class set CSoundEventManager (vtable 0x012B2748) / CSoundEventSet (its +0x2C
 //   member) / CSoundEvent (0xB4 bytes, vtable 0x012B3674): the describer 0x00C21040 called by TraceEvents/
 //   TracePlaybacks prints "EventId(", "Priority=", "State='Waiting for data'" / "Playing using physical player";
@@ -28,7 +29,7 @@ struct CSoundEventStats {                        // 0x18-byte statistics record 
 struct CSoundEvent {                             // 0xB4-byte manager event
     unsigned char  _pad00[0xac];
     unsigned short m_state;                     // +0xAC
-    void ChangeState(long state);               // 0x00C20720
+    void CheckState(long state);               // 0x00C20720
     void CountInto(CSoundEventStats* stats);
 };
 
@@ -37,7 +38,7 @@ struct CSoundEvent {                             // 0xB4-byte manager event
 // whose every case is empty; it touches only eax): compiled above the caller so VC7.1 knows it preserves ecx.
 // An EMPTY stand-in is worse: VC7.1 then drops the call altogether.
 extern long g_soundEventRequestedState;          // stand-in only (not a retail global)
-__declspec(noinline) void CSoundEvent::ChangeState(long state)
+__declspec(noinline) void CSoundEvent::CheckState(long state)
 {
     g_soundEventRequestedState = state;
 }
@@ -45,7 +46,7 @@ __declspec(noinline) void CSoundEvent::ChangeState(long state)
 
 void CSoundEvent::CountInto(CSoundEventStats* stats)
 {
-    ChangeState(-1);
+    CheckState(-1);
     switch (m_state) {
     case 6: ++stats->m_count3; return;
     case 3: ++stats->m_count0; return;

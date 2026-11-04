@@ -1,5 +1,6 @@
 // CWorkerThread_00c355e0::CWorkerThread(owner, params) -- EH-framed constructor (the manifest's "PKCThreadManager::InitializeThread" is propagated; the landed 0x00C48640 allocates it): the owner at +0, the handle at +4 cleared, a (0, 1) event part at +8 (@ 0x00C29FC0; destructor @ 0x00C29FB0, state 0); the optional parameter record supplies the stack size and priority; the thread is created on the landed procedure 0x00C35510 with the worker as its argument and a null handle raises the "Problems starting thread" warning (PKCThreadManager.cpp line 23; the string and the trace temporary live in the dead parameter slot, state 1); a non-zero priority is applied (SetThreadPriority)
 // Leaf: ??0CWorkerThread_00c355e0@@QAE@PAXPBUSThreadParams_00c355e0@@@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): the member built out of line @ 0x00C29FC0 is the landed PKCSemaphore (PKCSemaphore::PKCSemaphore(long initialCount, long maximumCount), file .\PKCSemaphore.cpp; dtor 0x00C29FB0); the stand-in spelling is gone.
 // Naming (naming wave 21): the error-macro stream is the libpk CString of the landed own rows 0x00C0BA40 / 0x00C0DEC0 / 0x00C0DF00 and the break the landed CDebugBreak 0x00C16750 (as the landed PKCDefaultFileManager ctor 0x00C1AC40 spells the same macro).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C355E0, oracle length 269 bytes. Built under /EHsc.
@@ -30,11 +31,7 @@ struct SThreadParams_00c355e0 {            // 8 bytes: stack size and priority
     long m_priority;
 };
 
-class PKCSemaphore { public:               // +8: the Win32 semaphore handle
-    void* m_hSemaphore;
-    PKCSemaphore(long initialCount, long maximumCount);   // 0x00C29FC0
-    ~PKCSemaphore();                       // 0x00C29FB0
-};
+#include "libpk/PKCSemaphore.h"
 
 struct CWorkerThread_00c355e0 {            // 12 bytes
     void* m_pOwner;                        // +0

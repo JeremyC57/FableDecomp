@@ -1,5 +1,6 @@
 // CSoundInstance_00c15cd0::SetPlaybackValue(unsigned long value) -- under the module lock, forwards the unsigned value as a float to the player object at +8 (which applies it to both of its 0x180-byte voices)
 // Leaf: SetPlaybackValue
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C2D210 ?FadeOutAll@CInstanceManager@@QAEXM@Z (was ?SetValue@CSoundPlayer_00c15cd0@@QAEXM@Z)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C15CD0, 114 bytes (+ int3 padding), __fastcall `ret 4`, EH-framed.
@@ -10,15 +11,9 @@
 //   4294967296.0f` @ 0x0122DCB4), the state store scheduled into the test; the float goes through `push ecx ;
 //   fstp [esp]`.
 // Label correction: the catalog's `Combat_ProcessAnimationByValue` is propagated; descriptive names.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-class PKCProtectionInstance { public:              // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);   // 0x00C0FFC0
-    ~PKCProtectionInstance();               // 0x00C0FFE0
-};
 
 struct CInstanceManager {
     void FadeOutAll(float value);            // 0x00C2D210

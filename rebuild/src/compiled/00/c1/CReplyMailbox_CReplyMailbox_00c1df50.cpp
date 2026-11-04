@@ -1,5 +1,7 @@
 // CReplyMailbox::CReplyMailbox() -- builds the reply channel: the one-shot queue at +0 (@ 0x00C1DD50), then the mailbox at +0x10 over it with capacity 1 (@ 0x00C1D9D0)
 // Leaf: ??0CReplyMailbox@@QAE@XZ
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1DF50, 23 bytes, __thiscall `ret`, returns `this`:
 //   push esi ; mov esi,ecx ; call 0xc1dd50 ; push 1 ; push esi ; lea ecx,[esi+10h] ; call 0xc1d9d0 ; mov eax,esi ;
 //   pop esi ; ret
@@ -24,19 +26,9 @@ struct SFileReply {                             // 8 bytes: the answer a PKCASyn
     SFileReply() : m_bSuccess(true), m_value(0) {}
 };
 
-class PKCCriticalSection {                      // a Win32 CRITICAL_SECTION (0x18 bytes)
-public:
-    unsigned char m_section[0x18];
-    PKCCriticalSection();                       // 0x00C1C810
-    ~PKCCriticalSection();                      // 0x00C1C820
-};
+#include "libpk/PKCProtectionInstance.h"
 
-class PKCSemaphore {                            // a Win32 handle
-public:
-    void* m_hSemaphore;
-    PKCSemaphore(long initialCount, long maximumCount);   // 0x00C29FC0
-    ~PKCSemaphore();                            // 0x00C29FB0
-};
+#include "libpk/PKCSemaphore.h"
 
 template<class T> class PKCQueue {              // the queue interface PKCMailbox drives (4 pure slots, no destructor slot)
 public:

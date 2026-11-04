@@ -1,5 +1,8 @@
-// CBaseObject::~CBaseObject() -- DirectShow BaseClasses (combase.cpp): decrement the live-object count CBaseObject::m_cObjects (0x0143CCF4); when the last object goes, free OleAut32.dll if LoadOLEAut32 loaded it (hlibOLEAut32 0x0143CCF0) and clear the handle
-// Leaf: ??1CBaseObject
+// CMyBaseObject::~CMyBaseObject() -- DirectShow BaseClasses combase.cpp (Fable's strmbase renames CBaseObject to CMyBaseObject): decrement the live-object count CMyBaseObject::m_cObjects (0x0143CCF4); when the last object goes, free OleAut32.dll if LoadOLEAut32 loaded it (hlibOLEAut32 0x0143CCF0) and clear the handle
+// Leaf: ??1CMyBaseObject@@QAE@XZ
+// Vendor naming V2 (plan phase 1, one address, one name; V1 decision D2, proven): ??1CMyBaseObject@@QAE@XZ (was ??1CBaseObject@@QAE@XZ,
+//   the engine class's destructor 0x0099A430); RTTI of vtable 0x0129D08C names CUnknown's base CMyBaseObject, as the shared
+//   engine/CBaseVideoRenderer.h retail branch models it; the static count becomes ?m_cObjects@CMyBaseObject@@0JA.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CACAF0, 42 bytes (+6 int3), __fastcall `ret` (this is never read: the release build keeps no cookie).
 // Callees: InterlockedDecrement (IAT 0x0143FD38), FreeLibrary (IAT 0x0143FE3C).
 // Manifest label "Refcount_DecrementUnloadDLL" is descriptive.
@@ -31,16 +34,16 @@ struct __declspec(novtable) INonDelegatingUnknown {
     virtual ULONG __stdcall NonDelegatingAddRef() = 0;
     virtual ULONG __stdcall NonDelegatingRelease() = 0;
 };
-class CBaseObject {                               // release build: only the static live-object count
-    CBaseObject(const CBaseObject&);
-    void operator=(const CBaseObject&);
+class CMyBaseObject {                               // release build: only the static live-object count
+    CMyBaseObject(const CMyBaseObject&);
+    void operator=(const CMyBaseObject&);
     static LONG m_cObjects;
 public:
-    CBaseObject(const WCHAR* pName);
-    CBaseObject(const char* pName);
-    ~CBaseObject();
+    CMyBaseObject(const WCHAR* pName);
+    CMyBaseObject(const char* pName);
+    ~CMyBaseObject();
 };
-class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CBaseObject {
+class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CMyBaseObject {
     IUnknown* const m_pUnknown;                   // +0x04
 protected:
     LONG m_cRef;                                  // +0x08
@@ -96,7 +99,7 @@ extern HINSTANCE hlibOLEAut32;                    // 0x0143CCF0 (combase.cpp)
 
 /* Destructor */
 
-CBaseObject::~CBaseObject()
+CMyBaseObject::~CMyBaseObject()
 {
     /* Decrement the number of objects active */
     if (InterlockedDecrement(&m_cObjects) == 0) {

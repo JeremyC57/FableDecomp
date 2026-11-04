@@ -1,12 +1,13 @@
 // CMasterObject_00c4cd80::Complete() -- EH-framed under the master object's profiling lock: warn (PKRACMasterObject.cpp lines 29-32) when nothing was sent, objects are still out, the callback is null or the dependency list is still open, then call the completion callback with success = no failures and the stored context
 // Leaf: ?Complete@CMasterObject_00c4cd80@@QAEXXZ
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C4C440, 625 bytes, thiscall, /EHsc.
 // Identity: libpk PKRACMasterObject.cpp (trace lines 29..32); landed Finalize 0x00C4CD80 calls it as ?Complete@CMasterObject_00c4cd80@@QAEXXZ.
 // Strings: "No objects have been sent.... deeeerrrr", "There are still objects out there...", "Null callback",
 //   "Dependancy list still being created...".
 // Shape: four trace blocks, then the callback slot 0 with (failures == 0, context).
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4c8b0)(const char* text);
 extern PFNLOGSINK_00c4c8b0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
@@ -20,12 +21,6 @@ class CString { public:                  // MFC-style string: one word, the shar
 };
 struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte
     CDebugBreak();                         // 0x00C16750
-};
-class PKCProtectionInstance { public:             // scoped profiling lock: two words
-    void* m_pSection;
-    void* m_pPrevious;
-    PKCProtectionInstance(PKCCriticalSection* section);      // 0x00C0FFC0
-    ~PKCProtectionInstance();                  // 0x00C0FFE0
 };
 
 struct ICompletionCallback_00c4cd80 {      // the master object's completion callback (+0x0C)

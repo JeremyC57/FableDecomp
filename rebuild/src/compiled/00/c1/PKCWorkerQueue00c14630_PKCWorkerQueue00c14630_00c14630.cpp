@@ -1,5 +1,7 @@
 // PKCWorkerQueue_00c14630::~PKCWorkerQueue_00c14630() -- worker-queue destructor: under its own critical section it appends a null (quit) request to the request vector and releases the semaphore once, then joins the worker thread and deletes it; the compiler then destroys the semaphore, the vector and the critical section
 // Leaf: ??1PKCWorkerQueue_00c14630@
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C2A150 ?Release@PKCSemaphore@@QAEXXZ (was ?Release@PKCSemaphore_00c14630@@QAEXXZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C14630, 204 bytes (+ int3 padding), __fastcall `ret`, EH-framed.
@@ -19,7 +21,7 @@
 //   <new> does): a plain declaration adds an EH state-0 store before the vector's inline _Tidy and moves the zero
 //   register ahead of the lock (the state 2 then stored as an immediate).
 // Label correction: the catalog's `DetailCache_Cleanup_Variant` is propagated; descriptive names.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 void __cdecl operator delete(void* block) throw();   // 0x00BFE9BC (nothrow, as VC7.1 <new> declares it)
 
 struct PKCCriticalSection_00c14630 {               // 0x18 bytes: a CRITICAL_SECTION
@@ -28,18 +30,8 @@ struct PKCCriticalSection_00c14630 {               // 0x18 bytes: a CRITICAL_SEC
     ~PKCCriticalSection_00c14630();                 // 0x00C1C820
 };
 
-class PKCProtectionInstance { public:                      // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);            // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
-struct PKCSemaphore {                     // a Win32 semaphore handle
-    void* m_hSemaphore;
-    void Release();                            // 0x00C2A150
-    ~PKCSemaphore();                       // 0x00C29FB0
-};
+#include "libpk/PKCSemaphore.h"
 
 struct PKCThread_00c14630 {                        // polymorphic worker thread
     virtual ~PKCThread_00c14630();                  // slot 0: the deleting destructor

@@ -1,5 +1,6 @@
 // CUnprovenPKInterface_012B2A74::SetRecord0C(long) -- store the argument into the word at +0xC of the record at +8, under the audio library's profile lock
 // Leaf: ?SetRecord0C@CUnprovenPKInterface_012B2A74@@UAEXJ@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C15F30, 46 bytes, thiscall, `ret 4`.
 // Identity (descriptive): slot 7 (at 0x012B2A90) of the no-RTTI vtable 0x012B2A74, which the constructor 0x00C16050 and
 //   destructor 0x00C16130 store; slot 10 is the landed 0x00C15FC0 that stores the record's word +0 the same way, and
@@ -9,17 +10,7 @@
 //   over the module section 0x0143BB14.
 // Shape (family K060, representative 0x00C15F30): the landed CAtmosOwner_00c14820 setter -- the record pointer read after
 //   the guard is built, then the argument, one store, the guard destroyed.
-class PKCCriticalSection {                               // a Win32 CRITICAL_SECTION (0x18 bytes)
-public:
-    unsigned char m_section[0x18];
-};
-class PKCProtectionInstance {                            // scoped guard: section + entry tick
-public:
-    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
-    ~PKCProtectionInstance();                            // 0x00C0FFE0
-    PKCCriticalSection* m_pSection;                      // +0
-    unsigned long m_tick;                                // +4
-};
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;               // 0x0143BB14
 struct CUnprovenPKRecord_012B2A74 {
     long Word00;                                         // +0x00

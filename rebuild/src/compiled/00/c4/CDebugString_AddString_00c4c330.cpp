@@ -1,4 +1,5 @@
 // CMasterObject_00c4c8b0::Reset() -- bump the string counter under the debug-string lock
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C4C330 ?Reset@CMasterObject_00c4c8b0@@QAEXXZ (was ?AddString@CDebugString@@QAEXXZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4C330, length 40 bytes.
 // Callees: PKCProtectionInstance::PKCProtectionInstance(CProfileSection*) @ 0x00C0FFC0, PKCProtectionInstance::~PKCProtectionInstance @ 0x00C0FFE0.
@@ -6,15 +7,9 @@
 // section at +0x10, the counter at +8 incremented through eax between the constructor and destructor calls.
 // PDB CMasterObject_00c4c8b0 (28 bytes): +8 vector<CWideString> Strings, +0x18 long NoStrings; retail reads +8 as the
 // counter and locks at +0x10, so the layout is modelled locally (the retail vector is 12 bytes).
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 struct CProfileSection { unsigned char _opaque[4]; };   // only its address is taken
 
-class PKCProtectionInstance { public:                  // 8-byte scoped lock
-    CProfileSection* m_pSection;
-    long             m_entryTick;
-    PKCProtectionInstance(PKCCriticalSection* section);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                          // 0x00C0FFE0
-};
 
 class CMasterObject_00c4c8b0 { public:
     unsigned char   _pad[8];           // +0x00

@@ -1,0 +1,7 @@
+address	source	test	module	name	leaf	flags
+00c44e80	00/c4/CAmbientEmitter_Update_00c44e80.cpp	00/c4/CAmbientEmitter_Update_00c44e80_test.cpp	CAmbientEmitter	Update	?Update@CAmbientEmitter@@QAEXXZ	
+00c45980	00/c4/CAmbientCube_UpdateLevel_00c45980.cpp	00/c4/CAmbientCube_UpdateLevel_00c45980_test.cpp	CAmbientCube	UpdateLevel	?UpdateLevel@CAmbientCube@@QAEXM@Z	
+00c12940	00/c1/CSoundEventManager_StartEvent_00c12940.cpp	00/c1/CSoundEventManager_StartEvent_00c12940_test.cpp	CSoundEventManager	StartEvent	?StartEvent@CSoundEventManager@@QAEPAUCSoundEvent@@JPBUCSoundPlayParameters@@JPAUCDriver@@PBUCPKVoiceParams@@PAJ@Z	/EHsc
+00c38d60	00/c3/CInstance_Update_00c38d60.cpp	00/c3/CInstance_Update_00c38d60_test.cpp	CInstance	Update	?Update@CInstance@@QAEXKKK@Z	/EHsc
+00c54190	00/c5/CDecodedStream_SetProperties_00c54190.cpp	00/c5/CDecodedStream_SetProperties_00c54190_test.cpp	CDecodedStream	SetProperties	?SetProperties@CDecodedStream@@UAEXPBUSSourceUpdate@@@Z	
+00c89350	00/c8/CReverbDiffuserStage_ProcessRamped_00c89350.cpp	00/c8/CReverbDiffuserStage_ProcessRamped_00c89350_test.cpp	CReverbDiffuserStage	ProcessRamped	?ProcessRamped@CReverbDiffuserStage@@QAEXPAUSDiffuserStageParams@@PBU2@PBUCRingBuffer@@PAM3II@Z	

@@ -1,5 +1,6 @@
 // CVtable_012b33f0::Read(void* buffer, long* pOffset, long* pSize) -- under the audio library's scoped lock, copy the sample's data into buffer; unwrap a compressed chunk and decode ADPCM to PCM in place; the data offset and final size are returned through the two pointers; -1 on any failure, else 0
 // Leaf: ?Read@CVtable_012b33f0@@UAEJPAXPAJ1@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C1E9C0 ?GetSequencePhase@CSequenceClient00c1e9f0@@QAEJXZ (was ?GetDataSize@CSoundSample@@QAEJXZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1E300, 450 bytes, thiscall `ret 0Ch`, EH-framed (the scoped lock).
@@ -21,15 +22,9 @@
 //   buffer is released with scalar `delete` (??3). The `start` out-word shares the dead pOffset argument slot.
 #include <string.h>
 void* __cdecl operator new[](unsigned int size);         // 0x00BFEB22
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;                // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);    // 0x00C0FFC0
-    ~PKCProtectionInstance();                             // 0x00C0FFE0
-};
 
 struct CSoundFormat {                                     // 20-byte format record
     unsigned long  Size;                                  // +0x00

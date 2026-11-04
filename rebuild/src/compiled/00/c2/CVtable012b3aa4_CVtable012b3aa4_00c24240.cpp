@@ -2,6 +2,7 @@
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C24240, length 61 bytes.
 // Leaf: ??1CVtable_012b3aa4
+// Vendor naming V2 (plan phase 1, one address, one name): 0x00C29EB0 ??1SEntry_00c24050@@QAE@XZ (was ??1SEntry_00c29eb0@@QAE@XZ)
 // Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi+14h] ; push eax ; mov dword ptr [esi],offset CVtable_012b3aa4::`vftable' ;
 //                call operator delete[] ; mov esi,[esi+10h] ; add esp,4 ; test esi,esi ; je R ; mov ecx,[esi-4] ; push edi ;
 //                push offset ~SEntry ; lea edi,[esi-4] ; push ecx ; push 0ch ; push esi ; call `eh vector destructor iterator' ;
@@ -14,15 +15,15 @@
 // `eh vector destructor iterator` form of `delete[]` needs /EHsc. The buffer's `delete[]` (a POD array) has no null
 // test and its argument is read before the vtable store; the entry array's `delete[]` carries the compiler's null test.
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
-struct SEntry_00c29eb0 {                               // 0x0c bytes with a destructor @ 0x00c29eb0
+struct SEntry_00c24050 {                               // 0x0c bytes with a destructor @ 0x00c29eb0
     unsigned char _body[0x0c];
-    ~SEntry_00c29eb0();
+    ~SEntry_00c24050();
 };
 
 struct CVtable_012b3aa4 {                               // vtable 0x012b3aa4
     virtual void v00();
     unsigned char  _pad04[0x0c];
-    SEntry_00c29eb0*  m_pEntries;                      // +0x10
+    SEntry_00c24050*  m_pEntries;                      // +0x10
     unsigned char* m_pBuffer;                      // +0x14
     ~CVtable_012b3aa4();
 };

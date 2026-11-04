@@ -1,4 +1,6 @@
 // CMailboxQueue_00c392f0::DispatchMessage(void*) -- acquire the semaphore at +0x1C (@ 0x00C2A090), scoped lock, assert the mailbox at +0x18 holds an item (virtual slot 2; else a debug-stream message and a debugger break), dispatch the message through virtual slot 0, return it; EH-framed
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C2A090 ?Wait@PKCSemaphore@@QAEXXZ (was ?Acquire@CSemaphore@@QAEXXZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C392F0, oracle length 241 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
@@ -16,20 +18,11 @@
 // result is ignored), the lock destroyed (state -1). Built under /EHsc; the funclets land
 // through the funclet pass. The manifest label is propagated; the literals are the retail
 // strings. One of 6 bodies of this shape.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 struct CMailboxQueue_00c392f0;
 
-class PKCProtectionInstance { public:                        // 8-byte scoped lock over the queue
-    CMailboxQueue_00c392f0* m_pQueue;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* queue);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                         // 0x00C0FFE0
-};
 
-struct PKCSemaphore {
-    long m_value;
-    void Wait();                        // 0x00C2A090
-};
+#include "libpk/PKCSemaphore.h"
 
 struct CMailbox {
     virtual void* Dispatch(void* message); // slot 0

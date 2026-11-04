@@ -1,17 +1,12 @@
 // CScriptHost_00c0e600::TryActivate(void*) -- EH-framed: under a scoped lock over the global @ 0x0143BB14, false while the word at +0x48 is set; else the current script at +4 is released (virtual slot 3) and nulled, the factory at +0x5c of the owner at +8 asked for a new one (virtual slot 0 with the key), stored at +4; true when one was made
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C0E600, oracle length 171 bytes. Built under /EHsc.
 // Retail bytes:  ... mov eax,[esi+48h] ; test eax,eax ; mov dword ptr [esp+14h],0 ; je go ; mov dword ptr [esp+14h],-1 ; lea ecx,[esp+4] ; call ~PKCProtectionInstance ; xor al,al ; ... ret 4 ; go: mov ecx,[esi+4] ; test ecx,ecx ; je make ; mov eax,[ecx] ; call [eax+0Ch] ; mov dword ptr [esi+4],0 ; make: mov ecx,[esi+8] ; mov ecx,[ecx+5Ch] ; mov eax,[esp+1Ch] ; mov edx,[ecx] ; push eax ; call [edx] ; test eax,eax ; mov [esi+4],eax ; lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; je false ; call ~PKCProtectionInstance ; ... mov al,1 ; ... ret 4
 // The two false exits share the lock destructor call; the true exit keeps its own. The manifest
 // label is a description; the class is named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CScript_00c0e600 {
     virtual void v00(); virtual void v01(); virtual void v02();

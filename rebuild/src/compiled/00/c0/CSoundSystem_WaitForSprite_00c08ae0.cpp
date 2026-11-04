@@ -1,6 +1,7 @@
 // CSoundSystem::WaitForSprite() -- poll the owner's optional sprite object (+0x60) under the library lock until it reports finished, sleeping 100 ms after every poll
 // Flags: /EHsc
 // Leaf: WaitForSprite
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): CAudioOwner -> CSoundSystem, the one class name for vtable 0x012B1E24 (the libpk sound system CreateSoundSystem_00c096e0 0x00C096E0 returns and the landed CSoundManagerLH ctor 0x00A3EF00 drives; descriptive, libpk has no PDB).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C08AE0, 133 bytes (`ret`). Built under /EHsc. Descriptive names (no PDB covers
 //   this library): the manifest's "EventQueue_ProcessBlockParrySuccessesWithTimeout" is propagated. The only caller is
@@ -11,15 +12,9 @@
 // Shape: the lock lives in an inner scope (state 0 while it is alive, -1 before Sleep); the done flag is bl.
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);   // IAT 0x0143FE1C
 
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;       // 0x0143BB14
 
-class PKCProtectionInstance { public:                            // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);     // 0x00C0FFC0
-    ~PKCProtectionInstance();                             // 0x00C0FFE0
-};
 
 struct CSprite {
     bool IsFinished();                          // 0x00C15B00

@@ -1,11 +1,15 @@
 // CBaseRenderer::CompleteStateChange(FILTER_STATE OldState) -- DirectShow BaseClasses renbase.cpp: finish a pause/run transition (Ready, S_OK) when unconnected, at end of stream, or holding a sample from a non-stopped state; otherwise NotReady and S_FALSE
-// Leaf: ?CompleteStateChange@CBaseRenderer@@
+// Leaf: ?CompleteStateChange@CBaseRenderer@@UAEJW4_FilterState@@@Z
+// Vendor naming V2 (plan phase 1, one address, one name): ?CompleteStateChange@CBaseRenderer@@UAEJW4_FilterState@@@Z (was
+//   ?CompleteStateChange@CBaseRenderer@@UAEJJ@Z): renbase.h `virtual HRESULT CompleteStateChange(FILTER_STATE OldState);` with
+//   strmif.h `typedef enum _FilterState { State_Stopped, State_Paused, State_Running } FILTER_STATE;` (V1 NAME_FIXES).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA6670, 93 bytes (+3 int3). __fastcall (primary slot 12), `ret 4`.
 // Callees: SetEvent / ResetEvent (KERNEL32 IAT 0x0143FDE0 / 0x0143FED4) through the inline Ready / NotReady on m_evComplete
 //   (+0x5C); HaveCurrentSample (primary slot 40, `call [eax+0A0h]`).
 // Layout: CBaseRenderer m_bEOS +0x70, m_pInputPin +0x78; CBasePin::m_Connected +0x18.
 // Shape: renbase.cpp verbatim; the unconnected exit shares the third Ready block, the end-of-stream one keeps its own.
 // Label: manifest "SetOrResetEventBasedOnState" is a descriptive placeholder; the real name is the strmbase member.
+typedef enum _FilterState { State_Stopped = 0, State_Paused = State_Stopped + 1, State_Running = State_Paused + 1 } FILTER_STATE;   // strmif.h
 // ---- strmbase model (DirectShow BaseClasses, DX9 SDK era: combase.h / wxutil.h; UNICODE, release build) ----
 typedef struct _GUID { unsigned long Data1; unsigned short Data2; unsigned short Data3; unsigned char Data4[8]; } GUID;
 extern "C" int __cdecl memcmp(const void* a, const void* b, unsigned int n);
@@ -93,7 +97,7 @@ struct IMediaFilter : IPersist {
     virtual long __stdcall Stop() = 0;                                         // 4
     virtual long __stdcall Pause() = 0;                                        // 5
     virtual long __stdcall Run(REFERENCE_TIME start) = 0;                      // 6
-    virtual long __stdcall GetState(unsigned long dwMSecs, long* State) = 0;   // 7
+    virtual long __stdcall GetState(unsigned long dwMSecs, FILTER_STATE* State) = 0;   // 7
     virtual long __stdcall SetSyncSource(IReferenceClock* clock) = 0;          // 8
     virtual long __stdcall GetSyncSource(IReferenceClock** clock) = 0;         // 9
 };
@@ -110,7 +114,7 @@ struct IAMovieSetup : IUnknown {
 };
 class CBaseFilter : public CUnknown, public IBaseFilter, public IAMovieSetup {   // amfilter.h: IBaseFilter +0x0C, IAMovieSetup +0x10
 public:
-    long m_State;                                // +0x14 FILTER_STATE (0 Stopped, 1 Paused, 2 Running)
+    FILTER_STATE m_State;                        // +0x14 (0 Stopped, 1 Paused, 2 Running)
     IReferenceClock* m_pClock;                   // +0x18
     CRefTime m_tStart;                           // +0x20
     GUID m_clsid;                                // +0x28
@@ -217,12 +221,12 @@ public:
     long __stdcall NonDelegatingQueryInterface(const GUID& riid, void** ppv);
     virtual long SourceThreadCanWait(int bCanWait);                         // 10 (+0x28)
     virtual long WaitForRenderTime();                                       // 11 (+0x2c)
-    virtual long CompleteStateChange(long OldState);                        // 12 (+0x30)
+    virtual long CompleteStateChange(FILTER_STATE OldState);                        // 12 (+0x30)
     int IsEndOfStream() { return m_bEOS; }
     virtual void OnReceiveFirstSample(IMediaSample* pMediaSample);          // 13 (+0x34)
     void Ready() { m_evComplete.Set(); }
     void NotReady() { m_evComplete.Reset(); }
-    long GetRealState() { return m_State; }
+    FILTER_STATE GetRealState() { return m_State; }
     void SetRepaintStatus(int bRepaint);                                    // 0x00CA4EA0
     virtual void OnRenderStart(IMediaSample* pMediaSample);                 // 14 (+0x38)
     virtual void OnRenderEnd(IMediaSample* pMediaSample);                   // 15 (+0x3c)
@@ -262,9 +266,7 @@ public:
     void WaitForReceiveToComplete();                                        // 0x00CA47D0
 };
 
-#define State_Stopped 0
-
-long CBaseRenderer::CompleteStateChange(long OldState)
+long CBaseRenderer::CompleteStateChange(FILTER_STATE OldState)
 {
     // Allow us to be paused when disconnected
 

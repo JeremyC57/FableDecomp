@@ -1,5 +1,7 @@
 // PKCDefaultFileManager::AsyncReadThread() -- the file manager's worker loop: receive each read request, seek and read it, trace a failed or short read, report completion to the request's callback and release the file; a quit request (key -1) ends the loop and releases the done semaphore
 // Leaf: ?AsyncReadThread@PKCDefaultFileManager@@QAEXXZ
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C1A9C0, 485 bytes, thiscall `ret`, EH-framed (the two trace CStrings).
 // Identity (class proven, method name descriptive; libpk has no PDB or RTTI): the traces name ".\PKCDefaultFileManager.cpp"
@@ -16,7 +18,7 @@
 //   do/while over a quit flag (for(;;)+break, while(Receive()->key != -1) and a return inside the loop all rotate the
 //   Receive above the loop); `success = false` after each trace's own scope gives the shared ~CString tail followed by
 //   the flag store. The short-read size goes out as unsigned long and the count read as unsigned int (two operator<<).
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern "C" __declspec(dllimport) unsigned long __stdcall SetFilePointer(void* hFile, long distance, long* distanceHigh, unsigned long method);   // 0x0143FDE8
 extern "C" __declspec(dllimport) int __stdcall ReadFile(void* hFile, void* buffer, unsigned long toRead, unsigned long* read, void* overlapped);       // 0x0143FED0
 
@@ -52,10 +54,7 @@ public:
     T* Receive(T* item);                        // 0x00C1B030
 };
 
-class PKCSemaphore { public:
-    void* m_hSemaphore;
-    void Release();                             // 0x00C2A150
-};
+#include "libpk/PKCSemaphore.h"
 
 class PKCDefaultFileManager {
 public:

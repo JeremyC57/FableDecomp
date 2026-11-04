@@ -1,4 +1,5 @@
 // dynamic initializer for PKCCriticalSection g_soundLock @ 0x0143BAFC -- default-constructs it out of line, then registers its destructor with atexit
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x01224B00, oracle length 22 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -10,11 +11,6 @@
 // with _atexit @ 0x004012BC. Reconstructing the global definition below makes VC7.1 emit this
 // exact function (and the thunk) from the .CRT$XCU table; the object's name is descriptive, its
 // real identifier is not recoverable. One of 36 bodies of this shape.
-class PKCCriticalSection {                // a Win32 CRITICAL_SECTION (0x18 bytes)
-public:
-    PKCCriticalSection();               // 0x00C1C810
-    ~PKCCriticalSection();              // 0x00C1C820, reached through the atexit thunk
-    unsigned char m_section[0x18];
-};
+#include "libpk/PKCProtectionInstance.h"
 
 PKCCriticalSection g_soundLock;            // 0x0143BAFC the audio library's module lock (chunk 586)

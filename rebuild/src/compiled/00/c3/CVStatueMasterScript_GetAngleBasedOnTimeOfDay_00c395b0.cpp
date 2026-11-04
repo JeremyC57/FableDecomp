@@ -1,4 +1,5 @@
 // CV_StatueMasterScript::GetAngleBasedOnTimeOfDay() -- EH-framed: guard object (ctor @ 0x00C0FFC0, dtor @ 0x00C0FFE0) around a virtual slot-2 call on the object at +0x18
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C395B0, oracle length 90 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -8,13 +9,7 @@
 // @ 0x00C0FFC0, the result of virtual slot 2 of the object at +0x18 is kept in esi
 // while the guard is destroyed out of line @ 0x00C0FFE0 (state -1), then returned. Classes other
 // than the labelled one are placeholders. One of 5 bodies of this shape.
-class PKCCriticalSection;
-class PKCProtectionInstance { public:
-    void* m_first;
-    void* m_second;
-    PKCProtectionInstance(PKCCriticalSection* owner);        // 0x00C0FFC0
-    ~PKCProtectionInstance();                  // 0x00C0FFE0
-};
+#include "libpk/PKCProtectionInstance.h"
 
 struct CQueried {
     virtual void v00();

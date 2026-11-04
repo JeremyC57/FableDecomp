@@ -1,5 +1,7 @@
 // PKCBufferedReader::~PKCBufferedReader() -- EH-framed destructor of libpk's buffered stream reader: its vtable (0x012B8458), every outstanding buffer handed back (ReturnAllBuffers 0x00C4B010; EH state 1), the buffer memory (+4) and the buffer-state array (+0x1c) freed, then the members: the read signal (+0x48: its semaphore 0x00C29FB0, state 2, then its critical section 0x00C1C820, state 0) and the request queue (+0x34, 0x00C4BB00)
 // Leaf: ??1PKCBufferedReader@@QAE@XZ
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4B270, 137 bytes, thiscall, plain `ret`.
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 445 "0xC4B270 CTeleportDataOwner dtor = ~CStreamReader"):
@@ -16,19 +18,9 @@
 //   PKCCriticalSection are descriptive (no PDB/RTTI for libpk).
 // Shape: the destructor is not virtual (slot 0 of 0x012B8458 is 0x00C4AB90, an EH-framed member taking a byte flag, not a
 //   deleting destructor); the read signal's implicit destructor is inlined.
-class PKCCriticalSection {                              // one CRITICAL_SECTION
-public:
-    PKCCriticalSection();                               // 0x00C1C810 (InitializeCriticalSection)
-    ~PKCCriticalSection();                              // 0x00C1C820 (DeleteCriticalSection)
-    unsigned char m_section[0x18];
-};
+#include "libpk/PKCProtectionInstance.h"
 
-class PKCSemaphore {                                    // .\PKCSemaphore.cpp
-public:
-    PKCSemaphore(long initialCount, long maximumCount); // 0x00C29FC0 (CreateSemaphoreA)
-    ~PKCSemaphore();                                    // 0x00C29FB0 (CloseHandle)
-    void* m_handle;
-};
+#include "libpk/PKCSemaphore.h"
 
 struct SReadRequest;
 

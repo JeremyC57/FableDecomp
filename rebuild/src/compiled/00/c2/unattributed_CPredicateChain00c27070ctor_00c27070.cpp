@@ -1,5 +1,7 @@
 // CPredicateChain_00c27070::CPredicateChain_00c27070(void*) -- EH-framed constructor: the base built out of line (@ 0x00C1C810, state 0), the member at +0x18 zeroed inline (words +4..+0xc, state 1), the member at +0x28 built with (0, 30000) (@ 0x00C29FC0, state 2), the node pointer at +0x2c zeroed, then a 0x20-byte node allocated (`new`, state 3) and built inline (base @ 0x00C2A230 with 0x3000, vtable 0x012B4024, the argument, the two members and `this` at +0x10..+0x1c), stored at +0x2c and registered (@ 0x00C2A270)
 // Leaf: ??0CPredicateChain_00c27070@@QAE@PAX@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C1C810 ??0PKCCriticalSection@@QAE@XZ (was ??0CPredicateBase_00c27070@@QAE@XZ)
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): the member built out of line @ 0x00C29FC0 is the landed PKCSemaphore (PKCSemaphore::PKCSemaphore(long initialCount, long maximumCount), file .\PKCSemaphore.cpp; dtor 0x00C29FB0); the stand-in spelling is gone.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C27070, oracle length 187 bytes. Built under /EHsc.
@@ -7,11 +9,7 @@
 // The twin of 0x00C26C10 (a different node vtable). The class stores no vtable of its own (the base's store is the only one). The manifest label
 // is a description; the classes are named by address.
 struct CPredicateChain_00c27070;
-struct PKCCriticalSection {
-    unsigned char _body[0x18];
-    PKCCriticalSection();             // 0x00C1C810
-    ~PKCCriticalSection();
-};
+#include "libpk/PKCProtectionInstance.h"
 
 struct CSlotList_00c27070 {                // +0x18, 16 bytes
     long m_0;
@@ -22,11 +20,7 @@ struct CSlotList_00c27070 {                // +0x18, 16 bytes
     ~CSlotList_00c27070();
 };
 
-class PKCSemaphore { public:               // +0x28, one word: the Win32 semaphore handle
-    void* m_hSemaphore;
-    PKCSemaphore(long initialCount, long maximumCount);   // 0x00C29FC0
-    ~PKCSemaphore();                       // 0x00C29FB0
-};
+#include "libpk/PKCSemaphore.h"
 
 struct CNodeBase_00c27070 {                // 16 bytes, polymorphic
     virtual void v00();

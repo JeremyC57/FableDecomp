@@ -1,16 +1,11 @@
 // CCombatStateTable_00c119d0::ProcessAnimationState(tag, entry) -- EH-framed under the module's profiling lock (0x0143BB14; ctor @ 0x00C0FFC0, dtor @ 0x00C0FFE0, state 0): -1 without an entry; otherwise a 0x10-byte lookup key is built on the frame (ctor @ 0x00C25C50, state 1) from the entry's +4 word, the entry and the entry's +8 table resolved by the tag (@ 0x00C1BAC0; set into the key's value part at +4 @ 0x00C25C70), the state map embedded at +0x1f4 is searched (slot 0x44), the key is cleared (@ 0x00C25CB0) and destroyed (@ 0x00C25CA0), and the hit's +0xc state (read before the destructors) or -1 is returned
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C119D0, oracle length 238 bytes. Built under /EHsc.
 // Retail bytes:  ... mov edi,ecx ; push offset g_section ; lea ecx,[esp+0Ch] ; call CProfileLock::CProfileLock ; mov esi,[esp+34h] ; test esi,esi ; mov dword ptr [esp+28h],0 ; je none ; lea ecx,[esp+10h] ; call CKey::CKey ; mov eax,[esp+30h] ; push eax ; lea ecx,[esi+8] ; mov byte ptr [esp+2Ch],1 ; call CTable::Lookup ; mov ecx,[esi+4] ; push eax ; push esi ; push ecx ; lea ecx,[esp+20h] ; call CKey::Set ; mov edx,[edi+1F4h] ; lea ecx,[edi+1F4h] ; lea eax,[esp+10h] ; push eax ; call [edx+44h] ; lea ecx,[esp+10h] ; mov esi,eax ; call CKey::Clear ; test esi,esi ; lea ecx,[esp+10h] ; mov byte ptr [esp+28h],0 ; je miss ; mov esi,[esi+0Ch] ; call CKey::~CKey ; lea ecx,[esp+8] ; mov dword ptr [esp+28h],-1 ; call ~CProfileLock ; pop edi ; mov eax,esi ; ... ret 8 ; miss: call CKey::~CKey ; none: lea ecx,[esp+8] ; mov dword ptr [esp+28h],-1 ; call ~CProfileLock ; ... or eax,-1 ; ... ret 8
 // The manifest label is propagated; the classes are named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
-    ~PKCProtectionInstance();              // 0x00C0FFE0
-};
 
 struct CTable_00c119d0 { void* Lookup(void* tag); };   // 0x00C1BAC0
 

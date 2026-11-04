@@ -1,4 +1,6 @@
 // CPair_00c1d780::~CPair_00c1d780() -- EH-framed empty destructor: member at +0x1c (@ 0x00C29FB0) then base @ 0x00C1C820
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C29FB0 ??1PKCSemaphore@@QAE@XZ (was ??1CMember_00c29fb0@@QAE@XZ); 0x00C1C820 ??1PKCCriticalSection@@QAE@XZ (was ??1CBase_00c1c820@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1D780, oracle length 76 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
@@ -10,18 +12,12 @@
 // destructor @ 0x00C1C820 runs under state -1.
 // The manifest label (`_Dest_val<...pair<CCharString,CScriptInfo>>`) names a map pair; classes are
 // placeholders named by their destructor addresses. One of 9 bodies.
-struct PKCCriticalSection {
-    void* m_data;
-    ~PKCCriticalSection();                  // 0x00C1C820
-};
+#include "libpk/PKCProtectionInstance.h"
 
-struct PKCSemaphore {
-    void* m_data;
-    ~PKCSemaphore();                // 0x00C29FB0
-};
+#include "libpk/PKCSemaphore.h"
 
 struct CPair_00c1d780 : PKCCriticalSection {
-    unsigned char _pad[0x18];
+    unsigned char _pad[0x4];   // after the 0x18-byte PKCCriticalSection base (libpk/PKCCriticalSection.h)
     PKCSemaphore m_member;          // +0x1c
     ~CPair_00c1d780();
 };

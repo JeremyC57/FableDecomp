@@ -4,6 +4,7 @@
 //   both operands into registers first (256v253, the earlier attempt and pass 10's baseline). Baseline-only row: identity from
 //   the guard's file string and the landed constructor 0x00C0FFC0 (descriptive libpk names, no PDB covers libpk).
 // Leaf: ??1PKCProtectionInstance@@QAE@XZ
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C0FFE0, 253 bytes, thiscall, plain `ret`; EH-framed (the trace string, state 0).
 // Identity (probable): the destructor of the landed scoped guard PKCProtectionInstance (constructor 0x00C0FFC0 stores the
@@ -35,22 +36,8 @@ struct CDebugBreak {                            // empty temporary whose constru
     CDebugBreak();                              // 0x00C16750
 };
 
-class PKCCriticalSection {                      // a Win32 CRITICAL_SECTION (0x18 bytes)
-public:
-    unsigned char m_section[0x18];
-    PKCCriticalSection();                       // 0x00C1C810
-    ~PKCCriticalSection();                      // 0x00C1C820
-    void Enter();                               // 0x00C1C830
-    void Leave();                               // 0x00C1C840
-};
+#include "libpk/PKCProtectionInstance.h"
 
-class PKCProtectionInstance {                   // 8 bytes: the guarded section and the entry tick
-public:
-    PKCCriticalSection* m_pSection;             // +0
-    unsigned long m_tick;                       // +4
-    PKCProtectionInstance(PKCCriticalSection* section);   // 0x00C0FFC0
-    ~PKCProtectionInstance();
-};
 
 PKCProtectionInstance::~PKCProtectionInstance()
 {

@@ -1,5 +1,6 @@
 // CSoundEventManager::CountPlayingEvents() -- under the module lock, counts the active events of the pool at +0x5c that are playing on a physical or a virtual player
 // Leaf: ?CountPlayingEvents@CSoundEventManager@@QAEJXZ
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Naming (sweep1, 2026-10-25): libpk class set CSoundEventManager (vtable 0x012B2748) / CSoundEventSet (its +0x2C
 //   member) / CSoundEvent (0xB4 bytes, vtable 0x012B3674): the describer 0x00C21040 called by TraceEvents/
@@ -21,15 +22,9 @@
 //   four callee-saved registers hold this, the index, the pool and the event) read back after the lock destructor;
 //   `a && (b || c)` gives the je/jne/je chain into the shared increment.
 // Label correction: the catalog's `Inventory_CountEquippedItems` is propagated.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-class PKCProtectionInstance { public:                  // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);        // 0x00C0FFC0
-    ~PKCProtectionInstance();                    // 0x00C0FFE0
-};
 
 struct CSoundEvent {                  // 0xb4 bytes
     long IsActive();                       // 0x00C20840

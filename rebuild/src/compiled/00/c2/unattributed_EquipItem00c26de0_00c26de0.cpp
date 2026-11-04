@@ -1,17 +1,12 @@
 // CItemManager_00c26de0::EquipItem(CItem*) -- EH-framed: under a scoped lock over the global @ 0x0143BB14, the item is equipped with the owner at +4 and its slot byte at +0x16 (@ 0x00C26090); when it has a node at +0 the node's word at +0x1c records whether the result was not negative and the owner's theme elements are updated for that node (@ 0x00C11950); a negative result detaches the item from the owner (@ 0x00C26390) and deletes it (destructor @ 0x00C26400, then the global operator delete)
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C26DE0, oracle length 169 bytes. Built under /EHsc.
 // Retail bytes:  ... mov esi,[item] ; movsx eax,byte ptr [esi+16h] ; mov ecx,[edi+4] ; push eax ; push ecx ; mov ecx,esi ; mov dword ptr [esp+24h],0 ; call CItem::Equip ; mov ebx,eax ; mov eax,[esi] ; test eax,eax ; je skip ; xor edx,edx ; test ebx,ebx ; setge dl ; push eax ; mov [eax+1Ch],dx ; mov ecx,[edi+4] ; call COwner::UpdateAllThemeElements ; skip: test ebx,ebx ; jge done ; mov eax,[edi+4] ; push eax ; mov ecx,esi ; call CItem::Detach ; mov ecx,esi ; call ~CItem ; push esi ; call operator delete ; add esp,4 ; done: ...
 // The signed byte slot is sign-extended for the long parameter; the `>= 0` flag is widened to the
 // 16-bit word. The manifest label is propagated; the class is named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CNode_00c26de0 {
     unsigned char _pad[0x1c];

@@ -1,4 +1,5 @@
 // SPair_00c1adb0::~SPair_00c1adb0() -- EH-framed destructor of a pair<CCharString, CScriptInfo>-like node value: the second (+0x1c, @ 0x00C29FB0) then the first (+0, @ 0x00C1C820)
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C1C820 ??1PKCCriticalSection@@QAE@XZ (was ??1CFirst_00c1adb0@@QAE@XZ); 0x00C29FB0 ??1PKCSemaphore@@QAE@XZ (was ??1CSecond_00c1adb0@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1ADB0, oracle length 76 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; lea ecx,[esi+1Ch] ; mov dword ptr [esp+10h],0 ; call ~CSecond ; mov ecx,esi ; mov dword ptr [esp+10h],-1 ; call ~CFirst ; mov ecx,[esp+8] ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret
@@ -11,10 +12,7 @@ struct PKCCriticalSection {                   // 0x1c bytes (a CCharString)
     ~PKCCriticalSection();                    // 0x00C1C820
 };
 
-struct PKCSemaphore {                  // the mapped value (a CScriptInfo)
-    unsigned char _body[4];
-    ~PKCSemaphore();                   // 0x00C29FB0
-};
+#include "libpk/PKCSemaphore.h"
 
 struct SPair_00c1adb0 {
     PKCCriticalSection first;                 // +0

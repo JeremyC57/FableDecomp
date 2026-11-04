@@ -1,6 +1,7 @@
 // CSoundSystem::CSoundSystem(CSoundSystemSetup* record, CSteeringWorldEntry* entry) -- libpk audio owner: build the owner from its setup record: the two owned containers, the record's limits, the library globals (lock 0x0143BB14, the assert hook 0x0143BB2C set to the empty 0x00C089E0, the active flag 0x0143BAF8) and settings, then the agent store (record-sized or default), the parameter block (0x00C0B200), the sound-event manager (0x00C11D00) and two more helpers
 // Flags: /EHsc
 // Leaf: ??0CSoundSystem@@QAE@PAUCSoundSystemSetup@@PAUCSteeringWorldEntry@@@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): CAudioOwner -> CSoundSystem, the one class name for vtable 0x012B1E24 (the libpk sound system CreateSoundSystem_00c096e0 0x00C096E0 returns and the landed CSoundManagerLH ctor 0x00A3EF00 drives; descriptive, libpk has no PDB).
 // Naming (sweep1, 2026-10-25): was landed as CSteeringGroup::CSteeringGroup (manifest "CSteeringGroup::Initialize");
 //   descriptive (no PDB covers this library). The object is chunk 431's audio owner (CSoundSystem), not a steering
@@ -24,7 +25,7 @@
 // Layout: library code with no RTTI or PDB type: descriptive model sized from the 0x84-byte allocation; vtables
 //   0x012B1E24 (group) and 0x012B1C98 (the +4 container; its base stores the data pointer first, as the out-of-line
 //   sibling container ctor 0x00C0A6D0 does).
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 struct CSoundSystemSetup {
     float  A0;              // +0x00
     float  A4;              // +0x04
@@ -60,12 +61,6 @@ struct CSteeringList {
     CSteeringList();                // 0x00C0A6D0
     ~CSteeringList();
     char Pad[0x20];
-};
-class PKCProtectionInstance { public:
-    PKCProtectionInstance(PKCCriticalSection* timer);   // 0x00C0FFC0
-    ~PKCProtectionInstance();             // 0x00C0FFE0
-    void* Timer;
-    unsigned long Start;
 };
 struct CSBAgentsBase {};
 struct CSBAgents : CSBAgentsBase {

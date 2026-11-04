@@ -1,5 +1,6 @@
 // CSoundEvent::Restart(CSoundEventManager* owner) -- an event in state 3 or 6 is first taken back to idle through that state's exit transition, then the event enters state 4 from idle
 // Leaf: ?Restart@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z
+// Vendor naming V2 (plan phase 1, one address, one name): 0x00C20720 ?CheckState@CSoundEvent@@QAEXJ@Z (was ?ChangeState@CSoundEvent@@QAEXJ@Z)
 // Naming (sweep1, 2026-10-25): libpk class set CSoundEventManager (vtable 0x012B2748) / CSoundEventSet (its +0x2C
 //   member) / CSoundEvent (0xB4 bytes, vtable 0x012B3674): the describer 0x00C21040 called by TraceEvents/
 //   TracePlaybacks prints "EventId(", "Priority=", "State='Waiting for data'" / "Playing using physical player";
@@ -18,7 +19,7 @@ struct CSoundEventManager;
 struct CSoundEvent {                             // 0xB4-byte state-machine event
     unsigned char  _pad00[0xac];
     unsigned short m_state;                     // +0xAC
-    void  ChangeState(long state);              // 0x00C20720
+    void  CheckState(long state);              // 0x00C20720
     void* EnterState4(CSoundEventManager* owner);      // 0x00C20880
     void* LeaveState3(CSoundEventManager* owner);      // 0x00C209C0
     void* LeaveState6(CSoundEventManager* owner);      // 0x00C20B50
@@ -29,7 +30,7 @@ struct CSoundEvent {                             // 0xB4-byte state-machine even
 // Same-TU stand-in for the retail state helper 0x00C20720 (retail: a byte-indexed jump table over the state word
 // whose every case is empty; it touches only eax): compiled above the caller so VC7.1 knows it preserves ecx.
 extern long g_soundEventRequestedState;          // stand-in only (not a retail global)
-__declspec(noinline) void CSoundEvent::ChangeState(long state)
+__declspec(noinline) void CSoundEvent::CheckState(long state)
 {
     g_soundEventRequestedState = state;
 }
@@ -37,7 +38,7 @@ __declspec(noinline) void CSoundEvent::ChangeState(long state)
 
 void CSoundEvent::Restart(CSoundEventManager* owner)
 {
-    ChangeState(-1);
+    CheckState(-1);
     if (m_state == 3)
         LeaveState3(owner);
     else if (m_state == 6)

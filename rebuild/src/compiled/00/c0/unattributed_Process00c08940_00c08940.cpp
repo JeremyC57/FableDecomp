@@ -1,17 +1,12 @@
 // CEventQueue_00c08940::Process(CEvent*) -- EH-framed: under a scoped lock over the global @ 0x0143BB14, the event goes to the optional handler at +0x64 (@ 0x00C14AD0), the handler at +0x38 (@ 0x00C12140) and the member handler at +0x3c (@ 0x00C104F0); the event's payload at +4 is released (virtual slot 3) and nulled, then the event deleted through its virtual destructor (slot 6)
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C08940, oracle length 149 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; push edi ; mov edi,ecx ; push offset g_lock ; lea ecx,[esp+0Ch] ; call PKCProtectionInstance::PKCProtectionInstance ; mov ecx,[edi+64h] ; test ecx,ecx ; mov esi,[event] ; mov dword ptr [esp+18h],0 ; je skip ; push esi ; call COptional::Handle ; skip: mov ecx,[edi+38h] ; push esi ; call CHandler::Handle ; push esi ; lea ecx,[edi+3Ch] ; call CMemberHandler::Handle ; mov ecx,[esi+4] ; test ecx,ecx ; je del ; mov eax,[ecx] ; call [eax+0Ch] ; mov dword ptr [esi+4],0 ; del: mov edx,[esi] ; push 1 ; mov ecx,esi ; call [edx+18h] ; lea ecx,[esp+8] ; mov dword ptr [esp+18h],-1 ; call ~PKCProtectionInstance ; ...
 // The item processor called by the drain loop landed at 0x00C08A00. The manifest label is
 // propagated; the class is named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CPayload_00c08940 {
     virtual void v00(); virtual void v01(); virtual void v02();

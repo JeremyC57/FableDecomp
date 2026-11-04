@@ -1,5 +1,6 @@
 // CSoundEventManager::TraceEvents() -- under the module lock, refreshes the events and then builds the description string of every active event of the pool at +0x5c for the (compiled-out) trace output
 // Leaf: ?TraceEvents@CSoundEventManager@@QAEXXZ
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C11CB0 ?UpdateItems@CSoundEventManager@@QAEXXZ (was ?UpdateEvents@CSoundEventManager@@QAEXXZ)
 // Flags: /EHsc
 // Naming (sweep1, 2026-10-25): libpk class set CSoundEventManager (vtable 0x012B2748) / CSoundEventSet (its +0x2C
@@ -20,16 +21,10 @@
 //   before its destructor); the walk uses the inline accessors that give retail's esi/edi/ebx assignment (0x00C123B0);
 //   the zero index is the state word and the first count test is a memory compare after the refresh call.
 // Label correction: the catalog's `Inventory_DebugLogState` is propagated.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 extern char* g_pchNil_0139c900;            // 0x0139C900
 
-class PKCProtectionInstance { public:                  // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);        // 0x00C0FFC0
-    ~PKCProtectionInstance();                    // 0x00C0FFE0
-};
 
 class CString { public:                      // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;

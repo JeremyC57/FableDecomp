@@ -1,5 +1,7 @@
 // CCodaFrameStreamer_00c49650::CCodaFrameStreamer_00c49650(unsigned long channels, long rate, unsigned long frames, unsigned long samples, float volume) -- EH-framed constructor of the GameCODA frame streamer: build the frame queue, the done-mailbox and the free-frame stack for the frame count, warn when it is zero (CCodaFrameStreamer.cpp line 105), new every 16-bit frame (Null frame warning, line 111) and post it, then under the sound lock create the streaming source, set its volume, start it with the frame callback and enable it
 // Leaf: ??0CCodaFrameStreamer_00c49650@@QAE@KJKKM@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C49820, 581 bytes, thiscall `ret 14h`, /EHsc.
 // Identity: libpk .\CCodaFrameStreamer.cpp (lines 105, 111); vtable 0x012B8138 over base 0x012B80AC as the landed dtor 0x00C49650.
@@ -24,23 +26,9 @@ class CString { public:                  // MFC-style string: one word, the shar
 struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte
     CDebugBreak();                         // 0x00C16750
 };
-class PKCCriticalSection { public:       // libpk critical section, 0x18 bytes
-    unsigned char _body[0x18];
-    PKCCriticalSection();                  // 0x00C1C810
-    ~PKCCriticalSection();                 // 0x00C1C820
-};
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_soundLock;   // 0x0143BAFC
-class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
-    ~PKCProtectionInstance();              // 0x00C0FFE0
-};
-class PKCSemaphore { public:
-    void* m_hSemaphore;                    // the Win32 semaphore handle
-    PKCSemaphore(long initialCount, long maximumCount);   // 0x00C29FC0
-    ~PKCSemaphore();                       // 0x00C29FB0
-};
+#include "libpk/PKCSemaphore.h"
 
 class CCodaFrame {                          // the 16-bit PCM frame (.\CFrame.cpp), 0x14 bytes
 public:

@@ -1,5 +1,6 @@
 // CCodaPlayback::Update() -- under the audio module lock: note that the source has started once CODA reports a play position, and for a looping source count a pass each time the position runs past the loop point again (stopping the source after the last pass)
 // Leaf: ?Update@CCodaPlayback@@
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C276B0, 164 bytes (`ret`). Descriptive names (no PDB or RTTI covers the libpk
 //   audio library): the manifest's "DebugState_UpdateDisplay" is propagated. Only caller: 0x00C11FA5.
@@ -12,13 +13,7 @@
 //   without the return VC7.1 drops the frame and duplicates the lock-destructor exit three times. The count test is
 //   `!= 0` first (`je` to the stop arm, then `jle` past the count-down); `== 0` first puts the stop arm on the
 //   fall-through and pushes the known-zero eax instead of `push 0`.
-class PKCCriticalSection;
-class PKCProtectionInstance { public:                            // 8-byte scoped lock (chunk 431 model)
-    void*         m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);                 // 0x00C0FFC0
-    ~PKCProtectionInstance();                             // 0x00C0FFE0
-};
+#include "libpk/PKCProtectionInstance.h"
 
 extern PKCCriticalSection g_soundLock;             // 0x0143BAFC the audio library's module lock
 

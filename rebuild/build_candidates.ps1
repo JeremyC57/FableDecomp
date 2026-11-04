@@ -107420,9 +107420,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca7920'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00ca7920_00ca7920.cpp'
-        TestSource = '00/ca/gapscan_sub00ca7920_00ca7920_test.cpp'
+        Module = 'CBaseFilter'
+        Source = '00/ca/CBaseFilter_QueryVendorInfo_00ca7920.cpp'
+        TestSource = '00/ca/CBaseFilter_QueryVendorInfo_00ca7920_test.cpp'
         PassPattern = 'PASS_00ca7920'
     }
     [pscustomobject]@{
@@ -107434,23 +107434,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca84f0'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00ca84f0_00ca84f0.cpp'
-        TestSource = '00/ca/gapscan_sub00ca84f0_00ca84f0_test.cpp'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_GetMediaType_00ca84f0.cpp'
+        TestSource = '00/ca/CBasePin_GetMediaType_00ca84f0_test.cpp'
         PassPattern = 'PASS_00ca84f0'
     }
     [pscustomobject]@{
         Address = '00ca8500'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00ca8500_00ca8500.cpp'
-        TestSource = '00/ca/gapscan_sub00ca8500_00ca8500_test.cpp'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_GetMediaTypeVersion_00ca8500.cpp'
+        TestSource = '00/ca/CBasePin_GetMediaTypeVersion_00ca8500_test.cpp'
         PassPattern = 'PASS_00ca8500'
     }
     [pscustomobject]@{
         Address = '00ca8530'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00ca8530_00ca8530.cpp'
-        TestSource = '00/ca/gapscan_sub00ca8530_00ca8530_test.cpp'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_Run_00ca8530.cpp'
+        TestSource = '00/ca/CBasePin_Run_00ca8530_test.cpp'
         PassPattern = 'PASS_00ca8530'
     }
     [pscustomobject]@{
@@ -107497,9 +107497,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00caecb0'
-        Module = '_gapscan'
-        Source = '00/ca/gapscan_sub00caecb0_00caecb0.cpp'
-        TestSource = '00/ca/gapscan_sub00caecb0_00caecb0_test.cpp'
+        Module = 'CDeferredCommand'
+        Source = '00/ca/CDeferredCommand_Confidence_00caecb0.cpp'
+        TestSource = '00/ca/CDeferredCommand_Confidence_00caecb0_test.cpp'
         PassPattern = 'PASS_00caecb0'
     }
     [pscustomobject]@{
@@ -188533,9 +188533,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c12cd0'
-        Module = '_unattributed'
-        Source = '00/c1/unattributed_FindReward00c12cd0_00c12cd0.cpp'
-        TestSource = '00/c1/unattributed_FindReward00c12cd0_00c12cd0_test.cpp'
+        Module = 'CSoundEventManager'
+        Source = '00/c1/CSoundEventManager_StartEvent_00c12cd0.cpp'
+        TestSource = '00/c1/CSoundEventManager_StartEvent_00c12cd0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c12cd0_TEST PASS'
     }
@@ -196359,9 +196359,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca98e0'
-        Module = 'CAudioThreadOwner'
-        Source = '00/ca/CAudioThreadOwner_CAudioThreadOwnerWaitForAsyncCompletion00ca98e0_00ca98e0.cpp'
-        TestSource = '00/ca/CAudioThreadOwner_CAudioThreadOwnerWaitForAsyncCompletion00ca98e0_00ca98e0_test.cpp'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_StartUsingOutputPin_00ca98e0.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_StartUsingOutputPin_00ca98e0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00ca98e0_TEST PASS'
     }
@@ -199316,9 +199316,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca9a40'
-        Module = 'CLockedQueue_00ca9a40'
-        Source = '00/ca/CLockedQueue00ca9a40_HasPending_00ca9a40.cpp'
-        TestSource = '00/ca/CLockedQueue00ca9a40_HasPending_00ca9a40_test.cpp'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_StreamingThreadUsingOutputPin_00ca9a40.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_StreamingThreadUsingOutputPin_00ca9a40_test.cpp'
         PassPattern = '00ca9a40_TEST PASS'
     }
     [pscustomobject]@{
@@ -205512,9 +205512,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca9a90'
-        Module = 'CVideoPlayer_00ca9a90'
-        Source = '00/ca/CVideoPlayer00ca9a90_Pause_00ca9a90.cpp'
-        TestSource = '00/ca/CVideoPlayer00ca9a90_Pause_00ca9a90_test.cpp'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_Active_00ca9a90.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_Active_00ca9a90_test.cpp'
         PassPattern = '00ca9a90_TEST PASS'
     }
     [pscustomobject]@{
@@ -213332,23 +213332,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca9ae0'
-        Module = 'CVideoPlayer_00ca9a90'
-        Source = '00/ca/CVideoPlayer00ca9a90_Resume_00ca9ae0.cpp'
-        TestSource = '00/ca/CVideoPlayer00ca9a90_Resume_00ca9ae0_test.cpp'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_Inactive_00ca9ae0.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_Inactive_00ca9ae0_test.cpp'
         PassPattern = '00ca9ae0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ca9b10'
-        Module = 'CVideoPlayer_00ca9a90'
-        Source = '00/ca/CVideoPlayer00ca9a90_ResumeStream_00ca9b10.cpp'
-        TestSource = '00/ca/CVideoPlayer00ca9a90_ResumeStream_00ca9b10_test.cpp'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_DeliverBeginFlush_00ca9b10.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_DeliverBeginFlush_00ca9b10_test.cpp'
         PassPattern = '00ca9b10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ca9b40'
-        Module = 'CVideoPlayer_00ca9a90'
-        Source = '00/ca/CVideoPlayer00ca9a90_SuspendStream_00ca9b40.cpp'
-        TestSource = '00/ca/CVideoPlayer00ca9a90_SuspendStream_00ca9b40_test.cpp'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_DeliverEndFlush_00ca9b40.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_DeliverEndFlush_00ca9b40_test.cpp'
         PassPattern = '00ca9b40_TEST PASS'
     }
     [pscustomobject]@{
@@ -213360,9 +213360,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00caec80'
-        Module = 'CAdviseHolder_00caec80'
-        Source = '00/ca/CAdviseHolder00caec80_Unadvise_00caec80.cpp'
-        TestSource = '00/ca/CAdviseHolder00caec80_Unadvise_00caec80_test.cpp'
+        Module = 'CDeferredCommand'
+        Source = '00/ca/CDeferredCommand_Cancel_00caec80.cpp'
+        TestSource = '00/ca/CDeferredCommand_Cancel_00caec80_test.cpp'
         PassPattern = '00caec80_TEST PASS'
     }
     [pscustomobject]@{
@@ -308585,9 +308585,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cacaf0'
-        Module = 'CBaseObject'
-        Source = '00/ca/CBaseObject_CBaseObject_00cacaf0.cpp'
-        TestSource = '00/ca/CBaseObject_CBaseObject_00cacaf0_test.cpp'
+        Module = 'CMyBaseObject'
+        Source = '00/ca/CMyBaseObject_CMyBaseObject_00cacaf0.cpp'
+        TestSource = '00/ca/CMyBaseObject_CMyBaseObject_00cacaf0_test.cpp'
         PassPattern = '00cacaf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -384093,6 +384093,50 @@ $catalog = @(
         Source = '00/ea/NScriptCVMurderTwistFinalScript_PlayBeingRumbledCutscene_00eaf1e0.cpp'
         TestSource = '00/ea/NScriptCVMurderTwistFinalScript_PlayBeingRumbledCutscene_00eaf1e0_test.cpp'
         PassPattern = '00eaf1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c44e80'
+        Module = 'CAmbientEmitter'
+        Source = '00/c4/CAmbientEmitter_Update_00c44e80.cpp'
+        TestSource = '00/c4/CAmbientEmitter_Update_00c44e80_test.cpp'
+        PassPattern = '00c44e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c45980'
+        Module = 'CAmbientCube'
+        Source = '00/c4/CAmbientCube_UpdateLevel_00c45980.cpp'
+        TestSource = '00/c4/CAmbientCube_UpdateLevel_00c45980_test.cpp'
+        PassPattern = '00c45980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c12940'
+        Module = 'CSoundEventManager'
+        Source = '00/c1/CSoundEventManager_StartEvent_00c12940.cpp'
+        TestSource = '00/c1/CSoundEventManager_StartEvent_00c12940_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c12940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c38d60'
+        Module = 'CInstance'
+        Source = '00/c3/CInstance_Update_00c38d60.cpp'
+        TestSource = '00/c3/CInstance_Update_00c38d60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c38d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c54190'
+        Module = 'CDecodedStream'
+        Source = '00/c5/CDecodedStream_SetProperties_00c54190.cpp'
+        TestSource = '00/c5/CDecodedStream_SetProperties_00c54190_test.cpp'
+        PassPattern = '00c54190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c89350'
+        Module = 'CReverbDiffuserStage'
+        Source = '00/c8/CReverbDiffuserStage_ProcessRamped_00c89350.cpp'
+        TestSource = '00/c8/CReverbDiffuserStage_ProcessRamped_00c89350_test.cpp'
+        PassPattern = '00c89350_TEST PASS'
     }
 )
 

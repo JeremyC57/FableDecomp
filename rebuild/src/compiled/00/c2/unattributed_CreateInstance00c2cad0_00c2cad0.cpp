@@ -1,16 +1,11 @@
 // CCombat_00c2cad0::CreateInstance(void*, void*, const C3DVector*, void*, void*) -- EH-framed: under a scoped lock over the global @ 0x0143BB14, the position is copied to a stack vector (memberwise copy constructor), the instance counter at +0x88c of the stats object (owner at +4, its +4, its +0x38) is post-incremented, and the factory at +0xc of the owner creates the instance from `this`, the old counter, a, b, the vector and d, e (@ 0x00C2BB10); the result survives the lock's destructor in esi
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C2CAD0, oracle length 174 bytes. Built under /EHsc.
 // Retail bytes:  ... mov eax,[position] ; mov ecx,[eax] ; mov edx,[eax+4] ; mov eax,[eax+8] ; mov [esp+0Ch],ecx ; mov ecx,[esi+4] ; mov [esp+10h],edx ; mov [esp+14h],eax ; mov edx,[ecx+4] ; mov eax,[edx+38h] ; mov ecx,[eax+88Ch] ; lea edx,[ecx+1] ; mov [eax+88Ch],edx ; mov eax,[e] ; mov edx,[d] ; push eax ; push edx ; mov edx,[c] ; lea eax,[esp+14h] ; push eax ; mov eax,[b] ; push edx ; push eax ; push ecx ; mov ecx,[esi+4] ; mov ecx,[ecx+0Ch] ; push esi ; mov dword ptr [esp+3Ch],0 ; call CFactory::Create ; ...
 // The manifest label is propagated; the class is named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct C3DVector_00c2cad0 {
     float x, y, z;

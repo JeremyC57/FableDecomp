@@ -1,5 +1,6 @@
 // CBaseAllocator::~CBaseAllocator() -- DirectShow strmbase allocator base destructor: close the free-list semaphore, release the notify callback, then destroy the CCritSec and CUnknown bases
 // Leaf: ??1CBaseAllocator
+// Vendor naming V2 (plan phase 1, one address, one name; V1 decision D2): 0x00CACAF0 ??1CMyBaseObject@@QAE@XZ (was ??1CBaseObject@N_00cacaf0@@QAE@XZ): Fable's strmbase renames combase.h CBaseObject to CMyBaseObject (RTTI of vtable 0x0129D08C), which keeps it apart from the engine's CBaseObject 0x0099A380 / 0x0099A430 without a namespace
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA9D00, length 108 bytes (padded to 112).
 // Label correction: the catalog's "CVertexShaderData::~CVertexShaderData" is a propagated label. This is strmbase's
@@ -32,11 +33,11 @@ struct __declspec(novtable) INonDelegatingUnknown {
     virtual unsigned long __stdcall NonDelegatingAddRef() = 0;
     virtual unsigned long __stdcall NonDelegatingRelease() = 0;
 };
-namespace N_00cacaf0 { class CBaseObject {                                // strmbase object counter (no data in the release build)
+class CMyBaseObject {                                // strmbase object counter (no data in the release build)
 public:
-    ~CBaseObject();                                // 0x00CACAF0
-}; } using N_00cacaf0::CBaseObject;
-class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CBaseObject {
+    ~CMyBaseObject();                                // 0x00CACAF0
+};
+class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CMyBaseObject {
     IUnknownRetail* const m_pUnknown;              // +0x04
 protected:
     long m_cRef;                                   // +0x08

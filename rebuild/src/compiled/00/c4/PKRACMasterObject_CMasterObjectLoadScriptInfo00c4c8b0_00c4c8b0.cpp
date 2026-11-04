@@ -1,8 +1,9 @@
 // CMasterObject_00c4c8b0::LoadScriptInfo(reader, a, stride, b, c, d) -- EH-framed loader of a master object's script-slave buffer (the manifest's "PKRACMasterObject_LoadScriptInfo"): under the profiling lock on +0x10 (state 0) a finalised object (+0x28) raises "Dependancy already finalised - this could be a dead object!" (.\PKRACMasterObject.cpp line 98: an MFC-style string in a nested block handed to the log sink at 0x0143BB2C, then the empty trace temporary @ 0x00C16750); the reader's count (vtable +8) times the stride sizes a `new` CSBAgents (0x1c bytes, built @ 0x00C62C70 over this; the raw block in the dead reader-argument slot, state 2), a failed allocation raising "EMEM" (line 105, the string in the same dead slot, state 3); the reader's load (vtable +4: a, stride, b + d, the agents' buffer @ 0x00C62C20, the agents, the global slave class object at 0x0139CA38) on failure deletes the agents (vtable +0, flag 1) and resets the object (@ 0x00C4C330), on success commits it (@ 0x00C4C6C0)
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4C8B0, oracle length 499 bytes. Built under /EHsc.
 // Retail bytes: 6a ff 68 e6 5f 21 01 64 a1 00 00 00 00 50 64 89 25 00 00 00 00 83 ec 10 53 55 56 8b e9 57 8d 45 10 50 8d 4c 24 1c e8 ... (`mov al,[ebp+28h] ; xor ebx,ebx ; cmp al,bl` guard, `push 1Ch ; call operator new`, `imul esi,[esp+38h]`, `push 139CA38h ; push esi ; call 0xC62C20` then `call [ebx+4]` and `test al,al`) ...
 // The class is named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4c8b0)(const char* text);
 extern PFNLOGSINK_00c4c8b0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
@@ -16,12 +17,6 @@ class CString { public:                  // MFC-style string: one word, the shar
 };
 struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte
     CDebugBreak();                         // 0x00C16750
-};
-class PKCProtectionInstance { public:             // scoped profiling lock: two words
-    void* m_pSection;
-    void* m_pPrevious;
-    PKCProtectionInstance(PKCCriticalSection* section);      // 0x00C0FFC0
-    ~PKCProtectionInstance();                  // 0x00C0FFE0
 };
 
 struct CMasterObject_00c4c8b0;

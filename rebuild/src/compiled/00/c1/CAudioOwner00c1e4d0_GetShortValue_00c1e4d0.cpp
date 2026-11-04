@@ -1,18 +1,13 @@
 // CAudioOwner_00c1e4d0::GetShortValue() -- take the audio library's global profile lock and return the unsigned 16-bit word at +0x14 of the object at +4, widened, once the lock is released
 // Leaf: GetShortValue
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1E4D0, length 43 bytes (vtable slot @ 0x012B33F8 of a no-RTTI audio-library interface).
 // Callees: PKCProtectionInstance::PKCProtectionInstance(void*) @ 0x00C0FFC0 / ~PKCProtectionInstance @ 0x00C0FFE0 (the 8-byte scoped lock: section + entry tick).
 // Shape: the `movzx esi,word ptr [eax+14h]` keeps the widened value in the callee-saved esi across the lock's
 // destructor (`mov eax,esi` after it): an `unsigned short` member returned as a long. The vtable neighbour
 // 0x00C1E570 (landed) returns the long at +0x18 of the same record. The manifest label is propagated; the
 // class is named by address.
-class PKCCriticalSection;
-class PKCProtectionInstance { public:                              // 8 bytes: section + entry tick (GOTCHAS wave 23f)
-    void* m_pSection;
-    long  m_entryTick;
-    PKCProtectionInstance(PKCCriticalSection* section);                   // 0x00C0FFC0
-    ~PKCProtectionInstance();                               // 0x00C0FFE0
-};
+#include "libpk/PKCProtectionInstance.h"
 extern unsigned char g_AudioProfileSection_0143bb14[1];   // 0x0143BB14
 
 struct SAudioOwnerRecord_00c1e4d0 {

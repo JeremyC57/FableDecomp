@@ -1,18 +1,13 @@
 // CAudioListener_00c11150::GetValue() -- take the audio library's global profile lock, read the float at +0x7c0 and return it once the lock is released
 // Leaf: GetValue
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C11150, length 48 bytes (vtable slot @ 0x012B2768 of a no-RTTI audio-library interface).
 // Callees: PKCProtectionInstance::PKCProtectionInstance(void*) @ 0x00C0FFC0 / ~PKCProtectionInstance @ 0x00C0FFE0 (the 8-byte scoped lock: section + entry tick).
 // Shape: a 12-byte frame -- the lock plus a float slot. The member is copied into the slot as a dword
 // (`mov eax,[esi+7C0h] ; mov [esp+4],eax`) before the destructor and `fld`ed back after it: a float result
 // has no callee-saved register to ride in across the call. The manifest label is propagated; the class is
 // named by address (its neighbour 0x00C10D40 talks to the edit control at +0x7bc).
-class PKCCriticalSection;
-class PKCProtectionInstance { public:                              // 8 bytes: section + entry tick (GOTCHAS wave 23f)
-    void* m_pSection;
-    long  m_entryTick;
-    PKCProtectionInstance(PKCCriticalSection* section);                   // 0x00C0FFC0
-    ~PKCProtectionInstance();                               // 0x00C0FFE0
-};
+#include "libpk/PKCProtectionInstance.h"
 extern unsigned char g_AudioProfileSection_0143bb14[1];   // 0x0143BB14
 
 struct CAudioListener_00c11150 {

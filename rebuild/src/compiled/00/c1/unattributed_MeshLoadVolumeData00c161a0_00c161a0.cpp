@@ -1,16 +1,11 @@
 // CMesh_00c161a0::LoadVolumeData(buffer, source) -- EH-framed: a profiling lock on the module's global section (0x0143BB14; ctor @ 0x00C0FFC0, dtor @ 0x00C0FFE0 reports slow holds) and a 0x1c-byte volume record (ctor @ 0x00C2D1A0: a zeroed scale, an owned buffer at +4, 1, 0, 0, 1.0f; its inline destructor frees the buffer @ 0x00C167C0, states 0-1); the record's scale is the source's +0x10 as an unsigned-to-float conversion (`fild` plus the 2^32 fix-up), its buffer takes the caller's buffer (@ 0x00C16970), its four words at +0xc.. come from the source's +4 / +0 / +0xc / +8, then the mesh volume at +8 receives the record with the source's +0x14 as a float (@ 0x00C2D5E0)
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C161A0, oracle length 212 bytes. Built under /EHsc.
 // Retail bytes:  ... mov edi,ecx ; push offset g_section ; lea ecx,[esp+0Ch] ; call CProfileLock::CProfileLock ; lea ecx,[esp+10h] ; mov dword ptr [esp+34h],0 ; call CVolumeRecord::CVolumeRecord ; mov esi,[esp+40h] ; mov eax,[esi+10h] ; fild dword ptr [esi+10h] ; test eax,eax ; mov byte ptr [esp+34h],1 ; jge a ; fadd dword ptr [2^32] ; a: mov ecx,[esp+3Ch] ; fstp dword ptr [esp+10h] ; push ecx ; lea ecx,[esp+18h] ; call CBuffer::Assign ; fild dword ptr [esi+14h] ; ... (four word copies) ... lea eax,[esp+10h] ; mov [esp+28h],edx ; push eax ; jge b ; fadd dword ptr [2^32] ; b: push ecx ; mov ecx,[edi+8] ; fstp dword ptr [esp] ; call CMeshVolume::AddSlice ; lea ecx,[esp+14h] ; mov byte ptr [esp+34h],0 ; call CBuffer::Release ; lea ecx,[esp+8] ; mov dword ptr [esp+34h],-1 ; call CProfileLock::~CProfileLock ; ... ret 8
 // The manifest label is propagated; the classes are named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
-    ~PKCProtectionInstance();              // 0x00C0FFE0
-};
 
 struct CBuffer_00c161a0 {                  // 8 bytes: owned block + size
     void* m_pData;

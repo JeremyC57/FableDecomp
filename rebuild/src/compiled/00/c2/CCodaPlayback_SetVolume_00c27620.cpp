@@ -1,5 +1,6 @@
 // CCodaPlayback::SetVolume(CPanel* panel, float volume) -- under the audio module lock, scale a non-3D source's volume by the panel's master volume and hand it to CODA
 // Leaf: ?SetVolume@CCodaPlayback@@
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C27620, 75 bytes (`ret 8`, no EH frame). Descriptive names (no PDB or RTTI
 //   covers the libpk audio library; the strings after the vtable read "CODA reports source is NOT playing"): the
@@ -8,13 +9,7 @@
 //   CODA_SetSourceVolume @ 0x00C35AF0 (`__stdcall`, `ret 8`).
 // Shape: no EH frame although the lock has a destructor: the only call inside the lock is an `extern "C"` CODA
 //   function, which /EHsc assumes cannot throw. The scaled volume is stored back into the argument slot.
-class PKCCriticalSection;
-class PKCProtectionInstance { public:                            // 8-byte scoped lock (chunk 431 model)
-    void*         m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);                 // 0x00C0FFC0
-    ~PKCProtectionInstance();                             // 0x00C0FFE0
-};
+#include "libpk/PKCProtectionInstance.h"
 
 extern PKCCriticalSection g_soundLock;             // 0x0143BAFC the audio library's module lock
 

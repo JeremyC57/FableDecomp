@@ -1,5 +1,6 @@
 // CSoundEventManager::~CSoundEventManager() -- EH-framed destructor (vtable 0x012B2748; state 1 at entry): the module's profiling lock (0x0143BB14; @ 0x00C0FFC0 / 0x00C0FFE0, state 2) is held around Shutdown (@ 0x00C123B0), then the four owned parts at +0x7c4 / +0x7bc / +0x7b8 / +0x7b4 are deleted through non-virtual destructors (@ 0x00C25C20, @ 0x00C1C230, and two whose implicit destructors only destroy their PKCWorkerQueue member at +0xc @ 0x00C14630 / 0x00C14560) and cleared, and the members at +0x7d8 (@ 0x00C25E90, state 0) and the event set at +0x2c (@ 0x00C22520) destroyed
 // Leaf: ??1CSoundEventManager@@UAE@XZ
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C1C230 ??1CTripleResource_00c1c230@@QAE@XZ (was ??1CPartB_00c13470@@QAE@XZ)
 // Flags: /EHsc
 // Naming (sweep1, 2026-10-25): libpk class set CSoundEventManager (vtable 0x012B2748) / CSoundEventSet (its +0x2C
@@ -12,16 +13,10 @@
 //   vptr store is the CSoundEventManager vtable 0x012B2748 and the lock-guarded call is its Shutdown 0x00C123B0 (agent433:
 //   'destructor 0x00C13470 landed as "C3DMesh2", a propagated label'); the worker queues are the landed PKCWorkerQueue
 //   destructors 0x00C14630 / 0x00C14560. The other parts keep their address names.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 void __cdecl operator delete(void* block);
 extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
-    ~PKCProtectionInstance();              // 0x00C0FFE0
-};
 
 struct CPartA_00c13470 { unsigned char _body[4]; ~CPartA_00c13470(); };   // 0x00C25C20
 struct CTripleResource_00c1c230 { unsigned char _body[4]; ~CTripleResource_00c1c230(); };   // 0x00C1C230

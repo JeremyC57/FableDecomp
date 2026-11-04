@@ -1,5 +1,6 @@
 // CAudioListener::Update(const C3DVector& position, const C3DVector& front, const C3DVector& top) -- under the audio lock, converts the three vectors to the audio library's axes (Y and Z exchanged) and hands the listener handle (+0xC) its position and its front/top orientation
 // Leaf: Update
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C1C280, 171 bytes (`ret 0Ch`). Descriptive name (no PDB covers this library):
 //   the manifest's "CPhysicalPrimitiveMesh_ComputeLighting" is propagated. Callers: the landed 0x00C10E50 and 0x00C10F40
 //   (both `m_pOwner->Update(m_a, m_b, m_c)` on the object at +0x7BC after one of the three vectors changed).
@@ -9,15 +10,9 @@
 // Shape: the converted vectors are declared first and ASSIGNED: each SwapYZ builds into one shared result temporary
 //   (+0x30) that is copied into the named POD local (three dword moves); initialising the locals directly builds
 //   straight into them (111 bytes). No EH frame (this TU is built without /EHsc).
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_soundLock;       // 0x0143BAFC
 
-class PKCProtectionInstance { public:                        // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target); // 0x00C0FFC0
-    ~PKCProtectionInstance();                         // 0x00C0FFE0
-};
 
 class C3DVector { public:
     float x, y, z;

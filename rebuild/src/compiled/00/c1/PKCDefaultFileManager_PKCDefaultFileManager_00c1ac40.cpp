@@ -1,5 +1,7 @@
 // PKCDefaultFileManager::PKCDefaultFileManager(void* owner) -- EH-framed constructor mirroring the landed destructor 0x00C1A230 (vtable 0x012B30E4; the manifest's "FileManager_CreateHandler"): the +4 critical section (@ 0x00C1C810; state 1), the node allocator at +0x1c (vtable 0x012B30EC) handed to the +0x20 PKCTRRedblackMap (@ 0x00C1AE20), the request queue at +0x44 (root @ 0x00C1B340 with capacity 0x28, its address homed on the frame for the root unwind @ 0x00C1AEA0 (state 2), the node @ 0x00C1AFD0 over the root; state 3), the PKCSemaphore at +0x78 (@ 0x00C29FC0 with (0, 1); state 4), +0x80 cleared and the owner at +0x84; the body creates the worker thread (`CreateThread`, 0x3000-byte stack, procedure 0x00C1AC30 over `this`) into +0x7c, raising the "Could not create thread" warning (PKCDefaultFileManager.cpp line 234, assert hook at 0x0143BB2C, CDebugBreak on the string's slot; state 5) when it fails, and sleeps 20 ms
 // Leaf: ??0PKCDefaultFileManager@@QAE@PAX@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1AC40, oracle length 337 bytes. Built under /EHsc.
 // Retail bytes:  ... sub esp,8 ; push esi ; mov esi,ecx ; push edi ; mov [esp+8],esi ; lea ecx,[esi+4] ; mov dword ptr [esp+18h],0 ; mov dword ptr [esi],12B30E4h ; call PKCCriticalSection::PKCCriticalSection ; lea eax,[esi+1Ch] ; push eax ; lea ecx,[esi+20h] ; mov byte ptr [esp+1Ch],1 ; mov dword ptr [eax],12B30ECh ; call PKCTRRedblackMap::PKCTRRedblackMap ; lea edi,[esi+44h] ; push 28h ; mov ecx,edi ; mov [esp+10h],edi ; call PKCStaticQueue::PKCStaticQueue ; push 28h ; push edi ; lea ecx,[edi+14h] ; mov byte ptr [esp+20h],2 ; call PKCMailbox::PKCMailbox ; push 1 ; push 0 ; lea ecx,[esi+78h] ; mov byte ptr [esp+20h],3 ; call PKCSemaphore::PKCSemaphore ; mov eax,[esp+20h] ; push 0 ; push 0 ; push esi ; push offset ThreadProc ; push 3000h ; push 0 ; mov byte ptr [esp+30h],4 ; mov dword ptr [esi+80h],0 ; mov [esi+84h],eax ; call [__imp_CreateThread] ; test eax,eax ; mov [esi+7Ch],eax ; jne ok ; mov ecx,[_afxPchNil] ; mov [esp+20h],ecx ; mov edx,offset ".\PKCDefaultFileManager.cpp" ; lea ecx,[esp+20h] ; mov byte ptr [esp+18h],5 ; call operator<< ; ... mov edx,0EAh ; ... call operator<<Number ; ... call operator<< ("Could not create thread") ; ... call operator<< ("\n") ; mov eax,[g_pfnAssertHook] ; test eax,eax ; je skip ; mov ecx,[esp+20h] ; call eax ; skip: lea ecx,[esp+20h] ; mov byte ptr [esp+18h],4 ; call ~CString ; lea ecx,[esp+20h] ; call CDebugBreak::CDebugBreak ; ok: push 14h ; call [__imp_Sleep] ; ... mov eax,esi ; ... ret 4
@@ -45,29 +47,10 @@ struct SFileRequest {                           // seven words: handle, key and 
     long m_e;
 };
 
-class PKCCriticalSection {                      // a Win32 CRITICAL_SECTION (0x18 bytes)
-public:
-    unsigned char m_section[0x18];
-    PKCCriticalSection();                       // 0x00C1C810
-    ~PKCCriticalSection();                      // 0x00C1C820
-};
+#include "libpk/PKCProtectionInstance.h"
 
-class PKCProtectionInstance {                   // scoped guard: section + entry tick
-public:
-    PKCCriticalSection* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                   // 0x00C0FFE0
-};
 
-class PKCSemaphore {                            // a Win32 handle
-public:
-    void* m_hSemaphore;
-    PKCSemaphore(long initialCount, long maximumCount);   // 0x00C29FC0
-    ~PKCSemaphore();                            // 0x00C29FB0
-    void Wait();                                // 0x00C2A090
-    void Release();                             // 0x00C2A150
-};
+#include "libpk/PKCSemaphore.h"
 
 template<class T> class PKCQueue {              // the queue interface PKCMailbox drives (4 pure slots, no destructor slot)
 public:

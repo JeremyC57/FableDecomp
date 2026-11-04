@@ -1,4 +1,5 @@
 // CLockedQueue_00c4c2f0::CLockedQueue_00c4c2f0(void* owner, void* target) -- a cleared three-dword
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C1C810 ??0PKCCriticalSection@@QAE@XZ (was ??0CCriticalSection_00c1c810@@QAE@XZ)
 // container, the owner pointer, an embedded critical section, a cleared flag and the target
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4C2F0, length 55 bytes (+ int3 padding).
@@ -8,10 +9,7 @@
 // member constructor and stored at +0x2c behind the cleared byte at +0x28. `ret 8`.
 // The manifest label "CConsoleVariable::CConsoleVariable" is propagated and rejected; the class is
 // named by shape (script module).
-struct PKCCriticalSection {             // RTL_CRITICAL_SECTION wrapper, 0x18 bytes
-    unsigned char _body[0x18];
-    PKCCriticalSection();               // 0x00C1C810
-};
+#include "libpk/PKCProtectionInstance.h"
 
 struct CRetailVector_Retail {                  // first / last / end
     void* m_first;

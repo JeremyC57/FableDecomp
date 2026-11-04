@@ -1,17 +1,12 @@
 // CTCHeroExperience_00c133d0::ResolveSuitEntry(void*, void*) -- EH-framed: under a scoped lock over the global @ 0x0143BB14, -1 when the suit map at +0x68 of the owner at +4 does not know the key (@ 0x00C196A0), else the entry resolved out of line with the second argument (@ 0x00C13310); the result survives the lock's destructor in esi
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C133D0, oracle length 159 bytes. Built under /EHsc.
 // Retail bytes:  ... mov eax,[key] ; mov ecx,[esi+4] ; mov ecx,[ecx+68h] ; push eax ; mov dword ptr [esp+18h],0 ; call CClothingSuitMap::Find ; test eax,eax ; jne hit ; ... or eax,-1 ; ... ret 8 ; hit: mov edx,[arg] ; push edx ; push eax ; mov ecx,esi ; call ResolveEntry ; ...
 // The map's find is the one used by the clothing-suit queries landed at 0x00C19B70 / 0x00C19C10.
 // The manifest label is propagated; the class is named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CEntry_00c133d0;
 struct CClothingSuitMap_00c133d0 {

@@ -1,5 +1,7 @@
 // PKCDefaultFileManager::QueueRead(unsigned long key, unsigned long size, void* a, void* b, void* c, void* d) -- under the manager's lock look the open file up by key (false when unknown), take its handle and count one more pending request on it, then post the seven-word request {handle, key, size, a, b, c, d} to the request mailbox; when the post fails, look the file up again under the lock, drop the pending count and return false; true when posted
 // Leaf: ?QueueRead@PKCDefaultFileManager@@QAE_NKKPAX000@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1A110, 283 bytes (+ int3 padding), thiscall `ret 18h`, EH-framed.
 // Identity: the libpk default file manager (vtable 0x012B30E4; the landed sweep1 model of its destructor 0x00C1A230 and
@@ -30,26 +32,10 @@ struct SOpenFile {                              // the open-file record (map val
     long  m_pendingRequests;                    // +0x04
 };
 
-class PKCCriticalSection {                      // a Win32 CRITICAL_SECTION (0x18 bytes)
-public:
-    unsigned char m_section[0x18];
-    PKCCriticalSection();                       // 0x00C1C810
-    ~PKCCriticalSection();                      // 0x00C1C820
-};
+#include "libpk/PKCProtectionInstance.h"
 
-class PKCProtectionInstance {                   // scoped guard: section + entry tick
-public:
-    PKCCriticalSection* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                   // 0x00C0FFE0
-};
 
-class PKCSemaphore {                            // a Win32 handle
-public:
-    void* m_hSemaphore;
-    ~PKCSemaphore();                            // 0x00C29FB0
-};
+#include "libpk/PKCSemaphore.h"
 
 template<class T> class PKCQueue {              // the queue interface PKCMailbox drives (4 pure slots, no destructor slot)
 public:

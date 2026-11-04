@@ -1,0 +1,62 @@
+addr       parity           behav  name
+00c44e80   WARN RELOC_NAME: ?UpdateVolume@CAmbientEmitter@@QAEXXZ -> 00c44dc0 labelled '_unattributed::DispatchScaledDamage_00c44dc0'
+00c44e80   WARN RELOC_NAME: ?IsFinished@CAmbientSourceDef@@QBE_NXZ -> 00c384e0 labelled 'CTCOnHeroPush::IsAngry'
+00c44e80   RELOCATION_MATCH PASS   Update
+00c45980   RELOCATION_MATCH PASS   UpdateLevel
+00c12940   WARN RELOC_NAME: ??0CSoundPlayParameters@@QAE@XZ -> 00c1bd10 labelled '_unattributed::CClass_00c1bd10'
+00c12940   WARN RELOC_NAME: ?ApplyTo@CSoundPlayParameterOverride@@QBEXAAUCSoundPlayParameters@@@Z -> 00c20580 labelled 'CTCHero_ProcessInventoryFlagMask'
+00c12940   WARN RELOC_NAME: ?GetFrequencyScale@CSoundPlayParameters@@QBEMXZ -> 00c1bb00 labelled 'CGraphicFrameData::GetFloatTLX'
+00c12940   WARN RELOC_NAME: ?GetPriority@CSoundPlayParameters@@QBEJXZ -> 00c1ba80 labelled 'NUISystem::CManager::GetKeyPressed'
+00c12940   WARN RELOC_NAME: ?GetLooped@CSoundPlayParameters@@QBE_NXZ -> 00c1bad0 labelled 'CTCPhysicsStandard::CanCollideWithThingsOneWay'
+00c12940   WARN RELOC_NAME: ?GetCategory@CSoundPlayParameters@@QBEJXZ -> 00c1bac0 labelled 'NUISystem::CManager::GetKeyPressed'
+00c12940   WARN RELOC_NAME: ?CheckExisting@CSoundEventManager@@QAEJJPAUCDriver@@JJJJ@Z -> 00c11230 labelled 'CTCHero_OnActionInterrupt'
+00c12940   WARN RELOC_NAME: ?SetPriority@CSoundPlayParameters@@QAEXJ@Z -> 00c1bbc0 labelled 'CThing::SetCurrentMapNumber'
+00c12940   WARN RELOC_NAME: ?AcquireEvent@CSoundEventManager@@QAEPAUCSoundEvent@@K@Z -> 00c11f00 labelled 'CSoundEventManager::OnKey'
+00c12940   WARN RELOC_NAME: ?GetVolume@CSoundPlayParameters@@QBEMXZ -> 00c1b9c0 labelled 'CChickenSign::GetLevel'
+00c12940   WARN RELOC_NAME: ?GetPan@CSoundPlayParameters@@QBEMXZ -> 00c1ba00 labelled 'CGenericVertex<CTVertexLandscapeBackgroundBase>::GetU1'
+00c12940   WARN RELOC_NAME: ?GetPitch@CSoundPlayParameters@@QBEMXZ -> 00c1b9e0 labelled 'CGraphicFrameData::GetFloatTLX'
+00c12940   WARN RELOC_NAME: ?GetFadeIn@CSoundPlayParameters@@QBEGXZ -> 00c1baa0 labelled 'CChickenSign::GetWordC'
+00c12940   WARN RELOC_NAME: ?GetGroup@CSoundPlayParameters@@QBEGXZ -> 00c1bab0 labelled 'CChickenSign::GetByteD'
+00c12940   WARN RELOC_NAME: ?GetLoopEnd@CSoundPlayParameters@@QBEMXZ -> 00c1ba70 labelled 'CUnprovenPackedParameterRange::GetMaximum'
+00c12940   WARN RELOC_NAME: ?GetLoopStart@CSoundPlayParameters@@QBEMXZ -> 00c1ba60 labelled 'CUnprovenPackedParameterRange::GetMinimum'
+00c12940   WARN RELOC_NAME: ?GetDelay@CSoundPlayParameters@@QBEJXZ -> 00c1ba90 labelled 'NUISystem::CManager::GetKeyPressed'
+00c12940   WARN RELOC_NAME: ?GetStreamed@CSoundPlayParameters@@QBE_NXZ -> 00c1bae0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00c12940   WARN RELOC_NAME: ?GetTrackBit2@CPKVoiceParams@@QBE_NXZ -> 00c27b90 labelled 'CGenericVertex<CTVertexLandscapeBackgroundBase>::GetU1'
+00c12940   WARN RELOC_NAME: ?GetTrackBit1@CPKVoiceParams@@QBE_NXZ -> 00c27b80 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00c12940   WARN RELOC_NAME: ?GetTrackBit0@CPKVoiceParams@@QBE_NXZ -> 00c27b70 labelled 'CTCPhysicsStandard::CanCollideWithThingsOneWay'
+00c12940   WARN RELOC_NAME: ?Initialise@CSoundEvent@@QAEXPAUCSoundEventManager@@JJJJPAUCDriver@@JJJPBUSPKPlaybackRequest@@PBUSEventKey@@PBUSVoiceLevels@@_N555@Z -> 00c21c20 labelled '_global::CRebootGameActionHandler_Initialize'
+00c12940   RELOCATION_MATCH PASS   StartEvent
+00c38d60   WARN SHARED_HEADER_AVAILABLE CString
+00c38d60   WARN RELOC_NAME: ?HasMessage@CMailboxPort_00c39930@@QAEJXZ -> 00c39930 labelled 'CV_StatueMasterScript::GetAngleBasedOnTimeOfDay'
+00c38d60   WARN RELOC_NAME: ?HasMessage@CMailboxPort_00c395b0@@QAEJXZ -> 00c395b0 labelled 'CV_StatueMasterScript::GetAngleBasedOnTimeOfDay'
+00c38d60   WARN RELOC_NAME: ?Query@CInstance@@QAE_NPA_NPAUSStreamFormat@@@Z -> 00c38a40 labelled 'CStreamPlayer_00c38a40::ReceiveStatus'
+00c38d60   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c38d60   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c38d60   WARN RELOC_NAME: ?Attach@CRegistry_00c38b20@@QAEXJPAX@Z -> 00c483a0 labelled 'CAIStateGroup_BirdFlyToFood::Update'
+00c38d60   WARN RELOC_NAME: ?HasMessage@CMailboxPort_00c39770@@QAEJXZ -> 00c39770 labelled 'CV_StatueMasterScript::GetAngleBasedOnTimeOfDay'
+00c38d60   WARN RELOC_NAME: ?Current@CInstance@@QAEPAUSItem_00c38b20@@XZ -> 00c38ac0 labelled 'CMessageReceiver_00c38ac0::ReceiveMessage'
+00c38d60   WARN RELOC_NAME: ?Detach@CRegistry_00c38b20@@QAEXPAX@Z -> 00c48560 labelled 'CAIStateGroup_BirdFlyToFood::Update'
+00c38d60   WARN RELOC_NAME: ?Advance@CRampedParam_00c3a8f0@@QAEXPAUSItem_00c38b20@@J@Z -> 00c3a7d0 labelled 'AudioLib_ApplyGainEnvelope_00c3a7d0'
+00c38d60   WARN RELOC_NAME: ?HasMessage@CMailboxPort_00c39af0@@QAEJXZ -> 00c39af0 labelled '_unattributed::Query_00c39af0'
+00c38d60   WARN RELOC_NAME: ?Stop@CInstance@@QAEXXZ -> 00c38af0 labelled 'NUISystem::CComponent::GetCurrentState'
+00c38d60   WARN RELOC_NAME: ?HasMessage@CMailboxPort_00c393f0@@QAEJXZ -> 00c393f0 labelled 'CV_StatueMasterScript::GetAngleBasedOnTimeOfDay'
+00c38d60   RELOCATION_MATCH PASS   Update
+00c54190   WARN SHARED_HEADER_AVAILABLE C3DVector
+00c54190   RELOCATION_MATCH PASS   SetProperties
+00c89350   RELOCATION_MATCH PASS   ProcessRamped
+
+WINS: 6
+  00c44e80 RELOCATION_MATCH CAmbientEmitter::?Update@CAmbientEmitter@@QAEXXZ
+  00c45980 RELOCATION_MATCH CAmbientCube::?UpdateLevel@CAmbientCube@@QAEXM@Z
+  00c12940 RELOCATION_MATCH CSoundEventManager::?StartEvent@CSoundEventManager@@QAEPAUCSoundEvent@@JPBUCSoundPlayParameters@@JPAUCDriver@@PBUCPKVoiceParams@@PAJ@Z
+  00c38d60 RELOCATION_MATCH CInstance::?Update@CInstance@@QAEXKKK@Z
+  00c54190 RELOCATION_MATCH CDecodedStream::?SetProperties@CDecodedStream@@UAEXPBUSSourceUpdate@@@Z
+  00c89350 RELOCATION_MATCH CReverbDiffuserStage::?ProcessRamped@CReverbDiffuserStage@@QAEXPAUSDiffuserStageParams@@PBU2@PBUCRingBuffer@@PAM3II@Z
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  CAmbientEmitter_Update_00c44e80
+  CAmbientCube_UpdateLevel_00c45980
+  CSoundEventManager_StartEvent_00c12940
+  CInstance_Update_00c38d60
+  CDecodedStream_SetProperties_00c54190
+  CReverbDiffuserStage_ProcessRamped_00c89350

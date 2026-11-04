@@ -1,16 +1,11 @@
 // CScriptLoader_00c16310::LoadScript(script, params, record) -- EH-framed under the module's profiling lock (0x0143BB14; @ 0x00C0FFC0 / 0x00C0FFE0, state 0; the manifest's "Script_LoadOakValeRevisited" is propagated): a 0x14-byte range on the frame takes the parameter block's +4 limit, +0 kind (16-bit) and +0xc tag, its start and end converted from the +0x10 offset and the +0x10 + +0x14 span (@ 0x00C2D820) and both cleared unless start <= end < limit; the +8 engine opens the script over the range with the parameter block's +8 (@ 0x00C0E770); a record builder on the frame (@ 0x00C1BD10) takes the fourteen fields of the caller's record through its setters (@ 0x00C1BB20..0x00C1BC70) and the engine applies it to the opened script (@ 0x00C0E870), whose result is returned
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C16310, oracle length 408 bytes. Built under /EHsc.
 // Retail bytes:  ... sub esp,30h ; push ebx ; push esi ; push edi ; mov edi,ecx ; push offset g_section ; lea ecx,[esp+10h] ; call CProfileLock::CProfileLock ; mov esi,[esp+50h] ; mov eax,[esi+4] ; mov cx,[esi] ; mov edx,[esi+0Ch] ; xor ebx,ebx ; mov [esp+14h],eax ; mov eax,[esi+10h] ; mov [esp+20h],cx ; push eax ; lea ecx,[esp+18h] ; mov [esp+48h],ebx ; mov [esp+1Ch],ebx ; mov [esp+20h],ebx ; mov [esp+26h],bx ; mov [esp+28h],edx ; call SRange::Convert ; mov ecx,[esi+14h] ; add ecx,[esi+10h] ; push ecx ; lea ecx,[esp+18h] ; mov [esp+1Ch],eax ; call SRange::Convert ; mov edx,[esp+18h] ; mov ecx,[esp+14h] ; cmp edx,ecx ; mov [esp+1Ch],eax ; jae zero ; cmp eax,ecx ; jae zero ; cmp edx,eax ; jbe keep ; zero: mov [esp+1Ch],ebx ; mov [esp+18h],ebx ; keep: mov edx,[esi+8] ; mov eax,[esp+4Ch] ; push edx ; push eax ; lea ecx,[esp+1Ch] ; push ecx ; mov ecx,[edi+8] ; call CEngine::Open ; lea ecx,[esp+28h] ; mov ebx,eax ; call CRecordBuilder::CRecordBuilder ; mov esi,[esp+54h] ; (fourteen setters) ; mov ecx,[edi+8] ; lea edx,[esp+28h] ; push edx ; push ebx ; call CEngine::Apply ; lea ecx,[esp+0Ch] ; mov esi,eax ; mov dword ptr [esp+44h],-1 ; call ~CProfileLock ; ... mov eax,esi ; ... ret 0Ch
 // The classes are named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
-    ~PKCProtectionInstance();              // 0x00C0FFE0
-};
 
 struct SParams_00c16310 {                  // the caller's parameter block
     unsigned short m_kind;                 // +0

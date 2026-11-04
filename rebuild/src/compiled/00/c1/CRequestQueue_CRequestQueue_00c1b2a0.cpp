@@ -1,5 +1,7 @@
 // CRequestQueue::~CRequestQueue() -- EH-framed destructor: the PKCMailbox at +0x14 destroyed inline (its semaphore at +0x30 @ 0x00C29FB0 at state 1, its critical section at +0x14 @ 0x00C1C820 at state 0), then the PKCStaticQueue at +0 (@ 0x00C1AEA0)
 // Leaf: ??1CRequestQueue@@QAE@XZ
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1B2A0, 104 bytes, thiscall; built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push edi ; mov [esp+8],esi ; lea edi,[esi+14h] ; mov dword ptr [esp+18h],0 ; mov [esp+0Ch],edi ; lea ecx,[edi+1Ch] ; mov byte ptr [esp+18h],1 ; call ~PKCSemaphore ; mov ecx,edi ; mov byte ptr [esp+18h],0 ; call ~PKCCriticalSection ; mov ecx,esi ; mov dword ptr [esp+18h],-1 ; call ~PKCStaticQueue ; mov ecx,[esp+0Ch] ; pop edi ; pop esi ; mov fs:[0],ecx ; add esp,14h ; ret
@@ -25,29 +27,10 @@ struct SFileRequest {                           // seven words: handle, key and 
     long m_e;
 };
 
-class PKCCriticalSection {                      // a Win32 CRITICAL_SECTION (0x18 bytes)
-public:
-    unsigned char m_section[0x18];
-    PKCCriticalSection();                       // 0x00C1C810
-    ~PKCCriticalSection();                      // 0x00C1C820
-};
+#include "libpk/PKCProtectionInstance.h"
 
-class PKCProtectionInstance {                   // scoped guard: section + entry tick
-public:
-    PKCCriticalSection* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                   // 0x00C0FFE0
-};
 
-class PKCSemaphore {                            // a Win32 handle
-public:
-    void* m_hSemaphore;
-    PKCSemaphore(long initialCount, long maximumCount);   // 0x00C29FC0
-    ~PKCSemaphore();                            // 0x00C29FB0
-    void Wait();                                // 0x00C2A090
-    void Release();                             // 0x00C2A150
-};
+#include "libpk/PKCSemaphore.h"
 
 template<class T> class PKCQueue {              // the queue interface PKCMailbox drives (4 pure slots, no destructor slot)
 public:

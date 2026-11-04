@@ -1,5 +1,6 @@
 // CSoundSystem_00c131c0::PlaySoundList(ISoundListSource_00c131c0* source, CSoundRequest_00c131c0* request) -- under the libpk global lock, start every valid entry of the source's list; consecutive started sounds are chained into one sound group (allocated from the pool at +0x2C and numbered from the counter at +0x88C); returns the group id, the lone sound's id, or -1 when nothing started
 // Leaf: ?PlaySoundList@CSoundSystem_00c131c0@@QAEJPAVISoundListSource_00c131c0@@PAUCSoundRequest_00c131c0@@@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C131C0, 332 bytes, __fastcall, `ret 8`, /EHsc frame (unwind 0x012117DC) for the scoped lock.
 // Identity: libpk audio code (no PDB / RTTI): every name here is descriptive. The only caller 0x00C13310 builds a request block
@@ -11,15 +12,9 @@
 // Callees: PKCProtectionInstance ctor 0x00C0FFC0 / dtor 0x00C0FFE0 over g_lock_0143bb14 (landed spellings), StartSound 0x00C12CD0
 //   (ret 0x10), CSoundGroupPool_00c21f20::Allocate 0x00C21F20, CSoundGroup_00c29ec0::Init 0x00C29F70 (ret 0xC) and AddMember
 //   0x00C29EC0 (ret 4); list virtuals slot 5 GetList, then IsValid slot 4 / GetCount slot 5 / GetItem slot 7.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;          // 0x0143BB14
 
-class PKCProtectionInstance { public:               // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                            // 0x00C0FFE0
-};
 
 struct CSoundRequest_00c131c0;
 class CSoundSystem_00c131c0;

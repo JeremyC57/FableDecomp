@@ -1,5 +1,6 @@
 // CVtable_012bedb8::SetParameters(long a0, long a1, long a2, float volume, long a4, bool alternate, bool force) -- vtable slot 4 of the libpk gain-ramp mixer effect: unless forced, ignore an unchanged volume; else store the new volume (+0x20) and rebuild the gain ramp for the selected record (0x00C6EBE0)
 // Leaf: ?SetParameters@CVtable_012bedb8@@UAEXJJJMJ_N0@Z
+// Vendor naming V2 (plan phase 1, one address, one name): 0x00C6EBE0 ?RebuildGain@CVtable_012bedb8@@QAEX_N@Z (was ?UpdateGainRamp@CVtable_012bedb8@@QAEX_N@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C6EC80, 44 bytes (+ int3 padding), thiscall `ret 1Ch` (seven stack
 //   arguments; only the volume, the record selector and the force flag are read); slot 4 of the vtable 0x012BEDB8 (word
 //   at 0x012BEDC8) and of its MMX / SSE2 derivatives 0x012B8A8C / 0x012B8AC8 (ctors 0x00C550B0 / 0x00C55110 over
@@ -34,13 +35,13 @@ public:
     SGainRamp  m_second;                           // +0x2c
     SGainRamp* m_pCurrent;                         // +0x30
     SGainRamp* m_pPrevious;                        // +0x34
-    void UpdateGainRamp(bool alternate);           // 0x00C6EBE0
+    void RebuildGain(bool alternate);           // 0x00C6EBE0
 };
 
 void CVtable_012bedb8::SetParameters(long a0, long a1, long a2, float volume, long a4, bool alternate, bool force)
 {
     if (force || m_volume != volume) {
         m_volume = volume;
-        UpdateGainRamp(alternate);
+        RebuildGain(alternate);
     }
 }

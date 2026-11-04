@@ -1,4 +1,5 @@
 // CWorld::SetAsPaused(bool) -- third-party steering/navigation library world (0x00C0xxxx-0x00C4xxxx module, not the game's CWorld): pause or resume, notifying the library and refreshing
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe @ 0x00C1C620, 122 bytes, `ret 4`, EH frame (handler 0x0121248F).
 // NOTE: this class is NOT the game's CWorld (engine/CWorld.h): it is the AI steering library's world object (its
@@ -10,15 +11,9 @@
 // and this->Refresh() 0x00C1C460 (label "ParticleMorphs_UpdateEditor").
 // Shape: nothing happens when the state is unchanged; the guard lives across the store, the notification and the
 // refresh; `Paused ? 1 : 4` compiles to neg/sbb/and/add.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_soundLock;   // 0x0143BAFC
 
-class PKCProtectionInstance { public:
-    PKCCriticalSection* Target;                    // +0x00
-    unsigned long    StartTime;                 // +0x04
-    PKCProtectionInstance(PKCCriticalSection* target);    // 0x00C0FFC0
-    ~PKCProtectionInstance();                          // 0x00C0FFE0
-};
 
 bool __stdcall LibNotifyWorldState(long state, long arg);   // 0x00C335C0
 

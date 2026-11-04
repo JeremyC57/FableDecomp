@@ -1,0 +1,84 @@
+action	symbol	target	by_row	note
+ADD	??0CAudioContextBase@@QAE@XZ	00c6ad70	00c54090	vendor naming V2: the spelling the respelled row emits for 0x00C6AD70
+ADD	??0CPooledNode@@QAE@XZ	00c4cf20	00c3c590	vendor naming V2: the spelling the respelled row emits for 0x00C4CF20
+ADD	??0CSoundOutput00c6afc0@@QAE@XZ	00c6afc0	00c54090	vendor naming V2: the spelling the respelled row emits for 0x00C6AFC0
+ADD	??1CActivationReceptor_00c38b20@@QAE@XZ	00c38b20	00c2d3b0	vendor naming V2: the spelling the respelled row emits for 0x00C38B20
+ADD	??1CAutoLock_00ca98e0@@QAE@XZ	00ca48c0	01216d00	vendor naming V2: the spelling the respelled row emits for 0x00CA48C0
+ADD	??1CMyBaseObject@@QAE@XZ	00cacaf0	00ca7780	vendor naming V2: the spelling the respelled row emits for 0x00CACAF0
+ADD	??1CPredicateOwner_00c473f0@@QAE@XZ	00c473f0	00c37b90	vendor naming V2: the spelling the respelled row emits for 0x00C473F0
+ADD	??1CStackOwner_00c287e0@@QAE@XZ	00c287e0	00c22520	vendor naming V2: the spelling the respelled row emits for 0x00C287E0
+ADD	??1CTypedContainer_00c3ac40@@QAE@XZ	00c3ac40	00c2e140	vendor naming V2: the spelling the respelled row emits for 0x00C3AC40
+ADD	??1CTypedContainer_00c3b1d0@@QAE@XZ	00c3b1d0	00c2e140	vendor naming V2: the spelling the respelled row emits for 0x00C3B1D0
+ADD	??1CVtable_012b3a94@@QAE@XZ	00c23ba0	00c22520	vendor naming V2: the spelling the respelled row emits for 0x00C23BA0
+ADD	??1CVtable_012b3a9c@@QAE@XZ	00c23fe0	00c22520	vendor naming V2: the spelling the respelled row emits for 0x00C23FE0
+ADD	??1CVtable_012b3aa4@@QAE@XZ	00c24240	00c22520	vendor naming V2: the spelling the respelled row emits for 0x00C24240
+ADD	?GetGroup@CSoundPlayParameters@@QBEGXZ	00c1bab0	00c27d80	vendor naming V2: the spelling the respelled row emits for 0x00C1BAB0
+ADD	?Init@CAmbientCube@@QAEXJPAX@Z	00c461e0	00c36430	vendor naming V2: the spelling the respelled row emits for 0x00C461E0
+ADD	?Pop@CLockedRingBuffer@@QAEPAUCCodaFrame@@XZ	00c4a0e0	00c497e0	vendor naming V2: the spelling the respelled row emits for 0x00C4A0E0
+ADD	?ProcessMessage_CMailboxQueue_00c49b90@CMailboxQueue_00c49b90@@QAEJPAX@Z	00c49b90	00c497e0	vendor naming V2: the spelling the respelled row emits for 0x00C49B90
+ADD	?StartEvent@CSoundEventManager@@QAEPAUCSoundEvent@@JPBUCSoundPlayParameters@@JPAUCDriver@@PBUCPKVoiceParams@@PAJ@Z	00c12940	00c12cd0	vendor naming V2: the spelling the respelled row emits for 0x00C12940
+ADD	?StdcallForward_00c3cde0@@YGXPAX@Z	00c36090	00c27a60	vendor naming V2: the spelling the respelled row emits for 0x00C36090
+ADD	?Update@CAmbientEmitter@@QAEXXZ	00c44e80	00c36230	vendor naming V2: the spelling the respelled row emits for 0x00C44E80
+ADD	?Update@CInstance@@QAEXKKK@Z	00c38d60	00c2d490	vendor naming V2: the spelling the respelled row emits for 0x00C38D60
+ADD	?UpdateLevel@CAmbientCube@@QAEXM@Z	00c45980	00c36430	vendor naming V2: the spelling the respelled row emits for 0x00C45980
+ADD	?g_settingsLock@@3VPKCCriticalSection@@A	0143bb14	00c14b50	vendor naming V2: the spelling the respelled row emits for 0x0143BB14
+ADD	?m_cObjects@CMyBaseObject@@0JA	0143ccf4	00cacaf0	vendor naming V2: the spelling the respelled row emits for 0x0143CCF4
+ADD	_FableRet_c623f0@4	00c623f0	00c62440	vendor naming V2: the spelling the respelled row emits for 0x00C623F0
+ADD	_New_c35b10@8	00c35b10	00c275e0	vendor naming V2: the spelling the respelled row emits for 0x00C35B10
+RETIRE	??0CAIStateGroupBase_00c42d60@@QAE@XZ	00c4cf20	00c42d60	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??0CAIStateGroupMember_00c54090@@QAE@XZ	00c6afc0	00c54090	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??0CAIStateGroupRoot_00c54090@@QAE@XZ	00c6ad70	00c54090	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??0CAIStateGroup_CreatureUseCoverBase_00c42d60@@QAE@XZ	00c42d60	00c44580	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??0CActionBase_00c3dcd0@@QAE@XZ	00c4cf20	00c3dcd0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??0CBase_00c4cf20@@QAE@XZ	00c4cf20	00c3c590,00c3ce50,00c3cea0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??0CGroup_00c21ba0@@QAE@XZ	00c25c50	00c21ba0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??0CMember8@@QAE@XZ	00c34aa0	00c1fcc0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??0CMessageEventList@@QAE@XZ	00c1bd10	00c203a0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??0CProfileMember@@QAE@XZ	00c42a60	00c34aa0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??0CSnapshotPartA@@QAE@XZ	00c203a0	00c44ab0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??0CSnapshotPartB@@QAE@XZ	00c20390	00c44ab0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??0PKCProtectionInstance@@QAE@PAUPKCCriticalSection@@@Z	00c0ffc0	00c14b50,00c14bc0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CElement_00c2d3b0@@QAE@XZ	00c38b20	00c2d3b0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CFirst_00c44f80@@QAE@XZ	00c22a00	00c44f80	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CMember_00caa790@@QAE@XZ	00cacaf0	00caa790	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CMember_00caaac0@@QAE@XZ	00cacaf0	00caaac0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CNode@@QAE@XZ	00c17b10	00c30550,00c30640,00c30730	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CNode_00c0ece0@@QAE@XZ	00c19250	00c0ece0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CNode_00c10320@@QAE@XZ	00c17b10	00c10320	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CNode_00c37130@@QAE@XZ	00c19250	00c37130	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CNode_00c44f80@@QAE@XZ	00c19250	00c44f80	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CParamBlock@@QAE@XZ	00c19250	00c22520	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CRegisteredEntry_00c37b90@@QAE@XZ	00c473f0	00c37b90	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CResourceA@@QAE@XZ	00c23ba0	00c22520	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CResourceC@@QAE@XZ	00c23fe0	00c22520	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CResourceD@@QAE@XZ	00c24240	00c22520	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CResourceE@@QAE@XZ	00c287e0	00c22520	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CResource_00c37130@@QAE@XZ	00c463a0	00c37130	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1CScriptModule_00c354a0@@QAE@XZ	00c354a0	00c25c20	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1SEntry_00c271d0@@QAE@XZ	00c271d0	00c23fe0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	??1SEntry_00c29eb0@@QAE@XZ	00c29eb0	00c24240	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?ChangeState@CSoundEvent@@QAEXJ@Z	00c20720	00c20c50,00c20c80,00c20e50,00c20eb0,00c20f60,00c21560,00c21700	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?DecRef@CParticle@@QAEXXZ	00c1ea40	00c25cb0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?DecrementLifetimer@CLifetimedObject@@QAEXXZ	00c1ea40	00c26060	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?FreeBlock8_00c36090@@YGXPAX@Z	00c36090	00c27a60	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?FreeBlock_00c36090@@YGXPAX@Z	00c36090	00c497e0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?GetByteD@CChickenSign@@QBEGXZ	00c1bab0	00c27d80	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?GetCount@?$CPtrArray@PAUCUnprovenItem_012b4fbc@@@@QAEKXZ	00c42ac0	00c34a50	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?Init@CParticleMorphs@@QAEXJPAX@Z	00c461e0	00c36430	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?IsAngry@CFloatPair_00c384e0@@QBE_NXZ	00c384e0	00c47300	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?Lookup@CTCHeroExperience_00c12cd0@@QAEPAUCRewardEntry_00c12cd0@@JPAJPAXPAUCRewardKey_00c12cd0@@11@Z	00c12940	00c12cd0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?Method_00c44e80@CObject_00c44e80@@QAEXXZ	00c44e80	00c36230	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?Pop@CFrameStack@@QAEPAUSFrame@@XZ	00c4a0e0	00c497e0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?ProcessMessage@CMailboxQueue@@QAEJPAX@Z	00c49b90	00c497e0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?Release@CItem@@QAEXXZ	00c3c5f0	00c44270	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?Release@CResourceLink_00c4d9b0@@QAEXXZ	00c4d9b0	00c3c720	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?ReleaseMark@CMarkedEntry@@QAEXXZ	00c3c5f0	00c443d0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?Render@CCursorRenderer@@QAEXMG@Z	00c0b420	00c44ab0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?SetScale@CParticleMorphs@@QAEXM@Z	00c45980	00c36430	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?Store@Inner@@QAEXJ@Z	00c1bc00	00c20560	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?Update@CInstance@@QAEXJJJ@Z	00c38d60	00c2d490	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?UpdateGainRamp@CVtable_012bedb8@@QAEX_N@Z	00c6ebe0	00c6ec80	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?add@Inner@@QAEXJ@Z	00c1bbd0	00c20440	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?g_settingsLock@@3UPKCCriticalSection@@A	0143bb14	00c14b50,00c14bc0	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	?m_cObjects@CBaseObject@@0JA	0143ccf4	00cacaf0,00cacb80,00cacc80	candidate: no landed row outside the overlay binds it any more (index)
+RETIRE	_FableResolve_00c62440@4	00c623f0	00c62440	candidate: no landed row outside the overlay binds it any more (index)

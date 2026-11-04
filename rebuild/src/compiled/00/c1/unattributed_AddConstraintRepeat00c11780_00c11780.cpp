@@ -1,4 +1,5 @@
 // CParticleProgram_00c11780::AddConstraintRepeat(void*) -- under a scoped lock over the global @ 0x0143BB14 (ctor @ 0x00C0FFC0, dtor @ 0x00C0FFE0), the observable member at +0x7d8 adds the observer (@ 0x00C25E20); EH-framed
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C11780, oracle length 100 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -10,15 +11,9 @@
 // Built under /EHsc (the `__ehhandler` is not compared; the funclet lands through the funclet
 // pass). The manifest label is propagated; the class is named by address. One of 3
 // bodies of this shape.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;   // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CObservable {
     long m_a;

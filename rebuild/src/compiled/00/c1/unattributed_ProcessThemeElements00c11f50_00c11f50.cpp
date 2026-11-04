@@ -1,17 +1,12 @@
 // CEditControlCentre_00c11f50::ProcessThemeElements() -- EH-framed: under a scoped lock over the global @ 0x0143BB14, every entry of the array at +0x224 (count at +0x228, accessor @ 0x00C13700) that has an element at +4 refreshes its display (@ 0x00C276B0) and, unless the element validates against `this` (@ 0x00C20C10), the element is processed with `this` (@ 0x00C21620); then the centre refreshes out of line (@ 0x00C10CD0)
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C11F50, oracle length 167 bytes. Built under /EHsc.
 // Retail bytes:  ... loop: push ebx ; mov ecx,ebp ; call CArray::Get ; mov esi,eax ; mov eax,[esi+4] ; test eax,eax ; je next ; mov ecx,esi ; call CEntry::Refresh ; mov esi,[esi+4] ; push edi ; mov ecx,esi ; call CElement::Validate ; test al,al ; jne next ; push edi ; mov ecx,esi ; call CElement::Process ; next: mov eax,[edi+228h] ; inc ebx ; cmp ebx,eax ; jb loop ; pop esi ; pop ebp ; mov ecx,edi ; call Refresh ; ...
 // The element pointer is re-read after the refresh (the register is reused). The manifest
 // label is propagated; the class is named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CEditControlCentre_00c11f50;
 struct CElement_00c11f50 {

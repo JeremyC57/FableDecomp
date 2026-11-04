@@ -1,6 +1,7 @@
 // CVtable_012b4f84::Close() -- when the object is live, the base shutdown runs, then the +0x30 member is released if the master object's +0x1d4 interface exists
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C3C720, length 45 bytes.
 // Leaf: ?Close@CVtable_012b4f84
+// Vendor naming V2 (plan phase 1, one address, one name): 0x00C4D9B0 ?Destroy@CDeviceBuffer_00c3c7a0@@QAEXXZ (was ?Release@CResourceLink_00c4d9b0@@QAEXXZ)
 // Retail bytes: push esi ; mov esi,ecx ; mov eax,[esi+2Ch] ; test eax,eax ; je E ; call base Close ; mov eax,[g_pMaster] ; test eax,eax ; je E ;
 //               mov ecx,[eax+1D4h] ; test ecx,ecx ; je E ; lea ecx,[esi+30h] ; pop esi ; jmp Release ; E: pop esi ; ret
 // Callees: the base class's Close @ 0x00C3C450 (slot 1 of vtable 0x012B4F74: frees the +0x28 block when flag 2 of +0x2c is
@@ -16,9 +17,9 @@ struct CMaster_0143bc2c {
 };
 extern CMaster_0143bc2c* g_pMaster_0143bc2c;   // 0x0143BC2C
 
-struct CResourceLink_00c4d9b0 {
+struct CDeviceBuffer_00c3c7a0 {
     void*         m_pHandle;
-    void Release();                            // 0x00C4D9B0
+    void Destroy();                            // 0x00C4D9B0
 };
 
 struct CVtable_012b4f74 {                      // the base class (vtable 0x012B4F74)
@@ -30,7 +31,7 @@ struct CVtable_012b4f74 {                      // the base class (vtable 0x012B4
 };
 
 struct CVtable_012b4f84 : CVtable_012b4f74 {   // vtable 0x012B4F84
-    CResourceLink_00c4d9b0 m_link;             // +0x30
+    CDeviceBuffer_00c3c7a0 m_link;             // +0x30
     virtual void Close();                   // slot 1: 0x00C3C720
 };
 
@@ -39,6 +40,6 @@ void CVtable_012b4f84::Close()
     if (m_flags) {
         CVtable_012b4f74::Close();
         if (g_pMaster_0143bc2c && g_pMaster_0143bc2c->m_pSink)
-            m_link.Release();
+            m_link.Destroy();
     }
 }

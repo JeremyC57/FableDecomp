@@ -1,5 +1,6 @@
 // CUnknown::CUnknown(const WCHAR*, IUnknown*) -- DirectShow BaseClasses (combase.cpp): the inlined CBaseObject constructor counts the live object (InterlockedIncrement of CBaseObject::m_cObjects 0x0143CCF4; the release build keeps no name); owner = pUnk or this object's own non-delegating interface; reference count 0
 // Leaf: ??0CUnknown
+// Vendor naming V2 (plan phase 1, one address, one name; V1 decision D2): 0x0143CCF4 ?m_cObjects@CMyBaseObject@@0JA (was ?m_cObjects@CBaseObject@@0JA): Fable's strmbase renames combase.h CBaseObject to CMyBaseObject (RTTI of vtable 0x0129D08C), which keeps it apart from the engine's CBaseObject 0x0099A380 / 0x0099A430 without a namespace
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CACC80, 40 bytes (+8 int3), __fastcall `ret 8`, returns this; no vtable store (AM_NOVTABLE).
 // Twin: 0x00CACB80 is the byte-identical second overload (landed as `CUnknown(const char*, IUnknown*)`); combase.cpp of the UNICODE
 // build defines both CUnknown(LPCTSTR = const WCHAR*, LPUNKNOWN) and CUnknown(LPCSTR, LPUNKNOWN). Which address is which overload
@@ -33,16 +34,16 @@ struct __declspec(novtable) INonDelegatingUnknown {
     virtual ULONG __stdcall NonDelegatingAddRef() = 0;
     virtual ULONG __stdcall NonDelegatingRelease() = 0;
 };
-class CBaseObject {                               // release build: only the static live-object count
-    CBaseObject(const CBaseObject&);
-    void operator=(const CBaseObject&);
+class CMyBaseObject {                               // release build: only the static live-object count
+    CMyBaseObject(const CMyBaseObject&);
+    void operator=(const CMyBaseObject&);
     static LONG m_cObjects;
 public:
-    CBaseObject(const WCHAR* pName);
-    CBaseObject(const char* pName);
-    ~CBaseObject();
+    CMyBaseObject(const WCHAR* pName);
+    CMyBaseObject(const char* pName);
+    ~CMyBaseObject();
 };
-class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CBaseObject {
+class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CMyBaseObject {
     IUnknown* const m_pUnknown;                   // +0x04
 protected:
     LONG m_cRef;                                  // +0x08
@@ -95,14 +96,14 @@ extern "C" __declspec(dllimport) LONG __stdcall InterlockedIncrement(LONG* lpAdd
 
 /* Constructor */
 
-CBaseObject::CBaseObject(const WCHAR* pName)
+CMyBaseObject::CMyBaseObject(const WCHAR* pName)
 {
     /* Increment the number of active objects */
     InterlockedIncrement(&m_cObjects);
 }
 
 CUnknown::CUnknown(const WCHAR* pName, IUnknown* pUnk)
-: CBaseObject(pName)
+: CMyBaseObject(pName)
 /* Start the object with a reference count of zero - when the      */
 /* object is queried for it's first interface this may be          */
 /* incremented depending on whether or not this object is          */

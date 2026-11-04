@@ -1,5 +1,6 @@
 // CLockedRingBuffer::Pop() -- EH-framed: under the ring's own critical section (PKCProtectionInstance over +0), null when the ring is empty (count +0x20), else the frame at the head slot (index from GetHeadIndex 0x00C49DD0, slot array +0x1c) with the count decremented
 // Leaf: ?Pop@CLockedRingBuffer@@QAEPAUCCodaFrame@@XZ
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4A0E0, 144 bytes, __thiscall `ret`; built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push esi ; lea ecx,[esp+8] ; call PKCProtectionInstance::PKCProtectionInstance ; mov eax,[esi+20h] ; test eax,eax ; mov dword ptr [esp+14h],0 ; jne pop ; lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~PKCProtectionInstance ; xor eax,eax ; pop esi ; ... ret ; pop: push edi ; mov ecx,esi ; call GetHeadIndex ; mov ecx,[esi+1Ch] ; mov edi,[ecx+eax*4] ; mov eax,[esi+20h] ; dec eax ; lea ecx,[esp+8] ; mov [esi+20h],eax ; mov dword ptr [esp+18h],-1 ; call ~PKCProtectionInstance ; mov ecx,[esp+10h] ; mov eax,edi ; pop edi ; pop esi ; ... ret
@@ -10,18 +11,8 @@
 //   in the same CCodaFrame streamer TU. The scoped lock is the sweep's PKCProtectionInstance (".\PKCProtectionInstance.cpp"
 //   trace in its destructor 0x00C0FFE0); the ring's section is the PKCCriticalSection at +0. Descriptive (no PDB).
 // Shape: the edi save is sunk into the non-empty path; the frame survives the lock's destructor in edi.
-class PKCCriticalSection {                      // a Win32 CRITICAL_SECTION (0x18 bytes)
-public:
-    unsigned char m_section[0x18];
-};
+#include "libpk/PKCProtectionInstance.h"
 
-class PKCProtectionInstance {                   // scoped guard: section + entry tick
-public:
-    PKCCriticalSection* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                   // 0x00C0FFE0
-};
 
 struct CCodaFrame;
 

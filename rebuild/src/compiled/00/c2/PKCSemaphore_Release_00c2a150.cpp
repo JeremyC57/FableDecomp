@@ -9,6 +9,7 @@
 //   landed 0x00C37610 error handler): the stream over the shared nil buffer, `file << "(" << line << ") : " << text << "\n"`,
 //   the hook call, the stream destroyed, then an empty CDebugBreak temporary in the high byte of the frame word (`lea ecx,[esp+3]`).
 // Leaf: ?Release@PKCSemaphore
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
 // Flags: /EHsc
 class CString { public:                        // 4 bytes: the message text (the library CString over the shared nil buffer)
     char* m_pBuffer;
@@ -42,14 +43,7 @@ extern "C" __declspec(dllimport) void* __stdcall CreateSemaphoreA(void* attribut
 extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObject(void* handle, unsigned long milliseconds);   // IAT 0x0143FEAC
 extern "C" __declspec(dllimport) int __stdcall ReleaseSemaphore(void* handle, long releaseCount, long* previousCount);   // IAT 0x0143FEB0
 
-class PKCSemaphore {
-public:
-    PKCSemaphore(long initialCount, long maximumCount);
-    void Wait();
-    void Release();
-private:
-    void* m_hSemaphore;                     // +0x00 the Win32 semaphore
-};
+#include "libpk/PKCSemaphore.h"
 
 void PKCSemaphore::Release()
 {

@@ -1,16 +1,11 @@
 // CInventory_00c11650::GetItemValue(void*, float*) -- EH-framed: under a scoped lock over the global @ 0x0143BB14, when the observable member at +0x2c does not know the key (@ 0x00C21E20) the out word is zeroed and the default value @ 0x0122DED8 (1.0f) returned, else the observer's virtual slot 9 (with `this` and the out pointer) yields the float, parked in the dead out-pointer slot across the lock's destructor
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C11650, oracle length 165 bytes. Built under /EHsc.
 // Retail bytes:  ... call CObservable::Find ; test eax,eax ; mov ecx,[out] ; jne hit ; mov [ecx],eax ; lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~PKCProtectionInstance ; fld dword ptr [pool] ; pop esi ; ... ret 8 ; hit: mov edx,[eax] ; push ecx ; push esi ; mov ecx,eax ; call [edx+24h] ; fstp dword ptr [out] ; lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~PKCProtectionInstance ; fld dword ptr [out] ; ...
 // The manifest label is propagated; the class is named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CInventory_00c11650;
 struct CObserver_00c11650 {

@@ -1,4 +1,5 @@
 // CTypedContainer_00c30640::~CTypedContainer_00c30640() -- EH-framed destructor: drains the container (virtual RemoveFirst slot 11 / OnRemove slot 8, each item destroyed @ 0x00C3B960 and freed), then the node member at +8 (@ 0x00C17B10) and the base vtable (0x012B4B90 then 0x012B1AB0)
+// Vendor naming V2 (plan phase 1, one address, one name): 0x00C17B10 ??1CMember_00c17b10@@QAE@XZ (was ??1CNode@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C30640, oracle length 135 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -17,21 +18,21 @@ namespace N_00c3b960 { struct CItem {
     ~CItem();                              // 0x00C3B960
 }; } using N_00c3b960::CItem;
 
-struct CNode {
+struct CMember_00c17b10 {
     unsigned char _body[0x10];
-    CNode(long kind);
-    ~CNode();                              // 0x00C17B10
+    CMember_00c17b10(long kind);
+    ~CMember_00c17b10();                              // 0x00C17B10
 };
 
 struct CRoot_00c30640 {                          // vtable 0x012B1AB0
     virtual void v00();
-    CNode* m_pNode;                        // +4
-    CRoot_00c30640(CNode* node) : m_pNode(node) { }
+    CMember_00c17b10* m_pNode;                        // +4
+    CRoot_00c30640(CMember_00c17b10* node) : m_pNode(node) { }
     ~CRoot_00c30640() { }
 };
 
 struct CContainer_00c30640 : CRoot_00c30640 {          // vtable 0x012B4B90
-    CNode m_node;                          // +8
+    CMember_00c17b10 m_node;                          // +8
     virtual void v01();
     virtual void v02();
     virtual void v03();

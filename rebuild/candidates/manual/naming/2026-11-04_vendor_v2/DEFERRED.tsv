@@ -1,0 +1,87 @@
+address	stage	reason
+00c75ab0	caller	held-row caller of 0x00C89350 not respelled: the stage ProcessRamped third parameter is the history CRingBuffer where CReverbDiffuser passes its `target` SDiffuserParams (and UpdateGain / Process take the same pointer): settle the libpk reverb family (CReverbDiffuser / CReverbDiffuserStage / CDspOps, queue lines chunk 596, c602, land0411zg) as one header first. Until then the new row 0x00C89350 and this caller bind two spellings of 0x00C89350.
+00ca71e0	decision	strmbase `scalar deleting destructor` of CRendererInputPin (V1 LABELS, proven): needs a CRendererInputPin model with its virtual destructor out of line (wave-33 ??_G generator style); the landed row is a free fastcall / stand-in member
+00cab750	decision	strmbase `scalar deleting destructor` of CDynamicOutputPin (V1 LABELS, proven): needs a CDynamicOutputPin model with its virtual destructor out of line (wave-33 ??_G generator style); the landed row is a free fastcall / stand-in member
+00caaf90	decision	strmbase `scalar deleting destructor` of CEnumPins (V1 LABELS, proven): needs a CEnumPins model with its virtual destructor out of line (wave-33 ??_G generator style); the landed row is a free fastcall / stand-in member
+00cab120	decision	strmbase `scalar deleting destructor` of CEnumMediaTypes (V1 LABELS, proven): needs a CEnumMediaTypes model with its virtual destructor out of line (wave-33 ??_G generator style); the landed row is a free fastcall / stand-in member
+00cabc60	decision	strmbase `scalar deleting destructor` of CMemAllocator (V1 LABELS, proven): needs a CMemAllocator model with its virtual destructor out of line (wave-33 ??_G generator style); the landed row is a free fastcall / stand-in member
+00ca4f40	decision	CRendererInputPin::CRendererInputPin (V1 LABELS, proven): needs the CBaseInputPin / CRendererInputPin model (base ctor 0x00CAC260 with the pin name); the landed row models four interface stand-ins
+00ca6a30	decision	CBaseRenderer::GetPin (V1, proven slot 7): renbase.cpp body creates the CRendererInputPin on demand; needs the pin model (engine/CBaseVideoRenderer.h declares it under FABLE_RETAIL_CBASEVIDEORENDERER_OVERRIDES)
+00ca5170	decision	CRendererInputPin::BreakConnect (V1, proven): body = m_pRenderer->BreakConnect() then CBaseInputPin::BreakConnect (0x00CA8B50, tail call); needs 0x00CA8B50 respelled to ?BreakConnect@CBaseInputPin@@UAEJXZ with it (not done in V2)
+00c1adb0	header-migration	libpk/PKCProtectionInstance.h migration changes the bytes: the row models PKCCriticalSection with a different size or as a member of another layout (e.g. the 0x1C-byte first member of SPair_00c1adb0, which is not a lock); needs a hand look
+00c48220	header-migration	libpk/PKCProtectionInstance.h migration changes the bytes: the row models PKCCriticalSection with a different size or as a member of another layout (e.g. the 0x1C-byte first member of SPair_00c1adb0, which is not a lock); needs a hand look
+00c49d00	header-migration	libpk/PKCProtectionInstance.h migration changes the bytes: the row models PKCCriticalSection with a different size or as a member of another layout (e.g. the 0x1C-byte first member of SPair_00c1adb0, which is not a lock); needs a hand look
+00c49ff0	header-migration	libpk/PKCProtectionInstance.h migration changes the bytes: the row models PKCCriticalSection with a different size or as a member of another layout (e.g. the 0x1C-byte first member of SPair_00c1adb0, which is not a lock); needs a hand look
+00c4bc80	header-migration	libpk/PKCProtectionInstance.h migration changes the bytes: the row models PKCCriticalSection with a different size or as a member of another layout (e.g. the 0x1C-byte first member of SPair_00c1adb0, which is not a lock); needs a hand look
+00c461e0	label	not labelled: the class is CAmbientCube (this = the cube, same as GetLevel 0x00C45940) but the method name Init and its (long, void*) parameters come from the propagated CParticleMorphs model; the body interpolates the eight apex values trilinearly at a 3-float fraction (first argument is a pointer) and sets the +0xE0 ramped level target (0x00C0B570): NAME_FIXES PROPOSAL
+00c0b420	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c0b420:shape differs )
+00c10400	definer/caller move	respell to the LABELS name not automatic (STRAY_CHANGE {"CListImpl": "CMember_00c17b10"} 00c185b0:??0CListImpl@@QAE@J@Z->??0CMember_00c17b10@@QAE@J@Z)
+00c104f0	definer/caller move	respell to the LABELS name not automatic (STRAY_CHANGE {"CListImpl": "CMember_00c17b10"} 00c185b0:??0CListImpl@@QAE@J@Z->??0CMember_00c17b10@@QAE@J@Z)
+00c11f00	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c11f00:shape differs )
+00c17b10	definer/caller move	respell to the LABELS name not automatic (STRAY_CHANGE {"CPixelShaderData": "CMember_00c17b10"} 012b2dec:??_7CPixelShaderData@@6B@->??_7CMember_00c17b10@@6B@)
+00c18a20	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c17b10:shape differs (void/Q) )
+00c1b9c0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1b9c0:shape differs )
+00c1b9e0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1b9e0:shape differs )
+00c1ba00	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1ba00:shape differs )
+00c1ba60	definer/caller move	automatic respell passed but its target is not complete (other binders still on the old spelling); held so the address does not gain a third spelling: variant 0; fixed 00c1ba60(own); own ?GetLoopStart@CSoundPlayParameters@@QBEMXZ
+00c1ba70	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1ba70:shape differs )
+00c1ba80	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1ba80:shape differs )
+00c1ba90	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1ba90:shape differs )
+00c1baa0	definer/caller move	automatic respell passed but its target is not complete (other binders still on the old spelling); held so the address does not gain a third spelling: variant 0; fixed 00c1baa0(own); own ?GetFadeIn@CSoundPlayParameters@@QBEGXZ
+00c1bac0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1bac0:shape differs )
+00c1bad0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1bad0:shape differs )
+00c1bae0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1bae0:shape differs )
+00c1bb00	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1bb00:shape differs )
+00c1bbc0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1bbc0:shape differs )
+00c1bbd0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1bbd0:shape differs )
+00c1bc00	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1bc00:shape differs (short/long) )
+00c1bc90	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1bbc0:shape differs;00c1bbd0:shape differs (short/long);00c1bc00:shape differs )
+00c1bd10	definer/caller move	respell to the LABELS name not automatic (STRAY_CHANGE {"CClass_00c1bd10": "CRecordBuilder_00c16310"} 00c1bc90:?Initialise@CClass_00c1bd10@@QAEXXZ->?Initialise@CRecordBuilder_00c16310@@QAEXXZ)
+00c1e780	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1ba90:shape differs )
+00c1e7d0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1ba90:shape differs )
+00c1ea40	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1ea40:shape differs )
+00c204c0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c1bbc0:shape differs )
+00c207a0	definer/caller move	respell to the LABELS name not automatic (OWN_SYMBOL_CHANGED {"CUnprovenStateObject_00C20720": "CSoundEvent", "CheckState_00C20720": "CheckState"} ?IsState5_00C207A0@CUnprovenStateObject_00C20720@@QAEHXZ -> ?IsState5_00C2)
+00c20f20	definer/caller move	respell to the LABELS name not automatic (OWN_SYMBOL_CHANGED {"CUnprovenStateObject_00C20720": "CSoundEvent", "CheckState_00C20720": "CheckState"} ?IsState6_00C20F20@CUnprovenStateObject_00C20720@@QAEHXZ -> ?IsState6_00C2)
+00c20f40	definer/caller move	respell to the LABELS name not automatic (OWN_SYMBOL_CHANGED {"CUnprovenStateObject_00C20720": "CSoundEvent", "CheckState_00C20720": "CheckState"} ?IsState5_00C20F40@CUnprovenStateObject_00C20720@@QAEHXZ -> ?IsState5_00C2)
+00c21a20	definer/caller move	respell to the LABELS name not automatic (OWN_SYMBOL_CHANGED {"CThemeDisplay_00c21a20": "CSoundEvent", "Dispatch": "CheckState"} ?ActivateThemeDensityDisplay@CThemeDisplay_00c21a20@@QAEXJ@Z -> ?ActivateThemeDensityDisplay)
+00c21c20	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c20720:shape differs;00c21c20:shape differs )
+00c22a00	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c22a00:shape differs )
+00c259c0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c354a0:shape differs (void/Q) )
+00c25c50	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c25c50:shape differs )
+00c271d0	definer/caller move	respell to the LABELS name not automatic (STRAY_CHANGE {"T": "SEntry_00c23e00"} 012b4034:??_7T@@6B@->??_7SEntry_00c23e00@@6B@)
+00c27b70	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c27b70:shape differs )
+00c27b80	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c27b80:shape differs )
+00c27b90	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c27b90:shape differs (R/const) )
+00c27bc0	definer/caller move	respell to the LABELS name not automatic (OWN_SYMBOL_CHANGED {"CChickenSign": "CSoundPlayParameters", "GetWordC": "GetFadeIn"} ?GetWordC@CMaskedChickenSign@@QBEGG@Z -> ?GetFadeIn@CMaskedChickenSign@@QBEGG@Z)
+00c27d40	definer/caller move	automatic respell passed but its target is not complete (other binders still on the old spelling); held so the address does not gain a third spelling: variant 0; fixed 00c1baa0; own ?MergeWordC@CMaskedChickenSign@@QAEXGG@Z
+00c29eb0	definer/caller move	respell to the LABELS name not automatic (STRAY_CHANGE {"CSteeringGroup": "SEntry_00c24050"} 012b40a4:??_7CSteeringGroup@@6B@->??_7SEntry_00c24050@@6B@)
+00c2d2f0	definer/caller move	respell to the LABELS name not automatic (STRAY_CHANGE {"CMeshPart_00c2d2f0": "CActivationReceptor_00c38b20"} 00c38850:?Bind@CMeshPart_00c2d2f0@@QAEXPAX@Z->?Bind@CActivationReceptor_00c38b20@@QAEXPAX@Z ; 00c39130:??)
+00c2e2b0	definer/caller move	respell to the LABELS name not automatic (STRAY_CHANGE {"CSoundPlayParameters": "CRecordBuilder_00c16310"} 00c0e870:?CreateDriver@CScriptHost@@QAEPAXPAXABUCSoundPlayParameters@@@Z->?CreateDriver@CScriptHost@@QAEPAXP)
+00c2e960	definer/caller move	respell to the LABELS name not automatic (OWN_SYMBOL_CHANGED {"CEventRecord": "CUnprovenTransferRecord_00C3B7A0"} ?AddSubEvent@CBankProcessor@@QAEXABUCEventRecord@@@Z -> ?AddSubEvent@CBankProcessor@@QAEXABUCUnprovenTransf)
+00c2eff0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c3b6b0:shape differs (void/Q) )
+00c34440	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c0b420:shape differs )
+00c34a40	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c42ac0:shape differs )
+00c34df0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c42ac0:shape differs )
+00c35770	definer/caller move	respell to the LABELS name not automatic (OWN_SYMBOL_CHANGED {"CSoundPlayParameters": "CRecordBuilder_00c16310", "SetPriority": "Set14", "SetCategory": "Set20"} ?FillPlayParameters@CSoundTemplateRecord@@QBEJAAUCSoundPlayP)
+00c36b70	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c463a0:shape differs )
+00c37e80	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c473f0:shape differs (void/Q) )
+00c38a40	definer/caller move	automatic respell passed but its target is not complete (other binders still on the old spelling); held so the address does not gain a third spelling: variant 0; fixed 00c38a40(own); own ?Query@CInstance@@QAE_NPA_NPAUSStreamFormat@@@Z
+00c38ac0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c38ac0:shape differs )
+00c38af0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c38af0:shape differs )
+00c38b20	definer/caller move	respell to the LABELS name not automatic (OWN_SYMBOL_CHANGED {"CActivationReceptor_00c38b20": "CInstance"} ??1CActivationReceptor_00c38b20@@QAE@XZ -> ??1CInstance@@QAE@XZ)
+00c3c5f0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c3c5f0:shape differs (__fastcall/__thiscall) )
+00c42a60	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c42a60:shape differs )
+00c42ac0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c42ac0:shape differs )
+00c43e20	definer/caller move	respell to the LABELS name not automatic (OWN_SYMBOL_CHANGED {"CSoundBuffer": "CReferenceLease"} ?SetBuffer@CAudioObject@@QAE_NPAUCSoundBuffer@@@Z -> ?SetBuffer@CAudioObject@@QAE_NPAUCReferenceLease@@@Z)
+00c44dc0	definer/caller move	respell to the LABELS name not automatic (STRAY_CHANGE {"CFireballSpell_00c44dc0": "CAmbientEmitter", "DispatchScaledDamage": "UpdateVolume"} 00c44ab0:?GetDamage@CFireballSpell_00c44dc0@@QAEMXZ->?GetDamage@CAmbientE)
+00c463a0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c463a0:shape differs (void/Q) )
+00c483a0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c483a0:shape differs )
+00c48560	definer/caller move	respell to the LABELS name not automatic (STRAY_CHANGE {"CAIStateGroup_BirdFlyToFood_00c48560": "CRegistry_00c38b20", "Update": "Detach"} 00c47f00:?Issue@CAIStateGroup_BirdFlyToFood_00c48560@@QAEXPAUSActionRequest_0)
+00c4cf20	definer/caller move	respell to the LABELS name not automatic (BYTES_DIFFER {"CBase_00c4cf20": "CPooledNode"} )
+00c596a0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c4cf20:shape differs )
+00c61ca0	definer/caller move	automatic respell passed but its target is not complete (other binders still on the old spelling); held so the address does not gain a third spelling: variant 0; fixed 00c1bb00; own ?ResolveMovementBandType@CInitialiser@@QAEXPAUSParticle@@@Z
+00c62400	definer/caller move	automatic respell passed but its target is not complete (other binders still on the old spelling); held so the address does not gain a third spelling: variant 0; fixed 00c1bb00; still 00c623f0; own ?ResolveMovementBandType@CInitialiser@@QAEXPAUSParticle@@@Z
+00c62530	definer/caller move	respell to the LABELS name not automatic (STRAY_CHANGE {"CUnprovenPackedParameterRange": "CSoundPlayParameters", "GetMinimum": "GetLoopStart"} 00c1ba70:?GetMaximum@CUnprovenPackedParameterRange@@QBEMXZ->?GetMaximum@)
+00c6ad70	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c6ad70:shape differs )
+00c75ab0	definer/caller move	respell to the LABELS name not automatic (NOMAP 00c89350:shape differs )

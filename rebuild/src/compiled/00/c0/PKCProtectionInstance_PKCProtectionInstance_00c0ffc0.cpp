@@ -1,5 +1,6 @@
 // PKCProtectionInstance::PKCProtectionInstance(PKCCriticalSection* section) -- scoped lock guard: keep the section, enter it, stamp the entry tick (GetTickCount) at +4
 // Leaf: ??0PKCProtectionInstance@@QAE@PAVPKCCriticalSection@@@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C0FFC0, 29 bytes (`ret 4`), thiscall.
 // Identity: the scoped guard of the libpk locks: it stores the section, enters it (0x00C1C830) and records
 //   GetTickCount (IAT 0x0143FDFC) at +4; its destructor 0x00C0FFE0 leaves the section (0x00C1C840) after warning
@@ -14,22 +15,8 @@
 //   from a byte-identical game body), calling GetTickCount through a modelled function-pointer global.
 extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount();   // KERNEL32 import 0x0143FDFC
 
-class PKCCriticalSection {                      // a Win32 CRITICAL_SECTION (0x18 bytes)
-public:
-    unsigned char m_section[0x18];
-    PKCCriticalSection();                       // 0x00C1C810
-    ~PKCCriticalSection();                      // 0x00C1C820
-    void Enter();                               // 0x00C1C830
-    void Leave();                               // 0x00C1C840
-};
+#include "libpk/PKCProtectionInstance.h"
 
-class PKCProtectionInstance {                   // 8 bytes: the guarded section and the entry tick
-public:
-    PKCCriticalSection* m_pSection;             // +0
-    unsigned long m_tick;                       // +4
-    PKCProtectionInstance(PKCCriticalSection* section);
-    ~PKCProtectionInstance();                   // 0x00C0FFE0
-};
 
 PKCProtectionInstance::PKCProtectionInstance(PKCCriticalSection* section)
     : m_pSection(section)

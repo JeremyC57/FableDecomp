@@ -1,6 +1,7 @@
 // CCodaPlayback_00c49420::SetSourceVolume(float volume) -- under the CODA profile section (0x0143BAFC) forward the linear volume to the playback source held at +0x04 through CODA_SetSourceVolume (0x00C35AF0, which calls CAudioObject::SetGain 0x00C42F50: the gain at the source's +0x18 and, when it changed, its millibel volume at +0x1c)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C49420, length 50 bytes.
 // Leaf: ?SetSourceVolume@CCodaPlayback_00c49420@@QAEXM@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Callees: PKCProtectionInstance::PKCProtectionInstance(void*) @ 0x00C0FFC0 / ~PKCProtectionInstance @ 0x00C0FFE0 (the 8-byte scoped lock),
 // CODA_SetSourceVolume @ 0x00C35AF0 (a free `__stdcall` (source, value) helper, `ret 8`).
 // Naming (sweep1, 2026-10-25): was landed as SetSourceDecibels calling `CodaSource_SetDecibels`; FINDINGS chunk 435 asks to
@@ -11,13 +12,7 @@
 // (`mov eax,[esp+10h] ; push eax`, no FPU), the source pushed after it, the lock destroyed, `ret 4`. No EH
 // frame (the module builds without /EHsc here). The manifest label "CSurveyDialog::GetSoundsCurrentLayer" is
 // propagated over the three bodies of this shape; the playback class is unidentified (named by address).
-class PKCCriticalSection;
-class PKCProtectionInstance { public:                              // 8 bytes: section + entry tick (GOTCHAS wave 23f)
-    void* m_pSection;
-    long  m_entryTick;
-    PKCProtectionInstance(PKCCriticalSection* section);                   // 0x00C0FFC0
-    ~PKCProtectionInstance();                               // 0x00C0FFE0
-};
+#include "libpk/PKCProtectionInstance.h"
 
 extern PKCCriticalSection g_soundLock;       // 0x0143BAFC
 class CAudioObject;                                 // the CODA source object (landed CAudioObject::SetGain 0x00C42F50)

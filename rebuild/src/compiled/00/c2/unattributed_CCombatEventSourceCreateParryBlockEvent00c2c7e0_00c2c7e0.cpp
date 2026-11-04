@@ -1,17 +1,12 @@
 // CCombatEventSource_00c2c7e0::CreateParryBlockEvent(target, key, data) -- EH-framed under the module's profiling lock (0x0143BB14; @ 0x00C0FFC0 / 0x00C0FFE0, state 0): 0 without a target or when the target's +0x74 map does not know the key (@ 0x00C0E950, `this` = the target); otherwise a 0x4c-byte event is allocated (null-checked `new`, state 1 frees it if the constructor @ 0x00C38570 throws; the pointer homed in the dead target slot) from the source, the resolved key and the data, registered with the world's +8 and +0xc dispatchers (@ 0x00C2A7F0 / 0x00C2BCF0, both reached through the +4 world pointer) and returned
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C2C7E0, oracle length 259 bytes. Built under /EHsc.
 // Retail bytes:  ... sub esp,8 ; push edi ; mov edi,ecx ; push offset g_section ; lea ecx,[esp+8] ; call CProfileLock::CProfileLock ; mov ecx,[esp+1Ch] ; test ecx,ecx ; mov dword ptr [esp+14h],0 ; jne go ; ... xor eax,eax ; ... ret 0Ch ; go: mov eax,[esp+20h] ; push esi ; push eax ; call CTarget::Lookup ; mov esi,eax ; test esi,esi ; jne make ; ... xor eax,eax ; ... ret 0Ch ; make: push 4Ch ; call operator new ; add esp,4 ; mov [esp+20h],eax ; test eax,eax ; mov byte ptr [esp+18h],1 ; je null ; mov ecx,[esp+28h] ; push ecx ; push esi ; push edi ; mov ecx,eax ; call CEvent::CEvent ; mov esi,eax ; jmp got ; null: xor esi,esi ; got: mov edx,[edi+4] ; mov ecx,[edx+8] ; push esi ; mov byte ptr [esp+1Ch],0 ; call CDispatcherA::Register ; mov eax,[edi+4] ; mov ecx,[eax+0Ch] ; push esi ; call CDispatcherB::Register ; lea ecx,[esp+8] ; mov dword ptr [esp+18h],-1 ; call ~CProfileLock ; ... mov eax,esi ; ... ret 0Ch
 // The manifest label is propagated; the classes are named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 void* __cdecl operator new(unsigned int size);
 extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
-    ~PKCProtectionInstance();              // 0x00C0FFE0
-};
 
 struct CCombatEventSource_00c2c7e0;
 struct CResolvedKey_00c2c7e0;

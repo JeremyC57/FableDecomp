@@ -1,5 +1,6 @@
 // CAudioDevice::GetDefaultRateRatio() -- under the audio lock, fetches the library's default settings block and returns the float ratio of its rate word (+0x60) to the word at +0x6C
 // Leaf: GetDefaultRateRatio
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C1C0B0, 90 bytes (`ret`). Descriptive name (no PDB covers this library): the
 //   manifest's "C3DMeshFileBoneChunk_GetDeterminantRatio" is propagated. Caller 0x00C11E90. Sibling of
 //   GetDefaultRate 0x00C1C030 (same lock, same settings call).
@@ -7,15 +8,9 @@
 //   `__stdcall` GetDefaultSettings @ 0x00C33400; the unsigned-to-float fix-up constant 2^32 @ 0x0122DCB4.
 // Shape: both words are unsigned (`fild ; test ; jge ; fadd 2^32`); the quotient is parked in the float frame slot
 //   across the lock's destructor and reloaded (`fstp [esp] ... fld [esp]`).
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_soundLock;       // 0x0143BAFC
 
-class PKCProtectionInstance { public:                        // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target); // 0x00C0FFC0
-    ~PKCProtectionInstance();                         // 0x00C0FFE0
-};
 
 struct CDefaultSettings {
     unsigned long Words[0x18];              // +0x00

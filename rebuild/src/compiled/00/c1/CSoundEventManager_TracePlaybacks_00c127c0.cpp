@@ -1,5 +1,6 @@
 // CSoundEventManager::TracePlaybacks() -- under the module lock, refreshes the events and then, for every playback slot of the pool at +0x224 that holds an event, builds the event's description and the slot's status strings for the (compiled-out) trace output
 // Leaf: ?TracePlaybacks@CSoundEventManager@@QAEXXZ
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C11CB0 ?UpdateItems@CSoundEventManager@@QAEXXZ (was ?UpdateEvents@CSoundEventManager@@QAEXXZ)
 // Flags: /EHsc
 // Naming (sweep1, 2026-10-25): libpk class set CSoundEventManager (vtable 0x012B2748) / CSoundEventSet (its +0x2C
@@ -21,16 +22,10 @@
 // Shape: the two-argument trace evaluates right to left: the event description first (temporary 1, EH state 1 while
 //   the status call runs), then the slot status (temporary 2, no state of its own); they die in reverse order.
 // Label correction: the catalog's `CTCInventory_DumpCombatActionDebug_c127c0` is propagated.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 extern char* g_pchNil_0139c900;            // 0x0139C900
 
-class PKCProtectionInstance { public:                  // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);        // 0x00C0FFC0
-    ~PKCProtectionInstance();                    // 0x00C0FFE0
-};
 
 class CString { public:                      // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;

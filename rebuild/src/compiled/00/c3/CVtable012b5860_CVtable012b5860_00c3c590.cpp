@@ -1,4 +1,5 @@
 // CVtable_012b5860::CVtable_012b5860() -- base CBase_00c4cf20(), this vtable, then 1 members zeroed
+// Vendor naming V2 (plan phase 1, one address, one name): 0x00C4CF20 ??0CPooledNode@@QAE@XZ (was ??0CBase_00c4cf20@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C3C590, oracle length 25 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -10,9 +11,9 @@
 // members belong to an embedded member object whose inline constructor is inlined here (a plain
 // init list or body assignment sinks the vtable store below them). Member types are not recoverable from the
 // body (any 4-byte scalar or pointer); `long` models them. One of 10 bodies.
-struct CBase_00c4cf20 {
+struct CPooledNode {
     virtual void v00();
-    CBase_00c4cf20();                           // 0x00C4CF20
+    CPooledNode();                           // 0x00C4CF20
 };
 
 struct SZeroed {                        // the zeroed block is one embedded member object
@@ -20,7 +21,7 @@ struct SZeroed {                        // the zeroed block is one embedded memb
     SZeroed() : m_00(0) { }           // inlined into every constructor that embeds it
 };
 
-struct CVtable_012b5860 : CBase_00c4cf20 {
+struct CVtable_012b5860 : CPooledNode {
     unsigned char _pad[0x8];
     SZeroed m_data;                        // +0xc
     virtual void v00();
@@ -28,7 +29,7 @@ struct CVtable_012b5860 : CBase_00c4cf20 {
 };
 
 CVtable_012b5860::CVtable_012b5860()
-    : CBase_00c4cf20()
+    : CPooledNode()
     , m_data()
 {
 }

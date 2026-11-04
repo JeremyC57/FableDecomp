@@ -1,5 +1,6 @@
 // CSoundEventManager::ReleaseTarget(target) -- EH-framed under the module's profiling lock (0x0143BB14; @ 0x00C0FFC0 / 0x00C0FFE0, state 0; the manifest's "CTCHero_SaveDataToOutputStream" is propagated): every event of the +0x5c pool (count at +0x60, element @ 0x00C13620) that is active (word +0xac @ 0x00C20840, a four-byte result) and whose +0x18 record points at the target through its +4 is stopped (CSoundEvent::Stop @ 0x00C21620); every key of the target's +0x2c table (count +0x34) is looked up in the registry at +0x284 (slot 17, the key passed by address from the dead argument slot) and a hit detached (@ 0x00C26390) and deleted (empty out-of-line destructor @ 0x00C26400); the +0x2c event set drops the target (@ 0x00C22260) and every remaining item found for it (@ 0x00C21F50) is reset (@ 0x00C26580) and its +0x20 cleared
 // Leaf: ?ReleaseTarget@CSoundEventManager@@QAEXPAUCTarget_00c12140@@@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Naming (sweep1, 2026-10-25): libpk class set CSoundEventManager (vtable 0x012B2748) / CSoundEventSet (its +0x2C
 //   member) / CSoundEvent (0xB4 bytes, vtable 0x012B3674): the describer 0x00C21040 called by TraceEvents/
@@ -11,17 +12,11 @@
 //   0x012B2748): the +0x5C pool of 0xB4-byte CSoundEvents (accessor 0x00C13620, IsActive 0x00C20840, Stop 0x00C21620, as in
 //   Shutdown 0x00C123B0) and the +0x2C event set; FINDINGS chunk 433 lists CTCHero among the manager's propagated names.
 //   The other classes keep their address names.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 void __cdecl operator delete(void* block);
 extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 struct CSoundEventManager;
 
-class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
-    ~PKCProtectionInstance();              // 0x00C0FFE0
-};
 
 struct CTarget_00c12140 {
     unsigned char _pad[0x2c];

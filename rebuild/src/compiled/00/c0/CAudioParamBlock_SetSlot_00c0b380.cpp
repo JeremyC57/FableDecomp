@@ -1,5 +1,6 @@
 // CAudioParamBlock::SetSlot(unsigned long, void*, void*) -- EH-framed: under a scoped lock over the global @ 0x0143BB14, when the index is below 16 the 0x34-byte ramped parameter at +4 + 0x34*index is retargeted from the two arguments and 0 (CRampedParam::SetTarget @ 0x00C0B570), the display at +0x38 of the owner at +0x3c4 refreshed (@ 0x00C11180) and the optional sprite at +0x60 of the owner updated (@ 0x00C15B90)
 // Leaf: ?SetSlot@CAudioParamBlock@@QAEXKPAX0@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C11180 ?SetFlagBit1@CLockedFlagOwner_00c11180@@QAEXXZ (was ?Refresh@CDisplay@@QAEXXZ)
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): CAudioOwner -> CSoundSystem, the one class name for vtable 0x012B1E24 (the libpk sound system CreateSoundSystem_00c096e0 0x00C096E0 returns and the landed CSoundManagerLH ctor 0x00A3EF00 drives; descriptive, libpk has no PDB).
 // Flags: /EHsc
@@ -12,15 +13,9 @@
 //   sit at +4 and the owner at +0x3c4, exactly as in the landed CAudioParamBlock::Update 0x00C0AF20, whose CSoundSystem /
 //   CLockedFlagOwner_00c11180 / CSprite / CRampedParam model (display +0x38, sprite +0x60, Refresh 0x00C11180, Update 0x00C15B90) this
 //   source now shares. The landed CRampedParam::SetImmediate 0x00C0B510 names 0x00C0B570 SetTarget.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CRampedParam {                      // 0x34 bytes
     unsigned char _body[0x34];

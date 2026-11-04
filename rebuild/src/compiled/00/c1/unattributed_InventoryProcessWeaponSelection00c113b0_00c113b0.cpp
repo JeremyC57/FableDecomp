@@ -1,4 +1,5 @@
 // CObserved_00c113b0::Inventory_ProcessWeaponSelection(void*, void*) -- under a scoped lock over the global @ 0x0143BB14, finds the observer of the key in the observable member at +0x2c (@ 0x00C21E20) and notifies it through virtual slot 2 with (this, argument); EH-framed
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C113B0, oracle length 114 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -11,15 +12,9 @@
 // destroyed (state -1). Built under /EHsc (the `__ehhandler` is not compared; the funclet lands
 // through the funclet pass). The manifest label is propagated; the class is named by address.
 // One of 3 bodies of this shape.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;   // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CObserver {
     virtual void v00();

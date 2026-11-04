@@ -1,0 +1,10 @@
+  WARN leaf '??0CEngineVSConstantLayoutLights@' matches no symbol in x.obj; graded the largest function
+  WARN leaf 'CPersistInfo>' matches no symbol in x.obj; graded the largest function
+  WARN leaf 'CPersistInfo>' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??0C3DMeshFileTransformationChunk@' matches no symbol in x.obj; graded the largest function
+  WARN leaf 'HeroExperience_QueryDamageWithRange' matches no symbol in x.obj; graded the largest function
+  WARN leaf 'HeroExperience_QueryClampedValue' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??1CEngineVSConstantBlockSet' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??1CAIStateGroup_CreatureUseCoverBase@' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??1CBase_00caefb0' matches no symbol in x.obj; graded the largest function
+gate: 693 rows {'PASS': 693} in 31.7s (0.05s/row wall, NJ=4)

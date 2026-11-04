@@ -1,0 +1,53 @@
+Vendor naming V2 (plan phase 1, step 2), 2026-11-04. Header-first.
+
+METHOD
+- Every candidate is compared with the symbol index ($S/plan/idx, symindex2 run covering HEAD after chunk 773). A row is
+  accepted only when the graded function keeps the index's masked sha1 (all relocation fields zeroed) and the same
+  (target, kind) relocation sequence, and every changed symbol is the decided spelling of its target (gate.py / hdrmig.py /
+  rs2.py rule). Then all accepted rows were graded with vland --recheck-landed read-only, 3 batches of <=140 + 1 defmove
+  batch (logs/vland_v2_*.log), each with its own LANDVERIFY_WORK; at most 2 at once.
+- Header-first: hdrmig.py strips every local block / forward declaration of the header's classes, includes the shared
+  header, renames aliases and accepts the row only if every symbol change is the header's own spelling (alias -> name,
+  struct U -> class V). Configs: cfg_pkclock*.json (PKCCriticalSection + PKCProtectionInstance), cfg_pksem.json.
+- Waves chain through cur/<addr>.cpp (reg.py), so a row touched by several components carries all of them.
+
+HEADERS (new files only; no existing shared header changed, so hdrcheck2 is default=same by construction)
+- rebuild/include/libpk/PKCCriticalSection.h   (0x18 bytes, ctor 0x00C1C810, dtor 0x00C1C820, Enter 0x00C1C830, Leave 0x00C1C840)
+- rebuild/include/libpk/PKCProtectionInstance.h (m_pSection +0, m_tick +4; ctor 0x00C0FFC0, dtor 0x00C0FFE0)
+- rebuild/include/libpk/PKCSemaphore.h          (ctor(long,long) 0x00C29FC0, dtor 0x00C29FB0, Wait 0x00C2A090, Release 0x00C2A150)
+  apply_w35c.py reports them as "overlay-only file": copy overlay/rebuild/include/libpk/ into the repo by hand.
+
+COUNTS
+- reg.tsv 334 rows (pklock 179, pklock+pksem 64, pksem 11, reloc47 45, pklock+reloc47 2, strm 12, cmy 10, defmove 4,
+  held 3, held+pklock 1, includer 2, filterstate 1). PASS.tsv 334: MATCH 10, RELOCATION_MATCH 324 (139 clean, 134
+  inherited warnings only, 51 introduced RELOC_NAME warnings, all against propagated junk labels that LABELS.tsv fixes).
+  Grade failures 0. gate.py on the final overlay: 334 PASS (logs/gate_final.tsv).
+- Includers graded unchanged (funclets / rows that include a changed file): 359 RELOCATION_MATCH PASS (logs/regrade_only.tsv).
+- RENAMES 14 (placeholder file names -> decided names), CALLERS 66, BINDINGS ADD 26 / RETIRE 57, LABELS 72.
+- NEW_ROWS 6 (00c44e80, 00c45980, 00c12940, 00c38d60, 00c54190, 00c89350): RELOCATION_MATCH PASS, payload without
+  --land (logs/new_rows_grade.tsv). new_oracle.tsv holds retail bytes: scratch only, never commit it.
+- DEFERRED 86: definer/caller moves 71, strmbase decisions 8, PKC layout rows 5, caller 1 (00c75ab0), label 1 (00c461e0).
+- NAME_FIXES 49: 47 decided spellings whose definers/callers could not be respelled automatically, 0x00C461E0 (PROPOSAL,
+  method unproven) and the IsPlayingVirtual double binding (0x00C20F40 / 0x00C207A0, CONFLICT, unresolved).
+- QUEUE_V3 1833: QUEUE_V2 carried (rows V2 changed are marked "recheck with gate.py after landing"), V2 deferred,
+  22 reloc47 leftover targets, 3 vendor-header follow-ups.
+
+DECISIONS
+- Definer moves: 75 rows tried; a target was accepted only when every job on it passed (00c1bab0 GetGroup, 00c384e0
+  IsFinished; 4 rows). A partially moved target would gain a third spelling, so the others wait (DEFERRED / NAME_FIXES).
+- 0x00C461E0 not labelled: class is CAmbientCube by receiver, method name not proven.
+- engine/CBaseVideoRenderer.h `_FilterState` tag debt left alone: no landed row would test a change.
+- 00c75ab0 not respelled: the reverb stage's third parameter is the history CRingBuffer where the diffuser passes its
+  `target`; fix the reverb family as one header first.
+- pay_* directories are working payloads and may be stale; the grades of record are logs/vland_v2_*.log as read by
+  passlist.py. The overlay + RENAMES are the final state; assemble.py rebuilds the payloads from reg.tsv.
+
+GOTCHAS (one line each, for docs/pipeline/GOTCHAS.md)
+- Funclet rows (Unwind@) produce meaningless index binds (targets computed from the parent's bytes): exclude them from
+  BIND-derived products and from name notes.
+- A struct/class key split is an invisible conflict: PAU vs PAV in every by-pointer symbol, 3U vs 3V on globals; a shared
+  header fixes it for free.
+- A derived class that models a libpk lock base as 4 bytes + pad changes its bytes when the real 0x18-byte header is
+  included: re-pad (and drop a zero-size pad array, C2229) before migrating.
+- symindex.py keys on the whole tree, so any header edit recompiles all 54k rows; symindex2.py keys on the include closure.
+- csv readers on these TSVs need quoting=csv.QUOTE_NONE (a `"` in a note silently merges thousands of lines).

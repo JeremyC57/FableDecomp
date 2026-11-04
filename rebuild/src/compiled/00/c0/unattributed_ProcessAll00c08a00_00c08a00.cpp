@@ -1,17 +1,12 @@
 // CEventQueue_00c08a00::ProcessAll() -- EH-framed: under a scoped lock over the global @ 0x0143BB14, every item produced by virtual slot 11 of the polymorphic member at +4 is processed out of line (@ 0x00C08940) until the member yields null
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C08A00, oracle length 118 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; push edi ; mov edi,ecx ; push offset g_lock ; lea ecx,[esp+0Ch] ; call PKCProtectionInstance::PKCProtectionInstance ; mov eax,[edi+4] ; lea esi,[edi+4] ; mov ecx,esi ; mov dword ptr [esp+18h],0 ; call [eax+2Ch] ; test eax,eax ; je done ; loop: push eax ; mov ecx,edi ; call Process ; mov edx,[esi] ; mov ecx,esi ; call [edx+2Ch] ; test eax,eax ; jne loop ; done: lea ecx,[esp+8] ; mov dword ptr [esp+18h],-1 ; call ~PKCProtectionInstance ; ...
 // The member's address is kept in esi across the loop (lea once, the vtable reloaded per call).
 // The manifest label is propagated; the class is named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CItemSource_00c08a00 {              // polymorphic member at +4
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

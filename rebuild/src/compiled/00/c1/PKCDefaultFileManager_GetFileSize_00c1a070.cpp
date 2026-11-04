@@ -1,5 +1,6 @@
 // PKCDefaultFileManager::GetFileSize(unsigned long key, unsigned long* size) -- under the manager's critical-section lock, looks the key up in the open-file map at +0x20; an unknown key or a failing Win32 GetFileSize (0xFFFFFFFF, still stored to *size) returns false, else true
 // Leaf: ?GetFileSize@PKCDefaultFileManager@@QAE_NKPAK@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1A070, 158 bytes (+ int3 padding), __fastcall `ret 8`, EH-framed.
 // Identity: the libpk default file manager (vtable 0x012B30E4; landed constructor 0x00C1AC40 / destructor 0x00C1A230):
@@ -14,15 +15,9 @@
 //   not-found block after its state store); the size test compares the call result, not the stored word.
 // Label: the catalog's `FileManager_GetFileSizeByKey` is descriptive; the class is PKCDefaultFileManager (naming wave 11: the trace
 //   .\PKCDefaultFileManager.cpp and the landed dtor 0x00C1A230 on the same object), its +0x20 map PKCTRRedblackMap (ctor 0x00C1AE20).
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern "C" __declspec(dllimport) unsigned long __stdcall GetFileSize(void* hFile, unsigned long* sizeHigh);   // 0x0143FDF0
 
-class PKCProtectionInstance { public:              // 8-byte scoped lock
-    void* m_pSection;
-    unsigned long m_state;
-    PKCProtectionInstance(PKCCriticalSection* section);   // 0x00C0FFC0
-    ~PKCProtectionInstance();               // 0x00C0FFE0
-};
 
 struct SOpenFile_00c1a070 {
     void* m_hFile;                         // +0x00 Win32 handle

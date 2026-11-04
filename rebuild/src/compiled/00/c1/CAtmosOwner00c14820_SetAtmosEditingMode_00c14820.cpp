@@ -1,15 +1,10 @@
 // CAtmosOwner_00c14820::SetAtmosEditingMode(long) -- under the profile lock at 0x0143BB14, store the long argument into the atmosphere record's mode word at +0xc8 of the record at +8
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C14820, length 46 bytes.
 // Callees: PKCProtectionInstance::PKCProtectionInstance(void*) @ 0x00C0FFC0 / ~PKCProtectionInstance @ 0x00C0FFE0 (the 8-byte scoped lock, landed shape). Shape: the record pointer
 // at +8 is read after the lock, the argument is read from its slot (`mov [eax+0C8h],ecx`), the lock is destroyed and `ret 4`. The chunk label
 // "CEditControlCentre::SetAtmosEditingMode" is propagated (the 0x00C1xxxx module); the class is named by address.
-class PKCCriticalSection;
-class PKCProtectionInstance { public:                              // 8 bytes: section + entry tick (GOTCHAS wave 23f)
-    void* m_pSection;
-    long  m_entryTick;
-    PKCProtectionInstance(PKCCriticalSection* section);                   // 0x00C0FFC0
-    ~PKCProtectionInstance();                               // 0x00C0FFE0
-};
+#include "libpk/PKCProtectionInstance.h"
 extern unsigned char g_AtmosProfileSection_0143bb14[1];   // 0x0143BB14
 
 struct SAtmosRecord_00c14820 {

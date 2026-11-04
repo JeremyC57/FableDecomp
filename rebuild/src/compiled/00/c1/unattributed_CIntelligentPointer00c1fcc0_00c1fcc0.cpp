@@ -1,4 +1,5 @@
 // CIntelligentPointer_00c1fcc0::CIntelligentPointer_00c1fcc0(void*, void*) -- EH-framed constructor: empty destructible base (EH state 0), item pointer at +4, 16-byte member at +8 built out of line (@ 0x00C34AA0), own vtable, then the member at +0x18 built from the first argument (@ 0x00C0DAB0, state 1)
+// Vendor naming V2 (plan phase 1, one address, one name): 0x00C34AA0 ??0CMember_00c34aa0@@QAE@XZ (was ??0CMember8@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1FCC0, oracle length 105 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -14,10 +15,10 @@
 // 0x00C0DAB0). `this` is kept in the frame for the unwind funclets. Built under /EHsc (the
 // `__ehhandler` is not compared; the funclets land through the funclet pass). The manifest
 // label names the class; the member types are opaque. One of 4 bodies of this shape.
-struct CMember8 {                          // member at +8, default-constructed out of line
+struct CMember_00c34aa0 {                          // member at +8, default-constructed out of line
     unsigned char _body[0x10];
-    CMember8();                            // 0x00C34AA0
-    ~CMember8();
+    CMember_00c34aa0();                            // 0x00C34AA0
+    ~CMember_00c34aa0();
 };
 
 struct CMemberN {                          // member at +0x18, constructed from the first argument
@@ -33,7 +34,7 @@ struct __declspec(novtable) CDestructible { // polymorphic root at +0 (no vtable
 
 struct CPointerBase_00c1fcc0 : CDestructible {     // vtable 0x012B3528
     void* m_pItem;                         // +4
-    CMember8 m_member8;                    // +8
+    CMember_00c34aa0 m_member8;                    // +8
     CPointerBase_00c1fcc0(void* item) : m_pItem(item), m_member8() { }
     ~CPointerBase_00c1fcc0();                   // out of line: the unwind funclet for state 1 destroys the whole base through it
 };

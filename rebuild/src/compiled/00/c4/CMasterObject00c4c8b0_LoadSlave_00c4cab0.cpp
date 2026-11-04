@@ -1,5 +1,6 @@
 // CMasterObject_00c4c8b0::LoadSlave(IScriptReader_00c4c8b0* reader, void* a, unsigned long stride, void* d) -- EH-framed under the master object's profiling lock: warn when already finalised (PKRACMasterObject.cpp line 124), new an 8-byte slave object over this (EMEM warning, line 129, when it fails), let the reader load count*stride bytes into it; on failure delete the slave and reset the object, else commit it
 // Leaf: ?LoadSlave@CMasterObject_00c4c8b0@@
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C62E20 ??0PKRASlaveObject@@QAE@PAX@Z (was ??0CSlaveObject_00c62c70@@QAE@PAX@Z)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C4CAB0, 471 bytes, thiscall `ret 10h`, /EHsc.
@@ -7,7 +8,7 @@
 // Callees: PKCProtectionInstance 0x00C0FFC0 / 0x00C0FFE0, the trace stream 0x00C0DEC0 / 0x00C0DF00 / 0x00C0BA40, CDebugBreak
 //   0x00C16750, operator new, the slave ctor 0x00C62E20, reader slots 1 (Load) / 2 (GetCount), Reset 0x00C4C330, Commit 0x00C4C6C0.
 // Shape: Load's six arguments are pushed in two halves around the GetCount() call.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4c8b0)(const char* text);
 extern PFNLOGSINK_00c4c8b0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
@@ -21,12 +22,6 @@ class CString { public:                  // MFC-style string: one word, the shar
 };
 struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte
     CDebugBreak();                         // 0x00C16750
-};
-class PKCProtectionInstance { public:             // scoped profiling lock: two words
-    void* m_pSection;
-    void* m_pPrevious;
-    PKCProtectionInstance(PKCCriticalSection* section);      // 0x00C0FFC0
-    ~PKCProtectionInstance();                  // 0x00C0FFE0
 };
 
 struct CMasterObject_00c4c8b0;

@@ -1,5 +1,6 @@
 // CAudioDevice::GetDefaultRate() -- under the audio lock, fetches the library's default settings block and returns its rate word (+0x60)
 // Leaf: GetDefaultRate
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C1C030, 54 bytes (`ret`). Descriptive name (no PDB covers this library): the
 //   manifest's "GetDefaultVal<CAnimationSet>" is propagated. Caller: the landed 0x00C10BA0 (`m_pTarget->Get()` on the
 //   object at +0x7BC), so this is a member that ignores `this`.
@@ -8,15 +9,9 @@
 //   reads the same +0x60 rate word).
 // Shape: no EH frame (this TU is built without /EHsc); the result is held in esi across the lock's destructor; the
 //   frame holds the 8-byte lock below the 0xA0-byte block.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_soundLock;       // 0x0143BAFC
 
-class PKCProtectionInstance { public:                        // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target); // 0x00C0FFC0
-    ~PKCProtectionInstance();                         // 0x00C0FFE0
-};
 
 struct CDefaultSettings {
     unsigned long Words[0x18];              // +0x00

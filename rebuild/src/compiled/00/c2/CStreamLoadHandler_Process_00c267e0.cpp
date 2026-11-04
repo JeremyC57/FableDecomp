@@ -4,6 +4,7 @@
 // find (or create from the header's play parameters) its driver and start it on the owner; finally release and delete the request
 // Flags: /EHsc
 // Leaf: ?Process@CStreamLoadHandler@@UAEXPAVCPooledResource@@@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C267E0, 577 bytes, `ret 4`, EH-framed (the scoped lock; state 1 around `new CStreamBuffer`).
 // Identity (descriptive: libpk / GameCODA has no PDB or RTTI): vtable 0x012B4018 has this one slot; the landed constructor
 //   0x00C26A30 builds the handler at +4 of its owner (vtable 0x012B4018, owner pointer +4) and the worker over it at +0xC; the landed
@@ -17,15 +18,9 @@
 //   CreateDriver 0x00C0E870; operator new 0x00BFEA1A, CStreamBuffer() 0x00C262A0, Attach 0x00C262E0, FinishLoading 0x00C26090,
 //   Release 0x00C26390, ~CStreamBuffer 0x00C26400, operator delete 0x00BFE9BC; CSoundPlayParameters() 0x00C1BD10; the owner's
 //   StartSound 0x00C12CD0.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;                  // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    void*         m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);    // 0x00C0FFC0
-    ~PKCProtectionInstance();                               // 0x00C0FFE0
-};
 
 class CHandleBasedMemoryPool_012b4098 { public:
     void* GetPointerFromHandle(long handle);                // 0x00C28380

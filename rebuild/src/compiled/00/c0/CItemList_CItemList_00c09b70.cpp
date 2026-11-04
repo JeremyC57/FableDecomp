@@ -1,5 +1,6 @@
 // CItemList::~CItemList() -- EH-framed: own vtable, the CListImpl member at +0x8 destroyed out of line, inlined empty CTypedListBase destructor
 // Leaf: ??1CItemList@@QAE@XZ
+// Vendor naming V2 (plan phase 1, one address, one name): 0x00C17B10 ??1CMember_00c17b10@@QAE@XZ (was ??1CListImpl@@QAE@XZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C09B70, oracle length 73 bytes. Built under /EHsc.
 // Naming (sweep1, 2026-10-25): was landed as CVtable_012b1b78::~CVtable_012b1b78() over CBase_012b1ab0 /
@@ -12,9 +13,9 @@
 // Plain destructor: installs this class's vtable (0x012B1B78), destroys the member at +0x8 through its out-of-line
 // destructor @ 0x00C17B10 under EH state 0, then the inline empty base destructor stores the base vtable (0x012B1AB0).
 // Non-virtual destructors keep the lander on `??1`.
-struct CListImpl {
+struct CMember_00c17b10 {
     void* m_data;
-    ~CListImpl();                                    // 0x00C17B10
+    ~CMember_00c17b10();                                    // 0x00C17B10
 };
 
 struct CTypedListBase {                              // vtable 0x012B1AB0
@@ -23,8 +24,8 @@ struct CTypedListBase {                              // vtable 0x012B1AB0
 };
 
 struct CItemList : CTypedListBase {                  // vtable 0x012B1B78
-    CListImpl* m_pImpl;                              // +0x4 (the base's impl pointer)
-    CListImpl m_impl;                                // +0x8
+    CMember_00c17b10* m_pImpl;                              // +0x4 (the base's impl pointer)
+    CMember_00c17b10 m_impl;                                // +0x8
     virtual void Slot0();
     ~CItemList();
 };

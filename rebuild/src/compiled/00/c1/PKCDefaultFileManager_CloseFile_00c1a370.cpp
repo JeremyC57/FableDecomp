@@ -1,5 +1,6 @@
 // PKCDefaultFileManager::CloseFile(unsigned long key) -- under the manager's lock, release one reference to an open file: trace an unknown key (line 65) and return; trace and break on a reference count already at zero (line 68); on the last reference remove it from the open-file map, CloseHandle the Win32 handle and delete the record
 // Leaf: ?CloseFile@PKCDefaultFileManager@@QAEXK@Z
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C1A370, 404 bytes, thiscall `ret 4`, EH-framed (the lock, the two trace strings).
 // Identity (class proven, method name descriptive; libpk has no PDB or RTTI): the traces name ".\PKCDefaultFileManager.cpp"
@@ -16,16 +17,10 @@
 //   body, Remove a stand-in that never keeps the key's address): VC7.1 then homes the first trace string in the dead `key`
 //   argument slot as retail (declared only, it took the `file` slot). The zero test is `m_refCount <= 0` on the unsigned
 //   count (retail `test ; ja`). The first trace has no debugger break. Land the leaf only.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* hObject);   // 0x0143FE30
 void __cdecl operator delete(void* block);                                   // 0x00BFE9BC
 
-class PKCProtectionInstance { public:              // 8-byte scoped lock
-    void* m_pSection;
-    unsigned long m_state;
-    PKCProtectionInstance(PKCCriticalSection* section);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                              // 0x00C0FFE0
-};
 class CString { public:
     char* m_pBuffer;
     CString(char* buffer) : m_pBuffer(buffer) { }

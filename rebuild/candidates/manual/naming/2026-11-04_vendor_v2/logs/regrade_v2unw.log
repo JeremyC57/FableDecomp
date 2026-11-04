@@ -1,0 +1,7 @@
+addr       parity           behav  name
+01211781   RELOCATION_MATCH PASS   _global::Unwind@01211781
+01216d00   RELOCATION_MATCH PASS   _global::Unwind@01216d00
+
+WINS: 2
+  01211781 RELOCATION_MATCH _global::Unwind@01211781
+  01216d00 RELOCATION_MATCH _global::Unwind@01216d00

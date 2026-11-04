@@ -1,5 +1,7 @@
 // CUnknown::CUnknown(const char* pName, IUnknown* pUnk) -- DirectShow base-class constructor: counts the live object (CBaseObject), owner = pUnk or the object's own non-delegating interface, reference count 0
 // Leaf: ??0CUnknown@@QAE@PBDPAUIUnknown@@@Z
+// Vendor naming V2 (plan phase 1, one address, one name; V1 decision D2): the CUnknown base is strmbase's CMyBaseObject (combase.h
+//   CBaseObject renamed; RTTI of vtable 0x0129D08C): its live-object count is ?m_cObjects@CMyBaseObject@@0JA 0x0143CCF4 (was ?m_cObjects@CBaseObject@@0JA)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CACB80, 40 bytes (`ret 8`).
 // Callees: InterlockedIncrement (import thunk 0x0143FD34, resolved from the IAT) on CBaseObject::m_cObjects
 // (0x0143CCF4).
@@ -28,13 +30,13 @@ struct __declspec(novtable) INonDelegatingUnknown {
     virtual unsigned long __stdcall NonDelegatingRelease() = 0;
 };
 
-class CBaseObject {
+class CMyBaseObject {
     static long m_cObjects;                          // 0x0143CCF4
 public:
-    CBaseObject(const char* pName) { InterlockedIncrement(&m_cObjects); }
+    CMyBaseObject(const char* pName) { InterlockedIncrement(&m_cObjects); }
 };
 
-class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CBaseObject {
+class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CMyBaseObject {
     IUnknown* const m_pUnknown;                      // +0x04
 protected:
     long m_cRef;                                     // +0x08 (combase.h cv-qualifier dropped for purity)
@@ -43,7 +45,7 @@ public:
 };
 
 CUnknown::CUnknown(const char* pName, IUnknown* pUnk)
-    : CBaseObject(pName),
+    : CMyBaseObject(pName),
       m_pUnknown(pUnk != 0 ? pUnk : reinterpret_cast<IUnknown*>(static_cast<INonDelegatingUnknown*>(this))),
       m_cRef(0)
 {

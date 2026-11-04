@@ -1,4 +1,5 @@
 // CActionSummonerLightningAttackTarget::InitParticleMorphs(long morphType) -- scales the particle morphs by 1000 / the morph definition's rate, initialises them from the thing's morph table, then activates the action
+// Vendor naming V2 (plan phase 1, one address, one name): the +0x4C member is libpk's CAmbientCube (eight 0x1C-byte apexes, the ramped level at +0xE0; the landed GetLevel 0x00C45940): 0x00C45980 ?UpdateLevel@CAmbientCube@@QAEXM@Z (was ?SetScale@CParticleMorphs@@QAEXM@Z, a propagated engine class), 0x00C461E0 now ?Init@CAmbientCube@@QAEXJPAX@Z (was ?Init@CParticleMorphs@@...; method name and parameter types still unproven: NAME_FIXES PROPOSAL)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C36430, length 71 bytes.
 // Callees: CParticleMorphs::SetScale @ 0x00C45980 (__fastcall(float), the "_Cons_val" label is
 // propagated), CParticleMorphs::Init @ 0x00C461E0 (__fastcall(long, void*), labelled
@@ -26,9 +27,9 @@ struct CScriptOwner {
     CThing* m_pThing;                                   // +0x00
 };
 
-class CParticleMorphs { public:
+class CAmbientCube { public:
     unsigned char _body[0x4];
-    void SetScale(float scale);                         // 0x00C45980
+    void UpdateLevel(float dt);                         // 0x00C45980
     void Init(long morphType, void* morphTable);        // 0x00C461E0
 };
 
@@ -37,14 +38,14 @@ extern const float g_milliseconds;                      // __real@447a0000 (1000
 struct CActionSummonerLightningAttackTarget {
     CScriptOwner*   m_pOwner;                           // +0x00
     unsigned char   _pad[0x4c - 0x04];
-    CParticleMorphs m_particleMorphs;                   // +0x4c
+    CAmbientCube    m_particleMorphs;                   // +0x4c
     void OnActivate();                                  // 0x00C36340
     void InitParticleMorphs(long morphType);
 };
 
 void CActionSummonerLightningAttackTarget::InitParticleMorphs(long morphType)
 {
-    m_particleMorphs.SetScale(1000.0f / m_pOwner->m_pThing->m_pDef->m_pMorphDef->m_rate);
+    m_particleMorphs.UpdateLevel(1000.0f / m_pOwner->m_pThing->m_pDef->m_pMorphDef->m_rate);
     m_particleMorphs.Init(morphType, m_pOwner->m_pThing->m_pMorphTable);
     OnActivate();
 }

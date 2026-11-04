@@ -3,6 +3,7 @@
 //   reads it into the dead this register ebp as retail (the bare member read takes eax)
 // Flags: /EHsc
 // Leaf: GetItemStatistics
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C12300, 165 bytes (`ret 4`). Built under /EHsc. Descriptive names (no PDB
 //   covers this library): the manifest's "Inventory_PopulateItemArray" is propagated. The panel and its item array
 //   (+0x5c, count +0x60, 0xB4-byte items) are the ones of UpdateItems 0x00C11CB0 and OnKey 0x00C11F00.
@@ -17,13 +18,7 @@
 struct CGlobalLockTarget;
 extern CGlobalLockTarget g_lock_0143bb14;       // 0x0143BB14
 
-class PKCCriticalSection;
-class PKCProtectionInstance { public:     // libpk scoped lock (trace string '.\\PKCProtectionInstance.cpp'; landed mailbox rows)                            // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* section);     // 0x00C0FFC0
-    ~PKCProtectionInstance();                             // 0x00C0FFE0
-};
+#include "libpk/PKCProtectionInstance.h"
 
 struct CPanelItemStats {                        // 0x18 bytes
     long m_count0;                              // +0x00

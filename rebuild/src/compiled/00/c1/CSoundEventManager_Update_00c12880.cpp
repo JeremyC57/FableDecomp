@@ -1,5 +1,6 @@
 // CSoundEventManager::Update() -- EH-framed per-tick update under a scoped lock over the global @ 0x0143BB14: every active event of the pool at +0x5c (count at +0x60, accessor @ 0x00C13620, CSoundEvent::IsActive @ 0x00C20840) is applied with `this` and the flags at +0x7c8 (@ 0x00C21A50); then the flags are cleared, the pending events assigned (AssignPendingItems @ 0x00C10CD0), the step @ 0x00C12040 run and the owned part at +0x7bc finished (@ 0x00C1C6A0)
 // Leaf: ?Update@CSoundEventManager@@QAEXXZ
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C21A50 ?Update@CSoundEvent@@QAEXPAUCSoundEventManager@@K@Z (was ?Apply@CSoundEvent@@QAEXPAUCSoundEventManager@@K@Z)
 // Naming (naming wave 21, DECISIONS_W20_RESOLVED): CAudioOwner -> CSoundSystem, the one class name for vtable 0x012B1E24 (the libpk sound system CreateSoundSystem_00c096e0 0x00C096E0 returns and the landed CSoundManagerLH ctor 0x00A3EF00 drives; descriptive, libpk has no PDB).
 // Flags: /EHsc
@@ -13,15 +14,9 @@
 //   CSoundEventManager::AssignPendingItems; +0x7c8 is the flag word the landed SetFlagBit1 0x00C11180 sets. Its caller
 //   is the audio owner's per-tick CSoundSystem::Update 0x00C091F0 (on the owner's +0x38 manager). The +0x7bc part and
 //   the 0x00C12040 / 0x00C21A50 callees keep descriptive placeholder names.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CSoundEventManager;
 struct CSoundEvent {

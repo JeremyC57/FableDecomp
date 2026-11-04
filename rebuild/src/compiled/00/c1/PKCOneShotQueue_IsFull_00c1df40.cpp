@@ -1,5 +1,7 @@
 // PKCOneShotQueue::IsFull() -- slot 3 of the one-item reply queue: the filled flag
 // Leaf: ?IsFull@?$PKCOneShotQueue@USFileReply@@@@UAEJXZ
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1DF40, 4 bytes, __thiscall `ret`: mov eax,[ecx+0Ch] ; ret
 // Naming: was landed as the gapscan placeholder T::Get (sub_00c1df40, pack(1) blob); its only reference is slot 3 of
 //   the PKCOneShotQueue<SFileReply> vtable 0x012B332C (0x012B3338), the IsFull slot the mailbox Send tests
@@ -22,19 +24,9 @@ struct SFileReply {                             // 8 bytes: the answer a PKCASyn
     SFileReply() : m_bSuccess(true), m_value(0) {}
 };
 
-class PKCCriticalSection {                      // a Win32 CRITICAL_SECTION (0x18 bytes)
-public:
-    unsigned char m_section[0x18];
-    PKCCriticalSection();                       // 0x00C1C810
-    ~PKCCriticalSection();                      // 0x00C1C820
-};
+#include "libpk/PKCProtectionInstance.h"
 
-class PKCSemaphore {                            // a Win32 handle
-public:
-    void* m_hSemaphore;
-    PKCSemaphore(long initialCount, long maximumCount);   // 0x00C29FC0
-    ~PKCSemaphore();                            // 0x00C29FB0
-};
+#include "libpk/PKCSemaphore.h"
 
 template<class T> class PKCQueue {              // the queue interface PKCMailbox drives (4 pure slots, no destructor slot)
 public:

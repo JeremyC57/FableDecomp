@@ -1,8 +1,9 @@
 // CMasterObject_00c4c7a0::ReceiveObject(late) -- EH-framed under the object's own profiling lock on +0x10 (@ 0x00C0FFC0 / 0x00C0FFE0, state 0): receiving past the expected count (+4 not below +0) raises the warning at PKRACMasterObject.cpp line 79 (MFC-style string in a nested block, log sink at 0x0143BB2C, the trace temporary on a free frame byte; state 1); an on-time object bumps the +8 counter; the received count is incremented and, when it reaches the expected count of an already finalised object (+0x28), the object completes (@ 0x00C4C440)
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4C7A0, oracle length 257 bytes. Built under /EHsc.
 // Retail bytes:  ... sub esp,10h ; push esi ; mov esi,ecx ; lea eax,[esi+10h] ; push eax ; lea ecx,[esp+10h] ; call CProfileLock::CProfileLock ; mov ecx,[esi+4] ; cmp ecx,[esi] ; mov dword ptr [esp+1Ch],0 ; jb ok ; mov edx,[g_pchNil] ; mov [esp+8],edx ; mov edx,offset ".\PKRACMasterObject.cpp" ; lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],1 ; call Append ; ... mov edx,4Fh ; ... call AppendNumber ; ... call Append (text) ; ... call Append ("\n") ; mov eax,[g_pfnLogSink] ; test eax,eax ; je skip ; mov ecx,[esp+8] ; call eax ; skip: lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],0 ; call ~CString ; lea ecx,[esp+7] ; call CTrace::CTrace ; ok: mov al,[esp+24h] ; test al,al ; jne a ; inc dword ptr [esi+8] ; a: mov edx,[esi+4] ; mov ecx,[esi] ; inc edx ; mov eax,edx ; cmp ecx,eax ; mov [esi+4],edx ; jne b ; mov al,[esi+28h] ; test al,al ; je b ; mov ecx,esi ; call Complete ; b: lea ecx,[esp+0Ch] ; mov dword ptr [esp+1Ch],-1 ; call ~CProfileLock ; ... ret 4
 // The sibling destructor landed at 0x00C4C370 and the finalise hook at 0x00C4C6C0. The classes are named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4c7a0)(const char* text);
 extern PFNLOGSINK_00c4c7a0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
@@ -19,12 +20,6 @@ struct CDebugBreak {                   // empty temporary (a debug-break helper)
     CDebugBreak();                         // 0x00C16750
 };
 
-class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
-    void* m_pSection;
-    unsigned long m_tick;
-    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
-    ~PKCProtectionInstance();              // 0x00C0FFE0
-};
 
 struct CMasterObject_00c4c7a0 {
     unsigned long m_expected;              // +0

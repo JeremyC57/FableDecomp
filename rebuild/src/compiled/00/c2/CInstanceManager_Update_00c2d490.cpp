@@ -1,5 +1,6 @@
 // CInstanceManager::Update() -- update every busy instance with the three update words (+0x0C/+0x10/+0x14); when one goes idle while a request is queued, start the request on that instance (UseInstance), make it current, update it once more and clear the queue flag
 // Leaf: Update
+// Vendor naming V2 (plan phase 1, one address, one name): 0x00C38D60 ?Update@CInstance@@QAEXKKK@Z (was ?Update@CInstance@@QAEXJJJ@Z: the held definer compares and counts the three words unsigned)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C2D490, length 144 bytes (130 + int3 padding), __fastcall, plain `ret`.
 // Caller: 0x00C15CA4. Callees: CInstance::IsIdle @ 0x00C38840, CInstance::Update @ 0x00C38D60 (`ret 0Ch`),
 //   UseInstance(index, request) @ 0x00C2D260 (same TU; the landed Assign's "Use").
@@ -37,7 +38,7 @@ public:
     bool IsIdle() const;                    // 0x00C38840 (state == 0)
     bool IsFinished() const;                // 0x00C38830 (state == 6)
     void Start();                           // 0x00C38A20 (state = 5)
-    void Update(long a, long b, long c);    // 0x00C38D60
+    void Update(unsigned long frames, unsigned long samples, unsigned long prime);   // 0x00C38D60
     long GetInfo170() const;                // 0x00C38890
     long GetInfo174() const;                // 0x00C38880
     long GetInfo178() const;                // 0x00C38870

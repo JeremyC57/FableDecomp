@@ -1,18 +1,13 @@
 // CCombatAbilityDef_00c0ab60::SetElement(unsigned long, float) -- EH-framed: under a scoped lock over the global @ 0x0143BB14, when the index is below 8 and the float at +0x344 + 4*index differs from the value it is stored, the display at +0x38 of the owner at +0x3c4 refreshed (@ 0x00C111C0) and the optional sprite at +0x60 of the owner updated (@ 0x00C15C00)
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C111C0 ?SetFlagBit0@CLockedFlagOwner_00c111c0@@QAEXXZ (was ?Refresh@CDisplay_00c0ab60@@QAEXXZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C0AB60, oracle length 157 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push offset g_lock ; lea ecx,[esp+8] ; call PKCProtectionInstance::PKCProtectionInstance ; mov ecx,[index] ; cmp ecx,8 ; mov dword ptr [esp+14h],0 ; jae done ; fld dword ptr [value] ; fld dword ptr [esi+ecx*4+344h] ; fucompp ; fnstsw ax ; test ah,44h ; jnp done ; fld dword ptr [value] ; fstp dword ptr [esi+ecx*4+344h] ; mov eax,[esi+3C4h] ; mov ecx,[eax+38h] ; call CDisplay::Refresh ; mov ecx,[esi+3C4h] ; mov ecx,[ecx+60h] ; test ecx,ecx ; je done ; call CSprite::Update ; done: lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~PKCProtectionInstance ; ...
 // The setter counterpart of the getter landed at 0x00C0AAD0. The manifest label is propagated;
 // the class is named by address.
-class PKCCriticalSection;
+#include "libpk/PKCProtectionInstance.h"
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    PKCCriticalSection* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
 
 struct CLockedFlagOwner_00c111c0 { void SetFlagBit0(); };    // 0x00C111C0
 struct CSprite_00c0ab60 { void Update(); };      // 0x00C15C00

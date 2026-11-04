@@ -1,16 +1,12 @@
 // CMailboxQueue_00c48c80::ProcessMessage(void*) -- EH-framed: under a scoped lock over `this`, 1 when the mailbox at +0x18 has a pending item (virtual slot 3), else the semaphore at +0x1c is released (@ 0x00C2A150), the message pushed into the mailbox (virtual slot 1) and 0 returned
+// Vendor naming V2 (plan phase 1, header-first): PKCSemaphore comes from the shared libpk/PKCSemaphore.h (was a local copy).
+// Vendor naming V2 (plan phase 1, header-first): PKCProtectionInstance / PKCCriticalSection come from the shared libpk/PKCProtectionInstance.h (was a local copy).
 // Vendor naming wave V1 (one address, one name): 0x00C2A150 ?Release@PKCSemaphore@@QAEXXZ (was ?Release@CSemaphore_00c48c80@@QAEXXZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C48C80, oracle length 153 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push esi ; lea ecx,[esp+8] ; call PKCProtectionInstance::PKCProtectionInstance ; mov ecx,[esi+18h] ; mov eax,[ecx] ; mov dword ptr [esp+14h],0 ; call [eax+0Ch] ; test eax,eax ; je push ; lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~PKCProtectionInstance ; mov eax,1 ; pop esi ; ... ret 4 ; push: lea ecx,[esi+1Ch] ; call CSemaphore::Release ; mov ecx,[esi+18h] ; mov eax,[message] ; mov edx,[ecx] ; push eax ; call [edx+4] ; lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~PKCProtectionInstance ; mov ecx,[esp+0Ch] ; xor eax,eax ; pop esi ; ...
 // A second copy of the mailbox-queue body landed at 0x00C49B90 (same offsets, same slots). The
 // manifest label is propagated; the class is named by address.
-class PKCCriticalSection;
-class PKCProtectionInstance { public:                       // 8-byte scoped lock
-    void* m_pTarget;
-    long m_state;
-    PKCProtectionInstance(PKCCriticalSection* target);             // 0x00C0FFC0
-    ~PKCProtectionInstance();                        // 0x00C0FFE0
-};
+#include "libpk/PKCProtectionInstance.h"
 
 struct CMailbox_00c48c80 {
     virtual void v00();
@@ -19,9 +15,7 @@ struct CMailbox_00c48c80 {
     virtual long HasPending();             // slot 3
 };
 
-struct PKCSemaphore {
-    void Release();                        // 0x00C2A150
-};
+#include "libpk/PKCSemaphore.h"
 
 struct CMailboxQueue_00c48c80 {
     unsigned char _pad[0x18];
