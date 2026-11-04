@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue() -- fade multiplier for the component: 1 unless fading is enabled; otherwise the normalised age is eased in (half-cosine table) before the packed fade-in end and eased out after the packed fade-out start
 // Leaf: GetCurrentFadeValue
+// Naming wave 35c (caller respell): calls 0x00AEAA00 under its PDB name NParticleEngine::GetOneOverTickRate (?GetOneOverTickRate@NParticleEngine@@YIMXZ; no arguments, so the __fastcall call site is unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B0A750, 0x1C8 bytes (padded to 464), `ret`, float in st0.
 // Callees: 0x00AEAA00 (the particle clock, float). Data: the 1025-entry cosine table at 0x013CD550, 1/1023 at 0x01266300,
 //   0.5f 0x0122F59C, the table scale 0x01230010, 2^32 0x0122DCB4.
@@ -10,7 +11,7 @@
 extern const float g_cosTable[1025];                // 0x013CD550
 extern const float g_fadeScale;                     // 0x01266300
 extern const float g_cosTableScale;                 // 0x01230010
-float GetParticleClock();                           // 0x00AEAA00
+namespace NParticleEngine { float __fastcall GetOneOverTickRate(); }   // 0x00AEAA00
 // the engine's inline-assembly float-to-long helper, expanded in place (VC7.1 homes the by-value parameter in a frame
 // word, often a dead argument slot, and reloads it for the bare dword fistp)
 #include "engine/GFFloatToLongNear.h"
@@ -38,7 +39,7 @@ float CPSCUpdateNormal::GetCurrentFadeValue()
         return 1.0f;
     float age = 0.0f;
     if (Lifetime > 0.0f) {
-        age = (GetParticleClock() * Frame) / Lifetime;
+        age = (NParticleEngine::GetOneOverTickRate() * Frame) / Lifetime;
         if (age < 0.0f)
             age = 0.0f;
         else if (age > 1.0f)

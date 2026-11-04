@@ -21,9 +21,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   residue (`pending/2026-11-04_linux_hand748/`). Next asm-rule work: de-bake the 13 landed asm_bake rows (e.g. 0x0042DF9E, 0x005BD993,
   0x00899EF0) with the same order (C++, intrinsics, macro vs function isolation); the 10 LTCG reg-arg parks (pure C++).
 - Fable Anniversary exe (owner-supplied): naming waves high + 2 + 3 applied (`naming/2026-11-04_anniversary/README.md`, 2,523 labels,
-  every name proven from TLC). **Running: naming pass wave 35** -- 2,228 landed sources whose
-  catalog names changed today, split into `$S/wave35a` (1,161 slot functions), `$S/wave35b` (812 Main/Init/Alloc/ctors), `$S/wave35c` (255
-  templates + the land0411* queue); brief `$S/BRIEF_W35.md`; agents write overlays only, the coordinator applies and re-grades each.
+  every name proven from TLC). **Naming pass wave 35** (agents write overlays, the coordinator applies and re-grades): 35a (923
+  slot functions, `naming/2026-11-04_wave35a/`) and 35c (271 spawned-func slots, particle getters, queued fixes and their callers,
+  `naming/2026-11-04_wave35c/`) are applied; 35b (812 Main/Init/Alloc/ctors, `$S/wave35b`) is next, then the 30 35a rows deferred on
+  misspelled source rows.
   The Xbox 360 Anniversary PDB is a private third-source lookup (`$S/anniv_pdb/`, rule in FABLE_ANNIVERSARY.md).
 - Coverage (refresh with `tools/write_decomp_dashboard.py` then `tools/update_readme_progress.py`; never hand-edit):
   46,594 genuine of the 49,564-function catalog (94.01%), 56.69% of retail function bytes, 54,146 landed rows (207 retail_asm),

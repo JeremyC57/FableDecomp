@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00aeaa00   RELOCATION_MATCH PASS   NParticleEngine::GetOneOverTickRate
+00aeaa60   RELOCATION_MATCH PASS   NParticleEngine::GetMaxSpawnDistance
+00aeaab0   RELOCATION_MATCH PASS   NParticleEngine::GetMeshBank
+
+WINS: 3
+  00aeaa00 RELOCATION_MATCH NParticleEngine::?GetOneOverTickRate@NParticleEngine@@YIMXZ
+  00aeaa60 RELOCATION_MATCH NParticleEngine::?GetMaxSpawnDistance@NParticleEngine@@YIMXZ
+  00aeaab0 RELOCATION_MATCH NParticleEngine::?GetMeshBank@NParticleEngine@@YIABVCMeshDataBank@@XZ

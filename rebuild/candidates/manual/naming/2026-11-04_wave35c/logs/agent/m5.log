@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00af5330   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00af5330   RELOCATION_MATCH PASS   NParticleEngine::CParticleSystem::DeleteParticle
+00aeabe0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00aeabe0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00aeabe0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00aeabe0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00aeabe0   RELOCATION_MATCH PASS   NParticleEngine::CParticleEmitterManager::CreateDecalEmitter
+
+WINS: 2
+  00af5330 RELOCATION_MATCH NParticleEngine::CParticleSystem::?DeleteParticle@CParticleSystem@NParticleEngine@@QAE?AV?$_List_iterator@V?$_List_val@PAVCParticle@NParticleEngine@@V?$allocator@PAVCParticle@NParticleEngine@@@std@@@std@@@std@@AAV34@@Z
+  00aeabe0 RELOCATION_MATCH NParticleEngine::CParticleEmitterManager::?CreateDecalEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z

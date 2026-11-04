@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00ae1260   WARN SHARED_HEADER_AVAILABLE C4DVector
+00ae1260   WARN SHARED_HEADER_AVAILABLE CArray
+00ae1260   WARN SHARED_HEADER_AVAILABLE CParticleSimulation
+00ae1260   WARN SHARED_HEADER_AVAILABLE CParticleProgram
+00ae1260   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00ae1260   RELOCATION_MATCH PASS   CParticleProgram::PrepareForRendering
+
+WINS: 1
+  00ae1260 RELOCATION_MATCH CParticleProgram::PrepareForRendering

@@ -55,8 +55,10 @@ class CMapCellPosInfoGroup { public:
     CMapCellPosInfo BRPos;                      // +0x34
 };
 
-class CThingMapManager : public CThingMapManager_PDB { public:
-    unsigned char GetThingMapwhoLevel(float radius) const;                                       // 0x006378E0
+class CThingMapManager : public CThingMapManager_PDB {
+protected:
+    unsigned char GetThingMapwhoLevel(float radius) const;                                       // 0x006378E0 (Ego_r.pdb protected const)
+public:
     void GetThingLayerCellPositions(float radius, const C2DVector& pos, long layer,
                                     CMapCellPosInfoGroup& group) const;                          // 0x00637E70
     bool IsToBePlacedInMapwho(const CTCMapwho& mapwho, const C3DVector& pos) const;

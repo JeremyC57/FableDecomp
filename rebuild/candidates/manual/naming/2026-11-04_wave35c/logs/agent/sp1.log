@@ -1,0 +1,26 @@
+addr       parity           behav  name
+007dcfd0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+007dcfd0   WARN SHARED_HEADER_AVAILABLE C3DVector
+007dcfd0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007dcfd0   WARN SHARED_HEADER_AVAILABLE CThing
+007dcfd0   RELOCATION_MATCH PASS   CTCCreatureFlyOnSpline::SetSpline
+0080fad0   WARN SHARED_HEADER_AVAILABLE C3DVector
+0080fad0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0080fad0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0080fad0   WARN SHARED_HEADER_AVAILABLE CThing
+0080fad0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0080fad0   WARN SHARED_HEADER_AVAILABLE CWorld
+0080fad0   WARN SHARED_HEADER_AVAILABLE CNymphDef
+0080fad0   WARN RELOC_NAME: ?FrameUpdate@CTCBaseFrame@@QAEXXZ -> 006868a0 labelled 'CTCBase::vfunc_9'
+0080fad0   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@@QAE@PBVCThing@@@Z -> 00668b60 labelled 'CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer'
+0080fad0   WARN RELOC_CONFLICT: ??4CIntelligentPointerConstThing@@QAEAAU0@ABU0@@Z -> 00668b80 here, 007b82c0 in landed 00967650
+0080fad0   WARN RELOC_NAME: ??4CIntelligentPointerConstThing@@QAEAAU0@ABU0@@Z -> 00668b80 labelled '_global::CIntelligentPointer_Assign_00668b80'
+0080fad0   RELOCATION_MATCH PASS   CTCNymph::FrameUpdate
+00b20fd0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b20fd0   WARN SHARED_HEADER_AVAILABLE CArray
+00b20fd0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtPos
+
+WINS: 3
+  007dcfd0 RELOCATION_MATCH CTCCreatureFlyOnSpline::SetSpline
+  0080fad0 RELOCATION_MATCH CTCNymph::FrameUpdate
+  00b20fd0 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtPos

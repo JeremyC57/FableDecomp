@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::InterpolateTo(const CPSCBase& other, float t) -- vtable slot 14: blend this spline component towards another: lerp the tension, interpolate the control points (GFInterpolateArray over copies of both point arrays), and blend the random-offset and position-parameter data (interpolated when both exist; otherwise past the halfway point the own data is released or a copy of the other's is created)
 // Leaf: ?InterpolateTo@CPSCSplineBase@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+// Naming wave 35c (caller respell): calls 0x00B15BD0 as ??$GFInterpolateArray@VC3DVector@@@NParticleEngine@@YI?AV?$CArray@VC3DVector@@@@ABV1@0MABVC3DVector@@@Z (Ego_r.pdb + FableWin.pdb; was the global template).
 // Name: FableWin.pdb / Ego_r.pdb ?InterpolateTo@CPSCSplineBase@NParticleEngine@@UAEXABVCPSCBase@2@M@Z; slot 14 of the CPSCSplineBase
 //   vtable 0x012A0B14 (rtti-vtables.tsv); called non-virtually with `const CPSCBase&` by 0x00B062A0 / 0x00B1AF50.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B22310, 537 bytes (+ int3 padding), `ret 8` (virtual).
@@ -21,7 +22,7 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 template <class T> class CArray;
-template <class T> CArray<T> __fastcall GFInterpolateArray(const CArray<T>& a, const CArray<T>& b, float t, const T& defaultValue);
+namespace NParticleEngine { template <class T> CArray<T> __fastcall GFInterpolateArray(const CArray<T>& a, const CArray<T>& b, float t, const T& defaultValue); }
 template <class T> class CArray { public:                     // STLport vector<T> (12 bytes in retail)
     T* m_begin; T* m_end; T* m_capacity;
     CArray(const CArray& other);                       // 0x006F0810 (T = C3DVector)
@@ -98,7 +99,7 @@ void CPSCSplineBase::InterpolateTo(const CPSCBase& other, float t)
 {
     const CPSCSplineBase* source = static_cast<const CPSCSplineBase*>(&other);
     Spline.Tension = (1.0f - t) * Spline.Tension + t * source->Spline.Tension;
-    Spline.ControlPoints = GFInterpolateArray(Spline.GetControlPoints(), source->Spline.GetControlPoints(), t, C3DVector(0.0f, 0.0f, 0.0f));
+    Spline.ControlPoints = NParticleEngine::GFInterpolateArray(Spline.GetControlPoints(), source->Spline.GetControlPoints(), t, C3DVector(0.0f, 0.0f, 0.0f));
 
     if (SplineRandomOffsetData.Data && source->SplineRandomOffsetData.Data)
         SplineRandomOffsetData->InterpolateTo(*source->SplineRandomOffsetData.Data, t);

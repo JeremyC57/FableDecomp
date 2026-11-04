@@ -39,7 +39,9 @@ private:
 public:
     void UpdateObjectSpaceFogTransform();          // 0x00989540
     void UpdateObjectSpaceLighting(unsigned long renderFlags);   // 0x00989CB0
-    void UpdateLocalisedSphereMapping();           // 0x00988E80
+private:
+    void UpdateLocalisedSphereMapping();           // 0x00988E80 (FableWin.pdb + Ego_r.pdb private)
+public:
     void ResetWorldTransform();                    // 0x00988290
     void UpdateFlag8State();                       // 0x00989700 (manifest label UpdateAmbient, duplicated with 0x00989760)
     void PrepareForRender(unsigned long renderFlags);

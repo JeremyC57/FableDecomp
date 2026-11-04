@@ -1,0 +1,80 @@
+addr       parity           behav  name
+004174f1   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+004174f1   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+004174f1   WARN RELOC_NAME: ??1?$CCountedPointer@VCAEnvironmentInteraction@NParticleEngine@@@@QAE@XZ -> 004191c1 labelled '_global::CCountedPointer_Release_004191c1'
+004174f1   RELOCATION_MATCH PASS   CMainGameComponent::InitParticleEngine
+0042e98f   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0042e98f   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0042e98f   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+0042e98f   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+0042e98f   WARN SHARED_HEADER_AVAILABLE CManager
+0042e98f   WARN RELOC_NAME: ?BuildComponents@CFrontEndManager@NUISystem@@QAEX_N@Z -> 00598a1c labelled 'CFrontEndManager::Init2'
+0042e98f   RELOCATION_MATCH PASS   CNewFrontendGameComponent::Init2
+006e0730   WARN SHARED_HEADER_AVAILABLE CPersistContext
+006e0730   WARN SHARED_HEADER_AVAILABLE CSymbolMap
+006e0730   WARN SHARED_HEADER_AVAILABLE CThing
+006e0730   WARN SHARED_HEADER_AVAILABLE CTCBase
+006e0730   WARN RELOC_NAME: ?Lookup@CSymbolMap@@QAE_NABVCCharString@@PAJ@Z -> 009e5170 labelled 'CSymbolMap::FindSymbol'
+006e0730   RELOCATION_MATCH PASS   CTCDParticleEmitter::OnSerialise
+006e0970   WARN SHARED_HEADER_AVAILABLE C3DVector
+006e0970   RELOCATION_MATCH PASS   CTCDParticleEmitter::Create
+00ae0050   WARN SHARED_HEADER_AVAILABLE CParticleSimulation
+00ae0050   WARN SHARED_HEADER_AVAILABLE CParticleProgram
+00ae0050   DIFFER(21v26)    LINK_FAIL CParticleProgram::SetupSimulation
+00aecf90   WARN SHARED_HEADER_AVAILABLE C3DVector
+00aecf90   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00aecf90   RELOCATION_MATCH PASS   CParticleEmitter::ShouldSpawn
+00aee9f0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00aee9f0   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00aee9f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00aee9f0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00aee9f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00aee9f0   RELOCATION_MATCH PASS   NParticleEngine::CParticleEmitter::Update
+00af85e0   RELOCATION_MATCH PASS   NParticleEngine::CParticle::GetInterpolatedLifetimerInSeconds
+00af8ab0   RELOCATION_MATCH PASS   NParticleEngine::CDecal::GetInterpolatedLifetimerInSeconds
+00b0a750   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue
+00b16d50   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b16d50   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b16d50   WARN RELOC_NAME: ?GetParticleRandomSeed@@YAPAKXZ -> 00aeaad0 labelled 'NParticleEngine::GetRandomSeed'
+00b16d50   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::StartUpdate
+00b1b030   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b1b030   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::GetUpdateParam
+00b1b0c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b1b0c0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::StartUpdate
+00b22310   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b22310   WARN SHARED_HEADER_AVAILABLE CArray
+00b22310   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b22310   WARN RELOC_NAME: ??0?$CArray@VC3DVector@@@@QAE@ABV0@@Z -> 006f0810 labelled 'std::vector<C3DVector>::vector'
+00b22310   WARN RELOC_NAME: ??4CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEAAV012@ABV012@@Z -> 00b20b60 labelled 'CSplineData_00b20b60::CopyFrom'
+00b22310   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::InterpolateTo
+00b67480   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b67480   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager
+00b67480   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b67480   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer
+00b67480   RELOCATION_MATCH PASS   CEngineLandscapeRenderer::SetupCommonStates
+00eb5d50   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb5d50   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb5d50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb5d50   WARN SHARED_HEADER_AVAILABLE CV_MurderTwistFinalScript
+00eb5d50   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb5d50   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb5d50   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00eb5d50   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb5d50   RELOCATION_MATCH PASS   CMurderTwistAssassinGuard::DoSayingThankYouToHero
+
+WINS: 15
+  004174f1 RELOCATION_MATCH CMainGameComponent::InitParticleEngine
+  0042e98f RELOCATION_MATCH CNewFrontendGameComponent::?Init2@CNewFrontendGameComponent@@QAEXXZ
+  006e0730 RELOCATION_MATCH CTCDParticleEmitter::OnSerialise
+  006e0970 RELOCATION_MATCH CTCDParticleEmitter::?Create@CTCDParticleEmitter@@SIPAVCThing@@ABVCCharString@@ABVC3DVector@@_N@Z
+  00aecf90 RELOCATION_MATCH CParticleEmitter::ShouldSpawn
+  00aee9f0 RELOCATION_MATCH NParticleEngine::CParticleEmitter::?Update@CParticleEmitter@NParticleEngine@@QAEXXZ
+  00af85e0 RELOCATION_MATCH NParticleEngine::CParticle::?GetInterpolatedLifetimerInSeconds@CParticle@NParticleEngine@@QBEMM@Z
+  00af8ab0 RELOCATION_MATCH NParticleEngine::CDecal::?GetInterpolatedLifetimerInSeconds@CDecal@NParticleEngine@@QBEMM@Z
+  00b0a750 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue
+  00b16d50 RELOCATION_MATCH NParticleEngine::CPSCOrbit::StartUpdate
+  00b1b030 RELOCATION_MATCH NParticleEngine::CPSCSpline::?GetUpdateParam@CPSCSpline@NParticleEngine
+  00b1b0c0 RELOCATION_MATCH NParticleEngine::CPSCSpline::?StartUpdate@CPSCSpline@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z
+  00b22310 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::?InterpolateTo@CPSCSplineBase@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+  00b67480 RELOCATION_MATCH CEngineLandscapeRenderer::SetupCommonStates
+  00eb5d50 RELOCATION_MATCH CMurderTwistAssassinGuard::DoSayingThankYouToHero

@@ -1,0 +1,220 @@
+addr       parity           behav  name
+00d6ae70   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeEvilScript
+00d6ae70   MATCH            PASS   NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard::OnInterrupted
+00dd44b0   WARN SHARED_HEADER_AVAILABLE CQ_PrisonEscapeRescueMotherScript
+00dd44b0   MATCH            PASS   NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard::OnInterrupted
+00d706b0   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeGoodScript
+00d706b0   MATCH            PASS   NScript::CQ_HangingTreeGoodScript::CHTG_Guard::OnInterrupted
+00ea0050   MATCH            PASS   NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside::OnInterrupted
+00ef42d0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_EmptyScript
+00ef42d0   MATCH            PASS   NScript::CPersonalScript_EmptyScript::CMeanBandit::OnInterrupted
+00ef4950   WARN SHARED_HEADER_AVAILABLE CPersonalScript_EmptyScript
+00ef4950   RELOCATION_MATCH PASS   NScript::CPersonalScript_EmptyScript::CVillager::OnInterrupted
+00aeaa00   RELOCATION_MATCH PASS   NParticleEngine::GetOneOverTickRate
+00aeaa20   RELOCATION_MATCH PASS   NParticleEngine::GetFadeOutStartDistance
+00aeaa30   RELOCATION_MATCH PASS   NParticleEngine::GetFadeInEndDistance
+00aeaa40   RELOCATION_MATCH PASS   NParticleEngine::GetFadeInStartDistance
+00aeaa50   RELOCATION_MATCH PASS   NParticleEngine::GetMaxDrawDistance
+00aeaa60   RELOCATION_MATCH PASS   NParticleEngine::GetMaxSpawnDistance
+00aeaa80   RELOCATION_MATCH PASS   NParticleEngine::SetGraphicBank
+00aeaa90   RELOCATION_MATCH PASS   NParticleEngine::SetMeshBank
+00aeaab0   RELOCATION_MATCH PASS   NParticleEngine::GetMeshBank
+00aeaae0   RELOCATION_MATCH PASS   NParticleEngine::GetParticleEmitterDatabase
+00aeab00   RELOCATION_MATCH PASS   NParticleEngine::GetPSCManager
+00aeab10   RELOCATION_MATCH PASS   NParticleEngine::GetEnvironmentInteraction
+00e1e0d0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>::TransferIn
+00e1e0f0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>::TransferOut
+00e25930   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CQR_EscortTrader_ManagerScript::EscortTraderManagerPhase>::TransferIn
+00e25950   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CQR_EscortTrader_ManagerScript::EscortTraderManagerPhase>::TransferOut
+00e759b0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::STAGE_IN_PATH>::TransferIn
+00e759d0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::STAGE_IN_PATH>::TransferOut
+00e75b60   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::PATH_ID>::TransferIn
+00e75b80   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::PATH_ID>::TransferOut
+0065a28f   WARN SHARED_HEADER_AVAILABLE C3DVector
+0065a28f   WARN SHARED_HEADER_AVAILABLE CThing
+0065a28f   WARN SHARED_HEADER_AVAILABLE CPlayer
+0065a28f   WARN SHARED_HEADER_AVAILABLE CWorld
+0065a28f   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0065a28f   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0065a28f   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0065a28f   WARN SHARED_HEADER_AVAILABLE CRegion
+0065a28f   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0065a28f   WARN SHARED_HEADER_AVAILABLE CTCBase
+0065a28f   WARN RELOC_NAME: ?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ -> 0049d9d0 labelled 'CWorld::PeekMyPlayer'
+0065a28f   WARN RELOC_NAME: ?GetDeedEffectsDef@CTCHeroOpinionDeedLog@@QAE?AV?$CDefPointer@VCOpinionDeedEffectsDef@@@@J@Z -> 006c5630 labelled 'CTCHeroOpinionDeedLog::PeekPDeedEffectsDef'
+0065a28f   WARN RELOC_NAME: ?GetDefinitionManager@CTCVillage@@QAEPAVCDefinitionManager@@XZ -> 00686d60 labelled 'CTCBase::PeekComponent'
+0065a28f   WARN RELOC_NAME: ?g_framesPerSecond@@3JA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+0065a28f   WARN RELOC_NAME: ?Successor@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+0065a28f   RELOCATION_MATCH PASS   CTCVillage::GetNormalisedTimeLeftOnFines
+00af5380   WARN SHARED_HEADER_AVAILABLE C3DVector
+00af5380   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00af5380   WARN SHARED_HEADER_AVAILABLE CArray
+00af5380   WARN SHARED_HEADER_AVAILABLE CDecal
+00af5380   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00af5380   WARN RELOC_NAME: ?AllocateParticleMemory_00af8b00@@YIPAXI@Z -> 00af8b00 labelled 'NParticleEngine::CDecal::operator new'
+00af5380   RELOCATION_MATCH PASS   NParticleEngine::CParticleSystem::AllocateDecal
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager
+00bbc0b0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleGroup::SetUpPointLights
+00d74ce0   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::WatchForMissionEnd
+00d77340   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d77340   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::GetGuardsHealth
+00d773e0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00d773e0   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::MonitorRegionPresence
+00eb0700   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::WaitForEnflameReactionIfNecessary
+00b15bd0   RELOCATION_MATCH PASS   NParticleEngine::GFInterpolateArray<C3DVector>
+00d66e90   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingWoodsMeleeScript::WatchForLeaving
+00eb23e0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb23e0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb23e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb23e0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb23e0   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb23e0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00eb23e0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb23e0   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBoss
+00eb3740   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb3740   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb3740   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb3740   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb3740   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb3740   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00eb3740   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb3740   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoSayingThankYouToHero
+00eb4f80   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb4f80   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb4f80   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb4f80   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb4f80   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb4f80   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00eb4f80   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb4f80   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::DoRemindingHeroToKillSheriff
+00adf610   WARN SHARED_HEADER_AVAILABLE C4DVector
+00adf610   WARN SHARED_HEADER_AVAILABLE C3DVector
+00adf610   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00adf610   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00adf610   RELOCATION_MATCH PASS   CParticleSimulation::CopyFrom
+00af4660   WARN SHARED_HEADER_AVAILABLE C3DVector
+00af4660   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00af4660   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00af4660   RELOCATION_MATCH PASS   NParticleEngine::CParticleSystem::ReadBinary
+00eb07d0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00eb07d0   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::HasHeroEnflamedEntity
+00643ff6   MATCH            PASS   NPlayerGui::CCrimeStatBar::SetFine
+009881f0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+009881f0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+009881f0   MATCH            PASS   CShaderRenderManager::SetWorldTransform
+00af3db0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00af3db0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00af3db0   MATCH            PASS   NParticleEngine::CParticleSystem::PeekEmitterVelocity
+00af9410   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00af9410   MATCH            PASS   NParticleEngine::CPSCRenderSprite::DatabaseCopy
+00afeb90   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00afeb90   MATCH            PASS   NParticleEngine::CPSCRenderMesh::DatabaseCopy
+00afee00   WARN SHARED_HEADER_AVAILABLE C3DVector
+00afee00   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00afee00   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00afee00   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderMesh::WriteBinary
+00af5330   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00af5330   RELOCATION_MATCH PASS   NParticleEngine::CParticleSystem::DeleteParticle
+00aeabe0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00aeabe0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00aeabe0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00aeabe0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00aeabe0   RELOCATION_MATCH PASS   NParticleEngine::CParticleEmitterManager::CreateDecalEmitter
+00af0ef0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00af0ef0   WARN RELOC_NAME: ??$__uninitialized_copy@PAV?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@PAV1@@std@@YIPAV?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@PAV1@00ABU__false_type@0@@Z -> 00af0a60 labelled 'std::_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>'
+00af0ef0   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@@std@@YIXPAV?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@0ABU__false_type@0@@Z -> 00af0d80 labelled '_global::DestroyRange_CountedPointer_00af0d80'
+00af0ef0   RELOCATION_MATCH PASS   std::vector<CCountedPointer<NParticleEngine::CParticleSystem> >::reserve
+00b0f920   RELOCATION_MATCH PASS   std::list<CIntelligentPointer<NParticleEngine::CParticleEmitter> >::push_back
+00addd80   WARN SHARED_HEADER_AVAILABLE C3DVector
+00addd80   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00addd80   RELOCATION_MATCH PASS   C3DBoundingSphere::AddToBounds
+00a88c10   RELOCATION_MATCH PASS   CQuaternion::operator*=
+00655318   RELOCATION_MATCH PASS   CIntelligentPointer<NParticleEngine::CParticleEmitter>::CIntelligentPointer(CParticleEmitter*)
+0048dae0   MATCH            PASS   _global::GFLimit
+009e5090   WARN SHARED_HEADER_AVAILABLE CSymbolMap
+009e5090   MATCH            PASS   CSymbolMap::FindFirstSymbolWithVal
+00b18110   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b18110   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00b18110   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::DatabaseSerialise
+00bbc130   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager
+00bbc130   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bbc130   WARN RELOC_NAME: ?g_ShaderRenderManager@@3VCShaderRenderManager@@A -> 013bc470 labelled 'CShaderRenderManager::SingletonInstance'
+00bbc130   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups
+00646b12   WARN SHARED_HEADER_AVAILABLE C2DVector
+00646b12   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00646b12   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00646b12   RELOCATION_MATCH PASS   NPlayerGui::CStatBar::UpdateChangeTexts
+00aeaad0   MATCH            PASS   NParticleEngine::GetRandomSeed
+00437ae0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00437ae0   WARN SHARED_HEADER_AVAILABLE CWorld
+00437ae0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00437ae0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00437ae0   RELOCATION_MATCH PASS   CPlayerGui::UpdateStat
+
+WINS: 61
+  00d6ae70 MATCH NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard::?OnInterrupted@CHTE_AssaultGuard@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00dd44b0 MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard::?OnInterrupted@CPrisonGuard@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+  00d706b0 MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Guard::?OnInterrupted@CHTG_Guard@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00ea0050 MATCH NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside::?OnInterrupted@CKGG_VillagerOutside@CV_KnotholeGladeGatesScript@NScript@@EAEXXZ
+  00ef42d0 MATCH NScript::CPersonalScript_EmptyScript::CMeanBandit::?OnInterrupted@CMeanBandit@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00ef4950 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CVillager::?OnInterrupted@CVillager@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00aeaa00 RELOCATION_MATCH NParticleEngine::?GetOneOverTickRate@NParticleEngine@@YIMXZ
+  00aeaa20 RELOCATION_MATCH NParticleEngine::?GetFadeOutStartDistance@NParticleEngine@@YIMXZ
+  00aeaa30 RELOCATION_MATCH NParticleEngine::?GetFadeInEndDistance@NParticleEngine@@YIMXZ
+  00aeaa40 RELOCATION_MATCH NParticleEngine::?GetFadeInStartDistance@NParticleEngine@@YIMXZ
+  00aeaa50 RELOCATION_MATCH NParticleEngine::?GetMaxDrawDistance@NParticleEngine@@YIMXZ
+  00aeaa60 RELOCATION_MATCH NParticleEngine::?GetMaxSpawnDistance@NParticleEngine@@YIMXZ
+  00aeaa80 RELOCATION_MATCH NParticleEngine::?SetGraphicBank@NParticleEngine@@YIXABVCGraphicDataBank@@@Z
+  00aeaa90 RELOCATION_MATCH NParticleEngine::?SetMeshBank@NParticleEngine@@YIXABVCMeshDataBank@@@Z
+  00aeaab0 RELOCATION_MATCH NParticleEngine::?GetMeshBank@NParticleEngine@@YIABVCMeshDataBank@@XZ
+  00aeaae0 RELOCATION_MATCH NParticleEngine::?GetParticleEmitterDatabase@NParticleEngine@@YIAAVCParticleEmitterDatabase@1@XZ
+  00aeab00 RELOCATION_MATCH NParticleEngine::?GetPSCManager@NParticleEngine@@YIAAVCPSCManager@1@XZ
+  00aeab10 RELOCATION_MATCH NParticleEngine::?GetEnvironmentInteraction@NParticleEngine@@YIAAVCAEnvironmentInteraction@1@XZ
+  00e1e0d0 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>::?TransferIn@?$CPersistContext_TransferableComponent@W4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00e1e0f0 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>::?TransferOut@?$CPersistContext_TransferableComponent@W4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  00e25930 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CQR_EscortTrader_ManagerScript::EscortTraderManagerPhase>::?TransferIn@?$CPersistContext_TransferableComponent@W4EscortTraderManagerPhase@CQR_EscortTrader_ManagerScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00e25950 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CQR_EscortTrader_ManagerScript::EscortTraderManagerPhase>::?TransferOut@?$CPersistContext_TransferableComponent@W4EscortTraderManagerPhase@CQR_EscortTrader_ManagerScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  00e759b0 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::STAGE_IN_PATH>::?TransferIn@?$CPersistContext_TransferableComponent@W4STAGE_IN_PATH@CV_ExposeMayorScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00e759d0 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::STAGE_IN_PATH>::?TransferOut@?$CPersistContext_TransferableComponent@W4STAGE_IN_PATH@CV_ExposeMayorScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  00e75b60 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::PATH_ID>::?TransferIn@?$CPersistContext_TransferableComponent@W4PATH_ID@CV_ExposeMayorScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00e75b80 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::PATH_ID>::?TransferOut@?$CPersistContext_TransferableComponent@W4PATH_ID@CV_ExposeMayorScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  0065a28f RELOCATION_MATCH CTCVillage::?GetNormalisedTimeLeftOnFines@CTCVillage@@QAEMXZ
+  00af5380 RELOCATION_MATCH NParticleEngine::CParticleSystem::?AllocateDecal@CParticleSystem@NParticleEngine@@QAEPAVCDecal@2@XZ
+  00bbc0b0 RELOCATION_MATCH CEnginePrimitiveManagerParticleGroup::?SetUpPointLights@CEnginePrimitiveManagerParticleGroup@@QAEJXZ
+  00d74ce0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?WatchForMissionEnd@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+  00d77340 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?GetGuardsHealth@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+  00d773e0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?MonitorRegionPresence@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+  00eb0700 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::?WaitForEnflameReactionIfNecessary@CV_MurderTwistFinalScript@NScript@@QAEXABVCScriptThing@@@Z
+  00b15bd0 RELOCATION_MATCH NParticleEngine::??$GFInterpolateArray@VC3DVector@@@NParticleEngine@@YI?AV?$CArray@VC3DVector@@@@ABV1@0MABVC3DVector@@@Z
+  00d66e90 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::?WatchForLeaving@CQ_GuildTrainingWoodsMeleeScript@NScript@@QAEXXZ
+  00eb23e0 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::?DoAskingHeroToSpeakToBoss@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00eb3740 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::?DoSayingThankYouToHero@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00eb4f80 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::?DoRemindingHeroToKillSheriff@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00adf610 RELOCATION_MATCH CParticleSimulation::?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z
+  00af4660 RELOCATION_MATCH NParticleEngine::CParticleSystem::?ReadBinary@CParticleSystem@NParticleEngine@@QAEXAAVCDataInputStream@@@Z
+  00eb07d0 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z
+  00643ff6 MATCH NPlayerGui::CCrimeStatBar::?SetFine@CCrimeStatBar@NPlayerGui@@QAEXJ@Z
+  009881f0 MATCH CShaderRenderManager::?SetWorldTransform@CShaderRenderManager@@QAEXABVCMatrix3x4@@@Z
+  00af3db0 MATCH NParticleEngine::CParticleSystem::?PeekEmitterVelocity@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ
+  00af9410 MATCH NParticleEngine::CPSCRenderSprite::?DatabaseCopy@CPSCRenderSprite@NParticleEngine@@UAEXABVCPSCBase@2@@Z
+  00afeb90 MATCH NParticleEngine::CPSCRenderMesh::?DatabaseCopy@CPSCRenderMesh@NParticleEngine@@UAEXABVCPSCBase@2@@Z
+  00afee00 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?WriteBinary@CPSCRenderMesh@NParticleEngine@@UBEXAAVCDataOutputStream@@@Z
+  00af5330 RELOCATION_MATCH NParticleEngine::CParticleSystem::?DeleteParticle@CParticleSystem@NParticleEngine@@QAE?AV?$_List_iterator@V?$_List_val@PAVCParticle@NParticleEngine@@V?$allocator@PAVCParticle@NParticleEngine@@@std@@@std@@@std@@AAV34@@Z
+  00aeabe0 RELOCATION_MATCH NParticleEngine::CParticleEmitterManager::?CreateDecalEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z
+  00af0ef0 RELOCATION_MATCH std::vector<CCountedPointer<NParticleEngine::CParticleSystem> >::?reserve@?$vector@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@V?$allocator@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@@std@@@std@@QAEXI@Z
+  00b0f920 RELOCATION_MATCH std::list<CIntelligentPointer<NParticleEngine::CParticleEmitter> >::?push_back@?$list@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@Z
+  00addd80 RELOCATION_MATCH C3DBoundingSphere::?AddToBounds@C3DBoundingSphere@@QAEXABVC3DVector@@M@Z
+  00a88c10 RELOCATION_MATCH CQuaternion::??XCQuaternion@@QAEABV0@ABV0@@Z
+  00655318 RELOCATION_MATCH CIntelligentPointer<NParticleEngine::CParticleEmitter>::??0?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z
+  0048dae0 MATCH ::??$GFLimit@MMM@@YIXAAMABM1@Z
+  009e5090 MATCH CSymbolMap::?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z
+  00b18110 RELOCATION_MATCH NParticleEngine::CPSCAttractor::?DatabaseSerialise@CPSCAttractor@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00bbc130 RELOCATION_MATCH CEnginePrimitiveManagerParticleGroup::?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z
+  00646b12 RELOCATION_MATCH NPlayerGui::CStatBar::?UpdateChangeTexts@CStatBar@NPlayerGui@@QAEXXZ
+  00aeaad0 MATCH NParticleEngine::?GetRandomSeed@NParticleEngine@@YIAAKXZ
+  00437ae0 RELOCATION_MATCH CPlayerGui::?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z

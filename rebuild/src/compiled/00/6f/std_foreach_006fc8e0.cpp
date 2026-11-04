@@ -1,3 +1,4 @@
+// Naming wave 35c (queue land0411b 0x009E5090): CSymbolInfo is nested in CSymbolMap (FableWin.pdb `?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z`, class-keyed, const).
 // std::for_each(const NAnimationEvents::CEvent* first, const NAnimationEvents::CEvent* last, CFillEventNames f) -- push the symbol name of every event index onto the functor's name vector, return the functor
 // Leaf: ??$for_each@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FC8E0, 112 bytes, `ret 0xc` (/Gr: hidden functor result in ecx, first in edx).
@@ -17,15 +18,14 @@ public:
     ~CCharString();                                       // 0x0099EAE0
 };
 
-class CSymbolInfo {                                       // 12 bytes
-public:
-    CCharString GroupName;                                // +0x00
-    CCharString EntryName;                                // +0x04
-    long Val;                                             // +0x08
-};
 
 class CSymbolMap {                                        // retail 0x24 bytes
 public:
+    class CSymbolInfo { public:
+        CCharString GroupName;                                // +0x00
+        CCharString EntryName;                                // +0x04
+        long Val;                                             // +0x08
+    };
     unsigned char _body[0x24];
     const CSymbolInfo* FindFirstSymbolWithVal(long value) const;   // 0x009E5090
 };

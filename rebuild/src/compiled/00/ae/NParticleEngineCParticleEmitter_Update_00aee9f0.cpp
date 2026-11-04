@@ -3,6 +3,7 @@
 // while waiting to sleep or when a 3D emitter is out of spawn range of the engine camera, update every active,
 // unfinished particle system, and kill the emitter once none is left running
 // Leaf: ?Update@CParticleEmitter@NParticleEngine@@QAEXXZ
+// Naming wave 35c (caller respell): calls 0x00AEAB10 as NParticleEngine::GetEnvironmentInteraction() (?GetEnvironmentInteraction@NParticleEngine@@YIAAVCAEnvironmentInteraction@1@XZ, FableWin.pdb; was CIEngine* GetParticleEngine()); CIEngine stays the Initialise argument type.
 // Naming wave 31 (family pek): the class is NParticleEngine::CParticleEmitter (Ego_r.pdb / FableWin.pdb): own row ?Update@CParticleEmitter@NParticleEngine@@
 //   QAEXXZ (bare Leaf "Update" before), callees ?Initialise@CParticleEmitter@NParticleEngine@@QAE_NPAVCIEngine@@@Z 0x00AEE240 and
 //   ?Kill@CParticleEmitter@NParticleEngine@@QAEXXZ 0x00AEE8C0 (were the global-class spellings)
@@ -46,12 +47,15 @@ class CParticleSystem { public:
 };
 }
 template<class T> class CCountedPointer { public: T* Data; void* Info; T* operator->() const { return Data; } };
-class CIEngine {
+class CIEngine;
+namespace NParticleEngine {
+class CAEnvironmentInteraction {
 public:
     virtual void _v0(); virtual void _v1(); virtual void _v2(); virtual void _v3(); virtual void _v4(); virtual void _v5();
     virtual C3DVector GetCameraPosition();                          // slot 6
 };
-CIEngine* GetParticleEngine();                                       // 0x00AEAB10
+CAEnvironmentInteraction& __fastcall GetEnvironmentInteraction();   // 0x00AEAB10
+}
 class CMatrix3x4 { public: float M[9]; C3DVector Translation; };
 #pragma pack(push, 1)
 namespace NParticleEngine {
@@ -101,7 +105,7 @@ void NParticleEngine::CParticleEmitter::Update()
     } else {
         OldPos = position;
     }
-    C3DVector camera = GetParticleEngine()->GetCameraPosition();
+    C3DVector camera = NParticleEngine::GetEnvironmentInteraction().GetCameraPosition();
     long running = 0;
     bool disable = (bool)WaitingToSleep
         || (!(bool)Emitter2D && !GFWorld3DDistanceSmallerThan(camera, position, MaxDrawDistance));

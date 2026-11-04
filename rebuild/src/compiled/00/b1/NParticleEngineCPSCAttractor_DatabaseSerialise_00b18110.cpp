@@ -1,5 +1,6 @@
-// NParticleEngine::CPSCAttractor::DatabaseSerialise(CPersistContext& context, bool) -- persist the attractor settings by name: the two flags, the position param and param name (as CRCs when saving, as strings hashed back to CRCs when loading), radius, force, fall-off type, then the user points array size and each point
-// Leaf: DatabaseSerialise
+// NParticleEngine::CPSCAttractor::DatabaseSerialise(CPersistContext& context, const CEmitterDatabaseSerialiseInfo&) -- persist the attractor settings by name: the two flags, the position param and param name (as CRCs when saving, as strings hashed back to CRCs when loading), radius, force, fall-off type, then the user points array size and each point
+// Leaf: ?DatabaseSerialise@CPSCAttractor@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+// Naming wave 35c: FableWin.pdb exact symbol (vtable slot 17, the second parameter is const CEmitterDatabaseSerialiseInfo&, as the landed sibling CPSCSpline 0x00B1B2E0); queue land0411a.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B18110, 640 bytes (`ret 8`).
 // Callees: CPersistContext::Transfer<bool> 0x004045C0, Transfer(name, unsigned long&, const unsigned long&) 0x004106F0,
 //   Transfer(name, CCharString&, const CCharString&) 0x004109A0, Transfer(name, float&, const float&) 0x00410620,
@@ -65,8 +66,15 @@ struct CVector3D {                                      // STLport vector<C3DVec
     void resize(unsigned int newSize, const C3DVector& value = C3DVector());   // 0x0075C040
 };
 namespace NParticleEngine {
-class CPSCAttractor { public:
-    unsigned char _base[0xc];                           // CPSCBase
+class CParticleSystem;
+class CEmitterDatabaseSerialiseInfo;
+class CPSCBase { public:
+    virtual void v00();
+    CParticleSystem* ParticleSystem;                    // +0x04
+    bool UpdateStarted : 1;                             // +0x08
+    bool Initialised : 1;
+};
+class CPSCAttractor : public CPSCBase { public:
     bool AttractorEnabled : 1;                          // +0x0c bit 0
     bool AttractorUseParamPosition : 1;                 // +0x0c bit 1
     long AttractorInfluenceFallOff;                     // +0x10
@@ -75,9 +83,9 @@ class CPSCAttractor { public:
     float AttractorInfluenceRadius;                     // +0x1c
     float AttractorInfluenceForce;                      // +0x20
     CVector3D AttractorUserPointsArray;                 // +0x24
-    void DatabaseSerialise(CPersistContext& context, bool transfer);
+    virtual void DatabaseSerialise(CPersistContext& context, const CEmitterDatabaseSerialiseInfo& info);
 };
-void CPSCAttractor::DatabaseSerialise(CPersistContext& context, bool)
+void CPSCAttractor::DatabaseSerialise(CPersistContext& context, const CEmitterDatabaseSerialiseInfo&)
 {
     {
         bool enabled = AttractorEnabled;

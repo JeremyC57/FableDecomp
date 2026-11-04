@@ -3,11 +3,11 @@
 // Leaf: ?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@PAVCParticleSimulation@@MMPAVC3DAnimationBlendState
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Callees: CParticleProgram::TransformVertices(C4DVector*, const C4DVector*, ulong, const CMatrix4x4*, const
-//          CArray<C3DGroup2>&) const @ 0x00AE0E60 (x2, the Ego_r.pdb spelling), GetGroupVectorBuffer(ulong) @ 0x00AE0540 (__fastcall), the 8-argument
+//          CArray<C3DGroup2>&) const @ 0x00AE0E60 (x2, the Ego_r.pdb spelling), CParticleProgram::GetVectorBuffer(ulong) @ 0x00AE0540 (private static __fastcall), the 8-argument
 //          vector interpolation @ 0x00A5BBA0 and NVectorMath::GFInterpolateVectors @ 0x00A5B870. Global: 1e-4f @ 0x0129BA3C.
 // Layout: as the 4-argument overload 0x00AE1600 (retail 12-byte containers); only the matrix of the animation
 // arguments is used.
-// Shape: the buffer pointer from GetGroupVectorBuffer stays in ebx for the transform and the blend.
+// Shape: the buffer pointer from GetVectorBuffer stays in ebx for the transform and the blend.
 class C4DVector { public: float X, Y, Z, W; };
 class CMatrix4x4;
 class C3DGroup2;
@@ -78,14 +78,14 @@ public:
     float               AveragePatchSize;          // +0xf8
     CArray<C3DGroup2>   SimGroups;                 // +0xfc
     CArray<C3DGroup2>   NonSimGroups;              // +0x108
-    void TransformVertices(C4DVector* out, const C4DVector* in, unsigned long count, const CMatrix4x4* matrix,
-                           const CArray<C3DGroup2>& groups) const;                                                   // 0x00AE0E60
     void PrepareForRendering(C4DVector* vertices, CParticleSimulation* simulation, float simulationInterpolate, float initialBlend,
                              C3DAnimationBlendState* blendState, C3DAnimationBlendState* lastBlendState, float animationInterpolate,
                              C3DAnimationManager* animationManager, C3DVector* position, CMatrix4x4* matrix, C3DMesh2* mesh);
+private:
+    void TransformVertices(C4DVector* out, const C4DVector* in, unsigned long count, const CMatrix4x4* matrix,
+                           const CArray<C3DGroup2>& groups) const;                                                   // 0x00AE0E60
+    static C4DVector* __fastcall GetVectorBuffer(unsigned long count);   // 0x00AE0540 (FableWin.pdb + Ego_r.pdb private static)
 };
-
-C4DVector* __fastcall GetGroupVectorBuffer(unsigned long count);   // 0x00AE0540
 
 void CParticleProgram::PrepareForRendering(C4DVector* vertices, CParticleSimulation* simulation, float simulationInterpolate, float initialBlend,
                                            C3DAnimationBlendState* blendState, C3DAnimationBlendState* lastBlendState, float animationInterpolate,
@@ -95,7 +95,7 @@ void CParticleProgram::PrepareForRendering(C4DVector* vertices, CParticleSimulat
     NVectorMath::GFInterpolateVectors(vertices + NonSimCount, sizeof(C4DVector), simulation->SavedPositions, sizeof(C4DVector),
                                   simulation->Positions, sizeof(C4DVector), simulation->Size, simulationInterpolate);
     if (initialBlend > DELTA_NOTIONAL_ZERO) {
-        C4DVector* initial = GetGroupVectorBuffer(simulation->Size);
+        C4DVector* initial = GetVectorBuffer(simulation->Size);
         TransformVertices(initial, InitialSimulation.Positions, simulation->Size, matrix, SimGroups);
         NVectorMath::GFInterpolateVectors(vertices + NonSimCount, sizeof(C4DVector), initial, sizeof(C4DVector), simulation->Size, initialBlend);
     }

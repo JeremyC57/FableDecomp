@@ -1,0 +1,24 @@
+addr       parity           behav  name
+00643ff6   MATCH            PASS   NPlayerGui::CCrimeStatBar::SetFine
+009881f0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+009881f0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+009881f0   MATCH            PASS   CShaderRenderManager::SetWorldTransform
+00af3db0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00af3db0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00af3db0   MATCH            PASS   NParticleEngine::CParticleSystem::PeekEmitterVelocity
+00af9410   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00af9410   MATCH            PASS   NParticleEngine::CPSCRenderSprite::DatabaseCopy
+00afeb90   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00afeb90   MATCH            PASS   NParticleEngine::CPSCRenderMesh::DatabaseCopy
+00afee00   WARN SHARED_HEADER_AVAILABLE C3DVector
+00afee00   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00afee00   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00afee00   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderMesh::WriteBinary
+
+WINS: 6
+  00643ff6 MATCH NPlayerGui::CCrimeStatBar::?SetFine@CCrimeStatBar@NPlayerGui@@QAEXJ@Z
+  009881f0 MATCH CShaderRenderManager::?SetWorldTransform@CShaderRenderManager@@QAEXABVCMatrix3x4@@@Z
+  00af3db0 MATCH NParticleEngine::CParticleSystem::?PeekEmitterVelocity@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ
+  00af9410 MATCH NParticleEngine::CPSCRenderSprite::?DatabaseCopy@CPSCRenderSprite@NParticleEngine@@UAEXABVCPSCBase@2@@Z
+  00afeb90 MATCH NParticleEngine::CPSCRenderMesh::?DatabaseCopy@CPSCRenderMesh@NParticleEngine@@UAEXABVCPSCBase@2@@Z
+  00afee00 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?WriteBinary@CPSCRenderMesh@NParticleEngine@@UBEXAAVCDataOutputStream@@@Z

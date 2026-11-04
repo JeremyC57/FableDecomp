@@ -7,9 +7,12 @@
 // float assignment through references is an integer copy) and each arm returns on its own `ret 4`.
 // The landed caller CSubtitleRenderer::FormatTextForVWindow (0x0048F50C) declares it exactly so; the
 // manifest label "GFLimitReturn<double>" is propagated (the operands are dword floats, nothing is returned).
-// Leaf: GFLimit
+// Leaf: ??$GFLimit@MMM@@YIXAAMABM1@Z
+// Naming wave 35c: Ego_r.pdb ??$GFLimit@MMM@@YIXAAMABM1@Z -- the template has three type parameters (value, minimum,
+//   maximum; Ego_r.pdb also holds the <float,long,long> instance ??$GFLimit@MHH@@YIXAAMABH1@Z); was the one-parameter template
+//   ??$GFLimit@M@@YIXAAMABM1@Z. Same bytes.
 
-template <class T> void __fastcall GFLimit(T& value, const T& minimum, const T& maximum)
+template <class T, class TMin, class TMax> void __fastcall GFLimit(T& value, const TMin& minimum, const TMax& maximum)
 {
     if (value < minimum)
         value = minimum;
@@ -17,4 +20,4 @@ template <class T> void __fastcall GFLimit(T& value, const T& minimum, const T& 
         value = maximum;
 }
 
-template void __fastcall GFLimit<float>(float&, const float&, const float&);
+template void __fastcall GFLimit<float, float, float>(float&, const float&, const float&);

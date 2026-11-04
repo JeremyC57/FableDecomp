@@ -1,0 +1,78 @@
+addr       parity           behav  name
+0065a28f   WARN SHARED_HEADER_AVAILABLE C3DVector
+0065a28f   WARN SHARED_HEADER_AVAILABLE CThing
+0065a28f   WARN SHARED_HEADER_AVAILABLE CPlayer
+0065a28f   WARN SHARED_HEADER_AVAILABLE CWorld
+0065a28f   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0065a28f   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0065a28f   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0065a28f   WARN SHARED_HEADER_AVAILABLE CRegion
+0065a28f   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0065a28f   WARN SHARED_HEADER_AVAILABLE CTCBase
+0065a28f   WARN RELOC_NAME: ?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ -> 0049d9d0 labelled 'CWorld::PeekMyPlayer'
+0065a28f   WARN RELOC_NAME: ?GetDeedEffectsDef@CTCHeroOpinionDeedLog@@QAE?AV?$CDefPointer@VCOpinionDeedEffectsDef@@@@J@Z -> 006c5630 labelled 'CTCHeroOpinionDeedLog::PeekPDeedEffectsDef'
+0065a28f   WARN RELOC_NAME: ?GetDefinitionManager@CTCVillage@@QAEPAVCDefinitionManager@@XZ -> 00686d60 labelled 'CTCBase::PeekComponent'
+0065a28f   WARN RELOC_NAME: ?g_framesPerSecond@@3JA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+0065a28f   WARN RELOC_NAME: ?Successor@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+0065a28f   RELOCATION_MATCH PASS   CTCVillage::GetNormalisedTimeLeftOnFines
+00af5380   WARN SHARED_HEADER_AVAILABLE C3DVector
+00af5380   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00af5380   WARN SHARED_HEADER_AVAILABLE CArray
+00af5380   WARN SHARED_HEADER_AVAILABLE CDecal
+00af5380   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00af5380   WARN RELOC_NAME: ?AllocateParticleMemory_00af8b00@@YIPAXI@Z -> 00af8b00 labelled 'NParticleEngine::CDecal::operator new'
+00af5380   RELOCATION_MATCH PASS   NParticleEngine::CParticleSystem::AllocateDecal
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager
+00bbc0b0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleGroup::SetUpPointLights
+00d74ce0   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::WatchForMissionEnd
+00d77340   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d77340   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::GetGuardsHealth
+00d773e0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00d773e0   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::MonitorRegionPresence
+00eb0700   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::WaitForEnflameReactionIfNecessary
+00b15bd0   RELOCATION_MATCH PASS   NParticleEngine::GFInterpolateArray<C3DVector>
+00d66e90   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingWoodsMeleeScript::WatchForLeaving
+00eb23e0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb23e0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb23e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb23e0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb23e0   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb23e0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00eb23e0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb23e0   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBoss
+00eb3740   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb3740   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb3740   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb3740   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb3740   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb3740   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00eb3740   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb3740   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoSayingThankYouToHero
+00eb4f80   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb4f80   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb4f80   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb4f80   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb4f80   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb4f80   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00eb4f80   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb4f80   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::DoRemindingHeroToKillSheriff
+00eb07d0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00eb07d0   WARN SHARED_HEADER_AVAILABLE CV_MurderTwistFinalScript
+00eb07d0   DIFFER(86v87)    PASS   NScript::CV_MurderTwistFinalScript::HasHeroEnflamedEntity
+
+WINS: 12
+  0065a28f RELOCATION_MATCH CTCVillage::?GetNormalisedTimeLeftOnFines@CTCVillage@@QAEMXZ
+  00af5380 RELOCATION_MATCH NParticleEngine::CParticleSystem::?AllocateDecal@CParticleSystem@NParticleEngine@@QAEPAVCDecal@2@XZ
+  00bbc0b0 RELOCATION_MATCH CEnginePrimitiveManagerParticleGroup::?SetUpPointLights@CEnginePrimitiveManagerParticleGroup@@QAEJXZ
+  00d74ce0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?WatchForMissionEnd@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+  00d77340 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?GetGuardsHealth@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+  00d773e0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?MonitorRegionPresence@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+  00eb0700 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::?WaitForEnflameReactionIfNecessary@CV_MurderTwistFinalScript@NScript@@QAEXABVCScriptThing@@@Z
+  00b15bd0 RELOCATION_MATCH NParticleEngine::??$GFInterpolateArray@VC3DVector@@@NParticleEngine@@YI?AV?$CArray@VC3DVector@@@@ABV1@0MABVC3DVector@@@Z
+  00d66e90 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::?WatchForLeaving@CQ_GuildTrainingWoodsMeleeScript@NScript@@QAEXXZ
+  00eb23e0 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::?DoAskingHeroToSpeakToBoss@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00eb3740 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::?DoSayingThankYouToHero@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00eb4f80 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::?DoRemindingHeroToKillSheriff@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ

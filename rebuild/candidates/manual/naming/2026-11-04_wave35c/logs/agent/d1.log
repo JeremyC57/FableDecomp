@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00b18110   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b18110   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00b18110   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::DatabaseSerialise
+00bbc130   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager
+00bbc130   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bbc130   WARN RELOC_NAME: ?g_ShaderRenderManager@@3VCShaderRenderManager@@A -> 013bc470 labelled 'CShaderRenderManager::SingletonInstance'
+00bbc130   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups
+00646b12   WARN SHARED_HEADER_AVAILABLE C2DVector
+00646b12   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00646b12   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00646b12   RELOCATION_MATCH PASS   NPlayerGui::CStatBar::UpdateChangeTexts
+
+WINS: 3
+  00b18110 RELOCATION_MATCH NParticleEngine::CPSCAttractor::?DatabaseSerialise@CPSCAttractor@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00bbc130 RELOCATION_MATCH CEnginePrimitiveManagerParticleGroup::?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z
+  00646b12 RELOCATION_MATCH NPlayerGui::CStatBar::?UpdateChangeTexts@CStatBar@NPlayerGui@@QAEXXZ

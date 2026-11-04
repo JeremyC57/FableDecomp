@@ -1,4 +1,6 @@
 // CQ_HangingTreeGoodScript::WatchForMissionEnd() -- every script frame, fail the mission with the "guards killed" reason once no guards are left
+// Leaf: ?WatchForMissionEnd@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+// Naming wave 35c: the exact PDB symbol (Ego_r.pdb + FableWin.pdb); the catalog carries the name; body unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D74CE0, length 75 bytes.
 // Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940 (landed), CCharString::operator=(const char*)
 // @ 0x0099EFE0, CGameScriptInterface slot 7 NewScriptFrame (+0x1c) through the interface pointer at +0x40.

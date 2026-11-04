@@ -1,6 +1,7 @@
+// Naming wave 35c (queue land0411j 0x00437AE0): calls CPlayerGui::UpdateStat under its Ego_r.pdb spelling ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z (private const, the stat by reference to NPlayerGui::CStatBase). Also calls 0x00487B70 as CPlayer::GetPPlayerCharacterThing() const (Ego_r.pdb ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ; was GetPlayerCharacter).
 // CPlayerGui::UpdateMorality() -- feed the hero's pending morality change into the morality stat bar: animate an initialised bar towards the new value (step count from how far it still has to move) or initialise it outright, then hide the bar when the change flips the sign of the bar's value, and consume the change once the bar is in mode 1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00439F20, length 352 bytes, plain `ret`.
-// Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPlayerCharacter 0x00487B70, _ftol 0x00BFEA70, PeekGuiDef
+// Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPPlayerCharacterThing() const 0x00487B70, _ftol 0x00BFEA70, PeekGuiDef
 // 0x00438570 (`__fastcall`, the GUI def), CPlayerGui::UpdateStat 0x00437AE0.
 // Data: 0.2f 0x012305A0, 0.5f 0x0122F59C, 0.0f 0x0122DEDC, 0.01f (immediate).
 // Layout (retail offsets, local view; engine/CPlayerGui.h is the PDB layout, retail sits 8 / 0x14 lower as in the
@@ -16,7 +17,7 @@ class CThing { public:
     unsigned char m_stateFlags;                         // +0x91 (bit 0: dead)
 };
 class CPlayer { public:
-    CThing* GetPlayerCharacter();                       // 0x00487B70
+    CThing* GetPPlayerCharacterThing() const;                     // 0x00487B70
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -30,7 +31,7 @@ class CPlayerGuiDef { public:
 };
 
 namespace NPlayerGui {
-class CStatBar { public:                                       // CStatBase + CStatBar (retail offsets)
+class CStatBase { public:                                      // Ego_r.pdb NPlayerGui::CStatBase (retail offsets)
     void*         __vftable;
     CPlayerGuiDef* GuiDef;                              // +0x04
     bool          ValueInitialised;                     // +0x08
@@ -42,6 +43,8 @@ class CStatBar { public:                                       // CStatBase + CS
     unsigned long FrameCurrentValueLastMoved;           // +0x20
     unsigned long FrameFullyOpenedOn;                   // +0x24
     long          GuiMode;                              // +0x28
+};
+class CStatBar : public CStatBase { public:
     unsigned char _pad2c[0x48 - 0x2c];
     unsigned long GraphicFrame;                         // +0x48
     unsigned long OldGraphicFrame;                      // +0x4c
@@ -62,13 +65,14 @@ class CPlayerGui { public:                                     // retail-offset 
     NPlayerGui::CDrawStatUpdates*   PDrawStatUpdates;   // +0x1a8
     unsigned char                   _pad1ac[0x2dc - 0x1ac];
     NPlayerGui::CStatBar*           PMorality;          // +0x2dc
-    void UpdateStat(float value, float rate, float steps, float speed, float time, NPlayerGui::CStatBar* bar);   // 0x00437AE0
     void UpdateMorality();
+private:
+    void UpdateStat(float value, float rate, float steps, float speed, float time, NPlayerGui::CStatBase& stat) const;   // 0x00437AE0
 };
 
 void CPlayerGui::UpdateMorality()
 {
-    CThing* hero = PlayerManager->GetMainPlayer().GetPlayerCharacter();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacterThing();
     if (!hero || (hero->m_stateFlags & 1))
         return;
     long change = PDrawStatUpdates->PendingMoralityChange;
@@ -78,7 +82,7 @@ void CPlayerGui::UpdateMorality()
         if (steps < 1)
             steps = 1;
         value = (float)change;
-        UpdateStat(value, 0.01f, (float)steps, CPlayerGui::PeekGuiDef().StatChangeTextSpeed, CPlayerGui::PeekGuiDef().StatChangeTextTime, PMorality);
+        UpdateStat(value, 0.01f, (float)steps, CPlayerGui::PeekGuiDef().StatChangeTextSpeed, CPlayerGui::PeekGuiDef().StatChangeTextTime, *PMorality);
         PMorality->OldGraphicFrame = PMorality->GraphicFrame;
         ++PMorality->GraphicFrame;
     } else {

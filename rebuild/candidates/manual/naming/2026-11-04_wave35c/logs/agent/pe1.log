@@ -1,0 +1,24 @@
+addr       parity           behav  name
+00aeaa00   RELOCATION_MATCH LINK_FAIL NParticleEngine::GetOneOverTickRate
+00aeaa20   RELOCATION_MATCH PASS   NParticleEngine::GetFadeOutStartDistance
+00aeaa30   RELOCATION_MATCH PASS   NParticleEngine::GetFadeInEndDistance
+00aeaa40   RELOCATION_MATCH PASS   NParticleEngine::GetFadeInStartDistance
+00aeaa50   RELOCATION_MATCH PASS   NParticleEngine::GetMaxDrawDistance
+00aeaa60   RELOCATION_MATCH LINK_FAIL NParticleEngine::GetMaxSpawnDistance
+00aeaa80   RELOCATION_MATCH PASS   NParticleEngine::SetGraphicBank
+00aeaa90   RELOCATION_MATCH PASS   NParticleEngine::SetMeshBank
+00aeaab0   RELOCATION_MATCH LINK_FAIL NParticleEngine::GetMeshBank
+00aeaae0   RELOCATION_MATCH PASS   NParticleEngine::GetParticleEmitterDatabase
+00aeab00   RELOCATION_MATCH PASS   NParticleEngine::GetPSCManager
+00aeab10   RELOCATION_MATCH PASS   NParticleEngine::GetEnvironmentInteraction
+
+WINS: 9
+  00aeaa20 RELOCATION_MATCH NParticleEngine::?GetFadeOutStartDistance@NParticleEngine@@YIMXZ
+  00aeaa30 RELOCATION_MATCH NParticleEngine::?GetFadeInEndDistance@NParticleEngine@@YIMXZ
+  00aeaa40 RELOCATION_MATCH NParticleEngine::?GetFadeInStartDistance@NParticleEngine@@YIMXZ
+  00aeaa50 RELOCATION_MATCH NParticleEngine::?GetMaxDrawDistance@NParticleEngine@@YIMXZ
+  00aeaa80 RELOCATION_MATCH NParticleEngine::?SetGraphicBank@NParticleEngine@@YIXABVCGraphicDataBank@@@Z
+  00aeaa90 RELOCATION_MATCH NParticleEngine::?SetMeshBank@NParticleEngine@@YIXABVCMeshDataBank@@@Z
+  00aeaae0 RELOCATION_MATCH NParticleEngine::?GetParticleEmitterDatabase@NParticleEngine@@YIAAVCParticleEmitterDatabase@1@XZ
+  00aeab00 RELOCATION_MATCH NParticleEngine::?GetPSCManager@NParticleEngine@@YIAAVCPSCManager@1@XZ
+  00aeab10 RELOCATION_MATCH NParticleEngine::?GetEnvironmentInteraction@NParticleEngine@@YIAAVCAEnvironmentInteraction@1@XZ

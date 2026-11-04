@@ -1,4 +1,6 @@
 // NScript::CV_MurderTwistFinalScript::WaitForEnflameReactionIfNecessary(const CScriptThing& thing) -- if the hero has set the thing alight, disables the hero's will for a three-second script timer (frame by frame) and re-enables it unless the thread is terminating
+// Leaf: ?WaitForEnflameReactionIfNecessary@CV_MurderTwistFinalScript@NScript@@QAEXABVCScriptThing@@@Z
+// Naming wave 35c: the exact PDB symbol (Ego_r.pdb + FableWin.pdb); the catalog carries the name; body unchanged.
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EB0700, 195 bytes (padded to 208), `ret 4`.

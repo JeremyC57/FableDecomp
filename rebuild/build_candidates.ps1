@@ -10857,9 +10857,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aeaad0'
-        Module = '_global'
-        Source = '00/ae/global_AddChildPrimitive_00aeaad0.cpp'
-        TestSource = '00/ae/global_AddChildPrimitive_00aeaad0_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_GetRandomSeed_00aeaad0.cpp'
+        TestSource = '00/ae/NParticleEngine_GetRandomSeed_00aeaad0_test.cpp'
         PassPattern = 'AUTO_TINY_00aeaad0_TEST PASS'
     }
     [pscustomobject]@{
@@ -27692,415 +27692,415 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cdd680'
-        Module = 'CVtable_012c2fcc'
-        Source = '00/cd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cdd680.cpp'
-        TestSource = '00/cd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cdd680_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CGlobal_TeleportToHeroGuildScript>'
+        Source = '00/cd/CSpawnedFuncNScriptCGlobalTeleportToHeroGuildScript_SuspendableProcess_00cdd680.cpp'
+        TestSource = '00/cd/CSpawnedFuncNScriptCGlobalTeleportToHeroGuildScript_SuspendableProcess_00cdd680_test.cpp'
         PassPattern = 'AUTO_TINY_00cdd680_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cddc80'
-        Module = 'CVtable_012c3014'
-        Source = '00/cd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cddc80.cpp'
-        TestSource = '00/cd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cddc80_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CPersonalScriptMainScript>'
+        Source = '00/cd/CSpawnedFuncNScriptCPersonalScriptMainScript_SuspendableProcess_00cddc80.cpp'
+        TestSource = '00/cd/CSpawnedFuncNScriptCPersonalScriptMainScript_SuspendableProcess_00cddc80_test.cpp'
         PassPattern = 'AUTO_TINY_00cddc80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ce1ac0'
-        Module = 'CVtable_012c369c'
-        Source = '00/ce/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ce1ac0.cpp'
-        TestSource = '00/ce/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ce1ac0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CHeroBoastsScript>'
+        Source = '00/ce/CSpawnedFuncNScriptCHeroBoastsScript_SuspendableProcess_00ce1ac0.cpp'
+        TestSource = '00/ce/CSpawnedFuncNScriptCHeroBoastsScript_SuspendableProcess_00ce1ac0_test.cpp'
         PassPattern = 'AUTO_TINY_00ce1ac0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ce7640'
-        Module = 'CVtable_012c44b4'
-        Source = '00/ce/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ce7640.cpp'
-        TestSource = '00/ce/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ce7640_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CGameflowScript>'
+        Source = '00/ce/CSpawnedFuncNScriptCGameflowScript_SuspendableProcess_00ce7640.cpp'
+        TestSource = '00/ce/CSpawnedFuncNScriptCGameflowScript_SuspendableProcess_00ce7640_test.cpp'
         PassPattern = 'AUTO_TINY_00ce7640_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cefab0'
-        Module = 'CVtable_012c5df4'
-        Source = '00/ce/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cefab0.cpp'
-        TestSource = '00/ce/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cefab0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CGameflowAssistanceScript>'
+        Source = '00/ce/CSpawnedFuncNScriptCGameflowAssistanceScript_SuspendableProcess_00cefab0.cpp'
+        TestSource = '00/ce/CSpawnedFuncNScriptCGameflowAssistanceScript_SuspendableProcess_00cefab0_test.cpp'
         PassPattern = 'AUTO_TINY_00cefab0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cf0780'
-        Module = 'CVtable_012c60b4'
-        Source = '00/cf/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cf0780.cpp'
-        TestSource = '00/cf/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cf0780_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_ArenaHoldingScriptScript>'
+        Source = '00/cf/CSpawnedFuncNScriptCQArenaHoldingScriptScript_SuspendableProcess_00cf0780.cpp'
+        TestSource = '00/cf/CSpawnedFuncNScriptCQArenaHoldingScriptScript_SuspendableProcess_00cf0780_test.cpp'
         PassPattern = 'AUTO_TINY_00cf0780_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cf9190'
-        Module = 'CVtable_012c6c90'
-        Source = '00/cf/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cf9190.cpp'
-        TestSource = '00/cf/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cf9190_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CLadyGreyWifeManagerScript>'
+        Source = '00/cf/CSpawnedFuncNScriptCLadyGreyWifeManagerScript_SuspendableProcess_00cf9190.cpp'
+        TestSource = '00/cf/CSpawnedFuncNScriptCLadyGreyWifeManagerScript_SuspendableProcess_00cf9190_test.cpp'
         PassPattern = 'AUTO_TINY_00cf9190_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cf95e0'
-        Module = 'CVtable_012c6cc0'
-        Source = '00/cf/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cf95e0.cpp'
-        TestSource = '00/cf/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cf95e0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_AmbushTradersScript>'
+        Source = '00/cf/CSpawnedFuncNScriptCQAmbushTradersScript_SuspendableProcess_00cf95e0.cpp'
+        TestSource = '00/cf/CSpawnedFuncNScriptCQAmbushTradersScript_SuspendableProcess_00cf95e0_test.cpp'
         PassPattern = 'AUTO_TINY_00cf95e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cfaae0'
-        Module = 'CVtable_012c7834'
-        Source = '00/cf/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cfaae0.cpp'
-        TestSource = '00/cf/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cfaae0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_ArenaScript>'
+        Source = '00/cf/CSpawnedFuncNScriptCQArenaScript_SuspendableProcess_00cfaae0.cpp'
+        TestSource = '00/cf/CSpawnedFuncNScriptCQArenaScript_SuspendableProcess_00cfaae0_test.cpp'
         PassPattern = 'AUTO_TINY_00cfaae0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cfaf40'
-        Module = 'CVtable_012c78ec'
-        Source = '00/cf/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cfaf40.cpp'
-        TestSource = '00/cf/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cfaf40_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_AwakeningTheOracleScript>'
+        Source = '00/cf/CSpawnedFuncNScriptCQAwakeningTheOracleScript_SuspendableProcess_00cfaf40.cpp'
+        TestSource = '00/cf/CSpawnedFuncNScriptCQAwakeningTheOracleScript_SuspendableProcess_00cfaf40_test.cpp'
         PassPattern = 'AUTO_TINY_00cfaf40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d00a60'
-        Module = 'CVtable_012c83e8'
-        Source = '00/d0/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d00a60.cpp'
-        TestSource = '00/d0/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d00a60_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_BanditCampScript>'
+        Source = '00/d0/CSpawnedFuncNScriptCQBanditCampScript_SuspendableProcess_00d00a60.cpp'
+        TestSource = '00/d0/CSpawnedFuncNScriptCQBanditCampScript_SuspendableProcess_00d00a60_test.cpp'
         PassPattern = 'AUTO_TINY_00d00a60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d038b0'
-        Module = 'CVtable_012c88f4'
-        Source = '00/d0/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d038b0.cpp'
-        TestSource = '00/d0/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d038b0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_BanditCampBossBattleScript>'
+        Source = '00/d0/CSpawnedFuncNScriptCQBanditCampBossBattleScript_SuspendableProcess_00d038b0.cpp'
+        TestSource = '00/d0/CSpawnedFuncNScriptCQBanditCampBossBattleScript_SuspendableProcess_00d038b0_test.cpp'
         PassPattern = 'AUTO_TINY_00d038b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d12bf0'
-        Module = 'CVtable_012c9e40'
-        Source = '00/d1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d12bf0.cpp'
-        TestSource = '00/d1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d12bf0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_BanditCampHoldingScriptScript>'
+        Source = '00/d1/CSpawnedFuncNScriptCQBanditCampHoldingScriptScript_SuspendableProcess_00d12bf0.cpp'
+        TestSource = '00/d1/CSpawnedFuncNScriptCQBanditCampHoldingScriptScript_SuspendableProcess_00d12bf0_test.cpp'
         PassPattern = 'AUTO_TINY_00d12bf0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d13100'
-        Module = 'CVtable_012c9edc'
-        Source = '00/d1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d13100.cpp'
-        TestSource = '00/d1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d13100_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_BountyHuntScript>'
+        Source = '00/d1/CSpawnedFuncNScriptCQBountyHuntScript_SuspendableProcess_00d13100.cpp'
+        TestSource = '00/d1/CSpawnedFuncNScriptCQBountyHuntScript_SuspendableProcess_00d13100_test.cpp'
         PassPattern = 'AUTO_TINY_00d13100_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d1cf90'
-        Module = 'CVtable_012cab98'
-        Source = '00/d1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d1cf90.cpp'
-        TestSource = '00/d1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d1cf90_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_BreakSiegeScript>'
+        Source = '00/d1/CSpawnedFuncNScriptCQBreakSiegeScript_SuspendableProcess_00d1cf90.cpp'
+        TestSource = '00/d1/CSpawnedFuncNScriptCQBreakSiegeScript_SuspendableProcess_00d1cf90_test.cpp'
         PassPattern = 'AUTO_TINY_00d1cf90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d23db0'
-        Module = 'CVtable_012cb540'
-        Source = '00/d2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d23db0.cpp'
-        TestSource = '00/d2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d23db0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_BowerstoneTownLifeIntroScript>'
+        Source = '00/d2/CSpawnedFuncNScriptCQBowerstoneTownLifeIntroScript_SuspendableProcess_00d23db0.cpp'
+        TestSource = '00/d2/CSpawnedFuncNScriptCQBowerstoneTownLifeIntroScript_SuspendableProcess_00d23db0_test.cpp'
         PassPattern = 'AUTO_TINY_00d23db0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d255b0'
-        Module = 'CVtable_012cb720'
-        Source = '00/d2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d255b0.cpp'
-        TestSource = '00/d2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d255b0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_DragonBossFightScript>'
+        Source = '00/d2/CSpawnedFuncNScriptCQDragonBossFightScript_SuspendableProcess_00d255b0.cpp'
+        TestSource = '00/d2/CSpawnedFuncNScriptCQDragonBossFightScript_SuspendableProcess_00d255b0_test.cpp'
         PassPattern = 'AUTO_TINY_00d255b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d27450'
-        Module = 'CVtable_012cba6c'
-        Source = '00/d2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d27450.cpp'
-        TestSource = '00/d2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d27450_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_EndGameScript>'
+        Source = '00/d2/CSpawnedFuncNScriptCQEndGameScript_SuspendableProcess_00d27450.cpp'
+        TestSource = '00/d2/CSpawnedFuncNScriptCQEndGameScript_SuspendableProcess_00d27450_test.cpp'
         PassPattern = 'AUTO_TINY_00d27450_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d2a9e0'
-        Module = 'CVtable_012cbfbc'
-        Source = '00/d2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d2a9e0.cpp'
-        TestSource = '00/d2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d2a9e0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_EndGameFocalSitesScript>'
+        Source = '00/d2/CSpawnedFuncNScriptCQEndGameFocalSitesScript_SuspendableProcess_00d2a9e0.cpp'
+        TestSource = '00/d2/CSpawnedFuncNScriptCQEndGameFocalSitesScript_SuspendableProcess_00d2a9e0_test.cpp'
         PassPattern = 'AUTO_TINY_00d2a9e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d2f7c0'
-        Module = 'CVtable_012cc620'
-        Source = '00/d2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d2f7c0.cpp'
-        TestSource = '00/d2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d2f7c0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_EndGameBossBattleScript>'
+        Source = '00/d2/CSpawnedFuncNScriptCQEndGameBossBattleScript_SuspendableProcess_00d2f7c0.cpp'
+        TestSource = '00/d2/CSpawnedFuncNScriptCQEndGameBossBattleScript_SuspendableProcess_00d2f7c0_test.cpp'
         PassPattern = 'AUTO_TINY_00d2f7c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d346f0'
-        Module = 'CVtable_012ccba4'
-        Source = '00/d3/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d346f0.cpp'
-        TestSource = '00/d3/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d346f0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_FireHeartScript>'
+        Source = '00/d3/CSpawnedFuncNScriptCQFireHeartScript_SuspendableProcess_00d346f0.cpp'
+        TestSource = '00/d3/CSpawnedFuncNScriptCQFireHeartScript_SuspendableProcess_00d346f0_test.cpp'
         PassPattern = 'AUTO_TINY_00d346f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d3bbe0'
-        Module = 'CVtable_012cd5ec'
-        Source = '00/d3/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d3bbe0.cpp'
-        TestSource = '00/d3/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d3bbe0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_GuildTrainingScript>'
+        Source = '00/d3/CSpawnedFuncNScriptCQGuildTrainingScript_SuspendableProcess_00d3bbe0.cpp'
+        TestSource = '00/d3/CSpawnedFuncNScriptCQGuildTrainingScript_SuspendableProcess_00d3bbe0_test.cpp'
         PassPattern = 'AUTO_TINY_00d3bbe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d514f0'
-        Module = 'CVtable_012cf79c'
-        Source = '00/d5/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d514f0.cpp'
-        TestSource = '00/d5/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d514f0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_GuildTrainingPreMeleeScript>'
+        Source = '00/d5/CSpawnedFuncNScriptCQGuildTrainingPreMeleeScript_SuspendableProcess_00d514f0.cpp'
+        TestSource = '00/d5/CSpawnedFuncNScriptCQGuildTrainingPreMeleeScript_SuspendableProcess_00d514f0_test.cpp'
         PassPattern = 'AUTO_TINY_00d514f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d55e60'
-        Module = 'CVtable_012d0288'
-        Source = '00/d5/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d55e60.cpp'
-        TestSource = '00/d5/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d55e60_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_GuildTrainingMeleeScript>'
+        Source = '00/d5/CSpawnedFuncNScriptCQGuildTrainingMeleeScript_SuspendableProcess_00d55e60.cpp'
+        TestSource = '00/d5/CSpawnedFuncNScriptCQGuildTrainingMeleeScript_SuspendableProcess_00d55e60_test.cpp'
         PassPattern = 'AUTO_TINY_00d55e60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d61cf0'
-        Module = 'CVtable_012d1610'
-        Source = '00/d6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d61cf0.cpp'
-        TestSource = '00/d6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d61cf0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_GuildTrainingWoodsDepartureScript>'
+        Source = '00/d6/CSpawnedFuncNScriptCQGuildTrainingWoodsDepartureScript_SuspendableProcess_00d61cf0.cpp'
+        TestSource = '00/d6/CSpawnedFuncNScriptCQGuildTrainingWoodsDepartureScript_SuspendableProcess_00d61cf0_test.cpp'
         PassPattern = 'AUTO_TINY_00d61cf0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d665f0'
-        Module = 'CVtable_012d1d30'
-        Source = '00/d6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d665f0.cpp'
-        TestSource = '00/d6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d665f0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_GuildTrainingWoodsMeleeScript>'
+        Source = '00/d6/CSpawnedFuncNScriptCQGuildTrainingWoodsMeleeScript_SuspendableProcess_00d665f0.cpp'
+        TestSource = '00/d6/CSpawnedFuncNScriptCQGuildTrainingWoodsMeleeScript_SuspendableProcess_00d665f0_test.cpp'
         PassPattern = 'AUTO_TINY_00d665f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d67860'
-        Module = 'CVtable_012d1e1c'
-        Source = '00/d6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d67860.cpp'
-        TestSource = '00/d6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d67860_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_GuildTrainingWoodsWillScript>'
+        Source = '00/d6/CSpawnedFuncNScriptCQGuildTrainingWoodsWillScript_SuspendableProcess_00d67860.cpp'
+        TestSource = '00/d6/CSpawnedFuncNScriptCQGuildTrainingWoodsWillScript_SuspendableProcess_00d67860_test.cpp'
         PassPattern = 'AUTO_TINY_00d67860_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d69420'
-        Module = 'CVtable_012d1fe8'
-        Source = '00/d6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d69420.cpp'
-        TestSource = '00/d6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d69420_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_HangingTreeEvilScript>'
+        Source = '00/d6/CSpawnedFuncNScriptCQHangingTreeEvilScript_SuspendableProcess_00d69420.cpp'
+        TestSource = '00/d6/CSpawnedFuncNScriptCQHangingTreeEvilScript_SuspendableProcess_00d69420_test.cpp'
         PassPattern = 'AUTO_TINY_00d69420_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d6f450'
-        Module = 'CVtable_012d264c'
-        Source = '00/d6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d6f450.cpp'
-        TestSource = '00/d6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d6f450_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_HangingTreeGoodScript>'
+        Source = '00/d6/CSpawnedFuncNScriptCQHangingTreeGoodScript_SuspendableProcess_00d6f450.cpp'
+        TestSource = '00/d6/CSpawnedFuncNScriptCQHangingTreeGoodScript_SuspendableProcess_00d6f450_test.cpp'
         PassPattern = 'AUTO_TINY_00d6f450_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d785b0'
-        Module = 'CVtable_012d2f5c'
-        Source = '00/d7/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d785b0.cpp'
-        TestSource = '00/d7/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d785b0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_HeroSoulsScript>'
+        Source = '00/d7/CSpawnedFuncNScriptCQHeroSoulsScript_SuspendableProcess_00d785b0.cpp'
+        TestSource = '00/d7/CSpawnedFuncNScriptCQHeroSoulsScript_SuspendableProcess_00d785b0_test.cpp'
         PassPattern = 'AUTO_TINY_00d785b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d7ae00'
-        Module = 'CVtable_012d349c'
-        Source = '00/d7/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d7ae00.cpp'
-        TestSource = '00/d7/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d7ae00_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_HeroSoulsThunderScript>'
+        Source = '00/d7/CSpawnedFuncNScriptCQHeroSoulsThunderScript_SuspendableProcess_00d7ae00.cpp'
+        TestSource = '00/d7/CSpawnedFuncNScriptCQHeroSoulsThunderScript_SuspendableProcess_00d7ae00_test.cpp'
         PassPattern = 'AUTO_TINY_00d7ae00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d7c7d0'
-        Module = 'CVtable_012d39a8'
-        Source = '00/d7/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d7c7d0.cpp'
-        TestSource = '00/d7/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d7c7d0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_HeroSoulsArenaScript>'
+        Source = '00/d7/CSpawnedFuncNScriptCQHeroSoulsArenaScript_SuspendableProcess_00d7c7d0.cpp'
+        TestSource = '00/d7/CSpawnedFuncNScriptCQHeroSoulsArenaScript_SuspendableProcess_00d7c7d0_test.cpp'
         PassPattern = 'AUTO_TINY_00d7c7d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d80de0'
-        Module = 'CVtable_012d41d0'
-        Source = '00/d8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d80de0.cpp'
-        TestSource = '00/d8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d80de0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_HeroSoulsBriarScript>'
+        Source = '00/d8/CSpawnedFuncNScriptCQHeroSoulsBriarScript_SuspendableProcess_00d80de0.cpp'
+        TestSource = '00/d8/CSpawnedFuncNScriptCQHeroSoulsBriarScript_SuspendableProcess_00d80de0_test.cpp'
         PassPattern = 'AUTO_TINY_00d80de0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d83570'
-        Module = 'CVtable_012d4604'
-        Source = '00/d8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d83570.cpp'
-        TestSource = '00/d8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d83570_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_HeroSoulsMotherScript>'
+        Source = '00/d8/CSpawnedFuncNScriptCQHeroSoulsMotherScript_SuspendableProcess_00d83570.cpp'
+        TestSource = '00/d8/CSpawnedFuncNScriptCQHeroSoulsMotherScript_SuspendableProcess_00d83570_test.cpp'
         PassPattern = 'AUTO_TINY_00d83570_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d84cb0'
-        Module = 'CVtable_012d4818'
-        Source = '00/d8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d84cb0.cpp'
-        TestSource = '00/d8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d84cb0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_HeroSoulsGuildmasterScript>'
+        Source = '00/d8/CSpawnedFuncNScriptCQHeroSoulsGuildmasterScript_SuspendableProcess_00d84cb0.cpp'
+        TestSource = '00/d8/CSpawnedFuncNScriptCQHeroSoulsGuildmasterScript_SuspendableProcess_00d84cb0_test.cpp'
         PassPattern = 'AUTO_TINY_00d84cb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d87c30'
-        Module = 'CVtable_012d4d40'
-        Source = '00/d8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d87c30.cpp'
-        TestSource = '00/d8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d87c30_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_HeroSoulsNostroScript>'
+        Source = '00/d8/CSpawnedFuncNScriptCQHeroSoulsNostroScript_SuspendableProcess_00d87c30.cpp'
+        TestSource = '00/d8/CSpawnedFuncNScriptCQHeroSoulsNostroScript_SuspendableProcess_00d87c30_test.cpp'
         PassPattern = 'AUTO_TINY_00d87c30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d89e50'
-        Module = 'CVtable_012d502c'
-        Source = '00/d8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d89e50.cpp'
-        TestSource = '00/d8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d89e50_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_HerosOldHouseScript>'
+        Source = '00/d8/CSpawnedFuncNScriptCQHerosOldHouseScript_SuspendableProcess_00d89e50.cpp'
+        TestSource = '00/d8/CSpawnedFuncNScriptCQHerosOldHouseScript_SuspendableProcess_00d89e50_test.cpp'
         PassPattern = 'AUTO_TINY_00d89e50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d8dc90'
-        Module = 'CVtable_012d567c'
-        Source = '00/d8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d8dc90.cpp'
-        TestSource = '00/d8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d8dc90_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_HobbeCaveScript>'
+        Source = '00/d8/CSpawnedFuncNScriptCQHobbeCaveScript_SuspendableProcess_00d8dc90.cpp'
+        TestSource = '00/d8/CSpawnedFuncNScriptCQHobbeCaveScript_SuspendableProcess_00d8dc90_test.cpp'
         PassPattern = 'AUTO_TINY_00d8dc90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d9a130'
-        Module = 'CVtable_012d660c'
-        Source = '00/d9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d9a130.cpp'
-        TestSource = '00/d9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d9a130_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_HobbeToothContestScript>'
+        Source = '00/d9/CSpawnedFuncNScriptCQHobbeToothContestScript_SuspendableProcess_00d9a130.cpp'
+        TestSource = '00/d9/CSpawnedFuncNScriptCQHobbeToothContestScript_SuspendableProcess_00d9a130_test.cpp'
         PassPattern = 'AUTO_TINY_00d9a130_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d9e5b0'
-        Module = 'CVtable_012d6cac'
-        Source = '00/d9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d9e5b0.cpp'
-        TestSource = '00/d9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d9e5b0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_MinionCampScript>'
+        Source = '00/d9/CSpawnedFuncNScriptCQMinionCampScript_SuspendableProcess_00d9e5b0.cpp'
+        TestSource = '00/d9/CSpawnedFuncNScriptCQMinionCampScript_SuspendableProcess_00d9e5b0_test.cpp'
         PassPattern = 'AUTO_TINY_00d9e5b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00da3430'
-        Module = 'CVtable_012d716c'
-        Source = '00/da/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00da3430.cpp'
-        TestSource = '00/da/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00da3430_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_MinionClifftopChaseScript>'
+        Source = '00/da/CSpawnedFuncNScriptCQMinionClifftopChaseScript_SuspendableProcess_00da3430.cpp'
+        TestSource = '00/da/CSpawnedFuncNScriptCQMinionClifftopChaseScript_SuspendableProcess_00da3430_test.cpp'
         PassPattern = 'AUTO_TINY_00da3430_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00daad70'
-        Module = 'CVtable_012d7a3c'
-        Source = '00/da/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00daad70.cpp'
-        TestSource = '00/da/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00daad70_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_NewOakValeIntroScript>'
+        Source = '00/da/CSpawnedFuncNScriptCQNewOakValeIntroScript_SuspendableProcess_00daad70.cpp'
+        TestSource = '00/da/CSpawnedFuncNScriptCQNewOakValeIntroScript_SuspendableProcess_00daad70_test.cpp'
         PassPattern = 'AUTO_TINY_00daad70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dbf2a0'
-        Module = 'CVtable_012d9e2c'
-        Source = '00/db/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dbf2a0.cpp'
-        TestSource = '00/db/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dbf2a0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_OakValeBanditRaidScript>'
+        Source = '00/db/CSpawnedFuncNScriptCQOakValeBanditRaidScript_SuspendableProcess_00dbf2a0.cpp'
+        TestSource = '00/db/CSpawnedFuncNScriptCQOakValeBanditRaidScript_SuspendableProcess_00dbf2a0_test.cpp'
         PassPattern = 'AUTO_TINY_00dbf2a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dc2740'
-        Module = 'CVtable_012da140'
-        Source = '00/dc/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dc2740.cpp'
-        TestSource = '00/dc/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dc2740_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_OpeningGraveyardSecretPassageScript>'
+        Source = '00/dc/CSpawnedFuncNScriptCQOpeningGraveyardSecretPassageScript_SuspendableProcess_00dc2740.cpp'
+        TestSource = '00/dc/CSpawnedFuncNScriptCQOpeningGraveyardSecretPassageScript_SuspendableProcess_00dc2740_test.cpp'
         PassPattern = 'AUTO_TINY_00dc2740_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dcc6f0'
-        Module = 'CVtable_012db13c'
-        Source = '00/dc/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dcc6f0.cpp'
-        TestSource = '00/dc/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dcc6f0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_OrchardFarmRaidScript>'
+        Source = '00/dc/CSpawnedFuncNScriptCQOrchardFarmRaidScript_SuspendableProcess_00dcc6f0.cpp'
+        TestSource = '00/dc/CSpawnedFuncNScriptCQOrchardFarmRaidScript_SuspendableProcess_00dcc6f0_test.cpp'
         PassPattern = 'AUTO_TINY_00dcc6f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dd22d0'
-        Module = 'CVtable_012db7f4'
-        Source = '00/dd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dd22d0.cpp'
-        TestSource = '00/dd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dd22d0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_OrchardFarmRaidEvilScript>'
+        Source = '00/dd/CSpawnedFuncNScriptCQOrchardFarmRaidEvilScript_SuspendableProcess_00dd22d0.cpp'
+        TestSource = '00/dd/CSpawnedFuncNScriptCQOrchardFarmRaidEvilScript_SuspendableProcess_00dd22d0_test.cpp'
         PassPattern = 'AUTO_TINY_00dd22d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dd2650'
-        Module = 'CVtable_012db850'
-        Source = '00/dd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dd2650.cpp'
-        TestSource = '00/dd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dd2650_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_OrchardFarmRaidGoodScript>'
+        Source = '00/dd/CSpawnedFuncNScriptCQOrchardFarmRaidGoodScript_SuspendableProcess_00dd2650.cpp'
+        TestSource = '00/dd/CSpawnedFuncNScriptCQOrchardFarmRaidGoodScript_SuspendableProcess_00dd2650_test.cpp'
         PassPattern = 'AUTO_TINY_00dd2650_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dd2c50'
-        Module = 'CVtable_012db954'
-        Source = '00/dd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dd2c50.cpp'
-        TestSource = '00/dd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dd2c50_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_PrisonEscapeRescueMotherScript>'
+        Source = '00/dd/CSpawnedFuncNScriptCQPrisonEscapeRescueMotherScript_SuspendableProcess_00dd2c50.cpp'
+        TestSource = '00/dd/CSpawnedFuncNScriptCQPrisonEscapeRescueMotherScript_SuspendableProcess_00dd2c50_test.cpp'
         PassPattern = 'AUTO_TINY_00dd2c50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ddae30'
-        Module = 'CVtable_012dc8a0'
-        Source = '00/dd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ddae30.cpp'
-        TestSource = '00/dd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ddae30_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_PrisonRaceScript>'
+        Source = '00/dd/CSpawnedFuncNScriptCQPrisonRaceScript_SuspendableProcess_00ddae30.cpp'
+        TestSource = '00/dd/CSpawnedFuncNScriptCQPrisonRaceScript_SuspendableProcess_00ddae30_test.cpp'
         PassPattern = 'AUTO_TINY_00ddae30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ddde10'
-        Module = 'CVtable_012dcb54'
-        Source = '00/dd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ddde10.cpp'
-        TestSource = '00/dd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ddde10_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_PrisonWardenGameScript>'
+        Source = '00/dd/CSpawnedFuncNScriptCQPrisonWardenGameScript_SuspendableProcess_00ddde10.cpp'
+        TestSource = '00/dd/CSpawnedFuncNScriptCQPrisonWardenGameScript_SuspendableProcess_00ddde10_test.cpp'
         PassPattern = 'AUTO_TINY_00ddde10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00de0820'
-        Module = 'CVtable_012dcf1c'
-        Source = '00/de/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00de0820.cpp'
-        TestSource = '00/de/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00de0820_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_RansomVictimScript>'
+        Source = '00/de/CSpawnedFuncNScriptCQRansomVictimScript_SuspendableProcess_00de0820.cpp'
+        TestSource = '00/de/CSpawnedFuncNScriptCQRansomVictimScript_SuspendableProcess_00de0820_test.cpp'
         PassPattern = 'AUTO_TINY_00de0820_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00debee0'
-        Module = 'CVtable_012ddbbc'
+        Module = 'CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>'
         Source = '00/de/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00debee0.cpp'
         TestSource = '00/de/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00debee0_test.cpp'
         PassPattern = 'AUTO_TINY_00debee0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00decaa0'
-        Module = 'CVtable_012ddc54'
-        Source = '00/de/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00decaa0.cpp'
-        TestSource = '00/de/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00decaa0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_SecretPassageScript>'
+        Source = '00/de/CSpawnedFuncNScriptCQSecretPassageScript_SuspendableProcess_00decaa0.cpp'
+        TestSource = '00/de/CSpawnedFuncNScriptCQSecretPassageScript_SuspendableProcess_00decaa0_test.cpp'
         PassPattern = 'AUTO_TINY_00decaa0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00df1370'
-        Module = 'CVtable_012de120'
-        Source = '00/df/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00df1370.cpp'
-        TestSource = '00/df/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00df1370_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_SummoningTheShipScript>'
+        Source = '00/df/CSpawnedFuncNScriptCQSummoningTheShipScript_SuspendableProcess_00df1370.cpp'
+        TestSource = '00/df/CSpawnedFuncNScriptCQSummoningTheShipScript_SuspendableProcess_00df1370_test.cpp'
         PassPattern = 'AUTO_TINY_00df1370_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00df41e0'
-        Module = 'CVtable_012de524'
-        Source = '00/df/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00df41e0.cpp'
-        TestSource = '00/df/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00df41e0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_TentacleKrakenBossFightScript>'
+        Source = '00/df/CSpawnedFuncNScriptCQTentacleKrakenBossFightScript_SuspendableProcess_00df41e0.cpp'
+        TestSource = '00/df/CSpawnedFuncNScriptCQTentacleKrakenBossFightScript_SuspendableProcess_00df41e0_test.cpp'
         PassPattern = 'AUTO_TINY_00df41e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00df5fe0'
-        Module = 'CVtable_012de70c'
-        Source = '00/df/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00df5fe0.cpp'
-        TestSource = '00/df/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00df5fe0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_TraderConflictEvilScript>'
+        Source = '00/df/CSpawnedFuncNScriptCQTraderConflictEvilScript_SuspendableProcess_00df5fe0.cpp'
+        TestSource = '00/df/CSpawnedFuncNScriptCQTraderConflictEvilScript_SuspendableProcess_00df5fe0_test.cpp'
         PassPattern = 'AUTO_TINY_00df5fe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dfa420'
-        Module = 'CVtable_012deb2c'
-        Source = '00/df/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dfa420.cpp'
-        TestSource = '00/df/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00dfa420_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_TraderConflictGoodScript>'
+        Source = '00/df/CSpawnedFuncNScriptCQTraderConflictGoodScript_SuspendableProcess_00dfa420.cpp'
+        TestSource = '00/df/CSpawnedFuncNScriptCQTraderConflictGoodScript_SuspendableProcess_00dfa420_test.cpp'
         PassPattern = 'AUTO_TINY_00dfa420_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e00cb0'
-        Module = 'CVtable_012df224'
-        Source = '00/e0/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e00cb0.cpp'
-        TestSource = '00/e0/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e00cb0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_TraderEscortScript>'
+        Source = '00/e0/CSpawnedFuncNScriptCQTraderEscortScript_SuspendableProcess_00e00cb0.cpp'
+        TestSource = '00/e0/CSpawnedFuncNScriptCQTraderEscortScript_SuspendableProcess_00e00cb0_test.cpp'
         PassPattern = 'AUTO_TINY_00e00cb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e0b130'
-        Module = 'CVtable_012dfd50'
-        Source = '00/e0/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e0b130.cpp'
-        TestSource = '00/e0/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e0b130_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_UndeadRisingScript>'
+        Source = '00/e0/CSpawnedFuncNScriptCQUndeadRisingScript_SuspendableProcess_00e0b130.cpp'
+        TestSource = '00/e0/CSpawnedFuncNScriptCQUndeadRisingScript_SuspendableProcess_00e0b130_test.cpp'
         PassPattern = 'AUTO_TINY_00e0b130_TEST PASS'
     }
     [pscustomobject]@{
@@ -28112,317 +28112,317 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e13eb0'
-        Module = 'CVtable_012e077c'
-        Source = '00/e1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e13eb0.cpp'
-        TestSource = '00/e1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e13eb0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_WhiteBalverineKnotholeGladeScript>'
+        Source = '00/e1/CSpawnedFuncNScriptCQWhiteBalverineKnotholeGladeScript_SuspendableProcess_00e13eb0.cpp'
+        TestSource = '00/e1/CSpawnedFuncNScriptCQWhiteBalverineKnotholeGladeScript_SuspendableProcess_00e13eb0_test.cpp'
         PassPattern = 'AUTO_TINY_00e13eb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e18600'
-        Module = 'CVtable_012e0cf8'
-        Source = '00/e1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e18600.cpp'
-        TestSource = '00/e1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e18600_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_WhiteBalverineWWScript>'
+        Source = '00/e1/CSpawnedFuncNScriptCQWhiteBalverineWWScript_SuspendableProcess_00e18600.cpp'
+        TestSource = '00/e1/CSpawnedFuncNScriptCQWhiteBalverineWWScript_SuspendableProcess_00e18600_test.cpp'
         PassPattern = 'AUTO_TINY_00e18600_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e1a960'
-        Module = 'CVtable_012e0f68'
-        Source = '00/e1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e1a960.cpp'
-        TestSource = '00/e1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e1a960_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_WizardBattleScript>'
+        Source = '00/e1/CSpawnedFuncNScriptCQWizardBattleScript_SuspendableProcess_00e1a960.cpp'
+        TestSource = '00/e1/CSpawnedFuncNScriptCQWizardBattleScript_SuspendableProcess_00e1a960_test.cpp'
         PassPattern = 'AUTO_TINY_00e1a960_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e1dcc0'
-        Module = 'CVtable_012e12f4'
-        Source = '00/e1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e1dcc0.cpp'
-        TestSource = '00/e1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e1dcc0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQR_EscortTraderScript>'
+        Source = '00/e1/CSpawnedFuncNScriptCQREscortTraderScript_SuspendableProcess_00e1dcc0.cpp'
+        TestSource = '00/e1/CSpawnedFuncNScriptCQREscortTraderScript_SuspendableProcess_00e1dcc0_test.cpp'
         PassPattern = 'AUTO_TINY_00e1dcc0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e25720'
-        Module = 'CVtable_012e1d5c'
-        Source = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e25720.cpp'
-        TestSource = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e25720_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQR_EscortTrader_ManagerScript>'
+        Source = '00/e2/CSpawnedFuncNScriptCQREscortTraderManagerScript_SuspendableProcess_00e25720.cpp'
+        TestSource = '00/e2/CSpawnedFuncNScriptCQREscortTraderManagerScript_SuspendableProcess_00e25720_test.cpp'
         PassPattern = 'AUTO_TINY_00e25720_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e25aa0'
-        Module = 'CVtable_012e1dc0'
-        Source = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e25aa0.cpp'
-        TestSource = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e25aa0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQS_GuardianSisterInfoScript>'
+        Source = '00/e2/CSpawnedFuncNScriptCQSGuardianSisterInfoScript_SuspendableProcess_00e25aa0.cpp'
+        TestSource = '00/e2/CSpawnedFuncNScriptCQSGuardianSisterInfoScript_SuspendableProcess_00e25aa0_test.cpp'
         PassPattern = 'AUTO_TINY_00e25aa0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e268b0'
-        Module = 'CVtable_012e1f1c'
-        Source = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e268b0.cpp'
-        TestSource = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e268b0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>'
+        Source = '00/e2/CSpawnedFuncNScriptCQSGuardianSisterInfo2SisterInBanditCampScript_SuspendableProcess_00e268b0.cpp'
+        TestSource = '00/e2/CSpawnedFuncNScriptCQSGuardianSisterInfo2SisterInBanditCampScript_SuspendableProcess_00e268b0_test.cpp'
         PassPattern = 'AUTO_TINY_00e268b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e27910'
-        Module = 'CVtable_012e202c'
-        Source = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e27910.cpp'
-        TestSource = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e27910_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQS_GuardianTrophyDealerInfoScript>'
+        Source = '00/e2/CSpawnedFuncNScriptCQSGuardianTrophyDealerInfoScript_SuspendableProcess_00e27910.cpp'
+        TestSource = '00/e2/CSpawnedFuncNScriptCQSGuardianTrophyDealerInfoScript_SuspendableProcess_00e27910_test.cpp'
         PassPattern = 'AUTO_TINY_00e27910_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e28dd0'
-        Module = 'CVtable_012e21a8'
-        Source = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e28dd0.cpp'
-        TestSource = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e28dd0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQS_MeetSisterScript>'
+        Source = '00/e2/CSpawnedFuncNScriptCQSMeetSisterScript_SuspendableProcess_00e28dd0.cpp'
+        TestSource = '00/e2/CSpawnedFuncNScriptCQSMeetSisterScript_SuspendableProcess_00e28dd0_test.cpp'
         PassPattern = 'AUTO_TINY_00e28dd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e29b10'
-        Module = 'CVtable_012e22dc'
-        Source = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e29b10.cpp'
-        TestSource = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e29b10_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQS_ScytheInfoScript>'
+        Source = '00/e2/CSpawnedFuncNScriptCQSScytheInfoScript_SuspendableProcess_00e29b10.cpp'
+        TestSource = '00/e2/CSpawnedFuncNScriptCQSScytheInfoScript_SuspendableProcess_00e29b10_test.cpp'
         PassPattern = 'AUTO_TINY_00e29b10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e2ad20'
-        Module = 'CVtable_012e24b4'
-        Source = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e2ad20.cpp'
-        TestSource = '00/e2/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e2ad20_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_AmbushScamScript>'
+        Source = '00/e2/CSpawnedFuncNScriptCVAmbushScamScript_SuspendableProcess_00e2ad20.cpp'
+        TestSource = '00/e2/CSpawnedFuncNScriptCVAmbushScamScript_SuspendableProcess_00e2ad20_test.cpp'
         PassPattern = 'AUTO_TINY_00e2ad20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e32530'
-        Module = 'CVtable_012e2fe8'
-        Source = '00/e3/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e32530.cpp'
-        TestSource = '00/e3/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e32530_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_ArcheryCompetitionScript>'
+        Source = '00/e3/CSpawnedFuncNScriptCVArcheryCompetitionScript_SuspendableProcess_00e32530.cpp'
+        TestSource = '00/e3/CSpawnedFuncNScriptCVArcheryCompetitionScript_SuspendableProcess_00e32530_test.cpp'
         PassPattern = 'AUTO_TINY_00e32530_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e377c0'
-        Module = 'CVtable_012e35c4'
-        Source = '00/e3/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e377c0.cpp'
-        TestSource = '00/e3/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e377c0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_AssassinAttacksScript>'
+        Source = '00/e3/CSpawnedFuncNScriptCVAssassinAttacksScript_SuspendableProcess_00e377c0.cpp'
+        TestSource = '00/e3/CSpawnedFuncNScriptCVAssassinAttacksScript_SuspendableProcess_00e377c0_test.cpp'
         PassPattern = 'AUTO_TINY_00e377c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e39b30'
-        Module = 'CVtable_012e38c4'
-        Source = '00/e3/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e39b30.cpp'
-        TestSource = '00/e3/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e39b30_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_BordelloScript>'
+        Source = '00/e3/CSpawnedFuncNScriptCVBordelloScript_SuspendableProcess_00e39b30.cpp'
+        TestSource = '00/e3/CSpawnedFuncNScriptCVBordelloScript_SuspendableProcess_00e39b30_test.cpp'
         PassPattern = 'AUTO_TINY_00e39b30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e46cd0'
-        Module = 'CVtable_012e4ab0'
-        Source = '00/e4/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e46cd0.cpp'
-        TestSource = '00/e4/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e46cd0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_BanditCampPathScript>'
+        Source = '00/e4/CSpawnedFuncNScriptCVBanditCampPathScript_SuspendableProcess_00e46cd0.cpp'
+        TestSource = '00/e4/CSpawnedFuncNScriptCVBanditCampPathScript_SuspendableProcess_00e46cd0_test.cpp'
         PassPattern = 'AUTO_TINY_00e46cd0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e479a0'
-        Module = 'CVtable_012e4b90'
-        Source = '00/e4/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e479a0.cpp'
-        TestSource = '00/e4/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e479a0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_BanditTollScript>'
+        Source = '00/e4/CSpawnedFuncNScriptCVBanditTollScript_SuspendableProcess_00e479a0.cpp'
+        TestSource = '00/e4/CSpawnedFuncNScriptCVBanditTollScript_SuspendableProcess_00e479a0_test.cpp'
         PassPattern = 'AUTO_TINY_00e479a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e4f7c0'
-        Module = 'CVtable_012e5894'
-        Source = '00/e4/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e4f7c0.cpp'
-        TestSource = '00/e4/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e4f7c0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_BeardyBaldyScript>'
+        Source = '00/e4/CSpawnedFuncNScriptCVBeardyBaldyScript_SuspendableProcess_00e4f7c0.cpp'
+        TestSource = '00/e4/CSpawnedFuncNScriptCVBeardyBaldyScript_SuspendableProcess_00e4f7c0_test.cpp'
         PassPattern = 'AUTO_TINY_00e4f7c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e54440'
-        Module = 'CVtable_012e5f10'
-        Source = '00/e5/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e54440.cpp'
-        TestSource = '00/e5/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e54440_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_BookCollectingScript>'
+        Source = '00/e5/CSpawnedFuncNScriptCVBookCollectingScript_SuspendableProcess_00e54440.cpp'
+        TestSource = '00/e5/CSpawnedFuncNScriptCVBookCollectingScript_SuspendableProcess_00e54440_test.cpp'
         PassPattern = 'AUTO_TINY_00e54440_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e57cf0'
-        Module = 'CVtable_012e65f4'
-        Source = '00/e5/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e57cf0.cpp'
-        TestSource = '00/e5/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e57cf0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_BeggarAndChildScript>'
+        Source = '00/e5/CSpawnedFuncNScriptCVBeggarAndChildScript_SuspendableProcess_00e57cf0.cpp'
+        TestSource = '00/e5/CSpawnedFuncNScriptCVBeggarAndChildScript_SuspendableProcess_00e57cf0_test.cpp'
         PassPattern = 'AUTO_TINY_00e57cf0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e5d2d0'
-        Module = 'CVtable_012e6e60'
-        Source = '00/e5/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e5d2d0.cpp'
-        TestSource = '00/e5/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e5d2d0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_BodyGuardScript>'
+        Source = '00/e5/CSpawnedFuncNScriptCVBodyGuardScript_SuspendableProcess_00e5d2d0.cpp'
+        TestSource = '00/e5/CSpawnedFuncNScriptCVBodyGuardScript_SuspendableProcess_00e5d2d0_test.cpp'
         PassPattern = 'AUTO_TINY_00e5d2d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e62970'
-        Module = 'CVtable_012e732c'
-        Source = '00/e6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e62970.cpp'
-        TestSource = '00/e6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e62970_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_ChickenKickingScript>'
+        Source = '00/e6/CSpawnedFuncNScriptCVChickenKickingScript_SuspendableProcess_00e62970.cpp'
+        TestSource = '00/e6/CSpawnedFuncNScriptCVChickenKickingScript_SuspendableProcess_00e62970_test.cpp'
         PassPattern = 'AUTO_TINY_00e62970_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e690c0'
-        Module = 'CVtable_012e8094'
-        Source = '00/e6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e690c0.cpp'
-        TestSource = '00/e6/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e690c0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_ChapelOfEvilScript>'
+        Source = '00/e6/CSpawnedFuncNScriptCVChapelOfEvilScript_SuspendableProcess_00e690c0.cpp'
+        TestSource = '00/e6/CSpawnedFuncNScriptCVChapelOfEvilScript_SuspendableProcess_00e690c0_test.cpp'
         PassPattern = 'AUTO_TINY_00e690c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e75760'
-        Module = 'CVtable_012e96e0'
-        Source = '00/e7/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e75760.cpp'
-        TestSource = '00/e7/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e75760_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_ExposeMayorScript>'
+        Source = '00/e7/CSpawnedFuncNScriptCVExposeMayorScript_SuspendableProcess_00e75760.cpp'
+        TestSource = '00/e7/CSpawnedFuncNScriptCVExposeMayorScript_SuspendableProcess_00e75760_test.cpp'
         PassPattern = 'AUTO_TINY_00e75760_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e7e1e0'
-        Module = 'CVtable_012ea48c'
-        Source = '00/e7/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e7e1e0.cpp'
-        TestSource = '00/e7/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e7e1e0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_FishingCompetitionScript>'
+        Source = '00/e7/CSpawnedFuncNScriptCVFishingCompetitionScript_SuspendableProcess_00e7e1e0.cpp'
+        TestSource = '00/e7/CSpawnedFuncNScriptCVFishingCompetitionScript_SuspendableProcess_00e7e1e0_test.cpp'
         PassPattern = 'AUTO_TINY_00e7e1e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e82160'
-        Module = 'CVtable_012eaf28'
-        Source = '00/e8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e82160.cpp'
-        TestSource = '00/e8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e82160_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_FisticuffsClubScript>'
+        Source = '00/e8/CSpawnedFuncNScriptCVFisticuffsClubScript_SuspendableProcess_00e82160.cpp'
+        TestSource = '00/e8/CSpawnedFuncNScriptCVFisticuffsClubScript_SuspendableProcess_00e82160_test.cpp'
         PassPattern = 'AUTO_TINY_00e82160_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e8b930'
-        Module = 'CVtable_012eba50'
-        Source = '00/e8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e8b930.cpp'
-        TestSource = '00/e8/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e8b930_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_GhostGrannyNecklaceScript>'
+        Source = '00/e8/CSpawnedFuncNScriptCVGhostGrannyNecklaceScript_SuspendableProcess_00e8b930.cpp'
+        TestSource = '00/e8/CSpawnedFuncNScriptCVGhostGrannyNecklaceScript_SuspendableProcess_00e8b930_test.cpp'
         PassPattern = 'AUTO_TINY_00e8b930_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e92a40'
-        Module = 'CVtable_012ec9b8'
-        Source = '00/e9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e92a40.cpp'
-        TestSource = '00/e9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e92a40_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_HiddenBootyScript>'
+        Source = '00/e9/CSpawnedFuncNScriptCVHiddenBootyScript_SuspendableProcess_00e92a40.cpp'
+        TestSource = '00/e9/CSpawnedFuncNScriptCVHiddenBootyScript_SuspendableProcess_00e92a40_test.cpp'
         PassPattern = 'AUTO_TINY_00e92a40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e93e30'
-        Module = 'CVtable_012ecba8'
-        Source = '00/e9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e93e30.cpp'
-        TestSource = '00/e9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e93e30_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_HauntedHouseScript>'
+        Source = '00/e9/CSpawnedFuncNScriptCVHauntedHouseScript_SuspendableProcess_00e93e30.cpp'
+        TestSource = '00/e9/CSpawnedFuncNScriptCVHauntedHouseScript_SuspendableProcess_00e93e30_test.cpp'
         PassPattern = 'AUTO_TINY_00e93e30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e98790'
-        Module = 'CVtable_012ed0e8'
-        Source = '00/e9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e98790.cpp'
-        TestSource = '00/e9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e98790_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_HeroDuelScript>'
+        Source = '00/e9/CSpawnedFuncNScriptCVHeroDuelScript_SuspendableProcess_00e98790.cpp'
+        TestSource = '00/e9/CSpawnedFuncNScriptCVHeroDuelScript_SuspendableProcess_00e98790_test.cpp'
         PassPattern = 'AUTO_TINY_00e98790_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e9c4a0'
-        Module = 'CVtable_012ed56c'
-        Source = '00/e9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e9c4a0.cpp'
-        TestSource = '00/e9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e9c4a0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_IntroductionToTrophiesScript>'
+        Source = '00/e9/CSpawnedFuncNScriptCVIntroductionToTrophiesScript_SuspendableProcess_00e9c4a0.cpp'
+        TestSource = '00/e9/CSpawnedFuncNScriptCVIntroductionToTrophiesScript_SuspendableProcess_00e9c4a0_test.cpp'
         PassPattern = 'AUTO_TINY_00e9c4a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e9fca0'
-        Module = 'CVtable_012ed9e8'
-        Source = '00/e9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e9fca0.cpp'
-        TestSource = '00/e9/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e9fca0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_KnotholeGladeGatesScript>'
+        Source = '00/e9/CSpawnedFuncNScriptCVKnotholeGladeGatesScript_SuspendableProcess_00e9fca0.cpp'
+        TestSource = '00/e9/CSpawnedFuncNScriptCVKnotholeGladeGatesScript_SuspendableProcess_00e9fca0_test.cpp'
         PassPattern = 'AUTO_TINY_00e9fca0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ea2e70'
-        Module = 'CVtable_012edcfc'
-        Source = '00/ea/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ea2e70.cpp'
-        TestSource = '00/ea/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ea2e70_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_LostTraderScript>'
+        Source = '00/ea/CSpawnedFuncNScriptCVLostTraderScript_SuspendableProcess_00ea2e70.cpp'
+        TestSource = '00/ea/CSpawnedFuncNScriptCVLostTraderScript_SuspendableProcess_00ea2e70_test.cpp'
         PassPattern = 'AUTO_TINY_00ea2e70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ea77f0'
-        Module = 'CVtable_012ee458'
-        Source = '00/ea/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ea77f0.cpp'
-        TestSource = '00/ea/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ea77f0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_MazeResearchScript>'
+        Source = '00/ea/CSpawnedFuncNScriptCVMazeResearchScript_SuspendableProcess_00ea77f0.cpp'
+        TestSource = '00/ea/CSpawnedFuncNScriptCVMazeResearchScript_SuspendableProcess_00ea77f0_test.cpp'
         PassPattern = 'AUTO_TINY_00ea77f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ea87d0'
-        Module = 'CVtable_012ee648'
-        Source = '00/ea/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ea87d0.cpp'
-        TestSource = '00/ea/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ea87d0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_MurderTwistScript>'
+        Source = '00/ea/CSpawnedFuncNScriptCVMurderTwistScript_SuspendableProcess_00ea87d0.cpp'
+        TestSource = '00/ea/CSpawnedFuncNScriptCVMurderTwistScript_SuspendableProcess_00ea87d0_test.cpp'
         PassPattern = 'AUTO_TINY_00ea87d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eb6d40'
-        Module = 'CVtable_012f0548'
-        Source = '00/eb/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eb6d40.cpp'
-        TestSource = '00/eb/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eb6d40_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_MayorsInvitationScript>'
+        Source = '00/eb/CSpawnedFuncNScriptCVMayorsInvitationScript_SuspendableProcess_00eb6d40.cpp'
+        TestSource = '00/eb/CSpawnedFuncNScriptCVMayorsInvitationScript_SuspendableProcess_00eb6d40_test.cpp'
         PassPattern = 'AUTO_TINY_00eb6d40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ebef70'
-        Module = 'CVtable_012f0f4c'
-        Source = '00/eb/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ebef70.cpp'
-        TestSource = '00/eb/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ebef70_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_ParanoidWhispersScript>'
+        Source = '00/eb/CSpawnedFuncNScriptCVParanoidWhispersScript_SuspendableProcess_00ebef70.cpp'
+        TestSource = '00/eb/CSpawnedFuncNScriptCVParanoidWhispersScript_SuspendableProcess_00ebef70_test.cpp'
         PassPattern = 'AUTO_TINY_00ebef70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ec18e0'
-        Module = 'CVtable_012f12ec'
-        Source = '00/ec/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ec18e0.cpp'
-        TestSource = '00/ec/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ec18e0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_RandomPopulationSimScript>'
+        Source = '00/ec/CSpawnedFuncNScriptCVRandomPopulationSimScript_SuspendableProcess_00ec18e0.cpp'
+        TestSource = '00/ec/CSpawnedFuncNScriptCVRandomPopulationSimScript_SuspendableProcess_00ec18e0_test.cpp'
         PassPattern = 'AUTO_TINY_00ec18e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ec3d30'
-        Module = 'CVtable_012f15d8'
-        Source = '00/ec/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ec3d30.cpp'
-        TestSource = '00/ec/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ec3d30_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_RockTrollFirstEncounterScript>'
+        Source = '00/ec/CSpawnedFuncNScriptCVRockTrollFirstEncounterScript_SuspendableProcess_00ec3d30.cpp'
+        TestSource = '00/ec/CSpawnedFuncNScriptCVRockTrollFirstEncounterScript_SuspendableProcess_00ec3d30_test.cpp'
         PassPattern = 'AUTO_TINY_00ec3d30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ed0fe0'
-        Module = 'CVtable_012f2b20'
-        Source = '00/ed/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ed0fe0.cpp'
-        TestSource = '00/ed/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ed0fe0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_SingingStonesScript>'
+        Source = '00/ed/CSpawnedFuncNScriptCVSingingStonesScript_SuspendableProcess_00ed0fe0.cpp'
+        TestSource = '00/ed/CSpawnedFuncNScriptCVSingingStonesScript_SuspendableProcess_00ed0fe0_test.cpp'
         PassPattern = 'AUTO_TINY_00ed0fe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ed3b20'
-        Module = 'CVtable_012f2e80'
-        Source = '00/ed/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ed3b20.cpp'
-        TestSource = '00/ed/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ed3b20_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_StatueMasterScript>'
+        Source = '00/ed/CSpawnedFuncNScriptCVStatueMasterScript_SuspendableProcess_00ed3b20.cpp'
+        TestSource = '00/ed/CSpawnedFuncNScriptCVStatueMasterScript_SuspendableProcess_00ed3b20_test.cpp'
         PassPattern = 'AUTO_TINY_00ed3b20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ed4c20'
-        Module = 'CVtable_012f3030'
-        Source = '00/ed/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ed4c20.cpp'
-        TestSource = '00/ed/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ed4c20_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_SwordInTheStoneScript>'
+        Source = '00/ed/CSpawnedFuncNScriptCVSwordInTheStoneScript_SuspendableProcess_00ed4c20.cpp'
+        TestSource = '00/ed/CSpawnedFuncNScriptCVSwordInTheStoneScript_SuspendableProcess_00ed4c20_test.cpp'
         PassPattern = 'AUTO_TINY_00ed4c20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ed7820'
-        Module = 'CVtable_012f343c'
-        Source = '00/ed/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ed7820.cpp'
-        TestSource = '00/ed/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ed7820_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_TalentlessBardScript>'
+        Source = '00/ed/CSpawnedFuncNScriptCVTalentlessBardScript_SuspendableProcess_00ed7820.cpp'
+        TestSource = '00/ed/CSpawnedFuncNScriptCVTalentlessBardScript_SuspendableProcess_00ed7820_test.cpp'
         PassPattern = 'AUTO_TINY_00ed7820_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00edaf00'
-        Module = 'CVtable_012f3c7c'
-        Source = '00/ed/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00edaf00.cpp'
-        TestSource = '00/ed/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00edaf00_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_TempleOfLightScript>'
+        Source = '00/ed/CSpawnedFuncNScriptCVTempleOfLightScript_SuspendableProcess_00edaf00.cpp'
+        TestSource = '00/ed/CSpawnedFuncNScriptCVTempleOfLightScript_SuspendableProcess_00edaf00_test.cpp'
         PassPattern = 'AUTO_TINY_00edaf00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ee47a0'
-        Module = 'CVtable_012f50ac'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ee47a0.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ee47a0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_TourGuideScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCVTourGuideScript_SuspendableProcess_00ee47a0.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCVTourGuideScript_SuspendableProcess_00ee47a0_test.cpp'
         PassPattern = 'AUTO_TINY_00ee47a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ee6e80'
-        Module = 'CVtable_012f5234'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ee6e80.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ee6e80_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_TrophyDealerScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCVTrophyDealerScript_SuspendableProcess_00ee6e80.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCVTrophyDealerScript_SuspendableProcess_00ee6e80_test.cpp'
         PassPattern = 'AUTO_TINY_00ee6e80_TEST PASS'
     }
     [pscustomobject]@{
@@ -28434,226 +28434,226 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee8f40'
-        Module = 'CVtable_012f5484'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ee8f40.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ee8f40_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CGlobal_WatchForHeroDeathScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCGlobalWatchForHeroDeathScript_SuspendableProcess_00ee8f40.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCGlobalWatchForHeroDeathScript_SuspendableProcess_00ee8f40_test.cpp'
         PassPattern = 'AUTO_TINY_00ee8f40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ee91b0'
-        Module = 'CVtable_012f54c8'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ee91b0.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ee91b0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CGlobal_DebugCycleThroughSpeechScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCGlobalDebugCycleThroughSpeechScript_SuspendableProcess_00ee91b0.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCGlobalDebugCycleThroughSpeechScript_SuspendableProcess_00ee91b0_test.cpp'
         PassPattern = 'AUTO_TINY_00ee91b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ee9560'
-        Module = 'CVtable_012f54f8'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ee9560.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ee9560_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CExpression_FishScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCExpressionFishScript_SuspendableProcess_00ee9560.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCExpressionFishScript_SuspendableProcess_00ee9560_test.cpp'
         PassPattern = 'AUTO_TINY_00ee9560_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eea010'
-        Module = 'CVtable_012f55cc'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eea010.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eea010_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CExpression_FollowScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCExpressionFollowScript_SuspendableProcess_00eea010.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCExpressionFollowScript_SuspendableProcess_00eea010_test.cpp'
         PassPattern = 'AUTO_TINY_00eea010_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eea710'
-        Module = 'CVtable_012f560c'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eea710.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eea710_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CExpression_WaitScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCExpressionWaitScript_SuspendableProcess_00eea710.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCExpressionWaitScript_SuspendableProcess_00eea710_test.cpp'
         PassPattern = 'AUTO_TINY_00eea710_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eeae40'
-        Module = 'CVtable_012f5684'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eeae40.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eeae40_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CExpression_DigScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCExpressionDigScript_SuspendableProcess_00eeae40.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCExpressionDigScript_SuspendableProcess_00eeae40_test.cpp'
         PassPattern = 'AUTO_TINY_00eeae40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eeb700'
-        Module = 'CVtable_012f56b4'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eeb700.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eeb700_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CExpression_PickpocketScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCExpressionPickpocketScript_SuspendableProcess_00eeb700.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCExpressionPickpocketScript_SuspendableProcess_00eeb700_test.cpp'
         PassPattern = 'AUTO_TINY_00eeb700_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eebd40'
-        Module = 'CVtable_012f56e4'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eebd40.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eebd40_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CExpression_PicklockScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCExpressionPicklockScript_SuspendableProcess_00eebd40.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCExpressionPicklockScript_SuspendableProcess_00eebd40_test.cpp'
         PassPattern = 'AUTO_TINY_00eebd40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eec360'
-        Module = 'CVtable_012f5714'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eec360.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eec360_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CExpression_StealScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCExpressionStealScript_SuspendableProcess_00eec360.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCExpressionStealScript_SuspendableProcess_00eec360_test.cpp'
         PassPattern = 'AUTO_TINY_00eec360_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eec720'
-        Module = 'CVtable_012f5744'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eec720.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eec720_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CGlobal_GiveHeroItemsFromRewardChestScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCGlobalGiveHeroItemsFromRewardChestScript_SuspendableProcess_00eec720.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCGlobalGiveHeroItemsFromRewardChestScript_SuspendableProcess_00eec720_test.cpp'
         PassPattern = 'AUTO_TINY_00eec720_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eec860'
-        Module = 'CVtable_012f5774'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eec860.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eec860_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CGlobal_OpenChestScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCGlobalOpenChestScript_SuspendableProcess_00eec860.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCGlobalOpenChestScript_SuspendableProcess_00eec860_test.cpp'
         PassPattern = 'AUTO_TINY_00eec860_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eed000'
-        Module = 'CVtable_012f57b4'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eed000.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eed000_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CGlobal_ToggleTimeDisplayScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCGlobalToggleTimeDisplayScript_SuspendableProcess_00eed000.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCGlobalToggleTimeDisplayScript_SuspendableProcess_00eed000_test.cpp'
         PassPattern = 'AUTO_TINY_00eed000_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eed1f0'
-        Module = 'CVtable_012f57f8'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eed1f0.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eed1f0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CalextestScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCalextestScript_SuspendableProcess_00eed1f0.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCalextestScript_SuspendableProcess_00eed1f0_test.cpp'
         PassPattern = 'AUTO_TINY_00eed1f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eee7f0'
-        Module = 'CVtable_012f5968'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eee7f0.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eee7f0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CEmptyScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCEmptyScript_SuspendableProcess_00eee7f0.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCEmptyScript_SuspendableProcess_00eee7f0_test.cpp'
         PassPattern = 'AUTO_TINY_00eee7f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eeea60'
-        Module = 'CVtable_012f59ac'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eeea60.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eeea60_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CTestTheInventoryScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCTestTheInventoryScript_SuspendableProcess_00eeea60.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCTestTheInventoryScript_SuspendableProcess_00eeea60_test.cpp'
         PassPattern = 'AUTO_TINY_00eeea60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eeef60'
-        Module = 'CVtable_012f5a8c'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eeef60.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eeef60_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CTestQuestCard1Script>'
+        Source = '00/ee/CSpawnedFuncNScriptCTestQuestCard1Script_SuspendableProcess_00eeef60.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCTestQuestCard1Script_SuspendableProcess_00eeef60_test.cpp'
         PassPattern = 'AUTO_TINY_00eeef60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eef6a0'
-        Module = 'CVtable_012f5c24'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eef6a0.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eef6a0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CTestQuestCard2Script>'
+        Source = '00/ee/CSpawnedFuncNScriptCTestQuestCard2Script_SuspendableProcess_00eef6a0.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCTestQuestCard2Script_SuspendableProcess_00eef6a0_test.cpp'
         PassPattern = 'AUTO_TINY_00eef6a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eef830'
-        Module = 'CVtable_012f5c70'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eef830.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eef830_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CTestQuestCard3Script>'
+        Source = '00/ee/CSpawnedFuncNScriptCTestQuestCard3Script_SuspendableProcess_00eef830.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCTestQuestCard3Script_SuspendableProcess_00eef830_test.cpp'
         PassPattern = 'AUTO_TINY_00eef830_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eef990'
-        Module = 'CVtable_012f5ca0'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eef990.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eef990_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CTestNewNav1Script>'
+        Source = '00/ee/CSpawnedFuncNScriptCTestNewNav1Script_SuspendableProcess_00eef990.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCTestNewNav1Script_SuspendableProcess_00eef990_test.cpp'
         PassPattern = 'AUTO_TINY_00eef990_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eefaf0'
-        Module = 'CVtable_012f5cd0'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eefaf0.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eefaf0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CTestNewNav2Script>'
+        Source = '00/ee/CSpawnedFuncNScriptCTestNewNav2Script_SuspendableProcess_00eefaf0.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCTestNewNav2Script_SuspendableProcess_00eefaf0_test.cpp'
         PassPattern = 'AUTO_TINY_00eefaf0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eefc50'
-        Module = 'CVtable_012f5d00'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eefc50.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eefc50_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CTestNewNav3Script>'
+        Source = '00/ee/CSpawnedFuncNScriptCTestNewNav3Script_SuspendableProcess_00eefc50.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCTestNewNav3Script_SuspendableProcess_00eefc50_test.cpp'
         PassPattern = 'AUTO_TINY_00eefc50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eefdb0'
-        Module = 'CVtable_012f5d30'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eefdb0.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eefdb0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CTestNewNav4Script>'
+        Source = '00/ee/CSpawnedFuncNScriptCTestNewNav4Script_SuspendableProcess_00eefdb0.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCTestNewNav4Script_SuspendableProcess_00eefdb0_test.cpp'
         PassPattern = 'AUTO_TINY_00eefdb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eeff10'
-        Module = 'CVtable_012f5d60'
-        Source = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eeff10.cpp'
-        TestSource = '00/ee/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eeff10_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CTestNewNav5Script>'
+        Source = '00/ee/CSpawnedFuncNScriptCTestNewNav5Script_SuspendableProcess_00eeff10.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCTestNewNav5Script_SuspendableProcess_00eeff10_test.cpp'
         PassPattern = 'AUTO_TINY_00eeff10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ef0060'
-        Module = 'CVtable_012f5d90'
-        Source = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ef0060.cpp'
-        TestSource = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ef0060_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CPersonalScript_EmptyScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCPersonalScriptEmptyScript_SuspendableProcess_00ef0060.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCPersonalScriptEmptyScript_SuspendableProcess_00ef0060_test.cpp'
         PassPattern = 'AUTO_TINY_00ef0060_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ef9250'
-        Module = 'CVtable_012f68e4'
-        Source = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ef9250.cpp'
-        TestSource = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ef9250_test.cpp'
+        Module = 'CSpawnedFunc<NScript::Cjoss_test_scriptsScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCjosstestscriptsScript_SuspendableProcess_00ef9250.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCjosstestscriptsScript_SuspendableProcess_00ef9250_test.cpp'
         PassPattern = 'AUTO_TINY_00ef9250_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efa4e0'
-        Module = 'CVtable_012f69fc'
-        Source = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00efa4e0.cpp'
-        TestSource = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00efa4e0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::Cbandit_level_cutsceneScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCbanditlevelcutsceneScript_SuspendableProcess_00efa4e0.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCbanditlevelcutsceneScript_SuspendableProcess_00efa4e0_test.cpp'
         PassPattern = 'AUTO_TINY_00efa4e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efb080'
-        Module = 'CVtable_012f6abc'
-        Source = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00efb080.cpp'
-        TestSource = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00efb080_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CDanyalTestScriptsScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCDanyalTestScriptsScript_SuspendableProcess_00efb080.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCDanyalTestScriptsScript_SuspendableProcess_00efb080_test.cpp'
         PassPattern = 'AUTO_TINY_00efb080_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efc250'
-        Module = 'CVtable_012f6c6c'
-        Source = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00efc250.cpp'
-        TestSource = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00efc250_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CHeroTurningDebuggerScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCHeroTurningDebuggerScript_SuspendableProcess_00efc250.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCHeroTurningDebuggerScript_SuspendableProcess_00efc250_test.cpp'
         PassPattern = 'AUTO_TINY_00efc250_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efc870'
-        Module = 'CVtable_012f6cd8'
-        Source = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00efc870.cpp'
-        TestSource = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00efc870_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CPersonalScript_AardvarkScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCPersonalScriptAardvarkScript_SuspendableProcess_00efc870.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCPersonalScriptAardvarkScript_SuspendableProcess_00efc870_test.cpp'
         PassPattern = 'AUTO_TINY_00efc870_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eff890'
-        Module = 'CVtable_012f7068'
-        Source = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eff890.cpp'
-        TestSource = '00/ef/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eff890_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CShowTargetedThingHealthScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCShowTargetedThingHealthScript_SuspendableProcess_00eff890.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCShowTargetedThingHealthScript_SuspendableProcess_00eff890_test.cpp'
         PassPattern = 'AUTO_TINY_00eff890_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00f01450'
-        Module = 'CVtable_012f72e4'
-        Source = '00/f0/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00f01450.cpp'
-        TestSource = '00/f0/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00f01450_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CCS_PlayCutsceneScript>'
+        Source = '00/f0/CSpawnedFuncNScriptCCSPlayCutsceneScript_SuspendableProcess_00f01450.cpp'
+        TestSource = '00/f0/CSpawnedFuncNScriptCCSPlayCutsceneScript_SuspendableProcess_00f01450_test.cpp'
         PassPattern = 'AUTO_TINY_00f01450_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00f01880'
-        Module = 'CVtable_012f7314'
-        Source = '00/f0/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00f01880.cpp'
-        TestSource = '00/f0/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00f01880_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_CinemaTestScript>'
+        Source = '00/f0/CSpawnedFuncNScriptCQCinemaTestScript_SuspendableProcess_00f01880.cpp'
+        TestSource = '00/f0/CSpawnedFuncNScriptCQCinemaTestScript_SuspendableProcess_00f01880_test.cpp'
         PassPattern = 'AUTO_TINY_00f01880_TEST PASS'
     }
     [pscustomobject]@{
@@ -40309,16 +40309,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e566d0'
-        Module = 'CSpawnedFunc1'
-        Source = '00/e5/CSpawnedFunc1_SuspendableProcess_00e566d0.cpp'
-        TestSource = '00/e5/CSpawnedFunc1_SuspendableProcess_00e566d0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_BookCollectingScript,long>'
+        Source = '00/e5/CSpawnedFunc1NScriptCVBookCollectingScriptlong_SuspendableProcess_00e566d0.cpp'
+        TestSource = '00/e5/CSpawnedFunc1NScriptCVBookCollectingScriptlong_SuspendableProcess_00e566d0_test.cpp'
         PassPattern = 'SUSPEND66D0_OK'
     }
     [pscustomobject]@{
         Address = '00e76c80'
-        Module = 'CSpawnedFunc1'
-        Source = '00/e7/CSpawnedFunc1_SuspendableProcess_00e76c80.cpp'
-        TestSource = '00/e7/CSpawnedFunc1_SuspendableProcess_00e76c80_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_ExposeMayorScript,long>'
+        Source = '00/e7/CSpawnedFunc1NScriptCVExposeMayorScriptlong_SuspendableProcess_00e76c80.cpp'
+        TestSource = '00/e7/CSpawnedFunc1NScriptCVExposeMayorScriptlong_SuspendableProcess_00e76c80_test.cpp'
         PassPattern = 'SUSPEND6C80_OK'
     }
     [pscustomobject]@{
@@ -42159,9 +42159,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cdd430'
-        Module = 'CVtable_012c2f78'
-        Source = '00/cd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cdd430.cpp'
-        TestSource = '00/cd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cdd430_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_SunnyvaleMasterScript>'
+        Source = '00/cd/CSpawnedFuncNScriptCQSunnyvaleMasterScript_SuspendableProcess_00cdd430.cpp'
+        TestSource = '00/cd/CSpawnedFuncNScriptCQSunnyvaleMasterScript_SuspendableProcess_00cdd430_test.cpp'
         PassPattern = 'OK_00cdd430'
     }
     [pscustomobject]@{
@@ -43219,9 +43219,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aeaab0'
-        Module = '_global'
-        Source = '00/ae/global_GFGetPreMainMemoryUsed_00aeaab0.cpp'
-        TestSource = '00/ae/global_GFGetPreMainMemoryUsed_00aeaab0_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_GetMeshBank_00aeaab0.cpp'
+        TestSource = '00/ae/NParticleEngine_GetMeshBank_00aeaab0_test.cpp'
         PassPattern = '00aeaab0_TEST PASS'
     }
     [pscustomobject]@{
@@ -43233,16 +43233,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aeaa00'
-        Module = '_global'
-        Source = '00/ae/global_GetMaxDrawDistance_00aeaa00.cpp'
-        TestSource = '00/ae/global_GetMaxDrawDistance_00aeaa00_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_GetOneOverTickRate_00aeaa00.cpp'
+        TestSource = '00/ae/NParticleEngine_GetOneOverTickRate_00aeaa00_test.cpp'
         PassPattern = '00aeaa00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aeaa60'
-        Module = '_global'
-        Source = '00/ae/global_GetMaxDrawDistance_00aeaa60.cpp'
-        TestSource = '00/ae/global_GetMaxDrawDistance_00aeaa60_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_GetMaxSpawnDistance_00aeaa60.cpp'
+        TestSource = '00/ae/NParticleEngine_GetMaxSpawnDistance_00aeaa60_test.cpp'
         PassPattern = '00aeaa60_TEST PASS'
     }
     [pscustomobject]@{
@@ -67306,156 +67306,156 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cde410'
-        Module = 'CVtable_012c30e0'
-        Source = '00/cd/SuspendableProcess_SuspendableProcess_00cde410.cpp'
-        TestSource = '00/cd/SuspendableProcess_SuspendableProcess_00cde410_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CPersonalScript_GlobalThingsScript>'
+        Source = '00/cd/CSpawnedFuncNScriptCPersonalScriptGlobalThingsScript_SuspendableProcess_00cde410.cpp'
+        TestSource = '00/cd/CSpawnedFuncNScriptCPersonalScriptGlobalThingsScript_SuspendableProcess_00cde410_test.cpp'
         PassPattern = 'AUTO_TINY_00cde410_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d507f0'
-        Module = 'CVtable_012cf6a0'
-        Source = '00/d5/SuspendableProcess_SuspendableProcess_00d507f0.cpp'
-        TestSource = '00/d5/SuspendableProcess_SuspendableProcess_00d507f0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_GuildTrainingDepartureScript>'
+        Source = '00/d5/CSpawnedFuncNScriptCQGuildTrainingDepartureScript_SuspendableProcess_00d507f0.cpp'
+        TestSource = '00/d5/CSpawnedFuncNScriptCQGuildTrainingDepartureScript_SuspendableProcess_00d507f0_test.cpp'
         PassPattern = 'AUTO_TINY_00d507f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d5ab30'
-        Module = 'CVtable_012d09b4'
-        Source = '00/d5/SuspendableProcess_SuspendableProcess_00d5ab30.cpp'
-        TestSource = '00/d5/SuspendableProcess_SuspendableProcess_00d5ab30_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_GuildTrainingSkillScript>'
+        Source = '00/d5/CSpawnedFuncNScriptCQGuildTrainingSkillScript_SuspendableProcess_00d5ab30.cpp'
+        TestSource = '00/d5/CSpawnedFuncNScriptCQGuildTrainingSkillScript_SuspendableProcess_00d5ab30_test.cpp'
         PassPattern = 'AUTO_TINY_00d5ab30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d5dd30'
-        Module = 'CVtable_012d104c'
-        Source = '00/d5/SuspendableProcess_SuspendableProcess_00d5dd30.cpp'
-        TestSource = '00/d5/SuspendableProcess_SuspendableProcess_00d5dd30_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CQ_GuildTrainingWillScript>'
+        Source = '00/d5/CSpawnedFuncNScriptCQGuildTrainingWillScript_SuspendableProcess_00d5dd30.cpp'
+        TestSource = '00/d5/CSpawnedFuncNScriptCQGuildTrainingWillScript_SuspendableProcess_00d5dd30_test.cpp'
         PassPattern = 'AUTO_TINY_00d5dd30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e6e370'
-        Module = 'CVtable_012e8b24'
-        Source = '00/e6/SuspendableProcess_SuspendableProcess_00e6e370.cpp'
-        TestSource = '00/e6/SuspendableProcess_SuspendableProcess_00e6e370_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_DemonDoorsScript>'
+        Source = '00/e6/CSpawnedFuncNScriptCVDemonDoorsScript_SuspendableProcess_00e6e370.cpp'
+        TestSource = '00/e6/CSpawnedFuncNScriptCVDemonDoorsScript_SuspendableProcess_00e6e370_test.cpp'
         PassPattern = 'AUTO_TINY_00e6e370_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e7b4d0'
-        Module = 'CVtable_012ea038'
-        Source = '00/e7/SuspendableProcess_SuspendableProcess_00e7b4d0.cpp'
-        TestSource = '00/e7/SuspendableProcess_SuspendableProcess_00e7b4d0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_FishermanScript>'
+        Source = '00/e7/CSpawnedFuncNScriptCVFishermanScript_SuspendableProcess_00e7b4d0.cpp'
+        TestSource = '00/e7/CSpawnedFuncNScriptCVFishermanScript_SuspendableProcess_00e7b4d0_test.cpp'
         PassPattern = 'AUTO_TINY_00e7b4d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e90820'
-        Module = 'CVtable_012ec14c'
-        Source = '00/e9/SuspendableProcess_SuspendableProcess_00e90820.cpp'
-        TestSource = '00/e9/SuspendableProcess_SuspendableProcess_00e90820_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_GuildMasterScript>'
+        Source = '00/e9/CSpawnedFuncNScriptCVGuildMasterScript_SuspendableProcess_00e90820.cpp'
+        TestSource = '00/e9/CSpawnedFuncNScriptCVGuildMasterScript_SuspendableProcess_00e90820_test.cpp'
         PassPattern = 'AUTO_TINY_00e90820_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e96f00'
-        Module = 'CVtable_012ece90'
-        Source = '00/e9/SuspendableProcess_SuspendableProcess_00e96f00.cpp'
-        TestSource = '00/e9/SuspendableProcess_SuspendableProcess_00e96f00_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_HeroDollsScript>'
+        Source = '00/e9/CSpawnedFuncNScriptCVHeroDollsScript_SuspendableProcess_00e96f00.cpp'
+        TestSource = '00/e9/CSpawnedFuncNScriptCVHeroDollsScript_SuspendableProcess_00e96f00_test.cpp'
         PassPattern = 'AUTO_TINY_00e96f00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eaea10'
-        Module = 'CVtable_012ef98c'
-        Source = '00/ea/SuspendableProcess_SuspendableProcess_00eaea10.cpp'
-        TestSource = '00/ea/SuspendableProcess_SuspendableProcess_00eaea10_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_MurderTwistFinalScript>'
+        Source = '00/ea/CSpawnedFuncNScriptCVMurderTwistFinalScript_SuspendableProcess_00eaea10.cpp'
+        TestSource = '00/ea/CSpawnedFuncNScriptCVMurderTwistFinalScript_SuspendableProcess_00eaea10_test.cpp'
         PassPattern = 'AUTO_TINY_00eaea10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ebcd60'
-        Module = 'CVtable_012f0c98'
-        Source = '00/eb/SuspendableProcess_SuspendableProcess_00ebcd60.cpp'
-        TestSource = '00/eb/SuspendableProcess_SuspendableProcess_00ebcd60_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_OracleScript>'
+        Source = '00/eb/CSpawnedFuncNScriptCVOracleScript_SuspendableProcess_00ebcd60.cpp'
+        TestSource = '00/eb/CSpawnedFuncNScriptCVOracleScript_SuspendableProcess_00ebcd60_test.cpp'
         PassPattern = 'AUTO_TINY_00ebcd60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ec12d0'
-        Module = 'CVtable_012f1244'
-        Source = '00/ec/SuspendableProcess_SuspendableProcess_00ec12d0.cpp'
-        TestSource = '00/ec/SuspendableProcess_SuspendableProcess_00ec12d0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_PicnicAreaAfterWaspBossScript>'
+        Source = '00/ec/CSpawnedFuncNScriptCVPicnicAreaAfterWaspBossScript_SuspendableProcess_00ec12d0.cpp'
+        TestSource = '00/ec/CSpawnedFuncNScriptCVPicnicAreaAfterWaspBossScript_SuspendableProcess_00ec12d0_test.cpp'
         PassPattern = 'AUTO_TINY_00ec12d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ec54d0'
-        Module = 'CVtable_012f17f0'
-        Source = '00/ec/SuspendableProcess_SuspendableProcess_00ec54d0.cpp'
-        TestSource = '00/ec/SuspendableProcess_SuspendableProcess_00ec54d0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_SickChildScript>'
+        Source = '00/ec/CSpawnedFuncNScriptCVSickChildScript_SuspendableProcess_00ec54d0.cpp'
+        TestSource = '00/ec/CSpawnedFuncNScriptCVSickChildScript_SuspendableProcess_00ec54d0_test.cpp'
         PassPattern = 'AUTO_TINY_00ec54d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eded00'
-        Module = 'CVtable_012f4090'
-        Source = '00/ed/SuspendableProcess_SuspendableProcess_00eded00.cpp'
-        TestSource = '00/ed/SuspendableProcess_SuspendableProcess_00eded00_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CV_TravellingHeroesScript>'
+        Source = '00/ed/CSpawnedFuncNScriptCVTravellingHeroesScript_SuspendableProcess_00eded00.cpp'
+        TestSource = '00/ed/CSpawnedFuncNScriptCVTravellingHeroesScript_SuspendableProcess_00eded00_test.cpp'
         PassPattern = 'AUTO_TINY_00eded00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eed350'
-        Module = 'CVtable_012f5828'
-        Source = '00/ee/SuspendableProcess_SuspendableProcess_00eed350.cpp'
-        TestSource = '00/ee/SuspendableProcess_SuspendableProcess_00eed350_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CPersonalScript_alextestScript>'
+        Source = '00/ee/CSpawnedFuncNScriptCPersonalScriptalextestScript_SuspendableProcess_00eed350.cpp'
+        TestSource = '00/ee/CSpawnedFuncNScriptCPersonalScriptalextestScript_SuspendableProcess_00eed350_test.cpp'
         PassPattern = 'AUTO_TINY_00eed350_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efa000'
-        Module = 'CVtable_012f6980'
-        Source = '00/ef/SuspendableProcess_SuspendableProcess_00efa000.cpp'
-        TestSource = '00/ef/SuspendableProcess_SuspendableProcess_00efa000_test.cpp'
+        Module = 'CSpawnedFunc<NScript::Cguy_scriptScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCguyscriptScript_SuspendableProcess_00efa000.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCguyscriptScript_SuspendableProcess_00efa000_test.cpp'
         PassPattern = 'AUTO_TINY_00efa000_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efb1d0'
-        Module = 'CVtable_012f6aec'
-        Source = '00/ef/SuspendableProcess_SuspendableProcess_00efb1d0.cpp'
-        TestSource = '00/ef/SuspendableProcess_SuspendableProcess_00efb1d0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CProximityPodiumTestScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCProximityPodiumTestScript_SuspendableProcess_00efb1d0.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCProximityPodiumTestScript_SuspendableProcess_00efb1d0_test.cpp'
         PassPattern = 'AUTO_TINY_00efb1d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efb730'
-        Module = 'CVtable_012f6b6c'
-        Source = '00/ef/SuspendableProcess_SuspendableProcess_00efb730.cpp'
-        TestSource = '00/ef/SuspendableProcess_SuspendableProcess_00efb730_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CHitSwitchTestScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCHitSwitchTestScript_SuspendableProcess_00efb730.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCHitSwitchTestScript_SuspendableProcess_00efb730_test.cpp'
         PassPattern = 'AUTO_TINY_00efb730_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efbc90'
-        Module = 'CVtable_012f6be8'
-        Source = '00/ef/SuspendableProcess_SuspendableProcess_00efbc90.cpp'
-        TestSource = '00/ef/SuspendableProcess_SuspendableProcess_00efbc90_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CGuildSealTriggerTestScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCGuildSealTriggerTestScript_SuspendableProcess_00efbc90.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCGuildSealTriggerTestScript_SuspendableProcess_00efbc90_test.cpp'
         PassPattern = 'AUTO_TINY_00efbc90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efc9f0'
-        Module = 'CVtable_012f6d14'
-        Source = '00/ef/SuspendableProcess_SuspendableProcess_00efc9f0.cpp'
-        TestSource = '00/ef/SuspendableProcess_SuspendableProcess_00efc9f0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CMarkTestScriptsScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCMarkTestScriptsScript_SuspendableProcess_00efc9f0.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCMarkTestScriptsScript_SuspendableProcess_00efc9f0_test.cpp'
         PassPattern = 'AUTO_TINY_00efc9f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efe4a0'
-        Module = 'CVtable_012f6ed4'
-        Source = '00/ef/SuspendableProcess_SuspendableProcess_00efe4a0.cpp'
-        TestSource = '00/ef/SuspendableProcess_SuspendableProcess_00efe4a0_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CBenTestScriptsScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCBenTestScriptsScript_SuspendableProcess_00efe4a0.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCBenTestScriptsScript_SuspendableProcess_00efe4a0_test.cpp'
         PassPattern = 'AUTO_TINY_00efe4a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eff120'
-        Module = 'CVtable_012f6fa4'
-        Source = '00/ef/SuspendableProcess_SuspendableProcess_00eff120.cpp'
-        TestSource = '00/ef/SuspendableProcess_SuspendableProcess_00eff120_test.cpp'
+        Module = 'CSpawnedFunc<NScript::CTonyTestScriptsScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCTonyTestScriptsScript_SuspendableProcess_00eff120.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCTonyTestScriptsScript_SuspendableProcess_00eff120_test.cpp'
         PassPattern = 'AUTO_TINY_00eff120_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00effe00'
-        Module = 'CVtable_012f70b4'
-        Source = '00/ef/SuspendableProcess_SuspendableProcess_00effe00.cpp'
-        TestSource = '00/ef/SuspendableProcess_SuspendableProcess_00effe00_test.cpp'
+        Module = 'CSpawnedFunc<NScript::COracleMinigameTestScript>'
+        Source = '00/ef/CSpawnedFuncNScriptCOracleMinigameTestScript_SuspendableProcess_00effe00.cpp'
+        TestSource = '00/ef/CSpawnedFuncNScriptCOracleMinigameTestScript_SuspendableProcess_00effe00_test.cpp'
         PassPattern = 'AUTO_TINY_00effe00_TEST PASS'
     }
     [pscustomobject]@{
@@ -69260,9 +69260,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af3db0'
-        Module = 'DoSizeof'
-        Source = '00/af/DoSizeof_DoSizeof_00af3db0.cpp'
-        TestSource = '00/af/DoSizeof_DoSizeof_00af3db0_test.cpp'
+        Module = 'NParticleEngine::CParticleSystem'
+        Source = '00/af/NParticleEngineCParticleSystem_PeekEmitterVelocity_00af3db0.cpp'
+        TestSource = '00/af/NParticleEngineCParticleSystem_PeekEmitterVelocity_00af3db0_test.cpp'
         PassPattern = 'OK_00af3db0'
     }
     [pscustomobject]@{
@@ -76351,9 +76351,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aeaae0'
-        Module = '_global'
-        Source = '00/ae/global_GFGetPreMainMemoryUsed_00aeaae0.cpp'
-        TestSource = '00/ae/global_GFGetPreMainMemoryUsed_00aeaae0_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_GetParticleEmitterDatabase_00aeaae0.cpp'
+        TestSource = '00/ae/NParticleEngine_GetParticleEmitterDatabase_00aeaae0_test.cpp'
         PassPattern = 'PASS_00aeaae0'
     }
     [pscustomobject]@{
@@ -76365,16 +76365,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aeab00'
-        Module = '_global'
-        Source = '00/ae/global_GFGetPreMainMemoryUsed_00aeab00.cpp'
-        TestSource = '00/ae/global_GFGetPreMainMemoryUsed_00aeab00_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_GetPSCManager_00aeab00.cpp'
+        TestSource = '00/ae/NParticleEngine_GetPSCManager_00aeab00_test.cpp'
         PassPattern = 'PASS_00aeab00'
     }
     [pscustomobject]@{
         Address = '00aeab10'
-        Module = '_global'
-        Source = '00/ae/global_GFGetPreMainMemoryUsed_00aeab10.cpp'
-        TestSource = '00/ae/global_GFGetPreMainMemoryUsed_00aeab10_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_GetEnvironmentInteraction_00aeab10.cpp'
+        TestSource = '00/ae/NParticleEngine_GetEnvironmentInteraction_00aeab10_test.cpp'
         PassPattern = 'PASS_00aeab10'
     }
     [pscustomobject]@{
@@ -77198,9 +77198,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00643ff6'
-        Module = '_global'
-        Source = '00/64/CObservable_AddExclusiveObserver_00643ff6.cpp'
-        TestSource = '00/64/CObservable_AddExclusiveObserver_00643ff6_test.cpp'
+        Module = 'NPlayerGui::CCrimeStatBar'
+        Source = '00/64/NPlayerGuiCCrimeStatBar_SetFine_00643ff6.cpp'
+        TestSource = '00/64/NPlayerGuiCCrimeStatBar_SetFine_00643ff6_test.cpp'
         PassPattern = 'PASS_00643ff6'
     }
     [pscustomobject]@{
@@ -109247,9 +109247,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d6ae70'
-        Module = '_gapscan'
-        Source = '00/d6/gapscan_sub00d6ae70_00d6ae70.cpp'
-        TestSource = '00/d6/gapscan_sub00d6ae70_00d6ae70_test.cpp'
+        Module = 'NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard'
+        Source = '00/d6/NScriptCQHangingTreeEvilScriptCHTEAssaultGuard_OnInterrupted_00d6ae70.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScriptCHTEAssaultGuard_OnInterrupted_00d6ae70_test.cpp'
         PassPattern = 'PASS_00d6ae70'
     }
     [pscustomobject]@{
@@ -110535,9 +110535,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dd44b0'
-        Module = '_gapscan'
-        Source = '00/dd/gapscan_sub00dd44b0_00dd44b0.cpp'
-        TestSource = '00/dd/gapscan_sub00dd44b0_00dd44b0_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonGuard_OnInterrupted_00dd44b0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonGuard_OnInterrupted_00dd44b0_test.cpp'
         PassPattern = 'PASS_00dd44b0'
     }
     [pscustomobject]@{
@@ -118284,30 +118284,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aeaa20'
-        Module = '_global'
-        Source = '00/ae/CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa20.cpp'
-        TestSource = '00/ae/CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa20_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_GetFadeOutStartDistance_00aeaa20.cpp'
+        TestSource = '00/ae/NParticleEngine_GetFadeOutStartDistance_00aeaa20_test.cpp'
         PassPattern = 'PASS_00aeaa20'
     }
     [pscustomobject]@{
         Address = '00aeaa30'
-        Module = '_global'
-        Source = '00/ae/CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa30.cpp'
-        TestSource = '00/ae/CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa30_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_GetFadeInEndDistance_00aeaa30.cpp'
+        TestSource = '00/ae/NParticleEngine_GetFadeInEndDistance_00aeaa30_test.cpp'
         PassPattern = 'PASS_00aeaa30'
     }
     [pscustomobject]@{
         Address = '00aeaa40'
-        Module = '_global'
-        Source = '00/ae/CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa40.cpp'
-        TestSource = '00/ae/CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa40_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_GetFadeInStartDistance_00aeaa40.cpp'
+        TestSource = '00/ae/NParticleEngine_GetFadeInStartDistance_00aeaa40_test.cpp'
         PassPattern = 'PASS_00aeaa40'
     }
     [pscustomobject]@{
         Address = '00aeaa50'
-        Module = '_global'
-        Source = '00/ae/global_GetMaxDrawDistance_00aeaa50.cpp'
-        TestSource = '00/ae/global_GetMaxDrawDistance_00aeaa50_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_GetMaxDrawDistance_00aeaa50.cpp'
+        TestSource = '00/ae/NParticleEngine_GetMaxDrawDistance_00aeaa50_test.cpp'
         PassPattern = 'PASS_00aeaa50'
     }
     [pscustomobject]@{
@@ -148436,9 +148436,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d706b0'
-        Module = '_unattributed'
-        Source = '00/d7/unattributed_SetFlag00d706b0_00d706b0.cpp'
-        TestSource = '00/d7/unattributed_SetFlag00d706b0_00d706b0_test.cpp'
+        Module = 'NScript::CQ_HangingTreeGoodScript::CHTG_Guard'
+        Source = '00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_OnInterrupted_00d706b0.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_OnInterrupted_00d706b0_test.cpp'
         PassPattern = '00d706b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -148696,8 +148696,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00655318'
         Module = 'CIntelligentPointer<NParticleEngine::CParticleEmitter>'
-        Source = '00/65/CIntelligentPointer_NParticleEngine_CParticleEmitter_CIntelligentPointer_00655318.cpp'
-        TestSource = '00/65/CIntelligentPointer_NParticleEngine_CParticleEmitter_CIntelligentPointer_00655318_test.cpp'
+        Source = '00/65/CIntelligentPointerNParticleEngineCParticleEmitter_CIntelligentPointer_00655318.cpp'
+        TestSource = '00/65/CIntelligentPointerNParticleEngineCParticleEmitter_CIntelligentPointer_00655318_test.cpp'
         PassPattern = '00655318_TEST PASS'
     }
     [pscustomobject]@{
@@ -148772,9 +148772,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ea0050'
-        Module = '_unattributed'
-        Source = '00/ea/unattributed_sub00ea0050_00ea0050.cpp'
-        TestSource = '00/ea/unattributed_sub00ea0050_00ea0050_test.cpp'
+        Module = 'NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside'
+        Source = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_OnInterrupted_00ea0050.cpp'
+        TestSource = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_OnInterrupted_00ea0050_test.cpp'
         PassPattern = '00ea0050_TEST PASS'
     }
     [pscustomobject]@{
@@ -153665,16 +153665,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e1e0d0'
-        Module = '_unattributed'
-        Source = '00/e1/unattributed_TransferInCTransferableLong009e2590_00e1e0d0.cpp'
-        TestSource = '00/e1/unattributed_TransferInCTransferableLong009e2590_00e1e0d0_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>'
+        Source = '00/e1/CPersistContextTransferableComponentNScriptCQREscortTraderScriptEscortTraderQues_TransferIn_00e1e0d0.cpp'
+        TestSource = '00/e1/CPersistContextTransferableComponentNScriptCQREscortTraderScriptEscortTraderQues_TransferIn_00e1e0d0_test.cpp'
         PassPattern = '00e1e0d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e25930'
-        Module = '_unattributed'
-        Source = '00/e2/unattributed_TransferInCTransferableLong009e2590_00e25930.cpp'
-        TestSource = '00/e2/unattributed_TransferInCTransferableLong009e2590_00e25930_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CQR_EscortTrader_ManagerScript::EscortTraderManagerPhase>'
+        Source = '00/e2/CPersistContextTransferableComponentNScriptCQREscortTraderManagerScriptEscortTra_TransferIn_00e25930.cpp'
+        TestSource = '00/e2/CPersistContextTransferableComponentNScriptCQREscortTraderManagerScriptEscortTra_TransferIn_00e25930_test.cpp'
         PassPattern = '00e25930_TEST PASS'
     }
     [pscustomobject]@{
@@ -153686,16 +153686,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e759b0'
-        Module = '_unattributed'
-        Source = '00/e7/unattributed_TransferInCTransferableLong009e2590_00e759b0.cpp'
-        TestSource = '00/e7/unattributed_TransferInCTransferableLong009e2590_00e759b0_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::STAGE_IN_PATH>'
+        Source = '00/e7/CPersistContextTransferableComponentNScriptCVExposeMayorScriptSTAGEINPATH_TransferIn_00e759b0.cpp'
+        TestSource = '00/e7/CPersistContextTransferableComponentNScriptCVExposeMayorScriptSTAGEINPATH_TransferIn_00e759b0_test.cpp'
         PassPattern = '00e759b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e75b60'
-        Module = '_unattributed'
-        Source = '00/e7/unattributed_TransferInCTransferableLong009e2590_00e75b60.cpp'
-        TestSource = '00/e7/unattributed_TransferInCTransferableLong009e2590_00e75b60_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::PATH_ID>'
+        Source = '00/e7/CPersistContextTransferableComponentNScriptCVExposeMayorScriptPATHID_TransferIn_00e75b60.cpp'
+        TestSource = '00/e7/CPersistContextTransferableComponentNScriptCVExposeMayorScriptPATHID_TransferIn_00e75b60_test.cpp'
         PassPattern = '00e75b60_TEST PASS'
     }
     [pscustomobject]@{
@@ -166150,16 +166150,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e1e0f0'
-        Module = '_unattributed'
-        Source = '00/e1/unattributed_TransferOutCTransferableLong009e2560_00e1e0f0.cpp'
-        TestSource = '00/e1/unattributed_TransferOutCTransferableLong009e2560_00e1e0f0_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>'
+        Source = '00/e1/CPersistContextTransferableComponentNScriptCQREscortTraderScriptEscortTraderQues_TransferOut_00e1e0f0.cpp'
+        TestSource = '00/e1/CPersistContextTransferableComponentNScriptCQREscortTraderScriptEscortTraderQues_TransferOut_00e1e0f0_test.cpp'
         PassPattern = '00e1e0f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e25950'
-        Module = '_unattributed'
-        Source = '00/e2/unattributed_TransferOutCTransferableLong009e2560_00e25950.cpp'
-        TestSource = '00/e2/unattributed_TransferOutCTransferableLong009e2560_00e25950_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CQR_EscortTrader_ManagerScript::EscortTraderManagerPhase>'
+        Source = '00/e2/CPersistContextTransferableComponentNScriptCQREscortTraderManagerScriptEscortTra_TransferOut_00e25950.cpp'
+        TestSource = '00/e2/CPersistContextTransferableComponentNScriptCQREscortTraderManagerScriptEscortTra_TransferOut_00e25950_test.cpp'
         PassPattern = '00e25950_TEST PASS'
     }
     [pscustomobject]@{
@@ -166171,16 +166171,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e759d0'
-        Module = '_unattributed'
-        Source = '00/e7/unattributed_TransferOutCTransferableLong009e2560_00e759d0.cpp'
-        TestSource = '00/e7/unattributed_TransferOutCTransferableLong009e2560_00e759d0_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::STAGE_IN_PATH>'
+        Source = '00/e7/CPersistContextTransferableComponentNScriptCVExposeMayorScriptSTAGEINPATH_TransferOut_00e759d0.cpp'
+        TestSource = '00/e7/CPersistContextTransferableComponentNScriptCVExposeMayorScriptSTAGEINPATH_TransferOut_00e759d0_test.cpp'
         PassPattern = '00e759d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e75b80'
-        Module = '_unattributed'
-        Source = '00/e7/unattributed_TransferOutCTransferableLong009e2560_00e75b80.cpp'
-        TestSource = '00/e7/unattributed_TransferOutCTransferableLong009e2560_00e75b80_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::PATH_ID>'
+        Source = '00/e7/CPersistContextTransferableComponentNScriptCVExposeMayorScriptPATHID_TransferOut_00e75b80.cpp'
+        TestSource = '00/e7/CPersistContextTransferableComponentNScriptCVExposeMayorScriptPATHID_TransferOut_00e75b80_test.cpp'
         PassPattern = '00e75b80_TEST PASS'
     }
     [pscustomobject]@{
@@ -178679,16 +178679,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d16780'
-        Module = '_unattributed'
-        Source = '00/d1/unattributed_FireCDispatcher00d16780_00d16780.cpp'
-        TestSource = '00/d1/unattributed_FireCDispatcher00d16780_00d16780_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_BountyHuntScript,CScriptThing>'
+        Source = '00/d1/CSpawnedFunc1NScriptCQBountyHuntScriptCScriptThing_SuspendableProcess_00d16780.cpp'
+        TestSource = '00/d1/CSpawnedFunc1NScriptCQBountyHuntScriptCScriptThing_SuspendableProcess_00d16780_test.cpp'
         PassPattern = '00d16780_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00d2d530'
-        Module = '_unattributed'
-        Source = '00/d2/unattributed_FireCDispatcher00d2d530_00d2d530.cpp'
-        TestSource = '00/d2/unattributed_FireCDispatcher00d2d530_00d2d530_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_EndGameFocalSitesScript,CScriptThing>'
+        Source = '00/d2/CSpawnedFunc1NScriptCQEndGameFocalSitesScriptCScriptThing_SuspendableProcess_00d2d530.cpp'
+        TestSource = '00/d2/CSpawnedFunc1NScriptCQEndGameFocalSitesScriptCScriptThing_SuspendableProcess_00d2d530_test.cpp'
         PassPattern = '00d2d530_TEST PASS'
     }
     [pscustomobject]@{
@@ -178714,9 +178714,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00da77f0'
-        Module = '_unattributed'
-        Source = '00/da/unattributed_FireCDispatcher00da77f0_00da77f0.cpp'
-        TestSource = '00/da/unattributed_FireCDispatcher00da77f0_00da77f0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_MinionClifftopChaseScript,CScriptThing>'
+        Source = '00/da/CSpawnedFunc1NScriptCQMinionClifftopChaseScriptCScriptThing_SuspendableProcess_00da77f0.cpp'
+        TestSource = '00/da/CSpawnedFunc1NScriptCQMinionClifftopChaseScriptCScriptThing_SuspendableProcess_00da77f0_test.cpp'
         PassPattern = '00da77f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -178735,37 +178735,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e05130'
-        Module = '_unattributed'
-        Source = '00/e0/unattributed_FireCDispatcher00e05130_00e05130.cpp'
-        TestSource = '00/e0/unattributed_FireCDispatcher00e05130_00e05130_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_TraderEscortScript,CScriptThing>'
+        Source = '00/e0/CSpawnedFunc1NScriptCQTraderEscortScriptCScriptThing_SuspendableProcess_00e05130.cpp'
+        TestSource = '00/e0/CSpawnedFunc1NScriptCQTraderEscortScriptCScriptThing_SuspendableProcess_00e05130_test.cpp'
         PassPattern = '00e05130_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e0de50'
-        Module = '_unattributed'
-        Source = '00/e0/unattributed_FireCDispatcher00e0de50_00e0de50.cpp'
-        TestSource = '00/e0/unattributed_FireCDispatcher00e0de50_00e0de50_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_UndeadRisingScript,CScriptThing>'
+        Source = '00/e0/CSpawnedFunc1NScriptCQUndeadRisingScriptCScriptThing_SuspendableProcess_00e0de50.cpp'
+        TestSource = '00/e0/CSpawnedFunc1NScriptCQUndeadRisingScriptCScriptThing_SuspendableProcess_00e0de50_test.cpp'
         PassPattern = '00e0de50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e1f5e0'
-        Module = '_unattributed'
-        Source = '00/e1/unattributed_FireCDispatcher00e1f5e0_00e1f5e0.cpp'
-        TestSource = '00/e1/unattributed_FireCDispatcher00e1f5e0_00e1f5e0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQR_EscortTraderScript,CScriptThing>'
+        Source = '00/e1/CSpawnedFunc1NScriptCQREscortTraderScriptCScriptThing_SuspendableProcess_00e1f5e0.cpp'
+        TestSource = '00/e1/CSpawnedFunc1NScriptCQREscortTraderScriptCScriptThing_SuspendableProcess_00e1f5e0_test.cpp'
         PassPattern = '00e1f5e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e2e8c0'
-        Module = '_unattributed'
-        Source = '00/e2/unattributed_FireCDispatcher00e2e8c0_00e2e8c0.cpp'
-        TestSource = '00/e2/unattributed_FireCDispatcher00e2e8c0_00e2e8c0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_AmbushScamScript,CScriptThing>'
+        Source = '00/e2/CSpawnedFunc1NScriptCVAmbushScamScriptCScriptThing_SuspendableProcess_00e2e8c0.cpp'
+        TestSource = '00/e2/CSpawnedFunc1NScriptCVAmbushScamScriptCScriptThing_SuspendableProcess_00e2e8c0_test.cpp'
         PassPattern = '00e2e8c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e36970'
-        Module = '_unattributed'
-        Source = '00/e3/unattributed_FireCDispatcher00e36970_00e36970.cpp'
-        TestSource = '00/e3/unattributed_FireCDispatcher00e36970_00e36970_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_ArcheryCompetitionScript,CScriptThing>'
+        Source = '00/e3/CSpawnedFunc1NScriptCVArcheryCompetitionScriptCScriptThing_SuspendableProcess_00e36970.cpp'
+        TestSource = '00/e3/CSpawnedFunc1NScriptCVArcheryCompetitionScriptCScriptThing_SuspendableProcess_00e36970_test.cpp'
         PassPattern = '00e36970_TEST PASS'
     }
     [pscustomobject]@{
@@ -178777,37 +178777,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e54060'
-        Module = '_unattributed'
-        Source = '00/e5/unattributed_FireCDispatcher00e54060_00e54060.cpp'
-        TestSource = '00/e5/unattributed_FireCDispatcher00e54060_00e54060_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_BeardyBaldyScript,CScriptThing>'
+        Source = '00/e5/CSpawnedFunc1NScriptCVBeardyBaldyScriptCScriptThing_SuspendableProcess_00e54060.cpp'
+        TestSource = '00/e5/CSpawnedFunc1NScriptCVBeardyBaldyScriptCScriptThing_SuspendableProcess_00e54060_test.cpp'
         PassPattern = '00e54060_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e6b200'
-        Module = '_unattributed'
-        Source = '00/e6/unattributed_FireCDispatcher00e6b200_00e6b200.cpp'
-        TestSource = '00/e6/unattributed_FireCDispatcher00e6b200_00e6b200_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_ChapelOfEvilScript,CScriptThing>'
+        Source = '00/e6/CSpawnedFunc1NScriptCVChapelOfEvilScriptCScriptThing_SuspendableProcess_00e6b200.cpp'
+        TestSource = '00/e6/CSpawnedFunc1NScriptCVChapelOfEvilScriptCScriptThing_SuspendableProcess_00e6b200_test.cpp'
         PassPattern = '00e6b200_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e7c670'
-        Module = '_unattributed'
-        Source = '00/e7/unattributed_FireCDispatcher00e7c670_00e7c670.cpp'
-        TestSource = '00/e7/unattributed_FireCDispatcher00e7c670_00e7c670_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_FishermanScript,CScriptThing>'
+        Source = '00/e7/CSpawnedFunc1NScriptCVFishermanScriptCScriptThing_SuspendableProcess_00e7c670.cpp'
+        TestSource = '00/e7/CSpawnedFunc1NScriptCVFishermanScriptCScriptThing_SuspendableProcess_00e7c670_test.cpp'
         PassPattern = '00e7c670_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e8d0a0'
-        Module = '_unattributed'
-        Source = '00/e8/unattributed_FireCDispatcher00e8d0a0_00e8d0a0.cpp'
-        TestSource = '00/e8/unattributed_FireCDispatcher00e8d0a0_00e8d0a0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_GhostGrannyNecklaceScript,CScriptThing>'
+        Source = '00/e8/CSpawnedFunc1NScriptCVGhostGrannyNecklaceScriptCScriptThing_SuspendableProcess_00e8d0a0.cpp'
+        TestSource = '00/e8/CSpawnedFunc1NScriptCVGhostGrannyNecklaceScriptCScriptThing_SuspendableProcess_00e8d0a0_test.cpp'
         PassPattern = '00e8d0a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e9def0'
-        Module = '_unattributed'
-        Source = '00/e9/unattributed_FireCDispatcher00e9def0_00e9def0.cpp'
-        TestSource = '00/e9/unattributed_FireCDispatcher00e9def0_00e9def0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_IntroductionToTrophiesScript,CScriptThing>'
+        Source = '00/e9/CSpawnedFunc1NScriptCVIntroductionToTrophiesScriptCScriptThing_SuspendableProcess_00e9def0.cpp'
+        TestSource = '00/e9/CSpawnedFunc1NScriptCVIntroductionToTrophiesScriptCScriptThing_SuspendableProcess_00e9def0_test.cpp'
         PassPattern = '00e9def0_TEST PASS'
     }
     [pscustomobject]@{
@@ -178840,9 +178840,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00edce60'
-        Module = '_unattributed'
-        Source = '00/ed/unattributed_FireCDispatcher00edce60_00edce60.cpp'
-        TestSource = '00/ed/unattributed_FireCDispatcher00edce60_00edce60_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_TempleOfLightScript,CScriptThing>'
+        Source = '00/ed/CSpawnedFunc1NScriptCVTempleOfLightScriptCScriptThing_SuspendableProcess_00edce60.cpp'
+        TestSource = '00/ed/CSpawnedFunc1NScriptCVTempleOfLightScriptCScriptThing_SuspendableProcess_00edce60_test.cpp'
         PassPattern = '00edce60_TEST PASS'
     }
     [pscustomobject]@{
@@ -182373,16 +182373,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aeaa80'
-        Module = '_global'
-        Source = '00/ae/global_SetCurrentThingManager_00aeaa80.cpp'
-        TestSource = '00/ae/global_SetCurrentThingManager_00aeaa80_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_SetGraphicBank_00aeaa80.cpp'
+        TestSource = '00/ae/NParticleEngine_SetGraphicBank_00aeaa80_test.cpp'
         PassPattern = '00aeaa80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aeaa90'
-        Module = '_global'
-        Source = '00/ae/global_SetCurrentThingManager_00aeaa90.cpp'
-        TestSource = '00/ae/global_SetCurrentThingManager_00aeaa90_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/ae/NParticleEngine_SetMeshBank_00aeaa90.cpp'
+        TestSource = '00/ae/NParticleEngine_SetMeshBank_00aeaa90_test.cpp'
         PassPattern = '00aeaa90_TEST PASS'
     }
     [pscustomobject]@{
@@ -204994,9 +204994,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef42d0'
-        Module = 'CMeanBandit'
-        Source = '00/ef/CMeanBandit_OnInterrupted_00ef42d0.cpp'
-        TestSource = '00/ef/CMeanBandit_OnInterrupted_00ef42d0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CMeanBandit'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCMeanBandit_OnInterrupted_00ef42d0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCMeanBandit_OnInterrupted_00ef42d0_test.cpp'
         PassPattern = '00ef42d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -207055,9 +207055,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af5330'
-        Module = 'CParticleSystem'
-        Source = '00/af/CParticleSystem_DeleteParticle_00af5330.cpp'
-        TestSource = '00/af/CParticleSystem_DeleteParticle_00af5330_test.cpp'
+        Module = 'NParticleEngine::CParticleSystem'
+        Source = '00/af/NParticleEngineCParticleSystem_DeleteParticle_00af5330.cpp'
+        TestSource = '00/af/NParticleEngineCParticleSystem_DeleteParticle_00af5330_test.cpp'
         PassPattern = '00af5330_TEST PASS'
     }
     [pscustomobject]@{
@@ -219969,9 +219969,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d66e90'
-        Module = 'CV_AmbushScamScript'
-        Source = '00/d6/CVAmbushScamScript_WatchForQuestFinished_00d66e90.cpp'
-        TestSource = '00/d6/CVAmbushScamScript_WatchForQuestFinished_00d66e90_test.cpp'
+        Module = 'NScript::CQ_GuildTrainingWoodsMeleeScript'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsMeleeScript_WatchForLeaving_00d66e90.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsMeleeScript_WatchForLeaving_00d66e90_test.cpp'
         PassPattern = '00d66e90_TEST PASS'
     }
     [pscustomobject]@{
@@ -220382,9 +220382,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef4950'
-        Module = 'CVillager'
-        Source = '00/ef/CVillager_OnInterrupted_00ef4950.cpp'
-        TestSource = '00/ef/CVillager_OnInterrupted_00ef4950_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CVillager'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCVillager_OnInterrupted_00ef4950.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCVillager_OnInterrupted_00ef4950_test.cpp'
         PassPattern = '00ef4950_TEST PASS'
     }
     [pscustomobject]@{
@@ -241972,9 +241972,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aeabe0'
-        Module = 'CParticleEmitterManager'
-        Source = '00/ae/CParticleEmitterManager_CreateDecalEmitter_00aeabe0.cpp'
-        TestSource = '00/ae/CParticleEmitterManager_CreateDecalEmitter_00aeabe0_test.cpp'
+        Module = 'NParticleEngine::CParticleEmitterManager'
+        Source = '00/ae/NParticleEngineCParticleEmitterManager_CreateDecalEmitter_00aeabe0.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterManager_CreateDecalEmitter_00aeabe0_test.cpp'
         PassPattern = '00aeabe0_TEST PASS'
     }
     [pscustomobject]@{
@@ -247774,8 +247774,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00adf610'
         Module = 'CParticleSimulation'
-        Source = '00/ad/CParticleSimulation_InitializeFromTemplate_00adf610.cpp'
-        TestSource = '00/ad/CParticleSimulation_InitializeFromTemplate_00adf610_test.cpp'
+        Source = '00/ad/CParticleSimulation_CopyFrom_00adf610.cpp'
+        TestSource = '00/ad/CParticleSimulation_CopyFrom_00adf610_test.cpp'
         PassPattern = '00adf610_TEST PASS'
     }
     [pscustomobject]@{
@@ -269956,9 +269956,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d773e0'
-        Module = 'CQ_HangingTreeGoodScript'
-        Source = '00/d7/CQHangingTreeGoodScript_MonitorRegionPresence_00d773e0.cpp'
-        TestSource = '00/d7/CQHangingTreeGoodScript_MonitorRegionPresence_00d773e0_test.cpp'
+        Module = 'NScript::CQ_HangingTreeGoodScript'
+        Source = '00/d7/NScriptCQHangingTreeGoodScript_MonitorRegionPresence_00d773e0.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScript_MonitorRegionPresence_00d773e0_test.cpp'
         PassPattern = '00d773e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -273382,15 +273382,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00af9410'
         Module = 'NParticleEngine::CPSCRenderSprite'
-        Source = '00/af/NParticleEngineCPSCRenderSprite_vfunc18_00af9410.cpp'
-        TestSource = '00/af/NParticleEngineCPSCRenderSprite_vfunc18_00af9410_test.cpp'
+        Source = '00/af/NParticleEngineCPSCRenderSprite_DatabaseCopy_00af9410.cpp'
+        TestSource = '00/af/NParticleEngineCPSCRenderSprite_DatabaseCopy_00af9410_test.cpp'
         PassPattern = '00af9410_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00afeb90'
         Module = 'NParticleEngine::CPSCRenderMesh'
-        Source = '00/af/NParticleEngineCPSCRenderMesh_vfunc18_00afeb90.cpp'
-        TestSource = '00/af/NParticleEngineCPSCRenderMesh_vfunc18_00afeb90_test.cpp'
+        Source = '00/af/NParticleEngineCPSCRenderMesh_DatabaseCopy_00afeb90.cpp'
+        TestSource = '00/af/NParticleEngineCPSCRenderMesh_DatabaseCopy_00afeb90_test.cpp'
         PassPattern = '00afeb90_TEST PASS'
     }
     [pscustomobject]@{
@@ -274403,23 +274403,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00eb23e0'
-        Module = 'CMurderTwistSheriffGuard'
-        Source = '00/eb/CMurderTwistSheriffGuard_DoAskingHeroToSpeakToBoss_00eb23e0.cpp'
-        TestSource = '00/eb/CMurderTwistSheriffGuard_DoAskingHeroToSpeakToBoss_00eb23e0_test.cpp'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_DoAskingHeroToSpeakToBoss_00eb23e0.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_DoAskingHeroToSpeakToBoss_00eb23e0_test.cpp'
         PassPattern = '00eb23e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eb3740'
-        Module = 'CMurderTwistSheriffGuard'
-        Source = '00/eb/CMurderTwistSheriffGuard_DoSayingThankYouToHero_00eb3740.cpp'
-        TestSource = '00/eb/CMurderTwistSheriffGuard_DoSayingThankYouToHero_00eb3740_test.cpp'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_DoSayingThankYouToHero_00eb3740.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_DoSayingThankYouToHero_00eb3740_test.cpp'
         PassPattern = '00eb3740_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eb4f80'
-        Module = 'CMurderTwistAssassin'
-        Source = '00/eb/CMurderTwistAssassin_DoRemindingHeroToKillSheriff_00eb4f80.cpp'
-        TestSource = '00/eb/CMurderTwistAssassin_DoRemindingHeroToKillSheriff_00eb4f80_test.cpp'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_DoRemindingHeroToKillSheriff_00eb4f80.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_DoRemindingHeroToKillSheriff_00eb4f80_test.cpp'
         PassPattern = '00eb4f80_TEST PASS'
     }
     [pscustomobject]@{
@@ -288218,7 +288218,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0048dae0'
-        Module = '_global'
+        Module = ''
         Source = '00/48/global_GFLimit_0048dae0.cpp'
         TestSource = '00/48/global_GFLimit_0048dae0_test.cpp'
         PassPattern = '0048dae0_TEST PASS'
@@ -340444,9 +340444,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af0ef0'
-        Module = 'std::vector<CCountedPointer<CGuiVarTransferBase>>'
-        Source = '00/af/stdvectorCCountedPointerCGuiVarTransferBase_reserve_00af0ef0.cpp'
-        TestSource = '00/af/stdvectorCCountedPointerCGuiVarTransferBase_reserve_00af0ef0_test.cpp'
+        Module = 'std::vector<CCountedPointer<NParticleEngine::CParticleSystem> >'
+        Source = '00/af/stdvectorCCountedPointerNParticleEngineCParticleSystem_reserve_00af0ef0.cpp'
+        TestSource = '00/af/stdvectorCCountedPointerNParticleEngineCParticleSystem_reserve_00af0ef0_test.cpp'
         PassPattern = '00af0ef0_TEST PASS'
     }
     [pscustomobject]@{
@@ -345868,9 +345868,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b0f920'
-        Module = 'std::list'
-        Source = '00/b0/stdlist_pushback_00b0f920.cpp'
-        TestSource = '00/b0/stdlist_pushback_00b0f920_test.cpp'
+        Module = 'std::list<CIntelligentPointer<NParticleEngine::CParticleEmitter> >'
+        Source = '00/b0/stdlistCIntelligentPointerNParticleEngineCParticleEmitter_pushback_00b0f920.cpp'
+        TestSource = '00/b0/stdlistCIntelligentPointerNParticleEngineCParticleEmitter_pushback_00b0f920_test.cpp'
         PassPattern = '00b0f920_TEST PASS'
     }
     [pscustomobject]@{
@@ -381191,8 +381191,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b15bd0'
         Module = 'NParticleEngine'
-        Source = '00/b1/NParticleEngine_GFInterpolateArray_00b15bd0.cpp'
-        TestSource = '00/b1/NParticleEngine_GFInterpolateArray_00b15bd0_test.cpp'
+        Source = '00/b1/NParticleEngine_GFInterpolateArrayC3DVector_00b15bd0.cpp'
+        TestSource = '00/b1/NParticleEngine_GFInterpolateArrayC3DVector_00b15bd0_test.cpp'
         PassPattern = '00b15bd0_TEST PASS'
     }
     [pscustomobject]@{

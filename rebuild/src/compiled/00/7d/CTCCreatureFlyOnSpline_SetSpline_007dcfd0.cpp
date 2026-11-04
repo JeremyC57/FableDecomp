@@ -1,4 +1,5 @@
 // CTCCreatureFlyOnSpline::SetSpline(CCountedPointer<CCardinalSpline> spline) -- take the new flight spline and snap the creature's physics to the spline position at the current progress
+// Naming wave 35c (queue land0411j 0x00A567A0): calls 0x00A567A0 as CCardinalSpline::GetSplinePosition(C3DVector&, float) const (Ego_r.pdb ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z; the out vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DCFD0, length 130 bytes (`ret 8`: the 8-byte counted pointer by value).
 // Callees: the count block's destroy function (+4, object at +8 in ecx), operator delete @ 0x00BFE9BC,
 // CCardinalSpline::GetSplinePosition(C3DVector*, float) @ 0x00A567A0, CTCPhysicsBase::ResetPosition (slot 31, +0x7C).
@@ -50,7 +51,7 @@ class CCountedPointer { public:
 };
 class C3DVector { public: float X, Y, Z; };
 class CCardinalSpline { public:
-    void GetSplinePosition(C3DVector* position, float progress);    // 0x00A567A0
+    void GetSplinePosition(C3DVector& position, float progress) const;   // 0x00A567A0
 };
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -83,6 +84,6 @@ void CTCCreatureFlyOnSpline::SetSpline(CCountedPointer<CCardinalSpline> spline)
 {
     PSpline = spline;
     C3DVector position;
-    PSpline->GetSplinePosition(&position, Progress);
+    PSpline->GetSplinePosition(position, Progress);
     ParentThing->PhysicsTC->ResetPosition(position);
 }

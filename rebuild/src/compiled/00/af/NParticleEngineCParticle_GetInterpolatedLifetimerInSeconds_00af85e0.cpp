@@ -1,5 +1,6 @@
 // NParticleEngine::CParticle::GetInterpolatedLifetimerInSeconds(float) -- the particle's age in seconds: (Lifetimer - CreationTime/255 + fraction) times the global update period
-// Leaf: GetInterpolatedLifetimerInSeconds
+// Leaf: ?GetInterpolatedLifetimerInSeconds@CParticle@NParticleEngine@@QBEMM@Z
+// Naming wave 35c (caller respell): calls 0x00AEAA00 under its PDB name NParticleEngine::GetOneOverTickRate (?GetOneOverTickRate@NParticleEngine@@YIMXZ; no arguments, so the __fastcall call site is unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF85E0, length 49 bytes (`ret 4`).
 // Callees: the update-period getter @ 0x00AEAA00 (`fld [0x01399508] ; ret`, landed as
 //          global_GetMaxDrawDistance_00aeaa00 under a propagated label); float pool 0x01231724 =
@@ -10,7 +11,7 @@
 // creation time is scaled by the literal 1/255 (`fmul [pool]`, the member loaded first), subtracted
 // from the lifetimer, the fraction argument added last.
 
-float GetParticleUpdatePeriod();                                          // 0x00AEAA00
+namespace NParticleEngine { float __fastcall GetOneOverTickRate(); }   // 0x00AEAA00
 
 namespace NParticleEngine {
 
@@ -24,7 +25,7 @@ class CParticle { public:
 
 float CParticle::GetInterpolatedLifetimerInSeconds(float fraction) const
 {
-    return GetParticleUpdatePeriod() * (Lifetimer - CreationTime * (1.0f / 255.0f) + fraction);
+    return NParticleEngine::GetOneOverTickRate() * (Lifetimer - CreationTime * (1.0f / 255.0f) + fraction);
 }
 
 } // namespace NParticleEngine

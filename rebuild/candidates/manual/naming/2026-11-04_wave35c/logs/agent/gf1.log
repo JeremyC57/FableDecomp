@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0048dae0   MATCH            PASS   _global::GFLimit
+
+WINS: 1
+  0048dae0 MATCH ::??$GFLimit@MMM@@YIXAAMABM1@Z

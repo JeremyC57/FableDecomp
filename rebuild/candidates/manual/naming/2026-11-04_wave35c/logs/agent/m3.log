@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00adf610   WARN SHARED_HEADER_AVAILABLE C4DVector
+00adf610   WARN SHARED_HEADER_AVAILABLE C3DVector
+00adf610   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00adf610   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00adf610   RELOCATION_MATCH PASS   CParticleSimulation::CopyFrom
+00af4660   WARN SHARED_HEADER_AVAILABLE C3DVector
+00af4660   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00af4660   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00af4660   RELOCATION_MATCH PASS   NParticleEngine::CParticleSystem::ReadBinary
+00eb07d0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00eb07d0   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::HasHeroEnflamedEntity
+
+WINS: 3
+  00adf610 RELOCATION_MATCH CParticleSimulation::?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z
+  00af4660 RELOCATION_MATCH NParticleEngine::CParticleSystem::?ReadBinary@CParticleSystem@NParticleEngine@@QAEXAAVCDataInputStream@@@Z
+  00eb07d0 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z

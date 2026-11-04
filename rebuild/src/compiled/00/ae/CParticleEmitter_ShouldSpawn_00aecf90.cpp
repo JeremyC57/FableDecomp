@@ -1,6 +1,7 @@
 // CParticleEmitter::ShouldSpawn(const C3DVector&) const -- continuous emitters always spawn; otherwise only when the position lies within MaxSpawnDistance of the particle engine camera
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AECF90, length 118 bytes (padded to 128).
 // Leaf: ShouldSpawn
+// Naming wave 35c (caller respell): calls 0x00AEAB10 as NParticleEngine::GetEnvironmentInteraction() (?GetEnvironmentInteraction@NParticleEngine@@YIAAVCAEnvironmentInteraction@1@XZ, FableWin.pdb); the object is the CAEnvironmentInteraction (was CParticleCamera* GetParticleCamera()); its slot 6 keeps the local name.
 // Callees: the particle-engine camera getter @ 0x00AEAB10 (returns the global 0x013D2E2C; manifest label
 // "GFGetPreMainMemoryUsed" is propagated), the camera's virtual GetPosition() at slot 6 (+0x18, C3DVector by hidden pointer).
 // Layout (retail, as the landed CParticleEmitter rows): the PDB bit-field group at +0x40 (ContinuousEmitter = bit 7, tested
@@ -16,11 +17,13 @@ class C3DVector { public:
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
-struct CParticleCamera {
+namespace NParticleEngine {
+class CAEnvironmentInteraction { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual C3DVector GetPosition() const;  // slot 6 (+0x18), hidden result
 };
-CParticleCamera* GetParticleCamera();      // 0x00AEAB10 (returns the global at 0x013D2E2C)
+CAEnvironmentInteraction& __fastcall GetEnvironmentInteraction();   // 0x00AEAB10 (returns *PEnvironmentInteraction, 0x013D2E2C)
+}
 struct CParticleEmitter {
     virtual void v00();
     unsigned char  _base4[0x3c];            // +0x04 .. +0x3f
@@ -40,7 +43,7 @@ struct CParticleEmitter {
 };
 long CParticleEmitter::ShouldSpawn(const C3DVector& pos) const
 {
-    C3DVector camera = GetParticleCamera()->GetPosition();
+    C3DVector camera = NParticleEngine::GetEnvironmentInteraction().GetPosition();
     if (!ContinuousEmitter) {
         C3DVector d = pos - camera;
         if (!(d.X * d.X + d.Y * d.Y + d.Z * d.Z <= MaxSpawnDistance * MaxSpawnDistance))

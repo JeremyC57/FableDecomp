@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00439e00   WARN SHARED_HEADER_AVAILABLE CThing
+00439e00   WARN SHARED_HEADER_AVAILABLE CPlayer
+00439e00   WARN RELOC_NAME: ?GetPlayerCharacter@CPlayer@@QAEPAVCThing@@XZ -> 00487b70 labelled 'CPlayer::GetPPlayerCharacterThing'
+00439e00   RELOCATION_MATCH PASS   CPlayerGui::UpdateRenown
+00439f20   WARN SHARED_HEADER_AVAILABLE CThing
+00439f20   WARN SHARED_HEADER_AVAILABLE CPlayer
+00439f20   WARN RELOC_NAME: ?GetPlayerCharacter@CPlayer@@QAEPAVCThing@@XZ -> 00487b70 labelled 'CPlayer::GetPPlayerCharacterThing'
+00439f20   RELOCATION_MATCH PASS   CPlayerGui::UpdateMorality
+
+WINS: 2
+  00439e00 RELOCATION_MATCH CPlayerGui::UpdateRenown
+  00439f20 RELOCATION_MATCH CPlayerGui::UpdateMorality

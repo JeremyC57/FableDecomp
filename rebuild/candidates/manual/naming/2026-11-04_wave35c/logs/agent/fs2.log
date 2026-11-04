@@ -1,0 +1,23 @@
+addr       parity           behav  name
+006e0730   WARN SHARED_HEADER_AVAILABLE CPersistContext
+006e0730   WARN SHARED_HEADER_AVAILABLE CSymbolMap
+006e0730   WARN SHARED_HEADER_AVAILABLE CThing
+006e0730   WARN SHARED_HEADER_AVAILABLE CTCBase
+006e0730   WARN RELOC_NAME: ?Lookup@CSymbolMap@@QAE_NABVCCharString@@PAJ@Z -> 009e5170 labelled 'CSymbolMap::FindSymbol'
+006e0730   RELOCATION_MATCH PASS   CTCDParticleEmitter::OnSerialise
+006f9be0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+006f9be0   WARN SHARED_HEADER_AVAILABLE CPersistContext
+006f9be0   WARN SHARED_HEADER_AVAILABLE CSymbolMap
+006f9be0   WARN SHARED_HEADER_AVAILABLE CManager
+006f9be0   WARN RELOC_NAME: ?Transfer_009bab50@CPersistContext@@QAEXAAVCCharString@@@Z -> 009bab50 labelled '_global::Forward_operator___via0x20_009bab50'
+006f9be0   WARN RELOC_NAME: ?LoadFromHeaderFile@CSymbolMap@@QAEXABVCWideString@@@Z -> 009e5c90 labelled 'CSymbolMap::LoadFromFile'
+006f9be0   WARN RELOC_NAME: ?FormatDouble@CCharString@@SI?AV1@JN@Z -> 009a08b0 labelled 'GFFloatToCharString'
+006f9be0   RELOCATION_MATCH PASS   NAnimationEvents::CManager::Save
+006fc8e0   WARN SHARED_HEADER_AVAILABLE CSymbolMap
+006fc8e0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+006fc8e0   RELOCATION_MATCH PASS   std::for_each
+
+WINS: 3
+  006e0730 RELOCATION_MATCH CTCDParticleEmitter::OnSerialise
+  006f9be0 RELOCATION_MATCH NAnimationEvents::CManager::Save
+  006fc8e0 RELOCATION_MATCH std::for_each

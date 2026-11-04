@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSpline::GetUpdateParam(C3DVector* position, long, float timeScale, long, CParticleUpdateParameters& params, long) -- spline-follow component: make sure the per-update setup ran, advance along the spline by elapsed time x (speed / control-point count) x scale (backwards while bouncing in reverse), and fetch the point there
 // Leaf: ?GetUpdateParam@CPSCSpline@NParticleEngine
+// Naming wave 35c (caller respell): calls 0x00AEAA00 under its PDB name NParticleEngine::GetOneOverTickRate (?GetOneOverTickRate@NParticleEngine@@YIMXZ; no arguments, so the __fastcall call site is unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1B030, length 130 bytes (padded to 144). Virtual: slot 1 of
 // NParticleEngine::CPSCSpline's vtable 0x012A0934 (`ret 18h`, six stack arguments; the second, fourth and sixth are unused).
 // Callees: virtual slot 8 (+0x20) on `this` (the update set-up, taking the parameters), the global particle frame time
@@ -12,7 +13,7 @@
 // count is a signed size() converted through the dead params slot; the step is `time * (speed / count) * scale`; bounce-and-reverse subtracts, the else arm adds (`step + current`).
 class C3DVector { public: float X, Y, Z; };
 struct CParticleUpdateParameters;
-float GetParticleFrameTime_00aeaa00();      // 0x00AEAA00
+namespace NParticleEngine { float __fastcall GetOneOverTickRate(); }   // 0x00AEAA00
 
 namespace NParticleEngine {
 class CParticleSystem;
@@ -53,7 +54,7 @@ bool CPSCSpline::GetUpdateParam(C3DVector* position, long, float timeScale, long
 {
     if (!UpdateStarted)
         SetupUpdate(params);
-    float frameTime = GetParticleFrameTime_00aeaa00();
+    float frameTime = NParticleEngine::GetOneOverTickRate();
     float step = frameTime * (SplineAnimSpeed / GetControlPointCount()) * timeScale;
     float splinePos;
     if (SplineBounce && ReverseSpline)

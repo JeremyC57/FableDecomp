@@ -21,7 +21,7 @@ template <class T, class P1> class CSpawnedFunc1 : public CSpawnedFuncBase {
 public:
     FABLE_SPAWNEDFUNC_INLINE CSpawnedFunc1(const CCharString& name, unsigned long id, T* pclass, void (T::*func)(P1), P1 par1)
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) { }
-    virtual void SuspendableProcess() { (PClass->*Func)(Par1); }        // slot 4
+    virtual void SuspendableProcess() { (PClass->*Func)(Par1); StopRunning = true; }   // slot 4 (retail: the call, then StopRunning)
     void (T::*Func)(P1);                                                 // +0x34
     T* PClass;                                                           // +0x38
     P1 Par1;                                                             // +0x3C

@@ -1,5 +1,6 @@
 // C3DBoundingSphere::AddToBounds(const C3DVector& point, float radius) -- grow the sphere to enclose another sphere: adopt it when empty or when it swallows this one, else span both
-// Leaf: AddToBounds
+// Leaf: ?AddToBounds@C3DBoundingSphere@@QAEXABVC3DVector@@M@Z
+// Naming wave 35c: the exact PDB symbol (Ego_r.pdb + FableWin.pdb, the (const C3DVector&, float) overload the landed CPSCLight::AddToBoundingSphere 0x00B18AF0 binds); body unchanged.
 #include <math.h>
 
 class C3DVector { public:

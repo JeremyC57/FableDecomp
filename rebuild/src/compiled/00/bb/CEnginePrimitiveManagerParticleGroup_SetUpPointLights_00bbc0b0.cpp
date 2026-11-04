@@ -1,4 +1,6 @@
 // CEnginePrimitiveManagerParticleGroup::SetUpPointLights() -- once per frame, fetches up to five lights around the current group's bounding sphere, remembers their count and uploads them as shader point lights; returns the light count
+// Leaf: ?SetUpPointLights@CEnginePrimitiveManagerParticleGroup@@QAEJXZ
+// Naming wave 35c: the exact PDB symbol (Ego_r.pdb + FableWin.pdb); the catalog carries the name; body unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BBC0B0, length 116 bytes (+ int3 padding).
 // Signature from Ego_r.pdb: ?SetUpPointLights@CEnginePrimitiveManagerParticleGroup@@QAEJXZ.
 // Callees: 0x00B46B90 CEngineLightingManager::GetLightsInSphereFast(const C3DBoundingSphere&, long,

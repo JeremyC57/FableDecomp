@@ -26,8 +26,9 @@ class CEngineWeatherRenderer { public:
     C3DVector     BoxSize;                         // +0x1d4
     unsigned char _pad1e0[0x1f0 - 0x1e0];
     long          BoxCentre[3];                    // +0x1f0
-    void RebuildBoxes();                           // 0x00B51AD0
     void UpdateBoxPositions();
+private:
+    void BuildBoxPositionMatrix();                 // 0x00B51AD0 (Ego_r.pdb private)
 };
 
 void CEngineWeatherRenderer::UpdateBoxPositions()
@@ -42,5 +43,5 @@ void CEngineWeatherRenderer::UpdateBoxPositions()
     long distY = GFFloatToLongFloor((float)fabs((float)BoxCentre[1] - camera.Y));
     long distZ = GFFloatToLongFloor((float)fabs((float)BoxCentre[2] - camera.Z));
     if (distX >= sizeX || distY >= sizeY || distZ >= sizeZ)
-        RebuildBoxes();
+        BuildBoxPositionMatrix();
 }

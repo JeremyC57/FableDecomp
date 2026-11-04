@@ -1,8 +1,9 @@
+// Naming wave 35c (queue land0411j 0x00437AE0): calls CPlayerGui::UpdateStat under its Ego_r.pdb spelling ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z (private const, the stat by reference to NPlayerGui::CStatBase). Also calls 0x00487B70 as CPlayer::GetPPlayerCharacterThing() const (Ego_r.pdb ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ; was GetPlayerCharacter).
 // CPlayerGui::UpdateRenown() -- feed the pending renown of the stat-updates display into the renown stat bar: once the bar is initialised, animate it (step count from the bar's value change) and advance its update counter; otherwise snap the bar to the pending value; finally clear the pending amount when the bar reports mode 1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00439E00, length 278 bytes, plain `ret`.
-// Callees: CPlayerManager::GetMainPlayer 0x00449970 (PlayerManager +0x08), CPlayer::GetPlayerCharacter 0x00487B70,
+// Callees: CPlayerManager::GetMainPlayer 0x00449970 (PlayerManager +0x08), CPlayer::GetPPlayerCharacterThing() const 0x00487B70,
 // __ftol2 0x00BFEA70, PeekGuiDef 0x00438570 (the lazily built GUI definition, x2), CPlayerGui::UpdateStat(float, float,
-// float, float, float, CStatBase*) 0x00437AE0. Floats 0.2f 0x012305A0, 0.5f 0x0122F59C, 0.01f as an immediate.
+// float, float, float, NPlayerGui::CStatBase&) const 0x00437AE0. Floats 0.2f 0x012305A0, 0.5f 0x0122F59C, 0.01f as an immediate.
 // Layout (retail; engine/CPlayerGui.h is 8 bytes high after the narrower CSubtitleRenderer and 4 per vector):
 // PDrawStatUpdates +0x1a8 (pending renown +0x28), PRenown (CStatBar) +0x2d4; Ego_r.pdb CStatBase ValueInitialised +8,
 // CurrentValue +0xc, OldValue +0x10, LastOldValue +0x14, GuiMode +0x28 (retail 12-byte vectors: the bar's update counter
@@ -25,13 +26,14 @@ class CThing { public:
     unsigned char StateFlags;                          // +0x91 (bit 0: dead)
 };
 class CPlayer { public:
-    CThing* GetPlayerCharacter();                      // 0x00487B70
+    CThing* GetPPlayerCharacterThing() const;                    // 0x00487B70
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-struct CStatBase {
+namespace NPlayerGui {
+class CStatBase { public:                            // Ego_r.pdb NPlayerGui::CStatBase
     void*          __vftable;                          // +0x00
     CPlayerGuiDef* GuiDef;                             // +0x04
     bool           ValueInitialised;                   // +0x08
@@ -49,6 +51,7 @@ struct CStatBase {
     long           PreviousUpdateCount;                // +0x4c
     float GetValueChange() const { return (float)fabs(OldValue - CurrentValue); }
 };
+}
 struct CDrawStatUpdates {
     unsigned char _pad00[0x28];
     long          PendingRenown;                       // +0x28
@@ -60,23 +63,24 @@ class CPlayerGui { public:
     unsigned char     _pad00c[0x19c];
     CDrawStatUpdates* PDrawStatUpdates;                // +0x1a8 (CCountedPointer::Data)
     unsigned char     _pad1ac[0x128];
-    CStatBase*        PRenown;                         // +0x2d4 (CCountedPointer<CStatBar>::Data)
-    void UpdateStat(float value, float speed, float steps, float a, float b, CStatBase* stat);   // 0x00437AE0
+    NPlayerGui::CStatBase* PRenown;                       // +0x2d4 (CCountedPointer<CStatBar>::Data)
     void UpdateRenown();
+private:
+    void UpdateStat(float value, float speed, float steps, float a, float b, NPlayerGui::CStatBase& stat) const;   // 0x00437AE0
 };
 
 void CPlayerGui::UpdateRenown()
 {
-    CThing* character = PlayerManager->GetMainPlayer().GetPlayerCharacter();
+    CThing* character = PlayerManager->GetMainPlayer().GetPPlayerCharacterThing();
     if (character == 0 || (character->StateFlags & 1))
         return;
     long pending = PDrawStatUpdates->PendingRenown;
-    CStatBase* const& renown = PRenown;
+    NPlayerGui::CStatBase* const& renown = PRenown;
     if (renown->ValueInitialised) {
         long steps = (long)((PRenown->GetValueChange() - 0.2f) * 0.5f);
         if (steps < 1)
             steps = 1;
-        UpdateStat((float)pending, 0.01f, (float)steps, PeekGuiDef()->RenownBarValueA, PeekGuiDef()->RenownBarValueB, renown);
+        UpdateStat((float)pending, 0.01f, (float)steps, PeekGuiDef()->RenownBarValueA, PeekGuiDef()->RenownBarValueB, *renown);
         PRenown->PreviousUpdateCount = PRenown->UpdateCount;
         ++PRenown->UpdateCount;
     } else {

@@ -1,4 +1,5 @@
 // CMainGameComponent::InitParticleEngine() -- start the particle engine: initialise it, give it the game's environment-interaction object (a new counted object holding the world), and open the "PARTICLE_MAIN" bank of its emitter database
+// Naming wave 35c (caller respell): calls 0x00AEAAE0 as NParticleEngine::GetParticleEmitterDatabase() (?GetParticleEmitterDatabase@NParticleEngine@@YIAAVCParticleEmitterDatabase@1@XZ, FableWin.pdb + Ego_r.pdb); the database class is NParticleEngine::CParticleEmitterDatabase, so its OpenBank is FableWin.pdb ?OpenBank@CParticleEmitterDatabase@NParticleEngine@@QAEXABVCCharString@@@Z (was GetEmitterDatabase() returning a global struct).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004174F1, length 119 bytes. Frame-pointer size TU: `#pragma optimize("y", off)` + `("s", on)`.
 // Callees: NParticleEngine::Initialise @ 0x00AEBE20 (`__fastcall`), operator new @ 0x00BFEA1A (0x24 bytes; the inline constructor stores
 //   vtable 0x0122ED8C and the world at +4), CCountedPointer(T*) @ 0x0041956C, its copy constructor @ 0x00418FBC (the by-value argument
@@ -37,13 +38,13 @@ template <class T> class CCountedPointer { public:
     CCountedPointer(const CCountedPointer& other); // 0x00418FBC
     ~CCountedPointer();                            // 0x004191C1
 };
-struct CParticleEmitterDatabase {
+namespace NParticleEngine {
+class CParticleEmitterDatabase { public:
     void OpenBank(const CCharString& name);        // 0x00AE8980
 };
-namespace NParticleEngine {
 void __fastcall Initialise();                                                         // 0x00AEBE20
 void __fastcall SetEnvironmentInteraction(CCountedPointer<CAEnvironmentInteraction> interaction);   // 0x00AEAB20
-CParticleEmitterDatabase* __fastcall GetEmitterDatabase();                            // 0x00AEAAE0
+CParticleEmitterDatabase& __fastcall GetParticleEmitterDatabase();                    // 0x00AEAAE0
 }
 class CMainGameComponent { public:
     unsigned char _pad00[0x24];
@@ -56,5 +57,5 @@ void CMainGameComponent::InitParticleEngine()
     CCountedPointer<NParticleEngine::CAEnvironmentInteraction> interaction(new CGameEnvironmentInteraction(m_pWorld));
     NParticleEngine::SetEnvironmentInteraction(interaction);
     CCharString bankName("PARTICLE_MAIN", -1);
-    NParticleEngine::GetEmitterDatabase()->OpenBank(bankName);
+    NParticleEngine::GetParticleEmitterDatabase().OpenBank(bankName);
 }

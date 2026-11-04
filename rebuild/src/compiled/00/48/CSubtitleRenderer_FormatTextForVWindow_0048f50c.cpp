@@ -1,4 +1,6 @@
 // Leaf: FormatTextForVWindow
+// Naming wave 35c (caller respell): calls 0x0048DAE0 as the Ego_r.pdb template instance ??$GFLimit@MMM@@YIXAAMABM1@Z (was the
+//   non-template ?GFLimit@@YIXAAMABM1@Z); the same-TU stand-in body is now that template's.
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // CSubtitleRenderer::FormatTextForVWindow(const C2DBoxF& box, const CFontBank& font, const CWideString& text, CWideString& outText, C2DBoxF& outBox) const -- word-wrap the text for the box with this font, then size the output box: as wide as the widest wrapped line (clamped to the GUI def's text-box min/max width), centred on the virtual screen, and tall enough for the line count (one extra line unless the display flags say otherwise) above the box bottom
 #pragma optimize("y", off)
@@ -25,7 +27,7 @@ public:
 float __fastcall GFAXToVX(float);                           // 0x009E1DA0
 float __stdcall GFAYToVY_009e1dd0(float y);                           // 0x009E1DD0
 extern double g_VirtualScreenWidth;                          // 0x013961E8
-void __fastcall GFLimit(float& value, const float& minimum, const float& maximum);   // 0x0048DAE0
+template <class T, class TMin, class TMax> void __fastcall GFLimit(T& value, const TMin& minimum, const TMax& maximum);   // 0x0048DAE0 <float,float,float>
 
 class CFontBank {
 public:
@@ -82,7 +84,7 @@ public:
 
 extern "C" int StandInSink(int, int);
 #pragma auto_inline(off)
-void __fastcall GFLimit(float&, const float& c1, const float& c2)
+template <class T, class TMin, class TMax> void __fastcall GFLimit(T&, const TMin& c1, const TMax& c2)
 {
     int hc = 0;
     { const unsigned char* b = (const unsigned char*)&c1; for (unsigned i = 0; i < sizeof(float); ++i) hc += b[i]; }

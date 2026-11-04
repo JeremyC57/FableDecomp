@@ -1,0 +1,16 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00ae1030	?AllocateArrays@CParticleSimulation@@AAE_NAAVCMovableResourceMemoryPool@@@Z	Ego_r.pdb + FableWin.pdb (private, pool by reference); respelled here in 00adf610	landed binder 00ae1030 spells ?AllocateArrays@CParticleSimulation@@QAE...
+00af0a60	??$__uninitialized_copy@PAV?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@PAV1@@std@@YIPAV?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@PAV1@00U__false_type@@@Z	emitted by the respelled 00af0ef0 vector<CCountedPointer<CParticleSystem>>::reserve (RELOC_NAME vs the junk label)	label/binders 00af0fa0 spell it as a CGuiVarTransferBase instance
+00af0d80	??$__destroy_aux@PAV?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@@std@@YIXPAV?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@0U__false_type@@@Z	as 0x00AF0A60	label/binders 00af10e0 spell it as a CGuiVarTransferBase instance
+00ef49a0	NScript::CPersonalScript_EmptyScript::CVillager::Init (class key V, not struct U)	PDB V class key; the landed Init declares `struct CVillager`	struct CVillager (U key)
+013d2e10	NParticleEngine::GetRandomSeed target (seed global)	?GetRandomSeed@NParticleEngine@@YIAAKXZ returns it by reference; the variable name waits on the owner cvdump	absolute address 0x013D2E10 in 00aeaad0
+0129f19c	(data) GetFadeOutStartDistance global	the getter 00aeaa20 reads ?g_value_0129f19c@@3MA; placeholder	g_value_0129f19c
+01399514	(data) GetMaxDrawDistance global	placeholder; the repo also names 0x0129F190 OneOverTickRate as g_maxDrawDistance and MaxSpawn as g_MaxDrawDistance (case-only twins)	g_maxDrawDistance / g_MaxDrawDistance
+013d2e0c	(data) one global, two names	g_GFPreMainMemoryUsed and g_value_013d2e0c both name 0x013D2E0C; 0x013D2E08 is g_value	g_GFPreMainMemoryUsed, g_value_013d2e0c
+013d2e14	?PEmitterDatabase@NParticleEngine@@3V?$CCountedPointer@VCParticleEmitterDatabase@NParticleEngine@@@@A (dynamic initialiser name in FableWin.pdb)	used by the respelled 00aeaae0; other landed rows call it g_ParticleEmitterDatabase	g_ParticleEmitterDatabase
+00b20b60	??4CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEAAV012@ABV012@@Z	emitted by 00b22310 (RELOC_NAME vs the junk label CSplineData_00b20b60::CopyFrom); binder 00b20b60 row spells ??4CKeyVector	CSplineData_00b20b60::CopyFrom, ??4CKeyVector@@QAEAAU0@ABU0@@Z
+00b20fd0	?GetPointAtPos@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVC3DVector@@MM@Z	FableWin.pdb; the landed definition 00b20fd0 takes C3DVector* (callee respelled here, its own definition not)	GetPointAtPos(C3DVector*,float,float)
+009e5170	?Lookup@CSymbolMap@@QAE_NABVCCharString@@PAJ@Z (to verify)	RELOC_NAME in 006e0730: label CSymbolMap::FindSymbol; not in the PDB name sets grep, needs a second source	CSymbolMap::FindSymbol label
+00aeaaa0	NParticleEngine getter (sibling of 00aeaa90/00aeaab0)	not in any wave; same family as the respelled getters	—
+00aeaaf0	NParticleEngine getter (sibling of 00aeaae0/00aeab00)	not in any wave	—
+00bbe090	?RenderSingleSpriteTrail@CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	FableWin.pdb + Ego_r.pdb (queue land0411f)	00bbc130 binds the PAV pointer spelling (do not add it to reloc_bindings)

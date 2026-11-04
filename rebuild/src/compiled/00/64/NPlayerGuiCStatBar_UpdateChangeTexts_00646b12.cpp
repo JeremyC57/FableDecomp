@@ -1,7 +1,8 @@
 // NPlayerGui::CStatBar::UpdateChangeTexts() -- while the bar is idle (state 0) or in state 3, move each floating change text along the bar box (start to end or end to start) by the frame step, fading its alpha as it goes; texts that finish (or are fully faded) are erased
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// Leaf: UpdateChangeTexts
+// Leaf: ?UpdateChangeTexts@CStatBar@NPlayerGui@@QAEXXZ
+// Naming wave 35c: Ego_r.pdb + labels catalog; queue land0411j.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00646B12, 306 bytes, `ret`.
 // Callees: _ftol 0x00BFEA70, std::list<CChangeText>::erase(iterator) 0x00655A52 (iterator by value, hidden result).

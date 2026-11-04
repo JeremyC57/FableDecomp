@@ -1,5 +1,8 @@
-// NParticleEngine::CParticleSystem::ReadBinary(CDataInputStream* in) -- load a particle system template: its name, the Enabled and ScaleParticles flags, the scale vector, then every component record (type name, instance name, enabled flag), each created through AddComponent, read by the component itself and followed by one separator byte
-// Leaf: ReadBinary
+// NParticleEngine::CParticleSystem::ReadBinary(CDataInputStream& in) -- load a particle system template: its name, the Enabled and ScaleParticles flags, the scale vector, then every component record (type name, instance name, enabled flag), each created through AddComponent, read by the component itself and followed by one separator byte
+// Leaf: ?ReadBinary@CParticleSystem@NParticleEngine@@QAEXAAVCDataInputStream@@@Z
+// Naming wave 35c: FableWin.pdb + Ego_r.pdb ?ReadBinary@CParticleSystem@NParticleEngine@@QAEXAAVCDataInputStream@@@Z -- the stream by reference (the caller
+//   CParticleEmitter::ReadBinary 0x00AEFAA0 binds this spelling), and so the component slot 15 ReadBinary(CDataInputStream&) of every
+//   FableWin.pdb ?ReadBinary@CPSC*@NParticleEngine@@UAEXAAVCDataInputStream@@@Z; was the pointer spelling (QAEXPAVCDataInputStream@@@Z). Same bytes.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF4660, length 672 bytes (`ret 4`).
 // Callees: the stream's virtual ReadNullTerminatedString (slot 6, CCharString by value), CCharString::operator= @ 0x0099EFB0,
 //   ~CCharString @ 0x0099EAE0, CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0 (the slow path of the inlined Read),
@@ -57,7 +60,7 @@ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
-    virtual void ReadBinary(CDataInputStream* in);                     // slot 15 (+0x3c)
+    virtual void ReadBinary(CDataInputStream& in);                     // slot 15 (+0x3c)
 };
 class CParticleSystem {
 public:
@@ -77,23 +80,23 @@ public:
     C3DVector Scale;                                                   // +0x60
     CCharString Name;                                                  // +0x6c
     CPSCBase& AddComponent(const CCharString& typeName, const unsigned long& instanceName, bool enabled, bool unused);   // 0x00AF4530
-    void ReadBinary(CDataInputStream* in);
+    void ReadBinary(CDataInputStream& in);
 };
 
-void CParticleSystem::ReadBinary(CDataInputStream* in)
+void CParticleSystem::ReadBinary(CDataInputStream& in)
 {
-    Name = in->ReadNullTerminatedString();
-    Enabled = in->ReadUByte() != 0;
-    ScaleParticles = in->ReadUByte() != 0;
-    Scale = in->Read3DVector();
-    unsigned long count = in->ReadULong();
+    Name = in.ReadNullTerminatedString();
+    Enabled = in.ReadUByte() != 0;
+    ScaleParticles = in.ReadUByte() != 0;
+    Scale = in.Read3DVector();
+    unsigned long count = in.ReadULong();
     for (unsigned long i = 0; i < count; ++i) {
-        CCharString typeName = in->ReadNullTerminatedString();
-        unsigned long instanceName = in->ReadULong();
-        bool enabled = in->ReadUByte() != 0;
+        CCharString typeName = in.ReadNullTerminatedString();
+        unsigned long instanceName = in.ReadULong();
+        bool enabled = in.ReadUByte() != 0;
         AddComponent(typeName, instanceName, enabled, false).ReadBinary(in);
         unsigned char separator;
-        in->Read(&separator, 1);
+        in.Read(&separator, 1);
     }
 }
 }

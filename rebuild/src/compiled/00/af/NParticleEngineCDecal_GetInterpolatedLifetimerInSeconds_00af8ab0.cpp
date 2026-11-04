@@ -1,6 +1,7 @@
 // NParticleEngine::CDecal::GetInterpolatedLifetimerInSeconds(float fraction) const -- the decal's age in seconds: (Lifetimer + fraction) times the global particle update period
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF8AB0, 21 bytes, `ret 4`.
 // Leaf: ?GetInterpolatedLifetimerInSeconds@CDecal@NParticleEngine@@QBEMM@Z
+// Naming wave 35c (caller respell): calls 0x00AEAA00 under its PDB name NParticleEngine::GetOneOverTickRate (?GetOneOverTickRate@NParticleEngine@@YIMXZ; no arguments, so the __fastcall call site is unchanged).
 // Name: FableWin.pdb ?GetInterpolatedLifetimerInSeconds@CDecal@NParticleEngine@@QBEMM@Z; its sibling just before it, 0x00AF8AA0
 //       (`fild [ecx+28h] ; fadd [esp+4]`), is CDecal::GetInterpolatedLifetimer, and the CParticle pair is landed
 //       (GetInterpolatedLifetimerInSeconds 0x00AF85E0 multiplies the same getter in front). The catalog label
@@ -10,7 +11,7 @@
 // Shape: the getter runs first (esi keeps `this` across it), its result stays in st(0); `fild Lifetimer ; fadd fraction ; fmulp`.
 #include "engine/CDecal.h"
 
-float GetParticleUpdatePeriod();                     // 0x00AEAA00
+namespace NParticleEngine { float __fastcall GetOneOverTickRate(); }   // 0x00AEAA00
 
 namespace NParticleEngine {
 class CDecal : public ::CDecal { public:
@@ -18,6 +19,6 @@ class CDecal : public ::CDecal { public:
 };
 float CDecal::GetInterpolatedLifetimerInSeconds(float fraction) const
 {
-    return GetParticleUpdatePeriod() * (Lifetimer + fraction);
+    return NParticleEngine::GetOneOverTickRate() * (Lifetimer + fraction);
 }
 }

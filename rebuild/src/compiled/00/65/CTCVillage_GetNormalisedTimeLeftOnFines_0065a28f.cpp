@@ -1,4 +1,6 @@
 // CTCVillage::GetNormalisedTimeLeftOnFines() -- for the village region's fines: the longest time left, in frames, before a guard forgets one of the hero's recorded crimes, as a fraction of that crime's knowledge life (0 when the region has no fines)
+// Leaf: ?GetNormalisedTimeLeftOnFines@CTCVillage@@QAEMXZ
+// Naming wave 35c: the exact PDB symbol (Ego_r.pdb + FableWin.pdb); the catalog carries the name; body unchanged.
 // Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).

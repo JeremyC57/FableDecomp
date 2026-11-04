@@ -1,0 +1,242 @@
+addr       parity           behav  name
+  WARN leaf '?SetFine@CCrimeStatBar@NPlayerGui@@QAEXJ@Z' matches no symbol in 00643ff6.obj; graded the largest function
+  WARN leaf '?SetFine@CCrimeStatBar@NPlayerGui@@QAEXJ@Z' matches no symbol in 00643ff6.obj; graded the largest function
+00643ff6   MATCH            PASS   NPlayerGui::CCrimeStatBar::SetFine
+0065a28f   WARN SHARED_HEADER_AVAILABLE C3DVector
+0065a28f   WARN SHARED_HEADER_AVAILABLE CThing
+0065a28f   WARN SHARED_HEADER_AVAILABLE CPlayer
+0065a28f   WARN SHARED_HEADER_AVAILABLE CWorld
+0065a28f   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0065a28f   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0065a28f   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0065a28f   WARN SHARED_HEADER_AVAILABLE CRegion
+0065a28f   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0065a28f   WARN SHARED_HEADER_AVAILABLE CTCBase
+0065a28f   WARN RELOC_NAME: ?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ -> 0049d9d0 labelled 'CWorld::PeekMyPlayer'
+0065a28f   WARN RELOC_NAME: ?GetDeedEffectsDef@CTCHeroOpinionDeedLog@@QAE?AV?$CDefPointer@VCOpinionDeedEffectsDef@@@@J@Z -> 006c5630 labelled 'CTCHeroOpinionDeedLog::PeekPDeedEffectsDef'
+0065a28f   WARN RELOC_NAME: ?GetDefinitionManager@CTCVillage@@QAEPAVCDefinitionManager@@XZ -> 00686d60 labelled 'CTCBase::PeekComponent'
+0065a28f   WARN RELOC_NAME: ?g_framesPerSecond@@3JA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+0065a28f   WARN RELOC_NAME: ?Successor@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+0065a28f   RELOCATION_MATCH PASS   CTCVillage::GetNormalisedTimeLeftOnFines
+009881f0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+  WARN leaf '?SetWorldTransform@CShaderRenderManager@@QAEXABVCMatrix3x4@@@Z' matches no symbol in 009881f0.obj; graded the largest function
+  WARN leaf '?SetWorldTransform@CShaderRenderManager@@QAEXABVCMatrix3x4@@@Z' matches no symbol in 009881f0.obj; graded the largest function
+009881f0   MATCH            PASS   CShaderRenderManager::SetWorldTransform
+00adf610   WARN SHARED_HEADER_AVAILABLE C4DVector
+00adf610   WARN SHARED_HEADER_AVAILABLE C3DVector
+00adf610   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00adf610   WARN SHARED_HEADER_AVAILABLE CMovableResource
+  WARN leaf '?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z' matches no symbol in 00adf610.obj; graded the largest function
+  WARN leaf '?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z' matches no symbol in 00adf610.obj; graded the largest function
+00adf610   RELOCATION_MATCH PASS   CParticleSimulation::CopyFrom
+  WARN leaf '?GetOneOverTickRate@NParticleEngine@@YIMXZ' matches no symbol in 00aeaa00.obj; graded the largest function
+  WARN leaf '?GetOneOverTickRate@NParticleEngine@@YIMXZ' matches no symbol in 00aeaa00.obj; graded the largest function
+00aeaa00   RELOCATION_MATCH PASS   NParticleEngine::GetOneOverTickRate
+  WARN leaf '?GetFadeOutStartDistance@NParticleEngine@@YIMXZ' matches no symbol in 00aeaa20.obj; graded the largest function
+  WARN leaf '?GetFadeOutStartDistance@NParticleEngine@@YIMXZ' matches no symbol in 00aeaa20.obj; graded the largest function
+00aeaa20   RELOCATION_MATCH PASS   NParticleEngine::GetFadeOutStartDistance
+  WARN leaf '?GetFadeInEndDistance@NParticleEngine@@YIMXZ' matches no symbol in 00aeaa30.obj; graded the largest function
+  WARN leaf '?GetFadeInEndDistance@NParticleEngine@@YIMXZ' matches no symbol in 00aeaa30.obj; graded the largest function
+00aeaa30   RELOCATION_MATCH PASS   NParticleEngine::GetFadeInEndDistance
+  WARN leaf '?GetFadeInStartDistance@NParticleEngine@@YIMXZ' matches no symbol in 00aeaa40.obj; graded the largest function
+  WARN leaf '?GetFadeInStartDistance@NParticleEngine@@YIMXZ' matches no symbol in 00aeaa40.obj; graded the largest function
+00aeaa40   RELOCATION_MATCH PASS   NParticleEngine::GetFadeInStartDistance
+  WARN leaf '?GetMaxDrawDistance@NParticleEngine@@YIMXZ' matches no symbol in 00aeaa50.obj; graded the largest function
+  WARN leaf '?GetMaxDrawDistance@NParticleEngine@@YIMXZ' matches no symbol in 00aeaa50.obj; graded the largest function
+00aeaa50   RELOCATION_MATCH PASS   NParticleEngine::GetMaxDrawDistance
+  WARN leaf '?GetMaxSpawnDistance@NParticleEngine@@YIMXZ' matches no symbol in 00aeaa60.obj; graded the largest function
+  WARN leaf '?GetMaxSpawnDistance@NParticleEngine@@YIMXZ' matches no symbol in 00aeaa60.obj; graded the largest function
+00aeaa60   RELOCATION_MATCH PASS   NParticleEngine::GetMaxSpawnDistance
+  WARN leaf '?SetGraphicBank@NParticleEngine@@YIXABVCGraphicDataBank@@@Z' matches no symbol in 00aeaa80.obj; graded the largest function
+  WARN leaf '?SetGraphicBank@NParticleEngine@@YIXABVCGraphicDataBank@@@Z' matches no symbol in 00aeaa80.obj; graded the largest function
+00aeaa80   RELOCATION_MATCH PASS   NParticleEngine::SetGraphicBank
+  WARN leaf '?SetMeshBank@NParticleEngine@@YIXABVCMeshDataBank@@@Z' matches no symbol in 00aeaa90.obj; graded the largest function
+  WARN leaf '?SetMeshBank@NParticleEngine@@YIXABVCMeshDataBank@@@Z' matches no symbol in 00aeaa90.obj; graded the largest function
+00aeaa90   RELOCATION_MATCH PASS   NParticleEngine::SetMeshBank
+  WARN leaf '?GetMeshBank@NParticleEngine@@YIABVCMeshDataBank@@XZ' matches no symbol in 00aeaab0.obj; graded the largest function
+  WARN leaf '?GetMeshBank@NParticleEngine@@YIABVCMeshDataBank@@XZ' matches no symbol in 00aeaab0.obj; graded the largest function
+00aeaab0   RELOCATION_MATCH PASS   NParticleEngine::GetMeshBank
+  WARN leaf '?GetRandomSeed@NParticleEngine@@YIAAKXZ' matches no symbol in 00aeaad0.obj; graded the largest function
+  WARN leaf '?GetRandomSeed@NParticleEngine@@YIAAKXZ' matches no symbol in 00aeaad0.obj; graded the largest function
+00aeaad0   MATCH            PASS   NParticleEngine::GetRandomSeed
+  WARN leaf '?GetParticleEmitterDatabase@NParticleEngine@@YIAAVCParticleEmitterDatabase@1@XZ' matches no symbol in 00aeaae0.obj; graded the largest function
+  WARN leaf '?GetParticleEmitterDatabase@NParticleEngine@@YIAAVCParticleEmitterDatabase@1@XZ' matches no symbol in 00aeaae0.obj; graded the largest function
+00aeaae0   RELOCATION_MATCH PASS   NParticleEngine::GetParticleEmitterDatabase
+  WARN leaf '?GetPSCManager@NParticleEngine@@YIAAVCPSCManager@1@XZ' matches no symbol in 00aeab00.obj; graded the largest function
+  WARN leaf '?GetPSCManager@NParticleEngine@@YIAAVCPSCManager@1@XZ' matches no symbol in 00aeab00.obj; graded the largest function
+00aeab00   RELOCATION_MATCH PASS   NParticleEngine::GetPSCManager
+  WARN leaf '?GetEnvironmentInteraction@NParticleEngine@@YIAAVCAEnvironmentInteraction@1@XZ' matches no symbol in 00aeab10.obj; graded the largest function
+  WARN leaf '?GetEnvironmentInteraction@NParticleEngine@@YIAAVCAEnvironmentInteraction@1@XZ' matches no symbol in 00aeab10.obj; graded the largest function
+00aeab10   RELOCATION_MATCH PASS   NParticleEngine::GetEnvironmentInteraction
+00aeabe0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00aeabe0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00aeabe0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00aeabe0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+  WARN leaf '?CreateDecalEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z' matches no symbol in 00aeabe0.obj; graded the largest function
+  WARN leaf '?CreateDecalEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z' matches no symbol in 00aeabe0.obj; graded the largest function
+00aeabe0   RELOCATION_MATCH PASS   NParticleEngine::CParticleEmitterManager::CreateDecalEmitter
+  WARN leaf '?PeekEmitterVelocity@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ' matches no symbol in 00af3db0.obj; graded the largest function
+  WARN leaf '?PeekEmitterVelocity@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ' matches no symbol in 00af3db0.obj; graded the largest function
+00af3db0   MATCH            PASS   NParticleEngine::CParticleSystem::PeekEmitterVelocity
+00af4660   WARN SHARED_HEADER_AVAILABLE C3DVector
+00af4660   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00af4660   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+  WARN leaf '?ReadBinary@CParticleSystem@NParticleEngine@@QAEXAAVCDataInputStream@@@Z' matches no symbol in 00af4660.obj; graded the largest function
+  WARN leaf '?ReadBinary@CParticleSystem@NParticleEngine@@QAEXAAVCDataInputStream@@@Z' matches no symbol in 00af4660.obj; graded the largest function
+00af4660   RELOCATION_MATCH PASS   NParticleEngine::CParticleSystem::ReadBinary
+00af5330   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+  WARN leaf '?DeleteParticle@CParticleSystem@NParticleEngine@@QAE?AV?$_List_iterator@V?$_List_val@PAVCParticle@NParticleEngine@@V?$allocator@PAVCParticle@NParticleEngine@@@std@@@std@@@std@@AAV34@@Z' matches no symbol in 00af5330.obj; graded the largest function
+  WARN leaf '?DeleteParticle@CParticleSystem@NParticleEngine@@QAE?AV?$_List_iterator@V?$_List_val@PAVCParticle@NParticleEngine@@V?$allocator@PAVCParticle@NParticleEngine@@@std@@@std@@@std@@AAV34@@Z' matches no symbol in 00af5330.obj; graded the largest function
+00af5330   RELOCATION_MATCH PASS   NParticleEngine::CParticleSystem::DeleteParticle
+00af5380   WARN SHARED_HEADER_AVAILABLE C3DVector
+00af5380   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00af5380   WARN SHARED_HEADER_AVAILABLE CArray
+00af5380   WARN SHARED_HEADER_AVAILABLE CDecal
+00af5380   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00af5380   WARN RELOC_NAME: ?AllocateParticleMemory_00af8b00@@YIPAXI@Z -> 00af8b00 labelled 'NParticleEngine::CDecal::operator new'
+00af5380   RELOCATION_MATCH PASS   NParticleEngine::CParticleSystem::AllocateDecal
+00af85e0   WARN RELOC_NAME: ?GetParticleUpdatePeriod@@YAMXZ -> 00aeaa00 labelled 'NParticleEngine::GetOneOverTickRate'
+00af85e0   RELOCATION_MATCH PASS   NParticleEngine::CParticle::GetInterpolatedLifetimerInSeconds
+00af9410   WARN SHARED_HEADER_AVAILABLE CRGBColour
+  WARN leaf '?DatabaseCopy@CPSCRenderSprite@NParticleEngine@@UAEXABVCPSCBase@2@@Z' matches no symbol in 00af9410.obj; graded the largest function
+  WARN leaf '?DatabaseCopy@CPSCRenderSprite@NParticleEngine@@UAEXABVCPSCBase@2@@Z' matches no symbol in 00af9410.obj; graded the largest function
+00af9410   MATCH            PASS   NParticleEngine::CPSCRenderSprite::DatabaseCopy
+00afeb90   WARN SHARED_HEADER_AVAILABLE CRGBColour
+  WARN leaf '?DatabaseCopy@CPSCRenderMesh@NParticleEngine@@UAEXABVCPSCBase@2@@Z' matches no symbol in 00afeb90.obj; graded the largest function
+  WARN leaf '?DatabaseCopy@CPSCRenderMesh@NParticleEngine@@UAEXABVCPSCBase@2@@Z' matches no symbol in 00afeb90.obj; graded the largest function
+00afeb90   MATCH            PASS   NParticleEngine::CPSCRenderMesh::DatabaseCopy
+00afee00   WARN SHARED_HEADER_AVAILABLE C3DVector
+00afee00   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00afee00   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+  WARN leaf '?WriteBinary@CPSCRenderMesh@NParticleEngine@@UBEXAAVCDataOutputStream@@@Z' matches no symbol in 00afee00.obj; graded the largest function
+  WARN leaf '?WriteBinary@CPSCRenderMesh@NParticleEngine@@UBEXAAVCDataOutputStream@@@Z' matches no symbol in 00afee00.obj; graded the largest function
+00afee00   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderMesh::WriteBinary
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager
+00bbc0b0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleGroup::SetUpPointLights
+  WARN leaf '?WatchForLeaving@CQ_GuildTrainingWoodsMeleeScript@NScript@@QAEXXZ' matches no symbol in 00d66e90.obj; graded the largest function
+  WARN leaf '?WatchForLeaving@CQ_GuildTrainingWoodsMeleeScript@NScript@@QAEXXZ' matches no symbol in 00d66e90.obj; graded the largest function
+00d66e90   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingWoodsMeleeScript::WatchForLeaving
+00d74ce0   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::WatchForMissionEnd
+00d77340   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d77340   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::GetGuardsHealth
+00d773e0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00d773e0   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::MonitorRegionPresence
+00eb0700   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::WaitForEnflameReactionIfNecessary
+00eb07d0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00eb07d0   WARN SHARED_HEADER_AVAILABLE CV_MurderTwistFinalScript
+  WARN leaf '?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z' matches no symbol in 00eb07d0.obj; graded the largest function
+  WARN leaf '?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z' matches no symbol in 00eb07d0.obj; graded the largest function
+00eb07d0   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::HasHeroEnflamedEntity
+00eb23e0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb23e0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb23e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb23e0   WARN SHARED_HEADER_AVAILABLE CV_MurderTwistFinalScript
+  WARN leaf '?DoAskingHeroToSpeakToBoss@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ' matches no symbol in 00eb23e0.obj; graded the largest function
+  WARN leaf '?DoAskingHeroToSpeakToBoss@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ' matches no symbol in 00eb23e0.obj; graded the largest function
+00eb23e0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb23e0   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb23e0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00eb23e0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb23e0   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBoss
+00eb3740   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb3740   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb3740   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb3740   WARN SHARED_HEADER_AVAILABLE CV_MurderTwistFinalScript
+  WARN leaf '?DoSayingThankYouToHero@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ' matches no symbol in 00eb3740.obj; graded the largest function
+  WARN leaf '?DoSayingThankYouToHero@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ' matches no symbol in 00eb3740.obj; graded the largest function
+00eb3740   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb3740   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb3740   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00eb3740   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb3740   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoSayingThankYouToHero
+00eb4f80   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb4f80   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb4f80   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb4f80   WARN SHARED_HEADER_AVAILABLE CV_MurderTwistFinalScript
+  WARN leaf '?DoRemindingHeroToKillSheriff@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ' matches no symbol in 00eb4f80.obj; graded the largest function
+  WARN leaf '?DoRemindingHeroToKillSheriff@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ' matches no symbol in 00eb4f80.obj; graded the largest function
+00eb4f80   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb4f80   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb4f80   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00eb4f80   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb4f80   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::DoRemindingHeroToKillSheriff
+00c8ab70   RELOCATION_MATCH PASS   libvorbis::ov_raw_seek
+00c8ae90   RELOCATION_MATCH PASS   libvorbis::ov_pcm_seek_page
+00c8b490   RELOCATION_MATCH PASS   libvorbis::ov_pcm_seek
+00c8d690   RELOCATION_MATCH PASS   libogg::ogg_stream_pagein
+00c8ff30   RELOCATION_MATCH PASS   libvorbis::vorbis_synthesis_blockin
+00c90c80   RELOCATION_MATCH PASS   libvorbis::vorbis_window
+00c90cb0   RELOCATION_MATCH PASS   libvorbis::vorbis_analysis
+00c912f0   MATCH            PASS   libogg::oggpack_reset
+00c91800   MATCH            PASS   libogg::oggpack_get_buffer
+00c94ae0   RELOCATION_MATCH PASS   libvorbis::_vp_couple
+00c9c620   RELOCATION_MATCH PASS   libvorbis::mdct_backward
+00c9c870   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c9c870   RELOCATION_MATCH PASS   libvorbis::mdct_forward
+00c9cfd0   MATCH            PASS   libvorbis::vorbis_bitrate_managed
+00c9dd60   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c9dd60   WARN RELOC_CONFLICT: @todB@4 -> 00c9dd40 here, 00c90d40 in landed 00c90d60
+00c9dd60   RELOCATION_MATCH PASS   libvorbis::_ve_amp
+00c9e280   RELOCATION_MATCH PASS   libvorbis::_ve_envelope_search
+00c9ea70   RELOCATION_MATCH PASS   libvorbis::_vorbis_window_get
+00c9ef90   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c9ef90   WARN RELOC_CONFLICT: @todB@4 -> 00c9ef70 here, 00c90d40 in landed 00c90d60
+00c9ef90   RELOCATION_MATCH PASS   libvorbis::mapping0_forward
+
+WINS: 53
+  00643ff6 MATCH _global::?SetFine@CCrimeStatBar@NPlayerGui@@QAEXJ@Z
+  0065a28f RELOCATION_MATCH CTCVillage::?GetNormalisedTimeLeftOnFines@CTCVillage@@QAEMXZ
+  009881f0 MATCH CShaderRenderManager::?SetWorldTransform@CShaderRenderManager@@QAEXABVCMatrix3x4@@@Z
+  00adf610 RELOCATION_MATCH CParticleSimulation::?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z
+  00aeaa00 RELOCATION_MATCH _global::?GetOneOverTickRate@NParticleEngine@@YIMXZ
+  00aeaa20 RELOCATION_MATCH _global::?GetFadeOutStartDistance@NParticleEngine@@YIMXZ
+  00aeaa30 RELOCATION_MATCH _global::?GetFadeInEndDistance@NParticleEngine@@YIMXZ
+  00aeaa40 RELOCATION_MATCH _global::?GetFadeInStartDistance@NParticleEngine@@YIMXZ
+  00aeaa50 RELOCATION_MATCH _global::?GetMaxDrawDistance@NParticleEngine@@YIMXZ
+  00aeaa60 RELOCATION_MATCH _global::?GetMaxSpawnDistance@NParticleEngine@@YIMXZ
+  00aeaa80 RELOCATION_MATCH _global::?SetGraphicBank@NParticleEngine@@YIXABVCGraphicDataBank@@@Z
+  00aeaa90 RELOCATION_MATCH _global::?SetMeshBank@NParticleEngine@@YIXABVCMeshDataBank@@@Z
+  00aeaab0 RELOCATION_MATCH _global::?GetMeshBank@NParticleEngine@@YIABVCMeshDataBank@@XZ
+  00aeaad0 MATCH _global::?GetRandomSeed@NParticleEngine@@YIAAKXZ
+  00aeaae0 RELOCATION_MATCH _global::?GetParticleEmitterDatabase@NParticleEngine@@YIAAVCParticleEmitterDatabase@1@XZ
+  00aeab00 RELOCATION_MATCH _global::?GetPSCManager@NParticleEngine@@YIAAVCPSCManager@1@XZ
+  00aeab10 RELOCATION_MATCH _global::?GetEnvironmentInteraction@NParticleEngine@@YIAAVCAEnvironmentInteraction@1@XZ
+  00aeabe0 RELOCATION_MATCH CParticleEmitterManager::?CreateDecalEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z
+  00af3db0 MATCH DoSizeof::?PeekEmitterVelocity@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ
+  00af4660 RELOCATION_MATCH NParticleEngine::CParticleSystem::?ReadBinary@CParticleSystem@NParticleEngine@@QAEXAAVCDataInputStream@@@Z
+  00af5330 RELOCATION_MATCH CParticleSystem::?DeleteParticle@CParticleSystem@NParticleEngine@@QAE?AV?$_List_iterator@V?$_List_val@PAVCParticle@NParticleEngine@@V?$allocator@PAVCParticle@NParticleEngine@@@std@@@std@@@std@@AAV34@@Z
+  00af5380 RELOCATION_MATCH NParticleEngine::CParticleSystem::?AllocateDecal@CParticleSystem@NParticleEngine@@QAEPAVCDecal@2@XZ
+  00af85e0 RELOCATION_MATCH NParticleEngine::CParticle::?GetInterpolatedLifetimerInSeconds@CParticle@NParticleEngine@@QBEMM@Z
+  00af9410 MATCH NParticleEngine::CPSCRenderSprite::?DatabaseCopy@CPSCRenderSprite@NParticleEngine@@UAEXABVCPSCBase@2@@Z
+  00afeb90 MATCH NParticleEngine::CPSCRenderMesh::?DatabaseCopy@CPSCRenderMesh@NParticleEngine@@UAEXABVCPSCBase@2@@Z
+  00afee00 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?WriteBinary@CPSCRenderMesh@NParticleEngine@@UBEXAAVCDataOutputStream@@@Z
+  00bbc0b0 RELOCATION_MATCH CEnginePrimitiveManagerParticleGroup::?SetUpPointLights@CEnginePrimitiveManagerParticleGroup@@QAEJXZ
+  00d66e90 RELOCATION_MATCH CV_AmbushScamScript::?WatchForLeaving@CQ_GuildTrainingWoodsMeleeScript@NScript@@QAEXXZ
+  00d74ce0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?WatchForMissionEnd@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+  00d77340 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?GetGuardsHealth@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+  00d773e0 RELOCATION_MATCH CQ_HangingTreeGoodScript::?MonitorRegionPresence@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+  00eb0700 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::?WaitForEnflameReactionIfNecessary@CV_MurderTwistFinalScript@NScript@@QAEXABVCScriptThing@@@Z
+  00eb07d0 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z
+  00eb23e0 RELOCATION_MATCH CMurderTwistSheriffGuard::?DoAskingHeroToSpeakToBoss@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00eb3740 RELOCATION_MATCH CMurderTwistSheriffGuard::?DoSayingThankYouToHero@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00eb4f80 RELOCATION_MATCH CMurderTwistAssassin::?DoRemindingHeroToKillSheriff@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00c8ab70 RELOCATION_MATCH libvorbis::@ov_raw_seek@12
+  00c8ae90 RELOCATION_MATCH libvorbis::@ov_pcm_seek_page@12
+  00c8b490 RELOCATION_MATCH libvorbis::@ov_pcm_seek@12
+  00c8d690 RELOCATION_MATCH libogg::@ogg_stream_pagein@8
+  00c8ff30 RELOCATION_MATCH libvorbis::@vorbis_synthesis_blockin@8
+  00c90c80 RELOCATION_MATCH libvorbis::@vorbis_window@8
+  00c90cb0 RELOCATION_MATCH libvorbis::@vorbis_analysis@8
+  00c912f0 MATCH libogg::@oggpack_reset@4
+  00c91800 MATCH libogg::@oggpack_get_buffer@4
+  00c94ae0 RELOCATION_MATCH libvorbis::@_vp_couple@40
+  00c9c620 RELOCATION_MATCH libvorbis::@mdct_backward@12
+  00c9c870 RELOCATION_MATCH libvorbis::@mdct_forward@12
+  00c9cfd0 MATCH libvorbis::@vorbis_bitrate_managed@4
+  00c9dd60 RELOCATION_MATCH libvorbis::@_ve_amp@24
+  00c9e280 RELOCATION_MATCH libvorbis::@_ve_envelope_search@4
+  00c9ea70 RELOCATION_MATCH libvorbis::@_vorbis_window_get@4
+  00c9ef90 RELOCATION_MATCH libvorbis::@mapping0_forward@4

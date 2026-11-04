@@ -1,5 +1,6 @@
 // CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups(CEngineInternalPrimitiveBase& primitive, ERenderPassType pass, const CMatrix3x4& transform) -- render a particle group's member primitive by type: nested groups recurse over their children, sprites and sprite trails go straight to their managers (the trail restoring the vertex-shader constant layout), everything else through its manager's virtual sub-primitive render
-// Leaf: RenderSubPrimGroups
+// Leaf: ?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z
+// Naming wave 35c: FableWin.pdb + Ego_r.pdb protected (IAE); queue land0411f.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BBC130, length 480 bytes (switch tables inline), `ret 0Ch`.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0 / CBaseClassNonCopyable::~CBaseClassNonCopyable 0x0099A300 (the CEngineSubPrimitiveBase local, vtable 0x012A3E7C;
 //   its out-of-line ctor 0x00B98A50 in the type-30 case), CEnginePrimitiveManagerParticleSpriteGroup::RenderSingleSprite
@@ -87,7 +88,7 @@ public:
 };
 
 class CEnginePrimitiveManagerParticleGroup {
-public:
+protected:
     void RenderSubPrimGroups(CEngineInternalPrimitiveBase& primitive, ERenderPassType pass, const CMatrix3x4& transform);
 };
 

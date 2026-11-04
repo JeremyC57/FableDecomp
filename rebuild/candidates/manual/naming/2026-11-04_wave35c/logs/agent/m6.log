@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00af0ef0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00af0ef0   WARN RELOC_NAME: ??$__uninitialized_copy@PAV?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@PAV1@@std@@YIPAV?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@PAV1@00ABU__false_type@0@@Z -> 00af0a60 labelled 'std::_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>'
+00af0ef0   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@@std@@YIXPAV?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@0ABU__false_type@0@@Z -> 00af0d80 labelled '_global::DestroyRange_CountedPointer_00af0d80'
+00af0ef0   RELOCATION_MATCH PASS   std::vector<CCountedPointer<NParticleEngine::CParticleSystem> >::reserve
+00b0f920   RELOCATION_MATCH PASS   std::list<CIntelligentPointer<NParticleEngine::CParticleEmitter> >::push_back
+00addd80   WARN SHARED_HEADER_AVAILABLE C3DVector
+00addd80   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00addd80   RELOCATION_MATCH PASS   C3DBoundingSphere::AddToBounds
+00a88c10   RELOCATION_MATCH PASS   CQuaternion::operator*=
+00655318   RELOCATION_MATCH PASS   CIntelligentPointer<NParticleEngine::CParticleEmitter>::CIntelligentPointer(CParticleEmitter*)
+
+WINS: 5
+  00af0ef0 RELOCATION_MATCH std::vector<CCountedPointer<NParticleEngine::CParticleSystem> >::?reserve@?$vector@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@V?$allocator@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@@std@@@std@@QAEXI@Z
+  00b0f920 RELOCATION_MATCH std::list<CIntelligentPointer<NParticleEngine::CParticleEmitter> >::?push_back@?$list@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@Z
+  00addd80 RELOCATION_MATCH C3DBoundingSphere::?AddToBounds@C3DBoundingSphere@@QAEXABVC3DVector@@M@Z
+  00a88c10 RELOCATION_MATCH CQuaternion::??XCQuaternion@@QAEABV0@ABV0@@Z
+  00655318 RELOCATION_MATCH CIntelligentPointer<NParticleEngine::CParticleEmitter>::??0?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z

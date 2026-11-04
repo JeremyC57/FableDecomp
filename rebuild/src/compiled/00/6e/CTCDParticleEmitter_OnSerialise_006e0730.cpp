@@ -1,5 +1,7 @@
+// Naming wave 35c (queue land0411b 0x009E5090): CSymbolInfo is nested in CSymbolMap (FableWin.pdb `?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z`, class-keyed, const).
 // CTCDParticleEmitter::OnSerialise(CPersistContext& context, bool transfer) -- persist an independent emitter: when saving (only for independent objects) its flag and its particle type by name; when loading the flag and the type name, translating the name back to the type id (a type that no longer exists kills the thing, unless front-end definitions are being compiled)
 // Leaf: OnSerialise
+// Naming wave 35c (caller respell): calls 0x00AEAAE0 as NParticleEngine::GetParticleEmitterDatabase() (?GetParticleEmitterDatabase@NParticleEngine@@YIAAVCParticleEmitterDatabase@1@XZ, FableWin.pdb + Ego_r.pdb); the database class is NParticleEngine::CParticleEmitterDatabase (was a static CParticleEmitterDatabase::Get()).
 //
 // Retail 0x006E0730, 330 bytes (`ret 8`).
 // Callees: CPersistContext::Transfer<bool> @ 0x004045C0 ("IndependantObject", default false), the particle emitter database
@@ -37,19 +39,21 @@ class CPersistContext { public:
     //   instances here: CCharString 0x00411010
 };
 
-struct CSymbolInfo {
-    CCharString GroupName;                                  // +0x00
-    CCharString EntryName;                                  // +0x04
-    long        Val;                                        // +0x08
-};
 class CSymbolMap { public:
-    CSymbolInfo* FindFirstSymbolWithVal(long value);        // 0x009E5090
+    class CSymbolInfo { public:
+        CCharString GroupName;                                  // +0x00
+        CCharString EntryName;                                  // +0x04
+        long        Val;                                        // +0x08
+    };
+    const CSymbolInfo* FindFirstSymbolWithVal(long value) const;   // 0x009E5090
     bool Lookup(const CCharString& name, long* value);      // 0x009E5170
 };
-struct CParticleEmitterDatabase {
+namespace NParticleEngine {
+class CParticleEmitterDatabase { public:
     CSymbolMap SymbolMap;                                   // +0x00
-    static CParticleEmitterDatabase* __fastcall Get();      // 0x00AEAAE0
 };
+CParticleEmitterDatabase& __fastcall GetParticleEmitterDatabase();   // 0x00AEAAE0
+}
 extern bool g_bCompileFrontendDefinitions;                  // 0x013B8648
 
 class CThing {
@@ -86,8 +90,8 @@ void CTCDParticleEmitter::OnSerialise(CPersistContext& context, bool transfer)
             return;
         bool independant = IndependantObject;
         context.Transfer("IndependantObject", independant, false);
-        CParticleEmitterDatabase* database = CParticleEmitterDatabase::Get();
-        CSymbolInfo* info = database->SymbolMap.FindFirstSymbolWithVal(ParticleTypeID);
+        NParticleEngine::CParticleEmitterDatabase* database = &NParticleEngine::GetParticleEmitterDatabase();
+        const CSymbolMap::CSymbolInfo* info = database->SymbolMap.FindFirstSymbolWithVal(ParticleTypeID);
         CCharString typeName;
         if (info)
             typeName = info->EntryName;
@@ -99,7 +103,7 @@ void CTCDParticleEmitter::OnSerialise(CPersistContext& context, bool transfer)
         CCharString typeName;
         context.Transfer("ParticleTypeName", typeName, EmptyCCharString());
         if (!g_bCompileFrontendDefinitions) {
-            CParticleEmitterDatabase* database = CParticleEmitterDatabase::Get();
+            NParticleEngine::CParticleEmitterDatabase* database = &NParticleEngine::GetParticleEmitterDatabase();
             database->SymbolMap.Lookup(typeName, &ParticleTypeID);
             if (ParticleTypeID == 0)
                 ParentThing->Kill(true);

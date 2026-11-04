@@ -1,4 +1,5 @@
 // YesCloseInventory() -- the "yes" answer of the experience screen's close prompt: if the main player's character is alive, close its experience inventory with undo
+// Naming wave 35c (queue land0411j 0x00487B70): calls 0x00487B70 as CPlayer::GetPPlayerCharacterThing() const (Ego_r.pdb ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ; was GetPlayerCharacter).
 // Leaf: ?YesCloseInventory@@YIXXZ
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -8,7 +9,7 @@
 //   `?YesCloseInventory@@YIXXZ`, a free yes/no callback). Frame-pointer size TU, as the neighbouring landed
 //   CTCInventoryExperience::OpenInventory (0x0056FAD7): optimize("y", off) + ("s", on).
 // Callees: CPlayerManager::GetMainPlayer() const @ 0x00449960 (the main game component 0x013B86A0 +0x1C),
-//   CPlayer::GetPlayerCharacter @ 0x00487B70, IS_THING_ALIVE<CThing*> @ 0x0040DCE0 (__fastcall, by reference),
+//   CPlayer::GetPPlayerCharacterThing() const @ 0x00487B70, IS_THING_ALIVE<CThing*> @ 0x0040DCE0 (__fastcall, by reference),
 //   std::bitset::test @ 0x00410DE0 + CVectorMap::LowerBound @ 0x0040F020 (the inline CThing::GetInterface for
 //   interface 0x16, the experience inventory), and that component's virtual slot 89 (+0x164) given true (the
 //   landed 0x0057770A body: slot 89, `bool undo` -- give back the undoable purchases, then close).
@@ -75,7 +76,7 @@ public:
 
 class CPlayer {
 public:
-    CThing* GetPlayerCharacter();                    // 0x00487B70
+    CThing* GetPPlayerCharacterThing() const;      // 0x00487B70
 };
 class CPlayerManager {
 public:
@@ -193,7 +194,7 @@ class CTCInventoryExperience { public:                      // interface type 0x
 
 void __fastcall YesCloseInventory()
 {
-    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetPlayerCharacter();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetPPlayerCharacterThing();
     if (IS_THING_ALIVE(hero)) {
         CTCInventoryExperience* inventory;
         hero->GetInterface(&inventory, 0x16);

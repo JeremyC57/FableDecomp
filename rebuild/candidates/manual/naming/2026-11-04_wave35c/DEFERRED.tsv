@@ -1,0 +1,49 @@
+address	catalog_or_queue	reason
+00431773	sub_00431773	ROWS: catalog demoted to sub_ (no proven name in two sources); current leaf ?_M_create_node@ prefix; callers 004316cf/00432bab are std::_Rb_tree<CCharString,pair<const CCharString,long>> members, so the exact _M_create_node instance needs the owner/coordinator to pick the template spelling
+004538eb	sub_004538eb	ROWS: catalog demoted to sub_; lead: bound as ??0COpinionSet by 00456ffe (one source only)
+00487120	sub_00487120	ROWS: catalog demoted to sub_; caller 00449a50 (CEngine::GetEditorAnimation) only; no PDB-proven name
+00487150	sub_00487150	ROWS: catalog demoted to sub_; the queue proposes SpecialAbilityUnfreezeControls while it is also bound as EndSpecialMoveMode: conflicting single-source leads
+00594f28	sub_00594f28	ROWS: catalog demoted to sub_; no proven name
+005da4e0	sub_005da4e0	ROWS: catalog demoted to sub_; lead: bound as CTCWeapon::ReadyProjectile / ResetAiming by 006ea450 / 006ed510 (conflicting)
+00ce0ef0	CEntityScriptBinding<NScript::CPersonalScript_GlobalThingsScript>::CreateActiveEntityScript	ROWS: re-model: 269 bytes with a different register allocation from the 272-byte F002 family; the current source is an ExternalRetry hack, so a respell alone does not reproduce the bytes
+00aff0a0	queue land0411b 0x00AFEAD0	binder re-model: binds ??0SMeshCreateInfo@@QAE@JABVCMatrix3x4@@KK@Z for the CEnginePrimitiveParticleMeshGroup constructor (enum blend-mode parameters and the real class)
+00afe9b0	queue land0411b 0x00AFE910	binder re-model: Handles/NestedIDs/PrimitiveIDs stand-in vector classes for resize (nested PDB container types)
+00b22b40	queue land0411d 0x007C2AB0	binder re-model: ??0/??1 CArray<C3DVector> vs the CSTLportVector template the PDB names
+0075b8d0	queue land0411d 0x0075B8D0	binder re-models: 00764e90 / 00b20b60 / 00762e10 / 0075ba30 / 00a6cb20 bind CElement12_0075b8d0 / CKeyVector / CPointVector / CRigidBodyConfig / CArray operator= stand-ins (new class models)
+0075fa30	queue land0411d 0x0075FA30 / 0x0075F830	binder re-model: CCountedPointer_0075f830::Reset / Destroy_0075f830 stand-ins for a CCountedPointer<T> instance
+00bbe090	queue land0411f 0x00BBE090 / 0x00BC04F0	definitions not landed; binders 00bbc130 / 00bad2e0 pass CEngineSubPrimitiveBase* where the PDB takes CEngineSubPrimitiveBase&: re-model with the definitions
+00b846e0	queue land0411j 0x00B84580	binder re-model: AddSubPrimitive stand-in PAX0000PAUSSortKey_00b846e0 parameters
+00a4dea0	queue land0411j 0x00A4C1F0	binder re-model: GetKeyframeInterpolate takes C3DKeyframe& and unsigned long in Ego_r.pdb; the landed binder passes pointers and long (definition not landed)
+00b82100	queue land0411k2 0x00AE29D0	binder re-model: SetupSimulation binder passes seven pointers; the PDB signature takes references (definition not landed)
+00ae0050	queue land0411k2 0x00ADF610 (caller)	caller DIFFER after the CopyFrom/Init respell: retail normalises the bool (test al,al ; setne al) and the test links the old symbol; body re-model
+00af4530	queue land0411d 0x00AEAB00 (caller)	caller re-model: models CCharString/CCountedPointer inside NParticleEngine and CPSCFactory::Get; GetPSCManager().AllocatePSC needs the real types
+0047db73	queue land0411j 0x00487B70 (caller)	caller re-model: masked self-typed model C::GetC(); needs the CPlayer chain
+00f36540	queue land0411c / land0411j 0x00F36010	not landed (parked drafts): nothing to respell
+00b94540	queue land0411j 0x00B94540	not landed: nothing to respell
+00488620	queue land0411j 0x00488620	not landed: nothing to respell
+00a9d480	queue land0411k2 0x00A9D480	not landed: nothing to respell
+00bc3f3d	queue land0411f 0x00BC3F3D	not a function (inside another body): note only
+00d69480	queue land0411g 0x00D69480	not landed (label only): nothing to respell
+00ae1320	queue land0411k2 0x00AE1320	definition not landed; its binder 00ae2d20 already spells the PDB symbol
+00c8ab70	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c8ae90	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c8b490	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c8d690	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c8ff30	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c90c80	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c90cb0	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c912f0	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c91800	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c94ae0	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c9c620	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c9c870	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c9cfd0	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c9dd60	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c9e280	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c9ea70	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c9ef90	libvorbis/libogg	NO_CHANGE: already the exact C symbol (@name@N fastcall decoration of the libvorbis 1.1 / libogg 1.1.1 function); graded RELOCATION_MATCH/MATCH PASS unchanged in logs/cur1.log
+00c90fc0	queue (done before this wave)	NO_CHANGE: binders 00c911b0 / 00c96140 already spell @oggpack_write@12
+00ae2510	queue (done before this wave)	NO_CHANGE: binder 00ae2cb0 already spells the PDB ApplyConstraints
+00aa3c50	queue (done before this wave)	NO_CHANGE: already the PDB spelling, no stale binder
+009fca40	queue (done before this wave)	NO_CHANGE: already the PDB spelling, no stale binder
+00a9d580	queue (done before this wave)	NO_CHANGE: already the PDB spelling

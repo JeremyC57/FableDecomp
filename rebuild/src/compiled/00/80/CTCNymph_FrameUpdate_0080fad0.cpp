@@ -1,4 +1,5 @@
 // CTCNymph::FrameUpdate() -- while flying: once faded in, follow the flight spline for a second of world frames (then pick a new target position), keep ReadyToAttack from the live target's range or else adopt the owner's targeting target; while fading out after flying, fade the alpha down and hide the owner at zero; while fading in, fade the alpha up and kill the old effect at zero; then the base FrameUpdate
+// Naming wave 35c (queue land0411j 0x00A567A0): calls 0x00A567A0 as CCardinalSpline::GetSplinePosition(C3DVector&, float) const (Ego_r.pdb ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z; the out vector by reference).
 // Leaf: FrameUpdate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080FAD0, 593 bytes, plain `ret`.
 // Callees: CTCBase::GetWorld @ 0x00686A70, CWorld::GetWorldFrame @ 0x0049D870, CCardinalSpline::GetSplinePosition @ 0x00A567A0,
@@ -199,7 +200,7 @@ class CCardinalSpline { public:                                    // retail 0x1
     void* ControlPoints[3];
     float Tension;
     bool EndPointsConnected;
-    void GetSplinePosition(C3DVector* out, float t) const;  // 0x00A567A0
+    void GetSplinePosition(C3DVector& out, float t) const;  // 0x00A567A0
 };
 #pragma pack(push, 1)
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x0123E7D8
@@ -271,7 +272,7 @@ void CTCNymph::FrameUpdate()
             float t = (float)(GetWorld().GetFrame() - LastTargetTick) / g_FramesPerSecondF;
             if (t < 1.0f) {
                 C3DVector position;
-                FlightSpline.GetSplinePosition(&position, t * 0.75f + 0.25f);
+                FlightSpline.GetSplinePosition(position, t * 0.75f + 0.25f);
                 position.Z -= EffectHeightOffset;
                 ParentThing->PhysicsBody->SetPosition(position);
             } else

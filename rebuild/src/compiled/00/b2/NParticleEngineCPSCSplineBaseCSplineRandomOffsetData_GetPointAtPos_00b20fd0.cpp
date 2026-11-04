@@ -1,4 +1,5 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtPos(out,position,time) -- evaluate current point or previous-frame point, synchronizing changed spline counts
+// Naming wave 35c (queue land0411j 0x00A567A0): calls 0x00A567A0 as CCardinalSpline::GetSplinePosition(C3DVector&, float) const (Ego_r.pdb ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z; the out vector by reference).
 // Leaf: GetPointAtPos
 // Retail00B20FD0,177 bytes through ret12 at00B2107E;15 trailing int3 bytes excluded.
 // Same PDB/native20-byte CCardinalSpline model as canonical Update00B21160. No shared
@@ -15,7 +16,7 @@ class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;
     float Tension;
     bool EndPointsConnected;
-    void GetPoint(C3DVector*,float); //00A567A0
+    void GetSplinePosition(C3DVector&,float) const; //00A567A0
     CCardinalSpline& operator=(const CCardinalSpline& other) {
         ControlPoints=other.ControlPoints; Tension=other.Tension; EndPointsConnected=other.EndPointsConnected; return *this;
     }
@@ -31,7 +32,7 @@ struct CSplineRandomOffsetData {
     void GetPointAtPos(C3DVector* out,float position,float time);
 };
 void CSplineRandomOffsetData::GetPointAtPos(C3DVector* out,float position,float time) {
-    if(OffsetOnlyAtStartup) {ThisSpline.GetPoint(out,position);return;}
-    if(PreviousSpline.ControlPoints.Size()!=ThisSpline.ControlPoints.Size()) {PreviousSpline=ThisSpline;ThisSpline.GetPoint(out,position);}
-    else {C3DVector current;ThisSpline.GetPoint(&current,position);PreviousSpline.GetPoint(out,position);}
+    if(OffsetOnlyAtStartup) {ThisSpline.GetSplinePosition(*out,position);return;}
+    if(PreviousSpline.ControlPoints.Size()!=ThisSpline.ControlPoints.Size()) {PreviousSpline=ThisSpline;ThisSpline.GetSplinePosition(*out,position);}
+    else {C3DVector current;ThisSpline.GetSplinePosition(current,position);PreviousSpline.GetSplinePosition(*out,position);}
 }

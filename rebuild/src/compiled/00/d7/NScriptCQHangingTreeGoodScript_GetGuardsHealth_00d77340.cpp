@@ -1,5 +1,6 @@
 // CQ_HangingTreeGoodScript::GetGuardsHealth() -- record the current health of every guard in GuardsHealthVector (stopping early if the script thread is terminating)
-// Leaf: GetGuardsHealth
+// Leaf: ?GetGuardsHealth@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+// Naming wave 35c: the exact PDB symbol (Ego_r.pdb + FableWin.pdb); the catalog carries the name; body unchanged.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D77340, 149 bytes (+ int3 padding).
 // Label correction: the manifest's "CEngineWorldMap::BuildAndSaveSea" is propagated. The body sits between the
 //   CQ_HangingTreeGoodScript functions (0x00D766C0 SetGuardsHealth, 0x00D773E0 MonitorRegionPresence), uses the quest

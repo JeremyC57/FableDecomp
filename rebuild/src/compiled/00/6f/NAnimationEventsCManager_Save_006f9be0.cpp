@@ -1,3 +1,4 @@
+// Naming wave 35c (queue land0411b 0x009E5090): CSymbolInfo is nested in CSymbolMap (FableWin.pdb `?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z`, class-keyed, const).
 // NAnimationEvents::CManager::Save(const CWideString& fileName) -- when the event table is dirty, write it as text:
 //   BEGIN_ANIMATION_EVENTS, then per animation "BEGIN_EVENTS: <EAnimType name>" (names from meshdata.h), one
 //   "<event name> <time> START|STOP" line per event (STOP when the packed word's top bit is set) and END_EVENTS, then
@@ -57,12 +58,12 @@ class CPersistContext { public:                               // retail 0x2c byt
     CPersistContext(CCharString& output);              // 0x009BAE10
     void Transfer_009bab50(CCharString& value);                 // 0x009BAB50
 };
-struct CSymbolInfo {
-    CCharString GroupName;                             // +0x00
-    CCharString EntryName;                             // +0x04
-    long        Val;                                   // +0x08
-};
 class CSymbolMap { public:                                    // retail 0x24 bytes (as the landed 0x00af1600)
+    class CSymbolInfo { public:
+        CCharString GroupName;                             // +0x00
+        CCharString EntryName;                             // +0x04
+        long        Val;                                   // +0x08
+    };
     unsigned char _body[0x24];
     CSymbolMap();                                      // 0x009E5200
     ~CSymbolMap();                                     // 0x006FD040
@@ -117,10 +118,10 @@ void CManager::Save(const CWideString& fileName)
         animTypes.LoadFromHeaderFile(NBankFileManager::GetHeaderDir() + (const unsigned short*)L"meshdata.h");
         for (CAnimEvents* it = ExtraAnimEvents_start; it != ExtraAnimEvents_finish; ++it) {
             unsigned long animID = it->AnimID;
-            const CSymbolInfo* info = animTypes.FindFirstSymbolWithVal("EAnimType", animID);
+            const CSymbolMap::CSymbolInfo* info = animTypes.FindFirstSymbolWithVal("EAnimType", animID);
             context.Transfer_009bab50("BEGIN_EVENTS: " + info->EntryName + "\r\n");
             for (CEvent* e = it->Events.begin(); e != it->Events.end(); ++e) {
-                const CSymbolInfo* name = EventNames.FindFirstSymbolWithVal(e->Packed & 0x3fffffff);
+                const CSymbolMap::CSymbolInfo* name = EventNames.FindFirstSymbolWithVal(e->Packed & 0x3fffffff);
                 if (e->Packed & 0x80000000)
                     context.Transfer_009bab50(name->EntryName + " " + CCharString::FormatDouble(6, e->Time) + " STOP\r\n");
                 else

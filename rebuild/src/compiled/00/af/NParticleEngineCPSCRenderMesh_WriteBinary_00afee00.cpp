@@ -1,4 +1,8 @@
-// NParticleEngine::CPSCRenderMesh::WriteBinary(CDataOutputStream*) -- serialize the mesh renderer: bank indices, the six trail/mesh colours, the packed bit-field integers/flags and the render-size param
+// NParticleEngine::CPSCRenderMesh::WriteBinary(CDataOutputStream&) const -- serialize the mesh renderer: bank indices, the six trail/mesh colours, the packed bit-field integers/flags and the render-size param
+// Leaf: ?WriteBinary@CPSCRenderMesh@NParticleEngine@@UBEXAAVCDataOutputStream@@@Z
+// Naming wave 35c: FableWin.pdb + Ego_r.pdb ?WriteBinary@CPSCRenderMesh@NParticleEngine@@UBEXAAVCDataOutputStream@@@Z -- vtable slot 16, const, the stream by
+//   reference (every FableWin.pdb ?WriteBinary@CPSC*@NParticleEngine@@UBEXAAVCDataOutputStream@@@Z); the CPSCBase bytes are now the polymorphic
+//   base (vptr, ParticleSystem +0x04, the flag bits +0x08) of the landed CPSCOrbit model. Was a non-virtual pointer stand-in. Same bytes.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AFEE00, 666 bytes. Label correction: the catalog row says
 //   CPSCRenderSprite::WriteBinary, but the only reference is vtable slot 16 of NParticleEngine::CPSCRenderMesh (0x0129F96C).
 // Callees (lane names, as in the landed CPSCAttractor/CPSCLight WriteBinary): WriteLong 0x00993EB0, WriteColour
@@ -11,9 +15,17 @@ class C3DVector { public: float X, Y, Z; };
 class CCharString { public: void* PStringData; };
 class CRGBColour { public: union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };
 class CEnginePrimitiveHandle { public: long Index; long Generation; };
+struct CBase {                                          // the polymorphic root (vptr +0x00), as the landed CPSCOrbit::DatabaseCopy 0x00B163A0
+    virtual ~CBase();
+};
 namespace NParticleEngine {
-class CPSCRenderMesh { public:
-    unsigned char _base[0xc];                           // CPSCBase
+class CParticleSystem;
+class CPSCBase : public CBase { public:                   // vtable 0x0129F3F4
+    CParticleSystem* ParticleSystem;        // +0x04
+    bool             UpdateStarted : 1;     // +0x08 bit 0
+    bool             Initialised : 1;       // +0x08 bit 1
+};
+class CPSCRenderMesh : public CPSCBase { public:
     long BankIndex;                                     // +0x0c
     long TrailBankIndex;                                // +0x10
     CRGBColour TrailStartColour;                        // +0x14
@@ -58,11 +70,11 @@ class CPSCRenderMesh { public:
     long ChildPrimIndex;                                // +0x54
     CEnginePrimitiveHandle TrailPrimHandle;             // +0x58
     long ChildTrailPrimIndex;                           // +0x60
-    void WriteBinary(CDataOutputStream* out);
+    virtual void WriteBinary(CDataOutputStream& out) const;   // slot 16
 };
-void CPSCRenderMesh::WriteBinary(CDataOutputStream* destination)
+void CPSCRenderMesh::WriteBinary(CDataOutputStream& destination) const
 {
-    CDataOutputStream* out = (CDataOutputStream*)destination;
+    CDataOutputStream* out = &destination;
     out->WriteSLONG(BankIndex);
     out->WriteSLONG(TrailBankIndex);
     out->WriteColour(TrailStartColour);

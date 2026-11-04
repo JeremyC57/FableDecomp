@@ -1,4 +1,5 @@
 // CWorld::TeleportHeroToHSP(const CCharString& name) -- teleport the hero to the holy site whose ScriptName is name (false when no such site exists)
+// Naming wave 35c (queue land0411j 0x00487B70): calls 0x00487B70 as CPlayer::GetPPlayerCharacterThing() const (Ego_r.pdb ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ; was GetPlayerCharacter).
 // Leaf: ?TeleportHeroToHSP@CWorld@@QAE_NABVCCharString@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -8,7 +9,7 @@
 // Callees: CWorld::PeekThingManager (virtual slot 4, +0x10; 0x0049E1C0), the CWorld-TU copy of the holy-site copy
 //   template 0x004ADCB0 (/Gr, hidden result in ecx; the same body as CPlayer's 0x0048D5C0), CCharString copy 0x0099EC30 /
 //   dtor 0x0099EAE0, STLport __find_if 0x0048CC60 with bind2nd(ptr_fun(0x0048BC70), name), CThing::GetScriptThing 0x004C7E50,
-//   CPlayerManager::GetMainPlayer 0x00449970 (CMainGameComponent::Get() 0x013B86A0 +0x1C), CPlayer::GetPlayerCharacter
+//   CPlayerManager::GetMainPlayer 0x00449970 (CMainGameComponent::Get() 0x013B86A0 +0x1C), CPlayer::GetPPlayerCharacterThing() const
 //   0x00487B70, CGameScriptInterface::EntityTeleportToThing (slot 472, +0x760; CWorld +0x38), ~CBaseClass 0x0099A2E0,
 //   operator delete 0x00BFE9BC, free 0x00BFEA14.
 // Shape: the landed CPlayer::LocateCharacterStartHolySite 0x00488B20 model (owner local before the vector, the inline
@@ -61,7 +62,7 @@ public:
 };
 class CPlayer {
 public:
-    CThing* GetPlayerCharacter();                  // 0x00487B70
+    CThing* GetPPlayerCharacterThing() const;    // 0x00487B70
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -232,7 +233,7 @@ bool CWorld::TeleportHeroToHSP(const CCharString& name)
     if (found != sites.end()) {
         CGameScriptInterface* gsi = PGameScriptInterface_ptr;
         CPlayerManager* players = CMainGameComponent::Get()->PlayerManager;
-        gsi->EntityTeleportToThing(players->GetMainPlayer().GetPlayerCharacter()->GetScriptThing(),
+        gsi->EntityTeleportToThing(players->GetMainPlayer().GetPPlayerCharacterThing()->GetScriptThing(),
                                    (*found)->GetScriptThing(), false);
         return true;
     }

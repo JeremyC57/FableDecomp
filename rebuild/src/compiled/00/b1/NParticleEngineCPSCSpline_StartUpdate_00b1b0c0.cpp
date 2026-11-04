@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSpline::StartUpdate(const CParticleUpdateParameters& params) -- vtable slot 8: per-frame spline set-up: run the base StartUpdate (refresh the spline data), mark the update started and advance the current spline position (bouncing between 0 and 1, or wrapping/clamping past the end)
 // Leaf: ?StartUpdate@CPSCSpline@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z
+// Naming wave 35c (caller respell): calls 0x00AEAA00 under its PDB name NParticleEngine::GetOneOverTickRate (?GetOneOverTickRate@NParticleEngine@@YIMXZ; no arguments, so the __fastcall call site is unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1B0C0, 232 bytes (+8 int3 padding).
 // Name: FableWin.pdb ?StartUpdate@CPSCSpline@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z; slot 8 of the
 // vtable 0x012A0934 (rtti-vtables.tsv; slot 8 of CPSCOrbit is the landed StartUpdate 0x00B16D50; the landed
@@ -22,7 +23,7 @@
 // loads the position argument into ecx and pushes it at once (retail: edx, pushed after the ecx load) and
 // shifts the later sete/spill registers (al -> dl, ecx -> eax). `ret 4`.
 class C3DVector { public: float X, Y, Z; };
-float GetParticleFrameTime_00aeaa00();      // 0x00AEAA00
+namespace NParticleEngine { float __fastcall GetOneOverTickRate(); }   // 0x00AEAA00
 
 namespace NParticleEngine {
 
@@ -78,7 +79,7 @@ void CPSCSpline::StartUpdate(const CParticleUpdateParameters<unsigned long, unsi
 {
     CPSCSplineBase::StartUpdate(params);
     UpdateStarted = true;
-    float frameTime = GetParticleFrameTime_00aeaa00();
+    float frameTime = NParticleEngine::GetOneOverTickRate();
     float step = frameTime * (SplineAnimSpeed / GetControlPointCount());
     if (ScaleSplineSpeed)
         step = SplinePosParamData->GetScaleFactor(params, SplineCurrentPosition) * step;

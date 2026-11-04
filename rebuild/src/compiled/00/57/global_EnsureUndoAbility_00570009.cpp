@@ -1,4 +1,5 @@
 // EnsureUndoAbility() -- the "yes" answer of the experience screen's undo-ability prompt: if the main player's character is alive, undo the pending ability purchase and hand the mouse pointer back from the yes/no dialog, then drop the dialog's yes/no buttons from the UI manager and send the close event
+// Naming wave 35c (queue land0411j 0x00487B70): calls 0x00487B70 as CPlayer::GetPPlayerCharacterThing() const (Ego_r.pdb ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ; was GetPlayerCharacter).
 // Leaf: ?EnsureUndoAbility@@YIXXZ
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -8,7 +9,7 @@
 //   installs it (`push 0x00570009` into the dialog's slot 142) after parking the ability in 0x013B8B08. Frame-pointer
 //   size TU: `#pragma optimize("y", off)` + `("s", on)`, as the landed neighbour YesCloseInventory 0x0056FBED.
 // Callees: CPlayerManager::GetMainPlayer() const 0x00449960 (the main game component 0x013B86A0 +0x1C),
-//   CPlayer::GetPlayerCharacter 0x00487B70, IS_THING_ALIVE<CThing*> 0x0040DCE0 (__fastcall, by reference),
+//   CPlayer::GetPPlayerCharacterThing() const 0x00487B70, IS_THING_ALIVE<CThing*> 0x0040DCE0 (__fastcall, by reference),
 //   std::bitset::test 0x00410DE0 + CVectorMap::LowerBound 0x0040F020 (the inline CThing::GetInterface for interface
 //   0x16, the experience inventory), CTCInventoryExperience::UndoBuyAbility(EHeroAbility, bool) 0x00576C4F,
 //   NUISystem::CManager::GetInstance 0x0041E5F2 (six times) with its ReleaseObserver (slot 10), AddObserver (slot 2)
@@ -109,7 +110,7 @@ public:
 
 class CPlayer {
 public:
-    CThing* GetPlayerCharacter();                    // 0x00487B70
+    CThing* GetPPlayerCharacterThing() const;      // 0x00487B70
 };
 class CPlayerManager {
 public:
@@ -145,7 +146,7 @@ extern NUISystem::CComponent*  g_pUndoMousePointer;  // 0x013B8B00
 
 void __fastcall EnsureUndoAbility()
 {
-    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetPlayerCharacter();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetPPlayerCharacterThing();
     if (IS_THING_ALIVE(hero)) {
         CTCInventoryExperience* inventory;
         hero->GetInterface(&inventory, 0x16);

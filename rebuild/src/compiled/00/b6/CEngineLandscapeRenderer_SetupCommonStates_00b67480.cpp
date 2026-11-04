@@ -1,4 +1,5 @@
 // CEngineLandscapeRenderer::SetupCommonStates() -- refreshes the global lighting and fog states, then loads an identity world transform into the shader render manager
+// Naming wave 35c (caller respell): calls 0x009881F0 as ?SetWorldTransform@CShaderRenderManager@@QAEXABVCMatrix3x4@@@Z (Ego_r.pdb + FableWin.pdb; was the pointer spelling).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B67480, length 140 bytes (144 with padding).
 // Callees: CEngineLightingManager::UpdateGlobalLightingStates @ 0x00B46C80 and CEngineLightingManager::EnableFog
 // @ 0x00B46890 (both on the lighting manager singleton @ 0x01436E9C, re-read for each call),
@@ -25,7 +26,7 @@ class CEngineLightingManager { public:
 extern CEngineLightingManager* g_pEngineLightingManager_01436e9c;   // 0x01436E9C
 
 class CShaderRenderManager { public:
-    void SetWorldTransform(const CMatrix3x4* matrix);   // 0x009881F0
+    void SetWorldTransform(const CMatrix3x4& matrix);   // 0x009881F0
 };
 extern CShaderRenderManager* g_pShaderRenderManager_01436e14;     // 0x01436E14
 
@@ -39,5 +40,5 @@ void CEngineLandscapeRenderer::SetupCommonStates()
     g_pEngineLightingManager_01436e9c->EnableFog();
     CMatrix3x4 identity;
     identity.SetIdentity();
-    g_pShaderRenderManager_01436e14->SetWorldTransform(&identity);
+    g_pShaderRenderManager_01436e14->SetWorldTransform(identity);
 }

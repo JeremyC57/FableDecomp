@@ -1,6 +1,6 @@
 // _global::VideoOptionsChangedConfirmed() -- message-box callback: tell the controlled character's in-game menu (interface 0xC6) that the new video options were confirmed
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0047D9E3, 109 bytes, plain `ret`.
-// Callees: CPlayerManager::GetMainPlayer() const @ 0x00449960, CPlayer::GetPlayerCharacter @ 0x00487B70,
+// Callees: CPlayerManager::GetMainPlayer() const @ 0x00449960, CPlayer::GetPPlayerCharacterThing() const @ 0x00487B70,
 // IS_THING_ALIVE<CThing*> @ 0x0040DCE0, std::bitset<>::test @ 0x00410DE0, CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound @ 0x0040F020, CTCInGameMenu::ConfirmedVideoOptionsChanged @ 0x0047D012.
 // Global: CMainGameComponent::Get() @ 0x013B86A0 (player manager at +0x1C).
@@ -73,7 +73,7 @@ class CTCInGameMenu {
 public:
     void ConfirmedVideoOptionsChanged();                    // 0x0047D012
 };
-class CPlayer { public: CThing* GetPlayerCharacter(); };           // 0x00487B70
+class CPlayer { public: CThing* GetPPlayerCharacterThing() const; };   // 0x00487B70
 class CPlayerManager { public: CPlayer* GetMainPlayer() const; };  // 0x00449960
 class CMainGameComponent {
 protected:
@@ -87,7 +87,7 @@ private: public:
 
 void __fastcall VideoOptionsChangedConfirmed()
 {
-    CThing* thing = CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer()->GetPlayerCharacter();
+    CThing* thing = CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer()->GetPPlayerCharacterThing();
     if (IS_THING_ALIVE(thing)) {
         CTCInGameMenu* menu = 0;
         thing->GetInterface(&menu, 0xC6);

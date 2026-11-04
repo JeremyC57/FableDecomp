@@ -1,5 +1,6 @@
 // CNewFrontendGameComponent::Init2() -- second-stage front-end start-up: create the front-end manager, graphics/sounds/input, load the localised text bank, initialise the UI and set the 1024x768 display mode
 // Leaf: ?Init2@CNewFrontendGameComponent@@QAEXXZ (Ego_r.pdb AAEXXZ @ 0x0043B547, private; modelled public)
+// Naming wave 35c (caller respell): calls 0x00AEAA80 under its PDB name NParticleEngine::SetGraphicBank(const CGraphicDataBank&) (?SetGraphicBank@NParticleEngine@@YIXABVCGraphicDataBank@@@Z; was SetCurrentGraphicBank(CGraphicDataBank*)).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe @ 0x0042E98F, 256 bytes, plain `ret` after `leave`.
 // Body: m_pFrontEndManager = CFrontEndManager::GetInstance() (0x00595582, static fastcall, creates the 0xe0-byte
@@ -50,7 +51,7 @@ class CDefinitionManager { };                           // only passed on here
 class CStartupDefinitionManager : public CDefinitionManager { public:
     static CStartupDefinitionManager& __fastcall Get();  // 0x0043368D ?Get@CStartupDefinitionManager@@SIAAV1@XZ (Ego_r / FableWin)
 };
-void __fastcall SetCurrentGraphicBank(CGraphicDataBank* bank);   // 0x00AEAA80
+namespace NParticleEngine { void __fastcall SetGraphicBank(const CGraphicDataBank& bank); }   // 0x00AEAA80
 namespace NGameText {
 class CDataBank {
 public:
@@ -115,7 +116,7 @@ void CNewFrontendGameComponent::Init2()
     InitialiseGraphics();
     InitialiseSounds();
     InitialiseInput();
-    SetCurrentGraphicBank(m_pFrontEndGraphicBank.Object);
+    NParticleEngine::SetGraphicBank(*m_pFrontEndGraphicBank.Object);
     m_pTextBank.Reset(new NGameText::CDataBank);
     m_pTextBank->OpenReadOnly(NLocalisation::GetTextBankName(), 0x100);
     NUISystem::CManager::Clear();

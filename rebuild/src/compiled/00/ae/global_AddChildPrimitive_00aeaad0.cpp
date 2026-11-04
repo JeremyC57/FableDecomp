@@ -1,5 +1,0 @@
-int __fastcall AddChildPrimitive()
-// Leaf: AddChildPrimitive
-{
-    return 20786704;
-}

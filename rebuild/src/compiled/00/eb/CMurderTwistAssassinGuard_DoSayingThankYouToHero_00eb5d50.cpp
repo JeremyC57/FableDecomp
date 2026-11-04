@@ -2,6 +2,7 @@
 //   sequence, a cycling "henchman thanks" line ("..." + his data string + NextLine 1..2) while alive, NextLine advanced; hit by
 //   the hero (or by a special ability other than 14) without having been enflamed -> paused "double crossed" line, AssassinState 2
 // Leaf: DoSayingThankYouToHero
+// Naming wave 35c (caller respell): the parent script class is NScript::CV_MurderTwistFinalScript, so the 0x00EB07D0 call is ?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z (Ego_r.pdb + FableWin.pdb; was the global-class spelling).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EB5D50, 1185 bytes (`ret`).
 // Label correction: the catalog files it under CMurderTwistSheriffGuard; its only caller 0x00EB56F5 sits next to the landed
 //   CMurderTwistAssassinGuard::Init 0x00EB5500, it writes the parent's AssassinState and speaks the HENCHMAN lines, so it is
@@ -79,6 +80,7 @@ class CEntityScriptBase { public:                             // retail 0x14 byt
 };
 enum ESheriffState { SHERIFF_STATE_0, SHERIFF_STATE_1, SHERIFF_STATE_2, SHERIFF_STATE_3 };   // enumerator names not in the PDB dump
 enum EAssassinState { ASSASSIN_STATE_0, ASSASSIN_STATE_1, ASSASSIN_STATE_2, ASSASSIN_STATE_3 };
+namespace NScript {
 struct CV_MurderTwistFinalScript {                     // retail sits 0x14 below the PDB (SheriffState PDB +0x5c)
     unsigned char _pad00[0x48];
     ESheriffState  SheriffState;                       // +0x48
@@ -86,6 +88,8 @@ struct CV_MurderTwistFinalScript {                     // retail sits 0x14 below
     void WaitForEnflameReactionIfNecessary(const CScriptThing& thing);   // 0x00EB0700
     bool HasHeroEnflamedEntity(const CScriptThing& thing);               // 0x00EB07D0
 };
+}
+using NScript::CV_MurderTwistFinalScript;
 struct CMurderTwistAssassinGuard : CEntityScriptBase {
     CV_MurderTwistFinalScript* ParentClass;            // +0x14
     void*                      PMasterData;            // +0x18

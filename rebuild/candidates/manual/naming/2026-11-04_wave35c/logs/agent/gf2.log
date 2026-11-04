@@ -1,0 +1,14 @@
+addr       parity           behav  name
+0048f50c   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+0048f50c   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+0048f50c   WARN SHARED_HEADER_AVAILABLE C2DExtentsF
+0048f50c   WARN SHARED_HEADER_AVAILABLE CFontBank
+0048f50c   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+0048f50c   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0048f50c   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0048f50c   WARN RELOC_NAME: ?GetBuffer@CWideString@@QBEPAGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+0048f50c   WARN RELOC_NAME: ?Set@CWStringParser@@QAEXPAG@Z -> 00a0c8e0 labelled 'CWStringParser::Init'
+0048f50c   RELOCATION_MATCH PASS   CSubtitleRenderer::FormatTextForVWindow
+
+WINS: 1
+  0048f50c RELOCATION_MATCH CSubtitleRenderer::FormatTextForVWindow

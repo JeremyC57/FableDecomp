@@ -1,4 +1,6 @@
 // NParticleEngine::CParticleSystem::AllocateDecal() -- take a decal from the particle memory (reclaiming the decals of the lowest-priority invisible emitters once if it is exhausted), construct it, append it to the system's decal list and count it; null when no memory can be found
+// Leaf: ?AllocateDecal@CParticleSystem@NParticleEngine@@QAEPAVCDecal@2@XZ
+// Naming wave 35c: the exact PDB symbol (Ego_r.pdb + FableWin.pdb); the catalog carries the name; body unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF5380, length 176 bytes (manifest label correct).
 // Callees: the particle memory allocator @ 0x00AF8B00 (__fastcall size; label "operator_new" -- CDecal's class operator
 //          new), CParticleEmitterManager::Get @ 0x00AEAAF0, CParticleEmitterList::ClearLowestPriorityNonVisibleEmitterDecals

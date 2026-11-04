@@ -1,5 +1,6 @@
-// CPlayerGui::UpdateStat(float value, float jumpThreshold, float step, float settleTime, float holdTime, NPlayerGui::CStatBar* bar) -- feed a new value into a stat bar: jump or animate the displayed value towards it, track the recent maximum, and time the bar's settle / fully-open phases before closing it (mode 3); a value change while open reopens it (mode 2)
-// Leaf: ?UpdateStat@CPlayerGui@
+// CPlayerGui::UpdateStat(float value, float jumpThreshold, float step, float settleTime, float holdTime, NPlayerGui::CStatBase& stat) const -- feed a new value into a stat bar: jump or animate the displayed value towards it, track the recent maximum, and time the bar's settle / fully-open phases before closing it (mode 3); a value change while open reopens it (mode 2)
+// Leaf: ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z
+// Naming wave 35c: Ego_r.pdb exact symbol (private const; the stat is NPlayerGui::CStatBase&, was NPlayerGui::CStatBar*); queue land0411j. Callers 0x00439E00 / 0x00439F20 respelled with it.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -30,7 +31,7 @@ __forceinline bool FramesExceed(const unsigned long& since, float seconds)
 template<class T> inline void ClampMin(T& v, const T& lo) { if (v < lo) v = lo; }
 template<class T> inline void ClampMax(T& v, const T& hi) { if (v > hi) v = hi; }
 namespace NPlayerGui {
-class CStatBar { public:                                       // CStatBase (Ego_r.pdb offsets)
+class CStatBase { public:                                      // Ego_r.pdb NPlayerGui::CStatBase offsets
     void*         __vftable;
     void*         GuiDef;                               // +0x04
     bool          ValueInitialised;                     // +0x08
@@ -49,53 +50,54 @@ class CStatBar { public:                                       // CStatBase (Ego
 };
 }
 class CPlayerGui { public:
-    void UpdateStat(float value, float jumpThreshold, float step, float settleTime, float holdTime, NPlayerGui::CStatBar* bar);
+private:
+    void UpdateStat(float value, float jumpThreshold, float step, float settleTime, float holdTime, NPlayerGui::CStatBase& stat) const;
 };
 
-void CPlayerGui::UpdateStat(float value, float jumpThreshold, float step, float settleTime, float holdTime, NPlayerGui::CStatBar* bar)
+void CPlayerGui::UpdateStat(float value, float jumpThreshold, float step, float settleTime, float holdTime, NPlayerGui::CStatBase& stat) const
 {
-    bar->LastOldValue = bar->OldValue;
-    if (bar->GuiMode == 0 || fabs(value - bar->CurrentValue) > jumpThreshold)
-        bar->CurrentValue = value;
-    bar->OldRecentMaxValue = bar->RecentMaxValue;
-    bar->UpdateRecentMax();
-    bool moving = fabs(bar->CurrentValue - bar->OldValue) > DELTA_NOTIONAL_ZERO;
-    if (bar->GuiMode == 0) {
-        if (bar->CurrentValue < bar->OldValue) {
-            bar->OldValue -= step;
-            ClampMin(bar->OldValue, bar->CurrentValue);
-        } else if (bar->CurrentValue > bar->OldValue) {
-            bar->OldValue += step;
-            ClampMax(bar->OldValue, bar->CurrentValue);
+    stat.LastOldValue = stat.OldValue;
+    if (stat.GuiMode == 0 || fabs(value - stat.CurrentValue) > jumpThreshold)
+        stat.CurrentValue = value;
+    stat.OldRecentMaxValue = stat.RecentMaxValue;
+    stat.UpdateRecentMax();
+    bool moving = fabs(stat.CurrentValue - stat.OldValue) > DELTA_NOTIONAL_ZERO;
+    if (stat.GuiMode == 0) {
+        if (stat.CurrentValue < stat.OldValue) {
+            stat.OldValue -= step;
+            ClampMin(stat.OldValue, stat.CurrentValue);
+        } else if (stat.CurrentValue > stat.OldValue) {
+            stat.OldValue += step;
+            ClampMax(stat.OldValue, stat.CurrentValue);
         }
         if (moving) {
-            bar->FrameFullyOpenedOn = 0;
-            bar->FrameCurrentValueLastMoved = 0;
+            stat.FrameFullyOpenedOn = 0;
+            stat.FrameCurrentValueLastMoved = 0;
             return;
         }
-        if (bar->FrameCurrentValueLastMoved == 0) {
-            bar->FrameCurrentValueLastMoved = CWorld::GetFrame();
+        if (stat.FrameCurrentValueLastMoved == 0) {
+            stat.FrameCurrentValueLastMoved = CWorld::GetFrame();
             return;
         }
-        if (FramesExceed(bar->FrameCurrentValueLastMoved, settleTime)) {
-            bar->RecentMaxValue = bar->CurrentValue;
-            bar->UpdateRecentMax();
-            if (fabs(bar->RecentMaxValue - bar->OldRecentMaxValue) < DELTA_NOTIONAL_ZERO) {
-                if (bar->FrameFullyOpenedOn == 0) {
-                    bar->FrameFullyOpenedOn = CWorld::GetFrame();
+        if (FramesExceed(stat.FrameCurrentValueLastMoved, settleTime)) {
+            stat.RecentMaxValue = stat.CurrentValue;
+            stat.UpdateRecentMax();
+            if (fabs(stat.RecentMaxValue - stat.OldRecentMaxValue) < DELTA_NOTIONAL_ZERO) {
+                if (stat.FrameFullyOpenedOn == 0) {
+                    stat.FrameFullyOpenedOn = CWorld::GetFrame();
                     return;
                 }
                 if (holdTime > 0.0f
-                    && FramesExceed(bar->FrameFullyOpenedOn, holdTime)) {
-                    bar->FrameFullyOpenedOn = 0;
-                    bar->GuiMode = 3;
+                    && FramesExceed(stat.FrameFullyOpenedOn, holdTime)) {
+                    stat.FrameFullyOpenedOn = 0;
+                    stat.GuiMode = 3;
                 }
             }
         }
         return;
     }
-    if (bar->GuiMode != 2 && moving)
-        bar->GuiMode = 2;
-    else if (bar->GuiMode == 1)
-        bar->RecentMaxValue = bar->CurrentValue;
+    if (stat.GuiMode != 2 && moving)
+        stat.GuiMode = 2;
+    else if (stat.GuiMode == 1)
+        stat.RecentMaxValue = stat.CurrentValue;
 }

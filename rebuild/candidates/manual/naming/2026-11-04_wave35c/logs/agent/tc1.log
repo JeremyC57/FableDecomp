@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00e1e0d0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>::TransferIn
+00e1e0f0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>::TransferOut
+00e25930   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CQR_EscortTrader_ManagerScript::EscortTraderManagerPhase>::TransferIn
+00e25950   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CQR_EscortTrader_ManagerScript::EscortTraderManagerPhase>::TransferOut
+00e759b0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::STAGE_IN_PATH>::TransferIn
+00e759d0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::STAGE_IN_PATH>::TransferOut
+00e75b60   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::PATH_ID>::TransferIn
+00e75b80   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::PATH_ID>::TransferOut
+
+WINS: 8
+  00e1e0d0 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>::?TransferIn@?$CPersistContext_TransferableComponent@W4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00e1e0f0 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>::?TransferOut@?$CPersistContext_TransferableComponent@W4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  00e25930 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CQR_EscortTrader_ManagerScript::EscortTraderManagerPhase>::?TransferIn@?$CPersistContext_TransferableComponent@W4EscortTraderManagerPhase@CQR_EscortTrader_ManagerScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00e25950 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CQR_EscortTrader_ManagerScript::EscortTraderManagerPhase>::?TransferOut@?$CPersistContext_TransferableComponent@W4EscortTraderManagerPhase@CQR_EscortTrader_ManagerScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  00e759b0 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::STAGE_IN_PATH>::?TransferIn@?$CPersistContext_TransferableComponent@W4STAGE_IN_PATH@CV_ExposeMayorScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00e759d0 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::STAGE_IN_PATH>::?TransferOut@?$CPersistContext_TransferableComponent@W4STAGE_IN_PATH@CV_ExposeMayorScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  00e75b60 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::PATH_ID>::?TransferIn@?$CPersistContext_TransferableComponent@W4PATH_ID@CV_ExposeMayorScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00e75b80 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::PATH_ID>::?TransferOut@?$CPersistContext_TransferableComponent@W4PATH_ID@CV_ExposeMayorScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z

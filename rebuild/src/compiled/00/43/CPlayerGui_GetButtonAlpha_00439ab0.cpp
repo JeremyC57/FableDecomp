@@ -1,6 +1,7 @@
 // CPlayerGui::GetButtonAlpha(long button, bool applyButtonAlpha, bool special, bool contextSensitive) -- alpha of a HUD button: the normal/special swap fade (|scale| or 1 - |scale|), else the player character's context-sensitive inventory fade, optionally times the button's own ability / quick-access alpha
+// Naming wave 35c (queue land0411j 0x00487B70): calls 0x00487B70 as CPlayer::GetPPlayerCharacterThing() const (Ego_r.pdb ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ; was GetPlayerCharacter).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00439AB0, length 242 bytes, `ret 0x10`.
-// Callees: CPlayerManager::GetMainPlayer 0x00449970 (PlayerManager +0x08), CPlayer::GetPlayerCharacter 0x00487B70
+// Callees: CPlayerManager::GetMainPlayer 0x00449970 (PlayerManager +0x08), CPlayer::GetPPlayerCharacterThing() const 0x00487B70
 // (`PlayerCharacter.GetPItem()`; propagated label "_Cons_val<...>"), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // const 0x004365B0 (TC 0x11 = word 0 bit 17, the inventory), CTCInventory::GetContextSensitiveFadeAlpha(long)
 // 0x00581D2A. Float 1.0f @ 0x0122DED8.
@@ -45,7 +46,7 @@ class CTCInventory { public:                                  // TC type 0x11
     float GetContextSensitiveFadeAlpha(long button);   // 0x00581D2A
 };
 class CPlayer { public:
-    CThing* GetPlayerCharacter();                      // 0x00487B70
+    CThing* GetPPlayerCharacterThing() const;        // 0x00487B70
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -82,7 +83,7 @@ float CPlayerGui::GetButtonAlpha(long button, bool applyButtonAlpha, bool specia
         if (!special)
             alpha = 1.0f - alpha;
     } else if (contextSensitive && !applyButtonAlpha) {
-        CThing* character = PlayerManager->GetMainPlayer().GetPlayerCharacter();
+        CThing* character = PlayerManager->GetMainPlayer().GetPPlayerCharacterThing();
         if (character && !character->Dead && character->HasTC(0x11))
             return ((CTCInventory*)character->GetTC(0x11))->GetContextSensitiveFadeAlpha(button);
         goto done;

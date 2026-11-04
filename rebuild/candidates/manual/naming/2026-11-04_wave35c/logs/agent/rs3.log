@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00aeaad0   MATCH            PASS   NParticleEngine::GetRandomSeed
+
+WINS: 1
+  00aeaad0 MATCH NParticleEngine::?GetRandomSeed@NParticleEngine@@YIAAKXZ

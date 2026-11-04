@@ -15,8 +15,9 @@ class CEngineWeatherRenderer { public:
     bool          SnowOverriden;                   // +0x5d1
     unsigned char _pad1[0x12f8 - 0x5d2];
     float         MaximumWeatherParticlePercentage;// +0x12f8
-    void BuildBoxPositionMatrix();                 // 0x00B51AD0
     void StartRaining(float strength);
+private:
+    void BuildBoxPositionMatrix();                 // 0x00B51AD0 (Ego_r.pdb private)
 };
 
 void CEngineWeatherRenderer::StartRaining(float strength)

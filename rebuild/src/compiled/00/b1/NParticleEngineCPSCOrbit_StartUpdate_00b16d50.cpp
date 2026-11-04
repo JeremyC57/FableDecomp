@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCOrbit::StartUpdate(const CParticleUpdateParameters<unsigned long, unsigned long>& params) -- per-frame orbit update: on the first frame seed the three orbit states and run four warm-up steps, then advance each orbit around the component's current centre
 // Leaf: StartUpdate
+// Naming wave 35c (caller respell): calls 0x00AEAA00 under its PDB name NParticleEngine::GetOneOverTickRate (?GetOneOverTickRate@NParticleEngine@@YIMXZ; no arguments, so the __fastcall call site is unchanged). Calls 0x00AEAAD0 as NParticleEngine::GetRandomSeed (?GetRandomSeed@NParticleEngine@@YIAAKXZ, FableWin.pdb + Ego_r.pdb; was ?GetParticleRandomSeed@@YAPAKXZ; no arguments, the call site is unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B16D50, length 337 bytes (padded to 352), `ret 4`.
 // Callees: particle frame-time getter @ 0x00AEAA00 (fld of the float @ 0x01399508; manifest "GetMaxDrawDistance"),
 //          particle random-seed getter @ 0x00AEAAD0 (returns &seed @ 0x013D2E10; manifest "AddChildPrimitive" is wrong),
@@ -26,8 +27,8 @@ public:
 };
 
 
-float GetParticleFrameTime();                   // 0x00AEAA00
-unsigned long* GetParticleRandomSeed();         // 0x00AEAAD0
+namespace NParticleEngine { float __fastcall GetOneOverTickRate(); }   // 0x00AEAA00
+namespace NParticleEngine { unsigned long& __fastcall GetRandomSeed(); }   // 0x00AEAAD0
 
 namespace NParticleEngine {
 
@@ -77,11 +78,11 @@ class CPSCOrbit : public CPSCBase { public:                   // vtable 0x012A03
 void CPSCOrbit::StartUpdate(const CParticleUpdateParameters<unsigned long, unsigned long>& params)
 {
     UpdateStarted = true;
-    float frameTime = GetParticleFrameTime();
+    float frameTime = NParticleEngine::GetOneOverTickRate();
     unsigned long updates = 1;
     if (LifeTimer == 0) {
         for (int i = 0; i < 3; ++i)
-            OrbitStates[i].Initialise(Orbits[i], GetParticleRandomSeed());
+            OrbitStates[i].Initialise(Orbits[i], &NParticleEngine::GetRandomSeed());
         updates = 4;
         LifeTimeSecs = -frameTime;
     }

@@ -1,5 +1,6 @@
 // CTCDParticleEmitter::Create(const CCharString& emitterName, const C3DVector& position, bool forceParticleToLoad) -- by-name particle emitter creation: look the emitter template up in the particle database and forward to the typed Create; null while compiling the front-end definitions or for an unknown name
 // Leaf: ?Create@CTCDParticleEmitter@@SIPAVCThing@@ABVCCharString@@ABVC3DVector@@_N@Z
+// Naming wave 35c (caller respell): calls 0x00AEAAE0 as NParticleEngine::GetParticleEmitterDatabase() (?GetParticleEmitterDatabase@NParticleEngine@@YIAAVCParticleEmitterDatabase@1@XZ, FableWin.pdb + Ego_r.pdb); the database class is NParticleEngine::CParticleEmitterDatabase, its GetEmitterTemplateHandleFromName the const FableWin.pdb ?GetEmitterTemplateHandleFromName@CParticleEmitterDatabase@NParticleEngine@@QBEJABVCCharString@@@Z (was a static CParticleEmitterDatabase::Get()).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E0970, 53 bytes, static `__fastcall` (ecx = name, edx = position), `ret 4`.
 // Identity: Ego_r.pdb name set `?Create@CTCDParticleEmitter@@SIPAVCThing@@ABVCCharString@@ABVC3DVector@@_N@Z`; 17 callers.
 // Callees: CParticleEmitterDatabase::Get() @ 0x00AEAAE0 (static `__fastcall`, the manifest's GFGetPreMainMemoryUsed is a
@@ -12,11 +13,13 @@ class C3DVector { public: float X, Y, Z; };
 class CCharString { public: void* PStringData; };
 class CThing;
 
+namespace NParticleEngine {
 class CParticleEmitterDatabase {
 public:
-    static CParticleEmitterDatabase* __fastcall Get();     // 0x00AEAAE0
-    long GetEmitterTemplateHandleFromName(const CCharString& name);   // 0x00AE85B0
+    long GetEmitterTemplateHandleFromName(const CCharString& name) const;   // 0x00AE85B0
 };
+CParticleEmitterDatabase& __fastcall GetParticleEmitterDatabase();          // 0x00AEAAE0
+}
 
 extern bool g_bCompileFrontendDefinitions;                  // 0x013B8648
 
@@ -29,7 +32,7 @@ public:
 CThing* __fastcall CTCDParticleEmitter::Create(const CCharString& emitterName, const C3DVector& position, bool forceParticleToLoad)
 {
     if (!g_bCompileFrontendDefinitions) {
-        long particleTypeID = CParticleEmitterDatabase::Get()->GetEmitterTemplateHandleFromName(emitterName);
+        long particleTypeID = NParticleEngine::GetParticleEmitterDatabase().GetEmitterTemplateHandleFromName(emitterName);
         if (particleTypeID > 0)
             return Create(particleTypeID, position, forceParticleToLoad);
     }

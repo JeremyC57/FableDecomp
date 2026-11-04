@@ -1,3 +1,5 @@
+// Naming wave 35c (queue land0411b 0x009E5090): CSymbolInfo is nested in CSymbolMap (FableWin.pdb `?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z`, class-keyed, const).
+// Leaf: ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z
 // CSymbolMap::FindFirstSymbolWithVal(long value) -- walk the SLONGMap vector map's pairs in order and return the first symbol info (pair.second) whose Val equals the argument, or 0 when none matches
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E5090, length 39 bytes.
 // Callees: none. Shape: begin/end into eax/ecx, the for-loop top test, the argument in edx before the aligned
@@ -10,17 +12,7 @@ class CCharString { public:
     CCharStringData* m_pStringData;
 };
 
-struct CSymbolInfo {                               // PDB CSymbolMap::CSymbolInfo, 12 bytes
-    CCharString GroupName;                         // +0x00
-    CCharString EntryName;                         // +0x04
-    long        Val;                               // +0x08
-};
-
-struct SSymbolPair {                               // std::pair<CCharString, CSymbolInfo>, 16 bytes
-    CCharString first;                             // +0x00
-    CSymbolInfo second;                            // +0x04
-};
-
+struct SSymbolPair;
 struct CSymbolVectorMap {                          // the retail 12-byte vector first
     SSymbolPair* m_pFirst;                         // +0x00
     SSymbolPair* m_pLast;                          // +0x04
@@ -28,12 +20,22 @@ struct CSymbolVectorMap {                          // the retail 12-byte vector 
 };
 
 class CSymbolMap { public:
+    class CSymbolInfo { public:                    // PDB CSymbolMap::CSymbolInfo, 12 bytes
+        CCharString GroupName;                     // +0x00
+        CCharString EntryName;                     // +0x04
+        long        Val;                           // +0x08
+    };
     void*            _padding_;                    // +0x00
     CSymbolVectorMap SLONGMap;                     // +0x04
     const CSymbolInfo* FindFirstSymbolWithVal(long value) const;
 };
 
-const CSymbolInfo* CSymbolMap::FindFirstSymbolWithVal(long value) const
+struct SSymbolPair {                               // std::pair<CCharString, CSymbolMap::CSymbolInfo>, 16 bytes
+    CCharString             first;                 // +0x00
+    CSymbolMap::CSymbolInfo second;                // +0x04
+};
+
+const CSymbolMap::CSymbolInfo* CSymbolMap::FindFirstSymbolWithVal(long value) const
 {
     for (const SSymbolPair* it = SLONGMap.m_pFirst; it != SLONGMap.m_pLast; ++it) {
         if (it->second.Val == value)

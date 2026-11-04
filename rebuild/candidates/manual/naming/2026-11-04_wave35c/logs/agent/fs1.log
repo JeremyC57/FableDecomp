@@ -1,0 +1,6 @@
+addr       parity           behav  name
+009e5090   WARN SHARED_HEADER_AVAILABLE CSymbolMap
+009e5090   MATCH            PASS   CSymbolMap::FindFirstSymbolWithVal
+
+WINS: 1
+  009e5090 MATCH CSymbolMap::?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z

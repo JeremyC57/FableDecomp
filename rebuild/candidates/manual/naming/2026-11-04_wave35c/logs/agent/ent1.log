@@ -1,0 +1,20 @@
+addr       parity           behav  name
+00d6ae70   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeEvilScript
+00d6ae70   MATCH            PASS   NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard::OnInterrupted
+00dd44b0   WARN SHARED_HEADER_AVAILABLE CQ_PrisonEscapeRescueMotherScript
+00dd44b0   MATCH            PASS   NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard::OnInterrupted
+00d706b0   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeGoodScript
+00d706b0   MATCH            PASS   NScript::CQ_HangingTreeGoodScript::CHTG_Guard::OnInterrupted
+00ea0050   MATCH            PASS   NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside::OnInterrupted
+00ef42d0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_EmptyScript
+00ef42d0   MATCH            PASS   NScript::CPersonalScript_EmptyScript::CMeanBandit::OnInterrupted
+00ef4950   WARN SHARED_HEADER_AVAILABLE CPersonalScript_EmptyScript
+00ef4950   RELOCATION_MATCH PASS   NScript::CPersonalScript_EmptyScript::CVillager::OnInterrupted
+
+WINS: 6
+  00d6ae70 MATCH NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard::?OnInterrupted@CHTE_AssaultGuard@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00dd44b0 MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard::?OnInterrupted@CPrisonGuard@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+  00d706b0 MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Guard::?OnInterrupted@CHTG_Guard@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00ea0050 MATCH NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside::?OnInterrupted@CKGG_VillagerOutside@CV_KnotholeGladeGatesScript@NScript@@EAEXXZ
+  00ef42d0 MATCH NScript::CPersonalScript_EmptyScript::CMeanBandit::?OnInterrupted@CMeanBandit@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00ef4950 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CVillager::?OnInterrupted@CVillager@CPersonalScript_EmptyScript@NScript@@EAEXXZ

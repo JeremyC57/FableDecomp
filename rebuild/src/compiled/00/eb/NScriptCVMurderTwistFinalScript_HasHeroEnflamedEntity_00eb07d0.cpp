@@ -1,5 +1,8 @@
-// CV_MurderTwistFinalScript::HasHeroEnflamedEntity(CScriptThing* thing) -- whether the thing was set on fire by the hero ("SCRIPT_NAME_HERO", source kind 3); false when the thread is terminating
+// NScript::CV_MurderTwistFinalScript::HasHeroEnflamedEntity(const CScriptThing& thing) -- whether the thing was set on fire by the hero ("SCRIPT_NAME_HERO", source kind 3); false when the thread is terminating
+// Leaf: ?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EB07D0, length 87 bytes.
+// Naming wave 35c: Ego_r.pdb + FableWin.pdb ?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z: the thing is
+//   a const reference and the result a bool (was `unsigned char (CScriptThing*)`, ?..@@QAEEPAVCScriptThing@@@Z); same bytes.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (the implicit conversion of the literal
 // 0x0125D1C8 "SCRIPT_NAME_HERO" with the defaulted -1), the thing's virtual slot 41 (+0xa4: (long, const
 // CCharString&)), CCharString::~CCharString @ 0x0099EAE0, CScriptBase::IsActiveThreadTerminating @ 0x00CB7940.
@@ -23,24 +26,28 @@ class CScriptThing { public:
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
     virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
     virtual void v040();
-    virtual bool IsEnflamedBy(long sourceKind, const CCharString& name);   // slot 41 (+0xa4)
+    virtual bool IsEnflamedBy(long sourceKind, const CCharString& name) const;   // slot 41 (+0xa4)
 };
 
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40); IsActiveThreadTerminating 0x00CB7940
+//   (Ego_r.pdb ?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ, was declared here as an unsigned char member of this class).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
+
 namespace NScript {
-class CV_MurderTwistFinalScript {
+class CV_MurderTwistFinalScript : public CScriptBase {
 public:
-    virtual void v00();
-    unsigned char IsActiveThreadTerminating();     // 0x00CB7940 (CScriptBase)
-    unsigned char HasHeroEnflamedEntity(CScriptThing* thing);
+    bool HasHeroEnflamedEntity(const CScriptThing& thing);
 };
 } // namespace NScript
 using NScript::CV_MurderTwistFinalScript;
 
-unsigned char NScript::CV_MurderTwistFinalScript::HasHeroEnflamedEntity(CScriptThing* thing)
+bool NScript::CV_MurderTwistFinalScript::HasHeroEnflamedEntity(const CScriptThing& thing)
 {
-    bool enflamed = thing->IsEnflamedBy(3, "SCRIPT_NAME_HERO");
+    bool enflamed = thing.IsEnflamedBy(3, "SCRIPT_NAME_HERO");
     if (enflamed)
-        return !IsActiveThreadTerminating();
+        return IsActiveThreadTerminating() ? false : true;
     IsActiveThreadTerminating();
-    return 0;
+    return false;
 }

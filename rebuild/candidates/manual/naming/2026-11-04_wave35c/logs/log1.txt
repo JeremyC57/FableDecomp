@@ -1,0 +1,448 @@
+addr       parity           behav  name
+0042e98f   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0042e98f   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0042e98f   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+0042e98f   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+0042e98f   WARN SHARED_HEADER_AVAILABLE CManager
+  WARN leaf '?Init2@CNewFrontendGameComponent@@QAEXXZ (Ego_r.pdb AAEXXZ @ 0x0043B547, private; modelled public)' matches no symbol in 0042e98f.obj; graded the largest function
+  WARN leaf '?Init2@CNewFrontendGameComponent@@QAEXXZ (Ego_r.pdb AAEXXZ @ 0x0043B547, private; modelled public)' matches no symbol in 0042e98f.obj; graded the largest function
+0042e98f   WARN RELOC_NAME: ?BuildComponents@CFrontEndManager@NUISystem@@QAEX_N@Z -> 00598a1c labelled 'CFrontEndManager::Init2'
+0042e98f   RELOCATION_MATCH PASS   CNewFrontendGameComponent::Init2
+00439f20   WARN SHARED_HEADER_AVAILABLE CThing
+00439f20   WARN SHARED_HEADER_AVAILABLE CPlayer
+00439f20   RELOCATION_MATCH PASS   CPlayerGui::UpdateMorality
+0048f50c   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+0048f50c   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+0048f50c   WARN SHARED_HEADER_AVAILABLE C2DExtentsF
+0048f50c   WARN SHARED_HEADER_AVAILABLE CFontBank
+0048f50c   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+0048f50c   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0048f50c   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0048f50c   WARN RELOC_NAME: ?GetBuffer@CWideString@@QBEPAGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+0048f50c   WARN RELOC_NAME: ?Set@CWStringParser@@QAEXPAG@Z -> 00a0c8e0 labelled 'CWStringParser::Init'
+0048f50c   RELOCATION_MATCH PASS   CSubtitleRenderer::FormatTextForVWindow
+005701da   WARN SHARED_HEADER_AVAILABLE CObserver
+005701da   WARN SHARED_HEADER_AVAILABLE CManager
+005701da   WARN SHARED_HEADER_AVAILABLE CThing
+005701da   WARN SHARED_HEADER_AVAILABLE CPlayer
+005701da   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+005701da   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005701da   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience
+005701da   RELOCATION_MATCH PASS   _global::EnsureUndoStat
+00655318   RELOCATION_MATCH PASS   CIntelligentPointer<NParticleEngine::CParticleEmitter>::CIntelligentPointer(CParticleEmitter*)
+006f9be0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+006f9be0   WARN SHARED_HEADER_AVAILABLE CPersistContext
+006f9be0   WARN SHARED_HEADER_AVAILABLE CSymbolMap
+006f9be0   WARN SHARED_HEADER_AVAILABLE CManager
+006f9be0   WARN RELOC_NAME: ?Transfer_009bab50@CPersistContext@@QAEXAAVCCharString@@@Z -> 009bab50 labelled '_global::Forward_operator___via0x20_009bab50'
+006f9be0   WARN RELOC_NAME: ?LoadFromHeaderFile@CSymbolMap@@QAEXABVCWideString@@@Z -> 009e5c90 labelled 'CSymbolMap::LoadFromFile'
+006f9be0   WARN RELOC_NAME: ?FormatDouble@CCharString@@SI?AV1@JN@Z -> 009a08b0 labelled 'GFFloatToCharString'
+006f9be0   RELOCATION_MATCH PASS   NAnimationEvents::CManager::Save
+009881f0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+009881f0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+009881f0   MATCH            PASS   CShaderRenderManager::SetWorldTransform
+00addd80   WARN SHARED_HEADER_AVAILABLE C3DVector
+00addd80   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00addd80   RELOCATION_MATCH PASS   C3DBoundingSphere::AddToBounds
+00aeaa20   RELOCATION_MATCH PASS   NParticleEngine::GetFadeOutStartDistance
+00aeaa60   RELOCATION_MATCH PASS   NParticleEngine::GetMaxSpawnDistance
+00aeaad0   MATCH            PASS   NParticleEngine::GetRandomSeed
+00aeabe0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00aeabe0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00aeabe0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00aeabe0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00aeabe0   RELOCATION_MATCH PASS   NParticleEngine::CParticleEmitterManager::CreateDecalEmitter
+00af3db0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00af3db0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00af3db0   MATCH            PASS   NParticleEngine::CParticleSystem::PeekEmitterVelocity
+00af85e0   RELOCATION_MATCH PASS   NParticleEngine::CParticle::GetInterpolatedLifetimerInSeconds
+00afee00   WARN SHARED_HEADER_AVAILABLE C3DVector
+00afee00   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00afee00   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00afee00   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderMesh::WriteBinary
+00b16d50   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b16d50   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b16d50   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::StartUpdate
+00b20fd0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b20fd0   WARN SHARED_HEADER_AVAILABLE CArray
+00b20fd0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtPos
+00b67480   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b67480   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager
+00b67480   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b67480   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer
+00b67480   RELOCATION_MATCH PASS   CEngineLandscapeRenderer::SetupCommonStates
+00cdd430   MATCH            PASS   CSpawnedFunc<NScript::CQ_SunnyvaleMasterScript>::SuspendableProcess
+00cdd690   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CGlobal_TeleportToHeroGuildScript>::`scalar deleting destructor'
+00cde380   RELOCATION_MATCH PASS   NScript::CPersonalScript_GlobalThingsScript::RegisterMain
+00ce1ac0   MATCH            PASS   CSpawnedFunc<NScript::CHeroBoastsScript>::SuspendableProcess
+00ce7640   MATCH            PASS   CSpawnedFunc<NScript::CGameflowScript>::SuspendableProcess
+00cefac0   RELOCATION_MATCH PASS   NScript::CGameflowAssistanceScript::Main
+00cf0790   RELOCATION_MATCH PASS   NScript::CQ_ArenaHoldingScriptScript::Main
+00cf91a0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CLadyGreyWifeManagerScript>::`scalar deleting destructor'
+00cfaa50   RELOCATION_MATCH PASS   NScript::CQ_ArenaScript::RegisterMain
+00cfaf40   MATCH            PASS   CSpawnedFunc<NScript::CQ_AwakeningTheOracleScript>::SuspendableProcess
+00d00a70   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_BanditCampScript>::`scalar deleting destructor'
+00d038c0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_BanditCampBossBattleScript>::`scalar deleting destructor'
+00d13070   RELOCATION_MATCH PASS   NScript::CQ_BountyHuntScript::RegisterMain
+00d16780   RELOCATION_MATCH PASS   CSpawnedFunc1<NScript::CQ_BountyHuntScript,CScriptThing>::SuspendableProcess
+00d1cfa0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_BreakSiegeScript>::`scalar deleting destructor'
+00d24610   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_BowerstoneTownLifeIntroScript>::`scalar deleting destructor'
+00d255e0   RELOCATION_MATCH PASS   NScript::CQ_DragonBossFightScript::Main
+00d297e0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_EndGameScript>::`scalar deleting destructor'
+00d2d530   RELOCATION_MATCH PASS   CSpawnedFunc1<NScript::CQ_EndGameFocalSitesScript,CScriptThing>::SuspendableProcess
+00d2f7d0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_EndGameBossBattleScript>::`scalar deleting destructor'
+00d34700   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_FireHeartScript>::`scalar deleting destructor'
+00d50760   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingDepartureScript::RegisterMain
+00d514f0   MATCH            PASS   CSpawnedFunc<NScript::CQ_GuildTrainingPreMeleeScript>::SuspendableProcess
+00d55e70   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_GuildTrainingMeleeScript>::`scalar deleting destructor'
+00d5dca0   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingWillScript::RegisterMain
+00d61cf0   MATCH            PASS   CSpawnedFunc<NScript::CQ_GuildTrainingWoodsDepartureScript>::SuspendableProcess
+00d66560   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingWoodsMeleeScript::RegisterMain
+00d66ca0   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingWoodsMeleeScript::DoMission
+00d67870   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_GuildTrainingWoodsWillScript>::`scalar deleting destructor'
+00d6ae70   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeEvilScript
+00d6ae70   MATCH            PASS   NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard::OnInterrupted
+00d6f3c0   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::RegisterMain
+00d706b0   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeGoodScript
+00d706b0   MATCH            PASS   NScript::CQ_HangingTreeGoodScript::CHTG_Guard::OnInterrupted
+00d77340   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d77340   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::GetGuardsHealth
+00d785c0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_HeroSoulsScript>::`scalar deleting destructor'
+00d7ae80   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00d7ae80   RELOCATION_MATCH PASS   NScript::CQ_HeroSoulsThunderScript::Main
+00d80d50   RELOCATION_MATCH PASS   NScript::CQ_HeroSoulsBriarScript::RegisterMain
+00d834e0   RELOCATION_MATCH PASS   NScript::CQ_HeroSoulsMotherScript::RegisterMain
+00d84c20   RELOCATION_MATCH PASS   NScript::CQ_HeroSoulsGuildmasterScript::RegisterMain
+00d87c30   MATCH            PASS   CSpawnedFunc<NScript::CQ_HeroSoulsNostroScript>::SuspendableProcess
+00d89e50   MATCH            PASS   CSpawnedFunc<NScript::CQ_HerosOldHouseScript>::SuspendableProcess
+00d8dc90   MATCH            PASS   CSpawnedFunc<NScript::CQ_HobbeCaveScript>::SuspendableProcess
+00d9a0a0   RELOCATION_MATCH PASS   NScript::CQ_HobbeToothContestScript::RegisterMain
+00d9e520   RELOCATION_MATCH PASS   NScript::CQ_MinionCampScript::RegisterMain
+00da0230   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00da0230   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase
+00da0230   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00da0230   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00da0230   RELOCATION_MATCH PASS   NScript::CQ_MinionCampScript::DoMission
+00da3430   MATCH            PASS   CSpawnedFunc<NScript::CQ_MinionClifftopChaseScript>::SuspendableProcess
+00da8510   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00da8510   WARN SHARED_HEADER_AVAILABLE CTimer
+00da8510   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00da8510   RELOCATION_MATCH PASS   CQ_MinionClifftopChaseScript::ProcessMission
+00daad80   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_NewOakValeIntroScript>::`scalar deleting destructor'
+00dbf2a0   MATCH            PASS   CSpawnedFunc<NScript::CQ_OakValeBanditRaidScript>::SuspendableProcess
+00dc2740   MATCH            PASS   CSpawnedFunc<NScript::CQ_OpeningGraveyardSecretPassageScript>::SuspendableProcess
+00dcc6f0   MATCH            PASS   CSpawnedFunc<NScript::CQ_OrchardFarmRaidScript>::SuspendableProcess
+00dd22d0   MATCH            PASS   CSpawnedFunc<NScript::CQ_OrchardFarmRaidEvilScript>::SuspendableProcess
+00dd2660   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_OrchardFarmRaidGoodScript>::`scalar deleting destructor'
+00dd44b0   WARN SHARED_HEADER_AVAILABLE CQ_PrisonEscapeRescueMotherScript
+00dd44b0   MATCH            PASS   NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard::OnInterrupted
+00dddd80   RELOCATION_MATCH PASS   NScript::CQ_PrisonWardenGameScript::RegisterMain
+00de0790   RELOCATION_MATCH PASS   NScript::CQ_RansomVictimScript::RegisterMain
+00debe50   RELOCATION_MATCH PASS   NScript::CQ_RansomVictimChiefsHouseScript::RegisterMain
+00decaa0   MATCH            PASS   CSpawnedFunc<NScript::CQ_SecretPassageScript>::SuspendableProcess
+00df0200   WARN SHARED_HEADER_AVAILABLE C3DVector
+00df0200   RELOCATION_MATCH PASS   NScript::CQ_SecretPassageScript::BossBlockingPrisonPassage
+00df13a0   RELOCATION_MATCH PASS   NScript::CQ_SummoningTheShipScript::Main
+00df4240   RELOCATION_MATCH PASS   NScript::CQ_TentacleKrakenBossFightScript::Main
+00df5ff0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_TraderConflictEvilScript>::`scalar deleting destructor'
+00e00c20   RELOCATION_MATCH PASS   NScript::CQ_TraderEscortScript::RegisterMain
+00e052d0   RELOCATION_MATCH PASS   CSpawnedFunc1<NScript::CQ_TraderEscortScript,CScriptThing>::`scalar deleting destructor'
+00e0b140   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_UndeadRisingScript>::`scalar deleting destructor'
+00e0e700   RELOCATION_MATCH PASS   CSpawnedFunc1<NScript::CQ_UndeadRisingScript,CScriptThing>::`scalar deleting destructor'
+00e12580   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e12580   WARN SHARED_HEADER_AVAILABLE CDefString
+00e12580   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00e12580   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e12580   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00e12580   WARN RELOC_NAME: ?WaspMenace@CQ_WaspBossScript@NScript@@QAEXXZ -> 00e13310 labelled 'NScript::CQ_WaspBossScript::EndMission'
+00e12580   RELOCATION_MATCH PASS   NScript::CQ_WaspBossScript::DoMission
+00e18570   RELOCATION_MATCH PASS   NScript::CQ_WhiteBalverineWWScript::RegisterMain
+00e1a960   MATCH            PASS   CSpawnedFunc<NScript::CQ_WizardBattleScript>::SuspendableProcess
+00e1cd20   RELOCATION_MATCH PASS   CSpawnedFunc1<NScript::CQ_WizardBattleScript,CScriptThing&>::`scalar deleting destructor'
+00e1e0d0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>::TransferIn
+00e1f5e0   RELOCATION_MATCH PASS   CSpawnedFunc1<NScript::CQR_EscortTraderScript,CScriptThing>::SuspendableProcess
+00e25730   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQR_EscortTrader_ManagerScript>::`scalar deleting destructor'
+00e25aa0   MATCH            PASS   CSpawnedFunc<NScript::CQS_GuardianSisterInfoScript>::SuspendableProcess
+00e26db0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>::`scalar deleting destructor'
+00e27e10   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQS_GuardianTrophyDealerInfoScript>::`scalar deleting destructor'
+00e29a80   RELOCATION_MATCH PASS   NScript::CQS_ScytheInfoScript::RegisterMain
+00e2ad20   MATCH            PASS   CSpawnedFunc<NScript::CV_AmbushScamScript>::SuspendableProcess
+00e2ea60   RELOCATION_MATCH PASS   CSpawnedFunc1<NScript::CV_AmbushScamScript,CScriptThing>::`scalar deleting destructor'
+00e36970   RELOCATION_MATCH PASS   CSpawnedFunc1<NScript::CV_ArcheryCompetitionScript,CScriptThing>::SuspendableProcess
+00e377c0   MATCH            PASS   CSpawnedFunc<NScript::CV_AssassinAttacksScript>::SuspendableProcess
+00e39b30   MATCH            PASS   CSpawnedFunc<NScript::CV_BordelloScript>::SuspendableProcess
+00e46cd0   MATCH            PASS   CSpawnedFunc<NScript::CV_BanditCampPathScript>::SuspendableProcess
+00e479b0   RELOCATION_MATCH PASS   NScript::CV_BanditTollScript::Main
+00e4f7d0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_BeardyBaldyScript>::`scalar deleting destructor'
+00e54440   MATCH            PASS   CSpawnedFunc<NScript::CV_BookCollectingScript>::SuspendableProcess
+00e57c60   RELOCATION_MATCH PASS   NScript::CV_BeggarAndChildScript::RegisterMain
+00e5d2d0   MATCH            PASS   CSpawnedFunc<NScript::CV_BodyGuardScript>::SuspendableProcess
+00e62970   MATCH            PASS   CSpawnedFunc<NScript::CV_ChickenKickingScript>::SuspendableProcess
+00e63890   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e63890   RELOCATION_MATCH PASS   NScript::CV_ChickenKickingScript::CSpectator::Main
+00e6a7f0   RELOCATION_MATCH PASS   CV_ChapelOfEvilScript::DoMission
+00e6e370   MATCH            PASS   CSpawnedFunc<NScript::CV_DemonDoorsScript>::SuspendableProcess
+00e75770   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_ExposeMayorScript>::`scalar deleting destructor'
+00e75b80   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::PATH_ID>::TransferOut
+00e77640   RELOCATION_MATCH PASS   CSpawnedFunc1<NScript::CV_ExposeMayorScript,long>::`scalar deleting destructor'
+00e7c810   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_FishermanScript>::`scalar deleting destructor'
+00e7e1f0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_FishingCompetitionScript>::`scalar deleting destructor'
+00e82220   RELOCATION_MATCH PASS   NScript::CV_FisticuffsClubScript::Main
+00e8b8a0   RELOCATION_MATCH PASS   NScript::CV_GhostGrannyNecklaceScript::RegisterMain
+00e8d0a0   RELOCATION_MATCH PASS   CSpawnedFunc1<NScript::CV_GhostGrannyNecklaceScript,CScriptThing>::SuspendableProcess
+00e90b90   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_GuildMasterScript>::`scalar deleting destructor'
+00e93da0   RELOCATION_MATCH PASS   NScript::CV_HauntedHouseScript::RegisterMain
+00e96f00   MATCH            PASS   CSpawnedFunc<NScript::CV_HeroDollsScript>::SuspendableProcess
+00e987a0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_HeroDuelScript>::`scalar deleting destructor'
+00e9c4b0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e9c4b0   RELOCATION_MATCH PASS   NScript::CV_IntroductionToTrophiesScript::Main
+00e9fc10   RELOCATION_MATCH PASS   NScript::CV_KnotholeGladeGatesScript::RegisterMain
+00ea0050   MATCH            PASS   NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside::OnInterrupted
+00ea2e70   MATCH            PASS   CSpawnedFunc<NScript::CV_LostTraderScript>::SuspendableProcess
+00ea7760   RELOCATION_MATCH PASS   NScript::CV_MazeResearchScript::RegisterMain
+00ea8740   RELOCATION_MATCH PASS   NScript::CV_MurderTwistScript::RegisterMain
+00eae980   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::RegisterMain
+00eb23e0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb23e0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb23e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb23e0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb23e0   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb23e0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00eb23e0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb23e0   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBoss
+00eb64d0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_MurderTwistFinalScript>::`scalar deleting destructor'
+00eb6d70   RELOCATION_MATCH PASS   NScript::CV_MayorsInvitationScript::Main
+00ebcd60   MATCH            PASS   CSpawnedFunc<NScript::CV_OracleScript>::SuspendableProcess
+00ebef80   RELOCATION_MATCH PASS   NScript::CV_ParanoidWhispersScript::Main
+00ec1730   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_PicnicAreaAfterWaspBossScript>::`scalar deleting destructor'
+00ec1910   RELOCATION_MATCH PASS   NScript::CV_RandomPopulationSimScript::Main
+00ec4920   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_RockTrollFirstEncounterScript>::`scalar deleting destructor'
+00ecd760   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_SickChildScript>::`scalar deleting destructor'
+00ed10a0   RELOCATION_MATCH PASS   NScript::CV_SingingStonesScript::Main
+00ed4b90   RELOCATION_MATCH PASS   NScript::CV_SwordInTheStoneScript::RegisterMain
+00ed75c0   RELOCATION_MATCH PASS   CSpawnedFunc1<NScript::CV_SwordInTheStoneScript,CScriptThing>::`scalar deleting destructor'
+00ed8370   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_TalentlessBardScript>::`scalar deleting destructor'
+00edaf10   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_TempleOfLightScript>::`scalar deleting destructor'
+00edec70   RELOCATION_MATCH PASS   NScript::CV_TravellingHeroesScript::RegisterMain
+00ee47a0   MATCH            PASS   CSpawnedFunc<NScript::CV_TourGuideScript>::SuspendableProcess
+00ee6e80   MATCH            PASS   CSpawnedFunc<NScript::CV_TrophyDealerScript>::SuspendableProcess
+00ee82b0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CCS_OakValeRevisitedScript>::`scalar deleting destructor'
+00ee9080   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CGlobal_WatchForHeroDeathScript>::`scalar deleting destructor'
+00ee94d0   RELOCATION_MATCH PASS   NScript::CExpression_FishScript::RegisterMain
+00eea010   MATCH            PASS   CSpawnedFunc<NScript::CExpression_FollowScript>::SuspendableProcess
+00eea710   MATCH            PASS   CSpawnedFunc<NScript::CExpression_WaitScript>::SuspendableProcess
+00eeae50   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CExpression_DigScript>::`scalar deleting destructor'
+00eebcb0   RELOCATION_MATCH PASS   NScript::CExpression_PicklockScript::RegisterMain
+00eec360   MATCH            PASS   CSpawnedFunc<NScript::CExpression_StealScript>::SuspendableProcess
+00eec730   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CGlobal_GiveHeroItemsFromRewardChestScript>::`scalar deleting destructor'
+00eecf70   RELOCATION_MATCH PASS   NScript::CGlobal_ToggleTimeDisplayScript::RegisterMain
+00eed1f0   MATCH            PASS   CSpawnedFunc<NScript::CalextestScript>::SuspendableProcess
+00eedba0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CPersonalScript_alextestScript>::`scalar deleting destructor'
+00eee920   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CEmptyScript>::`scalar deleting destructor'
+00eeec00   RELOCATION_MATCH PASS   NScript::CTestTheInventoryScript::TestForLampOn
+00eef520   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CTestQuestCard1Script>::`scalar deleting destructor'
+00eef7a0   RELOCATION_MATCH PASS   NScript::CTestQuestCard3Script::RegisterMain
+00eef990   MATCH            PASS   CSpawnedFunc<NScript::CTestNewNav1Script>::SuspendableProcess
+00eefb00   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CTestNewNav2Script>::`scalar deleting destructor'
+00eefd20   RELOCATION_MATCH PASS   NScript::CTestNewNav4Script::RegisterMain
+00eeff10   MATCH            PASS   CSpawnedFunc<NScript::CTestNewNav5Script>::SuspendableProcess
+00ef0070   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CPersonalScript_EmptyScript>::`scalar deleting destructor'
+00ef8d00   RELOCATION_MATCH PASS   CSpawnedFunc1<NScript::CPersonalScript_EmptyScript,CScriptThing>::`scalar deleting destructor'
+00ef9f70   RELOCATION_MATCH PASS   NScript::Cguy_scriptScript::RegisterMain
+00efa4e0   MATCH            PASS   CSpawnedFunc<NScript::Cbandit_level_cutsceneScript>::SuspendableProcess
+00efb090   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CDanyalTestScriptsScript>::`scalar deleting destructor'
+00efb6a0   RELOCATION_MATCH PASS   NScript::CHitSwitchTestScript::RegisterMain
+00efbc90   MATCH            PASS   CSpawnedFunc<NScript::CGuildSealTriggerTestScript>::SuspendableProcess
+00efc260   RELOCATION_MATCH PASS   NScript::CHeroTurningDebuggerScript::Main
+00efc880   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CPersonalScript_AardvarkScript>::`scalar deleting destructor'
+00efe410   RELOCATION_MATCH PASS   NScript::CBenTestScriptsScript::RegisterMain
+00eff120   MATCH            PASS   CSpawnedFunc<NScript::CTonyTestScriptsScript>::SuspendableProcess
+00eff8a0   RELOCATION_MATCH PASS   NScript::CShowTargetedThingHealthScript::Main
+00f012b0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::COracleMinigameTestScript>::`scalar deleting destructor'
+00f017f0   RELOCATION_MATCH PASS   NScript::CQ_CinemaTestScript::RegisterMain
+00f01eb0   RELOCATION_MATCH PASS   NScript::CQ_CinemaTestScript::DoMission
+00f0b130   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f0b130   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::DoQuest
+
+WINS: 181
+  0042e98f RELOCATION_MATCH CNewFrontendGameComponent::?Init2@CNewFrontendGameComponent@@QAEXXZ (Ego_r.pdb AAEXXZ @ 0x0043B547, private; modelled public)
+  00439f20 RELOCATION_MATCH CPlayerGui::UpdateMorality
+  0048f50c RELOCATION_MATCH CSubtitleRenderer::FormatTextForVWindow
+  005701da RELOCATION_MATCH _global::?EnsureUndoStat@@YIXXZ
+  00655318 RELOCATION_MATCH CIntelligentPointer<NParticleEngine::CParticleEmitter>::??0?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z
+  006f9be0 RELOCATION_MATCH NAnimationEvents::CManager::?Save@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z
+  009881f0 MATCH CShaderRenderManager::?SetWorldTransform@CShaderRenderManager@@QAEXABVCMatrix3x4@@@Z
+  00addd80 RELOCATION_MATCH C3DBoundingSphere::?AddToBounds@C3DBoundingSphere@@QAEXABVC3DVector@@M@Z
+  00aeaa20 RELOCATION_MATCH NParticleEngine::?GetFadeOutStartDistance@NParticleEngine@@YIMXZ
+  00aeaa60 RELOCATION_MATCH NParticleEngine::?GetMaxSpawnDistance@NParticleEngine@@YIMXZ
+  00aeaad0 MATCH NParticleEngine::?GetRandomSeed@NParticleEngine@@YIAAKXZ
+  00aeabe0 RELOCATION_MATCH NParticleEngine::CParticleEmitterManager::?CreateDecalEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z
+  00af3db0 MATCH NParticleEngine::CParticleSystem::?PeekEmitterVelocity@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ
+  00af85e0 RELOCATION_MATCH NParticleEngine::CParticle::?GetInterpolatedLifetimerInSeconds@CParticle@NParticleEngine@@QBEMM@Z
+  00afee00 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?WriteBinary@CPSCRenderMesh@NParticleEngine@@UBEXAAVCDataOutputStream@@@Z
+  00b16d50 RELOCATION_MATCH NParticleEngine::CPSCOrbit::StartUpdate
+  00b20fd0 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtPos
+  00b67480 RELOCATION_MATCH CEngineLandscapeRenderer::SetupCommonStates
+  00cdd430 MATCH CSpawnedFunc<NScript::CQ_SunnyvaleMasterScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_SunnyvaleMasterScript@NScript@@@@UAEXXZ
+  00cdd690 RELOCATION_MATCH CSpawnedFunc<NScript::CGlobal_TeleportToHeroGuildScript>::??_G?$CSpawnedFunc@VCGlobal_TeleportToHeroGuildScript@NScript@@@@UAEPAXI@Z
+  00cde380 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::?RegisterMain@CPersonalScript_GlobalThingsScript@NScript@@UAEXXZ
+  00ce1ac0 MATCH CSpawnedFunc<NScript::CHeroBoastsScript>::?SuspendableProcess@?$CSpawnedFunc@VCHeroBoastsScript@NScript@@@@UAEXXZ
+  00ce7640 MATCH CSpawnedFunc<NScript::CGameflowScript>::?SuspendableProcess@?$CSpawnedFunc@VCGameflowScript@NScript@@@@UAEXXZ
+  00cefac0 RELOCATION_MATCH NScript::CGameflowAssistanceScript::?Main@CGameflowAssistanceScript@NScript@@UAEXXZ
+  00cf0790 RELOCATION_MATCH NScript::CQ_ArenaHoldingScriptScript::?Main@CQ_ArenaHoldingScriptScript@NScript@@UAEXXZ
+  00cf91a0 RELOCATION_MATCH CSpawnedFunc<NScript::CLadyGreyWifeManagerScript>::??_G?$CSpawnedFunc@VCLadyGreyWifeManagerScript@NScript@@@@UAEPAXI@Z
+  00cfaa50 RELOCATION_MATCH NScript::CQ_ArenaScript::?RegisterMain@CQ_ArenaScript@NScript@@UAEXXZ
+  00cfaf40 MATCH CSpawnedFunc<NScript::CQ_AwakeningTheOracleScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_AwakeningTheOracleScript@NScript@@@@UAEXXZ
+  00d00a70 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_BanditCampScript>::??_G?$CSpawnedFunc@VCQ_BanditCampScript@NScript@@@@UAEPAXI@Z
+  00d038c0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_BanditCampBossBattleScript>::??_G?$CSpawnedFunc@VCQ_BanditCampBossBattleScript@NScript@@@@UAEPAXI@Z
+  00d13070 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?RegisterMain@CQ_BountyHuntScript@NScript@@UAEXXZ
+  00d16780 RELOCATION_MATCH CSpawnedFunc1<NScript::CQ_BountyHuntScript,CScriptThing>::?SuspendableProcess@?$CSpawnedFunc1@VCQ_BountyHuntScript@NScript@@VCScriptThing@@@@UAEXXZ
+  00d1cfa0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_BreakSiegeScript>::??_G?$CSpawnedFunc@VCQ_BreakSiegeScript@NScript@@@@UAEPAXI@Z
+  00d24610 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_BowerstoneTownLifeIntroScript>::??_G?$CSpawnedFunc@VCQ_BowerstoneTownLifeIntroScript@NScript@@@@UAEPAXI@Z
+  00d255e0 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::Main
+  00d297e0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_EndGameScript>::??_G?$CSpawnedFunc@VCQ_EndGameScript@NScript@@@@UAEPAXI@Z
+  00d2d530 RELOCATION_MATCH CSpawnedFunc1<NScript::CQ_EndGameFocalSitesScript,CScriptThing>::?SuspendableProcess@?$CSpawnedFunc1@VCQ_EndGameFocalSitesScript@NScript@@VCScriptThing@@@@UAEXXZ
+  00d2f7d0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_EndGameBossBattleScript>::??_G?$CSpawnedFunc@VCQ_EndGameBossBattleScript@NScript@@@@UAEPAXI@Z
+  00d34700 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_FireHeartScript>::??_G?$CSpawnedFunc@VCQ_FireHeartScript@NScript@@@@UAEPAXI@Z
+  00d50760 RELOCATION_MATCH NScript::CQ_GuildTrainingDepartureScript::?RegisterMain@CQ_GuildTrainingDepartureScript@NScript@@UAEXXZ
+  00d514f0 MATCH CSpawnedFunc<NScript::CQ_GuildTrainingPreMeleeScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_GuildTrainingPreMeleeScript@NScript@@@@UAEXXZ
+  00d55e70 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_GuildTrainingMeleeScript>::??_G?$CSpawnedFunc@VCQ_GuildTrainingMeleeScript@NScript@@@@UAEPAXI@Z
+  00d5dca0 RELOCATION_MATCH NScript::CQ_GuildTrainingWillScript::?RegisterMain@CQ_GuildTrainingWillScript@NScript@@UAEXXZ
+  00d61cf0 MATCH CSpawnedFunc<NScript::CQ_GuildTrainingWoodsDepartureScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_GuildTrainingWoodsDepartureScript@NScript@@@@UAEXXZ
+  00d66560 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::?RegisterMain@CQ_GuildTrainingWoodsMeleeScript@NScript@@UAEXXZ
+  00d66ca0 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::DoMission
+  00d67870 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_GuildTrainingWoodsWillScript>::??_G?$CSpawnedFunc@VCQ_GuildTrainingWoodsWillScript@NScript@@@@UAEPAXI@Z
+  00d6ae70 MATCH NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard::?OnInterrupted@CHTE_AssaultGuard@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6f3c0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?RegisterMain@CQ_HangingTreeGoodScript@NScript@@UAEXXZ
+  00d706b0 MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Guard::?OnInterrupted@CHTG_Guard@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d77340 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?GetGuardsHealth@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+  00d785c0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_HeroSoulsScript>::??_G?$CSpawnedFunc@VCQ_HeroSoulsScript@NScript@@@@UAEPAXI@Z
+  00d7ae80 RELOCATION_MATCH NScript::CQ_HeroSoulsThunderScript::?Main@CQ_HeroSoulsThunderScript@NScript@@UAEXXZ
+  00d80d50 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::?RegisterMain@CQ_HeroSoulsBriarScript@NScript@@UAEXXZ
+  00d834e0 RELOCATION_MATCH NScript::CQ_HeroSoulsMotherScript::?RegisterMain@CQ_HeroSoulsMotherScript@NScript@@UAEXXZ
+  00d84c20 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::?RegisterMain@CQ_HeroSoulsGuildmasterScript@NScript@@UAEXXZ
+  00d87c30 MATCH CSpawnedFunc<NScript::CQ_HeroSoulsNostroScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_HeroSoulsNostroScript@NScript@@@@UAEXXZ
+  00d89e50 MATCH CSpawnedFunc<NScript::CQ_HerosOldHouseScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_HerosOldHouseScript@NScript@@@@UAEXXZ
+  00d8dc90 MATCH CSpawnedFunc<NScript::CQ_HobbeCaveScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_HobbeCaveScript@NScript@@@@UAEXXZ
+  00d9a0a0 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::?RegisterMain@CQ_HobbeToothContestScript@NScript@@UAEXXZ
+  00d9e520 RELOCATION_MATCH NScript::CQ_MinionCampScript::?RegisterMain@CQ_MinionCampScript@NScript@@UAEXXZ
+  00da0230 RELOCATION_MATCH NScript::CQ_MinionCampScript::DoMission
+  00da3430 MATCH CSpawnedFunc<NScript::CQ_MinionClifftopChaseScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_MinionClifftopChaseScript@NScript@@@@UAEXXZ
+  00da8510 RELOCATION_MATCH CQ_MinionClifftopChaseScript::?ProcessMission@CQ_MinionClifftopChaseScript@@
+  00daad80 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_NewOakValeIntroScript>::??_G?$CSpawnedFunc@VCQ_NewOakValeIntroScript@NScript@@@@UAEPAXI@Z
+  00dbf2a0 MATCH CSpawnedFunc<NScript::CQ_OakValeBanditRaidScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_OakValeBanditRaidScript@NScript@@@@UAEXXZ
+  00dc2740 MATCH CSpawnedFunc<NScript::CQ_OpeningGraveyardSecretPassageScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_OpeningGraveyardSecretPassageScript@NScript@@@@UAEXXZ
+  00dcc6f0 MATCH CSpawnedFunc<NScript::CQ_OrchardFarmRaidScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_OrchardFarmRaidScript@NScript@@@@UAEXXZ
+  00dd22d0 MATCH CSpawnedFunc<NScript::CQ_OrchardFarmRaidEvilScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_OrchardFarmRaidEvilScript@NScript@@@@UAEXXZ
+  00dd2660 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_OrchardFarmRaidGoodScript>::??_G?$CSpawnedFunc@VCQ_OrchardFarmRaidGoodScript@NScript@@@@UAEPAXI@Z
+  00dd44b0 MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard::?OnInterrupted@CPrisonGuard@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+  00dddd80 RELOCATION_MATCH NScript::CQ_PrisonWardenGameScript::?RegisterMain@CQ_PrisonWardenGameScript@NScript@@UAEXXZ
+  00de0790 RELOCATION_MATCH NScript::CQ_RansomVictimScript::?RegisterMain@CQ_RansomVictimScript@NScript@@UAEXXZ
+  00debe50 RELOCATION_MATCH NScript::CQ_RansomVictimChiefsHouseScript::?RegisterMain@CQ_RansomVictimChiefsHouseScript@NScript@@UAEXXZ
+  00decaa0 MATCH CSpawnedFunc<NScript::CQ_SecretPassageScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_SecretPassageScript@NScript@@@@UAEXXZ
+  00df0200 RELOCATION_MATCH NScript::CQ_SecretPassageScript::BossBlockingPrisonPassage
+  00df13a0 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::Main
+  00df4240 RELOCATION_MATCH NScript::CQ_TentacleKrakenBossFightScript::Main
+  00df5ff0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_TraderConflictEvilScript>::??_G?$CSpawnedFunc@VCQ_TraderConflictEvilScript@NScript@@@@UAEPAXI@Z
+  00e00c20 RELOCATION_MATCH NScript::CQ_TraderEscortScript::?RegisterMain@CQ_TraderEscortScript@NScript@@UAEXXZ
+  00e052d0 RELOCATION_MATCH CSpawnedFunc1<NScript::CQ_TraderEscortScript,CScriptThing>::??_G?$CSpawnedFunc1@VCQ_TraderEscortScript@NScript@@VCScriptThing@@@@UAEPAXI@Z
+  00e0b140 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_UndeadRisingScript>::??_G?$CSpawnedFunc@VCQ_UndeadRisingScript@NScript@@@@UAEPAXI@Z
+  00e0e700 RELOCATION_MATCH CSpawnedFunc1<NScript::CQ_UndeadRisingScript,CScriptThing>::??_G?$CSpawnedFunc1@VCQ_UndeadRisingScript@NScript@@VCScriptThing@@@@UAEPAXI@Z
+  00e12580 RELOCATION_MATCH NScript::CQ_WaspBossScript::?DoMission@CQ_WaspBossScript@NScript@@QAEXXZ
+  00e18570 RELOCATION_MATCH NScript::CQ_WhiteBalverineWWScript::?RegisterMain@CQ_WhiteBalverineWWScript@NScript@@UAEXXZ
+  00e1a960 MATCH CSpawnedFunc<NScript::CQ_WizardBattleScript>::?SuspendableProcess@?$CSpawnedFunc@VCQ_WizardBattleScript@NScript@@@@UAEXXZ
+  00e1cd20 RELOCATION_MATCH CSpawnedFunc1<NScript::CQ_WizardBattleScript,CScriptThing&>::??_G?$CSpawnedFunc1@VCQ_WizardBattleScript@NScript@@AAVCScriptThing@@@@UAEPAXI@Z
+  00e1e0d0 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>::?TransferIn@?$CPersistContext_TransferableComponent@W4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00e1f5e0 RELOCATION_MATCH CSpawnedFunc1<NScript::CQR_EscortTraderScript,CScriptThing>::?SuspendableProcess@?$CSpawnedFunc1@VCQR_EscortTraderScript@NScript@@VCScriptThing@@@@UAEXXZ
+  00e25730 RELOCATION_MATCH CSpawnedFunc<NScript::CQR_EscortTrader_ManagerScript>::??_G?$CSpawnedFunc@VCQR_EscortTrader_ManagerScript@NScript@@@@UAEPAXI@Z
+  00e25aa0 MATCH CSpawnedFunc<NScript::CQS_GuardianSisterInfoScript>::?SuspendableProcess@?$CSpawnedFunc@VCQS_GuardianSisterInfoScript@NScript@@@@UAEXXZ
+  00e26db0 RELOCATION_MATCH CSpawnedFunc<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>::??_G?$CSpawnedFunc@VCQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@@@UAEPAXI@Z
+  00e27e10 RELOCATION_MATCH CSpawnedFunc<NScript::CQS_GuardianTrophyDealerInfoScript>::??_G?$CSpawnedFunc@VCQS_GuardianTrophyDealerInfoScript@NScript@@@@UAEPAXI@Z
+  00e29a80 RELOCATION_MATCH NScript::CQS_ScytheInfoScript::?RegisterMain@CQS_ScytheInfoScript@NScript@@UAEXXZ
+  00e2ad20 MATCH CSpawnedFunc<NScript::CV_AmbushScamScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_AmbushScamScript@NScript@@@@UAEXXZ
+  00e2ea60 RELOCATION_MATCH CSpawnedFunc1<NScript::CV_AmbushScamScript,CScriptThing>::??_G?$CSpawnedFunc1@VCV_AmbushScamScript@NScript@@VCScriptThing@@@@UAEPAXI@Z
+  00e36970 RELOCATION_MATCH CSpawnedFunc1<NScript::CV_ArcheryCompetitionScript,CScriptThing>::?SuspendableProcess@?$CSpawnedFunc1@VCV_ArcheryCompetitionScript@NScript@@VCScriptThing@@@@UAEXXZ
+  00e377c0 MATCH CSpawnedFunc<NScript::CV_AssassinAttacksScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_AssassinAttacksScript@NScript@@@@UAEXXZ
+  00e39b30 MATCH CSpawnedFunc<NScript::CV_BordelloScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_BordelloScript@NScript@@@@UAEXXZ
+  00e46cd0 MATCH CSpawnedFunc<NScript::CV_BanditCampPathScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_BanditCampPathScript@NScript@@@@UAEXXZ
+  00e479b0 RELOCATION_MATCH NScript::CV_BanditTollScript::?Main@CV_BanditTollScript@NScript@@UAEXXZ
+  00e4f7d0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_BeardyBaldyScript>::??_G?$CSpawnedFunc@VCV_BeardyBaldyScript@NScript@@@@UAEPAXI@Z
+  00e54440 MATCH CSpawnedFunc<NScript::CV_BookCollectingScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_BookCollectingScript@NScript@@@@UAEXXZ
+  00e57c60 RELOCATION_MATCH NScript::CV_BeggarAndChildScript::?RegisterMain@CV_BeggarAndChildScript@NScript@@UAEXXZ
+  00e5d2d0 MATCH CSpawnedFunc<NScript::CV_BodyGuardScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_BodyGuardScript@NScript@@@@UAEXXZ
+  00e62970 MATCH CSpawnedFunc<NScript::CV_ChickenKickingScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_ChickenKickingScript@NScript@@@@UAEXXZ
+  00e63890 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CSpectator::?Main@CSpectator@CV_ChickenKickingScript@NScript@@EAEXXZ
+  00e6a7f0 RELOCATION_MATCH CV_ChapelOfEvilScript::DoMission
+  00e6e370 MATCH CSpawnedFunc<NScript::CV_DemonDoorsScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_DemonDoorsScript@NScript@@@@UAEXXZ
+  00e75770 RELOCATION_MATCH CSpawnedFunc<NScript::CV_ExposeMayorScript>::??_G?$CSpawnedFunc@VCV_ExposeMayorScript@NScript@@@@UAEPAXI@Z
+  00e75b80 RELOCATION_MATCH CPersistContext_TransferableComponent<NScript::CV_ExposeMayorScript::PATH_ID>::?TransferOut@?$CPersistContext_TransferableComponent@W4PATH_ID@CV_ExposeMayorScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  00e77640 RELOCATION_MATCH CSpawnedFunc1<NScript::CV_ExposeMayorScript,long>::??_G?$CSpawnedFunc1@VCV_ExposeMayorScript@NScript@@J@@UAEPAXI@Z
+  00e7c810 RELOCATION_MATCH CSpawnedFunc<NScript::CV_FishermanScript>::??_G?$CSpawnedFunc@VCV_FishermanScript@NScript@@@@UAEPAXI@Z
+  00e7e1f0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_FishingCompetitionScript>::??_G?$CSpawnedFunc@VCV_FishingCompetitionScript@NScript@@@@UAEPAXI@Z
+  00e82220 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::Main
+  00e8b8a0 RELOCATION_MATCH NScript::CV_GhostGrannyNecklaceScript::?RegisterMain@CV_GhostGrannyNecklaceScript@NScript@@UAEXXZ
+  00e8d0a0 RELOCATION_MATCH CSpawnedFunc1<NScript::CV_GhostGrannyNecklaceScript,CScriptThing>::?SuspendableProcess@?$CSpawnedFunc1@VCV_GhostGrannyNecklaceScript@NScript@@VCScriptThing@@@@UAEXXZ
+  00e90b90 RELOCATION_MATCH CSpawnedFunc<NScript::CV_GuildMasterScript>::??_G?$CSpawnedFunc@VCV_GuildMasterScript@NScript@@@@UAEPAXI@Z
+  00e93da0 RELOCATION_MATCH NScript::CV_HauntedHouseScript::?RegisterMain@CV_HauntedHouseScript@NScript@@UAEXXZ
+  00e96f00 MATCH CSpawnedFunc<NScript::CV_HeroDollsScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_HeroDollsScript@NScript@@@@UAEXXZ
+  00e987a0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_HeroDuelScript>::??_G?$CSpawnedFunc@VCV_HeroDuelScript@NScript@@@@UAEPAXI@Z
+  00e9c4b0 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::?Main@CV_IntroductionToTrophiesScript@NScript@@UAEXXZ
+  00e9fc10 RELOCATION_MATCH NScript::CV_KnotholeGladeGatesScript::?RegisterMain@CV_KnotholeGladeGatesScript@NScript@@UAEXXZ
+  00ea0050 MATCH NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside::?OnInterrupted@CKGG_VillagerOutside@CV_KnotholeGladeGatesScript@NScript@@EAEXXZ
+  00ea2e70 MATCH CSpawnedFunc<NScript::CV_LostTraderScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_LostTraderScript@NScript@@@@UAEXXZ
+  00ea7760 RELOCATION_MATCH NScript::CV_MazeResearchScript::?RegisterMain@CV_MazeResearchScript@NScript@@UAEXXZ
+  00ea8740 RELOCATION_MATCH NScript::CV_MurderTwistScript::?RegisterMain@CV_MurderTwistScript@NScript@@UAEXXZ
+  00eae980 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::?RegisterMain@CV_MurderTwistFinalScript@NScript@@UAEXXZ
+  00eb23e0 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::?DoAskingHeroToSpeakToBoss@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00eb64d0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_MurderTwistFinalScript>::??_G?$CSpawnedFunc@VCV_MurderTwistFinalScript@NScript@@@@UAEPAXI@Z
+  00eb6d70 RELOCATION_MATCH NScript::CV_MayorsInvitationScript::Main
+  00ebcd60 MATCH CSpawnedFunc<NScript::CV_OracleScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_OracleScript@NScript@@@@UAEXXZ
+  00ebef80 RELOCATION_MATCH NScript::CV_ParanoidWhispersScript::?Main@CV_ParanoidWhispersScript@NScript@@UAEXXZ
+  00ec1730 RELOCATION_MATCH CSpawnedFunc<NScript::CV_PicnicAreaAfterWaspBossScript>::??_G?$CSpawnedFunc@VCV_PicnicAreaAfterWaspBossScript@NScript@@@@UAEPAXI@Z
+  00ec1910 RELOCATION_MATCH NScript::CV_RandomPopulationSimScript::Main
+  00ec4920 RELOCATION_MATCH CSpawnedFunc<NScript::CV_RockTrollFirstEncounterScript>::??_G?$CSpawnedFunc@VCV_RockTrollFirstEncounterScript@NScript@@@@UAEPAXI@Z
+  00ecd760 RELOCATION_MATCH CSpawnedFunc<NScript::CV_SickChildScript>::??_G?$CSpawnedFunc@VCV_SickChildScript@NScript@@@@UAEPAXI@Z
+  00ed10a0 RELOCATION_MATCH NScript::CV_SingingStonesScript::Main
+  00ed4b90 RELOCATION_MATCH NScript::CV_SwordInTheStoneScript::?RegisterMain@CV_SwordInTheStoneScript@NScript@@UAEXXZ
+  00ed75c0 RELOCATION_MATCH CSpawnedFunc1<NScript::CV_SwordInTheStoneScript,CScriptThing>::??_G?$CSpawnedFunc1@VCV_SwordInTheStoneScript@NScript@@VCScriptThing@@@@UAEPAXI@Z
+  00ed8370 RELOCATION_MATCH CSpawnedFunc<NScript::CV_TalentlessBardScript>::??_G?$CSpawnedFunc@VCV_TalentlessBardScript@NScript@@@@UAEPAXI@Z
+  00edaf10 RELOCATION_MATCH CSpawnedFunc<NScript::CV_TempleOfLightScript>::??_G?$CSpawnedFunc@VCV_TempleOfLightScript@NScript@@@@UAEPAXI@Z
+  00edec70 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::?RegisterMain@CV_TravellingHeroesScript@NScript@@UAEXXZ
+  00ee47a0 MATCH CSpawnedFunc<NScript::CV_TourGuideScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_TourGuideScript@NScript@@@@UAEXXZ
+  00ee6e80 MATCH CSpawnedFunc<NScript::CV_TrophyDealerScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_TrophyDealerScript@NScript@@@@UAEXXZ
+  00ee82b0 RELOCATION_MATCH CSpawnedFunc<NScript::CCS_OakValeRevisitedScript>::??_G?$CSpawnedFunc@VCCS_OakValeRevisitedScript@NScript@@@@UAEPAXI@Z
+  00ee9080 RELOCATION_MATCH CSpawnedFunc<NScript::CGlobal_WatchForHeroDeathScript>::??_G?$CSpawnedFunc@VCGlobal_WatchForHeroDeathScript@NScript@@@@UAEPAXI@Z
+  00ee94d0 RELOCATION_MATCH NScript::CExpression_FishScript::?RegisterMain@CExpression_FishScript@NScript@@UAEXXZ
+  00eea010 MATCH CSpawnedFunc<NScript::CExpression_FollowScript>::?SuspendableProcess@?$CSpawnedFunc@VCExpression_FollowScript@NScript@@@@UAEXXZ
+  00eea710 MATCH CSpawnedFunc<NScript::CExpression_WaitScript>::?SuspendableProcess@?$CSpawnedFunc@VCExpression_WaitScript@NScript@@@@UAEXXZ
+  00eeae50 RELOCATION_MATCH CSpawnedFunc<NScript::CExpression_DigScript>::??_G?$CSpawnedFunc@VCExpression_DigScript@NScript@@@@UAEPAXI@Z
+  00eebcb0 RELOCATION_MATCH NScript::CExpression_PicklockScript::?RegisterMain@CExpression_PicklockScript@NScript@@UAEXXZ
+  00eec360 MATCH CSpawnedFunc<NScript::CExpression_StealScript>::?SuspendableProcess@?$CSpawnedFunc@VCExpression_StealScript@NScript@@@@UAEXXZ
+  00eec730 RELOCATION_MATCH CSpawnedFunc<NScript::CGlobal_GiveHeroItemsFromRewardChestScript>::??_G?$CSpawnedFunc@VCGlobal_GiveHeroItemsFromRewardChestScript@NScript@@@@UAEPAXI@Z
+  00eecf70 RELOCATION_MATCH NScript::CGlobal_ToggleTimeDisplayScript::?RegisterMain@CGlobal_ToggleTimeDisplayScript@NScript@@UAEXXZ
+  00eed1f0 MATCH CSpawnedFunc<NScript::CalextestScript>::?SuspendableProcess@?$CSpawnedFunc@VCalextestScript@NScript@@@@UAEXXZ
+  00eedba0 RELOCATION_MATCH CSpawnedFunc<NScript::CPersonalScript_alextestScript>::??_G?$CSpawnedFunc@VCPersonalScript_alextestScript@NScript@@@@UAEPAXI@Z
+  00eee920 RELOCATION_MATCH CSpawnedFunc<NScript::CEmptyScript>::??_G?$CSpawnedFunc@VCEmptyScript@NScript@@@@UAEPAXI@Z
+  00eeec00 RELOCATION_MATCH NScript::CTestTheInventoryScript::?TestForLampOn@CTestTheInventoryScript@NScript@@QAEXXZ
+  00eef520 RELOCATION_MATCH CSpawnedFunc<NScript::CTestQuestCard1Script>::??_G?$CSpawnedFunc@VCTestQuestCard1Script@NScript@@@@UAEPAXI@Z
+  00eef7a0 RELOCATION_MATCH NScript::CTestQuestCard3Script::?RegisterMain@CTestQuestCard3Script@NScript@@UAEXXZ
+  00eef990 MATCH CSpawnedFunc<NScript::CTestNewNav1Script>::?SuspendableProcess@?$CSpawnedFunc@VCTestNewNav1Script@NScript@@@@UAEXXZ
+  00eefb00 RELOCATION_MATCH CSpawnedFunc<NScript::CTestNewNav2Script>::??_G?$CSpawnedFunc@VCTestNewNav2Script@NScript@@@@UAEPAXI@Z
+  00eefd20 RELOCATION_MATCH NScript::CTestNewNav4Script::?RegisterMain@CTestNewNav4Script@NScript@@UAEXXZ
+  00eeff10 MATCH CSpawnedFunc<NScript::CTestNewNav5Script>::?SuspendableProcess@?$CSpawnedFunc@VCTestNewNav5Script@NScript@@@@UAEXXZ
+  00ef0070 RELOCATION_MATCH CSpawnedFunc<NScript::CPersonalScript_EmptyScript>::??_G?$CSpawnedFunc@VCPersonalScript_EmptyScript@NScript@@@@UAEPAXI@Z
+  00ef8d00 RELOCATION_MATCH CSpawnedFunc1<NScript::CPersonalScript_EmptyScript,CScriptThing>::??_G?$CSpawnedFunc1@VCPersonalScript_EmptyScript@NScript@@VCScriptThing@@@@UAEPAXI@Z
+  00ef9f70 RELOCATION_MATCH NScript::Cguy_scriptScript::?RegisterMain@Cguy_scriptScript@NScript@@UAEXXZ
+  00efa4e0 MATCH CSpawnedFunc<NScript::Cbandit_level_cutsceneScript>::?SuspendableProcess@?$CSpawnedFunc@VCbandit_level_cutsceneScript@NScript@@@@UAEXXZ
+  00efb090 RELOCATION_MATCH CSpawnedFunc<NScript::CDanyalTestScriptsScript>::??_G?$CSpawnedFunc@VCDanyalTestScriptsScript@NScript@@@@UAEPAXI@Z
+  00efb6a0 RELOCATION_MATCH NScript::CHitSwitchTestScript::?RegisterMain@CHitSwitchTestScript@NScript@@UAEXXZ
+  00efbc90 MATCH CSpawnedFunc<NScript::CGuildSealTriggerTestScript>::?SuspendableProcess@?$CSpawnedFunc@VCGuildSealTriggerTestScript@NScript@@@@UAEXXZ
+  00efc260 RELOCATION_MATCH NScript::CHeroTurningDebuggerScript::?Main@CHeroTurningDebuggerScript@NScript@@UAEXXZ
+  00efc880 RELOCATION_MATCH CSpawnedFunc<NScript::CPersonalScript_AardvarkScript>::??_G?$CSpawnedFunc@VCPersonalScript_AardvarkScript@NScript@@@@UAEPAXI@Z
+  00efe410 RELOCATION_MATCH NScript::CBenTestScriptsScript::?RegisterMain@CBenTestScriptsScript@NScript@@UAEXXZ
+  00eff120 MATCH CSpawnedFunc<NScript::CTonyTestScriptsScript>::?SuspendableProcess@?$CSpawnedFunc@VCTonyTestScriptsScript@NScript@@@@UAEXXZ
+  00eff8a0 RELOCATION_MATCH NScript::CShowTargetedThingHealthScript::?Main@CShowTargetedThingHealthScript@NScript@@UAEXXZ
+  00f012b0 RELOCATION_MATCH CSpawnedFunc<NScript::COracleMinigameTestScript>::??_G?$CSpawnedFunc@VCOracleMinigameTestScript@NScript@@@@UAEPAXI@Z
+  00f017f0 RELOCATION_MATCH NScript::CQ_CinemaTestScript::?RegisterMain@CQ_CinemaTestScript@NScript@@UAEXXZ
+  00f01eb0 RELOCATION_MATCH NScript::CQ_CinemaTestScript::DoMission
+  00f0b130 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::DoQuest
