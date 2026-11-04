@@ -162,7 +162,13 @@ protected:
     virtual void OnAnimationLoaded();
 protected:
     virtual bool WaitForMeshToLoad() const;
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_PCREATURE
+    // chunk 751 (row 0x00854720 CCreatureAction_SpiritReturnToHero::PerformAction): Ego_r.pdb PCreature
+    // (CIntelligentPointer<CThingCreatureBase>) at +0x08; the rest stays opaque. Needs engine/CIntelligentPointer.h first.
+protected: CIntelligentPointer<CThingCreatureBase> PCreature; unsigned char _pad_0x10[0x98];
+#else
 protected: unsigned char _pad_0x08[0xa0];
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CCreatureActionBase)==0xa8);
 #else

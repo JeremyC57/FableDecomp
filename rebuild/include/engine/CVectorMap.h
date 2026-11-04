@@ -33,6 +33,18 @@ public:
         const_iterator i=LowerBound(key);
         return i==this->end() || key<i->first ? this->end() : i;
     }
+#ifdef FABLE_RETAIL_CVECTORMAP_ASSIGN
+    // Retail opt-in (chunk 751, rows 0x0045CFAD CSoundMap::operator= / 0x0046313E CSimVoice::operator=, size-optimised TUs): the
+    // member-wise assignment is expanded at both call sites (the vector operator= called out of line, Compare copies nothing, the
+    // Dirty byte copied through al); under optimize("s") the implicit operator= is called out of line instead (a 33-byte
+    // ??4CVectorMap COMDAT), so the expanded form is __forceinline (no out-of-line ??4CVectorMap in Fable.exe).
+    __forceinline CVectorMap& operator=(const CVectorMap& other) {
+        CArray<std::pair<K,V> >::operator=(other);
+        Compare=other.Compare;
+        Dirty=other.Dirty;
+        return *this;
+    }
+#endif
 private:
     CompareType Compare;
     bool Dirty;

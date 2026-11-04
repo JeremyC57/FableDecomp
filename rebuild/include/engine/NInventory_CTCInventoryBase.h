@@ -5,6 +5,9 @@
 #include "stlport/fable_containers.h"
 namespace NUISystem { class CComponent; }
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_ANIMBOX
+#include "engine/C2DBoxF.h"
+#endif
 // Layout: original donor328, native304 after the six vector reductions.
 // Every original data member is retained; unused composite fields keep their
 // original names and complete native storage. Native map secondary base is130.
@@ -24,6 +27,11 @@ protected:
  // line at 0x00486024, as the landed CTCInventoryTrade::OpenInventoryPC 0x005AE86B also calls it).
 public:
  virtual void OpenInventory();
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_ANIMBOX
+ // chunk 751 (row 0x005BC58F): Ego_r.pdb ?SetInventoryAnimRenderBox@CTCInventoryBase@NInventory@@QAEXABVC2DBoxF@@@Z and the
+ // member typed as its PDB C2DBoxF (same 16 bytes at +0xBC).
+ void SetInventoryAnimRenderBox(const C2DBoxF& box);
+#endif
 protected:
  std::vector<NUISystem::CComponent*> Components;
 #else
@@ -52,7 +60,11 @@ private:
  float CategoryMovement,CategoryMovementDirection;
  unsigned char MenuDisplayListItem[12],MenuDisplayListCategory[12],ConfiscatedItems[12];
  CThing* pBuildingThing;
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_ANIMBOX
+ C2DBoxF InventoryAnimRenderBox;
+#else
  unsigned char InventoryAnimRenderBox[16];
+#endif
  unsigned char InventoryAnimCurrentRHSet[24],InventoryAnimLastRHSet[24];
  float InventoryAnimCurrentXRotationAngle,InventoryAnimLastXRotationAngle;
  float InventoryAnimCurrentYRotationAngle,InventoryAnimLastYRotationAngle;

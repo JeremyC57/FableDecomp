@@ -1,0 +1,7 @@
+header	macro	change	landed_includers_with_macro	effect
+engine/C2DBoxF.h	FABLE_RETAIL_C2DBOXF	adds the out-of-line ctor declaration C2DBoxF(const C2DVector&, const C2DVector&) (0x004371A0)	00/62/global_GFPlayFullScreenXBoxMovie_006286f0.cpp, 00/48/CPlayer_DrawFreeCamDebug_00487570.cpp, 00/a7/CNavQuadTree_IsAreaBlockedByLines_00a76f30.cpp	declaration only (a new overload; none of them builds a C2DBoxF from two vectors): bytes unchanged
+engine/CWorld.h	FABLE_RETAIL_CWORLD	adds inline GetOpinionReactionManager / PeekOpinionReactionManager	every FABLE_RETAIL_CWORLD includer (none defines either accessor)	unused inline members: bytes unchanged
+engine/CStringParser.h	FABLE_RETAIL_CSTRINGPARSER	declares ReadAsFloat and protected Error	5 includers (none defines or calls them)	declarations only
+engine/CParsedItem.h	FABLE_RETAIL_CPARSEDITEM	adds inline IsFloat/IsInteger/GetFloat/GetInteger	CPersistContext_TransferVectorLoadText_009bb110.cpp	unused inline members
+engine/CDisplayManager.h	FABLE_RETAIL_CDISPLAYMANAGER	declares private SetupDepthAndBackBufferTextures	GFPlayFullScreenXBoxMovie_006286f0 and other includers	declaration only
+engine/CAIStateGroupBase.h	FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS	declares protected GetPWorldSeed() const	MEMBERS includers	declaration only

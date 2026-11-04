@@ -1,0 +1,33 @@
+address	name	evidence
+004310a7	CPersistContext::Transfer<CWideString>	landing 2026-11-04n (chunk 751): one-argument member template Transfer(T&) (Ego_r.pdb CPersistContext); sibling of landed Transfer<float> 0x00431061 whose notes name this instantiation; label said TransferWideString (forge autoname)
+00431143	CPersistContext::Transfer<CCharString>	landing 2026-11-04n (chunk 751): CCharString twin of 0x004310A7 (labels_namepass_2026-10-26.tsv); label said Transfer / TransferString
+00493ac2	CEnginePrimitive2DSprite::CEnginePrimitive2DSprite	landing 2026-11-04n (chunk 751): Ego_r.pdb ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z (position overload)
+004371a0	C2DBoxF::C2DBoxF	landing 2026-11-04n (chunk 751): Ego_r/FableWin ??0C2DBoxF@@QAE@ABVC2DVector@@0@Z; catalog label CRightHandedSet::CRightHandedSet is propagated
+005bc58f	NInventory::CTCInventoryBase::SetInventoryAnimRenderBox	landing 2026-11-04n (chunk 751): Ego_r.pdb ?SetInventoryAnimRenderBox@CTCInventoryBase@NInventory@@QAEXABVC2DBoxF@@@Z
+006817f0	CTCCreatureOpinionOfHero::IsWillingToAttackHeroOnOpinion	landing 2026-11-04n (chunk 751): Ego_r.pdb ?IsWillingToAttackHeroOnOpinion@CTCCreatureOpinionOfHero@@QBE_NXZ; callee 0x00686A80 is CTCBase::PeekWorld
+007e0d00	CTCEffectOnDie::OnDie	landing 2026-11-04n (chunk 751): Ego_r.pdb virtual (slot 13)
+007eac70	CTCActionUseBase::OnInitialActivate	landing 2026-11-04n (chunk 751): Ego_r.pdb virtual (slot 6)
+0082a3e0	CMiniMapDisplay::CMarkerInfo::IsReversedOnMap	landing 2026-11-04n (chunk 751): Ego_r.pdb nested class, const
+00854720	CCreatureAction_SpiritReturnToHero::PerformAction	landing 2026-11-04n (chunk 751): Ego_r.pdb virtual slot 3
+00878390	NCameraModes::CTools::GetThingsOfType<CThingBuilding>	landing 2026-11-04n (chunk 751): Ego_r/FableWin ??$GetThingsOfType@VCThingBuilding@@@CTools@NCameraModes@@QBEXAAV?$list@PBVCThingBuilding@@...@std@@JABVC3DVector@@M@Z (const); filter CFilter_Bind2<CThingFilter_IsOfType,CThingFilter_OverlappingSphere>
+00954740	CAIStateGroup_MazeShieldedChase::IsStillRunnable	landing 2026-11-04n (chunk 751): Ego_r.pdb ?IsStillRunnable@CAIStateGroup_MazeShieldedChase@@IAE_NXZ (protected, non-virtual)
+009350c0	CAIStateGroup_ScriptingBase<CAIStateGroupBase>::Fired	landing 2026-11-04n (chunk 751): Ego_r.pdb ?Fired@?$CAIStateGroup_ScriptingBase@VCAIStateGroupBase@@@@IAEXXZ (protected)
+009ba650	CStringParser::ReadAsFloat	landing 2026-11-04n (chunk 751): Ego_r.pdb ?ReadAsFloat@CStringParser@@QAEMXZ
+009d5580	CBankFileAsyncData::PeekData	landing 2026-11-04n (chunk 751): Ego_r.pdb ?PeekData@CBankFileAsyncData@@QBEPBXXZ (the old draft called it GetData)
+00a14440	C3DVector::AccurateNormalise	landing 2026-11-04n (chunk 751): reloc binding (2 votes); called by 0x00809030 (the old draft called it Normalise)
+00af12a0	NParticleEngine::CParticleEmitterInfo::CEmitterData::BuildEmitterTemplate	landing 2026-11-04n (chunk 751): Ego_r.pdb ?BuildEmitterTemplate@CEmitterData@CParticleEmitterInfo@NParticleEngine@@QAEXXZ
+00af1860	CCountedPointer<NParticleEngine::CParticleEmitter>::Reset	landing 2026-11-04n (chunk 751): shared CCountedPointer<T>::Reset; landed descriptive CCountedPointer_00ae91d0::Reset
+00521a90	CThingManager::SetNameForThing	landing 2026-11-04n (chunk 751): Ego_r.pdb ?SetNameForThing@CThingManager@@QAEX_KABVCWideString@@@Z
+00bddf30	CLocalDetailCacheMap::CQuadTreeElement::CQuadTreeElement	landing 2026-11-04n (chunk 751): FableWin.pdb ??0CQuadTreeElement@CLocalDetailCacheMap@@QAE@PAV1@JJJJ@Z (long x4, not unsigned short)
+0051d870	std::vector<CNavigationAreaUpdate::CNavigationLayerUpdate>::resize	landing 2026-11-04n (chunk 751): FableWin ?resize@?$vector@VCNavigationLayerUpdate@CNavigationAreaUpdate@@...@std@@QAEXI@Z; label said CRecord24Vector::resize / ~CLODDynamicBuildInfo
+007767a0	CMatrix3x4::Set	landing 2026-11-04n (chunk 751): Ego_r ?Set@CMatrix3x4@@QAEXABVCRightHandedSet@@ABVC3DVector@@@Z
+00871fd0	NCameraModes::CStringAndCageBase::UpdateXYVars	landing 2026-11-04n (chunk 751): Ego_r private AAE; callee 0x0084D080 is GetCamTools (draft said GetFrameInfo)
+0090bbf0	CAIStateGroup_MinionWorkInInn::IsRunnable	landing 2026-11-04n (chunk 751): callee 0x0082D2D0 is CThingBuilding::PeekPSimDefinition const (PDB)
+00686870	CTCBase::OnInitialActivate	landing 2026-11-04n (chunk 751): vland RELOC_NAME (row 0x007EAC70 calls the base ?OnInitialActivate@CTCBase@@UAEXXZ); label said CTCBase::vfunc_6
+0062e900	CCreatureAction_CastWillFireballSpell::~CCreatureAction_CastWillFireballSpell	landing 2026-11-04n (chunk 751): vland RELOC_NAME (row 0x0072C930 destroys the temporary through it); label said CCombatActionBase::~CCombatActionBase (identical-body propagation, check label_trust)
+0045cfde	std::vector<std::pair<unsigned long,CSoundPair> >::operator=	landing 2026-11-04n (chunk 751): vland RELOC_NAME (row 0x0045CFAD, the CVectorMap's CArray assignment); label said Vector<Record12_0045cfde>::Assign
+0045cfad	CSoundMap::operator=	landing 2026-11-04n: qualify the bare catalog name vland wrote (payload module CSoundMap)
+0046313e	CSimVoice::operator=	landing 2026-11-04n: qualify the bare catalog name (??4CSimVoice@@QAEAAV0@ABV0@@Z)
+0072c930	CTCSpecialAbilities::SetupFireballSpell	landing 2026-11-04n: qualify the bare catalog name
+007447e0	CTCPerceiveThing::UpdateDistanceFromPerceivedThing	landing 2026-11-04n: qualify the bare catalog name
+00af56e0	NParticleEngine::CParticleSystem::DeleteAllParticles	landing 2026-11-04n: qualify the bare catalog name

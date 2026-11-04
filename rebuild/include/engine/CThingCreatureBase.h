@@ -69,6 +69,9 @@ public:
     }
     virtual void OnHit(CHitParameters&);
     bool SetCurrentAction(const CCreatureActionBase&);
+    // Chunk 751 (row 0x0072C930 CTCSpecialAbilities::SetupFireballSpell): Ego_r.pdb ?IsFreeToPerformAction@CThingCreatureBase@@QBE_NABVCCreatureActionBase@@@Z,
+    // out of line in retail at 0x00662210. Declaration only: no layout change.
+    bool IsFreeToPerformAction(const CCreatureActionBase&) const;       // 0x00662210
     // Retail opt-in (2026-11-03, chunk 720 row 0x0065B854): FableWin.pdb ?GetProperty@CThingCreatureBase@@QBEKXZ, out of line in retail
     // at 0x00662010 (mov eax,[ecx+0E0h]; mov eax,[eax+0F0h]: the PDef pointee's Property, Ego_r CThingCreatureDef +0xF8 less the two
     // STLport vector shrinks; the virtual CThingAICreature::GetProperties 0x00830140, slot 48, has the same body).

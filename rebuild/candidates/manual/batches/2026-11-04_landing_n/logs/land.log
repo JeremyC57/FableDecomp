@@ -1,0 +1,63 @@
+addr       parity           behav  name
+004310a7   RELOCATION_MATCH PASS   Transfer<CWideString>
+00431143   RELOCATION_MATCH PASS   Transfer<CCharString>
+0045cfad   WARN RELOC_NAME: ??4?$vector@U?$pair@KVCSoundPair@@@std@@V?$allocator@U?$pair@KVCSoundPair@@@std@@@2@@std@@QAEAAV01@ABV01@@Z -> 0045cfde labelled 'Vector<Record12_0045cfde>::Assign'
+0045cfad   RELOCATION_MATCH PASS   operator=
+0046313e   RELOCATION_MATCH PASS   operator=
+00493ac2   WARN RELOC_NAME: ??0C2DBoxF@@QAE@ABVC2DVector@@0@Z -> 004371a0 labelled 'CRightHandedSet::CRightHandedSet'
+00493ac2   RELOCATION_MATCH PASS   CEnginePrimitive2DSprite
+005bc58f   MATCH            PASS   SetInventoryAnimRenderBox
+006817f0   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+006817f0   RELOCATION_MATCH PASS   IsWillingToAttackHeroOnOpinion
+0072c930   WARN RELOC_NAME: ??1CCreatureAction_CastWillFireballSpell@@QAE@XZ -> 0062e900 labelled 'CCombatActionBase::~CCombatActionBase'
+0072c930   RELOCATION_MATCH PASS   SetupFireballSpell
+007447e0   RELOCATION_MATCH PASS   UpdateDistanceFromPerceivedThing
+007e0d00   RELOCATION_MATCH PASS   OnDie
+007eac70   WARN RELOC_NAME: ?OnInitialActivate@CTCBase@@UAEXXZ -> 00686870 labelled 'CTCBase::vfunc_6'
+007eac70   RELOCATION_MATCH PASS   OnInitialActivate
+0082a3e0   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay
+0082a3e0   RELOCATION_MATCH PASS   IsReversedOnMap
+00854720   RELOCATION_MATCH PASS   PerformAction
+00954740   RELOCATION_MATCH PASS   IsStillRunnable
+009ba650   RELOCATION_MATCH PASS   ReadAsFloat
+00af12a0   RELOCATION_MATCH PASS   BuildEmitterTemplate
+00af56e0   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00af56e0   RELOCATION_MATCH PASS   DeleteAllParticles
+
+WINS: 17
+  004310a7 RELOCATION_MATCH CPersistContext::??$Transfer@VCWideString@@@CPersistContext@@QAEXAAVCWideString@@@Z
+  00431143 RELOCATION_MATCH CPersistContext::??$Transfer@VCCharString@@@CPersistContext@@QAEXAAVCCharString@@@Z
+  0045cfad RELOCATION_MATCH CSoundMap::??4CSoundMap@@QAEAAV0@ABV0@@Z
+  0046313e RELOCATION_MATCH CSimVoice::??4CSimVoice@@QAEAAV0@ABV0@@Z
+  00493ac2 RELOCATION_MATCH CEnginePrimitive2DSprite::??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z
+  005bc58f MATCH NInventory::CTCInventoryBase::?SetInventoryAnimRenderBox@CTCInventoryBase@NInventory@@QAEXABVC2DBoxF@@@Z
+  006817f0 RELOCATION_MATCH CTCCreatureOpinionOfHero::?IsWillingToAttackHeroOnOpinion@CTCCreatureOpinionOfHero@@QBE_NXZ
+  0072c930 RELOCATION_MATCH CTCSpecialAbilities::?SetupFireballSpell@CTCSpecialAbilities@@AAE_NXZ
+  007447e0 RELOCATION_MATCH CTCPerceiveThing::?UpdateDistanceFromPerceivedThing@CTCPerceiveThing@@AAEXXZ
+  007e0d00 RELOCATION_MATCH CTCEffectOnDie::?OnDie@CTCEffectOnDie@@UAEXXZ
+  007eac70 RELOCATION_MATCH CTCActionUseBase::?OnInitialActivate@CTCActionUseBase@@UAEXXZ
+  0082a3e0 RELOCATION_MATCH CMiniMapDisplay::CMarkerInfo::?IsReversedOnMap@CMarkerInfo@CMiniMapDisplay@@QBE_NXZ
+  00854720 RELOCATION_MATCH CCreatureAction_SpiritReturnToHero::?PerformAction@CCreatureAction_SpiritReturnToHero@@UAEXXZ
+  00954740 RELOCATION_MATCH CAIStateGroup_MazeShieldedChase::?IsStillRunnable@CAIStateGroup_MazeShieldedChase@@IAE_NXZ
+  009ba650 RELOCATION_MATCH CStringParser::?ReadAsFloat@CStringParser@@QAEMXZ
+  00af12a0 RELOCATION_MATCH NParticleEngine::CParticleEmitterInfo::CEmitterData::?BuildEmitterTemplate@CEmitterData@CParticleEmitterInfo@NParticleEngine@@QAEXXZ
+  00af56e0 RELOCATION_MATCH NParticleEngine::CParticleSystem::?DeleteAllParticles@CParticleSystem@NParticleEngine@@QAEXXZ
+
+LANDED 17 wins into src/compiled + tests + catalog + oracle
+  CPersistContext_TransferCWideString_004310a7
+  CPersistContext_TransferCCharString_00431143
+  CSoundMap_operator_0045cfad
+  CSimVoice_operator_0046313e
+  CEnginePrimitive2DSprite_CEnginePrimitive2DSprite_00493ac2
+  NInventoryCTCInventoryBase_SetInventoryAnimRenderBox_005bc58f
+  CTCCreatureOpinionOfHero_IsWillingToAttackHeroOnOpinion_006817f0
+  CTCSpecialAbilities_SetupFireballSpell_0072c930
+  CTCPerceiveThing_UpdateDistanceFromPerceivedThing_007447e0
+  CTCEffectOnDie_OnDie_007e0d00
+  CTCActionUseBase_OnInitialActivate_007eac70
+  CMiniMapDisplayCMarkerInfo_IsReversedOnMap_0082a3e0
+  CCreatureActionSpiritReturnToHero_PerformAction_00854720
+  CAIStateGroupMazeShieldedChase_IsStillRunnable_00954740
+  CStringParser_ReadAsFloat_009ba650
+  NParticleEngineCParticleEmitterInfoCEmitterData_BuildEmitterTemplate_00af12a0
+  NParticleEngineCParticleSystem_DeleteAllParticles_00af56e0

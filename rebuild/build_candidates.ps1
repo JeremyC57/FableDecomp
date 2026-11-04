@@ -381626,6 +381626,125 @@ $catalog = @(
         TestSource = '00/55/NUISystemCMesh_vectordeletingdestructor_00550c20_test.cpp'
         PassPattern = '00550c20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004310a7'
+        Module = 'CPersistContext'
+        Source = '00/43/CPersistContext_TransferCWideString_004310a7.cpp'
+        TestSource = '00/43/CPersistContext_TransferCWideString_004310a7_test.cpp'
+        PassPattern = '004310a7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00431143'
+        Module = 'CPersistContext'
+        Source = '00/43/CPersistContext_TransferCCharString_00431143.cpp'
+        TestSource = '00/43/CPersistContext_TransferCCharString_00431143_test.cpp'
+        PassPattern = '00431143_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045cfad'
+        Module = 'CSoundMap'
+        Source = '00/45/CSoundMap_operator_0045cfad.cpp'
+        TestSource = '00/45/CSoundMap_operator_0045cfad_test.cpp'
+        PassPattern = '0045cfad_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046313e'
+        Module = 'CSimVoice'
+        Source = '00/46/CSimVoice_operator_0046313e.cpp'
+        TestSource = '00/46/CSimVoice_operator_0046313e_test.cpp'
+        PassPattern = '0046313e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00493ac2'
+        Module = 'CEnginePrimitive2DSprite'
+        Source = '00/49/CEnginePrimitive2DSprite_CEnginePrimitive2DSprite_00493ac2.cpp'
+        TestSource = '00/49/CEnginePrimitive2DSprite_CEnginePrimitive2DSprite_00493ac2_test.cpp'
+        PassPattern = '00493ac2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bc58f'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_SetInventoryAnimRenderBox_005bc58f.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_SetInventoryAnimRenderBox_005bc58f_test.cpp'
+        PassPattern = '005bc58f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006817f0'
+        Module = 'CTCCreatureOpinionOfHero'
+        Source = '00/68/CTCCreatureOpinionOfHero_IsWillingToAttackHeroOnOpinion_006817f0.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_IsWillingToAttackHeroOnOpinion_006817f0_test.cpp'
+        PassPattern = '006817f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072c930'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_SetupFireballSpell_0072c930.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_SetupFireballSpell_0072c930_test.cpp'
+        PassPattern = '0072c930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007447e0'
+        Module = 'CTCPerceiveThing'
+        Source = '00/74/CTCPerceiveThing_UpdateDistanceFromPerceivedThing_007447e0.cpp'
+        TestSource = '00/74/CTCPerceiveThing_UpdateDistanceFromPerceivedThing_007447e0_test.cpp'
+        PassPattern = '007447e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e0d00'
+        Module = 'CTCEffectOnDie'
+        Source = '00/7e/CTCEffectOnDie_OnDie_007e0d00.cpp'
+        TestSource = '00/7e/CTCEffectOnDie_OnDie_007e0d00_test.cpp'
+        PassPattern = '007e0d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007eac70'
+        Module = 'CTCActionUseBase'
+        Source = '00/7e/CTCActionUseBase_OnInitialActivate_007eac70.cpp'
+        TestSource = '00/7e/CTCActionUseBase_OnInitialActivate_007eac70_test.cpp'
+        PassPattern = '007eac70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082a3e0'
+        Module = 'CMiniMapDisplay::CMarkerInfo'
+        Source = '00/82/CMiniMapDisplayCMarkerInfo_IsReversedOnMap_0082a3e0.cpp'
+        TestSource = '00/82/CMiniMapDisplayCMarkerInfo_IsReversedOnMap_0082a3e0_test.cpp'
+        PassPattern = '0082a3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00854720'
+        Module = 'CCreatureAction_SpiritReturnToHero'
+        Source = '00/85/CCreatureActionSpiritReturnToHero_PerformAction_00854720.cpp'
+        TestSource = '00/85/CCreatureActionSpiritReturnToHero_PerformAction_00854720_test.cpp'
+        PassPattern = '00854720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00954740'
+        Module = 'CAIStateGroup_MazeShieldedChase'
+        Source = '00/95/CAIStateGroupMazeShieldedChase_IsStillRunnable_00954740.cpp'
+        TestSource = '00/95/CAIStateGroupMazeShieldedChase_IsStillRunnable_00954740_test.cpp'
+        PassPattern = '00954740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ba650'
+        Module = 'CStringParser'
+        Source = '00/9b/CStringParser_ReadAsFloat_009ba650.cpp'
+        TestSource = '00/9b/CStringParser_ReadAsFloat_009ba650_test.cpp'
+        PassPattern = '009ba650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af12a0'
+        Module = 'NParticleEngine::CParticleEmitterInfo::CEmitterData'
+        Source = '00/af/NParticleEngineCParticleEmitterInfoCEmitterData_BuildEmitterTemplate_00af12a0.cpp'
+        TestSource = '00/af/NParticleEngineCParticleEmitterInfoCEmitterData_BuildEmitterTemplate_00af12a0_test.cpp'
+        PassPattern = '00af12a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af56e0'
+        Module = 'NParticleEngine::CParticleSystem'
+        Source = '00/af/NParticleEngineCParticleSystem_DeleteAllParticles_00af56e0.cpp'
+        TestSource = '00/af/NParticleEngineCParticleSystem_DeleteAllParticles_00af56e0_test.cpp'
+        PassPattern = '00af56e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

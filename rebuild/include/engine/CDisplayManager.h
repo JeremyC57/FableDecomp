@@ -46,6 +46,9 @@ public:
  IDirect3DDevice9* GetD3DDevice(){return D3DDevice;}
 #endif
 private:
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER
+ bool SetupDepthAndBackBufferTextures();                                // 0x009BEE40 ?SetupDepthAndBackBufferTextures@CDisplayManager@@AAE_NXZ (chunk 751)
+#endif
  CSystemManager& SystemManager;
  boost::scoped_ptr<CRenderManager> PRenderManager;
  CSurface RenderTargetSurface,RenderTargetDepthBuffer,BackBufferSurface,DepthBufferSurface;

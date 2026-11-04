@@ -47,12 +47,16 @@ public:
     CCharString ReadAsStringUntilWhitespace();
     CCharString ReadAsSymbol();
     CCharString ReadAsString();
+    // chunk 751 (row 0x009BA650): Ego_r.pdb ?ReadAsFloat@CStringParser@@QAEMXZ and the protected ?Error@CStringParser@@IAEXABVCCharString@@@Z
+    // (0x009B95F0, landed).
+    float ReadAsFloat();
     class CCursorPos {
     public:
         bool InQuotes;
         unsigned long StringPos,Line;
     };
 protected:
+    void Error(const CCharString&);
     const char* String;
     unsigned long BaseLineOffset;
     CCharString Filename,TempCharString;

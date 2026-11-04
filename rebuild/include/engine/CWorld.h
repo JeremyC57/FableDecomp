@@ -122,6 +122,11 @@ public:
     CThingSearchTools& GetThingSearchTools() { return *PThingSearchTools_ptr; }
     const CThingSearchTools& PeekThingSearchTools() const { return *PThingSearchTools_ptr; }
     bool IsSerialisingHeroState() const { return SerialisingHeroState; }
+    // chunk 751 (row 0x006817F0): the inline opinion-reaction accessors, Ego_r.pdb / FableWin.pdb
+    // ?GetOpinionReactionManager@CWorld@@QAEAAVCOpinionReactionManager@@XZ / ?PeekOpinionReactionManager@CWorld@@QBEABVCOpinionReactionManager@@XZ
+    // (expanded in retail: 0x00681803 `mov eax,[eax+74h]`, the CCountedPointer's Data). No layout change.
+    COpinionReactionManager& GetOpinionReactionManager() { return *POpinionReactionManager_Data; }
+    const COpinionReactionManager& PeekOpinionReactionManager() const { return *POpinionReactionManager_Data; }
     // Retail opt-in addition (chunk 718): the inline game-camera accessors, FableWin.pdb ?GetGameCamera@CWorld@@QAEPAVCAIGameCameraBase@@XZ
     // (0x01ACC440) / ?PeekGameCamera@CWorld@@QBEPBVCAIGameCameraBase@@XZ (0x018A7070), expanded by Ego_r and retail: they read
     // PCurrentGameCamera (+0x34; 0x0088E0F0 `mov eax,[ecx+4] ; mov ecx,[eax+34h]`, landed 0x00892410 / 0x007A9B10). No layout change.

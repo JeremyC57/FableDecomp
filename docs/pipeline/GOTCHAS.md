@@ -1973,3 +1973,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A three-register rotation that no accessor/temporary spelling moves can come from VC7.1 cross-jumping identical exit tails: write each exit out in full (chunk 750, CSoundEvent::Play).
 - VC7.1 copies a packed C2DVector with integer moves for `C2DVector p; p = member;` but keeps it on the x87 stack for `C2DVector p(member);` (chunk 749).
 - `vland --recheck-landed` only re-grades the payload rows; header siblings need includers.py + ppcmp.py + their own recheck (chunk 749).
+- Two chunks set up from the same HEAD can both change one header: before merging the second overlay, `git diff <overlay base> HEAD -- <header>`; if it moved, `git merge-file` the overlay against the base (chunk 751, C2DBoxF.h).
+- A pointer ternary `(a ? a : b)->GetPos()` compiles differently from retail's if/else assigning a C3DVector local (chunk 751).
+- A traits-local `Transfer<T>` needs the retail CPersistTraits ctor and `return` in each case; with `break` the two frame slots swap (chunk 751).

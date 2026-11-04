@@ -22,6 +22,11 @@ public:
     // ABVC3DVector@@1AAV5@2AAMPAPBVCThing@@W4ELOSTest@12@_N@Z = retail 0x00877840 (the landed 0x00877C40 calls it).
     bool IsLineOfSight(const std::vector<const CThing*>&, const C3DVector&, const C3DVector&, C3DVector&, C3DVector&, float&,
         const CThing**, ELOSTest, bool) const;                           // 0x00877840
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS
+    // chunk 751 (row 0x00878390): Ego_r.pdb / FableWin.pdb member template
+    // ??$GetThingsOfType@VCThingBuilding@@@CTools@NCameraModes@@QBEXAAV?$list@PBVCThingBuilding@@...@std@@JABVC3DVector@@M@Z.
+    template<class T> void GetThingsOfType(std::list<const T*>& things,long type,const C3DVector& pos,float radius) const;
+#endif
 private:
     CGameCameraManager* CameraManager;                                // +0x00
     unsigned char ScanThings[0xC];                                    // +0x04 vector<CIntelligentPointer<const CThing> >

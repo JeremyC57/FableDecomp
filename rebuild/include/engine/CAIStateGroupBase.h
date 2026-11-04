@@ -53,6 +53,7 @@ protected:
     virtual void Update() = 0;                                           // slot 12 (_purecall)
     virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);   // slot 13 0x008FD285
     bool IsStopping() const;                                             // 0x008FD010 ?IsStopping@CAIStateGroupBase@@IBE_NXZ
+    unsigned long* GetPWorldSeed() const;                                // 0x008FCFD0 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (chunk 751)
 public:
     void Terminate();                                                    // 0x008FCF40 ?Terminate@CAIStateGroupBase@@QAEXXZ
 #endif // FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS

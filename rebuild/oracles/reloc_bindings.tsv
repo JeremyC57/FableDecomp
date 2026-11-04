@@ -36361,3 +36361,13 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ??_ECTextSlider@NUISystem@@UAEPAXI@Z	0054a440	0054a390
 ??_ECText@NUISystem@@UAEPAXI@Z	00550030	00550010
 ??_ECMesh@NUISystem@@UAEPAXI@Z	00550c30	00550c10
+??4?$vector@U?$pair@KVCDefString@@@std@@V?$allocator@U?$pair@KVCDefString@@@std@@@2@@std@@QAEAAV01@ABV01@@Z	0045d183	0045cfad
+??4?$vector@U?$pair@KVCSoundPair@@@std@@V?$allocator@U?$pair@KVCSoundPair@@@std@@@2@@std@@QAEAAV01@ABV01@@Z	0045cfde	0045cfad
+??4?$vector@U?$pair@W4EReactionSpeechType@@J@std@@V?$allocator@U?$pair@W4EReactionSpeechType@@J@std@@@2@@std@@QAEAAV01@ABV01@@Z	00463169	0046313e
+??0C2DBoxF@@QAE@ABVC2DVector@@0@Z	004371a0	00493ac2
+??0CCreatureAction_CastWillFireballSpell@@QAE@PAVCThingCreatureBase@@@Z	008bcd10	0072c930
+??1CCreatureAction_CastWillFireballSpell@@QAE@XZ	0062e900	0072c930
+?CalculateWeaponState@CTCSpecialAbilities@@SI?AW4EWEAPON_STATE@1@AAVCThingCreatureBase@@@Z	0072b940	0072c930
+?SetWeaponState@CTCFireballSpell@@QAEXW4EWEAPON_STATE@CTCSpecialAbilities@@@Z	007c8660	0072c930
+?ReadBinary@CParticleEmitter@NParticleEngine@@QAEXAAVCDataInputStream@@@Z	00aefaa0	00af12a0
+?Reset@?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAEXPAVCParticleEmitter@NParticleEngine@@@Z	00af1860	00af12a0

@@ -23,6 +23,9 @@ public:
         E31=z_axis.X; E32=z_axis.Y; E33=z_axis.Z;
         E41=translation.X; E42=translation.Y; E43=translation.Z;
     }
+    // Chunk 751 (row 0x007767A0): Ego_r.pdb / FableWin.pdb ?Set@CMatrix3x4@@QAEXABVCRightHandedSet@@ABVC3DVector@@@Z, out of line in
+    // retail at 0x007767A0 (the axes from the orientation -- GetRight, Forward, Up -- and the translation through the Set above).
+    void Set(const class CRightHandedSet& orientation,const C3DVector& translation);
     __forceinline void Set(float e11,float e12,float e13,float e21,float e22,float e23,float e31,float e32,float e33,float e41,float e42,float e43) {
         E11=e11; E12=e12; E13=e13; E21=e21; E22=e22; E23=e23; E31=e31; E32=e32; E33=e33; E41=e41; E42=e42; E43=e43;
     }

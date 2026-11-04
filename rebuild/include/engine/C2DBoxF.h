@@ -15,6 +15,9 @@ class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF() {}
  // NUISystem::CList::ComputeChildrenVisibility 0x005379F5.
  // (the elaborated "class C2DVector" declares ::C2DVector, so the default path gains no forward declaration).
  bool ContainsPoint(const class C2DVector& point) const;
+ // chunk 751 (row 0x00493AC2 CEnginePrimitive2DSprite ctor): Ego_r.pdb / FableWin.pdb ??0C2DBoxF@@QAE@ABVC2DVector@@0@Z, out of
+ // line at 0x004371A0 (copies the two corners; the landed clock-sprite row 0x0065595C binds it as a pointer pair, which no PDB has).
+ C2DBoxF(const class C2DVector& top_left,const class C2DVector& bottom_right);
  // chunk 726: the PDB accessors (FableWin ?GetTLX@C2DBoxF@@QBEMXZ .. ?GetHeight@C2DBoxF@@QBEMXZ), inline in retail:
  // NUISystem::CScrollingViewport::Update 0x0053F1C0 copies Window.GetTLX() into a frame word before the GetUIScale call
  // and computes GetWidth() / GetHeight() (fld BRX ; fsub TLX) ahead of it.

@@ -1,0 +1,36 @@
+catalog  004371a0 CRightHandedSet::CRightHandedSet -> C2DBoxF::C2DBoxF
+catalog  00686870 CTCBase::vfunc_6 -> CTCBase::OnInitialActivate
+catalog  00af1860 CCountedPointer_00ae91d0::Reset -> CCountedPointer<NParticleEngine::CParticleEmitter>::Reset
+catalog  0062e900 CCombatActionBase::~CCombatActionBase -> CCreatureAction_CastWillFireballSpell::~CCreatureAction_CastWillFireballSpell
+catalog  0045cfde Vector<Record12_0045cfde>::Assign -> std::vector<std::pair<unsigned long,CSoundPair> >::operator=
+catalog  004310a7 CPersistContext::TransferWideString -> CPersistContext::Transfer<CWideString>
+catalog  00431143 Transfer -> CPersistContext::Transfer<CCharString>
+catalog  00493ac2 CEnginePrimitive2DSprite -> CEnginePrimitive2DSprite::CEnginePrimitive2DSprite
+catalog  005bc58f SetInventoryAnimRenderBox -> NInventory::CTCInventoryBase::SetInventoryAnimRenderBox
+catalog  006817f0 IsWillingToAttackHeroOnOpinion -> CTCCreatureOpinionOfHero::IsWillingToAttackHeroOnOpinion
+catalog  007e0d00 CTCEffectOnDie::vfunc_13 -> CTCEffectOnDie::OnDie
+catalog  007eac70 CTCActionUseBase::vfunc_6 -> CTCActionUseBase::OnInitialActivate
+catalog  0082a3e0 IsReversedOnMap -> CMiniMapDisplay::CMarkerInfo::IsReversedOnMap
+catalog  00954740 IsStillRunnable -> CAIStateGroup_MazeShieldedChase::IsStillRunnable
+catalog  009ba650 ReadAsFloat -> CStringParser::ReadAsFloat
+catalog  00af12a0 BuildEmitterTemplate -> NParticleEngine::CParticleEmitterInfo::CEmitterData::BuildEmitterTemplate
+manifest 004310a7 CPersistContext::CPersistContext::TransferWideString -> CPersistContext::Transfer<CWideString>
+manifest 00431143 CPersistContext::Transfer -> CPersistContext::Transfer<CCharString>
+manifest 004371a0 CRightHandedSet::CRightHandedSet -> C2DBoxF::C2DBoxF
+manifest 0045cfde Vector<Record12_0045cfde>::Assign -> std::vector<std::pair<unsigned long,CSoundPair> >::operator=
+manifest 005bc58f CTCInventoryBase::SetInventoryAnimRenderBox -> NInventory::CTCInventoryBase::SetInventoryAnimRenderBox
+manifest 0062e900 CCombatActionBase::~CCombatActionBase -> CCreatureAction_CastWillFireballSpell::~CCreatureAction_CastWillFireballSpell
+manifest 00686870 CTCBase::vfunc_6 -> CTCBase::OnInitialActivate
+manifest 007767a0 CRightHandedSet::GetRight -> CMatrix3x4::Set
+manifest 007e0d00 CTCEffectOnDie::CTCEffectOnDie::vfunc_13 -> CTCEffectOnDie::OnDie
+manifest 007eac70 CTCActionUseBase::CTCActionUseBase::vfunc_6 -> CTCActionUseBase::OnInitialActivate
+manifest 0082a3e0 CMarkerInfo::IsReversedOnMap -> CMiniMapDisplay::CMarkerInfo::IsReversedOnMap
+manifest 00854720 CCreatureAction_SpiritReturnToHero::CCreatureAction_SpiritReturnToHero::PerformAction -> CCreatureAction_SpiritReturnToHero::PerformAction
+manifest 00871fd0 CStringAndCageBase::UpdateXYVars -> NCameraModes::CStringAndCageBase::UpdateXYVars
+manifest 00878390 CTools::GetThingsOfType<CThingBuilding> -> NCameraModes::CTools::GetThingsOfType<CThingBuilding>
+manifest 0090bbf0 CAIStateGroup_MinionWorkInInn::CAIStateGroup_MinionWorkInInn::IsRunnable -> CAIStateGroup_MinionWorkInInn::IsRunnable
+manifest 00af12a0 CEmitterData::BuildEmitterTemplate -> NParticleEngine::CParticleEmitterInfo::CEmitterData::BuildEmitterTemplate
+manifest 00af1860 CCountedPointer_00ae91d0::Reset -> CCountedPointer<NParticleEngine::CParticleEmitter>::Reset
+labels 27  catalog renamed 16  manifest renamed 17
+manifest 00af56e0 CParticleSystem::DeleteAllParticles -> NParticleEngine::CParticleSystem::DeleteAllParticles
+labels 32  catalog renamed 5  manifest renamed 2

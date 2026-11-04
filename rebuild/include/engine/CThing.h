@@ -173,6 +173,17 @@ public:
     // Chunk 732 (row 0x006AABE0): Ego_r.pdb ?GetPlayer@CThing@@QAEAAVCPlayer@@XZ, out of line in retail (0x004C7A30).
     CPlayer& GetPlayer();                                        // 0x004C7A30
     void SetPersistOnUnloadWhenInLimbo(bool persist) { PersistOnUnloadWhenInLimbo = persist; }
+    // Chunk 751 (row 0x0082A3E0 CMiniMapDisplay::CMarkerInfo::IsReversedOnMap): FableWin.pdb
+    // ??$PeekTCDriver@$$CBVCTCDRegionExit@@@CThing@@QBE_NPAPBVCTCDRegionExit@@@Z (inline in retail: the interface bit test, then
+    // PTCDriver +0x5C read straight off the thing). __forceinline like GetTC<T> / PeekTC<T> (owner decision 2026-11-01). The driver
+    // class must be complete (derived from CTCDriverBase) where it is instantiated.
+    template<class T> __forceinline bool PeekTCDriver(T** result) const {
+        if(HasTC(T::StatGetInterfaceType())) {
+            *result=static_cast<T*>(PTCDriver);
+            return true;
+        }
+        return false;
+    }
 #endif
 protected:
     CWorld& GetWorld();

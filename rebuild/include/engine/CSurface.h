@@ -8,6 +8,11 @@ public:
  CSurface() :PD3DSurface(0),AllocationSource(0) {}
  virtual ~CSurface();
  void Uninitialise();
+#ifdef FABLE_RETAIL_CSURFACE_PIXELFORMAT
+ // chunk 751 (row 0x009BEE40): Ego_r.pdb ?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ (0x009F2F60, by value through the hidden
+ // pointer). Needs CPixelFormat complete (engine/CPixelFormat.h) before the include.
+ CPixelFormat GetPixelFormat() const;
+#endif
 private:
  IDirect3DSurface9* PD3DSurface;
  unsigned long AllocationSource;
