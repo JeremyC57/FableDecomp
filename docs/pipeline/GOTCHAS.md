@@ -1976,3 +1976,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Two chunks set up from the same HEAD can both change one header: before merging the second overlay, `git diff <overlay base> HEAD -- <header>`; if it moved, `git merge-file` the overlay against the base (chunk 751, C2DBoxF.h).
 - A pointer ternary `(a ? a : b)->GetPos()` compiles differently from retail's if/else assigning a C3DVector local (chunk 751).
 - A traits-local `Transfer<T>` needs the retail CPersistTraits ctor and `return` in each case; with `break` the two frame slots swap (chunk 751).
+- VC7.1 names stdcall vcall thunks `??_9@$B<off>@AG` with no class; any TU taking `&I::VirtualMethod` emits them; they are not functors (chunk 753).
+- A slot label on a base-class function can come from whichever vtable lists it first: scan every vtable for the address and name it from the base class's own vtable (chunk 753, CComponent::SetName in 43 vtables).

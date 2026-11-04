@@ -1,0 +1,63 @@
+catalog  0052f100 NUISystem::CComponent::vfunc_84 -> NUISystem::CComponent::GetName
+catalog  0041c680 NUISystem::CSprite::vfunc_142 -> NUISystem::CSprite::SetAngle
+catalog  0041c690 NUISystem::CSprite::vfunc_143 -> NUISystem::CSprite::SetWidth
+catalog  0041c6a0 NUISystem::CSprite::vfunc_144 -> NUISystem::CSprite::SetHeight
+catalog  0041c6b0 NUISystem::CSprite::vfunc_146 -> NUISystem::CSprite::GetGraphicIndex
+catalog  0053fe30 NUISystem::CEditBox::vfunc_152 -> NUISystem::CEditBox::SetPasswordBox
+catalog  00540d10 NUISystem::CEditBox::vfunc_151 -> NUISystem::CEditBox::IsActive
+catalog  00540d20 NUISystem::CEditBox::vfunc_153 -> NUISystem::CEditBox::SetMaxLength
+catalog  00540cf0 CBankFile::GetBankHandle -> NUISystem::CEditBox::GetText
+catalog  00caef70 IComObject_Retail::vcall{48} -> IMediaSeeking::vcall{48}
+catalog  0041b550 NUISystem::CSprite::vfunc_145 -> NUISystem::CSprite::SetGraphicIndex
+catalog  005401b0 NUISystem::CEditBox::vfunc_150 -> NUISystem::CEditBox::SetActive
+catalog  0041c6c0 NUISystem::CSprite::NUISystem::CSprite::vfunc_147 -> NUISystem::CSprite::GetWidth
+catalog  0041c6d0 NUISystem::CSprite::NUISystem::CSprite::vfunc_148 -> NUISystem::CSprite::GetHeight
+catalog  0041c6e0 NUISystem::CSprite::NUISystem::CSprite::vfunc_0 -> NUISystem::CSprite::`vector deleting destructor'`adjustor{4}'
+catalog  0041c6f0 NUISystem::CSprite::NUISystem::CSprite::vfunc_0 -> NUISystem::CSprite::`vector deleting destructor'`adjustor{24}'
+catalog  0052f0f0 NUISystem::CSprite::NUISystem::CSprite::vfunc_83 -> NUISystem::CComponent::SetName
+catalog  00540d30 NUISystem::CEditBox::NUISystem::CEditBox::vfunc_154 -> NUISystem::CEditBox::SetAllowedCharacters
+catalog  00540d40 NUISystem::CEditBox::NUISystem::CEditBox::vfunc_155 -> NUISystem::CEditBox::SetForbiddenCharacters
+catalog  00540d50 NUISystem::CEditBox::NUISystem::CEditBox::vfunc_0 -> NUISystem::CEditBox::`vector deleting destructor'`adjustor{4}'
+catalog  00540d60 NUISystem::CEditBox::NUISystem::CEditBox::vfunc_0 -> NUISystem::CEditBox::`vector deleting destructor'`adjustor{24}'
+catalog  0054cbf0 NUISystem::CFrontEndList::NUISystem::CFrontEndList::vfunc_48 -> NUISystem::CFrontEndList::ChangeState
+catalog  0054da50 NUISystem::CFrontEndList::NUISystem::CFrontEndList::vfunc_0 -> NUISystem::CFrontEndList::`vector deleting destructor'`adjustor{4}'
+catalog  0054da60 NUISystem::CFrontEndList::NUISystem::CFrontEndList::vfunc_0 -> NUISystem::CFrontEndList::`vector deleting destructor'`adjustor{24}'
+catalog  00c21df0 CIsThingAlive::operator() -> CSoundEventSet::IsBusy
+catalog  00c21e50 CIsThingAlive::operator() -> CSoundEventSet::GetFreeSlot
+catalog  00c21f20 CIsThingAlive::operator() -> CSoundGroupPool_00c21f20::Allocate
+catalog  00c465d0 CIsThingAlive::operator() -> CRegionMap::GetCount
+catalog  00caef40 CThingFilter_IsValid::operator() -> IMediaSeeking::vcall{40}
+catalog  00caef50 CThingFilter_IsValid::operator() -> IMediaSeeking::vcall{76}
+catalog  00caef60 CThingFilter_IsValid::operator() -> IMediaSeeking::vcall{44}
+manifest 0041b550 NUISystem::CSprite::vfunc_145 -> NUISystem::CSprite::SetGraphicIndex
+manifest 0041c680 NUISystem::CSprite::vfunc_142 -> NUISystem::CSprite::SetAngle
+manifest 0041c690 NUISystem::CSprite::vfunc_143 -> NUISystem::CSprite::SetWidth
+manifest 0041c6a0 NUISystem::CSprite::vfunc_144 -> NUISystem::CSprite::SetHeight
+manifest 0041c6b0 NUISystem::CSprite::vfunc_146 -> NUISystem::CSprite::GetGraphicIndex
+manifest 0041c6c0 NUISystem::CSprite::NUISystem::CSprite::vfunc_147 -> NUISystem::CSprite::GetWidth
+manifest 0041c6d0 NUISystem::CSprite::NUISystem::CSprite::vfunc_148 -> NUISystem::CSprite::GetHeight
+manifest 0041c6e0 NUISystem::CSprite::NUISystem::CSprite::vfunc_0 -> NUISystem::CSprite::`vector deleting destructor'`adjustor{4}'
+manifest 0041c6f0 NUISystem::CSprite::NUISystem::CSprite::vfunc_0 -> NUISystem::CSprite::`vector deleting destructor'`adjustor{24}'
+manifest 0052f0f0 NUISystem::CSprite::NUISystem::CSprite::vfunc_83 -> NUISystem::CComponent::SetName
+manifest 0052f100 NUISystem::CComponent::vfunc_84 -> NUISystem::CComponent::GetName
+manifest 0053fe30 NUISystem::CEditBox::vfunc_152 -> NUISystem::CEditBox::SetPasswordBox
+manifest 005401b0 NUISystem::CEditBox::vfunc_150 -> NUISystem::CEditBox::SetActive
+manifest 00540cf0 CBankFile::GetBankHandle -> NUISystem::CEditBox::GetText
+manifest 00540d10 NUISystem::CEditBox::vfunc_151 -> NUISystem::CEditBox::IsActive
+manifest 00540d20 NUISystem::CEditBox::vfunc_153 -> NUISystem::CEditBox::SetMaxLength
+manifest 00540d30 NUISystem::CEditBox::NUISystem::CEditBox::vfunc_154 -> NUISystem::CEditBox::SetAllowedCharacters
+manifest 00540d40 NUISystem::CEditBox::NUISystem::CEditBox::vfunc_155 -> NUISystem::CEditBox::SetForbiddenCharacters
+manifest 00540d50 NUISystem::CEditBox::NUISystem::CEditBox::vfunc_0 -> NUISystem::CEditBox::`vector deleting destructor'`adjustor{4}'
+manifest 00540d60 NUISystem::CEditBox::NUISystem::CEditBox::vfunc_0 -> NUISystem::CEditBox::`vector deleting destructor'`adjustor{24}'
+manifest 0054cbf0 NUISystem::CFrontEndList::NUISystem::CFrontEndList::vfunc_48 -> NUISystem::CFrontEndList::ChangeState
+manifest 0054da50 NUISystem::CFrontEndList::NUISystem::CFrontEndList::vfunc_0 -> NUISystem::CFrontEndList::`vector deleting destructor'`adjustor{4}'
+manifest 0054da60 NUISystem::CFrontEndList::NUISystem::CFrontEndList::vfunc_0 -> NUISystem::CFrontEndList::`vector deleting destructor'`adjustor{24}'
+manifest 00c21df0 CIsThingAlive::operator() -> CSoundEventSet::IsBusy
+manifest 00c21e50 CIsThingAlive::operator() -> CSoundEventSet::GetFreeSlot
+manifest 00c21f20 CIsThingAlive::operator() -> CSoundGroupPool_00c21f20::Allocate
+manifest 00c465d0 CIsThingAlive::operator() -> CRegionMap::GetCount
+manifest 00caef40 CThingFilter_IsValid::operator() -> IMediaSeeking::vcall{40}
+manifest 00caef50 CThingFilter_IsValid::operator() -> IMediaSeeking::vcall{76}
+manifest 00caef60 CThingFilter_IsValid::operator() -> IMediaSeeking::vcall{44}
+manifest 00caef70 IComObject_Retail::vcall{48} -> IMediaSeeking::vcall{48}
+labels 31  catalog renamed 31  manifest renamed 31

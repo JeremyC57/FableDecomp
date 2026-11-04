@@ -1,0 +1,20 @@
+address	name	status	attempts	note
+0x0041C6C0	NUISystem::CSprite::GetWidth	RELOCATION_MATCH	2	src; ~CSprite TU (inline slot 147); test PASS; vland PASS
+0x0041C6D0	NUISystem::CSprite::GetHeight	RELOCATION_MATCH	2	src; ~CSprite TU (inline slot 148); test PASS; vland PASS
+0x0041C6E0	NUISystem::CSprite::`vector deleting destructor'`adjustor{4}'	RELOCATION_MATCH	2	src; ~CSprite TU; test PASS; vland PASS
+0x0041C6F0	NUISystem::CSprite::`vector deleting destructor'`adjustor{24}'	RELOCATION_MATCH	2	src; ~CSprite TU; test PASS; vland PASS
+0x0052F0F0	NUISystem::CComponent::SetName	RELOCATION_MATCH	2	src; CComponent vtable slot 83 (inherited by 43 vtables; not CSprite); test PASS; vland PASS
+0x00540D30	NUISystem::CEditBox::SetAllowedCharacters	RELOCATION_MATCH	2	src; ~CEditBox TU (inline slot 154); test PASS; vland PASS
+0x00540D40	NUISystem::CEditBox::SetForbiddenCharacters	RELOCATION_MATCH	2	src; ~CEditBox TU (inline slot 155); test PASS; vland PASS
+0x00540D50	NUISystem::CEditBox::`vector deleting destructor'`adjustor{4}'	RELOCATION_MATCH	2	src; ~CEditBox TU; test PASS; vland PASS
+0x00540D60	NUISystem::CEditBox::`vector deleting destructor'`adjustor{24}'	RELOCATION_MATCH	2	src; ~CEditBox TU; test PASS; vland PASS
+0x0054CBF0	NUISystem::CFrontEndList::ChangeState	RELOCATION_MATCH	3	src; a1 case order wrong (1428v1408), a2 retail source order; case table checked by hand; test PASS; vland PASS
+0x0054DA50	NUISystem::CFrontEndList::`vector deleting destructor'`adjustor{4}'	RELOCATION_MATCH	2	src; CFrontEndList ctor TU; test PASS; vland PASS
+0x0054DA60	NUISystem::CFrontEndList::`vector deleting destructor'`adjustor{24}'	RELOCATION_MATCH	2	src; CFrontEndList ctor TU; test PASS; vland PASS
+0x00C21DF0	CSoundEventSet::IsBusy	MATCH	1	src; libpk, landed spelling; test PASS; vland PASS
+0x00C21E50	CSoundEventSet::GetFreeSlot	MATCH	1	src; libpk, landed spelling; test PASS; vland PASS
+0x00C21F20	CSoundGroupPool_00c21f20::Allocate	MATCH	1	src; libpk, landed spelling (class probably CSoundEventSet); test PASS; vland PASS
+0x00C465D0	CRegionMap::GetCount	MATCH	1	src; libpk; fixes CAliveHelper_00c36cf0::Check binding; test PASS; vland PASS
+0x00CAEF40	IMediaSeeking::vcall{40}	MATCH	1	src; DirectShow ctlutil vcall thunk ??_9@$BCI@AG (GetDuration); test PASS; vland PASS
+0x00CAEF50	IMediaSeeking::vcall{76}	MATCH	1	src; ??_9@$BEM@AG (GetPreroll); test PASS; vland PASS
+0x00CAEF60	IMediaSeeking::vcall{44}	MATCH	1	src; ??_9@$BCM@AG (GetStopPosition); test PASS; vland PASS

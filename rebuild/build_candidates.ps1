@@ -381745,6 +381745,139 @@ $catalog = @(
         TestSource = '00/af/NParticleEngineCParticleSystem_DeleteAllParticles_00af56e0_test.cpp'
         PassPattern = '00af56e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0041c6c0'
+        Module = 'NUISystem::CSprite'
+        Source = '00/41/NUISystemCSprite_GetWidth_0041c6c0.cpp'
+        TestSource = '00/41/NUISystemCSprite_GetWidth_0041c6c0_test.cpp'
+        PassPattern = '0041c6c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041c6d0'
+        Module = 'NUISystem::CSprite'
+        Source = '00/41/NUISystemCSprite_GetHeight_0041c6d0.cpp'
+        TestSource = '00/41/NUISystemCSprite_GetHeight_0041c6d0_test.cpp'
+        PassPattern = '0041c6d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041c6e0'
+        Module = 'NUISystem::CSprite'
+        Source = '00/41/NUISystemCSprite_vectordeletingdestructor_0041c6e0.cpp'
+        TestSource = '00/41/NUISystemCSprite_vectordeletingdestructor_0041c6e0_test.cpp'
+        PassPattern = '0041c6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041c6f0'
+        Module = 'NUISystem::CSprite'
+        Source = '00/41/NUISystemCSprite_vectordeletingdestructor_0041c6f0.cpp'
+        TestSource = '00/41/NUISystemCSprite_vectordeletingdestructor_0041c6f0_test.cpp'
+        PassPattern = '0041c6f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052f0f0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_SetName_0052f0f0.cpp'
+        TestSource = '00/52/NUISystemCComponent_SetName_0052f0f0_test.cpp'
+        PassPattern = '0052f0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00540d30'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_SetAllowedCharacters_00540d30.cpp'
+        TestSource = '00/54/NUISystemCEditBox_SetAllowedCharacters_00540d30_test.cpp'
+        PassPattern = '00540d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00540d40'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_SetForbiddenCharacters_00540d40.cpp'
+        TestSource = '00/54/NUISystemCEditBox_SetForbiddenCharacters_00540d40_test.cpp'
+        PassPattern = '00540d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00540d50'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_vectordeletingdestructor_00540d50.cpp'
+        TestSource = '00/54/NUISystemCEditBox_vectordeletingdestructor_00540d50_test.cpp'
+        PassPattern = '00540d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00540d60'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_vectordeletingdestructor_00540d60.cpp'
+        TestSource = '00/54/NUISystemCEditBox_vectordeletingdestructor_00540d60_test.cpp'
+        PassPattern = '00540d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054cbf0'
+        Module = 'NUISystem::CFrontEndList'
+        Source = '00/54/NUISystemCFrontEndList_ChangeState_0054cbf0.cpp'
+        TestSource = '00/54/NUISystemCFrontEndList_ChangeState_0054cbf0_test.cpp'
+        PassPattern = '0054cbf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054da50'
+        Module = 'NUISystem::CFrontEndList'
+        Source = '00/54/NUISystemCFrontEndList_vectordeletingdestructor_0054da50.cpp'
+        TestSource = '00/54/NUISystemCFrontEndList_vectordeletingdestructor_0054da50_test.cpp'
+        PassPattern = '0054da50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054da60'
+        Module = 'NUISystem::CFrontEndList'
+        Source = '00/54/NUISystemCFrontEndList_vectordeletingdestructor_0054da60.cpp'
+        TestSource = '00/54/NUISystemCFrontEndList_vectordeletingdestructor_0054da60_test.cpp'
+        PassPattern = '0054da60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c21df0'
+        Module = 'CSoundEventSet'
+        Source = '00/c2/CSoundEventSet_IsBusy_00c21df0.cpp'
+        TestSource = '00/c2/CSoundEventSet_IsBusy_00c21df0_test.cpp'
+        PassPattern = '00c21df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c21e50'
+        Module = 'CSoundEventSet'
+        Source = '00/c2/CSoundEventSet_GetFreeSlot_00c21e50.cpp'
+        TestSource = '00/c2/CSoundEventSet_GetFreeSlot_00c21e50_test.cpp'
+        PassPattern = '00c21e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c21f20'
+        Module = 'CSoundGroupPool_00c21f20'
+        Source = '00/c2/CSoundGroupPool00c21f20_Allocate_00c21f20.cpp'
+        TestSource = '00/c2/CSoundGroupPool00c21f20_Allocate_00c21f20_test.cpp'
+        PassPattern = '00c21f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c465d0'
+        Module = 'CRegionMap'
+        Source = '00/c4/CRegionMap_GetCount_00c465d0.cpp'
+        TestSource = '00/c4/CRegionMap_GetCount_00c465d0_test.cpp'
+        PassPattern = '00c465d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caef40'
+        Module = 'IMediaSeeking'
+        Source = '00/ca/IMediaSeeking_vcall40_00caef40.cpp'
+        TestSource = '00/ca/IMediaSeeking_vcall40_00caef40_test.cpp'
+        PassPattern = '00caef40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caef50'
+        Module = 'IMediaSeeking'
+        Source = '00/ca/IMediaSeeking_vcall76_00caef50.cpp'
+        TestSource = '00/ca/IMediaSeeking_vcall76_00caef50_test.cpp'
+        PassPattern = '00caef50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caef60'
+        Module = 'IMediaSeeking'
+        Source = '00/ca/IMediaSeeking_vcall44_00caef60.cpp'
+        TestSource = '00/ca/IMediaSeeking_vcall44_00caef60_test.cpp'
+        PassPattern = '00caef60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

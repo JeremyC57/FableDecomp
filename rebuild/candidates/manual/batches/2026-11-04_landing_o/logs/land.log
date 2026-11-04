@@ -1,0 +1,71 @@
+addr       parity           behav  name
+0041c6c0   RELOCATION_MATCH PASS   GetWidth
+0041c6d0   RELOCATION_MATCH PASS   GetHeight
+0041c6e0   WARN RELOC_NAME: ??_ECSprite@NUISystem@@UAEPAXI@Z -> 0041c760 labelled 'NUISystem::CSprite::`scalar_deleting_destructor''
+0041c6e0   RELOCATION_MATCH PASS   `vector deleting destructor'
+0041c6f0   WARN RELOC_NAME: ??_ECSprite@NUISystem@@UAEPAXI@Z -> 0041c760 labelled 'NUISystem::CSprite::`scalar_deleting_destructor''
+0041c6f0   RELOCATION_MATCH PASS   `vector deleting destructor'
+0052f0f0   RELOCATION_MATCH PASS   SetName
+00540d30   RELOCATION_MATCH PASS   SetAllowedCharacters
+00540d40   RELOCATION_MATCH PASS   SetForbiddenCharacters
+00540d50   WARN RELOC_NAME: ??_ECEditBox@NUISystem@@UAEPAXI@Z -> 00540dd0 labelled 'NUISystem::CEditBox::`scalar_deleting_destructor''
+00540d50   RELOCATION_MATCH PASS   `vector deleting destructor'
+00540d60   WARN RELOC_NAME: ??_ECEditBox@NUISystem@@UAEPAXI@Z -> 00540dd0 labelled 'NUISystem::CEditBox::`scalar_deleting_destructor''
+00540d60   RELOCATION_MATCH PASS   `vector deleting destructor'
+0054cbf0   RELOCATION_MATCH PASS   ChangeState
+0054da50   WARN RELOC_NAME: ??_ECFrontEndList@NUISystem@@UAEPAXI@Z -> 0054da70 labelled 'NUISystem::CFrontEndList::`scalar deleting destructor''
+0054da50   RELOCATION_MATCH PASS   `vector deleting destructor'
+0054da60   WARN RELOC_NAME: ??_ECFrontEndList@NUISystem@@UAEPAXI@Z -> 0054da70 labelled 'NUISystem::CFrontEndList::`scalar deleting destructor''
+0054da60   RELOCATION_MATCH PASS   `vector deleting destructor'
+00c21df0   MATCH            PASS   IsBusy
+00c21e50   MATCH            PASS   GetFreeSlot
+00c21f20   MATCH            PASS   Allocate
+00c465d0   MATCH            PASS   GetCount
+00caef40   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caef40   MATCH            PASS   vcall{40}
+00caef50   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caef50   MATCH            PASS   vcall{76}
+00caef60   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caef60   MATCH            PASS   vcall{44}
+
+WINS: 19
+  0041c6c0 RELOCATION_MATCH NUISystem::CSprite::?GetWidth@CSprite@NUISystem@@UAEKXZ
+  0041c6d0 RELOCATION_MATCH NUISystem::CSprite::?GetHeight@CSprite@NUISystem@@UAEKXZ
+  0041c6e0 RELOCATION_MATCH NUISystem::CSprite::??_ECSprite@NUISystem@@W3AEPAXI@Z
+  0041c6f0 RELOCATION_MATCH NUISystem::CSprite::??_ECSprite@NUISystem@@WBI@AEPAXI@Z
+  0052f0f0 RELOCATION_MATCH NUISystem::CComponent::?SetName@CComponent@NUISystem@@UAEXABVCCharString@@@Z
+  00540d30 RELOCATION_MATCH NUISystem::CEditBox::?SetAllowedCharacters@CEditBox@NUISystem@@UAEXABVCWideString@@@Z
+  00540d40 RELOCATION_MATCH NUISystem::CEditBox::?SetForbiddenCharacters@CEditBox@NUISystem@@UAEXABVCWideString@@@Z
+  00540d50 RELOCATION_MATCH NUISystem::CEditBox::??_ECEditBox@NUISystem@@W3AEPAXI@Z
+  00540d60 RELOCATION_MATCH NUISystem::CEditBox::??_ECEditBox@NUISystem@@WBI@AEPAXI@Z
+  0054cbf0 RELOCATION_MATCH NUISystem::CFrontEndList::?ChangeState@CFrontEndList@NUISystem@@UAEXK@Z
+  0054da50 RELOCATION_MATCH NUISystem::CFrontEndList::??_ECFrontEndList@NUISystem@@W3AEPAXI@Z
+  0054da60 RELOCATION_MATCH NUISystem::CFrontEndList::??_ECFrontEndList@NUISystem@@WBI@AEPAXI@Z
+  00c21df0 MATCH CSoundEventSet::?IsBusy@CSoundEventSet@@QAEJXZ
+  00c21e50 MATCH CSoundEventSet::?GetFreeSlot@CSoundEventSet@@QAEPAXXZ
+  00c21f20 MATCH CSoundGroupPool_00c21f20::?Allocate@CSoundGroupPool_00c21f20@@QAEPAVCSoundGroup_00c29ec0@@XZ
+  00c465d0 MATCH CRegionMap::?GetCount@CRegionMap@@QBEJXZ
+  00caef40 MATCH IMediaSeeking::??_9@$BCI@AG
+  00caef50 MATCH IMediaSeeking::??_9@$BEM@AG
+  00caef60 MATCH IMediaSeeking::??_9@$BCM@AG
+
+LANDED 19 wins into src/compiled + tests + catalog + oracle
+  NUISystemCSprite_GetWidth_0041c6c0
+  NUISystemCSprite_GetHeight_0041c6d0
+  NUISystemCSprite_vectordeletingdestructor_0041c6e0
+  NUISystemCSprite_vectordeletingdestructor_0041c6f0
+  NUISystemCComponent_SetName_0052f0f0
+  NUISystemCEditBox_SetAllowedCharacters_00540d30
+  NUISystemCEditBox_SetForbiddenCharacters_00540d40
+  NUISystemCEditBox_vectordeletingdestructor_00540d50
+  NUISystemCEditBox_vectordeletingdestructor_00540d60
+  NUISystemCFrontEndList_ChangeState_0054cbf0
+  NUISystemCFrontEndList_vectordeletingdestructor_0054da50
+  NUISystemCFrontEndList_vectordeletingdestructor_0054da60
+  CSoundEventSet_IsBusy_00c21df0
+  CSoundEventSet_GetFreeSlot_00c21e50
+  CSoundGroupPool00c21f20_Allocate_00c21f20
+  CRegionMap_GetCount_00c465d0
+  IMediaSeeking_vcall40_00caef40
+  IMediaSeeking_vcall76_00caef50
+  IMediaSeeking_vcall44_00caef60

@@ -623,7 +623,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0041ab40	~CSprite	NUISystem::CSprite	__thiscall	void	1	CSprite *	1	yes	accepted									
 0041ac20	GetDataFromDef	NUISystem::CSprite	__thiscall	void	1	CSprite *	1	yes	accepted									
 0041afa0	Draw	CSprite	__thiscall	void	6	CSprite *,CIEngine *,CEnginePrimitiveHandle *,long,long *,CComponent *	1	yes	accepted									
-0041b550	vfunc_145	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041b550	SetGraphicIndex	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041b800	CSprite	NUISystem::CSprite	__thiscall	undefined	2	CSprite *,long	0	yes	accepted									
 0041b870	CSprite	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan							
 0041b9c0	EditCyclePreviousKeyCamera	CTCCameraPointScriptedSpline	__thiscall	void	1	CTCCameraPointScriptedSpline *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CTCCameraPointScriptedSpline_EditCyclePreviousKeyCamera_0041b9c0.cpp
@@ -663,14 +663,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0041c640	OnActivate	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c650	OnDeactivate	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c660	GetDynamicSize	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041c680	vfunc_142	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041c690	vfunc_143	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041c6a0	vfunc_144	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041c6b0	vfunc_146	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041c6c0	NUISystem::CSprite::vfunc_147	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041c6d0	NUISystem::CSprite::vfunc_148	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041c6e0	NUISystem::CSprite::vfunc_0	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041c6f0	NUISystem::CSprite::vfunc_0	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041c680	SetAngle	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041c690	SetWidth	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041c6a0	SetHeight	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041c6b0	GetGraphicIndex	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041c6c0	GetWidth	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041c6d0	GetHeight	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041c6e0	`vector deleting destructor'`adjustor{4}'	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0041c6f0	`vector deleting destructor'`adjustor{24}'	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c700	UnInitialise	CGraphicFrame	__thiscall	void	1	CGraphicFrame *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CGraphicFrame_UnInitialise_0041c700.cpp
 0041c760	`scalar_deleting_destructor'	NUISystem::CSprite	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CLandscapeBackgroundPatch_vectordeletingdestructor_0041c760.cpp
 0041c780	_List_iterator_base	std::_List_iterator_base	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\41\0x0041C780_global_EH_epilog3.cpp	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\global_EHepilog3_0041c780.cpp
@@ -9207,8 +9207,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052f0c0	vfunc_78	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f0d0	vfunc_79	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f0e0	vfunc_82	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f0f0	NUISystem::CSprite::vfunc_83	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f100	vfunc_84	NUISystem::CComponent	__thiscall	CCharString	1	CBankFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CBankFile_GetBankHandle_0052f100.cpp
+0052f0f0	SetName	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052f100	GetName	NUISystem::CComponent	__thiscall	CCharString	1	CBankFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CBankFile_GetBankHandle_0052f100.cpp
 0052f120	vfunc_86	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f130	vfunc_87	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f140	RemoveChild	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9479,24 +9479,24 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053fd00	~CAction	CAction	__thiscall	void	1	CAction *	1	yes	accepted									
 0053fdb0	AddParam	NUISystem::CAction	unknown	undefined	0		0	yes	accepted									
 0053fde0	AddParam	NUISystem::CAction	unknown	undefined	0		0	yes	accepted									
-0053fe30	vfunc_152	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0053fe30	SetPasswordBox	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053fe50	AddCharacter	CEditBox	__thiscall	void	2	CEditBox *,wchar_t	1	yes	accepted									
 00540120	ProcessEvent	NUISystem::CEditBox	__thiscall	void	2	CEditBox *,EEvent	1	yes	accepted									
 00540180	SetText	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005401b0	vfunc_150	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005401b0	SetActive	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005402c0	GetTextComponent	NUISystem::CEditBox	__thiscall	CComponent *	1	CEditBox *	1	yes	accepted									
 00540320	KeyPressed	CEditBox	__thiscall	void	2	CEditBox *,wchar_t	1	yes	accepted									
 00540620	Initialise	NUISystem::CEditBox	__thiscall	void	1	CEditBox *	1	yes	accepted									
 005407b0	CEditBox	_global	__thiscall	undefined	2	CEditBox *,long	0	yes	accepted									
 005408f0	~CEditBox	NUISystem::CEditBox	__thiscall	void	1	CEditBox *	1	yes	accepted									
 00540980	UpdateDisplayText	NUISystem::CEditBox	__thiscall	void	1	CEditBox *	1	yes	accepted									
-00540cf0	GetBankHandle	CBankFile	__thiscall	CCharString	1	CBankFile *	1	yes	accepted									
-00540d10	vfunc_151	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00540d20	vfunc_153	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00540d30	NUISystem::CEditBox::vfunc_154	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00540d40	NUISystem::CEditBox::vfunc_155	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00540d50	NUISystem::CEditBox::vfunc_0	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00540d60	NUISystem::CEditBox::vfunc_0	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00540cf0	GetText	NUISystem::CEditBox	__thiscall	CCharString	1	CBankFile *	1	yes	accepted									
+00540d10	IsActive	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00540d20	SetMaxLength	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00540d30	SetAllowedCharacters	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00540d40	SetForbiddenCharacters	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00540d50	`vector deleting destructor'`adjustor{4}'	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00540d60	`vector deleting destructor'`adjustor{24}'	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00540d70	AddActionOnEnter	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00540da0	AddActionOnEscape	NUISystem::CEditBox	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00540dd0	`scalar_deleting_destructor'	NUISystem::CEditBox	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_00540dd0.cpp
@@ -9732,10 +9732,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054c480	InitialiseOffsets	NUISystem::CFrontEndList	__thiscall	void	2	CFrontEndList *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CFrontEndList_InitialiseOffsets_0054c480.cpp
 0054c4c0	ScrollUp	NUISystem::CFrontEndList	__thiscall	void	1	CFrontEndList *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CFrontEndList_ScrollUp_0054c4c0.cpp
 0054c810	ScrollDown	NUISystem::CFrontEndList	__thiscall	void	1	CFrontEndList *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CFrontEndList_ScrollDown_0054c810.cpp
-0054cbf0	NUISystem::CFrontEndList::vfunc_48	NUISystem::CFrontEndList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054cbf0	ChangeState	NUISystem::CFrontEndList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054d660	Initialise	CFrontEndList	__thiscall	void	1	CFrontEndList *	1	yes	accepted									
-0054da50	NUISystem::CFrontEndList::vfunc_0	NUISystem::CFrontEndList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054da60	NUISystem::CFrontEndList::vfunc_0	NUISystem::CFrontEndList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054da50	`vector deleting destructor'`adjustor{4}'	NUISystem::CFrontEndList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054da60	`vector deleting destructor'`adjustor{24}'	NUISystem::CFrontEndList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054da70	`scalar deleting destructor'	NUISystem::CFrontEndList	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
 0054dae0	CActionParamString	NUISystem::CActionParamString	__thiscall	undefined	2	CActionParamString *,CWideString *	0	yes	accepted									
 0054db10	`scalar deleting destructor'	NUISystem::CActionParamString	__thiscall	void *	2	CLandscapeBackgroundSubNodeSplitBranch *,uint	1	yes	accepted									
@@ -44650,16 +44650,16 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c21d80	SetMemberConst_00c21d80	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CBase_CBase_00c21d80.cpp
 00c21d90	sub_00c21d90	_global	unknown	undefined	0		0			discovered	gapscan							
 00c21dc0	ScalarDeletingDestructor	CVtable_012b37fc	unknown	undefined	0		0			discovered	gapscan							
-00c21df0	operator()	CIsThingAlive	__thiscall	bool	1	CIsThingAlive *	1	yes	accepted									
+00c21df0	IsBusy	CSoundEventSet	__thiscall	bool	1	CIsThingAlive *	1	yes	accepted									
 00c21e20	FindInChildThenSelf	CLookupOwner_00c21e20	__thiscall	void	1	CTCInventoryBase *	1	yes	accepted									
-00c21e50	operator()	CIsThingAlive	__thiscall	bool	1	CIsThingAlive *	1	yes	accepted									
+00c21e50	GetFreeSlot	CSoundEventSet	__thiscall	bool	1	CIsThingAlive *	1	yes	accepted									
 00c21e60	FindItem	CSoundEventSet	unknown	undefined	0		0	yes	accepted									
 00c21e90	operator()	NScript::CIsThingAlive	__thiscall	bool	1	CIsThingAlive *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CIsThingAlive_operator_00c21e90.cpp
 00c21ea0	operator()	NScript::CIsThingAlive	__thiscall	bool	1	CIsThingAlive *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CIsThingAlive_operator_00c21ea0.cpp
 00c21eb0	FindEntry	CSoundEventSet	unknown	undefined	0		0	yes	accepted									
 00c21ee0	Lookup	CRegistryOwner_00c21ee0	__thiscall	bool	1	CIsThingAlive *	1	yes	accepted									
 00c21f00	Visit	CVtable_012b3858	unknown	undefined	0		0			discovered	gapscan							
-00c21f20	operator()	CIsThingAlive	__thiscall	bool	1	CIsThingAlive *	1	yes	accepted									
+00c21f20	Allocate	CSoundGroupPool_00c21f20	__thiscall	bool	1	CIsThingAlive *	1	yes	accepted									
 00c21f30	AddLearnedExpression	CTCInventoryAbilities	__thiscall	void	2	CTCInventoryAbilities *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCInventoryAbilities_AddLearnedExpression_00c21f30.cpp
 00c21f50	WriteToFile_00c21f50	_unattributed	__thiscall	void	3	CChunkedFileRawDataChunk *,CDataOutputStream *,CChunkedFileSaver *	1	yes	accepted									
 00c21fa0	WriteToFile_00c21fa0	_unattributed	__thiscall	void	3	CChunkedFileRawDataChunk *,CDataOutputStream *,CChunkedFileSaver *	1	yes	accepted									
@@ -46417,7 +46417,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c46550	SRegionLookupKey00c46550	SRegionLookupKey00c46550	__thiscall	undefined	2	CRegisteredTCInfo *,CRegisteredTCInfo *	0	yes	accepted									
 00c46570	SRegionLookupEntry00c46570	SRegionLookupEntry00c46570	__thiscall	void	4	CTCRotate *,C3DVector *,float,float	1	yes	accepted									
 00c465b0	ForEach	CRegionMap	__thiscall	bool	1	CIsThingAlive *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CIsThingAlive_operator_00c465b0.cpp
-00c465d0	operator()	CIsThingAlive	__thiscall	bool	1	CIsThingAlive *	1	yes	accepted									
+00c465d0	GetCount	CRegionMap	__thiscall	bool	1	CIsThingAlive *	1	yes	accepted									
 00c465e0	GetCellSize	CRegionMap	__thiscall	float	2	CMap *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\DrawGetSeaLevel_DrawGetSeaLevel_00c465e0.cpp
 00c465f0	GameEvent_HandleMoveHeroToRegion	_global	unknown	undefined	0		0	yes	accepted									
 00c466b0	TailJmp_operator___00c466b0	_global	__thiscall	bool	1	CTCTavernGame *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CTCTavernGame_IsBetting_00c466b0.cpp
@@ -48251,10 +48251,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00caecf0	Postpone	CDeferredCommand	unknown	undefined	0		0			discovered	gapscan							
 00caed50	Invoke	CDeferredCommand	unknown	undefined	0		0	yes	accepted									
 00caeea0	TailJmp__CEngineLandscapePatch_00cb1890_00caeea0	_global	__thiscall	void	1	CEngineLandscapePatch *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CEngineLandscapePatch_DestroyProceduralTextureVertexBuffers_00caeea0.cpp
-00caef40	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
-00caef50	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
-00caef60	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
-00caef70	vcall{48}	IComObject_Retail	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
+00caef40	vcall{40}	IMediaSeeking	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
+00caef50	vcall{76}	IMediaSeeking	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
+00caef60	vcall{44}	IMediaSeeking	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
+00caef70	vcall{48}	IMediaSeeking	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
 00caef80	func_00caef80	CThingFilter_IsValid	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 00caef90	func_00caef90	CThingFilter_IsValid	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 00caefa0	func_00caefa0	CThingFilter_IsValid	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					

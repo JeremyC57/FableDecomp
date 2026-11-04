@@ -1,0 +1,3 @@
+NEW    engine/NUISystem_CEditBox.h
+NEW    engine/NUISystem_CFrontEndList.h
+NEW    engine/NUISystem_CSprite.h

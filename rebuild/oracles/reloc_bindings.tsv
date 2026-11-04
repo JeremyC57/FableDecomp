@@ -36371,3 +36371,6 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ?SetWeaponState@CTCFireballSpell@@QAEXW4EWEAPON_STATE@CTCSpecialAbilities@@@Z	007c8660	0072c930
 ?ReadBinary@CParticleEmitter@NParticleEngine@@QAEXAAVCDataInputStream@@@Z	00aefaa0	00af12a0
 ?Reset@?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAEXPAVCParticleEmitter@NParticleEngine@@@Z	00af1860	00af12a0
+??_ECSprite@NUISystem@@UAEPAXI@Z	0041c760	0041c6e0
+??_ECEditBox@NUISystem@@UAEPAXI@Z	00540dd0	00540d50
+??_ECFrontEndList@NUISystem@@UAEPAXI@Z	0054da70	0054da50

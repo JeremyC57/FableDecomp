@@ -1,0 +1,15 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00C465D0	?GetCount@CRegionMap@@QBEJXZ	CRegionSnapshot ctor 0x00C46400 calls it on its const CRegionMap& (reloc_bindings); 0x00C36CF0 builds the same CRegionMap (ctor 0x00C467D0, dtor 0x00C46860) and returns this call; matched here	?Check@CAliveHelper_00c36cf0@@QAEJXZ (landed 0x00C36CF0; its class is CRegionMap, whose ctor/dtor 0x00C467D0/0x00C46860 are also bound as CAliveHelper_00c36cf0 / CVarState_00c37050)
+0x00C21DF0	?IsBusy@CSoundEventSet@@QAEJXZ	landed OnKey 0x00C11F00 / UpdateItems 0x00C11CB0 sources spell CSoundEventSet (sweep1 rename); matched here	?IsBusy@CPanelItemSet@@QAEJXZ (stale reloc_bindings row from 0x00C11F00)
+0x0052F100	?GetName@CComponent@NUISystem@@UAE?AVCCharString@@XZ	CComponent vtable 0x0124608C slot 84 (inherited by every component); Ego_r.pdb 0x005A8CC0 / FableWin.pdb 0x0229EFE0; body copy-constructs Name +0x20	CBankFile::GetBankHandle (landed 00/52/CBankFile_GetBankHandle_0052f100.cpp, leaf GetBankHandle); catalog NUISystem::CComponent::vfunc_84
+0x00540CF0	?GetText@CEditBox@NUISystem@@UAE?AVCWideString@@XZ	CEditBox vtable 0x01246B8C slot 142; returns a copy of Text +0x164; Ego_r.pdb / FableWin.pdb (first inline in donor order)	?GetBankHandle@CBankFile@@QBE?AVCWideString@@XZ (landed 00/54/CBankFile_GetBankHandle_00540cf0.cpp); catalog CBankFile::GetBankHandle
+0x0041C680	?SetAngle@CSprite@NUISystem@@UAEXM@Z	CSprite vtable slot 142, stores +0x164 Angle; PDB name set + FableWin inline order	?Set@T@@QAEXH@Z (landed gapscan_sub0041c680)
+0x0041C690	?SetWidth@CSprite@NUISystem@@UAEXK@Z	CSprite vtable slot 143, stores +0x168 Width	?Set@T@@QAEXH@Z (landed gapscan_sub0041c690)
+0x0041C6A0	?SetHeight@CSprite@NUISystem@@UAEXK@Z	CSprite vtable slot 144, stores +0x16C Height	?Set@T@@QAEXH@Z (landed gapscan_sub0041c6a0)
+0x0041C6B0	?GetGraphicIndex@CSprite@NUISystem@@UAEKXZ	CSprite vtable slot 146, returns +0x178 GraphicIndex	?Get@T@@QAEHXZ (landed gapscan_sub0041c6b0)
+0x0041B550	?SetGraphicIndex@CSprite@NUISystem@@UAEXK@Z	CSprite vtable slot 145; Ego_r.pdb / FableWin.pdb; NUISystem namespace and virtual	?SetGraphicIndex@CSprite@@QAEXK@Z (landed NUISystemCSprite_vfunc145_0041b550: global non-virtual CSprite)
+0x00540D10	?IsActive@CEditBox@NUISystem@@UAE_NXZ	CEditBox vtable slot 151, returns +0x178 Active	?Get@T@@QAEDXZ (landed gapscan_sub00540d10)
+0x00540D20	?SetMaxLength@CEditBox@NUISystem@@UAEXJ@Z	CEditBox vtable slot 153, stores +0x180 MaxLength	?Set@T@@QAEXH@Z (landed gapscan_sub00540d20)
+0x0053FE30	?SetPasswordBox@CEditBox@NUISystem@@UAEX_N@Z	CEditBox vtable slot 152, stores the byte +0x179 IsPasswordBox	landed gapscan_sub0053fe30 placeholder
+0x0099EFB0	??4CCharString@@QAEABV0@ABV0@@Z	Ego_r.pdb / FableWin.pdb (only operator=(const CCharString&) spelling); fable_string.h	??4CCharString@@QAEAAV0@ABV0@@Z, ??4CCharString@std@@QAEAAU01@ABU01@@Z, ??4SymbolString@@QAEAAU0@ABU0@@Z (reloc_bindings)
+0x0099B7D0	??4CWideString@@QAEABV0@ABV0@@Z	Ego_r.pdb / FableWin.pdb; fable_string.h	??4CWideString@@QAEAAV0@ABV0@@Z, ??4CWideString@N006bebf0@@QAEAAU01@ABU01@@Z, ??4FrontEndWideString_00594f36@@QAEAAU0@ABU0@@Z, ?M@Sub@@QAEXPAX@Z (reloc_bindings)
