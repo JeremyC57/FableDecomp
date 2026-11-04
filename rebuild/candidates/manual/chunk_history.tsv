@@ -26445,3 +26445,12 @@ chunk	address	module	name	length
 744	00d74430	CQ_HangingTreeGoodScript	DoMission	2216
 744	00d75060	CQ_HangingTreeGoodScript	FinalRound	4044
 744	00d77690	CQ_HangingTreeGoodScript	DoCutscene	3064
+745	00e987c0	CV_HeroDuelScript	Main	2015
+745	00e9a970	CV_HeroDuelScript	FirstFleeCutscene	1341
+745	00e9b240	CV_HeroDuelScript	DuelLost	1094
+745	00e9be60	CV_HeroDuelScript	Duel	1171
+746	00eaf810	CMurderTwistSheriff	DoAskingHeroToKillAssassin	2945
+746	00eb0830	CMurderTwistSheriff	DoRemindingHeroToKillAssassin	2185
+746	00eb2900	CMurderTwistSheriffGuard	DoAskingHeroToSpeakToBossAgain	1203
+746	00eb2dc0	CMurderTwistSheriffGuard	DoAskingHeroToSpeakToBossAgain	1203
+746	00eb3280	CMurderTwistSheriffGuard	DoAskingHeroToSpeakToBossAgain	1203
