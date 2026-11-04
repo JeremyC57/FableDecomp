@@ -1,0 +1,37 @@
+catalog  0054ff10 NUISystem::CText::vfunc_142 -> NUISystem::CText::GetValue
+catalog  0054ff20 NUISystem::CText::vfunc_146 -> NUISystem::CText::GetFont
+catalog  0054ffe0 NUISystem::CText::vfunc_148 -> NUISystem::CText::GetTextWindow
+catalog  00550b80 NUISystem::CMesh::vfunc_142 -> NUISystem::CMesh::GetMeshIndex
+catalog  00550b90 NUISystem::CMesh::vfunc_143 -> NUISystem::CMesh::SetMeshIndex
+catalog  00550ba0 NUISystem::CMesh::vfunc_144 -> NUISystem::CMesh::SetHeight
+catalog  00550bb0 NUISystem::CMesh::vfunc_145 -> NUISystem::CMesh::SetWidth
+catalog  00550bc0 NUISystem::CMesh::vfunc_146 -> NUISystem::CMesh::SetAnimationIndex
+catalog  00550bd0 NUISystem::CMesh::vfunc_147 -> NUISystem::CMesh::SetMeshType
+catalog  0054fff0 NUISystem::CText::vfunc_150 -> NUISystem::CText::GetAlignment
+catalog  00549440 CTextSlider::ProcessEvent -> NUISystem::CTextSlider::ProcessEvent
+catalog  0054a390 NUISystem::CTextSlider::NUISystem::CTextSlider::vfunc_0 -> NUISystem::CTextSlider::`vector deleting destructor'`adjustor{4}'
+catalog  0054a3a0 NUISystem::CTextSlider::NUISystem::CTextSlider::vfunc_0 -> NUISystem::CTextSlider::`vector deleting destructor'`adjustor{24}'
+catalog  00550010 NUISystem::CText::NUISystem::CText::vfunc_0 -> NUISystem::CText::`vector deleting destructor'`adjustor{4}'
+catalog  00550020 NUISystem::CText::NUISystem::CText::vfunc_0 -> NUISystem::CText::`vector deleting destructor'`adjustor{24}'
+catalog  00550c10 NUISystem::CMesh::NUISystem::CMesh::vfunc_0 -> NUISystem::CMesh::`vector deleting destructor'`adjustor{4}'
+catalog  00550c20 NUISystem::CMesh::NUISystem::CMesh::vfunc_0 -> NUISystem::CMesh::`vector deleting destructor'`adjustor{24}'
+manifest 00549440 CTextSlider::ProcessEvent -> NUISystem::CTextSlider::ProcessEvent
+manifest 0054a390 NUISystem::CTextSlider::NUISystem::CTextSlider::vfunc_0 -> NUISystem::CTextSlider::`vector deleting destructor'`adjustor{4}'
+manifest 0054a3a0 NUISystem::CTextSlider::NUISystem::CTextSlider::vfunc_0 -> NUISystem::CTextSlider::`vector deleting destructor'`adjustor{24}'
+manifest 0054ef00 NUISystem::CText::NUISystem::CText::vfunc_2 -> NUISystem::CText::Draw
+manifest 0054ff10 NUISystem::CText::vfunc_142 -> NUISystem::CText::GetValue
+manifest 0054ff20 NUISystem::CText::vfunc_146 -> NUISystem::CText::GetFont
+manifest 0054ffe0 NUISystem::CText::vfunc_148 -> NUISystem::CText::GetTextWindow
+manifest 0054fff0 NUISystem::CText::vfunc_150 -> NUISystem::CText::GetAlignment
+manifest 00550010 NUISystem::CText::NUISystem::CText::vfunc_0 -> NUISystem::CText::`vector deleting destructor'`adjustor{4}'
+manifest 00550020 NUISystem::CText::NUISystem::CText::vfunc_0 -> NUISystem::CText::`vector deleting destructor'`adjustor{24}'
+manifest 005502e0 NUISystem::CMesh::NUISystem::CMesh::vfunc_2 -> NUISystem::CMesh::Draw
+manifest 00550b80 NUISystem::CMesh::vfunc_142 -> NUISystem::CMesh::GetMeshIndex
+manifest 00550b90 NUISystem::CMesh::vfunc_143 -> NUISystem::CMesh::SetMeshIndex
+manifest 00550ba0 NUISystem::CMesh::vfunc_144 -> NUISystem::CMesh::SetHeight
+manifest 00550bb0 NUISystem::CMesh::vfunc_145 -> NUISystem::CMesh::SetWidth
+manifest 00550bc0 NUISystem::CMesh::vfunc_146 -> NUISystem::CMesh::SetAnimationIndex
+manifest 00550bd0 NUISystem::CMesh::vfunc_147 -> NUISystem::CMesh::SetMeshType
+manifest 00550c10 NUISystem::CMesh::NUISystem::CMesh::vfunc_0 -> NUISystem::CMesh::`vector deleting destructor'`adjustor{4}'
+manifest 00550c20 NUISystem::CMesh::NUISystem::CMesh::vfunc_0 -> NUISystem::CMesh::`vector deleting destructor'`adjustor{24}'
+labels 20  catalog renamed 17  manifest renamed 19

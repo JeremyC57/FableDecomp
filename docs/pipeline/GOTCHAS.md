@@ -1971,3 +1971,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Adjustor thunks for a virtual destructor are `??_E<Class>@@W<adj>AEPAXI@Z`; defining the virtual destructor out of line emits them (chunk 750).
 - vland's purity scan rejects any identifier containing `_emit` (e.g. `m_emitterId`) as NOT_GENUINE: rename the identifier (chunk 750).
 - A three-register rotation that no accessor/temporary spelling moves can come from VC7.1 cross-jumping identical exit tails: write each exit out in full (chunk 750, CSoundEvent::Play).
+- VC7.1 copies a packed C2DVector with integer moves for `C2DVector p; p = member;` but keeps it on the x87 stack for `C2DVector p(member);` (chunk 749).
+- `vland --recheck-landed` only re-grades the payload rows; header siblings need includers.py + ppcmp.py + their own recheck (chunk 749).

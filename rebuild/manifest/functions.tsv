@@ -9682,7 +9682,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00548b50	AdjustValueToProfile	NUISystem::CTextSlider	__thiscall	void	1	CSlider *	1	yes	accepted									
 005491a0	RevertValue	NUISystem::CTextSlider	__thiscall	void	1	CTextSlider *	1	yes	accepted									
 00549230	Initialise	NUISystem::CTextSlider	__thiscall	void	1	CTextSlider *	1	yes	accepted									
-00549440	ProcessEvent	CTextSlider	__thiscall	void	2	CTextSlider *,EEvent	1	yes	accepted									
+00549440	ProcessEvent	NUISystem::CTextSlider	__thiscall	void	2	CTextSlider *,EEvent	1	yes	accepted									
 00549a00	~CTextSlider	NUISystem::CTextSlider	__thiscall	void	1	CTextSlider *	1	yes	accepted									
 00549b20	Initialize	NUISystem::CTextSlider	unknown	undefined	0		0	yes	accepted									
 00549f60	CTextSlider	NUISystem::CTextSlider	__thiscall	undefined	2	CTextSlider *,long	0	yes	accepted									
@@ -9691,8 +9691,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054a1c0	DestroyRange_CountedPointer_0054a1c0	_global	__fastcall	void	4	pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_> *,pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_> *,allocator<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 0054a2a0	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 0054a380	vfunc_7	NUISystem::CTextSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054a390	NUISystem::CTextSlider::vfunc_0	NUISystem::CTextSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054a3a0	NUISystem::CTextSlider::vfunc_0	NUISystem::CTextSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054a390	`vector deleting destructor'`adjustor{4}'	NUISystem::CTextSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054a3a0	`vector deleting destructor'`adjustor{24}'	NUISystem::CTextSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054a3b0	push_back	std::vector<CCountedPointer<NUISystem::CAction>, std::allocator<CCountedPointer<NUISystem::CAction>>>	unknown	undefined	0		0			discovered	gapscan							
 0054a3f0	AddAction	NUISystem::CTextSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054a440	`scalar_deleting_destructor'	NUISystem::CTextSlider	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_0054a440.cpp
@@ -9782,7 +9782,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054eca0	Update	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ecb0	CanScroll	NUISystem::CText	__thiscall	float	3	CText *,bool,C2DBoxF *	1	yes	accepted									
 0054ed90	GetString	NUISystem::CDefString	__thiscall	void	1	CText *	1	yes	accepted									
-0054ef00	NUISystem::CText::vfunc_2	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054ef00	Draw	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054f370	SetValue	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054f410	SetValue	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054f4b0	GetCharWidthW	NUISystem::CText	__fastcall	uint	1	wchar_t	1	yes	accepted									
@@ -9792,8 +9792,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054f8e0	FitInWindow	NUISystem::CText	__thiscall	long	3	CText *,CWideString *,C2DBoxF *	1	yes	accepted									
 0054fb10	ForceWidth	NUISystem::CText	__thiscall	void	2	CText *,float	1	yes	accepted									
 0054fbc0	SetValue	CText	__thiscall	void	4	CText *,ulong,CWideString *,bool	1	yes	accepted									
-0054ff10	vfunc_142	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054ff20	vfunc_146	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054ff10	GetValue	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054ff20	GetFont	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ff30	GetSize	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ff50	vfunc_111	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ff70	MakeUnavailable	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9801,17 +9801,17 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054ff90	vfunc_94	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ffa0	vfunc_95	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ffb0	SetTextWindow	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054ffe0	vfunc_148	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054fff0	vfunc_150	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00550010	NUISystem::CText::vfunc_0	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00550020	NUISystem::CText::vfunc_0	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054ffe0	GetTextWindow	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0054fff0	GetAlignment	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00550010	`vector deleting destructor'`adjustor{4}'	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00550020	`vector deleting destructor'`adjustor{24}'	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00550030	`scalar_deleting_destructor'	NUISystem::CText	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_00550030.cpp
 00550060	Initialise	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00550070	Update	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005500b0	GetDataFromDef	NUISystem::CMesh	__thiscall	void	1	CScrollingViewport *	1	yes	accepted									
 00550190	CMesh	NUISystem::CMesh	__thiscall	undefined	2	CMesh *,long	0	yes	accepted									
 00550230	~CMesh	NUISystem::CMesh	__thiscall	void	1	CMesh *	1	yes	accepted									
-005502e0	NUISystem::CMesh::vfunc_2	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005502e0	Draw	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00550800	sub_00550800	_global	unknown	undefined	0		0			discovered	gapscan							
 00550820	`scalar deleting destructor'	C3DAnimationStateBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00550880	GetType	C3DAnimationState	__thiscall	C3DAnimationStateBase::EType	1	C3DAnimationState *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\C3DAnimationState_GetType_00550880.cpp
@@ -9823,15 +9823,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00550a00	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	std	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\global_Destval_00550a00.cpp
 00550a20	C3DAnimationInterpolator	C3DAnimationInterpolator	__thiscall	undefined	4	CEnginePrimitiveAnimation *,C3DAnimationInterpolator *,C3DPositionInterpolator *,C3DOrientationInterpolator *	0	yes	accepted									
 00550a70	CEnginePrimitive2DAnimatingMesh	CEnginePrimitive2DAnimatingMesh	__thiscall	undefined	4	CEnginePrimitiveAnimation *,C3DAnimationInterpolator *,C3DPositionInterpolator *,C3DOrientationInterpolator *	0	yes	accepted									
-00550b80	vfunc_142	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00550b90	vfunc_143	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00550ba0	vfunc_144	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00550bb0	vfunc_145	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00550bc0	vfunc_146	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00550bd0	vfunc_147	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00550b80	GetMeshIndex	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00550b90	SetMeshIndex	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00550ba0	SetHeight	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00550bb0	SetWidth	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00550bc0	SetAnimationIndex	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00550bd0	SetMeshType	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00550be0	SetOrientation	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00550c10	NUISystem::CMesh::vfunc_0	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00550c20	NUISystem::CMesh::vfunc_0	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00550c10	`vector deleting destructor'`adjustor{4}'	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00550c20	`vector deleting destructor'`adjustor{24}'	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00550c30	`scalar_deleting_destructor'	NUISystem::CMesh	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_00550c30.cpp
 00550c50	Update	NUISystem::CTable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00550c60	Initialise	NUISystem::CTable	__thiscall	void	1	CTable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CTable_Initialise_00550c60.cpp

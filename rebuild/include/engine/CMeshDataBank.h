@@ -17,6 +17,9 @@
 #ifdef FABLE_RETAIL_CMESHDATABANK
 #include "engine/CResourceBank.h"
 #endif
+#ifdef FABLE_RETAIL_CMESHDATABANK_BASES
+#include "engine/CBankFile.h"
+#endif
 
 class C3DAnimFileXLoader;
 class C3DAnimationManager;
@@ -31,6 +34,18 @@ class CPushBufferBuildInfo;
 class CXboxBufferMemoryPool;
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CMESHDATABANK_BASES
+// Chunk 749 (row 0x005502E0 NUISystem::CMesh::Draw): the RTTI base chain .?AVCMeshDataBank@@ : CBankFileAsync : CBankFile :
+// CBaseClassNonCopyable : CBaseClass (rtti_bases.tsv), so CBankFile's members (EntryExists / GetEntryDataType, engine/CBankFile.h
+// FABLE_RETAIL_CBANKFILE_ENTRYQUERY) apply to a mesh bank at offset 0 (CMesh::Draw passes the bank pointer to both unchanged).
+// CBankFileAsync (0x110..0x164) has no model yet: its bytes stay opaque below (header debt). Ego_r.pdb
+// ?PeekMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z is out of line at 0x00A24270 (landed, CMeshDataBank_PeekMesh_00a24270.cpp).
+class C3DMeshInfo;
+class CMeshDataBank : public CBankFile {
+public:
+    unsigned char                 _CBankFileAsync_0x110[0x164 - 0x110]; // +0x110 CBankFileAsync (base, opaque)
+    const C3DMeshInfo* PeekMesh(unsigned long index) const;                          // 0x00A24270
+#else
 class CMeshDataBank {
 public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -93,6 +108,7 @@ public:
     unsigned char                 _pad_0x158[0x4];           // +0x158
     unsigned char                 _pad_0x15c[0x4];           // +0x15c
     unsigned char                 _pad_0x160[0x4];           // +0x160
+#endif
     C3DMeshFileXLoader*           MeshLoader_ptr;            // +0x164 scoped_ptr<C3DMeshFileXLoader>::ptr
     C3DAnimFileXLoader*           AnimLoader_ptr;            // +0x168 scoped_ptr<C3DAnimFileXLoader>::ptr
     CCharStringData*              Filename_PStringData;      // +0x16c CCharString::PStringData
@@ -151,7 +167,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CMeshDataBank) == 0x460);
+#ifndef FABLE_RETAIL_CMESHDATABANK_BASES
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshLoader_ptr) == 0x164);
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, AnimLoader_ptr) == 0x168);
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, Filename_PStringData) == 0x16c);

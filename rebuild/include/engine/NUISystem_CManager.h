@@ -28,6 +28,9 @@ public: C2DVector GetUIScale() const;
 // Chunk 735 (rows 0x005729D8 / 0x00573792 CTCInventoryExperience::AddStatToList(PC)): Ego_r.pdb / FableWin.pdb
 // ?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBFloatColour@@MM_N32M@Z,
 // out of line at 0x00427216 (also called by the landed CTCInventoryStats::AddHeroAbility 0x005D64DD). Parameter names unknown.
+// Chunk 749 (row 0x005502E0 CMesh::Draw): Ego_r.pdb ?GetMeshBank@CManager@NUISystem@@QAE?AV?$CCountedPointer@VCMeshDataBank@@@@XZ,
+// out of line at 0x0041D1B4 (hidden result).
+public: CCountedPointer<CMeshDataBank> GetMeshBank();
 public: NUISystem::CComponent * CreateTickSlider(const CWideString &,const C2DCoordI &,long,long,const CRGBFloatColour &,float,float,bool,bool,const CRGBFloatColour &,float);
 #endif
 public: virtual bool GetMouseDisabled();

@@ -1,0 +1,21 @@
+address	name	evidence
+0x00549440	?ProcessEvent@CTextSlider@NUISystem@@UAEXW4EEvent@2@@Z	matched (RELOCATION_MATCH); CTextSlider's CObserver vtable 0x01248A68 slot 1 (CObserver::ProcessEvent override) + Ego_r.pdb / FableWin.pdb name set; `ret 4`
+0x0054A390	??_ECTextSlider@NUISystem@@W3AEPAXI@Z	matched (RELOCATION_MATCH); `sub ecx,4 ; jmp 0x0054A440`, the CObserver (+4) vtable's deleting-destructor slot 0; VC7.1 emits the adjustor in the ~CTextSlider TU (precedent CScrollingViewport 0x0053FC10)
+0x0054A3A0	??_ECTextSlider@NUISystem@@WBI@AEPAXI@Z	matched (RELOCATION_MATCH); `sub ecx,18h ; jmp 0x0054A440`, the CActionParam (+0x18) vtable's slot 0 (precedent CScrollingViewport 0x0053FC20)
+0x00550010	??_ECText@NUISystem@@W3AEPAXI@Z	matched (RELOCATION_MATCH); `sub ecx,4 ; jmp 0x00550030`; ~CText TU (~CText 0x0054F6E0)
+0x00550020	??_ECText@NUISystem@@WBI@AEPAXI@Z	matched (RELOCATION_MATCH); `sub ecx,18h ; jmp 0x00550030`
+0x00550C10	??_ECMesh@NUISystem@@W3AEPAXI@Z	matched (RELOCATION_MATCH); `sub ecx,4 ; jmp 0x00550C30`; ~CMesh TU (~CMesh 0x00550230)
+0x00550C20	??_ECMesh@NUISystem@@WBI@AEPAXI@Z	matched (RELOCATION_MATCH); `sub ecx,18h ; jmp 0x00550C30`
+0x0054EF00	?Draw@CText@NUISystem@@UAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@JPAJPAVCComponent@2@@Z	parked DIFFER(1127v1127); CText vtable 0x01249CCC slot 2 (overrides CComponent::Draw 0x00530260, same `ret 14h`) + FableWin.pdb 0x0228B700; catalog "vfunc_2"
+0x005502E0	?Draw@CMesh@NUISystem@@UAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@JPAJPAVCComponent@2@@Z	parked DIFFER(1321v1288); CMesh vtable 0x01249F9C slot 2 (`ret 14h`, same CComponent::Draw signature) + FableWin.pdb / Ego_r.pdb name set; catalog "vfunc_2"
+0x0054FF10	?GetValue@CText@NUISystem@@UAEABVCWideString@@XZ	CText vtable slot 142; body returns this+0x15C (Value); FableWin.pdb name set (slot order GetValue, SetValue x3, GetFont, SetTextWindow, GetTextWindow, ForceWidth, GetAlignment); catalog vfunc_142
+0x0054FF20	?GetFont@CText@NUISystem@@UAEAAV?$CCountedPointer@VCFontBank@@@@XZ	CText vtable slot 146; returns this+0x160 (PFont); FableWin.pdb; catalog vfunc_146
+0x0054FFE0	?GetTextWindow@CText@NUISystem@@UAEAAVC2DBoxF@@XZ	CText vtable slot 148; returns this+0x178 (Window); FableWin.pdb; catalog vfunc_148
+0x0054FFF0	?GetAlignment@CText@NUISystem@@UBE?AW4ETextAlignement@2@XZ	CText vtable slot 150; CText::Draw switches on its result (CENTER / RIGHT); FableWin.pdb; catalog vfunc_150
+0x00550B80	?GetMeshIndex@CMesh@NUISystem@@UAEKXZ	CMesh vtable slot 142; reads +0x15C (MeshIndex); Ego_r.pdb / FableWin.pdb name set
+0x00550B90	?SetMeshIndex@CMesh@NUISystem@@UAEXK@Z	CMesh slot 143; writes +0x15C
+0x00550BA0	?SetHeight@CMesh@NUISystem@@UAEXK@Z	CMesh slot 144; writes +0x16C (Height)
+0x00550BB0	?SetWidth@CMesh@NUISystem@@UAEXK@Z	CMesh slot 145; writes +0x170 (Width)
+0x00550BC0	?SetAnimationIndex@CMesh@NUISystem@@UAEXK@Z	CMesh slot 146; writes +0x19C (AnimationIndex)
+0x00550BD0	?SetMeshType@CMesh@NUISystem@@UAEXW4EEngineGraphicType@@@Z	CMesh slot 147; writes +0x160 (MeshType)
+0x00550BE0	?SetOrientation@CMesh@NUISystem@@UAEXAAVCRightHandedSet@@@Z	CMesh slot 148; copies into +0x174 (Orientation)

@@ -1,0 +1,24 @@
+addr       parity           behav  name
+00549440   WARN RELOC_NAME: ?size@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QBEIXZ -> 0042b707 labelled 'CBasicString<char>::CalcStringLength'
+00549440   RELOCATION_MATCH PASS   ProcessEvent
+0054a390   WARN RELOC_NAME: ??_ECTextSlider@NUISystem@@UAEPAXI@Z -> 0054a440 labelled 'NUISystem::CTextSlider::`scalar_deleting_destructor''
+0054a390   RELOCATION_MATCH PASS   `vector deleting destructor'
+0054a3a0   WARN RELOC_NAME: ??_ECTextSlider@NUISystem@@UAEPAXI@Z -> 0054a440 labelled 'NUISystem::CTextSlider::`scalar_deleting_destructor''
+0054a3a0   RELOCATION_MATCH PASS   `vector deleting destructor'
+00550010   WARN RELOC_NAME: ??_ECText@NUISystem@@UAEPAXI@Z -> 00550030 labelled 'NUISystem::CText::`scalar_deleting_destructor''
+00550010   RELOCATION_MATCH PASS   `vector deleting destructor'
+00550020   WARN RELOC_NAME: ??_ECText@NUISystem@@UAEPAXI@Z -> 00550030 labelled 'NUISystem::CText::`scalar_deleting_destructor''
+00550020   RELOCATION_MATCH PASS   `vector deleting destructor'
+00550c10   WARN RELOC_NAME: ??_ECMesh@NUISystem@@UAEPAXI@Z -> 00550c30 labelled 'NUISystem::CMesh::`scalar_deleting_destructor''
+00550c10   RELOCATION_MATCH PASS   `vector deleting destructor'
+00550c20   WARN RELOC_NAME: ??_ECMesh@NUISystem@@UAEPAXI@Z -> 00550c30 labelled 'NUISystem::CMesh::`scalar_deleting_destructor''
+00550c20   RELOCATION_MATCH PASS   `vector deleting destructor'
+
+WINS: 7
+  00549440 RELOCATION_MATCH NUISystem::CTextSlider::?ProcessEvent@CTextSlider@NUISystem@@UAEXW4EEvent@2@@Z
+  0054a390 RELOCATION_MATCH NUISystem::CTextSlider::??_ECTextSlider@NUISystem@@W3AEPAXI@Z
+  0054a3a0 RELOCATION_MATCH NUISystem::CTextSlider::??_ECTextSlider@NUISystem@@WBI@AEPAXI@Z
+  00550010 RELOCATION_MATCH NUISystem::CText::??_ECText@NUISystem@@W3AEPAXI@Z
+  00550020 RELOCATION_MATCH NUISystem::CText::??_ECText@NUISystem@@WBI@AEPAXI@Z
+  00550c10 RELOCATION_MATCH NUISystem::CMesh::??_ECMesh@NUISystem@@W3AEPAXI@Z
+  00550c20 RELOCATION_MATCH NUISystem::CMesh::??_ECMesh@NUISystem@@WBI@AEPAXI@Z

@@ -1,0 +1,17 @@
+address	name	parity	behaviour	headers_reached	source
+0x00573792	CTCInventoryExperience::AddStatToListPC(NUISystem::CComponent* screen, EHeroTrainableStatT	RELOCATION_MATCH	not rerun (parity only)	FABLE_RETAIL_CTEXT, FABLE_RETAIL_CMANAGER	00/57/CTCInventoryExperience_AddStatToListPC_00573792.cpp
+0x005729D8	CTCInventoryExperience::AddStatToList(EHeroTrainableStatType stat, NUISystem::CList* list,	RELOCATION_MATCH	not rerun (parity only)	FABLE_RETAIL_CTEXT, FABLE_RETAIL_CMANAGER	00/57/CTCInventoryExperience_AddStatToList_005729d8.cpp
+0x006286F0	GFPlayFullScreenXBoxMovie	RELOCATION_MATCH	not rerun (parity only)	FABLE_RETAIL_CSYSTEMMANAGER, FABLE_RETAIL_C2DBOXF	00/62/global_GFPlayFullScreenXBoxMovie_006286f0.cpp
+0x00B26360	CEngine::Initialise(const CEngineInit& init)	RELOCATION_MATCH	not rerun (parity only)	FABLE_RETAIL_CSYSTEMMANAGER	00/b2/CEngine_Initialise_00b26360.cpp
+0x004B05C0	CQuestManager::TransferBoasts(CPersistContext& context)	RELOCATION_MATCH	not rerun (parity only)	FABLE_RETAIL_STLP_LIST	00/4b/CQuestManager_TransferBoasts_004b05c0.cpp
+0x005392FC	NUISystem::CList::ScrollDown(unsigned long, unsigned long, bool, bool, bool)	RELOCATION_MATCH	not rerun (parity only)	FABLE_RETAIL_STLP_LIST, FABLE_RETAIL_CMANAGER, FABLE_RETAIL_C2DBOXF	00/53/NUISystemCList_ScrollDown_005392fc.cpp
+0x0053A0A1	NUISystem::CList::ChangeState(unsigned long)	RELOCATION_MATCH	not rerun (parity only)	FABLE_RETAIL_STLP_LIST, FABLE_RETAIL_CMANAGER, FABLE_RETAIL_C2DBOXF	00/53/NUISystemCList_ChangeState_0053a0a1.cpp
+0x005385AE	NUISystem::CList::ScrollUp(unsigned long, unsigned long, bool, bool, bool)	RELOCATION_MATCH	not rerun (parity only)	FABLE_RETAIL_STLP_LIST, FABLE_RETAIL_CMANAGER, FABLE_RETAIL_C2DBOXF	00/53/NUISystemCList_ScrollUp_005385ae.cpp
+0x0054F580	NUISystem::CText::ResetToDefaultValueWithPrefix(const CWideString& prefix)	RELOCATION_MATCH	not rerun (parity only)	CText.h default path	00/54/NUISystemCText_ResetToDefaultValueWithPrefix_0054f580.cpp
+0x0054ECB0	NUISystem::CText::CanScroll(bool down, const C2DBoxF& bounds)	RELOCATION_MATCH	not rerun (parity only)	CText.h default path	00/54/NUISystemCText_CanScroll_0054ecb0.cpp
+0x0041CF47	NUISystem::CManager::GetUIScale()	RELOCATION_MATCH	not rerun (parity only)	NUISystem_CUIScreenUnitConverter.h default path	00/41/NUISystemCManager_GetUIScale_0041cf47.cpp
+0x00661E80	CText::GetAlignment (non-NUISystem landed row)	MATCH	not rerun (parity only)	CText.h default path	00/66/CText_GetAlignment_00661e80.cpp
+0x00487570	CPlayer::DrawFreeCamDebug(const C2DBoxF* box, const CFontBank& font) const	RELOCATION_MATCH	not rerun (parity only)	FABLE_RETAIL_C2DBOXF	00/48/CPlayer_DrawFreeCamDebug_00487570.cpp
+0x00A78E20	CNavQuadTree::IsAreaClear(const CANavQuadTreeNode* node, bool& switchable, vector<unsigned	RELOCATION_MATCH	not rerun (parity only)	FABLE_RETAIL_C2DBOXF	00/a7/CNavQuadTree_IsAreaClear_00a78e20.cpp
+0x00A76F30	CNavQuadTree::IsAreaBlockedByLines(const C2DBoxF& area, const std::vector<const std::list<	RELOCATION_MATCH	not rerun (parity only)	FABLE_RETAIL_C2DBOXF	00/a7/CNavQuadTree_IsAreaBlockedByLines_00a76f30.cpp
+0x00A23AD0	CMeshDataBank::FrameEnd()	RELOCATION_MATCH	not rerun (parity only)	FABLE_RETAIL_CMESHDATABANK (CMeshDataBank.h / CBankFile.h default of the new sub-macros)	00/a2/CMeshDataBank_FrameEnd_00a23ad0.cpp

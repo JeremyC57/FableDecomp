@@ -451,6 +451,19 @@ public:
     // Regions.back() as the list head's _M_prev before each MakeRegion call: `mov eax,[edx+4] ; add eax,8`).
     _Tp& back() { iterator tmp=end(); return *(--tmp); }
     const _Tp& back() const { const_iterator tmp=end(); return *(--tmp); }
+    // chunk 749 (row 0x00549440 CTextSlider::ProcessEvent): STLport 4.6 _list.h erase(iterator) and pop_front() (`erase(begin())`);
+    // retail calls the list<NUISystem::CList*> instances out of line (pop_front 0x0053C7D9 -> erase 0x0053C7B9).
+    iterator erase(iterator position) {
+        _List_node_base* next_node=position._M_node->_M_next;
+        _List_node_base* prev_node=position._M_node->_M_prev;
+        _List_node<_Tp>* n=(_List_node<_Tp>*)position._M_node;
+        prev_node->_M_next=next_node;
+        next_node->_M_prev=prev_node;
+        _Destroy(&n->_M_data);
+        this->_M_node.deallocate(n,1);
+        return iterator(next_node);
+    }
+    void pop_front() { erase(begin()); }
 #endif
 };
 // _bitset.h / _range_errors.h (no-exceptions branch)

@@ -36355,3 +36355,9 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ?WaitForData@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z	00c20850	00c21780
 ?WaitForMemory@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z	00c20880	00c21780
 ?WaitForPhysicalPlayer@CSoundEvent@@QAEXPAUCSoundEventManager@@PAUCStreamBuffer@@@Z	00c20950	00c21780
+?ProcessEvent@CComponent@NUISystem@@UAEXW4EEvent@2@@Z	0052e830	00549440
+?pop_front@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAEXXZ	0053c7d9	00549440
+?size@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QBEIXZ	0042b707	00549440
+??_ECTextSlider@NUISystem@@UAEPAXI@Z	0054a440	0054a390
+??_ECText@NUISystem@@UAEPAXI@Z	00550030	00550010
+??_ECMesh@NUISystem@@UAEPAXI@Z	00550c30	00550c10

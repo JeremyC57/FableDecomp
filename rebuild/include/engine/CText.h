@@ -3,23 +3,58 @@
 #define FABLE_ENGINE_CTEXT_H
 // Retail opt-in (chunk 735, rows 0x005729D8 / 0x00573792 CTCInventoryExperience::AddStatToList(PC)): the PDB class
 // NUISystem::CText (RTTI .?AVCText@NUISystem@@, single base NUISystem::CChangingStateComponent at +0, rtti_bases.tsv), sizeof
-// 0x18C (the generated retail layout below; members opaque). Retail vtable 0x01249CCC adds nine slots (142..150) after
-// CChangingStateComponent's 141. The three SetValue overloads sit at 143..145, which VC7.1 lays out in reverse declaration
-// order: retail slot 145 = 0x0054F370, 144 = 0x0054F410, 143 = 0x0054FBC0, the same address order as Ego_r.pdb's
-// SetValue(const CCharString&,bool,bool) 0x005C9460 < SetValue(const CWideString&,bool,bool) 0x005C94D0 <
-// SetValue(unsigned long,const CWideString&,bool) 0x005C9DB0; the rows call slot 144 (+0x240) with (text, true, true).
-// Slot 142 (0x0054FF10, 16 bytes) is Ego_r's only other new non-setter accessor before them, GetAlignment. Slots 146..150
-// (ForceWidth 0x0054FB10 at 149, GetFont, SetTextWindow, GetTextWindow, one more) are not modelled: their order is unproven.
+// 0x18C. Retail vtable 0x01249CCC adds nine slots (142..150) after CChangingStateComponent's 141. The three SetValue
+// overloads sit at 143..145, which VC7.1 lays out in reverse declaration order: retail slot 145 = 0x0054F370, 144 =
+// 0x0054F410, 143 = 0x0054FBC0, the same address order as Ego_r.pdb's SetValue(const CCharString&,bool,bool) 0x005C9460 <
+// SetValue(const CWideString&,bool,bool) 0x005C94D0 < SetValue(unsigned long,const CWideString&,bool) 0x005C9DB0; the rows
+// call slot 144 (+0x240) with (text, true, true).
+// Chunk 749 (row 0x0054EF00 CText::Draw): slot 142 (0x0054FF10, `lea eax,[ecx+15Ch]`) returns &Value: it is FableWin.pdb
+// ?GetValue@CText@NUISystem@@UAEABVCWideString@@XZ (chunk 735 had called it GetAlignment). Slots 146..150 from their
+// retail bodies: 146 GetFont 0x0054FF20 (&PFont, +0x160), 147 SetTextWindow 0x0054FFB0 (landed), 148 GetTextWindow
+// 0x0054FFE0 (&Window, +0x178), 149 ForceWidth 0x0054FB10 (landed), 150 GetAlignment 0x0054FFF0 (landed; Draw calls +0x258
+// and branches on 1 / 2). Draw / Update / the destructor are overrides (slots 2 / 1 / 0) and add no slot.
+// FABLE_RETAIL_CTEXT_LAYOUT (chunk 749) types the members (Ego_r.pdb minus 0x30, the landed ctor 0x0054F5C0 / dtor
+// 0x0054F6E0); it needs engine/CEnginePrimitiveHandle.h, so the opaque default stays for the chunk-735 rows.
 #include "engine/NUISystem_CChangingStateComponent.h"
+#ifdef FABLE_RETAIL_CTEXT_LAYOUT
+#include "engine/CEnginePrimitiveHandle.h"
+#include "engine/C2DBoxF.h"
+#endif
+class CFontBank;
+class C2DBoxF;
 namespace NUISystem {
 enum ETextAlignement;                                             // MS forward enum (engine/NUISystem_CUIDef.h retail branch)
 class CText : public CChangingStateComponent {
 public:
-    virtual ETextAlignement GetAlignment() const;                    // slot 142
+#ifdef FABLE_RETAIL_CTEXT_LAYOUT
+    CText(long);
+    CText(const CText&);
+    virtual ~CText();
+    virtual void Update(float);                                      // slot 1
+    virtual void Draw(CIEngine&, CEnginePrimitiveHandle*, long, long*, CComponent*);   // slot 2
+#endif
+    virtual const CWideString& GetValue();                           // slot 142
     virtual void SetValue(const CCharString&, bool, bool);           // slot 145
     virtual void SetValue(const CWideString&, bool, bool);           // slot 144
     virtual void SetValue(unsigned long, const CWideString&, bool);  // slot 143
-    unsigned char _pad_0x15c[0x18c - 0x15c];                         // +0x15c CText members (generated layout below)
+    virtual CCountedPointer<CFontBank>& GetFont();                   // slot 146
+    virtual void SetTextWindow(C2DBoxF&);                            // slot 147
+    virtual C2DBoxF& GetTextWindow();                                // slot 148
+    virtual void ForceWidth(float);                                  // slot 149
+    virtual ETextAlignement GetAlignment() const;                    // slot 150
+#ifdef FABLE_RETAIL_CTEXT_LAYOUT
+protected:
+    CWideString Value;                                               // +0x15c
+    CCountedPointer<CFontBank> PFont;                                // +0x160
+    CEnginePrimitiveHandle Handle;                                   // +0x168
+    CEnginePrimitiveHandle HandleDropShadowBottomRight;              // +0x170
+    C2DBoxF Window;                                                  // +0x178
+    bool ScaleText;                                                  // +0x188
+    bool Unavailable;                                                // +0x189
+    unsigned char NoRenderNextFrame;                                 // +0x18a
+#else
+    unsigned char _pad_0x15c[0x18c - 0x15c];                         // +0x15c CText members (FABLE_RETAIL_CTEXT_LAYOUT)
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NUISystem::CText) == 0x18c);

@@ -381577,6 +381577,55 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c21780_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00549440'
+        Module = 'NUISystem::CTextSlider'
+        Source = '00/54/NUISystemCTextSlider_ProcessEvent_00549440.cpp'
+        TestSource = '00/54/NUISystemCTextSlider_ProcessEvent_00549440_test.cpp'
+        PassPattern = '00549440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054a390'
+        Module = 'NUISystem::CTextSlider'
+        Source = '00/54/NUISystemCTextSlider_vectordeletingdestructor_0054a390.cpp'
+        TestSource = '00/54/NUISystemCTextSlider_vectordeletingdestructor_0054a390_test.cpp'
+        PassPattern = '0054a390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054a3a0'
+        Module = 'NUISystem::CTextSlider'
+        Source = '00/54/NUISystemCTextSlider_vectordeletingdestructor_0054a3a0.cpp'
+        TestSource = '00/54/NUISystemCTextSlider_vectordeletingdestructor_0054a3a0_test.cpp'
+        PassPattern = '0054a3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00550010'
+        Module = 'NUISystem::CText'
+        Source = '00/55/NUISystemCText_vectordeletingdestructor_00550010.cpp'
+        TestSource = '00/55/NUISystemCText_vectordeletingdestructor_00550010_test.cpp'
+        PassPattern = '00550010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00550020'
+        Module = 'NUISystem::CText'
+        Source = '00/55/NUISystemCText_vectordeletingdestructor_00550020.cpp'
+        TestSource = '00/55/NUISystemCText_vectordeletingdestructor_00550020_test.cpp'
+        PassPattern = '00550020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00550c10'
+        Module = 'NUISystem::CMesh'
+        Source = '00/55/NUISystemCMesh_vectordeletingdestructor_00550c10.cpp'
+        TestSource = '00/55/NUISystemCMesh_vectordeletingdestructor_00550c10_test.cpp'
+        PassPattern = '00550c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00550c20'
+        Module = 'NUISystem::CMesh'
+        Source = '00/55/NUISystemCMesh_vectordeletingdestructor_00550c20.cpp'
+        TestSource = '00/55/NUISystemCMesh_vectordeletingdestructor_00550c20_test.cpp'
+        PassPattern = '00550c20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

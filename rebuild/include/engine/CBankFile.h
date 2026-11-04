@@ -61,6 +61,12 @@ public:
     bool                        WarningFlag;                 // +0xf4
     unsigned char               _pad_0xf5[0x3];              // +0xf5
     unsigned char               ChecksumCache[0x18];         // +0xf8 CChecksumCacheFile
+#ifdef FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+    // Chunk 749 (row 0x005502E0 NUISystem::CMesh::Draw): Ego_r.pdb ?EntryExists@CBankFile@@QBE_NK@Z (0x009CC190) and
+    // ?GetEntryDataType@CBankFile@@QBEKK@Z (0x009CC210), both out of line.
+    bool EntryExists(unsigned long index) const;                         // 0x009CC190
+    unsigned long GetEntryDataType(unsigned long index) const;           // 0x009CC210
+#endif
 };
 #pragma pack(pop)
 

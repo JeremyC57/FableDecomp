@@ -1,0 +1,10 @@
+address	name	status	attempts	note
+0x00549440	NUISystem::CTextSlider::ProcessEvent	RELOCATION_MATCH	2	src + test; payload; vland RELOCATION_MATCH PASS (a1 had the SELECT / BACK case blocks swapped: VC case layout follows source order)
+0x0054A390	NUISystem::CTextSlider::`vector deleting destructor'`adjustor{4}'	RELOCATION_MATCH	2	the ~CTextSlider TU (body of landed 0x00549A00 on the shared headers); src + test; vland PASS
+0x0054A3A0	NUISystem::CTextSlider::`vector deleting destructor'`adjustor{24}'	RELOCATION_MATCH	2	same TU; src + test; vland PASS
+0x00550010	NUISystem::CText::`vector deleting destructor'`adjustor{4}'	RELOCATION_MATCH	1	the ~CText TU (~CText 0x0054F6E0); src + test; vland PASS
+0x00550020	NUISystem::CText::`vector deleting destructor'`adjustor{24}'	RELOCATION_MATCH	1	same TU; src + test; vland PASS
+0x00550C10	NUISystem::CMesh::`vector deleting destructor'`adjustor{4}'	RELOCATION_MATCH	1	the ~CMesh TU (~CMesh 0x00550230); src + test; vland PASS
+0x00550C20	NUISystem::CMesh::`vector deleting destructor'`adjustor{24}'	RELOCATION_MATCH	1	same TU; src + test; vland PASS
+0x0054EF00	NUISystem::CText::Draw	DIFFER(1127v1127) parked	20	differ/0054ef00.cpp + test PASS; residue: frame slot order of five small locals + one ecx/edx swap (53 diff lines)
+0x005502E0	NUISystem::CMesh::Draw	DIFFER(1321v1288) parked	13	differ/005502e0.cpp + test PASS; residue: zoom/size/sum x87-vs-memory shape; early Clear inline only with a do-while(0) frequency lever (126 diff lines)

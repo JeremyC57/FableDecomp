@@ -59,6 +59,9 @@ public:CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
 // build (0x006286F0 reads PInputManager +0x58 in place, as GetDisplayManager reads PDisplayManager +0x60).
  ESystemReturn Update();
  CInputManager* GetInputManager(){return PInputManager.Get();}
+// Chunk 749 (the CText destructor TU of rows 0x00550010 / 0x00550020): Ego_r.pdb ?GetFontManager@CSystemManager@@QAEPAVCFontManager@@XZ,
+// inline in retail (~CText 0x0054F6E0 reads PFontManager +0x84 in place).
+ CFontManager* GetFontManager(){return PFontManager.Get();}
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CSystemManager)==0x180);
