@@ -27198,3 +27198,17 @@ chunk	address	module	name	length
 767	01229e10	_global	Cleanup_CCharString_Global	10
 767	0122a2f0	_global	DynamicInit_013bb6a4	10
 767	0132d470	_global	InvalidDecode_HaltStub	0
+768	00753380	parked-retry	FrameUpdateHeadInterested	297
+768	0070d780	parked-retry	AddCombinationAnim	305
+768	00ed9bb0	parked-retry	ProcessSongsClothes	306
+768	0083dc80	parked-retry	DrawPreparePrimitivesForRendering	309
+768	00969e70	parked-retry	?IsRunnable@CAIStateGroup_SleepOnFloor@@UAE_NXZ	311
+768	00837b30	parked-retry	DrawPreparePrimitivesForRendering	314
+768	0089da70	parked-retry	?EntitySetAlpha@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z	314
+768	009d5bf0	parked-retry	HandleFailedAllocation	314
+768	00f35c60	parked-retry	PerlinNoise	316
+768	00a76770	parked-retry	CNavQuadTreeNode::GetLeafNodeAt	321
+768	005ebfa0	parked-retry	CameraUseCameraPoint	329
+768	0096dbc0	parked-retry	Initialise	331
+768	00bcfb00	parked-retry	RenderPrimitiveBlocksIndexBuffer	336
+768	00c3a7d0	parked-retry	AudioLib_ApplyGainEnvelope_00c3a7d0	273
