@@ -26418,3 +26418,7 @@ chunk	address	module	name	length
 740	00b01900	NParticleEngine::CPSCRenderMesh::NParticleEngine::CPSCRenderMesh	vfunc_19	3777
 740	00b027d0	CPSCRenderMesh	DatabaseSerialise	5313
 740	00b03ca0	NParticleEngine::CPSCRenderMesh::NParticleEngine::CPSCRenderMesh	vfunc_13	6468
+741	00b10b10	CPSCEmitterGeneric	GenerateParticle	4276
+741	00b13530	CPSCEmitterGeneric	DatabaseSerialise	5268
+741	00b149d0	CPSCEmitterGeneric	ReadBinary	3779
+741	00b15bd0	_global	InterpolateAnimationSequence	1361
