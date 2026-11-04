@@ -176,3 +176,8 @@ headers, never as asm in the row.
   cannot emit from C++ (bare `fistp`, `fnstcw`/`fldcw`, hand SSE/MMX kernels). Isolate it: the shared helper header carries the
   `__asm` path and a pure C++ fallback under `#ifdef FABLE_PORTABLE` (the platform switch), so a modern compiler builds the same
   logic without asm. The lander rejects `__asm` in a row source or test.
+- **Owner 2026-11-04, priority order:** (1) no asm: pure C++ is the goal; (2) only where that is proven impossible, the isolated
+  helper above. "Impossible" needs proof, not assumption. Proven under VC7.1 (GOTCHAS rasm1 line, re-tested 2026-11-04: `(long)x`
+  gives `__ftol2`, `/QIfist` gives `fistp qword`): bare `fistp dword`, `rdtsc`, `cpuid`, `pushfd`, MASM-aligned SIMD kernels. These look
+  like asm but are C++: `exp`/`cos`/`sqrt` via /Oi, `#pragma intrinsic(log10)`, `_MM_GET/SET_ROUNDING_MODE`, and `(float)g_Double * x`.
+  NOTES.md lists every helper call a row makes, with the reason it is unavoidable.
