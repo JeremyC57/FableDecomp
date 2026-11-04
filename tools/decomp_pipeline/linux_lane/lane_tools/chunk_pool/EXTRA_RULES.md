@@ -171,3 +171,8 @@ reproduce them. The rounding mode the asm depends on is stated in the header (a 
 it is not floor). Every helper has a dual-path test (rebuild/tests/portable/) that runs both paths on the same inputs and
 asserts equal results; a row that needs a helper calls it and is otherwise ordinary C++. Agents hand back new helpers as
 headers, never as asm in the row.
+- **Reaffirmed by the owner 2026-11-04:** rows are C++ recreations of retail's own code. Exhaust C++ spellings first (operand
+  order, casts, temporaries, inline helpers, same-TU noinline callees); asm is the last resort and only for instructions VC7.1
+  cannot emit from C++ (bare `fistp`, `fnstcw`/`fldcw`, hand SSE/MMX kernels). Isolate it: the shared helper header carries the
+  `__asm` path and a pure C++ fallback under `#ifdef FABLE_PORTABLE` (the platform switch), so a modern compiler builds the same
+  logic without asm. The lander rejects `__asm` in a row source or test.
