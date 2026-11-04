@@ -1,0 +1,61 @@
+Naming wave 35b: script Main / Init / RegisterMain, entity Alloc statics and constructors (812 rows)
+=====================================================================================
+
+RESULT
+  812/812 respelled sources byte-match retail (474 RELOCATION_MATCH + 338 MATCH, all PASS), real vland.py with sweep,
+  6 batches of 130-140 rows (at most 3 at a time), each with its own LANDVERIFY_WORK (final/rk_part_NN/work). 3 rows regraded in fix3/.
+  PASS.tsv      737 rows: no RELOC_NAME / leaf / conflict warning. 14 of them carry only RELOC_ALIAS for the import thunks
+                _rand / __CIfmod (MSVCR71 thunk alias; correct CRT name, not a naming defect). SHARED_HEADER_AVAILABLE tolerated.
+  DEFERRED.tsv  75 rows, all "inherited callee RELOC_NAME": the respelled row itself is right and byte-identical, but the body
+                calls callees under invented spellings that the landed source already used (each warning's target+label is also
+                in the base grade of the landed source, logs/base_recheck.log). Their respelled files are in overlay_inherited/
+                (BINDINGS_inherited.tsv), kept apart from overlay/ so the coordinator can take them or not.
+  overlay/      737 sources + 737 tests.  overlay_inherited/  75 + 75.
+
+METHOD (families, gen/<fam>/gen.tsv; scripts/ holds every generator)
+  tstruct3   262  entity Main/Init on the wave 33 D1 model: the class model comes from the landed Alloc row's TU (virtual ~Inner()
+                  dropped, Alloc body replaced by the graded function, private virtual Init() added after Main). The 11 "Bump" rows
+                  need an outer member: added at the STLport-corrected Ego_r offset (lvl.py egor_member_rt).
+  lvlalloc    83  level-script Alloc statics (inline / CCharString-member / out-of-line ctor variants).
+  lvltstruct  34  level-script Main/Init/RegisterMain on CLevelScriptBase<T>; PLAIN branch for Global/Expression scripts.
+  frameloop   11  do { Game->NewScriptFrame(); } while (!IsActiveThreadTerminating());
+  plainctor   12  27-byte global/expression ctors X::X(CGameScriptInterfaceBase& game).
+  requal     373  landed bodies kept, class moved into NScript / nested under its outer (requal.py); outer stand-ins moved into
+                  NScript with a using-declaration; vptr placeholders replaced by real polymorphism (make_poly).
+  lvlctor     17  level ctors (data, game) with the base initializer cast; entctor 7 entity ctors (O& parent, data, const
+                  CScriptThing& me); minent 9 entity rows with no Alloc TU (CEntityScriptBase.h only); man 4 hand-written.
+  Leaf of every row = its single PDB symbol (pdbsym.py; all 812 unique). One address, one symbol: the six Mains that were
+  spelled RegisterMain (00d5ab40 00d5dd40 00e90830 00eed360 00efca00 00efe4b0) now define ?Main@...; the real RegisterMain
+  rows next to them stay as they are.
+  Post-fixes: 28 requal rows respell global 0x01375748 to NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations;
+  00e299f0 respells the stand-in CRecordSet_00cbd510 to CScriptBase; 00e5e0c0 / 00ee3ee0 / 00ddc980 respell their one
+  invented callee to the PDB name with the identical signature (GetHenchmanTypeFromString, PlayCutscene, MakeRacerComment).
+  Tests: a test that links the source object under an old symbol gets an overlay copy with
+  #pragma comment(linker, "/alternatename:OLD=NEW") (frameloop 11, requal 00cdfdf0); self-contained tests move unchanged.
+
+CALLERS (CALLERS.tsv)
+  18 code references to the rows from landed functions. 6 callers already spell the PDB name (bound in reloc_bindings);
+  2 are rows of this wave (00def3b0, 00eb6a60), respelled as rows; the other 10 refs lie past the landed caller's body end
+  (catalog length), i.e. in unlanded neighbours: no landed source emits an old spelling of a 35b row, so no caller edit needed.
+  4 of those 10 callers (00d2d700 00d9e8a0 00e015e0 00eaed00) are wave 35a rows: listed, not written.
+  Virtual Main/Init are reached through vtables only, so they have no direct callers.
+
+BINDINGS (BINDINGS.tsv, wave 33 mkbind.py logic over the final objects, scripts/mkbind35.py)
+  ADD 62, RETIRE 129, KEEP 33 (text-search heuristic as in wave 33), CONFLICT 8. All 8 CONFLICTs (and the 4 in
+  BINDINGS_inherited.tsv) are vtable symbols (??_7CBase@@6B@, ??_7CSpawnedFunc1@@6B@, ...) that the pre-wave landed object
+  emits for the same target too: pre-existing, not introduced here, vland does not flag them. Do not apply those lines.
+
+COORDINATOR DECISIONS
+  1. Take overlay_inherited/ (75 byte-identical rows whose only defect is pre-existing callee stand-in spellings: CMovieImpPointer,
+     CScriptThingRuntime/Stored, CCutsceneCastMap, CBaseObjectDtor, ScriptResource, CHandlePImp, functor dtors 0x00EF7AB0, pDSTGame
+     globals ...) or keep them deferred until a callee-spelling wave. Several labels are themselves stand-ins
+     ('_global::CCountedPointer_Set_00704580', 'CScriptThingFunctor_00ef7ab0', 'pDSTGame'), so the warning is partly a label issue.
+  2. 00dcded0 (wave 35a) still declares class CGuardTeamMember; the PDB class is CCrateTeamMember (NAME_FIXES.tsv).
+  3. Old-spelling users of 0x01375748 and 0x00CB8110 outside this wave: NAME_FIXES.tsv lists them.
+
+GOTCHAS (one line each)
+  - An unbalanced/incomplete generated source makes cl.exe hang, not fail; vland then repeats the timeout over its pragma sweep. Precheck with a compile-only pass (scripts/cc.py, 90 s cap).
+  - Adding a vptr to a derived class whose local base stand-in is empty/non-polymorphic shifts the this->base adjust: put virtual ~Base() in the base stand-in instead.
+  - A test that links the source object breaks on a respell; /alternatename:OLD=NEW in the test keeps it (same thiscall ABI).
+  - Naive Ego_r-0x14 member offsets are wrong after STLport containers (vector 0x10->0xC, list 0xC->4, map 0x10->0xC, string 0x1C->0xC, deque 0x18->0x28).
+  - CScriptThing.h needs engine/CCountedPointer.h included first.

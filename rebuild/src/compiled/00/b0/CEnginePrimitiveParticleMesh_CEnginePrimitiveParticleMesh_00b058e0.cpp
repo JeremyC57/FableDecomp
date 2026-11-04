@@ -1,4 +1,5 @@
 // CEnginePrimitiveParticleMesh::CEnginePrimitiveParticleMesh(unsigned __int64, const C3DVector&, const CRightHandedSet&, const C3DVector&, const CRGBColour&, EEngineInterpolationSet) -- primitive type 0x17: world position, size, orientation set and colour
+// Leaf: ??0CEnginePrimitiveParticleMesh@@QAE@_KABVC3DVector@@ABVCRightHandedSet@@1ABVCRGBColour@@W4EEngineInterpolationSet@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B058E0, length 147 bytes (+ int3 padding). No callees.
 // Signature from Ego_r.pdb: ??0CEnginePrimitiveParticleMesh@@QAE@_KABVC3DVector@@ABVCRightHandedSet@@1ABVCRGBColour@@W4EEngineInterpolationSet@@@Z
 // (7 stack words, `ret 1Ch`); the leading 64-bit primitive handle is not stored by this constructor.
@@ -8,6 +9,8 @@
 // zero channel bytes; vectors copy memberwise (user copy constructors, one register per dword); the colour's
 // copy constructor goes through the inline Set(r, g, b, a) (landed shape 0x005BA48A): bytes loaded A, B, G, R
 // (B spilled into the dead argument slot), stored R, G, B, A.
+// Naming wave 35: the last parameter is the PDB enum EEngineInterpolationSet (was `long`, mangled J): the source now defines the Ego_r.pdb symbol above; same bytes.
+enum EEngineInterpolationSet { INTERPOLATION_UNNAMED };   // Ego_r.pdb CEnginePrimitive::InterpolationSet type (enumerators not modelled; int-sized)
 
 class C3DVector { public:                                       // memberwise user copy constructor: one register per dword
     float X, Y, Z;
@@ -42,12 +45,12 @@ struct CEnginePrimitiveParticleMesh : CEnginePrimitive {
     CRightHandedSet RightHandedSet;                      // +0x24
     CRGBColour      Colour;                              // +0x3c   sizeof == 0x40
     CEnginePrimitiveParticleMesh(unsigned __int64 handle, const C3DVector& worldPos, const CRightHandedSet& rhSet,
-                                 const C3DVector& size, const CRGBColour& colour, long interpolationSet);
+                                 const C3DVector& size, const CRGBColour& colour, EEngineInterpolationSet interpolationSet);
 };
 
 CEnginePrimitiveParticleMesh::CEnginePrimitiveParticleMesh(unsigned __int64 handle, const C3DVector& worldPos,
                                                            const CRightHandedSet& rhSet, const C3DVector& size,
-                                                           const CRGBColour& colour, long interpolationSet)
+                                                           const CRGBColour& colour, EEngineInterpolationSet interpolationSet)
     : CEnginePrimitive(0x17, interpolationSet)           // ENGINE_PRIMITIVE_PARTICLE_MESH
     , WorldPos(worldPos)
     , Size(size)

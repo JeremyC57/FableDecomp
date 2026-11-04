@@ -1,0 +1,89 @@
+// NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle::Main() -- the beetle spawned in Oakvale's intro: register an is-alive functor over Me, run a frame, then give it five seconds on a script timer and remove it (with effects) unless the script finished first
+// Leaf: ?Main@CNOVI_CreatedBeetle@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
+// Identity (naming wave 11): ?Main@CNOVI_CreatedBeetle@CQ_NewOakValeIntroScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012D9560 slot 1 is stored by the factory 0x00DB7FF0 registered as "NOVI_CreatedBeetle"
+// Grade: RELOCATION_MATCH -- the closing test is written `if (IsActiveThreadTerminating()) return; Game->RemoveThing(...)`: an early return there keeps a second CTimer-dtor + epilogue copy like retail, where `if (!IsActiveThreadTerminating()) RemoveThing` let VC cross-jump the loop exit into the final DeregisterTimer
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00DB80C0, 232 bytes (+ int3 padding). __fastcall, `ret`.
+// Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (the functor's member; the functor's inline dtor re-stores its
+//   vtable 0x012C2FE8 first), the entity script's functor registration 0x00F35B10 and IsDone 0x00F35B30 (on `this`; manifest
+//   labels "CWorldMap::AllocateMapThingUID" / "CCreatureAction_TrollWhackGroundBase::Initialise" are propagated, see landed
+//   CHTE_Prisoner::Main 0x00D69F50); the script's own interface (+4) NewScriptFrame 7 (+0x1c) 0x006E7410 and RemoveThing 108
+//   (+0x1b0) 0x008910D0; the global pDSTGame (0x0143E8F8) RegisterTimer 87 (+0x15c) 0x006E79E0, DeregisterTimer
+//   88 (+0x160) 0x006E7690, SetTimer 89 (+0x164) 0x006E76E0, GetTimer 90 (+0x168) 0x006E7710.
+// Layout: Ego_r.pdb CNOVI_CreatedBeetle (28 bytes) = CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14,
+//   PMasterData +0x18.
+// Shape: the functor is a scoped 0x10-byte frame object; the timer index stays in edi; the early exit inside the wait loop
+//   deregisters the timer itself (its own copy of the epilogue), the normal path falls through to the same call.
+// Naming wave 35: identity reg 00dac0af "NOVI_CreatedBeetle" in 00dabac0; Alloc 00db7ff0; vtable 012d9560 slot 1; PDB ?Main@CNOVI_CreatedBeetle@CQ_NewOakValeIntroScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CNOVI_CreatedBeetle::Main (wave3/labels_alloc.tsv); PDB ?Main@CNOVI_CreatedBeetle@CQ_NewOakValeIntroScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
+//   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
+namespace NScript { class CPredicateBase; }
+class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+namespace NScript {
+class CPredicateBase
+{
+public:
+    virtual void v00();
+};
+}
+struct CScriptThingFunctor_00ef7ab0 : public NScript::CPredicateBase {                  // vtable 0x012C2FE8: an is-alive functor holding a script thing
+    CScriptThing m_thing;                              // +0x04
+    CScriptThingFunctor_00ef7ab0(const CScriptThing& thing) : m_thing(thing) { }
+    ~CScriptThingFunctor_00ef7ab0() { }
+};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
+class CTimer { public:                                        // 4 bytes: an index into the global script timers
+    long TimerIndex;
+    CTimer(long time) { TimerIndex = pDSTGame->RegisterTimer(); pDSTGame->SetTimer(TimerIndex, time); }
+    ~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+    long GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+};
+namespace NScript {
+class CQ_NewOakValeIntroScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CNOVI_CreatedBeetle;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CQ_NewOakValeIntroScript;
+struct CQ_SunnyvaleMasterData;
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
+
+namespace NScript {
+class CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle : public CEntityScriptBase {
+public:
+        CQ_NewOakValeIntroScript* ParentClass;             // +0x14
+    CQ_SunnyvaleMasterData*   PMasterData;             // +0x18
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
+};
+}
+
+void NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle::Main()
+{
+    {
+        CScriptThingFunctor_00ef7ab0 functor(Me);
+        SetPredicate(functor);
+    }
+    Game->NewScriptFrame();
+    if (IsActiveThreadTerminating())
+        return;
+    CTimer timer(5);
+    while (timer.GetTime() != 0) {
+        Game->NewScriptFrame();
+        if (IsActiveThreadTerminating())
+            return;
+    }
+    if (IsActiveThreadTerminating())
+        return;
+    Game->RemoveThing(Me, true, true);
+}

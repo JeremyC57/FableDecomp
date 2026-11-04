@@ -1,0 +1,27 @@
+addr       parity           behav  name
+00ee8e80   RELOCATION_MATCH PASS   CGlobal_WatchForHeroDeathScript
+00ee90f0   RELOCATION_MATCH PASS   CGlobal_DebugCycleThroughSpeechScript
+00ee94a0   RELOCATION_MATCH PASS   CExpression_FishScript
+00ee9f50   RELOCATION_MATCH PASS   CExpression_FollowScript
+00eea430   RELOCATION_MATCH PASS   CExpression_WaitScript
+00eea790   RELOCATION_MATCH PASS   CExpression_DigScript
+00eeaec0   RELOCATION_MATCH PASS   CExpression_PickpocketScript
+00eeb780   RELOCATION_MATCH PASS   CExpression_PicklockScript
+00eebdc0   RELOCATION_MATCH PASS   CExpression_StealScript
+00eec3e0   RELOCATION_MATCH PASS   CGlobal_GiveHeroItemsFromRewardChestScript
+00eec7a0   RELOCATION_MATCH PASS   CGlobal_OpenChestScript
+00eecef0   RELOCATION_MATCH PASS   CGlobal_ToggleTimeDisplayScript
+
+WINS: 12
+  00ee8e80 RELOCATION_MATCH NScript::CGlobal_WatchForHeroDeathScript::??0CGlobal_WatchForHeroDeathScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00ee90f0 RELOCATION_MATCH NScript::CGlobal_DebugCycleThroughSpeechScript::??0CGlobal_DebugCycleThroughSpeechScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00ee94a0 RELOCATION_MATCH NScript::CExpression_FishScript::??0CExpression_FishScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00ee9f50 RELOCATION_MATCH NScript::CExpression_FollowScript::??0CExpression_FollowScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00eea430 RELOCATION_MATCH NScript::CExpression_WaitScript::??0CExpression_WaitScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00eea790 RELOCATION_MATCH NScript::CExpression_DigScript::??0CExpression_DigScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00eeaec0 RELOCATION_MATCH NScript::CExpression_PickpocketScript::??0CExpression_PickpocketScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00eeb780 RELOCATION_MATCH NScript::CExpression_PicklockScript::??0CExpression_PicklockScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00eebdc0 RELOCATION_MATCH NScript::CExpression_StealScript::??0CExpression_StealScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00eec3e0 RELOCATION_MATCH NScript::CGlobal_GiveHeroItemsFromRewardChestScript::??0CGlobal_GiveHeroItemsFromRewardChestScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00eec7a0 RELOCATION_MATCH NScript::CGlobal_OpenChestScript::??0CGlobal_OpenChestScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00eecef0 RELOCATION_MATCH NScript::CGlobal_ToggleTimeDisplayScript::??0CGlobal_ToggleTimeDisplayScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z

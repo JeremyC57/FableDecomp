@@ -1,0 +1,69 @@
+action	symbol	target	by_row	note
+ADD	?Add@CQ_BountyHuntScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z	00cb7e50	00d167c0	naming wave 35b: emitted by the respelled row
+ADD	?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00d16920	00d167c0	naming wave 35b: emitted by the respelled row
+ADD	?WatchForHostage2Killed@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00d16d00	00d16bb0	naming wave 35b: emitted by the respelled row
+ADD	?Add@CQ_BountyHuntScript@NScript@@QAEXPAUCSpawnedFuncBounty@@ABVCCharString@@@Z	00cb7e50	00d16dc0	naming wave 35b: emitted by the respelled row
+ADD	?WatchForDecapitation@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00d16fd0	00d16dc0	naming wave 35b: emitted by the respelled row
+ADD	?WatchForLeaderKilled@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00d17090	00d16dc0	naming wave 35b: emitted by the respelled row
+ADD	??_7CBaseClassNative@@6B@	01231710	00d408b0	naming wave 35b: emitted by the respelled row
+ADD	??_7?$CSpawnedFunc1@VCQ_MinionClifftopChaseScript@NScript@@VCScriptThing@@@@6B@	012d771c	00da9c70	naming wave 35b: emitted by the respelled row
+ADD	?GuardChatter@CQ_MinionClifftopChaseScript@NScript@@QAEXVCScriptThing@@@Z	00da71e0	00da9c70	naming wave 35b: emitted by the respelled row
+ADD	?SetPredicate@CDarkwoodAssassinSpawn@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z	00f35b10	00e02e50	naming wave 35b: emitted by the respelled row
+ADD	?RegisterFilter@CBanditCronies@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z	00f35b10	00e03810	naming wave 35b: emitted by the respelled row
+CONFLICT	??_7CSpawnedFuncPhase3@@6B@	012e15d0	00e1f3e0	bound to 012ca5e0 by 00d169e0; pre-existing: the landed (pre-wave-35b) source of 00e1f3e0 emits the same symbol for the same target; not introduced here, not flagged by vland (vtable); do not apply
+ADD	?Add@CQR_EscortTraderScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z	00cb7e50	00e1f3e0	naming wave 35b: emitted by the respelled row
+ADD	?WatchForBanditDead@CQR_EscortTraderScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00e1f520	00e1f3e0	naming wave 35b: emitted by the respelled row
+ADD	?PlayCutscene@CQS_ScytheInfoScript@NScript@@QAEXVCCharString@@_N@Z	00e2a900	00e2a320	naming wave 35b: emitted by the respelled row
+ADD	?GetTrickster@CV_AmbushScamScript@NScript@@QAE?AVCScriptThing@@XZ	00e2ec30	00e2fd30	naming wave 35b: emitted by the respelled row
+CONFLICT	??_7CSpawnedFuncPhase3@@6B@	012e37bc	00e38f80	bound to 012ca5e0 by 00d169e0; pre-existing: the landed (pre-wave-35b) source of 00e38f80 emits the same symbol for the same target; not introduced here, not flagged by vland (vtable); do not apply
+ADD	?Add@CV_AssassinAttacksScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z	00cb7e50	00e38f80	naming wave 35b: emitted by the respelled row
+ADD	?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00e39140	00e38f80	naming wave 35b: emitted by the respelled row
+CONFLICT	??_7CSpawnedFuncAmbush@@6B@	012e84d4	00e6aac0	bound to 012f7ebc by 00f08a30; pre-existing: the landed (pre-wave-35b) source of 00e6aac0 emits the same symbol for the same target; not introduced here, not flagged by vland (vtable); do not apply
+ADD	?GenerateCompetitionEntry@CV_FishingCompetitionScript@NScript@@QAEXXZ	00e7f730	00e7f410	naming wave 35b: emitted by the respelled row
+ADD	?RefreshCompetition@CV_FishingCompetitionScript@NScript@@QAEXXZ	00e7fd50	00e7f410	naming wave 35b: emitted by the respelled row
+ADD	?RemoveFishermen@CBountyHuntActivationChecker@CV_FishingCompetitionScript@NScript@@QAEXXZ	00e7fb80	00e7f410	naming wave 35b: emitted by the respelled row
+ADD	?RespawnFishermen@CBountyHuntActivationChecker@CV_FishingCompetitionScript@NScript@@QAEXXZ	00e7f7f0	00e7f410	naming wave 35b: emitted by the respelled row
+ADD	?SetUpRing@CFisticuffsClubRing@CV_FisticuffsClubScript@NScript@@QAEXXZ	00e83230	00e82950	naming wave 35b: emitted by the respelled row
+ADD	?AddSpawnedFunction@CV_MazeResearchScript@NScript@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	00cb7e50	00ea8130	naming wave 35b: emitted by the respelled row
+ADD	?UnLimboSword@CV_MazeResearchScript@NScript@@QAEXXZ	00ea85e0	00ea8130	naming wave 35b: emitted by the respelled row
+ADD	?WaitFor@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@QAEXPAVCIsThingAlive@3@@Z	00f35b10	00ead800	naming wave 35b: emitted by the respelled row
+ADD	?GetStatueAngle@CV_StatueMasterScript@NScript@@QAEMXZ	00ed43d0	00ed41d0	naming wave 35b: emitted by the respelled row
+ADD	?GetStatuePointingPosition@CV_StatueMasterScript@NScript@@QAEJXZ	00ed4420	00ed41d0	naming wave 35b: emitted by the respelled row
+CONFLICT	??_7CSpawnedFuncAmbush@@6B@	012f3ecc	00edc720	bound to 012f7ebc by 00f08a30; pre-existing: the landed (pre-wave-35b) source of 00edc720 emits the same symbol for the same target; not introduced here, not flagged by vland (vtable); do not apply
+ADD	?SetPredicate@CSignpost@CPersonalScript_alextestScript@NScript@@QAEXABVCIsThingAlive@3@@Z	00f35b10	00eed6b0	naming wave 35b: emitted by the respelled row
+ADD	??1CIsThingAlive@N_00ef7ab0@@QAE@XZ	00ef7ab0	00efb360	naming wave 35b: emitted by the respelled row
+ADD	??_7CIsThingAlive@N_00ef7ab0@@6B@	012c2fe8	00efb360	naming wave 35b: emitted by the respelled row
+ADD	?SetPredicate@CProximityPodium@CProximityPodiumTestScript@NScript@@QAEXAAUCIsThingAlive@N_00ef7ab0@@@Z	00f35b10	00efb360	naming wave 35b: emitted by the respelled row
+ADD	?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z	00cb7e50	00f08a30	naming wave 35b: emitted by the respelled row
+ADD	?WatchForContactDeath@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00f09830	00f09640	naming wave 35b: emitted by the respelled row
+ADD	?WatchForHeroAttackOnContact@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00f09950	00f09640	naming wave 35b: emitted by the respelled row
+KEEP	?Add@CQR_EscortTraderScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z	00cb7e50	00e1f3e0	still named by 25872 unedited landed source(s) (text search for dd), e.g. rebuild/src/compiled/00/b1/global_GetNameGenericEmitter_00b15ad0.cpp; the first binder 00e1f3e0 no longer emits it
+RETIRE	?WatchForBanditDead@CQR_EscortTraderScript@@QAEXUCScriptThingRuntime@@@Z	00e1f520	00e1f3e0	no landed source names atchForBanditDead after wave 35b (was bound by 00e1f3e0)
+KEEP	?Add@CQ_AmbushTradersScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z	00cb7e50	00f08a30	still named by 25872 unedited landed source(s) (text search for dd), e.g. rebuild/src/compiled/00/b1/global_GetNameGenericEmitter_00b15ad0.cpp; the first binder 00f08a30 no longer emits it
+KEEP	?WatchForEnemyDeath@CQ_AmbushTradersScript@@QAEXUCScriptThingRuntime@@@Z	00f08590	00f08a30	still named by 7 unedited landed source(s) (text search for atchForEnemyDeath), e.g. rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForSpyDeath_00f0eda0.cpp; the first binder 00f08a30 no longer emits it
+RETIRE	?WatchForContactDeath@CQ_AmbushTradersScript@@QAEXUCScriptThingRuntime@@@Z	00f09830	00f09640	no landed source names atchForContactDeath after wave 35b (was bound by 00f09640)
+KEEP	?WatchForHeroAttackOnContact@CQ_AmbushTradersScript@@QAEXUCScriptThingRuntime@@@Z	00f09950	00f09640	still named by 1 unedited landed source(s) (text search for atchForHeroAttackOnContact), e.g. rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForHeroAttackOnContact_00f09950.cpp; the first binder 00f09640 no longer emits it
+KEEP	?WatchForHostage1Killed@CQ_BountyHuntScript@@QAEXUCScriptThingRuntime@@@Z	00d16920	00d167c0	still named by 2 unedited landed source(s) (text search for atchForHostage1Killed), e.g. rebuild/src/compiled/00/d1/CSpawnedFunc1NScriptCQBountyHuntScriptCScriptThing_scalardeletingdestructor_00d172e0.cpp; the first binder 00d167c0 no longer emits it
+RETIRE	?GetStatueAngle@CV_StatueMasterScript@@QAEMXZ	00ed43d0	00ed41d0	no landed source names etStatueAngle after wave 35b (was bound by 00ed41d0)
+KEEP	?Add@CQ_BountyHuntScript@@QAEXPAUCSpawnedFuncBounty@@ABVCCharString@@@Z	00cb7e50	00d16dc0	still named by 25872 unedited landed source(s) (text search for dd), e.g. rebuild/src/compiled/00/b1/global_GetNameGenericEmitter_00b15ad0.cpp; the first binder 00d16dc0 no longer emits it
+RETIRE	?WatchForDecapitation@CQ_BountyHuntScript@@QAEXUCScriptThingRuntime@@@Z	00d16fd0	00d16dc0	no landed source names atchForDecapitation after wave 35b (was bound by 00d16dc0)
+KEEP	?WatchForLeaderKilled@CQ_BountyHuntScript@@QAEXUCScriptThingRuntime@@@Z	00d17090	00d16dc0	still named by 6 unedited landed source(s) (text search for atchForLeaderKilled), e.g. rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCChickenSign_Main_00e64df0.cpp; the first binder 00d16dc0 no longer emits it
+KEEP	?GenerateCompetitionEntry@CV_FishingCompetitionScript@@QAEXXZ	00e7f730	00e7f410	still named by 1 unedited landed source(s) (text search for enerateCompetitionEntry), e.g. rebuild/src/compiled/00/e7/NScriptCVFishingCompetitionScript_GenerateCompetitionEntry_00e7f730.cpp; the first binder 00e7f410 no longer emits it
+RETIRE	?RefreshCompetition@CV_FishingCompetitionScript@@QAEXXZ	00e7fd50	00e7f410	no landed source names efreshCompetition after wave 35b (was bound by 00e7f410)
+KEEP	?RemoveFishermen@CBountyHuntActivationChecker@@QAEXXZ	00e7fb80	00e7f410	still named by 1 unedited landed source(s) (text search for emoveFishermen), e.g. rebuild/src/compiled/00/e7/CBountyHuntActivationChecker_RemoveFishermen_00e7fb80.cpp; the first binder 00e7f410 no longer emits it
+KEEP	?RespawnFishermen@CBountyHuntActivationChecker@@QAEXXZ	00e7f7f0	00e7f410	still named by 1 unedited landed source(s) (text search for espawnFishermen), e.g. rebuild/src/compiled/00/e7/CBountyHuntActivationChecker_RespawnFishermen_00e7f7f0.cpp; the first binder 00e7f410 no longer emits it
+KEEP	?WatchForHostage2Killed@CQ_BountyHuntScript@@QAEXUCScriptThingRuntime@@@Z	00d16d00	00d16bb0	still named by 1 unedited landed source(s) (text search for atchForHostage2Killed), e.g. rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForHostage2Killed_00d16d00.cpp; the first binder 00d16bb0 no longer emits it
+KEEP	?WatchForAssassinDead@CV_AssassinAttacksScript@@QAEXUCScriptThingRuntime@@@Z	00e39140	00e38f80	still named by 3 unedited landed source(s) (text search for atchForAssassinDead), e.g. rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForEnemyDeath_00f08590.cpp; the first binder 00e38f80 no longer emits it
+RETIRE	??_7?$CSpawnedFunc@UCV_MazeResearchScript@@@@6B@	012ee458	00ea8130	no landed source names ??_7?$CSpawnedFunc@UCV_MazeResearchScript@@@@6B@ after wave 35b (was bound by 00ea8130)
+RETIRE	?UnLimboSword@CV_MazeResearchScript@@QAEXXZ	00ea85e0	00ea8130	no landed source names nLimboSword after wave 35b (was bound by 00ea8130)
+KEEP	??1CBase@@UAE@XZ	0099a2e0	00cf8a70	still named by 13188 unedited landed source(s) (text search for CBase), e.g. rebuild/src/compiled/00/b1/NParticleEngineCPSCLight_EnterTimelineEnd_00b1ae60.cpp; the first binder 00cf8a70 no longer emits it
+RETIRE	?SetUpRing@CFisticuffsClubRing@@QAEXXZ	00e83230	00e82950	no landed source names etUpRing after wave 35b (was bound by 00e82950)
+RETIRE	??4?$CCountedPointer@UCScriptThingImp@@@@QAEAAV0@ABV0@@Z	00704580	00cf8970	no landed source names ??4?$CCountedPointer@UCScriptThingImp@@@@QAEAAV0@ABV0@@Z after wave 35b (was bound by 00cf8970)
+KEEP	?Add@CQ_BountyHuntScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z	00cb7e50	00d167c0	still named by 25872 unedited landed source(s) (text search for dd), e.g. rebuild/src/compiled/00/b1/global_GetNameGenericEmitter_00b15ad0.cpp; the first binder 00d167c0 no longer emits it
+KEEP	?PlayCutscene@CQS_ScytheInfoScript@@QAEXVCCharString@@_N@Z	00e2a900	00e2a320	still named by 54 unedited landed source(s) (text search for layCutscene), e.g. rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScript_Main_00d55e90.cpp; the first binder 00e2a320 no longer emits it
+RETIRE	?GetTrickster@CV_AmbushScamScript@@QAE?AVCScriptThing@@XZ	00e2ec30	00e2fd30	no landed source names etTrickster after wave 35b (was bound by 00e2fd30)
+KEEP	?Add@CV_AssassinAttacksScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z	00cb7e50	00e38f80	still named by 25872 unedited landed source(s) (text search for dd), e.g. rebuild/src/compiled/00/b1/global_GetNameGenericEmitter_00b15ad0.cpp; the first binder 00e38f80 no longer emits it
+KEEP	?AddSpawnedFunction@CV_MazeResearchScript@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	00cb7e50	00ea8130	still named by 256 unedited landed source(s) (text search for ddSpawnedFunction), e.g. rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScript_RegisterMain_00d61c60.cpp; the first binder 00ea8130 no longer emits it
+RETIRE	??_7?$CSpawnedFunc1@UCQ_MinionClifftopChaseScript@@VCScriptThing@@@@6B@	012d771c	00da9c70	no landed source names ??_7?$CSpawnedFunc1@UCQ_MinionClifftopChaseScript@@VCScriptThing@@@@6B@ after wave 35b (was bound by 00da9c70)
+RETIRE	?GuardChatter@CQ_MinionClifftopChaseScript@@QAEXVCScriptThing@@@Z	00da71e0	00da9c70	no landed source names uardChatter after wave 35b (was bound by 00da9c70)
+KEEP	?SetPredicate@CDarkwoodAssassinSpawn@@QAEXAAVCIsThingAlive@NScript@@@Z	00f35b10	00e02e50	still named by 91 unedited landed source(s) (text search for etPredicate), e.g. rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD2_Main_00d6a360.cpp; the first binder 00e02e50 no longer emits it

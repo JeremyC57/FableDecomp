@@ -1,0 +1,67 @@
+// NScript::CQ_MinionClifftopChaseScript::CMapKeeper::Init() -- map-keeper entity script init: clear DoneIntro, put Me in "FACTION_MAP_KEEPER", reset ImprisonedFX to an empty script thing, make Me undamageable, not respond to hits and not force-pushable, add the "HUD_ORB_QUEST_CORE" minimap marker and the "ARCHAEOLOGIST" narrator
+// Leaf: ?Init@CMapKeeper@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00DA4350, 317 bytes (+ int3 padding). Entity-script slot 2 (Init).
+// Callees: CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, CBaseClass 0x0099A2D0 / ~CBaseClass 0x0099A2E0, operator delete
+//   0x00BFE9BC; CGameScriptInterface slots 350 MiniMapAddMarker (+0x578), 362 EntitySetWillBeUsingNarrator (+0x5a8),
+//   515 EntitySetAsRespondToHit (+0x80c), 516 EntitySetAsDamageable (+0x810), 601 EntitySetInFaction (+0x964),
+//   745 SetIsThingForcePushable (+0xba4).
+// Layout = Ego_r.pdb CMapKeeper (44 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18,
+//   DoneIntro +0x1c, ImprisonedFX +0x20.
+// Shape: `ImprisonedFX = CScriptThing();` -- the default temporary (out-of-line CBaseClass ctor, vtable, zero PImp), the
+//   implicit CScriptThing::operator= forwarding to an INLINE CCountedPointer::operator= that reads both source words into
+//   locals before the info compare (GOTCHAS wave 24n), so the known-zero source folds into ebx stores inside the release
+//   block; then the temporary's inline destructor.
+// Naming wave 35: identity reg 00da34fc "MapKeeper" in 00da34b0; Alloc 00da4250; vtable 012d73e0 slot 2; PDB ?Init@CMapKeeper@CQ_MinionClifftopChaseScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CMapKeeper::Init (wave3/labels_alloc.tsv); PDB ?Init@CMapKeeper@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
+//   Was `?Init@CMapKeeper@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own)); same bytes.
+class CCharString { public:                                     // 4 bytes: the shared string block pointer
+    void* PStringData;
+    CCharString(const char* text, long length = -1);     // 0x0099EBF0
+    ~CCharString();                                      // 0x0099EAE0
+};
+void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
+#include "engine/CCountedPointer.h"
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() { }
+inline CScriptThing::~CScriptThing() {}
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
+namespace NScript {
+class CQ_MinionClifftopChaseScript {    // the PDB owner script; only its nested entity class is modelled here
+public:
+    class CMapKeeper;
+};
+}
+using NScript::CQ_MinionClifftopChaseScript;
+namespace NScript {
+class CQ_MinionClifftopChaseScript::CMapKeeper {
+public:
+        CGameScriptInterface* Game;               // +0x04
+    CScriptThing          Me;                 // +0x08
+    void*                 ParentClass;        // +0x14 CQ_MinionClifftopChaseScript*
+    void*                 PMasterData;        // +0x18
+    bool                  DoneIntro;          // +0x1c
+    CScriptThing          ImprisonedFX;       // +0x20
+private:
+    virtual void Init();                          // PDB ?Init@CMapKeeper@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+};
+}
+
+void NScript::CQ_MinionClifftopChaseScript::CMapKeeper::Init()
+{
+    DoneIntro = false;
+    Game->EntitySetInFaction(Me, "FACTION_MAP_KEEPER");
+    ImprisonedFX = CScriptThing();
+    Game->EntitySetAsDamageable(Me, false);
+    Game->EntitySetAsRespondToHit(Me, false);
+    Game->SetIsThingForcePushable(Me, false);
+    Game->MiniMapAddMarker(Me, "HUD_ORB_QUEST_CORE");
+    Game->EntitySetWillBeUsingNarrator(Me, "ARCHAEOLOGIST");
+}

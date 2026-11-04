@@ -1,0 +1,233 @@
+action	symbol	target	by_row	note
+ADD	??_7CArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@6B@	012c3208	00cdeb40	naming wave 35b: emitted by the respelled row
+ADD	??_7CEndGameBarrier@CPersonalScript_GlobalThingsScript@NScript@@6B@	012c3434	00cdfeb0	naming wave 35b: emitted by the respelled row
+ADD	??_7CHeroBoastsScript@NScript@@6B@	012c3688	00ce1a00	naming wave 35b: emitted by the respelled row
+ADD	??_7CQ_BountyHuntScript@NScript@@6B@	012c9e68	00d12cb0	naming wave 35b: emitted by the respelled row
+CONFLICT	??_7CBase@@6B@	01231710	00d1fa00	bound to 0123a3e0 by 0066e734; pre-existing: the landed (pre-wave-35b) source of 00d1fa00 emits the same symbol for the same target; not introduced here, not flagged by vland (vtable); do not apply
+ADD	?SpawnEnemies@CQ_DragonBossFightScript@NScript@@QAEXXZ	00d25c20	00d25a00	naming wave 35b: emitted by the respelled row
+ADD	??_7CPermanentBarrier@CQ_EndGameFocalSitesScript@NScript@@6B@	012cc48c	00d2d7b0	naming wave 35b: emitted by the respelled row
+ADD	??_7CQ_EndGameBossBattleScript@NScript@@6B@	012cc60c	00d2f6b0	naming wave 35b: emitted by the respelled row
+ADD	??0CQ_HangingTreeEvilScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	00d68f00	00d6ed10	naming wave 35b: emitted by the respelled row
+CONFLICT	??_7CBase@@6B@	01231710	00d85b40	bound to 0123a3e0 by 0066e734; pre-existing: the landed (pre-wave-35b) source of 00d85b40 emits the same symbol for the same target; not introduced here, not flagged by vland (vtable); do not apply
+ADD	??_7CBriarRose@CQ_MinionCampScript@NScript@@6B@	012d6d0c	00d9e930	naming wave 35b: emitted by the respelled row
+CONFLICT	??_7CBase@@6B@	01231710	00d9f6c0	bound to 0123a3e0 by 0066e734; pre-existing: the landed (pre-wave-35b) source of 00d9f6c0 emits the same symbol for the same target; not introduced here, not flagged by vland (vtable); do not apply
+ADD	?PhaseMe@CFadeinSummoner@CQ_MinionCampScript@NScript@@QAEXXZ	00d9fd80	00d9f6c0	naming wave 35b: emitted by the respelled row
+ADD	??_7?$CSpawnedFunc1@VCQ_MinionClifftopChaseScript@NScript@@VCScriptThing@@@@6B@	012d771c	00da6d50	naming wave 35b: emitted by the respelled row
+ADD	?GuardChatter@CQ_MinionClifftopChaseScript@NScript@@QAEXVCScriptThing@@@Z	00da71e0	00da6d50	naming wave 35b: emitted by the respelled row
+CONFLICT	??_7CSpawnedFunc1@@6B@	012d771c	00da7d30	bound to 012e0088 by 00e0e2e0; pre-existing: the landed (pre-wave-35b) source of 00da7d30 emits the same symbol for the same target; not introduced here, not flagged by vland (vtable); do not apply
+ADD	?Add@CQ_MinionClifftopChaseScript@NScript@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	00cb7e50	00da7d30	naming wave 35b: emitted by the respelled row
+CONFLICT	??_7CBase@@6B@	01231710	00dac4f0	bound to 0123a3e0 by 0066e734; pre-existing: the landed (pre-wave-35b) source of 00dac4f0 emits the same symbol for the same target; not introduced here, not flagged by vland (vtable); do not apply
+CONFLICT	??_7CBase@@6B@	01231710	00dac650	bound to 0123a3e0 by 0066e734; pre-existing: the landed (pre-wave-35b) source of 00dac650 emits the same symbol for the same target; not introduced here, not flagged by vland (vtable); do not apply
+CONFLICT	??_7CBase@@6B@	01231710	00db2a70	bound to 0123a3e0 by 0066e734; pre-existing: the landed (pre-wave-35b) source of 00db2a70 emits the same symbol for the same target; not introduced here, not flagged by vland (vtable); do not apply
+ADD	??_7CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@6B@	012db364	00dcde20	naming wave 35b: emitted by the respelled row
+ADD	?DoMultiplierCutscene@CQ_OrchardFarmRaidScript@NScript@@QAEXXZ	00dd1af0	00dd1ac0	naming wave 35b: emitted by the respelled row
+ADD	?MakeRacerComment@CQ_PrisonRaceScript@NScript@@QAE_NABVCScriptThing@@ABVCCharString@@@Z	00ddcf50	00ddc980	naming wave 35b: emitted by the respelled row
+ADD	??_7CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@6B@	012ddf3c	00def6a0	naming wave 35b: emitted by the respelled row
+ADD	??_7CDarkwoodTrader@CQ_TraderEscortScript@NScript@@6B@	012df424	00e01670	naming wave 35b: emitted by the respelled row
+ADD	??_7CQ_WizardBattleScript@NScript@@6B@	012e0f54	00e1a800	naming wave 35b: emitted by the respelled row
+ADD	??_7CQS_ScytheInfoScript@NScript@@6B@	012e22c8	00e299f0	naming wave 35b: emitted by the respelled row
+ADD	??0CV_AmbushScamScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	00e2ab60	00e322c0	naming wave 35b: emitted by the respelled row
+CONFLICT	??_7CBaseObject@@6B@	01231710	00e33720	bound to 0129a7d8 by 0099a430; pre-existing: the landed (pre-wave-35b) source of 00e33720 emits the same symbol for the same target; not introduced here, not flagged by vland (vtable); do not apply
+ADD	??_7CV_BanditCampPathScript@NScript@@6B@	012e4a9c	00e46bd0	naming wave 35b: emitted by the respelled row
+ADD	??0CV_BookCollectingScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	00e54310	00e57a50	naming wave 35b: emitted by the respelled row
+ADD	?GetHenchmanTypeFromString@CV_BodyGuardScript@NScript@@QAEJABVCCharString@@@Z	00e5e240	00e5e0c0	naming wave 35b: emitted by the respelled row
+ADD	??0CV_ChickenKickingScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	00e62830	00e68e60	naming wave 35b: emitted by the respelled row
+ADD	??_7CV_ChapelOfEvilScript@NScript@@6B@	012e8080	00e68f70	naming wave 35b: emitted by the respelled row
+ADD	??_7?$CEntityScriptBinding@VCV_GhostGrannyNecklaceScript@NScript@@@@6B@	012ebaf8	00e8b9c0	naming wave 35b: emitted by the respelled row
+ADD	?Alloc@CGhostGrannyDaughterInLaw@CV_GhostGrannyNecklaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e8be10	00e8b9c0	naming wave 35b: emitted by the respelled row
+ADD	?Alloc@CGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e8bd30	00e8b9c0	naming wave 35b: emitted by the respelled row
+ADD	?Alloc@CGhostGrannySon@CV_GhostGrannyNecklaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e8ca60	00e8b9c0	naming wave 35b: emitted by the respelled row
+ADD	?CreateBandit@CV_GhostGrannyNecklaceScript@NScript@@QAEXXZ	00e8cb40	00e8b9c0	naming wave 35b: emitted by the respelled row
+ADD	?GhostGrannyHints@CV_GhostGrannyNecklaceScript@NScript@@QAEXXZ	00e8d2d0	00e8b9c0	naming wave 35b: emitted by the respelled row
+ADD	??_7CV_GuildMasterScript@NScript@@6B@	012ec138	00e90750	naming wave 35b: emitted by the respelled row
+ADD	??_7?$CEntityScriptBinding@VCV_MurderTwistScript@NScript@@@@6B@	012ee73c	00ea8830	naming wave 35b: emitted by the respelled row
+ADD	?Alloc@CMurderTwistBrother@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eaaf10	00ea8830	naming wave 35b: emitted by the respelled row
+ADD	?Alloc@CMurderTwistBrotherFriend@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eac4e0	00ea8830	naming wave 35b: emitted by the respelled row
+ADD	?Alloc@CMurderTwistBrotherOlder@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eaba10	00ea8830	naming wave 35b: emitted by the respelled row
+ADD	?Alloc@CMurderTwistBrotherOlderFriend@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eacde0	00ea8830	naming wave 35b: emitted by the respelled row
+ADD	?Alloc@CMurderTwistBrotherYounger@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eaae40	00ea8830	naming wave 35b: emitted by the respelled row
+ADD	?Alloc@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ead730	00ea8830	naming wave 35b: emitted by the respelled row
+ADD	?Alloc@CMurderTwistLeader@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ea8e50	00ea8830	naming wave 35b: emitted by the respelled row
+ADD	?GemsFoundProcess@CV_MurderTwistScript@NScript@@QAEXXZ	00ead9f0	00ea8830	naming wave 35b: emitted by the respelled row
+ADD	?MagicRuneProcess@CV_MurderTwistScript@NScript@@QAEXXZ	00ea8c20	00ea8830	naming wave 35b: emitted by the respelled row
+ADD	??_7CV_MurderTwistFinalScript@NScript@@6B@	012ef978	00eae910	naming wave 35b: emitted by the respelled row
+ADD	??_7CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@6B@	012efa0c	00eaed90	naming wave 35b: emitted by the respelled row
+ADD	??_7CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@6B@	012efee8	00eb2000	naming wave 35b: emitted by the respelled row
+ADD	??0CV_MurderTwistFinalScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	00eae910	00eb6a60	naming wave 35b: emitted by the respelled row
+ADD	??_7CV_SickChildScript@NScript@@6B@	012f17dc	00ec53c0	naming wave 35b: emitted by the respelled row
+ADD	?GetStatuePointingPosition@CV_StatueMasterScript@NScript@@QAEJXZ	00ed4420	00ed45a0	naming wave 35b: emitted by the respelled row
+ADD	??_7CTH_SnowTroll@CV_TravellingHeroesScript@NScript@@6B@	012f42b0	00ee02c0	naming wave 35b: emitted by the respelled row
+ADD	??_7CGlobal_WatchForHeroDeathScript@NScript@@6B@	012f5470	00ee8e80	naming wave 35b: emitted by the respelled row
+ADD	??_7CGlobal_DebugCycleThroughSpeechScript@NScript@@6B@	012f54b4	00ee90f0	naming wave 35b: emitted by the respelled row
+ADD	??_7CExpression_FollowScript@NScript@@6B@	012f55b8	00ee9f50	naming wave 35b: emitted by the respelled row
+ADD	??_7CExpression_WaitScript@NScript@@6B@	012f55f8	00eea430	naming wave 35b: emitted by the respelled row
+ADD	??_7CExpression_DigScript@NScript@@6B@	012f5628	00eea790	naming wave 35b: emitted by the respelled row
+ADD	??_7CExpression_PicklockScript@NScript@@6B@	012f56d0	00eeb780	naming wave 35b: emitted by the respelled row
+ADD	??_7CExpression_StealScript@NScript@@6B@	012f5700	00eebdc0	naming wave 35b: emitted by the respelled row
+ADD	??_7CGlobal_GiveHeroItemsFromRewardChestScript@NScript@@6B@	012f5730	00eec3e0	naming wave 35b: emitted by the respelled row
+ADD	??_7CGlobal_OpenChestScript@NScript@@6B@	012f5760	00eec7a0	naming wave 35b: emitted by the respelled row
+ADD	??1CScriptGameResourceObjectScriptedThingBase@@QAE@XZ	007e74d0	00eec890	naming wave 35b: emitted by the respelled row
+ADD	??_7?$CSpawnedFunc0@VCTestTheInventoryScript@NScript@@@@6B@	012f59ac	00eeea90	naming wave 35b: emitted by the respelled row
+ADD	?TestForLampOn@CTestTheInventoryScript@NScript@@QAEXXZ	00eeec00	00eeea90	naming wave 35b: emitted by the respelled row
+RETIRE	@Q_Sunny_cb7940@4	00cb7940	00cdd360	no landed source names @Q_Sunny_cb7940@4 after wave 35b (was bound by 00cdd360)
+RETIRE	??_7CVtable_012c2f64@@6B@	012c2f64	00cdd550	no landed source names _7CVtable_012c2f64 after wave 35b (was bound by 00cdd550)
+RETIRE	??_7CVtable_012c2fb8@@6B@	012c2fb8	00cddb60	no landed source names _7CVtable_012c2fb8 after wave 35b (was bound by 00cddb60)
+RETIRE	??_7CVtable_012c3000@@6B@	012c3000	00cde2f0	no landed source names _7CVtable_012c3000 after wave 35b (was bound by 00cde2f0)
+RETIRE	??_7CEndGameBarrier@@6B@	012c3434	00cdfeb0	no landed source names _7CEndGameBarrier after wave 35b (was bound by 00cdfeb0)
+RETIRE	??_7CVtable_012c30cc@@6B@	012c30cc	00ce19a0	no landed source names _7CVtable_012c30cc after wave 35b (was bound by 00ce19a0)
+RETIRE	??_7CVtable_012C3688@@6B@	012c3688	00ce1a00	no landed source names _7CVtable_012C3688 after wave 35b (was bound by 00ce1a00)
+RETIRE	??_7CVtable_012c3688@@6B@	012c3688	00ce6c40	no landed source names _7CVtable_012c3688 after wave 35b (was bound by 00ce6c40)
+RETIRE	??_7CVtable_12c3fa4@@6B@	012c3fa4	00ce6cb0	no landed source names _7CVtable_12c3fa4 after wave 35b (was bound by 00ce6cb0)
+RETIRE	??_7CVtable_012c5de0@@6B@	012c5de0	00cf0640	no landed source names _7CVtable_012c5de0 after wave 35b (was bound by 00cf0640)
+RETIRE	??_7CVtable_012c60a0@@6B@	012c60a0	00cf8860	no landed source names _7CVtable_012c60a0 after wave 35b (was bound by 00cf8860)
+RETIRE	??_7CVtable_012c8300@@6B@	012c8300	00d03580	no landed source names _7CVtable_012c8300 after wave 35b (was bound by 00d03580)
+RETIRE	??_7CVtable_012c88e0@@6B@	012c88e0	00d12920	no landed source names _7CVtable_012c88e0 after wave 35b (was bound by 00d12920)
+RETIRE	??_7CVtable_012c9e14@@6B@	012c9e14	00d12c50	no landed source names _7CVtable_012c9e14 after wave 35b (was bound by 00d12c50)
+RETIRE	??_7CVtable_012C9E68@@6B@	012c9e68	00d12cb0	no landed source names _7CVtable_012C9E68 after wave 35b (was bound by 00d12cb0)
+RETIRE	??_7CVtable_012cab18@@6B@	012cab18	00d23c80	no landed source names _7CVtable_012cab18 after wave 35b (was bound by 00d23c80)
+RETIRE	??_7CVtable_012cb52c@@6B@	012cb52c	00d253b0	no landed source names _7CVtable_012cb52c after wave 35b (was bound by 00d253b0)
+RETIRE	??_7CVtable_012cba58@@6B@	012cba58	00d2a7c0	no landed source names _7CVtable_012cba58 after wave 35b (was bound by 00d2a7c0)
+KEEP	??0CScriptThing_Calls@@QAE@ABU0@@Z	004abe90	00d2d7b0	still named by 1 unedited landed source(s) (text search for CScriptThing_Calls), e.g. rebuild/src/compiled/00/ee/CGlobalWatchForHeroDeathScript_WatchForHeroDeath_00ee8fe0.cpp; the first binder 00d2d7b0 no longer emits it
+RETIRE	??_7CPermanentBarrier@@6B@	012cc48c	00d2d7b0	no landed source names _7CPermanentBarrier after wave 35b (was bound by 00d2d7b0)
+RETIRE	??_7CVtable_012cc60c@@6B@	012cc60c	00d2f6b0	no landed source names _7CVtable_012cc60c after wave 35b (was bound by 00d2f6b0)
+RETIRE	??_7CVtable_012cf670@@6B@	012cf670	00d513c0	no landed source names _7CVtable_012cf670 after wave 35b (was bound by 00d513c0)
+RETIRE	??_7CVtable_012cf788@@6B@	012cf788	00d55d10	no landed source names _7CVtable_012cf788 after wave 35b (was bound by 00d55d10)
+RETIRE	??_7CVtable_012d0274@@6B@	012d0274	00d5a9f0	no landed source names _7CVtable_012d0274 after wave 35b (was bound by 00d5a9f0)
+RETIRE	??_7CVtable_012d09a0@@6B@	012d09a0	00d5dbf0	no landed source names _7CVtable_012d09a0 after wave 35b (was bound by 00d5dbf0)
+RETIRE	??_7CVtable_012d15fc@@6B@	012d15fc	00d664d0	no landed source names _7CVtable_012d15fc after wave 35b (was bound by 00d664d0)
+RETIRE	??_7CVtable_012d1d1c@@6B@	012d1d1c	00d67740	no landed source names _7CVtable_012d1d1c after wave 35b (was bound by 00d67740)
+RETIRE	??_7CVtable_012d1e08@@6B@	012d1e08	00d68ea0	no landed source names _7CVtable_012d1e08 after wave 35b (was bound by 00d68ea0)
+KEEP	??0CQ_HangingTreeEvilScript@@QAE@PAX0@Z	00d68f00	00d6ed10	still named by 72 unedited landed source(s) (text search for CQ_HangingTreeEvilScript), e.g. rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEExecutioner_scalardeletingdestructor_00d6a0b0.cpp; the first binder 00d6ed10 no longer emits it
+RETIRE	??_7CVtable_012d2f48@@6B@	012d2f48	00d7ac50	no landed source names _7CVtable_012d2f48 after wave 35b (was bound by 00d7ac50)
+RETIRE	??_7CVtable_012D3994@@6B@	012d3994	00d7c700	no landed source names _7CVtable_012D3994 after wave 35b (was bound by 00d7c700)
+RETIRE	??_7CVtable_012d5018@@6B@	012d5018	00d8d5a0	no landed source names _7CVtable_012d5018 after wave 35b (was bound by 00d8d5a0)
+RETIRE	??_7CBriarRose@@6B@	012d6d0c	00d9e930	no landed source names _7CBriarRose after wave 35b (was bound by 00d9e930)
+KEEP	?g_pScriptTimerManager@@3PAUCTimerManager@@A	0143e8f8	00d9e930	still named by 1 unedited landed source(s) (text search for g_pScriptTimerManager), e.g. rebuild/src/compiled/00/da/CBriarRose_DoSpeech_00da2610.cpp; the first binder 00d9e930 no longer emits it
+RETIRE	??_7CScript_012d9e18@@6B@	012d9e18	00dbf190	no landed source names _7CScript_012d9e18 after wave 35b (was bound by 00dbf190)
+KEEP	?DoMultiplierCutscene@CQ_OrchardFarmRaidScript@@QAEXXZ	00dd1af0	00dd1ac0	still named by 2 unedited landed source(s) (text search for oMultiplierCutscene), e.g. rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_TortureVictim_00e6da80.cpp; the first binder 00dd1ac0 no longer emits it
+RETIRE	??_7CVtable_012db7b0@@6B@	012db7b0	00dd2300	no landed source names _7CVtable_012db7b0 after wave 35b (was bound by 00dd2300)
+RETIRE	??_7CVtable_012db810@@6B@	012db810	00dd2680	no landed source names _7CVtable_012db810 after wave 35b (was bound by 00dd2680)
+RETIRE	??_7CVtable_012dc88c@@6B@	012dc88c	00dddc30	no landed source names _7CVtable_012dc88c after wave 35b (was bound by 00dddc30)
+RETIRE	??_7CVtable_012ddba8@@6B@	012ddba8	00dec790	no landed source names _7CVtable_012ddba8 after wave 35b (was bound by 00dec790)
+RETIRE	??_7CV_SwordInTheStoneScript@@6B@	012de6a4	00df5c90	no landed source names _7CV_SwordInTheStoneScript after wave 35b (was bound by 00df5c90)
+RETIRE	??_7CVtable_012DF16C@@6B@	012df16c	00e00690	no landed source names _7CVtable_012DF16C after wave 35b (was bound by 00e00690)
+RETIRE	??_7CDarkwoodTrader@@6B@	012df424	00e01670	no landed source names _7CDarkwoodTrader after wave 35b (was bound by 00e01670)
+RETIRE	??_7CVtable_12dfd3c@@6B@	012dfd3c	00e0afe0	no landed source names _7CVtable_12dfd3c after wave 35b (was bound by 00e0afe0)
+RETIRE	??_7CQ_WizardBattleScript@@6B@	012e0f54	00e1a800	no landed source names _7CQ_WizardBattleScript after wave 35b (was bound by 00e1a800)
+RETIRE	??_7CVtable_012e1d48@@6B@	012e1d48	00e25970	no landed source names _7CVtable_012e1d48 after wave 35b (was bound by 00e25970)
+RETIRE	??_7CVtable_012e1dac@@6B@	012e1dac	00e26780	no landed source names _7CVtable_012e1dac after wave 35b (was bound by 00e26780)
+RETIRE	??_7CVtable_012e1f08@@6B@	012e1f08	00e277e0	no landed source names _7CVtable_012e1f08 after wave 35b (was bound by 00e277e0)
+RETIRE	??_7CVtable_012e2018@@6B@	012e2018	00e28ca0	no landed source names _7CVtable_012e2018 after wave 35b (was bound by 00e28ca0)
+RETIRE	??_7CVtable_012e2194@@6B@	012e2194	00e29990	no landed source names _7CVtable_012e2194 after wave 35b (was bound by 00e29990)
+KEEP	??0CRecordSet_00cbd510@@QAE@XZ	00cb8110	00e299f0	still named by 4 unedited landed source(s) (text search for CRecordSet_00cbd510), e.g. rebuild/src/compiled/00/ed/CThingSwitch_vectordeletingdestructor_00ed0e30.cpp; the first binder 00e299f0 no longer emits it
+RETIRE	??_7CScriptRecordSet_00e299f0@@6B@	012e22c8	00e299f0	no landed source names _7CScriptRecordSet_00e299f0 after wave 35b (was bound by 00e299f0)
+RETIRE	??0CClass_00e2ab60@@QAE@PAX0@Z	00e2ab60	00e322c0	no landed source names CClass_00e2ab60 after wave 35b (was bound by 00e322c0)
+RETIRE	??_7CV_BanditCampPathScript@@6B@	012e4a9c	00e46bd0	no landed source names _7CV_BanditCampPathScript after wave 35b (was bound by 00e46bd0)
+RETIRE	??_7CVtable_012e4b7c@@6B@	012e4b7c	00e4f550	no landed source names _7CVtable_012e4b7c after wave 35b (was bound by 00e4f550)
+RETIRE	??0CClass_00e54310@@QAE@PAX0@Z	00e54310	00e57a50	no landed source names CClass_00e54310 after wave 35b (was bound by 00e57a50)
+RETIRE	??0CClass_00e62830@@QAE@PAX0@Z	00e62830	00e68e60	no landed source names CClass_00e62830 after wave 35b (was bound by 00e68e60)
+RETIRE	??_7CVtable_012E8080@@6B@	012e8080	00e68f70	no landed source names _7CVtable_012E8080 after wave 35b (was bound by 00e68f70)
+RETIRE	??_7CVtable_012e8080@@6B@	012e8080	00e6e230	no landed source names _7CVtable_012e8080 after wave 35b (was bound by 00e6e230)
+RETIRE	??_7CVtable_012e8b10@@6B@	012e8b10	00e75590	no landed source names _7CVtable_012e8b10 after wave 35b (was bound by 00e75590)
+RETIRE	??_7CVtable_012ea024@@6B@	012ea024	00e7e0b0	no landed source names _7CVtable_012ea024 after wave 35b (was bound by 00e7e0b0)
+RETIRE	??_7CVtable_012eba3c@@6B@	012eba3c	00e906f0	no landed source names _7CVtable_012eba3c after wave 35b (was bound by 00e906f0)
+RETIRE	??_7CVtable_012EC138@@6B@	012ec138	00e90750	no landed source names _7CVtable_012EC138 after wave 35b (was bound by 00e90750)
+RETIRE	??_7CVtable_012ec138@@6B@	012ec138	00e92900	no landed source names _7CVtable_012ec138 after wave 35b (was bound by 00e92900)
+RETIRE	??_7CVtable_012ec9a4@@6B@	012ec9a4	00e93cf0	no landed source names _7CVtable_012ec9a4 after wave 35b (was bound by 00e93cf0)
+RETIRE	??_7CVtable_012ecb94@@6B@	012ecb94	00e96dd0	no landed source names _7CVtable_012ecb94 after wave 35b (was bound by 00e96dd0)
+RETIRE	??_7CVtable_012ece7c@@6B@	012ece7c	00e98640	no landed source names _7CVtable_012ece7c after wave 35b (was bound by 00e98640)
+RETIRE	??_7CVtable_012edce8@@6B@	012edce8	00ea7680	no landed source names _7CVtable_012edce8 after wave 35b (was bound by 00ea7680)
+RETIRE	??_7CV_MurderTwistFinalScript@@6B@	012ef978	00eae910	no landed source names _7CV_MurderTwistFinalScript after wave 35b (was bound by 00eae910)
+RETIRE	??_7CMurderTwistSheriff@@6B@	012efa0c	00eaed90	no landed source names _7CMurderTwistSheriff after wave 35b (was bound by 00eaed90)
+RETIRE	??_7CVtable_012efee8@@6B@	012efee8	00eb2000	no landed source names _7CVtable_012efee8 after wave 35b (was bound by 00eb2000)
+RETIRE	??0CClass_00eae910@@QAE@PAX0@Z	00eae910	00eb6a60	no landed source names CClass_00eae910 after wave 35b (was bound by 00eb6a60)
+RETIRE	??_7CVtable_012f0c84@@6B@	012f0c84	00ebee30	no landed source names _7CVtable_012f0c84 after wave 35b (was bound by 00ebee30)
+RETIRE	??_7CVtable_012f0f38@@6B@	012f0f38	00ec11b0	no landed source names _7CVtable_012f0f38 after wave 35b (was bound by 00ec11b0)
+RETIRE	??_7CVtable_012f1230@@6B@	012f1230	00ec1780	no landed source names _7CVtable_012f1230 after wave 35b (was bound by 00ec1780)
+RETIRE	??_7CVtable_012f12d8@@6B@	012f12d8	00ec3bc0	no landed source names _7CVtable_012f12d8 after wave 35b (was bound by 00ec3bc0)
+RETIRE	??_7CVtable_012f15c4@@6B@	012f15c4	00ec5360	no landed source names _7CVtable_012f15c4 after wave 35b (was bound by 00ec5360)
+RETIRE	??_7CVtable_012f17dc@@6B@	012f17dc	00ec53c0	no landed source names _7CVtable_012f17dc after wave 35b (was bound by 00ec53c0)
+KEEP	?GetStatuePointingPosition@CV_StatueMasterScript@@QAEJXZ	00ed4420	00ed4830	still named by 2 unedited landed source(s) (text search for etStatuePointingPosition), e.g. rebuild/src/compiled/00/ed/NScriptCVStatueMasterScript_GetTimeOfDayFraction_00ed43d0.cpp; the first binder 00ed4830 no longer emits it
+RETIRE	??_7CVtable_012f2e6c@@6B@	012f2e6c	00ed4a40	no landed source names _7CVtable_012f2e6c after wave 35b (was bound by 00ed4a40)
+RETIRE	??_7CVtable_012f3c68@@6B@	012f3c68	00edeb40	no landed source names _7CVtable_012f3c68 after wave 35b (was bound by 00edeb40)
+RETIRE	??_7CTH_SnowTroll@@6B@	012f42b0	00ee02c0	no landed source names _7CTH_SnowTroll after wave 35b (was bound by 00ee02c0)
+RETIRE	??_7CVtable_012f51f4@@6B@	012f51f4	00ee80a0	no landed source names _7CVtable_012f51f4 after wave 35b (was bound by 00ee80a0)
+RETIRE	??_7CVtable_012f5470@@6B@	012f5470	00ee8e80	no landed source names _7CVtable_012f5470 after wave 35b (was bound by 00ee8e80)
+RETIRE	??_7CVtable_012f54b4@@6B@	012f54b4	00ee90f0	no landed source names _7CVtable_012f54b4 after wave 35b (was bound by 00ee90f0)
+RETIRE	??_7CVtable_012f54e4@@6B@	012f54e4	00ee94a0	no landed source names _7CVtable_012f54e4 after wave 35b (was bound by 00ee94a0)
+RETIRE	??_7CVtable_012f55b8@@6B@	012f55b8	00ee9f50	no landed source names _7CVtable_012f55b8 after wave 35b (was bound by 00ee9f50)
+RETIRE	??_7CVtable_012f55f8@@6B@	012f55f8	00eea430	no landed source names _7CVtable_012f55f8 after wave 35b (was bound by 00eea430)
+RETIRE	??_7CVtable_012f5628@@6B@	012f5628	00eea790	no landed source names _7CVtable_012f5628 after wave 35b (was bound by 00eea790)
+RETIRE	??_7CVtable_012f56a0@@6B@	012f56a0	00eeaec0	no landed source names _7CVtable_012f56a0 after wave 35b (was bound by 00eeaec0)
+RETIRE	??_7CVtable_012f56d0@@6B@	012f56d0	00eeb780	no landed source names _7CVtable_012f56d0 after wave 35b (was bound by 00eeb780)
+RETIRE	??_7CVtable_012f5700@@6B@	012f5700	00eebdc0	no landed source names _7CVtable_012f5700 after wave 35b (was bound by 00eebdc0)
+RETIRE	??_7CVtable_012f5730@@6B@	012f5730	00eec3e0	no landed source names _7CVtable_012f5730 after wave 35b (was bound by 00eec3e0)
+RETIRE	??_7CVtable_012f5760@@6B@	012f5760	00eec7a0	no landed source names _7CVtable_012f5760 after wave 35b (was bound by 00eec7a0)
+RETIRE	??_7CVtable_012f57a0@@6B@	012f57a0	00eecef0	no landed source names _7CVtable_012f57a0 after wave 35b (was bound by 00eecef0)
+RETIRE	??_7CVtable_012f57e4@@6B@	012f57e4	00eed220	no landed source names _7CVtable_012f57e4 after wave 35b (was bound by 00eed220)
+RETIRE	??_7CVtable_012f5814@@6B@	012f5814	00eee6d0	no landed source names _7CVtable_012f5814 after wave 35b (was bound by 00eee6d0)
+RETIRE	??_7CVtable_012f5954@@6B@	012f5954	00eee940	no landed source names _7CVtable_012f5954 after wave 35b (was bound by 00eee940)
+RETIRE	??_7CVtable_012f5998@@6B@	012f5998	00eeee40	no landed source names _7CVtable_012f5998 after wave 35b (was bound by 00eeee40)
+RETIRE	??_7CVtable_012f5a78@@6B@	012f5a78	00eef540	no landed source names _7CVtable_012f5a78 after wave 35b (was bound by 00eef540)
+RETIRE	??_7CVtable_012f5bf4@@6B@	012f5bf4	00eef6d0	no landed source names _7CVtable_012f5bf4 after wave 35b (was bound by 00eef6d0)
+RETIRE	??_7CVtable_012f5c40@@6B@	012f5c40	00eef860	no landed source names _7CVtable_012f5c40 after wave 35b (was bound by 00eef860)
+RETIRE	??_7CVtable_012f5c8c@@6B@	012f5c8c	00eef9c0	no landed source names _7CVtable_012f5c8c after wave 35b (was bound by 00eef9c0)
+RETIRE	??_7CVtable_012f5cbc@@6B@	012f5cbc	00eefb20	no landed source names _7CVtable_012f5cbc after wave 35b (was bound by 00eefb20)
+RETIRE	??_7CVtable_012f5cec@@6B@	012f5cec	00eefc80	no landed source names _7CVtable_012f5cec after wave 35b (was bound by 00eefc80)
+RETIRE	??_7CVtable_012f5d1c@@6B@	012f5d1c	00eefde0	no landed source names _7CVtable_012f5d1c after wave 35b (was bound by 00eefde0)
+RETIRE	??_7CVtable_012f5d4c@@6B@	012f5d4c	00eeff40	no landed source names _7CVtable_012f5d4c after wave 35b (was bound by 00eeff40)
+RETIRE	??_7CVtable_012f5d7c@@6B@	012f5d7c	00ef9130	no landed source names _7CVtable_012f5d7c after wave 35b (was bound by 00ef9130)
+RETIRE	??_7CVtable_012f68d0@@6B@	012f68d0	00ef9ee0	no landed source names _7CVtable_012f68d0 after wave 35b (was bound by 00ef9ee0)
+RETIRE	??_7CVtable_012f696c@@6B@	012f696c	00efa3c0	no landed source names _7CVtable_012f696c after wave 35b (was bound by 00efa3c0)
+RETIRE	??_7CVtable_012f69e8@@6B@	012f69e8	00efaf30	no landed source names _7CVtable_012f69e8 after wave 35b (was bound by 00efaf30)
+RETIRE	??_7CVtable_012f6aa8@@6B@	012f6aa8	00efb0b0	no landed source names _7CVtable_012f6aa8 after wave 35b (was bound by 00efb0b0)
+RETIRE	??_7CVtable_012f6ad8@@6B@	012f6ad8	00efb610	no landed source names _7CVtable_012f6ad8 after wave 35b (was bound by 00efb610)
+RETIRE	??_7CVtable_012f6b58@@6B@	012f6b58	00efbb70	no landed source names _7CVtable_012f6b58 after wave 35b (was bound by 00efbb70)
+RETIRE	??_7CVtable_012f6bd4@@6B@	012f6bd4	00efc130	no landed source names _7CVtable_012f6bd4 after wave 35b (was bound by 00efc130)
+RETIRE	??_7CVtable_012f6c58@@6B@	012f6c58	00efc460	no landed source names _7CVtable_012f6c58 after wave 35b (was bound by 00efc460)
+RETIRE	??_7CVtable_012f6ca8@@6B@	012f6ca8	00efc8d0	no landed source names _7CVtable_012f6ca8 after wave 35b (was bound by 00efc8d0)
+RETIRE	??_7CVtable_012f6d00@@6B@	012f6d00	00efe380	no landed source names _7CVtable_012f6d00 after wave 35b (was bound by 00efe380)
+RETIRE	??_7CVtable_012f6ec0@@6B@	012f6ec0	00eff000	no landed source names _7CVtable_012f6ec0 after wave 35b (was bound by 00eff000)
+RETIRE	??_7CVtable_012f6f90@@6B@	012f6f90	00eff770	no landed source names _7CVtable_012f6f90 after wave 35b (was bound by 00eff770)
+RETIRE	??_7CVtable_012f7054@@6B@	012f7054	00effcd0	no landed source names _7CVtable_012f7054 after wave 35b (was bound by 00effcd0)
+RETIRE	??_7CVtable_012f70a0@@6B@	012f70a0	00f01330	no landed source names _7CVtable_012f70a0 after wave 35b (was bound by 00f01330)
+RETIRE	??_7CVtable_012f72d0@@6B@	012f72d0	00f01760	no landed source names _7CVtable_012f72d0 after wave 35b (was bound by 00f01760)
+RETIRE	??_7CVtable_012f7300@@6B@	012f7300	00f02460	no landed source names _7CVtable_012f7300 after wave 35b (was bound by 00f02460)
+RETIRE	?OnRoseQuestCutscene_00ee2db0@CV_TravellingHeroesScript@@QAEXVCCharString@@@Z	00ee2db0	00ee3ee0	no landed source names nRoseQuestCutscene_00ee2db0 after wave 35b (was bound by 00ee3ee0)
+RETIRE	??_7CVtable_012ddf3c@@6B@	012ddf3c	00def6a0	no landed source names _7CVtable_012ddf3c after wave 35b (was bound by 00def6a0)
+KEEP	?SpawnEnemies@CQ_DragonBossFightScript@@QAEXXZ	00d25c20	00d25a00	still named by 2 unedited landed source(s) (text search for pawnEnemies), e.g. rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_SpawnEnemies_00d736b0.cpp; the first binder 00d25a00 no longer emits it
+KEEP	?g_bScriptAnimationFlag@@3_NA	01375748	00d7f460	still named by 4 unedited landed source(s) (text search for g_bScriptAnimationFlag), e.g. rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Main_00e02950.cpp; the first binder 00d7f460 no longer emits it
+KEEP	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	007e7450	00e0f4e0	still named by 58 unedited landed source(s) (text search for sPerformingScriptTask), e.g. rebuild/src/compiled/00/d5/NScriptCQGuildTrainingDepartureScriptCTheRealGuildmaster_Main_00d50c60.cpp; the first binder 00e0f4e0 no longer emits it
+KEEP	?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	007e7360	00e11dc0	still named by 17 unedited landed source(s) (text search for learCommands), e.g. rebuild/src/compiled/00/d5/NScriptCQGuildTrainingDepartureScriptCTheRealGuildmaster_Main_00d50c60.cpp; the first binder 00e11dc0 no longer emits it
+RETIRE	??_7?$CEntityScriptBinding@UCV_GhostGrannyNecklaceScript@@@@6B@	012ebaf8	00e8b9c0	no landed source names ??_7?$CEntityScriptBinding@UCV_GhostGrannyNecklaceScript@@@@6B@ after wave 35b (was bound by 00e8b9c0)
+RETIRE	??_7?$CSpawnedFunc@UCV_GhostGrannyNecklaceScript@@@@6B@	012eba50	00e8b9c0	no landed source names ??_7?$CSpawnedFunc@UCV_GhostGrannyNecklaceScript@@@@6B@ after wave 35b (was bound by 00e8b9c0)
+KEEP	?CreateBandit@CV_GhostGrannyNecklaceScript@@QAEXXZ	00e8cb40	00e8b9c0	still named by 2 unedited landed source(s) (text search for reateBandit), e.g. rebuild/src/compiled/00/e8/CSpawnedFunc1NScriptCVGhostGrannyNecklaceScriptCScriptThing_scalardeletingdestructor_00e8d240.cpp; the first binder 00e8b9c0 no longer emits it
+RETIRE	?GhostGrannyHints@CV_GhostGrannyNecklaceScript@@QAEXXZ	00e8d2d0	00e8b9c0	no landed source names hostGrannyHints after wave 35b (was bound by 00e8b9c0)
+RETIRE	??_7?$CEntityScriptBinding@UCV_MurderTwistScript@@@@6B@	012ee73c	00ea8830	no landed source names ??_7?$CEntityScriptBinding@UCV_MurderTwistScript@@@@6B@ after wave 35b (was bound by 00ea8830)
+RETIRE	??_7?$CSpawnedFunc@UCV_MurderTwistScript@@@@6B@	012ee648	00ea8830	no landed source names ??_7?$CSpawnedFunc@UCV_MurderTwistScript@@@@6B@ after wave 35b (was bound by 00ea8830)
+KEEP	?GemsFoundProcess@CV_MurderTwistScript@@QAEXXZ	00ead9f0	00ea8830	still named by 1 unedited landed source(s) (text search for emsFoundProcess), e.g. rebuild/src/compiled/00/ea/NScriptCVMurderTwistScript_GemsFoundProcess_00ead9f0.cpp; the first binder 00ea8830 no longer emits it
+KEEP	?MagicRuneProcess@CV_MurderTwistScript@@QAEXXZ	00ea8c20	00ea8830	still named by 2 unedited landed source(s) (text search for agicRuneProcess), e.g. rebuild/src/compiled/00/ea/NScriptCVMurderTwistScript_MagicRuneProcess_00ea8c20.cpp; the first binder 00ea8830 no longer emits it
+RETIRE	?g_PlayAnimationDefaultFlag@@3_NA	01375748	00d08790	no landed source names g_PlayAnimationDefaultFlag after wave 35b (was bound by 00d08790)
+KEEP	?PhaseMe@CFadeinSummoner@@QAEXXZ	00d9fd80	00d9f6c0	still named by 1 unedited landed source(s) (text search for haseMe), e.g. rebuild/src/compiled/00/d9/CFadeinSummoner_PhaseMe_00d9fd80.cpp; the first binder 00d9f6c0 no longer emits it
+RETIRE	??_7CArcheryCompetitionSignpost@NScript@@6B@	012c3208	00cdeb40	no landed source names _7CArcheryCompetitionSignpost after wave 35b (was bound by 00cdeb40)
+RETIRE	??_7CGuardTeamMember@CQ_OrchardFarmRaidScript@NScript@@6B@	012db364	00dcde20	no landed source names _7CGuardTeamMember after wave 35b (was bound by 00dcde20)
+KEEP	??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z	004abe90	00d2c530	still named by 3 unedited landed source(s) (text search for ScriptThingCopy), e.g. rebuild/src/compiled/00/cd/CEndGameBarrier_OnPredicateFail_00cdff50.cpp; the first binder 00d2c530 no longer emits it
+KEEP	?PlayCutscene@CQ_FireHeartScript@@QAEXVCCharString@@@Z	00d39330	00d3af50	still named by 54 unedited landed source(s) (text search for layCutscene), e.g. rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScript_Main_00d55e90.cpp; the first binder 00d3af50 no longer emits it
+KEEP	?SpawnEnemies@CQ_HangingTreeGoodScript@@QAEXABVC3DVector@@VCCharString@@J@Z	00d736b0	00d73610	still named by 2 unedited landed source(s) (text search for pawnEnemies), e.g. rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_SpawnEnemies_00d736b0.cpp; the first binder 00d73610 no longer emits it
+KEEP	?Add@CQ_MinionClifftopChaseScript@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	00cb7e50	00da7d30	still named by 25872 unedited landed source(s) (text search for dd), e.g. rebuild/src/compiled/00/b1/global_GetNameGenericEmitter_00b15ad0.cpp; the first binder 00da7d30 no longer emits it
+KEEP	?GetSquaredDistanceBetweenThings@@YIMABVCScriptThing@@0@Z	00cbe583	00ddc6c0	still named by 5 unedited landed source(s) (text search for etSquaredDistanceBetweenThings), e.g. rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_IsFeelingThreatened_00eb4710.cpp; the first binder 00ddc6c0 no longer emits it
+KEEP	?MakePrisonerComment@CQ_PrisonRaceScript@@QAE_NABVCScriptThing@@ABVCCharString@@@Z	00ddcf50	00ddc980	still named by 1 unedited landed source(s) (text search for akePrisonerComment), e.g. rebuild/src/compiled/00/dd/CQPrisonEscapeRescueMotherScript_MakePrisonerComment_00dd5860.cpp; the first binder 00ddc980 no longer emits it
+KEEP	?MakeBriarRoseComment@CQ_SummoningTheShipScript@@QAE_NABVCCharString@@@Z	00df20f0	00df2f90	still named by 2 unedited landed source(s) (text search for akeBriarRoseComment), e.g. rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScript_MakeBriarRoseComment_00df20f0.cpp; the first binder 00df2f90 no longer emits it
+KEEP	?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z	007e7310	00e4a280	still named by 1 unedited landed source(s) (text search for ollowPreCalculatedRoute), e.g. rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_FollowPreCalculatedRoute_007e7310.cpp; the first binder 00e4a280 no longer emits it
+KEEP	?Alloc@CGhostGrannyDaughterInLaw@CV_GhostGrannyNecklaceScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e8be10	00e8b9c0	still named by 15036 unedited landed source(s) (text search for lloc), e.g. rebuild/src/compiled/00/b1/NParticleEngineCPSCDecalRenderer_DatabaseClone_00b1ff80.cpp; the first binder 00e8b9c0 no longer emits it
+KEEP	?Alloc@CGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e8bd30	00e8b9c0	still named by 15036 unedited landed source(s) (text search for lloc), e.g. rebuild/src/compiled/00/b1/NParticleEngineCPSCDecalRenderer_DatabaseClone_00b1ff80.cpp; the first binder 00e8b9c0 no longer emits it
+KEEP	?Alloc@CGhostGrannySon@CV_GhostGrannyNecklaceScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e8ca60	00e8b9c0	still named by 15036 unedited landed source(s) (text search for lloc), e.g. rebuild/src/compiled/00/b1/NParticleEngineCPSCDecalRenderer_DatabaseClone_00b1ff80.cpp; the first binder 00e8b9c0 no longer emits it
+KEEP	?Alloc@CMurderTwistBrother@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eaaf10	00ea8830	still named by 15036 unedited landed source(s) (text search for lloc), e.g. rebuild/src/compiled/00/b1/NParticleEngineCPSCDecalRenderer_DatabaseClone_00b1ff80.cpp; the first binder 00ea8830 no longer emits it
+KEEP	?Alloc@CMurderTwistBrotherFriend@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eac4e0	00ea8830	still named by 15036 unedited landed source(s) (text search for lloc), e.g. rebuild/src/compiled/00/b1/NParticleEngineCPSCDecalRenderer_DatabaseClone_00b1ff80.cpp; the first binder 00ea8830 no longer emits it
+KEEP	?Alloc@CMurderTwistBrotherOlder@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eaba10	00ea8830	still named by 15036 unedited landed source(s) (text search for lloc), e.g. rebuild/src/compiled/00/b1/NParticleEngineCPSCDecalRenderer_DatabaseClone_00b1ff80.cpp; the first binder 00ea8830 no longer emits it
+KEEP	?Alloc@CMurderTwistBrotherOlderFriend@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eacde0	00ea8830	still named by 15036 unedited landed source(s) (text search for lloc), e.g. rebuild/src/compiled/00/b1/NParticleEngineCPSCDecalRenderer_DatabaseClone_00b1ff80.cpp; the first binder 00ea8830 no longer emits it
+KEEP	?Alloc@CMurderTwistBrotherYounger@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eaae40	00ea8830	still named by 15036 unedited landed source(s) (text search for lloc), e.g. rebuild/src/compiled/00/b1/NParticleEngineCPSCDecalRenderer_DatabaseClone_00b1ff80.cpp; the first binder 00ea8830 no longer emits it
+KEEP	?Alloc@CMurderTwistBuriedGem@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ead730	00ea8830	still named by 15036 unedited landed source(s) (text search for lloc), e.g. rebuild/src/compiled/00/b1/NParticleEngineCPSCDecalRenderer_DatabaseClone_00b1ff80.cpp; the first binder 00ea8830 no longer emits it
+KEEP	?Alloc@CMurderTwistLeader@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ea8e50	00ea8830	still named by 15036 unedited landed source(s) (text search for lloc), e.g. rebuild/src/compiled/00/b1/NParticleEngineCPSCDecalRenderer_DatabaseClone_00b1ff80.cpp; the first binder 00ea8830 no longer emits it
+RETIRE	?GetHenchmanIndex@CV_BodyGuardScript@@QAEJABVCCharString@@@Z	00e5e240	00e5e0c0	no landed source names etHenchmanIndex after wave 35b (was bound by 00e5e0c0)
+KEEP	?FadeOutFaceAndOpenDoor@CV_DemonDoorsScript@@QAEXABVCScriptThing@@ABVCCharString@@@Z	00e6f040	00e6ea30	still named by 3 unedited landed source(s) (text search for adeOutFaceAndOpenDoor), e.g. rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScript_FadeOutFaceAndOpenDoor_00e6f040.cpp; the first binder 00e6ea30 no longer emits it

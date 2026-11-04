@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00b058e0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b058e0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00b058e0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b058e0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00b058e0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive
+00b058e0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00b058e0   MATCH            PASS   CEnginePrimitiveParticleMesh
+00d2d7b0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d2d7b0   RELOCATION_MATCH PASS   CPermanentBarrier
+00dcde20   RELOCATION_MATCH PASS   Alloc
+00cdeb40   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00cdeb40   WARN SHARED_HEADER_AVAILABLE CPersonalScript_GlobalThingsScript
+00cdeb40   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cdeb40   RELOCATION_MATCH PASS   Alloc
+
+WINS: 4
+  00b058e0 MATCH CEnginePrimitiveParticleMesh::??0CEnginePrimitiveParticleMesh@@QAE@_KABVC3DVector@@ABVCRightHandedSet@@1ABVCRGBColour@@W4EEngineInterpolationSet@@@Z
+  00d2d7b0 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CPermanentBarrier::??0CPermanentBarrier@CQ_EndGameFocalSitesScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00dcde20 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::?Alloc@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00cdeb40 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::?Alloc@CArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z

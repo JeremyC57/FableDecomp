@@ -1,10 +1,13 @@
-// CAttackingBandit::Init() -- mark the trader group and register WatchForBanditDead on ParentClass
+// NScript::CQR_EscortTraderScript::CAttackingBandit::Init() -- mark the trader group and register WatchForBanditDead on ParentClass
+// Leaf: ?Init@CAttackingBandit@CQR_EscortTraderScript@NScript@@EAEXXZ
 // Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Naming wave 29 (family sfbr): the thread class derives from the retail CSpawnedFuncBase (engine/CSpawnedFuncBase.h; Ego_r.pdb / FableWin.pdb
 //   ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 0x00CDD450, implicit ??1CSpawnedFuncBase@@UAE@XZ 0x00CDD4C0). Was the invented
 //   CScriptProcessBaseRuntime / CSpawnedFuncBaseRuntime pair (virtual ~CSpawnedFuncBaseRuntime, RuntimeHookCDD410 / CDD420).
 // Native 0x00E1F3E0, 0x132 bytes; PDB fields ParentClass +0x14, PMasterData +0x18, Screamed +0x1c.
 // Retail object is CSpawnedFunc1<CQR_EscortTraderScript, CScriptThing>, size 0x48: base 0x34, Func +0x34, PClass +0x38, Par1 +0x3c. The nested new-expression keeps the callback-name temporaries through Add while the by-value trigger parameter is destroyed after construction and before Add.
+// Naming wave 35: identity reg 00e1e1c0 "AttackingBandit" in 00e1e110; Alloc 00e1ed50; vtable 012e1554 slot 2; PDB ?Init@CAttackingBandit@CQR_EscortTraderScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CAttackingBandit::Init (wave3/labels_alloc.tsv); PDB ?Init@CAttackingBandit@CQR_EscortTraderScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
+//   Was `?Init@CAttackingBandit@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (base CEntityScriptBase made polymorphic); outer stand-in CQR_EscortTraderScript moved into NScript); same bytes.
 #include <new>
 #include "fable_string.h"
 #include "engine/CScriptThing.h"
@@ -86,10 +89,16 @@ struct CGameScriptInterfaceVTableView {
     void* UnresolvedSlots000To464[465];
     EntitySetCombatTypeSlot465 EntitySetCombatType;
 };
-struct CQR_EscortTraderScript {
+namespace NScript {
+class CQR_EscortTraderScript {
+public:
     void WatchForBanditDead(CScriptThingRuntime thing);
     void Add(CSpawnedFuncPhase3* function, const CCharString& name); // 0x00CB7E50; observed function at +4, name at +8
+public:
+    class CAttackingBandit;          // the entity class below (naming wave 35)
 };
+}
+using NScript::CQR_EscortTraderScript;
 typedef void (CQR_EscortTraderScript::*SpawnedScriptCallback)(CScriptThingRuntime);
 struct CSpawnedFuncPhase3 : CSpawnedFuncBase {
     SpawnedScriptCallback Func;
@@ -105,16 +114,21 @@ FABLE_STATIC_ASSERT(sizeof(CSpawnedFuncPhase3) == 0x48);
 #endif
 
 class CEntityScriptBase { public:                 // donor layout: +0 vptr, +4 Game, +8 Me
-    void* __vftable;
+    virtual ~CEntityScriptBase();   // retail slot 0 (was the vptr placeholder: the stand-in is polymorphic, as retail)
     CGameScriptInterface* Game;             // +0x04
     CScriptThingRuntime Me;                 // +0x08
 };
-struct CAttackingBandit : CEntityScriptBase {
+namespace NScript {
+class CQR_EscortTraderScript::CAttackingBandit : public CEntityScriptBase {
+public:
     CQR_EscortTraderScript* ParentClass; // PDB +0x14
     void* PMasterData; // PDB +0x18
     bool Screamed; // PDB +0x1c
-    void Init();
+private:
+    virtual void Init();                          // PDB ?Init@CAttackingBandit@CQR_EscortTraderScript@NScript@@EAEXXZ
 };
+}
+typedef NScript::CQR_EscortTraderScript::CAttackingBandit CAttackingBandit;    // global spelling used below
 #if defined(_MSC_VER)
 FABLE_STATIC_ASSERT(offsetof(CAttackingBandit, ParentClass) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CAttackingBandit, PMasterData) == 0x18);
@@ -139,7 +153,7 @@ void* operator new(size_t bytes) throw(std::bad_alloc); // host fixture adapter
 #endif
 CCharString FABLE_FASTCALL operator+(const CCharString& left, const CCharString& right);
 
-void CAttackingBandit::Init()
+void NScript::CQR_EscortTraderScript::CAttackingBandit::Init()
 {
     Screamed = false;
     {

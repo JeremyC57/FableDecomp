@@ -1,0 +1,252 @@
+// NScript::CV_BanditTollScript::CBlockingBandit::Main() -- bandit-toll blocking bandit: register the alive filter, take Me under scripted control, look up M_BanditEscapePoint, then every frame: once the bandits flee, walk Me back to the escape point and fade it out; when the bandits are angered and Me is alive and aware of the hero, join FACTION_BANDITS and follow the hero; once the toll is paid, walk Me (once) back to M_BanditCampCentrePos and release it
+// Leaf: ?Main@CBlockingBandit@CV_BanditTollScript@NScript@@EAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00E49980, length 1424 bytes, plain `ret`.
+// Callees: CIsThingAlive filter (vtable 0x012C32F0, out-of-line dtor 0x00E241B0), the scripted-thing handle (vtable
+//   0x0127094C) IsValid 0x00CD23B9 / Release 0x00CD2770 / MoveToPosition 0x007E72F0 / FollowThing 0x007E7320 /
+//   IsPerformingScriptTask 0x007E7450 / GetScriptThing 0x007E7490 / dtor 0x007E74D0, IsDistanceFromThingToPositionOver
+//   0x00CBE45C and FadeOutAndKillEntity 0x00CBE716 (`__fastcall`). CGameScriptInterface slots 7, 8, 70, 72
+//   GetThingWithScriptName, 601 EntitySetInFaction, 636 IsThingAwareOfOtherThingInAnyWay; CScriptThing slot 75 IsAlive.
+// Literals: "M_BanditEscapePoint" 0x012E4DA4, "M_BanditCampCentrePos" 0x012E4DF0, "FACTION_BANDITS" 0x0125FE68.
+// Layout: Ego_r.pdb CBlockingBandit (28 bytes): entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14
+//   (CV_BanditTollScript, retail = PDB - 0x14: BanditsAngered +0x48, TollPaid +0x49, BanditsFlee +0x4f), PMasterData
+//   +0x18. pGlobalScriptDef: the toll bandit's close-to-exit distance +0x43c and fade time +0x440 (PDB +0x470/+0x474
+//   TollBanditCloseToExit / TollBanditTimeToFade; the retail def is 0x34 smaller ahead of them, as in the landed
+//   CSafeTrader::Main 0x00E4A280).
+// Naming wave 35: identity reg 00e47c21 "BlockingBandit" in 00e479b0; Alloc 00e49850; vtable 012e4edc slot 1; PDB ?Main@CBlockingBandit@CV_BanditTollScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBlockingBandit::Main (wave3/labels_alloc.tsv); PDB ?Main@CBlockingBandit@CV_BanditTollScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
+//   Was `?Main@CBlockingBandit@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CV_BanditTollScript moved into NScript); same bytes.
+namespace NScript { class CPredicateBase; }
+class C3DVector { public:
+    float X, Y, Z;
+    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
+};
+extern C3DVector g_ZeroVector;                         // 0x0143E8E0
+class CCharString { public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    ~CCharString();                                    // 0x0099EAE0
+};
+void operator delete(void* p);                         // 0x00BFE9BC
+class CCPPointerInfo { public:
+    long RefCount;                                     // +0
+    void (__fastcall* DeleteFunc)(void* data);         // +4
+    void* Data;                                        // +8
+};
+class CScriptThing;
+template <class T> class CCountedPointer { public:                               // {Data, Info}
+    CScriptThing*   Data;
+    CCPPointerInfo* Info;
+    CCountedPointer() : Data(0), Info(0) { }
+    ~CCountedPointer()
+    {
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
+    }
+};
+enum EHeroAbility { HERO_ABILITY_14 = 14 };
+enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
+enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
+#define VPAD1(a) virtual void a() const;
+#define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
+#define VPAD4(a) VPAD2(a##0) VPAD2(a##1)
+#define VPAD8(a) VPAD4(a##0) VPAD4(a##1)
+#define VPAD16(a) VPAD8(a##0) VPAD8(a##1)
+#define VPAD32(a) VPAD16(a##0) VPAD16(a##1)
+#define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
+#define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
+#define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
+    VPAD2(p0x0) VPAD1(p0x1)   // slots 0..2
+    virtual CCharString GetDataString() const;   // slot 3 (+0xc)
+    VPAD2(p1x0)   // slots 4..5
+    __forceinline virtual const C3DVector& GetPos() const { if (!PImp.Data) return g_ZeroVector; return PImp.Data->GetPos(); }   // slot 6 (+0x18)
+    VPAD8(p2x0) VPAD4(p2x1) VPAD2(p2x2)   // slots 7..20
+    virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
+    VPAD16(p3x0) VPAD2(p3x1) VPAD1(p3x2)   // slots 22..40
+    virtual bool MsgIsHitBySpecialAbilityFrom(EHeroAbility ability, const CCharString& name) const;   // slot 41 (+0xa4)
+    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;   // slot 42 (+0xa8)
+    VPAD32(p4x0)   // slots 43..74
+    virtual bool IsAlive() const;   // slot 75 (+0x12c)
+    CCountedPointer<CScriptThing> PImp;                              // +0x04
+    CScriptThing(const CScriptThing& other);           // 0x004ABE90
+    virtual ~CScriptThing();                                   // 0x004AA840
+};
+
+namespace NScript {
+class CPredicateBase
+{
+public:
+    virtual void v00();
+};
+}
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                                 // vtable 0x012C32F0: a filter holding a script thing
+    CScriptThing m_thing;                              // +0x04
+    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
+    virtual ~CIsThingAlive();                                  // 0x00E241B0
+};
+}
+using NScript::CIsThingAlive;
+bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
+void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);        // 0x00CBE716
+struct CCountedPointerWords { void* Data; void* Info; };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
+    CCountedPointerWords PImp;                         // +0x08
+    CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
+    virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
+    VPAD1(s0) VPAD1(s1)                                // slots 2..3
+    virtual void MoveToPosition(const C3DVector&, float, EScriptEntityMoveType, bool, bool);   // slot 4 (+0x10), 0x007E72F0
+    bool IsValid() const;                                // 0x00CD23B9
+    void Release();                                    // 0x00CD2770
+    virtual void FollowThing(const CScriptThing&, float, bool);   // 0x007E7320
+    virtual bool IsPerformingScriptTask() const;               // 0x007E7450
+    virtual CScriptThing GetScriptThing() const;               // 0x007E7490
+};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
+
+namespace NScript {
+class CV_BanditTollScript {
+public:
+    unsigned char _pad[0x48];
+    bool BanditsAngered;                               // +0x48
+    bool TollPaid;                                     // +0x49
+    unsigned char _pad4a[0x4f - 0x4a];
+    bool BanditsFlee;                                  // +0x4f
+public:
+    class CBlockingBandit;           // the entity class below (naming wave 35)
+};
+}
+using NScript::CV_BanditTollScript;
+class CScriptDef { public:
+    unsigned char _pad[0x43c];
+    float TollBanditCloseToExit;                       // +0x43c
+    float TollBanditTimeToFade;                        // +0x440
+};
+extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+struct CQ_SunnyvaleMasterData;
+class CEntityScriptBase
+{
+    virtual ~CEntityScriptBase();   // retail slot 0 (the stand-in is polymorphic, as retail: the vptr moves here)
+
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+namespace NScript {
+class CV_BanditTollScript::CBlockingBandit : public CEntityScriptBase {
+public:
+        CGameScriptInterface*   Game;                      // +0x04
+    CScriptThing            Me;                        // +0x08
+    CV_BanditTollScript*    ParentClass;               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;               // +0x18
+private:
+    virtual void Main();                          // PDB ?Main@CBlockingBandit@CV_BanditTollScript@NScript@@EAEXXZ
+};
+}
+
+void NScript::CV_BanditTollScript::CBlockingBandit::Main()
+{
+    {
+        CIsThingAlive filter(Me);
+        SetPredicate(filter);
+    }
+    Game->NewScriptFrame();
+    if (IsActiveThreadTerminating())
+        return;
+    CScriptGameResourceObjectScriptedThingBase scripted;
+    if (scripted.IsValid())
+        scripted.Release();
+    while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
+        Game->NewScriptFrame();
+        if (IsActiveThreadTerminating())
+            return;
+    }
+    if (IsActiveThreadTerminating())
+        return;
+    bool returnedToCamp = false;
+    CScriptThing escapePoint = Game->GetThingWithScriptName("M_BanditEscapePoint");
+    while (!IsActiveThreadTerminating()) {
+        if (ParentClass->BanditsFlee) {
+            if (IsActiveThreadTerminating())
+                return;
+            if (scripted.IsValid())
+                scripted.Release();
+            while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
+                Game->NewScriptFrame();
+                if (IsActiveThreadTerminating())
+                    return;
+            }
+            if (IsActiveThreadTerminating())
+                return;
+            float closeToExit = pGlobalScriptDef->TollBanditCloseToExit;
+            C3DVector exitPos = escapePoint.GetPos();
+            while (IsDistanceFromThingToPositionOver(scripted.GetScriptThing(), exitPos, closeToExit + 2.0f)) {
+                Game->NewScriptFrame();
+                if (IsActiveThreadTerminating())
+                    return;
+                scripted.MoveToPosition(exitPos, closeToExit, (EScriptEntityMoveType)1, false, true);
+                while (scripted.IsPerformingScriptTask()) {
+                    Game->NewScriptFrame();
+                    if (IsActiveThreadTerminating())
+                        return;
+                }
+                if (IsActiveThreadTerminating())
+                    return;
+            }
+            if (IsActiveThreadTerminating())
+                return;
+            FadeOutAndKillEntity(Me, true, pGlobalScriptDef->TollBanditTimeToFade, true);
+        }
+        if (ParentClass->BanditsAngered && Me.IsAlive() && Game->IsThingAwareOfOtherThingInAnyWay(Game->GetHero(), Me)) {
+            if (IsActiveThreadTerminating())
+                return;
+            if (scripted.IsValid())
+                scripted.Release();
+            while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)3)) {
+                Game->NewScriptFrame();
+                if (IsActiveThreadTerminating())
+                    return;
+            }
+            if (IsActiveThreadTerminating())
+                return;
+            Game->EntitySetInFaction(Me, "FACTION_BANDITS");
+            scripted.FollowThing(Game->GetHero(), 1.0f, true);
+        }
+        if (ParentClass->TollPaid && !returnedToCamp) {
+            if (IsActiveThreadTerminating())
+                return;
+            CScriptThing campCentre = Game->GetThingWithScriptName("M_BanditCampCentrePos");
+            C3DVector campPos = campCentre.GetPos();
+            while (IsDistanceFromThingToPositionOver(scripted.GetScriptThing(), campPos, 4.0f)) {
+                Game->NewScriptFrame();
+                if (IsActiveThreadTerminating())
+                    return;
+                scripted.MoveToPosition(campPos, 2.0f, (EScriptEntityMoveType)0, false, true);
+                while (scripted.IsPerformingScriptTask()) {
+                    Game->NewScriptFrame();
+                    if (IsActiveThreadTerminating())
+                        return;
+                }
+                if (IsActiveThreadTerminating())
+                    return;
+            }
+            if (IsActiveThreadTerminating())
+                return;
+            scripted.Release();
+            returnedToCamp = true;
+        }
+        Game->NewScriptFrame();
+    }
+}

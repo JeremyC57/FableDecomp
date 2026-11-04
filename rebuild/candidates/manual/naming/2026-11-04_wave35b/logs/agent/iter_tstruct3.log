@@ -1,0 +1,25 @@
+addr       parity           behav  name
+00cfcb10   MATCH            PASS   Init
+00cfdd50   MATCH            PASS   Init
+00d25d10   MATCH            PASS   Init
+00d25ee0   MATCH            PASS   Init
+00d7dd40   MATCH            PASS   Init
+00d7f0d0   MATCH            PASS   Init
+00d86440   MATCH            PASS   Init
+00d86610   MATCH            PASS   Init
+00d884d0   MATCH            PASS   Init
+00d89150   MATCH            PASS   Init
+00e7baf0   MATCH            PASS   Init
+
+WINS: 11
+  00cfcb10 MATCH NScript::CQ_AwakeningTheOracleScript::CNecropolisEnemy::?Init@CNecropolisEnemy@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
+  00cfdd50 MATCH NScript::CQ_AwakeningTheOracleScript::CFinalSummoner::?Init@CFinalSummoner@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
+  00d25d10 MATCH NScript::CQ_DragonBossFightScript::CDBMinion::?Init@CDBMinion@CQ_DragonBossFightScript@NScript@@EAEXXZ
+  00d25ee0 MATCH NScript::CQ_DragonBossFightScript::CDBSummoner::?Init@CDBSummoner@CQ_DragonBossFightScript@NScript@@EAEXXZ
+  00d7dd40 MATCH NScript::CQ_HeroSoulsArenaScript::CSummonerToKill::?Init@CSummonerToKill@CQ_HeroSoulsArenaScript@NScript@@EAEXXZ
+  00d7f0d0 MATCH NScript::CQ_HeroSoulsArenaScript::CHeroSoulsEnemy::?Init@CHeroSoulsEnemy@CQ_HeroSoulsArenaScript@NScript@@EAEXXZ
+  00d86440 MATCH NScript::CQ_HeroSoulsGuildmasterScript::CGuardInWoods::?Init@CGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@EAEXXZ
+  00d86610 MATCH NScript::CQ_HeroSoulsGuildmasterScript::CWaitingGuardInWoods::?Init@CWaitingGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@EAEXXZ
+  00d884d0 MATCH NScript::CQ_HeroSoulsNostroScript::CSummonerToKill::?Init@CSummonerToKill@CQ_HeroSoulsNostroScript@NScript@@EAEXXZ
+  00d89150 MATCH NScript::CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE::?Init@CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@EAEXXZ
+  00e7baf0 MATCH NScript::CV_FishermanScript::CFishermanWasp::?Init@CFishermanWasp@CV_FishermanScript@NScript@@EAEXXZ

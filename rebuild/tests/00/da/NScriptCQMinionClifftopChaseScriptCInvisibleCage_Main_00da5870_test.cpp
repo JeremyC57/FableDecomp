@@ -1,0 +1,52 @@
+// Naming wave 35: the row now defines ?Main@CInvisibleCage@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ (it was landed as ?Main@@YIXPAUCQ_SunnyvaleMasterScript@@@Z).
+// This behaviour model keeps the old spelling; the linker maps it onto the row's symbol (same thiscall/ecx ABI, same layout).
+#pragma comment(linker, "/alternatename:?Main@@YIXPAUCQ_SunnyvaleMasterScript@@@Z=?Main@CInvisibleCage@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ")
+#include <stdio.h>
+
+struct F4 {
+    struct VT {
+        void (__fastcall *slot0)(F4*);
+        void (__fastcall *slot1)(F4*);
+        void (__fastcall *slot2)(F4*);
+        void (__fastcall *slot3)(F4*);
+        void (__fastcall *slot4)(F4*);
+        void (__fastcall *slot5)(F4*);
+        void (__fastcall *slot6)(F4*);
+        void (__fastcall *slot7)(F4*);
+    };
+    VT* vtbl;
+};
+
+struct CQ_SunnyvaleMasterScript {
+    void* pad;
+    F4*   f4;
+};
+
+static int g_ticks = 0;
+static int g_limit = 3;
+
+static void __fastcall tick(F4*) { g_ticks++; }
+
+class CEntityScriptBase { public: bool IsActiveThreadTerminating() const; };   // 0x00F35B30 (the row calls it so)
+bool CEntityScriptBase::IsActiveThreadTerminating() const {
+    // return 0 => keep looping (matches retail: while(!helper))
+    return (g_ticks < g_limit) ? (char)0 : (char)1;
+}
+
+void __fastcall Main(CQ_SunnyvaleMasterScript* self);
+
+int main() {
+    F4::VT vt;
+    vt.slot7 = tick;
+    F4 f; f.vtbl = &vt;
+    CQ_SunnyvaleMasterScript o; o.pad = 0; o.f4 = &f;
+
+    Main(&o);
+
+    if (g_ticks == 3) {
+        printf("00da5870_TEST PASS\n");
+    } else {
+        printf("FAIL ticks=%d\n", g_ticks);
+    }
+    return 0;
+}

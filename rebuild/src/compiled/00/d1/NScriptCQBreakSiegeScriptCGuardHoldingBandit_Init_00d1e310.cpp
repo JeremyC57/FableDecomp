@@ -1,6 +1,9 @@
-// NScript::CQ_BreakSiegeScript::CGuardHoldingBandit::Init -- make guard unpushable and attach to Knothole Glade village.
+// NScript::CQ_BreakSiegeScript::CGuardHoldingBandit::Init() -- make guard unpushable and attach to Knothole Glade village.
+// Leaf: ?Init@CGuardHoldingBandit@CQ_BreakSiegeScript@NScript@@EAEXXZ
 // Native00D1E310 length196. Game slot844 SetIsPushableByHero8A6DD0,slot72 GetThingWithScriptName8A7D60,slot492 EntityAttachToVillage89D3A0.
 // Literal12CAECC=VILLAGE_KNOTHOLEGLADE. Actual headers, real ScriptThing/Game virtual ABI; freefastcall counted callback.
+// Naming wave 35: identity reg 00d1d42a "GuardHoldingBandit" in 00d1d100; Alloc 00d1e230; vtable 012caf54 slot 2; PDB ?Init@CGuardHoldingBandit@CQ_BreakSiegeScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CGuardHoldingBandit::Init (wave3/labels_alloc.tsv); PDB ?Init@CGuardHoldingBandit@CQ_BreakSiegeScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
+//   Was `?Init@CGuardHoldingBandit@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own)); same bytes.
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
@@ -1003,8 +1006,21 @@ virtual void ResetDisableHeadLooking(ScriptMethods); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(ScriptMethods, bool); //slot844 0x008a6dd0
 };
 
-struct CGuardHoldingBandit {void* VTable;GameMethods* Game;ScriptMethods Me;void* ParentClass;void* PMasterData;void Init();};
-void CGuardHoldingBandit::Init() {
+namespace NScript {
+class CQ_BreakSiegeScript {    // the PDB owner script; only its nested entity class is modelled here
+public:
+    class CGuardHoldingBandit;
+};
+}
+using NScript::CQ_BreakSiegeScript;
+namespace NScript {
+class CQ_BreakSiegeScript::CGuardHoldingBandit {
+public:GameMethods* Game;ScriptMethods Me;void* ParentClass;void* PMasterData;
+private:
+    virtual void Init();                          // PDB ?Init@CGuardHoldingBandit@CQ_BreakSiegeScript@NScript@@EAEXXZ
+};
+}
+void NScript::CQ_BreakSiegeScript::CGuardHoldingBandit::Init() {
  Game->SetIsPushableByHero(Me,false);
  CCharString village("VILLAGE_KNOTHOLEGLADE",-1);
  Game->EntityAttachToVillage(Me,Game->GetThingWithScriptName(village));

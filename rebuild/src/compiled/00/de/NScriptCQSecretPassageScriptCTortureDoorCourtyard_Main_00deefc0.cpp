@@ -1,6 +1,8 @@
-// NScript::CQ_SecretPassageScript::CTortureDoorCourtyard::Main -- lock the torture courtyard door and display its blocked message when used by hero.
-// Leaf: Main
+// NScript::CQ_SecretPassageScript::CTortureDoorCourtyard::Main() -- lock the torture courtyard door and display its blocked message when used by hero.
+// Leaf: ?Main@CTortureDoorCourtyard@CQ_SecretPassageScript@NScript@@EAEXXZ
 // Native00DEEFC0,260 bytes. PDB nestedowner Main00E2C4F0; native RegisterMain00DECA10 binds TortureDoorCourtyard atDECE4C toAllocDEEF00, which installs vtable12DDED0 MainDEEFC0.
+// Naming wave 35: identity reg 00dece4c "TortureDoorCourtyard" in 00decad0; Alloc 00deef00; vtable 012dded0 slot 1; PDB ?Main@CTortureDoorCourtyard@CQ_SecretPassageScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was CVtable_012dded0::vfunc_1 (wave3/labels_alloc.tsv); PDB ?Main@CTortureDoorCourtyard@CQ_SecretPassageScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
+//   Was `?Main@CTortureDoorCourtyard@CQ_SecretPassageScript@NScript@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (base CEntityScriptBase made polymorphic); nested class fixed in place); same bytes.
 #include "fable_string.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
@@ -26,11 +28,15 @@ struct GameScriptCalls:CGameScriptInterface {
  __forceinline bool MsgIsGameInfoClickedPast()const{return(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[40].MsgIsGameInfoClickedPast)();}
  __forceinline void NewScriptFrame()const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[7].NewScriptFrame)();}
 }; //nativeCGSI01260F0C:818=89DC10,1CC=8929D0,A0=894370,1C=6E7410 audited native/PDB signatures.
-class CEntityScriptBase { public:void* __vftable;GameScriptCalls* Game;ScriptThingCalls Me;
+class CEntityScriptBase { public:virtual ~CEntityScriptBase();   // retail slot 0 (was the vptr placeholder: the stand-in is polymorphic, as retail)
+GameScriptCalls* Game;ScriptThingCalls Me;
 public:
     bool IsActiveThreadTerminating() const;   // 0x00F35B30
 }; //actual PDB sizeof20 Game4 Me8; native unchanged
-namespace NScript {class CQ_SecretPassageScript { public:struct CTortureDoorCourtyard:CEntityScriptBase {CQ_SecretPassageScript* ParentClass;void* PMasterData;void Main();};};}
+namespace NScript {class CQ_SecretPassageScript { public:struct CTortureDoorCourtyard:CEntityScriptBase {CQ_SecretPassageScript* ParentClass;void* PMasterData;
+private:
+    virtual void Main();                          // PDB ?Main@CTortureDoorCourtyard@CQ_SecretPassageScript@NScript@@EAEXXZ
+};};}
 void NScript::CQ_SecretPassageScript::CTortureDoorCourtyard::Main(){
  Game->EntitySetAsLocked(Me,true);
  while(!IsActiveThreadTerminating()){

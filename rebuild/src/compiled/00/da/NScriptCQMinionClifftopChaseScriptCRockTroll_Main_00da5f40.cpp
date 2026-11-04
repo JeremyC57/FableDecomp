@@ -1,0 +1,111 @@
+// NScript::CQ_MinionClifftopChaseScript::CRockTroll::Main() -- minion clifftop chase rock-troll script: attach the troll to the active quest, wait until the hero is within 20 units, then show a green quest-info health bar for it
+// Leaf: ?Main@CRockTroll@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+// Retail 0x00DA5F40, 337 bytes. Callees: CScriptThing(const CScriptThing&) 0x004ABE90 / ~CScriptThing 0x004AA840 (the
+// CIsThingAlive filter, vtable 0x012C32F0, inline user dtor), RegisterFilter 0x00F35B10, IsDone 0x00F35B30,
+// CBaseObject() 0x0099A380 + ~CScriptGameResourceObjectScriptedThingBase 0x007E74D0 (an unused handle, vtable
+// 0x0127094C), IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CCharString(const char*, long) 0x0099EBF0 /
+// ~CCharString 0x0099EAE0 ("HUD_QUEST_ICON_ROCK_TROLL" 0x012D75D4); CGameScriptInterface slots 7 NewScriptFrame,
+// 70 GetHero, 321 DisplayQuestInfo, 325 AddQuestInfoBarHealth, 465 EntityAttachToScript, 655 GetActiveQuestName.
+// Layout: Ego_r.pdb CRockTroll (0x20): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14,
+// PMasterData +0x18, HealthBarID +0x1C. Filter as the landed CHTE_Prisoner::Main 0x00D69F50, the scripted-thing
+// handle as the landed quest-script ctor 0x00D2F6B0.
+// Shape: the quest name is the nested call's temporary (the interface vtable cached in ebp across both calls); the
+// icon is a named local in its OWN block (at function scope VC packs it into the quest-name temporary's slot); the
+// green CRGBColour's ctor assigns R, G, B, A (stores grouped by value in that order).
+// Naming wave 35: identity reg 00da39cc "RockTroll" in 00da34b0; Alloc 00da5e70; vtable 012d75b8 slot 1; PDB ?Main@CRockTroll@CQ_MinionClifftopChaseScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CRockTroll::Main (wave3/labels_alloc.tsv); PDB ?Main@CRockTroll@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
+//   Was `?Main@CRockTroll@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+namespace NScript { class CPredicateBase; }
+class CCharString { public:
+    void* PStringData;
+    CCharString(const char* text, long length);    // 0x0099EBF0
+    ~CCharString();                                // 0x0099EAE0
+};
+class CRGBColour { public:
+    unsigned char B, G, R, A;
+    CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+};
+class CScriptThing { public:                              // 12 bytes
+    unsigned char _body[12 - 4];
+    CScriptThing(const CScriptThing& other);       // 0x004ABE90
+    virtual ~CScriptThing();                               // 0x004AA840
+};
+bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
+namespace NScript {
+class CPredicateBase
+{
+public:
+    virtual void v00();
+};
+}
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                             // vtable 0x012C32F0: a filter holding a script thing
+    CScriptThing m_thing;                          // +0x04
+    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
+    virtual ~CIsThingAlive() { }
+};
+}
+using NScript::CIsThingAlive;
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CCountedPointer.h"
+void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+extern const char g_rockTrollIcon[];               // 0x012D75D4 "HUD_QUEST_ICON_ROCK_TROLL"
+class CEntityScriptBase
+{
+    virtual ~CEntityScriptBase();   // retail slot 0 (the stand-in is polymorphic, as retail: the vptr moves here)
+
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+namespace NScript {
+class CQ_MinionClifftopChaseScript {    // the PDB owner script; only its nested entity class is modelled here
+public:
+    class CRockTroll;
+};
+}
+using NScript::CQ_MinionClifftopChaseScript;
+namespace NScript {
+class CQ_MinionClifftopChaseScript::CRockTroll : public CEntityScriptBase {
+public:
+        CGameScriptInterface* Game;                    // +0x04
+    CScriptThing          Me;                      // +0x08
+    void*                 ParentClass;             // +0x14
+    void*                 PMasterData;             // +0x18
+    long                  HealthBarID;             // +0x1c
+private:
+    virtual void Main();                          // PDB ?Main@CRockTroll@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+};
+}
+
+void NScript::CQ_MinionClifftopChaseScript::CRockTroll::Main()
+{
+    {
+        CIsThingAlive filter(Me);
+        SetPredicate(filter);
+    }
+    Game->NewScriptFrame();
+    if (IsActiveThreadTerminating())
+        return;
+    CScriptGameResourceObjectScriptedThingBase scripted;
+    Game->EntityAttachToScript(Me, Game->GetActiveQuestName());
+    while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), 20.0f)) {
+        Game->NewScriptFrame();
+        if (IsActiveThreadTerminating())
+            return;
+    }
+    if (IsActiveThreadTerminating())
+        return;
+    Game->DisplayQuestInfo(true);
+    {
+        CCharString icon(g_rockTrollIcon, -1);
+        HealthBarID = Game->AddQuestInfoBarHealth(Me, CRGBColour(0, 255, 0, 255), icon, 1.0f);
+    }
+}

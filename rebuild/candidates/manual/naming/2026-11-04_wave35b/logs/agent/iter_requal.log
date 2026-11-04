@@ -1,0 +1,49 @@
+addr       parity           behav  name
+00cdfdf0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_GlobalThingsScript
+00cdfdf0   MATCH            PASS   Init
+00d7f250   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d7f250   WARN SHARED_HEADER_AVAILABLE CQ_HeroSoulsArenaScript
+00d7f250   RELOCATION_MATCH PASS   Main
+00deefc0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00deefc0   RELOCATION_MATCH PASS   Main
+00e76920   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00e76920   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e76920   RELOCATION_MATCH PASS   Main
+00f083a0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00f083a0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00f083a0   WARN SHARED_HEADER_AVAILABLE CQ_AmbushTradersScript
+00f083a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00f083a0   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00f083a0   WARN RELOC_NAME: ??1CScriptThingRuntime@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00f083a0   RELOCATION_MATCH PASS   Init
+
+WINS: 5
+  00cdfdf0 MATCH NScript::CPersonalScript_GlobalThingsScript::CTargetForKey::?Init@CTargetForKey@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+  00d7f250 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CBlockedEntrance::?Main@CBlockedEntrance@CQ_HeroSoulsArenaScript@NScript@@EAEXXZ
+  00deefc0 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CTortureDoorCourtyard::?Main@CTortureDoorCourtyard@CQ_SecretPassageScript@NScript@@EAEXXZ
+  00e76920 RELOCATION_MATCH NScript::CV_ExposeMayorScript::CEM_FlashLightPoint::?Main@CEM_FlashLightPoint@CV_ExposeMayorScript@NScript@@EAEXXZ
+  00f083a0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_Phase1Guard::?Init@CAT_Phase1Guard@CQ_AmbushTradersScript@NScript@@EAEXXZ
+addr       parity           behav  name
+00d2c530   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d2c530   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d2c530   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d2c530   RELOCATION_MATCH PASS   Main
+00d9c4a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d9c4a0   RELOCATION_MATCH PASS   Main
+00e1f3e0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e1f3e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e1f3e0   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00e1f3e0   WARN RELOC_NAME: ??1CScriptThingRuntime@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00e1f3e0   RELOCATION_MATCH PASS   Init
+00e9dac0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e9dac0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e9dac0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e9dac0   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00e9dac0   WARN RELOC_NAME: ??1CScriptThingRuntime@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00e9dac0   RELOCATION_MATCH PASS   Init
+
+WINS: 4
+  00d2c530 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CBattleGuard::?Main@CBattleGuard@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ
+  00d9c4a0 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::CHobbeBarrel::?Main@CHobbeBarrel@CQ_HobbeToothContestScript@NScript@@EAEXXZ
+  00e1f3e0 RELOCATION_MATCH NScript::CQR_EscortTraderScript::CAttackingBandit::?Init@CAttackingBandit@CQR_EscortTraderScript@NScript@@EAEXXZ
+  00e9dac0 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::CBriarRose::?Init@CBriarRose@CV_IntroductionToTrophiesScript@NScript@@EAEXXZ

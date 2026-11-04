@@ -1,0 +1,82 @@
+// NScript::CV_BanditTollScript::CTauntingBandit::Init() -- reset the anger state, put Me in the friendly-bandit faction and make Me wander around the bandit camp centre marker between 0 and the script def's toll-bandit wander distance
+// Leaf: ?Init@CTauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00E48EB0, length 356 bytes (plain `ret`; entity-script slot "Init").
+// Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, ~CBaseClass @ 0x0099A2E0, operator
+//   delete @ 0x00BFE9BC (the counted-pointer info block), and the game interface slots (ghidra_out/cgsi_slots_aligned.tsv)
+//   72 GetThingWithScriptName, 601 EntitySetInFaction, 763 SetWanderCentrePoint(CScriptThing, C3DVector), 766
+//   SetWanderMinDistance(CScriptThing, float), 769 SetWanderMaxDistance(CScriptThing, float); CScriptThing slot 6 GetPos
+//   (0x004AA980, rtti-vtables.tsv).
+// Data: "FACTION_BANDITS_FRIENDLY" @ 0x012D218C, "M_BanditCampCentrePos" @ 0x012E4DF0, pGlobalScriptDef @ 0x0143E90C whose
+//   +0x428 long is BanditTollBanditWanderDistance (PDB +0x45C; the retail def is 0x34 lower here).
+// Layout: Ego_r.pdb CTauntingBandit (0x24): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18,
+//   AngerCount +0x1C, AngryWithHero +0x20 (unshifted).
+// Shape: the by-value CScriptThing arguments are copy-built in their stack slots (inline CBaseClass ctor: both vtable
+//   stores; null-tested add-ref); the marker temporary dies after the centre-point call (vtable store, inline release,
+//   cleared words, ~CBaseClass); the 0.0f minimum is pushed from the zero register.
+// Naming wave 35: identity reg 00e47bbd "TauntingBandit" in 00e479b0; Alloc 00e48de0; vtable 012e4dd4 slot 2; PDB ?Init@CTauntingBandit@CV_BanditTollScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CTauntingBandit::Init (wave3/labels_alloc.tsv); PDB ?Init@CTauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
+//   Was `?Init@CTauntingBandit@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own)); same bytes.
+class CCharString { public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);     // 0x0099EBF0
+    ~CCharString();                                      // 0x0099EAE0
+};
+void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
+
+class C3DVector { public:
+    float X, Y, Z;
+    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
+};
+
+#include "engine/CCountedPointer.h"
+
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
+
+struct CScriptThingImpl;
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) {}
+inline CScriptThing::~CScriptThing() {}
+
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
+
+class CScriptDef { public:
+    unsigned char _pad000[0x428];
+    long BanditTollBanditWanderDistance;                 // +0x428 (PDB +0x45C)
+};
+extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+
+namespace NScript {
+class CV_BanditTollScript {    // the PDB owner script; only its nested entity class is modelled here
+public:
+    class CTauntingBandit;
+};
+}
+using NScript::CV_BanditTollScript;
+namespace NScript {
+class CV_BanditTollScript::CTauntingBandit {
+public:
+        CGameScriptInterface* Game;                          // +0x04
+    CScriptThing          Me;                            // +0x08
+    void*                 ParentClass;                   // +0x14 CV_BanditTollScript*
+    void*                 PMasterData;                   // +0x18 CQ_SunnyvaleMasterData*
+    long                  AngerCount;                    // +0x1c
+    bool                  AngryWithHero;                 // +0x20
+private:
+    virtual void Init();                          // PDB ?Init@CTauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ
+};
+}
+
+void NScript::CV_BanditTollScript::CTauntingBandit::Init()
+{
+    AngerCount = 0;
+    AngryWithHero = false;
+    Game->EntitySetInFaction(Me, "FACTION_BANDITS_FRIENDLY");
+    Game->SetWanderCentrePoint(Me, Game->GetThingWithScriptName("M_BanditCampCentrePos").GetPos());
+    Game->SetWanderMinDistance(Me, 0.0f);
+    Game->SetWanderMaxDistance(Me, (float)pGlobalScriptDef->BanditTollBanditWanderDistance);
+}

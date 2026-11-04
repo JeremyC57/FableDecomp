@@ -1,0 +1,212 @@
+// NScript::CExpression_PicklockScript::Main() -- the hero "picklock" expression quest: register a conscious-hero predicate, mark the quest persistent, take the hero's targeted thing and quit unless it is pick-lockable and no movie is running; otherwise open a movie sequence and the picklock mini-game bar, scale the def's picklock time by the hero's skill level/max and the frame rate into a frame count, post a keep-searching-for-witnesses deed, start sneaking and face the lock, then each frame fail on releasing the d-pad button, being hit or being witnessed, update the bar with 1 - frames/time, finish when the bar is full (fail if the lock vanished) and count down; afterwards remove the deed, hide the bar and, unless failed, unlock the thing with progress% chance and apply the morality change; finally deactivate this quest later
+// Leaf: ?Main@CExpression_PicklockScript@NScript@@UAEXXZ
+// Naming wave 30 (family cst): the local VSLOTS CScriptThing stand-in (non-virtual ??1CScriptThing@@QAE@XZ) and its CScriptThingImplementation pointee are
+//   replaced by engine/CScriptThing.h's retail class (virtual ~CScriptThing 0x004AA840, Ego_r.pdb / FableWin.pdb ??1CScriptThing@@UAE@XZ;
+//   the pointee is CScriptThing, whose slot 75 IsAlive the inline alive test calls)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00EEB7B0, length 1272 bytes (+ int3 padding), no EH frame.
+// Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 / IsAlive 0x004AB130 (virtual slot 75, called directly here once and
+//   expanded inline once), CScriptBase::SetPredicate 0x00CB7920 / IsActiveThreadTerminating 0x00CB7940, CBaseObject ctor 0x0099A380,
+//   movie object dtor 0x006E7B80, CCharString 0x0099EBF0 / 0x0099EAE0, rand 0x00BFEB16, __ftol2 0x00BFEA70; CGameScriptInterface slots below.
+//   Literals "" 0x0122D70E, "EXPRESSION_PICKLOCK" 0x0124F520, 1.0f 0x0122DED8, 100.0f 0x01230A08.
+// Data: pGlobalScriptDef 0x0143E90C (as the landed HTGood/HTEvil boast rows); the picklock time float at +0x101C.
+// Layout: the retail quest-script base (as the landed CExpressionWaitScript_Main 00eea460): CScriptBase 0x40 bytes, the interface pointer
+//   at +0x40. CScriptThing is modelled with its virtual slots (MsgIsHitBy 21, IsAlive 75) because the shared header flattens the vfptr.
+// Shape: the first lock-alive test is CScriptThing::IsAlive expanded inline (PImp_Data && PImp_Data->IsThingAlive(), the 0x004AB130 body);
+//   the second is the direct call. The movie handle lives in an inner block so its dtor runs before the final DeactivateQuestLater.
+// Naming wave 35: identity CScriptInfoManager::RegisterScripts 00cd52d0 stores Alloc 00eebd70 at 00cd9e79 with name "Expression_Picklock"; Alloc news + stores script vtable 012f56d0; PDB ?Alloc@CExpression_PicklockScript@NScript@@SIPAVCScriptBase@@; script vtable slot 2 (slot 1 pushes "Main" 0x012C2F94); PDB Main; refs=1; was CExpression_PicklockScript::Main (namespace spelling) (wave3/labels_alloc.tsv); PDB ?Main@CExpression_PicklockScript@NScript@@UAEXXZ in Ego_r.pdb / FableWin.pdb.
+//   Was `?Main@CExpression_PicklockScript@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include <stdlib.h>
+#define VPAD1(a) virtual void a() const;
+#define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
+#define VPAD4(a) VPAD2(a##0) VPAD2(a##1)
+#define VPAD8(a) VPAD4(a##0) VPAD4(a##1)
+#define VPAD16(a) VPAD8(a##0) VPAD8(a##1)
+#define VPAD32(a) VPAD16(a##0) VPAD16(a##1)
+#define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
+#define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
+#define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
+
+class CCharString { public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();                                        // 0x0099EAE0
+};
+
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"                         // : CBaseClass, vtable 0x01238C8C; virtual ~CScriptThing 0x004AA840
+
+__forceinline bool IsThingHandleAlive(const CScriptThing& thing)
+{
+    return thing.PImp.Data != 0 && thing.PImp.Data->IsAlive();
+}
+
+struct CIsThingConscious {                                 // vtable 0x012C2FE8
+    CScriptThing Thing;                                    // +0x04
+    CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
+    ~CIsThingConscious() { }
+    virtual bool operator()() const;
+};
+
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+
+class CScriptGameResourceObjectBase : public CBaseObject { public:       // vtable 0x0126008C
+    virtual ~CScriptGameResourceObjectBase() { }
+};
+
+struct CCountedPointerWords {
+    void* Data;
+    void* Info;
+    CCountedPointerWords() : Data(0), Info(0) { }
+};
+
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
+    CCountedPointerWords PImp;                             // +0x08
+    CScriptGameResourceObjectMovieBase() { }
+    ~CScriptGameResourceObjectMovieBase();                 // 0x006E7B80
+    virtual void v01();
+};
+
+class CScriptDef { public:
+    unsigned char _pad[0x101c];
+    float PicklockTime;                                    // +0x101C
+};
+extern CScriptDef* pGlobalScriptDef;                           // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+
+enum EHeroTrainableStatType { HERO_STAT_SKILL = 5 };
+enum EMiniGameType { MINI_GAME_PICKLOCK = 4 };
+enum EOpinionDeedType { OPINION_DEED_PICKLOCK = 4 };
+
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
+
+class CScriptBase { public:                                       // retail 0x40 bytes
+    virtual void v00();
+    unsigned char _body[0x3c];
+    void SetPredicate(CIsThingConscious& predicate);       // 0x00CB7920
+    bool IsActiveThreadTerminating();                      // 0x00CB7940
+};
+
+struct CQuestScriptBase : CScriptBase {
+    CGameScriptInterface* GSI;                             // +0x40
+};
+
+namespace NScript {
+class CExpression_PicklockScript : public CQuestScriptBase {
+public:
+public:
+    virtual void Main();                          // PDB ?Main@CExpression_PicklockScript@NScript@@UAEXXZ
+};
+}
+using NScript::CExpression_PicklockScript;
+
+void NScript::CExpression_PicklockScript::Main()
+{
+    {
+        CIsThingConscious predicate(GSI->GetHero());
+        SetPredicate(predicate);
+    }
+    GSI->NewScriptFrame();
+    if (IsActiveThreadTerminating())
+        return;
+    GSI->SetQuestAsPersistent(GSI->GetActiveQuestName(), false);
+    CScriptThing chest = GSI->GetHeroTargetedThing();
+    if (!GSI->IsEntityPickLockable(chest)) {
+        if (IsActiveThreadTerminating())
+            return;
+        GSI->DeactivateQuestLater(GSI->GetActiveQuestName(), 0);
+        return;
+    }
+    if (GSI->IsInMovieSequence()) {
+        if (IsActiveThreadTerminating())
+            return;
+        GSI->DeactivateQuestLater(GSI->GetActiveQuestName(), 0);
+        return;
+    }
+    {
+        CScriptGameResourceObjectMovieBase movie;
+        GSI->StartMovieSequence("", movie);
+        GSI->DisplayMiniGameInfo(true, MINI_GAME_PICKLOCK);
+        bool done = false;
+        bool failed = false;
+        float time = pGlobalScriptDef->PicklockTime;
+        time /= (GSI->GetHeroStatLevel(HERO_STAT_SKILL) + 1.0f) / (GSI->GetHeroStatMax(HERO_STAT_SKILL) + 1.0f);
+        time *= GSI->GetConstantFPS();
+        long count = (long)time;
+        long deed = GSI->EntityPostOpinionDeedKeepSearchingForWitnesses(GSI->GetHero(), OPINION_DEED_PICKLOCK, chest);
+        GSI->StartSneaking();
+        GSI->EntitySetFacingAngleTowardsThing(GSI->GetHero(), chest, true);
+        float progress;
+        while (!done) {
+            GSI->NewScriptFrame();
+            if (IsActiveThreadTerminating())
+                return;
+            if (!GSI->IsDPadButtonHeldForExpression("EXPRESSION_PICKLOCK")) {
+                if (IsActiveThreadTerminating())
+                    return;
+                done = true;
+                failed = true;
+            }
+            if (GSI->GetHero().MsgIsHitBy("")) {
+                if (IsActiveThreadTerminating())
+                    return;
+                done = true;
+                failed = true;
+            }
+            if (GSI->IsDeedWitnessed(deed)) {
+                if (IsActiveThreadTerminating())
+                    return;
+                done = true;
+                failed = true;
+            }
+            progress = 1.0f - count / time;
+            if (progress > 1.0f) {
+                if (IsActiveThreadTerminating())
+                    return;
+                progress = 1.0f;
+            }
+            GSI->UpdateMiniGameInfoBar(progress);
+            if (IsThingHandleAlive(chest)) {
+                if (IsActiveThreadTerminating())
+                    return;
+                if (progress >= 1.0f) {
+                    if (IsActiveThreadTerminating())
+                        return;
+                    done = true;
+                }
+            } else {
+                if (IsActiveThreadTerminating())
+                    return;
+                failed = true;
+                done = true;
+            }
+            if (count > 0) {
+                if (IsActiveThreadTerminating())
+                    return;
+                --count;
+            }
+        }
+        if (IsActiveThreadTerminating())
+            return;
+        GSI->RemoveOpinionDeedStillSearchingForWitnesses(GSI->GetHero(), deed);
+        GSI->DisplayMiniGameInfo(false, MINI_GAME_PICKLOCK);
+        if (!failed) {
+            if (IsActiveThreadTerminating())
+                return;
+            if (chest.IsAlive()) {
+                if (IsActiveThreadTerminating())
+                    return;
+                if (rand() % 100 < progress * 100.0f) {
+                    if (IsActiveThreadTerminating())
+                        return;
+                    GSI->EntitySetAsPickLocked(chest);
+                    GSI->ChangeHeroMoralityDueToPicklock();
+                }
+            }
+        }
+    }
+    GSI->DeactivateQuestLater(GSI->GetActiveQuestName(), 0);
+}

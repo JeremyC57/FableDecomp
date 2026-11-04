@@ -1,11 +1,13 @@
-// NScript::CQ_HeroSoulsGuildmasterScript::CGuardInWoods::Main -- wait for guildmaster cutscene then target hero until terminated.
-// Leaf: ?Main@CGuardInWoods@@QAEXXZ
+// NScript::CQ_HeroSoulsGuildmasterScript::CGuardInWoods::Main() -- wait for guildmaster cutscene then target hero until terminated.
+// Leaf: ?Main@CGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@EAEXXZ
 // Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
 //   is declared on the global CEntityScriptBase the entity derives from (the landed SetPredicate rows' empty-base model; the vptr /
 //   Game / Me fields stay on the entity: empty-base layout, bytes unchanged); was CGuardInWoods::SetPredicate / IsActiveThreadTerminating (non-const).
 // Native00D864B0 length176; predicate VT012C32F0 CIsThingAlive(copy4ABE90/dtor4AA840), SetPredicateF35B10, terminatingF35B30.
 // Game real slots7 NewScriptFrame6E7410,70 GetHero891CA0,451 GiveThingBestEnemyTarget8A0260.
 // Parent native PlayedGuildMasterCS+49 and GuardInWoodsCount+50 corroborate donor5D/64 (base shrunk14).
+// Naming wave 35: identity reg 00d84eff "GuardInWoods" in 00d84d60; Alloc 00d86390; vtable 012d4bb8 slot 1; PDB ?Main@CGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CGuardInWoods::Main (wave3/labels_alloc.tsv); PDB ?Main@CGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
+//   Was `?Main@CGuardInWoods@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_HeroSoulsGuildmasterScript moved into NScript); same bytes.
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
 struct ScriptThingCopy:CScriptThing { ScriptThingCopy(const CScriptThing&); ~ScriptThingCopy(); };
@@ -907,22 +909,34 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-struct CQ_HeroSoulsGuildmasterScript {
+namespace NScript {
+class CQ_HeroSoulsGuildmasterScript {
+public:
  unsigned char BaseState[0x48];
  bool PlayedBriarCS,PlayedGuildMasterCS,PlayedGuildCS,OutsideWoodGuardsAttack,GiveWarningCutscene;
  fable_i32 GuardInWoodsCount,DistanceReached;
+public:
+    class CGuardInWoods;             // the entity class below (naming wave 35)
 };
+}
+using NScript::CQ_HeroSoulsGuildmasterScript;
 FABLE_STATIC_ASSERT(offsetof(CQ_HeroSoulsGuildmasterScript,PlayedGuildMasterCS)==0x49);
 FABLE_STATIC_ASSERT(offsetof(CQ_HeroSoulsGuildmasterScript,GuardInWoodsCount)==0x50);
-class CEntityScriptBase { public:                        // the PDB class the accessors belong to (Ego_r.pdb CEntityScriptBase, global)
+class CEntityScriptBase {
+    virtual ~CEntityScriptBase();   // retail slot 0 (the stand-in is polymorphic, as retail: the vptr moves here)
+ public:                        // the PDB class the accessors belong to (Ego_r.pdb CEntityScriptBase, global)
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
     void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
-struct CGuardInWoods : CEntityScriptBase {
- void* VTable;GameCalls* Game;CScriptThing Me;CQ_HeroSoulsGuildmasterScript* ParentClass;void* PMasterData;
- void Main();
+namespace NScript {
+class CQ_HeroSoulsGuildmasterScript::CGuardInWoods : public CEntityScriptBase {
+public:
+ GameCalls* Game;CScriptThing Me;CQ_HeroSoulsGuildmasterScript* ParentClass;void* PMasterData;
+private:
+    virtual void Main();                          // PDB ?Main@CGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@EAEXXZ
 };
-void CGuardInWoods::Main() {
+}
+void NScript::CQ_HeroSoulsGuildmasterScript::CGuardInWoods::Main() {
  SetPredicate(NScript::CIsThingAlive(Me));
  Game->NewScriptFrame();
  if(!IsActiveThreadTerminating()) {

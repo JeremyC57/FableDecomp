@@ -1,0 +1,20 @@
+addr       parity           behav  name
+00ddc980   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00ddc980   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ddc980   RELOCATION_MATCH PASS   Main
+00e5e0c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e5e0c0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00e5e0c0   WARN SHARED_HEADER_AVAILABLE CV_BodyGuardScript
+00e5e0c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e5e0c0   RELOCATION_MATCH PASS   Main
+00ee3ee0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ee3ee0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ee3ee0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData
+00ee3ee0   WARN SHARED_HEADER_AVAILABLE CV_TravellingHeroesScript
+00ee3ee0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee3ee0   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00ddc980 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CPrisonRacer::?Main@CPrisonRacer@CQ_PrisonRaceScript@NScript@@EAEXXZ
+  00e5e0c0 RELOCATION_MATCH NScript::CV_BodyGuardScript::CM_BodyGuardRespawn::?Main@CM_BodyGuardRespawn@CV_BodyGuardScript@NScript@@EAEXXZ
+  00ee3ee0 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Rose::?Main@CTH_Trigger_Guild_Rose@CV_TravellingHeroesScript@NScript@@EAEXXZ

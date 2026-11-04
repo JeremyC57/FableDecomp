@@ -1,10 +1,12 @@
 // NScript::CQ_EndGameFocalSitesScript::CBattleGuard::Main() -- guard stays villager while near hero, then fades out unless terminating.
-// Leaf: Main
+// Leaf: ?Main@CBattleGuard@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ
 // Naming wave 30 (family cst): the invented second view ScriptThingCopy (??1ScriptThingCopy@@QAE@XZ) over the flattened engine/CScriptThing.h is dropped: engine/CScriptThing.h's retail
 //   class declares the out-of-line copy 0x004ABE90 and the virtual ~CScriptThing 0x004AA840 itself (Ego_r.pdb / FableWin.pdb
 //   ??0CScriptThing@@QAE@ABV0@@Z / ??1CScriptThing@@UAE@XZ)
 // Native00D2C530,273 bytes. RegistrationD2B006 stores allocatorD2C430 for BattleGuard; allocation stores VT12CC320 whose Main is D2C530.
 // Parent ctorD2A820 is CQ_EndGameFocalSitesScript; PDB nestedMainD36CB0. Predicate12C32F0 is genuine CIsThingAlive (operator()/Clone/dtor).
+// Naming wave 35: identity reg 00d2b006 "BattleGuard" in 00d2aa40; Alloc 00d2c430; vtable 012cc320 slot 1; PDB ?Main@CBattleGuard@CQ_EndGameFocalSitesScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was CVtable_012cc320::vfunc_1 (wave3/labels_alloc.tsv); PDB ?Main@CBattleGuard@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
+//   Was `?Main@CBattleGuard@CQ_EndGameFocalSitesScript@NScript@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (base CEntityScriptBase made polymorphic); nested class fixed in place); same bytes.
 #include "fable_string.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
@@ -75,8 +77,12 @@ struct GameScriptCalls:CGameScriptInterface {
 extern "C" int rand(); //00BFEB16
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing&,const CScriptThing&,float); //00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing&,float,bool,bool); //00CBE716
-class CEntityScriptBase { public:void* __vftable;GameScriptCalls* Game;CScriptThing Me;void SetPredicate(const NScript::CPredicateBase&);bool IsActiveThreadTerminating() const;}; //00F35B10/00F35B30
-namespace NScript{class CQ_EndGameFocalSitesScript{ public:struct CBattleGuard:CEntityScriptBase{CQ_EndGameFocalSitesScript* ParentClass;void* PMasterData;void Main();};};}
+class CEntityScriptBase { public:virtual ~CEntityScriptBase();   // retail slot 0 (was the vptr placeholder: the stand-in is polymorphic, as retail)
+GameScriptCalls* Game;CScriptThing Me;void SetPredicate(const NScript::CPredicateBase&);bool IsActiveThreadTerminating() const;}; //00F35B10/00F35B30
+namespace NScript{class CQ_EndGameFocalSitesScript{ public:struct CBattleGuard:CEntityScriptBase{CQ_EndGameFocalSitesScript* ParentClass;void* PMasterData;
+private:
+    virtual void Main();                          // PDB ?Main@CBattleGuard@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ
+};};}
 void NScript::CQ_EndGameFocalSitesScript::CBattleGuard::Main(){
  SetPredicate(CIsThingAlive(Me));Game->NewScriptFrame();if(IsActiveThreadTerminating())return;
  rand();CScriptGameResourceObjectScriptedThingBase resource;

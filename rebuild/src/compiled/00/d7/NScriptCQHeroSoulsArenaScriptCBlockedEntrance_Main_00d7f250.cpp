@@ -1,6 +1,8 @@
-// NScript::CQ_HeroSoulsArenaScript::CBlockedEntrance::Main -- lock the arena door and display its blocked message when used by hero.
-// Leaf: Main
+// NScript::CQ_HeroSoulsArenaScript::CBlockedEntrance::Main() -- lock the arena door and display its blocked message when used by hero.
+// Leaf: ?Main@CBlockedEntrance@CQ_HeroSoulsArenaScript@NScript@@EAEXXZ
 // Native00D7F250,260 bytes. PDB nestedowner Main00D9F530; native resource TEXT_QST_B04_BLOCKED_ARENA_DOOR_10 confirms quest.
+// Naming wave 35: identity reg 00d7cbe6 "BlockedEntrance" in 00d7c890; Alloc 00d7f1a0; vtable 012d3f04 slot 1; PDB ?Main@CBlockedEntrance@CQ_HeroSoulsArenaScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was CVtable_012d3f04::vfunc_1 (wave3/labels_alloc.tsv); PDB ?Main@CBlockedEntrance@CQ_HeroSoulsArenaScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
+//   Was `?Main@CBlockedEntrance@CQ_HeroSoulsArenaScript@NScript@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (base CEntityScriptBase made polymorphic); nested class fixed in place); same bytes.
 #include "fable_string.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
@@ -26,11 +28,15 @@ struct GameScriptCalls:CGameScriptInterface {
  __forceinline bool MsgIsGameInfoClickedPast()const{return(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[40].MsgIsGameInfoClickedPast)();}
  __forceinline void NewScriptFrame()const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[7].NewScriptFrame)();}
 }; //nativeCGSI01260F0C:818=89DC10,1CC=8929D0,A0=894370,1C=6E7410 audited native/PDB signatures.
-class CEntityScriptBase { public:void* __vftable;GameScriptCalls* Game;ScriptThingCalls Me;
+class CEntityScriptBase { public:virtual ~CEntityScriptBase();   // retail slot 0 (was the vptr placeholder: the stand-in is polymorphic, as retail)
+GameScriptCalls* Game;ScriptThingCalls Me;
 public:
     bool IsActiveThreadTerminating() const;   // 0x00F35B30
 }; //actual PDB sizeof20 Game4 Me8; native unchanged
-namespace NScript {class CQ_HeroSoulsArenaScript { public:struct CBlockedEntrance:CEntityScriptBase {CQ_HeroSoulsArenaScript* ParentClass;void* PMasterData;void Main();};};}
+namespace NScript {class CQ_HeroSoulsArenaScript { public:struct CBlockedEntrance:CEntityScriptBase {CQ_HeroSoulsArenaScript* ParentClass;void* PMasterData;
+private:
+    virtual void Main();                          // PDB ?Main@CBlockedEntrance@CQ_HeroSoulsArenaScript@NScript@@EAEXXZ
+};};}
 void NScript::CQ_HeroSoulsArenaScript::CBlockedEntrance::Main(){
  Game->EntitySetAsLocked(Me,true);
  while(!IsActiveThreadTerminating()){

@@ -1,0 +1,92 @@
+// NScript::CV_BanditCampPathScript::CV_BanditCampPathScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script constructor: script base, owner/interface pair, vtable 0x012E4A9C, empty Bandits vector, two empty CScriptThing members
+// Leaf: ??0CV_BanditCampPathScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Retail: Fable.exe @ 0x00E46BD0, 93 bytes (+ int3 padding), `ret 8`.
+// Callees: CScriptBase::CScriptBase @ 0x00CB8110 (manifest label "CHeroMorphDef" is propagated, see GOTCHAS),
+// CBaseClass::CBaseClass @ 0x0099A2D0 (the CScriptThing root, twice); CScriptThing vtable 0x01238C8C.
+// Layout: Ego_r.pdb CV_BanditCampPathScript - 0x14: OverheardBanditConversation +0x48, Bandits (STLport vector, 12 bytes)
+// +0x4c, Bandit1 (CScriptThing, 12 bytes) +0x58, Bandit2 +0x64.
+// Shape: the 0x00E68F70 script-object model (arguments stored by an inlined `__declspec(novtable)` intermediate base
+// before the vtable); the Bandits vector is the real STLport structure (_Vector_base(const allocator&) with
+// _M_start(0), _M_finish(0) and the end-of-storage word in an _STLP_alloc_proxy built from an `allocator()`
+// temporary) -- a plain three-zero vector moves `mov ecx,edi` above the zero stores and swaps the two argument
+// loads (the fleet's "24i" shape); its zero words share ebx with the CScriptThing members' two zero words each,
+// whose inline constructor runs CBase(), stores its vtable, then the PImp member object's inline constructor zeroes
+// Data/Info (a member OBJECT keeps both stores after the vtable store; plain init-list members sink it).
+// Naming wave 35: identity level-script ctor: called by the Alloc 00e477a0 on the new block, stores script vtable 012e4a9c; PDB ??0CV_BanditCampPathScript@NScript@@QAE@PAVCScriptDataBase@@...; outer CV_BanditCampPathScript proven by its Main 00e46d30 entity registrations; was CV_BanditCampPathScript::CV_BanditCampPathScript (namespace spelling) (wave3/labels_alloc.tsv); PDB ??0CV_BanditCampPathScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z in Ego_r.pdb / FableWin.pdb.
+//   Was `??0CV_BanditCampPathScript@@QAE@PAXPAVCGameScriptInterface@@@Z`; the class is renamed into NScript and takes the PDB parameter types, handed to the row's
+//   argument-carrying base model unchanged (data = the first argument, stored at +0x44; the interface at +0x40); same bytes.
+class CScriptDataBase;
+class CGameScriptInterfaceBase;
+class CGameScriptInterface;
+
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
+
+struct __declspec(novtable) CScriptObject : CScriptBase {
+    CGameScriptInterface* m_pGame;                   // +0x40
+    void* m_pOwner;                                  // +0x44
+    CScriptObject(void* owner, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pOwner(owner) { }
+};
+
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+
+class CScriptThing;
+class CCPPointerInfo;
+
+template <class T> class CCountedPointer { public:                // CScriptThing::PImp
+    CScriptThing* Data;                              // +0
+    CCPPointerInfo* Info;                            // +4
+    CCountedPointer() : Data(0), Info(0) { }
+};
+
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() { }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+
+template <class T>
+struct allocator {
+    allocator() { }
+};
+
+template <class T, class A>
+struct _STLP_alloc_proxy : A {                       // STLport: the end-of-storage pointer over an empty allocator
+    T _M_data;
+    _STLP_alloc_proxy(const A& a, T p) : A(a), _M_data(p) { }
+};
+
+template <class T>
+struct _Vector_base {
+    T* _M_start;
+    T* _M_finish;
+    _STLP_alloc_proxy<T*, allocator<T> > _M_end_of_storage;
+    _Vector_base(const allocator<T>& a) : _M_start(0), _M_finish(0), _M_end_of_storage(a, (T*)0) { }
+};
+
+template <class T>
+struct CRetailVector : _Vector_base<T> {             // STLport vector<T>: three pointers (12 bytes in retail)
+    CRetailVector() : _Vector_base<T>(allocator<T>()) { }
+};
+
+namespace NScript {
+class CV_BanditCampPathScript : public CScriptObject {
+public:     // vtable 0x012E4A9C
+    bool OverheardBanditConversation;                // +0x48
+    CRetailVector<CScriptThing> Bandits;             // +0x4c
+    CScriptThing Bandit1;                            // +0x58
+    CScriptThing Bandit2;                            // +0x64
+    virtual void v00();
+    CV_BanditCampPathScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
+    virtual ~CV_BanditCampPathScript();    // ??1CV_BanditCampPathScript@NScript@@UAE@XZ
+};
+}
+using NScript::CV_BanditCampPathScript;
+
+NScript::CV_BanditCampPathScript::CV_BanditCampPathScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+    : CScriptObject((void*)data, (CGameScriptInterface*)&game)
+{
+}

@@ -1,0 +1,60 @@
+// NScript::CQ_TraderConflictEvilScript::CQ_TraderConflictEvilScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script constructor: CScriptBase(), the data/interface pair at +0x44/+0x40, own vtable, three cleared words and a timer registered with the game script interface
+// Leaf: ??0CQ_TraderConflictEvilScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00DF5C90, length 62 bytes.
+// Callees: CScriptBase::CScriptBase @ 0x00CB8110 (the manifest's "CHeroMorphDef" label is propagated),
+// CGameScriptInterface::RegisterTimer (slot 87, +0x15c) through the interface global @ 0x0143E8F8 (the landed
+// naming). Vtable 0x012DE6A4 (no RTTI, quest-script module); the manifest label CV_SwordInTheStoneScript is
+// kept (Init @ 0x00EB6A00 and the two watchers in this chunk work on the same layout: +0x48..+0x51, +0x60, +0x7c).
+// Shape (landed 0x00CE1A00 model): the two arguments stored before the derived vtable store belong to the
+// inlined `__declspec(novtable)` intermediate base; the three zero stores after it come from an embedded state member's inline constructor (plain
+// init-list zeros hoist the `xor eax,eax` above the vtable store);
+// the body registers the timer into +0x6c; `ret 8`, `this` in eax.
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+// Naming wave 35: identity out-of-line copy of the ctor the Alloc 00dfa020 inlines: base CScriptBase ctor 0x00CB8110 on ecx, stores script vtable 012de6a4, ret 8 (two args); PDB ??0CQ_TraderConflictEvilScript@NScript@@QAE@PAVCScriptDataBase@@...; outer CQ_TraderConflictEvilScript proven by its Main 00df6010 entity registrations; was CVtable_012de6a4::CVtable_012de6a4 (wave3/labels_alloc.tsv); PDB ??0CQ_TraderConflictEvilScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z in FableWin.pdb.
+//   Was `??0CV_SwordInTheStoneScript@@QAE@PAX0@Z`; the class is renamed into NScript and takes the PDB parameter types, handed to the row's
+//   argument-carrying base model unchanged (data = the first argument, stored at +0x44; the interface at +0x40); same bytes.
+class CScriptDataBase;
+class CGameScriptInterfaceBase;
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
+
+struct __declspec(novtable) CScriptObject : CScriptBase {   // the argument-carrying intermediate base: both words stored before the derived vtable
+    void* m_pInterface;                            // +0x40 (second argument, CGameScriptInterfaceBase*)
+    void* m_pData;                                 // +0x44 (first argument, CScriptDataBase*)
+    CScriptObject(void* data, void* iface) : CScriptBase(), m_pInterface(iface), m_pData(data) { }
+};
+
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
+
+struct SSwordState {                               // +0x48..+0x53: a member object so the zero register is set after the vtable store
+    long m_swordState;                             // +0x48
+    long m_crowdState;                             // +0x4c
+    long m_pullCount;                              // +0x50
+    SSwordState() : m_swordState(0), m_crowdState(0), m_pullCount(0) { }
+};
+
+namespace NScript {
+class CQ_TraderConflictEvilScript : public CScriptObject {
+public:  // vtable 0x012DE6A4
+    SSwordState   m_state;                         // +0x48
+    unsigned char _pad54[0x18];                    // +0x54..+0x6b
+    long          m_crowdTimer;                    // +0x6c
+    virtual void v00();
+    CQ_TraderConflictEvilScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
+    virtual ~CQ_TraderConflictEvilScript();    // ??1CQ_TraderConflictEvilScript@NScript@@UAE@XZ
+};
+}
+using NScript::CQ_TraderConflictEvilScript;
+
+NScript::CQ_TraderConflictEvilScript::CQ_TraderConflictEvilScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+    : CScriptObject((void*)data, (void*)&game), m_state()
+{
+    m_crowdTimer = pDSTGame->RegisterTimer();
+}
