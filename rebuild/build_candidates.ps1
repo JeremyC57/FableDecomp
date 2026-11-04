@@ -382435,6 +382435,41 @@ $catalog = @(
         TestSource = '00/f3/CGPUScratchBufferTextureManager_AllocteMemoryPage_00f37660_test.cpp'
         PassPattern = '00f37660_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0097f870'
+        Module = 'CAIStateGroupBase'
+        Source = '00/97/CAIStateGroupBase_AIActionMinionWander_0097f870.cpp'
+        TestSource = '00/97/CAIStateGroupBase_AIActionMinionWander_0097f870_test.cpp'
+        PassPattern = '0097f870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00687540'
+        Module = 'CMessageEventManager'
+        Source = '00/68/CMessageEventManager_AddMessage_00687540.cpp'
+        TestSource = '00/68/CMessageEventManager_AddMessage_00687540_test.cpp'
+        PassPattern = '00687540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004888c0'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_SwitchPlayerCharactersWith_004888c0.cpp'
+        TestSource = '00/48/CPlayer_SwitchPlayerCharactersWith_004888c0_test.cpp'
+        PassPattern = '004888c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b847d0'
+        Module = 'CEngineSubPrimitiveRenderer'
+        Source = '00/b8/CEngineSubPrimitiveRenderer_RadixSort_00b847d0.cpp'
+        TestSource = '00/b8/CEngineSubPrimitiveRenderer_RadixSort_00b847d0_test.cpp'
+        PassPattern = '00b847d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004feec0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_UnloadRegion_004feec0.cpp'
+        TestSource = '00/4f/CWorldMap_UnloadRegion_004feec0_test.cpp'
+        PassPattern = '004feec0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

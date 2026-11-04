@@ -3944,7 +3944,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004884d0	UpdateFreeCamera	CPlayer	__thiscall	void	1	CPlayer *	1	yes	accepted									
 00488620	GetPNearestTCVillage	CPlayer	__thiscall	CTCVillage *	1	CPlayer *	1	yes	accepted									
 004886f0	GetPNearestTCVillage	CPlayer	__thiscall	CTCVillage *	1	CPlayer *	1	yes	accepted									
-004887c0	SetupInitialPlayerMode	CPlayer_Methods	__thiscall	void	1	CPlayer *	1	yes	accepted									
+004887c0	SetupInitialPlayerMode	CPlayer	__thiscall	void	1	CPlayer *	1	yes	accepted									
 004888c0	SwitchPlayerCharactersWith	CPlayer	__thiscall	bool	2	CPlayer *,CPlayer *	1	yes	accepted									
 00488a80	InitialiseIfUninitialised	CPlayer	__thiscall	void	1	CPlayer *	1	yes	accepted									
 00488ab0	Update	CPlayer	__thiscall	void	1	CPlayer *	1	yes	accepted									
@@ -5214,7 +5214,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004c73b0	DeleteArray_004c73b0	_global	__fastcall	void *	1	uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\global_operatornew_004c73b0.cpp
 004c73d0	GetPos	CThing	__thiscall	ulong	1	CVertexBufferWin32 *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CVertexBufferWin32_DoSizeof_004c73d0.cpp
 004c73e0	InitTC	CThing	__thiscall	void	2	CThing *,CTCBase *	1	yes	accepted									
-004c7440	SetMember_byte0x90_004c7440	_global	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CTCPhysicsNavigator_EnableNavigator_004c7440.cpp
+004c7440	SetPlayerNumber	CThing	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CTCPhysicsNavigator_EnableNavigator_004c7440.cpp
 004c7460	vfunc_21	CThing	__thiscall	bool	2	CThingFilter_IsUnconscious *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CThingFilterIsUnconscious_operator_004c7460.cpp
 004c7470	ValidateThing	CThing	__thiscall	bool	2	CThing *,CCharString *	1	yes	accepted									
 004c74b0	DrawGetEditDrawInfo	CThing	__thiscall	bool	3	CThing *,float,CEditEngineDrawInfo *	1	yes	accepted									
@@ -17163,7 +17163,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006d5a90	UpdateBrain	CThingAICreature	__thiscall	bool	3	CThingAICreature *,long,CBrainOutput *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\CThingAICreature_UpdateBrain_006d5a90.cpp
 006d5ab0	Forward_ForceResetWithOutput_via0x1a8_006d5ab0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006d5ab0.cpp
 006d5ac0	Forward_InitCreaturePosition_via0x1a8_006d5ac0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006d5ac0.cpp
-006d5ad0	Forward_GetCurrentStateGroupScriptPriority_via0x1a8_006d5ad0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006d5ad0.cpp
+006d5ad0	GetCurrentStateGroupScriptPriority	CThingAICreature	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006d5ad0.cpp
 006d5ae0	Forward_GetCurrentStateGroupType_via0x1a8_006d5ae0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006d5ae0.cpp
 006d5af0	IsFacingCorrectDirectionForMovementToPos	_global	__fastcall	bool	4	CThingAICreature *,CBrainOutput *,CTCLook *,C3DVector *	1	yes	accepted									
 006d5b50	UpdateAITurning	CThingAICreature	__thiscall	void	2	CThingAICreature *,C3DVector *	1	yes	accepted									

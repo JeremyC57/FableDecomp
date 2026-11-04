@@ -1,0 +1,9 @@
+address	name	evidence
+004888c0	CPlayer::SwitchPlayerCharactersWith	RELOCATION_MATCH; Ego_r/FableWin ?SwitchPlayerCharactersWith@CPlayer@@QAE_NAAV1@@Z
+004feec0	CWorldMap::UnloadRegion	RELOCATION_MATCH; Ego_r ?UnloadRegion@CWorldMap@@IAEXJ_N@Z
+00687540	CMessageEventManager::AddMessage	RELOCATION_MATCH; Ego_r ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z
+0097f870	CAIStateGroupBase::AIAction_MinionWander	RELOCATION_MATCH; Ego_r ?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z
+00b847d0	CEngineSubPrimitiveRenderer::RadixSort	RELOCATION_MATCH; Ego_r/FableWin ?RadixSort@CEngineSubPrimitiveRenderer@@AAEXAAV?$CArray@VCSortElement@CEngineSubPrimitiveRenderer@@@@@Z
+004c7440	CThing::SetPlayerNumber	Ego_r ?SetPlayerNumber@CThing@@QAEXJ@Z; byte store to +0x90 (CThing::PlayerNumber); see NAME_FIXES.tsv
+006d5ad0	CThingAICreature::GetCurrentStateGroupScriptPriority	Ego_r symbol; forwards through +0x1A8 to CAIBrain::GetCurrentStateGroupScriptPriority 0x0088B760; see NAME_FIXES.tsv
+004887c0	CPlayer::SetupInitialPlayerMode	Ego_r ?SetupInitialPlayerMode@CPlayer@@AAEXXZ; called on each living character after the swap in 0x004888C0

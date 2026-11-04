@@ -1,0 +1,12 @@
+catalog  004c7440 _global::SetMember_byte0x90_004c7440 -> CThing::SetPlayerNumber
+catalog  006d5ad0 _global::Forward_GetCurrentStateGroupScriptPriority_via0x1a8_006d5ad0 -> CThingAICreature::GetCurrentStateGroupScriptPriority
+catalog  004887c0 CPlayer_Methods::SetupInitialPlayerMode -> CPlayer::SetupInitialPlayerMode
+catalog  0097f870 AIAction_MinionWander -> CAIStateGroupBase::AIAction_MinionWander
+catalog  00687540 AddMessage -> CMessageEventManager::AddMessage
+catalog  004888c0 SwitchPlayerCharactersWith -> CPlayer::SwitchPlayerCharactersWith
+catalog  00b847d0 RadixSort -> CEngineSubPrimitiveRenderer::RadixSort
+catalog  004feec0 UnloadRegion -> CWorldMap::UnloadRegion
+manifest 004887c0 CPlayer_Methods::SetupInitialPlayerMode -> CPlayer::SetupInitialPlayerMode
+manifest 004c7440 _global::SetMember_byte0x90_004c7440 -> CThing::SetPlayerNumber
+manifest 006d5ad0 _global::Forward_GetCurrentStateGroupScriptPriority_via0x1a8_006d5ad0 -> CThingAICreature::GetCurrentStateGroupScriptPriority
+labels 8  catalog renamed 8  manifest renamed 3

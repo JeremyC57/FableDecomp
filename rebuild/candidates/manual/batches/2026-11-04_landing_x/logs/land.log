@@ -1,0 +1,41 @@
+addr       parity           behav  name
+0097f870   WARN SHARED_HEADER_AVAILABLE CTCBase
+0097f870   WARN SHARED_HEADER_AVAILABLE C3DVector
+0097f870   WARN SHARED_HEADER_AVAILABLE CThing
+0097f870   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0097f870   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097f870   RELOCATION_MATCH PASS   AIAction_MinionWander
+00687540   WARN SHARED_HEADER_AVAILABLE C3DVector
+00687540   WARN SHARED_HEADER_AVAILABLE CTCBase
+00687540   WARN SHARED_HEADER_AVAILABLE CWorld
+00687540   RELOCATION_MATCH PASS   AddMessage
+004888c0   WARN RELOC_NAME: ?SetPlayerNumber@CThing@@QAEXJ@Z -> 004c7440 labelled '_global::SetMember_byte0x90_004c7440'
+004888c0   RELOCATION_MATCH PASS   SwitchPlayerCharactersWith
+00b847d0   RELOCATION_MATCH PASS   RadixSort
+004feec0   WARN SHARED_HEADER_AVAILABLE C3DVector
+004feec0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+004feec0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+004feec0   WARN SHARED_HEADER_AVAILABLE CMapInfo
+004feec0   WARN SHARED_HEADER_AVAILABLE CRegion
+004feec0   WARN SHARED_HEADER_AVAILABLE CArray
+004feec0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004feec0   WARN SHARED_HEADER_AVAILABLE CThingManager
+004feec0   WARN SHARED_HEADER_AVAILABLE CThingMapManager
+004feec0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+004feec0   WARN SHARED_HEADER_AVAILABLE CWorld
+004feec0   WARN RELOC_NAME: ?RemoveMap@CEngineManager@@QAEXJ@Z -> 00640430 labelled 'CEngineManager::SetMapAsUnloaded'
+004feec0   RELOCATION_MATCH PASS   UnloadRegion
+
+WINS: 5
+  0097f870 RELOCATION_MATCH CAIStateGroupBase::?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z
+  00687540 RELOCATION_MATCH CMessageEventManager::?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z
+  004888c0 RELOCATION_MATCH CPlayer::?SwitchPlayerCharactersWith@CPlayer@@QAE_NAAV1@@Z
+  00b847d0 RELOCATION_MATCH CEngineSubPrimitiveRenderer::?RadixSort@CEngineSubPrimitiveRenderer@@AAEXAAV?$CArray@VCSortElement@CEngineSubPrimitiveRenderer@@@@@Z
+  004feec0 RELOCATION_MATCH CWorldMap::?UnloadRegion@CWorldMap@@IAEXJ_N@Z
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupBase_AIActionMinionWander_0097f870
+  CMessageEventManager_AddMessage_00687540
+  CPlayer_SwitchPlayerCharactersWith_004888c0
+  CEngineSubPrimitiveRenderer_RadixSort_00b847d0
+  CWorldMap_UnloadRegion_004feec0

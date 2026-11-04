@@ -252,6 +252,16 @@ private:
     void InitModeViewHero(EPlayerMode,CProcessedInput*);
     void UninitModeViewHero(EPlayerMode,CProcessedInput*);
 public:
+#ifdef FABLE_RETAIL_PLAYER_SWITCHCHARACTERS
+    // Nested opt-in (chunk 762, row 0x004888C0): Ego_r.pdb / FableWin.pdb ?SwitchPlayerCharactersWith@CPlayer@@QAE_NAAV1@@Z (public),
+    // ?SetupInitialPlayerMode@CPlayer@@AAEXXZ (private, retail 0x004887C0) and ?IsMainPlayer@CPlayer@@QBE_NXZ (const; inline in that
+    // row's TU: Number is read before the GetMainPlayerNumber 0x00449700 call, `mov edi,[esi+28h] ; call ; cmp edi,eax`).
+    bool SwitchPlayerCharactersWith(CPlayer& other);
+    inline bool IsMainPlayer() const;
+private:
+    void SetupInitialPlayerMode();                               // 0x004887C0
+public:
+#endif
 #endif // FABLE_RETAIL_PLAYER
 #ifndef FABLE_RETAIL_PLAYER
     void*                                                        __vftable; // +0x00 vptr, or first dword of a flattened base subobject

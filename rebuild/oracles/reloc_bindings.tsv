@@ -36461,3 +36461,11 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ?g_pEngineCamera@@3PAUCEngineCamera@@A	01436ea0	00bcc700
 ?GetFreeCookingPot@CAIStateGroup_PrepareMeal@@ABEPAVCThing@@XZ	00946380	00946400
 ?push_back@?$vector@UCResourcePage@CGPUScratchBufferTextureManager@@V?$allocator@UCResourcePage@CGPUScratchBufferTextureManager@@@std@@@std@@QAEXABUCResourcePage@CGPUScratchBufferTextureManager@@@Z	00f38860	00f37660
+?SetupInitialPlayerMode@CPlayer@@AAEXXZ	004887c0	004888c0
+?_M_fill_insert@?$vector@VCSortElement@CEngineSubPrimitiveRenderer@@V?$allocator@VCSortElement@CEngineSubPrimitiveRenderer@@@std@@@std@@QAEXPAVCSortElement@CEngineSubPrimitiveRenderer@@IABV34@@Z	00b85fd0	00b847d0
+?erase@?$vector@VCSortElement@CEngineSubPrimitiveRenderer@@V?$allocator@VCSortElement@CEngineSubPrimitiveRenderer@@@std@@@std@@QAEPAVCSortElement@CEngineSubPrimitiveRenderer@@PAV34@0@Z	00b85ae0	00b847d0
+?AddMessage@CMessageEventManager@@QAEPAXJKPAUC3DVector@@PAUCThing@@1MMJ@Z	00687540	004feec0
+?Get@CEngineManager@@SIAAU1@XZ	00436fb0	004feec0
+?OnLevelsUnload@CThingManager@@QAEXABUCLongArray@@_N@Z	00525cd0	004feec0
+?OnRegionUnloaded@CQuestManager@@QAEXABUCCharString@@@Z	004afc30	004feec0
+?g_pQuestManager@@3PAUCQuestManager@@A	013b89fc	004feec0

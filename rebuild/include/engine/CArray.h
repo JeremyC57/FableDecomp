@@ -25,7 +25,14 @@ public:
     T& operator[](unsigned int i) { return this->_M_start[i]; }
     const T& operator[](unsigned int i) const { return this->_M_start[i]; }
 #endif
+#ifdef FABLE_RETAIL_CARRAY_GETASCARRAY_START
+    // Nested opt-in (chunk 762, row 0x00B847D0 RadixSort): the non-const form reads _M_start like the const one (the landed
+    // 0x00BB1EF0 CEngineClothRenderer::FrameStart model); `&front()` makes VC7.1 select into a register instead of
+    // storing both arms of the conditional to the spill slot (`mov [esp+10h],eax ; ja ; mov [esp+10h],edi`).
+    T* GetAsCArray() { return this->size()>0 ? this->_M_start : GetZeroSizeArray(); }
+#else
     T* GetAsCArray() { return this->size()>0 ? &this->front() : GetZeroSizeArray(); }
+#endif
     const T* GetAsCArray() const { return this->size()>0 ? this->_M_start : (const T*)this; }
 private:
     T* GetZeroSizeArray() { return (T*)this; }
