@@ -36459,3 +36459,5 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ?_M_insert_overflow@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXPAVC3DVector@@ABV3@ABV__true_type@@I_N@Z	0066e370	00a887b0
 ??0CBaseClassNonCopyable@@QAE@XZ	0099a2f0	00bcc700
 ?g_pEngineCamera@@3PAUCEngineCamera@@A	01436ea0	00bcc700
+?GetFreeCookingPot@CAIStateGroup_PrepareMeal@@ABEPAVCThing@@XZ	00946380	00946400
+?push_back@?$vector@UCResourcePage@CGPUScratchBufferTextureManager@@V?$allocator@UCResourcePage@CGPUScratchBufferTextureManager@@@std@@@std@@QAEXABUCResourcePage@CGPUScratchBufferTextureManager@@@Z	00f38860	00f37660

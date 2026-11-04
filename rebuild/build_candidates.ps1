@@ -382386,6 +382386,55 @@ $catalog = @(
         TestSource = '00/d3/NScriptCQFireHeartScript_RestoreFollowers_00d361f0_test.cpp'
         PassPattern = '00d361f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00cfcca0'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CPretendGuard'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCPretendGuard_Main_00cfcca0.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCPretendGuard_Main_00cfcca0_test.cpp'
+        PassPattern = '00cfcca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006399b0'
+        Module = 'CTCRegionDisplay'
+        Source = '00/63/CTCRegionDisplay_GlobalUpdate_006399b0.cpp'
+        TestSource = '00/63/CTCRegionDisplay_GlobalUpdate_006399b0_test.cpp'
+        PassPattern = '006399b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bbbf0'
+        Module = 'CPersistContext'
+        Source = '00/9b/CPersistContext_CheckUnknownSymbols_009bbbf0.cpp'
+        TestSource = '00/9b/CPersistContext_CheckUnknownSymbols_009bbbf0_test.cpp'
+        PassPattern = '009bbbf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00946400'
+        Module = 'CAIStateGroup_PrepareMeal'
+        Source = '00/94/CAIStateGroupPrepareMeal_IsRunnable_00946400.cpp'
+        TestSource = '00/94/CAIStateGroupPrepareMeal_IsRunnable_00946400_test.cpp'
+        PassPattern = '00946400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e2c00'
+        Module = 'CTCTalk'
+        Source = '00/6e/CTCTalk_OnCreate_006e2c00.cpp'
+        TestSource = '00/6e/CTCTalk_OnCreate_006e2c00_test.cpp'
+        PassPattern = '006e2c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a11ae0'
+        Module = 'CPhysicsMeshObject'
+        Source = '00/a1/CPhysicsMeshObject_GetBoundingBoxCentre_00a11ae0.cpp'
+        TestSource = '00/a1/CPhysicsMeshObject_GetBoundingBoxCentre_00a11ae0_test.cpp'
+        PassPattern = '00a11ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f37660'
+        Module = 'CGPUScratchBufferTextureManager'
+        Source = '00/f3/CGPUScratchBufferTextureManager_AllocteMemoryPage_00f37660.cpp'
+        TestSource = '00/f3/CGPUScratchBufferTextureManager_AllocteMemoryPage_00f37660_test.cpp'
+        PassPattern = '00f37660_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

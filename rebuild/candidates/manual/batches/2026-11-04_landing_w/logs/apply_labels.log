@@ -1,0 +1,6 @@
+catalog  00946380 CAIStateGroup_SitForMeal::GetPCookingPot -> CAIStateGroup_PrepareMeal::GetFreeCookingPot
+catalog  006e2c00 OnCreate -> CTCTalk::OnCreate
+catalog  00a11ae0 GetBoundingBoxCentre -> CPhysicsMeshObject::GetBoundingBoxCentre
+catalog  00f37660 AllocteMemoryPage -> CGPUScratchBufferTextureManager::AllocteMemoryPage
+manifest 00946380 CAIStateGroup_SitForMeal::GetPCookingPot -> CAIStateGroup_PrepareMeal::GetFreeCookingPot
+labels 8  catalog renamed 4  manifest renamed 1

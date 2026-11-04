@@ -1,6 +1,9 @@
 #ifndef FABLE_ENGINE_CTCCREATURENAVIGATION_H
 #define FABLE_ENGINE_CTCCREATURENAVIGATION_H
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_NAVIGABLE
+#include "engine/ETCInterfaceType.h"
+#endif
 class CNavigatorBase;
 #ifdef FABLE_RETAIL_CTCCREATURENAVIGATION
 class C2DVector;
@@ -42,6 +45,13 @@ public:
     void CalculateRouteFromTo(const C3DVector&,const C3DVector&,std::vector<std::pair<C2DVector,unsigned char>,std::allocator<std::pair<C2DVector,unsigned char> > >&) const;
     void InitialiseFromPreCalculatedRoute(const C3DVector&,const std::vector<std::pair<C2DVector,unsigned char>,std::allocator<std::pair<C2DVector,unsigned char> > >&,const C3DVector&);
     void CalculateNavigableWidthOfLine(const C3DVector&,const C3DVector&,float&,float&);
+#ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_NAVIGABLE
+    // Nested opt-in (chunk 760, row 0x0093D270 CAIStateGroup_MeleeCombatNearbyBase::IsRunnable): the interface type
+    // (TCI_NAVIGATION 7: the row's HasTC tests bit 7 of +0x20 and looks up key 7) and FableWin.pdb / Ego_r.pdb
+    // ?IsAbleToNavigateFromPosToPos@CTCCreatureNavigation@@QBE_NABVC3DVector@@0M@Z (public const, retail 0x006CB620).
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_NAVIGATION; }
+    bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity) const;   // 0x006CB620
+#endif
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCCreatureNavigation)==0x60);

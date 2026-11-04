@@ -43,6 +43,10 @@ public:
     C3DVector GetBoundingBoxXEdge() const;
     C3DVector GetBoundingBoxYEdge() const;
 #endif
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_CENTRE
+    // Nested opt-in (chunk 760, row 0x00A11AE0): Ego_r.pdb ?GetBoundingBoxCentre@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ.
+    C3DVector GetBoundingBoxCentre() const;                              // 0x00A11AE0
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CPhysicsMeshObject)==0x40);
 #endif

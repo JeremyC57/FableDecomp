@@ -1,0 +1,28 @@
+addr       parity           behav  name
+00cfcca0   RELOCATION_MATCH PASS   Main
+006399b0   RELOCATION_MATCH PASS   GlobalUpdate
+009bbbf0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009bbbf0   RELOCATION_MATCH PASS   CheckUnknownSymbols
+00946400   WARN RELOC_NAME: ?GetFreeCookingPot@CAIStateGroup_PrepareMeal@@ABEPAVCThing@@XZ -> 00946380 labelled 'CAIStateGroup_SitForMeal::GetPCookingPot'
+00946400   RELOCATION_MATCH PASS   IsRunnable
+006e2c00   RELOCATION_MATCH PASS   OnCreate
+00a11ae0   RELOCATION_MATCH PASS   GetBoundingBoxCentre
+00f37660   RELOCATION_MATCH PASS   AllocteMemoryPage
+
+WINS: 7
+  00cfcca0 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CPretendGuard::?Main@CPretendGuard@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
+  006399b0 RELOCATION_MATCH CTCRegionDisplay::?GlobalUpdate@CTCRegionDisplay@@UAEX_N@Z
+  009bbbf0 RELOCATION_MATCH CPersistContext::?CheckUnknownSymbols@CPersistContext@@QAEXXZ
+  00946400 RELOCATION_MATCH CAIStateGroup_PrepareMeal::?IsRunnable@CAIStateGroup_PrepareMeal@@MAE_NXZ
+  006e2c00 RELOCATION_MATCH CTCTalk::?OnCreate@CTCTalk@@UAEXXZ
+  00a11ae0 RELOCATION_MATCH CPhysicsMeshObject::?GetBoundingBoxCentre@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ
+  00f37660 RELOCATION_MATCH CGPUScratchBufferTextureManager::?AllocteMemoryPage@CGPUScratchBufferTextureManager@@QAEJJ_N@Z
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  NScriptCQAwakeningTheOracleScriptCPretendGuard_Main_00cfcca0
+  CTCRegionDisplay_GlobalUpdate_006399b0
+  CPersistContext_CheckUnknownSymbols_009bbbf0
+  CAIStateGroupPrepareMeal_IsRunnable_00946400
+  CTCTalk_OnCreate_006e2c00
+  CPhysicsMeshObject_GetBoundingBoxCentre_00a11ae0
+  CGPUScratchBufferTextureManager_AllocteMemoryPage_00f37660

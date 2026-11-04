@@ -107,9 +107,20 @@ template<class I> inline void _Destroy(I first,I last) {
     __destroy(first,last,(typename iterator_traits<I>::value_type*)0);
 }
 // _uninitialized.h
+#ifdef FABLE_STLP_OUTOFLINE_UNINIT_COPY
+// Opt-in (chunk 760, row 0x00CBC130 vector::_M_insert_overflow): like FABLE_STLP_OUTOFLINE_UNINIT_FILL_N below, the retail TU keeps
+// the non-POD __uninitialized_copy instantiation out of line as a __fastcall COMDAT (0x00CB9B00, called twice with the tag
+// temporary passed by address); the same-TU noinline body gives that shape.
+#pragma auto_inline(off)
+template<class I,class O> __declspec(noinline) O __fastcall __uninitialized_copy(I first,I last,O result,const __false_type&) {
+    O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
+}
+#pragma auto_inline(on)
+#else
 template<class I,class O> inline O __uninitialized_copy(I first,I last,O result,const __false_type&) {
     O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
 }
+#endif
 template<class T> inline T* __uninitialized_copy(const T* first,const T* last,T* result,const __true_type&) {
     return (T*)__copy_trivial(first,last,result);
 }
@@ -223,11 +234,19 @@ public:
     void pop_back() { --this->_M_finish; _Destroy(this->_M_finish); }
     _Tp& operator[](size_type n) { return *(begin()+n); }
     const _Tp& operator[](size_type n) const { return *(begin()+n); }
+#ifdef FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
+    // Per-TU opt-in (chunk 760, row 0x0086BE40 CRandomAppearanceMorph::GetRandomBodyParts; like
+    // FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_ASSIGN): STLport's push_back is one inline body, which VC7.1
+    // expanded in some TUs and called as a COMDAT in others; that TU calls push_back<CMorphSet::CMeshTextureSet> 0x0086E7C0
+    // (whose own body expands _M_insert_overflow). A declaration only here, so the row calls it.
+    void push_back(const _Tp& x);
+#else
     void push_back(const _Tp& x) {
         if(this->_M_finish!=this->_M_end_of_storage._M_data) {
             _Construct(this->_M_finish,x); ++this->_M_finish;
         } else _M_insert_overflow(this->_M_finish,x,_IsPODType(),1,true);
     }
+#endif
     iterator insert(iterator position,const _Tp& x) {
         size_type n=position-begin();
         if(this->_M_finish!=this->_M_end_of_storage._M_data) {
@@ -464,6 +483,11 @@ public:
         return iterator(next_node);
     }
     void pop_front() { erase(begin()); }
+#ifdef FABLE_RETAIL_STLP_LIST_POPBACK
+    // chunk 760 (row 0x00683B00 CTCCreatureOpinionOfHero::ClearPendingDeeds): STLport 4.6 _list.h pop_back():
+    // `iterator __tmp = end(); erase(--__tmp);` (0x00683BA9: the head's _M_prev, its next/prev, prev->next first, then free).
+    void pop_back() { iterator tmp=end(); erase(--tmp); }
+#endif
 #endif
 };
 // _bitset.h / _range_errors.h (no-exceptions branch)

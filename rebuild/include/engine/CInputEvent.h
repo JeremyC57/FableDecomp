@@ -17,6 +17,11 @@ class CInputEvent {
 public:
     CInputEvent();                                                       // 0x00A04410 ??0CInputEvent@@QAE@XZ
     ~CInputEvent();                                                      // 0x00A03B30 ??1CInputEvent@@QAE@XZ
+#ifdef FABLE_RETAIL_CINPUTEVENT_COPY
+    // Opt-in (chunk 760, row 0x009F5690 CInputEventPackage(CAFile&)): FableWin.pdb ??0CInputEvent@@QAE@ABV0@@Z, out of line in
+    // retail (0x009E4850, called by push_back's placement copy).
+    CInputEvent(const CInputEvent&);                                     // 0x009E4850
+#endif
     EInputEventType GetType() const;                                     // 0x00A03B40 ?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ
     EInputKey GetKey() const;                                            // 0x00A03B70 ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ
     UInputEventData  Data;                                               // +0x00

@@ -24,6 +24,9 @@
 #include "rebuild_abi.h"
 #include "engine/CTCBase.h"
 #include "engine/CDefPointer.h"
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_DEEDS
+#include "stlport/fable_containers.h"
+#endif
 class COpinionOfHeroDef;
 class COpinionPersonalityDef;
 enum EOpinionAttitudeType;                                               // MS forward enum (the row defines the enumerators it uses)
@@ -53,9 +56,18 @@ public:
     unsigned long        ReactionMask_[3];       // +0x30 std::vector<bool> ReactionMask
     unsigned long        DeedMask_[3];           // +0x3c std::vector<bool> DeedMask
     unsigned long        RelativeOpinion_[3];    // +0x48 COpinionSet RelativeOpinion (CArray<float> OpinionValues)
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_DEEDS
+    // Nested opt-in (chunk 760, row 0x00683B00 ClearPendingDeeds): the deed lists typed (STLport list<long>, 4 bytes each; the
+    // retail list members below need FABLE_RETAIL_STLP_LIST); ?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ (Ego_r.pdb).
+    void ClearPendingDeeds();                                            // 0x00683B00
+    std::list<long>      PendingDeeds;           // +0x54
+    long                 LastFrameAppliedDeedEffect[92];   // +0x58
+    std::list<long>      KnownDeeds[92];         // +0x1c8
+#else
     unsigned long        PendingDeeds_[1];       // +0x54 std::list<long> PendingDeeds
     long                 LastFrameAppliedDeedEffect[92];   // +0x58
     unsigned long        KnownDeeds_[92];        // +0x1c8 std::list<long> KnownDeeds[92]
+#endif
     unsigned long        TransientOffsets_[1];   // +0x338 std::list<COpinionTransientOffset> TransientOffsets
     EOpinionAttitudeType ForcedAttitude;         // +0x33c
     bool                 InteractedFlag;         // +0x340

@@ -1,0 +1,9 @@
+address	name	note
+00946380	CAIStateGroup_PrepareMeal::GetFreeCookingPot	Ego_r.pdb private const; was CAIStateGroup_SitForMeal::GetPCookingPot
+00878a80	NCameraModes::CProjectileWeapon::GetCamPosOffsetXY	Ego_r.pdb
+00878be0	NCameraModes::CProjectileWeapon::GetPosFromParams	Ego_r.pdb
+00a11ae0	CPhysicsMeshObject::GetBoundingBoxCentre	Ego_r.pdb
+00683b00	CTCCreatureOpinionOfHero::ClearPendingDeeds	probable (Ego_r.pdb public void member that empties PendingDeeds)
+006e2c00	CTCTalk::OnCreate	CTCTalk vtable slot 4 (catalog vfunc_4)
+00f37660	CGPUScratchBufferTextureManager::AllocteMemoryPage	Ego_r.pdb spelling "Allocte"
+009f5690	CInputEventPackage::CInputEventPackage	ctor from CAFile&; catalog Save

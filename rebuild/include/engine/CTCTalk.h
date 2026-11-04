@@ -28,6 +28,11 @@ public:
     // Chunk 756 (row 0x008AF6E0): Ego_r.pdb ?DoesSpeechExist@CTCTalk@@QAE_NK@Z (0x006E2910).
     bool DoesSpeechExist(unsigned long textGroup);
 #endif
+#ifdef FABLE_RETAIL_CTCTALK_ONCREATE
+    // Nested opt-in (chunk 760, row 0x006E2C00): the CTCBase slot-4 override ?OnCreate@CTCTalk@@UAEXXZ (CTCTalk vtable slot 4,
+    // retail 0x006E2C00). Declaration only (a vtable-emitting includer then names it).
+    virtual void OnCreate();                                             // 0x006E2C00
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCTalk)==0x3c);
 

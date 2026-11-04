@@ -1,0 +1,13 @@
+address	name	evidence
+00946380	CAIStateGroup_PrepareMeal::GetFreeCookingPot	landing 2026-11-04w (chunk 760): 
+00878a80	NCameraModes::CProjectileWeapon::GetCamPosOffsetXY	landing 2026-11-04w (chunk 760): 
+00878be0	NCameraModes::CProjectileWeapon::GetPosFromParams	landing 2026-11-04w (chunk 760): 
+00a11ae0	CPhysicsMeshObject::GetBoundingBoxCentre	landing 2026-11-04w (chunk 760): 
+00683b00	CTCCreatureOpinionOfHero::ClearPendingDeeds	landing 2026-11-04w (chunk 760): 
+006e2c00	CTCTalk::OnCreate	landing 2026-11-04w (chunk 760): 
+00f37660	CGPUScratchBufferTextureManager::AllocteMemoryPage	landing 2026-11-04w (chunk 760): 
+009f5690	CInputEventPackage::CInputEventPackage	landing 2026-11-04w (chunk 760): 
+00946400	CAIStateGroup_PrepareMeal::IsRunnable	landing 2026-11-04w (chunk 760): Ego_r ?IsRunnable@CAIStateGroup_PrepareMeal@@MAE_NXZ
+009bbbf0	CPersistContext::CheckUnknownSymbols	landing 2026-11-04w (chunk 760): catalog module
+00cfcca0	NScript::CQ_AwakeningTheOracleScript::CPretendGuard::Main	landing 2026-11-04w (chunk 760): catalog module
+006399b0	CTCRegionDisplay::GlobalUpdate	landing 2026-11-04w (chunk 760): catalog module

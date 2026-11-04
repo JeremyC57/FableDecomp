@@ -1,0 +1,18 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x009BAA90	?PersistError@CPersistContext@@QBEXABVCStringParser@@ABVCCharString@@@Z	Ego_r.pdb + FableWin.pdb name sets; row 0x009BBBF0 calls it const with the parser and the message	CPersistContext::Error
+0x0086B810	?GetRandomTextureMorphs@CRandomAppearanceMorph@@IBEXAAKKABV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@AAV?$CArray@VCMorphSetTextureMorph@CMorphSet@CRandomAppearanceMorph@@@@@Z	Ego_r.pdb name set (protected const, unsigned long& seed, the CVectorMap by const ref, CArray out)	the landed QAE / AAV / U-keyed spelling
+0x0093D800	?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyBase@@MBE_N_N@Z	Ego_r.pdb (protected virtual const); vtable slot binding	landed QAE spelling
+0x009F5690	??0CInputEventPackage@@QAE@AAVCAFile@@@Z	Ego_r.pdb ctor; the body reads the package from the file into a fresh object (vtable store)	catalog CInputEventPackage::Save
+0x00946380	?GetFreeCookingPot@CAIStateGroup_PrepareMeal@@ABEPAVCThing@@XZ	Ego_r.pdb (private const); only caller CAIStateGroup_PrepareMeal::IsRunnable 0x00946400 (vland RELOC_NAME warning)	CAIStateGroup_SitForMeal::GetPCookingPot
+0x007FEDE0	?GetFreeActionPoint@CTCUserActionPointBase@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ@Z	Ego_r.pdb; 0x00946400 pushes four addresses (creature, pos, orientation, index)	pointer-parameter spellings
+0x00CFCCA0	?Main@CPretendGuard@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ	Ego_r.pdb / FableWin.pdb; entity-script vtable 0x012C7CB4 slot 1	catalog name without the nested class
+0x00878A80	?GetCamPosOffsetXY@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@M@Z	Ego_r.pdb (private const)	GetRotatedPosition / CThing::GetRotatedPosition (draft), the QBE binding spelling
+0x00878BE0	?GetPosFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z	Ego_r.pdb (private const)	non-const draft spelling
+0x0084F1B0	?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ	Ego_r.pdb + FableWin.pdb (the only spelling in both)	QBEPAVCThing / QBEPBVCThing / ?GetThing@CBase (ICF neighbours), _Cons_val label
+0x008F6F90	?FindUnusedThemePaletteEntryIndex@CMap@@IAEEXZ	landed row; Ego_r.pdb donor order	GetFreeThemePaletteIndex (draft 0x008F70F0)
+0x008F6FC0	?ZeroAllUnusedThemePaletteEntries@CMap@@IAEXXZ	landed row; Ego_r.pdb donor order	UpdateThemePaletteUsage (draft 0x008F70F0)
+0x00686DA0	?GetPWorldSeed@CTCBase@@IBEPAKXZ	the GFRandom seed argument at 0x006E2C56; Ego_r.pdb spelling	CTCBase::GetPRandomSeed (draft), ?GetRandom@CTCBase (ICF neighbour)
+0x00487DC0	?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	65 landed binders; 0x00683B00 / 0x007E5570 call it on the main player	CPlayer::GetHeroThing (drafts)
+0x00A11AE0	?GetBoundingBoxCentre@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ	Ego_r.pdb / FableWin.pdb name sets; sibling of the landed edges 0x00A11C20 / 0x00A11C90 / 0x00A11BA0	catalog GetBoundingBoxCentre without class
+0x00683B00	?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ	Ego_r.pdb (public void, empties the pending list); `this` is the interface-0x4F component (callers 0x009600FB / 0x0096010A) (name probable, not proven)	CTCHeroOpinionDeedLog::ApplyPendingDeedLog
+0x013BAE1D	(global, PDB name unknown)	landed rows spell the same byte g_bettingActive (0x007E50C0) and g_bBettingInputEnabled (0x007E5680)	two spellings in landed code

@@ -8,6 +8,10 @@
 // CTCTavernGame::FrameUpdate tests its game master through CIntelligentPointer<CThingAICreature> (IS_THING_ALIVE: GetPItem 0x00A01B50,
 // then CThing::Dead, bit 0 of +0x91).
 #include "engine/CThingCreatureBase.h"
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_HOMEBUILDING
+#include "engine/CIntelligentPointer.h"
+class CThingBuilding;
+#endif
 class C3DVector; class CThingAICreatureInit;
 class CThingAICreature : public CThingCreatureBase {
 public:
@@ -20,8 +24,19 @@ public:
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& pos, long, const CThingAICreatureInit& init);   // 0x00833800
     void AutoSetupSexuality(float probabilityOfHomosexuality);           // 0x008330D0
     void SetAsAllowedToFollowHero(bool allowed) { AllowedToFollowHero = allowed; }
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_HOMEBUILDING
+    // Nested opt-in (chunk 760, row 0x00946400 CAIStateGroup_PrepareMeal::IsRunnable): Ego_r.pdb HomeBuilding
+    // (CIntelligentPointer<CThingBuilding>, retail +0x168: `lea ecx,[eax+168h] ; call 0x00A01B50`) and FableWin.pdb
+    // ?GetHomeBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ (inline in retail). Needs FABLE_RETAIL_CINTELLIGENTPOINTER.
+    CThingBuilding* GetHomeBuilding() const;                            // body in the includer once CThingBuilding is complete
+private:
+    unsigned char _pad_0x160[0x8];                                       // +0x160 RelationshipsInit (opaque)
+    CIntelligentPointer<CThingBuilding> HomeBuilding;                    // +0x168
+    unsigned char _pad_0x170[0x58];                                      // +0x170 .. MaxFlyingSpeed (Ego_r.pdb members, opaque)
+#else
 private:
     unsigned char _pad_0x160[0x68];                                      // +0x160 RelationshipsInit .. MaxFlyingSpeed (Ego_r.pdb members, opaque)
+#endif
     bool PerformingVillageTaskFlag:1, AISuspended:1, HasInformation:1, WanderWithInformation:1,
         WaveWithInformation:1, ContinueAIWithInformation:1, ImmuneToAttack:1, EnableCreatureAutoPlacing:1;   // +0x1C8 (Ego_r 0x1F8)
     bool AllowedToFollowHero:1, RegionFollowingOverriddenFromScript:1, RespondingToFollowAndWait:1,
