@@ -196,3 +196,20 @@ headers, never as asm in the row.
 - Accepted: respells that replace a wrong propagated Fable label on a vendor callee (e.g. CTCOnHeroPush::IsAngry on a libpk
   function) with the vendor wave's decided name, even though vland then reports RELOC_NAME against the old label until the label is
   applied.
+
+## Owner decision, 2026-11-05: stand-in names
+- **The rule:** "stand in names are fine as long as they are consistent and named as accurately as possible based on what the code is
+  doing and how lion head names things in retail."
+- **A row may grade a stand-in symbol** instead of the catalog function's own symbol, when retail's exact form cannot be emitted
+  from that TU. Examples:
+  - a free `CEngineMap_PeekWaterHasType` for `CEngineMap::PeekWaterHasType`;
+  - the real method on a stand-in class named after the real class.
+- **Accurate** means the name says what the code does, with the real class and method names where they are known, in Lionhead
+  style (`Class_Method` for a free function standing for a member). Never accurate:
+  - generic placeholder classes or methods (`T`, `Slot`, `Sub`, `Owner`, `M` ...);
+  - address-only names, when a behaviour name can be proven;
+  - a name that belongs to a different function.
+- **Consistent** means one retail target has one stand-in spelling across every row that binds it. The symbol index's MULTINAME
+  checks this.
+- **verify_and_land prints a non-blocking `WARN STANDIN_LEAF`** only for an inaccurate stand-in, with its reason
+  (`tools/decomp_pipeline/standin_leaf.py`).

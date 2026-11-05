@@ -1,0 +1,24 @@
+addr       parity           behav  name
+00401490   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+00401490   RELOCATION_MATCH PASS   PeekWaterHasType
+00401296   WARN RELOC_ALIAS: ___dllonexit -> 004013de is the import thunk 'MSVCR71.DLL::__dllonexit'
+00401296   RELOCATION_MATCH PASS   __onexit
+00401377   WARN STANDIN_LEAF ?Get@T@@QAEHXZ (catalog _global::ReturnZero_ret0_00401377; generic placeholder)
+00401377   MATCH            PASS   ReturnZero_ret0_00401377
+00403700   WARN STANDIN_LEAF ?DestVal@Slot@@QAEXXZ (catalog _global::CCountedPointer_Release_00403700; generic placeholder)
+00403700   RELOCATION_MATCH PASS   CCountedPointer_Release_00403700
+00405020   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00405020   WARN SHARED_HEADER_AVAILABLE C2DVector
+00405020   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00405020   WARN SHARED_HEADER_AVAILABLE CRenderManager2D
+00405020   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00405020   WARN SHARED_HEADER_AVAILABLE CSystemManager
+00405020   RELOCATION_MATCH PASS   DrawTextW
+
+WINS: 5
+  00401490 RELOCATION_MATCH CEngineMap::PeekWaterHasType
+  00401296 RELOCATION_MATCH _global::__onexit
+  00401377 MATCH _global::?Get@T@@QAEHXZ
+  00403700 RELOCATION_MATCH _global::?DestVal@Slot@@QAEXXZ
+  00405020 RELOCATION_MATCH NUISystem::CIMEFont::DrawTextW
+elapsed 7s rc=0

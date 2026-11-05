@@ -42,8 +42,18 @@ def cat_mc(nm):
     elif cl and m0==cl: m0='ctor'
     elif m0.startswith('operator') and not m0.startswith('operator '): m0=re.sub(r'\s+','',m0)
     return m0,cl
+# Owner rule (2026-11-05): a stand-in is fine when it is consistent and named as accurately as the code allows, in Lionhead style
+# (a free `Class_Method` function standing for a member, or the real method on a stand-in class named after the real one). Only an
+# INACCURATE stand-in warns: a generic placeholder class or method (T, Slot, M ...), an address-suffixed name, or a name that
+# carries neither the catalog method nor (for a member) the catalog class. Consistency (one stand-in spelling per retail target)
+# is the symbol index's MULTINAME check, not this one.
+GENERIC={"T","Sub","Owner","Slot","Info","Obj","S","Self","This","Inner","Foo","Holder","Mid","MidObj","A","B","C","X","Y","P","Q",
+         "R","Base","Head","Tail","HeadStr","TailObj","FirstPart","SubA","SubB","Pair","PairType","Elem","Node","Item","W","V","U",
+         "D","E","F","G","H","K","Impl","Helper","Wrap","Stub","M","N","Fn","F0","Host","Ptr","List"}
+def _n(x): return re.sub(r'[^a-z0-9]','',(x or '').lower())
+def _placeholder(nm): return bool(re.search(r'(?:^|_)(?:sub|FUN|vfunc|thunk|cand)_?[0-9a-fA-F]*$|_[0-9a-fA-F]{8}$|^C_?[0-9a-fA-F]{8}$',nm or ''))
 def standin(sym,catname):
-    """None when the graded symbol names the catalog function, else a short reason."""
+    """None when the graded symbol names the catalog function or is an accurate stand-in, else '<sym> (catalog <name>; <why>)'."""
     if not sym or 'Unwind@' in catname: return None
     if re.match(r'^(?:[A-Za-z_]+::)?sub_[0-9a-fA-F]{8}$',catname) or catname.startswith(('`','_static_init::')) or re.match(r'^_?\$E\d+$',sym): return None   # no catalog name to compare
     gm,gc=sym_mc(sym); cm,cc=cat_mc(catname)
@@ -51,5 +61,16 @@ def standin(sym,catname):
     if not sym.startswith('?'):   # an undecorated C name: one cdecl `_`, or the fastcall `@..@N` / stdcall `@N` decoration
         base=re.sub(r'@\d+$','',sym); base=base[1:] if base[:1] in '_@' else base
         if base==cm or base==catname or ('_'+base)==cm: return None
+        gm,gc=base,''
     if gm==cm and not cc: return None          # a _global catalog row that names a member: the class is the source's choice
-    return '%s (catalog %s)'%(sym,catname)
+    if cc in ('std','stlp_std','_STL','') or (cc and cc[:1].islower()): cc=''   # a namespace, not a class
+    free = sym.startswith('?') and re.match(r'^\?[A-Za-z_0-9]+@@',sym) or not sym.startswith('?')
+    if gc in GENERIC or gm in GENERIC: why='generic placeholder'
+    elif _placeholder(gm) or _placeholder(gc): why='address-only name'
+    elif _placeholder(cm):                     # the catalog name is itself a placeholder: judge the stand-in alone
+        return None
+    elif free and _n(cm) and _n(cm) in _n(gm) and (not cc or _n(cc) in _n(gm)): return None      # Class_Method free function
+    elif gm==cm and gc and cc and (_n(cc) in _n(gc) or _n(gc) in _n(cc)): return None              # real method, stand-in class
+    elif free and _n(cm) and _n(cm) in _n(gm): why='free function lacks its class'
+    else: why='names another function'
+    return '%s (catalog %s; %s)'%(sym,catname,why)

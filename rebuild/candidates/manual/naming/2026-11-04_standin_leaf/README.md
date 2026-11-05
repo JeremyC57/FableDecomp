@@ -30,3 +30,28 @@
 - This is the step-6 naming work list: each row gets its class, method and calling convention so that it grades under the catalog
   name.
 - The warning prints on every graded row, `--recheck-landed` included, so the count is visible as it falls.
+
+## Narrowed 2026-11-05 (owner rule: stand-ins are fine when consistent and accurate)
+- **The warning now fires only for an inaccurate stand-in**, with a reason: generic placeholder, address-only name, names another
+  function, or free function lacks its class. An accurate stand-in is silent:
+  - a Lionhead-style `Class_Method` free function;
+  - a C name that carries the method;
+  - the real method on a stand-in class named after the real one;
+  - any stand-in whose catalog name is itself a placeholder, unless the stand-in is generic or address-only.
+- `std::` and other namespaces are no longer treated as a class.
+- **Of the 17,446 rows in `STANDIN_LEAF.tsv`, 7,707 are accurate.** The other 9,739 are in `STANDIN_INACCURATE.tsv`, the step-6
+  work list:
+
+  | Reason | Rows |
+  |---|---|
+  | generic placeholder | 3,386 |
+  | names another function | 2,974 |
+  | address-only name | 2,745 |
+  | free function lacks its class | 634 |
+
+  - "Names another function" can mean either side is wrong: a folded body landed under a sibling's name, or a wrong catalog name.
+    Each one needs evidence before it is respelled.
+- **Test:** `test_vland_narrowed.log`, 5 rows.
+  - 0x00401490 `CEngineMap_PeekWaterHasType` is now silent.
+  - 0x00401377 `?Get@T@@` and 0x00403700 `?DestVal@Slot@@` warn as generic placeholders.
+  - Grades are unchanged.
