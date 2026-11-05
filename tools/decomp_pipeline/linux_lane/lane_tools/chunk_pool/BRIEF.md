@@ -39,7 +39,7 @@ Never run `cd` into the scratchpad; keep the repo as cwd. Never commit. Never mo
   `rebuild/candidates/manual/batches/2026-10-13_linux_b5/README.md` for the conventions of a hand batch.
 
 ## Rules
-- Byte purity: no `__asm`, no `naked`, no `_emit`, no `#pragma pack` tricks that hide the real layout.
+- Byte purity: no `__asm`, no `naked`, no `_emit`, no `#pragma pack` tricks that hide the real layout. Where the original used asm, see `docs/pipeline/ASM_RULES.md` (shared helpers only).
   Plain C++ that VC7.1 compiles to the retail bytes.
 - Relocations (call targets, vtables, globals, string literals, float pools) are masked by the grader:
   declare callees/globals with descriptive names and the retail address in a trailing comment

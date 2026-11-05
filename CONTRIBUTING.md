@@ -15,6 +15,7 @@ Every reconstructed function is graded. Only the last two grades are reported as
 | `compiled` | Compiles under VC7.1 to an object file |
 | `functional` | Behaviour test passes; `.text` differs from retail only in relocation slots (`RELOCATION_MATCH`) |
 | `matching` | Behaviour test passes and `.text` is byte-identical to retail (`MATCH`) |
+| `retail_asm` | Byte-matching C++ that reaches asm only through a shared helper header, where retail's bytes prove the original used asm (rules: `docs/pipeline/ASM_RULES.md`). Counted as genuine |
 | `asm_bake` | Hand-written `__asm` / `_emit` body. Byte-exact oracle, **not** reconstruction. Lives in `rebuild/src/asm_bake/` and is excluded from the C++ coverage numbers |
 
 "Compiles" is never coverage. "Looks right" is never coverage.
@@ -34,7 +35,8 @@ Every reconstructed function is graded. Only the last two grades are reported as
 4. Verify with `python tools/decomp_pipeline/verify_and_land.py <payload.json> <oracle.tsv>`.
    Add `--land` only when it reports `MATCH` or `RELOCATION_MATCH` plus behaviour `PASS`.
    Functions with an embedded jump table use `verify_land_jumptable.py` instead.
-5. Genuine C++ only. `__declspec(naked)`, `__asm`, and `_emit` are not accepted as reconstruction
+5. Genuine C++ only. `__declspec(naked)`, `__asm`, and `_emit` are not accepted as reconstruction, and never appear in a row
+   source or test. Where the original code used asm, follow `docs/pipeline/ASM_RULES.md` (plain C++, then intrinsics, then a shared helper header)
    (see `docs/pipeline/PARITY_TRIAGE.md` for the de-bake lane if you are replacing one).
 
 ## Branches and commits

@@ -25,7 +25,7 @@ PC `Fable.exe` (Fable: The Lost Chapters, Steam build, Microsoft Visual C++ 7.1 
   that was needed, and *why the code is shaped the way it is* (lifetime of temporaries, inline helpers
   forced by the bytes, STLport idioms). No narration of the reverse-engineering process in the code.
 - Byte purity: no `__asm`, `naked`, `_emit`, no `#pragma pack` tricks, no artificial `volatile`.
-  Compiler-emitted C++ only. `asm_bake` rows are oracles, never counted as coverage.
+  Compiler-emitted C++ only. `asm_bake` rows are oracles, never counted as coverage. Where the original used asm: `docs/pipeline/ASM_RULES.md`.
 - TLC is native x86-32 Windows, PE32 at ImageBase 0x400000. No recompilation/XEX/packer; do not copy the
   Fable2RE recomp workflow.
 

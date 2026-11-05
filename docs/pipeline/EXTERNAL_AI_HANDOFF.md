@@ -42,7 +42,7 @@ Repo: `JeremyC57/FableDecomp` (branch `FullDecomp`). Read `docs/ARCHITECTURE.md`
 ## 3. Hard rules (the lander rejects violations)
 
 1. **No inline assembly at all**: no `__asm`, `naked`, `_emit` or `volatile`, including in comments and identifiers
-   (e.g. `m_emitters` trips the check).
+   (e.g. `m_emitters` trips the check). Where the original used asm, rows call the shared helper headers (`docs/pipeline/ASM_RULES.md`).
 2. **Use the shared class headers** `rebuild/include/engine/<Class>.h` for `this`. They come from the PDB, with real
    member names and offsets. Don't write a local `struct T { char pad[...]; }` when a header exists. If retail provably
    differs, say so in a `// Layout:` comment with the offset evidence.

@@ -2045,3 +2045,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Source `$S/wine/env.sh` before `symindex2.py` as well as vland: without it every recompiled row is stored as ERR (no cl.exe), and gate.py then reports "no usable index entry".
 - A hook wrapped in `except Exception: pass` hides its own bugs: the first STANDIN_LEAF patch lacked `import re` and would have printed nothing. Print a WARN on the exception instead (2026-11-04).
 - A stand-in rename must also cover the test's `&Name` uses: behaviour tests are standalone programs (30 w2 tests failed until w2b respelled them, 2026-11-05).
+- (2026-11-05) Asm rules have ONE canonical page, `docs/pipeline/ASM_RULES.md`. Older asm lines in this file, EXTRA_RULES, briefs and handoffs are history; where they disagree, that page wins.

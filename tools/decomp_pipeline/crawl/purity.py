@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Single source of truth for "is this landed source a genuine reconstruction?".
 
+The policy this grader implements is docs/pipeline/ASM_RULES.md (owner-confirmed 2026-11-05). The in-row `__asm`
+allowance described below is being retired by that rule: new rows reach asm only through a shared helper header.
+
 A source is NOT genuine if it is hand-written machine code in any form:
   * `__declspec(naked)` + `_emit <byte>` byte bakes, and
   * `__declspec(naked)` / `__asm` blocks written with real mnemonics.

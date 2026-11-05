@@ -148,6 +148,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - `compiled` — builds to a VC7.1 object; no parity claimed (18,604)
 - `functional` — behavior fixture passes vs local oracle; bytes differ (`DIFFER`) — never counted in byte totals
 - `matching` — `MATCH` (exact `.text`) or `RELOCATION_MATCH` (exact after masking COFF reloc slots) — the only "landed byte-exact" grades
+- `retail_asm` — byte-matching C++ that reaches asm only through a shared helper header, where the original used asm (`docs/pipeline/ASM_RULES.md`); counted as genuine
 - `asm_bake` — `__declspec(naked)` / `_emit` byte-bake; byte-exact but NOT genuine C++; purity debt tracked by `crawl/purity.py`
 
 ## Owner note (2026-10-16): graphics / rendering and audio will need new work

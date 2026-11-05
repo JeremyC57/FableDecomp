@@ -17,10 +17,9 @@ functions, 91.6%; no agents running; coordinator commands in `tools/decomp_pipel
   attribution lines your session reminder gives; no model names in commits. The stop hook wants a clean, pushed tree.
 - **Landing:** only through `verify_and_land.py` (wrapper `lane_tools/vland.py`). Require MATCH or RELOCATION_MATCH,
   the test printing exactly `<addr>_TEST PASS`, and no RELOC_IDENTITY. Cross-row RELOC_CONFLICT/NAME/ALIAS are warnings.
-- **Byte purity:** no `__asm`, `naked`, `_emit`, `volatile` (comments included). Exception: grade `retail_asm` (an
-  instruction or shape VC7.1 cannot emit from C++, with a `// Retail-asm: <evidence>` line citing a retail address and an
-  instruction of the block; no naked/_emit, no `ret` inside the asm; no instruction-count cap since 2026-10-27;
-  `crawl/purity.py`). The land scripts' plain grep still refuses `__asm`: land retail_asm rows with `vland.py --land`.
+- **Byte purity:** no `__asm`, `naked`, `_emit`, `volatile` (comments included). Where the original code used asm
+  (proven from retail bytes), follow `docs/pipeline/ASM_RULES.md`: intrinsic, then a shared helper header (asm path + `FABLE_PORTABLE`
+  twin + `// Retail-asm:` evidence), never asm in the row; such rows grade `retail_asm` (`crawl/purity.py`).
 - **Retail fidelity (owner 2026-10-25/26, all applied catalog-wide; keep new work consistent):**
   - STLport 4.6 code lives in namespace **`std`**, never `_STL` (retail mangles `@std@@`).
   - **Class key = retail's** (`ghidra_out/pdb_class_keys.tsv`): `V` -> `class X { public: ... };`, `U` -> `struct`.

@@ -8,9 +8,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 
 ## State
 - Branch `FullDecomp` (`JeremyC57/FableDecomp`). Owner 2026-11-04 resumed authoring: at most 3 concurrent agents, 10+ attempts per
-  row, verify and land before launching more. **No asm first**; only proven-impossible instructions (bare `fistp dword`, `rdtsc`,
-  `cpuid`, MASM SIMD) go through isolated shared helpers with a `FABLE_PORTABLE` C++ path, and those rows land as `retail_asm`
-  (EXTRA_RULES.md, last three bullets).
+  row, verify and land before launching more. **Asm rules: `docs/pipeline/ASM_RULES.md`** (owner-confirmed 2026-11-05): plain C++ first; beyond it only where
+  the original code used asm (proven from retail bytes): intrinsic, then a shared helper header with a `FABLE_PORTABLE` twin, then
+  `__forceinline` only if necessary; never for a residue; no asm in a row source or test; such rows land as `retail_asm`.
 - Chunks 738 (CPSCRenderSprite), 739 (CPSCUpdateNormal), 740 (CPSCRenderMesh) cut from the particle groups; brief
   `$S/w22/BRIEF_738.md`, work in `$S/w22/chunk73{8,9}`, `chunk740`. 739 landed 2 of 5 (`batches/2026-11-04_landing_a/`), 740 3 of 5 (`_landing_b/`), 738 3 of 5 (`_landing_c/`), 741 2 of 5 (`_landing_d/`), 743 11 of 11 + 4 Vorbis re-models (`_landing_e/`), 742 2 of 6 (`_landing_f/`); rest staged in
   `pending/2026-11-04_linux_hand73{8,9}/`, `_hand74{0,1,2,3}/`. 744 (CQ_HangingTreeGoodScript) landed 1 of 5 + the GetGuardsHealth
