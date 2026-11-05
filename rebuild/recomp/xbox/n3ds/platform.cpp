@@ -128,11 +128,13 @@ std::atomic<uint32_t> g_lazyPages{0};  // guest pages backed on first touch
 [[noreturn]] void onException(ERRF_ExceptionInfo* info, CpuRegisters* regs) {
     // A first touch of an unbacked guest page (reserved but not committed, or past the RAM the
     // game was given): back it with a zero page and retry, as the desktop's lazy mappings do.
-    // The null page guard (below 0x10000) still stops.
+    // Below 0x10000 too: Direct3D writes physical page 0 through its 0x80000000 alias, which the
+    // window's mask folds onto the null page (the desktop keeps a separate null guard).
     if (info->type == ERRF_EXCEPTION_DATA_ABORT && info->far >= RECOMP_WINDOW_BASE && info->far - RECOMP_WINDOW_BASE < memWindowEnd()) {
         const uint32_t page = (info->far - RECOMP_WINDOW_BASE) & ~0xFFFu;
-        if (page >= 0x10000 && !hostBackedIn(page, 0x1000) && hostCommit(page, 0x1000)) {
+        if (!hostBackedIn(page, 0x1000) && hostCommit(page, 0x1000)) {
             ++g_lazyPages;
+            if (page < 0x10000) XLOG(1, "memory: low page 0x%05lX backed on demand (Xbox RAM alias or a null pointer)", static_cast<unsigned long>(page));
             platformResume(regs);
         }
     }
@@ -436,7 +438,7 @@ int main() {
     APT_CheckNew3DS(&n3ds);
     svcGetThreadPriority(&g_mainPrio, CUR_THREAD_HANDLE);
     if (n3ds) g_gameCore = 2;
-    std::printf("Fable boot test build 10 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
+    std::printf("Fable boot test build 11 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
                 static_cast<unsigned long>(osGetMemRegionSize(MEMREGION_APPLICATION) / 1024));
 
     mkdirs(g_dataDir);
