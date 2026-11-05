@@ -71,6 +71,16 @@ void logf(int level, const char* fmt, ...) {
     }
 }
 
+void logSync() {
+    std::lock_guard<std::mutex> l(g_logLock);
+    if (g_logFile) {
+        fflush(g_logFile);
+#if defined(__3DS__)
+        fsync(fileno(g_logFile));
+#endif
+    }
+}
+
 void die(const char* fmt, ...) {
     char buf[2048];
     va_list ap;
@@ -144,6 +154,11 @@ uint32_t kernelResolve(int ord) {
     return kTrapBase + 16u * static_cast<uint32_t>(ord);  // unimplemented functions trap with a message
 }
 
+// Heartbeat (debugState): is guest code running, and where did it last call the kernel?
+std::atomic<uint64_t> g_kcalls{0}, g_safepoints{0};
+std::atomic<const char*> g_lastKcall{""};
+std::atomic<uint32_t> g_lastKthread{0}, g_lastKfrom{0};
+
 namespace {
 constexpr uint32_t kHostTrapBase = kTrapBase + 0x10000u;
 struct HostTrap { KFn fn; int args; const char* name; };
@@ -197,6 +212,12 @@ static int onUnknownTarget(Ctx* c, uint32_t target) {
     const KExport& e = exports()[ord];
     if (!e.fn) die("unimplemented kernel export #%d %s (called from 0x%08X)", ord, kernelName(ord), rd32(c->esp));
     const uint32_t ret = rd32(c->esp);
+    ++g_kcalls;
+    g_lastKcall = e.name;
+    XThread* self = curThread();
+    g_lastKthread = self ? self->id : 0;
+    g_lastKfrom = ret;
+    if (self) self->lastKcall = e.name;
     if (g_logLevel >= 2) {
         if (e.cc == CC::Fast)
             logf(2, "%s(ecx=%08X, edx=%08X) from %08X", e.name, c->ecx, c->edx, ret);
@@ -641,6 +662,18 @@ void workerStart() {
     startHostThread(workerMain, 512u << 10, ThreadRole::Game);  // runs guest timers, DPCs and ISRs
 }
 
+
+std::string debugState() {
+    char b[512];
+    int n = snprintf(b, sizeof b, "kernel calls %llu (last %s by thread %u from %08X), safepoints %llu, lock next %u serving %u",
+                     static_cast<unsigned long long>(g_kcalls.load()), g_lastKcall.load(), g_lastKthread.load(), g_lastKfrom.load(),
+                     static_cast<unsigned long long>(g_safepoints.load()), g_gil.nextTicket(), g_gil.serving());
+    std::lock_guard<std::mutex> l(g_threadsLock);
+    for (const auto& [e, t] : g_threads)
+        if (n < static_cast<int>(sizeof b) - 48) n += snprintf(b + n, sizeof b - n, "\n  thread %u: last %s", t->id, t->lastKcall);
+    return b;
+}
+
 #if !defined(__3DS__)
 void startHostThread(std::function<void()> fn, size_t, ThreadRole) { std::thread(std::move(fn)).detach(); }
 #endif
@@ -759,6 +792,7 @@ static void onSignal(int sig, siginfo_t* si, void*) {
 // would switch threads.
 extern "C" void recomp_safepoint(void) {
     recomp_preempt_flag = 0;
+    ++g_safepoints;
     if (!t_cur || !g_gil.contended()) return;
     g_gil.unlock();
     g_gil.lock();

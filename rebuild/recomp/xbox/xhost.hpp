@@ -39,6 +39,7 @@ namespace xb {
 extern int g_logLevel;  // XBOX_LOG: 0 errors, 1 info (default), 2 kernel calls, 3 verbose
 void logf(int level, const char* fmt, ...) __attribute__((format(printf, 2, 3)));
 [[noreturn]] void die(const char* fmt, ...) __attribute__((format(printf, 1, 2)));
+void logSync();  // the log file reaches the disk (power-off safe)
 #if defined(__3DS__)
 void platformThreadInit();  // n3ds/platform.cpp: crash reports for this thread
 [[noreturn]] void platformFatal(const char* msg);  // n3ds/platform.cpp: shows the error, waits for START
@@ -147,6 +148,8 @@ public:
 #endif
     }
     bool contended() const { return next_.load(std::memory_order_relaxed) - serving_.load(std::memory_order_relaxed) > 1; }
+    uint32_t nextTicket() const { return next_.load(std::memory_order_relaxed); }
+    uint32_t serving() const { return serving_.load(std::memory_order_relaxed); }
 
 private:
     std::atomic<uint32_t> next_{0}, serving_{0};
@@ -162,7 +165,9 @@ struct XThread {
     std::vector<Apc> userApcs;
     int suspend = 0;
     bool system = false;  // a host-created kernel thread (DPC/timer worker)
+    const char* lastKcall = "-";  // debugState
 };
+std::string debugState();  // core.cpp: kernel calls, safepoints, the guest lock, each thread's last kernel call
 XThread* curThread();
 XThread* threadByEthread(uint32_t ethread);
 // Guest thread with its own KPCR, ETHREAD, stack and TLS area (PsCreateSystemThreadEx layout).

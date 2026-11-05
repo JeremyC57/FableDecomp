@@ -435,7 +435,7 @@ int main() {
     APT_CheckNew3DS(&n3ds);
     svcGetThreadPriority(&g_mainPrio, CUR_THREAD_HANDLE);
     if (n3ds) g_gameCore = 2;
-    std::printf("Fable boot test build 7 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
+    std::printf("Fable boot test build 8 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
                 static_cast<unsigned long>(osGetMemRegionSize(MEMREGION_APPLICATION) / 1024));
 
     mkdirs(g_dataDir);
@@ -465,6 +465,13 @@ int main() {
         if (osGetTime() - lastStatus >= 500) {
             lastStatus = osGetTime();
             drawStatus(disc, start);
+        }
+        // Heartbeat in the log every 2 s (boot test): shows whether guest code runs and where it waits.
+        static uint64_t lastBeat = 0;
+        if (!g_fatal && osGetTime() - lastBeat >= 2000) {
+            lastBeat = osGetTime();
+            logf(1, "heartbeat %llus: %s", static_cast<unsigned long long>((lastBeat - start) / 1000), debugState().c_str());
+            logSync();
         }
         gspWaitForVBlank();
     }
