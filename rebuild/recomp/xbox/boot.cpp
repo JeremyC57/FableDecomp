@@ -125,6 +125,7 @@ void bootGame(std::vector<uint8_t> xbe, const std::string& game, const std::stri
     gpu::init();
     startHostThread([] {
         setThreadName("kernel tick");
+        t_lockTag = -3;
         for (;;) {
             kernelTick();
             debugWatchRearm();

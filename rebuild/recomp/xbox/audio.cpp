@@ -279,6 +279,7 @@ void sdlCallback(void*, Uint8* stream, int len) {
 #endif
 
 void silentMixer() {
+    t_lockTag = -5;
     std::vector<float> buf(480 * 2);
     auto next = std::chrono::steady_clock::now();
     for (;;) {

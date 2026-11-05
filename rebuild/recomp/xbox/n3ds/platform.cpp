@@ -11,6 +11,7 @@
 
 #include <dirent.h>
 #include <fcntl.h>
+#include <malloc.h>
 #include <strings.h>
 #include <sys/iosupport.h>
 #include <sys/stat.h>
@@ -32,6 +33,8 @@
 // libctru heaps: the guest window (recomp.h RECOMP_WINDOW_*) takes the whole heap area, so the
 // host's own malloc heap lives in linear FCRAM (__system_allocateHeaps below).
 extern "C" {
+extern char* fake_heap_start;
+extern char* fake_heap_end;
 u32 __ctru_heap_size = 0;
 u32 __ctru_linear_heap_size = 0;
 u32 __stacksize__ = 256 * 1024;  // the main thread runs the boot sequence
@@ -172,6 +175,12 @@ void platformYield() { svcSleepThread(1); }  // a real sleep: equal-priority thr
 
 void platformWakeAll(std::atomic<uint32_t>& word) {
     syncArbitrateAddress(reinterpret_cast<s32*>(&word), ARBITRATION_SIGNAL, -1);
+}
+
+// Bytes the host malloc heap can still grow by (its sbrk limit) plus what it holds free.
+size_t hostHeapFree() {
+    const struct mallinfo mi = mallinfo();
+    return static_cast<size_t>(::fake_heap_end - static_cast<char*>(sbrk(0))) + mi.fordblks;
 }
 
 // ---- host threads ----------------------------------------------------------------------------
@@ -398,8 +407,6 @@ void drawStatus(const std::string& disc, uint64_t startMs) {
 // Heaps. The heap area belongs to the guest window, so the host's malloc heap and libctru's
 // linear heap (framebuffers, GPU buffers) are two blocks of linear FCRAM.
 extern "C" void __system_allocateHeaps(void) {
-    extern char* fake_heap_start;
-    extern char* fake_heap_end;
     extern u32 __ctru_linear_heap;
     constexpr u32 kLinear = 4u << 20, kHostHeap = 24u << 20;
     u32 out = 0;
@@ -437,12 +444,13 @@ int main() {
     consoleSelect(&g_bottom);
     irrstInit();
     platformThreadInit();
+    t_lockTag = -4;  // debugState: the main thread
     const uint64_t start = osGetTime();
     bool n3ds = false;
     APT_CheckNew3DS(&n3ds);
     svcGetThreadPriority(&g_mainPrio, CUR_THREAD_HANDLE);
     if (n3ds) g_gameCore = 2;
-    std::printf("Fable boot test build 12 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
+    std::printf("Fable boot test build 13 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
                 static_cast<unsigned long>(osGetMemRegionSize(MEMREGION_APPLICATION) / 1024));
 
     mkdirs(g_dataDir);
@@ -477,7 +485,10 @@ int main() {
         static uint64_t lastBeat = 0;
         if (!g_fatal && osGetTime() - lastBeat >= 2000) {
             lastBeat = osGetTime();
-            logf(1, "heartbeat %llus: %s", static_cast<unsigned long long>((lastBeat - start) / 1000), debugState().c_str());
+            logf(1, "heartbeat %llus: %s\n  memory: guest %lu KB backed (%lu pages on demand), app region %lu KB free, host heap %lu KB free",
+                 static_cast<unsigned long long>((lastBeat - start) / 1000), debugState().c_str(), static_cast<unsigned long>(memBackedBytes() / 1024),
+                 static_cast<unsigned long>(g_lazyPages.load()), static_cast<unsigned long>(osGetMemRegionFree(MEMREGION_APPLICATION) / 1024),
+                 static_cast<unsigned long>(hostHeapFree() / 1024));
             logSync();
         }
         gspWaitForVBlank();

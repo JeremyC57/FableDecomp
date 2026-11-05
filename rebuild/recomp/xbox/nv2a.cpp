@@ -772,6 +772,7 @@ void runPusher() {
 
 void pusherMain() {
     setThreadName("nv2a pusher");
+    t_lockTag = -2;  // debugState: the pusher
 #if defined(__3DS__)
     platformThreadInit();
 #endif

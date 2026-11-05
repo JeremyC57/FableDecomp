@@ -129,6 +129,7 @@ void platformWaitBelow(std::atomic<uint32_t>& word, uint32_t value);  // while w
 void platformWakeAll(std::atomic<uint32_t>& word);
 void platformYield();  // lets another ready thread of the same priority on this core run
 #endif
+extern thread_local int t_lockTag;  // core.cpp: who takes the guest lock (guest thread id, -1 host side)
 class FairLock {
 public:
     void lock() {
@@ -139,7 +140,9 @@ public:
         for (uint32_t s = serving_.load(std::memory_order_acquire); s != t; s = serving_.load(std::memory_order_acquire))
             serving_.wait(s, std::memory_order_acquire);
 #endif
+        owner_.store(t_lockTag, std::memory_order_relaxed);
     }
+    int owner() const { return owner_.load(std::memory_order_relaxed); }
     void unlock() {
         serving_.fetch_add(1, std::memory_order_release);
 #if defined(__3DS__)
@@ -154,6 +157,7 @@ public:
 
 private:
     std::atomic<uint32_t> next_{0}, serving_{0};
+    std::atomic<int> owner_{0};
 };
 extern FairLock g_gil;
 extern std::condition_variable_any g_dispatchCv;  // notified whenever a dispatcher object changes

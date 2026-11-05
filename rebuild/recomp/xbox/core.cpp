@@ -156,6 +156,7 @@ uint32_t kernelResolve(int ord) {
 
 // Heartbeat (debugState): is guest code running, and where did it last call the kernel?
 std::atomic<uint64_t> g_kcalls{0}, g_safepoints{0};
+thread_local int t_lockTag = -1;  // guest thread id once bound (threadMain), -1 for host threads
 std::atomic<const char*> g_lastKcall{""};
 std::atomic<uint32_t> g_lastKthread{0}, g_lastKfrom{0};
 
@@ -252,7 +253,10 @@ XThread* threadByEthread(uint32_t e) {
     return it == g_threads.end() ? nullptr : it->second;
 }
 
-void bindHostThread(XThread* t) { t_cur = t; }
+void bindHostThread(XThread* t) {
+    t_cur = t;
+    t_lockTag = t ? static_cast<int>(t->id) : -1;
+}
 
 XThread* newThread(uint32_t stackSize, uint32_t tlsSize, uint32_t extensionSize) {
     auto* t = new XThread;
@@ -331,6 +335,7 @@ static void threadMain(XThread* t, uint32_t start, uint32_t ctx, uint32_t system
 #if defined(__3DS__)
     platformThreadInit();
 #endif
+    t_lockTag = static_cast<int>(t->id);
     g_gil.lock();
     t_cur = t;
     sigjmp_buf jb;
@@ -603,6 +608,7 @@ static void workerMain() {
 #if defined(__3DS__)
     platformThreadInit();
 #endif
+    t_lockTag = static_cast<int>(g_worker->id);
     g_gil.lock();
     t_cur = g_worker;
     std::unique_lock<FairLock> lk(g_gil, std::adopt_lock);
@@ -665,9 +671,9 @@ void workerStart() {
 
 std::string debugState() {
     char b[512];
-    int n = snprintf(b, sizeof b, "kernel calls %llu (last %s by thread %u from %08X), safepoints %llu, lock next %u serving %u",
+    int n = snprintf(b, sizeof b, "kernel calls %llu (last %s by thread %u from %08X), safepoints %llu, lock next %u serving %u held by %d",
                      static_cast<unsigned long long>(g_kcalls.load()), g_lastKcall.load(), g_lastKthread.load(), g_lastKfrom.load(),
-                     static_cast<unsigned long long>(g_safepoints.load()), g_gil.nextTicket(), g_gil.serving());
+                     static_cast<unsigned long long>(g_safepoints.load()), g_gil.nextTicket(), g_gil.serving(), g_gil.owner());
     std::lock_guard<std::mutex> l(g_threadsLock);
     for (const auto& [e, t] : g_threads)
         if (n < static_cast<int>(sizeof b) - 48) n += snprintf(b + n, sizeof b - n, "\n  thread %u: last %s", t->id, t->lastKcall);
