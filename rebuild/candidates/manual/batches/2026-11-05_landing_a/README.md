@@ -29,7 +29,7 @@ Authored by one expert agent (owner, 2026-11-05). The asm rules are in `docs/pip
 - Both former bakes were regraded with `--recheck-landed` (`logs/recheck_*.log`).
 
 ## Parked
-In `pending/2026-11-05_linux_hand774/`, each with its residue and next idea (`agent_NOTES.md`):
+In `pending/2026-11-04_linux_hand774/`, each with its residue and next idea (`agent_NOTES.md`):
 
 | Address | Name | Grades | Result |
 |---|---|---|---|

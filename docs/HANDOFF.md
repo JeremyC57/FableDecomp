@@ -28,7 +28,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   **Now (2026-11-05):** authoring resumed with ONE expert agent (owner). The owner asked to fix the 9 old bakes. Six are now clean C++:
   0x0042DF9E and 0x00551340 (`batches/2026-11-05_landing_a/`), and 0x004167A7, 0x005DACF0, 0x009A8170 and 0x009A8840
   (`_landing_b/`, chunk 775; the bank bakes moved to `rebuild/runtime/openretailbank/bake/`). Three bakes remain, parked in
-  `pending/2026-11-05_linux_hand774/`: 0x0053C332, 0x00597BF2 and 0x009BEF80. They are the next single-agent chunk (776).
+  `pending/2026-11-04_linux_hand774/`: 0x0053C332, 0x00597BF2 and 0x009BEF80. They are the next single-agent chunk (776).
   Asm rules: `docs/pipeline/ASM_RULES.md` (canonical). No row source has in-row `__asm`; 209 retail_asm rows use 24 shared helpers. Landed today: plan phases 2-4 (`naming/2026-11-0{4,5}_plan_p*`), stand-in
   naming s6 (1,796 rows; 7,946 inaccurate stand-ins left, `naming/2026-11-05_standin_s6/NEXT.md`), asm cleanup rounds 1/2a/2b
   (`naming/2026-11-05_asm_*`), and the volatile audit. Next after authoring: plan phase 5 (CScriptThing header, CThing offset waves,

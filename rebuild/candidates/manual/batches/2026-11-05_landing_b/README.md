@@ -41,7 +41,7 @@ asm helper or a pragma workaround.
 - **Fixed: 6.**
   - 0x0042DF9E and 0x00551340 (landing a);
   - the 4 rows above.
-- **Parked: 3,** in `pending/2026-11-05_linux_hand774/`:
+- **Parked: 3,** in `pending/2026-11-04_linux_hand774/`:
   - 0x0053C332 DoRecomputeOffsets (one store pair swapped);
   - 0x00597BF2 GotoPreviousScreen;
   - 0x009BEF80 SetViewport (register allocation).

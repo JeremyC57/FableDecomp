@@ -95,6 +95,6 @@ local_10`, which had no byte effect.
 - `crawl/purity.py` now grades in-row `__asm` as `naked_asm`, never `retail_asm`.
 
 ## Status (2026-11-05, after landing b)
-- The oracle bakes in `rebuild/src` are down to 3, all parked with their residue (`pending/2026-11-05_linux_hand774/`):
+- The oracle bakes in `rebuild/src` are down to 3, all parked with their residue (`pending/2026-11-04_linux_hand774/`):
   0x0053C332, 0x00597BF2 and 0x009BEF80. The other 11 of round 2b's 14 are plain C++ or use a helper.
 - The two CBankFileManager byte bakes are kept as runtime oracles in `rebuild/runtime/openretailbank/bake/`, not as rows.
