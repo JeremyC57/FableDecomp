@@ -12,7 +12,8 @@ set(RUNTIME_DIR ${XBOX_DIR}/../runtime)
 
 # Guest memory: the 96-128 MB window at 0x08000000 (recomp.h), the compact layout (xhost.hpp).
 set(N3DS_DEFS __3DS__ RECOMP_WINDOW_MEMORY FABLE_COMPACT_MEMORY)
-set(N3DS_ARCH -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -marm)
+# local-exec TLS: 3dsxtool cannot relocate the initial-exec model GCC picks for extern __thread.
+set(N3DS_ARCH -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -marm -ftls-model=local-exec)
 
 # The lifted game code: -O2 in ARM mode; per-function sections so the linker drops what is unused.
 set(FABLE_GEN_OPT "-O2" CACHE STRING "Optimisation flag for the lifted code")
