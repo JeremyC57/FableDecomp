@@ -13,27 +13,11 @@
 void __fastcall Destroy_007180b0(void* object);   // 0x007180B0
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -100,7 +84,7 @@ public:
 void CCombatAction_FallStunned::Initialise()
 {
     CTCCreatureModeManager* modeManager;
-    PCreature.GetPItem()->GetInterface(&modeManager, 0x31);
+    PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
     CModeDazed* mode = new CModeDazed(PCreature.GetPItem());
     mode->Started = false;
     modeManager->AddMode(CCountedPointer<CModeBase>(mode));

@@ -10,51 +10,17 @@
 // first bit test stays `test byte ptr [eax+28h],40h` (HasTC + GetTC gave two key slots and `mov cl,[eax+28h]`); the weapon's result is
 // returned directly.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCCarrying { public:
 public:
     CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 class CTCWeapon { public:
-    bool IsCapableOfStealthAttackBy(CThing* thing);   // 0x005DAD60
+    bool IsCapableOfStealthAttackBy(CThing* thing) const;   // 0x005DAD60
 };
 class CTCStealth { public:
     virtual void v00();
@@ -64,12 +30,12 @@ class CTCStealth { public:
 
 bool CTCStealth::IsAvailableToPerformStealthAttack(CThing* target)
 {
-    CTCCarrying* carrying;
-    if (ParentThing->GetInterface(&carrying, 0x46)) {
+    const CTCCarrying* carrying;
+    if (ParentThing->PeekTC(TCI_CARRYING, &carrying)) {
         CThing* weapon = carrying->GetThingInPrimarySlot();
-        if (weapon && !(weapon->m_flags91 & 1)) {
-            CTCWeapon* tc;
-            if (weapon->GetInterface(&tc, 0x48))
+        if (weapon && !weapon->IsDead()) {
+            const CTCWeapon* tc;
+            if (weapon->PeekTC(TCI_WEAPON, &tc))
                 return tc->IsCapableOfStealthAttackBy(target);
         }
     }

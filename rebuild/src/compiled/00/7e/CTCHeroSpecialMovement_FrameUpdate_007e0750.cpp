@@ -31,10 +31,9 @@ class CPlayer { public:
     bool m_controlsLocked;                              // +0x218
     long GetPlayerNumber() const;                       // 0x00487510
 };
-class CThing { public:
-    const CPlayer& PeekPlayer() const;                  // 0x004C7A10
-    CPlayer& GetPlayer();                               // 0x004C7A30
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_PEEKPLAYER
+#include "engine/CThing.h"
 bool __fastcall IsAvailableForHeroRun(CThing* thing);       // 0x0085F560
 bool __fastcall IsAvailableForHeroSprint(CThing* thing);    // 0x0085F470
 

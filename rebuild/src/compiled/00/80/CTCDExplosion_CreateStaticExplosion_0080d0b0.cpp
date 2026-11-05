@@ -26,10 +26,7 @@ class C3DVector { public:
 inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 inline C3DVector operator*(const C3DVector& a, float s) { return C3DVector(a.X * s, a.Y * s, a.Z * s); }
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;                                 // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -119,7 +116,7 @@ void CTCDExplosion::CreateStaticExplosion()
         for (long i = 0; i != count; ++i) {
             C3DVector pos = StartPos + direction * (float)i * radius;
             CThing* emitter = manager->CreateEmitter(PExplosionDef->EmitterDefIndex, PExplosionDef->EmitterParam, spacing, pos, 0);
-            if (emitter && !(emitter->m_flags91 & 1)) {
+            if (emitter && !emitter->IsDead()) {
                 long frame = GetWorld().GetFrame();
                 Emitters.push_back(SEmitter(CIntelligentPointer<CThing>(emitter), frame));
             }

@@ -42,12 +42,8 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-class CThing {
-public:
-    const C3DVector& GetPos() const;                              // 0x004C73D0
-    unsigned char _pad_0x00[0x64];
-    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingGameObject : public CThing {
 };
 
@@ -82,7 +78,7 @@ void CBase::UpdateRaiseUp(C3DVector& pos) const
         float dy = thingPos.Y - pos.Y;
         distanceSquared = dy * dy + dx * dx;
     }
-    const NGraphicAppearance::CTCGraphicAppearance* appearance = GetObservedThing()->PTCGraphicAppearance;
+    const NGraphicAppearance::CTCGraphicAppearance* appearance = GetObservedThing()->GetTCGraphicAppearance();
     C3DVector offset;
     offset.Z = appearance->GetFocalPos(1.0f).Z - thingPos.Z;
     float raise = (float)tanh(distanceSquared * 0.25f) * (pos.Z - thingPos.Z);

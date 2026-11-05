@@ -14,10 +14,7 @@
 //   Ego_r SetNormalisedTimeLeft setter).
 #include <math.h>
 #include "engine/GFFloatToLongNear.h"
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_stateFlags;                         // +0x91 (bit 0: dead)
-};
+#include "engine/CThing.h"
 class CTCVillage { public:
     bool  IsHeroCriminal();                             // 0x0065BFCE
     long  GetFineAmountForCurrentCrimes();              // 0x0065A41C
@@ -83,7 +80,7 @@ void CPlayerGui::UpdateCrime()
 {
     PCrime->UpdateChangeTexts();
     CThing* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacterThing();
-    if (!hero || (hero->m_stateFlags & 1))
+    if (!hero || hero->IsDead())
         return;
     long fine = 0;
     CTCVillage* village = PlayerManager->GetMainPlayer().GetPNearestTCVillage();

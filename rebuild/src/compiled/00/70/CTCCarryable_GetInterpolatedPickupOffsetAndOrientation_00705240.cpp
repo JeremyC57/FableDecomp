@@ -17,7 +17,9 @@
 //        The graphic and physics components are read through inline const accessors (GetGraphicAppearance/GetPhysics):
 //        with direct ParentThing->member chains VC7.1 colours ParentThing differently on the two paths and cross-jumps
 //        their identical `offset = temp` copies into one shared tail.
-class CCharString { public: void* m_pData; };
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 extern CCharString g_RightHandAttachmentName;           // 0x013BAC30
 extern CCharString g_LeftHandAttachmentName;            // 0x013BAC34
 #include "engine/C3DVector.h"
@@ -52,17 +54,13 @@ public:
     long      OldPositionLastFrameSet;                  // +0x24
     C3DVector GetInterpolatedPosition(float t) { return (Position - OldPosition) * t + OldPosition; }
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                          // +0x60
-    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
-};
+
 class CTCCarryable {
 public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
-    NGraphicAppearance::CTCGraphicAppearance* GetGraphicAppearance() const { return ParentThing->PTCGraphicAppearance; }
-    CTCPhysicsBase* GetPhysics() const { return ParentThing->PhysicsTC; }
+    NGraphicAppearance::CTCGraphicAppearance* GetGraphicAppearance() const { return ParentThing->GetTCGraphicAppearance(); }
+    CTCPhysicsBase* GetPhysics() const { return ParentThing->GetPhysicsTC(); }
 private:
     void GetInterpolatedPickupOffsetAndOrientation(C3DVector& offset, CRightHandedSet& orientation, bool exact, float t) const;
 };

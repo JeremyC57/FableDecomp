@@ -9,38 +9,19 @@
 // Shape (family M163, representative 0x005EA950): `CTCSoundPlayer* sound; if (ParentThing->GetInterface(&sound, 16)) return
 //   sound->PlayAttachedCriteria(name, true, false, false, -1); return g_InvalidSoundHandle;` -- the landed
 //   CTCWillLightning::StartLoopingSound 0x007A0400 GetInterface; the interface key in the `push ecx` word. Speed TU.
-class CCharString {
-public:
-    void* PStringData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 extern unsigned long g_InvalidSoundHandle;                // 0x0129D25C
 class CTCBase;
 class CTCSoundPlayer {
 public:
     unsigned long PlayAttachedCriteria(const CCharString& name, bool a, bool b, bool c, long d);   // 0x0066BD00
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                       // +0x20
-    CInterfaceMap m_interfaces;                           // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCFireheartMinigame {
 public:
     void*   __vftable;                                    // +0x00 (CTCBase)
@@ -51,7 +32,7 @@ public:
 unsigned long CTCFireheartMinigame::PlaySoundW(const CCharString& name)
 {
     CTCSoundPlayer* sound;
-    if (ParentThing->GetInterface(&sound, 16))
+    if (ParentThing->GetTC(TCI_SOUND_PLAYER, &sound))
         return sound->PlayAttachedCriteria(name, true, false, false, -1);
     return g_InvalidSoundHandle;
 }

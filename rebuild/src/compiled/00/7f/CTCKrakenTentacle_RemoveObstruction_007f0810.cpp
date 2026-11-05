@@ -1,4 +1,5 @@
 // CTCKrakenTentacle::RemoveObstruction() -- kill the obstruction thing if it is still alive, clear PObstruction and reset QueuedStrikeTick
+// Leaf: ?RemoveObstruction@CTCKrakenTentacle@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F0810, length 120 bytes. Callers 0x007F089A, 0x007F13A7, 0x007F1584 (CTCKrakenTentacle)
 // and 0x008CF5CA (CCreatureAction_TentacleStrikeInto::Initialise).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x4), CThing::Kill(bool) @ 0x004C9B80, CBaseIntelligentPointer ctor
@@ -7,11 +8,7 @@
 // Shape: IS_THING_ALIVE inlined around Kill(true) only; the clear through a default-constructed stack CIntelligentPointer
 // (landed 0x008C99C0 form) and the tick reset are unconditional; the temporary sits in its own `{}` block so the tick store
 // follows its destructor call (at function scope VC7.1 hoists the store above the dtor).
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    void Kill(bool immediately);            // 0x004C9B80
-};
+#include "engine/CThing.h"
 class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -28,7 +25,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;

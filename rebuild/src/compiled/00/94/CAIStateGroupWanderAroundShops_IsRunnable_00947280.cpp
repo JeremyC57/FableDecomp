@@ -1,4 +1,5 @@
 // CAIStateGroup_WanderAroundShops::IsRunnable() -- runnable in work hours when the idle scheduler (if any) prefers this group, a random shop can be picked and is alive, and a pretty thing (the shop itself when it is a shop component holder, else one found near it) is alive
+// Leaf: ?IsRunnable@CAIStateGroup_WanderAroundShops@@UAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00947280, length 346 bytes (plain `ret`, virtual, bool).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 211 = bit 19 of the bitset dword at +0x38),
@@ -15,34 +16,10 @@
 //          CAIStateGroupBase model (the header flattens the vptr, so the base is modelled locally).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -69,7 +46,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -110,14 +87,14 @@ public:
 bool CAIStateGroup_WanderAroundShops::IsRunnable()
 {
     CTCIdleScheduler* scheduler;
-    if (PBrain->PCreature->GetInterface(&scheduler, 211)) {
+    if (PBrain->PCreature->GetTC(TCI_IDLE_SCHEDULER, &scheduler)) {
         if (!scheduler->IsPreferredIdle(this))
             return false;
     }
     if (IsInWorkHours()) {
         Shop = ((CAIStateGroup_WanderAroundShops*)this)->FindASimplyDelightfulShop();
         if (IS_THING_ALIVE(Shop)) {
-            if (Shop.GetPItem()->HasTC(144))
+            if (Shop.GetPItem()->HasTC(TCI_SHOP_KEEPER))
                 PrettyThing = Shop;
             else
                 PrettyThing = SelectPrettyThing(Shop.GetPItem());

@@ -16,7 +16,8 @@
 // Shape: `if (sample && state)` shares the invalid-handle exit; CreatePAttachedEmitter(flag); an init without fader bits
 //   is copied (`rep movsd`) and given 0x8010, else passed through.
 // No pragma.
-class CCharString { public: void* PStringData; };
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
 class CASoundBank {
 public:
@@ -57,13 +58,7 @@ public:
     unsigned char _pad00[0x0c];
     C3DVector     Position;                     // +0x0c
 };
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-    const C3DVector& GetPosition() const { return PhysicsTC->Position; }   // CThing::GetPosition 0x004C73D0, inline
-    CASoundBank& GetSampleBank() const;         // 0x004C7A80
-};
+
 class CASoundManager;
 extern CASoundManager* PSoundManager;              // 0x013B8394 (no sound while null)
 extern unsigned long g_InvalidSoundHandle;      // 0x0129D25C

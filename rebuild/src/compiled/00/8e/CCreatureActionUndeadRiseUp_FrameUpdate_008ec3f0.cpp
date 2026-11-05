@@ -1,4 +1,5 @@
 // CCreatureAction_UndeadRiseUp::FrameUpdate() -- while still rising, once the action is past half way: flag the creature's type-9 component (+0x10 = 1), drop the creature's underground mode and clear the rising flag; then the base FrameUpdate
+// Leaf: ?FrameUpdate@CCreatureAction_UndeadRiseUp@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008EC3F0, length 118 bytes.
 // Callees: CCreatureActionBase::GetProgressRatio @ 0x006925E0 (float (elapsed) / (duration); the manifest's
@@ -11,27 +12,11 @@
 // retail CCreatureAction_RiseUp base (0x118 bytes: CCombatActionBase 0x114 + one word); modelled locally (the generated
 // headers flatten the bases).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 struct CTCType9 {                           // the creature's interface-type-9 component
     unsigned char _pad[0x10];
     unsigned char m_flag;                   // +0x10
@@ -78,7 +63,7 @@ void CCreatureAction_UndeadRiseUp::FrameUpdate()
     if (m_rising) {
         if (GetProgressRatio() > 0.5f) {
             CTCType9* component;
-            if (PCreature.GetPItem()->GetInterface(&component, 9))
+            if (PCreature.GetPItem()->GetTC(TCI_TARGETED, &component))
                 component->m_flag = 1;
             RemoveUndergroundMode();
             m_rising = 0;

@@ -68,14 +68,15 @@ struct CGraphicDataRef {
         return false;
     }
 };
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     unsigned char   _pad00[0x44];
     CGraphicDataRef GraphicData;                    // +0x44
 };
-class CThing { public:
-    unsigned char _pad00[0x64];
-    CTCGraphicAppearance* PGraphicAppearance;       // +0x64
-};
+}
+using NGraphicAppearance::CTCGraphicAppearance;
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CPhysicsDef { public:
     unsigned char _pad00[0x38];
     float         Mass;                             // +0x38
@@ -144,7 +145,7 @@ void CTCPhysicsStandard::OnCreate()
 {
     OldRHSet = RHSet;
     OffsetVector3D.Clear();
-    CTCGraphicAppearance* graphic = ParentThing->PGraphicAppearance;
+    CTCGraphicAppearance* graphic = ParentThing->GetTCGraphicAppearance();
     if (graphic && graphic->GraphicData.IsValid()) {
         const CGraphicDataRef& data = graphic->GraphicData;
         const CWorld& world = PeekWorld();

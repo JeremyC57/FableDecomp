@@ -1,4 +1,5 @@
 // CTCAssassinRush::CancelMove() -- while the main player holds its cancel lock (+0x215) only schedule the cancel; otherwise clean up the effects, remove this TC (type 0xA9) from the parent thing and clear ScheduleForCancel
+// Leaf: ?CancelMove@CTCAssassinRush@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007AA480, length 68 bytes (+ int3 padding).
 // Callees: CTCBase::GetPlayerManager @ 0x00686D40 (it ignores `this`: the game singleton
 // @ 0x013B8A1C, +0x30; manifest label "CViewBase::GetDisplayEngine" is propagated),
@@ -9,10 +10,9 @@
 // Shape: the parent pointer is read into a local BEFORE the accessor call (edi), the two flag stores
 // are tail-duplicated into both exits; the unlocked path is the `if` arm (the early-return form
 // places the locked exit first).
-enum ETCInterfaceType { };
-class CThing { public:
-    void RemoveTC(ETCInterfaceType interfaceType);                      // 0x004C9840
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CPlayer { public:
     unsigned char _pad[0x215];

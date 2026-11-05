@@ -1,4 +1,5 @@
 // CTCDParticleEmitter::EnterTimelineEnd() -- let the live emitter play out its timeline end, or kill the parent thing when there is no emitter
+// Leaf: ?EnterTimelineEnd@CTCDParticleEmitter@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E05F0, length 47 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2); NParticleEngine::CParticleEmitter::EnterTimelineEnd()
 // @ 0x00AED250 (sibling `jmp`); CThing::Kill(bool) @ 0x004C9B80.
@@ -6,9 +7,7 @@
 // ParentThing +0x04.
 // Shape: the emitter branch tail-jumps (no arguments), the Kill(true) branch is a plain call (it needs a
 // stack argument the caller does not have).
-class CThing { public:
-    void Kill(bool immediately);                            // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 namespace NParticleEngine {
 class CParticleEmitter { public:

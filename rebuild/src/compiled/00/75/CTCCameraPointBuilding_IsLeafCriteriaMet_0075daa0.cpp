@@ -16,15 +16,14 @@
 #include "engine/C3DVector.h"
 class CThing;
 class CThingBuilding;
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     C3DVector GetCameraFocalPos(float height) const;   // 0x004C12D0
 };
-class CThing {
-public:
-    unsigned char _pad00[0x64];
-    CTCGraphicAppearance* PGraphicAppearance;   // +0x64
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+}
+using NGraphicAppearance::CTCGraphicAppearance;
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 const CThing* __fastcall GetPBuildingThingOccupying(CThing* thing);     // 0x006989D0 (the CThingBuilding)
 struct CTools {
     bool IsLineOfSightFiltered(const C3DVector* camera, const C3DVector* pos, C3DVector* hitPos, C3DVector* hitNormal, long* hitIndex,
@@ -95,7 +94,7 @@ bool CTCCameraPointBuilding::IsLeafCriteriaMet()
     if (PeekWorld().GetCameraManager()->GetCameraManager(&camera) && GetOwnerBuilding(&thing)) {
         CThing* observed = camera->PCurrentMode->GetObservedThing();
         if (observed) {
-            C3DVector focal = observed->PGraphicAppearance->GetCameraFocalPos(1.0f);
+            C3DVector focal = observed->GetTCGraphicAppearance()->GetCameraFocalPos(1.0f);
             C3DVector heroPosition = ParentThing->GetPos();
             if (thing == GetPBuildingThingOccupying(observed)) {
                 const CThing* hitThing = 0;

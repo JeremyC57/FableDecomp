@@ -5,11 +5,10 @@
 // CTCBulletTime header calls it f4). Callee 0x004C9840 looks the type up in CThing::Components (+0x44, LowerBound 0x0040F020)
 // and matches ?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z; 0x92 is CTCBulletTime's own interface type (slot-21 getter).
 #include "engine/CTCBulletTime.h"
-enum ETCInterfaceType { TCI_BULLET_TIME = 0x92 };
-class CThing {
-public:
-    void RemoveTC(ETCInterfaceType type);                // 0x004C9840
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
+
 struct CTCBulletTime_Methods : CTCBulletTime {
     CThing* GetParentThing() const { return (CThing*)f4; }
     void CancelForCutscene();

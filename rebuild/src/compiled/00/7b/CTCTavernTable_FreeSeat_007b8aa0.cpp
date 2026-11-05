@@ -14,28 +14,10 @@
 //   path retail reads the never-written local, which VC7.1 homed in the `point` argument slot (`mov eax,[esp+14h]`).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCUserActionPointBase { public:
     void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
@@ -85,7 +67,7 @@ void CTCTavernTable::SetSeatState(long seat, bool used)   // 0x007B8530, auto-in
 void CTCTavernTable::FreeSeat(long seat, long point)
 {
     CTCFreePointList* points;
-    ParentThing->GetInterface(&points, 0x2E);
+    ParentThing->GetTC(TCI_NAMED_USER_ACTION_POINTS, &points);
     ((CTCUserActionPointBase*)points)->SetActionPointAsFree(point);
     SetSeatState(seat, false);
 }

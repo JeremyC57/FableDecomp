@@ -1,4 +1,5 @@
 // CAIStateGroup_BanditPlayDice::GetDiceGame() -- the dice-game component (interface 0xf0) of the village this creature's villager component belongs to, or null
+// Leaf: ?GetDiceGame@CAIStateGroup_BanditPlayDice@@QAEPAVCTCDiceGame@@XZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00929220, length 135 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (two inlined GetInterface lookups:
@@ -12,28 +13,10 @@
 // Model: local (engine/CAIStateGroup_BanditPlayDice.h flattens the base, and the base layout is needed); the base fields keep their PDB names.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCVillage { public:
     void*   __vftable;                          // +0x00
@@ -66,11 +49,11 @@ struct CAIStateGroup_BanditPlayDice : CAIStateGroupBase {
 CTCDiceGame* CAIStateGroup_BanditPlayDice::GetDiceGame()
 {
     CTCVillager* villager;
-    if (PBrain->Creature->GetInterface(&villager, 0x23)) {
+    if (PBrain->Creature->GetTC(TCI_VILLAGE_MEMBER, &villager)) {
         if (((CTCVillageMember*)villager)->GetPVillage() != 0) {
             CThing* villageThing = ((CTCVillageMember*)villager)->GetPVillage()->Owner;
             CTCDiceGame* game;
-            if (villageThing->GetInterface(&game, 0xf0))
+            if (villageThing->GetTC(TCI_DICE_GAME, &game))
                 return game;
         }
     }

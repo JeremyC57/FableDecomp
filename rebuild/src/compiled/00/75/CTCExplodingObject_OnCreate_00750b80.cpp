@@ -9,9 +9,9 @@
 // void call that is not the last statement of a two-way body keeps `call ; ret` (no tail jump with an argument push).
 #include "engine/CTCBase.h"
 
-class CThing { public:
-    void SetForceFrameUpdate(bool update);         // 0x004C7C60
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CTCExplodingObject : public CTCBase { public:
     float MaxDamage;                               // +0x0c

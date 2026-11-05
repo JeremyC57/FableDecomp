@@ -35,24 +35,10 @@ class CTCHeroAttachableAppearanceModifiers { public:           // interface 0x5E
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char  _pad00[0x20];
-    std::bitset<274>  m_present;                           // +0x20
-    CInterfaceMap  m_interfaces;                        // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *out = (T*)((void*)((it == map->end() || wanted < it->first) ? map->end() : it)->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCInventoryClothing { public:
     void*   __vftable;
     CThing* ParentThing;                                // +0x04
@@ -74,10 +60,10 @@ void CTCInventoryClothing::ResetMannequin()
     if (!PMannequin)
         return;
     CTCHeroAttachableAppearanceModifiers* heroModifiers;
-    if (!ParentThing->GetInterface(&heroModifiers, 0x5e))
+    if (!ParentThing->GetTC(TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS, &heroModifiers))
         return;
     CTCHeroAttachableAppearanceModifiers* mannequinModifiers;
-    if (!PMannequin->GetInterface(&mannequinModifiers, 0x5e))
+    if (!PMannequin->GetTC(TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS, &mannequinModifiers))
         return;
     CLongList worn;
     heroModifiers->GetAppearanceModifierList(worn, 2);

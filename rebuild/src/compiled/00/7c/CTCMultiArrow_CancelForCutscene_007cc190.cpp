@@ -1,4 +1,5 @@
 // CTCMultiArrow::CancelForCutscene() -- once per cutscene: put every ammo effect's particle emitter to sleep (Asleep bit) and clear its live particles and decals
+// Leaf: ?CancelForCutscene@CTCMultiArrow@@QAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CC190, length 154 bytes.
@@ -10,31 +11,11 @@
 // Shape: `for (long i = 0; i < (long)size(); ++i)` (signed `test eax,0FFFFFFF8h ; jle`); the emitter pointer is preset to 0 and the
 // GetInterface result is not tested (the bit is set on a null component when the interface is missing, as retail does).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    void Kill(bool immediately);                // 0x004C9B80
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -85,7 +66,7 @@ void CTCMultiArrow::CancelForCutscene()
         CutSceneCancelled = true;
         for (long i = 0; i < (long)AmmoEffects.size(); ++i) {
             CTCDParticleEmitter* emitter = 0;
-            ((CThing*)AmmoEffects[i].GetPItem())->GetInterface(&emitter, 0x4b);
+            ((CThing*)AmmoEffects[i].GetPItem())->GetTC(TCI_PARTICLE_EMITTER, &emitter);
             emitter->Asleep = true;
             NParticleEngine::CParticleEmitter* particles = emitter->PEmitter.GetPItem();
             if (particles) {

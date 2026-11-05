@@ -10,13 +10,7 @@
 // Layout: PDB CTCAvoidRegionExit (0x20): EntranceMarker +0xC, ExitMarker +0x14 (CIntelligentPointer<CThing>), NextFrameCheck +0x1C;
 // retail CThing Dead = bit 0 of +0x91.
 #include "engine/C3DVector.h"
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    const C3DVector& GetPos() const;    // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

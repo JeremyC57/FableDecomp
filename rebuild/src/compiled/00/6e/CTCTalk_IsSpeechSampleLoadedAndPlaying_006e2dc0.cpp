@@ -13,30 +13,11 @@
 // slot); the sample id test is unsigned (`jbe`); `!(elapsed > limit)` gives the NaN-aware `test ah,5 ; jnp` (`<=` gives `test ah,1`);
 // GetTC must be `__forceinline` or it is emitted out of line.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    __forceinline CTCBase* GetTC(long interfaceType) const
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-};
+
 struct CSpeechEmitter {
     bool IsSampleLoadedAndPlaying(unsigned long sampleID);   // 0x0066AE60
 };
@@ -71,8 +52,8 @@ bool CTCTalk::IsSpeechSampleLoadedAndPlaying() const
     if (SpeechSample > 0 && SampleID > 0) {
         long rate = CMainGameComponent::GetConstantFPS();
         long elapsed = g_pWorld->GetFrame() - SampleStartedFrame;
-        if (!((float)elapsed > (float)rate * 10000.0f) && ParentThing->HasTC(0x10))
-            return ((CSpeechEmitter*)ParentThing->GetTC(0x10))->IsSampleLoadedAndPlaying(SampleID);
+        if (!((float)elapsed > (float)rate * 10000.0f) && ParentThing->HasTC(TCI_SOUND_PLAYER))
+            return ((CSpeechEmitter*)((CSpeechEmitter*)&ParentThing->GetTC(TCI_SOUND_PLAYER)))->IsSampleLoadedAndPlaying(SampleID);
     }
     return true;
 }

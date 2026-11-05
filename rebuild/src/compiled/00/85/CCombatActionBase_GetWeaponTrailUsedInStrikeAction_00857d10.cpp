@@ -13,29 +13,11 @@
 // Shape: the functor is built in its by-value argument slot (`mov ebx,esp`); the out-parameter GetInterface
 //          (landed ScorpionUnblockable 0x008C4430 idiom) with the type local homed in the dead argument slot.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -90,10 +72,10 @@ CTCWeaponTrail* CCombatActionBase::GetWeaponTrailUsedInStrikeAction(long* strike
                                          CGetActiveStrikeEventThatContainsFrame(CurrentFrame)).PFound;
     if (event != 0) {
         CThing* weapon = ((CThing*)event->PWeapon.GetPItem());
-        if (weapon != 0 && !(weapon->m_flags91 & 1)) {
+        if (weapon != 0 && !weapon->IsDead()) {
             *strikeIndex = event->Index;
             CTCWeaponTrail* trail;
-            if (!(weapon->m_flags91 & 1) && weapon->GetInterface(&trail, 0x4c))
+            if (!weapon->IsDead() && weapon->GetTC(TCI_WEAPON_TRAIL, &trail))
                 return trail;
         }
     }

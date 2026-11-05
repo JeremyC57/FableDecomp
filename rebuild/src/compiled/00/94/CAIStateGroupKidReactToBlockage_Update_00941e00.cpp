@@ -1,4 +1,5 @@
 // CAIStateGroup_KidReactToBlockage::Update() -- look at the blocking creature, then (while it is still alive) throw a three-part tantrum (into, loop, out of), stopping at the first animation that does not complete; always terminate
+// Leaf: ?Update@CAIStateGroup_KidReactToBlockage@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00941E00, length 448 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PThingCreature +0x2c), CThing::GetPosition @ 0x004C73D0,
@@ -11,17 +12,10 @@
 // keeps the third result's setne and the dead `mov al` reload (both arms tail-merge into the one Terminate call).
 // Layout: the state group is local (the engine header flattens the base); PThingCreature +0x2c (CIntelligentPointer<CThingCreatureBase>);
 // CCreatureAction_PlayAnimation from the landed 0x008424F0 model (sizeof 0xb4).
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
-class CThing { public:
-    unsigned char _pad0[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;    // 0x004C73D0
-};
+
 class CThingCreatureBase;
 class CBaseObject;
 class CBaseObjectPointer;
@@ -74,7 +68,7 @@ struct CAIStateGroup_KidReactToBlockage : CAIStateGroupBase {
     void Update();
 };
 
-#define IS_THING_ALIVE(p) ((p) != 0 && !((p)->m_flags91 & 1))
+#define IS_THING_ALIVE(p) ((p) != 0 && !(p)->IsDead())
 
 void CAIStateGroup_KidReactToBlockage::Update()
 {

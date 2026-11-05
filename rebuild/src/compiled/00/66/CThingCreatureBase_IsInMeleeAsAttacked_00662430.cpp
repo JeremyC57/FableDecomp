@@ -18,10 +18,7 @@ class CCombatManager { public:
     bool IsAttacked(const CThingCreatureBase& creature) const;   // 0x006E9270
 };
 
-class CThing {
-protected:
-    CWorld& GetWorld();                          // 0x004C7AB0
-};
+#include "engine/CThing.h"
 
 class CThingCreatureBase : public CThing {
 public:

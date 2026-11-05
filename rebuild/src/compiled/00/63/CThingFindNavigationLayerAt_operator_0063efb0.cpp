@@ -31,10 +31,7 @@ public:
     CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
 
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                      // +0x60
-};
+#include "engine/CThing.h"
 
 class CThingFindNavigationLayerAt { public:
     C3DVector Pos;                                  // +0x00
@@ -44,7 +41,7 @@ class CThingFindNavigationLayerAt { public:
 
 bool CThingFindNavigationLayerAt::operator()(CThing* thing)
 {
-    CTCPhysicsBase* physics = thing->PhysicsTC;
+    CTCPhysicsBase* physics = thing->GetPhysicsTC();
     if (physics && physics->HasPhysicsMeshObject()) {
         CPhysicsMeshObject mesh = physics->GetPhysicsMeshObject();
         long level = mesh.GetNavigationLevelAt(Pos);

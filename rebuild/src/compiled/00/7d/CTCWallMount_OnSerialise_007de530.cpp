@@ -10,14 +10,7 @@
 //         CThing::UID +0x18, Dead flag +0x91 bit 0.
 // Shape: each zero default is a temporary in the same frame slot (ebp = 0 shared with the TrophyID reset); IsSaving is the
 //        inline `Mode == 1 || Mode == 3`.
-class CThing {
-public:
-    unsigned char    _pad_0x00[0x18];
-    unsigned __int64 UID;                       // +0x18
-    unsigned char    _pad_0x20[0x71];
-    unsigned char    Flags91;                   // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -61,7 +54,7 @@ void CTCWallMount::OnSerialise(CPersistContext* context, bool flag)
     if (context->IsSaving()) {
         TrophyID = 0;
         if (Trophy.GetPItem() && !Trophy.GetPItem()->IsDead())
-            TrophyID = Trophy.GetPItem()->UID;
+            TrophyID = Trophy.GetPItem()->GetUniqueID();
     }
     context->Transfer<unsigned __int64>("TrophyID", TrophyID, 0);
 }

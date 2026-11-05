@@ -16,22 +16,11 @@
 //   when the 0x31 bit is clear (retail calls RemoveMode on the dead `push ecx` frame word, which also held the lookup key),
 //   so the call is duplicated on both paths.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 component-presence bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CTCCreatureModeManager { public:                  // interface 0x31
     bool IsModeActive(unsigned long type) const;        // 0x0073A8A0
     bool AddMode(unsigned long type);                   // 0x0073AE10
@@ -42,8 +31,8 @@ class CTCCreatureModeManager { public:                  // interface 0x31
 __forceinline CTCCreatureModeManager* GetModeManager(CThing* thing)
 {
     CTCCreatureModeManager* modes;
-    if (thing->HasTC(0x31))
-        modes = thing->GetTC<CTCCreatureModeManager>(0x31);
+    if (thing->HasTC(TCI_ENTITY_MODE_MANAGER))
+        modes = ((CTCCreatureModeManager*)&thing->GetTC(TCI_ENTITY_MODE_MANAGER));
     return modes;
 }
 

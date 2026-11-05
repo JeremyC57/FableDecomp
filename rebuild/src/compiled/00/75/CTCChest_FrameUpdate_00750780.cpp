@@ -1,4 +1,5 @@
 // CTCChest::FrameUpdate() -- advance the lid's open/close transition by one frame; on the frame the chest becomes open the hero gets its reward items, on the frame it becomes closed the chest is reset; the lid animation follows; an idle chest stops forcing frame updates
+// Leaf: ?FrameUpdate@CTCChest@@QAEXXZ
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00750780, 205 bytes (plain `ret`).
@@ -35,9 +36,9 @@ struct COpenCloseHelper {
         return !Opening && !Closing && !(LastOpenCloseTransitionAmount != OpenCloseTransitionAmount);
     }
 };
-class CThing { public:
-    void SetForceFrameUpdate(bool force);               // 0x004C7C60
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 class CTCBase
 {
 public:

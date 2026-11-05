@@ -1,4 +1,5 @@
 // CTCCreatureOpinionOfHero::IsHeroOpinionEnemy() -- the hero is this creature's enemy: either flagged directly or, for a creature with interface 0xB4, when its village treats the hero as an enemy of the guards
+// Leaf: ?IsHeroOpinionEnemy@CTCCreatureOpinionOfHero@@QAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006827A0, length 99 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (inlined GetInterface for type 0x23 = CTCVillageMember,
@@ -11,31 +12,11 @@
 // Retail CThing: interface bitset +0x20, map +0x44, Dead bit +0x91.
 struct CTCBaseInterface;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)((CTCBaseInterface*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCVillage { public:
     bool GetIsHeroEnemyOfGuards();              // 0x00658604
 };
@@ -56,9 +37,9 @@ bool CTCCreatureOpinionOfHero::IsHeroOpinionEnemy()
     if (HeroOpinionEnemy)
         return true;
     CThing* thing = ParentThing;
-    if (thing->HasTC(0xb4)) {
-        CTCVillageMember* member;
-        if (thing->GetInterface(&member, 0x23)) {
+    if (thing->HasTC(TCI_GUARD)) {
+        const CTCVillageMember* member;
+        if (thing->PeekTC(TCI_VILLAGE_MEMBER, &member)) {
             CTCVillage* village = member->GetPVillage();
             if (village && village->GetIsHeroEnemyOfGuards())
                 return true;

@@ -20,33 +20,15 @@ class CTCBase;
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                  // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                      // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                         // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-};
 
 inline bool IS_THING_ALIVE(const CThing* thing)
 {
     if (thing != 0) {
-        if (!(thing->m_flags91 & 1))
+        if (!thing->IsDead())
             return true;
     }
     return false;
@@ -98,7 +80,7 @@ class CThingSearchTools { public:
 template <class T, class C, class F> void CThingSearchTools::GetAllThings(const F& filter, C& found) const
 {
     for (CThing** it = m_pFirst; it != m_pLast; ++it) {
-        if ((*it)->HasTC(filter.Second.Type)) {
+        if ((*it)->HasTC((ETCInterfaceType)filter.Second.Type)) {
             SThingListNode* node = (SThingListNode*)malloc(sizeof(SThingListNode));
             SThingListNode* head = found._M_node;
             node->_M_data = *it;
@@ -132,8 +114,8 @@ bool CTCHeroOpinionDeedLog::IsDeedWitnessed(long deed, bool flag)
     PeekThingSearchTools().GetAllThings<CThing>(filter, creatures);
     for (SThingListNode* node = creatures._M_node->_M_next; node != creatures._M_node; node = node->_M_next) {
         CThing* creature = node->_M_data;
-        if (IS_THING_ALIVE(creature) && creature->HasTC(0x4F)) {
-            if (creature->GetTC<CTCCreatureOpinionOfHero>(0x4F)->KnowsOfDeed(deed, flag))
+        if (IS_THING_ALIVE(creature) && creature->HasTC(TCI_CREATURE_OPINION_OF_HERO)) {
+            if (((CTCCreatureOpinionOfHero*)&creature->GetTC(TCI_CREATURE_OPINION_OF_HERO))->KnowsOfDeed(deed, flag))
                 return true;
         }
     }

@@ -18,16 +18,7 @@
 //   locally with the Ego_r CModeBase members (ParentThing +4); header debt in NOTES.
 class CThing;
 
-class CClass {
-public:
-    virtual void v00();
-    unsigned long GetType() const { return Type; }      // FableWin.pdb ?GetType@CClass@@QBEKXZ (inline)
-    unsigned char _base_0x04[0xc];                      // +0x04 (CBaseObject IntelligentPointer, ClassListPos, TypeListPos)
-    unsigned char Type;                                 // +0x10
-};
-
-class CThing : public CClass {
-};
+#include "engine/CThing.h"
 
 class CThingAICreature : public CThing {               // CThingCreatureBase .. CThing chain, offset 0
 public:

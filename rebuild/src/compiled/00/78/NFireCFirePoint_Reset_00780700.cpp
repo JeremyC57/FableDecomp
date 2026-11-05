@@ -17,34 +17,14 @@
 //   unchecked; GetTC is `__forceinline` with a map pointer local (`add edi,44h`, `this` stays in esi) and the end/hit
 //   choice as one ternary (the component lands straight in ecx); the Burning clear sits after the join.
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                            // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-    void Kill(bool immediately);                        // 0x004C9B80
-    const C3DVector& GetPos() const;               // 0x004C73D0
-    bool HasTC(long type) const { if (m_presentBits[type >> 5] & (1UL << (type & 31))) return true; return false; }
-    template <class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-};
+
 CThing* __fastcall Create(const CCharString& defName, const C3DVector& position, bool flag);   // 0x006E0970
 
 class CTCDParticleEmitter { public:
@@ -95,8 +75,8 @@ void CFirePoint::Reset()
         }
         if (effect && !effect->IsDead()) {
             CTCDParticleEmitter* emitter = 0;
-            if (effect->HasTC(0x4b))
-                emitter = effect->GetTC<CTCDParticleEmitter>(0x4b);
+            if (effect->HasTC(TCI_PARTICLE_EMITTER))
+                emitter = ((CTCDParticleEmitter*)&effect->GetTC(TCI_PARTICLE_EMITTER));
             emitter->AttachToThing(*PParentThing, 0x1c, HelperName, HelperIndex, 0.0f);
         }
     }

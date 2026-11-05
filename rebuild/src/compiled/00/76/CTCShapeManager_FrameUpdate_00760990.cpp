@@ -1,4 +1,5 @@
 // CTCShapeManager::FrameUpdate() -- find the persistent closed shape the hero stands in (inside the closed-shape bounds first) and select it
+// Leaf: ?FrameUpdate@CTCShapeManager@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00760990, 219 bytes (plain `ret`).
 // Callees: CTCBase::GetWorld @ 0x00686A70, CWorld::PeekMyPlayer @ 0x0049D9D0 (PlayerManager +0xc -> GetMainPlayer),
@@ -13,11 +14,7 @@
 #include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
 class C2DBoxF { public: C2DVector TopLeft; C2DVector BottomRight; };
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char Flags91;                              // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;               // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;                    // 0x00487DD0
@@ -68,7 +65,7 @@ void CTCShapeManager::FrameUpdate()
     NewShapeActivated = false;
     LeavingShape = false;
     const CThing* hero = ((CPlayer*)((CWorld*)&(GetWorld()))->PeekMyPlayer())->PeekPControlledCreature();
-    if (hero && !(hero->Flags91 & 1)) {
+    if (hero && !hero->IsDead()) {
         C3DVector pos = hero->GetPos();
         if (pos.X >= ClosedShapeBounds.TopLeft.X && pos.X < ClosedShapeBounds.BottomRight.X &&
             pos.Y >= ClosedShapeBounds.TopLeft.Y && pos.Y < ClosedShapeBounds.BottomRight.Y) {

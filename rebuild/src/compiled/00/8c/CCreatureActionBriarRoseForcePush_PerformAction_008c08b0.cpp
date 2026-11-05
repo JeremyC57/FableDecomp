@@ -1,4 +1,5 @@
 // CCreatureAction_BriarRoseForcePush::PerformAction() -- add a CTCForcePushPower component to the creature and arm it (level 1, active)
+// Leaf: ?PerformAction@CCreatureAction_BriarRoseForcePush@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C08B0, length 69 bytes. Vtable slot 3 (PerformAction) of
 // CCreatureAction_BriarRoseForcePush (0x01294CD4).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literal "CTCForcePushPower" @ 0x0123C454, -1),
@@ -10,18 +11,10 @@
 // temporary's destructor and its level (+0x10) and active flag (+0x24) are then set.
 class CTCParamsBase;
 
-class CCharString { public:                        // retail CCharString is one pointer (fable_string.h)
-    char* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CTCBase;
-
-class CThing { public:
-public:
-    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
-};
 
 class CTCForcePushPower { public:                  // the component just added
     unsigned char _pad[0x10];

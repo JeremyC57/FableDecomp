@@ -1,4 +1,5 @@
 // CCreatureAction_SendMessage::PerformAction() -- if the receiver is alive, post the action's message (def, position, sender = this creature, receiver, extra) to the world's message-event manager
+// Leaf: ?PerformAction@CCreatureAction_SendMessage@@UAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008491E0, length 110 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PReceiver at +0xb8 twice for the alive test and once for the argument,
@@ -13,10 +14,7 @@
 // PReceiver at +0xb8 (an intelligent pointer), Extra at +0xc0. No engine header for this class; modelled locally (retail CCreatureActionBase is 0xa8 bytes).
 class CMessageEventDef;
 #include "engine/C3DVector.h"
-class CThing { public:
-    unsigned char _pad0[0x91];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -38,7 +36,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

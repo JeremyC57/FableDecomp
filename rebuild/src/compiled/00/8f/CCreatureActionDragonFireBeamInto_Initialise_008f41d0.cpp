@@ -1,4 +1,5 @@
 // CCreatureAction_DragonFireBeamInto::Initialise() -- animation "FIRE_BEAM_INTO", base Initialise, then (mode manager present) push a new CModeDragonFireBeam(owner, target, Timer) onto the owner's mode manager
+// Leaf: ?Initialise@CCreatureAction_DragonFireBeamInto@@UAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F41D0, length 199 bytes (+ int3 padding), plain `ret` (virtual, no arguments).
@@ -12,29 +13,12 @@
 // out-parameter is then spilled to the frame across the new (plain `.GetPItem()` arguments interleave with the pushes).
 // Layout: Timer at retail +0x114 (PDB +0x12c); the combat target pointer at +0xa8.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing { public: };
 
 class CBaseObject;
@@ -46,12 +30,6 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
-};
-
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
 };
 
 struct CModeBase { };
@@ -89,6 +67,6 @@ void CCreatureAction_DragonFireBeamInto::Initialise()
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
-    if (((CThing*)PCreature.GetPItem())->GetInterface(&modeManager, 0x31))
+    if (((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager))
         modeManager->AddMode(CCountedPointer<CModeBase>(new CModeDragonFireBeam(PCreature, PTarget, Timer)));
 }

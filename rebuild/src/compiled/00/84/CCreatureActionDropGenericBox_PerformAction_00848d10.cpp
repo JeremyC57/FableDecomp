@@ -1,4 +1,5 @@
 // CCreatureAction_DropGenericBox::PerformAction() -- the creature drops what it carries in its primary slot (carrying component 0x46) and leaves creature mode 0x22 (mode manager 0x31)
+// Leaf: ?PerformAction@CCreatureAction_DropGenericBox@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00848D10, length 160 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020,
@@ -11,26 +12,10 @@
 // Layout: CCreatureActionBase (retail 0xa8 bytes) with PCreature at +8; nothing else of the class is touched.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template <class T> __forceinline void GetInterface(T** ppOut, long interfaceType)   // leaves *ppOut alone when absent
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -72,9 +57,9 @@ class CCreatureAction_DropGenericBox : public CCreatureActionBase { public:
 void CCreatureAction_DropGenericBox::PerformAction()
 {
     CTCCarrying* carrying;
-    PCreature.GetPItem()->GetInterface(&carrying, 0x46);
+    PCreature.GetPItem()->GetTC(TCI_CARRYING, &carrying);
     carrying->RemoveThingFromPrimarySlot(true);
     CTCCreatureModeManager* modes;
-    PCreature.GetPItem()->GetInterface(&modes, 0x31);
+    PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
     modes->RemoveMode(0x22);
 }

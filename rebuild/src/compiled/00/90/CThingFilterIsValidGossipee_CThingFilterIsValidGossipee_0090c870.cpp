@@ -13,43 +13,11 @@
 class CTCBase;
 class CFaction;
 class CTCVillage;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long kind)
-    {
-        if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(kind);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || kind < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-};
+
 class CThingAICreature : public CThing {};
 struct CTCFactionMember {                       // component kind 0x49
     unsigned char _pad00[0x18];
@@ -69,10 +37,10 @@ class CThingFilter_IsValidGossipee { public:
 CThingFilter_IsValidGossipee::CThingFilter_IsValidGossipee(CThingAICreature* thing)
     : Thing(thing), PFaction(0), PTCVillage(0)
 {
-    CTCFactionMember* faction;
-    if (thing->GetInterface(&faction, 0x49))
+    const CTCFactionMember* faction;
+    if (thing->PeekTC(TCI_ENEMY, &faction))
         PFaction = faction->PFaction;
-    CTCVillageMember* member;
-    if (thing->GetInterface(&member, 0x23))
+    const CTCVillageMember* member;
+    if (thing->PeekTC(TCI_VILLAGE_MEMBER, &member))
         PTCVillage = member->GetPVillage();
 }

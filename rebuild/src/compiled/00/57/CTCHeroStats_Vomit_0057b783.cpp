@@ -31,47 +31,12 @@ class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 #include "engine/C3DVector.h"
-
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                         // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    const C3DVector& GetPos() const;            // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || wanted < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline bool GetInterfacePick(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *out = (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
-
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1); // 0x0099EBF0
-    ~CCharString();                                  // 0x0099EAE0
-};
 
 class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x00693EF0
@@ -169,13 +134,13 @@ void CTCHeroStats::Vomit()
                                                       false, 0, 1);
     ++NumberOfVomits;
     CTCHeroOnlineScoreboard* scoreboard;
-    ParentThing->GetInterfacePick(&scoreboard, 0x10D);
+    ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
     scoreboard->UpdateScoreForActivity(15, (float)NumberOfVomits, false);
     if (hero->IsFreeToPerformAction(&action)) {
         FrameToVomit = -1;
         if (hero) {
             CTCHeroOpinionDeedLog* log;
-            if (hero->GetInterface(&log, 0x51))
+            if (hero->GetTC(TCI_HERO_OPINION_DEED_LOG, &log))
                 DeedHandle = log->PostDeed(0x15, hero->GetPos(), 0, 0, 7, 0, 1, 0, 0, 0);
             hero->SetCurrentAction(action);
         }

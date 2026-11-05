@@ -9,10 +9,12 @@
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 class CTCBase;
 #include "engine/C3DVector.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CPhysicsBody {                                 // the thing's physics body at +0x60
+struct CTCPhysicsBase {                                 // the thing's physics body at +0x60
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(0) VF10(1) VF10(2) VF(30)
@@ -20,29 +22,7 @@ struct CPhysicsBody {                                 // the thing's physics bod
     VF(32) VF(33) VF(34) VF(35)
     virtual void SetFlying(bool flying);              // slot 36 (+0x90)
 };
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                   // +0x20
-    CInterfaceMap m_interfaces;                       // +0x44
-    unsigned char _pad54[0xc];
-    CPhysicsBody* PhysicsBody;                        // +0x60
-    CPhysicsBody* GetPhysics() const { return PhysicsBody; }
-    const C3DVector& GetPos() const;             // 0x004C73D0
-    void RemoveTC(long interfaceType);                // 0x004C9840
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CAnimSet { public:
     unsigned char _pad[0x1c];
     float StartFraction;                              // +0x1c
@@ -55,11 +35,6 @@ protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
-};
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
 };
 
 struct C3DVectorVector {                              // STLport vector<C3DVector>, 12 bytes in retail
@@ -156,7 +131,7 @@ void CCreatureAction_DragonFlyInto::Initialise()
         set->CurrentFraction = fraction;
     }
     CTCCreatureModeManager* modes;
-    if (((CThing*)PCreature.GetPItem())->GetInterface(&modes, 0x31)) {
+    if (((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modes)) {
         if (!UsePreviousPoint)
             PreviousPoint = MovementPoints[0];
         modes->AddMode(CCountedModePointer(new CModeDragonFlying(GetCreature(), MovementPoints, PreviousPoint, Speed, PEndAction)));

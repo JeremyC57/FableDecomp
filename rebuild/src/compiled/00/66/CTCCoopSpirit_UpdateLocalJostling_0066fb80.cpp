@@ -1,4 +1,5 @@
 // CTCCoopSpirit::UpdateLocalJostling() -- for every other live player hero (not the main player, not the spirit's own player) closer than half a unit, push the spirit away from it with an acceleration of 0.4 times the offset
+// Leaf: ?UpdateLocalJostling@CTCCoopSpirit@@QAEXXZ
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066FB80, 261 bytes (+ int3 padding), plain `ret`.
 // Callees: CTCBase::GetPlayerManager @ 0x00686D40 (x2; manifest "CViewBase::GetDisplayEngine" is propagated),
@@ -24,15 +25,8 @@ class C3DVector { public:
 class CTCPhysicsBase { public:
     void ApplyAcceleration(const C3DVector& acceleration);   // 0x006B0210
 };
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-    unsigned char   _pad64[0x90 - 0x64];
-    signed char     PlayerNumber;               // +0x90
-    unsigned char   Flags91;                    // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
@@ -60,7 +54,7 @@ void CTCCoopSpirit::UpdateLocalJostling()
     for (long i = 0; i < 4; ++i) {
         if (GetPlayerManager().GetMainPlayerNumber() == i)
             continue;
-        if (ParentThing->PlayerNumber == i)
+        if (ParentThing->GetPlayerNumber() == i)
             continue;
         CThing* hero = GetPlayerManager().GetPlayer(i).GetPControlledCreature();
         if (!hero || hero->IsDead())
@@ -70,7 +64,7 @@ void CTCCoopSpirit::UpdateLocalJostling()
         float length = offset.GetMagnitudeAndNormalise();
         if (length > DELTA_NOTIONAL_ZERO && length < 0.5f) {
             C3DVector push = offset * 0.4f;
-            ParentThing->PhysicsTC->ApplyAcceleration(push);
+            ParentThing->GetPhysicsTC()->ApplyAcceleration(push);
         }
     }
 }

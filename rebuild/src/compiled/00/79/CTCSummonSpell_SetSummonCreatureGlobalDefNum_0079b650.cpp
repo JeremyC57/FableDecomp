@@ -14,36 +14,13 @@
 // argument slot with the lookup key.
 class CTCBase;
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-    void Kill(bool immediately);                // 0x004C9B80
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -81,8 +58,8 @@ class CTCSummonSpell { public:
 void CTCSummonSpell::SetSummonCreatureGlobalDefNum(long defNum, const C3DVector& position, const C3DVector& direction)
 {
     SummonCreatureGlobalDefNum = defNum;
-    if (ParentThing->HasTC(0x10)) {
-        CTCSoundPlayer* sound = (CTCSoundPlayer*)ParentThing->GetTC(0x10);
+    if (ParentThing->HasTC(TCI_SOUND_PLAYER)) {
+        CTCSoundPlayer* sound = (CTCSoundPlayer*)((CTCSoundPlayer*)&ParentThing->GetTC(TCI_SOUND_PLAYER));
         {
             CCharString name("HERO_ABILITY_SUMMON_CREATURE_UPGRADE");
             sound->PlayAttachedCriteria(name, true, 0, 0, -1);

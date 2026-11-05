@@ -16,10 +16,7 @@ class CTCPhysicsBase { public:
     C3DVector GetMapwhoPosition() const;            // 0x006AFCB0
 };
 
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                      // +0x60
-};
+#include "engine/CThing.h"
 
 class CThingFilter_OverlappingCircle { public:
     C3DVector SpherePos;                            // +0x00
@@ -40,7 +37,7 @@ class CThingFilter_OverlappingCircle { public:
 
 bool CThingFilter_OverlappingCircle::operator()(CThing* thing) const
 {
-    CTCPhysicsBase* physics = thing->PhysicsTC;
+    CTCPhysicsBase* physics = thing->GetPhysicsTC();
     if (physics)
         return Overlaps(physics->GetMapwhoPosition(), physics);
     return false;

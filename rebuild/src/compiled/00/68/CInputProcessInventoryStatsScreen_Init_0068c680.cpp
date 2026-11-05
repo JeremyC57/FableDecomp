@@ -13,28 +13,11 @@
 //   key, the map pointer advanced into esi once, `it = last` when the key is past it, PInventory the out pointer.
 // Model: local -- the generated engine headers flatten the vptr into a word, which cannot carry a virtual Init.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                          // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                              // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
@@ -82,5 +65,5 @@ public:
 
 void CInputProcessInventoryStatsScreen::Init()
 {
-    MyPlayer->GetPControlledCreature()->GetInterface(&PInventory, 0x14);
+    MyPlayer->GetPControlledCreature()->GetTC(TCI_INVENTORY_STATS, &PInventory);
 }

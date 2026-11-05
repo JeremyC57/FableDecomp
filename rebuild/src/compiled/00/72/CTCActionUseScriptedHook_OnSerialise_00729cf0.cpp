@@ -1,4 +1,5 @@
 // CTCActionUseScriptedHook::OnSerialise(CPersistContext& context, bool) -- persist the hook's flags, entrance/camera
+// Leaf: ?OnSerialise@CTCActionUseScriptedHook@@QAEXAAVCPersistContext@@_N@Z
 // UIDs (versioned block) and its sound/animation names and replacement object
 // Retail 0x00729CF0, 0x26C bytes, `ret 8`. Callees: CPersistContext::Transfer(const char*, bool&, const bool&)
 // 0x004045C0, Transfer(const char*, long&, const long&) 0x00410BE0, Transfer(const char*, unsigned __int64&,
@@ -19,13 +20,9 @@ class CTCBase : public CTCBaseLayout
 protected:
     CThingManager& GetThingManager();   // 0x00686AE0
 };
-class CCharString { public: void* PStringData; };
-class CThing { public:
-    unsigned char _pad00[0x8e];
-    short m_level;                              // +0x8e
-public:
-    bool IsLevelLess() const;   // 0x004C7930
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
+
 class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
 };
@@ -87,10 +84,10 @@ void CTCActionUseScriptedHook::OnSerialise(CPersistContext& context, bool)
         context.Transfer("TeleportToRegionEntrance", TeleportToRegionEntrance, false);
         context.Transfer<unsigned __int64>("EntranceConnectedToUID", EntranceConnectedToUID, 0);
         if (EntranceConnectedToUID != 0)
-            EntranceConnectedToUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, EntranceConnectedToUID);
+            EntranceConnectedToUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->GetCurrentMapNumber(), EntranceConnectedToUID);
         context.Transfer<unsigned __int64>("CameraTrackUID", CameraTrackUID, 0);
         if (CameraTrackUID != 0)
-            CameraTrackUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, CameraTrackUID);
+            CameraTrackUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->GetCurrentMapNumber(), CameraTrackUID);
         context.Transfer("SoundName", SoundName);
         context.Transfer("AnimationName", AnimationName);
         context.Transfer<long>("ReplacementObject", ReplacementObject, 0);

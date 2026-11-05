@@ -1,4 +1,5 @@
 // CTCBerserk::CancelForCutscene() -- once only: mark IsInCutscene, finish the parent creature's current action, clean up the ability and remove this TC (type 0x84) from the parent
+// Leaf: ?CancelForCutscene@CTCBerserk_Retail@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078D210, length 49 bytes (+ int3 padding).
 // Callees: CThingCreatureBase::FinishCurrentAction @ 0x00662650, CTCBerserk::CleanupAbility(bool)
 // @ 0x0078CD80, CThing::RemoveTC(long) @ 0x004C9840 (landed name).
@@ -6,10 +7,9 @@
 // DependentThings vector is 4 bytes narrower in retail), so the class is modelled locally.
 // Shape: the parent pointer is read into a local (edi) before the flag store; the guard is an `if`
 // around the body (the early-out shares the single exit).
-enum ETCInterfaceType { };
-class CThing { public:
-    void RemoveTC(ETCInterfaceType interfaceType);                      // 0x004C9840
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CThingCreatureBase : public CThing { public:
     void FinishCurrentAction();                             // 0x00662650

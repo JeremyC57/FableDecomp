@@ -1,4 +1,5 @@
 // CCreatureAction_NymphGetHitDie::FrameUpdate() -- base FrameUpdate, then lower the nymph towards the ground: Z = ground height below it + HeightOnInit * (1 - progress)
+// Leaf: ?FrameUpdate@CCreatureAction_NymphGetHitDie@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C9F40, length 125 bytes (+ int3 padding).
 // Callees: CCombatActionBase::FrameUpdate @ 0x00859D80 (direct base call, first), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8,
@@ -10,7 +11,7 @@
 // that offset; the physics component comes through an inline accessor (straight into ecx). HeightOnInit is the engine header's
 // member (PDB +0x160, retail +0x148: CCombatActionBase is 0x114 bytes in retail).
 #include "engine/C3DVector.h"
-struct CPhysicsComponent {
+struct CTCPhysicsBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -18,12 +19,7 @@ struct CPhysicsComponent {
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
     virtual void SetPositionOnGround(const C3DVector& position);   // slot 30 (+0x78)
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CPhysicsComponent* m_pPhysics;          // +0x60
-    const C3DVector& GetPos() const;   // 0x004C73D0
-    CPhysicsComponent* GetPhysics() const { return m_pPhysics; }
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -65,5 +61,5 @@ void CCreatureAction_NymphGetHitDie::FrameUpdate()
     C3DVector position = PCreature.GetPItem()->GetPos();
     float height = HeightOnInit * (1.0f - GetProgress());
     position.Z = GetWorldMap()->GetHeightZBelowPos(&position) + height;
-    PCreature.GetPItem()->GetPhysics()->SetPositionOnGround(position);
+    PCreature.GetPItem()->GetPhysicsTC()->SetPositionOnGround(position);
 }

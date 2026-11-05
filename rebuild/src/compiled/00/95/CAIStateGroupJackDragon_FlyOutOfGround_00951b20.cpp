@@ -1,4 +1,5 @@
 // CAIStateGroup_JackDragon::FlyOutOfGround() -- kill the invisible bodge creature, stop head turning and wait out the anim loop, then (enemy alive and not stopping) build the fly-out route on a random side (left/right ground-exit positions), remember the side's third point as the previous flight position, take off along it and choose the hover/strafe state; terminate otherwise
+// Leaf: ?FlyOutOfGround@CAIStateGroup_JackDragon@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00951B20, length 553 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill @ 0x004C9B80, SetHeadTurning @ 0x00950BB0,
 // WaitForAnimLoop @ 0x00950950, CAIStateGroupBase::IsStopping @ 0x008FD010, Terminate @ 0x008FCF40, C3DVector::RotateAboutZ
@@ -21,7 +22,7 @@ struct CPhysicsBody {
     virtual void v00();
     // slot 63 (+0xfc)
 };
-struct CPhysicsBodyV {
+struct CTCPhysicsBase {
     virtual void s00(); virtual void s01(); virtual void s02(); virtual void s03(); virtual void s04(); virtual void s05();
     virtual void s06(); virtual void s07(); virtual void s08(); virtual void s09(); virtual void s10(); virtual void s11();
     virtual void s12(); virtual void s13(); virtual void s14(); virtual void s15(); virtual void s16(); virtual void s17();
@@ -35,14 +36,7 @@ struct CPhysicsBodyV {
     virtual void s60(); virtual void s61(); virtual void s62();
     virtual float GetHeading();                 // slot 63 (+0xfc)
 };
-class CThing { public:
-    unsigned char _pad0[0x60];
-    CPhysicsBodyV* PhysicsBody;                 // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    void Kill(bool b);                          // 0x004C9B80
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public: };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -63,7 +57,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -151,7 +145,7 @@ void CAIStateGroup_JackDragon::FlyOutOfGround()
         return;
     }
     C3DVector up(0.0f, 50.0f, 0.0f);
-    up.RotateAboutZ(GetCreature()->PhysicsBody->GetHeading());
+    up.RotateAboutZ(GetCreature()->GetPhysicsTC()->GetHeading());
     GetCreature()->GetPos();
     CVector3DList route;
     if (WorldRandomRange(GetPWorld()->GetPRandomSeed(), 100) > 50)

@@ -6,7 +6,7 @@
 #pragma pack(pop)
 class CTCPhysicsBase {public:void GetBoundingInfo(C3DVector&,float&)const;};
 // Layout: retail CThing PhysicsTC is+0x60; the available donor CThing header is quarantined.
-class CThing {public:unsigned char _body[0x60];CTCPhysicsBase* PhysicsTC;};
+#include "engine/CThing.h"
 class CThingGameObject : public CThing {};
 class CUnprovenThing_00877eb0 : public CThing {};
 class CUnprovenThing_00877f40 : public CThing {};
@@ -17,7 +17,7 @@ public:
     C3DVector SpherePos;float Radius;
     __forceinline bool operator()(const CThing& thing)const {
         C3DVector center;float radius;
-        thing.PhysicsTC->GetBoundingInfo(center,radius);
+        thing.GetPhysicsTC()->GetBoundingInfo(center,radius);
         C3DVector delta=center-SpherePos;
         float sum=radius+Radius;
         return delta.GetSquaredMagnitude()<sum*sum;

@@ -1,13 +1,10 @@
 // CCreatureAction_SummonerFlameSlice::FinishAction() -- base FinishAction, then if the summoned thing (+0x114) is alive (pointer set, dead bit clear), kill it silently
+// Leaf: ?FinishAction@CCreatureAction_SummonerFlameSlice@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CAD10, length 64 bytes. FinishAction is vtable slot 4 (protected `MAE`); the base is called directly here.
 // Callees: CCombatActionBase::FinishAction @ 0x00859A20 (direct base call), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the member at +0x114, three
 // times: the landed IS_THING_ALIVE idiom re-fetches, then the call target), CThing::Kill(bool) @ 0x004C9B80.
 // Shape: `this` rides in esi for the base call and is then advanced to the member (`add esi,114h`); the body of the landed 0x008445A0 without the range test.
-class CThing { public:                             // only the dead bit and the call are modelled
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    void Kill(bool silent);                 // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -30,7 +27,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

@@ -23,37 +23,17 @@
 #define FABLE_RETAIL_STLP_BITSET_INDEX
 #include "engine/CVectorMap.h"
 
-
-
-enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };   // enumerators not needed (CTCAIScratchpad is 0xAA)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
-class CThing {
-public:
-    unsigned char      _pad00[0x20];
-    std::bitset<274>   UsingComponents;                                   // +0x20
-    CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (UsingComponents[T::INTERFACE_TYPE]) {
-            ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
-            CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
-            CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::iterator it = map->LowerBound(type);
-            if (it == map->end() || T::INTERFACE_TYPE < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 #include "engine/C3DVector.h"
 class CCharStringData;
-class CCharString { public: CCharStringData* PStringData; };
+
 enum EScriptingStateGroups { EScriptingStateGroups_Force32 = 0x7fffffff };
 class CTCAIScratchpad {                                      // Ego_r.pdb members (= retail offsets up to +0x7C)
 public:
-    enum { INTERFACE_TYPE = 0xAA };
     void*                 __vfptr_and_CTCBase[3];             // +0x00 CTCBase (vptr, ParentThing, flags)
     unsigned long         ThankingPhrase;                     // +0x0C
     unsigned long         IgnoringPhrase;                     // +0x10
@@ -107,6 +87,6 @@ bool CGameScriptInterface::GetTakeStealableItemToRandomDestination(CScriptThing 
     if (!thing.GetPThing())
         return false;
     CTCAIScratchpad* tc;
-    thing.GetPThing()->GetTC(&tc);
+    thing.GetPThing()->GetTC(TCI_AI_SCRATCHPAD, &tc);
     return tc->GetTakeStealableItemToRandomDestination();
 }

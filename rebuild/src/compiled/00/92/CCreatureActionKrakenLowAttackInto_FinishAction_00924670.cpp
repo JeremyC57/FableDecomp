@@ -10,31 +10,10 @@
 // Shape: the twin of CCreatureAction_KrakenHighAttackInto::FinishAction 0x00924A90 -- an inline two-fetch alive test on PTarget,
 // each arm builds its temporary at the frame base inside the SetCurrentAction call.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned char _pad92[0xb4 - 0x92];
-    float         m_health;                     // +0xb4
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase;
 class CCombatActionBase;
 class CThingCreatureBase : public CThing { public:
@@ -69,7 +48,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     __forceinline CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
     __forceinline bool IsTargetAlive() const    // two fetches: present, then not dead
     {
-        return PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1);
+        return PTarget.GetPItem() && !PTarget.GetPItem()->IsDead();
     }
 };
 struct CCreatureAction_KrakenLowAttackLoop : CCombatActionBase {    // vtable 0x01290C64

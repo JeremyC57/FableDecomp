@@ -1,4 +1,5 @@
 // CAIStateGroup_EnemyCreatureBase::IsInRangeOfHiddenPosition(C3DVector*, bool) -- pick the valid hiding position furthest from the creature (optionally only ones on the same side of the target as the creature)
+// Leaf: ?IsInRangeOfHiddenPosition@CAIStateGroup_EnemyCreatureBase@@QAE_NPAVC3DVector@@_N@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0091D930, 544 bytes (ret 8).
 // Callees: CAIStateGroupBase::PeekWorldMap 0x008FCFF0 / PeekThingSearchTools 0x008FD000, the state group's virtual slot 18
@@ -24,9 +25,7 @@ class CThingSearchTools;
 class CTCShapeManager;
 void __fastcall GetValidPositions(CPositionVector& positions, const CWorldMap& map, const CThingSearchTools& search,
                                   const C3DVector& pos, float radius, bool flag, const CTCShapeManager* shapes);   // 0x0074A5D0
-class CThing { public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public: };
 class CBaseObject;
 class CBaseObjectPointer;

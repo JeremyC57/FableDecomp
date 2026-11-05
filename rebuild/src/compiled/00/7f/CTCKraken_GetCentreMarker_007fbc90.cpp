@@ -1,4 +1,5 @@
 // CTCKraken::GetCentreMarker() -- (unless the world is loading) find the kraken chamber building and the KRACKEN_CHAMBER_CENTRE marker in the 10x10 box around the kraken and target the hero
+// Leaf: ?GetCentreMarker@CTCKraken@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FBC90, length 436 bytes (+ int3 padding), esp frame, plain `ret`.
 // Callees: the CTCBase accessors GetWorld @ 0x00686D60 (its slot 9, +0x24, a bool "loading" query; name descriptive),
@@ -21,16 +22,9 @@ class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
 };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CThing {
-public:
-    const C3DVector& GetPos() const;               // 0x004C73D0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
+
 class CThingPlayerCreature : public CThing { };
 class CThingFilter_HasDefGlobalIndex { public:
     long m_defGlobalIndex;

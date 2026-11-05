@@ -1,4 +1,5 @@
 // CAIStateGroupBase::AIAction_MinionIdle() -- track the nearest interesting thing, then 80% of the time play an idle (a yawn 9% of the time within 100 time units of the creature's two sleep times), else report done
+// Leaf: ?AIAction_MinionIdle@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097FA00, length 468 bytes.
 // Callees: IsStopping @ 0x008FD010, CVectorMap::LowerBound @ 0x0040F020 (0x43 CTCLook), CTCLook::TrackNearestInterestingThing
@@ -14,33 +15,14 @@
 // Layout: the base follows engine/CAIStateGroupBase.h (PBrain +4), modelled locally so the member functions can be declared;
 //          CWorld +0x1c time object (descriptive).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+
 class CAnimationEntry;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingAICreature : public CThing { public:
     CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString& name, bool b);   // 0x00662FA0
     void GetSleepTimes(long* wakeTime, long* sleepTime);    // 0x00833390
@@ -110,7 +92,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_MinionIdle()
     if (IsStopping())
         return AI_ACTION_STOPPING;
     CTCLook* look;
-    if (GetCreature()->GetInterface(&look, 0x43))
+    if (GetCreature()->GetTC(TCI_LOOK, &look))
         look->TrackNearestInterestingThing(true);
     if (WorldRandomRange(*GetPWorldSeed(), 100) < 80) {
         long wakeTime, sleepTime;

@@ -1,0 +1,4 @@
+target	spellings_after (symbol:count)
+0041d198	?SetMeshBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCMeshDataBank@@@@@Z:3
+0041e5f2	?GetInstance@CManager@NUISystem@@SIPAV12@XZ:211
+0042a9b7	?SetGraphicsBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@@Z:2

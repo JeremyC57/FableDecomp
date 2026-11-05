@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::SetByPassColorFilter(bool byPass) -- reference-counted colour-filter bypass: count up / down (never below zero); on the 0<->1 transition re-queue the owner for rendering and flag the primitives (reason 4)
+// Leaf: ?SetByPassColorFilter@CTCGraphicAppearance@NGraphicAppearance@@QAEX_N@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BFB00, length 53 bytes. Callees: CThing::AddToRenderList @ 0x004C7AC0 on ParentThing.
 // Shape: the signed-byte counter ByPassColorFilter (+0x5b); the two transition tests (`++count == 1`, `--count == 0`) share
@@ -15,9 +16,9 @@
 
 class CTCAnimationBase;
 
-class CThing { public:
-    void AddToRenderList();                             // 0x004C7AC0 (manifest CThing::AddToRenderList)
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 namespace NGraphicAppearance {
 
@@ -41,7 +42,6 @@ class CPrimitive { public:                                     // 16 bytes (Ego_
 };
 
 }
-
 
 struct CPrimitiveListNode {
     CPrimitiveListNode*            m_next;              // +0x00

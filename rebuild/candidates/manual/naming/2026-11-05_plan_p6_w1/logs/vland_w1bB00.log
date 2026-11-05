@@ -1,0 +1,11 @@
+addr       parity           behav  name
+005518e0   WARN RELOC_NAME: ?DestroyComponent@RetailUI@@YIXPAX@Z -> 00428b10 labelled 'CCountedPointer<NUISystem::CComponent>::DeleteData'
+005518e0   WARN RELOC_NAME: ?Grow@ChildrenVector@RetailUI@@QAEXPAUPointer@2@ABU32@ABUTag@2@K_N@Z -> 005359d0 labelled 'std::vector::_M_insert_overflow'
+005518e0   RELOCATION_MATCH PASS   ConstructHorizontalLine
+00551bc0   WARN RELOC_NAME: ?DestroyComponent@RetailUI@@YIXPAX@Z -> 00428b10 labelled 'CCountedPointer<NUISystem::CComponent>::DeleteData'
+00551bc0   WARN RELOC_NAME: ?Grow@ChildrenVector@RetailUI@@QAEXPAUPointer@2@ABU32@ABUTag@2@K_N@Z -> 005359d0 labelled 'std::vector::_M_insert_overflow'
+00551bc0   RELOCATION_MATCH PASS   ConstructVerticalLine
+
+WINS: 2
+  005518e0 RELOCATION_MATCH NUISystem::CTable::ConstructHorizontalLine
+  00551bc0 RELOCATION_MATCH NUISystem::CTable::ConstructVerticalLine

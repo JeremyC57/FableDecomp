@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToCriminal::OnActivate() -- enter creature mode 15 and reset the reaction state.
+// Leaf: ?OnActivate@CAIStateGroup_MinionReactToCriminal@@UAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00930DC0, length 93 bytes (+ int3 padding). Vtable slot 2
@@ -19,35 +20,10 @@ class CThing;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with LowerBound @ 0x0040F020 -- the shape of the landed
 // GetInterface_0x.. bodies, inlined into the AI bodies through GetTC<T>().
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;    // 0x004C73D0 (`[this+60h]+0Ch`)
-    bool HasTC(long interfaceType) const
-    {
-        return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -62,7 +38,7 @@ struct CBaseIntelligentPointer {
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -119,7 +95,7 @@ struct CAIStateGroup_MinionReactToCriminal : CAIStateGroupBase {
 void CAIStateGroup_MinionReactToCriminal::OnActivate()
 {
     CTCCreatureModeManager* pModes;
-    PBrain->PCreature->GetInterface(&pModes, 0x31);
+    PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes);
     pModes->AddMode(15);
     FrameToNextSpeak = 0;
     OverrodeLocking = false;

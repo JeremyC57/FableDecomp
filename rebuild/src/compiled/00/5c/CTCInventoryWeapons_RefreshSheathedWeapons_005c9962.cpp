@@ -1,4 +1,5 @@
 // CTCInventoryWeapons::RefreshSheathedWeapons() -- looks up the owner's carrier component (interface 0x29) and either puts the weapons in their sheathes or takes them out, following its sheathed flag
+// Leaf: ?RefreshSheathedWeapons@CTCInventoryWeapons@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed; map pointer made const (the row grades the const LowerBound).
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C9962, 92 bytes.
@@ -20,27 +21,9 @@ class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                  // +0x20
-    CInterfaceMap m_interfaces;               // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_present.test(type)) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CTCCarrier {                           // interface 0x29
     unsigned char _pad_0x00[0xc];
@@ -55,8 +38,8 @@ class CTCInventoryWeapons : public CTCBase { public:
 
 void CTCInventoryWeapons::RefreshSheathedWeapons()
 {
-    CTCCarrier* carrier = 0;
-    ParentThing->GetInterface(0x29, &carrier);
+    const CTCCarrier* carrier = 0;
+    ParentThing->PeekTC(TCI_HERO, &carrier);
     if (carrier->m_weaponsSheathed)
         PutWeaponsInSheathes();
     else

@@ -20,27 +20,12 @@
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -57,11 +42,7 @@ public:
     T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
+
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 class CThingCreatureBase;
 class CTCTavernBar { public:                           // interface 0xb9
@@ -121,7 +102,7 @@ bool CAIStateGroup_TavernKeeper::LeanOnBar()
 {
     SetPushableByHero(false);
     CTCTavernBar* bar;
-    PBar.GetPItem()->GetInterface(&bar, 0xb9);
+    PBar.GetPItem()->GetTC(TCI_TAVERN_BAR, &bar);
     bar->GetRandomBarSlot(*PBrain->PCreature, JugPos, JugRHSet, JugActionPointIndex, JugSlot);
     if (!WalkToPoint(&JugPos, &JugRHSet)) {
         FreeBarPoint();

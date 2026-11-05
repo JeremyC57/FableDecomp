@@ -9,7 +9,7 @@
 //   constructor, the vtable stored after the base constructor, the name a scoped named CCharString local.
 // Header debt: engine/CCreatureAction_CastWillHarvestSoulSpell.h / CCombatActionBase.h are flat byte layouts without bases or methods; modelled locally.
 #include "fable_string.h"
-class CThing { };
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 class CSoundPair {                                       // Ego_r.pdb, 8 bytes
 public:

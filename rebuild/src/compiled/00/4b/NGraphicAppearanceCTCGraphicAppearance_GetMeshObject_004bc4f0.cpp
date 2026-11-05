@@ -18,6 +18,8 @@
 //   by-reference GetRHSet() is declared first to land in slot 72.
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #include "engine/C3DVector.h"
 class CRightHandedSet {
 public:
@@ -79,11 +81,7 @@ public:
     virtual const CRightHandedSet& GetRHSet() const;              // slot 72 (+0x120)
     virtual CRightHandedSet GetRHSet(float interpolation) const;   // slot 71 (+0x11C)
 };
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                              // +0x60 (retail; PDB +0x70)
-};
+#include "engine/CThing.h"
 
 namespace NGraphicAppearance {
 C3DVector __fastcall GetRenderPositionForThing(const CThing& thing, float interpolation);   // 0x004BBF00 (file-static)
@@ -106,7 +104,7 @@ public:
 
 void CTCGraphicAppearance::GetMeshObject(const CMeshInfo& info, float interpolation, C3DMeshObject& out) const
 {
-    const CTCPhysicsBase* physics = ParentThing->PhysicsTC;
+    const CTCPhysicsBase* physics = ParentThing->GetPhysicsTC();
     C3DVector position = GetRenderPositionForThing(*ParentThing, interpolation);
     const C3DMeshInfo* meshInfo = g_pMeshDataBank->GetMeshInfo(info.Index);
     if (interpolation == 1.0f)

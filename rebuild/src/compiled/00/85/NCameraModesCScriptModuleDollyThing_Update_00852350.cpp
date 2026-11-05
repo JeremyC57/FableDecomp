@@ -21,10 +21,7 @@ public:
 
 #include "engine/C3DVector.h"
 
-class CThing {
-public:
-    const C3DVector& GetPos() const;            // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 struct CCameraState {
     unsigned char _pad00[0x10];

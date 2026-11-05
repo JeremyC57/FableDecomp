@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverAttack::Update() -- while the target lives, is to be attacked and the group stays runnable: hover to the combat manager's preferred position facing the target until there or within the combat minimum distance in XY, then perform the next combat action; terminate on any failure
+// Leaf: ?Update@CAIStateGroup_HoverAttack@@UAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local free operator- removed (the header member operator- is the same inline member-wise computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091E050, length 534 bytes (+ int3 padding), virtual slot 12.
 // Callees: CThingCreatureBase::GetCombatManager @ 0x00661ED0 / IsRegisteredCombatant @ 0x00662410, CAIStateGroupBase::
@@ -11,11 +12,7 @@
 #include "engine/C3DVector.h"
 
 class CCombatManager;
-class CThing { public:
-    unsigned char _pad0[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public:
     CCombatManager& GetCombatManager();         // 0x00661ED0
 public:
@@ -49,7 +46,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-inline bool IsAlive(const CIntelligentPointer<CThing>& p) { return p.GetPItem() != 0 && !(p.GetPItem()->m_flags91 & 1); }
+inline bool IsAlive(const CIntelligentPointer<CThing>& p) { return p.GetPItem() != 0 && !p.GetPItem()->IsDead(); }
 
 class CAIBrain { public:
     virtual void v00();

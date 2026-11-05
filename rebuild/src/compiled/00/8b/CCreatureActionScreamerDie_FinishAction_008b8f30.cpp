@@ -1,4 +1,5 @@
 // CCreatureAction_ScreamerDie::FinishAction() -- clear the attachments of the live effect thing's particle emitter (interface type 0x4b), run the base FinishAction, then kill the creature
+// Leaf: ?FinishAction@CCreatureAction_ScreamerDie@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B8F30, length 132 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the effect pointer at +0x114 three times, PCreature at +8 once),
@@ -9,30 +10,11 @@
 // the if: edi is only live there) filled by the out-parameter GetInterface and used unconditionally. `this` rides in ebx.
 // No engine header for this class; modelled locally (CCombatActionBase is 0x114 bytes in retail, the effect pointer is the first own member).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    void Kill(bool immediately);            // 0x004C9B80
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -54,7 +36,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -81,7 +63,7 @@ void CCreatureAction_ScreamerDie::FinishAction()
 {
     if (IS_THING_ALIVE(PEffect)) {
         CTCDParticleEmitter* pEmitter = 0;
-        PEffect.GetPItem()->GetInterface(&pEmitter, 0x4b);
+        PEffect.GetPItem()->GetTC(TCI_PARTICLE_EMITTER, &pEmitter);
         pEmitter->ClearAttachments_006e0de0();
     }
     CCombatActionBase::FinishAction();

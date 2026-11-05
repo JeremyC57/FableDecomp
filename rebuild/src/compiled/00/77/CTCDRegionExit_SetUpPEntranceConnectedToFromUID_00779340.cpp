@@ -12,11 +12,7 @@
 // Shape: the shape of CTCActionUseScriptedHook::ResolveEntranceConnectedTo (0x00729BC0) with the member address formed
 // AFTER the temporary's GetPItem (the intelligent-pointer operator= reads the item into a local first); the map UID is
 // the top 24 bits of the thing UID (`>> 40`); the zero register for the clear doubles as the map-number test.
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

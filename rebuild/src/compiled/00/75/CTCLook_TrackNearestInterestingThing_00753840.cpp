@@ -1,4 +1,5 @@
 // CTCLook::TrackNearestInterestingThing(bool track) -- drives the head-turn state from the creature's targeting: while tracking, keeps the look timer alive as long as there is something interesting, else drops back to the idle turn; starts tracking when something appears; `track` false resets the state (one frame of delay) and clears the stop time. Returns whether the head is tracking
+// Leaf: ?TrackNearestInterestingThing@CTCLook@@QAEJ_N@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00753840, length 240 bytes (+ int3 padding, `ret 4`); speed TU (no frame pointer).
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (the inline GetInterface for type 8 = CTCTargetingBase; the bitset test folds
@@ -22,28 +23,13 @@ struct CPresenceBits {                             // std::bitset<274>
     }
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    CPresenceBits UsingComponents;                   // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (UsingComponents.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            const CInterfaceMap::value_type* found = (it == map->end() || wanted < it->first) ? map->end() : it;
-            *out = (T*)((void*)found->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCTargetingBase { public:                            // interface type 8
-    CThing* GetPNearestInterestingThing();           // 0x007F5860
+    CThing* GetPNearestInterestingThing() const;           // 0x007F5860
 };
 enum { HEAD_TURN_ENABLED = 1, HEAD_TURN_TRACKING = 4 };
 
@@ -65,8 +51,8 @@ long CTCLook::TrackNearestInterestingThing(bool track)
     if (!(state & HEAD_TURN_ENABLED))
         return (state >> 2) & 1;
     if (track) {
-        CTCTargetingBase* targeting;
-        if (ParentThing->GetInterface(&targeting, 8)) {
+        const CTCTargetingBase* targeting;
+        if (ParentThing->PeekTC(TCI_TARGETING, &targeting)) {
             if (state & HEAD_TURN_TRACKING) {
                 if (targeting->GetPNearestInterestingThing())
                     UpdateLookTimer();

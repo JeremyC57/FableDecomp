@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::GetFocalPosIfLoaded(C3DVector* position, float time) -- the focal helper point (the global focal-point name, index 0, flags 2) if the mesh is loaded
+// Leaf: ?GetFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QAE_NPAVC3DVector@@M@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C11D0, length 32 bytes. Callees: CTCGraphicAppearance::GetHelperPoint @ 0x004C0560
 // (name, index, flags, out position, time; `this` passed through in ecx). The name is the global string object at 0x013BAC48.
@@ -15,9 +16,8 @@
 
 class CTCAnimationBase;
 
-class CThing { public:
-    void AddToRenderList();                             // 0x004C7AC0 (manifest CThing::AddToRenderList)
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 namespace NGraphicAppearance {
 
@@ -42,7 +42,6 @@ class CPrimitive { public:                                     // 16 bytes (Ego_
 
 }
 
-
 struct CPrimitiveListNode {
     CPrimitiveListNode*            m_next;              // +0x00
     CPrimitiveListNode*            m_prev;              // +0x04
@@ -62,10 +61,6 @@ struct CComponentListNode {
 
 struct CComponentList {                                 // STLport list<CAGraphicAppearanceComponent*>: the header-node pointer
     CComponentListNode* m_head;
-};
-
-class CCharString { public:
-    void* m_pData;
 };
 
 extern const CCharString g_FocalPointHelperName;        // 0x013BAC48

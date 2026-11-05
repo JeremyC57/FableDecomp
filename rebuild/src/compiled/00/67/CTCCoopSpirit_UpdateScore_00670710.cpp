@@ -1,4 +1,5 @@
 // CTCCoopSpirit::UpdateScore() -- once the spirit's score reaches 20: clear the +0x10 counter of every other player's hero interface-0xc7 component, then swap the spirit back to a hero
+// Leaf: ?UpdateScore@CTCCoopSpirit@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 //
 // Retail 0x00670710, 135 bytes (plain `ret`). Callees: CTCBase::GetPlayerManager @ 0x00686D40
@@ -12,28 +13,11 @@
 // (`mov cl,[eax+38h] ; test cl,cl ; jns`) inside the out-parameter GetInterface (component in eax).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingPlayerCreature : public CThing { };
 
 struct CTCCoopScore {                                       // the interface-0xc7 component
@@ -78,7 +62,7 @@ void CTCCoopSpirit::UpdateScore()
             {
                 CThing* hero = GetPlayerManager().GetPlayer(player).GetPControlledCreature();
                 CTCCoopScore* score;
-                if (hero && hero->GetInterface(&score, 0xc7))
+                if (hero && hero->GetTC(TCI_COOP_SPIRIT, &score))
                     score->m_counter = 0;
             }
         }

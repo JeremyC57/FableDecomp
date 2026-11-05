@@ -21,27 +21,11 @@
 #include "engine/CTCCreatureOpinionOfHero.h"
 #undef CTCCreatureOpinionOfHero
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 presence bitset of the interface types
-    CInterfaceMap m_interfaces;                 // +0x44 sorted {type, component} vector map
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
@@ -74,7 +58,7 @@ void CAIStateGroup_OpinionReactionRoot::SetGreetedThingReactingTo()
 {
     if (ReactingToPlayer) {
         CTCCreatureOpinionOfHero* opinion;
-        PBrain->PCreature->GetInterface(&opinion, 0x4F);
+        PBrain->PCreature->GetTC(TCI_CREATURE_OPINION_OF_HERO, &opinion);
         opinion->InteractedFlag = true;
         opinion->GreetedFlag = true;
     }

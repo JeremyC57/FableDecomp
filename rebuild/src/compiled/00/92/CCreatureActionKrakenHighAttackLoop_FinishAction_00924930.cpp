@@ -17,32 +17,11 @@
 // Shape: the loop limit is read into a local before the alive test; the target is fetched into a local before the
 //   SetCurrentAction call (retail's fetch order), as the twin 0x00924720.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }   // Ego_r.pdb ?IsDead@CThing@@QBE_NXZ
-    unsigned char _pad92[0xb4 - 0x92];
-    float         m_health;                     // +0xb4
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase;
 class CCombatActionBase;
 class CThingCreatureBase : public CThing { public:
@@ -92,7 +71,7 @@ class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeo
     __forceinline CTCKraken* GetKraken() const
     {
         CTCKraken* kraken;
-        PCreature.GetPItem()->GetInterface(&kraken, 0xe2);
+        PCreature.GetPItem()->GetTC(TCI_KRAKEN, &kraken);
         return kraken;
     }
 };

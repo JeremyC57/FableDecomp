@@ -18,7 +18,9 @@
 // Shape: the TC type is pushed before the creature pointer is fetched; the facing angle is a named local (spilled across
 //   the setter's GetPItem; one expression evaluates the setter's object first); the component comes through the inline
 //   CThing::GetPhysicsTC() (straight into ecx; the raw member goes through eax).
-enum ETCInterfaceType { };
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 class CCharString;
 class CPersistContext;
 class CTCParamsBase;
@@ -123,13 +125,6 @@ class CTCPhysicsBase : public CTCBase { public:            // vtable 0x0125D2C4
     virtual void ResetInterpolation();                                           // 80 (+0x140, 0x006AF790)
 };
 
-class CThing { public:                                      // partial view, retail offsets
-    virtual ~CThing();
-    unsigned char      _pad_0x04[0x60 - 0x04];
-    CTCPhysicsBase*    PhysicsTC;                           // +0x60
-    void RemoveTC(ETCInterfaceType type);                   // 0x004C9840
-    CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }    // Ego_r.pdb ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ (inline)
-};
 class CThingPhysical : public CThing { public: };
 class CThingGameObject : public CThingPhysical { public: };
 class CThingCreatureBase : public CThingGameObject { public: };

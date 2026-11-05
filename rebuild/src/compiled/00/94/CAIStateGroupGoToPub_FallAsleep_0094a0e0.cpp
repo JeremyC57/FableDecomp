@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToPub::FallAsleep() -- play the FALLING_ASLEEP into/loop/out-of animation set with a random
+// Leaf: ?FallAsleep@CAIStateGroup_GoToPub@@QAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // loop time of 0..19 seconds (the 20-range overload; its twin 0x0094A200 plays SLUMPED_DRUNK_AT_TABLE with range 10).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094A0E0, length 165 bytes (+ int3 padding).
@@ -17,34 +18,10 @@ class CThingAICreature;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const     // the masked word (a bool return narrows to `shr ; test dl,1`)
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -56,7 +33,7 @@ struct CBaseIntelligentPointer {
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -95,7 +72,6 @@ protected:
     CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
 public:
 };
-
 
 // Retail builds message filters as an expression chain: `IsOfType(n) && HasExtraData() && IsForThing(t)`.
 // Each `operator&&` returns a CFilter_Bind2/CFilter_Bind3 holding POINTERS to its operands (the filter
@@ -160,11 +136,6 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 }
 
 class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length);  // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
 
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     bool PlayAnims(const CCharString& into, const CCharString& loop, const CCharString& outOf, float loopTime);   // 0x00948EF0

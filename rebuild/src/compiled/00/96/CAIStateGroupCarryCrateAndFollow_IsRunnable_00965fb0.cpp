@@ -1,4 +1,5 @@
 // CAIStateGroup_CarryCrateAndFollow::IsRunnable() -- resets the action-point state, looks up the nearest crate into PCrate and is runnable while that crate is alive
+// Leaf: ?IsRunnable@CAIStateGroup_CarryCrateAndFollow@@UAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00965FB0, length 126 bytes (+ int3 padding).
 // Callees: CAIStateGroup_CarryCrateAndFollow::FindPCrate @ 0x00965F30, CBaseIntelligentPointer::CBaseIntelligentPointer
 // @ 0x00A01B10, ::SetPItem @ 0x00A01B90 (twice), ::GetPItem @ 0x00A01B50 (three times), ::~CBaseIntelligentPointer
@@ -11,11 +12,7 @@
 // Model: local (engine/CAIStateGroup_CarryCrateAndFollow.h flattens the base; member names from it).
 // Shape: the CIntelligentPointer operator= names the GetPItem() CALL result (`item = other.GetPItem(); SetPItem(item);`), which
 //   keeps the member's address (this of SetPItem) after the temporary's GetPItem call as retail; the inline form hoists it.
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-};
+#include "engine/CThing.h"
 class CThingObject;
 
 class CBaseObject;

@@ -1,4 +1,5 @@
 // CTCTavernJug::ReplaceJug() -- puts the jug back: when the parent thing has a physics component, resets its position to Pos, its orientation to RHSet, and calls slot 36 with false
+// Leaf: ?ReplaceJug@CTCTavernJug@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00968090, 54 bytes. Callers: CAIStateGroup_TavernServer::OnReplace (0x009674C2).
 // Callees: the physics component's virtual slots 31 (+0x7C, CTCPhysicsBase::ResetPosition(const
@@ -34,10 +35,7 @@ class CTCPhysicsBase { public:
     virtual void ResetOrientation(const CRightHandedSet& rhSet); // slot 75 (+0x12c)
 };
 
-class CThing { public:
-    unsigned char _pad[0x60];
-    CTCPhysicsBase* m_pPhysics;                                 // +0x60
-};
+#include "engine/CThing.h"
 
 #pragma pack(push, 1)
 class CTCTavernJug { public:
@@ -54,7 +52,7 @@ class CTCTavernJug { public:
 
 void CTCTavernJug::ReplaceJug()
 {
-    CTCPhysicsBase* physics = m_pParentThing->m_pPhysics;
+    CTCPhysicsBase* physics = m_pParentThing->GetPhysicsTC();
     if (physics) {
         physics->ResetPosition(Pos);
         physics->ResetOrientation(RHSet);

@@ -19,10 +19,8 @@ class CTCGraphicAppearance { public:
     void SetAsChanged(unsigned long flags);      // 0x004BF9E0
 };
 }
-class CThing { public:
-    unsigned char _pad00[0x64];
-    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 struct CWorld_Calls {
     static long __fastcall GetFrame();          // 0x0049D870
 };
@@ -111,6 +109,6 @@ void CTCHeroAttachableAppearanceModifiers::FrameUpdate()
         UpdateHiddenModifiers();
         UpdateHiddenMaterials();
         UpdateGraphics();
-        ParentThing->PTCGraphicAppearance->SetAsChanged(15);
+        ParentThing->GetTCGraphicAppearance()->SetAsChanged(15);
     }
 }

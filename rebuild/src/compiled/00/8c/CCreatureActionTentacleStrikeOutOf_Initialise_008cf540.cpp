@@ -1,4 +1,5 @@
 // CCreatureAction_TentacleStrikeOutOf::Initialise() -- remove creature mode 0x53 through the owner's mode manager, clear the tentacle's obstruction and striking state, animation TENTACLE_SMASH_OUT_OF, then the base Initialise
+// Leaf: ?Initialise@CCreatureAction_TentacleStrikeOutOf@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CF540, length 201 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x31 =
@@ -10,33 +11,11 @@
 // arm reads the shared key word, which the block-scoped name string reuses afterwards), the tentacle kept in esi for two calls.
 // Layout: owner CIntelligentPointer +8 (CCombatActionBase is 0x114 in retail).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -71,7 +50,7 @@ class CCombatActionBase { public:
     __forceinline CTCKrakenTentacle* GetTentacle() const
     {
         CTCKrakenTentacle* tentacle;
-        PCreature.GetPItem()->GetInterface(&tentacle, 0xe3);
+        PCreature.GetPItem()->GetTC(TCI_KRAKEN_TENTACLE, &tentacle);
         return tentacle;
     }
 public:
@@ -85,7 +64,7 @@ class CCreatureAction_TentacleStrikeOutOf : public CCombatActionBase { public:
 void CCreatureAction_TentacleStrikeOutOf::Initialise()
 {
     CTCCreatureModeManager* modeManager;
-    if (PCreature.GetPItem()->GetInterface(&modeManager, 0x31))
+    if (PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager))
         modeManager->RemoveMode(0x53);
     CTCKrakenTentacle* tentacle = GetTentacle();
     tentacle->RemoveObstruction();

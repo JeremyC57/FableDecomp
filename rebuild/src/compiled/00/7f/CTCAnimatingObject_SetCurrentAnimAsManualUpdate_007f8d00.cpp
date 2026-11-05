@@ -13,28 +13,10 @@
 // (`mov eax,[esp+N]`) and still makes the call, which the same source reproduces.
 struct CTCBaseInterface;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];            // +0x20 std::bitset<274> UsingComponents
-    CInterfaceMap m_interfaces;                // +0x44 Components
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)((CTCBaseInterface*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
@@ -72,6 +54,6 @@ class CTCAnimatingObject : public CTCBase { public:
 void CTCAnimatingObject::SetCurrentAnimAsManualUpdate()
 {
     CTCAnimationComplex* animation;
-    ParentThing->GetInterface(&animation, 0x5a);
+    ParentThing->GetTC(TCI_ANIMATION, &animation);
     animation->GetAnimation().CurrentAnim.UpdateMode = 0;
 }

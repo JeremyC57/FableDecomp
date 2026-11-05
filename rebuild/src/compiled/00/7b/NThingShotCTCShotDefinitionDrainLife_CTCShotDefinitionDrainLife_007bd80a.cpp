@@ -13,9 +13,7 @@
 // becomes the tail jump.
 class CBaseObject;
 
-class CThing { public:
-    void Kill(bool immediately);             // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"

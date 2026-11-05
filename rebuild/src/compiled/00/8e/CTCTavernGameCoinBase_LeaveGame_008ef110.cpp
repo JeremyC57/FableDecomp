@@ -1,13 +1,11 @@
 // CTCTavernGameCoinBase::LeaveGame() -- tavern-game LeaveGame, then kills the three spawned coin things (+0xF0/+0xF4/+0xF8) and clears the pointers
+// Leaf: ?LeaveGame@CTCTavernGameCoinBase@@QAEXXZ
 // Retail: Fable.exe @ 0x008EF110, 91 bytes (vtable 0x0126F224 slot 30).
 // Callees: CTCTavernGame::LeaveGame 0x005EC650 (base slot 30, called non-virtually),
 //          CThing::Kill(bool) 0x004C9B80 (non-virtual member, `push 1`).
 // Shape: three null-tested kills, then the pointer clears in REVERSE member order (+0xF8, +0xF4,
 //        +0xF0) as immediate stores.
-class CThing {
-public:
-    void Kill(bool immediate);          // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CTCTavernGame { public:
     unsigned char _pad[0xf0];

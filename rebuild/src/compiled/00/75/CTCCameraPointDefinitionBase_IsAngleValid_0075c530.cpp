@@ -17,12 +17,7 @@ class C2DVector { public:
     C2DVector() {}
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {}
 };
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0

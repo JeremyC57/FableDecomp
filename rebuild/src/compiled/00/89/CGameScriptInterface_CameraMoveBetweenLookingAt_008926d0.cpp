@@ -13,11 +13,7 @@
 // Shape: 0x008924B0 model: out-of-line CCountedPointer(T*) plus a declared copy ctor (in-place argument construction).
 // Opt: /O2.
 class C3DVector;
-class CThing {
-public:
-    unsigned char _pad00[0x6c];
-    unsigned long ThingTypeFlags;                        // +0x6c
-};
+#include "engine/CThing.h"
 namespace NCameraModes {
 class CScriptModuleBase {
 public:

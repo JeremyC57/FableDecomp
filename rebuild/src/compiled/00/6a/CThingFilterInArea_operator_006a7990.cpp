@@ -30,10 +30,7 @@ class CTCPhysicsBase { public:
     C3DVector     m_position;                       // +0x0c
 };
 
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                      // +0x60
-};
+#include "engine/CThing.h"
 
 class CThingFilter_InArea { public:
     C2DBoxF Area;                                   // +0x00
@@ -42,7 +39,7 @@ class CThingFilter_InArea { public:
 
 bool CThingFilter_InArea::operator()(CThing* thing) const
 {
-    CTCPhysicsBase* physics = thing->PhysicsTC;
+    CTCPhysicsBase* physics = thing->GetPhysicsTC();
     if (physics)
         return Area.Contains(C2DVector(physics->m_position.x, physics->m_position.y));
     return false;

@@ -20,10 +20,7 @@ class CTCPhysicsBase { public:
     C3DVector     OldPosition;                    // +0x18
 };
 
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                    // +0x60 (PDB +0x70)
-};
+#include "engine/CThing.h"
 class CThingPhysical : public CThing { public: };
 class CThingCreatureBase : public CThingPhysical { public:
     float GetCurrentSpeed() const;

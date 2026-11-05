@@ -14,27 +14,10 @@
 #include <stddef.h>
 #define FABLE_RETAIL_STLP_BITSET_INDEX
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
-class CThing {
-public:
-    unsigned char      _pad00[0x20];
-    std::bitset<274>   UsingComponents;                                   // +0x20
-    CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
-    unsigned char      _pad54[0x91 - 0x54];
-    unsigned char      LifeFlags;                                         // +0x91 bit 0: dead
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (UsingComponents[T::INTERFACE_TYPE]) {
-            ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
-            const CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
-            CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::const_iterator it = map->LowerBound(type);
-            *out = (T*)((it == map->end() || T::INTERFACE_TYPE < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing { };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -53,14 +36,13 @@ public:
 template <class T> inline bool IS_THING_ALIVE(const CIntelligentPointer<T>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->LifeFlags & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
 }
 class CTCTargetingBase {                                      // interface 8
 public:
-    enum { INTERFACE_TYPE = 8 };
     virtual ~CTCTargetingBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
@@ -97,8 +79,8 @@ bool CAIStateGroup_VersusEnemyBase::IsStillRunnable()
         return false;
     if (IsStopping())
         return false;
-    CTCTargetingBase* targeting;
-    PBrain->PCreature->GetTC(&targeting);
+    const CTCTargetingBase* targeting;
+    PBrain->PCreature->PeekTC(TCI_TARGETING, &targeting);
     CThing* target = targeting->GetPTargetedThing();   // this row compares the target first (`cmp esi,eax`)
     if (target == PTargetThing.GetPItem())
         return true;

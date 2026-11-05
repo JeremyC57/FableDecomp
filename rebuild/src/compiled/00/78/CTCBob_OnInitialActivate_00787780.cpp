@@ -1,4 +1,5 @@
 // CTCBob::OnInitialActivate() -- snapshot the parent's physics orientation set and position into Rhset / Pos and clear ForceVisible
+// Leaf: ?OnInitialActivate@CTCBob@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x00787780, 86 bytes. Callee: the physics component's virtual slot 72 (`call [edx+120h]`,
@@ -37,11 +38,7 @@ class CTCPhysicsBase
     C3DVector     Position;                         // +0x0c
 };
 
-class CThing
-{ public:
-    unsigned char   _pad_0x00[0x60];
-    CTCPhysicsBase* PhysicsTC;                      // +0x60
-};
+#include "engine/CThing.h"
 
 #pragma pack(push, 1)
 class CTCBob
@@ -59,7 +56,7 @@ class CTCBob
 
 void CTCBob::OnInitialActivate()
 {
-    CTCPhysicsBase* physics = ParentThing->PhysicsTC;
+    CTCPhysicsBase* physics = ParentThing->GetPhysicsTC();
     Rhset = physics->GetRHSet();
     Pos = physics->Position;
     ForceVisible = false;

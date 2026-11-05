@@ -8,7 +8,8 @@
 // Shape: the inline CThing::GetInterface (UsingComponents bit 16 = `test [eax+20h],10000h`, the LowerBound of a key copy
 //   homed in the `push ecx` slot, then end() when the argument is below the found entry), stored through the out pointer.
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CThing;
 class CTCBase {                                            // CTCBase head: vptr, ParentThing
 public:
@@ -19,24 +20,7 @@ class CTCSoundPlayer : public CTCBase {
 public:
     void StopAttachedSound(unsigned long sound);          // 0x0066ADD0
 };
-class CThing {                                             // Ego_r.pdb layout, retail offsets
-public:
-    unsigned char _pad00[0x20];                           // (members not touched here)
-    unsigned long UsingComponents[9];                     // +0x20 bitset<274>
-    CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
-    template <class T> __forceinline bool GetInterface(T** out, long interfaceType)
-    {
-        if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
-            std::pair<ETCInterfaceType, CTCBase*>* it = map->LowerBound(type);
-            std::pair<ETCInterfaceType, CTCBase*>* last = map->end();
-            *out = static_cast<T*>(((it == last || interfaceType < it->first) ? last : it)->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCPhysicalShieldSpell : public CTCBase {
 protected:
     void StopSound(unsigned long sound);
@@ -44,6 +28,6 @@ protected:
 void CTCPhysicalShieldSpell::StopSound(unsigned long sound)
 {
     CTCSoundPlayer* player;
-    if (ParentThing->GetInterface(&player, 16))                       // the sound-player interface
+    if (ParentThing->GetTC(TCI_SOUND_PLAYER, &player))                       // the sound-player interface
         player->StopAttachedSound(sound);
 }

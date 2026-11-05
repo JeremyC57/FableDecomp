@@ -16,35 +16,13 @@
 #define FABLE_RETAIL_STLP_BITSET_INDEX
 #include "engine/CVectorMap.h"
 
-
-
-enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };   // enumerators not needed (CTCAIScratchpad is 0xAA)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
-class CThing {
-public:
-    unsigned char      _pad00[0x20];
-    std::bitset<274>   UsingComponents;                                   // +0x20
-    CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (UsingComponents[T::INTERFACE_TYPE]) {
-            ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
-            CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
-            CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::iterator it = map->LowerBound(type);
-            if (it == map->end() || T::INTERFACE_TYPE < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
 
 class CThingCreatureBase : public CThing { };
 class CTCAICreatureWillPowerIndicator {
 public:
-    enum { INTERFACE_TYPE = 0xCE };
     void Reset(float time);                                  // 0x007E0E70
 };
 class CCombatAction;
@@ -68,6 +46,6 @@ public:
 void CCombatSequence_WillLightning::OnStart()
 {
     CTCAICreatureWillPowerIndicator* indicator;
-    if (Creature->GetTC(&indicator))
+    if (Creature->GetTC(TCI_AICREATURE_WILL_POWER_INDICATOR, &indicator))
         indicator->Reset(-1.0f);
 }

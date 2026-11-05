@@ -14,41 +14,11 @@
 // (`mov ecx,[eax+4]`).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];            // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                   // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (HasTC(interfaceType)) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -70,7 +40,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -105,13 +75,13 @@ void CScriptConversationRetail::OnCleanup(bool stopSpeech)
         if (IS_THING_ALIVE(PeopleInConversation[i])) {
             {
                 CTCTargetingBase* targeting;
-                if (PeopleInConversation[i].GetPItem()->GetInterface(&targeting, 8))
+                if (PeopleInConversation[i].GetPItem()->GetTC(TCI_TARGETING, &targeting))
                     targeting->SetPScriptOverrideInterestingThing(0);
             }
             if (stopSpeech) {
                 CThing* thing = PeopleInConversation[i].GetPItem();
-                if (thing->HasTC(0xf))
-                    thing->GetTC<CTCTalk>(0xf)->StopCurrentSpeech();
+                if (thing->HasTC(TCI_TALK))
+                    ((CTCTalk*)&thing->GetTC(TCI_TALK))->StopCurrentSpeech();
             }
         }
     }

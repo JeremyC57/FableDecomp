@@ -12,15 +12,8 @@
 // Shape: the sibling of CModeBlock::AnimUpdate 0x008D8DD0; the animation name is a named CCharString local in its own block
 // (`lea ecx ; push ecx`, built in the dead argument slot and destroyed right after the lookup); the blend-in time is a
 // local clamped before the CAnimInit record is built.
-class CThing { public:
-    unsigned char _pad0[0x50];
-};
-
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                        // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CAnimationEntry;
 

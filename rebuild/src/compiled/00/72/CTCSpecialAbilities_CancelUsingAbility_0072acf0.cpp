@@ -4,41 +4,11 @@
 #define FABLE_RETAIL_STLP_BITSET_INDEX
 #include "engine/CVectorMap.h"
 
-
-enum ETCInterfaceType { };                                  // values not needed here
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 enum EHeroAbility { };                                      // values (1..19) are listed in the case comments
 class CTCBase;
 
-class CThing { public:                                      // partial view, retail offsets
-    typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > TCMap;
-    unsigned char      Header[0x20];                        // CClass / CBaseObject / CBaseClass part
-    std::bitset<274>   UsingComponents;                     // +0x20
-    TCMap              Components;                          // +0x44
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (UsingComponents[T::StatGetInterfaceType()]) {
-            TCMap* map = &Components;
-            TCMap::value_type* it = map->LowerBound(T::StatGetInterfaceType());
-            if (it == map->end() || T::StatGetInterfaceType() < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template <class T> __forceinline bool PeekTC(const T** out) const
-    {
-        if (UsingComponents[T::StatGetInterfaceType()]) {
-            const TCMap* map = &Components;
-            const TCMap::value_type* it = map->LowerBound(T::StatGetInterfaceType());
-            if (it == map->end() || T::StatGetInterfaceType() < it->first)
-                it = map->end();
-            *out = (const T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingCreatureBase;
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0

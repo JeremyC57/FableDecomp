@@ -1,4 +1,5 @@
 // CTCTavernBar::GetPickupSlot(CThing& user, C3DVector& pos, CRightHandedSet& rh, long& pointIndex, long& slot, bool needFullJug) -- walk the bar's jug slots and claim the first free ACTION_POINT_MAID_0<n> action point whose slot is empty or (when asked) holds a filled jug
+// Leaf: ?GetPickupSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3_N@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BA000, 449 bytes (+ int3 padding), `ret 18h`, aligned (`and esp,-8`) frame.
 // Callees: CVectorMap::LowerBound 0x0040F020 (interfaces 0x2E CTCNamedUserActionPoints, 0xBB CTCJug), CBaseIntelligentPointer
@@ -11,35 +12,16 @@
 //   item through a named local after the null test so HasTC and the 0xBB lookup share one GetPItem; an unused default
 //   CCharString precedes the name (retail constructs and destroys it).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char  _pad00[0x20];
-    unsigned long  m_presentBits[9];                // +0x20
-    CInterfaceMap  m_interfaces;                    // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long interfaceType)
-    {
-        long type = interfaceType;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-        return (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-    }
-};
+
 class CThingObject : public CThing { };
 class C3DVector;
 class CRightHandedSet;
-class CCharString { public:
-    void* PStringData;
-    CCharString();                                  // 0x0099E4B0
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);          // 0x0099EC30
-    ~CCharString();                                 // 0x0099EAE0
-    const CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
-    const CCharString& operator+=(const char* text);      // 0x0099F100
-};
+
 CCharString __fastcall GFIntToCharString(long value);   // 0x0099F830
 class CBaseObject;
 class CBaseObjectPointer;
@@ -83,15 +65,15 @@ class CTCTavernBar { public:
 bool CTCTavernBar::GetPickupSlot(CThing& user, C3DVector& pos, CRightHandedSet& rh, long& pointIndex, long& slot, bool needFullJug)
 {
     CTCNamedUserActionPoints* points;
-    if (ParentThing->HasTC(0x2e))
-        points = ParentThing->GetTC<CTCNamedUserActionPoints>(0x2e);
+    if (ParentThing->HasTC(TCI_NAMED_USER_ACTION_POINTS))
+        points = ((CTCNamedUserActionPoints*)&ParentThing->GetTC(TCI_NAMED_USER_ACTION_POINTS));
     for (slot = 0; (unsigned long)slot < Jugs.size(); ++slot) {
         if (needFullJug) {
             CIntelligentPointer<CThingObject> jug = GetJug(slot);
             if (jug.GetPItem()) {
                 CThingObject* item = jug.GetPItem();
                 CTCJug* tc;
-                if (!item->HasTC(0xbb) || (tc = item->GetTC<CTCJug>(0xbb)) == 0 || !tc->Filled || !tc->Contents)
+                if (!item->HasTC(TCI_TAVERN_JUG) || (tc = ((CTCJug*)&item->GetTC(TCI_TAVERN_JUG))) == 0 || !tc->Filled || !tc->Contents)
                     continue;
             }
         }

@@ -9,7 +9,8 @@
 //   sits between the resume and the flag set (`or byte ptr [eax+50h],1`).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -17,27 +18,6 @@ class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
 struct CThingAnimatable {
-};
-
-class CThing : public CThingAnimatable { public:
-    unsigned char _pad00[0x10];
-    unsigned char m_type;                  // +0x10 (1 = player creature)
-    unsigned char _pad11[0x0f];
-    unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;            // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
 };
 
 struct CTCFlagged {                        // the type-0x3a component
@@ -61,10 +41,10 @@ struct CModeDragonStrafe : CModeBase {     // vtable 0x012686C8 (CModeDragonFlyi
 
 void NCreatureMode::CModeDragonStrafe::OnDeactivate()
 {
-    if (ParentThing->m_type == 1)
+    if (ParentThing->GetType() == 1)
         ((CThingAICreature*)ParentThing)->SuspendAI(false, (void*)((long)this));
     CModeBase::OnDeactivate();
     CTCFlagged* flagged;
-    if (ParentThing->GetInterface(&flagged, 0x3a))
+    if (ParentThing->GetTC(TCI_MAPWHO, &flagged))
         flagged->m_flag = 1;
 }

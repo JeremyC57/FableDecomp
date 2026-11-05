@@ -12,10 +12,7 @@
 //   plain inline X*X + Y*Y + Z*Z (VC7.1 ranks the terms itself); the result is one `?:` on the strict less.
 #include "engine/C3DVector.h"
 
-class CThing {
-public:
-    const C3DVector& GetPos() const;               // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingObject : public CThing { };
 class CThingCompare_Nearest {
 public:

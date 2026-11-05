@@ -13,9 +13,7 @@
 // Shape: `this` is pushed first as the suspender (`push ecx`), then `push 1`, the parent thing is loaded into ecx; the
 //   callee's two stack arguments rule out a tail jump. The parent thing is an AI creature here (static downcast, offset 0:
 //   CThingAICreature derives from CThing through single inheritance).
-class CThing { public:
-    void* __vftable;
-};
+#include "engine/CThing.h"
 class CThingAICreature : public CThing { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10
 };

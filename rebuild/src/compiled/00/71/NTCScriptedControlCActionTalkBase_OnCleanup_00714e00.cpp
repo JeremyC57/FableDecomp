@@ -19,28 +19,11 @@
 // Shape: the parent thing is read into a local before the second GetThing() compare (as the landed OnAdd); the mode
 //   linger value is converted before GetCurrentMode() is fetched again; the subtitles setting is an inline accessor.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    void*         __vftable;
-    unsigned char _pad04[0x20 - 0x04];
-    unsigned long UsingComponents[9];               // +0x20
-    CInterfaceMap Components;                       // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &Components;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
@@ -134,17 +117,17 @@ void CActionTalkBase::OnCleanup()
         CThing* parent = PTCScript->ParentThing;
         if (PTargetThing.GetPThing() != parent) {
             CTCLook* look;
-            if (PTargetThing.GetPThing()->GetInterface(&look, 0x43))
+            if (PTargetThing.GetPThing()->GetTC(TCI_LOOK, &look))
                 look->StopLooking(2);
         }
     }
     if (!AddedConversationMode) {
         CTCTalk* talk;
-        if (PTCScript->ParentThing->GetInterface(&talk, 0x0f))
+        if (PTCScript->ParentThing->GetTC(TCI_TALK, &talk))
             talk->ConversationAttitude = PreviousConversationAttitude;
     }
     CTCCreatureModeManager* modes;
-    if (PTCScript->ParentThing->GetInterface(&modes, 0x31)) {
+    if (PTCScript->ParentThing->GetTC(TCI_ENTITY_MODE_MANAGER, &modes)) {
         if (modes->GetCurrentMode()->GetType() == CREATURE_MODE_CONVERSATION)
             modes->GetCurrentMode()->LingerFrames = (long)(CMainGameComponent::GetConstantFPS() * 3.0f);
         else

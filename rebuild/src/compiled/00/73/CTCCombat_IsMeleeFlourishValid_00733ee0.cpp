@@ -1,4 +1,5 @@
 // CTCCombat::IsMeleeFlourishValid() const -- a flourish is possible when the creature lacks interface 0x84, its interface-8 component has a live target that is vulnerable to the creature's melee strikes, an ability is selected and the usable-ability list is not empty
+// Leaf: ?IsMeleeFlourishValid@CTCCombat@@QBE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 //
 // Retail 0x00733EE0, 129 bytes (plain `ret`). Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
@@ -15,33 +16,14 @@
 //   it->type ? last : it)->component`), which loads the component straight into the register retail uses.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                             // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_stateFlags;                             // +0x91 (bit 0 = dead)
-    unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
-
 inline bool IsThingAlive(const CThing* thing)
 {
-    return thing && !(thing->m_stateFlags & 1);
+    return thing && !thing->IsDead();
 }
 
 bool __fastcall IsThingVulnerableToMeleeStrikesFromThing(CThing* target, CThing* attacker);   // 0x007F59F0
@@ -54,7 +36,7 @@ struct CTCTargeting {                                       // the interface-8 c
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
     virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
     virtual void v30(); virtual void v31(); virtual void v32();
-    virtual CThing* GetTarget();                            // slot 33 (+0x84)
+    virtual CThing* GetTarget() const;                            // slot 33 (+0x84)
 };
 
 class CTCCombat { public:
@@ -71,10 +53,10 @@ class CTCCombat { public:
 
 bool CTCCombat::IsMeleeFlourishValid() const
 {
-    if (!ParentThing->HasInterface(0x84))
+    if (!ParentThing->HasTC(TCI_BERSERK))
     {
-        CTCTargeting* targeting;
-        ParentThing->GetInterface(&targeting, 8);
+        const CTCTargeting* targeting;
+        ParentThing->PeekTC(TCI_TARGETING, &targeting);
         CThing* target = targeting->GetTarget();
         if (IsThingAlive(target) && IsThingVulnerableToMeleeStrikesFromThing(target, ParentThing)
             && CurrentAbilityIndex >= 0 && UsableAbilityList_first != UsableAbilityList_last)

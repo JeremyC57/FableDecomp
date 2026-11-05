@@ -16,33 +16,12 @@
 //   the info pointer at each use (a named `attacked` local moves it from ecx to eax and adds a `mov ecx,eax`).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 #include "engine/C3DVector.h"
-
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;               // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;  // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CThingCreatureBase : public CThing { public:
     bool IsRegisteredCombatant() const;    // 0x00662410
@@ -85,11 +64,11 @@ struct CModeBlock : CModeBase {            // vtable 0x01267C3C
 void NCreatureMode::CModeBlock::FrameUpdate()
 {
     CTCLook* look;
-    if (ParentThing->GetInterface(&look, 0x43)) {
+    if (ParentThing->GetTC(TCI_LOOK, &look)) {
         if (PCreature->IsRegisteredCombatant()) {
             CCombatManager* combatManager = GetWorld()->CombatManager;
             CCombatantInfo* info = combatManager->GetCombatantInfo(PCreature);
-            if (info->AttackerInfo.Attacked != 0 && !(info->AttackerInfo.Attacked->m_flags91 & 1))
+            if (info->AttackerInfo.Attacked != 0 && !info->AttackerInfo.Attacked->IsDead())
                 look->LookAtPos(&info->AttackerInfo.Attacked->GetPos(), 0x21);
         }
     }

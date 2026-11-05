@@ -33,7 +33,9 @@ class C3DVector { public:
 
 extern const float DELTA_NOTIONAL_ZERO;  // 0x0129BA3C (1e-4f)
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_PEEKPLAYER
+#include "engine/CThing.h"
 class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -61,45 +63,20 @@ public:
     unsigned char _pad0[0x20a];
     unsigned char m_lockedOnTarget;                     // +0x20a (name descriptive)
 };
-class CThing {
-public:
-    unsigned char   _pad0[0x20];
-    unsigned long   m_presentBits[9];                   // +0x20
-    CInterfaceMap   m_interfaces;                       // +0x44
-    unsigned char   _pad54[0xc];
-    CTCPhysicsBase* PTCPhysics;                         // +0x60
-    unsigned char   _pad64[0x91 - 0x64];
-    unsigned char   m_flags91;                          // +0x91 bit 0: dead
-    __forceinline bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline T* GetTC(long interfaceType) const
-    {
-        long type = interfaceType;
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-    const CPlayer& PeekPlayer() const;                  // 0x004C7A10
-    const C3DVector& GetPos() const;               // 0x004C73D0
-};
 
 namespace NCreatureMode {
 bool __fastcall IsValidRangedWeaponTargetForShooter(const CThing& shooter, const CThing& target, float angle)
 {
     const CThing* targeted = 0;
-    if (shooter.HasTC(8))
-        targeted = shooter.GetTC<CTCTargeting>(8)->GetTargetedThing();
+    if (shooter.HasTC(TCI_TARGETING))
+        targeted = ((const CTCTargeting*)&shooter.GetTC(TCI_TARGETING))->GetTargetedThing();
     const CPlayer& player = shooter.PeekPlayer();
     if (player.m_lockedOnTarget) {
-        if (!targeted || (targeted->m_flags91 & 1))
+        if (!targeted || targeted->IsDead())
             return false;
     }
     C3DVector offset = target.GetPos() - shooter.GetPos();
-    C3DVector facing = shooter.PTCPhysics->GetFacingVector();
+    C3DVector facing = shooter.GetPhysicsTC()->GetFacingVector();
     if (offset.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         offset.AccurateNormalise();
     if (facing * offset < cos(angle / 360.0f * 6.2831854820251465))

@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToPub::PayMoney() -- find the barman through the bar's tavern component, ask him for payment and wait up to 20 seconds for his reply; on reply play PAY_AT_BAR and send the paid message, else withdraw the request and send the gave-up message; the bar point is released on every path past the barman lookup
+// Leaf: ?PayMoney@CAIStateGroup_GoToPub@@QAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -15,34 +16,19 @@
 // Layout: Ego_r.pdb CAIStateGroup_GoToPub PBar +0x1c, PBarman +0x2c, BarIndex +0x9c; CTCTavernBar (0xb9) Barman +0x18
 // (retail STLport vector 12 bytes); CWorld +0x60 message event manager.
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                    // +0x20
-    CInterfaceMap m_interfaces;                        // +0x44
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-        }
-    }
-};
+
 class CThingCreatureBase : public CThing { public: };
 class CThingAICreature;
 class CThingObject;
@@ -125,7 +111,7 @@ bool CAIStateGroup_GoToPub::PayMoney()
 {
     if (((CThing*)PBarman.GetPItem()) == 0) {
         CTCTavernBar* bar;
-        ((CThing*)PBar.GetPItem())->GetInterface(&bar, 0xb9);
+        ((CThing*)PBar.GetPItem())->GetTC(TCI_TAVERN_BAR, &bar);
         PBarman = bar->GetBarman();
         if (((CThing*)PBarman.GetPItem()) == 0) {
             FreeBarPoint();

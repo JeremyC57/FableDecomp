@@ -17,29 +17,10 @@
 class CTCBase;
 class CASoundBank;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                         // +0x20
-    CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CSoundSource {
 public:
@@ -108,8 +89,8 @@ private:
 
 bool CTCTalk::IsSpeechSamplePlaying() const
 {
-    CTCSoundPlayer* player;
-    ParentThing->GetInterface(&player, 16);
+    const CTCSoundPlayer* player;
+    ParentThing->PeekTC(TCI_SOUND_PLAYER, &player);
     if (SpeechSample > 0 && player->PAttachedEmitter.GetPItem()) {
         CSoundSource* source = player->PAttachedEmitter.GetPItem()->PSoundSource;
         if (source)

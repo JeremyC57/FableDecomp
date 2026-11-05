@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureSeekEnemyUnderground::OnActivate() -- forgets the enemy, remembers where the creature went underground, then runs the idle-underground activation
+// Leaf: ?OnActivate@CAIStateGroup_CreatureSeekEnemyUnderground@@UAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00920990, length 103 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, ::SetPItem @ 0x00A01B90 (twice),
@@ -14,9 +15,7 @@ class CThing;
 
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;    // 0x004C73D0 (CThing)
-};
+#include "engine/CThing.h"
 struct CThingCreature : public CThing {
 };
 

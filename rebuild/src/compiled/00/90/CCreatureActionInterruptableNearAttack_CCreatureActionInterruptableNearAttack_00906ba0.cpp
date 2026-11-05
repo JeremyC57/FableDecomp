@@ -7,7 +7,7 @@
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, CThing&, long, const CSoundPair&) 0x00857F30.
 // Shape (family K036, representative 0x008AE160): the CSoundPair() temporary's two zero words before the pushes, the base
 //   call, the vtable store -- the landed CCreatureAction_CastBattleCharge 0x008CE290 base call without derived members.
-class CThing { };
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 class CSoundPair {                                       // Ego_r.pdb: two sound ids, zeroed by the inline constructor
 public:

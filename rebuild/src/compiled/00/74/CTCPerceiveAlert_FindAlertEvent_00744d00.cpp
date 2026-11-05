@@ -1,4 +1,5 @@
 // CTCPerceiveAlert::FindAlertEvent() -- find the most recent alert message (type 0xC) the owner can see or hear;
+// Leaf: ?FindAlertEvent@CTCPerceiveAlert@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // when its sender is alive, an ally of the owner, and the script thing the event names is our tracked thing (+0x0c),
 // become directly aware of the perceived thing.
@@ -23,49 +24,11 @@ class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATTYPEFLAGS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    enum { ThingTypeMask = 0 };                 // the base class matches every thing (landed 0x008D04E0 typed-item test)
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x18];
-    unsigned long ThingTypeFlags;               // +0x6c
-    unsigned char _pad2[0x91 - 0x70];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        CInterfaceMap::value_type* sel;
-        if (it == map->end()) sel = map->end();
-        else if (it->first <= interfaceType) sel = it;
-        else sel = map->end();
-        return sel;
-    }
-};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -151,8 +114,8 @@ bool __fastcall AreThingsAllies(CThing* a, CThing* b);   // 0x0076D4F0
 // temporary (the dead store) and the zero mask folds the test to a constant (`xor al,al ; jne`)
 template <class T> inline bool IsThingOfType(const CThing* const& thing)
 {
-    unsigned long mask = T::ThingTypeMask;
-    return (thing->ThingTypeFlags & mask) == mask;
+    unsigned long mask = T::StatGetTypeFlags();
+    return (thing->GetTypeFlags() & mask) == mask;
 }
 
 struct CTCPerceiveAlert : public CTCBase {
@@ -173,7 +136,7 @@ void CTCPerceiveAlert::FindAlertEvent()
         CBaseIntelligentPointerCtor& sender = ev->PSender;
         if (sender.GetPItem() != 0 && IsThingOfType<CThing>(sender.GetPItem())) {
             CThing* thing = sender.GetPItem();
-            if (thing != 0 && !(thing->m_flags91 & 1) && AreThingsAllies(thing, owner)) {
+            if (thing != 0 && !thing->IsDead() && AreThingsAllies(thing, owner)) {
                 CThing* perceived = ev->GetPThing();
                 if (PTracked.GetPItem() == perceived)
                     SetAsDirectlyAwareOfPerceivedThing();

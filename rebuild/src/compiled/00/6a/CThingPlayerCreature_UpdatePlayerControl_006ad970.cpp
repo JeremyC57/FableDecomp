@@ -1,4 +1,5 @@
 // CThingPlayerCreature::UpdatePlayerControl() -- updates the thing's scripted-control component (interface 0x1f) when it is flagged or its script task is not running, then performs the controlled move
+// Leaf: ?UpdatePlayerControl@CThingPlayerCreature@@AAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe 0x006AD970, 88 bytes.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (the inlined interface lookup;
@@ -10,28 +11,10 @@
 // always runs (`this` kept in edi).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                      // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                          // +0x44
-    template<class T> bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCScriptedControl { public:                              // interface type 0x1f component
     unsigned char _pad00[0x18];
@@ -47,7 +30,7 @@ class CThingPlayerCreature : public CThing { protected: void ControlledMove(); p
 void CThingPlayerCreature::UpdatePlayerControl()
 {
     CTCScriptedControl* control;
-    if (GetInterface(&control, 0x1f))
+    if (GetTC(TCI_SCRIPTED_CONTROL, &control))
     {
         if (control->m_forceUpdate || !control->IsScriptTaskRunning())
             control->Update();

@@ -12,8 +12,7 @@ class CThingAICreature { public:
 };
 #include "engine/CTCBase.h"
 
-class CThing { public:
-};
+#include "engine/CThing.h"
 
 void __fastcall CleanupRangedWeapon(CThing* creature);                  // 0x007E5B40
 

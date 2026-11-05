@@ -12,27 +12,11 @@
 //   last : it)->component`): the out-parameter form gives retail's this/time registers, the ternary loads the component straight
 //   into ecx (the if-assign form goes through eax, HasTC + GetTC keeps this in ebx).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_removeFlags;                // +0x91 bit 0 = scheduled for removal
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCDParticleEmitter { public:
     void UpdateEmitterThingAttachment(bool attach, float time);   // 0x006DFFB0
 };
@@ -75,9 +59,9 @@ void CTCParticleAttachmentTracker::UpdateAttachedParticles(float time)
 {
     for (SParticleNode* it = AttachedParticles.begin(); it != AttachedParticles.end(); it = it->m_next) {
         CThing* thing = it->m_value.GetPItem();
-        if (thing && !(thing->m_removeFlags & 1)) {
+        if (thing && !thing->IsDead()) {
             CTCDParticleEmitter* particles;
-            if (thing->GetInterface(&particles, 0x4b))
+            if (thing->GetTC(TCI_PARTICLE_EMITTER, &particles))
                 particles->UpdateEmitterThingAttachment(true, time);
         }
     }

@@ -26,36 +26,20 @@ class CEngineGraphic { public:
 
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     unsigned char  _pad00[0x44];
     CEngineGraphic MainGraphic;                             // +0x44
     void SetAsChanged(unsigned long reasons);               // 0x004BF9E0
 };
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                             // +0x44
-    unsigned char _pad54[0x10];
-    CTCGraphicAppearance* PGraphicAppearance;               // +0x64
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
 class CTCPhysicsBase { public:
     void CreatePPhysicsMeshInfo(const CEngineGraphic& graphic);   // 0x006B08E0
@@ -64,7 +48,7 @@ class CTCPhysicsBase { public:
 __forceinline CTCPhysicsBase* GetPhysics(CThing* thing)
 {
     CTCPhysicsBase* physics;
-    thing->GetInterface(&physics, 2);                       // TC_PHYSICS
+    thing->GetTC(TCI_PHYSICS, &physics);                       // TC_PHYSICS
     return physics;
 }
 
@@ -76,7 +60,7 @@ class CTCDegradableBase { public:
 
 void CTCDegradableBase::ChangeMesh(const CEngineGraphic& graphic)
 {
-    ParentThing->PGraphicAppearance->MainGraphic = graphic;
-    ParentThing->PGraphicAppearance->SetAsChanged(4);
+    ParentThing->GetTCGraphicAppearance()->MainGraphic = graphic;
+    ParentThing->GetTCGraphicAppearance()->SetAsChanged(4);
     GetPhysics(ParentThing)->CreatePPhysicsMeshInfo(graphic);
 }

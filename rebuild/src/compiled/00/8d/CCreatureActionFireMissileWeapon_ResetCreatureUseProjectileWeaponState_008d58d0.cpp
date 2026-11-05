@@ -1,4 +1,5 @@
 // CCreatureAction_FireMissileWeapon::ResetCreatureUseProjectileWeaponState() -- for a live creature, release any missile still held, then cancel the hero's weapon aiming (ranged-attacks component 0x81)
+// Leaf: ?ResetCreatureUseProjectileWeaponState@CCreatureAction_FireMissileWeapon@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D58D0, length 134 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CCreatureAction_FireMissileWeapon::ReleaseMissile
@@ -11,30 +12,10 @@
 // Layout: CCreatureActionBase (retail 0xa8 bytes) with PCreature at +8; nothing else of the class is touched.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -56,7 +37,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -88,7 +69,7 @@ void CCreatureAction_FireMissileWeapon::ResetCreatureUseProjectileWeaponState()
             ReleaseMissile(&missile, &target, &globalIndex);
         }
         CTCHeroRangedAttacks* ranged;
-        if (PCreature.GetPItem()->GetInterface(&ranged, 0x81))
+        if (PCreature.GetPItem()->GetTC(TCI_HERO_RANGED_ATTACKS, &ranged))
             ranged->CancelAimingWeapon();
     }
 }

@@ -1,4 +1,5 @@
 // CTCCoopSpirit::AddAppearanceParticle(const CCharString& particleThingName) -- create the named particle thing at the spirit's position and attach its emitter to the spirit (bone 0x88, scale 1.1)
+// Leaf: ?AddAppearanceParticle@CTCCoopSpirit@@QAEXABVCCharString@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 //
 // Retail 0x00670560, 141 bytes (`ret 4`). Callees: CThing::GetPos() const @ 0x004C73D0, the
@@ -14,35 +15,11 @@
 class CTCBase;
 class C3DVector;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    const C3DVector& GetPos() const;                   // 0x004C73D0
-};
-
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length);             // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
 
 CThing* __fastcall Create(const CCharString& defName, const C3DVector& position, bool flag);   // 0x006E0970
 
@@ -53,7 +30,7 @@ class CTCDParticleEmitter { public:
 __forceinline CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
 {
     CTCDParticleEmitter* emitter;
-    thing->GetInterface(&emitter, 0x4b);                    // TC_PARTICLE_EMITTER
+    thing->GetTC(TCI_PARTICLE_EMITTER, &emitter);                    // TC_PARTICLE_EMITTER
     return emitter;
 }
 

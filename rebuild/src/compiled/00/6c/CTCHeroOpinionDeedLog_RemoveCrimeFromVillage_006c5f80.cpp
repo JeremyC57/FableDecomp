@@ -11,23 +11,11 @@
 // Layout: retail OpinionDeedMap +0x0c, VillageForCrimes +0x20; CTCVillage flag byte +0x7c (as in CTCGuard::ReportCrime 0x007B2C70);
 // COpinionDeed reported-to-village flag +0x22 (descriptive).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -94,8 +82,8 @@ void CTCHeroOpinionDeedLog::RemoveCrimeFromVillage(long handle)
 {
     if (VillageForCrimes.GetPItem()) {
         CThing* villageThing = VillageForCrimes.GetPItem();
-        if (villageThing->HasTC(0x22)) {
-            CTCVillage* village = villageThing->GetTC<CTCVillage>(0x22);
+        if (villageThing->HasTC(TCI_VILLAGE)) {
+            CTCVillage* village = ((CTCVillage*)&villageThing->GetTC(TCI_VILLAGE));
             if (!village->CrimeReportedFlag) {
                 village->RemoveCrime(handle);
                 CDeedMapIterator it = OpinionDeedMap.find(handle);

@@ -12,10 +12,7 @@
 // Shape: the inline SetAsTargetNextThingInDirection(method) (landed 0x008023C0) is expanded in both arms of an if/else, so
 // retail tail-duplicates the three stores and the frame call; the 1 is hoisted into ecx and serves as both the method
 // and the bool.
-class CThing { public:
-    unsigned char _pad_0x00[0x91];
-    unsigned char m_removalFlags;            // +0x91 (bit 0)
-};
+#include "engine/CThing.h"
 
 typedef long ETargetNextThingMethod;
 
@@ -53,7 +50,7 @@ class CTCTargetingPlayer { public:
 inline bool IS_THING_ALIVE(const CThing* thing)
 {
     if (thing != 0) {
-        if (!(thing->m_removalFlags & 1))
+        if (!thing->IsDead())
             return true;
     }
     return false;

@@ -1,4 +1,5 @@
 // CAIStateGroup_IceTrollPoundGroundAttack::Update() -- with a live target: mark the target's stealth component in danger, rise up if knocked down, then with the target still alive play LOOK_BACKWARD when it is more than 60 degrees off the creature's XY facing (LOOK_FORWARD otherwise) and, still runnable, perform the pound attack; terminate at the end or on any failure
+// Leaf: ?Update@CAIStateGroup_IceTrollPoundGroundAttack@@QAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local MagnitudeSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
@@ -18,7 +19,7 @@
 #include "engine/C3DVector.h"
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
-struct CPhysicsBody {                           // the thing's physics body at +0x60
+struct CTCPhysicsBase {                           // the thing's physics body at +0x60
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
@@ -29,32 +30,12 @@ struct CPhysicsBody {                           // the thing's physics body at +
 class CThing;
 class CThingCreatureBase;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0xc];
-    CPhysicsBody* PhysicsBody;                  // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
@@ -82,16 +63,12 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x0
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
 }
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+
 class CSoundPair { public:
     long m_first;
     long m_second;
@@ -191,10 +168,10 @@ void CAIStateGroup_IceTrollPoundGroundAttack::Update()
 {
     if (IS_THING_ALIVE(PTarget)) {
         CTCStealth* stealth;
-        if (((CThing*)PTarget.GetPItem())->GetInterface(&stealth, 0x36))
+        if (((CThing*)PTarget.GetPItem())->GetTC(TCI_STEALTH, &stealth))
             stealth->SetAsInDanger(GetCreature(), 3);
         CTCCreatureModeManager* modes;
-        if (GetCreature()->GetInterface(&modes, 0x31) && modes->HasMode(0x1e)) {
+        if (GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes) && modes->HasMode(0x1e)) {
             long result = AIAction_CombatPerformActionAndWait(&CCreatureAction_RiseUp(GetCreature()), true);
             if (result == 1) {
                 Terminate();
@@ -208,7 +185,7 @@ void CAIStateGroup_IceTrollPoundGroundAttack::Update()
             toTarget.Z = 0.0f;
             if (toTarget.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
                 toTarget.AccurateNormalise();
-            C3DVector facing = GetCreature()->PhysicsBody->GetFacing();
+            C3DVector facing = GetCreature()->GetPhysicsTC()->GetFacing();
             facing.Z = 0.0f;
             if (facing.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
                 facing.AccurateNormalise();

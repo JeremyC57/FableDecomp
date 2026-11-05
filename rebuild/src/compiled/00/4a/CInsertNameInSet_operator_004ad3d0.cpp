@@ -17,10 +17,10 @@
 //   `insert(table.GetString(def))` pushes GetString's eax; a named string local lets the pair share the CDefString word
 //   and shrinks the frame to 0x48). The string temporary lands in the dead argument slot and dies before the mesh.
 // Label correction: catalogued as `Physics_CheckNavigability`; the real routine is CInsertNameInSet::operator().
-class CCharString { public:
-    void* PStringData;
-    ~CCharString();                                // 0x0099EAE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CDefStringTable {
 public:
@@ -58,15 +58,8 @@ class CTCPhysicsBase { public:
     virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074(); virtual void v075(); virtual void v076(); virtual void v077(); virtual void v078(); virtual void v079();
     virtual void v080(); virtual void v081(); virtual void v082(); virtual void v083(); virtual void v084(); virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088(); virtual void v089();
     virtual void v090(); virtual void v091(); virtual void v092();
-    virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo();   // slot 93 (+0x174)
+    virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo() const;   // slot 93 (+0x174)
     CPhysicsMeshObject GetPhysicsMeshObject() const;             // 0x006B0850
-};
-
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                     // +0x60
-    CDefString GetDefName() const;                 // 0x004C7CC0
 };
 
 struct CCharStringSetIterator { void* _M_node; };
@@ -93,9 +86,9 @@ public:
 
 void CInsertNameInSet::operator()(const CThing* thing) const
 {
-    CTCPhysicsBase* physics = thing->PhysicsTC;
+    const CTCPhysicsBase* physics = thing->GetPhysicsTC();
     if (physics && physics->GetPhysicsMeshInfo()) {
-        CPhysicsMeshObject mesh = thing->PhysicsTC->GetPhysicsMeshObject();
+        CPhysicsMeshObject mesh = thing->GetPhysicsTC()->GetPhysicsMeshObject();
         if (!mesh.HasNavigationLineListInfo())
             DefNames->insert(thing->GetDefName().GetString());
     }

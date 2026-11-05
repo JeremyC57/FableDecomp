@@ -19,35 +19,13 @@
 //   sharing the inlined lookup key's.
 class CTCBase;
 class CTCParamsBase;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                   // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                       // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                          // +0x91 bit 0: dead
-    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -66,7 +44,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -96,7 +74,7 @@ void CCreatureAction_CastUnholyPowerSpell::Initialise()
 {
     CCombatActionBase::Initialise();
     CTCUnholyPower* power;
-    if (!((CThing*)PCreature.GetPItem())->GetInterface(&power, 0x86))
+    if (!((CThing*)PCreature.GetPItem())->GetTC(TCI_UNHOLY_POWER, &power))
         power = (CTCUnholyPower*)((CThing*)PCreature.GetPItem())->AddTC("CTCUnholyPower", true, 0);
     power->m_bArmed = 1;
     CIntelligentPointer thing(PItemRemoved);

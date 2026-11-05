@@ -1,4 +1,5 @@
 // CTCDExplosion::GetDistanceFromMeAsRatioOfDamageRadius(const CThing* thing) -- distance from the explosion's start-end
+// Leaf: ?GetDistanceFromMeAsRatioOfDamageRadius@CTCDExplosion@@QBEMPBVCThing@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // segment to the thing, as a fraction of the damage radius
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080C210, length 31 bytes.
@@ -10,9 +11,7 @@
 // Layout: CTCDExplosion (Ego_r.pdb) -- DamageRadius +0x0c, StartPos +0x20, EndPos +0x2c; no engine header, local model.
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;   // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 float __fastcall Geometry_DistancePointToLineSegment(const C3DVector& lineStart, const C3DVector& lineEnd,
                                                      const C3DVector& point);   // 0x008F5BA0

@@ -1,4 +1,5 @@
 // CCreatureAction_DragonTakeOff::FinishAction() -- switch the dragon's physics TC to airborne, put it back at its position raised by a fixed height, remove its interface-0x4d component, then the base FinishAction
+// Leaf: ?FinishAction@CCreatureAction_DragonTakeOff@@UAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F2F30, length 119 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CThing::GetPos @ 0x004C73D0,
@@ -27,13 +28,9 @@ class CTCPhysicsBase { public:                     // the thing's physics TC; on
     virtual void SetAirborne(bool airborne);                 // slot 36 (+0x90)
 };
 
-enum ETCInterfaceType { };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;              // +0x60
-    const C3DVector& GetPos() const;   // 0x004C73D0
-    void RemoveTC(ETCInterfaceType interfaceType);      // 0x004C9840
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -68,7 +65,7 @@ void CCreatureAction_DragonTakeOff::FinishAction()
 {
     {
         CThing* creature = PCreature.GetPItem();
-        creature->PhysicsTC->SetAirborne(true);
+        creature->GetPhysicsTC()->SetAirborne(true);
     }
     const C3DVector& current = PCreature.GetPItem()->GetPos();
     C3DVector position;
@@ -76,7 +73,7 @@ void CCreatureAction_DragonTakeOff::FinishAction()
     position.Y = current.Y;
     position.Z = current.Z + 30.148378f;    // 0x0128838C
     CThing* creature = PCreature.GetPItem();   // named: the physics TC then loads straight into ecx
-    creature->PhysicsTC->ResetPosition(position);
+    creature->GetPhysicsTC()->ResetPosition(position);
     PCreature.GetPItem()->RemoveTC((ETCInterfaceType)(0x4d));
     CCombatActionBase::FinishAction();
 }

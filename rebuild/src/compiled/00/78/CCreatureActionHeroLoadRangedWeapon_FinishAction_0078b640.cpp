@@ -1,4 +1,5 @@
 // CCreatureAction_HeroLoadRangedWeapon::FinishAction() -- load the weapon if the action finished, base FinishAction, then drop this action's entry from the creature's type-0x8C component map and let it recalculate
+// Leaf: ?FinishAction@CCreatureAction_HeroLoadRangedWeapon@@UAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078B640, length 111 bytes (+ int3 padding). Vtable 0x0126B9D4 slot 4.
 // Callees: CCreatureAction_HeroLoadRangedWeapon::SetWeaponLoaded @ 0x0078B6B0 (thiscall, `this` still in ecx),
@@ -12,27 +13,11 @@
 // push), the component stays in esi for both calls. Retail CCreatureActionBase is 0xa8 bytes (the PDB vectors are 16 bytes,
 // retail 12), so the class is modelled locally.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -81,7 +66,7 @@ void CCreatureAction_HeroLoadRangedWeapon::FinishAction()
         SetWeaponLoaded();
     CCreatureActionBase::FinishAction();
     CTCActionScaled* scaled;
-    if (PCreature.GetPItem()->GetInterface(&scaled, 0x8C)) {
+    if (PCreature.GetPItem()->GetTC(TCI_HASTE, &scaled)) {
         scaled->m_actions.Erase(this);
         scaled->Recalculate();
     }

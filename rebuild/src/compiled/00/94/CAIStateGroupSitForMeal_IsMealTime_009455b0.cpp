@@ -7,30 +7,12 @@
 //   CTCVillageMember::GetPVillage() const 0x007EE540 (twice), CTCVillage::IsEatTime() const 0x00658BB9.
 // CTCVillage's three time tests compare the clock with Ego_r.pdb CVillageDef SchoolStartTimes/SchoolDuration (0x00658A35), WorkStartTimes/WorkDuration (0x00658B20) and EatStartTimes/EatDuration (0x00658BB9, retail def +0x84/+0x90); IsSchoolTime / IsWorkTime are Ego_r.pdb names, IsEatTime is descriptive.
 // Header debt: engine/CAIStateGroup_SitForMeal.h / CAIStateGroupBase.h / CAIBrain.h are flat layouts; modelled locally.
-enum ETCInterfaceType { ETCInterfaceType_FIRST };
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    virtual ~CThing();
-    unsigned char _pad04[0x1C];
-    unsigned long PresentInterfaces[9];                    // +0x20
-    CInterfaceMap Interfaces;                              // +0x44
-    template <class T> __forceinline bool GetInterface(const T** out, ETCInterfaceType type) const
-    {
-        if (PresentInterfaces[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = type;
-            const CInterfaceMap* map = &Interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (const T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingAICreature : public CThing { };
 class CTCVillage {
 public:
@@ -57,8 +39,8 @@ private:
 bool CAIStateGroup_SitForMeal::IsMealTime() const
 {
     const CThingAICreature* creature = PBrain->Creature;
-    const CTCVillageMember* member;
-    if (creature->GetInterface(&member, (ETCInterfaceType)0x23) && member->GetPVillage() && member->GetPVillage()->IsEatTime())
+    const const CTCVillageMember* member;
+    if (creature->PeekTC(TCI_VILLAGE_MEMBER, &member) && member->GetPVillage() && member->GetPVillage()->IsEatTime())
         return true;
     return false;
 }

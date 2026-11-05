@@ -12,36 +12,11 @@
 //   CTCHeroStats::NumSex retail +0x154 (Ego_r.pdb CTCHeroStats NumSex +0x168; retail is 0x14 lower before HousePositions (retail +0x160, 12-byte vector) and 0x18 lower after it, as the landed CTCHeroStats models (HadScriptedSex +0x158, FailQuestOnDeath +0x174) pin).
 // Setter: CTCHeroStats::SetNumberOfTimesHadSex(long) (FableWin.pdb ?SetNumberOfTimesHadSex@CTCHeroStats@@QAEXJ@Z), inline.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
-    CInterfaceMap Components;                            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (T*)it->second;
-        return true;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
@@ -53,7 +28,6 @@ public:
 #include "engine/CPlayerManager.h"
 class CTCHeroStats {
 public:
-    enum { INTERFACE_TYPE = 0x4 };
     unsigned char _pad00[0x154];
     long NumSex;                                    // +0x154
     void SetNumberOfTimesHadSex(long value) { NumSex = value; }
@@ -67,6 +41,6 @@ void CGameScriptInterface::SetNumberOfTimesHeroHasHadSex(long value) const
 {
     CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCHeroStats* tc;
-    if (hero && !hero->IsDead() && hero->GetTC(&tc))
+    if (hero && !hero->IsDead() && hero->GetTC(TCI_HERO_STATS, &tc))
         tc->SetNumberOfTimesHadSex(value);
 }

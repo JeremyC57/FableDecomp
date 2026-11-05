@@ -17,15 +17,11 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Flags91;                                 // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->Flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

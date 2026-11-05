@@ -16,29 +16,12 @@
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long UsingComponents[9];       // +0x20 std::bitset of interface types
-    CInterfaceMap Components;               // +0x44
-    template <class T> bool GetInterface(long type, T** out)   // inline: the landed 0x007504E0 shape
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &Components;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    void RemoveTC(ETCInterfaceType interfaceType);      // 0x004C9840
-};
 
 class CTCSpecialAbilities { public:                // interface 0xA7
     unsigned char _pad00[0x0c];
@@ -56,7 +39,7 @@ void CTCWillEnflame::CancelMove()
 {
     CThing* parent = ParentThing;
     CTCSpecialAbilities* abilities;
-    if (parent->GetInterface(0xA7, &abilities)) {
+    if (parent->GetTC(TCI_SPECIAL_ABILITIES, &abilities)) {
         if (abilities->CurrentAbility != 3)
             return;
         abilities->AbilityMutexLock = false;

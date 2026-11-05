@@ -13,40 +13,12 @@
 //   into the member, destroy) in its own block, so the lookup keys share the stack pointer's words (8-byte frame); the
 //   weapon lookup is the pointer-returning form so the component loads straight into ecx.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                   // +0x20
-    CInterfaceMap m_interfaces;                       // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                          // +0x91 bit 0: dead
-    void Kill(bool immediately);                      // 0x004C9B80
-    unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* FindTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -63,7 +35,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0125A858
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -90,7 +62,7 @@ class CCreatureAction_ReloadMissileWeapon : public CCreatureActionBase { public:
 void CCreatureAction_ReloadMissileWeapon::FinishAction()
 {
     CTCCarrying* carrying;
-    if (IS_THING_ALIVE(PAmmo) && ((CThing*)PCreature.GetPItem())->GetInterface(&carrying, 0x46)) {
+    if (IS_THING_ALIVE(PAmmo) && ((CThing*)PCreature.GetPItem())->GetTC(TCI_CARRYING, &carrying)) {
         carrying->RemoveThing(((CThing*)PAmmo.GetPItem()));
         ((CThing*)PAmmo.GetPItem())->Kill(true);
         {
@@ -99,8 +71,8 @@ void CCreatureAction_ReloadMissileWeapon::FinishAction()
             PAmmo.SetPItem((CBaseObject*)(((CThing*)none.GetPItem())));
         }
         CThing* weaponThing = carrying->GetThingInPrimarySlot();
-        if (weaponThing && !(weaponThing->m_flags91 & 1) && weaponThing->HasTC(0x48))
-            ((CTCWeapon*)weaponThing->FindTC(0x48))->SetProjectileWeaponLoaded(true, 0);
+        if (weaponThing && !weaponThing->IsDead() && weaponThing->HasTC(TCI_WEAPON))
+            ((CTCWeapon*)((CTCWeapon*)&weaponThing->GetTC(TCI_WEAPON)))->SetProjectileWeaponLoaded(true, 0);
     }
     CCreatureActionBase::FinishAction();
 }

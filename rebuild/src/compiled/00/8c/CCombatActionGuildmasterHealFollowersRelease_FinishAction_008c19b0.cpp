@@ -9,27 +9,11 @@
 //   landed CCreatureAction_FinishFireballSpell::FinishAction 0x008BAC40 GetInterface model: the bitset word test, the lower
 //   bound and its end / greater check), then `CCombatActionBase::FinishAction();`.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                   // +0x20
-    CInterfaceMap m_interfaces;                       // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCCreatureModeManager { public:                // interface 0x31
     void RemoveMode(unsigned long mode);              // 0x0073ABA0
     bool AddMode(unsigned long mode);                 // 0x0073AE10
@@ -68,7 +52,7 @@ public:
 void CCombatAction_Guildmaster_HealFollowersRelease::FinishAction()
 {
     CTCCreatureModeManager* modes;
-    if (GetCreature()->GetInterface(&modes, 0x31))
+    if (GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes))
         modes->RemoveMode(0x3C);
     CCombatActionBase::FinishAction();
 }

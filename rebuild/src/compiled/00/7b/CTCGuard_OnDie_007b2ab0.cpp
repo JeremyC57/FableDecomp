@@ -16,11 +16,9 @@
 // Shape: the def name is a named local in its own block (the definition-manager getter is called after the name is
 // pushed), the empty script name an implicit conversion temporary (built first, re-addressed with `lea`); the money component is null-tested after the lookup; the throw velocity is a C3DVector(0.3, 0, 0.4) local rotated
 // by a random angle and copied into the physics component (a named local) with the implicit assignment (`lea edx,[ecx+28h]` then three dword stores).
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);        // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 class C3DVector { public:
     float X, Y, Z;
@@ -32,7 +30,7 @@ class CRightHandedSet;
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -47,30 +45,6 @@ struct CTCMoney {
     long          Gold;                                     // +0x0c
 };
 
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                         // +0x20
-    CInterfaceMap m_interfaces;                             // +0x44
-    unsigned char _pad54[0xc];
-    CTCPhysicsBase* PhysicsTC;                              // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char Flags91;                                  // +0x91 bit 0 Dead
-    const C3DVector& GetPos() const;                   // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingObject : public CThing {
 public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,
@@ -115,13 +89,13 @@ void CTCGuard::OnDie()
         }
         if (index > 0) {
             CThingObject* bag = CThingObject::Create(index, GetParentThing()->GetPos(), 5, 0, 0, "");
-            if (bag && !(bag->Flags91 & 1)) {
+            if (bag && !bag->IsDead()) {
                 CTCMoney* money;
-                if (bag->GetInterface(&money, 0xcc) && money)
+                if (bag->GetTC(TCI_GOLD, &money) && money)
                     money->Gold = BribePool;
                 C3DVector velocity(0.3f, 0.0f, 0.4f);
                 velocity.RotateXY(GFFloatRandom(1.0f, GetPWorldSeed()));
-                CTCPhysicsBase* physics = bag->PhysicsTC;
+                CTCPhysicsBase* physics = bag->GetPhysicsTC();
                 physics->Velocity = velocity;
                 physics->SetAsMoving(true);
             }

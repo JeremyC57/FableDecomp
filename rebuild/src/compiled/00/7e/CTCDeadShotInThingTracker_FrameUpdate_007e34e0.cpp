@@ -12,14 +12,7 @@
 // Kill(true) tail and the false exits land on the two pops.
 #include "engine/CTCPhysicsBase.h"
 
-class CThing { public:
-    unsigned char   _pad0[0x60];
-    CTCPhysicsBase* PhysicsTC;                              // +0x60
-    unsigned char   _pad1[0x91 - 0x64];
-    unsigned char   m_flags91;                              // +0x91 bit 0: Dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-    void Kill(bool immediately);                            // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -53,7 +46,7 @@ void CTCDeadShotInThingTracker::FrameUpdate()
     if (HasThingStuckIn) {
         if (PThingStuckIn.GetPItem() == 0
             || PThingStuckIn.GetPItem()->IsDead()
-            || (PThingStuckIn.GetPItem()->PhysicsTC->OldMoving[0] & 1) != 0)
+            || (PThingStuckIn.GetPItem()->GetPhysicsTC()->OldMoving[0] & 1) != 0)
             ParentThing->Kill(true);
     }
 }

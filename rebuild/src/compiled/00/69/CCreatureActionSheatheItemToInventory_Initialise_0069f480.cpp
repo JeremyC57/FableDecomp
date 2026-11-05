@@ -1,4 +1,5 @@
 // CCreatureAction_SheatheItemToInventory::Initialise() -- base Initialise, then if the creature has hero ranged attacks (interface type 0x81): cancel aiming, reset the projectile weapon mode and drop player mode 0x22
+// Leaf: ?Initialise@CCreatureAction_SheatheItemToInventory@@UAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069F480, length 110 bytes (+ int3 padding).
 // Callees: CCreatureActionBase::Initialise @ 0x00694D10 (direct base call, first), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8,
@@ -12,29 +13,12 @@ class CTCBase;
 class CPlayer { public:
     void RemoveMode(long mode);             // 0x00634190 (EPlayerMode by value)
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-public:
-    CPlayer& GetPlayer();   // 0x004C7A30
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -72,7 +56,7 @@ void CCreatureAction_SheatheItemToInventory::Initialise()
 {
     CCreatureActionBase::Initialise();
     CTCHeroRangedAttacks* pRanged;
-    if (PCreature.GetPItem()->GetInterface(&pRanged, 0x81)) {
+    if (PCreature.GetPItem()->GetTC(TCI_HERO_RANGED_ATTACKS, &pRanged)) {
         pRanged->CancelAimingWeapon();
         pRanged->ResetProjectileWeaponMode();
         PCreature.GetPItem()->GetPlayer().RemoveMode(0x22);

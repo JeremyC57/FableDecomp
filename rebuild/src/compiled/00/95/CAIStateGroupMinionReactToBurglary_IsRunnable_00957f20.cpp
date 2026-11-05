@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToBurglary::IsRunnable() -- during the creature's sleep hours, runnable when the live
+// Leaf: ?IsRunnable@CAIStateGroup_MinionReactToBurglary@@UAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // player is visible to it and standing inside its home building; remember the player in PBurglar.
@@ -20,46 +21,9 @@ class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        CInterfaceMap::value_type* sel;
-        if (it == map->end()) sel = map->end();
-        else if (it->first <= interfaceType) sel = it;
-        else sel = map->end();
-        return sel;
-    }
-};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -153,7 +117,7 @@ bool CAIStateGroup_MinionReactToBurglary::IsRunnable()
     CThingBuilding* home = (CThingBuilding*)((CHomeOwner*)PBrain->PCreature)->GetPHome();
     if (sleepTime && home != 0) {
         CThing* player = GetWorld().GetPlayerManager()->GetPlayerCharacter();
-        if (player != 0 && !(player->m_flags91 & 1) && CanCreatureSeeCreature(PBrain->PCreature, player, false) &&
+        if (player != 0 && !player->IsDead() && CanCreatureSeeCreature(PBrain->PCreature, player, false) &&
             home->IsPointInside(((CThingPos*)player)->GetPosition())) {
             CIntelligentPointerOut burglar(player);
             PBurglar = burglar;

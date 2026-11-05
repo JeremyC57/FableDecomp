@@ -1,4 +1,5 @@
 // CTCCreatureHive::UpdateAnimation() -- while the hive is animating, advance its animation by one frame (1 / fps seconds) and stop animating once the main anim set is empty or finished
+// Leaf: ?UpdateAnimation@CTCCreatureHive@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -13,27 +14,11 @@
 // Shape: GetInterface result unchecked (the absent arm reads the unset out pointer from the key's frame word).
 struct CTCBaseInterface;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];            // +0x20 std::bitset<274> UsingComponents
-    CInterfaceMap m_interfaces;                // +0x44 Components
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)((CTCBaseInterface*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                       // +0x04
@@ -75,7 +60,7 @@ void CTCCreatureHive::UpdateAnimation()
 {
     if (Animating) {
         CTCAnimationComplex* animation;
-        ParentThing->GetInterface(&animation, 0x5a);
+        ParentThing->GetTC(TCI_ANIMATION, &animation);
         CAnimateThing& anim = animation->GetAnimation();
         anim.UpdateFrameLogic(CAnimFrameTime(1.0f / CMainGameComponent::GetConstantFPS()));
         if (anim.AnimsFirst == anim.AnimsLast || anim.Finished)

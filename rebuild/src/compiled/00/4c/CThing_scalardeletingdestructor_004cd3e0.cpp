@@ -1,6 +1,5 @@
-class CThing { public:
-    void* vftable;
-};
+// Leaf: ?CThing_scalar_deleting_destructor@@YIPAXPAVCThing@@HI@Z
+#include "engine/CThing.h"
 
 void __fastcall CThing_dtor(CThing* thing);
 void operator delete[](void*);

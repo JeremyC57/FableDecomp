@@ -22,14 +22,7 @@ class CTCBase : public CTCBaseLayout
 protected:
     CThingManager& GetThingManager();   // 0x00686AE0
 };
-class CThing { public:
-    unsigned char _pad00[0x18];
-    unsigned __int64 UID;                       // +0x18
-    unsigned char _pad20[0x8e - 0x20];
-    short m_level;                              // +0x8e
-public:
-    bool IsLevelLess() const;   // 0x004C7930
-};
+#include "engine/CThing.h"
 class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
 };
@@ -72,13 +65,13 @@ void CTCVillageMember::OnSerialise(CPersistContext& context, bool)
             VillageUID = 0;
         } else {
             CThing* item = PVillage.GetPItem();
-            VillageUID = item->UID;
-            VillageUID = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, VillageUID);
+            VillageUID = item->GetUniqueID();
+            VillageUID = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->GetCurrentMapNumber(), VillageUID);
         }
         context.Transfer<unsigned __int64>("VillageUID", VillageUID, 0);
     } else {
         context.Transfer<unsigned __int64>("VillageUID", VillageUID, 0);
         if (VillageUID != 0)
-            VillageUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, VillageUID);
+            VillageUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->GetCurrentMapNumber(), VillageUID);
     }
 }

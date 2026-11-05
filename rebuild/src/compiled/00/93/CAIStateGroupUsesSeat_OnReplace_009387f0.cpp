@@ -1,4 +1,5 @@
 // CAIStateGroup_UsesSeat::OnReplace() -- release the seat's action point when one was taken, and when sitting get up (movement 8, or 9 with the alternate get-up name), removing the movement mode if the get-up fails
+// Leaf: ?OnReplace@CAIStateGroup_UsesSeat@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009387F0, length 368 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PSeat +0x14), the inlined GetTC 0x2d (CTCUserActionPointBase,
@@ -13,35 +14,16 @@
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04) with PSeat +0x14,
 //          the seat flag +0x1c, sitting +0x1d, the action point index +0x20 and the alternate flag +0x30 (descriptive).
 class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const CCharString& other);      // 0x0099EC30
-    ~CCharString();                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 extern CCharString g_GetUpName;                 // 0x013BB6E0 (descriptive)
 extern CCharString g_GetUpNameAlternate;        // 0x013BB6E8 (descriptive)
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline void GetInterfaceV(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -61,7 +43,7 @@ public:
 __forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -125,7 +107,7 @@ void CAIStateGroup_UsesSeat::OnReplace()
 {
     if (GotSeat && IS_THING_ALIVE(PSeat)) {
         CTCUserActionPointBase* points;
-        PSeat.GetPItem()->GetInterfaceV(&points, 0x2d);
+        PSeat.GetPItem()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &points);
         ((CTCUserActionPointBase*)points)->SetActionPointAsFree(ActionPointIndex);
         GotSeat = false;
     }
@@ -136,7 +118,7 @@ void CAIStateGroup_UsesSeat::OnReplace()
         CBrainOutput output;
         if (!GetUpFromSitting(GetCreature(), movement, &anim, PBrain)) {
             CTCCreatureModeManager* modes;
-            GetCreature()->GetInterfaceV(&modes, 0x31);
+            GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
             modes->RemoveMode(movement);
         }
         Sitting = false;

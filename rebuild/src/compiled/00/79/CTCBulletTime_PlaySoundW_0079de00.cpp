@@ -1,4 +1,5 @@
 // CTCBulletTime::PlaySoundW(unsigned long sound, unsigned long flags) -- play a sound through the parent thing's sound component (interface 16), or return the invalid sound handle when it has none
+// Leaf: ?PlaySoundW@CTCBulletTime@@QAEKKK@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 //
 // Retail 0x0079DE00, 91 bytes (`ret 8`). Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
@@ -21,35 +22,12 @@ struct CTCSound                                     // the thing's interface-16 
     unsigned long PlaySound(unsigned long sound, long a, unsigned long flags, long b, long c);   // 0x0066BD00
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing
-{ public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-
-    template <class T> bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-        {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
 extern unsigned long g_InvalidSoundHandle;          // 0x0129D25C
-
-enum { TC_INTERFACE_SOUND = 16 };
 
 #pragma pack(push, 1)
 class CTCBulletTime
@@ -64,7 +42,7 @@ class CTCBulletTime
 unsigned long CTCBulletTime::PlaySoundW(unsigned long sound, unsigned long flags)
 {
     CTCSound* sounds;
-    if (ParentThing->GetInterface(TC_INTERFACE_SOUND, &sounds))
+    if (ParentThing->GetTC(TCI_SOUND_PLAYER, &sounds))
         return sounds->PlaySound(sound, 0, flags, 0, -1);
     return g_InvalidSoundHandle;
 }

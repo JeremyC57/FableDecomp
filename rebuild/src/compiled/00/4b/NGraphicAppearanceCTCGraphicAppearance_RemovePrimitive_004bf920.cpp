@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::RemovePrimitive(CPrimitive* primitive) -- find the list node holding this primitive, unlink it, destroy the primitive and free the node
+// Leaf: ?RemovePrimitive@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAVCPrimitive@2@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BF920, length 62 bytes. Callees: CPrimitive::~CPrimitive @ 0x004C4160 (manifest
 // "CObject::~CObject", propagated), free @ 0x00BFEA14 (the STLport node allocator).
@@ -18,9 +19,7 @@
 
 class CTCAnimationBase;
 
-class CThing { public:
-    void AddToRenderList();                             // 0x004C7AC0 (manifest CThing::AddToRenderList)
-};
+#include "engine/CThing.h"
 
 namespace NGraphicAppearance {
 
@@ -44,7 +43,6 @@ class CPrimitive { public:                                     // 16 bytes (Ego_
 };
 
 }
-
 
 struct CPrimitiveListNode {
     CPrimitiveListNode*            m_next;              // +0x00

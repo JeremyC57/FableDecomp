@@ -16,34 +16,13 @@ class CTCBase;
 class CCreatureActionBase;
 class CGameCameraManager;
 
-class CCharString { public:
-    void* PStringData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    void Kill(bool immediately);                // 0x004C9B80
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCCarrying { public:                            // interface 70
     CThing* RemoveThingInCarrySlot(long slot, bool drop);   // 0x006A16A0
 };
@@ -72,11 +51,11 @@ struct CActionEventRemoveObject {
 void NCreatureAction::CActionEventRemoveObject::Dispatch(CCreatureActionBase& action)
 {
     CTCCarrying* carrying;
-    if (GetThing()->GetInterface(&carrying, 70)) {
+    if (GetThing()->GetTC(TCI_CARRYING, &carrying)) {
         long slot = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(Hand);
         if (slot > 0) {
             CThing* thing = carrying->RemoveThingInCarrySlot(slot, false);
-            if (thing != 0 && !(thing->m_flags91 & 1))
+            if (thing != 0 && !thing->IsDead())
                 thing->Kill(true);
         }
     }

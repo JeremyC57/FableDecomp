@@ -9,48 +9,11 @@
 //   not dead (+0x91 bit 0) and holds interface 4 (UsingComponents +0x20 bit 4): PeekTC through the const LowerBound
 //   0x004365B0 and return CTCHeroStats::NumSex (+0x154, as landed 0x00897CF0).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
-    CInterfaceMap Components;                            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (T*)it->second;
-        return true;
-    }
-    template <class T> __forceinline bool PeekTC(const T** out) const
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        const CInterfaceMap* map = &Components;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (const T*)it->second;
-        return true;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
@@ -63,7 +26,6 @@ public:
 #include "engine/CPlayerManager.h"
 class CTCHeroStats {                                    // interface 4
 public:
-    enum { INTERFACE_TYPE = 4 };
     unsigned char _pad00[0x154];
     long NumSex;                                         // +0x154
     long GetNumberOfTimesHadSex() const { return NumSex; }
@@ -77,8 +39,8 @@ long CGameScriptInterface::GetNumberOfTimesHeroHasHadSex() const
     CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->IsDead())
     {
-        const CTCHeroStats* stats;
-        if (hero->PeekTC(&stats))
+        const const CTCHeroStats* stats;
+        if (hero->PeekTC(TCI_HERO_STATS, &stats))
             return stats->GetNumberOfTimesHadSex();
     }
     return 0;

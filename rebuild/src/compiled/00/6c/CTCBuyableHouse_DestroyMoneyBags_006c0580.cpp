@@ -14,19 +14,11 @@
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
 class CTCBase;
 class CBaseObject;
-class CCharStringData { public:
-    char* m_pData;                                      // +0x00
-    long  m_length;                                     // +0x04
-};
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    const char* GetPString() const { return PStringData == 0 ? "" : PStringData->m_pData; }   // "" = 0x0129AAF4
-    long Length() const { return PStringData == 0 ? 0 : PStringData->m_length; }
-    char operator[](long i) const { return GetPString()[i]; }
-    CCharString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099EC70
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                               // +0x04
@@ -36,7 +28,7 @@ class CThing;
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* Get() const { return (T*)GetPItem(); }
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -49,35 +41,7 @@ struct CTCThingList_0x21 {
     unsigned char _pad_0x00[0xc];
     SThingNode*   m_head;                               // +0x0c
 };
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad_0x54[0x24];
-    CCharString   ScriptName;                           // +0x78
-    unsigned char _pad_0x7c[0x91 - 0x7c];
-    unsigned char m_stateFlags;                         // +0x91 (bit 0 = dead)
-    void Kill(bool immediately);                        // 0x004C9B80
-    unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
-    {
-        long key = type;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
-        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-    }
-    template <class T> bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CTCGold { public:
     long GetGold();                                     // 0x007CBDC0
@@ -94,7 +58,7 @@ class CPlayer { public:
 #include "engine/CPlayerManager.h"
 inline bool IsThingAlive(const CIntelligentPointer<CThing>& p)
 {
-    return p.Get() && !(p.Get()->m_stateFlags & 1);
+    return p.Get() && !p.Get()->IsDead();
 }
 class CTCBase
 {
@@ -113,13 +77,13 @@ public:
 void CTCBuyableHouse::DestroyMoneyBags(bool giveToHero)
 {
     CTCThingList_0x21* list;
-    if (ParentThing->GetInterface(&list, 0x21)) {
+    if (ParentThing->GetTC(TCI_THING_OWNER, &list)) {
         for (SThingNode* node = list->m_head->next; node != list->m_head; node = node->next) {
             CTCGold* gold;
-            if (IsThingAlive(node->thing) && node->thing.Get()->GetInterface(&gold, 0xcc)) {
+            if (IsThingAlive(node->thing) && node->thing.Get()->GetTC(TCI_GOLD, &gold)) {
                 CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
-                if (hero && !(hero->m_stateFlags & 1) && giveToHero && hero->HasInterface(4))
-                    hero->GetTC<CTCHeroStats>(4)->AddMoney(gold->GetGold(), true);
+                if (hero && !hero->IsDead() && giveToHero && hero->HasTC(TCI_HERO_STATS))
+                    ((CTCHeroStats*)&hero->GetTC(TCI_HERO_STATS))->AddMoney(gold->GetGold(), true);
                 node->thing.Get()->Kill(true);
             }
         }

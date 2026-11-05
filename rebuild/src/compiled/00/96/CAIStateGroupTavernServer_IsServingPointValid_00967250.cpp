@@ -1,4 +1,5 @@
 // CAIStateGroup_TavernServer::IsServingPointValid() -- is the reserved seat of the tavern table still valid
+// Leaf: ?IsServingPointValid@CAIStateGroup_TavernServer_Methods@@QAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00967250, length 108 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound
@@ -15,28 +16,10 @@
 
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -67,7 +50,7 @@ struct CAIStateGroup_TavernServer_Methods : CAIStateGroup_TavernServer {
 bool CAIStateGroup_TavernServer_Methods::IsServingPointValid()
 {
     CTCTavernTable* table;
-    TablePtr().GetPItem()->GetInterface(&table, 0xB8);
+    TablePtr().GetPItem()->GetTC(TCI_TAVERN_TABLE, &table);
     if (!table->IsSeatValid(SeatIndex)) {
         SeatIndex = -1;
         return false;

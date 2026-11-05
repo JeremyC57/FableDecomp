@@ -1,4 +1,5 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test exercises a hand-written stand-in, not the candidate)
+// Leaf: ?PerformAction@CCreatureAction_StopSneaking@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // CCreatureAction_StopSneaking::PerformAction() -- the creature leaves creature mode 7 (sneaking) through its mode manager
 //   (interface 0x31) and clears the active flag (+0x0f) of its interface-0x36 component
@@ -12,26 +13,10 @@
 //   interface-0x36 component is modelled only by the byte it clears (CTCSneaking is a descriptive name).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template <class T> __forceinline void GetInterface(T** ppOut, long interfaceType)   // leaves *ppOut alone when absent
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -71,9 +56,9 @@ class CCreatureAction_StopSneaking : public CCreatureActionBase { public:
 void CCreatureAction_StopSneaking::PerformAction()
 {
     CTCCreatureModeManager* mode;
-    PCreature.GetPItem()->GetInterface(&mode, 0x31);
+    PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &mode);
     CTCSneaking* sneak;
-    PCreature.GetPItem()->GetInterface(&sneak, 0x36);
+    PCreature.GetPItem()->GetTC(TCI_STEALTH, &sneak);
     mode->RemoveMode(7);
     sneak->Active = 0;
 }

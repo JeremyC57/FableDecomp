@@ -29,28 +29,10 @@
 #undef CTCInventory
 #include "engine/CVectorMap.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char ThingType;                                // +0x10 (2 = creature)
-    unsigned char _pad11[0x20 - 0x11];
-    std::bitset<274> UsingComponents;                       // +0x20
-    CInterfaceMap Components;                               // +0x44
-    template<class T> __forceinline bool GetTC(T** out, long interfaceType)
-    {
-        if (UsingComponents.test(interfaceType)) {
-            long type = interfaceType;
-            CInterfaceMap* map = &Components;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CCreatureActionBase { public:                         // retail sizeof 0xa8
     virtual ~CCreatureActionBase();
     unsigned char _pad04[0xa8 - 0x04];
@@ -83,12 +65,12 @@ class CTCInventory : public CTCInventoryLayout { public:
 void CTCInventory::OnItemSelectedInHand(CThing& item, bool& handled)
 {
     CTCCarriedActionUseBase* use;
-    if (item.GetTC(&use, 0x0e)) {
+    if (item.GetTC(TCI_CARRIED_ON_ACTION_USE, &use)) {
         if (!static_cast<CThingCreatureBase*>(GetParentThing())->IsPerformingAnyAction() || use->IsUsableWhileThingPerformingAction())
             use->OnActionUseInHand(*GetParentThing());
     } else {
         CThingCreatureBase* creature = static_cast<CThingCreatureBase*>(GetParentThing());
-        if (creature->ThingType == 2)
+        if (creature->GetType() == 2)
             creature->SetCurrentAction(CCreatureAction_SheatheItemToInventory(*creature, 0, 100));
     }
 }

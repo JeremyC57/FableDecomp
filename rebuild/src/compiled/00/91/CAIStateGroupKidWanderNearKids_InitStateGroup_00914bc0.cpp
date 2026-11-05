@@ -6,30 +6,12 @@
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*, ...>::LowerBound 0x0040F020 (the inlined GetInterface: presence bit 19 of bitset
 //   word 6), CTCIdleScheduler::RegisterIdleStateGroup(CAIStateGroupBase*, EIdleStateGroup) 0x00801920 (Ego_r.pdb).
 // Header debt: engine/CAIStateGroup_KidWanderNearKids.h / CAIStateGroupBase.h / CThing are flat layouts; modelled locally.
-enum ETCInterfaceType { ETCInterfaceType_FIRST };
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    virtual ~CThing();
-    unsigned char _pad04[0x1C];
-    unsigned long PresentInterfaces[9];                    // +0x20 (the bitset of present interface types)
-    CInterfaceMap Interfaces;                              // +0x44
-    template <class T> __forceinline bool GetInterface(T** out, ETCInterfaceType type)
-    {
-        if (PresentInterfaces[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = type;
-            CInterfaceMap* map = &Interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingAICreature : public CThing { };
 class CWorld;
 class CAIStateGroupBase {
@@ -48,6 +30,6 @@ public:
 void CAIStateGroup_KidWanderNearKids::InitStateGroup(const CWorld& world, CThingAICreature& creature)
 {
     CTCIdleScheduler* scheduler;
-    if (creature.GetInterface(&scheduler, (ETCInterfaceType)0xD3))
+    if (creature.GetTC(TCI_IDLE_SCHEDULER, &scheduler))
         scheduler->RegisterIdleStateGroup(this, (EIdleStateGroup)11);
 }

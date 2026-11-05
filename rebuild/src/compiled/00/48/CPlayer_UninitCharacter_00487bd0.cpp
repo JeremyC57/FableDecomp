@@ -1,4 +1,5 @@
 // CPlayer::UninitCharacter() -- a non-main player drops all its modes, the main player re-adds mode 3; then the player character (if any) is killed
+// Leaf: ?UninitCharacter@CPlayer@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00487BD0, length 70 bytes.
 // Identity: Ego_r.pdb `?UninitCharacter@CPlayer@@QAEXXZ`.
 // Callees: CPlayerManager::GetMainPlayerNumber() const @ 0x00449700 (through the inlined
@@ -23,9 +24,7 @@ enum EPlayerMode { PLAYER_MODE_NULL = 0 };    // enumerator name is ours; mode 3
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CThing { public:
-    void Kill(bool silently);                      // 0x004C9B80
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

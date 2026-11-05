@@ -1,4 +1,5 @@
 // CTCEnemy::RemoveEnemyThing(const CThing* enemy) -- forget a thing as an explicit enemy; when it is the hero and this creature's opinion lists it as an enemy, also clear the creature's hero-enemy opinion
+// Leaf: ?RemoveEnemyThing@CTCEnemy@@QAEXPBVCThing@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076CC00, length 210 bytes (+ int3 padding). __fastcall, `ret 4`.
 //         Ego_r.pdb: `?RemoveEnemyThing@CTCEnemy@@QAEXPBVCThing@@@Z`.
@@ -49,7 +50,8 @@ template<class T> struct CRetailList {              // STLport list: the sentine
     void remove(const T& value);                    // 0x0076D7B0
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -58,22 +60,6 @@ public:
     void SetHeroOpinionEnemy(bool enemy);           // 0x006815D0
 public:
     bool IsHeroOpinionEnemy() const;   // 0x006827A0
-};
-
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];               // +0x20 bitset<274>
-    CInterfaceMap m_interfaces;                     // +0x44
-    bool HasTC(long type) const { return (UsingComponents[type >> 5] >> (type & 31)) & 1; }
-    __forceinline CTCBase* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        CInterfaceMap::value_type* end = map->end();
-        return (it == end || type < it->first ? end : it)->second;
-    }
 };
 
 class CTCEnemy {
@@ -90,11 +76,11 @@ public:
 void CTCEnemy::RemoveEnemyThing(const CThing* enemy)
 {
     if (enemy) {
-        bool isHero = enemy->HasTC(0x51);
+        bool isHero = enemy->HasTC(TCI_HERO_OPINION_DEED_LOG);
         if (isHero) {
-            bool hasOpinion = ParentThing->HasTC(0x4f);
+            bool hasOpinion = ParentThing->HasTC(TCI_CREATURE_OPINION_OF_HERO);
             if (hasOpinion) {
-                CTCCreatureOpinionOfHero* opinion = (CTCCreatureOpinionOfHero*)ParentThing->GetTC(0x4f);
+                CTCCreatureOpinionOfHero* opinion = (CTCCreatureOpinionOfHero*)((CTCCreatureOpinionOfHero*)&ParentThing->GetTC(TCI_CREATURE_OPINION_OF_HERO));
                 if (opinion->IsHeroOpinionEnemy()) {
                     if (FindThingInList(EnemyThings.begin(), EnemyThings.end(), const_cast<CThing* const&>(enemy)).m_pNode != EnemyThings._M_node)
                         opinion->SetHeroOpinionEnemy(false);

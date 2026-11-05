@@ -10,41 +10,22 @@
 // Shape: as the landed CTCCreatureFlyInCircles::CheckForHits (0x007DD990): `IsThingAlive(hero) && hero->GetInterface(&events, 0x42)`; the
 // empty filter is a temporary passed by reference (top byte of the first frame dword), the event out pointer reuses the key's slot.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 static inline bool IsThingAlive(const CThing* thing)
 {
-    return thing && !(thing->m_flags91 & 1);
+    return thing && !thing->IsDead();
 }
 namespace NEntityEvents {
 class CEventHitBy;
 class CEventFilter_None { public: CEventFilter_None() { } };
 }
 class CTCEntityEvents { public:
-    bool GetEvent(const NEntityEvents::CEventHitBy** out, const NEntityEvents::CEventFilter_None& filter);   // 0x005ED5A0
+    bool GetEvent(const NEntityEvents::CEventHitBy** out, const NEntityEvents::CEventFilter_None& filter) const;   // 0x005ED5A0
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
@@ -66,8 +47,8 @@ class CTCTavernGame : public CTCBase { public:
 bool CTCTavernGame::PlayerHasBeenHit()
 {
     CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
-    CTCEntityEvents* events;
-    if (IsThingAlive(hero) && hero->GetInterface(&events, 0x42)) {
+    const CTCEntityEvents* events;
+    if (IsThingAlive(hero) && hero->PeekTC(TCI_ENTITY_EVENTS, &events)) {
         const NEntityEvents::CEventHitBy* event;
         if (events->GetEvent(&event, NEntityEvents::CEventFilter_None()))
             return true;

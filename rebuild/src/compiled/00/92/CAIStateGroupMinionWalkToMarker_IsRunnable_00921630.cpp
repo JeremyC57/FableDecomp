@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionWalkToMarker::IsRunnable() -- runnable when the creature's walk-to-marker component (0xAA) is in
+// Leaf: ?IsRunnable@CAIStateGroup_MinionWalkToMarker@@UAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // mode 8 or 9 and a thing with the component's marker script name exists.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00921630, length 175 bytes (+ int3 padding).
@@ -15,46 +16,11 @@ class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        CInterfaceMap::value_type* sel;
-        if (it == map->end()) sel = map->end();
-        else if (it->first <= interfaceType) sel = it;
-        else sel = map->end();
-        return sel;
-    }
-};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -99,12 +65,6 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const CCharString& other);      // 0x0099EC30
-    ~CCharString();                             // 0x0099EAE0
-};
-
 struct CTCWalkToMarker {                        // the interface-0xAA component
     unsigned char _pad[0x38];
     long Mode;                                  // +0x38
@@ -128,7 +88,7 @@ struct CAIStateGroup_MinionWalkToMarker : CAIStateGroupBase {
 bool CAIStateGroup_MinionWalkToMarker::IsRunnable()
 {
     CTCWalkToMarker* walk;
-    PBrain->PCreature->GetInterface(&walk, 0xaa);
+    PBrain->PCreature->GetTC(TCI_AI_SCRATCHPAD, &walk);
     if (walk->Mode == 8 || walk->Mode == 9) {
         bool found;
         {

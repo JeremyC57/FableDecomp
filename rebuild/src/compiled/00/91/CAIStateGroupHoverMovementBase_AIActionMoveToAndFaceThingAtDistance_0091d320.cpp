@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverMovementBase::AIAction_MoveToAndFaceThingAtDistance(EAIActionRepeat, CIntelligentPointer<CThingCreatureBase>&, float, bool&, EMovementType) -- move to the point `distance` out from the thing along the thing-to-creature direction (flattened), facing the thing; once (with movement 8) or repeated while the move reports 4; 3 for a dead/missing thing or another repeat mode
+// Leaf: ?AIAction_MoveToAndFaceThingAtDistance@CAIStateGroup_HoverMovementBase@@QAEJJAAV?$CIntelligentPointer@VCThingCreatureBase@@@@MAA_NJ@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091D320, length 491 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, C3DVector::AccurateNormalise @ 0x00A14440,
@@ -14,11 +15,7 @@ typedef long EMovementType;
 typedef long EAIActionReturn;
 
 #include "engine/C3DVector.h"
-class CThing { public:
-    unsigned char _pad0[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: Dead
-    const C3DVector& GetPos() const;             // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public: };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -37,7 +34,7 @@ public:
 public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-inline bool IsThingAlive(const CIntelligentPointer<CThingCreatureBase>& thing) { return thing.GetPItem() != 0 && !(thing.GetPItem()->m_flags91 & 1); }
+inline bool IsThingAlive(const CIntelligentPointer<CThingCreatureBase>& thing) { return thing.GetPItem() != 0 && !thing.GetPItem()->IsDead(); }
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18

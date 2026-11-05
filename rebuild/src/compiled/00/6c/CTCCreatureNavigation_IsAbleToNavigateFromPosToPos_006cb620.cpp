@@ -1,4 +1,5 @@
 // CTCCreatureNavigation::IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity) -- ask the active navigator whether the route is possible, telling it whether the start is the creature's own position
+// Leaf: ?IsAbleToNavigateFromPosToPos@CTCCreatureNavigation@@QBE_NABVC3DVector@@0M@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Grade: RELOCATION_MATCH -- the squared distance is accumulated in statements (`r = dz*dz; r += dx*dx; r += dy*dy;`), which fixes the x87 square order to dz, dx, dy as retail; a single-expression sum reorders it
@@ -26,9 +27,7 @@ inline float XYDistanceSquared(const C3DVector& a, const C3DVector& b)
     return dx * dx + dy * dy;
 }
 extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
-class CThing { public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CWorldMap { public:
     bool IsPosInMap(const C3DVector& pos);      // 0x004FC600
 };

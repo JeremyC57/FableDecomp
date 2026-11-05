@@ -12,28 +12,11 @@
 //   Morality/AppearanceGoodstrength through inline getters (the getter return copies Morality through edx into a stack slot
 //   before `fild`).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char  _pad0[0x20];
-    unsigned long  m_presentBits[9];       // +0x20 std::bitset of interface types
-    CInterfaceMap  m_interfaces;           // +0x44
-    __forceinline bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline const T* GetTC(long interfaceType) const
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        const CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
-        return (const T*)sel->second;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const; // 0x00487DD0
@@ -71,8 +54,8 @@ class COpinionReactionManager { public:
 float COpinionReactionManager::GetHeroStatsInOpinionFormat(EOpinion opinion) const
 {
     const CThing* hero = World->PeekMyPlayer()->PeekPControlledCreature();
-    if (hero && hero->HasTC(4)) {
-        const CTCHeroStats* stats = hero->GetTC<CTCHeroStats>(4);
+    if (hero && hero->HasTC(TCI_HERO_STATS)) {
+        const CTCHeroStats* stats = ((const CTCHeroStats*)&hero->GetTC(TCI_HERO_STATS));
         switch (opinion) {
         case OPINION_MORALITY: {
             float high = 1.0f;

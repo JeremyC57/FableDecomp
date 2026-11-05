@@ -20,32 +20,12 @@ extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                         // +0x20
-    CInterfaceMap m_interfaces;                             // +0x44
-    void AddToRenderList();                                 // 0x004C7AC0
-    unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 template <class T> struct CAllocator { CAllocator() { } };  // STLport allocator<T> (empty)
 template <class T> struct CAllocProxy : CAllocator<T> {     // STLport _STLP_alloc_proxy<T*, T, allocator<T> >
@@ -141,13 +121,13 @@ void CTCGraphicAppearance::ClearMeshEffect(void* owner)
     CMeshEffectMap::iterator it = MeshEffects.find(owner);
     if (it != MeshEffects.end()) {
         CTCCarrying* carrying;
-        if (it->second.EffectsCarriedItems && ParentThing->GetInterface(&carrying, 0x46)) {
+        if (it->second.EffectsCarriedItems && ParentThing->GetTC(TCI_CARRYING, &carrying)) {
             CRetailVector<CThing*> carried;
             carrying->GetAllCarriedThings(carried);
             for (unsigned int i = 0; i < carried.size(); ++i) {
                 CThing* thing = carried[i];
                 CTCGraphicAppearance* appearance;
-                if ((it->second.EffectsWeapons || !thing->HasTC(0x48)) && thing->GetInterface(&appearance, 0x5b))
+                if ((it->second.EffectsWeapons || !thing->HasTC(TCI_WEAPON)) && thing->GetTC(TCI_GRAPHIC_APPEARANCE_NEW, &appearance))
                     appearance->ClearMeshEffect(owner);
             }
         }

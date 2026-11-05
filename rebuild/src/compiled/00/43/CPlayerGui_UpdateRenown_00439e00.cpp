@@ -1,4 +1,5 @@
 // Naming wave 35c (queue land0411j 0x00437AE0): calls CPlayerGui::UpdateStat under its Ego_r.pdb spelling ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z (private const, the stat by reference to NPlayerGui::CStatBase). Also calls 0x00487B70 as CPlayer::GetPPlayerCharacterThing() const (Ego_r.pdb ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ; was GetPlayerCharacter).
+// Leaf: ?UpdateRenown@CPlayerGui@@QAEXXZ
 // CPlayerGui::UpdateRenown() -- feed the pending renown of the stat-updates display into the renown stat bar: once the bar is initialised, animate it (step count from the bar's value change) and advance its update counter; otherwise snap the bar to the pending value; finally clear the pending amount when the bar reports mode 1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00439E00, length 278 bytes, plain `ret`.
 // Callees: CPlayerManager::GetMainPlayer 0x00449970 (PlayerManager +0x08), CPlayer::GetPPlayerCharacterThing() const 0x00487B70,
@@ -21,10 +22,7 @@ extern "C" long __cdecl _ftol2(double);
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char StateFlags;                          // +0x91 (bit 0: dead)
-};
+#include "engine/CThing.h"
 class CPlayer { public:
     CThing* GetPPlayerCharacterThing() const;                    // 0x00487B70
 };
@@ -72,7 +70,7 @@ private:
 void CPlayerGui::UpdateRenown()
 {
     CThing* character = PlayerManager->GetMainPlayer().GetPPlayerCharacterThing();
-    if (character == 0 || (character->StateFlags & 1))
+    if (character == 0 || character->IsDead())
         return;
     long pending = PDrawStatUpdates->PendingRenown;
     NPlayerGui::CStatBase* const& renown = PRenown;

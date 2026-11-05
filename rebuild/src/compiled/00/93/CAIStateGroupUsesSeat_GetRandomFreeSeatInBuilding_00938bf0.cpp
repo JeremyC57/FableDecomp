@@ -1,4 +1,5 @@
 // CAIStateGroup_UsesSeat::GetRandomFreeSeatInBuilding(CThing* building) -- collect the free seats of the
+// Leaf: ?GetRandomFreeSeatInBuilding@CAIStateGroup_UsesSeat@@QAEPAVCThing@@PAV2@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH -- landing retry: out-parameter GetInterface in the if (component lands in eax)
 // building's interface-0x21 component into a vector and return one picked with the world's random seed (or null).
@@ -17,46 +18,10 @@ class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        CInterfaceMap::value_type* sel;
-        if (it == map->end()) sel = map->end();
-        else if (it->first <= interfaceType) sel = it;
-        else sel = map->end();
-        return sel;
-    }
-};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -96,7 +61,6 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
-
 
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 long __fastcall GFROR13(unsigned long);   // 0x00497890
@@ -152,7 +116,7 @@ struct CAIStateGroup_UsesSeat : CAIStateGroupBaseR {
 CThing* CAIStateGroup_UsesSeat::GetRandomFreeSeatInBuilding(CThing* building)
 {
     CTCBuildingSeats* comp;
-    if (building->GetInterface(&comp, 0x21)) {
+    if (building->GetTC(TCI_THING_OWNER, &comp)) {
         CSeatListNode* head = comp->m_seats.head;
         CThingVector seats;
         ForEachSeat(CSeatListIterator(head->next), CSeatListIterator(head), CAddFreeSeat(&seats));

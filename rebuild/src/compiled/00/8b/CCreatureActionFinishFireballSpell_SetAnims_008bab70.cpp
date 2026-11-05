@@ -1,4 +1,5 @@
 // CCreatureAction_FinishFireballSpell::SetAnims() -- if the caster has a fireball-spell component (interface 0x9d), use its release animation name as the action's animation
+// Leaf: ?SetAnims@CCreatureAction_FinishFireballSpell@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BAB70, length 98 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020,
@@ -11,33 +12,12 @@
 // Layout: CCombatActionBase (retail 0x114 bytes) with PCreature at +8; FinishFireballSpell adds nothing used here.
 class CTCBase;
 
-class CCharString { public:
-    void* m_pData;
-    ~CCharString();                         // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -76,6 +56,6 @@ class CCreatureAction_FinishFireballSpell : public CCombatActionBase { public:
 void CCreatureAction_FinishFireballSpell::SetAnims()
 {
     CTCFireballSpell* fireball;
-    if (PCreature.GetPItem()->GetInterface(&fireball, 0x9d))
+    if (PCreature.GetPItem()->GetTC(TCI_FIREBALL_SPELL, &fireball))
         SetCombatAnimation(fireball->GetReleaseAnimName());
 }

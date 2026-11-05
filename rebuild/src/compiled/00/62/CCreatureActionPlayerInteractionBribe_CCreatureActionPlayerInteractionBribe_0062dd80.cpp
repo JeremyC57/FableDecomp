@@ -14,18 +14,13 @@
 //   0x00A01B90; string literal 0x0125977C ("STANDARD_BRIBE"); CIntelligentPointer<CThing> vtable 0x01238C6C.
 // Layout: retail CCreatureActionBase is 0xa8 bytes (Ego_r 0xb4: its STLport containers are 4 bytes shorter each), so
 //   PTarget (Ego_r +0xb4) sits at +0xa8. Local model: the generated engine headers carry the flattened Ego_r layout.
+#define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class CThing : public CBaseObject { };
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CThingCreatureBase;
 class CAnimationEntry;
-
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);       // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
 
 class CSoundPair {                                          // two sound ids, zeroed by the inline constructor
 public:
@@ -46,7 +41,6 @@ public:
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-
 
 class CCreatureAction_PlayerInteractionBribe : public CCreatureActionBase {  // vtable 0x01259664
 public:

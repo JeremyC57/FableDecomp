@@ -18,9 +18,7 @@ class CWorldMap { public:
     virtual long GetNavMapIndex(const C3DVector& position); // slot 16 (+0x40)
 };
 
-class CThing { public:
-    const C3DVector& GetPos() const;                   // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CTCBase
 {

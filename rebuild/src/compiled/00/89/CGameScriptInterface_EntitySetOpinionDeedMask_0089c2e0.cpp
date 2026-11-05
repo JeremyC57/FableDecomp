@@ -9,30 +9,12 @@
 // Body: `CThing* t = thing.GetPThing(); if (t && t->GetInterface(&opinion, 0x4F)) opinion->SetOpinionDeedMask(mask);` (the inlined GetInterface: the component lands in eax, then ecx) -- the
 //   presence test (bit 15 of bitset word 2) (`test ch,ch ; jns`), the lookup key homed in the dead thing-argument slot.
 // Header debt: engine/CScriptThing.h, CThing and engine/CTCCreatureOpinionOfHero.h are flat layouts; modelled locally.
-enum ETCInterfaceType { ETCInterfaceType_FIRST };
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    virtual ~CThing();
-    unsigned char _pad04[0x1C];
-    unsigned long PresentInterfaces[9];                    // +0x20 (the bitset of present interface types)
-    CInterfaceMap Interfaces;                              // +0x44
-    template <class T> __forceinline bool GetInterface(T** out, ETCInterfaceType type)
-    {
-        if (PresentInterfaces[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = type;
-            CInterfaceMap* map = &Interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
@@ -50,6 +32,6 @@ void CGameScriptInterface::EntitySetOpinionDeedMask(const CScriptThing& thing, c
 {
     CThing* t = thing.GetPThing();
     CTCCreatureOpinionOfHero* opinion;
-    if (t && t->GetInterface(&opinion, (ETCInterfaceType)0x4F))
+    if (t && t->GetTC(TCI_CREATURE_OPINION_OF_HERO, &opinion))
         opinion->SetOpinionDeedMask(mask);
 }

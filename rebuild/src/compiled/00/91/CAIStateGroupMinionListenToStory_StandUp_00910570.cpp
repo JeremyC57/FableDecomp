@@ -19,34 +19,15 @@
 // Shape: the mode-manager pointer is set only under the presence bit (a miss reads the key's slot); the brain output is
 //   constructed before the action; the action uses the inline 2-argument constructor (0 / false, then
 //   SetCombatAnimation); the clone goes through an inline CBrainOutput helper taking `const CCreatureActionBase&`.
-class CCharString {
-public:
-    void* PStringData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 extern CCharString g_CCharString_013bb670;                  // 0x013BB670 "ST_STAND_UP_FROM_FLOOR"
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing {
-public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 UsingComponents bitset
-    CInterfaceMap m_interfaces;                             // +0x44 Components
-    template<class T> __forceinline void GetInterfaceV(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-    }
-};
 
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing {
@@ -147,7 +128,7 @@ public:
 void CAIStateGroup_MinionListenToStory::StandUp()
 {
     CTCCreatureModeManager* modes;
-    GetCreature()->GetInterfaceV(&modes, 0x31);
+    GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
     if (modes->GetCurrentMode()->GetType() == 10) {
         CBrainOutput output;
         CCreatureAction_GetUpFromSitting action(*GetCreature(), g_CCharString_013bb670);

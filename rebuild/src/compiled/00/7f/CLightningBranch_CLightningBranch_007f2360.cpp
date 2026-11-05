@@ -1,4 +1,5 @@
 // CLightningBranch::~CLightningBranch() -- kill the branch's effect thing (+0x08) and strip component 0x10b from its target thing (+0x00) unless either is already flagged dead, then destroy both intelligent pointers
+// Leaf: ??1CLightningBranch@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F2360, length 112 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three calls per pointer), CThing::Kill(bool) @ 0x004C9B80,
 //          CThing::RemoveTC(long) @ 0x004C9840 (manifest "CBaseObject::OnPropertyChanged" is propagated; see GOTCHAS
@@ -6,13 +7,10 @@
 //          last one a tail jump).
 // Shape: a non-polymorphic class of two 8-byte intelligent pointers; the dead flag is bit 0 of the thing's byte
 // +0x91; every use calls GetPItem again (no local).
-enum ETCInterfaceType { };
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_stateFlags;                    // +0x91 bit 0: dead / being removed
-    void Kill(bool immediate);                     // 0x004C9B80
-    void RemoveTC(ETCInterfaceType type);                      // 0x004C9840
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -37,8 +35,8 @@ struct CLightningBranch {
 
 CLightningBranch::~CLightningBranch()
 {
-    if (m_effect.GetPItem() && !(m_effect.GetPItem()->m_stateFlags & 1))
+    if (m_effect.GetPItem() && !m_effect.GetPItem()->IsDead())
         m_effect.GetPItem()->Kill(true);
-    if (m_target.GetPItem() && !(m_target.GetPItem()->m_stateFlags & 1))
+    if (m_target.GetPItem() && !m_target.GetPItem()->IsDead())
         m_target.GetPItem()->RemoveTC((ETCInterfaceType)(0x10b));
 }

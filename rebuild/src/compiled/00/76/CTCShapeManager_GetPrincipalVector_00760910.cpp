@@ -14,9 +14,7 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(C3DVector o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
-class CThing { public:
-    const C3DVector& GetPos() const;               // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CTCShapeManager;
 namespace NShape {
 class CShape { public:

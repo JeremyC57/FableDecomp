@@ -1,4 +1,5 @@
 // CThingCreatureBase::AutoPlaceNear(const C3DVector& position, float radius) -- find a wander position near the point and, if one exists, move the creature there (navigation reset before and after the physics reset)
+// Leaf: ?AutoPlaceNear@CThingCreatureBase@@QAE_NABVC3DVector@@M@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00665DF0, 149 bytes (`ret 8`).
@@ -12,7 +13,8 @@
 //   the implicit copy goes through `mov ecx,eax`), the `false` pushed first.
 #include "engine/C3DVector.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCCreatureNavigation { public:
@@ -28,28 +30,6 @@ class CTCPhysicsBase { public:
     virtual void v30();
     virtual void ResetPosition(const C3DVector& position);     // slot 31 (+0x7c)
 };
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0xc];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-    bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-};
 
 class CThingCreatureBase : public CThing { public:
     bool AutoPlaceNear(const C3DVector& position, float radius);
@@ -58,8 +38,8 @@ class CThingCreatureBase : public CThing { public:
 bool CThingCreatureBase::AutoPlaceNear(const C3DVector& position, float radius)
 {
     CTCCreatureNavigation* navigation = 0;
-    if (HasTC(7))
-        navigation = GetTC<CTCCreatureNavigation>(7);
+    if (HasTC(TCI_NAVIGATION))
+        navigation = ((CTCCreatureNavigation*)&GetTC(TCI_NAVIGATION));
     C3DVector placed = position;
     if (navigation->GetNearbyWanderPosition(&position, radius, &placed, false)) {
         navigation->ResetNavigator();

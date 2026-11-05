@@ -1,4 +1,5 @@
 // CCreatureAction_JackScream::Initialise() -- base Initialise, drop any running mode 0x31 from the creature's mode manager, create a fresh NCreatureMode::CModeJackOfBladesScream for the creature as this action's counted PMode, hand it the sword object carried in the primary slot and push it onto the mode manager
+// Leaf: ?Initialise@CCreatureAction_JackScream@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C0D10, length 393 bytes (+ int3 padding).
 // Callees: CCombatActionBase::Initialise @ 0x00857520, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020
@@ -13,25 +14,11 @@
 // AddMode argument is the converting copy built in the argument area. The mode manager is spilled to the lookup key slot.
 void __fastcall Destroy_008c2d60(void* object);   // 0x008C2D60
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -136,12 +123,12 @@ void CCreatureAction_JackScream::Initialise()
 {
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
-    PCreature.GetPItem()->GetInterface(&modeManager, 0x31);
+    PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
     if (modeManager->IsModeActive(0x31))
         modeManager->RemoveMode(0x31);
     PMode = CCountedPointer<CModeJackOfBladesScream>(new CModeJackOfBladesScream(PCreature.GetPItem()));
     CTCCarrying* carrying;
-    PCreature.GetPItem()->GetInterface(&carrying, 0x46);
+    PCreature.GetPItem()->GetTC(TCI_CARRYING, &carrying);
     PMode.m_pObject->SetSwordObject(carrying->GetThingInPrimarySlot());
     modeManager->AddMode(CCountedPointer<CModeBase>(PMode));
 }

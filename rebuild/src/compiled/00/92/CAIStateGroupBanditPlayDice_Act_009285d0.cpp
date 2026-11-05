@@ -1,4 +1,5 @@
 // CAIStateGroup_BanditPlayDice::Act() -- play the watching-into animation, then until a random 375..674 frames pass either take a turn at the dice game (pick, throw, maybe win/lose, release the turn) or keep playing, then play the watching-out-of animation
+// Leaf: ?Act@CAIStateGroup_BanditPlayDice@@QAE?AW4EAIActionReturn@@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009285D0, 992 bytes (aligned frame, no EH frame).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCreatureAction_PlayAnimation ctor 0x008424F0,
 //   AIAction_PerformActionAndWait 0x0097DB70, ~CCreatureActionBase 0x00693EF0, GetPWorldSeed 0x008FCFD0, GFROR13 0x00497890,
@@ -10,15 +11,12 @@
 // Shape: the dice-game pointer is named after the creature (CThing* player; CTCDiceGame* game = DiceGame) for both
 //   CurrentPlayer assignments, so it is loaded into ebp before the CIntelligentPointer<CThing> temporary is built; without
 //   the named pointers VC reloads DiceGame after the temporary and swaps the zero/result registers.
-class CThing { public: };
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 long __fastcall GFROR13(unsigned long value);    // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);    // 0x004978A0
 extern "C" int __cdecl rand();                           // 0x00BFEB16
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+
 class CSoundPair { public:
     long m_first;
     long m_second;

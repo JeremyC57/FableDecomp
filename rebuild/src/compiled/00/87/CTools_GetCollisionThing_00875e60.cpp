@@ -37,10 +37,7 @@ class CTCPhysicsBase { public:
     virtual void* GetPhysicsMesh() const;          // slot 93 (+0x174)
     CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                     // +0x60
-};
+#include "engine/CThing.h"
 struct CThingPtrVector {                           // STLport vector<CThing*>
     CThing** _M_start;
     CThing** _M_finish;
@@ -55,7 +52,7 @@ CThing* CTools::GetCollisionThing(const CThingPtrVector& things, const C3DVector
 {
     for (CThing* const* it = things.begin(); it != things.end(); ++it)
     {
-        CTCPhysicsBase* physics = (*it)->PhysicsTC;
+        CTCPhysicsBase* physics = (*it)->GetPhysicsTC();
         if (physics->GetPhysicsMesh())
         {
             CPhysicsMeshObject mesh = physics->GetPhysicsMeshObject();

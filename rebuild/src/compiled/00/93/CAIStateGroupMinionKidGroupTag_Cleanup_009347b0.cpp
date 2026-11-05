@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionKidGroupTag::Cleanup() -- leave the tag game, drop the stand mode if this state group added it,
+// Leaf: ?Cleanup@CAIStateGroup_MinionKidGroupTag@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -18,46 +19,10 @@ class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        CInterfaceMap::value_type* sel;
-        if (it == map->end()) sel = map->end();
-        else if (it->first <= interfaceType) sel = it;
-        else sel = map->end();
-        return sel;
-    }
-};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -157,7 +122,7 @@ void CAIStateGroup_MinionKidGroupTag::Cleanup()
     PTCGroupTag->RemoveMember(PBrain->PCreature);
     if (StandModeAddedToCreature) {
         CTCCreatureModeManager* modes;
-        PBrain->PCreature->GetInterface(&modes, 0x31);
+        PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
         modes->RemoveMode(1);
     }
     FrameLastPlayedIn = CWorld::GetFrame() + RandomFramesWithin(2);

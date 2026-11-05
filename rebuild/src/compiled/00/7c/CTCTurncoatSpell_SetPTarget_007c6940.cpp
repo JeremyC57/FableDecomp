@@ -20,33 +20,11 @@
 class CThing;
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad_0x54[0x3d];
-    unsigned char m_flags;                      // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-    }
-    __forceinline CTCBase* GetTC(long interfaceType) const
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-    }
-};
+
 class CThingCreatureBase;
 
 class CBaseObject;
@@ -109,11 +87,11 @@ void CTCTurncoatSpell::SetPTarget(CThingCreatureBase* target)
     PTarget = CIntelligentPointer<CThingCreatureBase>(target);
     if (IS_THING_ALIVE(PTarget)) {
         CThing* targetThing = ((CThing*)PTarget.GetPItem());
-        if (targetThing->HasTC(0x9f)) {
-            CTCTurncoat* turncoat = (CTCTurncoat*)targetThing->GetTC(0x9f);
+        if (targetThing->HasTC(TCI_TURNCOAT)) {
+            CTCTurncoat* turncoat = (CTCTurncoat*)((CTCTurncoat*)&targetThing->GetTC(TCI_TURNCOAT));
             const CThing* caster = ParentThing;
-            if (caster->HasTC(0x6f)) {
-                const CTCInventoryAbilities* abilities = (const CTCInventoryAbilities*)caster->GetTC(0x6f);
+            if (caster->HasTC(TCI_HERO_ABILITIES)) {
+                const CTCInventoryAbilities* abilities = (const CTCInventoryAbilities*)((const CTCInventoryAbilities*)&caster->GetTC(TCI_HERO_ABILITIES));
                 CSpecialAbilitiesTurncoatSpellDef* def = PDef;
                 turncoat->SetTurncoatTimeLast(def->TurncoatTime[abilities->GetAbilityLevel(5)]);
             }

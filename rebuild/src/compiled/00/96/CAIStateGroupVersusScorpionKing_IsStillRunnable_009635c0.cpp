@@ -20,34 +20,10 @@ class CTCBase;
 // {type, component} vector map at +0x44 searched with LowerBound @ 0x0040F020 -- the landed out-parameter
 // GetInterface template (0x007504E0 / 0x00930DC0 shape): the component lands in eax, and a miss leaves the
 // caller's out pointer unwritten (the frame slot that also holds the key).
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool HasTC(long interfaceType) const
-    {
-        return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -70,7 +46,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -102,6 +78,6 @@ bool CAIStateGroup_VersusScorpionKing::IsStillRunnable()
     if (!CAIStateGroup_VersusEnemyBase_Methods::IsStillRunnable())
         return false;
     CTCCreatureModeManager* modes;
-    Target().GetPItem()->GetInterface(&modes, 0x31);
+    Target().GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
     return modes->IsModeActive(0x38) ? false : true;
 }

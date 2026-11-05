@@ -10,9 +10,7 @@
 //        the conversion temporary in the argument's own slot (`mov eax,[esp+4] ; ... ; mov [esp+8],eax`) and
 //        passes its address.
 
-class CThing { public:
-    void* __vftable;
-};
+#include "engine/CThing.h"
 
 class CThingCreatureBase : public CThing { public:
 };

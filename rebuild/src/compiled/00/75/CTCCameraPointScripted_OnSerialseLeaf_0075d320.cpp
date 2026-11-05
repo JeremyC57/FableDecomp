@@ -20,12 +20,7 @@ class CTCBase : public CTCBaseLayout
 protected:
     CThingManager& GetThingManager();   // 0x00686AE0
 };
-class CThing { public:
-    unsigned char _pad00[0x8e];
-    short m_level;                              // +0x8e
-public:
-    bool IsLevelLess() const;   // 0x004C7930
-};
+#include "engine/CThing.h"
 class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
 };
@@ -75,12 +70,12 @@ void CTCCameraPointScripted::OnSerialseLeaf(CPersistContext& context)
     context.Transfer("TransitionTime", TransitionTime, 0.0f);
     if (context.IsSaving()) {
         if (ThingUID != 0) {
-            unsigned __int64 uid = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, ThingUID);
+            unsigned __int64 uid = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->GetCurrentMapNumber(), ThingUID);
             context.Transfer<unsigned __int64>("ThingUID", uid, 0);
         }
     } else {
         context.Transfer<unsigned __int64>("ThingUID", ThingUID, 0);
         if (ThingUID != 0)
-            ThingUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, ThingUID);
+            ThingUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->GetCurrentMapNumber(), ThingUID);
     }
 }

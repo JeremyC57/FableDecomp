@@ -1,0 +1,41 @@
+Plan phase 6, wave "w1" (2026-11-05): the 0x0041E5F2 GetInstance respell. Coordinator decision (2026-11-05): 0x0041E5F2 is
+?GetInstance@CManager@NUISystem@@SIPAV12@XZ (Ego_r.pdb 0x00438C20 and FableWin.pdb 0x01AE5507 both list it; it sits among CManager's
+members 0x0041CF47 / 0x0041D03C / 0x0041DA2D, its body returns the singleton global 0x013B8710 after a `new` of 0xD0 = sizeof
+NUISystem::CManager; CFrontEndManager::GetInstance is the different 0x00595582, global 0x013B8B5C, `new` 0xE0). 557 landed binders
+already spelled it so; this wave respells the 27 rows (64 binding sites) that did not.
+
+ROWS: 27 PASS under vland --recheck-landed (RELOCATION_MATCH 27), behaviour PASS 27; gate.py 27 of 27; parity equal to the landed text
+  (grades_before.tsv) on every row; conscheck OK on every row (one target, one spelling: 0x0041E5F2 keeps one spelling after the wave).
+HOW (scripts: tools/w1_respell.py, rule per row in logs/rows.tsv):
+  - rule A (14 rows): `class CFrontEndManager : public CManager { static CFrontEndManager* __fastcall GetInstance(); }` in namespace
+    NUISystem removed; `static CManager* __fastcall GetInstance();` moved into the row's local `class CManager` (whose other members
+    already carried the CManager@NUISystem spellings); every CFrontEndManager token respelled CManager.
+  - rule B (7 rows): a standalone CFrontEndManager stand-in with virtual slots renamed `class CManager`, wrapped in namespace NUISystem
+    where it sat at global scope (0x0056BE00, 0x0059F304, 0x005FCE60, 0x00621720, 0x00621C80); the virtual slot names (Slot6 /
+    Slot29 / Slot37 = Close / ClearMenus / ResetInput in 0x0056BE00) are unchanged (no relocation; step 6).
+  - special (6 rows): the free-function / placeholder stand-ins (?GetUIManager@@YIPAUManagerMethods@@XZ 0x005407B0,
+    ?GetUIManager@@YAPAUNativeUIManager@@XZ 0x0055A3E0, ?GetUI@NScreen00xxxxxx 0x005FC2D0 / 0x005FC8A0, Manager@PhotoInput
+    0x00691AE0, Manager@RetailUI 0x005518E0 / 0x00551BC0) now declare `namespace NUISystem { class CManager { static CManager*
+    __fastcall GetInstance(); }; }` (deriving from the generated ::CManager layout where the row read its members through it) and
+    reach their placeholder-class view through a pointer cast at the call site (no bytes: unrelated pointer types). The placeholder
+    namespaces themselves (NScreen<addr>, PhotoInput, RetailUI) are step-6 work.
+  - 0x0041E641 (CManager::~CManager itself): GetInstance and the two bank setters are CManager's own; the setter at 0x0041D198 is
+    ?SetMeshBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCMeshDataBank@@@@@Z (Ego_r.pdb / FableWin.pdb; counted pointer at +0x18 =
+    PMeshBank; 2 landed binders already spell it so), not the row's SetFontBank: respelled, local CFontBank -> CMeshDataBank,
+    m_fontBank / m_graphicsBank -> PMeshBank / PGraphicsBank. LABELS.tsv: the catalog label of 0x0041D198 (SetGraphicsBank, a
+    propagation from 0x0042A9B7) -> NUISystem::CManager::SetMeshBank.
+  - 0x00597006 (CFrontEndManager::RefreshAvailableProfilesForDelete, a real CFrontEndManager member): only GetInstance moves to the
+    local CManager; the method then calls CreateComponent (0x0041DB1D, a CManager member) on CManager::GetInstance().
+RESPELLS (CALLERS.tsv 27 rows; BINDINGS.tsv): 0x0041E5F2 from 8 stand-in spellings (RETIRED: all 8, no binder left) to the decided
+  one; 0x0041D198 SetFontBank@CFrontEndManager -> SetMeshBank@CManager (RETIRED); 0x0042A9B7 SetGraphicsBank@CFrontEndManager ->
+  SetGraphicsBank@CManager (RETIRED). No own-symbol change.
+QUEUE: NAME_FIXES_QUEUE lines 62 / 568 / 579 / 701 (ask for the CManager spelling) close: no landed binder of any other spelling is
+  left. Line 649 (asks for ?GetInstance@CFrontEndManager@NUISystem@@SIPAV12@XZ at 0x0041E5F2) closes as WRONG: that symbol is
+  0x00595582 (catalog NUISystem::CFrontEndManager::GetInstance; different global and size).
+INTRODUCED WARNINGS: none (PASS.tsv; the RELOC_NAME line of 0x0041E641 names the catalog label this wave's LABELS.tsv corrects).
+TESTS: unchanged. Every test of the 27 rows is a standalone program with its own stubs (vland links the test alone first), so the
+  callee respell needs no test change; 0x0056BE00's test already called NUISystem::CManager::GetInstance().
+NOT DONE (for NEXT.md): 0x0054B4B0 binds 0x0041D21B as ?CreateComponent@CManager@NUISystem@@QAEPAUCArrowComponent@2@J@Z (the PDB
+  spelling, 13 binders, returns CComponent*); the placeholder namespaces NScreen<addr> / PhotoInput / RetailUI; the Slot<n> virtual
+  names; the gate's NAME_CLASH notes on these rows (pre-existing: ??0CAction@NUISystem@@QAE@XZ bound to 0x0042BE50 and 0x0042BED4,
+  ??1CCharString@@QAE@XZ bound to 0x0099EAE0 and three other targets, _memmove / ??3@YAXPAX@Z to CRT thunks).

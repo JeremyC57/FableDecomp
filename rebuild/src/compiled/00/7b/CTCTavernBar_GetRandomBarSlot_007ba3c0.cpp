@@ -18,15 +18,9 @@
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
-class CCharString { public:
-    void* m_data;
-    CCharString();                                      // 0x0099E4B0
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator+=(const char* text);          // 0x0099F100
-    const CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 CCharString __fastcall GFIntToCharString(long value);   // 0x0099F830
 long __fastcall GFROR13(unsigned long);  // 0x00497890
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
@@ -37,28 +31,10 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
         return 0;
     return seed % range;
 }
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCNamedUserActionPoints { public:
     bool GetFreeNamedActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* rh, CCharString name, long* index,
                                  long flags, bool reserve);   // 0x007FF190
@@ -84,7 +60,7 @@ class CTCTavernBar : public CTCBase { public:
 bool CTCTavernBar::GetRandomBarSlot(CThing& creature, C3DVector& position, CRightHandedSet& orientation, long& actionPoint, long& slot)
 {
     CTCNamedUserActionPoints* points;
-    ParentThing->GetInterface(&points, 0x2e);
+    ParentThing->GetTC(TCI_NAMED_USER_ACTION_POINTS, &points);
     unsigned long count = Jugs_finish - Jugs_start;
     slot = WorldRandomRange(*GetPWorldSeed(), count);
     CCharString unused;

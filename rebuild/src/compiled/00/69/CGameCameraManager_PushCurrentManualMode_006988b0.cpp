@@ -1,4 +1,5 @@
 // CGameCameraManager::PushCurrentManualMode() -- switch to manual camera use (UsingCameraManually set, BlockModeChange cleared); while an observed thing is alive, no script module is pending and the current script module (if any) allows it, prepare the camera-list mode under CameraListIndex as the pending mode and rewind SpecialCameraListIndex
+// Leaf: ?PushCurrentManualMode@CGameCameraManager@@QAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006988B0, length 147 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice, on PObservedThing), the current script module's virtual slot 2
@@ -10,10 +11,7 @@
 // Shape: the IS_THING_ALIVE idiom on PObservedThing (address kept in edi); `CDefPointer def = *CameraListIndex;` is a named local
 // (add-ref `inc [edi+4]`) copied again into the by-value argument (`push ecx ; mov eax,esp ; mov [eax],edi`); its destructor
 // releases with `dec [edi+4] ; jne` and tail-jumps the virtual Destroy.
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_statusFlags;            // +0x91 (bit 0: dead)
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -87,7 +85,7 @@ void CGameCameraManager::PushCurrentManualMode()
 {
     BlockModeChange = false;
     UsingCameraManually = true;
-    if (PObservedThing.GetPItem() && !(PObservedThing.GetPItem()->m_statusFlags & 1)) {
+    if (PObservedThing.GetPItem() && !PObservedThing.GetPItem()->IsDead()) {
         if (!PPendingScriptModule.Data) {
             if (!PCurrentScriptModule.Data || PCurrentScriptModule.Data->AllowsManualControl()) {
                 CDefPointer_CCameraModeDef def = *CameraListIndex;

@@ -1,4 +1,5 @@
 // CCreatureAction_DragonLand::FinishAction() -- flag the dragon's interface-0x3a component (bit 0 of +0x50), release this action's animation suspension on a creature, then the base FinishAction
+// Leaf: ?FinishAction@CCreatureAction_DragonLand@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F3C00, length 111 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CVectorMap::LowerBound @ 0x0040F020,
@@ -12,32 +13,13 @@
 //   0x3a component is not identified (only its flag byte at +0x50 is modelled).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
-};
-class CThing { public:
-    unsigned char _pad0[0x10];
-    unsigned char m_type;                   // +0x10: 1 = creature
-    unsigned char _pad11[0x0f];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
 };
 
 class CBaseObject;
@@ -77,9 +59,9 @@ class CCreatureAction_DragonLand : public CCombatActionBase { public:
 void CCreatureAction_DragonLand::FinishAction()
 {
     CTCInterface3A* tc;
-    if (PCreature.GetPItem()->GetInterface(&tc, 0x3a))
+    if (PCreature.GetPItem()->GetTC(TCI_MAPWHO, &tc))
         tc->m_flags50 |= 1;
-    if (PCreature.GetPItem()->m_type == 1) {
+    if (PCreature.GetPItem()->GetType() == 1) {
         CThing* creature = PCreature.GetPItem();
         ((CThingAICreature*)creature)->SuspendAI(false, this);
     }

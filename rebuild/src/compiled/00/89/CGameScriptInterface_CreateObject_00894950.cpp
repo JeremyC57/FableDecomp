@@ -12,9 +12,10 @@
 //   @ 0x0099A2D0 / 0x0099A2E0, operator delete @ 0x00BFE9BC, the def's slot 1. CScriptThing vtable 0x01238C8C.
 // Layout / shape: as the landed 0x00894820 (CDefPointer homed in the dead defName slot, named result local, no NRVO).
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-class CCharString { public:
-    void* PStringData;
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                       // +0x00
@@ -65,9 +66,7 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long globalIndex, CDefP
     return true;
 }
 #pragma auto_inline(on)
-class CThing { public:
-    CScriptThing GetScriptThing() const;                      // 0x004C7E50
-};
+
 class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                            const CRightHandedSet* orientation, unsigned long uid,

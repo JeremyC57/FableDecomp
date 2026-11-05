@@ -1,4 +1,5 @@
 // CTCCarrying::OnKill() -- kill every thing still held in a carry slot (without immediate removal)
+// Leaf: ?OnKill@CTCCarrying@@QAEXXZ
 //
 // Retail 0x006A0FF0, 107 bytes (plain `ret`). Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50
 // (twice per slot: the null test, then the call target), CThing::Kill(bool) @ 0x004C9B80.
@@ -8,9 +9,7 @@
 // Shape: an unsigned index loop `i < size()` with size() the signed byte distance / 12 (`imul
 // 2AAAAAABh ; sar edx,1`) recomputed every pass; the element is STLport `*(begin() + i)` (begin
 // re-read, the scaled offset strength-reduced into ebx), its pointer address held in ebp.
-class CThing { public:
-    void Kill(bool removeNow);                      // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;

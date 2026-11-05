@@ -25,41 +25,12 @@ __forceinline bool GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVec
     return (a - b).GetLengthSquared() < distance * distance;
 }
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_statusFlags;            // +0x91 (bit 0: dead)
-    const C3DVector& GetPos() const;   // 0x004C73D0
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -98,13 +69,13 @@ class CThingBuilding : public CThing { public:
 
 bool CThingBuilding::IsDoorBlockedBy(CThing* thing)
 {
-    if (HasTC(0x21)) {
-        CTCBuildingDoor* const& door = (CTCBuildingDoor*)GetTC(0x21);
+    if (HasTC(TCI_THING_OWNER)) {
+        CTCBuildingDoor* const& door = (CTCBuildingDoor*)(&GetTC(TCI_THING_OWNER));
         for (SOccupantNode* node = door->Occupants->_M_next; node != door->Occupants; node = node->_M_next) {
             CIntelligentPointer<CThing>& occupant = node->_M_data;
             CTCOccupantState* state;
-            if (occupant.GetPItem() && !(occupant.GetPItem()->m_statusFlags & 1)
-                && occupant.GetPItem()->GetInterface(&state, 0x26)) {
+            if (occupant.GetPItem() && !occupant.GetPItem()->IsDead()
+                && occupant.GetPItem()->GetTC(TCI_DOOR, &state)) {
                 if (state->StateB || state->StateC || state->StateA) {
                     CThing* occupantThing = occupant.GetPItem();
                     if (GFWorld3DDistanceSmallerThan(occupantThing->GetPos(), thing->GetPos(), 1.5f))

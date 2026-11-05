@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionSitAtSchool::Update() -- read the village school times, pick a randomly staggered end time, walk (seat within 10 units) or run to the seat and sit; then idle while the time of day stays in the school window (leaving at a 1-in-5-seconds random once it is over), raising a hand at random intervals while the village has a lesson on; finally get up and Terminate()
+// Leaf: ?Update@CAIStateGroup_MinionSitAtSchool@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -29,38 +30,18 @@ class C3DVector { public:
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 __forceinline float C3DVector::GetMagnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing { public: };
 class CTCVillage { public:
     unsigned char _pad[0xbc];
@@ -156,7 +137,7 @@ struct CAIStateGroup_MinionSitAtSchool : CAIStateGroup_UsesSeat {
 void CAIStateGroup_MinionSitAtSchool::Update()
 {
     CTCVillageMember* member;
-    GetCreature()->GetInterface(&member, 0x23);
+    GetCreature()->GetTC(TCI_VILLAGE_MEMBER, &member);
     float startTime;
     float endTime;
     member->GetPVillage()->GetSchoolTimes(*(&startTime), *(&endTime));
@@ -170,7 +151,7 @@ void CAIStateGroup_MinionSitAtSchool::Update()
         endTime = endTime - 1.0f;
     long movement = 5;
     CThing* seat = PSeat.GetPItem();
-    if (seat && !(seat->m_flags91 & 1)) {
+    if (seat && !seat->IsDead()) {
         const CThing* creature = GetCreature();
         const CThing* item = PSeat.GetPItem();
         if ((item->GetPos() - creature->GetPos()).GetMagnitude() < 10.0f)

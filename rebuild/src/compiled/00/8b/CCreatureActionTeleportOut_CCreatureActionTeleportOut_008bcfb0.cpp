@@ -12,9 +12,7 @@
 #include "fable_string.h"
 class CThingCreatureBase;
 #include "engine/C3DVector.h"
-class CThing { public:
-    const C3DVector& GetPos() const;   // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CSoundPair { public:
     long m_first;
     long m_second;

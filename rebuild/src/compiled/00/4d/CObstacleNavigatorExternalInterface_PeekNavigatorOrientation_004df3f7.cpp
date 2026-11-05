@@ -35,11 +35,7 @@ public:
     virtual C3DVector GetForward() const;          // slot 70 (+0x118): the facing direction
 };
 
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                     // +0x60
-};
+#include "engine/CThing.h"
 
 class CObstacleNavigatorExternalInterface {
 public:
@@ -50,7 +46,7 @@ public:
 
 C2DVector CObstacleNavigatorExternalInterface::PeekNavigatorOrientation() const
 {
-    C2DVector direction(Obstacle->PhysicsTC->GetForward());
+    C2DVector direction(Obstacle->GetPhysicsTC()->GetForward());
     direction.Normalise();
     return direction;
 }

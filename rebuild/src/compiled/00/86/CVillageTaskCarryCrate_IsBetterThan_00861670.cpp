@@ -14,12 +14,11 @@
 // Shape: labelled exits (fail on the drop arm return, avail before IsTaskAvailable) reproduce retail block order:
 //   the two tail-duplicated false epilogues and the priority test after them. Distance code as the landed
 //   CVillageTaskPickCrops::IsBetterThan (0x00860D00).
+#define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/C3DVector.h"
-class CThing : public CBaseObject { public:
-    const C3DVector& GetPos() const;          // 0x004C73D0
-};
+#include "engine/CThing.h"
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 class CVillageTaskCarryCrate { public:                    // vtable 0x0125A950

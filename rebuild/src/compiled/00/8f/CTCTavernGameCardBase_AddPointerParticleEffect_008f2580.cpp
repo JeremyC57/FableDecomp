@@ -20,39 +20,13 @@ class CTCBase;
 class CBaseObject;
 #include "engine/C3DVector.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad_0x54[0x3d];
-    unsigned char m_flags;                      // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+
 class CThingObject : public CThing { public: };
-
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length); // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
-
 
 class CTCDParticleEmitter {
 public:
@@ -64,7 +38,7 @@ private: public:
 __forceinline CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
 {
     CTCDParticleEmitter* emitter;
-    thing->GetInterface(&emitter, 0x4b);        // TC_PARTICLE_EMITTER
+    thing->GetTC(TCI_PARTICLE_EMITTER, &emitter);        // TC_PARTICLE_EMITTER
     return emitter;
 }
 

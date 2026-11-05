@@ -1,4 +1,5 @@
 // CAIStateGroup_GazeAtWork::InitCreaturePosition() -- place the creature next to a free gaze marker.
+// Leaf: ?InitCreaturePosition@CAIStateGroup_GazeAtWork@@QAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00918B50, length 51 bytes.
 // Callees: the virtual IsRunnable (slot 11, +0x2c), CAIStateGroup_Gaze::FindFreeGazePos @ 0x00918880,
 // CThing::GetPosition @ 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated; it returns the
@@ -12,9 +13,7 @@
 // only CAIStateGroupBase's layout (PBrain at +4) is modelled, with the brain's creature pointer at +0x18.
 class C3DVector;
 
-class CThing { public:
-    const C3DVector& GetPos() const;    // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingGameObject : public CThing { public:
 };
 

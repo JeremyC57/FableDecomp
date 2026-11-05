@@ -30,10 +30,7 @@ class CTCPhysicsBase { public:
     virtual CPhysicsMesh* GetPhysicsMesh();         // slot 93 (+0x174)
 };
 
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                      // +0x60
-};
+#include "engine/CThing.h"
 
 class CThingFilter_HasPhysicsMesh { public:
     bool operator()(CThing* thing) const;
@@ -41,7 +38,7 @@ class CThingFilter_HasPhysicsMesh { public:
 
 bool CThingFilter_HasPhysicsMesh::operator()(CThing* thing) const
 {
-    CTCPhysicsBase* physics = thing->PhysicsTC;
+    CTCPhysicsBase* physics = thing->GetPhysicsTC();
     if (physics)
         return physics->GetPhysicsMesh() != 0;
     return false;

@@ -7,7 +7,7 @@
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00621720, 761 bytes, plain `ret`. Speed TU (no pragmas, no frame pointer).
 // Callees: NHeroInformationScreens::CBase slot 3 (IsActive) on the +0x130 base, the sound system (0x013B8394) slot 46,
-//   CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0, CFrontEndManager::GetInstance 0x0041E5F2 and slots 6/29/37/40/42,
+//   CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0, NUISystem::CManager::GetInstance 0x0041E5F2 and slots 6/29/37/40/42,
 //   CPlayerGui::GetPHeroInfoScreensManager 0x00437CD0 ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790) + 0x0066E799, memmove 0x00BFEAE6, free 0x00BFEA14,
 //   the HUD owner slots 56/76 (CMainGameComponent::Get() +0x28 -> +0x2C), menu close 0x0041D165, CTCInventoryBase::CloseInventory
 //   0x005BD597, CEnginePrimitiveHandle::Clear 0x0041BE70 + vector erase 0x00440D70, quest-card operator= 0x006255B0 and
@@ -97,7 +97,9 @@ struct CPlayerPtr {
     CPlayerData* Data;
     __forceinline ~CPlayerPtr() { if (Data) Data->Release(); }
 };
-struct CFrontEndManager {
+namespace NUISystem {
+class CManager {
+public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void Slot6();                            // +0x18
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -112,8 +114,9 @@ struct CFrontEndManager {
     virtual void Slot40(long* state, bool b);        // +0xA0
     virtual void v41();
     virtual CPlayerPtr Slot42();                     // +0xA8
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
+}
 struct CNodeListNode { CNodeListNode* _M_next; CNodeListNode* _M_prev; };
 struct CNodeList {
     CNodeListNode* _M_node;
@@ -250,17 +253,17 @@ void CTCInventoryQuests::CloseInventoryPC()
             ((CSoundSystem*)PSoundManager)->RefreshCategory(0x40, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
             ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
         }
-        CFrontEndManager* a = CFrontEndManager::GetInstance();
-        CFrontEndManager* b = CFrontEndManager::GetInstance();
+        NUISystem::CManager* a = NUISystem::CManager::GetInstance();
+        NUISystem::CManager* b = NUISystem::CManager::GetInstance();
         b->Slot40(&a->Slot42().Data->SomeState, true);
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->SetScreen(PreviousScreen);
         for (unsigned long i = 0; i < Components.size(); ++i)
             delete Components[i];
         Components.clear();
-        CFrontEndManager::GetInstance()->Slot6();
-        CFrontEndManager::GetInstance()->Slot29();
+        NUISystem::CManager::GetInstance()->Slot6();
+        NUISystem::CManager::GetInstance()->Slot29();
         g_frontEndNodeList.clear();
-        CFrontEndManager::GetInstance()->Slot37();
+        NUISystem::CManager::GetInstance()->Slot37();
         CMainGameComponent::Get()->World->Hud->Slot56(0, 0);
         CloseMenus();
     }

@@ -9,12 +9,8 @@
 // pushed) built in the `push ecx` frame word and re-addressed with `lea` for the call; it dies at the end of the full
 // expression, so the component pointer is a named local kept in edi across the string destructor.
 // Leaf: AddOwnedEntityTC
-class CCharString {
-public:
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-    void* m_pStringData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CTCParamsBase;
 class CThing;
@@ -22,12 +18,6 @@ class CThing;
 class CTCBase {
 public:
     void SetPOwner(CThing* owner);                     // 0x007E8590 (CTCOwnedEntity::SetPOwner)
-};
-
-class CThing {
-public:
-public:
-    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 
 class CTCMeshAutomaticEntityCreator {

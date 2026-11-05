@@ -15,7 +15,9 @@
 //   symbol push (the chained form pushes first and loads the bank after); both play arguments are constructor temporaries
 //   built during the right-to-left argument evaluation.
 class CTCBase;
-class CCharString { public: void* PStringData; };
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 extern unsigned long g_InvalidSoundHandle;              // 0x0129D25C
 class CASoundBank { public:
     long GetSoundIndexFromSymbol(const CCharString& symbol) const;   // 0x00A01920
@@ -50,27 +52,10 @@ class CSoundInit { public:                                     // 0x20
 class CTCSoundPlayer { public:                                 // interface 0x10
     unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool a, bool b, bool c);   // 0x0066B280
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                         // +0x44
-    template <class T> __forceinline bool GetInterface(T** out, long type)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCOracleMinigame { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
@@ -80,7 +65,7 @@ class CTCOracleMinigame { public:
 unsigned long CTCOracleMinigame::PlaySoundW(const CCharString& sound)
 {
     CTCSoundPlayer* player;
-    if (ParentThing->GetInterface(&player, 0x10)) {
+    if (ParentThing->GetTC(TCI_SOUND_PLAYER, &player)) {
         CASoundBank* bank = CMainGameComponent::Get()->PSampleBank;
         long index = bank->GetSoundIndexFromSymbol(sound);
         if (index != 0) {

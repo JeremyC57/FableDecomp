@@ -1,9 +1,9 @@
-// NUISystem::CManager::~CManager() -- destructor of the front-end UI manager: own vtable; clear a showing error message; hand the front-end manager singleton empty font and graphics banks; then the members (+0x88 down to +0x10) and the base are destroyed
+// NUISystem::CManager::~CManager() -- destructor of the front-end UI manager: own vtable; clear a showing error message; hand the manager singleton empty mesh and graphics banks; then the members (+0x88 down to +0x10) and the base are destroyed
 // Leaf: ??1CManager@NUISystem
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041E641, length 146 bytes. Size-optimised TU: `#pragma optimize("s", on)`.
-// Callees: CManager::ClearErrorMessage @ 0x0041CE6A, CFrontEndManager::GetInstance @ 0x0041E5F2 (`__fastcall`, lazily creates the
-//   singleton), the bank setters @ 0x0041D198 (counted pointer at +0x18) and @ 0x0042A9B7 (landed SetGraphicsBank, +0x10), the member
+// Callees: CManager::ClearErrorMessage @ 0x0041CE6A, CManager::GetInstance @ 0x0041E5F2 (`__fastcall`, lazily creates the
+//   singleton), SetMeshBank @ 0x0041D198 (counted pointer at +0x18) and @ 0x0042A9B7 (landed SetGraphicsBank, +0x10), the member
 //   destructors @ 0x0042CE63 / 0x004291DE / 0x0042B7D7 / 0x0042AB1C / 0x0042AB73 / 0x0042B796 / 0x0042918C / 0x00419108 (their manifest
 //   labels -- CActiveFile::OnReadFinished, _Dest_val<...> -- are byte-twin propagations), the base destructor @ 0x0042BEC0 (tail jump).
 // Layout: retail NUISystem::CManager (vtable 0x01230134): a `__declspec(novtable)` base of 0x10 (its destructor stores no vtable; members at
@@ -13,7 +13,7 @@
 //   the size-TU zero register ebx (`push ecx ; push ecx ; mov eax,esp ; mov [eax],ebx`); GetInstance is evaluated after the argument.
 #pragma optimize("s", on)
 class CGraphicDataBank;
-class CFontBank;
+class CMeshDataBank;
 #include "engine/CCountedPointer.h"
 struct SMember10 { void* a; void* b; ~SMember10(); };            // 0x00419108
 struct SMember18 { void* a; void* b; ~SMember18(); };            // 0x0042918C
@@ -28,14 +28,12 @@ struct __declspec(novtable) CManagerBase {
     virtual ~CManagerBase();                       // 0x0042BEC0
     unsigned char _d04[0xc];
 };
-class CFrontEndManager { public:
-    static CFrontEndManager* __fastcall GetInstance();                        // 0x0041E5F2
-    void SetFontBank(CCountedPointer<CFontBank> bank);                        // 0x0041D198
-    void SetGraphicsBank(CCountedPointer<CGraphicDataBank> bank);             // 0x0042A9B7
-};
 class CManager : public CManagerBase { public:
-    SMember10     m_graphicsBank;                  // +0x10
-    SMember18     m_fontBank;                      // +0x18
+    static CManager* __fastcall GetInstance();                                 // 0x0041E5F2
+    void SetMeshBank(CCountedPointer<CMeshDataBank> bank);                    // 0x0041D198
+    void SetGraphicsBank(CCountedPointer<CGraphicDataBank> bank);             // 0x0042A9B7
+    SMember10     PGraphicsBank;                   // +0x10
+    SMember18     PMeshBank;                       // +0x18
     unsigned char _pad20[4];
     SMember24     m_24;                            // +0x24
     SMember5c     m_5c;                            // +0x5c
@@ -51,7 +49,7 @@ CManager::~CManager()
 {
     if (m_errorMessageShowing)
         ClearErrorMessage();
-    CFrontEndManager::GetInstance()->SetFontBank(CCountedPointer<CFontBank>());
-    CFrontEndManager::GetInstance()->SetGraphicsBank(CCountedPointer<CGraphicDataBank>());
+    GetInstance()->SetMeshBank(CCountedPointer<CMeshDataBank>());
+    GetInstance()->SetGraphicsBank(CCountedPointer<CGraphicDataBank>());
 }
 }

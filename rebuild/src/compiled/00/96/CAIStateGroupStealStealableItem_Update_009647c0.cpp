@@ -1,4 +1,5 @@
 // CAIStateGroup_StealStealableItem::Update() -- claim a free action point on the stealable item, walk to it (or near the item), face it, pick it up into the inventory (dropping whatever was carried), then carry it to the escape point and destroy it if the escape point says so
+// Leaf: ?Update@CAIStateGroup_StealStealableItem@@UAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z; 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Grade: RELOCATION_MATCH -- retry wave 2 (sec4): the +0x91 dead test through CThing::IsDead() const (Ego_r.pdb
@@ -10,56 +11,11 @@ class CRightHandedSet { public:
     C3DVector Forward;
     C3DVector Up;
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
-private: public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91
-    bool IsDead() const { return (m_flags91 & 1) != 0; }   // Ego_r.pdb ?IsDead@CThing@@QBE_NXZ
-    void Kill(bool instant);                    // 0x004C9B80
-    __forceinline bool HasTC(long interfaceType)
-    {
-        unsigned long word = m_presentBits[interfaceType >> 5];
-        return ((word >> (interfaceType & 31)) & 1) != 0;
-    }
-    __forceinline bool HasInterface(long interfaceType)
-    {
-        const bool& found = HasTC(interfaceType);
-        return found;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        const bool& found = HasTC(interfaceType);
-        if (found) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-        }
-        return found;
-    }
-    __forceinline unsigned long HasTCWord(long interfaceType) const
-    {
-        unsigned long word = m_presentBits[interfaceType >> 5];
-        return word & (1u << (interfaceType & 31));
-    }
-    template<class T> __forceinline void GetInterfaceC(T** ppOut, long interfaceType) const
-    {
-        if (HasTCWord(interfaceType)) {
-            long type = interfaceType;
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-        }
-    }
-};
+
 class CThingCreatureBase : public CThing { public:
 };
 struct CBaseIntelligentPointer {
@@ -136,7 +92,7 @@ void CAIStateGroup_StealStealableItem::Update()
         return;
     }
     CTCUserActionPointBase* actionPoint;
-    PStealableItem.GetPItem()->GetInterface(&actionPoint, 0x2d);
+    PStealableItem.GetPItem()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &actionPoint);
     C3DVector pos;
     CRightHandedSet set;
     if (!actionPoint->GetFreeActionPoint(GetCreature(), &pos, &set, &ActionPointIndex)) {
@@ -146,7 +102,7 @@ void CAIStateGroup_StealStealableItem::Update()
     GotActionPoint = true;
     C3DVector facing = set.Up;
     CTCStealable* stealable;
-    PStealableItem.GetPItem()->GetInterface(&stealable, 0x47);
+    PStealableItem.GetPItem()->GetTC(TCI_CARRYABLE, &stealable);
     bool arrived;
     long result;
     do {
@@ -209,13 +165,13 @@ void CAIStateGroup_StealStealableItem::Update()
     CCreatureAction_PickUpGenericBox action(*GetCreature(), *PStealableItem.GetPItem());
     PickUpActionID = action.GetActionID();
     CTCCarrying* carrying;
-    GetCreature()->GetInterface(&carrying, 0x46);
+    GetCreature()->GetTC(TCI_CARRYING, &carrying);
     {
         CIntelligentPointerThing previous(carrying->GetThingInPrimarySlot());
         PPreviouslyCarriedItem = previous;
     }
     carrying->RemoveThingFromPrimarySlot(false);
-    if (IS_THING_ALIVE(PPreviouslyCarriedItem) && PPreviouslyCarriedItem.GetPItem()->HasInterface(0x48))
+    if (IS_THING_ALIVE(PPreviouslyCarriedItem) && PPreviouslyCarriedItem.GetPItem()->HasTC(TCI_WEAPON))
         PPreviouslyCarriedItem.GetPItem()->Kill(true);
     long done = AIAction_PerformActionAndWait(&action, false);
     if (IS_THING_ALIVE(PEscapePoint) && IS_THING_ALIVE(PStealableItem) && done == 2
@@ -223,8 +179,8 @@ void CAIStateGroup_StealStealableItem::Update()
         C3DVector escapePos = ((CThing*)(PEscapePoint.GetPItem()))->GetPos();
         if (AIAction_MoveToPosProximity(1, escapePos, 1.0f, &arrived, 5, true, false, true, 0, true, 0.0f) == 2) {
             ReachedDestination = true;
-            const CTCEscapeFlags* flags;
-            static_cast<const CThing*>(GetCreature())->GetInterfaceC(&flags, 0xaa);
+            const const CTCEscapeFlags* flags;
+            static_cast<const CThing*>(GetCreature())->PeekTC(TCI_AI_SCRATCHPAD, &flags);
             if (IS_THING_ALIVE(PStealableItem) && flags->DestroyCarried)
                 PStealableItem.GetPItem()->Kill(false);
         }

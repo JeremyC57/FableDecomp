@@ -16,12 +16,9 @@
 //   helper string and the component are evaluated before the arguments are pushed, and `mov ecx,[eax+60h]` precedes
 //   `push 0`.
 // Layout: retail CThing PhysicsTC +0x60, PTCGraphicAppearance +0x64; InitDummyPos +0x148 (engine/CCreatureAction_NymphGetHit.h).
-class CCharString {
-public:
-    CCharString(const char* text, long length = -1);         // 0x0099EBF0
-    ~CCharString();                                          // 0x0099EAE0
-    void* PStringData;
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 #include "engine/C3DVector.h"
 
@@ -49,17 +46,6 @@ public:
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
     virtual void SetPosition(const C3DVector& pos);          // slot 30 (+0x78)
     void SetAsMoving(bool moving);                           // 0x006B0130
-};
-
-class CThing {
-public:
-    virtual ~CThing();
-    unsigned char _pad_0x04[0x60 - 0x04];
-    CTCPhysicsBase* PhysicsTC;                               // +0x60
-    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
-    const C3DVector& GetPos() const;                         // 0x004C73D0
-    CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }     // Ego_r ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ (inline)
-    NGraphicAppearance::CTCGraphicAppearance* GetTCGraphicAppearance() { return PTCGraphicAppearance; }   // Ego_r (inline)
 };
 
 class CThingCreatureBase : public CThing { };

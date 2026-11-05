@@ -1,4 +1,5 @@
 // CTCPhysicsBase::ModifyResponseForNearVerticalSlopes(CPhysicsCollideResponse& response) const -- for class-2 things, flatten a collision normal that is steeper than the physics def's clamped maximum slope into a horizontal unit normal
+// Leaf: ?ModifyResponseForNearVerticalSlopes@CTCPhysicsBase@@QBEXAAVCPhysicsCollideResponse@@@Z
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B0610, length 286 bytes (+ int3 padding), `ret 4`. FableWin.pdb:
 // ?ModifyResponseForNearVerticalSlopes@CTCPhysicsBase@@IBEXAAVCPhysicsCollideResponse@@@Z (protected, const).
@@ -58,10 +59,7 @@ class CGameDefinitionManager { public:
     CPhysicsGlobalDef* PhysicsDef;              // +0xd0 CDefPointer object
 };
 
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char ThingClass;                   // +0x10
-};
+#include "engine/CThing.h"
 
 class CTCBase
 {
@@ -77,7 +75,7 @@ class CTCPhysicsBase : public CTCBase { public:
 
 void CTCPhysicsBase::ModifyResponseForNearVerticalSlopes(CPhysicsCollideResponse& response) const
 {
-    if (ParentThing->ThingClass == 2) {
+    if (ParentThing->GetType() == 2) {
         float up = Dot(response.CollideNormal, C3DVector(0.0f, 0.0f, 1.0f));
         float angle = GetDefinitionManager().PhysicsDef->MaxSlopeAngle;
         if (angle < 45.0f)

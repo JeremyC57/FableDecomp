@@ -16,7 +16,9 @@
 //   (physics reference fetched through an inline GetPhysics() before the set, Up member-wise, Forward copied).
 // Layout: local model -- retail CCombatActionBase is 0x114 bytes (PCreature +0x08, PTarget +0xa8); CThing PhysicsTC +0x60.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #include "engine/C3DVector.h"
@@ -56,30 +58,7 @@ class CTCPhysicsBase { public:
     virtual void v31();
     virtual void SetOrientation(const CRightHandedSet& set);   // slot 32 (+0x80)
 };
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0xc];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    __forceinline CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
@@ -87,11 +66,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                   // 0x00A01B50
     operator CThing*() const { return ((CThing*)GetPItem()); }
 };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+
 namespace NCreatureMode {
 struct CModeBase { };
 struct CModeDrained : CModeBase {               // 0x80 bytes
@@ -124,19 +99,19 @@ void CCombatAction_GenericResponseToDrain::Initialise()
         CCharString name("GENERIC_RESPONSE_DRAIN");
         SetCombatAnimation(name);
     }
-    if (PTarget.GetPItem() && !(((CThing*)PTarget.GetPItem())->m_flags91 & 1)) {
+    if (PTarget.GetPItem() && !((CThing*)PTarget.GetPItem())->IsDead()) {
         CThing* creature = ((CThing*)PCreature.GetPItem());
         const C3DVector& drainerPosition = ((CThing*)PTarget.GetPItem())->GetPos();
         const C3DVector& position = creature->GetPos();
         C3DVector away(position.X - drainerPosition.X, position.Y - drainerPosition.Y, 0.0f);
         away.AccurateNormalise();
-        CTCPhysicsBase& physics = *((CThing*)PCreature.GetPItem())->GetPhysics();
+        CTCPhysicsBase& physics = *((CThing*)PCreature.GetPItem())->GetPhysicsTC();
         CRightHandedSet set;
         set.Up.X = 0; set.Up.Y = 0; set.Up.Z = 1;
         set.Forward = away;
         physics.SetOrientation(set);
         CTCCreatureModeManager* modes;
-        ((CThing*)PCreature.GetPItem())->GetInterface(&modes, 0x31);
+        ((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
         modes->AddMode(CCountedPointer<NCreatureMode::CModeBase>(new NCreatureMode::CModeDrained(PCreature, ((CThing*)PTarget.GetPItem()))));
     }
     CCombatActionBase::Initialise();

@@ -1,4 +1,5 @@
 // CTCObjectAugmentations::FireCombatAugEffect() -- enter the strike action: kill and drop the running augmentation effects, then try to start every attack particle
+// Leaf: ?FireCombatAugEffect@CTCObjectAugmentations@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00766A60, length 403 bytes (+ int3 padding), esp frame, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90, CThing::Kill(bool) @ 0x004C9B80, the
 // element virtual destructor (slot 0 with 0), CTCObjectAugmentations::AttemptToStartParticle @ 0x00766660.
@@ -9,14 +10,9 @@
 // Layout (local model, as the landed ctor 0x007673C0): AttackParticleEffects +0x44, CurrentRunningAugEffect +0x50,
 // InStrikeAction +0x64; AttackParticleAndEndPoints 0x18 (PDB) with ParticleEffect +0x10; fields before it descriptive
 // (start/end dummy names +0x00/+0x04, particle type +0x08, periodic frames +0x0c, the argument order of AttemptToStartParticle).
-class CCharString { public: void* PStringData; };
-class CThing {
-public:
-    unsigned char  _pad00[0x91];
-    unsigned char  m_flags91;                           // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-    void Kill(bool immediate);                          // 0x004C9B80
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
+
 #pragma pack(push, 1)                                   // the PDB puts ProjectileTrailEffect at the odd offset +0x65
 class CBaseObject;
 class CBaseObjectPointer;

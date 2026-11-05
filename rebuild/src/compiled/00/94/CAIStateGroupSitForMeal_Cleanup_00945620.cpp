@@ -1,4 +1,5 @@
 // CAIStateGroup_SitForMeal::Cleanup() -- release the pot, stamp the meal day, put the bowl away
+// Leaf: ?Cleanup@CAIStateGroup_SitForMeal@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00945620, length 122 bytes (+ int3 padding).
 // Callees: CAIStateGroup_SitForMeal::ReleaseControlOfPot @ 0x00945530, CAIStateGroupBase::GetPWorld
@@ -15,34 +16,10 @@ class CTCBase;
 // {type, component} vector map at +0x44 searched with LowerBound @ 0x0040F020 -- the landed out-parameter
 // GetInterface template (0x007504E0 / 0x00930DC0 shape): the component lands in eax, and a miss leaves the
 // caller's out pointer unwritten (the frame slot that also holds the key).
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool HasTC(long interfaceType) const
-    {
-        return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CBaseIntelligentPointer {                // CIntelligentPointer<T>: vptr + item
     void*   __vftable;                          // +0x00
@@ -54,7 +31,7 @@ struct CBaseIntelligentPointer {                // CIntelligentPointer<T>: vptr 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -113,7 +90,7 @@ void CAIStateGroup_SitForMeal::Cleanup()
     DayLastAte = GetPWorld()->PGameTime->Day;
     if (HoldingBowl) {
         CTCCarrying* carrying;
-        PBrain->PCreature->GetInterface(&carrying, 0x46);
+        PBrain->PCreature->GetTC(TCI_CARRYING, &carrying);
         carrying->RemoveThingFromPrimarySlot(false);
         HoldingBowl = false;
     }

@@ -1,4 +1,5 @@
 // CTCInventoryItem::GetBoughtPrice() -- ask the owning inventory for the price paid for this item's def, 0 when not in an inventory
+// Leaf: ?GetBoughtPrice@CTCInventoryItem@@QAEJXZ
 // Retail 0x005D8E70, 29 bytes (+3 int3). Caller: CCreatureAction_UseWallMount::PerformAction
 // (0x008483EF) on the thing's type-26 component, i.e. a CTCInventoryItem: PInventory is +0x10, the
 // owning thing (CTCBase::ParentThing, +0x04) holds its def index as an unsigned short at +0x8C.
@@ -10,10 +11,7 @@
 // Size-optimised TU: `#pragma optimize("s", on)` (the speed build zero-extends into edx).
 #pragma optimize("s", on)
 
-class CThing { public:
-    unsigned char _pad_00[0x8C];
-    unsigned short DefIndex;                       // +0x8C
-};
+#include "engine/CThing.h"
 
 struct CTCInventoryBase {
     long GetBoughtPrice(long defIndex);            // 0x005BEAD5
@@ -35,6 +33,6 @@ class CTCInventoryItem : public CTCBase { public:
 long CTCInventoryItem::GetBoughtPrice()
 {
     if (PInventory)
-        return PInventory->GetBoughtPrice(ParentThing->DefIndex);
+        return PInventory->GetBoughtPrice(ParentThing->GetDefGlobalIndex());
     return 0;
 }

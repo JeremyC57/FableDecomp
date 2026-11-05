@@ -1,14 +1,11 @@
 // CCreatureAction_ShopkeeperPutAway::PerformAction() -- if the item being put away is alive (pointer set, dead bit clear), kill it silently
+// Leaf: ?PerformAction@CCreatureAction_ShopkeeperPutAway@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008446E0, length 64 bytes. Vtable slot 3 (PerformAction).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the pointer member at +0xa8, three times: the landed IS_THING_ALIVE idiom re-fetches,
 // then the call target), CThing::Kill(bool) @ 0x004C9B80.
 // Shape: the member pointer rides in esi (`lea esi,[ecx+0A8h]`); the shape of the landed 0x008445A0 without the range test. Retail
 // CCreatureActionBase is 0xa8 bytes (PDB 0xb4), so the pointer (PDB +0xb4) is at +0xa8 and `this` is modelled locally.
-class CThing { public:                             // only the dead bit and the call are modelled
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    void Kill(bool silent);                 // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -31,7 +28,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

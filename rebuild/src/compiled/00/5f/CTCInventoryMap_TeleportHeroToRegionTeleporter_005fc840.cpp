@@ -1,4 +1,5 @@
 // CTCInventoryMap::TeleportHeroToRegionTeleporter(long) -- if the hero is alive, look up the region's teleporter and, if that is alive too, teleport the hero to it
+// Leaf: ?TeleportHeroToRegionTeleporter@CTCInventoryMap@@QAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FC840, 87 bytes (+9 int3).
 // Callees: CTCBase::PeekPlayerManager @ 0x00686D50 (`[g_system]+0x30`), CPlayerManager::GetMainPlayer const @ 0x00449960,
 //          the player's character thing @ 0x00487DD0 (CIntelligentPointer::GetPItem on +0x2C), CTCBase::PeekWorldMap
@@ -13,10 +14,7 @@
 // Local model: no engine headers for CTCInventoryMap / CThing / CWorldMap.
 class CRegion;
 
-class CThing { public:
-    unsigned char _pad_0x00[0x91];
-    unsigned char m_flags;                    // +0x91, bit 0: dead
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public:
@@ -46,9 +44,9 @@ public:
 void CTCInventoryMap::TeleportHeroToRegionTeleporter(long regionIndex)
 {
     const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
-    if (hero && !(hero->m_flags & 1)) {
+    if (hero && !hero->IsDead()) {
         CThing* teleporter = GetRegionTeleporter(PeekWorldMap().GetRegion(regionIndex));
-        if (teleporter && !(teleporter->m_flags & 1))
+        if (teleporter && !teleporter->IsDead())
             TeleportHeroToTeleporter(teleporter);
     }
 }

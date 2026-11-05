@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToPlayerInteraction::IsTooNearToThePlayer(const CThing* player) -- is the player closer
+// Leaf: ?IsTooNearToThePlayer@CAIStateGroup_MinionReactToPlayerInteraction@@QAE_NPBVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // than the combat minimum distance (squared compare) to the creature.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092ED40, length 115 bytes (+ int3 padding), `ret 4`.
@@ -18,36 +19,11 @@ class CThingAICreature;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class C3DVector;
-class CThing { public:
-    const C3DVector& GetPos() const;    // 0x004C73D0
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const     // the masked word (a bool return narrows to `shr ; test dl,1`)
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -59,7 +35,7 @@ struct CBaseIntelligentPointer {
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

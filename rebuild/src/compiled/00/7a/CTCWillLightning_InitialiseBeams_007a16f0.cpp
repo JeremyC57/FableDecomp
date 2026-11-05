@@ -1,4 +1,5 @@
 // CTCWillLightning::InitialiseBeams() -- gather the main beams toward targets around the caster, then for every main beam mark it main, pick its hand, gather its sub-beams and activate it; finally flag the beams initialised and ask the caster's targeting component to pick a new lock target
+// Leaf: ?InitialiseBeams@CTCWillLightning@@QAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A16F0, length 375 bytes (plain `ret`).
@@ -23,33 +24,10 @@
 #include <stdlib.h>
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing {
-public:
-    unsigned char _pad00[0x10];
-    unsigned char m_type;                       // +0x10
-    unsigned char _pad11[0x0f];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-};
 
 class CTCTargetingPlayer { public:
     void SetAsPickUpNewLockTarget();            // 0x008023A0
@@ -200,7 +178,7 @@ void CTCWillLightning::InitialiseBeams()
         }
         BeamsInitialised = true;
         CThing* caster = ParentThing;
-        if (caster->m_type == 2 && caster->HasTC(8))
-            caster->GetTC<CTCTargetingPlayer>(8)->SetAsPickUpNewLockTarget();
+        if (caster->GetType() == 2 && caster->HasTC(TCI_TARGETING))
+            ((CTCTargetingPlayer*)&caster->GetTC(TCI_TARGETING))->SetAsPickUpNewLockTarget();
     }
 }

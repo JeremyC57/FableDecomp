@@ -26,23 +26,10 @@ public:
     static long __fastcall GetFrame();   // 0x0049D870
 };            // 0x0049D870
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                 // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-    }
-};
 
 class CTCEmoteIcon { public:
     unsigned char _pad_0x00[0x14];
@@ -90,9 +77,9 @@ class CTCWife : public CTCBase { public:
 void CTCWife::SetAttractionIcon(bool show, float scale, unsigned char alpha)
 {
     CThing* parent = ParentThing;
-    if (!parent->HasTC(0x45))
+    if (!parent->HasTC(TCI_EMOTEICON))
         return;
-    CTCEmoteIcon* icon = (CTCEmoteIcon*)parent->GetTC(0x45);
+    CTCEmoteIcon* icon = (CTCEmoteIcon*)((CTCEmoteIcon*)&parent->GetTC(TCI_EMOTEICON));
     bool wasShowing = icon->EmoteIcon != 0;
     if (show) {
         if (IsMarriageFrameReached()) {

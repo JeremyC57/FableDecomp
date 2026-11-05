@@ -50,11 +50,7 @@ public:
     void SetAsMoving(bool moving);                           // 0x006B0130
 };
 
-class CThing {
-public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                               // +0x60
-};
+#include "engine/CThing.h"
 
 C3DVector __fastcall GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector& lineStart, const C3DVector& lineEnd,
                                                                    const C3DVector& point);   // 0x008F5B50
@@ -69,7 +65,7 @@ public:
 
 void CApplyAdditionalExplosiveImpulseIfInsideSmearedLine::operator()(CThing* thing) const
 {
-    CTCPhysicsBase* physics = thing->PhysicsTC;
+    CTCPhysicsBase* physics = thing->GetPhysicsTC();
     C3DVector direction = GetLineOutFromClosestPointOnFiniteLineToPoint(StartPosition, EndPosition, physics->Position);
     direction.Z = 0.0f;
     float distance = direction.GetXYLength();

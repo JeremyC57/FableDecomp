@@ -16,11 +16,9 @@
 //        absent-interface arm reuses it (its home is the lookup key's frame word); the game-type test is a one-case
 //        `switch` (`dec eax ; jne`).
 class CTCBase;
-class CCharString { public:
-    void* m_data;
-    CCharString(const char* text, long length); // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 class CRGBColour { public:
     unsigned char B, G, R, A;
@@ -34,27 +32,9 @@ class CTCGraphicAppearance { public:
 };
 }
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CCard { public:
     CThing*       Thing;                        // +0x00 CThingObject*
     long          Name;                         // +0x04
@@ -132,7 +112,7 @@ bool CTCTavernGameCardSorting::SelectCard()
     for (CCard** it = Cards._M_start; it != Cards._M_finish; ++it) {
         CCard* card = *it;
         if (!card->FaceDown && card->Value < SelectedCard->Value) {
-            card->Thing->GetInterface(&appearance, 0x5b);
+            card->Thing->GetTC(TCI_GRAPHIC_APPEARANCE_NEW, &appearance);
             appearance->SetAsHighlighted(def->HighlightTime, 0.0f, def->HighlightColour, false, false,
                                          NGraphicAppearance::APPEARANCE_MESH_EFFECT_PRIORITY_3, this);
             mistake = true;

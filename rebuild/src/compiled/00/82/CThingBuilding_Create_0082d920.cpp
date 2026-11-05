@@ -26,10 +26,10 @@ public:
     C3DVector Forward;
     CRightHandedSet() { Up.X = 0.0f; Up.Y = 0.0f; Up.Z = 1.0f; Forward.X = 0.0f; Forward.Y = 1.0f; Forward.Z = 0.0f; }
 };
-class CCharString {
-public:
-    void* PStringData;
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 class CBaseClassNonCopyable {
 public:
 protected:
@@ -52,18 +52,8 @@ public:
     virtual void ConstructFromParams(const CTCParamsBase& params);   // slot 3 (+0x0c)
 };
 
-class CClass {
-public:
-    virtual void v00();
-};
 class CThingPhysical;
-class CThing : public CClass {
-public:
-    unsigned char   _pad04[0x5c];
-    CTCPhysicsBase* PhysicsTC;                          // +0x60
-    CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
-    bool DoActivationSequence();                        // 0x004C9CA0
-};
+
 class CThingGameObject : public CThing {
 public:
     bool ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4, const CCharString& scriptName,

@@ -1,4 +1,5 @@
 // CAIStateGroup_RangedCombatUsePreferredFirePoint::IsRunnable() -- with a ranged weapon and a live enemy, take the nearest preferred fire point and reserve it for the creature.
+// Leaf: ?IsRunnable@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
@@ -19,55 +20,12 @@
 // the fire point lookup is the one-ternary form (component straight into ecx); the comparator is a by-value temporary
 // built in its argument slot through C3DVector's memberwise copy ctor.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #include "engine/C3DVector.h"
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;             // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline bool GetInterfaceC(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -84,7 +42,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligent
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -105,7 +63,7 @@ struct CTCEnemySource {                         // interface 8
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
     virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
-    virtual CThing* GetEnemy();                 // slot 29 (+0x74)
+    virtual CThing* GetEnemy() const;                 // slot 29 (+0x74)
 };
 struct CTCFirePoint {                           // interface 0xac
     void SetOccupant(CThing* creature);         // 0x0087C390
@@ -153,8 +111,8 @@ bool CAIStateGroup_RangedCombatUsePreferredFirePoint::IsRunnable()
 {
     if (!CanUseRangedCombat())
         return false;
-    CTCEnemySource* source;
-    PBrain->PCreature->GetInterfaceC(&source, 8);
+    const CTCEnemySource* source;
+    PBrain->PCreature->PeekTC(TCI_TARGETING, &source);
     PEnemy = CIntelligentPointerCreature(source->GetEnemy());
     PFirePoint = CIntelligentPointerThing(0);
     TimeOutCounter = 0;
@@ -165,7 +123,7 @@ bool CAIStateGroup_RangedCombatUsePreferredFirePoint::IsRunnable()
         if (points.size() > 0) {
             PFirePoint = CIntelligentPointerThing(*points._M_start);
             CTCFirePoint* firePoint;
-            ((CThing*)PFirePoint.GetPItem())->GetInterfaceX(&firePoint, 0xac);
+            ((CThing*)PFirePoint.GetPItem())->GetTC(TCI_SINGLE_PERSON_OCCUPIABLE, &firePoint);
             firePoint->SetOccupant(PBrain->PCreature);
             return true;
         }

@@ -8,10 +8,7 @@
 // opaque); one `&&` return expression materialises every exit as an int; the 64-bit `!=` gives `cmp ; jne ; cmp ; je`; the bool is materialised as an int (`mov eax,1`).
 enum ECreatureInteractionType { ECIT_DUMMY = 0 };
 
-class CThing { public:
-    unsigned char    _pad00[0x18];
-    unsigned __int64 UID;                           // +0x18
-};
+#include "engine/CThing.h"
 
 class CThingCreatureBase : public CThing { public:
     bool IsChild() const;                           // 0x00661F70
@@ -30,6 +27,6 @@ class CThingFilter_IsAvailableForCreatureInteraction { public:
 bool CThingFilter_IsAvailableForCreatureInteraction::operator()(CThingAICreature* thing) const
 {
     return ((thing->IsChild() && SourceThing->IsChild()) || (!thing->IsChild() && !SourceThing->IsChild()))
-        && thing->UID != SourceThing->UID
+        && thing->GetUniqueID() != SourceThing->GetUniqueID()
         && thing->IsAvailableForInteractionType(Type);
 }

@@ -15,10 +15,8 @@
 #pragma optimize("s", on)
 #include "engine/CThingSearchTools.h"
 
-class CThing { public:
-public:
-    bool IsIncludedInThingScans() const;   // 0x0048BC40
-};
+#define FABLE_RETAIL_CTHING_SCANINCLUSION_OUTOFLINE
+#include "engine/CThing.h"
 class CThingMarker { public: enum { ThingListType = 0x0b }; };
 
 struct CThingList {                                      // std::list<CThing*> (VC6)

@@ -19,12 +19,9 @@
 // Layout: NewPos +0x114 (Ego_r +0x12C; retail CCombatActionBase is 0x114 bytes); CCreatureActionBase TotalTime +0x10.
 class CTCBase;
 
-class CCharString {
-public:
-    CCharString(const char* text, long length = -1);         // 0x0099EBF0
-    ~CCharString();                                          // 0x0099EAE0
-    void* PStringData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 #include "engine/C3DVector.h"
 
@@ -51,34 +48,8 @@ public:
     void StopFlyingAround(long frames);                      // 0x0080F870
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing {
-public:
-    virtual ~CThing();
-    unsigned char _pad_0x04[0x20 - 0x04];
-    unsigned long UsingComponents[9];                        // +0x20
-    CInterfaceMap Components;                                // +0x44
-    unsigned char _pad_0x54[0xc];
-    CTCPhysicsBase* PhysicsTC;                               // +0x60
-    const C3DVector& GetPos() const;                         // 0x004C73D0
-    CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }
-    template <class T> __forceinline bool GetInterface(T** out, long type)
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &Components;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CThingCreatureBase : public CThing { };
 
@@ -135,6 +106,6 @@ void CCreatureAction_NymphTeleportOutOfLimbo::Initialise()
     }
     CCombatActionBase::Initialise();
     CTCNymph* nymph;
-    if (PCreature->GetInterface(&nymph, 0xF5))
+    if (PCreature->GetTC(TCI_NYMPH, &nymph))
         nymph->StopFlyingAround(TotalTime);
 }

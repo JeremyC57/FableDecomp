@@ -21,52 +21,12 @@
 // Layout: CAIStateGroupBase per engine/CAIStateGroupBase.h (PBrain +4); creature bitset +0x20, interface map +0x44,
 //          dead flag +0x91, initial position +0xE8 (retail CThingAICreature; PDB names differ, see the landed IsRunnable).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values written as casts here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 #include "engine/C3DVector.h"
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsAlive() const { return ((unsigned char)~m_flags91 & 1) != 0; }
-    bool TestTC(long interfaceType) const
-    {
-        return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
-    }
-    // Spilled-bit form (the presence test stored as a frame byte before the lookup).
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
-    {
-        bool has = TestTC(interfaceType);
-        if (has) {
-            ETCInterfaceType type = (ETCInterfaceType)interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-        return has;
-    }
-    // Masked-dword form (`test ch,1` / `test dword ptr [eax+24h],100000h`).
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CThingAICreature : public CThing { public:
     unsigned char _pad2[0xe8 - sizeof(CThing)];
@@ -122,9 +82,9 @@ void CAIStateGroup_WanderAroundInitialPos::Update()
     {   // the creature's lookups and the wander query in one scope (retail keeps the creature in esi, then reuses it for &InitialPos)
         CThingAICreature* creature = PBrain->PCreature;
         CTCCreatureNavigation* navigation;
-        creature->GetInterfaceT(&navigation, 7);
+        creature->GetTC(TCI_NAVIGATION, &navigation);
         CTCAIScratchpadNative* scratchpad;
-        creature->GetInterfaceT(&scratchpad, 170);
+        creature->GetTC(TCI_AI_SCRATCHPAD, &scratchpad);
         found = navigation->GetNearbyWanderPosition(creature->InitialPos, scratchpad->WanderMaxDistance, target, true);
     }
     if (found) {
@@ -133,10 +93,10 @@ void CAIStateGroup_WanderAroundInitialPos::Update()
     }
     if (PBrain->PCreature->IsAlive()) {
         CTCTargetingBase* targeting;
-        PBrain->PCreature->GetInterface(&targeting, 8);
+        PBrain->PCreature->GetTC(TCI_TARGETING, &targeting);
         targeting->ClearTargets();
         CTCPerceiveThing* perceive;
-        PBrain->PCreature->GetInterface(&perceive, 52);
+        PBrain->PCreature->GetTC(TCI_PERCEIVE_THING, &perceive);
         perceive->ResetPerceptionVariables();
     }
     Terminate();

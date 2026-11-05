@@ -62,13 +62,7 @@ public:
     virtual C3DVector GetFacingVector() const;      // slot 70 (+0x118)
 };
 
-class CThing {
-public:
-    unsigned char   _pad0[0x60];
-    CTCPhysicsBase* PhysicsTC;                       // +0x60
-
-    const C3DVector& GetPos() const;            // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 namespace NCreatureAI
 {
@@ -77,7 +71,7 @@ namespace NCreatureAI
 
 bool __fastcall NCreatureAI::IsThingRunningAwayFromThing(const CThing& thing, const CThing& other, const C3DVector& pos)
 {
-    C2DVector facing(thing.PhysicsTC->GetFacingVector().Get2D());
+    C2DVector facing(thing.GetPhysicsTC()->GetFacingVector().Get2D());
     C2DVector toOther(other.GetPos() - thing.GetPos());
     facing.Normalise();
     toOther.Normalise();

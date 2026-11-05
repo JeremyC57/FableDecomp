@@ -13,7 +13,7 @@
 //   is a named local in an inner block, so VC7.1 gives it the dead raise temporary's 12 bytes (0x3C frame); at function
 //   scope it takes its own slot (0x48), and assigning LookAt straight from the call copies through eax.
 #include "engine/C3DVector.h"
-struct CThingPhysics {
+struct CTCPhysicsBase {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -25,17 +25,14 @@ struct CThingPhysics {
     virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069();
     virtual C3DVector GetFacingVector() const;               // slot 70 (+0x118)
 };
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     C3DVector GetCameraFocalPos(float t) const;              // 0x004C12D0
 };
-class CThing {
-public:
-    unsigned char         _pad00[0x60];
-    CThingPhysics*        m_pPhysics;                        // +0x60
-    CTCGraphicAppearance* m_pGraphicAppearance;              // +0x64
-    const C3DVector& GetPos() const;                    // 0x004C73D0
-    CThingPhysics* GetPhysics() const { return m_pPhysics; }
-};
+}
+using NGraphicAppearance::CTCGraphicAppearance;
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingGameObject : public CThing { };
 class CGameCameraManager;
 namespace NCameraModes {
@@ -60,13 +57,13 @@ public:
 void CStringAndCageBase::OnReset()
 {
     C3DVector thingPos = GetObservedThing()->GetPos();
-    C3DVector facing = GetObservedThing()->GetPhysics()->GetFacingVector();
+    C3DVector facing = GetObservedThing()->GetPhysicsTC()->GetFacingVector();
     facing.Z = 0.0f;
     facing.AccurateNormalise();
     Position = thingPos - facing * DesiredStringLength + C3DVector(0.0f, 0.0f, 1.0f) * DesiredHeightOffset;
     const CThingGameObject* thing = GetObservedThing();
     {
-        C3DVector focal = thing->m_pGraphicAppearance->GetCameraFocalPos(1.0f);
+        C3DVector focal = thing->GetTCGraphicAppearance()->GetCameraFocalPos(1.0f);
         LookAt = focal;
     }
 }

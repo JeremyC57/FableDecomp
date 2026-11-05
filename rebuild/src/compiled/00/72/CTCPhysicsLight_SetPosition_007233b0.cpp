@@ -20,8 +20,9 @@ class CWorldMap { public:
     virtual long GetMapNumberAt(const C3DVector& pos);   // slot 16 (+0x40)
 };
 
-class CThing { public: void SetCurrentMapNumber(long a0); private:   // 0x004C7580
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 struct CTCPhysicsBase_Calls {
     CWorldMap* GetWorldMap();               // 0x006AF620

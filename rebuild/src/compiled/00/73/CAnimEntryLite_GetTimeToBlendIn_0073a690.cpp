@@ -1,4 +1,5 @@
 // CAnimEntryLite::GetTimeToBlendIn(CThing* thing) -- the cached transition time, scaled by bullet time when the thing is affected by it
+// Leaf: ?GetTimeToBlendIn@CAnimEntryLite@@QBEJPAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073A690, length 71 bytes (+ int3 padding).
 // Callees: CThing::IsAffectedByBulletTime() @ 0x004C9920, CBulletTime::GetTimeScale() @ 0x004C5FA0 (float),
 // __ftol2 @ 0x00BFEA70.
@@ -7,9 +8,9 @@
 // Shape: the same body as CAnimationEntry::GetTimeToBlendIn @ 0x005DC230 with the member TransitionTime in
 // place of the component lookup: it is read into esi and spilled to the one frame slot (`push ecx`) because
 // `fimul dword ptr [esp+4]` wants the integer in memory; `(long)(scale * time)` goes through __ftol2.
-class CThing { public:
-    bool IsAffectedByBulletTime();              // 0x004C9920
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 // The bullet-time controller hanging off the game object (+0x68): a pointer at +0x04 and an "active" byte
 // at +0x0c decide whether the time scale applies; GetTimeScale() @ 0x004C5FA0 returns the x87 multiplier.

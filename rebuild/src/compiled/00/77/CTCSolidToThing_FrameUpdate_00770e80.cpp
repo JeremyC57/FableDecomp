@@ -12,10 +12,7 @@
 // Shape: `v.erase(remove(v.begin(), v.end(), CIntelligentPointer<const CThing>(0)), v.end())` with STLport's inline remove (find with the
 // iterator tag, then remove_copy from the element after the hit); erase's `end()` is read first (ebx). The world and the UID are named
 // locals in retail order (GetWorld call, UID load, frame call); the inline expression reorders the loads and the later registers.
-class CThing { public:
-    unsigned char _pad00[0x18];
-    unsigned __int64 UID;                       // +0x18
-};
+#include "engine/CThing.h"
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
@@ -67,7 +64,7 @@ class CTCSolidToThing : public CTCBase { public:
 void CTCSolidToThing::FrameUpdate()
 {
     CWorld* world = (&GetWorld());
-    unsigned __int64 uid = ParentThing->UID;
+    unsigned __int64 uid = ParentThing->GetUniqueID();
     if ((uid + world->GetFrame()) % 75 == 0) {
         if (!NotSolidToThings.empty())
             NotSolidToThings.erase(remove(NotSolidToThings.begin(), NotSolidToThings.end(), CPtr(0)), NotSolidToThings.end());

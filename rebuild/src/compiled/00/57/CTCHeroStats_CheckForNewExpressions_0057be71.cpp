@@ -25,32 +25,10 @@ class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                         // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted) const
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            const CInterfaceMap::value_type* found = (it != map->end() && !(wanted < it->first)) ? it : map->end();
-            *out = (T*)found->second;
-            return true;
-        }
-        return false;
-    }
-};
-
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1); // 0x0099EBF0
-    ~CCharString();                                  // 0x0099EAE0
-};
 
 class CThingCreatureBase : public CThing { public:
     bool IsChild();                                  // 0x00661F70
@@ -60,7 +38,7 @@ class CThingPlayerCreature : public CThingCreatureBase { public:
 };
 
 class CTCInventoryAbilities { public:
-    long GetAbilityLevel_006d6520(long ability);              // 0x006D6520
+    long GetAbilityLevel_006d6520(long ability) const;              // 0x006D6520
 };
 
 class CTCHeroStats { public:
@@ -119,8 +97,8 @@ void CTCHeroStats::CheckForNewExpressions()
         hero->LearnExpression("EXPRESSION_SATURDAY_NIGHT_FEVER", -1, false);
     if (morality > 6)
         hero->LearnExpression("EXPRESSION_BALLET", -1, false);
-    CTCInventoryAbilities* abilities;
-    if (ParentThing->GetInterface(&abilities, 0x68)) {
+    const CTCInventoryAbilities* abilities;
+    if (ParentThing->PeekTC(TCI_HERO_EXPERIENCE, &abilities)) {
         long stealth = abilities->GetAbilityLevel_006d6520(5);
         if (stealth >= 3)
             hero->LearnExpression("EXPRESSION_STEAL", -1, false);

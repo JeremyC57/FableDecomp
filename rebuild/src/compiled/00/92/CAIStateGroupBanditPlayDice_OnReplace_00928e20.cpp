@@ -1,4 +1,5 @@
 //   CTCDiceGame::GetCurrentPlayer() (`return CurrentPlayer.GetPItem();`) compared as `DiceGame->GetCurrentPlayer() ==
+// Leaf: ?OnReplace@CAIStateGroup_BanditPlayDice@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 //   GetCreature()`: the extra inline level gives DiceGame its own temp (eax, `lea ecx,[eax+10h]`) and lets the creature load
 //   (edi) schedule ahead of the call, with the later action/IsFree block keeping retail's colouring. Direct
@@ -16,33 +17,17 @@
 //          NumberOfPlayers +0xc, CurrentPlayer +0x10), FrameToInitiate +0x1c, FrameToJoin +0x20, WasCarryingWeapon +0x24.
 class CTCBase;
 class CThing;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CCreatureActionBase;
 struct CCreatureActionQueue {
     long GetCurrentActionID();                  // 0x00692620
 };
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing { public:
-    unsigned char _pad4c[0x100 - 0x4c];
+    unsigned char _pad4c[0x1c];   // own members from +0x98
     CCreatureActionQueue* PActionQueue;         // +0x100
     void UnsheatheDefaultWeapon();              // 0x00664A50
     bool IsPerformingAnyAction();               // 0x006622A0
@@ -104,11 +89,7 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
     void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
 };
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+
 class CSoundPair { public:
     long m_first;
     long m_second;

@@ -1,4 +1,5 @@
 // CTCCombat::SetBlocking() -- enter the blocking state: a ranged-attacks user stops aiming and resets its projectile weapon mode (and its player drops mode 0x22); the creature mode manager is put into mode 0xc unless already there; Blocking is set
+// Leaf: ?SetBlocking@CTCCombat@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007337E0, 182 bytes (plain `ret`).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (two inlined lookups), CTCHeroRangedAttacks::
@@ -11,36 +12,15 @@
 // Shape: HasTC + GetTC with the ranged-attacks component in a named local (esi); the mode manager is the unchecked out-parameter
 // GetInterface (the absent arm reads the lookup key's frame word); RemoveMode's argument is pushed before GetPlayer runs.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayer { public:
     void RemoveMode(long mode);                         // 0x00634190
 };
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (HasTC(interfaceType)) {
-            *ppOut = (T*)GetTC(interfaceType);
-            return true;
-        }
-        return false;
-    }
-    CPlayer& GetPlayer();                               // 0x004C7A30
-};
+
 class CTCHeroRangedAttacks { public:
     void CancelAimingWeapon();                          // 0x00789FF0
     void ResetProjectileWeaponMode();                   // 0x00789B30
@@ -63,14 +43,14 @@ class CTCCombat { public:
 
 void CTCCombat::SetBlocking()
 {
-    if (ParentThing->HasTC(0x81)) {
-        CTCHeroRangedAttacks* ranged = (CTCHeroRangedAttacks*)ParentThing->GetTC(0x81);
+    if (ParentThing->HasTC(TCI_HERO_RANGED_ATTACKS)) {
+        CTCHeroRangedAttacks* ranged = (CTCHeroRangedAttacks*)((CTCHeroRangedAttacks*)&ParentThing->GetTC(TCI_HERO_RANGED_ATTACKS));
         ranged->CancelAimingWeapon();
         ranged->ResetProjectileWeaponMode();
         ParentThing->GetPlayer().RemoveMode(0x22);
     }
     CTCCreatureModeManager* modes;
-    ParentThing->GetInterface(&modes, 0x31);
+    ParentThing->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
     if (modes->GetCurrentMode()->GetModeType() != 0xc)
         modes->AddMode(0xc);
     Blocking = true;

@@ -1,4 +1,5 @@
 // CCreatureAction_UseObject::PerformAction() -- re-aim the move-to position at the creature, queue a CEventItemUsed(creature) on the used thing's entity events, then hand the use to the thing's scripted hook (CTCActionUseScriptedHook::OnActionUse) when it has one, else to its CTCActionUse component's virtual slot 28
+// Leaf: ?PerformAction@CCreatureAction_UseObject@@QAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069FE60, length 366 bytes (+ int3 padding).
@@ -15,39 +16,12 @@
 // PUsedThing.GetPItem() whose result is dropped (a compiled-out assertion on the used thing); the scripted-hook branch returns early.
 class C3DVector;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -93,18 +67,18 @@ void CCreatureAction_UseObject::PerformAction()
 {
     SetMoveToPos(((CThing*)PCreature.GetPItem())->GetPos());
     CThing* used = ((CThing*)PUsedThing.GetPItem());
-    if (used->HasTC(0x42)) {
-        CTCEntityEvents* events = used->GetTC<CTCEntityEvents>(0x42);
+    if (used->HasTC(TCI_ENTITY_EVENTS)) {
+        CTCEntityEvents* events = ((CTCEntityEvents*)&used->GetTC(TCI_ENTITY_EVENTS));
         events->AddEvent(new NEntityEvents::CEventItemUsed(((CThing*)PCreature.GetPItem())));
     }
     else
         ((CThing*)PUsedThing.GetPItem());
     CThing* usedThing = ((CThing*)PUsedThing.GetPItem());
-    if (usedThing->HasTC(0xc2)) {
-        usedThing->GetTC<CTCActionUseScriptedHook>(0xc2)->OnActionUse(((CThing*)PCreature.GetPItem()));
+    if (usedThing->HasTC(TCI_ACTION_USE_SCRIPTED_HOOK)) {
+        ((CTCActionUseScriptedHook*)&usedThing->GetTC(TCI_ACTION_USE_SCRIPTED_HOOK))->OnActionUse(((CThing*)PCreature.GetPItem()));
         return;
     }
     CTCActionUse* actionUse;
-    ((CThing*)PUsedThing.GetPItem())->GetInterface(&actionUse, 0xd);
+    ((CThing*)PUsedThing.GetPItem())->GetTC(TCI_ON_ACTION_USE, &actionUse);
     actionUse->OnUsed(((CThing*)PCreature.GetPItem()));
 }

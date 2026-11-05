@@ -6,14 +6,15 @@
 // Leaf: ClearGraphicPersistenceFlags
 #include "engine/CTCPhysicsBase.h"
 
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     void SetActivePersistenceFlags(unsigned long flags);   // 0x004BFFD0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
-class CThing { public:
-    unsigned char         _pad00[0x64];
-    CTCGraphicAppearance* PGraphicAppearance;              // +0x64
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 struct CTCPhysicsBase_Methods : CTCPhysicsBase {
     CThing* GetThing() { return reinterpret_cast<CThing*>(sub); }
@@ -22,7 +23,7 @@ struct CTCPhysicsBase_Methods : CTCPhysicsBase {
 
 void CTCPhysicsBase_Methods::ClearGraphicPersistenceFlags()
 {
-    CTCGraphicAppearance* appearance = GetThing()->PGraphicAppearance;
+    CTCGraphicAppearance* appearance = GetThing()->GetTCGraphicAppearance();
     if (appearance)
         appearance->SetActivePersistenceFlags(0);
 }

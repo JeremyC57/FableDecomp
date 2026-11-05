@@ -32,16 +32,7 @@ public:
     C3DVector Position;                                  // +0x0c
     const C3DVector& GetPosition() const { return Position; }
 };
-class CThing {
-public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                           // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }               // FableWin.pdb ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ (inline)
-    const CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }   // FableWin.pdb ?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ
-};
+#include "engine/CThing.h"
 // CScriptThing / CGameScriptInterface: the retail models from the shared NScript headers (FABLE_RETAIL_NSCRIPT).
 #include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT

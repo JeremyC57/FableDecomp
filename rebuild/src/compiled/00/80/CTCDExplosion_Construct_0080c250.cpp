@@ -38,10 +38,7 @@ class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void ConstructFromParams(CTCParamsBase* params);    // slot 3 (+0xc)
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-};
+#include "engine/CThing.h"
 class CTCDExplosion {
 public:
     virtual void v00();
@@ -52,7 +49,7 @@ private:
 
 void CTCDExplosion::Construct(const C3DVector& position)
 {
-    CTCPhysicsBase* physics = Owner->PhysicsTC;
+    CTCPhysicsBase* physics = Owner->GetPhysicsTC();
     CTCParamsPhysicsBase params(position);
     physics->ConstructFromParams(&params);
 }

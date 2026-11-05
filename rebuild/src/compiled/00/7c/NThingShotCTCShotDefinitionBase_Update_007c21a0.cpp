@@ -21,11 +21,7 @@ class CWorld { public:
 class CTCPhysicsBase { public:
     void SetAsMoving(bool moving);              // 0x006B0130
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-    void Kill(bool removeNow);                  // 0x004C9B80
-};
+#include "engine/CThing.h"
 struct CBaseIntelligentPointer {
     virtual void v00();
     const CThing* PItem;                        // +0x04
@@ -136,5 +132,5 @@ void CTCShotDefinitionBase::Update()
     }
     PostUpdate();
     UpdateSound();
-    ParentThing->PhysicsTC->SetAsMoving(true);
+    ParentThing->GetPhysicsTC()->SetAsMoving(true);
 }

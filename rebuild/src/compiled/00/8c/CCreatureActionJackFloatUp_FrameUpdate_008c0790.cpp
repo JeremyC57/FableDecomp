@@ -1,4 +1,5 @@
 // CCreatureAction_JackFloatUp::FrameUpdate() -- base FrameUpdate; while moving, raise the creature by FloatSpeed per frame, clamped to StartHeight + FloatHeight
+// Leaf: ?FrameUpdate@CCreatureAction_JackFloatUp@@UAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_frameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -13,7 +14,7 @@
 // `Z > limit`, and the clamp copies the limit as a dword. Members from the engine header (PDB +0x12c.. sit 0x18 high: retail
 // CCombatActionBase is 0x114 bytes). The physics component is reached through an inline accessor so it loads straight into ecx.
 #include "engine/C3DVector.h"
-struct CPhysicsComponent {
+struct CTCPhysicsBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -22,12 +23,7 @@ struct CPhysicsComponent {
     virtual void v30();
     virtual void SetPosition(const C3DVector& position);   // slot 31 (+0x7c)
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CPhysicsComponent* m_pPhysics;          // +0x60
-    const C3DVector& GetPos() const;   // 0x004C73D0
-    CPhysicsComponent* GetPhysics() const { return m_pPhysics; }
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -79,6 +75,6 @@ void CCreatureAction_JackFloatUp::FrameUpdate()
         float limit = FloatHeight + StartHeight;
         if (target.Z > limit)
             target.Z = limit;
-        PCreature.GetPItem()->GetPhysics()->SetPosition(target);
+        PCreature.GetPItem()->GetPhysicsTC()->SetPosition(target);
     }
 }

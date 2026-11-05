@@ -1,4 +1,5 @@
 // CCreatureAction_BalverineCorneredJumpIntoSky::Initialise() -- names the animation "ATTACK_THEN_JUMP_INTO_SKY", runs the base Initialise, clears the byte at +0x10 of the creature's interface-9 component, calls the physics component's virtual slot 84 with 0 and marks the creature as not willable
+// Leaf: ?Initialise@CCreatureAction_BalverineCorneredJumpIntoSky@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CC9C0, length 151 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0,
@@ -10,34 +11,14 @@
 // the PCreature address rides in edi; one `push ecx` frame slot for the lookup key. Retail CCombatActionBase is 0x114 bytes
 // (engine/CCreatureAction_BalverineCorneredJumpIntoSky.h is the PDB's 0x12c-byte layout), so `this` is modelled locally.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase;
 struct CTCGraphicAppearance;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0xc];
-    CTCPhysicsBase* m_pPhysics;             // +0x60
-    CTCGraphicAppearance* m_pGraphicAppearance;   // +0x64
-    CTCPhysicsBase* GetPhysics() const { return m_pPhysics; }                           // inline accessors: the member is
-    CTCGraphicAppearance* GetGraphicAppearance() const { return m_pGraphicAppearance; }   //   loaded straight into ecx
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -54,11 +35,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-class CCharString { public:                        // one pointer; the defaulted length lets the literal convert implicitly
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                         // 0x0099EAE0
-};
+
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -100,8 +77,8 @@ void CCreatureAction_BalverineCorneredJumpIntoSky::Initialise()
     SetCombatAnimation("ATTACK_THEN_JUMP_INTO_SKY");
     CCombatActionBase::Initialise();
     CTCCreatureFlags9* pFlags;
-    if (PCreature.GetPItem()->GetInterface(&pFlags, 9))
+    if (PCreature.GetPItem()->GetTC(TCI_TARGETED, &pFlags))
         pFlags->m_canBeTargeted = 0;
-    PCreature.GetPItem()->GetPhysics()->SetFlying(false);
+    PCreature.GetPItem()->GetPhysicsTC()->SetFlying(false);
     SetThingAsNotBloodyWillableAtAll(PCreature.GetPItem(), true);
 }

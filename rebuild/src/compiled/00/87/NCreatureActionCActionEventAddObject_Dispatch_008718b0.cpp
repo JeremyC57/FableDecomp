@@ -1,4 +1,5 @@
 // NCreatureAction::CActionEventAddObject::Dispatch(const CCreatureActionBase&) -- when the creature can carry: resolve the hand slot and the object def by name, create the object at the creature's position for the main player and put it in that carry slot, optionally tagging it to be destroyed when the action finishes
+// Leaf: ?Dispatch@CActionEventAddObject@@UAEXABVCCreatureActionBase@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -23,11 +24,9 @@ class CTCBase;
 class CCreatureActionBase;
 class CGameCameraManager;
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector First;
@@ -35,31 +34,9 @@ class CRightHandedSet { public:
     CRightHandedSet() : First(0.0f, 0.0f, 1.0f), Second(0.0f, 1.0f, 0.0f) { }
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;             // 0x004C73D0
-    CTCBase* AddTC(const CCharString& name, bool activate, void* params);   // 0x004C9D60
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCCarrying { public:                            // interface 70
     void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);   // 0x006A1F80
 };
@@ -112,7 +89,7 @@ __forceinline void CActionEventAddObject::CreateObjectInHand(CTCCarrying* carryi
     long objectDef = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(Object);
     if (objectDef > 0) {
         CThing* thing = ((CThing*)CThingObject::Create(objectDef, *(&position), player, (CRightHandedSet const*)(&orientation), 0, ""));
-        if (thing != 0 && !(thing->m_flags91 & 1)) {
+        if (thing != 0 && !thing->IsDead()) {
             carrying->PutThingInCarrySlot(thing, slot, true);
             if (DestroyOnExit)
                 thing->AddTC("CTCDestroyThingOnActionFinish", false, 0);
@@ -123,7 +100,7 @@ __forceinline void CActionEventAddObject::CreateObjectInHand(CTCCarrying* carryi
 void CActionEventAddObject::Dispatch(const CCreatureActionBase& action)
 {
     CTCCarrying* carrying;
-    if (GetThing()->GetInterface(&carrying, 70)) {
+    if (GetThing()->GetTC(TCI_CARRYING, &carrying)) {
         long player = CMainGameComponent::Get()->GetPlayerManager()->GetMainPlayerNumber();
         C3DVector position = GetThing()->GetPos();
         CRightHandedSet orientation;

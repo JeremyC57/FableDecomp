@@ -1,4 +1,5 @@
 // CThingSearchTools::ForEachInRoughArea<CThingPhysical, CThingFilter_None, bool (__fastcall*)(CThingPhysical&)>
+// Leaf: ??$ForEachInRoughArea@VCThingPhysical@@VCThingFilter_None@@P6I_NAAV1@@Z@CThingSearchTools@@QAE_NABVC2DBoxI@@VCThingFilter_None@@ABQ6I_NAAVCThingPhysical@@@Z@Z
 // (const C2DBoxI& area, CThingFilter_None filter, bool (__fastcall* const& func)(CThingPhysical&)) -- calls func on every
 // physical thing linked into a mapwho cell overlapping the area (each thing once per search: the global search stamp),
 // over every overlapping thing map and every mapwho level; true when any call returned true
@@ -17,10 +18,8 @@ class C2DBoxI { public:
     C2DBoxI() {}
     C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) {}
 };
-class CThing { public:
-    unsigned char _pad00[0x6c];
-    unsigned long ThingTypeFlags;                          // +0x6c
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingPhysical : public CThing { public:};
 class CThingFilter_None { public: bool operator()(const CThing&) const { return true; } };
 struct CThingMapEntry {
@@ -103,7 +102,7 @@ template<class T, class F, class G> bool CThingSearchTools::ForEachInRoughArea(c
                         if (entry->SearchStamp < g_SearchStamps.Stamp) {
                             entry->SearchStamp = g_SearchStamps.Stamp;
                             CThing* thing = entry->Thing;
-                            if ((thing->ThingTypeFlags & 3) == 3 && filter(*thing) && func(*(T*)thing))
+                            if ((thing->GetTypeFlags() & 3) == 3 && filter(*thing) && func(*(T*)thing))
                                 result = true;
                         }
                     }

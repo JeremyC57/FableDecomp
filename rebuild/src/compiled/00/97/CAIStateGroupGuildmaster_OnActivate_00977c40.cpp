@@ -1,4 +1,5 @@
 // CAIStateGroup_Guildmaster::OnActivate() -- find the bodyguards, collect every "GuildmasterTeleportMarker" track thing within 55 units of the guildmaster as teleport markers, reset the will/teleport frames and make sure the creature is in mode 0x3b
+// Leaf: ?OnActivate@CAIStateGroup_Guildmaster@@UAEXXZ
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00977C40, length 436 bytes (+ int3 padding; `and esp,-8` frame for the 8-byte
@@ -18,36 +19,17 @@
 // +0x38 / +0x3c: the vector is 12 bytes in STLport).
 #include "engine/C3DVector.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPos() const;             // 0x004C73D0
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-    }
-};
+
 class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
 };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
+
 class CThingFilter_HasTrackName { public:
     CCharString Name;
     CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
@@ -149,7 +131,7 @@ void CAIStateGroup_Guildmaster::OnActivate()
     LastWillFrame = 0;
     LastTeleportFrame = 0;
     CTCCreatureModeManager* modes;
-    GetCreature()->GetInterface(&modes, 0x31);
+    GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
     if (!modes->HasMode(0x3b))
         modes->AddMode(0x3b);
 }

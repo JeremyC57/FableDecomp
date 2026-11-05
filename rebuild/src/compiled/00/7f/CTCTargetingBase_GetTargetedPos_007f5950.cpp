@@ -10,10 +10,7 @@
 // copied into pos with dword moves (implicit C3DVector operator=; the user default ctor makes the
 // type non-POD, which moves the hidden result pointer into ecx).
 #include "engine/C3DVector.h"
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -56,7 +53,7 @@ class CTCTargetingBase : public CTCBase { public:
 
 static inline bool IsThingAlive(const CIntelligentPointer<CThing>& p)
 {
-    return p.GetPItem() && !(p.GetPItem()->m_flags91 & 1);
+    return p.GetPItem() && !p.GetPItem()->IsDead();
 }
 
 bool CTCTargetingBase::GetTargetedPos(C3DVector& pos, float radius) const

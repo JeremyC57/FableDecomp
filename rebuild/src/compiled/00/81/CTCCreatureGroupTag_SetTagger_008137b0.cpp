@@ -1,4 +1,5 @@
 // CTCCreatureGroupTag::SetTagger(const CThing* tagger) -- record an active member as the tagger (UID + frame); always returns false
+// Leaf: ?SetTagger@CTCCreatureGroupTag@@QAE_NPBVCThing@@@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008137B0, length 45 bytes (+3 int3). Callers: the minion kid group-tag AI
 // state (0x009341AE, 0x00934381).
@@ -6,13 +7,7 @@
 // Shape: both exits end in `xor al,al` -- the function's bool result is a constant false (the effect is the two stores).
 // TaggerUID (+0x28, unsigned __int64) is copied dword by dword from CThing::UniqueID (+0x18), then TaggedFrame (+0x30)
 // takes the current frame. PDB names: CTCCreatureGroupTag {TaggerUID +0x28, TaggedFrame +0x30}, sizeof 0x38.
-class CThing { public:
-    unsigned char _pad00[0x18];
-    unsigned __int64 UniqueID;              // +0x18
-    unsigned char _pad20[0x71];
-    unsigned char Dead : 1;                 // +0x91 bit 0
-    unsigned __int64 GetUID() const { return UniqueID; }
-};
+#include "engine/CThing.h"
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -73,7 +68,7 @@ class CTCCreatureGroupTag : public CTCCreatureGroup { public:
 bool CTCCreatureGroupTag::SetTagger(const CThing* tagger)
 {
     if (IsActiveMember(tagger)) {
-        TaggerUID = tagger->UniqueID;
+        TaggerUID = tagger->GetUniqueID();
         TaggedFrame = CWorld::GetFrame();
     }
     return false;

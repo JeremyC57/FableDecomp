@@ -15,31 +15,11 @@
 //   `xor eax,eax`) like the landed 0x006A8B40; the conversion-temporary key sits in the dead thing-argument slot,
 //   the component is loaded into eax for the `lea ecx,[eax+0Ch]`.
 class CTCBase;
-enum ETCInterfaceType { TC_EXCLUSIVE_USE = 0x2f };
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];               // +0x20 bitset<274>
-    CInterfaceMap Components;                       // +0x44
-    bool HasTC(ETCInterfaceType type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline bool PeekTC(const T** pp) const
-    {
-        if (HasTC(T::StatGetInterfaceType())) {
-            *pp = (const T*)Components.Find(T::StatGetInterfaceType())->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -48,7 +28,7 @@ class CBaseObjectPointer;
 
 class CTCExclusiveUse {
 public:
-    static ETCInterfaceType StatGetInterfaceType() { return TC_EXCLUSIVE_USE; }
+    static ETCInterfaceType StatGetInterfaceType() { return TCI_EXCLUSIVE_USE; }
     unsigned char _pad00[0x0c];                     // +0x00 CTCBase
     CBaseIntelligentPointer User;                   // +0x0c CIntelligentPointer<CThing>
 };
@@ -60,6 +40,6 @@ public:
 
 bool CThingFilter_IsNotBeingExclusivelyUsed::operator()(const CThing& thing) const
 {
-    const CTCExclusiveUse* exclusive;
+    const const CTCExclusiveUse* exclusive;
     return thing.PeekTC(&exclusive) && !exclusive->User.GetPItem();
 }

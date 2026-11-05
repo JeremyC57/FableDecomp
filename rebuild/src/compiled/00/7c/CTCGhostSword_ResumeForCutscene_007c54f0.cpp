@@ -10,12 +10,8 @@
 // Shape: the landed CTCBoss::ClearEffects loop (0x007AEF60) with a SIGNED index and count
 // (`(long)Minions.size()` gives `test eax,0FFFFFFF8h ; jle` and `jl`): operator[] as `*(begin() + i)`,
 // the inline IsThingAlive on the element address (esi), the call re-reading begin (`lea ecx,[eax+ebp]`).
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char Flags91;                                  // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    void SetInLimbo(bool inLimbo);                          // 0x004C8CF0
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;

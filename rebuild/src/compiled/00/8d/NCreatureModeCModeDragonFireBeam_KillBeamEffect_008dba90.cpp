@@ -13,28 +13,10 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    template <class T> __forceinline void GetTC(T** ppOut, long interfaceType)   // leaves *ppOut alone when absent
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -58,7 +40,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -68,7 +50,6 @@ class CTCDParticleEmitter { public:                // interface type 0x4b compon
 public:
     void EnterTimelineEnd();   // 0x006E05F0
 };
-
 
 namespace NCreatureMode {
 struct CModeDragonFireBeam {
@@ -86,7 +67,7 @@ void CModeDragonFireBeam::KillBeamEffect()
     CIntelligentPointer<CThing>& effect = PBeamWeaponEffect;
     if (IS_THING_ALIVE(effect)) {
         CTCDParticleEmitter* emitter = 0;
-        effect.GetPItem()->GetTC(&emitter, 0x4b);
+        effect.GetPItem()->GetTC(TCI_PARTICLE_EMITTER, &emitter);
         emitter->EnterTimelineEnd();
     }
 }

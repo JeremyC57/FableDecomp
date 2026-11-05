@@ -13,11 +13,10 @@
 // copies it into the named local and destroys it: no NRVO through the inline); the trace is the whole operator+
 // chain handed to an inline no-op. The attacked creature's record is the inline GetCombatantInfo (find, `->value`).
 // Layout: the landed CCombatManager model (Combatants +0x10).
-class CCharString { public:
-    void* m_pData;
-    CCharString(const CCharString& other);         // 0x0099EC30
-    ~CCharString();                                // 0x0099EAE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall GetWorldFrameString();      // 0x0049D880
@@ -30,9 +29,6 @@ class CDefStringTable { public:
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}     // the trace output, compiled out
 
-class CThing { public:
-    CDefString GetDefName() const;   // 0x004C7CC0 (Ego_r.pdb ?GetDefName@CThing@@QBE?AVCDefString@@XZ)
-};
 class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;                     // +0x18

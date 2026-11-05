@@ -17,36 +17,11 @@
 // Opt: /O2 (16-aligned entry).
 #include "engine/C3DVector.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
-    CInterfaceMap Components;                            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (T*)it->second;
-        return true;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
@@ -70,7 +45,6 @@ public:
 }
 class CTCEntityEvents {
 public:
-    enum { INTERFACE_TYPE = 0x42 };
     void AddEvent(NEntityEvents::CEventBase* event);     // 0x008113C0
 };
 enum EMessageEventType { MESSAGE_EVENT_0x46 = 0x46 };
@@ -116,6 +90,6 @@ void CGameScriptInterface::EntitySetAsPickLocked(const CScriptThing& thing) cons
     World->PMessageEventManager->AddMessage(MESSAGE_EVENT_0x46, 50, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, door);
     CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCEntityEvents* events;
-    if (hero && !hero->IsDead() && door->GetTC(&events))
+    if (hero && !hero->IsDead() && door->GetTC(TCI_ENTITY_EVENTS, &events))
         events->AddEvent(new NEntityEvents::CEventItemUsed(*hero));
 }

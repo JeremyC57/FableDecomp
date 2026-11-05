@@ -17,26 +17,12 @@ class CTCOpinionSource { public:
     bool PopSourceDef();                    // 0x00771510
     bool HasNoSourceDefs() const { return m_defStackFirst == m_defStackLast; }
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    virtual void v00();
-    unsigned char _pad04[0x1c];
-    unsigned long m_presentBits[9];         // +0x20 bitset of the interface types present
-    CInterfaceMap m_interfaces;             // +0x44
-    void RemoveTC(ETCInterfaceType interfaceType);      // 0x004C9840
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-};
+
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                          // +0x04
@@ -55,9 +41,9 @@ public:
 
 void COpinionReactionManager::ClearOpinionSource(CThing* thing, bool popOneDef)
 {
-    if (thing->HasTC(TC_OPINION_SOURCE))
+    if (thing->HasTC(TCI_OPINION_SOURCE))
     {
-        CTCOpinionSource* source = (CTCOpinionSource*)thing->GetTC(TC_OPINION_SOURCE);
+        CTCOpinionSource* source = (CTCOpinionSource*)((CTCOpinionSource*)&thing->GetTC(TCI_OPINION_SOURCE));
         if (!popOneDef || (source->PopSourceDef(), source->HasNoSourceDefs()))
             thing->RemoveTC((ETCInterfaceType)(TC_OPINION_SOURCE));
     }

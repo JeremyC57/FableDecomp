@@ -13,11 +13,8 @@
 // is a named local; the outer two calls evaluate their argument first and fetch the map again each time.
 class CBaseObject;
 #include "engine/C3DVector.h"
-class CCharString { public: void* m_pData; };
-
-class CThing { public:
-    const C3DVector& GetPos() const;      // 0x004C73D0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 struct CBaseIntelligentPointer {
     virtual void v00();

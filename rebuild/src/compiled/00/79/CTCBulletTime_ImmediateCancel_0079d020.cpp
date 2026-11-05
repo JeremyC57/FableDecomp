@@ -27,28 +27,13 @@ class CTCBulletTime : public CTCBase, public CTCBulletTimeLayout
 {
 };
 struct CTCBaseInterface;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 UsingComponents
-    CInterfaceMap m_interfaces;                 // +0x44 Components
-    void RemoveTC(ETCInterfaceType interfaceType);          // 0x004C9840
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)((CTCBaseInterface*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 struct CTCTimeControlled {                      // interface type 0x46
     unsigned char _pad00[0x1c];
     bool m_flag1c;                              // +0x1c
@@ -116,7 +101,7 @@ struct CTCBulletTimeImpl : CTCBulletTime {
     __forceinline void StopSound(unsigned long sound)   // out of line at 0x0079CEE0
     {
         CTCSoundEmitter* emitter;
-        if (GetParentThing()->GetInterface(&emitter, 0x10))
+        if (GetParentThing()->GetTC(TCI_SOUND_PLAYER, &emitter))
             emitter->StopSample(sound);
     }
     void ImmediateCancel();

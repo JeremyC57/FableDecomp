@@ -9,12 +9,7 @@
 #pragma optimize("s", on)
 class CBaseObject;
 class CBaseObjectPointer;
-class CThing {
-public:
-    unsigned char _pad[0x91];
-    unsigned char Flags;                                  // +0x91 bit 0: dead
-    bool IsDead() const { return (Flags & 1) != 0; }
-};
+#include "engine/CThing.h"
 class CBaseIntelligentPointer {                           // vtable 0x0129C95C (vptr + PData, 8 bytes)
 public:
     CBaseIntelligentPointer();                            // 0x00A01B10

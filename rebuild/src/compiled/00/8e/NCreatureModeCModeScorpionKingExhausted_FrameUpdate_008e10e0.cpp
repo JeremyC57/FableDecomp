@@ -11,27 +11,10 @@
 //   function returns (if/else), so the recover test sits in the else arm with its own epilogue.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;            // +0x44
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
-        return (T*)sel->second;
-    }
-};
 
 class CAnimateThing { public:
     long          UpdateMode;              // +0x00
@@ -70,8 +53,8 @@ void NCreatureMode::CModeScorpionKingExhausted::FrameUpdate()
 {
     CModeBase::FrameUpdate();
     CTCAnimationComplex* tc = 0;
-    if (ParentThing->HasTC(0x5a))
-        tc = ParentThing->GetTC<CTCAnimationComplex>(0x5a);
+    if (ParentThing->HasTC(TCI_ANIMATION))
+        tc = ((CTCAnimationComplex*)&ParentThing->GetTC(TCI_ANIMATION));
     CAnimateThing& animate = tc->GetAnimation();
     if (RecoveryCount)
         --RecoveryCount;

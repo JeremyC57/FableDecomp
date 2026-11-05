@@ -10,11 +10,7 @@
 //   quest filter, this+4 -> the area filter); CFilter_Bind2 is the Ego_r.pdb template.
 // Callees: CThingFilter_IsInQuestOrNullQuest::operator() @ 0x006A7C60, CTCPhysicsBase::GetBoundingInfo(C3DVector&, float&) const
 //   @ 0x006AF640, __ftol2 @ 0x00BFEA70 (six times).
-class CThing {
-public:
-    unsigned char _pad_0x00[0x60];
-    class CTCPhysicsBase* PhysicsTC;                  // +0x60
-};
+#include "engine/CThing.h"
 
 // ---- the overlapping-area filter (inline in retail) ----------------------------------------------------------------
 #include "engine/C3DVector.h"
@@ -34,7 +30,7 @@ public:
     const C2DBoxI* Area;                              // +0x00
     __forceinline bool operator()(const CThing& thing) const
     {
-        const CTCPhysicsBase* physics = thing.PhysicsTC;
+        const const CTCPhysicsBase* physics = thing.GetPhysicsTC();
         if (!physics)
             return false;
         C3DVector centre;
@@ -62,7 +58,6 @@ template <class A, class B> class CFilter_Bind2 { public:     // both filters, h
     const B& Second;
     template <class T> bool operator()(const T& thing) const { return First(thing) && Second(thing); }
 };
-
 
 typedef CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea> CLeafFilter;
 template bool CLeafFilter::operator()<CThing>(const CThing&) const;

@@ -1,4 +1,5 @@
 // CTCGatherPointRadialArea::vfunc_28(const C3DVector& position) -- TRUE when the position lies strictly inside the gather radius around the owning thing (2D, squared distances)
+// Leaf: ?vfunc_28@CTCGatherPointRadialArea@@QAEJABVC3DVector@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FFD60, length 75 bytes.
 // Callees: the owner's position accessor @ 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof", propagated; it returns the
@@ -10,9 +11,7 @@
 // sum squares the top-of-stack delta (dy) first; `long` result (`mov eax,1` / `xor eax,eax`).
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;                     // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 struct CTCGatherPointRadialArea {
     unsigned char _pad_0x00[0x04];                      // vptr

@@ -1,4 +1,5 @@
 // CCreatureAction_ForcePushOutOf::PerformAction() -- add a CTCForcePushPower component to the caster (ignoring friendlies when OnlyHitEnemies), then leave creature mode 0x5b
+// Leaf: ?PerformAction@CCreatureAction_ForcePushOutOf@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BA0B0, length 143 bytes, plain `ret`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
@@ -13,36 +14,12 @@
 class CTCBase;
 class CTCParamsBase;
 
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-public:
-    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -93,6 +70,6 @@ void CCreatureAction_ForcePushOutOf::PerformAction()
     if (OnlyHitEnemies)
         power->IgnoreFriendlies = true;
     CTCCreatureModeManager* modes;
-    if (PCreature.GetPItem()->GetInterface(&modes, 0x31))
+    if (PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes))
         modes->RemoveMode(0x5b);
 }

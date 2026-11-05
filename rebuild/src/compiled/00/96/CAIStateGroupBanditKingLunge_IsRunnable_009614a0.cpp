@@ -9,11 +9,7 @@
 // Shape: `dist2 < R` gives `fcomp ; test ah,5 ; jp`; PTargetThing = CIntelligentPointer<..>(hero) (vtable 0x01231C4C).
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;           // 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated)
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 
 class CPlayer

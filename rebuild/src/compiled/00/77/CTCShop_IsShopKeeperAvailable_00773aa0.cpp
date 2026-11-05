@@ -9,40 +9,12 @@
 // CTCShopKeeper (PDB less the 4 bytes of the debug vector): RepressedOpinions +0x42 (PDB 0x46).
 // Shape: IS_THING_ALIVE inlined, the presence test on a third GetPItem, the type key in the `push ecx` slot.
 struct CTCBaseAny;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                 // +0x20
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-    unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long type)
-    {
-        if (HasInterface(type)) {
-            long key = type;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template <class T> __forceinline T* GetTC(long type)
-    {
-        long key = type;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
-        if (it == map->end() || type < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -62,7 +34,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -86,7 +58,7 @@ long CTCShop::IsShopKeeperAvailable() const
     if (StockState == 0 && IS_THING_ALIVE(PShopKeeper)) {
         CThing* keeper = PShopKeeper.GetPItem();
         CTCShopKeeper* shopKeeper;
-        if (keeper->GetInterface(&shopKeeper, 0x90)) {
+        if (keeper->GetTC(TCI_SHOP_KEEPER, &shopKeeper)) {
             if (shopKeeper->RepressedOpinions)
                 return 1;
         }

@@ -1,4 +1,5 @@
 // CTCInventoryTrade::ApplyHairCard(const CHairCardDef*) -- if the owning thing has the attachable-appearance-modifiers component (interface 0x5E), applies the card's appearance modifier with replacement
+// Leaf: ?ApplyHairCard@CTCInventoryTrade_Retail@@QAEXPBVCHairCardDef@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059D9C2, 78 bytes.
@@ -21,27 +22,9 @@ class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                  // +0x20
-    CInterfaceMap m_interfaces;               // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_present.test(type)) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCHeroAttachableAppearanceModifiers { public:
     void AddAppearanceModifierWithReplace(long modifierDefIndex);   // 0x00706950
@@ -59,6 +42,6 @@ struct CTCInventoryTrade_Retail : CTCBase {
 void CTCInventoryTrade_Retail::ApplyHairCard(const CHairCardDef* card)
 {
     CTCHeroAttachableAppearanceModifiers* modifiers;
-    if (ParentThing->GetInterface(0x5e, &modifiers))
+    if (ParentThing->GetTC(TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS, &modifiers))
         modifiers->AddAppearanceModifierWithReplace(card->AppearanceModifier);
 }

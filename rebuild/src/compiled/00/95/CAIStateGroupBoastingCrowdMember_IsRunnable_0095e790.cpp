@@ -1,4 +1,5 @@
 // CAIStateGroup_BoastingCrowdMember::IsRunnable() -- the live hero runs a boasting crowd (interface 0x73) whose current group is active (state not 0 or 10) and accepts this creature: target the group's boaster
+// Leaf: ?IsRunnable@CAIStateGroup_BoastingCrowdMember@@QAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retry 10b (combined getter sweep, FIXES B-15): the player manager and the brain's creature are read through inline getters (`g_pEngine->GetPlayerManager()`, `PBrain->GetCreature()`); plain member reads give the parked register difference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095E790, length 209 bytes (+ int3 padding).
@@ -11,33 +12,11 @@
 // assignment goes through a named local (retail re-forms its address with `lea`).
 class CThing;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing
-{ public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad_0x54[0x3d];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-        {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };                     // 0x00487DC0
@@ -107,7 +86,7 @@ bool CAIStateGroup_BoastingCrowdMember::IsRunnable()
     CThing* hero = g_pEngine->GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
     CCrowdGroup* group;
     CTCBoastingCrowdControl* crowd;
-    if (hero && !(hero->m_flags91 & 1) && hero->GetInterface(0x73, &crowd))
+    if (hero && !hero->IsDead() && hero->GetTC(TCI_BOASTING_CROWD_CONTROL, &crowd))
     {
         if (crowd->GetCrowdGroup(hero, &group) && group->State != 0 && group->State != 10
             && group->AcceptsMember(PBrain->GetCreature()))

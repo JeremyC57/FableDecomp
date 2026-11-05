@@ -1,4 +1,5 @@
 // CTCTextureDecal::DeleteDecal(long id) -- erases every decal entry with the given allocation id; if any went, marks the component dirty and forwards appearance request 4 to the parent thing
+// Leaf: ?DeleteDecal@CTCTextureDecal@@QAEXJ@Z
 // Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
 //   invented ?ForwardToGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe @ 0x0070A430, 81 bytes (`ret 4`).
@@ -39,9 +40,8 @@ struct CRetailList_DecalEntry {         // STLport list<CEntry>: the sentinel po
     }
 };
 
-class CThing { public:
-    void SetAsRenderedThisFrame(unsigned long reasons); // 0x004C7590
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 class CTCTextureDecal { public:
     void* __vftable;                    // +0x00

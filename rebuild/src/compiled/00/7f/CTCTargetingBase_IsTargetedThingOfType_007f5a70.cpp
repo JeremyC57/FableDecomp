@@ -9,28 +9,11 @@
 // Shape: the targeted thing is fetched again for the lookup (two virtual calls); the out-parameter GetInterface gives the dword load +
 // `test ch,2` and `mov eax,[eax+4] ; mov eax,[eax+0Ch]`; `return (flags & mask) != 0;` gives `neg ; sbb ; neg`.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCTargeted { public:
     unsigned char _pad00[0x0c];
     unsigned long TargetingFlags;               // +0x0c
@@ -49,8 +32,8 @@ class CTCTargetingBase { public:
 bool CTCTargetingBase::IsTargetedThingOfType(unsigned long typeMask) const
 {
     if (GetPTargetedThing()) {
-        const CTCTargeted* targeted;
-        if (GetPTargetedThing()->GetInterface(&targeted, 9))
+        const const CTCTargeted* targeted;
+        if (GetPTargetedThing()->PeekTC(TCI_TARGETED, &targeted))
             return (targeted->TargetingFlags & typeMask) != 0;
     }
     return false;

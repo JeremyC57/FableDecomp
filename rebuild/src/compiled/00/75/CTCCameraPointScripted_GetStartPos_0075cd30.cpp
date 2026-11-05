@@ -27,9 +27,7 @@ inline C3DVector operator+(const C3DVector& a, const C3DVector& b)
 
 class CRightHandedSet;
 
-class CThing { public:
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 #pragma pack(push, 1)
 class CTCCameraPointDefinitionBase {

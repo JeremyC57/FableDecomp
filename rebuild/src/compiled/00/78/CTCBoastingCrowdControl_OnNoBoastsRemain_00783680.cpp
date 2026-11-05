@@ -20,32 +20,10 @@
 //   CTCBoastingCrowdControl::OnNoBoastsRemain.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                      // +0x20 UsingComponents
-    CInterfaceMap m_interfaces;                          // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Flags91;                               // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    template <class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || wanted < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCCreatureGroupBoastingCrowd {
 public:
@@ -145,7 +123,7 @@ void CTCBoastingCrowdControl::OnNoBoastsRemain()
         CThing* crowdThing = (*it).second.GetPItem();
         if (IS_THING_ALIVE(crowdThing)) {
             CTCCreatureGroupBoastingCrowd* crowd;
-            crowdThing->GetInterface(&crowd, 0x74);
+            crowdThing->GetTC(TCI_CREATURE_GROUP_BOASTING_CROWD, &crowd);
             crowd->OnNoBoastsRemain();
         }
     }

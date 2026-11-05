@@ -1,4 +1,5 @@
 // CTCAssassinRush::SetupFacingDirection(C3DVector& direction) -- normalise the rush direction; when it points within 60 degrees of straight up, use the thing's facing instead
+// Leaf: ?SetupFacingDirection@CTCAssassinRush@@QAEXAAVC3DVector@@@Z
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A9870, length 222 bytes, `ret 4`. Called once, from
 // 0x007AAD0A; 0x007A6E20 is a byte-identical copy in another TU.
@@ -36,16 +37,13 @@ class C3DVector { public:
 };
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 
-struct CPhysicsBody {                           // the thing's physics body at +0x60
+struct CTCPhysicsBase {                           // the thing's physics body at +0x60
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
     virtual C3DVector GetFacing();              // slot 70 (+0x118)
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CPhysicsBody* PhysicsBody;                  // +0x60
-};
+#include "engine/CThing.h"
 class CTCAssassinRush {
 public:
     virtual void v00();
@@ -57,5 +55,5 @@ void CTCAssassinRush::SetupFacingDirection(C3DVector& direction)
 {
     direction.Normalise();
     if (Dot(direction, C3DVector(0.0f, 0.0f, 1.0f)) > cos(1.0471976115464443))
-        direction = ParentThing->PhysicsBody->GetFacing();
+        direction = ParentThing->GetPhysicsTC()->GetFacing();
 }

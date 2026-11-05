@@ -16,12 +16,9 @@
 class CTCBase;
 
 class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length);      // 0x0099EBF0
-    CCharString(const CCharString& other);           // (declared: by-value arguments are built in place)
-    ~CCharString();
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 namespace NUISystem {
 class CObserver { public:                                   // the observer interface at +4 of every component
@@ -54,30 +51,8 @@ class CManager { public:                                    // NUISystem::CManag
 };
 }
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    unsigned long m_presentBits[9];                  // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                      // +0x44
-    bool HasTC(long wanted)
-    {
-        if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long wanted)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || wanted < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-};
 
 class CTCInventory { public:                                // interface type 0x11
     unsigned char          _pad_0x000[0x214];
@@ -95,8 +70,8 @@ class CTCHeroOnlineScoreboard { public:
 void CTCHeroOnlineScoreboard::OnOkClicked()
 {
     CThing* thing = ParentThing;
-    if (thing->HasTC(0x11)) {
-        CTCInventory* inventory = thing->GetTC<CTCInventory>(0x11);
+    if (thing->HasTC(TCI_INVENTORY)) {
+        CTCInventory* inventory = ((CTCInventory*)&thing->GetTC(TCI_INVENTORY));
         NUISystem::CComponent* okButton = PScoreboardScreen->FindChild(CCharString("PC_OK_GAME_OKBUTTON_SCOREBOARD", -1));
         NUISystem::CManager::GetInstance()->ReleaseObserver_0055ca00(inventory->PMouse_Pointer);
         NUISystem::CManager::GetInstance()->ReleaseObserver_0055ca00(okButton);

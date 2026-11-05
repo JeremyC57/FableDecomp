@@ -21,38 +21,13 @@ class CTCBase;
 class CPlayer { public:
     bool IsMainPlayer() const;                       // 0x00487520
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_PEEKPLAYER
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char m_type;                            // +0x10 thing type (2 here: a creature that can be the player)
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long m_presentBits[9];                  // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                      // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_dead : 1;                        // +0x91 bit 0
-    unsigned char m_91_1 : 7;
-    bool IsDead() const { return m_dead; }
-    template<class T> __forceinline bool PeekTC(const T** ppOut, long interfaceType) const   // FableWin.pdb ??$PeekTC@...@CThing@@QBE_NPAPB...@Z
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* found = map->LowerBound((const ETCInterfaceType&)type);
-            const CInterfaceMap::value_type* it;
-            if (found != map->end() && !(interfaceType < found->first))
-                it = found;
-            else
-                it = map->end();
-            *ppOut = (const T*)it->second;
-            return true;
-        }
-        return false;
-    }
-public:
-    const CPlayer& PeekPlayer() const;   // 0x004C7A10
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -102,11 +77,11 @@ class CScriptModuleBase { public:                           // vtable 0x01255F74
 bool CScriptModuleBase::IsStretchAroundHero() const
 {
     if (GetPCameraPoint() && !GetPCameraPoint()->IsDead()) {
-        const CTCCameraPointDefinitionBase* point;
-        if (GetPCameraPoint()->PeekTC(&point, 0x3f) && point->IsHeroTheSubject())
+        const const CTCCameraPointDefinitionBase* point;
+        if (GetPCameraPoint()->PeekTC(TCI_CAMERA_POINT, &point) && point->IsHeroTheSubject())
             return true;
     }
-    if (GetPThingOrigin() && !GetPThingOrigin()->IsDead() && GetPThingOrigin()->m_type == 2
+    if (GetPThingOrigin() && !GetPThingOrigin()->IsDead() && GetPThingOrigin()->GetType() == 2
         && GetPThingOrigin()->PeekPlayer().IsMainPlayer())
         return true;
     return false;

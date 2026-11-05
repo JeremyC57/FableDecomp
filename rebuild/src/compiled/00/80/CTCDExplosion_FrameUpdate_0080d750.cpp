@@ -1,4 +1,5 @@
 // CTCDExplosion::FrameUpdate() -- run the dynamic explosion (or trigger the static one once), update the additional impulse, drop the emitters whose thing has gone, then kill the explosion thing when the dynamic explosion has finished / the emitters are gone / the life timer runs out
+// Leaf: ?FrameUpdate@CTCDExplosion@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080D750, 243 bytes, plain `ret`.
 // Callees: UpdateDynamicExplosion @ 0x0080D300, CreateStaticExplosion @ 0x0080D0B0, UpdateHitThings(const C3DVector&, const
@@ -16,9 +17,7 @@
 //   vector's inline empty() (`add eax,58h` forms its `this`); the kill tail is early returns (a ternary on CreatedEmitter
 //   materialises sete/movzx), the emitters' emptiness through Emitters.empty() (addressed off the erase's edi).
 #include "engine/C3DVector.h"
-class CThing { public:
-    void Kill(bool immediately);                // 0x004C9B80
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

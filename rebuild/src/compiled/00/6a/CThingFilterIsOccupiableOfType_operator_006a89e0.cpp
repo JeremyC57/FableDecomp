@@ -15,31 +15,12 @@
 // kind 0xac = `mov ecx,[eax+34h] ; test ch,10h`.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
-
-class CThing { public:
-    unsigned char  _pad00[0x20];
-    unsigned long  m_tcMask[8];                 // +0x20 which component kinds the thing holds
-    unsigned char  _pad40[4];
-    CTCMap         m_tcs;                       // +0x44
-    template<class T> bool GetInterface(T** ppOut, long kind) const   // the landed out-parameter GetInterface template
-    {
-        if (m_tcMask[kind >> 5] & (1UL << (kind & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(kind);
-            const CTCMap* map = &m_tcs;
-            const STCEntry* it = map->LowerBound(type);
-            if (it == map->end() || kind < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCSinglePersonOccupiable { public:              // component kind 0xac
     bool IsOfType(unsigned long typeMask) const;    // 0x0087C420
@@ -51,8 +32,8 @@ struct CThingFilter_IsOccupiableOfType {
 
 bool CThingFilter_IsOccupiableOfType::operator()(const CThing& thing) const
 {
-    CTCSinglePersonOccupiable* occupiable;
-    if (thing.GetInterface(&occupiable, 0xac) && occupiable->IsOfType(4))
+    const CTCSinglePersonOccupiable* occupiable;
+    if (thing.PeekTC(TCI_SINGLE_PERSON_OCCUPIABLE, &occupiable) && occupiable->IsOfType(4))
         return true;
     return false;
 }

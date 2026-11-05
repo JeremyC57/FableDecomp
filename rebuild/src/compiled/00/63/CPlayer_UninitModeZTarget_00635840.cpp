@@ -1,4 +1,5 @@
 // CPlayer::UninitModeZTarget(EPlayerMode mode, CProcessedInput* input) -- leaving the Z-target mode removes its sixteen input processes from the player interface, drops creature mode 25 from the hero, clears the ZTargeting flag, gives the camera back to automatic control and, unless the next mode is 0x12, clears the hero's locked target
+// Leaf: ?UninitModeZTarget@CPlayer@@QAEXJPAVCProcessedInput@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00635840, length 370 bytes (+ int3 padding), `ret 8`.
 // Identity: Ego_r.pdb `?UninitModeZTarget@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z` (a CPlayer::PlayerModeInfo
@@ -25,36 +26,11 @@ class CTCBase;
 
 class CAInputProcess { public: void RemoveFromInterface(); };          // 0x00A0D2D0
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template <class T> __forceinline T* GetTC(long wanted)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-};
 class CThingPlayerCreature : public CThing { };
 
 class CTCCreatureModeManager { public:                         // interface 0x31
@@ -103,8 +79,8 @@ void CPlayer::UninitModeZTarget(EPlayerMode mode, CProcessedInput* input)
     reinterpret_cast<CAInputProcess*>(InputProcessWatchForControlAngleChange_ptr)->RemoveFromInterface();
     CThing* hero = GetPControlledCreature();
     CTCCreatureModeManager* modes;
-    if (hero->HasTC(0x31))
-        modes = hero->GetTC<CTCCreatureModeManager>(0x31);
+    if (hero->HasTC(TCI_ENTITY_MODE_MANAGER))
+        modes = ((CTCCreatureModeManager*)&hero->GetTC(TCI_ENTITY_MODE_MANAGER));
     modes->RemoveMode(25);
     ZTargeting = false;
     CGameCameraManager* camera = 0;
@@ -112,8 +88,8 @@ void CPlayer::UninitModeZTarget(EPlayerMode mode, CProcessedInput* input)
         camera->SetAutomaticCameraControl();
     if (mode != 0x12) {
         CTCTargetingPlayer* targeting = 0;
-        if (hero->HasTC(8))
-            targeting = hero->GetTC<CTCTargetingPlayer>(8);
+        if (hero->HasTC(TCI_TARGETING))
+            targeting = ((CTCTargetingPlayer*)&hero->GetTC(TCI_TARGETING));
         targeting->ClearLockedTarget();
     }
 }

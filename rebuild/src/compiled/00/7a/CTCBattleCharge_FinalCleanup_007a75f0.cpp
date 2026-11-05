@@ -19,40 +19,16 @@
 //   test (retail jumps from a missing 0xA7 interface straight to the second CompletedExitModes test); the closing
 //   interface-0x109 test runs on the local outside the alive test.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayer {
 public:
     void EndSpecialMoveMode();                          // 0x00487150
 };
-class CThing {
-public:
-    unsigned char _pad00[0x10];
-    unsigned char State;                                // +0x10
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_stateFlags;                         // +0x91 (bit 0: dead)
-    bool IsDead() const { return (m_stateFlags & 1) != 0; }
-    unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    void Kill(bool immediately);                        // 0x004C9B80
-    CPlayer& GetPlayer();                               // 0x004C7A30
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingAICreature : public CThing {
 public:
     void SuspendAI(bool suspend, void* key);            // 0x00833A10
@@ -81,22 +57,22 @@ void CTCBattleCharge::FinalCleanup()
     CThing* parent = ParentThing;
     if (parent && !parent->IsDead()) {
         CTCSpecialAbilities* abilities;
-        if (parent->GetInterface(&abilities, 0xa7)) {
+        if (parent->GetTC(TCI_SPECIAL_ABILITIES, &abilities)) {
             if (abilities->CurrentAbility == 12) {
                 abilities->AbilityMutexLock = false;
                 abilities->CurrentAbility = 0;
             }
-            if (!CompletedExitModes && parent->State == 1)
+            if (!CompletedExitModes && parent->GetType() == 1)
                 ((CThingAICreature*)parent)->SuspendAI(false, 0);
         }
         if (!CompletedExitModes) {
             CTCCreatureModeManager* modes;
-            if (parent->GetInterface(&modes, 0x31))
+            if (parent->GetTC(TCI_ENTITY_MODE_MANAGER, &modes))
                 modes->RemoveMode(0x23);
-            if (!parent->IsDead() && parent->State == 2)
+            if (!parent->IsDead() && parent->GetType() == 2)
                 parent->GetPlayer().EndSpecialMoveMode();
         }
     }
-    if (parent->HasTC(0x109))
+    if (parent->HasTC(TCI_DESTROY_THING_ON_SPECIAL_ABILITY_FINISH))
         parent->Kill(false);
 }

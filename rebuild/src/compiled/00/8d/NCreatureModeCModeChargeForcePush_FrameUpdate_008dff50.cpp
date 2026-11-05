@@ -14,10 +14,8 @@
 class CThingCreatureBase;
 class CCreatureActionBase;
 
-class CThing { public:
-    unsigned char _pad00[0x6c];
-    unsigned long ThingTypeFlags;          // +0x6c
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
@@ -67,7 +65,7 @@ void NCreatureMode::CModeChargeForcePush::FrameUpdate()
 {
     CModeBase::FrameUpdate();
     CThingCreatureBase* creature = ParentThing;
-    if (creature->ThingTypeFlags & 8) {
+    if (creature->GetTypeFlags() & 8) {
         CCreatureAction_ForcePushOutOf action(*creature);
         if (OnlyHitEnemies)
             action.SetOnlyHitEnemies();

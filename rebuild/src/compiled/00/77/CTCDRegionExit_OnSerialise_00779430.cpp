@@ -20,12 +20,7 @@ class CTCBase : public CTCBaseLayout
 protected:
     CThingManager& GetThingManager();   // 0x00686AE0
 };
-class CThing { public:
-    unsigned char _pad00[0x8e];
-    short m_level;                              // +0x8e
-public:
-    bool IsLevelLess() const;   // 0x004C7930
-};
+#include "engine/CThing.h"
 class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
 };
@@ -61,11 +56,11 @@ void CTCDRegionExit::OnSerialise(CPersistContext& context, bool transfer)
     if (context.IsSaving()) {
         unsigned __int64 uid = 0;
         if (EntranceConnectedToUID != 0)
-            uid = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, EntranceConnectedToUID);
+            uid = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->GetCurrentMapNumber(), EntranceConnectedToUID);
         context.Transfer<unsigned __int64>("EntranceConnectedToUID", uid, 0);
     } else {
         context.Transfer<unsigned __int64>("EntranceConnectedToUID", EntranceConnectedToUID, 0);
         if (EntranceConnectedToUID != 0)
-            EntranceConnectedToUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, EntranceConnectedToUID);
+            EntranceConnectedToUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->GetCurrentMapNumber(), EntranceConnectedToUID);
     }
 }

@@ -12,28 +12,11 @@
 // Layout: PDB CTCActivationTrigger (0x20): PTCReceptor +0xC, ReceptorUID +0x10, Activated +0x18; retail CThing component bitset
 // +0x20 (type 0x65 = bit 5 of the dword at +0x2C) and interface map +0x44.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingManager { public:
     CThing* GetThingByUID(unsigned __int64 uid);    // 0x0051ED80
 };
@@ -64,7 +47,7 @@ void CTCActivationTrigger::OnInitialActivate()
 {
     if (ReceptorUID > 0) {
         CThing* receptor = GetThingManager().GetThingByUID(ReceptorUID);
-        receptor->GetInterface(&PTCReceptor, 0x65);
+        receptor->GetTC(TCI_ACTIVATION_RECEPTOR, &PTCReceptor);
         PTCReceptor->RegisterTrigger(this);
     }
 }

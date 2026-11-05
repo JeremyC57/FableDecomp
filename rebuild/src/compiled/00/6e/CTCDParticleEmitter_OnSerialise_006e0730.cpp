@@ -16,13 +16,8 @@
 // inline by-value getter returning a named local (no NRVO: built, copied into the argument and destroyed); the database is a
 // named local fetched before the argument pushes.
 class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString();                                          // 0x0099E4B0
-    CCharString(const CCharString& other);                  // 0x0099EC30
-    ~CCharString();                                         // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 static inline CCharString EmptyCCharString()
 {
     CCharString empty;
@@ -56,10 +51,6 @@ CParticleEmitterDatabase& __fastcall GetParticleEmitterDatabase();   // 0x00AEAA
 }
 extern bool g_bCompileFrontendDefinitions;                  // 0x013B8648
 
-class CThing {
-public:
-    void Kill(bool immediately);                            // 0x004C9B80
-};
 class CTCBase {
 public:
     virtual void v00();

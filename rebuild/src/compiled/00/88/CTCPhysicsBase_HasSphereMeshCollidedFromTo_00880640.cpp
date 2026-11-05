@@ -1,4 +1,5 @@
 // CTCPhysicsBase::HasSphereMeshCollidedFromTo(const CTCPhysicsBase& other, const C3DVector& from, const C3DVector& to, CPhysicsCollideResponse& response) const -- sweep this body's sphere (raised by its radius; the player uses a fixed 0.4) from `from` to `to` through the other body's physics mesh and report the hit position (lowered back) and normal
+// Leaf: ?HasSphereMeshCollidedFromTo@CTCPhysicsBase@@QBE_NABV1@ABVC3DVector@@1AAVCPhysicsCollideResponse@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00880640, 230 bytes (`ret 10h`; PDB ?HasSphereMeshCollidedFromTo@CTCPhysicsBase@@IBE_NABV1@ABVC3DVector@@1AAVCPhysicsCollideResponse@@@Z).
 // Callees: CTCPhysicsBase::GetPhysicsMeshObject() const @ 0x006B0850 (CPhysicsMeshObject by hidden pointer), CPhysicsMeshObject::
@@ -30,10 +31,7 @@ class CPhysicsMeshObject { public:                             // 0x40 bytes
     bool GetSphereIntersectionFromTo(float radius, const C3DVector& from, const C3DVector& to,
                                      CMeshIntersectionData& data) const;   // 0x00A120D0
 };
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char Type;                                 // +0x10 (2 = player)
-};
+#include "engine/CThing.h"
 class CTCPhysicsBase { public:
     virtual void v000();
     CThing*   ParentThing;                              // +0x04 (CTCBase)
@@ -54,7 +52,7 @@ bool CTCPhysicsBase::HasSphereMeshCollidedFromTo(const CTCPhysicsBase& other, co
                                                  CPhysicsCollideResponse& response) const
 {
     float radius;
-    if (ParentThing->Type == 2)
+    if (ParentThing->GetType() == 2)
         radius = 0.4f;
     else
         radius = Radius;

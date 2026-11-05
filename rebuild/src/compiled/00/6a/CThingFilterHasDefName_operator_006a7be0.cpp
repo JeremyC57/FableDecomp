@@ -1,14 +1,12 @@
-class CCharString { public:
-    void* p;
-};
+// Leaf: ??RCThingFilter_HasDefName@@QBE_NABVCThing@@@Z
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CDefString { public:
     void* p;
     bool operator==(const CCharString& rhs) const;
-};
-
-class CThing { public:
-    CDefString GetDefName() const;
 };
 
 class CThingFilter_HasDefName { public:

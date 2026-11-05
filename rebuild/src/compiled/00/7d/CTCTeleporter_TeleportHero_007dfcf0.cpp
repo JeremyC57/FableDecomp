@@ -34,12 +34,7 @@ class CTCPhysicsBase { public:
     virtual void v60(); virtual void v61(); virtual void v62();
     virtual float GetFacingAngleXY();           // slot 63 (+0xFC)
 };
-class CThing {
-public:
-    unsigned char   _pad_0x00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
@@ -87,7 +82,7 @@ void CTCTeleporter::TeleportHero()
     event.AddFloat(ParentThing->GetPos().X);
     event.AddFloat(ParentThing->GetPos().Y);
     event.AddFloat(ParentThing->GetPos().Z);
-    event.AddFloat(ParentThing->PhysicsTC->GetFacingAngleXY());
+    event.AddFloat(ParentThing->GetPhysicsTC()->GetFacingAngleXY());
     event.AddBool(true);
     event.AddBool(false);
     event.AddBool(false);

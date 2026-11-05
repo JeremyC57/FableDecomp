@@ -10,12 +10,8 @@
 //   CPhysicsMeshObject 0x40 bytes: the 0x44-byte frame is the mesh plus the string temporary).
 // Shape: nested ifs; the mesh object is a block-scoped local and the string an implicit conversion temporary, so the
 //   found flag survives both destructors in bl (`mov bl,al` ... `mov al,bl`); the false path is a separate epilogue.
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                               // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CPhysicsMeshObject {
 public:
@@ -42,19 +38,13 @@ public:
     CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
 
-class CThing {
-public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                     // +0x60
-};
-
 class CThingBuilding : public CThing {
 };
 
 bool __fastcall BuildingHasVolume(const CThingBuilding* building)
 {
     if (building) {
-        CTCPhysicsBase* physics = building->PhysicsTC;
+        const CTCPhysicsBase* physics = building->GetPhysicsTC();
         if (physics && physics->GetPhysicsMesh()) {
             CPhysicsMeshObject mesh = physics->GetPhysicsMeshObject();
             return mesh.HasContainmentVolume("BUILDING_BOUNDRY");

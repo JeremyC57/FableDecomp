@@ -13,9 +13,8 @@ class CLightDef { public:
     bool          m_bNeedsAppearanceUpdate;        // +0x42
 };
 
-class CThing { public:
-    void SetAsRenderedThisFrame(unsigned long reasons); // 0x004C7590
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 class CTCLight { public:
     void*            __vftable;                    // +0x00 (CTCBase)

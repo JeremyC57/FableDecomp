@@ -17,11 +17,7 @@
 //   named locals read in that order, and the SetCurrentAction object comes from an inline GetCreature() accessor, which
 //   VC7.1 evaluates before the remaining argument (PStuckEffect); the target-less unstuck action is the inlined
 //   one-argument constructor; each pointer clear is the landed "assign through a stack CIntelligentPointer" shape.
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    void Kill(bool immediately);                // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CCombatActionBase;
 
@@ -57,7 +53,7 @@ struct CCreaturePointer : CBaseIntelligentPointer {                       // CIn
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;

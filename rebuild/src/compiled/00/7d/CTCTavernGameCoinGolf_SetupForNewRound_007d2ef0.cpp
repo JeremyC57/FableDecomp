@@ -19,7 +19,7 @@
 //   (CThing*, const C3DVector&, const CRightHandedSet&, const C3DVector&, float, float); C3DVector, CRightHandedSet and CThing
 //   are classes (V in every PDB signature).
 class CThing;
-class CThing { };
+#include "engine/CThing.h"
 class CThingObject : public CThing { };              // CThingObject derives from CThing (PositionMesh takes the base)
 class C2DVector { public:
     float X, Y;

@@ -1,4 +1,5 @@
 // CAIStateGroupBehaviourBase::UpdateEmote() -- after the current speech plus a random wait, re-arm the emote timer and sometimes play ST_EMOTE
+// Leaf: ?UpdateEmote@CAIStateGroupBehaviourBaseMethods@@QAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00957A20, length 339 bytes.
 // Callees: CAIStateGroupBase::GetWorld @ 0x008FCFC0 and the static frame counter @ 0x0049D870, DivideByGameSpeed(float) @ 0x00415FD3 (__stdcall),
@@ -22,34 +23,16 @@ class CTCBase;
 class CThing;
 class CThingCreatureBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCTalk { public:                                // interface 0xf
     float GetCurrentSpeechDuration();           // 0x006E2840
 };
 
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
 class CSoundPair { public:
     long m_first;
     long m_second;
@@ -102,7 +85,7 @@ bool CAIStateGroupBehaviourBaseMethods::UpdateEmote()
     float now = CDisplayEngine::DivideByGameSpeed((float)GetWorld().GetFrame());
     if (now - TriggerTime > RandomWaitTime + ThisSpeechDuration) {
         CTCTalk* talk;
-        Brain()->PCreature->GetInterface(&talk, 0xf);
+        Brain()->PCreature->GetTC(TCI_TALK, &talk);
         ThisSpeechDuration = talk->GetCurrentSpeechDuration();
         TriggerTime = now;
         RandomWaitTime = (float)Random(100) * 0.03f + 2.0f;

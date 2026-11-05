@@ -7,7 +7,7 @@
 //   CThingSoundEmitter::~CThingSoundEmitter 0x00836A50); CIntelligentPointer<CThingAICreature> vtable 0x0123E7E0.
 // Shape: init list; the pointer member's inline ctor runs the base ctor out of line, stores its own vtable, then
 //   SetPItem(recipient). No EH frame (the deed is built in a TU without /EHsc).
-class CThing { public: virtual ~CThing(); };
+#include "engine/CThing.h"
 class CThingAICreature : public CThing { };
 class CFaction;
 enum EOpinionDeedType { OPINION_DEED_TYPE_NONE };

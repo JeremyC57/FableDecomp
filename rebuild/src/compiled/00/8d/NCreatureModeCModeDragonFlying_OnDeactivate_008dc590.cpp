@@ -9,33 +9,15 @@
 // Shape: the GetInterface result IS tested (the absent arm skips the flag store); the parent is reloaded after the
 // Active store and `this` is dead from there (esi reused).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CModeBase;
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char m_type;                   // +0x10 (1 = player creature)
-    unsigned char _pad11[0x0f];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 struct CTCFlagged {                         // the type-0x3a component
     unsigned char _pad00[0x50];
     unsigned char m_flag : 1;               // +0x50 bit 0
@@ -60,11 +42,11 @@ void CModeDragonFlying::OnDeactivate()
 {
     SetThingAsNotBloodyWillableAtAll(ParentThing, false);
     SetThingIsAbleToBeLifted(ParentThing, true);
-    if (ParentThing->m_type == 1)
+    if (ParentThing->GetType() == 1)
         ((CThingAICreature*)ParentThing)->SuspendAI(false, this);
     Active = false;
     CTCFlagged* tc;
-    if (ParentThing->GetInterface(&tc, 0x3a))
+    if (ParentThing->GetTC(TCI_MAPWHO, &tc))
         tc->m_flag = 1;
 }
 

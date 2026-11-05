@@ -1,0 +1,91 @@
+Wave 2 (plan phase 6, 2026-11-05/06): CThing -- the engine/CThing.h header wave.
+
+WHAT THE WAVE DOES
+1. Header (overlay/rebuild/include/engine/CThing.h, hdrcheck2 `default=same`; every existing macro `=same`; the three new nested
+   opt-ins are the only `DIFF` lines and each is off by default):
+   - FABLE_RETAIL_CTHING_GETTC_EXPANDED: GetTC<T>(ETCInterfaceType, T**) / PeekTC<T>(ETCInterfaceType, T**) const with the body written
+     out as the migrated rows' local models had it and as retail expands it (the UsingComponents test, the key copied into a local
+     inside the test, the map through a pointer local, CVectorMap::LowerBound out of line -- 0x0040F020 non-const / 0x004365B0 const --
+     the end-or-greater choice as a conditional expression, the store through the out pointer). The one-argument GetTC<T>(T**) /
+     PeekTC<T>(T**) of the PDB forward to it (T::StatGetInterfaceType()). Measured: over the first 140 migrated rows the `if`
+     re-assignment form passes 106, the conditional-expression form 115 (a superset: 0x004BFB40 loads the component straight into
+     ecx for the next call); written straight on Components VC7.1 hoists the key store above the test and reads end() as [esi+48h]
+     (0x0056FF3D, 66 v 68 bytes). GetTC(id, ptc) is FableWin's ??$GetTC@VCTCBase@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCBase@@@Z
+     (the only two-argument instantiation in the PDB; every other T is a non-PDB instantiation of the same template, noted for the
+     one-argument migration in NEXT.md).
+   - FABLE_RETAIL_CTHING_SCANINCLUSION_OUTOFLINE: IsIncludedInThingScans() declared only (retail calls 0x0048BC40 out of line in 4 TUs).
+   - FABLE_RETAIL_CTHING_STATEACCESS: the public members the migrated rows call out of line (AddToRenderList 0x004C7AC0, GetScriptThing
+     0x004C7E50, SetAsGameStatePersisted 0x004C7880, IsGameStatePersisted 0x004C8280, IsLevelPersistent 0x004C82A0, GetDefName
+     0x004C7CC0, SetPlayerNumber 0x004C7440, SetCurrentMapNumber 0x004C7580, SetForceFrameUpdate 0x004C7C60, DoActivationSequence
+     0x004C9CA0, RemoveTC 0x004C9840, IsAffectedByBulletTime 0x004C9920: Ego_r.pdb + FableWin.pdb spellings, the catalog rows, the rows'
+     local declarations citing those addresses), the FableWin-only inline flag accessors (IsInLimbo / IsActivated / IsDying /
+     IsKillLocked / IsGloballyLoaded / IsDeathPersistent; retail tests the +0x91..+0x93 bits in place everywhere), protected
+     UpdateThingScanInclusion 0x004C8C00 and PeekPlayerManager 0x004C79F0. Declarations only: no layout change.
+   - forward declarations CScriptThing / CDefString for the two return types.
+   Every row that includes engine/CThing.h or a header in its include closure (27 headers: CTCNoise, CTCOwnedEntity, CTCPerceiveThing,
+   CTCShopKeeper, CTCTavernGame, CTCVillageMember, CTCWallMount, CThingAICreature, CThingBaseDef, CThingBuilding, CThingCreatureBase,
+   CThingCreatureDef, CThingDeadCreature, CThingFilter_HasTC, CThingGameObject, CThingHolySite, CThingMarker, CThingNoise,
+   CThingObject, CThingPhysical, CThingPhysicalSwitch, CThingPlayerCreature, CThingSoundEmitter, CThingSwitch, CThingTrackNode,
+   CThingVillage) was gated with the overlay: 168 includer rows, 168 PASS (logs/gate_includers.log).
+2. Rows (tools/hdrmig6.py, the migration rewriter; every rule is in its header comment): the local `class CThing {...}` model and the
+   closure models the header brings (CClass, CBaseObject, CBaseClass, CCharString, CWideString, CDefPointer, CDefPointeeBase,
+   CVectorMap, CKeyPairCompareLess, CArray, CIVCountedPointeeBase, CResource, the local ETCInterfaceType enum, CInterfaceMap) replaced
+   by `#include "engine/CThing.h"` with the FABLE_RETAIL_CTHING* opt-ins the row's members need; the stand-in lookups respelled to the
+   header's members (GetInterface*(&v, N) / GetTC(N, &v) -> GetTC(TCI_X, &v) or PeekTC(TCI_X, &v); GetTC<T>(N) returning T* ->
+   ((T*)&x->GetTC(TCI_X)); the zeroed-out-pointer wrapper `T* GetTC<T>(N)` -> `T* v = 0; x->GetTC(TCI_X, &v);`; HasTC / HasInterface(N)
+   and raw UsingComponents word tests -> HasTC(TCI_X); interface numbers -> the Ego_r enumerators of engine/ETCInterfaceType.h, local
+   enumerators mapped by value); member reads by retail offset -> the header's accessors (+0x10 CClass::GetType(), +0x18 GetUniqueID(),
+   +0x60 GetPhysicsTC(), +0x64 GetTCGraphicAppearance(), +0x6C GetTypeFlags(), +0x8C GetDefGlobalIndex(), +0x8E GetCurrentMapNumber(),
+   +0x90 GetPlayerNumber(), +0x91 bit 0 IsDead() and the STATEACCESS flag accessors); inside CThing's own methods the members take the
+   header's names. The lookup's const-ness follows the index: a row binding only 0x004365B0 (LowerBound const) spells PeekTC, only
+   0x0040F020 GetTC (one target, one spelling; the out variable of a PeekTC becomes `const T*`).
+   Stand-in respells in the same rows: the physics component stand-in -> CTCPhysicsBase (42 rows), the driver stand-in -> CTCDriverBase
+   (4), a global local CTCGraphicAppearance -> namespace NGraphicAppearance (97; the header's GetTCGraphicAppearance returns that type),
+   `enum { ThingTypeMask = N }` -> static StatGetTypeFlags() (8, FABLE_RETAIL_CTHING_STATTYPEFLAGS), a local GetPlayer declared at
+   0x004C7A10 -> PeekPlayer (2). A derived local stand-in `class D : public CThing { unsigned char _pad[N]; ... }` is re-based on the
+   header (members below 0x98 are CThing's own, read through the accessors); a local class derived from a removed closure model keeps
+   its retail offsets (the leading pad re-counted from the header's size: CBaseObject 0x8, CClass 0x14, CBaseClass 0x4,
+   CDefPointeeBase 0x1c, CIVCountedPointeeBase 0x8, CResource 0x1c). A removed CCharString / CWideString model asks for
+   FABLE_RETAIL_CCHARSTRING / FABLE_RETAIL_CWIDESTRING (fable_string.h keeps the retail member sets behind them); a row's own
+   FABLE_RETAIL_* defines of the closure headers (STLport, strings, CVectorMap, CDefPointer, CClass) are hoisted above the include.
+   `// Leaf:` lines: 725 rows had none; the gate and vland grade the largest function of the object, which with the header can be an
+   out-of-line copy of a template instance VC7.1 emits beside the expansion (e.g. 0x00435000: the 112-byte ??$PeekTC@... COMDAT next to
+   the 98-byte GiveHeroGold); the index's symbol for the row (the function the landed object defines) is written as the Leaf line.
+   One Leaf line is corrected (IBE -> QBE mangling only; 0x00435070).
+
+GRADING
+   gate.py on every rewritten row (logs/gate_*.log, gate.tsv): PASS = same masked sha1 and the same retail target for every relocation.
+   vland --recheck-landed (read-only) on every gate-PASS row, with the overlay (grades.tsv) and from the landed text (grades_before.tsv):
+   a row passes the wave only with the same grade and behaviour verdict as its landed text, no new STANDIN_LEAF warning, and a
+   conscheck verdict of OK / OK(pdb) (one target, one spelling; OK(pdb): the new spelling is a PDB symbol replacing a non-PDB one, the
+   binders of the old spelling are listed in CALLERS.tsv for the respell at landing).
+
+COUNTS (PASS.tsv / DEFERRED.tsv / rows.tsv)
+   4,190 rows define CThing locally (survey). hdrmig6 rewrote 2,061; the gate passed 1,813 of them, vland --recheck-landed graded
+   every gate-PASS row (after: 1,761 MATCH / RELOCATION_MATCH PASS, 9 RELOC_IDENTITY, 9 DIFFER -- the catalog length differs from the
+   index length for those, the landed text grades the same way), conscheck OK/OK(pdb) on all but 34.
+   PASS 1,760 (38 MATCH + 1,722 RELOCATION_MATCH, behaviour PASS, same grade as the landed text, no new STANDIN_LEAF; 60 of them are
+   +0x10 CClass::GetType() rows added after the first pass). No introduced warnings; the inherited warnings are the rows' own
+   (SHARED_HEADER_AVAILABLE, RELOC_NAME, STANDIN_LEAF of their own leaf spellings, 38 rows measured against the landed text).
+   DEFERRED 2,430: 2,129 not rewritten (rows.tsv `UNCHANGED:` with the reason: header_lacks 754, local_std 567, closure_model
+   CDefPointer 460, quarantine_model 104, searchtools_template 103, own_definition 39, template_instance_row 38, unresolved_call 34,
+   closure_derived 31, nested_in_namespace 25, local_base 25, own_definition_of_header_inline 9, pack_region 6, blocks=2 1);
+   301 rewritten but not passed: compile_fail 150, bytes_differ 85, consistency 34 (conscheck FLAG: mostly rows binding both
+   LowerBound targets where the per-call const-ness was guessed wrong), grade 18 (9 RELOC_IDENTITY = the same symbol bound to both
+   LowerBound targets, 9 DIFFER = catalog length), targets_differ 13 (the gate's reloc extraction on `$L`-split functions: see
+   NEXT.md), standin_leaf 1.
+   Every row of the wave is listed once: PASS.tsv or DEFERRED.tsv (stage, reason).
+   CALLERS.tsv 62 relocation respells in PASS rows (the stand-in TC method spellings the rows carried: const-ness, the
+   NGraphicAppearance namespace, CTCPhysicsBase); BINDINGS.tsv ADD / RETIRE / KEEP for reloc_bindings.tsv.
+   LABELS.tsv: none (the catalog already spells 0x004C7A10 PeekPlayer / 0x004C7A30 GetPlayer). QUEUE_LINES.tsv: none closed by
+   this wave. RENAMES.tsv: header only.
+   Header: hdrcheck2 on overlay/rebuild/include (logs/hdrcheck2_CThing.log): engine/CThing.h default=same, every existing opt-in
+   =same, FABLE_RETAIL_CTHING_GETTC_EXPANDED / _SCANINCLUSION_OUTOFLINE / _STATEACCESS =DIFF (the new nested opt-ins, off by default).
+   Includers: 168 rows (every TU including engine/CThing.h or one of the 27 headers in its closure) gated with the overlay: 168 PASS
+   (logs/gate_includers.tsv).
+   Macros used by the PASS rows: FABLE_RETAIL_CTHING_GETTC_EXPANDED 911, FABLE_RETAIL_CTHING 440, _STATEACCESS 94, _MANAGERACCESS 28,
+   _STATTYPEFLAGS 8, _PEEKPLAYER 7, _GETTCDRIVER 4, _SCANINCLUSION_OUTOFLINE 2, _LEVELSCRIPT 1, _SCRIPTSUPERVISION 1 (counts over the
+   rewritten set).
+   Logs: logs/gate_*.log (the gate passes in order: the first full run, then the re-gates of the rows each tooling fix changed),
+   logs/vland_a*.log (after), logs/vland_bB*.log (before, the STANDIN_LEAF rows), logs/gate.tsv, grades.tsv, grades_before.tsv,
+   conscheck.tsv, targets_after.tsv, rows.tsv, hdrmig6.log, hdrcheck2_CThing.log.

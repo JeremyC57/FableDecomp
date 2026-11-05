@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update() -- face the armed player; when another guard is already admonishing, keep watching until the player disarms; otherwise post a numbered warning, follow and watch the player for four seconds, and on the third warning declare the player a criminal
+// Leaf: ?Update@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -23,11 +24,7 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 #include "engine/C3DVector.h"
-class CThing { public:
-    unsigned char _pad0[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;    // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingPhysical : public CThing { public:
     const C3DVector& PeekPos() const;       // 0x006A4D00
 };
@@ -53,7 +50,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {    // the MoveToThin
     virtual void v00();
     CIntelligentPointerThing(const CBaseIntelligentPointer& other);   // 0x00930D20
 };
-__forceinline bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !(((CThing*)thing.GetPItem())->m_flags91 & 1); }
+__forceinline bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !((CThing*)thing.GetPItem())->IsDead(); }
 class CMessageEventManager { public:
     void AddMessage(long type, unsigned long lifetime, const C3DVector* pos, CThing* from, CThing* to,
                     float range, float radius, long data);   // 0x00687540

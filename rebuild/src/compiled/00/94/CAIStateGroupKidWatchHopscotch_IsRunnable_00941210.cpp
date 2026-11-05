@@ -1,4 +1,5 @@
 // CAIStateGroup_KidWatchHopscotch::IsRunnable() -- update the fatigue flag from the activation rate (tired above 3 per minute, rested below 2.5), then, if not fatigued, find the nearest hopscotch board and cache its centre and radius
+// Leaf: ?IsRunnable@CAIStateGroup_KidWatchHopscotch@@QAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00941210, length 417 bytes (+ int3 padding).
 // Callees: CWorld::GetWorldFrame @ 0x0049D870 (static, twice), CThingCreatureBase::PeekPos @ 0x006A4D00 (the creature's
@@ -23,29 +24,11 @@ class C3DVector { public:
 };
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;    // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingPhysical : public CThing { public:
     const C3DVector& PeekPos() const;       // 0x006A4D00
 };
@@ -92,7 +75,7 @@ class CTCPhysicsBase { public:                         // interface 2
     virtual void v078(); virtual void v079(); virtual void v080(); virtual void v081(); virtual void v082(); virtual void v083();
     virtual void v084(); virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088(); virtual void v089();
     virtual void v090(); virtual void v091(); virtual void v092();
-    virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo();   // slot 93 (+0x174)
+    virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo() const;   // slot 93 (+0x174)
 };
 
 class CIsHopscotchBoard { public: CIsHopscotchBoard() { } };
@@ -159,8 +142,8 @@ bool CAIStateGroup_KidWatchHopscotch::IsRunnable()
                 return false;
             PHopscotchBoard = board;
         }
-        CTCPhysicsBase* physics;
-        ((CThing*)PHopscotchBoard.GetPItem())->GetInterface(&physics, 2);
+        const CTCPhysicsBase* physics;
+        ((CThing*)PHopscotchBoard.GetPItem())->PeekTC(TCI_PHYSICS, &physics);
         const CThingPhysicsMeshInfo* mesh = physics->GetPhysicsMeshInfo();
         HopscotchCentre = mesh->ToCentre + ((CThing*)PHopscotchBoard.GetPItem())->GetPos();
         HopscotchRadius = mesh->BoundingCircleRadius;

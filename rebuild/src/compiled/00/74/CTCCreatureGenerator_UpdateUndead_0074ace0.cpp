@@ -17,11 +17,8 @@ class CThing;
 class CThingCreatureBase;
 #include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);         // 0x0099EBF0
-    ~CCharString();                                          // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 namespace N_0062e900 { struct CCreatureActionBase {
     virtual void v00();
     unsigned char _body[0x110];
@@ -56,11 +53,7 @@ class CTCPhysicsBase { public:
     virtual void SetPosition(const C3DVector& pos);          // slot 31 (+0x7c)
 };
 #undef VF
-class CThing { public:
-    unsigned char   _pad0[0x60];
-    CTCPhysicsBase* PhysicsTC;                               // +0x60
-    const C3DVector& GetPos() const;                    // 0x004C73D0
-};
+
 class CThingCreatureBase : public CThing { public:
     bool IsFreeToPerformAction(const CCreatureActionBase& action);   // 0x00662210
     void SetCurrentAction(const CCreatureActionBase& action);        // 0x006644F0
@@ -124,7 +117,7 @@ void CTCCreatureGenerator::UpdateUndead()
                     }
                     C3DVector pos;
                     if (free && GetUndeadGenerationPoint(triggerer, &pos)) {
-                        creature->PhysicsTC->SetPosition(pos);
+                        creature->GetPhysicsTC()->SetPosition(pos);
                         creature->SetCurrentAction(CCreatureAction_RiseUpStrike(creature, triggerer));
                     }
                 } else {

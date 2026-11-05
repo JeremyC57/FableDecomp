@@ -20,13 +20,10 @@ class CTCBase;
 class CThing;
 class CBaseObject;
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -42,25 +39,6 @@ class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { 
     ~CCreatureAction_UnsheatheItemFromInventory();    // 0x005CC091
 };
 
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];                 // +0x20 component bitset
-    CInterfaceMap Components;                         // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Flags91;                            // +0x91 bit 0: dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &Components;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
@@ -111,17 +89,17 @@ void CCreatureAction_BattleChargeImpact::FinishAction()
 {
     CCombatActionBase::FinishAction();
     CTCSpecialAbilities* abilities;
-    if (PCreature->GetInterface(&abilities, 0xa7) && abilities->CurrentAbility == 12) {
+    if (PCreature->GetTC(TCI_SPECIAL_ABILITIES, &abilities) && abilities->CurrentAbility == 12) {
         abilities->AbilityMutexLock = false;
         abilities->CurrentAbility = 0;
     }
     CTCDParticleEmitter* emitter;
     if (IS_THING_ALIVE(Left)) {
-        Left->GetInterface(&emitter, 0x4b);
+        Left->GetTC(TCI_PARTICLE_EMITTER, &emitter);
         emitter->AttachToThing(*PCreature, 1, "", 0, 0.0f);
     }
     if (IS_THING_ALIVE(Right)) {
-        Right->GetInterface(&emitter, 0x4b);
+        Right->GetTC(TCI_PARTICLE_EMITTER, &emitter);
         emitter->AttachToThing(*PCreature, 1, "", 0, 0.0f);
     }
     if (IS_THING_ALIVE(PItemRemoved)) {

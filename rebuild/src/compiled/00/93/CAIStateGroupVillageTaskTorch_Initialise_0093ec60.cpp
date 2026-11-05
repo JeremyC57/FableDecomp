@@ -7,30 +7,12 @@
 //   (Ego_r.pdb, qualified base call), CVectorMap<ETCInterfaceType, CTCBase*, ...>::LowerBound 0x0040F020 (the inlined GetInterface
 //   on PBrain->GetCreature(), its out pointer the member itself, the key homed in the dead name-argument slot).
 // Header debt: engine/CAIStateGroup_VillageTaskTorch.h / CAIStateGroupBase.h are flat layouts; modelled locally.
-enum ETCInterfaceType { ETCInterfaceType_FIRST };
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    virtual ~CThing();
-    unsigned char _pad04[0x1C];
-    unsigned long PresentInterfaces[9];                    // +0x20 (the bitset of present interface types)
-    CInterfaceMap Interfaces;                              // +0x44
-    template <class T> __forceinline bool GetInterface(T** out, ETCInterfaceType type)
-    {
-        if (PresentInterfaces[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = type;
-            CInterfaceMap* map = &Interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingAICreature : public CThing { };
 class CCharString;
 class CTCVillageMember;
@@ -56,5 +38,5 @@ public:
 void CAIStateGroup_VillageTaskTorch::Initialise(CAIBrain& brain, CThingAICreature& creature, long id, EScriptAIPriority priority, const CCharString& name)
 {
     CAIStateGroupBase::Initialise(brain, creature, id, priority, name);
-    PBrain->GetCreature().GetInterface(&PTCVillageMember, (ETCInterfaceType)0x23);
+    PBrain->GetCreature().GetTC(TCI_VILLAGE_MEMBER, &PTCVillageMember);
 }

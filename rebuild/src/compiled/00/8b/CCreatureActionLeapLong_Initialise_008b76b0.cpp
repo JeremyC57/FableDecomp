@@ -16,12 +16,10 @@ class CThing;
 class CTCBase;
 class CTCParamsBase;
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CTCFacing {                                    // interface 2
@@ -31,29 +29,12 @@ struct CTCFacing {                                    // interface 2
     virtual C3DVector GetFacing() const;              // slot 70 (+0x118)
 };
 class CTCCreatureNavigation { public:                        // interface 7
-    bool IsPosNavLineOfSightTo(const C3DVector& pos); // 0x006CBA20
+    bool IsPosNavLineOfSightTo(const C3DVector& pos) const; // 0x006CBA20
 };
 class CTCSolidToThing { public:
     void AddThingNotSolidTo(CThing* thing);           // 0x00770FA0
 };
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                   // +0x20
-    CInterfaceMap m_interfaces;                       // +0x44
-    const C3DVector& GetPos() const;             // 0x004C73D0
-    CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -88,12 +69,12 @@ class CCreatureAction_LeapLong : public CCombatActionBase { public:
 
 void CCreatureAction_LeapLong::Initialise()
 {
-    CTCFacing* facingTC;
-    GetCreature()->GetInterface(&facingTC, 2);
+    const CTCFacing* facingTC;
+    GetCreature()->PeekTC(TCI_PHYSICS, &facingTC);
     C3DVector facing = facingTC->GetFacing();
     C3DVector target = GetCreature()->GetPos() - facing * 3.0f;
-    CTCCreatureNavigation* nav;
-    GetCreature()->GetInterface(&nav, 7);
+    const CTCCreatureNavigation* nav;
+    GetCreature()->PeekTC(TCI_NAVIGATION, &nav);
     if (nav->IsPosNavLineOfSightTo(target)) {
         SetCombatAnimation("MOVEMENT_LONG_BACK");
         NoRoom = false;

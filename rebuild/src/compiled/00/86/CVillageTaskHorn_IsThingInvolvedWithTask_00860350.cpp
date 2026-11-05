@@ -21,7 +21,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
-class CThing { public: virtual ~CThing(); };
+#include "engine/CThing.h"
 class CVillageTaskBase {                                  // RTTI base; 8 bytes (vptr + one word)
 public:
     virtual ~CVillageTaskBase();

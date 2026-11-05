@@ -15,6 +15,8 @@
 //   landed CThingVillage::Create 0x0083B7F0 and CThingAICreature::Create 0x00833800 read it there); the params object is
 //   vptr + Position + CRightHandedSet (0x28 bytes). The physics component is the engine CTCPhysicsBase header dispatched
 //   through a method-only adapter (the landed CThingVillage::Create model).
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #include "engine/CTCBase.h"
 #include "engine/CTCPhysicsBase.h"
 
@@ -43,10 +45,7 @@ struct CTCPhysicsMethods {                      // method-only adapter over the 
     virtual void Slot0(); virtual void Slot1(); virtual void Slot2();
     virtual void ConstructFromParams(const CTCParamsBase& params);    // slot 3 (+0x0C)
 };
-class CThing { public:
-    unsigned char     _pad00[0x60];
-    ::CTCPhysicsBase* PhysicsTC;                // +0x60 (Ego_r.pdb +0x70)
-};
+#include "engine/CThing.h"
 class CTCDRegionEntrance : public CTCBase {
 private:
     void Construct(const C3DVector& position);
@@ -54,7 +53,7 @@ private:
 
 void CTCDRegionEntrance::Construct(const C3DVector& position)
 {
-    ::CTCPhysicsBase* physics = ParentThing->PhysicsTC;
+    ::CTCPhysicsBase* physics = ParentThing->GetPhysicsTC();
     CTCParamsPhysicsBase params(position, CRightHandedSet(C3DVector(0.0f, 0.0f, 1.0f), C3DVector(0.0f, 1.0f, 0.0f)));
     reinterpret_cast<CTCPhysicsMethods*>(physics)->ConstructFromParams(params);
 }

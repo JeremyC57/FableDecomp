@@ -13,28 +13,11 @@
 // Shape: no look component branches straight to the Terminated store; the in-view result also lands on it.
 class CTCBase;
 #include "engine/C3DVector.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    void*         __vftable;
-    unsigned char _pad04[0x20 - 0x04];
-    unsigned long UsingComponents[9];              // +0x20
-    CInterfaceMap Components;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &Components;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCLook { public:                                   // interface 0x43
     void LookAtPos(const C3DVector* position, long priority);           // 0x00753E90
     bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b);   // 0x007534B0
@@ -64,7 +47,7 @@ public:
 void CActionTurnToFacePosition::Update()
 {
     CTCLook* look;
-    if (PTCScript->ParentThing->GetInterface(&look, 0x43)) {
+    if (PTCScript->ParentThing->GetTC(TCI_LOOK, &look)) {
         look->LookAtPos(&Position, 0x21);
         if (look->IsPosInViewRange(Position, Angle, false, false))
             Terminated = true;

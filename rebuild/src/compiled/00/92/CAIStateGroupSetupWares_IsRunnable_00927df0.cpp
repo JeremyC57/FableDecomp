@@ -1,4 +1,5 @@
 // CAIStateGroup_SetupWares::IsRunnable() -- runnable when the shop's stock state is out of step with its opening hours (open but packed away, closed but still set out, or mid-change) and the wares are not permanently stocked; a permanently stocked shop is just snapped to the right state instead.
+// Leaf: ?IsRunnable@CAIStateGroup_SetupWares@@UAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH -- the permanently-stocked branch is `if (open) SetStockState(0); else SetStockState(1); return false;` (one shared return-false tail after the second arm, which the no-shop / condition-false jumps also reach)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00927DF0, length 172 bytes (+ int3 padding).
@@ -14,46 +15,10 @@ class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        CInterfaceMap::value_type* sel;
-        if (it == map->end()) sel = map->end();
-        else if (it->first <= interfaceType) sel = it;
-        else sel = map->end();
-        return sel;
-    }
-};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -113,7 +78,7 @@ struct CAIStateGroup_SetupWares : CAIStateGroupBase {
 bool CAIStateGroup_SetupWares::IsRunnable()
 {
     CTCShopKeeper* keeper;
-    PBrain->PCreature->GetInterface(&keeper, 0x90);
+    PBrain->PCreature->GetTC(TCI_SHOP_KEEPER, &keeper);
     CTCShop* shop = keeper->GetShopTC();
     if (shop != 0) {
         if ((shop->IsOpeningHours() && shop->StockState == 1) || (!shop->IsOpeningHours() && shop->StockState == 0) ||

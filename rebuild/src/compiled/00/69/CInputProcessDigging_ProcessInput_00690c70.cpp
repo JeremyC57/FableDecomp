@@ -37,16 +37,7 @@ public:
         AddGameEvent(gameEvent);
     }
 };
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_tcMask[9];                     // +0x20: which component kinds the thing holds
-    bool HasTC(long kind) const
-    {
-        if (m_tcMask[kind >> 5] & (1UL << (kind & 31)))
-            return true;
-        return false;
-    }
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
@@ -72,7 +63,7 @@ public:
 
 void CInputProcessDigging::ProcessInput(const CInputEvent& event, CProcessedInput& input)
 {
-    if (IsEventButtonPressed(event) && IsEventGameAction(3, event) && MyPlayer->GetPControlledCreature()->HasTC(0xc6)) {
+    if (IsEventButtonPressed(event) && IsEventGameAction(3, event) && MyPlayer->GetPControlledCreature()->HasTC(TCI_IN_GAME_MENU)) {
         input.AddGameEvent(0x1a, 0x17, 1);
     }
 }

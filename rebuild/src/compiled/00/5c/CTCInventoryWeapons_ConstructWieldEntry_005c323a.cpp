@@ -5,7 +5,7 @@
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005C323A, 522 bytes, `ret 0Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // FableWin.pdb: ?ConstructWieldEntry@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NPAVCViewport@NUISystem@@@Z
-// Callees: NGameText::CDataBank::GetTextBySymbol @ 0x009C95E0 (CMainGameComponent::Get() 0x013B86A0 +0x14), CFrontEndManager::GetInstance
+// Callees: NGameText::CDataBank::GetTextBySymbol @ 0x009C95E0 (CMainGameComponent::Get() 0x013B86A0 +0x14), CManager::GetInstance
 // @ 0x0041E5F2, CManager::CreateMenuEntryComponent(const CWideString&, float, float, const CCharString&, float, CCharString, float,
 // CCharString) @ 0x00428494, CManager::CreateComponent @ 0x0041DB1D, CCountedPointer<CComponent>(T*) @ 0x00429C15 / copy @ 0x00428928 /
 // dtor @ 0x004291DE, CAction @ 0x0042BE50 + CCountedPointer<CAction> @ 0x0042AA29 / dtor @ 0x00429160, operator new @ 0x00BFEA1A,
@@ -84,13 +84,13 @@ class CComponent { public:
 };
 class CViewport : public CComponent { public:
 };
-class CManager { public:
+class CManager {
+public:
+    static CManager* __fastcall GetInstance();            // 0x0041E5F2
+ public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString icon, float d, CCharString button);   // 0x00428494
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();            // 0x0041E5F2
 };
 }
 
@@ -101,7 +101,7 @@ class CTCInventoryWeapons { public:
 CCountedPointer<NUISystem::CComponent> CTCInventoryWeapons::ConstructWieldEntry(bool melee, NUISystem::CViewport* viewport)
 {
     CDataBank* bank = CMainGameComponent::Get()->TextBank;
-    NUISystem::CFrontEndManager* manager = NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
     CWideString text = bank->GetTextBySymbol("TEXT_GUI_MENU_WIELD");
     CCountedPointer<NUISystem::CComponent> entry(manager->CreateMenuEntryComponent(text, 0.0f, 1.0f,
         "UI_WEAPON_MENU_ENTRY_ACTION_TEMPLATE_NEW", 0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));

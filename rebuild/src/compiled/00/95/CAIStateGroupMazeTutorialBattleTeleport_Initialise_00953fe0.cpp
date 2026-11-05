@@ -1,4 +1,5 @@
 // CAIStateGroup_MazeTutorialBattleTeleport::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority,
+// Leaf: ?Initialise@CAIStateGroup_MazeTutorialBattleTeleport@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // const CCharString&) -- base initialisation, then stamp the teleport frame and remember the creature's position.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00953FE0, length 84 bytes (+ int3 padding), `ret 14h`.
@@ -18,12 +19,9 @@ class CCharString;
 
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;         // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public:
 };
-
 
 class CWorld { public:
     static long __fastcall GetFrame();

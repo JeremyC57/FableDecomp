@@ -1,4 +1,5 @@
 // CAIStateGroup_MazeShieldedChase::IsRunnable() -- for a creature with interface 0x93, chase its live combat enemy:
+// Leaf: ?IsRunnable@CAIStateGroup_MazeShieldedChase@@UAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // adopt it as the target and run.
@@ -17,47 +18,10 @@ class CThingAICreature;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const     // the masked word (a bool return narrows to `shr ; test dl,1`)
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    // the same lookup with the end/hit choice written as one ternary (VC7.1 then loads the component straight
-    // into the register its first use wants)
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -73,7 +37,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -109,7 +73,6 @@ protected:
     CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
 public:
 };
-
 
 // Retail builds message filters as an expression chain: `IsOfType(n) && HasExtraData() && IsForThing(t)`.
 // Each `operator&&` returns a CFilter_Bind2/CFilter_Bind3 holding POINTERS to its operands (the filter
@@ -169,7 +132,7 @@ struct CTCCombatTarget {                        // interface type 8
     virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
     virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
-    virtual CThing* GetEnemy();                 // slot 29 (+0x74)
+    virtual CThing* GetEnemy() const;                 // slot 29 (+0x74)
 };
 
 struct CIntelligentPointerTarget : CBaseIntelligentPointer {   // vtable 0x01238C6C
@@ -185,11 +148,11 @@ struct CAIStateGroup_MazeShieldedChase : CAIStateGroupBase {
 
 bool CAIStateGroup_MazeShieldedChase::IsRunnable()
 {
-    if (PBrain->PCreature->HasTC(0x93)) {
-        CTCCombatTarget* combat;
-        PBrain->PCreature->GetInterfaceT(&combat, 8);
+    if (PBrain->PCreature->HasTC(TCI_PHYSICAL_SHIELD_SPELL)) {
+        const CTCCombatTarget* combat;
+        PBrain->PCreature->PeekTC(TCI_TARGETING, &combat);
         CThing* enemy = combat->GetEnemy();
-        if (enemy && !(enemy->m_flags91 & 1)) {
+        if (enemy && !enemy->IsDead()) {
             PTarget = CIntelligentPointerTarget(enemy);
             return true;
         }

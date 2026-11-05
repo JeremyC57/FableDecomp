@@ -11,53 +11,13 @@
 // ?IsMarriedToThePlayer@CTCWife@@QBE_NXZ / ?IsWillingToMarry@CTCWife@@QBE_NXZ); the interface number is not confirmed.
 // Shape: /O2 (16-aligned entry); the PeekTC out-pointer form.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x10];
-    unsigned char Type;                                  // +0x10 (1 = a creature)
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
-    CInterfaceMap Components;                            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (T*)it->second;
-        return true;
-    }
-    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        const CInterfaceMap* map = &Components;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (const T*)it->second;
-        return true;
-    }
-};
+
 class CTCWife {                                         // interface 0xd7
 public:
-    enum { INTERFACE_TYPE = 0xd7 };
     bool IsMarriedToThePlayer() const;                   // 0x006CEC80
     bool IsWillingToMarry() const;                       // 0x006CFEC0
 };
@@ -72,10 +32,10 @@ public:
 bool CGameScriptInterface::IsEntityMarriable(const CScriptThing& thing) const
 {
     const CThing* t = thing.GetPThing();
-    if (t && !t->IsDead() && t->Type == 1)
+    if (t && !t->IsDead() && t->GetType() == 1)
     {
-        const CTCWife* wife;
-        if (t->PeekTC(&wife) && wife->IsWillingToMarry())
+        const const CTCWife* wife;
+        if (t->PeekTC(TCI_WIFE, &wife) && wife->IsWillingToMarry())
             return true;
     }
     return false;

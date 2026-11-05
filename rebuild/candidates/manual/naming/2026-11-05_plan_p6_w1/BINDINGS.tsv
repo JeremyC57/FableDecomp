@@ -1,0 +1,11 @@
+action	symbol	target	by_row	note
+RETIRE	?SetFontBank@CFrontEndManager@NUISystem@@QAEXV?$CCountedPointer@VCFontBank@@@@@Z	0041d198	0041e641	w1_getinstance wave: no landed binder left
+RETIRE	?GetInstance@CFrontEndManager@@SIPAU1@XZ	0041e5f2	0056be00	w1_getinstance wave: no landed binder left
+RETIRE	?GetInstance@CFrontEndManager@NUISystem@@SIPAV12@XZ	0041e5f2	0041e641	w1_getinstance wave: no landed binder left
+RETIRE	?GetInstance@Manager@PhotoInput@@SIPAU12@XZ	0041e5f2	00691ae0	w1_getinstance wave: no landed binder left
+RETIRE	?GetInstance@Manager@RetailUI@@SIPAU12@XZ	0041e5f2	005518e0	w1_getinstance wave: no landed binder left
+RETIRE	?GetUI@NScreen005fc2d0@@YIPAUCManager@1@XZ	0041e5f2	005fc2d0	w1_getinstance wave: no landed binder left
+RETIRE	?GetUI@NScreen005fc8a0@@YIPAUCManager@1@XZ	0041e5f2	005fc8a0	w1_getinstance wave: no landed binder left
+RETIRE	?GetUIManager@@YAPAUNativeUIManager@@XZ	0041e5f2	0055a3e0	w1_getinstance wave: no landed binder left
+RETIRE	?GetUIManager@@YIPAUManagerMethods@@XZ	0041e5f2	005407b0	w1_getinstance wave: no landed binder left
+RETIRE	?SetGraphicsBank@CFrontEndManager@NUISystem@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@@Z	0042a9b7	0041e641	w1_getinstance wave: no landed binder left

@@ -8,7 +8,7 @@
 // Callees: component slots 108 GetDef (+0x1b0), 67 AddAction (+0x10c), 150 UpdateValue (+0x258); arrow slot 80 (+0x140) AddAction;
 //   operator new 0x00BFEA1A, malloc 0x00BFEA0E (list nodes), operator delete 0x00BFE9BC, CAction::CAction 0x0042BE50,
 //   CCountedPointer<CAction>(CAction*) 0x0042AA29 (deleter 0x00429F43), CAction::AddUIActionParam(CActionParam*, const CCountedPointer<CAction>&)
-//   0x0053FDE0, STLport vector<CCountedPointer<CAction> >::_M_insert_overflow 0x0054A2A0, CFrontEndManager::GetInstance 0x0041E5F2,
+//   0x0053FDE0, STLport vector<CCountedPointer<CAction> >::_M_insert_overflow 0x0054A2A0, CManager::GetInstance 0x0041E5F2,
 //   CManager::CreateComponent(long) 0x0041D21B; parameter vtables CActionParamSLONG 0x012366F4 (type 3), CActionParamFLOAT 0x01248CD0 (type 6).
 // Layout: retail CSlider = Ego_r.pdb minus 0x30 (landed ctor 0x0054C050): Min +0x18c, Max +0x194, Step +0x19c, Value +0x1a4, Move +0x1ac,
 //   OldValue +0x1ad, StartValue +0x1b5, Actions +0x1c0, PDefAction +0x1d4, PLeftArrow +0x1d8, PRightArrow +0x1dc, PreviousValue +0x1e0;
@@ -161,8 +161,7 @@ struct CArrowComponent {
     virtual void v072(); virtual void v073(); virtual void v074(); virtual void v075(); virtual void v076(); virtual void v077(); virtual void v078(); virtual void v079();
     virtual void AddClickAction(const CCountedPointer<CAction>& action);   // slot 80 (+0x140) descriptive
 };
-class CManager { public: CArrowComponent* CreateComponent(long definition); };   // 0x0041D21B
-class CFrontEndManager : public CManager { public: static CFrontEndManager* __fastcall GetInstance(); };   // 0x0041E5F2
+class CManager { public: static CManager* __fastcall GetInstance(); public: CArrowComponent* CreateComponent(long definition); };   // 0x0041D21B
 
 #pragma pack(push, 1)
 class CSlider { public:
@@ -252,7 +251,7 @@ void CSlider::GetDataFromDef()
         Actions.push_back(action);
     }
     if (def->RightArrowDef) {
-        PRightArrow = CFrontEndManager::GetInstance()->CreateComponent(def->RightArrowDef);
+        PRightArrow = CManager::GetInstance()->CreateComponent(def->RightArrowDef);
         CCountedPointer<CAction> action(new CAction);
         action->ActionType = 0x123;
         action->AddUIActionParam(new CActionParamSLONG(0x15));
@@ -260,7 +259,7 @@ void CSlider::GetDataFromDef()
         PRightArrow->AddClickAction(action);
     }
     if (def->LeftArrowDef) {
-        PLeftArrow = CFrontEndManager::GetInstance()->CreateComponent(def->LeftArrowDef);
+        PLeftArrow = CManager::GetInstance()->CreateComponent(def->LeftArrowDef);
         CCountedPointer<CAction> action(new CAction);
         action->ActionType = 0x123;
         action->AddUIActionParam(new CActionParamSLONG(0x14));

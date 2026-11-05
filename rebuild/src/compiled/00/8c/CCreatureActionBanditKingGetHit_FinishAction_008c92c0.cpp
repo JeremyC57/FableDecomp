@@ -11,23 +11,14 @@
 // Shape: each branch builds a named animation string, then fetches the action's target creature into a named local,
 //   then the SetCurrentAction statement; the tails (attacker, owner, ctor, call, both
 //   destructors) the compiler merges; the attacker and creature are named locals fetched before the test.
-class CThing { public:
-    unsigned char _pad00[0x6c];
-    unsigned char m_flags6c;                    // +0x6c bit 3
-    unsigned char _pad6d[0x91 - 0x6d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CCombatActionBase;
 
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
-};
-
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
 };
 
 class CBaseObject;
@@ -41,7 +32,7 @@ struct CCreaturePointer : CBaseIntelligentPointer {                       // CIn
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -75,7 +66,7 @@ class CCreatureAction_BanditKingGetHit : public CCombatAction_GenericStrikeRespo
 void CCreatureAction_BanditKingGetHit::FinishAction()
 {
     CCombatAction_GenericStrikeResponseBase::FinishAction();
-    if (IS_THING_ALIVE(PAttacker) && (((CThing*)PAttacker.GetPItem())->m_flags6c & 8)) {
+    if (IS_THING_ALIVE(PAttacker) && (((CThing*)PAttacker.GetPItem())->GetTypeFlags() & 8)) {
         CThing* attacker = ((CThing*)PAttacker.GetPItem());
         CThingCreatureBase* creature = PCreature.GetPItem();
         if (IsHitFromBehind(creature, ((CThing*)PAttacker.GetPItem()))) {

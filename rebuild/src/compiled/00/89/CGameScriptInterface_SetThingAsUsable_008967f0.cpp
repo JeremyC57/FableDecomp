@@ -16,19 +16,15 @@
 // (0x0040F020 stand-in, binary search over {type, component} pairs) tells VC7.1 the key's address does not escape,
 // so the 0xC2 key and the hook name share the dead slot instead of opening a push-ecx frame word.
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 class CTCBase;
 class CTCParamsBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
-
 
 struct CTCUsable_0D {                     // the TC 0x0D component
     unsigned char _pad[0x10];
@@ -38,37 +34,6 @@ struct CTCUsable_0D {                     // the TC 0x0D component
 class CTCActionUseScriptedHook { public:
     unsigned char _pad[0xc];
     bool Usable;                          // +0x0C
-};
-
-class CThing { public:
-    virtual void v000();
-    unsigned char _pad04[0x1c];
-    unsigned long m_presentBits[9];       // +0x20 std::bitset of the interface types present
-    CInterfaceMap_Retail m_interfaces;           // +0x44
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        CInterfaceMap_Retail* map = &m_interfaces;
-        CInterfaceMap_Retail::value_type* it = map->LowerBound((const ETCInterfaceType&)interfaceType);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap_Retail* map = &m_interfaces;
-            CInterfaceMap_Retail::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-public:
-    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 
 #include "engine/CCountedPointer.h"
@@ -87,11 +52,11 @@ void CGameScriptInterface::SetThingAsUsable(const CScriptThing& thing, bool usab
         CThing* t = thing.GetPThing();
         CTCUsable_0D* usableTC;
         CTCActionUseScriptedHook* hook;
-        if (t->GetInterface(&usableTC, 0x0d)) {
+        if (t->GetTC(TCI_ON_ACTION_USE, &usableTC)) {
             usableTC->Usable = usable;
             return;
         }
-        if (!t->GetInterface(&hook, 0xc2)) {
+        if (!t->GetTC(TCI_ACTION_USE_SCRIPTED_HOOK, &hook)) {
             CCharString name("CTCActionUseScriptedHook", -1);
             hook = (CTCActionUseScriptedHook*)t->AddTC(name, false, 0);
         }

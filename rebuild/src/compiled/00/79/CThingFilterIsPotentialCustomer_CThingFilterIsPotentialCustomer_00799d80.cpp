@@ -15,11 +15,8 @@
 //   C3DVector assignment, `lea edx,[esi+4]`); the mesh object is a block-scoped local with the string an implicit
 //   conversion temporary (re-addressed with lea), and the found flag survives its destructor in bl.
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                               // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CPhysicsMeshObject { public:
     virtual void v00();
     void*         Mesh;                            // +0x04 CIVCountedPointer<CPhysicsMesh const>
@@ -41,12 +38,7 @@ class CTCPhysicsBase { public:
 public:
     CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
-class CThing {
-public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                     // +0x60
-    const C3DVector& GetPos() const;          // 0x004C73D0
-};
+
 class CTCShop { public:
     void* __vftable;
     CThing* ParentThing;                           // +0x04 (CTCBase)
@@ -70,7 +62,7 @@ CThingFilter_IsPotentialCustomer::CThingFilter_IsPotentialCustomer(CTCShopKeeper
     : TCShopKeeper(shopKeeper), AllowExistingShopper(allowExistingShopper)
 {
     CTCShop* shop = TCShopKeeper->GetShopTC();
-    CTCPhysicsBase* physics = shop->ParentThing->PhysicsTC;
+    CTCPhysicsBase* physics = shop->ParentThing->GetPhysicsTC();
     ShopperContainer = 0;
     Pos = shop->ParentThing->GetPos();
     if (!shop->StallLike && physics && physics->GetPhysicsMesh()) {

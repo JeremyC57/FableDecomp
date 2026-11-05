@@ -1,4 +1,5 @@
 // CCreatureAction_BanditKingUnstuck::IsToCauseRecoil() const -- recoil unless the live target is in front of the creature
+// Leaf: ?IsToCauseRecoil@CCreatureAction_BanditKingUnstuck@@QBE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C8130, length 77 bytes. Vtable slot 46 of CCreatureAction_BanditKingUnstuck (0x01281D9C).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PTarget at +0xa8 twice for the alive test, then PCreature at
 // +8 and PTarget again for the comparison), CompareActorRotations(CThingCreatureBase*, CThing*) @ 0x008C7E50 (__fastcall
@@ -10,10 +11,7 @@
 // member at +0xa8 (retail CCreatureActionBase is 0xa8 bytes; the PDB build has it at +0xb4).
 class CThingCreatureBase;
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 
 bool __fastcall CompareActorRotations(CThingCreatureBase* creature, CThing* target);   // 0x008C7E50 (manifest name, unique;
                                             // atan2 of the position delta against the creature's facing at +0x60)
@@ -39,7 +37,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

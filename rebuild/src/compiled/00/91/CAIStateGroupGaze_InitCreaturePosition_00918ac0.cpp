@@ -1,4 +1,5 @@
 // CAIStateGroup_Gaze::InitCreaturePosition() -- when runnable, with a 30% chance places the creature near a free gaze marker (within 1 unit); returns whether it was placed
+// Leaf: ?InitCreaturePosition@CAIStateGroup_Gaze@@QAE_NXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00918AC0, length 129 bytes (+ int3 padding).
 // Callees: `this`'s virtual slot 11 (+0x2c), CAIStateGroupBase::GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890
@@ -25,9 +26,7 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;    // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CThingCreatureBase
 {

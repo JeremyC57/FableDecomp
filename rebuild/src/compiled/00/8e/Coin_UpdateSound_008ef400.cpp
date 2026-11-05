@@ -13,11 +13,9 @@
 // Shape: the GetTC out-pointer is not null-initialised and its result is not tested (retail reads the dead `muted` slot on
 //   the absent path, GOTCHAS 24l); the rest test is the squared speed against the pooled 0.0f; the volume is formed in the
 //   `muted` slot. Speed-optimised (default) TU.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 extern const unsigned long g_InvalidSoundHandle;       // 0x0129D25C
 extern const float g_fZero;                            // 0x0122DEDC (0.0f)
 
@@ -30,29 +28,11 @@ public:
 public:
     unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CBaseObject;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                    // +0x20
-    CInterfaceMap m_interfaces;                        // +0x44
-    template <class T> __forceinline bool GetTC(long interfaceType, T** ppOut)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 #pragma pack(push, 1)
 class CBaseIntelligentPointer {                        // 11 bytes inside the packed Coin (Ego_r.pdb Thing +0x25, Radius +0x30)
 public:
@@ -94,7 +74,7 @@ void Coin::UpdateSound(bool muted)
     if (Thing.Get() == 0)
         return;
     CTCSoundPlayer* player;
-    Thing->GetTC(16, &player);
+    Thing->GetTC(TCI_SOUND_PLAYER, &player);
     if (Velocity.GetLengthSquared() == g_fZero) {
         if (Sound != g_InvalidSoundHandle) {
             player->StopAttachedSound(Sound);

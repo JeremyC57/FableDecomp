@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToCrime::OnActivate() -- apply the "reporting crime to guard" opinion deed mask to the
+// Leaf: ?OnActivate@CAIStateGroup_MinionReactToCrime@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // creature's opinion-of-hero component (when it has one) and remember that it was applied.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009587D0, length 107 bytes (+ int3 padding). Vtable slot 2.
@@ -20,34 +21,11 @@ class CThingAICreature;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const     // the masked word (a bool return narrows to `shr ; test dl,1`)
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -59,7 +37,7 @@ struct CBaseIntelligentPointer {
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -95,12 +73,6 @@ class CAIStateGroupBase { public:
 long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-class CCharString { public:
-    void* m_pStringData;
-    CCharString(const char* text, long length);     // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
-
 class CTCCreatureOpinionOfHero { public:               // interface type 0x4F
     void SetOpinionDeedMask(const CCharString& mask);   // 0x006822E0
 };
@@ -117,7 +89,7 @@ void CAIStateGroup_MinionReactToCrime::OnActivate()
 {
     DeedMaskApplied = false;
     CTCCreatureOpinionOfHero* pOpinion;
-    if (PBrain->PCreature->GetInterface(&pOpinion, 0x4f)) {
+    if (PBrain->PCreature->GetTC(TCI_CREATURE_OPINION_OF_HERO, &pOpinion)) {
         {
             CCharString mask("OPINION_DEED_MASK_REPORTING_CRIME_TO_GUARD", -1);   // named: its address is formed with `lea`
             pOpinion->SetOpinionDeedMask(mask);

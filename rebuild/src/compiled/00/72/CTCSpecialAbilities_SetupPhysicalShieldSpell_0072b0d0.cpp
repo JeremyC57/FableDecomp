@@ -12,37 +12,13 @@
 // block so it shares the lookup key's frame word.
 class CTCBase;
 class CTCParamsBase;
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-public:
-    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
-};
+
 class CTCPhysicalShieldSpell { public:
     bool IsShieldActive();                // 0x0079DCB0
     void CancelMove();                          // 0x0079E300
@@ -61,8 +37,8 @@ class CTCSpecialAbilities { public:
 
 bool CTCSpecialAbilities::SetupPhysicalShieldSpell()
 {
-    if (Creature->HasTC(0x93)) {
-        CTCPhysicalShieldSpell* spell = (CTCPhysicalShieldSpell*)Creature->GetTC(0x93);
+    if (Creature->HasTC(TCI_PHYSICAL_SHIELD_SPELL)) {
+        CTCPhysicalShieldSpell* spell = (CTCPhysicalShieldSpell*)((CTCPhysicalShieldSpell*)&Creature->GetTC(TCI_PHYSICAL_SHIELD_SPELL));
         if (spell->IsShieldActive())
             spell->CancelMove();
         return false;

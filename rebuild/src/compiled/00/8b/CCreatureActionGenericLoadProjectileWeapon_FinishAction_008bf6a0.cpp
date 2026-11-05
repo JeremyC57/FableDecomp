@@ -1,4 +1,5 @@
 // CCreatureAction_GenericLoadProjectileWeapon::FinishAction() -- if the creature carries a live weapon with a weapon component (0x48), mark its projectile as loaded; then the base FinishAction
+// Leaf: ?FinishAction@CCreatureAction_GenericLoadProjectileWeapon@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BF6A0, length 145 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (x2),
@@ -11,43 +12,11 @@
 // Layout: CCombatActionBase (retail 0x114 bytes) with PCreature at +8; nothing else of the class is touched.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    unsigned long HasTC(long interfaceType) const   // the masked presence word (a bool return narrows to shr/and)
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    __forceinline CTCBase* FindTC(long interfaceType)   // the lookup alone, result straight into a register
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -90,11 +59,11 @@ class CCreatureAction_GenericLoadProjectileWeapon : public CCombatActionBase { p
 void CCreatureAction_GenericLoadProjectileWeapon::FinishAction()
 {
     CTCCarrying* carrying;
-    if (PCreature.GetPItem()->GetInterface(&carrying, 0x46)) {
+    if (PCreature.GetPItem()->GetTC(TCI_CARRYING, &carrying)) {
         CThing* weapon = carrying->GetThingInPrimarySlot();
-        if (weapon != 0 && !(weapon->m_flags91 & 1)) {
-            if (weapon->HasTC(0x48))
-                ((CTCWeapon*)weapon->FindTC(0x48))->SetProjectileWeaponLoaded(true, 0);
+        if (weapon != 0 && !weapon->IsDead()) {
+            if (weapon->HasTC(TCI_WEAPON))
+                ((CTCWeapon*)((CTCWeapon*)&weapon->GetTC(TCI_WEAPON)))->SetProjectileWeaponLoaded(true, 0);
         }
     }
     CCombatActionBase::FinishAction();

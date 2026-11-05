@@ -1,4 +1,5 @@
 // CPlayer::LoadPlayerCharacterFromGameState(const CPlayerSave& save) -- after a load: bring in the saved character's region, find the character by UID, move the player's map position onto it and adopt it as the player character
+// Leaf: ?LoadPlayerCharacterFromGameState@CPlayer_Methods@@QAE_NABUCPlayerSave@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00487C20, 192 bytes (+ int3 padding), `ret 4`.
 // Callees: the world's GetWorldMap (vtable slot 12, +0x30, three times) and GetThingManager (slot 3, +0xC),
 //   CWorldMap::GetRegionNumberFromName(const CCharString&) 0x004FC210, CWorldMap::LoadRegion 0x00500540,
@@ -16,9 +17,8 @@
 #include "engine/CPlayer.h"
 
 class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 struct CPlayerSave {
     unsigned __int64 CharacterUID;                          // +0x00
     CCharString      RegionName;                            // +0x08
@@ -26,9 +26,7 @@ struct CPlayerSave {
 
 class C3DVector;
 class CBaseObject;
-class CThing { public:
-    const C3DVector& GetPos() const;                   // 0x004C73D0
-};
+
 class CThingPlayerCreature;
 class CThingManager { public:
     CThing* GetPThingWithUID(unsigned __int64 uid);                   // 0x0051ED80

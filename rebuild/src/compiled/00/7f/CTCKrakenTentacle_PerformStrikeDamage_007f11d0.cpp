@@ -26,7 +26,6 @@ protected:
     const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
 };
 
-
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -40,7 +39,7 @@ public:
     void RotateXY(float);   // 0x00A14040
 };
 
-struct CPhysicsBody {
+struct CTCPhysicsBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -63,40 +62,20 @@ struct CPhysicsBody {
 };
 
 class CTCBaseComponent;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CInterfaceBits {
     unsigned long _M_w[9];
     bool test(unsigned long pos) const { return (_M_w[pos / 32] & (1ul << (pos % 32))) != 0; }
 };
-class CThing { public:
-    unsigned char _pad00[0x20];
-    CInterfaceBits present;                                 // +0x20
-    CInterfaceMap m_interfaces;                             // +0x44
-    unsigned char _pad54[0xc];
-    CPhysicsBody* m_pPhysics;                               // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char Flags91;                                  // +0x91 (bit 0: dead)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (present.test(interfaceType)) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    const C3DVector& GetPos() const;                   // 0x004C73D0
-};
+
 template<class T> inline bool IS_THING_ALIVE(T* const& p)
 {
     if (p != 0) {
-        if (!(p->Flags91 & 1))
+        if (!p->IsDead())
             return true;
     }
     return false;
@@ -127,16 +106,12 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->Flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
 }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);        // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
+
 class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
@@ -183,10 +158,10 @@ void CTCKrakenTentacle::PerformStrikeDamage()
 {
     if (IS_THING_ALIVE(PKraken)) {
         CTCKraken* kraken;
-        ((CThing*)PKraken.GetPItem())->GetInterface(&kraken, 0xe2);
+        ((CThing*)PKraken.GetPItem())->GetTC(TCI_KRAKEN, &kraken);
         CThing* target = ((CThing*)kraken->PTarget.GetPItem());
         if (IS_THING_ALIVE(target)) {
-            C3DVector facing = ParentThing->m_pPhysics->GetFacingVector();
+            C3DVector facing = ParentThing->GetPhysicsTC()->GetFacingVector();
             C3DVector pos = ParentThing->GetPos();
             const CKrakenTentacleDef* def = PTentacleDef;
             facing.RotateXY(def->TentacleExplosionBodgeAngle * 0.0027777778f);

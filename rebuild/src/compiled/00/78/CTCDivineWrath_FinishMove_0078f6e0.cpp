@@ -1,4 +1,5 @@
 // CTCDivineWrath::FinishMove() -- finish the spell: start the level's fade-out wait, fade the environment back to its default theme, reset the caster's interface-0xA7 component, fade or kill the build-up and hand effects and stop the looping sound
+// Leaf: ?FinishMove@CTCDivineWrath@@QAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90). Spellings unified: 0072abd0: ?FadeOrKillEffect@@YIXAAUCBaseIntelligentPointer@@@Z -> ?FadeOrKillEffect@@YIXAAVCBaseIntelligentPointer@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -27,44 +28,19 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long wanted)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -126,8 +102,8 @@ void CTCDivineWrath::FinishMove()
     const float* times = PDef->FadeOutTimes;
     CWorld* world = (&GetWorld());
     world->PEnvironment->TransitionToDefaultThemeAllChannels(2, times[SpellLevel]);
-    if (ParentThing->HasTC(0xa7)) {
-        CTCInterfaceA7* tc = ParentThing->GetTC<CTCInterfaceA7>(0xa7);
+    if (ParentThing->HasTC(TCI_SPECIAL_ABILITIES)) {
+        CTCInterfaceA7* tc = ((CTCInterfaceA7*)&ParentThing->GetTC(TCI_SPECIAL_ABILITIES));
         tc->m_active = false;
         tc->m_count = 0;
     }
@@ -140,6 +116,6 @@ void CTCDivineWrath::FinishMove()
     unsigned long sound = LoopingSound;
     CThing* caster = ParentThing;
     CTCSoundEmitter* emitter;
-    if (caster->GetInterface(&emitter, 0x10))
+    if (caster->GetTC(TCI_SOUND_PLAYER, &emitter))
         emitter->StopSample(sound);
 }

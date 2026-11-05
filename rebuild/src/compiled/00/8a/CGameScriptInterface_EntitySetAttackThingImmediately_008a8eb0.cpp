@@ -9,15 +9,11 @@
 // CCreatureAction_BanditKingGetHit::FinishAction 0x008C92C0. The action class (ctor 0x008AE160, callers 0x008A8EF6,
 // 0x00962FEE, 0x00963C84) is not named; modelled as CCreatureAction_AttackThing.
 // Shape: /O2 (16-aligned entry).
-class CThing { public:
-    unsigned char _pad00[0x6c];
-    unsigned char m_flags6c;                    // +0x6c bit 3
-    unsigned char _pad6d[0x91 - 0x6d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 inline bool IS_THING_ALIVE(const CThing* t)
 {
-    return t != 0 && !(t->m_flags91 & 1);
+    return t != 0 && !t->IsDead();
 }
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
@@ -43,7 +39,7 @@ void CGameScriptInterface::EntitySetAttackThingImmediately(const CScriptThing& a
 {
     CThing* a = attacker.GetPThing();
     CThing* t = target.GetPThing();
-    if (IS_THING_ALIVE(a) && IS_THING_ALIVE(t) && (a->m_flags6c & 8))
+    if (IS_THING_ALIVE(a) && IS_THING_ALIVE(t) && (a->GetTypeFlags() & 8))
     {
         CThingCreatureBase* creature = static_cast<CThingCreatureBase*>(a);
         creature->SetCurrentAction(CCreatureAction_AttackThing(creature, t));

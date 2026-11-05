@@ -24,9 +24,7 @@ extern "C" double __cdecl sqrt(double);
 #include "engine/C3DVector.h"
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
-class CThing { public:
-    const C3DVector& GetPos() const;               // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CCameraModeDef { public:
     unsigned char _pad[0x40];

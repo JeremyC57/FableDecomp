@@ -26,7 +26,7 @@ class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-class CTCDriverBase { public:
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -43,32 +43,11 @@ class CTCBase;
 class CTCLook { public:
     void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char  _pad0[0x20];
-    unsigned long  m_presentBits[9];            // +0x20
-    CInterfaceMap  m_interfaces;                // +0x44
-    unsigned char  _pad54[0xc];
-    CTCDriverBase* PTCDriver;                   // +0x60
-    unsigned char  _pad64[0x91 - 0x64];
-    unsigned char  Killed;                      // +0x91 (bit 0)
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    __forceinline bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const;         // 0x006622A0
 };
@@ -92,15 +71,15 @@ public:
 void CModeDragonHover::FrameUpdate()
 {
     CModeBase::FrameUpdate();
-    if (!((CThing*)PTarget.GetPItem()) || (((CThing*)PTarget.GetPItem())->Killed & 1))
+    if (!((CThing*)PTarget.GetPItem()) || ((CThing*)PTarget.GetPItem())->IsDead())
         return;
     CThingCreatureBase* owner = Owner;
-    if (owner->HasTC(0x43)) {
-        CTCLook* look = owner->GetTC<CTCLook>(0x43);
+    if (owner->HasTC(TCI_LOOK)) {
+        CTCLook* look = ((CTCLook*)&owner->GetTC(TCI_LOOK));
         if (UseHeadTurning) {
             look->LookAtPos(&((CThing*)PTarget.GetPItem())->GetPos(), 10);
         } else {
-            C3DVector ahead = owner->PTCDriver->GetForward() * 50.0f;
+            C3DVector ahead = owner->GetPhysicsTC()->GetForward() * 50.0f;
             C3DVector position = Owner->GetPos() + ahead;
             look->LookAtPos(&position, 10);
         }
@@ -111,9 +90,9 @@ void CModeDragonHover::FrameUpdate()
     CThing* target = ((CThing*)PTarget.GetPItem());
     C3DVector delta = target->GetPos() - me->GetPos();
     if (delta.GetLength2D() < 14.0f) {
-        C3DVector back = Owner->PTCDriver->GetForward() * 0.04f;
+        C3DVector back = Owner->GetPhysicsTC()->GetForward() * 0.04f;
         C3DVector destination = Owner->GetPos() - back;
-        Owner->PTCDriver->MoveTo(destination);
+        Owner->GetPhysicsTC()->MoveTo(destination);
     }
 }
 }

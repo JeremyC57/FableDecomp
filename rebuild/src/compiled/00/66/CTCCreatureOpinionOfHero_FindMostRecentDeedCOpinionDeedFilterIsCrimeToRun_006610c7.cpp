@@ -21,24 +21,10 @@
 class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    std::bitset<274> m_present;                            // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_present.test(interfaceType)) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;                    // 0x00487DD0
@@ -90,8 +76,8 @@ const COpinionDeed* CTCCreatureOpinionOfHero::FindMostRecentDeed(const TFilter& 
     const COpinionDeed* best = 0;
     const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (hero) {
-        const CTCHeroOpinionDeedLog* log;
-        hero->GetInterface(&log, 0x51);
+        const const CTCHeroOpinionDeedLog* log;
+        hero->PeekTC(TCI_HERO_OPINION_DEED_LOG, &log);
         unsigned long bestTime = 0;
         if (includePending) {
             SHandleNode* end = PendingDeeds.head;

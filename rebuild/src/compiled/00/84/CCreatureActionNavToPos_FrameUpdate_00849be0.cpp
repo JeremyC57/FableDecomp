@@ -24,7 +24,9 @@
 #define UNPROVEN_SLOT(n) virtual void UnprovenSlot##n();
 #include "engine/C3DVector.h"
 class CTCBase;
-enum ETCInterfaceType { TCI_CREATURE_NAVIGATION = 7, TCI_LOOK = 0x43 };   // descriptive enumerator names
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayer {
@@ -55,7 +57,7 @@ public:
         ENavigatorReturn NavResult;
         C3DVector        MovementVector;
     };
-    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CREATURE_NAVIGATION; }
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_NAVIGATION; }
     CCreatureNavOutput GetNextNavPosOnRoute(const CNavigationInput& input, bool a, bool b, bool c, bool d, bool e);   // 0x006CBAC0
 };
 class CTCLook {
@@ -63,26 +65,7 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_LOOK; }
     void LookAtPos(const C3DVector& position, long priority);   // 0x00753E90
 };
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];                 // +0x20
-    CInterfaceMap Components;                         // +0x44
-    const C3DVector& GetPos() const;                  // 0x004C73D0
-    CPlayer& GetPlayer();                             // 0x004C7A30
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        long type = T::StatGetInterfaceType();
-        if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)type;
-            CInterfaceMap* map = &Components;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            *out = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing { };
 class CBaseObject;
 class CBaseObjectPointer;

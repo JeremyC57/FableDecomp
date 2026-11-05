@@ -1,4 +1,5 @@
 // CAIStateGroup_TavernKeeper::IsStillValid() const -- valid while both the pub and the bar are alive
+// Leaf: ?IsStillValid@CAIStateGroup_TavernKeeper@@QBE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009681E0, length 77 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, four times (PPub at +0x24 then PBar
 // at +0x1c, engine header CAIStateGroup_TavernKeeper.h): the inlined IS_THING_ALIVE predicate
@@ -6,10 +7,7 @@
 // Shape: `IsAlive(PPub) && IsAlive(PBar)` -- the int-typed `&&` materialises `mov eax,1` /
 // `xor eax,eax` (full register), each pointer's address is formed once into esi and reused for
 // both GetPItem calls. The base is modelled locally (the generated header has no vtable).
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags;                      // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -18,7 +16,7 @@ struct CBaseIntelligentPointer {
     __forceinline bool IsAlive()
     {
         if (GetPItem() != 0) {
-            if (!(GetPItem()->m_flags & 1))
+            if (!GetPItem()->IsDead())
                 return true;
         }
         return false;

@@ -14,27 +14,11 @@
 //   C3DVector copies go through the implicit assignment of a class with a user copy constructor (`lea` destination).
 class CTCBase;
 #include "engine/C3DVector.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CTCTavernGame { public:
     void*   __vftable;
@@ -84,10 +68,10 @@ void COrbitGame::Update()
 {
     CThing* hero = GetWorld().PeekMyPlayer()->GetPControlledCreature();
     CTCGamePlayer* player;
-    hero->GetInterface(&player, 0xd0);
+    hero->GetTC(TCI_GAME_PLAYER, &player);
     if (player && player->GetGame()) {
         CTCTavernGameCoinGolf* golf;
-        player->GetGame()->ParentThing->GetInterface(&golf, 0xcf);
+        player->GetGame()->ParentThing->GetTC(TCI_TAVERN_GAME, &golf);
         C3DVector position;
         C3DVector target;
         golf->GetCamera(position, target);

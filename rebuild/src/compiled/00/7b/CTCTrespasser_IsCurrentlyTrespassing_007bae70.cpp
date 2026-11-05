@@ -16,47 +16,12 @@ class CTCBase;
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    virtual void v00();
-    unsigned char _pad04[0x1c];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 
 struct CTCBuildingLocation {                    // the owner's interface-117 component (class name unknown)
@@ -78,11 +43,11 @@ class CTCTrespasser { public:
 bool CTCTrespasser::IsCurrentlyTrespassing()
 {
     CThing* thing = ParentThing;
-    if (thing->HasTC(117)) {
-        CTCBuildingLocation* location = (CTCBuildingLocation*)thing->GetTC(117);
+    if (thing->HasTC(TCI_VOLUME_CONTAINMENT_TRACKER)) {
+        CTCBuildingLocation* location = (CTCBuildingLocation*)((CTCBuildingLocation*)&thing->GetTC(TCI_VOLUME_CONTAINMENT_TRACKER));
         CThing* building = ((CThing*)location->PBuilding.GetPItem());
         CTCTrespassable* trespassable;
-        if (building && !building->IsDead() && building->GetInterface(&trespassable, 189))
+        if (building && !building->IsDead() && building->GetTC(TCI_TRESPASSABLE, &trespassable))
             return trespassable->IsBeingTrespassedIn;
     }
     return false;

@@ -1,4 +1,5 @@
 // CTCCreatureNavigation::GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool flag) -- ask the navigator for a random position near the centre; true when it is on the world map and not (XY) at the centre
+// Leaf: ?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@_N@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Grade: RELOCATION_MATCH -- the XY squared distance is accumulated in statements (`r = dx*dx; r += dy*dy;`), which squares dx first as retail; the single-expression sum squares dy first
@@ -25,9 +26,7 @@ inline float XYDistanceSquared(const C3DVector& a, const C3DVector& b)
     return r;
 }
 extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
-class CThing { public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CWorldMap { public:
     bool IsPosInMap(const C3DVector& pos) const;      // 0x004FC600
 };

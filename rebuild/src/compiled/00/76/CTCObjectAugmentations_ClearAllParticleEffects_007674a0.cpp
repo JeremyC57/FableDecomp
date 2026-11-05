@@ -1,4 +1,5 @@
 // CTCObjectAugmentations::ClearAllParticleEffects() -- kill the projectile trail and every running / attack particle effect, then empty both particle tables
+// Leaf: ?ClearAllParticleEffects@CTCObjectAugmentations@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007674A0, length 507 bytes (+ int3 padding), esp frame, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / ctor @ 0x00A01B10 / dtor @ 0x00A01C10
 // (CIntelligentPointer<CThing> vtable 0x01238C6C), CThing::Kill(bool) @ 0x004C9B80, vector<ParticleAndEndPoints>::operator=
@@ -13,14 +14,9 @@
 // Layout (local model, as the landed ctor 0x007673C0): retail 12-byte STLport containers, ParticleEffects +0x38,
 // AttackParticleEffects +0x44, CurrentRunningAugEffect +0x50, ProjectileTrailEffect +0x65 (pack(1)); inner elements
 // ParticleAndEndPoints 0x14 and AttackParticleAndEndPoints 0x18 (ParticleEffect +0x10), field names before +0x10 descriptive.
-class CCharString { public: void* PStringData; };
-class CThing {
-public:
-    unsigned char  _pad00[0x91];
-    unsigned char  m_flags91;                           // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-    void Kill(bool immediate);                          // 0x004C9B80
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
+
 #pragma pack(push, 1)                                   // the PDB puts ProjectileTrailEffect at the odd offset +0x65
 class CBaseObject;
 class CBaseObjectPointer;

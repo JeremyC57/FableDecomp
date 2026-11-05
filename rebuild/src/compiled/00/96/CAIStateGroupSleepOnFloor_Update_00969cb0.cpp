@@ -17,27 +17,12 @@
 //         CCharString temporary pushes each address right after its ctor instead of after both).
 class CTCBase;
 class CThingCreatureBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -50,11 +35,7 @@ struct CTCOccupiable {                          // interface 0xac
     CThing* GetOccupant();                      // 0x0087C3E0
     void SetOccupant(CThing* occupant);         // 0x0087C390
 };
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
+
 struct SCountBlock;
 struct CModeBase {
     virtual void v00();
@@ -164,7 +145,7 @@ void CAIStateGroup_SleepOnFloor::Update()
         if (AIAction_PerformAction(&CCreatureAction_PlayAnimation(GetCreature(), "ST_SLEEP_ON_FLOOR_INTO", CSoundPair(),
                 false, true, false, 0, 0)) == 2) {
             CTCCreatureModeManager* modes;
-            PBrain->PCreature->GetInterface(&modes, 0x31);
+            PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
             modes->AddMode(CCountedModePointer(new NCreatureMode::CModeSleepBed(GetCreatureThing(),
                 "ST_SLEEP_ON_FLOOR_IDLE", "")));
             Asleep = true;

@@ -35,15 +35,13 @@ public:
     static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
-class CThing { public:
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBD0 (T = CThingPlayerCreature*: fed by GetPControlledCreature 0x00487DC0 at 25 of 32 retail call sites)
 {
     return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
 }
 class CThingCreatureBase : public CThing { public:
-    unsigned char _pad_0x00[0x90];
-    signed char   PlayerNumber;                    // +0x90 (as in the landed CTCInGameMenu::CloseInGameMenuViaGameEvent 0x0047D21C)
 };
 class CThingPlayerCreature : public CThingCreatureBase { };
 class CPlayer {
@@ -148,7 +146,7 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
             CThingPlayerCreature* const& hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
             if (IS_THING_ALIVE(hero)) {
                 CGameEvent gameEvent(0x1a);
-                gameEvent.Player = hero->PlayerNumber;
+                gameEvent.Player = hero->GetPlayerNumber();
                 gameEvent.AddLong(4);
                 CMainGameComponent::Get()->AddGameEvent(gameEvent);
             }

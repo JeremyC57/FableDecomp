@@ -1,4 +1,5 @@
 // CAIStateGroupBase::AIAction_MoveToPreCalcRoute(const CThing& routeThing, bool& speed, EMovementType anim, const CAIFilterBase& condition, bool extra) -- walk to the route thing, then (on arrival) along its precalculated route to the destination, polling the condition each step
+// Leaf: ?AIAction_MoveToPreCalcRoute@CAIStateGroupBase@@QAEJABVCThing@@AA_NW4EMovementType@@ABVCAIFilterBase@1@_N@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097F690, length 226 bytes (`ret 14h`).
 // Callees: CThing::GetPos @ 0x004C73D0, CAIStateGroupBase::AIAction_MoveToPos @ 0x0097EC00 (mode 2, C3DVector by
@@ -11,9 +12,7 @@
 // anim edi, extra ebp) and the loop result's spill into the dead condition slot. All-`long` parameters permute them.
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 enum EMovementType { MOVEMENT_DEFAULT };
 enum { AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };

@@ -8,7 +8,7 @@
 //   CCombatSequenceBase::PushAction(CCombatAction&) 0x008B0B10, CCombatSequenceBase::OnCreate() 0x008B0650, operator delete 0x00BFE9BC.
 // Shape (family L095): the landed CCombatSequenceWhisperBoast::OnCreate 0x0090A0B0 model with the one CCombatAction local reset and
 //   pushed twice.
-class CThing { };
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 class CSoundPair {
 public:

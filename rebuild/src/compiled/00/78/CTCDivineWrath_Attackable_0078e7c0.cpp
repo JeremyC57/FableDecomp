@@ -1,4 +1,5 @@
 // CTCDivineWrath::Attackable(CThingCreatureBase* creature) -- a creature may be hit when it is an enemy of the caster, or always while a live z-target is friendly
+// Leaf: ?Attackable@CTCDivineWrath@@QAE_NPAVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078E7C0, length 94 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3); AreThingsEnemies(CThing*, CThing*) @ 0x0076D2F0
 // (`__fastcall` bool, x2). Called from CTCDivineWrath::FrameUpdate @ 0x0078FD60 (vtable 0x0126BE84 slot 9).
@@ -14,11 +15,7 @@
 // Without the label the first `return true` is laid out inline and the second test becomes `setne`.
 class CThingCreatureBase;
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                                // +0x91 bit 0: Dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-};
+#include "engine/CThing.h"
 
 class CTCEnemy { public:
     static bool __fastcall AreThingsEnemies(const CThing& a, const CThing& b);   // 0x0076D2F0

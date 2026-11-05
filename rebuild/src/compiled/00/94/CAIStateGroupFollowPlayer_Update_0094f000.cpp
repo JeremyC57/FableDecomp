@@ -1,4 +1,5 @@
 // CAIStateGroup_FollowPlayer::Update() -- if the followed thing is alive, keeps moving to within FollowDistance of it (idling a tick after each arrival) until a move does not succeed, then terminates
+// Leaf: ?Update@CAIStateGroup_FollowPlayer@@UAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094F000, length 125 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem
@@ -11,10 +12,7 @@
 // member (+0x1c, loaded as a dword before the constant pushes), the by-value CIntelligentPointer<const CThing>
 // converted from the member (inline converting copy constructor, vtable 0x01237F1C), repeat 1.
 // Model: local (engine/CAIStateGroup_FollowPlayer.h flattens the base).
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -56,7 +54,7 @@ struct CAIStateGroup_FollowPlayer : CAIStateGroupBase {
 
 void CAIStateGroup_FollowPlayer::Update()
 {
-    if (((CThing*)PThingToFollow.GetPItem()) != 0 && !(((CThing*)PThingToFollow.GetPItem())->m_flags91 & 1)) {
+    if (((CThing*)PThingToFollow.GetPItem()) != 0 && !((CThing*)PThingToFollow.GetPItem())->IsDead()) {
         bool arrived;
         while (AIAction_MoveToThingProximity(AI_ACTION_REPEAT_ONCE, PThingToFollow, FollowDistance, &arrived,
                 MOVEMENT_TYPE_FOLLOW, true, false, true, true, 0.0f) == AI_ACTION_RETURN_SUCCEEDED)

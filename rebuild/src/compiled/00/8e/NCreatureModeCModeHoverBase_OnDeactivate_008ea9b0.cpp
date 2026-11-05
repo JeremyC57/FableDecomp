@@ -11,12 +11,7 @@
 // Shape: the inline CModeBase::OnDeactivate (`Active = false`, a byte store before anything else), then the landed
 // IS_THING_ALIVE(const CBaseIntelligentPointer&) inline from CModeOutOfActionBase::OnDeactivate 0x008D8F30 (the
 // pointer's address in esi for all three GetPItem calls) and `Kill(true)`. Plain `ret`.
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;               // +0x91 bit 0: dead
-    void Kill(bool immediately);           // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -38,7 +33,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

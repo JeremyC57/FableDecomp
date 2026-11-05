@@ -1,4 +1,5 @@
 // CCreatureAction_SummonerLightningOrbOutOf::CCreatureAction_SummonerLightningOrbOutOf(CThingCreatureBase*, CThing*) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), own vtable, then target the orb when it is alive
+// Leaf: ??0CCreatureAction_SummonerLightningOrbOutOf@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CBE10, length 135 bytes (+ int3 padding).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CBaseIntelligentPointer::CBaseIntelligentPointer
 // @ 0x00A01B10, CBaseIntelligentPointer::SetPItem @ 0x00A01B90 (the temporary, then PTarget), CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
@@ -9,10 +10,7 @@
 // stores no vtable before ~CBaseIntelligentPointer (the landed 0x008C99C0 shape).
 // No engine header for this class; modelled locally (CCombatActionBase is 0x114 bytes in retail).
 class CThingCreatureBase;
-class CThing { public:
-    unsigned char _pad0[0x91];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 class CSoundPair { public:
     long m_first;
     long m_second;
@@ -47,7 +45,7 @@ class CCreatureAction_SummonerLightningOrbOutOf : public CCombatActionBase { pub
 CCreatureAction_SummonerLightningOrbOutOf::CCreatureAction_SummonerLightningOrbOutOf(CThingCreatureBase* owner, CThing* orb)
     : CCombatActionBase(owner, 150, CSoundPair())
 {
-    if (orb != 0 && !(orb->m_flags91 & 1)) {
+    if (orb != 0 && !orb->IsDead()) {
         CIntelligentPointer target(orb);
         PTarget.SetPItem((CBaseObject*)(((CThing*)target.GetPItem())));
     }

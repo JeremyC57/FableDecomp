@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureTakeCover::Update() -- take cover from a live target: make the creature directly aware of it, find a hidden cover position (none: mark the failure and terminate); a distant cover is reached by crouching (with a live cover thing) and moving in (failure drops the cover thing); behind low cover duck and attack 1..3 times until the position drifts, behind high cover 1..3 times step out to a firing position (unless the target is visible), attack, move back in and reload; finally drop the cover thing from the list and refresh an empty list
+// Leaf: ?Update@CAIStateGroup_CreatureTakeCover@@QAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
@@ -21,35 +22,12 @@ extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class CTCBase;
 #include "engine/C3DVector.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    __forceinline bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    __forceinline CTCBase* GetTC(long type)
-    {
-        long key = type;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
-        return (it == map->end() || type < it->first ? map->end() : it)->second;
-    }
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -66,7 +44,7 @@ template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x006961
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -74,7 +52,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 __forceinline bool IS_THING_ALIVE(CThing* thing)
 {
     if (thing != 0) {
-        if (!(thing->m_flags91 & 1))
+        if (!thing->IsDead())
             return true;
     }
     return false;
@@ -177,8 +155,8 @@ void CAIStateGroup_CreatureTakeCover::Update()
         return;
     }
     CThing* me = GetCreature();
-    if (me->HasTC(0x34)) {
-        CTCPerceiveThing* perceive = (CTCPerceiveThing*)me->GetTC(0x34);
+    if (me->HasTC(TCI_PERCEIVE_THING)) {
+        CTCPerceiveThing* perceive = (CTCPerceiveThing*)((CTCPerceiveThing*)&me->GetTC(TCI_PERCEIVE_THING));
         CThing* target = ((CThing*)PTargetThing.GetPItem());
         if (perceive->GetPerceivedThing() == target)
             perceive->SetAsDirectlyAwareOfPerceivedThing();

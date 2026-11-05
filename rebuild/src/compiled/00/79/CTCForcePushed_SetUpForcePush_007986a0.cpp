@@ -1,4 +1,5 @@
 // CTCForcePushed::SetUpForcePush(const C3DVector& direction, float distance, CThing& pusher) -- arm the push: remember where it started, how far and along which per-frame step it goes and who pushed; an AI creature being pushed has its animation suspended and its current action finished
+// Leaf: ?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MAAVCThing@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007986A0, length 202 bytes (+ int3 padding). __fastcall, `ret 0Ch`.
 //         Ego_r.pdb: `?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MAAVCThing@@@Z`.
@@ -42,12 +43,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-class CThing {
-public:
-    unsigned char _pad00[0x10];
-    unsigned char ThingClass;                       // +0x10 (1: AI creature)
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
@@ -83,7 +79,7 @@ void CTCForcePushed::SetUpForcePush(const C3DVector& direction, float distance, 
     DistanceMovingPerFrame = (float)length;
     PThingCausingForcePush = CIntelligentPointer<CThing>(&pusher);
     CThing* owner = ParentThing;
-    if (owner->ThingClass == 1) {
+    if (owner->GetType() == 1) {
         ((CThingAICreature*)(((CThingAnimatable*)owner)))->SuspendAI(true, 0);
         ((CThingCreatureBase*)owner)->FinishCurrentAction();
     }

@@ -7,7 +7,7 @@
 #include "engine/CAIBrain.h"
 #include "engine/CThingAICreature.h"
 #include "engine/C3DVector.h"
-class CThing { public: unsigned char _beforeDead[0x91]; unsigned char Dead:1; };
+#include "engine/CThing.h"
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -17,7 +17,6 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing(CThing* item=0) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
-
 
 struct CCreatureWorkView {
  unsigned char _beforeWork[0x170]; CBaseIntelligentPointer WorkBuilding;
@@ -43,7 +42,7 @@ bool CAIStateGroup_GameMaster::InitCreaturePosition() {
  CThing* item=((CThing*)work.GetPItem());
  Building.SetPItem((CBaseObject*)item);
  }
- if(((CThing*)Building.GetPItem()) && !((CThing*)Building.GetPItem())->Dead && ((CSeatVirtualView*)this)->GetSeat()) {
+ if(((CThing*)Building.GetPItem()) && !((CThing*)Building.GetPItem())->IsDead() && ((CSeatVirtualView*)this)->GetSeat()) {
   CAIBrain* brain = PBrain;
   CCreaturePlacementMethods* placement=(CCreaturePlacementMethods*)brain->Creature;
   bool placed=placement->AutoPlaceNear(SeatPosition,GameMasterPlacementRadius);

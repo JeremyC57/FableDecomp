@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureRangedCombat2::Cleanup() -- on world shutdown just cleans up the ranged weapon; otherwise adds the "fire ranged weapon on leaving state group" component and (unless a strafe was added) triggers it; clears AddedStrafe
+// Leaf: ?Cleanup@CAIStateGroup_CreatureRangedCombat2@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091E990, length 114 bytes (+ int3 padding).
 // Callees: the state group's world accessor @ 0x008FCFC0 (PBrain->+0x1c->+0x24; a twin of 0x008FCFA0), the
 // world's virtual slot 12 (+0x30) whose result carries a flag byte at +0xd4, CleanupRangedWeapon(CThing*)
@@ -15,11 +16,8 @@
 class CTCParamsBase;
 class CThing;
 
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);        // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 void __fastcall CleanupRangedWeapon(CThing* creature);     // 0x007E5B40
 
@@ -33,11 +31,6 @@ class CTCBase { public:
     virtual void Trigger();                                 // slot 28 (+0x70)
 };
 
-class CThing
-{
-public:
-    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
-};
 class CThingPhysical : public CThing
 {
 public:

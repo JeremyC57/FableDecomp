@@ -1,4 +1,5 @@
 // CAIStateGroup_KidPlayHopscotch::OnActivate() -- count the game start and broadcast a "hopscotch started"
+// Leaf: ?OnActivate@CAIStateGroup_KidPlayHopscotch@@QAEXXZ
 // message (type 0x18) from the hopscotch marker's position, naming the kid and the marker.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00941550, length 83 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the marker pointer at +0x15 -- the object really is
@@ -13,9 +14,7 @@
 // unaligned pointer), names descriptive.
 class C3DVector;
 
-class CThing { public:
-    const C3DVector& GetPos() const;    // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CMessageEvent;
 

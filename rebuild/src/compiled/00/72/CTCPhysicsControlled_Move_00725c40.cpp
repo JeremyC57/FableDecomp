@@ -1,4 +1,5 @@
 // CTCPhysicsControlled::Move() -- one controlled physics step: honour a pending forced move (teleport, or fold it into the impulse), gather the things the impulse and velocity can reach, apply the impulse and step movement, then commit the position and update the additional impulse
+// Leaf: ?Move@CTCPhysicsControlled@@QAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation); local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00725C40, 499 bytes (+ int3 padding), plain `ret`.
 // Callees: CTCPhysicsStandard::PerformForceUpdates 0x008E5670, GetPossibleInteractedWithList 0x008E57D0,
@@ -28,12 +29,7 @@ struct CThingPtrVector {                            // retail STLport vector<CTh
     ~CThingPtrVector() { if (first) free(first); }
 };
 class CPhysicsDef;
-class CThing {
-public:
-    unsigned char  _pad00[0x20];
-    unsigned long  m_presentBits[9];                // +0x20
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-};
+#include "engine/CThing.h"
 #define V4(n) virtual void v##n##a(); virtual void v##n##b(); virtual void v##n##c(); virtual void v##n##d();
 struct CTCPhysicsControlled {
     V4(0) V4(1) V4(2) V4(3) V4(4) V4(5) V4(6)        // slots 0-27
@@ -91,7 +87,7 @@ void CTCPhysicsControlled::Move()
         float speed = Velocity.GetMagnitude();
         float margin = 0.5f;
         const CThing* owner = Owner;
-        if (owner->HasTC(0xa8) || owner->HasTC(0xa9))
+        if (owner->HasTC(TCI_BATTLE_CHARGE) || owner->HasTC(TCI_ASSASSIN_RUSH))
             margin = 4.5f;
         GetPossibleInteractedWithList(area, things, (float)sqrt(impulseSpeedSquared) + margin + speed);
         AdjustThingListForDebugHelpers(things);

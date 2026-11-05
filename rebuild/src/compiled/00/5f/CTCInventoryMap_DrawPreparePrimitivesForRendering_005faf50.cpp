@@ -13,7 +13,7 @@
 //   close @ 0x0066E73D (name unconfirmed, as the landed 0x005BC527 family), CMemoryBuffer::Copy @ 0x009F1760,
 //   CMainGameComponent::AddGameEvent @ 0x0041649C, and the else arm's callees exactly as the landed sibling
 //   CTCInventoryQuests::DrawPreparePrimitivesForRendering 0x0061B3C0 (GFGetTime 0x009E1BC0, component slots 1/2,
-//   CFrontEndManager::GetInstance 0x0041E5F2 + slot 42, RenderUIBackdropQuad 0x005BC6D6).
+//   CManager::GetInstance 0x0041E5F2 + slot 42, RenderUIBackdropQuad 0x005BC6D6).
 // Shape: the quests sibling's body as an `else if (InventoryOpen && !IsActive())`; the event is the inline CGameEvent(type) ctor
 //   (as 0x005BC527) plus an inline AddUBYTE whose by-value byte VC homes in the dead `info` argument slot.
 // Layout: retail CTCInventoryBase as the landed siblings (Components +0x0C, FirstRenderFrame +0x18, LastRenderTime +0x50,
@@ -73,8 +73,9 @@ struct CFadeSettingsPtr {
     CFadeSettingsObject* operator->() const { return Object; }
 };
 namespace NUISystem {
-class CFrontEndManager { public:
-    static CFrontEndManager* __fastcall GetInstance();        // 0x0041E5F2
+class CManager {
+public: public:
+    static CManager* __fastcall GetInstance();        // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -180,7 +181,7 @@ void CTCInventoryMap::DrawPreparePrimitivesForRendering(const CEnginePrimitivePr
                 Components[i]->Render(info.PViewport, 0, 0, 0, 0);
         }
         AccumFadeTime += deltaTime;
-        float alpha = AccumFadeTime / NUISystem::CFrontEndManager::GetInstance()->GetFadeSettings()->FadeTime;
+        float alpha = AccumFadeTime / NUISystem::CManager::GetInstance()->GetFadeSettings()->FadeTime;
         if (alpha > 1.0f)
             alpha = 1.0f;
         RenderUIBackdropQuad(alpha);

@@ -35,27 +35,9 @@ public:
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                         // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || wanted < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCPhysicalShieldSpell { public:                          // interface type 0x93
 public:
@@ -108,7 +90,7 @@ void CTCHeroStats::ModifyStaminaBy(long delta)
     FramesUntilStaminaRefills = (long)(GetHeroStatsDef()->StaminaRefillDelaySeconds * CMainGameComponent::GetConstantFPS());
     if (Stamina == 0) {
         CTCPhysicalShieldSpell* listener;
-        if (ParentThing->GetInterface(&listener, 0x93))
+        if (ParentThing->GetTC(TCI_PHYSICAL_SHIELD_SPELL, &listener))
             listener->CancelMove();
     }
 }

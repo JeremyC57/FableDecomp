@@ -1,0 +1,2 @@
+gate: 81 rows {'PASS': 59, 'FAIL': 22} in 13.5s (0.17s/row wall, NJ=2)
+gatewave /tmp/claude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad/plan/p6/w2 {'PASS': 59, 'FAIL': 22}

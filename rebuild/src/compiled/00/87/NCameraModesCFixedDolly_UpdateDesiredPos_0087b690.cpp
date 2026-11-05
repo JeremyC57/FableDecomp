@@ -10,10 +10,7 @@
 // Shape: `pos + DollyVector` (VC7.1 commutes the fadd: retail loads the dolly offset first) through the inline C3DVector::operator+ (?? H C3DVector QBE ?BV0@ABV0@@Z, const return) into
 //   a 12-byte frame temporary, then the implicit copy-assignment into desiredPos.
 #include "engine/C3DVector.h"
-class CThing {
-public:
-    const C3DVector& GetPos() const; /* 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb) */
-};
+#include "engine/CThing.h"
 class CThingGameObject : public CThing { };
 namespace NCameraModes {
 class CBase {

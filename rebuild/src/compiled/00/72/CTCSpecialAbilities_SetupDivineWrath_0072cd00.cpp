@@ -17,34 +17,14 @@
 //   address, each returning SetCurrentAction's result.
 class CTCBase;
 class CBaseObject;
-class CCharString { public:
-    void* m_pData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 extern CCharString g_CCharString_013bad30;              // 0x013BAD30
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                            // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCCarrying { public:
 public:
     CThing* GetThingInPrimarySlot() const;   // 0x006A1440
@@ -105,9 +85,9 @@ class CTCSpecialAbilities { public:
 bool CTCSpecialAbilities::SetupDivineWrath()
 {
     CTCCarrying* carrying;
-    Creature->GetInterface(&carrying, 0x46);
+    Creature->GetTC(TCI_CARRYING, &carrying);
     CThing* item = carrying->GetThingInPrimarySlot();
-    if (item && !(item->m_flags91 & 1)) {
+    if (item && !item->IsDead()) {
         CCreatureAction_CastDivineWrathSpell* cast = new CCreatureAction_CastDivineWrathSpell(Creature);
         cast->PItem = item;
         CCreatureAction_SheatheItemToInventory_ForDivineWrath sheathe(Creature, g_CCharString_013bad30, cast, 0);

@@ -18,32 +18,11 @@
 //   first into esi) -- an STLport `equal_range(1)` stays an out-of-line pair-returning call (190 v 219 bytes); the
 //   -1 shares ebx with the attacker's timer store; `_Rb_global::_M_increment` inlined as in 0x00733620.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CCombatAbilityData { public:                     // Ego_r.pdb, 0x18 bytes
     void*  __vftable;                           // +0x00
     long   PercentageChance;                    // +0x04
@@ -196,7 +175,7 @@ public:
 void CTCCombat::SetBlockBroken(CThing& attacker)
 {
     CTCCombat* attackerCombat;
-    if (attacker.GetInterface(&attackerCombat, 0x30))
+    if (attacker.GetTC(TCI_COMBAT, &attackerCombat))
         attackerCombat->BlockCounterTimer = -1;
     UnsetBlocking();
     CCombatAbilityMap::iterator last = CombatAbilities.upper_bound(1);

@@ -43,10 +43,7 @@ class CTCPhysicsBase { public:
 public:
     CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-};
+#include "engine/CThing.h"
 struct CThingFilterBase {
     virtual bool operator()(const CThing* thing) const;
 };
@@ -146,7 +143,7 @@ float CWorldMap::GetHeightZBelowAt(const C3DVector& pos, float radius, bool useT
     C3DVector from = pos;
     C3DVector to(from.X, from.Y, from.Z - 200.0f);
     for (SThingNode* node = things._M_node->_M_next; node != things._M_node; node = node->_M_next) {
-        CTCPhysicsBase* physics = node->_M_data->PhysicsTC;
+        CTCPhysicsBase* physics = node->_M_data->GetPhysicsTC();
         if (physics && physics->GetPhysicsMeshParameters()) {
             CPhysicsMeshObject mesh = physics->GetPhysicsMeshObject();
             CMeshIntersectionData data;

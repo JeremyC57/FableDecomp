@@ -14,14 +14,9 @@
 //   followed by the storage free.
 #include <stdlib.h>
 #include "engine/CTCBase.h"
-class CCharString { public:
-    void* m_pData;
-    CCharString();                                      // 0x0099E4B0
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    bool operator!=(const CCharString& other) const;    // 0x0099E900
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCommentNode {
     CCommentNode* _M_next;
@@ -72,13 +67,13 @@ struct CCharStringVector {                              // STLport vector<CCharS
             free(_M_start);
     }
 };
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     void GetAllDummyObjectNames(CCharStringVector& names);   // 0x004BDB40
 };
-class CThing { public:
-    unsigned char _pad00[0x64];
-    CTCGraphicAppearance* GraphicAppearance;            // +0x64
-};
+}
+using NGraphicAppearance::CTCGraphicAppearance;
+
 struct CTCMeshAutomaticEntityCreator : CTCBase {
     void CreateObject(const CCharString& dummyName, const CCharString& objectName, CTCGraphicAppearance* appearance);     // 0x0072DDB0
     void CreateBuilding(const CCharString& dummyName, const CCharString& objectName, CTCGraphicAppearance* appearance);   // 0x0072DF50
@@ -88,7 +83,7 @@ struct CTCMeshAutomaticEntityCreator : CTCBase {
 
 void CTCMeshAutomaticEntityCreator::CreateChildThings()
 {
-    CTCGraphicAppearance* appearance = ParentThing->GraphicAppearance;
+    CTCGraphicAppearance* appearance = ParentThing->GetTCGraphicAppearance();
     CCharStringVector names;
     appearance->GetAllDummyObjectNames(names);
     CCharString lastName;

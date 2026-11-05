@@ -6,9 +6,9 @@
 // PerformOnDie +0x11. No engine header exists; local model.
 // Shape: the initialisers follow the vtable store in declaration order, the owner pointer and the call's `push 1` are
 // hoisted above them; the argument is loaded into eax and pushed (speed TU).
-class CThing { public:
-    void SetForceFrameUpdate(bool force);          // 0x004C7C60
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CTCBase { public:
     CTCBase(CThing* owner);                        // 0x00686800

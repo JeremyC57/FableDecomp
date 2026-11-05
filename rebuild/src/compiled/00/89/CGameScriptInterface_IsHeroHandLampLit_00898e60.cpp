@@ -11,48 +11,11 @@
 //   the uninitialised out-slot when the component is absent (`mov eax,[esp] ; mov al,[eax+1Ch]`): the source ignores
 //   PeekTC's result (GOTCHAS chunk 141: an unset local read on the absent path).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
-    CInterfaceMap Components;                            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (T*)it->second;
-        return true;
-    }
-    template <class T> __forceinline bool PeekTC(const T** out) const
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        const CInterfaceMap* map = &Components;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (const T*)it->second;
-        return true;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
@@ -65,7 +28,6 @@ public:
 #include "engine/CPlayerManager.h"
 class CTCLight {                                        // interface 0x27
 public:
-    enum { INTERFACE_TYPE = 0x27 };
     unsigned char _pad00[0x1c];
     bool Active;                                         // +0x1c
     bool IsActive() const { return Active; }
@@ -79,8 +41,8 @@ bool CGameScriptInterface::IsHeroHandLampLit() const
     const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
     if (hero && !hero->IsDead())
     {
-        const CTCLight* light;
-        hero->PeekTC(&light);
+        const const CTCLight* light;
+        hero->PeekTC(TCI_LIGHT, &light);
         return light->IsActive();
     }
     return false;

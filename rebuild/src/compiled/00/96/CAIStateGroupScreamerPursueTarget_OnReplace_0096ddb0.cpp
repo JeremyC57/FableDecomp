@@ -18,27 +18,12 @@
 //         SetBrainOutput); CBrainOutput's dtor is inline (forced) -- implicit, it was emitted out of line here.
 class CTCBase;
 class CThingCreatureBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -70,11 +55,7 @@ class CTCCreatureModeManager { public:                 // interface 0x31
 class CTCStealth { public:                             // interface 0x36
     void SetAsInDanger(CThing* thing, long status);     // 0x00747B80
 };
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
+
 class CSoundPair { public:
     long m_first;
     long m_second;
@@ -151,14 +132,14 @@ class CAIStateGroupBase { public:
 
 void CAIStateGroup_ScreamerPursueTarget::OnReplace()
 {
-    if (PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1)) {
+    if (PTarget.GetPItem() && !PTarget.GetPItem()->IsDead()) {
         CTCStealth* stealth;
-        if (PTarget.GetPItem()->GetInterface(&stealth, 0x36))
+        if (PTarget.GetPItem()->GetTC(TCI_STEALTH, &stealth))
             stealth->SetAsInDanger(PBrain->PCreature, 0);
     }
     CTCCreatureModeManager* modes;
-    PBrain->PCreature->GetInterface(&modes, 0x31);
-    if (PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1) && !modes->HasMode(0x44)) {
+    PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
+    if (PTarget.GetPItem() && !PTarget.GetPItem()->IsDead() && !modes->HasMode(0x44)) {
         CBrainOutput output;
         {
             CCreatureAction_ScreamerIntoAggressive action(GetCreature(), PTarget.GetPItem());

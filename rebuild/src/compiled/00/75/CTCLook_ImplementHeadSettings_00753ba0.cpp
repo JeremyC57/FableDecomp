@@ -1,4 +1,5 @@
 // CTCLook::ImplementHeadSettings() -- applies the head angles to the creature's animation: builds the head animations on the first pass, and when the creature is inside the look range, either strips both head-turn combination animations (no head angle) or updates the vertical and horizontal head animations
+// Leaf: ?ImplementHeadSettings@CTCLook@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00753BA0, length 208 bytes (+ int3 padding); speed TU (no frame pointer).
 // Callees: CTCLook::InitialiseHeadAnims @ 0x00752640, IsInsideAnimationRange @ 0x00751BC0, CVectorMap::LowerBound @ 0x0040F020 (the
@@ -23,26 +24,11 @@ struct CPresenceBits {                             // std::bitset<274>
     }
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    CPresenceBits UsingComponents;                   // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (UsingComponents.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            CInterfaceMap::value_type* found = (it == map->end() || wanted < it->first) ? map->end() : it;
-            *out = (T*)((void*)found->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CAnimateThing { public:
     void RemoveCombinationAnimsOfType(long type);    // 0x0070D8C0
 };
@@ -77,7 +63,7 @@ void CTCLook::ImplementHeadSettings()
     if (!IsInsideAnimationRange())
         return;
     CTCAnimationComplex* component;
-    ParentThing->GetInterface(&component, 0x5a);
+    ParentThing->GetTC(TCI_ANIMATION, &component);
     CAnimateThing& animation = component->GetAnimation();
     if (HeadAngleRelToBodyXY == g_zero && HeadAngleRelToBodyYZ == g_zero) {
         animation.RemoveCombinationAnimsOfType(HEAD_ANIM_VERTICAL);

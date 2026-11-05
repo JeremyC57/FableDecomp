@@ -2,7 +2,7 @@
 //   colours up one place; scrolling lists also slide every row by (0, -30) and fade rows by distance from the selection.
 // Leaf: ?ScrollDown@CFrontEndList@NUISystem
 // Retail: Fable.exe @ 0x0054C810, 977 bytes, /O2 FPO frame (sub esp,20h), plain `ret`.
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall), its slots 40 (+0xa0 PlaySound by def member) and 42
+// Callees: CManager::GetInstance 0x0041E5F2 (__fastcall), its slots 40 (+0xa0 PlaySound by def member) and 42
 //   (+0xa8 the CUIMiscThingsDef by value: SoundUpDown +0x194, SoundError +0x1a4 = Ego_r.pdb 412/428 minus 8); own slots
 //   54 (+0xd8 GetUpdateTime) and 171 (+0x2ac IsScrolling); row slots 32 (+0x80 SetPosition), 38 (+0x98 SetColour),
 //   48 (+0xc0 SetCurrentState), 55 (+0xdc GetPosition), 56 (+0xe0 GetColour), by-value results through a hidden pointer.
@@ -52,8 +52,9 @@ template <class T> class CDefPointer { public:
 
 namespace NUISystem {
 
-class CFrontEndManager { public:
-    static CFrontEndManager* __fastcall GetInstance();
+class CManager {
+public: public:
+    static CManager* __fastcall GetInstance();
     SLOTS16(m0) SLOTS16(m1) SLOTS4(m20) SLOTS4(m21)
     virtual void PlaySound(const CCharString& sound, bool a);   // slot 40 (+0xa0)
     virtual void m41();
@@ -102,15 +103,15 @@ void CFrontEndList::ScrollDown()
 {
     if (Children.size() <= 1)
     {
-        CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetMiscThingsDef()->SoundError, true);
+        CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetMiscThingsDef()->SoundError, true);
         return;
     }
     if (SelectedChild == Children.size() - 1 && IsScrolling())
     {
-        CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetMiscThingsDef()->SoundError, true);
+        CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetMiscThingsDef()->SoundError, true);
         return;
     }
-    CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetMiscThingsDef()->SoundUpDown, true);
+    CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetMiscThingsDef()->SoundUpDown, true);
     Children[SelectedChild]->SetCurrentState(4);
     ++SelectedChild;
     SelectedChild = SelectedChild < Children.size() ? SelectedChild : 0;

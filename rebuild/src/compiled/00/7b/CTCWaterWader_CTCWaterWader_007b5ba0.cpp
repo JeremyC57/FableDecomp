@@ -8,12 +8,7 @@
 // Shape: each particle is an IS_THING_ALIVE test (three GetPItem calls) guarding `Kill(true)` and the clear, which is
 //        `cleared(0); CThing* item = cleared.GetPItem(); member.SetPItem(item);` (the landed CThingSoundEmitter dtor
 //        idiom); the two `cleared` temporaries live in sibling blocks and share one frame slot.
-class CThing {
-public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    void Kill(bool immediately);                // 0x004C9B80
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -37,7 +32,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

@@ -1,4 +1,5 @@
 // CCreatureAction_TentacleStrikeInto::FinishAction() -- base FinishAction, add creature mode 0x53 through the owner's mode manager, queue the tentacle's strike damage, then make a CCreatureAction_TentacleStrikeLoop the owner's current action
+// Leaf: ?FinishAction@CCreatureAction_TentacleStrikeInto@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CF700, length 203 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CCombatActionBase::FinishAction @ 0x00859A20, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound
@@ -12,27 +13,10 @@
 // Layout: Ego_r.pdb PTCTentacle +0x12c (retail +0x114); CCreatureAction_TentacleStrikeLoop StartTick / Interrupt /
 // StartHealth at PDB +0x12c / +0x130 / +0x134, retail +0x114 / +0x118 / +0x11c (CCombatActionBase 0x114 in retail).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode);           // 0x0073AE10
@@ -97,7 +81,7 @@ void CCreatureAction_TentacleStrikeInto::FinishAction()
 {
     CCombatActionBase::FinishAction();
     CTCCreatureModeManager* modeManager;
-    if (PCreature.GetPItem()->GetInterface(&modeManager, 0x31))
+    if (PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager))
         modeManager->AddMode(0x53);
     PTCTentacle->QueueStrikeDamage();
     PCreature.GetPItem()->SetCurrentAction(CCreatureAction_TentacleStrikeLoop(PCreature.GetPItem()));

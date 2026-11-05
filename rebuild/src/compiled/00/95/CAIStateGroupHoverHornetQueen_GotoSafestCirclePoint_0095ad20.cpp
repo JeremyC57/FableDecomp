@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverHornetQueen::GotoSafestCirclePoint(long movementType) -- with no circle markers return 3; otherwise compare the direction to the target with the directions to the next and previous circle markers and fly to the one facing away from the target
+// Leaf: ?GotoSafestCirclePoint@CAIStateGroup_HoverHornetQueen@@QAEJJ@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Normalise replaced by the header Normalise (same computation); local free operator- removed (the header member operator- is the same inline member-wise computation).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095AD20, 754 bytes, `ret 4`.
@@ -22,9 +23,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
 class CThing;
 __forceinline C3DVector Direction(const CThing* to, const CThing* from);
 __forceinline float Dot(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + a.Y * b.Y + a.X * b.X; }
-class CThing { public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public: };
 __forceinline C3DVector Direction(const CThing* to, const CThing* from) { return to->GetPos() - from->GetPos(); }
 class CBaseObject;

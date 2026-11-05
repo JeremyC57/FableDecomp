@@ -1,4 +1,5 @@
 // Naming wave 35c (queue land0411j 0x00437AE0): calls CPlayerGui::UpdateStat under its Ego_r.pdb spelling ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z (private const, the stat by reference to NPlayerGui::CStatBase). Also calls 0x00487B70 as CPlayer::GetPPlayerCharacterThing() const (Ego_r.pdb ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ; was GetPlayerCharacter).
+// Leaf: ?UpdateMorality@CPlayerGui@@QAEXXZ
 // CPlayerGui::UpdateMorality() -- feed the hero's pending morality change into the morality stat bar: animate an initialised bar towards the new value (step count from how far it still has to move) or initialise it outright, then hide the bar when the change flips the sign of the bar's value, and consume the change once the bar is in mode 1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00439F20, length 352 bytes, plain `ret`.
 // Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPPlayerCharacterThing() const 0x00487B70, _ftol 0x00BFEA70, PeekGuiDef
@@ -12,10 +13,7 @@
 // Shape: the change converted to a float local that stays on the x87 stack across both arms; the two signs are an
 // inline `x < 0 ? -1 : 1`.
 #include <math.h>
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_stateFlags;                         // +0x91 (bit 0: dead)
-};
+#include "engine/CThing.h"
 class CPlayer { public:
     CThing* GetPPlayerCharacterThing() const;                     // 0x00487B70
 };
@@ -73,7 +71,7 @@ private:
 void CPlayerGui::UpdateMorality()
 {
     CThing* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacterThing();
-    if (!hero || (hero->m_stateFlags & 1))
+    if (!hero || hero->IsDead())
         return;
     long change = PDrawStatUpdates->PendingMoralityChange;
     float value;

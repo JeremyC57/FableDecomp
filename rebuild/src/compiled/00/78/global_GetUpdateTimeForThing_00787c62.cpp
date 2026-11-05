@@ -25,10 +25,9 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
-class CThing {
-public:
-    bool IsAffectedByBulletTime() const;                 // 0x004C9920
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 struct CBulletTime {
     unsigned char _pad0[4];

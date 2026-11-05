@@ -1,4 +1,5 @@
 // CPlayer::InitCharacterFromSave(const NPlayerManager::CPlayerSave& save) -- refresh the cached thing manager / world map, load the saved player character, adopt it as the controlled creature owned by the main player, enter the default player mode and point the game camera at it
+// Leaf: ?InitCharacterFromSave@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00487EF0, length 192 bytes, `ret 4`.
 // Identity: Ego_r.pdb `?InitCharacterFromSave@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z`.
 // Callees: the world's GetThingManager (slot 3, +0xC) and GetWorldMap (slot 12, +0x30),
@@ -37,12 +38,9 @@ class CTCPhysicsBase { public:
     virtual float GetFacingAngle();                     // slot 63 (+0xFC; CTCPhysicsStandard 0x00723B30: atan2 of the facing)
 };
 
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                          // +0x60 (PDB +0x70)
-    void SetPlayerNumber(long number);                  // 0x004C7440
-    CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 class CThingPlayerCreature;
 
 class CBaseIntelligentPointer {

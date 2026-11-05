@@ -13,6 +13,8 @@
 //   assignment with a ?: orientation argument evaluates the conditional before the scale (DIFFER 204v214).
 // Layout: retail CTCGraphicAppearance: ParentThing +0x04, Scale +0x34, MainGraphic +0x44 (BankIndex +0x44, RenderSizeX
 //   +0x4C, Type +0x51); retail CThing::PhysicsTC +0x60; retail CWorld::PMainMeshBank +0x3C.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #include "engine/C3DVector.h"
 class CRightHandedSet {
 public:
@@ -50,11 +52,7 @@ public:
     virtual const CRightHandedSet& GetRHSet() const;              // slot 72 (+0x120)
     virtual CRightHandedSet GetRHSet(float interpolation) const;   // slot 71 (+0x11C)
 };
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                              // +0x60 (retail; PDB +0x70)
-};
+#include "engine/CThing.h"
 
 #pragma pack(push, 2)
 class CEngineGraphic {                                      // 14 bytes
@@ -91,7 +89,7 @@ bool CTCGraphicAppearance::GetRenderMeshObject(C3DMeshObject& out, float interpo
 {
     if (MainGraphic.Type != 0 && (MainGraphic.Type == 5 || MainGraphic.Type == 4)) {
         CMeshDataBank* bank = PeekWorld().PMainMeshBank;
-        const CTCPhysicsBase* physics = ParentThing->PhysicsTC;
+        const CTCPhysicsBase* physics = ParentThing->GetPhysicsTC();
         C3DVector position = GetRenderPositionForThing(*ParentThing, interpolation);
         const C3DMeshInfo* meshInfo = bank->GetMeshInfo(MainGraphic.BankIndex);
         if (interpolation == 1.0f)

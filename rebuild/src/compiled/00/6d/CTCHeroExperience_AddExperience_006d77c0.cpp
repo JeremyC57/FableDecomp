@@ -1,4 +1,5 @@
 // CTCHeroExperience::AddExperience(long) -- scales the amount by the pickup multiplier, books it, clamps the spendable pool, may give the experience tutorial, queues a pickup display entry and reports the stat and scoreboard
+// Leaf: ?AddExperience@CTCHeroExperience@@QAEXJ@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -40,26 +41,11 @@ template <class T> __forceinline void GFLimitHigh(T& value, const T& hi)
 struct CTCBaseComponent;
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((CTCBaseComponent*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second);
-            return true;
-        }
-        return false;
-    }
-};
 class CThingCreatureBase : public CThing { public:
     bool IsInMelee() const;                     // 0x00661E80
 };
@@ -97,7 +83,6 @@ struct CListNodeBase {
     CListNodeBase* _M_prev;
 };
 template <class T> struct CListNode : CListNodeBase { T _M_data; };
-
 
 template <class T> struct CRetailList {         // STLport list<T>: the header-node pointer only (4 bytes)
     CListNode<T>* _M_node;
@@ -183,14 +168,14 @@ void CTCHeroExperience::AddExperience(long amount)
         && !CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsBetweenQuestStartAndFinishScreens()
         && !((CThingCreatureBase*)ParentThing)->IsInMelee()) {
         CTCHero* hero;
-        if (ParentThing->GetInterface(&hero, 0x29))
+        if (ParentThing->GetTC(TCI_HERO, &hero))
             hero->GiveTutorialForCategory(0x18, false);
     }
     Pickups.push_back(SPickup((long)(CMainGameComponent::GetConstantFPS() * 2.0f), added));
     CTCHeroStats* stats;
-    ParentThing->GetInterface(&stats, 4);
+    ParentThing->GetTC(TCI_HERO_STATS, &stats);
     stats->AddHeroStatExperience(3, added);
     CTCHeroOnlineScoreboard* scoreboard;
-    ParentThing->GetInterface(&scoreboard, 0x10d);
+    ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
     scoreboard->UpdateScoreForActivity(3, (float)TotalExperiencePoints, false);
 }

@@ -1,0 +1,217 @@
+addr       parity           behav  name
+004bff60   WARN SHARED_HEADER_AVAILABLE CThing
+004bff60   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+004bff60   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+  WARN leaf 'RemoveAllMeshEffectsInheritedFromCarrier' matches no symbol in 004bff60.obj; graded the largest function
+  WARN leaf 'RemoveAllMeshEffectsInheritedFromCarrier' matches no symbol in 004bff60.obj; graded the largest function
+004bff60   WARN STANDIN_LEAF ?ClearAllMeshEffects@CTCGraphicAppearance@NGraphicAppearance@@QAEXXZ (catalog NGraphicAppearance::CTCGraphicAppearance::RemoveAllMeshEffectsInheritedFromCarrier; names another function)
+004bff60   RELOCATION_MATCH PASS   RemoveAllMeshEffectsInheritedFromCarrier
+004c7a70   WARN SHARED_HEADER_AVAILABLE CThingManager
+004c7a70   WARN SHARED_HEADER_AVAILABLE CThing
+  WARN leaf 'PeekComponent' matches no symbol in 004c7a70.obj; graded the largest function
+  WARN leaf 'PeekComponent' matches no symbol in 004c7a70.obj; graded the largest function
+004c7a70   WARN STANDIN_LEAF ?CViewBase_GetDisplayEngine@@YIPAVCDisplayEngine@@PAUCViewBase@@@Z (catalog CThing::PeekComponent; names another function)
+004c7a70   RELOCATION_MATCH PASS   PeekComponent
+004c7a80   WARN SHARED_HEADER_AVAILABLE CThingManager
+004c7a80   WARN SHARED_HEADER_AVAILABLE CThing
+004c7a80   WARN STANDIN_LEAF ?CAnimateThing_GetMeshBank@@YIPAVCMeshDataBank@@PAVCAnimateThing@@@Z (catalog CThing::GetSampleBank; names another function)
+004c7a80   RELOCATION_MATCH PASS   GetSampleBank
+004c7aa0   WARN SHARED_HEADER_AVAILABLE CThingManager
+004c7aa0   WARN SHARED_HEADER_AVAILABLE CThing
+004c7aa0   WARN STANDIN_LEAF ?GetDisplayEngine@@YAPAVCDisplayEngine@@XZ (catalog CThing::GetWorld; names another function)
+004c7aa0   RELOCATION_MATCH PASS   GetWorld
+004cc340   WARN SHARED_HEADER_AVAILABLE CThing
+  WARN leaf 'IS_THING_ALIVE<class CIntelligentPointer<class CThing>>' matches no symbol in 004cc340.obj; graded the largest function
+  WARN leaf 'IS_THING_ALIVE<class CIntelligentPointer<class CThing>>' matches no symbol in 004cc340.obj; graded the largest function
+004cc340   WARN STANDIN_LEAF ?IsThingAlive_004cc340@@YI_NAAV?$CIntelligentPointer@VCThing@@@@@Z (catalog IS_THING_ALIVE<class CIntelligentPointer<class CThing>>; address-only name)
+004cc340   RELOCATION_MATCH PASS   IS_THING_ALIVE<class CIntelligentPointer<class CThing>>
+0055ef00   WARN SHARED_HEADER_AVAILABLE CObserver
+0055ef00   WARN SHARED_HEADER_AVAILABLE CManager
+0055ef00   WARN SHARED_HEADER_AVAILABLE CThing
+0055ef00   WARN SHARED_HEADER_AVAILABLE CTCInventory
+0055ef00   WARN STANDIN_LEAF ?OnOkClicked@CTCHeroOnlineScoreboard@@QAEXABVCWideString@@@Z (catalog CTCHeroOnlineScoreboard::DisplayErrorMessage; names another function)
+0055ef00   RELOCATION_MATCH PASS   DisplayErrorMessage
+005e9a60   WARN SHARED_HEADER_AVAILABLE CThing
+  WARN leaf 'CFlash>' matches no symbol in 005e9a60.obj; graded the largest function
+  WARN leaf 'CFlash>' matches no symbol in 005e9a60.obj; graded the largest function
+005e9a60   WARN STANDIN_LEAF _Dest_5e9a60@4 (catalog std::_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>; names another function)
+005e9a60   RELOCATION_MATCH PASS   CFlash>
+0063ef50   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0063ef50   WARN SHARED_HEADER_AVAILABLE CThing
+0063ef50   WARN STANDIN_LEAF ??RCThingFilter_OverlappingCircle@@QBE_NPAVCThing@@@Z (catalog CThingFilter_OverlappingCircle::operator; names another function)
+0063ef50   RELOCATION_MATCH PASS   operator
+0065da97   WARN SHARED_HEADER_AVAILABLE CThing
+  WARN leaf '??R' matches no symbol in 0065da97.obj; graded the largest function
+  WARN leaf '??R' matches no symbol in 0065da97.obj; graded the largest function
+0065da97   WARN STANDIN_LEAF ??$?RVCThingAICreature@@@CThingCompare_Nearest@@QBEPAVCThingAICreature@@PAV1@0@Z (catalog CThingCompare_Nearest::operator; names another function)
+0065da97   RELOCATION_MATCH PASS   operator
+006689e0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+006689e0   WARN SHARED_HEADER_AVAILABLE CThing
+006689e0   WARN SHARED_HEADER_AVAILABLE CThingFilter_OverlappingSphere
+006689e0   WARN STANDIN_LEAF ??RCThingFilter_OverlappingSphere@@QBE_NPAVCThing@@@Z (catalog CThingFilter_OverlappingSphere::operator; names another function)
+006689e0   RELOCATION_MATCH PASS   operator
+00668ab0   WARN SHARED_HEADER_AVAILABLE CMeshIntersectionData
+00668ab0   WARN SHARED_HEADER_AVAILABLE CPhysicsMeshObject
+00668ab0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00668ab0   WARN SHARED_HEADER_AVAILABLE CThing
+00668ab0   WARN STANDIN_LEAF ??RCThingFindHeightZBelowAt@@QAE_NPAVCThing@@@Z (catalog CThingFindHeightZBelowAt::operator; names another function)
+00668ab0   RELOCATION_MATCH PASS   operator
+006961f0   WARN SHARED_HEADER_AVAILABLE CThing
+  WARN leaf 'IS_THING_ALIVE<CIntelligentPointer<CThingCreatureBase> >' matches no symbol in 006961f0.obj; graded the largest function
+  WARN leaf 'IS_THING_ALIVE<CIntelligentPointer<CThingCreatureBase> >' matches no symbol in 006961f0.obj; graded the largest function
+006961f0   WARN STANDIN_LEAF ?IsThingAlive_006961f0@@YI_NAAV?$CIntelligentPointer@VCThing@@@@@Z (catalog IS_THING_ALIVE<CIntelligentPointer<CThingCreatureBase> >; address-only name)
+006961f0   RELOCATION_MATCH PASS   IS_THING_ALIVE<CIntelligentPointer<CThingCreatureBase> >
+0069ce20   WARN SHARED_HEADER_AVAILABLE CThing
+  WARN leaf 'IS_THING_ALIVE<CIntelligentPointer<const CThing> >' matches no symbol in 0069ce20.obj; graded the largest function
+  WARN leaf 'IS_THING_ALIVE<CIntelligentPointer<const CThing> >' matches no symbol in 0069ce20.obj; graded the largest function
+0069ce20   WARN STANDIN_LEAF ?IsThingAlive_0069ce20@@YI_NAAV?$CIntelligentPointer@VCThing@@@@@Z (catalog IS_THING_ALIVE<CIntelligentPointer<const CThing> >; address-only name)
+0069ce20   RELOCATION_MATCH PASS   IS_THING_ALIVE<CIntelligentPointer<const CThing> >
+006a7430   WARN SHARED_HEADER_AVAILABLE CThing
+006a7430   WARN STANDIN_LEAF ??RCThingFilter_IsAvailableForCreatureInteraction@@QBE_NPAVCThingAICreature@@@Z (catalog CThingFilter_IsAvailableForCreatureInteraction::operator; names another function)
+006a7430   RELOCATION_MATCH PASS   operator
+006a7700   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+006a7700   WARN SHARED_HEADER_AVAILABLE CThing
+006a7700   WARN STANDIN_LEAF ??RCThingFilter_In2DRangeLimit@@QBE_NPAVCThing@@@Z (catalog CThingFilter_In2DRangeLimit::operator; names another function)
+006a7700   MATCH            PASS   operator
+006a7b20   WARN SHARED_HEADER_AVAILABLE CPhysicsMeshObject
+006a7b20   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+006a7b20   WARN SHARED_HEADER_AVAILABLE CThing
+006a7b20   WARN SHARED_HEADER_AVAILABLE CThingFilter_PosInContainmentVolume
+006a7b20   WARN STANDIN_LEAF ??RCThingFilter_PosInContainmentVolume@@QBE_NPAVCThing@@@Z (catalog CThingFilter_PosInContainmentVolume::operator; names another function)
+006a7b20   RELOCATION_MATCH PASS   operator
+006a8300   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+006a8300   WARN SHARED_HEADER_AVAILABLE CThing
+006a8300   WARN STANDIN_LEAF ??RCThingFilter_CanCollideWithThing@@QBE_NPAVCThing@@@Z (catalog CThingFilter_CanCollideWithThing::operator; names another function)
+006a8300   RELOCATION_MATCH PASS   operator
+006a84f0   WARN SHARED_HEADER_AVAILABLE CThing
+006a84f0   WARN SHARED_HEADER_AVAILABLE CTCTargeted
+006a84f0   WARN RELOC_NAME: ?IsTargetable@CTCTargeted@@QBE_NXZ -> 007ea280 labelled 'CScriptBase::IsActiveThreadTerminating'
+006a84f0   WARN STANDIN_LEAF ??RCThingFilter_IsTargetable@@QBE_NPAVCThing@@@Z (catalog CThingFilter_IsTargetable::operator; names another function)
+006a84f0   RELOCATION_MATCH PASS   operator
+006a8630   WARN SHARED_HEADER_AVAILABLE CThing
+006a8630   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+006a8630   WARN STANDIN_LEAF ??RCThingFilter_IsAwareOfThing@@QBE_NPAVCThing@@@Z (catalog CThingFilter_IsAwareOfThing::operator; names another function)
+006a8630   RELOCATION_MATCH PASS   operator
+006af290   WARN SHARED_HEADER_AVAILABLE CThing
+  WARN leaf '??0CMessageEventFilter_IsTargettedAtThing@' matches no symbol in 006af290.obj; graded the largest function
+  WARN leaf '??0CMessageEventFilter_IsTargettedAtThing@' matches no symbol in 006af290.obj; graded the largest function
+006af290   WARN STANDIN_LEAF ??0CMessageEventFilter_IsOriginatedByThing@@QAE@PBVCThing@@@Z (catalog CMessageEventFilter_IsTargettedAtThing::CMessageEventFilter_IsTargettedAtThing; names another function)
+006af290   MATCH            PASS   CMessageEventFilter_IsTargettedAtThing
+0075d9a0   WARN SHARED_HEADER_AVAILABLE CThing
+0075d9a0   WARN SHARED_HEADER_AVAILABLE CTCOwnedEntity
+  WARN leaf 'Validate' matches no symbol in 0075d9a0.obj; graded the largest function
+  WARN leaf 'Validate' matches no symbol in 0075d9a0.obj; graded the largest function
+0075d9a0   WARN STANDIN_LEAF ?vfunc_17@CTCCameraPointBuilding@@QBE_NAAVCCharString@@@Z (catalog CTCCameraPointBuilding::Validate; address-only name)
+0075d9a0   RELOCATION_MATCH PASS   Validate
+007fd830   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007fd830   WARN SHARED_HEADER_AVAILABLE CThing
+007fd830   WARN STANDIN_LEAF ??RCThingFilter_IsWithinArea@@QBE_NPAVCThing@@@Z (catalog CThingFilter_IsWithinArea::operator; names another function)
+007fd830   RELOCATION_MATCH PASS   operator
+00865e20   WARN SHARED_HEADER_AVAILABLE CThing
+00865e20   WARN STANDIN_LEAF ?FinishAction@CCreatureAction_Die@@UAEXXZ (catalog CCombatAction_GenericResponseToDecapitation::FinishAction; names another function)
+00865e20   RELOCATION_MATCH PASS   FinishAction
+0087e840   WARN SHARED_HEADER_AVAILABLE CThing
+0087e840   WARN STANDIN_LEAF ?FinishAction@CCreatureAction_Die@@UAEXXZ (catalog CCreatureAction_StabbedToDeath::FinishAction; names another function)
+0087e840   RELOCATION_MATCH PASS   FinishAction
+00883aa0   WARN SHARED_HEADER_AVAILABLE CThing
+00883aa0   WARN STANDIN_LEAF ?ApplyByPassColorFilter@CByPassColorFilterRequest@@QAEXXZ (catalog _unattributed::ApplyByPassColorFilter; names another function)
+00883aa0   RELOCATION_MATCH PASS   ApplyByPassColorFilter
+008ad530   WARN SHARED_HEADER_AVAILABLE CTCDoor
+008ad530   WARN SHARED_HEADER_AVAILABLE CThing
+008ad530   WARN STANDIN_LEAF ??RCOpenDoor@@QBEXPAVCThing@@@Z (catalog COpenDoor::operator; names another function)
+008ad530   RELOCATION_MATCH PASS   operator
+008c3f00   WARN SHARED_HEADER_AVAILABLE CThing
+008c3f00   WARN STANDIN_LEAF ?FinishAction@CCreatureAction_Die@@UAEXXZ (catalog CCreatureAction_ScorpionKingDeath::FinishAction; names another function)
+008c3f00   RELOCATION_MATCH PASS   FinishAction
+008c9fc0   WARN SHARED_HEADER_AVAILABLE CThing
+008c9fc0   WARN STANDIN_LEAF ?FinishAction@CCreatureAction_Die@@UAEXXZ (catalog CCreatureAction_NymphGetHitDie::FinishAction; names another function)
+008c9fc0   RELOCATION_MATCH PASS   FinishAction
+008d6890   WARN SHARED_HEADER_AVAILABLE CThing
+008d6890   WARN STANDIN_LEAF ?vfunc_6@CClass_008d6890@@QAEXXZ (catalog NCreatureMode::CModeJackOfBladesDeath::OnDeactivate; address-only name)
+008d6890   RELOCATION_MATCH PASS   OnDeactivate
+008f5cf0   WARN SHARED_HEADER_AVAILABLE CThing
+008f5cf0   WARN STANDIN_LEAF ?CallWith_008f5cf0@CClass_008f5cf0@@QAEXXZ (catalog _unattributed::CallWith_008f5cf0; address-only name)
+008f5cf0   RELOCATION_MATCH PASS   CallWith_008f5cf0
+0093dcd0   WARN SHARED_HEADER_AVAILABLE CThing
+0093dcd0   WARN RELOC_NAME: ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ -> 00662410 labelled 'CThingCreatureBase::IsInMeleeAsAttacker'
+0093dcd0   WARN RELOC_NAME: ?ValidateSequencePosition@CCombatPositionMethods@@QAE_NPAVCThingAICreature@@@Z -> 006e9700 labelled 'CCombatManager::IsCreatureOnOuterRing'
+0093dcd0   WARN STANDIN_LEAF ?IsEnemyCreatureInCombatPosition@CCombatStateMethods@@QAE_NXZ (catalog CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureInCombatPosition; names another function)
+0093dcd0   RELOCATION_MATCH PASS   IsEnemyCreatureInCombatPosition
+00942230   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00942230   WARN SHARED_HEADER_AVAILABLE CThing
+00942230   WARN STANDIN_LEAF ??0CThingBoundingSphere@@QAE@PBVCThing@@@Z (catalog CTCCameraPointDefinitionBase::GetActiveCameraPosition; names another function)
+00942230   RELOCATION_MATCH PASS   GetActiveCameraPosition
+00946380   WARN SHARED_HEADER_AVAILABLE CThing
+00946380   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00946380   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+  WARN leaf 'GetFreeCookingPot' matches no symbol in 00946380.obj; graded the largest function
+  WARN leaf 'GetFreeCookingPot' matches no symbol in 00946380.obj; graded the largest function
+00946380   WARN RELOC_NAME: ?FindIfCookingPotForMeal@@YI?AUSThingListIterator@@U1@0UCIsCookingPotForMeal@@@Z -> 009465e0 labelled '_Find_if<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskTorch>,std::_Find_if<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskTorch>,std::allocator<CCountedPointer<CVillageTaskTorch>_>_>_>,CIsThingInvolvedWithTask>'
+00946380   WARN STANDIN_LEAF ?GetPCookingPot@CAIStateGroup_SitForMeal@@ABEPAVCThing@@XZ (catalog CAIStateGroup_PrepareMeal::GetFreeCookingPot; names another function)
+00946380   RELOCATION_MATCH PASS   GetFreeCookingPot
+0095a6c0   WARN SHARED_HEADER_AVAILABLE CThing
+0095a6c0   WARN STANDIN_LEAF ?GotoCirclePoint@CQueenNative@@QAEJJM@Z (catalog CAIStateGroup_HoverHornetQueen::GotoCirclePoint; names another function)
+0095a6c0   RELOCATION_MATCH PASS   GotoCirclePoint
+00970420   WARN SHARED_HEADER_AVAILABLE CThing
+00970420   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+00970420   WARN STANDIN_LEAF ??0CCreatureAction_SummonerChargeSuccess@?A0x3f2778fd@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z (catalog CCombatAction_GenericResponseToDrain::CCombatAction_GenericResponseToDrain; names another function)
+00970420   RELOCATION_MATCH PASS   CCombatAction_GenericResponseToDrain
+00970f30   WARN SHARED_HEADER_AVAILABLE CThing
+00970f30   WARN SHARED_HEADER_AVAILABLE CWorld
+00970f30   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00970f30   WARN RELOC_NAME: ??0CIntelligentPointerBaseRetail@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+00970f30   WARN RELOC_NAME: ?InsertOverflow@CHandleVector@@QAEXPAUCIntelligentPointerRetail@@ABU2@ABUCAllocatorTag@@K_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+00970f30   WARN RELOC_NAME: ??1CIntelligentPointerBaseRetail@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00970f30   WARN STANDIN_LEAF ?IsRunnableLeaf@UseCoverMethods@@QAE_NXZ (catalog CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf; names another function)
+00970f30   RELOCATION_MATCH PASS   IsRunnableLeaf
+00978fd0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00978fd0   WARN SHARED_HEADER_AVAILABLE CThing
+00978fd0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00978fd0   WARN RELOC_NAME: ?ToInteger@C2DBox@@QBE?AVC2DBoxI@@XZ -> 00a55a30 labelled 'C2DBoxF::ToC2DBoxI'
+00978fd0   WARN RELOC_NAME: ?FindInRoughArea@CThingSearchToolsRetail@@QAEXABVC2DBoxI@@ABUCFilterBind4@@AAUCThingVector@@@Z -> 009793d0 labelled 'CThingSearchTools::GetAllThingsInRoughArea'
+00978fd0   WARN STANDIN_LEAF ?GetCoverThingList@AdvanceInCoverMethods@@QAEXAAUCThingVector@@@Z (catalog CAIStateGroup_CreatureAdvanceInCover::GetCoverThingList; names another function)
+00978fd0   RELOCATION_MATCH PASS   GetCoverThingList
+00984b40   WARN SHARED_HEADER_AVAILABLE C3DVector
+00984b40   WARN SHARED_HEADER_AVAILABLE CThing
+00984b40   WARN STANDIN_LEAF ?IsTargetValidAndDistant@COpinionReactionRecord@@QAE_NXZ (catalog CCombatAction_GenericStrikeResponseBase::IsOverrideableByActionOfSamePriority; names another function)
+00984b40   RELOCATION_MATCH PASS   IsOverrideableByActionOfSamePriority
+
+WINS: 38
+  004bff60 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::RemoveAllMeshEffectsInheritedFromCarrier
+  004c7a70 RELOCATION_MATCH CThing::PeekComponent
+  004c7a80 RELOCATION_MATCH CThing::GetMeshBank
+  004c7aa0 RELOCATION_MATCH _global::GetDisplayEngine
+  004cc340 RELOCATION_MATCH _global::IS_THING_ALIVE<class CIntelligentPointer<class CThing>>
+  0055ef00 RELOCATION_MATCH CTCHeroOnlineScoreboard::OnOkClicked
+  005e9a60 RELOCATION_MATCH _Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>
+  0063ef50 RELOCATION_MATCH CThingFilter_OverlappingCircle::??RCThingFilter_OverlappingCircle
+  0065da97 RELOCATION_MATCH CThingCompare_Nearest::??R
+  006689e0 RELOCATION_MATCH CThingFilter_OverlappingSphere::??RCThingFilter_OverlappingSphere
+  00668ab0 RELOCATION_MATCH CThingFindHeightZBelowAt::??RCThingFindHeightZBelowAt
+  006961f0 RELOCATION_MATCH _global::IS_THING_ALIVE<CIntelligentPointer<CThingCreatureBase> >
+  0069ce20 RELOCATION_MATCH _global::IS_THING_ALIVE<CIntelligentPointer<const CThing> >
+  006a7430 RELOCATION_MATCH CThingFilter_IsAvailableForCreatureInteraction::??RCThingFilter_IsAvailableForCreatureInteraction
+  006a7700 MATCH CThingFilter_In2DRangeLimit::??RCThingFilter_In2DRangeLimit
+  006a7b20 RELOCATION_MATCH CThingFilter_PosInContainmentVolume::??RCThingFilter_PosInContainmentVolume
+  006a8300 RELOCATION_MATCH CThingFilter_CanCollideWithThing::??RCThingFilter_CanCollideWithThing
+  006a84f0 RELOCATION_MATCH CThingFilter_IsTargetable::??RCThingFilter_IsTargetable
+  006a8630 RELOCATION_MATCH CThingFilter_IsAwareOfThing::??RCThingFilter_IsAwareOfThing
+  006af290 MATCH CMessageEventFilter_IsOriginatedByThing::??0CMessageEventFilter_IsTargettedAtThing@
+  0075d9a0 RELOCATION_MATCH CTCCameraPointBuilding::Validate
+  007fd830 RELOCATION_MATCH CThingFilter_IsWithinArea::??RCThingFilter_IsWithinArea
+  00865e20 RELOCATION_MATCH CCombatAction_GenericResponseToDecapitation::FinishAction
+  0087e840 RELOCATION_MATCH CCreatureAction_StabbedToDeath::FinishAction
+  00883aa0 RELOCATION_MATCH _unattributed::ApplyByPassColorFilter
+  008ad530 RELOCATION_MATCH COpenDoor::??RCOpenDoor
+  008c3f00 RELOCATION_MATCH CCreatureAction_ScorpionKingDeath::FinishAction
+  008c9fc0 RELOCATION_MATCH CCreatureAction_NymphGetHitDie::FinishAction
+  008d6890 RELOCATION_MATCH NCreatureMode::CModeJackOfBladesDeath::vfunc_6
+  008f5cf0 RELOCATION_MATCH _unattributed::CallWith_008f5cf0
+  0093dcd0 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureInCombatPosition
+  00942230 RELOCATION_MATCH CTCCameraPointDefinitionBase::??0CThingBoundingSphere
+  00946380 RELOCATION_MATCH CAIStateGroup_SitForMeal::GetFreeCookingPot
+  0095a6c0 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::GotoCirclePoint
+  00970420 RELOCATION_MATCH CCreatureAction_SummonerChargeSuccess::??0CCreatureAction_SummonerChargeSuccess@
+  00970f30 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::?IsRunnableLeaf@UseCoverMethods@@QAE_NXZ
+  00978fd0 RELOCATION_MATCH CAIStateGroup_CreatureAdvanceInCover::GetCoverThingList
+  00984b40 RELOCATION_MATCH CCombatAction_GenericStrikeResponseBase::IsTargetValidAndDistant

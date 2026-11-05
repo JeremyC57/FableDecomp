@@ -18,15 +18,9 @@
 // Shape: the delay and the string each in their own block (retail packs fps with the string and the delay with the interface key
 // and the out pointer: two stack slots); managers loaded into named locals before the GetPItem argument; the deed log bound as
 // `CTCHeroOpinionDeedLog* const&` (retail loads the component into eax, then the handle, then `mov ecx,eax`).
-class CCharString {
-public:
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-    const CCharString& operator=(const char* text);    // 0x0099EFE0
-    bool operator!=(const char* text) const;           // 0x0099E960
-private:
-    void* m_pData;
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 class CMainGameComponent {
 protected:
@@ -36,25 +30,10 @@ public:
 };
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    template<class T> __forceinline T* GetTC(long wanted)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-};
+
 class CTCHeroOpinionDeedLog { public:                  // interface 0x51
     void RemoveDeedStillSearchingForWitnesses(long deed);   // 0x006C5920
 };
@@ -130,8 +109,8 @@ void CTCCreatureGroupBoastingCrowd::OnHeroAttackCrowdMember()
     if (CurrentOpinionDeedHandle != -1) {
         if (PHero.GetPItem() && !PHero.GetPItem()->IsDead()) {
             CThing* hero = PHero.GetPItem();
-            if (hero->HasTC(0x51)) {
-                CTCHeroOpinionDeedLog* const& deedLog = hero->GetTC<CTCHeroOpinionDeedLog>(0x51);
+            if (hero->HasTC(TCI_HERO_OPINION_DEED_LOG)) {
+                CTCHeroOpinionDeedLog* const& deedLog = ((CTCHeroOpinionDeedLog*)&hero->GetTC(TCI_HERO_OPINION_DEED_LOG));
                 deedLog->RemoveDeedStillSearchingForWitnesses(CurrentOpinionDeedHandle);
             }
         }

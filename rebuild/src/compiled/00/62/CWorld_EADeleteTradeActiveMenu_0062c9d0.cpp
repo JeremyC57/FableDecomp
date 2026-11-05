@@ -12,30 +12,11 @@
 //   `struct`, but the PDB symbol mangles it `V` (class) -- Review at landing.
 // Shape: no null test on the hero; the GetTC key lives in the dead `event` argument slot.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];              // +0x20 bitset<274>
-    CInterfaceMap Components;                      // +0x44
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CGameEvent {                                 // 0x28 bytes (Ego_r.pdb)
 public:
@@ -63,6 +44,6 @@ public:
 void CWorld::EADeleteTradeActiveMenu(const CGameEvent* event)
 {
     CThing* hero = GetPlayer(event->Player)->GetPControlledCreature();
-    if (hero->HasTC(0x17))
-        hero->GetTC<CTCInventoryTrade >(0x17)->DeleteComponents();
+    if (hero->HasTC(TCI_INVENTORY_TRADE))
+        ((CTCInventoryTrade*)&hero->GetTC(TCI_INVENTORY_TRADE))->DeleteComponents();
 }

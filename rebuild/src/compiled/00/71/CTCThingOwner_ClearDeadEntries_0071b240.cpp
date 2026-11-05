@@ -1,4 +1,5 @@
 // CTCThingOwner::ClearDeadEntries() -- walks the owned-object list and erases every entry whose intelligent pointer is null or dead
+// Leaf: ?ClearDeadEntries@CTCThingOwner@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071B240, length 90 bytes (speed TU: the loop head is nop-aligned).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice: the null test, then the dead bit +0x91 & 1, the
 // IS_THING_DEAD shape of the landed 0x00836BE0), the element's virtual destructor through vtable slot 0 with flag 0
@@ -9,11 +10,7 @@
 // at the bottom of every iteration (`cmp esi,[ebx+0Ch]`) because the destroy is a call.
 class CBaseObject;
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags;                  // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-};
+#include "engine/CThing.h"
 
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

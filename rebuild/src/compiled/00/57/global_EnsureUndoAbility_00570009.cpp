@@ -25,12 +25,10 @@
 #pragma optimize("s", on)
 
 class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    CCharString(const CCharString& other);            // (declared: by-value arguments are built in place)
-    ~CCharString();                                   // 0x0099EAE0
-};
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 namespace NUISystem {
 class CObserver { public:                                   // the observer interface at +4 of every component
@@ -56,35 +54,10 @@ class CManager { public:                                    // NUISystem::CManag
 
 class CThing;
 
-#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                         // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    unsigned char _pad_0x54[0x3d];
-    unsigned char DeadFlags;                         // +0x91 (bit 0: dead; retail)
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            long type = wanted;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* found = map->LowerBound((const ETCInterfaceType&)type);
-            CInterfaceMap::value_type* it;
-            if (found != map->end() && !(wanted < found->first))
-                it = found;
-            else
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CPlayer {
 public:
@@ -108,7 +81,7 @@ private: public:
 // as in retail, so VC7.1 knows the hero is only read through the reference.
 template<class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)
 {
-    return thing != 0 && (thing->DeadFlags & 1) == 0;
+    return thing != 0 && thing->IsDead() == 0;
 }
 
 enum EHeroAbility { HERO_ABILITY_NONE };
@@ -127,7 +100,7 @@ void __fastcall EnsureUndoAbility()
     CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetPPlayerCharacterThing();
     if (IS_THING_ALIVE(hero)) {
         CTCInventoryExperience* inventory;
-        hero->GetInterface(&inventory, 0x16);
+        hero->GetTC(TCI_INVENTORY_EXPERIENCE, &inventory);
         inventory->UndoBuyAbility(g_UndoAbility, true);
         NUISystem::CManager::GetInstance()->ReleaseObserver(g_pUndoYesNoDialog);
         NUISystem::CManager::GetInstance()->ReleaseObserver(g_pUndoMousePointer);

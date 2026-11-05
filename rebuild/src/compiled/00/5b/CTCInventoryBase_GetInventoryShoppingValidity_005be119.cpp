@@ -28,28 +28,12 @@
 class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } };
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    std::bitset<274> present;                                  // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                             // +0x44
-    const C3DVector& GetPos() const;                   // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (present.test(interfaceType)) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing {
 public:
     bool IsFreeToFinishAction();                            // 0x006621C0
@@ -121,7 +105,7 @@ bool CTCInventoryBase::GetInventoryShoppingValidity()
     if (valid && IS_THING_ALIVE(PShopKeeper)) {
         CThing* keeper = PShopKeeper;
         CTCShop* shop;
-        if (keeper->GetInterface(&shop, 0x53)) {
+        if (keeper->GetTC(TCI_SHOP, &shop)) {
             CThingCreatureBase* creature = shop->PKeeper.GetPItem();
             if (IS_THING_ALIVE(creature)) {
                 if (creature->IsFreeToFinishAction())
@@ -129,7 +113,7 @@ bool CTCInventoryBase::GetInventoryShoppingValidity()
                 CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
                 if (IS_THING_ALIVE(hero)) {
                     CTCFacing* facing;
-                    creature->GetInterface(&facing, 2);
+                    creature->GetTC(TCI_PHYSICS, &facing);
                     const C3DVector& target = hero->GetPos();
                     const C2DVector& difference = C2DVector(target.X - facing->X, target.Y - facing->Y);
                     float angle = atan2(difference.X, difference.Y) * 0.15915494f;

@@ -14,36 +14,13 @@
 #include "engine/C3DVector.h"
 class CTCBase;
 class CBaseObject;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad_0x54[0x3d];
-    unsigned char m_flags;                              // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    const C3DVector& GetPos() const;               // 0x004C73D0
-};
+
 CThing* __fastcall CreateParticleEffect(long effect, const C3DVector* pos);   // 0x0072AB70
 
 struct CBaseIntelligentPointer {
@@ -142,7 +119,7 @@ void CTCTurncoatSpell::StartTurncoatingEffects()
     if (!IS_THING_ALIVE(PTarget))
         return;
     CTCSoundPlayer* sound;
-    if (ParentThing->GetInterface(&sound, 0x10))
+    if (ParentThing->GetTC(TCI_SOUND_PLAYER, &sound))
         LoopingSound = ((CTCSoundPlayer*)sound)->PlayAttachedCriteria("HERO_ABILITY_TURNCOAT_CONTINUOUS", 0, 0, 0, -1);
     {   // own scope: the table/effect slots are then packed after the sound name's (retail F+0 table, F+4 effect/name)
         CEffectTablePointer table;
@@ -152,7 +129,7 @@ void CTCTurncoatSpell::StartTurncoatingEffects()
                 TurncoatingEffectOnMe = CIntelligentPointer<CThing>(CreateParticleEffect(effect, &ParentThing->GetPos()));
                 if (IS_THING_ALIVE(TurncoatingEffectOnMe)) {
                     CTCDParticleEmitter* emitter;
-                    ((CThing*)TurncoatingEffectOnMe.GetPItem())->GetInterface(&emitter, 0x4b);
+                    ((CThing*)TurncoatingEffectOnMe.GetPItem())->GetTC(TCI_PARTICLE_EMITTER, &emitter);
                     emitter->AttachToThing(*ParentThing, 8, "", 0, 0.0f);
                 }
             }
@@ -160,7 +137,7 @@ void CTCTurncoatSpell::StartTurncoatingEffects()
                 TurncoatingEffectOnTarget = CIntelligentPointer<CThing>(CreateParticleEffect(effect, &((CThing*)PTarget.GetPItem())->GetPos()));
                 if (IS_THING_ALIVE(TurncoatingEffectOnTarget)) {
                     CTCDParticleEmitter* emitter;
-                    ((CThing*)TurncoatingEffectOnTarget.GetPItem())->GetInterface(&emitter, 0x4b);
+                    ((CThing*)TurncoatingEffectOnTarget.GetPItem())->GetTC(TCI_PARTICLE_EMITTER, &emitter);
                     emitter->AttachToThing(*(((CThing*)PTarget.GetPItem())), 8, "", 0, 0.0f);
                 }
             }

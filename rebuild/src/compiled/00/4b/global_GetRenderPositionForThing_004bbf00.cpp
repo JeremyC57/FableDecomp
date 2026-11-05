@@ -12,7 +12,7 @@
 // Model: the inline CTCPhysicsBase::GetPosition(float) = `t == 1 ? Position : (Position - OldPosition) * t + OldPosition`
 // (value-constructor C3DVector operators as in the landed GetRHSet 0x00759B40; the selected vector's address in eax,
 // then copied through the memberwise copy constructor); then
-// `if (thing.ThingType == creature) pos.Z += PhysicsTC->GetRenderZOffset(t)`.
+// `if (thing.GetType() == creature) pos.Z += PhysicsTC->GetRenderZOffset(t)`.
 // Layout: CThing type byte +0x10, PhysicsTC +0x60 (retail; PDB +0x70 with 16-byte containers). engine/CTCPhysicsBase.h
 // exists (Position +0x0C, OldPosition +0x18 agree) but flattens the C3DVectors to floats and has no virtual interface for
 // slot 79, so the physics component is a local model with the same offsets.
@@ -38,20 +38,14 @@ public:
 
 enum { THING_TYPE_CREATURE = 2 };
 
-class CThing {
-public:
-    unsigned char   _pad00[0x10];
-    unsigned char   ThingType;                       // +0x10
-    unsigned char   _pad11[0x60 - 0x11];
-    CTCPhysicsBase* PhysicsTC;                       // +0x60
-};
+#include "engine/CThing.h"
 
 namespace {
 C3DVector __fastcall GetRenderPositionForThing(const CThing& thing, float interpolation)
 {
-    const CTCPhysicsBase* physics = thing.PhysicsTC;
+    const const CTCPhysicsBase* physics = thing.GetPhysicsTC();
     C3DVector pos = physics->GetPosition(interpolation);
-    if (thing.ThingType == THING_TYPE_CREATURE)
+    if (thing.GetType() == THING_TYPE_CREATURE)
         pos.Z += physics->GetRenderZOffset(interpolation);
     return pos;
 }

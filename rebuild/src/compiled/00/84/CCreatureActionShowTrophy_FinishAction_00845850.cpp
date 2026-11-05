@@ -1,4 +1,5 @@
 // CCreatureAction_ShowTrophy::FinishAction() -- kill the live trophy emitter, tell the shown trophy's CTCTrophy component (interface 0x39) that the owner showed it, then the base FinishAction
+// Leaf: ?FinishAction@CCreatureAction_ShowTrophy@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00845850, length 176 bytes, plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80, CVectorMap::LowerBound @ 0x0040F020
@@ -10,30 +11,10 @@
 // Layout: Ego_r.pdb PTrophyBeingShown +0xb4, ShowingTrophyDeedHandle +0xbc, PostedDeed +0xc0, PEmitter +0xc1 (packed);
 // retail CCreatureActionBase is 0xa8, so the members sit 12 bytes lower (PEmitter at the odd offset +0xb5).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    void Kill(bool silent);                     // 0x004C9B80
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCTrophy { public:
     void OnShownByCreature(CThing* creature);   // 0x006DD740
@@ -75,7 +56,7 @@ public:
     __forceinline CTCTrophy* GetTrophy() const
     {
         CTCTrophy* trophy;
-        PTrophyBeingShown.GetPItem()->GetInterface(&trophy, 0x39);
+        PTrophyBeingShown.GetPItem()->GetTC(TCI_TROPHY, &trophy);
         return trophy;
     }
 };
@@ -83,9 +64,9 @@ public:
 
 void CCreatureAction_ShowTrophy::FinishAction()
 {
-    if (PEmitter.GetPItem() && !(PEmitter.GetPItem()->m_flags91 & 1))
+    if (PEmitter.GetPItem() && !PEmitter.GetPItem()->IsDead())
         PEmitter.GetPItem()->Kill(true);
-    if (PTrophyBeingShown.GetPItem() && !(PTrophyBeingShown.GetPItem()->m_flags91 & 1))
+    if (PTrophyBeingShown.GetPItem() && !PTrophyBeingShown.GetPItem()->IsDead())
         GetTrophy()->OnShownByCreature(PCreature.GetPItem());
     CCreatureActionBase::FinishAction();
 }

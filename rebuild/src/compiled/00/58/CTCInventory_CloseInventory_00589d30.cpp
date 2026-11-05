@@ -1,4 +1,5 @@
 // CTCInventory::CloseInventory() -- shut the inventory: clear the quest-persistent flags and edit boxes, release the primitive handles, delete the PC screens, release the UI manager's modal state, reset the inventory camera, deactivate the hero's active mode components, restore audio volumes and the front end's style, and restart game rendering
+// Leaf: ?CloseInventory@CTCInventory@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed. Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -8,25 +9,10 @@
 class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    std::bitset<274> present;                              // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (present.test(interfaceType)) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 struct CTCActiveMode {                                  // hero mode components with an active flag
     virtual void a000(); virtual void a001(); virtual void a002(); virtual void a003(); virtual void a004(); virtual void a005();
     virtual void a006(); virtual void a007(); virtual void a008(); virtual void a009(); virtual void a010(); virtual void a011();
@@ -235,13 +221,13 @@ void CTCInventory::CloseInventory()
     CTCActiveMode* c = 0;
     CTCActiveMode* d = 0;
     CTCActiveMode* e = 0;
-    ParentThing->GetInterface(&a, 0x13);
+    ParentThing->GetTC(TCI_INVENTORY_WEAPONS, &a);
     CTCActiveMode* unused;
-    ParentThing->GetInterface(&unused, 0x11);
-    ParentThing->GetInterface(&b, 0x1b);
-    ParentThing->GetInterface(&c, 0x6f);
-    ParentThing->GetInterface(&d, 0x14);
-    ParentThing->GetInterface(&e, 0x12);
+    ParentThing->GetTC(TCI_INVENTORY, &unused);
+    ParentThing->GetTC(TCI_INVENTORY_MAP, &b);
+    ParentThing->GetTC(TCI_HERO_ABILITIES, &c);
+    ParentThing->GetTC(TCI_INVENTORY_STATS, &d);
+    ParentThing->GetTC(TCI_INVENTORY_CLOTHING, &e);
     if (a && a->Active)
         a->Deactivate();
     if (b && b->Active)

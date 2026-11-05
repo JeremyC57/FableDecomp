@@ -16,10 +16,7 @@ class CTCPhysicsBase { public:
     C3DVector     m_position;                       // +0x0c
 };
 
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                      // +0x60
-};
+#include "engine/CThing.h"
 
 class CThingFilter_IsWithinZRange { public:
     float Z;                                        // +0x00
@@ -29,7 +26,7 @@ class CThingFilter_IsWithinZRange { public:
 
 bool CThingFilter_IsWithinZRange::operator()(CThing* thing) const
 {
-    CTCPhysicsBase* physics = thing->PhysicsTC;
+    CTCPhysicsBase* physics = thing->GetPhysicsTC();
     if (physics && fabs(physics->m_position.Z - Z) < Range)
         return true;
     return false;

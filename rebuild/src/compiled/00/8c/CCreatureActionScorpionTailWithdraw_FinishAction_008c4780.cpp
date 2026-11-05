@@ -1,4 +1,5 @@
 // CCreatureAction_ScorpionTailWithdraw::FinishAction() -- resume the creature's suspended animation, drop creature mode 47 through the mode manager (interface type 0x31), then the base FinishAction
+// Leaf: ?FinishAction@CCreatureAction_ScorpionTailWithdraw@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4780, length 139 bytes (+ int3 padding). FinishAction is vtable slot 4.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, three times), CThingAICreature::SuspendAI @ 0x00833A10
@@ -12,32 +13,14 @@
 // The PDB header (CCreatureAction_ScorpionTailWithdraw.h, 0x138 bytes) sits 0x24 bytes high against retail (CCombatActionBase is 0x114
 // here), so `this` is modelled locally like the landed CCombatActionBase relatives (0x008CB4A0).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
-class CThing { public:
-    unsigned char _pad0[0x10];
-    unsigned char m_animationSuspended;     // +0x10 (1 while the animation is suspended)
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -72,12 +55,12 @@ class CCreatureAction_ScorpionTailWithdraw : public CCombatActionBase { public:
 
 void CCreatureAction_ScorpionTailWithdraw::FinishAction()
 {
-    if (PCreature.GetPItem()->m_animationSuspended == 1) {
+    if (PCreature.GetPItem()->GetType() == 1) {
         CThing* creature = PCreature.GetPItem();   // fetched before the argument pushes: a named local
         ((CThingAICreature*)creature)->SuspendAI(false, (void*)false);
     }
     CTCCreatureModeManager* pModes;
-    PCreature.GetPItem()->GetInterface(&pModes, 0x31);
+    PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes);
     pModes->RemoveMode(47);
     CCombatActionBase::FinishAction();
 }

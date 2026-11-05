@@ -5,11 +5,7 @@
 // thing's def index and a count of 1. Callers 0x005D8E2E / 0x005D8ECE (CTCInventoryItem::ReturnToInventory family).
 // Layout: retail CThing::DefGlobalIndex (unsigned short) +0x8c (Ego_r.pdb +0x9c; CThing's flag block sits 0x10 lower in
 // retail, cf. Dead +0x91 / GameStatePersisted +0x92).
-class CThing {
-public:
-    unsigned char  _pad00[0x8c];
-    unsigned short DefGlobalIndex;                       // +0x8c
-};
+#include "engine/CThing.h"
 namespace NInventory {
 class CTCInventoryBase {
 public:
@@ -98,6 +94,6 @@ protected:
 };
 void CTCInventoryBase::RemoveItemFromInventory(CThing& item)
 {
-    RemoveItemFromInventory(item.DefGlobalIndex, 1);
+    RemoveItemFromInventory(item.GetDefGlobalIndex(), 1);
 }
 }

@@ -12,10 +12,7 @@
 class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640
 };
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-};
+#include "engine/CThing.h"
 class CThingFilter_OverlappingSphere { public:
     C3DVector SpherePos;                        // +0x00
     float     Radius;                           // +0x0c
@@ -26,7 +23,7 @@ bool CThingFilter_OverlappingSphere::operator()(CThing* thing) const
 {
     C3DVector centre;
     float boundRadius;
-    thing->PhysicsTC->GetBoundingInfo(&centre, &boundRadius);
+    thing->GetPhysicsTC()->GetBoundingInfo(&centre, &boundRadius);
     float dx = centre.X - SpherePos.X;
     float dy = centre.Y - SpherePos.Y;
     float dz = centre.Z - SpherePos.Z;

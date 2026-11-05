@@ -22,12 +22,7 @@ class CTCPhysicsBase { public:                                 // CThing::Physic
 #undef VF
     virtual C3DVector GetFacing() const;                // slot 70 (+0x118)
 };
-class CThing { public:
-    unsigned char   _pad0[0x60];
-    CTCPhysicsBase* PhysicsTC;                          // +0x60
-    const C3DVector& GetPos() const;               // 0x004C73D0
-    CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public: };
 class CSoundPair { public:
     long FirstSound;
@@ -73,7 +68,7 @@ CCreatureAction_DragonFlight::CCreatureAction_DragonFlight(CThingCreatureBase* o
     , FaceTarget(false)
 {
     SetCombatAnimation(animName);
-    C3DVector facing = owner->GetPhysics()->GetFacing();
+    C3DVector facing = owner->GetPhysicsTC()->GetFacing();
     const C3DVector& position = owner->GetPos();
     float targetBearing = GetBearingInTurns(target.X - position.X, target.Y - position.Y);
     float facingBearing = GetBearingInTurns(facing.X, facing.Y);

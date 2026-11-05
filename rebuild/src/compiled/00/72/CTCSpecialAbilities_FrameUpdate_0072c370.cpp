@@ -10,29 +10,10 @@
 // Shape: inline out-parameter GetInterface (map pointer in esi), then the flag test.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 std::bitset of thing-component interface types
-    CInterfaceMap m_interfaces;                             // +0x44
-    template <class T>
-    bool GetInterface(long type, T** out)                   // inline: the landed 0x007504E0 GetInterface shape
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CTCInterface29 {                                     // the interface-0x29 component (only its flag is read)
     unsigned char _pad[0x0d];
@@ -49,7 +30,7 @@ class CTCSpecialAbilities { public:
 void CTCSpecialAbilities::FrameUpdate()
 {
     CTCInterface29* component;
-    if (ParentThing->GetInterface(0x29, &component)) {
+    if (ParentThing->GetTC(TCI_HERO, &component)) {
         if (!component->m_flag0d)
             CancelAllAbilities();
     }

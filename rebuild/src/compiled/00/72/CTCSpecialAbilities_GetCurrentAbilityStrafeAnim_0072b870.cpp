@@ -12,34 +12,13 @@
 // GetInterface (component in eax, then `mov ecx,eax`) and returns the getter's CCharString straight through the hidden
 // pointer; the default builds the empty string there.
 class CTCBase;
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length);        // 0x0099EBF0
-    CCharString(const CCharString& other);
-    ~CCharString();
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                    // +0x20
-    CInterfaceMap m_interfaces;                        // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCFireballSpell { public:
     CCharString GetStrafeAnimName() const;             // 0x007C85F0
 };
@@ -60,14 +39,14 @@ CCharString CTCSpecialAbilities::GetCurrentAbilityStrafeAnim() const
 {
     switch (CurrentAbility) {
     case 0x10: {
-        CTCFireballSpell* fireball;
-        if (ParentThing->GetInterface(0x9d, &fireball))
+        const CTCFireballSpell* fireball;
+        if (ParentThing->PeekTC(TCI_FIREBALL_SPELL, &fireball))
             return fireball->GetStrafeAnimName();
         break;
     }
     case 0xb: {
-        CTCWillLightning* lightning;
-        if (ParentThing->GetInterface(0x94, &lightning))
+        const CTCWillLightning* lightning;
+        if (ParentThing->PeekTC(TCI_WILL_LIGHTNING, &lightning))
             return lightning->GetStrafeAnimName();
         break;
     }

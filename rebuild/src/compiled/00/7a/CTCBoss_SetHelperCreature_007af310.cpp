@@ -11,13 +11,8 @@
 // SetPItem); otherwise STLport push_back: placement-new copy (null-tested) or _M_insert_overflow with the tag homed in the
 // dead `creature` slot.
 class CBaseObject;
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags;                              // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-};
+#include "engine/CThing.h"
 class CThingAICreature : public CThing { public: };
-inline void* operator new(unsigned int, void* where) { return where; }
 struct __false_type { __false_type() {} };
 
 struct CBaseIntelligentPointer {

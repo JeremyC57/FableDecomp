@@ -24,12 +24,7 @@ public:
     bool Electrocutable : 1;                                // bit 4
 };
 namespace { class CThingFilter_IsElectrocutable; }
-class CThing {
-public:
-    unsigned char _pad00[0x70];
-    CDefPointer<const CThingBaseDef> PBaseDef;              // +0x70
-    CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }
-};
+#include "engine/CThing.h"
 class CThingPhysical : public CThing { };
 class CThingGameObject : public CThingPhysical { };
 class CThingObject : public CThingGameObject {

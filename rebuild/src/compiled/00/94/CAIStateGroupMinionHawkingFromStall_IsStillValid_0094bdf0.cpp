@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionHawkingFromStall::IsStillValid() -- still hawking while the shopkeeper has a shop, it is work
+// Leaf: ?IsStillValid@CAIStateGroup_MinionHawkingFromStall@@UAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // hours, and the live hawk target (+0x18) is either the creature itself or the shopkeeper's current thing.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094BDF0, length 173 bytes.
@@ -16,46 +17,10 @@ class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        CInterfaceMap::value_type* sel;
-        if (it == map->end()) sel = map->end();
-        else if (it->first <= interfaceType) sel = it;
-        else sel = map->end();
-        return sel;
-    }
-};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -99,7 +64,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointerCtor& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -121,7 +86,7 @@ struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroupBase {
 bool CAIStateGroup_MinionHawkingFromStall::IsStillValid()
 {
     CTCShopKeeper* keeper;
-    PBrain->PCreature->GetInterface(&keeper, 0x90);
+    PBrain->PCreature->GetTC(TCI_SHOP_KEEPER, &keeper);
     if (keeper->GetShopTC() != 0 && IsInWorkHours() && IS_THING_ALIVE(PHawkTarget)) {
         CThing* self = PBrain->PCreature;
         if (PHawkTarget.GetPItem() == self)

@@ -21,11 +21,7 @@ class CTCPhysicsBase
     float         Radius;                           // +0x34
 };
 
-class CThing { public:
-    unsigned char   _pad_0x00[0x60];
-    CTCPhysicsBase* PhysicsTC;                      // +0x60
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 struct CThingBoundingSphere
 {
@@ -43,5 +39,5 @@ CThingBoundingSphere::CThingBoundingSphere(const CThing* thing)
     CentreX = position.X;
     CentreY = position.Y;
     CentreZ = position.Z;
-    Radius = thing->PhysicsTC->Radius;
+    Radius = thing->GetPhysicsTC()->Radius;
 }

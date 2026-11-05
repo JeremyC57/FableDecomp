@@ -23,12 +23,7 @@
 #include "engine/CDefClassBase.h"
 #include "engine/CDefPointer.h"
 class CBaseObject;
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Dead : 1;                         // +0x91 bit 0
-    bool IsDead() const { return Dead; }            // Ego_r.pdb ?IsDead@CThing@@QBE_NXZ
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 class CThingAICreature : public CThingCreatureBase { };
 

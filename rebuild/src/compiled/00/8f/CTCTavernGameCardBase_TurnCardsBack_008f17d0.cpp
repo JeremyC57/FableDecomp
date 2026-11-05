@@ -25,11 +25,9 @@ struct CCardVector {                            // STLport vector<CCard*> (12 by
     CCard** end() { return _M_finish; }
 };
 
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:
@@ -37,22 +35,9 @@ class CTCGraphicAppearance { public:
 };
 }
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-    }
-};
+
 class CCard { public:                                  // Ego_r.pdb CCard (0x58 bytes)
     CThing* Thing;                              // +0x00 CThingObject*
     long    Name;                               // +0x04
@@ -99,8 +84,8 @@ void CTCTavernGameCardBase::TurnCardsBack()
     for (CCard** it = Cards.begin(); it != Cards.end(); ++it) {
         CThing* thing = (*it)->Thing;
         NGraphicAppearance::CTCGraphicAppearance* appearance = 0;
-        if (thing->HasTC(0x5b))
-            appearance = (NGraphicAppearance::CTCGraphicAppearance*)thing->GetTC(0x5b);
+        if (thing->HasTC(TCI_GRAPHIC_APPEARANCE_NEW))
+            appearance = (NGraphicAppearance::CTCGraphicAppearance*)((NGraphicAppearance::CTCGraphicAppearance*)&thing->GetTC(TCI_GRAPHIC_APPEARANCE_NEW));
         appearance->ClearMeshEffect_004bffc0(this);
         if (!(*it)->Turning && !(*it)->FaceDown) {
             {

@@ -11,29 +11,12 @@
 // Layout: the retail CCombatActionBase (PCreature +8, PTarget +0xa8, 0x114 bytes); the creature's state byte +0x10;
 //          the combat type def's block response +0x98.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x10];
-    unsigned char m_state;                       // +0x10
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long m_presentBits[9];              // +0x20
-    CInterfaceMap m_interfaces;                  // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                     // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCCarrying { public:
     CThing* GetThingInPrimarySlot() const;             // 0x006A1440
 };
@@ -41,11 +24,7 @@ class CCombatTypeDef { public:
     unsigned char _pad[0x98];
     long          BlockedResponse;               // +0x98
 };
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                              // 0x0099EAE0
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -66,7 +45,7 @@ class CSoundPair { public: long FirstSound, LastSound; };
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -97,14 +76,14 @@ void CCombatActionBase::OnBlowBlocked(bool flag)
     CreatureOnBlowBlocked(flag);
     if (IS_THING_ALIVE(PTarget) && IS_THING_ALIVE(PCreature)) {
         bool canRecoil = true;
-        CTCCarrying* carrying;
-        if (PCreature.GetPItem()->GetInterface(&carrying, 0x46)) {
+        const CTCCarrying* carrying;
+        if (PCreature.GetPItem()->PeekTC(TCI_CARRYING, &carrying)) {
             CThing* held = carrying->GetThingInPrimarySlot();
-            if (!held || (held->m_flags91 & 1))
+            if (!held || held->IsDead())
                 canRecoil = false;
         }
         CThing* item = PCreature.GetPItem();
-        if ((item->m_state == 2 || ((CThingCreatureBase*)PCreature.GetPItem())->GetCombatTypeDef()->BlockedResponse != 2) && canRecoil) {
+        if ((item->GetType() == 2 || ((CThingCreatureBase*)PCreature.GetPItem())->GetCombatTypeDef()->BlockedResponse != 2) && canRecoil) {
             CThing* target = PTarget.GetPItem();
             CThingCreatureBase* creature = (CThingCreatureBase*)PCreature.GetPItem();
             FinishAction();

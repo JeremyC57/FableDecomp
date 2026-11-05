@@ -1,4 +1,5 @@
 // CAIStateGroup_MazeTutorialBattle::OnActivate() -- register the creature against its enemy as a combatant
+// Leaf: ?OnActivate@CAIStateGroup_MazeTutorialBattle@@UAEXXZ
 // when the enemy is flagged for it, then stamp FrameOfLastShield with the current frame.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00954190, length 74 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy at +0x14, called twice: once for the flag
@@ -12,10 +13,8 @@
 // is local.
 class CThingCreatureBase;
 
-class CThing { public:
-    unsigned char _pad[0x6c];
-    unsigned char m_flags6c;                // +0x6c bit 3: wants combat registration
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -37,7 +36,6 @@ public:
 class CCombatManager { public:
     void RegisterCombatant(CThingCreatureBase* creature, CThing* target, bool hostile);   // 0x006EDC50
 };
-
 
 class CWorld { public:
     unsigned char _pad[0x4c];
@@ -66,7 +64,7 @@ struct CAIStateGroup_MazeTutorialBattle : CAIStateGroupBase {
 
 void CAIStateGroup_MazeTutorialBattle::OnActivate()
 {
-    if (PEnemy.GetPItem()->m_flags6c & 8) {
+    if (PEnemy.GetPItem()->GetTypeFlags() & 8) {
         CThing* enemy = PEnemy.GetPItem();
         CThingCreatureBase* creature = PBrain->Creature;
         CWorld* world = GetPWorld();

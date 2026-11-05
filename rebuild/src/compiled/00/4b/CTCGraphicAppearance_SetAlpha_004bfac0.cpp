@@ -1,8 +1,8 @@
 // CTCGraphicAppearance::SetAlpha  @ 004bfac0
-class CThing { public:
-public:
-    void AddToRenderList();   // 0x004C7AC0
-};
+// Leaf: ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:

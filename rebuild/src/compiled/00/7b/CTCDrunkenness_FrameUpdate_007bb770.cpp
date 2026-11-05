@@ -15,9 +15,9 @@ class CWorld { public:
     static long __fastcall GetFrame();                            // 0x0049D870
 };
 
-class CThing { public:
-    bool IsUnderScriptSupervision() const;                  // 0x004C7E90
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_SCRIPTSUPERVISION
+#include "engine/CThing.h"
 
 class CTCDrunkenness { public:
     virtual void v00();

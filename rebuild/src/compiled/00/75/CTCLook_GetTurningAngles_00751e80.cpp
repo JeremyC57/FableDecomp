@@ -1,4 +1,5 @@
 // CTCLook::GetTurningAngles(float& targetAngle, float& turnAngle) -- when the body may turn (state bit 1, no blocking action, not bit 3), the XY angle to look along (direction or look-at position, else the recovery angle) and its difference from the body facing
+// Leaf: ?GetTurningAngles@CTCLook@@QAE_NAAM0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751E80, length 304 bytes (+ int3 padding), `ret 8`, bool in al. Called by
 // GetTurningAnglesAndCheckForTurningBody 0x007525C0 (landed).
 // Callees: CThingCreatureBase::IsPerformingAnyAction() @ 0x006622A0, the current action's virtual slot 50 (+0xC8, a
@@ -38,10 +39,7 @@ class CTCPhysicsBase { public:
     void*     m_tcBase[2];                      // +0x04 CTCBase body
     C3DVector Position;                         // +0x0c
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-};
+#include "engine/CThing.h"
 class CCreatureActionBase { public:
     FILL10(0) FILL10(1) FILL10(2) FILL10(3) FILL10(4)
     virtual bool BlocksBodyTurning();           // slot 50 (+0xC8)
@@ -99,7 +97,7 @@ bool CTCLook::GetTurningAngles(float& targetAngle, float& turnAngle)
     if (BodyTurnState & 2) {
         if (!(IS_THING_ALIVE(PParentCreature) && PParentCreature->IsPerformingAnyAction() &&
               PParentCreature->CurrentAction->BlocksBodyTurning()) && !(BodyTurnState & 8)) {
-            CTCPhysicsBase* physics = ParentThing->PhysicsTC;
+            CTCPhysicsBase* physics = ParentThing->GetPhysicsTC();
             float bodyXY = physics->GetFacingAngleXY();
             targetAngle = RecoveryAngleToLookAtXY;
             if (LookFlags & 0x40) {

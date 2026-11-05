@@ -25,11 +25,7 @@ public:
 float __fastcall GetSquaredDistanceToInfiniteLine(const C3DVector& start, const C3DVector& end,
                                                  const C3DVector& point, float& t);   // 0x00A442E0
 
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                              // +0x60
-};
+#include "engine/CThing.h"
 
 class CThingFilter_BoundingRadiusIntersectsInfiniteLine {
 public:
@@ -40,10 +36,10 @@ public:
 
 bool CThingFilter_BoundingRadiusIntersectsInfiniteLine::operator()(const CThing& thing) const
 {
-    if (thing.PhysicsTC) {
+    if (thing.GetPhysicsTC()) {
         C3DVector centre;
         float radius;
-        thing.PhysicsTC->GetBoundingInfo(centre, radius);
+        thing.GetPhysicsTC()->GetBoundingInfo(centre, radius);
         float t;
         float distance_sq = GetSquaredDistanceToInfiniteLine(Start, End, centre, t);
         if (distance_sq < radius * radius)

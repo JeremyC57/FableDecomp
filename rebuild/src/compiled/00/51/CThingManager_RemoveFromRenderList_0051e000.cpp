@@ -12,17 +12,7 @@ class CTCPhysicsBase { public:
     virtual void OnRemovedFromUpdateList();     // slot 45 (+0xb4)
     virtual void OnAddedToUpdateList();         // slot 46 (+0xb8)
 };
-class CThing { public:
-    unsigned char   _pad00[0x10];
-    unsigned char   m_updateListIndex;          // +0x10 (which update list the thing lives in)
-    unsigned char   _pad11[0x60 - 0x11];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-    unsigned char   _pad64[0x7c - 0x64];
-    CThing*         m_pPrevRender;              // +0x7c
-    CThing*         m_pNextRender;              // +0x80
-    CThing*         m_pPrevUpdate;              // +0x84
-    CThing*         m_pNextUpdate;              // +0x88
-};
+#include "engine/CThing.h"
 struct ThingLList {                             // 8 bytes: head, tail
     CThing* m_pHead;
     CThing* m_pTail;
@@ -38,16 +28,16 @@ class CThingManager { public:
 
 void CThingManager::RemoveFromRenderList(CThing* thing)
 {
-    if (thing->m_pNextRender || thing->m_pPrevRender || RenderList.m_pHead == thing) {
+    if (thing->RenderListNext || thing->RenderListPrev || RenderList.m_pHead == thing) {
         if (RenderList.m_pHead == thing)
-            RenderList.m_pHead = thing->m_pNextRender;
+            RenderList.m_pHead = thing->RenderListNext;
         if (RenderList.m_pTail == thing)
-            RenderList.m_pTail = thing->m_pPrevRender;
-        if (thing->m_pNextRender)
-            thing->m_pNextRender->m_pPrevRender = thing->m_pPrevRender;
-        if (thing->m_pPrevRender)
-            thing->m_pPrevRender->m_pNextRender = thing->m_pNextRender;
-        thing->m_pNextRender = 0;
-        thing->m_pPrevRender = 0;
+            RenderList.m_pTail = thing->RenderListPrev;
+        if (thing->RenderListNext)
+            thing->RenderListNext->RenderListPrev = thing->RenderListPrev;
+        if (thing->RenderListPrev)
+            thing->RenderListPrev->RenderListNext = thing->RenderListNext;
+        thing->RenderListNext = 0;
+        thing->RenderListPrev = 0;
     }
 }

@@ -1,4 +1,5 @@
 // CTCWallMountEffects::OnTakenOffMount() -- a teleport mount loses its teleporter TC; an effect mount that was not persisted before goes back to unpersisted
+// Leaf: ?OnTakenOffMount@CTCWallMountEffects@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DF440, length 54 bytes.
 // Callees: CThing::RemoveTC(long type) @ 0x004C9840 (looks the type up in the thing's TC map at +0x44; the manifest
 // label "CBaseObject::OnPropertyChanged" is propagated), CThing::SetAsGameStatePersisted(bool) @ 0x004C7880.
@@ -6,11 +7,9 @@
 // Layout (Ego_r.pdb): CTCWallMountEffects PDef +0x0c, ObjectWasGamePersistant +0x20; CWallMountEffectsDef Effect +0x28.
 // Shape: undoes OnPutOnMount; Effect is re-read through PDef for the second test, the `&&` gives two `je` to the
 // shared epilogue.
-enum ETCInterfaceType { };
-class CThing { public:
-    void RemoveTC(ETCInterfaceType type);                               // 0x004C9840
-    void SetAsGameStatePersisted(bool persisted);           // 0x004C7880
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 enum EWallMountEffects { WALL_MOUNT_EFFECT_NONE = 0, WALL_MOUNT_EFFECT_TELEPORT = 1 };
 

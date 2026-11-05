@@ -1,4 +1,5 @@
 // CAIStateGroup_WorkBase::IsInWorkHours() -- true when the creature's shop (shop keeper interface 0x90 -> shop) reports its keeper available
+// Leaf: ?IsInWorkHours@CAIStateGroup_WorkBase@@QAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094BEF0, length 83 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (the creature's interface lookup, type 0x90 = bit 16 of the dword at +0x30),
@@ -13,28 +14,10 @@ class CThing;
 
 // A thing's component table: the presence bitset at +0x20 (bit N of dword N/32) and the sorted {type, component}
 // vector map at +0x44 searched with LowerBound -- the shape of the landed GetInterface bodies.
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCShop { public:
     bool IsShopKeeperAvailable();                                  // 0x00773AA0
@@ -68,7 +51,7 @@ struct CAIStateGroup_WorkBase : CAIStateGroupBase {
 bool CAIStateGroup_WorkBase::IsInWorkHours()
 {
     CTCShopKeeper* pComponent;
-    if (PBrain->Creature->GetInterface(&pComponent, 0x90)) {
+    if (PBrain->Creature->GetTC(TCI_SHOP_KEEPER, &pComponent)) {
         CTCShop* pOwner = ((CTCShopKeeper*)(pComponent))->GetShopTC();
         if (pOwner != 0) {
             if (pOwner->IsShopKeeperAvailable())

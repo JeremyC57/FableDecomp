@@ -1,4 +1,5 @@
 // CAIStateGroup_BirdGroundWander::IsRunnable() -- runnable when the creature's mode component is in the ground-wander mode and the bird never walked or finished walking more than two seconds ago
+// Leaf: ?IsRunnable@CAIStateGroup_BirdGroundWander@@QAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -29,28 +30,10 @@ public:
     static long __fastcall GetFrame();   // 0x0049D870
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCCreatureModeManager { public:                 // interface 7
     long GetCurrentModeType();                  // 0x006CB6A0
@@ -83,7 +66,7 @@ struct CAIStateGroup_BirdGroundWander : CAIStateGroupBase {
 bool CAIStateGroup_BirdGroundWander::IsRunnable()
 {
     CTCCreatureModeManager* modes;
-    PBrain->Creature->GetInterface(&modes, 7);
+    PBrain->Creature->GetTC(TCI_NAVIGATION, &modes);
     if (modes->GetCurrentModeType() == g_groundWanderMode) {
         if (FrameLastFinishedWalking == 0)
             return true;

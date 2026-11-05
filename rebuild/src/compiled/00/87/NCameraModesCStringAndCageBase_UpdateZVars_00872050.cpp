@@ -20,10 +20,7 @@
 #include "engine/CGameCameraManager.h"
 #undef CGameCameraManager
 #include "engine/C3DVector.h"
-class CThing {
-public:
-    const C3DVector& GetPos() const;                  // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingGameObject : public CThing { };
 class CGameCameraManager : public CGameCameraManagerDonor {
  public:

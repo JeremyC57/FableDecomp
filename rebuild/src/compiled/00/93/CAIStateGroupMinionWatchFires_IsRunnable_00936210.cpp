@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionWatchFires::IsRunnable() -- runnable when the idle scheduler (if any) prefers this group and a burning building lies within the creature's sight range.
+// Leaf: ?IsRunnable@CAIStateGroup_MinionWatchFires@@UAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
@@ -18,31 +19,12 @@
 // IS_THING_ALIVE names the item before the dead-bit test: the plain `if (GetPItem() && !(GetPItem()->flags & 1))` form
 // turns the final `return true` into VC's `mov al,1 ; test al,cl` select instead of retail's test/jne + two epilogues.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #include "engine/C3DVector.h"
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;             // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingBuilding;
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -56,7 +38,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         CThing* item = ((CThing*)p.GetPItem());
-        if (!(item->m_flags91 & 1))
+        if (!item->IsDead())
             return true;
     }
     return false;
@@ -129,12 +111,12 @@ struct CAIStateGroup_MinionWatchFires : CAIStateGroupBase {
 bool CAIStateGroup_MinionWatchFires::IsRunnable()
 {
     CTCIdleScheduler* scheduler;
-    if (PBrain->PCreature->GetInterface(&scheduler, 0xd3)) {
+    if (PBrain->PCreature->GetTC(TCI_IDLE_SCHEDULER, &scheduler)) {
         if (!scheduler->IsPreferredIdle(this))
             return false;
     }
     CTCPerceiveThing* perceive;
-    if (PBrain->PCreature->GetInterface(&perceive, 0x34)) {
+    if (PBrain->PCreature->GetTC(TCI_PERCEIVE_THING, &perceive)) {
         CThingBuilding* building = 0;
         PBuildingOnFire = CIntelligentPointerBuilding(0);
         float radius = perceive->GetSightRadius();

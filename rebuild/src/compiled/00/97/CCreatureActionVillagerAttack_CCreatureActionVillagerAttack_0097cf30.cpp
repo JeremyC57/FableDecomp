@@ -11,14 +11,9 @@
 // Shape: the landed CCreatureAction_MidAttack360 0x0090A700 model with the sound name a null pointer converted implicitly
 //   (`push -1 ; push 0`, as the landed CCreatureAction_NymphSummonOutOf 0x008CA600); the 8-byte CSoundPair comes back through
 //   the hidden pointer, the string temporary dies after the base constructor, then the vtable store.
-class CThing { };
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
-
-class CCharString { public:                     // one pointer; the default length makes the literal convert implicitly
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                        // 0x0099EAE0
-};
 
 class CSoundPair { public:                       // a user constructor makes the 8-byte result return through the hidden pointer
     long m_first;

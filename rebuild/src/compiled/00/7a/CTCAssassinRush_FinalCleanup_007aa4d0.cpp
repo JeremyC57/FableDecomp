@@ -16,36 +16,14 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char State;                                // +0x10
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_stateFlags;                         // +0x91 (bit 0: dead)
-    bool IsDead() const { return (m_stateFlags & 1) != 0; }
-    void Kill(bool immediately);                        // 0x004C9B80
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -99,14 +77,14 @@ void CTCAssassinRush::FinalCleanup()
 {
     if (IS_THING_ALIVE(ParentThing)) {
         CTCSpecialAbilities* abilities;
-        if (ParentThing->GetInterface(&abilities, 0xa7)) {
+        if (ParentThing->GetTC(TCI_SPECIAL_ABILITIES, &abilities)) {
             if (abilities->CurrentAbility == 13) {
                 abilities->AbilityMutexLock = false;
                 abilities->CurrentAbility = 0;
             }
         }
         if (!CompletedExitModes) {
-            if (ParentThing->State == 1)
+            if (ParentThing->GetType() == 1)
                 ((CThingAICreature*)ParentThing)->SuspendAI(false, 0);
             else
                 GetWorld().RemoveBulletTimeSlowdown((unsigned long)this);

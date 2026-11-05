@@ -17,9 +17,9 @@ class CBaseObject;
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
 
-class CThing { public:
-    CScriptThing GetScriptThing() const;          // 0x004C7E50
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

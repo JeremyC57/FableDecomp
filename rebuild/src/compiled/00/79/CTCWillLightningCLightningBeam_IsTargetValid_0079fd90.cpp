@@ -1,4 +1,5 @@
 // CTCWillLightning::CLightningBeam::IsTargetValid() -- beam target check through the home thing's interface-8 component
+// Leaf: ?IsTargetValid@CLightningBeam@@QAE_NXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Grade: see STATUS.tsv
 class CTCBase;
@@ -19,48 +20,15 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x10];
-    unsigned char m_thingType;                  // +0x10 (1: creature)
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        long type = interfaceType;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -87,11 +55,11 @@ bool CLightningBeam::IsTargetValid()
 {
     if (IS_THING_ALIVE(m_tcpHome)) {
         CTCOwned* owned;
-        if (m_tcpHome.GetPItem()->GetInterface(&owned, 8)) {
+        if (m_tcpHome.GetPItem()->GetTC(TCI_TARGETING, &owned)) {
             CThing* owner;
-            if (m_tcpHome.GetPItem()->m_thingType == 1) {
+            if (m_tcpHome.GetPItem()->GetType() == 1) {
                 CTCOwned* creatureOwned;
-                m_tcpHome.GetPItem()->GetInterface(&creatureOwned, 8);
+                m_tcpHome.GetPItem()->GetTC(TCI_TARGETING, &creatureOwned);
                 owner = creatureOwned->Owner.GetPItem();
                 if (owner == 0)
                     owner = owned->GetOwner();

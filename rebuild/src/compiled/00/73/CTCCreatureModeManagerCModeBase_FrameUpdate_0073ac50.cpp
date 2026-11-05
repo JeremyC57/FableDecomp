@@ -1,4 +1,5 @@
 // CTCCreatureModeManager::CModeBase::FrameUpdate() -- counts FramesBeforeRemovingSelf down and, when it reaches zero, asks the owner's mode manager to remove this mode
+// Leaf: ?FrameUpdate@CModeBase@CTCCreatureModeManager@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073AC50, 112 bytes (padding included).
 // Shape: a positive counter (+0x14) is decremented and re-read; at zero the owner's (ParentThing,
@@ -8,28 +9,10 @@
 // RemoveMode(GetModeType()) (0x0073ABA0; GetModeType is vtable slot 1).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned long HasTC(long interfaceType) const     // the masked word, not a bool (a bool narrows to shr/and)
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-};
 
 class CTCCreatureModeManager { public:                 // interface type 0x31 component
 
@@ -52,8 +35,8 @@ void CTCCreatureModeManager::CModeBase::FrameUpdate()
         --FramesBeforeRemovingSelf;
     if (FramesBeforeRemovingSelf == 0) {
         CTCCreatureModeManager* modes = 0;
-        if (ParentThing->HasTC(0x31))
-            modes = (CTCCreatureModeManager*)ParentThing->GetTC(0x31);
+        if (ParentThing->HasTC(TCI_ENTITY_MODE_MANAGER))
+            modes = (CTCCreatureModeManager*)((CTCCreatureModeManager*)&ParentThing->GetTC(TCI_ENTITY_MODE_MANAGER));
         modes->RemoveMode(GetModeType());
     }
 }

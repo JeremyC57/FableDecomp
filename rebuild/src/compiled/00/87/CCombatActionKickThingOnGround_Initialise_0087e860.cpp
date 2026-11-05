@@ -31,20 +31,18 @@ class C3DVector { public:
     C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CHitLocation {
     C3DVector GetClosestPointToPos2D(const C3DVector& position, const C3DVector& direction);   // 0x00815370
 };
 class CTCHitLocations { public:                                // interface 0x7F
-    CHitLocation* GetHitLocation();                     // 0x00814BF0
+    CHitLocation* GetHitLocation() const;                     // 0x00814BF0
 };
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
@@ -57,33 +55,7 @@ class CTCSolidToThing { public:
     void AddThingNotSolidTo(CThing* thing);             // 0x00770FA0
 };
 class CTCParamsBase;
-class CThing { public:
-    unsigned char   _pad0[0x10];
-    unsigned char   ThingType;                          // +0x10
-    unsigned char   _pad11[0x20 - 0x11];
-    unsigned long   m_presentBits[9];                   // +0x20
-    CInterfaceMap   m_interfaces;                       // +0x44
-    unsigned char   _pad54[0xc];
-    CTCPhysicsBase* m_pPhysics;                         // +0x60
-    unsigned char   _pad64[0x91 - 0x64];
-    unsigned char   m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;               // 0x004C73D0
-    CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60
-    CTCPhysicsBase* GetPhysics() const { return m_pPhysics; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingAICreature : public CThing {
 public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
@@ -107,7 +79,7 @@ public:
 };
 __forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    return p.GetPItem() && !(p.GetPItem()->m_flags91 & 1);
+    return p.GetPItem() && !p.GetPItem()->IsDead();
 }
 
 class CCombatActionBase {
@@ -132,7 +104,7 @@ void CCombatAction_KickThingOnGround::Initialise()
 {
     float forward;
     float side;
-    if (IS_THING_ALIVE(PTarget) && PTarget.GetPItem()->ThingType == 13) {
+    if (IS_THING_ALIVE(PTarget) && PTarget.GetPItem()->GetType() == 13) {
         {
             CCharString name("STRIKE_STEALTH_KICK_THING_ON_GROUND");
             SetCombatAnimation(name);
@@ -147,12 +119,12 @@ void CCombatAction_KickThingOnGround::Initialise()
         forward = 0.0f;
         side = 0.1f;
     }
-    CTCPhysicsBase* physics = PCreature.GetPItem()->GetPhysics();
+    CTCPhysicsBase* physics = PCreature.GetPItem()->GetPhysicsTC();
     C3DVector position = PCreature.GetPItem()->GetPos();
     C3DVector facing = physics->GetFacing();
     C3DVector direction = -facing;
     if (IS_THING_ALIVE(PTarget)) {
-        if (PTarget.GetPItem()->ThingType == 1) {
+        if (PTarget.GetPItem()->GetType() == 1) {
             CThingAICreature* creature = (CThingAICreature*)PTarget.GetPItem();
             ((CThingAICreature*)creature)->SuspendAI(true, 0);
         }
@@ -169,8 +141,8 @@ void CCombatAction_KickThingOnGround::Initialise()
         targetSolid->AddThingNotSolidTo(PCreature.GetPItem());
         creatureSolid->AddThingNotSolidTo(PTarget.GetPItem());
         position = PTarget.GetPItem()->GetPos();
-        CTCHitLocations* hitLocations;
-        if (PTarget.GetPItem()->GetInterface(&hitLocations, 0x7f)) {
+        const CTCHitLocations* hitLocations;
+        if (PTarget.GetPItem()->PeekTC(TCI_HIT_LOCATIONS, &hitLocations)) {
             CHitLocation* location = hitLocations->GetHitLocation();
             if (location)
                 position = location->GetClosestPointToPos2D(PCreature.GetPItem()->GetPos(), direction);

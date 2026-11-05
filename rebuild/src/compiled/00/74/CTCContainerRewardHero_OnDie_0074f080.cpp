@@ -16,30 +16,10 @@
 struct CTCComponent;
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x10];
-    unsigned char m_type;                           // +0x10 (2 = creature)
-    unsigned char _pad11[0xf];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)((CTCComponent*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CTCRewardsHandled {                          // the interface-0xA0 component (class not established)
     unsigned char _pad[0x10];
@@ -56,9 +36,9 @@ class CTCContainerRewardHero : public CTCBase { public:
 void CTCContainerRewardHero::OnDie()
 {
     CThing* owner = ParentThing;
-    CTCRewardsHandled* handled;
-    if (owner->GetInterface(0xa0, &handled) && handled->m_handled)
+    const CTCRewardsHandled* handled;
+    if (owner->PeekTC(TCI_SUMMONABLE_CREATURE, &handled) && handled->m_handled)
         return;
-    if (Enabled && owner->m_type != 2 && owner->m_type != 0xd)
+    if (Enabled && owner->GetType() != 2 && owner->GetType() != 0xd)
         CreateItemPickupContainer();
 }

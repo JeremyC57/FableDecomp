@@ -1,4 +1,5 @@
 // CTCFineDialogue::Show(long fine, long money, CTCVillage* village) -- stores the fine, builds "pay for" + the hero's crime report for this region, then shows the hand-over prompt (and registers for updates) or the lack-of-funds prompt
+// Leaf: ?Show@CTCFineDialogue@@QAEXJJPAVCTCVillage@@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_PlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
@@ -19,21 +20,11 @@
 // Shape: the symbols are implicit const char* conversions (temporaries land in the dead fine/village argument slots); the
 //        hero-stats TC is fetched without a fallback (retail reads the dead slot when absent); the outstanding fine and
 //        frames are fetched and unused, as in retail; the affordable branch comes first.
-class CCharString {
-public:
-    void* Data;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CWideString {
-public:
-    void* Data;
-    CWideString();                                      // 0x0099AED0
-    ~CWideString();                                     // 0x0099B510
-    const CWideString& operator+=(const unsigned short* text);    // 0x0099B940
-    const CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
+
 CWideString __fastcall operator+(const CWideString& left, const unsigned short* right);   // 0x0099BF30
 namespace NGameText {
     bool __fastcall ConstructString(CWideString& text, long value);   // 0x009C7B70
@@ -81,24 +72,10 @@ public:
     const CRegion& GetRegion(long index) const;         // 0x004FC180
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long PresentBits[9];                       // +0x20
-    CInterfaceMap Interfaces;                           // +0x44
-    __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &Interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        CInterfaceMap::value_type* end = map->end();
-        return (it == end || type < it->first ? end : it)->second;
-    }
-};
+
 class CTCBase {
 public:
     virtual void v00();
@@ -143,8 +120,8 @@ void CTCFineDialogue::Show(long fine, long money, CTCVillage* village)
     text += (const unsigned short*)L"\n";
     CWideString report;
     CTCHeroStats* stats;
-    if (Thing->HasTC(4))
-        stats = (CTCHeroStats*)Thing->GetTC(4);
+    if (Thing->HasTC(TCI_HERO_STATS))
+        stats = (CTCHeroStats*)((CTCHeroStats*)&Thing->GetTC(TCI_HERO_STATS));
     village->UpdateMirroredCrimeData();
     CCharString region = PeekWorldMap().GetRegion(PeekWorldMap().GetLoadedRegion()).Name;
     stats->GetCrimeReport(region, report, false);

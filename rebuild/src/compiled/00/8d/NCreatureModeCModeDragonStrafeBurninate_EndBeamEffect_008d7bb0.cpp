@@ -8,11 +8,7 @@
 // Layout: PDB CModeDragonStrafeBurninate (0xCC) has PBeamWeaponEffect at +0x9C; retail is +0x98 (4 bytes lower).
 // Shape: IS_THING_ALIVE inlined (pointer set and CThing +0x91 bit 0 "dead" clear), Kill(true), then the landed "clear through a
 // default-constructed stack CIntelligentPointer" form (0x008C99C0): ctor, vtable store, SetPItem(0), SetPItem(temp), dtor.
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    void Kill(bool immediately);            // 0x004C9B80
-};
+#include "engine/CThing.h"
 class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -29,7 +25,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;

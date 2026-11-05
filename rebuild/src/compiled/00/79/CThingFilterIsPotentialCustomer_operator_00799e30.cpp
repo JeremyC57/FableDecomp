@@ -27,32 +27,11 @@ __forceinline float Length(const C3DVector& v)
     return (float)sqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
 }
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char  _pad00[0x10];
-    unsigned char  ThingType;                           // +0x10
-    unsigned char  _pad11[0x20 - 0x11];
-    unsigned long  m_presentBits[9];                    // +0x20
-    CInterfaceMap  m_interfaces;                        // +0x44
-    const C3DVector& GetPos() const;               // 0x004C73D0
-    __forceinline bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    __forceinline const CTCBase* GetTC(long type) const
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(key);
-        const CInterfaceMap::value_type* end = map->end();
-        return (it == end || type < it->first ? end : it)->second;
-    }
-};
 class CThingCreatureBase : public CThing { public:
     long GetCreatureType() const;                       // 0x00662000
 };
@@ -103,23 +82,23 @@ class CThingFilter_IsPotentialCustomer { public:
 
 bool CThingFilter_IsPotentialCustomer::operator()(const CThing& thing) const
 {
-    if ((thing.ThingType == 1 || thing.ThingType == 2)
+    if ((thing.GetType() == 1 || thing.GetType() == 2)
         && ((const CThingCreatureBase&)thing).GetCreatureType()
         && &thing != TCShopKeeper->ParentThing
-        && !thing.HasTC(0x90) && !thing.HasTC(0xb4)) {
-        if (thing.HasTC(0x23)) {
-            const CTCVillageMember* member = (const CTCVillageMember*)thing.GetTC(0x23);
-            if (member->GetPVillage() && thing.ThingType == 1 && member->GetPVillage()->IsVillagerPerformingVillageTask(&thing))
+        && !thing.HasTC(TCI_SHOP_KEEPER) && !thing.HasTC(TCI_GUARD)) {
+        if (thing.HasTC(TCI_VILLAGE_MEMBER)) {
+            const CTCVillageMember* member = (const CTCVillageMember*)((const CTCVillageMember*)&thing.GetTC(TCI_VILLAGE_MEMBER));
+            if (member->GetPVillage() && thing.GetType() == 1 && member->GetPVillage()->IsVillagerPerformingVillageTask(&thing))
                 return false;
         }
         if (!TCShopKeeper->HasBeenCustomer(&thing) || AllowExistingShopper) {
-            if (thing.ThingType == 2) {
+            if (thing.GetType() == 2) {
                 long attitude = g_013B8A1C->Sub->Opinions->GetOpinionAttitudeToPlayer(TCShopKeeper->ParentThing);
                 if (attitude >= 3 && (attitude <= 4 || attitude == 8))
                     return false;
             }
-            if (thing.HasTC(0x75)) {
-                const CTCWithItem* holder = (const CTCWithItem*)thing.GetTC(0x75);
+            if (thing.HasTC(TCI_VOLUME_CONTAINMENT_TRACKER)) {
+                const CTCWithItem* holder = (const CTCWithItem*)((const CTCWithItem*)&thing.GetTC(TCI_VOLUME_CONTAINMENT_TRACKER));
                 if (holder->Item.GetPItem() != ShopperContainer)
                     return false;
             }

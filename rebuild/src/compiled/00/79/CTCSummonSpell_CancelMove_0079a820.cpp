@@ -9,30 +9,11 @@
 // Shape: Minion is a reference local (`lea esi,[ecx+11h]`), each test calls GetPItem again (inline IsThingAlive); the component comes
 // through the out-parameter GetInterface (`mov eax,[eax+4]`, fields addressed off eax).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -70,14 +51,14 @@ class CTCSummonSpell { public:
 
 static inline bool IsThingAlive(const CIntelligentPointer<CThing>& p)
 {
-    return p.GetPItem() && !(p.GetPItem()->m_flags91 & 1);
+    return p.GetPItem() && !p.GetPItem()->IsDead();
 }
 
 void CTCSummonSpell::CancelMove()
 {
     CIntelligentPointer<CThing>& minion = Minion;
     CTCMinionTimer* timer;
-    if (IsThingAlive(minion) && minion.GetPItem()->GetInterface(&timer, 0x9b)) {
+    if (IsThingAlive(minion) && minion.GetPItem()->GetTC(TCI_EFFECT_ON_DIE, &timer)) {
         if (!timer->Stopped) {
             timer->Current = timer->Target;
             timer->Stopped = true;

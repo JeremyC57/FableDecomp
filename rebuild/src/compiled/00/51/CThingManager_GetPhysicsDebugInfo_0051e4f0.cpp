@@ -1,5 +1,6 @@
 // CThingManager::GetPhysicsDebugInfo(CPhysicsDebugInfo* info) -- walks every thing in the manager's thing list and lets each one's physics object (if any) add to the debug info
-// Grade: MATCH (retry 10, RTM 3077) -- the thing in a named local and `thing->PPhysics` written twice (the null test and the call; VC7.1 CSEs the load): the vtable then loads into eax as retail; a named physics local keeps eax and puts the vtable in edx
+// Leaf: ?GetPhysicsDebugInfo@CThingManager@@QAEXPAVCPhysicsDebugInfo@@@Z
+// Grade: MATCH (retry 10, RTM 3077) -- the thing in a named local and `thing->GetPhysicsTC()` written twice (the null test and the call; VC7.1 CSEs the load): the vtable then loads into eax as retail; a named physics local keeps eax and puts the vtable in edx
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051E4F0, length 49 bytes.
 // Callees: the physics object's virtual slot 89 (+0x164).
 // Layout: the thing list is a VC6-era Dinkumware std::list<CThing*> whose head-node pointer sits
@@ -11,7 +12,7 @@ struct CPhysicsObject {
     virtual void v000();
     void GetPhysicsDebugInfoSlot();
 };
-struct CThingPhysics {
+struct CTCPhysicsBase {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
@@ -32,10 +33,7 @@ struct CThingPhysics {
     virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088();
     virtual void GetPhysicsDebugInfo(CPhysicsDebugInfo* info);     // slot 89 (+0x164)
 };
-class CThing { public:
-    unsigned char  _pad00[0x60];
-    CThingPhysics* PPhysics;                   // +0x60
-};
+#include "engine/CThing.h"
 struct SThingListNode {
     SThingListNode* PNext;                     // +0x00
     SThingListNode* PPrev;                     // +0x04
@@ -57,7 +55,7 @@ void CThingManager::GetPhysicsDebugInfo(CPhysicsDebugInfo* info)
 {
     for (SThingListNode* it = Things.begin(); it != Things.end(); it = it->PNext) {
         CThing* thing = it->PThing;
-        if (thing->PPhysics)
-            thing->PPhysics->GetPhysicsDebugInfo(info);
+        if (thing->GetPhysicsTC())
+            thing->GetPhysicsTC()->GetPhysicsDebugInfo(info);
     }
 }

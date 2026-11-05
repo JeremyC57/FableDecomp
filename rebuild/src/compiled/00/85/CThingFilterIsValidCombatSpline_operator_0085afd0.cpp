@@ -9,28 +9,10 @@
 // Shape: the inner call's bool is returned directly; the false tail is shared.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCCameraPointScriptedSpline { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -40,8 +22,8 @@ class CTCCameraPointScriptedSpline { public:
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
-    virtual long GetCameraPointType();              // slot 28 (+0x70)
-    bool IsCombatSplineValidForAnimAndThing(long animIndex, CThing* thing);   // 0x0075D8B0
+    virtual long GetCameraPointType() const;              // slot 28 (+0x70)
+    bool IsCombatSplineValidForAnimAndThing(long animIndex, CThing* thing) const;   // 0x0075D8B0
 };
 
 struct CThingFilter_IsValidCombatSpline {
@@ -52,8 +34,8 @@ struct CThingFilter_IsValidCombatSpline {
 
 bool CThingFilter_IsValidCombatSpline::operator()(CThing* thing) const
 {
-    CTCCameraPointScriptedSpline* spline;
-    if (thing->GetInterface(0x3F, &spline) && spline->GetCameraPointType() == 7)
+    const CTCCameraPointScriptedSpline* spline;
+    if (thing->PeekTC(TCI_CAMERA_POINT, &spline) && spline->GetCameraPointType() == 7)
         return spline->IsCombatSplineValidForAnimAndThing(AnimIndex, Thing);
     return false;
 }

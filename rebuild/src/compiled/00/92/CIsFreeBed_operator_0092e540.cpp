@@ -14,51 +14,13 @@
 class CTCBase;
 // A thing's component table: the presence bitset at +0x20 (bit N of dword N/32) and the sorted {type, component}
 // CVectorMap at +0x44 searched by LowerBound (non-const copy 0x0040F020, const copy 0x004365B0).
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
-    virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
-    virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
-    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
-    virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047();
-    virtual unsigned long GetStateFlags();        // slot 48 (+0xC0): a word of 1-bit kind flags
-    unsigned char _pad04[0xc];
-    unsigned char m_thingType;                    // +0x10 (5: object)
-    unsigned char _pad11[0xf];
-    unsigned long m_presentBits[9];               // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                   // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                      // +0x91
-    unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template <class T> __forceinline bool GetInterfaceConst(long type, T** out) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -78,7 +40,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 struct CTCUserActionPointBase {
-    bool IsActionPointFree();                     // 0x007FEBF0
+    bool IsActionPointFree() const;                     // 0x007FEBF0
     long GetNumberOfActionPointsInUse();          // 0x007FEC10
 };
 
@@ -97,11 +59,11 @@ public:
 };
 bool CIsFreeBed::operator()(const CIntelligentPointer<CThing>& thing) const
 {
-    if (thing.GetPItem() && thing.GetPItem()->HasTC(0x35) && !(thing.GetPItem()->m_flags91 & 0x20)) {
+    if (thing.GetPItem() && thing.GetPItem()->HasTC(TCI_BED) && !thing.GetPItem()->IsInLimbo()) {
         CTCBed* bed;
-        if (!thing.GetPItem()->GetInterface(0xd, &bed) || !bed->m_taken) {
-            CTCUserActionPointBase* actionPoint;
-            if (thing.GetPItem()->GetInterfaceConst(0x2d, &actionPoint))
+        if (!thing.GetPItem()->GetTC(TCI_ON_ACTION_USE, &bed) || !bed->m_taken) {
+            const CTCUserActionPointBase* actionPoint;
+            if (thing.GetPItem()->PeekTC(TCI_SINGLE_USER_ACTION_POINTS, &actionPoint))
                 return actionPoint->IsActionPointFree();
             if (!m_occupied(thing.GetPItem()))
                 return true;

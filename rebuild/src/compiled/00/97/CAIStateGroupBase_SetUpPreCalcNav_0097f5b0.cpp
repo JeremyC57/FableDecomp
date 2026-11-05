@@ -1,4 +1,5 @@
 // CAIStateGroupBase::SetUpPreCalcNav(const CThing* routeThing) -- when the creature navigates (interface 7) and the route thing's precalculated route (0xA6) has a route, set the navigation up from the creature's position along it and return the route's destination; else the zero vector
+// Leaf: ?SetUpPreCalcNav@CAIStateGroupBase@@QAE?AVC3DVector@@PBVCThing@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097F5B0, length 219 bytes (`ret 8`, C3DVector by hidden pointer).
@@ -12,41 +13,10 @@
 #include "engine/C3DVector.h"
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    const C3DVector& GetPos() const;           // 0x004C73D0
-
-    __forceinline bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    __forceinline CTCBase* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        if (it == map->end() || type < it->first)
-            it = map->end();
-        return it->second;
-    }
-    __forceinline CTCBase* GetTC(long type) const
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(key);
-        if (it == map->end() || type < it->first)
-            it = map->end();
-        return it->second;
-    }
-};
 
 class CTCPreCalculatedNavigationRoute              // interface type 0xA6
 { public:
@@ -78,12 +48,12 @@ class CAIStateGroupBase
 C3DVector CAIStateGroupBase::SetUpPreCalcNav(const CThing* routeThing)
 {
     CThing* creature = PBrain->Creature;
-    if (creature->HasTC(7))
+    if (creature->HasTC(TCI_NAVIGATION))
     {
-        CTCNavigation* nav = (CTCNavigation*)creature->GetTC(7);
+        CTCNavigation* nav = (CTCNavigation*)((CTCNavigation*)&creature->GetTC(TCI_NAVIGATION));
         CTCPreCalculatedNavigationRoute* route;
-        if (routeThing->HasTC(0xa6))
-            route = (CTCPreCalculatedNavigationRoute*)routeThing->GetTC(0xa6);
+        if (routeThing->HasTC(TCI_PRE_CALCULATED_NAVIGATION_ROUTE))
+            route = (CTCPreCalculatedNavigationRoute*)((CTCPreCalculatedNavigationRoute*)&routeThing->GetTC(TCI_PRE_CALCULATED_NAVIGATION_ROUTE));
         if (route->HasRoute())
         {
             CThing* mover = PBrain->Creature;

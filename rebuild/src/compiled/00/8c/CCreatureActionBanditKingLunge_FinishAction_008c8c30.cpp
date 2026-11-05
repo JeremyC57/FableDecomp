@@ -29,12 +29,10 @@
 //   The unstuck branch is the landed WaspQueenDie temporary: inline ctor (base, vtable, NoTarget = true) in the call.
 class CTCBase;
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase { public:                                 // CThing::PhysicsTC (+0x60)
@@ -43,31 +41,7 @@ class CTCPhysicsBase { public:                                 // CThing::Physic
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
     virtual C3DVector GetFacing() const;                // slot 70 (+0x118)
 };
-class CThing { public:
-    unsigned char   _pad0[0x20];
-    unsigned long   m_presentBits[9];                   // +0x20
-    CInterfaceMap   m_interfaces;                       // +0x44
-    unsigned char   _pad54[0xc];
-    CTCPhysicsBase* PhysicsTC;                          // +0x60
-    unsigned char   _pad64[0x91 - 0x64];
-    unsigned char   m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;               // 0x004C73D0
-    CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
-    void Kill(bool flag);                               // 0x004C9B80
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
@@ -103,7 +77,7 @@ struct CCreaturePointer : CBaseIntelligentPointer {                             
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -154,10 +128,10 @@ void CCreatureAction_BanditKingLunge::FinishAction()
     CCombatActionBase::FinishAction();
     if (IS_THING_ALIVE(PTarget) && FramesRunning >= TotalTime) {
         CTCCreatureModeManager* modeManager;
-        PCreature.GetPItem()->GetInterface(&modeManager, 0x31);
+        PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
         modeManager->AddMode(0x53);
         CTCHitLocations* hitLocations;
-        PCreature.GetPItem()->GetInterface(&hitLocations, 0x7f);
+        PCreature.GetPItem()->GetTC(TCI_HIT_LOCATIONS, &hitLocations);
         CHitLocation* stuck = hitLocations->GetPHitLocationFromName("HIT_LOCATION_TWINBLADE_STUCK");
         CHitLocation* normal = hitLocations->GetPHitLocationFromName("HIT_LOCATION_TWINBLADE");
         if (stuck)
@@ -166,21 +140,21 @@ void CCreatureAction_BanditKingLunge::FinishAction()
             normal->SetEnabled(false);
         long stuckLoops = 0;
         CTCBoss* boss;
-        if (PCreature.GetPItem()->GetInterface(&boss, 0xad))
+        if (PCreature.GetPItem()->GetTC(TCI_BOSS, &boss))
             stuckLoops = boss->PBossDef->TwinBladeStuckLoops;
         C3DVector position = PCreature.GetPItem()->GetPos();
-        position += PCreature.GetPItem()->GetPhysics()->GetFacing() * 0.5f;
+        position += PCreature.GetPItem()->GetPhysicsTC()->GetFacing() * 0.5f;
         CThing* obstruction = CTCDPhysicalObstruction::Create(position, position, 1.5f);
-        if (obstruction && !(obstruction->m_flags91 & 1)) {
+        if (obstruction && !obstruction->IsDead()) {
             CTCDPhysicalObstruction* physicalObstruction;
-            obstruction->GetInterface(&physicalObstruction, 0xed);
+            obstruction->GetTC(TCI_PHYSICAL_OBSTRUCTION, &physicalObstruction);
             physicalObstruction->SetThingToIgnoreObstruction(PCreature.GetPItem());
         }
         CThing* target = ((CThing*)PTarget.GetPItem());
         CThingCreatureBase* owner = PCreature.GetPItem();
         CThingCreatureBase* self = PCreature.GetPItem();
         bool refused = !self->SetCurrentAction(CCreatureAction_BanditKingStuck(owner, target, stuckLoops, obstruction, 0));
-        if (refused && obstruction && !(obstruction->m_flags91 & 1))
+        if (refused && obstruction && !obstruction->IsDead())
             obstruction->Kill(true);
     }
     else {

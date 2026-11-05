@@ -1,20 +1,18 @@
 // CModeDragonFlyingBase::AnimUpdate(CAnimateThing&) -- keep the dragon's FLY_LOOP main anim and FLYING_LEG_POSE combination anim playing
+// Leaf: ?AnimUpdate@CModeDragonFlyingBase@@QAEXAAVCAnimateThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D70A0, 289 bytes, `ret 4`.
 // Shape: the blend-in thing is a named re-read of ParentThing taken right after the FLY_LOOP lookup (retail loads it into
 //   the dead `this` register ebx before the CAnimInit build); the combination anim found after AddCombinationAnim is a
 //   named local, so its lookup call runs before the SetInternalAlpha argument pushes.
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CThing;
 class CAnimationEntry { public:
     long Index;                                // +0x00
     unsigned long GetAnimateThingFlags();      // 0x005DC390
     long GetTimeToBlendIn(CThing* thing);      // 0x005DC230
 };
-class CThing { public: };
+
 class CThingCreatureBase : public CThing { public:
     CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
 };

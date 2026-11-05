@@ -1,7 +1,7 @@
 // NUISystem::CKeyRedefiner::Initialise() -- clickable initialisation, then (once each) create the two list components named by the def, append them to the child vector, keep them as CList pointers (+0x194/+0x198), initialise them and parent them to this redefiner
 // Grade: RELOCATION_MATCH (sec1b 2026-10-30) -- the local CListPointer model moved onto the shared engine/CCountedPointer.h (CCountedPointer<CList>): its dtor gives retail's `dec [edi]; jne` release and the register web; SetStaticCast stays out of line (0x0042A2CA) by VC7.1's own choice
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00558770, length 472 bytes (vtable slot 43, plain `ret`).
-// Callees: CClickable::Initialise @ 0x0055AC90, CFrontEndManager::GetInstance @ 0x0041E5F2 (static `__fastcall`), CManager::
+// Callees: CClickable::Initialise @ 0x0055AC90, CManager::GetInstance @ 0x0041E5F2 (static `__fastcall`), CManager::
 //   CreateComponent(long) @ 0x0041D21B, CCountedPointer<CComponent>::CCountedPointer(CComponent*) @ 0x00429C15, the child vector's
 //   push_back @ 0x00535AD0, CCountedPointer<CList>::SetStaticCast<CComponent> @ 0x0042A2CA, operator delete (import thunk 0x00BFE9BC);
 //   component slots 43 Initialise, 51 (descriptive SetParent), 108 GetDef (CDefPointer by hidden pointer), the def's slot 1.
@@ -169,11 +169,11 @@ class CComponent { public:
     virtual CDefPointer GetDef();                               // slot 108 (+0x1B0)
 };
 
-class CManager { public:
+class CManager {
+public:
+    static CManager* __fastcall GetInstance();  // 0x0041E5F2
+ public:
     CComponent* CreateComponent(long definition);       // 0x0041D21B
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 class CList : public CComponent { public:
 };
@@ -204,7 +204,7 @@ void CKeyRedefiner::Initialise()
     CDefPointer def = GetDef();
     CListPointer list;
     if (!PHeaderList && def->HeaderListDef) {
-        Children.push_back(CCountedPointer<CComponent>(CFrontEndManager::GetInstance()->CreateComponent(def->HeaderListDef)));
+        Children.push_back(CCountedPointer<CComponent>(CManager::GetInstance()->CreateComponent(def->HeaderListDef)));
         list.SetStaticCast(Children[Children.size() - 1]);
         CList* header = list.Data;
         header->Initialise();
@@ -212,7 +212,7 @@ void CKeyRedefiner::Initialise()
         PHeaderList = header;
     }
     if (!PActionList && def->ActionListDef) {
-        Children.push_back(CCountedPointer<CComponent>(CFrontEndManager::GetInstance()->CreateComponent(def->ActionListDef)));
+        Children.push_back(CCountedPointer<CComponent>(CManager::GetInstance()->CreateComponent(def->ActionListDef)));
         list.SetStaticCast(Children[Children.size() - 1]);
         CList* actions = list.Data;
         actions->Initialise();

@@ -1,4 +1,5 @@
 // CTCCreatureOpinionOfHero::ClearPersonalityOverride() -- a wife (interface 0xd7) falls back to the married or divorced wife personality; everyone else to the personality named by their opinion-of-hero def
+// Leaf: ?ClearPersonalityOverride@CTCCreatureOpinionOfHero@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00682310, 188 bytes (plain `ret`).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const @ 0x004365B0, CTCWife::IsMarriedToThePlayer @ 0x006CEC80,
@@ -12,29 +13,12 @@
 // Shape: HasTC + GetTC (const lookup) with the wife in a named local; each override names its string in its own block and
 // returns, so the two string arms and the default arm keep separate epilogues.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType) const
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-};
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length);         // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+
 class CTCWife { public:
     unsigned char _pad00[0x24];
     bool DivorcedHero;                                  // +0x24
@@ -57,8 +41,8 @@ class CTCCreatureOpinionOfHero { public:
 
 void CTCCreatureOpinionOfHero::ClearPersonalityOverride()
 {
-    if (ParentThing->HasTC(0xd7)) {
-        CTCWife* wife = (CTCWife*)ParentThing->GetTC(0xd7);
+    if (ParentThing->HasTC(TCI_WIFE)) {
+        CTCWife* wife = (CTCWife*)((CTCWife*)&ParentThing->GetTC(TCI_WIFE));
         if (wife->IsMarriedToThePlayer()) {
             CCharString name("OPINION_PERSONALITY_WIFE_NORMAL", -1);
             SetPersonalityOverride(name, true);

@@ -5,7 +5,7 @@
 // Body: GetProfileNames(names) (0x005955AB, landed); the delete screen (m_mapScreens[21], map operator[] 0x0059B5D7)
 // drops its old "UI_FRONTEND_LIST_FOR_PROFILES_FOR_DELETE" child (FindChild, slot 3, CCharString by value; the child gets a
 // type-1 CAction by value through slot 62: CAction 0x0042BED4 / copy 0x0042CD84 / list dtor 0x0042ABCA); a new list of that
-// definition comes from CManager::CreateComponent (0x0041DB1D on CFrontEndManager::GetInstance 0x0041E5F2) into a counted
+// definition comes from CManager::CreateComponent (0x0041DB1D on CManager::GetInstance 0x0041E5F2) into a counted
 // pointer (0x00429C15), converted to CCountedPointer<CList> (ShareData 0x0059AA86) and added to the screen (AddChild, slot 59).
 // Per profile name: CreateFrontEndButtonComponent(name, y, "UI_FRONTEND_BUTTON_FOR_PROFILES_LIST", "", false) (0x00596A68,
 // landed), a new CAction (0x10 bytes, ctor 0x0042BE50, counted 0x0042AA29) of type 0xD7 holding a new CActionParamString(name)
@@ -135,6 +135,7 @@ class CList : public CComponent {
 };
 class CManager {
 public:
+    static CManager* __fastcall GetInstance();              // 0x0041E5F2
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
 };
 enum FRONTEND_SCREEN { FRONTEND_SCREEN_DELETE_PROFILE = 21 };
@@ -153,7 +154,6 @@ struct CWideStringVector {                                  // vector<CWideStrin
 };
 class CFrontEndManager : public CManager {
 public:
-    static CFrontEndManager* __fastcall GetInstance();      // 0x0041E5F2
     void GetProfileNames(CWideStringVector& names);         // 0x005955AB
     CComponent* CreateFrontEndButtonComponent(CWideString& text, float y, const CCharString& frameDef,
                                               const CCharString& buttonDef, bool flag);   // 0x00596A68
@@ -188,7 +188,7 @@ unsigned long CFrontEndManager::RefreshAvailableProfilesForDelete()
 {
     CWideStringVector names;
     GetProfileNames(names);
-    CFrontEndManager* manager = GetInstance();
+    CManager* manager = CManager::GetInstance();
     CComponent* screen = m_mapScreens[FRONTEND_SCREEN_DELETE_PROFILE];
     CComponent* oldList = screen->FindChild("UI_FRONTEND_LIST_FOR_PROFILES_FOR_DELETE");
     if (oldList) {

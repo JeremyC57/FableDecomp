@@ -20,6 +20,8 @@ class C3DVector { public:
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     __forceinline C3DVector Interpolate(const C3DVector& to, float t) const { return (to - *this) * t + *this; }
 };
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DPositionInterpolator : public CBaseClass { public:            // 0x1c bytes
     C3DVector StartPosition;                        // +0x04
@@ -47,10 +49,9 @@ class CWorld { public:
     CBulletTime*  m_pBulletTime;                    // +0x68
     static long __fastcall GetFrame();                    // 0x0049D870
 };
-class CThing {
-public:
-    bool IsAffectedByBulletTime() const;            // 0x004C9920
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CTCBase
 {

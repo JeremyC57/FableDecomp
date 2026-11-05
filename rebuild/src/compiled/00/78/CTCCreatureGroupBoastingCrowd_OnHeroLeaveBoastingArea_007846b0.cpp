@@ -13,38 +13,14 @@
 // Retail 0x007846B0, 624 bytes (plain `ret`); EnterCrowdState (0x00784260) is defined in this TU and retail inlines the
 // constant-9 call.
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);         // 0x0099EBF0
-    ~CCharString();                                          // 0x0099EAE0
-    const CCharString& operator=(const char* text);                // 0x0099EFE0
-    bool operator!=(const char* text) const;                 // 0x0099E960
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                          // +0x20
-    CInterfaceMap m_interfaces;                              // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Flags91;                                   // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    void Kill(bool immediately);                             // 0x004C9B80
-    const C3DVector& GetPos() const;                    // 0x004C73D0
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 struct COpinionSourceParams {                                // 4 bytes, left uninitialised (retail homes it in the dead lookup-key slot)
     long Reserved;
     COpinionSourceParams() { }
@@ -137,7 +113,7 @@ void CTCCreatureGroupBoastingCrowd::EnterCrowdState(long state)
     }
     if (CurrentOpinionDeedHandle != -1) {
         CTCHeroOpinionDeedLog* log;
-        if (PHero.GetPItem() && !PHero.GetPItem()->IsDead() && PHero.GetPItem()->GetInterface(&log, 0x51))
+        if (PHero.GetPItem() && !PHero.GetPItem()->IsDead() && PHero.GetPItem()->GetTC(TCI_HERO_OPINION_DEED_LOG, &log))
             log->RemoveDeed(CurrentOpinionDeedHandle);
         CurrentOpinionDeedHandle = -1;
     }
@@ -191,7 +167,7 @@ void CTCCreatureGroupBoastingCrowd::EnterCrowdState(long state)
     }
     if (deedType) {
         CTCHeroOpinionDeedLog* log;
-        if (PHero.GetPItem() && !PHero.GetPItem()->IsDead() && PHero.GetPItem()->GetInterface(&log, 0x51))
+        if (PHero.GetPItem() && !PHero.GetPItem()->IsDead() && PHero.GetPItem()->GetTC(TCI_HERO_OPINION_DEED_LOG, &log))
             CurrentOpinionDeedHandle = log->AddDeed(deedType, PHero.GetPItem()->GetPos(), 0, 0, 2, 0, 1, 0, 0, 0);
     }
     CrowdState = state;

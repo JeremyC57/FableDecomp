@@ -1,4 +1,5 @@
 // CTCDCameraPoint::Construct(const C3DVector& position) -- construct the thing's physics from a CTCParamsPhysicsBase holding the position and the default (up/forward) right-handed set
+// Leaf: ?Construct@CTCDCameraPoint@@QAEXABVC3DVector@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00778D60, length 127 bytes (`ret 4`). A byte twin sits at 0x0080C250.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 and its dtor @ 0x0099A300 (the manifest's "CBase::CBase"
@@ -32,10 +33,7 @@ class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void ConstructFromParams(CTCParamsBase* params);    // slot 3 (+0xc)
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-};
+#include "engine/CThing.h"
 class CTCDCameraPoint { public:
     virtual void v00();
     CThing* Owner;                              // +0x04
@@ -44,7 +42,7 @@ class CTCDCameraPoint { public:
 
 void CTCDCameraPoint::Construct(const C3DVector& position)
 {
-    CTCPhysicsBase* physics = Owner->PhysicsTC;
+    CTCPhysicsBase* physics = Owner->GetPhysicsTC();
     CTCParamsPhysicsBase params(position);
     physics->ConstructFromParams(&params);
 }

@@ -24,33 +24,11 @@
 #define FABLE_RETAIL_STLP_BITSET_INDEX
 #include "engine/CVectorMap.h"
 
-enum ETCInterfaceType { };
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
-class CCharString { public:
-    void* PStringData;                                      // +0x00
-    CCharString(const char* text, long length = -1);       // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
 
-class CThing { public:                                      // partial view, retail offsets
-    virtual ~CThing();
-    typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > TCMap;
-    unsigned char      _pad_0x04[0x20 - 0x04];
-    std::bitset<274>   UsingComponents;                     // +0x20
-    TCMap              Components;                          // +0x44
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (UsingComponents[T::INTERFACE_TYPE]) {
-            TCMap* map = &Components;
-            TCMap::value_type* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);
-            if (it == map->end() || T::INTERFACE_TYPE < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingPhysical : public CThing { public: };
 class CThingGameObject : public CThingPhysical { public: };
 class CThingCreatureBase : public CThingGameObject { public:
@@ -123,7 +101,7 @@ class CCreatureAction_UnsheatheWeapons : public CCombatActionBase { public:
 void CCreatureAction_UnsheatheWeapons::PerformAction()
 {
     CTCCombat* combat;
-    if (PCreature->GetTC(&combat)) {
+    if (PCreature->GetTC(TCI_COMBAT, &combat)) {
         if (combat->UnsheathingWeaponType == UNSHEATHE_WEAPON_TYPE_0)
             return;
         switch (combat->UnsheathingWeaponType) {
@@ -145,7 +123,7 @@ void CCreatureAction_UnsheatheWeapons::PerformAction()
         }
         if (CTCCarrying::IsThingCarryingWeapon(*PCreature)) {
             CTCCreatureModeManager* modes;
-            if (PCreature->GetTC(&modes))
+            if (PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes))
                 modes->RefreshCurrentMode();
             {
                 CCharString noise("SIMPLE_NOISE", -1);

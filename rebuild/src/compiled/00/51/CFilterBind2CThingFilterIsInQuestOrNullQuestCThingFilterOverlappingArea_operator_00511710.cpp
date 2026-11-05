@@ -32,14 +32,11 @@ class CTCPhysicsBase {
 public:
     void GetBoundingInfo(C3DVector& centre, float& radius) const;   // 0x006AF640
 };
-class CThing {
-public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                            // +0x60
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CThingBuilding : public CThing { };
 #include "engine/GFFloatToLongCeil.h"
-class CCharString { public: void* PStringData; };
+
 class CThingFilter_IsInQuestOrNullQuest {
 public:
     bool operator()(const CThing& thing) const;           // 0x006A7C60
@@ -49,10 +46,10 @@ class CThingFilter_OverlappingArea {
 public:
     __forceinline bool operator()(const CThing& thing) const
     {
-        if (thing.PhysicsTC) {
+        if (thing.GetPhysicsTC()) {
             float radius;
             C3DVector centre;
-            thing.PhysicsTC->GetBoundingInfo(centre, radius);
+            thing.GetPhysicsTC()->GetBoundingInfo(centre, radius);
             radius = (float)GFFloatToLongCeil(radius);
             C2DBoxI box = *Area;
             box.Grow(radius);

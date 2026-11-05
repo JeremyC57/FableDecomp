@@ -16,7 +16,8 @@
 //   RemoveMode 0x0073ABA0; the manifest labels "CPixelShader::CountReferences" / "CPlayer::HasMode" are propagated twins).
 //   A mode's vtable slot 1 (+4) returns its NCreatureMode::EMode number (read from each CMode*::vfunc_1 body).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> CTCInterfaceEntry;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCInterfaceMap;
@@ -51,72 +52,7 @@ public:
 class CPlayer;
 class CDefClassBase;
 enum ETargetingType { TARGETING_TYPE_NONE };
-class CThing {
-public:
-    VF(t00) VF(t01) VF(t02) VF(t03) VF(t04) VF(t05) VF(t06) VF(t07) VF(t08) VF(t09)
-    VF(t10) VF(t11) VF(t12) VF(t13) VF(t14) VF(t15) VF(t16) VF(t17) VF(t18) VF(t19)
-    VF(t20) VF(t21) VF(t22) VF(t23) VF(t24) VF(t25) VF(t26) VF(t27) VF(t28) VF(t29)
-    VF(t30) VF(t31) VF(t32) VF(t33) VF(t34) VF(t35) VF(t36) VF(t37) VF(t38) VF(t39)
-    VF(t40) VF(t41) VF(t42) VF(t43) VF(t44) VF(t45) VF(t46) VF(t47) VF(t48) VF(t49)
-    VF(t50) VF(t51) VF(t52) VF(t53) VF(t54) VF(t55) VF(t56) VF(t57) VF(t58) VF(t59)
-    VF(t60) VF(t61) VF(t62) VF(t63) VF(t64) VF(t65) VF(t66) VF(t67) VF(t68) VF(t69)
-    VF(t70) VF(t71) VF(t72) VF(t73) VF(t74) VF(t75) VF(t76)
-    virtual bool IsPlayer() const;                      // slot 77 (+0x134): CThingPlayerCreature true, CThingAICreature false
-    unsigned char   _pad04[0x10 - 0x04];
-    unsigned char   ThingTypeTag;                       // +0x10 (2 = creature)
-    unsigned char   _pad11[0x20 - 0x11];
-    unsigned long   m_tcPresent[9];                     // +0x20 interface present bits
-    CTCInterfaceMap m_tcs;                              // +0x44
-    unsigned char   _pad58[0x14];
-    unsigned long   ThingTypeFlags;                     // +0x6C THING_TYPE_* bits (1 physical, 3 creature)
-    CDefClassBase*  PBaseDef;                           // +0x70 CDefPointer<const CThingDef>::Object
-    unsigned char   _pad74[0x91 - 0x74];
-    unsigned char   Dead : 1;                           // +0x91 bit 0
-    unsigned char   _bits91 : 7;
-    unsigned char   _pad92[0xbc - 0x92];
-    unsigned char   PhysicalFlags;                      // +0xBC (CThingPhysical)
-    unsigned char   _padbd[0xc0 - 0xbd];
-    __forceinline unsigned long HasTC(long type) const { return m_tcPresent[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) const
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        const CTCInterfaceMap* map = &m_tcs;
-        const CTCInterfaceEntry* it = map->LowerBound(key);
-        return (it == map->end() || type < it->first ? map->end() : it)->second;
-    }
-    __forceinline CTCBase* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CTCInterfaceMap* map = &m_tcs;
-        const CTCInterfaceEntry* it = map->LowerBound(key);
-        return (it == map->end() || type < it->first ? map->end() : it)->second;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long type) const
-    {
-        if (HasTC(type)) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CTCInterfaceMap* map = &m_tcs;
-            const CTCInterfaceEntry* it = map->LowerBound(key);
-            *ppOut = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-    CPlayer& GetPlayer();                               // 0x004C7A10
-    template<class T> __forceinline bool GetInterface(T** ppOut, long type)
-    {
-        if (HasTC(type)) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CTCInterfaceMap* map = &m_tcs;
-            const CTCInterfaceEntry* it = map->LowerBound(key);
-            *ppOut = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-    __forceinline const CTCCreatureModeManager* GetModeManager() const { return (const CTCCreatureModeManager*)GetTC(0x31); }
-    __forceinline CTCCreatureModeManager* GetModeManager() { return (CTCCreatureModeManager*)GetTC(0x31); }
-};
+
 class CThingCreatureBase : public CThing {
 public:
     unsigned char        _padc0[0x100 - 0xc0];
@@ -143,8 +79,8 @@ unsigned long __fastcall GetOldTargetFlagsAndReplaceWith(CThing& thing, ETargeti
 
 unsigned long __fastcall NCreatureMode::GetOldTargetFlagsAndReplaceWith(CThing& thing, ETargetingType type)
 {
-    if (thing.HasTC(9)) {
-        CTCTargetedMethods* targeted = (CTCTargetedMethods*)thing.GetTC(9);
+    if (thing.HasTC(TCI_TARGETED)) {
+        CTCTargetedMethods* targeted = (CTCTargetedMethods*)((CTCTargetedMethods*)&thing.GetTC(TCI_TARGETED));
         unsigned long old = targeted->TargetingFlags;
         targeted->SetTargetingFlags(type);
         return old;

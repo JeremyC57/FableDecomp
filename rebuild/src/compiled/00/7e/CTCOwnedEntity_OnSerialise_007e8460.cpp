@@ -23,12 +23,7 @@ class CTCBase : public CTCBaseLayout
 protected:
     CThingManager& GetThingManager();   // 0x00686AE0
 };
-class CThing { public:
-    unsigned char _pad00[0x8e];
-    short m_level;                              // +0x8e
-public:
-    bool IsLevelLess() const;   // 0x004C7930
-};
+#include "engine/CThing.h"
 class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
 };
@@ -53,13 +48,13 @@ void CTCOwnedEntity::OnSerialise(CPersistContext& context, bool)
     if (context.IsSaving()) {
         long version = 1;
         context.Transfer("VersionNumber", version, 0L);
-        unsigned __int64 uid = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, OwnerUID);
+        unsigned __int64 uid = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->GetCurrentMapNumber(), OwnerUID);
         context.Transfer<unsigned __int64>("OwnerUID", uid, 0);
     } else {
         long version;
         context.Transfer("VersionNumber", version, 0L);
         context.Transfer<unsigned __int64>("OwnerUID", OwnerUID, 0);
         if (version == 1 && OwnerUID != 0)
-            OwnerUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, OwnerUID);
+            OwnerUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->GetCurrentMapNumber(), OwnerUID);
     }
 }

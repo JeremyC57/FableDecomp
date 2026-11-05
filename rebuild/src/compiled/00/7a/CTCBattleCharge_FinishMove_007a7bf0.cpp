@@ -15,11 +15,8 @@
 //   the impact action takes its intelligent pointers BY VALUE (each copy built in the argument area through the inline
 //   copy constructor: base ctor, vtable store, SetPItem(other.GetPItem())), and its implicit destructor runs the two
 //   member destructors then the combat-action base destructor.
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char m_stateFlags;                 // +0x91 (bit 0: dead)
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -36,16 +33,12 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_stateFlags & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
 }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length); // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+
 class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];

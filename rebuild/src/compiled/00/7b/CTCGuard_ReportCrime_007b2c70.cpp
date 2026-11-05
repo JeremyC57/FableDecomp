@@ -1,4 +1,5 @@
 // CTCGuard::ReportCrime(CTCVillage& village, long crime, EOpinionDeedType deedType, bool flagVillage) -- report the crime to the village (optionally flagging it), and make the village thing's opinion-of-hero component aware of the deed when it does not already know of it
+// Leaf: ?ReportCrime@CTCGuard@@QAEXAAVCTCVillage@@JW4EOpinionDeedType@@_N@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B2C70, length 114 bytes (+14 int3 padding), `ret 10h`.
 // Ego_r.pdb: ?ReportCrime@CTCGuard@@AAEXAAVCTCVillage@@JW4EOpinionDeedType@@_N@Z
@@ -10,28 +11,11 @@
 // `this` is never read: the opinion component is looked up on the VILLAGE's parent thing.
 // Layout: CTCBase ParentThing +0x04; CThing component bitset +0x20, interface map +0x44.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 enum EOpinionDeedType { OPINION_DEED_TYPE_NONE };
 class CTCCreatureOpinionOfHero {
 public:
@@ -61,7 +45,7 @@ void CTCGuard::ReportCrime(CTCVillage& village, long crime, EOpinionDeedType dee
     if (flagVillage)
         village.CrimeReportedFlag = true;
     CTCCreatureOpinionOfHero* opinion;
-    if (village.ParentThing->GetInterface(&opinion, 0x4f)) {
+    if (village.ParentThing->GetTC(TCI_CREATURE_OPINION_OF_HERO, &opinion)) {
         if (!opinion->KnowsOfDeed(crime, deedType, true))
             opinion->InformOfDeed(crime, false);
     }

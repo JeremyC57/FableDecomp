@@ -1,4 +1,5 @@
 // CTCDoor::UpdateOpenStatusTriggerTypePerson() -- a person-triggered door is open while a creature stands within the trigger radius (and within one unit of height); it closes one second after the last creature was seen; open/close the door when the state changed
+// Leaf: ?UpdateOpenStatusTriggerTypePerson@CTCDoor@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -56,10 +57,7 @@ class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector Position;                         // +0x0c
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-};
+#include "engine/CThing.h"
 class CWorld { public:
     static long __fastcall GetFrame();          // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 };
@@ -91,7 +89,7 @@ class CTCDoor : public CTCBase { public:
 
 void CTCDoor::UpdateOpenStatusTriggerTypePerson()
 {
-    const C3DVector& pos = ParentThing->PhysicsTC->Position;
+    const C3DVector& pos = ParentThing->GetPhysicsTC()->Position;
     C2DVector centre(pos);
     C2DBox box(centre.X, centre.Y, PDef->TriggerRadius);
     CThingCreatureBase* found;

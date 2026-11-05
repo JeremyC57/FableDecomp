@@ -17,14 +17,15 @@ protected:
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-struct CThingGraphic {
+namespace NGraphicAppearance {
+struct CTCGraphicAppearance {
     unsigned char _pad[0x5a];
     unsigned char m_alpha;                         // +0x5a
 };
-class CThing { public:
-    unsigned char  _pad[0x64];
-    CThingGraphic* m_pGraphic;                     // +0x64
-};
+}
+using NGraphicAppearance::CTCGraphicAppearance;
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CTCFadeOutAndIn : public CTCBase { public:
     bool  FadingOut;                               // +0x0c
     bool  FadingIn;                                // +0x0d
@@ -43,6 +44,6 @@ void CTCFadeOutAndIn::FadeOut(float seconds, bool immediately)
     FramesLeftForFade = GFFloatToLongNear(CMainGameComponent::GetConstantFPS() * seconds);
     if (immediately)
         Alpha = 1.0f;
-    else if (ParentThing->m_pGraphic)
-        Alpha = ParentThing->m_pGraphic->m_alpha * (1.0f / 255.0f);
+    else if (ParentThing->GetTCGraphicAppearance())
+        Alpha = ParentThing->GetTCGraphicAppearance()->m_alpha * (1.0f / 255.0f);
 }

@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionGuardReactToCriminal::OnReplace() -- when this guard is the village's assigned criminal
+// Leaf: ?OnReplace@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // handler, clear the assignment.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009331E0, length 102 bytes (+ int3 padding). Vtable slot 10.
@@ -18,34 +19,10 @@ class CThingAICreature;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool HasTC(long interfaceType) const
-    {
-        return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -68,7 +45,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -120,7 +97,7 @@ struct CAIStateGroup_MinionGuardReactToCriminal : CAIStateGroupBase {
 void CAIStateGroup_MinionGuardReactToCriminal::OnReplace()
 {
     CTCVillager* villager;
-    if (PBrain->PCreature->GetInterface(&villager, 0x23)) {
+    if (PBrain->PCreature->GetTC(TCI_VILLAGE_MEMBER, &villager)) {
         CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
         if (village != 0) {
             CThing* creature = PBrain->PCreature;

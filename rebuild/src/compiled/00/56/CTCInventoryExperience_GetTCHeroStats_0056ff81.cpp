@@ -15,31 +15,11 @@
 #pragma optimize("s", on)
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                                // +0x20
-    CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            long type = wanted;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* found = map->LowerBound((const ETCInterfaceType&)type);
-            CInterfaceMap::value_type* it;
-            if (found != map->end() && !(wanted < found->first))
-                it = found;
-            else
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCHeroStats;
 class CTCInventoryExperience {
 public:
@@ -51,6 +31,6 @@ private:
 CTCHeroStats* CTCInventoryExperience::GetTCHeroStats()
 {
     CTCHeroStats* tc;
-    ParentThing->GetInterface(&tc, 0x4);
+    ParentThing->GetTC(TCI_HERO_STATS, &tc);
     return tc;
 }

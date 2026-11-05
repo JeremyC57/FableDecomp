@@ -15,9 +15,7 @@
 // Members (retail layout, Ego_r.pdb names): PreferredFinalPosSet +0xdd (PDB +0xf1), so `this` is modelled locally.
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public:
 public:
     float GetAnimMovementDistance(long) const;   // 0x006627A0

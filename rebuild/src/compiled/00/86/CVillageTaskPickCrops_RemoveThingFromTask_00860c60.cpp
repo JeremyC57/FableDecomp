@@ -24,7 +24,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-class CThing { };
+#include "engine/CThing.h"
 class CThingObject : public CThing { };
 class CVillageTaskBase {                               // retail: vptr + one dword
 public:

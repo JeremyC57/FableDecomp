@@ -18,12 +18,9 @@
 class CTCBase;
 
 class CWideStringData;
-class CWideString { public:
-    CWideStringData* PStringData;
-    CWideString(const CWideString& other);              // (declared: by-value arguments are built in place)
-    ~CWideString();                                     // 0x0099B510
-    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
 
 class CRGBColour { public:                                     // B, G, R, A bytes
     unsigned char B, G, R, A;
@@ -58,29 +55,9 @@ class CComponent : public CComponentBase, public CObserver { public:
 };
 }
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                         // +0x44
-    bool HasTC(long wanted)
-    {
-        if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long wanted)
-    {
-        long type = wanted;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-        if (it == map->end() || wanted < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-};
+
 class CTCInventory { public:                                   // interface type 0x11
     unsigned char          _pad_0x000[0x214];
     NUISystem::CComponent* PMouse_Pointer;              // +0x214 (PDB +0x260)
@@ -133,8 +110,8 @@ void CTCHeroOnlineScoreboard::OnPlayerSelectedClan(CWideString clanName, NUISyst
         screen->GetFirstButton()->StopObservingEvent(0x19);
         screen->GetSecondButton()->StopObservingEvent(0x19);
         CThing* thing = ParentThing;
-        if (thing->HasTC(0x11)) {
-            CTCInventory* inventory = thing->GetTC<CTCInventory>(0x11);
+        if (thing->HasTC(TCI_INVENTORY)) {
+            CTCInventory* inventory = ((CTCInventory*)&thing->GetTC(TCI_INVENTORY));
             inventory->PMouse_Pointer->StopObservingEvent(0x19);
             inventory->PMouse_Pointer->FadeColour(CRGBColour(255, 255, 255, 0), 0.1f, 0);
         }

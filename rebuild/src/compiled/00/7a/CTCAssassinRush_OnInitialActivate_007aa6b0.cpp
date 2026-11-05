@@ -17,7 +17,9 @@ extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 class CTCBase;
 class CBaseObject;
 class CThing;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 namespace NGraphicAppearance {
@@ -52,38 +54,7 @@ template <class T> struct CRetailVector {                  // STLport vector (12
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
-class CThing { public:
-    unsigned char         _pad00[0x10];
-    unsigned char         ThingType;                       // +0x10
-    unsigned char         _pad11[0x20 - 0x11];
-    unsigned long         m_presentBits[9];                // +0x20
-    CInterfaceMap         m_interfaces;                    // +0x44
-    unsigned char         _pad54[0x10];
-    CTCGraphicAppearance* Graphic;                         // +0x64
-    unsigned char         _pad68[0x91 - 0x68];
-    unsigned char         m_flags;                         // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template <class T> __forceinline T* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode);                      // 0x0073AE10
 };
@@ -110,24 +81,24 @@ void CTCAssassinRush::OnInitialActivate()
 {
     CThing* thing = ParentThing;
     CTCCreatureModeManager* modes;
-    if (thing->GetInterface(&modes, 0x31))
+    if (thing->GetTC(TCI_ENTITY_MODE_MANAGER, &modes))
         modes->AddMode(0x25);
-    if (thing->Graphic)
-        thing->Graphic->SetAlpha(PDef->Alpha);
-    if (thing->HasTC(0x46)) {
-        CTCInventory* inventory = thing->GetTC<CTCInventory>(0x46);
+    if (thing->GetTCGraphicAppearance())
+        thing->GetTCGraphicAppearance()->SetAlpha(PDef->Alpha);
+    if (thing->HasTC(TCI_CARRYING)) {
+        CTCInventory* inventory = ((CTCInventory*)&thing->GetTC(TCI_CARRYING));
         CRetailVector<CThing*> items;
         inventory->GetAllItems(items);
         for (CThing** it = items._M_start, ** end = items._M_finish; it != end; ++it) {
             CThing* item = *it;
-            if (item && !(item->m_flags & 1)) {
+            if (item && !item->IsDead()) {
                 ItemAlphaList.push_back(CIntelligentPointer<CThing>(item));
-                if (item->Graphic)
-                    item->Graphic->SetAlpha(PDef->Alpha);
+                if (item->GetTCGraphicAppearance())
+                    item->GetTCGraphicAppearance()->SetAlpha(PDef->Alpha);
             }
         }
     }
-    if (!(thing->m_flags & 1) && thing->ThingType == 1)
+    if (!thing->IsDead() && thing->GetType() == 1)
         ((CThingAICreature*)ParentThing)->SuspendAI(true, (void*)false);
     else
         UpdateDirectionOverride();

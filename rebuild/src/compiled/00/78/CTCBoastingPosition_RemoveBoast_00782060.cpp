@@ -10,38 +10,11 @@
 // model is `#pragma pack(1)`; the generated header flattens the vptrs). Retail CThing: bitset +0x20, map +0x44, Dead +0x91.
 // Shape: as DeactivatePosition (0x00781FE0) without the PositionActivated store and the visibility call; `this` in edi.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
-    virtual void SetVisible(bool visible);      // slot 28 (+0x70)
-    unsigned char _pad04[0x1c];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    void Kill(bool immediately);                // 0x004C9B80
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 struct CTCInterface9 {                          // the owner's interface-type-9 component
     unsigned char _pad00[0x10];
     bool Enabled;                               // +0x10
@@ -97,6 +70,6 @@ void CTCBoastingPosition::RemoveBoast()
     BoastOn = false;
     KillParticleEffect();
     CTCInterface9* component;
-    if (ParentThing->GetInterface(&component, 9))
+    if (ParentThing->GetTC(TCI_TARGETED, &component))
         component->Enabled = false;
 }

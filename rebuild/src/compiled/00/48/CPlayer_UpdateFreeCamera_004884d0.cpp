@@ -1,4 +1,5 @@
 // CPlayer::UpdateFreeCamera() -- per-frame free-camera update: remember last frame's camera, and while the free camera is in use with a controlled creature, either point the camera at the creature's graphic helper point (YZ tracking) or turn it to face that point in XY (plain tracking), then publish the working camera as the free camera
+// Leaf: ?UpdateFreeCamera@CPlayer_Methods@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004884D0, length 331 bytes (+ int3 padding), plain `ret`.
@@ -33,27 +34,17 @@ class CCamera { public:                                        // 0x38 bytes
     void SetAngleXY(float turns);                       // 0x00A0C570
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {                           // interface 0x5B
     C3DVector GetHelperPointPosition();                 // 0x004C10E0
 };
-
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    template <class T> __forceinline T* GetTC(long wanted)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-};
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
 class CBaseIntelligentPointer {
 public:
@@ -88,8 +79,8 @@ void CPlayer_Methods::UpdateFreeCamera()
     if (Flags().UsingFreeCamera && ControlledCreaturePointer().GetPItem()) {
         CThing* creature = ControlledCreaturePointer().GetPItem();
         CTCGraphicAppearance* appearance;
-        if (creature->HasTC(0x5b))
-            appearance = creature->GetTC<CTCGraphicAppearance>(0x5b);
+        if (creature->HasTC(TCI_GRAPHIC_APPEARANCE_NEW))
+            appearance = ((CTCGraphicAppearance*)&creature->GetTC(TCI_GRAPHIC_APPEARANCE_NEW));
         if (Flags().FreeCameraTrackingPlayerYZ) {
             C3DVector target = appearance->GetHelperPointPosition();
             CurrentCamera().PointAt(target);

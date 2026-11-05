@@ -15,29 +15,11 @@
 // default to zero (the pulling one in the frame, the other on the FPU stack); the strain cap is a named float local; VC7.1
 // tail-duplicates the frame-number store into both arms.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                         // +0x20
-    CInterfaceMap m_interfaces;                             // +0x44
-    __forceinline bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    __forceinline CTCBase* GetTC(long type)
-    {
-        long key = type;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
-        CInterfaceMap::value_type* end = map->end();
-        return (it == end || type < it->first ? end : it)->second;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -111,8 +93,8 @@ void CTCFishing::ReelInButtonPressed()
             float pullingDistance;
             CTCFish* fish = 0;
             CThing* fishThing = PFish.GetPItem();
-            if (fishThing->HasTC(0xdc))
-                fish = (CTCFish*)fishThing->GetTC(0xdc);
+            if (fishThing->HasTC(TCI_FISH))
+                fish = (CTCFish*)((CTCFish*)&fishThing->GetTC(TCI_FISH));
             const CFishingRodDef* rod = GetPFishingRodDef();
             pullingDistance = 0.0f;
             if (rod)

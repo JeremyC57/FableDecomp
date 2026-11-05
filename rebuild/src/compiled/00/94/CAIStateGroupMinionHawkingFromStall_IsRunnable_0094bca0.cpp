@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionHawkingFromStall::IsRunnable() -- once the next hawk frame is reached, a silent shopkeeper in work hours with a shop hawks from the shop thing; with no shop thing (and a stall-less shop) it hawks on the spot unless the creature dislikes the player (attitude 3, 4 or 8)
+// Leaf: ?IsRunnable@CAIStateGroup_MinionHawkingFromStall@@QAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retry 10b (getsw sweep, FIXES B-15): the opinion reaction manager is read through an inline getter `GetOpinionReactionManager()`; the plain member read gives the parked register/scheduling difference.
@@ -15,27 +16,11 @@
 // Layout: no engine header for this class; modelled locally like the landed OnReplace / IsStillValid rows (next hawk
 //          frame +0x14, PStall +0x18); the shop's +0x50 flag is descriptive.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-};
+
 bool __fastcall IsSpeaking(CThing* creature);   // 0x008644E0
 class CTCShop { public:
     unsigned char _pad[0x50];
@@ -97,8 +82,8 @@ bool CAIStateGroup_MinionHawkingFromStall::IsRunnable()
     if (GetWorld().GetFrame() < NextHawkFrame)
         return false;
     CThing* creature = GetCreature();
-    if (creature->HasTC(0x90)) {
-        CTCShopKeeper* keeper = creature->GetTC<CTCShopKeeper>(0x90);
+    if (creature->HasTC(TCI_SHOP_KEEPER)) {
+        CTCShopKeeper* keeper = ((CTCShopKeeper*)&creature->GetTC(TCI_SHOP_KEEPER));
         if (!IsSpeaking(creature) && IsInWorkHours()) {
             CTCShop* shop = keeper->GetShopTC();
             if (shop) {

@@ -1,4 +1,5 @@
 // CCreatureAction_CastStrengthBerserk::Initialise() -- base Initialise, add a "CTCBerserk" component to the creature and start its effect, then if the creature has an interface-167 component set its byte at +0xc and store 8 in its word at +0x10
+// Leaf: ?Initialise@CCreatureAction_CastStrengthBerserk@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E6400, length 142 bytes (+ int3 padding).
 // Callees: CCombatActionBase::Initialise @ 0x00857520 (direct base call, first), CCharString::CCharString(const char*, long) @ 0x0099EBF0,
@@ -16,28 +17,11 @@ class CTCBerserk { public:
     void CreateStartingEffect();            // 0x0078C4C0
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -83,7 +67,7 @@ void CCreatureAction_CastStrengthBerserk::Initialise()
     }
     pBerserk->CreateStartingEffect();
     CTCStrengthBoost* pBoost;
-    if (PCreature.GetPItem()->GetInterface(&pBoost, 167)) {
+    if (PCreature.GetPItem()->GetTC(TCI_SPECIAL_ABILITIES, &pBoost)) {
         pBoost->m_active = 1;
         pBoost->m_boostLevel = 8;
     }

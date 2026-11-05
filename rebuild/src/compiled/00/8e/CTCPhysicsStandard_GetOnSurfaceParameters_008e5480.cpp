@@ -22,10 +22,7 @@ struct CSurfaceHit {                                // descriptive: the probe's 
     CSurfaceHit() : Fraction(1.0f) {}
 };
 class CTCPhysicsBase;
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* Physics;                        // +0x60
-};
+#include "engine/CThing.h"
 struct CThingVector {                               // STLport vector<CThing*>
     CThing** _M_start;
     CThing** _M_finish;
@@ -74,7 +71,7 @@ void CTCPhysicsStandard::GetOnSurfaceParameters(const CThingVector& things, bool
         CSurfaceHit hit;
         float lowest = down.Z * 2.0f + pos.Z;
         for (CThing** it = things._M_start; it != things._M_finish; ++it) {
-            CTCPhysicsBase* physics = (*it)->Physics;
+            CTCPhysicsBase* physics = (*it)->GetPhysicsTC();
             if (physics->CollidesWithThings()) {
                 C3DVector start(pos.X, pos.Y, down.Z + pos.Z);
                 if (ProbeSurface(physics, pos, start, hit)

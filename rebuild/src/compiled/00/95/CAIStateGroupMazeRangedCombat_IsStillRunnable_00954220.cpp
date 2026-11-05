@@ -15,14 +15,7 @@
 
 #include "engine/C3DVector.h"
 
-class CThing {
-public:
-    C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
-private: public:
-    unsigned char _pad0[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }   // Ego_r.pdb ?IsDead@CThing@@QBE_NXZ
-};
+#include "engine/CThing.h"
 
 struct CBaseIntelligentPointer {
     virtual void v00();

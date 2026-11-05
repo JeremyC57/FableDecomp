@@ -17,11 +17,9 @@ class CThingManager { public:
 
 // Global singleton pointer (reloc-masked extern -> ds:[imm32]).
 class CThingManager;
-class CThing {
-    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
-public:
-    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MANAGERACCESS
+#include "engine/CThing.h"
 
 CDisplayEngine* GetDisplayEngine()
 {

@@ -27,10 +27,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& r) const { return C3DVector(X - r.X, Y - r.Y, Z - r.Z); }
     void Rotate(const C3DVector& axis, float angle);          // 0x00A13C60
 };
-class CThing {
-public:
-    const C3DVector& GetPos() const;                     // 0x004C73D0
-};
+#include "engine/CThing.h"
 __forceinline float PitchFraction(const C3DVector& v)
 {
     float xy = (float)sqrt(v.X * v.X + v.Y * v.Y);

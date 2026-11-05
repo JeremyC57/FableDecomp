@@ -25,12 +25,7 @@
 #define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"                              // GetThingManager() const 0x00686AF0 (protected)
 
-class CThing { public:
-    unsigned char    _pad_0x00[0x10];
-    unsigned char    ThingType;                // +0x10 (3 = building)
-    unsigned char    _pad_0x11[0x7];
-    unsigned __int64 UniqueID;                 // +0x18
-};
+#include "engine/CThing.h"
 class CThingBuilding : public CThing { };     // the PDB return type (single inheritance from CThing)
 class CThingAICreature : public CThing { };   // the PDB parameter type
 
@@ -59,9 +54,9 @@ const CThingBuilding* CTCHeroStats::GetPMaritalHome(const CThingAICreature* wife
 {
     CHeroMarriageInfoNode* head = Marriages_Head;
     for (CHeroMarriageInfoNode* node = head->Next; node != head; node = node->Next) {
-        if (node->WifeUID == wife->UniqueID) {
+        if (node->WifeUID == wife->GetUniqueID()) {
             const CThing* home = GetThingManager().PeekPThingWithUID(node->MaritalHomeUID);
-            if (home && home->ThingType == 3)
+            if (home && home->GetType() == 3)
                 return static_cast<const CThingBuilding*>(home);
         }
     }

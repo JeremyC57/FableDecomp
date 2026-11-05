@@ -8,9 +8,7 @@
 // Shape: the argument is evaluated before the object pointer (`call GetPos ; mov ecx,[esi] ; push eax`).
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CThingBuilding { public:
 public:

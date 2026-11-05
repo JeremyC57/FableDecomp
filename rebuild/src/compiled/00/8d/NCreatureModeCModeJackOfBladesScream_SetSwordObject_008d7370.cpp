@@ -11,9 +11,7 @@
 // then the position copied word by word through the pointer's inline operator-> (the member address stays in edi).
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;          // 0x004C73D0 (CThing::GetPos, GOTCHAS chunk 141)
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public: };
 
 class CBaseObject;

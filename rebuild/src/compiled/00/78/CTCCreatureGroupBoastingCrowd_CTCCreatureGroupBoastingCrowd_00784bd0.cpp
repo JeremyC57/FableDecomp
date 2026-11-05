@@ -14,27 +14,11 @@
 // the count loop is `while (count > 0) { ...; --count; }` (rotated, the decrement stored then tested); the boast component is
 // a named local loaded before its argument's GetPItem; the hero pointer member has no destructor of its own.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Flags91;                              // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -100,8 +84,8 @@ CTCCreatureGroupBoastingCrowd::~CTCCreatureGroupBoastingCrowd()
             --HeroOpinionSourcesPushed;
         }
         CThing* hero = PHero.GetPItem();
-        if (hero->HasTC(0x73)) {
-            CTCBoastComponent* boast = (CTCBoastComponent*)hero->GetTC(0x73);
+        if (hero->HasTC(TCI_BOASTING_CROWD_CONTROL)) {
+            CTCBoastComponent* boast = (CTCBoastComponent*)((CTCBoastComponent*)&hero->GetTC(TCI_BOASTING_CROWD_CONTROL));
             boast->RemoveBoast(PHero.GetPItem());
         }
     }

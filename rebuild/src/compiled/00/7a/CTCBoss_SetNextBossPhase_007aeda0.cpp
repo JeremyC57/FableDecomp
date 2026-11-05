@@ -1,4 +1,5 @@
 // CTCBoss::SetNextBossPhase(long phase, bool force) -- when phase changes are enabled (or forced) store the new phase and remember the boss's position as the phase start
+// Leaf: ?SetNextBossPhase@CTCBoss@@QAEXJ_N@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x007AEDA0, 56 bytes (`ret 8`). Callee: CThing::GetPos() const @ 0x004C73D0 (returns a
@@ -11,9 +12,7 @@
 
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 #pragma pack(push, 1)
 class CTCBoss

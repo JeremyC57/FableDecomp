@@ -8,28 +8,10 @@
 // A second instantiation of the same filter shape as 0x006A81F0 (different component type).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -60,8 +42,8 @@ class CThingFilter_NoiseCameFromThing { public:
 
 bool CThingFilter_NoiseCameFromThing::operator()(CThing* thing) const
 {
-    CTCInterface77* component;
-    if (thing->GetInterface(0x77, &component) && component->m_source.GetPItem() == Thing)
+    const CTCInterface77* component;
+    if (thing->PeekTC(TCI_SHOT_DEFINITION, &component) && component->m_source.GetPItem() == Thing)
         return true;
     return false;
 }

@@ -24,7 +24,6 @@ class CDefClassBase { public:
     bool GetSubDef(CDefPointerVillageMemberDef* out);   // 0x007EE6E0
 };
 
-
 struct CDefPointerClassBase {
     CDefClassBase* Object;
 };
@@ -57,10 +56,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long globalDefIndex, CDefPo
 }
 #pragma auto_inline(on)
 
-class CThing { public:
-    unsigned char  _pad[0x8C];
-    unsigned short DefIndex;                // +0x8C
-};
+#include "engine/CThing.h"
 
 class CTCBase
 {
@@ -78,11 +74,11 @@ class CTCVillageMember : public CTCBase { public:
 
 void CTCVillageMember::OnCreate()
 {
-    if (Thing->DefIndex != 0) {
+    if (Thing->GetDefGlobalIndex() != 0) {
         CDefPointerClassBase def;
         def.Object = 0;
         CThing* thing = Thing;
-        GetDefinitionManager().GetDef(thing->DefIndex, &def);
+        GetDefinitionManager().GetDef(thing->GetDefGlobalIndex(), &def);
         CDefClassBase* classDef = def.Object;
         classDef->GetSubDef(&PDef);
         ReleaseDef(classDef);

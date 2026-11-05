@@ -5,13 +5,7 @@
 // slot 30 (CTCCreatureGroup slot 30 = DeactivateMember 0x00812E20, called here non-virtually).
 // Callees: CTCCreatureGroup::DeactivateMember @ 0x00812E20, CTCCreatureGroupTag::FindNewTagger @ 0x008137E0 (private, Ego_r.pdb `?FindNewTagger@CTCCreatureGroupTag@@AAE_NXZ`; FINDINGS chunk 399, was "ChooseNewTagger").
 // Shape: the twin of RemoveMember (0x00813860): two separate bool exits, the 64-bit equality low dword first.
-class CThing { public:
-    unsigned char _pad00[0x18];
-    unsigned __int64 UniqueID;              // +0x18
-    unsigned char _pad20[0x71];
-    unsigned char Dead : 1;                 // +0x91 bit 0
-    unsigned __int64 GetUID() const { return UniqueID; }
-};
+#include "engine/CThing.h"
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -71,7 +65,7 @@ public:
 bool CTCCreatureGroupTag::DeactivateMember(const CThing* member)
 {
     if (CTCCreatureGroup::DeactivateMember(member)) {
-        if (TaggerUID == member->UniqueID)
+        if (TaggerUID == member->GetUniqueID())
             FindNewTagger();
         return true;
     }

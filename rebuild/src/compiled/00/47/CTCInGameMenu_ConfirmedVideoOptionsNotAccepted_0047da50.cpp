@@ -20,12 +20,10 @@
 #pragma optimize("s", on)
 
 class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length);      // 0x0099EBF0
-    CCharString(const CCharString& other);           // (declared: by-value arguments are built in place)
-    ~CCharString();
-};
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 namespace NUISystem {
 class CObserver { public:                                   // the observer interface at +4 of every component
@@ -61,27 +59,10 @@ class CManager { public:                                    // NUISystem::CManag
 }
 
 class CTCBase;
-#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    std::bitset<274> present;                                  // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (present.test(interfaceType)) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCInventory { public:
     void RevertVideoChanges();                              // 0x00582754
 };
@@ -115,7 +96,7 @@ void CTCInGameMenu::ConfirmedVideoOptionsNotAccepted()
     PVideoOptionsNotAcceptedDialog->SetActive_slot48(false);
     CThing* parent = ParentThing;
     CTCInventory* inventory;
-    if (parent->GetInterface(&inventory, 0x11) && inventory)
+    if (parent->GetTC(TCI_INVENTORY, &inventory) && inventory)
         inventory->RevertVideoChanges();
     CUserProfileManager::Get().DisplayDialogOnOptionsChanged = false;
     CUserProfileManager::Get().Apply();

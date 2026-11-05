@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverHornetQueen::SetUpCirclePoints() -- rebuild the circle markers from the live "WaspQueenCirclePos<n>" track things (n = 1, 2, ... until one is missing) within 60 units of the queen, and set the circle radius to the farthest marker's distance from the arena centre plus 12
+// Leaf: ?SetUpCirclePoints@CAIStateGroup_HoverHornetQueen@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   template instance, manifest <CThingFilter_HasDefGlobalIndex, CThing>, in fact <CThingFilter_HasScriptName, CThing>) as a same-TU `template <class TFilter, class T>
 //   __declspec(noinline)` body: VC7.1 then knows only that call writes `marker`, keeps the one marker load in esi across the
@@ -21,22 +22,14 @@
 // at +0x40 is 12 bytes in STLport).
 #include <math.h>
 #include "engine/C3DVector.h"
-class CThing { public:
-    unsigned char _pad0[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;             // 0x004C73D0
-};
-#define IS_THING_ALIVE(p) ((p) != 0 && !((p)->m_flags91 & 1))
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
+#define IS_THING_ALIVE(p) ((p) != 0 && !(p)->IsDead())
 class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
 };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
+
 class CThingFilter_HasScriptName { public:
     CCharString Name;
     CThingFilter_HasScriptName(const CCharString& name) : Name(name) { }
@@ -70,7 +63,6 @@ struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<C
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
 };
 struct __false_type { __false_type() { } };
-inline void* operator new(unsigned int, void* where) { return where; }
 template <class T> struct CRetailVector {               // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;

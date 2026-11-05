@@ -17,12 +17,7 @@ void __cdecl operator delete(void* block);            // 0x00BFE9BC
 
 // Retail CThing (local model: retail sits 0x10 below Ego_r.pdb from ThingTypeFlags on):
 // DefGlobalIndex +0x8c [PDB +0x9c], the state bit byte +0x91 [PDB +0xa1] (Dead = 0x01).
-class CThing { public:
-    unsigned char  _pad_0x00[0x8c];
-    unsigned short DefGlobalIndex;                    // +0x8c
-    unsigned char  _pad_0x8e[0x91 - 0x8e];
-    unsigned char  StateBits;                         // +0x91 Dead 0x01
-};
+#include "engine/CThing.h"
 
 namespace NEntityEvents {
 // NEntityEvents::CEventBase (Ego_r.pdb: vptr +0, WorldFrame +4); GetType is vtable slot 1.
@@ -86,7 +81,6 @@ struct CEventList {
     reverse_iterator rbegin() const { return reverse_iterator(end()); }
     reverse_iterator rend() const { return reverse_iterator(begin()); }
 };
-
 
 struct CTCEntityEventsMethods : CTCEntityEvents {
     const CEventList& GetEvents() const { return *(const CEventList*)Events; }

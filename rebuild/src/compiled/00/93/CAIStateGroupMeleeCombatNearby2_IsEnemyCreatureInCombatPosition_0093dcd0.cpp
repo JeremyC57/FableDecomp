@@ -1,4 +1,5 @@
 // CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureInCombatPosition() -- require combat range and a valid or nearby preferred position.
+// Leaf: ?IsEnemyCreatureInCombatPosition@CCombatStateMethods@@QAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared2D respelled GetSquaredMagnitude2D (the header / FableWin.pdb method, same computation).
 #define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
 #include "engine/CAIStateGroupBase.h"
@@ -14,9 +15,7 @@ protected:
 inline float GroundDistanceSquared(const C3DVector& a,const C3DVector& b) {
  return (a-b).GetSquaredMagnitude2D();
 }
-class CThing { public:
-    const C3DVector& GetPos() const; // 004C73D0
-};
+#include "engine/CThing.h"
 struct CCreatureCombatView : public CThing {
  bool IsRegisteredCombatant(); // 00662410 (propagated AddCombinationBlend label is incompatible with this call)
 };

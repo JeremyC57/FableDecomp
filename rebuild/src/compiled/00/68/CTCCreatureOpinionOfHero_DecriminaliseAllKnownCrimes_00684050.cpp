@@ -1,4 +1,5 @@
 // CTCCreatureOpinionOfHero::DecriminaliseAllKnownCrimes() -- for a villager with a village, clear every crime deed this creature knows about (crime deed types 1..9 and the pending list) from the hero's opinion deed log
+// Leaf: ?DecriminaliseAllKnownCrimes@CTCCreatureOpinionOfHero@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail 0x00684050, 448 bytes (plain `ret`). Callees: CVectorMap LowerBound @ 0x0040F020 (inlined GetInterface: CTCVillager 0x23
 // on the parent, the hero's CTCHeroOpinionDeedLog 0x51), GFGetPVillageInterface(CTCVillager*) @ 0x007EE540 (__fastcall),
@@ -15,25 +16,11 @@
 // lays the 2..9 arm second); the linked handle is swapped in BEFORE the first decriminalise call (`first = handle; handle =
 // linked; Decriminalise(first)`), which keeps the deed log in ebx and the list sentinel in ebp (no extra frame word).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
@@ -115,7 +102,7 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
 void CTCCreatureOpinionOfHero::DecriminaliseAllKnownCrimes()
 {
     CTCVillager* villager;
-    if (!Thing->GetInterface(&villager, 0x23))
+    if (!Thing->GetTC(TCI_VILLAGE_MEMBER, &villager))
         return;
     if (!((CTCVillageMember*)villager)->GetPVillage())
         return;
@@ -124,7 +111,7 @@ void CTCCreatureOpinionOfHero::DecriminaliseAllKnownCrimes()
     if (!hero)
         return;
     CTCHeroOpinionDeedLog* log;
-    hero->GetInterface(&log, 0x51);
+    hero->GetTC(TCI_HERO_OPINION_DEED_LOG, &log);
     for (int i = 1; i < 10; ++i)
         DecriminaliseList(log, KnownDeeds[i]);
     DecriminaliseList(log, PendingDeeds);

@@ -21,7 +21,9 @@
 //          one `||` condition or a bool flag rotates eax/edx in the combat-manager block; the target assignment is the
 //          implicit CThing* -> CIntelligentPointer conversion (the temporary re-addressed with `lea` for operator=).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #include "engine/C3DVector.h"
@@ -30,43 +32,10 @@ class C2DVector { public:
     C2DVector(float ax, float ay) : x(ax), y(ay) {}
     float GetLengthSquared() const { return x * x + y * y; }
 };
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x18];
-    unsigned long ThingTypeFlags;               // +0x6c
-    unsigned char _pad70[0x91 - 0x70];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 inline bool IS_THING_ALIVE(const CThing* thing)
 {
-    if (thing != 0 && !(thing->m_flags91 & 1))
+    if (thing != 0 && !thing->IsDead())
         return true;
     return false;
 }
@@ -139,15 +108,15 @@ bool CAIStateGroup_SummonerCharge::IsRunnable()
     if (GetPWorld()->GetFrame() < NextFrameToCharge)
         return false;
     CTCCarrying* carrying;
-    if (!GetCreature()->GetInterface(&carrying, 0x46))
+    if (!GetCreature()->GetTC(TCI_CARRYING, &carrying))
         return false;
     CThing* weapon = carrying->GetThingInPrimarySlot();
     if (!IS_THING_ALIVE(weapon))
         return false;
     CTCEnemySource* source;
-    if (GetCreature()->GetInterfaceX(&source, 8)) {
+    if (GetCreature()->GetTC(TCI_TARGETING, &source)) {
         CThing* enemy = source->GetEnemy();
-        if (enemy && !(enemy->m_flags91 & 1)) {
+        if (enemy && !enemy->IsDead()) {
             const C3DVector& from = GetCreature()->GetPos();
             const C3DVector& to = enemy->GetPos();
             float distanceSquared = C2DVector(to.X - from.X, to.Y - from.Y).GetLengthSquared();
@@ -156,11 +125,11 @@ bool CAIStateGroup_SummonerCharge::IsRunnable()
                 float farRange = PDef->ChargeRangeFar;
                 if (distanceSquared < farRange * farRange) {
                     CTCStealth* stealth;
-                    if (enemy->GetInterface(&stealth, 0x36) && stealth->RunningAwayFromCombatTimer >= 0) {
+                    if (enemy->GetTC(TCI_STEALTH, &stealth) && stealth->RunningAwayFromCombatTimer >= 0) {
                         PTarget = enemy;
                         return true;
                     }
-                    if (enemy->ThingTypeFlags & 8) {
+                    if (enemy->GetTypeFlags() & 8) {
                         CCombatManager* combat = &GetCreature()->GetCombatManager();
                         if (combat->IsCreatureFightingThing(*GetCreature(), enemy) && combat->CheckSummonerChargeable(enemy)) {
                             PTarget = enemy;

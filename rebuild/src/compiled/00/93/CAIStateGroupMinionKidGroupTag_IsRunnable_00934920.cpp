@@ -1,4 +1,5 @@
 //   (reads the Bind3, all three bound filters and the range filter), and the Bind2&&C operator builds the Bind3 straight from
+// Leaf: ?IsRunnable@CAIStateGroup_MinionKidGroupTag@@QAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -24,13 +25,9 @@ protected:
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-class CCharString {
-public:
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-private:
-    void* PStringData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
 inline float GetDistance(const C3DVector& a, const C3DVector& b)
 {
@@ -40,28 +37,11 @@ inline float GetDistance(const C3DVector& a, const C3DVector& b)
     return (float)sqrt(dz * dz + dy * dy + dx * dx);
 }
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCParamsBase;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPos() const;    // 0x004C73D0
-    CTCBase* AddTC(const CCharString& name, bool flag, const CTCParamsBase* params);   // 0x004C9D60
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPhysical : public CThing { public:
     const C3DVector& PeekPos() const;       // 0x006A4D00
 };
@@ -219,7 +199,7 @@ bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
     CThing* group;
     if (PeekThingSearchTools().GetPBestThing_00935040(CThingFilter_HasDefGlobalIndex(0xa4),
                                               CThingCompare_Nearest(GetCreature()->GetPos()), &group)) {
-        group->GetInterface(&PTCGroupTag, 0xa4);
+        group->GetTC(TCI_CREATURE_GROUP_TAG, &PTCGroupTag);
         CTCCreatureGroupTag* tag = PTCGroupTag;
         CThing* nearest = tag->GetNearestMember(GetCreature()->GetPos());
         if (nearest && GetDistance(nearest->GetPos(), GetCreature()->GetPos()) < 8.0f

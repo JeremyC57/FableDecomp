@@ -1,4 +1,5 @@
 // CCreatureAction_TentacleRise::FinishAction() -- remove creature mode 0x54 through the owner's mode manager, set the flag byte +0x10 of the owner's interface-9 component, base FinishAction, then make a CCreatureAction_TentacleIdle the owner's current action
+// Leaf: ?FinishAction@CCreatureAction_TentacleRise@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CF610, length 231 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x31 =
@@ -12,27 +13,10 @@
 // call's `this` is fetched after the temporary is built.
 // Layout: owner CIntelligentPointer +8.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
@@ -81,7 +65,7 @@ class CCombatActionBase { public:
     __forceinline CTCInterface9* GetInterface9() const
     {
         CTCInterface9* component;
-        PCreature.GetPItem()->GetInterface(&component, 9);
+        PCreature.GetPItem()->GetTC(TCI_TARGETED, &component);
         return component;
     }
 };
@@ -98,7 +82,7 @@ class CCreatureAction_TentacleRise : public CCombatActionBase { public:
 void CCreatureAction_TentacleRise::FinishAction()
 {
     CTCCreatureModeManager* modeManager;
-    if (PCreature.GetPItem()->GetInterface(&modeManager, 0x31))
+    if (PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager))
         modeManager->RemoveMode(0x54);
     GetInterface9()->m_flag10 = true;
     CCombatActionBase::FinishAction();

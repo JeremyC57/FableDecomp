@@ -127,28 +127,12 @@ private: public:
 class CTCInventory { public:                                   // interface 0x11 (NInventory::CTCInventoryBase)
     void RenderUIBackdropQuad(float alpha);             // 0x005BC6D6
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                         // +0x44
-    template <class T> __forceinline bool GetInterface(T** out, long type)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-class CWideString { public: void* PStringData; };
+
 class CTCPhotojournalCapture { public:
     void*         __vftable;                            // +0x00 (CTCBase)
     CThing*       ParentThing;                          // +0x04
@@ -181,7 +165,7 @@ void CTCPhotojournalCapture::DrawPreparePrimitivesForRendering(const CEnginePrim
             CMainGameComponent::Get()->PDisplayEngine->Engine3D->SetEngineFlag76(false);
         if (FrameCounter >= 2) {
             CTCInventory* inventory;
-            if (ParentThing->GetInterface(&inventory, 0x11))
+            if (ParentThing->GetTC(TCI_INVENTORY, &inventory))
                 inventory->RenderUIBackdropQuad(1.0f);
         }
     }

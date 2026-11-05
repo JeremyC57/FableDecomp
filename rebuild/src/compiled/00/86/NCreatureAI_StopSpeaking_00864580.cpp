@@ -15,13 +15,9 @@ typedef unsigned short wchar_t;                      // VC7.1 without /Zc:wchar_
 
 class CTCBase;
 
-class CWideString
-{
-public:
-    void* PStringData;                               // +0x00
-    CWideString(const wchar_t* text);                // 0x0099B6B0
-    ~CWideString();                                  // 0x0099B510
-};
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
 
 enum EEmotePriority { EMOTE_PRIORITY_7 = 7 };
 
@@ -31,32 +27,8 @@ public:
     void SetEmoteText(EEmotePriority priority, const CWideString& text, float scale, float time);   // 0x0071AC70
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing
-{
-public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                  // +0x20 UsingComponents bitset<274>
-    CInterfaceMap m_interfaces;                      // +0x44 Components
-
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-        {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CThingCreatureBase : public CThing { };
 
@@ -68,7 +40,7 @@ namespace NCreatureAI
 void __fastcall NCreatureAI::StopSpeaking(CThingCreatureBase& creature)
 {
     CTCEmoteIcon* emote;
-    if (creature.GetInterface(0x45, &emote))
+    if (creature.GetTC(TCI_EMOTEICON, &emote))
     {
         CWideString text(L"");
         emote->SetEmoteText(EMOTE_PRIORITY_7, text, 0.0f, 0.0f);

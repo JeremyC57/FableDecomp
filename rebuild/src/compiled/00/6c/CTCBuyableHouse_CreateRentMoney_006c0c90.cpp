@@ -12,33 +12,14 @@
 // +0x44 (landed 0x006C0270); world +0x1c -> +0x14 is the day; CTCGold (0xCC) Gold +0x0c.
 class CTCBase;
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCParamsBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-public:
-    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
-};
+
 class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector* position, long player,
         void* orientation, unsigned long flags, const CCharString& name);   // 0x00703210
@@ -128,10 +109,10 @@ void CTCBuyableHouse::CreateRentMoney()
         CThingObject* bag = CThingObject::Create(index, &pos, 5, 0, 0, "");
         bag->AddTC("CTCOwnedEntity", false, 0);
         CTCOwnedEntity* owned;
-        bag->GetInterface(&owned, 0x33);
+        bag->GetTC(TCI_OWNED_ENTITY, &owned);
         owned->SetPOwner(ParentThing);
         CTCGold* gold;
-        bag->GetInterface(&gold, 0xcc);
+        bag->GetTC(TCI_GOLD, &gold);
         if (gold)
             gold->Gold = GetRentPerBag();
     }

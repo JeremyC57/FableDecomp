@@ -20,75 +20,20 @@
 // 0x008FCFA0, GetWorld 0x008FCFC0, GetPWorldSeed 0x008FCFD0, PeekThingSearchTools 0x008FD000, IsStopping 0x008FD010.
 #include "engine/CAIBrain.h"                           // Creature +0x18
 class CCharStringData;
-class CCharString {
-public:
-    CCharStringData* PStringData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseObject : public CBaseClass { };
+
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 #include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
-enum ETCInterfaceType { ETCInterfaceType_FIRST };
+
 class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CClass : public CBaseObject { };
-class CThing : public CClass {
-public:
-    unsigned char _pad04[0x14];
-    unsigned __int64 UID;                               // +0x18
-    unsigned long UsingComponents[9];                   // +0x20 bitset<274>
-    CInterfaceMap Components;                           // +0x44
-    unsigned char _pad54[0x91 - 0x54];
-    unsigned char Dead : 1;                             // +0x91 bit 0
-    const C3DVector& GetPos() const;                    // 0x004C73D0
-    unsigned long HasTC(ETCInterfaceType type) const   // the masked word (a bool return narrows to `shr ; test`)
-    {
-        return UsingComponents[type >> 5] & (1UL << (type & 31));
-    }
-    template <class T> __forceinline bool GetInterface(T** out, ETCInterfaceType type)
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = type;
-            CInterfaceMap* map = &Components;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template <class T> __forceinline T* GetTC(ETCInterfaceType type)
-    {
-        ETCInterfaceType key = type;
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-    }
-    template <class T> __forceinline const T* PeekTC(ETCInterfaceType type) const
-    {
-        ETCInterfaceType key = type;
-        const CInterfaceMap* map = &Components;
-        const CInterfaceMap::value_type* it = map->LowerBound(key);
-        return (const T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-    }
-    template <class T> __forceinline bool GetInterface(const T** out, ETCInterfaceType type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = type;
-            const CInterfaceMap* map = &Components;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (const T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPhysical : public CThing { };
 class CThingGameObject : public CThingPhysical { };
 class CThingCreatureBase : public CThingGameObject {
@@ -141,7 +86,7 @@ bool CAIStateGroup_MinionReactToCrimeFromSleep::IsRunnable()
 {
     CTCSleep* sleep;
     bool readyToSleep = false;
-    if (PBrain->Creature->GetInterface(&sleep, (ETCInterfaceType)0xD4))
+    if (PBrain->Creature->GetTC(TCI_SLEEP, &sleep))
         readyToSleep = sleep->IsReadyToSleep;
     if (!readyToSleep)
         return false;

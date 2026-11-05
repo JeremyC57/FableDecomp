@@ -37,27 +37,9 @@ template <class T> __forceinline void GFLimit(T& value, const T& lo, const T& hi
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                         // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || wanted < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CHeroStatsDef { public:
     unsigned char _pad_0x00[0x5C];
@@ -103,7 +85,7 @@ void CTCHeroStats::AddMoney(long amount, bool countTransaction)
         if (countTransaction) {
             TotalMoneyEarned += change;
             CTCHeroOnlineScoreboard* scoreboard;
-            ParentThing->GetInterface(&scoreboard, 0x10D);
+            ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
             scoreboard->UpdateScoreForActivity(5, (float)TotalMoneyEarned, false);
         }
     } else if (change < 0) {

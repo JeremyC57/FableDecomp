@@ -1,0 +1,9 @@
+gate: 200 rows {'PASS': 199, 'FAIL': 1} in 34.0s (0.17s/row wall, NJ=2)
+gate: 200 rows {'PASS': 199, 'FAIL': 1} in 36.5s (0.18s/row wall, NJ=2)
+  WARN leaf '??R' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??R' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'PASS': 200} in 37.3s (0.19s/row wall, NJ=2)
+gate: 200 rows {'PASS': 196, 'FAIL': 4} in 37.5s (0.19s/row wall, NJ=2)
+gate: 200 rows {'PASS': 199, 'FAIL': 1} in 33.3s (0.17s/row wall, NJ=2)
+gate: 53 rows {'PASS': 53} in 9.3s (0.18s/row wall, NJ=2)
+gatewave /tmp/claude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad/plan/p6/w2 {'PASS': 1046, 'FAIL': 7}

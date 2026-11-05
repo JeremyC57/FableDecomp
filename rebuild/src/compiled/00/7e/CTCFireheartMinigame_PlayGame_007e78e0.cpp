@@ -1,4 +1,5 @@
 // CTCFireheartMinigame::PlayGame() -- start a session: find the sixteen grid markers by script name once, then reset the hero to grid cell (0, 3), put the player into mode 0x2A, hide the bottom half of the GUI and clear QuitWithDelay
+// Leaf: ?PlayGame@CTCFireheartMinigame@@QAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -25,12 +26,8 @@
 class CThing;
 class CTCBase;
 
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const CCharString& other);          // 0x0099EC30
-    ~CCharString();                                 // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 extern CCharString g_FireheartMarkerNames[4][4];    // 0x013BAEB0
 
 class CThingFilter_HasScriptName {
@@ -54,13 +51,6 @@ public:
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
     virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
     virtual void SetPosition(const C3DVector& position);   // slot 30 (+0x78)
-};
-
-class CThing {
-public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                      // +0x60
-    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 
 class CPlayer {
@@ -122,7 +112,7 @@ void CTCFireheartMinigame::PlayGame()
     ForceQuit = false;
     XPos = 0;
     YPos = 3;
-    CTCPhysicsBase* physics = ParentThing->PhysicsTC;
+    CTCPhysicsBase* physics = ParentThing->GetPhysicsTC();
     physics->SetPosition(Markers[0][3]->GetPos());
     CPlayer* player = &GetPlayerManager().GetMainPlayer();
     if (player->GetCurrentMode() != 0x2a)

@@ -1,4 +1,5 @@
 // CCreatureAction_ScorpionCharge::CCreatureAction_ScorpionCharge(CThingCreatureBase*, CThing*, float) -- base CCombatActionBase(owner, target, 150, GetSoundPair(owner, "SWORD_SWING")), name set through the setter, then ChargeDistance and StartPos = owner position
+// Leaf: ??0CCreatureAction_ScorpionCharge@@QAE@PAVCThingCreatureBase@@PAVCThing@@M@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4EA0, length 163 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, GetSoundPair @ 0x008561A0 (__fastcall, hidden
@@ -13,17 +14,10 @@
 
 #include "engine/C3DVector.h"
 
-class CThing { public:   // the creature derives from CThing at offset 0 (mov ecx,edi)
-    const C3DVector& GetPos() const;   // 0x004C73D0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CThingCreatureBase : public CThing { public: };
-
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
 
 class CSoundPair { public:
     long FirstSound;

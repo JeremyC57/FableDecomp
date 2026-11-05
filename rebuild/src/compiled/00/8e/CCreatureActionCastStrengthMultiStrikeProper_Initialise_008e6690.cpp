@@ -1,4 +1,5 @@
 // CCreatureAction_CastStrengthMultiStrikeProper::Initialise() -- load SPECIAL_ABILITIES_MULTI_STRIKE_DEF, play its sound for this spell level through the owner's sound component (if any), then CCombatActionBase::Initialise
+// Leaf: ?Initialise@CCreatureAction_CastStrengthMultiStrikeProper@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E6690, length 226 bytes (+ int3 padding), plain `ret` (virtual, no arguments).
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("SPECIAL_ABILITIES_MULTI_STRIKE_DEF" @ 0x01235A9C), CGameDefinitionManager::Get()
@@ -12,11 +13,9 @@
 // Layout: SpellLevel at retail +0x114 (PDB +0x12c); CSpecialAbilitiesMultiStrikeDef Sounds (CDefString[4]) at +0x40 (Ego_r.pdb).
 class CTCBase;
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 class CDefString { public: long Index; };
 
@@ -72,27 +71,8 @@ class CTCSoundPlayer { public:
 struct CTCSound {                               // the interface-0x10 component
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -135,7 +115,7 @@ void CCreatureAction_CastStrengthMultiStrikeProper::Initialise()
     }
     CGameDefinitionManager::Get().GetDef(index, &def);
     CTCSound* sound;
-    if (PCreature.GetPItem()->GetInterface(&sound, 0x10)) {
+    if (PCreature.GetPItem()->GetTC(TCI_SOUND_PLAYER, &sound)) {
         CCharString soundName = GDefStringTable.GetString(def->Sounds[SpellLevel - 1]);
         ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(soundName, 1, 0, 0, -1);
     }

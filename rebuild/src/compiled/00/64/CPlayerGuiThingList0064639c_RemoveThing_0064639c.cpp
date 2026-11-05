@@ -18,7 +18,7 @@
 // Leaf: RemoveThing
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CThing { public: long m_dummy; };
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public: };
 
 struct SThingListNode {                                     // STLport list node: next, prev, CIntelligentPointer<CThing>

@@ -16,17 +16,12 @@ class C3DVector { public:
     float MagSquared() const { return Z * Z + Y * Y + X * X; }
     float Length() const { return (float)sqrt(Z * Z + Y * Y + X * X); }
 };
-struct CThingDef {
+struct CTCPhysicsBase {
     unsigned char _pad00[0x34];
     float         Radius;                          // +0x34
 };
-class CThing {
-public:
-    unsigned char _pad00[0x60];
-    CThingDef*    Def;                             // +0x60
-    unsigned char _pad64[8];
-    unsigned char Flags;                           // +0x6c (bit 3: creature)
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing {
 public:
     float GetCombatRadius() const;                 // 0x00661F90
@@ -42,8 +37,8 @@ struct CPhysicalPrimitiveCylinder {
     {
         float radius = Radius;
         if (radius < DELTA_NOTIONAL_ZERO) {
-            radius = thing.Def->Radius;
-            if (thing.Flags & 8)
+            radius = thing.GetPhysicsTC()->Radius;
+            if (thing.GetTypeFlags() & 8)
                 radius = static_cast<const CThingCreatureBase&>(thing).GetCombatRadius();
         }
         return radius;

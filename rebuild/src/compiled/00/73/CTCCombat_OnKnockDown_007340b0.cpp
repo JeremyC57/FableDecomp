@@ -14,32 +14,11 @@
 //   CCombatAbility::Reset() inline, `_Rb_global::_M_increment` inline); the key 1 stays in ebx and is pushed again
 //   as the `true`; the special-abilities lookup is the out-pointer GetInterface in the `push ecx` frame word.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CCombatAbilityData { public:                     // Ego_r.pdb, 0x18 bytes
     void*  __vftable;                           // +0x00
     long   PercentageChance;                    // +0x04
@@ -203,6 +182,6 @@ void CTCCombat::OnKnockDown()
         it->second.second.Reset();
     ParentCreature->SetBodyReorienterActive(true);
     CTCSpecialAbilities* abilities;
-    if (ParentCreature->GetInterface(&abilities, 0xA7))
+    if (ParentCreature->GetTC(TCI_SPECIAL_ABILITIES, &abilities))
         abilities->CancelCurrentMutexAbility();
 }

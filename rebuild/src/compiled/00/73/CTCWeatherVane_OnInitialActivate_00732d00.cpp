@@ -1,4 +1,5 @@
 // CTCWeatherVane::OnInitialActivate() -- remember the vane's starting XY angle (the owner's physics/placement angle, 0 without one) plus a half-turn offset
+// Leaf: ?OnInitialActivate@CTCWeatherVane@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00732D00, length 49 bytes (+ int3 padding).
 // Callees: the owner's placement object (CThing +0x60) virtual slot 63 (+0xfc), returning a float angle.
 // Floats: 0x0122DEDC = 0.0f, 0x0122F59C = 0.5f. Ego_r.pdb: ?OnInitialActivate@CTCWeatherVane@@UAEXXZ.
@@ -6,7 +7,7 @@
 // Shape: the placement pointer is a named local and each arm stores `value + 0.5f` itself; the absent case adds to the
 // shared 0.0f constant (`fld [0x0122DEDC] ; fadd`, a literal 0.0f + 0.5f would fold). The single-expression ternary
 // grades 49v49 with the vptr fetched into eax instead of retail's edx.
-struct CThingPlacement {
+struct CTCPhysicsBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -23,10 +24,7 @@ struct CThingPlacement {
 
 extern const float g_zero;                                   // 0x0122DEDC (0.0f)
 
-class CThing { public:
-    unsigned char    _pad_00[0x60];
-    CThingPlacement* m_pPlacement;                          // +0x60
-};
+#include "engine/CThing.h"
 
 struct CTCWeatherVane {
     void*   __vftable;                                      // +0x00
@@ -39,7 +37,7 @@ struct CTCWeatherVane {
 
 void CTCWeatherVane::OnInitialActivate()
 {
-    CThingPlacement* placement = ParentThing->m_pPlacement;
+    CTCPhysicsBase* placement = ParentThing->GetPhysicsTC();
     if (placement)
         InitialOffsetXY = placement->GetAngleXY() + 0.5f;
     else

@@ -10,9 +10,10 @@
 // Shape: STLport list walk (node data at +8), the name reference cached in ebx after the entry test; the
 // CDefString temporary is homed in the name's dead argument slot (`lea ecx,[esp+14h]`); `if (card && name ==)`
 // returns through the shared `mov al,1` / `xor al,al` tails.
-class CCharString { public:
-    void* PStringData;
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CDefString { public:                                  // 4-byte def-name handle (user constructor: hidden-pointer return)
     long m_index;
@@ -21,10 +22,6 @@ class CDefString { public:                                  // 4-byte def-name h
 };
 
 class CBaseObject;
-
-class CThing { public:
-    CDefString GetDefName() const;                   // 0x004C7CC0
-};
 
 struct CBaseIntelligentPointer {                     // 8 bytes: vptr, item block
     void* m_vtable;

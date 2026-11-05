@@ -16,16 +16,15 @@ template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {publi
  __forceinline T* GetPItem()const{return (T*)CBaseIntelligentPointer::GetPItem();}
  __forceinline void SetPItem(T* p){CBaseIntelligentPointer::SetPItem((CBaseObject*)p);}
 };
-class CCharString {public:char* data;~CCharString();};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 struct Ref{virtual void Reserved()=0;virtual void DeleteThis()=0;int count;__forceinline void Release(){if(--count==0)DeleteThis();}};
 struct Node{Node* next;Node* prev;void* value;};
 struct ListView{Node* head;__forceinline int Size()const{int count=0;for(Node* p=head->next;p!=head;p=p->next)++count;return count;}};
 class CEnginePrimitiveHandle {public:virtual ~CEnginePrimitiveHandle();unsigned payload;};
 typedef CIntelligentPointer<CThingCreatureBase> CreaturePointer;
 extern unsigned GeneratorVtable_01268c24[];extern int CreatureCount_013bad54;
-class CThing { public:public:
-    void Kill(bool);   // 0x004C9B80
-};void __fastcall ClearList(void*);
+void __fastcall ClearList(void*);
 void __fastcall CTCCreatureGenerator_Destroy(CTCCreatureGenerator* self){
  char* bytes=(char*)self;self->__vftable=GeneratorVtable_01268c24;CIntelligentPointer<CThing>* handle=(CIntelligentPointer<CThing>*)(bytes+0x90);
  if(handle->GetPItem() && !(*(unsigned char*)((char*)handle->GetPItem()+0x91)&1)){((CThing*)handle->GetPItem())->Kill(true);CIntelligentPointer<CThing> temp(0);handle->SetPItem(temp.GetPItem());}

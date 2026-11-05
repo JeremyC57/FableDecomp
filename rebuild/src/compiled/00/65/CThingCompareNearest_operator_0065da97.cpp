@@ -9,9 +9,7 @@
 #pragma optimize("s", on)
 #pragma optimize("y", off)   // ebp frame
 #include "engine/C3DVector.h"
-class CThing { public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingAICreature : public CThing { public: };
 
 class CThingCompare_Nearest { public:

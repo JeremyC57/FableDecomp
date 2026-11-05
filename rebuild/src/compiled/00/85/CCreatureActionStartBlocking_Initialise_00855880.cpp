@@ -6,12 +6,12 @@
 // Layout: shared CTCBase header included unchanged; own component storage is CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > over CArray/std::vector. Original Components donor+0x48 becomes retail+0x44; Compare/Dirty follow three-pointer data. Both PDB LowerBound template name sets confirm enum and real component base.  generated action/base headers flatten polymorphic inheritance and tracked-pointer APIs; minimal real base/PCreature chain retained. CThing header lacks usable template GetTC and bitset/map APIs, so named projection models actual bitset9 and sorted map. No false-branch pointer initialization invented; N091 requires its TC to exist.
 #include "engine/CTCBase.h"
 #include "engine/CArray.h"
-enum ETCInterfaceType{TC_COMBAT=48,TC_CREATURE_MODE_MANAGER=49};
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& entry,const K& key)const{return entry.first<key;}};
-template<class K,class V,class CompareType=CKeyPairCompareLess<K,V> >class CVectorMap{public:typedef std::pair<K,V> value_type;typedef value_type* iterator;CArray<value_type> Data;CompareType Compare;bool Dirty;iterator LowerBound(const K& key);iterator end(){return Data.end();}V& operator[](const K& key){K keyCopy=key;iterator p=LowerBound(keyCopy);if(p==end() || key<p->first)p=end();return p->second;}};
-class CThing{public:unsigned char _unmodeled00[0x20];unsigned int Interfaces[9];CVectorMap<ETCInterfaceType,CTCBase*> Components;template<class T>bool GetTC(T** out){if(Interfaces[T::InterfaceType/32]&(1U<<(T::InterfaceType%32))){*out=(T*)Components[(ETCInterfaceType)T::InterfaceType];return true;}return false;}};class CThingCreatureBase:public CThing{};
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+
+class CThingCreatureBase:public CThing{};
 class CBaseObject;class CBaseObjectPointer;class CBaseIntelligentPointer{public:virtual ~CBaseIntelligentPointer(){}CBaseObjectPointer* PData;CBaseObject* GetPItem()const;};template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:T* GetPItem()const{return (T*)CBaseIntelligentPointer::GetPItem();}};
 class CTCCreatureModeManager:public CTCBase{public:enum{InterfaceType=49};bool AddMode(unsigned long);void RemoveMode(unsigned long);};class CTCCombat:public CTCBase{public:enum{InterfaceType=48};void SetStartingToBlock(bool);};
 class CCreatureActionBase{public:virtual ~CCreatureActionBase(){}unsigned char _unmodeled04[4];CIntelligentPointer<CThingCreatureBase> PCreature;};class CCombatActionBase:public CCreatureActionBase{public:virtual void Initialise();virtual void FinishAction();};
 class CCreatureAction_StartBlocking:public CCombatActionBase{public:virtual void Initialise();};
-void CCreatureAction_StartBlocking::Initialise(){CCombatActionBase::Initialise();CTCCombat* nav;if(PCreature.GetPItem()->GetTC(&nav))nav->SetStartingToBlock(true);}
+void CCreatureAction_StartBlocking::Initialise(){CCombatActionBase::Initialise();CTCCombat* nav;if(PCreature.GetPItem()->GetTC(TCI_COMBAT, &nav))nav->SetStartingToBlock(true);}

@@ -1,4 +1,5 @@
 // Retry 10b (B-12 sweep): the random delay is bound to a const REFERENCE (`const unsigned long& extraSeconds = Random(120);`, an address-taken temporary): the `% 120` div stays before the GFGetCurrentFrame call with the remainder in edi and the frame rate in ebx (a value local lets VC7.1 sink the div below the call).
+// Leaf: ?OnReplace@CAIStateGroup_LookAtInterestingThings@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -30,28 +31,10 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCIdleScheduler { public:                       // interface type 0xd3
     void ChooseNewIdle();                       // 0x00801A50
@@ -94,6 +77,6 @@ void CAIStateGroup_LookAtInterestingThings::OnReplace()
     long framesPerSecond = CMainGameComponent::GetConstantFPS();
     FrameToLook = CWorld::GetFrame() + (extraSeconds + 240) * framesPerSecond;
     CTCIdleScheduler* scheduler;
-    if (PBrain->PCreature->GetInterface(&scheduler, 0xd3))
+    if (PBrain->PCreature->GetTC(TCI_IDLE_SCHEDULER, &scheduler))
         scheduler->ChooseNewIdle();
 }

@@ -16,6 +16,8 @@
 //   result assigned from an interpolator temporary in each branch.
 class CThing;
 
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up, Forward;
@@ -42,10 +44,9 @@ class CWorld { public:
     CBulletTime*  m_pBulletTime;                    // +0x68
     static long __fastcall GetFrame();                    // 0x0049D870
 };
-class CThing {
-public:
-    bool IsAffectedByBulletTime() const;            // 0x004C9920
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CTCBase
 {

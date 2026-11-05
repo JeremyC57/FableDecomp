@@ -11,12 +11,7 @@
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-class CThing {
-public:
-    unsigned char _pad00[0x91];                           // (members not touched here)
-    unsigned char Flags91;                                // +0x91 bit 0 = dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-};
+#include "engine/CThing.h"
 class CCreatureActionBase {                                // retail 0xA8 bytes
 public:
     virtual ~CCreatureActionBase();                       // 0x00693EF0

@@ -1,4 +1,5 @@
 // CTCCarrying::IsCarryingThing(long defIndex) -- true when some carry slot holds a thing whose def index (+0x8c) matches
+// Leaf: ?IsCarryingThing@CTCCarrying@@QAE_NJ@Z
 //
 // Retail 0x006A10A0, 124 bytes (`ret 4`). Callee: CBaseIntelligentPointer::GetPItem @ 0x00A01B50
 // (twice per slot). This is the def-index overload; the CThing* overload is the landed 0x006A1060.
@@ -6,10 +7,7 @@
 // def index is the unsigned short at +0x8c (`movzx`).
 // Shape: the OnKill 0x006A0FF0 index loop (`i < size()` recomputed, `*(begin() + i)` element,
 // pointer address in ebp) with an early `return true` and the shared `xor al,al` after the loop.
-class CThing { public:
-    unsigned char  _pad00[0x8c];
-    unsigned short m_defIndex;                      // +0x8c (the thing's def/type index)
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -56,7 +54,7 @@ bool CTCCarrying::IsCarryingThing(long defIndex)
     for (unsigned long i = 0; i < CarrySlots.size(); ++i)
     {
         CIntelligentPointer<CThing>& carried = CarrySlots[i].second;
-        if (carried.GetPItem() && carried.GetPItem()->m_defIndex == defIndex)
+        if (carried.GetPItem() && carried.GetPItem()->GetDefGlobalIndex() == defIndex)
             return true;
     }
     return false;

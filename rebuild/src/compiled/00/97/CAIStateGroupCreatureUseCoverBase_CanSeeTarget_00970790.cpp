@@ -42,7 +42,7 @@ class CPhysicsMeshObject { public:
     virtual ~CPhysicsMeshObject();                         // 0x00A127D0
     bool GetPointIntersectionFromTo(const C3DVector* from, const C3DVector* to, CMeshIntersectionData* data);   // 0x00A12450
 };
-struct CTCPhysicsBaseV {                           // vtable view: slot 93 (+0x174)
+struct CTCPhysicsBase {                           // vtable view: slot 93 (+0x174)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -63,15 +63,7 @@ struct CTCPhysicsBaseV {                           // vtable view: slot 93 (+0x1
     CPhysicsMeshObject GetPhysicsMeshObject();     // 0x006B0850
 };
 
-class CThing { public:
-    unsigned char _pad[0x60];
-    CTCPhysicsBaseV* Physics;                      // +0x60
-    CTCPhysicsBaseV* GetPhysics() const { return Physics; }
-    unsigned char _pad64[0x2d];
-    unsigned char m_flags91;                       // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;          // 0x004C73D0
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-};
+#include "engine/CThing.h"
 
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
@@ -104,12 +96,12 @@ struct CAIStateGroup_CreatureUseCoverBase {
 bool CAIStateGroup_CreatureUseCoverBase::CanSeeTarget()
 {
     if (IS_THING_ALIVE(PTarget) && IS_THING_ALIVE(PCoverThing)) {
-        if (PCoverThing.GetPItem()->GetPhysics()->GetPhysicsMeshInfo()) {
+        if (PCoverThing.GetPItem()->GetPhysicsTC()->GetPhysicsMeshInfo()) {
             const C3DVector& eye = PBrain->PCreature->GetPos();
             C3DVector from(eye.X, eye.Y, eye.Z + 1.2f);
             const C3DVector& target = PTarget.GetPItem()->GetPos();
             C3DVector to(target.X, target.Y, target.Z + 1.2f);
-            CTCPhysicsBaseV* physics = PCoverThing.GetPItem()->Physics;
+            CTCPhysicsBase* physics = PCoverThing.GetPItem()->GetPhysicsTC();
             CMeshIntersectionData data;
             bool blocked = physics->GetPhysicsMeshObject().GetPointIntersectionFromTo(&from, &to, &data);
             if (blocked)

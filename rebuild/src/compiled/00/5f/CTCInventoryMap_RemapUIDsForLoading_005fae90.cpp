@@ -1,4 +1,5 @@
 // CTCInventoryMap::RemapUIDsForLoading(std::vector<unsigned __int64>&) -- rewrites every saved teleporter UID through the thing manager's serialisation remap
+// Leaf: ?RemapUIDsForLoading@CTCInventoryMap@@QAEXAAUCUIDVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FAE90, 79 bytes (+1 int3). Single caller 0x006068C4.
 // Callees: CThing::IsLevelLess @ 0x004C7930 (reads [thing+0x70]+0x41 bit 3), the thing-manager accessor @ 0x00686AF0
 //          (`mov eax,[0x013B8A1C] ; ret`, a member on `this` that ignores it), CThingManager::RemapUIDForSerialisation
@@ -14,12 +15,7 @@ class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, unsigned long level, unsigned __int64 uid) const;   // 0x0051E210
 };
 
-class CThing { public:
-    unsigned char _pad_0x00[0x8e];
-    short m_level;                                    // +0x8E
-public:
-    bool IsLevelLess() const;   // 0x004C7930
-};
+#include "engine/CThing.h"
 
 struct CUIDVector {                                   // retail 12-byte vector<unsigned __int64>
     unsigned __int64* m_first;
@@ -35,5 +31,5 @@ class CTCInventoryMap : public CTCBase { public:
 void CTCInventoryMap::RemapUIDsForLoading(CUIDVector& uids)
 {
     for (unsigned __int64* it = uids.m_first; it != uids.m_last; ++it)
-        *it = GetThingManager()->RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, *it);
+        *it = GetThingManager()->RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->GetCurrentMapNumber(), *it);
 }

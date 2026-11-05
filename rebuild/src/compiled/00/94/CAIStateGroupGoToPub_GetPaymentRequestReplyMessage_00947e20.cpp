@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToPub::GetPaymentRequestReplyMessage() -- wait for the barman's reply message (type 0x30) aimed at this creature; on arrival remove it and report success
+// Leaf: ?GetPaymentRequestReplyMessage@CAIStateGroup_GoToPub@@QAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00947E20, length 132 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PBarman at +0x2c),
 // CMessageEventFilter_IsTargettedAtThing(const CThing*) @ 0x006AF290 and
@@ -14,10 +15,7 @@
 // constructor as in retail. On EAIActionReturn 2 the event is removed through the world's message manager
 // (+0x60, inline accessor so its load follows the event push) and `true` returns via `mov al,1`. No engine
 // header for the class.
-class CThing { public:
-    unsigned char _pad[0x18];
-    unsigned __int64 UID;                       // +0x18
-};
+#include "engine/CThing.h"
 class CMessageEvent;
 
 class CMessageEventFilter_IsOfType { public:
@@ -49,7 +47,6 @@ template<class A, class B, class C> class CFilter_Bind3 { public:
 };
 
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
-
 
 typedef CFilter_Bind3<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatedByThing,
     CMessageEventFilter_IsTargettedAtThing> CReplyFilter;

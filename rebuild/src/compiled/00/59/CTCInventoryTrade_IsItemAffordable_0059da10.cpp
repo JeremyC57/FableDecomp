@@ -1,4 +1,5 @@
 // CTCInventoryTrade::IsItemAffordable(long itemType, long count) -- whether the hero's gold covers the shop's current buying price for `count` items of `itemType`
+// Leaf: ?IsItemAffordable@CTCInventoryTrade@NInventory@@QAE_NJJ@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -15,25 +16,10 @@
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                         // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            CInterfaceMap::value_type* found = (it == map->end() || wanted < it->first) ? map->end() : it;
-            *out = (T*)((void*)found->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CTCShop { public:                                     // interface type 0x53
     long GetCurrentBuyPrice(long itemType, long count);   // 0x007743B0
@@ -68,11 +54,11 @@ struct CTCInventoryTrade {
 bool CTCInventoryTrade::IsItemAffordable(long itemType, long count)
 {
     CTCShop* shop;
-    GetTradingThing()->GetInterface(&shop, 0x53);
+    GetTradingThing()->GetTC(TCI_SHOP, &shop);
     long price = shop->GetCurrentBuyPrice(itemType, count);
     CThing* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     CTCGoldOwner* purse = 0;
-    hero->GetInterface(&purse, 4);
+    hero->GetTC(TCI_HERO_STATS, &purse);
     bool affordable = purse->Gold >= price;      // a NAMED bool: `return a >= b` zero-extends (xor eax,eax ; setge al)
     return affordable;
 }

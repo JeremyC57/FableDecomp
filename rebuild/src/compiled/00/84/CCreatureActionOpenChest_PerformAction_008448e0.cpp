@@ -1,4 +1,5 @@
 // CCreatureAction_OpenChest::PerformAction() -- when the chest thing is alive: open its CTCChest component, tell the creature's interface-8 component (virtual slot 34) to stop with 0, and queue a CEventOpenedChest(chest) on the creature's entity-events component
+// Leaf: ?PerformAction@CCreatureAction_OpenChest@@QAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008448E0, length 332 bytes.
@@ -13,29 +14,11 @@
 // Shape: IS_THING_ALIVE on PChest; every component is a zero-preloaded `if (HasTC) GetTC` (the three `xor reg,reg`); the `new` null
 // test selects 0 for AddEvent and the two AddEvent calls are not merged (the landed CCreatureAction_ShowItemToThing 0x00845270 shape).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -45,7 +28,7 @@ struct CIntelligentThingPointer : CBaseIntelligentPointer {   // vtable 0x01238C
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -90,22 +73,22 @@ void CCreatureAction_OpenChest::PerformAction()
         CTCChest* chest = 0;
         {
             CThing* chestThing = ((CThing*)PChest.GetPItem());
-            if (chestThing->HasTC(0x3c))
-                chest = chestThing->GetTC<CTCChest>(0x3c);
+            if (chestThing->HasTC(TCI_CONTAINER))
+                chest = ((CTCChest*)&chestThing->GetTC(TCI_CONTAINER));
         }
         chest->Open();
         CTCInterface8* movement = 0;
         {
             CThing* creature = ((CThing*)PCreature.GetPItem());
-            if (creature->HasTC(8))
-                movement = creature->GetTC<CTCInterface8>(8);
+            if (creature->HasTC(TCI_TARGETING))
+                movement = ((CTCInterface8*)&creature->GetTC(TCI_TARGETING));
         }
         movement->Stop(0);
         CTCEntityEvents* events = 0;
         {
             CThing* creature = ((CThing*)PCreature.GetPItem());
-            if (creature->HasTC(0x42))
-                events = creature->GetTC<CTCEntityEvents>(0x42);
+            if (creature->HasTC(TCI_ENTITY_EVENTS))
+                events = ((CTCEntityEvents*)&creature->GetTC(TCI_ENTITY_EVENTS));
         }
         events->AddEvent(new NEntityEvents::CEventOpenedChest(((CThing*)PChest.GetPItem())));
     }

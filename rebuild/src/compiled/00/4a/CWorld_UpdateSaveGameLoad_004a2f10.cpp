@@ -51,11 +51,10 @@
 typedef unsigned short wchar16;
 class CCharString;
 class CWideStringData;
-class CWideString { public:
-    CWideStringData* PStringData;
-    CWideString();                                      // 0x0099AED0
-    ~CWideString();                                     // 0x0099B510
-};
+#define FABLE_RETAIL_STLP_BITSET_INDEX
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
 class CAFile { public:
     static void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory,
@@ -120,37 +119,13 @@ class CWorldMap : public CWorldMapLayout { public:
     const CRegion& GetRegion(long region) const;            // 0x004FC180
 };
 
-#define FABLE_RETAIL_STLP_BITSET_INDEX
 #include "engine/CVectorMap.h"
 
-
-enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };   // enumerators not needed
 class CTCBase;
 class CTCRegionDisplay { public:
-    enum { INTERFACE_TYPE = 0x8E };                         // GetInterfaceType 0x0063A1F0
     void SetCurrentAreaName(const CCharString& name, float time, bool a, bool b, bool c);   // 0x00639BA0
 };
 
-class CThing {                                              // partial view, retail offsets
-public:
-    typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > TCMap;
-    unsigned char      Header[0x20];                        // CClass / CBaseObject / CBaseClass part
-    std::bitset<274>   UsingComponents;                     // +0x20
-    TCMap              Components;                          // +0x44
-    template <class T> __forceinline bool GetTC(T** out)    // out of line for CTCRegionDisplay at 0x004ACAB0
-    {
-        if (UsingComponents[T::INTERFACE_TYPE]) {
-            ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
-            TCMap* map = &Components;
-            TCMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || T::INTERFACE_TYPE < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingPlayerCreature : public CThing { };
 class CPlayer : public CPlayerLayout { public:
     CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
@@ -261,7 +236,7 @@ void CWorld::UpdateSaveGameLoad()
         const CRegion& region = PeekWorldMap().GetRegion(PeekWorldMap().GetLoadedRegion());
         CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
         CTCRegionDisplay* regionDisplay;
-        hero->GetTC(&regionDisplay);
+        hero->GetTC(TCI_REGION_DISPLAY, &regionDisplay);
         regionDisplay->SetCurrentAreaName(region.GetDisplayName(), -1.0f, false, false, true);
         NProgressDisplay::StopProgress(true, false);
         g_ProgressDebugDisplay = g_ProgressDebugDisplaySaved;

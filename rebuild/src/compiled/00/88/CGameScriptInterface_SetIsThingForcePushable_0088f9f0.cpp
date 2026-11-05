@@ -7,7 +7,7 @@
 #endif
 class CCharString;class CCPPointerInfo;
 // Layout: CThing active header is quarantined; ThingTypeFlags low byte+0x6c is read. All other fields are outside this call boundary.
-class CThing {public:unsigned char Prefix[0x6c];unsigned int ThingTypeFlags;};
+#include "engine/CThing.h"
 // Layout: shared CScriptThing header is flattened. A genuine polymorphic interface is required for GetPThing slot11 and IsAlive slot75; uninvoked slots have descriptive placeholders only. PImp data/info follow at+4/+8.
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

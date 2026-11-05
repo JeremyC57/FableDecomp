@@ -18,31 +18,11 @@
 // Shape: the landed IS_THING_ALIVE(pointer) inline (GetPItem() null test, then the dead bit through a second GetPItem()),
 //          then a third GetPItem() for the Kill(true) call.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    void*         __vftable;
-    unsigned char _pad04[0x20 - 0x04];
-    unsigned long UsingComponents[9];              // +0x20
-    CInterfaceMap Components;                      // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Flags91;                         // +0x91 bit 0: dead
-    void Kill(bool immediately);                   // 0x004C9B80
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &Components;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCObjectAugmentations { public:                    // interface 0xBF
     void StopTrailEffect();                        // 0x007664E0
 };
@@ -52,7 +32,7 @@ class CBaseObject;
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->Flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -77,7 +57,7 @@ public:
 void CTCShotDefinitionBase::OnRemove()
 {
     CTCObjectAugmentations* augmentations;
-    if (PThing->GetInterface(&augmentations, 0xbf))
+    if (PThing->GetTC(TCI_OBJECT_AUGMENTATIONS, &augmentations))
         augmentations->StopTrailEffect();
     if (IS_THING_ALIVE(PEffect))
         ((CThing*)PEffect.GetPItem())->Kill(true);

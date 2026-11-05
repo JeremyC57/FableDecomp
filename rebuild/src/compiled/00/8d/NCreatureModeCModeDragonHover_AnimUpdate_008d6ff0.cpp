@@ -10,15 +10,8 @@
 // Shape: the landed sibling CModeConversation::AnimUpdate @ 0x008D6DA0 (same CAnimInit / CAnimateThing / CAnimationEntry
 //   models): the name is a named CCharString local in its own block; here the blend-in time is passed straight as an
 //   argument, so the CAnimInit temporary (type 6, flag05 true) is built first and the two entry getters follow right to left.
-class CThing { public:
-    unsigned char _pad0[0x50];
-};
-
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                        // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CAnimationEntry;
 

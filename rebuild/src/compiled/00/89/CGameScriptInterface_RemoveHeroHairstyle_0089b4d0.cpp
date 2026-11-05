@@ -6,48 +6,11 @@
 // Layout: CGameScriptInterface per engine/CGameScriptInterface.h (+0x14 PlayerManager); CThing retail (UsingComponents +0x20,
 // Components +0x44, Dead +0x91 bit 0).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
-    CInterfaceMap Components;                            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (T*)it->second;
-        return true;
-    }
-    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        const CInterfaceMap* map = &Components;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (const T*)it->second;
-        return true;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
@@ -61,7 +24,6 @@ public:
 enum EHeroAttachableAppearanceModifierType { HERO_APPEARANCE_MODIFIER_HAIRSTYLE = 0, HERO_APPEARANCE_MODIFIER_FORCE_DWORD = 0x7fffffff };
 class CTCHeroAttachableAppearanceModifiers {
 public:
-    enum { INTERFACE_TYPE = 0x5e };
     void RemoveAllAppearanceModifiers(EHeroAttachableAppearanceModifierType type);   // 0x00706640
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -73,6 +35,6 @@ void CGameScriptInterface::RemoveHeroHairstyle() const
 {
     CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCHeroAttachableAppearanceModifiers* tc;
-    if (hero && !hero->IsDead() && hero->GetTC(&tc))
+    if (hero && !hero->IsDead() && hero->GetTC(TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS, &tc))
         tc->RemoveAllAppearanceModifiers(HERO_APPEARANCE_MODIFIER_HAIRSTYLE);
 }

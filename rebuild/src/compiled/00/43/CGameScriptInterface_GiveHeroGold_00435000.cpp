@@ -1,4 +1,5 @@
 // CGameScriptInterface::GiveHeroGold(long amount) -- when the main player's creature is alive and has its money component (interface type 0x8e), hand it the gold amount
+// Leaf: ?GiveHeroGold@CGameScriptInterface@@QAEXJ@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00435000, length 98 bytes (+ int3 padding). `ret 4`.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449960 (label "Catch@0040d959" is wrong; `GetPlayer([ecx+1Ch])`, as the landed
@@ -11,34 +12,15 @@
 // pointer shares the key's frame word); the amount is re-read from its slot after the lookup.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_statusFlags;            // +0x91 (bit 0: dead)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingPlayerCreature : public CThing { };
 
 struct CTCHeroMoney {                       // interface type 0x8e
-    void GiveGold(long amount);             // 0x00639E40
+    void GiveGold(long amount) const;             // 0x00639E40
 };
 
 class CPlayer { public:
@@ -58,9 +40,9 @@ class CGameScriptInterface { public:
 void CGameScriptInterface::GiveHeroGold(long amount)
 {
     const CThing* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
-    if (hero && !(hero->m_statusFlags & 1)) {
-        CTCHeroMoney* money;
-        if (hero->GetInterface(&money, 0x8e))
+    if (hero && !hero->IsDead()) {
+        const CTCHeroMoney* money;
+        if (hero->PeekTC(TCI_REGION_DISPLAY, &money))
             money->GiveGold(amount);
     }
 }

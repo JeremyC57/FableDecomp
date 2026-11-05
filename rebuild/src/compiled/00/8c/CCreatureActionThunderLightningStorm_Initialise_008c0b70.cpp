@@ -1,4 +1,5 @@
 // CCreatureAction_ThunderLightningStorm::Initialise() -- set the name "LIGHTNING_STORM_INTO", run the base Initialise, then put the creature into mode 0x36 through its mode manager (interface type 0x31)
+// Leaf: ?Initialise@CCreatureAction_ThunderLightningStorm@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C0B70, length 133 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literal 0x012802A8 "LIGHTNING_STORM_INTO"), CCombatActionBase::SetCombatAnimation(const CCharString&)
@@ -10,27 +11,11 @@
 // The PDB header (CCreatureAction_ThunderLightningStorm.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
 #include "fable_string.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -72,6 +57,6 @@ void CCreatureAction_ThunderLightningStorm::Initialise()
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* pModes;
-    PCreature.GetPItem()->GetInterface(&pModes, 0x31);
+    PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes);
     pModes->AddMode(0x36);
 }

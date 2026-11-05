@@ -1,4 +1,5 @@
 // CAIStateGroup_DeedReactionRootFromSleep::IsRunnable() -- never runnable itself: when the sleeping creature would react to a violent/alarming deed it just clears the sleep component's flag (waking it) so the awake reaction root takes over
+// Leaf: ?IsRunnable@CAIStateGroup_DeedReactionRootFromSleep@@UAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00960F00, length 118 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface, interface 0xD4 =
@@ -15,28 +16,10 @@ class CTCBase;
 class CWorld;
 class CThingAICreature;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCSleep { public:                               // interface 0xD4
     unsigned char _pad[0xc];
@@ -73,7 +56,7 @@ bool CAIStateGroup_DeedReactionRootFromSleep::IsRunnable()
 {
     CTCSleep* sleep;
     bool asleep = false;
-    if (PBrain->Creature->GetInterface(&sleep, 0xD4))
+    if (PBrain->Creature->GetTC(TCI_SLEEP, &sleep))
         asleep = sleep->m_bAsleep;
     if (!asleep)
         return false;

@@ -10,11 +10,7 @@
 // Shape: the map walk is the inlined STLport _M_increment; the best distance lives in the dead argument slot and starts as the
 // integer zero; retail compares a squared distance against the squared best (squared) distance, kept as written.
 #include "engine/C3DVector.h"
-class CThing { public:
-    unsigned char    _pad00[0x18];
-    unsigned __int64 UniqueID;                              // +0x18
-    const C3DVector& GetPos() const;                        // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
-};
+#include "engine/CThing.h"
 class CThingPhysical : public CThing { public:
     const C3DVector& PeekPos() const;                       // 0x006A4D00 ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ (Ego_r donor order; the members' call; the query creature's call goes through CThing::GetPos 0x004C73D0)
 };
@@ -74,7 +70,7 @@ const CThingAICreature* CTCCreatureGroup::GetNearestOtherActiveMember(const CThi
     if (creature == 0)
         return 0;
     C3DVector pos = static_cast<const CThing*>(creature)->GetPos();
-    unsigned __int64 id = creature->UniqueID;
+    unsigned __int64 id = creature->GetUniqueID();
     const CThingAICreature* nearest = 0;
     float bestDistance = 0;
     for (CMemberNode* it = Members->Left; it != Members; it = IncrementNode(it)) {

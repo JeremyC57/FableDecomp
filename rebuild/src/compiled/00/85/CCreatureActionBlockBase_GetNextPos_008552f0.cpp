@@ -1,4 +1,5 @@
 // CCreatureAction_BlockBase::GetNextPos() -- the owner's position pushed along the block's movement direction by a decaying amount: pos + dir * 0.2 * exp(-100 * t^2), t = 1 - remaining/total frames
+// Leaf: ?GetNextPos@CCreatureAction_BlockBase@@QAE?AVC3DVector@@XZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008552F0, length 194 bytes (+ int3 padding), `ret 4` (hidden return-object pointer).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (the owner pointer at +8), CThing::GetPos 0x004C73D0
@@ -13,9 +14,7 @@
 class CBaseObject;
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;   // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

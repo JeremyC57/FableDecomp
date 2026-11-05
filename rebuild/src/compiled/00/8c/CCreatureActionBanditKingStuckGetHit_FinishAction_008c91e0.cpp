@@ -9,11 +9,7 @@
 // Layout: retail CCombatActionBase is 0x114 bytes (landed 0x008C5370); the stuck thing pointer is this class's +0x114.
 // Shape: the 0x118-byte action temporary sits above the zeroed CSoundPair, whose 8 bytes the later clear-pointer temporary
 //   reuses; the clear is the landed "assign through a stack CIntelligentPointer" shape (0x008C99C0).
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    void Kill(bool immediately);                // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CCombatActionBase;
 
@@ -49,7 +45,7 @@ struct CCreaturePointer : CBaseIntelligentPointer {                       // CIn
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;

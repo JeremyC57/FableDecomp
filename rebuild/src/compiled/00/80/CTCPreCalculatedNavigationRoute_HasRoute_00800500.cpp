@@ -1,4 +1,5 @@
 // CTCPreCalculatedNavigationRoute::HasRoute() -- TRUE when the target thing is alive (non-null, dead bit clear) and the route is not empty
+// Leaf: ?HasRoute@CTCPreCalculatedNavigationRoute@@QBEJXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00800500, length 55 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem() @ 0x00A01B50 (twice, on the +0x0c pointer addressed once in esi).
 // Shape: the inlined IS_THING_DEAD intelligent-pointer predicate (the landed 0x00836BE0 shape: GetPItem null test, GetPItem
@@ -7,11 +8,7 @@
 // Layout = Ego_r.pdb CTCPreCalculatedNavigationRoute with the 12-byte retail vector: PThingToCalculateRouteTo +0x0c,
 // ThingToCalculateRouteToUID +0x18, Route (vector<pair<C2DVector, unsigned char>>) +0x20. CThing's dead flag is bit 0 of +0x91
 // (as the landed IS_THING_DEAD bodies model it; the PDB CThing layout does not match retail there).
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags;                                  // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-};
+#include "engine/CThing.h"
 
 #pragma pack(push, 1)
 class CBaseObject;

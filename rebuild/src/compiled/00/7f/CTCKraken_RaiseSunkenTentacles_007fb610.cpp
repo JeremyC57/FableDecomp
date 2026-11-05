@@ -1,4 +1,5 @@
 // CTCKraken::RaiseSunkenTentacles() -- for every tentacle thing in the Tentacles list take its CTCKrakenTentacle component (interface 0xE3) and schedule its rise: TickToRise = world frame + def rise delay * frames-per-second
+// Leaf: ?RaiseSunkenTentacles@CTCKraken@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -9,28 +10,11 @@
 // list<CIntelligentPointer<CThing> > +0x44 (PDB +0x4C: retail sits 8 bytes lower); CTCKrakenTentacle TickToRise +0x34 (PDB +0x34).
 // Shape: the frames-per-second global and the def are named locals read before GetWorldFrame (retail order); the component out pointer is never reset, so a missing component keeps the previous one (retail ebp).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -93,7 +77,7 @@ void CTCKraken::RaiseSunkenTentacles()
 {
     CTCKrakenTentacle* tentacle;
     for (CListNode<CIntelligentPointer<CThing> >* it = Tentacles.Node->Next; it != Tentacles.Node; it = it->Next) {
-        it->Data.GetPItem()->GetInterface(&tentacle, 0xe3);
+        it->Data.GetPItem()->GetTC(TCI_KRAKEN_TENTACLE, &tentacle);
         long fps = CMainGameComponent::GetConstantFPS();
         CKrakenDef* def = PKrakenDef;
         tentacle->TickToRise = CWorld::GetFrame() + (long)(def->TentacleRiseDelay * fps);

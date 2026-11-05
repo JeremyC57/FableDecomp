@@ -1,4 +1,5 @@
 // CAIStateGroup_VillageTaskSecuritySweep::IsRunnable() -- clear the task thing, then (when the villager has a
+// Leaf: ?IsRunnable@CAIStateGroup_VillageTaskSecuritySweep@@UAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // village and the creature has interface 0x34) take the village's security-sweep point for this creature;
 // runnable when one was found.
@@ -16,14 +17,7 @@
 // GetCreature() (PBrain->PCreature) accessor; with both, the pointer's lea follows the GetPItem call and the creature
 // argument is pushed straight from ecx as retail.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -69,7 +63,7 @@ bool CAIStateGroup_VillageTaskSecuritySweep::IsRunnable()
 {
     PTaskThing = 0;
     CTCVillage* village = ((CTCVillageMember*)PVillager)->GetPVillage();
-    if (village != 0 && GetCreature()->HasTC(0x34))
+    if (village != 0 && GetCreature()->HasTC(TCI_PERCEIVE_THING))
         PTaskThing = village->GetSecuritySweepThing(GetCreature());
     return ((CThing*)PTaskThing.GetPItem()) != 0;
 }

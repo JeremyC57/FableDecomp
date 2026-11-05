@@ -14,10 +14,7 @@ class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640
 };
 
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                      // +0x60
-};
+#include "engine/CThing.h"
 
 class CThingFilter_IsInFOV { public:
     C3DVector FromPos;                              // +0x00
@@ -33,6 +30,6 @@ bool CThingFilter_IsInFOV::operator()(CThing* thing) const
 {
     C3DVector centre;
     float radius;
-    thing->PhysicsTC->GetBoundingInfo(&centre, &radius);
+    thing->GetPhysicsTC()->GetBoundingInfo(&centre, &radius);
     return (*this)(centre);
 }

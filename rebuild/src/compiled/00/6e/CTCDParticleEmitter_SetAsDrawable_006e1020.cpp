@@ -1,4 +1,5 @@
 // CTCDParticleEmitter::SetAsDrawable(bool drawable) -- while attached to a live thing, sync the particle-creation switch with the component's state
+// Leaf: ?SetAsDrawable@CTCDParticleEmitter@@QAEX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E1020, length 84 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2); CTCDParticleEmitter::IsParticleCreationDisabled() const
 // @ 0x006E0DF0; ::SetParticleCreationDisabled(bool) @ 0x006E0690 (x2).
@@ -8,11 +9,7 @@
 // ParticleCreationDisabled). Retail CThing: the Dead bit is bit 0 of +0x91.
 // Shape: the inline "thing alive" test (non-null item, dead bit clear) guards the same switch sync as
 // OnSetInLimbo 0x006E0FC0 (flag byte loaded once after the predicate's `test al,al`, tested in both arms).
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                                // +0x91 bit 0: Dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;

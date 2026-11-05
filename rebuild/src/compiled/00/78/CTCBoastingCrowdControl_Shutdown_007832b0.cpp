@@ -15,13 +15,7 @@
 //   (_M_node_count != 0) { _M_erase(root); leftmost = header; root = 0; rightmost = header; _M_node_count = 0; }`) and
 //   `Active = false`.
 // Label correction: catalogued as `LTextTree_KillAllThings`; the body is CTCBoastingCrowdControl::Shutdown.
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Flags91;                               // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    void Kill(bool removeFromWorld);                     // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;

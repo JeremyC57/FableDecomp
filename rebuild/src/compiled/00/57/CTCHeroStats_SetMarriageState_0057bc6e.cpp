@@ -20,28 +20,9 @@ class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char    _pad_0x00[0x18];
-    unsigned __int64 UID;                            // +0x18
-    std::bitset<274>    m_present;                      // +0x20
-    CInterfaceMap    m_interfaces;                   // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || wanted < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CThingAICreature : public CThing { public:
 };
@@ -87,28 +68,28 @@ void CTCHeroStats::SetMarriageState(CThingAICreature* wife, EMarriageState state
 {
     CHeroMarriageNode* last = Marriages._M_node;
     for (CHeroMarriageNode* it = last->_M_next; it != last; it = it->_M_next) {
-        if (it->_M_data.WifeUID == wife->UID) {
+        if (it->_M_data.WifeUID == wife->GetUniqueID()) {
             it->_M_data.State = state;
             if (state == 5 || state == 6 || state == 7) {
                 it->_M_data.MaritalHomeUID = 0;
                 if (state == 7) {
                     ++NumSpousesMurdered;
                     CTCHeroOnlineScoreboard* scoreboard;
-                    ParentThing->GetInterface(&scoreboard, 0x10D);
+                    ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
                     scoreboard->UpdateScoreForActivity(14, (float)(NumSpousesDied + NumSpousesMurdered), false);
                     long currentSpouses = NumWeddings - NumSpousesDied - NumSpousesMurdered;
                     scoreboard->UpdateScoreForActivity(9, (float)currentSpouses, false);
                 } else if (state == 6) {
                     ++NumSpousesDied;
                     CTCHeroOnlineScoreboard* scoreboard;
-                    ParentThing->GetInterface(&scoreboard, 0x10D);
+                    ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
                     scoreboard->UpdateScoreForActivity(14, (float)(NumSpousesDied + NumSpousesMurdered), false);
                     long currentSpouses = NumWeddings - NumSpousesDied - NumSpousesMurdered;
                     scoreboard->UpdateScoreForActivity(9, (float)currentSpouses, false);
                 } else if (state == 5) {
                     ++NumDivorces;
                     CTCHeroOnlineScoreboard* scoreboard;
-                    ParentThing->GetInterface(&scoreboard, 0x10D);
+                    ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
                     scoreboard->UpdateScoreForActivity(13, (float)NumDivorces, false);
                 }
             }

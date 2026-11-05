@@ -7,10 +7,7 @@
 // Leaf: IsPlayerIgnoreFOVLineOfSight
 #include "engine/CTCPerceiveThing.h"
 
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char Type;                     // +0x10 (2 = player)
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -37,7 +34,7 @@ long CTCPerceiveThing_Methods::IsPlayerIgnoreFOVLineOfSight() const
 {
     const CIntelligentPointer<CThing>* perceived = reinterpret_cast<const CIntelligentPointer<CThing>*>(PerceivedThing);
     if (perceived->GetPItem()) {
-        if (perceived->GetPItem()->Type == 2) {
+        if (perceived->GetPItem()->GetType() == 2) {
             if (IgnoreFOVLineOfSight)
                 return 1;
         }

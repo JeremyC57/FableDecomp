@@ -1,4 +1,5 @@
 // CCreatureAction_JackFall::FinishAction() -- drop mode 0x33 from Jack's mode manager if set, base FinishAction, then make "go underground" the creature's current action
+// Leaf: ?FinishAction@CCreatureAction_JackFall@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C2490, length 160 bytes.
 // Model: rebuild/include/engine/CCreatureAction_JackFall.h is the flattened PDB layout and sits high against the bytes (CCombatActionBase is 0x12c bytes in the PDB, 0x114 in retail: retail containers are 12 bytes), so `this` is a local model with the retail offsets.
@@ -11,27 +12,11 @@
 // esi), the creature whose action is set after it (chained, in edi). GetInterface's result is ignored (absent arm reads the key's word).
 // The temporary is destroyed through the base destructor: GoUnderground declares none of its own.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -80,7 +65,7 @@ class CCreatureAction_JackFall : public CCombatActionBase { public:
 void CCreatureAction_JackFall::FinishAction()
 {
     CTCCreatureModeManager* modes;
-    PCreature.GetPItem()->GetInterface(&modes, 0x31);
+    PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
     if (modes->HasMode(0x33))
         modes->RemoveMode(0x33);
     CThingCreatureBase* creature = GetCreature();

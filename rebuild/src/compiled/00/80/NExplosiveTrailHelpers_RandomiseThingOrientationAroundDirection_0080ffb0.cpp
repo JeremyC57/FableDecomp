@@ -21,7 +21,7 @@
 //   adjacent vector locals; the tilt is one float local (0.125 - random(0.25)) pushed for both tilts; the set handed to
 //   the physics is a CRightHandedSet(up, forward) temporary (the 24-byte pairwise copy). The physics pointer is a NAMED
 //   local read before the call: that loads it into ecx ahead of the copy, so the copy runs in eax/edx as retail (the
-//   parked `thing.PhysicsTC->SetRHSet(...)` spelling copied through three registers and loaded ecx last).
+//   parked `thing.GetPhysicsTC()->SetRHSet(...)` spelling copied through three registers and loaded ecx last).
 #include "engine/C3DVector.h"
 
 class CRightHandedSet {
@@ -71,11 +71,7 @@ public:
     virtual void SetRHSet(const CRightHandedSet& rh_set);   // slot 75 (+0x12c)
 };
 
-class CThing {
-public:
-    unsigned char   _pad_0x00[0x60];
-    CTCPhysicsBase* PhysicsTC;                               // +0x60 (PDB +0x70)
-};
+#include "engine/CThing.h"
 
 namespace NExplosiveTrailHelpers {
 void __fastcall RandomiseThingOrientationAroundDirection(CThing& thing, const C3DVector& direction)
@@ -87,7 +83,7 @@ void __fastcall RandomiseThingOrientationAroundDirection(CThing& thing, const C3
     const float tilt = 0.125f - GFFloatRandom(0.25f, world.GetWorldSeed());
     up.Rotate(direction, tilt);
     forward.Rotate(direction, tilt);
-    CTCPhysicsBase* physics = thing.PhysicsTC;
+    CTCPhysicsBase* physics = thing.GetPhysicsTC();
     physics->SetRHSet(CRightHandedSet(up, forward));
 }
 }

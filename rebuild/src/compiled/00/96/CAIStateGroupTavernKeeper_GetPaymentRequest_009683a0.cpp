@@ -1,4 +1,5 @@
 // CAIStateGroup_TavernKeeper::GetPaymentRequest() -- wait for a "payment request" message (type 0x30) sent by
+// Leaf: ?GetPaymentRequest@CAIStateGroup_TavernKeeper@@QAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // this creature; on success adopt its creature originator as PPayee and its extra data as JugSlot.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009683A0, length 192 bytes (+ int3 padding).
@@ -15,14 +16,8 @@
 // store is scheduled ahead of the IsOriginatedByThing constructor call, as in retail). Engine header is padding only
 // (PDB names PPayee +0x2c, JugSlot +0x5c, PaymentRequestMessage +0x64), so a local model is used.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-class CThing { public:
-    unsigned char _pad0[0x18];
-    unsigned __int64 UID;                       // +0x18
-    unsigned char _pad1[0x6c - 0x20];
-    unsigned long m_flags6c;                    // +0x6c low five bits all set: a creature-derived thing
-    unsigned char _pad2[0x91 - 0x70];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -62,7 +57,7 @@ class CMessageEvent { public:
     {
         CThing* result = 0;
         if (((CThing*)POriginator.GetPItem())) {
-            if (!(~((CThing*)POriginator.GetPItem())->m_flags6c & 0x1f))
+            if (!(~((CThing*)POriginator.GetPItem())->GetTypeFlags() & 0x1f))
                 result = ((CThing*)POriginator.GetPItem());
         }
         return result;

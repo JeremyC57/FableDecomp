@@ -35,10 +35,7 @@ class CPhysicsMeshObject { public:
 class CTCPhysicsBase { public:
     CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                     // +0x60
-};
+#include "engine/CThing.h"
 extern "C" void free(void*);
 struct CThingPtrVector {                           // STLport vector<CThing*>
     CThing** _M_start;
@@ -90,7 +87,7 @@ float CWorldMap::GetHeightZBelowPos(const C3DVector& pos) const
     long y = (long)pos.Y;
     CMainGameComponent::Get()->World->ThingSearchTools->GetAllThingsInRoughArea(C2DBoxI(x - 2, y - 2, x + 2, y + 2), filter, things);
     for (CThing** it = things.begin(); it != things.end(); ++it) {
-        CTCPhysicsBase* physics = (*it)->PhysicsTC;
+        CTCPhysicsBase* physics = (*it)->GetPhysicsTC();
         C3DVector below(pos.X, pos.Y, ground);
         CMeshIntersectionData data;
         bool hit = physics->GetPhysicsMeshObject().GetPointIntersectionFromTo(&pos, &below, &data);

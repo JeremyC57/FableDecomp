@@ -13,29 +13,10 @@
 // Shape: the flag store is shared by both arms of the interface test (it follows the inner if).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 std::bitset of thing-component interface types
-    CInterfaceMap m_interfaces;                             // +0x44
-    template <class T>
-    __forceinline bool GetInterface(long type, T** out)     // inline: the landed 0x007504E0 GetInterface shape
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode);                       // 0x0073AE10
@@ -88,7 +69,7 @@ void CTCStealth::StartSneaking()
 {
     if (!Sneaking) {
         CTCCreatureModeManager* modes;
-        if (ParentThing->GetInterface(0x31, &modes))
+        if (ParentThing->GetTC(TCI_ENTITY_MODE_MANAGER, &modes))
             modes->AddMode(7);
         Sneaking = true;
     }

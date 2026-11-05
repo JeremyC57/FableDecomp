@@ -9,14 +9,14 @@
 //   parent's graphic appearance component (+0x64).
 // Layout: engine/CTCPhysicsBase.h: +0x3c bit 0 Moving, bit 1 OldMoving. CThing +0x64 = PGraphicAppearance (retail offset).
 // Shape: `Moving || OldMoving` on the two bit fields folds into `test al,3`; each persistence call arm keeps its own `pop ; ret`.
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     void SetActivePersistenceFlags(long flags); // 0x004BFFD0
 };
-class CThing { public:
-    unsigned char _pad00[0x64];
-    CTCGraphicAppearance* PGraphicAppearance;   // +0x64
-    void SetAsRenderedThisFrame(unsigned long reasons); // 0x004C7590
-};
+}
+using NGraphicAppearance::CTCGraphicAppearance;
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008();
@@ -59,7 +59,7 @@ void CTCPhysicsBase::FrameUpdate()
         OnMoveFinished();
         Moving = false;
     }
-    CTCGraphicAppearance* graphic = ParentThing->PGraphicAppearance;
+    CTCGraphicAppearance* graphic = ParentThing->GetTCGraphicAppearance();
     if (graphic) {
         if (!(Moving || OldMoving))
             graphic->SetActivePersistenceFlags(0);

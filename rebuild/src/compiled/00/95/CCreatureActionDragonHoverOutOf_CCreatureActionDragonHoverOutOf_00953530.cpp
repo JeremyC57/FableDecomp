@@ -10,13 +10,10 @@
 // Shape (family K041, representative 0x008C38B0): the landed H030 combat-action constructors (e.g. 0x008CA5A0) with the
 //   owner-only base constructor: the literal converts to a CCharString temporary first, the CSoundPair comes back through
 //   the hidden pointer, the string dies after the base call, then the vtable store.
-class CThing { };
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
-class CCharString { public:                              // one pointer; the default length makes the literal convert implicitly
-    void* m_pData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
+
 class CSoundPair { public:                               // a user constructor makes the 8-byte result return through the hidden pointer
     long FirstSound;
     long LastSound;

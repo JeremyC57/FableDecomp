@@ -1,4 +1,5 @@
 // CCreatureAction_PickUpJug::PerformAction() -- the table pick-up's PerformAction, then if the jug is still alive clear its jug component's "put down" flag
+// Leaf: ?PerformAction@CCreatureAction_PickUpJug@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084A180, length 119 bytes (+ int3 padding).
 // Callees: CCreatureAction_PickUpThingAtTable::PerformAction @ 0x00849F70 (direct base call, first), CBaseIntelligentPointer::GetPItem
@@ -7,29 +8,11 @@
 // Shape: IS_THING_ALIVE inlined (null test, then the +0x91 dead bit); the GetInterface result is ignored, so the absent arm stores
 // through the uninitialised out pointer read from the key's frame word (`mov eax,[esp+4]`), and the byte store is tail-duplicated.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0x3d];             // +0x4c
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -51,7 +34,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -79,7 +62,7 @@ void CCreatureAction_PickUpJug::PerformAction()
     CCreatureAction_PickUpThingAtTable::PerformAction();
     if (IS_THING_ALIVE(PThing)) {
         CTCJug* jug;
-        PThing.GetPItem()->GetInterface(&jug, 0xBB);
+        PThing.GetPItem()->GetTC(TCI_TAVERN_JUG, &jug);
         jug->m_putDown = false;
     }
 }

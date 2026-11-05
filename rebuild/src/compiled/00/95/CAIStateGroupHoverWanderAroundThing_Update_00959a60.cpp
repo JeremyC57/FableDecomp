@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverWanderAroundThing::Update() -- three times: pick a wander position within 5m of the live thing, look at the thing, then hover to the position facing it (random movement type 8..10), terminating on any failure
+// Leaf: ?Update@CAIStateGroup_HoverWanderAroundThing@@UAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00959A60, length 400 bytes (vtable 0x0128D1BC slot 12).
@@ -17,37 +18,12 @@
 class CTCBase;
 class CThingCreatureBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 #include "engine/C3DVector.h"
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;             // 0x004C73D0
-    bool TestTC(long interfaceType) const
-    {
-        return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
-    }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
-    {
-        bool has = TestTC(interfaceType);
-        if (has) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-        return has;
-    }
-};
 
 class CTCCreatureNavigation { public:                  // interface 7
     bool GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool onMap);   // 0x006CB6E0
@@ -70,7 +46,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer { public:
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -129,7 +105,7 @@ void CAIStateGroup_HoverWanderAroundThing::Update()
 {
     for (long i = 0; i != 3; ++i) {
         CTCCreatureNavigation* navigation;
-        GetCreature()->GetInterfaceT(&navigation, 7);
+        GetCreature()->GetTC(TCI_NAVIGATION, &navigation);
         C3DVector target;
         if (IS_THING_ALIVE(PThing)
             && navigation->GetNearbyWanderPosition(((CThing*)PThing.GetPItem())->GetPos(), 5.0f, &target, false)) {

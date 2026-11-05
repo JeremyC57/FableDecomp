@@ -19,9 +19,7 @@ class CWorld { public:
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-class CThing { public:
-    void Kill(bool immediately);               // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();

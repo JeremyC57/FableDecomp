@@ -17,29 +17,10 @@
 #include "engine/CArray.h"
 #include "engine/CVectorMap.h"
 #include "engine/CCountedPointer.h"
-enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
-class CThing {
-public:
-    unsigned char      _pad00[0x20];
-    std::bitset<274>   UsingComponents;                                   // +0x20
-    CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
-    unsigned char      _pad54[0x91 - 0x54];
-    unsigned char      LifeFlags;                                         // +0x91 bit 0: dead
-    template <class T> __forceinline bool GetTC(T** out) const
-    {
-        if (UsingComponents._M_getword(T::INTERFACE_TYPE) & UsingComponents._S_maskbit(T::INTERFACE_TYPE)) {
-            ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
-            const CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
-            CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::const_iterator it = map->LowerBound(type);
-            if (it == map->end() || T::INTERFACE_TYPE < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                               // Ego_r: vptr + PData, 8 bytes
@@ -57,7 +38,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->LifeFlags & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -73,7 +54,6 @@ public:
 }
 class CTCEntityEvents {                                       // interface 0x42; Ego_r.pdb Events after the CTCBase
 public:
-    enum { INTERFACE_TYPE = 0x42 };
     unsigned char _base[0x0c];                                // CTCBase (vptr, ParentThing, flags)
     std::list<CCountedPointer<NEntityEvents::CEventBase> > Events;   // +0x0C
 };
@@ -114,8 +94,8 @@ bool CGameScriptThing::MsgTalkedToAnyone() const
         CQuestManager::CActiveQuest* quest = g_pQuestManager->PQuestCurrentlyRunning;
         long lastFrame = (quest && quest->PScript.Data) ? quest->PScript->PActiveThread->LastScriptFrame : 0;
         long currentFrame = (quest && quest->PScript.Data) ? quest->PScript->PActiveThread->CurrentScriptFrame : 0;
-        CTCEntityEvents* events;
-        if (PThing.GetPItem()->GetTC(&events)) {
+        const CTCEntityEvents* events;
+        if (PThing.GetPItem()->PeekTC(TCI_ENTITY_EVENTS, &events)) {
             for (std::list<CCountedPointer<NEntityEvents::CEventBase> >::const_iterator it = events->Events.begin();
                  it != events->Events.end(); ++it) {
                 const NEntityEvents::CEventBase* event = it->Data;

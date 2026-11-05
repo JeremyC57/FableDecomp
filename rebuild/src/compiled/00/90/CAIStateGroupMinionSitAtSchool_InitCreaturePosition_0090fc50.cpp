@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionSitAtSchool::InitCreaturePosition() -- during school time, place the creature near its home building (radius 5).
+// Leaf: ?InitCreaturePosition@CAIStateGroup_MinionSitAtSchool@@UAE_NXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Grade: RELOCATION_MATCH -- same-TU LowerBound body; the && chain inside `if (HasTC(0x23)) { return ...; } return false;` (trailing byte false block, as retail); the creature passed to an inline PlaceNearHome(creature) helper so it is loaded once AFTER the school-time call (a named local loads it before)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090FC50, length 127 bytes (+ int3 padding). Vtable slot 3.
@@ -20,45 +21,10 @@ class CThingAICreature;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const     // the masked word (a bool return narrows to `shr ; test dl,1`)
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    // the pointer-returning lookup: the component lands straight in ecx for the call that follows
-    template<class T> __forceinline T* FindTC(long interfaceType)
-    {
-        long type = interfaceType;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -81,7 +47,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -141,8 +107,8 @@ __forceinline bool PlaceNearHome(CThingCreatureHome* creature)
 
 bool CAIStateGroup_MinionSitAtSchool::InitCreaturePosition()
 {
-    if (PBrain->PCreature->HasTC(0x23)) {
-        return ((CTCVillageMember*)(PBrain->PCreature->FindTC<CTCVillager>(0x23)))->GetPVillage()->IsSchoolTime()
+    if (PBrain->PCreature->HasTC(TCI_VILLAGE_MEMBER)) {
+        return ((CTCVillageMember*)(((CTCVillager*)&PBrain->PCreature->GetTC(TCI_VILLAGE_MEMBER))))->GetPVillage()->IsSchoolTime()
             && PlaceNearHome((CThingCreatureHome*)PBrain->PCreature);
     }
     return false;

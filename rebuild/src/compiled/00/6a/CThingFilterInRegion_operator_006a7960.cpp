@@ -5,10 +5,7 @@
 // Layout: PDB CThingFilter_InRegion { CWorldMap* WorldMap; long RegionID; }; CThing::CurrentMapNumber is a short at
 // retail +0x8E (PDB +0x9E less the retail CThing's 0x10 narrower head; `movsx ecx,word ptr [eax+8Eh]`).
 // Shape: `return call == RegionID;` gives `sub eax,[esi+4] ; neg ; sbb ; inc`.
-class CThing { public:
-    unsigned char _pad00[0x8e];
-    short         CurrentMapNumber;                 // +0x8e
-};
+#include "engine/CThing.h"
 
 class CWorldMap { public:
 public:
@@ -23,5 +20,5 @@ class CThingFilter_InRegion { public:
 
 bool CThingFilter_InRegion::operator()(CThing* thing) const
 {
-    return WorldMap->GetRegionNumberMapIsIn(thing->CurrentMapNumber) == RegionID;
+    return WorldMap->GetRegionNumberMapIsIn(thing->GetCurrentMapNumber()) == RegionID;
 }

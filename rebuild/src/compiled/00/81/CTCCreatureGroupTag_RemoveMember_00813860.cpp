@@ -6,14 +6,8 @@
 // Callees: CTCCreatureGroup::RemoveMember @ 0x00813100, CTCCreatureGroupTag::FindNewTagger @ 0x008137E0 (private, Ego_r.pdb `?FindNewTagger@CTCCreatureGroupTag@@AAE_NXZ`; FINDINGS chunk 399, was "ChooseNewTagger") (first active
 // member becomes the tagger, else TaggerUID = 0; its bool result is dropped).
 // Shape: two separate exits (`mov al,1` / `xor al,al`); the 64-bit equality compares the low then the high dword with the
-// member's word on the right (`TaggerUID == member->UniqueID`).
-class CThing { public:
-    unsigned char _pad00[0x18];
-    unsigned __int64 UniqueID;              // +0x18
-    unsigned char _pad20[0x71];
-    unsigned char Dead : 1;                 // +0x91 bit 0
-    unsigned __int64 GetUID() const { return UniqueID; }
-};
+// member's word on the right (`TaggerUID == member->GetUniqueID()`).
+#include "engine/CThing.h"
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -73,7 +67,7 @@ public:
 bool CTCCreatureGroupTag::RemoveMember(const CThing* member)
 {
     if (CTCCreatureGroup::RemoveMember(member)) {
-        if (TaggerUID == member->UniqueID)
+        if (TaggerUID == member->GetUniqueID())
             FindNewTagger();
         return true;
     }

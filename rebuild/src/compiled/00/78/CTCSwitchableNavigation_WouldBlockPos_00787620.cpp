@@ -1,5 +1,5 @@
 // CTCSwitchableNavigation::WouldBlockPos(const C3DVector& pos) -- find the navigation node under the position on its navigation layer and ask it whether this owner's thing blocks it
-// Retry 10b (accessor sweep, FIXES B-4/B-5): the parent's UID is read through an inline accessor (`GetParentUID()`), which gives retail's 64-bit argument loads; the plain `ParentThing->UID` read gives the parked difference.
+// Retry 10b (accessor sweep, FIXES B-4/B-5): the parent's UID is read through an inline accessor (`GetParentUID()`), which gives retail's 64-bit argument loads; the plain `ParentThing->GetUniqueID()` read gives the parked difference.
 // Leaf: WouldBlockPos
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00787620, length 107 bytes (`ret 4`).
@@ -14,10 +14,7 @@ class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-class CThing { public:
-    unsigned char _pad00[0x18];
-    __int64 UID;                                // +0x18
-};
+#include "engine/CThing.h"
 class CANavQuadTreeNode { public:
     virtual void n00(); virtual void n01(); virtual void n02(); virtual void n03(); virtual void n04();
     virtual void n05(); virtual void n06(); virtual void n07(); virtual void n08(); virtual void n09();
@@ -36,7 +33,7 @@ class CWorldMap { public:
 class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
-    __int64 GetParentUID() const { return ParentThing->UID; }
+    __int64 GetParentUID() const { return ParentThing->GetUniqueID(); }
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
 protected:

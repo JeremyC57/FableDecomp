@@ -11,29 +11,10 @@
 // `xor al,al` exit. GetInterface must be `__forceinline`: as a plain inline template VC7.1 emits it out of line here.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 std::bitset of thing-component interface types
-    CInterfaceMap m_interfaces;                             // +0x44
-    template <class T>
-    __forceinline bool GetInterface(long type, T** out)     // inline: the landed 0x007504E0 GetInterface shape
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCPhysicalShieldSpell { public:
     bool IsMoveActive();                                    // 0x0079DCB0
@@ -50,7 +31,7 @@ bool CTCSpecialAbilities::ToggleUsingAbility(long ability)
 {
     if (ability == 4) {
         CTCPhysicalShieldSpell* shield;
-        if (ParentThing->GetInterface(0x93, &shield)) {
+        if (ParentThing->GetTC(TCI_PHYSICAL_SHIELD_SPELL, &shield)) {
             if (shield->IsMoveActive()) {
                 shield->CancelMove();
                 return true;

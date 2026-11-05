@@ -11,28 +11,11 @@
 // Shape: `this` unused; the GetInterface template is `__forceinline` and the lookup key lives in the dead `thing` argument
 //   slot; the component is not null-tested; the value is forwarded as a dword.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                          // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                              // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
@@ -51,7 +34,7 @@ void CGameScriptInterface::EntitySetSightRadius(const CScriptThing& thing, float
     if (thing.IsAlive()) {
         CThing* pThing = thing.GetPThing();
         CTCPerceiveThing* component;
-        if (pThing->GetInterface(&component, 0x34))
+        if (pThing->GetTC(TCI_PERCEIVE_THING, &component))
             component->SetSightRadius(radius);
     }
 }

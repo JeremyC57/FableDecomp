@@ -13,10 +13,7 @@
 // Shape: size() and the element address are re-derived from the members on every iteration (unsigned index, `jb`).
 #include "engine/CScriptConversation.h"
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                   // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -38,7 +35,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

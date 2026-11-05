@@ -39,11 +39,8 @@ struct CPrimitiveVector {                       // STLport vector<NGraphicAppear
         _M_finish = i;
     }
 };
-class CThing {
-public:
-    unsigned char _pad00[0x64];
-    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CTCBase {
 public:
     virtual ~CTCBase();
@@ -71,7 +68,7 @@ void CTCHeroAttachableAppearanceModifiers::OnAppearanceClear()
         self->UpdateHiddenModifiers();
         self->UpdateHiddenMaterials();
         self->UpdateGraphics();
-        self->ParentThing->PTCGraphicAppearance->SetAsChanged(0xf);
+        self->ParentThing->GetTCGraphicAppearance()->SetAsChanged(0xf);
     }
     PrimHandles.clear();
     PrimHandlesNeedReload = true;

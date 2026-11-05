@@ -1,4 +1,5 @@
 // CTCContainerRewardHero::HasReward() -- true (1) when the container holds items or the parent thing's gold component (interface 204) holds a positive amount; 0 otherwise
+// Leaf: ?HasReward@CTCContainerRewardHero@@QAEJXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0074E500, length 96 bytes.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (another instantiation of the
@@ -12,33 +13,15 @@
 // result (`mov eax,1` / `xor eax,eax`).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCGold;
 
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    bool GetInterface(long type, CTCGold** out)   // inline: the landed GetInterface_0x.. family shape
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (CTCGold*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
 class CTCGold { public:
-    long GetGold();                         // 0x007CBDC0
+    long GetGold() const;                         // 0x007CBDC0
 };
 
 struct SContainerItem {                     // pair<long, CCharString>: 8 bytes
@@ -60,8 +43,8 @@ class CTCContainerRewardHero { public:
 long CTCContainerRewardHero::HasReward()
 {
     long gold = 0;
-    CTCGold* goldComponent;
-    if (ParentThing->GetInterface(204, &goldComponent))
+    const CTCGold* goldComponent;
+    if (ParentThing->PeekTC(TCI_GOLD, &goldComponent))
         gold = goldComponent->GetGold();
     if (ItemCount() > 0 || gold > 0)
         return 1;

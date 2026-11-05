@@ -13,11 +13,10 @@
 // Shape: the per-ring count is min(size, 8) written as a preset 8; the local vector is pushed inline (null-tested placement
 // store, overflow call with the tag temporary in the dead popout-return slot); the functor's return slot is the dead `speed`
 // argument slot.
-class CCharString { public: void* m_pData; };
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
-class CThing { public:
-    const C3DVector& GetPos() const;               // 0x004C73D0
-};
+
 class CThingObject;
 struct SContainerItem {                                 // pair<long, CCharString>
     long        first;

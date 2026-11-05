@@ -38,11 +38,7 @@ class CWorld { public:
     CMeshDataBank* PMainMeshBank;              // +0x3c
 };
 
-class CThing { public:
-protected:
-    const CWorld& PeekWorld() const;           // 0x004C7AB0
-public:
-};
+#include "engine/CThing.h"
 
 class CThingCreatureBase : public CThing { public:
     float GetAnimMovementDistance(long animIndex) const;

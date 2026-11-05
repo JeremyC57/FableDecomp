@@ -1,4 +1,5 @@
 // CCreatureAction_SheatheItemToInventory::PerformAction() -- take the item out of the creature's primary carry slot (putting out its fire when it is a live flammable), refresh the sheathed weapons, cancel any melee flourish, restart the current creature mode and, for the main player's creature, drop the player's aggressive mode
+// Leaf: ?PerformAction@CCreatureAction_SheatheItemToInventory@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069F4F0, length 379 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature +8), CVectorMap::LowerBound @ 0x0040F020 (inlined lookups: 0x46
@@ -11,7 +12,9 @@
 // Shape: the carrying and mode-manager components are zero-preloaded `if (HasTC) GetTC` on a creature fetched once per lookup
 // (`xor esi,esi` before the GetPItem call); the other three lookups are tested blocks; GetTC as the end/hit ternary (component in ecx) except the CTCCombat one, whose argument push wants the out-parameter GetInterface form (component in eax).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayer { public:
@@ -19,39 +22,7 @@ class CPlayer { public:
 public:
     bool IsMainPlayer() const;   // 0x00487520
 };
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)   // out-parameter form: the component stays in eax across an argument push
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-public:
-    CPlayer& GetPlayer();   // 0x004C7A30
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -98,25 +69,25 @@ void CCreatureAction_SheatheItemToInventory::PerformAction()
     CTCCarrying* carrying = 0;
     {
         CThing* creature = PCreature.GetPItem();
-        if (creature->HasTC(0x46))
-            carrying = creature->GetTC<CTCCarrying>(0x46);
+        if (creature->HasTC(TCI_CARRYING))
+            carrying = ((CTCCarrying*)&creature->GetTC(TCI_CARRYING));
     }
     CThing* item = carrying->RemoveThingFromPrimarySlot(false);
-    if (item && !(item->m_flags91 & 1) && item->HasTC(0x6d))
-        item->GetTC<CTCFlammable>(0x6d)->ExtinguishFire();
+    if (item && !item->IsDead() && item->HasTC(TCI_FLAMMABLE))
+        ((CTCFlammable*)&item->GetTC(TCI_FLAMMABLE))->ExtinguishFire();
     {
         CThing* creature = PCreature.GetPItem();
-        if (creature->HasTC(0x13))
-            creature->GetTC<CTCInventoryWeapons>(0x13)->RefreshSheathedWeapons();
+        if (creature->HasTC(TCI_INVENTORY_WEAPONS))
+            ((CTCInventoryWeapons*)&creature->GetTC(TCI_INVENTORY_WEAPONS))->RefreshSheathedWeapons();
     }
     CTCCombat* combat;
-    if (PCreature.GetPItem()->GetInterface(&combat, 0x30))
+    if (PCreature.GetPItem()->GetTC(TCI_COMBAT, &combat))
         combat->SetMeleeFlourishValid(false);
     CTCCreatureModeManager* modeManager = 0;
     {
         CThing* creature = PCreature.GetPItem();
-        if (creature->HasTC(0x31))
-            modeManager = creature->GetTC<CTCCreatureModeManager>(0x31);
+        if (creature->HasTC(TCI_ENTITY_MODE_MANAGER))
+            modeManager = ((CTCCreatureModeManager*)&creature->GetTC(TCI_ENTITY_MODE_MANAGER));
     }
     modeManager->RestartCurrentMode();
     if (PCreature.GetPItem()->GetPlayer().IsMainPlayer())

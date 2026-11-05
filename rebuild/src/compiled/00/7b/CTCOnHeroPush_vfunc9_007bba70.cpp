@@ -1,4 +1,5 @@
 // CTCOnHeroPush::vfunc_9() -- per-frame update: count frames since the push and remove the TC after five seconds' worth
+// Leaf: ?vfunc_9@CTCOnHeroPush@@UAEXXZ
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007BBA70, length 70 bytes.
@@ -14,10 +15,9 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
-enum ETCInterfaceType { };
-class CThing { public:
-    void RemoveTC(ETCInterfaceType type);                       // 0x004C9840
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 struct CTCBase_007bba70 {
     virtual void v00();

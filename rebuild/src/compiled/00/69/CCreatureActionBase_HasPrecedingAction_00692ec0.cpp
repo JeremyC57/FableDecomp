@@ -1,4 +1,5 @@
 // CCreatureActionBase::HasPrecedingAction() -- true when the action reports a preceding animation (virtual slot 36) and the creature's interface-70 component says it is not busy with one; false otherwise
+// Leaf: ?HasPrecedingAction@CCreatureActionBase@@QAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Grade: RELOCATION_MATCH -- the && query written inside `if (IsPlayingPrecedingAnimation()) { ... }` with the `return false` after it: the early false becomes retail's own trailing `xor al,al` block (the guard-clause `if (!x) return false;` form returns the tested al through the shared epilogue)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00692EC0, length 97 bytes (+ int3 padding).
@@ -10,27 +11,11 @@
 // `xor eax,eax`) and the trailing `return false` shares its zero block. One `push ecx` frame slot for the lookup key.
 // Layout: engine/CCreatureActionBase.h (PDB) agrees on PCreature at +8; a local model carries the virtual slot.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline long GetInterface(T** ppOut, long interfaceType)   // a BOOL (long) result in this TU: the
-    {                                                                                 //   `&&` below is then materialised in eax
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return 1;
-        }
-        return 0;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -69,8 +54,8 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
 bool CCreatureActionBase::HasPrecedingAction()
 {
     if (IsPlayingPrecedingAnimation()) {
-        CTCCarrying* pQueue;
-        return PCreature.GetPItem()->GetInterface(&pQueue, 70) && !pQueue->IsPrimarySlotFree();
+        const CTCCarrying* pQueue;
+        return PCreature.GetPItem()->PeekTC(TCI_CARRYING, &pQueue) && !pQueue->IsPrimarySlotFree();
     }
     return false;
 }

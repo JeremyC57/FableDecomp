@@ -9,30 +9,12 @@
 //   test, lookup, end-or-larger-key -> end).
 // Shape (family L083): the landed DisableFishingSpot 0x00895950; the GetInterface key is homed in the dead thing-argument slot.
 // Header debt: engine/CScriptThing.h, CThing and the TC headers are flat layouts without vtables; modelled locally.
-enum ETCInterfaceType { ETCInterfaceType_FIRST };
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    virtual ~CThing();
-    unsigned char _pad04[0x1C];
-    unsigned long PresentInterfaces[9];                    // +0x20 (the bitset of present interface types)
-    CInterfaceMap Interfaces;                              // +0x44
-    template <class T> __forceinline bool GetInterface(T** out, ETCInterfaceType type)
-    {
-        if (PresentInterfaces[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = type;
-            CInterfaceMap* map = &Interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
@@ -50,7 +32,7 @@ void CGameScriptInterface::SetBedAvailability(const CScriptThing& thing, bool va
 {
     if (thing.IsAlive()) {
         CTCBed* component;
-        if (thing.GetPThing()->GetInterface(&component, (ETCInterfaceType)0x35))
+        if (thing.GetPThing()->GetTC(TCI_BED, &component))
             component->Empty = value;
     }
 }

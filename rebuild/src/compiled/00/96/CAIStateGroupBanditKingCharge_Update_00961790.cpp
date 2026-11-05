@@ -1,4 +1,5 @@
 // CAIStateGroup_BanditKingCharge::Update() -- with a live target: run at it (MoveToThingProximity, 4m), and on arrival with the target still alive perform the "BK_CHARGE_ATTACK" attack action; terminate
+// Leaf: ?Update@CAIStateGroup_BanditKingCharge@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00961790, length 239 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer ctor/GetPItem/SetPItem @ 0x00A01B10/0x00A01B50/0x00A01B90, CAIStateGroupBase::
 // AIAction_MoveToThingProximity @ 0x0097E380 (CIntelligentPointer<const CThing> by value, vtable 0x01237F1C),
@@ -9,11 +10,8 @@
 // Shape: the intelligent pointer argument is built in the argument area through an inline converting copy ctor
 // from PTargetThing (base ctor, vtable store, then GetPItem -- a T* ctor evaluates GetPItem first); a one-byte option
 // temporary is passed by reference; the animation name is a named local built before the creature is read.
-class CThing
-{ public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CBaseObject;
 struct CBaseIntelligentPointer
@@ -39,18 +37,11 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0)
     {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
 }
-
-class CCharString
-{ public:
-    void* PStringData;
-    CCharString(const char* text, long length);     // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
 
 struct CMoveOptions                                 // one-byte option object passed by reference
 {

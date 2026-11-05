@@ -1,0 +1,75 @@
+action	symbol	target	by_row	note
+ADD	?GetPositionMatrix@CTCGraphicAppearance@NGraphicAppearance@@QAE?AVCMatrix3x4@@M@Z	004bc800	006626e0	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetAllDummyObjectNames@CTCGraphicAppearance@NGraphicAppearance@@QAEXAAUCCharStringVector@@@Z	004bdb40	0072e290	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?SetSelfIlluminating@CTCGraphicAppearance@NGraphicAppearance@@QAEX_N@Z	004bfa20	007e33b0	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXJ@Z	004bffd0	006afd60	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXK@Z	004bffd0	006b0150	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetDummyObjectAssumingObjectAt@CTCGraphicAppearance@NGraphicAppearance@@QAE_NABVCCharString@@ABVC3DVector@@ABVCRightHandedSet@@JKPAV4@PAV5@@Z	004c0c80	00705190	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetHelperPointPosition@CTCGraphicAppearance@NGraphicAppearance@@QAE?AVC3DVector@@XZ	004c10e0	004884d0	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetCameraFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z	004c12d0	0075daa0	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?IsLoaded@CTCWeapon@@QBE_NXZ	005da980	00715110	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?IsMissileWeapon@CTCWeapon@@QBE_NXZ	005daa40	00715110	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?IsCapableOfStealthAttackBy@CTCWeapon@@QBE_NPAVCThing@@@Z	005dad60	00747790	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetEvent@CTCEntityEvents@@QBE_NPAPBVCEventHitBy@NEntityEvents@@ABVCEventFilter_None@3@@Z	005ed5a0	005eb510	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GiveGold@CTCHeroMoney@@QBEXJ@Z	00639e40	00435000	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetWeaponInHand@CTCInventoryAbilities@@QBEPAVCThing@@XZ	006a1440	00715110	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetPhysicsMeshObject@CTCPhysicsBase@@QAE?AVCPhysicsMeshObject@@XZ	006b0850	00970790	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?CalculateRouteFromTo@CTCNavigationBase@@QBEXABVC3DVector@@0AAUCRoute@@@Z	006cb9b0	00800540	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?IsPosNavLineOfSightTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@@Z	006cba20	008b76b0	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetAbilityLevel_006d6520@CTCInventoryAbilities@@QBEJJ@Z	006d6520	0057be71	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetAttitude@CTCTalk@@QBEJXZ	006e3180	008d9220	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?CreateObject@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAUCTCGraphicAppearance@NGraphicAppearance@@@Z	0072ddb0	0072e290	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?CreateBuilding@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAUCTCGraphicAppearance@NGraphicAppearance@@@Z	0072df50	0072e290	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?CreateParticle@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAUCTCGraphicAppearance@NGraphicAppearance@@@Z	0072e130	0072e290	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetObject@CTCInterface31@@QBEPAUCTypedObject@@XZ	0073a6e0	007892ea	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetSurfaceRange@CTCUndergroundMover@@QBEMXZ	007448f0	009207a0	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetSourceThing@CTCInterface37@@QBEPAVCThing@@XZ	007498d0	006a81f0	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?IsCombatSplineValidForAnimAndThing@CTCCameraPointScriptedSpline@@QBE_NJPAVCThing@@@Z	0075d8b0	0085afd0	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetGold@CTCGold@@QBEJXZ	007cbdc0	0074e500	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?IsEnabled@CTCWanderControl@@QBE_NXZ	007f6150	00911a00	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?HasMode_00811340@CTCCreatureModeManager@@QBE_NJ@Z	00811340	00938960	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?GetHitLocation@CTCHitLocations@@QBEPAUCHitLocation@@XZ	00814bf0	0087e860	w2_cthing wave: the decided spelling the respelled rows emit
+ADD	?HasEvent@CTCEntityEvents@@QBE_NABVCIsEventOfTypeCreatedAfter@NEntityEvents@@@Z	00956650	00954c60	w2_cthing wave: the decided spelling the respelled rows emit
+RETIRE	?GetPositionMatrix@CTCGraphicAppearance@@QAE?AVCMatrix3x4@@M@Z	004bc800	006626e0	w2_cthing wave: no landed binder left
+RETIRE	?GetAllDummyObjectNames@CTCGraphicAppearance@@QAEXAAUCCharStringVector@@@Z	004bdb40	0072e290	w2_cthing wave: no landed binder left
+KEEP	?SetAsChanged@CTCGraphicAppearance@@QAEXK@Z	004bf9e0	004c7590	w2_cthing wave: 4 binder(s) still bind it: 00663f50,0071e130,0074e560,0077c490
+RETIRE	?SetSelfIlluminating@CTCGraphicAppearance@@QAEX_N@Z	004bfa20	007e33b0	w2_cthing wave: no landed binder left
+KEEP	?RemoveTintColour@CTCGraphicAppearance@@QAEXPAX@Z	004bfae0	007e33b0	w2_cthing wave: 1 binder(s) still bind it: 007cc120
+RETIRE	?SetByPassColorFilter@CTCGraphicAppearance@@QAEX_N@Z	004bfb00	00883aa0	w2_cthing wave: no landed binder left
+RETIRE	?SetLightingChannel@CTCGraphicAppearance@@QAEXABVCEnginePrimitiveThemeChannelDesc@@_N1@Z	004bfb40	00785c80	w2_cthing wave: no landed binder left
+RETIRE	?SetActivePersistenceFlags@CTCGraphicAppearance@@QAEXJ@Z	004bffd0	006afd60	w2_cthing wave: no landed binder left
+RETIRE	?SetActivePersistenceFlags@CTCGraphicAppearance@@QAEXK@Z	004bffd0	006b0150	w2_cthing wave: no landed binder left
+RETIRE	?SetTintColour@CTCGraphicAppearance@@QAEXABVCRGBColour@@PAX@Z	004c00b0	007e33b0	w2_cthing wave: no landed binder left
+RETIRE	?GetDummyObjectAssumingObjectAt@CTCGraphicAppearance@@QAE_NABVCCharString@@ABVC3DVector@@ABVCRightHandedSet@@JKPAV3@PAV4@@Z	004c0c80	00705190	w2_cthing wave: no landed binder left
+RETIRE	?GetHelperPointPosition@CTCGraphicAppearance@@QAE?AVC3DVector@@XZ	004c10e0	004884d0	w2_cthing wave: no landed binder left
+KEEP	?GetCameraFocalPos@CTCGraphicAppearance@@QBE?AVC3DVector@@M@Z	004c12d0	0075daa0	w2_cthing wave: 3 binder(s) still bind it: 008534f0,00873030,008faa80
+KEEP	?IsAffectedByBulletTime@CThing@@QAE_NXZ	004c9920	005dc230	w2_cthing wave: 3 binder(s) still bind it: 004c9d20,0051eab0,006655a0
+RETIRE	?AddTC@CThing@@QAEPAVCBaseObject@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	004c9d60	008b9970	w2_cthing wave: no landed binder left
+KEEP	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPAX@Z	004c9d60	008718b0	w2_cthing wave: 4 binder(s) still bind it: 005b37f7,007be0f9,00845ce0,00923510
+RETIRE	?IsLoaded@CTCWeapon@@QAE_NXZ	005da980	00715110	w2_cthing wave: no landed binder left
+RETIRE	?IsMissileWeapon@CTCWeapon@@QAE_NXZ	005daa40	00715110	w2_cthing wave: no landed binder left
+RETIRE	?IsCapableOfStealthAttackBy@CTCWeapon@@QAE_NPAVCThing@@@Z	005dad60	00747790	w2_cthing wave: no landed binder left
+RETIRE	?GetEvent@CTCEntityEvents@@QAE_NPAPBVCEventHitBy@NEntityEvents@@ABVCEventFilter_None@3@@Z	005ed5a0	005eb510	w2_cthing wave: no landed binder left
+RETIRE	?GiveGold@CTCHeroMoney@@QAEXJ@Z	00639e40	00435000	w2_cthing wave: no landed binder left
+RETIRE	?GetWeaponInHand@CTCInventoryAbilities@@QAEPAVCThing@@XZ	006a1440	00715110	w2_cthing wave: no landed binder left
+RETIRE	?GetPhysicsMeshObject@CTCPhysicsBaseV@@QAE?AVCPhysicsMeshObject@@XZ	006b0850	00970790	w2_cthing wave: no landed binder left
+RETIRE	?CalculateRouteFromTo@CTCNavigationBase@@QAEXABVC3DVector@@0AAUCRoute@@@Z	006cb9b0	00800540	w2_cthing wave: no landed binder left
+RETIRE	?IsPosNavLineOfSightTo@CTCCreatureNavigation@@QAE_NABVC3DVector@@@Z	006cba20	008b76b0	w2_cthing wave: no landed binder left
+RETIRE	?GetAbilityLevel_006d6520@CTCInventoryAbilities@@QAEJJ@Z	006d6520	0057be71	w2_cthing wave: no landed binder left
+RETIRE	?GetAttitude@CTCTalk@@QAEJXZ	006e3180	008d9220	w2_cthing wave: no landed binder left
+RETIRE	?CreateObject@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAUCTCGraphicAppearance@@@Z	0072ddb0	0072e290	w2_cthing wave: no landed binder left
+RETIRE	?CreateBuilding@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAUCTCGraphicAppearance@@@Z	0072df50	0072e290	w2_cthing wave: no landed binder left
+RETIRE	?CreateParticle@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAUCTCGraphicAppearance@@@Z	0072e130	0072e290	w2_cthing wave: no landed binder left
+RETIRE	?GetObject@CTCInterface31@@QAEPAUCTypedObject@@XZ	0073a6e0	007892ea	w2_cthing wave: no landed binder left
+KEEP	?GetPerceivedThing@CTCPerceiveThing@@QAEPAVCThing@@XZ	007446a0	0096eb40	w2_cthing wave: 12 binder(s) still bind it: 007be0f9,00832840,0090f1c0,0091cdc0,00932990,009352c0
+KEEP	?GetExtendedSightRadius@CTCPerceiveThing@@QAEMXZ	007448f0	00933b30	w2_cthing wave: 2 binder(s) still bind it: 00665190,00935ad0
+RETIRE	?GetSurfaceRange@CTCUndergroundMover@@QAEMXZ	007448f0	009207a0	w2_cthing wave: no landed binder left
+RETIRE	?GetSourceThing@CTCInterface37@@QAEPAVCThing@@XZ	007498d0	006a81f0	w2_cthing wave: no landed binder left
+RETIRE	?IsCombatSplineValidForAnimAndThing@CTCCameraPointScriptedSpline@@QAE_NJPAVCThing@@@Z	0075d8b0	0085afd0	w2_cthing wave: no landed binder left
+KEEP	?GetGold@CTCGold@@QAEJXZ	007cbdc0	0074e500	w2_cthing wave: 2 binder(s) still bind it: 006c0160,006c0580
+RETIRE	?GetPNearestInterestingThing@CTCTargetingBase@@QAEPAVCThing@@XZ	007f5860	00753840	w2_cthing wave: no landed binder left
+RETIRE	?IsEnabled@CTCWanderControl@@QAE_NXZ	007f6150	00911a00	w2_cthing wave: no landed binder left
+KEEP	?IsActionPointFree@CTCUserActionPointBase@@QAE_NXZ	007febf0	006a8b40	w2_cthing wave: 20 binder(s) still bind it: 007babe0,0090c060,009109b0,00918050,00938580,00938cd0
+RETIRE	?HasMode_00811340@CTCCreatureModeManager@@QAE_NJ@Z	00811340	00938960	w2_cthing wave: no landed binder left
+RETIRE	?GetHitLocation@CTCHitLocations@@QAEPAUCHitLocation@@XZ	00814bf0	0087e860	w2_cthing wave: no landed binder left
+RETIRE	?HasEvent@CTCEntityEvents@@QAE_NABVCIsEventOfTypeCreatedAfter@NEntityEvents@@@Z	00956650	00954c60	w2_cthing wave: no landed binder left

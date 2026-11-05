@@ -23,6 +23,8 @@ protected:                                   // root of the scripted actions (vt
     CBaseClassNonCopyable();                                    // 0x0099A2F0
 };
 
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct SCountBlock;
@@ -37,9 +39,9 @@ inline CScriptThing::CScriptThing() : CBaseClass() { }
 inline CScriptThing::~CScriptThing() { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
-class CThing { public:
-    CScriptThing GetScriptThing() const;              // 0x004C7E50
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 #include "engine/C3DVector.h"
 

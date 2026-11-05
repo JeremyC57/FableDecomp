@@ -16,9 +16,9 @@ class CDefString { public:                                 // 4-byte def-name ha
     bool operator==(const char* text) const;        // 0x005B3440
 };
 
-class CThing { public:
-    CDefString GetDefName() const;                  // 0x004C7CC0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CTCCameraPointScriptedSpline { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

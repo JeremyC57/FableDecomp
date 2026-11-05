@@ -1,4 +1,5 @@
 // CTCCoopSpirit::GetFocalPos() const -- the parent thing's position raised by 0.2 on Z, returned by value
+// Leaf: ?GetFocalPos@CTCCoopSpirit@@QBE?AVC3DVector@@XZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066FFD0, length 39 bytes (+ int3 padding).
 // Callees: CThing::GetPos @ 0x004C73D0 (returns a const C3DVector&; the manifest label
@@ -9,9 +10,7 @@
 // three x87 loads, the Z add and `fxch st(2)` + three `fstp` into the result (GOTCHAS wave 24o).
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;                   // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CTCCoopSpirit { public:
     void*   __vftable;                                      // +0x00

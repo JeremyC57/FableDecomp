@@ -67,10 +67,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefClassPointe
 }
 #pragma auto_inline(on)
 
-class CThing { public:
-    unsigned char  _pad_0x00[0x8c];
-    unsigned short DefClassIndex;               // +0x8c
-};
+#include "engine/CThing.h"
 
 class CTCWeapon { public:
     virtual void v00();
@@ -84,7 +81,7 @@ class CTCWeapon { public:
 
 void CTCWeapon::OnCreate()
 {
-    unsigned short index = ParentThing->DefClassIndex;
+    unsigned short index = ParentThing->GetDefGlobalIndex();
     if (index) {
         CDefClassPointer out;
         GetDefinitionManager()->GetDef(index, &out);

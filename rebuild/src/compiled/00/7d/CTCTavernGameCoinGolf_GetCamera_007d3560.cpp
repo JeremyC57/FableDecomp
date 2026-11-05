@@ -1,4 +1,5 @@
 // CTCTavernGameCoinGolf::GetCamera(C3DVector& camPos, C3DVector& lookAt) -- overview camera orbiting the table by the Z angle; once the coin is live, a chase camera behind and above the coin, pitched and turned by the player's angles
+// Leaf: ?GetCamera@CTCTavernGameCoinGolf@@QAEXAAVC3DVector@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D3560, 416 bytes (+ int3 padding), `ret 8`.
 // Callees: C3DVector rotate-about-Z 0x00A14040 (landed spelling, 0x007A9960) and the two-angle rotate 0x00A14260;
 //   CBaseIntelligentPointer::GetPItem 0x00A01B50 (inline IS_THING_ALIVE + the position fetch); CThing::GetPos 0x004C73D0.
@@ -19,12 +20,7 @@ class C3DVector { public:
 public:
     void RotateXY(float);   // 0x00A14040
 };
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -44,7 +40,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

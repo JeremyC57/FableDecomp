@@ -26,27 +26,12 @@
 //          before the world frame call; the scoreboard is the unset-out-pointer GetInterface.
 extern "C" void free(void* p);                  // 0x00BFEA14
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);   // 0x0055F3B0
@@ -77,11 +62,7 @@ private: public:
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+
 class CSubtitleRenderer { public:
     void SetButton2OverrideText(const CCharString& text);   // 0x0048F881
 };
@@ -172,6 +153,6 @@ void CTCOracleMinigame::Quit()
         SetText(PDef->LoseText);
     CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCHeroOnlineScoreboard* scoreboard;
-    hero->GetInterface(&scoreboard, 0x10d);
+    hero->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
     scoreboard->UpdateScoreForActivity(0x15, (float)Level, false);
 }

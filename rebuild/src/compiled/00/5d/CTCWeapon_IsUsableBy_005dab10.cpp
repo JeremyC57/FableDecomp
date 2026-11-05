@@ -1,4 +1,5 @@
 // CTCWeapon::IsUsableBy(const CThing& thing) const -- only creatures may use a weapon; class-1 things, a suppressed game, things without hero experience and weapon classes 0/1/3 always may; class 2 needs berserk or the experience requirements
+// Leaf: ?IsUsableBy@CTCWeapon_Getters@@QBE_NABVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005DAB10, 179 bytes, `ret 4`, then a 4-entry jump table at 0x005DABC4.
 // Ego_r.pdb `?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z`.
@@ -20,33 +21,11 @@
 
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    virtual void v00();
-    unsigned char _pad04[0x10 - 0x04];
-    unsigned char ThingClass;                   // +0x10
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long m_presentBits[9];             // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x18];
-    unsigned long ThingTypeFlags;               // +0x6c bit 3: creature
-    __forceinline unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (const T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCHeroExperience;                       // interface 0x68
 struct CExperienceRequirements {                // the +0x13c sub-object of the creature's +0x1e8 record
@@ -76,12 +55,12 @@ struct CTCWeapon_Getters : CTCWeapon {
 
 bool CTCWeapon_Getters::IsUsableBy(const CThing& thing) const
 {
-    if (thing.ThingTypeFlags & 8) {
-        if (thing.ThingClass == 1 || ((CTCWeapon_Getters*)this)->GetGameSubsystem()->IsSuppressed())
+    if (thing.GetTypeFlags() & 8) {
+        if (thing.GetType() == 1 || ((CTCWeapon_Getters*)this)->GetGameSubsystem()->IsSuppressed())
             return true;
         const CCreatureRecord1E8* record = static_cast<const CThingCreatureBase&>(thing).GetRecord1E8();
-        const CTCHeroExperience* experience;
-        if (!thing.GetInterface(&experience, 0x68))
+        const const CTCHeroExperience* experience;
+        if (!thing.PeekTC(TCI_HERO_EXPERIENCE, &experience))
             return true;
         switch (GetWeaponClass()) {
         case WEAPON_CLASS_NONE:
@@ -89,7 +68,7 @@ bool CTCWeapon_Getters::IsUsableBy(const CThing& thing) const
         case WEAPON_CLASS_3:
             return true;
         case WEAPON_CLASS_2:
-            return thing.HasTC(0x84) || record->Requirements.IsMetBy(experience);
+            return thing.HasTC(TCI_BERSERK) || record->Requirements.IsMetBy(experience);
         }
     }
     return false;

@@ -20,10 +20,7 @@ extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 
 #include "engine/C3DVector.h"
-class CThing {
-public:
-    const C3DVector& GetPos() const;                  // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingGameObject : public CThing { };
 namespace NCameraModes {
 class CBase {

@@ -1,4 +1,5 @@
 // CAIStateGroup_WorkAtSchool::MoveAndFace(C3DVector pos, float radius, C3DVector facePos) -- walk (run when 10 or
+// Leaf: ?MoveAndFace@CAIStateGroup_WorkAtSchool@@QAE_NVC3DVector@@M0@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // more units away) to within `radius` of pos, repeating while the move is in progress, then turn to look at facePos
 // the same way; true when both actions finish (2).
@@ -20,9 +21,7 @@ class CThing;
 
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 struct CThingPos : public CThing {
 };
 

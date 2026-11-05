@@ -1,4 +1,5 @@
 // CAIStateGroup_IceTrollIcicleAttack::Update() -- with a live target: mark the target's stealth component in danger, rise up if knocked down, face the target, then post the icicle attack through a brain output for two free frames, wait out any running action and boast; terminate at the end or on any failure
+// Leaf: ?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009621F0, length 733 bytes (+ int3 padding).
@@ -18,38 +19,13 @@
 class CThing;
 class CThingCreatureBase;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool HasTC(long t) const { return (m_presentBits[t >> 5] >> (t & 31)) & 1; }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        bool has = HasTC(interfaceType);
-        if (has) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
@@ -71,16 +47,12 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x0
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
 }
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+
 class CSoundPair { public:
     long m_first;
     long m_second;
@@ -176,13 +148,13 @@ void CAIStateGroup_IceTrollIcicleAttack::Update()
 {
     if (IS_THING_ALIVE(PTarget)) {
         CThing* target = ((CThing*)PTarget.GetPItem());
-        bool has = target->HasTC(0x36);
+        bool has = target->HasTC(TCI_STEALTH);
         if (has) {
-            CTCStealth* stealth = target->GetTC<CTCStealth>(0x36);
+            CTCStealth* stealth = ((CTCStealth*)&target->GetTC(TCI_STEALTH));
             stealth->SetAsInDanger(GetCreature(), 3);
         }
         CTCCreatureModeManager* modes;
-        if (GetCreature()->GetInterface(&modes, 0x31) && modes->HasMode(0x1e)) {
+        if (GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes) && modes->HasMode(0x1e)) {
             long result = AIAction_PerformActionAndWait(CCreatureAction_RiseUp(GetCreature()), false);
             if (result == 1) {
                 Terminate();

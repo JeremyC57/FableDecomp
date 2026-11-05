@@ -12,10 +12,7 @@ class CThingAICreature { public:
 };
 #include "engine/CTCBase.h"
 
-class CThing { public:
-    unsigned char _pad[0x10];
-    unsigned char m_type;                          // +0x10
-};
+#include "engine/CThing.h"
 
 class CTCFlourishTarget : public CTCBase { public:
     void OnInitialActivate();
@@ -23,6 +20,6 @@ class CTCFlourishTarget : public CTCBase { public:
 
 void CTCFlourishTarget::OnInitialActivate()
 {
-    if (ParentThing->m_type == 1)
+    if (ParentThing->GetType() == 1)
         ((CThingAICreature*)ParentThing)->SuspendAI(true, this);
 }

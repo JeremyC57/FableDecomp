@@ -12,19 +12,17 @@
 // Layout: CMessageEvent::POriginator (CIntelligentPointer<CThing>) at +0x48 (Ego_r.pdb); CThing type flags at +0x6C, the
 // creature mask 0x1F; local models as the landed 0x0090E2E0 (no engine header for the filter or the message).
 // Shape: `GetPItem() && IsThingOfType<T>(GetPItem()) ? (T*)GetPItem() : 0` with the mask in a local, then the null test.
-class CThing {
-public:
-    unsigned char _pad00[0x6c];
-    unsigned long ThingTypeFlags;                           // +0x6C
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATTYPEFLAGS
+#include "engine/CThing.h"
 class CThingAICreature : public CThing {
 public:
-    enum { ThingTypeMask = 0x1f };
+    static unsigned long __fastcall StatGetTypeFlags() { return 0x1f; }
 };
 template <class T> inline bool IsThingOfType(const CThing* thing)
 {
-    unsigned long mask = T::ThingTypeMask;
-    return !(~thing->ThingTypeFlags & mask);
+    unsigned long mask = T::StatGetTypeFlags();
+    return !(~thing->GetTypeFlags() & mask);
 }
 class CBaseObject;
 struct CBaseIntelligentPointer {

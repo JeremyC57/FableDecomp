@@ -15,27 +15,11 @@
 // straight into ecx before the bool is formed (a HasInterface test + GetTC, or the if-form pick, forms the bool first).
 struct CTCBaseAny;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                 // +0x20
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            *ppOut = (T*)((CTCBaseAny*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -55,7 +39,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -89,7 +73,7 @@ void CTCShop::SetStockState(long state)
         if (IS_THING_ALIVE(PShopKeeper)) {
             CThing* keeper = PShopKeeper.GetPItem();
             CTCShopKeeper* shopKeeper;
-            if (keeper->GetInterface(&shopKeeper, 0x90))
+            if (keeper->GetTC(TCI_SHOP_KEEPER, &shopKeeper))
                 shopKeeper->RepressOpinions(state != 1);
         }
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);

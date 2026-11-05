@@ -11,31 +11,13 @@
 // The filter has no data members (PDB: no layout recorded); `this` is unused.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
 struct CTCUserActionPointBase {
-    bool IsActionPointFree();                       // 0x007FEBF0
+    bool IsActionPointFree() const;                       // 0x007FEBF0
 };
 
 class CThingFilter_HasFreeActionPoint { public:
@@ -44,6 +26,6 @@ class CThingFilter_HasFreeActionPoint { public:
 
 bool CThingFilter_HasFreeActionPoint::operator()(CThing* thing) const
 {
-    CTCUserActionPointBase* actionPoint;
-    return thing->GetInterface(0x2D, &actionPoint) && actionPoint->IsActionPointFree();
+    const CTCUserActionPointBase* actionPoint;
+    return thing->PeekTC(TCI_SINGLE_USER_ACTION_POINTS, &actionPoint) && actionPoint->IsActionPointFree();
 }

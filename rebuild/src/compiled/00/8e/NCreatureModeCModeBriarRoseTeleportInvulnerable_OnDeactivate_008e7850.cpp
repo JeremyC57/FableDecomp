@@ -1,4 +1,5 @@
 // NCreatureMode::CModeBriarRoseTeleportInvulnerable::OnDeactivate() -- base deactivate, resume the owner's animation, drop TC 0x93, restore full alpha, kill the summoned helper if still alive
+// Leaf: ?OnDeactivate@CModeBriarRoseTeleportInvulnerable@NCreatureMode@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E7850, 112 bytes (padding included); vtable 0x01280228 slot 6.
 // Shape: CModeStandBase::OnDeactivate (0x00861D00) first; when the owner's state byte (+0x10) is 1
 // it un-suspends its animation for this mode (CThingAICreature::SuspendAI(false, this),
@@ -13,19 +14,11 @@ class CTCGraphicAppearance { public:
 }
 using NGraphicAppearance::CTCGraphicAppearance;
 
-enum ETCInterfaceType { };
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
-};
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char m_state;                  // +0x10 (compared with 1, as in the landed 0x008C4B00)
-    unsigned char _pad11[0x64 - 0x11];
-    CTCGraphicAppearance* m_pGraphicAppearance;   // +0x64
-    unsigned char _pad68[0x91 - 0x68];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    void RemoveTC(ETCInterfaceType interfaceType);      // 0x004C9840
-    void Kill(bool b);                      // 0x004C9B80
 };
 
 class CBaseObject;
@@ -48,7 +41,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -72,10 +65,10 @@ struct CModeBriarRoseTeleportInvulnerable : CModeStandBase {
 void CModeBriarRoseTeleportInvulnerable::OnDeactivate()
 {
     CModeStandBase::OnDeactivate();
-    if (ParentThing->m_state == 1)
+    if (ParentThing->GetType() == 1)
         ((CThingAICreature*)ParentThing)->SuspendAI(false, this);
     ParentThing->RemoveTC((ETCInterfaceType)(0x93));
-    ParentThing->m_pGraphicAppearance->SetAlpha(0xff);
+    ParentThing->GetTCGraphicAppearance()->SetAlpha(0xff);
     if (IS_THING_ALIVE(m_pHelper))
         m_pHelper.GetPItem()->Kill(true);
 }

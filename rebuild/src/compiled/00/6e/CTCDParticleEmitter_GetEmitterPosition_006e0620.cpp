@@ -1,4 +1,5 @@
 // CTCDParticleEmitter::GetEmitterPosition() const -- the live emitter's current position (the translation of its transform), or the parent thing's position when no emitter exists yet
+// Leaf: ?GetEmitterPosition@CTCDParticleEmitter@@QBE?AVC3DVector@@XZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0620, length 100 bytes (+ int3 padding); returns C3DVector through the hidden pointer.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2), CThing::GetPos @ 0x004C73D0.
@@ -22,9 +23,7 @@ class CParticleEmitter { public:
     C3DVector GetPos() const { return Transform.GetTranslation(); }
 };
 }
-class CThing { public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

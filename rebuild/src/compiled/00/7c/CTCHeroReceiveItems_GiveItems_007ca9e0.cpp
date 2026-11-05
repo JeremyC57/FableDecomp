@@ -23,18 +23,10 @@ class CBaseObject;
 class CRightHandedSet;
 
 #include "engine/C3DVector.h"
-class CCharString {
-public:
-    void* m_pData;
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;                            // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;               // 0x004C73D0
-    void SetInLimbo(bool inLimbo);                      // 0x004C8CF0
-};
 class CThingObject : public CThing {
 public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,
@@ -118,7 +110,7 @@ void CTCHeroReceiveItems::GiveItems(const CGiveItemVector& items, CThing& contai
         if (items[i].DefIndex > 0) {
             CThingObject* item = CThingObject::Create(items[i].DefIndex, ParentThing->GetPos(), 5, 0, 0,
                                                       items[i].ScriptName);
-            if (item && !(item->m_flags91 & 1)) {
+            if (item && !item->IsDead()) {
                 item->SetInLimbo(true);
                 Items.push_back(SItemEntry(CIntelligentPointer<CThingObject>(item), false));
             }

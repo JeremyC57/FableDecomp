@@ -1,4 +1,5 @@
 // CTCPhysicalShieldSpell::FrameUpdate() -- per frame: count the duration down and redraw the shield unless paused; once the duration has run out, stop it being pausable and, when the fade-out timer expires, play the end sound and END effect and remove the shield component (0x93) from its owner
+// Leaf: ?FrameUpdate@CTCPhysicalShieldSpell@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079EB30, 209 bytes (plain `ret`; PDB ?FrameUpdate@CTCPhysicalShieldSpell@@UAEXXZ).
 // Callees: CTCPhysicalShieldSpell::PlayShieldEffects(CThingCreatureBase*) @ 0x0079E420, CDefStringTable::GetString(long) @ 0x009D49B0
 //   on GDefStringTable @ 0x013CA828, PlaySound(const CCharString&, bool) @ 0x0079DE00 (PDB PlaySoundW), CCharString(const char*,
@@ -7,21 +8,15 @@
 //   +0x44/+0x45); the def's EndSound CDefString at +0x60 (PDB +0x64, def bodies sit 4 bytes low); CThing +0x10 type byte (2 = player).
 // Shape: the tail is the landed CancelMove 0x0079E300 verbatim (sound string in its own block, the "" type string declared
 //   before the "END" bone name so it sits one word higher, both destroyed before RemoveTC); the owner is read once into edi at entry.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length); // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 class CDefStringTable { public:
     CCharString GetString(long id) const;             // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
-enum ETCInterfaceType { };
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char Type;                         // +0x10 (2 = player)
-    void RemoveTC(ETCInterfaceType type);                   // 0x004C9840
-};
+
 class CThingCreatureBase : public CThing { public: };
 class CSpecialAbilitiesPhysicalShieldDef { public:
     unsigned char _pad00[0x60];
@@ -60,7 +55,7 @@ void CTCPhysicalShieldSpell::FrameUpdate()
         if (--CurShieldFadeOutTimer <= 0) {
             {
                 CCharString sound = GDefStringTable.GetString(PDef->EndSound);
-                PlaySound(sound, owner->Type == 2);
+                PlaySound(sound, owner->GetType() == 2);
             }
             {
                 CCharString type("", -1);

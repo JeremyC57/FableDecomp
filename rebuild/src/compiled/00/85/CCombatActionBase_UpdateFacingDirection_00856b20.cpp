@@ -15,7 +15,7 @@ extern "C" double __cdecl fabs(double x);
 inline float fabs(float x) { return (float)fabs((double)x); }
 class C3DVector { public: float X, Y, Z; };
 float __stdcall AngleDifference(float a, float b);   // 0x00A441E0
-struct CPhysicsBody {
+struct CTCPhysicsBase {
     virtual void p000(); virtual void p001(); virtual void p002(); virtual void p003(); virtual void p004(); virtual void p005(); virtual void p006(); virtual void p007();
     virtual void p008(); virtual void p009(); virtual void p010(); virtual void p011(); virtual void p012(); virtual void p013(); virtual void p014(); virtual void p015();
     virtual void p016(); virtual void p017(); virtual void p018(); virtual void p019(); virtual void p020(); virtual void p021(); virtual void p022(); virtual void p023();
@@ -29,12 +29,7 @@ struct CPhysicsBody {
     virtual void p067(); virtual void p068(); virtual void p069();
     virtual C3DVector GetFacing();   // slot 70 (+0x118)
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CPhysicsBody* m_pPhysics;                   // +0x60
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    CPhysicsBody* GetPhysics() const { return m_pPhysics; }
-};
+#include "engine/CThing.h"
 class CAnimationEntry { public:
     void GetRotationInAnimation(float* pRotation) const;   // 0x005DBFD0
 };
@@ -114,11 +109,11 @@ void CCombatActionBase::UpdateFacingDirection()
     if (delta.Y * delta.Y + delta.X * delta.X > distance * distance) {
         float tolerance = GetFacingTolerance();
         if (tolerance < 0.5f) {
-            C3DVector current = PCreature.GetPItem()->GetPhysics()->GetFacing();
+            C3DVector current = PCreature.GetPItem()->GetPhysicsTC()->GetFacing();
             float currentFacing = FacingFraction(current.X, current.Y);
             if (fabs(AngleDifference(currentFacing, facing)) > tolerance)
                 return;
         }
     }
-    PCreature.GetPItem()->GetPhysics()->SetFacingAngle(facing);
+    PCreature.GetPItem()->GetPhysicsTC()->SetFacingAngle(facing);
 }

@@ -1,4 +1,5 @@
 // CCreatureAction_CastWillReclaimUndeadFollower::PerformAction() -- if the undead follower is alive, hand it back to the caster's special-abilities component (interface 0xa7) to reclaim
+// Leaf: ?PerformAction@CCreatureAction_CastWillReclaimUndeadFollower@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BAA00, length 138 bytes, plain `ret`. Vtable slot of
 //   CCreatureAction_CastWillReclaimUndeadFollower (vtable 0x0127D5BC, slot referenced from 0x0127D5C8).
@@ -13,29 +14,10 @@
 //   0x12c), retail +0x114 (see the constructor 0x008BC5E0).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    void Kill(bool removeNow);              // 0x004C9B80
-    template <class T> __forceinline void GetInterface(T** ppOut, long interfaceType)   // leaves *ppOut alone when absent
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -57,7 +39,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -86,7 +68,7 @@ void CCreatureAction_CastWillReclaimUndeadFollower::PerformAction()
 {
     if (IS_THING_ALIVE(PUndeadFollower)) {
         CTCSpecialAbilities* abilities;
-        PCreature.GetPItem()->GetInterface(&abilities, 0xa7);
+        PCreature.GetPItem()->GetTC(TCI_SPECIAL_ABILITIES, &abilities);
         abilities->ReclaimUndeadFollower(*(CThingGameObject*)PUndeadFollower.GetPItem());
     }
 }

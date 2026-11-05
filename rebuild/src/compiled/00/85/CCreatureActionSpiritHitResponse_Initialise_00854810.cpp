@@ -1,4 +1,5 @@
 // CCreatureAction_SpiritHitResponse::Initialise() -- base Initialise, set the action length from a global frame count, double the knock-back vector and apply it to the creature's physics, then tell the co-op spirit component (interface type 0xc7) it was hit
+// Leaf: ?Initialise@CCreatureAction_SpiritHitResponse@@UAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_SpiritHitResponseFrames (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -18,29 +19,11 @@ class CTCBase;
 class CTCPhysicsBase { public:
     void ApplyAcceleration(const C3DVector& acceleration);   // 0x006B0210
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0xc];
-    CTCPhysicsBase* m_pPhysics;             // +0x60
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -87,8 +70,8 @@ void CCreatureAction_SpiritHitResponse::Initialise()
     TotalTime = (long)(float)CMainGameComponent::GetConstantFPS();
     Knockback *= 2.0f;
     CThing* creature = PCreature.GetPItem();   // fetched before the argument push: a named local
-    creature->m_pPhysics->ApplyAcceleration(Knockback);
+    creature->GetPhysicsTC()->ApplyAcceleration(Knockback);
     CTCCoopSpirit* pSpirit;
-    PCreature.GetPItem()->GetInterface(&pSpirit, 0xc7);
+    PCreature.GetPItem()->GetTC(TCI_COOP_SPIRIT, &pSpirit);
     pSpirit->OnHit();
 }

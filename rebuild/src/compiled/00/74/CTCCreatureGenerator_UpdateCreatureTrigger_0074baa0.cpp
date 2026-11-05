@@ -14,9 +14,7 @@ class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
 };
-class CThing { public:
-    const C3DVector& GetPos() const;                   // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public:
 };
 class CBaseObject;

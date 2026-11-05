@@ -1,4 +1,5 @@
 // CTCCreatureGroupBoastingCrowd::OnHeroApproachBoastingArea() -- while the quest manager has boasts and the hero has not boasted yet, give the living hero the boasting tutorial (category 5) and enter crowd state 1
+// Leaf: ?OnHeroApproachBoastingArea@CTCCreatureGroupBoastingCrowd@@QAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
@@ -14,25 +15,11 @@
 // HeroBoasted +0x34. Local model (the header flattens the vptr and has the PDB offsets).
 // Shape: one guarded block; the hero tutorial is an inline IsThingAlive test then GetInterface + null test.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    template<class T> __forceinline T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-};
+
 class CTCHero { public:                                // interface 0x29
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
@@ -84,8 +71,8 @@ void CTCCreatureGroupBoastingCrowd::OnHeroApproachBoastingArea()
         if (PHero.GetPItem() && !PHero.GetPItem()->IsDead()) {
             CTCHero* hero = 0;
             CThing* heroThing = PHero.GetPItem();
-            if (heroThing->HasTC(0x29))
-                hero = heroThing->GetTC<CTCHero>(0x29);
+            if (heroThing->HasTC(TCI_HERO))
+                hero = ((CTCHero*)&heroThing->GetTC(TCI_HERO));
             if (hero)
                 hero->GiveTutorialForCategory(5, false);
         }

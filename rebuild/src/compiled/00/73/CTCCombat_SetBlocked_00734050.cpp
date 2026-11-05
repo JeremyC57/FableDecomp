@@ -1,4 +1,5 @@
 // CTCCombat::SetBlocked(CThing* blocker) -- when the blocking thing is a creature-type thing with interface 48, that component's +0x50 frame counter is set to two seconds of frames; then the parent creature is deregistered from the combat manager
+// Leaf: ?SetBlocked@CTCCombat_Methods@@QAEXPAVCThing@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -15,34 +16,14 @@
 // __ftol2`; the deregistration is unconditional.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCBase { public:
     unsigned char _pad[0x50];
     long          m_frameCounter;           // +0x50
-};
-
-class CThing { public:
-    unsigned char _pad0[0x10];
-    unsigned char m_thingType;              // +0x10 (2 = creature)
-    unsigned char _pad11[0xf];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    __forceinline bool GetInterface(long type, CTCBase** out)   // the landed GetInterface_0x.. family shape (forced: inside the `&&` VC calls it out of line)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = it->second;
-            return true;
-        }
-        return false;
-    }
 };
 
 class CMainGameComponent {
@@ -66,7 +47,7 @@ struct CTCCombat_Methods : CTCCombat {
 void CTCCombat_Methods::SetBlocked(CThing* blocker)
 {
     CTCBase* component;
-    if (blocker->m_thingType == 2 && blocker->GetInterface(48, &component))
+    if (blocker->GetType() == 2 && blocker->GetTC(TCI_COMBAT, &component))
         component->m_frameCounter = (long)(CMainGameComponent::GetConstantFPS() * 2.0f);
     CombatManager->DeregisterCombatant_006ea430(ParentCreature);
 }

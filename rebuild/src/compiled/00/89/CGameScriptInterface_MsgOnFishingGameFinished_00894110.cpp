@@ -4,12 +4,10 @@
 // Shape (shared by the Msg family): the two frame getters 0x006E7510 / 0x006E7530 (both labelled GetMaxWorldFrameForMessages), the 0x14-byte frame holds the IsOfType filter at +8, the CanBeSeenOrHeard filter at +0xc..+0x10 and the Bind2 pair of pointers at +0x14..+0x18; CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType, CanBeSeenOrHeard>> @ 0x008ABED0 through CWorld+0x60 (engine/CWorld.h).
 // Leaf: MsgOnFishingGameFinished
 // Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
-class CCharString { public:
-    void* m_pData;
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    const CCharString& operator=(const char* text);           // 0x0099EFE0
-    ~CCharString();                                  // 0x0099EAE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 struct CMessageEvent_Retail {
     unsigned char _pad[0x3c];
     long          m_extraData;                      // +0x3c (the message's payload word: region/quest index, feat id, record pointer ...)
@@ -36,9 +34,7 @@ struct CMessageEventManager_Retail {
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
-class CThing { public:
-    CScriptThing GetScriptThing() const;                  // 0x004C7E50 (by value through the hidden result pointer)
-};
+
 struct CWorldMap_Retail;
 struct CDefinitionManager_Retail;
 struct CPlayerManager_Retail;

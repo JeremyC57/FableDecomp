@@ -20,12 +20,10 @@
 //   CCardinalSpline's CArray is 4 bytes shorter in retail).
 class CTCBase;
 
-class CCharString {
-public:
-    CCharString(const char* text, long length = -1);         // 0x0099EBF0
-    ~CCharString();                                          // 0x0099EAE0
-    void* PStringData;
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 #include "engine/C3DVector.h"
 
@@ -63,36 +61,8 @@ public:
     bool BeenHit;                                            // +0x5D
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing {
-public:
-    virtual ~CThing();
-    unsigned char _pad_0x04[0x20 - 0x04];
-    unsigned long UsingComponents[9];                        // +0x20
-    CInterfaceMap Components;                                // +0x44
-    unsigned char _pad_0x54[0xc];
-    CTCPhysicsBase* PhysicsTC;                               // +0x60
-    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
-    const C3DVector& GetPos() const;                         // 0x004C73D0
-    CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }
-    NGraphicAppearance::CTCGraphicAppearance* GetTCGraphicAppearance() { return PTCGraphicAppearance; }
-    template <class T> __forceinline bool GetInterface(T** out, long type)
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &Components;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CThingCreatureBase : public CThing { };
 
@@ -139,7 +109,7 @@ void CCreatureAction_NymphGetHit::Initialise()
     if (!PCreature->GetTCGraphicAppearance()->GetDummyObject("DUMMY_CENTRE", 0, 0, InitDummyPos, dummy_set, 1.0f))
         InitDummyPos = PCreature->GetPos();
     CTCNymph* nymph;
-    if (PCreature->GetInterface(&nymph, 0xF5))
+    if (PCreature->GetTC(TCI_NYMPH, &nymph))
         nymph->BeenHit = true;
     CCombatAction_GenericStrikeResponseBase::Initialise();
 }

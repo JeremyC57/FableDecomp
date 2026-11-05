@@ -13,36 +13,13 @@
 // shared key slot); the "" helper name is an implicit-conversion temporary.
 class CTCBase;
 class CBaseObject;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags;                              // +0x91 bit 0: dead
-    void Kill(bool immediately);                        // 0x004C9B80
-    bool IsDead() const { return (m_flags & 1) != 0; }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCDParticleEmitter { public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
@@ -74,11 +51,11 @@ void CTCBattleCharge::CleanUpEffects()
     CThing* owner = ParentThing;
     CTCDParticleEmitter* emitter;
     if (IS_THING_ALIVE(LeftFeetEffect)) {
-        ((CThing*)LeftFeetEffect.GetPItem())->GetInterface(&emitter, 0x4b);
+        ((CThing*)LeftFeetEffect.GetPItem())->GetTC(TCI_PARTICLE_EMITTER, &emitter);
         emitter->AttachToThing(*owner, 1, "", 0, 0.0f);
     }
     if (IS_THING_ALIVE(RightFeetEffect)) {
-        ((CThing*)RightFeetEffect.GetPItem())->GetInterface(&emitter, 0x4b);
+        ((CThing*)RightFeetEffect.GetPItem())->GetTC(TCI_PARTICLE_EMITTER, &emitter);
         emitter->AttachToThing(*owner, 1, "", 0, 0.0f);
     }
 }

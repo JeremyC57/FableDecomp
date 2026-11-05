@@ -19,10 +19,7 @@ class CWorld { public:
     CNavigatorManager* PNavigationManager;                  // +0x48 scoped_ptr<CNavigatorManager>
 };
 
-class CThing { public:
-    unsigned char    _pad[0x18];
-    unsigned __int64 UniqueID;                              // +0x18 (only the low 40 bits identify the thing)
-};
+#include "engine/CThing.h"
 
 class CTCBase
 {
@@ -43,5 +40,5 @@ void CTCSwitchableNavigation::SetAsBlockingNavigation(bool blocking)
 {
     CNavigatorManager* navigation = GetWorld().PNavigationManager;
     if (navigation->IsNavigationMapActivated(MapIndex))
-        navigation->SetSwitchableNodesAsBlocked(MapIndex, ParentThing->UniqueID & 0xFFFFFFFFFFui64, blocking);
+        navigation->SetSwitchableNodesAsBlocked(MapIndex, ParentThing->GetUniqueID() & 0xFFFFFFFFFFui64, blocking);
 }

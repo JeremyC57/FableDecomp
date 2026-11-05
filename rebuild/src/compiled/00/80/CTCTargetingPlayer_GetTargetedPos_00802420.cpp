@@ -15,13 +15,9 @@ public:
     bool IsFirstPersonTargeting() const;   // 0x004874D0
 };
 class CWorld;
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-public:
-    const CPlayer& PeekPlayer() const;   // 0x004C7A10
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_PEEKPLAYER
+#include "engine/CThing.h"
 C3DVector __fastcall GetTargetFirePoint(const CWorld* world, const CThing* target, float t);   // 0x007EA2F0
 class CTCBase
 {
@@ -59,7 +55,7 @@ bool CTCTargetingPlayer::GetTargetedPos(C3DVector& pos, float t)
         pos += (TargetedPosOffset3D - OldTargetedPosOffset3D) * t + OldTargetedPosOffset3D;
         return true;
     }
-    if (target && !(target->m_flags91 & 1)) {
+    if (target && !target->IsDead()) {
         pos = GetTargetFirePoint((&PeekWorld()), target, t);
         return true;
     }

@@ -1,4 +1,5 @@
 // CCreatureAction_TrollThrowProjectile::FrameUpdate() -- fade the carried projectile in: raise ShotAlpha by 16 a frame up to 255 (snapped to 255 once the troll's hands are empty), push it to the shot's graphic appearance while the shot exists and is not being deleted, then the combat-action frame update
+// Leaf: ?FrameUpdate@CCreatureAction_TrollThrowProjectile@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C67A0, length 192 bytes (plain `ret`, virtual).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, PShot three times), CVectorMap::LowerBound 0x0040F020
@@ -15,7 +16,9 @@ class CTCBase;
 class CTCCarrying;
 class CThing;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -25,27 +28,6 @@ class CTCGraphicAppearance { public:
 };
 }
 using NGraphicAppearance::CTCGraphicAppearance;
-
-class CThing { public:
-    unsigned char  _pad0[0x20];
-    unsigned long  m_presentBits[9];            // +0x20
-    CInterfaceMap  m_interfaces;                // +0x44
-    unsigned char  _pad54[0x10];
-    CTCGraphicAppearance* m_pGraphicAppearance; // +0x64
-    unsigned char  _pad68[0x91 - 0x68];
-    unsigned char  m_deleteFlags;               // +0x91 bit 0: being deleted
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCCarrying { public:
     CThing* GetThingInPrimarySlot() const;            // 0x006A1440
@@ -90,11 +72,11 @@ void CCreatureAction_TrollThrowProjectile::FrameUpdate()
     if (ShotAlpha > 255)
         ShotAlpha = 255;
     CTCCarrying* carrying;
-    if (PCreature.GetPItem()->GetInterface(&carrying, 0x46) && carrying->GetThingInPrimarySlot() == 0)
+    if (PCreature.GetPItem()->GetTC(TCI_CARRYING, &carrying) && carrying->GetThingInPrimarySlot() == 0)
         ShotAlpha = 255;
-    if (PShot.GetPItem() && !(PShot.GetPItem()->m_deleteFlags & 1)) {
+    if (PShot.GetPItem() && !PShot.GetPItem()->IsDead()) {
         CThing* shot = PShot.GetPItem();
-        shot->m_pGraphicAppearance->SetAlpha((unsigned char)ShotAlpha);
+        shot->GetTCGraphicAppearance()->SetAlpha((unsigned char)ShotAlpha);
     }
     CCombatActionBase::FrameUpdate();
 }

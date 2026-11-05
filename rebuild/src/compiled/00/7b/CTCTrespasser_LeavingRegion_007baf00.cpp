@@ -22,38 +22,12 @@
 //   (the parent loads into edi before GetWorld; with the field read directly VC7.1 pushes the arguments first and the
 //   whole function's register assignment changes: `this` lands in ebp).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad_0x54[0x3d];
-    unsigned char m_flags;                              // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-    bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (HasTC(interfaceType)) {
-            *ppOut = (T*)GetTC(interfaceType);
-            return true;
-        }
-        return false;
-    }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CTCHeroOpinionDeedLog { public:                          // interface 0x51
     void EndDeed(long handle);                          // 0x006C5920 (descriptive)
     void RemoveDeed(long handle);                       // 0x006C59E0
@@ -133,8 +107,8 @@ class CTCTrespasser : public CTCBase { public:
 void CTCTrespasser::LeavingRegion()
 {
     if (IS_THING_ALIVE(TrespassingThing)) {
-        if (ParentThing->HasTC(0x51)) {
-            CTCHeroOpinionDeedLog* log = (CTCHeroOpinionDeedLog*)ParentThing->GetTC(0x51);
+        if (ParentThing->HasTC(TCI_HERO_OPINION_DEED_LOG)) {
+            CTCHeroOpinionDeedLog* log = (CTCHeroOpinionDeedLog*)((CTCHeroOpinionDeedLog*)&ParentThing->GetTC(TCI_HERO_OPINION_DEED_LOG));
             for (long i = 0; i < 3; ++i) {
                 if (DeedHandles[i] != -1) {
                     log->EndDeed(DeedHandles[i]);
@@ -152,7 +126,7 @@ void CTCTrespasser::LeavingRegion()
         OccupantsKnowOfDeedHandleIndex = -1;
         CThing* trespassed = TrespassingThing.GetPItem();
         CTCTrespassable* trespassable;
-        if (trespassed->GetInterface(&trespassable, 0xbd)) {
+        if (trespassed->GetTC(TCI_TRESPASSABLE, &trespassable)) {
             trespassable->BeingTrespassed = false;
             FramePlayerLeft = CWorld::GetFrame();
         }

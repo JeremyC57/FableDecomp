@@ -13,8 +13,7 @@ extern "C" double __cdecl fabs(double);
 #include <stddef.h>
 #include "engine/CManager.h"
 #include "engine/CHoverable.h"
-struct NativeUIManager {unsigned char Prefix[0xbc];void* PDropped;};
-NativeUIManager* __cdecl GetUIManager(); //0041E5F2
+namespace NUISystem {class CManager:public ::CManager {public:static CManager* __fastcall GetInstance();};} //0041E5F2 (Ego_r.pdb / FableWin.pdb); PDropped +0xbc from engine/CManager.h
 extern const float DELTA_NOTIONAL_ZERO;   // 0x0129BA3C (established spelling, naming wave 13)
 namespace NUISystem {
 struct C2DVector {float X,Y;bool operator==(const C2DVector& p)const{return (float)fabs(p.X-X)<=DELTA_NOTIONAL_ZERO&&(float)fabs(p.Y-Y)<=DELTA_NOTIONAL_ZERO;}};
@@ -40,7 +39,7 @@ FABLE_STATIC_ASSERT(sizeof(CDraggable::ChangePositionMethod)==4);
 FABLE_STATIC_ASSERT(sizeof(CDraggable::CursorMethod)==4);
 #endif
 void CDraggable::Update(float delta){
- if(WasDragged&&!WasLeftClicked){WasDragged=false;if(GetUIManager()->PDropped){if(PActionsOnDroppedNowhere&&SnapBackIfDroppedNowhere){ChangePosition(PositionBeforeDrag,0.0f,false);++Layer;}else{ChangePosition(PositionBeforeDrag,0.2f,false);ChangeLayer=true;}}else{ChangePosition(PositionBeforeDrag,0.0f,false);++Layer;}}
+ if(WasDragged&&!WasLeftClicked){WasDragged=false;if(NUISystem::CManager::GetInstance()->PDropped){if(PActionsOnDroppedNowhere&&SnapBackIfDroppedNowhere){ChangePosition(PositionBeforeDrag,0.0f,false);++Layer;}else{ChangePosition(PositionBeforeDrag,0.2f,false);ChangeLayer=true;}}else{ChangePosition(PositionBeforeDrag,0.0f,false);++Layer;}}
  CClickable::Update(delta);
  if(!AtTarget()||Time-delta==0.0f)UpdateMouseCursor();else if(AtTarget()&&ChangeLayer){++Layer;ChangeLayer=false;}
 }

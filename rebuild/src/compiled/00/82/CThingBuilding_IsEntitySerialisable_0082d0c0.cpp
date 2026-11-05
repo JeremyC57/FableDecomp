@@ -12,20 +12,7 @@
 // Dinkumware 0x14 / 0xC), so the byte is +0x91 and CreatedByOwnerThingCreation is bit 1 (the CThing setter 0x004C7880
 // writes the next byte, +0x92, the same way). No engine header for CThing / CThingBuilding: local partial view.
 // Shape: `xor eax,eax ; mov al,[ecx+91h] ; shr eax,1 ; not eax ; and eax,1` is `!bitfield` over an unsigned char bitfield.
-class CThing {
-public:
-    virtual ~CThing();
-    unsigned char _pad004[0x91 - 4];
-    unsigned char Dead : 1;                                 // +0x91 bit 0
-    unsigned char CreatedByOwnerThingCreation : 1;          // +0x91 bit 1
-    unsigned char IncludeInThingScans : 1;
-    unsigned char Activated : 1;
-    unsigned char GloballyLoaded : 1;
-    unsigned char InLimbo : 1;
-    unsigned char KillLocked : 1;
-    unsigned char CreatedBySerialisation : 1;
-    virtual bool IsEntitySerialisable() const;
-};
+#include "engine/CThing.h"
 
 class CThingBuilding : public CThing {
 public:

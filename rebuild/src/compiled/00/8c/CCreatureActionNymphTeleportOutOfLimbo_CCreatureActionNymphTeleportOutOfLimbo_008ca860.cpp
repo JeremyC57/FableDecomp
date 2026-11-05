@@ -1,10 +1,11 @@
 // CCreatureAction_NymphTeleportOutOfLimbo::CCreatureAction_NymphTeleportOutOfLimbo(CThingCreatureBase*, const C3DVector*) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), own vtable (0x01282A04), the destination at +0x114 copied from the argument or, when it is null, from the owner's position
+// Leaf: ??0CCreatureAction_NymphTeleportOutOfLimbo@@QAE@PAVCThingCreatureBase@@PBVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CA860, length 96 bytes.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CThing::GetPosition @ 0x004C73D0 (thiscall, no arguments; returns the position by pointer).
 // Shape: the null test of the vector argument straddles the vtable store (init-list member after the base), the three floats are copied one register each.
 class CThingCreatureBase;
 class C3DVector { public: float x, y, z; };
-class CThing { public: const C3DVector& GetPos() const; };   // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
+#include "engine/CThing.h"
 class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
     long FirstSound;
     long LastSound;

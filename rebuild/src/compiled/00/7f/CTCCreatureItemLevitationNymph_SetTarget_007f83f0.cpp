@@ -1,4 +1,5 @@
 // CTCCreatureItemLevitationNymph::SetTarget(CThing* target, float xyMagnitude, float heightOffset) -- remember the hover target and offsets and point the hover direction from the target towards the nymph (XY plane, normalised)
+// Leaf: ?SetTarget@CTCCreatureItemLevitationNymph@@QAEXPAVCThing@@MM@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F83F0, length 157 bytes (+ int3 padding).
@@ -17,11 +18,7 @@ class C2DVector { public:
     float X, Y;
     void Set(float x, float y) { X = x; Y = y; }
 };
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -38,7 +35,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->Flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;

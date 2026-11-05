@@ -1,4 +1,5 @@
 // CTCTrapBase::OnKill() -- base OnKill, then kills the trap's obstruction thing if it is still alive
+// Leaf: ?OnKill@CTCTrapBase@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00787D94, length 40 bytes.
 // Callees: CTCBase::OnKill @ 0x006868F0 (the base override called directly; manifest "$E2" is a propagated label),
 // IS_THING_ALIVE<CIntelligentPointer<CThingPhysical const>> @ 0x004CC340 (`__fastcall`, the pointer in ecx),
@@ -7,9 +8,7 @@
 // before the object expression `PObstruction.GetPItem()`.
 // Layout: CTCTrapBase.h is the PDB layout (PObstruction +0x2C); the retail constructor 0x0078918D puts the
 // CIntelligentPointer at +0x24 (12-byte STLport vectors), so a local model is used.
-class CThing { public:
-    void Kill(bool checkLocked);            // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 struct CBaseIntelligentPointer {

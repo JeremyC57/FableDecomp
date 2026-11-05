@@ -14,10 +14,7 @@ class CTCPhysicsBase { public:
     C3DVector     m_position;                       // +0x0c
 };
 
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                      // +0x60
-};
+#include "engine/CThing.h"
 
 class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -35,7 +32,7 @@ class CThingFilter_InMap { public:
 
 bool CThingFilter_InMap::operator()(CThing* thing) const
 {
-    CTCPhysicsBase* physics = thing->PhysicsTC;
+    CTCPhysicsBase* physics = thing->GetPhysicsTC();
     if (physics)
         return WorldMap->GetMapNumberAt(&physics->m_position) == MapNo;
     return false;

@@ -17,10 +17,7 @@ class CTCPhysicsBase { public:
     C3DVector m_position;                           // +0x0c
 };
 
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                      // +0x60
-};
+#include "engine/CThing.h"
 
 class CThingFilter_In2DRangeLimit { public:
     C3DVector Pos;                                  // +0x00
@@ -38,7 +35,7 @@ static inline bool In2DRange(const C3DVector& a, const C3DVector& b, float range
 
 bool CThingFilter_In2DRangeLimit::operator()(CThing* thing) const
 {
-    CTCPhysicsBase* physics = thing->PhysicsTC;
+    CTCPhysicsBase* physics = thing->GetPhysicsTC();
     if (physics) {
         return !In2DRange(Pos, physics->m_position, MinRange) && In2DRange(Pos, physics->m_position, MaxRange);
     }

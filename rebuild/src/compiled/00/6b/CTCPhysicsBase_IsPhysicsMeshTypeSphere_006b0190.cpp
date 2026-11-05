@@ -10,10 +10,8 @@
 
 class CThingPhysicsMeshInfo;
 
-class CThing { public:
-    unsigned char _pad00[0x6c];
-    unsigned long Flags;                    // +0x6c
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 struct CTCPhysicsBaseVirtuals {                    // vtable-shaped view of `this` (slot = offset / 4)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
@@ -38,7 +36,7 @@ struct CTCPhysicsBaseVirtuals {                    // vtable-shaped view of `thi
 struct CTCPhysicsBase_Methods : CTCPhysicsBase {
     CThing* GetThing() { return reinterpret_cast<CThing*>(sub); }
     CTCPhysicsBaseVirtuals* Virtuals() { return reinterpret_cast<CTCPhysicsBaseVirtuals*>(this); }
-    bool IsSphereShaped() { return Virtuals()->GetPhysicsMeshInfo() != 0 || (GetThing()->Flags & 8) == 0; }
+    bool IsSphereShaped() { return Virtuals()->GetPhysicsMeshInfo() != 0 || (GetThing()->GetTypeFlags() & 8) == 0; }
     long IsPhysicsMeshTypeSphere();
 };
 

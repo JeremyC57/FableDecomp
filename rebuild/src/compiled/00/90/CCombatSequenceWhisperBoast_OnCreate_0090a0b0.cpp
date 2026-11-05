@@ -13,7 +13,7 @@
 //   protected PushAction, the base OnCreate, then the counted pointer's release (re-reading the block after the decrement).
 //   Ego_r.pdb types (CCombatAction {CCountedPointer<CCombatActionBase> CreatureAction}; CCombatSequenceBase Creature +0x1C,
 //   Target +0x20 in retail) replace the landed siblings' invented SCountBlock / CCountedPointer stand-ins.
-class CThing { };
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 class CSoundPair {
 public:

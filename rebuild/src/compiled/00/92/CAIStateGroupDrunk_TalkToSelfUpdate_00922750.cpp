@@ -25,34 +25,11 @@ class CThingAICreature;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const     // the masked word (a bool return narrows to `shr ; test dl,1`)
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -73,7 +50,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -110,13 +87,6 @@ public:
     void Terminate();   // 0x008FCF40
 };
 
-
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length);    // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-};
-
 class CTCTalk { public:                                    // the interface-0xf component
     bool IsTalking();                               // 0x006E28A0
     long PlayAISpeech(const CCharString& text, bool allowNonPure, long layer, bool a, bool b);   // 0x006E3B30 (ESpeechPlaybackResult)
@@ -142,7 +112,7 @@ void CAIStateGroup_Drunk::TalkToSelfUpdate()
     if (((CWorld*)GetPWorld())->GetFrame() <= FrameToNextTalkToSelf)
         return;
     CTCTalk* talk;
-    PBrain->PCreature->GetInterface(&talk, 0xf);
+    PBrain->PCreature->GetTC(TCI_TALK, &talk);
     if (talk->IsTalking())
         return;
     for (;;) {

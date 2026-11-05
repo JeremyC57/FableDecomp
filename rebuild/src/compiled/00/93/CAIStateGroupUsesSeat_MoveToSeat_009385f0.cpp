@@ -10,26 +10,11 @@ class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        bool has = (unsigned char)(m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1;
-        if (has) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPhysical : public CThing { public:
     const C3DVector& PeekPos() const;    // 0x006A4D00
 };
@@ -83,7 +68,7 @@ bool CAIStateGroup_UsesSeat::MoveToSeat(long movement)
     CRightHandedSet orientation;
     {
         CTCUserActionPointBase* point;
-        ((CThing*)PSeat.GetPItem())->GetInterface(&point, 0x2d);
+        ((CThing*)PSeat.GetPItem())->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &point);
         if (!point->GetFreeActionPoint(GetCreature(), &SeatPos, &orientation, &SeatPosIndex))
             return false;
     }

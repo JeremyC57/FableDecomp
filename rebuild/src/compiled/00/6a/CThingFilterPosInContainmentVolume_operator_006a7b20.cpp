@@ -10,9 +10,8 @@
 // Shape: two null tests share the byte-constant false exit; the mesh object is a named local and each return destroys it
 // (two dtor calls); the tolerance argument is the literal 0.0f (`push 0`).
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* m_pData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CPhysicsMeshObject { public:
     void*         m_pMesh;                      // +0x04 counted mesh
     unsigned char _pad08[0x38];
@@ -25,10 +24,7 @@ class CTCPhysicsBase { public:
 public:
     CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-};
+
 class CThingFilter_PosInContainmentVolume { public:
     C3DVector   Pos;                            // +0x00
     CCharString VolumeName;                     // +0x0c
@@ -37,7 +33,7 @@ class CThingFilter_PosInContainmentVolume { public:
 
 bool CThingFilter_PosInContainmentVolume::operator()(CThing* thing) const
 {
-    CTCPhysicsBase* physics = thing->PhysicsTC;
+    CTCPhysicsBase* physics = thing->GetPhysicsTC();
     if (physics && physics->GetPhysicsMeshParameters()) {
         CPhysicsMeshObject mesh = physics->GetPhysicsMeshObject();
         if (mesh.IsInContainmentVolume(VolumeName, Pos, 0.0f))

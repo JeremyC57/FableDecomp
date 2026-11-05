@@ -1,4 +1,5 @@
 // CTCHeroExperience::UpdateComboMultiplier(bool) -- after a combo-multiplier change: re-enables the melee flourish on a rise, records the best multiplier, reports it to the scoreboard and plays the lock / increase / running-hits sound
+// Leaf: ?UpdateComboMultiplier@CTCHeroExperience@@QAEX_N@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D7F20, 435 bytes (+ int3 padding), `ret 4` (the bool parameter is unused;
 // its slot homes the interface-lookup keys).
@@ -22,28 +23,10 @@
 struct CTCBaseComponent;
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((CTCBaseComponent*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second);
-            return true;
-        }
-        return false;
-    }
-};
-
-
 
 class CTCCombat { public: void SetMeleeFlourishValid(bool valid); };   // 0x00733E10
 class CTCHeroStats : public CTCHeroStatsDonor {
@@ -106,16 +89,16 @@ void CTCHeroExperience::UpdateComboMultiplier(bool)
     long lastMultiplier = GetLastExperiencePickupMultiplier();
     if (multiplier > lastMultiplier) {
         CTCCombat* combat;
-        ParentThing->GetInterface(&combat, 0x30);
+        ParentThing->GetTC(TCI_COMBAT, &combat);
         combat->SetMeleeFlourishValid(true);
     }
     CTCHeroStats* stats;
-    if (ParentThing->GetInterface(&stats, 4)) {
+    if (ParentThing->GetTC(TCI_HERO_STATS, &stats)) {
         if (multiplier > stats->MaximumMultiplier)
             stats->MaximumMultiplier = multiplier;
     }
     CTCHeroOnlineScoreboard* scoreboard;
-    ParentThing->GetInterface(&scoreboard, 0x10d);
+    ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
     scoreboard->UpdateScoreForActivity(2, (float)multiplier, false);
     long fallback = GetExperienceFallbackMultiplier();
     if (fallback > GetExperienceFallbackMultiplierForMultiplier(lastMultiplier))

@@ -34,12 +34,7 @@ public:
     virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069();
     virtual C3DVector GetFacing();                   // slot 70 (+0x118), by value through the hidden pointer
 };
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                       // +0x60 (retail)
-    CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
-};
+#include "engine/CThing.h"
 struct CIntelligentPointerThing {                    // CIntelligentPointer<CThing>
     void* __vftable;
     void* m_pItem;

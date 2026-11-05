@@ -1,4 +1,5 @@
 // CAIStateGroup_GameMaster::GetSeat() -- collect the pub's live tavern tables, then try them in order: take the table, and if it gives a game-master seat claim its food as the tankard and register the creature with the table's coin-golf game
+// Leaf: ?GetSeat@CAIStateGroup_GameMaster@@QAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH (retry A 11b) -- the STLport list<CThing*> destructor (0x00792240) gets a same-TU auto_inline(off) body, so VC sees the local list's address never escapes and keeps its header node in esi for the whole function (this spilled to [esp+0x1c]); push_back links through STLport insert's n/prev locals; operator= reads the source item into a local before SetPItem
@@ -18,33 +19,13 @@
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: float M[6]; };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long type)
-    {
-        if (HasTC(type)) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            *ppOut = (T*)(it == map->end() || type < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingObject : public CThing { public: };
 class CThingAICreature : public CThing { public: };
 class CBaseObject;
@@ -63,7 +44,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    return ((CThing*)p.GetPItem()) != 0 && !(((CThing*)p.GetPItem())->m_flags91 & 1);
+    return ((CThing*)p.GetPItem()) != 0 && !((CThing*)p.GetPItem())->IsDead();
 }
 template <class T> struct CListNode {
     CListNode* _M_next;
@@ -161,10 +142,10 @@ bool CAIStateGroup_GameMaster::GetSeat()
 {
     CStlList<CThing*> tables;
     CTCTableList* tableList;
-    if (!IS_THING_ALIVE(PPub) || !((CThing*)PPub.GetPItem())->GetInterface(&tableList, 0x21))
+    if (!IS_THING_ALIVE(PPub) || !((CThing*)PPub.GetPItem())->GetTC(TCI_THING_OWNER, &tableList))
         return false;
     for (CPointerListNode* node = tableList->_M_node->_M_next; node != tableList->_M_node; node = node->_M_next) {
-        if (IS_THING_ALIVE(node->_M_data) && ((CThing*)node->_M_data.GetPItem())->HasTC(0xb8))
+        if (IS_THING_ALIVE(node->_M_data) && ((CThing*)node->_M_data.GetPItem())->HasTC(TCI_TAVERN_TABLE))
             tables.push_back(((CThing*)node->_M_data.GetPItem()));
     }
     if (tables.size() == 0)
@@ -175,11 +156,11 @@ bool CAIStateGroup_GameMaster::GetSeat()
         tables.pop_front();
         CCharString name("ACTION_POINT_GAME_MASTER");
         CTCTavernTable* table;
-        if (IS_THING_ALIVE(PTable) && ((CThing*)PTable.GetPItem())->GetInterface(&table, 0xb8)
+        if (IS_THING_ALIVE(PTable) && ((CThing*)PTable.GetPItem())->GetTC(TCI_TAVERN_TABLE, &table)
             && table->GetSeat(*GetCreature(), Pos, RHSet, ActionPointIndex, SeatIndex, &name)) {
             PTankard = CIntelligentPointer<CThing>(table->GetTankard(SeatIndex));
             CTCTavernGameCoinGolf* golf;
-            ((CThing*)PTable.GetPItem())->GetInterface(&golf, 0xcf);
+            ((CThing*)PTable.GetPItem())->GetTC(TCI_TAVERN_GAME, &golf);
             golf->SetGameMaster(GetCreature());
             return true;
         }

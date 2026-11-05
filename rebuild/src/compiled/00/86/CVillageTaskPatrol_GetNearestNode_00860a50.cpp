@@ -9,11 +9,9 @@
 // Shape: the best distance starts at FLT_MAX (0x7F7FFFFF) in the frame; `dist < best` is `fcom ; test ah,5 ; jp`; the
 // squared length is a `dist = dz*dz; dist += dx*dx; dist += dy*dy;` chain (a single sum expression is reordered by VC7.1).
 #include "engine/C3DVector.h"
-class CThing { public:
-    const C3DVector& GetPos() const;          // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingTrackNode : public CThing { public:
-    unsigned char    _pad[0xd0];
+    unsigned char _pad[0x38];   // own members from +0x98
     CThingTrackNode* NextNode;                     // +0xd0 (retail)
     unsigned char    _pad2[0xed - 0xd4];
     bool             IsEnd;                        // +0xed (retail)

@@ -19,18 +19,18 @@ class CRGBColour { public:
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     void SetSelfIlluminating(bool on);                      // 0x004BFA20
     void RemoveTintColour(void* owner);                     // 0x004BFAE0
     void SetTintColour(const CRGBColour& colour, void* owner);   // 0x004C00B0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
-enum ETCInterfaceType { };
-class CThing { public:
-    unsigned char         _pad00[0x64];
-    CTCGraphicAppearance* PGraphicAppearance;               // +0x64
-    void RemoveTC(ETCInterfaceType type);                               // 0x004C9840
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CTCFlashOnHit { public:
     virtual void v00();
@@ -46,12 +46,12 @@ class CTCFlashOnHit { public:
 
 void CTCFlashOnHit::FrameUpdate()
 {
-    ParentThing->PGraphicAppearance->SetSelfIlluminating(Timer > 0);
+    ParentThing->GetTCGraphicAppearance()->SetSelfIlluminating(Timer > 0);
     if (Timer-- == 0)
     {
-        ParentThing->PGraphicAppearance->RemoveTintColour(this);
+        ParentThing->GetTCGraphicAppearance()->RemoveTintColour(this);
         ParentThing->RemoveTC((ETCInterfaceType)(0xfb));
     }
     else
-        ParentThing->PGraphicAppearance->SetTintColour(CRGBColour(255, 0, 0, 255), this);
+        ParentThing->GetTCGraphicAppearance()->SetTintColour(CRGBColour(255, 0, 0, 255), this);
 }

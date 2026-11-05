@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToBed::FindFreeBanditBed() -- choose the nearest of the region's sleep points that is mine and not blocked, record its position and orientation, and claim it
+// Leaf: ?FindFreeBanditBed@CAIStateGroup_GoToBed@@QAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z; 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
@@ -14,42 +15,13 @@
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: float M[6]; };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 float __fastcall GFFloatRandom(unsigned long* seed, float range);   // 0x004978A0
 
-class CThing { public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0xc];
-    struct CThingGraphic* PGraphic;             // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead, bit 5
-    bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    __forceinline CTCBase* GetTC(long type)
-    {
-        long key = type;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
-        return (it == map->end() || type < it->first ? map->end() : it)->second;
-    }
-    __forceinline CTCBase* GetTC(long type) const
-    {
-        long key = type;
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
-        return (it == map->end() || type < it->first ? map->end() : it)->second;
-    }
-};
-struct CThingGraphic {
+struct CTCPhysicsBase {
     virtual void v000(); virtual void v004(); virtual void v008(); virtual void v00c(); virtual void v010(); virtual void v014();
     virtual void v018(); virtual void v01c(); virtual void v020(); virtual void v024(); virtual void v028(); virtual void v02c();
     virtual void v030(); virtual void v034(); virtual void v038(); virtual void v03c(); virtual void v040(); virtual void v044();
@@ -123,10 +95,10 @@ struct CAIStateGroup_GoToBed : CAIStateGroupBase {
 bool CAIStateGroup_GoToBed::FindFreeBanditBed()
 {
     const CThing* creature = GetCreature();
-    if (creature->HasTC(0x4a)) {
+    if (creature->HasTC(TCI_BANDIT)) {
         CTCVillageMember* link;
-        if (creature->HasTC(0x23))
-            link = (CTCVillageMember*)creature->GetTC(0x23);
+        if (creature->HasTC(TCI_VILLAGE_MEMBER))
+            link = (CTCVillageMember*)((CTCVillageMember*)&creature->GetTC(TCI_VILLAGE_MEMBER));
         CTCVillage* region = link->GetPVillage();
         if (region && region->_M_node->_M_next != region->_M_node) {
             CThingFilter_IsMySleepPoint isMine(GetCreature());
@@ -136,7 +108,7 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
             CPointerListNode* head = region->_M_node;
             for (CPointerListNode* node = head->_M_next; node != head; node = node->_M_next) {
                 CThing* bed = ((CThing*)node->_M_data.GetPItem());
-                if (bed && !(bed->m_flags91 & 1) && isMine(bed) && !isBlocked(bed)) {
+                if (bed && !bed->IsDead() && isMine(bed) && !isBlocked(bed)) {
                     CThing* me = GetCreature();
                     const C3DVector& bedPos = bed->GetPos();
                     const C3DVector& myPos = me->GetPos();
@@ -148,7 +120,7 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
                         PBed.SetPItem((CBaseObject*)bed);
                         bestDistanceSquared = distanceSquared;
                         BedPos = bed->GetPos();
-                        Rhset = *bed->PGraphic->GetRHSet();
+                        Rhset = *bed->GetPhysicsTC()->GetRHSet();
                     }
                 }
             }
@@ -156,8 +128,8 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
                 IsBedSleepPointMarker = true;
                 CTCSleepPoint* point;
                 CThing* chosen = ((CThing*)PBed.GetPItem());
-                if (chosen->HasTC(0xac))
-                    point = (CTCSleepPoint*)chosen->GetTC(0xac);
+                if (chosen->HasTC(TCI_SINGLE_PERSON_OCCUPIABLE))
+                    point = (CTCSleepPoint*)((CTCSleepPoint*)&chosen->GetTC(TCI_SINGLE_PERSON_OCCUPIABLE));
                 point->SetUser(GetCreature());
                 return true;
             }

@@ -1,4 +1,5 @@
 // CTCShopKeeper::DetachFromShop() -- tell the alive shop's shop component it has no keeper, clear the keeper's shop pointer, and refresh the player GUI when a shop was told
+// Leaf: ?DetachFromShop@CTCShopKeeper@@QAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
@@ -16,25 +17,11 @@ class CThing;
 class CBaseObject;
 class CThingCreatureBase;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                            // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-    }
-};
+
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                    // +0x04
@@ -73,10 +60,10 @@ class CTCShopKeeper { public:
 void CTCShopKeeper::DetachFromShop()
 {
     bool detached = false;
-    if (((CThing*)Shop.GetPItem()) && !(((CThing*)Shop.GetPItem())->m_flags91 & 1)) {
+    if (((CThing*)Shop.GetPItem()) && !((CThing*)Shop.GetPItem())->IsDead()) {
         CThing* shop = ((CThing*)Shop.GetPItem());
-        if (shop->HasTC(0x53)) {
-            ((CTCShop*)shop->GetTC(0x53))->SetShopKeeper(0);
+        if (shop->HasTC(TCI_SHOP)) {
+            ((CTCShop*)((CTCShop*)&shop->GetTC(TCI_SHOP)))->SetShopKeeper(0);
             detached = true;
         }
     }

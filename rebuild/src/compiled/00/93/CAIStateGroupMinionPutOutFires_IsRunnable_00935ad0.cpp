@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionPutOutFires::IsRunnable() -- with perception: clear the fire target, find the nearest burning thing within the creature's extended sight radius (2D) and latch it; runnable when that fire is alive
+// Leaf: ?IsRunnable@CAIStateGroup_MinionPutOutFires@@UAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Grade: RELOCATION_MATCH -- retry wave 2 (sec4): the +0x91 dead test through CThing::IsDead() const (Ego_r.pdb
@@ -16,34 +17,12 @@
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04) with the fire
 //          intelligent pointer at +0x14.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #include "engine/C3DVector.h"
-class CThing {
-public:
-    C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
-private: public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }   // Ego_r.pdb ?IsDead@CThing@@QBE_NXZ
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCPerceiveThing { public:                       // interface 0x34
     float GetExtendedSightRadius();             // 0x007448F0
 };
@@ -133,7 +112,7 @@ struct CAIStateGroup_MinionPutOutFires : CAIStateGroupBase {
 bool CAIStateGroup_MinionPutOutFires::IsRunnable()
 {
     CTCPerceiveThing* perceive;
-    if (GetCreature()->GetInterface(&perceive, 0x34)) {
+    if (GetCreature()->GetTC(TCI_PERCEIVE_THING, &perceive)) {
         CThing* fire = 0;
         PFire = CIntelligentPointerThing(0);
         float radius = perceive->GetExtendedSightRadius();

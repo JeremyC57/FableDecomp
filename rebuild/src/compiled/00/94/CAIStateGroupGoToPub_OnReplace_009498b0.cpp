@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToPub::OnReplace() -- free the seat and the bar point, get up from the table when sitting (removing the sitting mode if that fails or when not sitting), leave hands-off mode, and clear every tracked pointer and the seat index
+// Leaf: ?OnReplace@CAIStateGroup_GoToPub@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009498B0, length 497 bytes (+ int3 padding). Vtable slot 10.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x31 CTCCreatureModeManager = bit 17 of +0x24),
@@ -13,25 +14,12 @@
 // Layout: GoToPub from Ego_r.pdb (base 0x14): PPub +0x14, PBar +0x1c, PTable +0x24, PBarman +0x2c, PTankard +0x34, SeatIndex
 // +0x3c, Sitting +0x70, BarActionPointIndex +0x74, HandsOffMode +0xa0.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-    }
-};
+
 class CThingBuilding;
 class CThingObject;
 class CThingAICreature;
@@ -49,11 +37,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     __forceinline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((const CThing*)item)); }
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
+
 class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
@@ -89,7 +73,7 @@ void CAIStateGroup_GoToPub::OnReplace()
 {
     bool removeMode = true;
     CTCCreatureModeManager* modes;
-    PBrain->PCreature->GetInterface(&modes, 0x31);
+    PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
     FreeSeat();
     if (BarActionPointIndex != -1)
         FreeBarPoint();

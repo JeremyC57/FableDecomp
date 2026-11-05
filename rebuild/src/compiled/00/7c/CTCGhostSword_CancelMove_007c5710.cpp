@@ -1,4 +1,5 @@
 // CTCGhostSword::CancelMove() -- stop the interface-0x9B timer component of every live ghost-sword minion once (copy its target into its current value and set its stopped flag)
+// Leaf: ?CancelMove@CTCGhostSword@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007C5710, length 175 bytes (+ int3 padding). __fastcall, `ret`.
 //         Ego_r.pdb: `?CancelMove@CTCGhostSword@@QAEXXZ`.
@@ -10,30 +11,10 @@
 // Layout: retail CTCGhostSword: PDef +0x0C, Minions +0x10 (12-byte STLport vector of CIntelligentPointer<CThingAICreature>).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -55,7 +36,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -92,7 +73,7 @@ void CTCGhostSword::CancelMove()
     for (unsigned long i = 0; i < Minions.size(); ++i) {
         if (IS_THING_ALIVE(Minions[i])) {
             CTCMinionTimer* timer;
-            if (Minions[i].GetPItem()->GetInterface(&timer, 0x9b)) {
+            if (Minions[i].GetPItem()->GetTC(TCI_EFFECT_ON_DIE, &timer)) {
                 if (!timer->Stopped) {
                     timer->Current = timer->Target;
                     timer->Stopped = true;

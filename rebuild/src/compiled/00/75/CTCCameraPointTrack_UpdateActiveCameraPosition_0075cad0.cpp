@@ -11,9 +11,7 @@
 #include <math.h>
 #pragma intrinsic(sqrt)
 #include "engine/C3DVector.h"
-class CThing { public:
-    const C3DVector& GetPos() const;               // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;                              // 0x00487DD0

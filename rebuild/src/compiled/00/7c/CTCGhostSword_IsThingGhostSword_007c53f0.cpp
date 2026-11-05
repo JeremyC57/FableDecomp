@@ -9,12 +9,8 @@
 // Layout: retail CThing DefGlobalIndex (ushort) +0x8c (PDB +0x9c, the retail CThing is 0x10 shorter before it).
 // Shape: the name is a named local in its own block (destroyed before the compare, its frame word the `push ecx`,
 //   its address re-taken for the lookup argument; a temporary passes the ctor's eax instead); `index > 0 && DefGlobalIndex == index` as an if with `return true` / `return false` (`mov al,1`).
-class CCharString {
-public:
-    void* PString;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CDefinitionManager
 {
@@ -25,12 +21,6 @@ public:
 class CGameDefinitionManager : public CDefinitionManager {
 public:
     static CGameDefinitionManager& __fastcall Get();                    // 0x0044C6B0
-};
-
-class CThing {
-public:
-    unsigned char  _pad00[0x8c];
-    unsigned short DefGlobalIndex;              // +0x8c
 };
 
 class CTCGhostSword {
@@ -45,7 +35,7 @@ bool __fastcall CTCGhostSword::IsThingGhostSword(const CThing* thing)
         CCharString name("GHOSTLY_SWORD");
         index = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);
     }
-    if (index > 0 && thing->DefGlobalIndex == index)
+    if (index > 0 && thing->GetDefGlobalIndex() == index)
         return true;
     return false;
 }

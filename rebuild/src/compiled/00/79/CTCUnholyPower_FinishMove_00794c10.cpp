@@ -28,45 +28,19 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    void Kill(bool immediately);                // 0x004C9B80
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long wanted)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -122,7 +96,7 @@ class CTCUnholyPower : public CTCBase { public:
     void StopSound(unsigned long sound)
     {
         CTCSoundEmitter* emitter;
-        if (ParentThing->GetInterface(&emitter, 0x10))
+        if (ParentThing->GetTC(TCI_SOUND_PLAYER, &emitter))
             emitter->StopSample(sound);
     }
     void FinishMove();
@@ -135,8 +109,8 @@ void CTCUnholyPower::FinishMove()
     const float* times = PDef->FadeOutTimes;
     CWorld* world = (&GetWorld());
     world->PEnvironment->TransitionToDefaultThemeAllChannels(2, times[SpellLevel]);
-    if (ParentThing->HasTC(0xa7)) {
-        CTCInterfaceA7* tc = ParentThing->GetTC<CTCInterfaceA7>(0xa7);
+    if (ParentThing->HasTC(TCI_SPECIAL_ABILITIES)) {
+        CTCInterfaceA7* tc = ((CTCInterfaceA7*)&ParentThing->GetTC(TCI_SPECIAL_ABILITIES));
         tc->m_active = false;
         tc->m_count = 0;
     }

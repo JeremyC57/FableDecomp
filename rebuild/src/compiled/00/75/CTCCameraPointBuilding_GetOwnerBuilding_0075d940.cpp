@@ -1,4 +1,5 @@
 // CTCCameraPointBuilding::GetOwnerBuilding(CThing** out) const -- fetch the parent thing's interface-51 component, follow its owner pointer and hand it out when that thing is a building
+// Leaf: ?GetOwnerBuilding@CTCCameraPointBuilding@@QBE_NPAPAVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 //
 // Retail 0x0075D940, 87 bytes (`ret 4`). Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
@@ -27,33 +28,11 @@ class CIntelligentPointer : public CBaseIntelligentPointer
 
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing
-{ public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad_0x54[0x18];
-    unsigned long ThingTypeFlags;                   // +0x6c
-
-    template <class T> bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-        {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 enum { TC_INTERFACE_51 = 51, THING_TYPE_BUILDING = 0x40 };
 
@@ -75,11 +54,11 @@ struct CTCCameraPointBuilding
 
 bool CTCCameraPointBuilding::GetOwnerBuilding(CThing** out) const
 {
-    CTCBuildingOwned* owned;
-    if (ParentThing->GetInterface(TC_INTERFACE_51, &owned))
+    const CTCBuildingOwned* owned;
+    if (ParentThing->PeekTC(TCI_OWNED_ENTITY, &owned))
     {
         CThing* building = owned->POwner.Get();
-        if (building->ThingTypeFlags & THING_TYPE_BUILDING)
+        if (building->GetTypeFlags() & THING_TYPE_BUILDING)
         {
             *out = building;
             return true;

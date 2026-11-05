@@ -1,4 +1,5 @@
 // CTCDRegionExit::GetDisplayName() const -- the display name of the region holding the map the connected entrance stands in (CRegion::GetDisplayName), or the shared empty name when no entrance is connected
+// Leaf: ?GetDisplayName@CTCDRegionExit@@QBEABVCCharString@@XZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x00779260, 100 bytes (plain `ret`; the region call is a tail `jmp`). Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50
@@ -13,13 +14,10 @@
 // the map again each time; the pointer member's address stays in ebx for both GetPItem calls.
 class CBaseObject;
 #include "engine/C3DVector.h"
-class CCharString { public: void* m_pData; };
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 extern CCharString g_EmptyName;                // 0x013BD804
-
-class CThing { public:
-    const C3DVector& GetPos() const;      // 0x004C73D0
-};
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {

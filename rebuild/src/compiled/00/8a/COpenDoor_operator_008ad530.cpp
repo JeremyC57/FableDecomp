@@ -22,27 +22,10 @@ class CTCDoor { public:
         return !Opening && !Closing && CurrentOpen;
     }
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    virtual void v00();
-    unsigned char _pad04[0x1c];
-    unsigned long m_presentBits[9];         // +0x20 bitset of the interface types present
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-};
-
-enum { TC_DOOR = 0x26 };
 
 struct COpenDoor {
     bool m_open;                            // +0
@@ -52,9 +35,9 @@ struct COpenDoor {
 
 void COpenDoor::operator()(CThing* thing) const
 {
-    if (thing && thing->HasTC(TC_DOOR))
+    if (thing && thing->HasTC(TCI_DOOR))
     {
-        CTCDoor* door = (CTCDoor*)thing->GetTC(TC_DOOR);
+        CTCDoor* door = (CTCDoor*)((CTCDoor*)&thing->GetTC(TCI_DOOR));
         if (m_force)
             door->ScriptTriggerOpen(m_open);
         else

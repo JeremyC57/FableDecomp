@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToApology::Update() -- speak accepted or rejected apology response then terminate
+// Leaf: ?Update@CAIStateGroup_MinionReactToApology@@QAEXXZ
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members first/last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Retail0x0091D190,270 bytes. GetApology91D0A0; player manager8FCF90,main player449970,CPlayer::GetPControlledCreature 487DC0;
 // RTTI pointers1237f1c/123e7d8 slot0 deleting dtors48a4f0/4d6915, genuine virtual base destructor.
@@ -20,21 +21,10 @@ public:
 #undef CPlayer
 class CCharString;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
-    unsigned char middle[0x45]; unsigned char dead;
-    template<class T> __forceinline bool GetInterface(T** out,long type) {
-        bool present=(bits[type>>5]>>(type&31))&1;
-        if(present) {
-            ETCInterfaceType key = (ETCInterfaceType)(type); CInterfaceMap* map=&interfaces; CInterfaceMap::value_type* it=map->LowerBound(key);
-            *out=(T*)((void*)((it==map->end() || it->first>type)?map->end():it)->second);
-        } return present;
-    }
-};
-
 
 struct CEventApologyReceived { void* vtable; long WorldFrame; bool Accepted; };
 struct CEventFilter_None { CEventFilter_None() {} };
@@ -55,7 +45,7 @@ struct CAIStateGroup_MinionReactToApology : CAIStateGroupBase {
 };
 void CAIStateGroup_MinionReactToApology::Update() {
  CTCEntityEventsMethods* events;
- bool hasEvents=((CThing*)PBrain->Creature)->GetInterface(&events,0x42);
+ bool hasEvents=((CThing*)PBrain->Creature)->GetTC(TCI_ENTITY_EVENTS, &events);
  if(hasEvents) {
   const CEventApologyReceived* apology=events->GetApology();
   if(apology) {

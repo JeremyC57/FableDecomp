@@ -1,0 +1,223 @@
+addr       parity           behav  name
+0041e641   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+0041e641   WARN RELOC_NAME: ?SetFontBank@CFrontEndManager@NUISystem@@QAEXV?$CCountedPointer@VCFontBank@@@@@Z -> 0041d198 labelled 'NUISystem::CManager::SetGraphicsBank'
+0041e641   WARN RELOC_NAME: ??1SMember88@@QAE@XZ -> 0042ce63 labelled 'std::list<T_0042ce63>::~list'
+0041e641   WARN RELOC_NAME: ??1SMember80@@QAE@XZ -> 004291de labelled 'CCountedPointer<NUISystem::CComponent>::~CCountedPointer'
+0041e641   WARN RELOC_NAME: ??1SMember70@@QAE@XZ -> 0042b7d7 labelled 'std::list<T_0042b7d7>::~list'
+0041e641   WARN RELOC_NAME: ??1SMember60@@QAE@XZ -> 0042ab1c labelled 'std::list<T_0042ab1c>::~list'
+0041e641   WARN RELOC_NAME: ??1SMember5c@@QAE@XZ -> 0042ab73 labelled 'std::list<long, std::allocator<long>>::~list'
+0041e641   WARN RELOC_NAME: ??1SMember24@@QAE@XZ -> 0042b796 labelled 'std::list<T_0042b796>::~list'
+0041e641   WARN RELOC_NAME: ??1SMember18@@QAE@XZ -> 0042918c labelled 'CCountedPointer<CMeshDataBank>::~CCountedPointer'
+0041e641   WARN RELOC_NAME: ??1SMember10@@QAE@XZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+0041e641   WARN RELOC_NAME: ??1CManagerBase@NUISystem@@UAE@XZ -> 0042bec0 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+0041e641   RELOCATION_MATCH PASS   ~CManager
+005407b0   WARN RELOC_NAME: ?InitializeChangingStateComponent@EditBoxBaseNative@@QAEXJ@Z -> 0052cc50 labelled 'NUISystem::CChangingStateComponent::CChangingStateComponent'
+005407b0   WARN RELOC_NAME: ?GetUIManager@@YIPAUManagerMethods@@XZ -> 0041e5f2 labelled 'NUISystem::CManager::GetInstance'
+005407b0   WARN STANDIN_LEAF ??0EditBoxNative@@QAE@J@Z (catalog CEditBox; names another function)
+005407b0   RELOCATION_MATCH PASS   CEditBox
+0054b4b0   WARN SHARED_HEADER_AVAILABLE C2DVector
+0054b4b0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0054b4b0   WARN SHARED_HEADER_AVAILABLE CManager
+0054b4b0   WARN RELOC_NAME: ?DestroyAction@NUISystem@@YIXPAX@Z -> 00429f43 labelled 'CTCMapwho::OnDie'
+0054b4b0   WARN RELOC_NAME: ?AddUIActionParam@CAction@NUISystem@@QAEXPAVCActionParam@2@ABV?$CCountedPointer@VCAction@NUISystem@@@@@Z -> 0053fde0 labelled 'NUISystem::CAction::AddParam'
+0054b4b0   RELOCATION_MATCH PASS   GetDataFromDef
+0054c810   WARN SHARED_HEADER_AVAILABLE C2DVector
+0054c810   WARN SHARED_HEADER_AVAILABLE CRGBColour
+0054c810   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0054c810   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+0054c810   WARN SHARED_HEADER_AVAILABLE CFrontEndList
+0054c810   RELOCATION_MATCH PASS   ScrollDown
+00558770   WARN SHARED_HEADER_AVAILABLE C2DVector
+00558770   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00558770   WARN SHARED_HEADER_AVAILABLE CManager
+00558770   WARN RELOC_NAME: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2ca labelled '_global::CCountedPointer_Assign_0042a2ca'
+00558770   RELOCATION_MATCH PASS   Initialise
+0055a3e0   WARN SHARED_HEADER_AVAILABLE C2DVector
+0055a3e0   WARN RELOC_NAME: ?GetUIManager@@YAPAUNativeUIManager@@XZ -> 0041e5f2 labelled 'NUISystem::CManager::GetInstance'
+0055a3e0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0055a3e0   RELOCATION_MATCH PASS   Update
+0056be00   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0056be00   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0056be00   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0056be00   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0056be00   WARN SHARED_HEADER_AVAILABLE CWorld
+0056be00   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0056be00   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+0056be00   WARN SHARED_HEADER_AVAILABLE CPlayer
+0056be00   WARN SHARED_HEADER_AVAILABLE CTCBase
+0056be00   WARN RELOC_NAME: ?g_BoastList@@3PAUSListNode@@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+0056be00   WARN RELOC_NAME: ?Activate@CTCBoastUI@@QAEXXZ -> 0056ad40 labelled 'CQuestManager::UpdateUI_QuestMenu'
+0056be00   RELOCATION_MATCH PASS   GlobalUpdate
+005820e7   WARN SHARED_HEADER_AVAILABLE CManager
+005820e7   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005820e7   WARN SHARED_HEADER_AVAILABLE CTCInventory
+005820e7   RELOCATION_MATCH PASS   CreateMenuDesc
+00582673   WARN SHARED_HEADER_AVAILABLE CManager
+00582673   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00582673   WARN SHARED_HEADER_AVAILABLE CTCInventory
+00582673   RELOCATION_MATCH PASS   CreateMenuDescPC
+00597006   WARN SHARED_HEADER_AVAILABLE CManager
+00597006   WARN RELOC_NAME: ??0CAction@N_0042bed4@NUISystem@@QAE@XZ -> 0042bed4 labelled 'NUISystem::CDeletion::CDeletion'
+00597006   WARN RELOC_NAME: ??0CAction@N_0042bed4@NUISystem@@QAE@ABU012@@Z -> 0042cd84 labelled 'NUISystem::CDeletion::CDeletion'
+00597006   WARN RELOC_NAME: ??1CActionParamListOwned@NUISystem@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00597006   WARN RELOC_NAME: ?Release@CListPointer@@QAEXXZ -> 0059a994 labelled 'CCountedPointer<NUISystem::CList>::~CCountedPointer'
+00597006   RELOCATION_MATCH PASS   RefreshAvailableProfilesForDelete
+0059f304   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+0059f304   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0059f304   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+0059f304   WARN SHARED_HEADER_AVAILABLE CWorld
+0059f304   WARN SHARED_HEADER_AVAILABLE CThing
+0059f304   WARN SHARED_HEADER_AVAILABLE CManager
+0059f304   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+0059f304   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0059f304   WARN SHARED_HEADER_AVAILABLE CTCBase
+0059f304   WARN RELOC_NAME: ?SetCurrentScreenType@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+0059f304   WARN RELOC_NAME: ?RemoveTattooAndHairCategories@CTCInventoryTrade@@QAEXXZ -> 0059d9ad labelled 'CTCInventoryTrade::ResetTradeList'
+0059f304   WARN RELOC_NAME: ?g_frontEndNodeList@@3UCNodeList@@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+0059f304   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0059f304   RELOCATION_MATCH PASS   CloseInventory
+005a45f6   WARN SHARED_HEADER_AVAILABLE CThing
+005a45f6   WARN SHARED_HEADER_AVAILABLE CTCShop
+005a45f6   WARN SHARED_HEADER_AVAILABLE CPlayer
+005a45f6   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+005a45f6   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005a45f6   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+005a45f6   WARN SHARED_HEADER_AVAILABLE CManager
+005a45f6   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+005a45f6   WARN RELOC_NAME: ?GetControlledCreature@CPlayer@@QAEPAVCThing@@XZ -> 00487dd0 labelled 'CPlayer::PeekPControlledCreature'
+005a45f6   WARN RELOC_NAME: ?GetTradingThing@CTCInventoryTrade@@QAEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a45f6   RELOCATION_MATCH PASS   ConstructSellActionsList
+005a731f   WARN SHARED_HEADER_AVAILABLE CThing
+005a731f   WARN SHARED_HEADER_AVAILABLE CTCShop
+005a731f   WARN SHARED_HEADER_AVAILABLE CPlayer
+005a731f   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+005a731f   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005a731f   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+005a731f   WARN SHARED_HEADER_AVAILABLE CManager
+005a731f   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+005a731f   WARN RELOC_NAME: ?GetControlledCreature@CPlayer@@QAEPAVCThing@@XZ -> 00487dd0 labelled 'CPlayer::PeekPControlledCreature'
+005a731f   WARN RELOC_NAME: ?GetTradingThing@CTCInventoryTrade@@QAEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a731f   RELOCATION_MATCH PASS   ConstructSellActionsListPC
+005b358c   WARN SHARED_HEADER_AVAILABLE CManager
+005b358c   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005b358c   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing
+005b358c   RELOCATION_MATCH PASS   CreateMenuDesc
+005b3613   WARN SHARED_HEADER_AVAILABLE CManager
+005b3613   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005b3613   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing
+005b3613   RELOCATION_MATCH PASS   CreateMenuDescPC
+005c323a   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005c323a   WARN SHARED_HEADER_AVAILABLE CManager
+005c323a   RELOCATION_MATCH PASS   ConstructWieldEntry
+005c3444   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+005c3444   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005c3444   WARN SHARED_HEADER_AVAILABLE CManager
+005c3444   RELOCATION_MATCH PASS   ConstructWieldEntryPC
+005cdd86   WARN SHARED_HEADER_AVAILABLE C2DCoordI
+005cdd86   WARN SHARED_HEADER_AVAILABLE CRGBColour
+005cdd86   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005cdd86   WARN SHARED_HEADER_AVAILABLE CManager
+005cdd86   WARN SHARED_HEADER_AVAILABLE CThing
+005cdd86   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience
+005cdd86   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+005cdd86   RELOCATION_MATCH PASS   CreateExperienceSliders
+005faf50   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo
+005faf50   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+005faf50   WARN SHARED_HEADER_AVAILABLE CManager
+005faf50   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+005faf50   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+005faf50   WARN SHARED_HEADER_AVAILABLE CPlayer
+005faf50   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005faf50   WARN RELOC_NAME: ?Close@CManager@NHeroInformationScreens@@QAEXXZ -> 0066e73d labelled '_global::SetMemberConst_0066e73d'
+005faf50   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+005faf50   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+005fc2d0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+005fc2d0   WARN SHARED_HEADER_AVAILABLE CManager
+005fc2d0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005fc2d0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005fc2d0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+005fc2d0   WARN SHARED_HEADER_AVAILABLE CThing
+005fc2d0   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap
+005fc2d0   WARN RELOC_NAME: ?GetUI@NScreen005fc2d0@@YIPAUCManager@1@XZ -> 0041e5f2 labelled 'NUISystem::CManager::GetInstance'
+005fc2d0   WARN RELOC_NAME: ?DestroyWidget@NScreen005fc2d0@@YIXPAX@Z -> 00428b10 labelled 'CCountedPointer<NUISystem::CComponent>::DeleteData'
+005fc2d0   RELOCATION_MATCH PASS   ConstructQuestsScreen_CurrentQuests
+005fc8a0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+005fc8a0   WARN SHARED_HEADER_AVAILABLE CManager
+005fc8a0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005fc8a0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005fc8a0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+005fc8a0   WARN SHARED_HEADER_AVAILABLE CThing
+005fc8a0   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap
+005fc8a0   WARN RELOC_NAME: ?GetUI@NScreen005fc8a0@@YIPAUCManager@1@XZ -> 0041e5f2 labelled 'NUISystem::CManager::GetInstance'
+005fc8a0   WARN RELOC_NAME: ?DestroyWidget@NScreen005fc8a0@@YIXPAX@Z -> 00428b10 labelled 'CCountedPointer<NUISystem::CComponent>::DeleteData'
+005fc8a0   RELOCATION_MATCH PASS   ConstructQuestsScreen_CurrentQuestsPC
+005fce60   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+005fce60   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005fce60   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+005fce60   WARN SHARED_HEADER_AVAILABLE CWorld
+005fce60   WARN SHARED_HEADER_AVAILABLE CManager
+005fce60   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+005fce60   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+005fce60   WARN SHARED_HEADER_AVAILABLE CTCBase
+005fce60   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005fce60   WARN RELOC_NAME: ?SetScreen@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+005fce60   WARN RELOC_NAME: ?g_frontEndNodeList@@3UCNodeList@@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+005fce60   WARN RELOC_NAME: ?ClearAllLists@CTCInventoryMap@@QAEXXZ -> 005fc510 labelled 'CTCInventoryMap::ResetPrimitiveHandles'
+005fce60   RELOCATION_MATCH PASS   vfunc_31
+00621720   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00621720   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+00621720   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00621720   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00621720   WARN SHARED_HEADER_AVAILABLE CWorld
+00621720   WARN SHARED_HEADER_AVAILABLE CManager
+00621720   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+00621720   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00621720   WARN SHARED_HEADER_AVAILABLE CTCBase
+00621720   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00621720   WARN RELOC_NAME: ?SetScreen@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+00621720   WARN RELOC_NAME: ?g_frontEndNodeList@@3UCNodeList@@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+00621720   WARN RELOC_NAME: ?__destroy_aux@@YIXPAUCQuestCard@@0ABU__false_type@@@Z -> 005c2a8e labelled '_global::ForEachElem0x2c__CCreatureAction_FireMiss_005c2a8e'
+00621720   RELOCATION_MATCH PASS   CloseInventoryPC
+00621c80   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00621c80   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+00621c80   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00621c80   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00621c80   WARN SHARED_HEADER_AVAILABLE CWorld
+00621c80   WARN SHARED_HEADER_AVAILABLE CManager
+00621c80   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+00621c80   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00621c80   WARN SHARED_HEADER_AVAILABLE CTCBase
+00621c80   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00621c80   WARN RELOC_NAME: ?SetScreen@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+00621c80   WARN RELOC_NAME: ?g_frontEndNodeList@@3UCNodeList@@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+00621c80   WARN RELOC_NAME: ?__destroy_aux@@YIXPAUCQuestCard@@0ABU__false_type@@@Z -> 005c2a8e labelled '_global::ForEachElem0x2c__CCreatureAction_FireMiss_005c2a8e'
+00621c80   RELOCATION_MATCH PASS   CloseInventory
+00691ae0   WARN RELOC_NAME: ?IsEventButtonHeld@PhotoCapture@PhotoInput@@IBE_NABUInputEvent@2@@Z -> 00687a90 labelled 'CInputProcessGameBase::IsEventButtonPressed'
+00691ae0   RELOCATION_MATCH PASS   ProcessInput
+
+WINS: 25
+  0041e641 RELOCATION_MATCH NUISystem::CManager::??1CManager@NUISystem
+  005407b0 RELOCATION_MATCH NUISystem_CEditBox::EditBoxNative
+  0054b4b0 RELOCATION_MATCH NUISystem::CSlider::GetDataFromDef
+  0054c810 RELOCATION_MATCH CFrontEndList::?ScrollDown@CFrontEndList@NUISystem
+  00558770 RELOCATION_MATCH NUISystem::CKeyRedefiner::Initialise
+  0055a3e0 RELOCATION_MATCH NUISystem::CDraggable::?Update@CDraggable@NUISystem@@UAEXM@Z
+  0056be00 RELOCATION_MATCH CTCBoastUI::GlobalUpdate
+  005820e7 RELOCATION_MATCH CTCInventory::?CreateMenuDesc@CTCInventory@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z
+  00582673 RELOCATION_MATCH CTCInventory::?CreateMenuDescPC@CTCInventory@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z
+  00597006 RELOCATION_MATCH CFrontEndManager::?RefreshAvailableProfilesForDelete@CFrontEndManager@NUISystem@@
+  0059f304 RELOCATION_MATCH CTCInventoryTrade::CloseInventory
+  005a45f6 RELOCATION_MATCH CTCInventoryTrade::ConstructSellActionsList@CTCInventoryTrade
+  005a731f RELOCATION_MATCH CTCInventoryTrade::ConstructSellActionsListPC@CTCInventoryTrade
+  005b358c RELOCATION_MATCH CTCInventoryClothing::?CreateMenuDesc@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z
+  005b3613 RELOCATION_MATCH CTCInventoryClothing::?CreateMenuDescPC@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z
+  005c323a RELOCATION_MATCH CTCInventoryWeapons::?ConstructWieldEntry@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NPAVCViewport@NUISystem@@@Z
+  005c3444 RELOCATION_MATCH CTCInventoryWeapons::?ConstructWieldEntryPC@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NPAVCViewport@NUISystem@@PAVCComponent@4@J@Z
+  005cdd86 RELOCATION_MATCH CTCInventoryStats::CreateExperienceSliders
+  005faf50 RELOCATION_MATCH CTCInventoryMap::DrawPreparePrimitivesForRendering
+  005fc2d0 RELOCATION_MATCH _global::ConstructQuestsScreen_CurrentQuests
+  005fc8a0 RELOCATION_MATCH _global::ConstructQuestsScreen_CurrentQuestsPC
+  005fce60 RELOCATION_MATCH CTCInventoryMap::vfunc_31
+  00621720 RELOCATION_MATCH CTCInventoryQuests::CloseInventoryPC@CTCInventoryQuests
+  00621c80 RELOCATION_MATCH CTCInventoryQuests::CloseInventory@CTCInventoryQuests
+  00691ae0 RELOCATION_MATCH CInputProcessPhotojournalCapture::ProcessInput

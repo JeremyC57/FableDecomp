@@ -22,10 +22,9 @@ class CPlayer : public CPlayerDonor {
  public:
 };
 
-class CThing { public:
-public:
-    const CPlayer& PeekPlayer() const;   // 0x004C7A10
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_PEEKPLAYER
+#include "engine/CThing.h"
 
 class CTargetingDef { public:
     unsigned char _pad00[0x30];

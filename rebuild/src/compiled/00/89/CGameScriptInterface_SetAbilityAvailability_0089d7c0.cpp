@@ -8,48 +8,11 @@
 // CTCSpecialAbilities (interface 0xa7) retail: AbilityAvailability +0x1c (Ego_r.pdb +0x24 after a 12-byte list; retail list 4 bytes).
 // Retail stores a byte per ability, so the vector is modelled over bool elements.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
-    CInterfaceMap Components;                            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (T*)it->second;
-        return true;
-    }
-    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        const CInterfaceMap* map = &Components;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (const T*)it->second;
-        return true;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
@@ -67,7 +30,6 @@ template <class T> struct CRetailVector {                // STLport vector, 12 b
 };
 class CTCSpecialAbilities {
 public:
-    enum { INTERFACE_TYPE = 0xa7 };
     unsigned char       _pad00[0x1c];
     CRetailVector<bool> AbilityAvailability;             // +0x1c
     void SetAbilityAvailable(EHeroAbility ability, bool available) { AbilityAvailability[ability] = available; }
@@ -81,6 +43,6 @@ void CGameScriptInterface::SetAbilityAvailability(EHeroAbility ability, bool ava
 {
     CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCSpecialAbilities* tc;
-    if (hero && !hero->IsDead() && hero->GetTC(&tc))
+    if (hero && !hero->IsDead() && hero->GetTC(TCI_SPECIAL_ABILITIES, &tc))
         tc->SetAbilityAvailable(ability, available);
 }

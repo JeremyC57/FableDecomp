@@ -27,11 +27,7 @@ public:
 #undef V
     virtual C3DVector GetFacing() const;        // slot 70 (+0x118)
 };
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-};
+#include "engine/CThing.h"
 template <class T> struct CRetailVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 class CTCBase {
 public:
@@ -51,7 +47,7 @@ public:
 
 void CTCHeroPodium::OnInitialActivate()
 {
-    E_Y = ParentThing->PhysicsTC->GetFacing() * -1.0f;
+    E_Y = ParentThing->GetPhysicsTC()->GetFacing() * -1.0f;
     E_Y.Z = 0.0f;
     E_Y.AccurateNormalise();
     E_X = E_Y.GetPerpendicularXY();

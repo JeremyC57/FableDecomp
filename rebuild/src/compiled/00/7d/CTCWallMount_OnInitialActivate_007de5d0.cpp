@@ -19,7 +19,9 @@ class CThing;
 class CTCBase;
 class CBaseObject;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase { public:
@@ -33,26 +35,7 @@ class CTCPhysicsBase { public:
     virtual void v35();
     virtual void SetPhysicsActive(bool active); // slot 36 (+0x90)
 };
-class CThing {
-public:
-    unsigned char   _pad0[0x20];
-    unsigned long   m_presentBits[9];           // +0x20 interface-present bitset
-    CInterfaceMap   m_interfaces;               // +0x44
-    unsigned char   _pad_0x54[0xc];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-    unsigned char   _pad_0x64[0x2d];
-    unsigned char   m_flags91;                  // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-    }
-    void RemoveTC(ETCInterfaceType interfaceType);          // 0x004C9840
-    CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
-};
+
 class CThingManager { public:
     CThing* GetPThingWithUID(unsigned __int64 uid);       // 0x0051ED80
 };
@@ -84,7 +67,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -122,12 +105,12 @@ void CTCWallMount::OnInitialActivate()
         if (Trophy.GetPItem()->GetPhysicsTC())
             Trophy.GetPItem()->GetPhysicsTC()->SetPhysicsActive(false);
         CThing* trophy = Trophy.GetPItem();
-        if (trophy->HasTC(0x82)) {
-            ((CTCComponent82*)trophy->GetTC(0x82))->ClearEntries();
+        if (trophy->HasTC(TCI_PARTICLE_ATTACHER)) {
+            ((CTCComponent82*)((CTCComponent82*)&trophy->GetTC(TCI_PARTICLE_ATTACHER)))->ClearEntries();
             Trophy.GetPItem()->RemoveTC((ETCInterfaceType)(0x82));
         }
         CThing* target = Trophy.GetPItem();
-        if (target->HasTC(9))
-            ((CTCTargeted*)target->GetTC(9))->Targetable = false;
+        if (target->HasTC(TCI_TARGETED))
+            ((CTCTargeted*)((CTCTargeted*)&target->GetTC(TCI_TARGETED)))->Targetable = false;
     }
 }

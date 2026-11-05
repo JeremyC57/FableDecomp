@@ -4,26 +4,12 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00917130.
 #include <stdlib.h>
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        bool has = (unsigned char)(m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1;
-        if (has) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
@@ -36,11 +22,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntellige
     virtual void v00();
     __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
+
 extern CCharString g_CCharString_013bb674;      // "OBJECT_KNOTHOLE_LOG_MOVEABLE"
 extern CCharString g_CCharString_013bb678;      // "ST_WORK_GET_CRATE"
 extern CCharString g_CCharString_013bb67c;      // "ST_HOLDING_CRATE"
@@ -142,8 +124,8 @@ void CAIStateGroup_ThrowLogsOnFire::Update()
         Terminate();
         return;
     }
-    CTCCarrying* carrying;
-    PBrain->PCreature->GetInterface(&carrying, 0x46);
+    const CTCCarrying* carrying;
+    PBrain->PCreature->PeekTC(TCI_CARRYING, &carrying);
     if (carrying->GetThingInPrimarySlot() == 0) {
         GetPDefinitionManager()->GetDefGlobalIndexFromName(g_CCharString_013bb674);
         PBrain->PCreature->GetAnimFromName(g_CCharString_013bb67c, 0);

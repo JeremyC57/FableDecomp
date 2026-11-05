@@ -8,9 +8,7 @@
 // Shape: right-to-left: the thing's position first, then PTCNav into ecx, the pushes, Pos last.
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CTCCreatureNavigation { public:
     bool IsNavLineOfSight(const C3DVector* from, const C3DVector& to);   // 0x006CB610

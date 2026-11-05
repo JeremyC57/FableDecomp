@@ -16,29 +16,14 @@
 //   The release tests ecx straight from the slot (no eax staging) only when NEITHER callee that receives the def
 //   slot's address escapes it: same-TU noinline stand-ins for GetDef (out pointer) and the event ctor (const
 //   CDefPointer&) -- either alone leaves 17 lines.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    bool HasTC(long type) const { if (m_presentBits[type >> 5] & (1UL << (type & 31))) return true; return false; }
-    template <class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CThingCreatureBase : public CThing {};
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -152,8 +137,8 @@ void CGameScriptInterface::EntityFollowThing(const CScriptThing& follower, const
         CCharString name("EXPRESSION_FOLLOW", -1);
         CGameDefinitionManager::Get().GetDef(name, &def);
     }
-    if (followerThing->HasTC(0x42)) {
-        CTCEntityEvents* events = followerThing->GetTC<CTCEntityEvents>(0x42);
+    if (followerThing->HasTC(TCI_ENTITY_EVENTS)) {
+        CTCEntityEvents* events = ((CTCEntityEvents*)&followerThing->GetTC(TCI_ENTITY_EVENTS));
         EntitySetAsAllowedToFollowHero(follower, true);
         events->AddEvent(new NEntityEvents::CEventExpressionPerformedTo((CThingCreatureBase*)targetThing, 0, def,
                                                                         (long)distance, keepUp));

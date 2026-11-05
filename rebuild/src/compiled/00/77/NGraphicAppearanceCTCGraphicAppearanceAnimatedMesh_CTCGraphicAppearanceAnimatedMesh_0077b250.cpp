@@ -4,11 +4,12 @@
 // Layout: engine/CTCBase.h flattens the vptr into void* and supplies no constructor/destructor/accessor API. The local actual polymorphic chain is needed for target constructor/vtable/MI behavior; ParentThing+4 and flags+8 agree with that header and PDB. For nonvirtual queries only these inherited data offsets are used.
 // Layout: no target header. Real RTTI multiple inheritance supplies secondary vptr+12 and PrimHandle+16; CThing is quarantined, local named PTCGraphicAppearance view preserves+0x64.
 namespace NGraphicAppearance { class CAGraphicAppearanceComponent { public: CAGraphicAppearanceComponent() {} virtual ~CAGraphicAppearanceComponent() {} virtual void OnAppearanceClear() {} }; class CTCGraphicAppearance { public: void RegisterComponent(CAGraphicAppearanceComponent*); void RemoveTintColour(void*); void ClearHighlighted(void*); }; class CPrimitive; }
-class CThing { public: virtual ~CThing() {} unsigned char _unmodeled04[0x60]; NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance; };
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThing;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
  class CBaseClassNonCopyable:public CBaseClass { protected: virtual ~CBaseClassNonCopyable();   // 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ (Ego_r / FableWin protected virtual; naming wave 25)
 };
 class CTCBase:public CBaseClassNonCopyable { public: CTCBase(CThing&); CThing* ParentThing; bool ToBeRemoved,IsInGlobalUpdateTCs; };
 namespace NGraphicAppearance { class CTCGraphicAppearanceAnimatedMesh:public CTCBase,public CAGraphicAppearanceComponent { public: CPrimitive* PrimHandle; CTCGraphicAppearanceAnimatedMesh(CThing&); };
-CTCGraphicAppearanceAnimatedMesh::CTCGraphicAppearanceAnimatedMesh(CThing& thing):CTCBase(thing),PrimHandle(0) { ParentThing->PTCGraphicAppearance->RegisterComponent(this); } }
+CTCGraphicAppearanceAnimatedMesh::CTCGraphicAppearanceAnimatedMesh(CThing& thing):CTCBase(thing),PrimHandle(0) { ParentThing->GetTCGraphicAppearance()->RegisterComponent(this); } }

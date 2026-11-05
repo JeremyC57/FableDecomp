@@ -45,13 +45,9 @@ class CCamera { public:                            // 0x38 bytes
     void SetFOV(float horizontal, float vertical);   // 0x00A0BED0
 };
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;   // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingGameObject : public CThing { };
-inline bool IS_THING_ALIVE(const CThing* thing) { return thing && !(thing->m_flags91 & 1); }
+inline bool IS_THING_ALIVE(const CThing* thing) { return thing && !thing->IsDead(); }
 
 class CGameCameraManager {
 public:
@@ -121,7 +117,6 @@ public:
     virtual void OnInit();
     void OnDie();
 };
-
 
 void CScriptedControl::OnInit()
 {

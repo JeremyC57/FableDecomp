@@ -13,9 +13,7 @@
 // GOTCHAS wave 25); finally the primary base destructor as a tail jump. CBase is a bare vptr (its vtable has no
 // destructor slot: slot 0 is the CWideString getter, slots 1/2 return the screen ids 10/9 for Stats, slot 3 a bool).
 // Local model (no engine header for CTCInventoryStats / CTCInventoryBase).
-class CThing { public:
-    void Kill(bool immediate);                // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 struct CTCInventoryBase_Retail {              // primary base, retail size 0x130
     virtual ~CTCInventoryBase_Retail();       // 0x005C00A0

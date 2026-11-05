@@ -16,28 +16,10 @@
 // time, then the blend-in time for the parent thing), the parent thing pointer is loaded once up front.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;            // +0x44
-    template<class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (const T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const;          // 0x006622A0
@@ -102,8 +84,8 @@ struct CModeBlock : CModeBase {            // vtable 0x01267C3C
 
 void CModeBlock::AnimUpdate(CAnimateThing& animate)
 {
-    const CTCCombat* combat;
-    if (ParentThing->GetInterface(&combat, 0x30)) {
+    const const CTCCombat* combat;
+    if (ParentThing->PeekTC(TCI_COMBAT, &combat)) {
         if (!PCreature->IsPerformingAnyAction()) {
             if (animate.AnimsBegin != animate.AnimsEnd && !(animate.CurrentAnimFlags & 2) && animate.CurrentAnimType == 0x1a)
                 return;

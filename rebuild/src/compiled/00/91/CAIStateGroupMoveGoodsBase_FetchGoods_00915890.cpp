@@ -1,4 +1,5 @@
 // CAIStateGroup_MoveGoodsBase::FetchGoods(CIntelligentPointer<CThing>, float, vector<long>, CAIFilterBase*, CThing*) -- target the container (or the next crate of its crate stack), walk up to it and face it, then perform the fetch action with the good for the top crate, free the action point, take the crate off the stack and return true; false when the walk fails, the target dies or the action fails
+// Leaf: ?FetchGoods@CAIStateGroup_MoveGoodsBase@@QAE_NUCIntelligentPointerThing@@MUCLongVector@@PAUCAIFilterBase@@PAVCThing@@@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00915890, length 720 bytes (+ int3 padding), `ret 20h`, `and esp,-8` frame.
@@ -13,43 +14,11 @@
 // Shape: one shared false tail (success path nested); goods.Start read into a local after the walk; the target item hoisted into a local before the action ctor; the crate-stack lookup is the word-local HasTC in the first test and the masked test (null-checked) in the second.
 extern "C" void __cdecl free(void* block);
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool HasTC(long interfaceType) const
-    {
-        unsigned long word = m_presentBits[interfaceType >> 5];
-        return ((word >> (interfaceType & 31)) & 1) != 0;
-    }
-    template<class T> __forceinline bool GetInterfaceWord(T** ppOut, long interfaceType)
-    {
-        const bool& present = HasTC(interfaceType);
-        if (present) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-        }
-        return present != 0;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing { public: };
 class CTCCrateStack { public:                          // interface 0xB5
     CThing* GetNextCrate();                     // 0x007B6750
@@ -74,7 +43,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {     // CIntelligentP
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -121,7 +90,7 @@ bool CAIStateGroup_MoveGoodsBase::FetchGoods(CIntelligentPointerThing container,
     CIntelligentPointerThing target;
     target.SetPItem((CBaseObject*)(((CThing*)container.GetPItem())));
     CTCCrateStack* stack = 0;
-    if (((CThing*)container.GetPItem())->GetInterfaceWord(&stack, 0xb5))
+    if (((CThing*)container.GetPItem())->GetTC(TCI_CRATE_STACK, &stack))
         target = CIntelligentPointerThing(stack->GetNextCrate());
     long actionPoint;
     if (AIAction_MoveToPossiblyBlockedObjectAndFace(target, &actionPoint, distance, 10.0f, filter, ignore, 0, 1.0f) == 2
@@ -129,7 +98,7 @@ bool CAIStateGroup_MoveGoodsBase::FetchGoods(CIntelligentPointerThing container,
         long* data = goods.Start;
         long index;
         CTCCrateStack* crates;
-        if (((CThing*)container.GetPItem())->GetInterface(&crates, 0xb5) && crates)
+        if (((CThing*)container.GetPItem())->GetTC(TCI_CRATE_STACK, &crates) && crates)
             index = crates->GetNumCrates() - 1;
         else
             index = 0;
@@ -139,7 +108,7 @@ bool CAIStateGroup_MoveGoodsBase::FetchGoods(CIntelligentPointerThing container,
         if (AIAction_PerformActionAndWait(action, false) == 2) {
             if (IS_THING_ALIVE(target)) {
                 CTCUserActionPointBase* point;
-                ((CThing*)target.GetPItem())->GetInterface(&point, 0x2d);
+                ((CThing*)target.GetPItem())->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &point);
                 ((CTCUserActionPointBase*)point)->SetActionPointAsFree(actionPoint);
             }
             if (((CThing*)container.GetPItem()) && stack)

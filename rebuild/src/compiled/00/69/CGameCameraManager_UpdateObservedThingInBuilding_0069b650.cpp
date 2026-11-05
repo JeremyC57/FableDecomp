@@ -1,4 +1,5 @@
 // CGameCameraManager::UpdateObservedThingInBuilding() -- when the current mode is interruptable (or a mode is pending), push the building camera mode once the observed thing is alive inside a live building, or remove it once it is not
+// Leaf: ?UpdateObservedThingInBuilding@CGameCameraManager@@QAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069B650, length 152 bytes (+ int3 padding).
 // Callees: IsCameraModeInterruptable(CCountedPointer<const NCameraModes::CBase>) @ 0x00697A50 (static `__stdcall`, by-value copy built in
@@ -8,10 +9,7 @@
 // ObservedThingInBuilding +0xaa) with PObservedThing +0x100.
 // Shape: the twin of UpdateObservedThingInMelee: early return unless interruptable or pending, then the alive tests of the thing and
 // of its building in one `&&` chain; ObservedThingInBuilding read in each arm.
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_statusFlags;            // +0x91 (bit 0: dead)
-};
+#include "engine/CThing.h"
 class CThingBuilding : public CThing { public: };
 CThingBuilding* __fastcall GetPBuildingThingOccupying(CThing* thing);   // 0x006989D0
 
@@ -56,8 +54,8 @@ void CGameCameraManager::UpdateObservedThingInBuilding()
     if (!IsCameraModeInterruptable(CurrentMode) && PendingMode.Data == 0)
         return;
     CThingBuilding* building;
-    if (PObservedThing.GetPItem() && !(PObservedThing.GetPItem()->m_statusFlags & 1)
-        && (building = GetPBuildingThingOccupying(PObservedThing.GetPItem())) != 0 && !(building->m_statusFlags & 1)) {
+    if (PObservedThing.GetPItem() && !PObservedThing.GetPItem()->IsDead()
+        && (building = GetPBuildingThingOccupying(PObservedThing.GetPItem())) != 0 && !building->IsDead()) {
         if (!ObservedThingInBuilding)
             PushBuildingCameraMode();
     } else {

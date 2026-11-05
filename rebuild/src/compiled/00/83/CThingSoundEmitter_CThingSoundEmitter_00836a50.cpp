@@ -23,10 +23,7 @@ struct CSoundSystem {
 class CASoundManager;
 extern CASoundManager* PSoundManager;                     // 0x013B8394
 
-class CThing { public:
-    virtual ~CThing();                                   // 0x004C8310
-    unsigned char _pad04[0x94];
-};
+#include "engine/CThing.h"
 
 #pragma pack(push, 1)
 class CBaseObject;

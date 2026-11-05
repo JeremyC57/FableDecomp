@@ -1,4 +1,5 @@
 // IS_THING_DEAD<CIntelligentPointer<T>>(pointer) -- GetPItem @ 0x00A01B50 twice: null, then the dead bit (+0x91 & 1)
+// Leaf: ?IsThingDead_0091dda0@@YI_NAAV?$CIntelligentPointer@VCThing@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091DDA0, oracle length 36 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -9,11 +10,7 @@
 // and its dead bit (bit 0 of the byte at +0x91) decides; the nested-if form keeps both tests as
 // branches with the shared true tail at the end. Fastcall: the reference in ecx. The manifest
 // label is propagated; the thing class is opaque. One of 6 bodies of this shape.
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags;                 // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;

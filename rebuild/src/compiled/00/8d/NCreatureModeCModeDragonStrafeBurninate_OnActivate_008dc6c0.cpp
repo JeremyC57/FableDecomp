@@ -11,28 +11,10 @@
 //   epilogue into both paths.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;            // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CTCType9 {                          // the type-9 component (as the landed 0x008E7B90)
     unsigned char _pad00[0x10];
@@ -75,6 +57,6 @@ void NCreatureMode::CModeDragonStrafeBurninate::OnActivate()
     CModeDragonFlying::OnActivate();
     LegAnimAlpha = 0.0f;
     CTCType9* tc;
-    ParentThing->GetInterface(&tc, 9);
+    ParentThing->GetTC(TCI_TARGETED, &tc);
     tc->m_active = true;
 }

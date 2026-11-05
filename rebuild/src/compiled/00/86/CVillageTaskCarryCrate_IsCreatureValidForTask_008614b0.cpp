@@ -10,27 +10,11 @@
 // Shape: the out pointer is uninitialised (on a miss retail passes the stale argument-slot word); the `== valid` compares
 // read the result local while it still holds true (bl), the false arms assign it.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                    // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 class CTCCrateStack { public:
@@ -52,8 +36,8 @@ class CVillageTaskCarryCrate { public:                    // engine/CVillageTask
 bool CVillageTaskCarryCrate::IsCreatureValidForTask(CThing* creature)
 {
     bool valid = true;
-    CTCCarrying* carrying;
-    creature->GetInterface(&carrying, 0x46);
+    const CTCCarrying* carrying;
+    creature->PeekTC(TCI_CARRYING, &carrying);
     bool hasItem = carrying->GetThingInPrimarySlot() != 0;
     if (hasItem == valid && Pickup == valid)
         valid = false;

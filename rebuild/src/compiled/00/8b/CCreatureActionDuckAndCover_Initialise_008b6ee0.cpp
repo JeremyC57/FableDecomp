@@ -1,4 +1,5 @@
 // CCreatureAction_DuckAndCover::Initialise() -- names the "DIVE_FOR_COVER" animation, runs the base Initialise, normalises the dive direction and turns the creature's physics to face it (atan2 as a 0..1 turn fraction, wrapped with fmod)
+// Leaf: ?Initialise@CCreatureAction_DuckAndCover@@UAEXXZ
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B6EE0, length 348 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0, ~CCharString
@@ -41,15 +42,9 @@ class CTCPhysicsBase { public:
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF(60) VF(61) VF(62) VF(63) VF(64) VF(65)
     virtual void SetFacingAngle(float fraction);   // slot 66 (+0x108)
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* m_pPhysics;             // +0x60
-};
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                         // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -85,7 +80,7 @@ void CCreatureAction_DuckAndCover::Initialise()
     SetCombatAnimation("DIVE_FOR_COVER");
     CCombatActionBase::Initialise();
     Direction.Normalise();
-    CTCPhysicsBase* physics = PCreature.GetPItem()->m_pPhysics;
+    CTCPhysicsBase* physics = PCreature.GetPItem()->GetPhysicsTC();
     float fraction = (float)atan2(Direction.X, Direction.Y) * 0.15915493667125702f;
     if (fraction < 0.0f || fraction >= 1.0f) {
         fraction = (float)fmod(fraction, 1.0);

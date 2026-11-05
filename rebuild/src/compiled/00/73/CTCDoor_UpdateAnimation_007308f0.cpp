@@ -1,4 +1,5 @@
 // CTCDoor::UpdateAnimation() -- once the door animation has (to within epsilon) finished, stop updating a proximity door that is not moving, else clear the opening/closing state; then advance the animation by one frame (slowed by bullet time when the door is affected by it)
+// Leaf: ?UpdateAnimation@CTCDoor@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -21,24 +22,12 @@
 //   a zero register (ebx) and fold every bool test / `push 0` / zero store into it; float zeros are immediates.
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-    void SetForceFrameUpdate(bool force);               // 0x004C7C60
-    bool IsAffectedByBulletTime();                      // 0x004C9920
-};
+
 struct CAnimFrameTime {                                 // 12-byte UpdateFrameLogic argument
     float Seconds;
     float Reserved1;
@@ -102,8 +91,8 @@ class CTCDoor : public CTCBase { public:
 void CTCDoor::UpdateAnimation()
 {
     CTCAnimationComplex* tc = 0;
-    if (ParentThing->HasTC(0x5a))
-        tc = ParentThing->GetTC<CTCAnimationComplex>(0x5a);
+    if (ParentThing->HasTC(TCI_ANIMATION))
+        tc = ((CTCAnimationComplex*)&ParentThing->GetTC(TCI_ANIMATION));
     CAnimateThing& anim = tc->GetAnimation();
     if (1.0f - DELTA_NOTIONAL_ZERO < anim.PlayFraction) {
         if (PDef->TriggerType == 1 && !Opening && !Closing) {

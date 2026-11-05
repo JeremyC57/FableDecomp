@@ -1,4 +1,5 @@
 // CTCCreatureItemLevitationHero::LeafUpdate() -- pop the oldest levitated item when over the limit or 30 frames after the last add
+// Leaf: ?LeafUpdate@CTCCreatureItemLevitationHero@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F8540, length 79 bytes. CTCCreatureItemLevitationHero vtable 0x0124167C
 // slot 31 (the Nymph twin is 0x007F84C0).
 // Callees: own virtual slot 30 (`call [eax+78h]`; the Hero override 0x004DE76D returns 1: the item limit), the world-frame
@@ -30,9 +31,7 @@ struct CThingList {                         // STLport list<CThing*> (4 bytes: t
     }
 };
 
-class CThing { public:
-    void Kill(bool checkLocked);            // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CWorld {
 public:

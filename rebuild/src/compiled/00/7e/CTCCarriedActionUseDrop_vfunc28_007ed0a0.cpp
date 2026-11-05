@@ -1,4 +1,5 @@
 // CTCCarriedActionUseDrop::vfunc_28(CThingAICreature* user) -- run the base use hook; if the dropped thing is an alarm item (interface 0x48) and the user is flagged to react, make the user alert the player, else take the thing out of the user's carrying component
+// Leaf: ?vfunc_28@CTCCarriedActionUseDrop@@QAEXPAVCThingAICreature@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 //
 // Retail 0x007ED0A0, 151 bytes (`ret 4`). Vtable slot 28 of CTCCarriedActionUseDrop. Callees: the
@@ -15,31 +16,11 @@
 class CTCBase;
 class CCreatureActionBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                             // +0x44
-    unsigned char _pad54[0x18];
-    unsigned char m_flags6c;                                // +0x6c
-    unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CThingAICreature : public CThing { public:
     bool SetCurrentAction(CCreatureActionBase* action);     // 0x006644F0 (CThingCreatureBase)
@@ -72,8 +53,8 @@ void CTCCarriedActionUseDrop::vfunc_28(CThingAICreature* user)
 {
     CTCCarriedActionUseBase::OnUseBase(user);
     CTCCarrying* carrying;
-    user->GetInterface(&carrying, 0x46);                    // TC_CARRYING
-    if (ParentThing->HasInterface(0x48) && (user->m_flags6c & 8))
+    user->GetTC(TCI_CARRYING, &carrying);                    // TC_CARRYING
+    if (ParentThing->HasTC(TCI_WEAPON) && (user->GetTypeFlags() & 8))
         user->SetCurrentAction(&CCreatureAction_AlertToPlayer(user));
     else
         carrying->RemoveThing(ParentThing);

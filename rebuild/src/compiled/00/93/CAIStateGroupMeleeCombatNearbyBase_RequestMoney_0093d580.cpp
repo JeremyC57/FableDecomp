@@ -1,4 +1,5 @@
 // CAIStateGroup_MeleeCombatNearbyBase::RequestMoney() -- when the enemy is the living hero and its fine dialogue is allowed, show the fine for the creature's village's current crimes (with the hero's interface-4 amount), then yield the brain, refresh the best enemy and terminate unless still runnable
+// Leaf: ?RequestMoney@CAIStateGroup_MeleeCombatNearbyBase@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093D580, length 408 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970,
@@ -14,41 +15,12 @@
 // Layout: engine/CAIStateGroup_MeleeCombatNearbyBase.h flattens the base; local model with its PEnemy (+0x14).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-};
 class CThingPlayerCreature : public CThing { };
 
 class CBaseObject;
@@ -129,23 +101,23 @@ void CAIStateGroup_MeleeCombatNearbyBase::RequestMoney()
 {
     CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     CTCFineDialogue* fine;
-    if (hero != 0 && !(hero->m_flags91 & 1) && hero == PEnemy.GetPItem() && hero->GetInterface(&fine, 0xf3)) {
+    if (hero != 0 && !hero->IsDead() && hero == PEnemy.GetPItem() && hero->GetTC(TCI_FINE_DIALOGUE, &fine)) {
         if (fine->IsAllowed()) {
             CThing* creature = PBrain->PCreature;
-            if (creature->HasTC(0x23)) {
-                CTCVillager* villager = creature->GetTC<CTCVillager>(0x23);
+            if (creature->HasTC(TCI_VILLAGE_MEMBER)) {
+                CTCVillager* villager = ((CTCVillager*)&creature->GetTC(TCI_VILLAGE_MEMBER));
                 if (((CTCVillageMember*)villager)->GetPVillage() != 0) {
                     CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
                     long amount = village->GetFineAmountForCurrentCrimes();
                     if (amount > 0) {
                         long heroAmount = 0;
                         CTCHeroInterface4* tc4;
-                        if (hero->GetInterface(&tc4, 4))
+                        if (hero->GetTC(TCI_HERO_STATS, &tc4))
                             heroAmount = tc4->m_amount;
                         fine->Show(amount, heroAmount, village);
                         PBrain->Yield();
                         CTCTargetingAI* targeting;
-                        if (PBrain->PCreature->GetInterface(&targeting, 8))
+                        if (PBrain->PCreature->GetTC(TCI_TARGETING, &targeting))
                             targeting->UpdatePBestEnemyCreatureForAttack(true);
                         if (!IsStillRunnable(true))
                             Terminate();

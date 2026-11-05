@@ -48,7 +48,8 @@ __forceinline float AngleDifference(float a, float b)
 }
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase {
@@ -71,31 +72,7 @@ class CTCLook {
 public:
     float GetLookAngleRelToBodyXY() const;             // 0x00751A80
 };
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                    // +0x20
-    CInterfaceMap m_interfaces;                        // +0x44
-    unsigned char _pad54[0xc];
-    CTCPhysicsBase* PhysicsTC;                         // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char Flags91;                             // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;              // 0x004C73D0
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    __forceinline bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline const T* GetTC(long interfaceType) const
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (const T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-    }
-};
+
 class CThingCreatureBase : public CThing {
 public:
     bool IsThingInViewAngle(const CThing& thing, float viewAngle, bool useLookAngle) const;
@@ -109,8 +86,8 @@ bool CThingCreatureBase::IsThingInViewAngle(const CThing& thing, float viewAngle
     C3DVector facing = PhysicsTC->GetFacing();
     float facingAngle = GetAngleXY(facing.X, facing.Y);
     float lookAngle = facingAngle;
-    if (HasTC(0x43)) {
-        const CTCLook* look = GetTC<CTCLook>(0x43);
+    if (HasTC(TCI_LOOK)) {
+        const CTCLook* look = ((const CTCLook*)&GetTC(TCI_LOOK));
         if (useLookAngle)
             lookAngle = NormaliseAngle(look->GetLookAngleRelToBodyXY() + facingAngle);
     }

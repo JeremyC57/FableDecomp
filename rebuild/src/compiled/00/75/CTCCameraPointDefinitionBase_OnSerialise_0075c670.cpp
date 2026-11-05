@@ -20,9 +20,7 @@ class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c
 };
-class CThing { public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18

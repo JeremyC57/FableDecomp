@@ -16,9 +16,10 @@
 //   is a named local default-constructed after the Create call, assigned from the by-value GetScriptThing temporary
 //   (both destructors inline), copied into the hidden result and destroyed (no NRVO in VC7.1).
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-class CCharString { public:
-    void* PStringData;
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet;
 
@@ -65,9 +66,7 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long globalIndex, CDefP
     return true;
 }
 #pragma auto_inline(on)
-class CThing { public:
-    CScriptThing GetScriptThing() const;                      // 0x004C7E50
-};
+
 class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                            const CRightHandedSet* orientation, unsigned long uid,

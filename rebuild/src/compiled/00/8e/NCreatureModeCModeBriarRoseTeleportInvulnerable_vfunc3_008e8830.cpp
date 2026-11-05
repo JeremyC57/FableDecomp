@@ -1,8 +1,11 @@
 // 008E8830 NCreatureMode::CModeBriarRoseTeleportInvulnerable::FrameUpdate.
+// Leaf: ?FrameUpdate@CModeBriarRoseTeleportInvulnerable@NCreatureMode@@UAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the global stand-in g_FrameTicks_01375550 (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Original nested mode owner, retail action sizes, and weak control blocks.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #define CModeStandBase CModeStandBasePdb
 #include "engine/CModeStandBase.h"
 #include "engine/CBaseObject.h"
@@ -22,14 +25,8 @@ namespace NGraphicAppearance {
 class CTCGraphicAppearance { public: void SetAlpha(unsigned char); };
 }
 using NGraphicAppearance::CTCGraphicAppearance; // 004BFAC0
-class CThing : public CBaseObject { public:
-    unsigned char BeforeAppearance[0x64-sizeof(CBaseObject)];
-    CTCGraphicAppearance* PTCGraphicAppearance;
-    unsigned char BeforeFlags[4];
-    unsigned long ThingTypeFlags;
-    unsigned char BeforeKilled[0x91-0x70];
-    unsigned char KilledFlags;
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const; // 006622A0
@@ -85,7 +82,7 @@ struct CModeBriarRoseTeleportInvulnerable : CModeStandBase {
 void CModeBriarRoseTeleportInvulnerable::FrameUpdate()
 {
     CTCCreatureModeManager::CModeBase::FrameUpdate();
-    if ((ParentThing->ThingTypeFlags & 8) && static_cast<CThingCreatureBase*>(ParentThing)->IsPerformingAnyAction())
+    if ((ParentThing->GetTypeFlags() & 8) && static_cast<CThingCreatureBase*>(ParentThing)->IsPerformingAnyAction())
         return;
 
     --Timer;
@@ -104,6 +101,6 @@ void CModeBriarRoseTeleportInvulnerable::FrameUpdate()
         alpha = 0;
     else if (alpha > 255)
         alpha = 255;
-    ParentThing->PTCGraphicAppearance->SetAlpha((unsigned char)alpha);
+    ParentThing->GetTCGraphicAppearance()->SetAlpha((unsigned char)alpha);
 }
 }

@@ -1,4 +1,5 @@
 // CAIStateGroup_JackDragon::IsStillRunnable() -- the dragon fight continues while the enemy lives and nothing stops the group.
+// Leaf: ?IsStillRunnable@CAIStateGroup_JackDragon@@QAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094FDF0, length 55 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice, on PEnemy at +0x14), CAIStateGroupBase::
 // IsStopping @ 0x008FD010.
@@ -8,11 +9,7 @@
 // `return IsStopping() ? false : true;` -- the ternary keeps the negation byte-sized (`neg al ; sbb al,al ;
 // inc al`); `!IsStopping()` widens it to eax and the nested-if form puts the false tail last.
 // The engine header keeps PEnemy as an opaque byte array, so the layout is modelled locally with its name.
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;

@@ -30,10 +30,7 @@ class CTCPhysicsBase { public:
     virtual void v65();  virtual void v66();  virtual void v67();  virtual void v68();  virtual void v69();
     virtual C3DVector GetFacingVector() const;                  // slot 70 (+0x118)
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                                  // +0x60 (PDB +0x70)
-};
+#include "engine/CThing.h"
 struct CSpotLightInfo { float Angle; };                         // CTCSpotLight::CSpotLightInfo, Angle +0
 class CSpotLightDef { public:
     unsigned char _pad00[0x40];
@@ -53,7 +50,7 @@ class CTCSpotLight { public:
 
 C3DVector CTCSpotLight::GetDirection() const
 {
-    C3DVector dir = ParentThing->PhysicsTC->GetFacingVector();
+    C3DVector dir = ParentThing->GetPhysicsTC()->GetFacingVector();
     dir.Z = 0.0f;
     dir.AccurateNormalise();
     C3DVector axis(dir.Y, -dir.X, 0.0f);

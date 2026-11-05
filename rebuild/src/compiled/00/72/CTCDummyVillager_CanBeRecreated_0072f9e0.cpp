@@ -12,22 +12,11 @@
 // local for HasTC and GetTC); the recreation day is `Day = max(Day, today)` through the
 // STLport reference max (`cmp ; lea ; jl`), written identically for both buildings so retail's tail-merge forms.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline T* GetTC(long wanted)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-};
+
 class CThingBuilding : public CThing { public:
     bool GetIsAvailableForResidency() const;    // 0x0082E0E0
 };
@@ -90,15 +79,15 @@ bool CTCDummyVillager::CanBeRecreated()
 {
     if (!Respawnable)
         return false;
-    if (ParentThing->HasTC(0x23)) {
-        CTCVillageMember* member = ParentThing->GetTC<CTCVillageMember>(0x23);
+    if (ParentThing->HasTC(TCI_VILLAGE_MEMBER)) {
+        CTCVillageMember* member = ((CTCVillageMember*)&ParentThing->GetTC(TCI_VILLAGE_MEMBER));
         if (member->GetPVillage() && member->GetPVillage()->FlagB3)
             return false;
     }
     if (HomeBuilding.GetPItem()) {
         CThingBuilding* home = HomeBuilding.GetPItem();
-        if (home->HasTC(0xd5)) {
-            CTCBuyableHouse* house = home->GetTC<CTCBuyableHouse>(0xd5);
+        if (home->HasTC(TCI_BUYABLE_HOUSE)) {
+            CTCBuyableHouse* house = ((CTCBuyableHouse*)&home->GetTC(TCI_BUYABLE_HOUSE));
             if (!HomeBuilding.GetPItem()->GetIsAvailableForResidency())
                 return false;
             if ((house->OwnedByPlayer || house->IsInitiallyEmpty()) && !house->Rented) {
@@ -110,8 +99,8 @@ bool CTCDummyVillager::CanBeRecreated()
     }
     if (WorkBuilding.GetPItem()) {
         CThingBuilding* work = WorkBuilding.GetPItem();
-        if (work->HasTC(0xd5)) {
-            CTCBuyableHouse* house = work->GetTC<CTCBuyableHouse>(0xd5);
+        if (work->HasTC(TCI_BUYABLE_HOUSE)) {
+            CTCBuyableHouse* house = ((CTCBuyableHouse*)&work->GetTC(TCI_BUYABLE_HOUSE));
             if ((house->OwnedByPlayer || house->IsInitiallyEmpty()) && !house->Rented) {
                 long today = GetWorld().Clock->Day;
                 DayToBeRecreated = Max(DayToBeRecreated, today);

@@ -34,7 +34,6 @@ public:
 #pragma pack(pop)
 
 struct __true_type { __true_type() {} };           // empty tag with a user constructor (no byte store)
-inline void* operator new(unsigned int, void* where) { return where; }
 
 template <class T> struct CRetailVector {           // STLport vector (12 bytes)
     T* _M_start;
@@ -88,11 +87,8 @@ public:
 };
 }
 
-class CThing {
-public:
-    unsigned char _pad00[0x64];
-    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 class CTCBase {
 public:
@@ -118,7 +114,7 @@ public:
 
 void CTCGraphicAppearanceMultipleStaticMeshes::GetMeshesUsed(CRetailVector<CMeshInfo>& meshes) const
 {
-    const CEngineGraphic& graphic = ParentThing->PTCGraphicAppearance->MainGraphic;
+    const CEngineGraphic& graphic = ParentThing->GetTCGraphicAppearance()->MainGraphic;
     for (unsigned long i = 0; i < PDef->Meshes.size(); ++i) {
         CMeshInfo info;
         info.Index = PDef->Meshes[i].Mesh;

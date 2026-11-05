@@ -1,4 +1,5 @@
 // CTCInventoryBase::GetMiniMapGraphic(const CRegion* region) -- the mini-map graphic index for `region` from the GUI def's graphic table (0 when the region's graphic is not in the table); when it is the prison courtyard and the living hero stands above the courtyard's upper floor height, the second courtyard graphic is returned instead
+// Leaf: ?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QAEJPBVCRegion@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BEB57, length 233 bytes (`ret 4`). Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: PeekGuiDef @ 0x00438570 (`__fastcall`; MiniMapGraphics -- map<CCharString,long> -- at retail +0x94C), map::find
@@ -15,11 +16,8 @@
 // to [ebp-0Ch]. The height test is `Z > 51.0f` (`fcomp ; test ah,41h ; jne` skips on below-or-equal).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 struct SGraphicNode {                           // STLport _Rb_tree_node<pair<const CCharString, long> >
     unsigned char _base[0x10];
     CCharString   Key;                          // +0x10
@@ -56,9 +54,7 @@ class CRegion { public:
     CCharString   MiniMapGraphic;               // +0x28
 };
 #include "engine/C3DVector.h"
-class CThing { public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+
 class CThingPlayerCreature : public CThing { };
 class CThingPlayerCreature;
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0

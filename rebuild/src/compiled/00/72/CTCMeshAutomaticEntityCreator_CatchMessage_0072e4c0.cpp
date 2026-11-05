@@ -10,37 +10,11 @@
 // Shape: HasTC is `if (bits & mask) return true; return false;` (`test dword ptr [eax+24h],40000h`; a `!= 0` form gives `shr ; test cl,1`
 // and changes the register allocation); the walk re-reads the list end each pass; VC keeps the constant 1 of the dead test in bl and spills `this` to the frame.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    void Kill(bool immediately);                // 0x004C9B80
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -80,10 +54,10 @@ struct CTCMeshAutomaticEntityCreator {
 void CTCMeshAutomaticEntityCreator::CatchMessage(const CMessageOnMeshReplaced& message)
 {
     CTCThingOwner* owner;
-    if (ParentThing->GetInterface(&owner, 0x21)) {
+    if (ParentThing->GetTC(TCI_THING_OWNER, &owner)) {
         for (SThingNode* it = owner->ObjectList->Next; it != owner->ObjectList; it = it->Next) {
             CThing* thing = it->Thing.GetPItem();
-            if (thing && !(thing->m_flags91 & 1) && thing->HasTC(0x32))
+            if (thing && !thing->IsDead() && thing->HasTC(TCI_CREATED_ENTITY))
                 thing->Kill(false);
         }
         owner->ClearDeadEntries();

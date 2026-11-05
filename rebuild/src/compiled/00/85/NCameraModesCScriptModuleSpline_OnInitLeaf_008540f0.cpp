@@ -14,27 +14,11 @@
 // Shape: Index = (float)start / (size() - 1) (`fild ; fidiv` of a frame int); the index is saved in a local across the
 //        virtual Update and stored back.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                  // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetTC(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -86,7 +70,7 @@ struct CScriptModuleSpline : CScriptModuleBase {    // vtable 0x01275A6C
 void CScriptModuleSpline::OnInitLeaf()
 {
     CTCCameraPointScriptedSpline* spline;
-    if (GetPCameraPoint()->GetTC(&spline, 0x3f)) {
+    if (GetPCameraPoint()->GetTC(TCI_CAMERA_POINT, &spline)) {
         spline->InitialiseSpline(NodeToStartOn, NodeToEndOn);
         Index = (float)NodeToStartOn / (spline->NumKeyCameras() - 1);
     }

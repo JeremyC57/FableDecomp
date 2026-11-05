@@ -1,4 +1,5 @@
 // CTCWife::OnHeroViolence() -- the hero's violence in front of his wife: before the marriage frame it only blocks courting, clears her love value and hides the attraction icon; once married it applies the def's hate spike (peak, run-out frames, persisting effect) to the parent's opinion-of-hero component as attitude transients 4 and 3
+// Leaf: ?OnHeroViolence@CTCWife@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -17,28 +18,11 @@
 //         LoveAttitudeValue +0x8c; CHeroMarriageDef SecondsRunOutWifeOnViolenceHateSpike +0x90, PeakEffect.. +0x94,
 //         PersistEffect.. +0x98 (PDB 144/148/152); retail CThing bitset +0x20, interface map +0x44.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
@@ -80,7 +64,7 @@ void CTCWife::OnHeroViolence()
         return;
     }
     CTCCreatureOpinionOfHero* opinion;
-    ParentThing->GetInterface(&opinion, 0x4f);
+    ParentThing->GetTC(TCI_CREATURE_OPINION_OF_HERO, &opinion);
     opinion->ApplyOpinionTransientOffset(4, PHeroMarriageDef->PeakEffectWifeOnViolenceHateSpike, 0,
         (long)(PHeroMarriageDef->SecondsRunOutWifeOnViolenceHateSpike * (float)CMainGameComponent::GetConstantFPS()),
         PHeroMarriageDef->PersistEffectWifeOnViolenceHateSpike, 1);

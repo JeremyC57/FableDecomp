@@ -1,4 +1,5 @@
 // CTCLook::SetEyesLooking(const C3DVector& pos) -- point the eyes at pos: the eye angles are the differences from the head facing (body facing + head angle, wrapped) to the direction head->pos, or to the recovery angles when pos is the head position
+// Leaf: ?SetEyesLooking@CTCLook@@QAEXABVC3DVector@@@Z
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00752930, length 462 bytes (+ int3 padding), `ret 4`, esp frame.
 // Callees: the physics TC's GetFacingAngleXY / GetFacingAngleYZ (slots 63 / 64, +0xFC / +0x100), _CIfmod @ 0x00BFEB28 (the
@@ -31,10 +32,7 @@ class CTCPhysicsBase { public:
     virtual float GetFacingAngleXY();           // slot 63 (+0xFC)
     virtual float GetFacingAngleYZ();           // slot 64 (+0x100)
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-};
+#include "engine/CThing.h"
 class CThingCreatureBase { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
@@ -99,8 +97,8 @@ class CTCLook { public:
 void CTCLook::SetEyesLooking(const C3DVector& pos)
 {
     if (IS_THING_ALIVE(PParentCreature)) {
-        float headXY = WrapAngle(ParentThing->PhysicsTC->GetFacingAngleXY() + HeadAngleRelToBodyXY);
-        float headYZ = WrapAngle(ParentThing->PhysicsTC->GetFacingAngleYZ() + HeadAngleRelToBodyYZ);
+        float headXY = WrapAngle(ParentThing->GetPhysicsTC()->GetFacingAngleXY() + HeadAngleRelToBodyXY);
+        float headYZ = WrapAngle(ParentThing->GetPhysicsTC()->GetFacingAngleYZ() + HeadAngleRelToBodyYZ);
         C3DVector headPos = GetHeadPos();
         float eyeXY, eyeYZ;
         if (pos != headPos) {

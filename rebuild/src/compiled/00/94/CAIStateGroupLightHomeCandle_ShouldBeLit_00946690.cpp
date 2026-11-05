@@ -1,4 +1,5 @@
 // CAIStateGroup_LightHomeCandle::ShouldBeLit() -- a villager's candle should be lit while the time of day lies in its village def's lighting window
+// Leaf: ?ShouldBeLit@CAIStateGroup_LightHomeCandle@@UAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00946690, length 157 bytes (+ int3 padding). Vtable slot 15 of
 // CAIStateGroup_LightHomeCandle (0x0128BDBC).
@@ -15,26 +16,10 @@
 // bl across the release. Field names of the village def window are descriptive.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-    }
-};
 
 class CVillageDef { public:
     virtual void v00();
@@ -88,8 +73,8 @@ class CAIStateGroup_LightHomeCandle : public CAIStateGroupBase { public:
 
 bool CAIStateGroup_LightHomeCandle::ShouldBeLit()
 {
-    CTCVillageMember* villager;
-    PBrain->PCreature->GetInterface(&villager, 0x23);
+    const CTCVillageMember* villager;
+    PBrain->PCreature->PeekTC(TCI_VILLAGE_MEMBER, &villager);
     if (villager && villager->GetPVillage()) {
         CVillageDef* def = villager->GetPVillage()->PDef;
         if (def)

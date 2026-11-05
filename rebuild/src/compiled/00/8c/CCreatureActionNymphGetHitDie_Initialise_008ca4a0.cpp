@@ -16,14 +16,12 @@
 //   through eax); the position is copied by value into the frame (three integer moves) and HeightOnInit = Z - ground height (`fsubr`).
 #include "engine/C3DVector.h"
 class CTCBase;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #define V10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); virtual void v##n##4(); \
     virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); virtual void v##n##8(); virtual void v##n##9();
-struct CPhysicsComponent {
+struct CTCPhysicsBase {
     V10(0) V10(1) V10(2)                              // slots 0..29
     virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
     virtual void SetMovementType(long type);          // slot 36 (+0x90)
@@ -34,31 +32,10 @@ struct CPhysicsComponent {
     virtual void ResetMovement();                     // slot 80 (+0x140)
 };
 #undef V10
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                   // +0x20
-    CInterfaceMap m_interfaces;                       // +0x44
-    unsigned char _pad54[0xc];
-    CPhysicsComponent* m_pPhysics;                    // +0x60
-    const C3DVector& GetPos() const;             // 0x004C73D0
-    CPhysicsComponent* GetPhysics() const { return m_pPhysics; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -102,11 +79,11 @@ void CCreatureAction_NymphGetHitDie::Initialise()
         CCharString name("FALL_DEAD");
         SetCombatAnimation(name);
     }
-    PCreature.GetPItem()->GetPhysics()->SetMovementType(1);
-    PCreature.GetPItem()->GetPhysics()->SetCollisionType(2);
-    PCreature.GetPItem()->GetPhysics()->ResetMovement();
+    PCreature.GetPItem()->GetPhysicsTC()->SetMovementType(1);
+    PCreature.GetPItem()->GetPhysicsTC()->SetCollisionType(2);
+    PCreature.GetPItem()->GetPhysicsTC()->ResetMovement();
     CTCNymph* nymph;
-    if (PCreature.GetPItem()->GetInterface(&nymph, 0xF5))
+    if (PCreature.GetPItem()->GetTC(TCI_NYMPH, &nymph))
         nymph->StopFlyingAround(-1);
     C3DVector position = PCreature.GetPItem()->GetPos();
     HeightOnInit = position.Z - GetWorldMap()->GetHeightZBelowPos(&position);

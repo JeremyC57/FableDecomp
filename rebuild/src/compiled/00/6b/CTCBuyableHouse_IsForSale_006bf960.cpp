@@ -1,4 +1,5 @@
 // CTCBuyableHouse::IsForSale() const -- a house is for sale when the player does not own it and its main sign post still exists and is alive
+// Leaf: ?IsForSale@CTCBuyableHouse@@QBE_NXZ
 //
 // Retail 0x006BF960, 49 bytes. Callee: CBaseIntelligentPointer::GetPItem() const @ 0x00A01B50 (twice
 // on MainSignPost). Layout (Ego_r.pdb CTCBuyableHouse): OwnedByPlayer +0x11, MainSignPost +0x24
@@ -9,12 +10,7 @@
 // bool-returning function makes VC7.1 materialise the result (`mov dl,[ecx+91h] ; mov al,1 ;
 // test al,dl`), the bool accessor keeps retail's `test byte ptr [eax+91h],1 ; jne`.
 
-class CThing
-{ public:
-    unsigned char _pad_0x00[0x91];
-    unsigned char Dead : 1;                         // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 

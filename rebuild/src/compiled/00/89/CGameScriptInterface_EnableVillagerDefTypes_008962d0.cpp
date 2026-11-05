@@ -10,48 +10,11 @@
 //   interface 0x22 (UsingComponents word 1 bit 2, `test byte [eax+24h],4`): GetTC through the non-const LowerBound
 //   0x0040F020 (key in the dead `thing` argument slot), then the CTCVillage call. `this` is unused.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
-    CInterfaceMap Components;                            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (T*)it->second;
-        return true;
-    }
-    template <class T> __forceinline bool PeekTC(const T** out) const
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        const CInterfaceMap* map = &Components;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (const T*)it->second;
-        return true;
-    }
-};
+
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
@@ -59,7 +22,6 @@ public:
 class CCharString;
 class CTCVillage {                                      // interface 0x22 (CTCVillage::GetInterfaceType not landed; the PDB names of the callee pin the class)
 public:
-    enum { INTERFACE_TYPE = 0x22 };
     unsigned char _pad00[0xd4];
     long HeroEnemyOfGuardsUntil;                         // +0xd4 (descriptive: the frame IncreaseHeroEnemyOfGuardsUntil extends)
     void SetVillageLimbo(bool limbo);                    // 0x0065C36E
@@ -75,6 +37,6 @@ void CGameScriptInterface::EnableVillagerDefTypes(const CScriptThing& village, b
 {
     CThing* t = village.GetPThing();
     CTCVillage* tc;
-    if (t && !t->IsDead() && t->GetTC(&tc))
+    if (t && !t->IsDead() && t->GetTC(TCI_VILLAGE, &tc))
         tc->EnableVillagerDefTypes(enable, defType);
 }

@@ -8,11 +8,8 @@
 // Shape: the flag is stored before the minion tests; the minion is re-fetched for every use.
 class CBaseObject;
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_thingFlags;                             // +0x91, bit 0: killed
-    void SetInLimbo(bool inLimbo);                          // 0x004C8CF0
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 #pragma pack(push, 1)
 class CBaseObjectPointer;
@@ -51,7 +48,7 @@ void CTCSummonSpell::ResumeForCutscene()
 {
     if (CutSceneCancelled) {
         CutSceneCancelled = false;
-        if (Minion.GetPItem() && !(Minion.GetPItem()->m_thingFlags & 1))
+        if (Minion.GetPItem() && !Minion.GetPItem()->IsDead())
             Minion.GetPItem()->SetInLimbo(false);
     }
 }

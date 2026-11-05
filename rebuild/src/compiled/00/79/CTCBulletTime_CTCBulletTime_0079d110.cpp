@@ -11,37 +11,19 @@
 // Layout: engine/CTCBulletTime.h offsets (its opaque member arrays carry no destructors, so the members are re-typed here):
 // DisplacementEffectPrimitive +0x18, PDef +0x20, m_tpLoopingEffect +0x30, LoopSound +0x38, PItemRemoved +0x3c,
 // HitCreatureBlur +0x44, ScreenFilterKey +0x50, CutSceneCancel +0x56.
-class CCharString { public:
-    void* PStringData;
-    ~CCharString();                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CDefStringTable { public:
     CCharString GetString(long id) const;             // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
 struct CTCBaseInterface;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)((CTCBaseInterface*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 namespace NParticleEngine {
 class CParticleEmitter { public:
     unsigned char _pad00[0x40];
@@ -180,7 +162,7 @@ class CTCBulletTime : public CTCBase { public:
     __forceinline void StopSound(unsigned long sound)
     {
         CTCSoundEmitter* emitter;
-        if (ParentThing->GetInterface(&emitter, 0x10))
+        if (ParentThing->GetTC(TCI_SOUND_PLAYER, &emitter))
             emitter->StopSample(sound);
     }
     unsigned long PlaySoundW(const CCharString& sound, unsigned long flags);   // 0x0079CE80

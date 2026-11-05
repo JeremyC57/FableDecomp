@@ -11,53 +11,13 @@
 // 1 = a creature). The component class and the +0x34 member name are not confirmed.
 // Shape: /O2 (16-aligned entry); the GetTC out-pointer form.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x10];
-    unsigned char Type;                                  // +0x10 (1 = a creature)
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
-    CInterfaceMap Components;                            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (T*)it->second;
-        return true;
-    }
-    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        const CInterfaceMap* map = &Components;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (const T*)it->second;
-        return true;
-    }
-};
+
 class CTCInterface0F {                                  // interface 0xf (class not confirmed)
 public:
-    enum { INTERFACE_TYPE = 0xf };
     unsigned char _pad00[0x34];
     bool          PureAINarrator;                        // +0x34 (name not confirmed)
 };
@@ -75,7 +35,7 @@ void CGameScriptInterface::EntityResetAsPureAINarrator(const CScriptThing& thing
     {
         CThing* t = thing.GetPThing();
         CTCInterface0F* tc;
-        if (t->Type == 1 && t->GetTC(&tc))
+        if (t->GetType() == 1 && t->GetTC(TCI_TALK, &tc))
             tc->PureAINarrator = true;
     }
 }

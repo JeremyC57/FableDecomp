@@ -1,4 +1,5 @@
 // CAIStateGroup_NymphFloatAround::Update() -- reset the nymph's attack flags and target, start flying around (or, back from limbo, play the teleport action first), poll CheckIfCanAttack every frame until ready, then stop flying and, if a target lies more than 1 unit away in the plane, face it; always Terminate()
+// Leaf: ?Update@CAIStateGroup_NymphFloatAround@@UAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
@@ -44,35 +45,18 @@ class CRightHandedSet { public:
     C3DVector Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) { }
 };
-struct CPhysicsBody {
+struct CTCPhysicsBase {
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6) VF(70) VF(71) VF(72) VF(73)
     virtual void SetOrientation(const CRightHandedSet& orientation);   // slot 74 (+0x128)
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0xc];
-    CPhysicsBody* PPhysics;                     // +0x60
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing { public: };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -138,7 +122,7 @@ extern "C" int StandInSink(int, int);
 void CAIStateGroup_NymphFloatAround::Update()
 {
     CTCNymph* nymph;
-    GetCreature()->GetInterface(&nymph, 0xf5);
+    GetCreature()->GetTC(TCI_NYMPH, &nymph);
     nymph->CanAttack = false;
     nymph->ReadyToAttack = false;
     nymph->PTarget = CIntelligentPointerCreature(0);
@@ -169,7 +153,7 @@ void CAIStateGroup_NymphFloatAround::Update()
         C3DVector direction(to.X - from.X, to.Y - from.Y, 0.0f);
         if (direction.GetLengthSquared2D() > 1.0f) {
             direction.Normalise();
-            GetCreature()->PPhysics->SetOrientation(CRightHandedSet(C3DVector(0.0f, 0.0f, 1.0f), direction));
+            GetCreature()->GetPhysicsTC()->SetOrientation(CRightHandedSet(C3DVector(0.0f, 0.0f, 1.0f), direction));
         }
     }
     Terminate();

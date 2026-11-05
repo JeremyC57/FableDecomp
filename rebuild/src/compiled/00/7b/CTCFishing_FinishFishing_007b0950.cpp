@@ -1,4 +1,5 @@
 // CTCFishing::FinishFishing(bool caught) -- stops the reel/escape sounds on the hero, closes the fishing mini-game GUI and button prompts, scores a caught fish's weight, posts the finish message and leaves fishing mode
+// Leaf: ?FinishFishing@CTCFishing@@QAEX_N@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
@@ -30,16 +31,13 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     T* Get() const { return (T*)GetPItem(); }
 };
-class CCharString {
-public:
-    void* Data;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
 extern long g_framesPerSecond;                          // 0x01375550
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingPlayerCreature;
@@ -48,24 +46,7 @@ public:
     void RemoveMode(long mode);                         // 0x00634190
     CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long PresentBits[9];                       // +0x20
-    CInterfaceMap Interfaces;                           // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Flags91;                              // +0x91
-    __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &Interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        CInterfaceMap::value_type* end = map->end();
-        return (it == end || type < it->first ? end : it)->second;
-    }
-    CPlayer& GetPlayer();                               // 0x004C7A30
-};
+
 class CThingPlayerCreature : public CThing { };
 class CMessageManager {
 public:
@@ -147,16 +128,16 @@ public:
 void CTCFishing::FinishFishing(bool caught)
 {
     CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
-    if (!hero || (hero->Flags91 & 1))
+    if (!hero || hero->IsDead())
         return;
     unsigned long reelingInSoundID = ReelingInSoundID;
-    if (reelingInSoundID && hero->HasTC(0x10)) {
-        ((CTCSoundEmitter*)hero->GetTC(0x10))->StopSound(reelingInSoundID);
+    if (reelingInSoundID && hero->HasTC(TCI_SOUND_PLAYER)) {
+        ((CTCSoundEmitter*)((CTCSoundEmitter*)&hero->GetTC(TCI_SOUND_PLAYER)))->StopSound(reelingInSoundID);
         ReelingInSoundID = 0;
     }
     unsigned long fishEscapingSoundID = FishEscapingSoundID;
-    if (fishEscapingSoundID && hero->HasTC(0x10)) {
-        ((CTCSoundEmitter*)hero->GetTC(0x10))->StopSound(fishEscapingSoundID);
+    if (fishEscapingSoundID && hero->HasTC(TCI_SOUND_PLAYER)) {
+        ((CTCSoundEmitter*)((CTCSoundEmitter*)&hero->GetTC(TCI_SOUND_PLAYER)))->StopSound(fishEscapingSoundID);
         FishEscapingSoundID = 0;
     }
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().PQuestInfo->DisplayMiniGameInfo(false, 1, 0);
@@ -166,12 +147,12 @@ void CTCFishing::FinishFishing(bool caught)
     if (caught) {
         fish = PFish.Get();
         CTCHeroOnlineScoreboard* scoreboard;
-        if (hero->HasTC(0x10d))
-            scoreboard = (CTCHeroOnlineScoreboard*)hero->GetTC(0x10d);
+        if (hero->HasTC(TCI_HERO_ONLINE_SCOREBOARD))
+            scoreboard = (CTCHeroOnlineScoreboard*)((CTCHeroOnlineScoreboard*)&hero->GetTC(TCI_HERO_ONLINE_SCOREBOARD));
         CTCFish* fishTC = 0;
         CThing* fishThing = PFish.Get();
-        if (fishThing->HasTC(0xdc))
-            fishTC = (CTCFish*)fishThing->GetTC(0xdc);
+        if (fishThing->HasTC(TCI_FISH))
+            fishTC = (CTCFish*)((CTCFish*)&fishThing->GetTC(TCI_FISH));
         scoreboard->UpdateScoreForActivity(7, fishTC->Weight, false);
     }
     C3DVector zero(0.0f, 0.0f, 0.0f);

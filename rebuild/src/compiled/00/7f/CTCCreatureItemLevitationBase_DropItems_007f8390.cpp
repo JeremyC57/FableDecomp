@@ -1,4 +1,5 @@
 // CTCCreatureItemLevitationBase::DropItems() -- hand every levitated item back to its physics, then empty the list
+// Leaf: ?DropItems@CTCCreatureItemLevitationBase@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F8390, length 89 bytes (+7 int3). CTCCreatureItemLevitationBase vtable
 // 0x0124156C slot 29.
 // Callees: the item's physics component (CThing +0x60 = PhysicsTC; PDB +0x70) virtual slot 38 (`call [edx+98h]`,
@@ -42,10 +43,7 @@ class CTCPhysicsBase { public:
     virtual void SetPhysicsActive(bool active);   // slot 38
 };
 
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;              // +0x60
-};
+#include "engine/CThing.h"
 
 class CTCCreatureItemLevitationBase { public:
     void* __vftable;                        // +0x00 (CTCBase)
@@ -61,7 +59,7 @@ class CTCCreatureItemLevitationBase { public:
 void CTCCreatureItemLevitationBase::DropItems()
 {
     for (SThingListNode* it = LevitatingItems.begin(); it != LevitatingItems.end(); it = it->Next)
-        it->Data->PhysicsTC->SetPhysicsActive(true);
+        it->Data->GetPhysicsTC()->SetPhysicsActive(true);
     SThingListNode* cur = LevitatingItems.Header->Next;
     while (cur != LevitatingItems.Header) {
         SThingListNode* tmp = cur;

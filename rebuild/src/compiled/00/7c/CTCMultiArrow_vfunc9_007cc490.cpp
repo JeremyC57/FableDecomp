@@ -1,14 +1,14 @@
 // CTCMultiArrow::vfunc_9() -- per-frame update: while volleys remain, count the effect timer down and create the next ammo effect; once spent and out of shots, remove the TC
+// Leaf: ?vfunc_9@CTCMultiArrow@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CC490, length 51 bytes.
 // Callees: CTCMultiArrow::CreateAmmoEffect() @ 0x007CC2B0 (tail jump), CThing::RemoveTC(long type) @ 0x004C9840 (type 0x88 =
 // this TC; manifest label "CBaseObject::OnPropertyChanged" is propagated).
 // Retail CTCMultiArrow (PDB): NumberOfShots +0x10, CreateAmmoEffectCount +0x24, CreateAmmoEffectDelay +0x28,
 // CreateAmmoEffectTimer +0x2c, CutSceneCancelled +0x44.
 // Shape: the timer decrement folds into `dec dword ptr [ecx+2Ch] ; jne`, the reload from the delay precedes the tail jump.
-enum ETCInterfaceType { };
-class CThing { public:
-    void RemoveTC(ETCInterfaceType type);                       // 0x004C9840
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 struct CTCBase_007cc490 {
     virtual void v00();

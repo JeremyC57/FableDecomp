@@ -1,4 +1,5 @@
 // CTCCameraPointBuilding::vfunc_17(CCharString& error) const -- validity check: the camera point must hang off a live building through its owner link, may not be both a start and an exit point, and its inside/outside position must agree with the start/exit flags; writes the reason into `error` and returns false on the first failure
+// Leaf: ?vfunc_17@CTCCameraPointBuilding@@QBE_NAAVCCharString@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075D9A0, 254 bytes (+ int3 padding), `ret 4`. Vtable 0x0123ECBC
@@ -17,13 +18,13 @@
 //   (the shared exit keeps esi/edi pushed at entry; VC7.1 still duplicates the small epilogue into every failure); the
 //   component is fetched with the inline out-param GetInterface before the start/exit test; IsPointInside's result is a
 //   named bool tested in two ifs.
-class CCharString { public:
-    void* PStringData;
-    const CCharString& operator=(const char* s);      // 0x0099EFE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing;
@@ -43,33 +44,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x18];
-    unsigned long ThingTypeFlags;               // +0x6c (0x40 = building)
-    unsigned char _pad70[0x91 - 0x70];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            *ppOut = GetTC<T>(interfaceType);
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long wanted) const
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CThingBuilding : public CThing { public:
     bool IsPointInside(const C3DVector& point) const;   // 0x0082D000
 };
@@ -91,8 +66,8 @@ struct CTCCameraPointBuilding {
 
 bool CTCCameraPointBuilding::vfunc_17(CCharString& error) const
 {
-    CTCOwnedEntity* owned;
-    if (!ParentThing->GetInterface(&owned, 0x33)) {
+    const CTCOwnedEntity* owned;
+    if (!ParentThing->PeekTC(TCI_OWNED_ENTITY, &owned)) {
         error = "CAMERA_POINT_BUILDING is not attached to a building!";
         goto fail;
     }
@@ -101,7 +76,7 @@ bool CTCCameraPointBuilding::vfunc_17(CCharString& error) const
         goto fail;
     }
     CThing* owner = owned->POwner.GetPItem();
-    if (!owner || owner->IsDead() || !(owner->ThingTypeFlags & 0x40)) {
+    if (!owner || owner->IsDead() || !(owner->GetTypeFlags() & 0x40)) {
         error = "CAMERA_POINT_BUILDING is attached to something other than a building!";
         goto fail;
     }

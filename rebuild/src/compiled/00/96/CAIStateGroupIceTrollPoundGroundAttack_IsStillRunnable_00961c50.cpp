@@ -12,13 +12,7 @@
 // nested ifs with one shared false tail), then the brain's creature is read into a local BEFORE the third
 // GetPItem (so it survives the call in edi) and the range predicate decides. `mov al,1` / `xor al,al`: bool.
 // The engine header keeps PTarget as an opaque byte array, so the layout is modelled locally with its name.
-class CBaseObject { };
-class CThing : public CBaseObject {
-public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-};
+#include "engine/CThing.h"
 
 class CBaseIntelligentPointer {
 public:

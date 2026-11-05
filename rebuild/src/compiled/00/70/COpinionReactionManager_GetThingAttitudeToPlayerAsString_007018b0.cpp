@@ -11,25 +11,12 @@
 // GetThingAttitudeToPlayer tail; each return forms the table address with `lea eax,[eax*4+table]`.
 class CTCBase;
 class CTCOpinionSource;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    virtual void v00();
-    unsigned char _pad04[0x1c];
-    unsigned long m_presentBits[9];         // +0x20 bitset of the interface types present
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType) const
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
@@ -40,10 +27,6 @@ public:
 private:             // 0x0049D9D0
 };
 
-enum { TC_OPINION_SOURCE = 0x50 };
-class CCharString { public:
-    void* m_pData;
-};
 extern CCharString g_OpinionAttitudeNames[];    // 0x013BABD0
 
 class COpinionReactionManager {
@@ -60,9 +43,9 @@ public:
 const CCharString& COpinionReactionManager::GetThingAttitudeToPlayerAsString(const CThing* thing)
 {
     const CThing* creature = ((CPlayer*)((CWorld*)World)->PeekMyPlayer())->PeekPControlledCreature();
-    if (creature && creature->HasTC(TC_OPINION_SOURCE))
+    if (creature && creature->HasTC(TCI_OPINION_SOURCE))
     {
-        CTCOpinionSource* source = (CTCOpinionSource*)creature->GetTC(TC_OPINION_SOURCE);
+        CTCOpinionSource* source = (CTCOpinionSource*)((CTCOpinionSource*)&creature->GetTC(TCI_OPINION_SOURCE));
         if (source)
             return g_OpinionAttitudeNames[GetAttitudeOrReactionType(thing, true, AttitudeMask, source)];
     }

@@ -17,15 +17,9 @@
 #pragma intrinsic(sqrt)
 #include "engine/C3DVector.h"
 
-class CCharString { public:
-    void* m_data;
-    CCharString(const char* text, long length); // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
 struct KnickKnack {                             // 0x10 bytes
     C3DVector Pos;                              // +0x00
     CThing*   Thing;                            // +0x0c (CThingObject*)

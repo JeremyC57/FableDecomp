@@ -19,11 +19,7 @@ class CTCPhysicsBase {
 public:
     void GetBoundingInfo(C3DVector& centre, float& radius) const;   // 0x006AF640
 };
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                          // +0x60
-};
+#include "engine/CThing.h"
 class CThingFilter_CanCollideOrInteractWithThing {
 public:
     CTCPhysicsBase* TCPhysics;                          // +0x00
@@ -43,7 +39,7 @@ public:
     {
         C3DVector centre;
         float boundRadius;
-        thing.PhysicsTC->GetBoundingInfo(centre, boundRadius);
+        thing.GetPhysicsTC()->GetBoundingInfo(centre, boundRadius);
         float dx = centre.X - SpherePos.X;
         float dy = centre.Y - SpherePos.Y;
         float dz = centre.Z - SpherePos.Z;

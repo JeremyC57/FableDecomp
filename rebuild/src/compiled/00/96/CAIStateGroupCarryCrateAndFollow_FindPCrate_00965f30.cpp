@@ -1,4 +1,5 @@
 // CAIStateGroup_CarryCrateAndFollow::FindPCrate() -- the nearest crate object (object property 0x08000000, a free action point, interface 0x47) to the creature, through the thing search tools
+// Leaf: ?FindPCrate@CAIStateGroup_CarryCrateAndFollow@@QAEPAVCThingObject@@XZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00965F30, length 115 bytes (+ int3 padding).
 // Callees: CThing::GetPosition @ 0x004C73D0 (const C3DVector*; the manifest's DoSizeof label is propagated),
@@ -17,9 +18,7 @@ class CThingSearchTools;
 
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;    // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CThingFilter_ObjectHasProperty { public:
     unsigned long m_property;

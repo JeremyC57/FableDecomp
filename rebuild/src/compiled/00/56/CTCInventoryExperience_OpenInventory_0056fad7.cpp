@@ -1,4 +1,5 @@
 // CTCInventoryExperience::OpenInventory() -- opens the experience screen: menu bookkeeping, front-end notification, fade reset, HUD hook, sound category refresh, then snapshots the hero's experience values and opens the base inventory view
+// Leaf: ?OpenInventory@CTCInventoryExperience@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -25,27 +26,10 @@ class CThing;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                         // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || wanted < it->first)
-                it = map->end();
-            *out = (T*)((void*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCHeroExperience { public:                           // interface type 0x68
     unsigned char _pad_0x00[0x14];
     long GeneralExperience;                          // +0x14
@@ -341,7 +325,7 @@ void CTCInventoryExperience::OpenInventory()
     AccumFadeTime = 0.0f;
     CMainGameComponent::Get()->World->Hud->SetEnabled(false);
     CTCHeroExperience* experience;
-    ParentThing->GetInterface(&experience, 0x68);
+    ParentThing->GetTC(TCI_HERO_EXPERIENCE, &experience);
     if (((CSoundSystem*)PSoundManager)) {
         ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, 0.0f, 500.0f);
         ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, 0.0f, 500.0f);

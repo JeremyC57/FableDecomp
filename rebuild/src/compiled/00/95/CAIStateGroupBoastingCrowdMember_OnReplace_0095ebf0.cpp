@@ -1,4 +1,5 @@
 // CAIStateGroup_BoastingCrowdMember::OnReplace() -- when the boaster is alive and has a crowd component (interface 0x74), tells that component this creature has left the crowd
+// Leaf: ?OnReplace@CAIStateGroup_BoastingCrowdMember@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- HasInterface + the ternary GetTC model on a GetPItem() thing local: the crowd loads straight into ecx before the creature argument
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095EBF0, length 107 bytes.
@@ -11,35 +12,10 @@
 class CTCBase;
 class CAIBrain;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-    unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* FindInterface(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-    template<class T> __forceinline T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -95,8 +71,8 @@ void CAIStateGroup_BoastingCrowdMember::OnReplace()
 {
     if (PBoaster.GetPItem() != 0 && !PBoaster.GetPItem()->IsDead()) {
         CThing* boaster = PBoaster.GetPItem();
-        if (boaster->HasInterface(0x74)) {
-            CTCBoastingCrowd* crowd = boaster->GetTC<CTCBoastingCrowd>(0x74);
+        if (boaster->HasTC(TCI_CREATURE_GROUP_BOASTING_CROWD)) {
+            CTCBoastingCrowd* crowd = ((CTCBoastingCrowd*)&boaster->GetTC(TCI_CREATURE_GROUP_BOASTING_CROWD));
             crowd->RemoveCrowdMember(PBrain->Creature);
         }
     }

@@ -10,11 +10,7 @@
 //   reference (retail addresses it through `lea eax,[esi+4]` and re-tests with `cmp ebx,ebx`); written inline in the
 //   body VC7.1 folds the test into the `sub` flags (`jns`). ClampToZero is a descriptive name (the helper is not recovered).
 #pragma optimize("s", on)
-class CThing { public:
-    unsigned char  _pad00[0x8C];
-    unsigned short DefGlobalIndex;                      // +0x8C (Ego_r.pdb +0x9C, minus 0x10 for the retail containers)
-    long GetDefGlobalIndex() const { return DefGlobalIndex; }
-};
+#include "engine/CThing.h"
 #include "engine/CCountedPointer.h"
 namespace NInventory { class CPerItemData; }
 namespace NInventory {

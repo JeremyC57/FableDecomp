@@ -1,4 +1,5 @@
 // CCreatureAction_PutDownJug::PerformAction() -- if the creature carries something in its primary slot, run the table put-down's PerformAction and set the carried jug's "put down" flag
+// Leaf: ?PerformAction@CCreatureAction_PutDownJug@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084A200, length 137 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface twice:
@@ -6,27 +7,11 @@
 // CTCCarrying::GetThingInPrimarySlot @ 0x006A1440, CCreatureAction_PutDownThingAtTable::PerformAction @ 0x0084A0A0 (direct base call).
 // Shape: both GetInterface results are tested (`je` to the shared epilogue); the carried thing rides in esi across the base call.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -69,12 +54,12 @@ class CCreatureAction_PutDownJug : public CCreatureAction_PutDownThingAtTable { 
 void CCreatureAction_PutDownJug::PerformAction()
 {
     CTCCarrying* carrying;
-    if (PCreature.GetPItem()->GetInterface(&carrying, 0x46)) {
+    if (PCreature.GetPItem()->GetTC(TCI_CARRYING, &carrying)) {
         CThing* thing = carrying->GetThingInPrimarySlot();
         if (thing) {
             CCreatureAction_PutDownThingAtTable::PerformAction();
             CTCJug* jug;
-            if (thing->GetInterface(&jug, 0xBB))
+            if (thing->GetTC(TCI_TAVERN_JUG, &jug))
                 jug->m_putDown = true;
         }
     }

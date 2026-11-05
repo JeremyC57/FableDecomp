@@ -1,4 +1,5 @@
 // CTCWobble::FrameUpdate() -- while frames of wobble remain, rotate a copy of the parent's right-handed set (Up about Forward by -(direction * angle)), hand it to the physics component and flip the direction; when none remain restore the stored set and remove the component (interface 0xf7)
+// Leaf: ?FrameUpdate@CTCWobble@@QAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E2F00, 199 bytes. __fastcall, `ret`. CTCWobble vtable 0x0123DF34.
 // Callees: C3DVector::Rotate(const C3DVector& axis, float angle) 0x00A13C60 (in place); CTCPhysicsBase virtual slot 75
@@ -42,12 +43,10 @@ class CTCPhysicsBase { public:
     virtual void v072(); virtual void v073(); virtual void v074();
     virtual void SetFacingAnglesFromRHSet(const CRightHandedSet& rhSet);   // slot 75 (+0x12c)
 };
-enum ETCInterfaceType { };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                     // +0x60
-    void RemoveTC(ETCInterfaceType interfaceType);             // 0x004C9840
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
+
 class CTCWobble { public:
     virtual void v00();
     CThing*         ParentThing;                   // +0x04
@@ -66,10 +65,10 @@ void CTCWobble::FrameUpdate()
         C3DVector up = rhSet.Up;
         up.Rotate(rhSet.Forward, -DirectionLastRotated * AngleOfWobble);
         rhSet.Up = up;
-        ParentThing->PhysicsTC->SetFacingAnglesFromRHSet(rhSet);
+        ParentThing->GetPhysicsTC()->SetFacingAnglesFromRHSet(rhSet);
         DirectionLastRotated = -DirectionLastRotated;
     } else {
-        ParentThing->PhysicsTC->SetFacingAnglesFromRHSet(ParentRHSet);
+        ParentThing->GetPhysicsTC()->SetFacingAnglesFromRHSet(ParentRHSet);
         ParentThing->RemoveTC((ETCInterfaceType)(0xf7));
     }
 }

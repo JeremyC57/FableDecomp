@@ -12,22 +12,14 @@
 // Layout: PDB CTCActionUseReadable: PDef +0x14 (CDefPointer<CReadableDef const>), TextTag +0x18; CReadableDef UseInfoDisplay
 // +0x25; retail CThing Dead = bit 0 of +0x91.
 typedef unsigned short wchar_t;                     // VC7.1 default: wchar_t is not a native type
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Flags91;                         // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-};
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing {
 public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
-class CWideString { public:
-    void* PString;
-    bool operator!=(const wchar_t* text) const;    // 0x0099B150
-    ~CWideString();                                // 0x0099B510
-};
+
 class CReadableDef { public:
     unsigned char _pad00[0x25];
     bool UseInfoDisplay;                           // +0x25

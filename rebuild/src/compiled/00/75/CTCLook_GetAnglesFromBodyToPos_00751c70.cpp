@@ -1,4 +1,5 @@
 // CTCLook::GetAnglesFromBodyToPos(const C3DVector& pos, bool unused, float& angleXY, float& angleYZ) const -- the XY / YZ angle differences from the body facing to the direction head->pos, or to the recovery angles when there is no live parent creature or pos is the head position
+// Leaf: ?GetAnglesFromBodyToPos@CTCLook@@QBEXABVC3DVector@@_NAAM2@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751C70, length 297 bytes (+ int3 padding), `ret 10h`; the second argument
@@ -30,10 +31,7 @@ class CTCPhysicsBase { public:
     virtual float GetFacingAngleXY();           // slot 63 (+0xFC)
     virtual float GetFacingAngleYZ();           // slot 64 (+0x100)
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-};
+#include "engine/CThing.h"
 class CThingCreatureBase { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
@@ -78,8 +76,8 @@ class CTCLook { public:
 
 void CTCLook::GetAnglesFromBodyToPos(const C3DVector& pos, bool unused, float& angleXY, float& angleYZ) const
 {
-    float bodyXY = ParentThing->PhysicsTC->GetFacingAngleXY();
-    float bodyYZ = ParentThing->PhysicsTC->GetFacingAngleYZ();
+    float bodyXY = ParentThing->GetPhysicsTC()->GetFacingAngleXY();
+    float bodyYZ = ParentThing->GetPhysicsTC()->GetFacingAngleYZ();
     if (IS_THING_ALIVE(PParentCreature)) {
         C3DVector headPos = GetHeadPos();
         if ((float)fabs(pos.X - headPos.X) > DELTA_NOTIONAL_ZERO || (float)fabs(pos.Y - headPos.Y) > DELTA_NOTIONAL_ZERO ||

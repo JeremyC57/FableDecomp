@@ -21,29 +21,10 @@ extern "C" double __cdecl sqrt(double);
 
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CThingCreatureBase : public CThing { public: };
 
@@ -104,8 +85,8 @@ struct CCombatSequence_WillForcePush : CCombatSequenceBase {
 
 bool CCombatSequence_WillForcePush::IsValid()
 {
-    CTCWillPower* willPower;
-    if (m_pOwner->GetInterface(&willPower, 0xce)) {
+    const CTCWillPower* willPower;
+    if (m_pOwner->PeekTC(TCI_AICREATURE_WILL_POWER_INDICATOR, &willPower)) {
         if (willPower->Active) {
             CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetCharacter().GetPItem();
             if (!AreThingsEnemies(hero, m_pOwner)) {

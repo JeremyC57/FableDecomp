@@ -1,4 +1,5 @@
 // CCreatureAction_ScorpionTailPlunge::FinishAction() -- when the target's flag bit 3 (+0x6c) is set, put the scorpion king into a new CModeScorpionKingTailPlunge aimed at the action's target through the owner's mode manager; then the base FinishAction
+// Leaf: ?FinishAction@CCreatureAction_ScorpionTailPlunge@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C48A0, length 239 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x31 =
@@ -14,29 +15,11 @@
 // frame across the block (register pressure).
 // Layout: the owner (CIntelligentPointer<CThingCreatureBase>) at +8, the target at +0xa8 (retail CCreatureActionBase is 0xa8).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x18];
-    unsigned char m_flags6c;                    // +0x6c bit 3
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -117,7 +100,7 @@ public:
     __forceinline CTCCreatureModeManager* GetModeManager() const
     {
         CTCCreatureModeManager* modeManager;
-        PCreature.GetPItem()->GetInterface(&modeManager, 0x31);
+        PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
         return modeManager;
     }
 };
@@ -129,7 +112,7 @@ public:
 
 void CCreatureAction_ScorpionTailPlunge::FinishAction()
 {
-    if (PTarget.GetPItem()->m_flags6c & 8) {
+    if (PTarget.GetPItem()->GetTypeFlags() & 8) {
         CThing* target = PTarget.GetPItem();
         CTCCreatureModeManager* modeManager = GetModeManager();
         CCountedPointer<CModeScorpionKingTailPlunge> mode(new CModeScorpionKingTailPlunge(PCreature.GetPItem()));

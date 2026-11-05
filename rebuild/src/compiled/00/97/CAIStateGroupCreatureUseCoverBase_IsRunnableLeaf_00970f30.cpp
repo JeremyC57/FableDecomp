@@ -9,9 +9,8 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
-inline void* operator new(size_t,void* p){return p;}
 #include "engine/C3DVector.h"
-class CThing { public: const C3DVector& GetPos() const; };
+#include "engine/CThing.h"
 struct CThingRetail : public CThing { public:  };   // 0x004C73D0
 struct CAIBrainRetail { unsigned char _pad[0x18]; CThingRetail* Creature; };   // +0x18
 class CWorld { public: static long GetFramesPerSecond(); 

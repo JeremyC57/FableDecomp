@@ -16,12 +16,10 @@ class CBulletTimeManager:public CBulletTimeManager_HeaderLayout {public:
 };
 // Layout: no active CThingManager header; own global getter chains prove World+0x24. No other manager field is accessed.
 class CThingManager {public:unsigned char Prefix[0x24];CWorld* World;};
-class CThing {
-private:
-    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
-public:
-    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
-private:public:bool IsAffectedByBulletTime()const;};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MANAGERACCESS
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 // Layout: CTCBerserk supplies only a static method name; no object instance is accessed.
 class CTCBerserk {public:static long __fastcall GetNumFramesBeforeCrazyIdle();};
 namespace NCreatureMode {enum EMode {DescriptiveModeZero=0};}

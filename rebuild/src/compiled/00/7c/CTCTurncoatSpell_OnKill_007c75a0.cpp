@@ -19,11 +19,7 @@
 // Layout: engine/CTCTurncoatSpell.h is the PDB layout; retail members after Timer sit 4 bytes lower (StopTurncoatingEffects
 //   0x007C6DA0 reads LoopingSound at +0x50 = PDB +0x54 and the three effect pointers at +0x74 / +0x7C / +0x84 = PDB +0x78 /
 //   +0x80 / +0x88), so TurncoatingEffectOnMeOutOfRange is at +0x84 and a local model is used.
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags;                  // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER

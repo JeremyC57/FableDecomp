@@ -44,17 +44,7 @@ public:
     UNPROVEN_SLOT(71) UNPROVEN_SLOT(72) UNPROVEN_SLOT(73) UNPROVEN_SLOT(74)
     virtual void SetRHSet(const CRightHandedSet& set);      // slot 75 (+0x12C)
 };
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                        // +0x60
-    unsigned char   _pad64[0x91 - 0x64];
-    unsigned char   Dead : 1;                         // +0x91 bit 0
-    bool IsDead() const { return Dead; }              // Ego_r.pdb ?IsDead@CThing@@QBE_NXZ
-    const C3DVector& GetPos() const;                  // 0x004C73D0
-    CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }               // Ego_r ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ
-    const CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }   // Ego_r ?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 class CAnimationEntry;
 class CBaseObject;

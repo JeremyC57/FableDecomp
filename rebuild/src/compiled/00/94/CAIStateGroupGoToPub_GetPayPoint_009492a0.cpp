@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToPub::GetPayPoint() -- ask the pub bar's tavern-bar component for a pickup slot for this creature (fills BarPos/BarRHSet/BarActionPointIndex/BarIndex)
+// Leaf: ?GetPayPoint@CAIStateGroup_GoToPub@@QAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- HasTC + the ternary GetTC model on a GetPItem() thing local: the bar loads straight into ecx before the GetPickupSlot pushes
@@ -17,23 +18,10 @@ class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-};
 
 class CTCTavernBar { public:                           // interface type 0xb9
     bool GetPickupSlot(CThing* creature, C3DVector* pos, CRightHandedSet* rhSet, long* actionPointIndex,
@@ -94,8 +82,8 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
 bool CAIStateGroup_GoToPub::GetPayPoint()
 {
     CThing* barThing = PBar.GetPItem();
-    if (barThing->HasTC(0xb9)) {
-        CTCTavernBar* bar = barThing->GetTC<CTCTavernBar>(0xb9);
+    if (barThing->HasTC(TCI_TAVERN_BAR)) {
+        CTCTavernBar* bar = ((CTCTavernBar*)&barThing->GetTC(TCI_TAVERN_BAR));
         CThing* creature = PBrain->PCreature;
         if (bar->GetPickupSlot(creature, &BarPos, &BarRHSet, &BarActionPointIndex, &BarIndex, false))
             return true;

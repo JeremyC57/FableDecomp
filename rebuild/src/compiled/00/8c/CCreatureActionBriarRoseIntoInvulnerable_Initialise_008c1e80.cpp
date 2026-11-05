@@ -1,4 +1,5 @@
 // CCreatureAction_BriarRoseIntoInvulnerable::Initialise() -- animation "INVULNERABLE_INTO", base Initialise, then (mode manager present, enemy alive) push a new CModeBriarRoseTeleportInvulnerable(owner, enemy) onto the owner's mode manager
+// Leaf: ?Initialise@CCreatureAction_BriarRoseIntoInvulnerable@@UAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C1E80, length 225 bytes (+ int3 padding), plain `ret` (virtual, no arguments).
@@ -13,29 +14,12 @@
 // spills the out-parameter manager to the frame; the `new` null test selects 0 for the counted pointer.
 // Layout: PEnemy (CIntelligentPointer<CThingCreatureBase>) at retail +0x114 (PDB +0x12c); thing byte +0x91 bit 0 = dead.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing { public: };
 
 class CBaseObject;
@@ -47,12 +31,6 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
-};
-
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
 };
 
 struct CModeBase { };
@@ -88,6 +66,6 @@ void CCreatureAction_BriarRoseIntoInvulnerable::Initialise()
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
-    if (((CThing*)PCreature.GetPItem())->GetInterface(&modeManager, 0x31) && PEnemy.GetPItem() && !(PEnemy.GetPItem()->m_flags91 & 1))
+    if (((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager) && PEnemy.GetPItem() && !PEnemy.GetPItem()->IsDead())
         modeManager->AddMode(CCountedPointer<CModeBase>(new CModeBriarRoseTeleportInvulnerable(PCreature, PEnemy.GetPItem())));
 }

@@ -1,4 +1,5 @@
 // CAIStateGroup_TavernServer::IsRunnable() -- runnable while carrying a jug; otherwise, for a village member with a live pub (adopted from the creature's workplace when unset), a live bar (or one found), a serving point (or one found) and a jug: free the old points and drop the jug pointer
+// Leaf: ?IsRunnable@CAIStateGroupTavernServerMethods@@QAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90). Spellings unified: 0078b2a0: ?IS_THING_ALIVE_Pointer_0078b2a0@@YI_NABUCBaseIntelligentPointer@@@Z -> ?IS_THING_ALIVE_Pointer_0078b2a0@@YI_NABVCBaseIntelligentPointer@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00967650, length 336 bytes (+ int3 padding).
@@ -16,29 +17,13 @@
 #include "engine/CAIStateGroup_TavernServer.h"
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCVillage;
 class CTCVillageMember { public:                       // interface 0x23
     CTCVillage* GetPVillage() const;              // 0x007EE540
@@ -57,7 +42,7 @@ namespace N_0065e133 { namespace N_007b82c0 { struct CIntelligentPointerConstThi
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -93,7 +78,7 @@ bool CAIStateGroupTavernServerMethods::IsRunnable()
     if (IsCarryingJug())
         return true;
     CTCVillageMember* member;
-    if (GetCreature()->GetInterface(&member, 0x23)) {
+    if (GetCreature()->GetTC(TCI_VILLAGE_MEMBER, &member)) {
         CTCVillage* village = member->GetPVillage();
         if (!((CThing*)Pub().GetPItem()))
             Pub() = CIntelligentPointerThing(((CThing*)((CThingAICreature*)GetCreature())->PWorkplace.GetPItem()));

@@ -15,48 +15,12 @@
 //   C++ (asm cleanup round 2b; replaces the oracle byte bake).
 #include "engine/GFFloatToLongNear.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
-    CInterfaceMap Components;                            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (T*)it->second;
-        return true;
-    }
-    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        const CInterfaceMap* map = &Components;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (const T*)it->second;
-        return true;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
@@ -68,7 +32,7 @@ public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 class CCharStringData;
-class CCharString { public: CCharStringData* PStringData; };
+
 struct CMarriageNode { CMarriageNode* _M_next; CMarriageNode* _M_prev; };
 class CMarriageList {                                    // std::list<CHeroMarriageInfo> (STLport: one node pointer)
 public:
@@ -81,7 +45,6 @@ enum EMorality { MORALITY_NEUTRAL = 3, MORALITY_FORCE_DWORD = 0x7fffffff };
 enum EHeroTrainingStatus { HERO_TRAINING_STATUS_NONE = 0, HERO_TRAINING_STATUS_APPRENTICE = 1, HERO_TRAINING_STATUS_FORCE_DWORD = 0x7fffffff };
 class CTCHeroStats {
 public:
-    enum { INTERFACE_TYPE = 0x4 };
     unsigned char _pad_0x000[0x28];
     long Morality;                              // +0x028
     unsigned char _pad_0x02c[0x4];
@@ -146,7 +109,7 @@ void CGameScriptInterface::GiveHeroMorality(float amount) const
     if (hero && !hero->IsDead())
     {
         CTCHeroStats* tc;
-        PlayerManager->GetMainPlayer().GetPControlledCreature()->GetTC(&tc);
+        PlayerManager->GetMainPlayer().GetPControlledCreature()->GetTC(TCI_HERO_STATS, &tc);
         tc->SetMorality(tc->Morality + GFFloatToLongNear(tc->GetMoralityMax() * amount));
     }
 }

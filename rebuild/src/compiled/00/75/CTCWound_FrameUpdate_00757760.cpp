@@ -10,30 +10,11 @@
 // Layout: CTCWound (PDB, 0x1C with a 12-byte list): ParentThing +0x04, LastFrameChanged +0x0C, Wounds +0x10 (retail STLport
 //         list = one sentinel pointer); CWound (0x44): Dead +0x40; retail CThing bitset +0x20, interface map +0x44.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 extern "C" void __cdecl free(void* p);           // 0x00BFEA14
 class CTCTextureDecal;
 struct CWound {
@@ -69,7 +50,7 @@ class CTCWound { public:
 void CTCWound::FrameUpdate()
 {
     CTCTextureDecal* decal;
-    if (ParentThing->GetInterface(&decal, 0xe9)) {
+    if (ParentThing->GetTC(TCI_TEXTURE_DECAL, &decal)) {
         for (CRetailList<CWound>::Node* it = Wounds.begin(); it != Wounds.end(); ) {
             it->Value.Update(decal);
             if (it->Value.Dead) {

@@ -1,4 +1,5 @@
 // CTCGuard::IsAttackingToFineRatherThanKill() const -- true when the guard's village (via its CTCVillageMember interface, 0x23) exists and has a positive fine for the current crimes
+// Leaf: ?IsAttackingToFineRatherThanKill@CTCGuard@@QBE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B2CF0, length 92 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType,..>::LowerBound @ 0x004365B0 (the thing's interface map at +0x44), CTCVillageMember::
@@ -20,28 +21,10 @@ public:
     CTCVillage* GetPVillage() const;   // 0x007EE540
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCGuard { public:
     virtual void v00();
@@ -52,8 +35,8 @@ class CTCGuard { public:
 bool CTCGuard::IsAttackingToFineRatherThanKill() const
 {
     bool result = false;
-    CTCVillageMember* member;
-    ParentThing->GetInterface(&member, 0x23);               // TC_VILLAGE_MEMBER
+    const CTCVillageMember* member;
+    ParentThing->PeekTC(TCI_VILLAGE_MEMBER, &member);               // TC_VILLAGE_MEMBER
     CTCVillage* village = member->GetPVillage();
     if (village != 0 && village->GetFineAmountForCurrentCrimes() > 0)
         result = true;

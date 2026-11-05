@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionGuardReactToBribe::IsRunnable() -- with the guard's bribe component: react at once to a pending bribe (latch the live hero, no bribe received), else react while a bribe offered within the last 4 seconds is newer than 7 seconds after the last reaction (bribe received)
+// Leaf: ?IsRunnable@CAIStateGroupMinionGuardReactToBribeMethods@@QAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90). Spellings unified: 0048c740: ?IS_THING_ALIVE_Pointer@@YI_NABUCBaseIntelligentPointer@@@Z -> ?IS_THING_ALIVE_Pointer@@YI_NABVCBaseIntelligentPointer@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: the global stand-in FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -18,31 +19,11 @@
 #include "engine/CAIStateGroup_MinionGuardReactToBribe.h"
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline void GetInterfaceV(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 struct CTCGuardBribe {                          // interface 0xb4 (descriptive)
     unsigned char _pad[0x10];
@@ -76,7 +57,7 @@ struct CIntelligentPointerHero : CBaseIntelligentPointer {   // CIntelligentPoin
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -98,9 +79,9 @@ struct CAIStateGroupMinionGuardReactToBribeMethods : CAIStateGroup_MinionGuardRe
 bool CAIStateGroupMinionGuardReactToBribeMethods::IsRunnable()
 {
     CThing* creature = GetCreature();
-    if (creature->HasTC(0xb4)) {
+    if (creature->HasTC(TCI_GUARD)) {
         CTCGuardBribe* bribe;
-        creature->GetInterfaceV(&bribe, 0xb4);
+        creature->GetTC(TCI_GUARD, &bribe);
         if (bribe->PendingBribe < 0) {
             Hero() = CIntelligentPointerHero(GetPPlayerManager()->GetMainPlayer().GetPControlledCreature());
             if (IS_THING_ALIVE(Hero())) {

@@ -5,11 +5,7 @@
 // Layout: CThing +0x10 is padding in Ego_r.pdb; the same tag is compared with 2 by CPlayerManager::IsThingMainPlayer
 // (0x004497C0), so it keeps that placeholder name here. Classes modelled locally (no retail-accurate CThing header).
 // Shape: /O2, one bool expression (`mov eax,1` / `xor eax,eax`); an early `return false` gives `xor al,al`.
-class CThing {
-public:
-    unsigned char _pad00[0x10];
-    unsigned char ThingTypeTag;                          // +0x10
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 class CThingFilter_IsInterestingToCreature {
 public:
@@ -18,5 +14,5 @@ public:
 };
 bool CThingFilter_IsInterestingToCreature::operator()(const CThing& thing) const
 {
-    return &thing != SourceCreature && (thing.ThingTypeTag == 1 || thing.ThingTypeTag == 2);
+    return &thing != SourceCreature && (thing.GetType() == 1 || thing.GetType() == 2);
 }

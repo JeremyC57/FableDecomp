@@ -3,6 +3,7 @@
 // Leaf: ConstructQuestsScreen_CurrentQuestsPC
 #include <stdlib.h>
 #include <new>
+namespace NUISystem { class CManager { public: static CManager* __fastcall GetInstance(); }; }   // 0x0041E5F2 (Ego_r.pdb / FableWin.pdb)
 namespace NScreen005fc8a0 {
 #pragma pack(push,1)
 struct CCharStringData{char* text;int length,capacity;unsigned char owned;int refs;};
@@ -164,7 +165,7 @@ virtual void v143()=0;
 virtual void v144()=0;
 virtual void Add(const Ptr&)=0;
 };
-struct CManager {__declspec(noinline) CComponent* CreateComponent(const CCharString&,int);};CManager* __fastcall GetUI();
+struct CManager {__declspec(noinline) CComponent* CreateComponent(const CCharString&,int);};
 CComponent* LookupWidget(CManager*,const char*,int);
 CComponent* CManager::CreateComponent(const CCharString& name,int flag){return LookupWidget(this,name.Text(),flag);}
 struct CUIMiscThingsDef {virtual void v0()=0;virtual void Delete()=0;int refs;};
@@ -183,7 +184,7 @@ CComponent* CTCInventoryMap::ConstructQuestsScreen_CurrentQuestsPC(int arg,Paren
  CTCInventoryQuests* component=0;if(thing->flags&0x2000000){CVectorMap* map=&thing->map;int key=25;Pair* p=map->LowerBound(key);if(p==map->last||key<p->key)p=map->last;component=p->component;}
  List& list=g_pQuestManager->current;
  vector items;for(Node* n=list.head->next;n!=list.head;n=n->next){void* p=n->value.Get();items.push_back(p);}if(list.Size()<=0u)return 0;
- CDefPointer def;int index=GetDefinitionManager()->Index("UI_MISC_THINGS_DEF",true);GetDefinitionManager()->Get(index,def.p);CManager* ui=GetUI();CComponent* widget=ui->CreateComponent("PC_SUB_LIST",0);Ptr title(ui->CreateComponent("PC_TITLE_QUEST_CURRENT",0));widget->Add(title);frame->Attach(title.p);
+ CDefPointer def;int index=GetDefinitionManager()->Index("UI_MISC_THINGS_DEF",true);GetDefinitionManager()->Get(index,def.p);CManager* ui=(CManager*)NUISystem::CManager::GetInstance();CComponent* widget=ui->CreateComponent("PC_SUB_LIST",0);Ptr title(ui->CreateComponent("PC_TITLE_QUEST_CURRENT",0));widget->Add(title);frame->Attach(title.p);
  component->ConstructQuestListPC(arg,items,widget,1,(int)parent);
  return widget;
 }

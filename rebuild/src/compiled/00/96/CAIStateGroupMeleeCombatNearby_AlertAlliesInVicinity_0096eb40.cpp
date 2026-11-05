@@ -23,25 +23,11 @@
 //   (between AttackEnemy 0x0096EA50 and MoveToEnemyCreatureCombatPosition 0x0096EC10; its one caller is Update 0x0096EE90).
 class CTCBase;
 #include "engine/C3DVector.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
-            long type = interfaceType;
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPhysical : public CThing { public:
     const C3DVector& PeekPos() const;           // 0x006A4D00 (Ego_r.pdb ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ)
 };
@@ -54,7 +40,7 @@ class CTCPerceiveThing { public:                       // interface 0x34
     bool IgnoreFOVLineOfSight;                  // +0x2f
     bool DirectAwareness;                       // +0x30
     bool Smelt;                                 // +0x31
-    CThing* GetPerceivedThing();                // 0x007446A0
+    CThing* GetPerceivedThing() const;                // 0x007446A0
 };
 class CMessageEvent;
 class CMessageEventFilter_IsOfType { public:
@@ -103,8 +89,8 @@ private:
 
 bool CAIStateGroup_MeleeCombatNearby::AlertAlliesInVicinity()
 {
-    CTCPerceiveThing* perceive;
-    if (!((const CThing*)GetCreature())->GetInterface(&perceive, 0x34))
+    const CTCPerceiveThing* perceive;
+    if (!((const CThing*)GetCreature())->PeekTC(TCI_PERCEIVE_THING, &perceive))
         return true;
     if (perceive->GetPerceivedThing() != PEnemy.GetPItem() || (!perceive->LineOfSight && !perceive->Smelt))
         return true;

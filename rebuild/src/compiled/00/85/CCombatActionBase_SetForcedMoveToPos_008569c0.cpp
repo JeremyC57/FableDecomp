@@ -1,4 +1,5 @@
 // CCombatActionBase::SetForcedMoveToPos(const C3DVector&) -- flag the preferred final position and store (pos - creature position) as the preferred movement vector
+// Leaf: ?SetForcedMoveToPos@CCombatActionBase@@QAEXABVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008569C0, length 93 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CThingPhysical::GetPos
 // @ 0x004C73D0 (`[this+60h]+0Ch`, const C3DVector&; the manifest's "CVertexBufferWin32::DoSizeof" is a
@@ -23,9 +24,7 @@ inline C3DVector operator-(const C3DVector& a, const C3DVector& b)
     return result;
 }
 
-class CThing { public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingCreatureBase_Calls : public CThing { public:              // engine/CThingCreatureBase.h exists but is not used: only its GetPos call is used
 };
 

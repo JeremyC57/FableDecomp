@@ -9,27 +9,11 @@
 // Shape (family K045, representative 0x00917D60): the qualified base call, then the landed CAIStateGroup_MinionWatchFires::OnReplace
 //   0x00936590 body (its model, verbatim: GetInterface on PBrain->PCreature, interface 0xD3 = bit 19 of the dword at +0x38).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
@@ -57,6 +41,6 @@ void CAIStateGroup_CleanHouse::OnReplace()
 {
     CAIStateGroup_Clean::OnReplace();
     CTCIdleScheduler* pScheduler;
-    if (PBrain->PCreature->GetInterface(&pScheduler, 0xD3))
+    if (PBrain->PCreature->GetTC(TCI_IDLE_SCHEDULER, &pScheduler))
         pScheduler->ChooseNewIdle();
 }

@@ -21,20 +21,15 @@ class CDefString { public:
     CDefString& operator=(const CDefString& other);   // user assignment: returned through the hidden pointer, copied as a dword
 };
 
-class CCharString { public:
-    void* PStringData;
-    ~CCharString();                             // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CDefStringTable { public:
     CCharString GetString(CDefString name);     // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
-
-class CThing { public:
-    CDefString GetDefName() const;                    // 0x004C7CC0
-};
 
 class CBaseObject;
 class CBaseObjectPointer;

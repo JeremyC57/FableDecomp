@@ -19,28 +19,17 @@ extern unsigned long GFastOneOverSqrtTable[128];       // 0x013CE558
 #define FABLE_RETAIL_C3DVECTOR
 #include "engine/C3DVector.h"
 
-class CCharString { public:
-    void* PStringData;
-    CCharString();                                         // 0x0099E4B0
-    ~CCharString();                                        // 0x0099EAE0
-    const CCharString& operator=(const char* text);              // 0x0099EFE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
-struct CPhysicsBody {                                      // the thing's physics body at +0x60
+struct CTCPhysicsBase {                                      // the thing's physics body at +0x60
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
     virtual C3DVector GetFacing();                         // slot 70 (+0x118)
 };
 class CCreatureActionBase;
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CPhysicsBody* PhysicsBody;                             // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char StateBits;                               // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;                  // 0x004C73D0
-    bool IsDead() const { return (StateBits & 1) != 0; }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
@@ -99,7 +88,7 @@ void CTCCreatureFlyInCircles::PlayLoopAnim()
     if (hero && !hero->IsDead())
         direction = hero->GetPos() - Creature->GetPos();
     else
-        direction = Creature->PhysicsBody->GetFacing();
+        direction = Creature->GetPhysicsTC()->GetFacing();
     direction.Z = 0.0f;
     direction.Normalise();
     switch (Mode) {

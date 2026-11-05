@@ -23,31 +23,10 @@ class CTCBase;
 
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    std::bitset<274>       m_present;                    // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (HasTC(interfaceType)) {
-            *ppOut = (T*)GetTC(interfaceType);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public:
@@ -67,7 +46,6 @@ private: public:
     unsigned char _pad[0x24];
     CWorld*       World;                        // +0x24
 };
-
 
 class CTCHeroOpinionDeedLog { public:
     class COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
@@ -109,7 +87,7 @@ void CTCVillage::RemoveCrime(long deedHandle)
     if (hero) {
         long handle = deedHandle;
         CTCHeroOpinionDeedLog* log;
-        hero->GetInterface(&log, 0x51);
+        hero->GetTC(TCI_HERO_OPINION_DEED_LOG, &log);
         if (log->GetDeedFromHandle(handle)) {
             log->RemoveDeedStillSearchingForWitnesses(handle);
             long deed = handle;

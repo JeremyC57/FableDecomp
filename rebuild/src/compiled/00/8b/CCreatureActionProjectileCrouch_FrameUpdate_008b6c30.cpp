@@ -1,4 +1,5 @@
 // CCreatureAction_ProjectileCrouch::FrameUpdate() -- the base frame update; then, when turning to face the target, turn the creature's facing towards FacePos (snap when within ~5 degrees, otherwise step 1/72 turn towards the side the target is on) and set the wrapped facing angle
+// Leaf: ?FrameUpdate@CCreatureAction_ProjectileCrouch@@UAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Normalise replaced by the header Normalise (same computation).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B6C30, length 546 bytes (+ int3 padding), plain `ret` (virtual).
@@ -48,12 +49,7 @@ class CTCPhysicsBase { public:
     virtual void v67(); virtual void v68(); virtual void v69();
     virtual C3DVector GetFacingVector();                    // slot 70 (+0x118)
 };
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                              // +0x60
-    CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
-    const C3DVector& GetPos() const;                   // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -104,7 +100,7 @@ void CCreatureAction_ProjectileCrouch::FrameUpdate()
             desired.RotateXY(-0.013888889f);
     } else
         desired = toTarget;
-    CTCPhysicsBase* physics = PCreature.GetPItem()->PhysicsTC;
+    CTCPhysicsBase* physics = PCreature.GetPItem()->GetPhysicsTC();
     float angle = WrapAngle((float)atan2(desired.X, desired.Y) * 0.15915494f);
     physics->SetFacingAngleXY(angle);
 }

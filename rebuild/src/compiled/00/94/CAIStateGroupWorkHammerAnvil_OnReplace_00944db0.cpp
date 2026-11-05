@@ -1,4 +1,5 @@
 // CAIStateGroup_WorkHammerAnvil::OnReplace() -- give back the anvil's action point (when it was taken and the anvil
+// Leaf: ?OnReplace@CAIStateGroup_WorkHammerAnvil@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // is alive), stop the creature's current action, drop whatever is in both carry slots and make it pushable again.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00944DB0, length 201 bytes (+ int3 padding).
@@ -16,28 +17,11 @@
 //   it->type ? last : it)->component`), which loads the component straight into the register retail uses.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -55,7 +39,6 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -76,17 +59,11 @@ class CAIStateGroupBase { public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
 }
-
-class CCharString { public:                            // 4 bytes: the shared string data pointer
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
 
 struct CTCUserActionPointBase {
 public:
@@ -121,7 +98,7 @@ void CAIStateGroup_WorkHammerAnvil::OnReplace()
 {
     if (IS_THING_ALIVE(PAnvil) && TookActionPoint) {
         CTCUserActionPointBase* point;
-        if (PAnvil.GetPItem()->GetInterface(&point, 0x2D))
+        if (PAnvil.GetPItem()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &point))
             ((CTCUserActionPointBase*)point)->SetActionPointAsFree(ActionPointIndex);
     }
     ((CThingCreatureBase*)PBrain->PCreature)->FinishCurrentAction();

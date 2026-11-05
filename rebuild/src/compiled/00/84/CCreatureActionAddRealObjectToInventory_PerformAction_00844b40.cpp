@@ -1,4 +1,5 @@
 // CCreatureAction_AddRealObjectToInventory::PerformAction() -- if the object exists and is not flagged (bit 0 of its byte at +0x91), add it to the creature's inventory component (interface type 203) as a real item
+// Leaf: ?PerformAction@CCreatureAction_AddRealObjectToInventory@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00844B40, length 118 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PObject at +0xa8 three times, PCreature at +8 once),
@@ -9,34 +10,13 @@
 // the `push 1` precedes the third fetch (arguments right to left). Retail CCreatureActionBase is 0xa8 bytes (PObject at
 // +0xa8; no engine header for this class), so `this` is modelled locally.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase;
 struct CTCGraphicAppearance;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0xc];
-    CTCPhysicsBase* m_pPhysics;             // +0x60
-    CTCGraphicAppearance* m_pGraphicAppearance;   // +0x64
-    CTCPhysicsBase* GetPhysics() const { return m_pPhysics; }                           // inline accessors: the member is
-    CTCGraphicAppearance* GetGraphicAppearance() const { return m_pGraphicAppearance; }   //   loaded straight into ecx
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -78,7 +58,7 @@ void CCreatureAction_AddRealObjectToInventory::PerformAction()
     if (PObject.GetPItem()) {
         if (!((CThingFlags91*)PObject.GetPItem())->m_isBeingRemoved) {
             CTCInventory* pInventory;
-            if (PCreature.GetPItem()->GetInterface(&pInventory, 203))
+            if (PCreature.GetPItem()->GetTC(TCI_HERO_RECEIVE_ITEMS, &pInventory))
                 pInventory->AddItemToInventory(PObject.GetPItem(), true);
         }
     }

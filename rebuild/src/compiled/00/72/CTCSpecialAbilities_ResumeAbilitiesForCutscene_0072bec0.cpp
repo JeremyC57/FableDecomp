@@ -9,23 +9,11 @@
 //   +0x44; CTCSpecialAbilities ParentThing +0x04.
 // Shape: four `if (HasTC) GetTC()->ResumeForCutscene();` statements, each re-reading ParentThing; the shared key word.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CTCPhysicalShieldSpell { public: void ResumeForCutscene(); };        // 0x0079E520 (interface 0x93)
 class CTCSummonSpell { public: void ResumeForCutscene(); };    // 0x0079A6A0 (interface 0x91)
 class CTCGhostSword { public: void ResumeForCutscene(); };        // 0x007C54F0 (interface 0x9A)
@@ -38,12 +26,12 @@ class CTCSpecialAbilities { public:
 
 void CTCSpecialAbilities::ResumeAbilitiesForCutscene()
 {
-    if (ParentThing->HasTC(0x93))
-        ParentThing->GetTC<CTCPhysicalShieldSpell>(0x93)->ResumeForCutscene();
-    if (ParentThing->HasTC(0x91))
-        ParentThing->GetTC<CTCSummonSpell>(0x91)->ResumeForCutscene();
-    if (ParentThing->HasTC(0x9a))
-        ParentThing->GetTC<CTCGhostSword>(0x9a)->ResumeForCutscene();
-    if (ParentThing->HasTC(0x88))
-        ParentThing->GetTC<CTCMultiArrow>(0x88)->ResumeForCutscene();
+    if (ParentThing->HasTC(TCI_PHYSICAL_SHIELD_SPELL))
+        ((CTCPhysicalShieldSpell*)&ParentThing->GetTC(TCI_PHYSICAL_SHIELD_SPELL))->ResumeForCutscene();
+    if (ParentThing->HasTC(TCI_SUMMON_SPELL))
+        ((CTCSummonSpell*)&ParentThing->GetTC(TCI_SUMMON_SPELL))->ResumeForCutscene();
+    if (ParentThing->HasTC(TCI_GHOST_SWORD))
+        ((CTCGhostSword*)&ParentThing->GetTC(TCI_GHOST_SWORD))->ResumeForCutscene();
+    if (ParentThing->HasTC(TCI_MULTI_ARROW))
+        ((CTCMultiArrow*)&ParentThing->GetTC(TCI_MULTI_ARROW))->ResumeForCutscene();
 }

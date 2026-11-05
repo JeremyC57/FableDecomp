@@ -13,11 +13,8 @@
 // Shape: /O2 (16-aligned entry). CCountedPointer needs its declared copy constructor: without it VC7.1 builds the temporary
 // in the frame and copies it to the argument area (137v116); with it the pointer is constructed in place (`sub esp,8; mov ecx,esp`).
 class C3DVector;
-class CThing {
-public:
-    unsigned char _pad00[0x6c];
-    unsigned long ThingTypeFlags;                        // +0x6c
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 namespace NCameraModes {
 class CScriptModuleBase {
 public:
@@ -54,7 +51,7 @@ public:
 #include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::CameraMoveToPosAndLookAtThing(const C3DVector& camPos, const CScriptThing& targetThing, float time) const
 {
-    if (targetThing.IsAlive() && (targetThing.GetPThing()->ThingTypeFlags & 4))
+    if (targetThing.IsAlive() && (targetThing.GetPThing()->GetTypeFlags() & 4))
     {
         CThing* t = targetThing.GetPThing();
         CGameCameraManager* manager;

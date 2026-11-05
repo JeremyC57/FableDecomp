@@ -25,16 +25,14 @@
 //   OnActivateLeaf is the tail of the living path. Retail's dead-target path tail-calls IsCombatStateGroup() and drops the
 //   result: written as that statement (the bytes prove the call; why the source made it is not visible -- a release-mode
 //   check that still evaluates its argument would explain it). Matched on the first probe.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #include "engine/CBaseClass.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CThing { public:                                           // partial view, retail offsets
-    virtual ~CThing();
-    unsigned char _pad04[0x91 - 0x04];
-    unsigned char Dead : 1;                                      // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 class CThingAICreature : public CThingCreatureBase { };
 
@@ -61,7 +59,7 @@ class CCombatManager { public:
 #include "engine/CWorld.h"                             // Ego_r layout; PThingCombatManager (boost::scoped_ptr<CCombatManager>) +0x4C
 #include "engine/CAIBrain.h"                           // Ego_r layout; Creature +0x18
 inline CCombatManager& GetCombatManager(CWorld& world) { return *world.PThingCombatManager_ptr; }   // inline CWorld::GetCombatManager()
-class CCharString { public: void* PStringData; };
+
 enum EScriptAIPriority { };
 enum EAIStateGroupType { };
 

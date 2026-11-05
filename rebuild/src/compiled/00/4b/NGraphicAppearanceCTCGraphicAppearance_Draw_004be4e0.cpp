@@ -16,6 +16,8 @@
 // Shape: the physics component is read into a named local before the position call (edi); the position interpolator is
 // returned by hidden pointer straight into its frame slot; the orientation interpolator is default-constructed (CBase ctor,
 // vtable store sunk below the argument push); both destroyed through the implicit destructors (~CBase only).
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
@@ -37,11 +39,7 @@ class CTCPhysicsBase { public:
     void GetOrientationInterpolator(C3DOrientationInterpolator& out) const;   // 0x006B0460
 };
 
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                              // +0x60
-};
+#include "engine/CThing.h"
 
 C3DPositionInterpolator __fastcall GetRenderPositionInterpolateForThing(const CThing& thing);   // 0x004BC0E0 (file-static)
 
@@ -87,7 +85,7 @@ class CTCGraphicAppearance { public:
 
 void CTCGraphicAppearance::Draw(const CEnginePrimitivePrepareInfo& info)
 {
-    const CTCPhysicsBase* physics = ParentThing->PhysicsTC;
+    const CTCPhysicsBase* physics = ParentThing->GetPhysicsTC();
     C3DPositionInterpolator position = GetRenderPositionInterpolateForThing(*ParentThing);
     C3DOrientationInterpolator orientation;
     physics->GetOrientationInterpolator(orientation);

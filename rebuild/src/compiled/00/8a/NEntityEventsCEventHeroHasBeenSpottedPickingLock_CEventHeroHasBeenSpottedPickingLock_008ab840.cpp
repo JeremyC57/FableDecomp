@@ -13,11 +13,12 @@
 // Shape: the agent951 G038 model (0x0084B080): CEventBase's inline constructor stores WorldFrame = 0 (its vptr store is dead);
 //   each member's inline (T*) constructor runs the out-of-line base constructor, stores its own vtable, then SetPItem.
 // Model: local -- the event classes have no engine headers and the intelligent-pointer chain needs its real vtables.
+#define FABLE_RETAIL_CCLASS
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class CThing : public CBaseObject { };                      // partial view (RTTI CThing <- CClass <- CBaseObject <- CBaseClass)
+#include "engine/CThing.h"
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 namespace NEntityEvents {

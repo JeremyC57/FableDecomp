@@ -11,11 +11,7 @@
 // PTargetThing = CIntelligentPointer<..>(hero) (inline ctor, vtable 0x01231C4C).
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;           // 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated)
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 
 class CPlayer
@@ -67,7 +63,7 @@ struct CAIStateGroup_BanditKingCharge
 bool CAIStateGroup_BanditKingCharge::IsRunnable()
 {
     CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
-    if (hero && !(hero->m_flags91 & 1)
+    if (hero && !hero->IsDead()
         && GetDistanceSquaredXY(hero->GetPos(), PBrain->GetCreature()->GetPos()) > 49.0f)
     {
         PTargetThing.SetPItem((CBaseObject*)(((CThing*)CIntelligentPointerThing(hero).GetPItem())));

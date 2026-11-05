@@ -19,12 +19,7 @@ public:
     C3DVector     Position;                     // +0x0c
 };
 
-class CThing {
-public:
-    unsigned char   _pad[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60 (retail)
-    const C3DVector& GetPos() const;
-};
+#include "engine/CThing.h"
 
 const C3DVector& CThing::GetPos() const
 {

@@ -11,20 +11,15 @@
 #define CPlayerManager CPlayerManagerDonor
 #include "engine/CPlayerManager.h"
 #undef CPlayerManager
-class CThing {
-public:
-    unsigned char _pad00[0x10];
-    unsigned char ThingTypeTag;                          // +0x10 (2 = creature)
-    unsigned char _pad11[0x90 - 0x11];
-    signed char   PlayerNumber;                          // +0x90
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CPlayerManager : public CPlayerManagerDonor {
 public:
     bool IsThingMainPlayer(const CThing& thing) const;
 };
 bool CPlayerManager::IsThingMainPlayer(const CThing& thing) const
 {
-    if (thing.ThingTypeTag == 2 && thing.PlayerNumber == MainPlayer)
+    if (thing.GetType() == 2 && thing.GetPlayerNumber() == MainPlayer)
         return true;
     return false;
 }

@@ -13,29 +13,10 @@
 // the attacher result used without a null test, `empty()` as start == finish.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char  _pad00[0x20];
-    unsigned long  m_presentBits[9];                    // +0x20
-    CInterfaceMap  m_interfaces;                        // +0x44
-    __forceinline bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    __forceinline CTCBase* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        CInterfaceMap::value_type* end = map->end();
-        return (it == end || type < it->first ? end : it)->second;
-    }
-};
 
 struct CIntelligentPointerThing {                       // CIntelligentPointer<CThing>, opaque here
     void* Data[2];
@@ -64,8 +45,8 @@ class CTCLight : public CTCBase { public:
 void CTCLight::AttachParticles()
 {
     CThing* thing = ParentThing;
-    if (thing->HasTC(0x82)) {
-        CTCParticleAttacher* attacher = (CTCParticleAttacher*)thing->GetTC(0x82);
+    if (thing->HasTC(TCI_PARTICLE_ATTACHER)) {
+        CTCParticleAttacher* attacher = (CTCParticleAttacher*)((CTCParticleAttacher*)&thing->GetTC(TCI_PARTICLE_ATTACHER));
         if (attacher->ParticleListEmpty())
             attacher->AttachParticles();
     }

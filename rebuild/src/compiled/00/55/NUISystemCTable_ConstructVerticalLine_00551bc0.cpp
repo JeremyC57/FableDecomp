@@ -4,6 +4,7 @@
 #include "engine/CTable.h"
 #include <new>
 #include <stdlib.h>
+namespace NUISystem { class CManager { public: static CManager* __fastcall GetInstance(); }; }   // 0x0041E5F2 (Ego_r.pdb / FableWin.pdb)
 namespace RetailUI {
 struct Vec {float X,Y;Vec(){}Vec(float x,float y):X(x),Y(y){}Vec(const Vec& v):X(v.X),Y(v.Y){}};
 // CUIState PDB layout is 36 bytes. Retail 52e5d0 initializes the fields below;
@@ -151,7 +152,7 @@ virtual void Slot105();
 virtual void Slot106();
 virtual unsigned long GetName()const;
 };
-struct Manager {static Manager* __fastcall GetInstance();Component* CreateComponent(unsigned long);}; //0041e5f2,0041d21b
+struct Manager {Component* CreateComponent(unsigned long);}; //0041d21b; the instance is NUISystem::CManager::GetInstance() 0x0041e5f2
 struct Lookup {long* First;long* Last;long* Limit;};
 // 005348e0 is std::find over four-byte scalar entries, not a pair/map search.
 #pragma auto_inline(off)
@@ -159,9 +160,9 @@ long* __fastcall Find(long* first,long* last,const long& key,const Tag&){for(;fi
 #pragma auto_inline(on)
 struct Table {unsigned char BeforeChildren[0xb0];ChildrenVector Children;unsigned char BeforeLookup[0x168-0xbc];Lookup* Entries;void ConstructVerticalLine(Pointer,Pointer,const Vec&,unsigned long,long);};
 void Table::ConstructVerticalLine(Pointer start,Pointer element,const Vec& position,unsigned long count,long offset){
- Vec at=position;Pointer line(Manager::GetInstance()->CreateComponent(start->GetName()));{float extent=(float)count;line->GetStateMap()[0UL].Zoom.Y=extent;line->Initialise();line->SetPosition(at);line->GetStateMap()[0UL].Position=at;Children.push_back(line);at.Y+=start->GetSize().Y;}
+ Vec at=position;Pointer line(((Manager*)NUISystem::CManager::GetInstance())->CreateComponent(start->GetName()));{float extent=(float)count;line->GetStateMap()[0UL].Zoom.Y=extent;line->Initialise();line->SetPosition(at);line->GetStateMap()[0UL].Position=at;Children.push_back(line);at.Y+=start->GetSize().Y;}
  for(unsigned long i=0;i<count;++i){long key=(long)i-offset;if(element.Object&&Find(Entries->First,Entries->Last,key,Tag())!=Entries->Last){
-Component* created=Manager::GetInstance()->CreateComponent(element->GetName());
+Component* created=((Manager*)NUISystem::CManager::GetInstance())->CreateComponent(element->GetName());
 #pragma inline_depth(0)
 Pointer child(created);
 #pragma inline_depth()

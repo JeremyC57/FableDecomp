@@ -29,57 +29,14 @@
 class CTCBase;
 class CBaseObject;
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length);     // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 #include "engine/C3DVector.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];               // +0x20
-    CInterfaceMap Components;                       // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-    void Kill(bool removeFromWorld);                // 0x004C9B80
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (T*)it->second;
-        return true;
-    }
-    template <class T> __forceinline bool PeekTC(const T** out) const
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        const CInterfaceMap* map = &Components;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (const T*)it->second;
-        return true;
-    }
-};
 
 class CCreatureActionBase {
 public:
@@ -119,7 +76,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 template <class T> inline bool __fastcall IS_THING_ALIVE(const T& thing)
 {
     if (thing) {
-        if (!(thing->m_flags91 & 1))
+        if (!thing->IsDead())
             return true;
     }
     return false;
@@ -171,14 +128,14 @@ void CTCBoastingPosition::OnBoastAccepted(CThingCreatureBase& hero)
     CThingCreatureBase* pHero = &hero;
     if (!IS_THING_ALIVE(pHero))
         return;
-    const CTCHeroStats* stats;
+    const const CTCHeroStats* stats;
     bool canAfford = true;
-    if (hero.PeekTC(&stats))
+    if (hero.PeekTC(TCI_HERO_STATS, &stats))
         canAfford = stats->Money >= Cost;
     if (!canAfford)
         return;
     CTCBoastingPodium* podium = 0;
-    PBoastingPodium->GetTC(&podium);
+    PBoastingPodium->GetTC(TCI_BOASTING_PODIUM, &podium);
     podium->OnHeroBoast(BoastIndex, hero);
     if (IS_THING_ALIVE(PParticleEffect)) {
         PParticleEffect->Kill(true);
@@ -192,6 +149,6 @@ void CTCBoastingPosition::OnBoastAccepted(CThingCreatureBase& hero)
     BoastOn = false;
     CThing* parent = ParentThing;
     CTCTargeted* targeted;
-    if (parent->GetTC(&targeted))
+    if (parent->GetTC(TCI_TARGETED, &targeted))
         targeted->Targetable = false;
 }

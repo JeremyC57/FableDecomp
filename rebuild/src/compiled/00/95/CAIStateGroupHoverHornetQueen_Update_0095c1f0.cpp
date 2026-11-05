@@ -20,24 +20,11 @@ class C3DVector { public:
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 extern float g_HornetDiveBombRange;             // 0x0138D2D8 (15.0f)
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-        }
-    }
-};
+
 class CThingCreatureBase : public CThing { public: };
 bool __fastcall IsKnockedDown(CThing* thing);   // 0x0085F010
 class CTCBoss { public:                                // interface 0xad
@@ -104,7 +91,7 @@ void CAIStateGroup_HoverHornetQueen::Update()
         return;
     }
     CTCBoss* boss;
-    GetCreature()->GetInterface(&boss, 0xad);
+    GetCreature()->GetTC(TCI_BOSS, &boss);
     switch (boss->GetBossPhase()) {
     case 0:
         GoToSpawnPoint();

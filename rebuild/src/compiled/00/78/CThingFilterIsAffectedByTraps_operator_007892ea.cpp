@@ -13,30 +13,11 @@
 #pragma optimize("s", on)
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    std::bitset<274> m_presentBits;                 // +0x20
-    CInterfaceMap m_interfaces;                     // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits.test(type)) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CTypedObject {
     virtual void v00();
@@ -44,7 +25,7 @@ struct CTypedObject {
 };
 
 struct CTCInterface31 {                             // interface 0x31 component (class not established)
-    CTypedObject* GetObject();                      // 0x0073A6E0
+    CTypedObject* GetObject() const;                      // 0x0073A6E0
 };
 
 struct CThingFilter_IsAffectedByTraps {
@@ -53,8 +34,8 @@ struct CThingFilter_IsAffectedByTraps {
 
 bool CThingFilter_IsAffectedByTraps::operator()(CThing* thing) const
 {
-    CTCInterface31* component;
-    if (thing->GetInterface(0x31, &component) && component->GetObject()->GetType() == 0x5F)
+    const CTCInterface31* component;
+    if (thing->PeekTC(TCI_ENTITY_MODE_MANAGER, &component) && component->GetObject()->GetType() == 0x5F)
         return false;
     return true;
 }

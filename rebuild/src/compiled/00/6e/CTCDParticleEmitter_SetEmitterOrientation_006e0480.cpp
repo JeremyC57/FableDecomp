@@ -1,4 +1,5 @@
 // CTCDParticleEmitter::SetEmitterOrientation(const CRightHandedSet& rhs) -- orient the live emitter (start and end orientation both rhs), or store the set in the pending creation parameters
+// Leaf: ?SetEmitterOrientation@CTCDParticleEmitter@@QAEXABVCRightHandedSet@@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, PCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0480, length 120 bytes (+ int3 padding).
@@ -11,6 +12,8 @@
 // (CIntelligentPointer<NParticleEngine::CParticleEmitter>), PAttachedToThing +0x1C, PCreationParameters +0x3C (CCountedPointer:
 // object +0x3C, count block +0x40), flag bytes +0x44 (bit 0 WaitingForParticleToLoad, bit 3 ParticleCreationDisabled) and +0x45
 // (bit 0 AttachedToThing, bit 1 AlwaysUpdate, bit 2 Asleep). CParticleCreationParameters: ParticleCreationDisabled +1, RHSet +0x10.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
@@ -55,11 +58,7 @@ class CTCPhysicsBase { public:
     virtual void v30();
     virtual void ResetPosition(const C3DVector& position);     // slot 31 (+0x7c)
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

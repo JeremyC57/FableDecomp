@@ -39,10 +39,7 @@ class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     CIEngine* Engine;                                   // +0x34
 };
-class CThing { public:
-    unsigned char _pad00[0x18];
-    unsigned __int64 UniqueID;                          // +0x18
-};
+#include "engine/CThing.h"
 class CCardinalSpline { public:
     void GetSplinePosition(C3DVector* position, float progress);    // 0x00A567A0
 };
@@ -87,7 +84,7 @@ void CTCCreatureFlyOnSpline::DrawPreparePrimitivesForRendering(const CEnginePrim
                 progress = 1.0f;
             C3DVector pos;
             PSpline->GetSplinePosition(&pos, progress);
-            unsigned __int64 id = ParentThing->UniqueID;
+            unsigned __int64 id = ParentThing->GetUniqueID();
             info.Engine->SetPersistentPrimitive(*(EngineHandles.begin() + i),
                 CEnginePrimitiveLine(id, lastPos, pos, colour, 0.05f, 0, 0, true, 0, 0), 0);
             lastPos = pos;

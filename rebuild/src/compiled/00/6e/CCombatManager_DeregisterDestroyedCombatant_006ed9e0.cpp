@@ -1,4 +1,5 @@
 // CCombatManager::DeregisterDestroyedCombatant(CThingCreatureBase* creature) -- take a destroyed creature out of combat: as an attacker (telling its target's stealth component that the danger is over) and as an attacked combatant
+// Leaf: ?DeregisterDestroyedCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006ED9E0, 148 bytes (160 with padding).
 // Callees: the creature's attacking test 0x00662410 and combatant test 0x00662430 (manifest labels
@@ -15,29 +16,10 @@
 // out of line in this TU (call + `push 0x36`).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x18];
-    unsigned __int64 UniqueID;                  // +0x18
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CThingCreatureBase : public CThing { public:
     bool IsAttackingCombatant();                // 0x00662410
@@ -77,11 +59,11 @@ class CCombatManager { public:
 void CCombatManager::DeregisterDestroyedCombatant(CThingCreatureBase* creature)
 {
     if (creature->IsAttackingCombatant()) {
-        unsigned __int64 id = creature->UniqueID;
+        unsigned __int64 id = creature->GetUniqueID();
         CThingCreatureBase* attacked = Combatants.FindNode(id)->Value.Attacked;
         DeregisterAttackingCombatant(creature);
         CTCStealth* stealth;
-        if (attacked->GetInterface(&stealth, 0x36))
+        if (attacked->GetTC(TCI_STEALTH, &stealth))
             stealth->SetAsInDanger(creature, DANGER_NONE);
     }
     if (creature->IsCombatant())

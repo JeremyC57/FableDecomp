@@ -28,47 +28,11 @@ class CThingAICreature;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const     // the masked word (a bool return narrows to `shr ; test dl,1`)
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        CInterfaceMap::value_type* sel;
-        if (it == map->end()) sel = map->end();
-        else if (it->first <= interfaceType) sel = it;
-        else sel = map->end();
-        return sel;
-    }
-    const C3DVector& GetPos() const;   // 0x004C73D0
-};
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -89,7 +53,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -121,14 +85,7 @@ class CAIStateGroupBase { public:
     CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
 };
 
-
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
-
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
 
 class CDefinitionManager
 {
@@ -139,7 +96,6 @@ public:
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
-
 
 class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
@@ -204,10 +160,10 @@ void CAIStateGroup_Guildmaster::FindAndStoreBodyguards()
         PeekThingSearchTools().GetAllThingsInRoughArea(C2DBoxI(centre.X - 55, centre.Y - 55, centre.X + 55, centre.Y + 55), filter, bodyguards);
     }
     CTCBoss* boss;
-    PBrain->PCreature->GetInterface(&boss, 0xad);
+    PBrain->PCreature->GetTC(TCI_BOSS, &boss);
     for (unsigned long i = 0; i < bodyguards.size(); ++i) {
         CThingAICreature* guard = bodyguards[i];
-        if (guard && !(guard->m_flags91 & 1))
+        if (guard && !guard->IsDead())
             boss->SetHelperCreature(*guard);
     }
 }

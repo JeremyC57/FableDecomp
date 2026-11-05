@@ -1,4 +1,5 @@
 // CThing::SetForceFrameUpdate(bool force) -- set the force-frame-update flag; when it ends up set on a live thing, put the thing on the thing manager's update list
+// Leaf: ?SetForceFrameUpdate@CThing@@QAEX_N@Z
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C7C60, 58 bytes. Callees: CThingManager::AddToUpdateList(CThing*)
@@ -11,29 +12,10 @@ class CThingManager { public:
     void AddToUpdateList(CThing* thing);             // 0x0051EC50
 };
 
-
-class CThing {
-private:
-    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
-public:
-    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
-private: public:
-    void*         __vftable;                         // +0x00
-    unsigned char _pad04[0x91 - 0x04];
-    unsigned char Dead : 1;                          // +0x91 bit 0 (PDB +0xa1)
-    unsigned char CreatedByOwnerThingCreation : 1;   // bit 1
-    unsigned char IncludeInThingScans : 1;           // bit 2
-    unsigned char Activated : 1;                     // bit 3
-    unsigned char GloballyLoaded : 1;                // bit 4
-    unsigned char InLimbo : 1;                       // bit 5
-    unsigned char KillLocked : 1;                    // bit 6
-    unsigned char CreatedBySerialisation : 1;        // bit 7
-    unsigned char DeletedOnOwnerLevelOutOfScope : 1; // +0x92 bit 0
-    unsigned char Drawable : 1;                      // bit 1
-    unsigned char Dying : 1;                         // bit 2
-    unsigned char ForceFrameUpdate : 1;              // bit 3
-    void SetForceFrameUpdate(bool force);
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MANAGERACCESS
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 void CThing::SetForceFrameUpdate(bool force)
 {

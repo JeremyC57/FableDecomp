@@ -45,10 +45,7 @@ class CTCPhysicsBase { public:
 #undef VF10
 #undef VF
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                          // +0x60
-};
+#include "engine/CThing.h"
 class CCardinalSpline { public:
     void GetSplinePosition(C3DVector* position, float progress);    // 0x00A567A0
 };
@@ -85,11 +82,11 @@ void CTCCreatureFlyOnSpline::FrameUpdate()
     PSpline->GetSplinePosition(&lastPos, lastProgress);
     C3DVector pos;
     PSpline->GetSplinePosition(&pos, Progress);
-    ParentThing->PhysicsTC->SetPosition(pos);
+    ParentThing->GetPhysicsTC()->SetPosition(pos);
     C3DVector dir = pos - lastPos;
     if (dir.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
         dir.Normalise();
-        CTCPhysicsBase* physics = ParentThing->PhysicsTC;
+        CTCPhysicsBase* physics = ParentThing->GetPhysicsTC();
         CRightHandedSet set(CrossProduct(C3DVector(dir.Y, -dir.X, 0.0f), dir), dir);
         physics->SetRHSet(set);
     }

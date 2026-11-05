@@ -16,12 +16,9 @@
 class CThing;
 #include "engine/C3DVector.h"
 class CThingBuilding;
-class CThing { public:
-    const C3DVector& GetPos() const;             // 0x004C73D0
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingPhysical : public CThing { public:
-    unsigned char _pad[0x6c];
-    unsigned char m_flags6c;                    // +0x6c bit 6: a building
 };
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -85,7 +82,7 @@ bool CAIStateGroup_WanderAroundShops::InitCreaturePosition()
     bool ok = IsInWorkHours() && Random(100) < g_WanderAroundShopsChance
               && (Shop = ((CAIStateGroup_WanderAroundShops*)this)->FindASimplyDelightfulShop()).GetPItem() != 0;
     if (ok) {
-        if (Shop.GetPItem()->m_flags6c & 0x40) {
+        if (Shop.GetPItem()->GetTypeFlags() & 0x40) {
             CThingCreatureBase* creature = PBrain->PCreature;
             return creature->AutoPlaceNearBuilding((CThingBuilding*)Shop.GetPItem(), 5.0f);
         }

@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionHasInformation::Update() -- while the minion still wants the hero's attention, look at the (living) hero; every 5 seconds wave (playing ATTRACT_HERO_ATTENTION through the sound component, but after 20 seconds only every fifth wave), every 10 seconds wander; terminate when the hero is gone, attention is no longer wanted or the wander fails
+// Leaf: ?Update@CAIStateGroup_MinionHasInformation@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -18,37 +19,18 @@
 // Shape: the elapsed-time tests go through an inline helper that reads the frame rate into a local before calling
 // GetWorldFrame and takes the member by reference (so it is re-read after the call); the 20-second rule is a flag.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CThingAICreature : public CThing { public:
     bool GetWanderWithInformation() const;      // 0x008300E0 (+0x1c8 bit 3)
     bool GetWaveWithInformation() const;        // 0x008300F0 (+0x1c8 bit 4)
 };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
+
 class CTCSoundPlayer { public:
     unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
 };
@@ -120,7 +102,7 @@ struct CAIStateGroup_MinionHasInformation : CAIStateGroupBase {
 void CAIStateGroup_MinionHasInformation::Update()
 {
     CThing* hero = GetPPlayerManager_008fcf80()->GetPMainPlayer()->GetPControlledCreature();
-    if (hero == 0 || (hero->m_flags91 & 1)) {
+    if (hero == 0 || hero->IsDead()) {
         Terminate();
         return;
     }
@@ -142,7 +124,7 @@ void CAIStateGroup_MinionHasInformation::Update()
                         attract = false;
                 }
                 CTCSound* sound;
-                if (attract && GetCreature()->GetInterface(&sound, 0x10)) {
+                if (attract && GetCreature()->GetTC(TCI_SOUND_PLAYER, &sound)) {
                     CCharString name("ATTRACT_HERO_ATTENTION");
                     ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(name, 0, 0, 0, -1);
                 }

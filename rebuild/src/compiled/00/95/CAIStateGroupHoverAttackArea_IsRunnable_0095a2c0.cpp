@@ -32,9 +32,7 @@ class C2DVector { public:
     float Length() const { return (float)sqrt(X * X + Y * Y); }
 };
 
-class CThing { public:
-    const C3DVector& GetPos() const;    // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 struct CBaseIntelligentPointer {

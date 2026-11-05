@@ -13,9 +13,7 @@
 //   `mov al,1` / `xor al,al` exits.
 class C3DVector;
 
-class CThing { public:
-    const C3DVector& GetPos() const;     // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CVectorCompare_BestForTargeting { public:
     unsigned char _body[0x2c];

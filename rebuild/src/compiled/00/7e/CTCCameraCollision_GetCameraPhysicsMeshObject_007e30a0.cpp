@@ -13,6 +13,8 @@
 // Shape: the def and the mesh bank are named locals (the def held in ebp across GetWorld); the object is a named local copied into the result by the implicit copy constructor (no NRVO): vtable, add-ref'd mesh,
 // the matrix as a block, the two scales; the mesh temporary of the constructor call is released by the counted pointer's dtor through
 // the pointee's DecRef/GetRefCount release (the long `add eax,4 ; dec ; test ; mov` form).
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CPhysicsMesh { public:
@@ -56,7 +58,7 @@ class CThingPhysicsMeshInfo { public:
     unsigned char _pad00[4];
     float Radius;                                  // +0x04
 };
-struct CThingPhysics {
+struct CTCPhysicsBase {
 #define VF(n) virtual void v##n();
     VF(00) VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09) VF(10) VF(11) VF(12) VF(13) VF(14) VF(15)
     VF(16) VF(17) VF(18) VF(19) VF(20) VF(21) VF(22) VF(23) VF(24) VF(25) VF(26) VF(27) VF(28) VF(29) VF(30) VF(31)
@@ -70,10 +72,7 @@ struct CThingPhysics {
     unsigned char _pad04[0x0c - 4];
     C3DVector Position;                            // +0x0c
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CThingPhysics* PPhysics;                       // +0x60
-};
+#include "engine/CThing.h"
 class CCameraCollisionDef { public:
     unsigned char _pad00[0x28];
     long PhysicsMesh;                              // +0x28
@@ -97,7 +96,7 @@ public:
 
 CPhysicsMeshObject CTCCameraCollision::GetCameraPhysicsMeshObject() const
 {
-    CThingPhysics* physics = ParentThing->PPhysics;
+    CTCPhysicsBase* physics = ParentThing->GetPhysicsTC();
     const CThingPhysicsMeshInfo* thingMesh = physics->GetPhysicsMeshInfo();
     const CCameraCollisionDef* def = CameraCollisionDef;
     CMeshBank* bank = PeekWorld().PMainMeshBank;

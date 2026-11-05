@@ -24,11 +24,7 @@ public:
     C3DVector     m_position;                      // +0x0C
 };
 
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                     // +0x60
-};
+#include "engine/CThing.h"
 
 class CObstacleNavigatorExternalInterface {
 public:
@@ -41,5 +37,5 @@ public:
 
 C2DVector CObstacleNavigatorExternalInterface::PeekNavigatorPosition2D() const
 {
-    return C2DVector(Obstacle->PhysicsTC->m_position);
+    return C2DVector(Obstacle->GetPhysicsTC()->m_position);
 }

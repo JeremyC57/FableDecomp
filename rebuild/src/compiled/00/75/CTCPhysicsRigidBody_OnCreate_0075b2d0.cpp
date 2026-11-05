@@ -25,14 +25,15 @@ class CThingPhysicsMeshInfo { public:
     C3DVector      ToCentre;                    // +0x08
 };
 struct CGraphicDataRef;
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     unsigned char _pad00[0x44];
     unsigned char GraphicData[0x10];            // +0x44 the graphic data reference (index +0, type byte +0xd)
 };
-class CThing { public:
-    unsigned char _pad00[0x64];
-    CTCGraphicAppearance* PGraphicAppearance;   // +0x64
-};
+}
+using NGraphicAppearance::CTCGraphicAppearance;
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void OnCreate();   // slot 4 (+0x10)
@@ -72,7 +73,7 @@ void CTCPhysicsRigidBody::OnCreate()
 {
     OldRHSet = RHSet;
     OffsetVector.Set(0.0f, 0.0f);
-    CTCGraphicAppearance* graphic = ParentThing->PGraphicAppearance;
+    CTCGraphicAppearance* graphic = ParentThing->GetTCGraphicAppearance();
     if (graphic)
         CreatePPhysicsMeshInfo(*(const CGraphicDataRef*)graphic->GraphicData);
     const C3DVector& centre = GetPhysicsMeshInfo()->ToCentre;

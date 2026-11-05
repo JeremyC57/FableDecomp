@@ -11,11 +11,8 @@
 //   @ 0x004C73D0, CGameDefinitionManager::Get @ 0x0044C6B0 (__fastcall), CDefinitionManager::GetDefNameFromGlobalIndex
 //   @ 0x009ACCC0 (CDefString by hidden pointer), CDefStringTable::GetString @ 0x009D49B0 on GDefStringTable 0x013CA828,
 //   the emitter's slot 5 (+0x14, play by name), ~CCharString @ 0x0099EAE0. Module built without /EHsc (no frame).
-class CCharString {
-public:
-    void* m_pData;
-    ~CCharString();                                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 #include "engine/C3DVector.h"
 
@@ -55,11 +52,6 @@ public:
 };
 class CASoundManager;
 extern CASoundManager* PSoundManager;                           // 0x013B8394
-
-class CThing {
-public:
-    const C3DVector& GetPos() const;                       // 0x004C73D0
-};
 
 class CTCAtmosPlayer {
 public:

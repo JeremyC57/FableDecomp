@@ -1,4 +1,5 @@
 // CAIStateGroup_TavernServer::GetOldJugPoint() -- with the bar alive, ask its named-action-point component
+// Leaf: ?GetOldJugPoint@CAIStateGroup_TavernServer@@QAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // (interface 0x2E) for the free point "ACTION_POINT_MAID_0<JugIndex+1>" and store it as the bar point.
@@ -14,35 +15,13 @@
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 class CTCBase;
 
-
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020.
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x1c];
-    void* PDef;                                 // +0x70 CDefPointer<const CThingDef>
-    unsigned char _pad2[0x91 - 0x74];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -64,7 +43,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -88,14 +67,7 @@ class CAIStateGroupBase { public:
 
 class CRightHandedSet { public: float m[6]; };         // 0x18 bytes
 #include "engine/C3DVector.h"
-class CCharString { public:                            // 4 bytes: the shared string data pointer
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator+=(const char* text);          // 0x0099F100
-    const CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
-};
+
 CCharString __fastcall GFIntToCharString(long value);   // 0x0099F830 (hidden result in ecx)
 
 class CTCNamedUserActionPoints { public:               // interface 0x2E
@@ -124,7 +96,7 @@ bool CAIStateGroup_TavernServer::GetOldJugPoint()
     if (!IS_THING_ALIVE(PBar))
         return false;
     CTCNamedUserActionPoints* points;
-    PBar.GetPItem()->GetInterface(&points, 0x2E);
+    PBar.GetPItem()->GetTC(TCI_NAMED_USER_ACTION_POINTS, &points);
     CCharString name("ACTION_POINT_MAID", -1);
     name += "_0";
     name += GFIntToCharString(JugIndex + 1);

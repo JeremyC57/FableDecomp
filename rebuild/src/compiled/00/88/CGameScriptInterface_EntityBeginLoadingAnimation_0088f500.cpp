@@ -7,7 +7,8 @@
 #endif
 class CCharString;class CCPPointerInfo;
 // Layout: CThing active header is quarantined; ThingTypeFlags low byte+0x6c is read. All other fields are outside this call boundary.
-class CThing {public:unsigned char Prefix[0x6c];unsigned int ThingTypeFlags;};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 // Layout: shared CScriptThing header is flattened. A genuine polymorphic interface is required for GetPThing slot11 and IsAlive slot75; uninvoked slots have descriptive placeholders only. PImp data/info follow at+4/+8.
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -20,4 +21,4 @@ class CThingCreatureBase:public CThing {public:void PreloadAnimation(const CChar
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-void CGameScriptInterface::EntityBeginLoadingAnimation(const CScriptThing& thing,const CCharString& value)const{if(thing.IsAlive()){CThing* p=thing.GetPThing();if(p->ThingTypeFlags&8)((CThingCreatureBase*)p)->PreloadAnimation(value);}}
+void CGameScriptInterface::EntityBeginLoadingAnimation(const CScriptThing& thing,const CCharString& value)const{if(thing.IsAlive()){CThing* p=thing.GetPThing();if(p->GetTypeFlags()&8)((CThingCreatureBase*)p)->PreloadAnimation(value);}}

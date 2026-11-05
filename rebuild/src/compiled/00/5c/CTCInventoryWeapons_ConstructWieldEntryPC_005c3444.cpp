@@ -90,13 +90,13 @@ class CComponent { public:
 };
 class CViewport : public CComponent { public:
 };
-class CManager { public:
+class CManager {
+public:
+    static CManager* __fastcall GetInstance();            // 0x0041E5F2
+ public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString icon, float d, CCharString button);   // 0x00428494
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();            // 0x0041E5F2
 };
 }
 
@@ -107,7 +107,7 @@ class CTCInventoryWeapons { public:
 CCountedPointer<NUISystem::CComponent> CTCInventoryWeapons::ConstructWieldEntryPC(bool melee, NUISystem::CViewport* viewport, NUISystem::CComponent* list, long defIndex)
 {
     CDataBank* bank = CMainGameComponent::Get()->TextBank;
-    NUISystem::CFrontEndManager* manager = NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
     CWideString text = bank->GetTextBySymbol("TEXT_GUI_MENU_WIELD");
     CCountedPointer<NUISystem::CComponent> entry(manager->CreateMenuEntryComponent(text, 0.0f, 1.0f,
         "PC_MENU_ENTRY_TEMPLATE", 0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));

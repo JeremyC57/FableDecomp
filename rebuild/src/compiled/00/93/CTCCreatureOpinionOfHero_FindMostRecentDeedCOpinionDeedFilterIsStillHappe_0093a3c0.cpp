@@ -13,32 +13,11 @@
 // shared found tail (`if (outHandle) *outHandle = handle; return deed;`, merged by VC7.1); each walk caches its sentinel in a
 // local (edi), so `this` is parked in the frame during the pending walk.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType) const
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (HasTC(interfaceType)) {
-            *ppOut = (T*)GetTC(interfaceType);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;                    // 0x00487DD0
@@ -90,8 +69,8 @@ const COpinionDeed* CTCCreatureOpinionOfHero::FindMostRecentDeed(EOpinionDeedTyp
 {
     const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (hero) {
-        const CTCHeroOpinionDeedLog* log;
-        hero->GetInterface(&log, 0x51);
+        const const CTCHeroOpinionDeedLog* log;
+        hero->PeekTC(TCI_HERO_OPINION_DEED_LOG, &log);
         if (includePending) {
             SHandleNode* end = PendingDeeds.head;
             for (SHandleNode* node = end->next; node != end; node = node->next) {

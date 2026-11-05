@@ -15,33 +15,17 @@
 //   SittingOnBench +0x30; no engine header carries the methods); CCreatureAction_GetUpFromSitting SittingMode +0x114 /
 //   RemoveOnPerformAction +0x118 (PDB +0x12C / +0x130 over the PDB's 0x18-larger CCombatActionBase).
 class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString();                                      // 0x0099E4B0
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 extern CCharString g_GetUpName;                         // 0x013BB6E0 (descriptive)
 extern CCharString g_GetUpNameAlternate;                // 0x013BB6E8 (descriptive)
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    template<class T> __forceinline void GetInterfaceV(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-        }
-    }
-};
+
 class CThingCreatureBase : public CThing { public: };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -125,13 +109,13 @@ bool CAIStateGroup_UsesSeat::GetUpFromSeat()
     }
     Sitting = false;
     CTCUserActionPointBase* action_point;
-    PSeat.GetPItem()->GetInterfaceV(&action_point, 0x2d);
+    PSeat.GetPItem()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &action_point);
     action_point->SetActionPointAsFree(SeatPosIndex);
     GotSeatPos = false;
     SeatPosIndex = -1;
     if (AIAction_PerformActionAndWait(CCreatureAction_GetUpFromSitting(*GetCreature(), animation, sitting_mode, false), false) != 2) {
         CTCCreatureModeManager* modes;
-        GetCreature()->GetInterfaceV(&modes, 0x31);
+        GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
         modes->RemoveMode(sitting_mode);
         return false;
     }

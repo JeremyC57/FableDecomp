@@ -15,10 +15,7 @@
 class CBaseObject;
 class CCreatureActionBase;
 
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;               // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
@@ -72,7 +69,7 @@ void NCreatureMode::CModeBriarRoseTeleportIntangible::FrameUpdate()
     CModeBase::FrameUpdate();
     if (--Timer <= 0) {
         CThingCreatureBase* owner = ParentThing;
-        if (((CThingCreatureBase*)PTarget.GetPItem()) != 0 && !(((CThingCreatureBase*)PTarget.GetPItem())->m_flags91 & 1) &&
+        if (((CThingCreatureBase*)PTarget.GetPItem()) != 0 && !((CThingCreatureBase*)PTarget.GetPItem())->IsDead() &&
             owner->SetCurrentAction(CCreatureAction_BriarRoseConcentrateInto(owner, (CBaseObject*)((CThingCreatureBase*)PTarget.GetPItem()), false)))
             return;
     }

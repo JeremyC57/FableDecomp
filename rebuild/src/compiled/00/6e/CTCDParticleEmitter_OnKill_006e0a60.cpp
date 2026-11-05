@@ -12,30 +12,11 @@
 // Shape: inline IS_THING_ALIVE then a checked GetInterface; the parent is pushed before the component moves into ecx.
 struct CTCBaseInterface;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)((CTCBaseInterface*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 struct CTCDependentThings {                     // interface 0xD8 (class not established)
     void AddDependentThing(CThing* thing);      // 0x0071A8F0
 };
@@ -83,7 +64,7 @@ void CTCDParticleEmitter::OnKill()
         PEmitter.GetPItem()->Kill();
     if (IS_THING_ALIVE(PAttachedToThing)) {
         CTCDependentThings* dependents;
-        if (PAttachedToThing.GetPItem()->GetInterface(&dependents, 0xd8))
+        if (PAttachedToThing.GetPItem()->GetTC(TCI_PARTICLE_ATTACHMENT_TRACKER, &dependents))
             dependents->AddDependentThing(ParentThing);
     }
 }

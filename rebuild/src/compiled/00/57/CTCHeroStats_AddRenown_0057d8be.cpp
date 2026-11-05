@@ -34,27 +34,9 @@ static inline void ClampMin(long& value, long minimum)
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                         // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || wanted < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CLongVector {                                 // retail std::vector<long>: first, last, end
     long* m_pFirst;
@@ -121,7 +103,7 @@ void CTCHeroStats::AddRenown(long renown)
     }
     if (renown != 0) {
         CTCOverheadDisplay* display;
-        if (ParentThing->GetInterface(&display, 0xB7))
+        if (ParentThing->GetTC(TCI_OVERHEAD_DISPLAY, &display))
             display->AddRenownEntry((float)renown);
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SetRenownChange_00437920(renown);
     }

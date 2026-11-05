@@ -1,4 +1,5 @@
 // CGameScriptInterface::FreezeControls() -- freezes the current player's controls unless the main player's controlled creature is missing or has flag bit 0 at +0x91 set
+// Leaf: ?FreezeControls@CGameScriptInterface_Methods@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E73B0, length 48 bytes.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970 (`GetPlayer(MainPlayer)`), CPlayer::PeekPControlledCreature @ 0x00487DD0
 // (`add ecx,2Ch ; jmp CBaseIntelligentPointer::GetPItem`, the PDB's ControlledCreature at +0x2c), CPlayerManager method
@@ -8,10 +9,7 @@
 // the manager for the final thiscall.
 #include "engine/CGameScriptInterface.h"
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_stateFlags;                     // +0x91 (bit 0 = controls already locked)
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public:
@@ -31,6 +29,6 @@ struct CGameScriptInterface_Methods : CGameScriptInterface {
 void CGameScriptInterface_Methods::FreezeControls()
 {
     const CThing* creature = PlayerManager->GetMainPlayer().PeekPControlledCreature();
-    if (creature && !(creature->m_stateFlags & 1))
+    if (creature && !creature->IsDead())
         PlayerManager->FreezePlayerControls(CurrentPlayer);
 }

@@ -19,28 +19,10 @@
 // when the 0x4F bit is clear retail returns through the stale argument slot (`mov eax,[esp+10h]`).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCVillage;
 class CTCVillageMember { public:                                   // TC 0x23
@@ -69,11 +51,11 @@ struct CThingFilter_IsDeedTypeEnabled {
 bool CThingFilter_IsDeedTypeEnabled::operator()(const CThing& thing) const
 {
     if (DeedType == 1) {
-        CTCVillageMember* member;
-        if (!thing.GetInterface(&member, 0x23) || member->GetPVillage() == 0)
+        const CTCVillageMember* member;
+        if (!thing.PeekTC(TCI_VILLAGE_MEMBER, &member) || member->GetPVillage() == 0)
             return false;
     }
-    CTCCreatureOpinionOfHero* opinion;
-    thing.GetInterface(&opinion, 0x4f);
+    const CTCCreatureOpinionOfHero* opinion;
+    thing.PeekTC(TCI_CREATURE_OPINION_OF_HERO, &opinion);
     return opinion->DeedMask[DeedType];
 }

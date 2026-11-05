@@ -11,10 +11,9 @@
 // Layout: PDB CModeThunderLightningStorm (0xd4) with 12-byte retail vectors: Owner thing +0x04, PLightningStormDef PDB +0xac ->
 //   retail +0xa4, LoopingSound PDB +0xd0 -> retail +0xc4. Def LoopingSound (CDefString id) at retail +0x64 (PDB +0x68).
 // Shape: as 0x007A0400 (named sound component in esi, string in its own block sharing the key's frame word).
-class CCharString { public:
-    void* PStringData;                          // +0 the shared string block
-    ~CCharString();                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
@@ -26,27 +25,10 @@ class CTCSoundPlayer { public:                               // the thing's inte
 public:
     unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CSpecialAbilitiesThunderLightningStormDef { public:
     unsigned char _pad00[0x64];
     long LoopingSound;                          // +0x64 CDefString id
@@ -67,7 +49,7 @@ void NCreatureMode::CModeThunderLightningStorm::ResumeForCutscene()
 {
     if (LoopingSound == g_InvalidSoundHandle) {
         CTCSoundPlayer* sound;
-        if (Owner->GetInterface(&sound, 16)) {
+        if (Owner->GetTC(TCI_SOUND_PLAYER, &sound)) {
             CCharString name = GDefStringTable.GetString(PLightningStormDef->LoopingSound);
             LoopingSound = sound->PlayAttachedCriteria(name, false, 0, 0, -1);
         }

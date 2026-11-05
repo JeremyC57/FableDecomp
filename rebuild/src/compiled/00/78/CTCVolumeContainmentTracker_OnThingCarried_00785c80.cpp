@@ -1,4 +1,5 @@
 // CTCVolumeContainmentTracker::OnThingCarried(CThing*) -- make sure the tracker has run once, then push its current lighting theme channel onto the carrier's graphic appearance and flag the appearance changed
+// Leaf: ?OnThingCarried@CTCVolumeContainmentTracker@@QAEXPAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00785C80, length 55 bytes (+ int3 padding).
 // Callees: CTCVolumeContainmentTracker::Update @ 0x00785620, CTCGraphicAppearance::SetLightingChannel(const
 // CEnginePrimitiveThemeChannelDesc&, bool, bool) @ 0x004BFB40, CTCGraphicAppearance::SetAsChanged(unsigned long)
@@ -12,15 +13,16 @@ class CEnginePrimitiveThemeChannelDesc { public:
     long m_channel;
 };
 
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     void SetLightingChannel(const CEnginePrimitiveThemeChannelDesc& channel, bool immediate, bool recurse);   // 0x004BFB40
     void SetAsChanged(unsigned long flags);                 // 0x004BF9E0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
-class CThing { public:
-    unsigned char         _pad_00[0x64];
-    CTCGraphicAppearance* m_pGraphicAppearance;             // +0x64
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 class CTCVolumeContainmentTracker { public:
     void*                            __vftable;             // +0x00
@@ -40,8 +42,8 @@ void CTCVolumeContainmentTracker::OnThingCarried(CThing* carrier)
 {
     if (!PreviouslyUpdated)
         Update();
-    if (carrier->m_pGraphicAppearance) {
-        carrier->m_pGraphicAppearance->SetLightingChannel(CurrentThemeChannel, true, true);
-        carrier->m_pGraphicAppearance->SetAsChanged(4);
+    if (carrier->GetTCGraphicAppearance()) {
+        carrier->GetTCGraphicAppearance()->SetLightingChannel(CurrentThemeChannel, true, true);
+        carrier->GetTCGraphicAppearance()->SetAsChanged(4);
     }
 }

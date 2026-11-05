@@ -1,4 +1,5 @@
 // CTCCreatureFlyOnSpline::SetSpline(CCountedPointer<CCardinalSpline> spline) -- take the new flight spline and snap the creature's physics to the spline position at the current progress
+// Leaf: ?SetSpline@CTCCreatureFlyOnSpline@@QAEXV?$CCountedPointer@VCCardinalSpline@@@@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c (queue land0411j 0x00A567A0): calls 0x00A567A0 as CCardinalSpline::GetSplinePosition(C3DVector&, float) const (Ego_r.pdb ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z; the out vector by reference).
@@ -27,10 +28,7 @@ class CTCPhysicsBase { public:
     virtual void v30();
     virtual void ResetPosition(const C3DVector& position);         // slot 31 (+0x7c)
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                          // +0x60
-};
+#include "engine/CThing.h"
 class CEnginePrimitiveHandle;
 class CTCCreatureFlyOnSpline { public:
     virtual void v00();
@@ -50,5 +48,5 @@ void CTCCreatureFlyOnSpline::SetSpline(CCountedPointer<CCardinalSpline> spline)
     PSpline = spline;
     C3DVector position;
     PSpline->GetSplinePosition(position, Progress);
-    ParentThing->PhysicsTC->ResetPosition(position);
+    ParentThing->GetPhysicsTC()->ResetPosition(position);
 }

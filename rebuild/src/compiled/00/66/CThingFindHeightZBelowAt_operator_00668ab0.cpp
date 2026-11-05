@@ -29,10 +29,7 @@ class CTCPhysicsBase { public:
 public:
     CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-};
+#include "engine/CThing.h"
 struct CThingFindHeightZBelowAt {
     C3DVector* From;                            // +0x00
     C3DVector* To;                              // +0x04
@@ -42,7 +39,7 @@ struct CThingFindHeightZBelowAt {
 
 bool CThingFindHeightZBelowAt::operator()(CThing* thing)
 {
-    CTCPhysicsBase* physics = thing->PhysicsTC;
+    CTCPhysicsBase* physics = thing->GetPhysicsTC();
     if (physics && physics->GetPhysicsMeshParameters()) {
         CPhysicsMeshObject mesh = physics->GetPhysicsMeshObject();
         CMeshIntersectionData data;

@@ -21,33 +21,15 @@
 #include <math.h>
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CModeBase;
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char m_type;                   // +0x10 (1 = player creature)
-    unsigned char _pad11[0x0f];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 struct CTCFlagged {                         // the type-0x3a component
     unsigned char _pad00[0x50];
     unsigned char m_flag : 1;               // +0x50 bit 0
@@ -113,17 +95,17 @@ __forceinline float Distance(const C3DVector& a, const C3DVector& b)
 void CModeDragonFlying::OnActivate()
 {
     CModeBase::OnActivate();
-    if (ParentThing->m_type == 1)
+    if (ParentThing->GetType() == 1)
         ((CThingAICreature*)ParentThing)->SuspendAI(true, this);
     CTCFlagged* flagged;
-    if (ParentThing->GetInterface(&flagged, 0x3a))
+    if (ParentThing->GetTC(TCI_MAPWHO, &flagged))
         flagged->m_flag = 0;
     SetThingAsNotBloodyWillableAtAll(ParentThing, true);
     DistanceToTravel = Distance(Destination, StartPos);
     Acceleration = 0.0f;
     StartSpeed = Speed;
     CTCAnimationComplex* animation = 0;
-    ParentThing->GetInterface(&animation, 0x5a);
+    ParentThing->GetTC(TCI_ANIMATION, &animation);
     CAnimateThing* anim = animation->GetAnimateThing();
     AnimUpdate(*anim);
     AnimLength = animation->GetAnimDuration(animation->GetAnimIndex());

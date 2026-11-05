@@ -1,4 +1,5 @@
 // CPlayer::InitModeFirstPersonTargeting(EPlayerMode, CProcessedInput*) -- attach the first-person targeting input processes and, for a living hero, put its creature mode manager into mode 25 (unless already there) and push the special camera mode
+// Leaf: ?InitModeFirstPersonTargeting@CPlayer@@QAEXJPAVCProcessedInput@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00635A50, length 224 bytes (+ int3 padding), `ret 8`.
 // Identity: Ego_r.pdb `?InitModeFirstPersonTargeting@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z` (a
@@ -26,35 +27,16 @@ class CAInputProcess { public:
     virtual bool AddToInterface(CGamePlayerInterface* playerInterface);   // slot 1 (+0x04)
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_stateFlags;                         // +0x91 (bit 0: dead)
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingPlayerCreature : public CThing { };
 
 inline bool IsThingAlive(const CThing* thing)
 {
-    return thing && !(thing->m_stateFlags & 1);
+    return thing && !thing->IsDead();
 }
 
 struct CMode {
@@ -94,7 +76,7 @@ void CPlayer::InitModeFirstPersonTargeting(EPlayerMode mode, CProcessedInput* in
     CThing* hero = GetPControlledCreature();
     if (IsThingAlive(hero)) {
         CTCCreatureModeManager* modes = 0;
-        hero->GetInterface(&modes, 0x31);
+        hero->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
         if (modes->GetCurrentMode()->GetModeType() != 25)
             modes->AddMode(25);
         CGameCameraManager* camera = 0;

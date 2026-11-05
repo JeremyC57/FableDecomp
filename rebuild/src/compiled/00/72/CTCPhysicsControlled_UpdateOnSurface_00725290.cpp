@@ -1,4 +1,5 @@
 // CTCPhysicsControlled::UpdateOnSurface(const vector<CThing*>& things, C3DVector& pos) -- snap the position onto the highest physics mesh under it among the nearby things (sweeping the body sphere down through each mesh) and onto the ground, then update OnMesh / OnGround, the thing stood on and the render Z offset
+// Leaf: ?UpdateOnSurface@CTCPhysicsControlled@@QAEXABU?$vector@PAVCThing@@@@AAVC3DVector@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00725290, length 481 bytes (+ int3 padding), esp frame, `ret 8`.
@@ -32,11 +33,7 @@ public:
     float GetGroundSizeZAt(const C3DVector&) const;   // 0x0063A300
 };
 class CTCPhysicsBase;
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                          // +0x60
-};
+#include "engine/CThing.h"
 template <class T> struct vector {                      // STLport vector, 12 bytes
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     T* begin() const { return _M_start; }
@@ -106,7 +103,7 @@ void CTCPhysicsControlled::UpdateOnSurface(const vector<CThing*>& things, C3DVec
         C3DVector down(0.0f, 0.0f, -radius);
         CPhysicsCollideResponse response;
         for (CThing** it = things.begin(); it != things.end(); ++it) {
-            CTCPhysicsBase* other = (*it)->PhysicsTC;
+            CTCPhysicsBase* other = (*it)->GetPhysicsTC();
             if (other->IsSolidSurface() && other->GetPhysicsMeshInfo()) {
                 C3DVector to = pos + down;
                 C3DVector from = pos + C3DVector(0.0f, 0.0f, radius);

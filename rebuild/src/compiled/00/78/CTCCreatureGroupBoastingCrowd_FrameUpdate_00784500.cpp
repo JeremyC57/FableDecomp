@@ -1,4 +1,5 @@
 // CTCCreatureGroupBoastingCrowd::FrameUpdate() -- kill the crowd once the hero is gone or dead; when an off-podium state's clear frame has passed, clear every opinion source pushed for the hero and return to state 0; when the post-boast state's leave frame has passed, go back to the encouragement state (boasts left) or to 7/8 (good/bad boast)
+// Leaf: ?FrameUpdate@CTCCreatureGroupBoastingCrowd@@QAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -16,12 +17,7 @@
 //   0x007841C0) must be `__forceinline` to be inlined into the guard chain; the source clearing is a while loop (rotated:
 //   pre-test, `dec ; test ; jg`) whose manager is a named loop local (edi pushed around the loop only);
 //   `HeroMadeGoodBoast ? 7 : 8` gives `neg ; sbb ; add 8`.
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    void Kill(bool immediately);                // 0x004C9B80
-};
+#include "engine/CThing.h"
 class COpinionReactionManager { public:
     void ClearOpinionSource(CThing* source, bool immediately);   // 0x007008C0
 };

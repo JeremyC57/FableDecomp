@@ -8,32 +8,12 @@
 //   GetInterface), __ftol2 0x00BFEA70.
 // Body: alive test (non-null, Dead bit 0 of +0x91 clear), presence bit 4 of the interface bitset (`test byte ptr [eax+20h],10h`).
 // Header debt: engine/CGameScriptInterface.h, CPlayer, CThing and engine/CTCHeroStats.h are flat layouts (PDB offsets); modelled locally.
-enum ETCInterfaceType { ETCInterfaceType_FIRST };
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    virtual ~CThing();
-    unsigned char _pad04[0x1C];
-    unsigned long PresentInterfaces[9];                    // +0x20
-    CInterfaceMap Interfaces;                              // +0x44
-    unsigned char _pad54[0x91 - 0x54];
-    unsigned char Flags91;                                 // +0x91 bit 0: dead
-    template <class T> __forceinline bool GetInterface(const T** out, ETCInterfaceType type) const
-    {
-        if (PresentInterfaces[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = type;
-            const CInterfaceMap* map = &Interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (const T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
@@ -55,8 +35,8 @@ public:
 long CGameScriptInterface::GetBestScoreCoinGolfSnowSpire() const
 {
     const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
-    const CTCHeroStats* stats;
-    if (hero && !(hero->Flags91 & 1) && hero->GetInterface(&stats, (ETCInterfaceType)4))
+    const const CTCHeroStats* stats;
+    if (hero && !hero->IsDead() && hero->PeekTC(TCI_HERO_STATS, &stats))
         return (long)stats->BestScoreCoinGolfSnowSpire;
     return 0;
 }

@@ -16,12 +16,9 @@ class CTCBase;
 class CWideString;
 
 class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length);      // 0x0099EBF0
-    CCharString(const CCharString& other);
-    ~CCharString();
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 namespace NUISystem {
 class CAction { public:                                     // retail 0x10 bytes
@@ -89,30 +86,8 @@ class CManager { public:
 };
 }
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    unsigned long m_presentBits[9];                  // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    bool HasTC(long wanted)
-    {
-        if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long wanted)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || wanted < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-};
 
 class CTCInventory { public:
     unsigned char          _pad_0x000[0x214];
@@ -131,8 +106,8 @@ class CTCHeroOnlineScoreboard { public:
 void CTCHeroOnlineScoreboard::OnOkClicked(const CWideString& message)
 {
     CThing* thing = ParentThing;
-    if (thing->HasTC(0x11)) {
-        CTCInventory* inventory = thing->GetTC<CTCInventory>(0x11);
+    if (thing->HasTC(TCI_INVENTORY)) {
+        CTCInventory* inventory = ((CTCInventory*)&thing->GetTC(TCI_INVENTORY));
         PConnectingMessage1->SetActive_slot48(false);
         PConnectingMessage->FindChild(CCharString("UI_CONNECTING_TEXT", -1))->SetText(message, true, true);
         NUISystem::CComponent& okButton = *PConnectingMessage->FindChild(CCharString("PC_OK_GAME_OKBUTTON_SCOREBOARD", -1));

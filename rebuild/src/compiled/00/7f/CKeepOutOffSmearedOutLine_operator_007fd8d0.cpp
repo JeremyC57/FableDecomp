@@ -25,10 +25,11 @@ extern "C" double __cdecl sqrt(double);
 C3DVector __fastcall GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector& start, const C3DVector& end, const C3DVector& point);   // 0x008F5B50
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CPhysicsObject {                         // the thing's physics-side object (+0x60)
+struct CTCPhysicsBase {                         // the thing's physics-side object (+0x60)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -47,28 +48,6 @@ struct CPhysicsObject {                         // the thing's physics-side obje
 struct CTCFlag9f { unsigned char _pad[0x9f]; bool Flag; };   // TC 169
 struct CTCFlag89 { unsigned char _pad[0x89]; bool Flag; };   // TC 168
 
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0xc];
-    CPhysicsObject* PPhysics;                   // +0x60
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
 class CKeepOutOffSmearedOutLine {
 public:
     C3DVector* StartPos;                        // +0x00
@@ -79,7 +58,7 @@ public:
 
 void CKeepOutOffSmearedOutLine::operator()(CThing* thing) const
 {
-    CPhysicsObject* physics = thing->PPhysics;
+    CTCPhysicsBase* physics = thing->GetPhysicsTC();
     C3DVector position = physics->Pos;
     C3DVector out = GetLineOutFromClosestPointOnFiniteLineToPoint(*StartPos, *EndPos, position);
     out.Z = 0.0f;
@@ -89,10 +68,10 @@ void CKeepOutOffSmearedOutLine::operator()(CThing* thing) const
         out *= 1.0f / length;
         physics->ApplyImpulse(out * (Radius - length));
         CTCFlag9f* flag9f;
-        if (thing->GetInterface(&flag9f, 169))
+        if (thing->GetTC(TCI_ASSASSIN_RUSH, &flag9f))
             flag9f->Flag = true;
         CTCFlag89* flag89;
-        if (thing->GetInterface(&flag89, 168))
+        if (thing->GetTC(TCI_BATTLE_CHARGE, &flag89))
             flag89->Flag = true;
     }
 }

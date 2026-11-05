@@ -1,4 +1,5 @@
 // CTCRegionFollower::IsRegionFollower(CThing* thing) -- true when thing is one of the followers held in the Followers list
+// Leaf: ?IsRegionFollower@CTCRegionFollower@@QAE_NPAVCThing@@@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AEB60, length 56 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem() @ 0x00A01B50 (on each node's intelligent pointer, `lea ecx,[esi+8]`).
@@ -7,9 +8,10 @@
 // placed after the shared `xor al,al` fall-through. GetPItem's result is on the left of `==` (`cmp eax,ebx`).
 // Layout = Ego_r.pdb CTCRegionFollower (0x18) with the retail one-pointer list: Followers
 // (list<CIntelligentPointer<CThing>>, node = next, prev, 8-byte pointer) at +0x0c. No engine header; modelled locally.
+#define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class CThing : public CBaseObject { public: };
+#include "engine/CThing.h"
 
 #pragma pack(push, 1)
 #define FABLE_RETAIL_CINTELLIGENTPOINTER

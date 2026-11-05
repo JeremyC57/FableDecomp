@@ -1,31 +1,16 @@
 // CCreatureAction_NymphTeleportIntoLimbo::PerformAction() -- if the creature has the nymph component (interface type 0xf5), start it flying around for the remaining time (the words at +0x10 and +0x1c), then do the limbo effect
+// Leaf: ?PerformAction@CCreatureAction_NymphTeleportIntoLimbo@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CA110, length 92 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for type 0xf5 =
 // bit 21 of the bitset dword at +0x3c, landed shape of 0x00849320), CTCNymph::StartFlyingAround(long) @ 0x0080F5E0, CCreatureAction_NymphTeleportLimboBase::DoEffect
 // @ 0x008C9FE0 (non-virtual). Shape: one `push ecx` frame for the lookup key; the action rides in edi, the map in esi.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -63,7 +48,7 @@ class CCreatureAction_NymphTeleportIntoLimbo : public CCreatureAction_NymphTelep
 void CCreatureAction_NymphTeleportIntoLimbo::PerformAction()
 {
     CTCNymph* pNymph;
-    if (PCreature.GetPItem()->GetInterface(&pNymph, 0xf5))
+    if (PCreature.GetPItem()->GetTC(TCI_NYMPH, &pNymph))
         pNymph->StartFlyingAround(m_duration - m_elapsed);
     DoEffect();
 }

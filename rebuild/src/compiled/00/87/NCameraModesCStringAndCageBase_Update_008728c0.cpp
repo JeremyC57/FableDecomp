@@ -19,18 +19,17 @@
 // copy ctor (retail copies Y first, straight from the member; the implicit copy goes through `lea eax,[esi+54h]`), and the
 // observed thing is a named local so GetObservedThing runs before the GetCameraFocalPos argument pushes.
 #include "engine/C3DVector.h"
-class CThing {
-public:
-    const C3DVector& GetPos() const;                         // 0x004C73D0
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
+namespace NGraphicAppearance {
 class CTCGraphicAppearance {
 public:
     C3DVector GetCameraFocalPos(float t) const;                   // 0x004C12D0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CThingGameObject : public CThing {
 public:
-    unsigned char         _pad00[0x64];
-    CTCGraphicAppearance* Appearance;                              // +0x64
 };
 class CGameCameraManager { public:
     unsigned char _pad000[0xb0];
@@ -77,7 +76,7 @@ void CStringAndCageBase::Update()
 {
     C3DVector goTo = GoToPosition;
     const CThingGameObject* thing = GetObservedThing();
-    C3DVector lookAt = thing->Appearance->GetCameraFocalPos(1.0f);
+    C3DVector lookAt = thing->GetTCGraphicAppearance()->GetCameraFocalPos(1.0f);
     if (!UpdateStringLength(goTo))
         UpdateCageRadius(goTo);
     if (IsAutoGoBehindEnabled()) {

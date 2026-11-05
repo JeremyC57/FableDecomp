@@ -10,11 +10,8 @@
 //   NextNodeUID +0xd8, PreviousNodeUID +0xe0, TrackName +0xe8, IsStart +0xec, IsEnd +0xed. CPersistContext::Mode +0x18.
 // Shape: the mode is read once per test pair; each AddTC name is an implicit conversion temporary in the dead context
 //   slot; the two 64-bit defaults share one 8-byte frame temporary, the long/bool defaults use the dead argument slot.
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CTCBase;
 class CTCParamsBase;
@@ -26,12 +23,8 @@ class CPersistContext { public:
     template <class T> void Transfer(const char* name, T& value);   // 0x00411010 <CCharString>
 };
 
-class CThing { public:
-    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
-};
-
 class CThingPhysical : public CThing { public:
-    unsigned char _pad00[0xd0];
+    unsigned char _pad00[0x38];   // own members from +0x98
     bool SerialiseGameState(CPersistContext* context);  // 0x006A5AF0
 };
 

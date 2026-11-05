@@ -11,38 +11,15 @@
 // Body: CScriptThing::GetThing() is an inline virtual (`PImp.Data == 0 ? 0 : PImp.Data->GetPThing()`) called on the by-value object,
 //   so it devirtualises and inlines twice; GetInterface's result is ignored (a miss reads the uninitialised scratchpad local).
 // Header debt: engine/CScriptThing.h, CThing and engine/CTCAIScratchpad.h are flat layouts; modelled locally.
-enum ETCInterfaceType { ETCInterfaceType_FIRST };
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    virtual ~CThing();
-    unsigned char _pad04[0x1C];
-    unsigned long PresentInterfaces[9];                    // +0x20 (the bitset of present interface types)
-    CInterfaceMap Interfaces;                              // +0x44
-    template <class T> __forceinline bool GetInterface(T** out, ETCInterfaceType type)
-    {
-        if (PresentInterfaces[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = type;
-            CInterfaceMap* map = &Interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CCharStringData;
-class CCharString {
-public:
-    CCharStringData* PStringData;                          // +0x00
-    CCharString(const char* text, long length);            // 0x0099EBF0
-    CCharString(const CCharString& other);                 // 0x0099EC30
-    ~CCharString();                                        // 0x0099EAE0
-};
+
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -65,6 +42,6 @@ CCharString CGameScriptInterface::GetTableName(CScriptThing thing)
     if (thing.GetPThing() == 0)
         return CCharString("", -1);
     CTCAIScratchpad* scratchpad;
-    thing.GetPThing()->GetInterface(&scratchpad, (ETCInterfaceType)0xAA);
+    thing.GetPThing()->GetTC(TCI_AI_SCRATCHPAD, &scratchpad);
     return scratchpad->TableName;
 }

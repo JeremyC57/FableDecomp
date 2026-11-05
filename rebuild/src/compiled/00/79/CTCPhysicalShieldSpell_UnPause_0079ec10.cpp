@@ -17,10 +17,8 @@
 // Shape: the ResumeForCutscene shape (owner read into edi first, flag cleared after the loads, `sete cl` pushed as the bool,
 //   the handle stored before the string's destructor), then the owner passed to PlayShieldEffects: the string is a named
 //   local in its own block, so its destructor runs before the PlayShieldEffects call.
-class CCharString { public:
-    void* PStringData;                      // +0 the shared string block
-    ~CCharString();                         // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CDefStringTable {
 public:
@@ -29,10 +27,6 @@ public:
 
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)    // 0x013CA828
 
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char Type;                     // +0x10 (2 = player)
-};
 class CThingCreatureBase : public CThing { public:
 };
 
@@ -73,7 +67,7 @@ void CTCPhysicalShieldSpell::UnPause()
         Paused = false;
         {
             CCharString sound = GDefStringTable.GetString(PDef->LoopingSound[SpellLevel]);
-            LoopingSound = PlaySoundW(sound, owner->Type == 2);
+            LoopingSound = PlaySoundW(sound, owner->GetType() == 2);
         }
         PlayShieldEffects(owner);
     }

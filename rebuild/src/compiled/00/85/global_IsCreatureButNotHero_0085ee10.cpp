@@ -16,15 +16,13 @@ class CDefString { public:                                  // 4-byte def-name h
     bool operator!=(const char* text) const;         // 0x005FA740
 };
 
-class CThing { public:
-    unsigned char _pad[0x10];
-    unsigned char m_type;                            // +0x10 (2 = creature)
-    CDefString GetDefName() const;                   // 0x004C7CC0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 bool __fastcall IsCreatureButNotHero(CThing* thing)
 {
-    if (thing->m_type == 2 && thing->GetDefName() != "CREATURE_HERO")
+    if (thing->GetType() == 2 && thing->GetDefName() != "CREATURE_HERO")
         return true;
     return false;
 }

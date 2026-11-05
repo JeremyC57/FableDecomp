@@ -1,4 +1,5 @@
 // CTCInventoryClothing::SetThingAsWearingSelectedClothes(CThing* thing) -- strips the thing's clothing modifiers and re-applies every selected suit part's item
+// Leaf: ?SetThingAsWearingSelectedClothes@CTCInventoryClothing_Retail@@QAEXPAVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005B406D, length 121 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
@@ -16,25 +17,10 @@
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                         // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            CInterfaceMap::value_type* found = (it == map->end() || wanted < it->first) ? map->end() : it;
-            *out = (T*)((void*)found->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 enum { APPEARANCE_MODIFIER_CLOTHING = 2 };
 class CTCHeroAttachableAppearanceModifiers { public:        // interface type 0x5E
     void RemoveAllAppearanceModifiers(long type);    // 0x00706640
@@ -65,7 +51,7 @@ struct CTCInventoryClothing_Retail {
 void CTCInventoryClothing_Retail::SetThingAsWearingSelectedClothes(CThing* thing)
 {
     CTCHeroAttachableAppearanceModifiers* modifiers;
-    if (thing->GetInterface(&modifiers, 0x5E)) {
+    if (thing->GetTC(TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS, &modifiers)) {
         modifiers->RemoveAllAppearanceModifiers(APPEARANCE_MODIFIER_CLOTHING);
         for (SNode* it = CurrentClothingSelected.begin(); it != CurrentClothingSelected.end(); it = _M_increment(it)) {
             if (it->second > 0)

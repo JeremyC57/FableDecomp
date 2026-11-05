@@ -1,4 +1,5 @@
 // CPlayerManager::SaveGameState(CPersistContext& context) -- persist the main player's character as a CPlayerSave: its unique ID and the name of the region whose map holds the character
+// Leaf: ?SaveGameState@CPlayerManager@@QAEXAAVCPersistContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00449F90, length 224 bytes, `ret 4`.
 // Identity: Ego_r.pdb `?SaveGameState@CPlayerManager@@QAEXAAVCPersistContext@@@Z`.
 // Callees: CPlayerManager::GetPlayer(long) 0x004498C0, CBaseIntelligentPointer::GetPItem 0x00A01B50, CCharString default
@@ -16,13 +17,8 @@
 // a CCharString from an inline by-value getter (its named local built in the dead `context` argument slot, copied
 // out and destroyed: VC7.1 has no NRVO).
 class C3DVector;
-class CCharString { public:
-    void* PStringData;
-    CCharString();                                      // 0x0099E4B0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 inline CCharString EmptyString()
 {
     CCharString empty;
@@ -34,11 +30,6 @@ class CPersistContext { public:
     //   instances here: unsigned __int64 0x0044BB00; CCharString 0x004109A0
 };
 
-class CThing { public:
-    unsigned char    _pad00[0x18];
-    unsigned __int64 UniqueID;                          // +0x18
-    const C3DVector& GetPos() const;               // 0x004C73D0
-};
 class CBaseObject;
 class CBaseIntelligentPointer {
 public:
@@ -104,7 +95,7 @@ void CPlayerManager::SaveGameState(CPersistContext& context)
 {
     CThing* character = GetPlayer(MainPlayer)->GetPlayerCharacter();
     NPlayerManager::CPlayerSave save;
-    save.CharacterUID = character->UniqueID;
+    save.CharacterUID = character->GetUniqueID();
     const C3DVector& position = character->GetPos();
     CWorldMap* worldMap = Component->PWorld->PeekWorldMap();
     save.RegionName = worldMap->GetRegion(worldMap->GetRegionNumberMapIsIn(worldMap->GetMapNumberAt(position))).Name;

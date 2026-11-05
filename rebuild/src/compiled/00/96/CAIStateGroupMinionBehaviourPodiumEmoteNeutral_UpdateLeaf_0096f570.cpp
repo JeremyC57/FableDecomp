@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionBehaviourPodiumEmoteNeutral::UpdateLeaf() -- once the current speech plus a random 2..5 s pause has elapsed, restamp the time, re-read the creature's speech duration, roll a new pause, and with a 10% chance play the ST_EMOTE animation
+// Leaf: ?UpdateLeaf@CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096F570, length 384 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0, CWorld::GetWorldFrame @ 0x0049D870 (static), DivideByGameSpeed
@@ -14,25 +15,12 @@
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04) with the
 //          podium emote state at +0x3c/+0x40/+0x44 (descriptive: speech duration, pause, time of the last emote check).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCTalk { public:                                // interface 0xf
     float GetCurrentSpeechDuration();           // 0x006E2840
 };
@@ -42,11 +30,6 @@ class CWorld { public:
 float __stdcall DivideByGameSpeed(float value); // 0x00415FD3
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
 class CSoundPair { public:
     long m_first;
     long m_second;
@@ -105,7 +88,7 @@ void CAIStateGroup_MinionBehaviourPodiumEmoteNeutral::UpdateLeaf()
     float now = DivideByGameSpeed((float)GetPWorld()->GetFrame());
     if (now - LastEmoteTime > SpeechDuration + Pause) {
         CTCTalk* talk;
-        GetCreature()->GetInterface(&talk, 0xf);
+        GetCreature()->GetTC(TCI_TALK, &talk);
         SpeechDuration = talk->GetCurrentSpeechDuration();
         LastEmoteTime = now;
         Pause = (float)Random(100) * 0.03f + 2.0f;

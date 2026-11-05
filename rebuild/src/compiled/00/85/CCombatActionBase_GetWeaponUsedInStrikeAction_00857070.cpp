@@ -1,4 +1,5 @@
 // CCombatActionBase::GetWeaponUsedInStrikeAction() const -- the weapon of the active strike event first to finish, when that weapon is still alive; else null
+// Leaf: ?GetWeaponUsedInStrikeAction@CCombatActionBase@@QBEPAVCThing@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00857070, length 85 bytes (+ int3 padding).
 // Callees: std::for_each<list<CCountedPointer<CStrikeEvent>>::const_iterator, CGetActiveStrikeEventThatIsFirstToFinish>
 // @ 0x0085A960 (__fastcall; the functor result through the hidden pointer in ecx, both iterators and the functor
@@ -10,10 +11,7 @@
 // Also: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 on the event's PWeapon (+0x14, Ego_r.pdb); the dead bit is
 // +0x91 & 1 of the thing (the IS_THING_DEAD test of the landed 0x00836BE0).
 // Shape: nested ifs, one `xor eax,eax` null tail shared by the three failing paths, the live weapon returned in eax.
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char DeadFlags;                    // +0x91 (bit 0: dead)
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -96,7 +94,7 @@ CThing* CCombatActionBase::GetWeaponUsedInStrikeAction() const
     if (pEvent != 0) {
         CThing* weapon = pEvent->PWeapon.GetPItem();
         if (weapon != 0) {
-            if (!(weapon->DeadFlags & 1))
+            if (!weapon->IsDead())
                 return weapon;
         }
     }

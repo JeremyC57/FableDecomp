@@ -9,32 +9,14 @@
 // gates SuspendAI(false, 0); the GetInterface result is not tested, so RemoveMode + the base call are
 // duplicated on both paths (the absent path reads the uninitialised out pointer from the `push ecx` frame word).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
-class CThing { public:
-    unsigned char _pad0[0x10];
-    unsigned char m_type;                   // +0x10 thing type (1 = the player creature)
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -69,12 +51,12 @@ class CCombatAction_RecoverFromDazed : public CCombatActionBase { public:
 
 void CCombatAction_RecoverFromDazed::Initialise()
 {
-    if (PCreature.GetPItem()->m_type == 1) {
+    if (PCreature.GetPItem()->GetType() == 1) {
         CThing* pCreature = PCreature.GetPItem();   // named: retail fetches it before the argument pushes
         ((CThingAICreature*)pCreature)->SuspendAI(false, 0);
     }
     CTCCreatureModeManager* pModes;
-    PCreature.GetPItem()->GetInterface(&pModes, 0x31);
+    PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes);
     pModes->RemoveMode(67);
     CCombatActionBase::Initialise();
 }

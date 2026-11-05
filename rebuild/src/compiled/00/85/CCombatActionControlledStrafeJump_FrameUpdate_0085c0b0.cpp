@@ -10,27 +10,11 @@
 // the lookup key, the interface map addressed once through esi. AddedRollMode (a bool at retail +0x12c,
 // PDB +0x144) is cleared whether or not the creature still has a mode manager.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -79,7 +63,7 @@ void CCombatAction_ControlledStrafeJump::FrameUpdate()
     CCombatActionBase::FrameUpdate();
     if (IsActionReadyForInterruption() && AddedRollMode) {
         CTCCreatureModeManager* pModes;
-        if (PCreature.GetPItem()->GetInterface(&pModes, 0x31))
+        if (PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes))
             pModes->RemoveMode(70);
         AddedRollMode = false;
     }

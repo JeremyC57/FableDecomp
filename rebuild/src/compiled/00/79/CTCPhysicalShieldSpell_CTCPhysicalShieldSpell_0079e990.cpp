@@ -17,25 +17,11 @@
 //   intelligent-pointer destructors, the inline def release with its zero store; the base destructor is called.
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-    unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -118,8 +104,8 @@ class CTCPhysicalShieldSpell : public CTCBase { public:       // vtable 0x0126C5
         CThing* thing = effect.GetPItem();
         if (thing && !thing->IsDead()) {
             CTCDParticleEmitter* emitter = 0;
-            if (thing->HasTC(0x4b))
-                emitter = thing->GetTC<CTCDParticleEmitter>(0x4b);
+            if (thing->HasTC(TCI_PARTICLE_EMITTER))
+                emitter = ((CTCDParticleEmitter*)&thing->GetTC(TCI_PARTICLE_EMITTER));
             emitter->EnterTimelineEnd();
         }
     }

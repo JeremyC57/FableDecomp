@@ -1,15 +1,11 @@
 // CTCOwnedEntity::OnForceRecreateUID() -- re-captures the live owner's UID into OwnerUID
+// Leaf: ?OnForceRecreateUID@CTCOwnedEntity@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E8370, length 56 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem() const @ 0x00A01B50 (three times on POwner: null test, dead bit, then the read).
 // Retail CTCOwnedEntity (PDB): POwner at the unaligned +0x0d (pack(1)), OwnerUID +0x18; the thing's UID at +0x18.
 // Shape: the landed IS_THING_ALIVE idiom (two fetches, nested ifs) with &POwner held in edi, then a third fetch and the
 // two-word copy.
-class CThing { public:
-    unsigned char    _pad00[0x18];
-    unsigned __int64 UID;                           // +0x18
-    unsigned char    _pad20[0x91 - 0x20];
-    unsigned char    m_flags91;                     // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -31,7 +27,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -56,5 +52,5 @@ class CTCOwnedEntity : public CTCBase_007e8370 { public:
 void CTCOwnedEntity::OnForceRecreateUID()
 {
     if (IS_THING_ALIVE(POwner))
-        OwnerUID = POwner.GetPItem()->UID;
+        OwnerUID = POwner.GetPItem()->GetUniqueID();
 }

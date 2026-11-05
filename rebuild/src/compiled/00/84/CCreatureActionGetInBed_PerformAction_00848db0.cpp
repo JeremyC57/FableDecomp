@@ -1,4 +1,5 @@
 // CCreatureAction_GetInBed::PerformAction() -- push a new NCreatureMode::CModeSleepBed(creature, AnimGroup, SleepAnimName) onto the creature's mode manager, then when the bed is alive and has a CTCBed component start its get-in animation (BedGetInAnim, BedSleepAnim) or, with no animation, just mark the bed as occupied
+// Leaf: ?PerformAction@CCreatureAction_GetInBed@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00848DB0, length 343 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x31 =
@@ -12,40 +13,13 @@
 // argument area with its null-checked count block (the mode was never dereferenced); IS_THING_ALIVE on PBed then HasTC/GetTC.
 void __fastcall Destroy_007180b0(void* object);   // 0x007180B0
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -65,15 +39,12 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
 }
-class CCharString { public:
-    void* PStringData;
-    CCharString(const CCharString& other);      // 0x0099EC30
-};
+
 class CAnimFilterOfGroup { public:                     // 12 bytes
     unsigned char _body[0xc];
     CAnimFilterOfGroup(const CCharString& group);   // 0x0073E8F0
@@ -139,13 +110,13 @@ class CCreatureAction_GetInBed : public CCreatureActionBase { public:
 void CCreatureAction_GetInBed::PerformAction()
 {
     CTCCreatureModeManager* modeManager;
-    PCreature.GetPItem()->GetInterface(&modeManager, 0x31);
+    PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
     CModeSleepBed* mode = new CModeSleepBed(PCreature.GetPItem(), AnimGroup, SleepAnimName);
     modeManager->AddMode(CCountedPointer<CModeBase>(mode));
     if (IS_THING_ALIVE(PBed)) {
         CThing* bedThing = PBed.GetPItem();
-        if (bedThing->HasTC(0x35)) {
-            CTCBed* bed = bedThing->GetTC<CTCBed>(0x35);
+        if (bedThing->HasTC(TCI_BED)) {
+            CTCBed* bed = ((CTCBed*)&bedThing->GetTC(TCI_BED));
             if (BedGetInAnim)
                 bed->StartGetInBedAnimation(BedGetInAnim, BedSleepAnim);
             else

@@ -13,32 +13,12 @@
 //   null return is written last (an early `return 0` reuses the zero eax inline instead of retail's trailing `xor eax,eax`).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
-
-class CThing {
-public:
-    unsigned char  _pad00[0x20];
-    unsigned long  m_tcMask[8];                 // +0x20
-    unsigned char  _pad40[4];
-    CTCMap         m_tcs;                       // +0x44
-    unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (HasTC(T::INTERFACE_TYPE)) {
-            CTCMap* map = &m_tcs;
-            STCEntry* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);
-            if (it == map->end() || T::INTERFACE_TYPE < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -59,7 +39,6 @@ public:
 
 class CTCVillage {
 public:
-    enum { INTERFACE_TYPE = 0x22 };
 };
 
 class CTCVillageMember {
@@ -77,7 +56,7 @@ CTCVillage* CTCVillageMember::GetPVillage() const
 {
     if (PVillage.GetPItem() != 0) {
         CTCVillage* village;
-        PVillage.GetPItem()->GetTC(&village);
+        PVillage.GetPItem()->GetTC(TCI_VILLAGE, &village);
         return village;
     }
     return 0;

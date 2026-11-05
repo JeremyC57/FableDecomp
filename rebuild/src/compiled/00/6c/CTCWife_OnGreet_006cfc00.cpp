@@ -1,4 +1,5 @@
 // CTCWife::OnGreet() -- once married, a greeting from the living hero posts opinion deed 0x50 at the wife's position
+// Leaf: ?OnGreet@CTCWife@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CFC00, 140 bytes (+4 int3). __fastcall, `ret`.
@@ -13,35 +14,12 @@
 //         Dead +0x91.
 #include "engine/C3DVector.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x18];
-    unsigned char Flags6C;                      // +0x6c (bit 4 tested, descriptive)
-    unsigned char _pad6d[0x91 - 0x6d];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    unsigned char _pad92[0x1c9 - 0x92];
-    unsigned char Flags1C9;                     // +0x1c9 (CThingCreatureBase flag byte; bit 3 tested, descriptive)
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
@@ -78,11 +56,11 @@ void CTCWife::OnGreet()
     if (FrameGotMarriedToThePlayer > CWorld::GetFrame())
         return;
     CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
-    if (!hero || (hero->Flags91 & 1))
+    if (!hero || hero->IsDead())
         return;
     CTCHeroOpinionDeedLog* deedLog;
-    if (hero->GetInterface(&deedLog, 0x51)) {
-        if (ParentThing->Flags6C & 0x10)
+    if (hero->GetTC(TCI_HERO_OPINION_DEED_LOG, &deedLog)) {
+        if (ParentThing->GetTypeFlags() & 0x10)
             deedLog->PostDeed(0x50, &ParentThing->GetPos(), ParentThing, ParentThing, 1, false, false, 0, false, 0);
     }
 }

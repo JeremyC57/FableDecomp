@@ -20,11 +20,7 @@ class C2DVector { public: float X, Y; };
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
 
-class CThing { public:
-    unsigned char _pad_0x00[0x91];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-};
+#include "engine/CThing.h"
 class CThingObject : public CThing { };              // CThingObject derives from CThing (PositionMesh takes the base)
 
 #pragma pack(push, 1)

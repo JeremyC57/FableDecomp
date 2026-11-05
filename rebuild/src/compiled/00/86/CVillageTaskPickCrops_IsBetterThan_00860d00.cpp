@@ -9,12 +9,11 @@
 // Layout (Ego_r.pdb = retail): Crop +0x08, CreatureAssignedToTask +0x10.
 // Shape: the landed CVillageTaskSecuritySweep::IsBetterThan (0x00860430) with both goal points taken from the crop
 //   things: by-value position copies, named deltas, `myDist < rivalDist` evaluated left first.
+#define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/C3DVector.h"
-class CThing : public CBaseObject { public:
-    const C3DVector& GetPos() const;          // 0x004C73D0
-};
+#include "engine/CThing.h"
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 class CVillageTaskPickCrops { public:                     // vtable 0x0125A928

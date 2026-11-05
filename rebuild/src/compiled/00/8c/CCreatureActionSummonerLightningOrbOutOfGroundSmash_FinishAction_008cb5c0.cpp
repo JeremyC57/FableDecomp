@@ -1,4 +1,5 @@
 // CCreatureAction_SummonerLightningOrbOutOfGroundSmash::FinishAction() -- base FinishAction, then if the creature has a mode manager (interface type 0x31) that holds mode 90, remove that mode
+// Leaf: ?FinishAction@CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CB5C0, length 96 bytes (byte-identical to the OrbOutOf body @ 0x008CB4A0 up to the relocations). FinishAction is vtable slot 4 (protected `MAE`); the base is called directly here.
 // Callees: CCombatActionBase::FinishAction @ 0x00859A20 (direct base call), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8),
@@ -8,27 +9,11 @@
 // Shape: one `push ecx` frame for the lookup key; the mode manager rides in esi for both calls (the landed 0x008B7640 lookup with the
 // HasMode guard of 0x00977A30). No engine header matches the retail layout (CCreatureActionBase is 0xa8 bytes in retail), so `this` is modelled locally.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -67,7 +52,7 @@ void CCreatureAction_SummonerLightningOrbOutOfGroundSmash::FinishAction()
 {
     CCombatActionBase::FinishAction();
     CTCCreatureModeManager* pModes;
-    if (PCreature.GetPItem()->GetInterface(&pModes, 0x31)) {
+    if (PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes)) {
         if (pModes->IsModeActive(90))
             pModes->RemoveMode(90);
     }

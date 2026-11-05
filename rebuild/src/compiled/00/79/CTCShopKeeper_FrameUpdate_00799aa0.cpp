@@ -10,23 +10,11 @@
 // Shape: the id is read into a local before the frame call (`frame + id`, unsigned 64-bit remainder); HasTC + one-ternary
 // GetTC on the re-read ParentThing; the flag byte is loaded once for both arms of the criminal test.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x18];
-    unsigned __int64 UniqueID;                          // +0x18
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-    }
-};
+
 class CWorld { public:
     static long __fastcall GetFrame();                        // 0x0049D870
 };
@@ -54,12 +42,12 @@ class CTCShopKeeper { public:
 
 void CTCShopKeeper::FrameUpdate()
 {
-    unsigned __int64 id = ParentThing->UniqueID;
+    unsigned __int64 id = ParentThing->GetUniqueID();
     if ((CWorld::GetFrame() + id) % 15 == 0) {
         if (GetShopTC() && RequiresNewCustomer())
             AcquireNewCustomer();
-        if (ParentThing->HasTC(0x23)) {
-            CTCVillage* village = ((CTCVillageMember*)ParentThing->GetTC(0x23))->GetPVillage();
+        if (ParentThing->HasTC(TCI_VILLAGE_MEMBER)) {
+            CTCVillage* village = ((CTCVillageMember*)((CTCVillageMember*)&ParentThing->GetTC(TCI_VILLAGE_MEMBER)))->GetPVillage();
             if (village) {
                 if (village->IsHeroCriminal()) {
                     if (RepressedOpinions)

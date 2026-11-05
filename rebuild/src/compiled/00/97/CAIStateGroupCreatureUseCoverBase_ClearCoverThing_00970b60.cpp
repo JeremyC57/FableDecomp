@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureUseCoverBase::ClearCoverThing() -- if the cover thing is still alive, release its cover-point component (SetUser(0)) and clear PCoverThing
+// Leaf: ?ClearCoverThing@CAIStateGroup_CreatureUseCoverBase@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00970B60, length 166 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three reads: IS_THING_ALIVE inlined, then the thing),
@@ -32,54 +33,10 @@ class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stor
 
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing
-{ public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad_0x54[0x3d];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-
-    __forceinline bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    __forceinline CInterfaceMap::value_type* FindEntry(long type)    // the entry; `->component` read at the call site
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        CInterfaceMap::value_type* end = map->end();
-        CInterfaceMap::value_type* sel;
-        if (it == end)
-            sel = end;
-        else if (it->first <= type)
-            sel = it;
-        else
-            sel = end;
-        return sel;
-    }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-        {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CAIBrain
 { public:
@@ -104,7 +61,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0)
     {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -132,7 +89,7 @@ void CAIStateGroup_CreatureUseCoverBase::ClearCoverThing()
     if (IS_THING_ALIVE(PCoverThing))
     {
         CTCCoverPoint* cover;
-        if (((CThing*)PCoverThing.GetPItem())->GetInterface(0xac, &cover))
+        if (((CThing*)PCoverThing.GetPItem())->GetTC(TCI_SINGLE_PERSON_OCCUPIABLE, &cover))
             cover->SetUser(0);
         PCoverThing.SetPItem((CBaseObject*)(((CThing*)CIntelligentPointer<CThing>(0).GetPItem())));
     }

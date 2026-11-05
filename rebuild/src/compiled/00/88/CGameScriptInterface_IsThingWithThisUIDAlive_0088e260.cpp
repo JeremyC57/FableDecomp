@@ -12,12 +12,7 @@
 //   PeekPThingWithUID before GetPThingWithUID, as retail orders the twins, so 0x0051ED80 is
 //   ?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z (41 call sites against 5 for 0x0051ED60; the manifest's
 //   "CStopWatch::GetTicks" label is wrong).
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsAlive() const { return !Dead; }                // inline: `not cl ; test cl,1` (a !Dead value, not a bit test)
-};
+#include "engine/CThing.h"
 class CThingManager {
 public:
     CThing* GetPThingWithUID(unsigned __int64 uid);      // 0x0051ED80

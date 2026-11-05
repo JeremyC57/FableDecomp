@@ -1,4 +1,5 @@
 // CTCMultiArrow::ApplyEffectOnWeapon(CThing* weapon) -- highlight and tint a living weapon's graphic appearance (interface 0x5b) with the def's bow-highlight width and colour, owned by this ability; mark the effect as not removed
+// Leaf: ?ApplyEffectOnWeapon@CTCMultiArrow@@QAEXPAVCThing@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CC060, 182 bytes (`ret 4`; PDB ?ApplyEffectOnWeapon@CTCMultiArrow@@QAEXPAVCThing@@@Z).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (interface 0x5b = bit 27 of CThing+0x28),
@@ -11,32 +12,11 @@
 //   named CRGBColour (R,G,B,A assigned in the ctor body, as the landed CTCFlashOnHit 0x007E33B0) handed to both calls -- the
 //   blue channel's byte passes through the dead `weapon` slot while the other three load.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                            // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-    void Kill(bool immediately);                        // 0x004C9B80
-};
+
 class CBaseIntelligentPointer {
 public:
     CBaseIntelligentPointer();                          // 0x00A01B10
@@ -100,7 +80,7 @@ class CTCMultiArrow { public:
 void CTCMultiArrow::ApplyEffectOnWeapon(CThing* weapon)
 {
     NGraphicAppearance::CTCGraphicAppearance* appearance;
-    if (weapon && !weapon->IsDead() && weapon->GetInterface(&appearance, 0x5b)) {
+    if (weapon && !weapon->IsDead() && weapon->GetTC(TCI_GRAPHIC_APPEARANCE_NEW, &appearance)) {
         const vector<long>& c = PDef->BowHighlightColor;
         CRGBColour colour((unsigned char)c[0], (unsigned char)c[1], (unsigned char)c[2], (unsigned char)c[3]);
         appearance->SetAsHighlighted(0.0f, PDef->BowHighlightWidth, colour, false, true, NGraphicAppearance::PRIORITY_1, this);

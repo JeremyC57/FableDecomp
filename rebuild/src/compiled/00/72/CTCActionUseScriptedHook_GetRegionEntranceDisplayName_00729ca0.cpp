@@ -33,10 +33,7 @@ class CMap;
 class CASuspendableProcess;
 template <class T> class CCountedPointer;
 
-class CThing { public:                                      // reached only through pointers here; retail sizeof 0x98
-    const C3DVector& GetPos() const;                        // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ
-    unsigned long Body_[0x98 / 4];                          // CThing members (not modelled)
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;

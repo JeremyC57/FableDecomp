@@ -13,31 +13,13 @@
 #include <math.h>
 #include "engine/C3DVector.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                   // +0x20
-    CInterfaceMap m_interfaces;                       // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;             // 0x004C73D0
-    void RemoveTC(ETCInterfaceType type);                         // 0x004C9840
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
     bool IsCollidingWithLandscape() const;            // 0x00661E70 (manifest: CanCollideWithLandscape)
@@ -75,7 +57,7 @@ class CCombatActionBase : public CCreatureActionBase { public:
     virtual ~CCombatActionBase();                             // 0x0062E900
     void FinishAction();                              // 0x00859A20
     CThing* GetTarget() const { return PTarget.GetPItem(); }
-    bool IsTargetAlive() const { return PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1); }
+    bool IsTargetAlive() const { return PTarget.GetPItem() && !PTarget.GetPItem()->IsDead(); }
 };
 class CCreatureAction_ScorpionCharge : public CCombatActionBase { public:
     float     ChargeDistance;                         // +0x114
@@ -100,7 +82,7 @@ void CCreatureAction_ScorpionCharge::FinishAction()
     CCombatActionBase::FinishAction();
     if (IsTargetAlive()) {
         CTCPhysicalShieldSpell* shield;
-        if (PTarget.GetPItem()->GetInterface(&shield, 0x93))
+        if (PTarget.GetPItem()->GetTC(TCI_PHYSICAL_SHIELD_SPELL, &shield))
             shield->AllowReactionsOnHitFromAttacker(GetCreature(), false);
     }
     if (IsTargetAlive()) {

@@ -1,4 +1,5 @@
 // CAIStateGroup_VersusEnemyBase::OnActivate() -- register the creature as a combatant against its target
+// Leaf: ?OnActivate@CAIStateGroup_VersusEnemyBase@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00962A90, length 88 bytes (+ int3 padding).
 // Callees: CThingCreatureBase::IsRegisteredCombatant() @ 0x00662410 (on PBrain->Creature: asks the
 // world's combat manager; the manifest's "AddCombinationBlend" label is propagated),
@@ -11,10 +12,7 @@
 // the creature (named local, ebx -- read before the GetPWorld call) and the target item are
 // registered with `true`. The combat manager is a second named local (esi) so it is fetched before
 // the right-to-left argument pushes (as a bare object expression it would be evaluated after them).
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags;                      // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 
 class CThingAICreature { public:
     bool IsRegisteredCombatant();               // 0x00662410
@@ -36,7 +34,7 @@ struct CBaseIntelligentPointer {
     __forceinline bool IsAlive()
     {
         if (GetPItem() != 0) {
-            if (!(GetPItem()->m_flags & 1))
+            if (!GetPItem()->IsDead())
                 return true;
         }
         return false;

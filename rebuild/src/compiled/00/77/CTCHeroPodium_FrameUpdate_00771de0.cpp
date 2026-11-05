@@ -18,9 +18,7 @@
 
 extern const float g_podiumRadiusSquared_0126a88c;   // 0x0126A88C (1.0f)
 
-class CThing { public:
-    const C3DVector& GetPos() const;            // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;                 // 0x00487DD0

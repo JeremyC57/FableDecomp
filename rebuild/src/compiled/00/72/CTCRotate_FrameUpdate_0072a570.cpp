@@ -16,7 +16,7 @@ class CRightHandedSet { public:
     C3DVector Forward;
     void Rotate(const C3DVector& axis, float angle);   // 0x00A22F80
 };
-struct CThingPlacement {
+struct CTCPhysicsBase {
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -94,17 +94,17 @@ struct CThingPlacement {
     virtual void v74();
     virtual void SetOrientation(const CRightHandedSet& rhs);    // slot 75 (+0x12c)
 };
-struct CThingDrawState {
+namespace NGraphicAppearance {
+struct CTCGraphicAppearance {
     unsigned char _pad00[0x59];
     unsigned char m_flags59;                                    // +0x59 (bit 1: orientation changed)
 };
-enum ETCInterfaceType { };
-class CThing { public:
-    unsigned char    _pad00[0x60];
-    CThingPlacement* m_pPlacement;                              // +0x60
-    CThingDrawState* m_pDrawState;                              // +0x64
-    void RemoveTC(ETCInterfaceType type);                                   // 0x004C9840
-};
+}
+using NGraphicAppearance::CTCGraphicAppearance;
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
+
 class CTCRotate { public:
     virtual void v00();
     CThing*   ParentThing;                                      // +0x04 (CTCBase)
@@ -122,10 +122,10 @@ class CTCRotate { public:
 void CTCRotate::FrameUpdate()
 {
     if (Rotating) {
-        ParentThing->m_pDrawState->m_flags59 |= 2;
-        CRightHandedSet rhs = ParentThing->m_pPlacement->GetOrientation();
+        ParentThing->GetTCGraphicAppearance()->m_flags59 |= 2;
+        CRightHandedSet rhs = ParentThing->GetPhysicsTC()->GetOrientation();
         rhs.Rotate(RotationAxis, RotationSpeed * Timer);
-        ParentThing->m_pPlacement->SetOrientation(rhs);
+        ParentThing->GetPhysicsTC()->SetOrientation(rhs);
         if (++Timer > TimerLimit)
             ParentThing->RemoveTC((ETCInterfaceType)(0x2a));
     }

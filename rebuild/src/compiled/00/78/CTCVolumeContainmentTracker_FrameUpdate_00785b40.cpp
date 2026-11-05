@@ -29,12 +29,7 @@ class CWorld { public:
     virtual C3DVector GetCameraPosition();      // slot 8 (+0x20) (name from use)
     static long __fastcall GetFrame();          // 0x0049D870
 };
-class CThing {
-public:
-    unsigned char    _pad_0x00[0x18];
-    unsigned __int64 UID;                       // +0x18
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 struct CVolumeContainmentTrackerDef {
     unsigned char _pad_0x00[0x25];
     bool          AlwaysUpdate;                 // +0x25
@@ -70,7 +65,7 @@ void CTCVolumeContainmentTracker::FrameUpdate()
         const C3DVector& pos = ParentThing->GetPos();
         if ((world->GetCameraPosition() - pos).GetSquaredMagnitude() < 100.0f)
             interval = GFFloatToLongCeil(CMainGameComponent::GetConstantFPS() * 0.8f);
-        unsigned __int64 uid = ParentThing->UID;
+        unsigned __int64 uid = ParentThing->GetUniqueID();
         if ((uid + CWorld::GetFrame()) % interval != 0)
             return;
     }

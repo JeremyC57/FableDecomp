@@ -11,9 +11,7 @@
 
 extern const float g_fZero;                         // 0x0122DEDC
 
-class CThing { public:
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CThingFilter_MakesLineWithPosInDirectionOfLine { public:
     C3DVector Pos;                                  // +0x00

@@ -15,7 +15,7 @@
 #pragma optimize("s", on)
 #include "engine/C3DVector.h"
 
-struct CThingPlacement {                     // the owner's +0x60 object (class not established)
+struct CTCPhysicsBase {                     // the owner's +0x60 object (class not established)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -29,10 +29,7 @@ struct CThingPlacement {                     // the owner's +0x60 object (class 
     C3DVector     m_position;                // +0x0c
 };
 
-class CThing { public:
-    unsigned char    _pad[0x60];
-    CThingPlacement* m_pPlacement;           // +0x60
-};
+#include "engine/CThing.h"
 
 class CWorldMap { public:
 public:
@@ -61,10 +58,10 @@ struct CTCShotDefinitionTearInGround : public NThingShot::CTCShotDefinitionBase 
 
 void CTCShotDefinitionTearInGround::UpdateMovement()
 {
-    ParentThing->m_pPlacement->Update(0);
-    C3DVector position = ParentThing->m_pPlacement->m_position;
+    ParentThing->GetPhysicsTC()->Update(0);
+    C3DVector position = ParentThing->GetPhysicsTC()->m_position;
     position.Z = GetWorldMap().GetGroundSizeZAt(position);
-    ParentThing->m_pPlacement->SetPosition(position);
+    ParentThing->GetPhysicsTC()->SetPosition(position);
 }
 
 }

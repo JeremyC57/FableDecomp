@@ -10,28 +10,11 @@
 // Layout: CTCBase ParentThing +0x04; CThing component bitset +0x20, interface map +0x44. The interface-4 component's float
 // at +0xA8 is its base sound radius (descriptive).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCHeroExperience {
 public:
     float GetSoundRadiusMultiplier() const;     // 0x006D65E0
@@ -54,11 +37,11 @@ public:
 float CTCHearabilityManager::GetSoundRadiusWithModifiers() const
 {
     float multiplier = 1.0f;
-    CTCHeroExperience* experience;
-    if (ParentThing->GetInterface(&experience, 0x68))
+    const CTCHeroExperience* experience;
+    if (ParentThing->PeekTC(TCI_HERO_EXPERIENCE, &experience))
         multiplier = experience->GetSoundRadiusMultiplier();
-    CTCSoundSource* source;
-    if (ParentThing->GetInterface(&source, 4))
+    const CTCSoundSource* source;
+    if (ParentThing->PeekTC(TCI_HERO_STATS, &source))
         return source->BaseSoundRadius * multiplier;
     return multiplier;
 }

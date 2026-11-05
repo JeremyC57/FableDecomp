@@ -14,11 +14,8 @@ public:
     bool HasMode(EPlayerMode mode) const;                 // 0x00634160
     void AddMode(EPlayerMode mode, bool b);         // 0x006345C0
 };
-class CThing {
-public:
-public:
-    CPlayer& GetPlayer();   // 0x004C7A30
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingCreatureBase;
 class CTCHeroRangedAttacks {
 public:

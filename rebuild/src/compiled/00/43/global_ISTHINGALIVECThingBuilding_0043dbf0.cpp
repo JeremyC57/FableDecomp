@@ -5,16 +5,13 @@
 //   is a distinct T); T = const CThingPlayerCreature*: PeekPControlledCreature 0x00487DD0 feeds 16 of its 29 retail call sites (the rest hold its const result); twin of 0x0043DBD0 in the same COMDAT run. FableWin.pdb names the instantiation ??$IS_THING_ALIVE@PBVCThingPlayerCreature@@@@YI_NABQBVCThingPlayerCreature@@@Z.
 // Layout (retail, local model): CThing's dead bit is the low bit of the byte at +0x91 (engine/_quarantine/CThing.h CreatedBySerialisation
 //   bitfield group); the class is modelled by its one byte because no engine header names the bit.
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char DeadFlags;                       // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 class CThingPlayerCreature : public CThingCreatureBase { };
 
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing)
 {
-    if (thing != 0 && (thing->DeadFlags & 1) == 0)
+    if (thing != 0 && thing->IsDead() == 0)
         return true;
     return false;
 }

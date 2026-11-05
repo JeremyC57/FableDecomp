@@ -26,28 +26,9 @@ class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char    _pad_0x00[0x18];
-    unsigned __int64 UID;                            // +0x18
-    std::bitset<274>    m_present;                      // +0x20
-    CInterfaceMap    m_interfaces;                   // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || wanted < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CThingCreatureBase : public CThing { public:
     long GetSex();                                   // 0x00661FF0
@@ -89,14 +70,14 @@ void CTCHeroStats::AddNewMarriage(CThingCreatureBase* wife, CThing* home, EMarri
 {
     unsigned __int64 homeUID;
     if (home)
-        homeUID = home->UID;
+        homeUID = home->GetUniqueID();
     else
         homeUID = 0;
-    unsigned __int64 wifeUID = wife->UID;
+    unsigned __int64 wifeUID = wife->GetUniqueID();
     Marriages.push_back(CHeroMarriageInfo(wifeUID, homeUID, state, wife->GetSex() == 1));
     ++NumWeddings;
     CTCHeroOnlineScoreboard* scoreboard;
-    ParentThing->GetInterface(&scoreboard, 0x10D);
+    ParentThing->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard);
     scoreboard->UpdateScoreForActivity(12, (float)NumWeddings, false);
     long currentSpouses = NumWeddings - NumSpousesDied - NumSpousesMurdered;
     scoreboard->UpdateScoreForActivity(9, (float)currentSpouses, false);

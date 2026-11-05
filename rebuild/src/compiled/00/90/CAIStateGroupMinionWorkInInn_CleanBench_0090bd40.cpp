@@ -28,33 +28,12 @@ public:
     C3DVector Forward;                          // +0x0c
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 UsingComponents
-    CInterfaceMap m_interfaces;                 // +0x44 Components
-    const C3DVector& GetPos() const;            // 0x004C73D0
-    bool TestTC(long interfaceType) const
-    {
-        return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
-    }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
-    {
-        bool has = TestTC(interfaceType);
-        if (has) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-        return has;
-    }
-};
+
 class CThingPhysical : public CThing { };
 class CThingGameObject : public CThingPhysical { };
 class CThingCreatureBase : public CThingGameObject { };
@@ -64,12 +43,7 @@ public:
     bool GetFreeActionPoint(CThing& user, C3DVector& pos, CRightHandedSet& orientation, long& index);   // 0x007FEDE0
     void SetActionPointAsFree(long index);      // 0x007FEF40
 };
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+
 class CSoundPair {
 public:
     long m_first;
@@ -123,7 +97,7 @@ void CAIStateGroup_MinionWorkInInn::CleanBench()
     if (!bench)
         return;
     CTCUserActionPointBase* points;
-    bench->GetInterfaceT(&points, 0x2d);
+    bench->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &points);
     long index;
     C3DVector pos;
     CRightHandedSet orientation;

@@ -1,4 +1,5 @@
 // CTCWife::IsAttractedToHero() const -- a courting wife is attracted while her love attitude is positive or once she is in love with the hero
+// Leaf: ?IsAttractedToHero@CTCWife@@QBE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CFE80, length 59 bytes (+ int3 padding).
 // Callees: CTCWife::IsCourtingHero() const @ 0x006CF890 (twice: once directly, once inside the inlined IsInLoveWithHero,
 // whose out-of-line copy is the landed 0x006CF900). Float 0x0122DEDC = 0.0f.
@@ -7,10 +8,7 @@
 // local model carries the retail offsets.
 // Shape: `a && (b || c)` with a bool result: `fcomp ; test ah,41h ; je` jumps to the shared `mov eax,1` for `> 0.0f`,
 // full-register `mov eax,1` / `xor eax,eax` tails.
-class CThing { public:
-    unsigned char _pad_00[0x1c9];
-    unsigned char m_flags1c9;                               // +0x1c9 (bit 4: may marry)
-};
+#include "engine/CThing.h"
 
 enum EOpinionAttitudeType { OPINION_ATTITUDE_LOVE = 12 };
 

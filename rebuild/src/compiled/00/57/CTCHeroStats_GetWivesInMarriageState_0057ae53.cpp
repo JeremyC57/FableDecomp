@@ -23,10 +23,7 @@
 #define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"                              // GetThingManager() const 0x00686AF0 (protected)
 
-class CThing { public:
-    unsigned char _pad_0x00[0x10];
-    unsigned char ThingType;                         // +0x10 (1 = creature)
-};
+#include "engine/CThing.h"
 
 class CThingCreatureBase : public CThing { public:
 };
@@ -65,7 +62,7 @@ void CTCHeroStats::GetWivesInMarriageState(CThingList& wives, long state) const
     for (CHeroMarriageInfoNode* node = head->Next; node != head; node = node->Next) {
         if (state == 0 || node->State == state) {
             const CThing* wife = GetThingManager().PeekPThingWithUID(node->WifeUID);
-            if (wife && wife->ThingType == 1)
+            if (wife && wife->GetType() == 1)
                 wives.push_back((CThingCreatureBase*)wife);
         }
     }

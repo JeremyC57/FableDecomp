@@ -17,31 +17,13 @@ typedef long EConversationAttitude;
 
 const CCharString& __fastcall GetAnimGroupName(EConversationAttitude attitude);   // 0x004CD9C0
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];          // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;              // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
 class CTCTalk { public:                             // interface 15
-    EConversationAttitude GetAttitude();     // 0x006E3180
+    EConversationAttitude GetAttitude() const;     // 0x006E3180
 };
 
 class CAnimFilterOfGroup { public:                  // vtable 0x01267568
@@ -70,8 +52,8 @@ struct CModeConversation : CModeBase {       // vtable 0x01285990
 
 void NCreatureMode::CModeConversation::FrameUpdate()
 {
-    CTCTalk* talk;
-    if (ParentThing->GetInterface(&talk, 15)) {
+    const CTCTalk* talk;
+    if (ParentThing->PeekTC(TCI_TALK, &talk)) {
         EConversationAttitude attitude = talk->GetAttitude();
         if (attitude != CurrentAttitude) {
             CurrentAttitude = attitude;

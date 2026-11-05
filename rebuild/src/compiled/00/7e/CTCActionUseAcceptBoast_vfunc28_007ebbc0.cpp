@@ -17,28 +17,10 @@
 class CTCBase;
 class CThingCreatureBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CTCBoastingPosition_Calls {                    // interface type 0x71 component
     void OnBoastAccepted(CThingCreatureBase* creature);   // 0x00782390
@@ -58,6 +40,6 @@ void CTCActionUseAcceptBoast::vfunc_28(CThingCreatureBase* creature)
 {
     CTCActionUseBase::vfunc_28(creature);
     CTCBoastingPosition_Calls* position;
-    ParentThing->GetInterface(&position, 0x71);
+    ParentThing->GetTC(TCI_BOASTING_POSITION, &position);
     position->OnBoastAccepted(creature);
 }

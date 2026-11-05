@@ -23,8 +23,8 @@
 #include "fable_string.h"
 namespace NUISystem {enum EEvent {NativeEvent33=33,NativeEvent34=34};}
 struct ObserverNative {void*VTable;unsigned char EventsToObserve[12];bool PreventObservation;unsigned char Alignment[3];void ObserveEvent(NUISystem::EEvent);};
-struct ManagerMethods:CManager {typedef void(ManagerMethods::*AddObserverMethod)(ObserverNative*);void AddObserver(ObserverNative*p){(this->*static_cast<AddObserverMethod*>(__vftable)[2])(p);}};
-ManagerMethods* __fastcall GetUIManager(); //41E5F2 CManager::GetInstance
+namespace NUISystem {class CManager:public ::CManager {public:static CManager* __fastcall GetInstance(); //0041E5F2 (Ego_r.pdb / FableWin.pdb)
+ typedef void(CManager::*AddObserverMethod)(ObserverNative*);void AddObserver(ObserverNative*p){(this->*static_cast<AddObserverMethod*>(__vftable)[2])(p);}};}
 extern const unsigned char EditBoxVTable[],EditBoxObserverVTable[],EditBoxSecondaryVTable[];
 struct EditBoxBaseNative {void*VTable;ObserverNative Observer;void*SecondaryVTable;unsigned char Unrecovered1C[0x15c-0x1c];void InitializeChangingStateComponent(long);EditBoxBaseNative(long def){InitializeChangingStateComponent(def);VTable=(void*)EditBoxVTable;Observer.VTable=(void*)EditBoxObserverVTable;SecondaryVTable=(void*)EditBoxSecondaryVTable;}};
 struct ActionNode {ActionNode*Next,*Previous;void*Action;void*CountInfo;};
@@ -49,10 +49,10 @@ FABLE_STATIC_ASSERT(offsetof(EditBoxNative,MaxLength)==0x180);
 FABLE_STATIC_ASSERT(offsetof(EditBoxNative,ForbiddenCharacters)==0x188);
 FABLE_STATIC_ASSERT(offsetof(UIDefNative,EditBoxCharLimit)==0x1d0);
 FABLE_STATIC_ASSERT(sizeof(UIDefNative::DeleteMethod)==4);
-FABLE_STATIC_ASSERT(sizeof(ManagerMethods::AddObserverMethod)==4);
+FABLE_STATIC_ASSERT(sizeof(NUISystem::CManager::AddObserverMethod)==4);
 #endif
 EditBoxNative::EditBoxNative(long def):EditBoxBaseNative(def),CursorPos(0),LeftMostCharacter(0),RightMostCharacter(0),Adjustment(0),Active(true),IsPasswordBox(false),UsesIME(false),DeleteAllOnKeyPress(false),MaxLength(50){
- GetUIManager()->AddObserver(&Observer);Observer.ObserveEvent(NUISystem::NativeEvent33);Observer.ObserveEvent(NUISystem::NativeEvent34);
+ NUISystem::CManager::GetInstance()->AddObserver(&Observer);Observer.ObserveEvent(NUISystem::NativeEvent33);Observer.ObserveEvent(NUISystem::NativeEvent34);
  DefinitionResultStorage definition;LoadAndReturnDefResultStorage(&definition);
  if(definition->EditBoxCharLimit>0)MaxLength=definition->EditBoxCharLimit;
  UsesIME=definition->EditBoxUsesIME;DisallowSpaceAsFirstChar=definition->DisallowSpaceAsFirstChar;IsPasswordBox=definition->PasswordBox;

@@ -16,7 +16,8 @@
 // CMainGameComponent::GetConstantFPS() 0x01375550 (int), 1.0f 0x0122DED8, 0.0f 0x0122DEDC.
 // Layout: CDrawQuickAccessIcons as ToggleCharge 0x0064D92A (ChargingAbility +0x2c, ChargeLevel +0x30, Charging +0x34, ChargeComplete
 // +0x35, ChargeFade +0x38); CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527; the hero's player byte +0x90.
-class CThing { public: unsigned char _pad[0x90]; unsigned char PlayerNumber; };   // +0x90 (descriptive)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public: };
 class CThingPlayerCreature : public CThingCreatureBase { };
 template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBD0 (T = CThingPlayerCreature*: fed by GetPControlledCreature 0x00487DC0 at 25 of 32 retail call sites)
@@ -76,7 +77,7 @@ void CDrawQuickAccessIcons::Update()
         if (level > DELTA_NOTIONAL_ZERO) {
             if (level <= ChargeLevel) {
                 CGameEvent event(0x27);
-                event.Player = hero->PlayerNumber;
+                event.Player = hero->GetPlayerNumber();
                 event.AddLONG(ChargingAbility);
                 CMainGameComponent::Get()->AddGameEvent(event);
                 Charging = false;

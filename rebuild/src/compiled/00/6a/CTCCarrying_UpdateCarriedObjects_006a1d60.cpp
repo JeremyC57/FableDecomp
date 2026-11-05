@@ -1,4 +1,5 @@
 // CTCCarrying::UpdateCarriedObjects() -- per carried thing, update its CTCCarryable component (attachment) without forcing
+// Leaf: ?UpdateCarriedObjects@CTCCarrying@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 //
 // Retail 0x006A1D60, 158 bytes (plain `ret`). Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
@@ -11,28 +12,10 @@
 // that also homes the lookup key).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCCarryable { public:
     void UpdateCarriedPosition(bool force);                      // 0x00705B60
@@ -86,7 +69,7 @@ void CTCCarrying::UpdateCarriedObjects()
         CThing* thing = CarrySlots[i].second.GetPItem();
         if (thing)
         {
-            thing->GetInterface(&carryable, 0x47);          // TC_CARRYABLE
+            thing->GetTC(TCI_CARRYABLE, &carryable);          // TC_CARRYABLE
             carryable->UpdateCarriedPosition(false);
         }
     }

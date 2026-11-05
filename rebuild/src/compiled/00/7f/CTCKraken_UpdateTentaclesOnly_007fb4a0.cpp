@@ -1,4 +1,5 @@
 // CTCKraken::UpdateTentaclesOnly() -- pick the tentacle closest to the target into AttackingTentacleIterator and, when one was found, set that tentacle component's Tracking flag
+// Leaf: ?UpdateTentaclesOnly@CTCKraken@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FB4A0, length 92 bytes.
 // Callees: CTCKraken::GetClosestTentacleToTarget(list iterator*) @ 0x007FB270, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
@@ -22,29 +23,10 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     T* Get() const { return (T*)GetPItem(); }
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCKrakenTentacle { public:                          // interface 227
     unsigned char _pad_0x00[0x29];
@@ -62,8 +44,6 @@ struct STentacleIterator {
     CIntelligentPointer<CThing>& operator*() const { return _M_node->_M_data; }
 };
 
-enum { TC_KRAKEN_TENTACLE = 227 };
-
 class CTCKraken { public:
     unsigned char     _pad_0x00[0x48];
     STentacleIterator AttackingTentacleIterator;    // +0x48
@@ -75,7 +55,7 @@ void CTCKraken::UpdateTentaclesOnly()
 {
     if (GetClosestTentacleToTarget(&AttackingTentacleIterator)) {
         CTCKrakenTentacle* tentacle;
-        (*AttackingTentacleIterator).Get()->GetInterface(TC_KRAKEN_TENTACLE, &tentacle);
+        (*AttackingTentacleIterator).Get()->GetTC(TCI_KRAKEN_TENTACLE, &tentacle);
         tentacle->Tracking = true;
     }
 }

@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureUseCoverBase::SetFailedToFindCover() -- remember where and when cover search failed
+// Leaf: ?SetFailedToFindCover@CAIStateGroup_CreatureUseCoverBase@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00970590, length 54 bytes (+ int3 padding).
 // Callees: CThingPhysical::GetPos @ 0x004C73D0 (reference into the creature's physics
@@ -10,9 +11,7 @@
 // FailedToFindCoverAt +0x3c. The creature comes from PBrain (+0x4) -> Creature (+0x18).
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;         // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingAICreature : public CThing { public:
 };
 

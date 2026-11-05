@@ -16,11 +16,8 @@ class CTCParamsBase;
 class CBaseObject;
 class CTCBase;
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CThing;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -31,13 +28,13 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
 };
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
-struct CPhysics {
+struct CTCPhysicsBase {
     virtual void v00();
     void SetFacingAnglesFromRHSet(const CRightHandedSet& set);
 };
-typedef void (CPhysics::*TSetFacing)(const CRightHandedSet&);
+typedef void (CTCPhysicsBase::*TSetFacing)(const CRightHandedSet&);
 union CPhysicsSlot { void* Address; TSetFacing Fn; };
-inline void CPhysics::SetFacingAnglesFromRHSet(const CRightHandedSet& set)
+inline void CTCPhysicsBase::SetFacingAnglesFromRHSet(const CRightHandedSet& set)
 {
     (this->*((*(CPhysicsSlot**)this)[74].Fn))(set);
 }
@@ -48,16 +45,7 @@ class CTCBattleCharge { public:
     CIntelligentPointerThing PTarget;           // +0x44
     void SetPTarget(CThing* target, bool zTargetting);   // 0x007A7150
 };
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char m_state;                      // +0x10
-    unsigned char _pad11[0x60 - 0x11];
-    CPhysics* PPhysics;                         // +0x60
-    __forceinline CPhysics* GetPhysics() const { return PPhysics; }
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60
-};
+
 class CCombatActionBase { public:
     virtual void v00();
     long _pad04;
@@ -95,15 +83,15 @@ void CCreatureAction_CastBattleCharge::Initialise()
     tc->SetPTarget(aim, IsZTargetting);
     if (Override) {
         tc->Distance = Distance;
-        CPhysics& physics = *((CThing*)PCreature.GetPItem())->GetPhysics();
+        CTCPhysicsBase& physics = *((CThing*)PCreature.GetPItem())->GetPhysicsTC();
         CRightHandedSet set;
         set.Up.X = 0; set.Up.Y = 0; set.Up.Z = 1;
         CopyDirection(set.Forward);
         physics.SetFacingAnglesFromRHSet(set);
     }
-    if (((CThing*)PCreature.GetPItem())->m_state == 1)
+    if (((CThing*)PCreature.GetPItem())->GetType() == 1)
         tc->Level = Level;
     CIntelligentPointerThing target = PItemRemoved;
-    if (((CThing*)target.GetPItem()) && !(((CThing*)target.GetPItem())->m_flags91 & 1))
+    if (((CThing*)target.GetPItem()) && !((CThing*)target.GetPItem())->IsDead())
         tc->PTarget = target;
 }

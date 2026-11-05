@@ -27,7 +27,7 @@ class CCamera { public:
     unsigned char _body[0x38];
 };
 
-struct CThingPhysics {
+struct CTCPhysicsBase {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -39,12 +39,7 @@ struct CThingPhysics {
     virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069();
     virtual C3DVector GetFacingVector() const;      // slot 70 (+0x118)
 };
-class CThing { public:
-    unsigned char _pad[0x60];
-    CThingPhysics* m_pPhysics;              // +0x60
-    CThingPhysics* GetPhysics() const { return m_pPhysics; }
-    const C3DVector& GetPos() const;   // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingGameObject : public CThing { public:};
 
 class CGameCameraManager {
@@ -84,7 +79,7 @@ public:
 void NCameraModes::CFirstPerson::OnInit()
 {
     Base = GetObservedThing()->GetPos();
-    PrincipleAxis = GetObservedThing()->GetPhysics()->GetFacingVector();
+    PrincipleAxis = GetObservedThing()->GetPhysicsTC()->GetFacingVector();
     PrincipleAxis.Z = 0.0f;
     PrincipleAxis.AccurateNormalise();
     Theta = 0.0f;

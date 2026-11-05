@@ -1,4 +1,5 @@
 // CTCInventoryWeapons::vfunc_83(CThing*) -- slot 83: a thing that is one of the active weapons (or matches a confiscated weapon def) is put in limbo; any other thing goes to the base inventory's slot-83 handling
+// Leaf: ?vfunc_83@CTCInventoryWeapons@@QAEXPAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C2E82, 89 bytes. rtti-vtables: CTCInventoryWeapons 0x01253FF4 slot 83.
 // Callees: the weapons screen's static `__fastcall` "is this the pointed-to thing" test @ 0x005CBDFA (ecx = thing, edx =
 //          the CIntelligentPointer; `thing == pointer->GetPItem()`; manifest label "CVillageTaskCarryCrate::
@@ -13,11 +14,8 @@
 // retail; PActiveRangedWeapon really is unaligned (+0x141), so the 8-byte CIntelligentPointer is modelled as a
 // byte-aligned blob. The real method name is unknown. Local model (no engine header for CTCInventoryWeapons).
 #pragma optimize("s", on)
-class CThing { public:
-    unsigned char _pad_0x00[0x8c];
-    unsigned short DefIndex;                  // +0x8C
-    void SetInLimbo(bool inLimbo);            // 0x004C8CF0
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 struct CIntelligentPointer {
     unsigned char _body[8];
 };
@@ -43,7 +41,7 @@ class CTCInventoryWeapons : public CTCInventoryBase_Retail, public NHeroInformat
 void CTCInventoryWeapons::vfunc_83(CThing* thing)
 {
     if (IsThing(thing, &PActiveMeleeWeapon) || IsThing(thing, &PActiveRangedWeapon)
-        || thing->DefIndex == ConfiscatedActiveMeleeWeaponDefIndex || thing->DefIndex == ConfiscatedActiveRangedWeaponDefIndex)
+        || thing->GetDefGlobalIndex() == ConfiscatedActiveMeleeWeaponDefIndex || thing->GetDefGlobalIndex() == ConfiscatedActiveRangedWeaponDefIndex)
         thing->SetInLimbo(true);
     else
         CTCInventoryBase_Retail::vfunc_83(thing);

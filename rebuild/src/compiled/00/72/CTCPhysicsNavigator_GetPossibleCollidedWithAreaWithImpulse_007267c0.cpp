@@ -27,10 +27,7 @@ class C2DBoxI { public:
     }
     void ValidateOrientationAndFlip();          // 0x00A3A150
 };
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];           // +0x20 bitset<274>
-};
+#include "engine/CThing.h"
 
 template <class T> inline T Min(T a, T b) { return a < b ? a : b; }
 template <class T> inline T Max(T a, T b) { return a > b ? a : b; }

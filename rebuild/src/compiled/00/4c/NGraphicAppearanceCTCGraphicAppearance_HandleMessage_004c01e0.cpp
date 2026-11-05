@@ -16,10 +16,9 @@
 #include "engine/C3DVector.h"
 class CTCAnimationBase;
 
-class CThing {
-public:
-    void AddToRenderList();                             // 0x004C7AC0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 namespace NTCMessages {
 class CMessageBase {

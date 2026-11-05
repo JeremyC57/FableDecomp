@@ -13,7 +13,8 @@
 //   is read through `*begin()` before the empty test; the init record is the landed inline CAnimInit constructor (zero
 //   blend pair stored after the Set arguments).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -64,26 +65,6 @@ class CTCAnimationComplex { public:                           // interface type 
     CAnimateThing& GetAnimation();              // 0x0070B460
 };
 
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];           // +0x20 bitset<274>
-    CInterfaceMap Components;                   // +0x44
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-};
-
 class CThingPlayerCreature : public CThing {
 public:
     void vfunc_68(long animIndex, bool flag);
@@ -92,8 +73,8 @@ public:
 void CThingPlayerCreature::vfunc_68(long animIndex, bool flag)
 {
     CTCAnimationComplex* component = 0;
-    if (HasTC(0x5a))
-        component = GetTC<CTCAnimationComplex>(0x5a);
+    if (HasTC(TCI_ANIMATION))
+        component = ((CTCAnimationComplex*)&GetTC(TCI_ANIMATION));
     CAnimateThing& animation = component->GetAnimation();
     CAnimSet& main = animation.MainAnimSet;
     if (*main.Anims.begin() == animIndex && !main.Anims.empty() && !main.Finished)

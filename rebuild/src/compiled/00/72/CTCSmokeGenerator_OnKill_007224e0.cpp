@@ -8,11 +8,7 @@
 // The thing's flag byte +0x91 bit 0 marks it as already killed.
 // Shape: `last` re-read every iteration; the loop keeps the element and its pointer member in two strength-reduced
 // registers.
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags;                                  // +0x91, bit 0: killed
-    void Kill(bool immediately);                            // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -52,7 +48,7 @@ void CTCSmokeGenerator::OnKill()
 {
     if (PositionsCreated) {
         for (CGenerationPos* pos = m_pFirst; pos != m_pLast; ++pos) {
-            if (pos->PThing.GetPItem() && !(pos->PThing.GetPItem()->m_flags & 1))
+            if (pos->PThing.GetPItem() && !pos->PThing.GetPItem()->IsDead())
                 pos->PThing.GetPItem()->Kill(true);
         }
     }

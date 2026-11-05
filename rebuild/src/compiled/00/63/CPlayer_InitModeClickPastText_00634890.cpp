@@ -15,6 +15,8 @@
 //   STLport bitset reference proxy, three character fetches) with interface 0xA7 = CTCSpecialAbilities.
 // Callees: AddToInterface (virtual slot 1) twice, CBaseIntelligentPointer::GetPItem() const 0x00A01B50 (three calls),
 //   CVectorMap LowerBound 0x0040F020, CTCSpecialAbilities::CancelCurrentMutexAbility 0x0072B420.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #include <stddef.h>
 #define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
@@ -23,47 +25,17 @@
 #define FABLE_RETAIL_STLP_BITSET_INDEX
 #include "engine/CVectorMap.h"
 
-
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass { };
 
-enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };   // enumerators not needed
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase : public CBaseClassNonCopyable { };              // partial view (RTTI CTCBase <- CBaseClassNonCopyable <- CBaseClass)
 class CTCSpecialAbilities : public CTCBase {                // partial view
 public:
-    enum { INTERFACE_TYPE = 0xa7 };                       // GetInterfaceType
     void CancelCurrentMutexAbility();                     // 0x0072B420
 };
 
-class CThing {                                              // partial view, retail offsets
-public:
-    unsigned char      _pad00[0x20];                        // CClass / CBaseObject / CBaseClass, UniqueID (+0x18)
-    std::bitset<274>   UsingComponents;                     // +0x20
-    CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
-    unsigned char      _pad54[0x91 - 0x54];                 // UpdateComponentsList (list, 4) ... PlayerNumber (+0x90)
-    unsigned char      Dead : 1;                            // +0x91 bit 0
-    unsigned char      CreatedByOwnerThingCreation : 1;
-    unsigned char      IncludeInThingScans : 1;
-    unsigned char      Activated : 1;
-    unsigned char      GloballyLoaded : 1;
-    unsigned char      InLimbo : 1;
-    unsigned char      KillLocked : 1;
-    unsigned char      CreatedBySerialisation : 1;
-    bool IsDead() const { return Dead; }
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (UsingComponents[T::INTERFACE_TYPE]) {
-            ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
-            CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
-            CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::iterator it = map->LowerBound(type);
-            if (it == map->end() || T::INTERFACE_TYPE < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingPhysical : public CThing { };                   // RTTI CThingPlayerCreature <- CThingCreatureBase <- CThingGameObject
 class CThingGameObject : public CThingPhysical { };         //   <- CThingPhysical <- CThing
 class CThingCreatureBase : public CThingGameObject { };
@@ -107,7 +79,7 @@ void CPlayer::InitModeClickPastText(EPlayerMode mode, CProcessedInput* input)
     CIntelligentPointer<CThingPlayerCreature>& character = *reinterpret_cast<CIntelligentPointer<CThingPlayerCreature>*>(PlayerCharacter);
     if (character.GetPItem() && !character->IsDead()) {
         CTCSpecialAbilities* abilities;
-        if (character->GetTC(&abilities))
+        if (character->GetTC(TCI_SPECIAL_ABILITIES, &abilities))
             abilities->CancelCurrentMutexAbility();
     }
 }

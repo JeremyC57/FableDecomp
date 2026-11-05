@@ -12,17 +12,7 @@ class CTCPhysicsBase { public:
     virtual void OnRemovedFromUpdateList();     // slot 45 (+0xb4)
     virtual void OnAddedToUpdateList();         // slot 46 (+0xb8)
 };
-class CThing { public:
-    unsigned char   _pad00[0x10];
-    unsigned char   m_updateListIndex;          // +0x10 (which update list the thing lives in)
-    unsigned char   _pad11[0x60 - 0x11];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-    unsigned char   _pad64[0x7c - 0x64];
-    CThing*         m_pPrevRender;              // +0x7c
-    CThing*         m_pNextRender;              // +0x80
-    CThing*         m_pPrevUpdate;              // +0x84
-    CThing*         m_pNextUpdate;              // +0x88
-};
+#include "engine/CThing.h"
 struct ThingLList {                             // 8 bytes: head, tail
     CThing* m_pHead;
     CThing* m_pTail;
@@ -38,16 +28,16 @@ class CThingManager { public:
 
 void CThingManager::AddToUpdateList(CThing* thing)
 {
-    ThingLList* list = &UpdateLists[thing->m_updateListIndex];
-    if (thing->m_pNextUpdate || thing->m_pPrevUpdate || list->m_pHead == thing)
+    ThingLList* list = &UpdateLists[thing->GetType()];
+    if (thing->UpdateListNext || thing->UpdateListPrev || list->m_pHead == thing)
         return;
-    if (thing->PhysicsTC)
-        thing->PhysicsTC->OnAddedToUpdateList();
+    if (thing->GetPhysicsTC())
+        thing->GetPhysicsTC()->OnAddedToUpdateList();
     if (list->m_pTail)
-        list->m_pTail->m_pNextUpdate = thing;
+        list->m_pTail->UpdateListNext = thing;
     else
         list->m_pHead = thing;
-    thing->m_pPrevUpdate = list->m_pTail;
-    thing->m_pNextUpdate = 0;
+    thing->UpdateListPrev = list->m_pTail;
+    thing->UpdateListNext = 0;
     list->m_pTail = thing;
 }

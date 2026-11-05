@@ -25,39 +25,17 @@ public:
     static long __fastcall GetFrame();   // 0x0049D870
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 #include "engine/C3DVector.h"
 class CThingPhysical : public CThing { public:
     const C3DVector& PeekPos() const;       // 0x006A4D00
 };
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);      // 0x0099EC30
-    ~CCharString();                             // 0x0099EAE0
-};
 class CThingFilter_None { public: CThingFilter_None() {} };
 struct CThingFilter_DefName {
     CCharString DefName;
@@ -144,7 +122,7 @@ struct CAIStateGroup_BirdFlyToFood : CAIStateGroup_FlyingThingBase {
 bool CAIStateGroup_BirdFlyToFood::IsRunnable()
 {
     CTCCreatureModeManager* modes;
-    PBrain->Creature->GetInterface(&modes, 7);
+    PBrain->Creature->GetTC(TCI_NAVIGATION, &modes);
     if (modes->GetCurrentModeType() == g_flyingMode) {
         long framesPerSecond;
         if ((FrameLastAte == 0

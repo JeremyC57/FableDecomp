@@ -1,4 +1,5 @@
 // CCreatureAction_SheatheItemToInventory::CCreatureAction_SheatheItemToInventory(CThingCreatureBase*, CCreatureActionBase*, long) -- base CCreatureActionBase(owner, -1.0, 0.55, a copy (transition time 4) of the animation entry named by GetAnimationToUse(owner), zeroed CSoundPair, the long, 150), then adopt the follow-up action in PFollowUpAction
+// Leaf: ??0CCreatureAction_SheatheItemToInventory@@QAE@PAVCThingCreatureBase@@PAVCCreatureActionBase@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069FFD0, length 240 bytes, `ret 0Ch`. Vtable 0x0125C83C.
 // Callees: GetAnimationToUse(CThing*) @ 0x0069F3E0 (`__fastcall`, CCharString returned through the hidden pointer in ecx,
 // the owner in edx), CCharString::~CCharString @ 0x0099EAE0, the animation lookup by name @ 0x006924B0 (`__fastcall`: ecx owner, edx the name; returns const CAnimationEntry&),
@@ -14,13 +15,10 @@
 // pointer with the inline `if (p) Count = new Block(Object); else Count = 0;` constructor (three duplicated exits,
 // the object re-read through `this`).
 // Layout: Ego_r.pdb PFollowUpAction at +0xb4; retail CCreatureActionBase is 0xa8, so it sits at +0xa8.
-class CThing { public: };
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public: };
 
-class CCharString { public:
-    void* m_pData;
-    ~CCharString();                                    // 0x0099EAE0
-};
 CCharString __fastcall GetAnimationToUse(CThing* owner);   // 0x0069F3E0
 
 class CSoundPair { public:

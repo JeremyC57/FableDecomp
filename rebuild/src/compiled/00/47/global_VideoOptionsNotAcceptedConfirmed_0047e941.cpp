@@ -23,25 +23,10 @@
 class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    std::bitset<274> present;                                  // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (present.test(interfaceType)) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 bool __fastcall IS_THING_ALIVE(CThing* const& thing);      // 0x0040DCE0
 
 // Same-TU stand-ins (as the landed 0x005BE119): with these bodies visible VC7.1 sees that neither the thing's
@@ -71,7 +56,7 @@ void __fastcall VideoOptionsNotAcceptedConfirmed()
     CThing* thing = CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer()->GetPPlayerCharacterThing();
     if (IS_THING_ALIVE(thing)) {
         CTCInGameMenu* menu = 0;
-        thing->GetInterface(&menu, 0xC6);
+        thing->GetTC(TCI_IN_GAME_MENU, &menu);
         menu->ConfirmedVideoOptionsNotAccepted();
     }
 }

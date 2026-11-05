@@ -17,10 +17,7 @@ class CTCPhysicsBase { public:
     C3DVector m_position;                           // +0x0c
 };
 
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                      // +0x60
-};
+#include "engine/CThing.h"
 
 class CThingFilter_In3DRange { public:
     C3DVector Pos;                                  // +0x00
@@ -30,7 +27,7 @@ class CThingFilter_In3DRange { public:
 
 bool CThingFilter_In3DRange::operator()(CThing* thing) const
 {
-    CTCPhysicsBase* physics = thing->PhysicsTC;
+    CTCPhysicsBase* physics = thing->GetPhysicsTC();
     if (physics) {
         float range = Range;
         float dx = Pos.X - physics->m_position.X;

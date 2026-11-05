@@ -12,12 +12,7 @@
 // SetPItem(item);` assignment and destroyed by the base destructor (CIntelligentPointer declares no destructor).
 class CBaseObject;
 
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Flags91;                                  // +0x91 bit 0 Dead
-    void Kill(bool immediately);                            // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
     virtual void v00();
@@ -41,7 +36,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->Flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;

@@ -18,29 +18,11 @@
 // Members (retail layout, Ego_r.pdb names): CombatAnimations +0xf0 (PDB +0x104), so `this` is modelled locally.
 class CTCBase;
 class CAnimationEntry;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingCreatureBase : public CThing { public:
     long GetAppropriateCombatAnimationFromList(const std::vector<const CAnimationEntry*>& animations) const;   // 0x00666B50
 };
@@ -94,7 +76,7 @@ void CCombatActionBase::Initialise()
     CCreatureActionBase::Initialise();
     if (IsStrikeAction()) {
         CTCCombat* pCombat;
-        if (PCreature.GetPItem()->GetInterface(&pCombat, 0x30))
+        if (PCreature.GetPItem()->GetTC(TCI_COMBAT, &pCombat))
             pCombat->SetNextComboChainPos(this);
     }
 }

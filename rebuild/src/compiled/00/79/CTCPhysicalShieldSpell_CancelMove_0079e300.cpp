@@ -10,21 +10,15 @@
 // Shape: the owner is a named local read first (edi); the sound string is a named local in its own block; the two effect strings
 //   ("" @ 0x0122D70E and "END" @ 0x01239B74) are named locals in a block, built before the argument pushes and destroyed in
 //   reverse order before the Pausable store.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length); // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 class CDefStringTable { public:
     CCharString GetString(long id) const;             // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
-enum ETCInterfaceType { };
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char Type;                         // +0x10 (2 = player)
-    void RemoveTC(ETCInterfaceType type);                   // 0x004C9840
-};
+
 class CSpecialAbilitiesPhysicalShieldDef { public:
     unsigned char _pad00[0x60];
     long CancelSound;                           // +0x60 CDefString id
@@ -46,7 +40,7 @@ void CTCPhysicalShieldSpell::CancelMove()
     CThing* owner = ParentThing;
     {
         CCharString sound = GDefStringTable.GetString(PDef->CancelSound);
-        PlaySound(sound, owner->Type == 2);
+        PlaySound(sound, owner->GetType() == 2);
     }
     {
         CCharString type("", -1);

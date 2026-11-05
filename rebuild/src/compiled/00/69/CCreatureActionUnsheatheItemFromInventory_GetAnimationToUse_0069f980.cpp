@@ -13,45 +13,16 @@
 // Shape: PeekTC<CTCWeapon> on the item (key in the dead item-argument slot: no frame), the hit returns the
 //   weapon's unsheathe CCharString through the copy constructor, the miss builds the default literal.
 class CTCBase;
-enum ETCInterfaceType { TC_WEAPON = 0x48 };
-
-class CCharString {
-public:
-    void* PStringData;                                  // +0x00
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];               // +0x20 bitset<274>
-    CInterfaceMap Components;                       // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                         // +0x91 bit 0
-    bool HasTC(ETCInterfaceType type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline bool PeekTC(const T** pp) const
-    {
-        if (HasTC(T::StatGetInterfaceType())) {
-            *pp = (const T*)Components.Find(T::StatGetInterfaceType())->second;
-            return true;
-        }
-        return false;
-    }
-};
-
 class CTCWeapon {
 public:
-    static ETCInterfaceType StatGetInterfaceType() { return TC_WEAPON; }
+    static ETCInterfaceType StatGetInterfaceType() { return TCI_WEAPON; }
     const CCharString& GetUnsheatheAnim() const;    // 0x005DA540
 };
 
@@ -61,7 +32,7 @@ class CCreatureAction_UnsheatheItemFromInventory {
 
 CCharString __fastcall CCreatureAction_UnsheatheItemFromInventory::GetAnimationToUse(const CThing& creature, const CThing& item)
 {
-    const CTCWeapon* weapon;
+    const const CTCWeapon* weapon;
     if (item.PeekTC(&weapon))
         return weapon->GetUnsheatheAnim();
     return CCharString("STANDARD_UNSHEATHE");

@@ -7,10 +7,9 @@
 // Shape: `test ; jl ; dec eax ; mov [ecx+14h],eax` = `if (PauseFrames >= 0) --PauseFrames;`; the bool at +0x10 is tested
 // through al; ParentThing (+4) becomes `this` for the call, which is a tail position but VC7.1 keeps `call ; ret` (pushed arg).
 // Local model: no engine header exists for CTCHaste.
-enum ETCInterfaceType { };
-class CThing { public:
-    void RemoveTC(ETCInterfaceType interfaceType);                      // 0x004C9840
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CTCHaste { public:
     virtual void v00();

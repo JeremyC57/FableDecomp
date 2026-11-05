@@ -1,4 +1,5 @@
 // CAIStateGroup_Guildmaster::OnDeactivate() -- drop the Guildmaster's combat creature mode (0x3B) when the group ends.
+// Leaf: ?OnDeactivate@CAIStateGroup_Guildmaster@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00977A30, length 88 bytes.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (the inlined interface lookup, type 0x31 = bit 17 of the bitset
@@ -15,30 +16,10 @@ class CTCBase;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with LowerBound @ 0x0040F020 -- the same shape the landed
 // GetInterface_0x.. bodies (0x007BEA08 ...) use, here inlined into the caller through GetTC<T>().
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCCreatureModeManager { public:                 // interface type 0x31 component
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
@@ -72,7 +53,7 @@ enum { CREATURE_MODE_GUILDMASTER_COMBAT = 0x3B };
 void CAIStateGroup_Guildmaster::OnDeactivate()
 {
     CTCCreatureModeManager* pModes;
-    PBrain->PCreature->GetInterface(&pModes, 0x31);
+    PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes);
     if (pModes->IsModeActive(CREATURE_MODE_GUILDMASTER_COMBAT))
         pModes->RemoveMode(CREATURE_MODE_GUILDMASTER_COMBAT);
 }

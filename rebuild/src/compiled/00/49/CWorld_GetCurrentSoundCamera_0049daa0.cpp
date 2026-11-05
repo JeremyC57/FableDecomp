@@ -44,10 +44,7 @@ class CInterpolationInfo { public:
 class CTCPhysicsBase { public:
     C3DVector GetInterpolatedPosition(float t) const;   // 0x0049D150
 };
-class CThing { public:
-    unsigned char   _pad[0x60];
-    CTCPhysicsBase* PPhysics;                 // +0x60
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 class CPlayer : public CPlayerDonor {
  public:
@@ -101,7 +98,7 @@ CCamera CWorld::GetCurrentSoundCamera(const CInterpolationInfo& info) const
     CGameCameraManager* manager;
     if (PCurrentGameCamera->GetCameraManager(manager) && !manager->IsUsingScriptedCameraMode() && player->GetPControlledCreature()) {
         CCamera camera = PCurrentGameCamera->GetCamera(t);
-        const CTCPhysicsBase* physics = player->GetPControlledCreature()->PPhysics;
+        const CTCPhysicsBase* physics = player->GetPControlledCreature()->GetPhysicsTC();
         camera.WorldPosition = physics->GetInterpolatedPosition(t);
         return camera;
     }

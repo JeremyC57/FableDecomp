@@ -8,31 +8,13 @@
 // Shape: `cmp eax,[edi]` -- the call result is the left operand; byte-constant exits.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
 struct CTCInterface37 {                             // interface 0x37 component (class not established)
-    CThing* GetSourceThing();                       // 0x007498D0
+    CThing* GetSourceThing() const;                       // 0x007498D0
 };
 
 class CThingFilter_NoiseCameFromThing { public:
@@ -42,8 +24,8 @@ class CThingFilter_NoiseCameFromThing { public:
 
 bool CThingFilter_NoiseCameFromThing::operator()(CThing* thing) const
 {
-    CTCInterface37* component;
-    if (thing->GetInterface(0x37, &component) && component->GetSourceThing() == Thing)
+    const CTCInterface37* component;
+    if (thing->PeekTC(TCI_NOISE, &component) && component->GetSourceThing() == Thing)
         return true;
     return false;
 }

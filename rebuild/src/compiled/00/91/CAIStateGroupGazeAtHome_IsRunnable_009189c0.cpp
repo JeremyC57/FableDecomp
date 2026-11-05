@@ -1,4 +1,5 @@
 // CAIStateGroup_GazeAtHome::IsRunnable() -- runnable when the idle scheduler prefers this group, the creature has a home and a free gaze position exists
+// Leaf: ?IsRunnable@CAIStateGroup_GazeAtHome@@UAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009189C0, length 114 bytes (+ int3 padding). Vtable slot 11
 // of CAIStateGroup_GazeAtHome (0x0128FE7C).
@@ -14,28 +15,10 @@ class CTCBase;
 class CThingBuilding;
 class CThingGameObject;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -81,7 +64,7 @@ struct CAIStateGroup_GazeAtHome : CAIStateGroup_Gaze {
 bool CAIStateGroup_GazeAtHome::IsRunnable()
 {
     CTCIdleScheduler* scheduler;
-    if (PBrain->PCreature->GetInterface(&scheduler, 0xd3)) {
+    if (PBrain->PCreature->GetTC(TCI_IDLE_SCHEDULER, &scheduler)) {
         if (!scheduler->IsPreferredIdle(this))
             return false;
     }

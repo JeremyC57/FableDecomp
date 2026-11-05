@@ -41,29 +41,11 @@ public:
 };
 
 class CTCBase;
-enum ETCInterfaceType { };
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing {
-public:
-    unsigned char _pad0[0x20];
-    unsigned long UsingComponents[9];                      // +0x20 bitset<274>
-    CInterfaceMap Components;                              // +0x44
-    bool HasTC(long interfaceType) const
-    {
-        return (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
-    }
-    template <class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)interfaceType;
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-};
 class CThingAICreature : public CThing { };
 class CVillageTaskBase { };
 class CVillageTaskCarryCrate : public CVillageTaskBase { };
@@ -76,7 +58,6 @@ public:
 };
 class CTCVillageMember {
 public:
-    enum { INTERFACE_TYPE = 0x23 };
     CTCVillage* GetPVillage() const;                       // 0x007EE540
 };
 #define CAIBrain CAIBrainLayout                      // engine/CAIBrain.h: Creature +0x18 (flattened vptr; GetCreature() inline)
@@ -109,9 +90,9 @@ public:
 void CAIStateGroup_WorkInWarehouse::Cleanup()
 {
     if (PTask.GetPItem()) {
-        bool isVillageMember = PBrain->GetCreature().HasTC(CTCVillageMember::INTERFACE_TYPE);
+        bool isVillageMember = PBrain->GetCreature().HasTC(TCI_VILLAGE_MEMBER);
         if (isVillageMember) {
-            CTCVillage* village = PBrain->GetCreature().GetTC<CTCVillageMember>(CTCVillageMember::INTERFACE_TYPE)->GetPVillage();
+            CTCVillage* village = ((CTCVillageMember*)&PBrain->GetCreature().GetTC(TCI_VILLAGE_MEMBER))->GetPVillage();
             village->RemoveThingFromTask(PTask, PBrain->GetCreature());
             PTask = 0;
         }

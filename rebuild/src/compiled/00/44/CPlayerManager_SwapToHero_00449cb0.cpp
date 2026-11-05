@@ -1,4 +1,5 @@
 // CPlayerManager::SwapToHero(long player) -- make the given player the main player by swapping characters with the current main player (falling back to the old main player when the swap fails), then kill the old main player's hero thing
+// Leaf: ?SwapToHero@CPlayerManager@@QAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00449CB0, length 99 bytes.
 // Callees: CPlayerManager::IsPlayer @ 0x00449880, GetPlayer @ 0x004498C0 (twice), CPlayer::SwitchPlayerCharactersWith
 // @ 0x004888C0, CPlayer::GetHeroThing @ 0x00487DC0 (twice; manifest label is STL noise, see GOTCHAS chunk 140),
@@ -7,9 +8,7 @@
 // Number +0x28 (engine/CPlayer.h).
 // Shape: the new main player number is stored before the swap and restored from the old player on failure; the hero
 // thing is fetched twice (null test, then the call).
-class CThing { public:
-    void Kill(bool a0);   // 0x004C9B80 (Ego_r.pdb ?Kill@CThing@@QAEX_N@Z)
-};
+#include "engine/CThing.h"
 struct CThingCalls {
 };
 class CThingPlayerCreature : public CThingCalls { };

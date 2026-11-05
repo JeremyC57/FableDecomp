@@ -4,18 +4,15 @@
 // Leaf: ?Initialise@CCreatureActionHero180RunningTurn@@UAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include <math.h>
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet(const C3DVector& forward) : Up(0.0f, 0.0f, 1.0f), Forward(forward) {}
 };
-struct CPhysicsBody {                                 // the thing's physics body at +0x60
+struct CTCPhysicsBase {                                 // the thing's physics body at +0x60
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
@@ -23,11 +20,7 @@ struct CPhysicsBody {                                 // the thing's physics bod
     VF(71) VF(72) VF(73) VF(74)
     virtual void SetOrientation(const CRightHandedSet& set);   // slot 75 (+0x12c)
 };
-class CThing { public:
-    unsigned char _pad00[0x60];
-    CPhysicsBody* PhysicsBody;                        // +0x60
-    CPhysicsBody* GetPhysics() const { return PhysicsBody; }
-};
+
 class CAnimationEntry { public:
     void GetRotationInAnimation(float* pRotation) const;   // 0x005DBFD0
 };
@@ -69,7 +62,7 @@ void CCreatureActionHero180RunningTurn::Initialise()
         CCharString name("ST_RUN_180_TURN");
         SetCombatAnimation(name);
     }
-    C3DVector facing = PCreature.GetPItem()->GetPhysics()->GetFacing();
+    C3DVector facing = PCreature.GetPItem()->GetPhysicsTC()->GetFacing();
     float dot = facing.Y * RequiredFacing.Y;
     dot += facing.Z * RequiredFacing.Z;
     dot += facing.X * RequiredFacing.X;
@@ -85,7 +78,7 @@ void CCreatureActionHero180RunningTurn::Initialise()
     PAnimEntry->GetRotationInAnimation(&rotation);
     float turn = acos(dot) * 0.15915494f;
     float angle = rotation - turn * sign;
-    C3DVector forward = PCreature.GetPItem()->GetPhysics()->GetFacing();
+    C3DVector forward = PCreature.GetPItem()->GetPhysicsTC()->GetFacing();
     forward.Rotate(C3DVector(0.0f, 0.0f, 1.0f), -angle);
-    PCreature.GetPItem()->GetPhysics()->SetOrientation(CRightHandedSet(forward));
+    PCreature.GetPItem()->GetPhysicsTC()->SetOrientation(CRightHandedSet(forward));
 }

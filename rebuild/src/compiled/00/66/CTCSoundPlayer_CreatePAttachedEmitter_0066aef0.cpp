@@ -1,4 +1,5 @@
 // CTCSoundPlayer::CreatePAttachedEmitter(bool unattached) -- the attached sound emitter: the live one, else a new emitter at the owner's position when that position is inside the world map
+// Leaf: ?CreatePAttachedEmitter@CTCSoundPlayer@@QAEPAVCThingSoundEmitter@@_N@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066AEF0, 165 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer::GetPItem const @ 0x00A01B50, CTCBase::GetWorld @ 0x00686A70, CWorld virtual slot 12
@@ -17,13 +18,7 @@ class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector Position;                                 // +0x0c
 };
-class CThing {
-public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                          // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char m_flags91;                            // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 class CThingSoundEmitter { public:
     static CThingSoundEmitter* __fastcall Create(const C3DVector& position, const CThing* parent, bool unattached);   // 0x008369F0
 };
@@ -71,9 +66,9 @@ class CTCSoundPlayer : public CTCBase { public:
 
 CThingSoundEmitter* CTCSoundPlayer::CreatePAttachedEmitter(bool unattached)
 {
-    const C3DVector& position = ParentThing->PhysicsTC->Position;
+    const C3DVector& position = ParentThing->GetPhysicsTC()->Position;
     CThing* current = ((CThing*)PAttachedEmitter.CBaseIntelligentPointer::GetPItem());
-    if (!current || (current->m_flags91 & 1)) {
+    if (!current || current->IsDead()) {
         if (GetWorld().GetWorldMap()->IsPosInMap(position)) {
             CThingSoundEmitter* emitter = CThingSoundEmitter::Create(position, ParentThing, unattached);
             if (emitter)

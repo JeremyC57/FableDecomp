@@ -10,15 +10,11 @@
 // Leaf: ??0CGetBestIciclePointForTarget
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/C3DVector.h"
-struct CThingPlacement_Retail {
+struct CTCPhysicsBase {
     unsigned char _pad00[0x18];
     C3DVector     m_prevPosition;                  // +0x18
 };
-class CThing { public:
-    unsigned char           _pad00[0x60];
-    CThingPlacement_Retail* m_pPlacement;          // +0x60
-    const C3DVector& GetPos() const;          // 0x004C73D0
-};
+#include "engine/CThing.h"
 struct CGetBestIciclePointForTarget {
     C3DVector TargetPos;                           // +0x00
     float     BestPosScore;                        // +0x0c
@@ -30,6 +26,6 @@ CGetBestIciclePointForTarget::CGetBestIciclePointForTarget(CThing* target, float
     : BestPosScore(-1.0f)
 {
     const C3DVector& pos = target->GetPos();
-    const C3DVector& prev = target->m_pPlacement->m_prevPosition;
+    const C3DVector& prev = target->GetPhysicsTC()->m_prevPosition;
     TargetPos = pos + C3DVector(pos.X - prev.X, pos.Y - prev.Y, 0.0f) * time;
 }

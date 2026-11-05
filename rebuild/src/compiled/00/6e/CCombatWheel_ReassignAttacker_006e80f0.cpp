@@ -1,4 +1,5 @@
 // CCombatWheel::ReassignAttacker(CWorld*, CCombatantInfo*, CCombatantInfo*, const C3DVector*) -- give the attacker a fresh preferred attack dolly: the flat direction from the defender to the given position, or to the attacker turned by a random 0.25..0.75 turn; when it is not degenerate it is normalised and stored with a five-second timer
+// Leaf: ?ReassignAttacker@CCombatWheel@@QAEXPAVCWorld@@PAUCCombatantInfo@@1PBVC3DVector@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -29,9 +30,7 @@ public:
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-class CThing { public:
-    const C3DVector& GetPos() const;   // 0x004C73D0 (CThing::GetPosition)
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public:
 };
 class CWorld { public:

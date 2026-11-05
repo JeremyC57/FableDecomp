@@ -21,10 +21,7 @@ class CTCGraphicAppearance { public:
     void SetAsChanged(unsigned long flags);      // 0x004BF9E0
 };
 }
-class CThing { public:
-    unsigned char _pad00[0x64];
-    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
-};
+#include "engine/CThing.h"
 class CWorld { public:
     static long __fastcall GetFrame();          // 0x0049D870
 };

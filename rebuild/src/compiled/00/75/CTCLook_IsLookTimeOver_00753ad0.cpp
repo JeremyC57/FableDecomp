@@ -1,4 +1,5 @@
 // CTCLook::IsLookTimeOver() -- false while the owner's interface-0xAA component exists and has its "keep looking" byte (+0x7A) clear; otherwise whether the frame counter has reached LookTimer
+// Leaf: ?IsLookTimeOver@CTCLook@@QAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00753AD0, length 101 bytes.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (inlined GetInterface, type 0xAA = bit 10 of the dword at
@@ -8,28 +9,11 @@
 // not identified, named descriptively).
 // Shape: out-pointer GetInterface `&&` the flag test returning false; the tail `return frame >= LookTimer;` (`setge cl ; mov al,cl`).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 struct CTCLookTimeOwner {                       // the interface-0xAA component
     unsigned char _pad00[0x7a];
     bool KeepLooking;                           // +0x7a
@@ -53,8 +37,8 @@ public:
 
 bool CTCLook::IsLookTimeOver()
 {
-    CTCLookTimeOwner* owner;
-    if (ParentThing->GetInterface(&owner, 0xaa) && !owner->KeepLooking)
+    const CTCLookTimeOwner* owner;
+    if (ParentThing->PeekTC(TCI_AI_SCRATCHPAD, &owner) && !owner->KeepLooking)
         return false;
     return PeekComponent().GetCurrentWorldFrame() >= LookTimer;
 }

@@ -1,4 +1,5 @@
 // NTCScriptedControl::CActionLeadCreature::OnActivate() -- on first activation remembers the creature's movement-lock state and clears it, then removes any movement-blocking modes if the creature cannot move
+// Leaf: ?OnActivate@CActionLeadCreature@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007122D0, length 78 bytes.
 // Callees: virtual slots 83 (`call [edx+0x14c]`, byte result) and 84 (`call [edx+0x150]`, one argument)
 // of the creature's sub-object at +0x60; IsAbleToMove @ 0x0085F3E0 (__fastcall(CThing*), bool);
@@ -8,7 +9,7 @@
 // named local), which is what the retail loads show.
 class CThing;
 
-struct CMovementController {
+struct CTCPhysicsBase {
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -96,10 +97,7 @@ struct CMovementController {
     virtual void SetMovementLocked(long locked);   // slot 84 (+0x150)
 };
 
-class CThing { public:
-    unsigned char        _pad[0x60];
-    CMovementController* m_pMovement;                   // +0x60
-};
+#include "engine/CThing.h"
 
 class CTCScriptedControl { public:
     void*   __vftable;
@@ -121,8 +119,8 @@ struct CActionLeadCreature {
 void CActionLeadCreature::OnActivate()
 {
     if (!m_stateSaved) {
-        m_savedMovementLocked = m_pControl->m_pCreature->m_pMovement->GetMovementLocked();
-        m_pControl->m_pCreature->m_pMovement->SetMovementLocked(0);
+        m_savedMovementLocked = m_pControl->m_pCreature->GetPhysicsTC()->GetMovementLocked();
+        m_pControl->m_pCreature->GetPhysicsTC()->SetMovementLocked(0);
     }
     if (!IsAbleToMove(m_pControl->m_pCreature))
         RemoveMovementBlockingModes(m_pControl->m_pCreature);

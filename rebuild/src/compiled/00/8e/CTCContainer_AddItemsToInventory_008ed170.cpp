@@ -1,4 +1,5 @@
 // CTCContainer::AddItemsToInventory() -- create every pending container item (def index > 0) at the container's position, add it to the inventory, then clear the item list; false when there was nothing to add
+// Leaf: ?AddItemsToInventory@CTCContainer@@QAE_NXZ
 // Retry 10b (accessor sweep, FIXES B-4/B-5): the parent thing is read through an inline accessor; the plain member read gives the parked register difference.
 //
 // Retail 0x008ED170, 122 bytes (plain `ret`). Callees: CThing::GetPos() const @ 0x004C73D0,
@@ -14,11 +15,8 @@
 // erase(begin(), end()) with the vector's address formed once in edi.
 class C3DVector;
 class CRightHandedSet;
-class CCharString { public: void* PStringData; };
-
-class CThing { public:
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CThingObject;
 class CThingObject { public:

@@ -16,11 +16,9 @@
 //   bank pointer is loaded) homed in the dead `on` slot, as is the lookup key; the bank comes through an inline getter (a
 //   direct member read loads it before the string address); the sound pair is built from the index twice.
 class CTCBase;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CASoundBank { public:
 public:
     long GetSoundIndexFromSymbol(const CCharString&) const;   // 0x00A01920
@@ -57,23 +55,10 @@ class CTCSoundPlayer { public:
 public:
     unsigned long PlayAttachedSample(const CSoundPair&, const CSoundInit&, bool, bool, bool);   // 0x0066B280
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CTCShop { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
@@ -85,8 +70,8 @@ class CTCShop { public:
 void CTCShop::SetAlarm(bool on)
 {
     if (on) {
-        if (Alarm == 0 && ParentThing->HasTC(0x10)) {
-            CTCSoundPlayer* player = ParentThing->GetTC<CTCSoundPlayer>(0x10);
+        if (Alarm == 0 && ParentThing->HasTC(TCI_SOUND_PLAYER)) {
+            CTCSoundPlayer* player = ((CTCSoundPlayer*)&ParentThing->GetTC(TCI_SOUND_PLAYER));
             long sound = CMainGameComponent::Get()->GetSampleBank()->GetSoundIndexFromSymbol("SND_SHOPALARM_01");
             if (sound) {
                 CSoundInit init;
@@ -97,8 +82,8 @@ void CTCShop::SetAlarm(bool on)
         }
     } else {
         unsigned long alarm = Alarm;
-        if (alarm && ParentThing->HasTC(0x10)) {
-            CTCSoundPlayer* player = ParentThing->GetTC<CTCSoundPlayer>(0x10);
+        if (alarm && ParentThing->HasTC(TCI_SOUND_PLAYER)) {
+            CTCSoundPlayer* player = ((CTCSoundPlayer*)&ParentThing->GetTC(TCI_SOUND_PLAYER));
             player->StopSample_0066ad90(alarm);
             player->StopAllAttachedSounds();
         }

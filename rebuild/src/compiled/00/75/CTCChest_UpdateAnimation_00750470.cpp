@@ -1,4 +1,5 @@
 // CTCChest::UpdateAnimation(float time) -- advance the chest's animation (its CTCAnimationComplex's animate-thing) by the given time step
+// Leaf: ?UpdateAnimation@CTCChest@@QAEXM@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail 0x00750470, 110 bytes (`ret 4`). Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // @ 0x0040F020, CTCAnimationComplex::GetAnimation @ 0x0070B460 (`mov eax,[ecx+0Ch]`; manifest
@@ -10,26 +11,10 @@
 // body (the zero words are stored before the time).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CAnimFrameUpdate {                                   // 12-byte update record
     float Time;                                             // +0x00
@@ -55,7 +40,7 @@ class CTCChest { public:
 void CTCChest::UpdateAnimation(float time)
 {
     CTCAnimationComplex* complex = 0;
-    ParentThing->GetInterface(&complex, 0x5a);
+    ParentThing->GetTC(TCI_ANIMATION, &complex);
     CAnimFrameUpdate update(time);
     CAnimateThing* animation = complex->GetAnimation();
     animation->UpdateFrameLogic(update);

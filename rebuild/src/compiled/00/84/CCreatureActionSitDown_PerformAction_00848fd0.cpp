@@ -1,4 +1,5 @@
 // CCreatureAction_SitDown::PerformAction() -- push the action's sitting mode onto the creature's mode manager (interface type 0x31)
+// Leaf: ?PerformAction@CCreatureAction_SitDown@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- HasTC + the ternary GetTC model into an UNINITIALISED local (the miss arm reads the key slot): both arms load the mode manager straight into ecx
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00848FD0, length 105 bytes.
@@ -12,22 +13,11 @@
 // Layout: PMode (CCountedPointer<CModeSitBase>) at +0xa8/+0xac; the PDB header (CCreatureAction_SitDown.h, 0xbc bytes) sits 0x0c high
 // against retail's 0xa8-byte CCreatureActionBase, so `this` is modelled locally.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -81,7 +71,7 @@ void CCreatureAction_SitDown::PerformAction()
 {
     CTCCreatureModeManager* pModes;
     CThing* creature = PCreature.GetPItem();
-    if (creature->HasTC(0x31))
-        pModes = creature->GetTC<CTCCreatureModeManager>(0x31);
+    if (creature->HasTC(TCI_ENTITY_MODE_MANAGER))
+        pModes = ((CTCCreatureModeManager*)&creature->GetTC(TCI_ENTITY_MODE_MANAGER));
     pModes->AddMode(PMode);
 }

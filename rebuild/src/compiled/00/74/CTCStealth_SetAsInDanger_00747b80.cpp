@@ -39,13 +39,8 @@ class CWorld { public:
     unsigned char  _pad1c[0x6c - 0x1c];
     CMusicManager* PMusicManager;                       // +0x6c CCountedPointer<CMusicManager> (object word)
 };
-class CThing {
-public:
-    unsigned char _pad[0x10];
-    unsigned char m_thingType;                          // +0x10 (2 = creature)
-public:
-    CPlayer& GetPlayer();   // 0x004C7A30
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                    // +0x04
@@ -159,7 +154,7 @@ void CTCStealth::SetAsInDanger(const CThing* thing, long status)
     else {
         entry->second = CDangerStatus(status);
     }
-    if (ParentThing->GetPlayer().IsMainPlayer() && ParentThing->m_thingType == 2 && InDangerCoolOffTimer < 0) {
+    if (ParentThing->GetPlayer().IsMainPlayer() && ParentThing->GetType() == 2 && InDangerCoolOffTimer < 0) {
         CWorld* world = (&GetWorld());
         world->PMusicManager->EnableDangerMusic(true);
         CWorld* world2 = (&GetWorld());

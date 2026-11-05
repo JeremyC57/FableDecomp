@@ -17,29 +17,10 @@ public:
 
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 extern unsigned long g_InvalidSoundHandle;  // 0x0129D25C
 
@@ -52,7 +33,7 @@ class CTCTrophy { public:
 unsigned long CTCTrophy::PlaySoundW(const CCharString& name)
 {
     CTCSoundPlayer* sound;
-    if (Thing->HasTC(16) && Thing->GetInterface(&sound, 16))
+    if (Thing->HasTC(TCI_SOUND_PLAYER) && Thing->GetTC(TCI_SOUND_PLAYER, &sound))
         return sound->PlayAttachedCriteria(name, true, 0, 0, -1);
     return g_InvalidSoundHandle;
 }

@@ -1,4 +1,5 @@
 // CTCVillageMember::vfunc_14() -- CTCBase slot-14 override: when the member still has its village thing, have the village's CTCVillage component (interface 34) remove the owner thing
+// Leaf: ?vfunc_14@CTCVillageMember@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe @ 0x007EE4D0, 106 bytes; CTCVillageMember vtable 0x0124007C slot 14 (CTCBase slot, real name unknown).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (x2); CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020
@@ -10,29 +11,11 @@
 //        slot (shared with the lookup key) and the call follows on both arms, each with its own epilogue.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    virtual void v00();
-    unsigned char _pad04[0x1c];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -66,7 +49,7 @@ void CTCVillageMember::vfunc_14()
 {
     if (PVillage.GetPItem()) {
         CTCVillage* village;
-        PVillage.GetPItem()->GetInterface(&village, 34);
+        PVillage.GetPItem()->GetTC(TCI_VILLAGE, &village);
         village->RemoveThingAndUpdateCameraPoints(ParentThing);
     }
 }

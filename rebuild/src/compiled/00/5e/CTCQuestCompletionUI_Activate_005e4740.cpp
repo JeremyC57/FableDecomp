@@ -18,40 +18,15 @@
 //   canTeleport slot) and the two Activate calls tail-merge; the quest manager is read into a named local before the
 //   ScriptName copy is built in the argument slot.
 class CTCBase;
-class CCharString { public:
-    void* m_pData;
-    CCharString(const CCharString& other);              // 0x0099EC30
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
-class CWideString { public:
-    void* m_pData;
-    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-    }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (HasTC(type)) {
-            *out = GetTC<T>(type);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCBoastUI { public:
     void Deactivate();                                  // 0x0056A880
 };
@@ -84,7 +59,7 @@ void CTCQuestCompletionUI::Activate(CompletionType type, const CCharString& scri
 {
     if (type == COMPLETION_3) {
         CTCBoastUI* boast;
-        if (ParentThing->GetInterface(0xe8, &boast))
+        if (ParentThing->GetTC(TCI_BOAST_UI, &boast))
             boast->Deactivate();
     }
     CTCQuestCard* card = 0;
@@ -97,8 +72,8 @@ void CTCQuestCompletionUI::Activate(CompletionType type, const CCharString& scri
     }
     CThing* cardThing = CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().GetActiveQuestCardFromScriptName(scriptName);
     if (cardThing) {
-        if (cardThing->HasTC(0x6c))
-            card = cardThing->GetTC<CTCQuestCard>(0x6c);
+        if (cardThing->HasTC(TCI_QUEST_CARD))
+            card = ((CTCQuestCard*)&cardThing->GetTC(TCI_QUEST_CARD));
         Activate(type, card, arg);
     } else {
         Activate(type, 0, arg);

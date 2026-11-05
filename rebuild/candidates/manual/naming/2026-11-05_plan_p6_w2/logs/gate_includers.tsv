@@ -1,0 +1,169 @@
+address	verdict	reason	changes	name_notes	secs
+0047a9f0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.86
+00487b70	PASS				0.51
+00487dc0	PASS				0.47
+00487dd0	PASS				0.59
+004c7a50	PASS				0.45
+004c7a60	PASS				0.40
+004c7bc0	PASS				0.39
+004c9f60	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.36
+004d35b9	PASS				0.14
+004ff750	PASS				0.67
+00502b00	PASS			NAME_CLASH _memmove bound here to 00bfeae6, in the index to 03633f65	0.17
+00522a20	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.71
+00529720	PASS				0.14
+00529930	PASS				0.37
+005729d8	PASS			NAME_CLASH ??0CAction@NUISystem@@QAE@XZ bound here to 0042be50, in the index to 0042bed4 | NAME_CLASH ??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ bound here to 00429288, in the index to 0059a994 | NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a | NAME_CLASH ?ShareData@?$CCountedPointer@VCList@NUISystem@@@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z bound here to 00429486, in the index to 0059aa86	0.77
+00573792	PASS			NAME_CLASH ??0CAction@NUISystem@@QAE@XZ bound here to 0042be50, in the index to 0042bed4 | NAME_CLASH ??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ bound here to 00429288, in the index to 0059a994 | NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a | NAME_CLASH ?ShareData@?$CCountedPointer@VCList@NUISystem@@@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z bound here to 00429486, in the index to 0059aa86	0.78
+005be284	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.60
+005c36c2	PASS		DEF ?PutSheatheObjectInCarrySlot@?A0x7e323225@@YIXAAVCThing@@0AAM@Z -> ?PutSheatheObjectInCarrySlot@?A0xcbb8b39d@@YIXAAVCThing@@0AAM@Z	NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.51
+005c552c	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a | NAME_CLASH ?push_back@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAEXABQAVCThing@@@Z bound here to 00436c80, in the index to 0074fae0	0.41
+005e9b20	PASS				0.44
+005ea000	PASS				0.40
+005eb9e0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.81
+005ebfa0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.68
+00606300	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	1.16
+00626e40	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.74
+006286f0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a | NAME_CLASH ?Uninitialise@CTexture@@QAEXXZ -> 009f9f70 is defined at 00caa6e0	1.04
+00643b3b	PASS				0.14
+0064d92a	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.60
+0065b854	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.73
+00661600	PASS				0.13
+00661fc0	PASS				0.12
+00663600	PASS				0.44
+00666ef0	PASS		00669850: ??$random_shuffle@PAPAVCThing@@VRandFunc@?A0x670c1d18@@@std@@YIXPAPAVCThing@@0AAVRandFunc@?A0x670c1d18@@@Z -> ??$random_shuffle@PAPAVCThing@@VRandFunc@?A0xf96c2174@@@std@@YIXPAPAVCThing@@0AAVRandFunc@?A0xf96c2174@@@Z	NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?GetWorld@CThing@@IAEAAVCWorld@@XZ bound here to 004c7aa0, in the index to 004c7ab0 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7 | NAME_CLASH ?push_back@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAEXABQAVCThing@@@Z bound here to 00436c80, in the index to 0074fae0	0.70
+00667450	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.76
+00667d30	PASS		006637d0: ?CreateWeaponHitTargetEffect@?A0x2e80568f@@YIXPBVCThing@@ABVC3DVector@@1_N22@Z -> ?CreateWeaponHitTargetEffect@?A0xefe591b3@@YIXPBVCThing@@ABVC3DVector@@1_N22@Z	NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z -> 00437990 is defined at 00643d8c | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.90
+006817f0	PASS				0.44
+00686a90	PASS				0.44
+00686d80	PASS				0.52
+00692c80	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.28
+00692f30	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.31
+00693030	PASS				0.20
+00699130	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.53
+0069e980	PASS				0.32
+006a5260	PASS				0.26
+006aa2e0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.72
+006aabe0	PASS			NAME_CLASH ?GetPlayer@CThing@@QAEAAVCPlayer@@XZ bound here to 004c7a30, in the index to 004c7a10 | NAME_CLASH ?GetWorld@CThing@@IAEAAVCWorld@@XZ bound here to 004c7aa0, in the index to 004c7ab0 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.83
+006af270	PASS				0.44
+006ca380	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.33
+006d00a0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.59
+006d7b80	PASS			NAME_CLASH ?GetAbilityMaximumLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z -> 005edea3 is defined at 005eef84 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.42
+006dfe70	PASS			NAME_CLASH ?g_IdentityRHSet@@3VCRightHandedSet@@B bound here to 01380104, in the index to 01380108,0138010c,01380110,01380114,01380118 | NAME_CLASH ?g_IdentityRHSet@@3VCRightHandedSet@@B bound here to 01380108, in the index to 01380104,0138010c,01380110,01380114,01380118 | NAME_CLASH ?g_IdentityRHSet@@3VCRightHandedSet@@B bound here to 0138010c, in the index to 01380104,01380108,01380110,01380114,01380118 | NAME_CLASH ?g_IdentityRHSet@@3VCRightHandedSet@@B bound here to 01380110, in the index to 01380104,01380108,0138010c,01380114,01380118 | NAME_CLASH ?g_IdentityRHSet@@3VCRightHandedSet@@B bound here to 01380114, in the index to 01380104,01380108,0138010c,01380110,01380118 | NAME_CLASH ?g_IdentityRHSet@@3VCRightHandedSet@@B bound here to 01380118, in the index to 01380104,01380108,0138010c,01380110,01380114	0.38
+006e2c00	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?GDefStringTable@@3VCDefStringTable@@A bound here to 013ca828, in the index to 013ca85c	0.47
+006eb600	PASS				0.15
+006eba60	PASS				0.15
+00700770	PASS				0.30
+00725b70	PASS			NAME_CLASH ??$_For_each@PAPAVCThingCreatureBase@@VCApplyAdditionalImpulseIfInCombatAndTooClose@@@std@@YI?AVCApplyAdditionalImpulseIfInCombatAndTooClose@@PAPAVCThingCreatureBase@@0V1@@Z bound here to 00726610, in the index to 00727500	0.54
+00729f60	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.43
+0072b260	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?GetPlayer@CThing@@QAEAAVCPlayer@@XZ bound here to 004c7a30, in the index to 004c7a10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.49
+0072c930	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.48
+0072c9c0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 004365b0 is defined at 0040f020 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 0040f020,01427cc3,838a0818,8c69ce7a	0.52
+007355f0	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	1.08
+007443f0	PASS				0.13
+00744470	PASS				0.17
+007444a0	PASS				0.16
+007444d0	PASS				0.15
+00744500	PASS				0.16
+00744540	PASS				0.15
+00744580	PASS				0.14
+007446a0	PASS				0.36
+007447e0	PASS				0.40
+007448f0	PASS				0.18
+00744950	PASS				0.18
+007449b0	PASS				0.15
+007449e0	PASS				0.15
+00744cb0	PASS				0.17
+00744e30	PASS				0.14
+00744e80	PASS				0.16
+007462f0	PASS				0.37
+007498d0	PASS				0.58
+0074a5d0	PASS			NAME_CLASH ?GetGroundSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z bound here to 0063a300, in the index to 0063a390	0.60
+0074b770	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 004365b0 is defined at 0040f020 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 0040f020,01427cc3,838a0818,8c69ce7a | NAME_CLASH ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 is defined at 006afd40	0.68
+00753380	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 004365b0 is defined at 0040f020 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 0040f020,01427cc3,838a0818,8c69ce7a	0.48
+00775b40	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a | NAME_CLASH ?SetCrimeAsDisplaying@CPlayerGui@@QAEXXZ -> 004376b0 is defined at 00437770	0.72
+0077b290	PASS				0.40
+0077b9f0	PASS				0.36
+0077be80	PASS				0.36
+0077c440	PASS				0.37
+00798d80	PASS				0.53
+007a4520	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.52
+007a5580	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.38
+007bdd77	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.39
+007be05c	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.37
+007be3e0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.40
+007be4e0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.43
+007beff0	PASS				0.36
+007d4a60	PASS				0.13
+007d5e80	PASS				0.46
+007d8140	PASS				0.15
+007de4e0	PASS				0.34
+007de4f0	PASS				0.36
+007e0d00	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.37
+007eac70	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.31
+007ed780	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.12
+007f6160	PASS				0.37
+007f8860	PASS				0.38
+00810fc0	PASS				0.56
+00810fd0	PASS				0.52
+00821010	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.69
+0082a3e0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.31
+00836790	PASS				0.28
+008367a0	PASS				0.32
+008389a0	PASS				0.12
+008389c0	PASS				0.16
+008427e0	PASS				0.16
+008428b0	PASS				0.15
+00843940	PASS				0.18
+00843b40	PASS				0.17
+00849f70	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.55
+00854720	PASS				0.53
+00859660	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.63
+00863280	PASS				0.36
+008663d0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.20
+00875f00	PASS				0.36
+008771a0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.40
+0087b840	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.35
+0087c3e0	PASS				0.44
+0087c580	PASS				0.17
+00890c80	PASS				0.20
+00890d80	PASS				0.22
+008956b0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.60
+0089e190	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.65
+008a8440	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.32
+008af500	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.67
+008af6e0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.61
+008af850	PASS				0.17
+008ba7e0	PASS				0.45
+008c3e90	PASS				0.15
+008e9a30	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.30
+008edff0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?GetAbilityMaximumLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z -> 005edea3 is defined at 005eef84 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.65
+00908a20	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.26
+00908b50	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.23
+0090c540	PASS			NAME_CLASH ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ bound here to 01237f1c, in the index to 01238c6c | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.70
+0090f770	PASS				0.15
+0090f7a0	PASS				0.16
+009104d0	PASS				0.55
+00919a00	PASS				0.51
+0091ea70	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.59
+00927c80	PASS				0.22
+0092b800	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.17
+0092bcb0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.27
+00938280	PASS				0.51
+00938ef0	PASS				0.15
+0093b8b0	PASS				0.22
+0093dae0	PASS				0.18
+00943c20	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.56
+00945bd0	PASS				0.54
+00946400	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.49
+0094bf50	PASS				0.39
+00954740	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.50
+009577e0	PASS			NAME_CLASH ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ bound here to 01237f1c, in the index to 01238c6c	0.13
+00958c00	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.25
+00969e70	PASS				0.66
+0096ae50	PASS				0.62
+0096d2d0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.19
+0096dbc0	PASS		DEF ?Initialise@CCreatureAction_ScreamerIntoAggressive@?A0x458b7e55@@UAEXXZ -> ?Initialise@CCreatureAction_ScreamerIntoAggressive@?A0x5685ce92@@UAEXXZ	NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.55
+0097d360	PASS				0.23
+009863e0	PASS				0.22
+01229150	PASS			NAME_CLASH own _$E2 is defined at 012289b0	0.56

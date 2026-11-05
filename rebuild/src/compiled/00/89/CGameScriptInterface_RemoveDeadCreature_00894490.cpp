@@ -15,16 +15,10 @@
 // Shape: /O2 (16-aligned entry). Ego_r.pdb ?GetThingSearchTools@CWorld@@QAEAAVCThingSearchTools@@XZ as an inline accessor
 // gives retail's order: the search tools go to ecx before the arguments are pushed. Writing `World->PThingSearchTools->`
 // directly, or binding it to a local, loads ecx after the pushes.
-class CCharString { public:
-    void* m_pData;
-    CCharString(const CCharString& other);         // 0x0099EC30
-    ~CCharString();                                // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
-class CThing {
-public:
-    void Kill(bool param);                         // 0x004C9B80
-};
+
 class CThingFilter_HasScriptName {
 public:
     CCharString Name;

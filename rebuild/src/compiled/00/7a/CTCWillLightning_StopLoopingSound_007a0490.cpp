@@ -18,27 +18,10 @@ class CTCBase;
 
 extern unsigned long g_InvalidSoundHandle;               // 0x0129D25C
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                      // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                          // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCSoundPlayer {                                   // interface 0x10
 public:
@@ -61,7 +44,7 @@ void CTCWillLightning::StopLoopingSound()
     unsigned long sound = LoopingSound;
     if (sound != g_InvalidSoundHandle) {
         CTCSoundPlayer* player;
-        if (ParentThing->GetInterface(&player, 0x10))
+        if (ParentThing->GetTC(TCI_SOUND_PLAYER, &player))
             player->StopAttachedSound(sound);
         LoopingSound = g_InvalidSoundHandle;
     }

@@ -19,10 +19,7 @@
 //   second vptr under a virtual method).
 #include "engine/C3DVector.h"
 
-class CThing {
-public:
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CTCBase {
 public:

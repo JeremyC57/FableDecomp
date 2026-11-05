@@ -7,7 +7,7 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005A731F, 1735 bytes, `ret 10h`, bool in al (bl). Frame-pointer size TU: optimize("y",off) + ("s",on).
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2, CManager::CreateComponent 0x0041DB1D / CreateMenuEntryComponent 0x00428494,
+// Callees: CManager::GetInstance 0x0041E5F2, CManager::CreateComponent 0x0041DB1D / CreateMenuEntryComponent 0x00428494,
 //   CCountedPointer<CComponent>(T*) 0x00429C15 / dtor 0x004291DE, CPlayerManager::GetMainPlayer 0x00449960 (CMainGameComponent::Get()
 //   0x013B86A0 +0x1C) + CPlayer::GetControlledCreature 0x00487DD0, CTCInventoryBase::GetTradingThing 0x005BC4C4, std::bitset::test
 //   0x00410DE0 + CVectorMap::LowerBound 0x0040F020 (inline GetInterface, type 0x53 = CTCShop), CTCInventoryItem::GetInventoryCategory 0x005D99D0,
@@ -157,13 +157,13 @@ struct CComponentBase {
     unsigned char _pad04[0x18 - 0x04];
 };
 class CComponent : public CComponentBase, public CActionParam { public:};
-class CManager { public:
+class CManager {
+public:
+    static CManager* __fastcall GetInstance();  // 0x0041E5F2
+ public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString d, float e, CCharString button);   // 0x00428494
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 }
 using namespace NUISystem;
@@ -185,8 +185,8 @@ class CTCInventoryTrade { public:
 };
 bool CTCInventoryTrade::ConstructSellActionsListPC(CComponent* parent, long defIndex, unsigned long count, bool addAsChild)
 {
-    CFrontEndManager* fe = CFrontEndManager::GetInstance();
-    CCountedPointer<CComponentBase> actionsList(CFrontEndManager::GetInstance()->CreateComponent("PC_LIST_SELL_ACTIONS", false));
+    CManager* fe = CManager::GetInstance();
+    CCountedPointer<CComponentBase> actionsList(CManager::GetInstance()->CreateComponent("PC_LIST_SELL_ACTIONS", false));
     CComponentBase* list = actionsList.Data;
     CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetControlledCreature();
     CDataBank* bank = CMainGameComponent::Get()->TextBank;

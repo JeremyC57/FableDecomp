@@ -11,9 +11,7 @@
 #include <math.h>
 #include "engine/C3DVector.h"
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (0.0001f)
-class CThing { public:
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CTCSleep { public:
     virtual void v00();
     CThing*   ParentThing;                          // +0x04 (CTCBase)

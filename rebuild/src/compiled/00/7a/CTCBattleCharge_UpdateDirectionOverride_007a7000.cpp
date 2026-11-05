@@ -63,9 +63,8 @@ CSystemManager* __fastcall GFGetSystemManager();            // 0x009A4EC0
 class CPlayer { public:
     long GetPlayerNumber() const;                           // 0x00487510
 };
-class CThing { public:
-    CPlayer& GetPlayer();                             // 0x004C7A30
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { public:
     float GetCurrentRelativeMovementAngleXY() const;        // 0x006A9640
 };

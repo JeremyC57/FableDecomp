@@ -1,4 +1,5 @@
 // CTCKraken::GetClosestTentacleToTarget(list<CIntelligentPointer<CThing> >::iterator& closest) -- picks the live tentacle whose facing (kraken heading plus the tentacle's angle offset) is nearest the bearing from the kraken to its target, within one tentacle's share of a turn; true when one was found and its scripted-hook component is not in mode 0x54, otherwise the iterator is set to the end
+// Leaf: ?GetClosestTentacleToTarget@CTCKraken@@QAE_NAAUCTentacleIterator@@@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
@@ -19,10 +20,12 @@ class C2DVector { public:
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) {}
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CPhysicsTC {
+struct CTCPhysicsBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -36,38 +39,7 @@ struct CPhysicsTC {
     virtual void v60(); virtual void v61(); virtual void v62();
     virtual float GetFacingAngleXY();                 // slot 63 (+0xFC)
 };
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long PresentBits[9];                     // +0x20 bitset of interface types
-    CInterfaceMap m_interfaces;                       // +0x44
-    unsigned char _pad54[0xc];
-    CPhysicsTC*   PhysicsTC;                          // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char Flags91;                            // +0x91
-    const C3DVector& GetPos() const;             // 0x004C73D0
-    __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline bool GetInterface(T** out, long kind)
-    {
-        if (HasTC(kind)) {
-            long key = kind;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
-            *out = (T*)((it == map->end() || kind < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline T* FindTC(long kind)
-    {
-        long key = kind;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
-        if (it == map->end() || kind < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -107,10 +79,10 @@ class CTCKraken { public:
 };
 bool CTCKraken::GetClosestTentacleToTarget(CTentacleIterator& closest)
 {
-    if (((CThing*)Target.GetPItem()) && !(((CThing*)Target.GetPItem())->Flags91 & 1) && Tentacles.size() > 0) {
+    if (((CThing*)Target.GetPItem()) && !((CThing*)Target.GetPItem())->IsDead() && Tentacles.size() > 0) {
         C3DVector targetPos(((CThing*)Target.GetPItem())->GetPos());
         C3DVector bodyPos(((CThing*)Body.GetPItem())->GetPos());
-        float heading = ParentThing->PhysicsTC->GetFacingAngleXY();
+        float heading = ParentThing->GetPhysicsTC()->GetFacingAngleXY();
         float bearing = (float)atan2(targetPos.X - bodyPos.X, targetPos.Y - bodyPos.Y) * 0.15915493667125702f;
         if (bearing < 0.0f || bearing >= 1.0f) {
             bearing = (float)fmod((double)bearing, 1.0);
@@ -122,7 +94,7 @@ bool CTCKraken::GetClosestTentacleToTarget(CTentacleIterator& closest)
         for (STentacleNode* node = Tentacles._M_node->_M_next; node != Tentacles._M_node; node = node->_M_next) {
             CThing* thing = ((CThing*)node->_M_data.GetPItem());
             CTCKrakenTentacle* tentacle;
-            thing->GetInterface(&tentacle, 0xe3);
+            thing->GetTC(TCI_KRAKEN_TENTACLE, &tentacle);
             {
                 float facing = heading + tentacle->AngleOffset;
                 float difference = (float)fabs(AngleDifference(facing, bearing));
@@ -135,7 +107,7 @@ bool CTCKraken::GetClosestTentacleToTarget(CTentacleIterator& closest)
         }
         if (found) {
             CThing* thing = ((CThing*)closest._M_node->_M_data.GetPItem());
-            if (thing->HasTC(0x31) && !thing->FindTC<CTCCreatureModeManager>(0x31)->IsModeActive(0x54))
+            if (thing->HasTC(TCI_ENTITY_MODE_MANAGER) && !((CTCCreatureModeManager*)&thing->GetTC(TCI_ENTITY_MODE_MANAGER))->IsModeActive(0x54))
                 return true;
         }
     }

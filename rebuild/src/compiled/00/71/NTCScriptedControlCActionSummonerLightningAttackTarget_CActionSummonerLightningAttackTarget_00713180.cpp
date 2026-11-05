@@ -22,20 +22,15 @@ protected:                                   // root of the scripted actions (vt
     CBaseClassNonCopyable();                                    // 0x0099A2F0
 };
 
-class CBaseObject { public:
-    virtual void v00();
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
 
 #include "engine/C3DVector.h"
-
-class CThing { public:
-    CScriptThing GetScriptThing() const;              // 0x004C7E50
-    const C3DVector& GetPos() const;    // 0x004C73D0
-};
 
 namespace NTCScriptedControl {
 

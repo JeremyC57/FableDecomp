@@ -1,4 +1,5 @@
 // CCreatureAction_HobbeSpellcasterAim::FinishAction() -- base FinishAction, then if the aimed spell thing is still alive kill it and clear the pointer
+// Leaf: ?FinishAction@CCreatureAction_HobbeSpellcasterAim@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C99C0, length 119 bytes (+ int3 padding).
 // Callees: CCombatActionBase::FinishAction @ 0x00859A20 (direct base call, first), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the spell
 // pointer at +0x114, three times, then on the temporary), CThing::Kill @ 0x004C9B80 (one argument, 1),
@@ -8,11 +9,7 @@
 // "assign through a stack CIntelligentPointer" shape (0x0084B1C0): default-construct (inlined CIntelligentPointer ctor stores the
 // vtable 0x01238C6C after the base ctor), SetPItem(0), read it back into the member, destroy -- the 8-byte frame is that temporary.
 // Retail CCombatActionBase is 0x114 bytes, so the spell pointer is this class's first member.
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    void Kill(bool immediately);            // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -32,7 +29,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;

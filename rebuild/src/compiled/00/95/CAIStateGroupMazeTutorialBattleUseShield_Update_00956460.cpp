@@ -1,4 +1,5 @@
 // CAIStateGroup_MazeTutorialBattleUseShield::Update() -- while the target lives and the group runs, raise the will shield (3s, 5s) and stamp FrameOfLastShield; then terminate
+// Leaf: ?Update@CAIStateGroup_MazeTutorialBattleUseShield@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00956460, length 127 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2, PTargetThing +0x14), CAIStateGroupBase::IsStopping
 // @ 0x008FD010, CCombatAction_WillShieldInto::CCombatAction_WillShieldInto(CThingCreatureBase*, float, float) @ 0x00956760
@@ -15,10 +16,7 @@
 // PDB: FrameOfLastShield +0x20. The engine header is flattened data-only: local model.
 class CThingCreatureBase;
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -40,7 +38,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

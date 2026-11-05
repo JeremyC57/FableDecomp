@@ -1,4 +1,5 @@
 // CAIStateGroup_OpinionReactionRoot::TryAndLookOnAwarenessUpdate() -- one look-at-position step towards the thing reacted to.
+// Leaf: ?TryAndLookOnAwarenessUpdate@CAIStateGroup_OpinionReactionRoot@@QAE_NXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009830C0, length 67 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (ThingReactingTo at +0x6b), CThing::GetPosition
@@ -12,9 +13,7 @@ class CThing;
 
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;    // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingPos : public CThing { public:
 };
 

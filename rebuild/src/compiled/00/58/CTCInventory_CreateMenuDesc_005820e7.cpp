@@ -7,7 +7,7 @@
 //   in a size-optimised TU (unaligned address, `leave`).
 // Identity (proven): Ego_r.pdb / FableWin.pdb ?CreateMenuDesc@CTCInventory@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z
 //   (private); the definition string "UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW" and the caller CTCInventory::ConstructItemCategoryList 0x0058F016.
-// Callees: NUISystem::CFrontEndManager::GetInstance 0x0041E5F2, CCharString(const char*, long) 0x0099EBF0 / ~CCharString
+// Callees: NUISystem::CManager::GetInstance 0x0041E5F2, CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 //   0x0099EAE0, NUISystem::CManager::CreateComponent(const CCharString&, bool) 0x0041DB1D, CCountedPointer<CComponent>
 //   (CComponent*) 0x00429C15 / copy 0x00428928 / ~CCountedPointer 0x004291DE, NGameText::CDataBank::GetTextBySymbol 0x009C95E0,
 //   ~CWideString 0x0099B510; the component's SetText(const CWideString&, bool, bool) vtable slot 144 (+0x240); global
@@ -58,11 +58,9 @@ public:
 };
 class CManager {
 public:
-    CComponent* CreateComponent(const CCharString& definition, bool b);
-};
-class CFrontEndManager : public CManager {
+    static CManager* __fastcall GetInstance();
 public:
-    static CFrontEndManager* __fastcall GetInstance();
+    CComponent* CreateComponent(const CCharString& definition, bool b);
 };
 }
 class CMainGameComponent {
@@ -81,7 +79,7 @@ private:
 };
 CCountedPointer<NUISystem::CComponent> CTCInventory::CreateMenuDesc(const CCharString& descriptionSymbol)
 {
-    NUISystem::CFrontEndManager* manager = NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
     CCountedPointer<NUISystem::CComponent> description(manager->CreateComponent("UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW", false));
     const NGameText::CDataBank* bank = CMainGameComponent::Get()->PTextBank.operator->();
     description->SetText(bank->GetTextBySymbol(descriptionSymbol), true, true);

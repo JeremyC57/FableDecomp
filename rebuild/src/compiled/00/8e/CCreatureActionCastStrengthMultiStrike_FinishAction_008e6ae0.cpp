@@ -1,4 +1,5 @@
 // CCreatureAction_CastStrengthMultiStrike::FinishAction() -- base FinishAction; while strikes remain and owner and target are alive, chain a fresh multi-strike action with one strike fewer as the owner's current action, else remove the owner's interface-0x8c component
+// Leaf: ?FinishAction@CCreatureAction_CastStrengthMultiStrike@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E6AE0, length 202 bytes (+ int3 padding), plain `ret` (virtual, no arguments).
 // Callees: CCombatActionBase::FinishAction 0x00859A20 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50 (owner +8, target +0xa8),
 // CCreatureAction_CastStrengthMultiStrike::CCreatureAction_CastStrengthMultiStrike(CThingCreatureBase*, CThing*, long) 0x008E6A70,
@@ -9,12 +10,10 @@
 // dead-flag tests; target, owner and the call's owner are three named locals fetched in that order before the temporary is built
 // (an inline `Owner.GetPItem()->SetCurrentAction(T(Owner.GetPItem(), ...))` fetches `this` after the temporary and drops the ebx 1).
 // Layout: NumberOfStrikes at retail +0x114 (PDB +0x12c); thing byte +0x91 bit 0 = dead.
-enum ETCInterfaceType { };
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    void RemoveTC(ETCInterfaceType interfaceType);          // 0x004C9840
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
+
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
@@ -60,8 +59,8 @@ class CCreatureAction_CastStrengthMultiStrike : public CCombatActionBase { publi
 void CCreatureAction_CastStrengthMultiStrike::FinishAction()
 {
     CCombatActionBase::FinishAction();
-    if (NumberOfStrikes > 1 && Owner.GetPItem() && !(Owner.GetPItem()->m_flags91 & 1)
-        && Target.GetPItem() && !(Target.GetPItem()->m_flags91 & 1)) {
+    if (NumberOfStrikes > 1 && Owner.GetPItem() && !Owner.GetPItem()->IsDead()
+        && Target.GetPItem() && !Target.GetPItem()->IsDead()) {
         CThing* target = Target.GetPItem();
         CThingCreatureBase* owner = Owner.GetPItem();
         CThingCreatureBase* creature = Owner.GetPItem();

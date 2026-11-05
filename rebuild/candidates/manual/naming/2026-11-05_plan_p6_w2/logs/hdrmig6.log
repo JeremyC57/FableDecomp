@@ -1,0 +1,2 @@
+hdrmig6 {'rewritten': 1994, 'deferred': 2196}
+deferred/error by kind: [('header_lacks', 754), ('local_std', 567), ('closure_model', 460), ('quarantine_model:', 104), ('searchtools_template', 103), ('own_definition', 39), ('template_instance_row', 38), ('unresolved_call', 34), ('closure_derived', 31), ('nested_in_namespace', 25), ('local_base', 25), ('own_definition_of_header_inline', 9)]

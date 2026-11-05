@@ -26,9 +26,7 @@
 
 class CTCAnimationBase;
 
-class CThing { public:
-    void AddToRenderList();                             // 0x004C7AC0 (manifest CThing::AddToRenderList)
-};
+#include "engine/CThing.h"
 
 namespace NGraphicAppearance {
 
@@ -52,7 +50,6 @@ class CPrimitive { public:                                     // 16 bytes (Ego_
 };
 
 }
-
 
 struct CPrimitiveListNode {
     CPrimitiveListNode*            m_next;              // +0x00

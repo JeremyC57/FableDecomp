@@ -18,14 +18,10 @@ namespace NGraphicAppearance {
         void SetTintColour(const CRGBColour& colour, void* owner);   // 0x004C00B0
     };
 }
-enum ETCInterfaceType { };
-class CThing { public:
-    unsigned char _pad00[0x64];
-    NGraphicAppearance::CTCGraphicAppearance* PGraphicAppearance;   // +0x64
-    unsigned char _pad68[0x91 - 0x68];
-    unsigned char m_flags91;                            // +0x91 bit 0: dead
-    void RemoveTC(ETCInterfaceType interfaceType);                  // 0x004C9840
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -59,14 +55,14 @@ __forceinline void CTCCreatureTintEffect::SetTint(CThing* parent, float amount)
     colour.G = (unsigned char)(long)(Color[1] * amount + white);
     colour.B = (unsigned char)(long)(Color[2] * amount + white);
     colour.A = (unsigned char)(long)(Color[3] * amount + white);
-    if (parent->PGraphicAppearance)
-        parent->PGraphicAppearance->SetTintColour(colour, this);
+    if (parent->GetTCGraphicAppearance())
+        parent->GetTCGraphicAppearance()->SetTintColour(colour, this);
     CBaseIntelligentPointer* it = TintList.begin();
     CBaseIntelligentPointer* end = TintList.end();
     for (; it != end; ++it) {
         CThing* thing = ((CThing*)it->GetPItem());
-        if (thing && !(thing->m_flags91 & 1) && thing->PGraphicAppearance)
-            thing->PGraphicAppearance->SetTintColour(colour, this);
+        if (thing && !thing->IsDead() && thing->GetTCGraphicAppearance())
+            thing->GetTCGraphicAppearance()->SetTintColour(colour, this);
     }
 }
 

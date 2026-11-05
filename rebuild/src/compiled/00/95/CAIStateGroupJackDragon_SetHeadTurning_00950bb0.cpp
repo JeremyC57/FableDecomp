@@ -1,4 +1,5 @@
 // CAIStateGroup_JackDragon::SetHeadTurning(bool enable) -- when the creature's current mode is one of the two dragon modes (types 0x4e / 0x47), set its head-turning flag
+// Leaf: ?SetHeadTurning@CAIStateGroup_JackDragon@@QAEX_N@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00950BB0, length 120 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined interface lookup, type 0x31 = CTCCreatureModeManager,
@@ -14,28 +15,10 @@
 // an engine header: descriptive local model (the flag name is descriptive).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CMode {
     virtual void v00();
@@ -66,7 +49,7 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
 void CAIStateGroup_JackDragon::SetHeadTurning(bool enable)
 {
     CTCCreatureModeManager* modes;
-    PBrain->PCreature->GetInterface(&modes, 0x31);
+    PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
     if (modes->GetCurrentMode()->GetModeType() == 0x4e)
         modes->GetCurrentMode()->m_headTurning = enable;
     else if (modes->GetCurrentMode()->GetModeType() == 0x47)

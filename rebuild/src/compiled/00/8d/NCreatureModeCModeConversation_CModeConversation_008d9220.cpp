@@ -1,4 +1,5 @@
 // NCreatureMode::CModeConversation::CModeConversation(CThing*) -- conversation mode with the default attitude (1); adopts the owner's CTCTalk attitude when the thing has one
+// Leaf: ??0CModeConversation@NCreatureMode@@QAE@PAVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D9220, 160 bytes (padding included).
 // Shape: CModeBase ctor (0x0073EAC0), vtable 0x01285990 (rtti NCreatureMode::CModeConversation),
@@ -17,31 +18,13 @@ typedef long EConversationAttitude;
 
 const CCharString& __fastcall GetAnimGroupName(EConversationAttitude attitude);   // 0x004CD9C0
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];          // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;              // +0x44
-    template<class T> bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
 class CTCTalk { public:
-    EConversationAttitude GetAttitude();     // 0x006E3180
+    EConversationAttitude GetAttitude() const;     // 0x006E3180
 };
 
 class CAnimFilterOfGroup { public:                  // vtable 0x01267568
@@ -77,8 +60,8 @@ CModeConversation::CModeConversation(CThing* thing)
     , Filter(GetAnimGroupName(1))
     , ResetIdleAnim(true)
 {
-    CTCTalk* talk;
-    if (ParentThing->GetInterface(&talk, 15)) {
+    const CTCTalk* talk;
+    if (ParentThing->PeekTC(TCI_TALK, &talk)) {
         EConversationAttitude attitude = talk->GetAttitude();
         InitialAttitude = attitude;
         if (attitude != CurrentAttitude) {

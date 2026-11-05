@@ -21,35 +21,17 @@ class CTrack { public:
 };
 }
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();
     virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
-    virtual long GetKind();                 // slot 28 (+0x70)
+    virtual long GetKind() const;                 // slot 28 (+0x70)
     CThing*       m_pThing;                 // +0x04
     unsigned char _pad08[0x48 - 0x08];
     C3DVector     m_position;               // +0x48 (descriptive: the camera-point position)
@@ -90,8 +72,8 @@ struct CTrack {
 
 void NCameraModes::CTrack::UpdateDesiredPos(C3DVector& desired)
 {
-    CTCBase* pComponent;
-    m_target.GetPItem()->GetInterface(&pComponent, 0x3f);
+    const CTCBase* pComponent;
+    m_target.GetPItem()->PeekTC(TCI_CAMERA_POINT, &pComponent);
     CTCBase* pFallback;
     if (pComponent->GetKind() != 3)
         pComponent = pFallback;

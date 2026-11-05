@@ -19,38 +19,13 @@
 #define FABLE_RETAIL_STLP_BITSET_INDEX
 #include "engine/CVectorMap.h"
 
-
-
-enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };   // enumerators not needed (CTCAIScratchpad is 0xAA)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
-class CThing {
-public:
-    unsigned char      _pad00[0x20];
-    std::bitset<274>   UsingComponents;                                   // +0x20
-    CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (UsingComponents[T::INTERFACE_TYPE]) {
-            ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
-            CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
-            CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::iterator it = map->LowerBound(type);
-            if (it == map->end() || T::INTERFACE_TYPE < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
 
 class CCharStringData;
-class CCharString {
-public:
-    CCharString(const char* text, long length = -1);         // 0x0099EBF0
-    ~CCharString();                                          // 0x0099EAE0
-    CCharStringData* PStringData;
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                              // 8 bytes (Ego_r.pdb)
@@ -66,7 +41,6 @@ public:
 class CThingCreatureBase : public CThing { };
 class CTCCreatureModeManager {
 public:
-    enum { INTERFACE_TYPE = 0x31 };
     void RemoveMode(unsigned long mode);                     // 0x0073ABA0
 };
 class CCreatureActionBase {                                  // 0xA8 bytes in retail (vptr first)
@@ -97,6 +71,6 @@ void CCreatureAction_IceTrollIcicleAssaultOutOf::Initialise()
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
-    if (PCreature->GetTC(&modeManager))
+    if (PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager))
         modeManager->RemoveMode(0x5D);
 }

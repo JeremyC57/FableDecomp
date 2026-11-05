@@ -1,4 +1,5 @@
 // CAIStateGroup_NonVillageGuardPatrol::IsRunnable() -- runnable when a "MoveTrack" track node lies in the 10m square around the creature: latch the nearest one as the patrol node
+// Leaf: ?IsRunnable@CAIStateGroup_NonVillageGuardPatrol@@UAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093CC60, length 336 bytes (+ int3 padding).
@@ -14,20 +15,14 @@
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04) with the
 //          patrol node intelligent pointer at +0x14.
 #include "engine/C3DVector.h"
-class CThing { public:
-    const C3DVector& GetPos() const;             // 0x004C73D0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CThingTrackNode;
 class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
 };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
+
 class CThingFilter_HasTrackName { public:
     CCharString Name;
     CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }

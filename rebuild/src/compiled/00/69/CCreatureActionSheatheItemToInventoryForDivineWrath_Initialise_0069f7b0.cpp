@@ -7,10 +7,11 @@
 #include "engine/CCreatureAction_SheatheItemToInventory_ForDivineWrath.h"
 #undef CCreatureAction_SheatheItemToInventory_ForDivineWrath
 class CCharStringData;
-class CCharString { public: CCharStringData* PStringData; CCharString(const char*, long = -1); ~CCharString(); };
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CTCBase;
 class CTCParamsBase;
-class CThing { public: CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*); };
+
 class CThingCreatureBase : public CThing { };
 class CBaseObject;
 class CBaseObjectPointer;

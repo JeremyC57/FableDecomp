@@ -16,6 +16,8 @@
 // its two Z members raised (`fadd ; fstp` into the frame), then copied into the result with the
 // implicit copy constructor over C3DVector's memberwise user copy constructor (vtable store + six
 // dword moves) and destroyed through ~CBase.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
 #include "engine/C3DVector.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -46,23 +48,18 @@ class CTCPhysicsBase { public:
     virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71();
     virtual void v72(); virtual void v73(); virtual void v74(); virtual void v75();
     virtual void v76(); virtual void v77(); virtual void v78();
-    virtual float GetHeightOffset(float t);                 // slot 79 (+0x13c)
+    virtual float GetHeightOffset(float t) const;                 // slot 79 (+0x13c)
     void GetPositionInterpolator(C3DPositionInterpolator& out) const;   // 0x006B0250
 };
 
-class CThing { public:
-    unsigned char   _pad00[0x10];
-    unsigned char   Type;                                   // +0x10
-    unsigned char   _pad11[0x60 - 0x11];
-    CTCPhysicsBase* PPhysics;                               // +0x60
-};
+#include "engine/CThing.h"
 
 C3DPositionInterpolator __fastcall GetRenderPositionInterpolateForThing(const CThing& thing)
 {
-    CTCPhysicsBase* physics = thing.PPhysics;
+    const CTCPhysicsBase* physics = thing.GetPhysicsTC();
     C3DPositionInterpolator interpolator;
     physics->GetPositionInterpolator(interpolator);
-    if (thing.Type == 2)
+    if (thing.GetType() == 2)
     {
         interpolator.StartPosition.Z += physics->GetHeightOffset(0.0f);
         interpolator.EndPosition.Z += physics->GetHeightOffset(1.0f);

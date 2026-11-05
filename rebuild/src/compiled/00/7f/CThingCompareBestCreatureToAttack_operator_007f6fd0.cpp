@@ -8,11 +8,7 @@
 //   IS_THING_ALIVE is a macro `((p) != 0 && !(p)->IsDead())` over an inline CThing::IsDead() (as an inline function VC
 //   lays `return 0` inline after the first alive test); the bit mask is kept in al; the second test re-checks a; b is
 //   only null-tested before the compare; `valueA > valueB` with valueA spilled (`fcomp ; test ah,5 ; jp`).
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char Flags91;                      // +0x91 bit 0 dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public: };
 class CThingAICreature : public CThingCreatureBase { public: };
 #define IS_THING_ALIVE(p) ((p) != 0 && !(p)->IsDead())

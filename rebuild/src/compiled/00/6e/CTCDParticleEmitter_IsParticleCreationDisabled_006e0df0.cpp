@@ -1,4 +1,5 @@
 // CTCDParticleEmitter::IsParticleCreationDisabled() const -- creation is disabled while the emitter sleeps, while the attached thing is in limbo, or while the attached creature sits idle in creature mode 30
+// Leaf: ?IsParticleCreationDisabled@CTCDParticleEmitter@@QBE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0DF0, length 138 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), the const CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0
@@ -11,36 +12,13 @@
 // fetched into edi before the mode call; one `xor al,al` exit.
 struct CTCBaseInterface;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                     // +0x91 bit 0
-    unsigned char CreatedByOwnerThingCreation : 1;
-    unsigned char IncludeInThingScans : 1;
-    unsigned char Activated : 1;
-    unsigned char GloballyLoaded : 1;
-    unsigned char InLimbo : 1;                  // bit 5
-    unsigned char KillLocked : 1;
-    unsigned char CreatedBySerialisation : 1;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)((CTCBaseInterface*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const;         // 0x006622A0
 };
@@ -86,10 +64,10 @@ bool CTCDParticleEmitter::IsParticleCreationDisabled() const
 {
     if (Asleep)
         return true;
-    if (PAttachedToThing.GetPItem()->InLimbo)
+    if (PAttachedToThing.GetPItem()->IsInLimbo())
         return true;
-    CTCCreatureModeManager* modes;
-    if (PAttachedToThing.GetPItem()->GetInterface(&modes, 0x31)) {
+    const CTCCreatureModeManager* modes;
+    if (PAttachedToThing.GetPItem()->PeekTC(TCI_ENTITY_MODE_MANAGER, &modes)) {
         const CThingCreatureBase* creature = (const CThingCreatureBase*)PAttachedToThing.GetPItem();
         if (modes->GetCurrentMode()->GetType() == 30 && !creature->IsPerformingAnyAction())
             return true;

@@ -12,36 +12,11 @@
 //   CTCHeroOpinionDeedLog::GuardsIgnoreCrimes retail +0x2d (Ego_r.pdb CTCHeroOpinionDeedLog GuardsIgnoreCrimes +0x39; retail map 12 bytes and list 4 bytes put NextHandle +0x1c, VillageForCrimes +0x20, WeaponOutDeedHandle +0x28 (landed OnInitialActivate 0x006C5680 model), so this field is +0x2d).
 // Setter: CTCHeroOpinionDeedLog::SetGuardsIgnoreCrimes(bool) (FableWin.pdb ?SetGuardsIgnoreCrimes@CTCHeroOpinionDeedLog@@QAEX_N@Z), inline.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
-    CInterfaceMap Components;                            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || T::INTERFACE_TYPE < it->first)
-            it = map->end();
-        *out = (T*)it->second;
-        return true;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
@@ -53,7 +28,6 @@ public:
 #include "engine/CPlayerManager.h"
 class CTCHeroOpinionDeedLog {
 public:
-    enum { INTERFACE_TYPE = 0x51 };
     unsigned char _pad00[0x2d];
     bool GuardsIgnoreCrimes;                                    // +0x2d
     void SetGuardsIgnoreCrimes(bool value) { GuardsIgnoreCrimes = value; }
@@ -72,6 +46,6 @@ void CGameScriptInterface::SetGuardsIgnoreCrimes(bool value) const
 {
     CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCHeroOpinionDeedLog* tc;
-    if (hero && !hero->IsDead() && hero->GetTC(&tc))
+    if (hero && !hero->IsDead() && hero->GetTC(TCI_HERO_OPINION_DEED_LOG, &tc))
         tc->SetGuardsIgnoreCrimes(value);
 }

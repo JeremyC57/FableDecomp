@@ -10,35 +10,9 @@
 // @ 0x00925680 (landed), CThingCreatureBase::SetCurrentAction @ 0x006644F0, ~CCombatActionBase @ 0x0062E900.
 // Shape: as 0x00924A90 with a three-argument loop constructor (one `push 0`; ebx is pushed only inside the alive arm).
 class CTCBase;
-struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
-    unsigned char Dead : 1;                     // +0x91 bit 0
-    bool IsDead() const { return Dead; }        // Ego_r.pdb ?IsDead@CThing@@QBE_NXZ
-    unsigned char _pad92[0xb4 - 0x92];
-    float         m_health;                     // +0xb4
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
-            return true;
-        }
-        return false;
-    }
-};
+#include "engine/CThing.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+
 class CThingCreatureBase;
 class CCombatActionBase;
 class CThingCreatureBase : public CThing { public:

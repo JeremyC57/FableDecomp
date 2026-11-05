@@ -1,34 +1,17 @@
 // CAIStateGroup_BanditSitRoundCampfire::OnReplace() -- free the campfire seat, and if the bandit is sitting, schedule the next sit, ask the brain to stand up and drop the sitting mode; re-draw the weapon if it was carried
+// Leaf: ?OnReplace@CAIStateGroup_BanditSitRoundCampfire@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Grade: RELOCATION_MATCH -- retry wave 2 (sec4): the inline Random() reads the range into a local after GFROR13 and before
 //   the seed store (the store may alias the range global, so source order fixes the schedule: load, compare, store, div).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 long __fastcall GFROR13(unsigned long value);    // 0x00497890
 
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    __forceinline CTCBase* GetTC(long type)
-    {
-        long key = type;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
-        return (it == map->end() || type < it->first ? map->end() : it)->second;
-    }
-};
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
     bool IsFreeToPerformAction(const CCreatureActionBase& action);   // 0x00662210
@@ -95,7 +78,7 @@ class CBrainOutput { public:
         PAction.Reset(action.Clone());
     }
 };
-class CCharString { public: void* PStringData; };
+
 class CSoundPair { public:
     long m_first;
     long m_second;
@@ -165,17 +148,17 @@ struct CAIStateGroup_BanditSitRoundCampfire : CAIStateGroupBase {
 
 void CAIStateGroup_BanditSitRoundCampfire::OnReplace()
 {
-    if (GotSeatPos && PCampfire.GetPItem() && !(PCampfire.GetPItem()->m_flags91 & 1)) {
+    if (GotSeatPos && PCampfire.GetPItem() && !PCampfire.GetPItem()->IsDead()) {
         CTCUserActionPointBase* point;
         CThing* campfire = PCampfire.GetPItem();
-        if (campfire->HasTC(0x2d))
-            point = (CTCUserActionPointBase*)campfire->GetTC(0x2d);
+        if (campfire->HasTC(TCI_SINGLE_USER_ACTION_POINTS))
+            point = (CTCUserActionPointBase*)((CTCUserActionPointBase*)&campfire->GetTC(TCI_SINGLE_USER_ACTION_POINTS));
         ((CTCUserActionPointBase*)point)->SetActionPointAsFree(SeatPosIndex);
     }
     CTCCreatureModeManager* modes;
     CThingCreatureBase* creature = GetCreature();
-    if (creature->HasTC(0x31))
-        modes = (CTCCreatureModeManager*)creature->GetTC(0x31);
+    if (creature->HasTC(TCI_ENTITY_MODE_MANAGER))
+        modes = (CTCCreatureModeManager*)((CTCCreatureModeManager*)&creature->GetTC(TCI_ENTITY_MODE_MANAGER));
     if (Sitting || modes->GetCurrentMode()->GetType() == 10) {
         PeekWorld();
         unsigned long delay = Random(g_SitDelayRange);

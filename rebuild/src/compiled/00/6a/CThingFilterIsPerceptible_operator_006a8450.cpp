@@ -8,28 +8,10 @@
 // (`mov eax,1` / `xor eax,eax`); the present case is the `if` body so the constant tail lands last.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CTCInterface36 {                             // interface 0x36 component (class not established)
     unsigned char _pad[0x0c];
@@ -44,8 +26,8 @@ class CThingFilter_IsPerceptible { public:
 
 bool CThingFilter_IsPerceptible::operator()(CThing* thing) const
 {
-    CTCInterface36* component;
-    if (thing->GetInterface(0x36, &component))
+    const CTCInterface36* component;
+    if (thing->PeekTC(TCI_STEALTH, &component))
         return component->m_flagA || component->m_flagB || component->m_flagC;
     return true;
 }

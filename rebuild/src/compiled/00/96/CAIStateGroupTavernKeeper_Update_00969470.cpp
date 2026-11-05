@@ -19,31 +19,13 @@
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThingPhysicsBody;
-class CThing { public:
-    const C3DVector& GetPos() const;    // 0x004C73D0
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0xc];
-    CThingPhysicsBody* PBody;                   // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+class CTCPhysicsBase;
+
 class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -54,11 +36,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer& operator=(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
+
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 class CThingCreatureBase;
 class CCreatureActionBase { public:
@@ -116,7 +94,7 @@ class CTCVillageMember { public:
 };
 struct CTCScratch23 {                           // interface 0x23
 };
-struct CThingPhysicsBody {
+struct CTCPhysicsBase {
     unsigned char _pad[0x34];
     float Radius;                               // +0x34
 };
@@ -155,16 +133,16 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
 void CAIStateGroup_TavernKeeper::Update()
 {
     CTCShopKeeper* shopKeeper;
-    if (GetCreature()->GetInterface(&shopKeeper, 0x90) && shopKeeper->GetShopTC())
+    if (GetCreature()->GetTC(TCI_SHOP_KEEPER, &shopKeeper) && shopKeeper->GetShopTC())
         shopKeeper->GetShopTC()->SetStockState(0);
     CTCScratch23* scratch;
-    GetCreature()->GetInterface(&scratch, 0x23);
+    GetCreature()->GetTC(TCI_VILLAGE_MEMBER, &scratch);
     ((CTCVillageMember*)scratch)->GetPVillage();
     CThingPos* creature = (CThingPos*)GetCreature();
     CThingBuildingModel* pub = (CThingBuildingModel*)PPub.GetPItem();
     if (!pub->IsPointInside(creature->GetPos())) {
         bool arrived;
-        CThingPhysicsBody* body = ((CThingPos*)PPub.GetPItem())->PBody;
+        CTCPhysicsBase* body = ((CThingPos*)PPub.GetPItem())->GetPhysicsTC();
         CThingPos* pubThing = (CThingPos*)PPub.GetPItem();
         if (AIAction_MoveToPosProximity(1, pubThing->GetPhysPos(), body->Radius, &arrived, 3, true,
                 false, true, 0, true, 0.0f) != 2) {
@@ -173,7 +151,7 @@ void CAIStateGroup_TavernKeeper::Update()
         }
     }
     CTCTavernBar* bar;
-    ((CThing*)PBar.GetPItem())->GetInterface(&bar, 0xb9);
+    ((CThing*)PBar.GetPItem())->GetTC(TCI_TAVERN_BAR, &bar);
     for (;;) {
         if (GetPaymentRequest()) {
             if (!GetOldJugPoint()) {

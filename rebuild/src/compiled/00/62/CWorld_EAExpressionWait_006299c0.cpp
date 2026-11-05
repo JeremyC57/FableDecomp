@@ -20,12 +20,8 @@
 //   directly); the SetCurrentAction result is dropped; the script name is a named local (built before the bool push,
 //   passed by address, destroyed last).
 class CCharStringData;
-class CCharString {
-public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CBaseObject;
 #pragma pack(push, 1)
@@ -33,12 +29,6 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Dead : 1;                             // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-};
 class CThingPhysical : public CThing { };
 class CThingGameObject : public CThingPhysical { };
 class CCreatureActionBase;

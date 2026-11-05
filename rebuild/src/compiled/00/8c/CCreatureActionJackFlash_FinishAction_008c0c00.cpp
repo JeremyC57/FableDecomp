@@ -16,34 +16,15 @@
 //   `this` is spilled to the frame because edi is reused for &PCreature; the player creature is a named local so it is
 //   fetched before SuspendAI's argument pushes.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char m_type;                             // +0x10 (1: player)
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long m_presentBits[9];                   // +0x20
-    CInterfaceMap m_interfaces;                       // +0x44
-    unsigned char _pad54[0x18];
-    unsigned char m_flags6c;                          // +0x6c bit 3
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -127,14 +108,14 @@ class CCreatureAction_JackFlash : public CCombatActionBase { public:
 
 void CCreatureAction_JackFlash::FinishAction()
 {
-    if (PTarget.GetPItem()->m_flags6c & 8) {
+    if (PTarget.GetPItem()->GetTypeFlags() & 8) {
         CThing* target = PTarget.GetPItem();
         CTCCreatureModeManager* modes;
-        PCreature.GetPItem()->GetInterface(&modes, 0x31);
+        PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
         CCountedPointer<CModeJackOfBladesFlash> mode(new CModeJackOfBladesFlash(PCreature.GetPItem()));
         mode->SetTarget(target);
         modes->AddMode(mode);
-        if (PCreature.GetPItem()->m_type == 1) {
+        if (PCreature.GetPItem()->GetType() == 1) {
             CThing* creature = PCreature.GetPItem();
             ((CThingAICreature*)creature)->SuspendAI(true, 0);
         }

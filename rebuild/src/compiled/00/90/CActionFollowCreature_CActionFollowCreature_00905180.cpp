@@ -15,9 +15,9 @@ class CThing;
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
 
-class CThing { public:
-    CScriptThing GetScriptThing() const;          // 0x004C7E50
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CBaseClassNonCopyable {
 protected:

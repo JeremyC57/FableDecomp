@@ -32,11 +32,7 @@ struct SCombatantMap {                             // map<unsigned __int64, CCom
     SCombatantNode* FindNode(const unsigned __int64& key) const;   // 0x006F0250 (the tree's node find; stand-in name)
 };
 
-class CThing {
-public:
-    unsigned char    _pad00[0x18];
-    unsigned __int64 UniqueID;                     // +0x18 (Ego_r.pdb CThing::UniqueID)
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 
 class CCombatManager {
@@ -50,6 +46,6 @@ private:
 
 CCombatantInfo& CCombatManager::GetCombatantInfo(const CThingCreatureBase& creature)
 {
-    unsigned __int64 key = creature.UniqueID;
+    unsigned __int64 key = creature.GetUniqueID();
     return Combatants.FindNode(key)->second;
 }

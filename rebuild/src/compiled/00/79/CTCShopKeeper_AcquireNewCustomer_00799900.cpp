@@ -17,9 +17,7 @@
 //          temporary; the by-value AddNewCustomer argument is copy-constructed in its stack slot.
 #include "engine/C3DVector.h"
 class CBaseObject;
-class CThing { public:
-    const C3DVector& GetPos() const;          // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingCreatureBase;
 class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;

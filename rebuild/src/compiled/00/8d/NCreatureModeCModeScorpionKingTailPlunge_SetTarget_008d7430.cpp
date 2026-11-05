@@ -10,9 +10,7 @@
 // Shape: as 0x008D7370 (temporary + inline operator= with the item in a local, position copied word by word), members under `#pragma pack(1)`.
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;          // 0x004C73D0 (CThing::GetPos, GOTCHAS chunk 141)
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public: };
 
 class CBaseObject;

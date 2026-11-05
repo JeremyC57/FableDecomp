@@ -23,28 +23,12 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    __forceinline bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-    bool IsAffectedByBulletTime();              // 0x004C9920
-};
+
 class CAnimInit { public:                              // PDB 44 bytes
     long          UpdateMode;
     unsigned char Type;
@@ -131,8 +115,8 @@ public:
     __forceinline CTCAnimationComplex* GetAnimationComplex() const
     {
         CTCAnimationComplex* complex;
-        if (ParentThing->HasTC(0x5a))
-            complex = ParentThing->GetTC<CTCAnimationComplex>(0x5a);
+        if (ParentThing->HasTC(TCI_ANIMATION))
+            complex = ((CTCAnimationComplex*)&ParentThing->GetTC(TCI_ANIMATION));
         return complex;
     }
     void FrameUpdate();

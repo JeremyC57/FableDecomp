@@ -10,7 +10,7 @@
 // `ParentThing` read is allocated to eax, the accessor lands it in ecx (`mov ecx,[ecx+4]`) as retail has it.
 // engine/CThingCreatureBase.h / CCombatAction_KickThingOnGround.h / CCreatureActionBase.h are flattened PDB PODs; the
 // calls need member declarations, so the classes are modelled locally.
-class CThing { public: unsigned char _body[0x10]; };
+#include "engine/CThing.h"
 
 class CCreatureActionBase { public: virtual void v00(); };
 

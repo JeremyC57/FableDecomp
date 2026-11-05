@@ -1,4 +1,5 @@
 // CAIStateGroup_TavernServer::PickUpJug() -- collect the jug from the bar: free the bar point and fail when the jug
+// Leaf: ?PickUpJug@CAIStateGroup_TavernServer@@QAE_NXZ
 // is dead; otherwise run a CCreatureAction_PickUpJug ("COLLECT_JUG_FROM_BAR", mode 0x29) to completion with the
 // creature unpushable, then free the bar point, restore pushability and report whether the action succeeded.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00967930, length 232 bytes (+ int3 padding).
@@ -16,11 +17,8 @@
 // CThing::IsDead(), which gives retail's colouring (&PJug/jug in edi, creature in ebx). Engine header is padding only,
 // so a local model.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-class CThing { public:
-    unsigned char _pad0[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CThingCreatureBase;
 
 class CBaseObject;
@@ -52,12 +50,6 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
-};
-
-class CCharString { public:                            // 4 bytes: the shared string data pointer
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
 };
 
 class CCreatureActionBase { public:                    // the action root (vptr + body up to the pointer member)

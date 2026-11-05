@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToPub::GetBar() -- collect the live things in the pub that have a tavern bar component, adopt the first as the bar and its barman as ours; false when the pub has none
+// Leaf: ?GetBar@CAIStateGroup_GoToPub@@QAE_NXZ
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 //   STLport shape (`insert(end(), x)` with a by-value iterator that declares a copy ctor, `create_node`, and the position's
 //   prev read into a local before linking): without it VC7.1 shrink-wraps the ebp push around the loop; (2) front() through
@@ -16,33 +17,11 @@
 #include "engine/CAIStateGroupBase.h"
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingObject;
 class CThingAICreature;
 
@@ -63,7 +42,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 
-#define IS_THING_ALIVE(p) ((p) != 0 && !((p)->m_flags91 & 1))
+#define IS_THING_ALIVE(p) ((p) != 0 && !(p)->IsDead())
 
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
@@ -155,17 +134,17 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
 bool CAIStateGroup_GoToPub::GetBar()
 {
     CTCBuildingContents* contents;
-    ((CThing*)PPub.GetPItem())->GetInterface(&contents, 0x21);
+    ((CThing*)PPub.GetPItem())->GetTC(TCI_THING_OWNER, &contents);
     CThingPtrList bars;
     for (SContentsNode* node = contents->head->next; node != contents->head; node = node->next) {
-        if (IS_THING_ALIVE(((CThing*)node->value.GetPItem())) && ((CThing*)node->value.GetPItem())->HasTC(0xb9))
+        if (IS_THING_ALIVE(((CThing*)node->value.GetPItem())) && ((CThing*)node->value.GetPItem())->HasTC(TCI_TAVERN_BAR))
             bars.push_back(((CThing*)node->value.GetPItem()));
     }
     if (bars.empty())
         return false;
     PBar = (CThingObject*)bars.front();
     CTCTavernBar* bar;
-    ((CThing*)PBar.GetPItem())->GetInterface(&bar, 0xb9);
+    ((CThing*)PBar.GetPItem())->GetTC(TCI_TAVERN_BAR, &bar);
     PBarman = bar->GetPBarman();
     return true;
 }

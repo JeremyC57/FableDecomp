@@ -11,10 +11,8 @@
 //   flag is cleared after the level/def/owner loads; the player test is `sete cl`
 //   pushed as the bool; the sound handle is stored before the string's destructor runs.
 // Leaf: ResumeForCutscene
-class CCharString { public:
-    void* PStringData;                      // +0 the shared string block
-    ~CCharString();                         // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CDefStringTable {
 public:
@@ -22,11 +20,6 @@ public:
 };
 
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)    // 0x013CA828
-
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char Type;                     // +0x10 (2 = player)
-};
 
 class CSpecialAbilitiesPhysicalShieldDef { public:
     unsigned char _pad00[0x50];
@@ -62,6 +55,6 @@ void CTCPhysicalShieldSpell::ResumeForCutscene()
         CThing* owner = ParentThing;
         CutSceneCancelled = false;
         CCharString sound = GDefStringTable.GetString(PDef->LoopingSound[SpellLevel]);
-        LoopingSound = PlaySound(sound, owner->Type == 2);
+        LoopingSound = PlaySound(sound, owner->GetType() == 2);
     }
 }

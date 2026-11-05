@@ -1,4 +1,5 @@
 // CCreatureAction_BanditKingChangeWeapons::PerformAction() -- if the creature has a CTCBoss component (interface 173), create its next weapon def for the creature twice
+// Leaf: ?PerformAction@CCreatureAction_BanditKingChangeWeapons@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C8960, length 108 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, three times), CVectorMap::LowerBound @ 0x0040F020 (the inlined
@@ -12,35 +13,13 @@
 // `__fastcall` the def word is read first (right to left) into a callee-saved register, then the creature fetched into ecx.
 // Retail CCreatureActionBase/CCombatActionBase place PCreature at +8; no engine header for this class, so `this` is modelled locally.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase;
 struct CTCGraphicAppearance;
-class CThing {
-public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0xc];
-    CTCPhysicsBase* m_pPhysics;             // +0x60
-    CTCGraphicAppearance* m_pGraphicAppearance;   // +0x64
-    CTCPhysicsBase* GetPhysics() const { return m_pPhysics; }                           // inline accessors: the member is
-    CTCGraphicAppearance* GetGraphicAppearance() const { return m_pGraphicAppearance; }   //   loaded straight into ecx
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -82,7 +61,7 @@ class CCreatureAction_BanditKingChangeWeapons : public CCombatActionBase { publi
 void CCreatureAction_BanditKingChangeWeapons::PerformAction()
 {
     CTCBoss* pBoss;
-    if (PCreature.GetPItem()->GetInterface(&pBoss, 173)) {
+    if (PCreature.GetPItem()->GetTC(TCI_BOSS, &pBoss)) {
         long def = pBoss->GetNextWeapon();      // named: retail reads the def into a callee-saved register before the creature fetch
         CThingCreatureBase::CreateWeaponForThingFromDef(*PCreature.GetPItem(), def);   // one weapon per hand
         long def2 = pBoss->GetNextWeapon();

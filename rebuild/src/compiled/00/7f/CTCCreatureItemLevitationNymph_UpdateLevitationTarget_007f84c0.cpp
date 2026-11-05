@@ -15,11 +15,7 @@ class C2DVector { public:
     float X, Y;
     void Set(float x, float y) { X = x; Y = y; }
 };
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char Flags91;                      // +0x91 bit 0 Dead
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -49,7 +45,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<const CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->Flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

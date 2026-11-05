@@ -1,4 +1,5 @@
 // CCombatSequenceBase::GetNextActionInSequence() -- the action at CurrentActionIndex (re-initialised), unless an incapacitated target cancels an interruptable melee sequence
+// Leaf: ?GetNextActionInSequence@CCombatSequenceBase_Retail@@QAEPAVCCombatActionBase@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B0780, length 94 bytes (+ int3 padding).
 // Callees: IsIncapacitated @ 0x0085F0C0 (`__fastcall`, the thing in ecx), IsMeleeSequence (vslot 7,
 // `call [eax+1Ch]`), IsInterruptable (vslot 5, `call [edx+14h]`), CCreatureActionBase::ReinitialiseActionID
@@ -15,10 +16,7 @@ template<class T> struct CRetailVector {
     unsigned long size() const { return (unsigned long)(last - first); }
 };
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                   // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 
 bool __fastcall IsIncapacitated(CThing* thing);   // 0x0085F0C0
 
@@ -68,7 +66,7 @@ struct CCombatSequenceBase_Retail {        // vtable 0x01278FEC
 CCombatActionBase* CCombatSequenceBase_Retail::GetNextActionInSequence()
 {
     CThing* target = Target;
-    if (target && (target->m_flags91 & 1) == 0 && IsIncapacitated(target) && IsMeleeSequence() && IsInterruptable())
+    if (target && target->IsDead() == 0 && IsIncapacitated(target) && IsMeleeSequence() && IsInterruptable())
         return 0;
     long index = CurrentActionIndex;
     if (index >= 0 && (unsigned long)index < CombatActions.size()) {

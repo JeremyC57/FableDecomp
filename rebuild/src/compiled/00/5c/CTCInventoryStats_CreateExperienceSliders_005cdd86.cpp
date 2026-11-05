@@ -67,12 +67,10 @@ public:
 };
 class CManager {
 public:
+    static CManager* __fastcall GetInstance();  // 0x0041E5F2
+public:
     CComponent* CreateLevelSlider(const CWideString& text, const C2DCoordI& position, long level, long maxLevel,
                                   const CRGBColour& colour);   // 0x00427DC9
-};
-class CFrontEndManager : public CManager {
-public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 }
 namespace std {
@@ -146,7 +144,7 @@ std::vector<NUISystem::CComponent*> CTCInventoryStats::CreateExperienceSliders(N
     std::vector<NUISystem::CComponent*> sliders;
     CTCInventoryExperience* experience;
     ParentThing->GetInterface(&experience, 0x16);
-    NUISystem::CFrontEndManager* frontEnd = NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager* frontEnd = NUISystem::CManager::GetInstance();
     CTCHeroExperience* hero = ParentThing->GetTC<CTCHeroExperience>(0x68);
     CCountedPointer<NUISystem::CComponent> slider;
     long level;

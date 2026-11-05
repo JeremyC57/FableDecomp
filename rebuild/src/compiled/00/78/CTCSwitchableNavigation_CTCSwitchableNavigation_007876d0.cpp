@@ -10,10 +10,7 @@
 // (kept in edi for both calls).
 class CWorld;
 
-class CThing { public:
-    unsigned char    _pad_0x00[0x18];
-    unsigned __int64 m_id;                   // +0x18
-};
+#include "engine/CThing.h"
 
 class CNavigatorManager { public:
     void SetSwitchableNodesAsBlocked(long mapIndex, unsigned __int64 id, bool blocked);   // 0x00A15470
@@ -46,5 +43,5 @@ CTCSwitchableNavigation::~CTCSwitchableNavigation()
 {
     CNavigatorManager* navigator = GetWorld().PNavigatorManager;
     if (navigator->IsNavigationMapActivated(MapIndex))
-        navigator->SetSwitchableNodesAsBlocked(MapIndex, ParentThing->m_id & 0xFFFFFFFFFFui64, false);
+        navigator->SetSwitchableNodesAsBlocked(MapIndex, ParentThing->GetUniqueID() & 0xFFFFFFFFFFui64, false);
 }

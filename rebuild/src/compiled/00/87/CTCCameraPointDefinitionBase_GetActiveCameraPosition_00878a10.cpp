@@ -1,4 +1,5 @@
 // CTCCameraPointDefinitionBase::GetActiveCameraPosition(const CThing* thing) -- the camera position for a thing: its position raised by 1.6 units
+// Leaf: ?GetActiveCameraPosition@CTCCameraPointDefinitionBase@@SI?AVC3DVector@@PBVCThing@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x00878A10, 52 bytes. Callee: CThing::GetPos() const @ 0x004C73D0 (returns a const
@@ -10,9 +11,7 @@
 
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CTCCameraPointDefinitionBase
 { public:

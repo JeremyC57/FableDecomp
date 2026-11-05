@@ -19,22 +19,10 @@ extern bool g_SuppressInventoryBaseCopy;                // 0x013B8A88
 class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    std::bitset<274> UsingComponents;                      // +0x20
-    CInterfaceMap Components;                           // +0x44
-    template <class T> __forceinline void GetInterface(long typeId, T** out) const
-    {
-        if (UsingComponents.test(typeId)) {
-            ETCInterfaceType type = (ETCInterfaceType)(typeId);
-            const CInterfaceMap* map = &Components;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *out = (T*)((it == map->end() || typeId < it->first) ? map->end() : it)->second;
-        }
-    }
-};
+
 namespace NHeroInformationScreens {
 class CBase { public:                                          // the screen interface base at +0x130
     virtual void Copy(const CBase* other);              // 0x0066E7A6 (empty)
@@ -56,8 +44,8 @@ public:
     CThing*            pMannequin;                      // +0x140
     bool               UseMannequin;                    // +0x144
     long               lastCategoryIdx;                 // +0x148
-    CTCHeroExperience* pTCHeroExperience;               // +0x14c
-    CTCHeroStats*      pTCHeroStats;                    // +0x150
+    const CTCHeroExperience* pTCHeroExperience;               // +0x14c
+    const CTCHeroStats*      pTCHeroStats;                    // +0x150
     virtual void Copy(const CTCInventoryBase* other);
 };
 void CTCInventoryStats::Copy(const CTCInventoryBase* other)
@@ -67,6 +55,6 @@ void CTCInventoryStats::Copy(const CTCInventoryBase* other)
         CTCInventoryBase::Copy(source);
         NHeroInformationScreens::CBase::Copy(source);
     }
-    ParentThing->GetInterface(0x68, &pTCHeroExperience);
-    ParentThing->GetInterface(4, &pTCHeroStats);
+    ParentThing->PeekTC(TCI_HERO_EXPERIENCE, &pTCHeroExperience);
+    ParentThing->PeekTC(TCI_HERO_STATS, &pTCHeroStats);
 }

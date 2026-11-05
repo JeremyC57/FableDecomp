@@ -14,34 +14,13 @@
 //   UndeadFollowers list 4 bytes at +0x14, Creature +0x18).
 class CTCBase;
 class CTCParamsBase;
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
-};
+
 class CTCSummonSpell { public:
     void ResetMinionPos();                      // 0x0079B6F0
 };
@@ -61,7 +40,7 @@ private:
 bool CTCSpecialAbilities::SetupSummonSpell()
 {
     CTCSummonSpell* spell;
-    if (!Creature->GetInterface(&spell, 0x91)) {
+    if (!Creature->GetTC(TCI_SUMMON_SPELL, &spell)) {
         CCharString name("CTCSummonSpell");
         Creature->AddTC(name, true, 0);
         return true;

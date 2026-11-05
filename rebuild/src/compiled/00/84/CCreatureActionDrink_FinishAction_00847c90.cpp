@@ -14,43 +14,12 @@
 // the const map; `this` is spilled to the frame because ebp holds the carrier for the compare; the "other carrier" arm falls
 // straight to the base call. Retail CCombatActionBase/CCreatureActionBase is 0x114 bytes, so `this` is modelled locally.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-    void Kill(bool immediately);            // 0x004C9B80
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline const T* GetTC(long interfaceType) const
-    {
-        long type = interfaceType;
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return (const T*)it->second;
-    }
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-};
+
 class CTCCarrying { public:
     CThing* RemoveThingFromPrimarySlot(bool drop);     // 0x006A1E00
     void RemoveThing(CThing* thing);                   // 0x006A19B0
@@ -72,7 +41,7 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<CThing>: vptr
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -96,13 +65,13 @@ void CCreatureAction_Drink::FinishAction()
     if (IS_THING_ALIVE(PDrinkThing)) {
         PDrinkThing.GetPItem()->Kill(true);
         CTCCarrying* carrying;
-        PCreature.GetPItem()->GetInterface(&carrying, 0x46);
+        PCreature.GetPItem()->GetTC(TCI_CARRYING, &carrying);
         carrying->RemoveThingFromPrimarySlot(false);
         if (IS_THING_ALIVE(PJug)) {
             const CTCCarriedObject* carried = 0;
             const CThing* jugThing = PJug.GetPItem();
-            if (jugThing->HasTC(0x47))
-                carried = jugThing->GetTC<CTCCarriedObject>(0x47);
+            if (jugThing->HasTC(TCI_CARRYABLE))
+                carried = ((const CTCCarriedObject*)&jugThing->GetTC(TCI_CARRYABLE));
             if (carried->m_pCarrier) {
                 CThing* carrier = ((CThing*)((CTCCarryable*)carried)->GetPCarriedByThing());
                 if (carrier == PCreature.GetPItem())

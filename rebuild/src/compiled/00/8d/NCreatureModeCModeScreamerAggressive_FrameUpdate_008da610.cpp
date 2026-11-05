@@ -12,33 +12,12 @@
 //   CModeBlock::FrameUpdate 0x008D8EA0 model); the component stays in esi across the GetPItem / GetPos calls.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 #include "engine/C3DVector.h"
-
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;               // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;  // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCLook { public:                           // interface 0x43
     void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
@@ -83,7 +62,7 @@ struct CModeScreamerAggressive : CModeStandBase {
 void NCreatureMode::CModeScreamerAggressive::FrameUpdate()
 {
     CTCLook* look;
-    if (PTarget.GetPItem() != 0 && !(PTarget.GetPItem()->m_flags91 & 1) && ParentThing->GetInterface(&look, 0x43))
+    if (PTarget.GetPItem() != 0 && !PTarget.GetPItem()->IsDead() && ParentThing->GetTC(TCI_LOOK, &look))
         look->LookAtPos(&PTarget.GetPItem()->GetPos(), 0x67);
     CModeBase::FrameUpdate();
 }

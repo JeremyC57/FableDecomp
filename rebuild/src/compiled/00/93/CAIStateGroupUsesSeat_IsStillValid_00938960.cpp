@@ -1,4 +1,5 @@
 // CAIStateGroup_UsesSeat::IsStillValid() -- the seat state stays valid while the creature (when seated) is
+// Leaf: ?IsStillValid@CAIStateGroup_UsesSeat@@UAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // within sqrt(0.1) of its seat position and its mode component (interface 0x42) is in neither mode 1 nor mode 6.
@@ -13,29 +14,10 @@
 class CTCBase;
 #include "engine/C3DVector.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -54,7 +36,7 @@ class CAIStateGroupBase { public:
 };
 
 class CTCCreatureModeManager { public:                 // interface 0x42
-    bool HasMode_00811340(long mode);                    // 0x00811340 (manifest "CPlayer::HasMode", propagated)
+    bool HasMode_00811340(long mode) const;                    // 0x00811340 (manifest "CPlayer::HasMode", propagated)
 };
 
 struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
@@ -78,8 +60,8 @@ bool CAIStateGroup_UsesSeat::IsStillValid()
         if (s > 0.1f)
             return false;
     }
-    CTCCreatureModeManager* modes;
-    PBrain->PCreature->GetInterface(&modes, 0x42);
+    const CTCCreatureModeManager* modes;
+    PBrain->PCreature->PeekTC(TCI_ENTITY_EVENTS, &modes);
     if (modes->HasMode_00811340(1) || modes->HasMode_00811340(6))
         return false;
     return true;

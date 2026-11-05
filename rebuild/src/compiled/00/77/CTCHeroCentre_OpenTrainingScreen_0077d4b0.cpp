@@ -19,28 +19,11 @@
 // end/hit choice in one ternary so the component lands in ecx.
 class CThing;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                            // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long type)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            *ppOut = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CTCHero { public:
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0 (ETutorialCategory)
@@ -95,13 +78,13 @@ class CTCHeroCentre : public CTCBase { public:
 void CTCHeroCentre::OpenTrainingScreen()
 {
     CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
-    if (hero && !(hero->m_flags91 & 1)) {
+    if (hero && !hero->IsDead()) {
         CTCHero* heroTC;
-        if (hero->GetInterface(&heroTC, 0x29) && heroTC && heroTC->GiveTutorialForCategory(0xf, false)) {
+        if (hero->GetTC(TCI_HERO, &heroTC) && heroTC && heroTC->GiveTutorialForCategory(0xf, false)) {
             WaitingForTutorialToFinish = true;
             return;
         }
-        if (hero->HasTC(0x16)) {
+        if (hero->HasTC(TCI_INVENTORY_EXPERIENCE)) {
             CGameEvent event(0x1a);
             event.AddULONG(0xb);
             event.Player = (signed char)PeekPlayerManager().GetMainPlayerNumber();

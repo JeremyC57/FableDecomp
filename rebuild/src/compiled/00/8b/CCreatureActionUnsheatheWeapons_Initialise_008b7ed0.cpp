@@ -1,4 +1,5 @@
 // CCreatureAction_UnsheatheWeapons::Initialise() -- ask whether the creature should play the unsheathe action for its weapon type (and whether it is really a sheathe), name the animation STANDARD_SHEATHE or STANDARD_UNSHEATHE, tell the creature's combat component which weapon type is being drawn, then the combat-action Initialise
+// Leaf: ?Initialise@CCreatureAction_UnsheatheWeapons@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B7ED0, length 176 bytes (plain `ret`, virtual; also called directly by
 // CCreatureAction_SummonerUnsheatheStrike::Initialise @ 0x008CB620).
@@ -17,34 +18,12 @@ class CTCBase;
 class CThingCreatureBase;
 enum EUnsheatheWeaponType { UNSHEATHE_WEAPON_TYPE_DEFAULT };
 
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 bool __fastcall ShouldPlayUnsheatheWeaponAction(CThing* creature, EUnsheatheWeaponType type, bool* pCanUnsheathe,
                                                 bool* pSheathe);   // 0x008B7CF0
@@ -86,7 +65,7 @@ void CCreatureAction_UnsheatheWeapons::Initialise()
         SetCombatAnimation(name);
     }
     CTCCombat* combat;
-    if (((CThing*)PCreature.GetPItem())->GetInterface(&combat, 0x30))
+    if (((CThing*)PCreature.GetPItem())->GetTC(TCI_COMBAT, &combat))
         combat->m_unsheatheWeaponType = WeaponType;
     CCombatActionBase::Initialise();
 }

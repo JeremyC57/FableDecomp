@@ -1,4 +1,5 @@
 // CCreatureAction_UseObject::FrameUpdate() -- finish at once when the used thing is gone; while using the dummy point: keep the base FrameUpdate running until the creature has stopped moving/turning to it, then (with no proximity left and a usable CTCActionUse on the thing) snap the creature's physics to the dummy facing and position; finally the per-frame slot-4 and slot-3 virtuals
+// Leaf: ?FrameUpdate@CCreatureAction_UseObject@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069FCE0, length 369 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PUsedThing +0xa8, PCreature +8), this object's virtual slots 4 (+0x10) and
@@ -20,7 +21,8 @@ extern "C" double __cdecl fmod(double x, double y);
 #pragma intrinsic(atan2, fmod)
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase { public:
@@ -31,32 +33,13 @@ class CTCPhysicsBase { public:
     VF10(3) VF10(4) VF10(5) VF(60) VF(61) VF(62) VF(63) VF(64)
     virtual void SetFacingAngle(float fraction);   // slot 66 (+0x108)
 };
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0xc];
-    CTCPhysicsBase* m_pPhysics;                 // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline const T* GetTC(long interfaceType) const
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (const T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-};
+
 struct CTCActionUse {                           // interface type 0xD
     bool CanBeUsedFromDummy() const;            // 0x007EABE0
 };
 __forceinline bool CanUseFromDummy(const CThing* thing)
 {
-    return thing->HasTC(0xd) && thing->GetTC<CTCActionUse>(0xd)->CanBeUsedFromDummy();
+    return thing->HasTC(TCI_ON_ACTION_USE) && ((const CTCActionUse*)&thing->GetTC(TCI_ON_ACTION_USE))->CanBeUsedFromDummy();
 }
 class CBaseObject;
 class CBaseObjectPointer;
@@ -77,7 +60,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -121,7 +104,7 @@ void CCreatureAction_UseObject::FrameUpdate()
         }
     }
     if (UsingDummy && Proximity == 0.0f && CanUseFromDummy(PUsedThing.GetPItem())) {
-        CTCPhysicsBase* physics = PCreature.GetPItem()->m_pPhysics;
+        CTCPhysicsBase* physics = PCreature.GetPItem()->GetPhysicsTC();
         float fraction = (float)atan2(Dummy.YAxis.X, Dummy.YAxis.Y) * 0.15915493667125702f;
         if (fraction < 0.0f || fraction >= 1.0f) {
             fraction = (float)fmod(fraction, 1.0);
@@ -130,7 +113,7 @@ void CCreatureAction_UseObject::FrameUpdate()
         }
         physics->SetFacingAngle(fraction);
         CThing* creature = PCreature.GetPItem();
-        creature->m_pPhysics->SetPosition(DummyPos);
+        creature->GetPhysicsTC()->SetPosition(DummyPos);
     }
     FinishAction();
     UpdateMovement();

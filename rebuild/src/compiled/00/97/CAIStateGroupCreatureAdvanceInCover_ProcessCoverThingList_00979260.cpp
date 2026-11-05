@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureAdvanceInCover::ProcessCoverThingList(std::vector<CThing*>& coverThings) -- sorts the candidate cover things by how well they lie in the direction from the creature to its threat
+// Leaf: ?ProcessCoverThingList@CAIStateGroup_CreatureAdvanceInCover@@UAEXAAUCThingVector@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00979260, length 130 bytes, `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the threat pointer at +0x14), CThing::GetPosition
@@ -27,9 +28,7 @@ public:
     C2DVector& Normalise();   // 0x00A14540
 };
 
-class CThing { public:
-    const C3DVector& GetPos() const;    // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 struct CCoverThingCompare {                         // the sort predicate: origin + unit direction
     C2DVector Origin;

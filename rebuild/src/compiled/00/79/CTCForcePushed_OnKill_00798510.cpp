@@ -13,13 +13,7 @@ class CThingAICreature { public:
 };
 #include "engine/CTCBase.h"
 
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char m_type;                          // +0x10
-    unsigned char _pad11[0x80];
-    unsigned char m_flags;                         // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-};
+#include "engine/CThing.h"
 
 class CTCForcePushed : public CTCBase { public:
     void OnKill();
@@ -28,6 +22,6 @@ class CTCForcePushed : public CTCBase { public:
 void CTCForcePushed::OnKill()
 {
     CThing* thing = ParentThing;
-    if (thing && !thing->IsDead() && thing->m_type == 1)
+    if (thing && !thing->IsDead() && thing->GetType() == 1)
         ((CThingAICreature*)thing)->SuspendAI(false, 0);
 }

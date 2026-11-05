@@ -21,11 +21,9 @@ class CTCParamsBase;
 class CBaseObject;
 class CTCBase;
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CThing;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -34,36 +32,9 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
     __forceinline CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char m_state;                      // +0x10
-    unsigned char _pad11[0x0f];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    CBaseObject* AddTC(const CCharString& name, bool a2, CTCParamsBase* params);   // 0x004C9D60
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances to the map once
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CCombatActionBase { public:
     virtual void v00();
@@ -100,15 +71,15 @@ class CCreatureAction_CastWillDrainLifeSpell : public CCombatActionBase { public
 
 void CCreatureAction_CastWillDrainLifeSpell::PerformAction()
 {
-    if (((CThing*)PTarget.GetPItem()) && !(((CThing*)PTarget.GetPItem())->m_flags91 & 1)) {
+    if (((CThing*)PTarget.GetPItem()) && !((CThing*)PTarget.GetPItem())->IsDead()) {
         CTCSpellCasting* casting;
-        if (((CThing*)PCreature.GetPItem())->GetInterface(&casting, 8)) {
+        if (((CThing*)PCreature.GetPItem())->GetTC(TCI_TARGETING, &casting)) {
             CTCDrainLife* drain = (CTCDrainLife*)((CThing*)PCreature.GetPItem())->AddTC("CTCDrainLife", true, 0);
             casting->SetSpellTarget(((CThing*)PTarget.GetPItem()));
-            if (((CThing*)PCreature.GetPItem())->m_state == 1)
+            if (((CThing*)PCreature.GetPItem())->GetType() == 1)
                 drain->SetAICast(SpellLevel, SpellPower);
             CIntelligentPointerThing target = PItemRemoved;
-            if (((CThing*)target.GetPItem()) && !(((CThing*)target.GetPItem())->m_flags91 & 1))
+            if (((CThing*)target.GetPItem()) && !((CThing*)target.GetPItem())->IsDead())
                 drain->PTarget = target;
         }
     }

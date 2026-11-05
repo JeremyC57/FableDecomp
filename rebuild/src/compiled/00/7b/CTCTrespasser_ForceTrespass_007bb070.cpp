@@ -25,37 +25,10 @@ class CThingAICreature;
 enum EOpinionDeedType { OPINION_DEED_TYPE_TRESPASS = 2 };
 enum EOpinionPostDeedType { OPINION_POST_DEED_TYPE_0x12 = 0x12 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad_0x54[0x3d];
-    unsigned char m_flags;                      // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-    bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
 
 class CTCHeroOpinionDeedLog { public:                  // interface 0x51
     long PostDeed(EOpinionDeedType deedType, const C3DVector& position, const CThing* target, CThingAICreature* victim,
@@ -95,9 +68,9 @@ class CTCTrespasser { public:
 
 void CTCTrespasser::ForceTrespass()
 {
-    if (IS_THING_ALIVE(TrespassingThing) && ((CThing*)TrespassingThing.GetPItem())->HasTC(0xbd)) {
+    if (IS_THING_ALIVE(TrespassingThing) && ((CThing*)TrespassingThing.GetPItem())->HasTC(TCI_TRESPASSABLE)) {
         CTCHeroOpinionDeedLog* log = 0;
-        if (ParentThing->GetInterface(&log, 0x51) && DeedHandles[2] == -1)
+        if (ParentThing->GetTC(TCI_HERO_OPINION_DEED_LOG, &log) && DeedHandles[2] == -1)
             DeedHandles[2] = log->PostDeed(OPINION_DEED_TYPE_TRESPASS, ParentThing->GetPos(), ((CThing*)TrespassingThing.GetPItem()), 0,
                                            OPINION_POST_DEED_TYPE_0x12, true, true, 0, false, 0);
         else

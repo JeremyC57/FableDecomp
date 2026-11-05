@@ -22,23 +22,21 @@
 #include "engine/CTCBase.h"
 
 class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);        // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
 
 class CTCBaseComponent;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CInterfaceBits {                                     // bitset<> at CThing+0x20
     unsigned long _M_w[9];
     bool test(unsigned long pos) const { return (_M_w[pos / 32] & (1ul << (pos % 32))) != 0; }
 };
-struct CThingGraphic {
+struct CTCPhysicsBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); 
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); 
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); 
@@ -49,28 +47,7 @@ struct CThingGraphic {
     virtual void Slot43(long value);                        // slot 43 (+0xAC)
     virtual void Slot44();                                  // slot 44 (+0xB0)
 };
-class CThing { public:
-    unsigned char _pad00[0x20];
-    CInterfaceBits present;                                 // +0x20
-    CInterfaceMap m_interfaces;                             // +0x44
-    unsigned char _pad54[0xc];
-    CThingGraphic* PGraphic;                                // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char Flags91;                                  // +0x91 (bit 0: dead)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (present.test(interfaceType)) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((CTCBaseComponent*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second);
-            return true;
-        }
-        return false;
-    }
-    const C3DVector& GetPos() const;                   // 0x004C73D0
-    void Kill(bool silent);                                 // 0x004C9B80
-};
+
 class CTCSwitchableNavigation { public:
 public:
     void SetAsBlockingNavigation(bool);   // 0x00787580
@@ -98,7 +75,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
         SetPItem(other.GetPItem());
         return *this;
     }
-    bool IsAlive() const { return GetPItem() && !(GetPItem()->Flags91 & 1); }
+    bool IsAlive() const { return GetPItem() && !GetPItem()->IsDead(); }
 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
@@ -112,13 +89,13 @@ class CTCJackShield : public CTCBase { public:
 
 void CTCJackShield::EnableShield(bool enable)
 {
-    ParentThing->PGraphic->SetShieldShown(enable);
+    ParentThing->GetPhysicsTC()->SetShieldShown(enable);
     if (enable)
-        ParentThing->PGraphic->Slot44();
+        ParentThing->GetPhysicsTC()->Slot44();
     else
-        ParentThing->PGraphic->Slot43(0);
+        ParentThing->GetPhysicsTC()->Slot43(0);
     CTCSwitchableNavigation* navigation;
-    if (ParentThing->GetInterface(&navigation, 0x79))
+    if (ParentThing->GetTC(TCI_SWITCHABLE_NAVIGATION, &navigation))
         navigation->SetAsBlockingNavigation(enable);
     if (enable) {
         if (!PEmitter.IsAlive()) {

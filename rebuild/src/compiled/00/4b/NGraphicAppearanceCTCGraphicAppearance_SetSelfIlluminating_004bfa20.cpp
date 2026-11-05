@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::SetSelfIlluminating(bool selfIlluminating) -- store the self-illumination bit, re-queue the owner for rendering and flag the primitives for update (reason 4)
+// Leaf: ?SetSelfIlluminating@CTCGraphicAppearance@NGraphicAppearance@@QAEX_N@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BFA20, length 36 bytes. Callees: CThing::AddToRenderList @ 0x004C7AC0 on ParentThing.
 // Shape: the one-bit bit-field store from the bool argument (`xor al,[esp+8]` merge, the byte re-read), the call, then
@@ -14,9 +15,9 @@
 
 class CTCAnimationBase;
 
-class CThing { public:
-    void AddToRenderList();                             // 0x004C7AC0 (manifest CThing::AddToRenderList)
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 namespace NGraphicAppearance {
 
@@ -40,7 +41,6 @@ class CPrimitive { public:                                     // 16 bytes (Ego_
 };
 
 }
-
 
 struct CPrimitiveListNode {
     CPrimitiveListNode*            m_next;              // +0x00

@@ -15,22 +15,8 @@
 // flattens the vptr).
 // Shape: /O2 (16-aligned entry).
 class CCharString;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
-    unsigned char _pad44[0x6c - 0x44];
-    unsigned long ThingTypeFlags;                        // +0x6c
-    unsigned char _pad70[0x91 - 0x70];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
@@ -69,7 +55,7 @@ void CGameScriptInterface::SetThingAsConscious(const CScriptThing& thing, bool c
     if (thing.IsAlive())
     {
         CThing* t = thing.GetPThing();
-        if (t && !t->IsDead() && (t->ThingTypeFlags & 8) && t->HasTC(0x31))
+        if (t && !t->IsDead() && (t->GetTypeFlags() & 8) && t->HasTC(TCI_ENTITY_MODE_MANAGER))
         {
             CThingCreatureBase* creature = (CThingCreatureBase*)t;
             if (conscious)

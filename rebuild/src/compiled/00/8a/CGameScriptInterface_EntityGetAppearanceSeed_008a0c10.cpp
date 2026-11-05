@@ -10,34 +10,12 @@
 // Shape: the landed L083/L084 GetInterface model (2026-10-27_linux_hand955); the lookup key is homed in the dead thing-argument slot.
 // Layout: local models -- engine/CGameScriptInterface.h carries its vptr as a data member and the CThing/CScriptThing/TC headers are flat
 //   Ego_r layouts (Dinkumware offsets); component offsets are retail (Ego_r minus 4 per STLport container before the member).
-enum ETCInterfaceType { ETCInterfaceType_FIRST };
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    virtual ~CThing();
-    unsigned char _pad04[0xC];
-    unsigned char ThingType;                               // +0x10 (1 = creature; Ego_r +0x10 is unnamed)
-    unsigned char _pad11[0xF];
-    unsigned long UsingComponents[9];                      // +0x20 (bitset<274> of present interface types)
-    CInterfaceMap Components;                              // +0x44
-    unsigned char _pad54[0x91 - 0x54];
-    unsigned char Dead : 1;                                // +0x91 bit 0 (Ego_r +0xA1)
-    template <class T> __forceinline bool GetInterface(T** out, ETCInterfaceType type)
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = type;
-            CInterfaceMap* map = &Components;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
@@ -56,6 +34,6 @@ void CGameScriptInterface::EntityGetAppearanceSeed(const CScriptThing& thing, un
 {
     CThing* t = thing.GetPThing();
     CTCRandomAppearanceMorph* morph;
-    if (t && t->GetInterface(&morph, (ETCInterfaceType)0x3))
+    if (t && t->GetTC(TCI_APPEARANCE_MORPH, &morph))
         seed = morph->GetAppearanceSeed();
 }

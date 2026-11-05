@@ -20,37 +20,12 @@ class CThingAICreature;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_STATTYPEFLAGS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x18];
-    unsigned long ThingTypeFlags;               // +0x6c
-    unsigned char _pad2[0x21];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    enum { ThingTypeMask = 0 };                 // the base class matches every thing (landed 0x008D04E0 typed-item test)
-    unsigned long HasTC(long interfaceType) const     // the masked word (a bool return narrows to `shr ; test dl,1`)
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -73,7 +48,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -115,8 +90,8 @@ unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 // frame temporary (the dead store) and the zero mask folds the test to a constant (`xor dl,dl ; jne`).
 template <class T> inline bool IsThingOfType(const CThing* const& thing)
 {
-    unsigned long mask = T::ThingTypeMask;
-    return (thing->ThingTypeFlags & mask) == mask;
+    unsigned long mask = T::StatGetTypeFlags();
+    return (thing->GetTypeFlags() & mask) == mask;
 }
 
 class CMessageEvent { public:
@@ -150,7 +125,7 @@ void CAIStateGroup_MinionReactToAlert::Update()
         if (event->PSubject.GetPItem() != 0 && IsThingOfType<CThing>(event->PSubject.GetPItem()))
             subject = event->PSubject.GetPItem();
         CTCPerceiveThing* pPerceive;
-        if (PBrain->PCreature->GetInterface(&pPerceive, 0x34)) {
+        if (PBrain->PCreature->GetTC(TCI_PERCEIVE_THING, &pPerceive)) {
             if (pPerceive->GetPerceivedThing() == subject)
                 pPerceive->SetAsIndirectlyAwareOfPerceivedThing();
         }

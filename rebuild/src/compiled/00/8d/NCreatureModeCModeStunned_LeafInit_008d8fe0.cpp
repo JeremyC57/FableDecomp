@@ -11,40 +11,11 @@
 //   second HasTC + a returned GetTC (`mov ecx,[eax+4]`); both keys share one frame word; ParentThing is re-read.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;            // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
-        return (T*)sel->second;
-    }
-};
 
 class CTCTargeted { public:                  // the type-9 component: a flags word at +0xc with an out-of-line setter
     unsigned char _pad00[0x0c];
@@ -72,8 +43,8 @@ struct CModeStunned : CModeBase {
 void NCreatureMode::CModeStunned::LeafInit()
 {
     CTCTargeted* targeted;
-    if (ParentThing->GetInterface(&targeted, 9))
+    if (ParentThing->GetTC(TCI_TARGETED, &targeted))
         targeted->SetTargetingFlags(4);
-    if (ParentThing->HasTC(0x30))
-        ParentThing->GetTC<CTCCombat>(0x30)->RemoveFromCombat();
+    if (ParentThing->HasTC(TCI_COMBAT))
+        ((CTCCombat*)&ParentThing->GetTC(TCI_COMBAT))->RemoveFromCombat();
 }

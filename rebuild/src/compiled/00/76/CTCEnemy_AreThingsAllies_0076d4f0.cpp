@@ -12,11 +12,7 @@
 // Shape: both enemy pointers start null and both owner pointers start at the things; each lookup's flag is "the OTHER
 //   thing is of class type 2" (the constant 2 lives in bl); the two ally answers are computed into named bools before the
 //   `return ally1 && ally2;` (`mov eax,1` / `xor eax,eax`), the early rejections are `return false` (`xor al,al`).
-class CThing {
-public:
-    unsigned char _pad_0x00[0x10];
-    unsigned char Type;                             // +0x10 (CClass::Type)
-};
+#include "engine/CThing.h"
 
 class CTCEnemy {
 public:
@@ -55,8 +51,8 @@ bool __fastcall CTCEnemy::AreThingsAllies(const CThing& thing1, const CThing& th
     const CTCEnemy* enemy2 = 0;
     const CThing* owner1 = &thing1;
     const CThing* owner2 = &thing2;
-    CalculateEnemyTC(thing1, &enemy1, owner1, thing2.Type == 2);
-    CalculateEnemyTC(thing2, &enemy2, owner2, thing1.Type == 2);
+    CalculateEnemyTC(thing1, &enemy1, owner1, thing2.GetType() == 2);
+    CalculateEnemyTC(thing2, &enemy2, owner2, thing1.GetType() == 2);
     if (enemy1 == 0 || enemy1->IsFriendsWithEverything())
         return false;
     if (enemy2 == 0 || enemy2->IsFriendsWithEverything())

@@ -26,10 +26,7 @@ class C2DVector { public:
 };
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60 (retail CThing)
-};
+#include "engine/CThing.h"
 
 class CTCBase { public:
     void*  __vftable;                           // +0x00
@@ -67,7 +64,7 @@ public:
 
 bool CThingMapManager::IsToBePlacedInMapwho(const CTCMapwho& mapwho, const C3DVector& pos) const
 {
-    float radius = mapwho.ParentThing->PhysicsTC->Radius;
+    float radius = mapwho.ParentThing->GetPhysicsTC()->Radius;
     long layer = GetThingMapwhoLevel(radius);
     CMapCellPosInfoGroup group;
     GetThingLayerCellPositions(radius, C2DVector(pos.X, pos.Y), layer, group);

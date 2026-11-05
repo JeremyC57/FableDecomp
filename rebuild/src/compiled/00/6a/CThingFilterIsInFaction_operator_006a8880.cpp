@@ -17,31 +17,12 @@
 // tail jump: `return tc->IsMember(m_faction);` as the last statement.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
-
-class CThing { public:
-    unsigned char  _pad00[0x20];
-    unsigned long  m_tcMask[8];                 // +0x20 which component kinds the thing holds
-    unsigned char  _pad40[4];
-    CTCMap         m_tcs;                       // +0x44
-    template<class T> bool GetInterface(T** ppOut, long kind) const   // the landed out-parameter GetInterface template
-    {
-        if (m_tcMask[kind >> 5] & (1UL << (kind & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(kind);
-            const CTCMap* map = &m_tcs;
-            const STCEntry* it = map->LowerBound(type);
-            if (it == map->end() || kind < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCFamilyMember { public:                 // component kind 0x57 (Ego_r.pdb: vector<const CThing*> FamilyMembers at +0xc, the list 0x00778AB0 searches)
     bool IsRelatedTo(const CThing& thing) const;   // 0x00778AB0 ?IsRelatedTo@CTCFamilyMember@@QBE_NABVCThing@@@Z
@@ -54,8 +35,8 @@ class CThingFilter_IsRelatedTo { public:        // Ego_r.pdb ??RCThingFilter_IsR
 
 bool CThingFilter_IsRelatedTo::operator()(const CThing& thing) const
 {
-    CTCFamilyMember* family;
-    if (thing.GetInterface(&family, 0x57))
+    const CTCFamilyMember* family;
+    if (thing.PeekTC(TCI_FAMILY_MEMBER, &family))
         return family->IsRelatedTo(*m_pThing);
     return false;
 }

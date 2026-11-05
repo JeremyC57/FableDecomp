@@ -1,4 +1,5 @@
 // CTCPreCalculatedNavigationRoute::GetRouteDestination() -- the position of the thing the route is calculated to, by value
+// Leaf: ?GetRouteDestination@CTCPreCalculatedNavigationRoute@@QBE?AVC3DVector@@XZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008004D0, length 39 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem() @ 0x00A01B50 (on the +0x0c pointer, through the typed `operator->`),
@@ -10,9 +11,7 @@
 // Layout = Ego_r.pdb CTCPreCalculatedNavigationRoute: PThingToCalculateRouteTo (CIntelligentPointer<const CThing>) +0x0c.
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    const C3DVector& GetPos() const;                   // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 #pragma pack(push, 1)

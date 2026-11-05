@@ -19,18 +19,11 @@
 //   the result is the conditional `entry ? entry->GetText() : no_text_entry` (construction flag in ebx).
 #include <stddef.h>
 class CTCBase;
-class CWideString {
-public:
-    void* PStringData;
-    CWideString(const wchar_t* text);                   // 0x0099B6B0
-    CWideString(const CWideString& other);              // 0x0099B720
-    ~CWideString();                                     // 0x0099B510
-};
-class CCharString { public:
-    void* m_pData;
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
+
 namespace NGameText {
 class CTextEntry { public:
     CWideString GetText() const;                        // 0x009C7A40
@@ -52,28 +45,10 @@ private: public:
     unsigned char _pad00[0x14];
     CDataBank*    PDataBank;                            // +0x14
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -94,7 +69,7 @@ class CTCTavernGame { public:
 CWideString CTCTavernGame::GetTextWithNarrator(unsigned long textId)
 {
     CTCTalk* talk = 0;
-    ((CThing*)PGameMaster.GetPItem())->GetInterface(0xf, &talk);
+    ((CThing*)PGameMaster.GetPItem())->GetTC(TCI_TALK, &talk);
     talk->PlaySpeech(textId, DIALOGUE_LAYER_0, true, true);
     static CWideString no_text_entry(L"Missing text entry");
     CDataBank* bank = CMainGameComponent::Get()->PDataBank;

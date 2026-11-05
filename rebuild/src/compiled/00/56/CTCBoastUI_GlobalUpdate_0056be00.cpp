@@ -5,7 +5,7 @@
 // closes the front end, clears the global boast list and drops the player's boast mode; a requested activation
 // either snaps the camera to the "BoastingCamera" point (when active and not already in a null camera mode) or opens
 // the UI when allowed
-// Retail 0x0056BE00, 0x23E bytes, `ret 4`. Callees: CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall; virtual
+// Retail 0x0056BE00, 0x23E bytes, `ret 4`. Callees: NUISystem::CManager::GetInstance 0x0041E5F2 (__fastcall; virtual
 // slots +0x18, +0x74, +0x94), CTCBase::GetPlayerManager 0x00686D40, CPlayerManager::GetMainPlayer 0x00449970,
 // CPlayer::RemoveMode 0x00634190, CCharString(const char*, long) 0x0099EBF0 / copy 0x0099EC30 / dtor 0x0099EAE0,
 // CThingSearchTools::GetPFirstThing<CThingFilter_HasScriptName,CThing> 0x0056D050, CGameDefinitionManager::Get
@@ -99,8 +99,10 @@ private: public:
     CWorld* World;                                     // +0x24
 };
 
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance(); // 0x0041E5F2
+namespace NUISystem {
+class CManager {
+public:
+    static CManager* __fastcall GetInstance(); // 0x0041E5F2
 #define VF(n) virtual void v##n();
     VF(00) VF(01) VF(02) VF(03) VF(04) VF(05)
     virtual void Close();                              // +0x18
@@ -110,6 +112,7 @@ struct CFrontEndManager {
     VF(30) VF(31) VF(32) VF(33) VF(34) VF(35) VF(36)
     virtual void ResetInput();                         // +0x94
 };
+}
 
 struct SListNode { SListNode* Next; SListNode* Prev; };
 extern SListNode* g_BoastList;                         // 0x013B8A98 (STLport list head node)
@@ -190,8 +193,8 @@ void CTCBoastUI::GlobalUpdate(long)
         for (unsigned long i = 0; i < Components.size(); ++i)
             delete Components[i];
         Components.clear();
-        CFrontEndManager::GetInstance()->Close();
-        CFrontEndManager::GetInstance()->ClearMenus();
+        NUISystem::CManager::GetInstance()->Close();
+        NUISystem::CManager::GetInstance()->ClearMenus();
         SListNode* node = g_BoastList->Next;
         while (node != g_BoastList) {
             SListNode* dead = node;
@@ -200,7 +203,7 @@ void CTCBoastUI::GlobalUpdate(long)
         }
         g_BoastList->Next = g_BoastList;
         g_BoastList->Prev = g_BoastList;
-        CFrontEndManager::GetInstance()->ResetInput();
+        NUISystem::CManager::GetInstance()->ResetInput();
         Active = false;
         Quitting = false;
         ActivationRequested = false;

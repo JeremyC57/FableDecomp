@@ -3,6 +3,7 @@
 #include "engine/CInputProcessGameBase.h"
 #include "engine/CProcessedInput.h"
 #include "engine/CManager.h"
+namespace NUISystem { class CManager { public: static CManager* __fastcall GetInstance(); }; }   // 0x0041E5F2 (Ego_r.pdb / FableWin.pdb)
 namespace PhotoInput {
 struct Vector2 {float X,Y;Vector2(){} Vector2(const Vector2& v):X(v.X),Y(v.Y){}}; // PDB 01898E60 genuine C2DVector copy constructor
 enum EInputEventType { Character=1,RepeatedCharacter=15 }; // PDB original enum type; descriptive enumerator names for native observed values
@@ -12,7 +13,7 @@ struct InputEvent {unsigned char DataPrefix[12];Vector2 MouseMovementXY;float Mo
 #pragma pointers_to_members(full_generality,single_inheritance)
 struct Manager;
 union UISlot {void* Native;void(Manager::*Event)(EEvent);void(Manager::*Char)(wchar_t);};
-struct Manager {void* VTable;unsigned char BeforeMouseMovement[0xac];Vector2 MouseMovement;static Manager* __fastcall GetInstance();void SetMouseMovement(Vector2& v){MouseMovement=v;}}; //native mouse+B0 vs donor E0, actual GUI CManager header above
+struct Manager {void* VTable;unsigned char BeforeMouseMovement[0xac];Vector2 MouseMovement;static Manager* GetInstance(){return (Manager*)NUISystem::CManager::GetInstance();}void SetMouseMovement(Vector2& v){MouseMovement=v;}}; //native mouse+B0 vs donor E0, actual GUI CManager header above
 #ifdef _MSC_VER
 typedef char native_ui_slot[sizeof(UISlot)==4?1:-1];
 #endif

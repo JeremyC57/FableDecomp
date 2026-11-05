@@ -10,11 +10,7 @@
 //   held by reference: this+0 -> the area filter, this+8 -> the quest filter); CFilter_Bind3 is the Ego_r.pdb template.
 // Callees: CTCPhysicsBase::GetBoundingInfo(C3DVector&, float&) const @ 0x006AF640, CThingFilter_IsInQuestOrNullQuest::operator()
 //   @ 0x006A7C60, __ftol2 @ 0x00BFEA70 (six times).
-class CThing {
-public:
-    unsigned char _pad_0x00[0x60];
-    class CTCPhysicsBase* PhysicsTC;                  // +0x60
-};
+#include "engine/CThing.h"
 
 // ---- the overlapping-area filter (inline in retail) ----------------------------------------------------------------
 #include "engine/C3DVector.h"
@@ -40,7 +36,7 @@ public:
     const C2DBoxI* Area;                              // +0x00
     __forceinline bool operator()(const CThing& thing) const
     {
-        const CTCPhysicsBase* physics = thing.PhysicsTC;
+        const const CTCPhysicsBase* physics = thing.GetPhysicsTC();
         if (!physics)
             return false;
         C3DVector centre;
@@ -68,7 +64,7 @@ class CThingFilter_HasNavigationInformation {
 public:
     __forceinline bool operator()(const CThing& thing) const
     {
-        const CTCPhysicsBase* physics = thing.PhysicsTC;
+        const CTCPhysicsBase* physics = thing.GetPhysicsTC();
         const CThingVirtuals& v = *(const CThingVirtuals*)&thing;
         if (physics && physics->IsNavigationObstacle())
             return v.HasNavigationInformation();
@@ -86,7 +82,6 @@ template <class A, class B, class C> class CFilter_Bind3 { public:   // the thre
     const C& Third;
     template <class T> bool operator()(const T& thing) const { return First(thing) && Second(thing) && Third(thing); }
 };
-
 
 typedef CFilter_Bind3<CThingFilter_OverlappingArea, CThingFilter_HasNavigationInformation, CThingFilter_IsInQuestOrNullQuest> CNavFilter;
 template bool CNavFilter::operator()<CThing>(const CThing&) const;

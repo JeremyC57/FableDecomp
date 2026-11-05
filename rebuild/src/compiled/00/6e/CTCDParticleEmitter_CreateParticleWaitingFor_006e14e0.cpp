@@ -1,4 +1,5 @@
 // CTCDParticleEmitter::CreateParticleWaitingFor() -- create the particle emitter the component has been waiting for from its pending creation parameters (interpolated or plain), copy the pending update parameters / creation-disabled / always-update state onto it, adopt it and drop the parameters
+// Leaf: ?CreateParticleWaitingFor@CTCDParticleEmitter@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E14E0, 309 bytes (+ int3 padding), plain `ret`.
 // Callees: CThing::GetPos @ 0x004C73D0, CParticleEmitterManager::Get @ 0x00AEAAF0 (static), CreateInterpolatedEmitter(long,
@@ -18,13 +19,9 @@
 //   the counted pointer's inline clear (count block re-read after the decrement, block then object zeroed).
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    bool IsAffectedByBulletTime();              // 0x004C9920
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 struct CParticleUpdateParameters { unsigned char _body[0x24]; };
 struct CParticleCreationParameters {
     bool  InterpolatingParticle;                // +0x00

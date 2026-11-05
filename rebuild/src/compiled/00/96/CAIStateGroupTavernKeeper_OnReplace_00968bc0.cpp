@@ -18,27 +18,12 @@
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -49,11 +34,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer& operator=(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
+
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 class CThingCreatureBase;
 class CTCTavernBar { public:                           // interface 0xb9
@@ -180,25 +161,25 @@ void CAIStateGroup_TavernKeeper::OnReplace()
         GetAICreature()->FinishCurrentAction();
     if (IsCarryingJug()) {
         CTCTavernGame* game;
-        ((CThing*)PJug.GetPItem())->GetInterface(&game, 0x47);
+        ((CThing*)PJug.GetPItem())->GetTC(TCI_CARRYABLE, &game);
         long id = game->GetItemID();
         CTCCarrying* carrying;
-        GetCreature()->GetInterface(&carrying, 0x46);
+        GetCreature()->GetTC(TCI_CARRYING, &carrying);
         CThing* jug = carrying->FindThingByID(id);
-        if (jug && !(jug->m_flags91 & 1)) {
+        if (jug && !jug->IsDead()) {
             carrying->RemoveThingInCarrySlot(id, false);
             CTCTavernJug* tavernJug;
-            jug->GetInterface(&tavernJug, 0xbb);
+            jug->GetTC(TCI_TAVERN_JUG, &tavernJug);
             tavernJug->ReplaceJug();
             tavernJug->OnBar = true;
         }
         CTCCreatureModeManager* modes;
-        GetCreature()->GetInterface(&modes, 0x31);
+        GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
         modes->RemoveMode(0x2b);
     }
-    if (((CThing*)PBar.GetPItem()) && !(((CThing*)PBar.GetPItem())->m_flags91 & 1)) {
+    if (((CThing*)PBar.GetPItem()) && !((CThing*)PBar.GetPItem())->IsDead()) {
         CTCBarPoint* bar;
-        ((CThing*)PBar.GetPItem())->GetInterface(&bar, 0xb9);
+        ((CThing*)PBar.GetPItem())->GetTC(TCI_TAVERN_BAR, &bar);
         FreeBarPoint();
         bar->PUser = CIntelligentPointerCreature(0);
     }

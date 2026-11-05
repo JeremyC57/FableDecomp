@@ -1,4 +1,5 @@
 // CAIStateGroup_Guildmaster::GetBetterTeleportPos(C3DVector&) -- pick the live teleport marker nearest the enemy (closer than the creature is, and further than the minimum), other than the last one used; store its position and remember it
+// Leaf: ?GetBetterTeleportPos@CAIStateGroupGuildmasterMethods@@QAE_NAAVC3DVector@@@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00977820, length 384 bytes (`ret 4`).
@@ -22,11 +23,7 @@ inline float Distance2D(const C3DVector& a, const C3DVector& b)
 {
     return C2DVector(a.X - b.X, a.Y - b.Y).GetLength();
 }
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;             // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -38,7 +35,7 @@ struct CThingPointer : CBaseIntelligentPointer {             // CIntelligentPoin
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -46,7 +43,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 __forceinline bool IS_THING_ALIVE(CThing* const& thing)
 {
     if (thing != 0) {
-        if (!(thing->m_flags91 & 1))
+        if (!thing->IsDead())
             return true;
     }
     return false;

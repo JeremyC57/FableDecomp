@@ -1,4 +1,5 @@
 // CPlayerGui::Update(bool paused) -- per-frame GUI tick: react to a DrawGui toggle (open/close the GUI mode, clearing the GUI on close), update the hero-information screens and subtitles, and when not paused the stat bars and per-frame illustrators; then drop expired script screen texts and age the screen messages, discarding finished ones and stopping once the def's line budget is filled
+// Leaf: ?Update@CPlayerGui@@QAEX_N@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0043A080, length 544 bytes, `ret 4`.
 // Callees: CPlayerGui::ClearGui 0x00438230, NHeroInformationScreens::CManager::Update 0x0066E8EE, CSubtitleRenderer::Update
@@ -17,15 +18,10 @@
 // Shape: STLport list loops over the sentinel's _M_next with an inline erase (next/prev locals, implicit element dtor,
 // free(node)); the player's character is an inline GetPItem accessor on the CPlayer intelligent pointer +0x34.
 #include <stdlib.h>
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length);             // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
-class CWideString { public:
-    void* PStringData;
-    ~CWideString();                                         // 0x0099B510
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
+
 class CPlayerGuiDef { public:
     unsigned char _pad000[0x904];
     long          MaxScreenMessageLines;                    // +0x904 (descriptive)
@@ -48,10 +44,6 @@ __forceinline const CPlayerGuiDef* GetPlayerGuiDef()
 }
 class CWorld { public: static long __fastcall GetFrame(); };                              // 0x0049D870
 
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_statusFlags;                            // +0x91 (bit 0: dead)
-};
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -180,7 +172,7 @@ void CPlayerGui::Update(bool paused)
         UpdateMorality();
         UpdateCrime();
         CThing* hero = PlayerManager->GetMainPlayer().GetPlayerCharacter();
-        if (hero && !(hero->m_statusFlags & 1))
+        if (hero && !hero->IsDead())
             PDrawQuestInfo->Update();
         PDrawMeleeActionButtonEffects->Update();
         PDrawPerceivers->Update();

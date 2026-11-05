@@ -17,26 +17,11 @@
 //   it->type ? last : it)->component`), which loads the component straight into the register retail uses.
 extern "C" void __cdecl free(void* block);       // 0x00BFEA14
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCTextureDecal { public:
     void DeleteDecal(long entryID);             // 0x0070A430
 };
@@ -80,7 +65,7 @@ class CTCWound : public CTCBase { public:                     // vtable 0x012698
 CTCWound::~CTCWound()
 {
     CTCTextureDecal* decal;
-    if (ParentThing->GetInterface(&decal, 0xe9)) {
+    if (ParentThing->GetTC(TCI_TEXTURE_DECAL, &decal)) {
         while (!Wounds.empty()) {
             CWound& wound = Wounds.back();
             if (wound.WoundTextureDecalEntryID) {

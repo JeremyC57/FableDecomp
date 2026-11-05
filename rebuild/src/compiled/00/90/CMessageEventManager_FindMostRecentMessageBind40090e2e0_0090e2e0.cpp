@@ -10,17 +10,16 @@
 // Shape: the typed intelligent-pointer getter `GetPItem() && IsThingOfType<T>(GetPItem()) ? (T*)GetPItem() : 0` (mask in a local); the
 // fourth thing filter is called out of line (its own TSF instantiation; the others are `__forceinline`); the matching message's
 // address is a named pointer local (kept in ebx and returned).
-class CThing { public:
-    unsigned char _pad00[0x6c];
-    unsigned long ThingTypeFlags;               // +0x6c
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATTYPEFLAGS
+#include "engine/CThing.h"
 class CThingAICreature : public CThing { public:
-    enum { ThingTypeMask = 0x1f };
+    static unsigned long __fastcall StatGetTypeFlags() { return 0x1f; }
 };
 template <class T> inline bool IsThingOfType(const CThing* thing)
 {
-    unsigned long mask = T::ThingTypeMask;
-    return !(~thing->ThingTypeFlags & mask);
+    unsigned long mask = T::StatGetTypeFlags();
+    return !(~thing->GetTypeFlags() & mask);
 }
 class CBaseObject;
 struct CBaseIntelligentPointer {

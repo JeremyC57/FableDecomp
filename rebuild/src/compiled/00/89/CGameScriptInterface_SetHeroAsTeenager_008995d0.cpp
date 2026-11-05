@@ -15,46 +15,11 @@
 #include "engine/CPlayer.h"
 #undef CPlayer
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x10];
-    unsigned char Type;                                  // +0x10 (1 = a creature)
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
-    CInterfaceMap Components;                            // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        *out = (T*)((it == map->end() || T::INTERFACE_TYPE < it->first) ? map->end() : it)->second;
-        return true;
-    }
-    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
-    {
-        if (!HasTC(T::INTERFACE_TYPE))
-            return false;
-        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
-        const CInterfaceMap* map = &Components;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        *out = (const T*)((it == map->end() || T::INTERFACE_TYPE < it->first) ? map->end() : it)->second;
-        return true;
-    }
-};
+
 class CTCHeroMorph {                                    // interface 3
 public:
     enum { INTERFACE_TYPE = 3 };
@@ -84,10 +49,10 @@ void CGameScriptInterface::SetHeroAsTeenager(bool teenager) const
     if (hero && !hero->IsDead())
     {
         CTCHeroMorph* morph;
-        hero->GetTC(&morph);
+        hero->GetTC(TCI_APPEARANCE_MORPH, &morph);
         morph->SetAsTeenager(teenager);
         CTCHeroStats* stats;
-        if (hero->GetTC(&stats))
+        if (hero->GetTC(TCI_HERO_STATS, &stats))
         {
             stats->SetAge_0057b26f(1.0f);
             stats->ResetTrainingStatus_0057a5be();

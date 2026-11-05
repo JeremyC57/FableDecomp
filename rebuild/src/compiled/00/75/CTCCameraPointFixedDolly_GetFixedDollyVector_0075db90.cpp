@@ -25,28 +25,10 @@ public:
 };
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                         // +0x44
-    template <class T> bool PeekTC(long type, const T** out) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (const T*)((void*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCCameraPointFixedDolly : public CTCBase {
 public:
@@ -55,8 +37,8 @@ public:
 
 C3DVector CTCCameraPointFixedDolly::GetFixedDollyVector() const
 {
-    const CTCShapeManager* shapes;
-    ParentThing->PeekTC(0x44, &shapes);
+    const const CTCShapeManager* shapes;
+    ParentThing->PeekTC(TCI_SHAPE_MANAGER, &shapes);
     C3DVector v;
     shapes->GetPrincipalVector(v);
     return v;

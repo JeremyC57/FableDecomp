@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionCuriosity::Update() -- walk to within the creature's extended sight radius of the
+// Leaf: ?Update@CAIStateGroup_MinionCuriosity@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // curiosity position, then terminate.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00933B30, length 95 bytes.
@@ -13,30 +14,10 @@ class CTCBase;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound -- the same shape the landed
 // GetInterface_0x.. bodies use, here inlined into the caller through GetTC<T>().
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -57,7 +38,7 @@ public:
 };
 
 class CTCPerceiveThing { public:                       // interface type 0x34 component
-    float GetExtendedSightRadius();             // 0x007448F0
+    float GetExtendedSightRadius() const;             // 0x007448F0
 };
 
 struct CAIStateGroup_MinionCuriosity : CAIStateGroupBase {
@@ -68,8 +49,8 @@ struct CAIStateGroup_MinionCuriosity : CAIStateGroupBase {
 
 void CAIStateGroup_MinionCuriosity::Update()
 {
-    CTCPerceiveThing* pPerceive;
-    PBrain->Creature->GetInterface(&pPerceive, 0x34);
+    const CTCPerceiveThing* pPerceive;
+    PBrain->Creature->PeekTC(TCI_PERCEIVE_THING, &pPerceive);
     MoveToCuriosityProximity(pPerceive->GetExtendedSightRadius());
     Terminate();
 }

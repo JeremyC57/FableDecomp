@@ -36,14 +36,10 @@ class C3DVector { public:
     __forceinline void Normalise() { float x = X; float y = Y; float z = Z; *this *= FastInvSqrt(x * x + (y * y + z * z)); }
 };
 
-class CCharString { public:
-    void* m_pData;
-    CCharString();                                     // 0x0099E4B0
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-    const CCharString& operator=(const char* text);          // 0x0099EFE0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #define VF(n) virtual void v##n();
@@ -62,27 +58,7 @@ struct CAnimationEntryVector {                          // STLport vector<const 
     CAnimationEntryVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     ~CAnimationEntryVector() { if (_M_start) free(_M_start); }
 };
-class CThing { public:
-    unsigned char   _pad0[0x20];
-    unsigned long   m_presentBits[9];                   // +0x20
-    CInterfaceMap   m_interfaces;                       // +0x44
-    unsigned char   _pad54[0x3d];
-    unsigned char   m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;               // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing { public:
     bool GetPossibleCombatAnimations(const CCharString& name, CAnimationEntryVector& out);   // 0x006668A0
 };
@@ -104,7 +80,7 @@ public:
 };
 __forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThingCreatureBase>& p)
 {
-    return p.GetPItem() && !(p.GetPItem()->m_flags91 & 1);
+    return p.GetPItem() && !p.GetPItem()->IsDead();
 }
 
 class CCombatActionBase {
@@ -147,11 +123,11 @@ void CCreatureAction_BlockRespond::Initialise()
             direction = HitPos;
         } else {
             CTCPhysicsBase* targetPhysics;
-            PTarget.GetPItem()->GetInterface(&targetPhysics, 2);
+            PTarget.GetPItem()->GetTC(TCI_PHYSICS, &targetPhysics);
             direction = targetPhysics->Position;
         }
         CTCPhysicsBase* physics;
-        PCreature.GetPItem()->GetInterface(&physics, 2);
+        PCreature.GetPItem()->GetTC(TCI_PHYSICS, &physics);
         direction -= physics->Position;
         direction *= FastInvSqrt(direction.GetLengthSquared());
         C3DVector facing = physics->GetFacing();

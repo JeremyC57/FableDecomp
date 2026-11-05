@@ -1,4 +1,5 @@
 // CCreatureAction_CastTimeSpell::Initialise() -- base Initialise; if the owner has no bullet-time component yet, add "CTCBulletTime" and hand it the action's target when that is alive
+// Leaf: ?Initialise@CCreatureAction_CastTimeSpell@@UAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CD730, length 229 bytes (+ int3 padding), plain `ret` (virtual, no arguments).
 // Callees: CCombatActionBase::Initialise 0x00857520 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50, CCharString ctor 0x0099EBF0 /
@@ -10,11 +11,8 @@
 class CTCParamsBase;
 class CBaseObject;
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CThing;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -23,20 +21,6 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     virtual void v00();
     CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
     CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
-};
-
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char m_state;                      // +0x10
-    unsigned char _pad11[0x0f];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    unsigned char _pad44[0x91 - 0x44];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    CBaseObject* AddTC(const CCharString& name, bool a2, CTCParamsBase* params);   // 0x004C9D60
-    __forceinline unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
 };
 
 class CCombatActionBase { public:
@@ -61,10 +45,10 @@ class CCreatureAction_CastTimeSpell : public CCombatActionBase { public:
 void CCreatureAction_CastTimeSpell::Initialise()
 {
     CCombatActionBase::Initialise();
-    if (!((CThing*)PCreature.GetPItem())->HasTC(0x92)) {
+    if (!((CThing*)PCreature.GetPItem())->HasTC(TCI_BULLET_TIME)) {
         CTCBulletTime* tc = (CTCBulletTime*)((CThing*)PCreature.GetPItem())->AddTC("CTCBulletTime", true, 0);
         CIntelligentPointerThing target = PItemRemoved;
-        if (((CThing*)target.GetPItem()) && !(((CThing*)target.GetPItem())->m_flags91 & 1))
+        if (((CThing*)target.GetPItem()) && !((CThing*)target.GetPItem())->IsDead())
             tc->PTarget = target;
     }
 }

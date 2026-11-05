@@ -14,37 +14,19 @@
 //   CLightningBeam::IsTargetValid 0x0079FD90.
 // Shape: the list size() is the counting loop (`size() != 0`); the interface lookup uses the one-ternary entry pick.
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    ~CCharString();                                   // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CDefString { public: long Index; };
 class CDefStringTable { public:
     CCharString GetString(CDefString name);           // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)              // 0x013CA828
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCSoundPlayer { public:
     unsigned long PlayAttachedCriteria(const CCharString& name, bool a, bool b, bool c, long d);   // 0x0066BD00
     unsigned long PlayUnattachedCriteria(const CCharString& name, const C3DVector& pos, bool a, bool b);   // 0x0066BDF0
@@ -73,7 +55,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -131,13 +113,13 @@ void CLightningBeam::Deactivate(CIntelligentPointer player)
         m_lsState = 5;
         if (IS_THING_ALIVE(m_tcpTarget)) {
             CTCSoundPlayer* sound;
-            if (((CThing*)m_tcpTarget.GetPItem())->GetInterface(&sound, 0x10)) {
+            if (((CThing*)m_tcpTarget.GetPItem())->GetTC(TCI_SOUND_PLAYER, &sound)) {
                 CCharString name = GDefStringTable.GetString(PDef->HitSound);
                 sound->PlayAttachedCriteria(name, true, false, false, -1);
             }
         } else if (IS_THING_ALIVE(player) && !m_bTemporary) {
             CTCSoundPlayer* sound;
-            if (((CThing*)player.GetPItem())->GetInterface(&sound, 0x10)) {
+            if (((CThing*)player.GetPItem())->GetTC(TCI_SOUND_PLAYER, &sound)) {
                 CCharString name = GDefStringTable.GetString(PDef->HitSound);
                 sound->PlayUnattachedCriteria(name, m_vEndPos, false, false);
             }

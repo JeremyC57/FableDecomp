@@ -1,4 +1,5 @@
 // CCreatureAction_BeDazed::Initialise() -- base Initialise, then on the creature's mode manager (interface type 49): restart the current mode when it is already the dazed mode (type 67), else add that mode
+// Leaf: ?Initialise@CCreatureAction_BeDazed@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008ED850, length 111 bytes (+ int3 padding).
 // Callees: CCreatureActionBase::Initialise @ 0x00694D10 (direct base call, first), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature
@@ -11,34 +12,13 @@
 // ecx for both tail calls. Retail CCreatureActionBase is 0xa8 bytes (engine/CCreatureAction_BeDazed.h is the PDB's 0xb4-byte
 // layout), so `this` is modelled locally.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase;
 struct CTCGraphicAppearance;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0xc];
-    CTCPhysicsBase* m_pPhysics;             // +0x60
-    CTCGraphicAppearance* m_pGraphicAppearance;   // +0x64
-    CTCPhysicsBase* GetPhysics() const { return m_pPhysics; }                           // inline accessors: the member is
-    CTCGraphicAppearance* GetGraphicAppearance() const { return m_pGraphicAppearance; }   //   loaded straight into ecx
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -82,7 +62,7 @@ void CCreatureAction_BeDazed::Initialise()
 {
     CCreatureActionBase::Initialise();
     CTCCreatureModeManager* pModes;
-    PCreature.GetPItem()->GetInterface(&pModes, 49);   // result unchecked: the manager is assumed present
+    PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes);   // result unchecked: the manager is assumed present
     if (pModes->GetCurrentMode()->GetModeType() == 67)
         pModes->RestartCurrentMode();
     else

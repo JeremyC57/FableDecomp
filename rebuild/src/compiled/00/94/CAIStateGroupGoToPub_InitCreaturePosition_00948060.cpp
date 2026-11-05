@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToPub::InitCreaturePosition() -- a scripted creature (scratchpad seat and table names both set) takes its table marker, the table's owning pub, and is auto-placed near that pub; otherwise, once the next pub frame has passed and the group is runnable, it is placed near the current pub
+// Leaf: ?InitCreaturePosition@CAIStateGroup_GoToPub@@UAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00948060, length 571 bytes (+ int3 padding), virtual slot 3.
@@ -13,25 +14,12 @@
 // Layout: Ego_r.pdb CAIStateGroup_GoToPub PPub +0x14, PTable +0x24, NextFramePub +0x68, UnderScriptControl +0xa1;
 // CTCAIScratchpad (0xaa) TableName +0x70, SeatName +0x74; CTCOwnedEntity (0x33) POwner +0x0d (odd offset, pack(1)).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-        }
-    }
-};
+
 class CThingBuilding;
 class CThingObject;
 class CThingAICreature;
@@ -53,12 +41,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
     T* Get() const { return (T*)GetPItem(); }
 };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const CCharString& other);      // 0x0099EC30
-    ~CCharString();                             // 0x0099EAE0
-    bool operator!=(const char* text) const;    // 0x0099E960
-};
+
 class CTCAIScratchpad { public:                        // interface 0xaa
     unsigned char _pad0[0x70];
     CCharString TableName;                      // +0x70
@@ -125,15 +108,15 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
 bool CAIStateGroup_GoToPub::InitCreaturePosition()
 {
     CTCAIScratchpad* scratchpad;
-    GetCreature()->GetInterface(&scratchpad, 0xaa);
+    GetCreature()->GetTC(TCI_AI_SCRATCHPAD, &scratchpad);
     UnderScriptControl = scratchpad->GetSeatName() != "" && scratchpad->GetTableName() != "";
     if (UnderScriptControl) {
         PTable = FindMarkerByName(scratchpad->GetTableName());
         CTCOwnedEntity* owned = 0;
-        ((CThing*)PTable.GetPItem())->GetInterface(&owned, 0x33);
+        ((CThing*)PTable.GetPItem())->GetTC(TCI_OWNED_ENTITY, &owned);
         if (owned) {
             PPub = (CThingBuilding*)owned->POwner.GetPItem();
-            if (((CThing*)PPub.GetPItem()) != 0 && !(((CThing*)PPub.GetPItem())->m_flags91 & 1)
+            if (((CThing*)PPub.GetPItem()) != 0 && !((CThing*)PPub.GetPItem())->IsDead()
                 && GetCreature()->AutoPlaceNearBuilding(PPub.Get(), 3.0f))
                 return true;
         }

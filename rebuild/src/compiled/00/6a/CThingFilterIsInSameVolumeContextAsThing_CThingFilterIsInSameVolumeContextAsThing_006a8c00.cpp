@@ -10,28 +10,10 @@
 // is assigned in the body (zero first, then the component's item when present).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(key);
-            if (it == map->end() || type < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -65,7 +47,7 @@ CThingFilter_IsInSameVolumeContextAsThing::CThingFilter_IsInSameVolumeContextAsT
     : Override(override)
 {
     PThingInside = 0;
-    CTCInterface75* component;
-    if (thing->GetInterface(0x75, &component))
+    const CTCInterface75* component;
+    if (thing->PeekTC(TCI_VOLUME_CONTAINMENT_TRACKER, &component))
         PThingInside = component->m_inside.GetPItem();
 }

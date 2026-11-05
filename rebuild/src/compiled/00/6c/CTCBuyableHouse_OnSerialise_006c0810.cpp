@@ -15,10 +15,7 @@
 // unset rent days become 0x7FFFFFFF outside modes 1/3; the money-bag fold tests a NAMED bool (`bool folding = Mode == 1 ||
 // Mode == 3; if (folding) {...; Transfer} else Transfer`) which keeps the then-arm first with the cross-jumped Transfer.
 class CBaseObject;
-class CThing { public:
-    unsigned char _pad00[0x8e];
-    short         ThingType;                            // +0x8e
-};
+#include "engine/CThing.h"
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 class CPersistContext { public:
@@ -58,7 +55,7 @@ public:
 
 void CTCBuyableHouse::OnSerialise(CPersistContext* context, bool full)
 {
-    GFSerialisePointer(context, "WifeLivingHere", &WifeLivingHere, ParentThing->ThingType);
+    GFSerialisePointer(context, "WifeLivingHere", &WifeLivingHere, ParentThing->GetCurrentMapNumber());
     context->Transfer("OwnedByPlayer", OwnedByPlayer, false);
     context->Transfer("IsScripted", IsScripted, false);
     context->Transfer("Rented", Rented, false);

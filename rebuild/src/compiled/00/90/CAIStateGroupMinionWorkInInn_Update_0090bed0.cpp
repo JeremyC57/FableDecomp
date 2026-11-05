@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionWorkInInn::Update() -- with a workplace: one time in five (Random(100) < 21) clean a bench; otherwise walk to a random point 0..6m from the workplace position (random heading), retrying while the move is in progress, and idle on arrival; terminate otherwise
+// Leaf: ?Update@CAIStateGroup_MinionWorkInInn@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090BED0, length 400 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the creature's workplace pointer at +0x170),
 //          CAIStateGroupBase::GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, CleanBench @ 0x0090BD40, CThing::GetPos
@@ -21,9 +22,7 @@ private: public:
     C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
     C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
 };
-class CThing { public:
-    const C3DVector& GetPos() const;             // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

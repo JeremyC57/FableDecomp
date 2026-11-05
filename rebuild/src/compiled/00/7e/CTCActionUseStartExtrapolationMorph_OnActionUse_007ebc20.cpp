@@ -24,12 +24,7 @@ public:
     virtual void SetFacingAngle(float fraction);                // slot 66 (+0x108)
 };
 
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* m_pPhysics;                                 // +0x60
-    const C3DVector& GetPos() const;                       // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 __forceinline float WrapAngle(float angle)
 {
@@ -61,5 +56,5 @@ void CTCActionUseStartExtrapolationMorph::OnActionUse(CThing& user)
     const C3DVector& to = parent->GetPos();
     float angle = (float)atan2(to.X - from.X, to.Y - from.Y) * 0.15915494f;
     angle = WrapAngle(angle);
-    user.m_pPhysics->SetFacingAngle(angle + 0.5f);
+    user.GetPhysicsTC()->SetFacingAngle(angle + 0.5f);
 }

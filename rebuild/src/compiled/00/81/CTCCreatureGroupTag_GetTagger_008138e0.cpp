@@ -1,17 +1,12 @@
 // CTCCreatureGroupTag::GetTagger() -- the tagger's thing when a tagger UID is set and its map entry is still active, else null
+// Leaf: ?GetTagger@CTCCreatureGroupTag@@QAEPAVCThing@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008138E0, length 50 bytes. 14 callers in the minion kid group-tag AI state
 // (0x00934107..0x009348DA; the landed IsStillValid 0x00934100 calls it as "CheckValid").
 // Callees: the Members map find @ 0x00812790, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (tail jump).
 // Shape: `TaggerUID > 0` on the unsigned 64-bit member is the `test edx,edx ; ja` + `cmp [eax],0 ; jbe` pair; the member's
 // address (`lea eax,[ecx+28h]`) is formed once because find takes the key by reference. The node's IsActive byte
 // (+0x20) gates the GetPItem tail call on the node's PMember (+0x18).
-class CThing { public:
-    unsigned char _pad00[0x18];
-    unsigned __int64 UniqueID;              // +0x18
-    unsigned char _pad20[0x71];
-    unsigned char Dead : 1;                 // +0x91 bit 0
-    unsigned __int64 GetUID() const { return UniqueID; }
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;

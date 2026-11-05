@@ -1,4 +1,5 @@
 // CAIStateGroup_LookAtInterestingThings::IsRunnable() -- runnable when the idle scheduler (if any) prefers this
+// Leaf: ?IsRunnable@CAIStateGroup_LookAtInterestingThings@@UAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // group, a villager is not outside curfew time, and an interesting thing exists.
@@ -17,36 +18,12 @@ class CThingAICreature;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 #include "engine/C3DVector.h"
-class CThing { public:
-    const C3DVector& GetPos() const;    // 0x004C73D0
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const     // the masked word (a bool return narrows to `shr ; test dl,1`)
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -58,7 +35,7 @@ struct CBaseIntelligentPointer {
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -94,7 +71,6 @@ protected:
     CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
 public:
 };
-
 
 // Retail builds message filters as an expression chain: `IsOfType(n) && HasExtraData() && IsForThing(t)`.
 // Each `operator&&` returns a CFilter_Bind2/CFilter_Bind3 holding POINTERS to its operands (the filter
@@ -195,10 +171,10 @@ struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBaseW {
 bool CAIStateGroup_LookAtInterestingThings::IsRunnable()
 {
     CTCIdleScheduler* scheduler;
-    if (PBrain->PCreature->GetInterface(&scheduler, 0xd3) && !scheduler->IsPreferredIdle(this))
+    if (PBrain->PCreature->GetTC(TCI_IDLE_SCHEDULER, &scheduler) && !scheduler->IsPreferredIdle(this))
         return false;
     CTCVillager* villager;
-    if (PBrain->PCreature->GetInterface(&villager, 0x23)
+    if (PBrain->PCreature->GetTC(TCI_VILLAGE_MEMBER, &villager)
         && ((CTCVillageMember*)villager)->GetPVillage() != 0
         && !((CTCVillageMember*)villager)->GetPVillage()->IsCurfewTime())
         return false;

@@ -8,10 +8,7 @@
 // Tiny-body shape `ForwardConstant` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-class CThing { public:
-public:
-    void Kill(bool);   // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 struct CClass_008d6890 {
     unsigned char _pad[0x4];

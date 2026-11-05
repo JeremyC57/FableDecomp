@@ -16,39 +16,20 @@
 //   own null test, the effects component a named local (esi); the action is a temporary passed by address straight
 //   from the ctor (implicit destructor: member then base, no vtable store).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CCreatureActionBase;
 class CThingPlayerCreature;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_stateFlags;                 // +0x91 (bit 0: dead)
-    __forceinline bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CThingCreatureBase : public CThing {
 public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 inline bool IsThingAlive(const CThing* thing)
 {
-    return thing && !(thing->m_stateFlags & 1);
+    return thing && !thing->IsDead();
 }
 class CTCWallMount { public:                           // interface 0xDA
     CThing* GetMountedThing();                  // 0x007DE4E0
@@ -86,12 +67,12 @@ void CTCActionUseWallMount::OnActionUse(CThingCreatureBase* user)
 {
     CTCActionUseBase::OnActionUse(user);
     if (IsThingAlive(user)) {
-        if (ParentThing->HasTC(0xda)) {
-            CTCWallMount* mount = ParentThing->GetTC<CTCWallMount>(0xda);
+        if (ParentThing->HasTC(TCI_WALL_MOUNT)) {
+            CTCWallMount* mount = ((CTCWallMount*)&ParentThing->GetTC(TCI_WALL_MOUNT));
             if (mount) {
                 CThing* mounted = mount->GetMountedThing();
-                if (IsThingAlive(mounted) && mounted->HasTC(0xdb)) {
-                    CTCWallMountEffects* effects = mounted->GetTC<CTCWallMountEffects>(0xdb);
+                if (IsThingAlive(mounted) && mounted->HasTC(TCI_WALL_MOUNT_EFFECTS)) {
+                    CTCWallMountEffects* effects = ((CTCWallMountEffects*)&mounted->GetTC(TCI_WALL_MOUNT_EFFECTS));
                     if (effects->IsUsable() && effects->OnWallMountUseAction(user))
                         return;
                 }

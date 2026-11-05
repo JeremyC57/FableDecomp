@@ -1,4 +1,5 @@
 // CAIStateGroup_WifeGiveYouGift::IsRunnable() -- the spouse has a gift to hand over (its interface-0xD7 component
+// Leaf: ?IsRunnable@CAIStateGroup_WifeGiveYouGift@@UAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // names a gift def, remembered in GiftToGiveDef) and the hero is alive within 40 units.
@@ -14,31 +15,11 @@
 class CTCBase;
 #include "engine/C3DVector.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingPlayerCreature : public CThing { };
 
 class CAIBrain { public:
@@ -84,11 +65,11 @@ struct CAIStateGroup_WifeGiveYouGift : CAIStateGroupBase {
 bool CAIStateGroup_WifeGiveYouGift::IsRunnable()
 {
     CTCSpouse* spouse;
-    if (PBrain->PCreature->GetInterface(&spouse, 0xD7)) {
+    if (PBrain->PCreature->GetTC(TCI_WIFE, &spouse)) {
         GiftToGiveDef = spouse->GiftDefToGive;
         if (GiftToGiveDef > 0) {
             CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
-            if (hero != 0 && !(hero->m_flags91 & 1)) {
+            if (hero != 0 && !hero->IsDead()) {
                 const C3DVector& pos = PBrain->PCreature->GetPos();
                 const C3DVector& heroPos = hero->GetPos();
                 float dx = heroPos.X - pos.X;

@@ -1,4 +1,5 @@
 // CAIStateGroup_FollowPlayer::IsRunnable() -- runnable while the main player's creature exists and is alive; remembers it as the thing to follow
+// Leaf: ?IsRunnable@CAIStateGroup_FollowPlayer@@UAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094EF90, length 111 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90 (PBrain->+0x20; the manifest's
@@ -9,10 +10,7 @@
 // `PThingToFollow = CIntelligentPointer<..>(hero)` -- a frame temporary through the inline converting constructor
 // (vtable 0x01231C4C), the inline operator= and the base destructor; `mov al,1` / shared `xor al,al`.
 // Model: local (engine/CAIStateGroup_FollowPlayer.h flattens the base).
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature;
 
 class CPlayer { public:
@@ -56,7 +54,7 @@ struct CAIStateGroup_FollowPlayer : CAIStateGroupBase {
 bool CAIStateGroup_FollowPlayer::IsRunnable()
 {
     CThing* hero = (CThing*)GetPlayerManager().GetMainPlayer().GetPControlledCreature();
-    if (hero != 0 && !(hero->m_flags91 & 1)) {
+    if (hero != 0 && !hero->IsDead()) {
         PThingToFollow = CIntelligentPointerThing(hero);
         return true;
     }

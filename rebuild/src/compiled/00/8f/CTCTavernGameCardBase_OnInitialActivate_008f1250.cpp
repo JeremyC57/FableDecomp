@@ -18,36 +18,12 @@ class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
 
-class CCharString { public:
-    void* m_data;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);
-    ~CCharString();
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    virtual void v00();
-    unsigned char _pad04[0x1c];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCNamedUserActionPoints { public:
     bool GetFreeNamedActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* rh, CCharString name, long* index,
@@ -72,7 +48,7 @@ void CTCTavernGameCardBase::OnInitialActivate()
 {
     CThing* thing = ParentThing;
     CTCNamedUserActionPoints* points = 0;
-    thing->GetInterface(&points, 46);
+    thing->GetTC(TCI_NAMED_USER_ACTION_POINTS, &points);
     points->GetFreeNamedActionPoint(thing, &GamePositionPos, &GamePositionRHSet, CCharString("DUMMY_OBJECT_GAME_POSITION"),
                                     &GamePositionActionPointIndex, 0, true);
     OnInitialActivateBase();

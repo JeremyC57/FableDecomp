@@ -15,10 +15,10 @@
 // raw target pointer is inline.
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 
-class CCharString { public:
-    void* m_pData;
-    CCharString(const CCharString& other);          // 0x0099EC30
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 struct CBaseClassNonCopyable {                      // the action root
     virtual void v00();
@@ -36,12 +36,6 @@ struct CScriptThingImp;
 inline CScriptThing::CScriptThing() { }
 __forceinline CScriptThing::~CScriptThing() { }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
-
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-    CScriptThing GetScriptThing() const;                  // 0x004C7E50
-};
 
 struct __declspec(novtable) CAction : CBaseClassNonCopyable {       // NTCScriptedControl::CActionBase: abstract, its own vtable store is dead
     void*   PTCScript;                              // +0x04 CTCScriptedControl*
@@ -69,6 +63,6 @@ CActionPerformExpression::CActionPerformExpression(CThing* target, const CCharSt
     , ExtraData1(extraData1)
     , ExtraData2(extraData2)
 {
-    if (target != 0 && !(target->m_flags91 & 1))
+    if (target != 0 && !target->IsDead())
         PTargetThing = target->GetScriptThing();
 }

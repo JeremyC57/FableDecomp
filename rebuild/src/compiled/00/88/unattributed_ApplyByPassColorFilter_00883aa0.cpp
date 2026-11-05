@@ -1,4 +1,5 @@
 // _unattributed::ApplyByPassColorFilter() -- on a live thing, pass the stored flag to its graphic appearance's SetByPassColorFilter
+// Leaf: ?ApplyByPassColorFilter@CByPassColorFilterRequest@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00883AA0, length 55 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times, on `this` itself), CTCGraphicAppearance::
 // SetByPassColorFilter(bool) @ 0x004BFB00.
@@ -9,16 +10,15 @@
 // the appearance component at +0x64 read through a named thing local, null-tested and CSE'd into ecx (the call's `this`;
 // a named appearance local lands in eax and costs a `mov ecx,eax`), the bool member pushed zero-extended
 // (`xor eax,eax ; mov al`; an unsigned char member would add a `setne` conversion).
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     void SetByPassColorFilter(bool byPass); // 0x004BFB00
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
-class CThing { public:
-    unsigned char _pad00[0x64];
-    CTCGraphicAppearance* m_pGraphicAppearance;   // +0x64
-    unsigned char _pad68[0x29];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -46,10 +46,10 @@ struct CByPassColorFilterRequest {
 void CByPassColorFilterRequest::ApplyByPassColorFilter()
 {
     if (PThing.GetPItem() != 0) {
-        if (!(PThing.GetPItem()->m_flags91 & 1)) {
+        if (!PThing.GetPItem()->IsDead()) {
             CThing* thing = PThing.GetPItem();
-            if (thing->m_pGraphicAppearance)
-                thing->m_pGraphicAppearance->SetByPassColorFilter(ByPass);
+            if (thing->GetTCGraphicAppearance())
+                thing->GetTCGraphicAppearance()->SetByPassColorFilter(ByPass);
         }
     }
 }

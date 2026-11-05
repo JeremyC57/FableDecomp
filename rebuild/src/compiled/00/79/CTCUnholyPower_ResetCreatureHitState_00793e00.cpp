@@ -1,4 +1,5 @@
 // CTCUnholyPower::ResetCreatureHitState(CIntelligentPointer<CThingCreatureBase> creature) -- for a live creature drop its mode 0x5F and re-arm the hit state of its interface-0x8B component
+// Leaf: ?ResetCreatureHitState@CTCUnholyPower@@QAEXUCIntelligentPointerCreature@@@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00793E00, length 190 bytes (+ int3 padding). __fastcall, `ret 8`
@@ -13,30 +14,10 @@
 //        share the `push ecx` frame word.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                        // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -49,7 +30,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -77,10 +58,10 @@ void CTCUnholyPower::ResetCreatureHitState(CIntelligentPointerCreature creature)
 {
     if (IS_THING_ALIVE(creature)) {
         CTCCreatureModeManager* modes;
-        if (((CThing*)creature.GetPItem())->GetInterface(&modes, 0x31))
+        if (((CThing*)creature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modes))
             modes->RemoveMode(0x5f);
         CTCHitState_8b* hitState;
-        if (((CThing*)creature.GetPItem())->GetInterface(&hitState, 0x8b)) {
+        if (((CThing*)creature.GetPItem())->GetTC(TCI_CREATURE_TINT_EFFECT, &hitState)) {
             hitState->Reset = true;
             hitState->ResetHitFrame = hitState->CurrentHitFrame;
         }

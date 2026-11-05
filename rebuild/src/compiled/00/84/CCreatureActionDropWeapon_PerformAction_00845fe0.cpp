@@ -25,8 +25,8 @@
 #define FABLE_RETAIL_STLP_BITSET_INDEX
 #include "engine/CVectorMap.h"
 
-
-enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };   // enumerators not needed
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
 class CBaseObject;
 class CThing;
@@ -40,26 +40,7 @@ public:
     enum { INTERFACE_TYPE = 0x31 };
     void RemoveMode(unsigned long mode);                     // 0x0073ABA0
 };
-class CThing {                                               // partial view, retail offsets
-public:
-    typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > TCMap;
-    unsigned char      Header[0x20];
-    std::bitset<274>   UsingComponents;                      // +0x20
-    TCMap              Components;                           // +0x44
-    template <class T> bool GetTC(T** out)
-    {
-        if (UsingComponents[T::INTERFACE_TYPE]) {
-            ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
-            TCMap* map = &Components;
-            TCMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || T::INTERFACE_TYPE < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing { };
 class CBaseIntelligentPointer {
 public:
@@ -90,12 +71,12 @@ public:
 void CCreatureAction_DropWeapon::PerformAction()
 {
     CTCCarrying* carrying;
-    if (PCreature->GetTC(&carrying)) {
+    if (PCreature->GetTC(TCI_CARRYING, &carrying)) {
         CThing* weapon = carrying->GetThingInPrimarySlot();
         if (weapon)
             DropWeapon(*weapon, *carrying, *PCreature);
         CTCCreatureModeManager* modes;
-        if (PCreature->GetTC(&modes))
+        if (PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes))
             modes->RemoveMode(4);
     }
 }

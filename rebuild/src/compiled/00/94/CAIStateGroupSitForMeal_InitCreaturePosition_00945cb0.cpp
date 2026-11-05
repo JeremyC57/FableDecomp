@@ -1,4 +1,5 @@
 // CAIStateGroup_SitForMeal::InitCreaturePosition() -- place the creature next to the cooking pot when the meal is runnable
+// Leaf: ?InitCreaturePosition@CAIStateGroup_SitForMeal@@QAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00945CB0, length 66 bytes.
 // Callees: virtual slot 11 (+0x2c, IsRunnable) on this, GetPCookingPot @ 0x00945A90,
 // CThingPhysical::GetPos @ 0x004C73D0 (reference into the physics block),
@@ -9,9 +10,7 @@
 // read into a named local (esi) before the radius push so retail's load pair stays ahead of the call.
 class C3DVector;
 
-class CThing { public:
-    const C3DVector& GetPos() const;             // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CThingCreatureBase
 {

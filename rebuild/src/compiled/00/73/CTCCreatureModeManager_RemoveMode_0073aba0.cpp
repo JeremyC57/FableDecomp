@@ -1,4 +1,5 @@
 // CTCCreatureModeManager::RemoveMode(unsigned long modeType) -- remove every mode of the type; when the current (front) mode was one of them it is told it is leaving and the new front mode is resumed (and the thing's look component re-picks its turning anims); the next idle mode is due in 30 seconds
+// Leaf: ?RemoveMode@CTCCreatureModeManager@@QAEXK@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -20,24 +21,11 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-};
+
 class CWorld { public:
     static long __fastcall GetFrame();                        // 0x0049D870
 };
@@ -92,8 +80,8 @@ void CTCCreatureModeManager::RemoveMode(unsigned long modeType)
     PModes.remove_if(CModeBase::CIsType(modeType));
     if (removingCurrent && !PModes.empty()) {
         PModes.front()->OnActivate();
-        if (ParentThing->HasTC(0x43))
-            ((CTCLook*)ParentThing->GetTC(0x43))->UpdateTurningAnims();
+        if (ParentThing->HasTC(TCI_LOOK))
+            ((CTCLook*)((CTCLook*)&ParentThing->GetTC(TCI_LOOK)))->UpdateTurningAnims();
     }
     long idleDelay = (long)(CMainGameComponent::GetConstantFPS() * 30.0f);
     TimeForNextIdleMode = CWorld::GetFrame() + idleDelay;

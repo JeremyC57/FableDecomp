@@ -1,4 +1,5 @@
 // CCreatureAction_TentacleStrikeInto::Initialise() -- cache the creature's kraken-tentacle component (interface type 0xe3), set the name "TENTACLE_SMASH_INTO", start the tentacle striking, then the base Initialise
+// Leaf: ?Initialise@CCreatureAction_TentacleStrikeInto@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CF3D0, length 129 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for
@@ -10,27 +11,11 @@
 // The PDB header (CCreatureAction_TentacleStrikeInto.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
 #include "fable_string.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -67,7 +52,7 @@ class CCreatureAction_TentacleStrikeInto : public CCombatActionBase { public:
 
 void CCreatureAction_TentacleStrikeInto::Initialise()
 {
-    PCreature.GetPItem()->GetInterface(&PTentacle, 0xe3);
+    PCreature.GetPItem()->GetTC(TCI_KRAKEN_TENTACLE, &PTentacle);
     {
         CCharString name("TENTACLE_SMASH_INTO", -1);
         SetCombatAnimation(name);

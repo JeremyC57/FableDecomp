@@ -26,9 +26,9 @@ class CDefString { public:                             // 4-byte def-name handle
     CDefString();
     bool operator==(const char* text) const;    // 0x005B3440
 };
-class CThing { public:
-    CDefString GetDefName() const;              // 0x004C7CC0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CTCTavernGame { public:
     virtual void v00();

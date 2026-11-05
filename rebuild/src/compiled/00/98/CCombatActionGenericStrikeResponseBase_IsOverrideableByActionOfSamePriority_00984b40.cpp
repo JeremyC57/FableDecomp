@@ -34,14 +34,7 @@ inline C3DVector operator-(const C3DVector& a, const C3DVector& b)
     return result;
 }
 
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    unsigned char _pad44[0x91 - 0x44];
-    unsigned char m_flags;                      // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -79,7 +72,7 @@ bool COpinionReactionRecord::IsTargetValidAndDistant()
 {
     if (m_target.GetPItem() != 0) {
         if (!m_target.GetPItem()->IsDead()) {
-            if (m_target.GetPItem()->m_presentBits[2] & 0x20000) {
+            if (m_target.GetPItem()->HasTC(TCI_HERO_OPINION_DEED_LOG)) {
                 CThing* creature = m_pOwner->m_pCreature;
                 CThing* target = m_target.GetPItem();
                 return (target->GetPos() - creature->GetPos()).Length() > 3.0f;

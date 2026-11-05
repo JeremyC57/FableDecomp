@@ -1,0 +1,2 @@
+address	name	evidence
+0041d198	NUISystem::CManager::SetMeshBank	Ego_r.pdb / FableWin.pdb ?SetMeshBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCMeshDataBank@@@@@Z; the callee stores the counted pointer at CManager +0x18 = PMeshBank (engine/NUISystem_CManager.h: PGraphicsBank +0x10, PMeshBank +0x18, the landed 0x0042A9B7 SetGraphicsBank writes +0x10); the catalog label SetGraphicsBank is a propagation from 0x0042A9B7; two landed binders already spell SetMeshBank, the third (0x0041E641) is respelled in this wave

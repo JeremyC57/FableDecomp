@@ -8,11 +8,7 @@
 // Shape: an empty slot first forgets its average price (`and [ecx+10h],eax` with eax the zero count); the price fold
 //   stores the weighted sum, the new count, then the quotient.
 #pragma optimize("s", on)
-class CThing { public:
-    unsigned char  _pad00[0x8C];
-    unsigned short DefGlobalIndex;                      // +0x8C (Ego_r.pdb +0x9C, minus 0x10 for the retail containers)
-    long GetDefGlobalIndex() const { return DefGlobalIndex; }
-};
+#include "engine/CThing.h"
 #include "engine/CCountedPointer.h"
 namespace NInventory { class CPerItemData; }
 namespace NInventory {

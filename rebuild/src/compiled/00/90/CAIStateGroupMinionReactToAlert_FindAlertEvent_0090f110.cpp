@@ -1,7 +1,8 @@
 // CAIStateGroup_MinionReactToAlert::FindAlertEvent() -- the most recent alert message (type 12) addressed to this
+// Leaf: ?FindAlertEvent@CAIStateGroup_MinionReactToAlert@@QAEPAVCMessageEvent@@XZ
 // Grade: RELOCATION_MATCH (was DIFFER 146v154 nd=21) -- lever: the originator read written in the landed 0x00744D00
 //   shape `POriginator.GetPItem() != 0 && IsThingOfType<CThing>(POriginator.GetPItem())` then the item fetched again
-//   (CThing::ThingTypeMask 0, ThingTypeFlags +0x6c): gives retail's three GetPItem calls, the dead frame store and xor
+//   (CThing::StatGetTypeFlags() 0, ThingTypeFlags +0x6c): gives retail's three GetPItem calls, the dead frame store and xor
 //   dl,dl; jne.
 // creature whose originator is alive and an ally of the creature.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090F110, length 154 bytes (+ int3 padding).
@@ -21,40 +22,10 @@ class CThingAICreature;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
-
-class CThing { public:
-    enum { ThingTypeMask = 0 };                 // the base class matches every thing (landed 0x00744D00 / 0x008D04E0)
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad1[0x6c - 0x4c];
-    unsigned long ThingTypeFlags;               // +0x6c
-    unsigned char _pad2[0x91 - 0x70];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const     // the masked word (a bool return narrows to `shr ; test dl,1`)
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
-            return true;
-        }
-        return false;
-    }
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATTYPEFLAGS
+#include "engine/CThing.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CThingUpcast;
 struct CBaseIntelligentPointer {
@@ -67,7 +38,7 @@ struct CBaseIntelligentPointer {
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
@@ -180,8 +151,8 @@ struct CThingUpcast : CThing { };
 // item fetched once more as the result.
 template <class T> inline bool IsThingOfType(const CThing* const& thing)   // landed 0x00744D00 shape
 {
-    unsigned long mask = T::ThingTypeMask;
-    return (thing->ThingTypeFlags & mask) == mask;
+    unsigned long mask = T::StatGetTypeFlags();
+    return (thing->GetTypeFlags() & mask) == mask;
 }
 
 struct CAIStateGroup_MinionReactToAlert : CAIStateGroupBase {
@@ -196,7 +167,7 @@ CMessageEvent* CAIStateGroup_MinionReactToAlert::FindAlertEvent()
         CThing* originator = 0;
         if (event->POriginator.GetPItem() != 0 && IsThingOfType<CThing>(event->POriginator.GetPItem()))
             originator = event->POriginator.GetPItem();
-        if (originator != 0 && !(originator->m_flags91 & 1)) {
+        if (originator != 0 && !originator->IsDead()) {
             if (GFAreThingsAllies(originator, PBrain->PCreature))
                 return event;
         }

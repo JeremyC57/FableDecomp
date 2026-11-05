@@ -1,4 +1,5 @@
 // CTCFollowed::AddFollower(CThing& follower, bool aiFollower) -- add a follower (with its emote icon and a GUI refresh) unless already following; an AI creature asked to follow as an AI follower also joins the AI list and is persisted with the game state
+// Leaf: ?AddFollower@CTCFollowed@@QAEXAAVCThing@@_N@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -43,12 +44,9 @@ struct CAICreaturePointerList {
     void push_back(const CIntelligentPointerAICreature& value);   // 0x006604EB
 };
 
-class CThing {
-public:
-    unsigned char _pad00[0x10];
-    unsigned char ThingClass;                       // +0x10 (1: AI creature)
-    void SetAsGameStatePersisted(bool persisted);   // 0x004C7880
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
@@ -79,7 +77,7 @@ void CTCFollowed::AddFollower(CThing& follower, bool aiFollower)
         AddEmoteIcon(follower);
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
     }
-    if (aiFollower && follower.ThingClass == 1) {
+    if (aiFollower && follower.GetType() == 1) {
         if (!IsAIFollower((const CThingAICreature*)&follower))
             AIFollowers.push_back(CIntelligentPointerAICreature((CThingAICreature*)&follower));
         follower.SetAsGameStatePersisted(true);

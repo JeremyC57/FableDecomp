@@ -9,7 +9,7 @@
 //   CThingCreatureBase::IsPerformingAnyAction() @ 0x006622A0, CThingCreatureBase::IsBlocking() @ 0x00664D00.
 // Layout (retail CThing, landed models): m_type +0x10 (2 = an AI creature), PhysicsTC +0x60, ThingTypeFlags +0x6c;
 //   the physics component holds the position at +0x0c and the collision radius at +0x34.
-// Shape: the result byte lives in bl (false, set true once the spheres overlap); `thing->PhysicsTC` is read before
+// Shape: the result byte lives in bl (false, set true once the spheres overlap); `thing->GetPhysicsTC()` is read before
 //   the flag test; the squared distance of the position difference is compared with the squared radius sum
 //   (`fcompp ; test ah,41h ; jne`), Owner re-read from `this` for its own radius; the creature check returns false
 //   through its own tail.
@@ -20,16 +20,8 @@ class CTCPhysicsBase { public:                        // retail layout, only the
     unsigned char _pad18[0x34 - 0x18];
     float Radius;                // +0x34
 };
-class CThing {                                  // retail layout (landed models), only the used fields
-public:
-    unsigned char _pad00[0x10];
-    unsigned char m_type;        // +0x10
-    unsigned char _pad11[0x60 - 0x11];
-    CTCPhysicsBase* PhysicsTC;   // +0x60
-    unsigned char _pad64[0x6c - 0x64];
-    unsigned long ThingTypeFlags; // +0x6c
-    const C3DVector& GetPos() const;   // 0x004C73D0
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing {
 public:
     bool IsPerformingAnyAction() const;     // 0x006622A0
@@ -42,16 +34,16 @@ class CIsCreatureIsIntersecting { public:             // 4 bytes (PDB)
 bool CIsCreatureIsIntersecting::operator()(CThing* thing) const
 {
     bool result = false;
-    CTCPhysicsBase* phys = thing->PhysicsTC;
-    if (thing->ThingTypeFlags & 8) {
+    CTCPhysicsBase* phys = thing->GetPhysicsTC();
+    if (thing->GetTypeFlags() & 8) {
         const C3DVector& pos = Owner->GetPos();
         float dx = pos.X - phys->Position.X;
         float dy = pos.Y - phys->Position.Y;
         float dz = pos.Z - phys->Position.Z;
-        float r = Owner->PhysicsTC->Radius + phys->Radius;
+        float r = Owner->GetPhysicsTC()->Radius + phys->Radius;
         if (dx * dx + dy * dy + dz * dz < r * r) {
             result = true;
-            if (thing->m_type == 2 && ((CThingCreatureBase*)Owner)->IsPerformingAnyAction() && ((CThingCreatureBase*)thing)->IsBlocking())
+            if (thing->GetType() == 2 && ((CThingCreatureBase*)Owner)->IsPerformingAnyAction() && ((CThingCreatureBase*)thing)->IsBlocking())
                 return false;
         }
     }

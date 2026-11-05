@@ -19,39 +19,17 @@
 //   is the flattened PDB layout (16-byte containers), so the class is modelled locally (landed ctor 0x0059EC48 offsets).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CWideString { public:
-    void* PStringData;
-    CWideString(const unsigned short* text);            // 0x0099B6B0
-    ~CWideString();                                     // 0x0099B510
-};
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                            // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            CInterfaceMap::value_type* found = (it == map->end() || wanted < it->first) ? map->end() : it;
-            *out = (T*)((void*)found->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCShop { public:                                        // interface type 0x53
     bool HasDefaultStockItem(long defIndex);            // 0x007723D0
 };
@@ -211,7 +189,7 @@ bool CTCInventoryTrade::AddSellItemToList(long defIndex, long count, CList* list
     CManager* fe = CManager::GetInstance();
     CCountedPointer<CComponent> entry;
     CTCShop* shop = 0;
-    GetTradingThing()->GetInterface(&shop, 0x53);
+    GetTradingThing()->GetTC(TCI_SHOP, &shop);
     if (shop->HasDefaultStockItem(defIndex)) {
         entry.Reset(fe->CreateMenuEntryComponent(L"INVALID NAME", 0.0f, 1.0f, "UI_WEAPON_MENU_ENTRY_BRANCH_TEMPLATE_NEW",
                                                  0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));

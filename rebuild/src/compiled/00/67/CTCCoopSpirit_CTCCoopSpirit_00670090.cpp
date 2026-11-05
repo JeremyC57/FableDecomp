@@ -21,10 +21,7 @@
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefPointer.h"
 
-class CThing : public CClass {                          // RTTI CThing : CClass
-public:
-    void Kill(bool immediately);                        // 0x004C9B80 ?Kill@CThing@@QAEX_N@Z
-};
+#include "engine/CThing.h"
 
 #pragma pack(push, 1)
 #define FABLE_RETAIL_CINTELLIGENTPOINTER

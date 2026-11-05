@@ -1,4 +1,5 @@
 // CGameCameraManager::IsObservedThingInMelee() -- true when the observed thing is alive, has its combat component (interface type 0x36) and that component's melee target index (+0x34) is set (>= 0)
+// Leaf: ?IsObservedThingInMelee@CGameCameraManager@@QAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006994F0, length 108 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times, on PObservedThing), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
@@ -9,30 +10,10 @@
 // lookup key's frame word) as the condition; the success arm returns `mov al,1`, every failure joins the `xor al,al` exit.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_statusFlags;            // +0x91 (bit 0: dead)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CTCCombat { public:                          // interface type 0x36
     unsigned char _pad[0x34];
@@ -65,9 +46,9 @@ class CGameCameraManager { public:
 
 bool CGameCameraManager::IsObservedThingInMelee()
 {
-    if (PObservedThing.GetPItem() && !(PObservedThing.GetPItem()->m_statusFlags & 1)) {
-        CTCCombat* combat;
-        if (PObservedThing.GetPItem()->GetInterface(&combat, 0x36)) {
+    if (PObservedThing.GetPItem() && !PObservedThing.GetPItem()->IsDead()) {
+        const CTCCombat* combat;
+        if (PObservedThing.GetPItem()->PeekTC(TCI_STEALTH, &combat)) {
             if (combat->m_meleeTarget >= 0)
                 return true;
         }

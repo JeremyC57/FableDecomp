@@ -18,46 +18,12 @@ class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 #include "engine/C3DVector.h"
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    unsigned long HasTC(long interfaceType) const
-    {
-        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;   // one ternary: straight into ecx
-            return true;
-        }
-        return false;
-    }
-    const C3DVector& GetPos() const;   // 0x004C73D0
-    // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline const CInterfaceMap::value_type* FindEntry(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        const CInterfaceMap::value_type* sel;
-        if (it == map->end()) sel = map->end();
-        else if (it->first <= interfaceType) sel = it;
-        else sel = map->end();
-        return sel;
-    }
-};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -105,13 +71,11 @@ struct CTCEnemySource {                         // the interface-8 component
     virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
     virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
-    virtual CThing* GetEnemy();                 // slot 29 (+0x74)
+    virtual CThing* GetEnemy() const;                 // slot 29 (+0x74)
 };
 
-
-
 struct CTCUndergroundMover {                    // the interface-0x34 component
-    float GetSurfaceRange();                    // 0x007448F0
+    float GetSurfaceRange() const;                    // 0x007448F0
 };
 
 static inline float XYDistance(const C3DVector& a, const C3DVector& b)
@@ -128,13 +92,13 @@ struct CAIStateGroup_CreatureSeekEnemyUnderground : CAIStateGroupBase {
 
 bool CAIStateGroup_CreatureSeekEnemyUnderground::IsRunnable()
 {
-    CTCEnemySource* source;
-    PBrain->PCreature->GetInterface(&source, 8);
+    const CTCEnemySource* source;
+    PBrain->PCreature->PeekTC(TCI_TARGETING, &source);
     CThing* enemy = source->GetEnemy();
-    if (enemy != 0 && !(enemy->m_flags91 & 1)) {
+    if (enemy != 0 && !enemy->IsDead()) {
         CThing* creature = PBrain->PCreature;
-        CTCUndergroundMover* mover;
-        if (creature->GetInterface(&mover, 0x34)) {
+        const CTCUndergroundMover* mover;
+        if (creature->PeekTC(TCI_PERCEIVE_THING, &mover)) {
             if (XYDistance(enemy->GetPos(), creature->GetPos()) > mover->GetSurfaceRange() * 0.5f) {
                 PEnemy = enemy;
                 return true;

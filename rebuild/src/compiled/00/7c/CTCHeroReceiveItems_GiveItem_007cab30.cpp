@@ -19,11 +19,8 @@ class CBaseObject;
 
 #include "engine/C3DVector.h"
 
-class CThing {
-public:
-    const C3DVector& GetPos() const;               // 0x004C73D0
-    void SetInLimbo(bool inLimbo);                      // 0x004C8CF0
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingObject : public CThing { };
 
 class CTCBase { public:

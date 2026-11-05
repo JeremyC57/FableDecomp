@@ -1,11 +1,10 @@
 // CTCNoise::vfunc_9() -- per-frame update: count the life timer down and kill the parent thing when it reaches zero
+// Leaf: ?vfunc_9@CTCNoise@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00749860, length 29 bytes.
 // Callees: CThing::Kill @ 0x004C9B80 (__fastcall, one argument, pushed as 1).
 // PDB CTCNoise: Definition (CTCNoiseDef, 0x34 bytes) at +0x0c, LifeTimer +0x40.
 // Shape: the decrement goes through eax and is stored; the zero test re-reads the member at the join.
-class CThing { public:
-    void Kill(bool removeNow);                      // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 struct CTCBase_00749860 {
     virtual void v00();

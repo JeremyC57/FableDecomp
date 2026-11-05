@@ -15,12 +15,7 @@
 //        `finish = i` (as the landed CTCTavernGame::ClearBox 0x005EC5C0).
 class CBaseObject;
 
-class CThing { public:
-    unsigned char _pad_0x00[0x91];
-    unsigned char m_flags;                      // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-    void Kill(bool immediately);                // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 #pragma pack(push, 1)
 class CBaseObjectPointer;

@@ -21,12 +21,8 @@
 //   argument list puts the frame zeroing and `push 64h` ahead of the call); the AddCombinationAnim arguments are evaluated
 //   right to left (the two `false`, GetDelayTime, GetTimeToBlendIn, then &init). The body must sit INSIDE the anonymous
 //   namespace: a global-scope definition after an anonymous-namespace declaration emits `?AddCombinationIdles@@YI...`.
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CAnimFilterBase {
 public:
     virtual bool Passes(long group) const;              // slot 0 (descriptive)
@@ -38,7 +34,7 @@ public:
     virtual bool Passes(long group) const;              // 0x00834CC0
     virtual CAnimFilterBase* Clone() const;             // 0x008350D0
 };
-class CThing { };
+
 class CAnimationEntry {
 public:
     long BankIndex;                                     // +0x00

@@ -1,4 +1,5 @@
 // CTCEffectOnDie::FrameUpdate() -- count the effect's life down (unless paused); inside the fade-out window fade the thing and everything it carries with alpha 255 * timer / fadeout; once the timer has run out kill the thing
+// Leaf: ?FrameUpdate@CTCEffectOnDie@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E0BF0, 267 bytes (+ int3 padding), plain `ret`.
 // Callees: __ftol2 @ 0x00BFEA70 (x2), CTCGraphicAppearance::SetAlpha(unsigned char) @ 0x004BFAC0 (on the thing's
@@ -16,7 +17,8 @@
 //   by its inline destructor; one zero register (ebx) serves every zero compare and store.
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 namespace NGraphicAppearance {
@@ -25,22 +27,7 @@ class CTCGraphicAppearance { public:
 };
 }
 using NGraphicAppearance::CTCGraphicAppearance;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x10];
-    CTCGraphicAppearance* PGraphicAppearance;   // +0x64
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
-    }
-    void Kill(bool immediately);                // 0x004C9B80
-};
+
 struct CThingVector {                           // STLport vector<CThing*> (12 bytes)
     CThing** _M_start;
     CThing** _M_finish;
@@ -77,16 +64,16 @@ void CTCEffectOnDie::FrameUpdate()
             if (timer <= fadeOut) {
                 Pausable = false;
                 float alpha = (float)timer / fadeOut * 255.0f;
-                CTCGraphicAppearance* appearance = ParentThing->PGraphicAppearance;
+                CTCGraphicAppearance* appearance = ParentThing->GetTCGraphicAppearance();
                 if (appearance)
                     appearance->SetAlpha((unsigned char)(long)alpha);
                 CThing* thing = ParentThing;
-                if (thing->HasTC(0x46)) {
-                    CTCCarrying* carrying = thing->GetTC<CTCCarrying>(0x46);
+                if (thing->HasTC(TCI_CARRYING)) {
+                    CTCCarrying* carrying = ((CTCCarrying*)&thing->GetTC(TCI_CARRYING));
                     CThingVector things;
                     carrying->GetCarriedThings(things);
                     for (CThing** it = things._M_start, **end = things._M_finish; it != end; ++it) {
-                        CTCGraphicAppearance* carried = (*it)->PGraphicAppearance;
+                        CTCGraphicAppearance* carried = (*it)->GetTCGraphicAppearance();
                         if (carried)
                             carried->SetAlpha((unsigned char)(long)alpha);
                     }

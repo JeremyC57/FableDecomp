@@ -1,4 +1,5 @@
 // CTCShopKeeper::RepressOpinions(bool repress) -- on a change, store the flag; for a creature keeper flip its deed-77 mask entry and switch its opinion deed / reaction masks to the shopkeeper-on-the-job masks, or back to its def's defaults
+// Leaf: ?RepressOpinions@CTCShopKeeper@@QAEX_N@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007996B0, 214 bytes (`ret 4`).
 // Callees: the interface LowerBound @ 0x0040F020, CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0,
@@ -11,31 +12,14 @@
 // vector of bool bytes) +0x3c -- the local model of the landed SetOpinionDeedMask 0x006822E0 (engine header has PDB offsets).
 // Shape: `repress != RepressedOpinions` compares the argument byte first; HasTC + one-ternary GetTC into a named local; the mask
 // entry takes `!repress` from the argument, the branch re-reads the stored flag; each string is a named local in its own block.
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length);         // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char ThingClass;                           // +0x10
-    unsigned char _pad11[0x20 - 0x11];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-    }
-};
+
 class COpinionOfHeroDef { public:
     unsigned char _pad00[0x34];
     long ReactionMask;                                  // +0x34
@@ -68,9 +52,9 @@ void CTCShopKeeper::RepressOpinions(bool repress)
     if (repress != RepressedOpinions) {
         CThing* thing = ParentThing;
         RepressedOpinions = repress;
-        if (thing->HasTC(0x4f)) {
-            CTCCreatureOpinionOfHero* opinion = (CTCCreatureOpinionOfHero*)thing->GetTC(0x4f);
-            if (thing->ThingClass == 1) {
+        if (thing->HasTC(TCI_CREATURE_OPINION_OF_HERO)) {
+            CTCCreatureOpinionOfHero* opinion = (CTCCreatureOpinionOfHero*)((CTCCreatureOpinionOfHero*)&thing->GetTC(TCI_CREATURE_OPINION_OF_HERO));
+            if (thing->GetType() == 1) {
                 opinion->DeedMask[0x4d] = !repress;
                 if (RepressedOpinions) {
                     {

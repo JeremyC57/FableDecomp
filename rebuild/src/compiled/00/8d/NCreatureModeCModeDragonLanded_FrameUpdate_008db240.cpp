@@ -36,7 +36,7 @@ class C3DVector { public:
 };
 __forceinline C3DVector ScaleRef(const C3DVector& v, const float& s) { return C3DVector(v.X * s, v.Y * s, v.Z * s); }
 __forceinline C3DVector Normalise(const C3DVector& v) { return ScaleRef(v, FastInvSqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z)); }
-class CTCDriverBase { public:
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); 
     virtual void MoveTo(const C3DVector& position);   // slot 30 (+0x78)
     virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47(); virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53(); virtual void v54(); virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59(); virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65(); virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69(); 
@@ -46,32 +46,11 @@ class CTCBase;
 class CTCLook { public:
     void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char  _pad0[0x20];
-    unsigned long  m_presentBits[9];            // +0x20
-    CInterfaceMap  m_interfaces;                // +0x44
-    unsigned char  _pad54[0xc];
-    CTCDriverBase* PTCDriver;                   // +0x60
-    unsigned char  _pad64[0x91 - 0x64];
-    unsigned char  Killed;                      // +0x91 (bit 0)
-    const C3DVector& GetPos() const;       // 0x004C73D0
-    __forceinline bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CThingCreatureBase : public CThing { public: };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -93,12 +72,12 @@ public:
 void CModeDragonLanded::FrameUpdate()
 {
     CModeBase::FrameUpdate();
-    if (!((CThing*)PTarget.GetPItem()) || (((CThing*)PTarget.GetPItem())->Killed & 1))
+    if (!((CThing*)PTarget.GetPItem()) || ((CThing*)PTarget.GetPItem())->IsDead())
         return;
     CThingCreatureBase* owner = Owner;
-    if (!owner->HasTC(0x43))
+    if (!owner->HasTC(TCI_LOOK))
         return;
-    CTCLook* look = owner->GetTC<CTCLook>(0x43);
+    CTCLook* look = ((CTCLook*)&owner->GetTC(TCI_LOOK));
     bool facing = false;
     CThing* target = ((CThing*)PTarget.GetPItem());
     C3DVector delta = target->GetPos() - owner->GetPos();
@@ -109,7 +88,7 @@ void CModeDragonLanded::FrameUpdate()
     if (UseHeadTurning && !facing) {
         look->LookAtPos(&((CThing*)PTarget.GetPItem())->GetPos(), 10);
     } else {
-        C3DVector ahead = Owner->PTCDriver->GetForward() * 50.0f;
+        C3DVector ahead = Owner->GetPhysicsTC()->GetForward() * 50.0f;
         C3DVector position = Owner->GetPos() + ahead;
         look->LookAtPos(&position, 10);
     }

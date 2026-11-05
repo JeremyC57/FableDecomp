@@ -25,14 +25,12 @@
 //   store (it fixed the camera-point vcall loading the component straight into ecx), the inline template
 //   CTCCameraPointDefinitionBase::GetPointType<CTCCameraPointTrack> (its out-of-line COMDAT sits at 0x0072A430) and the engine
 //   CCountedPointer (mode Data kept in esi across SetPCameraPoint). The prior's three register residues all came from stand-ins.
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
-enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
+
 enum EMessageEventType { EMessageEventType_Force32 = 0x7fffffff };
 #include "engine/CArray.h"
 #include "engine/CVectorMap.h"
@@ -78,39 +76,7 @@ public:
 class CTCCameraPointTrack : public CTCCameraPointDefinitionBase { public:
     enum { POINT_TYPE_ID = 7 };
 };
-class CBaseObject { };
-class CThing : public CBaseObject {                              // partial view, retail offsets
-public:
-    typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > TCMap;
-    unsigned char      _pad00[0x20];
-    unsigned long      UsingComponents[9];                       // +0x20 std::bitset<274>
-    TCMap              Components;                               // +0x44
-    unsigned char      _pad54[0x60 - 0x54];
-    CTCPhysicsBase*    PhysicsTC;                                // +0x60
-    unsigned char      _pad64[0x90 - 0x64];
-    signed char        PlayerNumber;                             // +0x90
-    unsigned char      Dead : 1;                                 // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-    unsigned long GetPlayerNumber() const { return PlayerNumber; }
-    const C3DVector& GetPos() const;                             // 0x004C73D0
-    CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }
-    __forceinline bool HasTC(ETCInterfaceType type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (!HasTC(T::StatGetInterfaceType()))
-            return false;
-        ETCInterfaceType key = T::StatGetInterfaceType();
-        TCMap* map = &Components;
-        TCMap::value_type* it = map->LowerBound(key);
-        *out = (T*)((it == map->end() || T::StatGetInterfaceType() < it->first) ? map->end() : it)->second;
-        return true;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"

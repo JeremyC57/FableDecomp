@@ -1,4 +1,5 @@
 // CCreatureAction_DragonBurninateInto::Initialise() -- animation "INTO_BURNINATE", base Initialise, then push a new CModeDragonStrafeBurninate(owner, the movement points, previous point, burn start/stop, flame start/end) onto the owner's mode manager
+// Leaf: ?Initialise@CCreatureAction_DragonBurninateInto@@UAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
@@ -16,29 +17,12 @@
 // Layout: retail PreviousPoint +0x114, MovementPoints (std::vector<C3DVector>, 12 bytes) +0x120, BurnStart +0x12c, BurnStop
 // +0x130, FlameStartPos +0x134, FlameEndPos +0x140 (PDB +0x12c.. with a 16-byte vector).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing { public: };
 
 class CBaseObject;
@@ -50,12 +34,6 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
-};
-
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                             // 0x0099EAE0
 };
 
 #include "engine/C3DVector.h"
@@ -104,7 +82,7 @@ void CCreatureAction_DragonBurninateInto::Initialise()
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
-    if (((CThing*)PCreature.GetPItem())->GetInterface(&modeManager, 0x31))
+    if (((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager))
         modeManager->AddMode(CCountedPointer<CModeBase>(new CModeDragonStrafeBurninate(PCreature, MovementPoints, PreviousPoint,
                                                                                        BurnStart, BurnStop, FlameStartPos, FlameEndPos)));
 }

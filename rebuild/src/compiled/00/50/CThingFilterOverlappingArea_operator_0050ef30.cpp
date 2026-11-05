@@ -27,11 +27,7 @@ class CTCPhysicsBase {
 public:
     void GetBoundingInfo(C3DVector* centre, float* radius);    // 0x006AF640
 };
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                                 // +0x60
-};
+#include "engine/CThing.h"
 class CThingFilter_OverlappingArea {
 public:
     const C2DBoxI* Area;                                       // +0x00
@@ -45,10 +41,10 @@ public:
 #include "engine/GFFloatToLongCeil.h"
 bool CThingFilter_OverlappingArea::operator()(CThing* thing) const
 {
-    if (thing->PhysicsTC) {
+    if (thing->GetPhysicsTC()) {
         float radius;
         C3DVector centre;
-        thing->PhysicsTC->GetBoundingInfo(&centre, &radius);
+        thing->GetPhysicsTC()->GetBoundingInfo(&centre, &radius);
         radius = (float)GFFloatToLongCeil(radius);          // rounded up in place: the address-taken out-value stays a memory operand
         C2DBoxI box = *Area;
         box.Grow(radius);

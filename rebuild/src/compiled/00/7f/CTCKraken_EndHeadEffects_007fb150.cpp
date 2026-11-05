@@ -6,7 +6,7 @@
 #endif
 // Layout: CThing active header is absent (donor-only header quarantined). Retail Dead is bit0 at+0x91; no other fields accessed.
 class CBaseObject;
-class CThing {public:unsigned char Prefix[0x91];unsigned char Dead:1;unsigned char OtherFlags:7;void Kill(bool);};
+#include "engine/CThing.h"
 class CBaseObjectPointer;
 // Layout: genuine polymorphic intelligent pointer has PData+4, total8bytes on x86; no active shared wrapper header.
 class CBaseIntelligentPointer {public:CBaseIntelligentPointer();virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;CBaseObject* GetPItem()const;void SetPItem(CBaseObject*);};
@@ -21,4 +21,4 @@ class CTCKraken {public:unsigned char Prefix[40];CIntelligentPointer<CThing> PHe
 public:void EndHeadEffects();friend struct TestAccess;
 };
 #pragma pack(pop)
-void CTCKraken::EndHeadEffects(){if(PHeadEffect.GetPItem() && !PHeadEffect.GetPItem()->Dead){PHeadEffect.GetPItem()->Kill(true);PHeadEffect=CIntelligentPointer<CThing>(0);}}
+void CTCKraken::EndHeadEffects(){if(PHeadEffect.GetPItem() && !PHeadEffect.GetPItem()->IsDead()){PHeadEffect.GetPItem()->Kill(true);PHeadEffect=CIntelligentPointer<CThing>(0);}}

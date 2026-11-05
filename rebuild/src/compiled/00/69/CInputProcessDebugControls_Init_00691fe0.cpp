@@ -1,11 +1,12 @@
 // CInputProcessDebugControls::Init() -- point PCreature (+0x28, a CIntelligentPointer) at the player's creature: a temporary intelligent pointer is built from CPlayer::PeekPControlledCreature and assigned through SetPItem/GetPItem, then destroyed
+// Leaf: ?Init@CInputProcessDebugControls@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00691FE0, length 77 bytes. Vtable slot 2 (Init) of CInputProcessDebugControls (the chunk label "CInputProcessControlSpirit::Init" is propagated: rtti-vtables puts 0x00691FE0 in CInputProcessDebugControls' vtable 0x01237F9C).
 // Callees: CPlayer::PeekPControlledCreature @ 0x00487DD0 (`add ecx,2Ch ; jmp CBaseIntelligentPointer::GetPItem`), CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
 // CBaseIntelligentPointer::SetPItem @ 0x00A01B90, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10.
 // MyPlayer is CInputProcessGameBase::MyPlayer (+0x18); the temporary's vtable is 0x01237F1C (the CIntelligentPointer instantiation).
 // Shape: the creature pointer is fetched first (edi), the 8-byte temporary lives at [esp+8] (base constructor, then its own vtable
 // store, then SetPItem), the member takes the temporary's item, and the temporary's base destructor runs last.
-class CThing { };                                   // opaque here: the pointer is only stored
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 class CBaseObject;
 class CBaseIntelligentPointer { public:               // 8 bytes: vptr + the pointee link

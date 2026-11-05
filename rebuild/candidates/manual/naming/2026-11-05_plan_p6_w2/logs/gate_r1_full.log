@@ -1,0 +1,40 @@
+gate: 200 rows {'PASS': 174, 'FAIL': 26} in 33.5s (0.17s/row wall, NJ=2)
+  WARN leaf '??R' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@UCTCSpellComponent_0069f750@@@CThing@@QAE_NPAPAUCTCSpellComponent_0069f750@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@VCTCDivineWrath@@@CThing@@QAE_NPAPAVCTCDivineWrath@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@VCTCUnholyPower@@@CThing@@QAE_NPAPAVCTCUnholyPower@@J@Z' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'FAIL': 66, 'PASS': 134} in 31.7s (0.16s/row wall, NJ=2)
+  WARN leaf '??$GetInterface@UCModeComponent@@@CThing@@QAE_NPAPAUCModeComponent@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?GetInterface@CThing@@QAE_NJPAPAVCTCBase@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?GetInterface@CThing@@QAE_NJPAPAVCTCBase@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?GetInterface@CThing@@QAE_NJPAPAVCTCBase@@@Z' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'FAIL': 57, 'PASS': 143} in 31.6s (0.16s/row wall, NJ=2)
+  WARN leaf '??$GetInterface@VCTCGuard@@@CThing@@QAE_NPAPAVCTCGuard@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@UCTCWeaponHolder_007cc410@@@CThing@@QAE_NPAPAUCTCWeaponHolder_007cc410@@J@Z' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'PASS': 154, 'FAIL': 46} in 33.3s (0.17s/row wall, NJ=2)
+  WARN leaf '??R' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??R' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@VCTCAISummon@@@CThing@@QAE_NPAPAVCTCAISummon@@J@Z' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'FAIL': 74, 'PASS': 126} in 35.0s (0.17s/row wall, NJ=2)
+  WARN leaf '??$GetInterface@UCTCVillager@@@CThing@@QAE_NPAPAUCTCVillager@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@VCTCTargeted@@@CThing@@QAE_NPAPAVCTCTargeted@@J@Z' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'FAIL': 61, 'PASS': 139} in 35.4s (0.18s/row wall, NJ=2)
+gate: 200 rows {'PASS': 141, 'FAIL': 59} in 39.2s (0.20s/row wall, NJ=2)
+  WARN leaf '??$GetInterface@UCTCCombat_Calls@@@CThing@@QAE_NPAPAUCTCCombat_Calls@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@UCTCWill@@@CThing@@QAE_NPAPAUCTCWill@@J@Z' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'FAIL': 78, 'PASS': 122} in 32.9s (0.16s/row wall, NJ=2)
+  WARN leaf '??$GetInterface@UCTCWill@@@CThing@@QAE_NPAPAUCTCWill@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@UCTCWill@@@CThing@@QAE_NPAPAUCTCWill@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@UCTCWill@@@CThing@@QAE_NPAPAUCTCWill@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@VCTCIdleScheduler@@@CThing@@QAE_NPAPAVCTCIdleScheduler@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@UCTCVillager@@@CThing@@QAE_NPAPAUCTCVillager@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@UCTCModeHolder@@@CThing@@QAE_NPAPAUCTCModeHolder@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@VCTCKrakenTentacle@@@CThing@@QAE_NPAPAVCTCKrakenTentacle@@J@Z' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'PASS': 90, 'FAIL': 110} in 33.3s (0.17s/row wall, NJ=2)
+  WARN leaf '??$GetInterface@UCTCVillager@@@CThing@@QAE_NPAPAUCTCVillager@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@VCTCBoss@@@CThing@@QAE_NPAPAVCTCBoss@@J@Z' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'PASS': 98, 'FAIL': 102} in 32.6s (0.16s/row wall, NJ=2)
+  WARN leaf '?GetInterface@CThing@@QAE_NJPAPAVCVillageTaskBase@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??$GetInterface@UCTCJackOfBlades@@@CThing@@QAE_NPAPAUCTCJackOfBlades@@J@Z' matches no symbol in x.obj; graded the largest function
+gate: 150 rows {'FAIL': 85, 'PASS': 65} in 24.2s (0.16s/row wall, NJ=2)
+gatewave /tmp/claude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad/plan/p6/w2 {'PASS': 1386, 'FAIL': 764}

@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToPub::FreeBarPoint() -- hand the bar point this creature was using back to the bar.
+// Leaf: ?FreeBarPoint@CAIStateGroup_GoToPub@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00949320, length 93 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the bar pointer at +0x1c), CVectorMap::LowerBound @
@@ -15,30 +16,10 @@ class CTCBase;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with LowerBound @ 0x0040F020 -- the same shape the landed
 // GetInterface_0x.. bodies (0x007BEA08 ...) use, here inlined into the caller through GetTC<T>().
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 struct CTCBarPoints {                           // interface type 0xB9 component
     void FreeBarPoint(long pointIndex);         // 0x007BA4F0
@@ -83,7 +64,7 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
 void CAIStateGroup_GoToPub::FreeBarPoint()
 {
     CTCBarPoints* pBarPoints;
-    m_pBar.GetPItem()->GetInterface(&pBarPoints, 0xB9);
+    m_pBar.GetPItem()->GetTC(TCI_TAVERN_BAR, &pBarPoints);
     pBarPoints->FreeBarPoint(m_barPointIndex);
     m_barPointIndex = -1;
 }

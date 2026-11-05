@@ -26,12 +26,7 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
 }
 
 class CBaseObject;
-class CThing { public:
-    unsigned char _pad_0x00[0x91];
-    unsigned char m_flags;                      // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-    void Kill(bool removeNow);                  // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 struct CBaseIntelligentPointer {                // 8 bytes: vtable + item pointer
     virtual ~CBaseIntelligentPointer();         // slot 0 (the vector's _Destroy calls it virtually)

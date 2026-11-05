@@ -1,4 +1,5 @@
 // CAIStateGroup_JackDragon::StayIdle(float seconds) -- idle frame by frame for `seconds`; terminate the group as soon as the enemy dies or the group stops
+// Leaf: ?StayIdle@CAIStateGroup_JackDragon@@QAEXM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094FE30, length 126 bytes (+ int3 padding).
 // Callees: the world accessor @ 0x008FCFC0 (PBrain->+0x1c->+0x24), CWorld::GetWorldFrame @ 0x0049D870 (a
 // static returning the frame global @ 0x013B89BC; manifest "GFGetPreMainMemoryUsed" is propagated),
@@ -13,10 +14,7 @@
 // the int difference parked in the `push ecx` slot). No engine header for the class: local model.
 extern long g_framesPerSecond;                  // 0x01375550
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -38,7 +36,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

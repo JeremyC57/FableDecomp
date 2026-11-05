@@ -17,33 +17,10 @@
 // at the push. Result `== 2` (EAIActionReturn completed).
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing {
-public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    bool TestTC(long interfaceType) const
-    {
-        return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
-    }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType) const
-    {
-        bool has = TestTC(interfaceType);
-        if (has) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-        }
-        return has;
-    }
-};
 
 class CHeroTitleDef {
 public:
@@ -110,8 +87,8 @@ private:
 
 bool CAIStateGroup_OpinionReactionRoot::HeroTitleToSelfUpdate()
 {
-    CTCHero* hero;
-    ((CThing*)ThingReactingTo.GetPItem())->GetInterfaceT(&hero, 0x29);
+    const CTCHero* hero;
+    ((CThing*)ThingReactingTo.GetPItem())->PeekTC(TCI_HERO, &hero);
     const CHeroTitleDef* title = hero->PHeroTitleSubDef;
     CThing* target = ((CThing*)ThingReactingTo.GetPItem());
     return AIAction_SpeakAISpeechToTarget(AI_ACTION_REPEAT_ONCE, PBrain->PCreature, target,

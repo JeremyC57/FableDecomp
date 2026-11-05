@@ -1,4 +1,5 @@
 // CTCExplodingObject::SetCountdownTimer(long frames) -- force the thing to update every frame, then start the countdown at `frames`, or shorten an already running countdown to min(frames, CountdownTimer)
+// Leaf: ?SetCountdownTimer@CTCExplodingObject@@QAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00750BA0, length 52 bytes.
 // Callees: CThing::SetForceFrameUpdate(bool) @ 0x004C7C60.
 // Layout: PDB CTCExplodingObject (48 bytes) over CTCBase (engine/CTCBase.h): CountdownTimer +0x18.
@@ -7,9 +8,9 @@
 // and dereferences it (`mov edx,[ecx] ; mov [eax],edx`); `jle` on the member is the signed `> 0` running test.
 #include "engine/CTCBase.h"
 
-class CThing { public:
-    void SetForceFrameUpdate(bool update);         // 0x004C7C60
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 template <class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
 

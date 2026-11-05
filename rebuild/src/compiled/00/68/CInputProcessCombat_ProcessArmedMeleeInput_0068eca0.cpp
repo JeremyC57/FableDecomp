@@ -15,11 +15,9 @@
 // Shape: the combat component pointer starts at 0 and the inline out-parameter GetInterface fills it (no hero test); the
 //   unused weapon reference is the third argument (FableWin.pdb signature).
 class CInputEvent;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
@@ -43,26 +41,10 @@ class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                // +0x20
-    CInterfaceMap m_interfaces;                    // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CTCCombat { public:
     bool IsMeleeFlourishValid() const;             // 0x00733EE0
@@ -99,8 +81,8 @@ public:
 void CInputProcessCombat::ProcessArmedMeleeInput(const CInputEvent& event, CProcessedInput& processed, const CThing& weapon)
 {
     CThing* hero = ((CPlayer*)((CWorld*)World)->PeekMyPlayer())->GetPControlledCreature();
-    CTCCombat* combat = 0;
-    hero->GetInterface(&combat, 0x30);
+    const CTCCombat* combat = 0;
+    hero->PeekTC(TCI_COMBAT, &combat);
     if (!IsEventButtonPressed(event))
         return;
     if (IsEventGameAction(8, event) && combat->IsMeleeFlourishValid()) {

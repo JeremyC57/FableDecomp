@@ -12,17 +12,14 @@
 // Layout: CThingAICreatureInit as the PDB (0x1c, landed ctor 0x004FACD0, here inlined); CThing interface bitset +0x20, map +0x44.
 // Shape: the def name and the two `""` names are named locals in blocks (brain declared first); the init record is a
 //          temporary of the Create call (inline ctor); the navigation lookup is the ternary GetInterface without a test.
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
 struct CRoute;                                          // STLport vector<pair<C2DVector, unsigned char> >
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingPhysical;
@@ -45,27 +42,9 @@ class CThingAICreatureInit { public:
           HomeBuilding(0), WorkBuilding(0) {}
 };
 struct CTCNavigationBase {                              // interface 7 (descriptive)
-    void CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, CRoute& route);   // 0x006CB9B0
+    void CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, CRoute& route) const;   // 0x006CB9B0
 };
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20
-    CInterfaceMap m_interfaces;                         // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-    const C3DVector& GetPos() const;               // 0x004C73D0
-    void Kill(bool silent);                             // 0x004C9B80
-};
+
 class CThingAICreature : public CThing {
 public:
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& pos, long flags, const CThingAICreatureInit& init);   // 0x00833800
@@ -120,8 +99,8 @@ void CTCPreCalculatedNavigationRoute::CalculateRouteFromTo(const C3DVector& from
         creature = CThingAICreature::Create(defIndex, ParentThing->GetPos(), 4,
             CThingAICreatureInit(0, 0, false, script, brain, true));
     }
-    CTCNavigationBase* navigation;
-    creature->GetInterface(&navigation, 7);
+    const CTCNavigationBase* navigation;
+    creature->PeekTC(TCI_NAVIGATION, &navigation);
     navigation->CalculateRouteFromTo(from, to, route);
     creature->Kill(false);
 }

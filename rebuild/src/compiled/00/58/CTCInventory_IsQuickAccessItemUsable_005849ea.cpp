@@ -21,33 +21,9 @@ class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                         // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || wanted < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long wanted)
-    {
-        T* component = 0;
-        GetInterface(&component, wanted);
-        return component;
-    }
-};
 
 bool __fastcall IsAugmentation(long item);           // 0x005D97F0
 
@@ -76,7 +52,8 @@ class CTCInventory { public:
 bool CTCInventory::IsQuickAccessItemUsable(long slot) const
 {
     if (QuickAccessItems[slot] > 0) {
-        CTCHero* hero = ParentThing->GetTC<CTCHero>(0x29);
+        const CTCHero* hero = 0;
+        ParentThing->PeekTC(TCI_HERO, &hero);
         return hero->AllowAugmentations || !IsAugmentation(QuickAccessItems[slot]);
     }
     return false;

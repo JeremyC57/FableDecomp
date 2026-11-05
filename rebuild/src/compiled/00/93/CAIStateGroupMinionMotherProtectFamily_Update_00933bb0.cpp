@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionMotherProtectFamily::Update() -- while the protected family member is alive, perform the
+// Leaf: ?Update@CAIStateGroup_MinionMotherProtectFamily@@UAEXXZ
 // "alert to player" action and wait for it; then terminate.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00933BB0, length 93 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PFamilyMember at +0x14, twice: null test, then the
@@ -16,10 +17,7 @@
 // PDB pattern (PFamilyMember descriptive).
 class CThingAICreature;
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                // +0x91 bit 0: dead
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -69,7 +67,7 @@ struct CAIStateGroup_MinionMotherProtectFamily : CAIStateGroupBase {
 
 void CAIStateGroup_MinionMotherProtectFamily::Update()
 {
-    if (PFamilyMember.GetPItem() != 0 && !(PFamilyMember.GetPItem()->m_flags91 & 1)) {
+    if (PFamilyMember.GetPItem() != 0 && !PFamilyMember.GetPItem()->IsDead()) {
         CThingAICreature* creature = PBrain->Creature;
         long result = AIAction_PerformActionAndWait(CCreatureAction_AlertToPlayer(creature), false);
         if (result == 2) {

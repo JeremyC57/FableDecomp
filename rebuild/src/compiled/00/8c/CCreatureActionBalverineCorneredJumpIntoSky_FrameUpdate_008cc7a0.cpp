@@ -16,12 +16,8 @@ class CTCGraphicAppearance { public:
     void SetAlpha(unsigned char alpha);                     // 0x004BFAC0
 };
 }
-class CThing { public:                                      // partial view, retail offsets
-    virtual ~CThing();
-    unsigned char                               _pad_0x04[0x64 - 0x04];
-    NGraphicAppearance::CTCGraphicAppearance*   PTCGraphicAppearance;   // +0x64
-    NGraphicAppearance::CTCGraphicAppearance* GetTCGraphicAppearance() { return PTCGraphicAppearance; }
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingPhysical : public CThing { public: };
 class CThingGameObject : public CThingPhysical { public: };
 class CThingCreatureBase : public CThingGameObject { public: };

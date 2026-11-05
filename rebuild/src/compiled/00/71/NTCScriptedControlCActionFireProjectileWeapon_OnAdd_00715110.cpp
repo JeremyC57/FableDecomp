@@ -1,4 +1,5 @@
 // Levers: the local CCountedPointer dtor is retail's 0x0048C5C0 body (it zeroes Data/Info); with that cost VC7.1's per-site rule calls it for the reload temporary (two branches deep) and expands it for the aim/fire temporaries; `hasMissileWeapon` declared before `needsReload` so its false store is an immediate byte (not the bl zero).
+// Leaf: ?OnAdd@CActionFireProjectileWeapon@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // NTCScriptedControl::CActionFireProjectileWeapon::OnAdd() -- queue reload (when needed), aim and fire creature actions for a creature holding a missile weapon
 // Layout: owning control at +4 (its +4 is the creature, as in the landed 0x007122D0); target CScriptThing at +0xC; the creature-action queue at +0x18.
@@ -35,34 +36,13 @@ struct CCountedPointer {
 };
 struct CCreatureActionQueue { void Add(const CCountedPointer& action); };   // 0x00719360
 
-class CTCInventoryAbilities { public: CThing* GetWeaponInHand(); };    // 0x006A1440
-class CTCWeapon { public: bool IsMissileWeapon(); bool IsLoaded(); };  // 0x005DAA40 / 0x005DA980
+class CTCInventoryAbilities { public: CThing* GetWeaponInHand() const; };    // 0x006A1440
+class CTCWeapon { public: bool IsMissileWeapon() const; bool IsLoaded() const; };  // 0x005DAA40 / 0x005DA980
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    void*               __vftable;                   // +0x00
-    unsigned char       _pad04[0x20 - 0x04];
-    unsigned long       UsingComponents[9];          // +0x20 bitset<274>
-    CInterfaceMap       Components;                  // +0x44
-    unsigned char       _pad54[0x3d];
-    unsigned char       Flags91;                     // +0x91
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &Components;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -97,11 +77,11 @@ void CActionFireProjectileWeapon::OnAdd()
     CThing* creature = PControl->PThing;
     bool hasMissileWeapon = false;
     bool needsReload = false;
-    CTCInventoryAbilities* inventory;
-    if (creature->GetInterface(&inventory, 0x46)) {
+    const CTCInventoryAbilities* inventory;
+    if (creature->PeekTC(TCI_CARRYING, &inventory)) {
         CThing* weapon = inventory->GetWeaponInHand();
-        CTCWeapon* tcWeapon;
-        if (weapon && !(weapon->Flags91 & 1) && weapon->GetInterface(&tcWeapon, 0x48) && tcWeapon->IsMissileWeapon()) {
+        const CTCWeapon* tcWeapon;
+        if (weapon && !weapon->IsDead() && weapon->PeekTC(TCI_WEAPON, &tcWeapon) && tcWeapon->IsMissileWeapon()) {
             hasMissileWeapon = true;
             needsReload = !tcWeapon->IsLoaded();
         }

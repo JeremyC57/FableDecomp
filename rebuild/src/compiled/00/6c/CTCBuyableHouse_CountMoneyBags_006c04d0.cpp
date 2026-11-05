@@ -1,4 +1,5 @@
 // CTCBuyableHouse::CountMoneyBags() const -- count the live things in the house's interface-0x21 thing list that carry the money-bag interface (0xCC)
+// Leaf: ?CountMoneyBags@CTCBuyableHouse@@QBEJXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C04D0, length 164 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for type 0x21 = bit 1 of
@@ -25,7 +26,8 @@ class CIntelligentPointer : public CBaseIntelligentPointer
     T* Get() const { return (T*)GetPItem(); }
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -40,32 +42,9 @@ struct CTCThingList_0x21 {                          // the interface-0x21 compon
     SThingNode*   m_head;                           // +0x0c list header node
 };
 
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad_0x54[0x3d];
-    unsigned char m_stateFlags;                     // +0x91 (bit 0 = dead)
-
-    unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-
 inline bool IsThingAlive(const CIntelligentPointer<CThing>& p)
 {
-    return p.Get() && !(p.Get()->m_stateFlags & 1);
+    return p.Get() && !p.Get()->IsDead();
 }
 
 class CTCBuyableHouse {
@@ -79,9 +58,9 @@ long CTCBuyableHouse::CountMoneyBags() const
 {
     long count = 0;
     CTCThingList_0x21* list;
-    if (ParentThing->GetInterface(&list, 0x21)) {
+    if (ParentThing->GetTC(TCI_THING_OWNER, &list)) {
         for (SThingNode* node = list->m_head->next; node != list->m_head; node = node->next)
-            if (IsThingAlive(node->thing) && node->thing.Get()->HasInterface(0xcc))
+            if (IsThingAlive(node->thing) && node->thing.Get()->HasTC(TCI_GOLD))
                 ++count;
     }
     return count;

@@ -14,7 +14,7 @@
 // call (`mov ecx,[eax+34h] ; mov eax,[ecx]`) and also gives retail's this=esi / user=edi colouring.
 // Layout: PDB CWorld PCurrentGameCamera +0x34; retail CThing +0x60 physics pointer, +0x91 bit 0 Dead.
 #include "engine/C3DVector.h"
-struct CThingPhysics {
+struct CTCPhysicsBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -29,15 +29,7 @@ struct CThingPhysics {
     virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69();
     virtual void GetVector(C3DVector* out);    // slot 70 (+0x118)
 };
-class CThing {
-public:
-    unsigned char _pad00[0x60];
-    CThingPhysics* Physics;                    // +0x60
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char Flags91;                     // +0x91 bit 0 Dead
-    bool IsDead() const { return (Flags91 & 1) != 0; }
-    const C3DVector& GetPos() const;      // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing {
 public:
@@ -88,7 +80,7 @@ public:
         if (GetWorld().GetCurrentGameCamera()->GetView(&view)) {
             ParentThing->GetPos();
             C3DVector v;
-            user.Physics->GetVector(&v);
+            user.GetPhysicsTC()->GetVector(&v);
         }
     }
 };

@@ -20,31 +20,12 @@
 //          TimeNextReactToPlayer +0xa8; no engine header for these classes (flattened bases), so modelled locally.
 class CTCBase;
 class CThing;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool TestTC(long interfaceType) const       // std::bitset::test
-    {
-        return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        bool has = TestTC(interfaceType);
-        if (has) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-        }
-        return has;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CThingCreatureBase;
 class CBaseObject;
@@ -61,16 +42,12 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer { // CIntelligent
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
-        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
 }
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+
 class CSoundPair { public:
     long m_first;
     long m_second;
@@ -146,7 +123,7 @@ bool CAIStateGroup_GameMaster::OfferPlayerAGame()
     if (hero == 0 || !IS_THING_ALIVE(PTable))
         return false;
     CTCTavernGame* game;
-    ((CThing*)PTable.GetPItem())->GetInterface(&game, 0xcf);
+    ((CThing*)PTable.GetPItem())->GetTC(TCI_TAVERN_GAME, &game);
     long banter = game->GetBanter();
     {
         CCharString animation("OFFER_GAME");

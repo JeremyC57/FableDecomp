@@ -19,28 +19,16 @@
 // 0x008FCFA0, GetWorld 0x008FCFC0, GetPWorldSeed 0x008FCFD0, PeekThingSearchTools 0x008FD000, IsStopping 0x008FD010.
 #include "engine/CAIBrain.h"                           // Creature +0x18
 class CCharStringData;
-class CCharString {
-public:
-    CCharStringData* PStringData;
-};
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 #include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
-class CClass : public CBaseObject { };
-class CThing : public CClass {
-public:
-    unsigned char _pad04[0x14];
-    unsigned __int64 UID;                               // +0x18
-    unsigned long UsingComponents[9];                   // +0x20 bitset<274>
-    unsigned char Components[0x10];                     // +0x44 CVectorMap<ETCInterfaceType, CTCBase*, ...>
-    unsigned char _pad54[0x91 - 0x54];
-    unsigned char Dead : 1;                             // +0x91 bit 0
-    const C3DVector& GetPos() const;                    // 0x004C73D0
-};
+
 class CThingPhysical : public CThing { public:
     const C3DVector& PeekPos() const;    // 0x006A4D00 (descriptive; the landed 0x00911710 spelling)
 };

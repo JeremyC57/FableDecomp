@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverHornetQueen::IsStillRunnable() -- still runnable while the target is alive, the first circle marker (if any) is alive and the group is not stopping
+// Leaf: ?IsStillRunnable@CAIStateGroup_HoverHornetQueen@@QAE_NXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095A420, length 97 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x4), CAIStateGroupBase::IsStopping @ 0x008FD010.
@@ -17,11 +18,7 @@ class CThingCreatureBase;
 
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -43,7 +40,7 @@ public:
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    return p.GetPItem() != 0 && !(p.GetPItem()->m_flags91 & 1);
+    return p.GetPItem() != 0 && !p.GetPItem()->IsDead();
 }
 
 // Retail STLport vector<CIntelligentPointer<CThing>>: {start, finish, end_of_storage}.

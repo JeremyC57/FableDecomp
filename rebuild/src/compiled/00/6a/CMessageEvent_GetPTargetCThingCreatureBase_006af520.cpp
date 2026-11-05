@@ -23,10 +23,8 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
-class CThing { public:
-    unsigned char _pad[0x6C];
-    unsigned long ThingTypeFlags;                        // +0x6C
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 
 class CMessageEvent {
@@ -41,7 +39,7 @@ template <class T> T* CMessageEvent::GetPTarget() const
 {
     T* result = 0;
     if (PTarget.GetPItem()) {
-        if (!(~PTarget.GetPItem()->ThingTypeFlags & 0x0F))
+        if (!(~PTarget.GetPItem()->GetTypeFlags() & 0x0F))
             result = (T*)PTarget.GetPItem();
     }
     return result;

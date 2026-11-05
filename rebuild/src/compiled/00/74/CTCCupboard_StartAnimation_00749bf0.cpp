@@ -1,4 +1,5 @@
 // CTCCupboard::StartAnimation(long anim) -- start the cupboard's open/close animation: mark it animating and play `anim` as the main anim (update mode 1, priority 100)
+// Leaf: ?StartAnimation@CTCCupboard@@QAEXJ@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- HasTC + the ternary GetTC model assigned into an UNINITIALISED local (the miss arm reads the slot, `mov ecx,[esp+34h]`): both arms load the component straight into ecx
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00749BF0, length 138 bytes (`ret 4`).
@@ -12,22 +13,11 @@
 // between the Set pushes.
 struct CTCBaseInterface;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset<274> UsingComponents
-    CInterfaceMap m_interfaces;                 // +0x44 Components
-    template<class T> __forceinline T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(wanted);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        return (T*)((CTCBaseInterface*)((it == map->end() || wanted < it->first) ? map->end() : it)->second);
-    }
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-};
+
 class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
@@ -72,8 +62,8 @@ void CTCCupboard::StartAnimation(long anim)
     CAnimInit init;
     init.Set(6, 0, anim, 1, false, 0, 100);
     CTCAnimationComplex* animation;
-    if (ParentThing->HasTC(0x5a))
-        animation = ParentThing->GetTC<CTCAnimationComplex>(0x5a);
+    if (ParentThing->HasTC(TCI_ANIMATION))
+        animation = ((CTCAnimationComplex*)&ParentThing->GetTC(TCI_ANIMATION));
     CAnimateThing& animator = animation->GetAnimation();
     animator.SetMainAnim(init, 1, 0);
 }

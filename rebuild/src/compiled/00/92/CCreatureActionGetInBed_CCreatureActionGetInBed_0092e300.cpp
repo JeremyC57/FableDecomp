@@ -13,12 +13,8 @@
 // Shape: the landed BanditKing ctor base call (one zero register for 0.0f, the 0 flag and the CSoundPair temporary); the
 //   group name is converted to a CCharString temporary, copy-constructed into AnimGroup and destroyed.
 // Layout: CAnimationEntry (Ego_r, 16 bytes): BankIndex +0, AnimName +4, GroupName +8 (CDefString = TablePos).
-class CCharString {
-public:
-    CCharString(const CCharString& other);                   // 0x0099EC30
-    ~CCharString();                                          // 0x0099EAE0
-    void* PStringData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CDefStringTable {
 public:
@@ -44,11 +40,6 @@ public:
     CSoundPair() : FirstSound(0), LastSound(0) { }
     long FirstSound;
     long LastSound;
-};
-
-class CThing {
-public:
-    virtual ~CThing();
 };
 
 class CThingCreatureBase : public CThing { };

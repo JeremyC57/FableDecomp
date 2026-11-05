@@ -11,17 +11,7 @@ class CTCPhysicsBase { public:
     virtual void OnRemovedFromUpdateList();     // slot 45 (+0xb4)
     virtual void OnAddedToUpdateList();         // slot 46 (+0xb8)
 };
-class CThing { public:
-    unsigned char   _pad00[0x10];
-    unsigned char   m_updateListIndex;          // +0x10 (which update list the thing lives in)
-    unsigned char   _pad11[0x60 - 0x11];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-    unsigned char   _pad64[0x7c - 0x64];
-    CThing*         m_pPrevRender;              // +0x7c
-    CThing*         m_pNextRender;              // +0x80
-    CThing*         m_pPrevUpdate;              // +0x84
-    CThing*         m_pNextUpdate;              // +0x88
-};
+#include "engine/CThing.h"
 struct ThingLList {                             // 8 bytes: head, tail
     CThing* m_pHead;
     CThing* m_pTail;
@@ -37,19 +27,19 @@ class CThingManager { public:
 
 void CThingManager::RemoveFromUpdateList(CThing* thing)
 {
-    ThingLList* list = &UpdateLists[thing->m_updateListIndex];
-    if (thing->m_pNextUpdate || thing->m_pPrevUpdate || list->m_pHead == thing) {
-        if (thing->PhysicsTC)
-            thing->PhysicsTC->OnRemovedFromUpdateList();
+    ThingLList* list = &UpdateLists[thing->GetType()];
+    if (thing->UpdateListNext || thing->UpdateListPrev || list->m_pHead == thing) {
+        if (thing->GetPhysicsTC())
+            thing->GetPhysicsTC()->OnRemovedFromUpdateList();
         if (list->m_pHead == thing)
-            list->m_pHead = thing->m_pNextUpdate;
+            list->m_pHead = thing->UpdateListNext;
         if (list->m_pTail == thing)
-            list->m_pTail = thing->m_pPrevUpdate;
-        if (thing->m_pNextUpdate)
-            thing->m_pNextUpdate->m_pPrevUpdate = thing->m_pPrevUpdate;
-        if (thing->m_pPrevUpdate)
-            thing->m_pPrevUpdate->m_pNextUpdate = thing->m_pNextUpdate;
-        thing->m_pNextUpdate = 0;
-        thing->m_pPrevUpdate = 0;
+            list->m_pTail = thing->UpdateListPrev;
+        if (thing->UpdateListNext)
+            thing->UpdateListNext->UpdateListPrev = thing->UpdateListPrev;
+        if (thing->UpdateListPrev)
+            thing->UpdateListPrev->UpdateListNext = thing->UpdateListNext;
+        thing->UpdateListNext = 0;
+        thing->UpdateListPrev = 0;
     }
 }

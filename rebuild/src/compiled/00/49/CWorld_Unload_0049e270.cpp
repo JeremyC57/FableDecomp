@@ -27,60 +27,8 @@
 #define FABLE_RETAIL_CWORLD
 #include "engine/CWorld.h"
 
-class CThing : public CClass {                          // RTTI CThing : CClass : CBaseObject : CBaseClass
-public:
-    unsigned __int64 UniqueID;                          // +0x18
-    unsigned char    UsingComponents_[0x24];            // bitset<274> UsingComponents +0x20
-    unsigned char    Components_[0x10];                 // CVectorMap<ETCInterfaceType,CTCBase*,...> Components +0x44
-    unsigned char    UpdateComponentsList_[0x4];        // list<CTCBase*> UpdateComponentsList +0x54
-    unsigned char    SerialisationSectionName_[0x4];    // CCharString SerialisationSectionName +0x58
-    void*            PTCDriver;                         // +0x5C CTCDriverBase*
-    void*            PhysicsTC;                         // +0x60 CTCPhysicsBase*
-    void*            PTCGraphicAppearance;              // +0x64 CTCGraphicAppearance*
-    long             WorldFrameCreatedAt;               // +0x68
-    unsigned long    ThingTypeFlags;                    // +0x6C
-    unsigned char    PBaseDef_[0x4];                    // CDefPointer<const CThingBaseDef> PBaseDef +0x70
-    unsigned char    ScriptName_[0x4];                  // CCharString ScriptName +0x74
-    unsigned char    ScriptData_[0x4];                  // CCharString ScriptData +0x78
-    CThing*          RenderListPrev;                    // +0x7C
-    CThing*          RenderListNext;                    // +0x80
-    CThing*          UpdateListPrev;                    // +0x84
-    CThing*          UpdateListNext;                    // +0x88
-    unsigned short   DefGlobalIndex;                    // +0x8C
-    short            CurrentMapNumber;                  // +0x8E
-    signed char      PlayerNumber;                      // +0x90
-    unsigned char    Dead : 1;                          // +0x91 bit 0
-    unsigned char    CreatedByOwnerThingCreation : 1;
-    unsigned char    IncludeInThingScans : 1;
-    unsigned char    Activated : 1;
-    unsigned char    GloballyLoaded : 1;
-    unsigned char    InLimbo : 1;
-    unsigned char    KillLocked : 1;
-    unsigned char    CreatedBySerialisation : 1;
-    unsigned char    DeletedOnOwnerLevelOutOfScope : 1; // +0x92
-    unsigned char    Drawable : 1;
-    unsigned char    Dying : 1;
-    unsigned char    ForceFrameUpdate : 1;
-    unsigned char    LevelPersistent : 1;
-    unsigned char    GameStatePersisted : 1;
-    unsigned char    PersistOnUnloadWhenInLimbo : 1;
-    unsigned char    PausedDuringCutscenes : 1;
-    unsigned char    NotPausedDuringCutscenes : 1;      // +0x93
-    unsigned char    DeathPersistent : 1;
-    unsigned char    KillOnLevelUnload : 1;
-    unsigned char    ActivatedScript : 1;
-    unsigned char    LevelIsUnloading : 1;
-    unsigned char    IsAffectedByBulletTimeOverride : 1;
-    unsigned char    AddingTCsPermitted : 1;
-    unsigned char    InitialisationStage : 3;           // +0x94
-
-    bool IsDead() const { return Dead; }                // FableWin ?IsDead@CThing@@QBE_NXZ (inline in release)
-    void Kill(bool immediately);                        // 0x004C9B80 ?Kill@CThing@@QAEX_N@Z
-};
+#include "engine/CThing.h"
 FABLE_STATIC_ASSERT(sizeof(CThing) == 0x98);
-FABLE_STATIC_ASSERT(offsetof(CThing, UsingComponents_) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CThing, PTCGraphicAppearance) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CThing, PlayerNumber) == 0x90);
 
 class CThingPhysical : public CThing {                  // RTTI CThingPhysical : CThing
 public:

@@ -1,4 +1,5 @@
 // CAIStateGroup_JackDragon::Cleanup() -- kill the invisible helper creature if it is still alive.
+// Leaf: ?Cleanup@CAIStateGroup_JackDragon@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009500A0, length 49 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times, on PInvisibleBodgeCreature at +0x44),
 // CThing::Kill(bool) @ 0x004C9B80.
@@ -6,12 +7,7 @@
 // Shape: the landed IS_THING_DEAD pattern (GetPItem null, then the dead bit +0x91 & 1) guards a
 // `GetPItem()->Kill(true)`; `this` is only needed to form the member address (`lea esi,[ecx+44h]`). The
 // engine header keeps the pointer as an opaque byte array, so the layout is modelled locally with its name.
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags91 & 1) != 0; }
-    void Kill(bool instant);                    // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;

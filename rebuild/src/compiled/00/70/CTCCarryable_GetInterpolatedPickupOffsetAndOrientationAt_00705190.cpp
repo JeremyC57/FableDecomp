@@ -1,4 +1,5 @@
 // CTCCarryable::GetInterpolatedPickupOffsetAndOrientationAt(const C3DVector&, const CRightHandedSet&, C3DVector*, CRightHandedSet*, bool) -- where the carrier's hand dummy (right hand, else left hand) would be for the given placement; the offset from that placement is written out when either dummy exists
+// Leaf: ?GetInterpolatedPickupOffsetAndOrientationAt@CTCCarryable@@QAEXABVC3DVector@@ABVCRightHandedSet@@PAV2@PAV3@_N@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00705190, 168 bytes (`ret 14h`, 0x18-byte frame: the dummy position and the difference temporary).
 // Callees: CTCGraphicAppearance::GetDummyObjectAssumingObjectAt(const CCharString&, const C3DVector&, const CRightHandedSet&,
@@ -10,23 +11,25 @@
 // lookups shares the success block -- written as two sequential tests each with its own copy-out (the first returning),
 // which VC cross-jumps into one block; the `||` form recolours flags/position (esi/edi) and frames the dummy above the temporary; the difference is a C3DVector temporary built field by field (x first) by an inline
 // operator- and copied out through integer registers (no user copy ctor).
-class CCharString { public: void* m_pData; };
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 extern CCharString g_RightHandAttachmentName;           // 0x013BAC30
 extern CCharString g_LeftHandAttachmentName;            // 0x013BAC34
 #include "engine/C3DVector.h"
 class CRightHandedSet;
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     bool GetDummyObjectAssumingObjectAt(const CCharString& name, const C3DVector& position, const CRightHandedSet& orientation,
                                         long lod, unsigned long flags, C3DVector* outPosition, CRightHandedSet* outOrientation);   // 0x004C0C80
 };
-class CThing { public:
-    unsigned char         _pad00[0x64];
-    CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64
-};
+}
+using NGraphicAppearance::CTCGraphicAppearance;
+
 class CTCCarryable { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
-    CTCGraphicAppearance* GetGraphicAppearance() const { return ParentThing->PTCGraphicAppearance; }
+    CTCGraphicAppearance* GetGraphicAppearance() const { return ParentThing->GetTCGraphicAppearance(); }
     void GetInterpolatedPickupOffsetAndOrientationAt(const C3DVector& position, const CRightHandedSet& orientation,
                                                      C3DVector* outOffset, CRightHandedSet* outOrientation, bool exact);
 };

@@ -16,10 +16,7 @@
 
 enum EPlayerMode { PLAYER_MODE_NULL = 0 };
 
-class CThing {
-public:
-    void Kill(bool b);                                     // 0x004C9B80 (Ego_r.pdb ?Kill@CThing@@QAEX_N@Z)
-};
+#include "engine/CThing.h"
 class CThingPhysical : public CThing { };
 class CThingGameObject : public CThingPhysical { };
 class CThingCreatureBase : public CThingGameObject { };
