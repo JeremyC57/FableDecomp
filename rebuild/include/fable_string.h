@@ -200,6 +200,10 @@ public:
     __forceinline
 #endif
     bool operator==(const char* text) const { if(!PStringData) { if(strcmp(text,"")==0) return true; return false; } return PStringData->Data==text; }
+#ifdef FABLE_RETAIL_CCHARSTRING_WHITESPACE
+    // Nested opt-in (chunk 775, row 0x009A8170): Ego_r.pdb ?RemoveWhiteSpaceBeginEnd@CCharString@@QAEXXZ (0x0099F560), out of line.
+    void RemoveWhiteSpaceBeginEnd();
+#endif
     void Truncate(unsigned long);                              // 0x0099F2A0 ?Truncate@CCharString@@QAEXK@Z (Ego_r 0x00AFAB00 / FableWin 0x02F61D70)
     void LoadFromFile(class CAFile&,class CASuspendableProcess*,long);   // ?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z (Ego_r)
 #ifdef FABLE_RETAIL_CCHARSTRING_SUBSTRING

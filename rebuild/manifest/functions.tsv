@@ -33311,7 +33311,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00994a80	SetPosition	CCompressedMemoryDataInputStream	__thiscall	void	2	CCompressedMemoryDataInputStream *,ulong	1	yes	accepted									
 00994b10	SetPosition	CMemoryDataOutputStream	__thiscall	void	2	CMemoryDataOutputStream *,ulong	1	yes	accepted									
 00994b40	GetLength	CMemoryDataOutputStream	__thiscall	long	1	CCreatureActionBase *	1	yes	accepted									
-00994b50	ReadLine	_global	__thiscall	CCharString	1	CDataInputStream *	1	yes	accepted									
+00994b50	ReadLine	CDataInputStream	__thiscall	CCharString	1	CDataInputStream *	1	yes	accepted									
 00994c80	ReadNullTerminatedString	CDataInputStream	__thiscall	CCharString	1	CDataInputStream *	1	yes	accepted									
 00994d20	ReadNullTerminatedWString	CDataInputStream	__thiscall	CWideString	1	CDataInputStream *	1	yes	accepted									
 00994dc0	ReadUntilCharacter	CDataInputStream	__thiscall	CCharString	3	CDataInputStream *,char,bool *	1	yes	accepted									
@@ -33458,7 +33458,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0099b220	GetLength	CWideString	__thiscall	long	1	CCharString *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CCharString_GetLength_0099b220.cpp
 0099b240	GetDataSize	CWideString	__thiscall	long	1	CCharString *	1	yes	accepted									
 0099b2a0	Sizeof	CWideString	__thiscall	ulong	1	CWideString *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWideString_Sizeof_0099b2a0.cpp
-0099b2c0	ConvertToCharString	CWideString::CWideString	unknown	undefined	0		0	yes	accepted									
+0099b2c0	ToCharString	CWideString	unknown	undefined	0		0	yes	accepted									
 0099b3c0	AllocStringData	CWideString	__thiscall	CCharStringData *	3	CCharString *,char *,long	1	yes	accepted									
 0099b440	CWideString	CWideString	__thiscall	CWideString *	2	CWideString *,CCharString const &	1	yes	accepted									
 0099b4d0	UnassignString	CCharString	__thiscall	void	1	CWideString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWideString_UnassignString_0099b4d0.cpp
@@ -33707,8 +33707,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009a8090	RegisterBank	CBankFileManager	__thiscall	bool	2	CTCInventoryExperience *,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CTCInventoryExperience_IsTutorialPlayed_009a8090.cpp
 009a80b0	BankExists	CBankFileManager	unknown	undefined	0		0	yes	accepted									
 009a8150	SetEntry	CStringTable_009a8150	__thiscall	void	2	CSpellContainerList *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CBasicRetailBankManager_AddBankAlias_009a8150.cpp
-009a8170	CBankFileManager::OpenIniFile	CBankFileManager	__thiscall	void	2	CBankFileManager *,CWideString const &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CBankFileManager_OpenIniFile_009a8170.cpp
-009a8840	CBankFileManager::OpenRetailBank	CBankFileManager	__thiscall	void	3	CBankFileManager *,CWideString const &,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CBankFileManager_OpenRetailBank_009a8840.cpp
+009a8170	OpenIniFile	CBankFileManager	__thiscall	void	2	CBankFileManager *,CWideString const &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CBankFileManager_OpenIniFile_009a8170.cpp
+009a8840	OpenRetailBank	CBankFileManager	__thiscall	void	3	CBankFileManager *,CWideString const &,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CBankFileManager_OpenRetailBank_009a8840.cpp
 009a8e60	~CAggregate_009a8e60	_unattributed	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
 009a8fe0	~pair	std::pair<const CCharString,CBankFileManager::CBankInfo>	__thiscall	void	1	CAIStateGroup_CarryCrateAndFollow *	1	yes	accepted									
 009a9010	Dtor_CCharStringBase_009a9010	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009a9010.cpp
@@ -33727,12 +33727,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009a9960	`scalar deleting destructor'	SNamedWideQuad_009a9960	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
 009a99b0	ScalarDeletingDtor_009a99b0	_global	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CEngineSubPrimitiveText_scalardeletingdestructor_009a99b0.cpp
 009a9ad0	pair	std::pair<CCharString const, CBankFileManager::CBankInfo>	__thiscall	CSpecialAbilitiesDrainLifeDef *	2	CSpecialAbilitiesDrainLifeDef *,CSpecialAbilitiesDrainLifeDef *	1	yes	accepted									
-009a9b60	CCountedPointer_009a9030	CCountedPointer_009a9030	__thiscall	undefined	2	CCountedPointer<CFileInstaller::CFileInfo_const_> *,CFileInfo *	0	yes	accepted									
-009a9bb0	CCountedPointer_Release_009a9bb0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\global_DestvalCCountedPointer_009a9bb0.cpp
-009a9bf0	CCountedPointer_Set_009a9bf0	_global	__thiscall	CCountedPointer<class_CDiskFileWin32> *	2	CCountedPointer<CDiskFileWin32> *,CCountedPointer<class_CDiskFileWin32> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CCountedPointer_CCountedPointeroperatorassign_009a9bf0.cpp
+009a9b60	CCountedPointer	CCountedPointer<CDiskFileWin32>	__thiscall	undefined	2	CCountedPointer<CFileInstaller::CFileInfo_const_> *,CFileInfo *	0	yes	accepted									
+009a9bb0	~CCountedPointer	CCountedPointer<CDiskFileWin32>	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\global_DestvalCCountedPointer_009a9bb0.cpp
+009a9bf0	operator=	CCountedPointer<CDiskFileWin32>	__thiscall	CCountedPointer<class_CDiskFileWin32> *	2	CCountedPointer<CDiskFileWin32> *,CCountedPointer<class_CDiskFileWin32> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CCountedPointer_CCountedPointeroperatorassign_009a9bf0.cpp
 009a9c40	~CCountedPointer	CCountedPointer<CThreadedFile>	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a9c40.cpp
-009a9c80	Reset	CCountedPointer_CThreadedFile	__thiscall	void	2	CCountedPointer<CThreadedFile> *,CThreadedFile *	1	yes	accepted									
-009a9d10	CCountedPointer_SetPItem_009a9d10	_global	__thiscall	undefined	2	CCountedPointer<CFileInstaller::CFileInfo_const_> *,CFileInfo *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CCountedPointer_CCountedPointerCFileInfoconstructa_009a9d10.cpp
+009a9c80	Reset	CCountedPointer<CThreadedFile>	__thiscall	void	2	CCountedPointer<CThreadedFile> *,CThreadedFile *	1	yes	accepted									
+009a9d10	CCountedPointer	CCountedPointer<NBankFileManager::CRetailBank>	__thiscall	undefined	2	CCountedPointer<CFileInstaller::CFileInfo_const_> *,CFileInfo *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CCountedPointer_CCountedPointerCFileInfoconstructa_009a9d10.cpp
 009a9d60	CCountedPointer_Release_009a9d60	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a9d60.cpp
 009a9e20	Increment	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 009aa210	CBankInfo_009aa210	CBankInfo_009aa210	__thiscall	undefined	1	SExpSpendUndo *	0	yes	accepted									
@@ -33753,7 +33753,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009aa720	_Rb_tree_base	std::_Rb_tree_base<node0x18_009aa720>	unknown	undefined	0		0	yes	review-low									
 009aa750	_Rb_tree_base	std::_Rb_tree_base<node0x14_009aa750>	unknown	undefined	0		0	yes	review-low									
 009aa780	_M_erase	std::_Rb_tree<class CCharString, struct std::pair<class CCharString const, class NBankFileManager::CContainedBank>, struct std::_Select1st<struct std::pair<class CCharString const, class NBankFileManager::CContainedBank>>, struct std::less<class CCharString>, class std::allocator<struct std::pair<class CCharString const, class NBankFileManager::CContainedBank>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
-009aa7c0	Erase	CRetailTree_erase009aa7c0	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
+009aa7c0	_M_erase	std::_Rb_tree<CCharString, std::pair<CCharString const, CBankFileManager::CBankInfo>, std::_Select1st<std::pair<CCharString const, CBankFileManager::CBankInfo>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CBankFileManager::CBankInfo>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009aa830	_M_erase	std::_Rb_tree<CCharString, std::pair<CCharString const, CCharString>, std::_Select1st<std::pair<CCharString const, CCharString>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCharString>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009aa880	FreeTree_CTreeOwner_009aa880	_unattributed	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009aa8c0	CCountedPointer_Release_009aa8c0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009aa8c0.cpp
@@ -33803,8 +33803,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009ac380	set	std::set<CWideString,std::less<CWideString>,std::allocator<CWideString> >	unknown	undefined	0		0	yes	accepted									
 009ac3c0	~CRetailTree_erase009aa880	CRetailTree_erase009aa880	unknown	undefined	0		0	yes	accepted									
 009ac4d0	CRetailBank	NBankFileManager::CRetailBank	__thiscall	NBankFileManager::CRetailBank *	1	NBankFileManager::CRetailBank *	1	yes	accepted									
-009ac530	operator[]	std::map<CCharString,NBankFileManager::CContainedBank>	__thiscall	NBankFileManager::CContainedBank *	2	NBankFileManager::CContainedBankMap *,CCharString const &	1	yes	accepted									
-009ac5d0	map<CCharString::operator[]	_global	__thiscall	CBankInfo *	2	map<CCharString,CBankFileManager::CBankInfo,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CBankFileManager::CBankInfo>_>_> *,CCharString *	1	yes	accepted									
+009ac530	operator[]	std::map<CCharString, NBankFileManager::CContainedBank, std::less<CCharString>, std::allocator<std::pair<CCharString const, NBankFileManager::CContainedBank>>>	__thiscall	NBankFileManager::CContainedBank *	2	NBankFileManager::CContainedBankMap *,CCharString const &	1	yes	accepted									
+009ac5d0	operator[]	std::map<CCharString, CBankFileManager::CBankInfo, std::less<CCharString>, std::allocator<std::pair<CCharString const, CBankFileManager::CBankInfo>>>	__thiscall	CBankInfo *	2	map<CCharString,CBankFileManager::CBankInfo,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CBankFileManager::CBankInfo>_>_> *,CCharString *	1	yes	accepted									
 009ac700	operator[]	std::map	__thiscall	CCharString *	2	map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *,CCharString *	1	yes	accepted									
 009ac7a0	`scalar_deleting_destructor'	NBankFileManager::CRetailBank	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CLandscapeBackgroundPatch_vectordeletingdestructor_009ac7a0.cpp
 009ac7c0	~CRetailBank	NBankFileManager::CRetailBank	__thiscall	void	1	C3DMeshStripifier *	1	yes	accepted									

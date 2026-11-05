@@ -8,6 +8,10 @@ class CMemoryDataInputStream : public CDataInputStream {
 public:
     CMemoryDataInputStream() : StreamSource(0) { }
     CMemoryDataInputStream(const void*,unsigned long);
+#ifdef FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_CHARSTRING
+    // Nested opt-in (chunk 775, row 0x009A8170): Ego_r.pdb ??0CMemoryDataInputStream@@QAE@ABVCCharString@@@Z (0x00995F50).
+    CMemoryDataInputStream(const CCharString&);
+#endif
     void OpenMemorySource(const void*,unsigned long);
     const unsigned char* ReadConstData(long size) {
         if(size<=0) return 0;

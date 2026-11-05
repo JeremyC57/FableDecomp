@@ -1,5 +1,5 @@
 import re
-cpp=open(r'D:/Documents/FableTLC/rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp').read()
+cpp=open(r'D:/Documents/FableTLC/rebuild/runtime/openretailbank/bake/CBankFileManager_OpenRetailBank_009a8840_bake.cpp').read()
 syms=re.findall(r'__asm call (FableOpenRetail\w+)', cpp)
 line=open(r'C:/Users/Cornelio/AppData/Local/Temp/oab_anchor_oracle.tsv',encoding='utf-8-sig').read().splitlines()[1].split('\t')
 va=int(line[0],16); b=bytes.fromhex(line[2])

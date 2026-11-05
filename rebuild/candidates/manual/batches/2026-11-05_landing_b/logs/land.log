@@ -1,0 +1,14 @@
+addr       parity           behav  name
+009a8840   WARN RELOC_NAME: ??1?$CCountedPointer@VCDiskFileWin32@@@@QAE@XZ -> 009a9bb0 labelled '_global::CCountedPointer_Release_009a9bb0'
+009a8840   WARN RELOC_NAME: ??4?$CCountedPointer@VCDiskFileWin32@@@@QAEAAV0@ABV0@@Z -> 009a9bf0 labelled '_global::CCountedPointer_Set_009a9bf0'
+009a8840   RELOCATION_MATCH PASS   OpenRetailBank
+009a8170   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+009a8170   RELOCATION_MATCH PASS   OpenIniFile
+
+WINS: 2
+  009a8840 RELOCATION_MATCH CBankFileManager::?OpenRetailBank@CBankFileManager@@QAEXABVCWideString@@_N@Z
+  009a8170 RELOCATION_MATCH CBankFileManager::?OpenIniFile@CBankFileManager@@QAEXABVCWideString@@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CBankFileManager_OpenRetailBank_009a8840
+  CBankFileManager_OpenIniFile_009a8170

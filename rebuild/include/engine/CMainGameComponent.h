@@ -93,6 +93,17 @@ public:
     // ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ, out of line in retail at 0x004167C8 (landed rows 0x008AF5F0 / 0x00751AD0).
     long GetCurrentWorldFrame() const;                             // 0x004167C8
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_GAMETIME
+    // Nested opt-in (chunk 775, row 0x004167A7 GetFrameDifferenceFromCurrent): Ego_r.pdb / FableWin.pdb protected
+    // ?GetCurrentGameTime@CMainGameComponent@@IBENXZ (out of line, 0x00416231: GFGetTime() - GameStartTime),
+    // ?ConvertGTToWF@CMainGameComponent@@IBENN@Z (retail inlines it into every caller; its unreferenced out-of-line copy is
+    // 0x0041623E: gameTime / (1.0f / ConstantFPS)) and ?GetFrameDifferenceFromCurrent@CMainGameComponent@@IBEJJ@Z.
+protected:
+    double GetCurrentGameTime() const;                             // 0x00416231
+    double ConvertGTToWF(double gameTime) const { return gameTime / (1.0f / GetConstantFPS()); }
+    long GetFrameDifferenceFromCurrent(long frame) const;          // 0x004167A7
+public:
+#endif
 #endif
     CMainGameComponent(CGame&,const CMainGameComponentInit&);
     virtual ~CMainGameComponent();

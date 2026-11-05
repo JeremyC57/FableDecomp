@@ -5,7 +5,7 @@ import verify_and_land as V
 from pathlib import Path
 work=V.WORK_ROOT/'anchor'; work.mkdir(parents=True, exist_ok=True)
 e=V.env()
-src=Path(r'D:/Documents/FableTLC/rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp')
+src=Path(r'D:/Documents/FableTLC/rebuild/runtime/openretailbank/bake/CBankFileManager_OpenRetailBank_009a8840_bake.cpp')
 obj=work/'oab.obj'; obj.unlink(missing_ok=True)
 cp=V.cl(['/nologo','/c','/O2','/Oy','/W3',f'/Fo{obj}',str(src)],e)
 if cp.returncode or not obj.exists():

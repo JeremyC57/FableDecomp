@@ -45,6 +45,17 @@ public:
     // Chunk 739 (CPSCUpdateNormal::ReadBinary 0x00B0B860): FableWin.pdb ?Read3DVector@CDataInputStream@@QAE?AVC3DVector@@XZ, out of
     // line in retail (0x009950F0, hidden result pointer; the landed CDataInputStream_Read3DVector_009950f0 row).
     C3DVector Read3DVector();
+#ifdef FABLE_RETAIL_CDATAINPUTSTREAM_TEXT
+    // Nested opt-in (chunk 775, row 0x009A8170 CBankFileManager::OpenIniFile): Ego_r.pdb ?ReadLine@CDataInputStream@@QAE?AVCCharString@@XZ
+    // (0x00994B50), ?ReadUntilCharacter@CDataInputStream@@QAE?AVCCharString@@DAA_N@Z (0x00994DC0) and
+    // ?ReadUntilWhiteSpace@CDataInputStream@@QAE?AVCCharString@@XZ (0x00994E90), all out of line. FableWin.pdb
+    // ?IsEOF@CDataInputStream@@QBE_NXZ is inline: the fields compared in place (0x009A823A: StreamPos +4 against StreamSize +8);
+    // going through the virtual GetPosition() keeps a vtable call there.
+    CCharString ReadLine();                                          // 0x00994B50
+    CCharString ReadUntilCharacter(char character, bool& found);     // 0x00994DC0
+    CCharString ReadUntilWhiteSpace();                               // 0x00994E90
+    bool IsEOF() const { return StreamPos == GetLength(); }
+#endif
     virtual void ReadCompressed(void*,long);
     virtual void ReadZlibCompressed(void*,long);
     virtual CCharString ReadNullTerminatedString();

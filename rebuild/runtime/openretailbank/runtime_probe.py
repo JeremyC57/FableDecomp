@@ -14,7 +14,7 @@ shutil.rmtree(work, ignore_errors=True)
 work.mkdir(parents=True, exist_ok=True)
 
 srcs = [
-    ROOT / 'rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp',
+    ROOT / 'rebuild/runtime/openretailbank/bake/CBankFileManager_OpenRetailBank_009a8840_bake.cpp',
     ROOT / 'rebuild/runtime/openretailbank/ring_thunks.cpp',
     ROOT / 'rebuild/runtime/openretailbank/runtime_globals.cpp',
     ROOT / 'rebuild/runtime/openretailbank/runtime_helpers.cpp',

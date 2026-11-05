@@ -1,254 +1,95 @@
-#include <stdio.h>
-#include <string.h>
-
-#include "fable_retail_banks.h"
-
-extern "C" fable_u8 g_FableOpenIniMemoryFileVTable_0122E0FC = 0;
-extern "C" wchar_t g_FableOpenIniEmptyWide_0122D70C[] = L"";
-extern "C" char g_FableOpenIniEmptyChar_0129AAF4[] = "";
-extern "C" char g_FableOpenIniRetailHeaderDirectory_0129B030[] =
-    "RetailHeaderDirectory";
-extern "C" char g_FableOpenIniDevHeaderDirectory_0129B048[] =
-    "DevHeaderDirectory";
-extern "C" char g_FableOpenIniEndRetailFile_0129B05C[] =
-    "EndRetailFile";
-extern "C" char g_FableOpenIniBeginRetailFile_0129B06C[] =
-    "BeginRetailFile";
-
-namespace
+// Behaviour test for 0x009a8170: CBankFileManager::OpenIniFile -- bank lines, retail-file and header-directory keywords
+// Host model: the ini text is parsed line by line with the same keyword and quoted-string rules; SplitPath keeps the directory.
+// The bank name is the text before '=' as read (not trimmed), as retail keys Banks with the ReadUntilCharacter result.
+#include <cstdio>
+#include <cctype>
+#include <map>
+#include <string>
+static int g_fail = 0;
+#define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
+static int StricmpModel(const char* a, const char* b)     // _stricmp model (portable)
 {
-    fable_u32 g_directoryMarker;
-    unsigned int g_treeDestroyCalls;
-    unsigned int g_baseConstructCalls;
-    unsigned int g_baseDestroyCalls;
-    unsigned int g_defaultConstructCalls;
-    unsigned int g_memoryFileOpenCalls;
-    unsigned int g_memoryFileCloseCalls;
-    unsigned int g_fileStreamConstructCalls;
-    unsigned int g_fileStreamDestroyCalls;
-    unsigned int g_wideCopyCalls;
-    unsigned int g_wideAssignCalls;
-    unsigned int g_wideDestroyCalls;
-    unsigned int g_splitPathCalls;
-
-    void Reset()
+    for (;; ++a, ++b) { int ca = tolower((unsigned char)*a), cb = tolower((unsigned char)*b); if (ca != cb || !ca) return ca - cb; }
+}
+struct LineStream {                                  // CMemoryDataInputStream over one line
+    std::string Text; size_t Pos;
+    explicit LineStream(const std::string& t) : Text(t), Pos(0) { }
+    std::string ReadUntilCharacter(char c, bool& found) { size_t e = Text.find(c, Pos); found = e != std::string::npos; if (!found) e = Text.size(); std::string r = Text.substr(Pos, e - Pos); Pos = e; return r; }
+    void Read(char* c) { if (Pos < Text.size()) *c = Text[Pos++]; }
+    void SetPosition(size_t p) { Pos = p; }
+    std::string ReadUntilWhiteSpace() { size_t s = Pos; while (Pos < Text.size() && !isspace((unsigned char)Text[Pos])) ++Pos; return Text.substr(s, Pos - s); }
+};
+static std::string Trim(const std::string& s) { size_t b = s.find_first_not_of(" \t\r\n"), e = s.find_last_not_of(" \t\r\n"); return b == std::string::npos ? "" : s.substr(b, e - b + 1); }
+struct CBankInfo { std::string DevBankFilePath, RetailBankFilePath, DevHeaderFilePath, RetailHeaderFilePath; void* RegisteredBank; };
+struct CBankFileManager {
+    std::map<std::string, CBankInfo> Banks; std::string BasePath;
+    bool ReadQuotedString(std::string& text, LineStream& s)      // 0x009A77D0 model: the next "..." on the line
     {
-        g_directoryMarker = 0x13572468;
-        g_treeDestroyCalls = 0;
-        g_baseConstructCalls = 0;
-        g_baseDestroyCalls = 0;
-        g_defaultConstructCalls = 0;
-        g_memoryFileOpenCalls = 0;
-        g_memoryFileCloseCalls = 0;
-        g_fileStreamConstructCalls = 0;
-        g_fileStreamDestroyCalls = 0;
-        g_wideCopyCalls = 0;
-        g_wideAssignCalls = 0;
-        g_wideDestroyCalls = 0;
-        g_splitPathCalls = 0;
+        size_t a = s.Text.find('"', s.Pos); if (a == std::string::npos) return false;
+        size_t b = s.Text.find('"', a + 1); if (b == std::string::npos) return false;
+        text = s.Text.substr(a + 1, b - a - 1); s.Pos = b + 1; return true;
     }
-
-    bool Run(bool populatedMap)
+    void OpenIniFile(const std::string& pathname, const std::string& contents)
     {
-        Reset();
-        fable_u8 managerBytes[sizeof(CBankFileManager)];
-        fable_u8 pathnameBytes[sizeof(CWideString)];
-        fable_u8 head[0x10];
-        memset(managerBytes, 0, sizeof(managerBytes));
-        memset(pathnameBytes, 0, sizeof(pathnameBytes));
-        memset(head, 0, sizeof(head));
-
-        CBankFileManager* manager =
-            reinterpret_cast<CBankFileManager*>(managerBytes);
-        if (populatedMap)
-        {
-            *reinterpret_cast<void**>(managerBytes + 4) = head;
-            *reinterpret_cast<fable_u32*>(managerBytes + 8) = 3;
-            *reinterpret_cast<void**>(head + 4) =
-                reinterpret_cast<void*>(0x24681357);
+        Banks.clear();
+        std::string retail_file, dev_header_directory, retail_header_directory;
+        size_t at = 0;
+        while (at < contents.size()) {
+            size_t nl = contents.find('\n', at); if (nl == std::string::npos) nl = contents.size();
+            std::string line = Trim(contents.substr(at, nl - at)); at = nl + 1;
+            LineStream line_stream(line);
+            bool found;
+            std::string bank_name = line_stream.ReadUntilCharacter('=', found);
+            if (found) {
+                char equals; line_stream.Read(&equals);
+                std::string dev_path;
+                if (ReadQuotedString(dev_path, line_stream)) {
+                    std::string header_name, dev_header, retail_header;
+                    if (ReadQuotedString(header_name, line_stream) && header_name.size() > 0) {
+                        dev_header = dev_header_directory + header_name;
+                        retail_header = retail_header_directory + header_name;
+                    }
+                    CBankInfo info = { dev_path, retail_file, dev_header, retail_header, 0 };
+                    Banks[bank_name] = info;
+                }
+            } else {
+                line_stream.SetPosition(0);
+                std::string keyword = line_stream.ReadUntilWhiteSpace();
+                std::string value;
+                if (!StricmpModel(keyword.c_str(), "BeginRetailFile")) { ReadQuotedString(value, line_stream); retail_file = value; }
+                else if (!StricmpModel(keyword.c_str(), "EndRetailFile")) retail_file = "";
+                else if (!StricmpModel(keyword.c_str(), "DevHeaderDirectory")) { ReadQuotedString(value, line_stream); dev_header_directory = value; }
+                else if (!StricmpModel(keyword.c_str(), "RetailHeaderDirectory")) { ReadQuotedString(value, line_stream); retail_header_directory = value; }
+            }
         }
-
-        const CWideString& pathname =
-            *reinterpret_cast<const CWideString*>(pathnameBytes);
-        manager->OpenIniFile(pathname);
-
-        return
-            g_treeDestroyCalls == (populatedMap ? 1U : 0U) &&
-            *reinterpret_cast<fable_u32*>(managerBytes + 8) == 0 &&
-            (!populatedMap ||
-                (*reinterpret_cast<void**>(head + 4) == 0 &&
-                 *reinterpret_cast<void**>(head + 8) == head &&
-                 *reinterpret_cast<void**>(head + 0x0C) == head)) &&
-            manager->basePathStorage_ ==
-                reinterpret_cast<void*>(g_directoryMarker) &&
-            g_baseConstructCalls == 1 &&
-            g_baseDestroyCalls == 1 &&
-            g_defaultConstructCalls == 5 &&
-            g_memoryFileOpenCalls == 1 &&
-            g_memoryFileCloseCalls == 1 &&
-            g_fileStreamConstructCalls == 1 &&
-            g_fileStreamDestroyCalls == 1 &&
-            g_wideCopyCalls == 1 &&
-            g_wideAssignCalls == 1 &&
-            g_wideDestroyCalls == 6 &&
-            g_splitPathCalls == 1;
+        BasePath = pathname.substr(0, pathname.find_last_of("\\/") + 1);
     }
-}
-
-extern "C" __declspec(naked) void
-FableOpenIniDestroyBankTree_009A8170()
-{
-    __asm
-    {
-        inc dword ptr [g_treeDestroyCalls]
-        ret 4
-    }
-}
-
-extern "C" void FableOpenIniFileBaseConstruct_009A8170()
-{
-    ++g_baseConstructCalls;
-}
-
-extern "C" void FableOpenIniFileBaseDestroy_009A8170()
-{
-    ++g_baseDestroyCalls;
-}
-
-extern "C" __declspec(naked) void
-FableOpenIniCharDefaultConstruct_009A8170()
-{
-    __asm
-    {
-        inc dword ptr [g_defaultConstructCalls]
-        mov dword ptr [ecx], 0
-        ret
-    }
-}
-
-extern "C" __declspec(naked) void
-FableOpenIniMemoryFileOpen_009A8170()
-{
-    __asm
-    {
-        inc dword ptr [g_memoryFileOpenCalls]
-        ret 0Ch
-    }
-}
-
-extern "C" __declspec(naked) void
-FableOpenIniFileStreamConstruct_009A8170()
-{
-    __asm
-    {
-        inc dword ptr [g_fileStreamConstructCalls]
-        mov dword ptr [ecx + 4], 0
-        mov dword ptr [ecx + 8], 0
-        ret 8
-    }
-}
-
-extern "C" __declspec(naked) void
-FableOpenIniWideCopyConstruct_009A8170()
-{
-    __asm
-    {
-        inc dword ptr [g_wideCopyCalls]
-        mov eax, dword ptr [esp + 4]
-        mov eax, dword ptr [eax]
-        mov dword ptr [ecx], eax
-        ret 4
-    }
-}
-
-extern "C" __declspec(naked) void
-FableOpenIniSplitPath_009A8170()
-{
-    __asm
-    {
-        inc dword ptr [g_splitPathCalls]
-        mov eax, dword ptr [esp + 4]
-        mov edx, dword ptr [g_directoryMarker]
-        mov dword ptr [eax], edx
-        ret 0Ch
-    }
-}
-
-extern "C" __declspec(naked) void
-FableOpenIniWideAssign_009A8170()
-{
-    __asm
-    {
-        inc dword ptr [g_wideAssignCalls]
-        mov eax, dword ptr [esp + 4]
-        mov eax, dword ptr [eax]
-        mov dword ptr [ecx], eax
-        ret 4
-    }
-}
-
-extern "C" void FableOpenIniWideDestroy_009A8170()
-{
-    ++g_wideDestroyCalls;
-}
-
-extern "C" void FableOpenIniFileStreamDestroy_009A8170()
-{
-    ++g_fileStreamDestroyCalls;
-}
-
-extern "C" void FableOpenIniMemoryFileClose_009A8170()
-{
-    ++g_memoryFileCloseCalls;
-}
-
-#define FABLE_UNUSED_OPEN_INI_STUB(name) \
-    extern "C" void name() {}
-
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniMemoryStreamDestroy_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniSetPosition_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniReadOverflow_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniReadLine_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniReadUntilCharacter_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniReadUntilWhitespace_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniMemoryStreamConstruct_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniWideAssignLiteral_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniWideAdd_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniCharToWide_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniCharCopyConstruct_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniCharDestroy_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniCharLiteralConstruct_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniLineDestroy_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniReadQuotedString_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniBankInfoIndex_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniFree_009A8170)
-FABLE_UNUSED_OPEN_INI_STUB(FableOpenIniStringCompare_009A8170)
-
-#undef FABLE_UNUSED_OPEN_INI_STUB
-
+};
 int main()
 {
-    if (!Run(false) || !Run(true))
-    {
-        printf(
-            "FABLETLC_OPEN_INI_FILE FAIL tree=%u base=%u/%u "
-            "default=%u memory=%u/%u stream=%u/%u copy=%u "
-            "assign=%u destroy=%u split=%u\n",
-            g_treeDestroyCalls,
-            g_baseConstructCalls,
-            g_baseDestroyCalls,
-            g_defaultConstructCalls,
-            g_memoryFileOpenCalls,
-            g_memoryFileCloseCalls,
-            g_fileStreamConstructCalls,
-            g_fileStreamDestroyCalls,
-            g_wideCopyCalls,
-            g_wideAssignCalls,
-            g_wideDestroyCalls,
-            g_splitPathCalls);
-        return 1;
-    }
-
-    printf("FABLETLC_OPEN_INI_FILE PASS\n");
+    CBankFileManager m;
+    CBankInfo stale = { "x", "x", "x", "x", 0 }; m.Banks["STALE"] = stale;
+    const char* ini =
+        "  DevHeaderDirectory \"Data\\\\Dev\\\\\"  \n"
+        "RetailHeaderDirectory \"Data\\\\Retail\\\\\"\n"
+        "begINRetailFile \"Data\\\\textures.big\"\n"
+        "GBANK_GUI=\"Data\\\\gui.bnk\" \"gui.h\"\n"
+        "GBANK_MAIN= \"Data\\\\main.bnk\"\n"
+        "EndRetailFile\n"
+        "GBANK_FONT=\"Data\\\\font.bnk\" \"\"\n"
+        "BROKEN=no quotes\n"
+        "UnknownKeyword \"ignored\"\n";
+    m.OpenIniFile("C:\\Fable\\Data\\Banks.ini", ini);
+    CHECK(m.Banks.size() == 3 && !m.Banks.count("STALE") && !m.Banks.count("BROKEN"));
+    const CBankInfo& gui = m.Banks["GBANK_GUI"];
+    CHECK(gui.DevBankFilePath == "Data\\\\gui.bnk" && gui.RetailBankFilePath == "Data\\\\textures.big");
+    CHECK(gui.DevHeaderFilePath == "Data\\\\Dev\\\\gui.h" && gui.RetailHeaderFilePath == "Data\\\\Retail\\\\gui.h");
+    const CBankInfo& main = m.Banks["GBANK_MAIN"];
+    CHECK(main.RetailBankFilePath == "Data\\\\textures.big" && main.DevHeaderFilePath.empty() && main.RetailHeaderFilePath.empty());
+    const CBankInfo& font = m.Banks["GBANK_FONT"];
+    CHECK(font.RetailBankFilePath.empty() && font.DevHeaderFilePath.empty());
+    CHECK(m.BasePath == "C:\\Fable\\Data\\");
+    if (g_fail) { std::printf("009a8170_TEST FAIL\n"); return 1; }
+    std::printf("009a8170_TEST PASS\n");
     return 0;
 }

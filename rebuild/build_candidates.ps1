@@ -2813,8 +2813,8 @@ $catalog = @(
         Module = 'CMainGameComponent'
         Source = '00/41/CMainGameComponent_GetFrameDifferenceFromCurrent_004167a7.cpp'
         TestSource = '00/41/CMainGameComponent_GetFrameDifferenceFromCurrent_004167a7_test.cpp'
-        PassPattern = 'PASS_004167a7'
-        Grade = 'asm_bake'
+        PassPattern = '004167a7_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /O1'
     }
     [pscustomobject]@{
         Address = '0041d1c8'
@@ -42095,7 +42095,6 @@ $catalog = @(
         Source = '00/c4/CAudioObject_StopVoice_00c43370.cpp'
         TestSource = '00/c4/CAudioObject_StopVoice_00c43370_test.cpp'
         PassPattern = '00c43370_TEST PASS'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00c44a90'
@@ -42214,8 +42213,7 @@ $catalog = @(
         Module = 'CTCWeapon'
         Source = '00/5d/CTCWeapon_IsAbleToBeUsedToBlock_005dacf0.cpp'
         TestSource = '00/5d/CTCWeapon_IsAbleToBeUsedToBlock_005dacf0_test.cpp'
-        PassPattern = 'OK_005dacf0'
-        Grade = 'asm_bake'
+        PassPattern = '005dacf0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005db260'
@@ -384175,6 +384173,20 @@ $catalog = @(
         TestSource = '00/c4/PKCBufferedReader_PKCBufferedReader_00c4b300_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c4b300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a8840'
+        Module = 'CBankFileManager'
+        Source = '00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp'
+        TestSource = '00/9a/CBankFileManager_OpenRetailBank_009a8840_test.cpp'
+        PassPattern = '009a8840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a8170'
+        Module = 'CBankFileManager'
+        Source = '00/9a/CBankFileManager_OpenIniFile_009a8170.cpp'
+        TestSource = '00/9a/CBankFileManager_OpenIniFile_009a8170_test.cpp'
+        PassPattern = '009a8170_TEST PASS'
     }
 )
 

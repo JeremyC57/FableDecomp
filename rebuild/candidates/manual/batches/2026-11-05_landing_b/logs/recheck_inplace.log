@@ -1,0 +1,8 @@
+addr       parity           behav  name
+004167a7   RELOCATION_MATCH PASS   GetFrameDifferenceFromCurrent
+005dacf0   RELOCATION_MATCH PASS   IsAbleToBeUsedToBlock
+
+WINS: 2
+  004167a7 RELOCATION_MATCH CMainGameComponent::?GetFrameDifferenceFromCurrent@CMainGameComponent@@IBEJJ@Z
+  005dacf0 RELOCATION_MATCH CTCWeapon::?IsAbleToBeUsedToBlock@CTCWeapon@@QBE_NABVCThing@@PBV2@1@Z
+elapsed 2s rc=0

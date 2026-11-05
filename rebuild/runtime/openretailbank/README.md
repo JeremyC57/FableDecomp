@@ -8,8 +8,10 @@ the compiler allows and behavior-faithful everywhere else.
 ## Anchor
 
 `CBankFileManager::OpenRetailBank(const CWideString&, bool)` @ retail `0x009A8840`.
-Source: `rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp`
-(naked, byte-pure). Verified **RELOCATION_MATCH, 1565/1565 bytes** — identical to
+Source: `rebuild/runtime/openretailbank/bake/CBankFileManager_OpenRetailBank_009a8840_bake.cpp`
+(naked, byte-pure). Moved here 2026-11-05: the catalog row `rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp`
+is now genuine C++ that byte-matches retail (chunk 775); this bake stays as the runtime module's thunk-linked anchor until the
+module is switched to the C++ source. Verified **RELOCATION_MATCH, 1565/1565 bytes** — identical to
 retail after masking its 44 relocations (42 call sites + 2 global data refs).
 
 The body keeps every external reference as a real COFF relocation via 27 distinct

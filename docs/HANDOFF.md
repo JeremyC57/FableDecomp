@@ -25,16 +25,18 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   slot functions, `naming/2026-11-04_wave35a/`) and 35c (271 spawned-func slots, particle getters, queued fixes and their callers,
   `naming/2026-11-04_wave35c/`) and 35b (812 Main/Init/Alloc/ctors, `naming/2026-11-04_wave35b/`) and 35d (24 of the 30 35a D5 rows + follow-ups,
   `naming/2026-11-04_wave35d/`) are applied. Left: the NAME_FIXES lists of 35b/c/d, 6 `??_G` needing member models, ~CScriptBase.
-  **Now (2026-11-05):** authoring resumed with ONE expert agent (owner). Chunk 774 is running: 8 ledger rows plus the 5 remaining asm bakes,
-  brief `$S/w22/BRIEF_774.md`. Asm rules: `docs/pipeline/ASM_RULES.md` (canonical). No row source has in-row `__asm`; 209 retail_asm rows
-  use 24 shared helpers. 9 oracle bakes remain (5 in chunk 774). Landed today: plan phases 2-4 (`naming/2026-11-0{4,5}_plan_p*`), stand-in
+  **Now (2026-11-05):** authoring resumed with ONE expert agent (owner). The owner asked to fix the 9 old bakes. Six are now clean C++:
+  0x0042DF9E and 0x00551340 (`batches/2026-11-05_landing_a/`), and 0x004167A7, 0x005DACF0, 0x009A8170 and 0x009A8840
+  (`_landing_b/`, chunk 775; the bank bakes moved to `rebuild/runtime/openretailbank/bake/`). Three bakes remain, parked in
+  `pending/2026-11-05_linux_hand774/`: 0x0053C332, 0x00597BF2 and 0x009BEF80. They are the next single-agent chunk (776).
+  Asm rules: `docs/pipeline/ASM_RULES.md` (canonical). No row source has in-row `__asm`; 209 retail_asm rows use 24 shared helpers. Landed today: plan phases 2-4 (`naming/2026-11-0{4,5}_plan_p*`), stand-in
   naming s6 (1,796 rows; 7,946 inaccurate stand-ins left, `naming/2026-11-05_standin_s6/NEXT.md`), asm cleanup rounds 1/2a/2b
   (`naming/2026-11-05_asm_*`), and the volatile audit. Next after authoring: plan phase 5 (CScriptThing header, CThing offset waves,
   CCountedPointer/CIntelligentPointer, vendor headers; inputs `$S/plan/p4/NEXT.md`), then the rest of step 6. Phase 1: `naming/2026-11-04_vendor_v2/`.
   Owner 2026-11-04: batch/pending `oracle.tsv` files are no longer committed (.gitignore; landing-time input only, landed bytes live in the catalog oracle); the 1,646 already tracked are left as they are. Owner 2026-11-04 (latest): launch NO new chunks; once the next running chunk lands, implement the combined naming/header plan: (1) repo-wide symbol index, (2) vendor V2 rewritten header-first, (3) scripted value-class header waves, (4) CScriptThing family, (5) game-class offset-mapped header waves carrying their name fixes, (6) final small naming pass; strict mode for migrated classes. Earlier: after parked chunk 768 finishes, launch no more parked-row agents for now; free slots go to authoring. Vendor naming V1 applied 2026-11-04 (198 respells, 75 strmbase labels; `naming/2026-11-04_vendor_v1/`); V2 queue in its README. Owner 2026-11-04: vendor code gets the most accurate name from the vendor source or from what the body does (EXTRA_RULES); V1's 47 RELOC_NAME rows accepted; V2 takes the next free slot (`$S/naming/vendor/BRIEF_VENDOR_V2.md`)., C++ only. Landing helpers: `$S/w22/prep_landing.sh N L`, `finish_landing.sh N L`. Anniversary 360 Test PDB pilot done: no byte help (0/20 matched; `batches/2026-11-04_anniv360_pilot/`).
   The Xbox 360 Anniversary PDB is a private third-source lookup (`$S/anniv_pdb/`, rule in FABLE_ANNIVERSARY.md).
 - Coverage (refresh with `tools/write_decomp_dashboard.py` then `tools/update_readme_progress.py`; never hand-edit):
-  46,872 genuine of the 49,568-function catalog (94.56%), after landing 2026-11-04zj and the 6 vendor V2 rows.
+  46,890 genuine of the 49,568-function catalog (94.60%; 57.55% of retail function bytes), after landing 2026-11-05b.
   (chunk 766 authoring, 7 of 26). Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`, `2026-11-04_landing_a/` .. `_landing_zc/`.
 - `// Revisit: inline-depth` rows: 65 (129 at the start of the day). Mechanism, levers and why the 65 are left:
   `docs/pipeline/INLINE_DEPTH_REVISIT.md`; research `batches/2026-11-03_inline_split_research/`, `_inline_revisit2/`, `_inline_revisit3/`.

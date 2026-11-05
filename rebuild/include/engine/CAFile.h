@@ -16,6 +16,11 @@ public:
     static void __fastcall SplitPath(const CCharString&,CCharString*,CCharString*,CCharString*,CCharString*);
     static bool __fastcall PathExists(const CWideString&);
     static bool __fastcall IsPathFile(const CWideString&);
+#ifdef FABLE_RETAIL_CAFILE_SPLITPATH_WIDE
+    // Nested opt-in (chunk 775, row 0x009A8170 OpenIniFile): Ego_r.pdb ?SplitPath@CAFile@@SIXABVCWideString@@PAV2@111@Z, the
+    // CWideString overload (0x00997620; path in ecx, drive in edx, directory / name / extension pushed).
+    static void __fastcall SplitPath(const CWideString&,CWideString*,CWideString*,CWideString*,CWideString*);
+#endif
 #ifdef FABLE_RETAIL_CAFILE
     // Movie row 0x006286F0: Ego_r.pdb + FableWin.pdb ?ConvertPathToFullPath@CAFile@@SI?AVCWideString@@ABV2@@Z (0x00999110; the
     // hidden return slot in ecx, the path in edx). The PDBs' CCharString overload (SI?AVCCharString@@ABV2@@Z) and the

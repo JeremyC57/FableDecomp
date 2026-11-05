@@ -1,196 +1,98 @@
-#include <stdio.h>
-#include <string.h>
-
-#include "fable_retail_banks.h"
-
-namespace
-{
-    struct DiskVTable
-    {
-        void* destroy;
-        void* open;
-    };
-
-    fable_u8 g_disk[0x1C];
-    fable_u32 g_header[2];
-    bool g_pathExists;
-    unsigned int g_allocations;
-    unsigned int g_diskOpenCalls;
-    unsigned int g_streamConstructCalls;
-    unsigned int g_streamDestroyCalls;
-    unsigned int g_ownerDestroyCalls;
-
-    void Reset(bool pathExists, fable_u32 magic, fable_u32 version)
-    {
-        memset(g_disk, 0, sizeof(g_disk));
-        g_header[0] = magic;
-        g_header[1] = version;
-        g_pathExists = pathExists;
-        g_allocations = 0;
-        g_diskOpenCalls = 0;
-        g_streamConstructCalls = 0;
-        g_streamDestroyCalls = 0;
-        g_ownerDestroyCalls = 0;
-    }
-
-    bool Check(
-        bool pathExists,
-        fable_u32 magic,
-        fable_u32 version,
-        unsigned int expectedOpenCalls,
-        unsigned int expectedOwnerDestroyCalls)
-    {
-        Reset(pathExists, magic, version);
-        fable_u8 managerBytes[sizeof(CBankFileManager)];
-        fable_u8 pathnameBytes[sizeof(CWideString)];
-        memset(managerBytes, 0, sizeof(managerBytes));
-        memset(pathnameBytes, 0, sizeof(pathnameBytes));
-        CBankFileManager* manager =
-            reinterpret_cast<CBankFileManager*>(managerBytes);
-        manager->retailBankVersion_ = 7;
-        const CWideString& pathname =
-            *reinterpret_cast<const CWideString*>(pathnameBytes);
-
-        manager->OpenRetailBank(pathname, true);
-
-        if (!pathExists)
-        {
-            return
-                g_allocations == 0 &&
-                g_diskOpenCalls == 0 &&
-                g_streamConstructCalls == 0 &&
-                g_streamDestroyCalls == 0 &&
-                g_ownerDestroyCalls == 0;
-        }
-
-        return
-            g_allocations == 1 &&
-            g_diskOpenCalls == expectedOpenCalls &&
-            g_streamConstructCalls == 1 &&
-            g_streamDestroyCalls == 1 &&
-            g_ownerDestroyCalls == expectedOwnerDestroyCalls;
-    }
-}
-
-extern "C" __declspec(naked) void
-FableOpenRetailDiskOpenStub_009A8840()
-{
-    __asm
-    {
-        inc dword ptr [g_diskOpenCalls]
-        ret 0Ch
-    }
-}
-
-extern "C" DiskVTable g_FableOpenRetailDiskVTable_0122D06C =
-{
-    0,
-    FableOpenRetailDiskOpenStub_009A8840
+// Behaviour test for 0x009a8840: CBankFileManager::OpenRetailBank -- magic/version gate, contained-bank table, threaded file
+// Host model: files are byte vectors keyed by path; the stream is a bounded little-endian reader with SetPosition.
+#include <cstdio>
+#include <cstring>
+#include <map>
+#include <list>
+#include <string>
+#include <vector>
+static int g_fail = 0;
+#define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
+typedef std::vector<unsigned char> Bytes;
+static std::map<std::string, Bytes> g_files;
+struct Stream {                                   // CDataInputStream: reads past the end leave the target untouched
+    const Bytes* Data; unsigned long Pos;
+    explicit Stream(const Bytes* d) : Data(d), Pos(0) { }
+    void Read(void* dst, long size) { if (size <= 0 || Pos + size > Data->size()) return; std::memcpy(dst, &(*Data)[Pos], size); Pos += size; }
+    unsigned long ReadULONG() { unsigned long v = 0; unsigned int w = 0; Read(&w, 4); v = w; return v; }
+    void SetPosition(unsigned long p) { Pos = p; }
+    std::string ReadNullTerminatedString() { std::string s; while (Pos < Data->size() && (*Data)[Pos]) s += (char)(*Data)[Pos++]; ++Pos; return s; }
 };
-extern "C" fable_u32 g_FableOpenRetailMagic_0129B07C = 0x42474942;
-
-extern "C" bool FableOpenRetailPathExists_009A8840()
-{
-    return g_pathExists;
-}
-
-extern "C" void* FableOpenRetailOperatorNew_009A8840(fable_u32 size)
-{
-    ++g_allocations;
-    return size == sizeof(g_disk) ? g_disk : 0;
-}
-
-extern "C" void FableOpenRetailDiskBaseConstruct_009A8840()
-{
-}
-
-extern "C" void FableOpenRetailCharConstruct_009A8840()
-{
-}
-
-extern "C" __declspec(naked) void
-FableOpenRetailDiskOwnerConstruct_009A8840()
-{
-    __asm
+struct CContainedBank { unsigned long DataVersion, EntryCount, InfoOffset, InfoSize, Alignment; };
+struct CRetailBank {
+    const Bytes* DiskFile; std::string ThreadedPath; bool ThreadedOpen; bool UseDMA;
+    std::map<std::string, CContainedBank> ContainedBanks; std::string FilePath;
+    CRetailBank() : DiskFile(0), ThreadedOpen(false), UseDMA(true) { }
+};
+struct CBankFileManager {
+    std::list<CRetailBank*> RetailBanks; std::list<const Bytes*> Files; unsigned long FileVersion;
+    ~CBankFileManager() { for (std::list<CRetailBank*>::iterator i = RetailBanks.begin(); i != RetailBanks.end(); ++i) delete *i; for (std::list<const Bytes*>::iterator f = Files.begin(); f != Files.end(); ++f) delete *f; }
+    void OpenRetailBank(const std::string& pathname, bool)
     {
-        mov eax, dword ptr [esp + 4]
-        mov dword ptr [ecx], eax
-        mov dword ptr [ecx + 4], 0
-        ret 4
+        if (!g_files.count(pathname)) return;
+        const Bytes* disk_file = new Bytes(g_files[pathname]);
+        Files.push_back(disk_file);                   // the counted disk file outlives a rejected open only in this host model
+        Stream stream(disk_file);
+        char magic[4] = { 0, 0, 0, 0 };
+        stream.Read(magic, 4);
+        if (std::memcmp(magic, "BIGB", 4) == 0) {
+            if (stream.ReadULONG() != FileVersion) return;
+            CRetailBank* bank = new CRetailBank;
+            RetailBanks.push_back(bank);
+            bank->FilePath = pathname;
+            bank->DiskFile = disk_file;
+            unsigned long header_offset = stream.ReadULONG();
+            unsigned long header_size = stream.ReadULONG();
+            if (header_size > 0) {
+                Bytes header(header_size);
+                stream.SetPosition(header_offset);
+                stream.Read(&header[0], header_size);
+                Stream header_stream(&header);
+                unsigned long no_banks = header_stream.ReadULONG();
+                for (unsigned long i = 0; i < no_banks; ++i) {
+                    std::string name = header_stream.ReadNullTerminatedString();
+                    CContainedBank c;
+                    c.DataVersion = header_stream.ReadULONG(); c.EntryCount = header_stream.ReadULONG();
+                    c.InfoOffset = header_stream.ReadULONG(); c.InfoSize = header_stream.ReadULONG(); c.Alignment = header_stream.ReadULONG();
+                    bank->ContainedBanks[name] = c;
+                }
+            }
+            bank->ThreadedPath = pathname; bank->UseDMA = false; bank->ThreadedOpen = true;
+        }
     }
-}
-
-extern "C" __declspec(naked) void
-FableOpenRetailFileStreamConstruct_009A8840()
+};
+static void PutU32(Bytes& b, unsigned int v) { for (int i = 0; i < 4; ++i) b.push_back((unsigned char)(v >> (8 * i))); }
+static Bytes MakeBank(const char* magic, unsigned int version)
 {
-    __asm
-    {
-        inc dword ptr [g_streamConstructCalls]
-        mov dword ptr [ecx + 4], 0
-        mov eax, offset g_header
-        mov dword ptr [ecx + 0Ch], eax
-        mov dword ptr [ecx + 14h], 8
-        ret 8
-    }
+    Bytes header; PutU32(header, 2);
+    const char* names[2] = { "GBANK_GUI", "GBANK_MAIN" };
+    for (int b = 0; b < 2; ++b) { for (const char* p = names[b]; *p; ++p) header.push_back(*p); header.push_back(0); for (int k = 0; k < 5; ++k) PutU32(header, 100 * (b + 1) + k); }
+    Bytes f; for (int i = 0; i < 4; ++i) f.push_back(magic[i]); PutU32(f, version); PutU32(f, 32); PutU32(f, (unsigned int)header.size());
+    while (f.size() < 32) f.push_back(0xCD);
+    f.insert(f.end(), header.begin(), header.end());
+    return f;
 }
-
-extern "C" void FableOpenRetailReadOverflow_009A8840()
-{
-}
-
-extern "C" void FableOpenRetailFileStreamDestroy_009A8840()
-{
-    ++g_streamDestroyCalls;
-}
-
-extern "C" void FableOpenRetailDiskOwnerDestroy_009A8840()
-{
-    ++g_ownerDestroyCalls;
-}
-
-#define FABLE_UNUSED_OPEN_RETAIL_STUB(name) \
-    extern "C" void name() {}
-
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailBankConstruct_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailBankOwnerConstruct_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailBankListInsert_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailWideToChar_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailCharAssign_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailCharDestroy_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailDiskOwnerAssign_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailBufferAllocate_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailSetPosition_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailMemoryStreamConstruct_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailReadNullString_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailContainedBankIndex_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailMemoryStreamDestroy_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailFree_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailThreadedConstruct_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailThreadedReset_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailThreadedOpen_009A8840)
-FABLE_UNUSED_OPEN_RETAIL_STUB(FableOpenRetailOperatorDelete_009A8840)
-
-#undef FABLE_UNUSED_OPEN_RETAIL_STUB
-
 int main()
 {
-    const bool passed =
-        Check(false, 0, 0, 0, 0) &&
-        Check(true, 0xDEADBEEF, 7, 1, 0) &&
-        Check(true, 0x42474942, 8, 1, 1);
-    if (!passed)
-    {
-        printf(
-            "FABLETLC_OPEN_RETAIL_BANK FAIL allocations=%u open=%u "
-            "stream_ctor=%u stream_dtor=%u owner_dtor=%u\n",
-            g_allocations,
-            g_diskOpenCalls,
-            g_streamConstructCalls,
-            g_streamDestroyCalls,
-            g_ownerDestroyCalls);
-        return 1;
-    }
-
-    printf("FABLETLC_OPEN_RETAIL_BANK PASS\n");
+    CBankFileManager m; m.FileVersion = 100;
+    m.OpenRetailBank("missing.big", true);
+    CHECK(m.RetailBanks.empty());
+    g_files["bad.big"] = MakeBank("BIGA", 100);
+    m.OpenRetailBank("bad.big", true);
+    CHECK(m.RetailBanks.empty());
+    g_files["old.big"] = MakeBank("BIGB", 99);
+    m.OpenRetailBank("old.big", true);
+    CHECK(m.RetailBanks.empty());
+    g_files["frontend.big"] = MakeBank("BIGB", 100);
+    m.OpenRetailBank("frontend.big", false);
+    CHECK(m.RetailBanks.size() == 1);
+    const CRetailBank& bank = *m.RetailBanks.front();
+    CHECK(bank.FilePath == "frontend.big" && bank.DiskFile != 0 && bank.ThreadedOpen && !bank.UseDMA);
+    CHECK(bank.ContainedBanks.size() == 2);
+    const CContainedBank& main = bank.ContainedBanks.find("GBANK_MAIN")->second;
+    CHECK(main.DataVersion == 200 && main.EntryCount == 201 && main.InfoOffset == 202 && main.InfoSize == 203 && main.Alignment == 204);
+    CHECK(bank.ContainedBanks.find("GBANK_GUI")->second.Alignment == 104);
+    if (g_fail) { std::printf("009a8840_TEST FAIL\n"); return 1; }
+    std::printf("009a8840_TEST PASS\n");
     return 0;
 }

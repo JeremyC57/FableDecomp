@@ -6,6 +6,11 @@
 class CDiskFileWin32 : public CAFile {
 public:
     CDiskFileWin32(const CWideString&,FileAccessType,unsigned long);
+#ifdef FABLE_RETAIL_CDISKFILEWIN32_DEFAULTCTOR
+    // Nested opt-in (chunk 775, row 0x009A8840): FableWin.pdb ??0CDiskFileWin32@@QAE@XZ, expanded in retail after
+    // operator new(0x1C) (0x009A886E: base ctor 0x0099A2F0, vtable 0x0122D06C, Pathname() 0x0099AED0, then Opened = false).
+    CDiskFileWin32() { Opened = false; }
+#endif
     virtual ~CDiskFileWin32() { Close(); }
     virtual void Open(const CWideString&,FileAccessType,unsigned long);
     virtual void Close();

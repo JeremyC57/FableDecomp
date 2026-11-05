@@ -1,0 +1,36 @@
+address	name	evidence
+004167a7	CMainGameComponent::GetFrameDifferenceFromCurrent	landing 2026-11-05b (chunk 775): 
+0041623e	CMainGameComponent::ConvertGTToWF	landing 2026-11-05b (chunk 775): 
+00416231	CMainGameComponent::GetCurrentGameTime	landing 2026-11-05b (chunk 775): 
+005dacf0	CTCWeapon::IsAbleToBeUsedToBlock	landing 2026-11-05b (chunk 775): 
+005dab10	CTCWeapon::IsUsableBy	landing 2026-11-05b (chunk 775): 
+009a8840	CBankFileManager::OpenRetailBank	landing 2026-11-05b (chunk 775): 
+009a8170	CBankFileManager::OpenIniFile	landing 2026-11-05b (chunk 775): 
+0099b2c0	CWideString::ToCharString	landing 2026-11-05b (chunk 775): 
+009a9b60	CCountedPointer<CDiskFileWin32>::CCountedPointer	landing 2026-11-05b (chunk 775): 
+009a9bb0	CCountedPointer<CDiskFileWin32>::~CCountedPointer	landing 2026-11-05b (chunk 775): 
+009a9bf0	CCountedPointer<CDiskFileWin32>::operator=	landing 2026-11-05b (chunk 775): 
+009a9c80	CCountedPointer<CThreadedFile>::Reset	landing 2026-11-05b (chunk 775): 
+009a9d10	CCountedPointer<NBankFileManager::CRetailBank>::CCountedPointer	landing 2026-11-05b (chunk 775): 
+009aaaa0	std::list<CCountedPointer<NBankFileManager::CRetailBank>, std::allocator<CCountedPointer<NBankFileManager::CRetailBank>>>::push_back	landing 2026-11-05b (chunk 775): 
+009ac530	std::map<CCharString, NBankFileManager::CContainedBank, std::less<CCharString>, std::allocator<std::pair<CCharString const, NBankFileManager::CContainedBank>>>::operator[]	landing 2026-11-05b (chunk 775): 
+009ac5d0	std::map<CCharString, CBankFileManager::CBankInfo, std::less<CCharString>, std::allocator<std::pair<CCharString const, CBankFileManager::CBankInfo>>>::operator[]	landing 2026-11-05b (chunk 775): 
+009aa7c0	std::_Rb_tree<CCharString, std::pair<CCharString const, CBankFileManager::CBankInfo>, std::_Select1st<std::pair<CCharString const, CBankFileManager::CBankInfo>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CBankFileManager::CBankInfo>>>::_M_erase	landing 2026-11-05b (chunk 775): 
+00994700	CFileDataInputStream::CFileDataInputStream	landing 2026-11-05b (chunk 775): 
+00994780	CFileDataInputStream::~CFileDataInputStream	landing 2026-11-05b (chunk 775): 
+00994930	CMemoryDataInputStream::CMemoryDataInputStream	landing 2026-11-05b (chunk 775): 
+00995f50	CMemoryDataInputStream::CMemoryDataInputStream	landing 2026-11-05b (chunk 775): 
+00995d30	CMemoryDataInputStream::ReadNullTerminatedString	landing 2026-11-05b (chunk 775): 
+00994b50	CDataInputStream::ReadLine	landing 2026-11-05b (chunk 775): 
+00994dc0	CDataInputStream::ReadUntilCharacter	landing 2026-11-05b (chunk 775): 
+00994e90	CDataInputStream::ReadUntilWhiteSpace	landing 2026-11-05b (chunk 775): 
+00993bc0	CDataInputStream::SetPosition	landing 2026-11-05b (chunk 775): 
+00999230	CAFile::PathExists	landing 2026-11-05b (chunk 775): 
+00997620	CAFile::SplitPath	landing 2026-11-05b (chunk 775): 
+0099f560	CCharString::RemoveWhiteSpaceBeginEnd	landing 2026-11-05b (chunk 775): 
+009a77d0	CBankFileManager::ReadQuotedString	landing 2026-11-05b (chunk 775): 
+0098dfd0	CThreadedFile::CThreadedFile	landing 2026-11-05b (chunk 775): 
+0098e1e0	CThreadedFile::Open	landing 2026-11-05b (chunk 775): 
+009e94a0	CMemoryFile::Open	landing 2026-11-05b (chunk 775): 
+009e9390	CMemoryFile::Close	landing 2026-11-05b (chunk 775): 
+009ac4d0	NBankFileManager::CRetailBank::CRetailBank	landing 2026-11-05b (chunk 775): 

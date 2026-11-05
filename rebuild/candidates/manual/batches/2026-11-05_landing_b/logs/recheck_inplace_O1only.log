@@ -1,0 +1,7 @@
+addr       parity           behav  name
+004167a7   DIFFER(36v33)    PASS   GetFrameDifferenceFromCurrent
+005dacf0   RELOCATION_MATCH PASS   IsAbleToBeUsedToBlock
+
+WINS: 1
+  005dacf0 RELOCATION_MATCH CTCWeapon::?IsAbleToBeUsedToBlock@CTCWeapon@@QBE_NABVCThing@@PBV2@1@Z
+elapsed 8s rc=0

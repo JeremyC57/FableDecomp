@@ -1,0 +1,25 @@
+catalog  009a9bb0 _global::CCountedPointer_Release_009a9bb0 -> ??1?$CCountedPointer@VCDiskFileWin32@@@@QAE@XZ
+catalog  009a9bf0 _global::CCountedPointer_Set_009a9bf0 -> ??4?$CCountedPointer@VCDiskFileWin32@@@@QAEAAV0@ABV0@@Z
+catalog  009a9d10 _global::CCountedPointer_SetPItem_009a9d10 -> ??0?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QAE@PAVCRetailBank@NBankFileManager@@@Z
+catalog  009a9c80 CCountedPointer_CThreadedFile::Reset -> ?Reset@?$CCountedPointer@VCThreadedFile@@@@QAEXPAVCThreadedFile@@@Z
+catalog  009a9b60 CCountedPointer_009a9030::CCountedPointer_009a9030 -> ??0?$CCountedPointer@VCDiskFileWin32@@@@QAE@PAVCDiskFileWin32@@@Z
+catalog  00994b50 ReadLine -> CDataInputStream::ReadLine
+catalog  0099b2c0 CWideString::CWideString::ConvertToCharString -> CWideString::ToCharString
+catalog  009ac5d0 map<CCharString::operator[] -> ??A?$map@VCCharString@@VCBankInfo@CBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@5@@std@@QAEAAVCBankInfo@CBankFileManager@@ABVCCharString@@@Z
+catalog  009aa7c0 CRetailTree_erase009aa7c0::Erase -> ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@Z
+catalog  009ac530 std::map<CCharString,NBankFileManager::CContainedBank>::operator[] -> ??A?$map@VCCharString@@VCContainedBank@NBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@5@@std@@QAEAAVCContainedBank@NBankFileManager@@ABVCCharString@@@Z
+catalog  009aaaa0 std::list<CCountedPointer<NBankFileManager::CRetailBank>, std::allocator<CCountedPointer<NBankFileManager::CRetailBank>>>::push_back -> ?push_back@?$list@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@V?$allocator@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@Z
+manifest 00994b50 _global::ReadLine -> CDataInputStream::ReadLine
+manifest 0099b2c0 CWideString::CWideString::ConvertToCharString -> CWideString::ToCharString
+manifest 009a8170 CBankFileManager::CBankFileManager::OpenIniFile -> CBankFileManager::OpenIniFile
+manifest 009a8840 CBankFileManager::CBankFileManager::OpenRetailBank -> CBankFileManager::OpenRetailBank
+manifest 009a9b60 CCountedPointer_009a9030::CCountedPointer_009a9030 -> _global::??0?$CCountedPointer@VCDiskFileWin32@@@@QAE@PAVCDiskFileWin32@@@Z
+manifest 009a9bb0 _global::CCountedPointer_Release_009a9bb0 -> _global::??1?$CCountedPointer@VCDiskFileWin32@@@@QAE@XZ
+manifest 009a9bf0 _global::CCountedPointer_Set_009a9bf0 -> _global::??4?$CCountedPointer@VCDiskFileWin32@@@@QAEAAV0@ABV0@@Z
+manifest 009a9c80 CCountedPointer_CThreadedFile::Reset -> _global::?Reset@?$CCountedPointer@VCThreadedFile@@@@QAEXPAVCThreadedFile@@@Z
+manifest 009a9d10 _global::CCountedPointer_SetPItem_009a9d10 -> _global::??0?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QAE@PAVCRetailBank@NBankFileManager@@@Z
+manifest 009aa7c0 CRetailTree_erase009aa7c0::Erase -> _global::?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@Z
+manifest 009aaaa0 std::list<CCountedPointer<NBankFileManager::CRetailBank>, std::allocator<CCountedPointer<NBankFileManager::CRetailBank>>>::push_back -> _global::?push_back@?$list@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@V?$allocator@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@Z
+manifest 009ac530 std::map<CCharString,NBankFileManager::CContainedBank>::operator[] -> _global::??A?$map@VCCharString@@VCContainedBank@NBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@5@@std@@QAEAAVCContainedBank@NBankFileManager@@ABVCCharString@@@Z
+manifest 009ac5d0 _global::map<CCharString::operator[] -> _global::??A?$map@VCCharString@@VCBankInfo@CBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@5@@std@@QAEAAVCBankInfo@CBankFileManager@@ABVCCharString@@@Z
+labels 35  catalog renamed 11  manifest renamed 13

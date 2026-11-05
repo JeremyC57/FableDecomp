@@ -2050,3 +2050,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Unaligned function entry right after a neighbour's `leave; ret` (no padding): the TU was /O1 /Oy-; grade there first (chunk 774: three bakes).
 - `fnstcw` / `and byte [cw+1],0F3h` / `fldcw` is GFFPUSetRoundingNearest: use engine/GFFPUSetRoundingNearest.h.
 - vland skips an address that already has a landed row unless given `--recheck-landed` (bake replacements).
+- An /O1 row needs `CompilerFlags = '/O2 /Oy /W3 /O1'`, not `'/O1'`: recheck.py and mkpay append `/Oy-` when the flags lack `/Oy`, so a plain `'/O1'` regrades with a frame pointer (0x004167A7: DIFFER 36v33).
