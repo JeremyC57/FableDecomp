@@ -213,3 +213,27 @@ headers, never as asm in the row.
   checks this.
 - **verify_and_land prints a non-blocking `WARN STANDIN_LEAF`** only for an inaccurate stand-in, with its reason
   (`tools/decomp_pipeline/standin_leaf.py`).
+
+## Owner decision, 2026-11-05: asm rule set (confirmed with the owner; supersedes the 2026-10-24 in-row allowance)
+1. **Plain C++ first, always.** Try every C++ spelling (statement order, temporaries, types, inline or out-of-line callees,
+   flags the TU already uses) before anything else.
+2. **Anything beyond plain C++ is allowed only where the original code used asm.** The owner put it as: "the asm rule set past
+   plain c++ rule should only be needed if the original code used asm."
+   - The evidence is retail bytes that no VC7.1 C++ spelling emits: an instruction or sequence the compiler never generates. Cite
+     its retail address and instruction.
+   - A register choice, scheduling, frame-slot or other compiler residue never qualifies. A row whose only gap is a residue stays
+     parked until a C++ shape matches.
+3. **Where step 2 applies, in this order:**
+   1. a compiler intrinsic, if one emits the instruction (genuine);
+   2. an isolated, macro-wrapped `__asm` in a shared header, with a `FABLE_PORTABLE` plain-C++ twin, a `// Retail-asm-helper:`
+      and `// Retail-asm:` evidence block, and a dual-path test (`tools/decomp_pipeline/portable_twins_check.py`);
+   3. a `__forceinline` helper, only if necessary: for example, VC7.1 never auto-inlines a function that contains asm, so a
+      wrapper that retail expanded must be forced. It lives in the helper header's retail branch, so the FABLE_PORTABLE build
+      never sees it.
+4. **Each site keeps a table** of the C++ and intrinsic attempts made before the helper.
+5. **No `__asm`, `naked`, `_emit` or `volatile` in any row source or test.** A row reaches asm only through a shared helper
+   header, and grades `retail_asm`.
+6. **Existing code:**
+   - The 99 landed `retail_asm` rows that carry their `__asm` in the row source move it into shared helpers, with identical bytes.
+   - The 14 `naked_asm` / `emit_bake` oracle bakes go through steps 1-3. Those that match land; the rest stay parked answer keys.
+   - The 160 tests that contain asm are rewritten as plain C++ calls.

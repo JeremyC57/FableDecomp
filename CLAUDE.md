@@ -33,11 +33,12 @@ reconstruction that must compile under VC7.1 to the retail bytes.
 - **Evidence, not assumption** — cross-check every claim against ≥2 sources; verify before asserting.
 - **Byte purity** — coverage is compiler-emitted C++ that byte-matches retail. `__asm` / `naked` /
   `_emit` is grade `asm_bake`: an oracle, never reconstruction. `verify_and_land.py` rejects it.
-  Exception (owner, 2026-10-24): where retail itself ran inline asm (an instruction VC7.1 cannot emit
-  from C++: `rdtsc`, bare `fistp dword`, `fnstcw`/`fldcw`), a C++ body with that `__asm` and a
-  `// Retail-asm: <evidence>` line is grade `retail_asm` and lands (`crawl/purity.py`). The evidence line
-  must cite a retail address and an instruction of the block; no `naked`/`_emit`, no `ret` inside the
-  asm. No instruction-count cap (owner, 2026-10-27: a fixed cap is arbitrary when retail runs a longer block).
+  Exception (owner, 2026-10-24; tightened 2026-11-05): only where the original code used asm (retail bytes no VC7.1 C++
+  spelling emits, cited by address + instruction) may a row go past plain C++: an intrinsic first, else an isolated
+  macro-wrapped `__asm` in a SHARED HEADER with a `FABLE_PORTABLE` twin and a dual-path test, else (only if necessary) a
+  `__forceinline` helper. Never for a compiler residue. No `__asm`/`naked`/`_emit`/`volatile` in a row source or test;
+  such rows grade `retail_asm` (`crawl/purity.py`). No instruction-count cap (owner, 2026-10-27). Full rule: EXTRA_RULES.md
+  (2026-11-05 asm section).
   Bytes the linker copied from a VC7.1 library (CRT objects of VS 2003 `msvcrt.lib`, import thunks) are grade
   `toolchain_library` (owner, 2026-10-30): a body-less stub with a `// Toolchain-library:` proof line that
   `libsig/lib_verify.py` reproduces, counted as genuine (`docs/pipeline/LIBRARY_SIGNATURES.md`). Same grade and proof for bytes retail got by
