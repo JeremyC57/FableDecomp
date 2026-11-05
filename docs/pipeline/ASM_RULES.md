@@ -94,7 +94,7 @@ local_10`, which had no byte effect.
 - 209 `retail_asm` rows reach asm only through 24 shared helper headers, each with a `FABLE_PORTABLE` twin.
 - `crawl/purity.py` now grades in-row `__asm` as `naked_asm`, never `retail_asm`.
 
-## Status (2026-11-05, after landing b)
-- The oracle bakes in `rebuild/src` are down to 3, all parked with their residue (`pending/2026-11-04_linux_hand774/`):
-  0x0053C332, 0x00597BF2 and 0x009BEF80. The other 11 of round 2b's 14 are plain C++ or use a helper.
+## Status (2026-11-05, after landing c)
+- One oracle bake is left in `rebuild/src`: 0x009BEF80 CDisplayManager::SetViewport, a register-allocation residue parked at
+  477v479 (`pending/2026-11-05_linux_hand776/`). The other 13 of round 2b's 14 are plain C++ or use a helper.
 - The two CBankFileManager byte bakes are kept as runtime oracles in `rebuild/runtime/openretailbank/bake/`, not as rows.

@@ -1,0 +1,4 @@
+address	name	status	attempts	note
+0053c332	NUISystem::CList::DoRecomputeOffsets	RELOCATION_MATCH	2 graded (+10 compile-only probes)	GetDataFromDef order: copy ToUse, copy PositionOffset, then negate ToUse.X; optimize("s")+("y",off)
+00597bf2	NUISystem::CFrontEndManager::GotoPreviousScreen	RELOCATION_MATCH	~50	FABLE_RETAIL_STLP_MAP + named current local + early-return main-menu branch with its own back sound; optimize("s")+("y",off)
+009bef80	CDisplayManager::SetViewport	DIFFER(477v479) dl=3	~30 idea families (~860 grid builds)	parked: right-edge `< 0` folded into inc flags (jns) vs retail `cmp eax,ebp ; jge`; everything else exact

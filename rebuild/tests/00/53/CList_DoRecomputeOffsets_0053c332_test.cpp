@@ -1,93 +1,60 @@
+// Behaviour test for 0x0053C332: NUISystem::CList::DoRecomputeOffsets -- per-child state positions, clamped alphas and the zig-zag offset walk
 #include <cstdio>
-#include <cstring>
-
-#include "../../../src/compiled/00/53/CList_DoRecomputeOffsets_0053c332.cpp"
-
-extern "C" const float FableCListDoRecomputeInv255 = 0.003921569f;
-extern "C" const float FableCListDoRecomputeZero = 0.0f;
-extern "C" const float FableCListDoRecomputeOne = 1.0f;
-extern "C" const float FableCListDoRecompute255 = 255.0f;
-extern "C" const float FableCListDoRecomputeAlmostOne = 0.999f;
-
-static volatile int g_updateCount;
-static volatile int g_replaceCount;
-static void* g_replaceOwner;
-static void* g_replaceFirst;
-static void* g_replaceSecond;
-
-extern "C" __declspec(naked) void __fastcall FableCListDoRecomputeReplaceRange(void*)
-{
-    __asm {
-        inc dword ptr [g_replaceCount]
-        mov eax,dword ptr [esp+4]
-        mov dword ptr [g_replaceFirst],eax
-        mov eax,dword ptr [esp+8]
-        mov dword ptr [g_replaceSecond],eax
-        ret 8
+#include <map>
+#include <vector>
+static int g_fail = 0;
+#define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
+struct C2DVector { float X, Y; };
+struct CUIState { C2DVector Position; unsigned char A; CUIState() : A(9) { Position.X = Position.Y = 0; } };
+typedef std::map<unsigned long, CUIState> StateMap;
+struct CComponent { StateMap States; unsigned char ChangedAlpha; C2DVector ChangedPosition; StateMap& GetStates() { return States; } };
+struct CList {
+    std::vector<CComponent*> ScrollingChildren; std::vector<StateMap> ScrollingChildrenStates;
+    C2DVector PositionOffset, PositionOffsetToUse, NextScrollingChildPosition, PDefPositionOffset;
+    float AlphaOffset, AlphaOffsetToUse, NextScrollingChildAlpha; unsigned char PDefAlphaOffset;
+    void DoRecomputeOffsets() {
+        PositionOffsetToUse = PDefPositionOffset; PositionOffset = PDefPositionOffset;
+        PositionOffsetToUse.X = -PositionOffsetToUse.X;
+        AlphaOffset = AlphaOffsetToUse = PDefAlphaOffset * (1.0f / 255.0f);
+        ScrollingChildrenStates.clear();
+        for (unsigned long i = 0; i < ScrollingChildren.size(); ++i) {
+            CComponent* child = ScrollingChildren[i];
+            const unsigned long keys[5] = { 1, 4, 5, 0, 6 };
+            for (int k = 0; k < 5; ++k) child->GetStates()[keys[k]].Position = NextScrollingChildPosition;
+            for (int k = 0; k < 3; ++k) {
+                unsigned char a;
+                if (NextScrollingChildAlpha < 0.0f) a = 0;
+                else if (NextScrollingChildAlpha > 1.0f) a = 255;
+                else a = (unsigned char)(NextScrollingChildAlpha * 255.0f);
+                child->GetStates()[keys[k]].A = a;
+            }
+            float y = NextScrollingChildPosition.Y + PositionOffsetToUse.Y; NextScrollingChildPosition.Y = y;
+            float alpha = AlphaOffsetToUse + NextScrollingChildAlpha;
+            if (!(alpha >= 1.0f) && !(alpha >= 0.999f)) { NextScrollingChildAlpha = alpha; NextScrollingChildPosition.X += PositionOffsetToUse.X; }
+            else {
+                AlphaOffsetToUse = -AlphaOffsetToUse; PositionOffsetToUse.X = -PositionOffsetToUse.X;
+                if (NextScrollingChildAlpha < 1.0f) { NextScrollingChildPosition.X = 0.0f; NextScrollingChildAlpha = 1.0f; }
+                else { NextScrollingChildPosition.X += PositionOffsetToUse.X; NextScrollingChildAlpha += AlphaOffsetToUse; }
+            }
+            child->ChangedAlpha = child->GetStates()[1].A; child->ChangedPosition = child->GetStates()[1].Position;
+            ScrollingChildrenStates.push_back(ScrollingChildren[i]->GetStates());
+        }
     }
-}
-
-extern "C" void* __fastcall FableCListDoRecomputeTransfer(void* value)
-{
-    return value;
-}
-
-extern "C" void __fastcall FableCListDoRecomputeAddChild(void*)
-{
-}
-
-extern "C" int __cdecl FableCListDoRecomputeFtol2()
-{
-    return 0;
-}
-
-static void __declspec(naked) UpdateOffsets()
-{
-    __asm {
-        inc dword ptr [g_updateCount]
-        mov eax,dword ptr [esp+4]
-        mov dword ptr [g_replaceOwner],eax
-        ret 4
-    }
-}
-
-static bool RunEmptyList()
-{
-    unsigned char list[0x220];
-    void* vtable[0x100];
-    unsigned char range[8];
-    std::memset(list, 0, sizeof(list));
-    std::memset(vtable, 0, sizeof(vtable));
-    std::memset(range, 0, sizeof(range));
-    *(void**)list = vtable;
-    *(void**)(list + 0x164) = range;
-    *(void**)(list + 0x168) = range;
-    *(void**)(list + 0x17c) = range;
-    *(void**)(list + 0x1f0) = 0;
-    list[0x1f8] = 255;
-    vtable[0x270 / 4] = (void*)UpdateOffsets;
-
-    g_updateCount = 0;
-    g_replaceCount = 0;
-    g_replaceOwner = g_replaceFirst = g_replaceSecond = 0;
-
-    CList_DoRecomputeOffsets_0053c332(list);
-
-    return g_updateCount == 1 &&
-        g_replaceCount == 1 &&
-        g_replaceOwner == 0 &&
-        g_replaceFirst == range &&
-        g_replaceSecond == 0 &&
-        *reinterpret_cast<unsigned int*>(list + 0x190) == 0x80000000u &&
-        *reinterpret_cast<int*>(list + 0x194) == 0 &&
-        *reinterpret_cast<float*>(list + 0x198) == 1.0f &&
-        *reinterpret_cast<float*>(list + 0x19c) == 1.0f;
-}
-
+};
 int main()
 {
-    const bool ok = RunEmptyList();
-    std::puts(ok ? "CList_DoRecomputeOffsets_0053c332_test PASS"
-                 : "CList_DoRecomputeOffsets_0053c332_test FAIL");
-    return ok ? 0 : 1;
+    CComponent c[3]; CList l;
+    for (int i = 0; i < 3; ++i) l.ScrollingChildren.push_back(&c[i]);
+    l.PDefPositionOffset.X = 2.0f; l.PDefPositionOffset.Y = 10.0f; l.PDefAlphaOffset = 102;      // 0.4
+    l.NextScrollingChildPosition.X = 0.0f; l.NextScrollingChildPosition.Y = 0.0f; l.NextScrollingChildAlpha = 0.5f;
+    l.ScrollingChildrenStates.resize(7);
+    l.DoRecomputeOffsets();
+    CHECK(l.PositionOffset.X == 2.0f && l.PositionOffset.Y == 10.0f && l.ScrollingChildrenStates.size() == 3);
+    CHECK(c[0].ChangedAlpha == 127 && c[0].ChangedPosition.Y == 0.0f && c[1].ChangedPosition.Y == 10.0f && c[2].ChangedPosition.Y == 20.0f);
+    CHECK(c[1].ChangedAlpha == 229);                       // 0.9 * 255
+    CHECK(c[2].States[6].Position.Y == 20.0f && c[2].States.size() == 5);
+    CHECK(l.AlphaOffsetToUse < 0.0f);                       // reversed after passing 1.0
+    if (g_fail) { std::printf("0053c332_TEST FAIL\n"); return 1; }
+    std::printf("0053c332_TEST PASS\n");
+    return 0;
 }

@@ -1,0 +1,60 @@
+address	tag	spelling	flags	grade	what_VC7.1_emitted
+0053c332	base	chunk 774 best: C2DVector& to_use = ToUse; to_use = PDef; to_use.X = -to_use.X; PositionOffset = PDef	/O1 /Oy-	DIFFER(1111v1111) dl=2	fstp [ToUse.X] scheduled before mov [ToUse.Y] (baseline reproduced)
+0053c332	b0	base block via compile-only harness	/O1 /Oy-	compile-only	fld;mov ecx,[eax+4];fchs;fstp;mov [194] (retail swaps last two)
+0053c332	v01	GetDataFromDef 0x0053822B order: ToUse = PDef; PositionOffset = PDef; ToUse.X = -ToUse.X (direct members)	/O1 /Oy-	RELOCATION_MATCH	lea eax,[esi+1F0h] ... fchs; mov [194],ecx; fstp [190] = retail
+0053c332	v02	ref local to_use, copy, PositionOffset copy, then negate	/O1 /Oy-	compile-only	all integer copies first, fld/fchs after both copies
+0053c332	v03	const C2DVector& def = PDef; ToUse = def; PositionOffset = def; negate	/O1 /Oy-	compile-only	fstp sunk below PositionOffset.X store
+0053c332	v04	float& x = to_use.X; x = -x	/O1 /Oy-	compile-only	fstp before Y store (as base)
+0053c332	v05	negate after the alpha line	/O1 /Oy-	compile-only	negate sunk into alpha block
+0053c332	v06	to_use.X = 0.0f - to_use.X	/O1 /Oy-	compile-only	fchs, fstp before Y store
+0053c332	v07	(float)-(double)to_use.X	/O1 /Oy-	compile-only	fchs, fstp before Y store
+0053c332	v08	to_use = C2DVector(-to_use.X, to_use.Y)	/O1 /Oy-	compile-only	temporary on stack (fstp [ebp-2Ch])
+0053c332	v09	C2DVector& off = PositionOffset; off = PDef after negate	/O1 /Oy-	compile-only	fstp before Y store
+0053c332	v01p	v01 with #pragma optimize("s",on)+("y",off), default flags (the CList sibling form) -> final src	none	RELOCATION_MATCH	identical bytes
+00597bf2	base	chunk 774 best (!(map[20] != top()), single tail)	/O1 /Oy-	DIFFER(517v517) dl=14	key 0x14 store hoisted above back(); ref spilled; map refs spilled [ebp-8]; GNS-style tail
+00597bf2	g	top() == map[20] (ref top)	/O1 /Oy-	DIFFER dl=20	map evaluated first
+00597bf2	v1	stack::top() returning T by value, base compare	/O1 /Oy-	DIFFER(511v517) dl=31	value spilled but key hoisted; 27-compare order flips
+00597bf2	v2	by-value top(), top()==map[20]	/O1 /Oy-	DIFFER(511v517) dl=30	cmp ecx,[eax] right; key still hoisted
+00597bf2	v3	by-value top(), map-left in 27/23 compares	/O1 /Oy-	DIFFER(511v517) dl=30	value top always evaluated first
+00597bf2	n1	CComponent* current = top(); if (current == map[20]) (single tail)	/O1 /Oy-	DIFFER dl=33	first compare exact, but this->esi / &map->edi swap
+00597bf2	w3-w5	inline CComponent* GetActiveScreen() (Ego_r name) at the first compare, 3 operand orders	/O1 /Oy-	DIFFER dl=35-36	esi/edi swap + key hoist
+00597bf2	c1-c2	(CComponent*) cast on the right operand	/O1 /Oy-	DIFFER dl=14	cast is a no-op
+00597bf2	w1a1-a3	inline GetScreen(FRONTEND_SCREEN) by value, 3 orders	/O1 /Oy-	DIFFER dl=40-41	value map deref, register swap
+00597bf2	w1r1-r3	inline GetScreen returning CComponent*&, 3 orders	/O1 /Oy-	DIFFER dl=14-20	same as base
+00597bf2	n1b/d/f/g	named local variants: base-form compare, CComponent* const, const CComponent*, CComponent*& root	/O1 /Oy-	DIFFER dl=33-34	esi/edi swap in all
+00597bf2	h1	const CComponent* const& current = top() (bound ref)	/O1 /Oy-	DIFFER dl=11	no swap, key placed right, but deref late
+00597bf2	k1	in-class inline PlayBackSound() for the tail	/O1 /Oy-	DIFFER(452v517)	not inlined (CDefPointer temp)
+00597bf2	k2	CManager* manager = GetInstance() tail	/O1 /Oy-	DIFFER(515v517) dl=21	frame changes
+00597bf2	k3	named CDefPointer<CUIMiscThingsDef> in a block	/O1 /Oy-	DIFFER(515v517) dl=17	frame changes
+00597bf2	k4	PlaySoundW(..., 1L)	/O1 /Oy-	DIFFER dl=11	no change
+00597bf2	s1	main-menu branch plays the sound itself and returns (cross-jumped tail)	/O1 /Oy-	DIFFER dl=6	TAIL FIXED (push ecx before mov edi,eax; add before push 1)
+00597bf2	s2	s1 without else (early return)	/O1 /Oy-	DIFFER dl=6	same as s1
+00597bf2	s1n	s1 + CComponent* current named local	/O1 /Oy-	DIFFER dl=4	first compare + registers exact; only map-ref spills [ebp-8] vs retail [ebp+8]
+00597bf2	s1b/s1g/s1a	s1 + base compare / top()==map / GetActiveScreen	/O1 /Oy-	DIFFER dl=9/15/6	key or value placement wrong
+00597bf2	sc1/sc2	scoped / function-scope current with early return	/O1 /Oy-	DIFFER dl=4	spill slot only
+00597bf2	r1-r3	CComponent*& screen = map[27]; inline GetScreen& in 27/23; CComponent*& root = map[20]	/O1 /Oy-	DIFFER dl=4	spill slot unchanged
+00597bf2	p1	address-taken probe on current (diagnostic)	/O1 /Oy-	DIFFER dl=4	optimised away
+00597bf2	f1	size<=1 test first (force before size>1 code)	/O1 /Oy-	DIFFER dl=29	layout flips; spills unchanged
+00597bf2	m_sc2	sc2 + FABLE_RETAIL_STLP_MAP (visible STLport map operator[] body)	/O1 /Oy-	RELOCATION_MATCH	map-ref spills move to [ebp+8]
+00597bf2	m_base/m_s1/m_n1/m_v2	STLP_MAP with base / s1(h1) / n1 / v2	/O1 /Oy-	DIFFER dl=10/2/29/30	each lever alone is not enough
+00597bf2	m_s1n/m_sc1	STLP_MAP + s1n / sc1	/O1 /Oy-	RELOCATION_MATCH	equivalent spellings
+00597bf2	final	m_sc2 with optimize("s",on)+("y",off), default flags -> final src	none	RELOCATION_MATCH	identical bytes
+009bef80	base	chunk 774 best: left=right=top=bottom=0 then if (x>=0) v = x>w?w:x; box.Initialise at end	none	DIFFER(479v479) dl=138	viewport ptr in ebx, top/bottom in memory
+009bef80	F1	C2DBoxI clipped (members via ternaries) then C2DBoxI box = clipped	none	DIFFER(466v479) dl=174	frame 0x20
+009bef80	G1/G2/G3	box member assigned right after each edge: preset form / chained box.X = left = / ternary per edge	none	DIFFER dl=107/116/74	G3: viewport in ecx, right in arg slot (shape closer)
+009bef80	g_* (13)	ternary/preset/if-chain per edge (TTPT,TTTT,PPPP,TTQT,RRPR,PTPT,TPPT,TTPP,PTPP + Initialise / 4-arg ctor variants)	none	DIFFER dl>=74	TTPT: zero reg + right in arg slot but top/width/left permuted, left coalesced with box.TLX
+009bef80	L1-L3,L_* (15)	GFLimit<long,int,long>(long&, const int&, const long&) (FableWin.pdb ??$GFLimit@JHJ@@) in-place, dims hw/wh/ext, box each/init	none	DIFFER dl>=93	no zero register, frame 0x10
+009bef80	x4 grid (144)	dims {hw,wh,member,C2DExtentsI copy} x 12 edge-form sets {T,P,R,I,J} x box {each,init,ctor}	none	best DIFFER dl=72 (TTPJ each)	left/width correct in TTPJ, right in ebp
+009bef80	x5 grid (36)	same-TU GetRenderTargetDimensions() body inlined (dims copy / per-member / direct)	none	best dl=89	no improvement
+009bef80	x6 grid (192)	all edges declared up front (top=0), 4 declaration orders x dims order x 6 form sets x box mode	none	best dl=125	worse
+009bef80	x7 grid (54)	GFLimitReturn<long> / GFLimit with literal 0, const long zero, long zero	none	best dl=106	memory-through-reference results
+009bef80	x8 grid (48)	permutations of height/width/box/top=0 declaration order	none	best dl=133	declaration order has no effect
+009bef80	x9 h1-h3	box member first then scalar copy; per-axis box assignment	none	DIFFER dl=143/95/104	h2 separates box.TLX from left but wrong regs
+009bef80	x10 grid (96)	box-assignment layouts (6) x edge forms (8) x dims order	none	best dl=74	no new shape
+009bef80	x11 grid (42)	std::min/std::max (STLport, Ego_r ??$min@J@std@@) clamp compositions	none	best dl=62 (shape 44)	std::min loads through a stack temporary address
+009bef80	x12 grid (60)	local copies tlx/tly/brx/bry declared up front + K/Q/I/T forms	none	best dl=56 (KKQK)	frame 0x18 appears; loads hoisted to entry
+009bef80	x13 grid (80)	per-edge local copy right before its clamp, in-place clamp inside else (K form), per/shared/decl temp	none	best DIFFER(475v479) dl=5 (KKKK each)	all but the right edge exact
+009bef80	x13 r1-r4,s1-s6,t1-t2,u2-u7,w1-w5,z1-z6 (29)	right-edge variants: inner ternary, if/else-if, >= order, 0 > brx, ++brx, brx+=1, 1+BRX, const brx, 0L, zero variable, brx computed before box.TLX, CSE`d viewport.BRX+1 compares	none	best DIFFER(477v479) dl=3 (r1)	right edge memory pattern exact; `< 0` always folded into inc flags (jns) unless the compare uses the CSE`d expression, which moves right into ebp
+009bef80	x14 grid (40)	K left x {T,U3,U6,R1,R2} right x {K,Q,P,T} top x {K,J} bottom	none	best dl=3 (KR1KK / KR2KK)	same residue
+009bef80	x14 h1-h5,c1-c5,b1-b5 (15)	inline ClampViewportValue(value,max) helpers, std::min, copy-to-right then clamp, braces/else-if forms	none	best dl=3	fold persists
+009bef80	final	KR1KK (K left/top/bottom, right = brx<0 ? 0 : inner ternary) -> differ/	none	DIFFER(477v479) dl=3	`inc eax ; jns` vs retail `inc eax ; cmp eax,ebp ; jge`

@@ -1,267 +1,129 @@
-// NUISystem::CFrontEndManager::GotoPreviousScreen @ 0x00597BF2
-// VC7.1, x86, /O2 /Oy.
-//
-// PDB ABI:
-//   void __thiscall GotoPreviousScreen(bool)
-//
-// This preserves the complete retail dispatcher, including protected root
-// key 0x14, forced key 0x1a fallback, key 0x1b/key 7 special navigation,
-// state-6 and ownership transfer of the outgoing component, stack pop and
-// +0x98/+0x9c publication, key 0x17 virtual-keyboard ownership, and back
-// sound +0x19c with intrusive release.
-
-extern "C" void** __fastcall
-FableFrontEndGotoPreviousStackTop(void* stack, void*);
-extern "C" long** __fastcall
-FableFrontEndGotoPreviousResolveUsedKey(
-    void* usedKeys,
-    void*,
-    const unsigned long* key);
-extern "C" void* __cdecl FableFrontEndGotoPreviousGetProfileManager();
-extern "C" void __fastcall
-FableFrontEndGotoPreviousLoadProfileManager(void* profileManager, void*);
-extern "C" void __fastcall
-FableFrontEndGotoPreviousSynchronizeGame(void* game, void*);
-extern "C" void __fastcall
-FableFrontEndGotoPreviousFinishDynamicTextures(
-    void* manager,
-    void*,
-    int immediate);
-extern "C" unsigned long __fastcall
-FableFrontEndGotoPreviousStackSize(
-    void* stackEnd,
-    void*,
-    void* stack);
-extern "C" unsigned char __fastcall
-FableFrontEndGotoPreviousIterateElements(
-    void* manager,
-    void*,
-    void* component);
-extern "C" void __fastcall
-FableFrontEndGotoPreviousSpecific(
-    void* manager,
-    void*,
-    void* component);
-extern "C" void __fastcall
-FableFrontEndGotoPreviousStackPop(void* stack, void*);
-extern "C" void* __cdecl FableFrontEndGotoPreviousGetManager();
-extern "C" void* __cdecl
-FableFrontEndGotoPreviousNew(unsigned long bytes);
-extern "C" void* __fastcall
-FableFrontEndGotoPreviousKeyboardConstruct(
-    void* storage,
-    void*,
-    void* component);
-extern "C" void __fastcall
-FableFrontEndGotoPreviousKeyboardInitialize(void* keyboard, void*);
-extern "C" void __fastcall
-FableFrontEndGotoPreviousNext(
-    void* manager,
-    void*,
-    void* component,
-    unsigned char transition);
-
-extern "C" void* FableFrontEndGotoPreviousGame;
-
-extern "C" __declspec(naked) void __fastcall
-CFrontEndManager_GotoPreviousScreen_00597bf2(
-    void*,
-    void*,
-    unsigned char)
+// NUISystem::CFrontEndManager::GotoPreviousScreen(bool force) -- leave the current screen for the one below it on the stack (screens 20/26/27/7/23 special-cased) and play the back sound
+// Leaf: ?GotoPreviousScreen@CFrontEndManager@NUISystem@@QAEX_N@Z
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00597BF2, 517 bytes, `ret 4`; unaligned entry after GotoProfileMenu 0x00597B20 (ends 0x00597BF1 with
+//   leave/ret), next 0x00597DF7: the size-optimised frame-pointer CFrontEndManager TU (push 7 / pop ebx, pop ecx after operator new, leave)
+//   -> optimize("s") + optimize("y", off), as the landed siblings (equivalently /O1 /Oy-, which also matches).
+// Callees: deque<CComponent*>::back 0x0059B039, map<FRONTEND_SCREEN,CComponent*>::operator[] 0x0059B5D7, CUserProfileManager::Get 0x0040D2A0,
+//   CUserProfileManager::Load 0x0040D350, CNewFrontendGameComponent::ResetAttractModeTimer 0x0042DBEE (Ego_r.pdb), CFrontEndManager::
+//   CloseVirtualKeyboard(bool) 0x00594FA9 (Ego_r.pdb), _Deque_iterator_base::_M_subtract 0x0059A8F3, IsScreenOnStack 0x005959AB,
+//   GotoSpecificPreviousScreen 0x0059686D, GotoNextScreen 0x00596763, CComponent::ChangeState(unsigned long) (slot 48), CManager::
+//   RemoveObserver (CObservable slot 5), deque::pop_back 0x0059AEE5, CVirtualKeyboard(CComponent*) 0x00851700, CVirtualKeyboard::Initialize
+//   0x00851770, CManager::GetMiscThingsDef (slot 42) and PlaySoundW(CCharString&, long) (slot 40) with CUIMiscThingsDef::SoundBack +0x19C.
+// Shape (chunk 776; three levers, each needed):
+//   - FABLE_RETAIL_STLP_MAP: the STLport map operator[] body is visible (retail instantiates it in this TU at 0x0059B5D7), so VC7.1 knows the
+//     key temporary is only read, and the spilled map references then share the dead `force` / key slot [ebp+8] instead of the
+//     top-screen local's [ebp-8].
+//   - `current` is a named local read before m_mapScreens[20] (retail keeps the value at [ebp-8] and compares `cmp ecx,[eax]`).
+//   - early return: the main-menu branch plays the back sound itself and returns; VC7.1 cross-jumps it into the shared tail, whose
+//     scheduling then matches retail (`push ecx` before `mov edi,eax`, `add eax,19Ch` before `push 1`). One tail after an if/else gives the
+//     GotoNextScreen 0x00596763 order instead.
+#pragma optimize("s", on)
+#pragma optimize("y", off)
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_C2DVECTOR
+#include "engine/CDefPointer.h"
+#include "engine/NUISystem_CManager.h"
+#include "engine/NUISystem_CUIMiscThingsDef.h"
+namespace std {
+template <class T> struct _Deque_iterator_base {
+    T*  _M_cur;
+    T*  _M_first;
+    T*  _M_last;
+    T** _M_node;
+    int _M_subtract(const _Deque_iterator_base& other) const;   // 0x0059A8F3 for CComponent*
+};
+template <class T, class A = allocator<T> > class deque {
+public:
+    _Deque_iterator_base<T> _M_start;                    // +0x00
+    _Deque_iterator_base<T> _M_finish;                   // +0x10
+    T**                     _M_map;
+    unsigned int            _M_map_size;
+    unsigned int size() const { return _M_finish._M_subtract(_M_start); }
+    T& back();                                           // 0x0059B039
+    void pop_back();                                     // 0x0059AEE5
+};
+template <class T, class C = deque<T> > class stack {
+public:
+    C c;
+    unsigned int size() const { return c.size(); }
+    T& top() { return c.back(); }
+    void pop() { c.pop_back(); }
+};
+}
+enum FRONTEND_SCREEN { FRONTEND_SCREEN_7 = 7, FRONTEND_SCREEN_20 = 20, FRONTEND_SCREEN_23 = 23, FRONTEND_SCREEN_26 = 26, FRONTEND_SCREEN_27 = 27 };
+class CUserProfileManager {
+public:
+    unsigned char _pad00[0x0c];
+    bool UseNewProfileValues;                            // +0x0C
+    void Load();                                         // 0x0040D350
+    static CUserProfileManager& __fastcall Get();        // 0x0040D2A0
+};
+class CNewFrontendGameComponent {
+public:
+    void ResetAttractModeTimer();                        // 0x0042DBEE
+    static CNewFrontendGameComponent* m_pNewFrontendGameComponent;   // 0x013B871C
+};
+class CVirtualKeyboard {
+public:
+    unsigned char _pad00[0x10];
+    CVirtualKeyboard(NUISystem::CComponent* screen);     // 0x00851700
+    long Initialize();                                   // 0x00851770
+};
+namespace NUISystem {
+class CFrontEndManager {
+public:
+    unsigned char                          _pad00[0x20];
+    std::stack<CComponent*>                m_stackScreens;   // +0x20
+    unsigned char                          _pad48[0x54 - 0x48];
+    std::map<FRONTEND_SCREEN, CComponent*> m_mapScreens;     // +0x54
+    CVirtualKeyboard*                      m_pVirtualKeyboard; // +0x60
+    unsigned char                          _pad64[0x98 - 0x64];
+    CComponent*                            PScreenToDeactivate;   // +0x98
+    CComponent*                            PScreenToActivate;     // +0x9c
+    void CloseVirtualKeyboard(bool goBack);              // 0x00594FA9
+    bool IsScreenOnStack(CComponent* screen) const;      // 0x005959AB
+    void GotoNextScreen(CComponent* screen, bool flag);  // 0x00596763
+    void GotoSpecificPreviousScreen(CComponent* screen); // 0x0059686D
+    void GotoPreviousScreen(bool force);
+};
+void CFrontEndManager::GotoPreviousScreen(bool force)
 {
-    __asm
-    {
-        push ebp
-        mov ebp, esp
-        push ecx
-        push ecx
-        push ebx
-        push esi
-        push edi
-        mov edi, ecx
-        lea ebx, [edi + 20h]
-        mov ecx, ebx
-        call FableFrontEndGotoPreviousStackTop
-        mov eax, dword ptr [eax]
-        mov dword ptr [ebp - 8], eax
-        lea eax, [ebp - 4]
-        lea esi, [edi + 54h]
-        push eax
-        mov ecx, esi
-        mov dword ptr [ebp - 4], 14h
-        call FableFrontEndGotoPreviousResolveUsedKey
-        mov ecx, dword ptr [ebp - 8]
-        cmp ecx, dword ptr [eax]
-        jne normalBack
-        cmp byte ptr [ebp + 8], 0
-        je done
-        jmp forcedFallback
-
-normalBack:
-        call FableFrontEndGotoPreviousGetProfileManager
-        mov ecx, eax
-        call FableFrontEndGotoPreviousLoadProfileManager
-        mov ecx, dword ptr [FableFrontEndGotoPreviousGame]
-        call FableFrontEndGotoPreviousSynchronizeGame
-        push 0
-        mov ecx, edi
-        call FableFrontEndGotoPreviousFinishDynamicTextures
-        push ebx
-        lea ecx, [ebx + 10h]
-        call FableFrontEndGotoPreviousStackSize
-        cmp eax, 1
-        jbe shallowStack
-        lea eax, [ebp + 8]
-        push eax
-        mov ecx, esi
-        mov dword ptr [ebp + 8], 1bh
-        call FableFrontEndGotoPreviousResolveUsedKey
-        mov ecx, ebx
-        mov dword ptr [ebp + 8], eax
-        call FableFrontEndGotoPreviousStackTop
-        mov eax, dword ptr [eax]
-        mov ecx, dword ptr [ebp + 8]
-        cmp eax, dword ptr [ecx]
-        jne popCurrent
-        push 7
-        pop ebx
-        lea eax, [ebp + 8]
-        push eax
-        mov ecx, esi
-        mov dword ptr [ebp + 8], ebx
-        call FableFrontEndGotoPreviousResolveUsedKey
-        push dword ptr [eax]
-        mov ecx, edi
-        call FableFrontEndGotoPreviousIterateElements
-        test al, al
-        lea eax, [ebp + 8]
-        mov ecx, esi
-        push eax
-        je specialGotoNext
-        mov dword ptr [ebp + 8], ebx
-        call FableFrontEndGotoPreviousResolveUsedKey
-        push dword ptr [eax]
-        mov ecx, edi
-        call FableFrontEndGotoPreviousSpecific
-        jmp playBackSound
-
-specialGotoNext:
-        mov dword ptr [ebp + 8], 14h
-        call FableFrontEndGotoPreviousResolveUsedKey
-        push 1
-        jmp callNext
-
-popCurrent:
-        mov ecx, ebx
-        call FableFrontEndGotoPreviousStackTop
-        mov esi, dword ptr [eax]
-        mov eax, dword ptr [esi]
-        push 6
-        mov ecx, esi
-        call dword ptr [eax + 0c0h]
-        call FableFrontEndGotoPreviousGetManager
-        mov edx, dword ptr [eax]
-        lea ecx, [esi + 4]
-        push ecx
-        mov ecx, eax
-        call dword ptr [edx + 14h]
-        mov ecx, ebx
-        call FableFrontEndGotoPreviousStackPop
-        mov ecx, ebx
-        call FableFrontEndGotoPreviousStackTop
-        mov eax, dword ptr [eax]
-        mov dword ptr [edi + 9ch], eax
-        mov dword ptr [edi + 98h], esi
-        lea eax, [ebp + 8]
-        lea esi, [edi + 54h]
-        push eax
-        mov ecx, esi
-        mov dword ptr [ebp + 8], 17h
-        call FableFrontEndGotoPreviousResolveUsedKey
-        mov ecx, ebx
-        mov dword ptr [ebp + 8], eax
-        call FableFrontEndGotoPreviousStackTop
-        mov eax, dword ptr [eax]
-        mov ecx, dword ptr [ebp + 8]
-        cmp eax, dword ptr [ecx]
-        jne playBackSound
-        call FableFrontEndGotoPreviousGetProfileManager
-        push 10h
-        mov byte ptr [eax + 0ch], 1
-        call FableFrontEndGotoPreviousNew
-        mov ebx, eax
-        test ebx, ebx
-        pop ecx
-        je keyboardNull
-        lea eax, [ebp + 8]
-        push eax
-        mov ecx, esi
-        mov dword ptr [ebp + 8], 17h
-        call FableFrontEndGotoPreviousResolveUsedKey
-        push dword ptr [eax]
-        mov ecx, ebx
-        call FableFrontEndGotoPreviousKeyboardConstruct
-        jmp keyboardReady
-
-keyboardNull:
-        xor eax, eax
-
-keyboardReady:
-        mov ecx, eax
-        mov dword ptr [edi + 60h], eax
-        call FableFrontEndGotoPreviousKeyboardInitialize
-        jmp playBackSound
-
-shallowStack:
-        cmp byte ptr [ebp + 8], 0
-        je playBackSound
-
-forcedFallback:
-        lea eax, [ebp + 8]
-        mov ecx, esi
-        push eax
-        mov dword ptr [ebp + 8], 1ah
-        call FableFrontEndGotoPreviousResolveUsedKey
-        push 0
-
-callNext:
-        push dword ptr [eax]
-        mov ecx, edi
-        call FableFrontEndGotoPreviousNext
-
-playBackSound:
-        call FableFrontEndGotoPreviousGetManager
-        mov esi, eax
-        call FableFrontEndGotoPreviousGetManager
-        lea ecx, [ebp + 8]
-        push ecx
-        mov edi, eax
-        mov eax, dword ptr [esi]
-        mov ecx, esi
-        call dword ptr [eax + 0a8h]
-        mov eax, dword ptr [eax]
-        mov edx, dword ptr [edi]
-        add eax, 19ch
-        push 1
-        mov ecx, edi
-        push eax
-        call dword ptr [edx + 0a0h]
-        mov eax, dword ptr [ebp + 8]
-        test eax, eax
-        je done
-        mov ecx, eax
-        add eax, 4
-        dec dword ptr [eax]
-        cmp dword ptr [eax], 0
-        jne done
-        mov eax, dword ptr [ecx]
-        call dword ptr [eax + 4]
-
-done:
-        pop edi
-        pop esi
-        pop ebx
-        leave
-        ret 4
+    CComponent* current = m_stackScreens.top();
+    if (current == m_mapScreens[FRONTEND_SCREEN_20]) {
+        if (!force)
+            return;
+        GotoNextScreen(m_mapScreens[FRONTEND_SCREEN_26], false);
+        CManager::GetInstance()->PlaySoundW(CManager::GetInstance()->GetMiscThingsDef()->SoundBack, 1);
+        return;
     }
+    CUserProfileManager::Get().Load();
+    CNewFrontendGameComponent::m_pNewFrontendGameComponent->ResetAttractModeTimer();
+    CloseVirtualKeyboard(false);
+    if (m_stackScreens.size() > 1) {
+        if (m_stackScreens.top() == m_mapScreens[FRONTEND_SCREEN_27]) {
+            if (IsScreenOnStack(m_mapScreens[FRONTEND_SCREEN_7]))
+                GotoSpecificPreviousScreen(m_mapScreens[FRONTEND_SCREEN_7]);
+            else
+                GotoNextScreen(m_mapScreens[FRONTEND_SCREEN_20], true);
+        } else {
+            CComponent* leaving = m_stackScreens.top();
+            leaving->ChangeState(6);
+            CManager::GetInstance()->RemoveObserver(leaving);
+            m_stackScreens.pop();
+            PScreenToActivate = m_stackScreens.top();
+            PScreenToDeactivate = leaving;
+            if (m_stackScreens.top() == m_mapScreens[FRONTEND_SCREEN_23]) {
+                CUserProfileManager::Get().UseNewProfileValues = true;
+                m_pVirtualKeyboard = new CVirtualKeyboard(m_mapScreens[FRONTEND_SCREEN_23]);
+                m_pVirtualKeyboard->Initialize();
+            }
+        }
+    } else if (force)
+        GotoNextScreen(m_mapScreens[FRONTEND_SCREEN_26], false);
+    CManager::GetInstance()->PlaySoundW(CManager::GetInstance()->GetMiscThingsDef()->SoundBack, 1);
+}
 }

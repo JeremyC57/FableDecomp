@@ -41,8 +41,7 @@ $catalog = @(
     },
     [pscustomobject]@{
         Address = '0053c332'; Module = 'CList'; Source = '00/53/CList_DoRecomputeOffsets_0053c332.cpp'
-        TestSource = '00/53/CList_DoRecomputeOffsets_0053c332_test.cpp'; PassPattern = 'CList_DoRecomputeOffsets_0053c332_test PASS'
-        Grade = 'asm_bake'
+        TestSource = '00/53/CList_DoRecomputeOffsets_0053c332_test.cpp'; PassPattern = '0053c332_TEST PASS'
     },
     [pscustomobject]@{
         Address = '0042df9e'; Module = 'CNewFrontendGameComponent'; Source = '00/42/CNewFrontendGameComponent_Draw_0042df9e.cpp'
@@ -6979,8 +6978,7 @@ $catalog = @(
         Module = 'CFrontEndManager'
         Source = '00/59/CFrontEndManager_GotoPreviousScreen_00597bf2.cpp'
         TestSource = '00/59/CFrontEndManager_GotoPreviousScreen_00597bf2_test.cpp'
-        PassPattern = 'FSE2_00597bf2_TEST PASS'
-        Grade = 'asm_bake'
+        PassPattern = '00597bf2_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008912a0'

@@ -1,0 +1,13 @@
+addr       parity           behav  name
+0053c332   RELOCATION_MATCH PASS   DoRecomputeOffsets
+00597bf2   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+00597bf2   WARN SHARED_HEADER_AVAILABLE CVirtualKeyboard
+00597bf2   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+00597bf2   WARN RELOC_NAME: ?back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@XZ -> 0059b039 labelled 'CScreenStack::Top'
+00597bf2   WARN RELOC_NAME: ?_M_subtract@?$_Deque_iterator_base@PAVCComponent@NUISystem@@@std@@QBEHABU12@@Z -> 0059a8f3 labelled 'NThingMap::CThingMapManager::GetMemoryFootprint'
+00597bf2   RELOCATION_MATCH PASS   GotoPreviousScreen
+
+WINS: 2
+  0053c332 RELOCATION_MATCH CList::?DoRecomputeOffsets@CList@NUISystem@@MAEXXZ
+  00597bf2 RELOCATION_MATCH CFrontEndManager::?GotoPreviousScreen@CFrontEndManager@NUISystem@@QAEX_N@Z
+elapsed 8s rc=0

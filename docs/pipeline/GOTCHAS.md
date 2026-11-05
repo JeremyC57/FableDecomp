@@ -2051,3 +2051,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `fnstcw` / `and byte [cw+1],0F3h` / `fldcw` is GFFPUSetRoundingNearest: use engine/GFFPUSetRoundingNearest.h.
 - vland skips an address that already has a landed row unless given `--recheck-landed` (bake replacements).
 - An /O1 row needs `CompilerFlags = '/O2 /Oy /W3 /O1'`, not `'/O1'`: recheck.py and mkpay append `/Oy-` when the flags lack `/Oy`, so a plain `'/O1'` regrades with a frame pointer (0x004167A7: DIFFER 36v33).
+- Copy two members from one source, then negate one: negate after the SECOND copy (GetDataFromDef 0x0053822B order) to keep retail's store order (0x0053C332).
+- A tail written once after an if/else gets one schedule; repeating it inside an early-return branch (VC7.1 merges the copies) gives the other (0x00597BF2).
+- FABLE_RETAIL_STLP_MAP moves spilled map references from [ebp-8] into a dead parameter slot at [ebp+8].
+- VC7.1 folds `x < 0` right after `x = y + 1` into the inc flags (`jns`). No plain C++ found yet gives retail's `cmp eax,ebp` against a zero register (0x009BEF80).

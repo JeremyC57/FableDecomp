@@ -1,0 +1,6 @@
+address	name
+0x0053C332	NUISystem::CList::DoRecomputeOffsets
+0x00597BF2	NUISystem::CFrontEndManager::GotoPreviousScreen
+0x009BEF80	CDisplayManager::SetViewport
+0x0042DBEE	CNewFrontendGameComponent::ResetAttractModeTimer
+0x00594FA9	NUISystem::CFrontEndManager::CloseVirtualKeyboard
