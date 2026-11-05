@@ -1,0 +1,1432 @@
+class	local_rows	includers	example_rows
+C3DBoundingBoxSSE	0	7	
+C3DCoordIStrayMaxps	0	1	
+C3DMeshFilePartitionChunk	0	3	
+CBrushLibraryDialog	0	0	
+CDebugManager	0	0	
+CEngineLightingSSE	0	2	
+CGuiVarTransferFloat	0	0	
+CMatrix4x4AlignedSSE	0	1	
+CMatrix4x4InterpolateSSE	0	1	
+CParticleDistanceConstraint	0	1	
+CParticleMinMaxDistanceConstraint	0	1	
+CParticleProgramSSE	0	1	
+CParticleSimulationSSE	0	0	
+CRegionDialog	0	1	
+CSalIIRFilter	0	2	
+CSalOpenAL	0	1	
+CSalOpenALReverb	0	1	
+CSalOutputKS	0	1	
+CScopedLockFlagBool	0	1	
+CScopedVertexShaderConstantLayout	0	2	
+CStateBlockFunctionBase	0	0	
+CStateBlockFunctionSold	0	0	
+CStreamingGlyphAdjustment	0	1	
+CThingTypeInit	0	0	
+CodaEnvironment	0	0	
+CodaMemory	0	4	
+ConfigDetection	0	0	
+DSound3D	0	1	
+Direct3D9Types	0	2	
+EAX40	0	0	
+EAXNativeTypes	0	0	
+EActionRegisteredType	0	0	
+EAnimationType	0	0	
+EBoneType	0	0	
+ECombatAbilityDataType	0	0	
+ECombatAbilityInterfaceType	0	0	
+ECombatCreatureType	0	0	
+ECombatStrikeRecoilStyle	0	0	
+ECutsceneBehaviour	0	2	
+EHeroAbility	0	10	
+EHeroExperienceStatCategory	0	0	
+EMusicSetType	0	0	
+EOpinionDeedType	0	5	
+EPlayerMode	0	0	
+EPrimitiveType	0	0	
+EScriptingStateGroups	0	2	
+ESurfaceMultisampleType	0	0	
+ESurfacePool	0	1	
+ETCInterfaceType	0	14	
+ETextGroupSelectionMethod	0	2	
+EUnsheatheWeaponType	0	0	
+EVertexType	0	0	
+ErrorDialog	0	1	
+GFFPUSetRoundingNearest	0	1	
+GFFastFloatToLong	0	6	
+GFFloatToLongCeil	0	27	
+GFFloatToLongFloor	0	14	
+GFFloatToLongNear	0	57	
+GFGetCycleCount	0	3	
+GFGetInterpolatedColourMMX	0	1	
+GFInitVectorMathCPUID	0	1	
+GFPackFloat	0	1	
+GFROR13	0	1	
+ImeUi	0	3	
+ImeUiInputContext	0	1	
+KernelStreaming	0	0	
+LHHttpHeaders_bodies	0	2	
+LHNetworkTypes	0	0	
+LHStringFunctions_bodies	0	1	
+NBBBMaths_CCylinder	0	1	
+NCameraModes_CBase	0	2	
+NCameraModes_CPhysicsLeaf	0	2	
+NCameraModes_CTools	0	2	
+NCreatureActionEvents	0	3	
+NCreatureMode	0	3	
+NEntityEvents_CEventHitBase	0	2	
+NGraphicAppearance_CTCGraphicAppearance	0	6	
+NHeroInformationScreens_CBase	0	0	
+NHeroInformationScreens_CManager	0	0	
+NHitLocations_CHitLocation	0	1	
+NInventory_CTCInventoryBase	0	3	
+NParticleEngine_CParticleEmitterDatabase	0	1	
+NPlayerGui_CDrawBase	0	0	
+NPlayerGui_CDrawNPCName	0	1	
+NScreenEffect_CScreenEffectPriorityStack	0	0	
+NScript_CQR_EscortTraderScript	0	1	
+NScript_CQ_SecretPassageScript	0	1	
+NScript_CQ_TraderEscortScript	0	1	
+NScript_CQ_WaspBossScript	0	3	
+NScript_CV_ChickenKickingScript	0	3	
+NScript_CV_FisticuffsClubScript	0	3	
+NScript_CV_HeroDuelScript	0	5	
+NTCScriptedControl_CActionPlayAnimation	0	1	
+NTCScriptedControl_CActionPlayCombatAnimation	0	1	
+NTCScriptedControl_CActionSummonerLightningAttackTarget	0	1	
+NTCScriptedControl_CActionTurnToFacePosition	0	0	
+NTargeting	0	1	
+NThingManager_CEntityRuntimePersistence	0	5	
+NThingMap_CThingMap	0	1	
+NThingShot_CTCShotDefinitionBase	0	1	
+NUISystem_CActionParamFloat	0	2	
+NUISystem_CActionParamSLONG	0	5	
+NUISystem_CChangingStateComponent	0	3	
+NUISystem_CClickable	0	11	
+NUISystem_CComponent	0	4	
+NUISystem_CComponentContainer	0	2	
+NUISystem_CDeletion	0	4	
+NUISystem_CDynamicList	0	2	
+NUISystem_CEditBox	0	4	
+NUISystem_CFrontEndButton	0	2	
+NUISystem_CFrontEndList	0	3	
+NUISystem_CFrontEndScreen	0	2	
+NUISystem_CKeyRedefiner	0	3	
+NUISystem_CList	0	8	
+NUISystem_CListArrow	0	2	
+NUISystem_CManager	0	29	
+NUISystem_CMenuEntry	0	2	
+NUISystem_CMesh	0	2	
+NUISystem_CMorphingSprite	0	2	
+NUISystem_CMouseCursor	0	2	
+NUISystem_CObservable	0	0	
+NUISystem_CParticleEffect	0	2	
+NUISystem_CRedefinerList	0	2	
+NUISystem_CScrollBar	0	4	
+NUISystem_CScrollBarOutside	0	2	
+NUISystem_CScrollableList	0	2	
+NUISystem_CScrollingComponent	0	2	
+NUISystem_CScrollingViewport	0	3	
+NUISystem_CSlider	0	2	
+NUISystem_CSpellContainer	0	2	
+NUISystem_CSprite	0	4	
+NUISystem_CSwappingStateComponent	0	2	
+NUISystem_CTable	0	2	
+NUISystem_CTextContainer	0	2	
+NUISystem_CTextSlider	0	3	
+NUISystem_CUIDef	0	11	
+NUISystem_CUIMiscThingsDef	0	7	
+NUISystem_CUIScreenUnitConverter	0	1	
+NUISystem_CUIState	0	1	
+NUISystem_CUIStateDef	0	2	
+NUISystem_CViewport	0	4	
+NUISystem_CYesNo	0	0	
+NUISystem_CZoomingComponent	0	2	
+NUISystem_EActionType	0	0	
+NUISystem_enums	0	0	
+NVectorMathSSE	0	5	
+RenderStateEnums	0	0	
+TConstraintType	0	1	
+TRet	0	1	
+TRetVoid	0	40	
+Vorbis	0	10	
+Win32Types	0	0	
+fable_nscript_forward	0	23	
+fable_script_animation_defaults	0	5	
+fable_script_cutscene	0	6	
+fable_script_def_global	0	5	
+fable_script_distance	0	7	
+fable_script_fade	0	2	
+fable_script_text	0	10	
+CClassTypeInit	1	0	00a36f90
+CCompressedMemoryDataInputStream	1	6	00453b15
+CEnginePrimitiveWeatherMask	1	0	0049d000
+CIndexedArray	1	0	0098db20
+CMessageEventFilter_CanBeHeard	1	1	0090edc0
+CReactionFrequencyTraits_ControlledCount	1	5	006ff930
+CReactionMatch_AsymmetricPyramid	1	8	006782b0
+CReactionMatch_MRPyramid	1	5	006782b0
+CSBCAgents	1	0	00a1c700
+CSBGoal	1	1	00a1c700
+CSBIAgents	1	0	00a1c700
+CSpawnedFunc	1	575	00e95f10
+CStaticMapBankStateBlock	1	0	00b3ff70
+CStreamingGlyphData	1	1	009a14e0
+CUVBox	1	1	009dc870
+CWADBankStateBlock	1	0	00a3a2e0
+C3DMeshFileXBoundingBoxChunk	2	4	00aa7140 00aa7160
+C3DMeshFileXTextureIndexChunk	2	3	00aa7010 00aa7030
+C3DMeshPartitionBuilderElement	2	1	00ac2a80 00ac39c0
+CAIStateGroup_BalverineJumpAtFleeingEnemy	2	4	008fde65 0090054e
+CAIStateGroup_ChickenBeg	2	2	008fd7b4 008fd7c7
+CAIStateGroup_LightWorkCandle	2	1	008fdc56 0090004b
+CAIStateGroup_MinionKidAnnoy	2	1	008fd420 008feed3
+CAIStateGroup_PerformAction	2	0	008fef8b 009352c0
+CAIStateGroup_TestTestTest	2	1	008fe288 008fe29b
+CChunkedFileRawDataChunk	2	6	00aa7830 00aa8d80
+CCombatSequenceGeneric	2	1	006ec4f0 006f1750
+CCreatureAction_Hammer	2	0	0084c850 0084c880
+CCreatureAction_PlayAnimationFromIndex	2	0	0084b4a0 0084c460
+CDefaultEngineMemoryInit	2	1	00b8fbf0 00b8fc40
+CEditWorldMap	2	1	0051e580 006c20b0
+CEmptyData	2	0	00cd4ac0 00ef5070
+CEngineInternalPrimitiveParticleMesh	2	1	00bc25b0 00bc3410
+CEngineInternalPrimitiveStaticMeshFromFile	2	1	00ba7820 00ba8210
+CEnginePrimitive2DAnimatingMesh	2	0	00550a70 005bc1b0
+CEnginePrimitive2DStaticMesh	2	0	00550940 00b9dfc0
+CEnginePrimitiveLight	2	0	00642000 00b453d0
+CEnginePrimitiveOcclusionGroupManager	2	2	00b38870 00bacc50
+CEnginePrimitiveText	2	1	004c3120 0071ab20
+CFileFormatBrush	2	1	00825590 00825d40
+CInputProcessControlFreeCamera	2	1	00488020 0048b720
+CInputProcessDead	2	1	00488020 0048b460
+CInputProcessTargetLockRightStickTargetSelect	2	2	00488020 0048b4c0
+CInputTypeMouseWheelMovementDownEvent	2	4	0066f590 0066f970
+CInputTypeMouseWheelMovementUpEvent	2	4	0066f510 0066f950
+CInputTypeXboxPadRightStickEvent	2	3	0066f360 0066f390
+CLandscapePatchTesselator	2	1	00b6c990 00b6c9b0
+CPlayerModeInfo	2	0	00633bf0 00633cb0
+CReactionFrequencyTraits_LinearTime	2	4	006fed00 006ff930
+CReactionFrequencyTraits_PeriodicFrequency	2	4	006fed30 006ff930
+CReactionMatch_SecondaryAxisCentredMRShifted	2	3	006775b0 006782b0
+CReactionMatch_SecondaryAxisMRShifted	2	3	00677540 006782b0
+CScopedShadersEnable	2	2	009d8ad0 009d8b40
+C3DMeshFileXBoundingSphereChunk	3	4	00aa7100 00aa7120 00b1ae00
+C3DMeshFileXLoader	3	1	00a27030 00a27350 00aa7440
+C3DMeshFileXMappingInfoChunk	3	3	00aa52b0 00aa7050 00aa7070
+C3DMeshFileXVertexDataChunk	3	3	00aa58c0 00aa59c0 00aa7250
+CAIStateGroup_AvoidRegionExit	3	2	008fe8dd 008fe8f0 0092bc60
+CAIStateGroup_BalverineCornered	3	5	008fde52 009004e0 0094f640
+CAIStateGroup_BanditGossip	3	1	008fd3e5 008fd3f8 0090e590
+CAIStateGroup_BanditKingThrowWeapons	3	2	008fe405 009012c2 00961550
+CAIStateGroup_CreatureFindCover	3	2	008fd77c 009031de 0097cb10
+CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets	3	2	008fe2d3 00900f5e 0095e260
+CAIStateGroup_EarthTroll	3	2	008fddbd 009003a0 0094e6b0
+CAIStateGroup_EatAtHome	3	2	008fe5ca 00902c55 0096d200
+CAIStateGroup_HoverAttackUnlessTargetIsFleeing	3	3	008fe16b 00900c76 00900c8f
+CAIStateGroup_HoverWander	3	1	008fe13a 00900c01 00900c19
+CAIStateGroup_MinionGuardReactToBribe	3	3	008fd369 008fed51 00933470
+CAIStateGroup_MinionLeaveRegion	3	2	008fe1ef 008fe202 0091e4b0
+CAIStateGroup_RockTroll	3	2	008fdd97 009025ee 0094dac0
+CAIStateGroup_ServeFoodAtHome	3	3	008fe603 00901a18 00923aa0
+CAIStateGroup_ServeFoodAtTavern	3	3	008fe649 008fe65c 00923b00
+CAIStateGroup_StandStill	3	1	008fde08 008fde1b 0091bcf0
+CAIStateGroup_WorkSawingWood	3	4	008fda8f 008ffd84 00944730
+CAnimComponentCombatRecoil	3	2	005dbc40 005dc730 005df710
+CAnimComponentFollowingOnAnim	3	1	005db4c0 005df7f0 00867fe0
+CAnimComponentSetCreatureMode	3	1	005dbe40 005dc9b0 005df840
+CBusyResourceManager	3	0	009c01c0 00a618d0 00a61b10
+CCombatAbilityBlockCounterAttackDef	3	3	0044c535 0044fd16 00738430
+CCombatAbilityBlockUnarmedAttackDef	3	1	00453e6a 00454a00 007380d0
+CCombatAbilityProjectileAttackData	3	0	0044c4d5 0044fe12 00453f93
+CCombatAbilityStrafingData	3	0	0044c4ab 0044fdd3 00453f63
+CCombatAction_GenericResponseToExplosion	3	1	0066a5b0 0066a7b0 0066a7e0
+CCombatSequence2StrikeCombo	3	1	008b4f50 008b6290 0090a400
+CCombatSequenceUnblockableFacing	3	1	008b4fd0 008b62d0 0090a4c0
+CCombatSequenceWhisperAdvance	3	1	008b49e0 008b5fd0 00909ba0
+CCombatSequenceWhisperAttackBigCombo	3	1	008b4ae0 008b6050 00909e30
+CCombatSequenceWhisperBoast	3	1	008b4ce0 008b6150 0090a0b0
+CCombatSequenceWhisperIdles	3	1	008b4e50 008b6210 0090a150
+CCombatSequenceWhisperLunge	3	1	008b4960 008b5f90 00908e00
+CCombatSequenceWhisperSortYourselfOut	3	1	008b4d50 008b6190 00908fe0
+CCombatSequenceWhisperStrafeAround	3	1	008b4dd0 008b61d0 00908f20
+CCombatSequenceWhisperStrikeStrafeBack	3	1	008b4be0 008b60d0 00909fd0
+CCombatSequenceWhisperTooCloseLeapBack	3	1	008b4c60 008b6110 00908e90
+CCombatSequence_BanditAdvanceFar	3	1	008b36d0 008b5650 009061e0
+CCombatSequence_BanditAttackSide	3	1	008b3850 008b5710 009062a0
+CCombatSequence_BanditKingAdvance	3	1	008b3b40 008b5890 00906db0
+CCombatSequence_FodderSecondaryAttack	3	1	008b3dc0 008b59d0 00907200
+CCombatSequence_GenericLeader	3	1	008b3570 008b5590 00906150
+CCombatSequence_GenericRangedAttack	3	1	008b3500 008b5550 00906050
+CCombatSequence_KingScorpionTailPlunge	3	0	008b3f50 008b3fb0 008b5a90
+CCombatSequence_ScorpionLungeAttack	3	3	008b3f10 008b5a50 00907010
+CCombatSequence_TrollBurrowPursue	3	1	008b4230 008b5bd0 00907ae0
+CCombatSequence_TrollDoubleSwipeNonMelee	3	1	008b40b0 008b5b10 00907840
+CCombatSequence_TrollOpeningGroundPound	3	2	008b4140 008b5b50 00907930
+CCombatSequence_TrollRockPursue	3	1	008b4310 008b5c50 00907be0
+CCombatSequence_VillagerBackOff	3	1	008b4660 008b5e10 00908810
+CCombatSequence_VillagerComboUnblockable	3	2	008b4860 008b5f10 00908b50
+CCreatureActionHeroRunningStop	3	0	0085b8b0 0085bc60 0085bd20
+CCreatureAction_BanditKingAdvance	3	0	00906db0 00906f00 00906f40
+CCreatureAction_BanditKingBackOff	3	0	00906d20 00906f20 00906f70
+CCreatureAction_BattleChargeTurnLeft	3	0	008ce630 008cee10 008cf200
+CCreatureAction_BattleChargeTurnRight	3	0	008ce690 008cee30 008cf230
+CCreatureAction_BeingForcePushed	3	0	008bd0b0 008be170 008beb40
+CCreatureAction_BlowHorn	3	0	00842ec0 0084c290 0084c2c0
+CCreatureAction_BuildDrainLifeSpell	3	0	008bbc00 008bdea0 008be5c0
+CCreatureAction_BuildFireballSpell	3	0	008bcdb0 008be0f0 008bea20
+CCreatureAction_BuildGhostSwordSpell	3	0	008bc000 008bdf60 008be700
+CCreatureAction_BuildHealLifeSpell	3	0	008bbe40 008bdf00 008be660
+CCreatureAction_BuildUpBattleCharge	3	0	008ce3f0 008ced70 008cf090
+CCreatureAction_BuildUpPhysicalShieldSpell	3	0	008bb7d0 008bdde0 008be490
+CCreatureAction_BuildUpTimeSpell	3	0	008cdf90 008cece0 008ceeb0
+CCreatureAction_BuildUpWillEnflameSpell	3	0	008bb5b0 008bdd80 008be3a0
+CCreatureAction_BuildUpWillLightningSpell	3	0	008bcb80 008be090 008be960
+CCreatureAction_BuildUpWillSummonSpell	3	0	008bc6d0 008be030 008be8b0
+CCreatureAction_BuildWillForceSpell	3	0	008bb2c0 008bdd20 008be2f0
+CCreatureAction_BuildWillTurncoatSpell	3	0	008bba50 008bde60 008be560
+CCreatureAction_Curiosity	3	0	00911180 00911200 009115d0
+CCreatureAction_DowseFire	3	0	00843790 0084c510 0084c540
+CCreatureAction_DragonRearUpInto	3	0	008f39a0 008f5700 008f5850
+CCreatureAction_DragonRetreat	3	0	008f4ef0 008f56c0 008f5790
+CCreatureAction_FillBucket	3	0	00843840 0084c5c0 0084c5f0
+CCreatureAction_GenericStrafeLeft	3	0	006f8090 006f87a0 008b6850
+CCreatureAction_GenericStrafeRight	3	0	006f80b0 006f87d0 008b6890
+CCreatureAction_JackShotFar	3	0	00977060 00977420 00977590
+CCreatureAction_JackShotFloat	3	0	00976f30 009773e0 00977530
+CCreatureAction_JackShotNear	3	0	00976fc0 00977400 00977560
+CCreatureAction_NymphIdleAfterShot	3	0	008ca700 008caa20 008cab40
+CCreatureAction_NymphShot	3	0	008ca680 008caa00 008cab10
+CCreatureAction_NymphSummonOutOf	3	1	008ca600 008ca9a0 008caa70
+CCreatureAction_PickCrop	3	1	009405f0 009406b0 009406e0
+CCreatureAction_PickUpGoods	3	0	00848730 00916590 00916710
+CCreatureAction_PlayCombatAnimationWithLooking	3	0	008b80e0 008b8720 008b88a0
+CCreatureAction_PlayConversationAnimation	3	0	00842400 0084ab20 0084c490
+CCreatureAction_PlayHopscotch	3	0	00941b20 00941bc0 00941cc0
+CCreatureAction_QueenHornetShootBabies	3	0	0095cb80 0095cc80 0095cd00
+CCreatureAction_ReleaseAndLoopDivineWrathSpell	3	0	008bd220 008be1f0 008bec00
+CCreatureAction_ReleaseAndLoopUnholyPowerSpell	3	0	008bd390 008be270 008becc0
+CCreatureAction_ReleaseDivineWrathSpell	3	0	008bd1c0 008be1d0 008bebd0
+CCreatureAction_ReleaseTimeSpell	3	0	008cdff0 008ced00 008ceee0
+CCreatureAction_ReleaseUnholyPowerSpell	3	0	008bd330 008be250 008bec90
+CCreatureAction_ScorpionKingDeath	3	0	006f7ee0 006f84d0 008c4170
+CCreatureAction_ScreamerBackOff	3	0	006f5650 006f7ea0 006f8360
+CCreatureAction_ScreamerIdle	3	0	006f7e60 006f8300 008b8b40
+CCreatureAction_ShowFear	3	0	00842270 0084ab60 0084c6f0
+CCreatureAction_ShowLove	3	0	008438c0 0084c720 0084c750
+CCreatureAction_SummonerStrike	3	0	006f81d0 006f8a40 008cac80
+CCreatureAction_UnsheatheItemFromInventoryWithHasteAction	3	0	0069f1f0 006a08d0 006a0ef0
+CCreatureAction_YellOverHere	3	0	008421e0 0084ab80 0084c7a0
+CEngineEnvironment	3	1	00b29bb0 00b8cee0 00b8cfd0
+CEngineInternalPrimitive2DClockSprite	3	1	00bacfd0 00badb40 00bb1780
+CEngineInternalPrimitive2DSprite	3	0	00bace50 00bacfd0 00bad8a0
+CEngineInternalPrimitiveAnimatedMeshFromFile	3	0	00bd6df0 00bd9830 00bd9920
+CEngineInternalPrimitiveLight	3	0	00b44eb0 00b453d0 00b47fd0
+CEngineInternalPrimitiveParticleMeshGroup	3	1	00bc2400 00bc3410 00bc3be0
+CEngineInternalPrimitiveParticleSpriteTrailGroup	3	1	00bbdd90 00bbea70 00bbf180
+CEngineInternalPrimitiveRepeatedStaticMesh	3	5	00b98da0 00b9bcc0 00b9c710
+CEngineInternalPrimitiveShadowedSpotLight	3	0	00b44eb0 00b45460 00b480e0
+CEnginePrimitive2DViewportManager	3	0	00be1ba0 00be2190 00be25d0
+CEnginePrimitiveManagerParticleSpriteTrailGroup	3	2	00bbc130 00bbeaf0 00bbf1a0
+CEngineSceneEnumeratorResetVisibilityRatio	3	0	00b320a0 00b36c00 00b36c20
+CEngineStateBlocks	3	5	00b28bc0 00b28cf0 00b29cf0
+CFireballSpellLevelDef	3	2	004d537c 004d8d34 007be88c
+CGraphicBankStateBlock	3	3	009fd020 009fea20 00b2c4e0
+CHornetDrone	3	1	00e11cd0 00e11d70 00e11da0
+CInputProcessBoastUI	3	0	00488020 0048bb40 00690e70
+CInputProcessControlSpirit	3	0	00488020 006a9140 006a9180
+CInputProcessCycleSpecialCameraModes	3	0	00488020 0048b7a0 00633530
+CInputProcessFireheartMinigame	3	0	00488020 0048bc00 00691870
+CInputProcessInventoryQuestsScreen	3	0	00488020 006354c0 0068bc20
+CInputProcessLightning	3	0	00488020 0048ba20 0068fee0
+CInputProcessParalysed	3	1	00488020 0048bb20 00690d30
+CInputProcessQuestCompletionUI	3	0	00488020 0048bb80 00691130
+CInputProcessQuickAccessMenu	3	0	00488020 0048bb60 00690fd0
+CInputProcessTavernGame	3	0	00488020 0048baa0 00690830
+CInputProcessUseRangedWeaponZLock	3	0	00488020 0048b9c0 0068eb10
+CInputProcessYesNoQuestion	3	0	00488020 0048b680 0068c880
+CInputTypeKeyboardKeyEvent	3	3	0066ede0 0066f610 0066f630
+CInputTypeMouseMovementEvent	3	4	0066f3f0 0066f420 006925e0
+CInputTypeMouseWheelMovementEvent	3	3	0066f480 0066f4b0 0066f930
+CInputTypeXboxPadLeftStickEvent	3	3	0066f2d0 0066f300 0066f7d0
+CLandscapeGPUUpdateQueue	3	0	00b67040 00b67070 00b68610
+CLandscapeTesselatorBase	3	0	00be3660 00be3910 00be61b0
+CPersistContextReadSection	3	2	00485cd2 00485cf1 009bae70
+CScriptedMapBrushInit	3	0	0082e500 0082e600 0082e6e0
+CStaticFontBank	3	1	00a634f0 00ab7a70 00ab9990
+CStreamingFontBankStateBlock	3	1	00a5f290 00a5f3a0 00a5f6a0
+CTCVolumeContainmentTrackerDef	3	1	004d6320 004d94ec 00785010
+CTavernDef	3	2	004d51ff 004d8c05 007ecd00
+CTestPos	3	0	00ef3740 00ef37e0 00ef3820
+CThingFilter_PosInContainmentVolume	3	1	00669110 006698d0 006a7b20
+CVertexShaderConstantLayoutEmpty	3	1	009e1690 009e1850 01224140
+CWideScreenMagicPauseEntities	3	42	00cbe09a 00cbe0b3 00cbf6dc
+C3DAnimFileXAllocationSizeChunk	4	3	00aa4530 00aa4570 00aa4710 00aa4990
+C3DMeshFileXTriangleStripChunk	4	3	00aa5930 00aa5a60 00aa7280 00aa72a0
+CAIStateGroup_BanditKingCharge	4	2	008fe3df 00901226 009612f0 00961790
+CAIStateGroup_BanditKingLunge	4	4	008fe3f2 00901274 009613a0 009614a0
+CAIStateGroup_BanditPlot	4	1	008fe7dd 008fe7f0 00928590 009292b0
+CAIStateGroup_BirdGroundWander	4	2	008fd86d 008fd880 009143e0 00914460
+CAIStateGroup_CreatureRangedCombatUseWillShield	4	2	008fe25f 008fe272 0091f050 0091f0d0
+CAIStateGroup_FollowPlayer	4	2	008fddf5 00900412 0094ef90 0094f000
+CAIStateGroup_HandyMan	4	3	008fdd5f 008fdd72 0091b010 0091b190
+CAIStateGroup_IceTrollIcicleAttack	4	2	008fe418 00901310 00961e10 009621f0
+CAIStateGroup_IdleAtHome	4	3	008fdaff 008fdb12 00917330 00917380
+CAIStateGroup_KidWanderNearKids	4	2	008fd979 008fd98c 00914bc0 00914c10
+CAIStateGroup_MazeTeleport	4	2	008fdefc 009026b5 009543b0 00954410
+CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose	4	3	008fd8fd 008ff9c0 0093e2d0 0093e560
+CAIStateGroup_MinionGuardGreetPlayer	4	1	008fe805 008fe818 00929650 00929820
+CAIStateGroup_MinionGuardReactToCriminal	4	2	008fd356 008fed07 00932990 009331e0
+CAIStateGroup_MinionKidCalledToMother	4	2	008fd446 008fd459 0090ee20 0090eec0
+CAIStateGroup_MinionSitAtInn	4	1	008fd595 008ff2bb 0090fae0 0090fb60
+CAIStateGroup_MinionSleep	4	1	008fd2e5 008febb3 0092c440 0092c5a0
+CAIStateGroup_MinionWander	4	1	008fd242 008feb3d 0092bf50 0092c070
+CAIStateGroup_SeekEnemy	4	4	008fd689 008ff4ec 0093b6f0 0093bdf0
+CAIStateGroup_SeekPerceivedThing	4	1	008fddd0 008fdde3 0091b2f0 0091b340
+CAIStateGroup_StealStealableItem	4	4	008fe4d5 0090151a 009647c0 00964ca0
+CAIStateGroup_SummonerSummon	4	3	008fe928 00901e85 0096e540 0096e610
+CAIStateGroup_VillageTaskPickCrops	4	0	008ffad0 00940120 00940180 00940240
+CAIStateGroup_WifeGiveYouGift	4	2	008fe718 008fe72b 00925f90 009261f0
+CAIStateGroup_WorkHammerAnvil	4	3	008fdaa2 008ffdce 00944db0 00944e80
+CAnimComponentCombatMisc	4	4	005dc7b0 005df750 007345d0 00738a00
+CAnimComponentFollowingOnAnimFilter	4	2	005db530 005df890 00867010 00867f60
+CAsyncLoadingProcessCallback	4	0	00a14900 00a14930 00a14990 00b3b8e0
+CCarriedReadableDef	4	2	004d5eca 004d92b0 004d92c6 005da3c0
+CCombatAbilityFlourishCounterAttackDef	4	2	0044c54d 0044fd55 00463bdb 007384f0
+CCombatAbilityStrafeDef	4	2	0044fdd3 00452b93 00453f63 006f0f60
+CCombatAction_GenericStrikeResponse	4	1	0072c790 00867990 00868330 00868500
+CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath	4	0	007f04c0 007f0640 007f06d0 00866fb0
+CCombatAction_StrikeResponseScorpionKing	4	0	006f5790 006f7f00 006f8500 008c4b80
+CCombatSequenceJacksCombo	4	0	008b4e90 008b4ed0 008b6250 0090a1f0
+CCombatSequenceNonInterruptable2StrikeCombo	4	0	008b5010 008b5050 008b6310 0090a340
+CCombatSequenceWhisperAttack360	4	0	008b4b20 008b4b60 008b6090 00909da0
+CCombatSequenceWhisperAttackCombo	4	0	008b4a20 008b4a60 008b6010 00909cb0
+CCombatSequence_BanditAttackFar	4	0	008b3710 008b3750 008b5690 00906630
+CCombatSequence_BanditAttackMiddle	4	0	008b3790 008b37d0 008b56d0 009066c0
+CCombatSequence_BanditAttackNear	4	0	008b3890 008b38d0 008b5750 009067b0
+CCombatSequence_BanditBoast	4	0	008b39f0 008b3a30 008b5810 009069e0
+CCombatSequence_BanditIdleMiddle	4	0	008b3980 008b39b0 008b57d0 00906940
+CCombatSequence_BanditIdleNear	4	0	008b3910 008b3940 008b5790 009068a0
+CCombatSequence_BanditKingAttack	4	0	008b3a70 008b3ac0 008b5850 00906c60
+CCombatSequence_BanditKingBackOff	4	0	008b3b80 008b3bc0 008b58d0 00906d20
+CCombatSequence_BanditUnblockableAttack	4	1	008b35b0 008b35f0 008b55d0 00906380
+CCombatSequence_BattleCharge	4	1	008b5090 008b50e0 008b6350 00909070
+CCombatSequence_FodderCombatIdle	4	0	008b3e00 008b3e60 008b5a10 00907290
+CCombatSequence_FodderMainAttack	4	0	008b3c80 008b3cc0 008b5950 009070e0
+CCombatSequence_FodderUnblockableMainAttack	4	0	008b3d00 008b3d40 008b5990 00907170
+CCombatSequence_NonInterruptableBoxStrafe	4	0	008b3630 008b3660 008b5610 009064b0
+CCombatSequence_TrollBurrowPursueNoZone	4	0	008b4270 008b42a0 008b5c10 00907b60
+CCombatSequence_TrollDoubleSwipe	4	0	008b3ff0 008b4030 008b5ad0 00907750
+CCombatSequence_TrollProjectileAttack	4	0	008b4180 008b41c0 008b5b90 009079c0
+CCombatSequence_TrollRockAdvance	4	0	008b43d0 008b4400 008b5cd0 00907d00
+CCombatSequence_TrollRockIdle	4	0	008b44d0 008b4500 008b5d50 00907ec0
+CCombatSequence_TrollRockPursueNoZone	4	0	008b4350 008b4390 008b5c90 00907c70
+CCombatSequence_TrollRockShuffleBack	4	0	008b4540 008b4570 008b5d90 009076c0
+CCombatSequence_TrollRockThrowRock	4	0	008b4440 008b4490 008b5d10 00907e00
+CCombatSequence_VillagerAdvance	4	0	008b4720 008b4760 008b5e90 00908960
+CCombatSequence_VillagerAttack	4	0	008b45b0 008b45f0 008b5dd0 00908780
+CCombatSequence_VillagerCombo	4	1	008b47a0 008b47e0 008b5ed0 00908a20
+CCombatSequence_VillagerNearAttack	4	0	008b48a0 008b48e0 008b5f50 00908c80
+CCombatSequence_VillagerStepIn	4	0	008b46a0 008b46e0 008b5e50 009088d0
+CCombatSequence_WillPhysicalShield	4	2	008b5480 008b6490 009092c0 009097e0
+CCombatSequence_WillPhysicalShieldNonMelee	4	2	008b5530 008b64d0 009093f0 00909890
+CCreatureAction_BanditKingGetHit	4	0	006f5a40 006f80f0 006f8830 008c92c0
+CCreatureAction_BanditKingThrowWeapons	4	0	008c7fd0 008c89d0 008c9760 008c9790
+CCreatureAction_BattleChargeMiss	4	0	008cda30 008ce570 008cf160 008cf190
+CCreatureAction_BeDazed	4	0	00865a00 00867f40 008683d0 008ed850
+CCreatureAction_BlockCounter	4	0	00855920 00855c40 00855db0 00855df0
+CCreatureAction_BodgeSideStrike	4	0	008bf0f0 008bfe00 008c0100 008c0340
+CCreatureAction_BriarRoseIntoInvulnerable	4	0	008c1e80 00957210 009573d0 00957400
+CCreatureAction_BriarRoseShotFarOutof	4	0	008c0900 008c39a0 008c3ce0 008c3d10
+CCreatureAction_BuildUpDivineWrathSpell	4	0	008bd170 008bd220 008be1b0 008beba0
+CCreatureAction_BuildUpUnholyPowerSpell	4	0	008bd2e0 008bd390 008be230 008bec60
+CCreatureAction_CastWillSummonSpell	4	0	008b9b00 008bc660 008be010 008be870
+CCreatureAction_DragonRearUpFull	4	0	008f2b00 008f3630 00953120 00953a80
+CCreatureAction_DropGenericBox	4	1	00842150 00848d10 0084ab40 0084c6c0
+CCreatureAction_FinishDrainLifeSpell	4	0	008b9740 008bbc60 008bdec0 008be5f0
+CCreatureAction_FinishGhostSwordSpell	4	0	008b9a60 008bc060 008bdf80 008be730
+CCreatureAction_FinishHealLifeSpell	4	0	008b98d0 008bbeb0 008bdf20 008be690
+CCreatureAction_FinishWillForceSpell	4	0	008ba140 008bb320 008bdd40 008be320
+CCreatureAction_FinishWillTurncoatSpell	4	0	008b96a0 008bbab0 008bde80 008be590
+CCreatureAction_FodderIdle	4	0	008b6790 009074c0 00907590 00907640
+CCreatureAction_FodderPrimaryAttack	4	0	008b7350 00907320 00907530 009075b0
+CCreatureAction_FodderSecondaryAttack	4	0	008b6750 00907440 00907570 00907610
+CCreatureAction_FodderUnblockablePrimaryAttack	4	0	008b6710 009073a0 00907550 009075e0
+CCreatureAction_GenericLeaderCommand	4	0	008bfb60 008bfb80 008c0020 008c01b0
+CCreatureAction_GetInBed	4	0	00848db0 0092e300 0092e7e0 0092e810
+CCreatureAction_IceTrollIcicleAssaultInto	4	1	008c7600 00962990 00962a10 00962a60
+CCreatureAction_InterruptableFarAttack	4	0	006f7f70 006f85e0 0087c780 00906b40
+CCreatureAction_JackDeathInto	4	0	008c0ea0 009771f0 009774a0 00977630
+CCreatureAction_JackFlash	4	0	008c0c00 00976e80 009773c0 00977500
+CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend	4	0	008c0460 008c27b0 008c3b30 008c3c50
+CCreatureAction_NymphSummonInto	4	0	008c9df0 008ca5a0 008ca980 008caa40
+CCreatureAction_OnGenerate	4	0	0074dbb0 0074ddf0 0074df50 008b74d0
+CCreatureAction_PickupGameObject	4	1	007eb030 007eb230 007eb260 0084a5f0
+CCreatureAction_PlayerInteractionBribe	4	0	0062dd80 0062f0b0 0062f0e0 00844380
+CCreatureAction_PlayerInteractionFlirt	4	0	0062de60 0062f130 0062f160 00844410
+CCreatureAction_PlayerInteractionGreet	4	0	0062dad0 0062ef30 0062ef60 00845900
+CCreatureAction_PlayerInteractionInsult	4	0	0062dbc0 0062efb0 0062efe0 00844260
+CCreatureAction_PlayerInteractionThreaten	4	0	0062dca0 0062f030 0062f060 008442f0
+CCreatureAction_PutGoodsDown	4	0	00848850 00915810 00916540 00916760
+CCreatureAction_ReleasePhysicalShieldSpell	4	0	008b93d0 008bb830 008bde00 008be4c0
+CCreatureAction_ReleaseWillEnflameSpell	4	0	008ba6b0 008bb610 008bdda0 008be3d0
+CCreatureAction_ReleaseWillLightningSpell	4	0	008baa90 008bcbe0 008be0b0 008be990
+CCreatureAction_ReleaseWillSummonSpell	4	0	008b9bf0 008bc730 008be050 008be8e0
+CCreatureAction_RemovePhysicalShieldSpell	4	1	008ba7e0 008bb890 008bde20 008be4f0
+CCreatureAction_ScreamerAdvance	4	0	006f5610 006f7e80 006f8330 008b8cb0
+CCreatureAction_StartSneaking	4	0	0062d740 0062d7d0 0062f230 00845c70
+CCreatureAction_StopSneaking	4	0	0062d7f0 0062d870 0062f260 00845bc0
+CCreatureAction_SummonerDie	4	0	006f81f0 006f8a70 008cacc0 008cb8f0
+CCreatureAction_TavernGameMasterInteraction	4	1	0062df40 0062f1b0 0062f1e0 00845b10
+CCreatureAction_TeleportIn	4	0	008b9f20 008bd040 008be150 008beb00
+CCreatureAction_TentacleStrikeGetHit	4	0	008cf2e0 008cf8f0 008cfb20 008cfc00
+CCreatureAction_TrollAngryGroundPound	4	2	008c6130 00908000 00908480 00908750
+CCreatureAction_TrollGetProjectile	4	0	00907e00 009082d0 00908530 00908690
+CCreatureAction_TrollPursue	4	0	00907d00 00908340 00908550 009086c0
+CCreatureAction_TrollTunnel	4	1	008c63c0 00908160 009084d0 00908600
+CCreatureAction_UseWallMount	4	0	007efe70 00843610 0084c0c0 0084c0f0
+CCreatureAction_VillagerAttack	4	0	0097ce30 0097cf30 0097d110 0097d190
+CCreatureAction_WalkInto	4	0	00907d00 00908400 00908590 00908720
+CCreatureAction_WhisperJumpIntoSky	4	0	0096af60 0096c010 0096c0e0 0096c180
+CDecapitationDef	4	1	004d5b03 004d906b 004e1225 007efc50
+CDragonActionSwoopDef	4	1	0044c5bd 0044fe5f 00452be2 00453fc9
+CEnemyDef	4	2	004d3dc9 004d837e 006c7720 00963640
+CEngineInternalPrimitiveOcclusionGroup	4	3	00bacbd0 00bacc00 00bacc50 00bacd50
+CEngineInternalPrimitiveRepeatedZSprite	4	3	00baa780 00baa820 00bac0f0 00bac6e0
+CEngineLandscapeMeshBuilder	4	0	00be2b20 00be3110 00be32a0 00be32d0
+CEnginePrimitiveManager2DParticleGroup	4	1	00b4b6c0 00be0cd0 00be1a00 00be1a80
+CEnginePrimitiveManagerFlareSprites	4	1	00bcdf50 00bce070 00bce160 00bce630
+CEnginePrimitiveManagerParticleMeshGroup	4	2	00bc3390 00bc34d0 00bc3c00 00bc3c20
+CEngineVSConstantLayoutBasic	4	0	00b3b8e0 00bdbb70 00bdbf00 00bdbf20
+CEngineVSConstantLayoutLightsBones	4	0	00b3b8e0 00bdb260 00bdb2f0 00bdb310
+CEngineVSConstantLayoutParticles	4	0	00b3b8e0 00bdaff0 00bdb040 00bdb060
+CEngineVSConstantLayoutRepeatedMesh	4	0	00b3b8e0 00bdb080 00bdb200 00bdb220
+CExplosiveTrailDef	4	2	0044c699 0045011b 004542d4 00810c80
+CExpressionSubDef	4	1	004d4b85 004d883c 004e0ca7 005da240
+CGoldDef	4	2	004d583d 004d8ee9 006ae320 007cbdc0
+CHeroCentreDef	4	0	004d462a 004d8714 0077e430 0077ee70
+CInputProcessClickPastText	4	0	00488020 0048b660 00634890 0068c6e0
+CInputProcessConsole	4	0	00488020 0048b3b0 00634510 00687f80
+CInputProcessCutScene	4	0	00488020 0048bac0 00634890 006909a0
+CInputProcessHeroAbilitiesScreen	4	0	00488020 0048b560 00689980 0068ad90
+CInputProcessInventory	4	0	00488020 0048b500 006369b0 00689da0
+CInputProcessInventoryClothing	4	0	00488020 0048b520 006896c0 0068acf0
+CInputProcessInventoryMagicScreen	4	0	00488020 0048b600 006353b0 0068c630
+CInputProcessInventoryWeapons	4	0	00488020 0048b540 00689820 0068ad40
+CInputTypeXboxPadButtonEvent	4	2	00445630 0066f210 0066f730 0066f750
+CModeDragonBase	4	1	00741db0 008e7290 008e72b0 008e72d0
+COccupiableDef	4	2	004d4e66 004d88fc 004d8920 0087c490
+CSBCCorridor	4	0	00a1c700 00a21f50 00a88080 00a887b0
+CShaderGenericLight	4	0	0098a540 0098ccc0 00f39d40 00f39d90
+CSliderAnimator	4	0	0056ead6 0056eb48 0056fc5d 0057953e
+CTable	4	2	00550c60 00550d50 005517e0 005540d0
+CThingDrainLifeShotDef	4	0	004d5392 004d8d7a 004dea13 007be92e
+CTimeAppearanceFadeDef	4	0	004d4144 004d84ec 007786f0 00778900
+EWeaponClass	4	0	00579f8a 005e9820 0074ddb0 00f334c0
+C3DMeshFileXAnimatedPrimitiveBlockChunk	5	1	00aa5720 00aa5c20 00aa65a0 00aa6c70 00aa7460
+C3DMeshFileXUVTangentChunk	5	2	00aa57f0 00aa5b30 00aa64e0 00aa7320 00aa7350
+CAIStateGroup_BriarRoseWillUse	5	3	008fdfcd 0090090f 00956ce0 00956d90 00956e00
+CAIStateGroup_CleanHouse	5	1	008fdb42 008fdb55 00917af0 00917b50 00917d60
+CAIStateGroup_CreatureAdvanceInCover	5	3	008fe239 0090313f 00978e60 00978f10 00979260
+CAIStateGroup_GazeAtHome	5	0	009182b0 00918560 009185f0 009189c0 00918f70
+CAIStateGroup_GazeOutside	5	0	00918230 00918480 00918510 00918900 00918f30
+CAIStateGroup_HoverAttackArea	5	3	008fe1b6 00900d28 00900d41 0095a270 0095a2c0
+CAIStateGroup_HoverKeepInArea	5	2	008fe1a3 00900cf1 00900d06 00959ee0 00959f30
+CAIStateGroup_IceTrollIcicleAssault	5	3	008fe43e 009013ac 00961fb0 00962180 009627c0
+CAIStateGroup_JackOfBladesStage2	5	2	008fded6 00903095 009723d0 00972490 00972590
+CAIStateGroup_KidHurtSelfRunToMother	5	4	008fd9c7 008fd9da 00915080 00915190 00915290
+CAIStateGroup_MazeTutorialBattle	5	2	008fdf5b 009007f9 00954190 009542f0 00954ab0
+CAIStateGroup_MazeTutorialBattleTeleport	5	4	008fdf6e 0090082b 00953fe0 009541e0 00954b50
+CAIStateGroup_MazeTutorialBattleUseShield	5	4	008fdf94 0090088f 00954080 00954370 00956460
+CAIStateGroup_MinionGossip	5	2	008fd3b4 008fd3c7 0090c800 0090ca60 0090cb80
+CAIStateGroup_MinionListenToStory	5	1	008fd5bb 008fd5ce 0090f830 00910100 00910570
+CAIStateGroup_MinionReactToNoise	5	4	008fe05c 008fe06f 0091ccc0 0091cf40 0091cfa0
+CAIStateGroup_MinionReactToTrespassing	5	3	008fe049 00900ab7 009580d0 00958210 00958270
+CAIStateGroup_ReactToDeadLeader	5	2	008fe2e6 00900fac 0095e350 0095e430 0095e470
+CAIStateGroup_RecoverStealableItem	5	2	008fe4e8 009015b9 00965210 009652c0 00965320
+CAIStateGroup_SitInPub	5	1	008fdcfd 009001f2 0094b740 0094b840 0094b8b0
+CAIStateGroup_SitRoundCampfire	5	2	008fd606 008ff38b 00939270 009395a0 009395f0
+CAIStateGroup_ThrowLogsOnFire	5	1	008fdada 008fdaed 00917050 009170b0 00917130
+CAIStateGroup_VersusEnemyBase	5	3	009013fa 0090143e 00902b74 00962a90 00962af0
+CAIStateGroup_VersusScorpionKing	5	3	008fe48a 0090143e 009633e0 009635c0 00963640
+CAIStateGroup_WhisperPotionCombat	5	2	008fe55a 009031ba 0096a730 0096aad0 0096af60
+CAProgressDisplay	5	1	00497870 00499ce0 00499fb0 009e9ef0 009e9f40
+CActionDoCreatureAction	5	2	00712b60 00718db0 008fe019 008fe14d 00904f60
+CActionUseDef	5	2	0044c1cd 0044c253 0044f7c3 007eaba0 007eae40
+CActivateQuestDef	5	1	004d5056 004d8a48 004e0e79 007b5680 007ef600
+CAnimComponentCombatFlourishTargetOffset	5	2	005db3b0 005db3d0 005dc8b0 005df790 0087e150
+CBufferedFileDataOutputStream	5	2	009944a0 00994520 009947a0 00994810 009971e0
+CCombatAbilityBlockLightWeaponAttackDef	5	1	00453e84 00454a32 00461b98 007381f0 00739140
+CCombatAbilityGetHitCounterAttackDef	5	1	0044c565 0044c579 0044fd94 00453f3f 007385b0
+CCombatAction_GenericResponseToDecapitation	5	1	0066a560 0066a710 0066a780 0085bba0 00867010
+CCombatAction_GenericResponseToDrain	5	1	0066a690 0066a760 0066a880 008676a0 00909fd0
+CCombatAction_StrikeResponseJackOfBladesIntoRush	5	0	008c1600 008c2530 008c2550 008c3b10 008c3c10
+CCombatAction_WillEnflameInto	5	0	008c0520 008c2a80 009567f0 00956920 009569e0
+CCombatSequence_BanditKingSpinAround	5	0	008b0000 008b3c00 008b3c40 008b5910 00906e40
+CCombatSequence_WillEnflame	5	0	008b51d0 008b5250 008b63d0 009091d0 00909730
+CCombatSequence_WillForcePushLongRange	5	0	008b5350 008b53d0 008b6450 00909520 00909b50
+CCreatureActionHero180RunningTurn	5	0	0085b8f0 0085bb10 0085bc40 0085bcb0 0085bce0
+CCreatureAction_Ambush	5	0	008beee0 008bfda0 008c00e0 008c02d0 008c0300
+CCreatureAction_BalverineBreakOffFromCombat	5	0	008cc720 008cccb0 008cccd0 008cd2c0 008cd3a0
+CCreatureAction_BattleChargeImpact	5	0	007a7bf0 008cd820 008ce4b0 008cf0c0 008cf0f0
+CCreatureAction_BriarRoseConcentrateInto	5	0	008c1c30 008e8940 008e8bb0 008e8d30 008e8d60
+CCreatureAction_BriarRoseShotFarInto	5	0	008c2c50 00956fe0 00957170 00957320 009573a0
+CCreatureAction_CastDivineWrathSpell	5	0	0072cd00 008bae10 008bd110 008be190 008beb70
+CCreatureAction_CastStrengthBerserk	5	0	0072cba0 008e6400 008e6880 008e6e30 008e6eb0
+CCreatureAction_CastStrengthMultiStrike	5	1	008e6780 008e6a70 008e6ae0 008e6e70 008e6f10
+CCreatureAction_CastTimeSpell	5	0	008cd730 008cdef0 008cdf40 008cecc0 008cee70
+CCreatureAction_CastUnholyPowerSpell	5	0	0072ce20 008baf20 008bd280 008be210 008bec30
+CCreatureAction_CastWillFireballSpell	5	1	0072c930 008bcd10 008bcd60 008be0d0 008be9c0
+CCreatureAction_CastWillGhostSwordSpell	5	0	008b9970 008bbf20 008bbf90 008bdf40 008be6c0
+CCreatureAction_Charge	5	0	008b6910 008b84a0 008b84e0 008b87e0 008b8a60
+CCreatureAction_DragonBurninateInto	5	0	008f4320 009537b0 00953a40 00953dc0 00953df0
+CCreatureAction_DragonHoverOutOf	5	1	008f2fb0 008f40b0 00953530 009539a0 00953cc0
+CCreatureAction_DragonLand	5	1	008f3ad0 008f3c00 00953370 00953940 00953b60
+CCreatureAction_DragonRearUpOutOf	5	0	008e0730 008f2b40 008f5020 008f5720 008f5890
+CCreatureAction_DragonStrafeOutOf	5	0	008e07f0 008e4ad0 008e4dc0 008e5160 008f4570
+CCreatureAction_DragonSwoop	5	0	008f2f00 008f4f40 008f56e0 008f57c0 008f57f0
+CCreatureAction_GeneralInterruptedAttack	5	0	00858cc0 0087ca30 0087cf90 0087e5f0 0087e710
+CCreatureAction_GetOutOfBed	5	1	00848f10 0085f6f0 00860060 00860210 00860240
+CCreatureAction_HobbeLungeAttack	5	0	008c9980 008c9cc0 008c9d20 008c9d70 008c9d90
+CCreatureAction_JackFall	5	0	008c11f0 008c2490 00977320 009774e0 009776e0
+CCreatureAction_NymphGetHitDie	5	0	006f5b20 006f8180 006f8980 008c9f40 008ca4a0
+CCreatureAction_PerformExpression	5	2	00718d50 008430b0 0084b600 0084bd10 0084bd40
+CCreatureAction_PerformExpressionExtended	5	1	00847470 0084adc0 0084b620 0084be00 0084be30
+CCreatureAction_PlayerInteractionViewQuests	5	0	007eb490 007eb570 007eb5d0 007eb600 00845a70
+CCreatureAction_ScorpionChargeStrike	5	0	008c4f50 008c55b0 008c5cb0 008c5e10 008c5e40
+CCreatureAction_ScorpionPrepareTailPlunge	5	0	008c4990 0097c920 0097ca00 0097ca80 0097cab0
+CCreatureAction_ScorpionRecover	5	1	008c4b00 008e4770 008e4ce0 008e5000 0097c5e0
+CCreatureAction_ScorpionSummon	5	0	008c4a80 008e46d0 008e4cc0 008e4fd0 0097c580
+CCreatureAction_ScorpionUnblockableLeftTurnAttack	5	0	008c42b0 008c43b0 0097c760 0097c9c0 0097ca20
+CCreatureAction_ScorpionUnblockableRightTurnAttack	5	0	008c4330 008c4430 0097c830 0097c9e0 0097ca50
+CCreatureAction_ScreamerDrainAttack	5	2	006f5530 006f7e20 006f8210 008b8bc0 008b9010
+CCreatureAction_SitDown	5	0	00848fd0 008ab9d0 008ae2a0 0090f830 0093b1d0
+CCreatureAction_SnapDragon	5	0	008f2b80 008f5060 009531c0 009538e0 00953ad0
+CCreatureAction_SnapDragonFast	5	0	008f2bc0 008f5220 00953260 00953900 00953b00
+CCreatureAction_SnapDragonOutOf	5	0	008e06e0 008e49c0 008e4d80 008e5100 008f3a50
+CCreatureAction_SpiritHitResponse	5	0	00854610 00854810 008550c0 00855190 008551c0
+CCreatureAction_SpiritReturnToHero	5	2	0066fc90 00854660 00854720 008550e0 00855200
+CCreatureAction_StabbedToDeath	5	1	0087e7a0 0087f340 0087fe80 008800c0 00891720
+CCreatureAction_SummonerDead	5	0	008cb940 008dfef0 008e4b80 008e4de0 008e5190
+CCreatureAction_SummonerUnsheatheStrike	5	0	008cb620 008cb6e0 008cbee0 008cc4c0 008cc650
+CCreatureAction_ThrowShotObject	5	1	008b66d0 009551a0 009566c0 009568e0 00956960
+CCreatureAction_ThunderLightningStorm	5	0	008c0b70 0096c4f0 0096c6e0 0096c760 0096c780
+CCreatureAction_TrollProjectileAttack	5	1	008c6000 008c6430 009079c0 009080b0 009085b0
+CCreatureAction_TrollWhackGroundBase	5	2	008c63c0 008c6430 00907f50 00907fb0 00908460
+CCreatureAction_VillagerAdvance	5	0	00908960 0097ceb0 0097cff0 0097d150 0097d200
+CCreatureAction_VillagerBackOff	5	0	00908810 0097cef0 0097d050 0097d170 0097d230
+CCreatureAction_WaspQueenDiveAttack	5	0	008c40f0 008c4250 008c5410 008c5cf0 008c5ed0
+CCreatureAction_WaspQueenLashOutAttack	5	0	008c4040 008c40d0 0095cac0 0095cc60 0095ccd0
+CCreatureAction_WaspQueenPrimaryAttack	5	0	008c3f90 008c4020 0095ca00 0095cc40 0095cca0
+CEngineBillboardGenerator	5	1	00b29d90 00b8b630 00b8c790 00b8c7a0 00b8c7c0
+CEngineDef	5	1	00433f90 00433fe0 004340b0 00434370 004343f0
+CEngineInit	5	1	0042d830 0042e204 0042f7c1 00b5c460 00b86c00
+CEngineMemoryInit	5	0	00413c50 0042d830 0042e204 00b8fbf0 00b8fc40
+CEnginePrimitive2DText	5	0	00543910 005ec7c0 0064b6da 006541d1 00655048
+CEnginePrimitiveManager2DSprites	5	0	00baced0 00bacfd0 00bad040 00bb1640 00bb18e0
+CEnginePrimitiveManagerParticleDecalGroup	5	3	00bb6e00 00bb8610 00bb8690 00bb9980 00bb99a0
+CEnginePrimitiveManagerParticleLineGroup	5	4	00bc3e10 00bc4c50 00bc4cd0 00bc4d90 00bc5400
+CEnginePrimitiveManagerSprites	5	1	00bacf70 00bacf90 00bad2e0 00bae160 00bb18b0
+CExplodingObjectDef	5	1	004d38b7 004d80c2 00750be0 00750dd0 007510d0
+CFontBankStateBlock	5	0	00a632d0 00a63630 00a63680 00a63890 00c2d1e0
+CGameCameraBase	5	0	006fd4f0 006fd6c0 006fd8c0 006fd9f0 006fe780
+CGuardDef	5	0	004d4ffd 004d8a10 004de926 004e0e28 007b44e0
+CIDrawMap	5	4	0081e250 00820b50 00820cc0 008224e0 00827880
+CInputProcessBetting	5	0	00488020 0048bbc0 006349b0 00636400 00691560
+CInputProcessFreezeControls	5	0	00488020 0048b700 006349b0 00634a30 00636400
+CInputProcessInGameMenu	5	0	00488020 0048ba80 00636270 00690480 006907d0
+CInputProcessInventoryExperienceScreen	5	0	00488020 0048b5a0 00635080 0068b290 0068b2e0
+CInputProcessInventoryMapScreen	5	0	00488020 0048b580 00634f60 0068ade0 0068ae30
+CInputProcessInventoryStatsScreen	5	0	00488020 0048b620 006352a0 00689c40 0068c680
+CInputProcessInventoryTradeScreen	5	0	00488020 0048b5c0 00635190 0068b770 0068b7c0
+CInputProcessWatchForWillChargeUpThirdPersonModeTermination	5	0	00488020 0048b9a0 006360a0 0068eaf0 0068f2a0
+CKickableDef	5	0	004d33b0 004d7c51 004ddc74 004e0222 006ae260
+CMovieSubtitles	5	0	009bd910 009bdba0 00a3b9d0 00a3bc20 00a3bc70
+CParticleSimulationRenderData	5	1	00b81450 00b81d60 00bb1db0 00bb1df0 00bb6520
+CPhysicsCollisionPointsObject	5	1	00850330 00850360 008fa9f0 008fadb0 008faf70
+CPhysicsFacesSegmentBranch	5	2	00a85fd0 00a85ff0 00a86b30 00a86cd0 00a86f60
+CPhysicsFacesSegmentLeaf	5	0	00a860f0 00a86b30 00a86cd0 00a86e20 00a87120
+CReactionMatch_Sphere	5	0	0067c2f0 0067c330 007003a0 00700400 00701990
+CReadableDef	5	1	004d7ad3 004daa32 004e00a3 007e80c0 007e8200
+CResurrectionItemDef	5	2	004d5dac 004d9202 005bf77d 005c0cfb 007f04c0
+CSBAgents	5	0	00a1c700 00a873c0 00a873e0 00c094a0 00c1abb0
+CStreamingFontBank	5	3	009a0ec0 009a1090 009a4160 009a4e40 00a5f1c0
+CVillageMemberDef	5	2	004d7a0f 004da7ad 004da7d1 007ee5a0 007ee6e0
+CWADBank	5	0	004fdab0 00502170 00506940 0050b420 0050f070
+LHHttpHeaderStatus	5	0	00569c50 00569d30 0083f420 0083fb60 00840b60
+C3DAnimFileXSequenceChunk	6	1	00a4df10 00aa4650 00aa46b0 00aa4710 00aa48d0 00aa49f0
+C3DMeshFileXAnimatedPrimitiveChunk	6	1	006f5530 00aa4ca0 00aa4cd0 00aa5370 00aa7090 00aa70b0
+C3DQuad2	6	0	00ae2230 00ae3360 00ae3670 00ae5880 00ae6e60 00ae7aa0
+CAIScratchpadDef	6	21	007abb30 007acaa0 007ad300 007ad880 007ad9c0 007adf00
+CAIStateGroup_BanditPlayDice	6	3	008fe7b0 008fe7c3 00928550 009285d0 00928e20 00929220
+CAIStateGroup_CarryCrateAndFollow	6	1	008fe4fb 00901658 00902873 00965f30 00965fb0 00966290
+CAIStateGroup_CreatureRangedCombat2	6	4	008fe24c 00900e1e 0091e990 0091ea20 0091ea70 0091eb60
+CAIStateGroup_GazeAtWork	6	2	008fdc1d 00918230 009182d0 00918b50 00918f90 00927c00
+CAIStateGroup_IceTrollPoundGroundAttack	6	2	008fe42b 0090135e 00961c50 00961e80 00961f40 009624d0
+CAIStateGroup_MazeShieldedChase	6	3	008fdf48 009007c7 00954690 00954740 009547d0 00954900
+CAIStateGroup_MeleeCombatNearby	6	3	008fd8c4 0090233c 0096ea50 0096eb40 0096edb0 0096ee90
+CAIStateGroup_MinionHasInformation	6	1	008fd51f 008fd532 0090f260 0090f290 0090f320 0090f470
+CAIStateGroup_MinionReactToCriminal	6	2	008fd343 008fec9c 00930dc0 00930e20 00930ee0 00931010
+CAIStateGroup_MinionSitOutside	6	1	008fd5e0 009021c8 00938f20 00938f70 00939060 009390e0
+CAIStateGroup_MinionWatchFires	6	1	008fd4a9 008ff04d 009361c0 00936210 00936590 009365e0
+CAIStateGroup_PrepareMeal	6	0	008fffbe 009460c0 00946100 009462a0 00946330 00946400
+CAIStateGroup_SeekScriptTarget	6	2	008fd69c 008ff53a 0093bea0 0093bef0 0093bfa0 0093c230
+CAIStateGroup_WhisperRetreat	6	2	008fe547 00901867 0096a350 0096a7a0 0096ae50 0096b600
+CAnimComponentDelayTime	6	2	005db9f0 005dc1f0 005dc4d0 005ded00 005df650 005e0300
+CApprenticeSpeedTest	6	1	00d3e1f0 00d3e290 00d3e2a0 00d3e2b0 00d3e2c0 00d446a0
+CBriarRoseDef	6	2	0044c641 00450003 00452f8e 00454183 008e7790 00956fe0
+CCameraCollisionDef	6	2	004d6239 004d9465 004d9489 007e3040 007e30a0 007e3290
+CCombatAbilityBlockHeavyWeaponAttackDef	6	1	00453e9e 00453eb4 00454a64 00461d0d 007382b0 00739250
+CCombatAbilityBlockProjectileWeaponAttackDef	6	1	00453eb8 00453ece 00454a96 00461d2c 00738370 00739360
+CCombatAbilityBlockingData	6	4	00453de0 004549b2 00734340 00739140 00739250 00739360
+CCombatAbilityUseProjectileWeaponDef	6	1	0044c59d 0044c5b9 0044fe12 00452bb4 00453f93 006696b0
+CCombatAction_GenericStrikeResponseKnockdown	6	1	00667310 0066a530 008679c0 00867a70 00868400 00868430
+CCombatAction_WillShieldInto	6	0	008c04e0 008c29f0 00956460 00956760 00956900 00956990
+CCombatSequence_WillLightning	6	0	0069e3d0 008b5120 008b5190 008b6390 00909140 00909690
+CCrateStackDef	6	1	004d50a0 004d8a8e 004e0e98 00659c7e 0065f7b4 007b7140
+CCreatureAction_ActivateQuest	6	1	006299c0 00843f50 00843fc0 00844090 0084c8d0 0084c900
+CCreatureAction_AimMissileWeapon	6	0	00715110 00718650 00719d20 00719d50 0092a8a0 0092b3e0
+CCreatureAction_BalverineBreakOffFromCombatLong	6	0	008cc760 008ccd10 008ccd30 008cd2e0 008cd3d0 0094f730
+CCreatureAction_CastSkillMultiArrow	6	0	008cdc40 008cdcf0 008ce6f0 008ce900 008cee50 008cf260
+CCreatureAction_CastStrengthMultiStrikeProper	6	0	008e63b0 008e6690 008e6bb0 008e6c90 008e6e90 008e6f50
+CCreatureAction_CombatBoast	6	0	006f8030 006f8710 008b6e60 009069e0 00906b00 0090a0b0
+CCreatureAction_DiagonalStrafeBL	6	0	008bede0 008bfc20 008bfc40 008c0060 008c0210 009064b0
+CCreatureAction_DiagonalStrafeBR	6	0	008bee20 008bfc80 008bfca0 008c0080 008c0240 009064b0
+CCreatureAction_ForcePushOutOf	6	2	008b9370 008ba0b0 008dff50 008e4800 008e4d00 008e5030
+CCreatureAction_JackScream	6	0	008c0d10 008c2240 00977100 009771a0 009775c0 009775f0
+CCreatureAction_LeapLong	6	1	008b7470 008b74a0 008b76b0 008b8190 008b8740 008b8900
+CCreatureAction_MidAttackFacing	6	0	008b65d0 0090a340 0090a400 0090a690 0090a7a0 0090a7e0
+CCreatureAction_NymphTeleportLimboBase	6	0	008c9fe0 008ca110 008ca170 008ca780 008ca7c0 008ca960
+CCreatureAction_PickUpGenericBox	6	0	007153b0 00843700 00848ae0 0084c640 0084c670 009647c0
+CCreatureAction_PlayAnimationWithLookTurning	6	1	00842db0 00842df0 00842e40 00843940 0084ac70 0084c4e0
+CCreatureAction_ReleaseStrengthBerserk	6	1	008e6490 008e6500 008e68e0 008e6940 008e6e50 008e6ee0
+CCreatureAction_ScorpionChargeInto	6	2	008c44b0 008c4680 008c4e20 008c5490 008c5d10 008c5d40
+CCreatureAction_ScorpionTailWithdraw	6	0	008c4780 008df510 008e45b0 008e4c80 008e4ef0 008e4f20
+CCreatureAction_ScreamerDrainOutOf	6	1	006f7e40 006f82d0 008b8b00 008b9010 008b9150 008b9190
+CCreatureAction_SheatheItemToInventory_ForEnflame	6	1	0069f060 0069f700 0069f750 006a0950 006a0c90 0072d390
+CCreatureAction_SpiritAttack	6	2	008546c0 008547d0 00854b90 00855100 00855230 00855260
+CCreatureAction_SummonerLightningOrbInto	6	0	008cabe0 008cad50 008cb1a0 008cbd90 008cc5a0 0096fcd0
+CCreatureAction_TentacleRise	6	0	008cf320 008cf610 00925170 00925250 00925a30 00925c10
+CCreatureAction_TentacleStrikeInto	6	0	008cf3d0 008cf700 009251e0 009252c0 00925a50 00925c40
+CCreatureAction_TrollSwipe	6	0	008c5f90 00907750 00907840 009081f0 009084f0 00908630
+CCreatureAction_UnblockableMidAttack	6	2	008bf1c0 008bfbc0 008bfbe0 008c0040 008c01e0 00906380
+CCreatureAction_UndeadReturnToEarth	6	0	0074ace0 008ec320 008ec6a0 008ec700 008ec790 008ec7b0
+CCreatureAction_UndeadRiseUp	6	1	0074de10 0074df80 008ec220 008ec260 008ec3f0 008ec470
+CCreatureAction_UseLamp	6	0	007eaf50 008435b0 008448a0 00847fb0 0084c040 0084c070
+CCreatureAction_VillagerAttackKnockdown	6	3	00908a20 00908b50 0097ce70 0097cf90 0097d130 0097d1c0
+CEngineScreenEffectOutlineGlow	6	3	00b29e30 00b89080 00b898d0 00b8b550 00b8b580 00b8b5b0
+CEngineVSConstantLayoutLights	6	0	00b3b8e0 00bdaff0 00bdb260 00bdb400 00bdb580 00bdb5a0
+CEngineWaterBackgroundSubPatch	6	6	00b6e260 00be61b0 00be65a0 00bfd160 00bfd480 00bfdc90
+CFileDataOutputStream	6	5	00994400 00994430 00996f30 009cd330 009cdf50 009d4ce0
+CFishDef	6	0	004d5c77 004d9130 004dee7e 004e12b8 007b2600 007dfb20
+CHasNameDef	6	1	004d669a 004d98ec 004e1a59 004e1a5e 007f4b60 007f4c90
+CHeroSpecialMovementDef	6	0	004d5d83 004d91bc 007e0700 007e0750 007e0910 007e0a40
+CInputProcessWatchForRangedWeaponThirdPersonModeTermination	6	0	00488020 0048b980 00635e90 00636d40 0068eae0 0068f250
+CJackDragonDef	6	1	0044c62b 0044ffbd 00452ea5 004540f1 008e3300 00950950
+CNavigatorFlyer	6	3	006cc6b0 00a18ea0 00a18f70 00a199f0 00a19a30 00a19b20
+CScrollingComponent	6	2	00452b4d 00546f40 00546fc0 00547010 00547050 00547260
+CShipDef	6	0	004d488b 004d87bd 004de782 004e0a67 004e0a6c 00787ae0
+CSpecialAbilitiesEnflameDef	6	1	00457716 00457738 0045773e 0045fe2b 00465258 007a43a0
+CSpecialAbilitiesForcePushDef	6	1	0045767e 004576bf 0045fd53 00465163 00798570 007a54a0
+CSystemFont	6	0	00a0a8f0 00a0a920 00a0a940 00a0afe0 00a0b590 00a6c170
+CTCBob	6	1	004d48a1 004d48be 00787750 00787780 00787a00 00787a40
+CTCFlashOnHit	6	1	004d627f 004d6292 004d62b8 004d94ab 007e33b0 007e3420
+CTestQuestCard1Script	6	1	00eeeea0 00eeeed0 00eeef60 00eef520 00eef540 00eef580
+CThingMultiArrowShotDef	6	1	0044f607 00450b79 00451ca2 004536ae 007bdd77 007be7ea
+CTriangleStripifier2	6	1	00b7add0 00b7ae00 00f3b970 00f3d830 00f3f3a0 00f3f5a0
+CWaterPatchMesh	6	2	00b77e20 00bea7e0 00beab20 00beb490 00bf3980 00bf44a0
+CWillResponseDef	6	0	004d648d 004d964d 004df562 004e18ce 007e3c70 007e47d0
+C3DMeshFileMaterialExtChunk	7	2	00ac02b0 00ac02d0 00ac03b0 00ac0ae0 00ac0b70 00ac1920 00ac1940
+CAIStateGroup_BriarRose	7	2	008fdfba 009008c1 00956a60 00956a70 00956b00 00956c00 00956c70
+CAIStateGroup_CreatureTakeCover	7	2	008fe2ad 0090315b 00979d80 00979e90 00979f70 0097a630 0097aae0
+CAIStateGroup_Drunk	7	2	008fe5a5 008fe5b8 00922540 009225a0 00922600 009226b0 00922750
+CAIStateGroup_HoverHornetQueenTakeDamage	7	4	008fe1c9 00900d63 00900d7c 0095a380 0095a7d0 0095aa60 0095b280
+CAIStateGroup_HoverWanderAroundThing	7	1	00453e51 004e108c 004e2d89 008fe127 00902907 0090292e 00959a60
+CAIStateGroup_LookAtInterestingThings	7	1	008fdc69 008fdc7c 009190f0 009191b0 00919440 00919510 009195d0
+CAIStateGroup_MazeDefensiveMeleeCombat	7	4	008fdf35 00900792 00953fa0 00954150 009542b0 00954980 00954a20
+CAIStateGroup_MazeRangedCombat	7	3	008fdf22 00900760 00953f70 00954220 00954470 00954630 009551a0
+CAIStateGroup_MazeTutorialBattleRespondToLightning	7	4	008fdf81 0090085d 00954040 00954330 00954c60 00954e30 00956380
+CAIStateGroup_MinionFollowThing	7	1	008fe49d 0090148c 00921270 009212c0 00921440 009215e0 00921870
+CAIStateGroup_MinionKidGroupTag	7	3	008fd433 008fef1d 00934090 00934120 009347b0 00934870 00934920
+CAIStateGroup_MinionReactToCrime	7	3	008fe081 00900b41 00900b81 00958770 009587d0 00958e20 00958f00
+CAIStateGroup_MoveGoodsBase	7	1	008fda5d 008fdaed 008ffd3a 00915890 009162f0 00917130 00943b40
+CAIStateGroup_RangedCombatUsePreferredFirePoint	7	2	008fe2c0 00900eec 0095d070 0095d200 0095d310 0095d3a0 0095d590
+CAIStateGroup_SummonerCharge	7	2	008fe915 00902d2f 00902f49 0096f730 0096fa90 0096fc60 0096ff10
+CAIStateGroup_SummonerLightningAttack	7	2	008fe902 00902d03 00902eef 0096f6f0 0096f770 0096fa20 0096fcd0
+CAIStateGroup_Thunder	7	3	008fe56d 009018b8 0096c1b0 0096c1e0 0096c250 0096c2e0 0096c4f0
+CBuyHouseDef	7	1	004d324b 004d7b5b 004d7b7f 004e01a7 0072ed10 0072ef60 00a5aca0
+CCombatAction_StabThing	7	1	0087ecb0 0087ed70 0087fdf0 008800a0 00880190 008801c0 009624d0
+CCombatSequence_WillForcePush	7	0	008b5290 008b5310 008b6410 009098e0 009099b0 0090a550 00a17480
+CContainmentVolume	7	11	00a2e860 00a2e9a0 00a2eaa0 00a5ac60 00a752d0 00a752f0 00a758e0
+CCreatureAction_BalverineCorneredJumpIntoSky	7	0	008cc7a0 008cc9c0 008ccb80 008ccd70 008cd280 008cd330 0094f640
+CCreatureAction_BanditKingLunge	7	0	008c7f00 008c7f40 008c8180 008c8c30 009619c0 00961a50 00961a70
+CCreatureAction_BlockRespond	7	1	008553c0 00855500 00855b50 00855b90 00855d90 00855e50 00855e80
+CCreatureAction_CastWillForceSpell	7	1	008b94a0 008bb0b0 008bb130 008bb200 008bdd00 008be290 00909520
+CCreatureAction_GenericFireProjectileWeapon	7	0	008bed40 008bfa40 008bfa60 008c0000 008c0180 008c9c80 00906050
+CCreatureAction_GenericLoadProjectileWeapon	7	0	008bed80 008bf6a0 008bfaa0 008bfac0 008bffe0 008c0150 00906050
+CCreatureAction_IceTrollIcicleAttack	7	0	008c60b0 008c6db0 009621f0 009624d0 00962920 009629f0 00962a30
+CCreatureAction_LeapBack	7	1	006f7fd0 006f8680 008b6550 00906380 009067b0 009068a0 00906a80
+CCreatureAction_NymphGetHit	7	1	006f5b00 006f8160 006f8910 006f8940 008c9e60 008ca220 008ca310
+CCreatureAction_OpenChest	7	0	007ee7e0 007ee8f0 007eea50 007eea80 00842b60 00842bc0 008448e0
+CCreatureAction_ScorpionCharge	7	2	008c4680 008c4ea0 008c5490 008c55b0 008c5c90 008c5d90 008c5dc0
+CCreatureAction_SheatheItemToInventory_ForDivineWrath	7	1	0069f090 0069f7b0 0069f800 006a0970 006a0cc0 0072cd00 0072d3e0
+CCreatureAction_SheatheItemToInventory_ForUnholyPower	7	1	0069f0c0 0069f860 0069f8b0 006a0990 006a0cf0 0072ce20 0072d430
+CCreatureAction_StartBlocking	7	0	0062cf90 008552e0 00855880 008558d0 00855be0 00855dd0 00855e20
+CCreatureAction_TeleportOut	7	0	008b9e50 008bcea0 008bcf20 008bcfb0 008be130 008bea80 008beab0
+CDecal	7	3	00af5380 00af5690 00af5770 00af8ab0 00af8ad0 00af8b00 00b1db00
+CDisplayViewManager	7	0	004350d0 00436ba0 00487cf0 00633d80 00633f10 00633ff0 00640050
+CEditControlCentre	7	0	00548670 005486b0 005486d0 005486f0 0084cf40 0084cf60 00cafe90
+CEngineInternalPrimitive2DAnimatedMesh	7	4	00bcf670 00bd1f70 00bd2bc0 00bd6b90 00bd94e0 00bd96f0 00bd9710
+CEnginePrimitiveManagerParticleSpriteGroup	7	4	00bad2e0 00bbc130 00bbf380 00bc13a0 00bc1420 00bc2260 00bc2280
+CEngineScreenEffectGlowRenderer	7	6	00b24500 00b2a8e0 00b5ebf0 00b5ee80 00b619b0 00b619f0 00b61a20
+CEngineScreenEffectRadialBlurRenderer	7	9	00b24500 00b2a980 00b5bd30 00b5bf10 00b5c050 00b5c460 00b5eb00
+CEngineWaterSettings	7	0	00b7c510 00b7eec0 00b7f0f0 00b7f3b0 00b7f600 00b7fa20 00bea760
+CEnvironmentDef	7	1	004558bf 004558df 00455c1d 0045be2b 006b3350 006bbc30 008865c0
+CEnvironmentThemeDaySetDef	7	3	00455c43 00455c64 00472e83 00476dc3 0049f2d0 008865c0 00888e60
+CFireheartMinigameDef	7	0	004d6638 004d982f 004d9861 004e19e2 007e7ac0 007e7d80 007e7ed0
+CFrontEndList	7	0	0054c3a0 0054c420 0054c430 0054c480 0054c4c0 0054c810 0054da70
+CHairCardDef	7	3	0044c3d8 0044faba 0059c983 0059d9c2 005a30a1 005aebfe 005da180
+CInputProcessControlCreatureRightStick	7	1	00488020 0048b780 00635e90 006360a0 00636d40 0068d840 0068d890
+CInputProcessCreditsUI	7	0	00488020 0048bba0 00633690 00633b70 006349b0 00636400 00691470
+CInputTypeMouseButtonEvent	7	1	00447a70 00447a80 00447a90 0066eea0 0066eee0 0066f6b0 0066f6d0
+CManagedTextureOwner	7	0	009fdc20 009fe6c0 009ff6b0 009ffb50 009ffb80 00b2b910 00b66c10
+CMorphingSprite	7	0	005540f0 00554110 00554150 005541e0 005545d0 005546f0 00555140
+COracleMinigameDef	7	0	004d65ef 004d980d 004df658 004e197a 007e5d20 007e62d0 007e6e00
+CPerceivedThingDef	7	8	004d35cc 004d7eda 004ddf9e 004e03d4 00744ed0 00745c70 00746100
+CSpecialAbilitiesBulletTimeDef	7	1	00457537 004575da 004575e0 0045fac1 00464db5 0079c750 0079d110
+CSummonDef	7	1	004d618e 004d940a 004df264 004e17d2 007fdf60 007fe5b0 008b7a20
+CTavernGameCoinGolfDef	7	0	004d59c8 004d8fbb 004dec86 004e1132 007d3510 007d3700 007d4bd0
+CThingTypeInfo	7	0	00523440 00523540 00527eb0 0052b100 0052b3d0 0052bea0 0052bf50
+CTrophyDef	7	1	004d36fe 004de122 004e0474 005da300 006bffd0 006dda20 006df480
+CVirtualKeyboard	7	5	00594fa9 00596917 00597bf2 00599e3f 0059a238 00851700 00851770
+C3DIndexedBoneWeight	8	0	00a8ff50 00a95b90 00a96c20 00a97180 00aa5720 00aa5c20 00aa65a0 00aa6c70
+C3DMeshFileUniqueVerticesChunk	8	1	00abb690 00abb720 00abc040 00abc560 00abc590 00abc5f0 00abcaf0 00abecf0
+C3DMeshFileVerticesChunk	8	4	00abafe0 00abbd70 00abbdf0 00abc080 00abc780 00abc7b0 00abc800 00abee10
+CAIStateGroup_HoverAttack	8	4	00900c3b 00900c54 00900c76 00900d28 0091e050 0093cfe0 00959ee0 0095a270
+CAIStateGroup_MinionReactToPlayerInteraction	8	2	008fd330 008fec6b 0092eca0 0092ecd0 0092ed40 0092edc0 0092f240 00930a70
+CAIStateGroup_MinionSitOnSeat	8	1	008fd557 00902122 00902134 009021c8 0090f690 0090f710 009104a0 009390e0
+CAIStateGroup_ScorpionKing	8	3	008fe451 00903177 0097b780 0097b870 0097b900 0097baa0 0097c580 0097c5e0
+CAIStateGroup_StealthSeekEnemy	8	3	008fd6af 008ff588 0093c2f0 0093c420 0093c600 0093c6d0 0093c7b0 0093c830
+CAIStateGroup_TrollBase	8	1	0090035d 009003a0 009025ee 0094d680 0094d930 0094d9c0 0094dac0 0094dc40
+CAnimComponentFlags	8	2	005db8d0 005dc210 005dc390 005dc3c0 005ded00 005dfe90 005e0380 0073a9b0
+CAnimComponentStrikeResponseAnim	8	0	005db4a0 005db5a0 005db5f0 005dbf50 005df900 005df930 005e0030 0087e1d0
+CAnimComponentTransitionInTime	8	2	005db960 005dc1d0 005dc230 005dc450 005dec70 005ded00 005df610 005e0280
+CBettingDef	8	0	004d64e6 004d9701 004df5c7 004e1918 007e50c0 007e5230 007e5680 007e5820
+CCombatAbilityMeleeAttackData	8	0	0044c47b 0044c503 0044fcd7 0044fd16 0044fd55 0044fd94 00453ef1 00737370
+CCombatAction_ControlledStrafeJump	8	0	0085bd60 0085bd70 0085c0b0 0085c120 0085c190 0085c310 0085c330 0085c360
+CCombatAction_KickThingOnGround	8	0	007ece20 0087e770 0087e860 0087ebd0 0087fd20 00880080 008800f0 00880120
+CConsoleCommandBase	8	2	00413c50 00414f70 00414f90 00414fc0 00415040 00419d90 006bbc30 009ea7d0
+CCreatureAction_BalverineDropInFromSky	8	0	008cc820 008cca60 008ccb00 008ccbd0 008ccc10 008ccd70 008cd260 008cd300
+CCreatureAction_BanditKingAttack	8	1	008c8080 008c92c0 008c9410 008c9670 008c97e0 00906c60 00906e40 00961790
+CCreatureAction_BanditKingStuck	8	0	008c80e0 008c8380 008c8c30 008c8f70 008c94d0 008c9580 008c9830 008c9860
+CCreatureAction_CastWillLightningSpell	8	1	008b9c90 008bc790 008bc8c0 008bca00 008be070 008be910 00909140 00956380
+CCreatureAction_CombatIdle	8	1	006f8010 006f86e0 008b6650 00906380 009064b0 00906940 00906ac0 0090a150
+CCreatureAction_DragonTakeOffIntoFlying	8	0	008f3e70 008f47e0 00951b20 009533e0 00953470 00953960 00953b90 00953bc0
+CCreatureAction_FinishFireballSpell	8	0	007c9180 008bab70 008babe0 008bac40 008bce10 008bce50 008be110 008bea50
+CCreatureAction_GenericAimProjectileWeapon	8	1	006f5a70 008bf740 008bfb00 008bfb20 008bffc0 008c0120 008c9ba0 00906050
+CCreatureAction_HeroLoadRangedWeapon	8	2	0078a2c0 0078ae30 0078b070 0078b410 0078b640 0078b6b0 0078bd30 0078bd60
+CCreatureAction_JackFloatUp	8	0	008c0730 008c0790 008c0fb0 008c1180 00977290 009774c0 00977660 00977690
+CCreatureAction_StrafeBackward	8	0	008beea0 008bfd40 008bfd60 008c00c0 008c02a0 009064b0 00908f20 00909ba0
+CCreatureAction_StrafeForward	8	0	008bee60 008bfce0 008bfd00 008c00a0 008c0270 009061e0 00908f20 00909ba0
+CCreatureAction_UseObject	8	1	0069f230 0069f2b0 0069fce0 0069fe60 006a0d20 006a0d50 0091b190 00946850
+CCreatureNavigationDef	8	0	004d7a60 004da895 006cd2f0 006cd890 006cdb50 006cdb90 009195d0 0092c070
+CEngineInternalPrimitiveOcclusionBase	8	4	00b90390 00b91140 00b98b10 00b9c6f0 00ba6dc0 00ba8030 00bacd50 00bebc50
+CEngineLayerRenderer	8	1	00b25950 00b25d80 00b26010 00b29720 00b29760 00b29780 00b2ab80 00b2ac80
+CEngineScreenEffectColourFilter	8	3	00b24690 00b25c00 00b2a840 00b5a0d0 00b5a1d0 00b5af60 00b5bad0 00b5bb00
+CEngineScreenEffectDisplacementRenderer	8	9	00b24500 00b29ed0 00b869a0 00b86a30 00b86c00 00b870a0 00b88f80 00b89050
+CEngineSkyRenderer	8	8	00b2a660 00b61aa0 00b61b30 00b61cd0 00b621a0 00b66dc0 00b66e70 00be9530
+CHeroDef	8	0	004d3452 004d7d23 004e0331 0057adb8 00580034 005cd767 006ca4e0 007ee8f0
+CHighlightItemDef	8	1	004d4578 004d8695 004e0923 0077cb60 0077cbe0 0077cca0 0077cd50 0077d080
+CInputProcessHeroInformationScreens	8	0	00488020 00634f60 00635080 00635190 006352a0 006353b0 006354c0 006369b0
+CInterestingToVillagersDef	8	1	004d4fcf 004d89b4 004d89ca 004dc858 004e0e0a 008fdb55 008fdb7d 008fef8b
+CJoystickDX	8	8	00a60050 00ab6d10 00ab6d60 00ab6de0 00ab7850 00ab78d0 00ab7950 00caaac0
+CMeshIntersectionData	8	2	0063e480 0063e950 00668ab0 00815070 00875e60 00880640 008fbcb0 00970790
+CMirroredTextureHighlightsChunk	8	1	00a9d310 00a9d330 00a9d360 00ac4ec0 00ac4f30 00ac4f50 00ac4fe0 00ac5080
+CSmashableDef	8	3	0044c213 0044f78b 007eeb20 007eec50 007eecf0 007eed20 007eeea0 007f4e10
+CSpecialAbilitiesBerserkDef	8	1	004572ce 004573db 004573e1 0045f854 0046a2fc 0078be70 0078bf00 0078bfc0
+CTCSinglePersonOccupiable	8	1	004d4e53 004d8896 004d88c0 004db0ad 006a8930 006a89e0 006a8a30 0087c420
+CTavernGameCoinBaseDef	8	0	004d597f 004d8f75 004dec2c 004e10c1 004e10c6 008ef390 008efa00 008f00f0
+CVertexShaderConstant	8	0	0098d710 00b8d420 00bdb670 00bdb6d0 00bdb710 00bdb8e0 00bdb9f0 00bdbb70
+CWaterPatchTesselatorBase	8	0	00b7ec30 00b7ec40 00b7ec60 00b7ece0 00b7ecf0 00b7ed10 00b7fce0 00b80100
+C2DExtentsF	9	1	0041a7e0 00437210 0043e4d0 0048e012 0048f50c 006572a0 009a14e0 00b24690
+C3DAnimationSequence	9	0	00a4cdd0 00a4df10 00a4e100 00a4e150 00a4e250 00a4e960 00a533f0 00c1bb40
+C3DMeshFileTransformationChunk	9	1	00ab9bb0 00ab9be0 00ab9c50 00ab9cb0 00ab9ce0 00aba410 00aba4a0 00abd3e0
+CAICreatureWillPowerIndicatorDef	9	1	004d5dfe 004d928e 004e14fd 007e0e70 007e1230 008c44b0 00972340 0097ef60
+CAIStateGroup_ApprenticeHero	9	5	008fe84f 008fe862 008fe8a6 00929f10 00929f70 0092a220 0092a8a0 0092afe0
+CAIStateGroup_Guildmaster	9	3	008fdfa7 009030cb 00977730 00977770 009777a0 009779a0 00977a30 00977b10
+CAIStateGroup_WorkAtSchool	9	3	008fd9ff 008ffcc2 009425f0 009426d0 009429c0 00942a00 00942c10 00942c70
+CAnimComponentCombatComboChain	9	2	005db2c0 005db2e0 005dc650 005df6b0 005df6d0 00733950 007345d0 00738980
+CAnimComponentCombatHandedness	9	2	005db250 005db280 005dc550 005df690 00666b50 00669cb0 007345d0 008c6db0
+CBonusItemDef	9	0	0044c37e 0044f9d3 0045279b 00453c58 007e1d30 007e1eb0 007ed870 007edbe0
+CCreatureAction_BalverineLungeAttack	9	0	008cc8a0 008cc8e0 008ccc50 008ccc70 008ccd70 008cd2a0 008cd370 0094f640
+CCreatureAction_BanditKingUnstuck	9	1	008c8130 008c8550 008c8c30 008c8f70 008c91e0 008c95b0 008c9620 008c96d0
+CCreatureAction_CastAssassinRush	9	2	0072caa0 008c2550 008cd470 008ce040 008ce100 008ce1b0 008cef20 008cef50
+CCreatureAction_CastWillEnflameSpell	9	0	0072c790 008ba220 008ba370 008ba3c0 008bb450 008bb500 008bdd60 008be350
+CCreatureAction_DragonFireBlastBase	9	0	008f2d40 00953630 009536d0 00953750 00953780 009539e0 00953d30 00953d60
+CCreatureAction_DragonFlight	9	2	007ddda0 008f2ae0 008f2e00 008f3020 008f4cb0 008f4d00 008f4d60 008f56a0
+CCreatureAction_ProjectileCrouch	9	0	008b6c30 008b8260 008b8310 008b87c0 008b89e0 008b8a10 009713e0 009790f0
+CCreatureAction_TrollThrowProjectile	9	0	008c64f0 008c67a0 008c6a50 008c7390 008c7400 008c7d50 008c7d80 00907e00
+CEngineInternalPrimitive2DStaticMesh	9	6	00a606c0 00a60860 00b9d040 00b9d070 00b9dfc0 00b9e490 00b9e4e0 00b9e8c0
+CEnginePrimitiveAttachmentManager	9	4	00b23c80 00b2a200 00b38ed0 00b39f30 00b3a0d0 00b3a110 00b3a180 00b3aad0
+CEnginePrimitiveManagerRepeatedStaticMeshes	9	6	00b32f70 00b99710 00b99860 00b999f0 00b99b50 00b99d90 00b9bcc0 00b9bfa0
+CEnginePrimitiveManagerRepeatedZSprites	9	3	00baa6a0 00baa820 00baba70 00babb50 00babe60 00babf70 00bac0f0 00bac320
+CEnginePrimitiveOcclusionManager	9	6	00b29b10 00b2f7c0 00b2f9f0 00b2faf0 00b91140 00b92450 00b936e0 00babf70
+CEngineVideoOptionsDef	9	1	004340d0 00434120 00434220 00434450 00434540 00b24500 00b24690 00b59870
+CFileDataInputStream	9	5	00994300 00994360 009943d0 00994700 00994780 009971a0 009b08c0 009d0380
+CFontDataBankEntry	9	2	009e2ba0 00a633a0 00a63440 00a63480 00a634f0 00a63580 00a635f0 00a636c0
+CGameEventPackageSet	9	2	00416148 004161a7 004164e0 00417001 00418dca 004aeaa0 009f19a0 009f1a80
+CGroundNavigatorExternalInterface	9	16	006cc6b0 006cd7b0 006cd890 006cda10 006cdb50 006cdb90 006cdd50 006ce670
+CInputProcessJumpingAndRolling	9	0	00488020 0048d390 00635e90 006360a0 00636d40 006a4010 006a4040 006a40b0
+CKrakenTentacleDef	9	0	004d5dd5 004d9248 004df050 004e1494 007f1170 007f11d0 007f1410 007f16b0
+COverheadDisplayDef	9	4	004d5116 004d8ad4 004e0eb7 004e0ebc 007b7c30 007b7c80 007b7cd0 007b7f50
+CScriptGameResourceObjectScriptedThing	9	23	00903710 00903760 00903810 009038d0 009039d0 00903ac0 00903e20 00904030
+CSnowTrollDef	9	2	0044c657 00450049 00453014 004541df 008c6db0 008c7a70 00961ab0 00961b90
+CStreamingFontDataBankEntry	9	2	009e2c10 00a5f0b0 00a5f110 00a5f150 00a5f1c0 00a5f250 00a5f2f0 00a5f430
+CSuspendableProcessMicrothread	9	4	0088bbe0 00a44620 00a44660 00a44690 00a44740 00a447d0 00a44840 00a44880
+CTCHighlightItem	9	2	004d4548 0077c920 0077cb60 0077cbe0 0077cca0 0077cd50 0077cdd0 0077cfc0
+CTCNoise	9	1	004d3658 004d3675 00749810 00749860 007498e0 007499b0 00749a50 00749a70
+CTCSpotLight	9	3	004d33dc 004d33f9 00731ca0 00731d40 00731db0 00731e20 007320e0 00732580
+CTextureRenderer	9	1	00a3b510 00a3b590 00a3b5f0 00a3b730 00a3b970 00a3b9d0 00a3bc20 00a3bd00
+C3DMeshFileSmoothingGroupsChunk	10	0	00ab9f80 00abb4f0 00abb580 00abbfc0 00abc470 00abc4a0 00abc500 00abc980
+CAIStateGroup_LightHomeCandle	10	1	008fdc30 00900008 0090004b 00946620 00946690 00946730 00946850 00946ae0
+CContextSensitiveItemDef	10	1	0044c368 0044f969 0044f98d 004526b3 004df6f4 00583a92 00592962 0059308a
+CCounter	10	1	00cd4490 00d90550 00d90670 00d907b0 00d90b30 00e5d140 00e5f2b0 00e5fb80
+CCreatureAction_BlockBase	10	0	008552f0 008553c0 00855430 00855500 00855af0 00855b50 00855b90 00855d20
+CCreatureAction_CastBattleCharge	10	1	0072c9c0 008cd5a0 008ce290 008ce2f0 008ce340 008ce3c0 008ced50 008ceff0
+CCreatureAction_CastPhysicalShieldSpell	10	2	008ba790 008bb670 008bb6f0 008bddc0 008be400 008be430 008e0060 009092c0
+CCreatureAction_Die	10	0	00865e20 0087e840 008c3f00 008c9fc0 008ed650 008ed770 008ed7a0 008ed830
+CCreatureAction_GoUnderground	10	0	008b69f0 008b6a20 008b75e0 008b8110 008b8780 008b8970 008c2490 008df640
+CCreatureAction_InterruptableMidAttackAutoTurn	10	0	0087c850 0087c880 0087c8b0 0087c900 0087cb10 0087cd50 0087cdf0 0087cec0
+CCreatureAction_SummonerFlameSlice	10	1	006f5b50 006f89c0 006f89f0 008cad10 008caf10 008cafa0 008cbb90 008cbca0
+CD3DFormatInfo	10	0	009be590 009be610 009be6c0 009be750 009bebb0 009e3640 009e3790 009e3830
+CFrontEndScreen	10	4	0054e280 0054e3d0 0054e450 0054e4b0 0054e4f0 0054e580 00ce0ec0 00d2d900
+CInputProcessMain	10	0	00488020 0048b3d0 00634f60 006369b0 00636b00 00687db0 00687e10 00687e70
+CMemoryAllocatorFixedSize	10	4	00a65e70 00a65f40 00a65ff0 00a660a0 00a66100 00a66160 00a661d0 00a66260
+CShopItemDef	10	5	004d405a 004d8427 004da5bd 004e9bb7 004e9bda 004e9c39 004ed04d 004ed0c6
+CSpotLightDef	10	0	004d340c 004d7cdd 004dde50 004e02ed 004e02f2 00731bf0 00731ca0 00731d40
+CStartupDefinitionManager	10	5	004083e0 0041db1d 0042e204 0042e98f 0042f5a9 0042f722 0043368d 00433693
+CStaticMapBankFile	10	0	00b3ecc0 00b3ff70 00b40000 00b41e50 00b41fa0 00b423f0 00b42530 00b42750
+CTCWallMount	10	2	004d5bd1 004d5bee 006bffd0 007de4a0 007de530 007de5d0 007df130 007df2b0
+CTavernTableDef	10	0	00485125 004853bd 004d512c 004d8b1a 004de9d2 004e0ee3 005f9bb2 006313a0
+CThingFilter_OverlappingSphere	10	1	006689e0 00669110 006698d0 006fe5b0 00785dd0 00877eb0 00877f40 008e57d0
+CThingHolySite	10	1	00529ad0 0052ac90 0083b9e0 0083b9f0 0083ba20 0083ba70 0083bab0 0083bb40
+CThingNoise	10	1	00662110 007461c0 007479b0 00838530 00838550 00838560 00838570 008385b0
+CWADFile	10	7	004fbf60 00506e30 00733210 00a39b40 00a39b70 00a39c80 00a39cc0 00a39d20
+Mass	10	0	008ee910 008ee9b0 008eea30 008eea80 008efd50 008eff40 008effd0 008f0080
+C3DAnimFile	11	1	00a4ebb0 00a537f0 00a737b0 00a73840 00a98e60 00a98f40 00a99420 00a99510
+C3DAnimFileBoneMaskChunk	11	1	00a999b0 00a9a7c0 00ab0110 00ab0590 00ab0620 00ab06b0 00ab0700 00ab0730
+C3DAnimFileMovementVectorChunk	11	3	00a4ebb0 00a999b0 00aae130 00aae2a0 00aae2c0 00aae400 00aae520 00aae5b0
+C3DMeshFileDummyObjectChunk	11	0	00aa9910 00aa9a70 00aa9e10 00aa9e60 00aaa0c0 00aaa3e0 00aaa470 00aaa550
+CAIStateGroup_MeleeCombatNearby2	11	2	008fd8ea 008ff98e 0093dae0 0093db10 0093db70 0093dbd0 0093dde0 0093dfc0
+CAIStateGroup_TavernKeeper	11	4	008fe521 00901783 009681a0 009681e0 009683a0 00968860 00968950 009689c0
+CAIStateGroup_WanderAroundShops	11	1	008fdc91 009000bc 00946dd0 00946e10 00946e70 00946f30 00946f90 00947110
+CChestDef	11	1	004d3826 004d805c 004d8072 004de204 004e0569 0074ee90 0074f7d0 00750050
+CCombatAbilityAttackBase	11	1	0044c503 0044c535 0044c54d 0044c565 0044fcd7 0044fd16 0044fd55 0044fd94
+CCreatureAction_InterruptableMidAttack	11	2	006f7fb0 006f8640 0087c800 008ae160 009066c0 00908a20 00908b50 00909ba0
+CCreatureStatsDef	11	1	0044c32d 0044f90f 00453b4d 00675c00 006765a0 00692c30 00696130 00838a30
+CDriveManager	11	3	00406e30 00407040 0049e740 004a05c0 004a2d70 009a6610 009a6e80 009e4ae0
+CEngineInternalPrimitiveGroup	11	1	00bc5fc0 00bc6100 00bc6130 00bc6180 00bc61c0 00bc6210 00bc6270 00bc64d0
+CFontDataBank	11	3	009e2ba0 009e2e30 00a63380 00a633a0 00a635c0 00a635f0 00a63630 00a63680
+CHeroMarriageDef	11	3	0044c29c 0044f7fe 00453911 006ced50 006cef20 006cf1d0 006cf920 006cfda0
+CHeroTitleDef	11	0	0044c394 0044fa19 00452884 00453cea 005b1e5a 005bf654 006ca0a0 006ca120
+CImaAdpcmCodec	11	1	00c5f000 00c5f030 00c5f070 00c5f110 00c5f150 00c5f2d0 00c5f350 00c5f3b0
+CLightDef	11	0	004d33c6 004d7c97 004ddcfa 004e027e 00583cd4 0059346a 00640d00 00640df0
+CMarkerInfo	11	3	00442610 0082a210 0082a230 0082a340 0082a390 0082a500 0082c370 0082c4c0
+CNavigationPosition	11	0	0050af10 00517ba0 0051d590 00a77570 00a7a760 00a7e440 00a7e9d0 00a7eb00
+CQ_RansomVictimChiefsHouseScript	11	3	00debe10 00debe40 00debe50 00debee0 00dec4c0 00dec570 00dec590 00dec5b0
+CSpecialAbilitiesPhysicalShieldDef	11	1	00457776 0045782f 0045fee3 00465390 0079dcc0 0079e250 0079e300 0079e420
+CSummonerDef	11	2	0044c683 004500d5 004530dc 0045426c 008cb250 008cb940 008cbff0 0096f770
+CTCShotDefinitionProjectile	11	0	004d53a8 004dc991 004dca3a 004dca62 004dca91 004dcab9 004dcae9 004de742
+CTCVolumeContainmentTracker	11	1	004d47cc 004d47e9 00705d40 00785110 00785150 00785b40 00785c80 00785cc0
+CVillageTaskPickCrops	11	2	0065ea1b 0065eeff 0065ef35 0065ef51 0065ef72 00660457 00660980 008603d0
+ThingLList	11	0	0051df80 0051e000 0051eab0 0051ebd0 0051ec50 0051ecc0 0051fcc0 00523440
+C3DVertex2	12	0	00a8efa0 00a8f770 00a8ff50 00a90450 00a96a90 00a97040 00abbd70 00abbdf0
+CAIStateGroup_BuyFromSeller	12	2	0047cfee 006bf7b0 007e5950 007f2100 007fd3d0 008fdd39 00919a00 00919a40
+CCombatAbility	12	5	007332f0 007334f0 00733620 00733f70 007340b0 00734340 007352d0 00738d10
+CDoorDef	12	0	004d330a 004d7c0b 004ddb76 004e01d9 004e01de 00655d28 007306c0 007308f0
+CDrawMiniMap	12	1	00438230 00438460 0043e420 00643e09 00643e2e 0064401c 00644179 006441be
+CEntityScriptBindingBase	12	0	00cb8230 00cb8960 00cb8d30 00d5ab40 00d5dd40 00e90830 00e95390 00ebcd70
+CGameJoystickManager	12	2	00416296 0041cfb2 0041db84 0042dc63 00449e60 00487aa0 0048a210 00496cf0
+CMultiStaticMeshEntryDef	12	0	004da655 004eb6e7 004eb864 004eb8a1 004eb8c3 004eb90c 004edf0a 004edf44
+CNavSwitchableLeafNode	12	9	009f4980 00a76550 00a76c70 00a77420 00a77b80 00a77c30 00a78800 00a79930
+CNymphDef	12	0	004d6165 004d93c4 004df1e9 004e176e 0080f130 0080f190 0080f210 0080f270
+CQS_GuardianSisterInfo2_SisterInBanditCampScript	12	4	00e267e0 00e26810 00e26820 00e268b0 00e268c0 00e26af0 00e26bb0 00e26bd0
+CStealthDef	12	0	004d3642 004d7f20 004e042a 00747090 007470e0 007471a0 00747560 00747660
+CTCBoastingPosition	12	2	004d46f9 004d4716 00781da0 00781df0 00781e40 00781f10 00781fe0 00782060
+CThingPhysicalSwitch	12	1	00529ca0 0052ad50 0083d6d0 0083d6f0 0083d700 0083d710 0083d800 0083d940
+C3DMeshFileEngineMaterialChunk	13	2	00a9d270 00abf840 00ac07a0 00ac0830 00ac0910 00ac09a0 00ac51d0 00ac5260
+C3DMeshFileMaterialListChunk	13	1	00a9b1a0 00a9b230 00abfb90 00abfbb0 00ac04c0 00ac0550 00ac0630 00ac06c0
+CACompressor	13	1	0052ada0 0052ae10 00996230 009967e0 00996990 00996a40 009c4330 009c6f40
+CAIStateGroup_TavernServer	13	6	008fe50e 009016d9 00901750 00966a90 00966cf0 009670a0 00967110 00967180
+CASoundManager	13	1	0042ebb6 004a6550 006b1550 006b1f30 00991670 00991880 009918f0 00991910
+CCombatAbilityBlockDefBase	13	0	00453e2d 00453e6a 00453e84 00453e9e 00453eb8 004549ce 007380d0 007381f0
+CEngineInternalPrimitive2DViewport	13	0	00af70d0 00af7170 00be1b50 00be1d80 00be1db0 00be1df0 00be1e70 00be2190
+CEnginePrimitiveManagerMeshBase	13	1	00ba1ac0 00ba9360 00ba95d0 00ba9a70 00bc3390 00bc3c20 00bcf2e0 00bd1ef0
+CExplosionDef	13	0	004e1341 004e2ecf 004e3096 004eb02f 00750be0 00751190 0080c190 0080c350
+CLandscapeBackgroundSubNodeBase	13	9	00be8e60 00bf6490 00bf6750 00bf6a30 00bf6ac0 00bf6b70 00bf6bf0 00bf71d0
+CMovie	13	5	00547b90 00547be0 00547c10 00547c90 00547e40 00547f60 005482d0 00548350
+CNetworkClient	13	4	00416392 004164e0 00417001 004189c2 00418b7a 00418dca 00419323 00419365
+CRenderStateCaptureBlock	13	3	00499880 00b2e6c0 00b4d210 00b5e700 00b61690 00b86c00 00b88bc0 00b898d0
+CSpawnedFunc1	13	53	00ce3d70 00da6d50 00da7830 00da7d30 00e04bd0 00e0e2e0 00e1c580 00e1cac0
+CStockItemDef	13	0	004d40fe 004d8482 004d84a6 004de4b2 004e0707 004e070c 0059350c 00772250
+CStreamingFontDataBank	13	4	009e2c10 009e2e30 00a5ef10 00a5ef50 00a5f010 00a5f0b0 00a5f0f0 00a5f290
+CTCCameraCollision	13	1	004d6209 004d6226 004db024 004dc6ba 007710d0 007df3d0 007e3010 007e3020
+CTCDoor	13	16	004d32da 004d32f7 007305d0 00730630 007308f0 00730ae0 00730f90 007312b0
+CTCQuickAccessMenu	13	1	004d6135 004d6152 00584a73 00625910 00625950 006259e0 00625a20 00625ed0
+CTCStockItem	13	7	004d40eb 004dc737 004dc775 004de414 007f4f80 007f4fc0 00809270 00809d60
+CTCTurncoat	13	1	004d56c3 004d56e0 0072b160 0076cfe0 007c6940 007c7840 007c7870 007c78c0
+CTVertexRHWColSpecTex1	13	0	009c2fd0 009db810 009dbae0 009dbd10 009dc030 009dc2c0 009dc870 009dca80
+CV_HiddenBootyScript	13	2	00e92970 00e929a0 00e929b0 00e92a40 00e92f70 00e93050 00e93080 00e93a60
+C3DAnimationTransitionState	14	4	0070bf50 0070c900 0070cad0 0070cc70 00710560 007105a0 00a3be30 00a3be70
+CCreatureAction_UnsheatheWeapons	14	2	006ebdd0 008b7ba0 008b7cf0 008b7ed0 008b8560 008b8590 008b85d0 008b8820
+CDeviceResetCallback	14	0	00408990 00415940 004175da 00418b7a 004cea60 0056a8c0 00929650 009a60d0
+CEnginePrimitiveManagerStaticMeshesBase	14	1	00b32f20 00b9d100 00b9d670 00b9e750 00ba1110 00ba1a70 00ba1ac0 00ba6dc0
+CEnginePrimitiveRendererSharedData	14	0	00b32660 00b33520 00b36ce0 00b36ec0 00b37410 00b91140 00b99bb0 00ba9360
+CEngineSimulationManager	14	14	00b2a340 00b806d0 00b806e0 00b80840 00b80940 00b80b70 00b812f0 00b814b0
+CEngineSurfaceCompositionManager	14	8	00b239c0 00b23ce0 00b2a2a0 00b2ae60 00b2aef0 00b2b000 00b2b790 00b2c4e0
+CEnvironmentSpellEffectInterpolator	14	1	0049f180 006b4900 006b7380 006b8310 006b84e0 006b8550 006b85d0 006b8640
+CIDrawWorldMap	14	0	004fa550 004fb290 004fb2a0 004fc6c0 004fc760 004fc7c0 005066e0 0051cdf0
+CLookDef	14	2	004d3926 004d8108 004de28c 004e05df 00751bc0 00751fc0 00752000 00752190
+CMemoryAllocatorBase	14	10	009f2390 009f2400 009f2500 009f2610 009f2920 009f2a40 00a64e70 00a65060
+CNavRegion	14	0	00a1bca0 00a75a70 00a772d0 00a77710 00a77a10 00a77e80 00a78060 00a780b0
+CQuickDrawTriInfo	14	0	009c2f50 009c2fd0 009d8c30 009db700 009db810 009dbae0 009dbd10 009dc030
+CRegionMinimap	14	7	00442610 0066c6d0 0066c750 0066ca80 0066ccc0 0066ccf0 0066dbb0 0066dc50
+CTattooDef	14	5	0044c3aa 004529ae 00453d46 00581765 005a30a1 005b1efc 0071b840 0071c2d0
+C3DAnimation2	15	4	00a25b20 00a4c1a0 00a4df10 00a4e100 00a4e150 00a4e250 00a4e960 00a4ee10
+C3DMeshFileHelperPointChunk	15	0	00aa96b0 00aa98b0 00aa9910 00aa9a70 00aa9b20 00aa9ba0 00aa9da0 00aa9e10
+CLipSyncDataBank	15	4	006e2940 006e29a0 006e2a50 00992470 00a427e0 00a42830 00a42ac0 00a42b80
+CSB	15	2	00a19d00 00a1b470 00a1c700 00a1c950 00a20870 00a208a0 00a208d0 00a20920
+CShaderDataBank	15	8	009c2fd0 009d9a30 00a5d510 00a5d620 00a5d7c0 00a61fc0 00a62020 00a62050
+CVillageTaskPatrol	15	3	0065852d 00658a02 0065dbd9 0065ee66 0065eea0 0065eebc 0065eedd 0066041a
+CWillButtonHelperTimer	15	1	0078f5a0 00792830 00794ac0 007a07f0 007a09b0 007c66f0 007c6760 007c6a40
+C3DAnimFileSequenceChunk	16	1	00a4fd70 00a99610 00a999b0 00aae970 00aaea00 00aaf5b0 00aaf650 00aaf730
+C3DAnimationSequenceData	16	0	00a4be80 00a4beb0 00a4cdd0 00a4dea0 00a4df10 00a4e100 00a4e150 00a4e250
+C3DMeshFileLoader	16	0	00a25d20 00a9a900 00a9ad00 00a9b640 00a9b740 00a9b840 00a9b870 00a9b8a0
+C3DMeshFileTrianglesChunk	16	3	00abb070 00abb100 00abb190 00abb220 00abb300 00abb390 00abbe90 00abbf30
+CAIStateGroupBehaviourBase	16	2	00900760 00900792 009007c7 009007f9 0090082b 0090085d 0090088f 009009a7
+CAIStateGroup_Gaze	16	1	00918190 00918230 009182b0 009182d0 00918350 009183a0 00918480 00918510
+CAIStateGroup_JackDragon	16	4	008fdeb0 00900647 0094fa00 0094fbb0 0094fdf0 0094fe30 0094feb0 0094fff0
+CAIStateGroup_JackOfBladesBase	16	3	009000bc 009004e0 00902fe8 00903046 00903095 009030b9 00903216 009718f0
+CAugmentationDef	16	0	0042b248 0044c5ff 0044ff31 00452cdd 00454088 005bec92 005c770c 00765f90
+CChunkedFileLoader	16	0	00a98be0 00a98c80 00a98d20 00a98dc0 00a99420 00a99510 00a996d0 00a999b0
+CClassTypeInfo	16	0	004c7da0 0051fcc0 00a36f90 00a36fc0 00a371c0 00a371f0 00a373b0 00a37880
+CConversation	16	0	00e54990 00e54aa0 00e54c50 00e54ca0 00e54d10 00e54d80 00e54e40 00e566f0
+CEngineOcclusionManager	16	12	00b29a70 00b6e260 00b8d280 00b8d2f0 00b8d3c0 00b8d420 00b8d6c0 00b8d780
+CLandscapeBackgroundSubNodeSplitBranch	16	5	007e33a0 00bf6260 00bf6490 00bf6750 00bf6a30 00bf6ac0 00bf6b70 00bf6bf0
+CManagedTextureData	16	4	009fd9b0 00a697a0 00a69810 00a69830 00a69980 00a699d0 00a69a80 00a69c20
+CMeshBankManager	16	3	0042dd28 0049e620 004a6ab0 004ae8a0 009a60d0 009a6610 00a09d90 00a09dc0
+CTCDPhysicalObstruction	16	1	004d5fdb 004df14b 004df1a6 004df1bc 004e15d3 004e160c 00788229 0078f4d0
+CTCHaste	16	2	004d4aff 004e0c61 004e0c8e 004e2b4b 0057d5a0 0058148d 006655a0 00694020
+CTCHeroCentre	16	1	004d45fa 004d4617 006223c0 0062c1c0 0062c300 0077d3d0 0077d3e0 0077d400
+CTCNamedUserActionPoints	16	1	004d34ed 004e0398 004e03bb 004e23ff 007ba000 007ba1d0 007ba3c0 007ba550
+CTCPhysicsNavigator	16	3	004c7440 004d29e1 006bd830 007236c0 00725040 007266c0 007267c0 007268d0
+CVillageTaskHorn	16	2	006584f9 0065a00f 0065e9ee 0065edba 0065edf0 0065ee0c 0065ee2d 00660298
+CVillageTaskSecuritySweep	16	2	00658586 0065a031 0065dce8 0065dd4a 0065ea48 006602f0 00660494 006609f6
+C3DAnimationStateAlpha	17	0	0070bf50 0070c770 00a3c0c0 00a3cb90 00a3cbe0 00a3cc30 00a3cd00 00a3cdd0
+C3DMeshFileHelpersChunk	17	0	00a9b340 00a9b3d0 00aa9650 00aa9670 00aaa100 00aaa190 00aaa270 00aaa300
+C3DMeshFileMaterialChunk	17	3	00abfbf0 00abfcf0 00ac0010 00ac04c0 00ac0550 00ac0630 00ac06c0 00ac0ab0
+C3DMeshLODInfo	17	4	00a23de0 00a23e40 00a23e80 00a24430 00a24470 00a244e0 00a24870 00a24930
+CClassFactory	17	4	004c7da0 00523440 00523540 00a175a0 00a18f70 00a1cbf0 00a36f80 00a36f90
+CCombatAction_GenericStrikeResponseKnockdownRecoverBase	17	2	007f04c0 007f05c0 007f0660 007f06b0 007f06d0 00865b30 00865d40 00865dd0
+CCreatureAction_FireMissileWeapon	17	1	00715110 0078adf0 008d5000 008d5020 008d5110 008d51d0 008d5790 008d58d0
+CInputEventScanInfo	17	1	0042e3ee 00446330 009e41e0 009e4230 009e4280 009e4360 009f4ed0 009f4f10
+CNavBlockedQuadTreeNode	17	2	00a15140 00a1ca70 00a1cb40 00a472f0 00a75c20 00a75ca0 00a75ce0 00a75d20
+COracleMinigameTestScript	17	5	00effd30 00effd60 00effd70 00effe00 00effe10 00f00000 00f000b0 00f000c0
+CScriptConversation	17	3	006e55b0 006e5790 006e58a0 006e5990 006e60f0 006e6150 006e61a0 006e6990
+CTCBulletTime	17	9	004d4c58 004d4c75 0072acf0 0072b420 0072ba40 0072bc60 0079c750 0079ce80
+CTCTurncoatSpell	17	2	004d5690 004d56b0 0072b160 0072b420 007c66e0 007c66f0 007c6760 007c6940
+C3DAngles	18	0	00820840 00824fb0 00825a80 008260c0 0082e500 0082e600 0082e6e0 0082e780
+C3DAnimFileHelpersChunk	18	1	006f5610 006f5650 006f5ac0 00a4ebb0 00a99300 00a99390 00a999b0 00aaacd0
+CChunkedFile	18	0	00a32620 00a537f0 00a98e60 00a98f40 00a99420 00a99510 00a99840 00a9ad80
+CEngineInternalPrimitiveStaticMesh	18	3	00b81180 00b812f0 00b81ea0 00b81ed0 00b81f00 00b9cfa0 00b9cfc0 00b9cfe0
+CFeatDef	18	0	00f28f20 00f2d010 00f2d200 00f2d270 00f2d2f0 00f2d330 00f2d680 00f2d690
+CGameComponent	18	0	00412f90 00415940 004164e0 00417001 004175da 004189c2 00418b7a 00418dca
+CKeyboard	18	5	00446720 009f4e20 009f4e70 009f5540 009f5c80 00a5ffd0 00a60050 00a66770
+CMarkTestScriptsScript	18	4	00efc930 00efc960 00efc9f0 00efca00 00efcb70 00efcc20 00efcc30 00efd680
+CQ_GuildTrainingPreMeleeScript	18	4	00d51420 00d51450 00d51460 00d514f0 00d51500 00d51e20 00d51ed0 00d51ee0
+CTCOracleMinigame	18	10	004d65bc 004d65dc 00691680 007e5d20 007e5f00 007e5f70 007e5ff0 007e60f0
+C3DAnimFileObjectChunk	19	1	00a4df10 00a98fa0 00a99030 00a99110 00a991a0 00a99610 00a999b0 00ab0020
+CAIStateGroup_CreatureUseCoverBase	19	11	00902f71 00902fb9 0090313f 0090315b 009031de 00970590 009705d0 00970600
+CAIStateGroup_MeleeCombatNearbyBase	19	0	006e8400 008ff94e 008ff98e 008ff9c0 0090233c 0093d140 0093d180 0093d3a0
+CEdgeStipVertexArray	19	0	00be8e60 00bfbd80 00bfc2e0 00bfc3b0 00bfc410 00bfc4c0 00bfc510 00bfc590
+CEngineWeatherRenderer	19	6	00b24010 00b24020 00b2a700 00b50c80 00b50e50 00b513b0 00b51ea0 00b51f00
+CJoystick	19	4	0087ca30 009e41e0 009e4230 009e4280 009e42e0 009e4360 009e43b0 009e4420
+COptimisedPrimitive	19	5	00ac7e10 00ac8170 00ac8540 00ac85d0 00ac8680 00ac8840 00ac8a60 00ac92c0
+CTCBoastUI	19	3	004d5fab 004d5fc8 0056a840 0056a860 0056a8c0 0056a930 0056a980 0056ac10
+CTCTeleporter	19	1	004d5c8d 004d5caa 005fbd20 005fc620 005fcb10 005fd1d0 007df6a0 007dfcf0
+CTextureManager	19	3	0071d3b0 009fd3a0 009fd660 009fea20 00a696d0 00a69730 00a698b0 00a698f0
+CThingVillage	19	1	0048b160 0048b220 0048cb50 0048cbd0 00511910 005166b0 005299c0 00529a20
+CVillageTaskTorch	19	3	006584c5 00659fed 0065e9c1 0065ea75 0065ed08 0065ed3d 0065ed59 0065ed7a
+C3DMeshFileClothChunk	20	1	00a9d3c0 00abaaf0 00abab80 00abac60 00abacf0 00abba90 00abbb20 00abbc00
+C3DMeshFileGroupChunk	20	0	00abae50 00abaee0 00abb7b0 00abb840 00abb920 00abb9b0 00abc370 00abc420
+CBaseVideoRenderer	20	23	00a3b510 00a3b970 00a3b9d0 00a3bd00 00ca5360 00ca5570 00ca5610 00ca56e0
+CCriticalSectionLock	20	7	009c31e0 009c3530 009c3590 009c3660 009c4120 009c4230 009c43e0 009c4f20
+CEngineLocalDetailGenerator	20	1	00b24690 00b2a7a0 00b42a90 00b42b10 00b42d10 00b597e0 00b59800 00b59840
+CEnginePrimitiveRenderer2D	20	2	00655fe9 006724b0 00b23eb0 00b2a0c0 00b324a0 00b4a5f0 00b4a670 00b4a6a0
+CEngineShadowRenderer	20	8	00b23f70 00b23f80 00b24500 00b2a3e0 00b33010 00b38890 00b444f0 00b47310
+CFireHeartPatternDef	20	0	00d34d40 00d34f80 00d34fb0 00d34fd0 00d35020 00d35070 00d36140 00d3b010
+CNavQuadTreeNode	20	0	00a75c20 00a75ca0 00a75ce0 00a75d20 00a75d60 00a75da0 00a75e00 00a75e30
+CPersonalScript_alextestScript	20	6	00eed280 00eed2b0 00eed2c0 00eed350 00eed360 00eed4d0 00eed580 00eed5b0
+CQ_OakValeBanditRaidScript	20	3	00dbf190 00dbf1e0 00dbf210 00dbf2a0 00dbf2b0 00dbf2d0 00dbf9e0 00dbfdd0
+CRenderManager	20	10	0041a980 00499880 00499d90 004c7ac0 009bf500 009c01c0 009c0e50 009c1050
+CTCTargetingPlayer	20	2	0049d450 004e2250 004e231d 004e2328 004e3783 006355d0 00635840 00636480
+CTavernGameCardBaseDef	20	0	004e1195 004e2db2 004e2dcb 004e2de7 004ebc16 004f9a90 007d4e30 007d4ed0
+CThingFilter_HasDefGlobalIndex	20	1	006a70b0 0074d940 007b6300 007fbc90 007fcef0 008a8890 008a9c40 008adba0
+CThingSwitch	20	1	00529b00 00529b60 00529ba0 0052ace0 0083bd80 0083be20 0083be30 0083be40
+CASuspendableProcess	21	1	004ff080 00521240 0068f2a0 006c2710 0072a860 0075c160 0075c170 0088bbe0
+CArenaRoundDef	21	0	00cfac40 00f1a8f0 00f25980 00f25b00 00f261a0 00f268f0 00f26b30 00f27e60
+CHeroSoulsRoundDef	21	0	00cdb820 00f26b90 00f26c30 00f26db0 00f27440 00f27b90 00f27e00 00f285d0
+CMouse	21	5	00445ae0 00445b40 0055bf10 009f4e20 009f4e70 009f5170 009f53c0 009f54d0
+CPreTransposedBoneMatrix	21	0	00987f70 0098a7f0 0098a8e0 00b6e010 00b75ca0 00b76bc0 00b77e20 00b7af30
+CShopItem	21	0	004d405a 004e069f 004e9bda 004e9c39 004ed0c6 004ed102 004ed161 00772250
+CTCShapeManager	21	3	004d3c31 004d3c4e 0074a260 0075db90 0075dc00 0075dc60 00760870 00760910
+CTCTargetingAI	21	1	004dda37 004dda7f 004ddae5 004e0047 007f59c0 007f59f0 007f6170 007f61b0
+CVillageTaskCarryCrate	21	0	006585ba 00659104 00659c7e 0065a053 0065dc06 0065ef94 0065efd8 0065eff4
+C3DAnimationStats	22	0	005db6b0 006f90d0 006f9130 006f91e0 006f9240 006f9790 006f9820 00a36df0
+CAIStateGroup_MinionSitOnSeatBase	22	1	008ff247 008ff28d 008ff2bb 008ff2ec 008ff35a 00902122 009021c8 0090f710
+CCombatTypeDef	22	4	00455da3 00455de3 0045c2e8 0046f7c8 00664a50 00667c00 006e8050 006e9d90
+CCreatureAction_PlayCombatAnimation	22	6	008b7f80 008b7ff0 008b8050 008b80e0 008b8700 008b8840 008b88a0 008c2550
+CEnginePrimitiveTypeInfo	22	12	00a148d0 00a62e20 00b29930 00b324a0 00b33ae0 00b4abb0 00b8faa0 00b8fb50
+CInputProcessInventoryBase	22	1	0048b4e0 00634f60 00635080 00635190 006352a0 006353b0 006354c0 006369b0
+CInventoryItemDef	22	8	0044c108 0044f65a 00451d28 0045370a 005bade1 005bd82e 005bd931 005bdf08
+CMemoryFile	22	4	0040a740 00412070 004120c0 00418c3b 00500230 005177e0 0052f100 009e90a0
+CTCCreatureGroupBoastingCrowd	22	1	004d479c 004d47b9 00783210 00783680 00783a10 00783bc0 00783bf0 00783c20
+CTCPhysicsRigidBody	22	4	004d399c 004d39bc 00759870 00759900 00759970 007599b0 007599c0 00759a00
+CThingDeadCreature	22	1	00527300 00663f50 00835aa0 00835ac0 00835b10 00835b90 00835bd0 00835c20
+CombatDialogueManager	22	2	006e8300 006eb390 006ed200 006ed3f0 006ed480 006f2f60 008aeed0 008aef20
+C3DAnimationState	23	1	0070bf50 0070c770 0070c900 0070cad0 0070cc70 00a3c260 00a3cb90 00a3cbe0
+CAIStateGroup_OpinionReactionRoot	23	2	008fe36e 0090110e 0095ed60 0095ed80 0095edf0 0095ee70 0095f580 0095f660
+CTCActivationReceptorBase	23	0	004de623 004de660 004de68b 004e07e3 00706860 0077b0d0 0077b1c0 007f75c0
+CTCBerserk	23	4	004d4a69 004d4a86 0062cf90 0072acf0 0072ba40 0072bc60 0073a6f0 0073a760
+CV_GhostGrannyNecklaceScript	23	4	00e8b850 00e8b880 00e8b8a0 00e8b930 00e8b940 00e8b960 00e8b9c0 00e8bd30
+CV_ParanoidWhispersScript	23	6	00ebee90 00ebeec0 00ebeee0 00ebef70 00ebef80 00ebf1e0 00ebfb00 00ebfbb0
+CV_TourGuideScript	23	1	00ee41f0 00ee4710 00ee47a0 00ee47b0 00ee4a00 00ee4a70 00ee4bb0 00ee4c50
+CVideoSys	23	4	00547b70 00547c90 00547e40 00547f60 005483c0 00a3b0f0 00a3b130 00a3b1a0
+CHeroAbilityStatWeight	24	0	00458aa7 00458b9d 00461f7c 004665b6 00675c00 006765a0 006768f0 006d6370
+CTCHitLocations	24	1	004d49b7 004e75d9 004e7619 004e7e46 004e7e7f 00788617 007f24e0 008153c0
+C3DAnimFileRootChunk	25	1	00a4ebb0 00a537f0 00a98a70 00a98ab0 00a98af0 00a98be0 00a98c80 00a98d20
+CCarryableDef	25	3	004d79f9 004da78b 004dd924 004dfeb8 005c36c2 005cc10e 006648d0 0069f9e0
+CEngineInternalPrimitiveParticleGroup	25	5	00bb8690 00bbbdf0 00bbbe40 00bbbf00 00bbbf70 00bbc310 00bbc3a0 00bbc430
+CHeroMarriageInfo	25	11	0040e9a0 0057a376 0057ac89 0057bb8d 0057bc6e 0057f24e 0057f2d1 0057f8a7
+CLevelLoader	25	1	004fb4a0 004ff920 00502850 0050f980 00513570 005158b0 00518b80 005195b0
+CMovableResourceMemoryPool	25	3	009d5410 00a24050 00a24150 00a2e760 00a4eec0 00a62e20 00a62e40 00a62ed0
+CNavNavigableLeafNode	25	5	00a75a70 00a75b70 00a76490 00a76500 00a76520 00a76a30 00a76a80 00a76b90
+CTCThingOwner	25	2	004c8e50 004d318d 004ddaed 004ddb18 004e0105 0071b1a0 0071b1b0 0071b200
+CThingTrackNode	25	1	0065b854 0065e78c 006af620 00836c50 00836d00 00836da0 00836ee0 00837040
+CV_LostTraderScript	25	4	00e0c350 00ea2cf0 00ea2d20 00ea2de0 00ea2e70 00ea34f0 00ea35a0 00ea3640
+CVertexBufferBase	25	0	009e27e0 009e2830 009e2890 009e2b20 009e2e30 00a8e160 00a8eda0 00b513b0
+LHHttp2	25	5	0055fb80 00561450 005615c0 00561980 00561dc0 005621b0 00562e70 00562ff0
+CCompressorZlib	26	15	0052ada0 0052ae10 0052ae40 00996230 009967e0 00996990 00996a40 009c4230
+CIsThingConscious	26	29	00cddab0 00cddae0 00cddb10 00d1e3e0 00d408b0 00d68810 00d9c4a0 00d9f270
+CMatrix4x4	26	2	00988290 00988540 00988840 00988e30 009894b0 00989540 009896b0 00a5cee0
+CNavigatorBase	26	17	006cb620 006cb6a0 006cb6c0 006cb6e0 006cb780 006cb840 006cb920 006cba50
+CScriptInfo	26	1	004afa10 00cb5ad0 00cb5c90 00cb5f50 00cb60b0 00cb60f0 00cb6160 00cb6230
+CTCDExplosion	26	1	004e30e7 004e3144 004e3158 004e3ea8 004e3ee1 00750dd0 00788229 007f11d0
+CTCOwnedEntity	26	1	004d3589 004d7e46 004d7e7c 004daf68 005ea9b0 006a8930 006a8c60 006c0c90
+CTCWillLightning	26	5	004d4cb8 004d4cd8 0072b420 0072b870 0072c680 0079f5f0 0079f610 0079f7a0
+CAIStateGroup_HoverHornetQueen	27	5	0045ce22 008fe1dc 0090310e 00903367 00903383 0095a420 0095a490 0095a890
+CBulletTimeManager	27	8	00417001 00419680 004a0220 004a6ab0 004addf0 004ae080 004ae8a0 004c5ea0
+CTCInventoryClothing	27	2	0042d41e 004d2ea7 004e7cc3 004e7d66 004e8967 005b3509 005b3535 005b3555
+CTCTrapBase	27	0	00787bf1 00787bfe 00787c0c 00787c35 00787ca5 00787d4f 00787d94 00787dbc
+CThingMapManager	27	7	004fede0 004feec0 005066e0 00506940 005191e0 0051a080 0051a0a0 0051cdf0
+C3DMeshFileSubMeshChunk	28	2	00a9aec0 00a9af50 00a9b030 00a9b0c0 00a9b460 00a9b550 00ab9a70 00ab9af0
+CCreatureDef	28	2	00485815 0057713f 005cd33f 00665e90 00675c00 006765a0 006768d0 006768f0
+CEngineWaterRenderer	28	8	00b2a520 00b33010 00b40000 00b41fa0 00b42750 00b6d420 00b6d480 00b6d4d0
+CGraphicFrame	28	6	0041ac20 0041b550 0041c0e0 0041c150 0041c260 0041c700 009dca80 009dd210
+CHeightMapCell	28	10	0081ed90 0081ef30 0081f3d0 0081f460 0081f4b0 0081f630 0081f6c0 0081f910
+CTCCreatureGenerator	28	13	004d3793 004d37b3 00749d70 00749dd0 00749e20 00749e40 00749ea0 00749f00
+CTCDriverBase	28	6	004c7540 004c7870 004c7da0 004c9560 004d3f10 004d41f6 004d4260 004d42b2
+CTCInGameMenu	28	4	0047d012 0047d1ac 0047d21c 0047d483 0047d537 0047d5a3 0047d5f2 0047d60d
+CTCInventoryStats	28	1	004d2fdc 005cc6f3 005cc772 005cc862 005cc9ad 005ccbbd 005ccc91 005cceab
+CCombatAction_GenericStrikeResponseBase	29	0	006f5690 006f56c0 006f56e0 006f5720 006f5790 006f5a40 006f5b00 006f5b20
+CHeroCombatDef	29	0	00458aa7 00461f7c 004665b6 00663340 00688c90 006a9ef0 006d6370 006d64b0
+CTCHeroRangedAttacks	29	8	004d4a13 004d4a30 0062b7c0 0062c4b0 00635bf0 00665510 0068eb20 0068f9d0
+CEngineWorldMap	30	5	00b23db0 00b23dc0 00b23e00 00b23e10 00b23e20 00b23e30 00b23e40 00b23e50
+CFontBank	30	7	00404950 00404d20 00404f60 004168dc 0042ddb3 00437210 0043e4d0 0048da62
+CParticleSimulation	30	0	00adf1e0 00adf2a0 00adf300 00adf5b0 00adf610 00adf760 00adfc60 00ae0050
+CQ_EndGameScript	30	6	00d27370 00d273a0 00d273c0 00d27450 00d27950 00d28f70 00d29020 00d29080
+CTCTargeted	30	31	004da8f7 004da922 004dbf1d 006a62e0 006a84f0 0072c230 00782390 007de5d0
+CV_AmbushScamScript	30	10	00e1feb0 00e2abc0 00e2ac90 00e2ad20 00e2ad30 00e2ad50 00e2ba50 00e2bac0
+CMeshDataBankEntry	31	1	00a23910 00a24250 00a24260 00a24270 00a24280 00a24290 00a242a0 00a242b0
+CText	31	4	0041db84 00540980 00546320 00546c90 0054ecb0 0054ed90 0054f370 0054f410
+CEngineResourceManager	32	17	00b23cb0 00b23f40 00b23f50 00b24690 00b299d0 00b3aff0 00b3b030 00b3b060
+CHitParameters	32	2	0048cec0 006d8d00 00788617 00789238 00798770 007a3bc0 007be0f9 007ccb00
+CRenderManager2D	32	1	00404e10 00405020 0041a980 005bcafe 009bf500 009c0e50 009c2fd0 009c3100
+CSprite	32	3	00404c00 0041a850 0041a980 0041ab00 0041ab40 0041ac20 0041b550 0041b800
+CThingMarker	32	4	00529c20 00529c30 005800d6 006156e0 00617780 00617860 00617970 00617a00
+CV_AssassinAttacksScript	32	5	00e376d0 00e37730 00e377c0 00e37cf0 00e37d50 00e37e00 00e37e10 00e38290
+CV_BodyGuardScript	32	1	00e5d140 00e5d1f0 00e5d240 00e5d2d0 00e5d2e0 00e5d300 00e5d4f0 00e5d900
+C3DTriangle2	33	0	00a51c60 00a52080 00a520b0 00a53650 00a6c560 00a6c850 00a6c900 00a6d550
+CAnimFilterNoGroup	33	0	0041cd13 00429a2f 005b37f7 005cd767 00662a00 00662b10 00662c10 00662cc0
+CEngineLandscapeRenderer	33	16	005edf1f 005ee01a 00b2a5c0 00b42a90 00b42b10 00b42d10 00b670e0 00b67140
+CParticleProgram	33	9	00ac3b00 00ac3bd0 00ac3e00 00adfdc0 00ae0050 00ae04c0 00ae04e0 00ae0540
+CThingSoundEmitter	33	1	0065c781 0066a920 0066ace0 0066ad90 0066add0 0066ae10 0066ae60 0066aeb0
+CCombatAbilityData	34	4	0044c41e 0044c45e 0044c47b 0044c4ab 0044c4d5 0044c503 0044fadc 0044fc80
+CFloatRange	34	0	00458aa7 00458b9d 00458d3f 00458d6f 00458f2b 00458f89 00461f7c 0046267d
+CThingFilter_None	34	1	004ad700 004ff920 00518130 0051f980 0051fa00 0052b270 0052b300 0066e5a0
+CVertexCompressionParams	34	2	009e27e0 009e2830 009e2e30 00a8e160 00a8eda0 00a8fd40 00a91180 00a914b0
+CActiveEntityScript	35	205	00ce0ef0 00d7c2e0 00d7fab0 00d82210 00d844a0 00d89580 00d8a960 00d915b0
+CAttackingCombatantInfo	35	0	006e80f0 006e9200 006e93c0 006e9450 006e9680 006e9700 006e97a0 006e97f0
+CEngineMap	35	2	00b3edc0 00b3ef40 00b40000 00b40070 00b401e0 00b40230 00b41c30 00b41db0
+CLevelScriptBase	35	2682	00cf9210 00cfa340 00cfac40 00d005e0 00d27290 00d2f640 00d3b010 00d6ed60
+CLocalDetailCacheMap	35	10	00b3ef40 00b41db0 00b41e50 00b42530 00b42b10 00b42d10 00b59840 00b599c0
+CSimpleMemoryPool	35	17	00987f10 00987f30 0098ab00 0098abf0 0098b420 00a4df10 00a4ee10 00a533f0
+CTCBuyableHouse	35	11	004a0370 004d31eb 004d3208 006bf810 006bf860 006bf8a0 006bf920 006bf960
+CTCHero	35	1	004d3468 004d3485 0057c2e6 00584157 005849ea 005b3c95 005be028 005bf32d
+LSocket	35	1	0083ea50 0083eee0 0083f8b0 0083f9b0 0083ff80 00840070 008405f0 008410d0
+C3DMeshFilePrimitiveChunk	36	0	00a9d3a0 00aba810 00aba8a0 00aba980 00abaa10 00abafe0 00abb070 00abb100
+CEnginePrimitiveRenderUtil	36	0	00b29d90 00b2a160 00b47b50 00b48220 00b8b5e0 00b8b600 00b8b630 00b8c790
+CQ_SummoningTheShipScript	36	9	00df11f0 00df1230 00df12e0 00df1370 00df1380 00df13a0 00df16b0 00df1760
+CTCTargetingBase	36	5	004dda37 004debd4 004e2250 006276f0 006e5690 00753840 007ed170 007ed2c0
+CTestQuest	36	0	004a08d0 004a6ab0 004a7710 004a7750 004a89d0 004a8f50 004aa060 004aa0d0
+CV_MurderTwistScript	36	12	00ea86f0 00ea8720 00ea8740 00ea87d0 00ea87e0 00ea8830 00ea8c20 00ea8e50
+CEAXBuffer	37	6	00c42dd0 00c4e380 00c51f00 00c5ff60 00c60930 00c609a0 00c60a30 00c60b90
+CParsedItem	37	4	004138d0 00997da0 00997e90 00998170 00998210 00998250 00998a30 009b9870
+CPhysicsMeshObject	37	6	004ad3d0 004fb370 0063e480 0063e950 0063efb0 0063f150 0063f1e0 00668ab0
+CShaderResource	37	2	0098a7a0 0098b860 009d9a30 00a5d510 00a5d5f0 00a5d620 00a5d720 00a5d750
+CTCQuestCard	37	11	004b0aa0 004b0b90 004b0c80 004b0d30 004b0f10 004b0fc0 004b1080 004b1110
+CVertexShaderConstantLayout	37	16	0098a540 0098a8e0 0098ab00 0098abf0 0098d490 0098d6f0 0098d710 0098d990
+CAIGameCameraBase	38	12	00487cf0 0049da00 0049da60 0049daa0 0049dbe0 004a2e90 004a6ab0 004ae8a0
+CDataStream	38	0	004ec8c2 0057f9e9 00993af0 00993b10 00993b20 00993e50 00994070 00994430
+CDefendingCombatantInfo	38	0	006e8050 006e8460 006e8850 006e8b10 006e9200 006e9e40 006ea770 006eab00
+CFailedAllocationHandler	38	0	0044c6c2 007327f0 00746860 00772510 00772590 0082d0d0 00830150 0083b3e0
+CPersistContext_TransferableVectorOfSubComponentsGenericType	38	0	00f26250 00f26420 00f26440 00f26470 00f268c0 00f276a0 00f276c0 00f276f0
+CVertexGroupBlock	38	0	00aa5720 00aa5c20 00aa65a0 00aa6c70 00aa7480 00ad8c30 00ad8ca0 00ad8d10
+C3DOrientationInterpolator	39	0	004bc340 004bcfe0 004be4e0 004c2110 004c2130 004c3d30 005508d0 00550940
+CMiniMapDisplay	39	3	00442610 004426e0 00443cf0 004fc8a0 00602f30 0064dfde 0064e83f 00829a30
+COpinionReactionManager	39	1	004a6ab0 004ac800 004ad600 004ae8a0 00681500 006817f0 00681850 006818a0
+CScriptedMapBrush	39	8	004fe550 004fe5b0 0081e9c0 008203a0 00820790 00820840 008209c0 00820ab0
+CEnginePrimitivePrepareInfo	40	1	0043b050 0048f230 0051eab0 00528200 0055d5d0 0056a8c0 0056f090 00581e6f
+CGraphicInfoFrame	40	1	0041ac20 0041b550 0041c260 009fd3f0 009fdb80 009fdcb0 009fdde0 009fe380
+CHoverable	40	2	0053d000 0053d060 0053d0c0 0053dcd0 0053dd50 0054df50 00558540 00558bc0
+CLandscapeBackgroundTreeNode	40	5	007e33a0 00bdc060 00bdc2d0 00bdc3c0 00bdc450 00bdc980 00bdcbb0 00bdd210
+CMemoryDataOutputStream	40	6	004fbde0 00522160 005239c0 00523b40 006f92a0 00994b10 00994b40 00995e70
+CThingCreatureDef	40	1	00661fc0 00661fd0 00662040 006620a0 006623f0 00662400 00663340 00663c40
+CV_MurderTwistFinalScript	40	7	00eae910 00eae980 00eaea10 00eaea20 00eaed90 00eaee10 00eaee80 00eaef30
+CGameScriptThing	41	46	007047d0 00704a80 00744d00 00891ca0 00892220 0089a490 0089bc50 008a1cc0
+CTCShopKeeper	41	1	004d4bae 004d4bcb 006c0fd0 00773aa0 00773c00 00798d90 00798dd0 00798e10
+CTCWife	41	11	004d32a7 004d32c7 00682310 006aeea0 006cebf0 006ced50 006ceea0 006cef20
+CActiveEntityScriptBase	42	2	00cb7bc0 00cb7da0 00cb8170 00cb83d0 00cb88b0 00cb8960 00ce0ef0 00ce1110
+CCodaObjectBase	42	9	00c35e30 00c3c8a0 00c3caa0 00c3d9a0 00c3e2a0 00c3efa0 00c3f000 00c3f030
+CNavQuadTree	42	7	006fc2d0 008292d0 00a14e50 00a14f70 00a150a0 00a15100 00a15140 00a15470
+CTCMapwho	42	48	00429f43 004c8c00 004d3750 004d376d 005c1981 005c281c 00637a10 00637f40
+CGPUScratchBufferTextureManager	43	1	00b3b8e0 00b5bf10 00b5bfd0 00b5c050 00b5ece0 00b5ee00 00b5ee80 00b6d510
+CV_ArcheryCompetitionScript	43	9	00e32350 00e323b0 00e324a0 00e32530 00e32ef0 00e32f30 00e33000 00e33040
+CV_DemonDoorsScript	43	16	00e6e2b0 00e6e2e0 00e6e370 00e6e960 00e6ea10 00e6ea30 00e6f040 00e6f0f0
+CEnginePrimitiveRenderer	44	18	0043b050 0048f230 0064499c 00645099 00645292 006541d1 0071ab20 007e7c90
+CQ_HeroSoulsArenaScript	44	12	00d7c700 00d7c740 00d7c7d0 00d7c7e0 00d7c800 00d7d730 00d7d8d0 00d7dba0
+CResourceBank	44	1	004cea60 0056a8c0 00991670 00991910 009c80f0 009c8340 009c85a0 009f83d0
+C3DAnimationBlendState	45	0	004bc000 004c2dd0 004c2df0 004c2e20 004c2e90 004c3cd0 004c3d30 004db47d
+CEngineStaticMapFileBlockManager	45	0	00b41e50 00b42530 00b429e0 00b42a90 00b441f0 00b44370 00b443b0 00bdc000
+CPatchTesselationEdgeStrip	45	0	00455d44 00456010 004560a9 004567db 00457132 0045720a 004572a7 004576db
+CPersistContext_TransferableVectorGenericType	45	1	0040f9b0 0040fb70 00412db0 00412e80 0049b8d0 00566330 00566360 00569f20
+CV_BordelloScript	45	9	00c12040 00e398f0 00e399d0 00e39aa0 00e39b30 00e3a030 00e3a150 00e3a350
+CV_SickChildScript	45	19	00ec53c0 00ec5420 00ec5440 00ec54d0 00ec5bc0 00ec5c70 00ec5c90 00ec5cd0
+CEngineCamera	46	25	00b23b50 00b23b80 00b24150 00b242a0 00b24400 00b29c50 00b2f7c0 00b2fb70
+CIEngine	46	27	0041d122 0041d165 0042e204 00434f60 004354a0 0047d78b 004a2f10 004a6550
+CNavigatorManager	46	5	004a6ab0 004ae8a0 004fede0 004feec0 00500230 005022f0 0050af10 006e72a0
+CTCHeroAttachableAppearanceModifiers	46	1	004d4518 004d4535 0059d9c2 005b37f7 005b3d7a 005b406d 005b425b 005b43a2
+CTCTalk	47	4	004d2e0a 004faee0 005eb3a0 0066ba80 006e27e0 006e2840 006e2860 006e28a0
+CPredicate_And	48	5	00643bef 00e23f00 00e245a0 00e24760 00e247a0 00e7ddd0 00e7dde0 00e7de30
+CRenderManagerCore	48	31	0069e980 009bef20 009bef50 009bf500 009bf550 009c0e50 009c2fd0 009d9a30
+CEngineSubPrimitiveRenderer	49	5	00b29f70 00b33010 00b842b0 00b842d0 00b84320 00b84390 00b84400 00b84580
+CQ_RansomVictimScript	49	13	00de0320 00de03e0 00de0790 00de0820 00de0830 00de1280 00de14a0 00de18e0
+CTimer	49	281	00cd4470 00cfbd90 00cfcb50 00cfddc0 00d179b0 00d1cfc0 00d5ab40 00d5dd40
+CAIStateGroup_EnemyCreatureBase	50	4	008fe105 008ff720 008ff744 00900bef 00900c01 00900c19 00900c3b 00900c54
+CMemoryAllocator	50	1	00415e85 004189c2 0059d9ad 009a0ae0 009a1660 009a4350 009c5310 009c6020
+CQ_BreakSiegeScript	50	11	00d1cc10 00d1cc40 00d1cf00 00d1cf90 00d1cfa0 00d1cfc0 00d1d7d0 00d1dcc0
+CRenderStateManager	50	11	00499880 009c2fd0 009fa450 00a044b0 00a05970 00a07980 00a0ab50 00a0abe0
+CV_BanditTollScript	50	11	00b2fa40 00e478a0 00e478d0 00e47910 00e479a0 00e480d0 00e48950 00e48a00
+CPixelShader	51	2	0049d9b0 00662170 008fcf60 00987e20 00987e50 00988140 0098a9a0 0098ab00
+CShaderConstantRange	51	0	00987d50 00988e30 009894b0 00989540 00989640 009896b0 009896d0 00989700
+CIndexBuffer	52	11	00414de0 0046fece 004ea2ae 00a8fd40 00a901e0 00a90790 00a90860 00ac1ec0
+CVertexBufferWin32	52	12	00662160 009e2890 009e2e30 009f2dc0 00a0aaa0 00a63120 00a63200 00a63240
+CCreatureAction_PlayAnimation	53	8	0056a980 00782390 008424f0 00842570 008425e0 008426e0 00842db0 00842df0
+CEnvironment	55	10	0049e080 0049e370 0049f180 0049f2d0 004a0220 004a6ab0 004ae8a0 006b2b10
+CTavernGameDef	55	1	004e1049 004e1105 004e2d54 004ea6dd 004ead07 004ed472 005ea010 005ea100
+CCombatantInfo	56	0	00663b10 006e80f0 006e8600 006e86a0 006e8c30 006e9270 006e92c0 006e9360
+CItem	56	49	0059d820 005a3436 005a3581 005bc6f9 005bc754 005bc9c8 005bca87 005bd931
+CProcessedInput	57	8	00446220 00446330 00446a30 004473a0 00633bf0 00633cb0 00687e10 00687e70
+CTCInventoryTrade	57	0	004d3075 0059b777 0059b790 0059b795 0059b79a 0059c0c6 0059c447 0059c6b0
+CCategory	58	8	00407360 0056e632 0056e674 00572636 0059b740 0059c6b0 0059c6dd 0059c710
+CHandleBasedMemoryPool	58	27	004a05c0 009d5530 009d5580 009d61f0 00a01d40 00a02020 00a02140 00a02170
+CQ_HangingTreeEvilScript	58	0	00d68f00 00d68ff0 00d69390 00d69420 00d69430 00d69450 00d69cd0 00d69d50
+C3DMeshInfo	59	16	004bc410 004be170 004be2c0 0066c610 00670d50 00724010 00a23c40 00a23e40
+CFadeInFadeOutBase	60	14	00434840 004348d0 00434c00 00434cd0 00434e10 00436560 00441800 00441870
+C3DAnimationInfo	61	12	005db6b0 005dbfd0 006626e0 006627a0 006627f0 00663140 006631c0 00663510
+CFrontEndManager	62	5	0041e641 0042dc94 0042dd28 0042e98f 0054b4b0 0054c810 0054e280 0054e4f0
+CTCEntityEvents	62	81	004d38e0 004e3cd7 004e3cfe 004e48f6 0057c2e6 005be028 005cdccb 005eb510
+CBaseClass	63	1928	004371f0 005177e0 006b81a0 006e1cc0 007a8be0 007b7b60 00820b50 0082e860
+CEnginePrimitive	63	1	0049d000 004c3120 00543910 00550940 00550a70 005bc1b0 005e9f30 005ec5c0
+CQ_ArenaScript	63	20	00cfa660 00cfa700 00cfaa50 00cfaae0 00cfaaf0 00cfab10 00cfac20 00cfac40
+CDisplayEngine	65	23	00406cc0 00416365 0041641f 004164e0 004167da 00417001 00417418 00417568
+CResourceList	65	32	0041ac20 0041b550 0041c260 0044c6c2 007327f0 00746860 00772510 00772590
+CGamePlayerInterface	66	13	00416e78 00418b7a 00445800 00445a60 00445c30 00445cb0 00445e30 00445e90
+CGraphicDataBank	66	0	0041ac20 0041b550 0041c260 00437570 0056f177 00645ce9 009dca80 009dd210
+CInputManager	66	1	00416296 00416392 0041674a 00416e78 0041e10d 0041e16e 0042dc63 0042e3ee
+CQ_OpeningGraveyardSecretPassageScript	66	17	00dc2570 00dc25b0 00dc26b0 00dc2740 00dc2750 00dc37f0 00dc3bd0 00dc3cf0
+CShaderBase	66	0	00987d10 00987e20 0098a9a0 0098abf0 0098c3d0 009be1e0 009c1ae0 009c2fd0
+CSpecialEffectsDef	67	1	00454629 00454643 00454647 0045c77f 006637d0 00663f50 00669580 007317d0
+CTCCreatureOpinionOfHero	67	11	004d3f9d 004d3fbd 0065bffa 0065c45a 006610c7 006815d0 00681790 006817c0
+CQ_HangingTreeGoodScript	68	3	00d6ef20 00d6f020 00d6f3c0 00d6f450 00d6f460 00d6fd00 00d6fd70 00d6fe10
+IDirect3DDevice9	68	1	009887b0 00988840 00988e30 009894b0 00989540 00989640 009896d0 00989700
+CPersonalScript_GlobalThingsScript	69	18	00cde350 00cde380 00cde410 00cdeb40 00cdebf0 00cdec20 00cdec30 00cdec40
+CQ_TraderEscortScript	69	16	00e00690 00e006d0 00e00c20 00e00cb0 00e00cc0 00e00ce0 00e01670 00e01710
+CEnginePrimitiveManager	70	1	004bcfe0 004bd690 00b2a160 00b324a0 00b32660 00b47980 00b47b50 00b48220
+CEnginePrimitiveThemeChannelDesc	70	0	0041beb0 0041bf60 0043fa20 0049d000 004bfb40 004bfc50 004bfd10 004c3120
+CInitBaseClass	70	3	00408990 00413120 00413200 00415e50 004166a8 004175e5 00418b7a 00419323
+CTCInventoryMap	70	4	004d2f13 005fa610 005fa910 005fa950 005fa990 005faa30 005faa60 005faa90
+CParticleSystem	71	2	004bfae0 006a4e40 00aeac90 00aed020 00aed140 00aed180 00aed1e0 00aed250
+CSurface	71	28	004163b7 0041641f 00417418 0041c9c0 004979a0 00499880 0055fc90 006427f0
+CVertexShader	71	11	009be1e0 009c1ae0 009c2fd0 009d9a30 00a5d510 00a62fb0 00b2d1b0 00b2f5d0
+CQ_BountyHuntScript	73	2	00cd4550 00cd4fa0 00cdbc90 00d12cb0 00d12d00 00d13070 00d13100 00d13110
+CQ_PrisonEscapeRescueMotherScript	73	1	00dd26e0 00dd2720 00dd2bc0 00dd2c50 00dd2c60 00dd2c80 00dd43d0 00dd4470
+CTCInventoryExperience	73	11	004d3042 0056e59b 0056e5ab 0056e5ca 0056e5de 0056e5ec 0056e60f 0056e632
+CV_TravellingHeroesScript	74	14	00edeba0 00edec50 00edec70 00eded00 00edf2b0 00edf360 00edf370 00edf380
+CTCScriptedControl	75	1	004c70f0 004d311e 004d313b 006a8560 006ad970 007122c0 007122d0 00712340
+CQ_GuildTrainingScript	76	5	00d3b390 00d3bb50 00d3bbe0 00d3bbf0 00d3bc10 00d3c8f0 00d3cbd0 00d3d060
+CTCInventoryAbilities	76	5	004d300f 0056fe7c 0057238f 005785b3 0057b3e2 0057be71 005d64dd 005edd04
+CTCPhysicsStandard	76	11	004d297b 00661e70 006af740 007234c0 00723570 007235e0 00723630 007236a0
+CANavQuadTreeNode	77	9	00787620 00a15140 00a16550 00a199f0 00a19a30 00a19b90 00a19c00 00a1a0a0
+CPersistContext_TransferableComponent	77	10	00403f90 00403fc0 004045c0 00405a10 00405a60 0040e4d0 0040e5f0 0040e6d0
+CThingFilter_HasTC	78	1	0048d400 004a0370 004a9da0 004a9e50 004a9ef0 004aa6c0 004ac2c0 004acd70
+CSubDefClassBase	79	170	0044c0c0 0044c108 0044c1dc 0044c213 0044c253 0044c3aa 0044c57d 0044c59d
+CTCShop	80	2	004d407c 004d4099 00580da7 00580df2 00580e3d 00580e89 00580ed5 00580f20
+CTCCombat	81	21	004d3513 004d3533 0062cf90 006369b0 0064be45 006644f0 00664a50 00664d00
+CCamera	82	3	00416e78 00434e10 00445a60 00445ae0 00447bb0 0044bc10 00487180 00488020
+CEngineLandscapeMemoryManager	82	15	00b67920 00b68610 00bd9ac0 00bd9af0 00bd9b90 00bd9c40 00bd9ca0 00bd9ce0
+CTCPerceiveThing	82	27	004d359c 004d35b9 0064a1ae 00665190 00665e90 006a80e0 006a8630 00744470
+CEAXListener	83	5	00c4e350 00c52980 00c5ff60 00c60410 00c60450 00c60930 00c609a0 00c60a30
+CEngineComponent	83	4	00b24030 00b240c0 00b24500 00b25950 00b25d80 00b28ca0 00b29930 00b299d0
+CScriptGameResourceObjectBase	83	191	006e70a0 006e7550 006e7630 006e7a60 006e7bd0 007e7520 008abd10 00903810
+CTCWeapon	83	25	004d3c91 004d3cae 005bd4ce 005bedcb 005c4769 005c7913 005c7b10 005c7d0d
+CDiskFileWin32	84	16	00401630 00401690 004016b0 00401f30 0040d350 00415c30 00416056 004160a6
+CInputProcessGameBase	85	21	0048d390 00633530 00633690 00633b70 00634510 00634560 00634890 006349b0
+CList	85	5	0043a080 0052cbf0 0053605f 00536088 005360b1 00536189 005361d3 005362ad
+CScriptGameResourceObjectMovieBase	85	62	006e7550 006e7630 006e7b60 006e7bd0 00ce15e0 00cf8850 00d02b80 00d1e3e0
+CTCHeroExperience	86	13	004d2f79 004d2f96 0056fad7 0056fdc3 00570161 0057229b 0057770a 005778ca
+C2DLineF	87	1	00511ff0 00512120 005152c0 00515320 00515420 005155f0 00517480 00517720
+CParticleEmitter	87	9	00543cf0 00543d30 00543df0 00543ee0 005440b0 006445ba 00645ce9 00645f8d
+CParentDefClassBase	88	307	00430370 004303b0 004304a0 00431be0 00431e80 00431ed0 00432180 00432c70
+CGameScriptInterfaceBase	89	299	006e7150 006e7180 006e7d50 00cd4450 00cd4470 00cdb360 00cdb3c0 00cfbd90
+CHeroLogBook	90	1	00408a70 0047a8e0 0047ae50 0047b3e0 0047b5f0 0047b670 0047b6c0 0047b710
+CMapInfo	91	2	004fb3e0 004fb4f0 004fb880 004fb920 004fbde0 004fbf60 004fc050 004fc170
+CPlayerManager	96	467	00407370 0041732a 00418b7a 00435000 00446220 00446330 00449730 004497c0
+C2DCoordI	97	3	00405f40 00408d90 00427dc9 00427f31 0042819a 00434740 004347d0 004af6d0
+CEntityScriptBinding	97	227	00ce0ef0 00cf0790 00d00af0 00d255e0 00d2f7f0 00d55e90 00d5ab40 00d5dd40
+CSymbolMap	98	3	0040f7e0 004b86b0 0065c781 0066ba80 00686240 006e0730 006e2860 006e2940
+CThingBuilding	98	5	004ad700 004ad780 004fb370 005003e0 00502b00 00511710 00512410 00512f60
+CScriptBase	99	1079	004afa60 004afb00 004afbb0 004b26b0 004b3a20 004b4490 005bc746 006a8be0
+CTCInventoryItem	99	5	00412020 00419764 00453bc4 0045460a 00455e59 004563c9 0045704a 004570b7
+CEngine	100	17	00406cc0 004afdb0 004bc340 0095e790 009fd640 00b1b710 00b239a0 00b239c0
+CTCSoundPlayer	100	6	004d30ee 0057c2e6 005ea950 005eea9b 006594bb 00665f90 0066a920 0066ac80
+CSubtitleRenderer	101	15	004375f0 00438230 00438460 0043a080 0043a380 0043e3d0 0043e420 00440b40
+CQ_AmbushTradersScript	102	1	00cdd0d0 00cf9350 00cf9550 00cf95e0 00cf95f0 00cfa2f0 00cfa320 00cfa340
+CPixelFormat	103	53	004163b7 0041641f 00416c8a 0041c850 0041e3f6 0042ddb3 00547c90 0055fc90
+CTCInventory	104	2	00439ab0 0047da50 004d2e74 0055d5d0 0055d770 0055ee20 0055ef00 005625f0
+CMap	105	1	004bbff0 004fb330 004fc6c0 004fc930 004fcac0 004fcb30 004fcbd0 004fcc40
+CMeshDataBank	107	15	0049e620 004a6ab0 004ae8a0 004bc410 004bc4f0 004bc670 004bc750 004bd160
+CMovableResource	107	24	009d5110 009fd9b0 00a2e760 00a2ea20 00a2f190 00a4e250 00a4e960 00a4ee10
+CShaderRenderManager	107	5	00988140 009881f0 00988290 00988320 00988350 00988490 00988540 00988600
+CTCCreatureNavigation	107	10	004d291b 00665df0 006a7640 006a8710 006cb620 006cb6a0 006cb6c0 006cb6e0
+C3DBoundingBox	108	4	0049d000 0075a530 00a11ba0 00a11c90 00a18760 00a187c0 00a248f0 00a2a400
+CRegion	108	12	004189c2 00419650 0042a0ce 00449f90 0049e5e0 0049ea40 004a2f10 004fb490
+C4DVector	109	6	00987bf0 00989540 00989640 00989700 00989910 00989960 009899b0 00989a60
+CCombatManager	109	3	004a6ab0 004ae8a0 00662410 00662430 00663b10 006aa230 006e8300 006e8600
+CRGBFloatColour	112	3	00405f70 00427f31 0042819a 00429880 0042e204 0043e470 0052f440 0056ed74
+CTCTavernGame	114	12	005e9a70 005e9a90 005e9b70 005e9bc0 005e9bf0 005e9c30 005e9c50 005e9d60
+CClass	116	67	004c7da0 004c8310 004c9030 005064c0 00527300 00527320 0052ac10 0052ac90
+CGameEvent	117	16	004159b0 004159e0 00416e78 00434a60 00438310 00446a30 0047d21c 0047d78b
+CTexture	117	25	0041bd80 004372a0 004372c0 00495620 00496070 00499ce0 00499d90 00499fb0
+CStringParser	120	28	00403c20 00403ff0 00404720 004047a0 004047d0 0040e510 0040e710 0040f7e0
+CRuntimeScriptedEntityPersist	121	2	00cb7a00 00cb7ee0 00cb8110 00cb82f0 00cb83d0 00cb8440 00cb8690 00cb8820
+CAInputProcess	122	8	00446330 0048b420 0048b460 0048b480 0048b4c0 0048b520 0048b5a0 0048b5e0
+CEnginePersistentPrimitiveBase	123	21	0041ab40 0041c4a0 0043f6c0 0043f9b0 004400c0 00440180 004413c0 00441cb0
+CTCVillageMember	123	6	004d31d8 004daee9 004daf17 004dc620 004dc659 006592e2 0065a8ee 0065b598
+CSystemManager	124	6	00401b80 00404950 00404d20 00404e10 00404f60 00405020 00408990 00409090
+CBankFile	125	29	0047eee4 0048f6bd 004cea60 00540cf0 0056a8c0 0056f177 00639ba0 0066ba80
+C3DBoundingSphere	128	2	0049d000 00550940 00550a70 005bc1b0 00a248f0 00a26d40 00a2a400 00a2b3c0
+CDefStringTable	133	1	00415d70 00415d90 00415dd0 00449d90 004ad3d0 004b2b70 004b7980 004c7b00
+CEngineLightingManager	136	15	00431242 00431493 00451e59 00451efd 00451fa1 00452045 00452086 004521b2
+CSpawnedFuncBase	138	401	008d2700 008d3170 008d3850 008d3930 008d3a10 00cb7950 00cb7bc0 00cb8170
+CObserver	139	8	0041ab40 0041b870 0041cb9d 0042d604 0042d65b 0047d012 0047d0d5 0047da50
+CThingBaseDef	142	7	00454b5f 00454b8e 00454d9e 00454dcb 00454df4 00454e21 00454eff 00454f15
+CPredicateBase	144	7	00cddab0 00cddae0 00cddb10 00cdf160 00cdf430 00cdfb00 00ce15e0 00cfc990
+CGameCameraManager	145	28	00487cf0 00487ef0 0048a070 0049daa0 0056a880 0056a930 0056a980 0056be00
+CDisplayManager	151	7	004022b0 00404e10 00405020 00406cc0 00407370 00408990 00409090 00409140
+CEngineInternalPrimitiveBase	151	34	004067b0 0040e160 00440100 00440260 00440390 00b19c20 00b1aeb0 00b31e90
+CPersonalScript_EmptyScript	152	7	00eeffa0 00eeffd0 00ef0060 00ef0070 00ef1050 00ef10f0 00ef1100 00ef1110
+CActiveFile	156	1	0043fcd0 004405d0 00440cb0 00440d40 00440e40 00441670 00450dab 0045151c
+CModeStandBase	160	26	0073e320 0073e3e0 0073e410 0073e4d0 0073e500 0073e5c0 0073ed20 0073ee00
+CInputEvent	161	2	0041e10d 0041e16e 0042e3ee 00445800 00445a60 00445ae0 00446330 00446be0
+CIsThingAlive	162	119	00c26560 00c26580 00c2ed70 00cdf160 00cdf430 00cdfb00 00ce0600 00ce15e0
+CScriptDef	166	10	00cbeeb0 00cd2994 00cdf800 00cef3b0 00cefcc0 00ceffb0 00cf0180 00cfa700
+C2DBoxF	167	7	0041a7e0 0041a810 0041a980 0041beb0 0041bf60 00434b50 004375f0 00438aa0
+CQ_SunnyvaleMasterData	168	18	00cdba10 00cdbd20 00ce4c50 00ce5050 00ce5180 00ce5ef0 00ce5fc0 00ce62d0
+CTCHeroStats	168	46	00435070 0047eee4 004d2fa9 004d2fc9 0057770a 005778ca 0057a56c 0057a57a
+CTCCarrying	172	3	004bd3c0 004bfb40 004bfe20 004c0240 004c8ba0 004c8e50 004d3d56 004e748a
+CThingSearchTools	172	166	004887c0 0049c770 0049c7a0 004a0370 004a6ab0 004add90 004ae8a0 004b26b0
+CThingObject	180	2	004b4c50 00511810 00512ed0 00516530 00527320 005c36c2 005ea9b0 00659295
+CUserProfileManager	180	1	004065d0 004065f0 00406610 00406690 004066b0 004066f0 00406730 00406780
+CAFile	181	12	00401650 00401f30 004067c0 00406e30 00407040 004071c0 004091c0 0040a740
+C2DExtentsI	188	1	00405650 00406d90 00408900 00408990 0040ddc0 0040de00 0040f5e0 00410460
+CThingManager	189	16	00487c20 00488b20 0049c770 0049c780 0049e080 0049e270 0049ebf0 004a0940
+CQuestManager	194	45	00416953 0049ea40 0049f180 004a0850 004a0ae0 004a2e90 004a6550 004af290
+CGameScriptInterface	209	1641	00435000 004a6550 004a6ab0 004ae8a0 004af270 004b4490 0057cb7e 006e71f0
+CFilter_Bind2	228	2	004a9da0 004a9e50 004ac2c0 004fdcb0 00511710 00511810 00511910 00511a10
+CTBaseSingletonNoDefaultAlloc	229	4	00416953 0043cb60 0047d478 0047d78b 00490927 00490a22 0049319c 00499d90
+CScriptGameResourceObjectScriptedThingBase	238	185	006a0c90 006a0cc0 006a0cf0 006dfce0 007e72a0 007e72d0 007e72f0 007e7300
+CMemoryDataInputStream	240	105	00404500 0040f8a0 0040fe60 0040fef0 00410120 004311df 004312b4 00433273
+CTCVillage	242	32	004385f0 00449650 004d2690 004d26b0 004d26d0 004d31a0 005064c0 005e3d30
+CChunkedFileChunk	245	20	00a989e0 00a98a70 00a98ab0 00a98be0 00a98c80 00a98d20 00a98dc0 00a98fa0
+CScriptThing	249	4441	004aaa10 004aaa60 004aacc0 004aace0 004aad00 004aada0 004aaf80 004ab000
+CString	249	5	00c08880 00c09920 00c099f0 00c0a250 00c0a300 00c0a9a0 00c0aa40 00c0ac30
+CThingGameObject	251	27	0049e270 00512ed0 00512f60 005298c0 00529940 005299c0 00529ad0 00529b00
+CChunkedFileSuperChunk	252	14	00a32620 00a4df10 00a4fd70 00a537f0 00a55420 00a989a0 00a98a70 00a98ab0
+CScriptDataBase	257	0	004b3760 004b5030 00cd4ac0 00cd4b20 00cd4b80 00cdd330 00cdd590 00cdd5b0
+CPlayerGui	284	24	00408360 00408a70 00434ad0 004374b0 004374d0 00437580 004375f0 00437670
+CThingPhysical	297	29	00488ab0 0049e270 0050eef0 00516200 005163b0 00516530 005166b0 00516830
+CEnginePrimitiveHandle	302	10	0041ab40 0041b800 0041b870 0041be50 0041be70 0041c4a0 0041c500 0043b050
+C2DBoxI	309	4	0042ea8f 00434740 00436500 00436d30 00436fb0 00437040 00499880 0049c810
+CManager	312	15	00404c00 0041a8d0 0041a980 0041ac20 0041b550 0041cd93 0041ce6a 0041ce9d
+C3DVector	315	3214	0043ce90 00486f60 00487180 00488b20 0049be10 004c22c0 004cb6e0 004d8b3c
+CBaseObject	318	565	004b1080 005840a6 005edc90 00646709 0065b2c4 0065b349 0065bffa 0065c45a
+CGameDefinitionManager	318	14	004083e0 00415640 00415fbc 00416005 004166a8 0041732a 0041735a 00417418
+CWorldMap	319	36	004189c2 00449f90 00487c20 0049c7a0 0049e220 0049e370 0049e5e0 0049ea40
+CLandscapeBackgroundPatch	320	18	0043dd40 00442980 00442cc0 00442da0 00442f00 00443010 00443080 004509d9
+CMatrix3x4	320	4	0049d000 004c3200 004c3380 005db6b0 006626e0 006a6be0 006e1b40 00759ec0
+CEntityScriptBase	341	2556	00cb7da0 00cb83d0 00cb8960 00cdeb40 00cdec30 00cdec40 00cded90 00cdf080
+CTCPhysicsBase	350	74	00487ef0 0049d150 0049daa0 0049e590 004ad3d0 004afca0 004bbf00 004bc0e0
+CTCCreatureModeManager	353	4	004d3546 004d3563 006355d0 00635840 00635a50 00635b30 00635bf0 00635d70
+CRightHandedSet	374	7	00416e78 0044bc10 00453210 00487050 00487180 00488020 0049ce00 0049cf80
+CPersistTraits	377	11	00403eb0 00403fc0 00403ff0 004045c0 00405940 00405a60 0040e4d0 0040e510
+CResource	385	69	0041ac20 0041b550 0041c260 0042d910 0042d9e0 00430300 00430370 00430430
+CDataInputStream	396	79	00404500 00405940 0040efb0 0040f8a0 0040fe60 0040fef0 00410120 004109a0
+CIVCountedPointeeBase	399	121	004023f0 004083e0 0041ab40 0041be70 0041c500 0041d8e7 0041d98a 0042ded5
+CThingAICreature	414	51	004acf90 00502b00 00516830 005185f0 00518900 0051f980 0051fa00 0052b270
+CDataOutputStream	421	105	00404500 004045c0 00405a60 00405d60 0040fca0 0040fd40 00410620 004106f0
+CRGBColour	457	59	00404950 00404d20 00404e10 00404f60 00405020 00427dc9 00427f31 0042819a
+CIVCountedPointer	509	1	004023f0 0040d8b0 0041ab40 0041b800 0041b870 0041be70 0041c4a0 0041c500
+CDefPointeeBase	527	4	00419650 0041ab00 0042d910 0042d9a0 0042d9e0 00430300 00430370 004304a0
+CThingPlayerCreature	587	16	0040dce0 00435000 00435070 00438cb0 0043dbd0 0043dbf0 00449cb0 00449d20
+CArray	604	633	0042d4f7 00434540 0045647d 00463bff 00464be9 0046a130 0046a178 0046a260
+CAIBrain	608	100	00744d00 00830d80 008326a0 00833010 00833ba0 0085f6f0 0085ff10 0088b6f0
+CDefString	629	11	00415d70 00415d90 00415dd0 0041cd13 00430370 004303b0 00430430 004304a0
+CDefClassBase	660	280	004196b2 0042d9e0 0042dab0 00430300 00430370 004303b0 004304a0 00431be0
+CBaseClassNonCopyable	666	161	00401630 00401f30 0040a740 0040d350 00415940 00415c10 00415c30 00417418
+CPersistContext	681	85	00403ff0 00404500 004045c0 00405a60 0040e510 0040e710 0040f7e0 00410620
+CCountedPointer	704	7428	00404440 00419428 0041947a 004194d1 004195af 0041bb30 00429c6f 0042d4f7
+CPlayer	711	147	00407370 00408a70 00435000 00435070 004383d0 004385f0 00438cb0 00439ab0
+CMainGameComponent	732	9	00406cc0 00407370 00408a70 00412f90 00415fbc 00415fc1 00415fd3 00416005
+CDefinitionManager	760	55	004083e0 00410820 00410890 00415640 00415890 00416005 004196b2 0041d8e7
+CVectorMap	816	2082	0042d4f7 00430430 00431be0 00431df0 00431ed0 00432180 00432c70 00432e60
+C2DVector	931	10	00404950 00404d20 00404e10 00404f60 00405020 00405d60 00405db0 00405f40
+CCreatureActionBase	946	106	00487de0 0056a980 0057a545 0057b783 0058400a 005cc091 00628ee0 00628f10
+CAIStateGroupBase	978	181	00744d00 00801a50 0088b6f0 0088b7a0 0088b980 0088b9e0 0088ba40 0088bac0
+CThingCreatureBase	1071	94	0040dce0 0043dbd0 0043dbf0 0047d21c 0047d78b 00487de0 00490927 00490a22
+CWorld	1086	174	00416365 00416392 004164e0 00416953 00416e78 00417001 0041799b 004189c2
+CTCBase	1223	362	00438cb0 0047d21c 0047d5f2 0047d78b 0047df8a 0047e07f 0047eee4 004bc030
+CDefPointer	1286	290	004083e0 00410820 00410890 00415640 00415890 00419650 004196b2 0041ab00
+CCombatActionBase	1403	3	0062e9b0 0062ea00 0062ea20 0062ea30 0062ea80 0062eb00 0062f380 0062f3b0
+CIntelligentPointer	2010	1542	0043a080 00441800 00442280 00444d90 00444dd0 00449f90 0044a5a0 0044aa60
+CThing	4190	85	0040dce0 00435000 00435070 00436380 004383d0 004385f0 00438cb0 00439ab0

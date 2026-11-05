@@ -13414,7 +13414,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00631590	_M_allocate_and_copy<NUISystem::CUIStateDef const *>	std::vector<NUISystem::CUIStateDef, std::allocator<NUISystem::CUIStateDef>>	unknown	undefined	0		0	yes	accepted									
 006315e0	operator=	std::vector<NUISystem::CUIStateDef, std::allocator<NUISystem::CUIStateDef>>	unknown	undefined	0		0	yes	accepted									
 00631710	vfunc_19	NUISystem::CUIDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00631720	operator=	CUIDef	__thiscall	CUIDef *	2	CUIDef *,CUIDef *	1	yes	accepted									
+00631720	operator=	NUISystem::CUIDef	__thiscall	CUIDef *	2	CUIDef *,CUIDef *	1	yes	accepted									
 00631c60	Transfer	NUISystem::CUIDef	__fastcall	void	0		1	yes	accepted									
 00632260	Transfer	CPersistContext	unknown	undefined	0		0	yes	accepted									
 006322b0	TransferBinaryIn_006322b0	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
@@ -24791,7 +24791,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00838ec0	GetShotHitParameters	CThingGameObject	__thiscall	void	5	CThingGameObject *,CHitLocation *,CThing *,C3DVector *,CHitParameters *	1	yes	accepted									
 00839080	OnCollision	CThingGameObject	__thiscall	void	5	CThingGameObject *,ECollideType,C3DVector *,C3DVector *,CThing *	1	yes	accepted									
 00839100	GetWeaponTrailGraphicIndex	CThingGameObject	__thiscall	long	1	CThingGameObject *	1	yes	accepted									
-00839420	CreateEffectOnHit	_global	__fastcall	void	4	CThing *,CHitParameters *,CWorldMap *,float	1	yes	accepted									
+00839420	CreateEffectOnHit	NThingHelpers	__fastcall	void	4	CThing *,CHitParameters *,CWorldMap *,float	1	yes	accepted									
 00839940	OnHit	CThingGameObject	__thiscall	void	2	CThingGameObject *,CHitParameters *	1	yes	accepted									
 0083ae30	CHitThing	NHeroStatModifierEvent::CHitThing	__thiscall	undefined	2	CHitThing *,CCreatureStatsDef *	0	yes	accepted									
 0083aea0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
@@ -39764,7 +39764,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ad6ff0	Copy_SFlaggedTreePair1C_00ad6ff0	_global	__fastcall	CSeaBodyDesc *	4	CSeaBodyDesc *,CSeaBodyDesc *,CSeaBodyDesc *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00ad7050	operator=	QuadricOptimiserInternals::COptimisedVertex	__thiscall	undefined	2	COptimisedVertex *,COptimisedVertex *	0	yes	accepted									
 00ad7120	CopyBackward_CElementB8_00ad7050_00ad7120	_global	__fastcall	CSeaBodyDesc *	4	CSeaBodyDesc *,CSeaBodyDesc *,CSeaBodyDesc *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
-00ad71b0	Remove	QuadricOptimiserInternals::COptimisedVertex	unknown	undefined	0		0	yes	accepted									
+00ad71b0	Kill	QuadricOptimiserInternals::COptimisedVertex	unknown	undefined	0		0	yes	accepted									
 00ad7260	Catch@0040d88c	_global	unknown	undefined	0		0	yes	accepted									
 00ad72c0	CUnprovenContainer_00ad72c0	CUnprovenContainer_00ad72c0	unknown	undefined	0		0	yes	accepted									
 00ad7300	~CRetailTree_erase00ad5240	CRetailTree_erase00ad5240	unknown	undefined	0		0	yes	accepted									
@@ -52654,8 +52654,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e508d0	OnPersist	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan	unknown	undefined	0		0			discovered	gapscan							
 00e508e0	OnPredicateFail	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan	unknown	undefined	0		0			discovered	gapscan							
 00e508f0	`scalar deleting destructor'	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e5\CLandscapeBackgroundPatch_vectordeletingdestructor_00e508f0.cpp
-00e50910	WatchForQuestCardConditions	CV_BeardyBaldyScript	__thiscall	void	1	CV_BeardyBaldyScript *	1	yes	accepted									
-00e50e40	GoTalkToBeardyBaldy	CV_BeardyBaldyScript	__thiscall	void	1	CV_BeardyBaldyScript *	1	yes	accepted									
+00e50910	WatchForQuestCardConditions	NScript::CV_BeardyBaldyScript	__thiscall	void	1	CV_BeardyBaldyScript *	1	yes	accepted									
+00e50e40	GoTalkToBarber	NScript::CV_BeardyBaldyScript	__thiscall	void	1	CV_BeardyBaldyScript *	1	yes	accepted									
 00e50fd0	Main	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan	unknown	undefined	0		0			discovered	gapscan							
 00e53670	IsHeroWearingBeard	NScript::CV_BeardyBaldyScript	__thiscall	bool	1	CV_BordelloScript *	1	yes	accepted									
 00e538f0	IsHeroWearingAnyTash	NScript::CV_BeardyBaldyScript	__thiscall	bool	1	CV_BordelloScript *	1	yes	accepted									

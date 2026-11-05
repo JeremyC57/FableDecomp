@@ -19,6 +19,11 @@ public:
  };
  class CUIRegionInfo {
  public:long Region,Shops,BarberShops,TitleShops,TatooShops,ShopsForSale,HousesForSale,ShopsOwned,HousesOwned,Taverns;
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_REGIONINFO_CTOR
+  // Chunk 778 (row 0x00615E70): Ego_r.pdb ??0CUIRegionInfo@CTCInventoryMap@@QAE@XZ, inline in retail (every member zeroed: the
+  // traits' DefaultVal in 0x00615E10 and the `value = CUIRegionInfo()` temporary in 0x00615E70).
+  CUIRegionInfo():Region(0),Shops(0),BarberShops(0),TitleShops(0),TatooShops(0),ShopsForSale(0),HousesForSale(0),ShopsOwned(0),HousesOwned(0),Taverns(0){}
+#endif
  };
 protected:
  virtual void OnSerialise(CPersistContext&,bool);

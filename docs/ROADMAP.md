@@ -75,7 +75,8 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [x] Jump-table lander `verify_land_jumptable.py` (raw-COFF extraction) proven on 0x557CA0 / 0x5578A0
 - [x] Skeleton clone harvester + de-bake family tooling (`debake_family.py`, `harvest_all`, `crossfam`, `shape_author`)
 - [x] Parity crawl batches 153 (8/8) and 154 (7/8) landed 2026-09-02; `probe.py` + `disasm.py` + `iat_lookup.py` helpers in `work/crawl_batch153-154`
-- [ ] De-bake: 614 `__declspec(naked)`/`__asm` + 218 `_emit` non-genuine sources remain — regenerate with `crawl/bake_families.py` (verify counts)
+- [x] De-bake (2026-11-05): 1 hand-written bake left in `rebuild/src` (0x009BEF80, parked register residue); 0 in-row `__asm`; asm only through shared helpers (`docs/pipeline/ASM_RULES.md`)
+- [ ] Naming/header plan steps 3-6 (2026-11-05 snapshot `docs/journal/2026-11/2026-11-05_SESSION.md`): steps 1-2 done, phases 3-5 applied (9,424 rows), step 5 game classes next (CThing 4,190 local rows), step 6 stand-ins 7,946 left — paused by the owner
 - [ ] Mislabelled dtor families (`_Dest_val`/`_Cons_val` BSim labels on non-dtor bodies) re-attributed on landing; sweep the rest
 - [ ] `00995e70 PeekData` honest DIFFER(16v15) — attack load-through-lea, not the compare
 - [ ] `LinkToNeighbouringMaps 0x00A7A650` 9 bytes long; `CNavQuadTree::UpdateLines 0x00A781A0` fixture-first

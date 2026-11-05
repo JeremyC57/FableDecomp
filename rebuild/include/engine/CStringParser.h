@@ -42,6 +42,10 @@ public:
     unsigned long GetLine() const { return CursorPos.Line; }
     EParsedItemType PeekNextItemType();
     bool ReadNextItem(CParsedItem&);
+#ifdef FABLE_RETAIL_CSTRINGPARSER_PEEKNEXTITEM
+    // Chunk 778 (row 0x00615E70): Ego_r.pdb ?PeekNextItem@CStringParser@@QAE_NAAVCParsedItem@@@Z (out of line, 0x009BA8C0).
+    bool PeekNextItem(CParsedItem&);
+#endif
     long ReadAsInteger();
     bool NextItemExists();
     CCharString ReadAsStringUntilWhitespace();

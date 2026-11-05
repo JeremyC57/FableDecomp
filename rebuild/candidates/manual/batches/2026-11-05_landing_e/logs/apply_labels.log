@@ -1,0 +1,9 @@
+catalog  00e50e40 CV_BeardyBaldyScript::GoTalkToBeardyBaldy -> NScript::CV_BeardyBaldyScript::GoTalkToBarber
+catalog  00ad71b0 QuadricOptimiserInternals::COptimisedVertex::Remove -> QuadricOptimiserInternals::COptimisedVertex::Kill
+catalog  00631720 CUIDef::operator= -> NUISystem::CUIDef::operator=
+manifest 00631720 CUIDef::operator= -> NUISystem::CUIDef::operator=
+manifest 00839420 _global::CreateEffectOnHit -> NThingHelpers::CreateEffectOnHit
+manifest 00ad71b0 QuadricOptimiserInternals::COptimisedVertex::Remove -> QuadricOptimiserInternals::COptimisedVertex::Kill
+manifest 00e50910 CV_BeardyBaldyScript::WatchForQuestCardConditions -> NScript::CV_BeardyBaldyScript::WatchForQuestCardConditions
+manifest 00e50e40 CV_BeardyBaldyScript::GoTalkToBeardyBaldy -> NScript::CV_BeardyBaldyScript::GoTalkToBarber
+labels 7  catalog renamed 3  manifest renamed 5

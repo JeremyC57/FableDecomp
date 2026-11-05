@@ -59,6 +59,12 @@ protected:
     // `return *PDef;` needs the complete CThingCreatureDef, so it is defined inline below once both classes are complete.
     const CThingCreatureDef& PeekDefinition() const;
 public:
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_LASTHANDEDNESS
+    // Retail opt-in (chunk 778, row 0x00839420 NThingHelpers::CreateEffectOnHit): Ego_r.pdb / FableWin.pdb
+    // ?GetLastActionHandedness@CThingCreatureBase@@QBE?AW4ECombatAnimationHandedness@@XZ, inline in retail (`mov eax,[ebp+138h]`
+    // on the striking creature). The enum stays the opaque 4-byte member; the body reads it as its long value. No layout change.
+    long GetLastActionHandedness() const { return *reinterpret_cast<const long*>(PreviousActionHandedness); }
+#endif
     bool IsInMelee()const;bool IsInMeleeAsAttacker()const;
     bool IsUnderInfluenceOfEpicSpell() const { return UnderInfluenceOfEpicSpell; }
     bool AutoPlaceNearBuilding(const CThingBuilding*,float);

@@ -34,6 +34,8 @@ enum ETableSprites { TABLE_SPRITES_TOP_LEFT=0, TABLE_SPRITES_TOP_RIGHT=1, TABLE_
 // retry11b: composites typed (Transfer 0x00631C60 reads every one); PositionOffset +0x142 needs FABLE_RETAIL_C2DVECTOR.
 // Layout: complete original CUIDef fields; native Transfer00631c60 proves
 // offsets and STLport-size corrections. Unaccessed composites retain full storage.
+// No _pad_ members in this branch (chunk 778, row 0x00631720 implicit operator=): retail's implicit assignment copies no
+// padding bytes, and the natural alignment of the next member gives the same offsets (asserted below).
 class CUIDef : public CParentDefClassBase {
 public:
     CUIDef();
@@ -42,7 +44,6 @@ public:
     virtual void Transfer(CPersistContext&);
     virtual void Copy(const CDefClassBase*);
     virtual unsigned long GetSizeofClass();
-    unsigned char _pad_39[3];
     NUISystem::EType Type; // +0x3c
     std::vector<CUIStateDef,std::allocator<CUIStateDef> > States; // +0x40
     unsigned long MeshIndex; // +0x4c
@@ -97,7 +98,6 @@ public:
     bool Scrolling; // +0x14b
     C2DBoxI ViewArea; // +0x14c
     bool ComputeOffsetsOnActivate; // +0x15c
-    unsigned char _pad_15d[3];
     NUISystem::EState ParentStatePrerequisite; // +0x160
     C2DVector Dimensions; // +0x164
     C2DVector Min; // +0x16c
@@ -105,7 +105,6 @@ public:
     C2DVector Step; // +0x17c
     float InputDelay; // +0x184
     bool DrawFromViewport; // +0x188
-    unsigned char _pad_189[3];
     long SliderLeft; // +0x18c
     long SliderRight; // +0x190
     unsigned long TextBankIndex; // +0x194
@@ -118,36 +117,37 @@ public:
     std::vector<unsigned long,std::allocator<unsigned long> > ActionOrder; // +0x1c0
     bool EditBoxParentIsButton; // +0x1cc
     bool PasswordBox; // +0x1cd
-    unsigned char _pad_1ce[2];
     long EditBoxCharLimit; // +0x1d0
     bool EditBoxUsesIME; // +0x1d4
     bool DisallowSpaceAsFirstChar; // +0x1d5
-    unsigned char _pad_1d6[2];
     CWideString MovieFilename; // +0x1d8
     bool LayerIndependant; // +0x1dc
-    unsigned char _pad_1dd[3];
     std::vector<unsigned long,std::allocator<unsigned long> > SwappingStates; // +0x1e0
     std::vector<float,std::allocator<float> > SwappingTimes; // +0x1ec
     bool BastardChild; // +0x1f8
-    unsigned char _pad_1f9[3];
     ETextAlignement Alignement; // +0x1fc
     bool RandomSwap; // +0x200
-    unsigned char _pad_201[3];
     long HoveredState; // +0x204
     bool UseRelativeZoom; // +0x208
     bool UseRelativePosition; // +0x209
     bool PartOfListTree; // +0x20a
-    unsigned char _pad_20b[1];
     long LeftClickedState; // +0x20c
     long RightClickedState; // +0x210
     std::vector<unsigned long,std::allocator<unsigned long> > ShapeChildren; // +0x214
     bool UseViewArea; // +0x220
     bool PCStyle; // +0x221
-    unsigned char _pad_222[2];
     EEngineSprite2DFlag Sprite2DFlag; // +0x224
 };
 FABLE_STATIC_ASSERT(sizeof(CUIDef)==0x228);
+FABLE_STATIC_ASSERT(offsetof(CUIDef,Type)==0x3c);
 FABLE_STATIC_ASSERT(offsetof(CUIDef,PositionOffset)==0x142);
+FABLE_STATIC_ASSERT(offsetof(CUIDef,ParentStatePrerequisite)==0x160);
+FABLE_STATIC_ASSERT(offsetof(CUIDef,SliderLeft)==0x18c);
+FABLE_STATIC_ASSERT(offsetof(CUIDef,EditBoxCharLimit)==0x1d0);
+FABLE_STATIC_ASSERT(offsetof(CUIDef,SwappingStates)==0x1e0);
+FABLE_STATIC_ASSERT(offsetof(CUIDef,Alignement)==0x1fc);
+FABLE_STATIC_ASSERT(offsetof(CUIDef,HoveredState)==0x204);
+FABLE_STATIC_ASSERT(offsetof(CUIDef,LeftClickedState)==0x20c);
 FABLE_STATIC_ASSERT(offsetof(CUIDef,ViewArea)==0x14c);
 FABLE_STATIC_ASSERT(offsetof(CUIDef,Sprite2DFlag)==0x224);
 FABLE_STATIC_ASSERT(offsetof(CUIDef,ActionOnLeftClicked)==0xe0);

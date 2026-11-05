@@ -66,6 +66,10 @@ template<class V,class Traits>struct _Rb_tree_iterator:public _Rb_tree_base_iter
     pointer operator->()const{return &operator*();}
     _Rb_tree_iterator& operator--(){this->_M_node=_Rb_global_inst::_M_decrement(this->_M_node);return *this;}
     _Rb_tree_iterator& operator++(){this->_M_node=_Rb_global_inst::_M_increment(this->_M_node);return *this;}
+#ifdef FABLE_RETAIL_STLP_TREE_POSTINC
+    // chunk 778 (row 0x00ACCBF0): STLport 4.6 _tree.h post-increment (`_Self __tmp = *this; _M_increment(); return __tmp;`).
+    _Rb_tree_iterator operator++(int){_Rb_tree_iterator tmp=*this;this->_M_node=_Rb_global_inst::_M_increment(this->_M_node);return tmp;}
+#endif
 };
 template<class V,class A>struct _Rb_tree_base {
 public:
@@ -150,6 +154,12 @@ public:
     }
     const_iterator find(const K&) const;
     const_iterator end()const{return const_iterator(this->_M_header._M_data);}
+#ifdef FABLE_RETAIL_STLP_TREE_ERASE
+    // Retail opt-in (chunk 778, row 0x00ACCBF0 COptimisedPrimitive::PerformSubContraction): STLport 4.6 _tree.h erase(iterator)
+    // (rebalance, destroy, deallocate; out of line in retail: 0x00AD4CA0 map<unsigned long,CContractionReference>, 0x00AD3C30
+    // multimap<float,CCountedPointer<CVertexPairContraction> >). Declaration only.
+    void erase(iterator position);
+#endif
 };
 template<class K,class V,class KeyOfValue,class Compare,class A>
 void _Rb_tree<K,V,KeyOfValue,Compare,A>::_M_erase(_Rb_tree_node<V>* x) {
@@ -227,6 +237,9 @@ public:
     Compare key_comp()const{return _M_t.key_comp();}
     const_iterator find(const K& key)const{return _M_t.find(key);}
     const_iterator end()const{return _M_t.end();}
+#ifdef FABLE_RETAIL_STLP_TREE_ERASE
+    void erase(iterator position){_M_t.erase(position);}
+#endif
 };
 // STLport 4.6.2 _function.h _Identity, _set.h set and _multimap.h multimap (Codex pass 11 consolidation 2, row 0x007355F0:
 // CTCCombat::CombatAbilities is a multimap<ECombatAbilityDataType,...>, CCombatAbilityBlockingData::ValidBlockWeaponTypes a
@@ -255,6 +268,10 @@ public:
     iterator end() const { return _M_t.end(); }
     size_t size() const { return _M_t.size(); }
 #endif
+#ifdef FABLE_RETAIL_STLP_TREE_ERASE
+    // chunk 778 (row 0x00ACCBF0): STLport 4.6 _set.h clear() (`_M_t.clear()`; retail 0x00AD3900 is its out-of-line copy there).
+    void clear(){_M_t.clear();}
+#endif
 };
 template<class K,class T,class Compare=less<K>,class A=allocator<pair<const K,T> > >
 class multimap {
@@ -268,6 +285,9 @@ public:
     multimap():_M_t(Compare(),A()){}
     iterator insert(const value_type& x){return _M_t.insert_equal(x);}
     void clear(){_M_t.clear();}
+#ifdef FABLE_RETAIL_STLP_TREE_ERASE
+    void erase(iterator position){_M_t.erase(position);}
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(std::map<unsigned long,long>)==12);

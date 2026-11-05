@@ -2059,3 +2059,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - x87 compare spellings: `!(a<b)` gives `test ah,5; jnp`; `a>=b` gives `test ah,1; jne`; `!(a>b)` gives `test ah,41h; je`; `a<=b` gives `jp` (0x00AC92C0).
 - Local declaration order chooses between callee-saved registers; same-TU noinline callee bodies decide which registers survive a call (0x00AC92C0).
 - VC7.1 builds implicit-conversion argument temporaries before the other arguments; an explicit `std::string(x)` is evaluated right to left with them.
+- An implicit operator= copies `_pad_` filler members too: drop the pads from any class whose implicit copy must match (0x00631720, DIFFER 1619v1337 with pads).
+- An optional trailing CPersistTraits field: `PeekNextItem(item) && item.IsSymbol()`, then a nested `GetSymbol() == ','`; the char compare must be `__forceinline` (0x00615E70).
+- Retail's -0.0 Z store comes from `C3DVector(y, -x, 0.0f) * -1.0f`, not unary negation; VC drops the multiplies of a dead Z lane, so keep the full vector expression (0x00839420).
+- A reloc-masked false match: a stand-in vtable store where retail stores a constant grades RELOCATION_MATCH. Run `tools/decomp_pipeline/reloc_mask_audit.py $S/plan/idx` after each index refresh (0x009F1720, 0x007E37C0).

@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-04 (chunk authoring; rounds 2026-11-04a..k landed; naming pass wave 35 running)
+# Resume here (one page) — updated 2026-11-05 (PAUSED by the owner; nothing running; exact progress recorded)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -7,6 +7,12 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## State
+- **PAUSED 2026-11-05 (owner): launch nothing new until the owner says so.** All agents' work is landed or parked and committed.
+  Exact progress at the pause and the resume steps: `docs/journal/2026-11/2026-11-05_SESSION.md`.
+  - Coverage: 46,897 genuine of 49,568 (94.62%); 57.63% of retail function bytes.
+  - One asm bake left (0x009BEF80, parked); 0 in-row `__asm`; 0 reloc-masked false matches.
+  - Naming/header plan: steps 1-2 done; steps 3-4 partly (phases 3-5); step 5 not started (CThing 4,190 local rows first);
+    step 6 first pass only. Phase 6 brief drafted, not launched (`naming/2026-11-05_progress_snapshot/`).
 - Branch `FullDecomp` (`JeremyC57/FableDecomp`). Owner 2026-11-04 resumed authoring: at most 3 concurrent agents, 10+ attempts per
   row, verify and land before launching more. **Asm rules: `docs/pipeline/ASM_RULES.md`** (owner-confirmed 2026-11-05): plain C++ first; beyond it only where
   the original code used asm (proven from retail bytes): intrinsic, then a shared helper header with a `FABLE_PORTABLE` twin, then
@@ -31,18 +37,17 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   done. The last bake, 0x009BEF80 SetViewport, is parked 2 bytes short (DIFFER 477v479; `pending/2026-11-05_linux_hand776/`). It is a pure
   compiler residue: plain C++ only, or it stays.
   Chunk 777 (5 ledger rows, `_landing_d/`) landed 3; 0x0055F710 and 0x00803540 are parked in `pending/2026-11-05_linux_hand777/`. The
-  groups ledger has only large (1 KB+) Fable rows left; the next authoring chunk takes the next five smallest.
-  **Plan phase 5 is running** (owner, 2026-11-05: continue steps 3-6 on another agent until all are finished; brief
-  `$S/plan/BRIEF_PLAN5.md`, work in `$S/plan/p5`): CCountedPointer, the CScriptThing remainder, CIntelligentPointer, then the value-class
-  leftovers and CThing. The coordinator applies each phase, then launches the next until steps 3-6 are done.
-  Asm rules: `docs/pipeline/ASM_RULES.md` (canonical). No row source has in-row `__asm`; 209 retail_asm rows use 24 shared helpers. Landed today: plan phases 2-4 (`naming/2026-11-0{4,5}_plan_p*`), stand-in
+  groups ledger has only large (1 KB+) Fable rows left. Chunk 778 (`_landing_e/`) landed 2 (CUIDef::operator=, a CPersistTraits
+  TransferIn); 3 parked in `pending/2026-11-05_linux_hand778/`. Plan phase 5 is applied (4,128 rows, regrade all PASS;
+  `naming/2026-11-05_plan_p5_w1/README.md`); phase 6 is drafted, not launched.
+  Asm rules: `docs/pipeline/ASM_RULES.md` (canonical). No row source has in-row `__asm`; 211 retail_asm rows use 26 shared helpers. Landed today: plan phases 2-4 (`naming/2026-11-0{4,5}_plan_p*`), stand-in
   naming s6 (1,796 rows; 7,946 inaccurate stand-ins left, `naming/2026-11-05_standin_s6/NEXT.md`), asm cleanup rounds 1/2a/2b
   (`naming/2026-11-05_asm_*`), and the volatile audit. Next after authoring: plan phase 5 (CScriptThing header, CThing offset waves,
   CCountedPointer/CIntelligentPointer, vendor headers; inputs `$S/plan/p4/NEXT.md`), then the rest of step 6. Phase 1: `naming/2026-11-04_vendor_v2/`.
   Owner 2026-11-04: batch/pending `oracle.tsv` files are no longer committed (.gitignore; landing-time input only, landed bytes live in the catalog oracle); the 1,646 already tracked are left as they are. Owner 2026-11-04 (latest): launch NO new chunks; once the next running chunk lands, implement the combined naming/header plan: (1) repo-wide symbol index, (2) vendor V2 rewritten header-first, (3) scripted value-class header waves, (4) CScriptThing family, (5) game-class offset-mapped header waves carrying their name fixes, (6) final small naming pass; strict mode for migrated classes. Earlier: after parked chunk 768 finishes, launch no more parked-row agents for now; free slots go to authoring. Vendor naming V1 applied 2026-11-04 (198 respells, 75 strmbase labels; `naming/2026-11-04_vendor_v1/`); V2 queue in its README. Owner 2026-11-04: vendor code gets the most accurate name from the vendor source or from what the body does (EXTRA_RULES); V1's 47 RELOC_NAME rows accepted; V2 takes the next free slot (`$S/naming/vendor/BRIEF_VENDOR_V2.md`)., C++ only. Landing helpers: `$S/w22/prep_landing.sh N L`, `finish_landing.sh N L`. Anniversary 360 Test PDB pilot done: no byte help (0/20 matched; `batches/2026-11-04_anniv360_pilot/`).
   The Xbox 360 Anniversary PDB is a private third-source lookup (`$S/anniv_pdb/`, rule in FABLE_ANNIVERSARY.md).
 - Coverage (refresh with `tools/write_decomp_dashboard.py` then `tools/update_readme_progress.py`; never hand-edit):
-  46,895 genuine of the 49,568-function catalog (94.61%; 57.60% of retail function bytes), after landing 2026-11-05d.
+  46,897 genuine of the 49,568-function catalog (94.62%; 57.63% of retail function bytes), after landing 2026-11-05e.
   (chunk 766 authoring, 7 of 26). Records: `rebuild/candidates/manual/batches/2026-11-03_landing_b/` .. `_landing_h/`, `2026-11-04_landing_a/` .. `_landing_zc/`.
 - `// Revisit: inline-depth` rows: 65 (129 at the start of the day). Mechanism, levers and why the 65 are left:
   `docs/pipeline/INLINE_DEPTH_REVISIT.md`; research `batches/2026-11-03_inline_split_research/`, `_inline_revisit2/`, `_inline_revisit3/`.

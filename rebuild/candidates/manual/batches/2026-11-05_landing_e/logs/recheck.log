@@ -1,0 +1,40 @@
+addr       parity           behav  name
+0047756c   RELOCATION_MATCH PASS   CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef
+  WARN leaf 'operator=' matches no symbol in 00477964.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 00477964.obj; graded the largest function
+00477964   RELOCATION_MATCH PASS   operator=
+0053c332   RELOCATION_MATCH PASS   NUISystem::CList::DoRecomputeOffsets
+0053a0a1   RELOCATION_MATCH PASS   NUISystem::CList::ChangeState
+005392fc   RELOCATION_MATCH PASS   NUISystem::CList::ScrollDown
+005385ae   RELOCATION_MATCH PASS   NUISystem::CList::ScrollUp
+00549440   WARN RELOC_NAME: ?size@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QBEIXZ -> 0042b707 labelled 'CBasicString<char>::CalcStringLength'
+00549440   RELOCATION_MATCH PASS   NUISystem::CTextSlider::ProcessEvent
+00551340   WARN RELOC_NAME: ??A?$map@W4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@U?$less@W4ETableSprites@NUISystem@@@std@@V?$allocator@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@5@@std@@QAEAAV?$CCountedPointer@VCComponent@NUISystem@@@@ABW4ETableSprites@NUISystem@@@Z -> 00554030 labelled 'CRedBlackTree_FindOrInsert_Lookup'
+00551340   RELOCATION_MATCH PASS   NUISystem::CTable::GetDataFromDef
+00553fd0   WARN RELOC_NAME: ??_ECTable@NUISystem@@UAEPAXI@Z -> 005540d0 labelled 'NUISystem::CTable::`scalar_deleting_destructor''
+00553fd0   RELOCATION_MATCH PASS   NUISystem::CTable::`vector deleting destructor'`adjustor{4}'
+00550010   WARN RELOC_NAME: ??_ECText@NUISystem@@UAEPAXI@Z -> 00550030 labelled 'NUISystem::CText::`scalar_deleting_destructor''
+00550010   RELOCATION_MATCH PASS   NUISystem::CText::`vector deleting destructor'`adjustor{4}'
+00550020   WARN RELOC_NAME: ??_ECText@NUISystem@@UAEPAXI@Z -> 00550030 labelled 'NUISystem::CText::`scalar_deleting_destructor''
+00550020   RELOCATION_MATCH PASS   NUISystem::CText::`vector deleting destructor'`adjustor{24}'
+006303c0   RELOCATION_MATCH PASS   NUISystem::CUIDef::CUIDef
+00631c60   WARN RELOC_NAME: ??$TransferVector@J@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+00631c60   WARN RELOC_NAME: ??$TransferVector@K@CPersistContext@@QAEXAAV?$vector@KV?$allocator@K@std@@@std@@@Z -> 00464841 labelled 'CPersistContext::TransferBinary_00464841'
+00631c60   WARN RELOC_NAME: ??$TransferMap@KK@CPersistContext@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z -> 00431242 labelled '_global::PersistTransfer_00431242'
+00631c60   WARN RELOC_NAME: ??$TransferVector@M@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z -> 00464cbf labelled 'CPersistContext::TransferBinary_00464cbf'
+00631c60   RELOCATION_MATCH PASS   NUISystem::CUIDef::Transfer
+
+WINS: 13
+  0047756c RELOCATION_MATCH CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef
+  00477964 RELOCATION_MATCH CEngineLocalDetailObjectDef::operator=
+  0053c332 RELOCATION_MATCH CList::?DoRecomputeOffsets@CList@NUISystem@@MAEXXZ
+  0053a0a1 RELOCATION_MATCH NUISystem::CList::?ChangeState@CList@NUISystem@@UAEXK@Z
+  005392fc RELOCATION_MATCH NUISystem::CList::?ScrollDown@CList@NUISystem@@MAEXKK_N00@Z
+  005385ae RELOCATION_MATCH NUISystem::CList::?ScrollUp@CList@NUISystem@@MAEXKK_N00@Z
+  00549440 RELOCATION_MATCH NUISystem::CTextSlider::?ProcessEvent@CTextSlider@NUISystem@@UAEXW4EEvent@2@@Z
+  00551340 RELOCATION_MATCH CTable::?GetDataFromDef@CTable@NUISystem@@QAEXXZ
+  00553fd0 RELOCATION_MATCH NUISystem::CTable::??_ECTable@NUISystem@@W3AEPAXI@Z
+  00550010 RELOCATION_MATCH NUISystem::CText::??_ECText@NUISystem@@W3AEPAXI@Z
+  00550020 RELOCATION_MATCH NUISystem::CText::??_ECText@NUISystem@@WBI@AEPAXI@Z
+  006303c0 RELOCATION_MATCH NUISystem::CUIDef::??0CUIDef@NUISystem@@QAE@ABV01@@Z
+  00631c60 RELOCATION_MATCH NUISystem::CUIDef::?Transfer@CUIDef@NUISystem@@UAEXAAVCPersistContext@@@Z

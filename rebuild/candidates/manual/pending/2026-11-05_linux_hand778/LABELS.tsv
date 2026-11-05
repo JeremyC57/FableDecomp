@@ -1,0 +1,8 @@
+address	label
+0x00631720	NUISystem::CUIDef::operator=
+0x00615E70	CPersistTraits<CTCInventoryMap::CUIRegionInfo>::TransferIn
+0x00ACCBF0	QuadricOptimiserInternals::COptimisedPrimitive::PerformSubContraction
+0x00E50910	NScript::CV_BeardyBaldyScript::WatchForQuestCardConditions
+0x00839420	NThingHelpers::CreateEffectOnHit
+0x00E50E40	NScript::CV_BeardyBaldyScript::GoTalkToBarber
+0x00AD71B0	QuadricOptimiserInternals::COptimisedVertex::Kill

@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00631720   RELOCATION_MATCH PASS   CUIDef::operator=
+00615e70   RELOCATION_MATCH PASS   CPersistTraits<CTCInventoryMap::CUIRegionInfo>::TransferIn
+
+WINS: 2
+  00631720 RELOCATION_MATCH NUISystem::CUIDef::??4CUIDef@NUISystem@@QAEAAV01@ABV01@@Z
+  00615e70 RELOCATION_MATCH CPersistTraits<CTCInventoryMap::CUIRegionInfo>::?TransferIn@?$CPersistTraits@VCUIRegionInfo@CTCInventoryMap@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCUIRegionInfo@CTCInventoryMap@@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NUISystemCUIDef_operator_00631720
+  CPersistTraitsCTCInventoryMapCUIRegionInfo_TransferIn_00615e70

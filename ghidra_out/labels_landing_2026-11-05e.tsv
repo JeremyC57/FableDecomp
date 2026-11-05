@@ -1,0 +1,8 @@
+address	name	evidence
+00631720	NUISystem::CUIDef::operator=	landing 2026-11-05e (chunk 778): 
+00615e70	CPersistTraits<CTCInventoryMap::CUIRegionInfo>::TransferIn	landing 2026-11-05e (chunk 778): 
+00accbf0	QuadricOptimiserInternals::COptimisedPrimitive::PerformSubContraction	landing 2026-11-05e (chunk 778): 
+00e50910	NScript::CV_BeardyBaldyScript::WatchForQuestCardConditions	landing 2026-11-05e (chunk 778): 
+00839420	NThingHelpers::CreateEffectOnHit	landing 2026-11-05e (chunk 778): 
+00e50e40	NScript::CV_BeardyBaldyScript::GoTalkToBarber	landing 2026-11-05e (chunk 778): 
+00ad71b0	QuadricOptimiserInternals::COptimisedVertex::Kill	landing 2026-11-05e (chunk 778): 

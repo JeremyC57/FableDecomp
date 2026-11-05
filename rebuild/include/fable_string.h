@@ -200,6 +200,14 @@ public:
     __forceinline
 #endif
     bool operator==(const char* text) const { if(!PStringData) { if(strcmp(text,"")==0) return true; return false; } return PStringData->Data==text; }
+#ifdef FABLE_RETAIL_CCHARSTRING_CHAR_EQ
+    // Nested opt-in (chunk 778, row 0x00615E70 CPersistTraits<CTCInventoryMap::CUIRegionInfo>::TransferIn): FableWin.pdb
+    // ??8CCharString@@QBE_ND@Z (0x020C8690; Ego_r keeps only ??9CCharString@@QBE_ND@Z, retail's out-of-line operator!= 0x0099E520).
+    // Inline in retail: a null string is never equal; else {character, 0} is built on the stack and compared with the strcmp
+    // intrinsic (0x006162B4: `mov byte ptr [esp+4Ch],2Ch ; mov byte ptr [esp+4Dh],0`, bytewise loop, `sbb ; sbb ; sete`).
+    // __forceinline: the landed 0x0099E520 / 0x00997DA0 / 0x00997E90 local models found plain inline called out of line.
+    __forceinline bool operator==(char character) const { if(PStringData!=0) { char text[2]; text[0]=character; text[1]=0; return strcmp(PStringData->Data.PeekData(),text)==0 ? true : false; } return false; }
+#endif
 #ifdef FABLE_RETAIL_CCHARSTRING_WHITESPACE
     // Nested opt-in (chunk 775, row 0x009A8170): Ego_r.pdb ?RemoveWhiteSpaceBeginEnd@CCharString@@QAEXXZ (0x0099F560), out of line.
     void RemoveWhiteSpaceBeginEnd();

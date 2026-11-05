@@ -43,6 +43,13 @@ public:
     bool IsHitNegated() const { return HitNegated; }
     bool IsMoveBackOnHit() const { return MoveBack; }
     bool IsCreateDustParticleEffectOnHit() const { return CreateDustParticleEffectOnHit; }
+#ifdef FABLE_RETAIL_CHITPARAMETERS_EFFECTONHIT
+    // Retail opt-in (chunk 778, row 0x00839420 NThingHelpers::CreateEffectOnHit): FableWin.pdb
+    // ?IsCreateParticleEffectOnHit@CHitParameters@@QBE_NXZ and ?GetPHitMaterialDef@CHitParameters@@QBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ,
+    // inline in retail (`mov al,[esi+23h]`; the by-value CDefPointer copy `mov ebx,[esi+4Ch]; inc [ebx+4]`). Bodies only: no layout change.
+    bool IsCreateParticleEffectOnHit() const { return CreateParticleEffectOnHit; }
+    CDefPointer<const CMaterialDef> GetPHitMaterialDef() const { return PHitMaterialDef; }
+#endif
     void SetKnockDown(bool value) { KnockDown=value; }
     void SetDecapitate(bool value) { Decapitate=value; }
     void SetPlayHitResponse(bool value) { PlayHitResponseOverrideSet=true;PlayHitResponse=value; }

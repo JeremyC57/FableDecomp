@@ -1,0 +1,6 @@
+address	module	name	length	group
+00615e70	CPersistTraits<CTCInventoryMap::CUIRegionInfo>	TransferIn	1423	G00615e70
+00631720	CUIDef	operator=	1337	G006303c0
+00839420	_global	CreateEffectOnHit	1308	G00838ec0
+00accbf0	QuadricOptimiserInternals::COptimisedPrimitive	PerformSubContraction	1264	G00ac70f0
+00e50910	CV_BeardyBaldyScript	WatchForQuestCardConditions	1328	G00e4fa20

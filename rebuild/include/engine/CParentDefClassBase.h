@@ -49,7 +49,13 @@ public:
     CParentDefClassBase();                                               // 0x00430370 (??0CParentDefClassBase@@QAE@XZ)
 #endif
     CParentDefClassBase(const CParentDefClassBase&);                     // 0x0046EE98 (??0CParentDefClassBase@@QAE@ABV0@@Z)
+#ifndef FABLE_RETAIL_PDCB_IMPLICIT_ASSIGN
     CParentDefClassBase& operator=(const CParentDefClassBase&);          // 0x00431ED0 (??4CParentDefClassBase@@QAEAAV0@ABV0@@Z)
+#else
+    // Retail opt-in (chunk 778, row 0x00631720 NUISystem::CUIDef::operator=): operator= is the implicit one (0x00431ED0 is its
+    // out-of-line COMDAT). The implicit ??4CUIDef expands it: call CDefClassBase::operator= 0x00431F10, InstantiationName +0x25,
+    // then the SubDefInfoMap CVectorMap assignment (vector operator= 0x00431F90, Dirty byte +0x36) through ebx/ebp.
+#endif
 #ifndef FABLE_RETAIL_CPARENTDEFCLASSBASE
     virtual ~CParentDefClassBase();                                      // slot 0  0x004303F0 (scalar deleting); ~ 0x00430300
 #endif

@@ -20,6 +20,12 @@ long GetInteger() const { return Integer; }
 void InitAsInteger(const char* text,unsigned long length);
 // Chunk 756 (row 0x009B9770): Ego_r.pdb ?InitAsFloat@CParsedItem@@QAEXPBDK@Z (out of line, 0x009B9770).
 void InitAsFloat(const char* text,unsigned long length);
+#ifdef FABLE_RETAIL_CPARSEDITEM_SYMBOL
+// Chunk 778 (row 0x00615E70): Ego_r.pdb ?IsSymbol@CParsedItem@@QBE_NXZ (inline in retail: `cmp [item],1`) and
+// ?GetSymbol@CParsedItem@@QBEABVCCharString@@XZ (out of line, 0x009B9870 `lea eax,[ecx+8]`).
+bool IsSymbol() const { return Type==PARSED_ITEM_SYMBOL; }
+const CCharString& GetSymbol() const;
+#endif
 #else
 public:CParsedItem(){} const CCharString& GetString() const;
 #endif

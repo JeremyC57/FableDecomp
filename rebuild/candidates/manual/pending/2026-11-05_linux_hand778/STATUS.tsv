@@ -1,0 +1,6 @@
+address	name	status	attempts	best	grade	difflines	file
+00631720	NUISystem::CUIDef::operator=	matched	3 (a, b, final)	final	RELOCATION_MATCH	0	src/00631720.cpp
+00615e70	CPersistTraits<CTCInventoryMap::CUIRegionInfo>::TransferIn	matched	5 (a, b, b2, c, final)	final	RELOCATION_MATCH	0	src/00615e70.cpp
+00accbf0	QuadricOptimiserInternals::COptimisedPrimitive::PerformSubContraction	parked	17 logged (+ earlier q.py probes)	m1	DIFFER(1282v1264)	139	differ/00accbf0.cpp
+00e50910	NScript::CV_BeardyBaldyScript::WatchForQuestCardConditions	parked	20 (a-y)	b	DIFFER(1392v1328)	51	differ/00e50910.cpp
+00839420	NThingHelpers::CreateEffectOnHit	parked	17 (a-p)	p	DIFFER(1304v1308)	75	differ/00839420.cpp

@@ -384207,6 +384207,20 @@ $catalog = @(
         TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_ComputeContraction_00ac92c0_test.cpp'
         PassPattern = '00ac92c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00631720'
+        Module = 'NUISystem::CUIDef'
+        Source = '00/63/NUISystemCUIDef_operator_00631720.cpp'
+        TestSource = '00/63/NUISystemCUIDef_operator_00631720_test.cpp'
+        PassPattern = '00631720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00615e70'
+        Module = 'CPersistTraits<CTCInventoryMap::CUIRegionInfo>'
+        Source = '00/61/CPersistTraitsCTCInventoryMapCUIRegionInfo_TransferIn_00615e70.cpp'
+        TestSource = '00/61/CPersistTraitsCTCInventoryMapCUIRegionInfo_TransferIn_00615e70_test.cpp'
+        PassPattern = '00615e70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
