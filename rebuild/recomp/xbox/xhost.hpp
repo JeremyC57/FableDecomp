@@ -120,16 +120,31 @@ uint32_t newAnsiString(const std::string& s);  // allocates the STRING and its b
 // ---- threads and the global lock -----------------------------------------------------------
 // Ticket lock: FIFO hand-over, so a thread giving the lock up at a safepoint really lets the
 // next waiter in (std::mutex makes no such promise).
+#if defined(__3DS__)
+// New 3DS: no futex behind std::atomic::wait (it spins, and a spinning thread never lets an equal
+// priority thread on its core run): the kernel's address arbiter blocks and wakes instead
+// (n3ds/platform.cpp). Only contention reaches the kernel.
+void platformWaitBelow(std::atomic<uint32_t>& word, uint32_t value);  // while word < value
+void platformWakeAll(std::atomic<uint32_t>& word);
+#endif
 class FairLock {
 public:
     void lock() {
         const uint32_t t = next_.fetch_add(1, std::memory_order_relaxed);
+#if defined(__3DS__)
+        while (serving_.load(std::memory_order_acquire) != t) platformWaitBelow(serving_, t + 1);
+#else
         for (uint32_t s = serving_.load(std::memory_order_acquire); s != t; s = serving_.load(std::memory_order_acquire))
             serving_.wait(s, std::memory_order_acquire);
+#endif
     }
     void unlock() {
         serving_.fetch_add(1, std::memory_order_release);
+#if defined(__3DS__)
+        if (next_.load(std::memory_order_relaxed) != serving_.load(std::memory_order_relaxed)) platformWakeAll(serving_);
+#else
         serving_.notify_all();
+#endif
     }
     bool contended() const { return next_.load(std::memory_order_relaxed) - serving_.load(std::memory_order_relaxed) > 1; }
 

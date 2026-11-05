@@ -162,6 +162,14 @@ void platformThreadInit() {
 }
 void platformInstallFaultHandler() { platformThreadInit(); }
 
+// ---- the guest lock's waits (xhost.hpp FairLock) ------------------------------------------------
+void platformWaitBelow(std::atomic<uint32_t>& word, uint32_t value) {
+    syncArbitrateAddress(reinterpret_cast<s32*>(&word), ARBITRATION_WAIT_IF_LESS_THAN, static_cast<s32>(value));
+}
+void platformWakeAll(std::atomic<uint32_t>& word) {
+    syncArbitrateAddress(reinterpret_cast<s32*>(&word), ARBITRATION_SIGNAL, -1);
+}
+
 // ---- host threads ----------------------------------------------------------------------------
 namespace {
 int g_gameCore = -2;  // core 2 on the New 3DS (set in main), else the process default
@@ -427,7 +435,7 @@ int main() {
     APT_CheckNew3DS(&n3ds);
     svcGetThreadPriority(&g_mainPrio, CUR_THREAD_HANDLE);
     if (n3ds) g_gameCore = 2;
-    std::printf("Fable boot test build 6 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
+    std::printf("Fable boot test build 7 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
                 static_cast<unsigned long>(osGetMemRegionSize(MEMREGION_APPLICATION) / 1024));
 
     mkdirs(g_dataDir);
