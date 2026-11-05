@@ -93,7 +93,7 @@ uint32_t vaReservedBytes();
 #if defined(__3DS__)
 constexpr uint32_t kVaBase = kPhysSize, kVaEnd = 0x08000000u;  // up to the end of the probed window
 #else
-constexpr uint32_t kVaBase = kPhysSize, kVaEnd = 0x05800000u;  // as a 96 MB window
+constexpr uint32_t kVaBase = kPhysSize, kVaEnd = 0x08000000u;  // FABLE_WINDOW_END (memory.cpp) narrows it
 #endif
 #else
 constexpr uint32_t kVaBase = 0x10000000u, kVaEnd = 0x70000000u;

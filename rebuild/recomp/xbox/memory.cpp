@@ -108,7 +108,12 @@ void memProbeWindow() {
     XLOG(0, "memory: guest window 0x%08X..0x%08X (%u MB)", RECOMP_WINDOW_BASE, RECOMP_WINDOW_BASE + g_windowEnd, g_windowEnd >> 20);
 }
 #else
-uint32_t memWindowEnd() { return 0xFFFFFFFFu; }
+// Desktop rehearsal of the 3DS layout (FABLE_COMPACT_MEMORY): FABLE_WINDOW_END=<hex> plays the
+// probed window end (0x06000000: the documented 96 MB, 0x08000000: 128 MB).
+uint32_t memWindowEnd() {
+    static const uint32_t end = getenv("FABLE_WINDOW_END") ? static_cast<uint32_t>(strtoul(getenv("FABLE_WINDOW_END"), nullptr, 16)) : 0xFFFFFFFFu;
+    return end;
+}
 uint32_t memBackedBytes() { return 0; }
 uint32_t memBackedPeakBytes() { return 0; }
 bool hostCommit(uint32_t, uint32_t) { return true; }

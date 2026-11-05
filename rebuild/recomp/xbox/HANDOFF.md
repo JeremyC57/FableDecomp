@@ -130,6 +130,29 @@ Oakvale**, rendered through Vulkan (tested on lavapipe under Xvfb, ~7 fps in sof
   does not match the trace: the full barrier (3 -> 5) sits between the last caster pass and
   every sample, so it is not proof of a race.
 
+## 2026-11-05: New 3DS boot test (n3ds/)
+Feasibility numbers: `docs/journal/2026-11/N3DS_FEASIBILITY.md` (lifted code 92.5 MB on ARM32,
+guest memory ~64 MB, game thread 18 ms/frame on a Xeon core: expect 2-4 fps before rendering).
+- Toolchain: devkitARM/libctru from the `devkitpro/devkitarm` image through `mirror.gcr.io`
+  (devkitpro.org blocks cloud hosts), unpacked to /opt/devkitpro.
+- Guest memory (`RECOMP_WINDOW_MEMORY`, `FABLE_COMPACT_MEMORY`): `GP(a) = (a & 0x07FFFFFF) |
+  0x08000000`, so guest data lives below 128 MB (0x80000000/0xF0000000 aliases fold onto RAM).
+  48 MB RAM range, reservations above it up to the probed window end (libctru documents the heap
+  area to 0x0E000000 = 96 MB; `memProbeWindow` tries to 0x10000000). Pages get FCRAM only when
+  allocated/committed (`hostCommit`). Measured address need: RAM 40.6 MB + reservations 62 MB.
+- Small-block allocator: 512 MB reservation, 32 classes x 16 MB. `lift_n3ds.sh` patches it to
+  1 MB per class (peak seen 780 KB; `hle_SmallBlockAlloc` stops with a message if one fills).
+  Turning it off is not possible (its pool code crashes on a failed page).
+- Code size: the 3DS code region is small (believed 0x00100000-0x04000000), so the lift keeps
+  only functions seen running on desktop: `--coverage` build + `FABLE_COVERAGE=<file>` headless
+  run, then `lift_n3ds.sh ... --keep <file>`; the rest become `recomp_missing` stubs (fatal with
+  the address). 15,261 kept = ~21 MB of ARM code (all: 88 MB).
+- Build: `cmake -S rebuild/recomp/xbox/n3ds -B b3ds -G Ninja -DCMAKE_TOOLCHAIN_FILE=$DEVKITPRO/cmake/3DS.cmake
+  -DFABLE_GEN_DIR=<gen>`; output `FableXbox.3dsx`. CIA: `n3ds/fable.rsf` (178 MB mode, 804 MHz, L2)
+  needs makerom (not buildable here: external code).
+- On the console: the xiso in the SD root (name containing "fable" preferred), data in
+  sdmc:/3ds/fable (hdd, fable_xbox.ini, xbox_recomp.log). No rendering or audio output yet.
+
 ## Next
 1. Renderer: real occlusion queries (count passed fragments per CLEAR/GET_REPORT pair with
    Vulkan queries); dot-product texture modes; fixed-function T&L.
