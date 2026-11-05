@@ -408,15 +408,16 @@ extern "C" void __system_allocateHeaps(void) {
     mappableInit(OS_MAP_AREA_BEGIN, OS_MAP_AREA_END);
 }
 
-// newlib has no pread/pwrite here: files.cpp's are a locked seek + read/write.
-static std::mutex g_preadLock;
+// newlib has no pread/pwrite here: files.cpp's are a locked seek + read/write. Recursive: a read
+// on the iso: device seeks and reads the image file underneath, through this same function.
+static std::recursive_mutex g_preadLock;
 extern "C" ssize_t pread(int fd, void* buf, size_t n, off_t off) {
-    std::lock_guard<std::mutex> l(g_preadLock);
+    std::lock_guard<std::recursive_mutex> l(g_preadLock);
     if (lseek(fd, off, SEEK_SET) < 0) return -1;
     return read(fd, buf, n);
 }
 extern "C" ssize_t pwrite(int fd, const void* buf, size_t n, off_t off) {
-    std::lock_guard<std::mutex> l(g_preadLock);
+    std::lock_guard<std::recursive_mutex> l(g_preadLock);
     if (lseek(fd, off, SEEK_SET) < 0) return -1;
     return write(fd, buf, n);
 }
@@ -435,7 +436,7 @@ int main() {
     APT_CheckNew3DS(&n3ds);
     svcGetThreadPriority(&g_mainPrio, CUR_THREAD_HANDLE);
     if (n3ds) g_gameCore = 2;
-    std::printf("Fable boot test build 8 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
+    std::printf("Fable boot test build 9 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
                 static_cast<unsigned long>(osGetMemRegionSize(MEMREGION_APPLICATION) / 1024));
 
     mkdirs(g_dataDir);
