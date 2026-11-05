@@ -1,0 +1,22 @@
+address	site	site_instruction	family	attempts_compiled_before_the_helper (ATTEMPTS_FAMILIES.tsv)	result
+009e1c70	0x009E1C73	xor eax,eax	RDTSC	T1,T2	no plain C++ / intrinsic spelling reproduces the site; helper engine/GFGetCycleCount.h
+00c57f20	0x00C57F31	fld dword ptr [ecx+eax] ; fstp dword ptr [esp+10h] ; fld dword ptr [esp+10h] ; fistp dword ptr [esp+0Ch]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c57f60	0x00C57F90	fld dword ptr [esp+14h] ; fmul dword ptr [ecx+eax] ; fstp dword ptr [esp+10h] ; fld dword ptr [esp+10h] ; fistp dword ptr [esp+0Ch]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c57fc0	0x00C57FD1	fld dword ptr [esp+14h] ; fmul dword ptr [ecx+eax] ; fstp dword ptr [esp+10h] ; fld dword ptr [esp+10h] ; fistp dword ptr [esp+0Ch]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c593c0	0x00C59526	fstp dword [esp+20h] ; fld dword [esp+20h] ; fistp dword [esp+18h]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c59b00	0x00C59B84	fld dword ptr [esp+18h]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c5a500	0x00C5A57C	fstp [esp+4]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c6a460	0x00C6A4CE	fld dword ptr [esp+1Ch]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c6aef0	0x00C6AF1A	fld [edi+10h] ; fsub [0.5f] ; fstp [esp+0Ch] ; fld [esp+0Ch] ; fistp dword [esp+10h] ; test ; jge ; inc	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c6b240	0x00C6B241	fld dword [esp+8]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c6b7c0	0x00C6B86D	fsub [0.5f] ; fstp [esp+14h] ; fstp st(0) ; fld [esp+14h] ; fistp dword [esp+8] ; test edx,edx ; jge ; inc edx	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c6b8c0	0x00C6B951	fsub [0.5f] ; fstp [esp+14h] ; fld [esp+14h] ; fistp dword [esp+8] ; test edx,edx ; jge ; inc edx	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c6bae0	0x00C6BB87	fsub [0.5f] ; fstp [esp+14h] ; fld [esp+14h] ; fistp dword [esp+10h] ; test ; jge ; inc	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c6bdc0	0x00C6BDEC	fld dword ptr [esp+8]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c6cef0	0x00C6CEFE	fstp [esp+0Ch] ; fld [esp+0Ch] ; fistp dword [esp]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c6de60	0x00C6DE6E	fstp [esp+0Ch] ; fld [esp+0Ch] ; fistp dword [esp]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c6dea0	0x00C6DED1	fld dword ptr [esp+10h]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c6eba0	0x00C6EBAC	fstp [esp] ; fld [esp] ; fistp dword [esp+4]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c705b0	0x00C705B0	-	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c70f80	0x00C70F80	-	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h
+00c77fc0	0x00C77FE5	fld dword ptr [esp+0Ch]	FISTP	F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13	no plain C++ / intrinsic spelling reproduces the site; helper libpk/FtoL.h

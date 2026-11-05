@@ -1,6 +1,8 @@
 // CVtable_012bed90::RebuildGain(bool alternate) -- under the effect's lock record the selected gain set and rebuild its Q15 gain ramps from the channel scales and the volume: the front pair always, the rear pair only when the audio master runs four or more output channels
 // Leaf: ?RebuildGain@CVtable_012bed90@@QAEX_N@Z
-// Retail-asm: 0x00C6DED1 `fld dword ptr [esp+10h]` + 0x00C6DED5 `fistp dword ptr [esp+8]` (and 0x00C6DF0A / 0x00C6DF0E, 0x00C6DF74 / 0x00C6DF78, 0x00C6DFAD / 0x00C6DFB1) -- libpk's inline-assembly float-to-long helper (the landed ComputeGainRamp 0x00C6DE60 runs the same `fld ; fistp dword` block): the product homed in the dead argument slot and reloaded, a bare dword fistp. VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` into an 8-byte slot: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
+// Retail-asm: 0x00C6DED1 `fld dword ptr [esp+10h]` + 0x00C6DED5 `fistp dword ptr [esp+8]` (and 0x00C6DF0A / 0x00C6DF0E, 0x00C6DF74 / 0x00C6DF78, 0x00C6DFAD / 0x00C6DFB1) -- libpk's inline-assembly float-to-long helper (the landed ComputeGainRamp 0x00C6DE60 runs the same `fld ; fistp dword` block): the product homed in the dead argument slot and reloaded, a bare dword fistp. VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` into an 8-byte slot: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
+// Helper (2026-11-05 asm migration): the bare `fld` / `fistp dword` block is libpk's FtoL in the shared libpk/FtoL.h (byte-matching
+//   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: asm/w3 ATTEMPTS.tsv family FISTP.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C6DEA0, 369 bytes, thiscall `ret 4`, one dword frame word.
 // Identity (descriptive; libpk software mixer, no PDB / RTTI): the landed binding `?RebuildGain@CVtable_012bed90@@QAEX_N@Z`
 //   (caller SetVolume 0x00C6E020, slot 3); the other callers are slot 4 SetParameters 0x00C6E050 (this chunk). Layout as
@@ -16,13 +18,7 @@ extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void* secti
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void* section);   // IAT 0x0143FE10
 
 // libpk's inline-assembly float-to-long helper (round to nearest, the FPU default)
-__forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "libpk/FtoL.h"
 
 class CUnprovenAudioMasterBase_012B5B80 { public: virtual void v00(); unsigned char UnprovenBase04[0x50]; };
 class CAudioMaster : public CUnprovenAudioMasterBase_012B5B80 {
@@ -55,7 +51,7 @@ struct CVtable_012bed90 : CVtable_012beda4 {       // vtable 0x012BED90 (ctor 0x
     void ComputeGainRamp(SGainRamp* ramp, float scale);   // 0x00C6DE60
     void SetGainRamp(SGainRamp* ramp, float scale)
     {
-        unsigned long gain = FloatToLong(scale * m_volume * 32767.0f);
+        unsigned long gain = FtoL(scale * m_volume * 32767.0f);
         if (gain > 0x7fff)
             gain = 0x7fff;
         ramp->m_gain = (unsigned short)gain;

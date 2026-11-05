@@ -1,7 +1,9 @@
 // CReverbProcessor::UpdateChorusLength(SReverbState* state, const SReverbParams* params) -- set the chorus delay length in samples: round(sample rate * chorus delay - 0.5) biased up when negative, rounded up to a multiple of 4
-// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 2-instruction __asm (no control flow) + the Retail-asm evidence line
+// Grade: RELOCATION_MATCH -- retail_asm through the shared helper libpk/FtoL.h (2026-11-05 asm migration, docs/pipeline/ASM_RULES.md); no inline asm in this row
 // Leaf: ?UpdateChorusLength@CReverbProcessor@@
-// Retail-asm: 0x00C77FE5 `fld dword ptr [esp+0Ch]` + 0x00C77FE9 `fistp dword ptr [esp]` -- libpk's inline-assembly float-to-long helper inside its round-half-down (as 0x00C3FF70: the `value - 0.5f` stored to the dead params slot and reloaded, a bare dword fistp into the `push ecx` frame word). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
+// Retail-asm: 0x00C77FE5 `fld dword ptr [esp+0Ch]` + 0x00C77FE9 `fistp dword ptr [esp]` -- libpk's inline-assembly float-to-long helper inside its round-half-down (as 0x00C3FF70: the `value - 0.5f` stored to the dead params slot and reloaded, a bare dword fistp into the `push ecx` frame word). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
+// Helper (2026-11-05 asm migration): the bare `fld` / `fistp dword` block is libpk's FtoL in the shared libpk/FtoL.h (byte-matching
+//   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: asm/w3 ATTEMPTS.tsv family FISTP.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C77FC0, length 72 bytes, `ret 8`. Constants 2^32 (0x0122DCB4, unsigned rate fix-up), 0.5f (0x0122F59C).
 // Dispatcher bit 0x20000.
 // Library: libpk software reverb (no PDB/RTTI); class, method and member names are descriptive. The dispatcher
@@ -87,17 +89,11 @@ public:
 };
 
 // libpk's inline-assembly float-to-long helper (round to nearest, the FPU default)
-__forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "libpk/FtoL.h"
 // libpk's round-half-down helper (out-of-line copy at 0x00C3FF70): round(value - 0.5), negatives step back up by one
 __forceinline long RoundHalfDownToLong(float value)
 {
-    long result = FloatToLong(value - 0.5f);
+    long result = FtoL(value - 0.5f);
     if (result < 0)
         ++result;
     return result;

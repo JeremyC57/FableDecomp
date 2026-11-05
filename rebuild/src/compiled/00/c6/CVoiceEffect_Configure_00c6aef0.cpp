@@ -1,5 +1,5 @@
 // CVoiceEffect::Configure(const SVoiceEffectParameters* parameters, long mode) -- set up a voice's +0x2f8 effect from the voice parameter block: configure the +0x260 part (0x00C783F0) and, through its vtable slot 1, the +0x28c stage, then derive the delay length m_delaySamples = m_blockLength * trunc(parameters->DelayScale)
-// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 2-instruction __asm (no control flow) + the Retail-asm evidence line
+// Grade: RELOCATION_MATCH -- retail_asm through the shared helper libpk/FtoL.h (2026-11-05 asm migration, docs/pipeline/ASM_RULES.md); no inline asm in this row
 // Leaf: ?Configure@CVoiceEffect
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C6AEF0, 92 bytes (+ int3 padding), `ret 8`.
 // Module: libpk's software mixer (no PDB/RTTI; class and member names descriptive). Callers 0x00C544FE / 0x00C546BE
@@ -7,23 +7,19 @@
 //   setters 0x00C53740 / 0x00C537A0 on that block.
 // Callees: 0x00C783F0 (thiscall on +0x260; the manifest's "CAudioChannel_ProcessEffects" is propagated), the +0x28c stage's
 //   vtable slot 1 (thiscall, (owner, mode)).
-// Retail-asm: 0x00C6AF1A `fld [edi+10h] ; fsub [0.5f] ; fstp [esp+0Ch] ; fld [esp+0Ch] ; fistp dword [esp+10h] ; test ; jge ; inc` -- libpk's inline-assembly truncation helper (value homed in the dead `parameters` slot, result in the dead `mode` slot). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
+// Retail-asm: 0x00C6AF1A `fld [edi+10h] ; fsub [0.5f] ; fstp [esp+0Ch] ; fld [esp+0Ch] ; fistp dword [esp+10h] ; test ; jge ; inc` -- libpk's inline-assembly truncation helper (value homed in the dead `parameters` slot, result in the dead `mode` slot). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
+// Helper (2026-11-05 asm migration): the bare `fld` / `fistp dword` block is libpk's FtoL in the shared libpk/FtoL.h (byte-matching
+//   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: asm/w3 ATTEMPTS.tsv family FISTP.
 // Layout: local model. Retail reaches the +0x28c stage through its vtable (`mov eax,[esi+28Ch] ; call [eax+4]`), so the
 //   model calls it through a pointer (a member called by name is devirtualised).
 // libpk's inline-assembly float-to-long helper. Retail homes the value in a dead stack slot and rounds it with a bare
 // `fld [slot] ; fistp dword [tmp]` (round to nearest, the FPU default); VC7.1 expands the __forceinline helper in place.
-__forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "libpk/FtoL.h"
 // truncation toward zero on top of the rounding helper: round(x - 0.5) is floor(x), negatives step back up by one
 // (retail: `fsub [0.5f] ; fstp [slot] ; fld [slot] ; fistp dword [tmp] ; test ; jge ; inc`)
 __forceinline long FloatToLongTruncate(float value)
 {
-    long result = FloatToLong(value - 0.5f);
+    long result = FtoL(value - 0.5f);
     if (result < 0)
         ++result;
     return result;

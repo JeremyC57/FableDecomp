@@ -1,6 +1,8 @@
 // CVtable_012bede0::SetupVoice(...) -- Quantize and clamp mixer gains, derive the impulse delay and prepare one voice.
 // Leaf: ?SetupVoice@CVtable_012bede0@@QAEXPAUSFilteredVoice@@MPBUSUnprovenImpulse52@@@Z
 // Retail-asm: 0x00c70f80 uses three bare fistp dword conversions after float stores; ordinary C++ casts call __ftol2 and truncate rather than obey the current x87 rounding mode. Only that original conversion is preserved, C++ reconstructs all surrounding arithmetic/branches.
+// Helper (2026-11-05 asm migration): the bare `fld` / `fistp dword` block is libpk's FtoL in the shared libpk/FtoL.h (byte-matching
+//   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family FISTP.
 // Identity: descriptive. Own common base constructor00c6e6a0 initializes polymorphic lock at4, Win32 section8,volume32/crossfade36. Full destructor00c6e630 resets common object root012b5868 at00c6e64a; lock deleting destructor00c5d5b0 has no further base. Sibling derived constructor00c6d9d0 starts its own six gain/step pairs at40, proving base40 rather than168. Concrete constructors00c70120/00c70b00 round the scratch raw address168 upward to16-byte alignment and store pointer440. Derived scratch raw combines64short history+128short input+8short alignment slack at40; pointer440. Own block copy reads/writes128bytes of short history. Typed two voice pairs start444; constructor aligned coefficient pointers and SetupVoice stores prove voice fields, sizes292/676, and short coefficient data. Class/field names for this library remain descriptive; no library PDB identity claimed. Global0143bc2c installed at00c4d3af after allocating1d8 and calling ctor00c3e520. True ctor chain00c3e520->00c4d000 initializes base012b5b80 and four20byte pool objects at4/18/2c/40; pool ctor00c3c8a0 and full dtor00c3caa0 show true commonroot012b5868. Full base dtor00c3e2a0 resets root at00c3e308; master dtor00c3f380 chains base. Own ctor zeros TapTable1b8 and outputChannels1bc; inactive derived fields54..1b7 and1c0..1d7 explicitly unproven. Descriptive master name retained from existing library models, no original PDB identity claimed. SetupVoice converts gains with original bare FISTP32, clamps unsigned results32767, splits impulse Delay word50 into quotient and low7 bits, prepares short coefficients through 00c7ba00. Original helper descriptive catalog spelling retained.
 // Layout: true root/mixer and master ancestry, typed short coefficients and impulse25shorts+ushortDelay.
 #include <stddef.h>
@@ -26,12 +28,10 @@ struct SUnprovenImpulse52{short Values[25];unsigned short Delay;};
 #define __forceinline inline
 #include <math.h>
 #endif
+#include "libpk/FtoL.h"
 static __forceinline unsigned long RoundGain(float value){
 #ifdef _MSC_VER
-long rounded;
-__asm {fld value}
-__asm {fistp rounded}
-return (unsigned long)rounded;
+return (unsigned long)FtoL(value);
 #else
 double whole=floor((double)value);double fraction=(double)value-whole;if(fraction>0.5||(fraction==0.5&&((long)whole%2)!=0))whole+=1.0;return (unsigned long)(long)whole;
 #endif

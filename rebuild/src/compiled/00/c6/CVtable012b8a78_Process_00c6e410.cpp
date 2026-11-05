@@ -2,6 +2,9 @@
 // Leaf: ?Process@CVtable_012b8a78@@UAEXPBFPBQAJ@Z
 // Flags: /GS
 // Retail-asm: 0x00C6E334 `pmulhw xmm0,xmm7` (0x00C6E317..0x00C6E36F `movdqa xmm7,[gains] ; movdqa xmm6,[increments] ; movdqa xmm0,[eax] ; pmulhw xmm0,xmm7 ; paddsw xmm7,xmm6 ; ... ; dec ecx ; jne`) -- the hand SSE2 ramp kernel Row00c6e290::ScaleAccumulate16Ramp (landed retail_asm) is a static of this retail TU: VC7.1 passes its `initial` argument in ecx only to a same-TU caller (`mov cx,[eax]` / `xor ecx,ecx` before each call here), so its landed body is repeated verbatim; Process itself is plain C++ (precedent: the landed SSE2 Process 0x00C6D630 and MMX Process 0x00C6FE10).
+// Helper (2026-11-05 asm migration): the retail inline-asm block is the shared libpk/MixKernelsSIMD.h (byte-matching path + FABLE_PORTABLE twin); the row has
+//   no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family SIMD_LIBPK.
+#include "libpk/MixKernelsSIMD.h"
 struct CRITICAL_SECTION { void* DebugInfo; long LockCount, RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(CRITICAL_SECTION* section);   // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CRITICAL_SECTION* section);   // IAT 0x0143FE10
@@ -58,32 +61,7 @@ increments[4]=(short)(step*8);
 increments[5]=(short)(step*8);
 increments[6]=(short)(step*8);
 increments[7]=(short)(step*8);
-__asm {
- mov ecx,count
- mov eax,src
- mov edx,dst
- movdqa xmm7,gains
- movdqa xmm6,increments
- align 16
- next_block:
- movdqa xmm0,[eax]
- pmulhw xmm0,xmm7
- paddsw xmm7,xmm6
- pxor xmm1,xmm1
- pxor xmm2,xmm2
- punpcklwd xmm1,xmm0
- punpckhwd xmm2,xmm0
- psrad xmm1,15
- psrad xmm2,15
- paddd xmm1,[edx]
- paddd xmm2,[edx+10h]
- movdqa [edx],xmm1
- movdqa [edx+10h],xmm2
- add eax,10h
- add edx,20h
- dec ecx
- jne next_block
-}
+LIBPK_SSE2_SCALE_ACCUMULATE16_RAMP(count, src, dst, gains, increments);
 }
 }
 void MixGainRampUpSSE2(const short* source, const SGainRamp* ramp, long* accumulator)          // 0x00C6E380 (no callers)

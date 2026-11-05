@@ -5,23 +5,16 @@
 //   GFNormalise3DVectors, GFInterpolateVectors x3, GFFinishPartialSlerp follow it); g_SSEAvailable is the byte the landed
 //   SSE kernels test (binding ?g_SSEAvailable@@3_NA from 0x00A5C300).
 // Retail-asm: 0x00A5B856 `cpuid` -- VC7.1 has no __cpuid intrinsic (it arrived with VC8's intrin.h) and no C++ form emits the
+// Helper (2026-11-05 asm migration): the retail inline-asm block is the shared engine/GFInitVectorMathCPUID.h (byte-matching path + FABLE_PORTABLE twin);
+//   the row has no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family CPUID.
 //   instruction; the `push ebx`/`pop ebx` pair is the compiler saving ebx because the asm block's cpuid clobbers it.
+#include "engine/GFInitVectorMathCPUID.h"
 extern bool g_SSEAvailable;                                 // 0x013D2880
 
 namespace NVectorMath
 {
     void GFInitVectorMath()
     {
-#ifndef FABLE_PORTABLE   // portable build: g_SSEAvailable stays false, every NVectorMath kernel runs retail's C++ path
-        __asm
-        {
-            mov     eax, 1
-            cpuid
-            test    edx, 0x2000000
-            je      no_sse
-            mov     byte ptr [g_SSEAvailable], 1
-        no_sse:
-        }
-#endif
+        GF_CPUID_DETECT_SSE(g_SSEAvailable);       // portable build: g_SSEAvailable stays false (the C++ paths)
     }
 }

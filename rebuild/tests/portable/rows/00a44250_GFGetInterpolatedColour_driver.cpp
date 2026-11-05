@@ -1,4 +1,4 @@
-// Row dual-build test: GFGetInterpolatedColour 0x00A44250 (in-row two-path: the MMX blend and its 16-bit-lane C++ twin).
+// Row dual-build test: GFGetInterpolatedColour 0x00A44250 (the row reaches its retail asm through a shared helper header: built as-is = the asm path, /DFABLE_PORTABLE = the header's C++ twin; 2026-11-05 asm migration).
 #include <stdio.h>
 #include "../../../src/compiled/00/a4/global_GFGetInterpolatedColour_00a44250.cpp"
 int main()

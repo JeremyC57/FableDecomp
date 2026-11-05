@@ -1,13 +1,17 @@
 // Behaviour test for 0x00497890 GFROR13 (rotate right by 13).
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "engine/GFROR13.h"
 #include <cstdio>
 #ifdef _MSC_VER
 static unsigned long __fastcall GFROR13(unsigned long value) 
 {
-    __asm ror value, 13
+    GF_ROR13(value);
     return value;
 }
 #else
-static unsigned long GFROR13(unsigned long value) { unsigned int v = (unsigned int)value; __asm__("rorl $13, %0" : "+r"(v)); return v; }
+static unsigned long GFROR13(unsigned long value) { return fable_portable::GFRotateRight13(value); }
 #endif
 int main()
 {

@@ -2,6 +2,8 @@
 // Leaf: MixSamplesRampSSE2
 // Flags: /GS
 // Retail-asm: 0x00C6D4B4 `pmulhw xmm0,xmm7` -- retail runs this hand-written SSE2 loop (movdqu source / pmulhw / paddsw / punpcklwd / psrad /
+// Helper (2026-11-05 asm migration): the retail inline-asm block is the shared libpk/MixKernelsSIMD.h (byte-matching path + FABLE_PORTABLE twin); the row has
+//   no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family SIMD_LIBPK.
 //   paddd, `align 16` loop head) as inline asm in a C shell; the gain/increment vectors are built word by word in C.
 // Shape (retry1): the parked "LTCG register argument" (startGain in ecx, the rest on the stack, caller pops) is VC7.1's own private
 //   convention for a same-TU static: with the same-TU caller below it passes startGain in ecx itself. The body is the SSE2 ramp of
@@ -9,6 +11,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C6D410, 240 bytes, aligned /GS frame (`push ebx ; mov ebx,esp ; and esp,-16`), cookie 0x0139C8A8.
 //   Callers: 0x00C6D590 (ramp up), 0x00C6D5C0 (ramp down), 0x00C6D68F..0x00C6D836 (the other ramp mixers). Module: libpk's software
 //   mixer (descriptive name, no PDB).
+#include "libpk/MixKernelsSIMD.h"
 #ifndef _MSC_VER
 #define __cdecl
 #endif
@@ -31,32 +34,7 @@ increments[4]=(short)(step*8);
 increments[5]=(short)(step*8);
 increments[6]=(short)(step*8);
 increments[7]=(short)(step*8);
-__asm {
- mov ecx,groupCount
- mov eax,source
- mov edx,accumulator
- movdqa xmm7,gains
- movdqa xmm6,increments
- align 16
- next_block:
- movdqu xmm0,[eax]
- pmulhw xmm0,xmm7
- paddsw xmm7,xmm6
- pxor xmm1,xmm1
- pxor xmm2,xmm2
- punpcklwd xmm1,xmm0
- punpckhwd xmm2,xmm0
- psrad xmm1,15
- psrad xmm2,15
- paddd xmm1,[edx]
- paddd xmm2,[edx+10h]
- movdqa [edx],xmm1
- movdqa [edx+10h],xmm2
- add eax,10h
- add edx,20h
- dec ecx
- jne next_block
-}
+LIBPK_SSE2_SCALE_ACCUMULATE16_RAMP_UNALIGNED(groupCount, source, accumulator, gains, increments);
 #else
 int gains[8];for(int i=0;i<8;++i)gains[i]=(short)(startGain+i*step);
 for(unsigned long block=0;block<groupCount;++block){for(int lane=0;lane<8;++lane){int product=(int)source[block*8+lane]*gains[lane];int high=product/65536;if(product<0&&product%65536)--high;accumulator[block*8+lane]+=high*2;int next=gains[lane]+(short)(step*8);gains[lane]=next>32767?32767:(next < -32768?-32768:next);}}

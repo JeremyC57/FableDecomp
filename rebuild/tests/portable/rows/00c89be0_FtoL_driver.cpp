@@ -1,4 +1,4 @@
-// Row dual-build test: FtoL(double) 0x00C89BE0 (in-row two-path: bare fld qword / fistp dword, twin X87FistpNear).
+// Row dual-build test: FtoL(double) 0x00C89BE0 (the row reaches its retail asm through a shared helper header: built as-is = the asm path, /DFABLE_PORTABLE = the header's C++ twin; 2026-11-05 asm migration).
 #include <stdio.h>
 #include "../../../src/compiled/00/c8/global_FtoL_00c89be0.cpp"
 int main()

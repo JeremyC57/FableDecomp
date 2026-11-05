@@ -1,15 +1,18 @@
 // Behaviour test for 0x00C89BE0 FtoL(double) __stdcall: fld qword + fistp dword, current FPU rounding mode.
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libvorbis/vorbis_ftoi.h"
 #include <cstdio>
 #ifdef _MSC_VER
 static long __stdcall FtoL(double d) 
 {
     long result;
-    __asm fld d
-    __asm fistp result
+    VORBIS_FTOI(result, d);
     return result;
 }
 #else
-static long FtoL(double d) { long result; int r; __asm__("fistpl %0" : "=m"(r) : "t"(d) : "st"); result = r; return result; }
+static long FtoL(double d) { return fable_portable::vorbis_ftoi(d); }
 #endif
 int main()
 {

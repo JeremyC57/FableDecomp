@@ -1,3 +1,7 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/MixKernelsSIMD.h"
 #include <stdio.h>
 // Row00c6e1f0::ScaleAccumulate16(const short* src,unsigned long count,long* dst,short gain) -- Mix aligned eight-sample blocks into a signed accumulation buffer.
 // Leaf: ?ScaleAccumulate16@Row00c6e1f0@@YAXPBFKPAJF@Z
@@ -19,30 +23,7 @@ gains[4]=gain;
 gains[5]=gain;
 gains[6]=gain;
 gains[7]=gain;
-__asm {
- mov ecx,count
- mov eax,src
- mov edx,dst
- movdqa xmm7,gains
- align 16
- next_block:
- movdqa xmm0,[eax]
- pmulhw xmm0,xmm7
- pxor xmm1,xmm1
- pxor xmm2,xmm2
- punpcklwd xmm1,xmm0
- punpckhwd xmm2,xmm0
- psrad xmm1,15
- psrad xmm2,15
- paddd xmm1,[edx]
- paddd xmm2,[edx+10h]
- movdqa [edx],xmm1
- movdqa [edx+10h],xmm2
- add eax,10h
- add edx,20h
- dec ecx
- jne next_block
-}
+LIBPK_SSE2_SCALE_ACCUMULATE16(count, src, dst, gains);
 #else
 int gains[8];for(int i=0;i<8;++i)gains[i]=gain;
 for(unsigned long block=0;block<count;++block){for(int lane=0;lane<8;++lane){int product=(int)src[block*8+lane]*gains[lane];int high=product/65536;if(product<0&&product%65536)--high;dst[block*8+lane]+=high*2;}}

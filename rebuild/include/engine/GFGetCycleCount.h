@@ -4,11 +4,13 @@
 //   28 bytes / 13 instructions = `push ebp ; mov ebp,esp ; sub esp,8 ; xor eax,eax ; xor edx,edx ; rdtsc ;
 //   mov [ebp-8],eax ; mov [ebp-4],edx ; mov eax,[ebp-8] ; mov edx,[ebp-4] ; mov esp,ebp ; pop ebp ; ret`, exactly this
 //   block in a debug frame).
-// Retail-asm-helper: GFGetCycleCount
+// Retail-asm-helper: GFGetCycleCount, GF_GET_CYCLE_COUNT
 // Retail-asm: 0x009E1C73 `xor eax,eax` / 0x009E1C75 `xor edx,edx` / 0x009E1C77 `rdtsc` + the two dword stores to the 8-byte
 //   local (GFGetFastSubFrameTimer 0x009E1C70), the same block at 0x009E24D5 (GFRecalibrateFastSubFrameTimer) and 0x009E2543
 //   (CEngineDebug::CPUAheadCounterCallback). VC7.1 (13.10.3077 / 4035) has no rdtsc intrinsic (__rdtsc / <intrin.h> arrived
 //   with VC8), so the original read the counter with inline asm.
+// Macro form (2026-11-05 asm migration; call it on a line of its own, an `__asm` statement runs to the end of its line): GF_GET_CYCLE_COUNT(counter) stores the counter into the caller's own __int64 local
+//   (no return-value copy), as GFGetFastSubFrameTimer 0x009E1C70 does.
 // Semantics: the processor's time-stamp counter. The engine only ever uses differences, scaled by g_CyclesPerSecond, which
 //   GFRecalibrateFastSubFrameTimer measures against GFGetTime -- any monotonic counter with a steady rate works.
 // Portable twin (FABLE_PORTABLE): Strategy C -- no plain C++ reads the TSC: the compiler intrinsic __rdtsc() (GCC / Clang
@@ -64,7 +66,14 @@ namespace fable_portable
 
 #ifdef FABLE_PORTABLE
 using fable_portable::GFGetCycleCount;
+#define GF_GET_CYCLE_COUNT(counter) ((counter) = fable_portable::GFGetCycleCount())
 #else
+#define GF_GET_CYCLE_COUNT(counter) \
+    __asm xor eax, eax \
+    __asm xor edx, edx \
+    __asm rdtsc \
+    __asm mov dword ptr counter, eax \
+    __asm mov dword ptr counter+4, edx
 __forceinline __int64 __fastcall GFGetCycleCount()
 {
     __int64 counter;

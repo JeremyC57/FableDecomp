@@ -1,14 +1,18 @@
 // Behaviour test for 0x00C5A500 (source body copied from src/00c5a500.cpp; the retail inline-asm idioms are
-// spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+// spelled through RA_* macros: the same inline-asm under VC7.1, a round-half-to-even C fallback under g++).
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/FtoL.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #ifdef _MSC_VER
-// the retail inline-asm idioms, exactly as in the source (one instruction per __asm, no trailing semicolon)
-#define RA_FISTP(v, r) __asm fld v __asm fistp r
-#define RA_FISTP_PTR(v, p) __asm fld v __asm mov edx, p __asm fistp dword ptr [edx]
-#define RA_RDTSC0(c) __asm xor eax, eax __asm xor edx, edx __asm rdtsc __asm mov dword ptr c, eax __asm mov dword ptr c+4, edx
-#define RA_RDTSC(c) __asm rdtsc __asm mov dword ptr c, eax __asm mov dword ptr c+4, edx
+// the retail inline-asm idioms through the shared helper headers (2026-11-05 asm migration: no asm in a test)
+#define RA_FISTP(v, r) (r) = FtoL(v);
+#define RA_FISTP_PTR(v, p) *(p) = FtoL(v);
+#define RA_RDTSC0(c) (c) = GFGetCycleCount();
+#define RA_RDTSC(c) (c) = ReadTimeStampCounter();
 #else
 // g++ C fallback (test only): fistp in the default FPU mode rounds to nearest, ties to even
 #define __fastcall
@@ -27,8 +31,8 @@ static unsigned long long ra_tsc = 1000000;
 #endif
 // ---- source body ----
 // CSoftwareVoice::UpdateStep(float pitch, const SVoiceDesc* desc) -- recompute the resampler step: the pitch times the active modulators (pitch envelope, vibrato, second pitch LFO), times source rate / output rate, clamped below at 0.01, in 20.12 fixed point (x 4096, rounded through the retail inline-asm `fistp`), capped at 0xF000
-// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 2-instruction __asm (no control flow) + the Retail-asm evidence line
-// Retail-asm: 0x00C5A57C `fstp [esp+4]` / 0x00C5A580 `fld dword ptr [esp+4]` + 0x00C5A584 `fistp dword ptr [esp+8]` -- GameCODA's inline-assembly float-to-long helper (its by-value copy homed in the dead `pitch` slot and reloaded, a bare dword fistp into the dead `desc` slot, then the C++ `+1 if negative` truncation fix-up); VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
+// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 2-instruction inline-asm (no control flow) + the Retail-asm evidence line
+// Retail-asm: 0x00C5A57C `fstp [esp+4]` / 0x00C5A580 `fld dword ptr [esp+4]` + 0x00C5A584 `fistp dword ptr [esp+8]` -- GameCODA's inline-assembly float-to-long helper (its by-value copy homed in the dead `pitch` slot and reloaded, a bare dword fistp into the dead `desc` slot, then the C++ `+1 if negative` truncation fix-up); VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
 // Leaf: ?UpdateStep@CSoftwareVoice@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C5A500, length 171 bytes (+ int3 padding); `ret 8`.
 // Globals: the output rate 0x0139C9E8, 2^32 0x0122DCB4, 0.01f 0x01230A5C, 4096.0f 0x012B8FC0, 0.5f 0x0122F59C.

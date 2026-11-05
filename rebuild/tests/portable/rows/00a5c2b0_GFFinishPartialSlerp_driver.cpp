@@ -1,5 +1,6 @@
-// Row dual-build test: NVectorMath::GFFinishPartialSlerp 0x00A5C2B0 (in-row two-path: the SSE loop and its per-lane C++
-// twin). Inputs are small dyadic values, so every product and sum is exact in float and the SSE single-precision
+// Row dual-build test: NVectorMath::GFFinishPartialSlerp 0x00A5C2B0 (the row reaches its retail asm through a shared helper header:
+// built as-is = the asm path, /DFABLE_PORTABLE = the header's per-lane C++ twin; 2026-11-05 asm migration).
+// Inputs are small dyadic values, so every product and sum is exact in float and the SSE single-precision
 // rounding and the x87 evaluation of the twin agree bit for bit (general inputs agree to float rounding).
 #include <stdio.h>
 #include "../../../src/compiled/00/a5/NVectorMath_GFFinishPartialSlerp_00a5c2b0.cpp"

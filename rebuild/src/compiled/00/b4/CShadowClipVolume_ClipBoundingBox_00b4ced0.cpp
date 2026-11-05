@@ -6,11 +6,13 @@
 //   directly to the distance call, the far corner a frame C3DVector with scalar differences; plane normals as named
 //   locals.
 // Retail-asm: 0x00B4CF08..0x00B4CF52 `movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [esp+10h],xmm2` -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind g_SSEAvailable 0x013D2880 (the box re-read from its argument slot, the sphere-centre pointer spilled into the dead fullyInside slot); the same kernel as landed 0x00BF7DF0; the x87 branch is the C++ fallback.
-// Portable (2026-11-03 asm twins): the asm kernel is this function's own block (retail has no separate helper for it), so it stays here in two-path form: under FABLE_PORTABLE the #ifndef drops the SSE branch and the row runs retail's own non-SSE C++ path (Strategy B; equal to the SSE kernel up to float rounding order -- retail ran this path on CPUs without SSE).
+// Helper (2026-11-05 asm migration): the retail inline-asm block is the shared engine/C3DBoundingBoxSSE.h (byte-matching path + FABLE_PORTABLE twin); the row has
+//   no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family SSE_BOX.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B4CED0, 829 bytes (+ int3 padding), `ret 8`. Identity: FableWin.pdb / Ego_r.pdb
 //   ?ClipBoundingBox@CShadowClipVolume@@QBE_NABVC3DBoundingBox@@AA_N@Z (the bool& overload of 0x00B9C2E0).
 // Layout: Ego_r.pdb CShadowClipVolume (ClipPlanes[8] +0, ClipPlaneCount +0x80, BoundingSphere +0x84, ClipToSphere +0x94);
 //   0.0f at 0x0122DEDC; fabs inline.
+#include "engine/C3DBoundingBoxSSE.h"
 extern "C" double __cdecl sqrt(double x);
 extern "C" double __cdecl fabs(double x);
 #pragma intrinsic(sqrt)
@@ -23,33 +25,11 @@ public:
     C3DVector MaxCoord;                                 // +0x0c
     __forceinline float CalcShortestDistanceToPointSquared(const C3DVector& point) const
     {
-#ifndef FABLE_PORTABLE   // portable build: the retail non-SSE C++ path below (the twin of the SSE asm kernel)
         if (g_SSEAvailable) {
             float result;
-            __asm {
-                mov     ecx, this
-                mov     edx, point
-                movss   xmm0, [ecx+8]
-                movhps  xmm0, [ecx]
-                movss   xmm1, [ecx+14h]
-                movhps  xmm1, [ecx+0Ch]
-                movss   xmm2, [edx+8]
-                movhps  xmm2, [edx]
-                movaps  xmm3, xmm2
-                maxps   xmm2, xmm0
-                minps   xmm2, xmm1
-                subps   xmm2, xmm3
-                mulps   xmm2, xmm2
-                movaps  xmm3, xmm2
-                shufps  xmm2, xmm2, 0B0h
-                addps   xmm2, xmm3
-                shufps  xmm2, xmm2, 3
-                addss   xmm2, xmm3
-                movss   result, xmm2
-            }
+            GF_SSE_BOX_DISTANCE_SQUARED(this, point, result);
             return result;
         }
-#endif
         C3DVector closest(point);
         if (closest.X < MinCoord.X)
             closest.X = MinCoord.X;

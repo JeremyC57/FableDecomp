@@ -1,4 +1,4 @@
-// Row dual-build test: vorbis_ftoi 0x00CA3B10 (libvorbis os.h) (in-row two-path: bare fld qword / fistp dword, twin X87FistpNear).
+// Row dual-build test: vorbis_ftoi 0x00CA3B10 (libvorbis os.h) (the row reaches its retail asm through a shared helper header: built as-is = the asm path, /DFABLE_PORTABLE = the header's C++ twin; 2026-11-05 asm migration).
 #include <stdio.h>
 #include "../../../src/compiled/00/ca/global_FtoL_00ca3b10.cpp"
 int main()

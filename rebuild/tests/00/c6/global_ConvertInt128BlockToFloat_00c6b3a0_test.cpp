@@ -1,3 +1,7 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/MixKernelsSIMD.h"
 #include <cstdio>
 // behaviour test of ConvertInt128BlockToFloat (0x00C6B3A0): 128 integers to floats on the SSE2, SSE/MMX or x87 path
 #ifdef _MSC_VER
@@ -19,46 +23,9 @@ void __cdecl ConvertInt128BlockToFloat(float* dst, const long* src)
     if (!g_cpuDetected)
         DetectCpu();
     if (g_cpuHasSSE2) {
-        __asm {
-            mov     ecx, 8
-            mov     eax, src
-            mov     edx, dst
-            align   16
-        next2:
-            cvtdq2ps xmm0, [eax]
-            cvtdq2ps xmm1, [eax + 10h]
-            cvtdq2ps xmm2, [eax + 20h]
-            cvtdq2ps xmm3, [eax + 30h]
-            movaps  [edx], xmm0
-            movaps  [edx + 10h], xmm1
-            movaps  [edx + 20h], xmm2
-            movaps  [edx + 30h], xmm3
-            add     eax, 40h
-            add     edx, 40h
-            dec     ecx
-            jne     next2
-        }
+        LIBPK_SSE2_CONVERT_INT128_TO_FLOAT(src, dst);
     } else if (g_cpuHasSSE) {
-        __asm {
-            mov     ecx, 16
-            mov     eax, src
-            mov     edx, dst
-            align   16
-        next1:
-            cvtpi2ps xmm0, [eax]
-            cvtpi2ps xmm1, [eax + 8]
-            cvtpi2ps xmm2, [eax + 10h]
-            cvtpi2ps xmm3, [eax + 18h]
-            movlps  [edx], xmm0
-            movlps  [edx + 8], xmm1
-            movlps  [edx + 10h], xmm2
-            movlps  [edx + 18h], xmm3
-            add     eax, 20h
-            add     edx, 20h
-            dec     ecx
-            jne     next1
-            emms
-        }
+        LIBPK_SSE_CONVERT_INT128_TO_FLOAT(src, dst);
     } else {
         for (long i = 0; i < 128; ++i)
             dst[i] = (float)src[i];

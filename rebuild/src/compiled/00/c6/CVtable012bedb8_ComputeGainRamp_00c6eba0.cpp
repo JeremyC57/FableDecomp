@@ -1,19 +1,15 @@
-// CVtable_012bedb8::ComputeGainRamp(SGainRamp* ramp) -- fill a gain-ramp record from the effect volume alone: gain = min(FloatToLong(volume * 32767), 0x7fff) >> 1 (unsigned) and its 128-sample ramp step gain >> 7
-// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 2-instruction __asm (no control flow) + the Retail-asm evidence line
+// CVtable_012bedb8::ComputeGainRamp(SGainRamp* ramp) -- fill a gain-ramp record from the effect volume alone: gain = min(FtoL(volume * 32767), 0x7fff) >> 1 (unsigned) and its 128-sample ramp step gain >> 7
+// Grade: RELOCATION_MATCH -- retail_asm through the shared helper libpk/FtoL.h (2026-11-05 asm migration, docs/pipeline/ASM_RULES.md); no inline asm in this row
 // Leaf: ?ComputeGainRamp@CVtable_012bedb8
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C6EBA0, 62 bytes (+ int3 padding), `ret 4`.
 // Module: libpk's software mixer, the gain-ramp effect of vtable 0x012BEDB8 (ctor 0x00C6E760 matched in this chunk). No
 //   direct callers (address-taken).
-// Retail-asm: 0x00C6EBAC `fstp [esp] ; fld [esp] ; fistp dword [esp+4]` -- libpk's inline-assembly rounding helper. VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
+// Retail-asm: 0x00C6EBAC `fstp [esp] ; fld [esp] ; fistp dword [esp+4]` -- libpk's inline-assembly rounding helper. VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
+// Helper (2026-11-05 asm migration): the bare `fld` / `fistp dword` block is libpk's FtoL in the shared libpk/FtoL.h (byte-matching
+//   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: asm/w3 ATTEMPTS.tsv family FISTP.
 // libpk's inline-assembly float-to-long helper. Retail homes the value in a dead stack slot and rounds it with a bare
 // `fld [slot] ; fistp dword [tmp]` (round to nearest, the FPU default); VC7.1 expands the __forceinline helper in place.
-__forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "libpk/FtoL.h"
 struct SCriticalSection { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 struct CVtable_012beda4 {                          // vtable 0x012BEDA4, 0x28 bytes (ctor 0x00C6E6A0, dtor 0x00C6E630 landed)
     void*            _vtable;                      // +0x00
@@ -31,7 +27,7 @@ struct CVtable_012bedb8 : CVtable_012beda4 {
 };
 void CVtable_012bedb8::ComputeGainRamp(SGainRamp* ramp)
 {
-    unsigned long level = FloatToLong(m_volume * 32767.0f);
+    unsigned long level = FtoL(m_volume * 32767.0f);
     if (level > 0x7fff)
         level = 0x7fff;
     unsigned short gain = (unsigned short)((unsigned short)level >> 1);

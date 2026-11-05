@@ -1,14 +1,18 @@
 // Behaviour test for 0x00C6DE60 (source body copied from src/00c6de60.cpp; the retail inline-asm idioms are
-// spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+// spelled through RA_* macros: the same inline-asm under VC7.1, a round-half-to-even C fallback under g++).
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/FtoL.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #ifdef _MSC_VER
-// the retail inline-asm idioms, exactly as in the source (one instruction per __asm, no trailing semicolon)
-#define RA_FISTP(v, r) __asm fld v __asm fistp r
-#define RA_FISTP_PTR(v, p) __asm fld v __asm mov edx, p __asm fistp dword ptr [edx]
-#define RA_RDTSC0(c) __asm xor eax, eax __asm xor edx, edx __asm rdtsc __asm mov dword ptr c, eax __asm mov dword ptr c+4, edx
-#define RA_RDTSC(c) __asm rdtsc __asm mov dword ptr c, eax __asm mov dword ptr c+4, edx
+// the retail inline-asm idioms through the shared helper headers (2026-11-05 asm migration: no asm in a test)
+#define RA_FISTP(v, r) (r) = FtoL(v);
+#define RA_FISTP_PTR(v, p) *(p) = FtoL(v);
+#define RA_RDTSC0(c) (c) = GFGetCycleCount();
+#define RA_RDTSC(c) (c) = ReadTimeStampCounter();
 #else
 // g++ C fallback (test only): fistp in the default FPU mode rounds to nearest, ties to even
 #define __fastcall
@@ -27,13 +31,13 @@ static unsigned long long ra_tsc = 1000000;
 #endif
 // ---- source body ----
 // CVtable_012bed90::ComputeGainRamp(SGainRamp* ramp, float scale) -- fill a gain-ramp record: the Q15 gain FloatToLong(scale * volume * 32767) capped (unsigned) at 0x7fff and its 128-sample ramp step gain >> 7
-// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 2-instruction __asm (no control flow) + the Retail-asm evidence line
+// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 2-instruction inline-asm (no control flow) + the Retail-asm evidence line
 // Leaf: ?ComputeGainRamp@CVtable_012bed90
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C6DE60, 59 bytes (+ int3 padding), `ret 8`.
 // Module: libpk's software mixer, the effect of vtable 0x012BED90 (ctor 0x00C6D9D0 landed; its ramps run through the
 //   parked MixGainRampUp / MixGainRampDown 0x00C6DA40 / 0x00C6DAD0). Callers 0x00C6DF4D / 0x00C6DF5F / 0x00C6DFED / 0x00C6DFFF
 //   fill the gain records at +8 / +0xc of the +0x5c record from the scales at +0x68 / +0x6c.
-// Retail-asm: 0x00C6DE6E `fstp [esp+0Ch] ; fld [esp+0Ch] ; fistp dword [esp]` -- libpk's inline-assembly rounding helper. VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
+// Retail-asm: 0x00C6DE6E `fstp [esp+0Ch] ; fld [esp+0Ch] ; fistp dword [esp]` -- libpk's inline-assembly rounding helper. VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
 // libpk's inline-assembly float-to-long helper. Retail homes the value in a dead stack slot and rounds it with a bare
 // `fld [slot] ; fistp dword [tmp]` (round to nearest, the FPU default); VC7.1 expands the __forceinline helper in place.
 __forceinline long FloatToLong(float value)

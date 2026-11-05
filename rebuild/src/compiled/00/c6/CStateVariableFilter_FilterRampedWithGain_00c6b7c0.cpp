@@ -1,7 +1,9 @@
 // CStateVariableFilter::FilterRampedWithGain(short* samples, unsigned long count) -- the gain (peaking) form of the ramped state-variable filter: per sample t = (ramp position + i) / block length interpolates f, damping and gain between the current and target values, then high = in - low - damping * band, band += f * high, low += f * band, and the output is trunc(in + gain * high * damping) clamped to 16 bits
 // Grade: RELOCATION_MATCH retry1 -- the (1 - t) lerp weight as one named local `s` shared by the three lerps (fixes the gain-lerp fxch order)
 // Leaf: ?FilterRampedWithGain@CStateVariableFilter
-// Retail-asm: 0x00C6B86D `fsub [0.5f] ; fstp [esp+14h] ; fstp st(0) ; fld [esp+14h] ; fistp dword [esp+8] ; test edx,edx ; jge ; inc edx` -- libpk's inline-assembly truncation helper (the high-pass local's slot is reused for the homed value), the helper of the landed retail_asm FilterRamped 0x00C6B8C0. VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
+// Retail-asm: 0x00C6B86D `fsub [0.5f] ; fstp [esp+14h] ; fstp st(0) ; fld [esp+14h] ; fistp dword [esp+8] ; test edx,edx ; jge ; inc edx` -- libpk's inline-assembly truncation helper (the high-pass local's slot is reused for the homed value), the helper of the landed retail_asm FilterRamped 0x00C6B8C0. VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
+// Helper (2026-11-05 asm migration): the bare `fld` / `fistp dword` block is libpk's FtoL in the shared libpk/FtoL.h (byte-matching
+//   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: asm/w3 ATTEMPTS.tsv family FISTP.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C6B7C0, 249 bytes, thiscall `ret 8`.
 // Identity: the landed CStateVariableFilter (0x00C6B8C0 FilterRamped, 0x00C6BAE0 Filter, 0x00C6BD00 SetParametersWithGain: the gain
 //   coefficients +0x08 / +0x14): the same loop as FilterRamped plus the third (gain) lerp and the in + gain * high * damping output.
@@ -14,18 +16,12 @@
 //   converted right after t; damping and high are float locals homed in the dead argument slots.
 // libpk's inline-assembly float-to-long helper. Retail homes the value in a dead stack slot and rounds it with a bare
 // `fld [slot] ; fistp dword [tmp]` (round to nearest, the FPU default); VC7.1 expands the __forceinline helper in place.
-__forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "libpk/FtoL.h"
 // truncation toward zero on top of the rounding helper: round(x - 0.5) is floor(x), negatives step back up by one
 // (retail: `fsub [0.5f] ; fstp [slot] ; fld [slot] ; fistp dword [tmp] ; test ; jge ; inc`)
 __forceinline long FloatToLongTruncate(float value)
 {
-    long result = FloatToLong(value - 0.5f);
+    long result = FtoL(value - 0.5f);
     if (result < 0)
         ++result;
     return result;

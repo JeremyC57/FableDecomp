@@ -1,4 +1,4 @@
-// Row dual-build test: memmoveInternal 0x00CB0310 (DirectShow wxutil.cpp; in-row two-path: the _X86_ rep movs blocks and memmove).
+// Row dual-build test: memmoveInternal 0x00CB0310 (DirectShow wxutil.cpp; the row reaches its retail asm through a shared helper header: built as-is = the asm path, /DFABLE_PORTABLE = the header's C++ twin; 2026-11-05 asm migration).
 #include <stdio.h>
 #include "../../../src/compiled/00/cb/global_memmoveInternal_00cb0310.cpp"
 static void run(int dstOff, int srcOff, unsigned int count)

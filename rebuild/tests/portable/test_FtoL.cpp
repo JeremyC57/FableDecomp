@@ -7,6 +7,13 @@
 #include "libpk/FtoL.h"
 #include "twin_inputs.h"
 
+static long ByMacro(float x)                            // LIBPK_FTOL on the caller's own float and long (2026-11-05)
+{
+    long result;
+    LIBPK_FTOL(result, x);
+    return result;
+}
+
 static const unsigned int kGolden[] = {
     0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
     0x00000002u, 0xFFFFFFFEu, 0x00000002u, 0xFFFFFFFEu,
@@ -36,6 +43,10 @@ int main()
     for (int i = 0; i < kTwinInputCount; ++i) {
         float x = TwinInput(i);
         unsigned int got = (unsigned int)FtoL(x);
+        if ((unsigned int)ByMacro(x) != got) {
+            printf("  input %08X: macro form differs\n", kTwinInputBits[i]);
+            ++bad;
+        }
         if (got != kGolden[i]) {
             printf("  input %08X: build path %08X, golden %08X\n", kTwinInputBits[i], got, kGolden[i]);
             ++bad;

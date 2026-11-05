@@ -1,6 +1,8 @@
 // CMixBuffer::MixAddFloat(const float* src, long* dst) -- vtable slot 8: add a 128-sample float block into a long accumulator, each sample rounded to nearest by libpk's inline-asm float-to-long helper
 // Leaf: ?MixAddFloat@CMixBuffer@@UAEXPBMPAJ@Z
-// Retail-asm: 0x00C57F31 `fld dword ptr [ecx+eax] ; fstp dword ptr [esp+10h] ; fld dword ptr [esp+10h] ; fistp dword ptr [esp+0Ch]` -- libpk's inline-assembly float-to-long helper inlined per sample: the value is homed in a dead argument slot (the helper's by-value parameter) and reloaded for a bare dword fistp into another; VC7.1 C++ `(long)x` calls __ftol2, /QIfist emits `fistp qword` and /arch:SSE2 cvttss2si (rasm1), so the fld/fistp pair is the original's `__asm` (same helper as landed 0x00C6B240 FtoL / 0x00C6BAE0).
+// Retail-asm: 0x00C57F31 `fld dword ptr [ecx+eax] ; fstp dword ptr [esp+10h] ; fld dword ptr [esp+10h] ; fistp dword ptr [esp+0Ch]` -- libpk's inline-assembly float-to-long helper inlined per sample: the value is homed in a dead argument slot (the helper's by-value parameter) and reloaded for a bare dword fistp into another; VC7.1 C++ `(long)x` calls __ftol2, /QIfist emits `fistp qword` and /arch:SSE2 cvttss2si (rasm1), so the fld/fistp pair is the original's inline asm (same helper as landed 0x00C6B240 FtoL / 0x00C6BAE0).
+// Helper (2026-11-05 asm migration): the bare `fld` / `fistp dword` block is libpk's FtoL in the shared libpk/FtoL.h (byte-matching
+//   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: asm/w3 ATTEMPTS.tsv family FISTP.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C57F20, 53 bytes (+ int3 padding), thiscall `ret 8`; slot 8 of the
 //   CMixBuffer vtable 0x012B8F38 (also slot 8 of the derived vtables 0x012B5BE0 / 0x012B5D40).
 // Name: the landed CMixBuffer model (0x00C58370 / 0x00C591F0) already names this slot MixAddFloat (descriptive; GameCODA
@@ -25,16 +27,10 @@ public:
     unsigned long m_numChannels;        // +0x20
     unsigned char m_storage[0xc10];     // +0x24 accumulator store, 16-byte aligned by hand
 };
-__forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "libpk/FtoL.h"
 
 void CMixBuffer::MixAddFloat(const float* src, long* dst)
 {
     for (int i = 0; i < 128; ++i)
-        dst[i] += FloatToLong(src[i]);
+        dst[i] += FtoL(src[i]);
 }

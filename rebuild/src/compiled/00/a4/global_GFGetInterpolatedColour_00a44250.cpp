@@ -1,10 +1,13 @@
 // GFGetInterpolatedColour(CRGBColour* out, CRGBColour a, CRGBColour b, unsigned long weight) -- blend two byte colours with MMX: out = (a * (256 - weight) + b * weight) >> 8 per channel (the result returned through the hidden pointer)
 // Leaf: ?GFGetInterpolatedColour@@YA?AVCRGBColour@@V1@0K@Z
 // Retail-asm: 0x00A4426A..0x00A442A8 `movd mm0,[esp+18h] ; movd mm1,[esp+1Ch] ; movd mm2,[esp+4] ; movd mm3,[esp+20h] ; punpcklbw mm0,[esp+8] ; punpcklbw mm1,[esp+8] ; punpcklwd mm2,mm2 ; punpcklwd mm3,mm3 ; punpckldq mm2,mm2 ; punpckldq mm3,mm3 ; pmullw mm0,mm2 ; pmullw mm1,mm3 ; paddw mm0,mm1 ; psrlw mm0,8 ; packuswb mm0,mm0 ; movd [esp],mm0 ; emms` -- a hand MMX blend over named C locals and the by-value arguments (17 instructions, no branch: rasm1 family (f)): every operand a memory local, no register copies, `emms` inside the block; mmintrin intrinsics give register shuffles instead (rasm1 probe). The weight arithmetic, the zero local and the channel constructor built in the return slot is C++.
+// Helper (2026-11-05 asm migration): the retail inline-asm block is the shared engine/GFGetInterpolatedColourMMX.h (byte-matching path + FABLE_PORTABLE twin); the row has
+//   no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family MMX_COLOUR.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A44250, 117 bytes (+11 int3), __cdecl, the CRGBColour result through the hidden
 //   pointer ([esp+14h]); the two colours arrive by value as dwords ([esp+18h], [esp+1Ch]) and the weight at [esp+20h]. No callees.
 //   Ego_r.pdb: ?GFGetInterpolatedColour@@YA?AVCRGBColour@@V1@0K@Z. CRGBColour byte order B, G, R, A; the class has a user
 //   constructor (hence the hidden-pointer return and the four byte stores through eax).
+#include "engine/GFGetInterpolatedColourMMX.h"
 class CRGBColour {
 public:
     unsigned char B, G, R, A;
@@ -19,38 +22,6 @@ CRGBColour GFGetInterpolatedColour(CRGBColour a, CRGBColour b, unsigned long wei
     unsigned long zero;
     zero = 0;
     inverse = 256 - weight;
-#ifdef FABLE_PORTABLE
-    {   // the MMX lanes: per byte channel, 16-bit pmullw products (low words), a wrapping paddw, psrlw 8; packuswb never
-        // saturates (a value shifted right by 8 is at most 0xFF)
-        const unsigned char* pa = (const unsigned char*)&a;
-        const unsigned char* pb = (const unsigned char*)&b;
-        unsigned char* out = (unsigned char*)&blend;
-        unsigned int inv16 = (unsigned int)inverse & 0xFFFFu;
-        unsigned int w16 = (unsigned int)weight & 0xFFFFu;
-        for (int c = 0; c < 4; ++c)
-            out[c] = (unsigned char)(((((pa[c] * inv16) & 0xFFFFu) + ((pb[c] * w16) & 0xFFFFu)) & 0xFFFFu) >> 8);
-        (void)zero;
-    }
-#else
-    __asm {
-        movd      mm0, a
-        movd      mm1, b
-        movd      mm2, inverse
-        movd      mm3, weight
-        punpcklbw mm0, zero
-        punpcklbw mm1, zero
-        punpcklwd mm2, mm2
-        punpcklwd mm3, mm3
-        punpckldq mm2, mm2
-        punpckldq mm3, mm3
-        pmullw    mm0, mm2
-        pmullw    mm1, mm3
-        paddw     mm0, mm1
-        psrlw     mm0, 8
-        packuswb  mm0, mm0
-        movd      blend, mm0
-        emms
-    }
-#endif
+    GF_MMX_INTERPOLATE_COLOUR(a, b, inverse, weight, zero, blend);
     return CRGBColour(blend.R, blend.G, blend.B, blend.A);
 }

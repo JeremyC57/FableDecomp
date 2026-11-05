@@ -1,3 +1,7 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/FtoL.h"
 #include <cstdio>
 // behaviour test of GetFrequencyTableEntry (0x00C6BDC0): table[round(|octaves| / 3)][round((level + 90) / 6)]
 #ifdef _MSC_VER
@@ -6,8 +10,7 @@ __forceinline long FloatToLongTrunc(float value)
 {
     long result;
     value = value - 0.5f;
-    __asm fld value
-    __asm fistp result
+    LIBPK_FTOL(result, value);
     if (result < 0)
         ++result;
     return result;

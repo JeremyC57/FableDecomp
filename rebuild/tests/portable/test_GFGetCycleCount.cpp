@@ -11,6 +11,13 @@ typedef __int64 fable_cycle_t;
 typedef fable_portable::CycleCount fable_cycle_t;
 #endif
 
+static fable_cycle_t ByMacro()                          // GF_GET_CYCLE_COUNT on the caller's own local (2026-11-05)
+{
+    fable_cycle_t counter;
+    GF_GET_CYCLE_COUNT(counter);
+    return (fable_cycle_t)counter;
+}
+
 int main()
 {
     int bad = 0;
@@ -21,8 +28,9 @@ int main()
 #else
         fable_cycle_t b = a;
 #endif
+        fable_cycle_t m = ByMacro();
         fable_cycle_t c = (fable_cycle_t)GFGetCycleCount();
-        if (!(a <= b && b <= c))
+        if (!(a <= b && b <= m && m <= c))
             ++bad;
     }
 #if defined(FABLE_DUAL_PATH_TEST) && !defined(FABLE_PORTABLE)

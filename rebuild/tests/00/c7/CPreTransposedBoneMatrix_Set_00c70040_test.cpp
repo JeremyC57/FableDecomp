@@ -1,3 +1,7 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/MixKernelsSIMD.h"
 #include <cstdio>
 // behaviour test of CPreTransposedBoneMatrix::Set (0x00c70040): a 128-byte aligned copy (sixteen MMX movq load/store pairs and emms)
 #ifdef _MSC_VER
@@ -14,43 +18,7 @@ public:
 #ifdef _MSC_VER
 void CPreTransposedBoneMatrix::Set(CPreTransposedBoneMatrix* dst, const CMatrix3x4* src)
 {
-    __asm {
-        mov     esi, src
-        mov     edi, dst
-        movq    mm0, [esi]
-        movq    [edi], mm0
-        movq    mm1, [esi + 8h]
-        movq    [edi + 8h], mm1
-        movq    mm2, [esi + 10h]
-        movq    [edi + 10h], mm2
-        movq    mm3, [esi + 18h]
-        movq    [edi + 18h], mm3
-        movq    mm4, [esi + 20h]
-        movq    [edi + 20h], mm4
-        movq    mm5, [esi + 28h]
-        movq    [edi + 28h], mm5
-        movq    mm6, [esi + 30h]
-        movq    [edi + 30h], mm6
-        movq    mm7, [esi + 38h]
-        movq    [edi + 38h], mm7
-        movq    mm0, [esi + 40h]
-        movq    [edi + 40h], mm0
-        movq    mm1, [esi + 48h]
-        movq    [edi + 48h], mm1
-        movq    mm2, [esi + 50h]
-        movq    [edi + 50h], mm2
-        movq    mm3, [esi + 58h]
-        movq    [edi + 58h], mm3
-        movq    mm4, [esi + 60h]
-        movq    [edi + 60h], mm4
-        movq    mm5, [esi + 68h]
-        movq    [edi + 68h], mm5
-        movq    mm6, [esi + 70h]
-        movq    [edi + 70h], mm6
-        movq    mm7, [esi + 78h]
-        movq    [edi + 78h], mm7
-        emms
-    }
+    LIBPK_MMX_COPY128(src, dst);
 }
 #else
 void CPreTransposedBoneMatrix::Set(CPreTransposedBoneMatrix* dst, const CMatrix3x4* src)

@@ -1,3 +1,7 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "engine/NVectorMathSSE.h"
 #include <cstdio>
 // behaviour test of NVectorMath::GFClear4DVectors (0x00A5C300): fill count aligned 4D vectors with one value (SSE loop or the scalar fill)
 #ifdef _MSC_VER
@@ -23,20 +27,7 @@ void GFClear4DVectorsScalar(C4DVector* dst, unsigned long count, const C4DVector
 void GFClear4DVectors(C4DVector* dst, unsigned long count, const C4DVector* value)
 {
     if (g_SSEAvailable) {
-        __asm {
-            mov     eax, value
-            mov     edx, dst
-            movups  xmm0, [eax]
-            mov     ecx, count
-            test    ecx, ecx
-            je      done
-        next:
-            movaps  [edx], xmm0
-            add     edx, 16
-            dec     ecx
-            jne     next
-        done:
-        }
+        GF_SSE_CLEAR_4D_VECTORS(value, dst, count);
     } else {
         C4DVector copy = *value;
         GFClear4DVectorsScalar(dst, count, &copy);

@@ -35,6 +35,14 @@ EXTRA_RULES.md, the briefs, the handoffs, older journal entries. The earlier rou
 6. **Bytes the linker copied from a VC7.1 library or a vendor's shipped `.asm`** are a separate grade, `toolchain_library`
    (`docs/pipeline/LIBRARY_SIGNATURES.md`), and are not covered by this page.
 
+## Approximate instructions (owner decision, 2026-11-05)
+- Some instructions give results whose low bits vary between CPU families: `rsqrtps` / `rsqrtss` and `rcpps` / `rcpss`. Example:
+  the hand SSE lighting kernels 0x00B44820 and 0x00B44A60. For these, the `FABLE_PORTABLE` twin computes the exact value
+  (`1/sqrt(x)`, `1/x`).
+- The dual-path test checks the asm path against the twin within Intel's documented bound: relative error at most 1.5 x 2^-12.
+- The helper header states this tolerance next to the twin.
+- This is the only case where a twin is not bit-identical. It applies only to instructions documented as approximate.
+
 ## Portability
 - **Inside a helper:** the asm and its `__forceinline` sit only on the retail (non-`FABLE_PORTABLE`) branch. The portable branch
   is plain `inline` C++, and `portable_twins_check.py` builds it with g++ (64-bit run, plus a `-m32` syntax check).

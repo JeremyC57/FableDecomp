@@ -2,14 +2,15 @@
 // Leaf: ?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@K1KPBMKK@Z
 // Flags: /Zi
 // Retail-asm: 0x00A5BF30..0x00A5BF74 `mov edi,[ebx+8] ; mov esi,[ebx+10h] ; mov edx,[ebx+18h] ; mov eax,[ebx+20h] ; mov ecx,[ebx+28h] ; movaps xmm4,[ebp-40h] ; test ecx,ecx ; je ; movss xmm1,[eax] ; shufps xmm1,xmm1,0 ; movaps xmm0,xmm4 ; subps xmm0,xmm1 ; movaps xmm2,[esi] ; movaps xmm3,[edx] ; mulps xmm2,xmm0 ; mulps xmm3,xmm1 ; addps xmm2,xmm3 ; movaps [edi],xmm2 ; add edi,[ebx+0Ch] ; add esi,[ebx+14h] ; add edx,[ebx+1Ch] ; add eax,[ebx+24h] ; dec ecx ; jne` -- the
+// Helper (2026-11-05 asm migration): the retail inline-asm block is the shared engine/NVectorMathSSE.h (byte-matching path + FABLE_PORTABLE twin); the row has
+//   no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family SSE_NVECTORMATH.
 //   hand SSE kernel of the NVectorMath family (same style as the landed retail_asm siblings GFFinishPartialSlerp 0x00A5C2B0
 //   and GFClear4DVectors 0x00A5C300): the five pointers/count loaded into fixed registers straight from the argument
 //   slots, the strides added from memory every pass, the count counted down in ecx behind a `test ecx,ecx ; je`.
 //   The xmmintrin spelling (probe: `_mm_set_ps1` + `_mm_load_ps1` + mul/add/sub) gives a `push ebp ; mov ebp,esp ;
 //   and esp,-16` frame, a `movss`+`shufps` constant and a re-scheduled loop instead, so the block is the original's
-//   `__asm`. The C++ around it is compiler-emitted: the SSE flag test, the 16-aligned `one` vector (four immediate
+//   inline asm. The C++ around it is compiler-emitted: the SSE flag test, the 16-aligned `one` vector (four immediate
 //   stores of 1.0f into [ebp-40h], the reason for the ebx/ebp realigned frame), and the whole x87 fallback.
-// Portable (2026-11-03 asm twins): the asm kernel is this function's own block (retail has no separate helper for it), so it stays here in two-path form: under FABLE_PORTABLE the #ifndef drops the SSE branch and the row runs retail's own non-SSE C++ path (Strategy B; equal to the SSE kernel up to float rounding order -- retail ran this path on CPUs without SSE).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5BEF0, 946 bytes (+14 int3), __cdecl, plain `ret`, nine stack
 //   arguments read through ebx (the realigned frame). Ego_r.pdb names the overload
 //   ?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@K1KPBMKK@Z; donor order GFInitVectorMath, the (KKM),
@@ -27,6 +28,7 @@
 //     parameters themselves writes the weight pointer back to its argument slot. VC7.1 unrolls the loop by four
 //     (`cmp count,4 ; jl`, (count-4)/4+1 passes, then a remainder loop).
 // Layout: C4DVector X +0, Y +4, Z +8, W +0xc (16 bytes, the SSE rows load it with movaps).
+#include "engine/NVectorMathSSE.h"
 class C4DVector {
 public:
     float X, Y, Z, W;
@@ -43,39 +45,10 @@ void GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVect
                           const C4DVector* to, unsigned long toStride, const float* weights, unsigned long weightStride,
                           unsigned long count)
 {
-#ifndef FABLE_PORTABLE   // portable build: the retail non-SSE C++ path below (the twin of the SSE asm kernel)
     if (g_SSEAvailable) {
         __declspec(align(16)) C4DVector one(1.0f, 1.0f, 1.0f, 1.0f);
-        __asm {
-            mov     edi, out
-            mov     esi, from
-            mov     edx, to
-            mov     eax, weights
-            mov     ecx, count
-            movaps  xmm4, one
-            test    ecx, ecx
-            je      done
-        next:
-            movss   xmm1, [eax]
-            shufps  xmm1, xmm1, 0
-            movaps  xmm0, xmm4
-            subps   xmm0, xmm1
-            movaps  xmm2, [esi]
-            movaps  xmm3, [edx]
-            mulps   xmm2, xmm0
-            mulps   xmm3, xmm1
-            addps   xmm2, xmm3
-            movaps  [edi], xmm2
-            add     edi, outStride
-            add     esi, fromStride
-            add     edx, toStride
-            add     eax, weightStride
-            dec     ecx
-            jne     next
-        done:
-        }
+        GF_SSE_INTERPOLATE_VECTORS_WEIGHTED(out, from, to, weights, count, one, outStride, fromStride, toStride, weightStride);
     } else
-#endif
     {
         C4DVector* pOut = out;
         const C4DVector* pFrom = from;

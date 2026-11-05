@@ -5,12 +5,15 @@
 //   that expand it name it FtoL (landed 0x00C6B240) or carry the block inline (0x00C40F50 AmplitudeToMillibels,
 //   0x00C42F50 CAudioObject::SetGain, 0x00C3FF70 RoundHalfDownToLong). Distinct from the engine's GFFloatToLongNear
 //   (engine/GFFloatToLongNear.h): the same two instructions in a different library.
-// Retail-asm-helper: FtoL
+// Retail-asm-helper: FtoL, LIBPK_FTOL
 // Retail-asm: 0x00C6B241 `fld dword [esp+8]` + 0x00C6B245 `fistp dword ptr [esp]` (the out-of-line copy), 0x00C40F50
 //   AmplitudeToMillibels and 0x00C3FF70 RoundHalfDownToLong: a float reloaded with `fld` and stored with a bare dword
 //   `fistp`. VC7.1 `(long)x` calls _ftol2, `/QIfist` emits `fistp qword`: the original is inline asm (rasm1 evidence).
 // Semantics: fistp under the control word's RC (round to nearest, ties to even; libpk never changes RC), NaN / out of
 //   range store 0x80000000.
+// Macro form (2026-11-05 asm migration; call it on a line of its own, an `__asm` statement runs to the end of its line): LIBPK_FTOL(result, value) names the caller's float and long directly (no
+//   parameter copy), for the out-of-line copies that define the C symbol _FtoL themselves (0x00C6B240): such a row defines
+//   FABLE_LIBPK_FTOL_MACRO_ONLY before the #include, so the C++ FtoL above is not declared next to its extern "C" FtoL.
 // Portable twin (FABLE_PORTABLE): Strategy B, plain C++ (fable_x87_twins.h X87FistpNear); tests in
 //   rebuild/tests/portable/test_FtoL.cpp.
 #ifndef FABLE_LIBPK_FTOL_H
@@ -28,8 +31,15 @@ namespace fable_portable
 #endif
 
 #ifdef FABLE_PORTABLE
+#define LIBPK_FTOL(result, value) ((result) = fable_portable::X87FistpNear((double)(value)))
+#ifndef FABLE_LIBPK_FTOL_MACRO_ONLY
 using fable_portable::FtoL;
+#endif
 #else
+#define LIBPK_FTOL(result, value) \
+    __asm fld value \
+    __asm fistp result
+#ifndef FABLE_LIBPK_FTOL_MACRO_ONLY
 __forceinline long __cdecl FtoL(float f)
 {
     long result;
@@ -37,6 +47,7 @@ __forceinline long __cdecl FtoL(float f)
     __asm fistp result
     return result;
 }
+#endif
 #endif
 
 #endif  // FABLE_LIBPK_FTOL_H

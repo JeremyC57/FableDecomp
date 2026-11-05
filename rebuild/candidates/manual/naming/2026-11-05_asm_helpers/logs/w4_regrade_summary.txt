@@ -1,0 +1,9 @@
+gate: 73 rows {'PASS': 73} in 3.8s (0.05s/row wall, NJ=4)
+gate: 3 rows {'PASS': 3} in 0.6s (0.18s/row wall, NJ=1)
+gate: 76 PASS of 76
+vland:
+     26 MATCH PASS
+     50 RELOCATION_MATCH PASS
+purity (grade, asm words in row, in test):
+     76 retail_asm	-	-
+twins: 386 steps, 0 failed

@@ -2,11 +2,14 @@
 // Leaf: ScaleAccumulate16Ramp
 // Flags: /GS
 // Retail-asm: 0x00C5D294 `pmulhw xmm0,xmm7` -- retail runs this aligned hand-written SSE2 loop (movdqa/pmulhw/paddsw/punpcklwd/psrad/paddd, `align 16` loop head) as inline asm; intrinsics allocate other xmm registers (verified sibling 0x00C6D370).
+// Helper (2026-11-05 asm migration): the retail inline-asm block is the shared libpk/MixKernelsSIMD.h (byte-matching path + FABLE_PORTABLE twin); the row has
+//   no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family SIMD_LIBPK.
 // Identity: own mixer callers and exact signed high-word product, then double sign extension. Descriptive helper name; separate namespace distinguishes original copies. Count must be positive, buffers aligned16.
 // Shape (retry1): the parked "ABI gap" (initial gain in ecx, four stack arguments, caller cleans) is VC7.1's own private convention
 //   for a same-TU static: with the same-TU caller below it passes `initial` in ecx itself. `initial` is declared before `step` --
 //   the declaration order fixes the operand order of gains[1] (`lea edx,[ecx+eax]`); step-first gives `[eax+ecx]`.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C5D1F0, 240 bytes, aligned /GS frame (`and esp,-16` through ebx), plain `ret`.
+#include "libpk/MixKernelsSIMD.h"
 #ifndef _MSC_VER
 #define __cdecl
 #endif
@@ -30,32 +33,7 @@ increments[4]=(short)(step*8);
 increments[5]=(short)(step*8);
 increments[6]=(short)(step*8);
 increments[7]=(short)(step*8);
-__asm {
- mov ecx,count
- mov eax,src
- mov edx,dst
- movdqa xmm7,gains
- movdqa xmm6,increments
- align 16
- next_block:
- movdqa xmm0,[eax]
- pmulhw xmm0,xmm7
- paddsw xmm7,xmm6
- pxor xmm1,xmm1
- pxor xmm2,xmm2
- punpcklwd xmm1,xmm0
- punpckhwd xmm2,xmm0
- psrad xmm1,15
- psrad xmm2,15
- paddd xmm1,[edx]
- paddd xmm2,[edx+10h]
- movdqa [edx],xmm1
- movdqa [edx+10h],xmm2
- add eax,10h
- add edx,20h
- dec ecx
- jne next_block
-}
+LIBPK_SSE2_SCALE_ACCUMULATE16_RAMP(count, src, dst, gains, increments);
 #else
 int gains[8];for(int i=0;i<8;++i)gains[i]=(short)(initial+i*step);
 for(unsigned long block=0;block<count;++block){for(int lane=0;lane<8;++lane){int product=(int)src[block*8+lane]*gains[lane];int high=product/65536;if(product<0&&product%65536)--high;dst[block*8+lane]+=high*2;int next=gains[lane]+(short)(step*8);gains[lane]=next>32767?32767:(next < -32768?-32768:next);}}

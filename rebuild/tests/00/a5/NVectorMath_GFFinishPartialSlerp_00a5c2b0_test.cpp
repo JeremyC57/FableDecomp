@@ -1,3 +1,7 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "engine/NVectorMathSSE.h"
 #include <cstdio>
 // behaviour test of NVectorMath::GFFinishPartialSlerp (0x00A5C2B0): out = out * weight.X + in * weight.Y per quaternion, strided
 #ifdef _MSC_VER
@@ -11,31 +15,7 @@ class CQuaternion { public: float X, Y, Z, W; };
 void GFFinishPartialSlerp(CQuaternion* out, unsigned long outStride, const CQuaternion* in, unsigned long inStride,
                           const CQuaternion* weights, unsigned long weightStride, unsigned long count)
 {
-    __asm {
-        mov     eax, out
-        mov     edx, in
-        mov     esi, weights
-        mov     ecx, count
-        test    ecx, ecx
-        je      done
-    next:
-        movaps  xmm0, [esi]
-        movaps  xmm2, [eax]
-        movaps  xmm3, [edx]
-        add     esi, weightStride
-        add     edx, inStride
-        movaps  xmm1, xmm0
-        shufps  xmm0, xmm0, 0
-        shufps  xmm1, xmm1, 55h
-        mulps   xmm2, xmm0
-        mulps   xmm3, xmm1
-        addps   xmm2, xmm3
-        movaps  [eax], xmm2
-        add     eax, outStride
-        dec     ecx
-        jne     next
-    done:
-    }
+    GF_SSE_FINISH_PARTIAL_SLERP(out, in, weights, count, weightStride, inStride, outStride);
 }
 #else
 void GFFinishPartialSlerp(CQuaternion* out, unsigned long outStride, const CQuaternion* in, unsigned long inStride,

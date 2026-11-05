@@ -1,6 +1,8 @@
 // CReverbProcessor::Allocate(const CReverbConfig* config, float* memory, unsigned int* pBytes) -- two-pass memory layout of the libpk software reverb: restart the line index, size (and with memory, carve) the processor's own work block, reset both gains, then lay out the four comb filters (a fifth of a second plus 128 samples, multiple of 4), the tap bank, the diffuser, the feedback delay, the pre-delay and the stereo delay pair from one cursor, and return the total bytes
 // Leaf: ?Allocate@CReverbProcessor@@QAEXPBUCReverbConfig@@PAMPAI@Z
-// Retail-asm: 0x00C6A4CE `fld dword ptr [esp+1Ch]` + 0x00C6A4D2 `fistp dword ptr [esp+14h]` -- libpk's inline-assembly float-to-long helper inside its round-half-down (as 0x00C3FF70 and the landed CReverbProcessor::UpdateChorusLength 0x00C77FC0: the `rate * 0.2f - 0.5f` stored to a dead frame slot and reloaded, a bare dword fistp, then the C++ `+1 if negative`). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` into an 8-byte slot: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
+// Retail-asm: 0x00C6A4CE `fld dword ptr [esp+1Ch]` + 0x00C6A4D2 `fistp dword ptr [esp+14h]` -- libpk's inline-assembly float-to-long helper inside its round-half-down (as 0x00C3FF70 and the landed CReverbProcessor::UpdateChorusLength 0x00C77FC0: the `rate * 0.2f - 0.5f` stored to a dead frame slot and reloaded, a bare dword fistp, then the C++ `+1 if negative`). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` into an 8-byte slot: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
+// Helper (2026-11-05 asm migration): the bare `fld` / `fistp dword` block is libpk's FtoL in the shared libpk/FtoL.h (byte-matching
+//   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: asm/w3 ATTEMPTS.tsv family FISTP.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C6A460, 364 bytes, thiscall `ret 0Ch`, 8-byte frame (the running byte total and
 //   the comb length / loop counter slots). Constants 2^32 (0x0122DCB4, unsigned rate fix-up), 0.2f (0x012305A0),
 //   0.5f (0x0122F59C).
@@ -26,17 +28,11 @@ struct CReverbConfig {
 };
 
 // libpk's inline-assembly float-to-long helper (round to nearest, the FPU default)
-__forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "libpk/FtoL.h"
 // libpk's round-half-down helper (out-of-line copy at 0x00C3FF70): round(value - 0.5), negatives step back up by one
 __forceinline long RoundHalfDownToLong(float value)
 {
-    long result = FloatToLong(value - 0.5f);
+    long result = FtoL(value - 0.5f);
     if (result < 0)
         ++result;
     return result;

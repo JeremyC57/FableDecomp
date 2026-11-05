@@ -1,3 +1,7 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/IsCpuidSupported.h"
 #include <cstdio>
 // behaviour test of IsCpuidSupported (0x00C52AA0): the EFLAGS.ID (bit 21) toggle probe
 #ifdef _MSC_VER
@@ -5,20 +9,7 @@
 unsigned char IsCpuidSupported()
 {
     long supported = 0;
-    __asm {
-        pushfd
-        pop eax
-        mov ecx, eax
-        xor eax, 200000h
-        push eax
-        popfd
-        pushfd
-        pop eax
-        xor eax, ecx
-        je done
-        mov supported, 1
-    done:
-    }
+    LIBPK_EFLAGS_ID_PROBE(supported);
     return supported != 0;
 }
 int main()

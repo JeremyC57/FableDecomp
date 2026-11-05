@@ -4,7 +4,9 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C55DA0, 348 bytes, thiscall `ret 4`, ebp frame (inline asm), /GS cookie
 //   0x0139C8A8 / __security_check_cookie 0x00BFE9F9.
 // Retail-asm: 0x00C55DB4 `pushad` and 0x00C55DDA `popad` bracket the two winmm calls (registers saved around the driver
-//   query): VC7.1 never emits pusha/popa from C or C++, so the original had `__asm pushad` / `__asm popad` statements;
+// Helper (2026-11-05 asm migration): the retail inline-asm block is the shared libpk/SaveAllRegisters.h (byte-matching path + FABLE_PORTABLE twin);
+//   the row has no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family PUSHAD.
+//   query): VC7.1 never emits pusha/popa from C or C++, so the original had `inline-asm pushad` / `inline-asm popad` statements;
 //   everything else is compiler-emitted (the asm also forces the ebp frame and keeps the named bool in its frame byte).
 // Identity: libpk's OpenAL wrapper (descriptive CAudioContext, the landed family 0x00C558A0..0x00C57730, vtable 0x012B8C18:
 //   Module +4, pfnIsDeviceExtensionPresent +0x24, pfnGetDeviceString +0x28, Device +0xfc). Method name descriptive (libpk has
@@ -16,6 +18,7 @@
 // Data: "alcGetString" 0x012B8BDC, "alcIsExtensionPresent" 0x012B8BC4, "ALC_ENUMERATION_EXT" 0x012B8C48.
 // Shape: device string list walk `devices += strlen(devices)` (inline strlen), a NUL with a NUL after it ends the list;
 //   the found pointer doubles as the result flag.
+#include "libpk/SaveAllRegisters.h"
 typedef unsigned int size_t;
 extern "C" size_t __cdecl strlen(const char* s);
 #pragma intrinsic(strlen)
@@ -132,10 +135,10 @@ bool CAudioContext::GetPreferredDeviceName(char* deviceName)
     unsigned long flags;
     unsigned int deviceId;
     WAVEOUTCAPSA caps;
-    __asm pushad
+    LIBPK_SAVE_ALL_REGISTERS();
     waveOutMessage(WAVE_MAPPER, DRVM_MAPPER_PREFERRED_GET, (unsigned long)&deviceId, (unsigned long)&flags);
     waveOutGetDevCapsA(deviceId, &caps, sizeof(caps));
-    __asm popad
+    LIBPK_RESTORE_ALL_REGISTERS();
 
     const char* devices = GetDeviceString(ALC_DEFAULT_DEVICE_SPECIFIER);
     bool enumeration = IsDeviceExtensionPresent("ALC_ENUMERATION_EXT");

@@ -1,9 +1,12 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libvorbis/vorbis_ftoi.h"
 #include <cstdio>
 extern "C" long __stdcall vorbis_ftoi(double f)
 {
     long i;
-    __asm fld f
-    __asm fistp i
+    VORBIS_FTOI(i, f);
     return i;
 }
 int main()

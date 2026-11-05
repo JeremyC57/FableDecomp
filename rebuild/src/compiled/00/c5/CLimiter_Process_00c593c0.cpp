@@ -6,18 +6,14 @@
 //   `this` is the 0x17C-byte GameCODA limiter (vtable 0x012B8F64) of the landed CLimiter rows (ctor 0x00C59570, Clear
 //   0x00C592D0, UpdateEnvelope 0x00C592F0, the only callee). Descriptive names (GameCODA: no PDB/RTTI).
 // Retail-asm: 0x00C59526 `fstp dword [esp+20h] ; fld dword [esp+20h] ; fistp dword [esp+18h]` -- libpk's inline-assembly
+// Helper (2026-11-05 asm migration): the bare `fld` / `fistp dword` block is libpk's FtoL in the shared libpk/FtoL.h (byte-matching
+//   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: asm/w3 ATTEMPTS.tsv family FISTP.
 //   float-to-long helper (value homed in the dead `src` slot, result in the dead `out` slot), the same block as the landed
 //   retail_asm CVoiceEffect::Configure 0x00C6AEF0; VC7.1 C++ `(long)x` calls __ftol2, /QIfist stores `fistp qword`.
 // Shape: the byte stride `stride * 2` is hoisted into the frame word of the pushed ecx, the 128 count lives in the dead
 //   `stride` slot, the delayed sample is homed in the dead `src` slot for the `fimul`; `++m_writeIndex == 88` wraps,
 //   the release counter compares unsigned (`jbe`), the magnitude of a negative input is `-1 - s` (unsigned).
-__forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "libpk/FtoL.h"
 
 class CLimiter {                                        // vtable 0x012B8F64, 0x17C bytes
 public:
@@ -74,7 +70,7 @@ void CLimiter::Process(short* out, unsigned long stride, const long* src, long s
                 *out = (short)delayed;
             } else {
                 float gain = 32767.0f / m_envelope;
-                long scaled = FloatToLong(gain * delayed);
+                long scaled = FtoL(gain * delayed);
                 if (scaled > 32767)
                     scaled = 32767;
                 else if (scaled < -32768)

@@ -1,3 +1,8 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/FtoL.h"
+#include "libpk/Pow10.h"
 #include <cstdio>
 #include <math.h>
 // behaviour test of COnePoleLowPass::SetLevel (0x00C6C000): Q15 feedback from an attenuation in millibels and a reference frequency; zero resets
@@ -7,8 +12,7 @@ __forceinline long FloatToLongTrunc(float value)
 {
     long result;
     value = value - 0.5f;
-    __asm fld value
-    __asm fistp result
+    LIBPK_FTOL(result, value);
     if (result < 0)
         ++result;
     return result;
@@ -16,25 +20,7 @@ __forceinline long FloatToLongTrunc(float value)
 __forceinline float Pow10(float x)
 {
     float scale; float result; float whole; float log2of10 = 3.32192802f; float one = 1.0f;
-    __asm {
-        fld log2of10
-        fmul x
-        frndint
-        fst whole
-        wait
-        fld1
-        fscale
-        fxch st(1)
-        fstp scale
-        fld log2of10
-        fmul x
-        fsub whole
-        f2xm1
-        fadd one
-        fmulp st(1), st
-        fstp result
-        wait
-    }
+    LIBPK_POW10_BLOCK(log2of10, x, whole, scale, one, result);
     return result;
 }
 #else

@@ -1,14 +1,18 @@
 // Behaviour test for 0x00C6B8C0 (source body copied from src/00c6b8c0.cpp; the retail inline-asm idioms are
-// spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+// spelled through RA_* macros: the same inline-asm under VC7.1, a round-half-to-even C fallback under g++).
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/FtoL.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #ifdef _MSC_VER
-// the retail inline-asm idioms, exactly as in the source (one instruction per __asm, no trailing semicolon)
-#define RA_FISTP(v, r) __asm fld v __asm fistp r
-#define RA_FISTP_PTR(v, p) __asm fld v __asm mov edx, p __asm fistp dword ptr [edx]
-#define RA_RDTSC0(c) __asm xor eax, eax __asm xor edx, edx __asm rdtsc __asm mov dword ptr c, eax __asm mov dword ptr c+4, edx
-#define RA_RDTSC(c) __asm rdtsc __asm mov dword ptr c, eax __asm mov dword ptr c+4, edx
+// the retail inline-asm idioms through the shared helper headers (2026-11-05 asm migration: no asm in a test)
+#define RA_FISTP(v, r) (r) = FtoL(v);
+#define RA_FISTP_PTR(v, p) *(p) = FtoL(v);
+#define RA_RDTSC0(c) (c) = GFGetCycleCount();
+#define RA_RDTSC(c) (c) = ReadTimeStampCounter();
 #else
 // g++ C fallback (test only): fistp in the default FPU mode rounds to nearest, ties to even
 #define __fastcall
@@ -27,13 +31,13 @@ static unsigned long long ra_tsc = 1000000;
 #endif
 // ---- source body ----
 // CStateVariableFilter::FilterRamped(short* samples, unsigned long count) -- low-pass `count` 16-bit samples in place while the coefficients ramp: per sample t = (ramp position + i) / block length interpolates f and damping between the current and target values, then band += f * (in - low - damping * band), low += f * band, and the output is trunc(low) clamped to 16 bits
-// Grade: RELOCATION_MATCH (3 grades: x87 operand order needs (1.0f - t) written inline in both lerps) -- rasm1 retail_asm: C++ body + a minimal 2-instruction __asm (no control flow) + the Retail-asm evidence line
+// Grade: RELOCATION_MATCH (3 grades: x87 operand order needs (1.0f - t) written inline in both lerps) -- rasm1 retail_asm: C++ body + a minimal 2-instruction inline-asm (no control flow) + the Retail-asm evidence line
 // Leaf: ?FilterRamped@CStateVariableFilter
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C6B8C0, 219 bytes (+ int3 padding), `ret 8`.
 // Module: libpk's software mixer DSP, the Chamberlin state-variable filter of the matched 0x00C6BBD0 / 0x00C6BC80 /
 //   0x00C6BD00 rows (same local model). Caller: Filter 0x00C6BAE0 (the ramp part of a block). Global: the mix block length
 //   0x0139C9F0 (unsigned, 128).
-// Retail-asm: 0x00C6B951 `fsub [0.5f] ; fstp [esp+14h] ; fld [esp+14h] ; fistp dword [esp+8] ; test edx,edx ; jge ; inc edx` -- libpk's inline-assembly truncation helper (the per-sample f local's slot is reused for the homed value). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
+// Retail-asm: 0x00C6B951 `fsub [0.5f] ; fstp [esp+14h] ; fld [esp+14h] ; fistp dword [esp+8] ; test edx,edx ; jge ; inc edx` -- libpk's inline-assembly truncation helper (the per-sample f local's slot is reused for the homed value). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
 // Shape: both unsigned-to-float conversions get the `jge ; fadd [2^32]` fix-up; the interpolated f is a
 //   float local (`fstp [esp+14h]`, reloaded by both state updates); the clamp is signed (`jle` / `jge`).
 // libpk's inline-assembly float-to-long helper. Retail homes the value in a dead stack slot and rounds it with a bare

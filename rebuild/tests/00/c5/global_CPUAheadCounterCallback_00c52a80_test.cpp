@@ -1,4 +1,8 @@
 // Behaviour test for 0x00C52A80 CEngineDebug::CPUAheadCounterCallback: time-stamp counter read, monotonic and advancing.
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/ReadTimeStampCounter.h"
 #include <cstdio>
 #ifdef _MSC_VER
 typedef unsigned __int64 uint64;
@@ -9,15 +13,11 @@ typedef unsigned long long uint64;
 static uint64 __cdecl CPUAheadCounterCallback()
 {
     uint64 counter;
-    __asm {
-        rdtsc
-        mov dword ptr counter, eax
-        mov dword ptr counter+4, edx
-    }
+    LIBPK_READ_TIME_STAMP_COUNTER(counter);
     return counter;
 }
 #else
-static uint64 CPUAheadCounterCallback() { unsigned int lo, hi; __asm__ __volatile__("rdtsc" : "=a"(lo), "=d"(hi)); return ((uint64)hi << 32) | lo; }
+static uint64 CPUAheadCounterCallback() { return (uint64)fable_portable::ReadTimeStampCounter(); }
 #endif
 int main()
 {

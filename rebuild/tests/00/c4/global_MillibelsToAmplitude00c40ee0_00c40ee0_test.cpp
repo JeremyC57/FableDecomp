@@ -1,3 +1,7 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/Pow10.h"
 #include <cstdio>
 #include <math.h>
 // behaviour test of MillibelsToAmplitude_00c40ee0 (0x00c40ee0): silence at or below -10000 mB, else 10^(mB/2000) through libpk's x87 2^x block
@@ -7,25 +11,7 @@ float __cdecl MillibelsToAmplitude_00c40ee0(long millibels)
     if (millibels <= -10000)
         return 0.0f;
     float scale; float result; float whole; float log2of10 = 3.32192802f; float exponent = millibels * 0.0005f; float one = 1.0f;
-    __asm {
-        fld log2of10
-        fmul exponent
-        frndint
-        fst whole
-        wait
-        fld1
-        fscale
-        fxch st(1)
-        fstp scale
-        fld log2of10
-        fmul exponent
-        fsub whole
-        f2xm1
-        fadd one
-        fmulp st(1), st
-        fstp result
-        wait
-    }
+    LIBPK_POW10_BLOCK(log2of10, exponent, whole, scale, one, result);
     return result;
 }
 #else

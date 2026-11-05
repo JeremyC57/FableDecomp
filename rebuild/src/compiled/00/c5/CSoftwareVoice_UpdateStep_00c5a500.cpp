@@ -1,6 +1,8 @@
 // CSoftwareVoice::UpdateStep(float pitch, const SVoiceDesc* desc) -- recompute the resampler step: the pitch times the active modulators (pitch envelope, vibrato, second pitch LFO), times source rate / output rate, clamped below at 0.01, in 20.12 fixed point (x 4096, rounded through the retail inline-asm `fistp`), capped at 0xF000
-// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 2-instruction __asm (no control flow) + the Retail-asm evidence line
-// Retail-asm: 0x00C5A57C `fstp [esp+4]` / 0x00C5A580 `fld dword ptr [esp+4]` + 0x00C5A584 `fistp dword ptr [esp+8]` -- GameCODA's inline-assembly float-to-long helper (its by-value copy homed in the dead `pitch` slot and reloaded, a bare dword fistp into the dead `desc` slot, then the C++ `+1 if negative` truncation fix-up); VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
+// Grade: RELOCATION_MATCH -- retail_asm through the shared helper libpk/FtoL.h (2026-11-05 asm migration, docs/pipeline/ASM_RULES.md); no inline asm in this row
+// Retail-asm: 0x00C5A57C `fstp [esp+4]` / 0x00C5A580 `fld dword ptr [esp+4]` + 0x00C5A584 `fistp dword ptr [esp+8]` -- GameCODA's inline-assembly float-to-long helper (its by-value copy homed in the dead `pitch` slot and reloaded, a bare dword fistp into the dead `desc` slot, then the C++ `+1 if negative` truncation fix-up); VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
+// Helper (2026-11-05 asm migration): the bare `fld` / `fistp dword` block is libpk's FtoL in the shared libpk/FtoL.h (byte-matching
+//   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: asm/w3 ATTEMPTS.tsv family FISTP.
 // Leaf: ?UpdateStep@CSoftwareVoice@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C5A500, length 171 bytes (+ int3 padding); `ret 8`.
 // Globals: the output rate 0x0139C9E8, 2^32 0x0122DCB4, 0.01f 0x01230A5C, 4096.0f 0x012B8FC0, 0.5f 0x0122F59C.
@@ -10,17 +12,11 @@
 // both rates are unsigned conversions (`fild ; jge ; fadd 2^32`); `< 0.01f` is `fcom ; test ah,5 ; jp`; the
 // unfolded `+ 0.5f - 0.5f` precedes the ROUND; the cap stores first then re-stores 0xF000 (`cmp ; mov ; jbe`).
 // the inline-assembly float-to-long helper (round to nearest, the FPU default); expanded in place as a __forceinline
-__forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "libpk/FtoL.h"
 // truncation toward zero on top of it: round(x - 0.5) is floor(x), negatives step back up by one
 __forceinline long FloatToLongTruncate(float value)
 {
-    long result = FloatToLong(value - 0.5f);
+    long result = FtoL(value - 0.5f);
     if (result < 0)
         ++result;
     return result;

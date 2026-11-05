@@ -1,14 +1,18 @@
 // Behaviour test for 0x00C52CE0 (source body copied from src/00c52ce0.cpp; the retail inline-asm idioms are
-// spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+// spelled through RA_* macros: the same inline-asm under VC7.1, a round-half-to-even C fallback under g++).
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/ReadTimeStampCounter.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #ifdef _MSC_VER
-// the retail inline-asm idioms, exactly as in the source (one instruction per __asm, no trailing semicolon)
-#define RA_FISTP(v, r) __asm fld v __asm fistp r
-#define RA_FISTP_PTR(v, p) __asm fld v __asm mov edx, p __asm fistp dword ptr [edx]
-#define RA_RDTSC0(c) __asm xor eax, eax __asm xor edx, edx __asm rdtsc __asm mov dword ptr c, eax __asm mov dword ptr c+4, edx
-#define RA_RDTSC(c) __asm rdtsc __asm mov dword ptr c, eax __asm mov dword ptr c+4, edx
+// the retail inline-asm idioms through the shared helper headers (2026-11-05 asm migration: no asm in a test)
+#define RA_FISTP(v, r) (r) = FtoL(v);
+#define RA_FISTP_PTR(v, p) *(p) = FtoL(v);
+#define RA_RDTSC0(c) (c) = GFGetCycleCount();
+#define RA_RDTSC(c) (c) = ReadTimeStampCounter();
 #else
 // g++ C fallback (test only): fistp in the default FPU mode rounds to nearest, ties to even
 #define __fastcall
@@ -27,7 +31,7 @@ static unsigned long long ra_tsc = 1000000;
 #endif
 // ---- source body ----
 // MeasureCpuFrequency() -- measure the processor clock in Hz: sample the performance counter and the time-stamp counter around a 10 ms sleep (retrying when either counter runs backwards) and scale the TSC delta by the performance-counter frequency; 0 without a performance counter
-// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 3-instruction __asm (no control flow) + the Retail-asm evidence line
+// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 3-instruction inline-asm (no control flow) + the Retail-asm evidence line
 // Leaf: ?MeasureCpuFrequency@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C52CE0, length 186 bytes (+ int3 padding); plain `ret`, the result in
 // edx:eax. Caller: the CPU identification at 0x00C5319E, which divides it by 1000000 and hands the MHz value to this
@@ -44,12 +48,7 @@ extern "C" __declspec(dllimport) int __stdcall QueryPerformanceCounter(LARGE_INT
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);
 
 // the time-stamp counter read (expanded in place: rdtsc, spill edx:eax to the 8-byte local)
-__forceinline unsigned __int64 ReadTimeStampCounter()
-{
-    unsigned __int64 counter;
-    RA_RDTSC(counter)
-    return counter;
-}
+// (ReadTimeStampCounter comes from libpk/ReadTimeStampCounter.h)
 
 unsigned __int64 MeasureCpuFrequency()
 {

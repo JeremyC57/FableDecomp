@@ -1,14 +1,15 @@
 // Behaviour test for CAudioContext::GetPreferredDeviceName 0x00C55DA0 (body copied from retail_asm/00c55da0.cpp; the winmm
 // calls, GetProcAddress and the OpenAL entry points are mocked; under g++ the pushad/popad statements compile away).
 // Retail-asm: 0x00C55DB4 `pushad` and 0x00C55DDA `popad` bracket the two winmm calls, as in retail_asm/00c55da0.cpp (VC7.1 never emits pusha/popa from C++).
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/SaveAllRegisters.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
 #define __cdecl
 #define __stdcall
-#define __asm
-#define pushad
-#define popad
 #endif
 static void* g_ptrs[2];
 static int g_gpaCalls = 0;
@@ -128,10 +129,10 @@ bool CAudioContext::GetPreferredDeviceName(char* deviceName)
     unsigned long flags;
     unsigned int deviceId;
     WAVEOUTCAPSA caps;
-    __asm pushad
+    LIBPK_SAVE_ALL_REGISTERS();
     waveOutMessage(WAVE_MAPPER, DRVM_MAPPER_PREFERRED_GET, (unsigned long)(size_t)&deviceId, (unsigned long)(size_t)&flags);
     waveOutGetDevCapsA(deviceId, &caps, sizeof(caps));
-    __asm popad
+    LIBPK_RESTORE_ALL_REGISTERS();
 
     const char* devices = GetDeviceString(ALC_DEFAULT_DEVICE_SPECIFIER);
     bool enumeration = IsDeviceExtensionPresent("ALC_ENUMERATION_EXT");

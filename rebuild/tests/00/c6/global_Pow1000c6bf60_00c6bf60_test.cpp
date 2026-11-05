@@ -1,3 +1,7 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/Pow10.h"
 #include <cstdio>
 #include <math.h>
 // behaviour test of Pow10_00c6bf60 (0x00c6bf60): libpk's x87 2^(x*log2 10) block, i.e. 10^x in single precision
@@ -5,25 +9,7 @@
 float __cdecl Pow10_00c6bf60(float x)
 {
     float scale; float result; float whole; float log2of10 = 3.32192802f; float one = 1.0f;
-    __asm {
-        fld log2of10
-        fmul x
-        frndint
-        fst whole
-        wait
-        fld1
-        fscale
-        fxch st(1)
-        fstp scale
-        fld log2of10
-        fmul x
-        fsub whole
-        f2xm1
-        fadd one
-        fmulp st(1), st
-        fstp result
-        wait
-    }
+    LIBPK_POW10_BLOCK(log2of10, x, whole, scale, one, result);
     return result;
 }
 #else

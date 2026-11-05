@@ -1,3 +1,7 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "engine/GFGetInterpolatedColourMMX.h"
 #include <cstdio>
 // behaviour test of GFGetInterpolatedColour (0x00A44250): per channel (a * (256 - weight) + b * weight) >> 8, saturated to a byte
 class CRGBColour {
@@ -12,25 +16,7 @@ CRGBColour GFGetInterpolatedColour(CRGBColour a, CRGBColour b, unsigned long wei
     CRGBColour blend; unsigned long inverse; unsigned long zero;
     zero = 0;
     inverse = 256 - weight;
-    __asm {
-        movd      mm0, a
-        movd      mm1, b
-        movd      mm2, inverse
-        movd      mm3, weight
-        punpcklbw mm0, zero
-        punpcklbw mm1, zero
-        punpcklwd mm2, mm2
-        punpcklwd mm3, mm3
-        punpckldq mm2, mm2
-        punpckldq mm3, mm3
-        pmullw    mm0, mm2
-        pmullw    mm1, mm3
-        paddw     mm0, mm1
-        psrlw     mm0, 8
-        packuswb  mm0, mm0
-        movd      blend, mm0
-        emms
-    }
+    GF_MMX_INTERPOLATE_COLOUR(a, b, inverse, weight, zero, blend);
     return CRGBColour(blend.R, blend.G, blend.B, blend.A);
 }
 #else

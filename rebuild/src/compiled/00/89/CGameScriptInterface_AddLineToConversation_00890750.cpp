@@ -1,5 +1,5 @@
 // CGameScriptInterface::AddLineToConversation @ 0x00890750 (retail 97 bytes, ret 0x14)
-// Genuine VC7.1 C++ reconstruction - no asm, no naked, no byte bakes.
+// Genuine VC7.1 C++ reconstruction: plain compiler-emitted C++, no byte bakes.
 
 class CCharString;
 class CThing;

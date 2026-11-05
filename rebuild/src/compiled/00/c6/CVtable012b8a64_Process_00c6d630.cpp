@@ -2,6 +2,8 @@
 // Leaf: ?Process@CVtable_012b8a64@@UAEXPBFPBQAJ@Z
 // Flags: /GS
 // Retail-asm: 0x00C6D923..0x00C6D94C `mov esi,[esp+14h] ; mov edi,[esp+18h] ; movdqa xmm0,[esi] ; movdqa xmm1,[esi+10h] ; movdqa xmm2,[esi+20h] ; movdqa xmm3,[esi+30h] ; movdqa [edi],xmm0 ; movdqa [edi+10h],xmm1 ; movdqa [edi+20h],xmm2 ; movdqa [edi+30h],xmm3` -- a hand SSE2 copy of the last 64 history bytes on fixed esi/edi loaded from two C locals that VC7.1 homed in the dead argument slots (`mov [esp+14h],edx ; mov [esp+18h],ebx`); VC7.1 RTM has no intrinsic that names esi/edi or reloads them from frame slots, and the C path of the same slot (0x00C6CC60) is `rep movsd`; same family as the landed ClearHistory 0x00C6D560 (slot 1 of this vtable) and the SIMD kernels 0x00C6D370 / 0x00C6D410. The rest of the body is C++.
+// Helper (2026-11-05 asm migration): the retail inline-asm block is the shared libpk/MixKernelsSIMD.h (byte-matching path + FABLE_PORTABLE twin); the row has
+//   no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family SIMD_LIBPK.
 // Retail: Fable.exe (TLC, VC7.1, /GS TU) @ 0x00C6D630, 808 bytes, thiscall `ret 8`; slot 2 of vtable 0x012B8A64 (the only
 //   reference: .rdata 0x012B8A6C), the SSE2 derivative of libpk's multi-tap delay effect (ctor 0x00C55070); the base slot 2 is
 //   the C Process 0x00C6CC60 (same body over MixDelayTapRampDown / MixDelayTapRampUp / MixDelayTap 0x00C6CB80 / 0x00C6CAF0 /
@@ -17,6 +19,7 @@
 //   the tap-set swap loads the current set into a named local first (the other two spellings store +0x1dc first).
 //   The TU is /GS (the kernels carry cookies), which also decides the static's register convention (without /GS VC7.1
 //   passes `step` in eax as well).
+#include "libpk/MixKernelsSIMD.h"
 #include <string.h>
 #pragma intrinsic(memcpy)
 struct CRITICAL_SECTION { void* DebugInfo; long LockCount, RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
@@ -80,32 +83,7 @@ increments[4]=(short)(step*8);
 increments[5]=(short)(step*8);
 increments[6]=(short)(step*8);
 increments[7]=(short)(step*8);
-__asm {
- mov ecx,groupCount
- mov eax,source
- mov edx,accumulator
- movdqa xmm7,gains
- movdqa xmm6,increments
- align 16
- next_block:
- movdqu xmm0,[eax]
- pmulhw xmm0,xmm7
- paddsw xmm7,xmm6
- pxor xmm1,xmm1
- pxor xmm2,xmm2
- punpcklwd xmm1,xmm0
- punpckhwd xmm2,xmm0
- psrad xmm1,15
- psrad xmm2,15
- paddd xmm1,[edx]
- paddd xmm2,[edx+10h]
- movdqa [edx],xmm1
- movdqa [edx+10h],xmm2
- add eax,10h
- add edx,20h
- dec ecx
- jne next_block
-}
+LIBPK_SSE2_SCALE_ACCUMULATE16_RAMP_UNALIGNED(groupCount, source, accumulator, gains, increments);
 }
 // The three SSE2 tap mixers of this TU (retail 0x00C6D590 ramp up, 0x00C6D5C0 ramp down, 0x00C6D600 constant gain; no callers:
 // VC7.1 expanded them into Process and kept the out-of-line copies).
@@ -157,16 +135,5 @@ void CVtable_012b8a64::Process(const short* input, long* const* outputs)
     LeaveCriticalSection(&Lock.Section);
     unsigned char* source = m_pAlignedBuffer + 0xc0;
     unsigned char* history = m_pAlignedBuffer - 0x40;
-    __asm {
-        mov     esi, source
-        mov     edi, history
-        movdqa  xmm0, [esi]
-        movdqa  xmm1, [esi + 10h]
-        movdqa  xmm2, [esi + 20h]
-        movdqa  xmm3, [esi + 30h]
-        movdqa  [edi], xmm0
-        movdqa  [edi + 10h], xmm1
-        movdqa  [edi + 20h], xmm2
-        movdqa  [edi + 30h], xmm3
-    }
+    LIBPK_SSE2_COPY64(source, history);
 }

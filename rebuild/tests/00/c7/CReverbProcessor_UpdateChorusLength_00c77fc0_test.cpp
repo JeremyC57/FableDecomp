@@ -1,14 +1,18 @@
 // Behaviour test for 0x00C77FC0 (source body copied from src/00c77fc0.cpp; the retail inline-asm idioms are
-// spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+// spelled through RA_* macros: the same inline-asm under VC7.1, a round-half-to-even C fallback under g++).
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/FtoL.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #ifdef _MSC_VER
-// the retail inline-asm idioms, exactly as in the source (one instruction per __asm, no trailing semicolon)
-#define RA_FISTP(v, r) __asm fld v __asm fistp r
-#define RA_FISTP_PTR(v, p) __asm fld v __asm mov edx, p __asm fistp dword ptr [edx]
-#define RA_RDTSC0(c) __asm xor eax, eax __asm xor edx, edx __asm rdtsc __asm mov dword ptr c, eax __asm mov dword ptr c+4, edx
-#define RA_RDTSC(c) __asm rdtsc __asm mov dword ptr c, eax __asm mov dword ptr c+4, edx
+// the retail inline-asm idioms through the shared helper headers (2026-11-05 asm migration: no asm in a test)
+#define RA_FISTP(v, r) (r) = FtoL(v);
+#define RA_FISTP_PTR(v, p) *(p) = FtoL(v);
+#define RA_RDTSC0(c) (c) = GFGetCycleCount();
+#define RA_RDTSC(c) (c) = ReadTimeStampCounter();
 #else
 // g++ C fallback (test only): fistp in the default FPU mode rounds to nearest, ties to even
 #define __fastcall
@@ -27,9 +31,9 @@ static unsigned long long ra_tsc = 1000000;
 #endif
 // ---- source body ----
 // CReverbProcessor::UpdateChorusLength(SReverbState* state, const SReverbParams* params) -- set the chorus delay length in samples: round(sample rate * chorus delay - 0.5) biased up when negative, rounded up to a multiple of 4
-// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 2-instruction __asm (no control flow) + the Retail-asm evidence line
+// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 2-instruction inline-asm (no control flow) + the Retail-asm evidence line
 // Leaf: ?UpdateChorusLength@CReverbProcessor@@
-// Retail-asm: 0x00C77FE5 `fld dword ptr [esp+0Ch]` + 0x00C77FE9 `fistp dword ptr [esp]` -- libpk's inline-assembly float-to-long helper inside its round-half-down (as 0x00C3FF70: the `value - 0.5f` stored to the dead params slot and reloaded, a bare dword fistp into the `push ecx` frame word). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
+// Retail-asm: 0x00C77FE5 `fld dword ptr [esp+0Ch]` + 0x00C77FE9 `fistp dword ptr [esp]` -- libpk's inline-assembly float-to-long helper inside its round-half-down (as 0x00C3FF70: the `value - 0.5f` stored to the dead params slot and reloaded, a bare dword fistp into the `push ecx` frame word). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C77FC0, length 72 bytes, `ret 8`. Constants 2^32 (0x0122DCB4, unsigned rate fix-up), 0.5f (0x0122F59C).
 // Dispatcher bit 0x20000.
 // Library: libpk software reverb (no PDB/RTTI); class, method and member names are descriptive. The dispatcher

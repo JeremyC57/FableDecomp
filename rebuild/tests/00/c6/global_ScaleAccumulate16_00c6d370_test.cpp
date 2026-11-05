@@ -1,3 +1,7 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/MixKernelsSIMD.h"
 #include <cstdio>
 // behaviour test of ScaleAccumulate16 (0x00c6d370): dst[i] += (high word of src[i] * gain) * 2 over count blocks of eight 16-bit samples (SSE2)
 #ifdef _MSC_VER
@@ -8,30 +12,7 @@ void __cdecl ScaleAccumulate16(const short* src, unsigned long count, long* dst,
     __declspec(align(16)) short gains[8];
     gains[0] = gain; gains[1] = gain; gains[2] = gain; gains[3] = gain;
     gains[4] = gain; gains[5] = gain; gains[6] = gain; gains[7] = gain;
-    __asm {
-        mov     ecx, count
-        mov     eax, src
-        mov     edx, dst
-        movdqa  xmm7, gains
-        align   16
-    next:
-        movdqu  xmm0, [eax]
-        pmulhw  xmm0, xmm7
-        pxor    xmm1, xmm1
-        pxor    xmm2, xmm2
-        punpcklwd xmm1, xmm0
-        punpckhwd xmm2, xmm0
-        psrad   xmm1, 15
-        psrad   xmm2, 15
-        paddd   xmm1, [edx]
-        paddd   xmm2, [edx + 10h]
-        movdqa  [edx], xmm1
-        movdqa  [edx + 10h], xmm2
-        add     eax, 10h
-        add     edx, 20h
-        dec     ecx
-        jne     next
-    }
+    LIBPK_SSE2_SCALE_ACCUMULATE16_UNALIGNED(count, src, dst, gains);
 }
 #else
 #define ALIGN16 __attribute__((aligned(16)))

@@ -1,32 +1,14 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/MixKernelsSIMD.h"
 #include <cstdio>
 // behaviour test of AddInt128Block_00c5d3f0 (0x00c5d3f0): dst[i] += src[i] for 128 packed 32-bit integers (SSE2 paddd, eight blocks of four aligned 16-byte rows)
 #ifdef _MSC_VER
 #define ALIGN16 __declspec(align(16))
 void __stdcall AddInt128Block_00c5d3f0(const long* src, long* dst)
 {
-    __asm {
-        mov     ecx, 8
-        mov     eax, src
-        mov     edx, dst
-        align   16
-    next:
-        movdqa  xmm0, [eax]
-        movdqa  xmm1, [eax + 10h]
-        movdqa  xmm2, [eax + 20h]
-        movdqa  xmm3, [eax + 30h]
-        paddd   xmm0, [edx]
-        paddd   xmm1, [edx + 10h]
-        paddd   xmm2, [edx + 20h]
-        paddd   xmm3, [edx + 30h]
-        movdqa  [edx], xmm0
-        movdqa  [edx + 10h], xmm1
-        movdqa  [edx + 20h], xmm2
-        movdqa  [edx + 30h], xmm3
-        add     eax, 40h
-        add     edx, 40h
-        dec     ecx
-        jne     next
-    }
+    LIBPK_SSE2_ADD_INT128_BLOCK(src, dst);
 }
 #else
 #define ALIGN16 __attribute__((aligned(16)))

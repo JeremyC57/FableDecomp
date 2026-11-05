@@ -1,0 +1,42 @@
+family	attempt	spelling	flags	vc71_emitted	matches_retail
+FISTP	F1	(long)x	/O2 /Oy /W3	fld ; jmp __ftol2	no
+FISTP	F2	(int)x	/O2 /Oy /W3	fld ; jmp __ftol2	no
+FISTP	F3	(short)x	/O2 /Oy /W3	fld ; call __ftol2 ; movsx eax,ax	no
+FISTP	F4	long r = (long)x; return r; (temporary)	/O2 /Oy /W3	fld ; jmp __ftol2	no
+FISTP	F5	(long)(x + 0.5f)	/O2 /Oy /W3	fld ; fadd ; jmp __ftol2	no
+FISTP	F6	(long)floor(x + 0.5f), #pragma intrinsic(floor)	/O2 /Oy /W3 (and /Oi /Op)	fstp qword ; call floor ; jmp __ftol2	no
+FISTP	F7	(long)d on a double operand	/O2 /Oy /W3	fld qword ; jmp __ftol2	no
+FISTP	F8	same-TU static inline C++ callee returning (long)x	/O2 /Oy /W3	fld ; jmp __ftol2	no
+FISTP	F9	F1..F8	/QIfist	fistp QWORD PTR [esp] into an 8-byte slot (sub esp,8)	no
+FISTP	F10	F1..F8	/arch:SSE2	cvttss2si / cvttsd2si; the floor form: fnstcw ; or ah,0Ch ; fldcw ; fistp dword (a truncating RC switch)	no
+FISTP	F11	_mm_cvtss_si32(_mm_set_ss(x)) / _mm_cvttss_si32 (<xmmintrin.h>)	/O2 /Oy /W3	cvtss2si / cvttss2si eax,xmm0	no
+FISTP	F12	an x87 fistp intrinsic	-	none in $VC71/include (mmintrin.h / xmmintrin.h / emmintrin.h only; no intrin.h)	n/a
+FISTP	F13	shared helper: function form FtoL(x) (libpk/FtoL.h) vs macro LIBPK_FTOL(result, x) / VORBIS_FTOI(i, f) / GF_GET_CYCLE_COUNT	row flags	both forms emit the bare fld / fistp dword; the function form adds a by-value copy where the row did not have one, so each row uses the form whose bytes match (gate.py + vland)	yes (helper)
+ROR	R1	_rotr(value, 13), #pragma intrinsic(_rotr)	/O2 /Oy /W3, /Oi, /Od	mov eax,ecx ; ror eax,0Dh (register; /Od: ebp frame, ror eax)	no
+ROR	R2	_lrotr(value, 13)	/O2 /Oy /W3, /Oi	mov eax,ecx ; ror eax,0Dh	no
+ROR	R3	(value >> 13) | (value << 19)	/O2 /Oy /W3	mov eax,ecx ; shl eax,13h ; shr ecx,0Dh ; or eax,ecx	no
+ROR	R4	value = _lrotr(value, 13); return value;	/O2 /Oy /W3	mov eax,ecx ; ror eax,0Dh	no
+ROR	R5	through a pointer to the parameter	/O2 /Oy /W3	ror ecx,0Dh ; mov eax,ecx	no
+ROR	R6	shift form into the parameter	/O2 /Oy /W3	mov eax,ecx ; shr ; shl ; or	no
+RDTSC	T1	__rdtsc() / <intrin.h>	-	not in VC7.1 RTM 13.10.3077 ($VC71/include has no intrin.h; arrived with VC8)	n/a
+RDTSC	T2	function form __int64 now = GFGetCycleCount() (0x009E1C70)	row flags	59 bytes v 58 (the return-value copy); the macro GF_GET_CYCLE_COUNT(now) matches	no / helper
+CPUID	C1	__cpuid	-	not in VC7.1 (arrived with VC8 intrin.h)	n/a
+PUSHFD	P1	__readeflags / __writeeflags	-	not in VC7.1 (arrived with VC8)	n/a
+PUSHAD	A1	any C/C++ or intrinsic	-	VC7.1 never emits pusha / popa; no intrinsic exists	n/a
+STD_REP_MOVS	M1	__movsb / __movsd / std / cld intrinsics	-	not in VC7.1 (the __movs family arrived with VC8); memmove / memcpy intrinsic emits rep movsd without std	n/a
+MAXPS_STRAY	X1	__m128 a, b; a = _mm_max_ps(a, b); (unused)	/O2 /Oy /W3 (and /Oi)	dropped as dead code (no maxps), yet the __m128 locals still force an and esp,-16 ebp frame	no
+MAXPS_STRAY	X2	_mm_storeu_ps(g, _mm_max_ps(_mm_setzero_ps(), _mm_set_ps1(1.0f)))	/O2 /Oy /W3 (and /Oi)	xorps xmm1,xmm1 ; maxps xmm1,xmm0 ; movups [eax],xmm1 inside an and esp,-16 frame (retail: no frame, xmm0 / xmm1 never loaded, nothing stored)	no
+POW10	W1	(float)pow(10.0, x) with #pragma intrinsic(pow); powf(10.0f, x)	/O2 /Oy /W3 (and /Oi)	fld ; fld ; jmp _CIpow / call powf	no
+POW10	W2	(float)exp(x * ln10), #pragma intrinsic(exp)	/O2 /Oy /W3 (and /Oi)	fmul ; fldl2e ; fmulp ; fld st(0) ; frndint ; fxch ; fsub ; f2xm1 ; fld1 ; faddp ; fscale ; fstp st(1): register-only, no `fst whole` / `fstp scale` stores, no `wait`, fld1 added after f2xm1 (retail: fadd one from memory, fmulp)	no
+POW10	W3	frndint / fscale / f2xm1 intrinsics	-	none in VC7.1	n/a
+SSE_BOX	B1	_mm_load_ss + _mm_loadh_pi, _mm_max_ps / _mm_min_ps / _mm_sub_ps / _mm_mul_ps / _mm_shuffle_ps(0xB0, 3) / _mm_add_ps / _mm_add_ss / _mm_store_ss (expression form)	/O2 /Oy /W3	push ebp ; mov ebp,esp ; and esp,-16 frame; movaps copies before every two-operand op; `this` used in ecx, never homed and reloaded (retail: sub esp,20h ; mov [esp],ecx ; mov ecx,[esp])	no
+SSE_BOX	B2	the same as one statement per instruction on register-named temporaries	/O2 /Oy /W3	identical to B1	no
+SSE_NVECTORMATH	N1	_mm_set_ps1 + _mm_load_ps / _mm_mul_ps / _mm_add_ps / _mm_store_ps, for loop with byte strides	/O2 /Oy /W3	strides loaded into esi / edi before the loop (`add eax,edi`), mulps xmm2,xmm1 ; mulps xmm3,xmm0 ; addps xmm3,xmm2 (retail: `add eax,[ebx+0Ch]` from the argument slot, saved esi/edi unused)	no
+SSE_NVECTORMATH	N2	aligned float[4] locals + _mm_load_ps + _mm_shuffle_ps(0), do-while form	/O2 /Oy /W3	as N1 (registers chosen by the allocator, strides in registers)	no
+SSE_NVECTORMATH	N3	_mm_loadu_ps + _mm_store_ps loop (GFClear4DVectors)	/O2 /Oy /W3	and esp,-16 frame, pointer in a register of its choice (retail: push ebp frame without realignment, mov eax,[ebp+10h] ; movups ; mov ecx,[ebp+0Ch])	no
+MMX_COLOUR	K1	_mm_cvtsi32_si64 / _mm_unpacklo_pi8 with _mm_setzero_si64 / _mm_mullo_pi16 / _mm_add_pi16 / _mm_srli_pi16 / _mm_packs_pu16 / _mm_empty	/O2 /Oy /W3	and esp,-8 frame; widening against a pxor'd register (retail: punpcklbw mm0,dword ptr [esp+8], a C local zero in memory)	no
+SIMD_LIBPK	L1	MMX accumulate: _mm_mulhi_pi16 / _mm_unpacklo|hi_pi16 against _mm_setzero_si64 / _mm_srai_pi32 / _mm_add_pi32 / _mm_empty	/O2 /Oy /W3	push ebp ; mov ebp,esp ; and esp,-8; pxor mm2 once + movq mm4,mm2 copies; count in edx, pointers in eax / ecx (retail: no realignment, ecx count, eax / edx pointers, pxor per group)	no
+SIMD_LIBPK	L2	SSE2 128-dword add: _mm_add_epi32 over four rows per loop	/O2 /Oy /W3	push ebp ; mov ebp,esp ; and esp,-16; counter in edx, loads reordered (retail: mov ecx,8 and the src / dst pointers in eax / edx, no realignment)	no
+SIMD_LIBPK	L3	MMX zero 64 / 128 bytes: _mm_setzero_si64 + 8 / 16 __m64 stores (loop and unrolled)	/O2 /Oy /W3	and esp,-8 frame; the loop form becomes pxor ; movq ; rep movsd; the unrolled form uses eax (retail: edi loaded from a frame word, push edi)	no
+SIMD_LIBPK	L4	SSE2 zero / copy: _mm_setzero_si128 / __m128i stores and loads	/O2 /Oy /W3	and esp,-16 frame, loads reordered, pxor for the zero (retail: xorps xmm0,xmm0 stored with movdqa, no realignment)	no
+SIMD_LIBPK	L5	MMX copy 128 bytes: 16 __m64 assignments	/O2 /Oy /W3	and esp,-8 frame; rep movsd (retail: movq mm0..mm7 pairs through esi / edi)	no

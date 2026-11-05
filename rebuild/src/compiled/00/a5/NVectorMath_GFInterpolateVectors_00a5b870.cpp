@@ -2,6 +2,8 @@
 // Leaf: ?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@KKM@Z
 // Flags: /Zi
 // Retail-asm: 0x00A5B8A6..0x00A5B8DC `mov eax,[ebx+8] ; mov edx,[ebx+10h] ; mov ecx,[ebx+18h] ; movaps xmm0,[ebp-30h] ; movaps xmm1,[ebp-40h] ; shufps xmm0,xmm0,0 ; shufps xmm1,xmm1,0 ; test ecx,ecx ; je ; movaps xmm2,[eax] ; movaps xmm3,[edx] ; mulps xmm2,xmm0 ; mulps xmm3,xmm1 ; addps xmm2,xmm3 ; movaps [eax],xmm2 ; add eax,[ebx+0Ch] ; add edx,[ebx+14h] ; dec ecx ; jne` -- the
+// Helper (2026-11-05 asm migration): the retail inline-asm block is the shared engine/NVectorMathSSE.h (byte-matching path + FABLE_PORTABLE twin); the row has
+//   no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family SSE_NVECTORMATH.
 //   hand SSE kernel of the NVectorMath family (same style as the landed retail_asm siblings GFInterpolateVectors
 //   (K1KPBMKK) 0x00A5BEF0, GFFinishPartialSlerp 0x00A5C2B0 and GFClear4DVectors 0x00A5C300): the two pointers and the
 //   count loaded into fixed registers straight from the argument slots, the two 16-aligned weight locals broadcast with
@@ -12,7 +14,6 @@
 //   `fld 1.0 ; fsub [ebx+1Ch] ; fstp [ebp-30h]`; a scalar aligned float gives a 0x58 frame with the locals on top,
 //   the 16-byte arrays the retail 0x48 frame with the fallback's Interpolate temporaries overlapping them) and the
 //   whole x87 fallback.
-// Portable (2026-11-03 asm twins): the asm kernel is this function's own block (retail has no separate helper for it), so it stays here in two-path form: under FABLE_PORTABLE the #ifndef drops the SSE branch and the row runs retail's own non-SSE C++ path (Strategy B; equal to the SSE kernel up to float rounding order -- retail ran this path on CPUs without SSE).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5B870, 801 bytes (+15 int3), __cdecl, plain `ret`, six stack
 //   arguments read through ebx (the realigned frame). Ego_r.pdb names the overload
 //   ?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@KKM@Z (NVectorMath namespace; the catalog label and the
@@ -28,6 +29,7 @@
 //     argument slot [ebx+1Ch] read by every fmul. VC7.1 unrolls the loop by four (`cmp count,4 ; jl`,
 //     (count-4)/4+1 passes, then a remainder loop).
 // Layout: C4DVector X +0, Y +4, Z +8, W +0xc (16 bytes, the SSE rows load it with movaps).
+#include "engine/NVectorMathSSE.h"
 class C4DVector {
 public:
     float X, Y, Z, W;
@@ -43,37 +45,13 @@ namespace NVectorMath {
 void GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVector* from, unsigned long fromStride,
                           unsigned long count, float t)
 {
-#ifndef FABLE_PORTABLE   // portable build: the retail non-SSE C++ path below (the twin of the SSE asm kernel)
     if (g_SSEAvailable) {
         __declspec(align(16)) float tt[4];
         __declspec(align(16)) float oneMinusT[4];
         tt[0] = t;
         oneMinusT[0] = 1.0f - t;
-        __asm {
-            mov     eax, out
-            mov     edx, from
-            mov     ecx, count
-            movaps  xmm0, xmmword ptr oneMinusT
-            movaps  xmm1, xmmword ptr tt
-            shufps  xmm0, xmm0, 0
-            shufps  xmm1, xmm1, 0
-            test    ecx, ecx
-            je      done
-        next:
-            movaps  xmm2, [eax]
-            movaps  xmm3, [edx]
-            mulps   xmm2, xmm0
-            mulps   xmm3, xmm1
-            addps   xmm2, xmm3
-            movaps  [eax], xmm2
-            add     eax, outStride
-            add     edx, fromStride
-            dec     ecx
-            jne     next
-        done:
-        }
+        GF_SSE_INTERPOLATE_VECTORS(out, from, count, oneMinusT, tt, outStride, fromStride);
     } else
-#endif
     {
         C4DVector* pOut = out;
         const C4DVector* pFrom = from;

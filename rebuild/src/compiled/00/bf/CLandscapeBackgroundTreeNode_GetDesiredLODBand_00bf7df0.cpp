@@ -2,7 +2,8 @@
 // Leaf: ?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail-asm: 0x00BF7E1E..0x00BF7E58 `movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [esp+0Ch],xmm2` -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind the g_SSEAvailable byte 0x013D2880 (the box and point pointers are spilled to [esp+8]/[esp+4] and reloaded because the asm names them; VC7.1 C++ emits no packed SSE: /arch:SSE only produces scalar ss code and the xmmintrin intrinsics would not reload the spilled pointers); the x87 branch is the C++ fallback.
-// Portable (2026-11-03 asm twins): the asm kernel is this function's own block (retail has no separate helper for it), so it stays here in two-path form: under FABLE_PORTABLE the #ifndef drops the SSE branch and the row runs retail's own non-SSE C++ path (Strategy B; equal to the SSE kernel up to float rounding order -- retail ran this path on CPUs without SSE).
+// Helper (2026-11-05 asm migration): the retail inline-asm block is the shared engine/C3DBoundingBoxSSE.h (byte-matching path + FABLE_PORTABLE twin); the row has
+//   no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family SSE_BOX.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BF7DF0, 379 bytes, thiscall, plain `ret`, long in eax.
 // Identity (proven): Ego_r.pdb ?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ (long, no arguments); `this` +0xa8 is
 //   BoundingBox and +0xe0/+0xe2 FirstBand/LastBand (Ego_r +0xb0/+0xe8/+0xea, retail 8 smaller), and the callers 0x00BF7FBE,
@@ -16,6 +17,7 @@
 //   g_SSEAvailable 0x013D2880.
 // Shape: the distance feeds GetLODZBandAtZ in one expression (a named local float changes the x87 stack order of the
 //   fallback's sum of squares).
+#include "engine/C3DBoundingBoxSSE.h"
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 extern bool g_SSEAvailable;                             // 0x013D2880
@@ -27,33 +29,11 @@ public:
     C3DVector MaxCoord;                                 // +0x0c
     __forceinline float CalcShortestDistanceToPointSquared(const C3DVector& point) const
     {
-#ifndef FABLE_PORTABLE   // portable build: the retail non-SSE C++ path below (the twin of the SSE asm kernel)
         if (g_SSEAvailable) {
             float result;
-            __asm {
-                mov     ecx, this
-                mov     edx, point
-                movss   xmm0, [ecx+8]
-                movhps  xmm0, [ecx]
-                movss   xmm1, [ecx+14h]
-                movhps  xmm1, [ecx+0Ch]
-                movss   xmm2, [edx+8]
-                movhps  xmm2, [edx]
-                movaps  xmm3, xmm2
-                maxps   xmm2, xmm0
-                minps   xmm2, xmm1
-                subps   xmm2, xmm3
-                mulps   xmm2, xmm2
-                movaps  xmm3, xmm2
-                shufps  xmm2, xmm2, 0B0h
-                addps   xmm2, xmm3
-                shufps  xmm2, xmm2, 3
-                addss   xmm2, xmm3
-                movss   result, xmm2
-            }
+            GF_SSE_BOX_DISTANCE_SQUARED(this, point, result);
             return result;
         }
-#endif
         C3DVector closest(point);
         if (closest.X < MinCoord.X)
             closest.X = MinCoord.X;

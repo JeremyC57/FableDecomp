@@ -1,3 +1,7 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/FtoL.h"
 #include <stdio.h>
 // CVtable_012bedcc::SetupVoice(...) -- Quantize and clamp mixer gains, derive the impulse delay and prepare one voice.
 // Leaf: ?SetupVoice@CVtable_012bedcc@@QAEXPAUSResampleVoice@@MPBUSUnprovenImpulse52@@@Z
@@ -29,10 +33,7 @@ struct SUnprovenImpulse52{short Values[25];unsigned short Delay;};
 #endif
 static __forceinline unsigned long RoundGain(float value){
 #ifdef _MSC_VER
-long rounded;
-__asm {fld value}
-__asm {fistp rounded}
-return (unsigned long)rounded;
+return (unsigned long)FtoL(value);
 #else
 double whole=floor((double)value);double fraction=(double)value-whole;if(fraction>0.5||(fraction==0.5&&((long)whole%2)!=0))whole+=1.0;return (unsigned long)(long)whole;
 #endif

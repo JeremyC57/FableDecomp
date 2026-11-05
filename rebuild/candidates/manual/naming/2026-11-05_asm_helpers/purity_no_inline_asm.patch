@@ -1,0 +1,21 @@
+--- a/tools/decomp_pipeline/crawl/purity.py
++++ b/tools/decomp_pipeline/crawl/purity.py
+@@ -15,6 +15,9 @@
+ A bare `__asm` inside otherwise-real C++ (e.g. a single `__asm int 3`) still counts as
+ non-genuine here: any hand-written instruction stream is a purity debt.
+ 
++Retired for row sources (owner, 2026-11-05, docs/pipeline/ASM_RULES.md): `classify` grades every row that spells `__asm` /
++`naked` as `naked_asm`; the evidence rule below now applies to the shared helper headers only (`_helper_header`), which a
++row reaches through its #includes (`_helper_grade`, below). The 2026-10-24 text, kept for the header rule:
+ One exception (owner, 2026-10-24; evidence rule 2026-10-27): where retail itself ran inline assembly --
+ an instruction or shape VC7.1 cannot emit from C or C++ (`rdtsc`, a bare `fistp dword`, an
+ `fnstcw`/`fldcw` rounding switch, `cpuid`, a hand SIMD kernel, a published `_X86_` asm block) -- the
+@@ -207,5 +210,7 @@
+     if "_emit" in text:
+         return "emit_bake"
+     if "naked" in text or "__asm" in text:
+-        return "retail_asm" if _retail_asm(text) else "naked_asm"
++        # 2026-11-05 (docs/pipeline/ASM_RULES.md rule 5): no `__asm` in a row source; a row reaches retail asm only by calling a
++        # shared helper header (`_helper_grade`), so an in-row block is never `retail_asm` again, whatever its evidence line.
++        return "naked_asm"
+     return _helper_grade(text, include_dirs) or "genuine"

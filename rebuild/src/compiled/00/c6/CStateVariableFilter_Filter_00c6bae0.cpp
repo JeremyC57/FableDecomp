@@ -1,26 +1,22 @@
 // CStateVariableFilter::Filter(short* samples, unsigned long count) -- low-pass a block of 16-bit samples in place: while the current coefficients differ from the targets the first samples run through FilterRamped until the ramp reaches the block length (then the targets are committed and the ramp restarts); the rest use the current f / damping
-// Grade: RELOCATION_MATCH (3 grades: 12-byte coefficient struct copy, m_current.damping * m_band order, i = ramp before the commit test) -- rasm1 retail_asm: C++ body + a minimal 2-instruction __asm (no control flow) + the Retail-asm evidence line
+// Grade: RELOCATION_MATCH -- retail_asm through the shared helper libpk/FtoL.h (2026-11-05 asm migration, docs/pipeline/ASM_RULES.md); no inline asm in this row
 // Leaf: ?Filter@CStateVariableFilter
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C6BAE0, 235 bytes (+ int3 padding), `ret 8`.
 // Module: libpk's software mixer DSP (local model shared with 0x00C6B8C0 / 0x00C6BBD0). Callers: the voice mixer
 //   0x00C5B003, 0x00C5BACD, 0x00C5BAE7. Callee: FilterRamped 0x00C6B8C0 (thiscall). Global: block length 0x0139C9F0.
-// Retail-asm: 0x00C6BB87 `fsub [0.5f] ; fstp [esp+14h] ; fld [esp+14h] ; fistp dword [esp+10h] ; test ; jge ; inc` -- libpk's inline-assembly truncation helper. VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
+// Retail-asm: 0x00C6BB87 `fsub [0.5f] ; fstp [esp+14h] ; fld [esp+14h] ; fistp dword [esp+10h] ; test ; jge ; inc` -- libpk's inline-assembly truncation helper. VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
+// Helper (2026-11-05 asm migration): the bare `fld` / `fistp dword` block is libpk's FtoL in the shared libpk/FtoL.h (byte-matching
+//   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: asm/w3 ATTEMPTS.tsv family FISTP.
 // Shape: `m_current.f != m_target.f` loads the target first (fucompp); the commit copies the three target words
 //   through eax = this (`mov eax,esi ; mov [eax],edx ...`), the signature of an inlined struct assignment returning *this.
 // libpk's inline-assembly float-to-long helper. Retail homes the value in a dead stack slot and rounds it with a bare
 // `fld [slot] ; fistp dword [tmp]` (round to nearest, the FPU default); VC7.1 expands the __forceinline helper in place.
-__forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "libpk/FtoL.h"
 // truncation toward zero on top of the rounding helper: round(x - 0.5) is floor(x), negatives step back up by one
 // (retail: `fsub [0.5f] ; fstp [slot] ; fld [slot] ; fistp dword [tmp] ; test ; jge ; inc`)
 __forceinline long FloatToLongTruncate(float value)
 {
-    long result = FloatToLong(value - 0.5f);
+    long result = FtoL(value - 0.5f);
     if (result < 0)
         ++result;
     return result;

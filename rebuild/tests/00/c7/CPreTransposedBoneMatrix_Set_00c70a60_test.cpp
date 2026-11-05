@@ -1,3 +1,7 @@
+#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
+#endif
+#include "libpk/MixKernelsSIMD.h"
 #include <cstdio>
 // behaviour test of CPreTransposedBoneMatrix::Set (0x00c70a60): a 128-byte aligned copy (eight SSE2 movdqa loads then eight stores)
 #ifdef _MSC_VER
@@ -14,26 +18,7 @@ public:
 #ifdef _MSC_VER
 void CPreTransposedBoneMatrix::Set(CPreTransposedBoneMatrix* dst, const CMatrix3x4* src)
 {
-    __asm {
-        mov     esi, src
-        mov     edi, dst
-        movdqa  xmm0, [esi]
-        movdqa  xmm1, [esi + 10h]
-        movdqa  xmm2, [esi + 20h]
-        movdqa  xmm3, [esi + 30h]
-        movdqa  xmm4, [esi + 40h]
-        movdqa  xmm5, [esi + 50h]
-        movdqa  xmm6, [esi + 60h]
-        movdqa  xmm7, [esi + 70h]
-        movdqa  [edi], xmm0
-        movdqa  [edi + 10h], xmm1
-        movdqa  [edi + 20h], xmm2
-        movdqa  [edi + 30h], xmm3
-        movdqa  [edi + 40h], xmm4
-        movdqa  [edi + 50h], xmm5
-        movdqa  [edi + 60h], xmm6
-        movdqa  [edi + 70h], xmm7
-    }
+    LIBPK_SSE2_COPY128(src, dst);
 }
 #else
 void CPreTransposedBoneMatrix::Set(CPreTransposedBoneMatrix* dst, const CMatrix3x4* src)
