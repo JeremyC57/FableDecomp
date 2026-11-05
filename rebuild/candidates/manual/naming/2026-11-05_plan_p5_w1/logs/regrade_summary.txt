@@ -1,0 +1,25 @@
+== w1
+gate: 2436 rows {'PASS': 2436} in 235.9s (0.10s/row wall, NJ=4)
+gate: 2436 PASS of 2436
+vland:
+    123 MATCH PASS
+   2313 RELOCATION_MATCH PASS
+== w2
+gate: 150 rows {'PASS': 150} in 17.0s (0.11s/row wall, NJ=4)
+gate: 150 PASS of 150
+vland:
+     12 MATCH PASS
+    138 RELOCATION_MATCH PASS
+== w3
+gate: 1488 rows {'PASS': 1488} in 135.8s (0.09s/row wall, NJ=4)
+gate: 1488 PASS of 1488
+vland:
+     19 MATCH PASS
+   1469 RELOCATION_MATCH PASS
+== w4
+gate: 54 rows {'PASS': 54} in 7.8s (0.14s/row wall, NJ=4)
+gate: 54 PASS of 54
+vland:
+      1 MATCH PASS
+     52 RELOCATION_MATCH PASS
+      1 RELOCATION_MATCH[/EHsc] PASS

@@ -15,6 +15,7 @@ and QUEUE_LINES.
 - **Headers:** no shared header changed.
 - **Applied** with `apply_w35c.py`, in the order w1 to w4 (114 rows sit in more than one wave). The BINDINGS ADD/RETIRE lines are
   applied to `reloc_bindings.tsv`: 26 added, 26 retired.
-- **The coordinator's regrade** (gate + vland `--recheck-landed` on every row) was running when this was committed; its result
-  is recorded in a follow-up commit. The w1 gate had already passed all 2,436 rows.
+- **The coordinator's regrade** (gate + vland `--recheck-landed` on every row, from the working tree after the apply) passed all
+  4,128 rows: gate 4,128 / 4,128 PASS; vland 155 MATCH + 3,973 RELOCATION_MATCH (one of them under /EHsc), every behaviour test
+  PASS (`logs/regrade_*` in each wave directory).
 - **Phase 6:** `NEXT_PHASE6.md` lists what is left of steps 3-6.
