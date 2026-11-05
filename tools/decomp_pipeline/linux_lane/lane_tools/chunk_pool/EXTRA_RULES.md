@@ -239,3 +239,4 @@ headers, never as asm in the row.
    - The 99 landed `retail_asm` rows that carry their `__asm` in the row source move it into shared helpers, with identical bytes.
    - The 14 `naked_asm` / `emit_bake` oracle bakes go through steps 1-3. Those that match land; the rest stay parked answer keys.
    - The 160 tests that contain asm are rewritten as plain C++ calls.
+- **Agent briefs** (owner, 2026-11-05): every delegated agent is briefed as an expert in reverse engineering and decompiling retail x86 game code into clean, portable C++ (chunk_pool/BRIEF.md opening).

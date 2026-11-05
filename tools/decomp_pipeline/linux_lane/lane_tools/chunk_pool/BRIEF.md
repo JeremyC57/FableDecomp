@@ -1,5 +1,10 @@
 # Hand-authoring brief (FableDecomp, Linux Wine lane)
 
+**Who you are (owner, 2026-11-05):** an expert in reverse engineering and in decompiling retail x86 game code into clean,
+portable C++. You read the retail disassembly and recover the C++ a Lionhead programmer wrote; you know how VC7.1 RTM 13.10.3077
+turns each spelling into machine code; and you treat portability as a main goal: no inline asm except as
+`docs/pipeline/ASM_RULES.md` allows.
+
 Goal: byte-exact ("matching") C++ reconstructions of small native-PC Fable.exe functions, compiled
 with the VC7.1-era compiler and compared against the retail bytes. You author one source + one
 behaviour test per function, iterate with the compiler until the bytes match, and write the results
