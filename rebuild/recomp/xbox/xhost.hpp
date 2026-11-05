@@ -135,7 +135,9 @@ public:
     void lock() {
         const uint32_t t = next_.fetch_add(1, std::memory_order_relaxed);
 #if defined(__3DS__)
-        while (serving_.load(std::memory_order_acquire) != t) platformWaitBelow(serving_, t + 1);
+        // Sleep only while the queue is still short of this ticket: the kernel compares atomically,
+        // so a turn that arrives just before the call cannot be slept through (no lost wake-up).
+        while (serving_.load(std::memory_order_acquire) != t) platformWaitBelow(serving_, t);
 #else
         for (uint32_t s = serving_.load(std::memory_order_acquire); s != t; s = serving_.load(std::memory_order_acquire))
             serving_.wait(s, std::memory_order_acquire);
@@ -144,6 +146,7 @@ public:
     }
     int owner() const { return owner_.load(std::memory_order_relaxed); }
     void unlock() {
+        owner_.store(0, std::memory_order_relaxed);
         serving_.fetch_add(1, std::memory_order_release);
 #if defined(__3DS__)
         if (next_.load(std::memory_order_relaxed) != serving_.load(std::memory_order_relaxed)) platformWakeAll(serving_);

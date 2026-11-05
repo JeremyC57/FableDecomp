@@ -450,7 +450,7 @@ int main() {
     APT_CheckNew3DS(&n3ds);
     svcGetThreadPriority(&g_mainPrio, CUR_THREAD_HANDLE);
     if (n3ds) g_gameCore = 2;
-    std::printf("Fable boot test build 13 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
+    std::printf("Fable boot test build 14 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
                 static_cast<unsigned long>(osGetMemRegionSize(MEMREGION_APPLICATION) / 1024));
 
     mkdirs(g_dataDir);
