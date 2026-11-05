@@ -337,6 +337,8 @@ extern "C" void __system_allocateHeaps(void) {
     svcControlMemory(&out, 0, 0, kHostHeap, MEMOP_ALLOC_LINEAR, static_cast<MemPerm>(MEMPERM_READ | MEMPERM_WRITE));
     fake_heap_start = reinterpret_cast<char*>(out);
     fake_heap_end = reinterpret_cast<char*>(out + kHostHeap);
+    // As libctru's own version does: the address allocator for shared memory (GSP, HID, ...).
+    mappableInit(OS_MAP_AREA_BEGIN, OS_MAP_AREA_END);
 }
 
 // newlib has no pread/pwrite here: files.cpp's are a locked seek + read/write.
@@ -366,7 +368,7 @@ int main() {
     APT_CheckNew3DS(&n3ds);
     svcGetThreadPriority(&g_mainPrio, CUR_THREAD_HANDLE);
     if (n3ds) g_gameCore = 2;
-    std::printf("Fable boot test build 2 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
+    std::printf("Fable boot test build 3 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
                 static_cast<unsigned long>(osGetMemRegionSize(MEMREGION_APPLICATION) / 1024));
 
     mkdirs(g_dataDir);
