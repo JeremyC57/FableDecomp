@@ -1,111 +1,152 @@
-enum ETCInterfaceType { ETC_DUMMY = 0 };
-
-class CGSIMoralityStats
-{
+// CGameScriptInterface::GiveHeroMorality(float amount) const -- add `amount` times the hero's maximum morality (rounded to the
+// nearest long by the engine's float-to-long helper) to the live hero's morality; nothing when there is no live hero.
+// Leaf: ?GiveHeroMorality@CGameScriptInterface@@UBEXM@Z
+// Identity: Ego_r.pdb 0x008D8C80 ?GiveHeroMorality@CGameScriptInterface@@UBEXM@Z; vtable slot 156 (engine/CGameScriptInterface.h).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00899EF0, length 150 bytes, `ret 4`.
+// Callees: CPlayerManager::GetMainPlayer 0x00449970 (x2), CPlayer::GetPControlledCreature 0x00487DC0 (x2), the CThing Components
+//   LowerBound 0x0040F020 (forced-inline GetTC<CTCHeroStats>, interface 4), CTCHeroStats::GetMoralityMax 0x0057A67E (Ego_r.pdb
+//   ?GetMoralityMax@CTCHeroStats@@QBEJXZ; the landed definer spells a fastcall stand-in, NAME_FIXES), CTCHeroStats::SetMorality
+//   0x0057C2E6. Layout: as the landed sibling GetHeroMorality 0x00899F90 (whose classes this row reuses); CTCHeroStats Morality +0x28.
+// Shape: the hero is fetched again for GetTC; GetTC's result is not tested (without the TC bit retail uses the out pointer's
+//   stack slot, here the `amount` argument slot).
+// Retail-asm: 0x00899F6A `fld dword ptr [esp+0Ch]` + 0x00899F6E `fistp dword ptr [esp+4]` -- the product `max * amount` stored to the
+//   by-value float parameter of the engine's GFFloatToLongNear and reloaded for a bare dword fistp; VC7.1 C++ `(long)x` calls __ftol2
+//   and /QIfist emits `fistp qword`, so the original is the inline-asm helper (engine/GFFloatToLongNear.h). Everything else is plain
+//   C++ (asm cleanup round 2b; replaces the oracle byte bake).
+#include "engine/GFFloatToLongNear.h"
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CThing {
 public:
-    long GetMoralityMax();
-    void SetMorality(long morality);
-
-    unsigned char m_Pad00[0x28];
-    long          m_Morality; // 0x28
-};
-
-struct CKeyPair
-{
-    ETCInterfaceType  m_Key;   // 0x00
-    CGSIMoralityStats* m_Value; // 0x04
-};
-
-struct CVectorMap
-{
-    CKeyPair* m_pBegin; // 0x00
-    CKeyPair* m_pEnd;   // 0x04
-
-    CKeyPair* LowerBound(const ETCInterfaceType* pKey);
-};
-
-struct CThingOverlay
-{
-    unsigned char m_Pad00[0x20];
-    unsigned char m_Flags20;       // 0x20
-    unsigned char m_Pad21[0x23];
-    CVectorMap    m_InterfaceMap44; // 0x44
-    unsigned char m_Pad4C[0x45];
-    unsigned char m_Flags91;        // 0x91
-};
-
-class CGameScriptInterface
-{ public:
-    unsigned char m_Pad00[0x14];
-    void*         m_Field14; // 0x14
-};
-
-extern "C" void* __fastcall Sub_ResolveA(void* self);
-extern "C" CThingOverlay* __fastcall Sub_ResolveB(void* obj);
-
-const ETCInterfaceType kTargetType = (ETCInterfaceType)4;
-
-__declspec(naked)
-void __fastcall CGameScriptInterface_GiveHeroMorality(
-    const CGameScriptInterface* self,
-    float amount)
-{
-    __asm
+    unsigned char _pad00[0x20];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad54[0x3d];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
     {
-        push ecx
-        push esi
-        mov esi, ecx
-        mov ecx, dword ptr [esi + 14h]
-        call Sub_ResolveA
-        mov ecx, eax
-        call Sub_ResolveB
-        test eax, eax
-        je finished
-        test byte ptr [eax + 91h], 1
-        jne finished
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || T::INTERFACE_TYPE < it->first)
+            it = map->end();
+        *out = (T*)it->second;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || T::INTERFACE_TYPE < it->first)
+            it = map->end();
+        *out = (const T*)it->second;
+        return true;
+    }
+};
+class CThingPlayerCreature : public CThing { };
+class CPlayer {
+public:
+    CThingPlayerCreature* GetPControlledCreature() const;       // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;      // 0x00487DD0
+};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
+class CCharStringData;
+class CCharString { public: CCharStringData* PStringData; };
+struct CMarriageNode { CMarriageNode* _M_next; CMarriageNode* _M_prev; };
+class CMarriageList {                                    // std::list<CHeroMarriageInfo> (STLport: one node pointer)
+public:
+    CMarriageNode* _M_node;
+    bool empty() const { return _M_node->_M_next == _M_node; }
+};
+enum EMarriageState { MARRIAGE_STATE_1 = 1, MARRIAGE_STATE_2 = 2, MARRIAGE_STATE_HAS_CHILDREN = 4, MARRIAGE_STATE_DIVORCED = 5,
+                      MARRIAGE_STATE_WIFE_MURDERED = 7, MARRIAGE_STATE_FORCE_DWORD = 0x7fffffff };
+enum EMorality { MORALITY_NEUTRAL = 3, MORALITY_FORCE_DWORD = 0x7fffffff };
+enum EHeroTrainingStatus { HERO_TRAINING_STATUS_NONE = 0, HERO_TRAINING_STATUS_APPRENTICE = 1, HERO_TRAINING_STATUS_FORCE_DWORD = 0x7fffffff };
+class CTCHeroStats {
+public:
+    enum { INTERFACE_TYPE = 0x4 };
+    unsigned char _pad_0x000[0x28];
+    long Morality;                              // +0x028
+    unsigned char _pad_0x02c[0x4];
+    float Age;                                  // +0x030
+    float SunTan;                               // +0x034
+    float Fatness;                              // +0x038
+    unsigned char _pad_0x03c[0x1c];
+    long Stamina;                               // +0x058
+    long MaxStamina;                            // +0x05c
+    unsigned char _pad_0x060[0x8];
+    bool ScriptOverridePreventStaminaRefill;    // +0x068
+    unsigned char _pad_0x069[0x7];
+    long RenownLevel;                           // +0x070
+    long RenownMaxLevel;                        // +0x074
+    unsigned char _pad_0x078[0x24];
+    float Attractiveness;                       // +0x09c
+    float Scariness;                            // +0x0a0
+    unsigned char _pad_0x0a4[0x70];
+    EHeroTrainingStatus TrainingStatus;         // +0x114
+    unsigned char _pad_0x118[0x58];
+    CCharString DeathRecoveryMarkerName;        // +0x170
+    unsigned char _pad_0x174[0x4];
+    float BestTimePairs;                        // +0x178
+    float BestTimeSorting;                      // +0x17c
+    unsigned char _pad_0x180[0x10];
+    float BestTimeGuessTheAddition;             // +0x190
+    unsigned char _pad_0x194[0x44];
+    CMarriageList Marriages;                    // +0x1d8
+    float GetAge() const { return Age; }
+    float GetFatness() const { return Fatness; }
+    long  GetStamina() const { return Stamina; }
+    long  GetMaxStamina() const { return MaxStamina; }
+    float GetStaminaPercentage() const { return (float)Stamina / MaxStamina; }
+    long  GetRenownLevel() const { return RenownLevel; }
+    float GetAttractiveness() const { return Attractiveness; }
+    float GetScariness() const { return Scariness; }
+    float GetBestTimePairs() const { return BestTimePairs; }
+    float GetBestTimeSorting() const { return BestTimeSorting; }
+    float GetBestTimeGuessTheAddition() const { return BestTimeGuessTheAddition; }
+    const CCharString& GetDeathRecoveryMarkerName() const { return DeathRecoveryMarkerName; }
+    bool  HasMarriageInState(EMarriageState state) const;          // 0x0057AC29
+    bool  HasCurrentMarriage() const;                              // 0x0057AC4B
+    float GetPercentageThroughRenownLevel() const;                 // 0x0057AAD9
+    void  UpgradeRenownLevel();                                    // 0x0057CAE9
+    void  AddRenown(long renown);                                  // 0x0057D8BE
+    void  SetAge(float age);                                       // 0x0057B05F
+    void  ForceStaminaTo(float stamina);                           // 0x0057B26F
+    void  ResetTrainingStatus();                                   // 0x0057ADB8
+    float GetMoralityPercentage() const;                           // 0x0057A690
+    long  GetMoralityMax() const;                                  // 0x0057A67E
+    void  SetMorality(long morality);                              // 0x0057C2E6
+    EMorality GetMoralityCategory() const;                         // 0x0057A6B8
+};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
-        mov ecx, dword ptr [esi + 14h]
-        call Sub_ResolveA
-        mov ecx, eax
-        call Sub_ResolveB
-        test byte ptr [eax + 20h], 10h
-        je use_amount_bits
-
-        lea esi, [eax + 44h]
-        lea eax, [esp + 4]
-        push eax
-        mov ecx, esi
-        mov dword ptr [esp + 8], 4
-        call CVectorMap::LowerBound
-        mov esi, dword ptr [esi + 4]
-        cmp eax, esi
-        je use_sentinel
-        cmp dword ptr [eax], 4
-        jle have_entry
-use_sentinel:
-        mov eax, esi
-have_entry:
-        mov esi, dword ptr [eax + 4]
-        jmp have_stats
-use_amount_bits:
-        mov esi, dword ptr [esp + 0Ch]
-have_stats:
-        mov ecx, esi
-        call CGSIMoralityStats::GetMoralityMax
-        mov dword ptr [esp + 4], eax
-        fild dword ptr [esp + 4]
-        fmul dword ptr [esp + 0Ch]
-        fstp dword ptr [esp + 0Ch]
-        fld dword ptr [esp + 0Ch]
-        fistp dword ptr [esp + 4]
-        mov ecx, dword ptr [esi + 28h]
-        add ecx, dword ptr [esp + 4]
-        push ecx
-        mov ecx, esi
-        call CGSIMoralityStats::SetMorality
-finished:
-        pop esi
-        pop ecx
-        ret 4
+void CGameScriptInterface::GiveHeroMorality(float amount) const
+{
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    if (hero && !hero->IsDead())
+    {
+        CTCHeroStats* tc;
+        PlayerManager->GetMainPlayer().GetPControlledCreature()->GetTC(&tc);
+        tc->SetMorality(tc->Morality + GFFloatToLongNear(tc->GetMoralityMax() * amount));
     }
 }

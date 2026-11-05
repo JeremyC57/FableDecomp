@@ -1,204 +1,126 @@
-// Behaviour test for Batch_InvokeWithStackArgs @ 0x00C8C730.
-// Self-contained: it embeds the naked function-under-test, stubs every engine
-// call it references (so the test links standalone), and drives the two
-// call-light early-return paths that are fully deterministic without modelling
-// the alloca/usercall main body:
-//   (A) state->count < 2            -> returns -0x83 (0xFFFFFF7D)
-//   (B) count>=2 && first call != 0 -> returns that first-call result verbatim
+// Behaviour test for libvorbis vorbisfile.c _ov_d_seek_lap (0x00C8C730; the double-position twin of the 64-bit seeker 0x00C8C580): OV_EINVAL below OPENED, the init/seek/prime
+// errors returned as they come; otherwise the lapping data of the old link (n1 = blocksize >> (1 + halfrate) samples per
+// channel) is saved, the seeker runs, and _ov_splice cross-fades it into the new link's first block with the squared
+// window of the shorter block (channels the old link lacks are windowed from zero). alloca is a bump allocator here.
 #include <cstdio>
-
-// --- controllable engine stubs (only CreatureHitNotification is reached, in B) ---
-static int g_notifyResult = 0;
-extern "C" {
-    int  CreatureHitNotification_WaitForCompletion() { return g_notifyResult; }
-    int  Indexed_GetElementOffsetSafe() { return 0; }
-    int  GetNextRegionOnRouteTo()       { return 0; }
-    int  DrawGetWorldMap()              { return 0; }
-    int  GetEntryDataSize()             { return 0; }
-    void VertexBuffer_FillData()        {}
-    int  VertexBuffer_WaitAndAllocate() { return 0; }
-    void Buffer_SwapElements()          {}
-    void Audio_ConvolveChannels()       {}
-    // Referenced by the two _alloca sites; never reached by A/B, but must link.
-    void __chkstk()                     {}
-}
-
-// --- exact copy of the landed naked transcription (the function under test) ---
-__declspec(naked) int Batch_InvokeWithStackArgs_c8c730()
+#include <cmath>
+#if defined(_MSC_VER)
+typedef __int64 ogg_int64_t;
+#else
+typedef long long ogg_int64_t;
+#endif
+#define NULL 0
+#define OV_EINVAL -131
+#define OPENED 2
+static char g_arena[4096]; static unsigned int g_used = 0;
+static void* alloca_(unsigned int n) { void* p = g_arena + g_used; g_used += (n + 7) & ~7u; return p; }
+struct vorbis_info { int version; int channels; long rate; int blocksize; };
+struct vorbis_dsp_state { int dummy; };
+struct OggVorbis_File { int ready_state; vorbis_info* vi; vorbis_dsp_state vd; };
+static int g_initset = 0, g_initprime = 0, g_seekResult = 0, g_hs = 0;
+static double g_seekPos = -1.0;
+static vorbis_info g_vi1, g_vi2; static vorbis_info* g_current = &g_vi1;
+static float g_w1[8], g_w2[8];
+static float g_pcmData[3][8]; static float* g_pcm[3] = { g_pcmData[0], g_pcmData[1], g_pcmData[2] };
+static int _ov_initset(OggVorbis_File*) { return g_initset; }
+static int _ov_initprime(OggVorbis_File*) { return g_initprime; }
+static vorbis_info* ov_info(OggVorbis_File*, int) { return g_current; }
+static int ov_halfrate_p(OggVorbis_File*) { return g_hs; }
+static int vorbis_info_blocksize(vorbis_info* vi, int) { return vi->blocksize; }
+static float* vorbis_window(vorbis_dsp_state*, int) { return g_current == &g_vi1 ? g_w1 : g_w2; }
+static int vorbis_synthesis_lapout(vorbis_dsp_state*, float*** pcm) { *pcm = g_pcm; return 8; }
+static void _ov_getlap(OggVorbis_File*, vorbis_info* vi, vorbis_dsp_state*, float** lappcm, int lapsize)
 {
-    __asm {
-        push    ebp
-        mov     ebp, esp
-        sub     esp, 0x1c
-        push    ebx
-        push    esi
-        mov     esi, eax
-        cmp     dword ptr [esi+0x58], 2
-        push    edi
-        jge     cont
-        mov     eax, 0xffffff7d
-        lea     esp, [ebp-0x28]
-        pop     edi
-        pop     esi
-        pop     ebx
-        mov     esp, ebp
-        pop     ebp
-        ret     0xc
-cont:
-        call    CreatureHitNotification_WaitForCompletion
-        test    eax, eax
-        jne     done
-        or      edx, 0xffffffff
-        mov     ecx, esi
-        call    Indexed_GetElementOffsetSafe
-        mov     ebx, eax
-        mov     dword ptr [ebp-0x14], ebx
-        call    GetNextRegionOnRouteTo
-        mov     edi, dword ptr [ebx+0x4]
-        inc     eax
-        xor     edx, edx
-        mov     ecx, ebx
-        mov     dword ptr [ebp-0x10], eax
-        call    GetEntryDataSize
-        mov     ecx, dword ptr [ebp-0x10]
-        mov     ebx, eax
-        sar     ebx, cl
-        lea     ecx, [esi+0x1e0]
-        xor     edx, edx
-        mov     dword ptr [ebp-0x4], ecx
-        call    DrawGetWorldMap
-        mov     dword ptr [ebp-0x1c], eax
-        lea     eax, [edi*4+0x0]
-        add     eax, 3
-        and     eax, 0xfffffffc
-        call    __chkstk
-        test    edi, edi
-        mov     dword ptr [ebp-0x8], esp
-        mov     dword ptr [ebp-0xc], 0
-        jle     afterloop
-        _emit 0x8d
-        _emit 0x49
-        _emit 0x00
-    }
-    __asm {
-loophead:
-        lea     eax, [ebx*4+0x0]
-        add     eax, 3
-        and     eax, 0xfffffffc
-        call    __chkstk
-        mov     eax, dword ptr [ebp-0xc]
-        mov     edx, dword ptr [ebp-0x8]
-        mov     ecx, esp
-        mov     dword ptr [edx+eax*4], ecx
-        inc     eax
-        cmp     eax, edi
-        mov     dword ptr [ebp-0xc], eax
-        jl      loophead
-afterloop:
-        mov     eax, dword ptr [ebp-0x8]
-        mov     ecx, dword ptr [ebp-0x4]
-        mov     edx, dword ptr [ebp-0x14]
-        push    ebx
-        push    eax
-        push    ecx
-        push    edx
-        push    esi
-        call    VertexBuffer_FillData
-        fld     qword ptr [ebp+0x8]
-        sub     esp, 8
-        mov     ecx, esi
-        fstp    qword ptr [esp]
-        call    dword ptr [ebp+0x10]
-        test    eax, eax
-        jne     done
-        call    VertexBuffer_WaitAndAllocate
-        test    eax, eax
-        jne     done
-        or      edx, 0xffffffff
-        mov     ecx, esi
-        call    Indexed_GetElementOffsetSafe
-        mov     ecx, dword ptr [eax+0x4]
-        mov     dword ptr [ebp+0xc], ecx
-        xor     edx, edx
-        mov     ecx, eax
-        call    GetEntryDataSize
-        mov     ecx, dword ptr [ebp-0x10]
-        mov     esi, eax
-        sar     esi, cl
-        mov     ecx, dword ptr [ebp-0x4]
-        xor     edx, edx
-        call    DrawGetWorldMap
-        mov     ecx, dword ptr [ebp-0x4]
-        lea     edx, [ebp-0x18]
-        mov     dword ptr [ebp+0x10], eax
-        call    Buffer_SwapElements
-        mov     edx, dword ptr [ebp+0x10]
-        mov     eax, dword ptr [ebp+0xc]
-        mov     ecx, dword ptr [ebp-0x8]
-        push    edx
-        mov     edx, dword ptr [ebp-0x18]
-        push    eax
-        push    edi
-        push    ecx
-        push    edx
-        mov     edx, dword ptr [ebp-0x1c]
-        mov     eax, esi
-        mov     ecx, ebx
-        call    Audio_ConvolveChannels
-        xor     eax, eax
-done:
-        lea     esp, [ebp-0x28]
-        pop     edi
-        pop     esi
-        pop     ebx
-        mov     esp, ebp
-        pop     ebp
-        ret     0xc
-    }
+    for (int c = 0; c < vi->channels; ++c) for (int i = 0; i < lapsize; ++i) lappcm[c][i] = 10.0f * (c + 1);
 }
-
-// this=EAX entry with a (double, callbackPtr) 12-byte arg frame cleaned by ret 0xC
-static int drive(void* state, unsigned lo, unsigned hi, void* cb)
-{
-    int r;
-    __asm {
-        mov     eax, cb
-        push    eax
-        mov     eax, hi
-        push    eax
-        mov     eax, lo
-        push    eax
-        mov     eax, state
-        call    Batch_InvokeWithStackArgs_c8c730
-        mov     r, eax
+static int seeker(OggVorbis_File*, double pos) { g_seekPos = pos; g_current = &g_vi2; return g_seekResult; }
+static void _ov_splice(float **pcm,float **lappcm,
+                       int n1, int n2,
+                       int ch1, int ch2,
+                       float *w1, float *w2){
+  int i,j;
+  float *w=w1;
+  int n=n1;
+  if(n1>n2){
+    n=n2;
+    w=w2;
+  }
+  for(j=0;j<ch1 && j<ch2;j++){
+    float *s=lappcm[j];
+    float *d=pcm[j];
+    for(i=0;i<n;i++){
+      float wd=w[i]*w[i];
+      float ws=1.-wd;
+      d[i]=d[i]*wd + s[i]*ws;
     }
-    return r;
+  }
+  for(;j<ch2;j++){
+    float *d=pcm[j];
+    for(i=0;i<n;i++){
+      float wd=w[i]*w[i];
+      d[i]=d[i]*wd;
+    }
+  }
 }
-
+static int _ov_d_seek_lap(OggVorbis_File *vf,double pos,
+                          int (*localseek)(OggVorbis_File *,double)){
+  vorbis_info *vi;
+  float **lappcm;
+  float **pcm;
+  float *w1,*w2;
+  int n1,n2,ch1,ch2,hs;
+  int i,ret;
+  if(vf->ready_state<OPENED)return(OV_EINVAL);
+  ret=_ov_initset(vf);
+  if(ret)return(ret);
+  vi=ov_info(vf,-1);
+  hs=ov_halfrate_p(vf);
+  ch1=vi->channels;
+  n1=vorbis_info_blocksize(vi,0)>>(1+hs);
+  w1=vorbis_window(&vf->vd,0);
+  lappcm=(float **)alloca_(sizeof(*lappcm)*ch1);
+  for(i=0;i<ch1;i++)
+    lappcm[i]=(float *)alloca_(sizeof(**lappcm)*n1);
+  _ov_getlap(vf,vi,&vf->vd,lappcm,n1);
+  ret=localseek(vf,pos);
+  if(ret)return ret;
+  ret=_ov_initprime(vf);
+  if(ret)return(ret);
+  vi=ov_info(vf,-1);
+  ch2=vi->channels;
+  n2=vorbis_info_blocksize(vi,0)>>(1+hs);
+  w2=vorbis_window(&vf->vd,0);
+  vorbis_synthesis_lapout(&vf->vd,&pcm);
+  _ov_splice(pcm,lappcm,n1,n2,ch1,ch2,w1,w2);
+  return(0);
+}
+static int fail(const char* why) { std::printf("Batch_InvokeWithStackArgs_c8c730_TEST FAIL: %s\n", why); return 1; }
 int main()
 {
-    unsigned char state[0x200];
-    for (int i = 0; i < 0x200; ++i) state[i] = 0;
-    int* count = reinterpret_cast<int*>(state + 0x58);
-
-    // (A) count < 2 -> -0x83, no engine calls reached
-    *count = 1;
-    g_notifyResult = 0;
-    int a = drive(state, 0, 0, 0);
-    if (a != (int)0xFFFFFF7D) {
-        std::printf("Batch_InvokeWithStackArgs_c8c730_TEST FAIL(A): got %d want %d\n", a, (int)0xFFFFFF7D);
-        return 1;
+    OggVorbis_File vf; vf.ready_state = 1;
+    if (_ov_d_seek_lap(&vf, 5.0, seeker) != OV_EINVAL || g_seekPos != -1.0) return fail("not opened");
+    vf.ready_state = 4; g_initset = -3;
+    if (_ov_d_seek_lap(&vf, 5.0, seeker) != -3 || g_seekPos != -1.0) return fail("initset error");
+    g_initset = 0; g_seekResult = -7;
+    if (_ov_d_seek_lap(&vf, 5.0, seeker) != -7 || g_seekPos != 5.0) return fail("seek error");
+    g_seekResult = 0; g_initprime = -2; g_current = &g_vi1;
+    g_vi1.channels = 1; g_vi1.blocksize = 16;
+    if (_ov_d_seek_lap(&vf, 6.5, seeker) != -2) return fail("prime error");
+    // the splice: old link 2 channels / 16-sample blocks (n1 = 8), new link 3 channels / 8-sample blocks (n2 = 4)
+    g_initprime = 0; g_current = &g_vi1; g_vi1.channels = 2; g_vi1.blocksize = 16; g_vi2.channels = 3; g_vi2.blocksize = 8;
+    for (int i = 0; i < 8; ++i) { g_w1[i] = 0.25f; g_w2[i] = 0.5f; }
+    for (int c = 0; c < 3; ++c) for (int i = 0; i < 8; ++i) g_pcmData[c][i] = 2.0f;
+    if (_ov_d_seek_lap(&vf, 12.375, seeker) != 0 || g_seekPos != 12.375) return fail("full path");
+    // n = n2 = 4 with w2 = 0.5: wd = 0.25; d = 2 * 0.25 + s * 0.75
+    for (int i = 0; i < 4; ++i) {
+        if (std::fabs(g_pcmData[0][i] - (0.5f + 7.5f)) > 1e-4f || std::fabs(g_pcmData[1][i] - (0.5f + 15.0f)) > 1e-4f
+            || std::fabs(g_pcmData[2][i] - 0.5f) > 1e-4f) return fail("splice values");
     }
-
-    // (B) count >= 2, first call returns sentinel -> returned verbatim
-    *count = 5;
-    g_notifyResult = 0x1234;
-    int b = drive(state, 0, 0, 0);
-    if (b != 0x1234) {
-        std::printf("Batch_InvokeWithStackArgs_c8c730_TEST FAIL(B): got %d want %d\n", b, 0x1234);
-        return 1;
-    }
-
+    if (g_pcmData[0][4] != 2.0f || g_pcmData[2][7] != 2.0f) return fail("splice length");
+    // halfrate halves both lap lengths: n1 = 16 >> 2 = 4, n2 = 8 >> 2 = 2; w = w2 as n1 > n2
+    g_hs = 1; g_current = &g_vi1;
+    for (int c = 0; c < 3; ++c) for (int i = 0; i < 8; ++i) g_pcmData[c][i] = 2.0f;
+    if (_ov_d_seek_lap(&vf, 0.5, seeker) != 0 || g_pcmData[0][1] == 2.0f || g_pcmData[0][2] != 2.0f) return fail("halfrate");
     std::printf("Batch_InvokeWithStackArgs_c8c730_TEST PASS\n");
     return 0;
 }

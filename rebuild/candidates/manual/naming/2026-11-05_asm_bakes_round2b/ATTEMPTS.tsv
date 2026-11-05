@@ -1,0 +1,285 @@
+address	attempt	spelling	flags	vc71_result	first_difference (built :: retail)
+005bd993	two	two index exprs, ==0 return 0	/O2 /Oy /W3	DIFFER(26v31)	@0: mov eax,DWORD PTR [ecx+0x24] | mov ecx,DWORD PTR [ecx+0x8] | lea eax,[eax+eax*4] :: mov edx,DWORD PTR [ecx+0x24] | push esi | mov esi,DWORD PTR [ecx+0x8]
+005bd993	a02	a02 const CItem& item = Items()[idx]; if(item.NumberOfItems==0) return 0; return item.GetMax..()	/O2 /Oy /W3	DIFFER(26v31)	@0: mov eax,DWORD PTR [ecx+0x24] | mov ecx,DWORD PTR [ecx+0x8] | lea eax,[eax+eax*4] :: mov edx,DWORD PTR [ecx+0x24] | push esi | mov esi,DWORD PTR [ecx+0x8]
+005bd993	a03	a03 ternary NumberOfItems ? GetMax() : 0	/O2 /Oy /W3	DIFFER(25v31)	@0: mov eax,DWORD PTR [ecx+0x24] | mov ecx,DWORD PTR [ecx+0x8] | lea eax,[eax+eax*4] :: mov edx,DWORD PTR [ecx+0x24] | push esi | mov esi,DWORD PTR [ecx+0x8]
+005bd993	a04	a04 if (NumberOfItems != 0) return GetMax(); return 0	/O2 /Oy /W3	DIFFER(26v31)	@0: mov eax,DWORD PTR [ecx+0x24] | mov ecx,DWORD PTR [ecx+0x8] | lea eax,[eax+eax*4] :: mov edx,DWORD PTR [ecx+0x24] | push esi | mov esi,DWORD PTR [ecx+0x8]
+005bd993	a05	"a05 a01 body + optimize(""y"",off)"	/O2 /Oy /W3	DIFFER(26v31)	@0: mov eax,DWORD PTR [ecx+0x24] | mov ecx,DWORD PTR [ecx+0x8] | lea eax,[eax+eax*4] :: mov edx,DWORD PTR [ecx+0x24] | push esi | mov esi,DWORD PTR [ecx+0x8]
+005bd993	a06	"a06 a01 body without optimize(""s"")"	/O2 /Oy /W3	DIFFER(27v31)	@0: mov eax,DWORD PTR [ecx+0x24] | mov ecx,DWORD PTR [ecx+0x8] | lea eax,[eax+eax*4] :: mov edx,DWORD PTR [ecx+0x24] | push esi | mov esi,DWORD PTR [ecx+0x8]
+005bd993	a07	a07 long result = 0; if (..!=0) result = GetMax(); return result	/O2 /Oy /W3	DIFFER(25v31)	@1: mov ecx,DWORD PTR [ecx+0x8] | lea edx,[edx+edx*4] | xor eax,eax :: push esi | mov esi,DWORD PTR [ecx+0x8] | lea ecx,[edx+edx*4]
+005bd993	a08	a08 long result = 0; if (.. != result) return GetMax(); return result	/O2 /Oy /W3	DIFFER(26v31)	@0: mov eax,DWORD PTR [ecx+0x24] | mov ecx,DWORD PTR [ecx+0x8] | lea eax,[eax+eax*4] :: mov edx,DWORD PTR [ecx+0x24] | push esi | mov esi,DWORD PTR [ecx+0x8]
+005bd993	a09	a09 result local + item reference	/O2 /Oy /W3	DIFFER(25v31)	@1: mov ecx,DWORD PTR [ecx+0x8] | lea edx,[edx+edx*4] | xor eax,eax :: push esi | mov esi,DWORD PTR [ecx+0x8] | lea ecx,[edx+edx*4]
+005bd993	a10	a10 pointer arithmetic first + idx	/O2 /Oy /W3	DIFFER(26v31)	@0: mov eax,DWORD PTR [ecx+0x24] | mov ecx,DWORD PTR [ecx+0x8] | lea eax,[eax+eax*4] :: mov edx,DWORD PTR [ecx+0x24] | push esi | mov esi,DWORD PTR [ecx+0x8]
+005bd993	a11	a11 explicit byte offset idx*sizeof(CItem)	/O2 /Oy /W3	DIFFER(26v31)	@0: mov eax,DWORD PTR [ecx+0x24] | mov ecx,DWORD PTR [ecx+0x8] | lea eax,[eax+eax*4] :: mov edx,DWORD PTR [ecx+0x24] | push esi | mov esi,DWORD PTR [ecx+0x8]
+005bd993	a07	a07 long result = 0; if (..!=0) result = GetMax(); return result	/O2 /Oy /W3	DIFFER(25v31)	@1: mov ecx,DWORD PTR [ecx+0x8] | lea edx,[edx+edx*4] | xor eax,eax :: push esi | mov esi,DWORD PTR [ecx+0x8] | lea ecx,[edx+edx*4]
+005bd993	a07	a07 long result = 0; if (..!=0) result = GetMax(); return result	/O2 /Oy /W3	DIFFER(62v31)	@0: push ebp | mov ebp,esp | push ecx :: mov edx,DWORD PTR [ecx+0x24] | push esi | mov esi,DWORD PTR [ecx+0x8]
+005bd993	a07	a07 long result = 0; if (..!=0) result = GetMax(); return result	/Oa	DIFFER(25v31)	@1: mov ecx,DWORD PTR [ecx+0x8] | lea edx,[edx+edx*4] | xor eax,eax :: push esi | mov esi,DWORD PTR [ecx+0x8] | lea ecx,[edx+edx*4]
+005bd993	a07	a07 long result = 0; if (..!=0) result = GetMax(); return result	/GS	DIFFER(25v31)	@1: mov ecx,DWORD PTR [ecx+0x8] | lea edx,[edx+edx*4] | xor eax,eax :: push esi | mov esi,DWORD PTR [ecx+0x8] | lea ecx,[edx+edx*4]
+005bd993	a07	a07 long result = 0; if (..!=0) result = GetMax(); return result	/O1	DIFFER(25v31)	@1: mov ecx,DWORD PTR [ecx+0x8] | lea edx,[edx+edx*4] | xor eax,eax :: push esi | mov esi,DWORD PTR [ecx+0x8] | lea ecx,[edx+edx*4]
+005bd993	a12	a12 operator[] for test, begin()+idx for call	/O2 /Oy /W3	DIFFER(28v31)	@1: mov ecx,DWORD PTR [ecx+0x8] | lea edx,[edx+edx*4] | xor eax,eax :: push esi | mov esi,DWORD PTR [ecx+0x8] | lea ecx,[edx+edx*4]
+005bd993	a13	a13 begin()+idx for test, operator[] for call	/O2 /Oy /W3	DIFFER(28v31)	@1: mov ecx,DWORD PTR [ecx+0x8] | lea edx,[edx+edx*4] | xor eax,eax :: push esi | mov esi,DWORD PTR [ecx+0x8] | lea ecx,[edx+edx*4]
+005bd993	a14	a14 result local + unsigned long index local (MATCH)	/O2 /Oy /W3	RELOCATION_MATCH	-
+005bd993	a15	a15 result local + first[idx] raw array	/O2 /Oy /W3	DIFFER(25v31)	@1: mov ecx,DWORD PTR [ecx+0x8] | lea edx,[edx+edx*4] | xor eax,eax :: push esi | mov esi,DWORD PTR [ecx+0x8] | lea ecx,[edx+edx*4]
+005bd993	a16	a16 result local + item ref + > 0	/O2 /Oy /W3	DIFFER(25v31)	@1: mov ecx,DWORD PTR [ecx+0x8] | lea edx,[edx+edx*4] | xor eax,eax :: push esi | mov esi,DWORD PTR [ecx+0x8] | lea ecx,[edx+edx*4]
+005bd993	a17	a17 std::vector (stlport/fable_containers.h) + result local	/O2 /Oy /W3	DIFFER(28v31)	@1: mov ecx,DWORD PTR [ecx+0x8] | lea edx,[edx+edx*4] | xor eax,eax :: push esi | mov esi,DWORD PTR [ecx+0x8] | lea ecx,[edx+edx*4]
+005bd993	a18	a18 std::vector + early return	/O2 /Oy /W3	DIFFER(29v31)	@0: mov eax,DWORD PTR [ecx+0x24] | mov ecx,DWORD PTR [ecx+0x8] | lea eax,[eax+eax*4] :: mov edx,DWORD PTR [ecx+0x24] | push esi | mov esi,DWORD PTR [ecx+0x8]
+005bd993	a19	a19 std::vector + result local + size_t index local (MATCH, final)	/O2 /Oy /W3	RELOCATION_MATCH	-
+005bd993	a20	a20 std::vector + item ref + result local	/O2 /Oy /W3	DIFFER(25v31)	@1: mov ecx,DWORD PTR [ecx+0x8] | lea edx,[edx+edx*4] | xor eax,eax :: push esi | mov esi,DWORD PTR [ecx+0x8] | lea ecx,[edx+edx*4]
+004167a7	a01	a01 (long)(ConvertGTToWF(GetCurrentGameTime()) - frame)	/O2 /Oy /W3	DIFFER(33v33)	@0: call 0x5 | fild DWORD PTR ds:0x0 | fdivr DWORD PTR ds:0x0 :: call 0xfffffa8a | fild DWORD PTR ds:0x1375550 | fdivr DWORD PTR ds:0x122ded8
+004167a7	a02	a02	/O2 /Oy /W3	DIFFER(33v33)	@0: call 0x5 | fild DWORD PTR ds:0x0 | fdivr DWORD PTR ds:0x0 :: call 0xfffffa8a | fild DWORD PTR ds:0x1375550 | fdivr DWORD PTR ds:0x122ded8
+004167a7	a03	a03	/O2 /Oy /W3	DIFFER(33v33)	@0: call 0x5 | fild DWORD PTR ds:0x0 | fdivr DWORD PTR ds:0x0 :: call 0xfffffa8a | fild DWORD PTR ds:0x1375550 | fdivr DWORD PTR ds:0x122ded8
+004167a7	a04	a04	/O2 /Oy /W3	DIFFER(31v33)	@0: call 0x5 | fild DWORD PTR ds:0x0 | fdivr DWORD PTR ds:0x0 :: call 0xfffffa8a | fild DWORD PTR ds:0x1375550 | fdivr DWORD PTR ds:0x122ded8
+004167a7	a05	a05	/O2 /Oy /W3	DIFFER(33v33)	@0: call 0x5 | fild DWORD PTR ds:0x0 | fdivr DWORD PTR ds:0x0 :: call 0xfffffa8a | fild DWORD PTR ds:0x1375550 | fdivr DWORD PTR ds:0x122ded8
+004167a7	a06	a06	/O2 /Oy /W3	DIFFER(33v33)	@0: call 0x5 | fild DWORD PTR ds:0x0 | fdivr DWORD PTR ds:0x0 :: call 0xfffffa8a | fild DWORD PTR ds:0x1375550 | fdivr DWORD PTR ds:0x122ded8
+004167a7	a07	a07	/O2 /Oy /W3	DIFFER(33v33)	@0: call 0x5 | fild DWORD PTR ds:0x0 | fdivr DWORD PTR ds:0x0 :: call 0xfffffa8a | fild DWORD PTR ds:0x1375550 | fdivr DWORD PTR ds:0x122ded8
+004167a7	a08	a08	/O2 /Oy /W3	DIFFER(33v33)	@0: call 0x5 | fild DWORD PTR ds:0x0 | fdivr DWORD PTR ds:0x0 :: call 0xfffffa8a | fild DWORD PTR ds:0x1375550 | fdivr DWORD PTR ds:0x122ded8
+004167a7	a09	a09	/O2 /Oy /W3	DIFFER(33v33)	@0: call 0x5 | fild DWORD PTR ds:0x0 | fdivr DWORD PTR ds:0x0 :: call 0xfffffa8a | fild DWORD PTR ds:0x1375550 | fdivr DWORD PTR ds:0x122ded8
+004167a7	a10	a10	/O2 /Oy /W3	DIFFER(35v33)	@0: call 0x5 | fild DWORD PTR ds:0x0 | fdivr DWORD PTR ds:0x0 :: call 0xfffffa8a | fild DWORD PTR ds:0x1375550 | fdivr DWORD PTR ds:0x122ded8
+004167a7	a11	a11	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a12	a12	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a13	a13	/O2 /Oy /W3	DIFFER(17v33)	@1: fisub DWORD PTR [esp+0x4] | call X | ret 0x4 :: fild DWORD PTR ds:X | fdivr DWORD PTR ds:X | fdivr st,st(1)
+004167a7	a14	a14	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a15	a15	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a16	a16	/O2 /Oy /W3	DIFFER(37v33)	@1: fild DWORD PTR [esp+0x4] | fild DWORD PTR ds:X | fdivr DWORD PTR ds:X :: fild DWORD PTR ds:X | fdivr DWORD PTR ds:X | fdivr st,st(1)
+004167a7	a17	a17	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a18	a18	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a19	a19	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a20	a20	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a21	a21	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a22	a22	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a23	a23	/O2 /Oy /W3	DIFFER(33v33)	@2: fdivr QWORD PTR ds:X | fdivr st,st(1) | fisub DWORD PTR [esp+0x4] :: fdivr DWORD PTR ds:X | fdivr st,st(1) | fstp st(1)
+004167a7	a24	a24	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a25	a25	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a26	a26	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a27	a27	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a01	"a01 + pragma p"", on"	/O2 /Oy /W3	DIFFER(49v33)	@0: push ebp | mov ebp,esp | sub esp,0xc :: call X | fild DWORD PTR ds:X | fdivr DWORD PTR ds:X
+004167a7	a01	"a01 + pragma y"", off"	/O2 /Oy /W3	DIFFER(36v33)	@0: push ebp | mov ebp,esp | call X :: call X | fild DWORD PTR ds:X | fdivr DWORD PTR ds:X
+004167a7	a01	"a01 + pragma w"", on"	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a01	"a01 + pragma a"", on"	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a01	"a01 + pragma t"", on"	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a01	a01 no pragma (O2)	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a28	a28	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a29	a29	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a30	a30	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a31	a31	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a32	a32	/O2 /Oy /W3	DIFFER(40v33)	@0: push ebp | mov ebp,esp | push ecx :: call X | fild DWORD PTR ds:X | fdivr DWORD PTR ds:X
+004167a7	a33	a33	/O2 /Oy /W3	DIFFER(31v33)	@3: fdivp st(1),st | fisub DWORD PTR [esp+0x4] | call X :: fdivr st,st(1) | fstp st(1) | fisub DWORD PTR [esp+0x4]
+004167a7	a34	a34	/O2 /Oy /W3	DIFFER(31v33)	@3: fdivp st(1),st | fisub DWORD PTR [esp+0x4] | call X :: fdivr st,st(1) | fstp st(1) | fisub DWORD PTR [esp+0x4]
+004167a7	a35	a35	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a36	a36	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a37	a37	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a38	a38	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a39	a39	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a40	a40	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a41	a41	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a42	a42	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+007022c0	a01	a01 nested if (FeatIndex<=-1){if(IsCore) return false;} return true	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a01	a01:  if (FeatIndex <= -1) { if (GetDef()->IsCore) return false; } return true; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a02	a02:  if (FeatIndex > -1) return true; if (!GetDef()->IsCore) return true; return false; 	/O2 /Oy /W3	DIFFER(21v22)	@1: jle 0x9 | mov al,0x1 | ret :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a03	a03:  if (FeatIndex <= -1 && GetDef()->IsCore) return false; return true; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a04	a04:  if (FeatIndex > -1 || !GetDef()->IsCore) return true; return false; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a05	a05:  return !(FeatIndex <= -1 && GetDef()->IsCore); 	/O2 /Oy /W3	DIFFER(25v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a06	a06:  bool optional = true; if (FeatIndex <= -1 && GetDef()->IsCore) optional = false; return optional; 	/O2 /Oy /W3	DIFFER(21v22)	@1: mov al,0x1 | jg 0x14 | mov ecx,DWORD PTR [ecx+0xc] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a07	a07:  bool optional = false; if (FeatIndex > -1 || !GetDef()->IsCore) optional = true; return optional; 	/O2 /Oy /W3	DIFFER(23v22)	@0: mov edx,DWORD PTR [ecx+0x14] | xor al,al | cmp edx,0xffffffff :: cmp DWORD PTR [ecx+0x14],0xffffffff | jg 0x10 | mov eax,DWORD PTR [ecx+0xc]
+007022c0	a08	a08:  return !IsCoreInline(); bool IsCoreInline() const { if (FeatIndex <= -1) { if (GetDef()->IsCore) return true; } return false; } 	/O2 /Oy /W3	DIFFER(40v22)	@1: jg 0x1c | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a09	a09:  return !IsCoreInline(); bool IsCoreInline() const { return FeatIndex <= -1 && GetDef()->IsCore; } 	/O2 /Oy /W3	DIFFER(43v22)	@1: jg 0x1f | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a10	a10:  if (IsCoreInline()) return false; return true; bool IsCoreInline() const { return FeatIndex <= -1 && GetDef()->IsCore; } 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a11	a11:  if (FeatIndex <= -1) { if (!GetDef()->IsCore) return true; return false; } return true; 	/O2 /Oy /W3	DIFFER(21v22)	@1: jg 0x12 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a12	a12:  if (FeatIndex <= -1) { if (GetDef()->IsCore) return false; else return true; } else return true; 	/O2 /Oy /W3	DIFFER(21v22)	@1: jg 0x12 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a13	a13:  if (FeatIndex > -1) return true; else if (GetDef()->IsCore) return false; else return true; 	/O2 /Oy /W3	DIFFER(21v22)	@1: jle 0x9 | mov al,0x1 | ret :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a14	a14:  if (FeatIndex > -1) return true; if (GetDef()->IsCore) return false; return true; 	/O2 /Oy /W3	DIFFER(21v22)	@1: jle 0x9 | mov al,0x1 | ret :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a15	a15:  if (FeatIndex <= -1) { if (GetDef()->IsCore) goto notOptional; } return true; notOptional: return false; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a16	a16:  if (FeatIndex == -1 && GetDef()->IsCore) return false; return true; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jne 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a17	a17:  return FeatIndex != -1 || !GetDef()->IsCore; 	/O2 /Oy /W3	DIFFER(25v22)	@1: jne 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a18	a18:  return FeatIndex >= 0 || GetDef()->IsCore == false; 	/O2 /Oy /W3	DIFFER(26v22)	@0: mov eax,DWORD PTR [ecx+0x14] | test eax,eax | jge 0x14 :: cmp DWORD PTR [ecx+0x14],0xffffffff | jg 0x10 | mov eax,DWORD PTR [ecx+0xc]
+007022c0	a19	a19:  return FeatIndex > -1 || GetDef()->IsCore != true; 	/O2 /Oy /W3	DIFFER(22v22)	@1: mov eax,0x1 | jg 0x15 | mov ecx,DWORD PTR [ecx+0xc] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a20	a20:  return (FeatIndex > -1 || !GetDef()->IsCore) ? true : false; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a21	a21:  if (!(FeatIndex <= -1 && GetDef()->IsCore)) return true; return false; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a22	a22:  if (FeatIndex <= -1 && GetDef()->IsCore) return false; else return true; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a23	a23:  if (FeatIndex <= -1) { if (!GetDef()->IsCore) return true; } else { return true; } return false; 	/O2 /Oy /W3	DIFFER(21v22)	@1: jg 0x12 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a24	a24:  return FeatIndex > -1 ? true : !GetDef()->IsCore; 	/O2 /Oy /W3	DIFFER(26v22)	@1: jle 0xc | mov eax,0x1 | ret :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a25	a25:  bool isCore = FeatIndex <= -1 && GetDef()->IsCore; return !isCore; 	/O2 /Oy /W3	DIFFER(40v22)	@1: jg 0x1c | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a26	a26:  if (FeatIndex > -1) return true; return !GetDef()->IsCore; 	/O2 /Oy /W3	DIFFER(25v22)	@1: jle 0x9 | mov al,0x1 | ret :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a27	a27:  if (FeatIndex <= -1) return !GetDef()->IsCore; return true; 	/O2 /Oy /W3	DIFFER(25v22)	@1: jg 0x16 | mov eax,DWORD PTR [ecx+0xc] | mov dl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a28	a28:  if (FeatIndex <= -1) { bool core = GetDef()->IsCore; if (core) return false; } return true; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a29	a29:  bool result = true; if (FeatIndex <= -1) { if (GetDef()->IsCore) result = false; } return result; 	/O2 /Oy /W3	DIFFER(21v22)	@1: mov al,0x1 | jg 0x14 | mov ecx,DWORD PTR [ecx+0xc] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a30	a30:  bool result = false; if (FeatIndex > -1) result = true; else if (!GetDef()->IsCore) result = true; return result; 	/O2 /Oy /W3	DIFFER(23v22)	@0: mov edx,DWORD PTR [ecx+0x14] | xor al,al | cmp edx,0xffffffff :: cmp DWORD PTR [ecx+0x14],0xffffffff | jg 0x10 | mov eax,DWORD PTR [ecx+0xc]
+007022c0	a31	a31:  if (FeatIndex <= -1) { if (GetDef()->IsCore == true) return false; } return true; 	/O2 /Oy /W3	DIFFER(19v22)	@1: mov al,0x1 | jg 0x12 | mov ecx,DWORD PTR [ecx+0xc] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a32	a32:  if (FeatIndex < 0) { if (GetDef()->IsCore) return false; } return true; 	/O2 /Oy /W3	DIFFER(23v22)	@0: mov eax,DWORD PTR [ecx+0x14] | test eax,eax | jge 0x14 :: cmp DWORD PTR [ecx+0x14],0xffffffff | jg 0x10 | mov eax,DWORD PTR [ecx+0xc]
+00702280	calib-IsCore	calib-IsCore c01:  if (FeatIndex <= -1) { if (GetDef()->IsCore) return true; } return false; 	/O2 /Oy /W3	MATCH	-
+00702280	calib-IsCore	calib-IsCore c02:  return FeatIndex <= -1 && GetDef()->IsCore; 	/O2 /Oy /W3	DIFFER(25v22)	@1: jg 0x16 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+00702280	calib-IsCore	calib-IsCore c03:  if (FeatIndex <= -1 && GetDef()->IsCore) return true; return false; 	/O2 /Oy /W3	MATCH	-
+00702280	calib-IsCore	calib-IsCore c04:  if (FeatIndex > -1 || !GetDef()->IsCore) return false; return true; 	/O2 /Oy /W3	MATCH	-
+00702280	calib-IsCore	calib-IsCore c05:  if (FeatIndex > -1) return false; if (!GetDef()->IsCore) return false; return true; 	/O2 /Oy /W3	DIFFER(21v22)	@1: jle 0x9 | xor al,al | ret :: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a33	a33:  if (FeatIndex > -1 || GetDef()->IsCore == false) return true; return false; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a34	a34:  if (FeatIndex <= -1 && GetDef()->IsCore != false) return false; return true; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a35	a35:  if (FeatIndex > -1 || GetDef()->IsCore == 0) return true; return false; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a36	a36:  if (FeatIndex <= -1 && !!GetDef()->IsCore) return false; return true; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a37	a37:  if (FeatIndex > -1 || !GetDef()->IsCore) return true; else return false; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a38	a38:  if (!(FeatIndex > -1 || !GetDef()->IsCore)) return false; return true; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a39	a39:  if (FeatIndex <= -1) if (GetDef()->IsCore) return false; return true; 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a40	a40:  if (FeatIndex > -1) return true; if (GetDef()->IsCore == false) return true; return false; 	/O2 /Oy /W3	DIFFER(21v22)	@1: jle 0x9 | mov al,0x1 | ret :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a03	a03 flags /Ob2	/Ob2	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a03	a03 flags /Os	/Os	DIFFER(21v22)	@1: jg 0x12 | mov eax,DWORD PTR [ecx+0xc] | cmp BYTE PTR [eax+0x58],0x0 :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a03	a03 flags /O1	/O1	DIFFER(21v22)	@1: jg 0x12 | mov eax,DWORD PTR [ecx+0xc] | cmp BYTE PTR [eax+0x58],0x0 :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a03	a03 flags /GS	/GS	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a03	a03 flags /Oa	/Oa	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a03	a03 flags /Ox	/Ox	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a03	a03 flags /Og	/Og	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a08	a08 /Ob2	/Ob2	DIFFER(40v22)	@1: jg 0x1c | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a41	a41:  return !IsCoreInline(); bool IsCoreInline() const { if (FeatIndex <= -1 && GetDef()->IsCore) return true; return false; } 	/O2 /Oy /W3	DIFFER(40v22)	@1: jg 0x1c | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a42	a42:  if (IsCoreInline()) return false; return true; bool IsCoreInline() const { if (FeatIndex <= -1) { if (GetDef()->IsCore) return true; } return false; } 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a43	a43:  if (!IsCoreInline()) return true; return false; bool IsCoreInline() const { if (FeatIndex <= -1) { if (GetDef()->IsCore) return true; } return false; } 	/O2 /Oy /W3	MATCH	-
+007022c0	a44	a44:  return IsCoreInline() == false; bool IsCoreInline() const { if (FeatIndex <= -1) { if (GetDef()->IsCore) return true; } return false; } 	/O2 /Oy /W3	DIFFER(40v22)	@1: jg 0x1c | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a45	a45:  return IsCoreInline() ? false : true; bool IsCoreInline() const { if (FeatIndex <= -1) { if (GetDef()->IsCore) return true; } return false; } 	/O2 /Oy /W3	DIFFER(32v22)	@1: jg 0x18 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a46	a46:  if (FeatIndex <= -1) { if (DefIsCore()) return false; } return true; bool DefIsCore() const { return GetDef()->IsCore; } 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a47	a47:  if (FeatIndex > -1 || !DefIsCore()) return true; return false; bool DefIsCore() const { return GetDef()->IsCore; } 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a48	a48:  if (FeatIndex > -1) return true; return !DefIsCore(); bool DefIsCore() const { return GetDef()->IsCore; } 	/O2 /Oy /W3	DIFFER(25v22)	@1: jle 0x9 | mov al,0x1 | ret :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+007022c0	a49	a49:  if (!IsCore()) return true; return false; bool IsCore() const { if (FeatIndex <= -1) { if (GetDef()->IsCore) return true; } return false; } 	/O2 /Oy /W3	MATCH	-
+007022c0	a50	a50:  if (!IsCore()) return true; return false; bool IsCore() const { if (FeatIndex <= -1 && GetDef()->IsCore) return true; return false; } 	/O2 /Oy /W3	MATCH	-
+007022c0	a51	a51:  if (IsCore()) return false; return true; bool IsCore() const { if (FeatIndex <= -1 && GetDef()->IsCore) return true; return false; } 	/O2 /Oy /W3	DIFFER(22v22)	@1: jg 0x13 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58] :: jg 0x10 | mov eax,DWORD PTR [ecx+0xc] | mov cl,BYTE PTR [eax+0x58]
+005dacf0	a01	a01:  if (!IsUsableBy(blocker)) return false; return true; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a02	a02:  if (IsUsableBy(blocker)) return true; return false; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a03	a03:  if (!CanBlock(blocker)) return false; return true; bool CanBlock(const CThing& t) const { if (IsUsableBy(t)) return true; return false; } 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a04	a04:  if (CanBlock(blocker)) return true; return false; bool CanBlock(const CThing& t) const { if (!IsUsableBy(t)) return false; return true; } 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a05	a05:  return CanBlock(blocker); bool CanBlock(const CThing& t) const { if (!IsUsableBy(t)) return false; return true; } 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a06	a06:  if (!IsUsableBy(blocker)) return false; if (attacker == attacker) return true; return false; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a07	a07:  bool usable = IsUsableBy(blocker); if (usable) return true; return usable; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a08	a08:  if (!IsNotUsable(blocker)) return true; return false; bool IsNotUsable(const CThing& t) const { if (!IsUsableBy(t)) return true; return false; } 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a09	a09:  if (IsUsableBy(blocker)) { if (&blocker) return true; } return false; 	/O2 /Oy /W3	DIFFER(31v22)	@0: push esi | mov esi,DWORD PTR [esp+0x8] | push esi :: mov eax,DWORD PTR [esp+0x4] | push eax | call X
+005dacf0	a10	a10:  if (!CanBlock(blocker)) return true; return false; bool CanBlock(const CThing& t) const { if (IsUsableBy(t)) { return false; } return true; } 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a11	a11:  bool result = false; if (IsUsableBy(blocker)) result = true; return result; 	/O2 /Oy /W3	DIFFER(25v22)	@1: push ebx | push eax | xor bl,bl :: push eax | call X | test al,al
+005dacf0	a12	a12:  bool result = IsUsableBy(blocker); if (result) result = true; return result; 	/O2 /Oy /W3	DIFFER(19v22)	@4: je 0x10 | mov al,0x1 | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a13	a13:  if (IsUsableBy(blocker) == false) return false; return true; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a14	a14:  return IsUsableBy(blocker) != false; 	/O2 /Oy /W3	DIFFER(19v22)	@3: neg al | sbb eax,eax | neg eax :: test al,al | jne 0x11 | ret 0xc
+005dacf0	a15	a15:  return !!IsUsableBy(blocker); 	/O2 /Oy /W3	DIFFER(19v22)	@3: neg al | sbb eax,eax | neg eax :: test al,al | jne 0x11 | ret 0xc
+005dacf0	a16	a16:  return IsUsableBy(blocker) ? true : false; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a17	a17:  bool result = IsUsableBy(blocker); if (!result) return result; result = true; return result; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a18	a18:  bool result = IsUsableBy(blocker); if (!result) return result; return true; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a19	a19:  bool result = IsUsableBy(blocker); if (result) { result = true; return result; } return result; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a20	a20:  bool result = IsUsableBy(blocker); if (result) { return true; } else { return result; } 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a21	a21:  bool result = IsUsableBy(blocker); if (result != false) result = true; return result; 	/O2 /Oy /W3	DIFFER(19v22)	@4: je 0x10 | mov al,0x1 | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a22	a22:  bool result = IsUsableBy(blocker); if (result) result = true; else return result; return result; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a23	a23:  bool result; if ((result = IsUsableBy(blocker)) != false) return true; return result; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a24	a24:  bool result = IsUsableBy(blocker); if (result == false) return false; return result; 	/O2 /Oy /W3	DIFFER(13v22)	@3: ret 0xc :: test al,al | jne 0x11 | ret 0xc
+005dacf0	a25	a25:  switch (IsUsableBy(blocker)) { case true: return true; default: return false; } 	/O2 /Oy /W3	DIFFER(24v22)	@3: dec al | je 0x13 | xor al,al :: test al,al | jne 0x11 | ret 0xc
+005dacf0	a26	a26:  if (!IsUsableBy(blocker)) goto cannot; return true; cannot: return false; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a27	a27:  if (IsUsableBy(blocker)) goto can; return false; can: return true; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a28	a28:  bool result = false; if (IsUsableBy(blocker)) { result = true; } else { return result; } return result; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a29	a29:  bool result = IsUsableBy(blocker); if (result) { result = true; } return result; 	/O2 /Oy /W3	DIFFER(19v22)	@4: je 0x10 | mov al,0x1 | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a30	a30:  bool result = IsUsableBy(blocker); if (!result) { return result; } else { result = true; } return result; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a31	a31:  switch (IsUsableBy(blocker)) { case false: return false; default: return true; } 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a32	a32:  switch (IsUsableBy(blocker)) { case false: return false; case true: return true; } return false; 	/O2 /Oy /W3	DIFFER(28v22)	@3: sub al,0x0 | je 0x17 | dec al :: test al,al | jne 0x11 | ret 0xc
+005dacf0	a33	a33:  switch (IsUsableBy(blocker)) { case true: return true; case false: return false; } return false; 	/O2 /Oy /W3	DIFFER(28v22)	@3: sub al,0x0 | je 0x17 | dec al :: test al,al | jne 0x11 | ret 0xc
+005dacf0	a34	a34:  switch (IsUsableBy(blocker)) { case 0: return false; } return true; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a35	a35:  bool result = IsUsableBy(blocker); if (!result) {} else result = true; return result; 	/O2 /Oy /W3	DIFFER(19v22)	@4: je 0x10 | mov al,0x1 | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a36	a36:  bool result = IsUsableBy(blocker); if (!result) return result; result = true; return result; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a37	a37:  bool result = IsUsableBy(blocker); if (result) return result = true; return result; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a38	a38:  bool result = IsUsableBy(blocker); return result ? true : result; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a39	a39:  bool result = IsUsableBy(blocker); return result ? (result = true) : result; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a40	a40:  bool result = IsUsableBy(blocker); if (!result) return result; return result = true; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a41	a41:  bool result = IsUsableBy(blocker); while (result) { result = true; break; } return result; 	/O2 /Oy /W3	DIFFER(19v22)	@4: je 0x10 | mov al,0x1 | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a42	a42:  bool result = IsUsableBy(blocker); while (result) { return true; } return result; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a43	a43:  bool result = IsUsableBy(blocker); for (; result; ) return true; return result; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a44	a44:  bool result = IsUsableBy(blocker); do { if (!result) break; result = true; } while (false); return result; 	/O2 /Oy /W3	DIFFER(19v22)	@4: je 0x10 | mov al,0x1 | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a45	a45:  bool result = IsUsableBy(blocker); if (result) result = true; else result = result; return result; 	/O2 /Oy /W3	DIFFER(19v22)	@4: je 0x10 | mov al,0x1 | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a46	a46:  bool usable = IsUsableBy(blocker); bool result = usable; if (usable) result = true; return result; 	/O2 /Oy /W3	DIFFER(19v22)	@4: je 0x10 | mov al,0x1 | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a47	a47:  if (this != 0 && !IsUsableBy(blocker)) return false; return true; 	/O2 /Oy /W3	DIFFER(26v22)	@0: test ecx,ecx | je 0x15 | mov eax,DWORD PTR [esp+0x4] :: mov eax,DWORD PTR [esp+0x4] | push eax | call X
+005dacf0	a48	a48:  if (CanBlockWith() && !IsUsableBy(blocker)) return false; return true; bool CanBlockWith() const { return true; } 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a49	a49:  const CThing* thing = &blocker; if (thing && !IsUsableBy(*thing)) return false; return true; 	/O2 /Oy /W3	DIFFER(26v22)	@1: test eax,eax | je 0x15 | push eax :: push eax | call X | test al,al
+005dacf0	a50	a50:  if (!IsUsableBy(blocker) && CanBlockWith()) return false; return true; bool CanBlockWith() const { return true; } 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a51	a51:  bool canBlock = true; if (!IsUsableBy(blocker)) canBlock = false; return canBlock; 	/O2 /Oy /W3	DIFFER(27v22)	@1: push ebx | push eax | mov bl,0x1 :: push eax | call X | test al,al
+005dacf0	a52	a52:  if (IsUsableBy(blocker) == true) return true; return false; 	/O2 /Oy /W3	DIFFER(21v22)	@3: dec al | neg al | sbb al,al :: test al,al | jne 0x11 | ret 0xc
+005dacf0	a53	a53:  if (IsUsableBy(blocker) != true) return false; return true; 	/O2 /Oy /W3	DIFFER(21v22)	@3: dec al | neg al | sbb al,al :: test al,al | jne 0x11 | ret 0xc
+005dacf0	a54	a54:  return IsUsableBy(blocker) == true; 	/O2 /Oy /W3	DIFFER(20v22)	@3: dec al | neg al | sbb eax,eax :: test al,al | jne 0x11 | ret 0xc
+005dacf0	a55	a55:  bool canBlock = true; if (IsUsableBy(blocker) == false) canBlock = false; if (!canBlock) return false; return true; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a56	a56:  if (!IsUsableBy(blocker)) return false; else if (attacker == attacker) return true; else return false; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a57	a57:  bool usable = IsUsableBy(blocker); bool canBlock = true; if (!usable) canBlock = false; return canBlock; 	/O2 /Oy /W3	DIFFER(27v22)	@1: push ebx | push eax | mov bl,0x1 :: push eax | call X | test al,al
+005dacf0	a58	a58:  bool canBlock = true; if (!IsUsableBy(blocker)) return false; return canBlock; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a59	a59:  if (!IsUsableBy(blocker)) return false; bool canBlock = true; return canBlock; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+005dacf0	a60	a60:  bool canBlock; if (!IsUsableBy(blocker)) canBlock = false; else canBlock = true; return canBlock; 	/O2 /Oy /W3	DIFFER(18v22)	@4: setne al | ret 0xc :: jne 0x11 | ret 0xc | mov al,0x1
+004167a7	a43	a43	/O2 /Oy /W3	DIFFER(31v33)	@3: fdivp st(1),st | fisub DWORD PTR [esp+0x4] | call X :: fdivr st,st(1) | fstp st(1) | fisub DWORD PTR [esp+0x4]
+004167a7	a44	a44	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | fstp st(1) | call X :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a45	a45	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a46	a46	/O2 /Oy /W3	DIFFER(31v33)	@3: fdivp st(1),st | fisub DWORD PTR [esp+0x4] | call X :: fdivr st,st(1) | fstp st(1) | fisub DWORD PTR [esp+0x4]
+004167a7	a47	a47	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | fstp st(1) | call X :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a48	a48	/O2 /Oy /W3	DIFFER(31v33)	@3: fdivp st(1),st | fisub DWORD PTR [esp+0x4] | call X :: fdivr st,st(1) | fstp st(1) | fisub DWORD PTR [esp+0x4]
+004167a7	a49	a49	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a50	a50	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a01	a01 flags /G7	/G7	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a01	a01 flags /G6	/G6	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a01	a01 flags /G5	/G5	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a01	a01 flags /arch:SSE	/arch:SSE	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a01	a01 flags /arch:SSE2	/arch:SSE2	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a01	a01 flags /QIfist	/QIfist	DIFFER(39v33)	@0: push ebp | mov ebp,esp | push ecx :: call X | fild DWORD PTR ds:X | fdivr DWORD PTR ds:X
+004167a7	a51	a51	/O2 /Oy /W3	DIFFER(35v33)	@3: fdivp st(1),st | fld st(0) | fisub DWORD PTR [esp+0x4] :: fdivr st,st(1) | fstp st(1) | fisub DWORD PTR [esp+0x4]
+004167a7	a52	a52	/O2 /Oy /W3	DIFFER(35v33)	@3: fdivp st(1),st | fld st(0) | fisub DWORD PTR [esp+0x4] :: fdivr st,st(1) | fstp st(1) | fisub DWORD PTR [esp+0x4]
+004167a7	a54	a54 ConvertGTToWF out-of-class non-inline, /Ob2	/Ob2	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a53	a53 GetCurrentGameTime+ConvertGTToWF defined in TU, /Ob2	/Ob2	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a55	a55	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a56	a56	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+004167a7	a57	a57	/O2 /Oy /W3	DIFFER(33v33)	@4: fisub DWORD PTR [esp+0x4] | call X | fstp st(0) :: fstp st(1) | fisub DWORD PTR [esp+0x4] | call X
+0066ff20	a01	a01 direct transcription	/O2 /Oy /W3	DIFFER(177v175)	@13: mov ecx,DWORD PTR [esi+0x4] | mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] :: mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] | mov DWORD PTR [esp+0x14],eax
+0066ff20	a02	a02: position assigned (implicit operator=)	/O2 /Oy /W3	DIFFER(177v175)	@13: mov ecx,DWORD PTR [esi+0x4] | mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] :: mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] | mov DWORD PTR [esp+0x14],eax
+0066ff20	a03	a03: GetParentThing().GetPlayerNumber() inline	/O2 /Oy /W3	SRC_FAIL	-
+0066ff20	a03	a03: GetParentThing().GetPlayerNumber() inline (fixed)	/O2 /Oy /W3	DIFFER(177v175)	@45: mov eax,DWORD PTR [eax+0x60] | mov edx,DWORD PTR [eax] | lea ecx,[esp+0xc] :: mov ecx,DWORD PTR [eax+0x60] | mov eax,DWORD PTR [ecx] | lea edx,[esp+0xc]
+0066ff20	a04	a04: const position direct-init	/O2 /Oy /W3	DIFFER(177v175)	@13: mov ecx,DWORD PTR [esi+0x4] | mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] :: mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] | mov DWORD PTR [esp+0x14],eax
+0066ff20	a05	a05: physics local	/O2 /Oy /W3	DIFFER(177v175)	@13: mov ecx,DWORD PTR [esi+0x4] | mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] :: mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] | mov DWORD PTR [esp+0x14],eax
+0066ff20	a06	a06: hero local	/O2 /Oy /W3	DIFFER(175v175)	@13: mov ecx,DWORD PTR [esi+0x4] | mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] :: mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] | mov DWORD PTR [esp+0x14],eax
+0066ff20	a07	a07: ref local	/O2 /Oy /W3	DIFFER(177v175)	@13: mov ecx,DWORD PTR [esi+0x4] | mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] :: mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] | mov DWORD PTR [esp+0x14],eax
+0066ff20	a08	a08: a06 + GetParentThing().GetPos()	/O2 /Oy /W3	DIFFER(175v175)	@13: mov ecx,DWORD PTR [esi+0x4] | mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] :: mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] | mov DWORD PTR [esp+0x14],eax
+0066ff20	a09	a09: a06 + GetParentThing().PlayerNumber	/O2 /Oy /W3	RELOCATION_MATCH	-
+0066ff20	a10	a10: a06 + GetParentThing health	/O2 /Oy /W3	DIFFER(175v175)	@13: mov ecx,DWORD PTR [esi+0x4] | mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] :: mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] | mov DWORD PTR [esp+0x14],eax
+0066ff20	a11	a11: a06 + char PlayerNumber	/O2 /Oy /W3	DIFFER(175v175)	@13: mov ecx,DWORD PTR [esi+0x4] | mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] :: mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] | mov DWORD PTR [esp+0x14],eax
+0066ff20	a12	a12: a06 + ref then copy	/O2 /Oy /W3	DIFFER(175v175)	@13: mov ecx,DWORD PTR [esi+0x4] | mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] :: mov DWORD PTR [esp+0x10],edx | mov eax,DWORD PTR [eax+0x8] | mov DWORD PTR [esp+0x14],eax
+0066ff20	final	final src	/O2 /Oy /W3	RELOCATION_MATCH	-
+00899ef0	a01	a01 GetHeroMorality model + GFFloatToLongNear(max*amount)	/O2 /Oy /W3	RELOCATION_MATCH	-
+00899ef0	fistp-site	fistp-site C01 (long)(max*amount)	/O2 /Oy /W3	DIFFER(139v150)	@8: je 0x86 | test BYTE PTR [eax+0x91],0x1 | jne 0x86 :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C02 (int)(max*amount)	/O2 /Oy /W3	DIFFER(139v150)	@8: je 0x86 | test BYTE PTR [eax+0x91],0x1 | jne 0x86 :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C03 static_cast<long>	/O2 /Oy /W3	DIFFER(139v150)	@8: je 0x86 | test BYTE PTR [eax+0x91],0x1 | jne 0x86 :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C04 float local then (long)	/O2 /Oy /W3	DIFFER(139v150)	@8: je 0x86 | test BYTE PTR [eax+0x91],0x1 | jne 0x86 :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C05 inline ToLong(float)	/O2 /Oy /W3	DIFFER(139v150)	@8: je 0x86 | test BYTE PTR [eax+0x91],0x1 | jne 0x86 :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C06 __forceinline __fastcall ToLong(float)	/O2 /Oy /W3	DIFFER(139v150)	@8: je 0x86 | test BYTE PTR [eax+0x91],0x1 | jne 0x86 :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C07 (long)(x+0.5f)	/O2 /Oy /W3	DIFFER(145v150)	@8: je 0x8c | test BYTE PTR [eax+0x91],0x1 | jne 0x8c :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C08 (long)floor(x+0.5f)	/O2 /Oy /W3	DIFFER(163v150)	@8: je 0x9e | test BYTE PTR [eax+0x91],0x1 | jne 0x9e :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C09 (long)(double)x	/O2 /Oy /W3	DIFFER(139v150)	@8: je 0x86 | test BYTE PTR [eax+0x91],0x1 | jne 0x86 :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C10 (long)x /QIfist	/QIfist	DIFFER(148v150)	@0: sub esp,0x8 | push esi | mov esi,ecx :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site C11 float local (long) /QIfist	/QIfist	DIFFER(148v150)	@0: sub esp,0x8 | push esi | mov esi,ecx :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site C12 inline ToLong /QIfist	/QIfist	DIFFER(148v150)	@0: sub esp,0x8 | push esi | mov esi,ecx :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site C13 (int)x /QIfist	/QIfist	DIFFER(148v150)	@0: sub esp,0x8 | push esi | mov esi,ecx :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site C14 (long)x /arch:SSE	/arch:SSE	DIFFER(138v150)	@8: je 0x85 | test BYTE PTR [eax+0x91],0x1 | jne 0x85 :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C15 (long)x /arch:SSE2	/arch:SSE2	DIFFER(136v150)	@8: je 0x83 | test BYTE PTR [eax+0x91],0x1 | jne 0x83 :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C16 (long)x /Op	/Op	DIFFER(147v150)	@8: je 0x8e | test BYTE PTR [eax+0x91],0x1 | jne 0x8e :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C17 float local /Op	/Op	DIFFER(155v150)	@8: je 0x96 | test BYTE PTR [eax+0x91],0x1 | jne 0x96 :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C18 (long)x /QIfist /Op	/QIfist /Op	DIFFER(156v150)	@0: sub esp,0x8 | push esi | mov esi,ecx :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site C19 float local /QIfist /Op	/QIfist /Op	DIFFER(168v150)	@0: sub esp,0x8 | push esi | mov esi,ecx :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site C20 (long)(float)(max*amount) /QIfist	/QIfist	DIFFER(148v150)	@0: sub esp,0x8 | push esi | mov esi,ecx :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site C21 ToLong by-value float param /QIfist /Op	/QIfist /Op	DIFFER(168v150)	@0: sub esp,0x8 | push esi | mov esi,ecx :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site C22 (short)x	/O2 /Oy /W3	DIFFER(144v150)	@8: je 0x8b | test BYTE PTR [eax+0x91],0x1 | jne 0x8b :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C23 (unsigned long)x	/O2 /Oy /W3	DIFFER(139v150)	@8: je 0x86 | test BYTE PTR [eax+0x91],0x1 | jne 0x86 :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C24 long result = x (implicit)	/O2 /Oy /W3	DIFFER(141v150)	@8: je 0x88 | test BYTE PTR [eax+0x91],0x1 | jne 0x88 :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C25 implicit /QIfist	/QIfist	DIFFER(148v150)	@0: sub esp,0x8 | push esi | mov esi,ecx :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site C26 Morality += (long)x then SetMorality	/QIfist	DIFFER(150v150)	@0: sub esp,0x8 | push esi | mov esi,ecx :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site C27 (long)ceil(x-0.5f)	/O2 /Oy /W3	DIFFER(163v150)	@8: je 0x9e | test BYTE PTR [eax+0x91],0x1 | jne 0x9e :: je 0x91 | test BYTE PTR [eax+0x91],0x1 | jne 0x91
+00899ef0	fistp-site	fistp-site C28 double product (long) /QIfist	/QIfist	DIFFER(148v150)	@0: sub esp,0x8 | push esi | mov esi,ecx :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site C29 /G7 /QIfist (long)x	/G7 /QIfist	DIFFER(146v150)	@0: sub esp,0x8 | push esi | mov esi,ecx :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	"fistp-site C30 /Og- style: pragma optimize(""g"",off) + /QIfist"	/QIfist /Od	DIFFER(124v150)	@0: push ebp | mov ebp,esp | sub esp,0x18 :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site I01 _mm_cvtss_si32(_mm_set_ss(x))	/O2 /Oy /W3	DIFFER(159v150)	@0: push ebp | mov ebp,esp | and esp,0xfffffff0 :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site I02 _mm_cvt_ss2si	/O2 /Oy /W3	DIFFER(159v150)	@0: push ebp | mov ebp,esp | and esp,0xfffffff0 :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site I03 _mm_cvttss_si32	/O2 /Oy /W3	DIFFER(159v150)	@0: push ebp | mov ebp,esp | and esp,0xfffffff0 :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site I04 _mm_cvtt_ss2si	/O2 /Oy /W3	DIFFER(159v150)	@0: push ebp | mov ebp,esp | and esp,0xfffffff0 :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site I05 _mm_cvtss_si32(_mm_load_ss(&f))	/O2 /Oy /W3	DIFFER(161v150)	@0: push ebp | mov ebp,esp | and esp,0xfffffff0 :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site I06 _mm_cvtss_si32 /arch:SSE	/arch:SSE	DIFFER(147v150)	@0: push ebp | mov ebp,esp | and esp,0xfffffff0 :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site I07 _mm_cvtss_si32 /arch:SSE2	/arch:SSE2	DIFFER(145v150)	@0: push ebp | mov ebp,esp | and esp,0xfffffff0 :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site I08 _mm_cvt_si2ss path	/O2 /Oy /W3	DIFFER(162v150)	@0: push ebp | mov ebp,esp | and esp,0xfffffff0 :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site I09 _mm_cvtss_si32 /QIfist	/QIfist	DIFFER(159v150)	@0: push ebp | mov ebp,esp | and esp,0xfffffff0 :: push ecx | push esi | mov esi,ecx
+00899ef0	fistp-site	fistp-site I10 _mm_cvt_ss2si(_mm_load_ss) /arch:SSE	/arch:SSE	DIFFER(161v150)	@0: push ebp | mov ebp,esp | and esp,0xfffffff0 :: push ecx | push esi | mov esi,ecx
+00c8c730	a01	a01 _ov_d_seek_lap in the _ov_64_seek_lap TU clone	/O2 /Oy /W3	SRC_FAIL	-
+00c8c730	a03	a03 _ov_d_seek_lap after _ov_64_seek_lap inside the extern C vorbisfile TU	/O2 /Oy /W3	RELOCATION_MATCH	-
+009bef80	a01	a01 GFClamp x4 + box copy	/O2 /Oy /W3	DIFFER(444v479)	@0: sub esp,0x10 | push ebx | push ebp :: sub esp,0x18 | push ebx | push ebp
+009bef80	a03	a03 screen box Initialise(0,0,w,h) + GFClamp by value	/O2 /Oy /W3	DIFFER(462v479)	@0: sub esp,0x14 | push ebx | mov ebx,DWORD PTR [esp+0x1c] :: sub esp,0x18 | push ebx | push ebp
+009bef80	a04	a04 zero/width/height locals + GFClamp by value	/O2 /Oy /W3	DIFFER(462v479)	@0: sub esp,0x14 | push ebx | mov ebx,DWORD PTR [esp+0x1c] :: sub esp,0x18 | push ebx | push ebp
+009bef80	a05	a05 screen box + GFClamp const T&	/O2 /Oy /W3	DIFFER(462v479)	@0: sub esp,0x14 | push ebx | mov ebx,DWORD PTR [esp+0x1c] :: sub esp,0x18 | push ebx | push ebp
+009bef80	a06	a06 zero locals + GFClamp const T&	/O2 /Oy /W3	DIFFER(462v479)	@0: sub esp,0x14 | push ebx | mov ebx,DWORD PTR [esp+0x1c] :: sub esp,0x18 | push ebx | push ebp
+009bef80	a07	a07 explicit if/else clamps with width/height locals	/O2 /Oy /W3	DIFFER(460v479)	@0: sub esp,0x14 | push ebx | push ebp :: sub esp,0x18 | push ebx | push ebp
+009bef80	a08	a08 height then width locals + GFClamp	/O2 /Oy /W3	DIFFER(462v479)	@0: sub esp,0x14 | push ebx | mov ebx,DWORD PTR [esp+0x1c] :: sub esp,0x18 | push ebx | push ebp
+009bef80	a09	a09 C2DExtentsI dimensions copy + GFClamp	/O2 /Oy /W3	DIFFER(462v479)	@0: sub esp,0x14 | push ebx | mov ebx,DWORD PTR [esp+0x1c] :: sub esp,0x18 | push ebx | push ebp

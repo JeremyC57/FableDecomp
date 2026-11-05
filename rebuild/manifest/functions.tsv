@@ -47656,13 +47656,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c8bae0	ov_comment	libvorbis	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\c8\0x00C8BAE0_global_Script_GetEntryPointer.cpp				
 00c8bb10	host_is_big_endian	libvorbis	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c8\global_AddChildPrimitive_00c8bb10.cpp
 00c8bb20	Primitive_ProcessVertexBuffer	_global	unknown	undefined	0		0	yes	accepted									
-00c8bf90	Audio_ConvolveChannels	_global	unknown	undefined	0		0	yes	accepted									
+00c8bf90	_ov_splice	_global	unknown	undefined	0		0	yes	accepted									
 00c8c1d0	_ov_initset	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8c200	_ov_initprime	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8c240	_ov_getlap	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8c3e0	ov_crosslap	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8c580	_ov_64_seek_lap	libvorbis	unknown	undefined	0		0	yes	accepted									
-00c8c730	Batch_InvokeWithStackArgs_c8c730	_global	unknown	undefined	0		0	yes	review-low	FAIL	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\c8\0x00C8C730_global_Batch_InvokeWithStackArgs_c8c730.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c8\global_BatchInvokeWithStackArgsc8c730_00c8c730.cpp
+00c8c730	_ov_d_seek_lap	_global	unknown	undefined	0		0	yes	review-low	FAIL	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\c8\0x00C8C730_global_Batch_InvokeWithStackArgs_c8c730.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c8\global_BatchInvokeWithStackArgsc8c730_00c8c730.cpp
 00c8c8c0	_open_seekable2	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8c9a0	_ov_open1	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8ca90	_ov_open2	libvorbis	unknown	undefined	0		0	yes	accepted									

@@ -1,0 +1,10 @@
+address	function	status	attempts	reason
+005DACF0	CTCWeapon block query (calls IsUsableBy 0x005DAB10)	parked	60	closest a51 (bool canBlock=true; if(!IsUsableBy) canBlock=false) has retail's branch shape but keeps true in bl across the call, +5 bytes; other spellings fold to setne
+004167A7	(float timing helper, /O2)	parked	57 spellings + flag sweeps (69 rows)	retail pops the dead gameTime with fstp st(1) right after fdivr st,st(1); VC7.1 pops after __ftol2 or merges to fdivp; x87 stack scheduling residue, not asm evidence
+009BEF80	CDisplayManager::SetViewport	parked	8	register allocation differs (retail: zero in ebp, width/height in edi/ebx, right spilled to the arg slot); header overlay in hdr/ declares SetViewport/OnViewportChanged 0x00A0AAC0 and the boost scoped_ptr bool conversion
+0042DF9E	Draw (GFFloatToLong-helper row)	not attempted	0	asm block is fnstcw / and byte [ebp-3],0F3h / fldcw (set rounding to nearest); no existing shared helper matches, needs a new retail_asm helper; whole /O1 frame to rebuild
+00551340	CTable::GetDataFromDef	not attempted	0	out of time; CCountedPointer construction + map iteration + operator[] 0x00554030
+00597BF2	GotoPreviousScreen	not attempted	0	out of time; real start, 517 B /O1 frame
+0053C332	DoRecomputeOffsets	not attempted	0	out of time; real start, 1111 B
+009A8170	CBankFileManager::OpenIniFile	keep	-	real function (1732 B, Ego_r 0x00AF5C20 + FableWin PDB); oracle anchor for rebuild/runtime/openretailbank; not a duplicate
+009A8840	CBankFileManager::OpenRetailBank	keep	-	real function (1565 B, Ego_r 0x00AF6520 + FableWin PDB); same anchor; bytes in rebuild/integration/boot_oracles.tsv

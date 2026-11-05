@@ -1,0 +1,24 @@
+addr       parity           behav  name
+005bd993   RELOCATION_MATCH PASS   GetHighlightedItemMaxInCategory
+007022c0   MATCH            PASS   IsOptional
+0066ff20   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0066ff20   WARN SHARED_HEADER_AVAILABLE CThing
+0066ff20   WARN SHARED_HEADER_AVAILABLE CPlayer
+0066ff20   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+0066ff20   WARN RELOC_NAME: ?InitialisePlayerCharacterAs@CPlayerManager@@QAEXJABVCCharString@@@Z -> 00449b20 labelled 'NUISystem::CSpellContainerList::AddChild'
+0066ff20   RELOCATION_MATCH PASS   SwapToHero
+00899ef0   WARN SHARED_HEADER_AVAILABLE CThing
+00899ef0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899ef0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00899ef0   RELOCATION_MATCH PASS   GiveHeroMorality
+00c8c730   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c8c730   WARN RELOC_NAME: __ov_splice@32 -> 00c8bf90 labelled 'Audio_ConvolveChannels'
+00c8c730   WARN STANDIN_LEAF __ov_d_seek_lap@16 (catalog Batch_InvokeWithStackArgs_c8c730; names another function)
+00c8c730   RELOCATION_MATCH PASS   Batch_InvokeWithStackArgs_c8c730
+
+WINS: 5
+  005bd993 RELOCATION_MATCH NInventory::CCategory::?GetHighlightedItemMaxInCategory@CCategory@NInventory@@QBEJXZ
+  007022c0 MATCH CTCQuestCard::?IsOptional@CTCQuestCard@@QBE_NXZ
+  0066ff20 RELOCATION_MATCH CTCCoopSpirit::?SwapToHero@CTCCoopSpirit@@AAEXXZ
+  00899ef0 RELOCATION_MATCH CGameScriptInterface::?GiveHeroMorality@CGameScriptInterface@@UBEXM@Z
+  00c8c730 RELOCATION_MATCH _global::__ov_d_seek_lap@16

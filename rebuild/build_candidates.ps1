@@ -30285,7 +30285,6 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GiveHeroMorality_00899ef0.cpp'
         TestSource = '00/89/CGameScriptInterface_GiveHeroMorality_00899ef0_test.cpp'
         PassPattern = 'CGameScriptInterface_00899ef0_TEST PASS'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089a070'; Module = 'CGameScriptInterface'
@@ -30455,7 +30454,6 @@ $catalog = @(
         Source = '00/c8/global_BatchInvokeWithStackArgsc8c730_00c8c730.cpp'
         TestSource = '00/c8/global_BatchInvokeWithStackArgsc8c730_00c8c730_test.cpp'
         PassPattern = 'Batch_InvokeWithStackArgs_c8c730_TEST PASS'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0040e250'
@@ -31212,7 +31210,6 @@ $catalog = @(
         Source = '00/5b/NInventoryCCategory_GetHighlightedItemMaxInCategory_005bd993.cpp'
         TestSource = '00/5b/NInventoryCCategory_GetHighlightedItemMaxInCategory_005bd993_test.cpp'
         PassPattern = 'OK_0x005bd993'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005d8e40'
@@ -42305,7 +42302,6 @@ $catalog = @(
         Source = '00/70/CTCQuestCard_IsOptional_007022c0.cpp'
         TestSource = '00/70/CTCQuestCard_IsOptional_007022c0_test.cpp'
         PassPattern = 'OK_007022c0'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00719c30'
@@ -125828,7 +125824,6 @@ $catalog = @(
         Source = '00/66/CTCCoopSpirit_SwapToHero_0066ff20.cpp'
         TestSource = '00/66/CTCCoopSpirit_SwapToHero_0066ff20_test.cpp'
         PassPattern = 'COOP_SPIRIT_SWAP_TO_HERO_PASS'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008a89d0'

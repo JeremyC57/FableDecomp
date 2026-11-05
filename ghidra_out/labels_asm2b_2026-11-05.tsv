@@ -1,0 +1,3 @@
+address	name	evidence
+00c8c730	_ov_d_seek_lap	asm round 2b (2026-11-05): libvorbis 1.0 vorbisfile.c body byte-matches (RELOCATION_MATCH), Leaf __ov_d_seek_lap@16; vendor-code naming rule (owner 2026-11-04)
+00c8bf90	_ov_splice	asm round 2b (2026-11-05): libvorbis vorbisfile.c, called from _ov_d_seek_lap / _ov_64_seek_lap; vendor-code naming rule (owner 2026-11-04)

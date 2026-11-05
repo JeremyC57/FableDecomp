@@ -1,24 +1,30 @@
-#include <cstdio>
-struct Inner { char pad[0x58]; unsigned char flag; };
-class CTCQuestCard { public: char pad0c[0x0c]; Inner* f0c; char pad10[0x04]; int f14; };
-static bool model(CTCQuestCard* self) {
-    if (self->f14 > -1) return true;
-    if (self->f0c->flag == 0) return true;
-    return false;
-}
-int main(){
-    Inner inner; inner.flag = 0;
-    Inner* pin = &inner;
-    CTCQuestCard card; card.f0c = pin;
-    CTCQuestCard* pc = &card;
-    pc->f14 = 5;
-    if (model(pc) != true) { printf("FAIL1\n"); return 1; }
-    pc->f14 = -1; pin->flag = 1;
-    if (model(pc) != false) { printf("FAIL2\n"); return 1; }
-    pc->f14 = -1; pin->flag = 0;
-    if (model(pc) != true) { printf("FAIL3\n"); return 1; }
-    pc->f14 = -5; pin->flag = 1;
-    if (model(pc) != false) { printf("FAIL4\n"); return 1; }
+// Behaviour test for 0x007022C0 CTCQuestCard::IsOptional (plain C++, links the row object).
+#include <stdio.h>
+class CQuestCardDef { public: unsigned char Pad[0x58]; bool IsCore; bool IsVignette; bool IsExclusive; bool Route; };
+class CTCQuestCard { public:
+    void* VTable; unsigned char Pad04[8];
+    CQuestCardDef* PDef;                    // +0x0c
+    bool Finished; bool Replayable; unsigned char Pad12[2];
+    long FeatIndex;                         // +0x14
+    unsigned char Rest[0x1c];
+    bool IsOptional() const;
+};
+int main()
+{
+    CQuestCardDef def; def.IsCore = true;
+    CTCQuestCard card; card.PDef = &def;
+    card.FeatIndex = -1;
+    if (card.IsOptional()) { printf("FAIL core\n"); return 1; }
+    def.IsCore = false;
+    if (!card.IsOptional()) { printf("FAIL non-core\n"); return 1; }
+    def.IsCore = true; card.FeatIndex = 0;
+    if (!card.IsOptional()) { printf("FAIL feat 0\n"); return 1; }
+    card.FeatIndex = 7;
+    if (!card.IsOptional()) { printf("FAIL feat 7\n"); return 1; }
+    card.FeatIndex = -5;
+    if (card.IsOptional()) { printf("FAIL -5\n"); return 1; }
+    card.PDef = 0; card.FeatIndex = 3;      // a feat card never reads the def
+    if (!card.IsOptional()) { printf("FAIL no def\n"); return 1; }
     printf("OK_007022c0\n");
     return 0;
 }

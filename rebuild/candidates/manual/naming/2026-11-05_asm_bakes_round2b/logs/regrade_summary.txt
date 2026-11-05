@@ -1,0 +1,14 @@
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/plan/asm2b/pay_landed 5 rows
+00c8c730   RELOCATION_MATCH PASS   Batch_InvokeWithStackArgs_c8c730
+
+WINS: 5
+  005bd993 RELOCATION_MATCH NInventory::CCategory::?GetHighlightedItemMaxInCategory@CCategory@NInventory@@QBEJXZ
+  007022c0 MATCH CTCQuestCard::?IsOptional@CTCQuestCard@@QBE_NXZ
+  0066ff20 RELOCATION_MATCH CTCCoopSpirit::?SwapToHero@CTCCoopSpirit@@AAEXXZ
+  00899ef0 RELOCATION_MATCH CGameScriptInterface::?GiveHeroMorality@CGameScriptInterface@@UBEXM@Z
+  00c8c730 RELOCATION_MATCH _global::__ov_d_seek_lap@16
+005bd993 genuine genuine
+007022c0 genuine genuine
+0066ff20 genuine genuine
+00899ef0 retail_asm genuine
+00c8c730 genuine genuine

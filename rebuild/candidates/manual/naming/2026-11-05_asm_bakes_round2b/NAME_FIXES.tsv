@@ -1,0 +1,6 @@
+address	kind	current	proposed	evidence
+00C8C730	catalog/module	_global Batch_InvokeWithStackArgs_c8c730	libvorbis _ov_d_seek_lap	libvorbis 1.0 vorbisfile.c body byte-matches (RELOCATION_MATCH); Leaf __ov_d_seek_lap@16; sibling _ov_64_seek_lap 0x00C8C580 landed
+0057A67E	callee spelling	?CTCHeroStats__GetMoralityMax@@YIJPAVCTCHeroStats@@@Z	?GetMoralityMax@CTCHeroStats@@QBEJXZ	Ego_r.pdb 0x0056DA4B; thiscall at retail call site 0x00899F65
+00449700	callee spelling	?Get@T@@QAEHXZ	?GetMainPlayerNumber@CPlayerManager@@QBEJXZ	Ego_r.pdb 0x00444EE0; used by SwapToHero 0x0066FF20
+00449B20	manifest label	NUISystem::CSpellContainerList::AddChild	CPlayerManager::InitialisePlayerCharacterAs	Ego_r.pdb + call shape in SwapToHero
+00C8BF90	manifest label	Audio_ConvolveChannels	_ov_splice	libvorbis vorbisfile.c, called from _ov_d_seek_lap / _ov_64_seek_lap
