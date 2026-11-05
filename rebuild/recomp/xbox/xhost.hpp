@@ -303,8 +303,10 @@ void profilerStart();     // FABLE_PROFILE=[<delay>,]<seconds> (profiler.cpp)
 
 // ---- files ---------------------------------------------------------------------------------
 void filesInit(const std::string& gameDir, const std::string& hddDir);
-// The host plays this movie itself (and the game sees no file): true once playback has finished.
+// The host plays this movie itself: true once playback has finished; the game then opens the file
+// with A held for it (g_movieSkip: such files open), so it skips the movie at once.
 bool hostPlaysMovie(const std::string& hostPath);
+extern std::atomic<int> g_movieSkip;
 // FABLE_DISABLE=name1,name2: turns individual emulation fixes off (bisecting regressions).
 bool featureOff(const char* name);
 void perfFlip(std::chrono::steady_clock::time_point now);  // nv2a.cpp: a flip happened

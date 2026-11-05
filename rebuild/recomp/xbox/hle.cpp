@@ -263,7 +263,14 @@ void hle_XInputGetState(Ctx* c) {
         ret(c, 1167, 2);  // ERROR_DEVICE_NOT_CONNECTED
         return;
     }
-    const input::Pad p = input::pad(static_cast<int>(port));
+    input::Pad p = input::pad(static_cast<int>(port));
+    // A movie the host already played: A tapped (pressed every other poll, a new packet each time)
+    // on port 1 until the game closes the file.
+    static uint32_t skipPolls = 0;
+    if (port == 0 && g_movieSkip.load() > 0) {
+        if (++skipPolls & 1) p.analog[0] = 255;
+        p.packet += 0x10000 + skipPolls;
+    }
     static uint32_t calls = 0, lastPacket = 0;
     if (++calls % 300 == 1 || (p.packet != lastPacket && (p.buttons || p.analog[0])))
         XLOG(1, "HLE XInputGetState(port %u): call %u, packet %u, buttons 0x%04X, A %u", port, calls, p.packet, p.buttons, p.analog[0]);

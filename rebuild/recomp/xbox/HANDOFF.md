@@ -161,3 +161,12 @@ guest memory ~64 MB, game thread 18 ms/frame on a Xeon core: expect 2-4 fps befo
 3. Android: `android/build_android.sh` builds the APK (launcher, touch controls, custom
    drivers). Not yet tested on a device.
 4. Movies: frame presentation through the renderer works; check A/V sync.
+
+### 2026-11-05: native 3DS movies (build 17)
+- Movies are converted once (`n3ds/convert_movies.py`, 303 MB of XMV -> 74 MB of .fmv: 400x240
+  H.264 baseline + 22 kHz IMA ADPCM) and copied to `sdmc:/3ds/fable/movies/`; `n3ds/movie.cpp`
+  plays them on MVDSTD + ndsp from the main thread while the game's open of the .xmv waits.
+- The game must still open the real .xmv: reporting "no file" leaves its movie state waiting for
+  ever (no flips; main loop polls at 0x5FE220). Instead `g_movieSkip` makes XInputGetState tap A
+  until the game closes the file, so its own skip path ends the movie (desktop check:
+  `FABLE_NO_MOVIES=1`, all three boot movies skipped, title scene at 60 flips/s).
