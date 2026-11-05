@@ -27308,3 +27308,13 @@ chunk	address	module	name	length
 778	00839420	_global	CreateEffectOnHit	1308
 778	00accbf0	QuadricOptimiserInternals::COptimisedPrimitive	PerformSubContraction	1264
 778	00e50910	CV_BeardyBaldyScript	WatchForQuestCardConditions	1328
+779	00c064d0	_global	inflate_table	1279
+779	00beae50	CWaterPatchMesh	Load	1592
+779	00837e40	CThingTrackNode	vfunc_4	1691
+779	00542a30	NUISystem::CIconText	vfunc_2	1714
+779	00aad650	CWaveLoader	LoadWaveFile	1840
+780	00decad0	NScript::CV_TravellingHeroesScript	Main	1479
+780	00e7c010	NScript::CV_FishermanScript	NPCAttitudeProcess	1623
+780	00ea2080	NScript::CV_KnotholeGladeGatesScript	ControlMainBalverines	1682
+780	00e4fa20	NScript::CV_BeardyBaldyScript	Main	1756
+780	00e6fc40	NScript::CDF_Dragon	Main	1828
