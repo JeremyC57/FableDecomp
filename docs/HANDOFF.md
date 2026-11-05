@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (resumed session; nothing running, everything landed and pushed)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunk 782 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -22,6 +22,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     coordinator regrade 2,006/2,006 PASS. The rebuilt plan tools are committed in `plan_p6_w1/scripts/`. Phase 7 brief:
     `plan_p6_w1/NEXT.md` (2,431 deferred CThing rows by class, waves 3-4 CIntelligentPointer / CTCBase / CThingCreatureBase,
     62 old-spelling binders in `plan_p6_w2/CALLERS.tsv`). Refresh the index first (`$S/plan/symindex2.py $S/plan/idx --all`).
+  - **Running (the user: "Start plan phase 7 on one agent, and continue authoring chunks on another agent"):** plan phase 7
+    (`$S/plan/p7`, brief `$S/plan/BRIEF_PLAN7.md`, tools copied from `plan_p6_w1/scripts/`; hand-back to `$S/plan/p7/handback/`)
+    and chunk 782 (`$S/w22/agent782`: CTCUnholyPower and CEnginePrimitiveManagerDecal ctors, four quest-script bodies). The symbol
+    index is being refreshed at 248ea936c (`$S/plan/idx7.log`) for phase 7.
   - Open naming decision: 0x0122DEDC (the shared 0.0f, 30+ spellings, no PDB name), like EPSILON / TWO_PI on 2026-11-01.
   - The FSE Lua ports of the quest scripts are in the repo: `refs/script_recovery/seed_corpus/sources/<Quest>/FSE/`.
 - Paused state before that (2026-11-05):
