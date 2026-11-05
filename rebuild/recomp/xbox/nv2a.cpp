@@ -14,6 +14,7 @@
 
 #include <algorithm>
 #include <atomic>
+#include <cstdlib>
 #include <cstring>
 #include <chrono>
 #include <map>
@@ -84,7 +85,31 @@ std::mutex g_dev;                 // device state (not the guest lock)
 std::condition_variable g_kick;   // wakes the pusher
 std::atomic<bool> g_kicked{false};
 
+#if defined(RECOMP_WINDOW_MEMORY)
+// 32-bit hosts: the register file lives in host pages, allocated on first use (the window's mask
+// would fold 0xFD000000 onto guest memory). Guest code reaches it only through the --mmio path.
+std::atomic<uint32_t*> g_regPages[0x1000000 / 0x1000];
+std::mutex g_regPagesLock;
+uint32_t& R(uint32_t off) {
+    off &= 0xFFFFFCu;
+    std::atomic<uint32_t*>& slot = g_regPages[off >> 12];
+    uint32_t* p = slot.load(std::memory_order_acquire);
+    if (!p) {
+        std::lock_guard<std::mutex> l(g_regPagesLock);
+        p = slot.load(std::memory_order_relaxed);
+        if (!p) {
+            p = static_cast<uint32_t*>(std::calloc(1024, 4));
+            slot.store(p, std::memory_order_release);
+        }
+    }
+    return p[(off & 0xFFF) >> 2];
+}
+#else
+// Register state in guest memory at 0xFD000000: plain loads see the last value.
 uint32_t& R(uint32_t off) { return *reinterpret_cast<uint32_t*>(gp(kMmio + off)); }
+#endif
+// NV2A instance memory (RAMIN), behind the registers at 0xFD700000.
+uint32_t ramin32(uint32_t off) { return R(0x700000u + off); }
 
 struct Intr { uint32_t pending = 0, enabled = 0; };
 Intr g_pmcEn, g_pfifo, g_pgraph, g_pcrtc, g_ptimer;
@@ -285,7 +310,7 @@ void imageBlit(uint32_t method, uint32_t param) {
 }
 
 uint32_t dmaAddress(uint32_t instance, uint32_t* limit) {
-    const uint32_t flags = rd32(kRamin + instance), lim = rd32(kRamin + instance + 4), frame = rd32(kRamin + instance + 8);
+    const uint32_t flags = ramin32(instance), lim = ramin32(instance + 4), frame = ramin32(instance + 8);
     if (limit) *limit = lim;
     return ((frame & 0xFFFFF000u) | (flags >> 20)) & 0x07FFFFFFu;
 }
@@ -393,7 +418,7 @@ void mmioWrite(uint32_t a, uint32_t v, int size) {
         break;
     case PGRAPH + 0x720: R(reg) = v; kick(); break;  // FIFO access
     case PGRAPH + 0x788:                               // CHANNEL_CTX_TRIGGER
-        if (v & 1) R(PGRAPH + 0x148) = rd32(kRamin + ((R(PGRAPH + 0x784) & 0xFFFF) << 4));  // CTX_USER
+        if (v & 1) R(PGRAPH + 0x148) = ramin32(((R(PGRAPH + 0x784) & 0xFFFF) << 4));  // CTX_USER
         break;
     case PCRTC + 0x100: g_pcrtc.pending &= ~v; updateIrq(true); break;
     case PCRTC + 0x140: g_pcrtc.enabled = v; updateIrq(true); break;
@@ -441,8 +466,8 @@ uint32_t ramhtLookup(uint32_t handle, uint32_t* engine) {
     // Linear probe (the hardware searches a few entries on collision).
     for (uint32_t i = 0; i < 16; ++i) {
         const uint32_t e = base + ((hash + i) * 8) % size;
-        if (rd32(kRamin + e) == handle) {
-            const uint32_t ctx = rd32(kRamin + e + 4);
+        if (ramin32(e) == handle) {
+            const uint32_t ctx = ramin32(e + 4);
             if (engine) *engine = (ctx >> 16) & 3;
             return (ctx & 0xFFFF) << 4;
         }
@@ -462,7 +487,7 @@ void kelvin(uint32_t method, uint32_t param, const uint32_t* params, uint32_t co
 uint32_t pgraphMethod(uint32_t sub, uint32_t method, uint32_t param, const uint32_t* params, uint32_t avail, bool inc) {
     if (method == 0) {
         g_subInst[sub] = param;
-        g_subClass[sub] = rd32(kRamin + param) & 0xFF;
+        g_subClass[sub] = ramin32(param) & 0xFF;
         // First use of the channel: Direct3D's ISR loads the context (software switch).
         if (!(R(PGRAPH + 0x144) & (1u << 16))) {
             g_waitCtx = true;

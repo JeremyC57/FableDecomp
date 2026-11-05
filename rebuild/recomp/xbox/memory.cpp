@@ -127,6 +127,10 @@ void memInit() {
     for (uint32_t p = 0; p < 0x10; ++p) g_used[p] = 1;  // null page guard: never backed, faults
     for (uint32_t p = (kPhysSize - kGpuInstanceSize) / kPage; p < kPages; ++p) g_used[p] = 1;
     if (!hostCommit(kPhysSize - kGpuInstanceSize, kGpuInstanceSize)) die("cannot back the GPU instance memory");
+    // The USB controller registers (0xFEF00000) get plain writes from the XInput setup code: give
+    // their folded page a scratch home so they cannot land in a reservation.
+    constexpr uint32_t kUsbScratch = 0xFEF00000u & RECOMP_WINDOW_MASK;
+    if (vaReserve(kUsbScratch, kPage, false)) hostCommit(kUsbScratch, kPage);
 #else
     if (!recomp_init_memory()) die("cannot reserve the 4 GiB guest address space");
     const int fd = static_cast<int>(syscall(SYS_memfd_create, "xbox-ram", 0));
