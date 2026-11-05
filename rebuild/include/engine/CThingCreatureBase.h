@@ -84,6 +84,9 @@ public:
     long GetNavigationLevelAt(const C3DVector& pos) const;               // 0x00661D20
     // Ego_r.pdb ?GetCombatManager@CThingCreatureBase@@QAEAAVCCombatManager@@XZ (out of line, 0x00661ED0).
     CCombatManager& GetCombatManager();                                  // 0x00661ED0
+    // Chunk 774 (rows 0x007A4520 CTCWillEnflame::PlaySoundW, ...): Ego_r.pdb 0x0053CF90 / FableWin.pdb 0x01D9C460
+    // ?MakeNoise@CThingCreatureBase@@QAEXABVCCharString@@@Z, out of line in retail at 0x00662110 (landed row). Declaration only.
+    void MakeNoise(const CCharString& noiseName);                        // 0x00662110
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CLEARQUEUED
     // Nested opt-in (chunk 765, row 0x00663600): Ego_r.pdb / FableWin.pdb ?ClearQueuedActions@CThingCreatureBase@@QAEXXZ, out of line in
     // retail (`add ecx,108h ; jmp` the PQueuedActions list's out-of-line clear 0x00669B50). Declaration only: no layout change.

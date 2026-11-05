@@ -35,6 +35,13 @@ public:
  bool BeginRender();                                                    // 0x009BEF20 ?BeginRender@CDisplayManager@@QAE_NXZ
  void EndRender();                                                      // 0x009BEF50 ?EndRender@CDisplayManager@@QAEXXZ
  bool SwapScreens();                                                    // 0x009BEEB0 ?SwapScreens@CDisplayManager@@QAE_NXZ
+ // Chunk 774 (bake 0x0042DF9E CNewFrontendGameComponent::Draw): Ego_r.pdb ?GetVVisibleTelevisionScreenArea@CDisplayManager@@QBE?AVC2DBoxF@@XZ
+ // (Draw calls it with a hidden C2DBoxF result and drops the value). Declaration only.
+ C2DBoxF GetVVisibleTelevisionScreenArea() const;                       // 0x009BECE0
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_SETVIEWPORT
+ // Nested opt-in (asm round 2b): Ego_r.pdb 0x00B23C90 / FableWin.pdb 0x0301F590 ?SetViewport@CDisplayManager@@QAEXABVC2DBoxI@@@Z.
+ void SetViewport(const C2DBoxI& viewport);                             // 0x009BEF80
+#endif
  const C2DExtentsI GetRenderTargetDimensions();                         // 0x009BEDC0 ?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ
  void AddDeviceResetCallback(CDeviceResetCallback* callback);          // 0x009C0190 ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z (CEngine::Initialise)
  unsigned long GetVertexShaderVersion() const;                         // 0x009BEDE0 ?GetVertexShaderVersion@CDisplayManager@@QBEKXZ (Ego_r 0x00B23A60, FableWin)

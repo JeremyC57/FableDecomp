@@ -2047,3 +2047,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A stand-in rename must also cover the test's `&Name` uses: behaviour tests are standalone programs (30 w2 tests failed until w2b respelled them, 2026-11-05).
 - (2026-11-05) Asm rules have ONE canonical page, `docs/pipeline/ASM_RULES.md`. Older asm lines in this file, EXTRA_RULES, briefs and handoffs are history; where they disagree, that page wins.
 - `mkpay.py` copies each row's source text into payload.json: rebuild the payload after editing a source, or vland grades the old text (the 2026-11-05 volatile test first reported 'no change' on 16 rows for this reason).
+- Unaligned function entry right after a neighbour's `leave; ret` (no padding): the TU was /O1 /Oy-; grade there first (chunk 774: three bakes).
+- `fnstcw` / `and byte [cw+1],0F3h` / `fldcw` is GFFPUSetRoundingNearest: use engine/GFFPUSetRoundingNearest.h.
+- vland skips an address that already has a landed row unless given `--recheck-landed` (bake replacements).

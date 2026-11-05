@@ -1,0 +1,21 @@
+catalog  00c4bc20 _unattributed::CScriptEntry_00c4bc20 -> PKCMailbox<SReadRequest>::PKCMailbox
+catalog  00594fa9 NUISystem::CFrontEndManager::DestroyVirtualKeyboard -> NUISystem::CFrontEndManager::CloseVirtualKeyboard
+catalog  0042dbee std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&> -> CNewFrontendGameComponent::ResetAttractModeTimer
+catalog  0053cfc2 std::vector<CUIStateMap>::push_back -> std::vector<std::map<unsigned long,NUISystem::CUIState> >::push_back
+catalog  00e7f7d0 NScript::CV_FishingCompetitionScript::GetNextPrizeWeight -> NScript::CV_FishingCompetitionScript::GetNextPrizeCategoryWeight
+catalog  0053cd69 std::vector::erase -> std::vector<std::map<unsigned long,NUISystem::CUIState> >::erase
+catalog  00f21590 CQ_ArenaScript::GetEndRoundQuestion -> NScript::CQ_ArenaScript::GetEndRoundQuestion
+catalog  00e80060 CV_FishingCompetitionScript::GetHeroTitleTextTag -> NScript::CV_FishingCompetitionScript::GetHeroTitleTextTag
+manifest 0042dbee std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&> -> CNewFrontendGameComponent::ResetAttractModeTimer
+manifest 0053cd69 std::vector::erase -> std::vector<std::map<unsigned long,NUISystem::CUIState> >::erase
+manifest 0053cfc2 std::vector<CUIStateMap>::push_back -> std::vector<std::map<unsigned long,NUISystem::CUIState> >::push_back
+manifest 00554030 _global::CRedBlackTree_FindOrInsert_Lookup -> std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >::operator[]
+manifest 00594fa9 NUISystem::CFrontEndManager::DestroyVirtualKeyboard -> NUISystem::CFrontEndManager::CloseVirtualKeyboard
+manifest 00c40d10 _global::NormalizeVectorPair -> CEffectOwner_00c40750::CommitProperties
+manifest 00c4b640 _global::NScript_CV_MurderTwistScript_InitializeRead -> PKCBufferedReader::CopyOutOfBuffers
+manifest 00c4bc20 _unattributed::CScriptEntry_00c4bc20 -> PKCMailbox<SReadRequest>::PKCMailbox
+manifest 00e7f7d0 NScript::CV_FishingCompetitionScript::GetNextPrizeWeight -> NScript::CV_FishingCompetitionScript::GetNextPrizeCategoryWeight
+manifest 00e7fd50 _global::FishingCompetition_Initialize -> NScript::CV_FishingCompetitionScript::GenerateSignText
+manifest 00e80060 CV_FishingCompetitionScript::GetHeroTitleTextTag -> NScript::CV_FishingCompetitionScript::GetHeroTitleTextTag
+manifest 00f21590 CQ_ArenaScript::GetEndRoundQuestion -> NScript::CQ_ArenaScript::GetEndRoundQuestion
+labels 31  catalog renamed 8  manifest renamed 12

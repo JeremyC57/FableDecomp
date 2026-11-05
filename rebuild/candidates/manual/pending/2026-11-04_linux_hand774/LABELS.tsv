@@ -1,0 +1,32 @@
+address	name	note
+0x00F21590	NScript::CQ_ArenaScript::GetEndRoundQuestion	
+0x00E80060	NScript::CV_FishingCompetitionScript::GetHeroTitleTextTag	
+0x00E7FD50	NScript::CV_FishingCompetitionScript::GenerateSignText	
+0x00E7F7D0	NScript::CV_FishingCompetitionScript::GetNextPrizeCategoryWeight	
+0x007A4520	CTCWillEnflame::PlaySoundW	
+0x007A5580	CTCForcePushPower::PlayCastSound	
+0x00662110	CThingCreatureBase::MakeNoise	
+0x00C40D10	CEffectOwner_00c40750::CommitProperties	descriptive (bound elsewhere as CListenerState::Refresh, unproven)
+0x00C4B890	PKCBufferedReader::ReadBlock	
+0x00C4B300	PKCBufferedReader::PKCBufferedReader	
+0x00C4B640	PKCBufferedReader::CopyOutOfBuffers	descriptive
+0x00C4BC20	PKCMailbox<SReadRequest>::PKCMailbox	
+0x00C4BE80	PKCStaticQueue<SReadRequest>::PKCStaticQueue	
+0x00551340	NUISystem::CTable::GetDataFromDef	
+0x00554030	std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >::operator[]	
+0x00597BF2	NUISystem::CFrontEndManager::GotoPreviousScreen	
+0x00594FA9	NUISystem::CFrontEndManager::CloseVirtualKeyboard	
+0x0042DBEE	CNewFrontendGameComponent::ResetAttractModeTimer	
+0x0042DF9E	CNewFrontendGameComponent::Draw	
+0x009D8CF0	CRenderManager2D::ClearRenderTarget	
+0x0041D03C	NUISystem::CManager::RenderErrorMessage	
+0x00595582	NUISystem::CFrontEndManager::GetInstance	
+0x00595222	NUISystem::CFrontEndManager::Draw	
+0x00404A80	NUISystem::CIME::Get	
+0x00404C00	NUISystem::CIME::Render	
+0x009BECE0	CDisplayManager::GetVVisibleTelevisionScreenArea	
+0x009BEF80	CDisplayManager::SetViewport	
+0x0053C332	NUISystem::CList::DoRecomputeOffsets	
+0x0053CD69	std::vector<std::map<unsigned long,NUISystem::CUIState> >::erase	range erase (first,last)
+0x0053CFC2	std::vector<std::map<unsigned long,NUISystem::CUIState> >::push_back	
+0x0041E5F2	NUISystem::CManager::GetInstance	

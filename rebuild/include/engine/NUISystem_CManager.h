@@ -25,6 +25,11 @@ public: static NUISystem::CManager * __fastcall GetInstance();
 // Retail branch (chunk 726): Ego_r.pdb ?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ, out of line at 0x0041CF47
 // (CList::ComputeChildrenVisibility 0x005379F5 and CScrollingViewport::Update 0x0053F1C0 call it with a hidden result).
 public: C2DVector GetUIScale() const;
+// Chunk 774 (bake 0x0042DF9E CNewFrontendGameComponent::Draw): Ego_r.pdb ?HasErrorMessage@CManager@NUISystem@@QAE_NXZ, inline in
+// retail (Draw tests m_bHasErrorMessage +0x9C in place: `cmp byte ptr [eax+9Ch],bl`), and ?RenderErrorMessage@CManager@NUISystem@@
+// QAEXAAVCIEngine@@@Z, out of line at 0x0041D03C.
+public: bool HasErrorMessage() { return m_bHasErrorMessage; }
+public: void RenderErrorMessage(CIEngine&);                          // 0x0041D03C
 // Chunk 752 (row 0x00559A90 CScrollBar::ProcessEvent): Ego_r.pdb ?GetMouseMovement@CManager@NUISystem@@QAEAAVC2DVector@@XZ, inline
 // in retail (the row copies MouseMovement +0xB0 in place: `mov edx,[eax+0B0h] ; add eax,0B0h ; ... mov eax,[eax+4]`).
 public: C2DVector& GetMouseMovement() { return MouseMovement; }

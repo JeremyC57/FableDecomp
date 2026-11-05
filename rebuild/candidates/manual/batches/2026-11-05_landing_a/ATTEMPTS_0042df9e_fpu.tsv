@@ -1,0 +1,45 @@
+probe	spelling	inline fnstcw+fldcw	VC7.1 (RTM 3077) /O2 emitted
+c01	_controlfp(_RC_NEAR, _MCW_RC);	no	push 0x300; push 0x0; call c; DISP32 __controlfp; add esp,0x8; ret
+c02	_control87(_RC_NEAR, _MCW_RC);	no	push 0x300; push 0x0; call c; DISP32 __control87; add esp,0x8; ret
+c03	unsigned int cw = _controlfp(0, 0); _controlfp(cw & ~_MCW_RC, _MCW_RC);	no	push 0x0; push 0x0; call 9; DISP32 __controlfp; and eax,0xfffffcff; push 0x300; push eax; call 19; DISP32 __controlfp; add esp,0x10; ret
+c04	unsigned int cw = _control87(0, 0); _control87((cw & ~_MCW_RC) | _RC_NEAR, 0xfffff);	no	push 0x0; push 0x0; call 9; DISP32 __control87; and eax,0xfffffcff; push 0xfffff; push eax; call 19; DISP32 __control87; add esp,0x10; ret
+c05	_controlfp(_RC_NEAR, kMask);	no	push 0x300; push 0x0; call c; DISP32 __controlfp; add esp,0x8; ret
+c06	SetNear();	no	push 0x300; push 0x0; call c; DISP32 __controlfp; add esp,0x8; ret
+c07	_control87(_RC_NEAR, g_RoundMask);	no	mov eax,ds:0x0; dir32 ?g_RoundMask@@3IB; push eax; push 0x0; call d; DISP32 __control87; add esp,0x8; ret
+c08	_clearfp(); _controlfp(_RC_NEAR, _MCW_RC);	no	call 5; DISP32 __clearfp; push 0x300; push 0x0; call 11; DISP32 __controlfp; add esp,0x8; ret
+c09	_fpreset();	no	jmp 5; DISP32 __fpreset
+c10	_controlfp(_CW_DEFAULT, 0xfffff);	no	push 0xfffff; push 0x9001f; call f; DISP32 __controlfp; add esp,0x8; ret
+c11	_control87(_CW_DEFAULT, 0xfffff);	no	push 0xfffff; push 0x9001f; call f; DISP32 __control87; add esp,0x8; ret
+c12	_control87(_RC_NEAR | _PC_53, _MCW_RC | _MCW_PC);	no	push 0x30300; push 0x10000; call f; DISP32 __control87; add esp,0x8; ret
+c13	_controlfp(_RC_NEAR, _MCW_RC); _controlfp(_PC_53, _MCW_PC);	no	push 0x300; push 0x0; call c; DISP32 __controlfp; push 0x30000; push 0x10000; call 1b; DISP32 __controlfp; add esp,0x10; ret
+c14	g_set(_RC_NEAR, _MCW_RC);	no	push 0x300; push 0x0; call DWORD PTR ds:0x0; dir32 _g_set; add esp,0x8; ret
+c15	unsigned int s = _statusfp(); if (s) _controlfp(_RC_NEAR, _MCW_RC);	no	call 5; DISP32 __statusfp; test eax,eax; je 18; push 0x300; push 0x0; call 15; DISP32 __controlfp; add esp,0x8; ret
+c16	fesetround(FE_TONEAREST);	no	COMPILE_ERROR: Cannot open include file: 'fenv.h': No such file or directory
+c17	std::fesetround(FE_TONEAREST);	no	COMPILE_ERROR: Cannot open include file: 'cfenv': No such file or directory
+c18	_set_controlfp(_RC_NEAR, _MCW_RC);	no	COMPILE_ERROR: '_set_controlfp': identifier not found, even with argument-dependent lookup
+c19	unsigned int cw; _controlfp_s(&cw, _RC_NEAR, _MCW_RC);	no	COMPILE_ERROR: '_controlfp_s': identifier not found, even with argument-dependent lookup
+c20	g_sink = (long)g_value;	no	fld DWORD PTR ds:0x0; dir32 ?g_value@@3MA; call b; DISP32 __ftol2; mov ds:0x0,eax; dir32 ?g_sink@@3JA; ret
+c21	g_sink = (long)g_value;	no	fld DWORD PTR ds:0x0; dir32 ?g_value@@3MA; call b; DISP32 __ftol2; mov ds:0x0,eax; dir32 ?g_sink@@3JA; ret
+c22	g_sink = (long)g_value;	no	fld DWORD PTR ds:0x0; dir32 ?g_value@@3MA; call b; DISP32 __ftol2; mov ds:0x0,eax; dir32 ?g_sink@@3JA; ret
+c23	g_sink = (long)floor(g_value + 0.5);	no	fld QWORD PTR ds:0x0; dir32 ?g_value@@3NA; sub esp,0x8; fadd QWORD PTR ds:0x0; dir32 __real@3fe0000000000000; fstp QWORD PTR [esp]; call 17; DISP32 _floor; add esp,0x8; call 1f; DISP32 __ftol2; mov ds:0x0,eax; dir32 ?g_s
+c24	g_sink = (long)(g_value + 0.5f);	no	fld DWORD PTR ds:0x0; dir32 ?g_value@@3MA; fadd DWORD PTR ds:0x0; dir32 __real@3f000000; call 11; DISP32 __ftol2; mov ds:0x0,eax; dir32 ?g_sink@@3JA; ret
+c25	g_dsink = floor(g_value);	no	fld QWORD PTR ds:0x0; dir32 ?g_value@@3NA; sub esp,0x8; fstp QWORD PTR [esp]; call 11; DISP32 _floor; fstp QWORD PTR ds:0x0; dir32 ?g_dsink@@3NA; add esp,0x8; ret
+c26	unsigned int cw = _control87(0, 0); cw &= ~_MCW_RC; _control87(cw, _MCW_RC);	no	push 0x0; push 0x0; call 9; DISP32 __control87; and eax,0xfffffcff; push 0x300; push eax; call 19; DISP32 __control87; add esp,0x10; ret
+c27	unsigned long cw = _controlfp(0, 0); cw = (cw & ~0x300UL) | 0x0UL; _controlfp((unsigned int)cw, 0x30	no	push 0x0; push 0x0; call 9; DISP32 __controlfp; and eax,0xfffffcff; push 0x300; push eax; call 19; DISP32 __controlfp; add esp,0x10; ret
+c28	if ((_controlfp(0, 0) & _MCW_RC) != _RC_NEAR) _controlfp(_RC_NEAR, _MCW_RC);	no	push 0x0; push 0x0; call 9; DISP32 __controlfp; add esp,0x8; test ah,0x3; je 20; push 0x300; push 0x0; call 1d; DISP32 __controlfp; add esp,0x8; ret
+c29	CFPUState state; (void)state;	no	push 0x0; push 0x0; call 9; DISP32 __controlfp; push 0x300; push 0x0; call 15; DISP32 __controlfp; add esp,0x10; ret
+c30	TRound<_RC_NEAR>::Set();	no	push 0x300; push 0x0; call c; DISP32 __controlfp; add esp,0x8; ret
+c31	_controlfp(_RC_NEAR, _MCW_RC | _MCW_PC & 0);	no	push 0x300; push 0x0; call c; DISP32 __controlfp; add esp,0x8; ret
+c32	unsigned short cw = (unsigned short)_control87(0,0); cw &= 0xf3ff; _control87(cw, 0xffff);	no	push 0x0; push 0x0; call 9; DISP32 __control87; and eax,0xf3ff; movzx eax,ax; push 0xffff; push eax; call 1c; DISP32 __control87; add esp,0x10; ret
+i01	_mm_setcsr((_mm_getcsr() & ~_MM_ROUND_MASK) | _MM_ROUND_NEAREST);	no	push ecx; stmxcsr DWORD PTR [esp]; mov eax,DWORD PTR [esp]; and eax,0xffff9fff; mov DWORD PTR [esp],eax; ldmxcsr DWORD PTR [esp]; pop ecx; ret
+i02	_MM_SET_ROUNDING_MODE(_MM_ROUND_NEAREST);	no	push ecx; stmxcsr DWORD PTR [esp]; mov eax,DWORD PTR [esp]; and eax,0xffff9fff; mov DWORD PTR [esp],eax; ldmxcsr DWORD PTR [esp]; pop ecx; ret
+i03	g_sink = (long)_MM_GET_ROUNDING_MODE();	no	push ecx; stmxcsr DWORD PTR [esp]; mov eax,DWORD PTR [esp]; and eax,0x6000; mov ds:0x0,eax; dir32 ?g_sink@@3JA; pop ecx; ret
+i04	g_sink = (long)_mm_getcsr();	no	push ecx; stmxcsr DWORD PTR [esp]; mov eax,DWORD PTR [esp]; mov ds:0x0,eax; dir32 ?g_sink@@3JA; pop ecx; ret
+i05	_mm_setcsr(0x1f80);	no	push ecx; mov DWORD PTR [esp],0x1f80; ldmxcsr DWORD PTR [esp]; pop ecx; ret
+i06	g_sink = _mm_cvtss_si32(_mm_set_ss(g_value));	no	movss xmm0,DWORD PTR ds:0x0; dir32 ?g_value@@3MA; cvtss2si eax,xmm0; mov ds:0x0,eax; dir32 ?g_sink@@3HA; ret
+i07	g_sink = _mm_cvt_ss2si(_mm_load_ss(&g_value));	no	mov eax,0x0; dir32 ?g_value@@3MA; movss xmm0,DWORD PTR [eax]; cvtss2si ecx,xmm0; mov DWORD PTR ds:0x0,ecx; dir32 ?g_sink@@3HA; ret
+i08	g_sink = _mm_cvtsd_si32(_mm_set_sd(g_value));	no	movsd xmm0,QWORD PTR ds:0x0; dir32 ?g_value@@3NA; cvtsd2si eax,xmm0; mov ds:0x0,eax; dir32 ?g_sink@@3HA; ret
+i09	_m_empty();	no	emms; ret
+i10	_control87(_RC_NEAR, _MCW_RC);	no	push 0x300; push 0x0; call c; DISP32 __control87; add esp,0x8; ret
+i11	_controlfp(_RC_NEAR, _MCW_RC);	no	push 0x300; push 0x0; call c; DISP32 __controlfp; add esp,0x8; ret
+i12	g_sink = _mm_cvtt_ss2si(_mm_load_ss(&g_value));	no	mov eax,0x0; dir32 ?g_value@@3MA; movss xmm0,DWORD PTR [eax]; cvttss2si ecx,xmm0; mov DWORD PTR ds:0x0,ecx; dir32 ?g_sink@@3HA; ret

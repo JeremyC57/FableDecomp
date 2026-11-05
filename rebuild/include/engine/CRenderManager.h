@@ -9,6 +9,11 @@ class CDisplayManager; class CWideString;
 class CRenderManager : public CRenderManager2D {
 public:
     CRenderManager(CDisplayManager&,const CWideString&,unsigned long);
+#ifdef FABLE_RETAIL_CRENDERMANAGER_ONVIEWPORTCHANGED
+    // Opt-in (asm round 2b, row 0x009BEF80): the empty viewport-change hook 0x00A0AAC0 (landed row, descriptive name; no PDB
+    // symbol), called by CDisplayManager::SetViewport through PRenderManager.
+    void OnViewportChanged();                                            // 0x00A0AAC0
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CRenderManager) == 0x3ea4);
 #endif // FABLE_ENGINE_CRENDERMANAGER_H

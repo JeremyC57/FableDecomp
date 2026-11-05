@@ -36817,3 +36817,7 @@ __imp__GetSystemDirectoryA@8	0143febc	00c565f0
 ?m_cObjects@CMyBaseObject@@0JA	0143ccf4	00cacaf0
 _FableRet_c623f0@4	00c623f0	00c62440
 _New_c35b10@8	00c35b10	00c275e0
+?CopyOutOfBuffers@PKCBufferedReader@@QAEKPAXK@Z	00c4b640	00c4b890
+??0?$PKCMailbox@USReadRequest@@@@QAE@PAV?$PKCQueue@USReadRequest@@@@J@Z	00c4bc20	00c4b300
+??0?$PKCStaticQueue@USReadRequest@@@@QAE@J@Z	00c4be80	00c4b300
+??_7PKCBufferedReader@@6B@	012b8458	00c4b300

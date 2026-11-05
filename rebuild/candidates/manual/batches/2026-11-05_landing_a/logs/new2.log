@@ -1,0 +1,26 @@
+addr       parity           behav  name
+00f21590   RELOCATION_MATCH PASS   GetEndRoundQuestion
+00e80060   RELOCATION_MATCH PASS   GetHeroTitleTextTag
+007a4520   RELOCATION_MATCH PASS   PlaySoundW
+007a5580   RELOCATION_MATCH PASS   PlayCastSound
+00c4b890   WARN SHARED_HEADER_AVAILABLE CString
+00c4b890   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c4b890   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4b890   WARN RELOC_NAME: ??6CString@@QAIAAV0@N@Z -> 00c0ded0 labelled 'CString::operator<<(double)'
+00c4b890   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c4b890   WARN RELOC_NAME: ?CopyOutOfBuffers@PKCBufferedReader@@QAEKPAXK@Z -> 00c4b640 labelled 'NScript_CV_MurderTwistScript_InitializeRead'
+00c4b890   RELOCATION_MATCH PASS   ReadBlock
+00c4b300   WARN SHARED_HEADER_AVAILABLE CString
+00c4b300   WARN RELOC_NAME: ??0?$PKCMailbox@USReadRequest@@@@QAE@PAV?$PKCQueue@USReadRequest@@@@J@Z -> 00c4bc20 labelled '_unattributed::CScriptEntry_00c4bc20'
+00c4b300   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c4b300   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4b300   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c4b300   RELOCATION_MATCH PASS   PKCBufferedReader
+
+WINS: 6
+  00f21590 RELOCATION_MATCH NScript::CQ_ArenaScript::?GetEndRoundQuestion@CQ_ArenaScript@NScript@@QAE?AVCCharString@@XZ
+  00e80060 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::?GetHeroTitleTextTag@CV_FishingCompetitionScript@NScript@@QAE?AVCCharString@@XZ
+  007a4520 RELOCATION_MATCH CTCWillEnflame::?PlaySoundW@CTCWillEnflame@@QAEXXZ
+  007a5580 RELOCATION_MATCH CTCForcePushPower::?PlayCastSound@CTCForcePushPower@@AAEXXZ
+  00c4b890 RELOCATION_MATCH PKCBufferedReader::?ReadBlock@PKCBufferedReader@@QAE_NPAXK@Z
+  00c4b300 RELOCATION_MATCH PKCBufferedReader::??0PKCBufferedReader@@QAE@PAXABUSStreamSegment@@@Z

@@ -57,6 +57,9 @@ public:
     // Retail opt-in (chunk 718, row 0x00487570 CPlayer::DrawFreeCamDebug): FableWin.pdb ?Draw2DText@CRenderManager2D@@QAE_NABVC2DVector@@VCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z
     // (the landed body 0x009DD8F0, `ret 14h`; the string travels by value, built in its argument slot). A declaration only.
     bool Draw2DText(const C2DVector&,CWideString,const CFontBank&,const CRGBColour&,unsigned long);   // 0x009DD8F0
+    // Chunk 774 (bake 0x0042DF9E CNewFrontendGameComponent::Draw): Ego_r.pdb ?ClearRenderTarget@CRenderManager2D@@QAEXABVCRGBColour@@K@Z
+    // (the CRenderManager2D overload; the CDisplayManager one is 0x009BE420). Draw calls it on the render manager with (colour, 0).
+    void ClearRenderTarget(const CRGBColour&,unsigned long);              // 0x009D8CF0
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CRenderManager2D) == 0x3ea4);

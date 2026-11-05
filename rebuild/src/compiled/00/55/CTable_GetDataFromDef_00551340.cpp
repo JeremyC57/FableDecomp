@@ -1,90 +1,39 @@
-// NUISystem::CTable::GetDataFromDef @ 0x00551340
-// Retail body with direct calls expressed as relocation-only seams.
-
-extern "C" void* __cdecl FableCTableGetDataOperatorNew(unsigned int);
-extern "C" void __fastcall FableCTableGetDataVectorCopy(void*, const void*);
-extern "C" void* __cdecl FableCTableGetDataManager(void);
-extern "C" void* __cdecl FableCTableGetDataCreateComponent(void*, long);
-extern "C" void* __cdecl FableCTableGetDataLookup(void*, void*);
-extern "C" void __cdecl FableCTableGetDataOperatorDelete(void*);
-
-#define FABLE_EMIT_1(a) __asm _emit a
-#define FABLE_EMIT_2(a,b) FABLE_EMIT_1(a) FABLE_EMIT_1(b)
-#define FABLE_EMIT_3(a,b,c) FABLE_EMIT_2(a,b) FABLE_EMIT_1(c)
-#define FABLE_EMIT_4(a,b,c,d) FABLE_EMIT_2(a,b) FABLE_EMIT_2(c,d)
-#define FABLE_EMIT_5(a,b,c,d,e) FABLE_EMIT_4(a,b,c,d) FABLE_EMIT_1(e)
-#define FABLE_EMIT_6(a,b,c,d,e,f) FABLE_EMIT_4(a,b,c,d) FABLE_EMIT_2(e,f)
-#define FABLE_EMIT_7(a,b,c,d,e,f,g) FABLE_EMIT_6(a,b,c,d,e,f) FABLE_EMIT_1(g)
-#define FABLE_EMIT_8(a,b,c,d,e,f,g,h) FABLE_EMIT_4(a,b,c,d) FABLE_EMIT_4(e,f,g,h)
-#define FABLE_EMIT_9(a,b,c,d,e,f,g,h,i) FABLE_EMIT_8(a,b,c,d,e,f,g,h) FABLE_EMIT_1(i)
-#define FABLE_EMIT_10(a,b,c,d,e,f,g,h,i,j) FABLE_EMIT_8(a,b,c,d,e,f,g,h) FABLE_EMIT_2(i,j)
-#define FABLE_EMIT_11(a,b,c,d,e,f,g,h,i,j,k) FABLE_EMIT_10(a,b,c,d,e,f,g,h,i,j) FABLE_EMIT_1(k)
-#define FABLE_EMIT_12(a,b,c,d,e,f,g,h,i,j,k,l) FABLE_EMIT_8(a,b,c,d,e,f,g,h) FABLE_EMIT_4(i,j,k,l)
-#define FABLE_EMIT_14(a,b,c,d,e,f,g,h,i,j,k,l,m,n) FABLE_EMIT_12(a,b,c,d,e,f,g,h,i,j,k,l) FABLE_EMIT_2(m,n)
-#define FABLE_EMIT_15(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o) FABLE_EMIT_14(a,b,c,d,e,f,g,h,i,j,k,l,m,n) FABLE_EMIT_1(o)
-#define FABLE_EMIT_16(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p) FABLE_EMIT_8(a,b,c,d,e,f,g,h) FABLE_EMIT_8(i,j,k,l,m,n,o,p)
-
-extern "C" __declspec(naked) void __fastcall
-CTable_GetDataFromDef_00551340(void*)
+// NUISystem::CTable::GetDataFromDef() -- copy the table def's size and separation vectors, then create and initialise one component per def sprite
+// Retail: 0x00551340, 431 bytes (catalog length corrected 2026-11-05 from 428, which cut the final "add esp,10h ; ret" at 0x005514EB-0x005514EE).
+// Leaf: ?GetDataFromDef@CTable@NUISystem@@QAEXXZ
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00551340, 431 bytes (0x00551340..0x005514EE, int3 at 0x005514EF, next function 0x005514F0); called by CTable(long) 0x005517E0.
+// Callees: CComponent::LoadAndReturnDef() const (slot 108, +0x1B0, hidden CDefPointer<const CUIDef> result), operator new 0x00BFEA1A,
+//   std::vector<unsigned long>::vector(const vector&) 0x00535470, NUISystem::CManager::GetInstance 0x0041E5F2,
+//   NUISystem::CManager::CreateComponent(long) 0x0041D21B, std::map<ETableSprites,CCountedPointer<CComponent> >::operator[] 0x00554030
+//   (FableWin/Ego_r ??A?$map@W4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@..., out of line: FABLE_RETAIL_STLP_MAP
+//   stays off so the shared map declares it), CCountedPointer<CComponent>::DeleteData 0x00428B10, operator delete 0x00BFE9BC, CComponent::Initialise (slot 43, +0xAC).
+// Shape: the def release is inline with no null test (VC7.1 drops it once the def is dereferenced, as in 0x00546CD0 / 0x00547C10);
+//   FABLE_RETAIL_CCOUNTEDPOINTER (the (T*) ctor tests the stored member) gives retail's 0x10 frame; the plain ctor packs it to 0xC.
+// Header: engine/NUISystem_CTable.h (Sprites +0x15C, PHorizontalSeparations +0x168, PVerticalSeparations +0x16C), engine/NUISystem_CUIDef.h
+//   retail branch (Height +0x58, Width +0x5C, Sprites +0x64, HorizontalSeparations +0x7C, VerticalSeparations +0x88), CComponent::Size +0xCC.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_CUIDEF
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#include "engine/NUISystem_CTable.h"
+#include "engine/NUISystem_CManager.h"
+#include "engine/CDefPointer.h"
+namespace NUISystem {
+void CTable::GetDataFromDef()
 {
-    __asm {
-        FABLE_EMIT_16(0x83,0xec,0x10,0x53,0x56,0x8b,0xf1,0x8b,0x06,0x8d,0x4c,0x24,0x08,0x51,0x8b,0xce)
-        FABLE_EMIT_16(0xff,0x90,0xb0,0x01,0x00,0x00,0x8b,0x44,0x24,0x08,0x8b,0x50,0x5c,0x89,0x96,0xcc)
-        FABLE_EMIT_14(0x00,0x00,0x00,0x8b,0x40,0x58,0x6a,0x0c,0x89,0x86,0xd0,0x00,0x00,0x00)
-        __asm call FableCTableGetDataOperatorNew
-        FABLE_EMIT_16(0x83,0xc4,0x04,0x85,0xc0,0x74,0x11,0x8b,0x4c,0x24,0x08,0x83,0xc1,0x7c,0x51,0x8b)
-        FABLE_EMIT_1(0xc8)
-        __asm call FableCTableGetDataVectorCopy
-        FABLE_EMIT_12(0xeb,0x02,0x33,0xc0,0x6a,0x0c,0x89,0x86,0x68,0x01,0x00,0x00)
-        __asm call FableCTableGetDataOperatorNew
-        FABLE_EMIT_16(0x83,0xc4,0x04,0x85,0xc0,0x74,0x14,0x8b,0x54,0x24,0x08,0x81,0xc2,0x88,0x00,0x00)
-        FABLE_EMIT_4(0x00,0x52,0x8b,0xc8)
-        __asm call FableCTableGetDataVectorCopy
-        FABLE_EMIT_16(0xeb,0x02,0x33,0xc0,0x8b,0x4c,0x24,0x08,0x89,0x86,0x6c,0x01,0x00,0x00,0x8b,0x41)
-        FABLE_EMIT_16(0x64,0x8b,0x58,0x08,0x3b,0xd8,0x0f,0x84,0x06,0x01,0x00,0x00,0x81,0xc6,0x5c,0x01)
-        FABLE_EMIT_16(0x00,0x00,0x55,0x89,0x74,0x24,0x10,0x57,0xeb,0x03,0x8d,0x49,0x00,0x8b,0x43,0x14)
-        FABLE_EMIT_1(0x50)
-        __asm call FableCTableGetDataManager
-        FABLE_EMIT_2(0x8b,0xc8)
-        __asm call FableCTableGetDataCreateComponent
-        FABLE_EMIT_12(0x8b,0xf0,0x85,0xf6,0x89,0x74,0x24,0x18,0x74,0x22,0x6a,0x0c)
-        __asm call FableCTableGetDataOperatorNew
-        FABLE_EMIT_16(0x83,0xc4,0x04,0x85,0xc0,0x74,0x14,0x89,0x70,0x08,0xc7,0x00,0x01,0x00,0x00,0x00)
-        FABLE_EMIT_16(0xc7,0x40,0x04,0x10,0x8b,0x42,0x00,0x8b,0xf0,0xeb,0x02,0x33,0xf6,0x8b,0x4c,0x24)
-        FABLE_EMIT_5(0x14,0x8d,0x6b,0x10,0x55)
-        __asm call FableCTableGetDataLookup
-        FABLE_EMIT_16(0x8b,0xf8,0x8b,0x47,0x04,0x3b,0xc6,0x74,0x2f,0x85,0xc0,0x74,0x1c,0xff,0x08,0x8b)
-        FABLE_EMIT_16(0x47,0x04,0x83,0x38,0x00,0x75,0x12,0x8b,0x48,0x08,0xff,0x50,0x04,0x8b,0x4f,0x04)
-        FABLE_EMIT_1(0x51)
-        __asm call FableCTableGetDataOperatorDelete
-        FABLE_EMIT_16(0x83,0xc4,0x04,0x85,0xf6,0x8b,0x54,0x24,0x18,0x89,0x17,0x89,0x77,0x04,0x74,0x19)
-        FABLE_EMIT_16(0xff,0x06,0x85,0xf6,0x74,0x13,0xff,0x0e,0x75,0x0f,0x8b,0x4e,0x08,0xff,0x56,0x04)
-        FABLE_EMIT_1(0x56)
-        __asm call FableCTableGetDataOperatorDelete
-        FABLE_EMIT_8(0x83,0xc4,0x04,0x8b,0x4c,0x24,0x14,0x55)
-        __asm call FableCTableGetDataLookup
-        FABLE_EMIT_16(0x8b,0x08,0x8b,0x01,0xff,0x90,0xac,0x00,0x00,0x00,0x8b,0x4b,0x0c,0x85,0xc9,0x8b)
-        FABLE_EMIT_16(0xc3,0x74,0x14,0x8b,0xc1,0x8b,0x48,0x08,0x85,0xc9,0x74,0x24,0x8b,0xc1,0x8b,0x48)
-        FABLE_EMIT_16(0x08,0x85,0xc9,0x75,0xf7,0xeb,0x19,0x8b,0x4b,0x04,0x3b,0x59,0x0c,0x75,0x0a,0x8b)
-        FABLE_EMIT_16(0xc1,0x8b,0x49,0x04,0x3b,0x41,0x0c,0x74,0xf6,0x39,0x48,0x0c,0x74,0x02,0x8b,0xc1)
-        FABLE_EMIT_16(0x8b,0x4c,0x24,0x10,0x3b,0x41,0x64,0x8b,0xd8,0x0f,0x85,0x0d,0xff,0xff,0xff,0x5f)
-        FABLE_EMIT_16(0x5d,0x8b,0x71,0x04,0x8d,0x41,0x04,0x4e,0x8b,0xd6,0x85,0xd2,0x89,0x30,0x5e,0x5b)
-        FABLE_EMIT_11(0x75,0x05,0x8b,0x11,0xff,0x52,0x04,0x83,0xc4,0x10,0xc3)
+    CDefPointer<const CUIDef> def = LoadAndReturnDef();
+    Size.X = def->Width;
+    Size.Y = def->Height;
+    PHorizontalSeparations = new std::vector<unsigned long>(def->HorizontalSeparations);
+    PVerticalSeparations = new std::vector<unsigned long>(def->VerticalSeparations);
+    for (std::map<ETableSprites, long>::const_iterator it = def->Sprites.begin(); it != def->Sprites.end(); ++it) {
+        Sprites[(*it).first] = CCountedPointer<CComponent>(CManager::GetInstance()->CreateComponent((*it).second));
+        Sprites[(*it).first]->Initialise();
     }
 }
-
-#undef FABLE_EMIT_16
-#undef FABLE_EMIT_15
-#undef FABLE_EMIT_14
-#undef FABLE_EMIT_12
-#undef FABLE_EMIT_11
-#undef FABLE_EMIT_10
-#undef FABLE_EMIT_9
-#undef FABLE_EMIT_8
-#undef FABLE_EMIT_7
-#undef FABLE_EMIT_6
-#undef FABLE_EMIT_5
-#undef FABLE_EMIT_4
-#undef FABLE_EMIT_3
-#undef FABLE_EMIT_2
-#undef FABLE_EMIT_1
+}

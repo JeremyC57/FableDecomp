@@ -1,194 +1,93 @@
-// CNewFrontendGameComponent::Draw @ 0x0042DF9E
-//
-// This is the exact retail draw coordinator, kept address-isolated until the
-// native frontend manager, definition bank, display manager, and primitive
-// lifetimes are present in the executable.  The body is deliberately written
-// as readable named-seam assembly: VC7.1 typed probes changed the x87/control
-// queue scheduling and cannot claim parity for this ABI-heavy coordinator.
-
-extern "C" void* FableDrawRenderManager_013b8384;
-extern "C" void* FableDrawDisplayManager_013b8390;
-extern "C" unsigned long FableDrawRenderState_013b8384;
-extern "C" unsigned long FableDrawRenderStateDefault_01396e68;
-extern "C" double FableDrawViewportX_013961e8;
-extern "C" double FableDrawViewportY_013961f0;
-
-extern "C" void FableDrawInterpolationInfoCtor_00415a60();
-extern "C" void FableDrawTime_009e1bc0();
-extern "C" void FableDrawOnCreate_00a0b560();
-extern "C" void FableDrawVisibleArea_009bece0();
-extern "C" void FableDrawClearRenderTarget_009d8cf0();
-extern "C" void FableDrawBeginRender_009bef20();
-extern "C" void FableDrawGetManager_00595582();
-extern "C" void FableDrawManagerDraw_00595222();
-extern "C" void FableDrawGetManager_0041e5f2();
-extern "C" void FableDrawRenderError_0041d03c();
-extern "C" void FableDrawDrawBufferedPolys_009d9c80();
-extern "C" void FableDrawRender2DDrawList_009da9f0();
-extern "C" void FableDrawAddChildPrimitive_00404a80();
-extern "C" void FableDrawImeRender_00404c00();
-extern "C" void FableDrawEndRender_009bef50();
-extern "C" void FableDrawSwapScreens_009beeb0();
-
-extern "C" __declspec(naked) void __fastcall
-CNewFrontendGameComponent_Draw_0042df9e(void*, void*)
+// CNewFrontendGameComponent::Draw(const CEngineInterpolationInfo& interpolation_info) -- render one frontend frame: switch the FPU to round-to-nearest, set the virtual window, clear, draw the frontend screens, the error message, the engine, the 2D draw lists and the IME, then present
+// Leaf: ?Draw@CNewFrontendGameComponent@@AAEXABVCEngineInterpolationInfo@@@Z
+// Flags: /O1 /Oy-
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0042DF9E, 478 bytes, `ret 4`; unaligned entry right after 0x0042DF9B `leave ; ret 4` (no padding):
+//   a size-optimised frame-pointer TU (fldz stores, leave) -> /O1 /Oy-, as the landed CNewFrontendGameComponent rows (optimize("s") + ("y",off)).
+// Retail-asm: 0x0042DFD8 `fnstcw word ptr [ebp-4]` + 0x0042DFDB `and byte ptr [ebp-3],0F3h` + 0x0042DFDF `fldcw word ptr [ebp-4]`, through the
+//   shared helper engine/GFFPUSetRoundingNearest.h (FableWin.pdb ?GFFPUSetRoundingNearest@@YIXXZ); 32 plain-C++ and 12 intrinsic spellings
+//   first (ATTEMPTS_0042df9e_fpu.tsv): none emits fnstcw / fldcw. The cw slot [ebp-4] is reused for the clear colour.
+// Callees (Ego_r.pdb spellings): CInterpolationInfo() 0x00415A60 (an unused local), GFGetTime 0x009E1BC0, CRenderStateManager::SetFogEnable
+//   (inline, DeviceState.FogEnable +0x2944), CRenderManagerCore::SetVWindow 0x00A0B560, CDisplayManager::GetVVisibleTelevisionScreenArea
+//   0x009BECE0 (result dropped), CRenderManager2D::ClearRenderTarget 0x009D8CF0, CDisplayManager::BeginRender 0x009BEF20,
+//   NUISystem::CFrontEndManager::GetInstance 0x00595582 / Draw 0x00595222, NUISystem::CManager::GetInstance 0x0041E5F2 / HasErrorMessage
+//   (inline, +0x9C) / RenderErrorMessage 0x0041D03C, CIEngine::Render (slot 8, +0x20), SetTextureMipMapMode(0, TEXTURE_MIPMAP_LINEAR) (inline,
+//   TextureMipMapMode[0] +0x2E44, table 0x01396E64), CRenderManager2D::DrawBufferedPolys 0x009D9C80 / Render2DDrawList 0x009DA9F0 (twice),
+//   NUISystem::CIME::Get 0x00404A80 / Render 0x00404C00, CDisplayManager::EndRender 0x009BEF50 / SwapScreens 0x009BEEB0.
+// Globals: VIRTUAL_SCREEN_WIDTH / HEIGHT 0x013961E8 / 0x013961F0 (doubles), PRenderManager 0x013B8384, GPDisplayManager 0x013B8390.
+// Layout: CNewFrontendGameComponent retail = Ego_r.pdb with STLport vectors: m_pEngine +0x58 (CCountedPointer<CIEngine>), m_fLastRenderTime +0xBC.
+// Headers (chunk 774 overlay): CIEngine.h FABLE_RETAIL_CIENGINE_RENDER (slot 8 Render), CDisplayManager.h, CRenderManager2D.h, NUISystem_CManager.h,
+//   CFrontEndManager.h (declarations in their retail branches), engine/GFFPUSetRoundingNearest.h (new helper).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CDISPLAYMANAGER
+#define FABLE_RETAIL_CRENDERMANAGERCORE
+#define FABLE_RETAIL_CRENDERMANAGER2D
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CIENGINE
+#define FABLE_RETAIL_CIENGINE_RENDER
+#define FABLE_RETAIL_CMANAGER
+#define FABLE_RETAIL_CFRONTENDMANAGER
+#include "fable_string.h"
+#include "engine/C2DBoxF.h"
+#include "engine/CRGBColour.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CIEngine.h"
+#include "engine/CDisplayManager.h"
+#include "engine/CRenderManager.h"
+#include "engine/NUISystem_CManager.h"
+#include "engine/CFrontEndManager.h"
+#include "engine/GFFPUSetRoundingNearest.h"
+double __fastcall GFGetTime();                                           // 0x009E1BC0 ?GFGetTime@@YINXZ
+extern double VIRTUAL_SCREEN_WIDTH;                                      // 0x013961E8
+extern double VIRTUAL_SCREEN_HEIGHT;                                     // 0x013961F0
+extern CRenderManager* PRenderManager;                                   // 0x013B8384
+extern CDisplayManager* GPDisplayManager;                                // 0x013B8390
+class CInterpolationInfo {                                               // Ego_r.pdb 0x34 bytes; no shared header
+public:
+    CInterpolationInfo();                                                // 0x00415A60 ??0CInterpolationInfo@@QAE@XZ
+    unsigned char _data[0x34];
+};
+namespace NUISystem {
+class CIME {                                                             // no shared header
+public:
+    static CIME& __fastcall Get();                                       // 0x00404A80 ?Get@CIME@NUISystem@@SIAAV12@XZ
+    void Render();                                                       // 0x00404C00 ?Render@CIME@NUISystem@@QAEXXZ
+};
+}
+class CNewFrontendGameComponent {                                        // no shared header; retail offsets (Ego_r.pdb - 8 after the two vectors)
+public:
+    virtual ~CNewFrontendGameComponent();
+    unsigned char             _pad04[0x58 - 0x04];
+    CCountedPointer<CIEngine> m_pEngine;                                 // +0x58
+    unsigned char             _pad60[0xbc - 0x60];
+    float                     m_fLastRenderTime;                         // +0xbc
+private:
+    void Draw(const CEngineInterpolationInfo& interpolation_info);
+};
+void CNewFrontendGameComponent::Draw(const CEngineInterpolationInfo& interpolation_info)
 {
-    __asm
-    {
-        push ebp
-        mov ebp, esp
-        sub esp, 58h
-        push ebx
-        push esi
-        mov esi, ecx
-        push edi
-
-        lea ecx, [ebp - 58h]
-        call FableDrawInterpolationInfoCtor_00415a60
-        call FableDrawTime_009e1bc0
-        fstp dword ptr [esi + 0bch]
-
-        fldz
-        fstp dword ptr [ebp - 14h]
-        fldz
-        fstp dword ptr [ebp - 10h]
-        fld qword ptr [FableDrawViewportX_013961e8]
-        fstp dword ptr [ebp - 0ch]
-        fld qword ptr [FableDrawViewportY_013961f0]
-        fstp dword ptr [ebp - 08h]
-        fnstcw word ptr [ebp - 04h]
-        and byte ptr [ebp - 03h], 0f3h
-        fldcw word ptr [ebp - 04h]
-
-        mov ecx, dword ptr [FableDrawRenderManager_013b8384]
-        lea eax, [ecx + 2944h]
-        xor ebx, ebx
-        cmp dword ptr [eax + 04h], ebx
-        mov edx, ecx
-        je drawOnCreatePrepare
-        mov ecx, dword ptr [ecx + 2814h]
-        mov edi, dword ptr [eax + 08h]
-        test ecx, edi
-        jne drawViewportReady
-        or ecx, edi
-        mov dword ptr [eax + 08h], ecx
-        lea ecx, [edx + 2808h]
-        mov edi, dword ptr [ecx]
-        mov dword ptr [edx + edi * 8 + 08h], eax
-        mov ebx, dword ptr [eax + 04h]
-        mov edi, dword ptr [ecx]
-        mov dword ptr [edx + edi * 8 + 0ch], ebx
-        inc dword ptr [ecx]
-        xor ebx, ebx
-drawViewportReady:
-        cmp byte ptr [eax + 10h], bl
-        mov dword ptr [eax + 04h], ebx
-        jne drawViewportDone
-        mov byte ptr [eax + 10h], 1
-        lea ecx, [edx + 280ch]
-        mov edi, dword ptr [ecx]
-        mov dword ptr [edx + edi * 4 + 2008h], eax
-        inc dword ptr [ecx]
-drawViewportDone:
-        mov ecx, dword ptr [FableDrawRenderManager_013b8384]
-drawOnCreatePrepare:
-        lea eax, [ebp - 14h]
-        push eax
-        call FableDrawOnCreate_00a0b560
-
-        mov ecx, dword ptr [FableDrawDisplayManager_013b8390]
-        lea eax, [ebp - 24h]
-        push eax
-        call FableDrawVisibleArea_009bece0
-
-        mov ecx, dword ptr [FableDrawRenderManager_013b8384]
-        push ebx
-        lea eax, [ebp - 04h]
-        push eax
-        mov byte ptr [ebp - 02h], bl
-        mov byte ptr [ebp - 03h], bl
-        mov byte ptr [ebp - 04h], bl
-        mov byte ptr [ebp - 01h], 0ffh
-        call FableDrawClearRenderTarget_009d8cf0
-
-        mov ecx, dword ptr [FableDrawDisplayManager_013b8390]
-        call FableDrawBeginRender_009bef20
-
-        mov eax, dword ptr [esi + 58h]
-        push ebx
-        push eax
-        call FableDrawGetManager_00595582
-        mov ecx, eax
-        call FableDrawManagerDraw_00595222
-
-        call FableDrawGetManager_0041e5f2
-        cmp byte ptr [eax + 9ch], bl
-        je drawErrorDone
-        push dword ptr [esi + 58h]
-        call FableDrawGetManager_0041e5f2
-        mov ecx, eax
-        call FableDrawRenderError_0041d03c
-drawErrorDone:
-        mov ecx, dword ptr [esi + 58h]
-        mov eax, dword ptr [ecx]
-        push ebx
-        push dword ptr [ebp + 08h]
-        call dword ptr [eax + 20h]
-
-        mov ecx, dword ptr [FableDrawRenderManager_013b8384]
-        mov edx, dword ptr [FableDrawRenderStateDefault_01396e68]
-        lea eax, [ecx + 2e44h]
-        cmp dword ptr [eax + 04h], edx
-        mov esi, ecx
-        mov dword ptr [ebp + 08h], edx
-        je drawImePrepare
-        mov ecx, dword ptr [ecx + 2814h]
-        mov edx, dword ptr [eax + 08h]
-        test ecx, edx
-        jne drawImeReady
-        or ecx, edx
-        mov dword ptr [eax + 08h], ecx
-        lea ecx, [esi + 2808h]
-        mov edx, dword ptr [ecx]
-        mov dword ptr [esi + edx * 8 + 08h], eax
-        mov edx, dword ptr [ecx]
-        mov edi, dword ptr [eax + 04h]
-        mov dword ptr [esi + edx * 8 + 0ch], edi
-        inc dword ptr [ecx]
-drawImeReady:
-        cmp byte ptr [eax + 10h], bl
-        mov ecx, dword ptr [ebp + 08h]
-        mov dword ptr [eax + 04h], ecx
-        jne drawImeDone
-        mov byte ptr [eax + 10h], 1
-        lea ecx, [esi + 280ch]
-        mov edx, dword ptr [ecx]
-        mov dword ptr [esi + edx * 4 + 2008h], eax
-        inc dword ptr [ecx]
-drawImeDone:
-        mov ecx, dword ptr [FableDrawRenderManager_013b8384]
-drawImePrepare:
-        call FableDrawDrawBufferedPolys_009d9c80
-        mov ecx, dword ptr [FableDrawRenderManager_013b8384]
-        push 1
-        call FableDrawRender2DDrawList_009da9f0
-        call FableDrawAddChildPrimitive_00404a80
-        mov ecx, eax
-        call FableDrawImeRender_00404c00
-        mov ecx, dword ptr [FableDrawRenderManager_013b8384]
-        call FableDrawDrawBufferedPolys_009d9c80
-        mov ecx, dword ptr [FableDrawRenderManager_013b8384]
-        push 1
-        call FableDrawRender2DDrawList_009da9f0
-        mov ecx, dword ptr [FableDrawDisplayManager_013b8390]
-        call FableDrawEndRender_009bef50
-        mov ecx, dword ptr [FableDrawDisplayManager_013b8390]
-        call FableDrawSwapScreens_009beeb0
-
-        pop edi
-        pop esi
-        pop ebx
-        leave
-        ret 4
-    }
+    CInterpolationInfo info;
+    m_fLastRenderTime = (float)GFGetTime();
+    C2DBoxF screen(0.0f, 0.0f, (float)VIRTUAL_SCREEN_WIDTH, (float)VIRTUAL_SCREEN_HEIGHT);
+    GFFPUSetRoundingNearest();
+    PRenderManager->SetFogEnable(false);
+    PRenderManager->SetVWindow(screen);
+    GPDisplayManager->GetVVisibleTelevisionScreenArea();
+    PRenderManager->ClearRenderTarget(CRGBColour(0, 0, 0, 255), 0);
+    GPDisplayManager->BeginRender();
+    NUISystem::CFrontEndManager::GetInstance()->Draw(*m_pEngine, 0);
+    if (NUISystem::CManager::GetInstance()->HasErrorMessage())
+        NUISystem::CManager::GetInstance()->RenderErrorMessage(*m_pEngine);
+    m_pEngine->Render(interpolation_info, 0);
+    PRenderManager->SetTextureMipMapMode(0, TEXTURE_MIPMAP_LINEAR);
+    PRenderManager->DrawBufferedPolys();
+    PRenderManager->Render2DDrawList(true);
+    NUISystem::CIME::Get().Render();
+    PRenderManager->DrawBufferedPolys();
+    PRenderManager->Render2DDrawList(true);
+    GPDisplayManager->EndRender();
+    GPDisplayManager->SwapScreens();
 }

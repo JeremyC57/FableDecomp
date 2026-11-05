@@ -46,8 +46,8 @@ $catalog = @(
     },
     [pscustomobject]@{
         Address = '0042df9e'; Module = 'CNewFrontendGameComponent'; Source = '00/42/CNewFrontendGameComponent_Draw_0042df9e.cpp'
-        TestSource = '00/42/CNewFrontendGameComponent_Draw_0042df9e_test.cpp'; PassPattern = 'FRONTEND_DRAW_0042DF9E_TEST PASS'
-        Grade = 'asm_bake'
+        TestSource = '00/42/CNewFrontendGameComponent_Draw_0042df9e_test.cpp'; PassPattern = '0042df9e_TEST PASS'
+        CompilerFlags = '/O1 /Oy-'
     },
     [pscustomobject]@{
         Address = '0042e204'; Module = 'CNewFrontendGameComponent'; Source = '00/42/CNewFrontendGameComponent_InitialiseEngine_0042e204.cpp'
@@ -55,8 +55,7 @@ $catalog = @(
     },
     [pscustomobject]@{
         Address = '00551340'; Module = 'CTable'; Source = '00/55/CTable_GetDataFromDef_00551340.cpp'
-        TestSource = '00/55/CTable_GetDataFromDef_00551340_test.cpp'; PassPattern = 'CTable_GetDataFromDef_00551340_test PASS'
-        Grade = 'asm_bake'
+        TestSource = '00/55/CTable_GetDataFromDef_00551340_test.cpp'; PassPattern = '00551340_TEST PASS'
     },
     [pscustomobject]@{
         Address = '00401f30'; Module = '_global'; Source = '00/40/Global_GFGetBuildNumber2_00401f30.cpp'
@@ -384132,6 +384131,50 @@ $catalog = @(
         Source = '00/c8/CReverbDiffuserStage_ProcessRamped_00c89350.cpp'
         TestSource = '00/c8/CReverbDiffuserStage_ProcessRamped_00c89350_test.cpp'
         PassPattern = '00c89350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f21590'
+        Module = 'NScript::CQ_ArenaScript'
+        Source = '00/f2/NScriptCQArenaScript_GetEndRoundQuestion_00f21590.cpp'
+        TestSource = '00/f2/NScriptCQArenaScript_GetEndRoundQuestion_00f21590_test.cpp'
+        PassPattern = '00f21590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e80060'
+        Module = 'NScript::CV_FishingCompetitionScript'
+        Source = '00/e8/NScriptCVFishingCompetitionScript_GetHeroTitleTextTag_00e80060.cpp'
+        TestSource = '00/e8/NScriptCVFishingCompetitionScript_GetHeroTitleTextTag_00e80060_test.cpp'
+        PassPattern = '00e80060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a4520'
+        Module = 'CTCWillEnflame'
+        Source = '00/7a/CTCWillEnflame_PlaySoundW_007a4520.cpp'
+        TestSource = '00/7a/CTCWillEnflame_PlaySoundW_007a4520_test.cpp'
+        PassPattern = '007a4520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a5580'
+        Module = 'CTCForcePushPower'
+        Source = '00/7a/CTCForcePushPower_PlayCastSound_007a5580.cpp'
+        TestSource = '00/7a/CTCForcePushPower_PlayCastSound_007a5580_test.cpp'
+        PassPattern = '007a5580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4b890'
+        Module = 'PKCBufferedReader'
+        Source = '00/c4/PKCBufferedReader_ReadBlock_00c4b890.cpp'
+        TestSource = '00/c4/PKCBufferedReader_ReadBlock_00c4b890_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c4b890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4b300'
+        Module = 'PKCBufferedReader'
+        Source = '00/c4/PKCBufferedReader_PKCBufferedReader_00c4b300.cpp'
+        TestSource = '00/c4/PKCBufferedReader_PKCBufferedReader_00c4b300_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c4b300_TEST PASS'
     }
 )
 

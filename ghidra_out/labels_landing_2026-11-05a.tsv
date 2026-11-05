@@ -1,0 +1,32 @@
+address	name	evidence
+00f21590	NScript::CQ_ArenaScript::GetEndRoundQuestion	landing 2026-11-05a (chunk 774): 
+00e80060	NScript::CV_FishingCompetitionScript::GetHeroTitleTextTag	landing 2026-11-05a (chunk 774): 
+00e7fd50	NScript::CV_FishingCompetitionScript::GenerateSignText	landing 2026-11-05a (chunk 774): 
+00e7f7d0	NScript::CV_FishingCompetitionScript::GetNextPrizeCategoryWeight	landing 2026-11-05a (chunk 774): 
+007a4520	CTCWillEnflame::PlaySoundW	landing 2026-11-05a (chunk 774): 
+007a5580	CTCForcePushPower::PlayCastSound	landing 2026-11-05a (chunk 774): 
+00662110	CThingCreatureBase::MakeNoise	landing 2026-11-05a (chunk 774): 
+00c40d10	CEffectOwner_00c40750::CommitProperties	landing 2026-11-05a (chunk 774): 
+00c4b890	PKCBufferedReader::ReadBlock	landing 2026-11-05a (chunk 774): 
+00c4b300	PKCBufferedReader::PKCBufferedReader	landing 2026-11-05a (chunk 774): 
+00c4b640	PKCBufferedReader::CopyOutOfBuffers	landing 2026-11-05a (chunk 774): 
+00c4bc20	PKCMailbox<SReadRequest>::PKCMailbox	landing 2026-11-05a (chunk 774): 
+00c4be80	PKCStaticQueue<SReadRequest>::PKCStaticQueue	landing 2026-11-05a (chunk 774): 
+00551340	NUISystem::CTable::GetDataFromDef	landing 2026-11-05a (chunk 774): 
+00554030	std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >::operator[]	landing 2026-11-05a (chunk 774): 
+00597bf2	NUISystem::CFrontEndManager::GotoPreviousScreen	landing 2026-11-05a (chunk 774): 
+00594fa9	NUISystem::CFrontEndManager::CloseVirtualKeyboard	landing 2026-11-05a (chunk 774): 
+0042dbee	CNewFrontendGameComponent::ResetAttractModeTimer	landing 2026-11-05a (chunk 774): 
+0042df9e	CNewFrontendGameComponent::Draw	landing 2026-11-05a (chunk 774): 
+009d8cf0	CRenderManager2D::ClearRenderTarget	landing 2026-11-05a (chunk 774): 
+0041d03c	NUISystem::CManager::RenderErrorMessage	landing 2026-11-05a (chunk 774): 
+00595582	NUISystem::CFrontEndManager::GetInstance	landing 2026-11-05a (chunk 774): 
+00595222	NUISystem::CFrontEndManager::Draw	landing 2026-11-05a (chunk 774): 
+00404a80	NUISystem::CIME::Get	landing 2026-11-05a (chunk 774): 
+00404c00	NUISystem::CIME::Render	landing 2026-11-05a (chunk 774): 
+009bece0	CDisplayManager::GetVVisibleTelevisionScreenArea	landing 2026-11-05a (chunk 774): 
+009bef80	CDisplayManager::SetViewport	landing 2026-11-05a (chunk 774): 
+0053c332	NUISystem::CList::DoRecomputeOffsets	landing 2026-11-05a (chunk 774): 
+0053cd69	std::vector<std::map<unsigned long,NUISystem::CUIState> >::erase	landing 2026-11-05a (chunk 774): 
+0053cfc2	std::vector<std::map<unsigned long,NUISystem::CUIState> >::push_back	landing 2026-11-05a (chunk 774): 
+0041e5f2	NUISystem::CManager::GetInstance	landing 2026-11-05a (chunk 774): 

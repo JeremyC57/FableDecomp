@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00551340   WARN RELOC_NAME: ??A?$map@W4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@U?$less@W4ETableSprites@NUISystem@@@std@@V?$allocator@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@5@@std@@QAEAAV?$CCountedPointer@VCComponent@NUISystem@@@@ABW4ETableSprites@NUISystem@@@Z -> 00554030 labelled 'CRedBlackTree_FindOrInsert_Lookup'
+00551340   RELOCATION_MATCH PASS   GetDataFromDef
+
+WINS: 1
+  00551340 RELOCATION_MATCH CTable::?GetDataFromDef@CTable@NUISystem@@QAEXXZ
+elapsed 3s rc=0

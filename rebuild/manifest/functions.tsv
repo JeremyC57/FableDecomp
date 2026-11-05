@@ -1080,7 +1080,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042db60	`scalar_deleting_destructor'	CXMVPlayerBuffers	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CLandscapeBackgroundPatch_vectordeletingdestructor_0042db60.cpp
 0042dbb0	CIVCountedPointer_Release_0042dbb0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0042dbb0.cpp
 0042dbd8	ReleaseXMVCode	CNewFrontendGameComponent	__thiscall	void	1	CNewFrontendGameComponent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CNewFrontendGameComponent_ReleaseXMVCode_0042dbd8.cpp
-0042dbee	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	std	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_0042dbee.cpp
+0042dbee	ResetAttractModeTimer	CNewFrontendGameComponent	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_0042dbee.cpp
 0042dbfa	UpdateInterpolation	CNewFrontendGameComponent	__thiscall	void	2	CNewFrontendGameComponent *,CEngineInterpolationInfo *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CNewFrontendGameComponent_UpdateInterpolation_0042dbfa.cpp
 0042dc5c	ChangeTextureColourDepth	CNewFrontendGameComponent	__thiscall	void	2	CNewFrontendGameComponent *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CNewFrontendGameComponent_ChangeTextureColourDepth_0042dc5c.cpp
 0042dc5f	OnPreDeviceReset	CNewFrontendGameComponent	__thiscall	void	1	CNewFrontendGameComponent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CNewFrontendGameComponent_OnPreDeviceReset_0042dc5f.cpp
@@ -9397,7 +9397,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053ccd0	UninitFillN_CElement12_0053cb9b_0053ccd0	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
 0053cd05	erase	std::vector<std::map<unsigned long, NUISystem::CUIState, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, NUISystem::CUIState>>>, std::allocator<std::map<unsigned long, NUISystem::CUIState, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, NUISystem::CUIState>>>>>	unknown	undefined	0		0	yes	accepted									
 0053cd46	StdList_Dtor_0053cd46	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CActiveFile_OnReadFinished_0053cd46.cpp
-0053cd69	erase	std::vector	unknown	undefined	0		0	yes	accepted									
+0053cd69	erase	std::vector<std::map<unsigned long,NUISystem::CUIState> >	unknown	undefined	0		0	yes	accepted									
 0053cda0	StdList_Dtor_0053cda0	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CActiveFile_OnReadFinished_0053cda0.cpp
 0053cdc3	vfunc_142	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053cdca	GetPositionOffset	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9422,7 +9422,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053ced4	SetActionOnScrollDown	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053cef6	_M_insert_overflow	std::vector<std::map<unsigned long, NUISystem::CUIState, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, NUISystem::CUIState>>>, std::allocator<std::map<unsigned long, NUISystem::CUIState, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, NUISystem::CUIState>>>>>	unknown	undefined	0		0	yes	accepted									
 0053cfa6	`scalar_deleting_destructor'	NUISystem::CList	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CLandscapeBackgroundPatch_vectordeletingdestructor_0053cfa6.cpp
-0053cfc2	push_back	std::vector<CUIStateMap>	unknown	undefined	0		0	yes	accepted									
+0053cfc2	push_back	std::vector<std::map<unsigned long,NUISystem::CUIState> >	unknown	undefined	0		0	yes	accepted									
 0053d000	MakeUnavailableDynamically	NUISystem::CMenuEntry	__thiscall	void	1	CMenuEntry *	1	yes	accepted									
 0053d060	MakeAvailable	NUISystem::CMenuEntry	__thiscall	void	1	CMenuEntry *	1	yes	accepted									
 0053d0c0	MakeAvailableDynamically	NUISystem::CMenuEntry	__thiscall	void	1	CMenuEntry *	1	yes	accepted									
@@ -9866,7 +9866,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00553f20	~CRetailTree_erase00553690	CRetailTree_erase00553690	unknown	undefined	0		0	yes	accepted									
 00553fd0	`vector deleting destructor'`adjustor{4}'	NUISystem::CTable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00553fe0	Override_005540d0	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00554030	CRedBlackTree_FindOrInsert_Lookup	_global	unknown	undefined	0		0	yes	accepted									
+00554030	operator[]	std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >	unknown	undefined	0		0	yes	accepted									
 005540d0	`scalar_deleting_destructor'	NUISystem::CTable	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_005540d0.cpp
 005540f0	Initialise	NUISystem::CMorphingSprite	__thiscall	void	1	CMemoryDataOutputStream *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CMemoryDataOutputStream_Clear_005540f0.cpp
 00554110	InternalChanged	NUISystem::CMorphingSprite	__thiscall	bool	1	CMorphingSprite *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CMorphingSprite_InternalChanged_00554110.cpp
@@ -11135,7 +11135,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00594f36	LoadGame	CNewFrontendGameComponent	__thiscall	void	2	CNewFrontendGameComponent *,CWideString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CNewFrontendGameComponent_LoadGame_00594f36.cpp
 00594f78	`scalar deleting destructor'	CVirtualKeyboard	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CLandscapeBackgroundPatch_vectordeletingdestructor_00594f78.cpp
 00594f94	CreateComponent	NUISystem::CFrontEndManager	__thiscall	CComponent *	2	CFrontEndManager *,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CFrontEndManager_CreateComponent_00594f94.cpp
-00594fa9	DestroyVirtualKeyboard	NUISystem::CFrontEndManager	__thiscall	void	1	CEngineScreenEffectDisplacementRenderer *	1	yes	accepted									
+00594fa9	CloseVirtualKeyboard	NUISystem::CFrontEndManager	__thiscall	void	1	CEngineScreenEffectDisplacementRenderer *	1	yes	accepted									
 00594fdb	GenerateAboutMessage	CFrontEndManager	__thiscall	CWideString	1	CFrontEndManager *	1	yes	accepted									
 00595222	Draw	NUISystem::CFrontEndManager	__thiscall	void	3	CFrontEndManager *,CIEngine *,CEnginePrimitiveHandle *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CFrontEndManager_Draw_00595222.cpp
 0059525d	ClearComponents	NUISystem::CFrontEndManager	unknown	undefined	0		0	yes	accepted									
@@ -46218,7 +46218,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c40ca0	SetInteger6C	CListenerState	unknown	undefined	0		0			discovered	gapscan							
 00c40cc0	SetFloat70	CLibpkObject78	unknown	undefined	0		0			discovered	gapscan							
 00c40cf0	SetLong74	CLibpkObject78	unknown	undefined	0		0			discovered	gapscan							
-00c40d10	NormalizeVectorPair	_global	unknown	undefined	0		0	yes	accepted									
+00c40d10	CommitProperties	CEffectOwner_00c40750	unknown	undefined	0		0	yes	accepted									
 00c40e20	func_00c40e20	CScriptThing	__thiscall	bool	2	CScriptThing *,CScriptThing *	1	yes	accepted									
 00c40e30	atan2	std	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 00c40e40	log10	std	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
@@ -46617,14 +46617,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c4b060	ReturnCompletedBuffers	PKCBufferedReader	unknown	undefined	0		0	yes	accepted									
 00c4b270	~PKCBufferedReader	PKCBufferedReader	__fastcall	void	2	allocator<NScript::CQ_BountyHuntScript::TeleportData> *,TeleportData *	1	yes	accepted									
 00c4b300	PKCBufferedReader	PKCBufferedReader	unknown	undefined	0		0	yes	accepted									
-00c4b640	NScript_CV_MurderTwistScript_InitializeRead	_global	unknown	undefined	0		0	yes	accepted									
+00c4b640	CopyOutOfBuffers	PKCBufferedReader	unknown	undefined	0		0	yes	accepted									
 00c4b890	ReadBlock	PKCBufferedReader	unknown	undefined	0		0	yes	accepted									
 00c4bab0	~CPair_00c4bab0	_unattributed	__fastcall	void	2	allocator<std::pair<CCharString,CScriptInfo>_> *,pair<CCharString,CScriptInfo> *	1	yes	accepted									
 00c4bb00	~PKCStaticQueue	PKCStaticQueue<SReadRequest>	__thiscall	void	1	CEngineLandscapeLODMap *	1	yes	accepted									
 00c4bb20	Put	PKCStaticQueue<CUnprovenStaticQueueWord_00C4BB20>	unknown	undefined	0		0			discovered	gapscan							
 00c4bc00	sub_00c4bc00	_global	unknown	undefined	0		0			discovered	gapscan							
 00c4bc10	sub_00c4bc10	_global	unknown	undefined	0		0			discovered	gapscan							
-00c4bc20	CScriptEntry_00c4bc20	_unattributed	__fastcall	void	2	allocator<std::pair<CCharString,CScriptInfo>_> *,pair<CCharString,CScriptInfo> *	1	yes	accepted									
+00c4bc20	PKCMailbox	PKCMailbox<SReadRequest>	__fastcall	void	2	allocator<std::pair<CCharString,CScriptInfo>_> *,pair<CCharString,CScriptInfo> *	1	yes	accepted									
 00c4bc80	PKCMailbox_GetResult	_global	unknown	undefined	0		0	yes	accepted									
 00c4bd70	ProcessMessage_CMailboxQueue_00c4bd70	_unattributed	unknown	undefined	0		0	yes	accepted									
 00c4be10	Query_00c4be10	_unattributed	__thiscall	float	1	CV_StatueMasterScript *	1	yes	accepted									
@@ -53063,11 +53063,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e7f330	Init	NScript::CV_FishingCompetitionScript	__thiscall	void	1	CV_FishingCompetitionScript *	1	yes	accepted									
 00e7f410	Main	NScript::CV_FishingCompetitionScript::CBountyHuntActivationChecker	__thiscall	void	1	CBountyHuntActivationChecker *	1	yes	accepted									
 00e7f730	GenerateCompetitionEntry	NScript::CV_FishingCompetitionScript	__thiscall	void	1	CV_FishingCompetitionScript *	1	yes	accepted									
-00e7f7d0	GetNextPrizeWeight	NScript::CV_FishingCompetitionScript	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\e7\0x00E7F7D0_global_GetFloatTableEntryByIndex.cpp				
+00e7f7d0	GetNextPrizeCategoryWeight	NScript::CV_FishingCompetitionScript	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\e7\0x00E7F7D0_global_GetFloatTableEntryByIndex.cpp				
 00e7f7f0	RespawnFishermen	CBountyHuntActivationChecker	__thiscall	void	1	CBountyHuntActivationChecker *	1	yes	accepted									
 00e7fb80	RemoveFishermen	CBountyHuntActivationChecker	__thiscall	void	1	CBountyHuntActivationChecker *	1	yes	accepted									
-00e7fd50	FishingCompetition_Initialize	_global	unknown	undefined	0		0	yes	accepted									
-00e80060	GetHeroTitleTextTag	CV_FishingCompetitionScript	__thiscall	CCharString	1	CV_FishingCompetitionScript *	1	yes	accepted									
+00e7fd50	GenerateSignText	NScript::CV_FishingCompetitionScript	unknown	undefined	0		0	yes	accepted									
+00e80060	GetHeroTitleTextTag	NScript::CV_FishingCompetitionScript	__thiscall	CCharString	1	CV_FishingCompetitionScript *	1	yes	accepted									
 00e80c00	SuspendCompetition	NScript::CV_FishingCompetitionScript	__thiscall	void	1	CQ_OrchardFarmRaidScript *	1	yes	accepted									
 00e80cd0	OnResize	CGuiWindow	__thiscall	void	1	CGuiWindow *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e8\CGuiWindow_OnResize_00e80cd0.cpp
 00e80cf0	SpeakConversationLine	CFishCompOrganiser	__thiscall	void	2	CFishCompOrganiser *,CCharString	1	yes	accepted									
@@ -54964,7 +54964,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f1ec70	AnimateCrowd	NScript::CQ_ArenaScript	__thiscall	void	1	CQ_ArenaScript *	1	yes	accepted									
 00f1eed0	PlayWave	CQ_ArenaScript	__thiscall	void	1	CQ_ArenaScript *	1	yes	accepted									
 00f21300	GivePrizeFund	NScript::CQ_ArenaScript	__thiscall	void	1	CQ_ArenaScript *	1	yes	accepted									
-00f21590	GetEndRoundQuestion	CQ_ArenaScript	__thiscall	CCharString	1	CQ_ArenaScript *	1	yes	accepted									
+00f21590	GetEndRoundQuestion	NScript::CQ_ArenaScript	__thiscall	CCharString	1	CQ_ArenaScript *	1	yes	accepted									
 00f25840	InitialiseVariables	NScript::CQ_ArenaScript	__thiscall	void	1	CQ_ArenaScript *	1	yes	accepted									
 00f25980	operator=	std::vector<CArenaRoundDef, std::allocator<CArenaRoundDef>>	unknown	undefined	0		0	yes	accepted									
 00f25ac0	~CRetailVector_poly0x38	CRetailVector_poly0x38	__thiscall	void	1	vector<CConversation,std::allocator<CConversation>_> *	1	yes	accepted									

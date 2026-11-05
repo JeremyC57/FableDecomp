@@ -14,6 +14,10 @@ namespace NUISystem {
 class CFrontEndManager : public CObserver {
 public:
     bool VerifySignatureCached(const CWideString&);                  // 0x005957D9
+    // Chunk 774 (bake 0x0042DF9E CNewFrontendGameComponent::Draw): Ego_r.pdb ?GetInstance@CFrontEndManager@NUISystem@@SIPAV12@XZ and
+    // ?Draw@CFrontEndManager@NUISystem@@QAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@@Z, both out of line. Declarations only.
+    static CFrontEndManager* __fastcall GetInstance();                 // 0x00595582
+    void Draw(CIEngine&, CEnginePrimitiveHandle*);                     // 0x00595222
 protected:
     void AddRegionAndTimeInfo(const CWideString&);                   // 0x00597228
     unsigned char _pad_0x14[0x74 - 0x14];                            // +0x14 MediaPlayerErrorString .. m_vFileTimes (generated layout below)

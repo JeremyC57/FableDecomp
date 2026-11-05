@@ -1,0 +1,14 @@
+address	module	name	length	group
+007a4520	CTCWillEnflame	PlaySoundW	316	G007a4520
+007a5580	CTCForcePushPower	PlayCastSound	304	G007a5580
+00c40d10	_global	NormalizeVectorPair	272	G00c3d470
+00c4b300	PKCBufferedReader	PKCBufferedReader	830	G00c4a3b0
+00c4b890	PKCBufferedReader	ReadBlock	538	G00c4a3b0
+00e7fd50	_global	FishingCompetition_Initialize	784	G00e7f330
+00e80060	CV_FishingCompetitionScript	GetHeroTitleTextTag	312	G00e7f330
+00f21590	CQ_ArenaScript	GetEndRoundQuestion	204	G00f1eed0
+0042df9e	CNewFrontendGameComponent	Draw	478	bake
+00551340	NUISystem::CTable	GetDataFromDef	428	bake
+0053c332	NUISystem::CList	DoRecomputeOffsets	1111	bake
+00597bf2	NUISystem::CFrontEndManager	GotoPreviousScreen	517	bake
+009bef80	CDisplayManager	SetViewport	479	bake

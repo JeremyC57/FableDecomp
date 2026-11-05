@@ -1,108 +1,39 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-extern "C" void __fastcall CTable_GetDataFromDef_00551340(void*);
-
-static volatile int g_releaseCount;
-static void* g_definition;
-
-extern "C" void* __cdecl FableCTableGetDataOperatorNew(unsigned int size)
-{
-    return malloc(size);
-}
-
-extern "C" __declspec(naked) void __fastcall
-FableCTableGetDataVectorCopy(void*, const void*)
-{
-    __asm {
-        mov eax, ecx
-        mov edx, dword ptr [esp+4]
-        mov ecx, dword ptr [edx]
-        mov dword ptr [eax], ecx
-        mov ecx, dword ptr [edx+4]
-        mov dword ptr [eax+4], ecx
-        mov ecx, dword ptr [edx+8]
-        mov dword ptr [eax+8], ecx
-        ret 4
+// Behaviour test for 0x00551340: NUISystem::CTable::GetDataFromDef -- size, separation vectors and one created component per def sprite
+#include <cstdio>
+#include <map>
+#include <vector>
+static int g_fail = 0;
+#define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
+struct CComponent { long Index; int Initialised; CComponent(long i) : Index(i), Initialised(0) { } void Initialise() { ++Initialised; } };
+static std::vector<CComponent*> g_created;
+struct CManager { CComponent* CreateComponent(long index) { CComponent* c = new CComponent(index); g_created.push_back(c); return c; } };
+static CManager g_manager;
+struct CUIDef { float Height, Width; std::map<int, long> Sprites; std::vector<unsigned long> HorizontalSeparations, VerticalSeparations; };
+struct CTable {
+    float SizeX, SizeY; std::map<int, CComponent*> Sprites; std::vector<unsigned long>* PHorizontalSeparations; std::vector<unsigned long>* PVerticalSeparations;
+    const CUIDef* Def;
+    void GetDataFromDef() {
+        const CUIDef* def = Def;
+        SizeX = def->Width; SizeY = def->Height;
+        PHorizontalSeparations = new std::vector<unsigned long>(def->HorizontalSeparations);
+        PVerticalSeparations = new std::vector<unsigned long>(def->VerticalSeparations);
+        for (std::map<int, long>::const_iterator it = def->Sprites.begin(); it != def->Sprites.end(); ++it) {
+            Sprites[(*it).first] = g_manager.CreateComponent((*it).second);
+            Sprites[(*it).first]->Initialise();
+        }
     }
-}
-
-extern "C" void* __cdecl FableCTableGetDataManager(void)
-{
-    return 0;
-}
-
-extern "C" __declspec(naked) void* __cdecl
-FableCTableGetDataCreateComponent(void*, long)
-{
-    __asm xor eax, eax
-    __asm ret 4
-}
-
-extern "C" __declspec(naked) void* __cdecl
-FableCTableGetDataLookup(void*, void*)
-{
-    __asm xor eax, eax
-    __asm ret 4
-}
-
-extern "C" void __cdecl FableCTableGetDataOperatorDelete(void* object)
-{
-    free(object);
-}
-
-extern "C" __declspec(naked) void __fastcall
-DefinitionProvider(void*)
-{
-    __asm {
-        mov eax, dword ptr [esp+4]
-        mov edx, dword ptr g_definition
-        mov dword ptr [eax], edx
-        ret 4
-    }
-}
-
-extern "C" __declspec(naked) void __fastcall
-FinalRelease(void*)
-{
-    __asm {
-        inc dword ptr g_releaseCount
-        ret
-    }
-}
-
+};
 int main()
 {
-    unsigned char object[0x180] = {0};
-    unsigned char definition[0x100] = {0};
-    unsigned char tree[0x20] = {0};
-    void* vtable[0x70] = {0};
-
-    vtable[0x1b0 / 4] = (void*)DefinitionProvider;
-    vtable[4 / 4] = (void*)FinalRelease;
-    *(void**)object = vtable;
-    *(int*)(object + 4) = 1;
-    *(int*)(definition + 0x58) = 0x22;
-    *(int*)(definition + 0x5c) = 0x11;
-    *(void**)definition = vtable;
-    *(int*)(definition + 4) = 1;
-    *(void**)(definition + 0x64) = tree;
-    *(void**)tree = vtable;
-    *(int*)(tree + 4) = 1;
-    *(void**)(tree + 8) = tree;
-    g_definition = definition;
-
-    CTable_GetDataFromDef_00551340(object);
-
-    if (*(int*)(object + 0xcc) != 0x11 || *(int*)(object + 0xd0) != 0x22)
-        return 1;
-    if (*(void**)(object + 0x168) == 0 || *(void**)(object + 0x16c) == 0)
-        return 2;
-    if (g_releaseCount != 1)
-        return 3;
-
-    FableCTableGetDataOperatorDelete(*(void**)(object + 0x168));
-    FableCTableGetDataOperatorDelete(*(void**)(object + 0x16c));
-    puts("CTable_GetDataFromDef_00551340_test PASS");
+    CUIDef def; def.Height = 10.0f; def.Width = 20.0f; def.Sprites[0] = 100; def.Sprites[3] = 103; def.Sprites[12] = 112;
+    def.HorizontalSeparations.push_back(5); def.VerticalSeparations.push_back(7); def.VerticalSeparations.push_back(9);
+    CTable t; t.Def = &def; t.GetDataFromDef();
+    CHECK(t.SizeX == 20.0f && t.SizeY == 10.0f);
+    CHECK(t.PHorizontalSeparations->size() == 1 && (*t.PHorizontalSeparations)[0] == 5);
+    CHECK(t.PVerticalSeparations->size() == 2 && (*t.PVerticalSeparations)[1] == 9);
+    CHECK(g_created.size() == 3 && t.Sprites.size() == 3);
+    CHECK(t.Sprites[3]->Index == 103 && t.Sprites[3]->Initialised == 1 && t.Sprites[12]->Index == 112);
+    if (g_fail) { std::printf("00551340_TEST FAIL\n"); return 1; }
+    std::printf("00551340_TEST PASS\n");
     return 0;
 }

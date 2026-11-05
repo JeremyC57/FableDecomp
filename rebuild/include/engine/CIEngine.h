@@ -38,6 +38,9 @@ template <class _T1, class _T2> struct pair;
 template <class _Key, class _Tp, class _Compare, class _Alloc> class map;
 template <class _Key, class _Compare, class _Alloc> class set;
 }
+#ifdef FABLE_RETAIL_CIENGINE_RENDER
+class CEngineInterpolationInfo;
+#endif
 class CIEngine : public CInitBaseClass {
 public:
     virtual ~CIEngine();                                                   //  0 ??_G 0x00B23770
@@ -49,7 +52,14 @@ public:
     virtual void SetWindow(const C2DBoxF*) = 0;                           //  5
     virtual void SetEnvironmentalEffectsAlwaysUpdate(bool);               //  6 0x00B232F0
     virtual void SetWorld(const CIDrawWorld*);                            //  7 0x00B23300
+#ifdef FABLE_RETAIL_CIENGINE_RENDER
+    // Chunk 774 (bake 0x0042DF9E CNewFrontendGameComponent::Draw): slot 8 is Render -- Ego_r.pdb ?Render@CEngine@@UAEXABVCEngineInterpolationInfo@@K@Z
+    // (CEngine's only virtual taking (const CEngineInterpolationInfo&, unsigned long); its slot-8 override 0x00B27D90 is `ret 8`) and
+    // Draw passes its own CEngineInterpolationInfo parameter and 0 through `call [eax+20h]`.
+    virtual void Render(const CEngineInterpolationInfo&, unsigned long) = 0;   //  8 (CEngine 0x00B27D90, ret 8)
+#else
     virtual void Virtual08_00b27d90() = 0;                                //  8 (CEngine 0x00B27D90, ret 8)
+#endif
     virtual void WorldFrameUpdate(bool);                                  //  9 0x00B23310
     virtual void PausedWorldFrameUpdate();                                // 10 0x00B23320
     virtual void Virtual11_00b23cf0() = 0;                                // 11 (CEngine 0x00B23CF0, ret 8)

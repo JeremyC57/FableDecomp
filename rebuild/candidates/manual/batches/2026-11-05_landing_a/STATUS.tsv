@@ -1,0 +1,14 @@
+address	name	status	attempts	note
+00f21590	NScript::CQ_ArenaScript::GetEndRoundQuestion	RELOCATION_MATCH	2	TRet<CCharString> _Fail_Val shape (new engine/TRet.h)
+00e80060	NScript::CV_FishingCompetitionScript::GetHeroTitleTextTag	RELOCATION_MATCH	1	local tag + operator= per alphabetical case
+00e7fd50	NScript::CV_FishingCompetitionScript::GenerateSignText	DIFFER	10	DIFFER(802v784) parked: retail calls 4 STLport vector helpers out of line (+ ??_G(0)); VC7.1 expands; x2 explicit-spec probe 782v784 dl=19; next idea: find why c2 skips those sites (bottom-up compile order / TU-level STLport config)
+007a4520	CTCWillEnflame::PlaySoundW	RELOCATION_MATCH	1	retail headers GetTC<CTCSoundPlayer> + CThingCreatureBase::MakeNoise decl (overlay)
+007a5580	CTCForcePushPower::PlayCastSound	RELOCATION_MATCH	1	same shape, no noise
+00c40d10	CEffectOwner_00c40750::CommitProperties (descriptive)	DIFFER	12	DIFFER(252v272) parked: frame 0x18 vs 0x10 + pre-stores of second pan into result temp; next idea: inline by-value helper returning the clamped vector / a vector type with float members and inline ctor in a header-like libpk vector class
+00c4b890	PKCBufferedReader::ReadBlock	RELOCATION_MATCH	2	float ratio (unsigned fix-up uses float 2^32)
+00c4b300	PKCBufferedReader::PKCBufferedReader	RELOCATION_MATCH	1	member-order init + PKCStaticQueue/PKCMailbox<SReadRequest> templates
+00551340	NUISystem::CTable::GetDataFromDef	DIFFER	4	oracle cut 3 bytes short (428 v real 431); all 428 bytes match, object adds retail's add esp,10h;ret at 0x005514EB (jne 0x005514E4 target)
+00597bf2	NUISystem::CFrontEndManager::GotoPreviousScreen	DIFFER	40	DIFFER(517v517) dl=14: top() read first (value at [ebp-8]) + later map refs spilled to [ebp+8]; back-sound tail push order
+0042df9e	CNewFrontendGameComponent::Draw	RELOCATION_MATCH	2	retail_asm via new helper engine/GFFPUSetRoundingNearest.h after 32 C++ + 12 intrinsic probes (ATTEMPTS_0042df9e_fpu.tsv); /O1 /Oy-
+009bef80	CDisplayManager::SetViewport	DIFFER	30	DIFFER(479v479): register allocation (0 in ebp then top, width/height edi/ebx, right in the arg slot); 8 asm2b + 22 chunk 774 spellings
+0053c332	NUISystem::CList::DoRecomputeOffsets	DIFFER	57	DIFFER(1111v1111) dl=2: PositionOffsetToUse.Y store vs negated-X fstp order (fchs); fmul form gives retail order

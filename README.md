@@ -70,13 +70,13 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Landed byte-matching C++ (genuine) | **46,872 · 94.57%** |
-| Retail function bytes reproduced | **5,861,266 · 57.35%** |
+| Landed byte-matching C++ (genuine) | **46,886 · 94.60%** |
+| Retail function bytes reproduced | **5,865,480 · 57.52%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
-Landed byte-matching C++ covers **94.57%** of the 49,564-function catalog by count
-and **57.35%** of retail function bytes: the functions still to do are the large ones.
+Landed byte-matching C++ covers **94.60%** of the 49,564-function catalog by count
+and **57.52%** of retail function bytes: the functions still to do are the large ones.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -93,14 +93,14 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **54,523** |
-| Reconstruction | Landed byte-matching genuine C++, original catalog | **46,872** (94.57%) |
-| Reconstruction | Landed byte-matching genuine C++, all 57,609 known functions | 54,510 (94.62%) |
-| Reconstruction | Retail function bytes reproduced by genuine C++ | 5,861,266 (57.35%) |
-| Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 209 |
+| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **54,529** |
+| Reconstruction | Landed byte-matching genuine C++, original catalog | **46,886** (94.60%) |
+| Reconstruction | Landed byte-matching genuine C++, all 57,609 known functions | 54,524 (94.64%) |
+| Reconstruction | Retail function bytes reproduced by genuine C++ | 5,865,480 (57.52%) |
+| Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 211 |
 | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 441 |
 | Reconstruction | — landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine) | 8 |
-| Reconstruction | — landed hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 13 |
+| Reconstruction | — landed hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 5 |
 | Readability (2026-09 snapshot) | Landed sources typed onto shared PDB-named engine headers | 651 |
 | Readability (2026-09 snapshot) | Throwaway local `struct T {...}` declarations remaining | 4,417 |
 | Reconstruction (2026-09 snapshot) | Compiled sources still honestly `DIFFER` | 43 |
@@ -111,13 +111,13 @@ parity, coverage, and naming reports:
 | Boot path | Current Phase 10 direct calls proven | **21 / 21** (100.00%) |
 | Modern C++23 | GFMain phases promoted into the modern startup lane | **0 / 10** (0.00%) |
 
-Counts above are from the 2026-11-04 canonical refresh: landing rows from
+Counts above are from the 2026-11-05 canonical refresh: landing rows from
 `rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1` (`tools/landed_metrics.py`);
 analysis rows from `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json` and the
 naming-quality reports (rows marked 2026-09 snapshot are not refreshed by the Linux landing lane).
 
 Generated agent output is tracked separately and is never counted merely
-because a structural checker accepted it. The 94.57% figure is intentionally the strict,
+because a structural checker accepted it. The 94.60% figure is intentionally the strict,
 whole-executable denominator; the byte figure sizes each unlanded function to the next function start, an upper bound. Boot-path figures are a separate view of
 the 3,952-byte `GFMain` coordinator, not an estimate of total engineering time.
 The C++23 startup figure is deliberately separate too: exact x86 parity and
