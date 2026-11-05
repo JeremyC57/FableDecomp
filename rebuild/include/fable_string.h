@@ -168,6 +168,12 @@ public:
     void SaveToFile(class CAFile&) const;
     // Chunk 734 (row 0x004A0D90 CWorld::LoadQuestsFromFile): the body is inline -- retail expands it there (`_stricmp` on the two
     // GetAsCharArray results, 0x004A1028..0x004A105B; no out-of-line copy in Fable.exe or the manifest; FableWin's is the debug COMDAT).
+#ifdef FABLE_RETAIL_CCHARSTRING_FORCEINLINE_EQUALSCI
+    // Per-TU inline opt-in (chunk 779, row 0x00837E40 CThingTrackNode::ConstructFromLevelScript; like FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ):
+    // that TU expands all four EqualsCaseInsensitive uses in place (0x00838195..0x008381C9: both GetAsCharArray ternaries, `call _stricmp`,
+    // `neg ; sbb ; inc`) where the plain inline body is called out of line once the eight inlined key compares have used the budget.
+    __forceinline
+#endif
     bool EqualsCaseInsensitive(const CCharString& other) const { return _stricmp(GetAsCharArray(), other.GetAsCharArray()) == 0; }
     bool operator<(const CCharString&) const;
 #ifdef FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE

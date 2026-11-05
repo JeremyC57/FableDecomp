@@ -111,6 +111,22 @@ public:
     virtual void ChangeTextureColourDepth(long);
     virtual void OnPreDeviceReset();
     virtual bool OnPostDeviceReset();
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EDITOR
+    // Nested opt-in (chunk 779, row 0x00837E40): the class's own virtuals after CGameComponent's five (vtable 0x0122F180: 0 dtor,
+    // 1 Init 0x004184BD, 2 Run 0x004189C2, 3 ChangeTextureColourDepth 0x0041799B, 4 SetQuit 0x004197A0 `mov byte ptr [ecx+8],1`), in
+    // slot order: 5 Update 0x00418289, 6 GetInputs 0x00416E78, 7 Render 0x00417001, 8 PostInit 0x00416953 (Ego_r.pdb protected
+    // ?Update@ / ?GetInputs@ / ?Render@ / ?PostInit@CMainGameComponent@@MAEXXZ; ghidra_out/labels_rtti_port.tsv names 6-8) and
+    // 9 IsEditorActive 0x004197B0 (`xor al,al ; ret`, Ego_r.pdb ?IsEditorActive@CMainGameComponent@@UBE_NXZ, the only bool const
+    // virtual; CThingTrackNode::ConstructFromLevelScript 0x00837EED calls [eax+24h]). OnPre/OnPostDeviceReset above override the
+    // CDeviceResetCallback vtable (second vptr). Declarations only: no layout change.
+protected:
+    virtual void Update();                              // slot 5 0x00418289
+    virtual void GetInputs();                           // slot 6 0x00416E78
+    virtual void Render();                              // slot 7 0x00417001
+    virtual void PostInit();                            // slot 8 0x00416953
+public:
+    virtual bool IsEditorActive() const;                // slot 9 0x004197B0
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CMainGameComponent)==0x161E8);
 #endif

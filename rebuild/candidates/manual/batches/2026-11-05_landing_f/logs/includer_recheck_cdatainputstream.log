@@ -1,0 +1,64 @@
+addr       parity           behav  name
+004310a7   RELOCATION_MATCH PASS   Transfer<CWideString>
+00431143   RELOCATION_MATCH PASS   Transfer<CCharString>
+0047f58b   RELOCATION_MATCH PASS   AddRegionAndTimeInfo
+004b05c0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004b05c0   RELOCATION_MATCH PASS   TransferBoasts
+00520670   RELOCATION_MATCH PASS   LoadHeroStateBinary
+00521620   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@00ABU__false_type@0@@Z -> 005269b0 labelled 'std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>'
+00521620   RELOCATION_MATCH PASS   SaveToGameStateBinary
+00522720   RELOCATION_MATCH PASS   RuntimeLoadEntities
+00597228   RELOCATION_MATCH PASS   AddRegionAndTimeInfo
+005dbed0   RELOCATION_MATCH PASS   TransferBinaryIn
+006d2bd0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+006d2bd0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+006d2bd0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@J@2@ABU32@ABU__false_type@2@I_N@Z -> 006d4750 labelled 'STL::Vector8_string8::InsertGrow_006d4750'
+006d2bd0   RELOCATION_MATCH PASS   OnSerialise
+009945e0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+009945e0   RELOCATION_MATCH PASS   ReadColour
+009a8170   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+009a8170   RELOCATION_MATCH PASS   OpenIniFile
+009a8840   RELOCATION_MATCH PASS   OpenRetailBank
+009ad5f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+009ad5f0   RELOCATION_MATCH PASS   DecompressDefinitionData
+00a4fe60   WARN RELOC_NAME: ?HasMovementTrack@C3DAnimFileMovementVectorChunk@@QBE_NXZ -> 00aae920 labelled 'C3DAnimFileRootChunk::HasSequences'
+00a4fe60   WARN RELOC_NAME: ?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z -> 00a4efc0 labelled 'C3DKeyframe_InitialiseAsConstant'
+00a4fe60   RELOCATION_MATCH PASS   InitialiseSharedAnimation
+00aefaa0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@SIXPAX@Z -> 00af0710 labelled '_global::DeleteViaVtable0_00af0710'
+00aefaa0   RELOCATION_MATCH PASS   ReadBinary
+00af12a0   RELOCATION_MATCH PASS   BuildEmitterTemplate
+00afa2b0   RELOCATION_MATCH PASS   ReadBinary
+00afffe0   RELOCATION_MATCH PASS   ReadBinary
+00b068f0   RELOCATION_MATCH PASS   ReadBinary
+00b0b860   RELOCATION_MATCH PASS   ReadBinary
+00b149d0   RELOCATION_MATCH PASS   ReadBinary
+00b193d0   RELOCATION_MATCH PASS   ReadBinary
+00b1b1b0   RELOCATION_MATCH PASS   ReadBinary
+00b3efa0   RELOCATION_MATCH PASS   ReadMapInfoBlock
+
+WINS: 25
+  004310a7 RELOCATION_MATCH CPersistContext::??$Transfer@VCWideString@@@CPersistContext@@QAEXAAVCWideString@@@Z
+  00431143 RELOCATION_MATCH CPersistContext::??$Transfer@VCCharString@@@CPersistContext@@QAEXAAVCCharString@@@Z
+  0047f58b RELOCATION_MATCH CTCInGameMenu::?AddRegionAndTimeInfo@CTCInGameMenu@@AAEXABVCWideString@@@Z
+  004b05c0 RELOCATION_MATCH CQuestManager::?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z
+  00520670 RELOCATION_MATCH CThingManager::?LoadHeroStateBinary@CThingManager@@QAEXAAVCPersistContext@@@Z
+  00521620 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?SaveToGameStateBinary@CEntityRuntimePersistence@NThingManager@@QAEXAAVCPersistContext@@@Z
+  00522720 RELOCATION_MATCH CThingManager::?RuntimeLoadEntities@CThingManager@@QAEXJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@3@@Z
+  00597228 RELOCATION_MATCH NUISystem::CFrontEndManager::?AddRegionAndTimeInfo@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z
+  005dbed0 RELOCATION_MATCH CAnimComponentFollowingOnAnimFilter::?TransferBinaryIn@CAnimComponentFollowingOnAnimFilter@@UAEXAAVCMemoryDataInputStream@@@Z
+  006d2bd0 RELOCATION_MATCH CTCWife::?OnSerialise@CTCWife@@UAEXAAVCPersistContext@@_N@Z
+  009945e0 RELOCATION_MATCH CDataInputStream::?ReadColour@CDataInputStream@@QAE?AVCRGBColour@@XZ
+  009a8170 RELOCATION_MATCH CBankFileManager::?OpenIniFile@CBankFileManager@@QAEXABVCWideString@@@Z
+  009a8840 RELOCATION_MATCH CBankFileManager::?OpenRetailBank@CBankFileManager@@QAEXABVCWideString@@_N@Z
+  009ad5f0 RELOCATION_MATCH CDefinitionManager::?DecompressDefinitionData@CDefinitionManager@@IBEXAAVCMemoryDataInputStream@@K@Z
+  00a4fe60 RELOCATION_MATCH C3DAnimation2::?InitialiseSharedAnimation@C3DAnimation2@@QAE_NABVC3DAnimFile@@W4EAnimationType@@@Z
+  00aefaa0 RELOCATION_MATCH NParticleEngine::CParticleEmitter::?ReadBinary@CParticleEmitter@NParticleEngine@@QAEXAAVCDataInputStream@@@Z
+  00af12a0 RELOCATION_MATCH NParticleEngine::CParticleEmitterInfo::CEmitterData::?BuildEmitterTemplate@CEmitterData@CParticleEmitterInfo@NParticleEngine@@QAEXXZ
+  00afa2b0 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::?ReadBinary@CPSCRenderSprite@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00afffe0 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?ReadBinary@CPSCRenderMesh@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b068f0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?ReadBinary@CPSCSingleSprite@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b0b860 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::?ReadBinary@CPSCUpdateNormal@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b149d0 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::?ReadBinary@CPSCEmitterGeneric@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b193d0 RELOCATION_MATCH NParticleEngine::CPSCLight::?ReadBinary@CPSCLight@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b1b1b0 RELOCATION_MATCH NParticleEngine::CPSCSpline::?ReadBinary@CPSCSpline@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b3efa0 RELOCATION_MATCH CEngineMap::?ReadMapInfoBlock@CEngineMap@@CIXAAUCStaticMapInfoBlock@1@AAVCDataInputStream@@@Z

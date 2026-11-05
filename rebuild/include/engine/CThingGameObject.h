@@ -24,6 +24,19 @@ public:
     virtual const CThing* GetThingStandingOn() const;                    // slot 39 0x00529930
     virtual CThing* GetThingStandingOn();                                // slot 38 0x00529940
 #endif
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_LEVELSCRIPT
+    // Nested opt-in (chunk 779, row 0x00837E40 CThingTrackNode::ConstructFromLevelScript): Ego_r.pdb
+    // ?ConstructFromLevelScript@CThingGameObject@@UAE_NPBD@Z (public virtual override of CThingPhysical's, FABLE_RETAIL_CTHINGPHYSICAL_LEVELSCRIPT;
+    // retail 0x00838930, CThingGameObject vtable 0x01244F7C slot 4, called by name from the CThingTrackNode / CThingHolySite / CThingObject
+    // overrides) and ?ConstructFromParams@CThingGameObject@@IAE_NJABVC3DVector@@JKABVCCharString@@PAVCThingPhysical@@2_N@Z (protected,
+    // retail 0x008388D0, bound by the landed CThingTrackNode::ConstructFromParams 0x00836C50). Declarations only: no layout change.
+public:
+    virtual bool ConstructFromLevelScript(const char* script);   // 0x00838930
+protected:
+    bool ConstructFromParams(long defIndex,const C3DVector& position,long a3,unsigned long a4,const CCharString& scriptName,
+                             CThingPhysical* creator,CThingPhysical* originalCreator,bool a8);   // 0x008388D0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingGameObject)==0xd0);
 #else

@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00837e40   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00837e40   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00837e40   RELOCATION_MATCH PASS   ConstructFromLevelScript
+00c064d0   RELOCATION_MATCH PASS   inflate_table
+
+WINS: 2
+  00837e40 RELOCATION_MATCH CThingTrackNode::?ConstructFromLevelScript@CThingTrackNode@@UAE_NPBD@Z
+  00c064d0 RELOCATION_MATCH _global::_inflate_table
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CThingTrackNode_ConstructFromLevelScript_00837e40
+  global_inflatetable_00c064d0

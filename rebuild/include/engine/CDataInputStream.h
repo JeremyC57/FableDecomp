@@ -35,6 +35,11 @@ public:
     template<class T> __forceinline T ReadType() { T val; Read(&val,sizeof(T)); return val; }
     __forceinline unsigned long ReadULONG() { return ReadType<unsigned long>(); }
     __forceinline long ReadSLONG() { return ReadType<long>(); }
+    // Chunk 779 (row 0x00AAD650 CWaveLoader::LoadWaveFile): FableWin.pdb ?ReadUWORD@CDataInputStream@@QAEGXZ, ?ReadSWORD@..@@QAEFXZ and
+    // ?ReadUBYTE@..@@QAEEXZ (Ego_r keeps only the ReadType<G/F/E> instances they wrap), expanded in retail like ReadULONG / ReadSLONG.
+    __forceinline unsigned short ReadUWORD() { return ReadType<unsigned short>(); }
+    __forceinline short ReadSWORD() { return ReadType<short>(); }
+    __forceinline unsigned char ReadUBYTE() { return ReadType<unsigned char>(); }
     // Chunk 737 (CPSCLight / CPSCSingleSprite::ReadBinary 0x00B193D0 / 0x00B068F0): FableWin.pdb ?ReadFloat@CDataInputStream@@QAEMXZ
     // and ?ReadEBOOL@CDataInputStream@@QAE_NXZ, expanded in retail (a 4-byte read stored as a float; a 1-byte read, `test ; setne`,
     // as the landed CPSCAttractor::ReadBinary 0x00B18390 model's ReadBool); ?ReadColour@CDataInputStream@@QAE?AVCRGBColour@@XZ
@@ -45,6 +50,11 @@ public:
     // Chunk 739 (CPSCUpdateNormal::ReadBinary 0x00B0B860): FableWin.pdb ?Read3DVector@CDataInputStream@@QAE?AVC3DVector@@XZ, out of
     // line in retail (0x009950F0, hidden result pointer; the landed CDataInputStream_Read3DVector_009950f0 row).
     C3DVector Read3DVector();
+#ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READSTRING
+    // Nested opt-in (chunk 779, row 0x00AAD650 CWaveLoader::LoadWaveFile): Ego_r.pdb ?ReadString@CDataInputStream@@QAE?AVCCharString@@K@Z
+    // (retail 0x00996BE0, hidden result pointer; bound by the landed 0x005DBF50), out of line in retail.
+    CCharString ReadString(unsigned long length);                    // 0x00996BE0
+#endif
 #ifdef FABLE_RETAIL_CDATAINPUTSTREAM_TEXT
     // Nested opt-in (chunk 775, row 0x009A8170 CBankFileManager::OpenIniFile): Ego_r.pdb ?ReadLine@CDataInputStream@@QAE?AVCCharString@@XZ
     // (0x00994B50), ?ReadUntilCharacter@CDataInputStream@@QAE?AVCCharString@@DAA_N@Z (0x00994DC0) and

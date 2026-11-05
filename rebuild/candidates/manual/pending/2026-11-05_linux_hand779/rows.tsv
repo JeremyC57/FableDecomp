@@ -1,0 +1,6 @@
+address	module	name	length
+00c064d0	_global	inflate_table	1279
+00beae50	CWaterPatchMesh	Load	1592
+00837e40	CThingTrackNode	vfunc_4	1691
+00542a30	NUISystem::CIconText	vfunc_2	1714
+00aad650	CWaveLoader	LoadWaveFile	1840

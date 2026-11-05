@@ -196,9 +196,17 @@ public:
     vector(size_type n,const _Tp& value,const _Alloc& a=_Alloc()) : _Vector_base<_Tp,_Alloc>(n,a) {
         this->_M_finish=uninitialized_fill_n(this->_M_start,n,value);
     }
+#ifdef FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE
+    // Per-TU opt-in (chunk 779, row 0x00BEAE50 CWaterPatchMesh::Load; like FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE): STLport's
+    // vector(size_type n) is one inline body, which VC7.1 expanded in some TUs and called as a COMDAT in others; that TU calls
+    // vector<unsigned char>::vector(size_type) 0x00514E20 (??0?$vector@EV?$allocator@E@std@@@std@@QAE@I@Z, bound by the landed
+    // 0x00996610) for both CArray<unsigned char> locals (0x00BEAFDF, 0x00BEAFE9). A declaration only here, so the row calls it.
+    explicit vector(size_type n);
+#else
     explicit vector(size_type n) : _Vector_base<_Tp,_Alloc>(n,_Alloc()) {
         this->_M_finish=uninitialized_fill_n(this->_M_start,n,_Tp());
     }
+#endif
     vector(const vector& x) : _Vector_base<_Tp,_Alloc>(x.size(),x.get_allocator()) {
         this->_M_finish=__uninitialized_copy((const _Tp*)x._M_start,(const _Tp*)x._M_finish,this->_M_start,typename __type_traits<_Tp>::is_POD_type());
     }

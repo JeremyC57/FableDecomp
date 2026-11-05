@@ -14,6 +14,25 @@ private:
     bool IsEnd; // +ed, ctor837cd1
     unsigned char _pad_0xee[2];
 public: static CClass* __fastcall Alloc();
+#ifdef FABLE_RETAIL_CTHINGTRACKNODE
+    // Retail opt-in (chunk 779, row 0x00837E40): the Ego_r.pdb member set used by the landed rows -- ?ConstructFromLevelScript@CThingTrackNode@@UAE_NPBD@Z
+    // (vtable 0x01272CE4 slot 4 = 0x00837E40, the override of CThingGameObject's 0x00838930), ?ConstructFromParams@CThingTrackNode@@IAE_NJABVC3DVector@@VCCharString@@@Z
+    // (protected, 0x00836C50 landed), ?Create@CThingTrackNode@@SIPAV1@JABVC3DVector@@VCCharString@@@Z (static __fastcall, 0x008383D0),
+    // ?SetTrackName@CThingTrackNode@@QAEXABVCCharString@@@Z (0x00836EE0 landed), ?PeekTrackName@CThingTrackNode@@QBEABVCCharString@@XZ,
+    // ?IsTrackStart@ / ?IsTrackEnd@ (QBE_NXZ, inline flag reads). The virtual OnInitialActivate / WorldUpdate overrides are not declared here
+    // (their CThing base slots are not modelled in the shared chain yet). The layout above is the retail one (PDB 0x18 higher, landed 0x00836D00).
+    // Needs the retail chain (FABLE_RETAIL_CTHING, _CTHINGPHYSICAL, _CTHINGGAMEOBJECT and their _LEVELSCRIPT opt-ins) for the virtual override.
+public:
+    virtual bool ConstructFromLevelScript(const char* script);          // 0x00837E40
+    static CThingTrackNode* __fastcall Create(long defIndex,const C3DVector& position,CCharString trackName);   // 0x008383D0
+    void SetTrackName(const CCharString& trackName);                     // 0x00836EE0
+    const CCharString& PeekTrackName() const { return TrackName; }
+    bool IsTrackStart() const { return IsStart; }
+    bool IsTrackEnd() const { return IsEnd; }
+protected:
+    bool ConstructFromParams(long defIndex,const C3DVector& position,CCharString trackName);   // 0x00836C50
+public:
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingTrackNode)==0xf0);
 #endif

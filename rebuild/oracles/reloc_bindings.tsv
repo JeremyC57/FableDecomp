@@ -36848,3 +36848,9 @@ _New_c35b10@8	00c35b10	00c275e0
 ?TransformHitThings@@YI?AUCBackInserter@@PAVCBaseIntelligentPointer@@0U1@UCGetPItem@@@Z	0080ebe0	0080c590
 ?erase@CIntelligentPointerVector@@QAEXPAVCBaseIntelligentPointer@@0@Z	004ac0f0	009790f0
 ??4?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAEAAV01@ABV01@@Z	00431f90	00631720
+?ConstructFromLevelScript@CThingGameObject@@UAE_NPBD@Z	00838930	00837e40
+?SerialiseLevelState@CTCBase@@QAEX_NAAVCCharString@@0@Z	00686e10	00837e40
+?dbase@?1??inflate_table@@9@4QBGB	012b18d8	00c064d0
+?dext@?1??inflate_table@@9@4QBGB	012b1918	00c064d0
+?lbase@?1??inflate_table@@9@4QBGB	012b1858	00c064d0
+?lext@?1??inflate_table@@9@4QBGB	012b1898	00c064d0

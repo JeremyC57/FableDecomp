@@ -9533,8 +9533,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005424b0	~CIconText	NUISystem::CIconText	__thiscall	void	1	CText *	1	yes	accepted									
 00542730	ClearIcons	NUISystem::CIconText	__fastcall	ulong	1	CTVertexLandscapeBackground *	1	yes	accepted									
 00542780	AddIcon	NUISystem::CIconText	__thiscall	void	4	CIconText *,long,long,EIconFlags	1	yes	accepted									
-00542a30	NUISystem::CIconText::vfunc_2	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005430f0	InitIcons	CIconText	__thiscall	void	1	CIconText *	1	yes	accepted									
+00542a30	Draw	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005430f0	InitIcons	NUISystem::CIconText	__thiscall	void	1	CIconText *	1	yes	accepted									
 00543530	operator=	STextRecord_00543530	__thiscall	CEnginePrimitive2DText *	2	CEnginePrimitive2DText *,CEnginePrimitive2DText *	1	yes	accepted									
 00543700	Copy_SElement28_00543700	_global	__fastcall	CActionInputControl *	3	CActionInputControl *,CActionInputControl *,CActionInputControl *	1	yes	accepted									
 00543810	__uninitialized_copy	std	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -9546,8 +9546,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00543a90	MakeUnavailableDynamically	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00543aa0	vfunc_94	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00543ab0	vfunc_95	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00543ac0	vfunc_142	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00543ad0	vfunc_146	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00543ac0	GetValue	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00543ad0	GetFont	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00543ae0	SetTextWindow	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00543b10	GetAlignment	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00543b30	`vector deleting destructor'`adjustor{4}'	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -24761,7 +24761,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00837b30	DrawPreparePrimitivesForRendering	CThingStaticMeshPrimitive_837b30	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00837c70	CThingTrackNode	CThingTrackNode	unknown	undefined	0		0	unmeasured	accepted									
 00837ce0	SerialiseGameState	CThingTrackNode	__thiscall	bool	2	CThingTrackNode *,CPersistContext *	1	yes	accepted									
-00837e40	CThingTrackNode::vfunc_4	CThingTrackNode	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00837e40	ConstructFromLevelScript	CThingTrackNode	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008383d0	Create	CThingTrackNode	__fastcall	CThingTrackNode *	3	long,const C3DVector &,CCharString												
 008384e0	vfunc_22	CThingTrackNode	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008384f0	WorldUpdate	CThingTrackNode	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00838500	`scalar_deleting_destructor'	CThingTrackNode	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									

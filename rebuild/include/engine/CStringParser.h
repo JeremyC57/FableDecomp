@@ -47,6 +47,11 @@ public:
     bool PeekNextItem(CParsedItem&);
 #endif
     long ReadAsInteger();
+#ifdef FABLE_RETAIL_CSTRINGPARSER_READASUHUGE
+    // Nested opt-in (chunk 779, row 0x00837E40 CThingTrackNode::ConstructFromLevelScript): Ego_r.pdb ?ReadAsUHUGE@CStringParser@@QAE_KXZ
+    // (retail 0x009BA5B0, result in edx:eax; bound by the landed CTCDRegionExit::OnSerialise 0x00779430), out of line. Declaration only.
+    unsigned __int64 ReadAsUHUGE();                     // 0x009BA5B0
+#endif
     bool NextItemExists();
     CCharString ReadAsStringUntilWhitespace();
     CCharString ReadAsSymbol();

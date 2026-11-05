@@ -1,0 +1,8 @@
+catalog  00543ac0 NUISystem::CIconText::vfunc_142 -> NUISystem::CIconText::GetValue
+catalog  00543ad0 NUISystem::CIconText::vfunc_146 -> NUISystem::CIconText::GetFont
+manifest 00542a30 NUISystem::CIconText::NUISystem::CIconText::vfunc_2 -> NUISystem::CIconText::Draw
+manifest 005430f0 CIconText::InitIcons -> NUISystem::CIconText::InitIcons
+manifest 00543ac0 NUISystem::CIconText::vfunc_142 -> NUISystem::CIconText::GetValue
+manifest 00543ad0 NUISystem::CIconText::vfunc_146 -> NUISystem::CIconText::GetFont
+manifest 00837e40 CThingTrackNode::CThingTrackNode::vfunc_4 -> CThingTrackNode::ConstructFromLevelScript
+labels 10  catalog renamed 2  manifest renamed 5

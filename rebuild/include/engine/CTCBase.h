@@ -92,6 +92,11 @@ public:
     virtual void GlobalUpdate(bool);                                     // 26 0x006869A0
     virtual void HandleMessage(const NTCMessages::CMessageBase&);        // 27 0x006869B0
     void RemoveFromGlobalTCs();                                          // 0x00686DF0 ?RemoveFromGlobalTCs@CTCBase@@QAEXXZ (chunk 712)
+#ifdef FABLE_RETAIL_CTCBASE_SERIALISELEVELSTATE
+    // Nested opt-in (chunk 779, row 0x00837E40 CThingTrackNode::ConstructFromLevelScript): Ego_r.pdb ?SerialiseLevelState@CTCBase@@QAEX_NAAVCCharString@@0@Z
+    // (public, retail 0x00686E10, landed: (bool saving, CCharString& data, bool)), out of line. Declaration only.
+    void SerialiseLevelState(bool saving,CCharString& data,bool arg);  // 0x00686E10
+#endif
     // Retail opt-in addition (chunk 728): the public inline parent accessors, FableWin.pdb only (?GetParentThing@CTCBase@@QAEAAVCThing@@XZ
     // 0x01AA5F60 / ?GetParentThing@CTCBase@@QBEABVCThing@@XZ 0x01C91790; inline in Ego_r and retail, which read ParentThing +0x04 in place).
     CThing& GetParentThing() { return *ParentThing; }

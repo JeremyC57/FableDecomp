@@ -1,0 +1,9 @@
+address	source	grade_with_final_overlay	note
+0x00C064D0	src/00c064d0.cpp	RELOCATION_MATCH	own row, regraded with the final hdr/ overlay
+0x00837E40	src/00837e40.cpp	RELOCATION_MATCH (ORACLE_LEN=1423)	own row, regraded with the final hdr/ overlay; DIFFER against the mis-cut 1691-byte batch oracle (second function CThingTrackNode::Create inside the row)
+-	hdr/engine/CDataInputStream.h	no landed includer recheck needed	nested opt-in FABLE_RETAIL_CDATAINPUTSTREAM_READSTRING + three unused __forceinline wrappers inside the FABLE_RETAIL_CDATAINPUTSTREAM branch (the chunk-737 ReadFloat / ReadEBOOL precedent): unused inline members emit no bytes; the default (generated) branch is untouched
+-	hdr/engine/C2DBoxF.h	no landed includer recheck needed	default path textually unchanged (the corner-ctor declaration is now skipped only under FABLE_RETAIL_C2DBOXF_CORNERS, which no landed source defines: grep -rl FABLE_RETAIL_C2DBOXF_CORNERS rebuild/src/compiled is empty)
+-	hdr/engine/CThingTrackNode.h, CThingGameObject.h, CTCBase.h, CMainGameComponent.h, CStringParser.h, fable_string.h, stlport/fable_containers.h	no landed includer recheck needed	new FABLE_RETAIL_* (nested) opt-in branches only; every existing includer keeps its path byte for byte
+-	hdr/engine/CWaterPatchMesh.h, CEngineLandscapeMemoryManager.h	no landed includer recheck needed	retail opt-in branch wrapped round the unchanged generated default (FABLE_RETAIL_CWATERPATCHMESH / FABLE_RETAIL_CENGINELANDSCAPEMEMORYMANAGER)
+-	hdr/engine/NUISystem_CIconText.h, CEnginePrimitive2DSprite.h, CTVertexWaterForeground.h, CExceptionBase.h, CWaveFileException.h, CWaveFile.h, CWaveLoader.h	new headers	no existing includer
+-	hdr/fable_definition_table.h	unchanged copy	overlay search-order helper only (LESSONS: #pragma once double inclusion); do not land

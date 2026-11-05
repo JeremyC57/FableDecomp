@@ -384221,6 +384221,21 @@ $catalog = @(
         TestSource = '00/61/CPersistTraitsCTCInventoryMapCUIRegionInfo_TransferIn_00615e70_test.cpp'
         PassPattern = '00615e70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00837e40'
+        Module = 'CThingTrackNode'
+        Source = '00/83/CThingTrackNode_ConstructFromLevelScript_00837e40.cpp'
+        TestSource = '00/83/CThingTrackNode_ConstructFromLevelScript_00837e40_test.cpp'
+        PassPattern = '00837e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c064d0'
+        Module = '_global'
+        Source = '00/c0/global_inflatetable_00c064d0.cpp'
+        TestSource = '00/c0/global_inflatetable_00c064d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c064d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
