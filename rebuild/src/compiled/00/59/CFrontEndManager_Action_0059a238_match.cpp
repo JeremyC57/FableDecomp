@@ -277,7 +277,7 @@ CFrontEndManager_Action_0059a238(void* mgr /*ecx->esi*/, void* /*edx*/, void* pa
     // 5 stack temps = sub esp,0x14 : local_18/14 (CCharString), local_10 (CWideString ptr),
     // local_c/8 (CCharString).  Declared so their dtors emit LIFO in the 0xd7 path.
     char local_8[4], local_c[4], local_18[4], local_14[4];
-    void* volatile local_10;
+    void* local_10;
 
     long* plVar7;              // op[] result, shared tail
     char CVar11 = 0;           // tail bool -> lives in ebx (xor ebx,ebx), 0 in most paths

@@ -1,0 +1,17 @@
+address	with_volatile	without_volatile	verdict
+00cb0d20	RELOCATION_MATCH	RELOCATION_MATCH	no byte effect
+00ca7620	MATCH	MATCH	no byte effect
+00cac9d0	RELOCATION_MATCH	RELOCATION_MATCH	no byte effect
+00cac300	DIFFER(41v241)	DIFFER(41v241)	untested here (EH funclet row: mkpay drops funclet_offset)
+00cab370	RELOCATION_MATCH	RELOCATION_MATCH	no byte effect
+00cafce0	RELOCATION_MATCH	RELOCATION_MATCH	no byte effect
+00cacd20	RELOCATION_MATCH	DIFFER(57v60)	retail depends on volatile
+00cacd00	RELOCATION_MATCH	RELOCATION_MATCH	no byte effect
+0059a238	RELOCATION_MATCH	RELOCATION_MATCH	no byte effect
+009c3590	RELOCATION_MATCH	DIFFER(191v194)	retail depends on volatile
+009c31e0	RELOCATION_MATCH	DIFFER(104v103)	retail depends on volatile
+009c42f0	RELOCATION_MATCH	DIFFER(57v60)	retail depends on volatile
+009c3250	RELOCATION_MATCH	DIFFER(83v89)	retail depends on volatile
+009c3660	RELOCATION_MATCH	DIFFER(299v305)	retail depends on volatile
+009c5690	RELOCATION_MATCH	DIFFER(468v469)	retail depends on volatile
+009c4f20	RELOCATION_MATCH	DIFFER(485v490)	retail depends on volatile

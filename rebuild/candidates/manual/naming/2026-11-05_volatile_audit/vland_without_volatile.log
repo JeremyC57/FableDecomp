@@ -1,0 +1,50 @@
+addr       parity           behav  name
+00cb0d20   RELOCATION_MATCH PASS   ~CWorkerThread_00cb0d20
+00ca7620   MATCH            PASS   GetClassID
+00cac9d0   WARN RELOC_NAME: ??0CUnknownAllocator@@QAE@PBDPAUIUnknown@@@Z -> 00cacc80 labelled 'CUnknown::CUnknown'
+00cac9d0   RELOCATION_MATCH PASS   CreateInstance
+00cac300   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cac300   DIFFER(41v241)   PASS   Initialize
+00cab370   WARN SHARED_HEADER_AVAILABLE CBaseObject
+  WARN leaf 'CEntry_Constructor' matches no symbol in 00cab370.obj; graded the largest function
+  WARN leaf 'CEntry_Constructor' matches no symbol in 00cab370.obj; graded the largest function
+00cab370   WARN STANDIN_LEAF ??0CBasePin@@QAE@PBGPAUCBaseFilter@@PAUCCritSec@@PAJ0W4PIN_DIRECTION@@@Z (catalog CParticleMorphs::CEntry_Constructor; names another function)
+00cab370   RELOCATION_MATCH PASS   CEntry_Constructor
+00cafce0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cafce0   WARN STANDIN_LEAF ??0CRendererPosPassThru@@QAE@PBDPAUIUnknown_@@PAJPAUIPin@@@Z (catalog CVtable_012bf994::CVtable_012bf994; names another function)
+00cafce0   RELOCATION_MATCH PASS   CVtable_012bf994
+00cacd20   DIFFER(57v60)    PASS   NonDelegatingRelease
+00cacd00   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cacd00   RELOCATION_MATCH PASS   NonDelegatingAddRef
+0059a238   WARN SHARED_HEADER_AVAILABLE CUserProfileManager
+0059a238   WARN SHARED_HEADER_AVAILABLE CVirtualKeyboard
+0059a238   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0059a238   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+0059a238   WARN RELOC_NAME: ?Compare_Unsigned16Array@CWideString@@SA_NPBX0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+0059a238   WARN RELOC_NAME: ?RestartAttractModeTimer@CNewFrontendGameComponent@@QAEXXZ -> 0042dbee labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0059a238   RELOCATION_MATCH PASS   Action
+009c3590   WARN SHARED_HEADER_AVAILABLE CAFile
+009c3590   WARN SHARED_HEADER_AVAILABLE CActiveFile
+009c3590   DIFFER(191v194)  PASS   StartReadingFile
+009c31e0   WARN SHARED_HEADER_AVAILABLE CCriticalSectionLock
+009c31e0   DIFFER(104v103)  PASS   Pause
+009c42f0   DIFFER(57v60)    PASS   ProcessFileReadCompletion
+009c3250   DIFFER(83v89)    PASS   Unpause
+009c3660   WARN SHARED_HEADER_AVAILABLE CAFile
+009c3660   WARN SHARED_HEADER_AVAILABLE CActiveFile
+009c3660   DIFFER(299v305)  PASS   StartWritingFile
+009c5690   WARN SHARED_HEADER_AVAILABLE CActiveFile
+009c5690   DIFFER(468v469)  PASS   ThreadMain
+009c4f20   WARN SHARED_HEADER_AVAILABLE CCriticalSectionLock
+009c4f20   WARN SHARED_HEADER_AVAILABLE CCompressorZlib
+009c4f20   DIFFER(485v490)  PASS   ProcessAlways
+
+WINS: 7
+  00cb0d20 RELOCATION_MATCH CWorkerThread_00cb0d20::??1CWorkerThread_00cb0d20@
+  00ca7620 MATCH CBaseFilter::?GetClassID@CBaseFilter
+  00cac9d0 RELOCATION_MATCH CMemAllocator::CreateInstance
+  00cab370 RELOCATION_MATCH CBasePin::CEntry_Constructor
+  00cafce0 RELOCATION_MATCH CVtable_012bf994::??0CRendererPosPassThru
+  00cacd00 RELOCATION_MATCH CUnknown::NonDelegatingAddRef
+  0059a238 RELOCATION_MATCH CFrontEndManager::?Action@CFrontEndManager@NUISystem
+elapsed 55s rc=0
