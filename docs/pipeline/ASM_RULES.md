@@ -33,12 +33,23 @@ EXTRA_RULES.md, the briefs, the handoffs, older journal entries. The earlier rou
    - At least 30 distinct plain-C++ spellings per site, then at least 10 intrinsic spellings, before any helper.
    - Up to 60 C++ spellings where a family is a few bytes off.
    - Each attempt is recorded with what VC7.1 emitted.
-5. **No `__asm`, `naked`, `_emit` or `volatile` in any row source or behaviour test.** A row reaches asm only by `#include`-ing a
+5. **No `__asm`, `naked` or `_emit` in any row source or behaviour test.** A row reaches asm only by `#include`-ing a
    shared helper header.
    - Such a row is reconstruction: it lands, grades `retail_asm` and counts as genuine.
    - `naked` / `_emit` byte bakes (`naked_asm`, `emit_bake`, `asm_bake`) are oracles, never reconstruction, and never counted.
 6. **Bytes the linker copied from a VC7.1 library or a vendor's shipped `.asm`** are a separate grade, `toolchain_library`
    (`docs/pipeline/LIBRARY_SIGNATURES.md`), and are not covered by this page.
+
+## `volatile` (2026-11-05 audit, `rebuild/candidates/manual/naming/2026-11-05_volatile_audit/`)
+`volatile` is standard, portable C++, not asm. It may appear only where retail used it:
+- **Retail's bytes depend on it:** without it VC7.1 drops reads that retail keeps. Examples: CFileInstaller's cross-thread flags,
+  and `CUnknown::NonDelegatingRelease` re-reading `m_cRef`. Add a `// Retail-volatile:` line citing the retail address of a
+  kept access.
+- **Or the published vendor source declares it:** DirectShow BaseClasses `volatile LONG m_cRef` (combase.h), and the SDK
+  `Interlocked*(LONG volatile*)` prototypes. Every model of that class or prototype then keeps the same declaration.
+
+It is never a trick to force a store or a load that retail does not need. The audit removed one: 0x0059A238 `void* volatile
+local_10`, which had no byte effect.
 
 ## Approximate instructions (owner decision, 2026-11-05)
 - Some instructions give results whose low bits vary between CPU families: `rsqrtps` / `rsqrtss` and `rcpps` / `rcpss`. Example:
