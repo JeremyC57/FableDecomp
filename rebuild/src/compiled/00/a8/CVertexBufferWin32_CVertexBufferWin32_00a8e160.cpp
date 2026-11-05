@@ -1,6 +1,7 @@
 // CVertexBufferWin32::CVertexBufferWin32() -- the default shell: no D3D buffer, zero length/type/stride,
 // identity compression params (scale 1, bias 0). Vtable 0x0129BA20 (RTTI: CVertexBufferWin32).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A8E160, length 61 bytes.
+// Leaf: ??0CVertexBufferWin32_Retail@@QAE@XZ
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0. Manifest label (CChangingStateComponent::Initialise) corrected
 // from the stored vtable.
 // CBase: the engine's polymorphic root (vtable @ 0x0129A7C4 in the ctor, 0x01231710 in the dtor);
