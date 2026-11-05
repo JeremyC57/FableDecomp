@@ -1,0 +1,17 @@
+address	name
+0055f710	CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest
+005e8220	CTCQuestCompletionUI::OnSerialise
+006303c0	NUISystem::CUIDef::CUIDef
+00803540	CTCTargetingPlayer::UpdateTargetedPositionRandomWalk
+00ac92c0	QuadricOptimiserInternals::COptimisedPrimitive::ComputeContraction
+00789a70	CTCHeroRangedAttacks::GetPullBackAmount
+00663340	CThingCreatureBase::GetPHeroCombatDef
+00ad4a70	QuadricOptimiserInternals::CUniqueVertex::~CUniqueVertex
+00ac7eb0	QuadricOptimiserInternals::COptimisedPrimitive::ComputeSelfContraction
+00ac7750	QuadricOptimiserInternals::COptimisedPrimitive::ComputeOptimalVertexPlacement
+00ac82a0	QuadricOptimiserInternals::COptimisedPrimitive::ComputeSubContractionCost
+00840f50	LHNetworkLib::LHHttp2::LHHttp2
+008410d0	LHNetworkLib::LHHttp2::~LHHttp2
+0083f870	LHNetworkLib::LHHttp2::SetProxySettings
+0083fb20	LHNetworkLib::LHHttp2::SetConnectionDetails
+0083fbc0	LHNetworkLib::LHHttpHeaders::Reset

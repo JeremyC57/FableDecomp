@@ -2055,3 +2055,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A tail written once after an if/else gets one schedule; repeating it inside an early-return branch (VC7.1 merges the copies) gives the other (0x00597BF2).
 - FABLE_RETAIL_STLP_MAP moves spilled map references from [ebp-8] into a dead parameter slot at [ebp+8].
 - VC7.1 folds `x < 0` right after `x = y + 1` into the inc flags (`jns`). No plain C++ found yet gives retail's `cmp eax,ebp` against a zero register (0x009BEF80).
+- The form of a function's FIRST map walk decides how many `_M_insert_overflow` sites VC7.1 expands in it: a `while` loop with the iterator set at its declaration gives one (0x005E8220).
+- x87 compare spellings: `!(a<b)` gives `test ah,5; jnp`; `a>=b` gives `test ah,1; jne`; `!(a>b)` gives `test ah,41h; je`; `a<=b` gives `jp` (0x00AC92C0).
+- Local declaration order chooses between callee-saved registers; same-TU noinline callee bodies decide which registers survive a call (0x00AC92C0).
+- VC7.1 builds implicit-conversion argument temporaries before the other arguments; an explicit `std::string(x)` is evaluated right to left with them.

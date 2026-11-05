@@ -1,0 +1,10 @@
+header	landed_includer	check	result
+boost/scoped_ptr.h	rebuild/src/compiled/00/8e/CWillButtonHelperTimer_CWillButtonHelperTimer_008edff0.cpp	compile mirror v base_include, objdump -dr diff	identical
+engine/CTCHeroRangedAttacks.h	rebuild/src/compiled/00/69/CGameCameraManager_PushProjectileWeaponMode_00698d10.cpp	compile mirror v base_include, objdump -dr diff	identical
+engine/CTCTargetingPlayer.h	rebuild/src/compiled/00/68/CInputProcessTargetLockRightStickTargetSelect_ProcessInput_00689130.cpp	compile mirror v base_include, objdump -dr diff	identical
+engine/CThingCreatureBase.h	rebuild/src/compiled/00/83/CThingAICreature_DrawGetEditDrawInfo_00830150.cpp	compile mirror v base_include, objdump -dr diff	identical
+engine/CUserProfileManager.h	rebuild/src/compiled/00/6c/CTCHero_FrameUpdate_006c9fd0.cpp	compile mirror v base_include, objdump -dr diff	identical
+engine/LHHttp2.h	rebuild/src/compiled/00/83/LHNetworkLibLHHttp2_ResetDocumentRecv_0083eb90.cpp	compile mirror v base_include, objdump -dr diff	identical
+stlport/fable_containers.h	rebuild/src/compiled/00/84/CCreatureActionPickUpThingAtTable_PerformAction_00849f70.cpp	compile mirror v base_include, objdump -dr diff	identical
+stlport/fable_map.h	rebuild/src/compiled/00/d5/NScriptCQGuildTrainingPreMeleeScript_Main_00d51520.cpp	compile mirror v base_include, objdump -dr diff	identical
+engine/CTCHeroExperience.h	rebuild/src/compiled/00/57/CTCInventoryExperience_BuyAbility_005785b3.cpp	compile mirror v base_include, objdump -dr diff	identical

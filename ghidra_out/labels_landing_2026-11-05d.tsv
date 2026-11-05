@@ -1,0 +1,17 @@
+address	name	evidence
+0055f710	CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest	landing 2026-11-05d (chunk 777): 
+005e8220	CTCQuestCompletionUI::OnSerialise	landing 2026-11-05d (chunk 777): 
+006303c0	NUISystem::CUIDef::CUIDef	landing 2026-11-05d (chunk 777): 
+00803540	CTCTargetingPlayer::UpdateTargetedPositionRandomWalk	landing 2026-11-05d (chunk 777): 
+00ac92c0	QuadricOptimiserInternals::COptimisedPrimitive::ComputeContraction	landing 2026-11-05d (chunk 777): 
+00789a70	CTCHeroRangedAttacks::GetPullBackAmount	landing 2026-11-05d (chunk 777): 
+00663340	CThingCreatureBase::GetPHeroCombatDef	landing 2026-11-05d (chunk 777): 
+00ad4a70	QuadricOptimiserInternals::CUniqueVertex::~CUniqueVertex	landing 2026-11-05d (chunk 777): 
+00ac7eb0	QuadricOptimiserInternals::COptimisedPrimitive::ComputeSelfContraction	landing 2026-11-05d (chunk 777): 
+00ac7750	QuadricOptimiserInternals::COptimisedPrimitive::ComputeOptimalVertexPlacement	landing 2026-11-05d (chunk 777): 
+00ac82a0	QuadricOptimiserInternals::COptimisedPrimitive::ComputeSubContractionCost	landing 2026-11-05d (chunk 777): 
+00840f50	LHNetworkLib::LHHttp2::LHHttp2	landing 2026-11-05d (chunk 777): 
+008410d0	LHNetworkLib::LHHttp2::~LHHttp2	landing 2026-11-05d (chunk 777): 
+0083f870	LHNetworkLib::LHHttp2::SetProxySettings	landing 2026-11-05d (chunk 777): 
+0083fb20	LHNetworkLib::LHHttp2::SetConnectionDetails	landing 2026-11-05d (chunk 777): 
+0083fbc0	LHNetworkLib::LHHttpHeaders::Reset	landing 2026-11-05d (chunk 777): 

@@ -1,0 +1,6 @@
+address	name	status	attempts	note
+0055f710	CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest	parked	19	DIFFER(1121v1122) dl=46: register choice at the three dynamic std::string sites (add eax,esi / lea edx,[esi+eax] roles), literal-ctor lea registers, AddHeader arg scheduling, resize tag ecx v edx, key edx v eax, post-CryptoMatic ordering; differ/0055f710.cpp
+005e8220	CTCQuestCompletionUI::OnSerialise	matched	6	RELOCATION_MATCH (vland PASS); catalog name was a guess (vtable 0x0125589C slot 1)
+006303c0	NUISystem::CUIDef::CUIDef(const CUIDef&)	matched	3	RELOCATION_MATCH (vland PASS); new overlay NUISystem_CUIStateDef.h
+00803540	CTCTargetingPlayer::UpdateTargetedPositionRandomWalk	parked	30	DIFFER(1108v1108) dl=15, same length: scheduling only (sine member store before v after fcos; lea eax,[esi+9Ch]/mov ecx,eax/pop edi three x87 ops late); differ/00803540.cpp
+00ac92c0	QuadricOptimiserInternals::COptimisedPrimitive::ComputeContraction	matched	36	RELOCATION_MATCH (vland PASS); same-TU noinline CQuadric::Clear/operator+=/EvaluateError + ComputeSubContractionCost (+GetGroupDifference stand-in); declaration order vertex1, unique1, vertex2, unique2

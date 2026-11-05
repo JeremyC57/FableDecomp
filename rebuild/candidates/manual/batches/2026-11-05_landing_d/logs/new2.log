@@ -1,0 +1,14 @@
+addr       parity           behav  name
+005e8220   WARN STANDIN_LEAF ?OnSerialise@CTCQuestCompletionUI@@MAEXAAVCPersistContext@@_N@Z (catalog _global::CTCInventoryMapSerialization_TransferCharactersAndStats; names another function)
+005e8220   RELOCATION_MATCH PASS   OnSerialise
+006303c0   RELOCATION_MATCH PASS   CUIDef
+00ac92c0   WARN RELOC_CONFLICT: ??0?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@ABV01@@Z -> 00ad3a10 here, 00513700 in landed 0051c470
+00ac92c0   WARN RELOC_NAME: ??0?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@ABV01@@Z -> 00ad3a10 labelled 'std::_Rb_tree<unsigned long,unsigned long,std::_Identity<unsigned long>,std::less<unsigned long>,std::allocator<unsigned long> >::_Rb_tree'
+00ac92c0   WARN RELOC_NAME: ??1CUniqueVertex@QuadricOptimiserInternals@@QAE@XZ -> 00ad4a70 labelled 'CTwoLongSets::~CTwoLongSets'
+00ac92c0   WARN STANDIN_LEAF ?ComputeContraction@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXAAVCVertexPairContraction@2@@Z (catalog _global::COptimisedPrimitive_ContractVertexPair; names another function)
+00ac92c0   RELOCATION_MATCH PASS   ComputeContraction
+
+WINS: 3
+  005e8220 RELOCATION_MATCH CTCQuestCompletionUI::?OnSerialise@CTCQuestCompletionUI@@MAEXAAVCPersistContext@@_N@Z
+  006303c0 RELOCATION_MATCH NUISystem::CUIDef::??0CUIDef@NUISystem@@QAE@ABV01@@Z
+  00ac92c0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::?ComputeContraction@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXAAVCVertexPairContraction@2@@Z

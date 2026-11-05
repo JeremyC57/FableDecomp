@@ -4,10 +4,24 @@
 // boost::scoped_ptr (Boost 1.30 boost/scoped_ptr.hpp): one T* member; the accessors are inline (retail reads the
 // pointer straight through them, e.g. CMainGameComponent::PeekWorld). Union of the members used by the rows that need it.
 namespace boost {
+#ifdef FABLE_RETAIL_SCOPED_PTR_RESET
+// Boost 1.30 boost/checked_delete.hpp (FableWin.pdb ??$checked_delete@...@boost@@YAXPAV...@Z; inline in retail).
+template<class T> inline void checked_delete(T* x) { typedef char type_must_be_complete[sizeof(T)]; delete x; }
+#endif
 template<class T> class scoped_ptr {
 public:
     explicit scoped_ptr(T* p=0):ptr(p) {}
+#ifdef FABLE_RETAIL_SCOPED_PTR_RESET
+    // Nested opt-in (chunk 777, row 0x0055F710 CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest): Boost 1.30
+    // scoped_ptr.hpp's inline destructor (checked_delete), reset (`this_type(p).swap(*this)`) and swap; retail expands all three
+    // (0x0055F73A: the old pointer read, the new one stored, then `~LHHttp2; operator delete` on the old one). FableWin.pdb
+    // ?reset@?$scoped_ptr@VLHHttp2@LHNetworkLib@@@boost@@QAEXPAVLHHttp2@LHNetworkLib@@@Z / ?swap@...@QAEXAAV12@@Z.
+    ~scoped_ptr() { checked_delete(ptr); }
+    void reset(T* p=0) { scoped_ptr<T>(p).swap(*this); }
+    void swap(scoped_ptr& b) { T* tmp=b.ptr; b.ptr=ptr; ptr=tmp; }
+#else
     ~scoped_ptr();
+#endif
     T& operator*() const { return *ptr; }
     T* operator->() const { return ptr; }
     T* get() const { return ptr; }

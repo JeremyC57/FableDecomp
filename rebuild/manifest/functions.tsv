@@ -12457,7 +12457,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005e4be0	GetQuestDescription	CTCQuestCompletionUI	__thiscall	void	2	CTCQuestCompletionUI *,CComponent *	1	yes	accepted									
 005e5f30	ActivateReal	CTCQuestCompletionUI	__thiscall	void	1	CTCQuestCompletionUI *	1	yes	accepted									
 005e78f0	GlobalUpdate	CTCQuestCompletionUI	__thiscall	void	2	CTCQuestCompletionUI *,bool	1	yes	accepted									
-005e8220	CTCInventoryMapSerialization_TransferCharactersAndStats	_global	unknown	undefined	0		0	yes	accepted									
+005e8220	OnSerialise	CTCQuestCompletionUI	unknown	undefined	0		0	yes	accepted									
 005e8980	Increment	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 005e8ad0	CIVCountedPointer_Attach_005e8ad0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5e\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e8ad0.cpp
 005e8c00	FreeTree_CTreeOwner_005e8c00	_unattributed	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
@@ -13384,7 +13384,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0062fe60	CUIDef	NUISystem::CUIDef	unknown	undefined	0		0	yes	accepted									
 006301a0	~CUIDef	NUISystem::CUIDef	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 00630350	CUIStateDef	NUISystem::CUIStateDef	__thiscall	undefined	1	CUIStateDef *	0	yes	accepted									
-006303c0	CUIDef	CUIDef	__thiscall	undefined	2	CUIDef *,CUIDef *	0	yes	accepted									
+006303c0	CUIDef	NUISystem::CUIDef	__thiscall	undefined	2	CUIDef *,CUIDef *	0	yes	accepted									
 00630a10	FreeTree_CTreeOwner_00630a10	_unattributed	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 00630a50	ScalarDeletingDtor_00630a50	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\63\CLandscapeBackgroundPatch_vectordeletingdestructor_00630a50.cpp
 00630b20	RbTree_Clear_00630b20	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\63\CTCCarryable_OnKill_00630b20.cpp
@@ -21437,7 +21437,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00789a10	SetProjectileTargetingZoomDelta	CTCHeroRangedAttacks	unknown	undefined	0		0	yes	accepted									
 00789a50	GetMember_float0x40_00789a50	_global	__thiscall	float	2	CMap *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\78\DrawGetSeaLevel_DrawGetSeaLevel_00789a50.cpp
 00789a60	GetShotBuildupTime	CTCHeroRangedAttacks	__thiscall	float	1	CTCTalk *	1	yes	accepted									
-00789a70	GetMember_float0x20_00789a70	_global	__thiscall	float	2	CMap *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\78\DrawGetSeaLevel_DrawGetSeaLevel_00789a70.cpp
+00789a70	GetPullBackAmount	CTCHeroRangedAttacks	__thiscall	float	2	CMap *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\78\DrawGetSeaLevel_DrawGetSeaLevel_00789a70.cpp
 00789a80	GetShotAccuracyFraction	CTCHeroRangedAttacks	__thiscall	float	2	CMap *,float	1	yes	accepted									
 00789ab0	IsToUseFirstPersonTargetingMode	CTCHeroRangedAttacks	__thiscall	bool	1	C3DMeshInfo *	1	yes	accepted									
 00789b00	ResetProjectileTargetingZoomParameter	CTCHeroRangedAttacks	__thiscall	void	1	CTCHeroRangedAttacks *	1	yes	accepted									
@@ -23739,7 +23739,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00802e00	SetPTargetedThing	CTCTargetingPlayer	__thiscall	void	2	CTCTargetingPlayer *,CThing *	1	yes	accepted									
 008031e0	GetPBestThingForMeleeAttack	CTCTargetingPlayer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00803280	UpdateTargetThreatening	CTCTargetingPlayer	__thiscall	void	1	CTCTargetingPlayer *	1	yes	accepted									
-00803540	CViewBase_UpdateSeaLevelParticles	_global	unknown	undefined	0		0	yes	accepted									
+00803540	UpdateTargetedPositionRandomWalk	CTCTargetingPlayer	unknown	undefined	0		0	yes	accepted									
 008039a0	IsTargetedThingOfTypeInRange	CTCTargetingPlayer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00803b20	PostProcessTargetedThing	CTCTargetingPlayer	__thiscall	void	1	CTCTargetingPlayer *	1	yes	accepted									
 00803d60	UpdateProjectileTargeting	CTCTargetingPlayer	__thiscall	void	1	CTCTargetingPlayer *	1	yes	accepted									
@@ -39547,18 +39547,18 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ac70f0	GetInverseMatrixPart	_global	__thiscall	CMatrix3x4	1	CQuadric *	1	yes	accepted									
 00ac7200	Vector_ProjectOntoPlane	_global	unknown	undefined	0		0	yes	accepted									
 00ac7300	FindTextureTangent	COptimisedPrimitive	__thiscall	C3DVector	7	COptimisedPrimitive *,C3DVector *,C3DVector *,C3DVector *,float,float,float	1	yes	accepted									
-00ac7750	ComputeOptimalVertexPlacement	COptimisedPrimitive	__thiscall	C3DVector	4	COptimisedPrimitive *,CQuadric *,C3DVector *,C3DVector *	1	yes	accepted									
+00ac7750	ComputeOptimalVertexPlacement	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	C3DVector	4	COptimisedPrimitive *,CQuadric *,C3DVector *,C3DVector *	1	yes	accepted									
 00ac7940	RemapIndex	CVertexPairContraction	__thiscall	void	3	CVertexPairContraction *,ulong,ulong	1	yes	accepted									
 00ac7990	Contains	CPairList_00ac7990	__thiscall	void	2	CList *,CComponent *	1	yes	accepted									
 00ac7a90	ContainsAllVertices	QuadricOptimiserInternals::CVertexPairContraction	unknown	undefined	0		0	yes	accepted									
 00ac7b00	CleanUp	QuadricOptimiserInternals::CVertexPairContraction	__thiscall	void	1	CVertexPairContraction *	1	yes	accepted									
 00ac7cb0	GetFaceNormal	COptimisedPrimitive	__thiscall	C3DVector	2	COptimisedPrimitive *,COptimisedFace *	1	yes	accepted									
 00ac7e10	FindFaceTextureTangents	COptimisedPrimitive	__thiscall	void	2	COptimisedPrimitive *,COptimisedFace *	1	yes	accepted									
-00ac7eb0	ComputeSelfContraction	COptimisedPrimitive	__thiscall	void	2	COptimisedPrimitive *,CVertexPairContraction *	1	yes	accepted									
+00ac7eb0	ComputeSelfContraction	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	void	2	COptimisedPrimitive *,CVertexPairContraction *	1	yes	accepted									
 00ac7fc0	Contains	CResourceIndex_00ac7fc0	__thiscall	CTexture *	1	CDisplayManager *	1	yes	accepted									
 00ac7ff0	GetGroupDifference	QuadricOptimiserInternals::COptimisedVertex	unknown	undefined	0		0	yes	accepted									
 00ac8170	PaintSegment	QuadricOptimiserInternals::COptimisedPrimitive	unknown	undefined	0		0	yes	accepted									
-00ac82a0	ComputeSubContractionCost	COptimisedPrimitive	__thiscall	float	3	COptimisedPrimitive *,CSubContraction *,C3DVector *	1	yes	accepted									
+00ac82a0	ComputeSubContractionCost	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	float	3	COptimisedPrimitive *,CSubContraction *,C3DVector *	1	yes	accepted									
 00ac8360	IsIllegal	QuadricOptimiserInternals::CVertexPairContraction	unknown	undefined	0		0	yes	accepted									
 00ac8540	PaintSegments	COptimisedPrimitive	__thiscall	void	1	COptimisedPrimitive *	1	yes	accepted									
 00ac85d0	CollapseSegments	COptimisedPrimitive	__thiscall	void	2	COptimisedPrimitive *,float	1	yes	accepted									
@@ -39569,7 +39569,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ac8a60	UpdateCost	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	void	2	COptimisedPrimitive *,CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> *	1	yes	accepted									
 00ac8ae0	JoinAdjacentFaces	COptimisedPrimitive	__thiscall	bool	3	COptimisedPrimitive *,ulong,ulong	1	yes	accepted									
 00ac8c80	COptimisedPrimitive_ComputeBoundingBox	_global	unknown	undefined	0		0	yes	accepted									
-00ac92c0	COptimisedPrimitive_ContractVertexPair	_global	unknown	undefined	0		0	yes	accepted									
+00ac92c0	ComputeContraction	QuadricOptimiserInternals::COptimisedPrimitive	unknown	undefined	0		0	yes	accepted									
 00ac96e0	UpdateContractions	QuadricOptimiserInternals::COptimisedPrimitive	unknown	undefined	0		0	yes	accepted									
 00ac97d0	RemapGroups	QuadricOptimiserInternals::COptimisedVertex	unknown	undefined	0		0	yes	accepted									
 00ac99f0	RemapGroups	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	void	2	COptimisedPrimitive *,map<unsigned_long,unsigned_long,std::less<unsigned_long>,std::allocator<std::pair<unsigned_long_const_,unsigned_long>_>_> *	1	yes	accepted									
@@ -39714,7 +39714,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ad4960	sort_heap	std	__fastcall	void	2	long *,long *	1	yes	accepted									
 00ad49c0	set	std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> >	unknown	undefined	0		0	yes	accepted									
 00ad4a00	~CRetailTree_erase004cf810	CRetailTree_erase004cf810	unknown	undefined	0		0	yes	accepted									
-00ad4a70	~CTwoLongSets	CTwoLongSets	__thiscall	void	2	CWound *,CTCTextureDecal *	1	yes	accepted									
+00ad4a70	~CUniqueVertex	QuadricOptimiserInternals::CUniqueVertex	__thiscall	void	2	CWound *,CTCTextureDecal *	1	yes	accepted									
 00ad4c40	CUniqueVertex	QuadricOptimiserInternals::CUniqueVertex	unknown	undefined	0		0	yes	accepted									
 00ad4ca0	erase	std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
 00ad4d10	_M_insert_overflow	std::vector<QuadricOptimiserInternals::COptimisedEdge, std::allocator<QuadricOptimiserInternals::COptimisedEdge>>	unknown	undefined	0		0	yes	accepted									

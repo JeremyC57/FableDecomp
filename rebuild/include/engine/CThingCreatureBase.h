@@ -87,6 +87,12 @@ public:
     // Chunk 774 (rows 0x007A4520 CTCWillEnflame::PlaySoundW, ...): Ego_r.pdb 0x0053CF90 / FableWin.pdb 0x01D9C460
     // ?MakeNoise@CThingCreatureBase@@QAEXABVCCharString@@@Z, out of line in retail at 0x00662110 (landed row). Declaration only.
     void MakeNoise(const CCharString& noiseName);                        // 0x00662110
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_HEROCOMBATDEF
+    // Nested opt-in (chunk 777, row 0x00803540 CTCTargetingPlayer::UpdateTargetedPositionRandomWalk): Ego_r.pdb / FableWin.pdb
+    // ?GetPHeroCombatDef@CThingCreatureBase@@QBE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ, out of line in retail at 0x00663340
+    // (hidden CDefPointer result; landed callers 0x006D6EA0 / 0x006D7E10 / 0x006D7E70). Declaration only: no layout change.
+    CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const;        // 0x00663340
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CLEARQUEUED
     // Nested opt-in (chunk 765, row 0x00663600): Ego_r.pdb / FableWin.pdb ?ClearQueuedActions@CThingCreatureBase@@QAEXXZ, out of line in
     // retail (`add ecx,108h ; jmp` the PQueuedActions list's out-of-line clear 0x00669B50). Declaration only: no layout change.

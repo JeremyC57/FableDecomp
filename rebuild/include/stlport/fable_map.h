@@ -240,6 +240,12 @@ private:
 public:
     typedef typename _Rep_type::const_iterator iterator;
     set():_M_t(Compare(),A()){}
+#ifdef FABLE_RETAIL_STLP_SET_COPY
+    // Retail branch (chunk 777, row 0x00AC92C0 COptimisedPrimitive::ComputeContraction): STLport 4.6 _set.h `set(const _Self& x)
+    // : _M_t(x._M_t) {}` with the _Rb_tree copy expanded is too large for VC7.1 to inline: retail calls the out-of-line copy
+    // ??0?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@ABV01@@Z (0x00AD3A10, landed) for each CIndexList copy.
+    set(const set& x);
+#endif
     pair<iterator,bool> insert(const K& value){typedef typename _Rep_type::iterator RepIterator;pair<RepIterator,bool> p=_M_t.insert_unique(value);return pair<iterator,bool>((const iterator&)p.first,p.second);}
     size_t erase(const K& value){return _M_t.erase(value);}
 #ifdef FABLE_RETAIL_STLP_SET

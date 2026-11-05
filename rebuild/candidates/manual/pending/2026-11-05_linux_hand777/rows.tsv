@@ -1,0 +1,6 @@
+address	module	name	length	group
+0055f710	CTCHeroOnlineScoreboard	ResetAndOpenHTTPAndPrepareRequest	1122	G0055e2c0
+005e8220	_global	CTCInventoryMapSerialization_TransferCharactersAndStats	1258	G005e3f00
+006303c0	CUIDef	CUIDef	1272	G006303c0
+00803540	_global	CViewBase_UpdateSeaLevelParticles	1108	G00802e00
+00ac92c0	_global	COptimisedPrimitive_ContractVertexPair	1045	G00ac70f0

@@ -36836,3 +36836,14 @@ _New_c35b10@8	00c35b10	00c275e0
 ?ReadUntilWhiteSpace@CDataInputStream@@QAE?AVCCharString@@XZ	00994e90	009a8170
 ?RemoveWhiteSpaceBeginEnd@CCharString@@QAEXXZ	0099f560	009a8170
 ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@Z	009aa7c0	009a8170
+??4?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAEAAV01@ABV01@@Z	00432a35	006303c0
+??4?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@QAEAAV01@ABV01@@Z	006312e0	006303c0
+??4?$_Rb_tree@W4ETableSprites@NUISystem@@U?$pair@$$CBW4ETableSprites@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4ETableSprites@NUISystem@@J@std@@@4@U?$less@W4ETableSprites@NUISystem@@@4@V?$allocator@U?$pair@$$CBW4ETableSprites@NUISystem@@J@std@@@4@@std@@QAEAAV01@ABV01@@Z	00631220	006303c0
+??4?$vector@VCUIStateDef@NUISystem@@V?$allocator@VCUIStateDef@NUISystem@@@std@@@std@@QAEAAV01@ABV01@@Z	006315e0	006303c0
+??YCQuadric@QuadricOptimiserInternals@@QAEXABV01@@Z	00ac6e80	00ac92c0
+?Clear@CQuadric@QuadricOptimiserInternals@@QAEXXZ	00ac6ce0	00ac92c0
+?ComputeOptimalVertexPlacement@COptimisedPrimitive@QuadricOptimiserInternals@@AAE?AVC3DVector@@ABVCQuadric@2@ABV3@1@Z	00ac7750	00ac92c0
+?ComputeSelfContraction@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXAAVCVertexPairContraction@2@@Z	00ac7eb0	00ac92c0
+?ComputeSubContractionCost@COptimisedPrimitive@QuadricOptimiserInternals@@AAEMABVCSubContraction@2@ABVC3DVector@@@Z	00ac82a0	00ac92c0
+?ContainsAllVertices@CVertexPairContraction@QuadricOptimiserInternals@@QAE_NABVCIndexList@2@@Z	00ac7a90	00ac92c0
+?GetRemainingVertices@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVCIndexList@2@ABV32@@Z	00ac8840	00ac92c0

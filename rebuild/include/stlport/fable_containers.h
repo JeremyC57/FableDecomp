@@ -281,7 +281,17 @@ public:
     void clear() { erase(begin(),end()); }
     // Retail takes the value by const reference (STLport 4.5.2 form; 0x004428F0 resize<long> forwards the pointer to
     // _M_fill_insert, which dereferences it); FableWin.pdb's later build passes it by value.
+#ifdef FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+    // Per-TU opt-in (chunk 777, row 0x0055F710 CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest; like
+    // FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE): VC7.1 expanded STLport's inline resize in some TUs and called it as a COMDAT
+    // in others; that TU calls vector<char>::resize 0x004122D0 (landed, ?resize@?$vector@DV?$allocator@D@std@@@std@@QAEXIABD@Z) with
+    // the char() temporary in a dead argument slot. The body is visible (STLport's own) but kept out of line, as in the retail TU:
+    // VC7.1 then knows resize does not keep the vector's address, holds the start in a register across the later calls and reuses
+    // the vector's frame slot (0x0055FA79 `mov edi,[esp+28h]` ... 0x0055FB34 `push edi; call free`); declaration-only re-reads it.
+    __declspec(noinline) void resize(size_type n,const _Tp& x) {if(n<size())erase(begin()+n,end());else _M_fill_insert(end(),n-size(),x);}
+#else
     void resize(size_type n,const _Tp& x) {if(n<size())erase(begin()+n,end());else _M_fill_insert(end(),n-size(),x);}
+#endif
     void resize(size_type n) { resize(n,_Tp()); }
     void _M_fill_insert(iterator position,size_type n,const _Tp& x);
 #ifdef FABLE_RETAIL_STLP_VECTOR

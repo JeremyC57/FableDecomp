@@ -384186,6 +384186,27 @@ $catalog = @(
         TestSource = '00/9a/CBankFileManager_OpenIniFile_009a8170_test.cpp'
         PassPattern = '009a8170_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005e8220'
+        Module = 'CTCQuestCompletionUI'
+        Source = '00/5e/CTCQuestCompletionUI_OnSerialise_005e8220.cpp'
+        TestSource = '00/5e/CTCQuestCompletionUI_OnSerialise_005e8220_test.cpp'
+        PassPattern = '005e8220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006303c0'
+        Module = 'NUISystem::CUIDef'
+        Source = '00/63/NUISystemCUIDef_CUIDef_006303c0.cpp'
+        TestSource = '00/63/NUISystemCUIDef_CUIDef_006303c0_test.cpp'
+        PassPattern = '006303c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac92c0'
+        Module = 'QuadricOptimiserInternals::COptimisedPrimitive'
+        Source = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_ComputeContraction_00ac92c0.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_ComputeContraction_00ac92c0_test.cpp'
+        PassPattern = '00ac92c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

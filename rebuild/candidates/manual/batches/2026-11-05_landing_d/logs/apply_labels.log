@@ -1,0 +1,15 @@
+catalog  00789a70 _global::GetMember_float0x20_00789a70 -> CTCHeroRangedAttacks::GetPullBackAmount
+catalog  00ad4a70 CTwoLongSets::~CTwoLongSets -> QuadricOptimiserInternals::CUniqueVertex::~CUniqueVertex
+catalog  005e8220 _global::CTCInventoryMapSerialization_TransferCharactersAndStats -> CTCQuestCompletionUI::OnSerialise
+catalog  006303c0 CUIDef::CUIDef -> NUISystem::CUIDef::CUIDef
+catalog  00ac92c0 _global::COptimisedPrimitive_ContractVertexPair -> QuadricOptimiserInternals::COptimisedPrimitive::ComputeContraction
+manifest 005e8220 _global::CTCInventoryMapSerialization_TransferCharactersAndStats -> CTCQuestCompletionUI::OnSerialise
+manifest 006303c0 CUIDef::CUIDef -> NUISystem::CUIDef::CUIDef
+manifest 00789a70 _global::GetMember_float0x20_00789a70 -> CTCHeroRangedAttacks::GetPullBackAmount
+manifest 00803540 _global::CViewBase_UpdateSeaLevelParticles -> CTCTargetingPlayer::UpdateTargetedPositionRandomWalk
+manifest 00ac7750 COptimisedPrimitive::ComputeOptimalVertexPlacement -> QuadricOptimiserInternals::COptimisedPrimitive::ComputeOptimalVertexPlacement
+manifest 00ac7eb0 COptimisedPrimitive::ComputeSelfContraction -> QuadricOptimiserInternals::COptimisedPrimitive::ComputeSelfContraction
+manifest 00ac82a0 COptimisedPrimitive::ComputeSubContractionCost -> QuadricOptimiserInternals::COptimisedPrimitive::ComputeSubContractionCost
+manifest 00ac92c0 _global::COptimisedPrimitive_ContractVertexPair -> QuadricOptimiserInternals::COptimisedPrimitive::ComputeContraction
+manifest 00ad4a70 CTwoLongSets::~CTwoLongSets -> QuadricOptimiserInternals::CUniqueVertex::~CUniqueVertex
+labels 16  catalog renamed 5  manifest renamed 9

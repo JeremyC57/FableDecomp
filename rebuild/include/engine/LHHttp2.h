@@ -16,7 +16,16 @@ class LHHttpHeaders {
 public:
     std::vector<std::string> HdrDocumentHeader;
     std::string HeaderString;
+#ifdef FABLE_RETAIL_LHHTTP2_SCOREBOARD
+    // Nested opt-in (chunk 777, row 0x0055F710 CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest): Reset is out of line in
+    // retail (0x0083FBC0 ?Reset@LHHttpHeaders@LHNetworkLib@@QAEXXZ, landed) and the user destructor (Ego_r + FableWin
+    // ??1LHHttpHeaders@LHNetworkLib@@QAE@XZ, inline in retail) calls it before the members' own destructors (0x0055FB41: Reset,
+    // HeaderString's free, ~vector<string> 0x00569940).
+    void Reset();
+    ~LHHttpHeaders() { Reset(); }
+#else
     void Reset() { HeaderString="";HdrDocumentHeader.clear(); }
+#endif
     void DeleteHeaderString() { HeaderString=""; }
     void AddHeader(const std::string& line) { HdrDocumentHeader.push_back(line); }
     void AddHeader(const std::string& name,const std::string& value);
@@ -51,6 +60,14 @@ class LHHttp2 {
     bool InChunkMode;
     LHHttpDocumentParts* CurrentDocumentChunk;
 public:
+#ifdef FABLE_RETAIL_LHHTTP2_SCOREBOARD
+    // Nested opt-in (chunk 777, row 0x0055F710): the members CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest calls, all
+    // out of line in retail and landed; Ego_r.pdb + FableWin.pdb spellings (the PDBs' Dinkumware `U?$char_traits` becomes STLport `V`).
+    LHHttp2();                                                           // 0x00840F50 ??0LHHttp2@LHNetworkLib@@QAE@XZ
+    ~LHHttp2();                                                          // 0x008410D0 ??1LHHttp2@LHNetworkLib@@QAE@XZ
+    void SetProxySettings(const std::string&,unsigned short);            // 0x0083F870
+    LH_RETURN SetConnectionDetails(const std::string&,unsigned short);   // 0x0083FB20
+#endif
     LH_HTTP_STATUS PrepareRequest(HTTP_REQUEST_TYPE,const std::string&,LHHttpHeaders*,const std::string&,unsigned long);
     LH_HTTP_STATUS ReceiveHeaderAsync();
     void ResetCurrentHeaderPart() { CurrentHeaderPos=0;memset(CurrentHeaderPart,0,sizeof CurrentHeaderPart); }
