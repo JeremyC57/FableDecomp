@@ -27294,3 +27294,7 @@ chunk	address	module	name	length
 774	0053c332	NUISystem::CList	DoRecomputeOffsets	1111
 774	00597bf2	NUISystem::CFrontEndManager	GotoPreviousScreen	517
 774	009bef80	CDisplayManager	SetViewport	479
+775	005dacf0	CTCWeapon	IsAbleToBeUsedToBlock	22
+775	004167a7	CMainGameComponent	GetFrameDifferenceFromCurrent	33
+775	009a8170	CBankFileManager	OpenIniFile	1732
+775	009a8840	CBankFileManager	OpenRetailBank	1565
