@@ -450,7 +450,7 @@ int main() {
     APT_CheckNew3DS(&n3ds);
     svcGetThreadPriority(&g_mainPrio, CUR_THREAD_HANDLE);
     if (n3ds) g_gameCore = 2;
-    std::printf("Fable boot test build 14 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
+    std::printf("Fable boot test build 15 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
                 static_cast<unsigned long>(osGetMemRegionSize(MEMREGION_APPLICATION) / 1024));
 
     mkdirs(g_dataDir);
@@ -485,8 +485,9 @@ int main() {
         static uint64_t lastBeat = 0;
         if (!g_fatal && osGetTime() - lastBeat >= 2000) {
             lastBeat = osGetTime();
-            logf(1, "heartbeat %llus: %s\n  memory: guest %lu KB backed (%lu pages on demand), app region %lu KB free, host heap %lu KB free",
-                 static_cast<unsigned long long>((lastBeat - start) / 1000), debugState().c_str(), static_cast<unsigned long>(memBackedBytes() / 1024),
+            logf(1, "heartbeat %llus (frame %llu): %s\n  memory: guest %lu KB backed (%lu pages on demand), app region %lu KB free, host heap %lu KB free",
+                 static_cast<unsigned long long>((lastBeat - start) / 1000), static_cast<unsigned long long>(gpu::g_frameCount), debugState().c_str(),
+                 static_cast<unsigned long>(memBackedBytes() / 1024),
                  static_cast<unsigned long>(g_lazyPages.load()), static_cast<unsigned long>(osGetMemRegionFree(MEMREGION_APPLICATION) / 1024),
                  static_cast<unsigned long>(hostHeapFree() / 1024));
             logSync();

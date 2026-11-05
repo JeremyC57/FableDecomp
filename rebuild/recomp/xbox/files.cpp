@@ -7,11 +7,15 @@
 #include "xhost.hpp"
 
 #include <algorithm>
+#include <cstring>
 #include <dirent.h>
 #include <fcntl.h>
 #include <map>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 
 namespace xb {
 
@@ -105,6 +109,63 @@ std::string patchedUserIni(const std::string& orig) {
     return orig;
 }
 
+// Directory listings (lower-case name -> name on disk), loaded on a folder's first lookup and kept
+// in step with the creates, deletes and renames made here: resolving a path without case needs no
+// stat or directory scan per component (each is a file-service round trip on the 3DS, and the
+// game probes thousands of cache files at start-up).
+std::mutex g_dirLock;
+std::unordered_map<std::string, std::unordered_map<std::string, std::string>> g_dirs;
+std::unordered_set<std::string> g_madeRoots;  // partition folders known to exist
+
+std::string parentOf(const std::string& path) {
+    const size_t slash = path.rfind('/');
+    return slash == std::string::npos ? std::string() : path.substr(0, slash);
+}
+
+// The on-disk spelling of `name` in folder `dir`, or empty (the caller holds g_dirLock).
+std::string findInDir(const std::string& dir, const std::string& name) {
+    auto it = g_dirs.find(dir);
+    if (it == g_dirs.end()) {
+        std::unordered_map<std::string, std::string> names;
+        if (DIR* d = opendir(dir.c_str())) {
+            while (dirent* de = readdir(d))
+                if (de->d_name[0] != '.' || (de->d_name[1] && (de->d_name[1] != '.' || de->d_name[2]))) names.emplace(lower(de->d_name), de->d_name);
+            closedir(d);
+        }
+        it = g_dirs.emplace(dir, std::move(names)).first;
+    }
+    const auto n = it->second.find(lower(name));
+    return n == it->second.end() ? std::string() : n->second;
+}
+
+// A file or folder appeared, went or was renamed at `path`: its folder's listing is reloaded.
+void dirChanged(const std::string& path) {
+    std::lock_guard<std::mutex> l(g_dirLock);
+    g_dirs.erase(parentOf(path));
+    g_dirs.erase(path);
+}
+
+void removeTree(const std::string& dir) {  // the folder's contents (rm -rf dir/*)
+    if (DIR* d = opendir(dir.c_str())) {
+        std::vector<std::string> names;
+        while (dirent* de = readdir(d))
+            if (std::strcmp(de->d_name, ".") && std::strcmp(de->d_name, "..")) names.push_back(de->d_name);
+        closedir(d);
+        for (const std::string& n : names) {
+            const std::string p = dir + "/" + n;
+            struct stat st;
+            if (stat(p.c_str(), &st) == 0 && S_ISDIR(st.st_mode)) {
+                removeTree(p);
+                rmdir(p.c_str());
+            } else {
+                unlink(p.c_str());
+            }
+        }
+    }
+    std::lock_guard<std::mutex> l(g_dirLock);
+    g_dirs.clear();
+}
+
 // Object path -> host path (or empty if no device matches). `ro` set for the disc.
 std::string toHost(const std::string& object, bool& ro, int* volume = nullptr) {
     std::string p = applyLinks(object);
@@ -131,11 +192,15 @@ std::string toHost(const std::string& object, bool& ro, int* volume = nullptr) {
                     if (ftruncate(fd, 0x80000) != 0) {}
                     close(fd);
                 }
+                dirChanged(img);
             }
             return rest.empty() || rest == "\\" ? img : std::string();
         }
         root = g_hdd + "/Partition" + num;
-        mkdir(root.c_str(), 0755);
+        {
+            std::lock_guard<std::mutex> l(g_dirLock);
+            if (g_madeRoots.insert(root).second) mkdir(root.c_str(), 0755);
+        }
         if (volume && rest.empty()) *volume = atoi(num.c_str());
     } else {
         return {};
@@ -157,16 +222,10 @@ std::string toHost(const std::string& object, bool& ro, int* volume = nullptr) {
             continue;
         }
         std::string cand = cur + "/" + comp;
-        struct stat st;
-        if (stat(cand.c_str(), &st) != 0) {
-            if (DIR* d = opendir(cur.c_str())) {
-                while (dirent* de = readdir(d))
-                    if (strcasecmp(de->d_name, comp.c_str()) == 0) {
-                        cand = cur + "/" + de->d_name;
-                        break;
-                    }
-                closedir(d);
-            }
+        {
+            std::lock_guard<std::mutex> l(g_dirLock);
+            const std::string onDisk = findInDir(cur, comp);
+            if (!onDisk.empty()) cand = cur + "/" + onDisk;
         }
         cur = cand;
     }
@@ -236,7 +295,10 @@ std::string lastWmaOpened() {
 void hostFileClose(HostFile* f) {
     if (--f->refs > 0) return;
     if (f->fd >= 0) close(f->fd);
-    if (f->deleteOnClose) (f->dir ? rmdir : unlink)(f->host.c_str());
+    if (f->deleteOnClose) {
+        (f->dir ? rmdir : unlink)(f->host.c_str());
+        dirChanged(f->host);
+    }
     delete f;
 }
 void hostFileAddRef(HostFile* f) { ++f->refs; }
@@ -331,6 +393,7 @@ static uint32_t openCommon(Ctx* c, uint32_t pHandle, uint32_t access, uint32_t o
             ioStatus(iosb, ST_OBJECT_PATH_NOT_FOUND, 0);
             return ST_OBJECT_PATH_NOT_FOUND;
         }
+        if (!exists) dirChanged(host);
         f->dir = true;
         info = exists ? 1 : 2;
     } else {
@@ -345,6 +408,7 @@ static uint32_t openCommon(Ctx* c, uint32_t pHandle, uint32_t access, uint32_t o
             ioStatus(iosb, s, 0);
             return s;
         }
+        if (!exists) dirChanged(host);
     }
     if (options & 0x1000) f->deleteOnClose = true;  // FILE_DELETE_ON_CLOSE
     if (host.size() > 4 && strncasecmp(host.c_str() + host.size() - 4, ".wma", 4) == 0) {
@@ -412,8 +476,7 @@ KFUNC(NtWriteFile, 8) {
         // Raw writes to a partition are XAPI formatting it (the cache drive): start empty.
         if (pOff && rd64(pOff) == 0) {
             XLOG(1, "partition %d formatted: clearing %s", f->volume, f->host.c_str());
-            const std::string cmd = "rm -rf '" + f->host + "'/* 2>/dev/null";
-            if (system(cmd.c_str()) != 0) {}
+            removeTree(f->host);
         }
         ioStatus(iosb, ST_SUCCESS, len);
         complete(event, apc, apcCtx, iosb);
@@ -524,6 +587,8 @@ KFUNC(NtSetInformationFile, 5) {
         const std::string target = toHost(object, ro);
         if (target.empty() || ro || f->readOnly) return ST_ACCESS_DENIED;
         if (rename(f->host.c_str(), target.c_str()) != 0) return ST_ACCESS_DENIED;
+        dirChanged(f->host);
+        dirChanged(target);
         f->host = target;
         f->object = object;
         break;
@@ -662,6 +727,7 @@ KFUNC(NtDeleteFile, 1) {
     if (stat(host.c_str(), &st) != 0) return ST_OBJECT_NAME_NOT_FOUND;
     if ((S_ISDIR(st.st_mode) ? rmdir(host.c_str()) : unlink(host.c_str())) != 0)
         return S_ISDIR(st.st_mode) ? ST_DIRECTORY_NOT_EMPTY : ST_ACCESS_DENIED;
+    dirChanged(host);
     return ST_SUCCESS;
 }
 
