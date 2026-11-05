@@ -344,6 +344,15 @@ std::string resolveObjectName(uint32_t oa) {
 }
 
 // ============================================================================================
+#if !defined(__3DS__)
+// FABLE_NO_MOVIES=1 (testing the native-movie path on desktop): every movie reports no file.
+bool hostPlaysMovie(const std::string& path) {
+    static const bool off = getenv("FABLE_NO_MOVIES") != nullptr;
+    if (off) XLOG(1, "movie %s: skipped (FABLE_NO_MOVIES)", path.c_str());
+    return off;
+}
+#endif
+
 static uint32_t openCommon(Ctx* c, uint32_t pHandle, uint32_t access, uint32_t oa, uint32_t iosb, uint32_t disposition,
                            uint32_t options, uint32_t allocSizePtr) {
     (void)c;
@@ -352,6 +361,12 @@ static uint32_t openCommon(Ctx* c, uint32_t pHandle, uint32_t access, uint32_t o
     bool ro = false;
     int volume = -1;
     const std::string host = toHost(object, ro, &volume);
+    // Movies played natively by the host (New 3DS: the hardware H.264 decoder) never reach the
+    // game's own XMV decoder: the open waits for the native playback, then reports no file.
+    if (ro && host.size() > 4 && strcasecmp(host.c_str() + host.size() - 4, ".xmv") == 0 && hostPlaysMovie(host)) {
+        ioStatus(iosb, ST_OBJECT_NAME_NOT_FOUND, 0);
+        return ST_OBJECT_NAME_NOT_FOUND;
+    }
     if (host.empty()) {
         XLOG(1, "open %s: no such device", object.c_str());
         ioStatus(iosb, ST_OBJECT_PATH_NOT_FOUND, 0);

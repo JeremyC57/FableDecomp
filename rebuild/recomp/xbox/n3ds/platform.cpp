@@ -58,6 +58,8 @@ std::atomic<bool> g_fatal{false};
 char g_fatalMsg[1024];
 std::mutex g_screenLock;
 }  // namespace
+std::mutex& screenLock() { return g_screenLock; }
+void moviePoll();  // movie.cpp
 
 // ---- crash reports ---------------------------------------------------------------------------
 [[noreturn]] void platformFatal(const char* msg) {
@@ -408,7 +410,8 @@ void drawStatus(const std::string& disc, uint64_t startMs) {
 // linear heap (framebuffers, GPU buffers) are two blocks of linear FCRAM.
 extern "C" void __system_allocateHeaps(void) {
     extern u32 __ctru_linear_heap;
-    constexpr u32 kLinear = 4u << 20, kHostHeap = 24u << 20;
+    constexpr u32 kLinear = 6u << 20,  // + the movie decoder
+                   kHostHeap = 24u << 20;
     u32 out = 0;
     svcControlMemory(&out, 0, 0, kLinear, MEMOP_ALLOC_LINEAR, static_cast<MemPerm>(MEMPERM_READ | MEMPERM_WRITE));
     __ctru_linear_heap = out;
@@ -450,7 +453,7 @@ int main() {
     APT_CheckNew3DS(&n3ds);
     svcGetThreadPriority(&g_mainPrio, CUR_THREAD_HANDLE);
     if (n3ds) g_gameCore = 2;
-    std::printf("Fable boot test build 15 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
+    std::printf("Fable boot test build 17 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
                 static_cast<unsigned long>(osGetMemRegionSize(MEMREGION_APPLICATION) / 1024));
 
     mkdirs(g_dataDir);
@@ -477,6 +480,7 @@ int main() {
         } else if ((down & (KEY_START | KEY_SELECT)) == (KEY_START | KEY_SELECT)) {
             break;
         }
+        if (!g_fatal) moviePoll();  // a movie the game opened plays here, on the main thread
         if (osGetTime() - lastStatus >= 500) {
             lastStatus = osGetTime();
             drawStatus(disc, start);

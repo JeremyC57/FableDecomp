@@ -50,7 +50,7 @@ void platformThreadInit();  // n3ds/platform.cpp: crash reports for this thread
 #if defined(FABLE_COMPACT_MEMORY)
 // 32-bit hosts (New 3DS): every guest data address lies below 0x06000000, so one AND with
 // kGuestMask maps it (and the 0x80000000 / 0xF0000000 RAM aliases) into a 96 MB host window.
-constexpr uint32_t kPhysSize = 48u << 20;
+constexpr uint32_t kPhysSize = 44u << 20;  // measured peak 40.6 MB; the rest goes to reservations
 #else
 constexpr uint32_t kPhysSize = 128u << 20;        // a development-kit sized RAM (retail: 64 MB)
 #endif
@@ -303,6 +303,8 @@ void profilerStart();     // FABLE_PROFILE=[<delay>,]<seconds> (profiler.cpp)
 
 // ---- files ---------------------------------------------------------------------------------
 void filesInit(const std::string& gameDir, const std::string& hddDir);
+// The host plays this movie itself (and the game sees no file): true once playback has finished.
+bool hostPlaysMovie(const std::string& hostPath);
 // FABLE_DISABLE=name1,name2: turns individual emulation fixes off (bisecting regressions).
 bool featureOff(const char* name);
 void perfFlip(std::chrono::steady_clock::time_point now);  // nv2a.cpp: a flip happened

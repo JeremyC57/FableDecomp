@@ -27,7 +27,7 @@ target_compile_options(fable_gen PRIVATE ${N3DS_ARCH} ${FABLE_GEN_OPT} -ffunctio
 set(HOST_SOURCES boot.cpp core.cpp memory.cpp kernel.cpp files.cpp disc.cpp hle.cpp xc.cpp nv2a.cpp soft_renderer.cpp
     coro.cpp settings.cpp audio.cpp music.cpp xmv.cpp)
 list(TRANSFORM HOST_SOURCES PREPEND ${XBOX_DIR}/)
-add_executable(FableXbox ${HOST_SOURCES} platform.cpp)
+add_executable(FableXbox ${HOST_SOURCES} platform.cpp movie.cpp)
 target_include_directories(FableXbox PRIVATE ${RUNTIME_DIR} ${XBOX_DIR} ${XBOX_DIR}/third_party)
 target_compile_definitions(FableXbox PRIVATE ${N3DS_DEFS})
 target_compile_features(FableXbox PRIVATE cxx_std_20)
