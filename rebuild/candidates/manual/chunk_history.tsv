@@ -27281,3 +27281,16 @@ chunk	address	module	name	length
 773	00ebe620	CVO_Woman	Main	1482
 773	00f38a10	CSurfaceCompositor	SetBlendMode	1504
 773	00f3c990	_global	CTriangleStripifier2_GenerateStrips_Part1	1463
+774	007a4520	CTCWillEnflame	PlaySoundW	316
+774	007a5580	CTCForcePushPower	PlayCastSound	304
+774	00c40d10	_global	NormalizeVectorPair	272
+774	00c4b300	PKCBufferedReader	PKCBufferedReader	830
+774	00c4b890	PKCBufferedReader	ReadBlock	538
+774	00e7fd50	_global	FishingCompetition_Initialize	784
+774	00e80060	CV_FishingCompetitionScript	GetHeroTitleTextTag	312
+774	00f21590	CQ_ArenaScript	GetEndRoundQuestion	204
+774	0042df9e	CNewFrontendGameComponent	Draw	478
+774	00551340	NUISystem::CTable	GetDataFromDef	428
+774	0053c332	NUISystem::CList	DoRecomputeOffsets	1111
+774	00597bf2	NUISystem::CFrontEndManager	GotoPreviousScreen	517
+774	009bef80	CDisplayManager	SetViewport	479
