@@ -9,6 +9,7 @@ exec "$LIFTER" "$XBE" - "$OUT" "$@" \
   --bucket 14 \
   --hook 0x4B440=hle_CoroSwitch \
   --wrap 0x1FBF0=hle_operator_new \
+  --wrap 0x133F0=hle_SmallBlockAlloc \
   --wrap 0x851360=hle_Direct3D_CreateDevice \
   --wrap 0x5806FE=hle_CIfmod \
   --wrap 0x132D00=hle_SetupGamut \

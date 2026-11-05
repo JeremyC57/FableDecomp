@@ -11,6 +11,7 @@
 
 #include <dirent.h>
 #include <unistd.h>
+
 #include <algorithm>
 #include <atomic>
 #include <cstring>
@@ -22,6 +23,7 @@
 namespace xb {
 extern void (*g_irqEoi)(uint32_t vector);
 }
+extern "C" __attribute__((weak)) void recomp_coverage_dump(const char* path);  // --coverage lifts
 
 namespace xb {
 // Frame statistics for the Android quick menu (frames per second and the slowest frame, over
@@ -102,6 +104,18 @@ uint32_t g_ptNum = 1, g_ptDen = 1;
 uint64_t g_frameCount = 0;  // flips (also the input script clock, FABLE_INPUT_FRAMES)
 
 namespace {
+#if defined(__3DS__)
+// New 3DS: no per-thread CPU times; frame rate, guest memory and coroutines.
+void perfStats(uint64_t) {
+    float fps = 0, worst = 0;
+    xb::perfStats(&fps, &worst);
+    size_t coros = 0, deepest = 0, coroStack = 0;
+    coroStats(coros, deepest, coroStack);
+    XLOG(0, "perf flip %llu: %.1f fps (slowest %.0f ms) | guest memory %u KB (peak %u) | coroutines %zu (deepest stack %zu KB of %zu)",
+         static_cast<unsigned long long>(g_frameCount), fps, worst, memBackedBytes() / 1024, memBackedPeakBytes() / 1024, coros, deepest / 1024,
+         coroStack / 1024);
+}
+#else
 // CPU time (ms) of each host thread, by name, from /proc/self/task.
 std::map<std::string, double> threadCpuMs() {
     std::map<std::string, double> m;
@@ -155,10 +169,14 @@ void perfStats(uint64_t every) {
         }
         fclose(f);
     }
-    XLOG(0, "perf flip %llu: cpu ms/flip guest %.1f pusher %.1f other %.1f | guest phys %u KB (peak %u) virt touched %u KB (peak %u, reserved %u) | host rss %ld KB (peak %ld)",
+    size_t coros = 0, deepest = 0, coroStack = 0;
+    coroStats(coros, deepest, coroStack);
+    XLOG(0, "perf flip %llu: coroutines %zu (deepest stack %zu KB of %zu)", static_cast<unsigned long long>(g_frameCount), coros, deepest / 1024, coroStack / 1024);
+    XLOG(0, "perf flip %llu: cpu ms/flip guest %.1f pusher %.1f other %.1f | guest phys %u KB (peak %u) virt touched %u KB (peak %u, reserved peak %u) | host rss %ld KB (peak %ld)",
          static_cast<unsigned long long>(g_frameCount), guest / every, pusher / every, other / every, phys / 1024, physPeak / 1024, va / 1024,
          vaPeak / 1024, vaReservedBytes() / 1024, rss, hwm);
 }
+#endif
 }  // namespace
 uint64_t g_lastLetterboxFlip = 0;  // last flip with cutscene letterbox bars (16:9 interface layout; input replay)
 namespace {
@@ -211,8 +229,11 @@ void eoi(uint32_t vector) {
 
 uint64_t ptimerTicks() {
     const uint64_t ns = monoTime100ns() * 100;
-    const unsigned __int128 t = static_cast<unsigned __int128>(ns) * g_coreClockHz / 1000000000u * g_ptDen / (g_ptNum ? g_ptNum : 1);
-    return static_cast<uint64_t>(t) << 5;
+    // ns * clock / 1e9 * den / num without 128-bit products (32-bit hosts).
+    const uint64_t ticks = ns / 1000000000u * g_coreClockHz + ns % 1000000000u * g_coreClockHz / 1000000000u;
+    const uint64_t num = g_ptNum ? g_ptNum : 1;
+    const uint64_t t = ticks / num * g_ptDen + ticks % num * g_ptDen / num;
+    return t << 5;
 }
 
 uint32_t surfaceField(uint32_t shift) { return (R(PGRAPH + 0x710) >> shift) & 7; }
@@ -495,6 +516,9 @@ void kelvin(uint32_t method, uint32_t param, const uint32_t* params, uint32_t av
         if (static const uint64_t perfEvery = getenv("FABLE_PERF_STATS") ? strtoull(getenv("FABLE_PERF_STATS"), nullptr, 10) : 0;
             perfEvery && g_frameCount % perfEvery == 0)
             perfStats(perfEvery);
+        // FABLE_COVERAGE=<file>: with a --coverage lift, the functions run so far, every 300 flips
+        // (the input for lift_n3ds.sh --keep).
+        if (static const char* cov = getenv("FABLE_COVERAGE"); cov && recomp_coverage_dump && g_frameCount % 300 == 0) recomp_coverage_dump(cov);
         // FABLE_FLIP_TIMES (debugging): log flips that took over 50 ms.
         if (static const bool flipTimes = getenv("FABLE_FLIP_TIMES") != nullptr; flipTimes) {
             static auto last = std::chrono::steady_clock::now();
@@ -723,6 +747,9 @@ void runPusher() {
 
 void pusherMain() {
     setThreadName("nv2a pusher");
+#if defined(__3DS__)
+    platformThreadInit();
+#endif
     using clock = std::chrono::steady_clock;
     auto nextVblank = clock::now() + std::chrono::microseconds(16683);
     std::unique_lock<std::mutex> l(g_dev);

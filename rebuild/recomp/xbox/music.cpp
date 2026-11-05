@@ -198,7 +198,7 @@ void hle_MusicClose(Ctx* c) {
 
 void hle_MusicRead(Ctx* c) {
     const uint32_t out = ARG(c, 0), frames = ARG(c, 1);
-    const uint32_t dst = rd32(out), ch = std::max(1u, std::min(rd32(out + 4), 8u));
+    const uint32_t dst = rd32(out), ch = std::max<uint32_t>(1, std::min<uint32_t>(rd32(out + 4), 8));
     std::unique_lock<std::mutex> l(g_lock);
     const auto it = g_tracks.find(c->ecx);
     if (it == g_tracks.end()) {

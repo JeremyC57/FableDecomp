@@ -13,7 +13,9 @@
 #include "settings.hpp"
 #include "xhost.hpp"
 
+#if !defined(__3DS__)
 #include <SDL.h>
+#endif
 
 #include <algorithm>
 #include <atomic>
@@ -265,6 +267,7 @@ void mix(float* out, int frames) {
     g_mixedFrames += static_cast<uint64_t>(frames);
 }
 
+#if !defined(__3DS__)
 void sdlCallback(void*, Uint8* stream, int len) {
     const int frames = len / 4;
     static std::vector<float> buf;
@@ -273,6 +276,7 @@ void sdlCallback(void*, Uint8* stream, int len) {
     auto* o = reinterpret_cast<int16_t*>(stream);
     for (int i = 0; i < frames * 2; ++i) o[i] = static_cast<int16_t>(std::clamp(buf[i], -1.0f, 1.0f) * 32767.0f);
 }
+#endif
 
 void silentMixer() {
     std::vector<float> buf(480 * 2);
@@ -319,6 +323,9 @@ void start() {
     g_started = true;
     g_masterGain = std::clamp(settings().volume, 0, 100) / 100.0f;
     workerAddService(service);
+#if defined(__3DS__)
+    XLOG(1, "audio: no output yet (boot test), mixing silently");
+#else
     SDL_AudioSpec want{}, have{};
     want.freq = kRate;
     want.format = AUDIO_S16SYS;
@@ -338,6 +345,7 @@ void start() {
         }
     }
     XLOG(1, "audio: no device (%s), mixing silently", SDL_GetError());
+#endif
     std::thread(silentMixer).detach();
 }
 

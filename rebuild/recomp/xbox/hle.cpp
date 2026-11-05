@@ -182,6 +182,24 @@ void hle_SkyBand(Ctx* c) {
 // reading as zero in places (a HUD element's graphic pointer at +0x28 is only ever tested
 // for null), which held on the console's heap layout but not when a block is reused here.
 void F_0001FBF0_orig(Ctx* c);
+
+// Fable's small-block allocator: a fresh page for size class `al` (0 when the class is full). With
+// lift_n3ds.sh each class has 1 MB instead of 16 MB; the pool code does not handle a full class.
+void F_000133F0_orig(Ctx* c);
+void hle_SmallBlockAlloc(Ctx* c) {
+    const uint32_t cls = c->eax & 0xFF;
+    F_000133F0_orig(c);
+    if (!c->eax) die("small-block allocator: size class %u is full", cls);
+    // FABLE_SBA_LOG (measurements): each new high-water mark of a class's 1 MB slice.
+    if (static const bool sbaLog = getenv("FABLE_SBA_LOG") != nullptr; sbaLog && cls < 32) {
+        static uint32_t peak[32];
+        const uint32_t used = ((c->eax - rd32(0x998CF0)) & 0xFFFFFu) + 0x1000;
+        if (used > peak[cls]) {
+            peak[cls] = used;
+            XLOG(0, "small-block class %u: %u KB", cls, used / 1024);
+        }
+    }
+}
 void hle_operator_new(Ctx* c) {
     const uint32_t size = arg(c, 0);
     F_0001FBF0_orig(c);

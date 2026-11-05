@@ -126,6 +126,7 @@ KFUNC(NtAllocateVirtualMemory, 5) {
         const auto [rb, rs] = vaRegion(base);
         if (rb) {  // committing (or re-reserving) pages inside an existing reservation
             if (base + size > rb + rs) return ST_INVALID_PARAMETER;
+            if ((type & 0x1000) && !hostCommit(base, size)) return ST_NO_MEMORY;  // MEM_COMMIT
             wr32(pBase, base);
             wr32(pSize, size);
             return ST_SUCCESS;
@@ -135,6 +136,10 @@ KFUNC(NtAllocateVirtualMemory, 5) {
     const uint32_t a = vaReserve(base, size, (type & 0x100000) != 0);  // MEM_TOP_DOWN
     if (!a) {
         XLOG(1, "NtAllocateVirtualMemory(base 0x%08X, 0x%X): no address space", base, size);
+        return ST_NO_MEMORY;
+    }
+    if ((type & 0x1000) && !hostCommit(a, size)) {  // MEM_COMMIT with the reservation
+        vaRelease(a);
         return ST_NO_MEMORY;
     }
     wr32(pBase, a);
@@ -649,7 +654,10 @@ KFUNC(RtlTimeFieldsToTime, 2) {
     t.tm_hour = rd16(f + 6);
     t.tm_min = rd16(f + 8);
     t.tm_sec = rd16(f + 10);
-    const int64_t secs = timegm(&t);
+    // timegm (not in every C library): days since 1970 from the civil date.
+    const int y = t.tm_year + 1900 - (t.tm_mon < 2), m = (t.tm_mon + 9) % 12, era = (y >= 0 ? y : y - 399) / 400, yoe = y - era * 400;
+    const int64_t days = era * 146097LL + yoe * 365 + yoe / 4 - yoe / 100 + (153 * m + 2) / 5 + t.tm_mday - 1 - 719468;
+    const int64_t secs = days * 86400 + t.tm_hour * 3600 + t.tm_min * 60 + t.tm_sec;
     wr64(ARG(c, 1), static_cast<uint64_t>(secs * 10000000 + rd16(f + 12) * 10000) + 116444736000000000ull);
     return 1;
 }

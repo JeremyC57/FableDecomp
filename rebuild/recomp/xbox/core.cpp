@@ -9,6 +9,15 @@
 #include <map>
 #include <thread>
 #include <unordered_map>
+#if defined(__3DS__)
+// New 3DS: no signals or page protection; faults go to the platform's exception handler
+// (n3ds/platform.cpp), thread exit unwinds with setjmp.
+#include <pthread.h>
+#include <setjmp.h>
+#define sigjmp_buf jmp_buf
+#define sigsetjmp(b, m) setjmp(b)
+#define siglongjmp longjmp
+#else
 #if !defined(__ANDROID__) || __ANDROID_API__ >= 33
 #include <execinfo.h>
 #else  // bionic before API 33: no backtrace()
@@ -18,6 +27,7 @@ static void backtrace_symbols_fd(void* const*, int, int) {}
 #include <sys/mman.h>
 #include <signal.h>
 #include <unistd.h>
+#endif
 
 extern "C" {
 void* recomp_landing_chain_get(void);
@@ -42,8 +52,15 @@ void logf(int level, const char* fmt, ...) {
     va_end(ap);
     std::lock_guard<std::mutex> l(g_logLock);
     XThread* t = curThread();
+#if defined(__3DS__)
+    // The bottom-screen console is slow: it shows errors and milestones (level 0); the SD card
+    // log gets everything.
+    if (level <= 0) fprintf(stderr, "%s\n", buf);
+    if (!g_logFile) g_logFile = fopen((std::string(g_dataDir) + "/xbox_recomp.log").c_str(), "w");
+#else
     fprintf(stderr, "[%u] %s\n", t ? t->id : 0, buf);
     if (!g_logFile) g_logFile = fopen("xbox_recomp.log", "w");
+#endif
     if (g_logFile) {
         fprintf(g_logFile, "[%u] %s\n", t ? t->id : 0, buf);
         fflush(g_logFile);
@@ -58,6 +75,9 @@ void die(const char* fmt, ...) {
     va_end(ap);
     logf(0, "FATAL: %s", buf);
     fflush(stderr);
+#if defined(__3DS__)
+    platformFatal(buf);  // stays on screen until START
+#endif
     _exit(1);
 }
 
@@ -283,6 +303,9 @@ static void threadMain(XThread* t, uint32_t start, uint32_t ctx, uint32_t system
     char name[16];
     std::snprintf(name, sizeof name, "guest %06X", start);
     setThreadName(name);
+#if defined(__3DS__)
+    platformThreadInit();
+#endif
     g_gil.lock();
     t_cur = t;
     sigjmp_buf jb;
@@ -310,7 +333,27 @@ static void threadMain(XThread* t, uint32_t start, uint32_t ctx, uint32_t system
 void startThread(XThread* t, uint32_t start, uint32_t ctx, uint32_t system, bool suspended) {
     t->suspend = suspended ? 1 : 0;
     wr32(t->ethread + 0x130, start);
+#if defined(__3DS__)
+    // Explicit host stacks (real memory here): the first guest thread is the game's main thread.
+    static bool first = true;
+    pthread_attr_t attr;
+    pthread_attr_init(&attr);
+    pthread_attr_setstacksize(&attr, first ? (1u << 20) : (512u << 10));
+    first = false;
+    struct Args { XThread* t; uint32_t start, ctx, system; };
+    pthread_t th;
+    if (pthread_create(&th, &attr, [](void* p) -> void* {
+            const Args a = *static_cast<Args*>(p);
+            delete static_cast<Args*>(p);
+            threadMain(a.t, a.start, a.ctx, a.system);
+            return nullptr;
+        }, new Args{t, start, ctx, system}) != 0)
+        die("cannot create a host thread for guest thread %u", t->id);
+    pthread_detach(th);
+    pthread_attr_destroy(&attr);
+#else
     std::thread(threadMain, t, start, ctx, system).detach();
+#endif
 }
 
 void exitCurrentThread(uint32_t status) {
@@ -548,6 +591,9 @@ void interruptRaise(uint32_t vector) {
 
 static void workerMain() {
     setThreadName("xbox worker");
+#if defined(__3DS__)
+    platformThreadInit();
+#endif
     g_gil.lock();
     t_cur = g_worker;
     std::unique_lock<FairLock> lk(g_gil, std::adopt_lock);
@@ -626,6 +672,12 @@ static void onFatal(Ctx* c, uint32_t eip, const char* what) {
         what, eip, c->eax, c->ecx, c->edx, c->ebx, c->esp, c->ebp, c->esi, c->edi, chain.c_str());
 }
 
+#if defined(__3DS__)
+void debugWatch(uint32_t) {}
+void debugWatchRearm() {}
+void debugReadWatchRearm() {}
+void platformInstallFaultHandler();  // n3ds/platform.cpp
+#else
 // Debug write watch on one guest word (debugWatch): its page is write-protected; a write
 // fault there logs the writer's backtrace, unprotects, and the ticker re-arms it.
 static std::atomic<uint32_t> g_watchAddr{0};
@@ -708,6 +760,8 @@ static void onSignal(int sig, siginfo_t* si, void*) {
     _exit(3);
 }
 
+#endif  // !__3DS__
+
 // Lifted loops call this when recomp_preempt_flag is set (every millisecond, by the ticker):
 // if another thread waits for the guest lock, hand it over, as the console's timer interrupt
 // would switch threads.
@@ -775,6 +829,9 @@ void coreInit() {
              c->ecx, c->edx, c->ebx, c->esp, c->ebp, c->esi, c->edi);
     };
     recomp_on_fatal = onFatal;
+#if defined(__3DS__)
+    platformInstallFaultHandler();
+#else
     struct sigaction sa{};
     sa.sa_sigaction = onSignal;
     sa.sa_flags = SA_SIGINFO | SA_ONSTACK;
@@ -782,6 +839,7 @@ void coreInit() {
     sigaction(SIGBUS, &sa, nullptr);
     sigaction(SIGILL, &sa, nullptr);
     sigaction(SIGFPE, &sa, nullptr);
+#endif
 }
 
 } // namespace xb

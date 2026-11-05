@@ -2,9 +2,13 @@
 #include "xhost.hpp"
 
 #include <map>
+#if defined(__3DS__)
+#include <3ds.h>
+#else
 #include <sys/mman.h>
 #include <sys/syscall.h>
 #include <unistd.h>
+#endif
 
 namespace xb {
 
@@ -22,7 +26,103 @@ std::map<uint32_t, uint32_t> g_poolFree;       // addr -> size (blocks including
 std::mutex g_poolLock;
 }
 
+// ---- host backing --------------------------------------------------------------------------
+// Desktop: one memfd behind the whole RAM range at three guest addresses, virtual memory lazily
+// backed by the host (memInit, MAP_NORESERVE). New 3DS: guest pages get FCRAM only while the guest
+// has them allocated or committed: svcControlMemory maps them into the fixed guest window
+// (recomp.h RECOMP_WINDOW_*), page runs at a time.
+#if defined(__3DS__)
+namespace {
+constexpr uint32_t kWindowPages = (RECOMP_WINDOW_MASK + 1) / kPage;
+std::vector<uint8_t> g_backed(kWindowPages);  // per window page: has FCRAM
+uint32_t g_backedPages = 0, g_backedPeak = 0;
+uint32_t g_windowEnd = 0;  // first guest address the window cannot back (memProbeWindow)
+std::mutex g_backLock;
+}
+
+uint32_t memWindowEnd() { return g_windowEnd; }
+uint32_t memBackedBytes() { return g_backedPages * kPage; }
+uint32_t memBackedPeakBytes() { return g_backedPeak * kPage; }
+
+bool hostCommit(uint32_t a, uint32_t size) {
+    a &= RECOMP_WINDOW_MASK;
+    const uint32_t p0 = a / kPage, p1 = std::min<uint32_t>((a + size + kPage - 1) / kPage, kWindowPages);
+    std::lock_guard<std::mutex> l(g_backLock);
+    for (uint32_t p = p0; p < p1;) {
+        if (g_backed[p]) { ++p; continue; }
+        uint32_t q = p;
+        while (q < p1 && !g_backed[q]) ++q;
+        u32 out = 0;
+        const Result r = svcControlMemory(&out, RECOMP_WINDOW_BASE + p * kPage, 0, (q - p) * kPage, MEMOP_ALLOC,
+                                          static_cast<MemPerm>(MEMPERM_READ | MEMPERM_WRITE));
+        if (R_FAILED(r)) {
+            XLOG(0, "memory: cannot back guest 0x%08X..0x%08X (%u KB backed, error 0x%08lX)", p * kPage, q * kPage, g_backedPages * 4,
+                 static_cast<unsigned long>(r));
+            return false;
+        }
+        for (uint32_t i = p; i < q; ++i) g_backed[i] = 1;
+        g_backedPages += q - p;
+        g_backedPeak = std::max(g_backedPeak, g_backedPages);
+        p = q;
+    }
+    return true;
+}
+
+void hostDecommit(uint32_t a, uint32_t size) {
+    a &= RECOMP_WINDOW_MASK;
+    const uint32_t p0 = (a + kPage - 1) / kPage, p1 = std::min<uint32_t>((a + size) / kPage, kWindowPages);
+    std::lock_guard<std::mutex> l(g_backLock);
+    for (uint32_t p = p0; p < p1;) {
+        if (!g_backed[p]) { ++p; continue; }
+        uint32_t q = p;
+        while (q < p1 && g_backed[q]) ++q;
+        u32 out = 0;
+        svcControlMemory(&out, RECOMP_WINDOW_BASE + p * kPage, 0, (q - p) * kPage, MEMOP_FREE, static_cast<MemPerm>(0));
+        for (uint32_t i = p; i < q; ++i) g_backed[i] = 0;
+        g_backedPages -= q - p;
+        p = q;
+    }
+}
+
+uint32_t hostBackedIn(uint32_t a, uint32_t size) {
+    a &= RECOMP_WINDOW_MASK;
+    uint32_t n = 0;
+    std::lock_guard<std::mutex> l(g_backLock);
+    for (uint32_t p = a / kPage; p < std::min<uint32_t>((a + size) / kPage, kWindowPages); ++p) n += g_backed[p];
+    return n * kPage;
+}
+
+// How far the window reaches: libctru documents the heap area as 0x08000000..0x0E000000, the
+// window spans to 0x10000000. Probe the 16 MB steps above 96 MB (they may be refused).
+void memProbeWindow() {
+    g_windowEnd = 0x06000000u;
+    for (uint32_t a = 0x06000000u; a < RECOMP_WINDOW_MASK + 1; a += 0x01000000u) {
+        u32 out = 0;
+        const uint32_t probe = a + 0x00FFF000u;  // the last page of the step
+        if (R_FAILED(svcControlMemory(&out, RECOMP_WINDOW_BASE + a, 0, kPage, MEMOP_ALLOC, static_cast<MemPerm>(MEMPERM_READ | MEMPERM_WRITE)))) break;
+        svcControlMemory(&out, RECOMP_WINDOW_BASE + a, 0, kPage, MEMOP_FREE, static_cast<MemPerm>(0));
+        if (R_FAILED(svcControlMemory(&out, RECOMP_WINDOW_BASE + probe, 0, kPage, MEMOP_ALLOC, static_cast<MemPerm>(MEMPERM_READ | MEMPERM_WRITE)))) break;
+        svcControlMemory(&out, RECOMP_WINDOW_BASE + probe, 0, kPage, MEMOP_FREE, static_cast<MemPerm>(0));
+        g_windowEnd = a + 0x01000000u;
+    }
+    XLOG(0, "memory: guest window 0x%08X..0x%08X (%u MB)", RECOMP_WINDOW_BASE, RECOMP_WINDOW_BASE + g_windowEnd, g_windowEnd >> 20);
+}
+#else
+uint32_t memWindowEnd() { return 0xFFFFFFFFu; }
+uint32_t memBackedBytes() { return 0; }
+uint32_t memBackedPeakBytes() { return 0; }
+bool hostCommit(uint32_t, uint32_t) { return true; }
+void hostDecommit(uint32_t a, uint32_t size) { madvise(g_mem + a, size, MADV_DONTNEED); }  // zero-fill on next touch
+#endif
+
 void memInit() {
+#if defined(__3DS__)
+    memProbeWindow();
+    g_used.assign(kPages, 0);
+    for (uint32_t p = 0; p < 0x10; ++p) g_used[p] = 1;  // null page guard: never backed, faults
+    for (uint32_t p = (kPhysSize - kGpuInstanceSize) / kPage; p < kPages; ++p) g_used[p] = 1;
+    if (!hostCommit(kPhysSize - kGpuInstanceSize, kGpuInstanceSize)) die("cannot back the GPU instance memory");
+#else
     if (!recomp_init_memory()) die("cannot reserve the 4 GiB guest address space");
     const int fd = static_cast<int>(syscall(SYS_memfd_create, "xbox-ram", 0));
     if (fd < 0 || ftruncate(fd, kPhysSize) != 0) die("cannot create the guest RAM (memfd)");
@@ -37,6 +137,7 @@ void memInit() {
     for (uint32_t p = 0; p < 0x10; ++p) g_used[p] = 1;
     for (uint32_t p = (kPhysSize - kGpuInstanceSize) / kPage; p < kPages; ++p) g_used[p] = 1;
     mprotect(g_mem, 0x10000, PROT_NONE);  // null page faults (identity view only)
+#endif
 }
 
 uint32_t physAlloc(uint32_t size, uint32_t align, uint32_t lo, uint32_t hi, bool fromTop) {
@@ -60,12 +161,14 @@ uint32_t physAlloc(uint32_t size, uint32_t align, uint32_t lo, uint32_t hi, bool
         }
         for (uint32_t i = 0; i < n; ++i) g_used[p + i] = 1;
         g_allocs[p] = n;
+        if (!hostCommit(p * kPage, n * kPage)) return 0;
         return p * kPage;
     }
     for (uint32_t p = (first + step - 1) / step * step; p + n <= last + 1; p += step)
         if (freeRun(p)) {
             for (uint32_t i = 0; i < n; ++i) g_used[p + i] = 1;
             g_allocs[p] = n;
+            if (!hostCommit(p * kPage, n * kPage)) return 0;
             return p * kPage;
         }
     return 0;
@@ -81,7 +184,7 @@ bool physAllocAt(uint32_t addr, uint32_t size) {
         if (g_used[p0 + i]) return false;
     for (uint32_t i = 0; i < n; ++i) g_used[p0 + i] = 1;
     g_allocs[p0] = n;
-    return true;
+    return hostCommit(p0 * kPage, n * kPage);
 }
 
 void physFree(uint32_t addr) {
@@ -89,6 +192,9 @@ void physFree(uint32_t addr) {
     auto it = g_allocs.find(physOf(addr) / kPage);
     if (it == g_allocs.end()) return;
     for (uint32_t i = 0; i < it->second; ++i) g_used[it->first + i] = 0;
+#if defined(__3DS__)
+    hostDecommit(it->first * kPage, it->second * kPage);
+#endif
     g_allocs.erase(it);
 }
 
@@ -177,6 +283,7 @@ std::mutex g_vaLock;
 
 uint32_t vaReserve(uint32_t base, uint32_t size, bool topDown) {
     size = (size + 0xFFF) & ~0xFFFu;
+    const uint32_t kVaEnd = std::min(xb::kVaEnd, memWindowEnd());  // New 3DS: what the window can back
     std::lock_guard<std::mutex> l(g_vaLock);
     auto overlaps = [&](uint32_t b, uint32_t n) {
         auto it = g_va.upper_bound(b + n - 1);
@@ -227,9 +334,13 @@ uint32_t vaResidentBytes() {
     uint64_t n = 0;
     std::vector<unsigned char> v;
     for (const auto& [b, sz] : g_va) {
+#if defined(__3DS__)
+        n += hostBackedIn(b, sz) / kPage;
+#else
         v.resize((sz + kPage - 1) / kPage);
         if (mincore(g_mem + b, sz, v.data()) != 0) continue;
         for (unsigned char c : v) n += c & 1;
+#endif
     }
     return static_cast<uint32_t>(n * kPage);
 }
@@ -238,12 +349,12 @@ uint32_t vaReservedBytes() {
     std::lock_guard<std::mutex> l(g_vaLock);
     uint64_t n = 0;
     for (const auto& r : g_va) n += r.second;
-    return static_cast<uint32_t>(n);
+    static uint64_t peak = 0;
+    if (n > peak) peak = n;
+    return static_cast<uint32_t>(peak);  // peak so far (FABLE_PERF_STATS)
 }
 
-void vaDecommit(uint32_t base, uint32_t size) {
-    madvise(g_mem + base, size, MADV_DONTNEED);  // zero-fill on next touch, frees host memory
-}
+void vaDecommit(uint32_t base, uint32_t size) { hostDecommit(base, size); }
 
 bool vaRelease(uint32_t base) {
     uint32_t size;

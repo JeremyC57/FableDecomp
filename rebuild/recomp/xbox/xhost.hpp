@@ -38,10 +38,20 @@ namespace xb {
 extern int g_logLevel;  // XBOX_LOG: 0 errors, 1 info (default), 2 kernel calls, 3 verbose
 void logf(int level, const char* fmt, ...) __attribute__((format(printf, 2, 3)));
 [[noreturn]] void die(const char* fmt, ...) __attribute__((format(printf, 1, 2)));
+#if defined(__3DS__)
+void platformThreadInit();  // n3ds/platform.cpp: crash reports for this thread
+[[noreturn]] void platformFatal(const char* msg);  // n3ds/platform.cpp: shows the error, waits for START
+#endif
 #define XLOG(lvl, ...) do { if (::xb::g_logLevel >= (lvl)) ::xb::logf((lvl), __VA_ARGS__); } while (0)
 
 // ---- guest memory --------------------------------------------------------------------------
+#if defined(FABLE_COMPACT_MEMORY)
+// 32-bit hosts (New 3DS): every guest data address lies below 0x06000000, so one AND with
+// kGuestMask maps it (and the 0x80000000 / 0xF0000000 RAM aliases) into a 96 MB host window.
+constexpr uint32_t kPhysSize = 48u << 20;
+#else
 constexpr uint32_t kPhysSize = 128u << 20;        // a development-kit sized RAM (retail: 64 MB)
+#endif
 constexpr uint32_t kContigBase = 0x80000000u;
 constexpr uint32_t kWcBase = 0xF0000000u;
 constexpr uint32_t kTrapBase = 0xFFFC0000u;       // kernel export i -> kTrapBase + 16 * i
@@ -70,9 +80,24 @@ void physFree(uint32_t addr);
 uint32_t physAllocSize(uint32_t addr);  // size of the allocation starting at addr, or 0
 uint32_t physFreeBytes();
 uint32_t vaResidentBytes();   // guest virtual memory touched so far (FABLE_PERF_STATS)
+// Host pages behind guest memory (memory.cpp): no-ops on desktop, FCRAM on the New 3DS.
+bool hostCommit(uint32_t guestAddr, uint32_t size);
+void hostDecommit(uint32_t guestAddr, uint32_t size);
+uint32_t memWindowEnd();        // guest addresses below this can be backed (New 3DS window probe)
+uint32_t memBackedBytes();      // New 3DS: guest pages with FCRAM now / at most
+uint32_t memBackedPeakBytes();
+void coroStats(size_t& count, size_t& deepest, size_t& stackSize);  // coro.cpp
 uint32_t vaReservedBytes();
 // Virtual memory range (NtAllocateVirtualMemory), backed lazily by the host.
+#if defined(FABLE_COMPACT_MEMORY)
+#if defined(__3DS__)
+constexpr uint32_t kVaBase = kPhysSize, kVaEnd = 0x08000000u;  // up to the end of the probed window
+#else
+constexpr uint32_t kVaBase = kPhysSize, kVaEnd = 0x05800000u;  // as a 96 MB window
+#endif
+#else
 constexpr uint32_t kVaBase = 0x10000000u, kVaEnd = 0x70000000u;
+#endif
 uint32_t vaReserve(uint32_t base, uint32_t size, bool topDown);  // 0 on failure
 std::pair<uint32_t, uint32_t> vaRegion(uint32_t a);             // {base, size} or {0, 0}
 void vaDecommit(uint32_t base, uint32_t size);
