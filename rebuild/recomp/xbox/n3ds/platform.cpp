@@ -168,6 +168,8 @@ void platformInstallFaultHandler() { platformThreadInit(); }
 void platformWaitBelow(std::atomic<uint32_t>& word, uint32_t value) {
     syncArbitrateAddress(reinterpret_cast<s32*>(&word), ARBITRATION_WAIT_IF_LESS_THAN, static_cast<s32>(value));
 }
+void platformYield() { svcSleepThread(1); }  // a real sleep: equal-priority threads get the core
+
 void platformWakeAll(std::atomic<uint32_t>& word) {
     syncArbitrateAddress(reinterpret_cast<s32*>(&word), ARBITRATION_SIGNAL, -1);
 }
@@ -180,8 +182,10 @@ s32 g_mainPrio = 0x30;
 
 void startHostThread(std::function<void()> fn, size_t stackBytes, ThreadRole role) {
     auto* f = new std::function<void()>(std::move(fn));
-    const s32 prio = role == ThreadRole::Tick ? g_mainPrio - 1 : role == ThreadRole::System ? g_mainPrio + 1 : g_mainPrio;
-    const int core = role == ThreadRole::Game ? g_gameCore : -2;
+    // Lower number = higher priority. Game threads share core 2 (one runs at a time under the
+    // guest lock); the worker preempts them there like an interrupt.
+    const s32 prio = role == ThreadRole::Tick || role == ThreadRole::Worker ? g_mainPrio - 1 : role == ThreadRole::System ? g_mainPrio + 1 : g_mainPrio;
+    const int core = role == ThreadRole::Game || role == ThreadRole::Worker ? g_gameCore : -2;
     auto entry = [](void* p) {
         platformThreadInit();
         auto* fn = static_cast<std::function<void()>*>(p);
@@ -438,7 +442,7 @@ int main() {
     APT_CheckNew3DS(&n3ds);
     svcGetThreadPriority(&g_mainPrio, CUR_THREAD_HANDLE);
     if (n3ds) g_gameCore = 2;
-    std::printf("Fable boot test build 11 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
+    std::printf("Fable boot test build 12 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
                 static_cast<unsigned long>(osGetMemRegionSize(MEMREGION_APPLICATION) / 1024));
 
     mkdirs(g_dataDir);

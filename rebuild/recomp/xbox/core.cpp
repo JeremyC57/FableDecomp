@@ -659,7 +659,7 @@ static void workerMain() {
 void workerStart() {
     g_worker = newThread(0x40000, 0, 0);
     g_worker->system = true;
-    startHostThread(workerMain, 512u << 10, ThreadRole::Game);  // runs guest timers, DPCs and ISRs
+    startHostThread(workerMain, 512u << 10, ThreadRole::Worker);  // runs guest timers, DPCs and ISRs
 }
 
 
@@ -793,6 +793,11 @@ static void onSignal(int sig, siginfo_t* si, void*) {
 extern "C" void recomp_safepoint(void) {
     recomp_preempt_flag = 0;
     ++g_safepoints;
+#if defined(__3DS__)
+    // The 3DS never time-slices threads of equal priority: give the other guest threads on this
+    // core a turn, so one that became ready can queue for the lock.
+    if (t_cur) platformYield();
+#endif
     if (!t_cur || !g_gil.contended()) return;
     g_gil.unlock();
     g_gil.lock();

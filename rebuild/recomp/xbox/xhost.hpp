@@ -127,6 +127,7 @@ uint32_t newAnsiString(const std::string& s);  // allocates the STRING and its b
 // (n3ds/platform.cpp). Only contention reaches the kernel.
 void platformWaitBelow(std::atomic<uint32_t>& word, uint32_t value);  // while word < value
 void platformWakeAll(std::atomic<uint32_t>& word);
+void platformYield();  // lets another ready thread of the same priority on this core run
 #endif
 class FairLock {
 public:
@@ -308,7 +309,7 @@ bool profilerCapture(double delay, double secs, const std::string& path);  // pr
 // Host threads with an explicit stack (real memory on the New 3DS) and a role. The New 3DS runs
 // Game threads (guest code, one at a time under the GIL) on core 2; System threads share core 0
 // with the screens at a lower priority, Tick (the 1 ms kernel ticker) above them.
-enum class ThreadRole { Game, System, Tick };
+enum class ThreadRole { Game, Worker, System, Tick };  // Worker: guest timers/DPCs/ISRs, above Game (an interrupt)
 void startHostThread(std::function<void()> fn, size_t stackBytes, ThreadRole role);
 void setThreadName(const char* name);  // for profiles and debuggers (15 characters)                   // frames/s and slowest frame (ms), last 0.5 s
 uint64_t gameClockNs();  // RDTSC / performance counter clock (FABLE_FLIPTIME: per flip)
