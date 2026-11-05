@@ -1,0 +1,5 @@
+manifest 00b5f090 CEnginePrimitiveManagerDecal::CEnginePrimitiveManagerDecal -> CEngineScreenEffectGlowRenderer::CEngineScreenEffectGlowRenderer
+manifest 00dfd600 CQ_TraderConflictGoodScript::AttackPeople -> NScript::CQ_TraderConflictGoodScript::AttackPeople
+manifest 00ea1720 CV_KnotholeGladeGatesScript::DoInitialBalverineAttack -> NScript::CV_KnotholeGladeGatesScript::DoInitialBalverineAttack
+manifest 00eb4760 CMurderTwistAssassin::DoDealWithHero -> NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::DoDealWithHero
+labels 6  catalog renamed 0  manifest renamed 4

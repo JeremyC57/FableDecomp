@@ -271,10 +271,18 @@ public:
         } else _M_insert_overflow(position,x,_IsPODType(),1UL,false);
         return begin()+n;
     }
+#ifdef FABLE_RETAIL_STLP_VECTOR_ERASE_OUTOFLINE
+    // Retail opt-in (chunk 782, row 0x00DFD600 CQ_TraderConflictGoodScript::AttackPeople; like
+    // FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE): STLport's erase(position) is one inline body, which VC7.1 expanded in some TUs
+    // and called as a COMDAT in others; that TU calls vector<CScriptThing>::erase(iterator) 0x00CD3152 (call at 0x00DFDAB6, the
+    // landed UpdateLiveEnemies 0x00DFC320 binds it too) and re-reads the vector's words after it. Declaration only here.
+    iterator erase(iterator position);
+#else
     iterator erase(iterator position) {
         if(position+1!=end()) __copy_ptrs(position+1,this->_M_finish,position,_IsPODType());
         --this->_M_finish;_Destroy(this->_M_finish);return position;
     }
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
     // Per-TU opt-in (chunk 773, row 0x00671600 CThingCreatureDef::Transfer; like FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE): STLport's
     // erase(first, last) is one inline body, which VC7.1 expanded in some TUs and called as a COMDAT in others; that TU calls

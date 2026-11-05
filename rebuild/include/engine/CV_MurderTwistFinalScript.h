@@ -91,9 +91,46 @@ public:
         void DoSayingThankYouToHero();                                   // 0x00EB3740
         void AttackHero();
     };
+#ifdef FABLE_RETAIL_CV_MURDERTWISTFINALSCRIPT_ASSASSIN
+    class CMurderTwistAssassin;
+#endif
 };
+#ifdef FABLE_RETAIL_CV_MURDERTWISTFINALSCRIPT_ASSASSIN
+// Retail opt-in (chunk 782): the nested assassin entity (Ego_r.pdb TPI CMurderTwistAssassin, 0x3C; retail Alloc 0x00EB3C60).
+// Members equal Ego_r (CEntityScriptBase 0x14), checked against retail code: ParentClass +0x14 (0x00EB4B0A `mov ecx,[esi+14h]`),
+// MyEntityHandle +0x1C (0x00EB47C9 `lea edi,[esi+1Ch]`), NextLine +0x2C (0x00EB4F80 DoRemindingHeroToKillSheriff). Methods:
+// Ego_r.pdb / FableWin.pdb name sets (Do* / AttackHero / IsFeelingThreatened private AAE, Init / Main / OnPredicateFail /
+// OnPersist private virtual EAE).
+class CV_MurderTwistFinalScript::CMurderTwistAssassin : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_MurderTwistFinalScript&,CScriptDataBase*,const CScriptThing&);   // 0x00EB3C60
+    virtual CScriptBase* GetParentScript() const;                    // 0x00EB3D00
+protected:
+    CV_MurderTwistFinalScript* ParentClass;                          // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                             // +0x18
+    CScriptGameResourceObjectScriptedThingBase MyEntityHandle;       // +0x1C
+    unsigned long NextLine;                                          // +0x2C
+    bool HasBeenThreatened;                                          // +0x30
+    float ThreatDistSq;                                              // +0x34
+    bool HasGivenIntroToHero;                                        // +0x38
+    bool PreemptiveAttackInProgress;                                 // +0x39
+private:
+    virtual void Init();                                             // 0x00EB3E40
+    virtual void OnPersist(CPersistContext&);
+    virtual void OnPredicateFail();                                  // 0x00EB3D10
+    virtual void Main();                                             // 0x00EB3F40
+    void DoWatchingForTrouble();                                     // 0x00EB40C0
+    bool IsFeelingThreatened();                                      // 0x00EB4710
+    void DoDealWithHero();                                           // 0x00EB4760
+    void DoRemindingHeroToKillSheriff();                             // 0x00EB4F80
+    void AttackHero();
+};
+#endif
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_MurderTwistFinalScript)==0x88);
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff)==0x38);
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard)==0x38);
+#ifdef FABLE_RETAIL_CV_MURDERTWISTFINALSCRIPT_ASSASSIN
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin)==0x3C);
+#endif
 #endif

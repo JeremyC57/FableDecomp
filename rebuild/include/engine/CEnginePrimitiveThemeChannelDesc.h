@@ -8,6 +8,12 @@
 class CEnginePrimitiveThemeChannelDesc {
 public:
     CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) { }
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVETHEMECHANNELDESC_INDICES
+    // Retail opt-in (chunk 782, row 0x007941D0 CTCUnholyPower ctor): FableWin.pdb ??0CEnginePrimitiveThemeChannelDesc@@QAE@EEE@Z, inline
+    // in retail (the SpellExclusionChannel initialiser stores +0xB0 = 5, +0xB1 = 5, +0xB2 = 0xFF in member order and leaves Pad).
+    CEnginePrimitiveThemeChannelDesc(unsigned char index0, unsigned char index1, unsigned char blend_factor)
+        : ChannelIndex0(index0), ChannelIndex1(index1), ChannelBlendFactor(blend_factor) { }
+#endif
     unsigned char ChannelIndex0;                // +0x00
     unsigned char ChannelIndex1;                // +0x01
     unsigned char ChannelBlendFactor;           // +0x02

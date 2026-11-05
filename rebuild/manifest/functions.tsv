@@ -41648,7 +41648,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b5ece0	InitialiseTextures	CGlowRendererMethods	__thiscall	bool	1	CEngineScreenEffectGlowRenderer *	1	yes	accepted									
 00b5ee00	SetEffectQuality	CEngineScreenEffectGlowRenderer	__thiscall	bool	2	CEngineScreenEffectGlowRenderer *,CEngineVideoOptionsDef const &	1	yes	accepted									
 00b5ee80	~CEngineScreenEffectGlowRenderer	CEngineScreenEffectGlowRenderer	__thiscall	void	1	CEngineScreenEffectGlowRenderer *	1	yes	accepted									
-00b5f090	CEnginePrimitiveManagerDecal	CEnginePrimitiveManagerDecal	__thiscall	undefined	2	CEnginePrimitiveManagerDecal *,CArray<CEngineScene*> *	0	yes	accepted									
+00b5f090	CEngineScreenEffectGlowRenderer	CEngineScreenEffectGlowRenderer	__thiscall	undefined	2	CEnginePrimitiveManagerDecal *,CArray<CEngineScene*> *	0	yes	accepted									
 00b5f8c0	ComputeGlowColor	CEngineScreenEffectGlowRenderer	unknown	undefined	0		0	yes	accepted									
 00b5fab0	CaptureBackBuffer	CEngineScreenEffectGlowRenderer	__thiscall	void	1	CEngineScreenEffectGlowRenderer *	1	yes	accepted									
 00b60f70	ApplyGlow	CEngineScreenEffectGlowRenderer	__thiscall	void	1	CEngineScreenEffectGlowRenderer *	1	yes	accepted									
@@ -51805,7 +51805,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00dfc630	WatchForHittingEnemies	NScript::CQ_TraderConflictGoodScript	__thiscall	void	1	CQ_TraderConflictGoodScript *	1	yes	accepted									
 00dfc920	WatchForRegionTransitions	NScript::CQ_TraderConflictGoodScript	__thiscall	void	1	CQ_TraderConflictGoodScript *	1	yes	accepted									
 00dfca90	Main	NScript::CQ_TraderConflictGoodScript::CBanditExtra	__thiscall	void	1	CBanditExtra *	1	yes	accepted									
-00dfd600	AttackPeople	CQ_TraderConflictGoodScript	__thiscall	void	1	CQ_TraderConflictGoodScript *	1	yes	accepted									
+00dfd600	AttackPeople	NScript::CQ_TraderConflictGoodScript	__thiscall	void	1	CQ_TraderConflictGoodScript *	1	yes	accepted									
 00dfde30	CRetailVector_CScriptThing_Retail_00dfde30	CRetailVector_CScriptThing_Retail_00dfde30	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
 00dfde90	_Vector_base	std::_Vector_base<CScriptThing, std::allocator<CScriptThing>>	unknown	undefined	0		0	yes	accepted									
 00dfded0	PlayCutscene	NScript::CQ_TraderConflictGoodScript	unknown	undefined	0		0	yes	accepted									
@@ -53375,7 +53375,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ea12e0	WatchForGates	NScript::CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
 00ea1360	EndMission	NScript::CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
 00ea1630	PhaseOne	NScript::CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
-00ea1720	DoInitialBalverineAttack	CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
+00ea1720	DoInitialBalverineAttack	NScript::CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
 00ea1ec0	DoPanicBanter	NScript::CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
 00ea2080	ControlMainBalverines	NScript::CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
 00ea2720	KnotHoleGates_OnScript	_global	unknown	undefined	0		0	yes	accepted									
@@ -53535,7 +53535,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00eb3f40	Main	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin	__thiscall	void	1	CMurderTwistAssassin *	1	yes	accepted									
 00eb40c0	DoWatchingForTrouble	CMurderTwistAssassin	__thiscall	void	1	CMurderTwistAssassin *	1	yes	accepted									
 00eb4710	IsFeelingThreatened	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin	__thiscall	bool	1	CMurderTwistAssassin *	1	yes	accepted									
-00eb4760	DoDealWithHero	CMurderTwistAssassin	__thiscall	void	1	CMurderTwistAssassin *	1	yes	accepted									
+00eb4760	DoDealWithHero	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin	__thiscall	void	1	CMurderTwistAssassin *	1	yes	accepted									
 00eb4f80	DoRemindingHeroToKillSheriff	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin	__thiscall	void	1	CMurderTwistAssassin *	1	yes	accepted									
 00eb53a0	Init	CMurderTwistSheriff	__thiscall	void	1	CMurderTwistSheriff *	1	yes	accepted									
 00eb5450	Alloc	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									

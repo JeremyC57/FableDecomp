@@ -1,0 +1,7 @@
+address	module	name	length
+007941d0	CTCUnholyPower	CTCUnholyPower	2073
+00b5f090	CEnginePrimitiveManagerDecal	CEnginePrimitiveManagerDecal	2093
+00ea1720	NScript::CV_KnotholeGladeGatesScript	DoInitialBalverineAttack	1940
+00eb4760	NScript::CMurderTwistAssassin	DoDealWithHero	2075
+00dfd600	NScript::CQ_TraderConflictGoodScript	AttackPeople	2088
+00e00db0	NScript::CV_TravellingHeroesScript	Main	2088

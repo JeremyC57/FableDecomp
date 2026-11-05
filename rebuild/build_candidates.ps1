@@ -384279,6 +384279,35 @@ $catalog = @(
         TestSource = '00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesIntroWatcher_Main_00e9cfd0_test.cpp'
         PassPattern = '00e9cfd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007941d0'
+        Module = 'CTCUnholyPower'
+        Source = '00/79/CTCUnholyPower_CTCUnholyPower_007941d0.cpp'
+        TestSource = '00/79/CTCUnholyPower_CTCUnholyPower_007941d0_test.cpp'
+        PassPattern = '007941d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b5f090'
+        Module = 'CEngineScreenEffectGlowRenderer'
+        Source = '00/b5/CEngineScreenEffectGlowRenderer_CEngineScreenEffectGlowRenderer_00b5f090.cpp'
+        TestSource = '00/b5/CEngineScreenEffectGlowRenderer_CEngineScreenEffectGlowRenderer_00b5f090_test.cpp'
+        PassPattern = '00b5f090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e00db0'
+        Module = 'NScript::CQ_TraderEscortScript'
+        Source = '00/e0/NScriptCQTraderEscortScript_Main_00e00db0.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScript_Main_00e00db0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00e00db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb4760'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_DoDealWithHero_00eb4760.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_DoDealWithHero_00eb4760_test.cpp'
+        PassPattern = '00eb4760_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,17 @@
+addr       parity           behav  name
+007941d0   RELOCATION_MATCH PASS   CTCUnholyPower
+00b5f090   RELOCATION_MATCH PASS   CEngineScreenEffectGlowRenderer
+00e00db0   RELOCATION_MATCH PASS   Main
+00eb4760   RELOCATION_MATCH PASS   DoDealWithHero
+
+WINS: 4
+  007941d0 RELOCATION_MATCH CTCUnholyPower::??0CTCUnholyPower@@QAE@AAVCThing@@@Z
+  00b5f090 RELOCATION_MATCH CEngineScreenEffectGlowRenderer::??0CEngineScreenEffectGlowRenderer@@QAE@ABVCEngineInit@@@Z
+  00e00db0 RELOCATION_MATCH NScript::CQ_TraderEscortScript::?Main@CQ_TraderEscortScript@NScript@@UAEXXZ
+  00eb4760 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::?DoDealWithHero@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CTCUnholyPower_CTCUnholyPower_007941d0
+  CEngineScreenEffectGlowRenderer_CEngineScreenEffectGlowRenderer_00b5f090
+  NScriptCQTraderEscortScript_Main_00e00db0
+  NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_DoDealWithHero_00eb4760

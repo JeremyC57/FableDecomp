@@ -31,6 +31,11 @@ public:
     void TransitionToDefaultThemeAllChannels(long priority, float time);   // 0x006B3950
 #endif
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_TRANSITIONTOTHEME
+    // Retail opt-in (chunk 782, row 0x007941D0 CTCUnholyPower ctor): Ego_r.pdb ?TransitionToTheme@CEnvironment@@QAEXJJJM@Z, out of line
+    // in retail at 0x006B3800 (`ret 10h`; the ctor pushes channel, 2, theme index, the def's EnvChangeSecs). Declaration only.
+    void TransitionToTheme(long channel, long priority, long theme, float time);   // 0x006B3800
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENT_RENDERUPDATE
     // Per-TU opt-in (chunk 767, row 0x01229390): Ego_r.pdb / FableWin.pdb ?RenderUpdate@CEnvironment@@QAEXM@Z, retail 0x006B42F0
     // (ret 4; the only registrant of the atexit stub 0x01229390 for its function-local static interpolated_theme).

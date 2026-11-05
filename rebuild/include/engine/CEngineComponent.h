@@ -27,7 +27,14 @@ public:
     // Chunk 742 (RenderSingleSpriteTrail 0x00BBE090): FableWin.pdb ?PeekRenderEnabled@CEngineComponent@@QBE_NXZ (no Ego_r.pdb copy,
     // inline in retail: `mov al,[edx+8] ; test al,al` on the displacement renderer 0x01436E38).
     bool PeekRenderEnabled() const { return RenderEnabled; }
+#ifdef FABLE_RETAIL_CENGINECOMPONENT_PROTECTED
+    // Retail opt-in (chunk 782): the derived components' constructors store RenderEnabled themselves (0x00B5F10C `mov [esi+8],bl`
+    // in CEngineScreenEffectGlowRenderer's, 0x00B86C00 CEngineScreenEffectDisplacementRenderer's), so the members are reachable
+    // from derived classes; no setter exists in either PDB. Access only: no byte changes for any includer.
+protected:
+#else
 private:
+#endif
     void** GlobalPointerAddress;                             // +0x04
     bool RenderEnabled;                                      // +0x08
     unsigned char KeepAlive;                                 // +0x09

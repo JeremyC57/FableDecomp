@@ -10,6 +10,9 @@
 #endif
 #include "engine/CTCBase.h"
 #include "engine/C3DVector.h"
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_LIGHTINGCHANNEL
+#include "engine/CEnginePrimitiveThemeChannelDesc.h"
+#endif
 // Retail opt-in addition (chunk 750, rows 0x0077B290 / 0x0077B9F0 / 0x0077BE80 / 0x0077C440, the appearance-component destructors):
 // define FABLE_RETAIL_CTCGRAPHICAPPEARANCE for the public non-virtual UnregisterComponent 0x004C0000 (the only spelling bound there,
 // ?UnregisterComponent@CTCGraphicAppearance@NGraphicAppearance@@QAEXAAVCAGraphicAppearanceComponent@2@@Z, Ego_r.pdb / FableWin.pdb;
@@ -28,6 +31,19 @@ public:
     // Nested opt-in (chunk 768, row 0x0089DA70 CGameScriptInterface::EntitySetAlpha): Ego_r.pdb / FableWin.pdb
     // ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z (the bound spelling at 0x004BFAC0). Declaration only.
     void SetAlpha(unsigned char alpha);                      // 0x004BFAC0
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_LIGHTINGCHANNEL
+    // Retail opt-in (chunk 782, row 0x007941D0 CTCUnholyPower ctor): FableWin.pdb ?PeekLightingChannel@CTCGraphicAppearance@NGraphicAppearance@@QBEABVCEnginePrimitiveThemeChannelDesc@@XZ
+    // (inline in retail: `mov edx,[ecx+40h]`) and Ego_r.pdb ?SetLightingChannel@..@@QAEXABVCEnginePrimitiveThemeChannelDesc@@_N1@Z
+    // (out of line, 0x004BFB40). LightingChannel is Ego_r's member at retail +0x40: MeshEffects / TintColours (two 0xC STLport maps),
+    // PTCAnimation +0x24, CachedStaticFocalPosOffset +0x28, Scale +0x34, Primitives / Components (two 4-byte STLport lists) +0x38 / +0x3C
+    // precede it and are kept opaque here.
+    const CEnginePrimitiveThemeChannelDesc& PeekLightingChannel() const { return LightingChannel; }
+    void SetLightingChannel(const CEnginePrimitiveThemeChannelDesc& channel, bool update_primitives, bool update_children);   // 0x004BFB40
+private:
+    unsigned char LayoutMeshEffectsToComponents[0x40 - 0x0C];       // +0x0C .. +0x3F (opaque)
+    CEnginePrimitiveThemeChannelDesc LightingChannel;               // +0x40
+public:
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCALPOS
     // Nested opt-in (chunk 768, row 0x00753380 CTCLook::FrameUpdateHeadInterested): Ego_r.pdb / FableWin.pdb
