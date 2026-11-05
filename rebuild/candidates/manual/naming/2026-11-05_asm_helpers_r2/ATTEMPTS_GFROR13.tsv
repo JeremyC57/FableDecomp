@@ -1,0 +1,65 @@
+site	attempt	kind	spelling	flags	vc71_emitted	matches_retail
+00497890	R07	cpp+intrinsic	unsigned long a[1]; a[0]=value; a[0]=_lrotr(a[0],13)	/O2 /Oy /W3; +/Oi; /O1	mov eax,ecx ; ror eax,0Dh (array scalarised)	no
+00497890	R08	cpp	array a[1] with (a[0]>>13)|(a[0]<<19)	/O2 /Oy /W3; +/Oi; /O1	mov eax,ecx ; shr ; shl ; or	no
+00497890	R09	cpp+intrinsic	struct W{unsigned long v;} w; w.v=_lrotr(w.v,13)	same	mov eax,ecx ; ror eax,0Dh	no
+00497890	R10	cpp+intrinsic	union {unsigned long v; unsigned char b[4];}	same	mov eax,ecx ; ror eax,0Dh	no
+00497890	R11	cpp+intrinsic	unsigned long a[2] (second element written)	same	mov eax,ecx ; ror eax,0Dh	no
+00497890	R12	cpp+intrinsic	by-reference parameter unsigned long& value	same	mov eax,[ecx] ; ror eax,0Dh ; mov [ecx],eax (signature differs; still register ror)	no
+00497890	R13	cpp+intrinsic	pointer parameter *value=_lrotr(*value,13)	same	mov eax,[ecx] ; ror eax,0Dh ; mov [ecx],eax	no
+00497890	R14	cpp+intrinsic	unsigned int a[1] with _rotr	same	mov eax,ecx ; ror eax,0Dh	no
+00497890	R15	cpp+intrinsic	signed long array, cast through _lrotr	same	mov eax,ecx ; ror eax,0Dh	no
+00497890	R16	cpp+intrinsic	unsigned long a[1]; unsigned long* p=a; *p=_lrotr(*p,13)	same	ror ecx,0Dh ; mov eax,ecx	no
+00497890	R17	cpp+intrinsic	unsigned long a[1]={value} aggregate init	same	mov eax,ecx ; ror eax,0Dh	no
+00497890	R18	cpp+intrinsic	#pragma optimize("g",off): value=_lrotr(value,13)	/O2 /Oy /W3	push ebp ; mov ebp,esp ; push ecx ; mov [ebp-4],ecx ; mov eax,[ebp-4] ; ror eax,0Dh ; mov [ebp-4],eax (ebp frame; load-ror-store, never ror [mem])	no
+00497890	R19	cpp	#pragma optimize("g",off): shift form	/O2 /Oy /W3	ebp frame; mov eax,[ebp-4] ; shr ; mov ecx,[ebp-4] ; shl ; or	no
+00497890	R20	cpp+intrinsic	#pragma optimize("g",off): return _lrotr(value,13)	/O2 /Oy /W3	ebp frame; mov eax,[ebp-4] ; ror eax,0Dh	no
+00497890	R21	cpp+intrinsic	#pragma optimize("",off)	/O2 /Oy /W3	as R18	no
+00497890	R22	cpp+intrinsic	#pragma optimize("gy",off)	/O2 /Oy /W3	as R18	no
+00497890	R23	cpp+intrinsic	#pragma optimize y on, g off, t on; _rotr	/O2 /Oy /W3	as R18 (g off always restores the ebp frame)	no
+00497890	R24	cpp+intrinsic	#pragma optimize("s",on)	/O2 /Oy /W3	mov eax,ecx ; ror eax,0Dh	no
+00497890	R25	cpp+intrinsic	#pragma optimize a,w on; pointer argument	/O2 /Oy /W3	mov eax,[ecx] ; ror eax,0Dh ; mov [ecx],eax	no
+00497890	R26	cpp+intrinsic	void __fastcall f(unsigned long* p){*p=_lrotr(*p,13);} (pure memory target, no return)	/O2 /Oy /W3	mov eax,[ecx] ; ror eax,0Dh ; mov [ecx],eax (VC7.1 does not fold a rotate into a memory RMW)	no
+00497890	R27	cpp+intrinsic	global g=_lrotr(g,13)	/O2 /Oy /W3	mov eax,[g] ; ror eax,0Dh ; mov [g],eax (no memory-operand ror even for a global)	no
+00497890	R28	cpp	void f(unsigned long* p){*p=(*p>>13)|(*p<<19);}	/O2 /Oy /W3	mov eax,[ecx] ; mov edx,eax ; shl ; shr ; or ; mov [ecx],edx	no
+00497890	R29	cpp+intrinsic	inline RotP(unsigned long*) callee on &value	/O2 /Oy /W3	mov eax,ecx ; ror eax,0Dh (address-taken local re-enregistered after inlining)	no
+00497890	R30	cpp+intrinsic	inline RotR(unsigned long&) callee	/O2 /Oy /W3	mov eax,ecx ; ror eax,0Dh	no
+00497890	R31	cpp+intrinsic	__forceinline pointer callee	/O2 /Oy /W3	mov eax,ecx ; ror eax,0Dh	no
+00497890	R32	cpp+intrinsic	local copy + inline pointer callee	/O2 /Oy /W3	mov eax,ecx ; ror eax,0Dh	no
+00497890	R33	cpp+intrinsic	local copy + inline reference callee	/O2 /Oy /W3	mov eax,ecx ; ror eax,0Dh	no
+00497890	R34	cpp+intrinsic	template<class T> inline RotT(T&)	/O2 /Oy /W3	mov eax,ecx ; ror eax,0Dh	no
+00497890	R35	cpp+intrinsic	struct H{v; void Rot();} local + member call	/O2 /Oy /W3	mov eax,ecx ; ror eax,0Dh	no
+00497890	R36	cpp+intrinsic	((H*)&value)->Rot() on the parameter	/O2 /Oy /W3	mov eax,ecx ; ror eax,0Dh	no
+00497890	R37	cpp	__stdcall shift form	/O2 /Oy /W3; /Ox; /G7; /Os	mov ecx,[esp+4] ; mov eax,ecx ; shr ; shl ; or ; ret 4	no
+00497890	R38	cpp	__cdecl shift form	same	mov ecx,[esp+4] ; ... ; or ; ret	no
+00497890	R39	cpp+intrinsic	__stdcall _lrotr	same	mov eax,[esp+4] ; ror eax,0Dh ; ret 4	no
+00497890	R40	cpp+intrinsic	__cdecl _lrotr	same	mov eax,[esp+4] ; ror eax,0Dh (argument already in memory, still loaded first)	no
+00497890	R41	cpp+intrinsic	__cdecl, pointer to the stack argument	same	mov eax,[esp+4] ; ror eax,0Dh	no
+00497890	R42	cpp	unsigned int parameter, shift form	same	mov eax,ecx ; shr ; shl ; or	no
+00497890	R43	cpp	signed long parameter with unsigned casts	same	mov eax,ecx ; shr ; shl ; or	no
+00497890	R44	cpp	two temporaries lo / hi	same	mov eax,ecx ; shr ; shl ; or	no
+00497890	R45	cpp	(v>>13)+(v<<19)	same	shr ; shl ; add (not recognised as a rotate)	no
+00497890	R46	cpp	(v>>13)^(v<<19)	same	shr ; shl ; xor	no
+00497890	R47	cpp+intrinsic	_lrotl(value,19)	same	mov eax,ecx ; rol eax,13h	no
+00497890	R48	cpp+intrinsic	_rotl(value,32-13)	same	mov eax,ecx ; rol eax,13h	no
+00497890	R49	cpp	t=v<<19; v>>=13; v|=t (compound assignments)	same	mov eax,ecx ; shr ; shl ; or	no
+00497890	R50	cpp	unsigned __int64 doubled word >> 13	same	mov eax,ecx ; shl ; shr ; or	no
+00497890	R51	cpp	unsigned long a[1], shift form	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ecx ; shr eax,0xd ; shl ecx,0x13 ; or eax,ecx (no memory-operand ror)	no
+00497890	R52	cpp	struct member, shift form	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ecx ; shr eax,0xd ; shl ecx,0x13 ; or eax,ecx (no memory-operand ror)	no
+00497890	R53	cpp	union member, shift form	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ecx ; shr eax,0xd ; shl ecx,0x13 ; or eax,ecx (no memory-operand ror)	no
+00497890	R54	cpp	by-reference parameter, shift form	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov edx,DWORD PTR [ecx] ; mov eax,edx ; shl eax,0x13 ; shr edx,0xd ; or eax,edx ; mov DWORD PTR [ecx],eax (no memory-operand ror)	no
+00497890	R55	cpp	pointer parameter, shift form, returned	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov edx,DWORD PTR [ecx] ; mov eax,edx ; shl eax,0x13 ; shr edx,0xd ; or eax,edx ; mov DWORD PTR [ecx],eax (no memory-operand ror)	no
+00497890	R56	cpp	global g = ROT(g)	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ds:0x0 ; mov ecx,eax ; shl ecx,0x13 ; shr eax,0xd ; or ecx,eax ; mov DWORD PTR ds:0x0,ecx (no memory-operand ror)	no
+00497890	R57	cpp	void f(unsigned long* p){*p = ROT(*p);}	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,DWORD PTR [ecx] ; mov edx,eax ; shl edx,0x13 ; shr eax,0xd ; or edx,eax ; mov DWORD PTR [ecx],edx (no memory-operand ror)	no
+00497890	R58	cpp	inline pointer helper on &value	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ecx ; shr eax,0xd ; shl ecx,0x13 ; or eax,ecx (no memory-operand ror)	no
+00497890	R59	cpp	inline reference helper	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ecx ; shr eax,0xd ; shl ecx,0x13 ; or eax,ecx (no memory-operand ror)	no
+00497890	R60	cpp	template reference helper	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ecx ; shr eax,0xd ; shl ecx,0x13 ; or eax,ecx (no memory-operand ror)	no
+00497890	R61	cpp	((H*)&value)->Rot() member on the parameter	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ecx ; shr eax,0xd ; shl ecx,0x13 ; or eax,ecx (no memory-operand ror)	no
+00497890	R62	cpp	array + pointer, shift form	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ecx ; shl eax,0x13 ; shr ecx,0xd ; or eax,ecx (no memory-operand ror)	no
+00497890	R63	cpp	#pragma optimize("g",off), shift form	/O2 /Oy /W3; /Ox /Oy /W3 /G7	push ebp ; mov ebp,esp ; push ecx ; mov DWORD PTR [ebp-0x4],ecx ; mov eax,DWORD PTR [ebp-0x4] ; shr eax,0xd ; mov ecx,DWORD PTR [ebp-0x4] ; shl ecx,0x13 ; or... (no memory-operand ror)	no
+00497890	R64	cpp	single return expression	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ecx ; shl eax,0x13 ; shr ecx,0xd ; or eax,ecx (no memory-operand ror)	no
+00497890	R65	cpp	<< 19 written as * 524288	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ecx ; shr eax,0xd ; shl ecx,0x13 ; or eax,ecx (no memory-operand ror)	no
+00497890	R66	cpp	>> 13 written as / 8192	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ecx ; shl eax,0x13 ; shr ecx,0xd ; or eax,ecx (no memory-operand ror)	no
+00497890	R67	cpp	unsigned int with << (32 - 13)	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ecx ; shr eax,0xd ; shl ecx,0x13 ; or eax,ecx (no memory-operand ror)	no
+00497890	R68	cpp	value rebuilt from its bytes, then rotated	/O2 /Oy /W3; /Ox /Oy /W3 /G7	sub esp,0x8 ; mov eax,ecx ; shr eax,0x10 ; movzx edx,ah ; shl edx,0x8 ; movzx eax,al ; or edx,eax ; shl edx,0x8 ; movzx eax,ch ; or edx,eax ; mov DWORD PTR [... (no memory-operand ror)	no
+00497890	R69	cpp	13 single-bit rotates in a loop	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov eax,ecx ; mov ecx,0xd ; mov edx,eax ; shl edx,0x1f ; shr eax,1 ; or eax,edx ; dec ecx ; jne 7 <?R69_ternary_loop@@YIJK@Z+0x7> (no memory-operand ror)	no
+00497890	R70	cpp	rotate by 1 then by 12	/O2 /Oy /W3; /Ox /Oy /W3 /G7	mov edx,ecx ; shl edx,0x1f ; shr ecx,1 ; or edx,ecx ; mov eax,edx ; shr eax,0xc ; shl edx,0x14 ; or eax,edx ; mov ecx,DWORD PTR [esp+0x4] ; mov eax,DWORD PTR... (no memory-operand ror)	no

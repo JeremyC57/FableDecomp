@@ -1,0 +1,7 @@
+rebuild/include/engine/CEngineLightingSSE.h
+rebuild/tests/portable/test_CEngineLightingSSE.cpp
+rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/README.md
+rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_LIGHTING.tsv
+rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_UNIVERSAL.tsv
+rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_SIMD_HELPERS.tsv
+rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_GFROR13.tsv

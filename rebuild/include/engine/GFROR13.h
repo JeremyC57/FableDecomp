@@ -10,6 +10,9 @@
 // Portable twin (FABLE_PORTABLE): plain C++ rotate; test rebuild/tests/portable/test_GFROR13.cpp.
 // Use: write each macro call as a statement on a line of its own: the retail branch expands to `__asm` statements, and an
 //   `__asm` statement runs to the end of its source line (anything after it on that line is read as assembler).
+// Proven (2026-11-05 round 2): VC7.1 never emits a memory-operand rotate from C++ or `_rotr` / `_lrotr` / `_rotl`: even
+//   `g = _lrotr(g, 13)` on a global, `*p = _lrotr(*p, 13)` through a pointer or the shift form under #pragma optimize("g",
+//   off) load, rotate in a register and store (64 spellings, 32 plain C++ and 32 intrinsic: rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_GFROR13.tsv).
 #ifndef FABLE_ENGINE_GFROR13_H
 #define FABLE_ENGINE_GFROR13_H
 

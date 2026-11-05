@@ -14,6 +14,9 @@
 // Portable twin (FABLE_PORTABLE): plain C++; test rebuild/tests/portable/test_CMatrix4x4InterpolateSSE.cpp.
 // Use: write each macro call as a statement on a line of its own: the retail branch expands to `__asm` statements, and an
 //   `__asm` statement runs to the end of its source line (anything after it on that line is read as assembler).
+// Proven (2026-11-05 round 2): `this` is stored to [esp+0Ch] and reloaded (`mov ecx,[esp+0Ch]`) with no call or alias
+//   between, and the block keeps its source order on fixed xmm0..xmm7; 17 intrinsic attempts (one statement per retail
+//   instruction included) never home `this` and VC7.1 reorders the loads and products (rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_SIMD_HELPERS.tsv).
 #ifndef FABLE_ENGINE_CMATRIX4X4INTERPOLATESSE_H
 #define FABLE_ENGINE_CMATRIX4X4INTERPOLATESSE_H
 

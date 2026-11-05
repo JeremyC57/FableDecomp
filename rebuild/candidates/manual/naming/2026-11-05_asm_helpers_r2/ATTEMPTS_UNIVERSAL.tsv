@@ -1,0 +1,87 @@
+site	attempt	kind	spelling	flags	vc71_emitted	matches_retail
+SIMD (all)	AddInl	intrinsic probe	AddInl	/O2 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A01	intrinsic probe	A01_caller_of_forceinline	/O2 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A02	intrinsic probe	A02_static	/O2 /Oy /W3	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	A02	intrinsic probe	A02_use	/O2 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A03	intrinsic probe	A03_fastcall	/O2 /Oy /W3	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	A04	intrinsic probe	A04_externC	/O2 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A05	intrinsic probe	A05_pragma_y_off	/O2 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	Add@K	intrinsic probe	Add@K	/O2 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A06	intrinsic probe	A06_member	/O2 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A07	intrinsic probe	A07_stdcall_store	/O2 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A08	intrinsic probe	A08_mmx_paddd	/O2 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A09	intrinsic probe	A09_mmx_mulhi	/O2 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A10	intrinsic probe	A10_ss_only	/O2 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A11	intrinsic probe	A11_cvt	/O2 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A12	intrinsic probe	A12_prefetch_only	/O2 /Oy /W3	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	AddInl	intrinsic probe	AddInl	/O1 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A01	intrinsic probe	A01_caller_of_forceinline	/O1 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A02	intrinsic probe	A02_static	/O1 /Oy /W3	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	A02	intrinsic probe	A02_use	/O1 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A03	intrinsic probe	A03_fastcall	/O1 /Oy /W3	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	A04	intrinsic probe	A04_externC	/O1 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A05	intrinsic probe	A05_pragma_y_off	/O1 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	Add@K	intrinsic probe	Add@K	/O1 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A06	intrinsic probe	A06_member	/O1 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A07	intrinsic probe	A07_stdcall_store	/O1 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A08	intrinsic probe	A08_mmx_paddd	/O1 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A09	intrinsic probe	A09_mmx_mulhi	/O1 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A10	intrinsic probe	A10_ss_only	/O1 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A11	intrinsic probe	A11_cvt	/O1 /Oy /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A12	intrinsic probe	A12_prefetch_only	/O1 /Oy /W3	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	AddInl	intrinsic probe	AddInl	/Ox /Oy /W3 /G7	and esp,-16/-8 realignment	-
+SIMD (all)	A01	intrinsic probe	A01_caller_of_forceinline	/Ox /Oy /W3 /G7	and esp,-16/-8 realignment	-
+SIMD (all)	A02	intrinsic probe	A02_static	/Ox /Oy /W3 /G7	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	A02	intrinsic probe	A02_use	/Ox /Oy /W3 /G7	and esp,-16/-8 realignment	-
+SIMD (all)	A03	intrinsic probe	A03_fastcall	/Ox /Oy /W3 /G7	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	A04	intrinsic probe	A04_externC	/Ox /Oy /W3 /G7	and esp,-16/-8 realignment	-
+SIMD (all)	A05	intrinsic probe	A05_pragma_y_off	/Ox /Oy /W3 /G7	and esp,-16/-8 realignment	-
+SIMD (all)	A06	intrinsic probe	A06_member	/Ox /Oy /W3 /G7	and esp,-16/-8 realignment	-
+SIMD (all)	A07	intrinsic probe	A07_stdcall_store	/Ox /Oy /W3 /G7	and esp,-16/-8 realignment	-
+SIMD (all)	A08	intrinsic probe	A08_mmx_paddd	/Ox /Oy /W3 /G7	and esp,-16/-8 realignment	-
+SIMD (all)	A09	intrinsic probe	A09_mmx_mulhi	/Ox /Oy /W3 /G7	and esp,-16/-8 realignment	-
+SIMD (all)	A10	intrinsic probe	A10_ss_only	/Ox /Oy /W3 /G7	and esp,-16/-8 realignment	-
+SIMD (all)	A11	intrinsic probe	A11_cvt	/Ox /Oy /W3 /G7	and esp,-16/-8 realignment	-
+SIMD (all)	A12	intrinsic probe	A12_prefetch_only	/Ox /Oy /W3 /G7	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	Add@K	intrinsic probe	Add@K	/Ox /Oy /W3 /G7	and esp,-16/-8 realignment	-
+SIMD (all)	AddInl	intrinsic probe	AddInl	/O2 /Oy- /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A01	intrinsic probe	A01_caller_of_forceinline	/O2 /Oy- /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A02	intrinsic probe	A02_static	/O2 /Oy- /W3	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	A02	intrinsic probe	A02_use	/O2 /Oy- /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A03	intrinsic probe	A03_fastcall	/O2 /Oy- /W3	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	A04	intrinsic probe	A04_externC	/O2 /Oy- /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A05	intrinsic probe	A05_pragma_y_off	/O2 /Oy- /W3	and esp,-16/-8 realignment	-
+SIMD (all)	Add@K	intrinsic probe	Add@K	/O2 /Oy- /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A06	intrinsic probe	A06_member	/O2 /Oy- /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A07	intrinsic probe	A07_stdcall_store	/O2 /Oy- /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A08	intrinsic probe	A08_mmx_paddd	/O2 /Oy- /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A09	intrinsic probe	A09_mmx_mulhi	/O2 /Oy- /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A10	intrinsic probe	A10_ss_only	/O2 /Oy- /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A11	intrinsic probe	A11_cvt	/O2 /Oy- /W3	and esp,-16/-8 realignment	-
+SIMD (all)	A12	intrinsic probe	A12_prefetch_only	/O2 /Oy- /W3	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	AddInl	intrinsic probe	AddInl	/O2 /Oy /W3 /arch:SSE	and esp,-16/-8 realignment	-
+SIMD (all)	A01	intrinsic probe	A01_caller_of_forceinline	/O2 /Oy /W3 /arch:SSE	and esp,-16/-8 realignment	-
+SIMD (all)	A02	intrinsic probe	A02_static	/O2 /Oy /W3 /arch:SSE	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	A02	intrinsic probe	A02_use	/O2 /Oy /W3 /arch:SSE	and esp,-16/-8 realignment	-
+SIMD (all)	A03	intrinsic probe	A03_fastcall	/O2 /Oy /W3 /arch:SSE	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	A04	intrinsic probe	A04_externC	/O2 /Oy /W3 /arch:SSE	and esp,-16/-8 realignment	-
+SIMD (all)	A05	intrinsic probe	A05_pragma_y_off	/O2 /Oy /W3 /arch:SSE	and esp,-16/-8 realignment	-
+SIMD (all)	Add@K	intrinsic probe	Add@K	/O2 /Oy /W3 /arch:SSE	and esp,-16/-8 realignment	-
+SIMD (all)	A06	intrinsic probe	A06_member	/O2 /Oy /W3 /arch:SSE	and esp,-16/-8 realignment	-
+SIMD (all)	A07	intrinsic probe	A07_stdcall_store	/O2 /Oy /W3 /arch:SSE	and esp,-16/-8 realignment	-
+SIMD (all)	A08	intrinsic probe	A08_mmx_paddd	/O2 /Oy /W3 /arch:SSE	and esp,-16/-8 realignment	-
+SIMD (all)	A09	intrinsic probe	A09_mmx_mulhi	/O2 /Oy /W3 /arch:SSE	and esp,-16/-8 realignment	-
+SIMD (all)	A10	intrinsic probe	A10_ss_only	/O2 /Oy /W3 /arch:SSE	and esp,-16/-8 realignment	-
+SIMD (all)	A11	intrinsic probe	A11_cvt	/O2 /Oy /W3 /arch:SSE	and esp,-16/-8 realignment	-
+SIMD (all)	A12	intrinsic probe	A12_prefetch_only	/O2 /Oy /W3 /arch:SSE	no realignment (register-only body: no stack argument, local or spill)	-
+SIMD (all)	B01_fc3	intrinsic probe	__fastcall, third argument on the stack	/O2 /Oy /W3	REALIGN: push ebp ; mov ebp,esp ; and esp,-16 (one stack argument is enough)	-
+SIMD (all)	B02_fc2_loop	intrinsic probe	__fastcall, both arguments in registers, unrolled loop	/O2 /Oy /W3	no realignment (no stack access)	-
+SIMD (all)	B03_fc_regpressure	intrinsic probe	__fastcall, 8 live __m128 values	/O2 /Oy /W3	REALIGN	-
+SIMD (all)	B05_fc_calls_member	intrinsic probe	__fastcall calling an inline member	/O2 /Oy /W3	no realignment	-
+SIMD (all)	B06_fc_mmx	intrinsic probe	__fastcall MMX add	/O2 /Oy /W3	no realignment	-
+SIMD (all)	B07_fc_local	intrinsic probe	__fastcall + an aligned float[4] local	/O2 /Oy /W3	REALIGN	-
+SIMD (all)	B08_fc_setps1	intrinsic probe	__fastcall + _mm_set_ps1 of a float argument (stack)	/O2 /Oy /W3	REALIGN	-
+SIMD (all)	M1..M6	intrinsic probe	pointer-only bodies, loops, rsqrt, no spills (cdecl)	/O2 /Oy /W3	REALIGN in every one; loads never folded into arithmetic (movaps xmm,[p] then addps xmm,xmm)	-
+SIMD (all)	N1..N8	intrinsic probe	MMX add / mulhi, SSE2 add_epi32, store-zero, max_ps unaligned, rcp_ss, rsqrt_ss, prefetch only	/O2 /Oy /W3	REALIGN (and esp,-8 for MMX, -16 for SSE/SSE2) in all but N8 (prefetch only: no SIMD value)	-
+SIMD (all)	F1..F7	intrinsic probe	SSE / SSE2 arithmetic on pointer operands (*a, b[2], _mm_load_ps(p))	/O2 /Oy /W3	0 folded loads from C pointers (the only folded memory operands VC7.1 emits are its own [esp+n] spill slots)	-
+SIMD (all)	G01..G08	intrinsic probe	cvtdq2ps / cvtps2dq / cvtpi2ps / MMX paddd / pmulhw / mulps / maxps on pointer operands	/O2 /Oy /W3	0 folded loads from C pointers (/O2 and /Ox /G7)	-

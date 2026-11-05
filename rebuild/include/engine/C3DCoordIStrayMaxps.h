@@ -12,6 +12,9 @@
 // Portable twin (FABLE_PORTABLE): nothing. Test: rebuild/tests/portable/test_C3DCoordIStrayMaxps.cpp.
 // Use: write each macro call as a statement on a line of its own: the retail branch expands to `__asm` statements, and an
 //   `__asm` statement runs to the end of its source line (anything after it on that line is read as assembler).
+// Proven (2026-11-05 round 2): VC7.1 drops a `_mm_max_ps` whose result is dead and stores one that is live, and adds an
+//   `and esp,-16` frame either way (10 intrinsic attempts, rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_SIMD_HELPERS.tsv); retail runs a bare
+//   `maxps xmm0,xmm1` (0x00A13C4F) in a function with no realignment.
 #ifndef FABLE_ENGINE_C3DCOORDISTRAYMAXPS_H
 #define FABLE_ENGINE_C3DCOORDISTRAYMAXPS_H
 

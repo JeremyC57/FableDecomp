@@ -45,6 +45,11 @@
 //   rebuild/tests/portable/test_MixKernelsSIMD.cpp.
 // Use: write each macro call as a statement on a line of its own: the retail branch expands to `__asm` statements, and an
 //   `__asm` statement runs to the end of its source line (anything after it on that line is read as assembler).
+// Proven (2026-11-05 round 2): every row has a shape intrinsics cannot give: VC7.1 gives every function that holds an SSE / MMX value and touches its stack an `and esp,-16` (-8) frame, and never folds a load
+//   from a C pointer into a SIMD operation (only its own spill slots) (rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_UNIVERSAL.tsv).
+//   18 retail callers fold `paddd xmm1,[edx]` / `paddd mm1,[edx]` / `cvtdq2ps xmm0,[eax]`; the other 18 have no realignment
+//   though they read stack arguments. 13 intrinsic spellings per macro and 30 plain-C++ spellings per family (x3 flag sets):
+//   rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_SIMD_HELPERS.tsv.
 #ifndef FABLE_LIBPK_MIXKERNELSSIMD_H
 #define FABLE_LIBPK_MIXKERNELSSIMD_H
 

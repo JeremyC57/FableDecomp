@@ -15,6 +15,10 @@
 // Portable twin (FABLE_PORTABLE): plain C++; test rebuild/tests/portable/test_GFGetInterpolatedColourMMX.cpp.
 // Use: write each macro call as a statement on a line of its own: the retail branch expands to `__asm` statements, and an
 //   `__asm` statement runs to the end of its source line (anything after it on that line is read as assembler).
+// Proven (2026-11-05 round 2): no `and esp,-8` though the function reads stack arguments, and `punpcklbw mm0,[esp+8]` reads
+//   the C local `zero` from memory; VC7.1 gives every function that holds an SSE / MMX value and touches its stack an `and esp,-16` (-8) frame, and never folds a load
+//   from a C pointer into a SIMD operation (only its own spill slots) (rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_UNIVERSAL.tsv). 10 intrinsic and 90 plain-C++ attempts:
+//   rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_SIMD_HELPERS.tsv.
 #ifndef FABLE_ENGINE_GFGETINTERPOLATEDCOLOURMMX_H
 #define FABLE_ENGINE_GFGETINTERPOLATEDCOLOURMMX_H
 

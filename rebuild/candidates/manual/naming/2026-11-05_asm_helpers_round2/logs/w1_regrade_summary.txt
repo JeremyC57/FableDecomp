@@ -1,0 +1,7 @@
+gate: 2 rows {'PASS': 2} in 0.2s (0.10s/row wall, NJ=3)
+gate: 2 PASS of 2
+vland:
+      2 MATCH PASS
+purity (grade, asm words in row, in test):
+      2 retail_asm	-	-
+twins: 396 steps, 0 failed

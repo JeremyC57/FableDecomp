@@ -31,6 +31,12 @@
 // Portable twin (FABLE_PORTABLE): plain C++ in fable_portable; tests in rebuild/tests/portable/test_NVectorMathSSE.cpp.
 // Use: write each macro call as a statement on a line of its own: the retail branch expands to `__asm` statements, and an
 //   `__asm` statement runs to the end of its source line (anything after it on that line is read as assembler).
+// Proven (2026-11-05 round 2): GFClear4DVectors / GFFinishPartialSlerp have no `and esp,-16` though they read stack
+//   arguments; VC7.1 gives every function that holds an SSE / MMX value and touches its stack an `and esp,-16` (-8) frame, and never folds a load
+//   from a C pointer into a SIMD operation (only its own spill slots) (rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_UNIVERSAL.tsv). The three GFInterpolateVectors keep the `push ebx ; mov ebx,esp` + ebp double frame of a
+//   block naming aligned locals and re-read the strides from argument slots (`add eax,[ebx+0Ch]`) with esi / edi free; 10
+//   intrinsic spellings each give the plain realigned ebp frame with strides in registers. 51 intrinsic and 180 plain-C++
+//   attempts: rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_SIMD_HELPERS.tsv.
 #ifndef FABLE_ENGINE_NVECTORMATHSSE_H
 #define FABLE_ENGINE_NVECTORMATHSSE_H
 

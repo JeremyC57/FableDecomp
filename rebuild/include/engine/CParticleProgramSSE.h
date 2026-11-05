@@ -13,6 +13,9 @@
 // Portable twin (FABLE_PORTABLE): plain C++; test rebuild/tests/portable/test_CParticleProgramSSE.cpp.
 // Use: write each macro call as a statement on a line of its own: the retail branch expands to `__asm` statements, and an
 //   `__asm` statement runs to the end of its source line (anything after it on that line is read as assembler).
+// Proven (2026-11-05 round 2): source and target are stored to frame slots before the SSE test (0x00AE0F76 / 0x00AE0F7A)
+//   and reloaded in the block (0x00AE0F86 / 0x00AE0F8A) while the x87 path uses the registers; 13 intrinsic attempts (address-
+//   taken pointers and a pointer array included) never store them (best 445 v 457 bytes; rebuild/candidates/manual/naming/2026-11-05_asm_helpers_r2/ATTEMPTS_SIMD_HELPERS.tsv).
 #ifndef FABLE_ENGINE_CPARTICLEPROGRAMSSE_H
 #define FABLE_ENGINE_CPARTICLEPROGRAMSSE_H
 

@@ -1,0 +1,237 @@
+site	attempt	kind	spelling	flags	vc71_emitted	matches_retail
+00b44820	C01	plain C++	light_idx_for: per-lane loop (idx access, for loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C01	plain C++	light_idx_while: per-lane loop (idx access, while loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C01	plain C++	light_idx_do: per-lane loop (idx access, do loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C02	plain C++	light_idx_unroll: per-lane loop (idx access, unroll loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C02	plain C++	light_idx_pragma_k: per-lane loop (idx access, pragma loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C02	plain C++	light_idx_nested: per-lane loop (idx access, nested loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C03	plain C++	light_ptr_for: per-lane loop (ptr access, for loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C03	plain C++	light_ptr_while: per-lane loop (ptr access, while loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C03	plain C++	light_ptr_do: per-lane loop (ptr access, do loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C04	plain C++	light_ptr_unroll: per-lane loop (ptr access, unroll loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C04	plain C++	light_ptr_pragma_k: per-lane loop (ptr access, pragma loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C04	plain C++	light_ptr_nested: per-lane loop (ptr access, nested loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C05	plain C++	light_deref_for: per-lane loop (deref access, for loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C05	plain C++	light_deref_while: per-lane loop (deref access, while loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C05	plain C++	light_deref_do: per-lane loop (deref access, do loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C06	plain C++	light_deref_unroll: per-lane loop (deref access, unroll loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C06	plain C++	light_deref_pragma_k: per-lane loop (deref access, pragma loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C06	plain C++	light_deref_nested: per-lane loop (deref access, nested loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C07	plain C++	light_struct_for: per-lane loop (struct access, for loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C07	plain C++	light_struct_while: per-lane loop (struct access, while loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C07	plain C++	light_struct_do: per-lane loop (struct access, do loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C08	plain C++	light_struct_unroll: per-lane loop (struct access, unroll loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C08	plain C++	light_struct_pragma_k: per-lane loop (struct access, pragma loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C08	plain C++	light_struct_nested: per-lane loop (struct access, nested loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C09	plain C++	light_union_for: per-lane loop (union access, for loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C09	plain C++	light_union_while: per-lane loop (union access, while loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C09	plain C++	light_union_do: per-lane loop (union access, do loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C10	plain C++	light_union_unroll: per-lane loop (union access, unroll loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C10	plain C++	light_union_pragma_k: per-lane loop (union access, pragma loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C10	plain C++	light_union_nested: per-lane loop (union access, nested loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C11	plain C++	light_idx_for: per-lane loop (idx access, for loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C11	plain C++	light_idx_while: per-lane loop (idx access, while loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C11	plain C++	light_idx_do: per-lane loop (idx access, do loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C12	plain C++	light_idx_unroll: per-lane loop (idx access, unroll loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C12	plain C++	light_idx_pragma_k: per-lane loop (idx access, pragma loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C12	plain C++	light_idx_nested: per-lane loop (idx access, nested loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C13	plain C++	light_ptr_for: per-lane loop (ptr access, for loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C13	plain C++	light_ptr_while: per-lane loop (ptr access, while loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C13	plain C++	light_ptr_do: per-lane loop (ptr access, do loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C14	plain C++	light_ptr_unroll: per-lane loop (ptr access, unroll loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C14	plain C++	light_ptr_pragma_k: per-lane loop (ptr access, pragma loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C14	plain C++	light_ptr_nested: per-lane loop (ptr access, nested loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C15	plain C++	light_deref_for: per-lane loop (deref access, for loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C15	plain C++	light_deref_while: per-lane loop (deref access, while loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C15	plain C++	light_deref_do: per-lane loop (deref access, do loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C16	plain C++	light_deref_unroll: per-lane loop (deref access, unroll loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C16	plain C++	light_deref_pragma_k: per-lane loop (deref access, pragma loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C16	plain C++	light_deref_nested: per-lane loop (deref access, nested loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C17	plain C++	light_struct_for: per-lane loop (struct access, for loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C17	plain C++	light_struct_while: per-lane loop (struct access, while loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C17	plain C++	light_struct_do: per-lane loop (struct access, do loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C18	plain C++	light_struct_unroll: per-lane loop (struct access, unroll loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C18	plain C++	light_struct_pragma_k: per-lane loop (struct access, pragma loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C18	plain C++	light_struct_nested: per-lane loop (struct access, nested loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C19	plain C++	light_union_for: per-lane loop (union access, for loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C19	plain C++	light_union_while: per-lane loop (union access, while loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C19	plain C++	light_union_do: per-lane loop (union access, do loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C20	plain C++	light_union_unroll: per-lane loop (union access, unroll loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C20	plain C++	light_union_pragma_k: per-lane loop (union access, pragma loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C20	plain C++	light_union_nested: per-lane loop (union access, nested loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C21	plain C++	light_idx_for: per-lane loop (idx access, for loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C21	plain C++	light_idx_while: per-lane loop (idx access, while loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C21	plain C++	light_idx_do: per-lane loop (idx access, do loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C22	plain C++	light_idx_unroll: per-lane loop (idx access, unroll loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C22	plain C++	light_idx_pragma_k: per-lane loop (idx access, pragma loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C22	plain C++	light_idx_nested: per-lane loop (idx access, nested loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C23	plain C++	light_ptr_for: per-lane loop (ptr access, for loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C23	plain C++	light_ptr_while: per-lane loop (ptr access, while loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C23	plain C++	light_ptr_do: per-lane loop (ptr access, do loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C24	plain C++	light_ptr_unroll: per-lane loop (ptr access, unroll loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C24	plain C++	light_ptr_pragma_k: per-lane loop (ptr access, pragma loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C24	plain C++	light_ptr_nested: per-lane loop (ptr access, nested loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C25	plain C++	light_deref_for: per-lane loop (deref access, for loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C25	plain C++	light_deref_while: per-lane loop (deref access, while loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C25	plain C++	light_deref_do: per-lane loop (deref access, do loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C26	plain C++	light_deref_unroll: per-lane loop (deref access, unroll loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C26	plain C++	light_deref_pragma_k: per-lane loop (deref access, pragma loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C26	plain C++	light_deref_nested: per-lane loop (deref access, nested loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C27	plain C++	light_struct_for: per-lane loop (struct access, for loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C27	plain C++	light_struct_while: per-lane loop (struct access, while loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C27	plain C++	light_struct_do: per-lane loop (struct access, do loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C28	plain C++	light_struct_unroll: per-lane loop (struct access, unroll loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C28	plain C++	light_struct_pragma_k: per-lane loop (struct access, pragma loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C28	plain C++	light_struct_nested: per-lane loop (struct access, nested loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	C29	plain C++	light_union_for: per-lane loop (union access, for loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C29	plain C++	light_union_while: per-lane loop (union access, while loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C29	plain C++	light_union_do: per-lane loop (union access, do loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C30	plain C++	light_union_unroll: per-lane loop (union access, unroll loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C30	plain C++	light_union_pragma_k: per-lane loop (union access, pragma loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44820	C30	plain C++	light_union_nested: per-lane loop (union access, nested loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C01	plain C++	light_idx_for: per-lane loop (idx access, for loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C01	plain C++	light_idx_while: per-lane loop (idx access, while loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C01	plain C++	light_idx_do: per-lane loop (idx access, do loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C02	plain C++	light_idx_unroll: per-lane loop (idx access, unroll loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C02	plain C++	light_idx_pragma_k: per-lane loop (idx access, pragma loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C02	plain C++	light_idx_nested: per-lane loop (idx access, nested loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C03	plain C++	light_ptr_for: per-lane loop (ptr access, for loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C03	plain C++	light_ptr_while: per-lane loop (ptr access, while loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C03	plain C++	light_ptr_do: per-lane loop (ptr access, do loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C04	plain C++	light_ptr_unroll: per-lane loop (ptr access, unroll loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C04	plain C++	light_ptr_pragma_k: per-lane loop (ptr access, pragma loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C04	plain C++	light_ptr_nested: per-lane loop (ptr access, nested loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C05	plain C++	light_deref_for: per-lane loop (deref access, for loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C05	plain C++	light_deref_while: per-lane loop (deref access, while loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C05	plain C++	light_deref_do: per-lane loop (deref access, do loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C06	plain C++	light_deref_unroll: per-lane loop (deref access, unroll loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C06	plain C++	light_deref_pragma_k: per-lane loop (deref access, pragma loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C06	plain C++	light_deref_nested: per-lane loop (deref access, nested loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C07	plain C++	light_struct_for: per-lane loop (struct access, for loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C07	plain C++	light_struct_while: per-lane loop (struct access, while loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C07	plain C++	light_struct_do: per-lane loop (struct access, do loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C08	plain C++	light_struct_unroll: per-lane loop (struct access, unroll loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C08	plain C++	light_struct_pragma_k: per-lane loop (struct access, pragma loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C08	plain C++	light_struct_nested: per-lane loop (struct access, nested loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C09	plain C++	light_union_for: per-lane loop (union access, for loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C09	plain C++	light_union_while: per-lane loop (union access, while loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C09	plain C++	light_union_do: per-lane loop (union access, do loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C10	plain C++	light_union_unroll: per-lane loop (union access, unroll loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C10	plain C++	light_union_pragma_k: per-lane loop (union access, pragma loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C10	plain C++	light_union_nested: per-lane loop (union access, nested loop), no intrinsics	/O2 /Oy /W3	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C11	plain C++	light_idx_for: per-lane loop (idx access, for loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C11	plain C++	light_idx_while: per-lane loop (idx access, while loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C11	plain C++	light_idx_do: per-lane loop (idx access, do loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C12	plain C++	light_idx_unroll: per-lane loop (idx access, unroll loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C12	plain C++	light_idx_pragma_k: per-lane loop (idx access, pragma loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C12	plain C++	light_idx_nested: per-lane loop (idx access, nested loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C13	plain C++	light_ptr_for: per-lane loop (ptr access, for loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C13	plain C++	light_ptr_while: per-lane loop (ptr access, while loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C13	plain C++	light_ptr_do: per-lane loop (ptr access, do loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C14	plain C++	light_ptr_unroll: per-lane loop (ptr access, unroll loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C14	plain C++	light_ptr_pragma_k: per-lane loop (ptr access, pragma loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C14	plain C++	light_ptr_nested: per-lane loop (ptr access, nested loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C15	plain C++	light_deref_for: per-lane loop (deref access, for loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C15	plain C++	light_deref_while: per-lane loop (deref access, while loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C15	plain C++	light_deref_do: per-lane loop (deref access, do loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C16	plain C++	light_deref_unroll: per-lane loop (deref access, unroll loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C16	plain C++	light_deref_pragma_k: per-lane loop (deref access, pragma loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C16	plain C++	light_deref_nested: per-lane loop (deref access, nested loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C17	plain C++	light_struct_for: per-lane loop (struct access, for loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C17	plain C++	light_struct_while: per-lane loop (struct access, while loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C17	plain C++	light_struct_do: per-lane loop (struct access, do loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C18	plain C++	light_struct_unroll: per-lane loop (struct access, unroll loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C18	plain C++	light_struct_pragma_k: per-lane loop (struct access, pragma loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C18	plain C++	light_struct_nested: per-lane loop (struct access, nested loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C19	plain C++	light_union_for: per-lane loop (union access, for loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C19	plain C++	light_union_while: per-lane loop (union access, while loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C19	plain C++	light_union_do: per-lane loop (union access, do loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C20	plain C++	light_union_unroll: per-lane loop (union access, unroll loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C20	plain C++	light_union_pragma_k: per-lane loop (union access, pragma loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C20	plain C++	light_union_nested: per-lane loop (union access, nested loop), no intrinsics	/Ox /Oy /W3 /G7	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C21	plain C++	light_idx_for: per-lane loop (idx access, for loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C21	plain C++	light_idx_while: per-lane loop (idx access, while loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C21	plain C++	light_idx_do: per-lane loop (idx access, do loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C22	plain C++	light_idx_unroll: per-lane loop (idx access, unroll loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C22	plain C++	light_idx_pragma_k: per-lane loop (idx access, pragma loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C22	plain C++	light_idx_nested: per-lane loop (idx access, nested loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C23	plain C++	light_ptr_for: per-lane loop (ptr access, for loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C23	plain C++	light_ptr_while: per-lane loop (ptr access, while loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C23	plain C++	light_ptr_do: per-lane loop (ptr access, do loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C24	plain C++	light_ptr_unroll: per-lane loop (ptr access, unroll loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C24	plain C++	light_ptr_pragma_k: per-lane loop (ptr access, pragma loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C24	plain C++	light_ptr_nested: per-lane loop (ptr access, nested loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C25	plain C++	light_deref_for: per-lane loop (deref access, for loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C25	plain C++	light_deref_while: per-lane loop (deref access, while loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C25	plain C++	light_deref_do: per-lane loop (deref access, do loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C26	plain C++	light_deref_unroll: per-lane loop (deref access, unroll loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C26	plain C++	light_deref_pragma_k: per-lane loop (deref access, pragma loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C26	plain C++	light_deref_nested: per-lane loop (deref access, nested loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C27	plain C++	light_struct_for: per-lane loop (struct access, for loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C27	plain C++	light_struct_while: per-lane loop (struct access, while loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C27	plain C++	light_struct_do: per-lane loop (struct access, do loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C28	plain C++	light_struct_unroll: per-lane loop (struct access, unroll loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C28	plain C++	light_struct_pragma_k: per-lane loop (struct access, pragma loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C28	plain C++	light_struct_nested: per-lane loop (struct access, nested loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44a60	C29	plain C++	light_union_for: per-lane loop (union access, for loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C29	plain C++	light_union_while: per-lane loop (union access, while loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C29	plain C++	light_union_do: per-lane loop (union access, do loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C30	plain C++	light_union_unroll: per-lane loop (union access, unroll loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C30	plain C++	light_union_pragma_k: per-lane loop (union access, pragma loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 40 x87 instructions	no
+00b44a60	C30	plain C++	light_union_nested: per-lane loop (union access, nested loop), no intrinsics	/O2 /Oy /W3 /arch:SSE2	packed SIMD arithmetic 0; 0 scalar SSE, 10 x87 instructions	no
+00b44820	I01	intrinsic	full kernel, named __m128 locals, _mm_set_ps1 splats, prefetch, acc[3] array, for loop	/O2 /Oy /W3	len 984 v 572  ins 254 v 158  diff_lines 324; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I01	intrinsic	full kernel, named __m128 locals, _mm_set_ps1 splats, prefetch, acc[3] array, for loop	/O2 /Oy /W3 /arch:SSE	len 909 v 572  ins 238 v 158  diff_lines 298; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I01	intrinsic	full kernel, named __m128 locals, _mm_set_ps1 splats, prefetch, acc[3] array, for loop	/O2 /Oy /W3	len 1087 v 627  ins 280 v 168  diff_lines 356; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I01	intrinsic	full kernel, named __m128 locals, _mm_set_ps1 splats, prefetch, acc[3] array, for loop	/O2 /Oy /W3 /arch:SSE	len 1007 v 627  ins 263 v 168  diff_lines 379; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I02	intrinsic	k01 with _mm_load_ps1 splats	/O2 /Oy /W3	len 909 v 572  ins 238 v 158  diff_lines 298; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I02	intrinsic	k01 with _mm_load_ps1 splats	/O2 /Oy /W3 /arch:SSE	len 909 v 572  ins 238 v 158  diff_lines 298; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I02	intrinsic	k01 with _mm_load_ps1 splats	/O2 /Oy /W3	len 1007 v 627  ins 263 v 168  diff_lines 379; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I02	intrinsic	k01 with _mm_load_ps1 splats	/O2 /Oy /W3 /arch:SSE	len 1007 v 627  ins 263 v 168  diff_lines 379; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I03	intrinsic	k01 with _mm_load_ss + _mm_shuffle_ps(0) splats (the retail movss / shufps form)	/O2 /Oy /W3	len 996 v 572  ins 260 v 158  diff_lines 320; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I03	intrinsic	k01 with _mm_load_ss + _mm_shuffle_ps(0) splats (the retail movss / shufps form)	/O2 /Oy /W3 /arch:SSE	len 996 v 572  ins 260 v 158  diff_lines 320; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I03	intrinsic	k01 with _mm_load_ss + _mm_shuffle_ps(0) splats (the retail movss / shufps form)	/O2 /Oy /W3	len 1108 v 627  ins 289 v 168  diff_lines 404; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I03	intrinsic	k01 with _mm_load_ss + _mm_shuffle_ps(0) splats (the retail movss / shufps form)	/O2 /Oy /W3 /arch:SSE	len 1108 v 627  ins 289 v 168  diff_lines 404; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I04	intrinsic	k01 without _mm_prefetch	/O2 /Oy /W3	len 929 v 572  ins 237 v 158  diff_lines 281; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I04	intrinsic	k01 without _mm_prefetch	/O2 /Oy /W3 /arch:SSE	len 862 v 572  ins 222 v 158  diff_lines 276; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I04	intrinsic	k01 without _mm_prefetch	/O2 /Oy /W3	len 1013 v 627  ins 259 v 168  diff_lines 333; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I04	intrinsic	k01 without _mm_prefetch	/O2 /Oy /W3 /arch:SSE	len 938 v 627  ins 244 v 168  diff_lines 343; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I05	intrinsic	accumulators in the output stream (__m128* out), no acc locals	/O2 /Oy /W3	len 881 v 572  ins 248 v 158  diff_lines 315; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I05	intrinsic	accumulators in the output stream (__m128* out), no acc locals	/O2 /Oy /W3 /arch:SSE	len 817 v 572  ins 232 v 158  diff_lines 288; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I05	intrinsic	accumulators in the output stream (__m128* out), no acc locals	/O2 /Oy /W3	len 970 v 627  ins 274 v 168  diff_lines 346; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I05	intrinsic	accumulators in the output stream (__m128* out), no acc locals	/O2 /Oy /W3 /arch:SSE	len 906 v 627  ins 258 v 168  diff_lines 355; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I06	intrinsic	accumulators in a __declspec(align(16)) float[12]	/O2 /Oy /W3	len 984 v 572  ins 254 v 158  diff_lines 324; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I06	intrinsic	accumulators in a __declspec(align(16)) float[12]	/O2 /Oy /W3 /arch:SSE	len 909 v 572  ins 238 v 158  diff_lines 298; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I06	intrinsic	accumulators in a __declspec(align(16)) float[12]	/O2 /Oy /W3	len 1087 v 627  ins 280 v 168  diff_lines 356; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I06	intrinsic	accumulators in a __declspec(align(16)) float[12]	/O2 /Oy /W3 /arch:SSE	len 1007 v 627  ins 263 v 168  diff_lines 379; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I07	intrinsic	do-while quad loop	/O2 /Oy /W3	len 982 v 572  ins 253 v 158  diff_lines 326; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I07	intrinsic	do-while quad loop	/O2 /Oy /W3 /arch:SSE	len 907 v 572  ins 237 v 158  diff_lines 299; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I07	intrinsic	do-while quad loop	/O2 /Oy /W3	len 1064 v 627  ins 276 v 168  diff_lines 352; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I07	intrinsic	do-while quad loop	/O2 /Oy /W3 /arch:SSE	len 985 v 627  ins 260 v 168  diff_lines 316; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I08	intrinsic	light loop in a __forceinline helper on __m128* accumulators	/O2 /Oy /W3	len 984 v 572  ins 254 v 158  diff_lines 324; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I08	intrinsic	light loop in a __forceinline helper on __m128* accumulators	/O2 /Oy /W3 /arch:SSE	len 909 v 572  ins 238 v 158  diff_lines 298; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I08	intrinsic	light loop in a __forceinline helper on __m128* accumulators	/O2 /Oy /W3	len 1087 v 627  ins 280 v 168  diff_lines 356; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I08	intrinsic	light loop in a __forceinline helper on __m128* accumulators	/O2 /Oy /W3 /arch:SSE	len 1007 v 627  ins 263 v 168  diff_lines 379; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I09	intrinsic	zero as _mm_sub_ps(d, d) (the retail subps x,x)	/O2 /Oy /W3	len 968 v 572  ins 251 v 158  diff_lines 321; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I09	intrinsic	zero as _mm_sub_ps(d, d) (the retail subps x,x)	/O2 /Oy /W3 /arch:SSE	len 893 v 572  ins 235 v 158  diff_lines 295; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I09	intrinsic	zero as _mm_sub_ps(d, d) (the retail subps x,x)	/O2 /Oy /W3	len 1069 v 627  ins 277 v 168  diff_lines 353; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I09	intrinsic	zero as _mm_sub_ps(d, d) (the retail subps x,x)	/O2 /Oy /W3 /arch:SSE	len 990 v 627  ins 261 v 168  diff_lines 377; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I10	intrinsic	do-while + output accumulators + _mm_load_ps1	/O2 /Oy /W3	len 815 v 572  ins 232 v 158  diff_lines 290; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I10	intrinsic	do-while + output accumulators + _mm_load_ps1	/O2 /Oy /W3 /arch:SSE	len 815 v 572  ins 232 v 158  diff_lines 290; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I10	intrinsic	do-while + output accumulators + _mm_load_ps1	/O2 /Oy /W3	len 888 v 627  ins 254 v 168  diff_lines 330; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I10	intrinsic	do-while + output accumulators + _mm_load_ps1	/O2 /Oy /W3 /arch:SSE	len 888 v 627  ins 254 v 168  diff_lines 330; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I11	intrinsic	forceinline light helper + output accumulators + do-while	/O2 /Oy /W3	len 879 v 572  ins 248 v 158  diff_lines 317; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I11	intrinsic	forceinline light helper + output accumulators + do-while	/O2 /Oy /W3 /arch:SSE	len 815 v 572  ins 232 v 158  diff_lines 290; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I11	intrinsic	forceinline light helper + output accumulators + do-while	/O2 /Oy /W3	len 952 v 627  ins 270 v 168  diff_lines 344; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I11	intrinsic	forceinline light helper + output accumulators + do-while	/O2 /Oy /W3 /arch:SSE	len 888 v 627  ins 254 v 168  diff_lines 330; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I12	intrinsic	movss/shufps splats + subps zero + do-while	/O2 /Oy /W3	len 969 v 572  ins 254 v 158  diff_lines 315; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	I12	intrinsic	movss/shufps splats + subps zero + do-while	/O2 /Oy /W3 /arch:SSE	len 969 v 572  ins 254 v 158  diff_lines 315; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I12	intrinsic	movss/shufps splats + subps zero + do-while	/O2 /Oy /W3	len 1090 v 627  ins 286 v 168  diff_lines 401; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44a60	I12	intrinsic	movss/shufps splats + subps zero + do-while	/O2 /Oy /W3 /arch:SSE	len 1090 v 627  ins 286 v 168  diff_lines 401; and esp,-16 frame, own register allocation, no folded loads from the C pointers, no mov esi,0 / push inside the loop	no
+00b44820	S01	intrinsic	first draft: named locals, _mm_set_ps1, for loop	/O2 /Oy /W3	n_ins=254 last_off=0x3d5 and_esp16=True rsqrtps=True rcpps=True prefetcht0=3 mov_esi0=False or_rr=False esp_spills=16 (rsqrtps/rcpps emitted; and esp,-16 in every one)	no
+00b44820	S01	intrinsic	first draft: named locals, _mm_set_ps1, for loop	/Ox /Oy /W3	n_ins=254 last_off=0x3d5 and_esp16=True rsqrtps=True rcpps=True prefetcht0=3 mov_esi0=False or_rr=False esp_spills=16 (rsqrtps/rcpps emitted; and esp,-16 in every one)	no
+00b44820	S01	intrinsic	first draft: named locals, _mm_set_ps1, for loop	/O2 /Oy /W3 /G7	n_ins=245 last_off=0x3c7 and_esp16=True rsqrtps=True rcpps=True prefetcht0=3 mov_esi0=False or_rr=False esp_spills=16 (rsqrtps/rcpps emitted; and esp,-16 in every one)	no
+00b44820	S01	intrinsic	first draft: named locals, _mm_set_ps1, for loop	/O2 /Oy /W3 /arch:SSE	n_ins=238 last_off=0x38a and_esp16=True rsqrtps=True rcpps=True prefetcht0=3 mov_esi0=False or_rr=False esp_spills=16 (rsqrtps/rcpps emitted; and esp,-16 in every one)	no
+00b44820	S03	intrinsic	no named __m128 locals at all: every value through the var block / output pointers	/O2 /Oy /W3	n_ins=277 last_off=0x42b and_esp16=True rsqrtps=True rcpps=True prefetcht0=0 mov_esi0=False or_rr=False esp_spills=3 (rsqrtps/rcpps emitted; and esp,-16 in every one)	no
+00b44820	S05	intrinsic	light loop in a __forceinline helper, accumulators passed as __m128 acc[3]	/O2 /Oy /W3	n_ins=350 last_off=0x3d5 and_esp16=True rsqrtps=True rcpps=True prefetcht0=3 mov_esi0=False or_rr=False esp_spills=17 (rsqrtps/rcpps emitted; and esp,-16 in every one)	no
+00b44820	S06	intrinsic	r / g / b accumulated in the output stream	/O2 /Oy /W3	n_ins=245 last_off=0x365 and_esp16=True rsqrtps=True rcpps=True prefetcht0=3 mov_esi0=False or_rr=False esp_spills=2 (rsqrtps/rcpps emitted; and esp,-16 in every one)	no
+00b44820	S07	intrinsic	r / g / b in an aligned float[12] scratch	/O2 /Oy /W3	n_ins=263 last_off=0x3ea and_esp16=True rsqrtps=True rcpps=True prefetcht0=3 mov_esi0=False or_rr=False esp_spills=10 (rsqrtps/rcpps emitted; and esp,-16 in every one)	no

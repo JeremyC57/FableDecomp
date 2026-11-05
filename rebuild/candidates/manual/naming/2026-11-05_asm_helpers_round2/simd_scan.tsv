@@ -1,0 +1,53 @@
+helper	address	len	realign	user_fold_count	first_user_fold	name
+MixKernelsSIMD	00c5bef0	211	True	4	paddd  mm1,QWORD PTR [edx]	_global::CUnprovenMixKernel_00c5bef0
+MixKernelsSIMD	00c5d4b0	86	False	4	paddd  xmm0,XMMWORD PTR [edx]	_global::AddInt128Block_00c5d4b0
+MixKernelsSIMD	00c5d370	84	False	4	paddd  xmm0,XMMWORD PTR [edx]	_global::AddInt128Block
+MixKernelsSIMD	00c5d1f0	240	True	2	paddd  xmm1,XMMWORD PTR [edx]	ScaleAccumulate16Ramp
+MixKernelsSIMD	00c5d2e0	141	False	4	paddd  xmm0,XMMWORD PTR [edx]	_global::AccumulateFloatBlockSSE2
+MixKernelsSIMD	00c5d3f0	86	False	4	paddd  xmm0,XMMWORD PTR [edx]	_global::AddInt128Block_00c5d3f0
+MixKernelsSIMD	00c5be20	173	True	4	paddd  mm1,QWORD PTR [edx]	_global::ScaleAccumulate16MMX_00c5be20
+MixKernelsSIMD	00c5d150	156	True	2	paddd  xmm1,XMMWORD PTR [edx]	Row00c5d150::ScaleAccumulate16
+MixKernelsSIMD	00c6d560	44	False	0	-	CVtable_012b8a64::ClearHistory
+MixKernelsSIMD	00c6d630	808	False	0	-	CVtable_012b8a64::Process
+MixKernelsSIMD	00c6aae0	211	True	4	paddd  mm1,QWORD PTR [edx]	_global::CUnprovenMixKernel_00c6aae0
+MixKernelsSIMD	00c6d410	240	True	2	paddd  xmm1,XMMWORD PTR [edx]	_global::MixSamplesRampSSE2
+MixKernelsSIMD	00c6e410	533	False	0	-	CVtable_012b8a78::Process
+MixKernelsSIMD	00c6f1a0	211	True	4	paddd  mm1,QWORD PTR [edx]	_global::CUnprovenMixKernel_00c6f1a0
+MixKernelsSIMD	00c6f800	211	True	4	paddd  mm1,QWORD PTR [edx]	_global::CUnprovenMixKernel_00c6f800
+MixKernelsSIMD	00c6fe10	507	False	0	-	CVtable_012b8ac8::Process
+MixKernelsSIMD	00c6f0f0	173	True	4	paddd  mm1,QWORD PTR [edx]	_global::ScaleAccumulate16MMX
+MixKernelsSIMD	00c6ed70	240	True	2	paddd  xmm1,XMMWORD PTR [edx]	ScaleAccumulate16Ramp
+MixKernelsSIMD	00c6fc80	211	True	4	paddd  mm1,QWORD PTR [edx]	_global::CUnprovenMixKernel_00c6fc80
+MixKernelsSIMD	00c6b3a0	237	False	0	-	_global::ConvertInt128BlockToFloat
+MixKernelsSIMD	00c6ecd0	156	True	2	paddd  xmm1,XMMWORD PTR [edx]	Row00c6ecd0::ScaleAccumulate16
+MixKernelsSIMD	00c6b490	307	False	0	-	ConvertFloat128BlockToIntInPlace
+MixKernelsSIMD	00c6d370	156	True	2	paddd  xmm1,XMMWORD PTR [edx]	_global::ScaleAccumulate16
+MixKernelsSIMD	00c6f990	533	False	0	-	CVtable_012b8ab4::Process
+MixKernelsSIMD	00c6b5d0	219	False	0	-	_global::ConvertInt128BlockToFloatInPlace_00c6b5d0
+MixKernelsSIMD	00c6e1f0	156	True	2	paddd  xmm1,XMMWORD PTR [edx]	Row00c6e1f0::ScaleAccumulate16
+MixKernelsSIMD	00c6e290	240	True	2	paddd  xmm1,XMMWORD PTR [edx]	ScaleAccumulate16Ramp
+MixKernelsSIMD	00c6f300	58	False	0	-	CVtable_012b8aa0::ClearHistory
+MixKernelsSIMD	00c6fbb0	173	True	4	paddd  mm1,QWORD PTR [edx]	_global::ScaleAccumulate16MMX_00c6fbb0
+MixKernelsSIMD	00c6aa10	173	True	4	paddd  mm1,QWORD PTR [edx]	_global::MixSamplesMMX
+MixKernelsSIMD	00c6f730	173	True	4	paddd  mm1,QWORD PTR [edx]	_global::ScaleAccumulate16MMX_00c6f730
+MixKernelsSIMD	00c70a60	91	False	0	-	CPreTransposedBoneMatrix::Set
+MixKernelsSIMD	00c70040	141	False	0	-	CPreTransposedBoneMatrix::Set
+MixKernelsSIMD	00c701e0	92	False	0	-	CVtable_012bedcc::ClearScratch
+MixKernelsSIMD	00c700d0	75	False	0	-	_global::ZeroBlock128MMX_00c700d0
+MixKernelsSIMD	00c70bc0	66	False	0	-	CVtable_012bede0::ClearScratch
+C3DBoundingBoxSSE	00bf7df0	379	False	0	-	CLandscapeBackgroundTreeNode::GetDesiredLODBand
+C3DBoundingBoxSSE	00b99bb0	475	False	0	-	CEngineInternalPrimitiveRepeatedStaticMesh::IsInsideFrustum
+C3DBoundingBoxSSE	00b9c500	286	False	0	-	C3DBoundingBox::CalcShortestDistanceToPoint
+C3DBoundingBoxSSE	00b9c2e0	494	False	0	-	CShadowClipVolume::ClipBoundingBox
+C3DBoundingBoxSSE	00b4ced0	831	False	0	-	CShadowClipVolume::ClipBoundingBox
+C3DBoundingBoxSSE	00b49810	282	False	0	-	C3DBoundingBox::CalcShortestDistanceToPointSquared
+C3DBoundingBoxSSE	00b46280	982	False	0	-	CEngineLightingManager::GetLightsInArea
+NVectorMathSSE	00a5c2b0	67	False	0	-	NVectorMath::GFFinishPartialSlerp
+NVectorMathSSE	00a5bef0	946	True	0	-	NVectorMath::GFInterpolateVectors
+NVectorMathSSE	00a5bba0	840	True	0	-	NVectorMath::GFInterpolateVectors
+NVectorMathSSE	00a5b870	801	True	0	-	NVectorMath::GFInterpolateVectors
+NVectorMathSSE	00a5c300	89	False	0	-	NVectorMath::GFClear4DVectors
+CMatrix4x4InterpolateSSE	00a5cee0	285	True	0	-	CMatrix4x4::AlignedSetInterpolate
+CParticleProgramSSE	00ae0e60	457	True	0	-	CParticleProgram::TransformVertices
+GFGetInterpolatedColourMMX	00a44250	117	False	0	-	GFGetInterpolatedColour
+C3DCoordIStrayMaxps	00a13c20	57	False	0	-	C3DCoordI::operator-=

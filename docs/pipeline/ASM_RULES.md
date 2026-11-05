@@ -77,3 +77,8 @@ EXTRA_RULES.md, the briefs, the handoffs, older journal entries. The earlier rou
   - the fixed list is replaced by "the original code used asm", proven from retail bytes;
   - intrinsics, then the shared-header asm, then `__forceinline` only if necessary;
   - the in-row `__asm` allowance is retired.
+
+## Status (2026-11-05, after asm cleanup round 2a)
+- No row source contains `__asm` any more, apart from the 14 oracle bakes (round 2b).
+- 209 `retail_asm` rows reach asm only through 24 shared helper headers, each with a `FABLE_PORTABLE` twin.
+- `crawl/purity.py` now grades in-row `__asm` as `naked_asm`, never `retail_asm`.
