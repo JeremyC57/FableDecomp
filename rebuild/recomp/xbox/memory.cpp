@@ -34,6 +34,7 @@ std::mutex g_poolLock;
 #if defined(__3DS__)
 namespace {
 constexpr uint32_t kWindowPages = (RECOMP_WINDOW_MASK + 1) / kPage;
+constexpr uint32_t kHeapAreaPages = 0x06000000u / kPage;  // OS_HEAP_AREA_END - OS_HEAP_AREA_BEGIN
 std::vector<uint8_t> g_backed(kWindowPages);  // per window page: has FCRAM
 uint32_t g_backedPages = 0, g_backedPeak = 0;
 uint32_t g_windowEnd = 0;  // first guest address the window cannot back (memProbeWindow)
@@ -51,7 +52,10 @@ bool hostCommit(uint32_t a, uint32_t size) {
     for (uint32_t p = p0; p < p1;) {
         if (g_backed[p]) { ++p; continue; }
         uint32_t q = p;
-        while (q < p1 && !g_backed[q]) ++q;
+        // A run stops at 96 MB (host 0x0E000000, the end of libctru's heap area): the kernel backs
+        // either side, but refuses one allocation across it.
+        const uint32_t stop = p < kHeapAreaPages ? std::min(p1, kHeapAreaPages) : p1;
+        while (q < stop && !g_backed[q]) ++q;
         u32 out = 0;
         const Result r = svcControlMemory(&out, RECOMP_WINDOW_BASE + p * kPage, 0, (q - p) * kPage, MEMOP_ALLOC,
                                           static_cast<MemPerm>(MEMPERM_READ | MEMPERM_WRITE));

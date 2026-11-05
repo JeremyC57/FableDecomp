@@ -390,6 +390,9 @@ KFUNC(NtReadFile, 8) {
     ssize_t n;
     {
         GilRelease r;
+        // New 3DS: the file service writes the buffer from its own process, where an unbacked guest
+        // page is a crash in the system, not a fault this process can serve.
+        hostCommit(buf, len);
         n = pread(f->fd, gp(buf), len, static_cast<off_t>(off));
     }
     if (n < 0) n = 0;
@@ -427,6 +430,7 @@ KFUNC(NtWriteFile, 8) {
     ssize_t n;
     {
         GilRelease r;
+        hostCommit(buf, len);  // as for reads
         n = pwrite(f->fd, gp(buf), len, static_cast<off_t>(off));
     }
     if (n < 0) {
