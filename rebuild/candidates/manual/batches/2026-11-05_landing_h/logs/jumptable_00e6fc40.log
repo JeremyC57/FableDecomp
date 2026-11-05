@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00e6fc40   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00e6fc40 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_Dragon::?Main@CDF_Dragon@CV_DemonDoorsScript@NScript@@EAEXXZ

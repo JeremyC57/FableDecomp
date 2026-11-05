@@ -1,0 +1,3 @@
+address	source	grade_with_final_overlay	note
+-	(none landed)	-	The only overlay header, engine/CQ_HangingTreeEvilScript.h, has no landed includer (`grep -rl "CQ_HangingTreeEvilScript.h" rebuild/src`: 0 hits; landed CQ_HangingTreeEvilScript rows use local models). The edit only adds members/virtuals to the nested CHTE_FreedomFighter (size 0x20 asserted); the parent layout and every other nested class are unchanged
+00d69480	rebuild/candidates/manual/pending/2026-11-04_linux_hand744/differ/00d69480.cpp (pending, not landed)	DIFFER(2118v2118), identical grade log with and without the overlay	the one pending includer (CQ_HangingTreeEvilScript::Main, chunk 744 parked): built bytes unchanged by the overlay (tmp logs compared with cmp, then deleted)

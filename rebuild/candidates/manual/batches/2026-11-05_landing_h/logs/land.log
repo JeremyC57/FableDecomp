@@ -1,0 +1,20 @@
+addr       parity           behav  name
+00e6fc40   RELOCATION_MATCH PASS   Main
+00e702c0   RELOCATION_MATCH PASS   Alloc
+00e70360   MATCH            PASS   GetParentScript
+00e74d70   RELOCATION_MATCH PASS   Main
+00e9cfd0   RELOCATION_MATCH PASS   Main
+
+WINS: 5
+  00e6fc40 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_Dragon::?Main@CDF_Dragon@CV_DemonDoorsScript@NScript@@EAEXXZ
+  00e702c0 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::?Alloc@CDF_SummonsCreatures@CV_DemonDoorsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00e70360 MATCH NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::?GetParentScript@CDF_SummonsCreatures@CV_DemonDoorsScript@NScript@@UBEPAVCScriptBase@@XZ
+  00e74d70 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::?Main@CDF_SummonsCreatures@CV_DemonDoorsScript@NScript@@EAEXXZ
+  00e9cfd0 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::CTrophiesIntroWatcher::?Main@CTrophiesIntroWatcher@CV_IntroductionToTrophiesScript@NScript@@EAEXXZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  NScriptCVDemonDoorsScriptCDFDragon_Main_00e6fc40
+  NScriptCVDemonDoorsScriptCDFSummonsCreatures_Alloc_00e702c0
+  NScriptCVDemonDoorsScriptCDFSummonsCreatures_GetParentScript_00e70360
+  NScriptCVDemonDoorsScriptCDFSummonsCreatures_Main_00e74d70
+  NScriptCVIntroductionToTrophiesScriptCTrophiesIntroWatcher_Main_00e9cfd0

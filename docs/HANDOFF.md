@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (work resumed; chunk 781 and plan phase 6 running)
+# Resume here (one page) — updated 2026-11-05 late (resumed session; nothing running, everything landed and pushed)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -15,8 +15,14 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     found 0x00A8E160 (no Leaf line, graded the base ctor COMDAT), fixed: 0 suspects.
   - chunk 779 landed 2 of 5 (`batches/2026-11-05_landing_f/`), chunk 780 landed 1 of 5 (`_landing_g/`); parked rows in
     `pending/2026-11-05_linux_hand779/` and `_hand780/`.
-  - **Running:** chunk 781 (`$S/w22/agent781`: the CV_DemonDoorsScript TU, CDF_Dragon::Main with its jump table -> land with
-    `verify_land_jumptable.py`) and plan phase 6 (`$S/plan/p6`, brief `$S/plan/BRIEF_PLAN6.md`; hand-back in `$S/plan/p6/handback/`).
+  - chunk 781 landed 5 of 6 (`_landing_h/`: the CV_DemonDoorsScript TU incl. CDF_Dragon::Main with its jump table after the row
+    split, and CTrophiesIntroWatcher::Main); CHTE_FreedomFighter::Main parked one `lea` off (`pending/2026-11-05_linux_hand781/`).
+  - **Plan phase 6 applied** (`naming/2026-11-05_plan_p6_w1/README.md`): 27 binders of 0x0041E5F2 respelled to
+    NUISystem::CManager::GetInstance; 1,759 CThing rows on engine/CThing.h (GetTC/PeekTC lifted behind three sub-macros);
+    coordinator regrade 2,006/2,006 PASS. The rebuilt plan tools are committed in `plan_p6_w1/scripts/`. Phase 7 brief:
+    `plan_p6_w1/NEXT.md` (2,431 deferred CThing rows by class, waves 3-4 CIntelligentPointer / CTCBase / CThingCreatureBase,
+    62 old-spelling binders in `plan_p6_w2/CALLERS.tsv`). Refresh the index first (`$S/plan/symindex2.py $S/plan/idx --all`).
+  - Open naming decision: 0x0122DEDC (the shared 0.0f, 30+ spellings, no PDB name), like EPSILON / TWO_PI on 2026-11-01.
   - The FSE Lua ports of the quest scripts are in the repo: `refs/script_recovery/seed_corpus/sources/<Quest>/FSE/`.
 - Paused state before that (2026-11-05):
   Exact progress at the pause and the resume steps: `docs/journal/2026-11/2026-11-05_SESSION.md`.

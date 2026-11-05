@@ -384244,6 +384244,41 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00decad0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e6fc40'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_Dragon'
+        Source = '00/e6/NScriptCVDemonDoorsScriptCDFDragon_Main_00e6fc40.cpp'
+        TestSource = '00/e6/NScriptCVDemonDoorsScriptCDFDragon_Main_00e6fc40_test.cpp'
+        PassPattern = '00e6fc40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e702c0'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_SummonsCreatures'
+        Source = '00/e7/NScriptCVDemonDoorsScriptCDFSummonsCreatures_Alloc_00e702c0.cpp'
+        TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFSummonsCreatures_Alloc_00e702c0_test.cpp'
+        PassPattern = '00e702c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e70360'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_SummonsCreatures'
+        Source = '00/e7/NScriptCVDemonDoorsScriptCDFSummonsCreatures_GetParentScript_00e70360.cpp'
+        TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFSummonsCreatures_GetParentScript_00e70360_test.cpp'
+        PassPattern = '00e70360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e74d70'
+        Module = 'NScript::CV_DemonDoorsScript::CDF_SummonsCreatures'
+        Source = '00/e7/NScriptCVDemonDoorsScriptCDFSummonsCreatures_Main_00e74d70.cpp'
+        TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFSummonsCreatures_Main_00e74d70_test.cpp'
+        PassPattern = '00e74d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9cfd0'
+        Module = 'NScript::CV_IntroductionToTrophiesScript::CTrophiesIntroWatcher'
+        Source = '00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesIntroWatcher_Main_00e9cfd0.cpp'
+        TestSource = '00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesIntroWatcher_Main_00e9cfd0_test.cpp'
+        PassPattern = '00e9cfd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

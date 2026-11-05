@@ -1,0 +1,7 @@
+address	module	name	length
+00e6fc40	NScript::CV_DemonDoorsScript::CDF_Dragon	Main	1664
+00e702c0	NScript::CV_DemonDoorsScript::CDF_SummonsCreatures	Alloc	145
+00e70360	NScript::CV_DemonDoorsScript::CDF_SummonsCreatures	GetParentScript	4
+00e74d70	NScript::CV_DemonDoorsScript::CDF_SummonsCreatures	Main	2080
+00e9cfd0	NScript::CTrophiesIntroWatcher	Main	1833
+00d6a560	NScript::CHTE_FreedomFighter	Main	2058

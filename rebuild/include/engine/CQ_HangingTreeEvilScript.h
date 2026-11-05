@@ -64,7 +64,22 @@ public:
     std::vector<CCharString,std::allocator<CCharString> > AreasSpawnedIn;          // +0xc4
     class CHTE_AmbushPoint : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeEvilScript&,CScriptDataBase*,const CScriptThing&); };   // Alloc 0x00D69D50
     class CHTE_AssaultGuard : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeEvilScript&,CScriptDataBase*,const CScriptThing&); };   // Alloc 0x00D6AD70
-    class CHTE_FreedomFighter : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeEvilScript&,CScriptDataBase*,const CScriptThing&); };   // Alloc 0x00D6A3D0
+    // Retail layout (chunk 781): Ego_r.pdb CHTE_FreedomFighter (struct_layouts_egor.tsv, 0x20 bytes: ParentClass +0x14,
+    // PMasterData +0x18, HeroHitMe +0x1c; factory 0x00D6A3D0 `push 20h`); vtable 0x012D2170 [~ 0x00D6A540, Main 0x00D6A560,
+    // Init 0x00D6A480, GetParentScript 0x00D6A470, 0x00CDEBC0, OnPredicateFail 0x00D6A4F0, 0x00CDEBE0]; the private virtuals
+    // are FableWin/Ego_r ?Main/?Init/?OnPredicateFail@CHTE_FreedomFighter@CQ_HangingTreeEvilScript@NScript@@EAEXXZ.
+    class CHTE_FreedomFighter : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeEvilScript&,CScriptDataBase*,const CScriptThing&);   // Alloc 0x00D6A3D0
+        virtual CScriptBase* GetParentScript() const;                    // slot 3 0x00D6A470
+        CQ_HangingTreeEvilScript* ParentClass;                           // +0x14
+        CQ_SunnyvaleMasterData* PMasterData;                             // +0x18
+        long HeroHitMe;                                                  // +0x1c
+    private:
+        virtual void Main();                                             // slot 1 0x00D6A560
+        virtual void Init();                                             // slot 2 0x00D6A480
+        virtual void OnPredicateFail();                                  // slot 5 0x00D6A4F0
+    };
     class CHTE_Audience : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeEvilScript&,CScriptDataBase*,const CScriptThing&); };   // Alloc 0x00D6B180
     class CHTE_Prisoner : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeEvilScript&,CScriptDataBase*,const CScriptThing&); };   // Alloc 0x00D69E30
     class CHTE_Executioner : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeEvilScript&,CScriptDataBase*,const CScriptThing&); };   // Alloc 0x00D69FD0
@@ -73,4 +88,5 @@ public:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HangingTreeEvilScript)==0xd0);
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter)==0x20);
 #endif
