@@ -384236,6 +384236,14 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00c064d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00decad0'
+        Module = 'NScript::CQ_SecretPassageScript'
+        Source = '00/de/NScriptCQSecretPassageScript_Main_00decad0.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScript_Main_00decad0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00decad0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

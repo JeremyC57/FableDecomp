@@ -55,7 +55,14 @@ public:
 #endif
     // Ego_r 0x0040C910 / FableWin 0x01899D90 ??8?$CBasicString@D@@QBE_NPBD@Z (retail out-of-line copy 0x004115A0; a TU that holds
     // the template body expands it, 0x009BC120).
+#ifdef FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE
+    // Retail opt-in (chunk 780): the quest-script TUs expand CBasicString<char>::operator==(const char*) in place as
+    // `call Compare 0x00411570 ; neg eax ; sbb al,al ; inc al` (CV_BeardyBaldyScript::Main 0x00E4FB88..0x00E4FB98, the landed
+    // chunk 778 WatchForQuestCardConditions model), i.e. Compare(PData, text) == 0 (FableWin ??8?$CBasicString@D@@QBE_NPBD@Z).
+    bool operator==(const T* text) const { return Compare(PData,text) ? false : true; }
+#else
     bool operator==(const T* text) const;
+#endif
 };
 class CCharStringData
 { public:

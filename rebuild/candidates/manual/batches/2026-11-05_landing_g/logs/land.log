@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00decad0   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00decad0 RELOCATION_MATCH NScript::CQ_SecretPassageScript::?Main@CQ_SecretPassageScript@NScript@@UAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQSecretPassageScript_Main_00decad0

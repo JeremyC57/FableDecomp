@@ -52887,6 +52887,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e6fc10	GetParentScript	NScript::CV_DemonDoorsScript::CDF_Dragon	unknown	undefined	0		0			discovered	gapscan							
 00e6fc20	`scalar deleting destructor'	NScript::CV_DemonDoorsScript::CDF_Dragon	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e6\CLandscapeBackgroundPatch_vectordeletingdestructor_00e6fc20.cpp
 00e6fc40	Main	NScript::CV_DemonDoorsScript::CDF_Dragon	__thiscall	void	1	CDF_Dragon *	1	yes	accepted									
+00e702c0	Alloc	NScript::CV_DemonDoorsScript::CDF_SummonsCreatures	__fastcall															
+00e70360	GetParentScript	NScript::CV_DemonDoorsScript::CDF_SummonsCreatures	__thiscall		0													
 00e70370	`scalar deleting destructor'	NScript::CV_DemonDoorsScript::CDF_SummonsCreatures	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e7\CLandscapeBackgroundPatch_vectordeletingdestructor_00e70370.cpp
 00e70390	Alloc	NScript::CV_DemonDoorsScript::CDF_BeEvil	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00e70430	GetParentScript	NScript::CV_DemonDoorsScript::CDF_BeEvil	unknown	undefined	0		0			discovered	gapscan							
@@ -53020,7 +53022,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e7bca0	Main	NScript::CV_FishermanScript::CFishermanBulletinBoard	unknown	undefined	0		0			discovered	gapscan							
 00e7bd40	`scalar deleting destructor'	NScript::CV_FishermanScript::CFishermanBulletinBoard	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e7\CLandscapeBackgroundPatch_vectordeletingdestructor_00e7bd40.cpp
 00e7bd60	Init	NScript::CV_FishermanScript::CFisherman	unknown	undefined	0		0	yes	accepted									
-00e7c010	NPCAttitudeProcess	CV_FishermanScript	__thiscall	void	2	CV_FishermanScript *,CScriptThing	1	yes	accepted									
+00e7c010	NPCAttitudeProcess	NScript::CV_FishermanScript	__thiscall	void	2	CV_FishermanScript *,CScriptThing	1	yes	accepted									
 00e7c670	SuspendableProcess	CSpawnedFunc1<NScript::CV_FishermanScript,CScriptThing>	unknown	undefined	0		0			discovered	gapscan							
 00e7c6b0	CreateActiveEntityScript	CEntityScriptBinding<NScript::CV_FishermanScript>	unknown	undefined	0		0	yes	accepted									
 00e7c7c0	SuspendableProcess	CActiveEntityScript<NScript::CV_FishermanScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									
@@ -53375,7 +53377,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ea1630	PhaseOne	NScript::CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
 00ea1720	DoInitialBalverineAttack	CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
 00ea1ec0	DoPanicBanter	NScript::CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
-00ea2080	ControlMainBalverines	CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
+00ea2080	ControlMainBalverines	NScript::CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
 00ea2720	KnotHoleGates_OnScript	_global	unknown	undefined	0		0	yes	accepted									
 00ea2c60	Alloc	NScript::CV_KnotholeGladeGatesScript	__fastcall	CScriptBase *	2	CScriptDataBase *,CGameScriptInterfaceBase *	1	yes	accepted									
 00ea2cc0	`scalar deleting destructor'	NScript::CV_KnotholeGladeGatesScript	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ea\CEngineSubPrimitiveText_scalardeletingdestructor_00ea2cc0.cpp

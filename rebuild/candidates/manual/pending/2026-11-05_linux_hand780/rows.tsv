@@ -1,0 +1,6 @@
+address	module	name	length
+00decad0	NScript::CV_TravellingHeroesScript	Main	1479
+00e7c010	NScript::CV_FishermanScript	NPCAttitudeProcess	1623
+00ea2080	NScript::CV_KnotholeGladeGatesScript	ControlMainBalverines	1682
+00e4fa20	NScript::CV_BeardyBaldyScript	Main	1756
+00e6fc40	NScript::CDF_Dragon	Main	1828

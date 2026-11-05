@@ -1,0 +1,2 @@
+address	source	grade_with_final_overlay	note
+-	(none)	-	Both overlay headers add opt-in blocks only (`#ifdef FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE` in fable_string.h, `#ifdef FABLE_RETAIL_CQ_SUNNYVALEMASTERDATA_RELATION_STATICS` in engine/CQ_SunnyvaleMasterData.h); `diff` against the repo copies shows no change on the default path, so no landed includer can change bytes and none was rechecked. No landed source defines either macro (`grep -rl` over rebuild/src/compiled: 0 hits)

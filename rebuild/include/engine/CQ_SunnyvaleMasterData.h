@@ -222,6 +222,13 @@ public:
     void ModifyVillagerAngryRating(float);
     virtual void OnPersist(CPersistContext&);
     virtual void Init();
+#ifdef FABLE_RETAIL_CQ_SUNNYVALEMASTERDATA_RELATION_STATICS
+    // Retail opt-in (chunk 780): the three unnamed statics the landed Init 0x00CDBA10 resets and the transfer 0x00CDC890 walks
+    // (reloc_bindings ?RelationCounters@CQ_SunnyvaleMasterData@NScript@@2PAJA 0x0143E928; the strings 0x0143E934). Retail
+    // CV_FishermanScript::NPCAttitudeProcess 0x00E7C1D6 stores 2 into RelationCounters[2] (0x0143E930).
+    static long        RelationCounters[3];                                   // 0x0143E928
+    static CCharString RelationSuffixes[3];                                   // 0x0143E934
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_SunnyvaleMasterData) == 0x144);

@@ -36854,3 +36854,17 @@ _New_c35b10@8	00c35b10	00c275e0
 ?dext@?1??inflate_table@@9@4QBGB	012b1918	00c064d0
 ?lbase@?1??inflate_table@@9@4QBGB	012b1858	00c064d0
 ?lext@?1??inflate_table@@9@4QBGB	012b1898	00c064d0
+??_7?$CEntityScriptBinding@VCQ_SecretPassageScript@NScript@@@@6B@	012ddd2c	00decad0
+?Alloc@CDoorToMothersTortureChamber@CQ_SecretPassageScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00def0f0	00decad0
+?Alloc@CMotherTorture@CQ_SecretPassageScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dee1a0	00decad0
+?Alloc@CSP_AmbushGuard@CQ_SecretPassageScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ded450	00decad0
+?Alloc@CSP_DeskGuard@CQ_SecretPassageScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dede40	00decad0
+?Alloc@CSP_InvestigatingGuard@CQ_SecretPassageScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00deda90	00decad0
+?Alloc@CSP_NymphTrigger@CQ_SecretPassageScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ded290	00decad0
+?Alloc@CSP_ScreamerTrigger@CQ_SecretPassageScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ded1a0	00decad0
+?Alloc@CSP_SecretPassageGuard@CQ_SecretPassageScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ded720	00decad0
+?Alloc@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00def620	00decad0
+?Alloc@CTortureDoorCourtyard@CQ_SecretPassageScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00deef00	00decad0
+?DoMission@CQ_SecretPassageScript@NScript@@QAEXXZ	00deff60	00decad0
+?InitialiseVariables@CQ_SecretPassageScript@NScript@@QAEXXZ	00ded0a0	00decad0
+?WatchForTermination@CQ_SecretPassageScript@NScript@@QAEXXZ	00ded0c0	00decad0

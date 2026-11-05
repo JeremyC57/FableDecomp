@@ -1,0 +1,11 @@
+address	Class::Name	evidence
+0x00DECAD0	NScript::CQ_SecretPassageScript::Main	matched source src/00decad0.cpp (RELOCATION_MATCH); PDB name set; bindings and spawns are CQ_SecretPassageScript members
+0x00DED0A0	NScript::CQ_SecretPassageScript::InitialiseVariables	FableWin.pdb name; first call of Main 0x00DECAD0; zeroes the CQ_SecretPassageScript flags
+0x00E7C010	NScript::CV_FishermanScript::NPCAttitudeProcess(CScriptThing)	FableWin.pdb ?NPCAttitudeProcess@CV_FishermanScript@NScript@@QAEXVCScriptThing@@@Z; spawned by the landed CFisherman::Init 0x00E7BD60 through CSpawnedFunc1<CV_FishermanScript,CScriptThing> (SuspendableProcess 0x00E7C670 follows)
+0x00EA2080	NScript::CV_KnotholeGladeGatesScript::ControlMainBalverines	PDB name sets; called twice by the landed PhaseOne 0x00EA1630; literals KGG_Balv1 / KGG_VillagerOutside / KGG_Balverine
+0x00E4FA20	NScript::CV_BeardyBaldyScript::Main	PDB name sets; RegisterMain 0x00E4F730 spawns it; binding BB_BeardyBaldyMan; the seven watcher spawns
+0x00E50100	NScript::CV_BeardyBaldyScript::WatchForQuestFinished	spawned only by 0x00E4FA20 under that name (see NAME_FIXES)
+0x00E6FC40	NScript::CV_DemonDoorsScript::CDF_Dragon::Main	PDB ?Main@CDF_Dragon@CV_DemonDoorsScript@NScript@@EAEXXZ; vtable 0x012E8DB8 slot; the catalog row also covers the jump table 0x00E702A0, CDF_SummonsCreatures::Alloc 0x00E702C0 and GetParentScript 0x00E70360 (needs a split)
+0x00E702C0	NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::Alloc	__fastcall factory storing vtable 0x012E8E80 (the CDF_SummonsCreatures vtable: its scalar deleting destructor 0x00E70370 follows), Ego_r ?Alloc@CDF_SummonsCreatures@CV_DemonDoorsScript@NScript@@SI...; unlabelled in the manifest, hidden inside the 0x00E6FC40 catalog row
+0x00E70360	NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::GetParentScript	`mov eax,[ecx+14h]; ret` = the CDF_* GetParentScript body (as 0x00E6FC10 for CDF_Dragon); hidden inside the 0x00E6FC40 catalog row
+0x00EA3490	(suspect) CV_LostTraderScript::WatchForQuestFinished	landed as CV_BeardyBaldyScript::WatchForQuestFinished but referenced only from 0x00EA3389 inside CV_LostTraderScript::Main 0x00EA2E80; no PDB name ?WatchForQuestFinished@CV_LostTraderScript found, so NOT in NAME_FIXES -- for the coordinator to check
